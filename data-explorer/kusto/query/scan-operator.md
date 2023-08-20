@@ -34,7 +34,7 @@ The output for the matching record is determined by the input record and assignm
 | *MatchIdColumnName* | string | |  The name of a column of type `long` that is appended to the output as part of the scan execution. Indicates the 0-based index of the match for the row. |
 | *ColumnDeclarations* | string | | Declares an extension to the schema of *T*. These columns are assigned values in the steps. If not assigned, the *DefaultValue* is returned. Unless otherwise specified, *DefaultValue* is `null`.|
 | *StepName* | string | &check; | Used to reference values in the state of scan for conditions and assignments. The step name must be unique.|
-| *Condition* | string | &check; | An expression that evaluates to `true` or `false` that defines which records from the input matches the step. A record matches the step when the condition is `true` with the step’s state or with the previous step’s state.|
+| *Condition* | string | &check; | An expression that evaluates to `true` or `false` that defines which records from the input match the step. A record matches the step when the condition is `true` with the step’s state or with the previous step’s state.|
 | *Assignment* | string | | A scalar expression that is assigned to the corresponding column when a record matches a step.|
 | `output` | string | | Controls the output logic of the step on repeated matches. `all` outputs all records matching the step, `last` outputs only the last record in a series of repeating matches for the step, and `none` doesn't output records matching the step. The default is `all`.|
 
@@ -48,9 +48,9 @@ A record for each match of a record from the input to a step. The schema of the 
 
 ### State
 
-The underlying state management of the `scan` operator is like a table with a row for each `step`. Each step maintains its own state with the latest values of the columns and declared variables from all of the previous steps and the current step. If relevant, it also holds the match ID for the ongoing sequence. For an example, see the [scan logic walkthrough](#scan-logic-walkthrough).
+The underlying state of the `scan` operator can be thought of as a table with a row for each `step`. Each step maintains its own state with the latest values of the columns and declared variables from all of the previous steps and the current step. If relevant, it also holds the match ID for the ongoing sequence. For an example, see the [scan logic walkthrough](#scan-logic-walkthrough).
 
-The state starts empty and updates whenever a scanned input row matches a step. A step has an *active sequence* if the state of the step is non-empty and contains the values for the ongoing sequence.
+The state starts empty and updates whenever a scanned input row matches a step. A step has an *active sequence* if the state of the step is nonempty and contains the values for the ongoing sequence.
 
 ### Matching logic
 
