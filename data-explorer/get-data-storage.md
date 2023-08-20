@@ -16,6 +16,7 @@ For general information on data ingestion, see [Azure Data Explorer data ingesti
 
 * A Microsoft account or an Azure Active Directory user identity. An Azure subscription isn't required.
 * An Azure Data Explorer cluster and database. [Create a cluster and database](create-cluster-and-database.md).
+* A [storage account](/azure/storage/common/storage-quickstart-create-account?tabs=azure-portal).
 
 ## Get data
 
