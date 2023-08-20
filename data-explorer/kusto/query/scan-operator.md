@@ -45,14 +45,26 @@ A record for each match of a record from the input to a step. The schema of the 
 
 `scan` goes over the serialized input data, record by record, comparing each record against each step’s condition while taking into account the current state of each step.
 
-### Scan's state
+For a detailed example of this logic, see [Scan logic demonstration](#scan-logic-walkthrough).
 
-The state that is used behind the scenes by `scan` is a set of records, with the same schema of the output, including source and declared columns.
+### State
 
-You can think of the state of the operator as a table with a row for each step. Each step has its own state. The state of step *k* has *k* records in it, where each record corresponds to a step up to *k*. A step has an *active sequence* if the state of the step is non-empty and contains the values for the ongoing sequence. For an example, see the [matching logic walkthrough](#the-state-of-the-operator).
+Think of the state of the `scan` operator as a table, where each row corresponds to a step. Each step maintains its own state, which contains the most recent values of the columns and declared variables from all of the previous steps and the current step. If relevant, it also holds the match ID for the ongoing sequence.
 
-For example, if a scan operator has *n* steps named *s_1*, *s_2*, ..., *s_n* then step *s_k* would have *k* records in its state corresponding to *s_1*, *s_2*, ..., *s_k*.
-Referencing a value in the state is done in the form *StepName*.*ColumnName*. For example, `s_2.col1` references column `col1` that belongs to step *s_2* in the state of *s_k*.
+For example, if there are *n* steps named *s_1*, *s_2*, ..., *s_n* then step *s_k* would have *k* records in its state corresponding to *s_1*, *s_2*, ..., *s_k*. A value in the state is referenced in the form *StepName*.*ColumnName*. For example, `s_2.col1` references column `col1` that belongs to step *s_2* in the state of *s_k*. For example:
+
+|step|m_id|s_1.col1|s_1.col2|s_2.col1|s_2.col2|...|s_n.col1|s_n.col2|
+|---|---|---|---|---|---|---|---|---|---|---|
+|s_1||||X|X|X|X|...|X|X|
+|s_2||||||X|X|...|X|X|
+|...|...|...|...|...|...|...|...|...|...|...|...|
+|s_n||||||||...|||
+
+The "X" indicates that a specific field is irrelevant for that step.
+
+The state starts empty and updates whenever a scanned input row matches a step. If a condition or assignment checks for a value in an empty step, the default value for the column is returned. Unless otherwise specified, the default value is `null`, or an empty string.
+
+A step has an *active sequence* if the state of the step is non-empty and contains the values for the ongoing sequence.
 
 ### Matching logic
 
@@ -70,7 +82,7 @@ Each record from the input is evaluated against all of scan’s steps, starting 
     1. Whenever the first step is matched while its state is empty, a new match begins and the match ID is increased by `1`. This only affects the output when `with_match_id` is used.
 * If r doesn't satisfy the condition *s_k* with the state *s_k*, evaluate *r* against condition *s_k-1* and repeat the logic above.
 
-For a detailed example of this logic, see the [matching logic walkthrough](#matching-logic-walkthrough).
+For a detailed example of this logic, see the [Matching logic walkthrough](#matching-logic-walkthrough) of the [Scan logic demonstration](#scan-logic-demonstration).
 
 ## Examples
 
@@ -283,9 +295,9 @@ StormEvents
 |Tornado|34|
 |Thunderstorm Wind|32|
 
-## Matching logic walkthrough
+## Scan logic demonstration
 
-This section demonstrates the [matching logic](#matching-logic) using a step-by-step walkthrough of the [Events between start and stop](#events-between-start-and-stop) example:
+This section demonstrates the [scan logic](#scan-logic) using a step-by-step walkthrough of the [Events between start and stop](#events-between-start-and-stop) example:
 
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA3WPYWvCMBCGv+dXvPOTQidr3cZozYc5/QX6TYbENsxCE0vvcAj+eJM0FR0sgRzPe3fvXRrNWJ20ZYJEpdjdfaMx3lAOro2mVtmkr8hB3NX2Z4KtgDsvJsHoc5QESD2sWXUchcwLiwgzD8sIr33psY387vkrwsdfnzQ4rwbKbs3iWxSiX11cQMeOsT9jQ1BUeqFUFr81H3ZGcXnY1ZU07gkSxDi4EesWlOb9/yDlMLq4S2dD+umWhrLVg+jWCZqb/uwMpy7OJd7Mvc/sccz/LZMrJ20JNJQBAAA=" target="_blank">Run the query</a>
@@ -313,11 +325,11 @@ Events
 )
 ```
 
-### The state of the operator
+### State explanation
 
-To understand the underlying state management, consider each step as possessing its own state. The state for each step holds the most recent values of the columns and declared variables for all the preceding steps and the current one, along with the match ID for the ongoing sequence.
+As described in [State](#state), the state of the operator is like a table with a row for each step. Each step maintains its own state, which contains the most recent values of the columns and declared variables from all of the previous steps and the current step. Additionally, it holds the match ID for the ongoing sequence.
 
-Think of the state of the operator as a table with a row for each step:
+For this example, the state of the operator is represented with the following table:
 
 |step|m_id|s1.Ts|s1.Event|s2.Ts|s2.Event|s3.Ts|s3.Event|
 |---|---|---|---|---|---|---|---|
@@ -327,11 +339,7 @@ Think of the state of the operator as a table with a row for each step:
 
 The "X" indicates that a specific field is irrelevant for that step.
 
-The state starts empty and updates whenever a scanned input row matches a step. If a condition or assignment checks for a value in an empty step, the default value for the column is returned. Unless otherwise specified, the default value is `null`, or an empty string.
-
-A step has an *active sequence* if the state of the step is non-empty and contains the values for the ongoing sequence. 
-
-### Step-by-step walkthrough
+### Matching logic walkthrough
 
 This section follows the logic of the scan operator through each input row, explaining the transformation of the state and output at each step. 
 
