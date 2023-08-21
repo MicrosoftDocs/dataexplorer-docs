@@ -2,7 +2,7 @@
 title: Policies overview - Azure Data Explorer
 description: Learn which policies are available for management with Azure Data Explorer.
 ms.topic: reference
-ms.date: 08/17/2023
+ms.date: 08/21/2023
 ---
 # Policies
 
@@ -15,13 +15,13 @@ The following table provides an overview of the policies for managing your clust
 |[Callout policy](calloutpolicy.md)|Manages the authorized domains for external calls.|
 |[Capacity policy](capacitypolicy.md)|Controls the compute resources of data management operations.|
 |[Encoding policy](encoding-policy.md)|Defines how data is encoded, compressed, and indexed.|
+|[Extent tags retention policy](extent-tags-retention-policy.md)|Controls the mechanism that automatically removes extent tags from tables.|
 |[Ingestion batching policy](batchingpolicy.md)|Groups multiple data ingestion requests into batches for more efficient processing.|
 |[Ingestion time policy](ingestiontimepolicy.md)|Adds a hidden datetime column to the table that records the time of ingestion.|
 |[ManagedIdentity policy](managed-identity-policy.md)|Controls which managed identities can be used for what purposes.|
 |[Merge policy](mergepolicy.md)|Defines rules for merging data from different extents into a single extent.|
 |[Partitioning policy](partitioningpolicy.md)|Defines rules for partitioning extents for a specific table or a materialized view.|
 |[Retention policy](retentionpolicy.md)|Controls the mechanism that automatically removes data from tables or materialized views.|
-|[Extent tags retention policy](extent-tags-retention-policy.md)|Controls the mechanism that automatically removes extent tags from tables.|
 |[Restricted view access policy](restrictedviewaccesspolicy.md)|Adds an extra layer of permission requirements for principals to access and view the table.|
 |[Row level security policy](rowlevelsecuritypolicy.md)|Defines rules for access to rows in a table based on group membership or execution context.|
 |[Row order policy](roworderpolicy.md)|Maintains a specific order for rows within an extent.|
