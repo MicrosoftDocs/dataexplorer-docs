@@ -73,14 +73,16 @@ Each record from the input is evaluated against all of scan’s steps, starting 
 For a detailed example of this logic, see the [scan logic walkthrough](#scan-logic-walkthrough).
 ### Matching logic
 
-Each input record is evaluated against the steps in reverse order, from the last step to the first. A match can only happen if the state of the current or previous step is nonempty. When the state of the current step is nonempty, the step is referred to as having an active sequence.
+Each input record is evaluated against the steps in reverse order, from the last step to the first. A match can only happen if the state of the current step (*s_k*) or previous step (*s_(k-1)*) is nonempty. When the state of the current step is nonempty, the step is referred to as having an active sequence.
 
-When a record is evaluated against a step, the following criteria are checked:
+The following table outlines the potential cases when a record is evaluated against a step. These cases are applied in the order shown. The match column is a boolean value that represents whether the condition for the current step was satisfied or not.
 
-|Rule|State of previous step|State of current step|Step condition met|Actions|
+|Case|*s_(k-1)* state|*s_k* state|Match|Actions|
 |--|--|--|--|
 |1|Nonempty|Empty or nonempty|True|1. The state of the current step is cleared.</br>2. The state of the previous step is promoted to become the state of current step.</br>3. All the assignments of the current step are calculated and extend the record.</br>4. The extended record is added to the output and to the state of the current step.|
-|2|Empty|Nonempty (active sequence)</br>or empty (first step)|True|1. The record is extended with the assignments of the current step.<br/>2. The extended record is added to the output.</br>3. The last record in the state of the current step (which represents the current step itself in the state) is replaced by the extended record.</br>4. If the first step was matched while its state was empty, a new match begins and the match ID is increased by `1`. This only affects the output when `with_match_id` is used.|
+|2|Empty|Nonempty (active sequence) or empty (first step)|True|1. The record is extended with the assignments of the current step.<br/>2. The extended record is added to the output.</br>3. The last record in the state of the current step (which represents the current step itself in the state) is replaced by the extended record.</br>4. If the first step was matched while its state was empty, a new match begins and the match ID is increased by `1`. This only affects the output when `with_match_id` is used.|
+|3|Empty|Empty|True|Continue on to the next step.|
+|4|Empty or nonempty|Empty or nonempty|False|Continue on to the next step.|
 
 If neither case was met, the record is then checked against the next step in the evaluation chain: *s_(k-1)*.
 
