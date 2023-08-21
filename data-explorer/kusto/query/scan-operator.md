@@ -56,7 +56,7 @@ The state starts empty and updates whenever a scanned input row matches a step. 
 
 ### Matching logic
 
-Each input record is evaluated against the steps in reverse order, from the last step to the first. Even if a record satisfies the step *Condition*, the potential for a match depends on the [state](#state). For a record *r* and some step *s_k*, the following table outlines the cases that result in a match and their effect on state and output.
+Each input record is evaluated against the steps in reverse order, from the last step to the first. Even if a record satisfies the step *Condition*, the potential for a match depends on the [state](#state). The following table describes the cases that result in a match and their effect on state and output. The record under evaluation is represented as *r*, and the current step as *s_k*.
 
 |Case|Description|Effect|
 |--|--|--|
