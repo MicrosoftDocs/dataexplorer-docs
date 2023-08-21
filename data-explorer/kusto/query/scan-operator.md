@@ -56,12 +56,12 @@ The state starts empty and updates whenever a scanned input row matches a step. 
 
 ### Matching logic
 
-Each input record is evaluated against the steps in reverse order, from the last step to the first. When a record, *r*, is evaluated against some step, *s_k*, there are two cases that could lead to a match:
+Each input record is evaluated against the steps in reverse order, from the last step to the first. Even if a record satisfies the step *Condition*, the potential for a match depends on the [state](#state). For a record *r* and some step *s_k*, the following table outlines the cases that result in a match and their effect on state and output.
 
-|Case|Description|Result|
+|Case|Description|Effect|
 |--|--|--|
-|1|The state of the previous step, *s_(k-1)*, is nonempty, and *r* meets the *Condition* of *s_k*.|1. The state of *s_k* is cleared.</br>2. The state of *s_(k-1)* is promoted to become the state of *s_k*.</br>3. The assignments of *s_k* are calculated and extend *r*.</br>4. The extended *r* is added to the output and to the state of *s_k*.|
-|2|The state of *s_k* has an active sequence or *s_k* is the first step, and *r* meets the *Condition* of *s_k*.|1. The assignments of *s_k* are calculated and extend *r*.</br>2. The extended *r* replaces the last record in the state of *s_k*, which represents *s_k* itself in the state.</br>3. If *s_k* is defined as `output=all`, the extended *r* is added to the output.</br>4. If *s_k* is the first step, a new match begins and the match ID increases by `1`. This only affects the output when `with_match_id` is used.|
+|1|The state of the previous step, *s_(k-1)*, is nonempty.|1. The state of *s_k* is cleared.</br>2. The state of *s_(k-1)* is promoted to become the state of *s_k*.</br>3. The assignments of *s_k* are calculated and extend *r*.</br>4. The extended *r* is added to the output and to the state of *s_k*.|
+|2|The state of *s_k* has an active sequence or *s_k* is the first step.|1. The assignments of *s_k* are calculated and extend *r*.</br>2. The extended *r* replaces the last record in the state of *s_k*, which represents *s_k* itself in the state.</br>3. If *s_k* is defined as `output=all`, the extended *r* is added to the output.</br>4. If *s_k* is the first step, a new match begins and the match ID increases by `1`. This only affects the output when `with_match_id` is used.|
 
 If neither case applies, no match occurs, and the record proceeds to be evaluated against the next step. If both cases apply, case 1 takes priority over case 2.
 
