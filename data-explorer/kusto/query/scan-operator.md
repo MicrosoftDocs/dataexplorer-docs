@@ -361,7 +361,7 @@ Again, this row can't match `s3` because it doesn't have an active sequence, and
 |---|---|
 |2m|"B"|
 
-This row can't match `s3` because it doesn't have an active sequence, and the state of `s2` is empty. This row meets the `s2` condition of `Ts - s1.Ts < 5m`, and the prior step of `s1` is active. These conditions cause the sequence in `s1` to be promoted to `s2` and the `s1` state to be cleared. The row `00:02:00, "B", 0` is added to the output.
+This row can't match `s3` because it doesn't have an active sequence, and the state of `s2` is empty. This row meets the `s2` condition of `Ts - s1.Ts < 5m`, and the prior step of `s1` is nonempty. These conditions cause the sequence in `s1` to be promoted to `s2` and the `s1` state to be cleared. The row `00:02:00, "B", 0` is added to the output.
 
 **Updated state**
 
