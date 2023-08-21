@@ -80,9 +80,9 @@ When a record is evaluated against a step, the following criteria are checked:
 |Rule|State of previous step|State of current step|Step condition met|Actions|
 |--|--|--|--|
 |1|Nonempty|Empty or nonempty|True|1. The state of the current step is cleared.</br>2. The state of the previous step is promoted to become the state of current step.</br>3. All the assignments of the current step are calculated and extend the record.</br>4. The extended record is added to the output and to the state of the current step.|
-|2|Empty|Nonempty (active sequence)</br>or empty but is the first step|True|1. The record is extended with the assignments of the current step.<br/>2. The extended record is added to the output.</br>3. The last record in the state of the current step (which represents the current step itself in the state) is replaced by the extended record.</br>4. Whenever the first step is matched while its state is empty, a new match begins and the match id is increased by `1` (this only affects the output when `with_match_id` is used).|
-|3|Empty|Empty|True|Continue to the next step.|
-|3|Empty or nonempty|Empty or nonempty|False|Continue to the next step.|
+|2|Empty|Nonempty (active sequence)</br>or empty (first step)|True|1. The record is extended with the assignments of the current step.<br/>2. The extended record is added to the output.</br>3. The last record in the state of the current step (which represents the current step itself in the state) is replaced by the extended record.</br>4. If the first step was matched while its state was empty, a new match begins and the match ID is increased by `1`. This only affects the output when `with_match_id` is used.|
+
+If neither case was met, the record is then checked against the next step in the evaluation chain: *s_(k-1)*.
 
 
 ## Examples
