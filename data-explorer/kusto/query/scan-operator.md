@@ -315,7 +315,7 @@ Events
 
 ### The state
 
-Think of the state of the `scan` operator as a table with a row for each step, in which each step has its own state. This state contains the latest values of the columns and declared variables from all of the previous steps and the current step. A value in the state is represented as *StepName*.*ColumnName*. To learn more, see [State](#state).
+Think of the state of the `scan` operator as a table with a row for each step, in which each step has its own state. This state contains the latest values of the columns and declared variables from all of the previous steps and the current step. To learn more, see [State](#state).
 
 For this example, the state can be represented with the following table:
 
