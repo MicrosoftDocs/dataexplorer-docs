@@ -52,7 +52,7 @@ The underlying state of the `scan` operator can be thought of as a table with a 
 
 If a scan operator has *n* steps named *s_1*, *s_2*, ..., *s_n* then step *s_k* would have *k* records in its state corresponding to *s_1*, *s_2*, ..., *s_k*. The *StepName*.*ColumnName* format is used to reference a value in the state. For instance, `s_2.col1` would reference column `col1` that belongs to step *s_2* in the state of *s_k*. For a detailed example, see the [scan logic walkthrough](#scan-logic-walkthrough).
 
-The state starts empty and updates whenever a scanned input row matches a step. A step has an *active sequence* if the state of the step is nonempty and contains the values for the sequence.
+The state starts empty and updates whenever a scanned input row matches a step. If the state of the step is nonempty, the step is referred to as having an *active sequence*.
 
 ### Matching logic
 
