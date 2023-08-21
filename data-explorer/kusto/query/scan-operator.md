@@ -84,8 +84,31 @@ The following table outlines the potential cases when a record is evaluated agai
 |3|Empty|Empty|True|Continue on to the next step.|
 |4|Empty or nonempty|Empty or nonempty|False|Continue on to the next step.|
 
-If neither case was met, the record is then checked against the next step in the evaluation chain: *s_(k-1)*.
+### Matching logic (if/else version)
 
+Each input record is evaluated against the steps in reverse order, from the last step to the first.
+
+When a record, *r*, is considered against a step, *s_k*, the following cases result in a match so long as *r* satisfies the condition of *s_k*:
+
+* Case 1: The state of the previous step, *s_(k-1)*, is nonempty.
+
+    In this case, the following occurs:
+
+    1. The state of *s_k* is cleared.
+    1. The state of *s_(k-1)* is promoted to become the state of *s_k*.
+    1. The assignments of *s_k* are calculated and extend *r*.
+    1. The extended *r* is added to the output and to the state of *s_k*.
+
+* Case 2: The state of *s_k* has an active sequence or *s_k* is the first step.
+
+    In this case, the following occurs:
+
+    1. The assignments of *s_k* are calculated and extend *r*.
+    1. The last record in the state of *s_k*, which represents *s_k* itself in the state, is replaced by the extended *r*.
+    1. If *s_k* is defined as `output=all`, the extended *r* is added to the output.
+    1. If *s_k* is the first step, a new match begins and the match ID is increased by `1`. This only affects the output when `with_match_id` is used.
+
+Priority is given to "Case 1" over "Case 2". If neither case applies, no match occurs, and the record proceeds to be evaluated against the next step.
 
 ## Examples
 
