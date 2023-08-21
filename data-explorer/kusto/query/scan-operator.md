@@ -48,7 +48,9 @@ A record for each match of a record from the input to a step. The schema of the 
 
 ### State
 
-The underlying state of the `scan` operator can be thought of as a table with a row for each `step`. Each step maintains its own state with the latest values of the columns and declared variables from all of the previous steps and the current step. If relevant, it also holds the match ID for the ongoing sequence. For an example, see the [scan logic walkthrough](#scan-logic-walkthrough).
+The underlying state of the `scan` operator can be thought of as a table with a row for each `step`. Each step maintains its own state with the latest values of the columns and declared variables from all of the previous steps and the current step. If relevant, it also holds the match ID for the ongoing sequence.
+
+If a scan operator has *n* steps named *s_1*, *s_2*, ..., *s_n* then step *s_k* would have *k* records in its state corresponding to *s_1*, *s_2*, ..., *s_k*. The *StepName*.*ColumnName* format is used to reference a value in the state. For example, `s_2.col1` references column `col1` that belongs to step *s_2* in the state of *s_k*. For an example, see the [scan logic walkthrough](#scan-logic-walkthrough).
 
 The state starts empty and updates whenever a scanned input row matches a step. A step has an *active sequence* if the state of the step is nonempty and contains the values for the sequence.
 
