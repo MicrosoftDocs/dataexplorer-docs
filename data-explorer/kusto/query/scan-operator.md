@@ -59,8 +59,8 @@ The state starts empty and updates whenever a scanned input row matches a step. 
 Each record from the input is evaluated against all of scan’s steps, starting from last to first. When a record *r* is considered against some step *s_k*, the following logic is applied:
 
 * If the state of the previous step isn't empty and the record *r* satisfies the condition of *s_k* using the state of the previous step *s_(k-1)*, then the following happens:
-    1. The state of *s_k* is deleted.
-    1. The state of *s_(k-1)* becomes ("promoted" to be) the state of *s_k*, and the state of *s_(k-1)* becomes empty.
+    1. The state of *s_k* is cleared.
+    1. The state of *s_(k-1)* becomes ("promoted" to be) the state of *s_k*, and the state of *s_(k-1)* is cleared.
     1. All the assignments of *s_k* are calculated and extend *r*.
     1. The extended *r* is added to the output (if *s_k* is defined as `output=all`) and to the state of *s_k*.
 * If *r* doesn't satisfy the condition of *s_k* with the state of *s_(k-1)*, *r* is then checked with the state of *s_k*. If *r* satisfies the condition of *s_k* with the state of *s_k*, the following happens:
@@ -71,7 +71,8 @@ Each record from the input is evaluated against all of scan’s steps, starting 
 * If r doesn't satisfy the condition *s_k* with the state *s_k*, evaluate *r* against condition *s_k-1* and repeat the logic above.
 
 For a detailed example of this logic, see the [scan logic walkthrough](#scan-logic-walkthrough).
-### Matching logic
+
+### Matching logic (tabular version)
 
 Each input record is evaluated against the steps in reverse order, from the last step to the first. A match can only happen if the state of the current step (*s_k*) or previous step (*s_(k-1)*) is nonempty. When the state of the current step is nonempty, the step is referred to as having an active sequence.
 
@@ -83,6 +84,8 @@ The following table outlines the potential cases when a record is evaluated agai
 |2|Empty|Nonempty (active sequence) or empty (first step)|True|1. The record is extended with the assignments of the current step.<br/>2. The extended record is added to the output.</br>3. The last record in the state of the current step (which represents the current step itself in the state) is replaced by the extended record.</br>4. If the first step was matched while its state was empty, a new match begins and the match ID is increased by `1`. This only affects the output when `with_match_id` is used.|
 |3|Empty|Empty|True|Continue on to the next step.|
 |4|Empty or nonempty|Empty or nonempty|False|Continue on to the next step.|
+
+For a detailed example of this logic, see the [scan logic walkthrough](#scan-logic-walkthrough).
 
 ### Matching logic (if/else version)
 
@@ -109,6 +112,8 @@ When a record, *r*, is considered against a step, *s_k*, the following cases res
     1. If *s_k* is the first step, a new match begins and the match ID is increased by `1`. This only affects the output when `with_match_id` is used.
 
 Priority is given to "Case 1" over "Case 2". If neither case applies, no match occurs, and the record proceeds to be evaluated against the next step.
+
+For a detailed example of this logic, see the [scan logic walkthrough](#scan-logic-walkthrough).
 
 ## Examples
 
@@ -415,7 +420,7 @@ This row can't match `s3` because it doesn't have an active sequence, and the st
 |---|---|
 |3m|"D"|
 
-This row doesn't meet the `s3` condition of `Event == "Stop"`. However, the row meets the `s2` condition again. This match overrides the existing state of `s2`, and replaces `s2.Ts` and `s2.Event` in the state of the sequence with the values from this row. The row `00:03:00, "D", 0` is added to the output.
+The state of `s2` is nonempty, which means this row could match for `s3`. However, this row doesn't meet the `s3` condition of `Event == "Stop"`. The row meets the `s2` condition again. This match overrides the existing state of `s2`, and replaces `s2.Ts` and `s2.Event` in the state of the sequence with the values from this row. The row `00:03:00, "D", 0` is added to the output.
 
 **Updated state**
 
