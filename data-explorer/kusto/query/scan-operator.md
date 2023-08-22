@@ -56,7 +56,7 @@ The state starts empty and updates whenever a scanned input record matches a ste
 
 ### Matching logic
 
-Each input record is evaluated against the steps in reverse order, from the last step to the first. When a record *r* is evaluated against some step *s_k*, the following logic is applied:
+Each input record is evaluated against all of the steps in reverse order, from the last step to the first. When a record *r* is evaluated against some step *s_k*, the following logic is applied:
 
 * **Check 1:** If the state of the previous step (*s_k-1*) is nonempty, and *r* meets the *Condition* of *s_k*, then a match occurs. This leads to the following actions:
     1. The state of *s_k* is cleared.
@@ -66,7 +66,7 @@ Each input record is evaluated against the steps in reverse order, from the last
 
 * **Check 2:** If the state of *s_k* has an active sequence or *s_k* is the first step, and *r* meets the *Condition* of *s_k*, then a match occurs. This leads to the following actions:
     1. The assignments of *s_k* are calculated and extend *r*.
-    1. The extended *r* replaces the last record in the state of *s_k*, which represents *s_k* itself in the state.
+    2. The *extended r* overwrites the values that represent *s_k* in the state of *s_k*.
     1. If *s_k* is defined as `output=all`, the extended *r* is added to the output.
     1. If *s_k* is the first step, a new match begins and the match ID increases by `1`. This only affects the output when `with_match_id` is used.
 
@@ -402,7 +402,7 @@ In the `s3` evaluation, this record doesn't pass **Check 1** because the record 
 
 In the `s2` evaluation, this record doesn't pass **Check 1** because the state of `s1` is empty. However, it passes **Check 2** because it meets the condition of `Ts - s1.Ts < 5m`.
 
-**Record 4** and its `m_id` (`0`) are added to the state and the output. The values from this record override the previous state values for `s2.Ts` and `s2.Event`.
+**Record 4** and its `m_id` (`0`) are added to the state and the output. The values from this record overwrite the previous state values for `s2.Ts` and `s2.Event`.
 
 **Updated state**
 
