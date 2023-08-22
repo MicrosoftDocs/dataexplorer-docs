@@ -3,7 +3,7 @@ title:  scan operator
 description: Learn how to use the scan operator to scan data, match, and build sequences based on the predicates.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 08/21/2023
+ms.date: 08/22/2023
 ---
 # scan operator
 
@@ -52,40 +52,25 @@ The underlying state of the `scan` operator can be thought of as a table with a 
 
 If a scan operator has *n* steps named *s_1*, *s_2*, ..., *s_n* then step *s_k* would have *k* records in its state corresponding to *s_1*, *s_2*, ..., *s_k*. The *StepName*.*ColumnName* format is used to reference a value in the state. For instance, `s_2.col1` would reference column `col1` that belongs to step *s_2* in the state of *s_k*. For a detailed example, see the [scan logic walkthrough](#scan-logic-walkthrough).
 
-The state starts empty and updates whenever a scanned input row matches a step. When the state of the current step is nonempty, it's referred to step is referred to as having an *active sequence*.
+The state starts empty and updates whenever a scanned input row matches a step. When the state of the current step is nonempty, the step is referred to as having an *active sequence*.
 
-### Matching logic (tabular version)
-
-Each input record is evaluated against the steps in reverse order, from the last step to the first. Even if a record satisfies the step *Condition*, the potential for a match depends on the [state](#state).
-
-The following table describes the cases that result in a match and their effect on state and output. The record under evaluation is represented as *r*, and the current step as *s_k*.
-
-|Case|Description|Effect|
-|--|--|--|
-|1|The state of the previous step, *s_(k-1)*, is nonempty.|1. The state of *s_k* is cleared.</br>2. The state of *s_(k-1)* is promoted to become the state of *s_k*.</br>3. The assignments of *s_k* are calculated and extend *r*.</br>4. The extended *r* is added to the output and to the state of *s_k*.|
-|2|The state of *s_k* is nonempty (active sequence) or *s_k* is the first step.|1. The assignments of *s_k* are calculated and extend *r*.</br>2. The extended *r* replaces the last record in the state of *s_k*, which represents *s_k* itself in the state.</br>3. If *s_k* is defined as `output=all`, the extended *r* is added to the output.</br>4. If *s_k* is the first step, a new match begins and the match ID increases by `1`. This only affects the output when `with_match_id` is used.|
-
-If neither case applies, no match occurs, and the record proceeds to be evaluated against the next step. If both cases apply, case 1 takes priority over case 2.
-
-For a detailed example of this logic, see the [scan logic walkthrough](#scan-logic-walkthrough).
-
-### Matching logic (if/else version)
+### Matching logic
 
 Each input record is evaluated against the steps in reverse order, from the last step to the first. When a record *r* is evaluated against some step *s_k*, the following logic is applied:
 
-* Check 1: If the state of the previous step, *s_(k-1)*, is nonempty, and *r* meets the *Condition* of *s_k*, then a match occurs. This leads to the following actions:
+* **Check 1:** If the state of the previous step (*s_k-1*) is nonempty, and *r* meets the *Condition* of *s_k*, then a match occurs. This leads to the following actions:
     1. The state of *s_k* is cleared.
-    1. The state of *s_(k-1)* is promoted to become the state of *s_k*.
+    1. The state of *s_k-1* is promoted to become the state of *s_k*.
     1. The assignments of *s_k* are calculated and extend *r*.
     1. The extended *r* is added to the output and to the state of *s_k*.
 
-* Check 2: If the state of *s_k* has an active sequence or *s_k* is the first step, and *r* meets the *Condition* of *s_k*, then a match occurs. This leads to the following actions:
+* **Check 2:** If the state of *s_k* has an active sequence or *s_k* is the first step, and *r* meets the *Condition* of *s_k*, then a match occurs. This leads to the following actions:
     1. The assignments of *s_k* are calculated and extend *r*.
     1. The extended *r* replaces the last record in the state of *s_k*, which represents *s_k* itself in the state.
     1. If *s_k* is defined as `output=all`, the extended *r* is added to the output.
     1. If *s_k* is the first step, a new match begins and the match ID increases by `1`. This only affects the output when `with_match_id` is used.
 
-If neither check is passed, no match occurs, and the record proceeds to be evaluated against the next step.
+If the record doesn't pass either check for *s_k*, the record proceeds to be evaluated against *s_k-1*.
 
 For a detailed example of this logic, see the [scan logic walkthrough](#scan-logic-walkthrough).
 
