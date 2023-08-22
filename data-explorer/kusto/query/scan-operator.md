@@ -66,7 +66,7 @@ Each input record is evaluated against all of the steps in reverse order, from t
 
 * **Check 2:** If the state of *s_k* has an active sequence or *s_k* is the first step, and *r* meets the *Condition* of *s_k*, then a match occurs. This leads to the following actions:
     1. The assignments of *s_k* are calculated and extend *r*.
-    2. The *extended r* overwrites the values that represent *s_k* in the state of *s_k*.
+    2. The values that represent *s_k* in the state of *s_k* are replaced with the values of the extended *r*.
     1. If *s_k* is defined as `output=all`, the extended *r* is added to the output.
     1. If *s_k* is the first step, a new match begins and the match ID increases by `1`. This only affects the output when `with_match_id` is used.
 
