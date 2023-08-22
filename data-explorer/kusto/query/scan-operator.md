@@ -58,13 +58,13 @@ The state starts empty and updates whenever a scanned input record matches a ste
 
 Each input record is evaluated against all of the steps in reverse order, from the last step to the first. When a record *r* is evaluated against some step *s_k*, the following logic is applied:
 
-* **Check 1:** If the state of the previous step (*s_k-1*) is nonempty, and *r* meets the *Condition* of *s_k*, then a match occurs. This leads to the following actions:
+* **Check 1:** If the state of the previous step (*s_k-1*) is nonempty, and *r* meets the *Condition* of *s_k*, then a match occurs. The match leads to the following actions:
     1. The state of *s_k* is cleared.
     1. The state of *s_k-1* is promoted to become the state of *s_k*.
     1. The assignments of *s_k* are calculated and extend *r*.
     1. The extended *r* is added to the output and to the state of *s_k*.
 
-* **Check 2:** If the state of *s_k* has an active sequence or *s_k* is the first step, and *r* meets the *Condition* of *s_k*, then a match occurs. This leads to the following actions:
+* **Check 2:** If the state of *s_k* has an active sequence or *s_k* is the first step, and *r* meets the *Condition* of *s_k*, then a match occurs. The match leads to the following actions:
     1. The assignments of *s_k* are calculated and extend *r*.
     2. The values that represent *s_k* in the state of *s_k* are replaced with the values of the extended *r*.
     1. If *s_k* is defined as `output=all`, the extended *r* is added to the output.
@@ -342,13 +342,17 @@ This section follows the [matching logic](#matching-logic) through each record o
 |---|---|
 |0m|"A"|
 
-In the `s3` evaluation, this record doesn't pass **Check 1** because the state of `s2` is empty, and it doesn't pass **Check 2** because `s3` lacks an active sequence.
+* `s3`: **Check 1** isn't passed because the state of `s2` is empty, and **Check 2** isn't passed because `s3` lacks an active sequence.
+* `s2`: **Check 1** isn't passed because the state of `s1` is empty, and **Check 2** isn't passed because `s2` lacks an active sequence.
+* `s1`: **Check 1** is irrelevant because there's no previous step. **Check 2** isn't passed because the record doesn't meet the condition of `Event == "Start"`. **Record 1** is discarded without affecting the state or output.
 
-In the `s2` evaluation, this record doesn't pass **Check 1** because the state of `s1` is empty, and it doesn't pass **Check 2** because `s2` lacks an active sequence.
+**State**
 
-In the `s1` evaluation, this record doesn't pass **Check 1** because there's no previous step, and it doesn't pass **Check 2** because it doesn't meet the condition of `Event == "Start"`.
-
-**Record 1** is discarded without affecting the state or output.
+|step|m_id|s1.Ts|s1.Event|s2.Ts|s2.Event|s3.Ts|s3.Event|
+|---|---|---|---|---|---|---|---|
+|s1||||X|X|X|X|
+|s2||||||X|X|
+|s3||||||||
 
 #### Record 2
 
@@ -356,15 +360,11 @@ In the `s1` evaluation, this record doesn't pass **Check 1** because there's no 
 |---|---|
 |1m|"Start"|
 
-In the `s3` evaluation, this record doesn't pass **Check 1** because the state of `s2` is empty, and it doesn't pass **Check 2** because `s3` lacks an active sequence.
+* `s3`: **Check 1** isn't passed because the state of `s2` is empty, and **Check 2** isn't passed because `s3` lacks an active sequence.
+* `s2`: **Check 1** isn't passed because the state of `s1` is empty, and **Check 2** isn't passed because `s2` lacks an active sequence.
+* `s1`: **Check 1** is irrelevant because there's no previous step. **Check 2** is passed because the record meets the condition of `Event == "Start"`. This match initiates a new sequence, and the `m_id` is assigned. **Record 2** and its `m_id` (`0`) are added to the state and the output.
 
-In the `s2` evaluation, this record doesn't pass **Check 1** because the state of `s1` is empty, and it doesn't pass **Check 2** because `s2` lacks an active sequence.
-
-In the `s1` evaluation, this record doesn't pass **Check 1** because there's no previous step. However, it passes **Check 2** because it meets the condition of `Event == "Start"`. This match initiates a new sequence, and the `m_id` is assigned.
-
-**Record 2** and its `m_id` (`0`) are added to the state and the output.
-
-**Updated state**
+**State**
 
 |step|m_id|s1.Ts|s1.Event|s2.Ts|s2.Event|s3.Ts|s3.Event|
 |---|---|---|---|---|---|---|---|
@@ -378,13 +378,11 @@ In the `s1` evaluation, this record doesn't pass **Check 1** because there's no 
 |---|---|
 |2m|"B"|
 
-In the `s3` evaluation, this record doesn't pass **Check 1** due to the empty state of `s2`, and it doesn't pass **Check 2** because `s3` lacks an active sequence.
+* `s3`: **Check 1** isn't passed because the state of `s2` is empty, and **Check 2** isn't passed because `s3` lacks an active sequence.
+* `s2`: **Check 1** is passed because the state of `s1` is nonempty and the record meets the condition of `Ts - s1.Ts < 5m`. This match causes the state of `s1` to be cleared and the sequence in `s1` to be promoted to `s2`. **Record 3** and its `m_id` (`0`) are added to the state and the output.
+* `s1`: **Check 1** is irrelevant because there's no previous step, and **Check 2** isn't passed because the record doesn't meet the condition of `Event == "Start"`.
 
-In the `s2` evaluation, this record passes **Check 1** because the state of `s1` is nonempty and the record meets the condition of `Ts - s1.Ts < 5m`. This match causes the state of `s1` to be cleared and the sequence in `s1` to be promoted to `s2`.
-
-**Record 3** and its `m_id` (`0`) are added to the state and the output.
-
-**Updated state**
+**State**
 
 |step|m_id|s1.Ts|s1.Event|s2.Ts|s2.Event|s3.Ts|s3.Event|
 |---|---|---|---|---|---|---|---|
@@ -398,13 +396,11 @@ In the `s2` evaluation, this record passes **Check 1** because the state of `s1`
 |---|---|
 |3m|"D"|
 
-In the `s3` evaluation, this record doesn't pass **Check 1** because the record doesn't meet the condition of `Event == "Stop"`, and it doesn't pass **Check 2** because `s3` lacks an active sequence.
+* `s3`: **Check 1** isn't passed because the record doesn't meet the condition of `Event == "Stop"`, and **Check 2** isn't passed because `s3` lacks an active sequence.
+* `s2`: **Check 1** isn't passed because the state of `s1` is empty. it passes **Check 2** because it meets the condition of `Ts - s1.Ts < 5m`. **Record 4** and its `m_id` (`0`) are added to the state and the output. The values from this record overwrite the previous state values for `s2.Ts` and `s2.Event`.
+* `s1`: **Check 1** is irrelevant because there's no previous step, and **Check 2** isn't passed because the record doesn't meet the condition of `Event == "Start"`.
 
-In the `s2` evaluation, this record doesn't pass **Check 1** because the state of `s1` is empty. However, it passes **Check 2** because it meets the condition of `Ts - s1.Ts < 5m`.
-
-**Record 4** and its `m_id` (`0`) are added to the state and the output. The values from this record overwrite the previous state values for `s2.Ts` and `s2.Event`.
-
-**Updated state**
+**State**
 
 |step|m_id|s1.Ts|s1.Event|s2.Ts|s2.Event|s3.Ts|s3.Event|
 |---|---|---|---|---|---|---|---|
@@ -418,11 +414,12 @@ In the `s2` evaluation, this record doesn't pass **Check 1** because the state o
 |---|---|
 |4m|"Stop"|
 
-In the `s3` evaluation, this record passes **Check 1** because `s2` is nonempty and it meets the `s3` condition of `Event == "Stop"`. This match causes the state of `s2` to be cleared and the sequence in `s2` to be promoted to `s3`.
+* `s3`: **Check 1** is passed because `s2` is nonempty and it meets the `s3` condition of `Event == "Stop"`. This match causes the state of `s2` to be cleared and the sequence in `s2` to be promoted to `s3`. **Record 5** and its `m_id` (`0`) are added to the state and the output.
+* `s2`: **Check 1** isn't passed because the state of `s1` is empty, and **Check 2** isn't passed because `s2` lacks an active sequence.
+* `s1`: **Check 1** is irrelevant because there's no previous step. **Check 2** isn't passed because the record doesn't meet the condition of `Event == "Start"`.
 
-**Record 5** and its `m_id` (`0`) are added to the state and the output.
 
-**Updated state**
+**State**
 
 |step|m_id|s1.Ts|s1.Event|s2.Ts|s2.Event|s3.Ts|s3.Event|
 |---|---|---|---|---|---|---|---|
@@ -436,13 +433,17 @@ In the `s3` evaluation, this record passes **Check 1** because `s2` is nonempty 
 |---|---|
 |6m|"C"|
 
-In the `s3` evaluation, this record doesn't pass **Check 1** because the state of `s2` is empty, and it doesn't pass **Check 2** because `s3` doesn't meet the `s3` condition of `Event == "Stop"`.
+* `s3`: **Check 1** isn't passed because the state of `s2` is empty, and **Check 2** isn't passed because `s3` doesn't meet the `s3` condition of `Event == "Stop"`.
+* `s2`: **Check 1** isn't passed because the state of `s1` is empty, and **Check 2** isn't passed because `s2` lacks an active sequence.
+* `s1`: **Check 1** isn't passed because there's no previous step, and **Check 2** isn't passed because it doesn't meet the condition of `Event == "Start"`. **Record 6** is discarded without affecting the state or output.
 
-In the `s2` evaluation, this record doesn't pass **Check 1** because the state of `s1` is empty, and it doesn't pass **Check 2** because `s2` lacks an active sequence.
+**State**
 
-In the `s1` evaluation, this record doesn't pass **Check 1** because there's no previous step, and it doesn't pass **Check 2** because it doesn't meet the condition of `Event == "Start"`.
-
-**Record 6** is discarded without affecting the state or output.
+|step|m_id|s1.Ts|s1.Event|s2.Ts|s2.Event|s3.Ts|s3.Event|
+|---|---|---|---|---|---|---|---|
+|s1||||X|X|X|X|
+|s2||||||X|X|
+|s3|0|00:01:00|"Start"|00:03:00|"D"|00:04:00|"Stop"|
 
 #### Record 7
 
@@ -450,15 +451,11 @@ In the `s1` evaluation, this record doesn't pass **Check 1** because there's no 
 |---|---|
 |8m|"Start"|
 
-In the `s3` evaluation, this record doesn't pass **Check 1** because the state of `s2` is empty, and it doesn't pass **Check 2** because `s3` lacks an active sequence.
+* `s3`: **Check 1** isn't passed because the state of `s2` is empty, and **Check 2** isn't passed because it doesn't meet the condition of `Event == "Stop"`.
+* `s2`: **Check 1** isn't passed because the state of `s1` is empty, and **Check 2** isn't passed because `s2` lacks an active sequence.
+* `s1`: **Check 1** isn't passed because there's no previous step. it passes **Check 2** because it meets the condition of `Event == "Start"`. This match initiates a new sequence in `s1` with a new `m_id`. **Record 7** and its `m_id` (`1`) are added to the state and the output. 
 
-In the `s2` evaluation, this record doesn't pass **Check 1** because the state of `s1` is empty, and it doesn't pass **Check 2** because `s2` lacks an active sequence.
-
-In the `s1` evaluation, this record doesn't pass **Check 1** because there's no previous step. However, it passes **Check 2** because it meets the condition of `Event == "Start"`. This match initiates a new sequence in `s1` with a new `m_id`.
-
-**Record 7** and its `m_id` (`1`) are added to the state and the output. 
-
-**Updated state**
+**State**
 
 |step|m_id|s1.Ts|s1.Event|s2.Ts|s2.Event|s3.Ts|s3.Event|
 |---|---|---|---|---|---|---|---|
@@ -475,13 +472,11 @@ In the `s1` evaluation, this record doesn't pass **Check 1** because there's no 
 |---|---|
 |11m|"E"|
 
-In the `s3` evaluation, this record doesn't pass **Check 1** due to the empty state of `s2`, and it doesn't pass **Check 2** because it doesn't meet the `s3` condition of `Event == "Stop"`.
+* `s3`: **Check 1** isn't passed because the state of `s2` is empty, and **Check 2** isn't passed because it doesn't meet the `s3` condition of `Event == "Stop"`.
+* `s2`: **Check 1** is passed because the state of `s1` is nonempty and the record meets the condition of `Ts - s1.Ts < 5m`. This match causes the state of `s1` to be cleared and the sequence in `s1` to be promoted to `s2`. **Record 8** and its `m_id` (`1`) are added to the state and the output.
+* `s1`: **Check 1** is irrelevant because there's no previous step, and **Check 2** isn't passed because the record doesn't meet the condition of `Event == "Start"`.
 
-In the `s2` evaluation, this record passes **Check 1** because the state of `s1` is nonempty and the record meets the condition of `Ts - s1.Ts < 5m`. This match causes the state of `s1` to be cleared and the sequence in `s1` to be promoted to `s2`.
-
-**Record 8** and its `m_id` (`1`) are added to the state and the output.
-
-**Updated state**
+**State**
 
 |step|m_id|s1.Ts|s1.Event|s2.Ts|s2.Event|s3.Ts|s3.Event|
 |---|---|---|---|---|---|---|---|
@@ -495,11 +490,11 @@ In the `s2` evaluation, this record passes **Check 1** because the state of `s1`
 |---|---|
 |12m|"Stop"|
 
-In the `s3` evaluation, this record passes **Check 1** because `s2` is nonempty and it meets the `s3` condition of `Event == "Stop"`. This match causes the state of `s2` to be cleared and the sequence in `s2` to be promoted to `s3`.
+* `s3`: **Check 1** is passed because `s2` is nonempty and it meets the `s3` condition of `Event == "Stop"`. This match causes the state of `s2` to be cleared and the sequence in `s2` to be promoted to `s3`. **Record 9** and its `m_id` (`1`) are added to the state and the output.
+* `s2`: **Check 1** isn't passed because the state of `s1` is empty, and **Check 2** isn't passed because `s2` lacks an active sequence.
+* `s1`: **Check 1** isn't passed because there's no previous step. it passes **Check 2** because it meets the condition of `Event == "Start"`. This match initiates a new sequence in `s1` with a new `m_id`.
 
-**Record 9** and its `m_id` (`1`) are added to the state and the output.
-
-**Updated state**
+**State**
 
 |step|m_id|s1.Ts|s1.Event|s2.Ts|s2.Event|s3.Ts|s3.Event|
 |---|---|---|---|---|---|---|---|
