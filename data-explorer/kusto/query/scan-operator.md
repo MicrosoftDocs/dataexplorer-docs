@@ -331,7 +331,9 @@ The "X" indicates that a specific field is irrelevant for that step.
 
 ### The matching logic
 
-This section follows the [matching logic](#matching-logic) through each input row, explaining the transformation of the state and output at each step. 
+This section follows the [matching logic](#matching-logic) through each input row, explaining the transformation of the state and output at each step.
+
+Each row from the `Events` table is evaluated against the steps in reverse order, starting with `s3` and moving towards `s1`.
 
 #### Row 1
 
@@ -339,8 +341,7 @@ This section follows the [matching logic](#matching-logic) through each input ro
 |---|---|
 |0m|"A"|
 
-The first row
-The first row of the `Events` table doesn't pass **Check 1** because the state of the previous row (`s2`) is empty, and it doesn't pass **Check 2** because the current row, `s3`, doesn't have an active sequence. This row also can't match `s2` because it doesn't have an active sequence, and the state of `s1` is empty. This row doesn't meet the `s1` condition of `Event == "Start"`, so it's discarded without impacting the state or output.
+In the `s3` evaluation, **Row 1** doesn't pass **Check 1** due to the empty state of `s2`, and it doesn't pass **Check 2** as `s3` lacks an active sequence. In the `s2` evaluation, **Row 1** doesn't pass **Check 1** due to the empty state of `s1`, and it doesn't pass **Check 2** as `s2` lacks an active sequence. Lastly, in the `s1` evaluation, **Row 1** doesn't meet the condition of `Event == "Start"`, so it's discarded without affecting the state or output.
 
 #### Row 2
 
@@ -348,7 +349,9 @@ The first row of the `Events` table doesn't pass **Check 1** because the state o
 |---|---|
 |1m|"Start"|
 
-Again, this row can't match `s3` because it doesn't have an active sequence, and the state of `s2` is empty. This row also can't match `s2` because it doesn't have an active sequence, and the state of `s1` is empty. However, this row meets the `s1` condition of `Event == "Start"`. This match initiates a new sequence, and the `m_id` is assigned. The row and its `m_id` are added to the output.
+In the `s3` evaluation, **Row 2** doesn't pass **Check 1** due to the empty state of `s2`, and it doesn't pass **Check 2** as `s3` lacks an active sequence. In the `s2` evaluation, **Row 2** doesn't pass **Check 1** due to the empty state of `s1`, and it doesn't pass **Check 2** as `s2` lacks an active sequence. However, in the `s1` evaluation, a match occurs because **Row 1** meets the condition of `Event == "Start"`.
+
+This match initiates a new sequence, and the `m_id` is assigned. **Row 2** and its `m_id` are added to the output.
 
 **Updated state**
 
