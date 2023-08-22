@@ -22,7 +22,7 @@ Pretty names allow middle-tier applications to map automatically created entity 
 
 ## Identifier naming rules
 
-An identifier is the name you assign to [entities](schema-entities.md), [query parameters](../queryparametersstatement.md), or a variable that is set through a [let statement](../letstatement.md). Valid identifiers must follow these rules:
+An identifier is the name you assign to [entities](./index.md), [query parameters](../queryparametersstatement.md), or a variable that is set through a [let statement](../letstatement.md). Valid identifiers must follow these rules:
 
 * Identifiers must be between 1 and 1024 characters long.
 * Identifiers may contain letters, digits, underscores (`_`), spaces, dots (`.`), and dashes (`-`).
