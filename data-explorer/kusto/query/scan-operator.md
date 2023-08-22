@@ -56,7 +56,7 @@ The state starts empty and updates whenever a scanned input row matches a step. 
 
 ### Matching logic
 
-Each input record is evaluated against the steps in reverse order, from the last step to the first. When a record *r* is evaluated against some step *s_k*, the following logic is applied:
+Each input record is evaluated against all of the steps in reverse order, from the last step to the first. When a record *r* is evaluated against some step *s_k*, the following logic is applied:
 
 * **Check 1:** If the state of the previous step (*s_k-1*) is nonempty, and *r* meets the *Condition* of *s_k*, then a match occurs. This leads to the following actions:
     1. The state of *s_k* is cleared.
@@ -70,7 +70,7 @@ Each input record is evaluated against the steps in reverse order, from the last
     1. If *s_k* is defined as `output=all`, the extended *r* is added to the output.
     1. If *s_k* is the first step, a new match begins and the match ID increases by `1`. This only affects the output when `with_match_id` is used.
 
-If the record doesn't pass either check for *s_k*, the record proceeds to be evaluated against *s_k-1*.
+Once the checks for *s_k* are complete, the record moves on to be evaluated against *s_k-1*.
 
 For a detailed example of this logic, see the [scan logic walkthrough](#scan-logic-walkthrough).
 
@@ -339,7 +339,8 @@ This section follows the [matching logic](#matching-logic) through each input ro
 |---|---|
 |0m|"A"|
 
-The first row of the `Events` table can't match `s3` because it doesn't have an active sequence, and the state of `s2` is empty. This row also can't match `s2` because it doesn't have an active sequence, and the state of `s1` is empty. This row doesn't meet the `s1` condition of `Event == "Start"`, so it's discarded without impacting the state or output.
+The first row
+The first row of the `Events` table doesn't pass **Check 1** because the state of the previous row (`s2`) is empty, and it doesn't pass **Check 2** because the current row, `s3`, doesn't have an active sequence. This row also can't match `s2` because it doesn't have an active sequence, and the state of `s1` is empty. This row doesn't meet the `s1` condition of `Event == "Start"`, so it's discarded without impacting the state or output.
 
 #### Row 2
 
