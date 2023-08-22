@@ -13,7 +13,7 @@ The Azure Data Explorer engine provides unparalleled performance for ingesting a
 
 ## Data storage
 
-All ingested data is partitioned into *extents*, or *data shards*, which are horizontal slices of the table. Each shard is encoded and indexed independently of other extents. This functionality allows the engine to achieve linear scale in ingestion throughput. 
+All ingested data is partitioned into *extents*, or *extents*, which are horizontal slices of the table. Each shard is encoded and indexed independently of other extents. This functionality allows the engine to achieve linear scale in ingestion throughput. 
 
 Extents are immutable, and their related storage artifacts are maintained until the extent is deleted. This behavior provides the following benefits:
 
@@ -28,11 +28,11 @@ For more information, see [Extents overview](kusto/management/extents-overview.m
 
 ## Indexing
 
-By default, Azure Data Explorer indexes all [string](kusto/query/scalar-data-types/string.md) and [dynamic](kusto/query/scalar-data-types/dynamic.md) columns. When a column shows high cardinality, meaning the unique values approach the number of records, the engine creates an inverted term index at the shard level. This approach allows multiple compute nodes to ingest data shards in parallel.
+By default, the engine indexes all [string](kusto/query/scalar-data-types/string.md) and [dynamic](kusto/query/scalar-data-types/dynamic.md) columns. When a column shows high cardinality, meaning the unique values approach the number of records, the engine creates an inverted term index at the shard level. This approach allows multiple compute nodes to ingest extents in parallel.
 
 The index maintains a low granularity, recording hit/miss details per block of about 1,000 records, rather than tracking each term individually. This optimization enables efficient skipping of infrequent terms, like correlation IDs, leading to faster query performance. However, the index is granular enough to allow for evaluation of parts of the query based on the index without scanning the data.
 
-The combination of low granularity and compact index size facilitates continuous background optimization of data shards. As small data shards are merged together, compression and indexing improve, ensuring efficient storage. This background merging activity keeps query latency low, especially for streaming data. Once data shards reach a certain size, only the indexes are merged, as they're small enough to enhance query performance without compromising efficiency.
+The combination of low granularity and compact index size facilitates continuous background optimization of extents. As small extents are merged together, compression and indexing improve, ensuring efficient storage. This background merging activity keeps query latency low, especially for streaming data. Once extents reach a certain size, only the indexes are merged, as they're small enough to enhance query performance without compromising efficiency.
 
 ## Column compression
 
@@ -59,7 +59,7 @@ In Azure Data Explorer, queries are intended to be fast and efficient. Default q
 The following list outlines various features of data query in Azure Data Explorer:
 
 * During query execution, temporary data is stored in aggregated RAM, bypassing slow disk writes. This strategy applies even to data transitioning between different nodes in the cluster, optimizing resource allocation.
-* Queries provide snapshot isolation by having relevant extents stamped on the query plan. Since extents are immutable, all it takes is for the query plan to reference the combination of data shards.
+* Queries provide snapshot isolation by having relevant extents stamped on the query plan. Since extents are immutable, all it takes is for the query plan to reference the combination of extents.
 * The query system can optimize by sending parts of a query to other clusters. This smart distribution minimizes data movement between clusters, making queries more efficient.
 * The new shard query is just-in-time compiled into highly efficient machine code, resulting in a fast and efficient fused query evaluation logic. This compilation is guided by data statistics and specific column encoding, resulting in speedy and efficient query processing.
 
