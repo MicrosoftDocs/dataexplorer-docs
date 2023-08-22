@@ -64,14 +64,13 @@ In your preferred IDE or text editor, create a project or file named *basic quer
     ### [Node.js](#tab/nodejs)
 
     ```nodejs
-    const kustoLibraryClient = require("azure-kusto-data").Client;
-    const kustoConnectionStringBuilder = require("azure-kusto-data").KustoConnectionStringBuilder;
+    const {Client, KustoConnectionStringBuilder} = require("azure-kusto-data");
 
     async function main() {
       const clusterUri = "https://help.kusto.windows.net";
-      const kcsb = kustoConnectionStringBuilder.withUserPrompt(clusterUri);
+      const kcsb = KustoConnectionStringBuilder.withUserPrompt(clusterUri);
 
-      const kusto_client = new kustoLibraryClient(kcsb);
+      const kusto_client = new Client(kcsb);
     }
 
     main();
@@ -88,7 +87,7 @@ In your preferred IDE or text editor, create a project or file named *basic quer
     import com.microsoft.azure.kusto.data.KustoResultSetTable;
     import com.microsoft.azure.kusto.data.auth.ConnectionStringBuilder;
 
-    public class basicQuery {
+    public class BasicQuery {
       public static void main(String[] args) throws Exception {
         try {
           String clusterUri = "https://help.kusto.windows.net/";
@@ -290,13 +289,12 @@ if __name__ == "__main__":
 ### [Node.js](#tab/nodejs)
 
 ```nodejs
-const kustoLibraryClient = require("azure-kusto-data").Client;
-const kustoConnectionStringBuilder = require("azure-kusto-data").KustoConnectionStringBuilder;
+const {Client, KustoConnectionStringBuilder} = require("azure-kusto-data");
 
 async function main() {
   const cluster_uri = "https://help.kusto.windows.net";
-  const kcsb = kustoConnectionStringBuilder.withUserPrompt(cluster_uri);
-  const kustoClient = new kustoLibraryClient(kcsb);
+  const kcsb = KustoConnectionStringBuilder.withUserPrompt(cluster_uri);
+  const kustoClient = new Client(kcsb);
 
   const database = "Samples";
   const query = `StormEvents
@@ -326,7 +324,7 @@ import com.microsoft.azure.kusto.data.KustoOperationResult;
 import com.microsoft.azure.kusto.data.KustoResultSetTable;
 import com.microsoft.azure.kusto.data.auth.ConnectionStringBuilder;
 
-public class basicQuery {
+public class BasicQuery {
   public static void main(String[] args) throws Exception {
     try {
       String clusterUri = "https://help.kusto.windows.net/";
@@ -416,8 +414,7 @@ int columnNoState = response.GetOrdinal("State");
 int columnNoDailyDamage = response.GetOrdinal("DailyDamage");
 Console.WriteLine("Daily tornado damages over 100,000,000$:");
 
-while (response.Read())
-{
+while (response.Read()) {
   Console.WriteLine("{0} - {1}, {2}",
     response.GetDateTime(columnNoStartTime),
     response.GetString(columnNoState),
@@ -483,8 +480,7 @@ crp.ClientRequestId = "QueryDemo" + Guid.NewGuid().ToString();
 // Set the query timeout to 1 minute
 crp.SetOption(ClientRequestProperties.OptionServerTimeout, "1m");
 
-using (var response = kustoClient.ExecuteQuery(database, query, crp))
-{
+using (var response = kustoClient.ExecuteQuery(database, query, crp)) {
 }
 ```
 
@@ -751,15 +747,13 @@ if __name__ == "__main__":
 ### [Node.js](#tab/nodejs)
 
 ```nodejs
-const kustoLibraryClient = require("azure-kusto-data").Client;
-const ClientRequestProperties = require("azure-kusto-data").ClientRequestProperties;
-const KustoConnectionStringBuilder = require("azure-kusto-data").KustoConnectionStringBuilder;
+const {Client, KustoConnectionStringBuilder, ClientRequestProperties} = require("azure-kusto-data");
 const uuid = require('uuid');
 
 async function main() {
   const clusterUri = "https://help.kusto.windows.net";
   const kcsb = KustoConnectionStringBuilder.withUserPrompt(clusterUri);
-  const kustoClient = new kustoLibraryClient(kcsb);
+  const kustoClient = new Client(kcsb);
 
   const database = "Samples";
   const query = `declare query_parameters(event_type:string, daily_damage:int);
