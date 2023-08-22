@@ -31,7 +31,7 @@ The output for the matching record is determined by the input record and assignm
 | Name | Type | Required | Description |
 |--|--|--|--|
 |*T*|string|&check;|The input tabular source.|
-| *MatchIdColumnName* | string | |  The name of a column of type `long` that is appended to the output as part of the scan execution. Indicates the 0-based index of the match for the row. |
+| *MatchIdColumnName* | string | |  The name of a column of type `long` that is appended to the output as part of the scan execution. Indicates the 0-based index of the match for the record. |
 | *ColumnDeclarations* | string | | Declares an extension to the schema of *T*. These columns are assigned values in the steps. If not assigned, the *DefaultValue* is returned. Unless otherwise specified, *DefaultValue* is `null`.|
 | *StepName* | string | &check; | Used to reference values in the state of scan for conditions and assignments. The step name must be unique.|
 | *Condition* | string | &check; | An expression that evaluates to `true` or `false` that defines which records from the input match the step. A record matches the step when the condition is `true` with the step’s state or with the previous step’s state.|
@@ -52,7 +52,7 @@ The underlying state of the `scan` operator can be thought of as a table with a 
 
 If a scan operator has *n* steps named *s_1*, *s_2*, ..., *s_n* then step *s_k* would have *k* records in its state corresponding to *s_1*, *s_2*, ..., *s_k*. The *StepName*.*ColumnName* format is used to reference a value in the state. For instance, `s_2.col1` would reference column `col1` that belongs to step *s_2* in the state of *s_k*. For a detailed example, see the [scan logic walkthrough](#scan-logic-walkthrough).
 
-The state starts empty and updates whenever a scanned input row matches a step. When the state of the current step is nonempty, the step is referred to as having an *active sequence*.
+The state starts empty and updates whenever a scanned input record matches a step. When the state of the current step is nonempty, the step is referred to as having an *active sequence*.
 
 ### Matching logic
 
@@ -103,7 +103,7 @@ range x from 1 to 5 step 1
 
 ### Cumulative sum on multiple columns with a reset condition
 
-Calculate the cumulative sum for two input columns, reset the sum value to the current row value whenever the cumulative sum reached 10 or more.
+Calculate the cumulative sum for two input columns, reset the sum value to the current record value whenever the cumulative sum reached 10 or more.
 
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA22OQQrCMBBF9znFXzZaxAhuKulVJLSTWmhTSdKagIc3FIVo/fzVG+bNWGU6QoC20wgBP+EM5+kOwZ6g4Mm0iJA4YYeQkGuUQUvNoCyhaOZxHpTvF7qGaphMJ48lMhjfkOPR+xtYwZCy+p2o4O1MkHW+EdKtXuvCicMXrSVEcodU7PEz5SVW8Sb5K3/F8SOOqRtx5BfGX1hK/bgiAQAA" target="_blank">Run the query</a>
@@ -331,27 +331,37 @@ The "X" indicates that a specific field is irrelevant for that step.
 
 ### The matching logic
 
-This section follows the [matching logic](#matching-logic) through each input row, explaining the transformation of the state and output at each step.
+This section follows the [matching logic](#matching-logic) through each input record, explaining the transformation of the state and output at each step.
 
-Each row from the `Events` table is evaluated against the steps in reverse order, starting with `s3` and moving towards `s1`.
+Each record from the `Events` table is evaluated against the steps in reverse order, starting with `s3` and moving towards `s1`. In this example, each record can only match with one step, resulting in explanations ceasing upon a match.
 
-#### Row 1
+#### Record 1
 
 |Ts|Event|
 |---|---|
 |0m|"A"|
 
-In the `s3` evaluation, **Row 1** doesn't pass **Check 1** due to the empty state of `s2`, and it doesn't pass **Check 2** as `s3` lacks an active sequence. In the `s2` evaluation, **Row 1** doesn't pass **Check 1** due to the empty state of `s1`, and it doesn't pass **Check 2** as `s2` lacks an active sequence. Lastly, in the `s1` evaluation, **Row 1** doesn't meet the condition of `Event == "Start"`, so it's discarded without affecting the state or output.
+In the `s3` evaluation, this record doesn't pass **Check 1** because the state of `s2` is empty, or **Check 2** because `s3` lacks an active sequence.
 
-#### Row 2
+In the `s2` evaluation, this record doesn't pass **Check 1** because the state of `s1` is empty, or **Check 2** because `s2` lacks an active sequence.
+
+In the `s1` evaluation, this record doesn't pass **Check 1** because there's no previous step, or **Check 2** because it doesn't meet the condition of `Event == "Start"`.
+
+**Record 1** is discarded without affecting the state or output.
+
+#### Record 2
 
 |Ts|Event|
 |---|---|
 |1m|"Start"|
 
-In the `s3` evaluation, **Row 2** doesn't pass **Check 1** due to the empty state of `s2`, and it doesn't pass **Check 2** as `s3` lacks an active sequence. In the `s2` evaluation, **Row 2** doesn't pass **Check 1** due to the empty state of `s1`, and it doesn't pass **Check 2** as `s2` lacks an active sequence. However, in the `s1` evaluation, a match occurs because **Row 1** meets the condition of `Event == "Start"`.
+In the `s3` evaluation, this record doesn't pass **Check 1** because the state of `s2` is empty, or **Check 2** because `s3` lacks an active sequence.
 
-This match initiates a new sequence, and the `m_id` is assigned. **Row 2** and its `m_id` are added to the output.
+In the `s2` evaluation, this record doesn't pass **Check 1** because the state of `s1` is empty, or **Check 2** because `s2` lacks an active sequence.
+
+In the `s1` evaluation, this record doesn't pass **Check 1** because there's no previous step. However, it passes **Check 2** because it meets the condition of `Event == "Start"`. This match initiates a new sequence, and the `m_id` is assigned.
+
+**Record 2** and its `m_id` (`0`) are added to the state and the output.
 
 **Updated state**
 
@@ -361,13 +371,17 @@ This match initiates a new sequence, and the `m_id` is assigned. **Row 2** and i
 |s2||||||X|X|
 |s3||||||||
 
-#### Row 3
+#### Record 3
 
 |Ts|Event|
 |---|---|
 |2m|"B"|
 
-This row can't match `s3` because it doesn't have an active sequence, and the state of `s2` is empty. This row meets the `s2` condition of `Ts - s1.Ts < 5m`, and the prior step of `s1` is nonempty. These conditions cause the sequence in `s1` to be promoted to `s2` and the `s1` state to be cleared. The row `00:02:00, "B", 0` is added to the output.
+In the `s3` evaluation, this record doesn't pass **Check 1** due to the empty state of `s2`, or **Check 2** because `s3` lacks an active sequence.
+
+In the `s2` evaluation, this record passes **Check 1** because the state of `s1` is nonempty and the record meets the condition of `Ts - s1.Ts < 5m`. This match causes the state of `s1` to be cleared and the sequence in `s1` to be promoted to `s2`.
+
+**Record 3** and its `m_id` (`0`) are added to the state and the output.
 
 **Updated state**
 
@@ -377,13 +391,17 @@ This row can't match `s3` because it doesn't have an active sequence, and the st
 |s2|0|00:01:00|"Start"|00:02:00|"B"|X|X|
 |s3||||||||
 
-#### Row 4 
+#### Record 4 
 
 |Ts|Event|
 |---|---|
 |3m|"D"|
 
-The state of `s2` is nonempty, which means this row could match for `s3`. However, this row doesn't meet the `s3` condition of `Event == "Stop"`. The row meets the `s2` condition again. This match overrides the existing state of `s2`, and replaces `s2.Ts` and `s2.Event` in the state of the sequence with the values from this row. The row `00:03:00, "D", 0` is added to the output.
+In the `s3` evaluation, this record doesn't pass **Check 1** because the record doesn't meet the condition of `Event == "Stop"`, or **Check 2** because `s3` lacks an active sequence.
+
+In the `s2` evaluation, this record doesn't pass **Check 1** because the state of `s1` is empty. However, it passes **Check 2** because it meets the condition of `Ts - s1.Ts < 5m`.
+
+**Record 4** and its `m_id` (`0`) are added to the state and the output. The values from this record override the previous state values for `s2.Ts` and `s2.Event`.
 
 **Updated state**
 
@@ -393,13 +411,15 @@ The state of `s2` is nonempty, which means this row could match for `s3`. Howeve
 |s2|0|00:01:00|"Start"|00:03:00|"D"|X|X|
 |s3||||||||
 
-#### Row 5
+#### Record 5
 
 |Ts|Event|
 |---|---|
 |4m|"Stop"|
 
-This row meets the `s3` condition of `Event == "Stop"`. This match promotes the existing sequence from `s2` to `s3`. The row `00:04:00, "Stop", 0` is added to the output.
+In the `s3` evaluation, this record passes **Check 1** because `s2` is nonempty and it meets the `s3` condition of `Event == "Stop"`. This match causes the state of `s2` to be cleared and the sequence in `s2` to be promoted to `s3`.
+
+**Record 5** and its `m_id` (`0`) are added to the state and the output.
 
 **Updated state**
 
@@ -409,21 +429,33 @@ This row meets the `s3` condition of `Event == "Stop"`. This match promotes the 
 |s2||||||X|X|
 |s3|0|00:01:00|"Start"|00:03:00|"D"|00:04:00|"Stop"|
 
-#### Row 6
+#### Record 6
 
 |Ts|Event|
 |---|---|
 |6m|"C"|
 
-Since there's no active sequence in `s1` or `s2`, and the row doesn't meet the conditions of either `s1` or `s3`, this row doesn't match any step and is discarded.
+In the `s3` evaluation, this record doesn't pass **Check 1** because the state of `s2` is empty, or **Check 2** because `s3` doesn't meet the `s3` condition of `Event == "Stop"`.
 
-#### Row 7
+In the `s2` evaluation, this record doesn't pass **Check 1** because the state of `s1` is empty, or **Check 2** because `s2` lacks an active sequence.
+
+In the `s1` evaluation, this record doesn't pass **Check 1** because there's no previous step, or **Check 2** because it doesn't meet the condition of `Event == "Start"`.
+
+**Record 6** is discarded without affecting the state or output.
+
+#### Record 7
 
 |Ts|Event|
 |---|---|
 |8m|"Start"|
 
-This row starts a new sequence in `s1` with a new match ID. There are now two active sequences in the state. The row `00:08:00, "Start", 1` is added to the output.
+In the `s3` evaluation, this record doesn't pass **Check 1** because the state of `s2` is empty, or **Check 2** because `s3` lacks an active sequence.
+
+In the `s2` evaluation, this record doesn't pass **Check 1** because the state of `s1` is empty, or **Check 2** because `s2` lacks an active sequence.
+
+In the `s1` evaluation, this record doesn't pass **Check 1** because there's no previous step. However, it passes **Check 2** because it meets the condition of `Event == "Start"`. This match initiates a new sequence in `s1` with a new `m_id`.
+
+**Record 7** and its `m_id` (`1`) are added to the state and the output. 
 
 **Updated state**
 
@@ -433,14 +465,20 @@ This row starts a new sequence in `s1` with a new match ID. There are now two ac
 |s2||||||X|X|
 |s3|0|00:01:00|"Start"|00:03:00|"D"|00:04:00|"Stop"|
 
-#### Row 8
+> [!NOTE]
+> There are now two active sequences in the state.
 
+#### Record 8
 
 |Ts|Event|
 |---|---|
 |11m|"E"|
 
-This row promotes the sequence from `s1` to `s2` and clears the state of `s1`. The row `00:11:00, "E", 1` is added to the output.
+In the `s3` evaluation, this record doesn't pass **Check 1** due to the empty state of `s2`, or **Check 2** because it doesn't meet the `s3` condition of `Event == "Stop"`.
+
+In the `s2` evaluation, this record passes **Check 1** because the state of `s1` is nonempty and the record meets the condition of `Ts - s1.Ts < 5m`. This match causes the state of `s1` to be cleared and the sequence in `s1` to be promoted to `s2`.
+
+**Record 8** and its `m_id` (`1`) are added to the state and the output.
 
 **Updated state**
 
@@ -450,13 +488,15 @@ This row promotes the sequence from `s1` to `s2` and clears the state of `s1`. T
 |s2|1|00:08:00|"Start"|00:11:00|"E"|X|X|
 |s3|0|00:01:00|"Start"|00:03:00|"D"|00:04:00|"Stop"|
 
-#### Row 9
+#### Record 9
 
 |Ts|Event|
 |---|---|
 |12m|"Stop"|
 
-The last row promotes `s2` to `s3` and clears `s2`, as promoting a sequence gets precedence over continuing an existing sequence. Notice that `s3` is overridden with the values that were promoted from `s2`. The row `00:12:00, "Stop, 1"` is added to the output.
+In the `s3` evaluation, this record passes **Check 1** because `s2` is nonempty and it meets the `s3` condition of `Event == "Stop"`. This match causes the state of `s2` to be cleared and the sequence in `s2` to be promoted to `s3`.
+
+**Record 9** and its `m_id` (`1`) are added to the state and the output.
 
 **Updated state**
 
