@@ -333,7 +333,7 @@ The "X" indicates that a specific field is irrelevant for that step.
 
 This section follows the [matching logic](#matching-logic) through each input record, explaining the transformation of the state and output at each step.
 
-Each record from the `Events` table is evaluated against the steps in reverse order, starting with `s3` and moving towards `s1`. In this example, each record can only match with one step, resulting in explanations ceasing upon a match.
+Each record from the `Events` table is evaluated against the steps in reverse order, starting with `s3` and moving towards `s1`.
 
 #### Record 1
 
