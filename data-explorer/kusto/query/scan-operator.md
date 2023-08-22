@@ -339,11 +339,11 @@ This section follows the [matching logic](#matching-logic) through each input re
 |---|---|
 |0m|"A"|
 
-In the `s3` evaluation, this record doesn't pass **Check 1** because the state of `s2` is empty, or **Check 2** because `s3` lacks an active sequence.
+In the `s3` evaluation, this record doesn't pass **Check 1** because the state of `s2` is empty, and it doesn't pass **Check 2** because `s3` lacks an active sequence.
 
-In the `s2` evaluation, this record doesn't pass **Check 1** because the state of `s1` is empty, or **Check 2** because `s2` lacks an active sequence.
+In the `s2` evaluation, this record doesn't pass **Check 1** because the state of `s1` is empty, and it doesn't pass **Check 2** because `s2` lacks an active sequence.
 
-In the `s1` evaluation, this record doesn't pass **Check 1** because there's no previous step, or **Check 2** because it doesn't meet the condition of `Event == "Start"`.
+In the `s1` evaluation, this record doesn't pass **Check 1** because there's no previous step, and it doesn't pass **Check 2** because it doesn't meet the condition of `Event == "Start"`.
 
 **Record 1** is discarded without affecting the state or output.
 
@@ -353,9 +353,9 @@ In the `s1` evaluation, this record doesn't pass **Check 1** because there's no 
 |---|---|
 |1m|"Start"|
 
-In the `s3` evaluation, this record doesn't pass **Check 1** because the state of `s2` is empty, or **Check 2** because `s3` lacks an active sequence.
+In the `s3` evaluation, this record doesn't pass **Check 1** because the state of `s2` is empty, and it doesn't pass **Check 2** because `s3` lacks an active sequence.
 
-In the `s2` evaluation, this record doesn't pass **Check 1** because the state of `s1` is empty, or **Check 2** because `s2` lacks an active sequence.
+In the `s2` evaluation, this record doesn't pass **Check 1** because the state of `s1` is empty, and it doesn't pass **Check 2** because `s2` lacks an active sequence.
 
 In the `s1` evaluation, this record doesn't pass **Check 1** because there's no previous step. However, it passes **Check 2** because it meets the condition of `Event == "Start"`. This match initiates a new sequence, and the `m_id` is assigned.
 
@@ -375,7 +375,7 @@ In the `s1` evaluation, this record doesn't pass **Check 1** because there's no 
 |---|---|
 |2m|"B"|
 
-In the `s3` evaluation, this record doesn't pass **Check 1** due to the empty state of `s2`, or **Check 2** because `s3` lacks an active sequence.
+In the `s3` evaluation, this record doesn't pass **Check 1** due to the empty state of `s2`, and it doesn't pass **Check 2** because `s3` lacks an active sequence.
 
 In the `s2` evaluation, this record passes **Check 1** because the state of `s1` is nonempty and the record meets the condition of `Ts - s1.Ts < 5m`. This match causes the state of `s1` to be cleared and the sequence in `s1` to be promoted to `s2`.
 
@@ -395,7 +395,7 @@ In the `s2` evaluation, this record passes **Check 1** because the state of `s1`
 |---|---|
 |3m|"D"|
 
-In the `s3` evaluation, this record doesn't pass **Check 1** because the record doesn't meet the condition of `Event == "Stop"`, or **Check 2** because `s3` lacks an active sequence.
+In the `s3` evaluation, this record doesn't pass **Check 1** because the record doesn't meet the condition of `Event == "Stop"`, and it doesn't pass **Check 2** because `s3` lacks an active sequence.
 
 In the `s2` evaluation, this record doesn't pass **Check 1** because the state of `s1` is empty. However, it passes **Check 2** because it meets the condition of `Ts - s1.Ts < 5m`.
 
@@ -433,11 +433,11 @@ In the `s3` evaluation, this record passes **Check 1** because `s2` is nonempty 
 |---|---|
 |6m|"C"|
 
-In the `s3` evaluation, this record doesn't pass **Check 1** because the state of `s2` is empty, or **Check 2** because `s3` doesn't meet the `s3` condition of `Event == "Stop"`.
+In the `s3` evaluation, this record doesn't pass **Check 1** because the state of `s2` is empty, and it doesn't pass **Check 2** because `s3` doesn't meet the `s3` condition of `Event == "Stop"`.
 
-In the `s2` evaluation, this record doesn't pass **Check 1** because the state of `s1` is empty, or **Check 2** because `s2` lacks an active sequence.
+In the `s2` evaluation, this record doesn't pass **Check 1** because the state of `s1` is empty, and it doesn't pass **Check 2** because `s2` lacks an active sequence.
 
-In the `s1` evaluation, this record doesn't pass **Check 1** because there's no previous step, or **Check 2** because it doesn't meet the condition of `Event == "Start"`.
+In the `s1` evaluation, this record doesn't pass **Check 1** because there's no previous step, and it doesn't pass **Check 2** because it doesn't meet the condition of `Event == "Start"`.
 
 **Record 6** is discarded without affecting the state or output.
 
@@ -447,9 +447,9 @@ In the `s1` evaluation, this record doesn't pass **Check 1** because there's no 
 |---|---|
 |8m|"Start"|
 
-In the `s3` evaluation, this record doesn't pass **Check 1** because the state of `s2` is empty, or **Check 2** because `s3` lacks an active sequence.
+In the `s3` evaluation, this record doesn't pass **Check 1** because the state of `s2` is empty, and it doesn't pass **Check 2** because `s3` lacks an active sequence.
 
-In the `s2` evaluation, this record doesn't pass **Check 1** because the state of `s1` is empty, or **Check 2** because `s2` lacks an active sequence.
+In the `s2` evaluation, this record doesn't pass **Check 1** because the state of `s1` is empty, and it doesn't pass **Check 2** because `s2` lacks an active sequence.
 
 In the `s1` evaluation, this record doesn't pass **Check 1** because there's no previous step. However, it passes **Check 2** because it meets the condition of `Event == "Start"`. This match initiates a new sequence in `s1` with a new `m_id`.
 
@@ -472,7 +472,7 @@ In the `s1` evaluation, this record doesn't pass **Check 1** because there's no 
 |---|---|
 |11m|"E"|
 
-In the `s3` evaluation, this record doesn't pass **Check 1** due to the empty state of `s2`, or **Check 2** because it doesn't meet the `s3` condition of `Event == "Stop"`.
+In the `s3` evaluation, this record doesn't pass **Check 1** due to the empty state of `s2`, and it doesn't pass **Check 2** because it doesn't meet the `s3` condition of `Event == "Stop"`.
 
 In the `s2` evaluation, this record passes **Check 1** because the state of `s1` is nonempty and the record meets the condition of `Ts - s1.Ts < 5m`. This match causes the state of `s1` to be cleared and the sequence in `s1` to be promoted to `s2`.
 
