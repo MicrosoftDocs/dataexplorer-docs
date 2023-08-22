@@ -56,7 +56,7 @@ The state starts empty and updates whenever a scanned input record matches a ste
 
 ### Matching logic
 
-Each input record is evaluated against all of the steps in reverse order, from the last step to the first. When a record *r* is evaluated against some step *s_k*, the following logic is applied:
+Each input record is evaluated against the steps in reverse order, from the last step to the first. When a record *r* is evaluated against some step *s_k*, the following logic is applied:
 
 * **Check 1:** If the state of the previous step (*s_k-1*) is nonempty, and *r* meets the *Condition* of *s_k*, then a match occurs. This leads to the following actions:
     1. The state of *s_k* is cleared.
@@ -331,7 +331,10 @@ The "X" indicates that a specific field is irrelevant for that step.
 
 ### The matching logic
 
-This section follows the [matching logic](#matching-logic) through each input record, explaining the transformation of the state and output at each step. Each record from the `Events` table is evaluated against the steps in reverse order, from `s3` to `s1`.
+This section follows the [matching logic](#matching-logic) through each record of the `Events` table, explaining the transformation of the state and output at each step.
+
+> [!NOTE]
+> Each input record is evaluated against the steps in reverse order, from the last step (`s3`) to the first step (`s1`). 
 
 #### Record 1
 
