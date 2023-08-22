@@ -9,7 +9,7 @@ ms.date: 08/21/2023
 
 Kusto entities are referenced in a query by name. Valid entity names include *databases*, *tables*, *columns*, and stored functions. *Clusters* can't be referenced by their names.
 
-An entity's name is unique to the entity type in the context of its container. For example, two tables in the same database can't have the same name, but a database and a table can have the same name because they are different entity types. Similarly, a table and a stored function may have the same name.
+An entity's name is unique to the entity type in the context of its container. For example, two tables in the same database can't have the same name, but a database and a table can have the same name because they're different entity types. Similarly, a table and a stored function may have the same name.
 
 > [!NOTE]
 > Entity names that are also reflected as an [Azure resource](/azure/templates/microsoft.kusto/allversions) also follow the [ARM reserve words rules](/azure/azure-resource-manager/troubleshooting/error-reserved-resource-name).
@@ -22,7 +22,7 @@ Pretty names allow middle-tier applications to map automatically created entity 
 
 ## Identifier naming rules
 
-An identifier is the name you assign to [entities](schema-entities.md), [query parameters](../queryparametersstatement.md), or a variable which is set through a [let statement](../letstatement.md). Valid identifiers must follow these rules:
+An identifier is the name you assign to [entities](schema-entities.md), [query parameters](../queryparametersstatement.md), or a variable that is set through a [let statement](../letstatement.md). Valid identifiers must follow these rules:
 
 * Identifiers must be between 1 and 1024 characters long.
 * Identifiers may contain letters, digits, underscores (`_`), spaces, dots (`.`), and dashes (`-`).
