@@ -13,16 +13,18 @@ The Azure Data Explorer engine provides unparalleled performance for ingesting a
 
 ## Data storage
 
-All ingested data is partitioned into [extents](kusto/management/extents-overview.md), or data shards, which are horizontal slices of the table. Each shard is encoded and indexed independently of other shards. This functionality allows the engine to achieve linear scale in ingestion throughput.
+All ingested data is partitioned into *extents*, or *data shards*, which are horizontal slices of the table. Each shard is encoded and indexed independently of other extents. This functionality allows the engine to achieve linear scale in ingestion throughput. 
 
-Extents are immutable, and all of the related storage artifacts are maintained until the extent is deleted. This behavior has the following benefits:
+Extents are immutable, and their related storage artifacts are maintained until the extent is deleted. This behavior provides the following benefits:
 
-* Multiple compute nodes can independently cache extents without complex coordination
-* Different compute clusters can reference the same extent
-* Enhanced robustness due to the simplicity of storage artifact modifications
-* Ease of revisiting previous snapshots so long as extent artifacts remain intact
+* Multiple compute nodes can cache an extent without complex change management coordination
+* Increased robustness due to the simplicity of storage artifact modifications
+* Easy reversion to previous snapshots, provided that extent components remain intact
 
-Azure Data Explorer also retains essential metadata, such as the schema of each table, security policies, and policy objects for data ingestion, query, and background activities. For a list of such policies, see [Policies overview](kusto/management/policies.md).
+For more information, see [Extents overview](kusto/management/extents-overview.md).
+
+> [!NOTE]
+> Azure Data Explorer also retains essential metadata, such as table schemas and policy objects for data ingestion, query, and background activities. For a list of such policies, see [Policies overview](kusto/management/policies.md).
 
 ## Indexing
 
