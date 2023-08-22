@@ -1,9 +1,9 @@
 ---
 title: Engine overview - Azure Data Explorer 
-description: 'Learn more about Azure Data Explorer (Kusto) Engine.'
+description: 'Learn more about the Azure Data Explorer (Kusto) engine.'
 ms.reviewer: avnera
 ms.topic: conceptual
-ms.date: 08/17/2023
+ms.date: 08/22/2023
 ---
 # Azure Data Explorer engine overview
 
