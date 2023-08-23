@@ -48,16 +48,15 @@ The cache system works entirely with compressed data, which remains compressed e
 
 ## Distributed data query
 
-Azure Data Explorer employs distributed data query technology tailored for fast ad-hoc analytics on large unstructured data sets. This technology is accompanied by the user-friendly [Kusto Query Language (KQL)](kusto/query/index.md), designed specifically for Azure Data Explorer.
+Azure Data Explorer uses distributed data query technology for fast ad-hoc analytics on large unstructured data sets, accompanied by the user-friendly [Kusto Query Language (KQL)](kusto/query/index.md).
 
-In Azure Data Explorer, queries are intended to be fast and efficient. Default query timeouts are only about four minutes in order to prioritize prompt completion. However, users have the flexibility to request extended timeouts.
+The engine optimizes query performance through the following methods:
 
-The following list outlines various features of data query in Azure Data Explorer:
-
-* During query execution, temporary data is stored in aggregated RAM, bypassing slow disk writes. This strategy applies even to data transitioning between different nodes in the cluster, optimizing resource allocation.
-* Queries provide snapshot isolation by having relevant extents stamped on the query plan. Since extents are immutable, all it takes is for the query plan to reference the combination of extents.
-* The query system can optimize by sending parts of a query to other clusters. This smart distribution minimizes data movement between clusters, making queries more efficient.
-* The new shard query is just-in-time compiled into highly efficient machine code, resulting in a fast and efficient fused query evaluation logic. This compilation is guided by data statistics and specific column encoding, resulting in speedy and efficient query processing.
+* Storing temporary data produced by the query in aggregated RAM, avoiding disk writes.
+* Providing snapshot isolation by referencing relevant extents on the query plan.
+* Just-in-time compiling queries into highly efficient machine code, guided by data statistics gathered from all the extents and tailored to the specifics of the column encoding.
+* Prioritizing fast and efficient queries with short default timeouts. For more information, see [Set timeout limits](set-timeout-limits.md).
+* Rearranging the query plan to minimize data exchange between clusters. For more information, see [Cross-cluster and cross-database queries](kusto/query/cross-cluster-or-database-queries.md).
 
 ## See also
 
