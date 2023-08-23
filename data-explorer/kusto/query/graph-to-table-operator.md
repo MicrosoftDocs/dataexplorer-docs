@@ -11,10 +11,6 @@ ms.date: 07/19/2023
 
 The `graph-to-table` operator exports nodes or edges from a graph to tables.
 
-> [!WARNING]
-> The `graph-to-table` operator is currently offered in preview mode. 
-> The syntax and semantics of the operator might change prior to public availability.
-
 ## Syntax
 #### Nodes:
 G   
