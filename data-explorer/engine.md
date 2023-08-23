@@ -28,17 +28,13 @@ For more information, see [Extents overview](kusto/management/extents-overview.m
 
 ## Indexing
 
-By default, the engine indexes all [string](kusto/query/scalar-data-types/string.md) and [dynamic](kusto/query/scalar-data-types/dynamic.md) columns. When a column shows high cardinality, meaning the unique values approach the number of records, the engine creates an inverted term index at the shard level. This approach allows multiple compute nodes to ingest extents in parallel.
-
-The index maintains a low granularity, recording hit/miss details per block of about 1,000 records, rather than tracking each term individually. This optimization enables efficient skipping of infrequent terms, like correlation IDs, leading to faster query performance. However, the index is granular enough to allow for evaluation of parts of the query based on the index without scanning the data.
-
-The combination of low granularity and compact index size facilitates continuous background optimization of extents. As small extents are merged together, compression and indexing improve, ensuring efficient storage. This background merging activity keeps query latency low, especially for streaming data. Once extents reach a certain size, only the indexes are merged, as they're small enough to enhance query performance without compromising efficiency.
+The Azure Data Explorer engine is designed to index free-text ([string](kusto/query/scalar-data-types/string.md)) and JSON-like ([dynamic](kusto/query/scalar-data-types/dynamic.md)) columns at line speed. The indexes maintain a level of granularity that enables evaluation of parts of the query based on the index without scanning the data. Moreover, continuous background optimization of extents through merging improves compression and indexing, ensuring efficient storage and low query latency. Once extents reach a certain size, only the indexes are merged to enhance query performance without compromising efficiency.
 
 ## Column compression
 
-Data stored in columns undergoes compression using standard compression algorithms. By default, the engine uses [LZ4](https://en.wikipedia.org/wiki/LZ4_(compression_algorithm)) to compress data, as this algorithm has an excellent performance and reasonable compression ratio. However, other compression algorithms like [LZMA](https://en.wikipedia.org/wiki/Lempel%E2%80%93Ziv%E2%80%93Markov_chain_algorithm) and [Brotli](https://en.wikipedia.org/wiki/Brotli) are also supported. The engine maintains data in a compressed state, even when it's loaded into the RAM cache.
+Data stored in columns is compressed using standard algorithms, such as [LZ4](https://en.wikipedia.org/wiki/LZ4_(compression_algorithm)) (default), [LZMA](https://en.wikipedia.org/wiki/Lempel%E2%80%93Ziv%E2%80%93Markov_chain_algorithm) and [Brotli](https://en.wikipedia.org/wiki/Brotli). The engine maintains data in a compressed state, even when it’s loaded into the RAM cache, reducing the amount of memory required to store and process data. This can result in faster query performance and more efficient use of system resources.
 
-Azure Data Explorer makes an interesting trade-off by avoiding vertical compression. This optimization involves sorting data before compression, leading to better compression ratios, improved data load, and faster query times. However, Azure Data Explorer opts against this approach due to its high CPU cost, prioritizing quick data availability for queries. Instead, the service allows customers to specify the preferred data sort order for scenarios with dominant query patterns.
+The engine avoids vertical compression, which involves sorting data before compression, due to its high CPU cost. Instead, Azure Data Explorer customers can specify the preferred data sort order for scenarios with dominant query patterns. This trade-off prioritizes quick data availability for queries. For more information, see [Row order policy](kusto/management/roworderpolicy.md).
 
 ## Compute data caching
 
