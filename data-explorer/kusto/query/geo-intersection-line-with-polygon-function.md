@@ -13,6 +13,8 @@ Calculates the intersection of a line or a multiline with a polygon or a multipo
 
 `geo_intersection_line_with_polygon(`*lineString*`,`*polygon*`)`
 
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+
 ## Parameters
 
 |Name|Type|Required|Description|

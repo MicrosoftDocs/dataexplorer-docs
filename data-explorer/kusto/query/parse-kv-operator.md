@@ -13,8 +13,8 @@ Extracts structured information from a string expression and represents the info
 The following extraction modes are supported:
 
 * [**Specified delimeter**](#specified-delimeter): Extraction based on specified delimiters that dictate how keys/values and pairs are separated from each other.
-* [**Non-specified delimeter**](#non-specified-delimiter): Extraction with no need to specify delimiters. Any non-alphanumeric character is considered a delimiter.
-* [**Regex**](#regex): Extraction based on [RE2](re2.md) regular expression.
+* [**Non-specified delimeter**](#nonspecified-delimiter): Extraction with no need to specify delimiters. Any nonalphanumeric character is considered a delimiter.
+* [**Regex**](#regex): Extraction based on [regular expressions](re2.md).
 
 ## Syntax
 
@@ -22,13 +22,15 @@ The following extraction modes are supported:
 
 *T* `|` `parse-kv` *Expression* `as` `(` *KeysList* `)` `with` `(` `pair_delimiter` `=` *PairDelimiter* `,` `kv_delimiter` `=` *KvDelimiter*  [`,` `quote` `=` *QuoteChars* ... [`,` `escape` `=` *EscapeChar* ...]] [`,` `greedy` `=` `true`] `)`
 
-### Non-specified delimiter
+### Nonspecified delimiter
 
 *T* `|` `parse-kv` *Expression* `as` `(` *KeysList* `)` `with` `(` [`quote` `=` *QuoteChars* ... [`,` `escape` `=` *EscapeChar* ...]] `)`
 
 ### Regex
 
 *T* `|` `parse-kv` *Expression* `as` `(` *KeysList* `)` `with` `(` `regex` `=` *RegexPattern*`)` `)`
+
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
 
 ## Parameters
 
@@ -40,7 +42,7 @@ The following extraction modes are supported:
 |*KvDelimiter*|string||A delimiter that separates keys from values.|
 |*QuoteChars*|string||A one- or two-character string literal representing opening and closing quotes that key name or the extracted value may be wrapped with. The parameter can be repeated to specify a separate set of opening/closing quotes.|
 |*EscapeChar*|string||A one-character string literal describing a character that may be used for escaping special characters in a quoted value. The parameter can be repeated if multiple escape characters are used.|
-|*RegexPattern*|string||A [RE2](re2.md) regular expression containing two capturing groups exactly. The first group represents the key name, and the second group represents the key value.|
+|*RegexPattern*|string||A [regular expression](re2.md) containing two capturing groups exactly. The first group represents the key name, and the second group represents the key value.|
 
 ## Returns
 
@@ -70,13 +72,13 @@ print str="ThreadId:458745723, Machine:Node001, Text: The service is up, Level: 
 
 **Output**
 
-|Text|	ThreadId|	Machine|
+|Text| ThreadId| Machine|
 |--|--|--|
-|The service is up| 458745723|	Node001
+|The service is up| 458745723| Node001
 
 ### Extraction with value quoting
 
-Sometimes key names or values are wrapped in quotes, which allows the values themselves to contain delimiter characters. The following examples show how a `quote` argument is used for extracting such values.
+Sometimes key names or values are wrapped in quotes, which allow the values themselves to contain delimiter characters. The following examples show how a `quote` argument is used for extracting such values.
 
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA02Py6oCMQyG9z5F6KYKM9KOuin0LdwdROpM1OjYzmnjiODD24qoJIs/9y9DJM+QOFqZYmu1mutizQK6xN9wCbs7Y7K6WcHeUX+NaEUbvMeWKXhwuxAZOwECR8wLmS4obKMaXavia62MUma1lJMHDC4mrM9jOQsuwfRPfqfkxnSOscgKMpLJTeQPVeH56BeM6UPRb5x3bQY34iNMB0dx22FPF2LMz4Gs4Dz+ZmzO/F8Do5VCzgpWDKf8Tu1u7l7QnivUg0kbAQAA" target="_blank">Run the query</a>
@@ -89,9 +91,9 @@ print str='src=10.1.1.123 dst=10.1.1.124 bytes=125 failure="connection aborted" 
 
 **Output**
 
-|event time|	src|	dst|	bytes|	failure|
+|event time| src| dst| bytes| failure|
 |--|--|--|--|--|
-|2021-01-01 10:00:54.0000000|	10.1.1.123|	10.1.1.124|	125|	connection aborted|
+|2021-01-01 10:00:54.0000000| 10.1.1.123| 10.1.1.124| 125| connection aborted|
 
 The following example uses different opening and closing quotes:
 
@@ -106,9 +108,9 @@ print str='src=10.1.1.123 dst=10.1.1.124 bytes=125 failure=(connection aborted) 
 
 **Output**
 
-|event time|	src|	dst|	bytes|	failure|
+|event time| src| dst| bytes| failure|
 |--|--|--|--|--|
-|2021-01-01 10:00:54.0000000|	10.1.1.123|	10.1.1.124|	125|	connection aborted|
+|2021-01-01 10:00:54.0000000| 10.1.1.123| 10.1.1.124| 125| connection aborted|
 
 The values themselves may contain properly escaped quote characters, as the following example shows:
 
@@ -123,9 +125,9 @@ print str='src=10.1.1.123 dst=10.1.1.124 bytes=125 failure="the remote host sent
 
 **Output**
 
-|time|	src|	dst|	bytes|	failure|
+|time| src| dst| bytes| failure|
 |--|--|--|--|--|
-|2021-01-01 10:00:54.0000000|	10.1.1.123|	10.1.1.124|	125|	the remote host sent "bye!"|
+|2021-01-01 10:00:54.0000000| 10.1.1.123| 10.1.1.124| 125| the remote host sent "bye!"|
 
 ### Extraction in greedy mode
 
@@ -144,9 +146,9 @@ print str='name=John Doe phone=555 5555 city=New York'
 
 **Output**
 
-|name|	phone|	city|
+|name| phone| city|
 |--|--|--|
-|John|	555|	New
+|John| 555| New
 
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA02NMQvCMBBGd3/FbWmhHbMI2Zwc3J0ktEdzxibhejYE/PEmKOLywfvg8RJTENiEjQp2RXOOLsApIiQXAxqtNeg2E0kxF8xwjezV4QXJ8oaj35sLdoOu6ccKFJbhY/+oyV/oIZM46JIlvs34oJUEaxzUAH7/f0x9FkacixF+Yt+aHO84yWizLa37BiIpW9a9AAAA" target="_blank">Run the query</a>
@@ -159,13 +161,13 @@ print str='name=John Doe phone=555 5555 city=New York'
 
 **Output**
 
-|name|	phone|	city|
+|name| phone| city|
 |--|--|--|
-|John Doe|	555 5555|	New York|
+|John Doe| 555 5555| New York|
 
 ### Extraction with no well-defined delimiters
 
-In the following example, any non-alphanumeric character is considered a valid delimiter:
+In the following example, any nonalphanumeric character is considered a valid delimiter:
 
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAysoyswrUSguKbJVMjIwMtQ1AKEQQwMrAwMrYxOFaE8/N/9YhZCMotTEFM8UKxNTC3MTU3MjYx0F38TkjMy8VCu//JRUAwNDHYWQ1IoSK4XgksSiktQUJa4ahYLEouJU3ewykPEKicUKGhAVQF5mXroOwtCcfBAXZh5UXhNkQFF+VmpyiW5ieWIlSBgATRrnIq0AAAA=" target="_blank">Run the query</a>
@@ -178,9 +180,9 @@ print str="2021-01-01T10:00:34 [INFO] ThreadId:458745723, Machine:Node001, Text:
 
 **Output**
 
-|Text|	ThreadId|	Machine|
+|Text| ThreadId| Machine|
 |--|--|--|
-|Started|	458745723|	Node001|
+|Started| 458745723| Node001|
 
 Values quoting and escaping is allowed in this mode as shown in the following example:
 
@@ -195,9 +197,9 @@ print str="2021-01-01T10:00:34 [INFO] ThreadId:458745723, Machine:Node001, Text:
 
 **Output**
 
-|Text|	ThreadId|	Machine|
+|Text| ThreadId| Machine|
 |--|--|--|
-|The service ' is up|	458745723|	Node001|
+|The service ' is up| 458745723| Node001|
 
 ### Extraction using regex
 
@@ -214,6 +216,6 @@ print str=@'["referer url: https://hostname.com/redirect?dest=/?h=1234", "reques
 
 **Output**
 
-|referer url|	request url|	advertiser id|
+|referer url| request url| advertiser id|
 |--|--|--|
-|`https://hostname.com/redirect?dest=/?h=1234`|	`https://hostname.com/?h=1234`|	24fefbca-cf27-4d62-a623-249c2ad30c73|
+|`https://hostname.com/redirect?dest=/?h=1234`| `https://hostname.com/?h=1234`| 24fefbca-cf27-4d62-a623-249c2ad30c73|

@@ -17,6 +17,8 @@ You must have at least [Table Admin](access-control/role-based-access-control.md
 
 `.alter-merge` `table` *TableName* `column-docstrings` `(` *Col1* `:` *DocString1* [`,` *Col2* `:` *DocString2*]... `)`
 
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+
 ## Parameters
 
 |Name|Type|Required|Description|

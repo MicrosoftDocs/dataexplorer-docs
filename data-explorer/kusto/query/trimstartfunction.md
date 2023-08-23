@@ -13,6 +13,8 @@ Removes leading match of the specified regular expression.
 
 `trim_start(`*regex*`,` *source*`)`
 
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+
 ## Parameters
 
 | Name | Type | Required | Description |
@@ -41,7 +43,7 @@ print string_to_trim = string_to_trim,trimmed_string = trim_start(substring,stri
 
 |string_to_trim|trimmed_string|
 |---|---|
-|https://bing.com|bing.com|
+|<https://bing.com>|bing.com|
 
 The next statement trims all non-word characters from the beginning of the string.
 

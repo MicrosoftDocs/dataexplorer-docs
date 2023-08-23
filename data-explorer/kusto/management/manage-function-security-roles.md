@@ -34,6 +34,8 @@ To show your roles:
 
 `.show` `function` *FunctionName* `principal` `roles`
 
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+
 ### Parameters
 
 |Name|Type|Required|Description|
@@ -61,6 +63,8 @@ This section provides syntax, parameters, and examples for adding and removing p
 ### Syntax
 
 *Action* `function` *FunctionName* `admins` `(` *Principal* [`,` *Principal*...] `)` [`skip-results`] [ *Description* ]
+
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
 
 ### Parameters
 
@@ -110,3 +114,7 @@ The following command removes all existing `admins` on the `SampleFunction` func
 ```kusto
 .set function SampleFunction admins none
 ```
+
+## See also
+
+* [current_principal_details()](../query/current-principal-detailsfunction.md)

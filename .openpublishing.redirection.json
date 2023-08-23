@@ -789,6 +789,21 @@
       "source_path": "data-explorer/kusto/api/connection-strings/sql-authentication-methods.md",
       "redirect_url": "/azure/data-explorer/kusto/api/connection-strings/sql-connection-strings",
       "redirect_document_id": true
+    },
+    {
+      "source_path": "data-explorer/kusto/api/load-test-cluster.md",
+      "redirect_url": "/azure/data-explorer/kusto/query/best-practices",
+      "redirect_document_id": true
+    },
+    {
+      "source_path": "data-explorer/kusto/concepts/cross-cluster-and-schema-changes.md",
+      "redirect_url": "/azure/data-explorer/kusto/query/cross-cluster-or-database-queries",
+      "redirect_document_id": true
+    },
+    {
+      "source_path": "data-explorer/kusto/query/re2-library.md",
+      "redirect_url": "/azure/data-explorer/kusto/query/re2",
+      "redirect_document_id": true
     }
   ]
 }

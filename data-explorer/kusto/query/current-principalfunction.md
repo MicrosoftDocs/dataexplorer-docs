@@ -17,6 +17,8 @@ Returns the current principal name that runs the query.
 
 `current_principal()`
 
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+
 ## Returns
 
 The current principal fully qualified name (FQN) as a `string`.  

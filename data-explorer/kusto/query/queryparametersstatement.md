@@ -3,7 +3,7 @@ title:  Query parameters declaration statement
 description: Learn how to use the query parameters declaration statement to parameterize queries and protect against injection attacks.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 03/14/2023
+ms.date: 08/01/2023
 zone_pivot_group_filename: data-explorer/zone-pivot-groups.json
 zone_pivot_groups: kql-flavors-all
 ---
@@ -27,6 +27,8 @@ To reference query parameters, the query text, or functions it uses, must first 
 ## Syntax
 
 `declare` `query_parameters` `(` *Name1* `:` *Type1* [`=` *DefaultValue1*] [`,`...] `);`
+
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
 
 ## Parameters
 
@@ -90,15 +92,10 @@ ask for the user's birthday.
 }
 ```
 
-### Kusto .NET SDK
+### Kusto SDKs
 
-To provide the names and values of query parameters when using the Kusto .NET
-client library, one creates a new instance of the `ClientRequestProperties`
-object and then uses the `HasParameter`, `SetParameter`, and `ClearParameter`
-methods to manipulate query parameters. This class provides a number
-of strongly-typed overloads for `SetParameter`; internally, they generate the
-appropriate literal of the query language and send it as a `string` through
-the REST API, as described above. The query text itself must still [declare the query parameters](#declaring-query-parameters).
+To learn how to provide the names and values of query parameters when using Kusto
+[client libraries](../api/index.md#client-libraries), see [Use query parameters to protect user input](../api/get-started/app-basic-query.md#use-query-parameters-to-protect-user-input).
 
 ### Kusto.Explorer
 

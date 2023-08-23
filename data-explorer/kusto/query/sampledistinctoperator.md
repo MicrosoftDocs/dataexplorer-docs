@@ -15,6 +15,8 @@ The operator tries to return an answer as quickly as possible rather than trying
 
 *T* `| sample-distinct` *NumberOfValues* `of` *ColumnName*
 
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+
 ## Parameters
 
 | Name | Type | Required | Description |

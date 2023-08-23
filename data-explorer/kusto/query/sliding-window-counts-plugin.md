@@ -13,6 +13,8 @@ Calculates counts and distinct count of values in a sliding window over a lookba
 
 *T* `| evaluate` `sliding_window_counts(`*IdColumn*`,` *TimelineColumn*`,` *Start*`,` *End*`,` *LookbackWindow*`,` *Bin* `,` [*dim1*`,` *dim2*`,` ...]`)`
 
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+
 ## Parameters
 
 | Name | Type | Required | Description |

@@ -21,6 +21,8 @@ For faster results, use the case-sensitive version of an operator. For example, 
 
 *T* `|` `where` *col* `endswith` `(`*expression*`)`
 
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+
 ## Parameters
 
 | Name | Type | Required | Description |

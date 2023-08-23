@@ -15,6 +15,8 @@ The function `series_rate_fl()` is a [user-defined function (UDF)](../query/func
 
 `T` is a table returned from [series_metric_fl()](series-metric-fl.md). Its schema includes `(timestamp:dynamic, name:string, labels:string, value:dynamic)`.
 
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+
 ## Parameters
 
 |Name|Type|Required|Description|

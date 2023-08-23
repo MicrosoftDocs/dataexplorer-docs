@@ -23,6 +23,8 @@ For more information about the underlying algorithm (T-Digest) and the estimated
 
 `tdigest_merge(`*expr*`)`
 
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+
 ## Parameters
 
 | Name | Type | Required | Description |

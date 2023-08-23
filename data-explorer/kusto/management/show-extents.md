@@ -45,6 +45,8 @@ If `hot` is specified, shows only extents that are expected to be in the hot cac
 
 `.show` `tables` `(`*TableName* [`,` ...]`)` `extents` [`(` *ExtentId* [`,` ...]`)`] [`hot`] [`where` `tags` (`has`|`contains`|`!has`|`!contains`) *TagName* [`and` `tags` (`has`|`contains`|`!has`|`!contains`) *TagName* [`,` ...]]]
 
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+
 ### Parameters
 
 |Name|Type|Required|Description|
@@ -76,6 +78,8 @@ If `hot` is specified - shows only extents that expected to be in the hot cache.
 
 `.show` `database` *DatabaseName* `extents` [`(` *ExtentId* [`,` ...]`)`] [`hot`] [`where` `tags` (`has`|`contains`|`!has`|`!contains`) *TagName* [`and` `tags` (`has`|`contains`|`!has`|`!contains`) *TagName* [`,` ...]]]
 
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+
 ### Parameters
 
 |Name|Type|Required|Description|
@@ -86,7 +90,11 @@ If `hot` is specified - shows only extents that expected to be in the hot cache.
 
 ## Cluster scope
 
+### Syntax
+
 `.show` `cluster` `extents` [`hot`]
+
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
 
 Shows information about extents (data shards) that are present in the cluster.
 If `hot` is specified - shows only extents that are expected to be in the hot cache.
@@ -140,13 +148,13 @@ Extent `E` in table `T` is tagged with tags `aaa`, `BBB`, and `ccc`.
 
 Show volume of extents being created per hour in a specific database
 
-```kusto 
+```kusto
 .show database MyDatabase extents | summarize count(ExtentId) by MaxCreatedOn bin=time(1h) | render timechart  
 ```
 
 ### Show volume of data arriving by table per hour
 
-```kusto 
+```kusto
 .show database MyDatabase extents  
 | summarize sum(OriginalSize) by TableName, MaxCreatedOn bin=time(1h)  
 | render timechart
@@ -154,19 +162,19 @@ Show volume of extents being created per hour in a specific database
 
 ### Show data size distribution by table
 
-```kusto 
+```kusto
 .show database MyDatabase extents | summarize sum(OriginalSize) by TableName
 ```
 
 ### Show all extents in the database named 'GamesDB'
 
-```kusto 
+```kusto
 .show database GamesDB extents
 ```
 
 ### Show all extents in the table named 'Games'
 
-```kusto 
+```kusto
 .show table Games extents
 ```
 
@@ -174,6 +182,6 @@ Show volume of extents being created per hour in a specific database
 
 Show all extents in the tables named 'TaggingGames1' and 'TaggingGames2', tagged with both 'tag1' and 'tag2'
 
-```kusto 
+```kusto
 .show tables (TaggingGames1,TaggingGames2) extents where tags has 'tag1' and tags has 'tag2'
 ```

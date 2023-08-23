@@ -9,16 +9,17 @@ zone_pivot_groups: kql-flavors-all
 ---
 # log_reduce_full_fl()
 
-::: zone pivot="azuredataexplorer"
+::: zone pivot="azuredataexplorer, fabric"
 
 The function `log_reduce_full_fl()` finds common patterns in semi structured textual columns, such as log lines, and clusters the lines according to the extracted patterns. The function's algorithm and most of the parameters are identical to [log_reduce_fl()](log-reduce-fl.md). However, `log_reduce_fl()` outputs a patterns summary table, whereas this function outputs a full table containing the pattern and parameters per each line.
 
-## Prerequisites
-
-* The Python plugin must be [enabled on the cluster](../query/pythonplugin.md#enable-the-plugin) for the inline Python used in the function.
+[!INCLUDE [python-zone-pivot-fabric](../../includes/python-zone-pivot-fabric.md)]
 
 ## Syntax
+
 *T* `|` `invoke` `log_reduce_full_fl(`*reduce_col* [`,` *pattern_col* [`,` *parameters_col* [`,` *use_logram* [`,` *use_drain* [`,` *custom_regexes* [`,` *custom_regexes_policy* [`,` *delimiters* [`,` *similarity_th* [`,` *tree_depth* [`,` *trigram_th* [`,` *bigram_th* ]]]]]]]]]]]`)`
+
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
 
 ## Parameters
 
@@ -178,7 +179,7 @@ HDFS_log
 
 ::: zone-end
 
-::: zone pivot="azuremonitor, fabric"
+::: zone pivot="azuremonitor"
 
 This feature isn't supported.
 

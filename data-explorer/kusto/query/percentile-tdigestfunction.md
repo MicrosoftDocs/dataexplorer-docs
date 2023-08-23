@@ -13,6 +13,8 @@ Calculates the percentile result from the `tdigest` results (which was generated
 
 `percentile_tdigest(`*expr*`,` *percentile1* `,` *typeLiteral*`)`
 
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+
 ## Parameters
 
 |Name|Type|Required|Description|

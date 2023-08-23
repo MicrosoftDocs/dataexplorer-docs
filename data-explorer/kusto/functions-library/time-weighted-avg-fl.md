@@ -14,7 +14,9 @@ This type of aggregation is required for use cases where the metric values are e
 ## Syntax
 
 `T | invoke time_weighted_avg_fl(`*t_col*, *y_col*, *key_col*, *stime*, *etime*, *dt*`)`
-  
+
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+
 ## Parameters
 
 | Name | Type | Required | Description |

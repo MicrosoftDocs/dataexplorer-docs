@@ -23,6 +23,8 @@ You must have at least [Database Admin](access-control/role-based-access-control
 
 `.delete` `database` *DatabaseName* `policy` `streamingingestion`
 
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+
 ## Parameters
 
 |Name|Type|Required|Description|

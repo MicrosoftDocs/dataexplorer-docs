@@ -38,6 +38,8 @@ Move extents specified by query results:
 
 `.move` [`async`] `extents` `to` `table` *DestinationTableName* [ `with` `(`*PropertyName* `=` *PropertyValue* [`,`...]`)`] `<|` *Query*
 
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+
 ## Parameters
 
 |Name|Type|Required|Description|
@@ -46,7 +48,7 @@ Move extents specified by query results:
 |*SourceTableName*|string|&check;|The name of the table containing the extents to move.|
 |*DestinationTableName*|string|&check;|The name of the table to which to move the extents.|
 |*PropertyName*, *PropertyValue*|string||One or more [Supported properties](#supported-properties).|
-|*Query*|string|&check;|A query whose results specify the extent IDs in the source tables to move.|
+|*Query*|string|&check;|The results of this [Kusto Query Language (KQL)](../query/index.md) query specify the source table and the extent IDs to be moved from it. Should return a recordset with columns called "ExtentId" and "TableName".|
 
 ## Supported properties
 

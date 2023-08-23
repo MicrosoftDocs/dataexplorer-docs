@@ -13,6 +13,8 @@ Returns the integer number of days since the preceding Sunday, as a `timespan`.
 
 `dayofweek(`*date*`)`
 
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+
 ## Parameters
 
 | Name | Type | Required | Description |

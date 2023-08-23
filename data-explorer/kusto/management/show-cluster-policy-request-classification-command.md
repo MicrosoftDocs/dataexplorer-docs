@@ -17,6 +17,8 @@ You must have at least [Cluster AllDatabasesMonitor](access-control/role-based-a
 
 `.show` `cluster` `policy` `request_classification`
 
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+
 ## Returns
 
 The command returns one row showing the details of the cluster request classification policy.

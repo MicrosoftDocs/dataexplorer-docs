@@ -13,6 +13,8 @@ Returns binary shift right operation on a pair of numbers.
 
 `binary_shift_right(`*value*`,`*shift*`)`
 
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+
 ## Parameters
 
 | Name | Type | Required | Description |

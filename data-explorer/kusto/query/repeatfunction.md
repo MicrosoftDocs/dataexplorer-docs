@@ -13,6 +13,8 @@ Generates a dynamic array containing a series comprised of repeated numbers.
 
 `repeat(`*value*`,` *count*`)`
 
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+
 ## Parameters
 
 | Name | Type | Required | Description |

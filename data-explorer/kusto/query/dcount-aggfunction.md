@@ -18,6 +18,8 @@ Calculates an estimate of the number of distinct values that are taken by a scal
 
 `dcount` `(`*expr*[`,` *accuracy*]`)`
 
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+
 ## Parameters
 
 | Name | Type | Required | Description |

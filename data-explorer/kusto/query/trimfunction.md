@@ -14,6 +14,8 @@ Removes all leading and trailing matches of the specified regular expression.
 
 `trim(`*regex*`,` *source*`)`
 
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+
 ## Parameters
 
 | Name | Type | Required | Description |
@@ -42,7 +44,7 @@ print string_to_trim = string_to_trim, trimmed_string = trim(substring,string_to
 
 |string_to_trim|trimmed_string|
 |---|---|
-|--https://bing.com--|https://bing.com|
+|`--<https://bing.com-->`|`<https://bing.com>`|
 
 The next statement trims all non-word characters from start and end of the string.
 

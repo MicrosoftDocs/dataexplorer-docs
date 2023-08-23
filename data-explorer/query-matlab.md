@@ -1,12 +1,12 @@
 ---
-title: Query data in MATLAB
+title: Query data using MATLAB
 description: Learn how to query data stored in Azure Data Explorer from within MATLAB.
 ms.reviewer: ramacg
 ms.topic: how-to
 ms.date: 07/11/2023
 ---
 
-# Query data in MATLAB
+# Query data using MATLAB
 
 MATLAB is a programming and numeric computing platform used to analyze data, develop algorithms, and create models. This article explains how to get an authorization token in MATLAB for Azure Data Explorer, and how to use the token to interact with your cluster.
 

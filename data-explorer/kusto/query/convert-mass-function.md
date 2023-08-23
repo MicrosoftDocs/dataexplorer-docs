@@ -13,6 +13,8 @@ Convert a mass value from one unit to another.
 
 `convert_mass(`*value*`,`*from*`,`*to*`)`
 
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+
 ## Parameters
 
 | Name | Type | Required | Description |

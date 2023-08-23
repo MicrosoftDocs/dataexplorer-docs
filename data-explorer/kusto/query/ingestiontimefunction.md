@@ -33,6 +33,8 @@ Retrieves the `datetime` when the record was ingested and ready for query.
 
 `ingestion_time()`
 
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+
 ## Returns
 
 A `datetime` value specifying the approximate time of ingestion into a table.

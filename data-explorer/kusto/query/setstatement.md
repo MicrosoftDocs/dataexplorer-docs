@@ -26,6 +26,8 @@ Query options control how a query executes and returns results. They can be bool
 
 `set` *OptionName* [`=` *OptionValue*]
 
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+
 ## Parameters
 
 | Name | Type | Required | Description |

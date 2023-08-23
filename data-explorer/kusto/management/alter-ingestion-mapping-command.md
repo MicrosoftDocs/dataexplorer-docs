@@ -22,6 +22,8 @@ The command to alter database ingestion mapping requires at least [Database Inge
 > [!NOTE]
 > This mapping can be referenced by its name by ingestion commands, instead of specifying the complete mapping as part of the command.
 
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+
 ## Parameters
 
 |Name|Type|Required|Description|

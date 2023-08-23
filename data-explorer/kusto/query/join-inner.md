@@ -10,9 +10,13 @@ ms.date: 06/18/2023
 
 The `inner` join flavor is like the standard inner join from the SQL world. An output record is produced whenever a record on the left side has the same join key as the record on the right side.
 
+:::image type="content" source="images/joinoperator/join-inner.png" alt-text="Diagram that shows how the join works." lightbox="images/joinoperator/join-kinds.png":::
+
 ## Syntax
 
 *LeftTable* `|` `join` `kind=inner` [ *Hints* ] *RightTable* `on` *Conditions*
+
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
 
 [!INCLUDE [join-parameters-attributes-hints](../../includes/join-parameters-attributes-hints.md)]
 

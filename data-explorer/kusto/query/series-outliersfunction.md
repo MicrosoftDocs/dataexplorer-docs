@@ -1,9 +1,9 @@
 ---
-title:  series_outliers()
+title:  series_outliers() - Azure Data Explorer
 description: Learn how to use the series_outliers() function to score anomaly points in a series.
-ms.reviewer: alexans
+ms.reviewer: adieldar
 ms.topic: reference
-ms.date: 01/30/2023
+ms.date: 08/15/2023
 ---
 # series_outliers()
 
@@ -14,6 +14,8 @@ The function takes an expression with a dynamic numerical array as input, and ge
 ## Syntax
 
 `series_outliers(`*series* [`,` *kind* ] [`,` *ignore_val* ] [`,` *min_percentile* ] [`,` *max_percentile* ]`)`
+
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
 
 ## Parameters
 
@@ -37,22 +39,18 @@ The following table describes differences between `"tukey"` and `"ctukey"`:
 
 ## Example
 
-A time series with some noise creates outliers. If you would like to replace those outliers (noise) with the average value, use series_outliers() to detect the outliers, and then replace them.
-
 > [!div class="nextstepaction"]
-> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA2VR0XKCQAx89yv2ESpWdMYZH0p/hblKwGs5jslFenb68Y0gakdeyG6ySW7DpmsIETV7hw3EY5PnCEK9osUvKAp1Fc6FreskoiiwzeEZY7jPMy3HC9h0VZJieUFLJLscK8QUa2yfC5Reo6GO2AjBIBjXt4RAbCng28oR/iStJQ4wgljoQFVrsM91oXByzrD90aULZ76obG2QJKbZtcMDeU7vD5iSZRAjIZmASuZBxTU947lC9W5YUezHBS7uyLknXyet75rbyAe+8qePlh46P+e0Z8/+kw6ygH4xG39TpymetSWT8wNVo/e3hu/YvO4uJ7gxb1gplf17Y3kFZmjmxGg8U9+aA93Fo+Fy1EsMepGGdD1Ww4jR2o4OR8PyB1kERXkkAgAA" target="_blank">Run the query</a>
+> <a href="https://dataexplorer.azure.com/clusters/https%3a%2f%2fhelp.kusto.windows.net/databases/Samples?query=H4sIAAAAAAAEAF2Q0U6EMBBF3038h%2bsb7KILu%2bob30ImMCyNtMXpoGD8eLvLYtCkaTrT2zP3VsidGRNa8RY51OP0%2boygPKDA%2fd03eFJ2DRQlGlJWYzk55sfTY17ElWKPotlNG%2bUclUKuSVLsUOT%2fbkzbJtY77Xw7M0miKR5KbDuD8Edspxnm%2fTGPe4rDAWd2LHE%2bCIHs0DMCi%2bGAT6Md%2fKi9YQkgRWskaPQ6w7dgqruFfvERRmtJzBdf41h646o3QeO0bMVt23O6Mb%2bOKBdhtdbJUm%2blgw8VOW%2bpX4gkQnN1SX57exaOUaTi95H6kKyoDMXTS7RSZMivPIk0Fiysue5I9Jo3mWrfj9aVGr9nOa6%2bsl%2f1rf3HTKT%2bAI%2bfv2rxAQAA" target="_blank">Run the query</a>
 
 ```kusto
-range x from 1 to 100 step 1 
-| extend y=iff(x == 20 or x == 80, 10 * rand() + 10 + (50 - x) / 2, 10 * rand() + 10) // generate a sample series with outliers at x=20 and x=80
-| summarize x=make_list(x), series=make_list(y)
-| extend series_stats(series), outliers=series_outliers(series)
-| mv-expand x to typeof(long), series to typeof(double), outliers to typeof(double)
-| project
-    x,
-    series,
-    outliers_removed=iff(outliers > 1.5 or outliers < -1.5, series_stats_series_avg, series) // replace outliers with the average
-| render linechart
+range x from 0 to 364 step 1 
+| extend t = datetime(2023-01-01) + 1d*x
+| extend y = rand() * 10
+| extend y = iff(monthofyear(t) != monthofyear(prev(t)), y+20, y) // generate a sample series with outliers at first day of each month
+| summarize t = make_list(t), series = make_list(y)
+| extend outliers=series_outliers(series)
+| extend pos_anomalies = array_iff(series_greater_equals(outliers, 1.5), 1, 0)
+| render anomalychart with(xcolumn=t, ycolumns=series, anomalycolumns=pos_anomalies)
 ```
 
-:::image type="content" source="images/series-outliersfunction/series-outliers.png" alt-text="Series outliers." border="false":::
+:::image type="content" source="images/series-outliersfunction/series-outliers.png" alt-text="Chart of a time series with outliers." border="false":::

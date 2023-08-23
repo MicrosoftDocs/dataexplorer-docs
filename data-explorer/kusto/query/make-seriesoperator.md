@@ -18,6 +18,8 @@ Create series of specified aggregated values along a specified axis.
     [`by`
       [*Column* `=`] *GroupExpression* [`,` ...]]
 
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+
 ## Parameters
 
 | Name | Type | Required | Description |
