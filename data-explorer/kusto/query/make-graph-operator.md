@@ -11,10 +11,6 @@ ms.date: 07/19/2023
 
 The `make-graph` operator builds a graph structure from tabular inputs of edges and nodes.
 
-> [!WARNING]
-> The `make-graph` operator is currently offered in preview mode. 
-> The syntax and semantics of the operator might change prior to public availability.
-
 ## Syntax
 
 *Edges*  
