@@ -5,11 +5,11 @@ ms.author: rocohen
 ms.service: data-explorer
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 07/19/2023
+ms.date: 08/23/2023
 ---
 # graph-to-table operator (Preview)
 
-The `graph-to-table` operator exports nodes or edges from a graph to tables.
+The `graph-to-table` operator exports nodes and/or edges from a graph to tables.
 
 ## Syntax
 #### Nodes:
@@ -62,9 +62,11 @@ The `graph-to-table` operator returns two *tabular* results, matching the descri
 
 ## Examples
 
+The following examples build a graph from edges and nodes tables, the nodes represent people and systems and the edges are different relations between nodes. Then each example shows a different usage of `graph-to-table`.
+
 ### 1. Get Edges
 
-The following example builds a graph from edges and nodes tables, the nodes represent people and systems and the edges are different relations between nodes. Following the `make-graph` operator that builds the graph is a call to `graph-to-table` with a graph edges and `with_source_id` and `with_target_id` parameters that export node hash for source and target nodes of each edge. 
+Following the `make-graph` operator that builds the graph is a call to `graph-to-table` with a graph edges and `with_source_id` and `with_target_id` parameters that export node hash for source and target nodes of each edge. 
 
 ```kusto
 let nodes = datatable(name:string, type:string, age:long) 
@@ -101,7 +103,7 @@ edges
 
 ### 2. Get Nodes
 
-The following example builds a graph from edges and nodes tables, the nodes represent people and systems and the edges are different relations between nodes. Following the `make-graph` operator that builds the graph is a call to `graph-to-table` with a graph nodes and `with_node_id` parameter that export node hash. 
+Following the `make-graph` operator that builds the graph is a call to `graph-to-table` with a graph nodes and `with_node_id` parameter that export node hash. 
 
 ```kusto
 let nodes = datatable(name:string, type:string, age:long) 
@@ -136,7 +138,7 @@ edges
 
 ### 3. Get Nodes and Edges
 
-The following example builds a graph from edges and nodes tables, the nodes represent people and systems and the edges are different relations between nodes. Following the `make-graph` operator that builds the graph is a call to `graph-to-table` with nodes and edges. 
+Following the `make-graph` operator that builds the graph is a call to `graph-to-table` with nodes and edges. 
 
 ```kusto
 let nodes = datatable(name:string, type:string, age:long) 
