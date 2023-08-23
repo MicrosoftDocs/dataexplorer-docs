@@ -129,24 +129,6 @@ items:
             href: provision-azure-ad-app.md
           - name: Conditional Access
             href: security-conditional-access.md
-      - name: Multi-tenant solutions
-        href: multi-tenant.md
-      - name: Graph
-        items:
-          - name: Overview
-            href: graph-overview.md
-          - name: Scenarios
-            items:
-              - name: Overview
-                href: graph-scenario-overview.md
-              - name: Internet of Things
-                href: graph-scenario-iot.md
-              - name: Security
-                href: graph-scenario-security.md
-          - name: Best Practices
-            href: graph-best-practices.md
-  - name: Explore data
-    items:
       - name: Get data
         items:
           - name: Data ingestion overview
@@ -366,6 +348,20 @@ items:
             href: python-query-data.md
           - name: Debug Kusto Query Language inline Python
             href: debug-inline-python.md
+      - name: Graph Analysis
+        items:
+          - name: Overview
+            href: graph-overview.md
+          - name: Scenarios
+            items:
+              - name: Overview
+                href: graph-scenario-overview.md
+              - name: Internet of Things
+                href: graph-scenario-iot.md
+              - name: Security
+                href: graph-scenario-security.md
+          - name: Best Practices
+            href: graph-best-practices.md
   - name: Visualize data
     items:
       - name: Data visualization overview
