@@ -3,7 +3,7 @@ title: Engine overview - Azure Data Explorer
 description: 'Learn more about the Azure Data Explorer (Kusto) engine.'
 ms.reviewer: avnera
 ms.topic: conceptual
-ms.date: 08/22/2023
+ms.date: 08/23/2023
 ---
 # Azure Data Explorer engine overview
 
@@ -22,7 +22,7 @@ Extents are immutable, and their related storage artifacts are maintained until 
 For more information, see [Extents overview](kusto/management/extents-overview.md).
 
 > [!NOTE]
-> Azure Data Explorer also retains essential metadata, such as table schemas and policy objects for data ingestion, query, and background activities. For a list of such policies, see [Policies overview](kusto/management/policies.md).
+> Azure Data Explorer also retains essential metadata such as table schemas and policy objects. For a list of policies, see [Policies overview](kusto/management/policies.md).
 
 ## Indexing
 
