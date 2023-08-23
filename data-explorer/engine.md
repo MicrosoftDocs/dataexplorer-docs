@@ -38,13 +38,13 @@ The engine avoids vertical compression, which involves sorting data before compr
 
 ## Compute data caching
 
-The engine has a multi-hierarchy data cache system to make sure that the most relevant data is cached as closely as possible to the CPU. This system critically depends on the extents being immutable, and consists of the following tiers:
+The Azure Data Explorer engine has a multi-hierarchy data cache system to ensure that the most relevant data is cached as closely as possible to the CPU. This system depends on the extents being immutable and consists of three tiers:
 
-* Azure Blob Storage – persistent, durable, and reliable storage
-* Azure Compute SSD (or Managed Disks) – volatile storage
-* Azure Compute RAM – volatile storage
+* Azure Blob Storage
+* Azure Compute SSD (Managed Disks)
+* Azure Compute RAM
 
-This cache system works completely with compressed data. Data remains compressed even in RAM and is only decompressed when required for an actual query, efficiently utilizing the limited and costly cache resources.
+The cache system works entirely with compressed data, which remains compressed even in RAM and is only decompressed when required for a query. This efficient use of cache resources improves query performance.
 
 ## Distributed data query
 
