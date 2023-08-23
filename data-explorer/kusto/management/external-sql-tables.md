@@ -120,7 +120,7 @@ with
 kind=sql
 table=PostgreSqlTable
 ( 
-   h@'Host = hostname.postgres.database.azure.com; Port = 5432; Database= db; User Id=user; Password==pass; Timeout = 30;'
+   h@'Host = hostname.postgres.database.azure.com; Port = 5432; Database= db; User Id=user; Password=pass; Timeout = 30;'
 )
 with 
 (
