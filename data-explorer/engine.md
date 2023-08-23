@@ -13,7 +13,7 @@ The Azure Data Explorer engine provides unparalleled performance for ingesting a
 
 ## Data storage
 
-All ingested data is partitioned into *extents*, or *extents*, which are horizontal slices of the table. Each shard is encoded and indexed independently of other extents. This functionality allows the engine to achieve linear scale in ingestion throughput. 
+All ingested data is partitioned into *extents*, or *data shards*, which are horizontal slices of the table. Each extent is encoded and indexed independently, which allows the engine to achieve linear scale in ingestion throughput.
 
 Extents are immutable, and their related storage artifacts are maintained until the extent is deleted. This behavior provides the following benefits:
 
