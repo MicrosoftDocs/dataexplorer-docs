@@ -31,15 +31,17 @@ The creation time of an extent is used for the following purposes:
 
 To overwrite the creation time of an extent, provide an alternate `creationTime` in the [data ingestion properties](../../ingestion-properties.md). This can be useful for retention purposes, such as if you want to reingest data but don't want it to appear as if it arrived late.
 
-## Extent tagging
+## Extent tags
 
-Kusto supports attaching multiple optional *extent tags* to the extent, as part of its metadata. An extent tag, or simply *tag*, is a string that is associated with the extent. You can use the [.show extents](./show-extents.md) commands to see the tags associated with an extent, and the [extent-tags()](../query/extenttagsfunction.md) function to see the tags associated with records in an extent.
+An *extent tag* is a string that describes properties common to all data in an extent. Multiple tags can be attached to an extent as part of its metadata. 
+When extents merge, their tags also merge. Use the [.show extents](./show-extents.md) command to see the tags associated with an extent, and the [extent-tags()](../query/extenttagsfunction.md) function to see the tags associated with records in an extent.
 
-Extent tags can be used to efficiently describe properties that are common to all of the data in the extent. For example, you could add an extent tag during ingestion, that indicates the source of the ingested data, and use that tag later. Since the extents describe data, when two or more merge, their associated tags also merge. The resulting extent's tags will be the union of all the tags of those merged extents.
+Extent tags can be used to describe properties that are common to all of the data in the extent. For example, add an extent tag during ingestion that indicates the source of the ingested data and use that tag later to perform some analysis.
 
-Kusto assigns a special meaning to all extent tags whose start with [drop-by](#drop-by-extent-tags) or [ingest-by](#ingest-by-extent-tags).
+> [!IMPORTANT]
+> Tags starting with `drop-by:` or `ingest-by:` have specific meanings. For more information, see [drop-by extent tags](#drop-by-extent-tags) and [ingest-by extent tags](#ingest-by-extent-tags).
 
-### 'drop-by:' extent tags
+### `drop-by:` extent tags
 
 Tags that start with a `drop-by:` prefix can be used to control which other extents to merge with. Extents that have the same set of `drop-by:` tags can be merged together, but they won't be merged with other extents if they have a different set of `drop-by:` tags.
 
@@ -75,7 +77,7 @@ The following query issues a command to drop extents according to their `drop-by
 .drop extents <| .show table MyTable extents where tags has "drop-by:2016-02-17" 
 ```
 
-### 'ingest-by:' extent tags
+### `ingest-by:` extent tags
 
 Tags with the prefix `ingest-by:` can be used together with the `ingestIfNotExists` property to ensure that data is ingested only once.
 
