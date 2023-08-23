@@ -15,6 +15,8 @@ Calculates the number of elements in a dynamic array.
 
 `array_length(`*array*`)`
 
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+
 ## Parameters
 
 | Name | Type | Required | Description |

@@ -13,6 +13,8 @@ Evaluates a list of expressions and returns the first non-null (or non-empty for
 
 `coalesce(`*arg*`,`*arg_2*`,[`*arg_3*`,...])`
 
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+
 ## Parameters
 
 | Name | Type | Required | Description |

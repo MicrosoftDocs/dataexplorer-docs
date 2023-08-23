@@ -41,8 +41,7 @@ In your preferred IDE or text editor, create a project or file named *hello kust
     ### [Node.js](#tab/nodejs)
 
     ```nodejs
-    const KustoClient = require("azure-kusto-data").Client;
-    const KustoConnectionStringBuilder = require("azure-kusto-data").KustoConnectionStringBuilder;
+    const {Client, KustoConnectionStringBuilder} = require("azure-kusto-data");
     ```
 
     <!-- ### [Go](#tab/go) -->
@@ -169,7 +168,7 @@ In your preferred IDE or text editor, create a project or file named *hello kust
     ### [Node.js](#tab/nodejs)
 
     ```nodejs
-    const kustoClient = new KustoClient(kcsb);
+    const kustoClient = new Client(kcsb);
     ```
 
     <!-- ### [Go](#tab/go) -->
@@ -345,14 +344,13 @@ if __name__ == "__main__":
 ### [Node.js](#tab/nodejs)
 
 ```nodejs
-const kustoLibraryClient = require("azure-kusto-data").Client;
-const kustoConnectionStringBuilder = require("azure-kusto-data").KustoConnectionStringBuilder;
+const {Client, KustoConnectionStringBuilder} = require("azure-kusto-data");
 
 async function main()
 {
   const clusterUri = "https://help.kusto.windows.net";
-  const kcsb = kustoConnectionStringBuilder.withUserPrompt(clusterUri);
-  const kustoClient = new kustoLibraryClient(kcsb);
+  const kcsb = KustoConnectionStringBuilder.withUserPrompt(clusterUri);
+  const kustoClient = new Client(kcsb);
 
   const database = "Samples";
   const query = "print Welcome='Hello Kusto!'";

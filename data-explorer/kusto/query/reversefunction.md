@@ -14,6 +14,8 @@ If the input value isn't of type `string`, then the function forcibly casts the 
 
 `reverse(`*value*`)`
 
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+
 ## Parameters
 
 | Name | Type | Required | Description |

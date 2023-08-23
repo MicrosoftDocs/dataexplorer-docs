@@ -13,6 +13,8 @@ Calculates the shortest distance between a coordinate and a polygon or a multipo
 
 `geo_distance_point_to_polygon(`*longitude*`,`*latitude*`,`*polygon*`)`
 
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+
 ## Parameters
 
 |Name|Type|Required|Description|

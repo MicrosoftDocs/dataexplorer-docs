@@ -16,6 +16,8 @@ Rotates a table by turning the unique values from one column in the input table 
 
 `T | evaluate pivot(`*pivotColumn*`[, `*aggregationFunction*`] [,`*column1* `[,`*column2* ... `]])` [`:` *OutputSchema*]
 
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+
 ## Parameters
 
 | Name | Type | Required | Description |

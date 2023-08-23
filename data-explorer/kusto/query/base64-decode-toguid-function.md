@@ -13,6 +13,8 @@ Decodes a base64 string to a [GUID](./scalar-data-types/guid.md).
 
 `base64_decode_toguid(`*base64_string*`)`
 
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+
 ## Parameters
 
 | Name | Type | Required | Description |

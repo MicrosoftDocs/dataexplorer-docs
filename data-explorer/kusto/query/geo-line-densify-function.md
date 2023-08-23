@@ -13,6 +13,8 @@ Converts planar lines or multiline edges to geodesics by adding intermediate poi
 
 `geo_line_densify(`*lineString*`,` *tolerance*`,` [ *preserve_crossing* ]`)`
 
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+
 ## Parameters
 
 |Name|Type|Required|Description|

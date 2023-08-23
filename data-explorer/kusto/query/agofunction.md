@@ -16,6 +16,8 @@ being referenced is the same across all uses.
 
 `ago(`*timespan*`)`
 
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+
 ## Parameters
 
 | Name | Type | Required | Description |

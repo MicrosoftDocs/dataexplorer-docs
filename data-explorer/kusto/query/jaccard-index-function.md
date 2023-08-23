@@ -13,6 +13,8 @@ Calculates the [Jaccard index](https://en.wikipedia.org/wiki/Jaccard_index) of t
 
 `jaccard_index`(*set1*, *set2*)
 
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+
 ## Parameters
 
 | Name | Type | Required | Description |

@@ -16,6 +16,8 @@ or the value of *else* otherwise.
 
 `iff(`*if*`,` *then*`,` *else*`)`
 
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+
 ## Parameters
 
 | Name | Type | Required | Description |
@@ -42,7 +44,7 @@ StormEvents
 
 **Output**
 
-The following table shows only the first 5 rows.
+The following table shows only the first five rows.
 
 |State|EventId|EventType|Rain|
 |--|--|--|--|

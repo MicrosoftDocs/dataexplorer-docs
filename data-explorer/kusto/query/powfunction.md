@@ -13,6 +13,8 @@ Returns a result of raising to power
 
 `pow(`*base*`,` *exponent* `)`
 
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+
 ## Parameters
 
 | Name | Type | Required | Description |
@@ -24,7 +26,7 @@ Returns a result of raising to power
 
 Returns base raised to the power exponent: base ^ exponent.
 
-## Example 
+## Example
 
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAysoyswrUShKLS7NKbEtyC/XMNJRMNYEAGG04SkWAAAA" target="_blank">Run the query</a>

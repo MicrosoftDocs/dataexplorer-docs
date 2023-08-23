@@ -9,20 +9,20 @@ zone_pivot_groups: kql-flavors-all
 ---
 # get_packages_version_fl()
 
-::: zone pivot="azuredataexplorer"
+::: zone pivot="azuredataexplorer, fabric"
 
 `get_packages_version_fl()` is a [user-defined function](../query/functions/user-defined-functions.md) that retrieves the versions of the Python engine and packages of the [inline python() plugin](../query/pythonplugin.md).
 
 The function accepts a dynamic array containing the names of the packages to check, and returns their respective versions and the Python engine version.
 
-## Prerequisites
-
-* The Python plugin must be [enabled on the cluster](../query/pythonplugin.md#enable-the-plugin). This is required for the inline Python used in the function.
+[!INCLUDE [python-zone-pivot-fabric](../../includes/python-zone-pivot-fabric.md)]
 
 ## Syntax
 
 `T | invoke get_packages_version_fl(`*packages*`)`
-  
+
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+
 ## Parameters
 
 | Name | Type | Required | Description |
@@ -165,7 +165,7 @@ get_packages_version_fl(pack_array('numpy', 'scipy', 'pandas', 'statsmodels', 's
 
 ::: zone-end
 
-::: zone pivot="azuremonitor, fabric"
+::: zone pivot="azuremonitor"
 
 This feature isn't supported.
 

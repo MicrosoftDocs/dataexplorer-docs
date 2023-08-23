@@ -13,6 +13,8 @@ Calculates the length of the boundary of a polygon or a multipolygon on Earth.
 
 `geo_polygon_perimeter(`*polygon*`)`
 
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+
 ## Parameters
 
 |Name|Type|Required|Description|

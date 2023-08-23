@@ -9,17 +9,17 @@ zone_pivot_groups: kql-flavors-all
 ---
 # normality_test_fl()
 
-::: zone pivot="azuredataexplorer"
+::: zone pivot="azuredataexplorer, fabric"
 
 The function `normality_test_fl()` is a [UDF (user-defined function)](../query/functions/user-defined-functions.md) that performs the [Normality Test](https://en.wikipedia.org/wiki/Normality_test).
 
-## Prerequisites
-
-* The Python plugin must be [enabled on the cluster](../query/pythonplugin.md#enable-the-plugin). This is required for the inline Python used in the function.
+[!INCLUDE [python-zone-pivot-fabric](../../includes/python-zone-pivot-fabric.md)]
 
 ## Syntax
 
 `T | invoke normality_test_fl(`*data*`,` *test_statistic*`,`*p_value*`)`
+
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
 
 ## Parameters
 
@@ -153,7 +153,7 @@ datatable(id:string, sample1:dynamic) [
 
 ::: zone-end
 
-::: zone pivot="azuremonitor, fabric"
+::: zone pivot="azuremonitor"
 
 This feature isn't supported.
 

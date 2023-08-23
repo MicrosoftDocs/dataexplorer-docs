@@ -9,16 +9,15 @@ zone_pivot_groups: kql-flavors-all
 ---
 # series_fbprophet_forecast_fl()
 
-::: zone pivot="azuredataexplorer"
+::: zone pivot="azuredataexplorer, fabric"
 
 The function `series_fbprophet_forecast_fl()` is a [user-defined function (UDF)](../query/functions/user-defined-functions.md) that takes an expression containing a time series as input, and predicts the values of the last trailing points using the [Prophet algorithm](https://facebook.github.io/prophet/). The function returns both the forecasted points and their confidence intervals. This function is a Kusto Query Language (KQL) wrapper to Prophet() class, and exposes only the parameters that are mandatory for prediction. Feel free to modify your copy to support more parameters. such as holidays, change points, Fourier order, and so on.
 
 > [!NOTE]
 > Consider using the native function [series_decompose_forecast()](../query/series-decompose-forecastfunction.md). The native function is based on a simpler model, but is more scalable and runs faster.
 
-## Prerequisites
+[!INCLUDE [python-zone-pivot-fabric](../../includes/python-zone-pivot-fabric.md)]
 
-* The Python plugin must be [enabled on the cluster](../query/pythonplugin.md#enable-the-plugin). This is required for the inline Python used in the function.
 * Install the `fbprophet` package since it isn't included in the Python image. To install the package, do the following:
   1. Follow the guidelines for [Installing packages for the Python plugin](../query/pythonplugin.md#install-packages-for-the-python-plugin).
      * To save time in the above guidelines, you can download the `fbprophet` zip file, containing the wheel files of `fbprophet` and its dependencies, from [https://artifcatswestus.blob.core.windows.net/public/fbprophet-0.7.1.zip](https://artifcatswestus.blob.core.windows.net/public/fbprophet-0.7.1.zip). Save this file to your allowlisted blob container.
@@ -28,6 +27,8 @@ The function `series_fbprophet_forecast_fl()` is a [user-defined function (UDF)]
 ## Syntax
 
 `T | invoke series_fbprophet_forecast_fl(`*ts_series*`,` *y_series*`,` *y_pred_series*`,` [ *points* ]`,` [ *y_pred_low_series* ]`,` [ *y_pred_high_series* ]`)`
+
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
   
 ## Parameters
 
@@ -262,7 +263,7 @@ demo_make_series2
 
 ::: zone-end
 
-::: zone pivot="azuremonitor, fabric"
+::: zone pivot="azuremonitor"
 
 This feature isn't supported.
 

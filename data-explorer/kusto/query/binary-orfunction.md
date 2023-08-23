@@ -13,6 +13,8 @@ Returns a result of the bitwise `or` operation of the two values.
 
 `binary_or(`*value1*`,` *value2* `)`
 
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+
 ## Parameters
 
 | Name | Type | Required | Description |

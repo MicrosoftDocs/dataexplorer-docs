@@ -27,6 +27,8 @@ To optimize multiple uses of the `let` statement within a single query, see [Opt
 > [!IMPORTANT]
 > Let statements must be followed by a semicolon. There can be no blank lines between let statements or between let statements and other query statements.
 
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+
 ### Parameters
 
 |Name|Type|Required|Description|
@@ -40,6 +42,8 @@ To optimize multiple uses of the `let` statement within a single query, see [Opt
 
 > [!IMPORTANT]
 > Let statements must be followed by a semicolon. There can be no blank lines between let statements or between let statements and other query statements.
+
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
 
 ### Parameters
 

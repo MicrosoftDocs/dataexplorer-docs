@@ -15,6 +15,8 @@ Accumulates values using the binary `OR` operation for each summarization group,
 
 `binary_all_or` `(`*expr*`)`
 
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+
 ## Parameters
 
 | Name | Type | Required | Description |

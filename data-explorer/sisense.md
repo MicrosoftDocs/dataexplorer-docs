@@ -15,7 +15,7 @@ Sisense is an analytics business intelligence platform that enables you to build
 
 You need the following to complete this article:
 
-* [Download and install Sisense app](https://docs.sisense.com/win/SisenseWin/installing-sisense.htm)
+* [Download and install Sisense app](https://docs.sisense.com/main/SisenseLinux/linux-minimum-requirements.htm?tocpath=Sisense%20Self%20Deployment%7C_____1)
 * Create a cluster and database that includes the StormEvents sample data. For more information, see [Quickstart: Create an Azure Data Explorer cluster and database](create-cluster-and-database.md) and [Ingest sample data into Azure Data Explorer](ingest-sample-data.md).
 
     [!INCLUDE [data-explorer-storm-events](includes/data-explorer-storm-events.md)]

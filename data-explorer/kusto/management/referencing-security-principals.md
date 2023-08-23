@@ -88,3 +88,4 @@ The following example assigns an MSA user to the user role on the `Test` databas
 * Read the [authentication overview](../access-control/index.md)
 * Learn how to use [management commands to assign security roles](security-roles.md)
 * Learn how to use the Azure portal to [manage database principals and roles](../../manage-database-permissions.md)
+* [current_principal_details()](../query/current-principal-detailsfunction.md)

@@ -13,6 +13,10 @@ Formats a timespan according to the provided format.
 
 `format_timespan(`*timespan* `,` *format*`)`
 
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+
+## Parameters
+
 | Name | Type | Required | Description |
 |--|--|--|--|
 | *timespan* | timespan | &check; | The value to format.|

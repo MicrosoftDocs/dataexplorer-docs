@@ -21,6 +21,8 @@ When possible, use the case-sensitive [!has_cs](not-has-cs-operator.md).
 
 *T* `|` `where` *column* `!has` `(`*expression*`)`
 
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+
 ## Parameters
 
 | Name | Type | Required | Description |

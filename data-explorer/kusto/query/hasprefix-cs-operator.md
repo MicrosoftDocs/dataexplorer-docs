@@ -21,6 +21,8 @@ For best performance, use strings of three characters or more. `hasprefix_cs` se
 
 *T* `|` `where` *Column* `hasprefix_cs` `(`*Expression*`)`
 
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+
 ## Parameters
 
 | Name | Type | Required | Description |

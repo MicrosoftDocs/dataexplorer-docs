@@ -13,6 +13,8 @@ Returns the tangent value of the specified number.
 
 `tan(`*x*`)`
 
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+
 ## Parameters
 
 | Name | Type | Required | Description |

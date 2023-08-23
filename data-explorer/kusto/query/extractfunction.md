@@ -7,7 +7,7 @@ ms.date: 12/12/2022
 ---
 # extract()
 
-Get a match for a [regular expression](./re2.md) from a source string.
+Get a match for a [regular expression](re2.md) from a source string.
 
 Optionally, convert the extracted substring to the indicated type.
 
@@ -15,11 +15,13 @@ Optionally, convert the extracted substring to the indicated type.
 
 `extract(`*regex*`,` *captureGroup*`,` *source* [`,` *typeLiteral*]`)`
 
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+
 ## Parameters
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-| *regex* | string | &check; | A [regular expression](./re2.md).|
+| *regex* | string | &check; | A [regular expression](re2.md).|
 | *captureGroup* | int | &check; | The capture group to extract. 0 stands for the entire match, 1 for the value matched by the first '('parenthesis')' in the regular expression, and 2 or more for subsequent parentheses.|
 | *source* | string | &check;| The string to search.|
 | *typeLiteral* | string | | If provided, the extracted substring is converted to this type. For example, `typeof(long)`.

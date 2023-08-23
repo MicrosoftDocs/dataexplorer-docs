@@ -15,6 +15,8 @@ Calculates the average (arithmetic mean) of *expr* across the group.
 
 `avg(`*expr*`)`
 
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+
 ## Parameters
 
 | Name | Type | Required | Description |

@@ -33,6 +33,8 @@ three kinds of columns:
 
 *T* `|` `render` *visualization* [`with` `(` *propertyName* `=` *propertyValue* [`,` ...]`)`]
 
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+
 ## Parameters
 
 | Name | Type | Required | Description |
@@ -188,6 +190,8 @@ These visualizations have the following conceptual model:
 
 ## See also
 
+* [Add a query visualization in the web UI](../../add-query-visualization.md)
+* [Customize dashboard visuals](../../dashboard-customize-visuals.md)
 * [Rendering examples in the tutorial](tutorials/use-aggregation-functions.md#visualize-query-results)
 * [Anomaly detection](./samples.md#get-more-from-your-data-by-using-kusto-with-machine-learning)
 
