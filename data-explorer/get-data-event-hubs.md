@@ -43,19 +43,19 @@ For more information about ingestion from Event Hubs, see [Create an Event Hubs 
     :::image type="content" source="media/get-data-event-hubs/configure-tab.png" alt-text="Screenshot of configure tab with fields for configuring the data source of Event Hubs in Azure Data Explorer." lightbox="media/get-data-event-hubs/configure-tab.png":::
 
 1. Fill in the following fields: 
-
-| **Setting**                | **Field description**  |
-|--------------------------|----------|
-| Subscription               | The subscription ID where the event hub resource is located.     |
-| Event hub namespace        | The name that identifies your namespace.    |
-| Event hub                  | The event hub you wish to   |
-| Consumer group             | The consumer group defined in your event   |
-| Data connection name       | The name that identifies your data connection.                 |
-| **Advanced filters**       | 
-| Compression                | The compression type of the event hub messages payload.       |
-| Event system properties    | The [event hub system properties](/azure/service-bus-messaging/service-bus-amqp-protocol-guide#message-annotations). If there are multiple records per event message, the system properties are added to the first one. When adding system properties, [create](kusto/management/create-table-command.md) or [update](kusto/management/alter-table-command.md) table schema and [mapping](kusto/management/mappings.md) to include the selected properties. |
-| Event retrieval start date | The data connection retrieves existing Event Hubs events created after the *Event retrieval start date*. Only events retained by Event Hubs's retention period can be retrieved. If the *Event retrieval start date* isn't specified, the default time is the time at which the data connection is created.   |
-
+    
+    | **Setting**                | **Field description**  |
+    |--------------------------|----------|
+    | Subscription               | The subscription ID where the event hub resource is located.     |
+    | Event hub namespace        | The name that identifies your namespace.    |
+    | Event hub                  | The event hub you wish to   |
+    | Consumer group             | The consumer group defined in your event   |
+    | Data connection name       | The name that identifies your data connection.                 |
+    | **Advanced filters**       | 
+    | Compression                | The compression type of the event hub messages payload.       |
+    | Event system properties    | The [event hub system properties](/azure/service-bus-messaging/service-bus-amqp-protocol-guide#message-annotations). If there are multiple records per event message, the system properties are added to the first one. When adding system properties, [create](kusto/management/create-table-command.md) or [update](kusto/management/alter-table-command.md) table schema and [mapping](kusto/management/mappings.md) to include the selected properties. |
+    | Event retrieval start date | The data connection retrieves existing Event Hubs events created after the *Event retrieval start date*. Only events retained by Event Hubs's retention period can be retrieved. If the *Event retrieval start date* isn't specified, the default time is the time at which the data connection is created.   |
+    
 1. Select **Next**
 
 ## Inspect the data
@@ -80,7 +80,7 @@ The **Inspect** tab opens with a preview of the data.
 
 [!INCLUDE [get-data-edit-columns](includes/get-data-edit-columns.md)]
 
-:::image type="content" source="media/get-data-file/edit-columns.png" alt-text="Screenshot of columns open for editing." lightbox="media/get-data-file/edit-columns.png":::
+:::image type="content" source="media/get-data-event-hubs/edit-columns.png" alt-text="Screenshot of columns open for editing." lightbox="media/get-data-event-hubs/edit-columns.png":::
 
 [!INCLUDE [mapping-transformations](includes/mapping-transformations.md)]
 
