@@ -270,6 +270,7 @@ Use the following settings:
 
 * Script is only supported in Azure Data Explorer; it isn't supported in Synapse Data Explorer pools
 * Two scripts can't be added, modified, or removed in parallel on the same cluster. This results in the following error: `Code="ServiceIsInMaintenance"`.  You can work around the issue by placing a dependency between the two scripts so that they're created or updated sequentially.
+* Functions that use cross-cluster queries cannot be created using scripts
 
 ## Troubleshooting
 
