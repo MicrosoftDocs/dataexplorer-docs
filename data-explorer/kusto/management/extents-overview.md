@@ -31,6 +31,9 @@ The creation time of an extent is used for the following purposes:
 
 To overwrite the creation time of an extent, provide an alternate `creationTime` in the [data ingestion properties](../../ingestion-properties.md). This can be useful for retention purposes, such as if you want to reingest data but don't want it to appear as if it arrived late.
 
+> [!NOTE]
+> The calculation for removing an extent based on time uses the creation time of the newest extent within the merged extent.
+
 ## Extent tags
 
 An *extent tag* is a string that describes properties common to all data in an extent. Multiple tags can be attached to an extent as part of its metadata. 
