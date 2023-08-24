@@ -10,18 +10,20 @@ ms.date: 08/21/2023
 
 Data ingestion is the process used to load data records from one or more sources into a table in Azure Data Explorer. Once ingested, the data becomes available for query. In this article, you learn how to get data from Azure storage (ADLS Gen2 container or individual blobs) into either a new or existing table.
 
+Ingestion can be done as a one-time operation in the new get data experience, or as a continuous method by setting up an [Event Grid ingestion pipeline](#create-continuous-ingestion) in the ingestion wizard that responds to new files in the source container and ingests qualifying data into your table. Select the tab that corresponds with your desired ingestion method.
+
 For general information on data ingestion, see [Azure Data Explorer data ingestion overview](ingest-data-overview.md).
 
-## Prerequisites
+### [New - Get data](#tab/get-data)
+
+### Prerequisites
 
 * A Microsoft account or an Azure Active Directory user identity. An Azure subscription isn't required.
 * An Azure Data Explorer cluster and database. [Create a cluster and database](create-cluster-and-database.md).
-* A [storage account](/azure/storage/common/storage-quickstart-create-account?tabs=azure-portal). An Event Grid notification subscription can be set on Azure Storage accounts for `BlobStorage`, `StorageV2`, or [Data Lake Storage Gen2](/azure/storage/blobs/data-lake-storage-introduction).
+* A [storage account](/azure/storage/common/storage-quickstart-create-account?tabs=azure-portal).
 
 > [!NOTE]
 > To enable access between a cluster and a storage account without public access (restricted to private endpoint/service endpoint), see [Create a Managed Private Endpoint](security-network-managed-private-endpoint-create.md).
-
-### [New - Get data](#tab/get-data)
 
 1. From the left menu, select **Query**.
 
@@ -98,9 +100,14 @@ In the **Data preparation** window, all three steps are marked with green check 
 
 ### [Wizard](#tab/wizard)
 
-The [ingestion wizard](./ingest-data-wizard.md) enables you to quickly ingest data in JSON, CSV, and other formats into a table and easily create mapping structures.
+### Prerequisites
 
-This section describes using the intuitive ingestion wizard to ingest **CSV** data from a **container** into a **new table**. Ingestion can be done as a one-time operation, or as a continuous method by [setting up an Event Grid ingestion pipeline](#create-continuous-ingestion) that responds to new files in the source container and ingests qualifying data into your table. This process can be used with slight adaptations to cover a variety of different use cases.
+* A Microsoft account or an Azure Active Directory user identity. An Azure subscription isn't required.
+* An Azure Data Explorer cluster and database. [Create a cluster and database](create-cluster-and-database.md).
+* A [storage account](/azure/storage/common/storage-quickstart-create-account?tabs=azure-portal). An Event Grid notification subscription can be set on Azure Storage accounts for `BlobStorage`, `StorageV2`, or [Data Lake Storage Gen2](/azure/storage/blobs/data-lake-storage-introduction).
+
+> [!NOTE]
+> To enable access between a cluster and a storage account without public access (restricted to private endpoint/service endpoint), see [Create a Managed Private Endpoint](security-network-managed-private-endpoint-create.md).
 
 1. From the left menu, select **Query**.
 
