@@ -65,7 +65,7 @@ Each input record is evaluated against all of the steps in reverse order, from t
     1. The extended *r* is added to the output and to the state of *s_k*.
 
 > [!NOTE]
-> **Check 2** is only relevant if **Check 1** didn't pass.
+> If **Check 1** results in a match, **Check 2** is disregarded, and *r* moves on to be evaluated against *s_k-1*.
 
 * **Check 2:** If the state of *s_k* has an active sequence or *s_k* is the first step, and *r* meets the *Condition* of *s_k*, then a match occurs. The match leads to the following actions:
     1. The assignments of *s_k* are calculated and extend *r*.
@@ -73,7 +73,7 @@ Each input record is evaluated against all of the steps in reverse order, from t
     1. If *s_k* is defined as `output=all`, the extended *r* is added to the output.
     1. If *s_k* is the first step, a new sequence begins and the match ID increases by `1`. This only affects the output when `with_match_id` is used.
 
-Once the checks for *s_k* are complete, the record moves on to be evaluated against *s_k-1*.
+Once the checks for *s_k* are complete, *r* moves on to be evaluated against *s_k-1*.
 
 For a detailed example of this logic, see the [scan logic walkthrough](#scan-logic-walkthrough).
 
