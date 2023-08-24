@@ -32,9 +32,9 @@ The engine is designed to index free-text ([string](kusto/query/scalar-data-type
 
 ## Column compression
 
-Data stored in columns is compressed using standard algorithms, such as [LZ4](https://en.wikipedia.org/wiki/LZ4_(compression_algorithm)) (default), [LZMA](https://en.wikipedia.org/wiki/Lempel%E2%80%93Ziv%E2%80%93Markov_chain_algorithm) and [Brotli](https://en.wikipedia.org/wiki/Brotli). The engine maintains data in a compressed state, even when it’s loaded into the RAM cache, reducing the amount of memory required to store and process data. This can result in faster query performance and more efficient use of system resources.
+Data stored in columns is compressed using standard algorithms, such as [LZ4](https://en.wikipedia.org/wiki/LZ4_(compression_algorithm)) (default), [LZMA](https://en.wikipedia.org/wiki/Lempel%E2%80%93Ziv%E2%80%93Markov_chain_algorithm) and [Brotli](https://en.wikipedia.org/wiki/Brotli). The engine maintains data in a compressed state, reducing the amount of memory required to store and process data. This results in faster query performance and more efficient use of system resources.
 
-The engine avoids vertical compression, which involves sorting data before compression, due to its high CPU cost. Instead, Azure Data Explorer customers can specify the preferred data sort order for scenarios with dominant query patterns. This trade-off prioritizes quick data availability for queries. For more information, see [Row order policy](kusto/management/roworderpolicy.md).
+The engine avoids vertical compression, which involves sorting data before compression, due to its high CPU cost. Instead, you can specify the preferred data sort order for scenarios with dominant query patterns. This trade-off prioritizes quick data availability for queries. For more information, see [Row order policy](kusto/management/roworderpolicy.md).
 
 ## Distributed data query
 
