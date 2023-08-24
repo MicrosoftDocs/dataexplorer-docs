@@ -16,14 +16,6 @@ To learn how to create the connection using the Kusto SDKs, see [Create an Event
 
 > For code samples based on previous SDK versions, see the [archived article](/previous-versions/azure/data-explorer/create-event-hubs-connection).
 
-## Prerequisites
-
-* An Azure subscription. Create a [free Azure account](https://azure.microsoft.com/free/).
-* An Azure Data Explorer cluster and database. [Create a cluster and database](create-cluster-and-database.md).
-* A destination table. [Create a table](kusto/management/create-table-command.md) or use an existing table.
-* An [ingestion mapping](kusto/management/mappings.md) for the table.
-* An [event hub](/azure/event-hubs/event-hubs-create) with data for ingestion.
-
 ## Create an event hub data connection
 
 In this section, you establish a connection between the event hub and your Azure Data Explorer table. As long as this connection is in place, data is transmitted from the event hub into your target table. If the event hub is moved to a different resource or subscription, you need to update or recreate the connection.
@@ -115,6 +107,13 @@ In the **Data preparation** window, all three steps are marked with green check 
 
 ### [Wizard](#tab/wizard)
 
+### Prerequisites
+
+* An Azure subscription. Create a [free Azure account](https://azure.microsoft.com/free/).
+* An Azure Data Explorer cluster and database. [Create a cluster and database](create-cluster-and-database.md).
+* A destination table. [Create a table](kusto/management/create-table-command.md) or use an existing table.
+* An [ingestion mapping](kusto/management/mappings.md) for the table.
+* An [event hub](/azure/event-hubs/event-hubs-create) with data for ingestion.
 The following steps guide you through creating an event hub connection through the ingestion wizard in the [Azure Data Explorer web UI](https://dataexplorer.azure.com/home).
 
 > [!NOTE]
@@ -168,6 +167,16 @@ The following steps guide you through creating an event hub connection through t
 
 ### [Portal - Azure Data Explorer page](#tab/portalADX)
 
+### Prerequisites
+
+* An Azure subscription. Create a [free Azure account](https://azure.microsoft.com/free/).
+* An Azure Data Explorer cluster and database. [Create a cluster and database](create-cluster-and-database.md).
+* A destination table. [Create a table](kusto/management/create-table-command.md) or use an existing table.
+* An [ingestion mapping](kusto/management/mappings.md) for the table.
+* An [event hub](/azure/event-hubs/event-hubs-create) with data for ingestion.
+
+### Get data
+
 1. In the Azure portal, go to your cluster and select **Databases**. Then, select the database that contains your target table.
 
     :::image type="content" source="media/ingest-data-event-hub/select-test-database.png" alt-text="Screenshot of Azure Data Explorer web U I left menu, showing the Test Database item, selected.":::
@@ -191,6 +200,16 @@ The following steps guide you through creating an event hub connection through t
     > If you have an existing data connection that is not using managed identities, we recommend updating it to use managed identities.
 
 ### [Portal - Azure Event Hubs page](#tab/portalEH)
+
+### Prerequisites
+
+* An Azure subscription. Create a [free Azure account](https://azure.microsoft.com/free/).
+* An Azure Data Explorer cluster and database. [Create a cluster and database](create-cluster-and-database.md).
+* A destination table. [Create a table](kusto/management/create-table-command.md) or use an existing table.
+* An [ingestion mapping](kusto/management/mappings.md) for the table.
+* An [event hub](/azure/event-hubs/event-hubs-create) with data for ingestion.
+
+### Get data
 
 1. In the Azure portal, browse to your Event Hubs Instance.
 1. Under the **Features** side menu, select **Analyze data with Kusto**.
@@ -244,6 +263,16 @@ The following steps guide you through creating an event hub connection through t
 1. In the **Continuous ingestion from Event Hub established** window, all steps are marked with green check marks when establishment finishes successfully.
 
 ### [ARM template](#tab/arm-template)
+
+## Prerequisites
+
+* An Azure subscription. Create a [free Azure account](https://azure.microsoft.com/free/).
+* An Azure Data Explorer cluster and database. [Create a cluster and database](create-cluster-and-database.md).
+* A destination table. [Create a table](kusto/management/create-table-command.md) or use an existing table.
+* An [ingestion mapping](kusto/management/mappings.md) for the table.
+* An [event hub](/azure/event-hubs/event-hubs-create) with data for ingestion.
+
+### ARM template
 
 The following example shows an Azure Resource Manager template for adding an Event Hubs data connection. You can [edit and deploy the template in the Azure portal](/azure/azure-resource-manager/templates/quickstart-create-templates-use-the-portal) by using the form.
 
