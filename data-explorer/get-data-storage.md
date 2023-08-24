@@ -98,9 +98,9 @@ In the **Data preparation** window, all three steps are marked with green check 
 
 ### [Wizard](#tab/wizard)
 
-The [ingestion wizard](./ingest-data-wizard.md) enables you to quickly ingest data in JSON, CSV, and other formats into a table and easily create mapping structures. The data can be ingested either from storage, from a local file, or from a container, as a one-time or continuous ingestion process.
+The [ingestion wizard](./ingest-data-wizard.md) enables you to quickly ingest data in JSON, CSV, and other formats into a table and easily create mapping structures.
 
-This document describes using the intuitive ingestion wizard to ingest **CSV** data from a **container** into a **new table**. Ingestion can be done as a one-time operation, or as a continuous method by [setting up an Event Grid ingestion pipeline](#create-continuous-ingestion) that responds to new files in the source container and ingests qualifying data into your table. This process can be used with slight adaptations to cover a variety of different use cases.
+This section describes using the ingestion wizard to ingest **CSV** data from a **container** into a **new table**. Ingestion can be done as a one-time operation, or as a continuous method by [setting up an Event Grid ingestion pipeline](#create-continuous-ingestion) that responds to new files in the source container and ingests qualifying data into your table. This process can be used with slight adaptations to cover a variety of different use cases.
 
 For an overview of the ingestion wizard, see [What is the ingestion wizard?](./ingest-data-wizard.md).
 For information about ingesting data into an existing table in Azure Data Explorer, see [Ingest data to an existing table](/azure/data-explorer/ingest-from-local-file). For information about different ways to ingest by using an Event Grid, see [Create an Event Grid data connection](ingest-data-event-grid.md).
