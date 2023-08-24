@@ -139,12 +139,10 @@ items:
             href: connector-overview.md
           - name: Get data in the web UI
             items:
-              - name: Ingestion wizard
-                href: ingest-data-wizard.md
-              - name: Ingest from local file
-                displayName: ingest data, ingestion wizard, one click, existing table
-                href: ingest-from-local-file.md
-              - name: Ingest from container
+              - name: Get data from local file
+                displayName: ingest data, ingestion wizard, one click, existing table, csv file, json
+                href: get-data-file.md
+              - name: Get data from container
                 displayName: Event Grid, ingest data, ingestion, one click, csv file, Azure Data Lake Storage
                 href: /azure/data-explorer/ingest-from-container
           - name: Streaming ingestion
