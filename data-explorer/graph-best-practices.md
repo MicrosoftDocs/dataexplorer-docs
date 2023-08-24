@@ -205,7 +205,7 @@ let assetHierarchy = datatable(source:string, destination:string)
 	"Pump", "Press",
 	"3", "Conveyor belt"
 ];
-
+```
 
 In order to create a canonical model the user can leverage the union operator. The following KQL shows that the sensor data is joined with the time series data to identify anomalous sensors. Afterwards, a projection is used to create the canonical model for the nodes of the graph.
 
@@ -222,7 +222,7 @@ let nodes =
             | project nodeId = sensorId, label = "tag", properties = pack_all(true)
         ),
         ( employees | project nodeId = name, label = "employee", properties = pack_all(true));
-````
+```
 
 The edges are transformed in a similar way.
 
@@ -264,3 +264,4 @@ The output of the query returned the information that the temperature sensor sho
 
 Learn more about Scenarios _addLinkHere_
 Learn more about Operators _addLinkHere_
+````
