@@ -22,15 +22,9 @@ For more information, see [Extents overview](kusto/management/extents-overview.m
 
 ## Data cache
 
-The engine has a multi-hierarchy data cache system to ensure that the most relevant data is cached as closely as possible to the CPU.
+The engine has a multi-hierarchy data cache system to ensure that the most relevant data is cached as closely as possible to the CPU. The cache system depends on the immutability of extents, and works entirely with [compressed data](#column-compression). In order to improve query performance, data remains compressed even in RAM and is only decompressed when required for a query.
 
-This system consists of the following three tiers:
-
-* Azure Blob Storage – persistent, durable, and reliable storage
-* Azure Compute SSD (Managed Disks) – volatile storage
-* Azure Compute RAM – volatile storage
-
-The cache system depends on the immutability of extents, and works entirely with compressed data. Data remains compressed even in RAM and is only decompressed when required for a query in order to improve query performance.
+For more information, see [Cache policy](kusto/management/cachepolicy.md).
 
 ## Text indexing
 
