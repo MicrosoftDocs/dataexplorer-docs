@@ -7,7 +7,7 @@ ms.date: 05/23/2023
 ---
 # .show table policy roworder command
 
-Display the table's [row order policy](roworderpolicy.md). The row order policy is an optional policy set on tables, that suggests the desired ordering of rows in a data shard. The purpose of the policy is to improve performance of queries that are known to be narrowed to a small subset of values in the ordered columns.
+Display the table's [row order policy](roworderpolicy.md). The row order policy is an optional policy set on tables, that suggests the desired ordering of rows in an [extent (data shard)](extents-overview.md).. The purpose of the policy is to improve performance of queries that are known to be narrowed to a small subset of values in the ordered columns.
 
 ## Permissions
 
