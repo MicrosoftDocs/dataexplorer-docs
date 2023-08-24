@@ -11,20 +11,16 @@ The Azure Data Explorer engine provides unparalleled performance for ingesting a
 
 ## Data storage
 
-All ingested data is partitioned into *extents*, or *data shards*, which are horizontal slices of the table. Each extent is encoded and indexed independently, which allows the engine to achieve linear scale in ingestion throughput.
+The engine partitions all data ingested into tables into *extents*, or *data shards*, which are horizontal slices of the table. Each extent usually contains a few million records and is encoded and indexed independently of other extents. This functionality allows the engine to achieve linear scale in ingestion throughput.
 
-Extents are immutable, and their related storage artifacts are maintained until the extent is deleted. This behavior provides the following benefits:
-
-* Multiple compute nodes can cache an extent without complex change management coordination
-* Increased robustness due to the simplicity of storage artifact modifications
-* Easy reversion to previous snapshots, provided that extent components remain intact
+Extents are spread evenly across the cluster nodes, where they're cached both on the local SSD and in memory. This distribution and caching enhances the ability of the engine to prepare and execute highly distributed and parallel queries.
 
 For more information, see [Extents overview](kusto/management/extents-overview.md).
 
 > [!NOTE]
 > Azure Data Explorer also retains essential metadata such as table schemas and policy objects. For a list of policies, see [Policies overview](kusto/management/policies.md).
 
-## Indexing
+## Text indexing
 
 The Azure Data Explorer engine is designed to index free-text ([string](kusto/query/scalar-data-types/string.md)) and JSON-like ([dynamic](kusto/query/scalar-data-types/dynamic.md)) columns at line speed. The indexes maintain a level of granularity that enables evaluation of parts of the query based on the index without scanning the data. Moreover, continuous background optimization of extents through merging improves compression and indexing, ensuring efficient storage and low query latency. Once extents reach a certain size, only the indexes are merged to enhance query performance without compromising efficiency.
 
