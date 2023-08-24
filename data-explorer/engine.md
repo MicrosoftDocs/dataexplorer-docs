@@ -49,7 +49,7 @@ The engine uses distributed data query technology intended for fast ad-hoc analy
 * Just-in-time compilation of queries into highly efficient machine code, using data statistics from all extents and tailored to column encoding specifics
 
 > [!NOTE]
-> The engine is designed to work with the user-friendly and powerful [Kusto Query Language (KQL)](kusto/query/index.md), custom-built for Azure Data Explorer. Additionally, Azure Data Explorer offers compatibility with [T-SQL](t-sql.md).
+> The engine is designed to work with the user-friendly and powerful [Kusto Query Language (KQL)](kusto/query/index.md), custom-built for Azure Data Explorer. Additionally, [T-SQL](t-sql.md) is supported.
 
 ## Related content
 
