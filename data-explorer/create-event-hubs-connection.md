@@ -16,6 +16,8 @@ To learn how to create the connection using the Kusto SDKs, see [Create an Event
 
 > For code samples based on previous SDK versions, see the [archived article](/previous-versions/azure/data-explorer/create-event-hubs-connection).
 
+[!INCLUDE [get-data-flow](includes/get-data-flow.md)]
+
 ## Prerequisites
 
 * An Azure subscription. Create a [free Azure account](https://azure.microsoft.com/free/).
