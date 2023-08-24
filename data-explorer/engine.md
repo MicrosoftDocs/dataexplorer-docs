@@ -7,7 +7,7 @@ ms.date: 08/24/2023
 ---
 # Azure Data Explorer engine overview
 
-The Azure Data Explorer engine provides unparalleled performance for ingesting and querying telemetry, logs, and time series data. It features optimized storage formats, indexes, and uses advanced data statistics for optimized data storage, efficient query planning, and just-in-time compiled query execution.
+The Azure Data Explorer engine provides unparalleled performance for ingesting and querying telemetry, logs, and time series data. It features optimized storage formats, indexes, and uses advanced data statistics for efficient query planning and just-in-time compiled query execution.
 
 ## Data storage
 
