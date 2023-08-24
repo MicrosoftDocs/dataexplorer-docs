@@ -13,13 +13,13 @@ The cache policy allows you to prioritize which data should be cached. You can d
 
 The cache uses 95% of the local SSD disk for hot data. If there isn’t enough space, the most recent data is preferentially kept in the cache. The remaining 5% is used for data that isn’t categorized as hot. This design ensures that queries loading lots of cold data won’t evict hot data from the cache.
 
-The best query performance is achieved when all ingested data is cached. However, certain data may not justify the cost of keeping it "warm" in local SSD storage. For example, many teams consider that rarely accessed older log records are of lesser importance. They prefer to have reduced performance when querying this data, rather than pay to keep it warm all the time.
+The best query performance is achieved when all ingested data is cached. However, certain data might not warrant the expense of being kept in the hot cache. For instance, infrequently accessed old log records may be considered less crucial. In such cases, teams often opt for lower querying performance over paying to keep the data warm.
 
 Use management commands to alter the cache policy at the [cluster](alter-cluster-cache-policy-command.md), [database](alter-database-cache-policy-command.md), [table](alter-table-cache-policy-command.md), or [materialized view](alter-materialized-view-cache-policy-command.md) level.
 
 > [!TIP]
 > Your cluster is designed for ad-hoc queries with intermediate result sets that fit in the cluster's total RAM.
-> For large jobs, like map-reduce, it may be useful to store intermediate results in persistent storage. To do so, create a [continuous export](../management/data-export/continuous-data-export.md). This feature enables you to do long-running batch queries using services like HDInsight or Azure Databricks.
+> For large jobs, like map-reduce, it can be useful to store intermediate results in persistent storage. To do so, create a [continuous export](../management/data-export/continuous-data-export.md) job. This feature enables you to do long-running batch queries using services like HDInsight or Azure Databricks.
  
 ## How cache policy is applied
 
