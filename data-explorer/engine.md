@@ -26,9 +26,9 @@ The engine has a multi-hierarchy data cache system to ensure that the most relev
 
 This system consists of the following three tiers:
 
-* Azure Blob Storage
-* Azure Compute SSD (Managed Disks)
-* Azure Compute RAM
+* Azure Blob Storage – persistent, durable, and reliable storage
+* Azure Compute SSD (Managed Disks) – volatile storage
+* Azure Compute RAM – volatile storage
 
 The cache system depends on the immutability of extents, and works entirely with compressed data. Data remains compressed even in RAM and is only decompressed when required for a query in order to improve query performance.
 
