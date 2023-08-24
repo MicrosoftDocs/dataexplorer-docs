@@ -162,7 +162,7 @@ Sometimes it's required to contextualize time series data in ADX with a graph wh
 
 The following example (IIoT scenario) demonstrates the transformation to the canonical model and how to query it. The base tables for the nodes and edges of the graph have a very different in their schema.
 
-````kusto
+```kusto
 let sensors = datatable(sensorId:string, tagName:string, unitOfMeasuree:string)
 [
 	"1", "temperature", "°C",
@@ -264,4 +264,3 @@ The output of the query returned the information that the temperature sensor sho
 
 Learn more about Scenarios _addLinkHere_
 Learn more about Operators _addLinkHere_
-````
