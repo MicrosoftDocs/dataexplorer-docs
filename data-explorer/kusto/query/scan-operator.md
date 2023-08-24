@@ -64,8 +64,8 @@ Each input record is evaluated against all of the steps in reverse order, from t
     1. The assignments of *s_k* are calculated and extend *r*.
     1. The extended *r* is added to the output and to the state of *s_k*.
 
-> [!NOTE]
-> If **Check 1** results in a match, **Check 2** is disregarded, and *r* moves on to be evaluated against *s_k-1*.
+    > [!NOTE]
+    > If **Check 1** results in a match, **Check 2** is disregarded, and *r* moves on to be evaluated against *s_k-1*.
 
 * **Check 2:** If the state of *s_k* has an active sequence or *s_k* is the first step, and *r* meets the *Condition* of *s_k*, then a match occurs. The match leads to the following actions:
     1. The assignments of *s_k* are calculated and extend *r*.
