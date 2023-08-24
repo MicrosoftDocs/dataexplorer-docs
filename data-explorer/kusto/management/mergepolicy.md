@@ -17,7 +17,7 @@ By default, Rebuild operations are preferred. If there are extents that don't fi
 
 > [!NOTE]
 >
-> * Tagging extents using *different* `drop-by` tags will cause such extents to not be merged, even if a merge policy has been set. For more information, see [Extent Tagging](../management/extents-overview.md#extent-tagging).
+> * Tagging extents using *different* `drop-by` tags will cause such extents to not be merged, even if a merge policy has been set. For more information, see [Extent Tagging](../management/extents-overview.md#extent-tags).
 > * Extents whose union of tags exceeds the length of 1M characters will not be merged.
 > * The database's or table's [Sharding policy](./shardingpolicy.md) also has some effect on how extents get merged.
 
