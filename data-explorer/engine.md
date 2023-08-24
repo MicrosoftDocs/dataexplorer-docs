@@ -3,7 +3,7 @@ title: Engine overview - Azure Data Explorer
 description: 'Learn more about the Azure Data Explorer (Kusto) engine.'
 ms.reviewer: avnera
 ms.topic: conceptual
-ms.date: 08/23/2023
+ms.date: 08/24/2023
 ---
 # Azure Data Explorer engine overview
 
@@ -20,25 +20,27 @@ For more information, see [Extents overview](kusto/management/extents-overview.m
 > [!NOTE]
 > Azure Data Explorer also retains essential metadata such as table schemas and policy objects. For a list of policies, see [Policies overview](kusto/management/policies.md).
 
+## Data cache
+
+The engine has a multi-hierarchy data cache system to ensure that the most relevant data is cached as closely as possible to the CPU.
+
+This system consists of the following three tiers:
+
+* Azure Blob Storage
+* Azure Compute SSD (Managed Disks)
+* Azure Compute RAM
+
+The cache system depends on the immutability of extents, and works entirely with compressed data. Data remains compressed even in RAM and is only decompressed when required for a query in order to improve query performance.
+
 ## Text indexing
 
-The Azure Data Explorer engine is designed to index free-text ([string](kusto/query/scalar-data-types/string.md)) and JSON-like ([dynamic](kusto/query/scalar-data-types/dynamic.md)) columns at line speed. The indexes maintain a level of granularity that enables evaluation of parts of the query based on the index without scanning the data. Moreover, continuous background optimization of extents through merging improves compression and indexing, ensuring efficient storage and low query latency. Once extents reach a certain size, only the indexes are merged to enhance query performance without compromising efficiency.
+The engine is designed to index free-text ([string](kusto/query/scalar-data-types/string.md)) and JSON-like ([dynamic](kusto/query/scalar-data-types/dynamic.md)) columns at line speed. The indexes maintain a level of granularity that enables evaluation of parts of the query based on the index without scanning the data. Moreover, continuous background optimization of extents through merging improves compression and indexing, ensuring efficient storage and low query latency. Once extents reach a certain size, only the indexes are merged to enhance query performance without compromising efficiency.
 
 ## Column compression
 
 Data stored in columns is compressed using standard algorithms, such as [LZ4](https://en.wikipedia.org/wiki/LZ4_(compression_algorithm)) (default), [LZMA](https://en.wikipedia.org/wiki/Lempel%E2%80%93Ziv%E2%80%93Markov_chain_algorithm) and [Brotli](https://en.wikipedia.org/wiki/Brotli). The engine maintains data in a compressed state, even when it’s loaded into the RAM cache, reducing the amount of memory required to store and process data. This can result in faster query performance and more efficient use of system resources.
 
 The engine avoids vertical compression, which involves sorting data before compression, due to its high CPU cost. Instead, Azure Data Explorer customers can specify the preferred data sort order for scenarios with dominant query patterns. This trade-off prioritizes quick data availability for queries. For more information, see [Row order policy](kusto/management/roworderpolicy.md).
-
-## Compute data caching
-
-The Azure Data Explorer engine has a multi-hierarchy data cache system to ensure that the most relevant data is cached as closely as possible to the CPU. This system depends on the extents being immutable and consists of three tiers:
-
-* Azure Blob Storage
-* Azure Compute SSD (Managed Disks)
-* Azure Compute RAM
-
-The cache system works entirely with compressed data, which remains compressed even in RAM and is only decompressed when required for a query. This efficient use of cache resources improves query performance.
 
 ## Distributed data query
 
