@@ -32,16 +32,16 @@ landingContent:
         links:
           - text: What is Azure Data Explorer? (19:47)
             url: https://youtu.be/D_AJk2lAepw
-          
+
   # Card
   - title: Training
-    linkLists: 
+    linkLists:
       - linkListType: learn
         links:
           - text: "Free Pluralsight training: Azure Data Explorer"
             url: https://www.pluralsight.com/partners/microsoft/azure-data-explorer
           - text: "Training module: Introduction to Azure Data Explorer"
-            url:  /training/modules/intro-to-azure-data-explorer/intro-to-azure-data-explorer/
+            url: /training/modules/intro-to-azure-data-explorer/intro-to-azure-data-explorer/
           - text: "Training module: Explore the fundamentals of data analysis using Kusto Query Language (KQL)"
             url: /training/modules/explore-fundamentals-kql/
           - text: "Training module: Write your first query with Kusto Query Language"
@@ -187,7 +187,11 @@ landingContent:
             url: using-metrics.md
           - text: Use diagnostic logs to monitor ingestion
             url: using-diagnostic-logs.md
-# Card
+      - linkListType: reference
+        links:
+          - text: Management commands
+            url: kusto/management/index.md
+  # Card
   - title: Architecture
     linkLists:
       - linkListType: how-to-guide
@@ -202,7 +206,7 @@ landingContent:
             url: /azure/architecture/solution-ideas/articles/interactive-azure-data-explorer
           - text: IoT analytics with Azure Data Explorer
             url: /azure/architecture/solution-ideas/articles/iot-azure-data-explorer
-          - text: Geospatial data processing and analytics 
+          - text: Geospatial data processing and analytics
             url: /azure/architecture/example-scenario/data/geospatial-data-processing-analytics-azure
           - text: Long-term security log retention with Azure Data Explorer
             url: /azure/architecture/example-scenario/security/security-log-retention-azure-data-explorer
@@ -213,11 +217,15 @@ landingContent:
           - text: White paper
             url: https://aka.ms/adx.techwhitepaper
   # Card
-  - title: Reference
+  - title: Development
     linkLists:
+      - linkListType: how-to-guide
+        links:
+          - text: Set up your development environment
+            url: kusto/api/get-started/app-set-up.md
       - linkListType: reference
         links:
-          - text: Management commands
-            url: kusto/management/index.md
-          - text: Azure Data Explorer API
-            url: kusto/api/index.md
+          - text: Kusto client libraries
+            url: kusto/api/client-libraries.md
+          - text: REST API overview
+            url: kusto/api/rest/index.md
