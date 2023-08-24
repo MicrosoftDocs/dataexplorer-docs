@@ -47,6 +47,7 @@ To delete your Azure Data Explorer cluster:
 
 1. In the **Delete cluster** window, type in the name of the cluster. Then, select **Delete**.
 
-## See also
+## Related content
 
-* [Create a cluster and database](create-cluster-and-database.md)
+* [Troubleshoot: Failure to create or delete a database or table](troubleshoot-database-table.md)
+* [Quickstart: Create a cluster and database](create-cluster-and-database.md)

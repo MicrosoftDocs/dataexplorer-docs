@@ -52,7 +52,8 @@ For more information about permissions, see [Manage database permissions](manage
 
 1. If you still need assistance solving your issue, please open a support request in the [Azure portal](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview).
 
-## Next steps
+## Related content
 
 * [Check cluster health](check-cluster-health.md)
+* [Delete resources](delete-resources.md)
 * [Manage database permissions](manage-database-permissions.md)
