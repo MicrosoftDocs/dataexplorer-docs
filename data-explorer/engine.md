@@ -40,17 +40,18 @@ The engine avoids vertical compression, which involves sorting data before compr
 
 ## Distributed data query
 
-Azure Data Explorer uses distributed data query technology for fast ad-hoc analytics on large unstructured data sets, accompanied by the user-friendly [Kusto Query Language (KQL)](kusto/query/index.md).
+The engine uses distributed data query technology intended for fast ad-hoc analytics on large unstructured data sets. Key features of this technology include:
 
-The engine optimizes query performance through the following methods:
+* Storing query-generated temporary data in aggregated RAM to prevent disk writes
+* Providing snapshot isolation by referencing relevant extents on a query plan
+* Prioritizing fast and efficient queries with short [default timeouts](set-timeout-limits.md)
+* Native support for [cross-cluster queries](kusto/query/cross-cluster-or-database-queries.md), optimizing the query plan to minimize inter-cluster data exchange
+* Just-in-time compilation of queries into highly efficient machine code, using data statistics from all extents and tailored to column encoding specifics
 
-* Storing temporary data produced by the query in aggregated RAM, avoiding disk writes.
-* Providing snapshot isolation by referencing relevant extents on the query plan.
-* Just-in-time compiling queries into highly efficient machine code, guided by data statistics gathered from all the extents and tailored to the specifics of the column encoding.
-* Prioritizing fast and efficient queries with short default timeouts. For more information, see [Set timeout limits](set-timeout-limits.md).
-* Rearranging the query plan to minimize data exchange between clusters. For more information, see [Cross-cluster and cross-database queries](kusto/query/cross-cluster-or-database-queries.md).
+> [!NOTE]
+> The engine is designed to work with the user-friendly and powerful [Kusto Query Language (KQL)](kusto/query/index.md), custom-built for Azure Data Explorer. Additionally, Azure Data Explorer offers compatibility with [T-SQL](t-sql.md).
 
-## See also
+## Related content
 
 * [White paper](https://azure.microsoft.com/resources/azure-data-explorer/)
 * [Create an Azure Data Explorer cluster and database](create-cluster-and-database.md)
