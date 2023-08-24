@@ -82,7 +82,7 @@ The **Inspect** tab opens with a preview of the data.
 
 1. If the data you see in the preview window isn't complete, you may need more data to create a table with all necessary data fields. Use the following commands to fetch new data from your event hub:
 
-    * **Discard and fetch new data**: discards the data presented and searches for new events.
+    * **Discard and fetch new data**: Discards the data presented and searches for new events.
     * **Fetch more data**: Searches for more events in addition to the events already found.
 
     > [!NOTE]
@@ -107,7 +107,7 @@ The **Inspect** tab opens with a preview of the data.
 
 In the **Data preparation** window, all three steps are marked with green check marks when data ingestion finishes successfully. You can view the commands that were used for each step, or select a card to query, visualize, or drop the ingested data.
 
-:::image type="content" source="media/get-data-event-hubs/summary.png" alt-text="Summary screen of getting data from Event Hubs in Azure Data Explorer.":::
+:::image type="content" source="media/get-data-event-hubs/summary.png" alt-text="Summary screenshot of getting data from Event Hubs in Azure Data Explorer." lightbox="media/get-data-event-hubs/summary.png":::
 
 
 ### [Wizard](#tab/wizard)
