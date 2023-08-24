@@ -1,10 +1,10 @@
 ---
-title: Policies overview - Azure Data Explorer
+title: Policies overview
 description: Learn which policies are available for management with Azure Data Explorer.
 ms.topic: reference
 ms.date: 08/21/2023
 ---
-# Policies
+# Policies overview
 
 The following table provides an overview of the policies for managing your cluster:
 
