@@ -122,6 +122,8 @@ The following steps guide you through creating an event hub connection through t
 > * To enable access between a cluster and a storage account without public access, see [Create a Managed Private Endpoint](security-network-private-endpoint-create.md).
 > * The cluster and event hub should be associated with the same tenants. If not, use one of the SDK options, such as C# or Python.
 
+### Get data
+
 1. From the **Data** tab of the [Azure Data Explorer web UI](https://dataexplorer.azure.com/), select **Ingest** from the **Ingest data from Event Hub** card.
 
     :::image type="content" source="media/event-hub-wizard/ingestion-in-web-ui.png" alt-text="Screenshot showing the ingestion wizard in the Azure Data Explorer web UI.":::
