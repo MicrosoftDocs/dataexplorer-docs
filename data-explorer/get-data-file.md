@@ -11,6 +11,8 @@ Data ingestion is the process used to load data records from one or more sources
 
 For general information on data ingestion, see [Azure Data Explorer data ingestion overview](ingest-data-overview.md)
 
+[!INCLUDE [get-data-flow](includes/get-data-flow.md)]
+
 ## Prerequisites
 
 * A Microsoft account or an Azure Active Directory user identity. An Azure subscription isn't required.
