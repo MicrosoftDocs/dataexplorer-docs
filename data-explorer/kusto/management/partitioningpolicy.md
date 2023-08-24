@@ -9,7 +9,7 @@ ms.date: 08/24/2023
 
 The partitioning policy defines if and how [extents (data shards)](../management/extents-overview.md) should be partitioned for a specific table or a [materialized view](materialized-views/materialized-view-overview.md).
 
-After defining a [partitioning policy](partitioningpolicy.md), extents undergo an extra background process following their creation, after data ingestion. This process involves reingesting data from source extents and generating *homogeneous* extents, where all values of the column designated as the *partition key* reside within the same partition.
+A partitioning policy triggers an additional background process that takes place after the creation of extents, following data ingestion. This process includes reingesting data from the source extents and producing *homogeneous* extents, in which all values of the column designated as the *partition key* reside within a single partition.
 
 The primary objective of the partitioning policy is to enhance query performance in specific [supported scenarios](#supported-scenarios).
 
