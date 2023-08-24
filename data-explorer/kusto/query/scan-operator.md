@@ -3,7 +3,7 @@ title:  scan operator
 description: Learn how to use the scan operator to scan data, match, and build sequences based on the predicates.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 08/22/2023
+ms.date: 08/24/2023
 ---
 # scan operator
 
@@ -64,11 +64,14 @@ Each input record is evaluated against all of the steps in reverse order, from t
     1. The assignments of *s_k* are calculated and extend *r*.
     1. The extended *r* is added to the output and to the state of *s_k*.
 
+> [!NOTE]
+> **Check 2** is only relevant if **Check 1** didn't pass.
+
 * **Check 2:** If the state of *s_k* has an active sequence or *s_k* is the first step, and *r* meets the *Condition* of *s_k*, then a match occurs. The match leads to the following actions:
     1. The assignments of *s_k* are calculated and extend *r*.
     2. The values that represent *s_k* in the state of *s_k* are replaced with the values of the extended *r*.
     1. If *s_k* is defined as `output=all`, the extended *r* is added to the output.
-    1. If *s_k* is the first step, a new match begins and the match ID increases by `1`. This only affects the output when `with_match_id` is used.
+    1. If *s_k* is the first step, a new sequence begins and the match ID increases by `1`. This only affects the output when `with_match_id` is used.
 
 Once the checks for *s_k* are complete, the record moves on to be evaluated against *s_k-1*.
 
