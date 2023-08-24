@@ -93,10 +93,8 @@ In the **Data preparation** window, all three steps are marked with green check 
 
 :::image type="content" source="media/get-data-event-hubs/summary.png" alt-text="Summary screen of getting data from Event Hubs in Azure Data Explorer.":::
 
-## Next steps
+## Related content
 
-* Explore the results in the [Azure Data Explorer web UI query](web-ui-query-overview.md)
+* Explore data in the [Azure Data Explorer web UI query](web-ui-query-overview.md)
 * [Write Kusto Query Language queries in the web UI](web-ui-kql.md)
-* [Tutorial: Learn common Kusto Query Language operators](kusto/query/tutorials/learn-common-operators.md)
 * [Visualize data with Azure Data Explorer dashboards](azure-data-explorer-dashboards.md)
-* [Use the sample app generator wizard to create code to ingest and query your data](sample-app-generator-wizard.md)
