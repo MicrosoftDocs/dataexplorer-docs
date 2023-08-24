@@ -3,21 +3,21 @@ title: Extents merge policy
 description: Learn how to use the merge policy to define how extents in a cluster are merged.
 ms.reviewer: orspodek
 ms.topic: reference
-ms.date: 05/24/2023
+ms.date: 08/24/2023
 ---
 # Merge policy
 
-The merge policy defines if and how [Extents (Data Shards)](../management/extents-overview.md) in the Kusto cluster should get merged.
+The merge policy defines if and how [Extents (data shards)](../management/extents-overview.md) in your cluster should get merged.
 
 There are two types of merge operations: `Merge`, which rebuilds indexes, and `Rebuild`, which completely reingests the data.
 
 Both operation types result in a single extent that replaces the source extents.
 
-By default, Rebuild operations are preferred. If there are extents that don't fit the criteria for being rebuilt, an attempt will be made to merge them.  
+By default, `Rebuild` operations are preferred. If there are extents that don't fit the criteria for being rebuilt, then an attempt will be made to merge them.
 
 > [!NOTE]
 >
-> * Tagging extents using *different* `drop-by` tags will cause such extents to not be merged, even if a merge policy has been set. For more information, see [Extent Tagging](../management/extents-overview.md#extent-tags).
+> * Tagging extents using *different* `drop-by` tags will cause such extents to not be merged, even if a merge policy has been set. For more information, see [Extent tags](../management/extents-overview.md#extent-tags).
 > * Extents whose union of tags exceeds the length of 1M characters will not be merged.
 > * The database's or table's [Sharding policy](./shardingpolicy.md) also has some effect on how extents get merged.
 
