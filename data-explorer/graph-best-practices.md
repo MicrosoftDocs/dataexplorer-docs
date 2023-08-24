@@ -148,7 +148,117 @@ graph_time_travel(datetime(2022-06-01))
 
 ## Dealing with multiple node and edge types
 
-The examples above demonstrate the
+Sometimes it's required to contextualize time series data in ADX with a graph which consists of multiple node types. One way of handling this scenario is creating a general purpose property graph which is represented by a canonical model.
+
+- nodes
+  - nodeId (string)
+  - label (string)
+  - properties (dynamic)
+- edges
+  - source (string)
+  - destination (string)
+  - label (string)
+  - properties (dynamic)
+
+The following example (IIoT scenario) demonstrates the transformation to the canonical model and how to query it. The base tables for the nodes and edges of the graph have a very different in their schema.
+
+````kusto
+let sensors = datatable(sensorId:string, tagName:string, unitOfMeasuree:string)
+[
+	"1", "temperature", "°C",
+	"2", "pressure", "Pa",
+	"3", "speed", "m/s"
+];
+let timeseriesData = datatable(sensorId:string, timestamp:string, value:double, anomaly: bool )
+[
+    "1", datetime(2023-01-23 10:00:00), 32, false,
+    "1", datetime(2023-01-24 10:00:00), 400, true,
+    "3", datetime(2023-01-24 09:00:00), 9, false
+];
+let employees = datatable(name:string, age:long)
+[
+	"Alice", 32,
+	"Bob", 31,
+	"Eve", 27,
+	"Mallory", 29,
+	"Alex", 35,
+	"Dave", 45
+];
+let allReports = datatable(employee:string, manager:string)
+[
+	"Bob", "Alice",
+	"Alice", "Dave",
+	"Eve", "Mallory",
+	"Alex", "Dave"
+];
+let operates = datatable(employee:string, machine:string, timestamp:datetime)
+[
+	"Bob", "Pump", datetime(2023-01-23),
+	"Eve", "Pump", datetime(2023-01-24),
+	"Mallory", "Press", datetime(2023-01-24),
+	"Alex", "Conveyor belt", datetime(2023-01-24),
+];
+let assetHierarchy = datatable(source:string, destination:string)
+[
+	"1", "Pump",
+	"2", "Pump",
+	"Pump", "Press",
+	"3", "Conveyor belt"
+];
+
+
+In order to create a canonical model the user can leverage the union operator. The following KQL shows that the sensor data is joined with the time series data to identify anomalous sensors. Afterwards, a projection is used to create the canonical model for the nodes of the graph.
+
+```kusto
+let nodes =
+    union
+        (
+            sensors
+            | join kind=leftouter
+            (
+                timeseriesData
+                | summarize hasAnomaly=max(anomaly) by sensorId
+            ) on sensorId
+            | project nodeId = sensorId, label = "tag", properties = pack_all(true)
+        ),
+        ( employees | project nodeId = name, label = "employee", properties = pack_all(true));
+````
+
+The edges are transformed in a similar way.
+
+```kusto
+let edges =
+    union
+        ( assetHierarchy | extend label = "hasParent" ),
+        ( allReports | project source = employee, destination = manager, label = "reportsTo" ),
+        ( operates | project source = employee, destination = machine, properties = pack_all(true), label = "operates" );
+```
+
+Once the graph was created using make-graph, the user needs to define the path pattern which should be detected and project the information required.
+
+```kusto
+edges
+| make-graph source --> destination with nodes on nodeId
+| graph-match cycles=edges (tag)-[hasParent*1..5]->(asset)<-[operates]-(operator)-[reportsTo*1..5]->(topManager)
+    where tag.label=="tag" and tobool(tag.properties.hasAnomaly) and
+        startofday(todatetime(operates.properties.timestamp)) == datetime(2023-01-24)
+        and topManager.label=="employee"
+    project
+        tagWithAnomaly = tostring(tag.properties.tagName),
+        impactedAsset = asset.nodeId,
+        operatorName = operator.nodeId,
+        responsibleManager = tostring(topManager.nodeId)
+```
+
+**Output**
+
+| tagWithAnomaly | impactedAsset | operatorName | responsibleManager |
+| -------------- | ------------- | ------------ | ------------------ |
+| temperature    | Pump          | Eve          | Mallory            |
+
+The output of the query returned the information that the temperature sensor showed an anomaly on the given day. It was operated by Eve which ultimately reports to Mallory. Now a service engine
+
+## Executing multiple graph match statements on a graph
 
 ## Next steps
 
