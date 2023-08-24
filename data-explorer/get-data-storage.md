@@ -10,11 +10,15 @@ ms.date: 08/21/2023
 
 Data ingestion is the process used to load data records from one or more sources into a table in Azure Data Explorer. Once ingested, the data becomes available for query. In this article, you learn how to get data from Azure storage (ADLS Gen2 container or individual blobs) into either a new or existing table.
 
-Ingestion can be done as a one-time operation in the new Get data experience, or as a continuous method by setting up an [Event Grid ingestion pipeline](#create-continuous-ingestion) in the ingestion wizard that responds to new files in the source container and ingests qualifying data into your table. Select the tab that corresponds with your desired ingestion method.
+Ingestion can be done as a one-time operation, or as a continuous method. You can use both the new Get data experience or the ingestion wizard to perform one-time ingestion. For continuous ingestion, set up an [Event Grid ingestion pipeline](#create-continuous-ingestion) in the ingestion wizard that responds to new files in the source container and ingests qualifying data into your table.
 
 For general information on data ingestion, see [Azure Data Explorer data ingestion overview](ingest-data-overview.md).
 
 [!INCLUDE [get-data-flow](includes/get-data-flow.md)]
+
+## Get data
+
+Select the tab that corresponds with your desired ingestion method.
 
 ### [New - Get data](#tab/get-data)
 
