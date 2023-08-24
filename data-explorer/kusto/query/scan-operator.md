@@ -3,7 +3,7 @@ title:  scan operator
 description: Learn how to use the scan operator to scan data, match, and build sequences based on the predicates.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 01/22/2023
+ms.date: 08/24/2023
 ---
 # scan operator
 
@@ -30,12 +30,13 @@ The output for the matching record is determined by the input record and assignm
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-| *MatchIdColumnName* | string | |  The name of a column of type `long` that is appended to the output as part of the scan execution. Indicates the 0-based index of the match for the row. |
-| *ColumnDeclarations* | string | | Declares an extension to the schema of the operator’s source. Additional columns are assigned in the steps or *DefaultValue* if not assigned. *DefaultValue* is `null` if not specified. |
+|*T*|string|&check;|The input tabular source.|
+| *MatchIdColumnName* | string | |  The name of a column of type `long` that is appended to the output as part of the scan execution. Indicates the 0-based index of the match for the record. |
+| *ColumnDeclarations* | string | | Declares an extension to the schema of *T*. These columns are assigned values in the steps. If not assigned, the *DefaultValue* is returned. Unless otherwise specified, *DefaultValue* is `null`.|
 | *StepName* | string | &check; | Used to reference values in the state of scan for conditions and assignments. The step name must be unique.|
-| *Condition* | string | &check; | An expression that evaluates to a `bool`, `true` or `false`, that defines which records from the input matches the step. A record matches the step when the condition is `true` with the step’s state or with the previous step’s state.|
+| *Condition* | string | &check; | An expression that evaluates to `true` or `false` that defines which records from the input match the step. A record matches the step when the condition is `true` with the step’s state or with the previous step’s state.|
 | *Assignment* | string | | A scalar expression that is assigned to the corresponding column when a record matches a step.|
-| `output` | string | | Controls the output logic of the step on repeated matches. `all` outputs all records matching the step, `last` outputs only the last record in a series of repeating matches for the step, and `none` does not output records matching the step. The default is `all`.|
+| `output` | string | | Controls the output logic of the step on repeated matches. `all` outputs all records matching the step, `last` outputs only the last record in a series of repeating matches for the step, and `none` doesn't output records matching the step. The default is `all`.|
 
 ## Returns
 
@@ -45,29 +46,36 @@ A record for each match of a record from the input to a step. The schema of the 
 
 `scan` goes over the serialized input data, record by record, comparing each record against each step’s condition while taking into account the current state of each step.
 
-### Scan's state
+### State
 
-The state that is used behind the scenes by `scan` is a set of records, with the same schema of the output, including source and declared columns.
-Each step has its own state, the state of step *k* has *k* records in it, where each record in the step’s state corresponds to a step up to *k*.
+The underlying state of the `scan` operator can be thought of as a table with a row for each `step`. Each step maintains its own state with the latest values of the columns and declared variables from all of the previous steps and the current step. If relevant, it also holds the match ID for the ongoing sequence.
 
-For example, if a scan operator has *n* steps named *s_1*, *s_2*, ..., *s_n* then step *s_k* would have *k* records in its state corresponding to *s_1*, *s_2*, ..., *s_k*.
-Referencing a value in the state is done in the form *StepName*.*ColumnName*. For example, `s_2.col1` references column `col1` that belongs to step *s_2* in the state of *s_k*.
+If a scan operator has *n* steps named *s_1*, *s_2*, ..., *s_n* then step *s_k* would have *k* records in its state corresponding to *s_1*, *s_2*, ..., *s_k*. The *StepName*.*ColumnName* format is used to reference a value in the state. For instance, `s_2.col1` would reference column `col1` that belongs to step *s_2* in the state of *s_k*. For a detailed example, see the [scan logic walkthrough](#scan-logic-walkthrough).
+
+The state starts empty and updates whenever a scanned input record matches a step. When the state of the current step is nonempty, the step is referred to as having an *active sequence*.
 
 ### Matching logic
 
-Each record from the input is evaluated against all of scan’s steps, starting from last to first. When a record *r* is considered against some step *s_k*, the following logic is applied:
+Each input record is evaluated against all of the steps in reverse order, from the last step to the first. When a record *r* is evaluated against some step *s_k*, the following logic is applied:
 
-* If the state of the previous step isn't empty and the record *r* satisfies the condition of *s_k* using the state of the previous step *s_(k-1)*, then the following happens:
-    1. The state of *s_k* is deleted.
-    1. The state of *s_(k-1)* becomes ("promoted" to be) the state of *s_k*, and the state of *s_(k-1)* becomes empty.
-    1. All the assignments of *s_k* are calculated and extend *r*.
-    1. The extended *r* is added to the output (if *s_k* is defined as `output=all`) and to the state of *s_k*.
-* If *r* doesn't satisfy the condition of *s_k* with the state of *s_(k-1)*, *r* is then checked with the state of *s_k*. If *r* satisfies the condition of *s_k* with the state of *s_k*, the following happens:
-    1. The record *r* is extended with the assignments of *s_k*.
-    1. If *s_k* is defined as `output=all`, the extended record r is added to the output.
-    1. The last record in the state of *s_k* (which represents *s_k* itself in the state) is replaced by the extended record *r*.
-    1. Whenever the first step is matched while its state is empty, a new match begins and the match ID is increased by `1`. This only affects the output when `with_match_id` is used.
-* If r doesn't satisfy the condition *s_k* with the state *s_k*, evaluate *r* against condition *s_k-1* and repeat the logic above.
+* **Check 1:** If the state of the previous step (*s_k-1*) is nonempty, and *r* meets the *Condition* of *s_k*, then a match occurs. The match leads to the following actions:
+    1. The state of *s_k* is cleared.
+    1. The state of *s_k-1* is promoted to become the state of *s_k*.
+    1. The assignments of *s_k* are calculated and extend *r*.
+    1. The extended *r* is added to the output and to the state of *s_k*.
+
+    > [!NOTE]
+    > If **Check 1** results in a match, **Check 2** is disregarded, and *r* moves on to be evaluated against *s_k-1*.
+
+* **Check 2:** If the state of *s_k* has an active sequence or *s_k* is the first step, and *r* meets the *Condition* of *s_k*, then a match occurs. The match leads to the following actions:
+    1. The assignments of *s_k* are calculated and extend *r*.
+    2. The values that represent *s_k* in the state of *s_k* are replaced with the values of the extended *r*.
+    1. If *s_k* is defined as `output=all`, the extended *r* is added to the output.
+    1. If *s_k* is the first step, a new sequence begins and the match ID increases by `1`. This only affects the output when `with_match_id` is used.
+
+Once the checks for *s_k* are complete, *r* moves on to be evaluated against *s_k-1*.
+
+For a detailed example of this logic, see the [scan logic walkthrough](#scan-logic-walkthrough).
 
 ## Examples
 
@@ -98,7 +106,7 @@ range x from 1 to 5 step 1
 
 ### Cumulative sum on multiple columns with a reset condition
 
-Calculate the cumulative sum for two input column, reset the sum value to the current row value whenever the cumulative sum reached 10 or more.
+Calculate the cumulative sum for two input columns, reset the sum value to the current record value whenever the cumulative sum reached 10 or more.
 
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA22OQQrCMBBF9znFXzZaxAhuKulVJLSTWmhTSdKagIc3FIVo/fzVG+bNWGU6QoC20wgBP+EM5+kOwZ6g4Mm0iJA4YYeQkGuUQUvNoCyhaOZxHpTvF7qGaphMJ48lMhjfkOPR+xtYwZCy+p2o4O1MkHW+EdKtXuvCicMXrSVEcodU7PEz5SVW8Sb5K3/F8SOOqRtx5BfGX1hK/bgiAQAA" target="_blank">Run the query</a>
@@ -125,7 +133,7 @@ range x from 1 to 5 step 1
 
 ### Fill forward a column
 
-Fill forward a string column. Each empty value is assigned the last seen non-empty value.
+Fill forward a string column. Each empty value is assigned the last seen nonempty value.
 
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA01Qy2rDMBC86ysGnSwwoW5DCAkuNI8/yK2EoNjrViC7xrtNCPTjK8sOaPcyo50dRutJcLxRJ4wStZXQV0/ITryBuJa4t10+KTZgGVz3ZfCpEOqlzaE/dB5JMZIZv454N5O3ZLBM8GrE+5msk0ERrQ5PFs20OqutmnKqP/DPILg+cGJYrsaHynaoqfJ2CNmj7tI476l+hi61Nrg7+YbKojEL9eAi/HL4JZTvSLfCLVzTZI6p7eUxGZo8yBepar6L2SrzD0ocTu9HAQAA" target="_blank">Run the query</a>
@@ -167,7 +175,7 @@ Events
 
 ### Sessions tagging
 
-Divide the input into sessions: a session ends 30 minutes after the first event of the session, after which a new session starts. Note the use of `with_match_id` flag which assigns a unique value for each distinct match (session) of *scan*. Also note the special use of two *steps* in this example, `inSession` has `true` as condition so it captures and outputs all the records from the input while `endSession` captures records that happen more than 30m from the `sessionStart` value for the current match. The `endSession` step has `output=none` meaning it doesn't produce output records. The `endSession` step is used to advance the state of the current match from `inSession` to `endSession`, allowing a new match (session) to begin, starting from the current record.
+Divide the input into sessions: a session ends 30 minutes after the first event of the session, after which a new session starts. Note the use of `with_match_id` flag, which assigns a unique value for each distinct match (session) of *scan*. Also note the special use of two *steps* in this example, `inSession` has `true` as condition so it captures and outputs all the records from the input while `endSession` captures records that happen more than 30m from the `sessionStart` value for the current match. The `endSession` step has `output=none` meaning it doesn't produce output records. The `endSession` step is used to advance the state of the current match from `inSession` to `endSession`, allowing a new match (session) to begin, starting from the current record.
 
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA3WQy2rDMBBF9/qKS1Y2qCVt+sLGgT7yBcmulKDYSiOQZaMZtxT68ZVsp3EWkTY6M/fOQ1YzVl/aMaFApTjcndVINpSBTa2pVU4OigzE3rjPFO8C4cxridnzTPZwM4XbCC8jLCK8HeE89RDp9UhPU+VdX3E10uP9UF98iFwM84pfUOMZux9sCIrKGCiVw7fhw7ZWXB62pipIE5nGhScqXVrlw3JjbM3K82nNtHdCJH1HYt3CuPUgDSrfaRRLTL3hy8x+nxhynbXJv/h6qkllGE/iQjI/9dKuGiVoOm47LlzjdBaXu7pgxxKLeZ2L9A9Yk5hPxgEAAA==" target="_blank">Run the query</a>
@@ -279,3 +287,250 @@ StormEvents
 |Hail|50|
 |Tornado|34|
 |Thunderstorm Wind|32|
+
+## Scan logic walkthrough
+
+This section demonstrates the [scan logic](#scan-logic) using a step-by-step walkthrough of the [Events between start and stop](#events-between-start-and-stop) example:
+
+> [!div class="nextstepaction"]
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA3WPYWvCMBCGv+dXvPOTQidr3cZozYc5/QX6TYbENsxCE0vvcAj+eJM0FR0sgRzPe3fvXRrNWJ20ZYJEpdjdfaMx3lAOro2mVtmkr8hB3NX2Z4KtgDsvJsHoc5QESD2sWXUchcwLiwgzD8sIr33psY387vkrwsdfnzQ4rwbKbs3iWxSiX11cQMeOsT9jQ1BUeqFUFr81H3ZGcXnY1ZU07gkSxDi4EesWlOb9/yDlMLq4S2dD+umWhrLVg+jWCZqb/uwMpy7OJd7Mvc/sccz/LZMrJ20JNJQBAAA=" target="_blank">Run the query</a>
+
+```kusto
+let Events = datatable (Ts: timespan, Event: string) [
+    0m, "A",
+    1m, "Start",
+    2m, "B",
+    3m, "D",
+    4m, "Stop",
+    6m, "C",
+    8m, "Start",
+    11m, "E",
+    12m, "Stop"
+]
+;
+Events
+| sort by Ts asc
+| scan with_match_id=m_id with 
+(
+    step s1: Event == "Start";
+    step s2: Event != "Start" and Event != "Stop" and Ts - s1.Ts <= 5m;
+    step s3: Event == "Stop" and Ts - s1.Ts <= 5m;
+)
+```
+
+### The state
+
+Think of the state of the `scan` operator as a table with a row for each step, in which each step has its own state. This state contains the latest values of the columns and declared variables from all of the previous steps and the current step. To learn more, see [State](#state).
+
+For this example, the state can be represented with the following table:
+
+|step|m_id|s1.Ts|s1.Event|s2.Ts|s2.Event|s3.Ts|s3.Event|
+|---|---|---|---|---|---|---|---|
+|s1||||X|X|X|X|
+|s2||||||X|X|
+|s3||||||||
+
+The "X" indicates that a specific field is irrelevant for that step.
+
+### The matching logic
+
+This section follows the [matching logic](#matching-logic) through each record of the `Events` table, explaining the transformation of the state and output at each step.
+
+> [!NOTE]
+> An input record is evaluated against the steps in reverse order, from the last step (`s3`) to the first step (`s1`). 
+
+#### Record 1
+
+|Ts|Event|
+|---|---|
+|0m|"A"|
+
+**Record evaluation at each step:**
+
+* `s3`: **Check 1** isn't passed because the state of `s2` is empty, and **Check 2** isn't passed because `s3` lacks an active sequence.
+* `s2`: **Check 1** isn't passed because the state of `s1` is empty, and **Check 2** isn't passed because `s2` lacks an active sequence.
+* `s1`: **Check 1** is irrelevant because there's no previous step. **Check 2** isn't passed because the record doesn't meet the condition of `Event == "Start"`. **Record 1** is discarded without affecting the state or output.
+
+**State:**
+
+|step|m_id|s1.Ts|s1.Event|s2.Ts|s2.Event|s3.Ts|s3.Event|
+|---|---|---|---|---|---|---|---|
+|s1||||X|X|X|X|
+|s2||||||X|X|
+|s3||||||||
+
+#### Record 2
+
+|Ts|Event|
+|---|---|
+|1m|"Start"|
+
+**Record evaluation at each step:**
+
+* `s3`: **Check 1** isn't passed because the state of `s2` is empty, and **Check 2** isn't passed because `s3` lacks an active sequence.
+* `s2`: **Check 1** isn't passed because the state of `s1` is empty, and **Check 2** isn't passed because `s2` lacks an active sequence.
+* `s1`: **Check 1** is irrelevant because there's no previous step. **Check 2** is passed because the record meets the condition of `Event == "Start"`. This match initiates a new sequence, and the `m_id` is assigned. **Record 2** and its `m_id` (`0`) are added to the state and the output.
+
+**State:**
+
+|step|m_id|s1.Ts|s1.Event|s2.Ts|s2.Event|s3.Ts|s3.Event|
+|---|---|---|---|---|---|---|---|
+|s1|0|00:01:00|"Start"|X|X|X|X|
+|s2||||||X|X|
+|s3||||||||
+
+#### Record 3
+
+|Ts|Event|
+|---|---|
+|2m|"B"|
+
+**Record evaluation at each step:**
+
+* `s3`: **Check 1** isn't passed because the state of `s2` is empty, and **Check 2** isn't passed because `s3` lacks an active sequence.
+* `s2`: **Check 1** is passed because the state of `s1` is nonempty and the record meets the condition of `Ts - s1.Ts < 5m`. This match causes the state of `s1` to be cleared and the sequence in `s1` to be promoted to `s2`. **Record 3** and its `m_id` (`0`) are added to the state and the output.
+* `s1`: **Check 1** is irrelevant because there's no previous step, and **Check 2** isn't passed because the record doesn't meet the condition of `Event == "Start"`.
+
+**State:**
+
+|step|m_id|s1.Ts|s1.Event|s2.Ts|s2.Event|s3.Ts|s3.Event|
+|---|---|---|---|---|---|---|---|
+|s1||||X|X|X|X|
+|s2|0|00:01:00|"Start"|00:02:00|"B"|X|X|
+|s3||||||||
+
+#### Record 4 
+
+|Ts|Event|
+|---|---|
+|3m|"D"|
+
+**Record evaluation at each step:**
+
+* `s3`: **Check 1** isn't passed because the record doesn't meet the condition of `Event == "Stop"`, and **Check 2** isn't passed because `s3` lacks an active sequence.
+* `s2`: **Check 1** isn't passed because the state of `s1` is empty. it passes **Check 2** because it meets the condition of `Ts - s1.Ts < 5m`. **Record 4** and its `m_id` (`0`) are added to the state and the output. The values from this record overwrite the previous state values for `s2.Ts` and `s2.Event`.
+* `s1`: **Check 1** is irrelevant because there's no previous step, and **Check 2** isn't passed because the record doesn't meet the condition of `Event == "Start"`.
+
+**State:**
+
+|step|m_id|s1.Ts|s1.Event|s2.Ts|s2.Event|s3.Ts|s3.Event|
+|---|---|---|---|---|---|---|---|
+|s1||||X|X|X|X|
+|s2|0|00:01:00|"Start"|00:03:00|"D"|X|X|
+|s3||||||||
+
+#### Record 5
+
+|Ts|Event|
+|---|---|
+|4m|"Stop"|
+
+**Record evaluation at each step:**
+
+* `s3`: **Check 1** is passed because `s2` is nonempty and it meets the `s3` condition of `Event == "Stop"`. This match causes the state of `s2` to be cleared and the sequence in `s2` to be promoted to `s3`. **Record 5** and its `m_id` (`0`) are added to the state and the output.
+* `s2`: **Check 1** isn't passed because the state of `s1` is empty, and **Check 2** isn't passed because `s2` lacks an active sequence.
+* `s1`: **Check 1** is irrelevant because there's no previous step. **Check 2** isn't passed because the record doesn't meet the condition of `Event == "Start"`.
+
+
+**State:**
+
+|step|m_id|s1.Ts|s1.Event|s2.Ts|s2.Event|s3.Ts|s3.Event|
+|---|---|---|---|---|---|---|---|
+|s1||||X|X|X|X|
+|s2||||||X|X|
+|s3|0|00:01:00|"Start"|00:03:00|"D"|00:04:00|"Stop"|
+
+#### Record 6
+
+|Ts|Event|
+|---|---|
+|6m|"C"|
+
+**Record evaluation at each step:**
+
+* `s3`: **Check 1** isn't passed because the state of `s2` is empty, and **Check 2** isn't passed because `s3` doesn't meet the `s3` condition of `Event == "Stop"`.
+* `s2`: **Check 1** isn't passed because the state of `s1` is empty, and **Check 2** isn't passed because `s2` lacks an active sequence.
+* `s1`: **Check 1** isn't passed because there's no previous step, and **Check 2** isn't passed because it doesn't meet the condition of `Event == "Start"`. **Record 6** is discarded without affecting the state or output.
+
+**State:**
+
+|step|m_id|s1.Ts|s1.Event|s2.Ts|s2.Event|s3.Ts|s3.Event|
+|---|---|---|---|---|---|---|---|
+|s1||||X|X|X|X|
+|s2||||||X|X|
+|s3|0|00:01:00|"Start"|00:03:00|"D"|00:04:00|"Stop"|
+
+#### Record 7
+
+|Ts|Event|
+|---|---|
+|8m|"Start"|
+
+**Record evaluation at each step:**
+
+* `s3`: **Check 1** isn't passed because the state of `s2` is empty, and **Check 2** isn't passed because it doesn't meet the condition of `Event == "Stop"`.
+* `s2`: **Check 1** isn't passed because the state of `s1` is empty, and **Check 2** isn't passed because `s2` lacks an active sequence.
+* `s1`: **Check 1** isn't passed because there's no previous step. it passes **Check 2** because it meets the condition of `Event == "Start"`. This match initiates a new sequence in `s1` with a new `m_id`. **Record 7** and its `m_id` (`1`) are added to the state and the output. 
+
+**State:**
+
+|step|m_id|s1.Ts|s1.Event|s2.Ts|s2.Event|s3.Ts|s3.Event|
+|---|---|---|---|---|---|---|---|
+|s1|1|00:08:00|"Start"|X|X|X|X|
+|s2||||||X|X|
+|s3|0|00:01:00|"Start"|00:03:00|"D"|00:04:00|"Stop"|
+
+> [!NOTE]
+> There are now two active sequences in the state.
+
+#### Record 8
+
+|Ts|Event|
+|---|---|
+|11m|"E"|
+
+**Record evaluation at each step:**
+
+* `s3`: **Check 1** isn't passed because the state of `s2` is empty, and **Check 2** isn't passed because it doesn't meet the `s3` condition of `Event == "Stop"`.
+* `s2`: **Check 1** is passed because the state of `s1` is nonempty and the record meets the condition of `Ts - s1.Ts < 5m`. This match causes the state of `s1` to be cleared and the sequence in `s1` to be promoted to `s2`. **Record 8** and its `m_id` (`1`) are added to the state and the output.
+* `s1`: **Check 1** is irrelevant because there's no previous step, and **Check 2** isn't passed because the record doesn't meet the condition of `Event == "Start"`.
+
+**State:**
+
+|step|m_id|s1.Ts|s1.Event|s2.Ts|s2.Event|s3.Ts|s3.Event|
+|---|---|---|---|---|---|---|---|
+|s1||||X|X|X|X|
+|s2|1|00:08:00|"Start"|00:11:00|"E"|X|X|
+|s3|0|00:01:00|"Start"|00:03:00|"D"|00:04:00|"Stop"|
+
+#### Record 9
+
+|Ts|Event|
+|---|---|
+|12m|"Stop"|
+
+**Record evaluation at each step:**
+
+* `s3`: **Check 1** is passed because `s2` is nonempty and it meets the `s3` condition of `Event == "Stop"`. This match causes the state of `s2` to be cleared and the sequence in `s2` to be promoted to `s3`. **Record 9** and its `m_id` (`1`) are added to the state and the output.
+* `s2`: **Check 1** isn't passed because the state of `s1` is empty, and **Check 2** isn't passed because `s2` lacks an active sequence.
+* `s1`: **Check 1** isn't passed because there's no previous step. it passes **Check 2** because it meets the condition of `Event == "Start"`. This match initiates a new sequence in `s1` with a new `m_id`.
+
+**State:**
+
+|step|m_id|s1.Ts|s1.Event|s2.Ts|s2.Event|s3.Ts|s3.Event|
+|---|---|---|---|---|---|---|---|
+|s1||||X|X|X|X|
+|s2||||||X|X|
+|s3|1|00:08:00|"Start"|00:11:00|"E"|00:12:00|"Stop"|
+
+#### Final output
+
+|Ts|Event|m_id|
+|---|---|---|
+|00:01:00|Start|0|
+|00:02:00|B|0|
+|00:03:00|D|0|
+|00:04:00|Stop|0|
+|00:08:00|Start|1|
+|00:11:00|E|1|
+|00:12:00|Stop|1|
