@@ -11,7 +11,7 @@ ms.date: 12/08/2022
 LightIngest is a command-line utility for ad-hoc data ingestion into Azure Data Explorer. The utility can pull source data from a local folder or from an Azure blob storage container.
 LightIngest is most useful when you want to ingest a large amount of data, because there is no time constraint on ingestion duration. It's also useful when you want to later query records according to the time they were created, and not the time they were ingested.
 
-To auto-generate a LightIngest command, see [Use ingestion wizard for one-time ingestion of historical data with LightIngest](generate-lightingest-command.md).
+For an example of how to auto-generate a LightIngest command, see [ingest historical data](ingest-data-historical.md).
 
 ## Prerequisites
 

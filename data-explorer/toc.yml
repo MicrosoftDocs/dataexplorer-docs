@@ -147,16 +147,15 @@ items:
               - name: Ingest from container
                 displayName: Event Grid, ingest data, ingestion, one click, csv file, Azure Data Lake Storage
                 href: /azure/data-explorer/ingest-from-container
+          - name: Ingest historical data
+            displayName: ingest backfill, historical data, ingestion
+            href: ingest-data-historical.md
           - name: Streaming ingestion
             displayName: ingest data, ingestion
             href: ingest-data-streaming.md
-          - name: LightIngest
-            items:
-              - name: Using LightIngest
-                displayName: ingest data, ingestion
-                href: lightingest.md
-              - name: Use wizard for one-time ingestion of historical data with LightIngest
-                href: generate-lightingest-command.md
+          - name: Using LightIngest
+            displayName: ingest data, ingestion
+            href: lightingest.md
           - name: Using SDKs
             items:
               - name: .NET SDK

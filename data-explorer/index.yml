@@ -91,6 +91,8 @@ landingContent:
         links:
           - text: Ingestion wizard
             url: ingest-data-wizard.md
+          - text: Ingest historical data
+            url: ingest-data-historical.md
           - text: Streaming ingestion
             url: ingest-data-streaming.md
           - text: Python

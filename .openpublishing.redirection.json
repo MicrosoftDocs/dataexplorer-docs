@@ -804,6 +804,11 @@
       "source_path": "data-explorer/kusto/query/re2-library.md",
       "redirect_url": "/azure/data-explorer/kusto/query/re2",
       "redirect_document_id": true
+    },
+    {
+      "source_path": "data-explorer/generate-lightingest-command.md",
+      "redirect_url": "/azure/data-explorer/ingest-data-historical",
+      "redirect_document_id": true
     }
   ]
 }
