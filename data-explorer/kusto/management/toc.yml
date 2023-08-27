@@ -352,28 +352,28 @@ items:
     - name: Ingestionbatching policy
       href: batchingpolicy.md
     - name: .alter database policy ingestionbatching command
-      displayName: .alter database ingestionbatching policy
+      displayName: .alter database ingestionbatching policy, .alter database ingestion batching policy
       href: alter-database-ingestion-batching-policy.md
     - name: .alter-merge database policy ingestionbatching command
-      displayName: .alter-merge database ingestionbatching policy
+      displayName: .alter-merge database ingestionbatching policy, .alter-merge database ingestion batching policy
       href: alter-merge-database-ingestion-batching-policy.md
     - name: .alter table policy ingestionbatching command
-      displayName: .alter table ingestionbatching policy
+      displayName: .alter table ingestionbatching policy, .alter table ingestion batching policy
       href: alter-table-ingestion-batching-policy.md
     - name: .alter-merge table policy ingestionbatching command
-      displayName: .alter-merge table ingestionbatching policy
+      displayName: .alter-merge table ingestionbatching policy, .alter-merge table ingestion batching policy
       href: alter-merge-table-ingestion-batching-policy.md
     - name: .delete database policy ingestionbatching command
-      displayName: .delete database ingestionbatching policy
+      displayName: .delete database ingestionbatching policy, .delete database ingestion batching policy
       href: delete-database-ingestion-batching-policy.md
     - name: .delete table policy ingestionbatching command
-      displayName: .delete table ingestionbatching policy
+      displayName: .delete table ingestionbatching policy, .delete table ingestion batching policy
       href: delete-table-ingestion-batching-policy.md
     - name: .show database policy ingestionbatching command
-      displayName: .show database ingestionbatching policy
+      displayName: .show database ingestionbatching policy, .show database ingestion batching policy
       href: show-database-ingestion-batching-policy.md
     - name: .show table policy ingestionbatching command
-      displayName: .show table ingestionbatching policy
+      displayName: .show table ingestionbatching policy, .show table ingestion batching policy
       href: show-table-ingestion-batching-policy.md
   - name: Ingestiontime
     items:
