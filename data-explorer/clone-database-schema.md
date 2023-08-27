@@ -17,8 +17,11 @@ This article explains how to use [management commands](kusto/management/index.md
 
 ## Clone a database schema
 
+The following steps describe how to clone a database schema using the [Azure Data Explorer web UI](https://dataexplorer.azure.com/). Alternatively, you can use the [Kusto client libraries](kusto/api/client-libraries.md) to run the same management commands. For more information, see [Create an app to run management commands](kusto/api/get-started/app-management-commands.md).
+
+1. From the left menu, select **Query**.
 1. In the [connection pane](web-ui-query-overview.md#view-clusters-and-databases), select the database whose schema you want to clone.
-2. Run the following command:
+1. Run the following command:
 
     ```kusto
     .show database <DatabaseName> schema as csl script
@@ -35,7 +38,7 @@ This article explains how to use [management commands](kusto/management/index.md
         <CSLScript>
     ```
 
-    This command runs the commands from the script, effectively recreating the database schema on the destination database. For more information, see [.execute database script command](kusto/management/execute-database-script.md).
+    This command runs the commands from the script, recreating the database schema on the destination database. For more information, see [.execute database script command](kusto/management/execute-database-script.md).
 
 1. Check the output. The `Result` column should show as `Complete`. For a `Failed` result, troubleshoot and retry.
 
