@@ -8,7 +8,7 @@ ms.date: 08/27/2023
 
 # Clone a database schema in Azure Data Explorer
 
-This article explains how to use management commands to clone an Azure Data Explorer database schema.
+This article explains how to use [management commands](kusto/management/index.md) to clone an Azure Data Explorer database schema.
 
 ## Prerequisites
 
@@ -18,7 +18,7 @@ This article explains how to use management commands to clone an Azure Data Expl
 ## Clone a database schema
 
 1. In the [connection pane](web-ui-query-overview.md#view-clusters-and-databases), select the database whose schema you want to clone.
-2. Run the following command to display the schema as a CSL script:
+2. Run the following command:
 
     ```kusto
     .show database <DatabaseName> schema as csl script
