@@ -33,12 +33,9 @@ Use the following commands to manage external tables:
 
 For more information about how to query external tables, and ingested and uningested data, see [Query data in Azure Data Lake using Azure Data Explorer](../../../data-lake-query-data.md).
 
-**Notes**
-
-* External table names:
-  * Case-sensitive.
-  * Can’t overlap with Kusto table names.
-  * Follow the rules for [entity names](./entity-names.md).
-* Maximum limit of external tables per database is 1,000.
-* Azure Data Explorer supports [export](../../management/data-export/export-data-to-an-external-table.md) and [continuous export](../../management/data-export/continuous-data-export.md) to an external table.
-* [Data purge](../../concepts/data-purge.md) isn't applied on external tables. Records are never deleted from external tables.
+> [!NOTE]
+>
+> * The maximum limit of external tables per database is 1,000.
+> * External table names are case-sensitive, and can't overlap with Kusto table names. For more information, see [Identifier naming rules](entity-names.md#identifier-naming-rules).
+> * Azure Data Explorer supports [export](../../management/data-export/export-data-to-an-external-table.md) and [continuous export](../../management/data-export/continuous-data-export.md) to an external table.
+> * [Data purge](../../concepts/data-purge.md) isn't applied on external tables. Records are never deleted from external tables.

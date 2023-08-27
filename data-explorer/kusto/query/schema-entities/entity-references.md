@@ -7,7 +7,8 @@ ms.date: 08/22/2023
 ---
 # Entity references
 
-Reference Kusto schema entities in a query by using their names. Valid entity names include *databases*, *tables*, *columns*, and stored functions. *Clusters* can't be referenced by their names.
+Kusto entities are referenced in a query by name. Valid entity names include *databases*, *tables*, *columns*, and *stored functions*. *Clusters* can't be referenced by their names.
+
 If the entity's container is unambiguous in the current context, use the entity name without additional qualifications. For example, when running a query against a
 database called `DB`, you may reference a table called `T` in that database by its name, `T`.
 
@@ -31,7 +32,7 @@ union *, database("DB1").T*
 > Wildcard matching can't match entity names that start with a dollar sign (`$`).
 Such names are system-reserved.
 
-## Next steps
+## Related content
 
-* [schema entity types](./index.md)
-* [schema entity names](./entity-names.md)
+* [Entity types](index.md).
+* [Entity names](entity-names.md).
