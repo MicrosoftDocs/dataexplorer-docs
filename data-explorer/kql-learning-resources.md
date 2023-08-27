@@ -8,7 +8,7 @@ ms.date: 08/13/2023
 # Kusto Query Language learning resources
 
 Kusto Query Language (KQL) is a powerful tool to explore your data and discover patterns, identify anomalies and outliers, create statistical modeling, and more. Are you new to KQL or want to improve your KQL skills? Take a look at the following learning resources.
-
+For more information on KQL, see [KQL overview](kusto/query/index.md).
 ## Training paths
 
 * [Data analysis in Azure Data Explorer with Kusto Query Language](/training/paths/data-analysis-data-explorer-kusto-query-language/)
