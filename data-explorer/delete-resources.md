@@ -32,9 +32,6 @@ Once deleted, the database is taken off the list.
 
 ## Delete a cluster
 
-> [!CAUTION]
-> Deleting a cluster is a permanent action and cannot be undone. All cluster content will be lost.
-
 To delete your Azure Data Explorer cluster:
 
 1. Open your cluster in the [Azure portal](https://portal.azure.com/).
@@ -47,6 +44,9 @@ To delete your Azure Data Explorer cluster:
 
 1. In the **Delete cluster** window, type in the name of the cluster. Then, select **Delete**.
 
+    > [!CAUTION]
+    > Deleting a cluster is a permanent action and cannot be undone. All cluster content will be lost.
+    
 ## Related content
 
 * [Troubleshoot: Failure to create or delete a database or table](troubleshoot-database-table.md)
