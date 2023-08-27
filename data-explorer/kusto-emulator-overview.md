@@ -13,7 +13,7 @@ The Kusto emulator is a local environment that encapsulates the [Kusto Query Eng
 >
 > - The emulator is provided *as-is*, without any support or warranties.
 > - The emulator isn't intended for use in production environments.
-> - The [license terms](https://aka.ms/adx.emulator.license) explicitly prohibit benchmark tests using the emulator due to the built-in limitations making it a poor technology. The emulator has a very different performance profile compared to the Azure Data Explorer service.
+> - The [license terms](https://aka.ms/adx.emulator.license) explicitly prohibit benchmark tests using the emulator as it is not intended or optimized for that purpose. The emulator has a very different performance profile compared to the Azure Data Explorer service.
 
 ## Architecture
 
