@@ -49,9 +49,10 @@ For general information on data ingestion, see [Azure Data Explorer data ingesti
     >
     > Object: `*ObjectName*`;AwsCredentials=`*AwsAccessID*`,`*AwsSecretKey*
 
+    Optionally, you can apply bucket filters to filter data according to a specific file extension.
+
     :::image type="content" source="media/get-data-amazon-s3/configure-tab.png" alt-text="Screenshot of configure tab with new table entered and an Amazon S3 connection string pasted." lightbox="media/get-data-amazon-s3/configure-tab.png":::
 
-    If you paste a connection string of a bucket, optionally, you can apply bucket filters to filter data according to a specific file extension.
 1. Select **Next**.
 
 ## Inspect the data
