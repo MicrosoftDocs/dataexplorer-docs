@@ -7,7 +7,7 @@ ms.date: 05/01/2023
 ---
 # External tables
 
-An **external table** is a schema entity that references data stored outside a database in your cluster.
+An external table is a schema entity that references data stored external to a Kusto database in your cluster.
 
 Similar to [tables](tables.md), an external table has a well-defined schema (an ordered list of column name and data type pairs). Unlike tables where data is ingested into your cluster, external tables operate on data stored and managed outside your cluster.
 

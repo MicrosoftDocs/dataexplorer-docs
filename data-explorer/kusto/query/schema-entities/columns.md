@@ -7,7 +7,7 @@ ms.date: 02/13/2020
 ---
 # Columns
 
-Every [table](tables.md) in Kusto, and every tabular data stream, is a rectangular grid of columns and rows. Every column in the table has a name and a specific [scalar data type](../scalar-data-types/index.md). The columns of a table or a tabular data stream are ordered, so a column also has a specific position in the table's collection of columns.
+Columns are named entities that have a [scalar data type](../scalar-data-types/index.md). Columns are referenced in the query relative to the tabular data stream that is in context of the specific operator referencing them.Every [table](tables.md) in Kusto, and every tabular data stream, is a rectangular grid of columns and rows. The columns of a table or a tabular data stream are ordered, so a column also has a specific position in the table's collection of columns.
 
 > [!NOTE]
 >
