@@ -43,12 +43,15 @@ For general information on data ingestion, see [Azure Data Explorer data ingesti
     > [!NOTE]
     > Table names can be up to 1024 characters including spaces, alphanumeric, hyphens, and underscores. Special characters aren't supported.
 
-1. In the **URI** field, paste the connection string of your bucket in the following format.
+1. In the **URI** field, paste the connection string of a single bucket, or an individual object in the following format.
 
-    > `https://`*BucketName*`.s3.`*RegionName*`.amazonaws.com/`*ObjectName*`;AwsCredentials=`*AwsAccessID*`,`*AwsSecretKey*
+    > Bucket: `https://`*BucketName*`.s3.`*RegionName*`.amazonaws.com/
+    >
+    > Object: `*ObjectName*`;AwsCredentials=`*AwsAccessID*`,`*AwsSecretKey*
 
     :::image type="content" source="media/get-data-amazon-s3/configure-tab.png" alt-text="Screenshot of configure tab with new table entered and an Amazon S3 connection string pasted." lightbox="media/get-data-amazon-s3/configure-tab.png":::
 
+    If you paste a connection string of a bucket, optionally, you can apply bucket filters to filter data according to a specific file extension.
 1. Select **Next**.
 
 ## Inspect the data
