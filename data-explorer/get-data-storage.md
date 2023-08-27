@@ -104,7 +104,7 @@ In the **Data preparation** window, all three steps are marked with green check 
 
 ### [Wizard](#tab/wizard)
 
-You can use the ingestion wizard to perform one-time ingestion, or continuous ingestion . You can use the ingestion wizard For continuous ingestion, set up an [Event Grid ingestion pipeline](#create-continuous-ingestion) in the ingestion wizard that responds to new files in the source container and ingests qualifying data into your table.
+You can use the ingestion wizard to perform a one-time ingestion, or continuous ingestion. For continuous ingestion, set up an [Event Grid ingestion pipeline](#create-continuous-ingestion) in the ingestion wizard that responds to new files in the source container and ingests qualifying data into your table.
 
 ### Prerequisites
 
