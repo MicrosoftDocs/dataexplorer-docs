@@ -433,11 +433,11 @@ items:
             items:
               - name: Add database principal
                 href: add-database-principal.md
-              - name: Backup and recreate database schema
-                href: backup-database.md
+              - name: Clone a database schema
+                href: clone-database-schema.md
+                displayName: backup schema, duplicate database
               - name: Configure a database using a Kusto Query Language script
                 href: database-script.md
-                displayName: clone database, duplicate database
               - name: Create policies programmatically
                 displayName: database policy, database policies, table policy, table policies, python, c#
                 href: database-table-policies.md
