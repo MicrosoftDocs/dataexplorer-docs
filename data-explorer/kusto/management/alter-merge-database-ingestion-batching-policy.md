@@ -1,11 +1,11 @@
 ---
-title:  .alter database policy ingestionbatching command
-description: Learn how to use the `.alter database policy ingestionbatching` command to set the ingestion batching policy.
-ms.reviewer: yonil
+title:  .alter-merge database policy ingestionbatching command
+description: Learn how to use the `.alter-merge database policy ingestionbatching` command to set the ingestion batching policy.
+ms.reviewer: slneimer
 ms.topic: reference
-ms.date: 05/25/2023
+ms.date: 08/27/2023
 ---
-# .alter database policy ingestionbatching command
+# .alter-merge database policy ingestionbatching command
 
 Sets the [ingestion batching policy](batchingpolicy.md). The ingestion batching policy determines when data aggregation stops and a batch is sealed and ingested.
 
@@ -21,7 +21,7 @@ See [defaults and limits](batchingpolicy.md#defaults-and-limits).
 
 ## Syntax
 
-`.alter` `database` *DatabaseName* `policy` `ingestionbatching` *PolicyObject*
+`.alter-merge` `database` *DatabaseName* `policy` `ingestionbatching` *PolicyObject*
 
 [!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
 
@@ -32,12 +32,12 @@ See [defaults and limits](batchingpolicy.md#defaults-and-limits).
 |*DatabaseName*|string|&check;|The name of the database for which to alter the ingestion batching policy.|
 |*PolicyObject*|string|&check;|A policy object that defines the ingestion batching policy. For more information, see [ingestion batching policy](batchingpolicy.md).|
 
-## Example
+## Examples
 
 The following command sets a batch ingress data time of 30 seconds, for 500 files, or 1 GB, whichever comes first.
 
 ````kusto
-.alter database MyDatabase policy ingestionbatching
+.alter-merge database MyDatabase policy ingestionbatching
 ```
 {
     "MaximumBatchingTimeSpan" : "00:00:30",
@@ -47,9 +47,21 @@ The following command sets a batch ingress data time of 30 seconds, for 500 file
 ```
 ````
 
+The following command sets a batch ingress data time of 45 seconds, for 450 files, or the previous value of MaximumRawDataSizeMB, whichever comes first.
+
+````kusto
+.alter-merge database MyDatabase policy ingestionbatching
+```
+{
+    "MaximumBatchingTimeSpan" : "00:00:45",
+    "MaximumNumberOfItems" : 450
+}
+```
+````
+
 >[!NOTE]
-> If you don't specify all parameters of a *PolicyObject*, the unspecified parameters will be set to [default values](batchingpolicy.md#sealing-a-batch). For example, specifying only "MaximumBatchingTimeSpan" will result in "MaximumNumberOfItems" and "MaximumRawDataSizeMB" being set to default. To override only some parameters, use the [alter-merge command](alter-merge-database-ingestion-batching-policy.md) command.
+> If you specify only some parameters of a *PolicyObject*, they will replace the values in the current policy, while the other parameters will remain intact. To set the [default values](batchingpolicy.md#sealing-a-batch) for unspecified parameters, use the [alter command](alter-database-ingestion-batching-policy.md) command.
 
 ## Next steps
 
-- [alter table ingestionbatching policy](alter-table-ingestion-batching-policy.md)
+- [alter-merge table ingestionbatching policy](alter-merge-table-ingestion-batching-policy.md)
