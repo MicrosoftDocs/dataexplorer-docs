@@ -145,6 +145,9 @@ items:
               - name: Get data from Azure storage
                 displayName: Event Grid, ingest data, ingestion, one click, csv file, Azure Data Lake Storage
                 href: get-data-storage.md
+              - name: Get data from Amazon S3
+                displayName: ingest data
+                href: get-data-amazon-s3.md
           - name: Streaming ingestion
             displayName: ingest data, ingestion
             href: ingest-data-streaming.md
