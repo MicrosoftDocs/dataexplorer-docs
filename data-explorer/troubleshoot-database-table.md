@@ -57,5 +57,4 @@ For more information about permissions, see [Manage database permissions](manage
 ## Related content
 
 * [Check cluster health](check-cluster-health.md)
-* [Delete resources](delete-resources.md)
 * [Manage database permissions](manage-database-permissions.md)
