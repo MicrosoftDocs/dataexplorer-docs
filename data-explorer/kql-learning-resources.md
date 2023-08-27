@@ -22,7 +22,7 @@ For more information on KQL, see [KQL overview](kusto/query/index.md).
 * [Tutorial: Use aggregation functions](kusto/query/tutorials/use-aggregation-functions.md)
 * [Tutorial: Join data from multiple tables](kusto/query/tutorials/join-data-from-multiple-tables.md)
 * [Tutorial: Create geospatial visualizations](kusto/query/tutorials/create-geospatial-visualizations.md)
-* [Tutorial: Detect and analyze anomalies using KQL in Azure Monitor](azure/azure-monitor/logs/kql-machine-learning-azure-monitor)
+* [Tutorial: Detect and analyze anomalies using KQL in Azure Monitor](/azure/azure-monitor/logs/kql-machine-learning-azure-monitor)
 
 ## Cheat sheets
 
