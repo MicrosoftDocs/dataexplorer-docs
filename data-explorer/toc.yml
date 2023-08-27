@@ -435,7 +435,7 @@ items:
                 href: add-database-principal.md
               - name: Clone a database schema
                 href: clone-database-schema.md
-                displayName: backup schema, duplicate database
+                displayName: backup, duplicate
               - name: Configure a database using a Kusto Query Language script
                 href: database-script.md
               - name: Create policies programmatically
