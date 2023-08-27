@@ -423,6 +423,8 @@ items:
               - name: Manage cluster language extensions
                 displayName: Python, R
                 href: language-extensions.md
+              - name: Delete a cluster
+                href: delete-cluster.md
           - name: Free cluster
             items:
               - name: Manage free cluster
@@ -440,6 +442,8 @@ items:
               - name: Create policies programmatically
                 displayName: database policy, database policies, table policy, table policies, python, c#
                 href: database-table-policies.md
+              - name: Delete a database
+                href: delete-database.md
           - name: Table
             items:
               - name: Create ingestion batching table policy
@@ -456,8 +460,6 @@ items:
                 href: delete-data.md
               - name: Deal with duplicate data
                 href: dealing-with-duplicates.md
-          - name: Delete resources
-            href: delete-resources.md
       - name: Monitor
         items:
           - name: Monitor Azure Data Explorer with metrics
