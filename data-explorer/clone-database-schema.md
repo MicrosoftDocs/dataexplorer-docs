@@ -40,7 +40,7 @@ The following steps describe how to clone a database schema using the [Azure Dat
 
     :::image type="content" source="media/clone-database-schema/select-other-database.png" alt-text="Screenshot of the other selected database in connection pane." lightbox="media/clone-database-schema/select-other-database.png":::
 
-1. Run the following command, replacing `<CSLScript>` with the copied script. with the copied script. If the database names differ, replace the database name in the script commands with the name of the new database.
+1. Run the following command, replacing `<CSLScript>` with the copied script. If the database names differ, replace the database name in the script commands with the name of the new database.
 
     ```kusto
     .execute database script <| <CSLScript>
