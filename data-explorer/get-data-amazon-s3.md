@@ -7,7 +7,7 @@ ms.date: 08/14/2023
 ---
 # Get data from Amazon S3
 
-Data ingestion is the process used to load data records from one or more sources into a table in Azure Data Explorer. Once ingested, the data becomes available for query. In this article, you learn ho to get data from Amazon S3 into either a new or existing table.
+Data ingestion is the process used to load data records from one or more sources into a table in Azure Data Explorer. Once ingested, the data becomes available for query. In this article, you learn how to get data from Amazon S3 into either a new or existing table.
 
 For more information on Amazon S3, see [What is Amazon S3?](https://docs.aws.amazon.com/AmazonS3/latest/userguide/Welcome.html).
 
@@ -45,9 +45,9 @@ For general information on data ingestion, see [Azure Data Explorer data ingesti
 
 1. In the **URI** field, paste the connection string of a single bucket, or an individual object in the following format.
 
-    > Bucket: `https://`*BucketName*`.s3.`*RegionName*`.amazonaws.com/
+    > Bucket: `https://`*BucketName*`.s3.`*RegionName*`.amazonaws.com`
     >
-    > Object: `*ObjectName*`;AwsCredentials=`*AwsAccessID*`,`*AwsSecretKey*
+    > Object: *ObjectName*`;AwsCredentials=`*AwsAccessID*`,`*AwsSecretKey*
 
     Optionally, you can apply bucket filters to filter data according to a specific file extension.
 
@@ -67,8 +67,6 @@ The **inspect** tab opens with a preview of the data.
 1. Optionally, [Edit columns](#edit-columns).
 1. Optionally, explore [Advanced options based on data type](#advanced-options-based-on-data-type).
 1. Select **Finish** to complete the ingestion process.
-
-### Edit columns
 
 [!INCLUDE [get-data-edit-columns](includes/get-data-edit-columns.md)]
 
