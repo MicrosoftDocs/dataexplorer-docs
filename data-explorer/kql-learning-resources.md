@@ -22,6 +22,7 @@ Kusto Query Language (KQL) is a powerful tool to explore your data and discover 
 * [Tutorial: Join data from multiple tables](kusto/query/tutorials/join-data-from-multiple-tables.md)
 * [Tutorial: Create geospatial visualizations](kusto/query/tutorials/create-geospatial-visualizations.md)
 * [Tutorial: Detect and analyze anomalies using KQL in Azure Monitor](azure/azure-monitor/logs/kql-machine-learning-azure-monitor)
+
 ## Cheat sheets
 
 * [SQL to Kusto Query Language cheat sheet](kusto/query/sqlcheatsheet.md)
