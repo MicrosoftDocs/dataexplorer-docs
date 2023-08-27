@@ -433,7 +433,7 @@ items:
             items:
               - name: Add database principal
                 href: add-database-principal.md
-              - name: Clone a database schema
+              - name: Clone database schema
                 href: clone-database-schema.md
                 displayName: backup, duplicate
               - name: Configure a database using a Kusto Query Language script
