@@ -74,7 +74,7 @@ For more information on management commands, see [Management commands overview](
 
 ## KQL in other services
 
-KQL is used by many other Microsoft services. For specific information on the use of KQL in these products, refer to the following links:
+KQL is used by many other Microsoft services. For specific information on the use of KQL in these environments, refer to the following links:
 
 * [Log queries in Azure Monitor](azure/azure-monitor/logs/log-query-overview)
 * [Kusto Query Language in Microsoft Sentinel](/azure/sentinel/kusto-overview)
