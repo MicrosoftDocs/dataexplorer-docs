@@ -21,6 +21,9 @@ The following steps describe how to clone a database schema using the [Azure Dat
 
 1. From the left menu, select **Query**.
 1. In the [connection pane](web-ui-query-overview.md#view-clusters-and-databases), select the database whose schema you want to clone.
+
+    :::image type="content" source="media/clone-database-schema/select-database.png" alt-text="Screenshot of selected database in connection pane." lightbox="media/clone-database-schema/select-database.png":::
+    
 1. Run the following command:
 
     ```kusto
@@ -30,12 +33,17 @@ The following steps describe how to clone a database schema using the [Azure Dat
     This command returns a script of management commands to recreate the database schema. For more information, see [.show database schema command](kusto/management/show-schema-database.md#show-database-schema-as-csl-script).
 
 1. Copy the CSL script output.
+
+    :::image type="content" source="media/clone-database-schema/copy-script-output.png" alt-text="Screenshot of the selected records and right-click menu." lightbox="media/clone-database-schema/copy-script-output.png":::
+
 1. In the connection pane, select the database where you want to recreate the schema. If necessary, [create a database](create-cluster-and-database.md#create-a-database).
+
+    :::image type="content" source="media/clone-database-schema/select-other-database.png" alt-text="Screenshot of selected database in connection pane." lightbox="media/clone-database-schema/select-other-database.png":::
+
 1. Run the following command with the copied script. If the database names differ, replace the name in the script commands with the name of the destination database.
 
     ```kusto
-    .execute database script <|
-        <CSLScript>
+    .execute database script <| <CSLScript>
     ```
 
     This command runs the commands from the script, recreating the database schema on the destination database. For more information, see [.execute database script command](kusto/management/execute-database-script.md).
