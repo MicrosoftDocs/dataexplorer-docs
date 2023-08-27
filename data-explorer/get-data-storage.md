@@ -8,9 +8,9 @@ ms.date: 08/21/2023
 
 # Get data from Azure storage
 
-Data ingestion is the process used to load data records from one or more sources into a table in Azure Data Explorer. Once ingested, the data becomes available for query. In this article, you learn how to get data from Azure storage (ADLS Gen2 container or individual blobs) into either a new or existing table.
+Data ingestion is the process used to load data records from one or more sources into a table in Azure Data Explorer. Once ingested, the data becomes available for query. In this article, you learn how to get data from Azure storage (ADLS Gen2 container, blob container, or individual blobs) into either a new or existing table.
 
-Ingestion can be done as a one-time operation, or as a continuous method. You can use both the new Get data experience or the ingestion wizard to perform one-time ingestion. For continuous ingestion, set up an [Event Grid ingestion pipeline](#create-continuous-ingestion) in the ingestion wizard that responds to new files in the source container and ingests qualifying data into your table.
+Ingestion can be done as a one-time operation, or as a continuous method. Continuous ingestion can be configured via portal only.
 
 For general information on data ingestion, see [Azure Data Explorer data ingestion overview](ingest-data-overview.md).
 
@@ -28,8 +28,6 @@ Select the tab that corresponds with your desired ingestion method.
 * An Azure Data Explorer cluster and database. [Create a cluster and database](create-cluster-and-database.md).
 * A [storage account](/azure/storage/common/storage-quickstart-create-account?tabs=azure-portal).
 
-> [!NOTE]
-> To enable access between a cluster and a storage account without public access (restricted to private endpoint/service endpoint), see [Create a Managed Private Endpoint](security-network-managed-private-endpoint-create.md).
 
 1. From the left menu, select **Query**.
 
@@ -67,7 +65,7 @@ Select the tab that corresponds with your desired ingestion method.
         | Folder path| Filters data to ingest files with a specific folder path. |
         | File extension| Filters data to ingest files with a specific file extension only.|
 
-    1. If you selected **Add URI**, paste your storage connection string in the **URI** field, and then select **+**.
+    1. If you selected **Add URI**, paste your storage connection string for a blob container or individual files in the **URI** field, and then select **+**.
 
         > [!NOTE]
         >
@@ -106,14 +104,13 @@ In the **Data preparation** window, all three steps are marked with green check 
 
 ### [Wizard](#tab/wizard)
 
+You can use the ingestion wizard to perform one-time ingestion, or continuous ingestion . You can use the ingestion wizard For continuous ingestion, set up an [Event Grid ingestion pipeline](#create-continuous-ingestion) in the ingestion wizard that responds to new files in the source container and ingests qualifying data into your table.
+
 ### Prerequisites
 
 * A Microsoft account or an Azure Active Directory user identity. An Azure subscription isn't required.
 * An Azure Data Explorer cluster and database. [Create a cluster and database](create-cluster-and-database.md).
 * A [storage account](/azure/storage/common/storage-quickstart-create-account?tabs=azure-portal). An Event Grid notification subscription can be set on Azure Storage accounts for `BlobStorage`, `StorageV2`, or [Data Lake Storage Gen2](/azure/storage/blobs/data-lake-storage-introduction).
-
-> [!NOTE]
-> To enable access between a cluster and a storage account without public access (restricted to private endpoint/service endpoint), see [Create a Managed Private Endpoint](security-network-managed-private-endpoint-create.md).
 
 1. From the left menu, select **Query**.
 
