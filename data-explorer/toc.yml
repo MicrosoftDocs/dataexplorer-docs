@@ -142,9 +142,9 @@ items:
               - name: Get data from local file
                 displayName: ingest data, ingestion wizard, one click, existing table, csv file, json
                 href: get-data-file.md
-              - name: Get data from container
+              - name: Get data from Azure storage
                 displayName: Event Grid, ingest data, ingestion, one click, csv file, Azure Data Lake Storage
-                href: ingest-from-container.md
+                href: get-data-storage.md
               - name: Get data from Amazon S3
                 displayName: ingest data
                 href: get-data-amazon-s3.md
