@@ -21,7 +21,7 @@ Kusto Query Language (KQL) is a powerful tool to explore your data and discover 
 * [Tutorial: Use aggregation functions](kusto/query/tutorials/use-aggregation-functions.md)
 * [Tutorial: Join data from multiple tables](kusto/query/tutorials/join-data-from-multiple-tables.md)
 * [Tutorial: Create geospatial visualizations](kusto/query/tutorials/create-geospatial-visualizations.md)
-
+* [Tutorial: Detect and analyze anomalies using KQL in Azure Monitor](azure/azure-monitor/logs/kql-machine-learning-azure-monitor)
 ## Cheat sheets
 
 * [SQL to Kusto Query Language cheat sheet](kusto/query/sqlcheatsheet.md)
@@ -37,6 +37,7 @@ The following courses are not associated with the product. We do not endorse the
 
 * [Must learn KQL](https://github.com/rod-trent/MustLearnKQL)
 * [Free Pluralsight training: Azure Data Explorer](https://www.pluralsight.com/partners/microsoft/azure-data-explorer)
+* [Pluralsight: KQL from scratch](https://www.pluralsight.com/courses/kusto-query-language-kql-from-scratch)
 * [Udemy: Learn KQL for Microsoft Sentinel](https://www.udemy.com/course/learn-kql-for-microsoft-sentinel/)
 * [Cloud Academy: Introduction to Kusto Query Language](https://cloudacademy.com/lab/introduction-to-kusto-query-language/)
 * [Infosec Train: Kusto Query Language (KQL) eLearning Training Program Online](https://www.infosectrain.com/self-paced-learning/kusto-query-language-training/)
