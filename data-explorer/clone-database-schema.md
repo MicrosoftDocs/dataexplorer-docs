@@ -32,7 +32,7 @@ The following steps describe how to clone a database schema using the [Azure Dat
 
     This command returns a script of management commands to recreate the database schema. For more information, see [.show database schema command](kusto/management/show-schema-database.md#show-database-schema-as-csl-script).
 
-1. Copy the CSL script output.
+1. Copy the CSL script output. To do so, select all of the returned rows. Then, either right-click and select **Copy** or use the *Ctrl + C* keyboard shortcut.
 
     :::image type="content" source="media/clone-database-schema/copy-script-output.png" alt-text="Screenshot of the selected records and right-click menu." lightbox="media/clone-database-schema/copy-script-output.png":::
 
@@ -40,13 +40,13 @@ The following steps describe how to clone a database schema using the [Azure Dat
 
     :::image type="content" source="media/clone-database-schema/select-other-database.png" alt-text="Screenshot of the other selected database in connection pane." lightbox="media/clone-database-schema/select-other-database.png":::
 
-1. Run the following command with the copied script. If the database names differ, replace the name in the script commands with the name of the destination database.
+1. Run the following command, replacing `<CSLScript>` with the copied script. with the copied script. If the database names differ, replace the database name in the script commands with the name of the new database.
 
     ```kusto
     .execute database script <| <CSLScript>
     ```
 
-    This command runs the commands from the script, recreating the database schema on the destination database. For more information, see [.execute database script command](kusto/management/execute-database-script.md).
+    This command runs the commands from the script, recreating the database schema on the new database. For more information, see [.execute database script command](kusto/management/execute-database-script.md).
 
 1. Check the output. The `Result` column should show as `Complete`. For a `Failed` result, troubleshoot and retry.
 
