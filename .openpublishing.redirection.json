@@ -814,6 +814,11 @@
       "source_path": "data-explorer/ingest-from-local-file.md",
       "redirect_url": "/azure/data-explorer/get-data-file",
       "redirect_document_id": true
+    },
+    {
+      "source_path": "data-explorer/ingest-from-container.md",
+      "redirect_url": "/azure/data-explorer/get-data-storage",
+      "redirect_document_id": true
     }
   ]
 }
