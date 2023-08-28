@@ -26,7 +26,7 @@ For more information on SKU optimization, see [Select a SKU for your cluster](ma
 
 Azure Data Explorer partitions all data ingested into tables into *extents*, or *data shards*, which are horizontal slices of the table. Each extent usually contains a few million records and is encoded and indexed independently of other extents. This functionality contributes to linear scale in ingestion throughput.
 
-Extents are spread evenly across the cluster nodes, where they're cached both on the local SSD and in memory. This distribution and caching enhances the capacity to prepare and execute highly distributed and parallel queries.
+Extents are spread evenly across the cluster nodes, where they're cached both on the local SSD and in memory. This distribution enhances the capacity to prepare and execute highly distributed and parallel queries.
 
 For more information on data storage, see [Extents overview](kusto/management/extents-overview.md).
 
@@ -49,7 +49,7 @@ For more information on extent and index merging, see [Merge policy](kusto/manag
 
 ## Column compression
 
-Azure Data Explorer maintains data in a compressed state, reducing the amount of memory required to store and process data. This results in faster query performance and more efficient use of system resources.
+Azure Data Explorer maintains data in a compressed state, reducing the amount of memory required to store and process data. This behavior results in faster query performance and more efficient use of system resources.
 
 Azure Data Explorer avoids vertical compression, which involves sorting data before compression, due to its high CPU cost. Instead, you can specify the preferred data sort order for scenarios with dominant query patterns. This trade-off prioritizes quick data availability for queries.
 
