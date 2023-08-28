@@ -9,7 +9,7 @@ ms.date: 08/28/2023
 
 The Azure Data Explorer provides unparalleled performance for ingesting and querying telemetry, logs, and time series data. It features optimized storage formats, indexes, and uses advanced data statistics for efficient query planning and just-in-time compiled query execution.
 
-## Storage and compute resources
+## Storage vs. compute
 
 Azure Data Explorer separates compute and storage resources. Persistent data resides in Azure Blob Storage, while compute resources may store temporary data or act as a cache for persistent storage.
 
