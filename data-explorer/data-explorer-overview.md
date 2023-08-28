@@ -15,7 +15,7 @@ Azure Data Explorer is a fully managed, high-performance, big data analytics pla
 
 By analyzing structured, semi-structured, and unstructured data across time series, and by using Machine Learning, Azure Data Explorer makes it simple to extract key insights, spot patterns and trends, and create forecasting models. Azure Data Explorer uses a traditional relational model, organizing data into tables with strongly-typed schemas. Tables are stored within databases, and a cluster can manage multiple databases. Azure Data Explorer is scalable, secure, robust, and enterprise-ready, and is useful for log analytics, time series analytics, IoT, and general-purpose exploratory analytics.
 
-Azure Data Explorer capabilities are extended by other services built on its powerful query language: [Kusto Query Language (KQL)](kusto/query/index.md). These services include [Azure Monitor logs](/azure/log-analytics/), [Application Insights](/azure/application-insights/), [Time Series Insights](/azure/time-series-insights/), and [Microsoft Defender for Endpoint](/microsoft-365/security/defender-endpoint/microsoft-defender-endpoint).
+Azure Data Explorer capabilities are extended by other services built on its query language: [Kusto Query Language (KQL)](kusto/query/index.md). These services include [Azure Monitor logs](/azure/log-analytics/), [Application Insights](/azure/application-insights/), [Time Series Insights](/azure/time-series-insights/), and [Microsoft Defender for Endpoint](/microsoft-365/security/defender-endpoint/microsoft-defender-endpoint).
 
 ## When should you use Azure Data Explorer?
 
