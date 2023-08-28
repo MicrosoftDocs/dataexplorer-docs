@@ -11,11 +11,11 @@ The Azure Data Explorer provides unparalleled performance for ingesting and quer
 
 ## Storage vs. compute
 
-Azure Data Explorer separates compute and storage resources. Persistent data resides in Azure Blob Storage, while compute resources may store temporary data or act as a cache for persistent storage.
+Azure Data Explorer separates storage and compute resources. Persistent data resides in Azure Blob Storage, while compute resources may store temporary data or act as a cache for persistent storage.
 
 This separation provides the following advantages:
 
-* Independent scale out of compute and storage resources
+* Independent scale out of storage and compute resources
 * Effortless transition between compute clusters, enhancing resilience and scalability
 * Accessibility to identical data across multiple compute clusters
 * SKU optimization
