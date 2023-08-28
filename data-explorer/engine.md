@@ -62,7 +62,7 @@ Azure Data Explorer uses distributed data query technology intended for fast ad-
 * Query-generated temporary data is stored in aggregated RAM
 * Relevant extents are marked on a query plan, providing snapshot isolation
 * Fast and efficient queries are prioritized with short [default timeouts](set-timeout-limits.md)
-* [Cross-cluster queries](kusto/query/cross-cluster-or-database-queries.md) are natively supported and minimize inter-cluster data exchange
+* Native support for [cross-cluster queries](kusto/query/cross-cluster-or-database-queries.md) that minimizes inter-cluster data exchange
 * Queries are just-in-time compiled into highly efficient machine code, using data statistics from all extents and tailored to column encoding specifics
 
 > [!NOTE]
