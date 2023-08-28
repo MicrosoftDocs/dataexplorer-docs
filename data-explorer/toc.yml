@@ -422,6 +422,8 @@ items:
               - name: Manage cluster language extensions
                 displayName: Python, R
                 href: language-extensions.md
+              - name: Delete a cluster
+                href: delete-cluster.md
           - name: Free cluster
             items:
               - name: Manage free cluster
@@ -439,6 +441,8 @@ items:
               - name: Create policies programmatically
                 displayName: database policy, database policies, table policy, table policies, python, c#
                 href: database-table-policies.md
+              - name: Delete a database
+                href: delete-database.md
           - name: Table
             items:
               - name: Create ingestion batching table policy
