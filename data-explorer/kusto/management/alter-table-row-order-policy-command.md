@@ -27,7 +27,7 @@ You must have at least [Table Admin](access-control/role-based-access-control.md
 | *SortKey* |string | &check; | The column by which to sort the data in the extent.|
 
 > [!TIP]
-> We recommend setting up to two sort keys. For more information, see [Performance considerations](roworderpolicy.md#performance-considerations).
+> We recommend using a maximum of two sort keys. For more information, see [Performance considerations](roworderpolicy.md#performance-considerations).
 
 ### Examples
 
