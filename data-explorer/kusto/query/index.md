@@ -72,6 +72,16 @@ Not all management commands modify data or metadata. The large class of commands
 
 For more information on management commands, see [Management commands overview](../management/index.md).
 
+## KQL in other services
+
+KQL is used by many other Microsoft services. For specific information on the use of KQL in these environments, refer to the following links:
+
+* [Log queries in Azure Monitor](/azure/azure-monitor/logs/log-query-overview)
+* [Kusto Query Language in Microsoft Sentinel](/azure/sentinel/kusto-overview)
+* [Understanding the Azure Resource Graph query language](/azure/governance/resource-graph/concepts/query-language)
+* [Proactively hunt for threats with advanced hunting in Microsoft 365 Defender](/microsoft-365/security/defender/advanced-hunting-overview)
+* [CMPivot queries](/mem/configmgr/core/servers/manage/cmpivot-overview#queries)
+
 ## Next steps
 
 * [Tutorial: Learn common operators](tutorials/learn-common-operators.md)
