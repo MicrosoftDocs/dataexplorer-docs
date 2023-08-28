@@ -34,11 +34,6 @@ The `graph-match` operator searches for all occurences of a graph pattern in an 
 |Any direction edge|`-[`*e*`]-`|`--`|
 |Variable length edge|`-[`*e*`*3..5]-`|`-[*3..5]-`|
 
-### Supported parameters
-|Name|Type|Required|Description|
-|--|--|--|--|
-| *cycles* |string|| Indicates to perform cycle prevention based on the specified type: `none`, `edges`, `nodes`. The default is `none`.|
-
 ## Returns
 
 The `graph-match` operator returns a *tabular* result, each record corresponds to a match of the pattern in the graph.  
