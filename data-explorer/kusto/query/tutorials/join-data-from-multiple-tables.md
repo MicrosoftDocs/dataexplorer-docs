@@ -144,7 +144,8 @@ StormEvents
     | where EventType == "Avalanche"
     | distinct State
     )
-    on State  
+    on State
+| project State
 ```
 
 **Output**
