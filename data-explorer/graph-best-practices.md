@@ -162,6 +162,8 @@ Sometimes it's required to contextualize time series data in ADX with a graph wh
 
 The following example (IIoT scenario) demonstrates the transformation to the canonical model and how to query it. The base tables for the nodes and edges of the graph have a very different in their schema.
 
+:::image type="content" source="media/graph/graph-property-graph.png" alt-text="Infographic on the property graph scenario.":::
+
 ```kusto
 let sensors = datatable(sensorId:string, tagName:string, unitOfMeasuree:string)
 [

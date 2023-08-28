@@ -20,6 +20,12 @@ The graph semantics extension to Kusto enables users to create and query graphs 
 
 The graph semantics in Kusto require the creation of a new graph representation for every query. Such a KQL query invokes an operator to create a graph representation of the data based on tabular expressions for edges and optionally nodes. After the graph was created, various operations can be expressed to enrich or analyze the graph data further.
 
+:::image type="content" source="media/graph/graph-make-graph.png" alt-text="Infographic on the creation of a graph from tabular expressions":::
+
+alternative picture:
+
+:::image type="content" source="media/graph/graph-make-graph-simple.png" alt-text="Simplified infographic on the creation of a graph from tabular expressions":::
+
 ## Graph engine
 
 The underlying graph engine of the graph semantics extension is in-memory only, which means that it operates on the data that is loaded into the memory of an ADX engine node. This allows for fast and interactive graph analysis. The graph engine follows the model of a property graph, which is a common and popular graph data model that supports nodes and edges with arbitrary properties. The graph engine also allows using all of the existing scalar operators of KQL. This enables users to write complex and expressive graph queries that can leverage the full power and functionality of KQL.
@@ -29,6 +35,8 @@ The main memory consumption of the graph representation is determined by the num
 ## Friends of a friend
 
 A common example of graphs is to model and query social networks, where nodes represent users and edges represent friendships or interactions. For instance, suppose we have a table called Users that contains information about users, such as their name, and organization, and a table called Knows that contains information about the friendships between users.
+
+:::image type="content" source="media/graph/graph-fof.png" alt-text="Infographic on the friend of a friend scenario.":::
 
 We can create a graph from these tables by using multiple joins:
 
@@ -52,9 +60,9 @@ let Users = datatable (UserId:string , name:string , org:string)[]; // nodes
 let Knows = datatable (FirstUser:string , SecondUser:string)[]; // edges
 Knows
 | make-graph FirstUser --> SecondUser with Users on UserId
-| graph-match (user)-[knows1]->(m)-[knows2]->(fof)
-    where user.org == "Kusto" and user.UserId != fof.UserId
-    project kusto_person = user.name, middle_man = m.name, Kusto_friend_of_friend = fof.name  
+| graph-match (user)-->(middle_man)-->(friendOfAFriend)
+    where user.org == "Kusto" and user.UserId != friendOfAFriend.UserId
+    project kusto_person = user.name, middle_man = middle_man.name, kusto_friend_of_friend = friendOfAFriend.name
 ```
 
 The make-graph operator creates a directed graph from FirstUser to SecondUser and enriches the properties on the nodes with the columns provided by the Users table. Once the graph was instantiated, graph-match provides the friend-of-a-friend pattern including filters and a projection which results in a tabular output.
