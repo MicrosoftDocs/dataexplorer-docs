@@ -20,6 +20,8 @@ This separation provides the following advantages:
 * Accessibility to identical data across multiple compute clusters
 * SKU optimization
 
+For more information on SKU optimization, see [Select a SKU for your cluster](manage-cluster-choose-sku.md).
+
 ## Data storage
 
 Azure Data Explorer partitions all data ingested into tables into *extents*, or *data shards*, which are horizontal slices of the table. Each extent usually contains a few million records and is encoded and indexed independently of other extents. This functionality contributes to linear scale in ingestion throughput.
