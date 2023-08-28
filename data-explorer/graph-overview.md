@@ -10,7 +10,15 @@ ms.date: 08/11/2023
 
 Azure Data Explorer (ADX) is a fast and scalable data analytics service that enables users to explore, analyze, and visualize large volumes of structured, semi-structured, and unstructured data from various sources. ADX is based on Kusto, the database engine that is providing KQL, a query language that supports a rich set of features, such as aggregation, filtering, grouping, joins, window functions, time series, geospatial, and machine learning operations.
 
-This overview is about the graph semantics extension to KQL, which allows users to model and query data as graphs. A graph is a data structure that consists of nodes (or vertices) and edges (or relationships) that connect them. Nodes can have properties (or attributes) that describe them, similar to edges. Graphs are useful for representing complex and dynamic data that involve many-to-many, hierarchical, or networked relationships, such as social networks, recommendation systems, connected assets, or knowledge graphs.
+This overview is about the graph semantics extension to KQL, which allows users to model and query data as graphs. A graph is a data structure that consists of nodes and edges that connect them. Nodes can have properties that describe them, similar to edges.
+
+:::image type="content" source="media/graph/graph-what-is-a-graph.png" alt-text="Infographic showing a graph":::
+
+Graphs are useful for representing complex and dynamic data that involve many-to-many, hierarchical, or networked relationships, such as social networks, recommendation systems, connected assets, or knowledge graphs.
+
+:::image type="content" source="media/graph/graph-social-network.png" alt-text="Infographic showing social network as a graph":::
+
+The example above illustrates a graph of a social network which consists of four nodes and three edges. Each of the nodes has a property for their name (i.E. "Bob") and each edge has a property for their type ("reportsTo").
 
 Unlike relational databases, which store data in tables and require indexes and joins to access related data, graphs store data in an index-free adjacency manner, which means that each node maintains a direct pointer to its adjacent nodes. This enables fast and efficient traversal of the graph, without the need to scan or join large tables. Graph queries can leverage the graph structure and semantics to perform complex and expressive operations, such as finding paths, patterns, shortest distances, communities, or centrality measures.
 
@@ -79,9 +87,51 @@ Another feature of Kusto is the intellisense feature of KQL, which means that th
 
 Every relational engine is able to model graph traversals using join operations. However, KQL does not allow recursive joins. This means a user must explicitly define the traversals which should be executed (see example above). The new graph operator graph-match allows the definition of such variable length hops. This is crucial when the depth or distance of the relationship is not static, such as finding all the connected resources in a graph, or finding all the reachable destinations from a given source in a transportation network.
 
+## How to model graphs from time series / log data
+
+To create a graph from a simple flat table containing time series information such as log data, a user needs to identify the entities and relationships that are relevant for the graph analysis. For example, suppose we have a table called trace logs from a web server that contains information about requests, such as the timestamp, the source IP address, the destination resource and much more.
+
+```kusto
+let Logs = datatable (rawLog:string) [
+"54.36.149.41 - - [2019-01-22 03:56:14 +0330] \"GET /product/27 HTTP/1.1\" 200 30577 \"-\" \"some client\" \"-\"",
+"31.56.96.51 - - [2019-01-22 03:56:16 +0330] \"GET /product/27 HTTP/1.1\" 200 5379 \"https://www.contoso.com/m/filter/b113\" \"some client\" \"-\"",
+"31.56.96.51 - - [2019-01-22 03:56:17 +0330] \"GET /product/42 HTTP/1.1\" 200 5667 \"https://www.contoso.com/m/filter/b113\" \"some client\" \"-\""
+];
+```
+
+One possible way to model a graph from this table is to treat the source IP addresses as nodes and the web requests to resources as edges. This way, we can create a graph that represents the network traffic and interactions between different sources and destinations. To create such a graph, we can use the make-graph operator and specify the source and destination columns as the edge endpoints, and optionally provide additional columns as edge or node properties. For example:
+
+```kusto
+let Graph = Logs
+| parse rawLog with ipAddress:string " - - [" timestamp:datetime "] \"" httpVerb:string " " resource:string " " *
+| project-away rawLog
+| make-graph ipAddress --> resource;
+```
+
+This query parses the raw logs and creates a directed graph where the nodes are either IP addresses or resources and each edge is a request from the source to the destination, with the timestamp and the http verb as edge properties.
+
+:::image type="content" source="media/graph/graph-recommendation.png" alt-text="Infographic on the recommendation scenario.":::
+
+Once the graph is created, we can use the graph-match operator to query the graph data using patterns, filters and projections. For example, we can create a simple recommendation based on the resources which where requested by other IP addresses:
+
+```kusto
+Graph
+| graph-match ()-[webrequest1]->()<--()-[webrequest3]->()
+    where webrequest1.ipAddress == "54.36.149.41" and webrequest1.resource != webrequest3.resource
+    project recommendation = webrequest3.resource
+```
+
+**Output**
+
+| recommendation |
+| -------------- |
+| /product/42    |
+
+The query returns "/product/42" as a recommendation based on a raw text based log.
+
 ## Limits
 
-The graph semantics feature in Kusto has some limitations that users should be aware of when using it. One of the main limitations is that the graph data must fit into the memory of a single ADX engine node, which limits the size of the graph that can be created and queried. This also means that the graph data is not persisted or distributed across the cluster, and it is discarded after the query execution. Therefore, users should use the graph semantics feature for interactive and exploratory analysis. Users should also consider the memory consumption and performance implications of creating and querying large or dense graphs, and use appropriate filters, projections, and aggregations to reduce the graph size and complexity.
+The graph semantics feature in Kusto has some limitations that users should be aware of when using it. One of the main limitations is that the graph data must fit into the memory of a single ADX engine node, which limits the size of the graph that can be created and queried. This also means that the graph data is not persisted or distributed across the cluster, and it is discarded after the query execution. Users should consider the memory consumption and performance implications of creating and querying large or dense graphs, and use appropriate filters, projections, and aggregations to reduce the graph size and complexity.
 
 ## Next steps
 
