@@ -25,7 +25,7 @@ To learn how to create the connection using the Kusto SDKs, see [Create an Event
 
 In this section, you establish a connection between the event hub and your Azure Data Explorer table. As long as this connection is in place, data is transmitted from the event hub into your target table. If the event hub is moved to a different resource or subscription, you need to update or recreate the connection.
 
-### [New- Get data](#tab/get-data)
+### [Get data](#tab/get-data)
 
 ### Prerequisites
 
@@ -406,7 +406,7 @@ The following example shows an Azure Resource Manager template for adding an Eve
 
 ## Remove an event hub data connection
 
-### [New- Get data](#tab/get-data-2)
+### [Get data](#tab/get-data-2)
 
 Remove the data connection through the Azure portal as explained in the portal tab.
 

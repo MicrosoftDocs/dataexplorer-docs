@@ -3,7 +3,7 @@ title: Use wizard for one-time ingestion of historical data with LightIngest (pr
 description: Learn about how to auto-generate an ingest command for LightIngest, a command-line utility for ad-hoc data ingestion into Azure Data Explorer
 ms.reviewer: tzgitlin
 ms.topic: how-to
-ms.date: 09/04/2022
+ms.date: 08/28/2023
 ---
 # Use wizard for one-time ingestion of historical data with LightIngest (preview)
 
@@ -12,7 +12,10 @@ To learn more about LightIngest, see [Use LightIngest to ingest data into Azure 
 
 LightIngest can be particularly useful to load historical data from an existing storage system to Azure Data Explorer. While you can build your own command using the list of [Command-line arguments](lightingest.md#command-line-arguments), this article shows you how to auto-generate this command through an ingestion wizard. In addition to creating the command, you can use this process to create a new table, and create schema mapping. This tool infers schema mapping from your data set.
 
-This article shows you how to create a new table, create schema mapping, and generate a LightIngest command for one-time ingestion using the LightIngest tool.
+This article shows you how to create a new table, create schema mapping, and generate a LightIngest command for one-time ingestion using the LightIngest tool. 
+
+>[!NOTE]
+> This process must be performed in the ingestion wizard, and is not available in the new **Get data** experience.
 
 ## Prerequisites
 
