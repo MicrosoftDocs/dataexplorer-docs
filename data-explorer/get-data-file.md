@@ -3,7 +3,7 @@ title: Get data from a file
 description: Learn how to get data from a local file in Azure Data Explorer.
 ms.reviewer: sharmaanshul
 ms.topic: how-to
-ms.date: 08/07/2023
+ms.date: 08/28/2023
 ---
 # Get data from file
 
@@ -18,7 +18,7 @@ For general information on data ingestion, see [Azure Data Explorer data ingesti
 * A Microsoft account or an Azure Active Directory user identity. An Azure subscription isn't required.
 * An Azure Data Explorer cluster and database. [Create a cluster and database](create-cluster-and-database.md).
 
-### [New - Get data](#tab/get-data)
+### [Get data](#tab/get-data)
 
 1. From the left menu, select **Query**.
 
