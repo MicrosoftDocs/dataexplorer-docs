@@ -1,11 +1,11 @@
 ---
-title: Engine overview - Azure Data Explorer 
+title: How Azure Data Explorer works
 description: 'Learn more about how Azure Data Explorer works.'
 ms.reviewer: avnera
 ms.topic: conceptual
 ms.date: 08/28/2023
 ---
-# Azure Data Explorer overview
+# How Azure Data Explorer works
 
 The Azure Data Explorer provides unparalleled performance for ingesting and querying telemetry, logs, and time series data. It features optimized storage formats, indexes, and uses advanced data statistics for efficient query planning and just-in-time compiled query execution.
 

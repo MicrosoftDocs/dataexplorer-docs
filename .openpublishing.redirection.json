@@ -802,7 +802,7 @@
     },
     {
       "source_path": "data-explorer/engine-v3.md",
-      "redirect_url": "/azure/data-explorer/engine",
+      "redirect_url": "/azure/data-explorer/how-it-works",
       "redirect_document_id": true
     }
   ]
