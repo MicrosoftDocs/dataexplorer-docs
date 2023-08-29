@@ -271,7 +271,7 @@ The following steps guide you through creating an event hub connection through t
 
 ### [ARM template](#tab/arm-template)
 
-## Prerequisites
+### Prerequisites
 
 * An Azure subscription. Create a [free Azure account](https://azure.microsoft.com/free/).
 * An Azure Data Explorer cluster and database. [Create a cluster and database](create-cluster-and-database.md).
