@@ -352,12 +352,6 @@ items:
         items:
           - name: Overview
             href: graph-overview.md
-          - name: Scenarios
-            items:
-              - name: Internet of Things
-                href: graph-scenario-iot.md
-              - name: Security
-                href: graph-scenario-security.md
           - name: Best Practices
             href: graph-best-practices.md
   - name: Visualize data
