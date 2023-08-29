@@ -57,7 +57,7 @@ The following table provides an explanation on how to reference identifiers in q
 |Normal  | `entity` |`entity`    |Identifiers (`entity`) that don't include special characters or map to some language keyword don't need to be enclosed in quotation marks.|
 |Special character| `entity-name`|`['entity-name']` |Identifiers names that include special characters (such as `-`) must be enclosed using `['` and `']` or using `["` and `"]`.|
 |language keyword| `where`       |`["where"]`       |Identifier names that are language keywords must be enclosed using `['` and `']` or `["` and `"]`.|
-|literal  | 1day | `["1day"]`    | Identifier names that are literals must be enclosed using `['` and `']` or `["` and `"]`.|
+|literal  | `1day` | `["1day"]`    | Identifier names that are literals must be enclosed using `['` and `']` or `["` and `"]`.|
 
 > [!NOTE]
 > Identifiers are case-sensitive. For example, you can't refer to a table called `ThisTable` as `thisTABLE`.
