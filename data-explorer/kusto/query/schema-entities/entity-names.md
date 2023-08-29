@@ -38,7 +38,7 @@ An identifier is the name you assign to [entities](index.md), [query parameters]
 
 In KQL, there are keywords and literals that have similar naming rules as [identifiers](#identifier-naming-rules). You can have identifiers with the same name as keywords or literals. However, we recommend that you avoid doing so as referencing them in queries requires [special quoting](#reference-identifiers-in-queries).
 
-To avoid using an identifier that might also be a language keyword or literal, such as `where`, `summarize`, and '1day', you can choose your entity name according to the following conventions, which aren't applicable to language keywords:
+To avoid using an identifier that might also be a language keyword or literal, such as `where`, `summarize`, and `1day`, you can choose your entity name according to the following conventions, which aren't applicable to language keywords:
 
 * Use a name that starts with a capital letter (`A` to `Z`).
 * Use a name that starts or ends with a single underscore (`_`).
