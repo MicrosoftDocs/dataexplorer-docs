@@ -19,7 +19,7 @@ The `graph-match` operator searches for all occurrences of a graph pattern in an
 
 |Name|Required|Description|
 |--|--|--|
-| *Pattern* | &check; | a sequences of graph node elements connected by graph edge elements using graph notations. For more information, see [Graph Pattern Notation](#graph-pattern-notation) |
+| *Pattern* | &check; | a sequence of graph node elements connected by graph edge elements using graph notations. For more information, see [Graph Pattern Notation](#graph-pattern-notation) |
 | *Constraints* | | a Boolean expression composed of properties of named variables in the *Pattern*. Each graph element (node/edge) has a set of properties that were attached to it during the graph construction. The constraints define which elements (nodes and edges) are matched by the pattern. A property is referenced by the variable name followed by a dot (`.`) and the property name. |
 | *Expression* | &check; | the `project` clause converts each pattern to a row in a tabular result, the project expression(s) have to be scalar and reference properties of named variables defined in the *Pattern*. A property is referenced by the variable name followed by a dot (`.`) and the attribute name. |
 
@@ -35,12 +35,12 @@ The `graph-match` operator searches for all occurrences of a graph pattern in an
 
 ## Variable Length Edge
 
-Variable length edge is a notation for a part of the pattern that can be matched repeatedly with the same contraints between *min* and *max* times. An edge is a variable length edge if it is marked with an asterics (`*`) followed by the minimum occurrence value dot-dot (`..`) then the maximum occurrence value. The minimal and maximal occurrence values must be integer scalars. Any sequence of edges within the occurrence range can match the variable edge part of the pattern as long as all the edges in the sequence match the constraints specified in the `where` clause.
+Variable length edge is a notation for a part of the pattern that can be matched repeatedly with the same constraints between *min* and *max* times. An edge is a variable length edge if it's marked with an asterisk (`*`) followed by the minimum occurrence value dot-dot (`..`) then the maximum occurrence value. The minimal and maximal occurrence values must be integer scalars. Any sequence of edges within the occurrence range can match the variable edge part of the pattern as long as all the edges in the sequence match the constraints specified in the `where` clause.
 
 ## Returns
 
 The `graph-match` operator returns a *tabular* result, each record corresponds to a match of the pattern in the graph.  
-The returned columns are defined in the operator's `project` clause using properties of edges and/or nodes defined in the pattern. Properties and functions of properties of variable length edges are rerturned as a dynamic array, each value in the array corresponds to an occurrence of the variable length edge.
+The returned columns are defined in the operator's `project` clause using properties of edges and/or nodes defined in the pattern. Properties and functions of properties of variable length edges are returned as a dynamic array, each value in the array corresponds to an occurrence of the variable length edge.
 
 ## Examples
 
@@ -79,7 +79,7 @@ edges
 
 ### 2. All employees in a manager's org
 
-The following example represents an organizational hierarchy, it demonstrates how a variable length edge could be leveraged to find employees of different levels of the hierarchy in a single query. The nodes in the graph represent employees and the edges are from an employee to their manager. After we build the graph using `make-graph`, we search for employees in `Alice`'s org that are younger than `30`.
+The following example represents an organizational hierarchy, it demonstrates how a variable length edge could be used to find employees of different levels of the hierarchy in a single query. The nodes in the graph represent employees and the edges are from an employee to their manager. After we build the graph using `make-graph`, we search for employees in `Alice`'s org that are younger than `30`.
 
 ```kusto
 let employees = datatable(name:string, age:long) 
