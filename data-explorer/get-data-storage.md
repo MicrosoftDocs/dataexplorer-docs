@@ -1,30 +1,116 @@
 ---
-title: Ingest data from a container or Azure Data Lake Storage into Data Explorer
-description: Ingest (load) data into a new Azure Data Explorer table from a container or ADLS, either as a one-time or continuous operation.
-ms.reviewer: tzgitlin
+title: Get data from Azure storage
+description: Learn how to get data from Azure storage in Azure Data Explorer.
+ms.reviewer: sharmaanshul
 ms.topic: how-to
-ms.date: 05/28/2023
+ms.date: 08/27/2023
 ---
 
-# Ingest data from a container into Azure Data Explorer
+# Get data from Azure storage
 
-The [ingestion wizard](./ingest-data-wizard.md) enables you to quickly ingest data in JSON, CSV, and other formats into a table and easily create mapping structures. The data can be ingested either from storage, from a local file, or from a container, as a one-time or continuous ingestion process.
+Data ingestion is the process used to load data records from one or more sources into a table in Azure Data Explorer. Once ingested, the data becomes available for query. In this article, you learn how to get data from Azure storage (ADLS Gen2 container, blob container, or individual blobs) into either a new or existing table.
 
-This document describes using the intuitive ingestion wizard to ingest **CSV** data from a **container** into a **new table**. Ingestion can be done as a one-time operation, or as a continuous method by [setting up an Event Grid ingestion pipeline](#create-continuous-ingestion) that responds to new files in the source container and ingests qualifying data into your table. This process can be used with slight adaptations to cover a variety of different use cases.
+Ingestion can be done as a one-time operation, or as a continuous method. Continuous ingestion can be configured via portal only.
 
-For an overview of the ingestion wizard, see [What is the ingestion wizard?](./ingest-data-wizard.md).
-For information about ingesting data into an existing table in Azure Data Explorer, see [Ingest data to an existing table](/azure/data-explorer/ingest-from-local-file). For information about different ways to ingest by using an Event Grid, see [Create an Event Grid data connection](ingest-data-event-grid.md).
+For general information on data ingestion, see [Azure Data Explorer data ingestion overview](ingest-data-overview.md).
 
-## Prerequisites
+[!INCLUDE [get-data-flow](includes/get-data-flow.md)]
 
-* An Azure subscription. Create a [free Azure account](https://azure.microsoft.com/free/).
+## Get data
+
+Select the tab that corresponds with your desired ingestion method.
+
+### [New - Get data](#tab/get-data)
+
+### Prerequisites
+
+* A Microsoft account or an Azure Active Directory user identity. An Azure subscription isn't required.
 * An Azure Data Explorer cluster and database. [Create a cluster and database](create-cluster-and-database.md).
-* A [storage account](/azure/storage/common/storage-quickstart-create-account?tabs=azure-portal). Event Grid notification subscription can be set on Azure Storage accounts for `BlobStorage`, `StorageV2`, or [Data Lake Storage Gen2](/azure/storage/blobs/data-lake-storage-introduction).
+* A [storage account](/azure/storage/common/storage-quickstart-create-account?tabs=azure-portal).
 
-> [!NOTE]
-> To enable access between a cluster and a storage account without public access (restricted to private endpoint/service endpoint), see [Create a Managed Private Endpoint](security-network-managed-private-endpoint-create.md).
 
-## Ingest data
+1. From the left menu, select **Query**.
+
+1. Right-click on the database where you want to ingest the data. Select **Get data**.
+
+    :::image type="content" source="media/get-data-storage/get-data.png" alt-text="Screenshot of query tab, with right-click on a database and the get options dialog open." lightbox="media/get-data-storage/get-data.png":::
+
+## Select a data source
+
+1. In the **Get data** window, the **Source** tab is selected.
+
+1. Select the data source from the available list. In this example, you're ingesting data from **Azure storage**.
+
+    :::image type="content" source="media/get-data-storage/select-data-source.png" alt-text="Screenshot of get data window with source tab selected." lightbox="media/get-data-storage/select-data-source.png":::
+
+### Configure tab
+
+1. Select a target database and table. If you want to ingest data into a new table, select **+ New table** and enter a table name.
+
+    > [!NOTE]
+    > Table names can be up to 1024 characters including spaces, alphanumeric, hyphens, and underscores. Special characters aren't supported.
+
+1. To add your source, select **Select container** or **Add URI**.
+
+    1. If you selected **Select container**, fill in the following fields:
+
+        :::image type="content" source="media/get-data-storage/configure-tab.png" alt-text="Screenshot of configure tab with new table entered and one sample data file selected." lightbox="media/get-data-storage/configure-tab.png":::
+
+        | **Setting**                | **Field description**  |
+        |--------------------------|----------|
+        | Subscription               | The subscription ID where the storage account is located.     |
+        | Storage account      | The name that identifies your storage account.    |
+        | Container                  | The storage container you want to ingest.   |
+        | **File filters (optional)**       | |
+        | Folder path| Filters data to ingest files with a specific folder path. |
+        | File extension| Filters data to ingest files with a specific file extension only.|
+
+    1. If you selected **Add URI**, paste your storage connection string for a blob container or individual files in the **URI** field, and then select **+**.
+
+        > [!NOTE]
+        >
+        > * You can add up to 10 individual blobs. Each blob can be a max of 1 GB uncompressed.
+        > * You can ingest up to 5000 blobs from a single container.
+
+        :::image type="content" source="media/get-data-storage/add-uri.png" alt-text="Screenshot of configure tab with the connection string pasted in the URI field."  lightbox="media/get-data-storage/add-uri.png":::
+
+1. Select **Next**
+
+## Inspect the data
+
+The **Inspect** tab opens with a preview of the data.
+
+:::image type="content" source="media/get-data-storage/inspect-data.png" alt-text="Screenshot of the inspect tab." lightbox="media/get-data-storage/inspect-data.png":::
+
+1. Select **Command viewer** to view and copy the automatic commands generated from your inputs.
+1. The schema definition file is used for schema creation. If you're ingesting more than one blob, choose the schema definition file from the dropdown.
+1. The data format is automatically inferred. You can change the data format by selecting the desired format from the dropdown. See [Data formats supported by Azure Data Explorer for ingestion](ingestion-supported-formats.md).
+1. Optionally, [Edit columns](#edit-columns).
+1. Optionally, explore [Advanced options based on data type](#advanced-options-based-on-data-type).
+1. Select **Finish** to complete the ingestion process.
+[!INCLUDE [get-data-edit-columns](includes/get-data-edit-columns.md)]
+
+:::image type="content" source="media/get-data-storage/edit-columns.png" alt-text="Screenshot of columns open for editing." lightbox="media/get-data-storage/edit-columns.png":::
+
+[!INCLUDE [mapping-transformations](includes/mapping-transformations.md)]
+
+[!INCLUDE [get-data-advanced-options](includes/get-data-advanced-options.md)]
+
+## Summary
+
+In the **Data preparation** window, all three steps are marked with green check marks when data ingestion finishes successfully. You can view the commands that were used for each step, or select a card to query, visualize, or drop the ingested data.
+
+:::image type="content" source="media/get-data-storage/summary.png" alt-text="Screenshot of summary page with successful ingestion completed." lightbox="media/get-data-storage/summary.png":::
+
+### [Wizard](#tab/wizard)
+
+You can use the ingestion wizard to perform a one-time ingestion, or continuous ingestion. For continuous ingestion, set up an [Event Grid ingestion pipeline](#create-continuous-ingestion) in the ingestion wizard that responds to new files in the source container and ingests qualifying data into your table.
+
+### Prerequisites
+
+* A Microsoft account or an Azure Active Directory user identity. An Azure subscription isn't required.
+* An Azure Data Explorer cluster and database. [Create a cluster and database](create-cluster-and-database.md).
+* A [storage account](/azure/storage/common/storage-quickstart-create-account?tabs=azure-portal). An Event Grid notification subscription can be set on Azure Storage accounts for `BlobStorage`, `StorageV2`, or [Data Lake Storage Gen2](/azure/storage/blobs/data-lake-storage-introduction).
 
 1. From the left menu, select **Query**.
 
@@ -124,12 +210,8 @@ In the **Schema** tab:
 
 When ingesting to a new table, alter various aspects of the table when creating the table.
 
-[!INCLUDE [data-explorer-ingestion-wizard-column-table](includes/data-explorer-ingestion-wizard-column-table.md)]
-
 > [!NOTE]
 > For tabular formats, you can't map a column twice. To map to an existing column, first delete the new column.
-
-[!INCLUDE [data-explorer-ingestion-wizard-command-editor](includes/data-explorer-ingestion-wizard-command-editor.md)]
 
 Select **Next: Summary** to create a table and mapping and to begin data ingestion.
 
@@ -172,8 +254,13 @@ Review the resources, and select **Create**.
 
 :::image type="content" source="media/ingestion-wizard-new-table/review-create.png" alt-text="Screenshot of review and create blade.":::
 
+---
+
 ## Next steps
 
-* [Query data in the Azure Data Explorer web UI](web-ui-query-overview.md)
+* Explore the results in the [Azure Data Explorer web UI query](web-ui-query-overview.md)
 * [Write Kusto Query Language queries in the web UI](web-ui-kql.md)
 * [Tutorial: Learn common Kusto Query Language operators](kusto/query/tutorials/learn-common-operators.md)
+* [Visualize data with Azure Data Explorer dashboards](azure-data-explorer-dashboards.md)
+* [Use the sample app generator wizard to create code to ingest and query your data](sample-app-generator-wizard.md)
+* Drop ingested data using [.drop extents command](kusto/management/drop-extents.md) and [.drop ingestion mapping command](kusto/management/drop-ingestion-mapping-command.md)
