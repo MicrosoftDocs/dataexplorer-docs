@@ -34,7 +34,7 @@ In the absence of any rules, the edges are unionized rather than merged.
 
 ## Examples
 The examples below build a graph from emails and aliases tables and a second graph for calls and employees first and last names. 
-Following the `make-graph` operators that builds the two graphs is a call to `graph-merge`, the examples differ in the used flavor of `graph-merge`.
+Following the `make-graph` operators that builds the two graphs is a call to `graph-merge`, then each example shows a different usage of `graph-merge`.
 
 ### Example 1: merge attributes not specified
 Because merge attributes aren't specified the edges of the new graph are the union of the edges from both the source graphs.
