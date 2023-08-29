@@ -144,5 +144,5 @@ The graph semantics feature in Kusto has some limitations that users should be a
 
 ## Next steps
 
-Learn more about Scenarios _addLinkHere_
-Learn more about Operators _addLinkHere_
+- [Best practices](graph-best-practices.md)
+- [Graph operators](kusto/query/graph-operators.md)

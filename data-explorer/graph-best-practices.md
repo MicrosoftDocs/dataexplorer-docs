@@ -264,5 +264,4 @@ The output of the query returned the information that the temperature sensor sho
 
 ## Next steps
 
-Learn more about Scenarios _addLinkHere_
-Learn more about Operators _addLinkHere_
+- [Graph operators](kusto/query/graph-operators.md)
