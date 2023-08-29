@@ -492,7 +492,13 @@ items:
       - name: API overview
         href: kusto/api/index.md
       - name: Client libraries
-        href: kusto/api/client-libraries.md
+        items:
+          - name: Client libraries
+            href: kusto/api/client-libraries.md
+          - name: Get data using Kusto.Ingest
+            href: kusto-ingest.md
+          - name: Query data using Kusto.Data
+            href: kusto-data.md
       - name: Sample app generator
         href: sample-app-generator-wizard.md
       - name: Write code with SDKs
