@@ -433,13 +433,14 @@ items:
                 href: start-for-free-upgrade.md
           - name: Database
             items:
+              - name: Manage database permissions
+                href: manage-database-permissions.md
+              - name: Configure a database using a Kusto Query Language script
+                href: database-script.md
               - name: Add database principal
                 href: add-database-principal.md
               - name: Clone database schema
                 href: clone-database-schema.md
-                displayName: backup, duplicate
-              - name: Configure a database using a Kusto Query Language script
-                href: database-script.md
               - name: Create policies programmatically
                 displayName: database policy, database policies, table policy, table policies, python, c#
                 href: database-table-policies.md
