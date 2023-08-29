@@ -5,7 +5,7 @@ ms.author: rocohen
 ms.service: data-explorer
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 07/19/2023
+ms.date: 08/29/2023
 ---
 # graph-merge operator (Preview)
 
@@ -33,10 +33,11 @@ The graph merge operator combines nodes and edges from two origin graphs into a 
 In the absence of any rules, the edges are unionized rather than merged.
 
 ## Examples
-### Example 1:
-The following example builds a graph from emails and aliases tables and a second graph for calls and employees first and last names. 
-Following the `make-graph` operators that builds the two graphs is a call to `graph-merge`.
-Because *Attributes* is not specified the edges of the new graph are the union of the edges from both the source graphs.
+The examples below build a graph from emails and aliases tables and a second graph for calls and employees first and last names. 
+Following the `make-graph` operators that builds the two graphs is a call to `graph-merge`, the examples differ in the used flavor of `graph-merge`.
+
+### Example 1: merge attributes not specified
+Because merge attributes aren't specified the edges of the new graph are the union of the edges from both the source graphs.
 
 ```kusto
 let Emails = datatable(fromPrincipal: long, toPrincipal:long, wordCount: long, when: datetime) 
@@ -108,10 +109,8 @@ MergeNodes
 |5|vv|||
 |6||Trent|Smith|
 
-### Example 2:
-The following example builds a graph from emails and aliases tables and a second graph for calls and employees first and last names. 
-Following the `make-graph` operators that builds the two graphs is a call to `graph-merge`.
-Because *Attributes* is specified the edges will be merged based on source and destination of the emails and calls (all edges with the same source and destination would be merged into a single edge).
+### Example 2: merge attributes specified
+Because merge attributes are specified, the edges are merged based on source and destination of the emails and calls (all edges with the same source and destination are merged into a single edge).
 
 ```kusto
 let Emails = datatable(fromPrincipal: long, toPrincipal:long, wordCount: long, when: datetime) 
