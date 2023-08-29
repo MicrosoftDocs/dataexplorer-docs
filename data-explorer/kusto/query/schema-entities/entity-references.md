@@ -3,11 +3,11 @@ title:  Entity references
 description: This article describes Entity references in Azure Data Explorer.
 ms.reviewer: orspodek
 ms.topic: reference
-ms.date: 08/22/2023
+ms.date: 08/29/2023
 ---
 # Entity references
 
-Kusto entities are referenced in a query by name. Valid entity names include *databases*, *tables*, *columns*, and *stored functions*. *Clusters* can't be referenced by their names.
+Kusto entities are referenced in a query by name. Entities that can be referenced by their name include *databases*, *tables*, *columns*, and *stored functions*, but not *Clusters*.
 
 If the entity's container is unambiguous in the current context, use the entity name without additional qualifications. For example, when running a query against a
 database called `DB`, you may reference a table called `T` in that database by its name, `T`.
