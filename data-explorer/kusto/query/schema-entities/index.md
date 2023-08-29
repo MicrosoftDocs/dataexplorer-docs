@@ -3,7 +3,7 @@ title:  Entities
 description: This article describes Entities in Azure Data Explorer.
 ms.reviewer: orspodek
 ms.topic: reference
-ms.date: 11/19/2019
+ms.date: 08/29/2023
 ---
 # Entity types
 
@@ -22,3 +22,7 @@ Kusto queries execute in the context of some Kusto database that is attached to 
 * [Views](./views.md) are virtual tables based on functions (stored or defined in an ad-hoc fashion).
 
 * [External tables](./externaltables.md) are entities that reference data stored outside Kusto database. External tables are used for exporting data from Kusto to external storage as well as for querying external data without ingesting it into Kusto.
+
+## Related content
+
+* [Entity names](entity-names.md).
