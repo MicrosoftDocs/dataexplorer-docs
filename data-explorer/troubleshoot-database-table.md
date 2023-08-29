@@ -3,7 +3,7 @@ title: Failure to create or delete DB or table in Azure Data Explorer
 description: This article describes troubleshooting steps for creating and deleting databases and tables in Azure Data Explorer.
 ms.reviewer: mblythe
 ms.topic: how-to
-ms.date: 08/27/2023
+ms.date: 08/29/2023
 ---
 
 # Troubleshoot: Failure to create or delete a database or table in Azure Data Explorer
@@ -38,7 +38,7 @@ To learn how to delete a database, see [Delete a database](delete-database.md).
    .rename table <OldTableName> to <NewTableName>
     ```
 
-1. Ensure you use table and column names that are not reserved keywords or literals, such as `1day` or `2hours`. When you try to create a table using keywords or literals, you'll get a syntax error. Use [identifier quoting](kusto/query/schema-entities/entity-names.md#identifier-quoting) around keywords and literals to resolve syntax errors.  
+1. Ensure you use table and column names that are not reserved keywords or literals, such as `1day` or `2hours`. When you try to create a table using keywords or literals, you'll get a syntax error. To reference entities with reserved keywords or literals, use the syntax as described in [Reference identifiers in queries](kusto/query/schema-entities/entity-names.md#reference-identifiers-in-queries).
 
 ## Deleting or renaming a table
 
