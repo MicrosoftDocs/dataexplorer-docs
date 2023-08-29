@@ -33,10 +33,14 @@ The `graph-match` operator searches for all occurrences of a graph pattern in an
 |Any direction edge|`-[`*e*`]-`|`--`|
 |Variable length edge|`-[`*e*`*3..5]-`|`-[*3..5]-`|
 
+## Variable Length Edge
+
+Variable length edge is a notation for a part of the pattern that can be matched repeatedly with the same contraints between *min* and *max* times. An edge is a variable length edge if it is marked with an asterics (`*`) followed by the minimum occurrence value dot-dot (`..`) then the maximum occurrence value. The minimal and maximal occurrence values must be integer scalars. Any sequence of edges within the occurrence range can match the variable edge part of the pattern as long as all the edges in the sequence match the constraints specified in the `where` clause.
+
 ## Returns
 
 The `graph-match` operator returns a *tabular* result, each record corresponds to a match of the pattern in the graph.  
-The returned columns are defined in the operator's `project` clause.
+The returned columns are defined in the operator's `project` clause using properties of edges and/or nodes defined in the pattern. Properties and functions of properties of variable length edges are rerturned as a dynamic array, each value in the array corresponds to an occurrence of the variable length edge.
 
 ## Examples
 
@@ -75,7 +79,7 @@ edges
 
 ### 2. All employees in a manager's org
 
-The following example represents an organizational hierarchy. The nodes in the graph represent employees and the edges are from an employee to their manager. After we build the graph using `make-graph`, we search for employees in `Alice`'s org that are younger than `30`.
+The following example represents an organizational hierarchy, it demonstrates how a variable length edge could be leveraged to find employees of different levels of the hierarchy in a single query. The nodes in the graph represent employees and the edges are from an employee to their manager. After we build the graph using `make-graph`, we search for employees in `Alice`'s org that are younger than `30`.
 
 ```kusto
 let employees = datatable(name:string, age:long) 
