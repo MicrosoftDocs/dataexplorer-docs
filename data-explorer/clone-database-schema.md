@@ -12,8 +12,7 @@ This article explains how to use [management commands](kusto/management/index.md
 
 ## Prerequisites
 
-* An Azure Data Explorer cluster and database. [Create a cluster and database](create-cluster-and-database.md).
-* [Database Admin](kusto/access-control/role-based-access-control.md) permissions.
+* [Database Admin](kusto/access-control/role-based-access-control.md) permissions
 
 ## Clone a database schema
 
