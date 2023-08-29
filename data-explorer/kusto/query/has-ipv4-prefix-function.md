@@ -11,7 +11,7 @@ Returns a value indicating whether a specified IPv4 address prefix appears in a 
 
 A valid IP address prefix is either a complete IPv4 address (`192.168.1.11`) or its prefix ending with a dot (`192.`, `192.168.` or `192.168.1.`).
 
-IP address entrances in a text must be properly delimited with non-alphanumeric characters. For example, properly delimited IP addresses are:
+IP address entrances in a text must be properly delimited with nonalphanumeric characters. For example, properly delimited IP addresses are:
 
 * "These requests came from: 192.168.1.1, 10.1.1.115 and 10.1.1.201"
 * "05:04:54 127.0.0.1 GET /favicon.ico 404"
@@ -19,6 +19,8 @@ IP address entrances in a text must be properly delimited with non-alphanumeric 
 ## Syntax
 
 `has_ipv4_prefix(`*source* `,` *ip_address_prefix* `)`
+
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
 
 ## Parameters
 

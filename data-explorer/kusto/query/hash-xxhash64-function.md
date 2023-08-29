@@ -13,6 +13,8 @@ Returns an xxhash64 value for the input value.
 
 `hash_xxhash64(`*source* [`,` *mod*]`)`
 
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+
 ## Parameters
 
 | Name | Type | Required | Description |

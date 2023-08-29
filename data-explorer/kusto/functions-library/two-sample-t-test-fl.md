@@ -9,20 +9,20 @@ zone_pivot_groups: kql-flavors-all
 ---
 # two_sample_t_test_fl()
 
-::: zone pivot="azuredataexplorer"
+::: zone pivot="azuredataexplorer, fabric"
 
 The function `two_sample_t_test_fl()` is a [user-defined function (UDF)](../query/functions/user-defined-functions.md) that performs the [Two-Sample T-Test](https://en.wikipedia.org/wiki/Student%27s_t-test#Independent_two-sample_t-test).
 
 > [!NOTE]
 > If the assumption is that the two datasets to be compared have different variances, we suggest using the native [welch_test()](../query/welch-testfunction.md).
 
-## Prerequisites
-
-* The Python plugin must be [enabled on the cluster](../query/pythonplugin.md#enable-the-plugin). This is required for the inline Python used in the function.
+[!INCLUDE [python-zone-pivot-fabric](../../includes/python-zone-pivot-fabric.md)]
 
 ## Syntax
 
 `T | invoke two_sample_t_test_fl(`*data1*`,` *data2*`,` *test_statistic*`,`*p_value*`,` *equal_var*`)`
+
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
 
 ## Parameters
 
@@ -172,7 +172,7 @@ datatable(id:string, sample1:dynamic, sample2:dynamic) [
 | Test #3 | [20.13, 20.5, 21.7, 22.02] | [32.2, 32.79, 33.9, 34.22] | -18.5515946201742 | 1.5823717131966134E-06 |
 ::: zone-end
 
-::: zone pivot="azuremonitor, fabric"
+::: zone pivot="azuremonitor"
 
 This feature isn't supported.
 

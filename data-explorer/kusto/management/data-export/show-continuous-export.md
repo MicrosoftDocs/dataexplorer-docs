@@ -19,6 +19,8 @@ You must have at least Database User, Database Viewer, or Database Monitor permi
 
 `.show` `continuous-exports`
 
+[!INCLUDE [syntax-conventions-note](../../../includes/syntax-conventions-note.md)]
+
 ## Parameters
 
 | Name | Type | Required | Description |

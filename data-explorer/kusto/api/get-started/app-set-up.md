@@ -9,7 +9,7 @@ ms.date: 04/24/2023
 
 Learn how to set up your environment to use Kusto client libraries. You can use these libraries to create apps that connect with a cluster and run queries or ingest data.
 
-In this article, you learn how to install client library packages for your preferred language
+In this article, you learn how to install client library packages for your preferred language.
 
 ## Prerequisites
 

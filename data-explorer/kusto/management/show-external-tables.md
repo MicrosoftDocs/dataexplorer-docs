@@ -21,6 +21,8 @@ You must have at least Database User, Database Viewer, Database Monitor to run t
 
 `.show` `external` `table` *TableName*
 
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+
 ## Parameters
 
 |Name|Type|Required|Description|

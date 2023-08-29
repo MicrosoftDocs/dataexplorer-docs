@@ -32,6 +32,8 @@ To `.create-or-alter` an external table using managed identity authentication re
 
 (`.create` | `.alter` | `.create-or-alter`) `external` `table` *TableName* `(`*Schema*`)` `kind` `=` `sql` [ `table` `=` *SqlTableName* ] `(`*SqlConnectionString*`)` [`with` `(` [ `sqlDialect` `=` *SqlDialect* ] `,` [ *Property* `,` ... ]`)`]
 
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+
 ## Parameters
 
 | Name | Type | Required | Description |
@@ -118,7 +120,7 @@ with
 kind=sql
 table=PostgreSqlTable
 ( 
-   h@'Host = hostname.postgres.database.azure.com; Port = 5432; Database= db; User Id=user; Password==pass; Timeout = 30;'
+   h@'Host = hostname.postgres.database.azure.com; Port = 5432; Database= db; User Id=user; Password=pass; Timeout = 30;'
 )
 with 
 (

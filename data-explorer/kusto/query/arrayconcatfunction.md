@@ -13,6 +13,8 @@ Concatenates many dynamic arrays to a single array.
 
 `array_concat(`*arr*`[`, `*arr2*, ...]`)`
 
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+
 ## Parameters
 
 | Name | Type | Required | Description |

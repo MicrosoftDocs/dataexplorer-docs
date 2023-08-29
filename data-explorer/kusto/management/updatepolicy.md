@@ -26,12 +26,11 @@ If the update policy is defined on the target table, multiple queries can run on
 
 ### Query limitations
 
-* The policy-related query can invoke stored functions, but can't access data external to the database; specifically:
-  * It can't perform cross-database queries.
+* The policy-related query can invoke stored functions, but:
   * It can't perform cross-cluster queries.
   * It can't access external data or external tables.
   * It can't make callouts (by using a plugin).
-* The query doesn't have read access to tables that have the [RestrictedViewAccess policy](restrictedviewaccesspolicy.md) enabled or with a [Row Level Security policy](rowlevelsecuritypolicy.md) enabled.
+* The query doesn't have read access to tables that have the [RestrictedViewAccess policy](restrictedviewaccesspolicy.md) enabled.
 * For update policy limitations in streaming ingestion, see [streaming ingestion limitations](../../ingest-data-streaming.md#limitations).
 
 > [!WARNING]
@@ -63,6 +62,7 @@ Each such object is represented as a JSON property bag, with the following prope
 |Query |`string` |A query used to produce data for the update |
 |IsTransactional |`bool` |States if the update policy is transactional or not, default is *false*). If transactional and the update policy fails, the source table is not updated. |
 |PropagateIngestionProperties  |`bool`|States if properties specified during ingestion to the source table, such as extent tags and creation time, apply to the target table. |
+|ManagedIdentity | `string` | The managed identity on behalf of which the update policy will run. The managed identity can be an object ID, or the `system` reserved word. The update policy must be configured with a managed identity when the query references tables in other databases or tables with an enabled [row level security policy](./rowlevelsecuritypolicy.md). For more information, see [Use a managed identity to run a update policy](./update-policy-with-managed-identity.md). |
 
 > [!NOTE]
 > In production systems, set `IsTransactional`:*true* to ensure that the target table doesn't lose data in transient failures.  

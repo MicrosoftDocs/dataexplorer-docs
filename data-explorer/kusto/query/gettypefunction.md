@@ -15,6 +15,8 @@ The runtime type may be different than the nominal (static) type for expressions
 
 `gettype(`*value*`)`
 
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+
 ## Parameters
 
 | Name | Type | Required | Description |

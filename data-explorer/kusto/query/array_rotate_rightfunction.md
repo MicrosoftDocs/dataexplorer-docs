@@ -13,6 +13,8 @@ Rotates values inside a `dynamic` array to the right.
 
 `array_rotate_right(`*array*, *rotate_count*`)`
 
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+
 ## Parameters
 
 | Name | Type | Required | Description |

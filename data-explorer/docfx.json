@@ -127,7 +127,8 @@
       "author": "shsagir",
       "ms.author": "shsagir",
       "ms.service": "data-explorer",
-      "services": "data-explorer"
+      "services": "data-explorer",
+      "titleSuffix": "Azure Data Explorer"
     },
     "fileMetadata": {
       "titleSuffix": {
