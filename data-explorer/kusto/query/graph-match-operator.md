@@ -1,28 +1,27 @@
 ---
 title: graph-match operator (Preview)
-description: Learn how to use the graph-match operator to search for all occurences of a graph pattern in a graph.
+description: Learn how to use the graph-match operator to search for all occurrences of a graph pattern in a graph.
 ms.author: rocohen
 ms.service: data-explorer
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 07/19/2023
+ms.date: 08/29/2023
 ---
 # graph-match operator (Preview)
 
-The `graph-match` operator searches for all occurences of a graph pattern in an input graph source.
+The `graph-match` operator searches for all occurrences of a graph pattern in an input graph source.
 
 ## Syntax
 
-*G* | `graph-match` [ *graphMatchParameters* ] *Patterns* `where` *Constraints* `project` [*ColumnName* =] *Expression* [`,` ...]
+*G* | `graph-match` *Pattern* `where` *Constraints* `project` [*ColumnName* =] *Expression* [`,` ...]
 
 ## Parameters
 
-|Name|Type|Required|Description|
-|--|--|--|--|
-| *graphMatchParameters* | string | | Zero or more space-separated parameters in the form of *Name* `=` *Value* that control the behavior of the pattern matching operation and execution plan. See [supported graph-match parameters](#supported-parameters). |
-| *Patterns* | string | &check; | one or more sequences of graph node elements connected by graph edge elements using graph notations. all patterns must create a single connected component. For more information, see [Graph Pattern Notation](#graph-pattern-notation) |
-| *Constraints* | string | | a Boolean expression composed of properties of named variables in the *Pattern*. Each graph element (node/edge) has a set of properties that were attached to it during the graph construction. The constraints define which elements (nodes and edges) are matched by the pattern. A property is referenced by the variable name followed by a dot (`.`) and the property name. |
-| *Expression* | string | &check; | the `project` clause converts each pattern to a row in a tabular result, the project expression(s) have to be scalar and reference properties of named variables defined in the *Pattern*. A property is referenced by the variable name followed by a dot (`.`) and the attribute name. |
+|Name|Required|Description|
+|--|--|--|
+| *Pattern* | &check; | a sequences of graph node elements connected by graph edge elements using graph notations. For more information, see [Graph Pattern Notation](#graph-pattern-notation) |
+| *Constraints* | | a Boolean expression composed of properties of named variables in the *Pattern*. Each graph element (node/edge) has a set of properties that were attached to it during the graph construction. The constraints define which elements (nodes and edges) are matched by the pattern. A property is referenced by the variable name followed by a dot (`.`) and the property name. |
+| *Expression* | &check; | the `project` clause converts each pattern to a row in a tabular result, the project expression(s) have to be scalar and reference properties of named variables defined in the *Pattern*. A property is referenced by the variable name followed by a dot (`.`) and the attribute name. |
 
 ### Graph Pattern Notation
   
@@ -117,5 +116,4 @@ reports
 
 * [Graph operators](graph-operators.md)
 * [make-graph operator](make-graph-operator.md)
-* [graph-merge operator](graph-merge-operator.md)
 
