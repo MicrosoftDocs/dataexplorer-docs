@@ -160,9 +160,15 @@ Sometimes it's required to contextualize time series data in ADX with a graph wh
   - label (string)
   - properties (dynamic)
 
-The following example (IIoT scenario) demonstrates the transformation to the canonical model and how to query it. The base tables for the nodes and edges of the graph have a very different in their schema.
+The following example demonstrates the transformation to the canonical model and how to query it. The base tables for the nodes and edges of the graph have a very different in their schema.
+
+The scenario is based on a combination of an asset graph in a factory production floor and the maintenance personal hierarchy. The latter is changing on a daily basis. In this small example it's the goal of a factory manager to find out why his equipment is not working properly and he wants to reach out to the responsible maintenance personal.
+
+The following graph shows the relations between assets and their time series (tags like speed, temperature and pressure). The operators and the assets (i.E. pump) are connected via the "operates" edge. The operators themselves report up to a management chain.
 
 :::image type="content" source="media/graph/graph-property-graph.png" alt-text="Infographic on the property graph scenario.":::
+
+The data for those entities can be stored directly in ADX or acquired using a query federation to a different service (i.E. CosmosDB, Azure SQL, Azure Digital Twin). This example is abstracting this complexity for the sake of simplicity.
 
 ```kusto
 let sensors = datatable(sensorId:string, tagName:string, unitOfMeasuree:string)
@@ -209,7 +215,7 @@ let assetHierarchy = datatable(source:string, destination:string)
 ];
 ```
 
-In order to create a canonical model the user can leverage the union operator. The following KQL shows that the sensor data is joined with the time series data to identify anomalous sensors. Afterwards, a projection is used to create the canonical model for the nodes of the graph.
+Employees, sensors and the other entities / relations don't share a canonical data model. In order to create it, the user can leverage the union operator. The following KQL shows that the sensor data is joined with the time series data to identify anomalous sensors. Afterwards, a projection is used to create the canonical model for the nodes of the graph.
 
 ```kusto
 let nodes =
@@ -236,11 +242,17 @@ let edges =
         ( operates | project source = employee, destination = machine, properties = pack_all(true), label = "operates" );
 ```
 
-Once the graph was created using make-graph, the user needs to define the path pattern which should be detected and project the information required.
+Now we have everything we need to create a graph based on the edges and nodes.
 
 ```kusto
-edges
-| make-graph source --> destination with nodes on nodeId
+let graph = edges
+| make-graph source --> destination with nodes on nodeId;
+```
+
+Once the graph was created using make-graph, the user needs to define the path pattern which should be detected and project the information required. The pattern starts at a tag node followed by a variable length edge to an asset. That asset is operated by an operator which reports to a top manager via a a variable length edge, called "reportsTo". The contraints section of graph-match is reducing the tags to the ones that have an anomaly and were operated on a specific day.
+
+```kusto
+graph
 | graph-match (tag)-[hasParent*1..5]->(asset)<-[operates]-(operator)-[reportsTo*1..5]->(topManager)
     where tag.label=="tag" and tobool(tag.properties.hasAnomaly) and
         startofday(todatetime(operates.properties.timestamp)) == datetime(2023-01-24)
@@ -258,11 +270,8 @@ edges
 | -------------- | ------------- | ------------ | ------------------ |
 | temperature    | Pump          | Eve          | Mallory            |
 
-The output of the query returned the information that the temperature sensor showed an anomaly on the given day. It was operated by Eve which ultimately reports to Mallory. Now a service engine
-
-## Executing multiple graph match statements on a graph
+The projection in graph-match outputs the information that the temperature sensor showed an anomaly on the given day. It was operated by Eve which ultimately reports to Mallory. Now the factory manager can reach out to Eve and potentially Mallory to get a better understanding of the anomaly.
 
 ## Next steps
 
-Learn more about Scenarios _addLinkHere_
-Learn more about Operators _addLinkHere_
+- [Graph operators](kusto/query/graph-operators.md)

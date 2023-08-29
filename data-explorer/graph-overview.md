@@ -89,36 +89,45 @@ Every relational engine is able to model graph traversals using join operations.
 
 ## How to model graphs from time series / log data
 
-To create a graph from a simple flat table containing time series information such as log data, a user needs to identify the entities and relationships that are relevant for the graph analysis. For example, suppose we have a table called trace logs from a web server that contains information about requests, such as the timestamp, the source IP address, the destination resource and much more.
+To create a graph from a simple flat table containing time series information such as log data, a user needs to identify the entities and relationships that are relevant for the graph analysis. For example, suppose we have a table called rawLogs from a web server that contains information about requests, such as the timestamp, the source IP address, the destination resource and much more.
 
 ```kusto
-let Logs = datatable (rawLog:string) [
-"54.36.149.41 - - [2019-01-22 03:56:14 +0330] \"GET /product/27 HTTP/1.1\" 200 30577 \"-\" \"some client\" \"-\"",
-"31.56.96.51 - - [2019-01-22 03:56:16 +0330] \"GET /product/27 HTTP/1.1\" 200 5379 \"https://www.contoso.com/m/filter/b113\" \"some client\" \"-\"",
-"31.56.96.51 - - [2019-01-22 03:56:17 +0330] \"GET /product/42 HTTP/1.1\" 200 5667 \"https://www.contoso.com/m/filter/b113\" \"some client\" \"-\""
+let rawLogs = datatable (rawLog:string) [
+"31.56.96.51 - - [2019-01-22 03:54:16 +0330] \"GET /product/27 HTTP/1.1\" 200 5379 \"https://www.contoso.com/m/filter/b113\" \"some client\" \"-\"",
+"31.56.96.51 - - [2019-01-22 03:55:17 +0330] \"GET /product/42 HTTP/1.1\" 200 5667 \"https://www.contoso.com/m/filter/b113\" \"some client\" \"-\"",
+"54.36.149.41 - - [2019-01-22 03:56:14 +0330] \"GET /product/27 HTTP/1.1\" 200 30577 \"-\" \"some client\" \"-\""
 ];
 ```
 
-One possible way to model a graph from this table is to treat the source IP addresses as nodes and the web requests to resources as edges. This way, we can create a graph that represents the network traffic and interactions between different sources and destinations. To create such a graph, we can use the make-graph operator and specify the source and destination columns as the edge endpoints, and optionally provide additional columns as edge or node properties. For example:
+One possible way to model a graph from this table is to treat the source IP addresses as nodes and the web requests to resources as edges. Once we parsed the relevant columns, we can create a graph that represents the network traffic and interactions between different sources and destinations. To create such a graph, we can use the make-graph operator and specify the source and destination columns as the edge endpoints, and optionally provide additional columns as edge or node properties. For example:
 
 ```kusto
-let Graph = Logs
+let parsedLogs = rawLogs
 | parse rawLog with ipAddress:string " - - [" timestamp:datetime "] \"" httpVerb:string " " resource:string " " *
-| project-away rawLog
-| make-graph ipAddress --> resource;
+| project-away rawLog;
+let edges = parsedLogs;
+let nodes =
+    union
+        ( parsedLogs | distinct ipAddress | project nodeId = ipAddress, label = "IP address"),
+        ( parsedLogs | distinct resource  | project nodeId = resource,  label = "resource") ;
+let graph = edges
+| make-graph ipAddress --> resource with nodes on nodeId;
 ```
 
 This query parses the raw logs and creates a directed graph where the nodes are either IP addresses or resources and each edge is a request from the source to the destination, with the timestamp and the http verb as edge properties.
 
 :::image type="content" source="media/graph/graph-recommendation.png" alt-text="Infographic on the recommendation scenario.":::
 
-Once the graph is created, we can use the graph-match operator to query the graph data using patterns, filters and projections. For example, we can create a simple recommendation based on the resources which where requested by other IP addresses:
+Once the graph is created, we can use the graph-match operator to query the graph data using patterns, filters and projections. For example, we can create a simple recommendation based on the resources which where requested by other IP addresses. Additionally, we are only interested in recommendations which are based on requests which are not older than five minutes:
 
 ```kusto
-Graph
-| graph-match ()-[webrequest1]->()<--()-[webrequest3]->()
-    where webrequest1.ipAddress == "54.36.149.41" and webrequest1.resource != webrequest3.resource
-    project recommendation = webrequest3.resource
+graph
+| graph-match (startIp)-[request]->(resource)<--(otherIP)-[otherRequest]->(otherResource)
+    where startIp.label == "IP address" and //start with an IP address
+        resource.nodeId != otherResource.nodeId and //recommending a different resource
+        startIp.nodeId != otherIP.nodeId and //only other IP addresses are interesting
+        ( request.timestamp - otherRequest.timestamp < 5m) //filter on recommendations based on the last 5 minutes
+    project otherResource.nodeId
 ```
 
 **Output**
@@ -135,5 +144,5 @@ The graph semantics feature in Kusto has some limitations that users should be a
 
 ## Next steps
 
-Learn more about Scenarios _addLinkHere_
-Learn more about Operators _addLinkHere_
+- [Best practices](graph-best-practices.md)
+- [Graph operators](kusto/query/graph-operators.md)
