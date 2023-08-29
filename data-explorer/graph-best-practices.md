@@ -162,6 +162,8 @@ Sometimes it's required to contextualize time series data in ADX with a graph wh
 
 The following example (IIoT scenario) demonstrates the transformation to the canonical model and how to query it. The base tables for the nodes and edges of the graph have a very different in their schema.
 
+:::image type="content" source="media/graph/graph-property-graph.png" alt-text="Infographic on the property graph scenario.":::
+
 ```kusto
 let sensors = datatable(sensorId:string, tagName:string, unitOfMeasuree:string)
 [
@@ -239,7 +241,7 @@ Once the graph was created using make-graph, the user needs to define the path p
 ```kusto
 edges
 | make-graph source --> destination with nodes on nodeId
-| graph-match cycles=edges (tag)-[hasParent*1..5]->(asset)<-[operates]-(operator)-[reportsTo*1..5]->(topManager)
+| graph-match (tag)-[hasParent*1..5]->(asset)<-[operates]-(operator)-[reportsTo*1..5]->(topManager)
     where tag.label=="tag" and tobool(tag.properties.hasAnomaly) and
         startofday(todatetime(operates.properties.timestamp)) == datetime(2023-01-24)
         and topManager.label=="employee"
