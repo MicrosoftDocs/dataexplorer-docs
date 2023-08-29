@@ -35,7 +35,7 @@ To interactively explore sample dashboards, see [Quickstart: Visualize sample da
 1. Enter a **Variable name** to be used as reference to this base query.  
 
     > [!NOTE]
-    > We suggest starting each base query name with an underscore (_) for easy use later, and so as not to conflict with Kusto-defined names. For more information, see [naming your entities](kusto/query/schema-entities/entity-names.md#naming-your-entities-to-avoid-collisions-with-kusto-language-keywords)
+    > We suggest starting each base query name with an underscore (_) for easy use later, and so as not to conflict with Kusto-defined names. For more information, see [naming your entities](kusto/query/schema-entities/entity-names.md)
 
     :::image type="content" source="media/base-query/create-base-query.png" alt-text="Screenshot of create base query in Azure Data Explorer dashboards.":::
 
