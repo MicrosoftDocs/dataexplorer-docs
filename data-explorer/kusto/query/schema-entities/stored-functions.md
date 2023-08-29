@@ -16,7 +16,7 @@ Functions are reusable queries or query parts. Functions can be stored as databa
 To create and manage stored functions, see the [Stored functions management overview](../../management/functions.md).
 
 > [!NOTE]
-> Designate a stored function as a [stored view](../../query/schema-entities/views.md#stored-views) to enable the function to participate in `search` and `union *` scenarios.
+> For the function to participate in `search *` and `union *` scenarios, define the stored function as a [view](../../query/schema-entities/views.md).
 
 ::: zone-end
 
