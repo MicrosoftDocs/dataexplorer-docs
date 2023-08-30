@@ -21,12 +21,12 @@ Graph analysis is typically comprised of the following steps:
 
 ## Supported graph operators
 
-The following graph operators are supported:
-
-* [make-graph](make-graph-operator.md) builds a graph from tabular data
-* [graph-match](graph-match-operator.md) searches for patterns in the graph
-* [graph-merge](graph-merge-operator.md) merges two graphs into a single new graph 
-* [graph-to-table](graph-to-table-operator.md) builds nodes or edges tables from a graph
+| Operator | Description |
+|--|--|
+| [make-graph](make-graph-operator.md) | Builds a graph from tabular data. |
+| [graph-match](graph-match-operator.md) | Searches for patterns in a graph. |
+| [graph-merge](graph-merge-operator.md) | Merges two graphs into a single new graph. |
+| [graph-to-table](graph-to-table-operator.md) | Builds nodes or edges tables from a graph. |
 
 ## Graph model
 
