@@ -12,7 +12,7 @@ ms.date: 08/30/2023
 The `graph-merge` operator merges the nodes and edges of two graphs, combining them into a single new graph.
 
 > [!NOTE]
-> This function is used in conjunction with the [make-graph operator](make-graph-operator.md).
+> This operator is used in conjunction with the [make-graph operator](make-graph-operator.md).
 
 ## Syntax
 
@@ -33,7 +33,7 @@ In the absence of any rules, the edges are unionized rather than merged.
 
 ## Examples
 
-The following examples build a graph from emails and aliases tables and a second graph for calls and employees first and last names. The `make-graph` operators build the two graphs. Then, each example shows a different usage of `graph-merge`.
+The following examples build a graph from emails and aliases tables and another graph for calls and employees first and last names. The `make-graph` operators build the two graphs. Then, each example shows a different usage of `graph-merge`.
 
 ### Merge without attributes
 

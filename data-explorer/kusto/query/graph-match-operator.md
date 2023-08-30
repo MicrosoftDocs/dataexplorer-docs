@@ -12,7 +12,7 @@ ms.date: 08/29/2023
 The `graph-match` operator searches for all occurrences of a graph pattern in an input graph source.
 
 > [!NOTE]
-> This function is used in conjunction with the [make-graph operator](make-graph-operator.md).
+> This operator is used in conjunction with the [make-graph operator](make-graph-operator.md).
 
 ## Syntax
 
