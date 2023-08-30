@@ -23,13 +23,13 @@ All three of the following Machine Learning plugins implement clustering algorit
 
 ## Clustering a single record set
 
-A common scenario includes a data set selected by a specific criteria such as:
+A common scenario includes a dataset selected by a specific criteria such as:
 
 * Time window that shows anomalous behavior
 * High temperature device readings
 * Long duration commands
 * Top spending users
-You want a fast and easy way to find common patterns (segments) in the data. Patterns are a subset of the data set whose records share the same values over multiple dimensions (categorical columns). 
+You want a fast and easy way to find common patterns (segments) in the data. Patterns are a subset of the dataset whose records share the same values over multiple dimensions (categorical columns). 
 
 The following query builds and shows a time series of service exceptions over the period of a week, in ten-minute bins:
 

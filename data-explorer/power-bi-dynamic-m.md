@@ -49,13 +49,13 @@ First, set up a connector for Power BI.
     >
     > Use **Import** mode when:
     >
-    > * Your data set is small.
+    > * Your dataset is small.
     > * You don't need near real-time data.
     > * Your data is already aggregated or you perform [aggregation in Kusto](./kusto/query/aggregation-functions.md)
     >
     > Use **DirectQuery** mode when:
     >
-    > * Your data set is very large.
+    > * Your dataset is very large.
     > * You need near real-time data.
 
     **Advanced options**
