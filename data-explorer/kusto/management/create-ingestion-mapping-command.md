@@ -62,7 +62,7 @@ At least [Database Ingestor](access-control/role-based-access-control.md) permis
 | mapping1 | CSV  | `[{"Name":"rownumber","DataType":"int","CsvDataType":null,"Ordinal":0,"ConstValue":null},{"Name":"rowguid","DataType":"string","CsvDataType":null,"Ordinal":1,"ConstValue":null}]` | MyDatabase | MyTable |
 | mapping2 | CSV  | `[{"Name":"rownumber","DataType":"int","CsvDataType":null,"Ordinal":0,"ConstValue":null},{"Name":"rowguid","DataType":"string","CsvDataType":null,"Ordinal":1,"ConstValue":null}]` | MyDatabase | |
 
-### Example: .create ingestion mapping with escape characters**
+### Example: .create ingestion mapping with escape characters
 
 ```kusto
 .create table test_table ingestion json mapping "test_mapping_name"
