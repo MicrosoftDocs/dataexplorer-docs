@@ -1,6 +1,6 @@
 ---
 title: Ingest historical data into Azure Data Explorer
-description: Learn how to use LightIngest to ingest historical or ad-hoc data ingestion into Azure Data Explorer.
+description: Learn how to use LightIngest to ingest historical or ad hoc data ingestion into Azure Data Explorer.
 ms.reviewer: vplauzon
 ms.topic: how-to
 ms.date: 08/22/2023
@@ -8,21 +8,42 @@ ms.date: 08/22/2023
 ---
 # How to ingest historical data into Azure Data Explorer
 
+A common scenario when onboarding to Azure Data Explorer is to ingest historical data, sometimes called backfill. The process involves ingesting data from an existing storage system into a table, which is a collection of [extents](kusto/management/extents-overview.md).
+
+By default, the creation time for extents is set to the time when the data is ingested into the table, which may not produce the behavior you're expecting. For example, suppose you have a table that has a cache period of 30 days and a retention period of two years. In the normal flow, data ingested as it's produced is cached for 30 days and then moved to cold storage. After two years, based on it's creation time, older data is removed one day at a time. However, if you ingest two years of historical data where, by default, the data is marked with creation time as the time the data is ingested. This may not produce the desired outcome because:
+
+- All the data lands in cache and stays there for 30 days, using more cache than you anticipated
+- Older data isn't removed one day at a time; hence data is retained in the cluster for longer than necessary and, after two years, is all removed at once
+- Data, which was grouped by date in the source system, may now be [batched together](kusto/management/batchingpolicy.md) in the same extent leading to inefficient queries
+
+:::image type="content" source="media/ingest-data-historical/historical-data-expected-vs-actual.png" alt-text="Diagram showing the expected versus actual result of ingesting historical data using the default creation time.":::
+
+///*** NOTES
+1. Best method is to use creationTime ingestion property. For ADLS, needs container to use pattern. See below.
+1. If not, can use ingestion time, use partioning to get the same effect.
 
 
-LightIngest is a command-line utility for ad-hoc data ingestion into Azure Data Explorer.
-To learn more about LightIngest, see [Use LightIngest to ingest data into Azure Data Explorer](lightingest.md).
+To avoid this, you can use the [creationTime ingestion property](ingestion-properties.md#ingestion-properties) to set the creation time of the extents to the time of the data. This way, the data is ingested into the table with the correct creation time, and the cache and retention periods are applied correctly.
+
+In this article, you learn:
+
+- How to ingest historical data into Azure Data Explorer using the LightIngest tool, a command-line utility for ad hoc data ingestion into Azure Data Explorer. To learn more about LightIngest, see [Use LightIngest to ingest data into Azure Data Explorer](lightingest.md).
+
+## Prerequisites
+
+- A Microsoft account or an Azure Active Directory user identity. An Azure subscription isn't required.
+- An Azure Data Explorer cluster and database. [Create a cluster and database](create-cluster-and-database.md).
+- [A storage account](/azure/storage/common/storage-quickstart-create-account?tabs=azure-portal).
+- LightIngest - download it as part of the [Microsoft.Azure.Kusto.Tools NuGet package](https://www.nuget.org/packages/Microsoft.Azure.Kusto.Tools/). For installation instructions, see [Install LightIngest](lightingest.md#install-lightingest).
+
+## Before you begin
+
+When ingesting historical data, you may want to consider the following:
+
 
 LightIngest can be particularly useful to load historical data from an existing storage system to Azure Data Explorer. While you can build your own command using the list of [Command-line arguments](lightingest.md#command-line-arguments), this article shows you how to auto-generate this command through an ingestion wizard. In addition to creating the command, you can use this process to create a new table, and create schema mapping. This tool infers schema mapping from your data set.
 
 This article shows you how to create a new table, create schema mapping, and generate a LightIngest command for one-time ingestion using the LightIngest tool.
-
-## Prerequisites
-
-* A Microsoft account or an Azure Active Directory user identity. An Azure subscription isn't required.
-* An Azure Data Explorer cluster and database. [Create a cluster and database](create-cluster-and-database.md).
-* [A storage account](/azure/storage/common/storage-quickstart-create-account?tabs=azure-portal).
-* LightIngest - download it as part of the [Microsoft.Azure.Kusto.Tools NuGet package](https://www.nuget.org/packages/Microsoft.Azure.Kusto.Tools/). For installation instructions, see [Install LightIngest](lightingest.md#install-lightingest).
 
 ## Access the wizard
 
