@@ -11,7 +11,7 @@ adobe-target: true
 
 Kusto Query Language (KQL) is a powerful tool to explore your data and discover patterns, identify anomalies and outliers, create statistical modeling, and more. The query uses schema entities that are organized in a hierarchy similar to SQLs: databases, tables, and columns.
 
-This article provides an explanation of the query language and offers practical exercises to get you started writing queries. To access the query environment, use the [Azure Data Explorer web UI](https://dataexplorer.azure.com/).
+This article provides an explanation of the query language and offers practical exercises to get you started writing queries. To access the query environment, use the [Azure Data Explorer web UI](https://dataexplorer.azure.com/). To learn how to use KQL, see [Tutorial: Learn common operators](tutorials/learn-common-operators.md).
 
 ## What is a Kusto query?
 
@@ -71,6 +71,16 @@ This distinction prevents many kinds of security attacks, simply because it prev
 Not all management commands modify data or metadata. The large class of commands that start with `.show`, are used to display metadata or data. For example, the `.show tables` command returns a list of all tables in the current database.
 
 For more information on management commands, see [Management commands overview](../management/index.md).
+
+## KQL in other services
+
+KQL is used by many other Microsoft services. For specific information on the use of KQL in these environments, refer to the following links:
+
+* [Log queries in Azure Monitor](/azure/azure-monitor/logs/log-query-overview)
+* [Kusto Query Language in Microsoft Sentinel](/azure/sentinel/kusto-overview)
+* [Understanding the Azure Resource Graph query language](/azure/governance/resource-graph/concepts/query-language)
+* [Proactively hunt for threats with advanced hunting in Microsoft 365 Defender](/microsoft-365/security/defender/advanced-hunting-overview)
+* [CMPivot queries](/mem/configmgr/core/servers/manage/cmpivot-overview#queries)
 
 ## Next steps
 

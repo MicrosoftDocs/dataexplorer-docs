@@ -410,7 +410,7 @@ ASCII-only
 | `Old_Sogdian`                          |
 | `Old_South_Arabian`                    |
 | `Old_Turkic`                           |
-| `Oriya`                                |
+| `Odia`                                |
 | `Osage`                                |
 | `Osmanya`                              |
 | `Pahawh_Hmong`                         |
