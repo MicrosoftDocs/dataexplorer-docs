@@ -35,21 +35,21 @@ The `graph-to-table` operator exports nodes or edges from a graph to tables.
 |*G*|string|&check;|The input graph source.|
 |*NodesTableName*|string||The name of the exported nodes table.|
 |*EdgesTableName*|string||The name of the exported edges table.|
-|*ColumnName*|string||Export the node hash id, source node hash id, or target node hash id with the given column name.|
+|*ColumnName*|string||Export the node hash ID, source node hash ID, or target node hash ID with the given column name.|
 
 ## Returns
 
 #### Nodes
 
-The `graph-to-table` operator returns a tabular result, in which each row corresponds to a node in the source graph. The returned columns are the node's properties. When `with_node_id` is provided, the node hash column will be of `long` type.
+The `graph-to-table` operator returns a tabular result, in which each row corresponds to a node in the source graph. The returned columns are the node's properties. When `with_node_id` is provided, the node hash column is of `long` type.
 
 #### Edges
 
-The `graph-to-table` operator returns a tabular result, in which each row corresponds to an edge in the source graph. The returned columns are the node's properties. When `with_source_id` or `with_target_id` are provided, the node hash column will be of `long` type.
+The `graph-to-table` operator returns a tabular result, in which each row corresponds to an edge in the source graph. The returned columns are the node's properties. When `with_source_id` or `with_target_id` are provided, the node hash column is of `long` type.
 
 #### Nodes and edges
 
-The `graph-to-table` operator returns two tabular results, matching the descriptions above.  
+The `graph-to-table` operator returns two tabular results, matching the previous descriptions.  
 
 ## Examples
 
