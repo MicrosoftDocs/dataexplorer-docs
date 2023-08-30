@@ -7,9 +7,9 @@ ms.date: 01/31/2023
 ---
 # stdev() (aggregation function)
 
-Calculates the standard deviation of *expr* across the group, using [Bessel's correction](https://en.wikipedia.org/wiki/Bessel's_correction) for a small data set that is considered a [sample](https://en.wikipedia.org/wiki/Sample_%28statistics%29).
+Calculates the standard deviation of *expr* across the group, using [Bessel's correction](https://en.wikipedia.org/wiki/Bessel's_correction) for a small dataset that is considered a [sample](https://en.wikipedia.org/wiki/Sample_%28statistics%29).
 
-For a large data set that is representative of the population, use [stdevp() (aggregation function)](stdevp-aggfunction.md).
+For a large dataset that is representative of the population, use [stdevp() (aggregation function)](stdevp-aggfunction.md).
 
 [!INCLUDE [data-explorer-agg-function-summarize-note](../../includes/data-explorer-agg-function-summarize-note.md)]
 

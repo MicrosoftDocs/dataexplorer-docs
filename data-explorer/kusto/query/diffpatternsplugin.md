@@ -1,15 +1,15 @@
 ---
 title:  diffpatterns plugin
-description: Learn how to use the diffpatterns plugin to compare two data sets of the same structure to find the differences between the two data sets. 
+description: Learn how to use the diffpatterns plugin to compare two datasets of the same structure to find the differences between the two datasets. 
 ms.reviewer: alexans
 ms.topic: reference
 ms.date: 03/12/2023
 ---
 # diffpatterns plugin
 
-Compares two data sets of the same structure and finds patterns of discrete attributes (dimensions) that characterize differences between the two data sets. The plugin is invoked with the [`evaluate`](evaluateoperator.md) operator.
+Compares two datasets of the same structure and finds patterns of discrete attributes (dimensions) that characterize differences between the two datasets. The plugin is invoked with the [`evaluate`](evaluateoperator.md) operator.
 
-`Diffpatterns` was developed to help analyze failures (for example, by comparing failures to non-failures in a given time frame), but can potentially find differences between any two data sets of the same structure.
+`diffpatterns` was developed to help analyze failures (for example, by comparing failures to non-failures in a given time frame), but can potentially find differences between any two datasets of the same structure.
 
 > [!NOTE]
 > `diffpatterns` aims to find significant patterns (that capture portions of the data difference between the sets) and isn't meant for row-by-row differences.
@@ -24,9 +24,9 @@ Compares two data sets of the same structure and finds patterns of discrete attr
 
 |Name|Type|Required|Description|
 |--|--|--|--|
-|*SplitColumn*|string|&check;|The column name that tells the algorithm how to split the query into data sets. According to the specified values for the *SplitValueA* and *SplitValueB* arguments, the algorithm splits the query into two data sets, “A” and “B”, and analyzes the differences between them. As such, the split column must have at least two distinct values.|
-|*SplitValueA*|string|&check;|A string representation of one of the values in the *SplitColumn* that was specified. All the rows that have this value in their *SplitColumn* considered as data set “A”.|
-|*SplitValueB*|string|&check;|A string representation of one of the values in the *SplitColumn* that was specified. All the rows that have this value in their *SplitColumn* considered as data set “B”.|
+|*SplitColumn*|string|&check;|The column name that tells the algorithm how to split the query into datasets. According to the specified values for the *SplitValueA* and *SplitValueB* arguments, the algorithm splits the query into two datasets, “A” and “B”, and analyzes the differences between them. As such, the split column must have at least two distinct values.|
+|*SplitValueA*|string|&check;|A string representation of one of the values in the *SplitColumn* that was specified. All the rows that have this value in their *SplitColumn* considered as dataset “A”.|
+|*SplitValueB*|string|&check;|A string representation of one of the values in the *SplitColumn* that was specified. All the rows that have this value in their *SplitColumn* considered as dataset “B”.|
 |*WeightColumn*|string||The column used to consider each row in the input according to the specified weight. Must be a name of a numeric column, such as `int`, `long`, `real`. By default each row has a weight of '1'. To use the default value, input the tilde: `~`. A common usage of a weight column is to take into account sampling or bucketing/aggregation of the data that is already embedded into each row.<br/><br/>Example: `T | extend splitColumn= iff(request_responseCode == 200, "Success" , "Failure") | evaluate diffpatterns(splitColumn, "Success","Failure", sample_Count)`|
 |*Threshold*|long||A long in the range of 0.015 to 1. This value sets the minimal pattern ratio difference between the two sets. The default is 0.05. To use the default value, input the tilde: `~`.<br/><br/>Example:  `T | extend splitColumn = iff(request-responseCode == 200, "Success" , "Failure") | evaluate diffpatterns(splitColumn, "Success","Failure", "~", 0.04)`|
 |*MaxDimensions*|int||Sets the maximum number of uncorrelated dimensions per result pattern. By specifying a limit, you decrease the query runtime. The default is unlimited. To use the default value, input the tilde: `~`.<br/><br/>Example:  `T | extend splitColumn = iff(request-responseCode == 200, "Success" , "Failure") | evaluate diffpatterns(splitColumn, "Success","Failure", "~", "~", 3)`|
@@ -34,7 +34,7 @@ Compares two data sets of the same structure and finds patterns of discrete attr
 
 ## Returns
 
-`Diffpatterns` returns a small set of patterns that capture different portions of the data in the two sets (that is, a pattern capturing a large percentage of the rows in the first data set and low percentage of the rows in the second set). Each pattern is represented by a row in the results.
+`diffpatterns` returns a small set of patterns that capture different portions of the data in the two sets (that is, a pattern capturing a large percentage of the rows in the first dataset and low percentage of the rows in the second set). Each pattern is represented by a row in the results.
 
 The result of `diffpatterns` returns the following columns:
 
@@ -50,7 +50,7 @@ The result of `diffpatterns` returns the following columns:
 
 * PercentDiffAB: the absolute percentage point difference between A and B (|PercentA - PercentB|) is the main measure of significance of patterns in describing the difference between the two sets.
 
-* Rest of the columns: are the original schema of the input and describe the pattern, each row (pattern) reresents the intersection of the non-wildcard values of the columns (equivalent of `where col1==val1 and col2==val2 and ... colN=valN` for each non-wildcard value in the row).
+* Rest of the columns: are the original schema of the input and describe the pattern, each row (pattern) represents the intersection of the non-wildcard values of the columns (equivalent of `where col1==val1 and col2==val2 and ... colN=valN` for each non-wildcard value in the row).
 
 For each pattern, columns that aren't set in the pattern (that is, without restriction on a specific value) will contain a wildcard value, which is null by default. See in the Arguments section below how wildcards can be manually changed.
 

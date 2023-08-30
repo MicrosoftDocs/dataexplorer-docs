@@ -7,7 +7,7 @@ ms.date: 04/27/2022
 ---
 # Query limits
 
-Kusto is an ad-hoc query engine that hosts large data sets and
+Kusto is an ad-hoc query engine that hosts large datasets and
 attempts to satisfy queries by holding all relevant data in-memory.
 There's an inherent risk that queries will monopolize the service
 resources without bounds. Kusto provides several built-in protections
@@ -150,7 +150,7 @@ To work-around the limit, one should modify the query to use the [shuffle query]
 
 In all cases of `E_RUNAWAY_QUERY`, an additional option (beyond increasing the limit by setting the request option and changing the
 query to use a shuffle strategy) is to switch to sampling.
-The two queries below show how to do the sampling. The first query is a statistical sampling, using a random number generator. The second query is deterministic sampling, done by hashing some column from the data set, usually some ID.
+The two queries below show how to do the sampling. The first query is a statistical sampling, using a random number generator. The second query is deterministic sampling, done by hashing some column from the dataset, usually some ID.
 
 <!-- csl -->
 ```kusto

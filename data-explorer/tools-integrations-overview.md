@@ -15,7 +15,7 @@ This article supplies you with a list of Azure Data Explorer tools, connectors, 
 
 ## Ingest data
 
-Data ingestion is the process used to load data records from one or more sources into Azure Data Explorer. Once ingested, the data becomes available for query. Azure Data Explorer provides several tools and connectors for data ingestion.
+Data ingestion is the process used to load data from one or more sources into Azure Data Explorer. Once ingested, the data becomes available for query. Azure Data Explorer provides several tools and connectors for data ingestion.
 
 For a complete list of ingestion connectors, see [Data connectors Overview](connector-overview.md).
 

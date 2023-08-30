@@ -9,7 +9,7 @@ zone_pivot_groups: kql-flavors-all
 ---
 # Area chart
 
-The area chart visual shows a time-series relationship. The first column of the query should be numeric and is used as the x-axis. Other numeric columns are the y-axes. Unlike line charts, area charts also visually represent volume. Area charts are ideal for indicating the change among different data sets.
+The area chart visual shows a time-series relationship. The first column of the query should be numeric and is used as the x-axis. Other numeric columns are the y-axes. Unlike line charts, area charts also visually represent volume. Area charts are ideal for indicating the change among different datasets.
 
 > [!NOTE]
 > This visualization can only be used in the context of the [render operator](renderoperator.md).
@@ -53,7 +53,7 @@ All properties are optional.
 
 ::: zone pivot="azuremonitor"
 
-### Properties 
+### Properties
 
 All properties are optional.
 
