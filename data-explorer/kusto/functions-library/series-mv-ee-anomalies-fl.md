@@ -159,7 +159,7 @@ normal_2d_with_anomalies
 
 **Output**
 
-The table normal_2d_with_anomalies contains a set of 3 time series. Each time series has two-dimensional normal distribution with daily anomalies added at midnight, 8am, and 4pm respectively. You can create this sample data set using [an example query](series-mv-ee-anomalies-fl.md#create-a-sample-data-set).
+The table normal_2d_with_anomalies contains a set of 3 time series. Each time series has two-dimensional normal distribution with daily anomalies added at midnight, 8am, and 4pm respectively. You can create this sample dataset using [an example query](series-mv-ee-anomalies-fl.md#create-a-sample-data-set).
 
 ![Graph showing multivariate anomalies on a time chart.](images/series-mv-ee-anomalies-fl/mv-ee-anomalies-time-chart.png)
 
@@ -179,7 +179,7 @@ normal_2d_with_anomalies
 
 You can see that on TS1 most of the midnight anomalies were detected using this multivariate model.
 
-### Create a sample data set
+### Create a sample dataset
 
 ```kusto
 .set normal_2d_with_anomalies <|
@@ -211,7 +211,7 @@ union
 | summarize t=make_list(t), x=make_list(x), y=make_list(y) by name
 ```
 
-![Scatter chart of the sample data set.](images/series-mv-ee-anomalies-fl/mv-ee-anomalies-sample-data.png)
+![Scatter chart of the sample dataset.](images/series-mv-ee-anomalies-fl/mv-ee-anomalies-sample-data.png)
 
 ::: zone-end
 

@@ -134,7 +134,7 @@ results later-on.)
 
 ## DataSetHeader
 
-The `DataSetHeader` frame is always the first in the data set and appears exactly once.
+The `DataSetHeader` frame is always the first in the dataset and appears exactly once.
 
 ```json
 {
@@ -147,7 +147,7 @@ Where:
 
 * `Version` is the protocol version. The current version is `v2.0`.
 
-* `IsProgressive` is a boolean flag that indicates whether this data set contains progressive frames.
+* `IsProgressive` is a boolean flag that indicates whether this dataset contains progressive frames.
    A progressive frame is one of:
 
      | Frame             | Description                                    |
@@ -160,7 +160,7 @@ Where:
     The frames above describe a table.
     If the `IsProgressive` flag isn't set to true, then every table in the set will be serialized using a single frame:
 
-* `DataTable`: Contains all the information that the client needs about a single table in the data set.
+* `DataTable`: Contains all the information that the client needs about a single table in the dataset.
 
 ## TableHeader
 
@@ -252,7 +252,7 @@ The `TableCompletion` frame marks the end of the table transmission. No more fra
     "TableId": Number,
     "RowCount": Number,
 }
-```    
+```
 
 Where:
 
@@ -261,7 +261,7 @@ Where:
 
 ## DataTable
 
-Queries that are issued with the `EnableProgressiveQuery` flag set to false won't include any of the frames (`TableHeader`, `TableFragment`, `TableProgress`, and `TableCompletion`). Instead, each table in the data set will be transmitted using the `DataTable` frame that contains all the information that the client needs, to read the table.
+Queries that are issued with the `EnableProgressiveQuery` flag set to false won't include any of the frames (`TableHeader`, `TableFragment`, `TableProgress`, and `TableCompletion`). Instead, each table in the dataset will be transmitted using the `DataTable` frame that contains all the information that the client needs, to read the table.
 
 ```json
 {
@@ -271,21 +271,20 @@ Queries that are issued with the `EnableProgressiveQuery` flag set to false won'
     "Columns": Array,
     "Rows": Array,
 }
-```    
+```
 
 Where:
 
 * `TableId` is the table's unique ID.
 * `TableKind` is one of:
 
-    * PrimaryResult
-    * QueryCompletionInformation
-    * QueryTraceLog
-    * QueryPerfLog
-    * QueryProperties
-    * QueryPlan
-    * Unknown
-      
+  * PrimaryResult
+  * QueryCompletionInformation
+  * QueryTraceLog
+  * QueryPerfLog
+  * QueryProperties
+  * QueryPlan
+  * Unknown
 * `TableName` is the table's name.
 * `Columns` is an array describing the table's schema, and includes:
 
@@ -310,7 +309,7 @@ Where:
 
 ## DataSetCompletion
 
-The `DataSetCompletion` frame is the final one in the data set.
+The `DataSetCompletion` frame is the final one in the dataset.
 
 ```json
 {
@@ -322,6 +321,6 @@ The `DataSetCompletion` frame is the final one in the data set.
 
 Where:
 
-* `HasErrors` is true if there were errors while generating the data set.
-* `Cancelled` is true if the request that led to the generation of the data set was canceled before completion. 
+* `HasErrors` is true if there were errors while generating the dataset.
+* `Cancelled` is true if the request that led to the generation of the dataset was canceled before completion.
 * `OneApiErrors` is only returned if `HasErrors` is true. For a description of the `OneApiErrors` format, see section 7.10.2 [here](https://github.com/Microsoft/api-guidelines/blob/vNext/Guidelines.md).
