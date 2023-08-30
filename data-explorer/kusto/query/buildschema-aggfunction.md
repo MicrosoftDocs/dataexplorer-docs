@@ -28,7 +28,7 @@ Builds the minimal schema that admits all values of *DynamicExpr*.
 Returns the minimal schema that admits all values of *DynamicExpr*.
 
 > [!TIP]
-> If the input is a JSON `string`, use the [parse_json()](parsejsonfunction.md) function to convert the JSON to a `dynamic` value. Otherwise, an error may occur.
+> If the input is a JSON string, use the [parse_json()](parsejsonfunction.md) function to convert the JSON to a [dynamic](scalar-data-types/dynamic.md) value. Otherwise, an error may occur.
 
 ## Example
 
