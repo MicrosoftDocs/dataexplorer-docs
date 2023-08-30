@@ -9,12 +9,14 @@ ms.date: 08/30/2023
 ---
 # Graph operators (Preview)
 
-Kusto Query Language (KQL) graph operators allow for the analysis of data by representing tabular data as a graph, with nodes and edges. This setup lets us use graph operations to study the connections and relationships between different data points. Graph analysis is typically comprised of the following steps:
+Kusto Query Language (KQL) graph operators allow for the analysis of data by representing tabular data as a graph, with nodes and edges. This setup lets us use graph operations to study the connections and relationships between different data points.
+
+Graph analysis is typically comprised of the following steps:
 
 1. Prepare and preprocess the data using tabular operators
 1. Build a graph from the prepared tabular data using [make-graph](make-graph-operator.md)
-1. Perform graph analysis using the [graph operators](#supported-graph-operators)
-1. Transform the results of the graph analysis back into tabular form
+1. Perform graph analysis using [graph-match](graph-match-operator.md) or [graph-merge](graph-merge-operator.md)
+1. Transform the results of the graph analysis back into tabular form with [graph-to-table](graph-to-table-operator.md)
 1. Continue the query with tabular operators
 
 ## Supported graph operators
@@ -39,3 +41,8 @@ A graph is a transient object. It's built in each query that contains graph oper
 The graph object is built in memory on the fly for each graph query. As such, there's a performance cost for building the graph and a limit to the size of the graph that can be built.
 
 Although it isn't strictly enforced, we recommend building graphs with at most 10 million elements (nodes + edges).
+
+## Related content
+
+* [Graph overview](../../graph-overview.md)
+* [Graph best practices](../../graph-best-practices.md)
