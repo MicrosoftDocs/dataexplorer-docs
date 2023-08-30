@@ -28,7 +28,7 @@ Builds the minimal schema that admits all values of *DynamicExpr*.
 Returns the minimal schema that admits all values of *DynamicExpr*.
 
 > [!TIP]
-> If a syntax error occurs with `buildschema(`*json_column*`)`, check that the column type is `dynamic`. To convert a JSON `string` into a `dynamic` value, use the [parse_json()](parsejsonfunction.md) function.
+> If the input is a JSON `string`, use the [parse_json()](parsejsonfunction.md) function to convert the JSON to a `dynamic` value. Otherwise, an error may occur.
 
 ## Example
 
