@@ -5,7 +5,7 @@ ms.author: rocohen
 ms.service: data-explorer
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 08/07/2023
+ms.date: 08/30/2023
 ---
 # make-graph operator (Preview)
 
@@ -27,7 +27,7 @@ The `make-graph` operator builds a graph structure from tabular inputs of edges 
 
 ## Returns
 
-The `make-graph` operator returns a graph expression and has to be followed by a graph operator such as [graph-match](graph-match-operator.md). Each row in source *Edges* expression becomes an edge with the graph with properties that are the column values of the row. Each row in the node(s) tabular expression becomes a node in the graph with properties that are the column values of the row. Nodes that appear in the *Edges* table but don't have a corresponding row in the nodes table(s) are created as nodes with the corresponding node ID and empty properties.
+The `make-graph` operator returns a graph expression and has to be followed by a [graph operator](graph-operators.md#supported-graph-operators). Each row in source *Edges* expression becomes an edge with the graph with properties that are the column values of the row. Each row in the nodes tabular expression becomes a node in the graph with properties that are the column values of the row. Nodes that appear in the *Edges* table but don't have a corresponding row in the nodes tables are created as nodes with the corresponding node ID and empty properties.
 
 > [!NOTE]
 > Each node has a unique identifier. If the same node ID appears in both the *Nodes1* and *Nodes2* tables, a single node is created by merging their properties. If there are conflicting property values for the same node, one of the values is arbitrarily chosen.
@@ -74,4 +74,3 @@ edges
 
 * [Graph operators](graph-operators.md)
 * [graph-match operator](graph-match-operator.md)
-* [graph-match operator](graph-to-table-operator.md)

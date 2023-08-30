@@ -5,11 +5,14 @@ ms.author: rocohen
 ms.service: data-explorer
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 08/07/2023
+ms.date: 08/29/2023
 ---
 # graph-match operator (Preview)
 
 The `graph-match` operator searches for all occurrences of a graph pattern in an input graph source.
+
+> [!NOTE]
+> This function is used in conjunction with the [make-graph operator](make-graph-operator.md).
 
 ## Syntax
 
@@ -20,11 +23,11 @@ The `graph-match` operator searches for all occurrences of a graph pattern in an
 | Name | Type | Required | Description |
 |--|--|--|--|
 | *G* | string | &check; | The input graph source. |
-| *Pattern* | string | &check; | A sequence of graph node elements connected by graph edge elements using graph notations. See [Graph notation](#graph-notation). |
+| *Pattern* | string | &check; | A sequence of graph node elements connected by graph edge elements using graph notations. See [Graph pattern notation](#graph-pattern-notation). |
 | *Constraints* | string | &check; | A Boolean expression composed of properties of named variables in the *Pattern*. Each graph element (node/edge) has a set of properties that were attached to it during the graph construction. The constraints define which elements (nodes and edges) are matched by the pattern. A property is referenced by the variable name followed by a dot (`.`) and the property name. |
 | *Expression* | string |  | The `project` clause converts each pattern to a row in a tabular result, the project expression(s) have to be scalar and reference properties of named variables defined in the *Pattern*. A property is referenced by the variable name followed by a dot (`.`) and the attribute name. |
 
-### Graph notation
+### Graph pattern notation
 
 The following table shows the supported graph notation:
   
@@ -36,10 +39,14 @@ The following table shows the supported graph notation:
 |Any direction edge|`-[`*e*`]-`|`--`|
 |Variable length edge|`-[`*e*`*3..5]-`|`-[*3..5]-`|
 
+### Variable length edge
+
+A variable length edge allows a specific pattern to be repeated multiple times within defined limits. This type of edge is denoted by an asterisk (`*`), followed by the minimum and maximum occurrence values in the format *min*`..`*max*. Both the minimum and maximum values must be [integer](scalar-data-types/int.md) scalars. Any sequence of edges falling within this occurrence range can match the variable edge of the pattern, provided that all the edges in the sequence satisfy the constraints outlined in the `where` clause.
+
 ## Returns
 
 The `graph-match` operator returns a tabular result, where each record corresponds to a match of the pattern in the graph.  
-The returned columns are defined in the operator's `project` clause.
+The returned columns are defined in the operator's `project` clause using properties of edges and/or nodes defined in the pattern. Properties and functions of properties of variable length edges are returned as a dynamic array, each value in the array corresponds to an occurrence of the variable length edge.
 
 ## Examples
 
@@ -83,7 +90,7 @@ edges
 
 ### All employees in a manager's org
 
-The following example represents an organizational hierarchy. The nodes in the graph represent employees and the edges are from an employee to their manager. After we build the graph using `make-graph`, we search for employees in `Alice`'s org that are younger than `30`.
+The following example represents an organizational hierarchy, it demonstrates how a variable length edge could be used to find employees of different levels of the hierarchy in a single query. The nodes in the graph represent employees and the edges are from an employee to their manager. After we build the graph using `make-graph`, we search for employees in `Alice`'s org that are younger than `30`.
 
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA1WSwU7DMAyG75P2DtZOK2ortlKhjRUJEBdOiOu0Q9ZabSFNqjRiIPHwOGmSrqp6+B3/zmc7HDVg13P5izhAARXT9J05rgXrcD9o1Yo6BlbjnktRR7BcHOmH1RNvS1zFkG1jsIFneTZy4+Trtznd3jv5Jq3cOfnSqHagwF0eu2r4Y9x5bEuhMMmZFR9t2TBVmdMdBU4PZOBErbCXSs+ZfSeBu2OC0JXTE/0IG5qYMc2jYx+jYWLzyVNrwTVntkZH7YmXiz8C+8KkVqxvwvghSR49MFxa3VwtRgow+7BW60o6pssG1szcGh2Soyt+s0nT/JSESUSEc2lQIdjM1FYpCo8LTFThmpRuhgNkt+TplfzEcnobNOaQZmrYJ3EdJBm7ndCk3xnhF35HqevqH55azattAgAA" target="_blank">Run the query</a>
@@ -128,4 +135,3 @@ reports
 
 * [Graph operators](graph-operators.md)
 * [make-graph operator](make-graph-operator.md)
-* [graph-merge operator](graph-merge-operator.md)

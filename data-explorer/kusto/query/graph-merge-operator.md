@@ -5,11 +5,14 @@ ms.author: rocohen
 ms.service: data-explorer
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 08/07/2023
+ms.date: 08/30/2023
 ---
 # graph-merge operator (Preview)
 
 The `graph-merge` operator merges the nodes and edges of two graphs, combining them into a single new graph.
+
+> [!NOTE]
+> This function is used in conjunction with the [make-graph operator](make-graph-operator.md).
 
 ## Syntax
 
@@ -30,11 +33,11 @@ In the absence of any rules, the edges are unionized rather than merged.
 
 ## Examples
 
+The following examples build a graph from emails and aliases tables and a second graph for calls and employees first and last names. The `make-graph` operators build the two graphs. Then, each example shows a different usage of `graph-merge`.
+
 ### Merge without attributes
 
-The following example builds a graph from emails and aliases tables and a second graph for calls and employees first and last names. The `make-graph` operators build the two graphs. Then, `graph-merge` merges the nodes and edges of the two graphs.
-
-Since *Attributes* isn't specified, the edges of the new graph are the union of the edges from both the source graphs.
+Since *Attributes* aren't specified, the edges of the new graph are the union of the edges from both the source graphs.
 
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA41T22rbQBB9N/gfln2KQQJJtktJaCEJahtoQmn7VvKwlsa22r2Y1domkI/v7MiSVr40RRJozh7NnDmjkeBYrkQla/aBlcLhtZBwtbRGfbOVLqqNkNdMGr2KmDM91CB7Y8t7s9WupezXoK99HnCVggkbj36NRyyNWIZ3kkTd0VWWZIglqX8mEZIwmkZsfomUTSLWsGbIis5RppRnSozsfJYZUVKipIic48w95/lmPJLozb2QR9YUiIBtG6YI2qjeLn5DgW7UDp1CoNxa4Sqj/8cf/qnSQhfAvVWn8t+HTqVD+kXLOj/4l+9ITOf/msCMJsC/bnWx9uTkAnsemPiG6J4+a0STjOlFGb3xudpI8wJwKysxHMCm/QkfytZW4Umt64GrXAh+cIwvFvxgBwfgB0lcKXpFQXy346flH/TSvFV9WdnaPQkF/dylGCKhJuyI/OK3pVB1p+/OLDx4J/6A7ZTmO2LmO6HrTvMj/nPGvnB6rY2mg3cY/bSgnYd/qMqtB934Df9sxWaNzTQRfvPKFFaLV4QPVp7F8cdw39keEx7NxGgWmBHuS1uIguM6zf5QgWZ5hrnJ8JPUQQPj0SujTLECu4KgYn/iTEzTYlCuoGYo9tFzcx9FTJsyAJ98hCV6RhvQyV8JFXqLIQUAAA==" target="_blank">Run the query</a>
@@ -43,7 +46,7 @@ Since *Attributes* isn't specified, the edges of the new graph are the union of 
 let Emails = datatable(
     fromPrincipal: long,
     toPrincipal: long,
-    wordCount: long,
+    wordCount: long,F
     when: datetime
 ) 
     [
@@ -124,12 +127,10 @@ MergeNodes
 
 ### Merge with attributes
 
-The following example builds a graph from emails and aliases tables and a second graph for calls and employees first and last names. The `make-graph` operators builds the two graphs. Then, `graph-merge` merges the nodes and edges of the two graphs.
-
-Since *Attributes* is specified, the edges are merged based on source and destination of the emails and calls. Meaning, all edges with the same source and destination are merged into a single edge.
+Since *Attributes* are specified, the edges are merged based on source and destination of the emails and calls. Meaning, all edges with the same source and destination are merged into a single edge.
 
 > [!div class="nextstepaction"]
-> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA61U22rbQBB9N/gfliUPMchB8qWUFBeS4LaBJpQmb6UPa2tkb7IXs1rZBPzxnV3dVr40fSiWQXP2MHPmzKwEWDKXjIuczEjKLP4WAi4zo+UPw9WSb5i4JkKrVUSsbqES2WmT3ulC2ZqyW4O6dnnAcgkD0u/96vdIEpERPnEcNUeXo3iEWJy4/yBCEkbjiEzPkUaDiJSsCbKiU5SxzzP2jNHpLBNPSTwlQeQUZ+o4vz/1ewK9uWPiwJolImDqhn0EdZQXixdYohu5RacQSAvDLNfqX/yhX7hiagnUWXUs/2PoVNKln7Ws8YN++4nEZPq3CUz8BOj3Qi3XjhyfYU8DE98R3dInpWgvY3xWRmv8XG6EfgO4EZx1B7Cpl/A+rW1ljlS7HrhKGaOVY3SxoJUdFIBWkqiU/hUF0e2WHpe/V5l+r3rGTW4fmYR27oJ1kVATduT9ojcpk3mj71YvHHjLXsE0Sudbz5xvmcobzQ+4c9q8Uf+aa+UPPmD0bEBZBz9JbtdVN9Xt3pMXzRV55SqdZQUmKCyYar21IhcCMnvVufZkNiMXhq/W9qrc+ahiBd+BQw409rmiXw3brNG9MkKReyKxveHK491iw+Hn8ANDdtjBwRKgzMD98ILWhXxwWKcU7wuUGru5/YSPUgcN9Ht74jMNJZgVhBX/o3FtFauHftUIpCvICTb+4OrOXRQRpdMAfHQRym0ZdeBP/gBZULo73gUAAA==" target="_blank">Run the query</a>
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA5VUXWvbMBR9968Qog8N2MV2kjFaMmiLtxXWMra9jT3I9o3tTR9BVlIK/fG7kj8mJzFlSRx8j47uPffog4MhmWANb8mGlMzgN+dwGRD8bLUSX3Uji2bH+DXhSlahGzDqLPysdHmv9tJMwBrktc0MphEQLIhDf7r/JCQp/uI4HAmXaZwiFif2WXQpMF6GZD1HSxchGXgr5J1nLftkS0dKz5NWPSlxpMRi52hrpP26CTh6d8/4OesKhEH7PjgEfKTd57+hQLNag272YLnXzDRK/p+F9GMjmSyAWjdPNb+fmplMJ8y66vlFP39DajLj7ZB75RaKftnLorb0eIa/ntj8hnh/wqoT78QsZ8UMa5OJHVcvALe8YdM12g3b96HsjSbMkoa1OLaYMkZH+2ie09EbCkBHbVSIPkBt9HCgx0oe5Fa9JWTb6NY8MQHjxiCcTZETedih84/elky0ntQ7lVv4jv0B7YnODo6dHZhsPfmPuEeVfqHutVWyH3qH8Q8N0tiB76IxtdeYvTo+abarsa8ucnNeicCaUeVGJhcJiaIP/g1CnjHh0VopSTxnvJM2VHLBaaHu2LkK3XmbJnf2H+f2WgheicsTCdAV+BVx0gWHrbmatrLZkAvdVLW56iqHPctv74gDYxGjIrcJCJQVtATbfrRlMxuFRKrSA59sdBP8I/TvDv8LKAlw68QFAAA=" target="_blank">Run the query</a>
 
 ```kusto
 let Emails = datatable(
@@ -176,8 +177,6 @@ let EmployeeInfo = datatable(principalId: long, firstName: string, lastName: str
     4, "Mallory", "Mason",
     6, "Trent", "Smith"
 ];
-Emails
-| join kind=fullouter Calls on $left.fromPrincipal == $right.caller, $left.toPrincipal == $right.callee;
 let EmailsGraph = Emails
     | make-graph fromPrincipal --> toPrincipal with EmployeeAlias on principalId;
 let CallsGraph = Calls
@@ -191,16 +190,16 @@ MergeNodes
 
 **Output table 1**
 
-|fromPrincipal|toPrincipal|wordCount|when|caller|callee|subject|duration|when1|
-|---|---|---|---|---|---|---|---|---|
-|||||4|1|HR|35|2022-01-01 00:00:00.0000000|
-|||||2|1|Finance|2|2022-01-02 00:00:00.0000000|
-|||||4|3|Lunch|105|2022-01-05 00:00:00.0000000|
-|1|2|200|2022-01-01 00:00:00.0000000|1|2|Finance|20|2022-08-01 00:00:00.0000000|
-|2|3|500|2022-01-02 00:00:00.0000000||||||
-|2|4|5|2022-01-03 00:00:00.0000000||||||
-|3|4|2|2022-01-04 00:00:00.0000000|3|4|HR|15|2022-01-01 00:00:00.0000000|
-|1|4|101|2022-01-05 00:00:00.0000000|1|4|Finance|20|2022-01-05 00:00:00.0000000|
+|fromPrincipal|toPrincipal|wordCount|when|caller|callee|subject|duration|
+|---|---|---|---|---|---|---|---|
+|1|2|200|2022-01-01T00:00:00Z|1|2|"Finance"|20|
+| | | |2022-01-01T00:00:00Z|4|1|"HR"|35|
+| | | |2022-01-02T00:00:00Z|2|1|"Finance"|2|
+|2|3|500|2022-01-02T00:00:00Z| | | | |
+|2|4|5|2022-01-03T00:00:00Z| | | | |
+|3|4|2|2022-01-04T00:00:00Z|3|4|"HR"|15|
+| | | |2022-01-05T00:00:00Z|4|3|"Lunch"|105|
+|1|4|101|2022-01-05T00:00:00Z|1|4|"Finance"|20|
 
 **Output table 2**
 
