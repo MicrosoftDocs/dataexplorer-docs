@@ -7,7 +7,7 @@ ms.date: 08/14/2023
 ---
 # Get data from Amazon S3
 
-Data ingestion is the process used to load data records from one or more sources into a table in Azure Data Explorer. Once ingested, the data becomes available for query. In this article, you learn how to get data from Amazon S3 into either a new or existing table.
+Data ingestion is the process used to load data from one or more sources into a table in Azure Data Explorer. Once ingested, the data becomes available for query. In this article, you learn how to get data from Amazon S3 into either a new or existing table.
 
 For more information on Amazon S3, see [What is Amazon S3?](https://docs.aws.amazon.com/AmazonS3/latest/userguide/Welcome.html).
 

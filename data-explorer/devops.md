@@ -130,7 +130,7 @@ The are three ways to run admin commands against cluster in a task.
 
 ### Create a Query task
 
-If required, create a task to run a query against the cluster. Running queries in a Build or Release pipeline can be used to validate a data set and have a step succeed or fail based on the query results. The tasks success criteria can be based on a row count threshold or a single value depending on what the query returns.
+If required, create a task to run a query against the cluster. Running queries in a Build or Release pipeline can be used to validate a dataset and have a step succeed or fail based on the query results. The tasks success criteria can be based on a row count threshold or a single value depending on what the query returns.
 
 1. In the **Tasks** tab, select **+** by **Agent job** and search for **Azure Data Explorer**.
 

@@ -15,7 +15,7 @@ the source data is sorted. If the data is sorted, then the top values will be re
 > The `take` and `limit` operators are equivalent
 
 > [!NOTE]
-> `take` is a simple, quick, and efficient way to view a small sample of records when browsing data interactively, but be aware that it doesn't guarantee any consistency in its results when executing multiple times, even if the data set hasn't changed.
+> `take` is a simple, quick, and efficient way to view a small sample of records when browsing data interactively, but be aware that it doesn't guarantee any consistency in its results when executing multiple times, even if the dataset hasn't changed.
 > Even if the number of rows returned by the query isn't explicitly limited by the query (no `take` operator is used), Kusto limits that number by default. For more details, see [Kusto query limits](../concepts/querylimits.md).
 
 ## Syntax
