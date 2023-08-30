@@ -20,7 +20,7 @@ For general information on data ingestion, see [Azure Data Explorer data ingesti
 
 Select the tab that corresponds with your desired ingestion method.
 
-### [New - Get data](#tab/get-data)
+### [Get data](#tab/get-data)
 
 ### Prerequisites
 
