@@ -106,7 +106,7 @@ Where:
 The following example sends a SQL query to an Azure PostgreSQL database. It retrieves all records from `public."Table"`, and then processes the results.
 
 > [!NOTE]
-> This example shouldn't be taken as a recommendation to filter or project data in this manner. SQL queries should be constructed to return the smallest data set possible.
+> This example shouldn't be taken as a recommendation to filter or project data in this manner. SQL queries should be constructed to return the smallest dataset possible.
 
 ```kusto
 evaluate postgresql_request(
