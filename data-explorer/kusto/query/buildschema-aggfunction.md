@@ -28,11 +28,7 @@ Builds the minimal schema that admits all values of *DynamicExpr*.
 Returns the minimal schema that admits all values of *DynamicExpr*.
 
 > [!TIP]
-> If `buildschema(json_column)` gives a syntax error:
->
-> > *Is your `json_column` a string rather than a dynamic object?*
->
-> then use `buildschema(parsejson(json_column))`.
+> If the input is a JSON string, use the [parse_json()](parsejsonfunction.md) function to convert the JSON to a [dynamic](scalar-data-types/dynamic.md) value. Otherwise, an error may occur.
 
 ## Example
 
