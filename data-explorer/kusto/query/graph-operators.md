@@ -16,7 +16,7 @@ Graph analysis is typically comprised of the following steps:
 1. Prepare and preprocess the data using tabular operators
 1. Build a graph from the prepared tabular data using [make-graph](make-graph-operator.md)
 1. Perform graph analysis using [graph-match](graph-match-operator.md) or [graph-merge](graph-merge-operator.md)
-1. Transform the results of the graph analysis back into tabular form with [graph-to-table](graph-to-table-operator.md)
+1. Transform the results of the graph analysis back into tabular form using [graph-to-table](graph-to-table-operator.md)
 1. Continue the query with tabular operators
 
 ## Supported graph operators
