@@ -7,9 +7,9 @@ ms.date: 08/24/2023
 ---
 # Row order policy
 
-The row order policy sets the preferred arrangement of rows within an [extent](extents-overview.md). The policy is optional and set on the table level.
+The row order policy sets the preferred arrangement of rows within an [extent](extents-overview.md). The policy is optional and set at the table level.
 
-The main purpose of the policy is to improve the performance of queries that are narrowed to a small subset of values in the ordered columns. Additionally, it may contribute to improvements in compression.
+The main purpose of the policy is to improve the performance of queries that are narrowed to a small subset of values in ordered columns. Additionally, it may contribute to improvements in compression.
 
 Use management commands to [alter](alter-table-row-order-policy-command.md), [alter-merge](alter-merge-table-row-order-policy-command.md) [delete](delete-table-row-order-policy-command.md), or [show](show-table-row-order-policy-command.md) the row order policy for a table. 
 

@@ -11,7 +11,7 @@ The Azure Data Explorer provides unparalleled performance for ingesting and quer
 
 ## Storage vs. compute
 
-Azure Data Explorer separates storage and compute resources. Persistent data resides in Azure Blob Storage, while compute resources may store temporary data or act as a cache for persistent storage.
+Azure Data Explorer separates storage and compute resources. Persistent data most commonly resides in Azure Blob Storage, while compute resources may store temporary data or act as a cache for persistent storage.
 
 This separation provides the following advantages:
 
@@ -24,9 +24,9 @@ For more information on SKU optimization, see [Select a SKU for your cluster](ma
 
 ## Data storage
 
-Azure Data Explorer partitions all data ingested into tables into *extents*, or *data shards*, which are horizontal slices of the table. Each extent usually contains a few million records and is encoded and indexed independently of other extents. This functionality contributes to linear scale in ingestion throughput.
+Azure Data Explorer partitions all ingested data into *extents*, or *data shards*, which are horizontal slices of the target table. Each extent usually contains a few million records and is encoded and indexed independently of other extents. This functionality contributes to linear scale in ingestion throughput.
 
-Extents are spread evenly across the cluster nodes, where they're cached both on the local SSD and in memory. This distribution enhances the capacity to prepare and execute highly distributed and parallel queries.
+Extents are spread evenly across cluster nodes, where they're cached both on the local SSD and in memory. This distribution enhances the capacity to prepare and execute highly distributed and parallel queries.
 
 For more information on data storage, see [Extents overview](kusto/management/extents-overview.md).
 
@@ -57,7 +57,7 @@ For more information on specifying data sort order, see [Row order policy](kusto
 
 ## Distributed data query
 
-Azure Data Explorer uses distributed data query technology intended for fast ad-hoc analytics on large unstructured data sets. Key features of this technology include:
+Azure Data Explorer uses distributed data query technology intended for fast ad hoc analytics on large unstructured data sets. Key features of this technology include:
 
 * Query-generated temporary data is stored in aggregated RAM
 * Relevant extents are marked on a query plan, providing snapshot isolation

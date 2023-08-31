@@ -18,7 +18,7 @@ The best query performance is achieved when all ingested data is cached. However
 Use management commands to alter the cache policy at the [cluster](alter-cluster-cache-policy-command.md), [database](alter-database-cache-policy-command.md), [table](alter-table-cache-policy-command.md), or [materialized view](alter-materialized-view-cache-policy-command.md) level.
 
 > [!TIP]
-> Your cluster is designed for ad-hoc queries with intermediate result sets that fit in the cluster's total RAM.
+> Your cluster is designed for ad hoc queries with intermediate result sets that fit in the cluster's total RAM.
 > For large jobs, like map-reduce, it can be useful to store intermediate results in persistent storage. To do so, create a [continuous export](../management/data-export/continuous-data-export.md) job. This feature enables you to do long-running batch queries using services like HDInsight or Azure Databricks.
  
 ## How cache policy is applied
