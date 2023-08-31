@@ -223,7 +223,7 @@ You can monitor the partitioning status of tables with defined policies in a dat
 
 * The following situations can contribute to imbalanced distribution of data across the cluster's nodes, and degrade query performance:
     * If a hash partition key includes values that are much more prevalent than others, for example, an empty string, or a generic value (such as `null` or `N/A`).
-    * The values represent an entity (such as `tenant_id`) that is more prevalent in the data set.
+    * The values represent an entity (such as `tenant_id`) that is more prevalent in the dataset.
 * If a uniform range datetime partition key has a large enough percentage of values that are "far" from the majority of the values in the column, the overhead of the data partitioning process is increased and may lead to many small extents that the cluster will need to keep track of. An example of such a situation is datetime values from the distant past or future.
 
 In both of these cases, either "fix" the data, or filter out any irrelevant records in the data before or at ingestion time, to reduce the overhead of the data partitioning on the cluster. For example, use an [update policy](updatepolicy.md).

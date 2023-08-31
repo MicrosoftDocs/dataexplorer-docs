@@ -25,7 +25,7 @@ Rank of value `v` in a set `S` is defined as count of members of `S` that are sm
 
 ## Returns
 
-The rank foreach value in a data set.
+The rank foreach value in a dataset.
 
 >[!TIP]
 >The values that you want to get its rank must be of the same type as the `tdigest`.
