@@ -41,7 +41,7 @@ For more information on caching, see [Cache policy](kusto/management/cachepolicy
 
 ## Text indexing
 
-Azure Data Explorer is designed to index free-text ([string](kusto/query/scalar-data-types/string.md)) and JSON-like ([dynamic](kusto/query/scalar-data-types/dynamic.md)) columns at line speed. The indexes maintain a level of granularity that enables evaluation of parts of the query based on the index without scanning the data.
+Azure Data Explorer is designed to efficiently index free-text ([string](kusto/query/scalar-data-types/string.md)) and JSON-like ([dynamic](kusto/query/scalar-data-types/dynamic.md)) columns as data is ingested. The indexes maintain a level of granularity that enables evaluation of parts of the query based on the index without scanning the data.
 
 Continuous background optimization of extents through merging improves compression and indexing, ensuring efficient storage and low query latency. Once extents reach a certain size, only the indexes are merged to enhance query performance without compromising efficiency.
 
