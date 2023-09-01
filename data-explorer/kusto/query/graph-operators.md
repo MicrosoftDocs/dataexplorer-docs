@@ -1,11 +1,9 @@
 ---
 title: graph operators (Preview)
 description: Learn how to use Kusto graph operators.
-ms.author: rocohen
-ms.service: data-explorer
-ms.reviewer: alexans
+ms.reviewer: rocohen
 ms.topic: reference
-ms.date: 08/30/2023
+ms.date: 09/03/2023
 ---
 # Graph operators (Preview)
 

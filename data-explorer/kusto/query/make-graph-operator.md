@@ -1,11 +1,9 @@
 ---
 title: make-graph operator (Preview)
 description: Learn how to use the graph-to-table operator to build a graph structure from tabular inputs of edges and nodes.
-ms.author: rocohen
-ms.service: data-explorer
-ms.reviewer: alexans
+ms.reviewer: rocohen
 ms.topic: reference
-ms.date: 08/30/2023
+ms.date: 09/03/2023
 ---
 # make-graph operator (Preview)
 
@@ -42,26 +40,26 @@ The following example builds a graph from edges and nodes tables. The nodes repr
 ```kusto
 let nodes = datatable(name:string, type:string, age:int) 
 [ 
-	"Alice", "Person", 23,  
-	"Bob", "Person", 31,  
-	"Eve", "Person", 17,  
-	"Mallory", "Person", 29,  
-	"Trent", "System", 99 
+  "Alice", "Person", 23,  
+  "Bob", "Person", 31,  
+  "Eve", "Person", 17,  
+  "Mallory", "Person", 29,  
+  "Trent", "System", 99 
 ]; 
 let edges = datatable(source:string, destination:string, edge_type:string) 
 [ 
-	"Alice", "Bob", "communicatesWith",  
-	"Alice", "Trent", "trusts",  
-	"Bob", "Trent", "hasPermission",  
-	"Eve", "Alice", "attacks",  
-	"Mallory", "Alice", "attacks",  
-	"Mallory", "Bob", "attacks"  
+  "Alice", "Bob", "communicatesWith",  
+  "Alice", "Trent", "trusts",  
+  "Bob", "Trent", "hasPermission",  
+  "Eve", "Alice", "attacks",  
+  "Mallory", "Alice", "attacks",  
+  "Mallory", "Bob", "attacks"  
 ]; 
 edges 
 | make-graph source --> destination with nodes on name 
 | graph-match (mallory)-[attacks]->(compromised)-[hasPermission]->(trent) 
-	where mallory.name == "Mallory" and trent.name == "Trent" and attacks.edge_type == "attacks" and hasPermission.edge_type == "hasPermission" 
-	project Attacker = mallory.name, Compromised = compromised.name, System = trent.name
+  where mallory.name == "Mallory" and trent.name == "Trent" and attacks.edge_type == "attacks" and hasPermission.edge_type == "hasPermission" 
+  project Attacker = mallory.name, Compromised = compromised.name, System = trent.name
 ```
 
 **Output**

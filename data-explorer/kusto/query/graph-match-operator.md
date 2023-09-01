@@ -1,11 +1,9 @@
 ---
 title: graph-match operator (Preview)
 description: Learn how to use the graph-match operator to search for all occurrences of a graph pattern in a graph.
-ms.author: rocohen
-ms.service: data-explorer
-ms.reviewer: alexans
+ms.reviewer: rocohen
 ms.topic: reference
-ms.date: 08/29/2023
+ms.date: 09/03/2023
 ---
 # graph-match operator (Preview)
 
@@ -60,26 +58,26 @@ The following example builds a graph from edges and nodes tables, the nodes repr
 ```kusto
 let nodes = datatable(name:string, type:string, age:long) 
 [ 
-	"Alice", "Person", 23,  
-	"Bob", "Person", 31,  
-	"Eve", "Person", 17,  
-	"Mallory", "Person", 29,  
-	"Trent", "System", 99 
+  "Alice", "Person", 23,  
+  "Bob", "Person", 31,  
+  "Eve", "Person", 17,  
+  "Mallory", "Person", 29,  
+  "Trent", "System", 99 
 ]; 
 let edges = datatable(source:string, destination:string, edge_type:string) 
 [ 
-	"Alice", "Bob", "communicatesWith",  
-	"Alice", "Trent", "trusts",  
-	"Bob", "Trent", "hasPermission",  
-	"Eve", "Alice", "attacks",  
-	"Mallory", "Alice", "attacks",  
-	"Mallory", "Bob", "attacks"  
+  "Alice", "Bob", "communicatesWith",  
+  "Alice", "Trent", "trusts",  
+  "Bob", "Trent", "hasPermission",  
+  "Eve", "Alice", "attacks",  
+  "Mallory", "Alice", "attacks",  
+  "Mallory", "Bob", "attacks"  
 ]; 
 edges 
 | make-graph source --> destination with nodes on name 
 | graph-match (mallory)-[attacks]->(compromised)-[hasPermission]->(trent) 
-	where mallory.name == "Mallory" and trent.name == "Trent" and attacks.edge_type == "attacks" and hasPermission.edge_type == "hasPermission" 
-	project Attacker = mallory.name, Compromised = compromised.name, System = trent.name
+  where mallory.name == "Mallory" and trent.name == "Trent" and attacks.edge_type == "attacks" and hasPermission.edge_type == "hasPermission" 
+  project Attacker = mallory.name, Compromised = compromised.name, System = trent.name
 ```
 
 **Output**
@@ -98,29 +96,29 @@ The following example represents an organizational hierarchy, it demonstrates ho
 ```kusto
 let employees = datatable(name:string, age:long) 
 [ 
-	"Alice", 32,  
-	"Bob", 31,  
-	"Eve", 27,  
-	"Joe", 29,  
-	"Chris", 45, 
-	"Alex", 35,
-	"Ben", 23,
-	"Richard", 39,
+  "Alice", 32,  
+  "Bob", 31,  
+  "Eve", 27,  
+  "Joe", 29,  
+  "Chris", 45, 
+  "Alex", 35,
+  "Ben", 23,
+  "Richard", 39,
 ]; 
 let reports = datatable(employee:string, manager:string) 
 [ 
-	"Bob", "Alice",  
-	"Chris", "Alice",  
-	"Eve", "Bob",
-	"Ben", "Chris",
-	"Joe", "Alice", 
-	"Richard", "Bob"
+  "Bob", "Alice",  
+  "Chris", "Alice",  
+  "Eve", "Bob",
+  "Ben", "Chris",
+  "Joe", "Alice", 
+  "Richard", "Bob"
 ]; 
 reports 
 | make-graph employee --> manager with employees on name 
 | graph-match (alice)<-[reports*1..5]-(employee)
-	where alice.name == "Alice" and employee.age < 30
-	project employee = employee.name, age = employee.age, reportingPath = reports.manager
+  where alice.name == "Alice" and employee.age < 30
+  project employee = employee.name, age = employee.age, reportingPath = reports.manager
 ```
 
 **Output**
