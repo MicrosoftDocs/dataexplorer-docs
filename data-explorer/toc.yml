@@ -353,6 +353,8 @@ items:
         items:
           - name: Overview
             href: graph-overview.md
+          - name: Scenarios
+            href: graph-scenarios.md
           - name: Best Practices
             href: graph-best-practices.md
   - name: Visualize data
