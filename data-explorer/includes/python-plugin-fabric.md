@@ -72,11 +72,11 @@ result["fx"] = g * np.sin(df["x"]/n*2*np.pi*f)
 
 ## Performance tips
 
-* Reduce the plugin's input data set to the minimum amount required (columns/rows).
-  * Use filters on the source data set, when possible, with Kusto's query language.
+* Reduce the plugin's input dataset to the minimum amount required (columns/rows).
+  * Use filters on the source dataset, when possible, with Kusto's query language.
   * To do a calculation on a subset of the source columns, project only those columns before invoking the plugin.
 * Use `hint.distribution = per_node` whenever the logic in your script is distributable.
-  * You can also use the [partition operator](../kusto/query/partitionoperator.md) for partitioning the input data set.
+  * You can also use the [partition operator](../kusto/query/partitionoperator.md) for partitioning the input dataset.
 * Use Kusto's query language whenever possible, to implement the logic of your Python script.
 
 ## Usage tips

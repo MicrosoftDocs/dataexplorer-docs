@@ -71,7 +71,7 @@ To create a table schema and ingestion mapping in your cluster:
 
 When migrating data to your Azure Data Explorer cluster, it's important to properly set up a [Logstash pipeline](https://www.elastic.co/guide/en/logstash/current/configuration.html). The pipeline ensures that data is correctly formatted and transferred to the target table.
 
-If you need to move data from multiple Elasticsearch clusters or indices, you can create multiple input sections in the pipeline configuration file. To achieve this, you can define one input section for each Elasticsearch cluster or index and categorize them using tags if you wish. Then, you can use these tags in conditional statements in the output section to direct these data sets to specific Azure Data Explorer cluster tables
+If you need to move data from multiple Elasticsearch clusters or indices, you can create multiple input sections in the pipeline configuration file. To achieve this, you can define one input section for each Elasticsearch cluster or index and categorize them using tags if you wish. Then, you can use these tags in conditional statements in the output section to direct these datasets to specific Azure Data Explorer cluster tables
 
 To set up a Logstash pipeline:
 

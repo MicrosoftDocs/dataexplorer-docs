@@ -3,7 +3,7 @@ title:  User-defined functions
 description: This article describes user-defined functions (scalar and views) in Azure Data Explorer.
 ms.reviewer: orspodek
 ms.topic: reference
-ms.date: 03/14/2023
+ms.date: 08/13/2023
 ---
 # User-defined functions
 
@@ -12,13 +12,11 @@ ms.date: 03/14/2023
 A user-defined function belongs to one of two categories:
 
 * Scalar functions
-* Tabular functions, also known as views
+* Tabular functions
 
 The function's input arguments and output determine whether it's scalar or tabular, which then establishes how it might be used.
 
- See [Stored functions](../schema-entities/stored-functions.md) to create and manage entities that allow the reuse of Kusto queries or query parts.
-
-To optimize multiple uses of the user-defined functions within a single query, see [Optimize queries that use named expressions](../named-expressions.md)
+To optimize multiple uses of the user-defined functions within a single query, see [Optimize queries that use named expressions](../named-expressions.md).
 
 ## Scalar function
 
@@ -398,3 +396,8 @@ For completeness, here are some commonly requested features for user-defined fun
 1. Function overloading: There's currently no way to overload a function (a way to create multiple functions with the same name and different input schema).
 
 1. Default values: The default value for a scalar parameter to a function must be a scalar literal (constant).
+
+## See also
+
+* [Stored functions](../schema-entities/stored-functions.md)
+* [Views](../schema-entities/views.md)

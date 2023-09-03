@@ -59,7 +59,7 @@ If `hot` is specified, shows only extents that are expected to be in the hot cac
 
 * Using built-in filtering capabilities in the command is preferred over adding
   a query-based filter (such as adding `| where DatabaseName == '...'` and `TableName == '...'`).
-* If the optional list of extent IDs is provided, the returned data set is limited to those extents only.
+* If the optional list of extent IDs is provided, the returned dataset is limited to those extents only.
   * This method is faster than filtering (adding `| where ExtentId in(...)`) to the results of "bare" commands.
 * If `tags` filters are specified:
   * The returned list is limited to those extents whose tags collection obeys *all* of the provided tags filters.

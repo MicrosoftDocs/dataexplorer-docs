@@ -59,7 +59,7 @@ Output table schema is:
 
 ## Examples
 
-The following sample data set shows which users seen on which days. The table was generated based on a source `Users` table, as follows:
+The following sample dataset shows which users seen on which days. The table was generated based on a source `Users` table, as follows:
 
 ```kusto
 Users | summarize tostring(make_set(user)) by bin(Timestamp, 1d) | order by Timestamp asc;

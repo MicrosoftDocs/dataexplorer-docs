@@ -77,7 +77,7 @@ Consider the syntax for the [http_request plugin](http-request-plugin.md):
 evaluate http_request ( "https://contoso.com/", dynamic({}), dynamic({ EmployeeName: Nicole }) )
 ```
 
-## See also
+## Related content
 
 * [KQL overview](index.md)
 * [KQL quick reference](../../kql-quick-reference.md)

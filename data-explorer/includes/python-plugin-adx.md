@@ -100,11 +100,11 @@ print "This is an example for using 'external_artifacts'"
 
 ## Performance tips
 
-* Reduce the plugin's input data set to the minimum amount required (columns/rows).
-  * Use filters on the source data set, when possible, with Kusto's query language.
+* Reduce the plugin's input dataset to the minimum amount required (columns/rows).
+  * Use filters on the source dataset, when possible, with Kusto's query language.
   * To do a calculation on a subset of the source columns, project only those columns before invoking the plugin.
 * Use `hint.distribution = per_node` whenever the logic in your script is distributable.
-  * You can also use the [partition operator](../kusto/query/partitionoperator.md) for partitioning the input data set.
+  * You can also use the [partition operator](../kusto/query/partitionoperator.md) for partitioning the input dataset.
 * Use Kusto's query language whenever possible, to implement the logic of your Python script.
 
 ## Usage tips
@@ -192,8 +192,8 @@ download the package and its dependencies.
     > [!NOTE]
     >
     > * Make sure to download the package that is compatible to the Python engine and the platform of the sandbox runtime (currently 3.6.5 on Windows)
-       > * Make sure to zip the `.whl` files themselves, and not their parent folder.
-       > * You can skip `.whl` files for packages that already exist with the same version in the base sandbox image.
+    > * Make sure to zip the `.whl` files themselves, and not their parent folder.
+    > * You can skip `.whl` files for packages that already exist with the same version in the base sandbox image.
 
 1. Upload the zipped file to a blob in the artifacts location (from step 1).
 

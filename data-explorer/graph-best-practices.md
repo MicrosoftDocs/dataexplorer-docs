@@ -1,36 +1,36 @@
 ---
-title: Kusto graph semantics best practices
-description: This article describes best practices for the KQL graph semantics
+title: Kusto Query Language (KQL) graph semantics best practices
+description: Learn about the best practices for Kusto Query Language (KQL) graph semantics.
 ms.reviewer: herauch
 ms.topic: conceptual
-ms.date: 08/11/2023
+ms.date: 09/03/2023
+# Customer intent: As a data analyst, I want to learn about best practices for KQL graph semantics.
 ---
+# Kusto Query Language (KQL) graph semantics best practices
 
-# Best practices
-
-Best practices are important for users to understand the benefits and limitations of the graph semantics feature, and how to use it effectively and efficiently for their use cases and scenarios. It provides guidance and examples on how to create and query graphs using the syntax and operators, and how to combine them with other KQL features and functions. Furthermore, it helps prevent users from making common mistakes or errors, such as creating graphs that are too large or too complex for the memory or performance of the engine, or using inappropriate or incompatible filters, projections, or aggregations.
+This article explains how to use the graph semantics feature in KQL effectively and efficiently for different use cases and scenarios. It shows how to create and query graphs with the syntax and operators, and how to integrate them with other KQL features and functions. It also helps users avoid common pitfalls or errors, such as creating graphs that exceed the memory or performance limits of the engine, or applying unsuitable or incompatible filters, projections, or aggregations.
 
 ## Size of graph
 
-The make-graph operator creates an in-memory representation of a graph. It consists of the graph structure itself and its properties. Users should use appropriate filters, projections, and aggregations to select only the relevant nodes and edges and their properties.
+The [make-graph operator](kusto/query/make-graph-operator.md) creates an in-memory representation of a graph. It consists of the graph structure itself and its properties. When making a graph, use appropriate filters, projections, and aggregations to select only the relevant nodes and edges and their properties.
 
-The following example illustrates how to reduce the number of nodes and edges including their properties. The nodes where filtered by the R&D organization properties which are not required for downstream operators where projected away. The same happens for the edges. Bob transitioned from her previous manager Alice to Eve. The user is solely interested in the last state of the graph, that's why the summarize operator together with arg_max was used to get the last known state of the graph.
+The following example shows how to reduce the number of nodes and edges and their properties. In this scenario, Bob changed manager from Alice to Eve and the user only wants to see the latest state of the graph for their organization. To reduce the size of the graph, the nodes are first filtered by the organization property and then the property is removed from the graph using the [project-away operator](kusto/query/projectawayoperator.md). The same happens for edges. Then [summarize operator](kusto/query/summarizeoperator.md) together with [arg_max](kusto/query/arg-max-aggfunction.md) is used to get the last known state of the graph.
 
 ```kusto
 let allEmployees = datatable(organization: string, name:string, age:long)
 [
-	"R&D", "Alice", 32,
-	"R&D","Bob", 31,
-	"R&D","Eve", 27,
-	"R&D","Mallory", 29,
-	"Marketing", "Alex", 35
+  "R&D", "Alice", 32,
+  "R&D","Bob", 31,
+  "R&D","Eve", 27,
+  "R&D","Mallory", 29,
+  "Marketing", "Alex", 35
 ];
 let allReports = datatable(employee:string, manager:string, modificationDate: datetime)
 [
-	"Bob", "Alice", datetime(2022-05-23),
-	"Bob", "Eve", datetime(2023-01-01),
-	"Eve", "Mallory", datetime(2022-05-23),
-	"Alice", "Dave", datetime(2022-05-23)
+  "Bob", "Alice", datetime(2022-05-23),
+  "Bob", "Eve", datetime(2023-01-01),
+  "Eve", "Mallory", datetime(2022-05-23),
+  "Alice", "Dave", datetime(2022-05-23)
 ];
 let filteredEmployees =
     allEmployees
@@ -43,8 +43,8 @@ let filteredReports =
 filteredReports
 | make-graph employee --> manager with filteredEmployees on name
 | graph-match (employee)-[hasManager*2..5]-(manager)
-	where employee.name == "Bob"
-	project employee = employee.name, topManager = manager.name
+  where employee.name == "Bob"
+  project employee = employee.name, topManager = manager.name
 ```
 
 **Output**
@@ -55,47 +55,49 @@ filteredReports
 
 ## Last known state of the graph
 
-The previous example demonstrated how to get the last known state of the edges of a graph by using summarize and the arg_max aggregation function. This is a compute intense operation so it might make sense to create a materialized view to improve the query performance.
+The [Size of graph](#size-of-graph) example demonstrated how to get the last known state of the edges of a graph by using summarize operator and the arg_max aggregation function. Obtaining the last know state is a compute intense operation. 
 
-The initial set of tables for employees require to have some notion of version being part of their model. It makes a lot of sense to use a datetime column for that purpose. This will allow the user to create a graph time series.
+Consider creating a materialized view to improve the query performance, as follows:
 
-```kusto
-.create table employees (organization: string, name:string, stateOfEmployment:string, properties:dynamic, modificationDate:datetime)
+1. Create tables that have some notion of version as part of their model. We recommend using a `datetime` column that you can later use to create a graph time series.
 
-.create table reportsTo (employee:string, manager:string, modificationDate: datetime)
-```
+    ```kusto
+    .create table employees (organization: string, name:string, stateOfEmployment:string, properties:dynamic, modificationDate:datetime)
 
-Once the tables were created its possible to create a materialized view for each of them and use the arg_max aggregation function to determine the last known state of employees and the reportsTo relation.
+    .create table reportsTo (employee:string, manager:string, modificationDate: datetime)
+    ```
 
-```kusto
-.create materialized-view employees_MV on table employees
-{
-    employees
-    | summarize arg_max(modificationDate, *) by name
-}
+1. Create a materialized view for each table and use the [arg_max aggregation](kusto/query/arg-max-aggfunction.md) function to determine the *last known state* of employees and the *reportsTo* relation.
 
-.create materialized-view reportsTo_MV on table reportsTo
-{
-    reportsTo
-    | summarize arg_max(modificationDate, *) by employee
-}
-```
+    ```kusto
+    .create materialized-view employees_MV on table employees
+    {
+        employees
+        | summarize arg_max(modificationDate, *) by name
+    }
 
-The last step involves the creation of two functions which ensure that only the materialized component of the materialized view is being used and additional filters/projections are applied.
+    .create materialized-view reportsTo_MV on table reportsTo
+    {
+        reportsTo
+        | summarize arg_max(modificationDate, *) by employee
+    }
+    ```
 
-```kusto
-.create function currentEmployees () {
-    materialized_view('employees_MV')
-    | where stateOfEmployment == "employed"
-}
+1. Create two functions that ensure that only the materialized component of the materialized view is used and additional filters and projections are applied.
 
-.create function reportsTo_lastKnownState () {
-    materialized_view('reportsTo_MV')
-    | project-away modificationDate
-}
-```
+    ```kusto
+    .create function currentEmployees () {
+        materialized_view('employees_MV')
+        | where stateOfEmployment == "employed"
+    }
 
-The resulting statement looks a lot cleaner and will perform much better on larger graphs because of the optimization using the materialized views. Moreover, this pattern allows higher concurrency and lower latency queries for the last known state of the graph. Additionally it does not prevent the user from implementing a graph time travel query based on the employees and reportsTo tables.
+    .create function reportsTo_lastKnownState () {
+        materialized_view('reportsTo_MV')
+        | project-away modificationDate
+    }
+    ```
+
+The resulting query using materialized makes the query faster and more efficient for larger graphs. It also enables higher concurrency and lower latency queries for the latest state of the graph. The user can still query the graph history based on the employees and reportsTo tables if needed
 
 ```kusto
 let filteredEmployees =
@@ -105,15 +107,15 @@ let filteredEmployees =
 reportsTo_lastKnownState
 | make-graph employee --> manager with filteredEmployees on name
 | graph-match (employee)-[hasManager*2..5]-(manager)
-	where employee.name == "Bob"
-	project employee = employee.name, reportingPath = hasManager.manager
+  where employee.name == "Bob"
+  project employee = employee.name, reportingPath = hasManager.manager
 ```
 
 ## Graph time travel
 
-Some scenarios require to analyze data based on the state of a graph at a specific point in time. Graph time travel is leveraging a combination of time filters and summarize using the arg_max aggregation function.
+Some scenarios require to analyze data based on the state of a graph at a specific point in time. Graph time travel uses a combination of time filters and summarizes using the arg_max aggregation function.
 
-The following KQL statement creates a function with a parameter which defines the interesting point in time for the graph. It returns a ready made graph.
+The following KQL statement creates a function with a parameter that defines the interesting point in time for the graph. It returns a ready made graph.
 
 ```kusto
 .create function graph_time_travel (interestingPointInTime:datetime ) {
@@ -136,8 +138,8 @@ With the function in place, the user can craft a query to get the top manager of
 ```kusto
 graph_time_travel(datetime(2022-06-01))
 | graph-match (employee)-[hasManager*2..5]-(manager)
-	where employee.name == "Bob"
-	project employee = employee.name, reportingPath = hasManager.manager
+  where employee.name == "Bob"
+  project employee = employee.name, reportingPath = hasManager.manager
 ```
 
 **Output**
@@ -148,7 +150,9 @@ graph_time_travel(datetime(2022-06-01))
 
 ## Dealing with multiple node and edge types
 
-Sometimes it's required to contextualize time series data in ADX with a graph which consists of multiple node types. One way of handling this scenario is creating a general purpose property graph which is represented by a canonical model.
+Sometimes it's required to contextualize time series data with a graph that consists of multiple node types. One way of handling this scenario is creating a general purpose property graph that is represented by a canonical model.
+
+Occasionally, you may need to contextualize time series data with a graph that has multiple node types. You could approach the problem by creating a general-purpose property graph that is based on a canonical model, such as the following.
 
 - nodes
   - nodeId (string)
@@ -160,22 +164,22 @@ Sometimes it's required to contextualize time series data in ADX with a graph wh
   - label (string)
   - properties (dynamic)
 
-The following example demonstrates the transformation to the canonical model and how to query it. The base tables for the nodes and edges of the graph have a very different in their schema.
+The following example shows how to transformation to a canonical model and how to query it. The base tables for the nodes and edges of the graph have different schemas.
 
-The scenario is based on a combination of an asset graph in a factory production floor and the maintenance personal hierarchy. The latter is changing on a daily basis. In this small example it's the goal of a factory manager to find out why his equipment is not working properly and he wants to reach out to the responsible maintenance personal.
+This scenario involves a factory manager who wants to find out why equipment isn't working well and who is responsible for fixing it. The manager decides to use a graph that combines the asset graph of the production floor and the maintenance staff hierarchy that changes every day.
 
-The following graph shows the relations between assets and their time series (tags like speed, temperature and pressure). The operators and the assets (i.E. pump) are connected via the "operates" edge. The operators themselves report up to a management chain.
+The following graph shows the relations between assets and their time series, such as speed, temperature, and pressure. The operators and the assets, such as pump, are connected via the *operates* edge. The operators themselves report up to management.
 
-:::image type="content" source="media/graph/graph-property-graph.png" alt-text="Infographic on the property graph scenario.":::
+:::image type="content" source="media/graph/graph-property-graph.png" alt-text="Infographic on the property graph scenario." lightbox="media/graph/graph-property-graph.png":::
 
-The data for those entities can be stored directly in ADX or acquired using a query federation to a different service (i.E. CosmosDB, Azure SQL, Azure Digital Twin). This example is abstracting this complexity for the sake of simplicity.
+The data for those entities can be stored directly in your cluster or acquired using query federation to a different service, such as Azure Cosmos DB, Azure SQL, or Azure Digital Twin. To illustrate the example, the following tabular data is created as part of the query:
 
 ```kusto
 let sensors = datatable(sensorId:string, tagName:string, unitOfMeasuree:string)
 [
-	"1", "temperature", "°C",
-	"2", "pressure", "Pa",
-	"3", "speed", "m/s"
+  "1", "temperature", "°C",
+  "2", "pressure", "Pa",
+  "3", "speed", "m/s"
 ];
 let timeseriesData = datatable(sensorId:string, timestamp:string, value:double, anomaly: bool )
 [
@@ -185,37 +189,39 @@ let timeseriesData = datatable(sensorId:string, timestamp:string, value:double, 
 ];
 let employees = datatable(name:string, age:long)
 [
-	"Alice", 32,
-	"Bob", 31,
-	"Eve", 27,
-	"Mallory", 29,
-	"Alex", 35,
-	"Dave", 45
+  "Alice", 32,
+  "Bob", 31,
+  "Eve", 27,
+  "Mallory", 29,
+  "Alex", 35,
+  "Dave", 45
 ];
 let allReports = datatable(employee:string, manager:string)
 [
-	"Bob", "Alice",
-	"Alice", "Dave",
-	"Eve", "Mallory",
-	"Alex", "Dave"
+  "Bob", "Alice",
+  "Alice", "Dave",
+  "Eve", "Mallory",
+  "Alex", "Dave"
 ];
 let operates = datatable(employee:string, machine:string, timestamp:datetime)
 [
-	"Bob", "Pump", datetime(2023-01-23),
-	"Eve", "Pump", datetime(2023-01-24),
-	"Mallory", "Press", datetime(2023-01-24),
-	"Alex", "Conveyor belt", datetime(2023-01-24),
+  "Bob", "Pump", datetime(2023-01-23),
+  "Eve", "Pump", datetime(2023-01-24),
+  "Mallory", "Press", datetime(2023-01-24),
+  "Alex", "Conveyor belt", datetime(2023-01-24),
 ];
 let assetHierarchy = datatable(source:string, destination:string)
 [
-	"1", "Pump",
-	"2", "Pump",
-	"Pump", "Press",
-	"3", "Conveyor belt"
+  "1", "Pump",
+  "2", "Pump",
+  "Pump", "Press",
+  "3", "Conveyor belt"
 ];
 ```
 
-Employees, sensors and the other entities / relations don't share a canonical data model. In order to create it, the user can leverage the union operator. The following KQL shows that the sensor data is joined with the time series data to identify anomalous sensors. Afterwards, a projection is used to create the canonical model for the nodes of the graph.
+The *employees*, *sensors*, and the other entities and relationships don't share a canonical data model. You can use the [union operator](kusto/query/unionoperator.md) to combine and canonize the data.
+
+The following query joins the sensor data with the time series data to find the sensors that have abnormal readings. Then, it uses a projection to create a common model for the graph nodes.
 
 ```kusto
 let nodes =
@@ -242,14 +248,14 @@ let edges =
         ( operates | project source = employee, destination = machine, properties = pack_all(true), label = "operates" );
 ```
 
-Now we have everything we need to create a graph based on the edges and nodes.
+With the canonized nodes and edges data, you can create a graph using the [make-graph operator](kusto/query/make-graph-operator.md), as follows:
 
 ```kusto
 let graph = edges
 | make-graph source --> destination with nodes on nodeId;
 ```
 
-Once the graph was created using make-graph, the user needs to define the path pattern which should be detected and project the information required. The pattern starts at a tag node followed by a variable length edge to an asset. That asset is operated by an operator which reports to a top manager via a a variable length edge, called "reportsTo". The contraints section of graph-match is reducing the tags to the ones that have an anomaly and were operated on a specific day.
+Once created, define the path pattern and project the information required. The pattern starts at a tag node followed by a variable length edge to an asset. That asset is operated by an operator that reports to a top manager via a variable length edge, called *reportsTo*. The constraints section of the [graph-match operator](kusto/query/graph-match-operator.md), in this instance **where**, reduces the tags to the ones that have an anomaly and were operated on a specific day.
 
 ```kusto
 graph
@@ -270,8 +276,8 @@ graph
 | -------------- | ------------- | ------------ | ------------------ |
 | temperature    | Pump          | Eve          | Mallory            |
 
-The projection in graph-match outputs the information that the temperature sensor showed an anomaly on the given day. It was operated by Eve which ultimately reports to Mallory. Now the factory manager can reach out to Eve and potentially Mallory to get a better understanding of the anomaly.
+The projection in graph-match outputs the information that the temperature sensor showed an anomaly on the specified day. It was operated by Eve who ultimately reports to Mallory. With this information, the factory manager can reach out to Eve and potentially Mallory to get a better understanding of the anomaly.
 
-## Next steps
+## Next step
 
 - [Graph operators](kusto/query/graph-operators.md)

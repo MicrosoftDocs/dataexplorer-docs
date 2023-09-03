@@ -1,15 +1,15 @@
 ---
 title:  Joining within time window
-description: Learn how to perform a time window join operation to match between two large data sets.
+description: Learn how to perform a time window join operation to match between two large datasets.
 ms.reviewer: alexans
 ms.topic: reference
 ms.date: 04/11/2023
 ---
 # Time window join
 
-It's often useful to join between two large data sets on some high-cardinality key, such as an operation ID or a session ID, and further limit the right-hand-side ($right) records that need to match up with each left-hand-side ($left) record by adding a restriction on the "time-distance" between `datetime` columns on the left and on the right.
+It's often useful to join between two large datasets on some high-cardinality key, such as an operation ID or a session ID, and further limit the right-hand-side ($right) records that need to match up with each left-hand-side ($left) record by adding a restriction on the "time-distance" between `datetime` columns on the left and on the right.
 
-The above operation differs from the usual Kusto join operation, since for the `equi-join` part of matching the high-cardinality key between the left and right data sets, the system can also apply a distance function and use it to considerably speed up the join.
+The above operation differs from the usual Kusto join operation, since for the `equi-join` part of matching the high-cardinality key between the left and right datasets, the system can also apply a distance function and use it to considerably speed up the join.
 
 > [!NOTE]
 > A distance function doesn't behave like equality (that is, when both dist(x,y) and dist(y,z) are true it doesn't follow that dist(x,z) is also true.) Internally, we sometimes refer to this as "diagonal join".
@@ -156,7 +156,7 @@ T
 
 **5M data query**
 
-The next query emulates a data set of 5M records and ~1M IDs and runs the query with the technique described above.
+The next query emulates a dataset of 5M records and ~1M IDs and runs the query with the technique described above.
 
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA31STW/CMAy9I/EfrF5ItpY1TNMOWw8wcZh2pNLOhZotQJOqDVCk/fi5zUrDx7AiJbJfbL9nb9BADBEUifpCqGBZ6AwEGA1PYWNQGsxB9Hs/gJVBlcIMy1Jq9Z7abykTFsl9mO5QmfiQYxt6JGcsM4zSxKChBxuF4jkIBR1+zyq4AxFmJXfSuzkWSYmsc7yC8MEbe36/B/+aCx8RfHIb7r15/KXf25AOG63X2/xTqlTvqbjIpDqJTKQi9wnqAUbDkEAx1Az231igSyCCwXhQR/JCr3BhOu18mJmkMFEtjpXoAw+UfS4Vs75jzUaclabiayoaSaWwsIyYveri9X29gcmgjV5pYkoJbblzjbqWmtVgbWOBy9/t8jLFuV3jdnM2tbkyWBrZLsAqp+069kjbaoiuXrJ2zf7AHLRy6bYfumExUgACOwwOczR7RAUspNnDcHgybH5rkI2UTd6F3irzCxRCBCtXAwAA" target="_blank">Run the query</a>

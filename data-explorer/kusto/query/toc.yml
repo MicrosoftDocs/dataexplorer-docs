@@ -50,6 +50,7 @@ items:
   - name: Entity types
     href: schema-entities/index.md
   - name: Entity names
+    displayName: language keywords, KQL keywords, keywords
     href: schema-entities/entity-names.md
   - name: Entity references
     href: schema-entities/entity-references.md
