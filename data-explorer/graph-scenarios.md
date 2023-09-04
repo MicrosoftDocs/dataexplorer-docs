@@ -6,15 +6,16 @@ ms.topic: conceptual
 ms.date: 09/03/2023
 # Customer intent: As a data analyst, I want to learn about common scenarios for using Kusto Query Language (KQL) graph semantics.
 ---
+
 # What are common scenarios for using Kusto Query Language (KQL) graph semantics?
 
 Graph semantics in Kusto Query Language (KQL) allows you to model and query data as graphs. There are many scenarios where graphs are useful for representing complex and dynamic data that involve many-to-many, hierarchical, or networked relationships, such as social networks, recommendation systems, connected assets, or knowledge graphs.
 
 In this article, you learn about common scenarios for using KQL graph semantics.
 
-## Scenario: Friends of a friend
+## Friends of a friend
 
-One common use case for graphs is to model and query social networks, where nodes are users and edges are friendships or interactions. For example, imagine we have a table called *Users* that has data about users, such as their name and organization, and a table called *Knows* that has data about the friendships between users as shown in the following diagram:
+One common use case for graphs is to model and query social networks, where nodes are users and edges are friendships or interactions. For example, imagine we have a table called _Users_ that has data about users, such as their name and organization, and a table called _Knows_ that has data about the friendships between users as shown in the following diagram:
 
 :::image type="content" source="media/graph/graph-friends-of-a-friend.png" alt-text="Diagram that shows a graph of friends of a friend.":::
 
@@ -33,7 +34,7 @@ Users
 | project name, name1, name2
 ```
 
-You can use graph semantics in KQL to perform same query in a more intuitive and efficient way. The following query uses the [make-graph operator](kusto/query/make-graph-operator.md) to create a directed graph from *FirstUser* to *SecondUser* and enriches the properties on the nodes with the columns provided by the *Users* table. Once the graph was instantiated, the [graph-match operator](kusto/query/graph-match-operator.md) provides the friend-of-a-friend pattern including filters and a projection that results in a tabular output.
+You can use graph semantics in KQL to perform same query in a more intuitive and efficient way. The following query uses the [make-graph operator](kusto/query/make-graph-operator.md) to create a directed graph from _FirstUser_ to _SecondUser_ and enriches the properties on the nodes with the columns provided by the _Users_ table. Once the graph was instantiated, the [graph-match operator](kusto/query/graph-match-operator.md) provides the friend-of-a-friend pattern including filters and a projection that results in a tabular output.
 
 ```kusto
 let Users = datatable (UserId:string , name:string , org:string)[]; // nodes
@@ -45,9 +46,9 @@ Knows
     project contoso_person = user.name, middle_man = middle_man.name, kusto_friend_of_friend = friendOfAFriend.name
 ```
 
-## Scenario: Insights from log data
+## Insights from log data
 
-In some use cases, you wan to gain insights from a simple flat table containing time series information, such as log data. The data in each row is a string that contains raw data. To create a graph from this data, you must first identify the entities and relationships that are relevant for the graph analysis. For example, suppose you have a table called *rawLogs* from a web server that contains information about requests, such as the timestamp, the source IP address, the destination resource, and much more.
+In some use cases, you wan to gain insights from a simple flat table containing time series information, such as log data. The data in each row is a string that contains raw data. To create a graph from this data, you must first identify the entities and relationships that are relevant for the graph analysis. For example, suppose you have a table called _rawLogs_ from a web server that contains information about requests, such as the timestamp, the source IP address, the destination resource, and much more.
 
 The following table shows an example of the raw data:
 
