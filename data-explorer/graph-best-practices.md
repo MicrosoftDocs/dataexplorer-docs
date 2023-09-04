@@ -62,41 +62,41 @@ Consider creating a materialized view to improve the query performance, as follo
 
 1. Create tables that have some notion of version as part of their model. We recommend using a `datetime` column that you can later use to create a graph time series.
 
-   ```kusto
-   .create table employees (organization: string, name:string, stateOfEmployment:string, properties:dynamic, modificationDate:datetime)
+    ```kusto
+    .create table employees (organization: string, name:string, stateOfEmployment:string, properties:dynamic, modificationDate:datetime)
 
-   .create table reportsTo (employee:string, manager:string, modificationDate: datetime)
-   ```
+    .create table reportsTo (employee:string, manager:string, modificationDate: datetime)
+    ```
 
-1. Create a materialized view for each table and use the [arg_max aggregation](kusto/query/arg-max-aggfunction.md) function to determine the _last known state_ of employees and the _reportsTo_ relation.
+1. Create a materialized view for each table and use the [arg_max aggregation](kusto/query/arg-max-aggfunction.md) function to determine the *last known state* of employees and the *reportsTo* relation.
 
-   ```kusto
-   .create materialized-view employees_MV on table employees
-   {
-       employees
-       | summarize arg_max(modificationDate, *) by name
-   }
+    ```kusto
+    .create materialized-view employees_MV on table employees
+    {
+        employees
+        | summarize arg_max(modificationDate, *) by name
+    }
 
-   .create materialized-view reportsTo_MV on table reportsTo
-   {
-       reportsTo
-       | summarize arg_max(modificationDate, *) by employee
-   }
-   ```
+    .create materialized-view reportsTo_MV on table reportsTo
+    {
+        reportsTo
+        | summarize arg_max(modificationDate, *) by employee
+    }
+    ```
 
 1. Create two functions that ensure that only the materialized component of the materialized view is used and additional filters and projections are applied.
 
-   ```kusto
-   .create function currentEmployees () {
-       materialized_view('employees_MV')
-       | where stateOfEmployment == "employed"
-   }
+    ```kusto
+    .create function currentEmployees () {
+        materialized_view('employees_MV')
+        | where stateOfEmployment == "employed"
+    }
 
-   .create function reportsTo_lastKnownState () {
-       materialized_view('reportsTo_MV')
-       | project-away modificationDate
-   }
-   ```
+    .create function reportsTo_lastKnownState () {
+        materialized_view('reportsTo_MV')
+        | project-away modificationDate
+    }
+    ```
 
 The resulting query using materialized makes the query faster and more efficient for larger graphs. It also enables higher concurrency and lower latency queries for the latest state of the graph. The user can still query the graph history based on the employees and reportsTo tables if needed
 
@@ -169,7 +169,7 @@ The following example shows how to transformation to a canonical model and how t
 
 This scenario involves a factory manager who wants to find out why equipment isn't working well and who is responsible for fixing it. The manager decides to use a graph that combines the asset graph of the production floor and the maintenance staff hierarchy that changes every day.
 
-The following graph shows the relations between assets and their time series, such as speed, temperature, and pressure. The operators and the assets, such as pump, are connected via the _operates_ edge. The operators themselves report up to management.
+The following graph shows the relations between assets and their time series, such as speed, temperature, and pressure. The operators and the assets, such as pump, are connected via the *operates* edge. The operators themselves report up to management.
 
 :::image type="content" source="media/graph/graph-property-graph.png" alt-text="Infographic on the property graph scenario." lightbox="media/graph/graph-property-graph.png":::
 
@@ -220,7 +220,7 @@ let assetHierarchy = datatable(source:string, destination:string)
 ];
 ```
 
-The _employees_, _sensors_, and the other entities and relationships don't share a canonical data model. You can use the [union operator](kusto/query/unionoperator.md) to combine and canonize the data.
+The *employees*, *sensors*, and the other entities and relationships don't share a canonical data model. You can use the [union operator](kusto/query/unionoperator.md) to combine and canonize the data.
 
 The following query joins the sensor data with the time series data to find the sensors that have abnormal readings. Then, it uses a projection to create a common model for the graph nodes.
 
@@ -256,7 +256,7 @@ let graph = edges
 | make-graph source --> destination with nodes on nodeId;
 ```
 
-Once created, define the path pattern and project the information required. The pattern starts at a tag node followed by a variable length edge to an asset. That asset is operated by an operator that reports to a top manager via a variable length edge, called _reportsTo_. The constraints section of the [graph-match operator](kusto/query/graph-match-operator.md), in this instance **where**, reduces the tags to the ones that have an anomaly and were operated on a specific day.
+Once created, define the path pattern and project the information required. The pattern starts at a tag node followed by a variable length edge to an asset. That asset is operated by an operator that reports to a top manager via a variable length edge, called *reportsTo*. The constraints section of the [graph-match operator](kusto/query/graph-match-operator.md), in this instance **where**, reduces the tags to the ones that have an anomaly and were operated on a specific day.
 
 ```kusto
 graph
