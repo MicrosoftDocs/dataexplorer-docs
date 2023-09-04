@@ -37,7 +37,7 @@ Users
 | project name, name1, name2
 ```
 
-You can use graph semantics in KQL to perform same query in a more intuitive and efficient way. The following query uses the [make-graph operator](kusto/query/make-graph-operator.md) to create a directed graph from *FirstUser* to *SecondUser* and enriches the properties on the nodes with the columns provided by the *Users* table. Once the graph was instantiated, the [graph-match operator](kusto/query/graph-match-operator.md) provides the friend-of-a-friend pattern including filters and a projection that results in a tabular output.
+You can use graph semantics in KQL to perform the same query in a more intuitive and efficient way. The following query uses the [make-graph operator](kusto/query/make-graph-operator.md) to create a directed graph from *FirstUser* to *SecondUser* and enriches the properties on the nodes with the columns provided by the *Users* table. Once the graph is instantiated, the [graph-match operator](kusto/query/graph-match-operator.md) provides the friend-of-a-friend pattern including filters and a projection that results in a tabular output.
 
 ```kusto
 let Users = datatable (UserId:string , name:string , org:string)[]; // nodes
@@ -51,7 +51,7 @@ Knows
 
 ## Insights from log data
 
-In some use cases, you wan to gain insights from a simple flat table containing time series information, such as log data. The data in each row is a string that contains raw data. To create a graph from this data, you must first identify the entities and relationships that are relevant for the graph analysis. For example, suppose you have a table called *rawLogs* from a web server that contains information about requests, such as the timestamp, the source IP address, the destination resource, and much more.
+In some use cases, you want to gain insights from a simple flat table containing time series information, such as log data. The data in each row is a string that contains raw data. To create a graph from this data, you must first identify the entities and relationships that are relevant to the graph analysis. For example, suppose you have a table called *rawLogs* from a web server that contains information about requests, such as the timestamp, the source IP address, the destination resource, and much more.
 
 The following table shows an example of the raw data:
 
@@ -63,7 +63,7 @@ let rawLogs = datatable (rawLog: string) [
 ];
 ```
 
-One possible way to model a graph from this table is to treat the source IP addresses as nodes and the web requests to resources as edges. You can use the [parse operator](kusto/query/parseoperator.md) to extract the columns you need for the graph and then you can create a graph that represents the network traffic and interactions between different sources and destinations. To create the graph, you can use the [make-graph operator](kusto/query/make-graph-operator.md) specifying the source and destination columns as the edge endpoints, and optionally provide additional columns as edge or node properties.
+One possible way to model a graph from this table is to treat the source IP addresses as nodes and the web requests to resources as edges. You can use the [parse operator](kusto/query/parseoperator.md) to extract the columns you need for the graph and then you can create a graph that represents the network traffic and interactions between different sources and destinations. To create the graph, you can use the [make-graph operator](kusto/query/make-graph-operator.md) specifying the source and destination columns as the edge endpoints, and optionally providing additional columns as edge or node properties.
 
 The following query creates a graph from the raw logs:
 
@@ -104,7 +104,7 @@ graph
 | -------------- |
 | /product/42    |
 
-The query returns "/product/42" as a recommendation based on a raw text based log.
+The query returns "/product/42" as a recommendation based on a raw text-based log.
 
 ## Related content
 
