@@ -12,7 +12,7 @@ ms.date: 09/03/2023
 Graph semantics in Kusto Query Language (KQL) allows you to model and query data as graphs. The structure of a graph comprises nodes and edges that connect them. Both nodes and edges can have properties that describe them.
 
 Graphs are useful for representing complex and dynamic data that involve many-to-many, hierarchical, or networked relationships, such as social networks, recommendation systems, connected assets, or knowledge graphs.
-For example, the following graph illustrates a social network that consists of four nodes and three edges. Each node has a property for their name, such as _Bob_, and each edge has a property for their type, such as _reportsTo_.
+For example, the following graph illustrates a social network that consists of four nodes and three edges. Each node has a property for their name, such as *Bob*, and each edge has a property for their type, such as *reportsTo*.
 
 :::image type="content" source="media/graph/graph-social-network.png" alt-text="Diagram that shows a social network as a graph.":::
 
@@ -36,7 +36,7 @@ The graph semantics extension uses an in-memory graph engine that works on the d
 
 There are several reasons to use graph semantics in KQL, such as the following examples:
 
-- KQL doesn't let you do recursive joins. You have to define the traversals you want to run explicitly (see [Scenario: Friends of a friend](graph-scenarios.md#scenario-friends-of-a-friend)). The [make-graph operator](kusto/query/make-graph-operator.md) lets you define variable length hops. This is important when the relationship depth or distance isn't fixed, such as finding all the connected resources in a graph, or finding all the destinations you can reach from a source in a transportation network.
+- KQL doesn't support recursive joins, so you have to explicitly define the traversals you want to run (see [Scenario: Friends of a friend](graph-scenarios.md#scenario-friends-of-a-friend)). You can use the [make-graph operator](kusto/query/make-graph-operator.md) to define hops of variable length, which is useful when the relationship distance or depth isn't fixed. For example, you can use this operator to find all the resources that are connected in a graph, or all the places you can reach from a source in a transportation network.
 
 - Time-aware graphs are a unique feature of graph semantics in KQL that allow users to model graph data as a series of graph manipulation events over time. Users can examine how the graph evolves over time, such as how the graph's network structure or the node properties change, or how the graph events or anomalies happen. For example, users can use time series queries to discover trends, patterns, or outliers in the graph data, such as how the network density, centrality, or modularity change over time
 
