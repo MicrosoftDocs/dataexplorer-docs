@@ -56,7 +56,7 @@ filteredReports
 
 ## Last known state of the graph
 
-The [Size of graph](#size-of-graph) example demonstrated how to get the last known state of the edges of a graph by using summarize operator and the arg_max aggregation function. Obtaining the last know state is a compute intense operation.
+The [Size of graph](#size-of-graph) example demonstrated how to get the last known state of the edges of a graph by using `summarize` operator and the `arg_max` aggregation function. Obtaining the last known state is a compute-intensive operation.
 
 Consider creating a materialized view to improve the query performance, as follows:
 
@@ -98,7 +98,7 @@ Consider creating a materialized view to improve the query performance, as follo
     }
     ```
 
-The resulting query using materialized makes the query faster and more efficient for larger graphs. It also enables higher concurrency and lower latency queries for the latest state of the graph. The user can still query the graph history based on the employees and reportsTo tables if needed
+The resulting query using materialized makes the query faster and more efficient for larger graphs. It also enables higher concurrency and lower latency queries for the latest state of the graph. The user can still query the graph history based on the employees and *reportsTo* tables, if needed
 
 ```kusto
 let filteredEmployees =
@@ -114,9 +114,9 @@ reportsTo_lastKnownState
 
 ## Graph time travel
 
-Some scenarios require to analyze data based on the state of a graph at a specific point in time. Graph time travel uses a combination of time filters and summarizes using the arg_max aggregation function.
+Some scenarios require you to analyze data based on the state of a graph at a specific point in time. Graph time travel uses a combination of time filters and summarizes using the arg_max aggregation function.
 
-The following KQL statement creates a function with a parameter that defines the interesting point in time for the graph. It returns a ready made graph.
+The following KQL statement creates a function with a parameter that defines the interesting point in time for the graph. It returns a ready-made graph.
 
 ```kusto
 .create function graph_time_travel (interestingPointInTime:datetime ) {
@@ -151,7 +151,7 @@ graph_time_travel(datetime(2022-06-01))
 
 ## Dealing with multiple node and edge types
 
-Sometimes it's required to contextualize time series data with a graph that consists of multiple node types. One way of handling this scenario is creating a general purpose property graph that is represented by a canonical model.
+Sometimes it's required to contextualize time series data with a graph that consists of multiple node types. One way of handling this scenario is creating a general-purpose property graph that is represented by a canonical model.
 
 Occasionally, you may need to contextualize time series data with a graph that has multiple node types. You could approach the problem by creating a general-purpose property graph that is based on a canonical model, such as the following.
 
@@ -165,11 +165,11 @@ Occasionally, you may need to contextualize time series data with a graph that h
   - label (string)
   - properties (dynamic)
 
-The following example shows how to transformation to a canonical model and how to query it. The base tables for the nodes and edges of the graph have different schemas.
+The following example shows how to transform the data into a canonical model and how to query it. The base tables for the nodes and edges of the graph have different schemas.
 
-This scenario involves a factory manager who wants to find out why equipment isn't working well and who is responsible for fixing it. The manager decides to use a graph that combines the asset graph of the production floor and the maintenance staff hierarchy that changes every day.
+This scenario involves a factory manager who wants to find out why equipment isn't working well and who is responsible for fixing it. The manager decides to use a graph that combines the asset graph of the production floor and the maintenance staff hierarchy which changes every day.
 
-The following graph shows the relations between assets and their time series, such as speed, temperature, and pressure. The operators and the assets, such as pump, are connected via the *operates* edge. The operators themselves report up to management.
+The following graph shows the relations between assets and their time series, such as speed, temperature, and pressure. The operators and the assets, such as *pump*, are connected via the *operates* edge. The operators themselves report up to management.
 
 :::image type="content" source="media/graph/graph-property-graph.png" alt-text="Infographic on the property graph scenario." lightbox="media/graph/graph-property-graph.png":::
 
@@ -220,7 +220,7 @@ let assetHierarchy = datatable(source:string, destination:string)
 ];
 ```
 
-The *employees*, *sensors*, and the other entities and relationships don't share a canonical data model. You can use the [union operator](kusto/query/unionoperator.md) to combine and canonize the data.
+The *employees*, *sensors*, and other entities and relationships don't share a canonical data model. You can use the [union operator](kusto/query/unionoperator.md) to combine and canonize the data.
 
 The following query joins the sensor data with the time series data to find the sensors that have abnormal readings. Then, it uses a projection to create a common model for the graph nodes.
 
