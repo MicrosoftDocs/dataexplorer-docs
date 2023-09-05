@@ -1,6 +1,6 @@
 ---
-title: graph operators (Preview)
-description: Learn how to use Kusto graph operators.
+title: Graph operators (Preview)
+description: Learn how to use KQLp graph operators.
 ms.reviewer: rocohen
 ms.topic: reference
 ms.date: 09/03/2023
