@@ -20,12 +20,12 @@ Shifts the values inside a dynamic array to the right.
 | Name | Type | Required | Description |
 |--|--|--|--|
 |*array* | dynamic |&check; | The array to shift.|
-|*shift_count* | int | &check; | The number of positions that array elements will be shifted to the right. If the value is negative, the elements will be shifted to the left. |
+|*shift_count* | int | &check; | The number of positions that array elements are shifted to the right. If the value is negative, the elements are shifted to the left. |
 |*default_value* | scalar | | The value used for an element that was shifted and removed. The default is null or an empty string depending on the type of elements in the *array*.|
 
 ## Returns
 
-Returns a dynamic array containing the same amount of the elements as in the original array. Each element has been shifted according to *shift_count*. New elements that are added instead of the removed elements will have a value of *default_value*.
+Returns a dynamic array containing the same amount of the elements as in the original array. Each element has been shifted according to *shift_count*. New elements that are added instead of the removed elements have a value of *default_value*.
 
 ## Examples
 
