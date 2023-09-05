@@ -3,7 +3,7 @@ title:  array_shift_right()
 description: Learn how to use the array_shift_right() function to shift values inside a dynamic array to the right.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 11/20/2022
+ms.date: 09/05/2023
 ---
 # array_shift_right()
 
@@ -11,7 +11,7 @@ Shifts the values inside a dynamic array to the right.
 
 ## Syntax
 
-`array_shift_right(`*array*, *shift_count* [, *default_value* ]`)`
+`array_shift_right(`*array*, *shift_count* [`,` *default_value* ]`)`
 
 [!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
 
@@ -20,7 +20,7 @@ Shifts the values inside a dynamic array to the right.
 | Name | Type | Required | Description |
 |--|--|--|--|
 |*array* | dynamic |&check; | The array to shift.|
-|*shift_count* | integer | &check; | The number of positions that array elements will be shifted to the right. If the value is negative, the elements will be shifted to the left. |
+|*shift_count* | int | &check; | The number of positions that array elements will be shifted to the right. If the value is negative, the elements will be shifted to the left. |
 |*default_value* | scalar | | The value used for an element that was shifted and removed. The default is null or an empty string depending on the type of elements in the *array*.|
 
 ## Returns
