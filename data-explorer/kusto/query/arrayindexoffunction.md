@@ -3,7 +3,7 @@ title:  array_index_of()
 description: Learn how to use the array_index_of() function to search an array for a specified item, and return its position.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 11/03/2022
+ms.date: 09/05/2023
 ---
 # array_index_of()
 
@@ -11,7 +11,7 @@ Searches an array for the specified item, and returns its position.
 
 ## Syntax
 
-`array_index_of(`*array*,*value*`)`
+`array_index_of(`*array*`,` *value* [`,` *start* [`,` *length* [`,` *occurence* ]]]`)`
 
 [!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
 
@@ -19,11 +19,11 @@ Searches an array for the specified item, and returns its position.
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-| *array*| dynamic | &check; | The array to search.|
-| *value* | long, integer, double, datetime, timespan, decimal, string, guid, or boolean | &check; | The value to lookup. |
-| *start* | number |  | The search start position. A negative value will offset the starting search value from the end of the array by `abs(start_index)` steps.
-| *length* | int |  | The number of values to examine. A value of -1 means unlimited length.
-| *occurrence* | int | The number of the occurrence. The default is 1.
+| *array* | dynamic | &check; | The array to search. |
+| *value* | long, int, datetime, timespan, string, guid, or bool | &check; | The value to lookup. |
+| *start* | int |  | The search start position. A negative value will offset the starting search value from the end of the array by `abs(`*start*`)` steps. |
+| *length* | int |  | The number of values to examine. A value of -1 means unlimited length. |
+| *occurrence* | int |  | The number of the occurrence. The default is 1. |
 
 ## Returns
 
