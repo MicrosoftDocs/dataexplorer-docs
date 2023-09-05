@@ -1,5 +1,5 @@
 ---
-title: graph operators (Preview)
+title: Graph operators (Preview)
 description: Learn how to use Kusto graph operators.
 ms.reviewer: rocohen
 ms.topic: reference
