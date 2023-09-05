@@ -1,6 +1,6 @@
 ---
 title: 'Create an Event Hubs data connection - Azure Data Explorer'
-description: 'In this article, you learn how to ingest data into Azure Data Explorer from Event Hubs.'
+description: Learn how to ingest data from Event Hubs into Azure Data Explorer.
 ms.topic: how-to
 ms.custom:
 ms.date: 08/24/2023
