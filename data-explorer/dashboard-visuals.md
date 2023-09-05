@@ -62,7 +62,10 @@ totalSales
 
 A heatmap shows values for a main variable of interest across two axis variables as a grid of colored squares.
 
-To render a heatmap, the query must generate a table with three columns. The columns that will be used for x and y values must be in the `string` format, and the data used for the *value* field must be numeric.
+To render a heatmap, the query must generate a table with three columns. The data used for the *value* field must be numeric. The columns that will be used for *x* and *y* values use the following rules:
+
+- If the values in column *x* are in the `string` format, the values in column *y* must be in the `string` format.
+- If the values in column *x* are in the `datetime` format, the values in column *y* must be numeric.
 
 > [!NOTE]
 > We recommend specifying each data field, instead of letting the tool infer the data source.
