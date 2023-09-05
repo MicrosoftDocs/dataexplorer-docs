@@ -11,13 +11,19 @@ Welcome to what's new in Azure Data Explorer. This article details new and signi
 
 ## August 2023
 
+**API**
+
+| Article title | Description |
+|--|--|
+| [Create an app to get data using batching ingestion](kusto/api/get-started/app-batch-ingestion.md)| New article. Describes how to create an app to get data using batching ingestion of the Kusto client libraries.|
+
 **General**
 
 | Article title | Description |
 |--|--|
-|- [Get data from file](get-data-file.md) <br/> - [Get data from Azure storage](get-data-storage.md) <br/> - [Get data from Amazon S3](get-data-amazon-s3.md) <br/> - [Create an Event Hubs data connection for Azure Data Explorer](create-event-hubs-connection.md) | New articles. Describes the new Get data experience in Azure Data Explorer.|
-|- [Delete an Azure Data Explorer cluster](delete-cluster.md) <br/> - [Delete a database in Azure Data Explorer](delete-database.md) | New articles. Describes how to delete an Azure Data Explorer cluster and database.|
-| [Monitor Azure Data Explorer ingestion, commands, queries, and tables using diagnostic logs](using-diagnostic-logs.md)| Updated article. Refreshed content and added journal log data tab.|
+|- [Get data from file](get-data-file.md) <br/> - [Get data from Azure storage](get-data-storage.md) <br/> - [Get data from Amazon S3](get-data-amazon-s3.md) <br/> - [Create an Event Hubs data connection](create-event-hubs-connection.md) | New articles. Describes the new Get data experience in Azure Data Explorer.|
+|- [Delete a cluster](delete-cluster.md) <br/> - [Delete a database](delete-database.md) | New articles. Describes how to delete an Azure Data Explorer cluster and database.|
+| [Monitor ingestion, commands, queries, and tables using diagnostic logs](using-diagnostic-logs.md)| Updated article. Refreshed content and added journal log data tab.|
 
 **Functions library**
 
@@ -30,6 +36,8 @@ Welcome to what's new in Azure Data Explorer. This article details new and signi
 | Article title | Description |
 |--|--|
 | [.show database extents partitioning statistics](kusto/management/show-database-extents-partitioning-statistics.md)| New article. Describes how to display a database's partitioning statistics.|
+| [Use a managed identity to run an update policy](kusto/management/update-policy-with-managed-identity.md)| New article. Describes how to configure a managed identity to run an update policy.|
+| [.show databases entities command](kusto/management/show-databases-entities.md)| New article. describes how to show a database's entities.|
 
 **Query**
 
