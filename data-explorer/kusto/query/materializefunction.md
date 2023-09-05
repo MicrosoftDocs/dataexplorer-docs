@@ -38,7 +38,7 @@ The `materialize()` function is useful in the following scenarios:
 
 >[!TIP]
 >
->* Push all possible operators that reduce the materialized data set and keep the semantics of the query. For example, use common filters on top of the same materialized expression.
+>* Push all possible operators that reduce the materialized dataset and keep the semantics of the query. For example, use common filters on top of the same materialized expression.
 >* Use materialize with join or union when their operands have mutual subqueries that can be executed once. For example, join/union fork legs. See [example of using join operator](#examples-of-query-performance-improvement).
 >* Materialize can only be used in let statements if you give the cached result a name. See [example of using let statements](#examples-of-using-materialize)).
 
@@ -121,7 +121,7 @@ Result set 3:
 > [!TIP]
 > Materialize your column at ingestion time if most of your queries extract fields from dynamic objects across millions of rows.
 
-To use the `let` statement with a value that you use more than once, use the [materialize() function](./materializefunction.md). Try to push all possible operators that will reduce the materialized data set and still keep the semantics of the query. For example, use filters, or project only required columns.
+To use the `let` statement with a value that you use more than once, use the [materialize() function](./materializefunction.md). Try to push all possible operators that will reduce the materialized dataset and still keep the semantics of the query. For example, use filters, or project only required columns.
 
 <!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto

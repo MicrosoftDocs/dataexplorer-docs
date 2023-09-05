@@ -8,7 +8,7 @@ ms.date: 08/07/2023
 
 # Azure Data Explorer data ingestion overview
 
-Data ingestion is the process used to load data records from one or more sources into a table in Azure Data Explorer. Once ingested, the data becomes available for query.
+Data ingestion is the process used to load data from one or more sources into a table in Azure Data Explorer. Once ingested, the data becomes available for query.
 
 The diagram below shows the end-to-end flow for working in Azure Data Explorer and shows different ingestion methods.
 

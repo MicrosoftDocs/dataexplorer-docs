@@ -3,7 +3,7 @@ title: 'Azure Data Explorer integration with Azure Data Factory'
 description: 'In this topic, integrate Azure Data Explorer with Azure Data Factory to use the copy, lookup, and command activities'
 ms.reviewer: tomersh26
 ms.topic: how-to
-ms.date: 01/20/2020
+ms.date: 08/30/2023
 
 #Customer intent: I want to use Azure Data Factory to integrate with Azure Data Explorer.
 ---
@@ -85,8 +85,9 @@ See the following table for a comparison of the Copy activity, and ingestion com
 | **Server Limits** | <ul><li>No size limit.</li><li>Max timeout limit: 1 hour per ingested blob. |<ul><li>There's only a size limit on the query part, which can be skipped by specifying `noTruncation=true`.</li><li>Max timeout limit: 1 hour.</li></ul> | <ul><li>No size limit.</li><li>Max timeout limit: 1 hour.</li></ul>|
 
 > [!TIP]
+>
 > * When copying data from ADF to Azure Data Explorer use the `ingest from query` commands.  
-> * For large data sets (>1GB), use the Copy activity.  
+> * For large datasets (>1GB), use the Copy activity.  
 
 ## Required permissions
 

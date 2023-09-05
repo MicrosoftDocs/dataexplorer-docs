@@ -1,17 +1,17 @@
 ---
 title:  Tabular expression statements
-description: Learn how to use tabular expression statements to produce tabular data sets.
+description: Learn how to use tabular expression statements to produce tabular datasets.
 ms.reviewer: alexans
 ms.topic: reference
 ms.date: 05/01/2023
 ---
 # Tabular expression statements
 
-The tabular expression statement is what people usually have in mind when they talk about queries. This statement usually appears last in the statement list, and both its input and its output consists of tables or tabular data sets.
+The tabular expression statement is what people usually have in mind when they talk about queries. This statement usually appears last in the statement list, and both its input and its output consists of tables or tabular datasets.
 Any two statements must be separated by a semicolon.
 
 A tabular expression statement is generally composed of *tabular data sources* such as tables, *tabular data operators* such as filters and projections, and optional *rendering operators*. The composition is represented by the pipe character (`|`), giving the statement a regular form that visually represents the flow of tabular data from left to right.
-Each operator accepts a tabular data set "from the pipe", and other inputs including more tabular data sets from the body of the operator, then emits a tabular data set to the next operator that follows.
+Each operator accepts a tabular dataset "from the pipe", and other inputs including more tabular datasets from the body of the operator, then emits a tabular dataset to the next operator that follows.
 
 ## Syntax
 
