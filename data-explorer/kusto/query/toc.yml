@@ -260,6 +260,8 @@ items:
       - name: pivotchart
         displayName: pivot chart
         href: visualization-pivotchart.md
+      - name: Plotly
+        href: visualization-plotly.md
       - name: scatterchart
         displayName: scatter chart
         href: visualization-scatterchart.md

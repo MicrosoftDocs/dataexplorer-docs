@@ -3,7 +3,7 @@ title:  array_concat()
 description: Learn how to use the array_concat() function to concatenate many dynamic arrays to a single array.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 11/20/2022
+ms.date: 09/05/2023
 ---
 # array_concat()
 
@@ -11,7 +11,7 @@ Concatenates many dynamic arrays to a single array.
 
 ## Syntax
 
-`array_concat(`*arr*`[`, `*arr2*, ...]`)`
+`array_concat(`*arr* [`,` ...]`)`
 
 [!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
 
@@ -19,11 +19,11 @@ Concatenates many dynamic arrays to a single array.
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-| *arr1...arrN* | dynamic | &check; | The arrays to concatenate into a dynamic array.|
+| *arr* | dynamic | &check; | The arrays to concatenate into a dynamic array.|
 
 ## Returns
 
-Returns a dynamic array of arrays with arr1, arr2, ... , arrN.
+Returns a dynamic array of all input arrays.
 
 ## Example
 
