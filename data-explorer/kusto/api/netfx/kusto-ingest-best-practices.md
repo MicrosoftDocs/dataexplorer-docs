@@ -51,3 +51,7 @@ For cost-effective ingestion:
 
 > [!NOTE]
 > Overusing the last two methods can disrupt data aggregation, lead to extra storage transactions, and harm ingestion and query performance.
+
+## Related content
+
+* [Create an app to get data using batching ingestion](../get-started/app-batch-ingestion.md)
