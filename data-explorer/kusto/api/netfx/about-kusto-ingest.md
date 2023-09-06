@@ -31,6 +31,10 @@ Install [azure-kusto-ingest](https://www.npmjs.com/package/azure-kusto-ingest).
 
 Install [kusto-ingest](https://central.sonatype.com/artifact/com.microsoft.azure.kusto/kusto-ingest/).
 
+## Permissions
+
+To ingest data into existing tables, you must have at least Database Ingestor or Table Ingestor permissions. To create a table, you must have at least Database User permissions. For more information, see [Role-based access control](../../access-control/role-based-access-control.md).
+
 ## Queued ingestion
 
 The queued ingestion mode, as defined by the `IKustoQueuedIngestClient` interface, minimizes the dependencies of client code on the Azure Data Explorer ingestion service. In this mode, ingestion is accomplished by submitting an ingestion message to an Azure queue, which is subsequently processed by the Azure Data Explorer ingestion service. If any intermediate storage items are required, the ingest client generates them using the resources provided by the ingestion service.
