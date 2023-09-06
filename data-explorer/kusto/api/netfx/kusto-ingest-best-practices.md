@@ -15,7 +15,7 @@ For production scenarios, use the [KustoQueuedIngestClient](kusto-ingest-client-
 
 ## Use a single `KustoQueuedIngestClient` instance
 
-Kusto Ingest client implementations are thread-safe and reusable. For each target cluster, use only one instance of `KustoQueuedIngestClient`. Running multiple instances can overload the cluster, causing it to become unresponsive or slow to respond to valid requests.
+Kusto Ingest client implementations are thread-safe and reusable. For each target cluster, use a single instance of either a queued or direct Kusto Ingest client per process. Running multiple instances can overload the cluster, causing it to become unresponsive or slow to respond to valid requests.
 
 ## Limit tracking ingest operation status
 
@@ -51,25 +51,3 @@ For cost-effective ingestion:
 
 > [!NOTE]
 > Overusing the last two methods can disrupt data aggregation, lead to extra storage transactions, and harm ingestion and query performance.
-
-## Ingestion best practices
-
-[Ingestion best practices](kusto-ingest-best-practices.md) provides COGS (cost of goods sold) and throughput POV on ingestion.
-
-* **Thread safety -**
-Kusto Ingest Client implementations are thread-safe and intended to be reused. There's no need to create an instance of `KustoQueuedIngestClient` class for each or several ingest operations. A single instance of `KustoQueuedIngestClient` is required per target Kusto cluster per user process. Running multiple instances is counter-productive and may cause DoS on the Data Management cluster.
-
-* **Supported data formats -**
-When using native ingestion, if not already there, upload the data to one or more Azure storage blobs. 
-Currently supported blob formats are documented under [Supported Data Formats](../../../ingestion-supported-formats.md).
-
-* **Schema mapping -**
-[Schema mappings](../../management/mappings.md) help with deterministically binding source data fields to destination table columns.
-
-* **Ingestion permissions -**
-[Kusto Ingestion Permissions](kusto-ingest-client-permissions.md) explains permissions setup that is required for a successful ingestion using the `Kusto.Ingest` package.
-
-* **Usage -**
-As described previously, the recommended basis for sustainable and high-scale ingestion solutions for Kusto should be the **KustoQueuedIngestClient**.
-To minimize unnecessary load on your Kusto service, we recommended that you use a single instance of Kusto Ingest client (Queued or Direct) per process, per Kusto cluster. 
-Kusto ingest client implementation is thread-safe and fully reentrant.
