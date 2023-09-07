@@ -508,6 +508,9 @@ items:
               - name: Kusto Data overview
                 href: kusto/api/netfx/about-kusto-data.md
                 displayName: kusto.data, SDK
+              - name: Kusto Data best practices
+                href: kusto/api/netfx/kusto-data-best-practices.md
+                displayName: kusto.data, SDK
       - name: Sample app generator
         href: sample-app-generator-wizard.md
       - name: Write code with SDKs
