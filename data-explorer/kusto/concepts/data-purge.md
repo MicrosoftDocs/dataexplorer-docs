@@ -105,7 +105,7 @@ Purge command may be invoked in two ways for differing usage scenarios:
 * Human invocation: A two-step process that requires an explicit confirmation as a separate step. First invocation of the command returns a verification token, which should be provided to run the actual purge. This sequence reduces the risk of inadvertently deleting incorrect data.
 
  > [!NOTE]
- > The first step in the two-step invocation requires running a query on the entire data set, to identify records to be purged.
+ > The first step in the two-step invocation requires running a query on the entire dataset, to identify records to be purged.
  > This query may time-out or fail on large tables, especially with significant amount of cold cache data. In case of failures,
  > validate the predicate yourself and after verifying correctness use the single-step purge with the `noregrets` option.
 
