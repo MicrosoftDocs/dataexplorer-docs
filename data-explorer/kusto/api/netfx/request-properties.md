@@ -17,69 +17,6 @@ Set query parameter property values using the methods of the `ClientRequestPrope
 
 In the REST API, query parameters appear in the same JSON-encoded string as the other request properties.
 
-### Query parameters examples
-
-#### Json body
-```json
-{
-    "db": "Samples",
-    "csl": "declare query_parameters (n:long, d:dynamic); StormEvents | where State in (d) | top n by StartTime asc",
-    "properties": {
-        "Options": {
-            "maxmemoryconsumptionperiterator": 68719476736,
-            "max_memory_consumption_per_query_per_node": 68719476736,
-            "servertimeout": "50m"
-        },
-        "Parameters": {
-            "n": 10, "d": "dynamic([\"ATLANTIC SOUTH\"])"
-        }
-    }
-}
-```
-
-#### C\# client
-
-```csharp
-public static IDataReader QueryKusto(ICslQueryProvider queryProvider)
-{
-    var query = "declare query_parameters (n:long, d:dynamic); StormEvents | where State in (d) | top n by StartTime asc";
-    var queryParameters = new Dictionary<string, string>
-    {
-        { "n", "10" }, // Will be parsed as long, according to the declare query_parameters statement in the query
-        { "d", "dynamic([\"ATLANTIC SOUTH\"])" } // Will be parsed as dynamic, according to the declare query_parameters statement in the query
-    };
-    // Query parameters (and many other properties) are provided
-    // by a ClientRequestProperties object handed alongside
-    // the query:
-    var clientRequestProperties = new ClientRequestProperties(options: null, parameters: queryParameters)
-    {
-        PrincipalIdentity = null,
-        // Having client code provide its own ClientRequestId is
-        // highly recommended. It not only allows the caller to
-        // cancel the query, but also makes it possible for the Kusto
-        // team to investigate query failures end-to-end:
-        ClientRequestId = "MyApp.MyActivity;" + Guid.NewGuid()
-    };
-    // This is an example for setting an option
-    // ("notruncation", in this case). In most cases this is not
-    // needed, but it's included here for completeness:
-    clientRequestProperties.SetOption(ClientRequestProperties.OptionNoTruncation, true);
-    try
-    {
-        return queryProvider.ExecuteQuery(query, clientRequestProperties);
-    }
-    catch (Exception)
-    {
-        Console.WriteLine(
-            "Failed invoking query '{0}' against Kusto. If contacting support, please provide this string: 'ClientRequestId={1}'",
-            query, clientRequestProperties.ClientRequestId
-        );
-        return null;
-    }
-}
-```
-
-
 ## Client request properties
 
 // Here i think tabs: C#, Python, Node, REST API, etc.
@@ -183,3 +120,66 @@ If the client doesn't specify a value for this property, the property is automat
 ### User
 
 The `User` property has the identity of the user that makes the request and is used for tracing. The property translates into the HTTP header `x-ms-user`. To specify the property in a [Kusto connection string](../connection-strings/kusto.md), use the `User Name for Tracing` property.
+
+## Examples
+
+### Json body
+
+```json
+{
+    "db": "Samples",
+    "csl": "declare query_parameters (n:long, d:dynamic); StormEvents | where State in (d) | top n by StartTime asc",
+    "properties": {
+        "Options": {
+            "maxmemoryconsumptionperiterator": 68719476736,
+            "max_memory_consumption_per_query_per_node": 68719476736,
+            "servertimeout": "50m"
+        },
+        "Parameters": {
+            "n": 10, "d": "dynamic([\"ATLANTIC SOUTH\"])"
+        }
+    }
+}
+```
+
+### C\# client
+
+```csharp
+public static IDataReader QueryKusto(ICslQueryProvider queryProvider)
+{
+    var query = "declare query_parameters (n:long, d:dynamic); StormEvents | where State in (d) | top n by StartTime asc";
+    var queryParameters = new Dictionary<string, string>
+    {
+        { "n", "10" }, // Will be parsed as long, according to the declare query_parameters statement in the query
+        { "d", "dynamic([\"ATLANTIC SOUTH\"])" } // Will be parsed as dynamic, according to the declare query_parameters statement in the query
+    };
+    // Query parameters (and many other properties) are provided
+    // by a ClientRequestProperties object handed alongside
+    // the query:
+    var clientRequestProperties = new ClientRequestProperties(options: null, parameters: queryParameters)
+    {
+        PrincipalIdentity = null,
+        // Having client code provide its own ClientRequestId is
+        // highly recommended. It not only allows the caller to
+        // cancel the query, but also makes it possible for the Kusto
+        // team to investigate query failures end-to-end:
+        ClientRequestId = "MyApp.MyActivity;" + Guid.NewGuid()
+    };
+    // This is an example for setting an option
+    // ("notruncation", in this case). In most cases this is not
+    // needed, but it's included here for completeness:
+    clientRequestProperties.SetOption(ClientRequestProperties.OptionNoTruncation, true);
+    try
+    {
+        return queryProvider.ExecuteQuery(query, clientRequestProperties);
+    }
+    catch (Exception)
+    {
+        Console.WriteLine(
+            "Failed invoking query '{0}' against Kusto. If contacting support, please provide this string: 'ClientRequestId={1}'",
+            query, clientRequestProperties.ClientRequestId
+        );
+        return null;
+    }
+}
+```
