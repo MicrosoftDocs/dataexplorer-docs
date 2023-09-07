@@ -9,37 +9,15 @@ ms.date: 09/07/2023
 
 In Kusto Data, the `ClientRequestProperties` is used to manage client-service interactions. The class holds a mapping of query parameters and client request property options. Query parameters allow client applications to parameterize queries based on user input, and client request property options customize the behavior of a request. In addition, the class holds specific named properties for debugging and tracing, like the client request ID, application, and user.
 
-## Use request properties
+## Query parameters
 
-// Here i think tabs: C#, Python, Node, REST API, etc.
+Kusto Query Language (KQL) queries can refer to query parameters using a [query parameters declaration statement](../../query/queryparametersstatement.md). This statement lets client applications parameterize queries based on user input, in a secure manner, and without fear of injection attacks.
 
-Use the following instructions to control request properties and provide values for query parameterization. 
-
-### Control request properties using the REST API
-
-When issuing an HTTP request to the Kusto service, use the `properties` slot in the
-JSON document that is the POST request body, to provide request properties. 
-
-> [!NOTE]
-> Some of the properties (such as the "client request ID", which is the correlation ID
-that the client provides to the service for identifying the request) can be provided
-in the HTTP header, and can also be set if HTTP GET is used.
-> For more information, see [the Kusto REST API request object](../rest/request.md).
-
-### Provide values for query parameterization as request properties
-
-Kusto queries can refer to query parameters by using a specialized [declare query-parameters](../../query/queryparametersstatement.md) statement in the query text. This statement lets client applications parameterize Kusto queries based on user input, in a secure manner, and without fear of injection attacks.
-
-Programmatically, set properties values by using the `ClearParameter`, `SetParameter`, and `HasParameter` methods.
-`SetParameter` provides a number of overloads for the common data types (such as `string` and `long`);
-for all other types, use a string that represents the value as a KQL literal, and make sure that the
-`declare query_parameters` statement declares that parameter to the correct scalar data type.
+Set query parameter property values using the methods of the `ClientRequestProperties` class. For example, `ClearParameter` (`clear_parameter`), `SetParameter` (`set_parameter`), and `HasParameter` (`has_parameter`). The set parameter method provides a number of overloads for the common data types, such as `string` and `long`. For all other types, use a string that represents the value as a KQL literal, and make sure that the `declare query_parameters` statement declares that parameter to the correct scalar data type.
 
 In the REST API, query parameters appear in the same JSON-encoded string as the other request properties.
 
-## Example
-
-The following example shows sample client code for using request properties:
+### Query parameters examples
 
 #### Json body
 ```json
@@ -100,6 +78,24 @@ public static IDataReader QueryKusto(ICslQueryProvider queryProvider)
     }
 }
 ```
+
+
+## Client request properties
+
+// Here i think tabs: C#, Python, Node, REST API, etc.
+
+Use the following instructions to control request properties and provide values for query parameterization. 
+
+### Control request properties using the REST API
+
+When issuing an HTTP request to the Kusto service, use the `properties` slot in the
+JSON document that is the POST request body, to provide request properties. 
+
+> [!NOTE]
+> Some of the properties (such as the "client request ID", which is the correlation ID
+that the client provides to the service for identifying the request) can be provided
+in the HTTP header, and can also be set if HTTP GET is used.
+> For more information, see [the Kusto REST API request object](../rest/request.md).
 
 ## ClientRequestProperties options
 
