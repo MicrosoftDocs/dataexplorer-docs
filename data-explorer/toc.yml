@@ -511,6 +511,8 @@ items:
               - name: Kusto Data best practices
                 href: kusto/api/netfx/kusto-data-best-practices.md
                 displayName: kusto.data, SDK
+              - name: Client request properties
+                href: kusto/api/netfx/request-properties.md
       - name: Sample app generator
         href: sample-app-generator-wizard.md
       - name: Write code with SDKs

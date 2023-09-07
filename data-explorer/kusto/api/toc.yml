@@ -33,8 +33,6 @@ items:
         items:
           - name: Kusto.Data overview
             href: netfx/about-kusto-data.md
-          - name: Request properties, ClientRequestProperties
-            href: netfx/request-properties.md
           - name: Kusto.Data errors and exceptions
             href: netfx/kusto-data-client-errors.md
       - name: Kusto.Ingest
