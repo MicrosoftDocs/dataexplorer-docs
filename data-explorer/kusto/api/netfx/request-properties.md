@@ -3,59 +3,26 @@ title:  Request properties and ClientRequestProperties
 description: This article describes Request properties and ClientRequestProperties in Azure Data Explorer.
 ms.reviewer: orspodek
 ms.topic: reference
-ms.date: 05/11/2023
+ms.date: 09/07/2023
 ---
-# Request properties and ClientRequestProperties
+# Client request properties
 
-When a request is made, the caller is required to provide:
+In Kusto Data, the `ClientRequestProperties` is used to manage client-service interactions. The class holds a mapping of query parameters and client request property options. Query parameters allow client applications to parameterize queries based on user input, and client request property options customize the behavior of a request. In addition, the class holds specific named properties for debugging and tracing, like the client request ID, application ID, and user ID.
 
-* A connection string indicating the service endpoint to connect to, authentication parameters, and similar connection-related information. Programmatically, the connection string is represented via the `KustoConnectionStringBuilder`class.
-* The name of the database that is used to describe the "scope" of the request.
-* The text of the request (query or command) itself.
-* Optional: Additional properties that the client provides to the service, and that are applied to the request. Programmatically, these properties are held by a class called [`ClientRequestProperties`](#clientrequestproperties).
+## Client request ID
 
-## ClientRequestProperties
+`ClientRequestId` transl is a named property used to identify client requests, and it translates into the HTTP header `x-ms-client-request-id`. This property is helpful for debugging and may be required for specific scenarios like query cancellation.
 
-Client request properties can affect what limits and policies get applied to the request.
+If the client doesn't specify a value for this property, a random value is assigned.
 
-The `Kusto.Data.Common.ClientRequestProperties` class in the .NET SDK holds three kinds of data:
+We recommend using the format *ApplicationName*`.`*ActivityName*`;`*UniqueId*:
 
-* [Named properties](#named-properties) - These properties make debugging easier. For example, the properties may provide correlation strings that are used to track client/service interactions. 
-* [ClientRequestProperties options](#clientrequestproperties-options) - A mapping of an option name to an option value.
-* [Query parameters](../../query/queryparametersstatement.md)  - A mapping of a query parameter name to a query parameter value. These parameters let client applications parameterize Kusto queries based on user input.
-
-## Named properties
+* *ApplicationName*: Identifies the client application.
+* *ActivityName*: Specifies the activity type for the request.
+* *UniqueId*: Provides a specific request identifier.
 
 > [!NOTE]
-> Some named properties are marked "do not use". Such properties shouldn't
-> be specified by clients, and have no effect on the service.
-
-### ClientRequestId (x-ms-client-request-id)
-
-This named property has the client-specified identity of the request. Clients should specify
-a unique per-request value with each request they send.
-This value makes debugging failures easier to do, and it's required in
-some scenarios, such as for query cancellation.
-
-The programmatic name of the property is `ClientRequestId`, and it translates
-into the HTTP header `x-ms-client-request-id`.
-
-This property will be set to a (random) value by the SDK if the client doesn't
-specify a value.
-
-The content of this property can be any printable unique string, such as a GUID.
-However, we recommend that clients use:
-*ApplicationName* `.` *ActivityName* `;` *UniqueId*
-
-* *ApplicationName* identifies the client application that makes the request.
-* *ActivityName* identifies the kind of activity for which the client application issues the client request.
-* *UniqueId* identifies the specific request.
-
-> [!WARNING]
-> This property is recorded on the service side for diagnostics purposes.
-> Customers should avoid sending data such as personally identifiable information,
-> confidential information, etc. that should not be visible for troubleshooting
-> purposes.
+> This property is recorded on the service side for diagnostics. Avoid sending sensitive data like personally identifiable or confidential information.
 
 ### Application (x-ms-app)
 
