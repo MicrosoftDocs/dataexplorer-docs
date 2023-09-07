@@ -13,9 +13,9 @@ This article explains the best practices for data ingestion with the [Kusto Inge
 
 For production scenarios, use the queued ingest client. For more information, see [Queued ingestion](about-kusto-ingest.md#queued-ingestion) and [Direct ingestion](about-kusto-ingest.md#direct-ingestion).
 
-## Use a single `KustoQueuedIngestClient` instance
+## Use a single ingest client instance
 
-Kusto Ingest client implementations are thread-safe and reusable. For each target cluster, use a single instance of either a queued or direct Kusto Ingest client per process. Running multiple instances can overload the cluster, causing it to become unresponsive or slow to respond to valid requests.
+Kusto Ingest client implementations are thread-safe and reusable. For each target cluster, use a single instance of either a queued or direct ingest client per process. Running multiple instances can overload the cluster, causing it to become unresponsive or slow to respond to valid requests.
 
 ## Limit tracking ingest operation status
 
@@ -34,7 +34,7 @@ When planning your ingestion pipeline, consider the following factors as they ca
 | Load on the cluster | When a cluster experiences a high query load, ingestion takes longer to complete. |
 
 > [!NOTE]
-> The `KustoQueuedIngestClient` class splits large data sets into chunks and aggregates them, which is especially useful when the data can't be batched prior to sending for ingestion.
+> The queued ingest client splits large data sets into chunks and aggregates them, which is especially useful when the data can't be batched prior to sending for ingestion.
 
 ## Optimize for cost
 
