@@ -8,7 +8,29 @@ adobe-target: true
 ---
 # Kusto Data library overview
 
-The Kusto Data library is used to query and manage data in your cluster.
+The Kusto Data library provides a client for querying and managing data in your cluster.
+
+## Get the library
+
+Select the tab for your preferred language.
+
+### [C\#](#tab/csharp)
+
+Install [Microsoft.Azure.Kusto.Data](https://www.nuget.org/packages/Microsoft.Azure.Kusto.Data/).
+
+### [Python](#tab/python)
+
+Install [azure-kusto-data](https://pypi.org/project/azure-kusto-data/).
+
+### [Node.js](#tab/nodejs)
+
+Install [azure-kusto-data](https://www.npmjs.com/package/azure-kusto-data).
+
+### [Java](#tab/java)
+
+Install [kusto-data](https://central.sonatype.com/artifact/com.microsoft.azure.kusto/kusto-data/).
+
+---
 
 ## Connect to your cluster
 
