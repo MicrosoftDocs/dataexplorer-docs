@@ -11,7 +11,7 @@ This article explains the best practices for data ingestion with the [Kusto Inge
 
 ## Prefer queued ingestion over direct ingestion
 
-For production scenarios, use the [KustoQueuedIngestClient](kusto-ingest-client-reference.md#interface-ikustoqueuedingestclient). For more information, see [Queued ingestion](about-kusto-ingest.md#queued-ingestion) and [Direct ingestion](about-kusto-ingest.md#direct-ingestion).
+For production scenarios, use the queued ingest client. For more information, see [Queued ingestion](about-kusto-ingest.md#queued-ingestion) and [Direct ingestion](about-kusto-ingest.md#direct-ingestion).
 
 ## Use a single `KustoQueuedIngestClient` instance
 
