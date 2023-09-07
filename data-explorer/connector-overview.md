@@ -1,15 +1,49 @@
 ---
-title: Overview of data connectors in Azure Data Explorer
-description: This article summarizes available data connectors and their capabilities.
+title: Overview of data connectors and their capabilities
+description: Learn about the available data connectors and their capabilities.
 ms.reviewer: aksdi
-ms.topic: reference
+ms.topic: conceptual
 ms.date: 05/10/2023
+zone_pivot_group_filename: data-explorer/zone-pivot-groups.json
+zone_pivot_groups: kql-flavors-adx-fabric
+# CustomerIntent: As a data ingestor, I want to know what data connectors are available, so that I can choose the right one for my use case.
 ---
 # Data connectors overview
 
-[Data ingestion](ingest-data-overview.md) is the process used to load data from one or more sources into Azure Data Explorer. Once ingested, the data becomes available for [query](kusto/query/index.md). Azure Data Explorer provides several connectors for data ingestion.
+::: zone pivot="azuredataexplorer"
+[Data ingestion](ingest-data-overview.md) Data ingestion is the process used to load data from one or more sources into Azure Data Explorer. Once ingested, the data becomes available for [query](kusto query/index.md). Azure Data Explorer provides several connectors for data ingestion.
+::: zone-end
+::: zone pivot="fabric"
+Data ingestion is the process used to load data from one or more sources into a KQL database. Once ingested, the data becomes available for [query](kusto query/index.md ?context=/fabric/context/context-rta&pivots=fabric). Real-Time Analytics provides several connectors for data ingestion.
+::: zone-end
 
-The following table summarizes the available connectors in Azure Data Explorer and their capabilities:
+::: zone pivot="azuredataexplorer"
+
+The following table summarizes the available connectors and their capabilities:
+
+| Name | Functionality | Supports streaming? | Supports free cluster? | Type | Use cases |
+|--|--|:-:|--|--|--|
+| [Apache Kafka](#apache-kafka) | **Ingestion** | &check; |  | First party, [Open source](https://github.com/Azure/kafka-sink-azure-kusto/) | Logs, Telemetry, Time series |
+| [Apache Log4J 2](#apache-log4j-2) | **Ingestion** | &check; | &check; | First party, [Open source](https://github.com/Azure/azure-kusto-log4j) | Logs |
+| [Apache Spark](#apache-spark) | **Export** <br /><br />**Ingestion** | &#x2717; |  | [Open source](https://github.com/Azure/azure-kusto-spark/) | Telemetry |
+| [Apache Spark for Azure Synapse Analytics](#apache-spark-for-azure-synapse-analytics) | **Export** <br /><br />**Ingestion** | &#x2717; |  | First party | Telemetry |
+| [Azure Cosmos DB](#azure-cosmos-db) | **Ingestion** | &check; |  | First party | Change feed |
+| [Azure Data Factory](#azure-data-factory) | **Export** <br /><br />**Ingestion** | &#x2717; |  | First party | Data orchestration |
+| [Azure Event Grid](#azure-event-grid) | **Ingestion** | &check; |  | First party | Event processing |
+| [Azure Event Hubs](#azure-event-hubs) | **Ingestion** | &check; |  | First party | Messaging |
+| [Azure Functions](#azure-functions) | **Export** <br /><br />**Ingestion** | &#x2717; |  | First party | Workflow integrations |
+| [Azure IoT Hubs](#azure-iot-hubs) | **Ingestion** | &check; |  | First party | IoT data |
+| [Azure Stream Analytics](#azure-stream-analytics) | **Ingestion** | &check; |  | First party | Event processing |
+| [Logstash](#logstash) | **Ingestion** | &#x2717; |  | [Open source](https://github.com/Azure/logstash-output-kusto/) | Logs |
+| [NLog](#nlog) | **Ingestion** | &check; | &check; | First party, [Open source](https://github.com/Azure/azure-kusto-nlog-sink) | Telemetry, Logs, Metrics |
+| [Open Telemetry](#open-telemetry) | **Ingestion** | &check; |  | [Open source](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/exporter/azuredataexplorerexporter) | Traces, Metrics, Logs |
+| [Power Automate](#power-automate) | **Export** <br /><br />**Ingestion** | &#x2717; |  | First party | Data orchestration |
+| [Serilog](#serilog) | **Ingestion** | &check; | &check; | First party, [Open source](https://github.com/Azure/serilog-sinks-azuredataexplorer) | Logs |
+| [Telegraf](#telegraf) | **Ingestion** | &check; |  | [Open source](https://github.com/influxdata/telegraf/tree/master/plugins/outputs/azure_data_explorer) | Metrics, Logs |
+
+::: zone-end
+
+::: zone pivot="fabric"
 
 | Name | Functionality | Supports streaming? | Type | Use cases |
 |---|---|:-:|---|---|
@@ -24,12 +58,13 @@ The following table summarizes the available connectors in Azure Data Explorer a
 | [Azure Functions](#azure-functions) | **Export** <br /><br />**Ingestion** |  &#x2717; | First party | Workflow integrations |
 | [Azure IoT Hubs](#azure-iot-hubs) | **Ingestion** | &check; | First party | IoT data |
 | [Azure Stream Analytics](#azure-stream-analytics) | **Ingestion** | &check; | First party | Event processing |
-| [Logstash](#logstash) | **Ingestion** | &#x2717; | [Open source](https://github.com/Azure/logstash-output-kusto/) | Logs |
 | [NLog](#nlog) | **Ingestion** | &check; | First party, [Open source](https://github.com/Azure/azure-kusto-nlog-sink) | Telemetry, Logs, Metrics |
 | [Open Telemetry](#open-telemetry) | **Ingestion** | &check; | [Open source](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/exporter/azuredataexplorerexporter) | Traces, Metrics, Logs |
 | [Power Automate](#power-automate) | **Export** <br /><br />**Ingestion** | &#x2717; | First party | Data orchestration |
 | [Serilog](#serilog) | **Ingestion** | &check; | First party, [Open source](https://github.com/Azure/serilog-sinks-azuredataexplorer) | Logs |
 | [Telegraf](#telegraf) | **Ingestion** | &check; | [Open source](https://github.com/influxdata/telegraf/tree/master/plugins/outputs/azure_data_explorer) | Metrics, Logs |
+
+::: zone-end
 
 ## Apache Kafka
 
@@ -39,7 +74,11 @@ The following table summarizes the available connectors in Azure Data Explorer a
 * **Use cases:** Logs, Telemetry, Time series
 * **Underlying SDK:** [Java](kusto/api/java/kusto-java-client-library.md)
 * **Repository:** Microsoft Azure - https://github.com/Azure/kafka-sink-azure-kusto/
-* **Documentation:** [Ingest data from Apache Kafka into Azure Data Explorer](ingest-data-kafka.md)
+* **Documentation:** [Ingest data from Apache Kafka into Azure Data Explorer](ingest-data-kafka.md
+::: zone pivot="fabric"
+?context=/fabric/context/context-rta&pivots=fabric
+::: zone-end
+)
 * **Community Blog:** [Kafka ingestion into Azure Data Explorer](https://techcommunity.microsoft.com/t5/azure-data-explorer-blog/kafka-ingestion-into-azure-data-explorer-part-1/ba-p/1452439)
 
 ## Apache Log4J 2
@@ -50,7 +89,11 @@ The following table summarizes the available connectors in Azure Data Explorer a
 * **Use cases:** Logs
 * **Underlying SDK:** [Java](kusto/api/java/kusto-java-client-library.md)
 * **Repository:** Microsoft Azure - https://github.com/Azure/azure-kusto-log4j
-* **Documentation:** [Ingest data with the Apache Log4J 2 connector](apache-log4j2-connector.md)
+* **Documentation:** [Ingest data with the Apache Log4J 2 connector](apache-log4j2-connector.md
+::: zone pivot="fabric"
+?context=/fabric/context/context-rta&pivots=fabric
+::: zone-end
+)
 * **Community Blog:** [Getting started with Apache Log4J and Azure Data Explorer](https://techcommunity.microsoft.com/t5/azure-data-explorer-blog/getting-started-with-apache-log4j-and-azure-data-explorer/ba-p/3705242)
 
 ## Apache Spark
@@ -61,7 +104,11 @@ The following table summarizes the available connectors in Azure Data Explorer a
 * **Use cases:** Telemetry
 * **Underlying SDK:** [Java](kusto/api/java/kusto-java-client-library.md)
 * **Repository:** Microsoft Azure - https://github.com/Azure/azure-kusto-spark/
-* **Documentation:** [Azure Data Explorer Connector for Apache Spark](spark-connector.md)
+* **Documentation:** [Azure Data Explorer Connector for Apache Spark](spark-connector.md
+::: zone pivot="fabric"
+?context=/fabric/context/context-rta&pivots=fabric
+::: zone-end
+)
 * **Community Blog:** [Data preprocessing for Azure Data Explorer with Apache Spark](https://techcommunity.microsoft.com/t5/azure-data-explorer-blog/data-pre-processing-for-azure-data-explorer-with-apache-spark/ba-p/2727993/)
 
 ## Apache Spark for Azure Synapse Analytics
@@ -70,8 +117,11 @@ The following table summarizes the available connectors in Azure Data Explorer a
 * **Functionality:** Ingestion, Export
 * **Ingestion type supported:** Batching
 * **Use cases:** Telemetry
-* **Documentation:** [Connect an Azure Data Explorer database to an Azure Synapse workspace](/azure/synapse-analytics/quickstart-connect-azure-data-explorer)
-
+* **Documentation:** [Connect an Azure Data Explorer database to an Azure Synapse workspace](/azure/synapse-analytics/quickstart-connect-azure-data-explorer
+::: zone pivot="fabric"
+?context=/fabric/context/context-rta&pivots=fabric
+::: zone-end
+)
 
 ## Azure Cosmos DB
 
@@ -79,7 +129,11 @@ The following table summarizes the available connectors in Azure Data Explorer a
 * **Functionality:** Ingestion
 * **Ingestion type supported:** Batching, Streaming
 * **Use cases:** Change feed
-* **Documentation:** [Ingest data from Azure Cosmos DB into Azure Data Explorer (Preview)](ingest-data-cosmos-db-connection.md)
+* **Documentation:** [Ingest data from Azure Cosmos DB into Azure Data Explorer (Preview)](ingest-data-cosmos-db-connection.md
+::: zone pivot="fabric"
+?context=/fabric/context/context-rta&pivots=fabric
+::: zone-end
+)
 
 ## Azure Data Factory
 
@@ -87,7 +141,11 @@ The following table summarizes the available connectors in Azure Data Explorer a
 * **Functionality:** Ingestion, Export
 * **Ingestion type supported:** Batching
 * **Use cases:** Data orchestration
-* **Documentation:** [Copy data to Azure Data Explorer by using Azure Data Factory](data-factory-load-data.md)
+* **Documentation:** [Copy data to Azure Data Explorer by using Azure Data Factory](data-factory-load-data.md
+::: zone pivot="fabric"
+?context=/fabric/context/context-rta&pivots=fabric
+::: zone-end
+)
 
 ## Azure Event Grid
 
@@ -95,14 +153,22 @@ The following table summarizes the available connectors in Azure Data Explorer a
 * **Functionality:** Ingestion
 * **Ingestion type supported:** Batching, Streaming
 * **Use cases:** Event processing
-* **Documentation:** [Event Grid data connection](ingest-data-event-grid-overview.md)
+* **Documentation:** [Event Grid data connection](ingest-data-event-grid-overview.md
+::: zone pivot="fabric"
+?context=/fabric/context/context-rta&pivots=fabric
+::: zone-end
+)
 
 ## Azure Event Hubs
 
 * **Description:**  [Azure Event Hubs](/azure/event-hubs/event-hubs-about) is a big data streaming platform and event ingestion service. Azure Data Explorer offers continuous ingestion from customer-managed Event Hubs.
 * **Functionality:** Ingestion
 * **Ingestion type supported:** Batching, Streaming
-* **Documentation:** [Azure Event Hubs data connection](ingest-data-event-hub-overview.md)
+* **Documentation:** [Azure Event Hubs data connection](ingest-data-event-hub-overview.md
+::: zone pivot="fabric"
+?context=/fabric/context/context-rta&pivots=fabric
+::: zone-end
+)
 
 ## Azure Functions
 
@@ -110,7 +176,11 @@ The following table summarizes the available connectors in Azure Data Explorer a
 * **Functionality:** Ingestion, Export
 * **Ingestion type supported:** Batching
 * **Use cases:** Workflow integrations.
-* **Documentation:** [Integrating Azure Functions with Azure Data Explorer using input and output bindings (preview)](integrate-azure-functions.md)
+* **Documentation:** [Integrating Azure Functions with Azure Data Explorer using input and output bindings (preview)](integrate-azure-functions.md
+::: zone pivot="fabric"
+?context=/fabric/context/context-rta&pivots=fabric
+::: zone-end
+)
 
 ## Azure IoT Hubs
 
@@ -118,7 +188,11 @@ The following table summarizes the available connectors in Azure Data Explorer a
 * **Functionality:** Ingestion
 * **Ingestion type supported:** Batching, Streaming
 * **Use cases:**  IoT data
-* **Documentation:** [IoT Hub data connection](ingest-data-iot-hub-overview.md)
+* **Documentation:** [IoT Hub data connection](ingest-data-iot-hub-overview.md
+::: zone pivot="fabric"
+?context=/fabric/context/context-rta&pivots=fabric
+::: zone-end
+)
 
 ## Azure Stream Analytics
 
@@ -126,7 +200,11 @@ The following table summarizes the available connectors in Azure Data Explorer a
 * **Functionality:** Ingestion
 * **Ingestion type supported:** Batching, Streaming
 * **Use cases:** Event processing
-* **Documentation:** [Ingest data from Azure Stream Analytics into Azure Data Explorer](stream-analytics-connector.md)
+* **Documentation:** [Ingest data from Azure Stream Analytics into Azure Data Explorer](stream-analytics-connector.md
+::: zone pivot="fabric"
+?context=/fabric/context/context-rta&pivots=fabric
+::: zone-end
+)
 
 ## Logstash
 
@@ -147,7 +225,11 @@ The following table summarizes the available connectors in Azure Data Explorer a
 * **Use cases:** Telemetry, Logs, Metrics
 * **Underlying SDK:** [.NET](kusto/api/netfx/about-the-sdk.md)
 * **Repository:** Microsoft Azure - https://github.com/Azure/azure-kusto-nlog-sink
-* **Documentation:** [Ingest data with the NLog sink into Azure Data Explorer](nlog-sink.md)
+* **Documentation:** [Ingest data with the NLog sink into Azure Data Explorer](nlog-sink.md
+::: zone pivot="fabric"
+?context=/fabric/context/context-rta&pivots=fabric
+::: zone-end
+)
 * **Community Blog:** [Getting started with NLog sink and Azure Data Explorer](https://aka.ms/adx-docs-nlog-blog)
 
 ## Open Telemetry
@@ -158,7 +240,11 @@ The following table summarizes the available connectors in Azure Data Explorer a
 * **Use cases:** Traces, Metrics, Logs
 * **Underlying SDK:** [Go](kusto/api/golang/kusto-golang-client-library.md)
 * **Repository:** Open Telemetry - https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/exporter/azuredataexplorerexporter
-* **Documentation:** [Ingest data from OpenTelemetry to Azure Data Explorer](open-telemetry-connector.md)
+* **Documentation:** [Ingest data from OpenTelemetry to Azure Data Explorer](open-telemetry-connector.md
+::: zone pivot="fabric"
+?context=/fabric/context/context-rta&pivots=fabric
+::: zone-end
+)
 * **Community Blog:** [Getting started with Open Telemetry and Azure Data Explorer](https://techcommunity.microsoft.com/t5/azure-data-explorer-blog/getting-started-with-open-telemetry-and-azure-data-explorer/ba-p/3675708)
 
 ## Power Automate
@@ -167,7 +253,11 @@ The following table summarizes the available connectors in Azure Data Explorer a
 * **Functionality:** Ingestion, Export
 * **Ingestion type supported:** Batching
 * **Use cases:** Data orchestration
-* **Documentation:** [Azure Data Explorer connector for Microsoft Power Automate](flow.md)
+* **Documentation:** [Azure Data Explorer connector for Microsoft Power Automate](flow.md
+::: zone pivot="fabric"
+?context=/fabric/context/context-rta&pivots=fabric
+::: zone-end
+)
 
 ## Serilog
 
@@ -177,7 +267,11 @@ The following table summarizes the available connectors in Azure Data Explorer a
 * **Use cases:** Logs
 * **Underlying SDK:** [.NET](kusto/api/netfx/about-the-sdk.md)
 * **Repository:** Microsoft Azure - https://github.com/Azure/serilog-sinks-azuredataexplorer
-* **Documentation:** [Ingest data with the Serilog sink into Azure Data Explorer](serilog-sink.md)
+* **Documentation:** [Ingest data with the Serilog sink into Azure Data Explorer](serilog-sink.md
+::: zone pivot="fabric"
+?context=/fabric/context/context-rta&pivots=fabric
+::: zone-end
+)
 * **Community Blog:** [Getting started with Serilog sink and Azure Data Explorer](https://go.microsoft.com/fwlink/p/?linkid=2227749)
 
 ## Telegraf
@@ -188,9 +282,17 @@ The following table summarizes the available connectors in Azure Data Explorer a
 * **Use cases:** Telemetry, Logs, Metrics
 * **Underlying SDK:** Go
 * **Repository:** InfluxData - https://github.com/influxdata/telegraf/tree/master/plugins/outputs/azure_data_explorer
-* **Documentation:** [Ingest data from Telegraf into Azure Data Explorer](ingest-data-telegraf.md)
+* **Documentation:** [Ingest data from Telegraf into Azure Data Explorer](ingest-data-telegraf.md
+::: zone pivot="fabric"
+?context=/fabric/context/context-rta&pivots=fabric
+::: zone-end
+)
 * **Community Blog:**  [New Azure Data Explorer output plugin for Telegraf enables SQL monitoring at huge scale](https://techcommunity.microsoft.com/t5/azure-data-explorer-blog/new-azure-data-explorer-output-plugin-for-telegraf-enables-sql/ba-p/2829444)
 
-## See also
+::: zone pivot="azuredataexplorer"
+
+## Related content
 
 * [Azure Data Explorer data ingestion overview](ingest-data-overview.md)
+
+::: zone-end
