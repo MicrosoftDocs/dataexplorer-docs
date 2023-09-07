@@ -9,7 +9,7 @@ ms.date: 09/06/2023
 
 This article explains the best practices for data ingestion with the [Kusto Ingest library](about-kusto-ingest.md).
 
-## Prefer queued ingestion over direct ingestion
+## Prefer queued over direct ingestion
 
 For production scenarios, use the queued ingest client. For more information, see [Queued ingestion](about-kusto-ingest.md#queued-ingestion) and [Direct ingestion](about-kusto-ingest.md#direct-ingestion).
 
@@ -17,7 +17,7 @@ For production scenarios, use the queued ingest client. For more information, se
 
 Kusto Ingest client implementations are thread-safe and reusable. For each target cluster, use a single instance of either a queued or direct ingest client per process. Running multiple instances can overload the cluster, causing it to become unresponsive or slow to respond to valid requests.
 
-## Limit tracking ingest operation status
+## Limit tracking operation status
 
 For large volume data streams, limit the use of positive notifications for ingestion requests. Excessive tracking can lead to increased ingestion latency and even complete cluster non-responsiveness. For more information, see [Operation status](kusto-ingest-client-status.md).
 
@@ -34,7 +34,7 @@ When planning your ingestion pipeline, consider the following factors as they ca
 | Load on the cluster | When a cluster experiences a high query load, ingestion takes longer to complete. |
 
 > [!NOTE]
-> The queued ingest client splits large data sets into chunks and aggregates them, which is especially useful when the data can't be batched prior to sending for ingestion.
+> The queued ingest client splits large data sets into chunks and aggregates them, which is useful when the data can't be batched prior to ingestion.
 
 ## Optimize for cost
 
@@ -54,4 +54,5 @@ For cost-effective ingestion:
 
 ## Related content
 
+* [Data ingestion overview](../../../ingest-data-overview.md)
 * [Create an app to get data using batching ingestion](../get-started/app-batch-ingestion.md)
