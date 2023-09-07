@@ -503,6 +503,11 @@ items:
               - name: Kusto Ingest best practices
                 href: kusto/api/netfx/kusto-ingest-best-practices.md
                 displayName: kusto.ingest, SDK
+          - name: Kusto Data library
+            items:
+              - name: Kusto Data overview
+                href: kusto/api/netfx/about-kusto-data.md
+                displayName: kusto.data, SDK
       - name: Sample app generator
         href: sample-app-generator-wizard.md
       - name: Write code with SDKs
