@@ -495,10 +495,14 @@ items:
         items:
           - name: Client libraries
             href: kusto/api/client-libraries.md
-          - name: Get data using Kusto.Ingest
-            href: kusto-ingest.md
-          - name: Query data using Kusto.Data
-            href: kusto-data.md
+          - name: Kusto Ingest library
+            items:
+              - name: Kusto Ingest overview
+                href: kusto/api/netfx/about-kusto-ingest.md
+                displayName: kusto.ingest, SDK
+              - name: Kusto Ingest best practices
+                href: kusto/api/netfx/kusto-ingest-best-practices.md
+                displayName: kusto.ingest, SDK
       - name: Sample app generator
         href: sample-app-generator-wizard.md
       - name: Write code with SDKs
