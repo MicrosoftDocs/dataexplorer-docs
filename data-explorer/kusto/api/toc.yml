@@ -1,92 +1,85 @@
 items:
-- name: REST API
-  items:
-  - name: REST API overview
-    href: rest/index.md
-  - name: Authentication over HTTPs
-    href: rest/authentication.md
-  - name: Query HTTP request
-    href: rest/request.md
-  - name: Query HTTP response
-    href: rest/response.md
-  - name: Query v2 HTTP response
-    href: rest/response2.md
-  - name: UI (Deep Links)
-    href: rest/deeplink.md
-  - name: Streaming ingest
-    href: rest/streaming-ingest.md
-  - name: Query with T-SQL
-    href: rest/t-sql.md
-  - name: How to ingest data with the REST API
-    displayName: Kusto.Ingest
-    href: netfx/kusto-ingest-client-rest.md
-  - name: How to authenticate with MSAL in apps
-    displayName: AAD, how to authenticate
-    href: rest/authenticate-with-msal.md
-- name: .NET SDK
-  items:
-  - name: About the SDK
-    href: netfx/about-the-sdk.md
-  - name: Controlling tracing
-    href: netfx/controlling-tracing.md
-  - name: Kusto.Data
+  - name: REST API
     items:
-    - name: Kusto.Data overview
-      href: netfx/about-kusto-data.md
-    - name: Request properties, ClientRequestProperties
-      href: netfx/request-properties.md
-    - name: Kusto.Data errors and exceptions
-      href: netfx/kusto-data-client-errors.md 
-  - name: Kusto.Ingest
+      - name: REST API overview
+        href: rest/index.md
+      - name: Authentication over HTTPs
+        href: rest/authentication.md
+      - name: Query HTTP request
+        href: rest/request.md
+      - name: Query HTTP response
+        href: rest/response.md
+      - name: Query v2 HTTP response
+        href: rest/response2.md
+      - name: UI (Deep Links)
+        href: rest/deeplink.md
+      - name: Streaming ingest
+        href: rest/streaming-ingest.md
+      - name: Query with T-SQL
+        href: rest/t-sql.md
+      - name: How to ingest data with the REST API
+        displayName: Kusto.Ingest
+        href: netfx/kusto-ingest-client-rest.md
+      - name: How to authenticate with MSAL in apps
+        displayName: AAD, how to authenticate
+        href: rest/authenticate-with-msal.md
+  - name: .NET SDK
     items:
-    - name: Kusto.Ingest overview
-      href: netfx/about-kusto-ingest.md
-    - name: Permissions
-      displayName: Kusto.Ingest
-      href: netfx/kusto-ingest-client-permissions.md
-    - name: Client reference
-      displayName: Kusto.Ingest
-      href: netfx/kusto-ingest-client-reference.md
-    - name: Errors and exceptions
-      displayName: Kusto.Ingest
-      href: netfx/kusto-ingest-client-errors.md
-    - name: Operation status
-      displayName: Kusto.Ingest
-      href: netfx/kusto-ingest-client-status.md
-    - name: Kusto.Ingest best practices
-      href: netfx/kusto-ingest-best-practices.md
-    - name: Code samples
-      displayName: Kusto.Ingest
-      href: netfx/kusto-ingest-client-examples.md
-  - name: Kusto.Language
+      - name: About the SDK
+        href: netfx/about-the-sdk.md
+      - name: Controlling tracing
+        href: netfx/controlling-tracing.md
+      - name: Kusto.Data
+        items:
+          - name: Kusto.Data overview
+            href: netfx/about-kusto-data.md
+          - name: Request properties, ClientRequestProperties
+            href: netfx/request-properties.md
+          - name: Kusto.Data errors and exceptions
+            href: netfx/kusto-data-client-errors.md
+      - name: Kusto.Ingest
+        items:
+          - name: Client reference
+            displayName: Kusto.Ingest
+            href: netfx/kusto-ingest-client-reference.md
+          - name: Errors and exceptions
+            displayName: Kusto.Ingest
+            href: netfx/kusto-ingest-client-errors.md
+          - name: Operation status
+            displayName: Kusto.Ingest
+            href: netfx/kusto-ingest-client-status.md
+          - name: Code samples
+            displayName: Kusto.Ingest
+            href: netfx/kusto-ingest-client-examples.md
+      - name: Kusto.Language
+        items:
+          - name: Kusto.Language overview
+            href: netfx/about-kusto-language.md
+          - name: Parse queries and commands
+            href: netfx/kusto-language-parse-queries.md
+          - name: Define schemas
+            href: netfx/kusto-language-define-schemas.md
+  - name: Python SDK
     items:
-    - name: Kusto.Language overview
-      href: netfx/about-kusto-language.md
-    - name: Parse queries and commands
-      href: netfx/kusto-language-parse-queries.md
-    - name: Define schemas
-      href: netfx/kusto-language-define-schemas.md
-- name: Python SDK
-  items:
-  - name: azure-kusto-python
-    href: python/kusto-python-client-library.md
-- name: R SDK
-  items:
-  - name: azure-kusto-r
-    href: r/kusto-r-client-library.md
-- name: Java SDK
-  items:
-  - name: azure-kusto-java
-    href: java/kusto-java-client-library.md
-- name: Node SDK
-  items:
-  - name: azure-kusto-node
-    href: node/kusto-node-client-library.md
-- name: Go SDK
-  items:
-  - name: azure-kusto-go
-    href: golang/kusto-golang-client-library.md
-- name: PowerShell
-  items:
-  - name: Use Kusto .NET client libraries from PowerShell
-    href: powershell/powershell.md
+      - name: azure-kusto-python
+        href: python/kusto-python-client-library.md
+  - name: R SDK
+    items:
+      - name: azure-kusto-r
+        href: r/kusto-r-client-library.md
+  - name: Java SDK
+    items:
+      - name: azure-kusto-java
+        href: java/kusto-java-client-library.md
+  - name: Node SDK
+    items:
+      - name: azure-kusto-node
+        href: node/kusto-node-client-library.md
+  - name: Go SDK
+    items:
+      - name: azure-kusto-go
+        href: golang/kusto-golang-client-library.md
+  - name: PowerShell
+    items:
+      - name: Use Kusto .NET client libraries from PowerShell
+        href: powershell/powershell.md

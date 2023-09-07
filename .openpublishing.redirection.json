@@ -804,6 +804,11 @@
       "source_path": "data-explorer/kusto/query/re2-library.md",
       "redirect_url": "/azure/data-explorer/kusto/query/re2",
       "redirect_document_id": true
+    },
+    {
+      "source_path": "data-explorer/kusto/api/netfx/kusto-ingest-client-permissions.md",
+      "redirect_url": "/azure/data-explorer/kusto/api/netfx/about-kusto-ingest",
+      "redirect_document_id": false
     }
   ]
 }
