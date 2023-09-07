@@ -31,6 +31,8 @@ Install [azure-kusto-ingest](https://www.npmjs.com/package/azure-kusto-ingest).
 
 Install [kusto-ingest](https://central.sonatype.com/artifact/com.microsoft.azure.kusto/kusto-ingest/).
 
+---
+
 ## Permissions
 
 To ingest data into existing tables, you must have at least Database Ingestor or Table Ingestor permissions. To create a table, you must have at least Database User permissions. For more information, see [Role-based access control](../../access-control/role-based-access-control.md).
