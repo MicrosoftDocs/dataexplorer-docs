@@ -20,14 +20,14 @@ If the client doesn't specify a value for this property, a random value is assig
 > [!NOTE]
 > This property is recorded for diagnostics. Avoid sending sensitive data like personally identifiable or confidential information.
 
-### Application
+## Application
 
 The `Application` property has the name of the client application that makes the request and is used for tracing. The property translates
 into the HTTP header `x-ms-app`. To specify the property in a [Kusto connection string](../connection-strings/kusto.md), use the `Application Name for Tracing` property.
 
 If the client doesn't specify a value for this property, the property is automatically set to the name of the process hosting the Kusto Data library.
 
-### User
+## User
 
 The `User` property has the identity of the user that makes the request and is used for tracing. The property translates into the HTTP header `x-ms-user`. To specify the property in a [Kusto connection string](../connection-strings/kusto.md), use the `User Name for Tracing` property.
 
