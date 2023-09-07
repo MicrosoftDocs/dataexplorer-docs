@@ -9,29 +9,9 @@ ms.date: 09/07/2023
 
 In Kusto Data, the `ClientRequestProperties` is used to manage client-service interactions. The class holds a mapping of query parameters and client request property options. Query parameters allow client applications to parameterize queries based on user input, and client request property options customize the behavior of a request. In addition, the class holds specific named properties for debugging and tracing, like the client request ID, application, and user.
 
-## Client request ID
-
-The `ClientRequestId` property is used to identify the request. The property translates into the HTTP header `x-ms-client-request-id`.  
-
-Clients should specify a unique value for this property with each request they send. This specification is helpful for debugging and may be required for specific scenarios like query cancellation. We recommend using the format *ClientApplicationName*`.`*ActivityType*`;`*UniqueId*.
-
-If the client doesn't specify a value for this property, a random value is assigned.
-
-> [!NOTE]
-> This property is recorded for diagnostics. Avoid sending sensitive data like personally identifiable or confidential information.
-
-## Application
-
-The `Application` property has the name of the client application that makes the request and is used for tracing. The property translates
-into the HTTP header `x-ms-app`. To specify the property in a [Kusto connection string](../connection-strings/kusto.md), use the `Application Name for Tracing` property.
-
-If the client doesn't specify a value for this property, the property is automatically set to the name of the process hosting the Kusto Data library.
-
-## User
-
-The `User` property has the identity of the user that makes the request and is used for tracing. The property translates into the HTTP header `x-ms-user`. To specify the property in a [Kusto connection string](../connection-strings/kusto.md), use the `User Name for Tracing` property.
-
 ## Use request properties
+
+// Here i think tabs: C#, Python, Node, REST API, etc.
 
 Use the following instructions to control request properties and provide values for query parameterization. 
 
@@ -181,3 +161,29 @@ public static IDataReader QueryKusto(ICslQueryProvider queryProvider)
 | `truncationmaxrecords` (*OptionTruncationMaxRecords*) | long | Overrides the default maximum number of records a query is allowed to return to the caller (truncation). |
 | `truncationmaxsize` (*OptionTruncationMaxSize*) | long | Overrides the default maximum data size a query is allowed to return to the caller (truncation). |
 | `validate_permissions` (*OptionValidatePermissions*) | bool | Validates user's permissions to perform the query and doesn't run the query itself. The possible results for this property are: `OK` (permissions are present and valid), `Incomplete` (validation couldn't be completed as the query uses dynamic schema evaluation), or `KustoRequestDeniedException` (if permissions weren't set).|
+
+## Named properties
+
+The following sections cover the named properties held within the ClientRequestProperties class that can be used for debugging and tracing.
+
+### Client request ID
+
+The `ClientRequestId` property is used to identify the request. The property translates into the HTTP header `x-ms-client-request-id`.  
+
+Clients should specify a unique value for this property with each request they send. This specification is helpful for debugging and may be required for specific scenarios like query cancellation. We recommend using the format *ClientApplicationName*`.`*ActivityType*`;`*UniqueId*.
+
+If the client doesn't specify a value for this property, a random value is assigned.
+
+> [!NOTE]
+> This property is recorded for diagnostics. Avoid sending sensitive data like personally identifiable or confidential information.
+
+### Application
+
+The `Application` property has the name of the client application that makes the request and is used for tracing. The property translates
+into the HTTP header `x-ms-app`. To specify the property in a [Kusto connection string](../connection-strings/kusto.md), use the `Application Name for Tracing` property.
+
+If the client doesn't specify a value for this property, the property is automatically set to the name of the process hosting the Kusto Data library.
+
+### User
+
+The `User` property has the identity of the user that makes the request and is used for tracing. The property translates into the HTTP header `x-ms-user`. To specify the property in a [Kusto connection string](../connection-strings/kusto.md), use the `User Name for Tracing` property.
