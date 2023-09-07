@@ -19,23 +19,6 @@ In the REST API, query parameters appear in the same JSON-encoded string as the 
 
 ## Client request properties
 
-// Here i think tabs: C#, Python, Node, REST API, etc.
-
-Use the following instructions to control request properties and provide values for query parameterization. 
-
-### Control request properties using the REST API
-
-When issuing an HTTP request to the Kusto service, use the `properties` slot in the
-JSON document that is the POST request body, to provide request properties. 
-
-> [!NOTE]
-> Some of the properties (such as the "client request ID", which is the correlation ID
-that the client provides to the service for identifying the request) can be provided
-in the HTTP header, and can also be set if HTTP GET is used.
-> For more information, see [the Kusto REST API request object](../rest/request.md).
-
-## ClientRequestProperties options
-
 <!-- The following text can be re-produced by running: Kusto.Cli.exe -focus -execute:"#crp -doc" -->
 
 |Name|Type|Description|
@@ -122,6 +105,14 @@ If the client doesn't specify a value for this property, the property is automat
 The `User` property has the identity of the user that makes the request and is used for tracing. The property translates into the HTTP header `x-ms-user`. To specify the property in a [Kusto connection string](../connection-strings/kusto.md), use the `User Name for Tracing` property.
 
 ## Examples
+
+When issuing an HTTP request, use the `properties` slot in the JSON document that is the POST request body to provide request properties. 
+
+> [!NOTE]
+> Some of the properties (such as the "client request ID", which is the correlation ID
+that the client provides to the service for identifying the request) can be provided
+in the HTTP header, and can also be set if HTTP GET is used.
+For more information, see [the Kusto REST API request object](../rest/request.md).
 
 ### Json body
 
