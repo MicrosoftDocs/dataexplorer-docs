@@ -7,6 +7,9 @@ ms.date: 09/03/2023
 ---
 # Graph operators (Preview)
 
+> [!WARNING]
+> This feature is currently in preview and might be subject to change. The semantics and syntax of the graph feature might change before they are released as generally available.
+
 Kusto Query Language (KQL) graph operators enable graph analysis of data by representing tabular data as a graph with nodes and edges. This setup lets us use graph operations to study the connections and relationships between different data points.
 
 Graph analysis is typically comprised of the following steps:
