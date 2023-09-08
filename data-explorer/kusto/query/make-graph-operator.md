@@ -7,6 +7,9 @@ ms.date: 09/03/2023
 ---
 # make-graph operator (Preview)
 
+> [!WARNING]
+> This feature is currently in preview and might be subject to change. The semantics and syntax of the graph feature might change before they are released as generally available.
+
 The `make-graph` operator builds a graph structure from tabular inputs of edges and nodes.
 
 ## Syntax
