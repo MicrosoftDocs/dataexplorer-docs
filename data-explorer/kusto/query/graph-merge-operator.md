@@ -7,6 +7,9 @@ ms.date: 09/03/2023
 ---
 # graph-merge operator (Preview)
 
+> [!WARNING]
+> This feature is currently in preview and might be subject to change. The semantics and syntax of the graph feature might change before they are released as generally available.
+
 The `graph-merge` operator merges the nodes and edges of two graphs, combining them into a single new graph.
 
 > [!NOTE]

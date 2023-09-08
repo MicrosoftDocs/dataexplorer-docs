@@ -7,6 +7,9 @@ ms.date: 09/03/2023
 ---
 # graph-match operator (Preview)
 
+> [!WARNING]
+> This feature is currently in preview and might be subject to change. The semantics and syntax of the graph feature might change before they are released as generally available.
+
 The `graph-match` operator searches for all occurrences of a graph pattern in an input graph source.
 
 > [!NOTE]
