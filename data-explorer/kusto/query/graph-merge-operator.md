@@ -47,7 +47,7 @@ Since *Attributes* aren't specified, the edges of the new graph are the union of
 let Emails = datatable(
     fromPrincipal: long,
     toPrincipal: long,
-    wordCount: long,F
+    wordCount: long,
     when: datetime
 ) 
     [
