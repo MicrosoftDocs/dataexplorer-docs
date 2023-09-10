@@ -149,9 +149,9 @@ When issuing an HTTP request, specify client request properties in the `properti
 
 ## Query parameters
 
-The Kusto Query Language (KQL) [query parameters declaration statement](../../query/queryparametersstatement.md) allows client applications to securely parameterize queries based on user input.
+The [query parameters declaration statement](../../query/queryparametersstatement.md) can be used to declare parameters for a [Kusto Query Language (KQL)](../../query/index.md) query. When using Kusto Data, the `ClientRequestProperties` class contains methods to set, clear, and check the presence of such query parameters.
 
-The `ClientRequestProperties` class contains methods to set, clear, and check the presence of these query parameters. The set parameter method provides a number of overloads for common data types, such as `string` and `long`. For all other types, express the value as a KQL literal in `string` format, and make sure that the `declare` `query_parameters` statement declares the correct [scalar data type](../../query/scalar-data-types/index.md).
+The set parameter method provides a number of overloads for common data types, such as `string` and `long`. For all other types, express the value as a KQL literal in `string` format, and make sure that the `declare` `query_parameters` statement declares the correct [scalar data type](../../query/scalar-data-types/index.md).
 
 For an example, see [Use query parameters to protect user input](../get-started/app-basic-query.md#use-query-parameters-to-protect-user-input).
 
