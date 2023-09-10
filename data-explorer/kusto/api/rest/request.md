@@ -3,7 +3,7 @@ title:  Query/management HTTP request
 description: This article describes Query/management HTTP request in Azure Data Explorer.
 ms.reviewer: orspodek
 ms.topic: reference
-ms.date: 01/27/2020
+ms.date: 09/10/2023
 ---
 # Query/management HTTP request
 
@@ -151,3 +151,25 @@ This example shows how to create a request that sends the query above, using [cu
     ```
 
 1. Read the response according to [this specification](response.md).
+
+### Specify query parameters
+
+In the following example body, the query in the `csl` field declares two parameters named `n` and `d`. The values for those query parameters are specified within the `Parameters` field under the `properties` field in the request body.
+
+> [!NOTE]
+> Non-string and non-long parameters must be expressed as KQL literals in string format.
+
+```json
+{
+    "db": "Samples",
+    "csl": "declare query_parameters (n:long, d:dynamic); StormEvents | where State in (d) | top n by StartTime asc",
+    "properties": {
+        "Parameters": {
+            "n": 10,
+            "d": "dynamic([\"ATLANTIC SOUTH\"])"
+        }
+    }
+}
+```
+
+For more information, see [Query parameters](../netfx/request-properties.md#query-parameters).

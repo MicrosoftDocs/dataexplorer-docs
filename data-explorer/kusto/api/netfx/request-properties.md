@@ -147,58 +147,9 @@ When issuing an HTTP request, use the `properties` slot in the JSON document tha
 
 The Kusto Query Language (KQL) [query parameters declaration statement](../../query/queryparametersstatement.md) allows client applications to securely parameterize queries based on user input.
 
-To learn how to use query parameters, select the tab for the relevant interface or SDK.
+The `ClientRequestProperties` class contains methods to set, clear, and check the presence of these query parameters. The set parameter method provides a number of overloads for common data types, such as `string` and `long`. For all other types, express the value as a KQL literal in `string` format, and make sure that the `declare` `query_parameters` statement declares the correct [scalar data type](../../query/scalar-data-types/index.md).
 
-### [REST API](#tab/rest)
-
-In the REST API, query parameters are specified within the `Parameters` field under the `properties` field in the JSON document that serves as the POST request body.
-
-For a parameter of type other than `string` or `long`, express the value as a KQL literal in `string` format, and ensure that the `declare` `query_parameters` statement specifies the correct [scalar data type](../../query/scalar-data-types/index.md).
-
-#### Example
-
-The query in the `csl` field declares two parameters named `n` and `d`. Within the `properties` field under `Parameters`, the values for these parameters are specified. Note that the parameter `d` is of [dynamic](../../query/scalar-data-types/dynamic.md) type and is specified as a KQL literal in `string` format.
-
-```json
-{
-    "db": "Samples",
-    "csl": "declare query_parameters (n:long, d:dynamic); StormEvents | where State in (d) | top n by StartTime asc",
-    "properties": {
-        "Parameters": {
-            "n": 10,
-            "d": "dynamic([\"ATLANTIC SOUTH\"])"
-        }
-    }
-}
-```
-
-### [C\#](#tab/csharp)
-
-In the C# client library, managing query parameter values is accomplished through the following `ClientRequestProperties` methods: `SetParameter`, `ClearParameter`, and `HasParameter`. These methods allow you to declare, remove, and check the presence of query parameters.
-
-#### Example
-
-```csharp
-string query = @"declare query_parameters (n:long, d:dynamic);
-                StormEvents
-                | where State in (d)
-                | top n by StartTime asc";
-
-var crp = new ClientRequestProperties();
-crp.SetParameter("n", 10);
-crp.SetParameter("d", "dynamic([\"ATLANTIC SOUTH\"])");
-
-// Check if a parameter exists
-bool hasNParameter = crp.HasParameter("n"); // true
-
-// Clear a parameter
-crp.ClearParameter("n");
-
-// Verify parameter successfully cleared
-bool hasNParameter = crp.HasParameter("n"); // false
-```
-
----
+For an example, see [Use query parameters to protect user input](../get-started/app-basic-query.md#use-query-parameters-to-protect-user-input).
 
 ## Named properties
 
