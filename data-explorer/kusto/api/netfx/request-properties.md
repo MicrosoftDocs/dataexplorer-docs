@@ -7,7 +7,11 @@ ms.date: 09/10/2023
 ---
 # Client request properties
 
-In Kusto Data, the `ClientRequestProperties` object holds a mapping of query parameters and client request property options. Query parameters allow client applications to parameterize queries based on user input, and client request property options customize the behavior of a request. In addition, the class holds specific named properties for debugging and tracing, like the client request ID, application, and user.
+In Kusto Data, the `ClientRequestProperties` class helps manage interaction between the client application and the service. This class contains the following information:
+
+* **[Mapping of client request property options](#client-request-properties)**: Specific options for customizing request behavior.
+* **[Mapping of query parameters](#query-parameters)**: User-declared parameters that allow for secure query customization.
+* **[Named properties](#named-properties)**: Client request ID, application details, and user data, primarily used for debugging and tracing.
 
 ## Query parameters
 
@@ -236,8 +240,7 @@ If the client doesn't specify a value for this property, a random value is assig
 
 ### Application
 
-The `Application` property has the name of the client application that makes the request and is used for tracing. The property translates
-into the HTTP header `x-ms-app`. To specify the property in a [Kusto connection string](../connection-strings/kusto.md), use the `Application Name for Tracing` property.
+The `Application` property has the name of the client application that makes the request and is used for tracing. The property translates into the HTTP header `x-ms-app`. To specify the property in a [Kusto connection string](../connection-strings/kusto.md), use the `Application Name for Tracing` property.
 
 If the client doesn't specify a value for this property, the property is automatically set to the name of the process hosting the Kusto Data library.
 
