@@ -153,75 +153,22 @@ For an example, see [Use query parameters to protect user input](../get-started/
 
 ## Named properties
 
-The following sections cover the named properties held within the ClientRequestProperties class that can be used for debugging and tracing.
+The `ClientRequestProperties` class includes named properties that are valuable for debugging and tracing purposes. Each of these named properties corresponds to an HTTP request header. The following table provides an overview of these named properties.
+
+### [C\#](#tab/csharp)
+
+| Property name | HTTP header | Description |
+|--|--|--|
+| `ClientRequestId` | `x-ms-client-request-id` | An ID used to identify the request. This specification is helpful for debugging and may be required for specific scenarios like query cancellation. We recommend using the format *ClientApplicationName*`.`*ActivityType*`;`*UniqueId*. If the client doesn't specify a value for this property, a random value is assigned.|
+| `Application` | `x-ms-app` | The name of the client application that makes the request. This value is used for tracing. To specify the property in a [Kusto connection string](../connection-strings/kusto.md), use the `Application Name for Tracing` property. If the client doesn't specify a value for this property, the property is automatically set to the name of the process hosting the Kusto Data library.|
+| `User` | `x-ms-user` | The identity of the user that makes the request. This value is used for tracing. To specify the property in a [Kusto connection string](../connection-strings/kusto.md), use the `User Name for Tracing` property.|
 
 > [!NOTE]
-> Some of the properties (such as the "client request ID", which is the correlation ID
-that the client provides to the service for identifying the request) can be provided
-in the HTTP header, and can also be set if HTTP GET is used.
-For more information, see [the Kusto REST API request object](../rest/request.md).
+> The `ClientRequestId` property is recorded for diagnostics. Avoid sending sensitive data like personally identifiable or confidential information.
 
-### Client request ID
+---
 
-The `ClientRequestId` property is used to identify the request. The property translates into the HTTP header `x-ms-client-request-id`.  
+## Related content
 
-Clients should specify a unique value for this property with each request they send. This specification is helpful for debugging and may be required for specific scenarios like query cancellation. We recommend using the format *ClientApplicationName*`.`*ActivityType*`;`*UniqueId*.
-
-If the client doesn't specify a value for this property, a random value is assigned.
-
-> [!NOTE]
-> This property is recorded for diagnostics. Avoid sending sensitive data like personally identifiable or confidential information.
-
-### Application
-
-The `Application` property has the name of the client application that makes the request and is used for tracing. The property translates into the HTTP header `x-ms-app`. To specify the property in a [Kusto connection string](../connection-strings/kusto.md), use the `Application Name for Tracing` property.
-
-If the client doesn't specify a value for this property, the property is automatically set to the name of the process hosting the Kusto Data library.
-
-### User
-
-The `User` property has the identity of the user that makes the request and is used for tracing. The property translates into the HTTP header `x-ms-user`. To specify the property in a [Kusto connection string](../connection-strings/kusto.md), use the `User Name for Tracing` property.
-
-## Examples
-
-### C\# client
-
-```csharp
-public static IDataReader QueryKusto(ICslQueryProvider queryProvider)
-{
-    var query = "declare query_parameters (n:long, d:dynamic); StormEvents | where State in (d) | top n by StartTime asc";
-    var queryParameters = new Dictionary<string, string>
-    {
-        { "n", "10" }, // Will be parsed as long, according to the declare query_parameters statement in the query
-        { "d", "dynamic([\"ATLANTIC SOUTH\"])" } // Will be parsed as dynamic, according to the declare query_parameters statement in the query
-    };
-    // Query parameters (and many other properties) are provided
-    // by a ClientRequestProperties object handed alongside
-    // the query:
-    var clientRequestProperties = new ClientRequestProperties(options: null, parameters: queryParameters)
-    {
-        PrincipalIdentity = null,
-        // Having client code provide its own ClientRequestId is
-        // highly recommended. It not only allows the caller to
-        // cancel the query, but also makes it possible for the Kusto
-        // team to investigate query failures end-to-end:
-        ClientRequestId = "MyApp.MyActivity;" + Guid.NewGuid()
-    };
-    // This is an example for setting an option
-    // ("notruncation", in this case). In most cases this is not
-    // needed, but it's included here for completeness:
-    clientRequestProperties.SetOption(ClientRequestProperties.OptionNoTruncation, true);
-    try
-    {
-        return queryProvider.ExecuteQuery(query, clientRequestProperties);
-    }
-    catch (Exception)
-    {
-        Console.WriteLine(
-            "Failed invoking query '{0}' against Kusto. If contacting support, please provide this string: 'ClientRequestId={1}'",
-            query, clientRequestProperties.ClientRequestId
-        );
-        return null;
-    }
-}
-```
+* [Create an app to run basic queries](../get-started/app-basic-query.md)
+* [Query/management HTTP request](../rest/request.md)
