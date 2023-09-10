@@ -82,7 +82,7 @@ For an example of how to set these properties, see [Customize query behavior wit
 
 ### [REST API](#tab/rest)
 
-When issuing an HTTP request, use the `properties` slot in the JSON document that is the POST request body to provide request properties.
+When issuing an HTTP request, specify client request properties in the `properties` field of the POST request body.
 
 | Property name | Type | Description |
 |--|--|--|
