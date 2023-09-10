@@ -174,6 +174,31 @@ Besides these general descriptions of our capabilities, one of our strongest sec
 
 - [Capgemini website](https://www.capgemini.com)
 
+## Centric Consulting LLC
+
+:::image type="icon" source="media/findmypartner/centric-logo.png":::
+
+Our primary goal is to solve complex business problems. Whether crafting your data strategy, building a data warehouse or designing a custom solution to meet your unique needs, our consultants go beyond building technology. We take a holistic approach using data to solve business problems and capture opportunities. We look at the people, processes and technology surrounding data and analytics to deliver insights within the context of your business. High-functioning data and analytics capabilities center around enabling the business to ask better questions – and get better answers – with consistency, a high degree of trust and timeliness.
+
+**Partner type**
+
+- System Integrator
+- Consulting
+- Custom Solutions
+
+**Focus geography**
+
+- USA
+
+**Contact**
+
+- [maurice.faison@centricconsulting.com](mailto:maurice.faison@centricconsulting.com)
+
+**Additional information**
+
+- [Centric Consulting LLC website](https://www.centricconsulting.com)
+- [Microsoft partner site for Centric Consulting LLC](https://appsource.microsoft.com/marketplace/partner-dir/0742084e-ef41-4057-84e9-dbb7bc9cd08b/overview)
+
 ## Codit
 
 :::image type="icon" source="media/findmypartner/logo-codit.png":::
