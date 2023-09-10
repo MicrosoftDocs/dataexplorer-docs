@@ -15,9 +15,11 @@ In the Kusto Data library, the `ClientRequestProperties` class helps manage inte
 
 ## Client request properties
 
-Property names and methods for setting client request property options differ among client libraries. Select the tab for the desired client library.
-
 <!-- The following text can be re-produced by running: Kusto.Cli.exe -focus -execute:"#crp -doc" -->
+
+Client request property names differ among client libraries. Select the tab for the relevant client library.
+
+For an example of how to set these properties, see [Customize query behavior with client request properties](../get-started/app-basic-query.md#customize-query-behavior-with-client-request-properties).
 
 ### [C\#](#tab/csharp)
 
