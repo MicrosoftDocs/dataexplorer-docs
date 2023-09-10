@@ -19,9 +19,11 @@ In the Kusto Data library, the `ClientRequestProperties` class helps manage inte
 
 Client request property names differ among client libraries. Select the tab for the relevant client library.
 
-For an example of how to set these properties, see [Customize query behavior with client request properties](../get-started/app-basic-query.md#customize-query-behavior-with-client-request-properties).
+For an example of how to set client request properties, see [Customize query behavior with client request properties](../get-started/app-basic-query.md#customize-query-behavior-with-client-request-properties).
 
 ### [C\#](#tab/csharp-crp)
+
+The following table provides the name of client request properties for use with the C# client library.
 
 | Property Name | Type | Description |
 |--|--|--|
@@ -82,7 +84,9 @@ For an example of how to set these properties, see [Customize query behavior wit
 
 ### [REST API](#tab/rest-crp)
 
-When issuing an HTTP request, specify client request properties in the `properties` field of the POST request body.
+The following table provides the name of client request properties for use with the [REST API](../rest/index.md).
+
+When issuing an HTTP request, specify client request properties in the `properties` field of the POST request body. For more information, see [Query/management HTTP request](../rest/request.md).
 
 | Property name | Type | Description |
 |--|--|--|
