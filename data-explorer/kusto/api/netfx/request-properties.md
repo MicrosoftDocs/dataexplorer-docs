@@ -80,8 +80,6 @@ Client request property names and configuration methods differ across client lib
 
 ### [REST API](#tab/rest-crp)
 
-The following table provides the name of client request properties for use with the [REST API](../rest/index.md).
-
 When issuing an HTTP request, specify client request properties in the `properties` field of the POST request body. For more information, see [Query/management HTTP request](../rest/request.md).
 
 | Property name | Type | Description |
