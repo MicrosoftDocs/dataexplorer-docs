@@ -60,7 +60,7 @@ The following command sets a batch ingress data time of 45 seconds, for 450 file
 ````
 
 >[!NOTE]
-> If you specify only some parameters of a *PolicyObject*, they will replace the values in the current policy, while the other parameters will remain intact. To set the [default values](batchingpolicy.md#sealing-a-batch) for unspecified parameters, use the [alter command](alter-database-ingestion-batching-policy.md) command.
+> If you specify only some parameters of a *PolicyObject*, these parameters will replace the values in the current policy, while the other parameters will remain intact. To set the [default values](batchingpolicy.md#sealing-a-batch) for unspecified parameters, use the [alter command](alter-database-ingestion-batching-policy.md) command.
 
 ## Next steps
 
