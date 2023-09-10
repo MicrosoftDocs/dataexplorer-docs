@@ -40,7 +40,7 @@ Client request property names and configuration methods differ across client lib
 | `OptionQueryCursorDisabled` | bool | Disables usage of cursor functions in the context of the query. |
 | `OptionQueryCursorScopedTables` | dynamic | List of table names that should be scoped to cursor_after_default .. cursor_before_or_at() (upper bound is optional). |
 | `OptionQueryDataScope` | string | Controls whether the data to which the query applies. Supported values are `default`, `all`, or `hotcache`. |
-| `OptionQueryDateTimeScopeColumn` | string | Controls the column name for the query's datetime scope (`query_datetimescope_to` / `query_datetimescope_from`). |
+| `OptionQueryDateTimeScopeColumn` | string | Controls the column name for the query's datetime scope (`OptionQueryDateTimeScopeTo` / `OptionQueryDateTimeScopeFrom`). |
 | `OptionQueryDateTimeScopeFrom` | datetime | Controls the earliest query datetime scope. If defined, it's used as an auto-applied filter on `query_datetimescope_column`. |
 | `OptionQueryDateTimeScopeTo` | datetime | Controls the latest query datetime scope. If defined, it's used as an auto-applied filter on `query_datetimescope_column`. |
 | `OptionQueryDistributionNodesSpanSize` | int | If set, controls the way the subquery merge behaves. The executing node introduces an extra level the query hierarchy for each subgroup of nodes. This option sets the size of the subgroup. |
@@ -82,43 +82,43 @@ Client request property names and configuration methods differ across client lib
 
 When issuing an HTTP request, specify client request properties in the `properties` field of the POST request body. For more information, see [Query/management HTTP request](../rest/request.md).
 
-| Property name | Type | Description |
-|--|--|--|
-| `client_max_redirect_count` | long | If set and positive, indicates the maximum number of HTTP redirects that the client will process. |
-| `deferpartialqueryfailures` | bool | If true, disables reporting partial query failures as part of the result set. |
-| `materialized_view_shuffle` | dynamic | A hint to use shuffle strategy for materialized views that are referenced in the query. The property is an array of materialized views names and the shuffle keys to use. Examples: 'dynamic([{ "Name": "V1", "Keys" : [ "K1", "K2" ] }])' (shuffle view V1 by K1, K2) or 'dynamic([ { "Name": "V1" } ])' (shuffle view V1 by all keys) |
+| Property Name | Type | Description |
+|---|---|---|
+| `client_max_redirect_count` | long | Indicates the maximum number of HTTP redirects that the client processes. |
+| `deferpartialqueryfailures` | bool | If `true`, disables reporting partial query failures as part of the result set. |
+| `materialized_view_shuffle_query` | dynamic | A hint to use shuffle strategy for materialized views that are referenced in the query. The property is an array of materialized views names and the shuffle keys to use. For example, `dynamic([{ "Name": "V1", "Keys" : [ "K1", "K2" ] }])` is a shuffle view `V1` by `K1`, `K2`; and `dynamic([ { "Name": "V1" } ])` is a shuffle view `V1` by all keys. |
 | `max_memory_consumption_per_query_per_node` | UInt64 | Overrides the default maximum amount of memory a whole query may allocate per node. |
 | `maxmemoryconsumptionperiterator` | UInt64 | Overrides the default maximum amount of memory a query operator may allocate. |
 | `maxoutputcolumns` | long | Overrides the default maximum number of columns a query is allowed to produce. |
 | `norequesttimeout` | bool | Sets the request timeout to its maximum value. This option can't be set as part of a [set statement](../../query/setstatement.md). |
-| `notruncation` | bool | Enables suppressing truncation of the query results returned to the caller. |
-| `push_selection_through_aggregation` | bool | If true, push simple selection through aggregation. |
-| `query_bin_auto_at` | literal | When evaluating the bin_auto() function, the start value to use. |
-| `query_bin_auto_size` | literal | When evaluating the bin_auto() function, the bin size value to use. |
-| `query_cursor_after_default` | string | The default parameter value of the cursor_after() function when called without parameters. |
-| `query_cursor_before_or_at_default` | string | The default parameter value of the cursor_before_or_at() function when called without parameters. |
-| `query_cursor_current` | string | Overrides the cursor value returned by the cursor_current() function. |
+| `notruncation` | bool | Suppresses truncation of the query results returned to the caller. |
+| `push_selection_through_aggregation` | bool | If `true`, pushes simple selection through aggregation. |
+| `query_bin_auto_at` | literal | The start value to use when evaluating the [bin_auto()](../../query/bin-autofunction.md) function. |
+| `query_bin_auto_size` | literal | The bin size value to use when evaluating the [bin_auto()](../../query/bin-autofunction.md) function. |
+| `query_cursor_after_default` | string | The default parameter value of the [cursor_after()](../../query/cursorafterfunction.md) function when called without parameters. |
+| `query_cursor_before_or_at_default` | string | The default parameter value of the [cursor_before_or_at()](../../query/cursorbeforeoratfunction.md) function when called without parameters. |
+| `query_cursor_current` | string | Overrides the cursor value returned by the [cursor_current()](../../query/cursorcurrent.md) function. |
 | `query_cursor_disabled` | bool | Disables usage of cursor functions in the context of the query. |
-| `query_cursor_scoped_tables` | dynamic | List of table names that should be scoped to cursor_after_default .. cursor_before_or_at_default (upper bound is optional). |
-| `query_datascope` | string | Controls the query's data scope -- whether the query applies to all data or just part of it. Supported values are 'default', 'all', or 'hotcache'. |
-| `query_datetimescope_column` | string | Controls the column name for the query's datetime scope (query_datetimescope_to / query_datetimescope_from). |
-| `query_datetimescope_from` | datetime | Controls the query's datetime scope (earliest) -- used as auto-applied filter on query_datetimescope_column only (if defined). |
-| `query_datetimescope_to` | datetime | Controls the query's datetime scope (latest) -- used as auto-applied filter on query_datetimescope_column only (if defined). |
+| `query_cursor_scoped_tables` | dynamic | List of table names that should be scoped to cursor_after_default .. cursor_before_or_at() (upper bound is optional). |
+| `query_datascope` | string | Controls whether the data to which the query applies. Supported values are `default`, `all`, or `hotcache`. |
+| `query_datetimescope_column` | string | Controls the column name for the query's datetime scope (`query_datetimescope_to` / `query_datetimescope_from`). |
+| `query_datetimescope_from` | datetime | Controls the earliest query datetime scope. If defined, it's used as an auto-applied filter on `query_datetimescope_column`. |
+| `query_datetimescope_to` | datetime | Controls the latest query datetime scope. If defined, it's used as an auto-applied filter on `query_datetimescope_column`. |
 | `query_distribution_nodes_span` | int | If set, controls the way the subquery merge behaves: the executing node will introduce an additional level the query hierarchy for each subgroup of nodes; the size of the subgroup is set by this option. |
 | `query_fanout_nodes_percent` | int | The percentage of nodes to fan out execution to. |
 | `query_fanout_threads_percent` | int | The percentage of threads to fan out execution to. |
-| `query_force_row_level_security` | bool | If specified, forces Row Level Security rules, even if row_level_security policy is disabled. |
-| `query_language` | string | Controls how the query text is to be interpreted. Supported values are 'csl','kql' or 'sql'. |
+| `query_force_row_level_security` | bool | If specified, forces [row level security](../../management/rowlevelsecuritypolicy.md) rules, even if the policy is disabled. |
+| `query_language` | string | Controls how the query text is to be interpreted. Supported values are `csl`, `kql`, or `sql`. |
 | `query_log_query_parameters` | bool | Enables logging of the query parameters, so that they can be viewed later in the `.show queries` journal. |
 | `query_max_entities_in_union` | long | Overrides the default maximum number of columns a query is allowed to produce. |
-| `query_now` | datetime | Overrides the datetime value returned by the now(0s) function. |
+| `query_now` | datetime | Overrides the datetime value returned by the [now()](../../query/nowfunction.md) function. |
 | `query_python_debug` | bool or int | If set, generate python debug query for the enumerated python node (default first). |
 | `query_results_apply_getschema` | bool | If set, retrieves the schema of each tabular data in the results of the query instead of the data itself. |
 | `query_results_cache_force_refresh` | bool | If set, forces query results cache refresh for a specific query. Must be used in combination with 'query_results_cache_max_age', and sent via ClientRequestProperties object (not as 'set' statement). |
 | `query_results_cache_max_age` | timespan | If positive, controls the maximum age of the cached query results the service is allowed to return. |
 | `query_results_cache_per_shard` | bool | If set, enables per-shard query cache. |
-| `query_results_progressive_row_count` | long | Hint for Kusto as to how many records to send in each update (takes effect only if *OptionResultsProgressiveEnabled* is set) |
-| `query_results_progressive_update_period` | timespan | Hint for Kusto as to how often to send progress frames (takes effect only if *OptionResultsProgressiveEnabled* is set) |
+| `query_results_progressive_row_count` | long | Hint for Kusto as to how many records to send in each update (takes effect only if `results_progressive_enabled` is set) |
+| `query_results_progressive_update_period` | timespan | Hint for Kusto as to how often to send progress frames (takes effect only if `results_progressive_enabled` is set) |
 | `query_take_max_records` | long | Enables limiting query results to this number of records. |
 | `query_weakconsistency_session_id` | string | Sets the query weak consistency session ID. Takes effect when 'queryconsistency' mode is set to 'weakconsistency_by_session_id'. |
 | `queryconsistency` | string | Controls query consistency. Supported values are 'strongconsistency', 'weakconsistency', 'weakconsistency_by_query', 'weakconsistency_by_database', or 'weakconsistency_by_session_id'. When using 'weakconsistency_by_session_id', make sure to also set the `query_weakconsistency_session_id` property. |
@@ -128,16 +128,13 @@ When issuing an HTTP request, specify client request properties in the `properti
 | `request_description` | string | Arbitrary text that the author of the request wants to include as the request description. |
 | `request_external_data_disabled` | bool | If specified, indicates that the request can't access external data (using externaldata operator) or external tables. |
 | `request_external_table_disabled` | bool | If specified, indicates that the request can't access external tables. |
-| `request_impersonation_disabled` | bool | If specified, indicates that the service shouldn't impersonate the caller's identity. |
-| `request_readonly` | bool | If specified, indicates that the request can't write anything. |
-| `request_remote_entities_disabled` | bool | If specified, indicates that the request can't access remote databases and clusters. |
 | `request_sandboxed_execution_disabled` | bool | If specified, indicates that the request can't invoke code in the sandbox. |
 | `request_user` | string | Request user to be used in the reporting (for example, show queries). |
 | `results_progressive_enabled` | bool | If set, enables the progressive query stream. |
-| `servertimeout` | timespan | Overrides the default request timeout. This option can't be set as part of a [set statement](../../query/setstatement.md). |
-| `truncationmaxrecords` | long | Overrides the default maximum number of records a query is allowed to return to the caller (truncation). |
-| `truncationmaxsize` | long | Overrides the default maximum data size a query is allowed to return to the caller (truncation). |
-| `validate_permissions` | bool | Validates user's permissions to perform the query and doesn't run the query itself. The possible results for this property are: `OK` (permissions are present and valid), `Incomplete` (validation couldn't be completed as the query uses dynamic schema evaluation), or `KustoRequestDeniedException` (if permissions weren't set). |
+| `server_timeout` | timespan | Overrides the default request timeout (this option can't be set as part of a set statement). |
+| `truncation_max_records` | long | Overrides the default maximum number of records a query is allowed to return to the caller (truncation). |
+| `truncation_max_size` | long | Overrides the default maximum data size a query is allowed to return to the caller (truncation). |
+| `validatepermissions` | bool | Validates user's permissions to perform the query and doesn't run the query itself. Possible results for this property are: `OK` (permissions are present and valid), `Incomplete` (validation couldn't be completed as the query uses dynamic schema evaluation), or `KustoRequestDeniedException` (permissions weren't set). |
 
 ---
 
