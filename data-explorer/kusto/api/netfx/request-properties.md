@@ -7,23 +7,74 @@ ms.date: 09/10/2023
 ---
 # Client request properties
 
-In Kusto Data, the `ClientRequestProperties` is used to manage client-service interactions. The class holds a mapping of query parameters and client request property options. Query parameters allow client applications to parameterize queries based on user input, and client request property options customize the behavior of a request. In addition, the class holds specific named properties for debugging and tracing, like the client request ID, application, and user.
+In Kusto Data, the `ClientRequestProperties` object holds a mapping of query parameters and client request property options. Query parameters allow client applications to parameterize queries based on user input, and client request property options customize the behavior of a request. In addition, the class holds specific named properties for debugging and tracing, like the client request ID, application, and user.
 
 ## Query parameters
 
-Kusto Query Language (KQL) queries can refer to query parameters using a [query parameters declaration statement](../../query/queryparametersstatement.md). This statement lets client applications parameterize queries based on user input, in a secure manner, and without fear of injection attacks.
+The Kusto Query Language (KQL) [query parameters declaration statement](../../query/queryparametersstatement.md) allows client applications to securely parameterize queries based on user input.
 
-Set query parameter property values using the methods of the `ClientRequestProperties` class. For example, `ClearParameter` (`clear_parameter`), `SetParameter` (`set_parameter`), and `HasParameter` (`has_parameter`). The set parameter method provides a number of overloads for the common data types, such as `string` and `long`. For all other types, use a string that represents the value as a KQL literal, and make sure that the `declare query_parameters` statement declares that parameter to the correct scalar data type.
+To learn how to use query parameters, select the tab for the relevant interface or SDK.
 
-In the REST API, query parameters appear in the same JSON-encoded string as the other request properties.
+### [REST API](#tab/rest)
+
+In the REST API, query parameters are specified within the `Parameters` field under the `properties` field in the JSON document that serves as the POST request body.
+
+For a parameter of type other than `string` or `long`, express the value as a KQL literal in `string` format, and ensure that the `declare` `query_parameters` statement specifies the correct [scalar data type](../../query/scalar-data-types/index.md).
+
+#### Example
+
+The query in the `csl` field declares two parameters named `n` and `d`. Within the `properties` field under `Parameters`, the values for these parameters are specified. Note that the parameter `d` is of [dynamic](../../query/scalar-data-types/dynamic.md) type and is specified as a KQL literal in `string` format.
+
+```json
+{
+    "db": "Samples",
+    "csl": "declare query_parameters (n:long, d:dynamic); StormEvents | where State in (d) | top n by StartTime asc",
+    "properties": {
+        "Parameters": {
+            "n": 10,
+            "d": "dynamic([\"ATLANTIC SOUTH\"])"
+        }
+    }
+}
+```
+
+### [C\#](#tab/csharp)
+
+In the C# client library, managing query parameter values is accomplished through the following `ClientRequestProperties` methods: `SetParameter`, `ClearParameter`, and `HasParameter`. These methods allow you to declare, remove, and check the presence of query parameters.
+
+#### Example
+
+```csharp
+string query = @"declare query_parameters (n:long, d:dynamic);
+                StormEvents
+                | where State in (d)
+                | top n by StartTime asc";
+
+var crp = new ClientRequestProperties();
+crp.SetParameter("n", 10);
+crp.SetParameter("d", "dynamic([\"ATLANTIC SOUTH\"])");
+
+// Check if a parameter exists
+bool hasNParameter = crp.HasParameter("n"); // true
+
+// Clear a parameter
+crp.ClearParameter("n");
+
+// Verify parameter successfully cleared
+bool hasNParameter = crp.HasParameter("n"); // false
+```
+
+---
 
 ## Client request properties
 
-Select the SDK from which you plan to set the client request properties.
+Select the interface or SDK from which you plan to set the client request properties.
 
 <!-- The following text can be re-produced by running: Kusto.Cli.exe -focus -execute:"#crp -doc" -->
 
 ### [REST API](#tab/rest)
+
+When issuing an HTTP request, use the `properties` slot in the JSON document that is the POST request body to provide request properties.
 
 | Property name | Type | Description |
 |--|--|--|
@@ -81,6 +132,25 @@ Select the SDK from which you plan to set the client request properties.
 | `truncationmaxrecords` | long | Overrides the default maximum number of records a query is allowed to return to the caller (truncation). |
 | `truncationmaxsize` | long | Overrides the default maximum data size a query is allowed to return to the caller (truncation). |
 | `validate_permissions` | bool | Validates user's permissions to perform the query and doesn't run the query itself. The possible results for this property are: `OK` (permissions are present and valid), `Incomplete` (validation couldn't be completed as the query uses dynamic schema evaluation), or `KustoRequestDeniedException` (if permissions weren't set). |
+
+#### Example
+
+```json
+{
+    "db": "Samples",
+    "csl": "declare query_parameters (n:long, d:dynamic); StormEvents | where State in (d) | top n by StartTime asc",
+    "properties": {
+        "Options": {
+            "maxmemoryconsumptionperiterator": 68719476736,
+            "max_memory_consumption_per_query_per_node": 68719476736,
+            "servertimeout": "50m"
+        },
+        "Parameters": {
+            "n": 10, "d": "dynamic([\"ATLANTIC SOUTH\"])"
+        }
+    }
+}
+```
 
 ### [C\#](#tab/csharp)
 
@@ -147,6 +217,12 @@ Select the SDK from which you plan to set the client request properties.
 
 The following sections cover the named properties held within the ClientRequestProperties class that can be used for debugging and tracing.
 
+> [!NOTE]
+> Some of the properties (such as the "client request ID", which is the correlation ID
+that the client provides to the service for identifying the request) can be provided
+in the HTTP header, and can also be set if HTTP GET is used.
+For more information, see [the Kusto REST API request object](../rest/request.md).
+
 ### Client request ID
 
 The `ClientRequestId` property is used to identify the request. The property translates into the HTTP header `x-ms-client-request-id`.  
@@ -170,33 +246,6 @@ If the client doesn't specify a value for this property, the property is automat
 The `User` property has the identity of the user that makes the request and is used for tracing. The property translates into the HTTP header `x-ms-user`. To specify the property in a [Kusto connection string](../connection-strings/kusto.md), use the `User Name for Tracing` property.
 
 ## Examples
-
-When issuing an HTTP request, use the `properties` slot in the JSON document that is the POST request body to provide request properties. 
-
-> [!NOTE]
-> Some of the properties (such as the "client request ID", which is the correlation ID
-that the client provides to the service for identifying the request) can be provided
-in the HTTP header, and can also be set if HTTP GET is used.
-For more information, see [the Kusto REST API request object](../rest/request.md).
-
-### Json body
-
-```json
-{
-    "db": "Samples",
-    "csl": "declare query_parameters (n:long, d:dynamic); StormEvents | where State in (d) | top n by StartTime asc",
-    "properties": {
-        "Options": {
-            "maxmemoryconsumptionperiterator": 68719476736,
-            "max_memory_consumption_per_query_per_node": 68719476736,
-            "servertimeout": "50m"
-        },
-        "Parameters": {
-            "n": 10, "d": "dynamic([\"ATLANTIC SOUTH\"])"
-        }
-    }
-}
-```
 
 ### C\# client
 
