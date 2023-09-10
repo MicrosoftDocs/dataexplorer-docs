@@ -64,7 +64,6 @@ Cost recommendations include:
 * [Unused stopped Azure Data Explorer cluster](#unused-stopped-azure-data-explorer-cluster)
 * [Change Data Explorer clusters to a more cost effective and better performing SKU](#change-data-explorer-clusters-to-a-more-cost-effective-and-better-performing-sku)
 * [Reduce cache for Azure Data Explorer tables](#reduce-cache-for-azure-data-explorer-tables)
-* [Run a cleanup command to delete unused storage artifacts](#delete-unused-storage-artifacts)
 * [Enable Optimized autoscale](#enable-optimized-autoscale)
 
 #### Unused running Azure Data Explorer cluster
@@ -105,15 +104,7 @@ The advisor SKU recommendation is updated every few hours. The recommendation ch
 
 The **reduce Azure Data Explorer table cache period for cluster cost optimization** recommendation is given for a cluster that can reduce its table's [cache policy](kusto/management/cachepolicy.md). This recommendation is based on the query look-back period during the last 30 days. To see where savings are possible, you can view the most relevant 5 tables per database for potential cache savings. This recommendation is only offered if the cluster can scale-in or scale-down after a cache policy change. Advisor checks if the cluster is "bounded by data", meaning the cluster has low CPU and low ingestion utilization, but because of high data capacity the cluster can't scale-in or scale-down.
 
-#### Delete unused storage artifacts
-
-The recommendation **delete unused storage artifacts** is given for a cluster that has unused storage artifacts left from maintenance and background operations on [data shards (extents)](kusto/management/extents-overview.md). Over time, internal extents merge operations can accumulate redundant and unused storage artifacts that remain beyond the data retention period. While this unreferenced data doesn’t negatively impact the performance, it can lead to more storage use than necessary.
-
-> [!IMPORTANT]
-> Data recoverability will be reset to the cleanup time and will not be available on data that was created before running the cleanup.
-
 #### Enable Optimized autoscale
-
 
 The recommendation **enable Optimized autoscale** is given when enabling [Optimized autoscale](manage-cluster-horizontal-scaling.md#optimized-autoscale-recommended-option) would have reduced the instance count on a cluster. This recommendation is based on usage patterns, cache utilization, ingestion utilization, and CPU. To make sure you don't exceed your planned budget, add a maximum instance count when you enable Optimized autoscale.
 
