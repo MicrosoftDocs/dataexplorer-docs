@@ -21,7 +21,7 @@ Client request property names differ among client libraries. Select the tab for 
 
 For an example of how to set these properties, see [Customize query behavior with client request properties](../get-started/app-basic-query.md#customize-query-behavior-with-client-request-properties).
 
-### [C\#](#tab/csharp)
+### [C\#](#tab/csharp-crp)
 
 | Property Name | Type | Description |
 |--|--|--|
@@ -80,7 +80,7 @@ For an example of how to set these properties, see [Customize query behavior wit
 | `OptionTruncationMaxSize` | long | Overrides the default maximum data size a query is allowed to return to the caller (truncation). |
 | `OptionValidatePermissions` | bool | Validates user's permissions to perform the query and doesn't run the query itself. The possible results for this property are: `OK` (permissions are present and valid), `Incomplete` (validation couldn't be completed as the query uses dynamic schema evaluation), or `KustoRequestDeniedException` (if permissions weren't set). |
 
-### [REST API](#tab/rest)
+### [REST API](#tab/rest-crp)
 
 When issuing an HTTP request, specify client request properties in the `properties` field of the POST request body.
 
@@ -155,7 +155,7 @@ For an example, see [Use query parameters to protect user input](../get-started/
 
 The `ClientRequestProperties` class includes named properties that are valuable for debugging and tracing purposes. Each of these named properties corresponds to an HTTP request header. The following table provides an overview of these named properties.
 
-### [C\#](#tab/csharp)
+### [C\#](#tab/csharp-named-props)
 
 | Property name | HTTP header | Description |
 |--|--|--|
