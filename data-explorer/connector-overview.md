@@ -68,13 +68,12 @@ The following table summarizes the available connectors and their capabilities:
 * **Use cases:** Logs, Telemetry, Time series
 * **Underlying SDK:** [Java](kusto/api/java/kusto-java-client-library.md)
 * **Repository:** Microsoft Azure - https://github.com/Azure/kafka-sink-azure-kusto/
-* **Documentation:** 
 ::: zone pivot="azuredataexplorer"
-[Ingest data from Apache Kafka](ingest-data-kafka.md)
+* **Documentation:** [Ingest data from Apache Kafka](ingest-data-kafka.md)
 * **Community Blog:** [Kafka ingestion into Azure Data Explorer](https://techcommunity.microsoft.com/t5/azure-data-explorer-blog/kafka-ingestion-into-azure-data-explorer-part-1/ba-p/1452439)
 ::: zone-end
 ::: zone pivot="fabric"
-[Ingest data from Apache Kafka](ingest-data-kafka.md?context=/fabric/context/context-rta&pivots=fabric)
+* **Documentation:** [Ingest data from Apache Kafka](ingest-data-kafka.md?context=/fabric/context/context-rta&pivots=fabric)
 ::: zone-end
 
 ## Apache Log4J 2
@@ -85,13 +84,12 @@ The following table summarizes the available connectors and their capabilities:
 * **Use cases:** Logs
 * **Underlying SDK:** [Java](kusto/api/java/kusto-java-client-library.md)
 * **Repository:** Microsoft Azure - https://github.com/Azure/azure-kusto-log4j
-* **Documentation:** 
 ::: zone pivot="azuredataexplorer"
-[Ingest data with the Apache Log4J 2 connector](apache-log4j2-connector.md)
+* **Documentation:** [Ingest data with the Apache Log4J 2 connector](apache-log4j2-connector.md)
 * **Community Blog:** [Getting started with Apache Log4J and Azure Data Explorer](https://techcommunity.microsoft.com/t5/azure-data-explorer-blog/getting-started-with-apache-log4j-and-azure-data-explorer/ba-p/3705242)
 ::: zone-end
 ::: zone pivot="fabric"
-[Ingest data with the Apache Log4J 2 connector](apache-log4j2-connector.md?context=/fabric/context/context-rta&pivots=fabric)
+* **Documentation:** [Ingest data with the Apache Log4J 2 connector](apache-log4j2-connector.md?context=/fabric/context/context-rta&pivots=fabric)
 ::: zone-end
 
 ## Apache Spark
@@ -102,13 +100,12 @@ The following table summarizes the available connectors and their capabilities:
 * **Use cases:** Telemetry
 * **Underlying SDK:** [Java](kusto/api/java/kusto-java-client-library.md)
 * **Repository:** Microsoft Azure - https://github.com/Azure/azure-kusto-spark/
-* **Documentation:** 
 ::: zone pivot="azuredataexplorer"
-[Apache Spark connector](spark-connector.md)
+* **Documentation:** [Apache Spark connector](spark-connector.md)
 * **Community Blog:** [Data preprocessing for Azure Data Explorer for Azure Data Explorer with Apache Spark](https://techcommunity.microsoft.com/t5/azure-data-explorer-blog/data-pre-processing-for-azure-data-explorer-with-apache-spark/ba-p/2727993/)
 ::: zone-end
 ::: zone pivot="fabric"
-[Apache Spark connector](spark-connector.md?context=/fabric/context/context-rta&pivots=fabric)
+* **Documentation:** [Apache Spark connector](spark-connector.md?context=/fabric/context/context-rta&pivots=fabric)
 ::: zone-end
 
 ## Apache Spark for Azure Synapse Analytics
@@ -117,12 +114,11 @@ The following table summarizes the available connectors and their capabilities:
 * **Functionality:** Ingestion, Export
 * **Ingestion type supported:** Batching
 * **Use cases:** Telemetry
-* **Documentation:** 
 ::: zone pivot="azuredataexplorer"
-[Connect to an Azure Synapse workspace](/azure/synapse-analytics/quickstart-connect-azure-data-explorer)
+* **Documentation:** [Connect to an Azure Synapse workspace](/azure/synapse-analytics/quickstart-connect-azure-data-explorer)
 ::: zone-end
 ::: zone pivot="fabric"
-[Connect to an Azure Synapse workspace](/azure/synapse-analytics/quickstart-connect-azure-data-explorer?context=/fabric/context/context-rta&pivots=fabric)
+* **Documentation:** [Connect to an Azure Synapse workspace](/azure/synapse-analytics/quickstart-connect-azure-data-explorer?context=/fabric/context/context-rta&pivots=fabric)
 ::: zone-end
 
 ## Azure Cosmos DB
@@ -131,12 +127,11 @@ The following table summarizes the available connectors and their capabilities:
 * **Functionality:** Ingestion
 * **Ingestion type supported:** Batching, Streaming
 * **Use cases:** Change feed
-* **Documentation:** 
 ::: zone pivot="azuredataexplorer"
-[Ingest data from Azure Cosmos DB (Preview)](ingest-data-cosmos-db-connection.md)
+* **Documentation:** [Ingest data from Azure Cosmos DB (Preview)](ingest-data-cosmos-db-connection.md)
 ::: zone-end
 ::: zone pivot="fabric"
-[Ingest data from Azure Cosmos DB (Preview)](ingest-data-cosmos-db-connection.md?context=/fabric/context/context-rta&pivots=fabric)
+* **Documentation:** [Ingest data from Azure Cosmos DB (Preview)](ingest-data-cosmos-db-connection.md?context=/fabric/context/context-rta&pivots=fabric)
 ::: zone-end
 
 ## Azure Data Factory
@@ -145,12 +140,11 @@ The following table summarizes the available connectors and their capabilities:
 * **Functionality:** Ingestion, Export
 * **Ingestion type supported:** Batching
 * **Use cases:** Data orchestration
-* **Documentation:** 
 ::: zone pivot="azuredataexplorer"
-[Copy data to your database by using Azure Data Factory](data-factory-load-data.md)
+* **Documentation:** [Copy data to your database by using Azure Data Factory](data-factory-load-data.md)
 ::: zone-end
 ::: zone pivot="fabric"
-[Copy data to your database by using Azure Data Factory](data-factory-load-data.md?context=/fabric/context/context-rta&pivots=fabric)
+* **Documentation:** [Copy data to your database by using Azure Data Factory](data-factory-load-data.md?context=/fabric/context/context-rta&pivots=fabric)
 ::: zone-end
 
 ## Azure Event Grid
@@ -159,12 +153,11 @@ The following table summarizes the available connectors and their capabilities:
 * **Functionality:** Ingestion
 * **Ingestion type supported:** Batching, Streaming
 * **Use cases:** Event processing
-* **Documentation:** 
 ::: zone pivot="azuredataexplorer"
-[Event Grid data connection](ingest-data-event-grid-overview.md)
+* **Documentation:** [Event Grid data connection](ingest-data-event-grid-overview.md)
 ::: zone-end
 ::: zone pivot="fabric"
-[Event Grid data connection](ingest-data-event-grid-overview.md?context=/fabric/context/context-rta&pivots=fabric)
+* **Documentation:** [Event Grid data connection](ingest-data-event-grid-overview.md?context=/fabric/context/context-rta&pivots=fabric)
 ::: zone-end
 
 ## Azure Event Hubs
@@ -172,12 +165,11 @@ The following table summarizes the available connectors and their capabilities:
 * **Description:**  [Azure Event Hubs](/azure/event-hubs/event-hubs-about) is a big data streaming platform and event ingestion service. You can configure continuous ingestion from customer-managed Event Hubs.
 * **Functionality:** Ingestion
 * **Ingestion type supported:** Batching, Streaming
-* **Documentation:** 
 ::: zone pivot="azuredataexplorer"
-[Azure Event Hubs data connection](ingest-data-event-hub-overview.md)
+* **Documentation:** [Azure Event Hubs data connection](ingest-data-event-hub-overview.md)
 ::: zone-end
 ::: zone pivot="fabric"
-[Azure Event Hubs data connection](ingest-data-event-hub-overview.md?context=/fabric/context/context-rta&pivots=fabric)
+* **Documentation:** [Azure Event Hubs data connection](ingest-data-event-hub-overview.md?context=/fabric/context/context-rta&pivots=fabric)
 ::: zone-end
 
 ## Azure Functions
@@ -186,14 +178,12 @@ The following table summarizes the available connectors and their capabilities:
 * **Functionality:** Ingestion, Export
 * **Ingestion type supported:** Batching
 * **Use cases:** Workflow integrations.
-* **Documentation:** 
 ::: zone pivot="azuredataexplorer"
-[Integrating Azure Functions using input and output bindings (preview)](integrate-azure-functions.md)
+* **Documentation:** [Integrating Azure Functions using input and output bindings (preview)](integrate-azure-functions.md)
 ::: zone-end
 ::: zone pivot="fabric"
-[Integrating Azure Functions using input and output bindings (preview)](integrate-azure-functions.md?context=/fabric/context/context-rta&pivots=fabric)
+* **Documentation:** [Integrating Azure Functions using input and output bindings (preview)](integrate-azure-functions.md?context=/fabric/context/context-rta&pivots=fabric)
 ::: zone-end
-)
 
 ## Azure IoT Hubs
 
@@ -201,12 +191,11 @@ The following table summarizes the available connectors and their capabilities:
 * **Functionality:** Ingestion
 * **Ingestion type supported:** Batching, Streaming
 * **Use cases:**  IoT data
-* **Documentation:** 
 ::: zone pivot="azuredataexplorer"
-[IoT Hub data connection](ingest-data-iot-hub-overview.md)
+* **Documentation:** [IoT Hub data connection](ingest-data-iot-hub-overview.md)
 ::: zone-end
 ::: zone pivot="fabric"
-[IoT Hub data connection](ingest-data-iot-hub-overview.md?context=/fabric/context/context-rta&pivots=fabric)
+* **Documentation:** [IoT Hub data connection](ingest-data-iot-hub-overview.md?context=/fabric/context/context-rta&pivots=fabric)
 ::: zone-end
 
 ## Azure Stream Analytics
@@ -215,12 +204,11 @@ The following table summarizes the available connectors and their capabilities:
 * **Functionality:** Ingestion
 * **Ingestion type supported:** Batching, Streaming
 * **Use cases:** Event processing
-* **Documentation:** 
 ::: zone pivot="azuredataexplorer"
-[Ingest data from Azure Stream Analytics](stream-analytics-connector.md)
+* **Documentation:** [Ingest data from Azure Stream Analytics](stream-analytics-connector.md)
 ::: zone-end
 ::: zone pivot="fabric"
-[Ingest data from Azure Stream Analytics](stream-analytics-connector.md?context=/fabric/context/context-rta&pivots=fabric)
+* **Documentation:** [Ingest data from Azure Stream Analytics](stream-analytics-connector.md?context=/fabric/context/context-rta&pivots=fabric)
 ::: zone-end
 
 ::: zone pivot="azuredataexplorer"
@@ -245,13 +233,12 @@ The following table summarizes the available connectors and their capabilities:
 * **Use cases:** Telemetry, Logs, Metrics
 * **Underlying SDK:** [.NET](kusto/api/netfx/about-the-sdk.md)
 * **Repository:** Microsoft Azure - https://github.com/Azure/azure-kusto-nlog-sink
-* **Documentation:** 
 ::: zone pivot="azuredataexplorer"
-[Ingest data with the NLog sink](nlog-sink.md)
+* **Documentation:** [Ingest data with the NLog sink](nlog-sink.md)
 * **Community Blog:** [Getting started with NLog sink and Azure Data Explorer](https://aka.ms/adx-docs-nlog-blog)
 ::: zone-end
 ::: zone pivot="fabric"
-[Ingest data with the NLog sink](nlog-sink.md?context=/fabric/context/context-rta&pivots=fabric)
+* **Documentation:** [Ingest data with the NLog sink](nlog-sink.md?context=/fabric/context/context-rta&pivots=fabric)
 ::: zone-end
 
 ## Open Telemetry
@@ -262,13 +249,12 @@ The following table summarizes the available connectors and their capabilities:
 * **Use cases:** Traces, Metrics, Logs
 * **Underlying SDK:** [Go](kusto/api/golang/kusto-golang-client-library.md)
 * **Repository:** Open Telemetry - https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/exporter/azuredataexplorerexporter
-* **Documentation:** 
 ::: zone pivot="azuredataexplorer"
-[Ingest data from OpenTelemetry](open-telemetry-connector.md)
+* **Documentation:** [Ingest data from OpenTelemetry](open-telemetry-connector.md)
 * **Community Blog:** [Getting started with Open Telemetry and Azure Data Explorer](https://techcommunity.microsoft.com/t5/azure-data-explorer-blog/getting-started-with-open-telemetry-and-azure-data-explorer/ba-p/3675708)
 ::: zone-end
 ::: zone pivot="fabric"
-[Ingest data from OpenTelemetry](open-telemetry-connector.md?context=/fabric/context/context-rta&pivots=fabric)
+* **Documentation:** [Ingest data from OpenTelemetry](open-telemetry-connector.md?context=/fabric/context/context-rta&pivots=fabric)
 ::: zone-end
 
 ## Power Automate
@@ -277,12 +263,11 @@ The following table summarizes the available connectors and their capabilities:
 * **Functionality:** Ingestion, Export
 * **Ingestion type supported:** Batching
 * **Use cases:** Data orchestration
-* **Documentation:** 
 ::: zone pivot="azuredataexplorer"
-[Microsoft Power Automate connector](flow.md)
+* **Documentation:** [Microsoft Power Automate connector](flow.md)
 ::: zone-end
 ::: zone pivot="fabric"
-[Microsoft Power Automate connector](flow.md?context=/fabric/context/context-rta&pivots=fabric)
+* **Documentation:** [Microsoft Power Automate connector](flow.md?context=/fabric/context/context-rta&pivots=fabric)
 ::: zone-end
 
 ## Serilog
@@ -293,13 +278,12 @@ The following table summarizes the available connectors and their capabilities:
 * **Use cases:** Logs
 * **Underlying SDK:** [.NET](kusto/api/netfx/about-the-sdk.md)
 * **Repository:** Microsoft Azure - https://github.com/Azure/serilog-sinks-azuredataexplorer
-* **Documentation:** 
 ::: zone pivot="azuredataexplorer"
-[Ingest data with the Serilog sink](serilog-sink.md)
+* **Documentation:** [Ingest data with the Serilog sink](serilog-sink.md)
 * **Community Blog:** [Getting started with Serilog sink and Azure Data Explorer](https://go.microsoft.com/fwlink/p/?linkid=2227749)
 ::: zone-end
 ::: zone pivot="fabric"
-[Ingest data with the Serilog sink](serilog-sink.md?context=/fabric/context/context-rta&pivots=fabric)
+* **Documentation:** [Ingest data with the Serilog sink](serilog-sink.md?context=/fabric/context/context-rta&pivots=fabric)
 ::: zone-end
 
 ## Telegraf
@@ -310,13 +294,12 @@ The following table summarizes the available connectors and their capabilities:
 * **Use cases:** Telemetry, Logs, Metrics
 * **Underlying SDK:** Go
 * **Repository:** InfluxData - https://github.com/influxdata/telegraf/tree/master/plugins/outputs/azure_data_explorer
-* **Documentation:** 
 ::: zone pivot="azuredataexplorer"
-[Ingest data from Telegraf](ingest-data-telegraf.md)
+* **Documentation:** [Ingest data from Telegraf](ingest-data-telegraf.md)
 * **Community Blog:**  [New Azure Data Explorer output plugin for Telegraf enables SQL monitoring at huge scale](https://techcommunity.microsoft.com/t5/azure-data-explorer-blog/new-azure-data-explorer-output-plugin-for-telegraf-enables-sql/ba-p/2829444)
 ::: zone-end
 ::: zone pivot="fabric"
-[Ingest data from Telegraf](ingest-data-telegraf.md?context=/fabric/context/context-rta&pivots=fabric)
+* **Documentation:** [Ingest data from Telegraf](ingest-data-telegraf.md?context=/fabric/context/context-rta&pivots=fabric)
 ::: zone-end
 
 ::: zone pivot="azuredataexplorer"
