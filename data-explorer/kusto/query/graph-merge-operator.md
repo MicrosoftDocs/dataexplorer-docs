@@ -17,7 +17,7 @@ The `graph-merge` operator merges the nodes and edges of two graphs, combining t
 
 ## Syntax
 
-*LeftGraph* `|` `graph-merge` *RightGraph* [ `on` *Conditions* ]
+*LeftGraph* `|` `graph-merge` *RightGraph* [ `on` *Attributes* ]
 
 ## Parameters
 
@@ -34,7 +34,7 @@ In the absence of any rules, the edges are unionized rather than merged.
 
 ## Examples
 
-The following examples build a graph from emails and aliases tables and another graph for calls and employees first and last names. The `make-graph` operators build the two graphs. Then, each example shows a different usage of `graph-merge`.
+The following examples build a graph from emails and aliases tables and another graph for calls and employees' first and last names. The `make-graph` operators build the two graphs. Then, each example shows a different usage of `graph-merge`.
 
 ### Merge without attributes
 
