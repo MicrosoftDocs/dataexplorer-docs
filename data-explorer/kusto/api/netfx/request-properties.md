@@ -82,6 +82,189 @@ The following table overviews the client request properties for use with the C# 
 | `OptionTruncationMaxSize` | long | Overrides the default maximum data size a query is allowed to return to the caller (truncation). |
 | `OptionValidatePermissions` | bool | Validates the user's permissions to perform the query without actually running the query. Possible results for this property are: `OK` (permissions are present and valid), `Incomplete` (validation couldn't be completed due to dynamic schema evaluation), or `KustoRequestDeniedException` (permissions were not set). |
 
+### [Python](#tab/python-crp)
+
+The following table overviews the client request properties for use with the Python client library.
+
+| Property Name | Type | Description |
+|--|--|--|
+| | long | Controls the maximum number of HTTP redirects the client follows during processing. |
+| | bool | If set to `true`, suppresses reporting of partial query failures within the result set. |
+| | dynamic | Provides a hint to use the shuffle strategy for referenced materialized views in the query. This property takes an array of materialized view names and their corresponding shuffle keys.</br></br>For example, `dynamic([{ "Name": "V1", "Keys" : [ "K1", "K2" ] }])` indicates shuffling view `V1` by keys `K1` and `K2`, while `dynamic([ { "Name": "V1" } ])` shuffles view `V1` by all keys. |
+| | UInt64 | Overrides the default maximum amount of memory a query may allocate per node. |
+| | UInt64 | Overrides the default maximum amount of memory a query operator may allocate. |
+| | long | Overrides the default maximum number of columns a query is allowed to produce. |
+| | bool | Sets the request timeout to its maximum value. This option cannot be modified as part of a [set statement](../../query/setstatement.md). |
+| | bool | Disables truncation of query results returned to the caller. |
+| | bool | If set to `true`, allows pushing simple selection through aggregation. |
+| | literal | Specifies the start value to use when evaluating the [bin_auto()](../../query/bin-autofunction.md) function. |
+| | literal | Specifies the bin size value to use when evaluating the [bin_auto()](../../query/bin-autofunction.md) function. |
+| | string | Sets the default parameter value for the [cursor_after()](../../query/cursorafterfunction.md) function when called without parameters. |
+| | string | Sets the default parameter value for the [cursor_before_or_at()](../../query/cursorbeforeoratfunction.md) function when called without parameters. |
+| | string | Overrides the cursor value returned by the [cursor_current()](../../query/cursorcurrent.md) function. |
+| | bool | Disables the usage of [cursor functions](../../management/databasecursor.md#cursor-functions) within the query context. |
+| | dynamic | Lists table names to be scoped to `cursor_after_default` .. `cursor_before_or_at()` (upper bound is optional). |
+| | string | Controls the data to which the query applies. Supported values are `default`, `all`, or `hotcache`. |
+| | string | Specifies the column name for the query's datetime scope (`OptionQueryDateTimeScopeTo` / `OptionQueryDateTimeScopeFrom`). |
+| | datetime | Sets the minimum date and time limit for the query scope. If defined, it serves as an auto-applied filter on `OptionQueryDateTimeScopeColumn`. |
+| | datetime | Sets the maximum date and time limit for the query scope. If defined, it serves as an auto-applied filter on `OptionQueryDateTimeScopeColumn`. |
+| | int | Controls the behavior of subquery merge. The executing node introduces an extra level in the query hierarchy for each subgroup of nodes, and this option sets the subgroup size. |
+| | int | Specifies the percentage of nodes for executing fan out. |
+| | int | Specifies the percentage of threads for executing fan out. |
+| | bool | If set to `true`, enforces [row level security](../../management/rowlevelsecuritypolicy.md) rules, even if the policy is disabled. |
+| | string | Determines how the query text should be interpreted. Supported values are `csl`, `kql`, or `sql`. |
+| | bool | Enables logging of the query parameters for later viewing in the `.show` `queries` journal. |
+| | long | Overrides the default maximum number of columns a query is allowed to produce. |
+| | datetime | Overrides the datetime value returned by the [now()](../../query/nowfunction.md) function. |
+| | bool or int | If set to `true`, generates a Python debug query for the enumerated Python node. |
+| | bool | If set to `true`, retrieves the schema of each tabular data in the query results instead of the data itself. |
+| | bool | If set to `true`, forces a cache refresh of query results for a specific query. This option cannot be modified as part of a [set statement](../../query/setstatement.md). |
+| | timespan | Controls the maximum age of the cached query results that the service is allowed to return. |
+| | bool | If set to `true`, enables per [extent](../../management/extents-overview.md) query caching. |
+| | long | Provides a hint for how many records to send in each update. Takes effect only if `OptionResultsProgressiveEnabled` is set. |
+| | timespan | Provides a hint for how often to send progress frames. Takes effect only if `OptionResultsProgressiveEnabled` is set. |
+| | long | Limits query results to a specified number of records. |
+| | string | Sets the query weak consistency session ID, effective when `OptionQueryConsistency` is set to `weakconsistency_by_session_id`. |
+| | string | Controls query consistency. Supported values are `strongconsistency`, `weakconsistency`, `weakconsistency_by_query`, `weakconsistency_by_database`, or `weakconsistency_by_session_id`. When using `weakconsistency_by_session_id`, ensure to also set the `OptionQueryWeakConsistencySessionId` property. |
+| | string | Specifies the request application name to be used in reporting. For example, `.show` `queries`. |
+| | bool | If set to `true`, blocks access to tables with [row level security](../../management/rowlevelsecuritypolicy.md) policy enabled. |
+| | bool | If set to `true`, prevents request callout to a user-provided service. |
+| | string | Allows inclusion of arbitrary text as the request description. |
+| | bool | If set to `true`, prevents the request from accessing external data using the [externaldata](../../query/externaldata-operator.md) operator or external tables. |
+| | bool | If set to `true`, prevents the request from accessing external tables. |
+| | bool | If set to `true`, indicates that the service should not impersonate the caller's identity. |
+| | bool | If set to `true`, prevents write access for the request. |
+| | bool | If set to `true`, prevents the request from accessing remote databases and clusters. |
+| | bool | If set to `true`, prevents the request from invoking code in the sandbox. |
+| | string | Specifies the request user to be used in reporting. For example, `.show` `queries`. |
+| | bool | If set to `true`, enables the progressive query stream. |
+| | timespan | Overrides the default request timeout. This option cannot be modified as part of a [set statement](../../query/setstatement.md). |
+| | long | Overrides the default maximum number of records a query is allowed to return to the caller (truncation). |
+| | long | Overrides the default maximum data size a query is allowed to return to the caller (truncation). |
+| | bool | Validates the user's permissions to perform the query without actually running the query. Possible results for this property are: `OK` (permissions are present and valid), `Incomplete` (validation couldn't be completed due to dynamic schema evaluation), or `KustoRequestDeniedException` (permissions were not set). |
+
+### [Node.js](#tab/node-crp)
+
+The following table overviews the client request properties for use with the Node client library.
+
+| Property Name | Type | Description |
+|--|--|--|
+| | long | Controls the maximum number of HTTP redirects the client follows during processing. |
+| | bool | If set to `true`, suppresses reporting of partial query failures within the result set. |
+| | dynamic | Provides a hint to use the shuffle strategy for referenced materialized views in the query. This property takes an array of materialized view names and their corresponding shuffle keys.</br></br>For example, `dynamic([{ "Name": "V1", "Keys" : [ "K1", "K2" ] }])` indicates shuffling view `V1` by keys `K1` and `K2`, while `dynamic([ { "Name": "V1" } ])` shuffles view `V1` by all keys. |
+| | UInt64 | Overrides the default maximum amount of memory a query may allocate per node. |
+| | UInt64 | Overrides the default maximum amount of memory a query operator may allocate. |
+| | long | Overrides the default maximum number of columns a query is allowed to produce. |
+| | bool | Sets the request timeout to its maximum value. This option cannot be modified as part of a [set statement](../../query/setstatement.md). |
+| | bool | Disables truncation of query results returned to the caller. |
+| | bool | If set to `true`, allows pushing simple selection through aggregation. |
+| | literal | Specifies the start value to use when evaluating the [bin_auto()](../../query/bin-autofunction.md) function. |
+| | literal | Specifies the bin size value to use when evaluating the [bin_auto()](../../query/bin-autofunction.md) function. |
+| | string | Sets the default parameter value for the [cursor_after()](../../query/cursorafterfunction.md) function when called without parameters. |
+| | string | Sets the default parameter value for the [cursor_before_or_at()](../../query/cursorbeforeoratfunction.md) function when called without parameters. |
+| | string | Overrides the cursor value returned by the [cursor_current()](../../query/cursorcurrent.md) function. |
+| | bool | Disables the usage of [cursor functions](../../management/databasecursor.md#cursor-functions) within the query context. |
+| | dynamic | Lists table names to be scoped to `cursor_after_default` .. `cursor_before_or_at()` (upper bound is optional). |
+| | string | Controls the data to which the query applies. Supported values are `default`, `all`, or `hotcache`. |
+| | string | Specifies the column name for the query's datetime scope (`OptionQueryDateTimeScopeTo` / `OptionQueryDateTimeScopeFrom`). |
+| | datetime | Sets the minimum date and time limit for the query scope. If defined, it serves as an auto-applied filter on `OptionQueryDateTimeScopeColumn`. |
+| | datetime | Sets the maximum date and time limit for the query scope. If defined, it serves as an auto-applied filter on `OptionQueryDateTimeScopeColumn`. |
+| | int | Controls the behavior of subquery merge. The executing node introduces an extra level in the query hierarchy for each subgroup of nodes, and this option sets the subgroup size. |
+| | int | Specifies the percentage of nodes for executing fan out. |
+| | int | Specifies the percentage of threads for executing fan out. |
+| | bool | If set to `true`, enforces [row level security](../../management/rowlevelsecuritypolicy.md) rules, even if the policy is disabled. |
+| | string | Determines how the query text should be interpreted. Supported values are `csl`, `kql`, or `sql`. |
+| | bool | Enables logging of the query parameters for later viewing in the `.show` `queries` journal. |
+| | long | Overrides the default maximum number of columns a query is allowed to produce. |
+| | datetime | Overrides the datetime value returned by the [now()](../../query/nowfunction.md) function. |
+| | bool or int | If set to `true`, generates a Python debug query for the enumerated Python node. |
+| | bool | If set to `true`, retrieves the schema of each tabular data in the query results instead of the data itself. |
+| | bool | If set to `true`, forces a cache refresh of query results for a specific query. This option cannot be modified as part of a [set statement](../../query/setstatement.md). |
+| | timespan | Controls the maximum age of the cached query results that the service is allowed to return. |
+| | bool | If set to `true`, enables per [extent](../../management/extents-overview.md) query caching. |
+| | long | Provides a hint for how many records to send in each update. Takes effect only if `OptionResultsProgressiveEnabled` is set. |
+| | timespan | Provides a hint for how often to send progress frames. Takes effect only if `OptionResultsProgressiveEnabled` is set. |
+| | long | Limits query results to a specified number of records. |
+| | string | Sets the query weak consistency session ID, effective when `OptionQueryConsistency` is set to `weakconsistency_by_session_id`. |
+| | string | Controls query consistency. Supported values are `strongconsistency`, `weakconsistency`, `weakconsistency_by_query`, `weakconsistency_by_database`, or `weakconsistency_by_session_id`. When using `weakconsistency_by_session_id`, ensure to also set the `OptionQueryWeakConsistencySessionId` property. |
+| | string | Specifies the request application name to be used in reporting. For example, `.show` `queries`. |
+| | bool | If set to `true`, blocks access to tables with [row level security](../../management/rowlevelsecuritypolicy.md) policy enabled. |
+| | bool | If set to `true`, prevents request callout to a user-provided service. |
+| | string | Allows inclusion of arbitrary text as the request description. |
+| | bool | If set to `true`, prevents the request from accessing external data using the [externaldata](../../query/externaldata-operator.md) operator or external tables. |
+| | bool | If set to `true`, prevents the request from accessing external tables. |
+| | bool | If set to `true`, indicates that the service should not impersonate the caller's identity. |
+| | bool | If set to `true`, prevents write access for the request. |
+| | bool | If set to `true`, prevents the request from accessing remote databases and clusters. |
+| | bool | If set to `true`, prevents the request from invoking code in the sandbox. |
+| | string | Specifies the request user to be used in reporting. For example, `.show` `queries`. |
+| | bool | If set to `true`, enables the progressive query stream. |
+| | timespan | Overrides the default request timeout. This option cannot be modified as part of a [set statement](../../query/setstatement.md). |
+| | long | Overrides the default maximum number of records a query is allowed to return to the caller (truncation). |
+| | long | Overrides the default maximum data size a query is allowed to return to the caller (truncation). |
+| | bool | Validates the user's permissions to perform the query without actually running the query. Possible results for this property are: `OK` (permissions are present and valid), `Incomplete` (validation couldn't be completed due to dynamic schema evaluation), or `KustoRequestDeniedException` (permissions were not set). |
+
+### [Java](#tab/java-crp)
+
+The following table overviews the client request properties for use with the Java client library.
+
+| Property Name | Type | Description |
+|--|--|--|
+| | long | Controls the maximum number of HTTP redirects the client follows during processing. |
+| | bool | If set to `true`, suppresses reporting of partial query failures within the result set. |
+| | dynamic | Provides a hint to use the shuffle strategy for referenced materialized views in the query. This property takes an array of materialized view names and their corresponding shuffle keys.</br></br>For example, `dynamic([{ "Name": "V1", "Keys" : [ "K1", "K2" ] }])` indicates shuffling view `V1` by keys `K1` and `K2`, while `dynamic([ { "Name": "V1" } ])` shuffles view `V1` by all keys. |
+| | UInt64 | Overrides the default maximum amount of memory a query may allocate per node. |
+| | UInt64 | Overrides the default maximum amount of memory a query operator may allocate. |
+| | long | Overrides the default maximum number of columns a query is allowed to produce. |
+| | bool | Sets the request timeout to its maximum value. This option cannot be modified as part of a [set statement](../../query/setstatement.md). |
+| | bool | Disables truncation of query results returned to the caller. |
+| | bool | If set to `true`, allows pushing simple selection through aggregation. |
+| | literal | Specifies the start value to use when evaluating the [bin_auto()](../../query/bin-autofunction.md) function. |
+| | literal | Specifies the bin size value to use when evaluating the [bin_auto()](../../query/bin-autofunction.md) function. |
+| | string | Sets the default parameter value for the [cursor_after()](../../query/cursorafterfunction.md) function when called without parameters. |
+| | string | Sets the default parameter value for the [cursor_before_or_at()](../../query/cursorbeforeoratfunction.md) function when called without parameters. |
+| | string | Overrides the cursor value returned by the [cursor_current()](../../query/cursorcurrent.md) function. |
+| | bool | Disables the usage of [cursor functions](../../management/databasecursor.md#cursor-functions) within the query context. |
+| | dynamic | Lists table names to be scoped to `cursor_after_default` .. `cursor_before_or_at()` (upper bound is optional). |
+| | string | Controls the data to which the query applies. Supported values are `default`, `all`, or `hotcache`. |
+| | string | Specifies the column name for the query's datetime scope (`OptionQueryDateTimeScopeTo` / `OptionQueryDateTimeScopeFrom`). |
+| | datetime | Sets the minimum date and time limit for the query scope. If defined, it serves as an auto-applied filter on `OptionQueryDateTimeScopeColumn`. |
+| | datetime | Sets the maximum date and time limit for the query scope. If defined, it serves as an auto-applied filter on `OptionQueryDateTimeScopeColumn`. |
+| | int | Controls the behavior of subquery merge. The executing node introduces an extra level in the query hierarchy for each subgroup of nodes, and this option sets the subgroup size. |
+| | int | Specifies the percentage of nodes for executing fan out. |
+| | int | Specifies the percentage of threads for executing fan out. |
+| | bool | If set to `true`, enforces [row level security](../../management/rowlevelsecuritypolicy.md) rules, even if the policy is disabled. |
+| | string | Determines how the query text should be interpreted. Supported values are `csl`, `kql`, or `sql`. |
+| | bool | Enables logging of the query parameters for later viewing in the `.show` `queries` journal. |
+| | long | Overrides the default maximum number of columns a query is allowed to produce. |
+| | datetime | Overrides the datetime value returned by the [now()](../../query/nowfunction.md) function. |
+| | bool or int | If set to `true`, generates a Python debug query for the enumerated Python node. |
+| | bool | If set to `true`, retrieves the schema of each tabular data in the query results instead of the data itself. |
+| | bool | If set to `true`, forces a cache refresh of query results for a specific query. This option cannot be modified as part of a [set statement](../../query/setstatement.md). |
+| | timespan | Controls the maximum age of the cached query results that the service is allowed to return. |
+| | bool | If set to `true`, enables per [extent](../../management/extents-overview.md) query caching. |
+| | long | Provides a hint for how many records to send in each update. Takes effect only if `OptionResultsProgressiveEnabled` is set. |
+| | timespan | Provides a hint for how often to send progress frames. Takes effect only if `OptionResultsProgressiveEnabled` is set. |
+| | long | Limits query results to a specified number of records. |
+| | string | Sets the query weak consistency session ID, effective when `OptionQueryConsistency` is set to `weakconsistency_by_session_id`. |
+| | string | Controls query consistency. Supported values are `strongconsistency`, `weakconsistency`, `weakconsistency_by_query`, `weakconsistency_by_database`, or `weakconsistency_by_session_id`. When using `weakconsistency_by_session_id`, ensure to also set the `OptionQueryWeakConsistencySessionId` property. |
+| | string | Specifies the request application name to be used in reporting. For example, `.show` `queries`. |
+| | bool | If set to `true`, blocks access to tables with [row level security](../../management/rowlevelsecuritypolicy.md) policy enabled. |
+| | bool | If set to `true`, prevents request callout to a user-provided service. |
+| | string | Allows inclusion of arbitrary text as the request description. |
+| | bool | If set to `true`, prevents the request from accessing external data using the [externaldata](../../query/externaldata-operator.md) operator or external tables. |
+| | bool | If set to `true`, prevents the request from accessing external tables. |
+| | bool | If set to `true`, indicates that the service should not impersonate the caller's identity. |
+| | bool | If set to `true`, prevents write access for the request. |
+| | bool | If set to `true`, prevents the request from accessing remote databases and clusters. |
+| | bool | If set to `true`, prevents the request from invoking code in the sandbox. |
+| | string | Specifies the request user to be used in reporting. For example, `.show` `queries`. |
+| | bool | If set to `true`, enables the progressive query stream. |
+| | timespan | Overrides the default request timeout. This option cannot be modified as part of a [set statement](../../query/setstatement.md). |
+| | long | Overrides the default maximum number of records a query is allowed to return to the caller (truncation). |
+| | long | Overrides the default maximum data size a query is allowed to return to the caller (truncation). |
+| | bool | Validates the user's permissions to perform the query without actually running the query. Possible results for this property are: `OK` (permissions are present and valid), `Incomplete` (validation couldn't be completed due to dynamic schema evaluation), or `KustoRequestDeniedException` (permissions were not set). |
+
 ### [REST API](#tab/rest-crp)
 
 The following table overviews the client request properties for use with the REST API.
