@@ -324,7 +324,7 @@ The following table overviews the client request properties for use with the RES
 | `request_sandboxed_execution_disabled` | bool | If set to `true`, prevents the request from invoking code in the sandbox. |
 | `request_user` | string | Specifies the request user to be used in reporting. For example, `.show queries`. |
 | `results_progressive_enabled` | bool | If set to `true`, enables the progressive query stream. |
-| `server_timeout` | timespan | Overrides the default request timeout. This option cannot be modified as part of a [set statement](../../query/setstatement.md). |
+| `servertimeout` | timespan | Overrides the default request timeout. This option cannot be modified as part of a [set statement](../../query/setstatement.md). |
 | `truncation_max_records` | long | Overrides the default maximum number of records a query is allowed to return to the caller (truncation). |
 | `truncation_max_size` | long | Overrides the default maximum data size a query is allowed to return to the caller (truncation). |
 | `validatepermissions` | bool | Validates the user's permissions to perform the query without actually running the query. Possible results for this property are: `OK` (permissions are present and valid), `Incomplete` (validation couldn't be completed due to dynamic schema evaluation), or `KustoRequestDeniedException` (permissions were not set). |
