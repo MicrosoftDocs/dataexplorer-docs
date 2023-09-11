@@ -48,7 +48,7 @@ The direct ingest client requires direct interaction with the Azure Data Explore
 Direct ingestion has low latency and doesn't involve aggregation. However, the client code has to implement retry or error handling logic, and the client code could overwhelm the cluster with requests as it's unaware of the capacity.
 
 > [!NOTE]
-> We don't recommend the direct mode for production grade ingestion solutions.
+> We don't recommend the direct ingestion for production grade solutions.
 
 ## Related content
 
