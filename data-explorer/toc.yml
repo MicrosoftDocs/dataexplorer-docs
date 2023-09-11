@@ -525,6 +525,7 @@ items:
                 displayName: kusto.data, SDK
               - name: Client request properties
                 href: kusto/api/netfx/request-properties.md
+                displayName: ClientRequestProperties, CRP, kusto.data, SDK
       - name: Sample app generator
         href: sample-app-generator-wizard.md
       - name: Write code with SDKs
