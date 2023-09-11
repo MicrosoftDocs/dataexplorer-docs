@@ -71,6 +71,7 @@ The following table summarizes the available connectors and their capabilities:
 * **Repository:** Microsoft Azure - https://github.com/Azure/kafka-sink-azure-kusto/
 ::: zone pivot="azuredataexplorer"
 * **Documentation:** [Ingest data from Apache Kafka](ingest-data-kafka.md)
+
 * **Community Blog:** [Kafka ingestion into Azure Data Explorer](https://techcommunity.microsoft.com/t5/azure-data-explorer-blog/kafka-ingestion-into-azure-data-explorer-part-1/ba-p/1452439)
 ::: zone-end
 ::: zone pivot="fabric"
@@ -88,6 +89,7 @@ The following table summarizes the available connectors and their capabilities:
 * **Repository:** Microsoft Azure - https://github.com/Azure/azure-kusto-log4j
 ::: zone pivot="azuredataexplorer"
 * **Documentation:** [Ingest data with the Apache Log4J 2 connector](apache-log4j2-connector.md)
+
 * **Community Blog:** [Getting started with Apache Log4J and Azure Data Explorer](https://techcommunity.microsoft.com/t5/azure-data-explorer-blog/getting-started-with-apache-log4j-and-azure-data-explorer/ba-p/3705242)
 ::: zone-end
 ::: zone pivot="fabric"
@@ -105,6 +107,7 @@ The following table summarizes the available connectors and their capabilities:
 * **Repository:** Microsoft Azure - https://github.com/Azure/azure-kusto-spark/
 ::: zone pivot="azuredataexplorer"
 * **Documentation:** [Apache Spark connector](spark-connector.md)
+
 * **Community Blog:** [Data preprocessing for Azure Data Explorer for Azure Data Explorer with Apache Spark](https://techcommunity.microsoft.com/t5/azure-data-explorer-blog/data-pre-processing-for-azure-data-explorer-with-apache-spark/ba-p/2727993/)
 ::: zone-end
 ::: zone pivot="fabric"
@@ -234,6 +237,7 @@ The following table summarizes the available connectors and their capabilities:
 * **Underlying SDK:** [Java](kusto/api/java/kusto-java-client-library.md)
 * **Repository:** Microsoft Azure - https://github.com/Azure/logstash-output-kusto/
 * **Documentation:** [Ingest data from Logstash to Azure Data Explorer](ingest-data-logstash.md)
+
 * **Community Blog:** [How to migrate from Elasticsearch to Azure Data Explorer](https://techcommunity.microsoft.com/t5/azure-data-explorer-blog/how-to-migrate-from-elasticsearch-to-azure-data-explorer/ba-p/1621539/)
 ::: zone-end
 
@@ -248,6 +252,7 @@ The following table summarizes the available connectors and their capabilities:
 * **Repository:** Microsoft Azure - https://github.com/Azure/azure-kusto-nlog-sink
 ::: zone pivot="azuredataexplorer"
 * **Documentation:** [Ingest data with the NLog sink](nlog-sink.md)
+
 * **Community Blog:** [Getting started with NLog sink and Azure Data Explorer](https://aka.ms/adx-docs-nlog-blog)
 ::: zone-end
 ::: zone pivot="fabric"
@@ -265,6 +270,7 @@ The following table summarizes the available connectors and their capabilities:
 * **Repository:** Open Telemetry - https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/exporter/azuredataexplorerexporter
 ::: zone pivot="azuredataexplorer"
 * **Documentation:** [Ingest data from OpenTelemetry](open-telemetry-connector.md)
+
 * **Community Blog:** [Getting started with Open Telemetry and Azure Data Explorer](https://techcommunity.microsoft.com/t5/azure-data-explorer-blog/getting-started-with-open-telemetry-and-azure-data-explorer/ba-p/3675708)
 ::: zone-end
 ::: zone pivot="fabric"
@@ -296,6 +302,7 @@ The following table summarizes the available connectors and their capabilities:
 * **Repository:** Microsoft Azure - https://github.com/Azure/serilog-sinks-azuredataexplorer
 ::: zone pivot="azuredataexplorer"
 * **Documentation:** [Ingest data with the Serilog sink](serilog-sink.md)
+
 * **Community Blog:** [Getting started with Serilog sink and Azure Data Explorer](https://go.microsoft.com/fwlink/p/?linkid=2227749)
 ::: zone-end
 ::: zone pivot="fabric"
@@ -313,6 +320,7 @@ The following table summarizes the available connectors and their capabilities:
 * **Repository:** InfluxData - https://github.com/influxdata/telegraf/tree/master/plugins/outputs/azure_data_explorer
 ::: zone pivot="azuredataexplorer"
 * **Documentation:** [Ingest data from Telegraf](ingest-data-telegraf.md)
+
 * **Community Blog:**  [New Azure Data Explorer output plugin for Telegraf enables SQL monitoring at huge scale](https://techcommunity.microsoft.com/t5/azure-data-explorer-blog/new-azure-data-explorer-output-plugin-for-telegraf-enables-sql/ba-p/2829444)
 ::: zone-end
 ::: zone pivot="fabric"
