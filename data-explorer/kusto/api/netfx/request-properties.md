@@ -25,60 +25,60 @@ The following table overviews the client request properties for use with the C# 
 
 | Property Name | Type | Description |
 |--|--|--|
-| `OptionClientMaxRedirectCount` | long | Indicates the maximum number of HTTP redirects that the client processes. |
-| `OptionDeferPartialQueryFailures` | bool | If `true`, disables reporting partial query failures as part of the result set. |
-| `OptionMaterializedViewShuffleQuery` | dynamic | A hint to use shuffle strategy for materialized views that are referenced in the query. The property is an array of materialized views names and the shuffle keys to use.</br></br>For example, `dynamic([{ "Name": "V1", "Keys" : [ "K1", "K2" ] }])` is a shuffle view `V1` by `K1`, `K2`; and `dynamic([ { "Name": "V1" } ])` is a shuffle view `V1` by all keys. |
+| `OptionClientMaxRedirectCount` | long | Controls the maximum number of HTTP redirects the client follows during processing. |
+| `OptionDeferPartialQueryFailures` | bool | If set to `true`, suppresses reporting of partial query failures within the result set. |
+| `OptionMaterializedViewShuffleQuery` | dynamic | Provides a hint to use the shuffle strategy for referenced materialized views in the query. This property takes an array of materialized view names and their corresponding shuffle keys.</br></br>For example, `dynamic([{ "Name": "V1", "Keys" : [ "K1", "K2" ] }])` indicates shuffling view `V1` by keys `K1` and `K2`, while `dynamic([ { "Name": "V1" } ])` shuffles view `V1` by all keys. |
 | `OptionMaxMemoryConsumptionPerQueryPerNode` | UInt64 | Overrides the default maximum amount of memory a query may allocate per node. |
 | `OptionMaxMemoryConsumptionPerIterator` | UInt64 | Overrides the default maximum amount of memory a query operator may allocate. |
 | `OptionMaxOutputColumns` | long | Overrides the default maximum number of columns a query is allowed to produce. |
-| `OptionNoRequestTimeout` | bool | Sets the request timeout to its maximum value. This option can't be set as part of a [set statement](../../query/setstatement.md). |
-| `OptionNoTruncation` | bool | Suppresses truncation of the query results returned to the caller. |
-| `OptionPushSelectionThroughAggregation` | bool | If `true`, pushes simple selection through aggregation. |
-| `OptionQueryBinAutoAt` | literal | The start value to use when evaluating the [bin_auto()](../../query/bin-autofunction.md) function. |
-| `OptionQueryBinAutoSize` | literal | The bin size value to use when evaluating the [bin_auto()](../../query/bin-autofunction.md) function. |
-| `OptionQueryCursorAfterDefault` | string | The default parameter value of the [cursor_after()](../../query/cursorafterfunction.md) function when called without parameters. |
-| `OptionQueryCursorBeforeOrAtDefault` | string | The default parameter value of the [cursor_before_or_at()](../../query/cursorbeforeoratfunction.md) function when called without parameters. |
+| `OptionNoRequestTimeout` | bool | Sets the request timeout to its maximum value. This option cannot be modified as part of a [set statement](../../query/setstatement.md). |
+| `OptionNoTruncation` | bool | Disables truncation of query results returned to the caller. |
+| `OptionPushSelectionThroughAggregation` | bool | If set to `true`, allows pushing simple selection through aggregation. |
+| `OptionQueryBinAutoAt` | literal | Specifies the start value to use when evaluating the [bin_auto()](../../query/bin-autofunction.md) function. |
+| `OptionQueryBinAutoSize` | literal | Specifies the bin size value to use when evaluating the [bin_auto()](../../query/bin-autofunction.md) function. |
+| `OptionQueryCursorAfterDefault` | string | Sets the default parameter value for the [cursor_after()](../../query/cursorafterfunction.md) function when called without parameters. |
+| `OptionQueryCursorBeforeOrAtDefault` | string | Sets the default parameter value for the [cursor_before_or_at()](../../query/cursorbeforeoratfunction.md) function when called without parameters. |
 | `OptionQueryCursorCurrent` | string | Overrides the cursor value returned by the [cursor_current()](../../query/cursorcurrent.md) function. |
-| `OptionQueryCursorDisabled` | bool | Disables usage of [cursor functions](../../management/databasecursor.md#cursor-functions) in the context of the query. |
-| `OptionQueryCursorScopedTables` | dynamic | List of table names that should be scoped to cursor_after_default .. cursor_before_or_at() (upper bound is optional). |
+| `OptionQueryCursorDisabled` | bool | Disables the usage of [cursor functions](../../management/databasecursor.md#cursor-functions) within the query context. |
+| `OptionQueryCursorScopedTables` | dynamic | Lists table names to be scoped to `cursor_after_default` .. `cursor_before_or_at()` (upper bound is optional). |
 | `OptionQueryDataScope` | string | Controls the data to which the query applies. Supported values are `default`, `all`, or `hotcache`. |
-| `OptionQueryDateTimeScopeColumn` | string | Controls the column name for the query's datetime scope (`OptionQueryDateTimeScopeTo` / `OptionQueryDateTimeScopeFrom`). |
-| `OptionQueryDateTimeScopeFrom` | datetime | Sets the minimum date and time limit for the query scope. If defined, it's used as an auto-applied filter on `query_datetimescope_column`. |
-| `OptionQueryDateTimeScopeTo` | datetime | Sets the maximum date and time limit for the query scope. If defined, it's used as an auto-applied filter on `query_datetimescope_column`. |
-| `OptionQueryDistributionNodesSpanSize` | int | Controls the way the subquery merge behaves. The executing node will introduce an extra level the query hierarchy for each subgroup of nodes, and this option sets the size of the subgroup. |
-| `OptionQueryFanoutNodesPercent` | int |The percentage of nodes for executing fan out. |
-| `OptionQueryFanoutThreadsPercent` | int | The percentage of threads for executing fan out. |
-| `OptionQueryForceRowLevelSecurity` | bool | If `true`, forces [row level security](../../management/rowlevelsecuritypolicy.md) rules, even if the policy is disabled. |
-| `OptionQueryLanguage` | string | Controls how the query text is to be interpreted. Supported values are `csl`, `kql`, or `sql`. |
-| `OptionQueryLogQueryParameters` | bool | Enables logging of the query parameters so that they can be viewed later in the `.show` `queries` journal. |
+| `OptionQueryDateTimeScopeColumn` | string | Specifies the column name for the query's datetime scope (`OptionQueryDateTimeScopeTo` / `OptionQueryDateTimeScopeFrom`). |
+| `OptionQueryDateTimeScopeFrom` | datetime | Sets the minimum date and time limit for the query scope. If defined, it serves as an auto-applied filter on `query_datetimescope_column`. |
+| `OptionQueryDateTimeScopeTo` | datetime | Sets the maximum date and time limit for the query scope. If defined, it serves as an auto-applied filter on `query_datetimescope_column`. |
+| `OptionQueryDistributionNodesSpanSize` | int | Controls the behavior of subquery merge. The executing node introduces an extra level in the query hierarchy for each subgroup of nodes, and this option sets the subgroup size. |
+| `OptionQueryFanoutNodesPercent` | int | Specifies the percentage of nodes for executing fan out. |
+| `OptionQueryFanoutThreadsPercent` | int | Specifies the percentage of threads for executing fan out. |
+| `OptionQueryForceRowLevelSecurity` | bool | If set to `true`, enforces [row level security](../../management/rowlevelsecuritypolicy.md) rules, even if the policy is disabled. |
+| `OptionQueryLanguage` | string | Determines how the query text should be interpreted. Supported values are `csl`, `kql`, or `sql`. |
+| `OptionQueryLogQueryParameters` | bool | Enables logging of the query parameters for later viewing in the `.show` `queries` journal. |
 | `OptionQueryMaxEntitiesInUnion` | long | Overrides the default maximum number of columns a query is allowed to produce. |
 | `OptionQueryNow` | datetime | Overrides the datetime value returned by the [now()](../../query/nowfunction.md) function. |
-| `OptionQueryPythonDebug` | bool | If `true`, generates python debug query for the enumerated python node (default first). |
-| `OptionQueryResultsApplyGetSchema` | bool | If `true`, retrieves the schema of each tabular data in the results of the query instead of the data itself. |
-| `OptionQueryResultsCacheForceRefresh` | bool | If `true`, forces query results cache refresh for a specific query. Must be used in combination with `OptionQueryResultsCacheMaxAge`. This option can't be set as part of a [set statement](../../query/setstatement.md).|
-| `OptionQueryResultsCacheMaxAge` | timespan | Controls the maximum age of the cached query results the service is allowed to return. |
-| `OptionQueryResultsCachePerShard` | bool | If `true`, enables per [extent](../../management/extents-overview.md) query cache. |
-| `OptionQueryResultsProgressiveRowCount` | long | Hint as to how many records to send in each update. Takes effect only if `OptionResultsProgressiveEnabled` is set. |
-| `OptionQueryResultsProgressiveUpdatePeriod` | timespan | Hint as to how often to send progress frames. Takes effect only if `OptionResultsProgressiveEnabled` is set. |
-| `OptionQueryTakeMaxRecords` | long | Limits query results to this number of records. |
-| `OptionQueryWeakConsistencySessionId` | string | Sets the query weak consistency session ID. Takes effect when `queryconsistency` mode is set to `weakconsistency_by_session_id`. |
-| `OptionQueryConsistency` | string | Controls query consistency. Supported values are `strongconsistency`, `weakconsistency`, `weakconsistency_by_query`, `weakconsistency_by_database`, or `weakconsistency_by_session_id`. When using `weakconsistency_by_session_id`, make sure to also set the `OptionQueryWeakConsistencySessionId` property. |
-| `OptionRequestAppName` | string | Request application name to be used in the reporting. For example, `.show` `queries`. |
-| `OptionRequestBlockRowLevelSecurity` | bool | If `true`, blocks access to tables for which [row level security](../../management/rowlevelsecuritypolicy.md) policy is enabled. |
-| `OptionRequestCalloutDisabled` | bool | If `true`, prevents request call out to a user-provided service. |
-| `OptionRequestDescription` | string | Arbitrary text that the author of the request wants to include as the request description. |
-| `OptionRequestExternalDataDisabled` | bool | If `true`, prevents the request from accessing external data with the [externaldata](../../query/externaldata-operator.md) operator or external tables. |
-| `OptionRequestExternalTableDisabled` | bool | If `true`, prevents the request from accessing external tables. |
-| `OptionDoNotImpersonate` | bool | If `true`, indicates that the service shouldn't impersonate the caller's identity. |
-| `OptionRequestReadOnly` | bool | If `true`, prevents write access for the request. |
-| `OptionRequestRemoteEntitiesDisabled` | bool | If `true`, prevents the request from accessing remote databases and clusters. |
-| `OptionRequestSandboxedExecutionDisabled` | bool | If `true`, prevents the request from invoking code in the sandbox. |
-| `OptionRequestUser` | string | The request user to be used in the reporting. For example, `.show` `queries`. |
-| `OptionResultsProgressiveEnabled` | bool | If `true`, enables the progressive query stream. |
-| `OptionServerTimeout` | timespan | Overrides the default request timeout. This option can't be set as part of a [set statement](../../query/setstatement.md). |
+| `OptionQueryPythonDebug` | bool or int | If set to `true`, generates a Python debug query for the enumerated Python node. |
+| `OptionQueryResultsApplyGetSchema` | bool | If set to `true`, retrieves the schema of each tabular data in the query results instead of the data itself. |
+| `OptionQueryResultsCacheForceRefresh` | bool | If set to `true`, forces a cache refresh of query results for a specific query. This option cannot be modified as part of a [set statement](../../query/setstatement.md). |
+| `OptionQueryResultsCacheMaxAge` | timespan | Controls the maximum age of the cached query results that the service is allowed to return. |
+| `OptionQueryResultsCachePerShard` | bool | If set to `true`, enables per [extent](../../management/extents-overview.md) query caching. |
+| `OptionQueryResultsProgressiveRowCount` | long | Provides a hint for how many records to send in each update. Takes effect only if `OptionResultsProgressiveEnabled` is set. |
+| `OptionQueryResultsProgressiveUpdatePeriod` | timespan | Provides a hint for how often to send progress frames. Takes effect only if `OptionResultsProgressiveEnabled` is set. |
+| `OptionQueryTakeMaxRecords` | long | Limits query results to a specified number of records. |
+| `OptionQueryWeakConsistencySessionId` | string | Sets the query weak consistency session ID, effective when `OptionQueryConsistency` is set to `weakconsistency_by_session_id`. |
+| `OptionQueryConsistency` | string | Controls query consistency. Supported values are `strongconsistency`, `weakconsistency`, `weakconsistency_by_query`, `weakconsistency_by_database`, or `weakconsistency_by_session_id`. When using `weakconsistency_by_session_id`, ensure to also set the `OptionQueryWeakConsistencySessionId` property. |
+| `OptionRequestAppName` | string | Specifies the request application name to be used in reporting. For example, `.show` `queries`. |
+| `OptionRequestBlockRowLevelSecurity` | bool | If set to `true`, blocks access to tables with [row level security](../../management/rowlevelsecuritypolicy.md) policy enabled. |
+| `OptionRequestCalloutDisabled` | bool | If set to `true`, prevents request callout to a user-provided service. |
+| `OptionRequestDescription` | string | Allows inclusion of arbitrary text as the request description. |
+| `OptionRequestExternalDataDisabled` | bool | If set to `true`, prevents the request from accessing external data using the [externaldata](../../query/externaldata-operator.md) operator or external tables. |
+| `OptionRequestExternalTableDisabled` | bool | If set to `true`, prevents the request from accessing external tables. |
+| `OptionDoNotImpersonate` | bool | If set to `true`, indicates that the service should not impersonate the caller's identity. |
+| `OptionRequestReadOnly` | bool | If set to `true`, prevents write access for the request. |
+| `OptionRequestRemoteEntitiesDisabled` | bool | If set to `true`, prevents the request from accessing remote databases and clusters. |
+| `OptionRequestSandboxedExecutionDisabled` | bool | If set to `true`, prevents the request from invoking code in the sandbox. |
+| `OptionRequestUser` | string | Specifies the request user to be used in reporting. For example, `.show` `queries`. |
+| `OptionResultsProgressiveEnabled` | bool | If set to `true`, enables the progressive query stream. |
+| `OptionServerTimeout` | timespan | Overrides the default request timeout. This option cannot be modified as part of a [set statement](../../query/setstatement.md). |
 | `OptionTruncationMaxRecords` | long | Overrides the default maximum number of records a query is allowed to return to the caller (truncation). |
 | `OptionTruncationMaxSize` | long | Overrides the default maximum data size a query is allowed to return to the caller (truncation). |
-| `OptionValidatePermissions` | bool | Validates user's permissions to perform the query and doesn't run the query itself. The possible results for this property are: `OK` (permissions are present and valid), `Incomplete` (validation couldn't be completed as the query uses dynamic schema evaluation), or `KustoRequestDeniedException` (permissions weren't set). |
+| `OptionValidatePermissions` | bool | Validates the user's permissions to perform the query without actually running the query. Possible results for this property are: `OK` (permissions are present and valid), `Incomplete` (validation couldn't be completed due to dynamic schema evaluation), or `KustoRequestDeniedException` (permissions were not set). |
 
 ### [REST API](#tab/rest-crp)
 
