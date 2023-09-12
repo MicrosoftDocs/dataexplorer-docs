@@ -3,15 +3,15 @@ title:  array_shift_left()
 description: Learn how to use the array_shift_left() function to shift the values inside a dynamic array to the left.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 11/20/2022
+ms.date: 09/05/2023
 ---
 # array_shift_left()
 
-Shifts the values inside a `dynamic` array to the left.
+Shifts the values inside a [dynamic](../query/scalar-data-types/dynamic.md) array to the left.
 
 ## Syntax
 
-`array_shift_left(`*array*, *shift_count* `[,` *default_value* ]`)`
+`array_shift_left(`*array*, *shift_count* [`,` *default_value* ]`)`
 
 [!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
 
@@ -20,12 +20,12 @@ Shifts the values inside a `dynamic` array to the left.
 | Name | Type | Required | Description |
 |--|--|--|--|
 |*array* | dynamic |&check; | The array to shift.|
-|*shift_count* | integer | &check; | The number of positions that array elements will be shifted to the left. If the value is negative, the elements will be shifted to the right. |
+|*shift_count* | int | &check; | The number of positions that array elements are shifted to the left. If the value is negative, the elements are shifted to the right. |
 |*default_value* | scalar | | The value used for an element that was shifted and removed. The default is null or an empty string depending on the type of elements in the *array*.|
 
 ## Returns
 
-Returns a dynamic array containing the same number of elements as in the original array. Each element has been shifted according to *shift_count*. New elements that are added in place of removed elements will have a value of *default_value*.
+Returns a dynamic array containing the same number of elements as in the original array. Each element has been shifted according to *shift_count*. New elements that are added in place of removed elements have a value of *default_value*.
 
 ## Examples
 
@@ -41,7 +41,7 @@ print arr=dynamic([1,2,3,4,5])
 
 **Output**
 
-|`arr`|`arr_shift`|
+|arr|arr_shift|
 |---|---|
 |[1,2,3,4,5]|[3,4,5,null,null]|
 
@@ -57,7 +57,7 @@ print arr=dynamic([1,2,3,4,5])
 
 **Output**
 
-|`arr`|`arr_shift`|
+|arr|arr_shift|
 |---|---|
 |[1,2,3,4,5]|[3,4,5,-1,-1]|
 

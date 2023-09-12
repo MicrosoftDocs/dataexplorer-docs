@@ -3,9 +3,9 @@ title:  partition operator
 description: Learn how to use the partition operator to partition the records of the input table into multiple subtables.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 08/14/2023
+ms.date: 09/05/2023
 ---
-# Partition operator
+# partition operator
 
 The partition operator partitions the records of its input table into multiple subtables according to values in a key column. The operator runs a subquery on each subtable, and produces a single output table that is the union of the results of all subqueries.
 

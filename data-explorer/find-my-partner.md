@@ -174,6 +174,31 @@ Besides these general descriptions of our capabilities, one of our strongest sec
 
 - [Capgemini website](https://www.capgemini.com)
 
+## Centric Consulting LLC
+
+:::image type="icon" source="media/findmypartner/centric-logo.png":::
+
+Our primary goal is to solve complex business problems. Whether crafting your data strategy, building a data warehouse or designing a custom solution to meet your unique needs, our consultants go beyond building technology. We take a holistic approach using data to solve business problems and capture opportunities. We look at the people, processes and technology surrounding data and analytics to deliver insights within the context of your business. High-functioning data and analytics capabilities center around enabling the business to ask better questions – and get better answers – with consistency, a high degree of trust and timeliness.
+
+**Partner type**
+
+- System Integrator
+- Consulting
+- Custom Solutions
+
+**Focus geography**
+
+- USA
+
+**Contact**
+
+- [maurice.faison@centricconsulting.com](mailto:maurice.faison@centricconsulting.com)
+
+**Additional information**
+
+- [Centric Consulting LLC website](https://www.centricconsulting.com)
+- [Microsoft partner site for Centric Consulting LLC](https://appsource.microsoft.com/marketplace/partner-dir/0742084e-ef41-4057-84e9-dbb7bc9cd08b/overview)
+
 ## Codit
 
 :::image type="icon" source="media/findmypartner/logo-codit.png":::
@@ -320,7 +345,7 @@ We are enabling our customers to make with ADX data-driven decisions and find hi
 
 **IoT made simple**
 
-Device Insight is a specialist for Internet of Things and Industry 4.0 and one of the IoT pioneers in the DACH/GSA region. The company develops and operates customized applications, platforms and IoT solutions in various industries and use case domains based on a wide range of Azure technologies. As such, Device Insight provides consulting for setting up, operating and maintaining Azure Data Explorer and has strong experience in leveraging Azure Data Explorer as a time series database and analytics engine. Using ADX, the solutions provide deep insights based on IoT data, energy data, application logs and other time series data, integrated with data sets from other enterprise applications. Combining ADX with other Azure services, Device Insight provides end-to-end solutions for condition monitoring, predictive maintenance, digital customer portals, data platforms, smart services, energy optimization, production and machine digitization and similar.
+Device Insight is a specialist for Internet of Things and Industry 4.0 and one of the IoT pioneers in the DACH/GSA region. The company develops and operates customized applications, platforms and IoT solutions in various industries and use case domains based on a wide range of Azure technologies. As such, Device Insight provides consulting for setting up, operating and maintaining Azure Data Explorer and has strong experience in leveraging Azure Data Explorer as a time series database and analytics engine. Using ADX, the solutions provide deep insights based on IoT data, energy data, application logs and other time series data, integrated with datasets from other enterprise applications. Combining ADX with other Azure services, Device Insight provides end-to-end solutions for condition monitoring, predictive maintenance, digital customer portals, data platforms, smart services, energy optimization, production and machine digitization and similar.
 
 In addition to the 360-degree consulting & services, Device Insight offers the flexible application framework CENTERSIGHT scale. The framework offers many building blocks for IoT-related applications out of the box as managed services and comes with native support for Azure Data Explorer alongside a multi-tenancy and subtenancy capability. This allows companies to develop their custom IoT solutions much faster and be able to manage end user access to the data stored in ADX on a fine-granular level.
 

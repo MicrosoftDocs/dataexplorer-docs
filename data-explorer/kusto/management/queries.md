@@ -59,7 +59,7 @@ The returned table schema is:
 |ScannedExtentsStatistics | dynamic | Statistics of the scanned shards (extents)|
 |Principal| string | AAD-ID of the user or application that was used to run the query|
 |ClientRequestProperties | dynamic | Client request properties|
-|ResultSetStatistics | dynamic |Statistics describing returned data set|
+|ResultSetStatistics | dynamic |Statistics describing returned dataset|
 |WorkloadGroup|string | Name of the workload group that query was associated with|
 
 ### Examples

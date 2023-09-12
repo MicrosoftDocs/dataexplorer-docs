@@ -41,7 +41,7 @@ In this article, you learn:
 When ingesting historical data, you may want to consider the following:
 
 
-LightIngest can be particularly useful to load historical data from an existing storage system to Azure Data Explorer. While you can build your own command using the list of [Command-line arguments](lightingest.md#command-line-arguments), this article shows you how to auto-generate this command through an ingestion wizard. In addition to creating the command, you can use this process to create a new table, and create schema mapping. This tool infers schema mapping from your data set.
+LightIngest can be particularly useful to load historical data from an existing storage system to Azure Data Explorer. While you can build your own command using the list of [Command-line arguments](lightingest.md#command-line-arguments), this article shows you how to auto-generate this command through an ingestion wizard. In addition to creating the command, you can use this process to create a new table, and create schema mapping. This tool infers schema mapping from your dataset.
 
 This article shows you how to create a new table, create schema mapping, and generate a LightIngest command for one-time ingestion using the LightIngest tool. 
 

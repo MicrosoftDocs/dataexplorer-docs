@@ -47,9 +47,9 @@ The following command sets a batch ingress data time of 30 seconds, for 500 file
 ```
 ````
 
->[!NOTE] 
-> If you don't specify all parameters of a *PolicyObject*, the unspecified parameters will be set to [default values](batchingpolicy.md#sealing-a-batch). For example, specifying only "MaximumBatchingTimeSpan" will result in "MaximumNumberOfItems" and "MaximumRawDataSizeMB" being set to default.
+>[!NOTE]
+> If you don't specify all parameters of a *PolicyObject*, the unspecified parameters will be set to [default values](batchingpolicy.md#sealing-a-batch). For example, specifying only "MaximumBatchingTimeSpan" will result in "MaximumNumberOfItems" and "MaximumRawDataSizeMB" being set to default. To override only some parameters, use the [alter-merge command](alter-merge-database-ingestion-batching-policy.md) command.
 
 ## Next steps
 
-- [alter table batching policy](alter-table-ingestion-batching-policy.md)
+- [alter table ingestionbatching policy](alter-table-ingestion-batching-policy.md)
