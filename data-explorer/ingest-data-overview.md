@@ -26,7 +26,7 @@ Azure Data Explorer can pull data from an external source or read requests from 
 
 * **Permissions**: Ingesting data into an existing table without changing its schema requires "Database Ingestor" permissions. Creating a new table requires "Database User" or "Database Admin", and changing the schema of an existing table requires "Table Admin" (inherited by user that created the table) or "Database Admin" permissions. Read more on [ADX role-based permissions model](kusto/access-control/role-based-access-control.md).
 
-## Batching vs streaming ingestion## Batching vs streaming ingestion
+## Batching vs streaming ingestion
 
 * Batching ingestion does data batching and is optimized for high ingestion throughput. This method is the preferred and most performant type of ingestion. Data is batched according to ingestion properties. Small batches of data are then merged, and optimized for fast query results. The [ingestion batching](kusto/management/batchingpolicy.md) policy can be set on databases or tables. By default, the maximum batching value is 5 minutes, 1000 items, or a total size of 1 GB. The data size limit for a batch ingestion command is 6 GB.
 
