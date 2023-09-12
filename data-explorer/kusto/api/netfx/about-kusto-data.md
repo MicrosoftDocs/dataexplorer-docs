@@ -42,6 +42,5 @@ Run [Kusto Query Language (KQL)](../../query/index.md) queries, [T-SQL](../../..
 
 ## Related content
 
-* [Kusto connection strings](../../api/connection-strings/kusto.md)
 * [Create an app to run basic queries](../../api/get-started/app-basic-query.md)
 * [Create an app to run management commands](../../api/get-started/app-management-commands.md)
