@@ -7,7 +7,7 @@ ms.date: 09/12/2023
 ---
 # How Azure Data Explorer works
 
-Azure Data Explorer provides unparalleled performance for ingesting and querying telemetry, logs, and time series data. It features optimized storage formats, indexes, and uses advanced data statistics for efficient query planning and just-in-time compiled query execution.
+Azure Data Explorer provides unparalleled performance for ingesting and querying telemetry, logs, events, traces, and time series data. It features optimized storage formats, indexes, and uses advanced data statistics for efficient query planning and just-in-time compiled query execution.
 
 ## Storage vs. compute
 
@@ -15,12 +15,9 @@ Azure Data Explorer separates storage and compute resources. Persistent data res
 
 This separation provides the following advantages:
 
-* Independent scale out of storage and compute resources
-* Effortless transition between compute clusters, enhancing resilience and scalability
-* Accessibility to identical data across multiple compute clusters
-* SKU optimization
-
-For more information on SKU optimization, see [Select a SKU for your cluster](manage-cluster-choose-sku.md).
+* Independent scale out of storage and compute resources.
+* Accessibility to identical data across multiple compute clusters. For more information, see [Data share](data-share.md).
+* SKU optimization. For more information, see [Select a SKU for your cluster](manage-cluster-choose-sku.md).
 
 ## Data storage
 
@@ -51,7 +48,7 @@ For more information on extent and index merging, see [Merge policy](kusto/manag
 
 Azure Data Explorer maintains data in a compressed state, reducing the amount of memory required to store and process data. This behavior results in faster query performance and more efficient use of system resources.
 
-Azure Data Explorer avoids vertical compression, which involves sorting data to improve compression, due to its high CPU cost. Instead, you can specify the preferred data sort order for scenarios with dominant query patterns. This trade-off prioritizes quick data availability for queries.
+Azure Data Explorer avoids vertical compression, which involves sorting data to improve compression, due to its high CPU cost in free-text or semi-structured data scenarios. Instead, you can specify the preferred data sort order for scenarios with dominant query patterns. This trade-off prioritizes quick data availability for queries.
 
 For more information on specifying data sort order, see [Row order policy](kusto/management/roworderpolicy.md).
 
