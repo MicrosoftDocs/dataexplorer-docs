@@ -29,8 +29,8 @@ To configure client request properties, use the "set option" method in the `Clie
 | `client_max_redirect_count` | long | Controls the maximum number of HTTP redirects the client follows during processing. |
 | `deferpartialqueryfailures` | bool | If set to `true`, suppresses reporting of partial query failures within the result set. |
 | `materialized_view_shuffle_query` | dynamic | Provides a hint to use the shuffle strategy for referenced materialized views in the query. This property takes an array of materialized view names and their corresponding shuffle keys. </br></br>For example, `dynamic([{ "Name": "V1", "Keys" : [ "K1", "K2" ] }])` indicates shuffling view `V1` by keys `K1` and `K2`, while `dynamic([ { "Name": "V1" } ])` shuffles view `V1` by all keys. |
-| `max_memory_consumption_per_query_per_node` | UInt64 | Overrides the default maximum amount of memory a query may allocate per node. |
-| `maxmemoryconsumptionperiterator` | UInt64 | Overrides the default maximum amount of memory a query operator may allocate. |
+| `max_memory_consumption_per_query_per_node` | long | Overrides the default maximum amount of memory a query may allocate per node.|
+| `maxmemoryconsumptionperiterator` | long | Overrides the default maximum amount of memory a query operator may allocate. |
 | `maxoutputcolumns` | long | Overrides the default maximum number of columns a query is allowed to produce. |
 | `norequesttimeout` | bool | Sets the request timeout to its maximum value. This option can't be modified as part of a [set statement](../../query/setstatement.md). |
 | `notruncation` | bool | Disables truncation of query results returned to the caller. |
