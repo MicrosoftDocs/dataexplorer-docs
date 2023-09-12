@@ -72,7 +72,7 @@ A [lookup activity](/azure/data-factory/control-flow-lookup-activity) can retrie
         * Select the **From Azure subscription** radio button and select your **Azure subscription** account. Then, select your **Cluster**. Note the drop-down will only list clusters that belong to the user.
         * Instead, select **Enter manually** radio button and enter your **Endpoint** (cluster URL).
     * Specify the **Tenant**.
-    * Enter **Service principal ID**. The principal ID must have the adequate permissions, according to the permission level required by the command being used.
+    * Enter **Service principal ID**. The principal ID must have the adequate permissions, according to the permission level required by the command being used (this is found via the Azure Portal > App Registrations > Overview > Application (client) ID).
     * Select **Service principal key** button and enter **Service Principal Key**.
     * Select your **Database** from the dropdown menu. Alternatively, select **Edit** checkbox and enter your database name.
     * Select **Test Connection** to test the linked service connection you created. If you can connect to your setup, a green checkmark **Connection successful** will appear.
