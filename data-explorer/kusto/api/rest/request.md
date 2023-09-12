@@ -3,7 +3,7 @@ title:  Query/management HTTP request
 description: This article describes Query/management HTTP request in Azure Data Explorer.
 ms.reviewer: orspodek
 ms.topic: reference
-ms.date: 09/10/2023
+ms.date: 09/12/2023
 ---
 # Query/management HTTP request
 
@@ -152,9 +152,9 @@ This example shows how to create a request that sends the query above, using [cu
 
 1. Read the response according to [this specification](response.md).
 
-### Specify query parameters
+### Set client request properties and query parameters
 
-In the following example body, the query in the `csl` field declares two parameters named `n` and `d`. The values for those query parameters are specified within the `Parameters` field under the `properties` field in the request body.
+In the following example body, the query in the `csl` field declares two parameters named `n` and `d`. The values for those query parameters are specified within the `Parameters` field under the `properties` field in the request body. The `Options` field defines [client request properties](../netfx/request-properties.md).
 
 > [!NOTE]
 > Non-string and non-long parameters must be expressed as KQL literals in string format.
@@ -164,9 +164,13 @@ In the following example body, the query in the `csl` field declares two paramet
     "db": "Samples",
     "csl": "declare query_parameters (n:long, d:dynamic); StormEvents | where State in (d) | top n by StartTime asc",
     "properties": {
+        "Options": {
+            "maxmemoryconsumptionperiterator": 68719476736,
+            "max_memory_consumption_per_query_per_node": 68719476736,
+            "servertimeout": "50m"
+        },
         "Parameters": {
-            "n": 10,
-            "d": "dynamic([\"ATLANTIC SOUTH\"])"
+            "n": 10, "d": "dynamic([\"ATLANTIC SOUTH\"])"
         }
     }
 }
