@@ -28,11 +28,11 @@ To configure client request properties, use the "set option" method in the `Clie
 |--|--|--|
 | `client_max_redirect_count` | long | Controls the maximum number of HTTP redirects the client follows during processing. |
 | `deferpartialqueryfailures` | bool | If set to `true`, suppresses reporting of partial query failures within the result set. |
-| `materialized_view_shuffle_query` | dynamic | Provides a hint to use the shuffle strategy for referenced materialized views in the query. This property takes an array of materialized view names and their corresponding shuffle keys.</br></br>For example, `dynamic([{ "Name": "V1", "Keys" : [ "K1", "K2" ] }])` indicates shuffling view `V1` by keys `K1` and `K2`, while `dynamic([ { "Name": "V1" } ])` shuffles view `V1` by all keys. |
+| `materialized_view_shuffle_query` | dynamic | Provides a hint to use the shuffle strategy for referenced materialized views in the query. This property takes an array of materialized view names and their corresponding shuffle keys. </br></br>For example, `dynamic([{ "Name": "V1", "Keys" : [ "K1", "K2" ] }])` indicates shuffling view `V1` by keys `K1` and `K2`, while `dynamic([ { "Name": "V1" } ])` shuffles view `V1` by all keys. |
 | `max_memory_consumption_per_query_per_node` | UInt64 | Overrides the default maximum amount of memory a query may allocate per node. |
 | `maxmemoryconsumptionperiterator` | UInt64 | Overrides the default maximum amount of memory a query operator may allocate. |
 | `maxoutputcolumns` | long | Overrides the default maximum number of columns a query is allowed to produce. |
-| `norequesttimeout` | bool | Sets the request timeout to its maximum value. This option cannot be modified as part of a [set statement](../../query/setstatement.md). |
+| `norequesttimeout` | bool | Sets the request timeout to its maximum value. This option can't be modified as part of a [set statement](../../query/setstatement.md). |
 | `notruncation` | bool | Disables truncation of query results returned to the caller. |
 | `push_selection_through_aggregation` | bool | If set to `true`, allows pushing simple selection through aggregation. |
 | `query_bin_auto_at` | literal | Specifies the start value to use when evaluating the [bin_auto()](../../query/bin-autofunction.md) function. |
@@ -44,11 +44,11 @@ To configure client request properties, use the "set option" method in the `Clie
 | `query_cursor_scoped_tables` | dynamic | Lists table names to be scoped to `cursor_after_default` .. `cursor_before_or_at()` (upper bound is optional). |
 | `query_datascope` | string | Controls the data to which the query applies. Supported values are `default`, `all`, or `hotcache`. |
 | `query_datetimescope_column` | string | Specifies the column name for the query's datetime scope (`query_datetimescope_to` / `query_datetimescope_from`). |
-| `query_datetimescope_from` | datetime | Sets the minimum date and time limit for the query scope. If defined, it serves as an auto-applied filter on `query_datetimescope_column`. |
-| `query_datetimescope_to` | datetime | Sets the maximum date and time limit for the query scope. If defined, it serves as an auto-applied filter on `query_datetimescope_column`. |
+| `query_datetimescope_from` | datetime | Sets the minimum date and time limit for the query scope. If defined, it serves as an autoapplied filter on `query_datetimescope_column`. |
+| `query_datetimescope_to` | datetime | Sets the maximum date and time limit for the query scope. If defined, it serves as an autoapplied filter on `query_datetimescope_column`. |
 | `query_distribution_nodes_span` | int | Controls the behavior of subquery merge. The executing node introduces an extra level in the query hierarchy for each subgroup of nodes, and this option sets the subgroup size.|
-| `query_fanout_nodes_percent` | int | Specifies the percentage of nodes for executing fan out. |
-| `query_fanout_threads_percent` | int | Specifies the percentage of threads for executing fan out. |
+| `query_fanout_nodes_percent` | int | Specifies the percentage of nodes for executing fan-out. |
+| `query_fanout_threads_percent` | int | Specifies the percentage of threads for executing fan-out. |
 | `query_force_row_level_security` | bool | If set to `true`, enforces [row level security](../../management/rowlevelsecuritypolicy.md) rules, even if the policy is disabled. |
 | `query_language` | string | Determines how the query text should be interpreted. Supported values are `csl`, `kql`, or `sql`. |
 | `query_log_query_parameters` | bool | Enables logging of the query parameters for later viewing in the `.show` `queries` journal. |
@@ -56,7 +56,7 @@ To configure client request properties, use the "set option" method in the `Clie
 | `query_now` | datetime | Overrides the datetime value returned by the [now()](../../query/nowfunction.md) function. |
 | `query_python_debug` | bool or int |  If set to `true`, generates a Python debug query for the enumerated Python node.|
 | `query_results_apply_getschema` | bool | If set, retrieves the schema of each tabular data in the results of the query instead of the data itself. |
-| `query_results_cache_force_refresh` | bool |If set to `true`, forces a cache refresh of query results for a specific query. This option cannot be modified as part of a [set statement](../../query/setstatement.md). |
+| `query_results_cache_force_refresh` | bool |If set to `true`, forces a cache refresh of query results for a specific query. This option can't be modified as part of a [set statement](../../query/setstatement.md). |
 | `query_results_cache_max_age` | timespan | Controls the maximum age of the cached query results that the service is allowed to return. |
 | `query_results_cache_per_shard` | bool | If set to `true`, enables per [extent](../../management/extents-overview.md) query caching. |
 | `query_results_progressive_row_count` | long | Provides a hint for how many records to send in each update. Takes effect only if `results_progressive_enabled` is set. |
@@ -70,22 +70,22 @@ To configure client request properties, use the "set option" method in the `Clie
 | `request_description` | string | Allows inclusion of arbitrary text as the request description. |
 | `request_external_data_disabled` | bool | If set to `true`, prevents the request from accessing external data using the [externaldata](../../query/externaldata-operator.md) operator or external tables. |
 | `request_external_table_disabled` | bool | If set to `true`, prevents the request from accessing external tables. |
-| `request_impersonation_disabled` | bool | If set to `true`, indicates that the service should not impersonate the caller's identity. |
+| `request_impersonation_disabled` | bool | If set to `true`, indicates that the service shouldn't impersonate the caller's identity. |
 | `request_readonly` | bool | If set to `true`, prevents write access for the request. |
 | `request_remote_entities_disabled` | bool | If set to `true`, prevents the request from accessing remote databases and clusters. |
 | `request_sandboxed_execution_disabled` | bool | If set to `true`, prevents the request from invoking code in the sandbox. |
 | `request_user` | string | Specifies the request user to be used in reporting. For example, `.show queries`. |
 | `results_progressive_enabled` | bool | If set to `true`, enables the progressive query stream. |
-| `servertimeout` | timespan | Overrides the default request timeout. This option cannot be modified as part of a [set statement](../../query/setstatement.md). |
+| `servertimeout` | timespan | Overrides the default request timeout. This option can't be modified as part of a [set statement](../../query/setstatement.md). |
 | `truncation_max_records` | long | Overrides the default maximum number of records a query is allowed to return to the caller (truncation). |
 | `truncation_max_size` | long | Overrides the default maximum data size a query is allowed to return to the caller (truncation). |
-| `validatepermissions` | bool | Validates the user's permissions to perform the query without actually running the query. Possible results for this property are: `OK` (permissions are present and valid), `Incomplete` (validation couldn't be completed due to dynamic schema evaluation), or `KustoRequestDeniedException` (permissions were not set). |
+| `validatepermissions` | bool | Validates the user's permissions to perform the query without actually running the query. Possible results for this property are: `OK` (permissions are present and valid), `Incomplete` (validation couldn't be completed due to dynamic schema evaluation), or `KustoRequestDeniedException` (permissions weren't set). |
 
 ## Query parameters
 
-The [query parameters declaration statement](../../query/queryparametersstatement.md) can be used to declare parameters for a [Kusto Query Language (KQL)](../../query/index.md) query. When using Kusto Data, the `ClientRequestProperties` class contains methods to set, clear, and check the presence of such query parameters.
+The [query parameters declaration statement](../../query/queryparametersstatement.md) can be used to declare parameters for a [Kusto Query Language (KQL)](../../query/index.md) query. In Kusto Data, the `ClientRequestProperties` class contains methods to set, clear, and check the presence of such query parameters.
 
-The set parameter method provides a number of overloads for common data types, such as `string` and `long`. For all other types, express the value as a KQL literal in `string` format, and make sure that the `declare` `query_parameters` statement declares the correct [scalar data type](../../query/scalar-data-types/index.md).
+The set parameter method provides overloads for common data types, such as `string` and `long`. For all other types, express the value as a KQL literal in `string` format, and make sure that the `declare` `query_parameters` statement declares the correct [scalar data type](../../query/scalar-data-types/index.md).
 
 For an example, see [Use query parameters to protect user input](../get-started/app-basic-query.md#use-query-parameters-to-protect-user-input).
 
@@ -95,8 +95,8 @@ The following table describes the named properties available in the `ClientReque
 
 | Property name | Description |
 |--|--|
-| `ClientRequestId` or `client_request_id` (based on language-specific naming conventions)| An ID used to identify the request. This specification is helpful for debugging and may be required for specific scenarios like query cancellation.</br></br>We recommend using the format *ClientApplicationName*`.`*ActivityType*`;`*UniqueId*. If the client doesn't specify a value for this property, a random value is assigned.</br></br>Translates to the `x-ms-client-request-id` [HTTP header](../../api/rest/request.md#request-headers).|
-| `Application` | The name of the client application that makes the request. This value is used for tracing.</br></br>If the client doesn't specify a value for this property, the property is automatically set to the name of the process hosting the Kusto Data library. To specify this property in a [Kusto connection string](../connection-strings/kusto.md), use the `Application Name for Tracing` property.</br></br>Translates to the `x-ms-app` [HTTP header](../../api/rest/request.md#request-headers).|
+| `ClientRequestId` or `client_request_id` (based on language-specific naming conventions)| An ID used to identify the request. This specification is helpful for debugging and may be required for specific scenarios like query cancellation. </br></br>We recommend using the format *ClientApplicationName*`.`*ActivityType*`;`*UniqueId*. If the client doesn't specify a value for this property, a random value is assigned.</br></br>Translates to the `x-ms-client-request-id` [HTTP header](../../api/rest/request.md#request-headers).|
+| `Application` | The name of the client application that makes the request. This value is used for tracing. </br></br>If the client doesn't specify a value for this property, the property is automatically set to the name of the process hosting the Kusto Data library. To specify this property in a [Kusto connection string](../connection-strings/kusto.md), use the `Application Name for Tracing` property.</br></br>Translates to the `x-ms-app` [HTTP header](../../api/rest/request.md#request-headers).|
 | `User` | The identity of the user that makes the request. This value is used for tracing.</br></br>To specify this property in a [Kusto connection string](../connection-strings/kusto.md), use the `User Name for Tracing` property.</br></br>Translates to the `x-ms-user` [HTTP header](../../api/rest/request.md#request-headers).|
 
 > [!CAUTION]
