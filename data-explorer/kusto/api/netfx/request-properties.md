@@ -17,12 +17,12 @@ In the Kusto Data library, the `ClientRequestProperties` class helps manage inte
 
 <!-- The following text can be re-produced by running: Kusto.Cli.exe -focus -execute:"#crp -doc" -->
 
-The following table overviews the supported client request property options.
-
-To configure client request properties, use the "set option" method in the `ClientRequestProperties` class, following language-specific naming conventions, or use a [set statement](../../query/setstatement.md). For more information, see [Customize query behavior with client request properties](../get-started/app-basic-query.md#customize-query-behavior-with-client-request-properties).
+Client request properties allow you to customize the behavior of a request. To configure client request properties, use the "set option" method in the `ClientRequestProperties` class, following language-specific naming conventions, or use a [set statement](../../query/setstatement.md). For more information, see [Customize query behavior with client request properties](../get-started/app-basic-query.md#customize-query-behavior-with-client-request-properties).
 
 > [!NOTE]
 > For HTTP requests directly to the REST API, define client request properties in the `properties` field within the POST request body. For more information, see [Query/management HTTP request](../rest/request.md).
+
+The following table overviews the supported client request property options.
 
 | Property name | Type | Description |
 |--|--|--|
