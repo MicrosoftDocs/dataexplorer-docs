@@ -216,7 +216,7 @@ StormEvents
 
 **Output**
 
-|State|TotalStorms|StormsWithCropDamage|PercentWithCropDamage|
+|State|TotalStormsInState|StormsWithCropDamage|PercentWithCropDamage|
 |--|--|--|--|
 |TEXAS|4701|1205|25.63|
 |IOWA|2337|1062|45.44|

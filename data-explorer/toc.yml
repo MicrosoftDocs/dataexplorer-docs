@@ -349,6 +349,14 @@ items:
             href: python-query-data.md
           - name: Debug Kusto Query Language inline Python
             href: debug-inline-python.md
+      - name: Graph Analysis
+        items:
+          - name: Overview
+            href: graph-overview.md
+          - name: Scenarios
+            href: graph-scenarios.md
+          - name: Best Practices
+            href: graph-best-practices.md
   - name: Visualize data
     items:
       - name: Data visualization overview
@@ -361,6 +369,9 @@ items:
             href: dashboard-parameters.md
           - name: Customize dashboard visuals
             href: dashboard-customize-visuals.md
+          - name: Dashboard-specific visuals
+            displayName: heat map, heatmap, funnel chart
+            href: dashboard-visuals.md
           - name: Visualize sample data dashboards
             href: web-ui-samples-dashboards.md
       - name: Power BI

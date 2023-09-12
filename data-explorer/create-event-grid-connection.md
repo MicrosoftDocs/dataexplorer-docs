@@ -287,24 +287,27 @@ Select the relevant tab based on the type of storage SDK used to upload blobs.
 The following code sample uses the [Azure Blob Storage SDK](https://www.nuget.org/packages/Azure.Storage.Blobs/) to upload a file to Azure Blob Storage. The upload triggers the Event Grid data connection, which ingests the data into Azure Data Explorer.
 
 ```csharp
-var azureStorageAccountConnectionString=<storage_account_connection_string>;
+var azureStorageAccountConnectionString = <storage_account_connection_string>;
 var containerName = <container_name>;
 var blobName = <blob_name>;
 var localFileName = <file_to_upload>;
 var uncompressedSizeInBytes = <uncompressed_size_in_bytes>;
-var mapping = <mappingReference>;
-// Create a new container in your storage account.
-var azureStorageAccount = CloudStorageAccount.Parse(azureStorageAccountConnectionString);
-var blobClient = azureStorageAccount.CreateCloudBlobClient();
-var container = blobClient.GetContainerReference(containerName);
+var mapping = <mapping_reference>;
+// Create a new container if it not already exists.
+var azureStorageAccount = new BlobServiceClient(azureStorageAccountConnectionString);
+var container = azureStorageAccount.GetBlobContainerClient(containerName);
 container.CreateIfNotExists();
-// Set metadata and upload a file to the blob.
-var blob = container.GetBlockBlobReference(blobName);
-blob.Metadata.Add("rawSizeBytes", uncompressedSizeInBytes);
-blob.Metadata.Add("kustoIngestionMappingReference", mapping);
-blob.UploadFromFile(localFileName);
-// Confirm success of the upload by listing the blobs in your container.
-var blobs = container.ListBlobs();
+// Define blob metadata and uploading options.
+IDictionary<String, String> metadata = new Dictionary<string, string>();
+metadata.Add("rawSizeBytes", uncompressedSizeInBytes);
+metadata.Add("kustoIngestionMappingReference", mapping);
+var uploadOptions = new BlobUploadOptions
+{
+    Metadata = metadata,
+};
+// Upload the file.
+var blob = container.GetBlobClient(blobName);
+blob.Upload(localFileName, uploadOptions);
 ```
 
 > [!NOTE]
@@ -336,7 +339,7 @@ var uploadOptions = new DataLakeFileUploadOptions
     Metadata = metadata,
     Close = true // Note: The close option triggers the event being processed by the data connection.
 };
-// Write to the file.
+// Upload the file.
 var dataLakeFileClient = dataLakeFileSystemClient.GetFileClient(fileName);
 dataLakeFileClient.Upload(localFileName, uploadOptions);
 ```
