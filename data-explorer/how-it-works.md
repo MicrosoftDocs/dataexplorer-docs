@@ -3,15 +3,15 @@ title: How Azure Data Explorer works
 description: 'Learn more about how Azure Data Explorer works.'
 ms.reviewer: avnera
 ms.topic: conceptual
-ms.date: 08/28/2023
+ms.date: 09/12/2023
 ---
 # How Azure Data Explorer works
 
-The Azure Data Explorer provides unparalleled performance for ingesting and querying telemetry, logs, and time series data. It features optimized storage formats, indexes, and uses advanced data statistics for efficient query planning and just-in-time compiled query execution.
+Azure Data Explorer provides unparalleled performance for ingesting and querying telemetry, logs, and time series data. It features optimized storage formats, indexes, and uses advanced data statistics for efficient query planning and just-in-time compiled query execution.
 
 ## Storage vs. compute
 
-Azure Data Explorer separates storage and compute resources. Persistent data most commonly resides in Azure Blob Storage, while compute resources may store temporary data or act as a cache for persistent storage.
+Azure Data Explorer separates storage and compute resources. Persistent data resides in Azure Blob Storage, while compute resources may store temporary data or act as a cache for persistent storage.
 
 This separation provides the following advantages:
 
@@ -24,7 +24,7 @@ For more information on SKU optimization, see [Select a SKU for your cluster](ma
 
 ## Data storage
 
-Azure Data Explorer partitions all ingested data into *extents*, or *data shards*, which are horizontal slices of the target table. Each extent usually contains a few million records and is encoded and indexed independently of other extents. This functionality contributes to linear scale in ingestion throughput.
+Azure Data Explorer partitions all ingested data into *extents*, or *data shards*, which are horizontal slices of the target table. An extent can start as small as a single record. As data accumulates in the table, Azure Data Explorer automatically merges extents until they grow to encompass millions of records. Each extent is encoded and indexed independently of other extents. This functionality contributes to linear scale in ingestion throughput.
 
 Extents are spread evenly across cluster nodes, where they're cached both on the local SSD and in memory. This distribution enhances the capacity to prepare and execute highly distributed and parallel queries.
 
@@ -51,7 +51,7 @@ For more information on extent and index merging, see [Merge policy](kusto/manag
 
 Azure Data Explorer maintains data in a compressed state, reducing the amount of memory required to store and process data. This behavior results in faster query performance and more efficient use of system resources.
 
-Azure Data Explorer avoids vertical compression, which involves sorting data before compression, due to its high CPU cost. Instead, you can specify the preferred data sort order for scenarios with dominant query patterns. This trade-off prioritizes quick data availability for queries.
+Azure Data Explorer avoids vertical compression, which involves sorting data to improve compression, due to its high CPU cost. Instead, you can specify the preferred data sort order for scenarios with dominant query patterns. This trade-off prioritizes quick data availability for queries.
 
 For more information on specifying data sort order, see [Row order policy](kusto/management/roworderpolicy.md).
 
@@ -70,5 +70,5 @@ Azure Data Explorer uses distributed data query technology intended for fast ad 
 
 ## Related content
 
-* [White paper](https://azure.microsoft.com/resources/azure-data-explorer/)
+* [White paper](https://aka.ms/adx.techwhitepaper)
 * [Create an Azure Data Explorer cluster and database](create-cluster-and-database.md)
