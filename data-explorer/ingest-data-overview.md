@@ -16,7 +16,7 @@ The diagram below shows the end-to-end flow for working in Azure Data Explorer a
 
 The Azure Data Explorer data management service, which is responsible for data ingestion, implements the following process:
 
-Azure Data Explorer pulls data from an external source and reads requests from a pending Azure queue. Data is batched or streamed to the Data Manager. Batch data flowing to the same database and table is optimized for ingestion throughput. Azure Data Explorer validates initial data and converts data formats where necessary. Further data manipulation includes matching schema, organizing, indexing, encoding, and compressing the data. Data is persisted in storage according to the set retention policy. The Data Manager then commits the data ingest into the engine, where it's available for query.
+Azure Data Explorer can pull data from an external source or read requests from a pending Azure queue that is shared with the clients. Data is batched or streamed by the Data Management service. Batch data flowing to the same database and table is optimized for ingestion throughput. Azure Data Explorer validates initial data and converts data formats where necessary. Further data manipulation includes matching schema, organizing, indexing, encoding, and compressing the data. Data is persisted in storage according to the set retention policy. The Data Management service then triggers the ingest operation on the engine, where it's made available for query.
 
 ## Supported data formats, properties, and permissions
 
@@ -24,9 +24,9 @@ Azure Data Explorer pulls data from an external source and reads requests from a
 
 * **[Ingestion properties](ingestion-properties.md)**: The properties that affect how the data will be ingested (for example, tagging, mapping, creation time).
 
-* **Permissions**: To ingest data, the process requires [database ingestor level permissions](kusto/access-control/role-based-access-control.md). Other actions, such as query, may require database admin, database user, or table admin permissions.
+* **Permissions**: Ingesting data into an existing table without changing its schema requires "Database Ingestor" permissions. Creating a new table requires "Database User" or "Database Admin", and changing the schema of an existing table requires "Table Admin" (inherited by user that created the table) or "Database Admin" permissions. Read more on [ADX role-based permissions model](kusto/access-control/role-based-access-control.md).
 
-## Batching vs streaming ingestion
+## Batching vs streaming ingestion## Batching vs streaming ingestion
 
 * Batching ingestion does data batching and is optimized for high ingestion throughput. This method is the preferred and most performant type of ingestion. Data is batched according to ingestion properties. Small batches of data are then merged, and optimized for fast query results. The [ingestion batching](kusto/management/batchingpolicy.md) policy can be set on databases or tables. By default, the maximum batching value is 5 minutes, 1000 items, or a total size of 1 GB. The data size limit for a batch ingestion command is 6 GB.
 
