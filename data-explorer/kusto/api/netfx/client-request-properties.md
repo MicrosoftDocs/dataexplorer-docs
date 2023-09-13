@@ -9,15 +9,15 @@ ms.date: 09/13/2023
 
 In the Kusto Data library, the `ClientRequestProperties` class helps manage interaction between your client application and the service. This class contains the following information:
 
-* [Query options](#query-options): A mapping of specific options for customizing query behavior.
+* [Request properties](#request-properties): A mapping of specific options for customizing query behavior.
 * [Query parameters](#query-parameters): A mapping of user-declared parameters that allow for secure query customization.
 * [Named properties](#named-properties): Client request ID, application details, and user data, primarily used for debugging and tracing.
 
-## Query options
+## Request properties
 
-Query options allow you to customize the behavior of a specific query. The `ClientRequestProperties` class has various methods for managing query options, such as set option, get option, and has option. The precise method names vary by client library per language-specific naming conventions.
+Request properties allow you to customize the behavior of a specific query. The `ClientRequestProperties` class has various methods for managing request properties, such as set option, get option, and has option. The precise method names vary by client library per language-specific naming conventions.
 
-For a list of available query options, see [Query options](../rest/query-options.md).
+For a list of available request properties, see [Request properties](../rest/request-properties.md).
 
 For example usage, see [Customize query behavior with client request properties](../get-started/app-basic-query.md#customize-query-behavior-with-client-request-properties).
 
@@ -45,4 +45,4 @@ The following table describes the named properties available in the `ClientReque
 ## Related content
 
 * [Create an app to run basic queries](../get-started/app-basic-query.md)
-* [Query options](../rest/query-options.md.md)
+* [Request properties](../rest/request-properties.md.md)

@@ -1,19 +1,19 @@
 ---
-title:  Query options
-description: This article describes query options in Azure Data Explorer.
+title:  Request properties
+description: This article describes request properties in Azure Data Explorer.
 ms.reviewer: orspodek
 ms.topic: reference
 ms.date: 09/13/2023
 ---
-# Query options
+# Request properties
 
-Query options control how a query executes and returns results. 
+Request properties control how a query executes and returns results. 
 
-## Supported query options
+## Supported request properties
 
 <!-- The following text can be re-produced by running: Kusto.Cli.exe -focus -execute:"#crp -doc" -->
 
-The following table overviews the supported query options.
+The following table overviews the supported request properties.
 
 | Property name | Type | Description |
 |--|--|--|
@@ -72,16 +72,16 @@ The following table overviews the supported query options.
 | `truncation_max_size` | long | Overrides the default maximum data size a query is allowed to return to the caller (truncation). |
 | `validatepermissions` | bool | Validates the user's permissions to perform the query without actually running the query. Possible results for this property are: `OK` (permissions are present and valid), `Incomplete` (validation couldn't be completed due to dynamic schema evaluation), or `KustoRequestDeniedException` (permissions weren't set). |
 
-## How to set query options
+## How to set request properties
 
-You can set query options in the following ways:
+You can set request properties in the following ways:
 
 * The POST body of an [HTTP request](./request.md)
 * A Kusto Query Language [set statement](../../query/setstatement.md)
 * The set option method of the [`ClientRequestProperties` class](../netfx/client-request-properties.md)
 
 > [!NOTE]
-> Some query options can't be set with a set statement, such as `servertimeout` and `norequesttimeout`. For more information, see [Set timeout limits](../../../set-timeout-limits.md).
+> Some request properties can't be set with a set statement, such as `servertimeout` and `norequesttimeout`. For more information, see [Set timeout limits](../../../set-timeout-limits.md).
 
 ## Related content
 

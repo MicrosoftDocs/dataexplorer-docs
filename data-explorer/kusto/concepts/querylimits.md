@@ -215,7 +215,7 @@ At other times, you may want to limit the CPU resources used for a particular
 query. If you run a "background job", for example, the system might tolerate higher
 latencies to give concurrent inline queries high priority.
 
-Kusto supports specifying two [query options](../api/rest/query-options.md) when running a query.
+Kusto supports specifying two [request properties](../api/rest/request-properties.md) when running a query.
 The properties are *query_fanout_threads_percent* and *query_fanout_nodes_percent*.
 Both properties are integers that default to the maximum value (100), but may be reduced for a specific query to some other value.
 

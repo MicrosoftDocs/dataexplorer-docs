@@ -66,7 +66,7 @@ or as part of the body, depending on whether GET or POST is used.
 |------------|--------------------------------------------------------------------------------------------|------------------|
 |`csl`       |Text of the query or management command to execute                                             |Required          |
 |`db`        |Name of the database in scope that is the target of the query or management command            |Optional for some management commands. <br>Required for other commands and all queries. </br>                                                                   |
-|`properties`|Provides query options that modify how the request is processed and its results. For more information, see [Query options](../netfx/request-properties.md)                                               | Optional         |
+|`properties`|Provides request properties that modify how the request is processed and its results. For more information, see [Request properties](../netfx/request-properties.md)                                               | Optional         |
 
 ## GET query parameters
 

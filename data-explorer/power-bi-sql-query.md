@@ -39,7 +39,7 @@ You typically use the native query language with Azure Data Explorer, but it als
 
 1. On the **SQL Server database** screen, fill out the form with the following information.
 
-    ![Database, table, query options.](media/power-bi-sql-query/database-table-query.png)
+    ![Database, table, request properties.](media/power-bi-sql-query/database-table-query.png)
 
     **Setting** | **Value** | **Field description**
     |---|---|---|

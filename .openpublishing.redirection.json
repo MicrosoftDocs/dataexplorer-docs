@@ -827,7 +827,7 @@
     },
     {
       "source_path": "data-explorer/kusto/api/netfx/request-properties.md",
-      "redirect_url": "/azure/data-explorer/kusto/api/rest/query-options",
+      "redirect_url": "/azure/data-explorer/kusto/api/rest/request-properties",
       "redirect_document_id": true
     }
   ]
