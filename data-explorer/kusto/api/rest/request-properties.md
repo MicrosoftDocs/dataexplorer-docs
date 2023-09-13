@@ -7,7 +7,7 @@ ms.date: 09/13/2023
 ---
 # Request properties
 
-Request properties control how a query executes and returns results. 
+Request properties control how a query or command executes and returns results. 
 
 ## Supported request properties
 
