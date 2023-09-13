@@ -1,17 +1,17 @@
 ---
-title:  Request properties
-description: This article describes request properties in Azure Data Explorer.
+title:  Query options
+description: This article describes query options in Azure Data Explorer.
 ms.reviewer: orspodek
 ms.topic: reference
 ms.date: 09/13/2023
 ---
-# Client request properties
+# Query options
 
-Client request properties allow you to customize the behavior of a request.
+Query options allow you to customize the behavior of a query.
 
-## Client request property options
+## Supported query options
 
-The following table overviews the supported client request property options.
+The following table overviews the supported query options.
 
 | Property name | Type | Description |
 |--|--|--|
@@ -70,14 +70,17 @@ The following table overviews the supported client request property options.
 | `truncation_max_size` | long | Overrides the default maximum data size a query is allowed to return to the caller (truncation). |
 | `validatepermissions` | bool | Validates the user's permissions to perform the query without actually running the query. Possible results for this property are: `OK` (permissions are present and valid), `Incomplete` (validation couldn't be completed due to dynamic schema evaluation), or `KustoRequestDeniedException` (permissions weren't set). |
 
-## How to set client request properties
+## How to set query options
 
-You can set client request properties in the following ways:
+You can set query options in the following ways:
 
 * A Kusto Query Language [set statement](../../query/setstatement.md)
 * The set option method of the `ClientRequestProperties` class in [Kusto Data](about-kusto-data.md)
 * The POST body of an [HTTP request](../rest/request.md)
 
+> [!NOTE]
+> Some query options can't be set with a set statement, such as `servertimeout` and `norequesttimeout`. For more information, see [Set timeout limits](../../../set-timeout-limits.md).
+
 ## Related content
 
-* [Customize query behavior with client request properties](../get-started/app-basic-query.md#customize-query-behavior-with-client-request-properties)
+* [Customize query behavior with query options](../get-started/app-basic-query.md#customize-query-behavior-with-client-request-properties)
