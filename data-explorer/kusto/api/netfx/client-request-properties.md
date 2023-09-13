@@ -45,4 +45,4 @@ The following table describes the named properties available in the `ClientReque
 ## Related content
 
 * [Create an app to run basic queries](../get-started/app-basic-query.md)
-* [Request properties](../rest/request-properties.md.md)
+* [Request properties](../rest/request-properties.md)
