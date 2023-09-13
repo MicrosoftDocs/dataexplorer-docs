@@ -78,7 +78,7 @@ You can set query options in the following ways:
 
 * The POST body of an [HTTP request](./request.md)
 * A Kusto Query Language [set statement](../../query/setstatement.md)
-* The set option method of the `ClientRequestProperties` class in [Kusto Data](../netfx/about-kusto-data.md)
+* The set option method of the [`ClientRequestProperties` class](../netfx/client-request-properties.md)
 
 > [!NOTE]
 > Some query options can't be set with a set statement, such as `servertimeout` and `norequesttimeout`. For more information, see [Set timeout limits](../../../set-timeout-limits.md).
