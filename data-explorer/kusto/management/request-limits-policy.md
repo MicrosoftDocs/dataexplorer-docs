@@ -14,7 +14,7 @@ A workload group's request limits policy allows limiting the resources used by t
 Each limit consists of:
 
 * A typed `Value` - the value of the limit.
-* `IsRelaxable` - a boolean value that defines if the limit can be relaxed by the caller, as part of the request's [Client request properties](../api/netfx/request-properties.md).
+* `IsRelaxable` - a boolean value that defines if the limit can be relaxed by the caller, as part of the request's [query options](../api/rest/query-options.md).
 
 The following limits are configurable:
 
