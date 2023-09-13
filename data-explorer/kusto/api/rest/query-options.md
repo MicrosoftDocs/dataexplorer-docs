@@ -11,6 +11,8 @@ Query options allow you to customize the behavior of a query.
 
 ## Supported query options
 
+<!-- The following text can be re-produced by running: Kusto.Cli.exe -focus -execute:"#crp -doc" -->
+
 The following table overviews the supported query options.
 
 | Property name | Type | Description |

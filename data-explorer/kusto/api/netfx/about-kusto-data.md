@@ -38,7 +38,7 @@ To connect to your cluster, Kusto Data provides a Kusto client object. This obje
 
 ## Run queries and commands
 
-Run [Kusto Query Language (KQL)](../../query/index.md) queries, [T-SQL](../../../t-sql.md) queries, or [management commands](../../management/index.md) by passing the query or command as a string to the relevant Kusto client provider. In response, you'll receive one or more tables containing the results of the query or command. You can customize query behavior by configuring [client request properties](request-properties.md).
+Run [Kusto Query Language (KQL)](../../query/index.md) queries, [T-SQL](../../../t-sql.md) queries, or [management commands](../../management/index.md) by passing the query or command as a string to the relevant Kusto client provider. In response, you'll receive one or more tables containing the results of the query or command.
 
 ## Related content
 
