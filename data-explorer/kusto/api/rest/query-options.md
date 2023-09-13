@@ -7,7 +7,7 @@ ms.date: 09/13/2023
 ---
 # Query options
 
-Query options allow you to customize the behavior of a query.
+Query options control how a query executes and returns results. 
 
 ## Supported query options
 
