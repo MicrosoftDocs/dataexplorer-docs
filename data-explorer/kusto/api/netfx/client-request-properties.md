@@ -9,7 +9,7 @@ ms.date: 09/13/2023
 
 In the Kusto Data library, the `ClientRequestProperties` class helps manage interaction between your client application and the service. This class contains the following information:
 
-* [Request properties](#request-properties): A mapping of specific options for customizing query behavior.
+* [Request properties](#request-properties): A mapping of specific options for customizing request behavior.
 * [Query parameters](#query-parameters): A mapping of user-declared parameters that allow for secure query customization.
 * [Named properties](#named-properties): Client request ID, application details, and user data, primarily used for debugging and tracing.
 
