@@ -85,4 +85,4 @@ You can set query options in the following ways:
 
 ## Related content
 
-* [Customize query behavior with query options](../get-started/app-basic-query.md#customize-query-behavior-with-client-request-properties)
+* [Customize query behavior with client request properties](../get-started/app-basic-query.md#customize-query-behavior-with-client-request-properties)

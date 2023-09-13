@@ -19,7 +19,7 @@ Query options allow you to customize the behavior of a specific query. The `Clie
 
 For a list of available query options, see [Query options](../rest/query-options.md).
 
-For example usage, see [Customize query behavior with query options](../get-started/app-basic-query.md#customize-query-behavior-with-client-request-properties).
+For example usage, see [Customize query behavior with client request properties](../get-started/app-basic-query.md#customize-query-behavior-with-client-request-properties).
 
 ## Query parameters
 
