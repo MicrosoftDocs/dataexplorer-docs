@@ -20,7 +20,7 @@ Add the following code to your website:
 
 ```html
 <iframe
-  src="https://dataexplorer.azure.com/?f-IFrameAuth=true&f-UseMeControl=false&workapce=<guid>"
+  src="https://dataexplorer.azure.com/?f-IFrameAuth=true&f-UseMeControl=false&workspace=<guid>"
 ></iframe>
 ```
 

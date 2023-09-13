@@ -16,15 +16,20 @@ The diagram below shows the end-to-end flow for working in Azure Data Explorer a
 
 The Azure Data Explorer data management service, which is responsible for data ingestion, implements the following process:
 
-Azure Data Explorer pulls data from an external source and reads requests from a pending Azure queue. Data is batched or streamed to the Data Manager. Batch data flowing to the same database and table is optimized for ingestion throughput. Azure Data Explorer validates initial data and converts data formats where necessary. Further data manipulation includes matching schema, organizing, indexing, encoding, and compressing the data. Data is persisted in storage according to the set retention policy. The Data Manager then commits the data ingest into the engine, where it's available for query.
+Azure Data Explorer can pull data from an external source or read requests from a pending Azure queue that is shared with clients. Data is batched or streamed by the Data Management service. Batch data flowing to the same database and table is optimized for ingestion throughput. Azure Data Explorer validates initial data and converts data formats where necessary. Further data manipulation includes matching schema, organizing, indexing, encoding, and compressing the data. Data is persisted in storage according to the set retention policy. The Data Management service then triggers the ingest operation in Azure Data Explorer, where it's made available for query.
 
 ## Supported data formats, properties, and permissions
 
-* **[Supported data formats](ingestion-supported-formats.md)**: The data formats that Azure Data Explorer can understand and ingest natively (for example Parquet, JSON)
+* **[Supported data formats](ingestion-supported-formats.md)**: The data formats that Azure Data Explorer can understand and ingest natively, such as Parquet and JSON.
 
-* **[Ingestion properties](ingestion-properties.md)**: The properties that affect how the data will be ingested (for example, tagging, mapping, creation time).
+* **[Ingestion properties](ingestion-properties.md)**: The properties that affect how the data is ingested, such as tagging, mapping, and creation time.
 
-* **Permissions**: To ingest data, the process requires [database ingestor level permissions](kusto/access-control/role-based-access-control.md). Other actions, such as query, may require database admin, database user, or table admin permissions.
+* **Permissions**: * **Permissions**: The permissions required to access resources used in commands and processes, including the following:
+    * To ingest data into an existing table without changing its schema requires *Database Ingestor* permissions.
+    * To create a new table requires *Database User* or *Database Admin* permissions.
+    * To change the schema of an existing table requires *Table Admin*, inherited by the user that created the table, or *Database Admin* permissions.
+
+    For more information, see [Kusto role-based access control](kusto/access-control/role-based-access-control.md).
 
 ## Batching vs streaming ingestion
 
