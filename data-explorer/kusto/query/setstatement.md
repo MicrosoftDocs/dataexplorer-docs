@@ -1,6 +1,6 @@
 ---
 title:  Set statement
-description: Learn how to use the set statement to set a query option for the duration of the query.
+description: Learn how to use the set statement to set a request property for the duration of the query.
 ms.reviewer: alexans
 ms.topic: reference
 ms.date: 09/13/2023
@@ -11,7 +11,7 @@ zone_pivot_groups: kql-flavors-all
 
 ::: zone pivot="azuredataexplorer, fabric"
 
-The `set` statement is used to set a [query option](../api/rest/request-properties.md) for the duration of the query.
+The `set` statement is used to set a [request property](../api/rest/request-properties.md) for the duration of the query.
 
 Request properties control how a query executes and returns results. They can be boolean flags, which are `false` by default, or have an integer value. A query may contain zero, one, or more set statements. Set statements affect only the tabular expression statements that trail them in the program order. Any two statements must be separated by a semicolon.
   
@@ -29,8 +29,8 @@ If using a [Kusto client library](../api/client-libraries.md), request propertie
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-| *OptionName* | string | &check; | The name of the query option.|
-| *OptionValue* | | &check; | The value of the query option.|
+| *OptionName* | string | &check; | The name of the request property.|
+| *OptionValue* | | &check; | The value of the request property.|
 
 ## Example
 
