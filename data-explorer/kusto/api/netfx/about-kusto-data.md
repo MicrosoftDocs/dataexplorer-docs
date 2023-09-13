@@ -45,4 +45,4 @@ You can also run [management commands](../../management/index.md). These command
 ## Related content
 
 * [Kusto Data best practices](kusto-data-best-practices.md)
-* [Client request properties](client-request-properties.md)
+* [ClientRequestProperties class](client-request-properties.md)
