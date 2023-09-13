@@ -507,14 +507,6 @@ items:
         items:
           - name: Client libraries
             href: kusto/api/client-libraries.md
-          - name: Kusto Ingest library
-            items:
-              - name: Kusto Ingest overview
-                href: kusto/api/netfx/about-kusto-ingest.md
-                displayName: kusto.ingest, SDK
-              - name: Kusto Ingest best practices
-                href: kusto/api/netfx/kusto-ingest-best-practices.md
-                displayName: kusto.ingest, SDK
           - name: Kusto Data library
             items:
               - name: Kusto Data overview
@@ -526,6 +518,14 @@ items:
               - name: ClientRequestProperties class
                 href: kusto/api/netfx/client-request-properties.md
                 displayName: request properties, CRP, kusto.data, SDK
+          - name: Kusto Ingest library
+            items:
+              - name: Kusto Ingest overview
+                href: kusto/api/netfx/about-kusto-ingest.md
+                displayName: kusto.ingest, SDK
+              - name: Kusto Ingest best practices
+                href: kusto/api/netfx/kusto-ingest-best-practices.md
+                displayName: kusto.ingest, SDK
       - name: Sample app generator
         href: sample-app-generator-wizard.md
       - name: Write code with SDKs
