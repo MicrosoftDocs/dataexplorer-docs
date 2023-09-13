@@ -11,6 +11,9 @@ items:
         href: rest/response.md
       - name: Query v2 HTTP response
         href: rest/response2.md
+      - name: Query options
+        href: rest/query-options.md
+        displayName: request properties, CRPs, clientrequestproperties
       - name: UI (Deep Links)
         href: rest/deeplink.md
       - name: Streaming ingest
