@@ -18,16 +18,15 @@ By default, the creation time for extents is set to the time when the data is in
 
 :::image type="content" source="media/ingest-data-historical/historical-data-expected-vs-actual.png" alt-text="Diagram showing the expected versus actual result of ingesting historical data using the default creation time.":::
 
-///*** NOTES
-1. Best method is to use creationTime ingestion property. For ADLS, needs container to use pattern. See below.
-1. If not, can use ingestion time, use partioning to get the same effect.
+In this article, you learn how to partition historical data:
 
+- Using the *CreationTime* ingestion property during ingestion (recommended)
 
-To avoid this, you can use the [creationTime ingestion property](ingestion-properties.md#ingestion-properties) to set the creation time of the extents to the time of the data. This way, the data is ingested into the table with the correct creation time, and the cache and retention periods are applied correctly.
+    Where possible, ingest historical data using the [creationTime ingestion property](ingestion-properties.md#ingestion-properties), which allows you to set the creation time of the extents by extracting it from the file or blob path. If required, we recommend that you restructure your file or blob path to reflect the creation time. By using this method, the data is ingested into the table with the correct creation time, and the cache and retention periods are applied correctly.
 
-In this article, you learn:
+- Using a partitioning policy post ingestion
 
-- How to ingest historical data into Azure Data Explorer using the LightIngest tool, a command-line utility for ad hoc data ingestion into Azure Data Explorer. To learn more about LightIngest, see [Use LightIngest to ingest data into Azure Data Explorer](lightingest.md).
+    If you can't use the creationTime ingestion property, for example if you're [ingesting data using the Azure Cosmos DB connector](ingest-data-cosmos-db-connection.md) where you can't control the creation time, you can repartition the table post ingestion to achieve the same effect using the [partitioning policy](kusto/management/partitioningpolicy.md). However, this method may require some trial and error to optimize policy properties and is less efficient than using the creationTime ingestion property. We only recommended this method when using the creationTime ingestion property is not possible.
 
 ## Prerequisites
 
@@ -38,31 +37,31 @@ In this article, you learn:
 
 ## Before you begin
 
-When ingesting historical data, you may want to consider the following:
+///*** NOTES
+1. Is this section needed? If so, what should it contain?
+1. Use tab for autogenerate LightIngest command - Existing content // [LightIngest tool](lightingest.md)
+1. Use tab for Prepare/Evaluate partitioning policies - VPs guide
 
+When ingesting historical data, you may want to consider the following:
 
 LightIngest can be particularly useful to load historical data from an existing storage system to Azure Data Explorer. While you can build your own command using the list of [Command-line arguments](lightingest.md#command-line-arguments), this article shows you how to auto-generate this command through an ingestion wizard. In addition to creating the command, you can use this process to create a new table, and create schema mapping. This tool infers schema mapping from your dataset.
 
-This article shows you how to create a new table, create schema mapping, and generate a LightIngest command for one-time ingestion using the LightIngest tool. 
+This article shows you how to create a new table, create schema mapping, and generate a LightIngest command for one-time ingestion using the LightIngest tool.
 
 >[!NOTE]
 > This process must be performed in the ingestion wizard, and is not available in the new **Get data** experience.
 
-## Access the wizard
+### [During ingestion](#tab/during-ingestion)
 
-To access the wizard:
+1. In the Azure Data Explorer web UI, from the left menu, select **Query**.
 
-1. From the left menu, select **Query**.
+1. Right-click on the database where you want to ingest the data, and then select **Get data**.
 
-1. Right-click on the database where you want to ingest the data. Select **Get data**.
+    :::image type="content" source="media/ingest-data-wizard/ingest-data-from-query-page.png" alt-text="Screenshot of selection of the ingestion wizard in the Azure Data Explorer web UI.":::
 
-  :::image type="content" source="media/ingest-data-wizard/ingest-data-from-query-page.png" alt-text="Screenshot of selection of the ingestion wizard in the Azure Data Explorer web UI.":::
+    In the **Ingest data** window, the **Destination** tab is selected. The **Cluster** and **Database** fields are automatically populated.
 
-In the **Ingest data** window, the **Destination** tab is selected. The **Cluster** and **Database** fields are automatically populated.
-
-## Destination tab
-
-1. In **Table**, check either **Existing table** or **New table**. When creating a new table, enter a name for the new table. You can use alphanumeric, hyphens, and underscores. Special characters aren't supported.
+1. On the **Destination** tab, under **Table**, select either **Existing table** or **New table**. When creating a new table, enter a name for the new table. You can use alphanumeric, hyphens, and underscores. Special characters aren't supported.
 
     > [!NOTE]
     > Table names must be between 1 and 1024 characters.
@@ -71,26 +70,22 @@ In the **Ingest data** window, the **Destination** tab is selected. The **Cluste
 
 1. Select **Next: Source**
 
-## Source tab
+1. On the **Source** tab, under **Source type**, select **Blob container** to ingest data from a blob or ADLS Gen2 container.
 
-:::image type="content" source="media/ingest-data-historical/source-tab-lightingest.png" alt-text="Screenshot of Source tab in Ingest new table window. ":::
+    :::image type="content" source="media/ingest-data-historical/source-tab-lightingest.png" alt-text="Screenshot of Source tab in Ingest new table window. ":::
 
-  1. Under **Source type**, select **Blob container** (blob container, ADLS Gen2 container).
-  1. Select **Ingestion type**>**Historical data**.
-  1. You can either **Add URL** manually by copying the Account Key/SAS URL to source, or **Select container** from your storage account.
-      > [!NOTE]
-      > The SAS URL can be created [manually](/azure/vs-azure-tools-storage-explorer-blobs#get-the-sas-for-a-blob-container) or [automatically](kusto/api/connection-strings/storage-connection-strings.md).
-  1. When selecting from your storage account, select your **Storage subscription**, **Storage account**, and **Container** from the dropdown menus.
+1. Select **Ingestion type** > **Historical data**.
+1. Under **Select source**, select either **Add URL** or **Select container**.
+    - When adding a URL, under **Link to source**, specify the account key or SAS URL to a container. You create the SAS URL [manually](/azure/vs-azure-tools-storage-explorer-blobs#get-the-sas-for-a-blob-container) or [automatically](kusto/api/connection-strings/generate-sas-token.md).
+    - When selecting a container from your storage account, select your **Storage subscription**, **Storage account**, and **Container** from the dropdown menus.
 
-:::image type="content" source="media/ingest-data-historical/source-tab-container-from-subscription.png" alt-text="Screenshot of dialog box for selecting container from storage subscription and account.":::
+        :::image type="content" source="media/ingest-data-historical/source-tab-container-from-subscription.png" alt-text="Screenshot of dialog box for selecting container from storage subscription and account.":::
 
-## Advanced settings
-
-1. To define additional settings for the ingestion process using LightIngest, select **Advanced settings**.
+1. Select **Advanced settings** to define additional settings for the ingestion process using LightIngest.
 
     :::image type="content" source="media/ingest-data-historical/source-tab-advanced-settings.png" alt-text="Screenshot of selecting advanced settings for the ingestion processing involving the tool LightIngest.":::
 
-1. In the **Advanced configuration** panel, define the following settings:
+1. In the **Advanced configuration** panel, define the following settings, and then select **Done** to return to the **Source** tab.
 
     :::image type="content" source="media/ingest-data-historical/advanced-configuration-dialog.png" alt-text="Screenshot of setting advanced options for the ingestion processing involving the tool LightIngest.":::
 
@@ -103,58 +98,49 @@ In the **Ingest data** window, the **Destination** tab is selected. The **Cluste
     | Don't wait for ingestion to complete | If set, queues the blobs for ingestion without monitoring the ingestion process. If not set, LightIngest continues to poll the ingestion status until ingestion is complete.|
     | Display only selected items| List the files in the container, but doesn't ingest them.  |
 
-1. Enter values for relevant fields and select **Done** to return to the **Source** tab.
+1. Optionally, select **File Filters** to filter the data to ingest only files in a specific folder path or with a particular file extension.
 
-## Filter data
+    :::image type="content" source="media/ingest-data-historical/filter-data-lightingest.png" alt-text="Screenshot of filtering data in the source tab of the Ingest new data screen.":::
 
-If you want to, filter the data to ingest only files in a specific folder path or with a particular file extension.
+    By default, one of th files in the container is randomly selected and used to generated the schema for the table. Optionally, under **Schema defining file**, you can specify the file to use.
 
-:::image type="content" source="media/ingest-data-historical/filter-data-lightingest.png" alt-text="Screenshot of filtering data in the source tab of the Ingest new data screen.":::
+1. Select **Next: Schema** to view and edit your table column configuration.
 
-The system will select one of the files at random and the schema will be generated based on that  **Schema defining file**. You can select a different file.
+1. On the **Schema** tab, do the following:
 
-Select **Next: Schema** to view and edit your table column configuration.
-
-## Edit the schema
-
-In the **Schema** tab:
-
-1. By looking at the name of the source, the service automatically identifies if it's compressed or not. Confirm that the **Compression type** is correct.
-1. Confirm the format selected in **Data format**:
-
-     In this case, the data format is **CSV**
-
-1. On tabular data, you can select the check box **Ignore the first record** to ignore the heading row of the file.
-1. In the **Mapping name** field, enter a mapping name. You can use alphanumeric characters and underscores. Spaces, special characters, and hyphens aren't supported.
+    1. In **Compression type**, confirm that the derived from the schema defining source file is correct.
+    1. Under **Data format**, verify that:
+        - The file format is correct. If not, select the correct format from the dropdown menu.
+        - The **ignore the first record** check box is selected if the file has a header row.
+    1. In **Mapping name**, optionally specify a mapping name. You can use alphanumeric characters and underscores. Spaces, special characters, and hyphens aren't supported.
 
     When using an existing table, you can **Keep current table schema** if the table schema matches the selected format.
 
-:::image type="content" source="media/ingest-data-historical/schema-tab-lightingest.png" alt-text="Screenshot of the schema tab in the Ingest new data dialog in Azure Data Explorer web UI.":::
+    :::image type="content" source="media/ingest-data-historical/schema-tab-lightingest.png" alt-text="Screenshot of the schema tab in the Ingest new data dialog in Azure Data Explorer web UI.":::
 
-### Edit the table
-
-When ingesting to a new table, alter various aspects of the table when creating the table.
+1. Under **Partial data preview**, review the data preview. If the data preview is incorrect, use the column dropdown menus to alter various aspects of the table.
 
 [!INCLUDE [data-explorer-ingestion-wizard-column-table](includes/data-explorer-ingestion-wizard-column-table.md)]
 
 > [!NOTE]
 > For tabular formats, you can't map a column twice. To map to an existing column, first delete the new column.
 
-Select **Next: Start Ingestion** to generate the LightIngest command.
+1. Select **Next: Start Ingestion** to generate the LightIngest command.
 
-## Generate the LightIngest command
+1. On the **Data ingestion completed** page, once the table, mapping, and LightIngest command are marked with green check marks, select the **copy** icon on the top-right of the **Generated command** box to copy the generated LightIngest command.
 
-In the **Data ingestion completed** window, all three steps will be marked with green check marks.
+    :::image type="content" source="media/ingest-data-historical/summary-tab-copy-command.png" alt-text="Screenshot of Summary tab with command generated. You can copy the command using the copy icon above the generated command box." lightbox="media/ingest-data-historical/summary-tab-copy-command.png":::
 
-Copy the generated LightIngest command by clicking on the **copy** icon to the top right of the command box.
+    > [!NOTE]
+    > If required, you can download the LightIngest tool by selecting **Download LightIngest**.
 
-In the tiles below the ingestion progress, you can download the LightIngest tool.
+1. To complete the ingestion process, you must [run LightIngest](lightingest.md#run-lightingest) using this copied command.
 
-:::image type="content" source="media/ingest-data-historical/summary-tab-copy-command.png" alt-text="Screenshot of Summary tab with command generated. You can copy the command using the copy icon above the generated command box." lightbox="media/ingest-data-historical/summary-tab-copy-command.png":::
+### [Post ingestion](#tab/post-ingestion)
 
-To complete the ingestion process, you must [run LightIngest](lightingest.md#run-lightingest) using this copied command.
+---
 
-## Next steps
+## Next step
 
-* [Run LightIngest](lightingest.md#run-lightingest)
-* [Query data in Azure Data Explorer](web-query-data.md)
+> [!div class="nextstepaction"]
+> [Query data in Azure Data Explorer](web-query-data.md)
