@@ -727,37 +727,6 @@ topic-based competence. msg systems ag forms the core of the company group.
 - [msg systems ag website](https://www.msg.group)
 - [Microsoft partner site for msg systems ag](https://appsource.microsoft.com/marketplace/partner-dir/79513a1c-cd75-4d99-afa8-495af5f574c7)
 
-## Neal Analytics
-
-:::image type="icon" source="media/findmypartner/neal-analytics-logo.png":::
-
-Neal Analytics is an award-winning Data & AI consulting partner of Microsoft. With six different advanced specializations in Azure & four Partner of the Year awards & finalist finishes, Neal has a proven track record of success you can trust for all your Azure deployment needs.
-
-Neal has worked extensively with Azure Data Explorer and maintains a trained bench of consultants who can leverage this expertise to assist you in your customer scenario. Neal is also a partner in Microsoft’s Solution Assessment program, and if your organization qualifies this program will assist us in standing up a landing zone featuring Azure Data Explorer to help you get started with your ADX project.
-
-**Partner type**
-
-- System Integrator
-- ISV
-
-**Focus geography**
-
-- US
-- Canada
-- LATAM
-- EMEA
-- Middle East
-- APAC
-
-**Contact**
-
-- [Davidb@nealanalytics.com](mailto:Davidb@nealanalytics.com)
-
-**Additional information**
-
-- [Neal Analytics website](https://nealanalytics.com/)
-- [Microsoft partner site for Neal Analytics](https://appsource.microsoft.com/marketplace/partner-dir/4fd354cb-e69d-49f6-b954-daf93d5cef95/overview)
-
 ## Niels Berglund
 
 :::image type="icon" source="media/findmypartner/no-logo.png":::
