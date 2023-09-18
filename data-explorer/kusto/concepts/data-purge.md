@@ -92,7 +92,7 @@ Purge command may be invoked in two ways for differing usage scenarios:
   **Syntax**
 
   ```kusto
-  // Connect to the Data Management service
+  // Connect to the Data Management service - this command only works in Kusto.Explorer
   #connect "https://ingest-[YourClusterName].[region].kusto.windows.net"
 
   // To purge table records
@@ -147,7 +147,7 @@ To purge a materialized view, replace the `table` keyword with `materialized-vie
 To start purge in a two-step activation scenario, run step #1 of the command:
 
  ```kusto
-    // Connect to the Data Management service
+    // Connect to the Data Management service - this command only works in Kusto.Explorer
     #connect "https://ingest-[YourClusterName].[region].kusto.windows.net"
 
     .purge table MyTable records in database MyDatabase <| where CustomerId in ('X', 'Y')
@@ -186,7 +186,7 @@ To complete a purge in a two-step activation scenario, use the verification toke
 To trigger a purge in a single-step activation scenario, run the following command:
 
 ```kusto
-// Connect to the Data Management service
+// Connect to the Data Management service - this command only works in Kusto.Explorer
  #connect "https://ingest-[YourClusterName].[region].kusto.windows.net"
 
 .purge table MyTable records in database MyDatabase with (noregrets='true') <| where CustomerId in ('X', 'Y')
@@ -332,7 +332,7 @@ Similar to '[.purge table records ](#purge-table-tablename-records-command)' com
      **Syntax**
 
      ```kusto
-     // Connect to the Data Management service
+     // Connect to the Data Management service - this command only works in Kusto.Explorer
      #connect "https://ingest-[YourClusterName].[Region].kusto.windows.net"
 
      .purge table [TableName] in database [DatabaseName] allrecords with (noregrets='true')
@@ -344,7 +344,7 @@ Similar to '[.purge table records ](#purge-table-tablename-records-command)' com
 
      ```kusto
 
-     // Connect to the Data Management service
+     // Connect to the Data Management service - this command only works in Kusto.Explorer
      #connect "https://ingest-[YourClusterName].[Region].kusto.windows.net"
 
      // Step #1 - retrieve a verification token (the table will not be purged until step #2 is executed)
@@ -367,7 +367,7 @@ Similar to '[.purge table records ](#purge-table-tablename-records-command)' com
 1. To start purge in a two-step activation scenario, run step #1 of the command:
 
     ```kusto
-    // Connect to the Data Management service
+    // Connect to the Data Management service - this command only works in Kusto.Explorer
      #connect "https://ingest-[YourClusterName].[Region].kusto.windows.net"
 
     .purge table MyTable in database MyDatabase allrecords
@@ -399,7 +399,7 @@ Similar to '[.purge table records ](#purge-table-tablename-records-command)' com
 To trigger a purge in a single-step activation scenario, run the following command:
 
 ```kusto
-// Connect to the Data Management service
+// Connect to the Data Management service - this command only works in Kusto.Explorer
 #connect "https://ingest-[YourClusterName].[Region].kusto.windows.net"
 
 .purge table MyTable in database MyDatabase allrecords with (noregrets='true')
