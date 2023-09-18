@@ -59,28 +59,38 @@ The following example builds a graph from edges and nodes tables, the nodes repr
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA42SUWvCMBDH3wW/w9EnBSs4H4YOBTf2OBhssAeREdujzWwTSc6JsA+/SxrTVvYwSkvS/+Xufv9chQRK52hhBbkgfvYVjpSocWnJSFVMgC7HdiMKXFZaFWMYDrb8QrKpZIbJBJJXNFYrXt3NJ+ClR73vCfNZEJ6/+ydm90F4EVWlzaWfbhHEd4OKnPR2sYQ1rxYLFnYP/KmYA/PihsPqk8na5hmTpBIktYr/3KHPDuIfYAEj03V9UjIThPZDUpmEtmJc7I/MyZJN+i5EtRSW2WpprfR8XUdiLkEkskPM0fHlHyGh4jUAriY1Bg0HP1CLA6aFEccSGo8gTdddf+DMhGEyeOcGwh/0Z9JaUFbCqG5KjtNtKLVL1yO26Wg042HOQg/WyeRscCbDuUSDEHJMfYXVquUAoXLw0a3WeOiVUHEa788HRGQX0qt9E9i/BNcON/2FGcHGp0DDg9TtbQJPLRhrHcygN1PJUtv0L6phv3BeAwAA" target="_blank">Run the query</a>
 
 ```kusto
-let nodes = datatable(name:string, type:string, age:long) 
+let ObjectDetails = datatable(ObjName:string, ObjType:string, ObjAge:long) 
 [ 
   "Alice", "Person", 23,  
   "Bob", "Person", 31,  
+  "Charlie", "Person", 32,  
   "Eve", "Person", 17,  
   "Mallory", "Person", 29,  
-  "Trent", "System", 99 
+  "WebApp01", "System", 99,
+  "WebApp02", "System", 99
 ]; 
-let edges = datatable(source:string, destination:string, edge_type:string) 
+let Paths = datatable(SourceUser:string, DestUser:string, Relationship:string) 
 [ 
   "Alice", "Bob", "communicatesWith",  
-  "Alice", "Trent", "trusts",  
-  "Bob", "Trent", "hasPermission",  
+  "Alice", "WebApp01", "trusts",  
+  "Bob", "WebApp01", "hasPermission",  
   "Eve", "Alice", "attacks",  
   "Mallory", "Alice", "attacks",  
   "Mallory", "Bob", "attacks"  
-]; 
-edges 
-| make-graph source --> destination with nodes on name 
-| graph-match (mallory)-[attacks]->(compromised)-[hasPermission]->(trent) 
-  where mallory.name == "Mallory" and trent.name == "Trent" and attacks.edge_type == "attacks" and hasPermission.edge_type == "hasPermission" 
-  project Attacker = mallory.name, Compromised = compromised.name, System = trent.name
+];
+//
+Paths 
+| make-graph SourceUser --> DestUser with ObjectDetails on ObjName 
+| graph-match (graph_sourceuser)-[graph_Relationship1]->(graph_TargetObject1)-[graph_Relationship2]->(graph_TargetObject2) 
+  where graph_sourceuser.ObjName    == "Mallory" 
+    and graph_TargetObject2.ObjName == "WebApp01" 
+    //and graph_Relationship1.Relationship == "attacks" 
+    //and graph_Relationship2.Relationship == "hasPermission" 
+  project Attacker = graph_sourceuser.ObjName, 
+          UsedMethod1 = graph_Relationship1.Relationship, 
+          Compromised = graph_TargetObject1.ObjName, 
+          UsedMethod2 = graph_Relationship2.Relationship, 
+          TargetSystem = graph_TargetObject2.ObjName
 ```
 
 **Output**
