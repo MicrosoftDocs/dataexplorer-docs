@@ -230,6 +230,15 @@ You can update an existing dashboard, or restore a previous version, as follows:
 
 ## Enable auto refresh
 
+Auto refresh is a feature that allows you to automatically update the data on a dashboard without manually reloading the page or clicking a refresh button.
+
+The default auto refresh rate can be set by a database editor. Both editors and viewers can change the actual rate of auto refresh. 
+
+:::image type="content" source="media/adx-dashboards/auto-refresh-times.png" alt-text="Screenshot of the different time intervals available in auto refresh in dashboards.":::
+
+However, database editors may want to limit the minimum refresh rate so as to reduce the cluster load. When the minimum refresh rate is set, database users can't set a refresh rate lower than the set rate.
+
+
 1. Select the **More menu [...]** > **Auto refresh**.
 
     :::image type="content" source="media/adx-dashboards/auto-refresh.png" alt-text="Select auto refresh.":::
