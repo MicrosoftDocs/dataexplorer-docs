@@ -51,7 +51,7 @@ All properties are optional.
 
 ## Examples
 
-### 
+### Dates of storms by state
 
 ```kusto
 StormEvents
@@ -60,9 +60,9 @@ StormEvents
 | render ladderchart
 ```
 
-:::image type="content" source="" alt-text="Screenshot of ladderchart." lightbox="":::
+:::image type="content" source="images/visualization-ladderchart/ladderchart-state.png" alt-text="Screenshot of ladderchart showing dates of storms by state." lightbox="images/visualization-ladderchart/ladderchart-state.png":::
 
-###
+### Dates of storms by event type
 
 ```kusto
 StormEvents
@@ -71,9 +71,9 @@ StormEvents
 | render ladderchart
 ```
 
-:::image type="content" source="" alt-text="Screenshot of ladderchart." lightbox="":::
+:::image type="content" source="images/visualization-ladderchart/ladderchart-event-type.png" alt-text="Screenshot of ladderchart showing dates of storms by event type." lightbox="images/visualization-ladderchart/ladderchart-event-type.png":::
 
-###
+### Dates of storms by state and event type
 
 ```kusto
 StormEvents
@@ -82,7 +82,7 @@ StormEvents
 | render ladderchart with (series=State, EventType)
 ```
 
-:::image type="content" source="" alt-text="Screenshot of ladderchart." lightbox="":::
+:::image type="content" source="images/visualization-ladderchart/ladderchart-state-and-event-type.png" alt-text="Screenshot of ladderchart showing dates of storms by state and event type." lightbox="images/visualization-ladderchart/ladderchart-state-and-event-type.png":::
 
 ::: zone-end
 
