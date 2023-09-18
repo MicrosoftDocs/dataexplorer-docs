@@ -3,7 +3,7 @@ title:  Request properties
 description: This article describes request properties in Azure Data Explorer.
 ms.reviewer: orspodek
 ms.topic: reference
-ms.date: 09/13/2023
+ms.date: 09/18/2023
 ---
 # Request properties
 
@@ -42,7 +42,7 @@ The following table overviews the supported request properties.
 | `query_fanout_threads_percent` | int | Specifies the percentage of threads for executing fan-out. |
 | `query_force_row_level_security` | bool | If set to `true`, enforces [row level security](../../management/rowlevelsecuritypolicy.md) rules, even if the policy is disabled. |
 | `query_language` | string | Determines how the query text should be interpreted. Supported values are `csl`, `kql`, or `sql`. |
-| `query_log_query_parameters` | bool | Enables logging of the query parameters for later viewing in the `.show` `queries` journal. |
+| `query_log_query_parameters` | bool | Enables logging of the query parameters for later viewing in the [.show queries](../../management/queries.md) journal. |
 | `query_max_entities_in_union` | long | Overrides the default maximum number of columns a query is allowed to produce. |
 | `query_now` | datetime | Overrides the datetime value returned by the [now()](../../query/nowfunction.md) function. |
 | `query_python_debug` | bool or int |  If set to `true`, generates a Python debug query for the enumerated Python node.|
@@ -55,7 +55,7 @@ The following table overviews the supported request properties.
 | `query_take_max_records` | long | Limits query results to a specified number of records. |
 | `query_weakconsistency_session_id` | string | Sets the query weak consistency session ID. Takes effect when `queryconsistency` mode is set to `weakconsistency_by_session_id`. |
 | `queryconsistency` | string | Controls query consistency. Supported values are `strongconsistency`, `weakconsistency`, `weakconsistency_by_query`, `weakconsistency_by_database`, or `weakconsistency_by_session_id`. When using `weakconsistency_by_session_id`, ensure to also set the `query_weakconsistency_session_id` property. |
-| `request_app_name` | string | Specifies the request application name to be used in reporting. For example, `.show queries`. |
+| `request_app_name` | string | Specifies the request application name to be used in reporting. For example, [.show queries](../../management/queries.md). |
 | `request_block_row_level_security` | bool | If set to `true`, blocks access to tables with [row level security](../../management/rowlevelsecuritypolicy.md) policy enabled. |
 | `request_callout_disabled` | bool | If set to `true`, prevents request callout to a user-provided service. |
 | `request_description` | string | Allows inclusion of arbitrary text as the request description. |
@@ -65,7 +65,7 @@ The following table overviews the supported request properties.
 | `request_readonly` | bool | If set to `true`, prevents write access for the request. |
 | `request_remote_entities_disabled` | bool | If set to `true`, prevents the request from accessing remote databases and clusters. |
 | `request_sandboxed_execution_disabled` | bool | If set to `true`, prevents the request from invoking code in the sandbox. |
-| `request_user` | string | Specifies the request user to be used in reporting. For example, `.show queries`. |
+| `request_user` | string | Specifies the request user to be used in reporting. For example, [.show queries](../../management/queries.md). |
 | `results_progressive_enabled` | bool | If set to `true`, enables the progressive query stream. |
 | `servertimeout` | timespan | Overrides the default request timeout. This option can't be modified as part of a [set statement](../../query/setstatement.md). |
 | `truncation_max_records` | long | Overrides the default maximum number of records a query is allowed to return to the caller (truncation). |
