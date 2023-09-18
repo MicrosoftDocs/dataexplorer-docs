@@ -1,5 +1,5 @@
 ---
-title:  Kusto Ingest client library best practices
+title:  Kusto Ingest library best practices
 description: This article describes best practices for Kusto Ingest client library.
 ms.reviewer: orspodek
 ms.topic: reference

@@ -1,5 +1,5 @@
 ---
-title:  Kusto Data client library best practices
+title:  Kusto Data library best practices
 description: This article describes best practices for Kusto Data client library.
 ms.reviewer: orspodek
 ms.topic: reference
