@@ -34,8 +34,6 @@ For general information on data ingestion, see [Azure Data Explorer data ingesti
 
     :::image type="content" source="media/get-data-amazon-s3/select-data-source.png" alt-text="Screenshot of get data window with source tab selected." lightbox="media/get-data-amazon-s3/select-data-source.png":::
 
-1. Enter the bucket
-
 ### Configure tab
 
 1. Select a target database and table. If you want to ingest data into a new table, select **+New table** and enter a table name.
