@@ -236,8 +236,7 @@ The default auto refresh rate can be set by a database editor. Both editors and 
 
 :::image type="content" source="media/adx-dashboards/auto-refresh-times.png" alt-text="Screenshot of the different time intervals available in auto refresh in dashboards.":::
 
-However, database editors may want to limit the minimum refresh rate so as to reduce the cluster load. When the minimum refresh rate is set, database users can't set a refresh rate lower than the set rate.
-
+However, database editors may want to limit the minimum refresh rate so as to reduce the cluster load. When the minimum refresh rate is set, database users can't set a refresh rate lower than the minimum.
 
 1. Select the **More menu [...]** > **Auto refresh**.
 
@@ -249,13 +248,6 @@ However, database editors may want to limit the minimum refresh rate so as to re
     :::image type="content" source="media/adx-dashboards/auto-refresh-toggle.png" alt-text="Enable auto refresh.":::
 
 1. Select **Apply** and then **Save** the dashboard.
-
-> [!NOTE]
->
-> * Select the smallest minimum time interval to reduce unnecessary load on the cluster.
-> * A dashboard viewer:
->   * Can change the minimum time intervals for personal use only.
->   * Can't select a value which is smaller than the **Minimum time interval** specified by the editor.
 
 ## Next Steps
 
