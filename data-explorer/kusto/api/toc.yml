@@ -34,9 +34,7 @@ items:
         href: netfx/controlling-tracing.md
       - name: Kusto.Data
         items:
-          - name: Kusto.Data overview
-            href: netfx/about-kusto-data.md
-          - name: Kusto.Data errors and exceptions
+          - name: Errors and exceptions
             href: netfx/kusto-data-client-errors.md
       - name: Kusto.Ingest
         items:
