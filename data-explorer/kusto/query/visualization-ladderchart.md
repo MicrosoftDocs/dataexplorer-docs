@@ -3,7 +3,7 @@ title:  Ladder chart visualization
 description: This article describes the ladder chart visualization in Azure Data Explorer.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 08/03/2022
+ms.date: 09/18/2023
 zone_pivot_group_filename: data-explorer/zone-pivot-groups.json
 zone_pivot_groups: kql-flavors-all
 ---
@@ -11,7 +11,7 @@ zone_pivot_groups: kql-flavors-all
 
 ::: zone pivot="azuredataexplorer"
 
- Last two columns are the x-axis, other columns are y-axis
+The last two columns are the x-axis, and the other columns are the y-axis.
 
 > [!NOTE]
 > * This visualization can only be used in the context of the [render operator](renderoperator.md).
@@ -48,6 +48,50 @@ All properties are optional.
 |`yaxis`       |How to scale the y-axis (`linear` or `log`).                                      |
 |`ycolumns`    |Comma-delimited list of columns that consist of the values provided per value of the x column.|
 |`ytitle`      |The title of the y-axis (of type `string`).                                       |
+
+## Examples
+
+###
+
+> [!div class="nextstepaction"]
+> <a href="" target="_blank">Run the query</a>
+
+```kusto
+StormEvents
+| where EventType  has "rain"
+| summarize min(StartTime), max(EndTime) by State
+| render ladderchart
+```
+
+:::image type="content" source="" alt-text="Screenshot of ladderchart." lightbox="":::
+
+###
+
+> [!div class="nextstepaction"]
+> <a href="" target="_blank">Run the query</a>
+
+```kusto
+StormEvents
+| where State == "WASHINGTON"
+| summarize min(StartTime), max(EndTime) by EventType
+| render ladderchart
+```
+
+:::image type="content" source="" alt-text="Screenshot of ladderchart." lightbox="":::
+
+###
+
+> [!div class="nextstepaction"]
+> <a href="" target="_blank">Run the query</a>
+
+```kusto
+StormEvents
+| where State startswith "W"
+| summarize min(StartTime), max(EndTime) by State, EventType
+| render ladderchart with (series=State, EventType)
+```
+
+:::image type="content" source="" alt-text="Screenshot of ladderchart." lightbox="":::
 
 ::: zone-end
 
