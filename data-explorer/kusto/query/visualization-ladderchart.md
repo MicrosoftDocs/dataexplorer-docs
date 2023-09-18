@@ -15,7 +15,7 @@ The last two columns are the x-axis, and the other columns are the y-axis.
 
 > [!NOTE]
 > * This visualization can only be used in the context of the [render operator](renderoperator.md).
-> * This visualization can be used in Kusto.Explorer but is not available in the Azure Data Explorer web UI.
+> * This visualization is available in [Kusto.Explorer](../../data-explorer-overview.md) but not in the [Azure Data Explorer web UI](../../web-ui-query-overview.md).
 
 ## Syntax
 
@@ -51,10 +51,7 @@ All properties are optional.
 
 ## Examples
 
-###
-
-> [!div class="nextstepaction"]
-> <a href="" target="_blank">Run the query</a>
+### 
 
 ```kusto
 StormEvents
@@ -67,9 +64,6 @@ StormEvents
 
 ###
 
-> [!div class="nextstepaction"]
-> <a href="" target="_blank">Run the query</a>
-
 ```kusto
 StormEvents
 | where State == "WASHINGTON"
@@ -80,9 +74,6 @@ StormEvents
 :::image type="content" source="" alt-text="Screenshot of ladderchart." lightbox="":::
 
 ###
-
-> [!div class="nextstepaction"]
-> <a href="" target="_blank">Run the query</a>
 
 ```kusto
 StormEvents
