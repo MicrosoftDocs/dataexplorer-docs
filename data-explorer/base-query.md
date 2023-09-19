@@ -14,6 +14,9 @@ To interactively explore sample dashboards, see [Quickstart: Visualize sample da
 > [!NOTE]
 > Base query creation and management is available in **Editing** mode to dashboard editors.
 
+> [!IMPORTANT]
+> When using base queries, you can't refer to a different data source than is already used in a particular tile or parameter.
+
 ## Prerequisites
 
 * A Microsoft account or an Azure Active Directory user identity. An Azure subscription isn't required.
