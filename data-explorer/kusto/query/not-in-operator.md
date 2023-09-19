@@ -15,7 +15,7 @@ Filters a record set for data without a case-insensitive string.
 
 [!INCLUDE [performance-tip-note](../../includes/performance-tip-note.md)]
 
-When possible, use the case-sensitive [!in~](not-in-cs-operator.md).
+When possible, use the case-sensitive [!in](not-in-cs-operator.md).
 
 ## Syntax
 

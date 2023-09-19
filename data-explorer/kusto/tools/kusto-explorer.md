@@ -98,8 +98,8 @@ The Home tab shows the most frequently used operations. It includes:
 
 |Menu|    Behavior|
 |----|----------|
-|Data To Clipboard|    Exports Query and data set to a clipboard. If a chart is presented, it exports the chart as bitmap|
-|Result To Clipboard| Exports the data set to a clipboard. If a chart is presented, it exports the chart as bitmap|
+|Data To Clipboard|    Exports Query and dataset to a clipboard. If a chart is presented, it exports the chart as bitmap|
+|Result To Clipboard| Exports the dataset to a clipboard. If a chart is presented, it exports the chart as bitmap|
 |Query to Clipboard| Exports the Query to a clipboard|
 
 ### Visualizations section
@@ -166,8 +166,8 @@ For variable visualizations, see the [render operator](../query/renderoperator.m
 ||---------*Load Data*---------|
 |From Results|    Loads Query and data from a Results (QRES) file.|
 ||---------*Clipboard*---------|
-|Query and Results To Clipboard|    Exports Query and data set to a clipboard. If a chart is presented, it exports the chart as a bitmap.|
-|Result To Clipboard| Exports data set to a clipboard. If a chart is presented, it exports the chart as a bitmap.|
+|Query and Results To Clipboard|    Exports Query and dataset to a clipboard. If a chart is presented, it exports the chart as a bitmap.|
+|Result To Clipboard| Exports dataset to a clipboard. If a chart is presented, it exports the chart as a bitmap.|
 |Query To Clipboard| Exports the Query to a clipboard.|
 |Results To Clipboard (datatable())| Exports query results to a clipboard. Maximal allowed cell value is 30000.|
 ||---------*Results*---------|
@@ -196,8 +196,8 @@ For variable visualizations, see the [render operator](../query/renderoperator.m
 |Sign-out| Signs-out the current user from the connection to Microsoft Azure Active Directory (Azure AD).|
 ||---------*Data Scope*---------|
 |Caching scope|<ul><li>Hot DataExecute queries only on [hot data cache](../management/cachepolicy.md)</li><li>All Data: Execute queries on all available data (default).</li></ul> |
-|DateTime Column| Name of a column that may be used for time prefilter.|
-|Time Filter| Value of time prefilter.|
+|DateTime Column| Name of a column that may be used for time pre-filter.|
+|Time Filter| Value of time pre-filter.|
 
 ## View tab
 
@@ -224,7 +224,7 @@ For variable visualizations, see the [render operator](../query/renderoperator.m
 ||---------*Data Filtering*---------|
 |Filter Rows In Search|Toggles the option to show only matching rows in query results search (**Ctrl+F**).|
 ||---------*Visualizations*---------|
-|Visualizations|See section [Visualizations](#visualizations-section) in this document. |
+|Visualizations|See [Visualizations](#visualizations-section). |
 
 > [!NOTE]
 > <a id="dvs">Data View Settings:</a>
@@ -328,7 +328,7 @@ Data Source=https://CLUSTER_NAME.kusto.windows.net;Initial Catalog=DATABASE_NAME
 
 ## Next steps
 
-To learn more about working with Kusto.Explorer see:
+To learn more about working with Kusto.Explorer, see:
 
 * [Using Kusto.Explorer](kusto-explorer-using.md)
 * [Kusto.Explorer keyboard shortcuts](kusto-explorer-shortcuts.md)

@@ -3,11 +3,50 @@ title: What's new in Azure Data Explorer documentation
 description: What's new in the Azure Data Explorer documentation
 ms.reviewer: orspodek
 ms.topic: reference
-ms.date: 07/02/2023
+ms.date: 09/05/2023
 ---
 # What's new in Azure Data Explorer documentation
 
 Welcome to what's new in Azure Data Explorer. This article details new and significantly updated content in the Azure Data Explorer documentation.
+
+## August 2023
+
+**API**
+
+| Article title | Description |
+|--|--|
+| [Create an app to get data using batching ingestion](kusto/api/get-started/app-batch-ingestion.md)| New article. Describes how to create an app to get data using batching ingestion of the Kusto client libraries.|
+
+**General**
+
+| Article title | Description |
+|--|--|
+|- [Get data from file](get-data-file.md) <br/> - [Get data from Azure storage](get-data-storage.md) <br/> - [Get data from Amazon S3](get-data-amazon-s3.md) <br/> - [Create an Event Hubs data connection](create-event-hubs-connection.md) | New articles. Describes the new Get data experience in Azure Data Explorer.|
+|- [Delete a cluster](delete-cluster.md) <br/> - [Delete a database](delete-database.md) | New articles. Describes how to delete an Azure Data Explorer cluster and database.|
+| [Monitor ingestion, commands, queries, and tables using diagnostic logs](using-diagnostic-logs.md)| Updated article. Refreshed content and added journal log data tab.|
+
+**Functions library**
+
+| Article title | Description |
+|--|--|
+| [series_clean_anomalies_fl()](kusto/functions-library/series-clean-anomalies-fl.md)| New article. Describes how to clean anomalous points in a series.|
+
+**Management**
+
+| Article title | Description |
+|--|--|
+| [Use a managed identity to run an update policy](kusto/management/update-policy-with-managed-identity.md)| New article. Describes how to configure a managed identity to run an update policy.|
+| [.show databases entities command](kusto/management/show-databases-entities.md)| New article. describes how to show a database's entities.|
+| [.show database extents partitioning statistics](kusto/management/show-database-extents-partitioning-statistics.md)| New article. Describes how to display a database's partitioning statistics.|
+
+**Query**
+
+| Article title | Description |
+|--|--|
+| [Entity names](kusto/query/schema-entities/entity-names.md)| Updated article. Refreshed identifier naming rules and references in queries.|
+| [partition operator](kusto/query/partitionoperator.md)| Updated article. Refreshed content and added parameters.|
+| [scan operator](kusto/query/scan-operator.md)| Updated article. Added scan logic walkthrough.|
+| [top-nested operator](kusto/query/topnestedoperator.md)| Updated article. Refreshed content.|
 
 ## July 2023
 
@@ -16,7 +55,7 @@ Welcome to what's new in Azure Data Explorer. This article details new and signi
 | Article title | Description |
 |--|--|
 | [Connection strings overview](kusto/api/connection-strings/index.md)| Updated article. Added privacy and security measures.|
-|[SQL external table authentication methods](kusto/api/connection-strings/sql-authentication-methods.md)| Updated article. Refreshed supported authentication methods.|
+| [SQL external table authentication methods](kusto/api/connection-strings/sql-authentication-methods.md)| Updated article. Refreshed supported authentication methods.|
 
 **General** 
 
@@ -31,7 +70,7 @@ Welcome to what's new in Azure Data Explorer. This article details new and signi
 | Article title | Description |
 |--|--|
 [Data mappings](kusto/management/mappings.md)| Updated article. Added supported data formats for mapping transformations.|
-|- [Export data to SQL](kusto/management/data-export/export-data-to-sql.md) <br/> - [Create and alter SQL external tables](kusto/management/external-sql-tables.md)| Updated articles. Added supported authentication methods and parameters .| 
+|- [Export data to SQL](kusto/management/data-export/export-data-to-sql.md) <br/> - [Create and alter SQL external tables](kusto/management/external-sql-tables.md)| Updated articles. Added supported authentication methods and parameters .|
 
 **Query**
 
@@ -258,22 +297,3 @@ Welcome to what's new in Azure Data Explorer. This article details new and signi
 |[Azure Data Explorer web UI keyboard shortcuts](web-ui-query-keyboard-shortcuts.md)|New article. Describes query keyboard shortcuts in the web UI.|
 |[Optimize queries that use named expressions](named-expressions.md)|New article. Describes how to optimize repeat use of named expressions in a query.|
 |- [Kusto emulator overview](kusto-emulator-overview.md)<br />- [Install the Kusto emulator](kusto-emulator-install.md)|New articles. Describes the Kusto emulator, how to install it, and run your first query.|
-
-## August 2022
-
-**General**
-
-| Article title | Description |
-|--|--|
-|- [Use the ingestion wizard to ingest JSON data](/azure/data-explorer/ingest-from-local-file) <br />- [Web UI overview](./web-query-data.md)|Updated articles. Added references to ingestion wizard and updated UI.|
-
-**Management**
-
-| Article title | Description |
-|--|--|
-|[.cancel operation command](kusto/management/cancel-operation-command.md)| New article. Describes how to use the `.cancel operation` command.|
-|[How to authenticate with Azure Active Directory](kusto/access-control/how-to-authenticate-with-aad.md)| Updated article. Updated with Microsoft Authentication Library authentication.|
-|[.drop extents](kusto/management/drop-extents.md)| Updated article. Added examples to drop specific extents.|
-|[Queries management](kusto/management/queries.md)| Updated article. Added show by user command.
-|- [Ingest from storage](kusto/management/data-ingestion/ingest-from-storage.md)|Updated article. Added ingest from Amazon S3.
-|- [.create-or-alter function](kusto/management/create-alter-function.md)<br />- [.create function](kusto/management/create-function.md)| New and updated article. Added new parameter for stored view.|

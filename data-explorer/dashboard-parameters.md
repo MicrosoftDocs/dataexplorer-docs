@@ -245,7 +245,7 @@ Query-based parameter values are derived at dashboard load time by executing the
 
     ``` kusto
     EventsAll
-    | where Type in (_event) or isempty(_events)
+    | where Type in (_events) or isempty(_events)
     | summarize count() by Type, bin(CreatedAt,7d)
     ```
 

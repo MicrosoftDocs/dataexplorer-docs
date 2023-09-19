@@ -3,7 +3,7 @@ title:  render operator
 description: Learn how to use the render operator to instruct the user agent to render a visualization of the query results.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 01/25/2023
+ms.date: 08/07/2023
 zone_pivot_group_filename: data-explorer/zone-pivot-groups.json
 zone_pivot_groups: kql-flavors-all
 ---
@@ -28,6 +28,9 @@ three kinds of columns:
   by the query. In particular, having "uninteresting" columns in the schema of
   the result might translate into them guessing wrong. Try projecting-away such
   columns when that happens.
+
+>[!NOTE]
+> There are some visualizations which are only available in Azure Data Explorer dashboards. For more information, see [Dashboard-specific visuals](../../dashboard-visuals.md). 
 
 ## Syntax
 

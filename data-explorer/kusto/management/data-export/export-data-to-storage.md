@@ -66,7 +66,7 @@ The following table lists the supported authentication methods and the permissio
 
 The commands return a table that describes the generated storage artifacts.
 Each record describes a single artifact and includes the storage path to the
-artifact and how many data records it holds.
+artifact and how many records it holds.
 
 |Path|NumRecords|
 |---|---|

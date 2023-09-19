@@ -128,6 +128,8 @@ You also need to add the *maven-compiler-plugin* and *exec-maven-plugin* plugins
 </plugin>
 ```
 
+---
+
 ### Learn how to create apps that use client libraries
 
 The following articles walk you through creating apps that use the Kusto client libraries.

@@ -225,9 +225,9 @@ To enable weak consistency, on the **Query Optimizations** pane, select **Data c
 
 ## Visualize data
 
-You finished configuring Azure Data Explorer as a data source for Grafana. Now it's time to visualize data. 
+You finished configuring Azure Data Explorer as a data source for Grafana. Now it's time to visualize data.
 
-The following basic example uses both the query builder mode and the raw mode of the query editor. We recommend that you view [write queries for Azure Data Explorer](/azure/data-explorer/kusto/query/tutorials/learn-common-operators) for examples of other queries to run against the data set.
+The following basic example uses both the query builder mode and the raw mode of the query editor. We recommend that you view [write queries for Azure Data Explorer](/azure/data-explorer/kusto/query/tutorials/learn-common-operators) for examples of other queries to run against the dataset.
 
 1. In Grafana, on the left menu, select the plus icon. Then select **Dashboard**.
 
@@ -283,7 +283,7 @@ Use query builder mode to define your query.
 
 Use raw mode to edit your query.
 
-1. On the query pane, paste the following query, and then select **Run**. The query buckets the count of events by day for the sample data set.
+1. On the query pane, paste the following query, and then select **Run**. The query buckets the count of events by day for the sample dataset.
 
     ```kusto
     StormEvents
@@ -296,7 +296,7 @@ Use raw mode to edit your query.
 
     :::image type="content" source="media/grafana/last-six-hours.png" alt-text="Screenshot of the default time filter of last six hours.":::
 
-1. Specify a custom range that covers 2007, the year included in the StormEvents sample data set. Then select **Apply**.
+1. Specify a custom range that covers 2007, the year included in the StormEvents sample dataset. Then select **Apply**.
 
     :::image type="content" source="media/grafana/custom-date-range.png" alt-text="Screenshot of the custom range control, with a custom date range selected.":::
 

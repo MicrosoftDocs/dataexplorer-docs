@@ -9,7 +9,7 @@ ms.date: 03/13/2023
 
 The function `plotly_scatter3d_fl()` is a [user-defined function (UDF)](../query/functions/user-defined-functions.md) that allows you to customize a [plotly](https://plotly.com/python/) template to create an interactive 3D scatter chart.  
 
-The function accepts a table containing the records to be rendered, the names of the x, y, z & aggregation columns, and the chart title string. The function returns a single cell table containing [plotly JSON](https://plotly.com/chart-studio-help/json-chart-schema/). Optionally, you can render the data in an [Azure Data Explorer dashboard](../../azure-data-explorer-dashboards.md) tile. For more information, see [Plotly visual in dashboards](../../dashboard-customize-visuals.md#plotly-preview).
+The function accepts a table containing the records to be rendered, the names of the x, y, z & aggregation columns, and the chart title string. The function returns a single cell table containing [plotly JSON](https://plotly.com/chart-studio-help/json-chart-schema/). Optionally, you can render the data in an [Azure Data Explorer dashboard](../../azure-data-explorer-dashboards.md) tile. For more information, see [Plotly (preview)](../query/visualization-plotly.md).
 
 ## Prerequisite
 
@@ -155,6 +155,7 @@ let plotly_scatter3d_fl=(tbl:(*), x_col:string, y_col:string, z_col:string, aggr
 };
 Iris
 | invoke plotly_scatter3d_fl(x_col='SepalLength', y_col='PetalLength', z_col='SepalWidth', aggr_col='Class', chart_title='3D scatter chart using plotly_scatter3d_fl()')
+| render plotly
 ```
 
 ### [Stored](#tab/stored)
@@ -173,8 +174,8 @@ Iris
 
 The output is a Plotly JSON string that can be rendered in an Azure Data Explorer dashboard tile. For more information on creating dashboard tiles, see [Visualize data with Azure Data Explorer dashboards ](../../azure-data-explorer-dashboards.md).
 
-![Screenshot of 3D scatter chart of a sample data set.](images\plotly-scatter3d-fl\plotly-scatter3d-chart.png)
+![Screenshot of 3D scatter chart of a sample dataset.](images\plotly-scatter3d-fl\plotly-scatter3d-chart.png)
 
 You can rotate, zoom and hover over specific records:
 
-![Screenshot of rotated 3D scatter chart of a sample data set.](images\plotly-scatter3d-fl\plotly-scatter3d-chart-rotated.png)
+![Screenshot of rotated 3D scatter chart of a sample dataset.](images\plotly-scatter3d-fl\plotly-scatter3d-chart-rotated.png)
