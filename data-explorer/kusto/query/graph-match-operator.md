@@ -53,41 +53,41 @@ The returned columns are defined in the operator's `project` clause using proper
 
 ### Attack path
 
-The following example builds a graph from edges and nodes tables, the nodes represent people and systems and the edges are different relations between nodes. Following the `make-graph` operator that builds the graph is a call to `graph-match` with a graph pattern that searches for attack paths to the "Trent" system node.
+The following example builds a graph from Actions and Entities tables, the entities are people and systems and the actions describe different relations between entities. Following the `make-graph` operator that builds the graph is a call to `graph-match` with a graph pattern that searches for attack paths to the "Apollo" system.
 
 > [!div class="nextstepaction"]
-> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA42SUWvCMBDH3wW/w9EnBSs4H4YOBTf2OBhssAeREdujzWwTSc6JsA+/SxrTVvYwSkvS/+Xufv9chQRK52hhBbkgfvYVjpSocWnJSFVMgC7HdiMKXFZaFWMYDrb8QrKpZIbJBJJXNFYrXt3NJ+ClR73vCfNZEJ6/+ydm90F4EVWlzaWfbhHEd4OKnPR2sYQ1rxYLFnYP/KmYA/PihsPqk8na5hmTpBIktYr/3KHPDuIfYAEj03V9UjIThPZDUpmEtmJc7I/MyZJN+i5EtRSW2WpprfR8XUdiLkEkskPM0fHlHyGh4jUAriY1Bg0HP1CLA6aFEccSGo8gTdddf+DMhGEyeOcGwh/0Z9JaUFbCqG5KjtNtKLVL1yO26Wg042HOQg/WyeRscCbDuUSDEHJMfYXVquUAoXLw0a3WeOiVUHEa788HRGQX0qt9E9i/BNcON/2FGcHGp0DDg9TtbQJPLRhrHcygN1PJUtv0L6phv3BeAwAA" target="_blank">Run the query</a>
+> <a href="https://dataexplorer.azure.com/clusters/https%3a%2f%2fhelp.kusto.windows.net/databases/Samples?query=H4sIAAAAAAAEAI1SwWqDQBC9C%2f7D4CkBDaQ5lKQkkJYcC4UeegihbNZFt9Fd2Z00BPrxHVfNum0PRZTV92bmvedUAmGnUKIUFtaQM6TrWImJYrVYWTRSFSngtfEvrBCrSqtiCnG0pxsg2VaSiySF5EUYqxWd7hYpdNijPgbIYj4gu8%2bwZn4%2fIM%2bsqrS5hh2XA7ptNMEt%2bHq1KGo6LZcEHR7oUZGhLUepVejH6rPh3kQuLErFWp435sreR2b%2fstj74bquz0pyhsK%2bSSyTm7qB6GWiOVu0yY9EPF4ySzZraa10VoN4bv0YIuMn32YU0n84%2fdSBAUNgQ1hx9AU1O4msMKwpocsLsmwzzgouZNUvDH1o98TVurKsZshLmNTd3Gm27%2bcdss2EImuMJpsiJyAw3cLM5TF1wi%2blMAL6LjM3Y732doCpHDq%2bB%2fs8O6ybOhv9Use5uW9JgYJf1PCnOFWk%2fkNw2i%2fXRRhasLHEFJ68Q8JGfnu821eCRtrjKI6%2bAdpZ186GAwAA" target="_blank">Run the query</a>
 
 ```kusto
-let nodes = datatable(name:string, type:string, age:long) 
+let Entities = datatable(name:string, type:string, age:long) 
 [ 
   "Alice", "Person", 23,  
   "Bob", "Person", 31,  
   "Eve", "Person", 17,  
   "Mallory", "Person", 29,  
-  "Trent", "System", 99 
+  "Apollo", "System", 99 
 ]; 
-let edges = datatable(source:string, destination:string, edge_type:string) 
+let Actions = datatable(source:string, destination:string, action_type:string) 
 [ 
   "Alice", "Bob", "communicatesWith",  
-  "Alice", "Trent", "trusts",  
-  "Bob", "Trent", "hasPermission",  
+  "Alice", "Apollo", "trusts",  
+  "Bob", "Apollo", "hasPermission",  
   "Eve", "Alice", "attacks",  
   "Mallory", "Alice", "attacks",  
   "Mallory", "Bob", "attacks"  
 ]; 
-edges 
-| make-graph source --> destination with nodes on name 
-| graph-match (mallory)-[attacks]->(compromised)-[hasPermission]->(trent) 
-  where mallory.name == "Mallory" and trent.name == "Trent" and attacks.edge_type == "attacks" and hasPermission.edge_type == "hasPermission" 
-  project Attacker = mallory.name, Compromised = compromised.name, System = trent.name
+Actions 
+| make-graph source --> destination with Entities on name 
+| graph-match (mallory)-[attacks]->(compromised)-[hasPermission]->(apollo) 
+  where mallory.name == "Mallory" and apollo.name == "Apollo" and attacks.action_type == "attacks" and hasPermission.action_type == "hasPermission" 
+  project Attacker = mallory.name, Compromised = compromised.name, System = apollo.name
 ```
 
 **Output**
 
 |Attacker|Compromised|System|
 |---|---|---|
-|Mallory|Bob|Trent|
+|Mallory|Bob|Apollo|
 
 ### All employees in a manager's org
 
