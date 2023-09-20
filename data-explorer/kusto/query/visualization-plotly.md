@@ -25,7 +25,7 @@ To render a Plotly visual in KQL, the query must generate a table with a single 
 Using this method, all types of Plotly visualizations are supported.
 
 > [!NOTE]
-> For best performance, make sure that the python plugin image contains the latest versions of both the Python engine (currently 3.10.8) and Plotly package (currently 5.11.0). These versions can be checked with the [get_packages_version_fl()](../functions-library/get-packages-version-fl.md) function. To upgrade the Python image see [Change the Python language extensions image on your cluster](../../language-extensions.md#change-the-python-language-extensions-image-on-your-cluster).
+> For best performance, make sure that the python plugin image contains the latest version of the Python engine (currently 3.10.8). This can be checked with the [get_packages_version_fl()](../functions-library/get-packages-version-fl.md) function. To upgrade the Python image see [Change the Python language extensions image on your cluster](../../language-extensions.md#change-the-python-language-extensions-image-on-your-cluster).
 
 
 ### Example
