@@ -369,6 +369,8 @@ items:
             href: dashboard-parameters.md
           - name: Customize dashboard visuals
             href: dashboard-customize-visuals.md
+          - name: Create a dashboard base query
+            href: base-query.md
           - name: Dashboard-specific visuals
             displayName: heat map, heatmap, funnel chart
             href: dashboard-visuals.md
