@@ -65,6 +65,7 @@ The following table summarizes the available connectors and their capabilities:
 [Apache Kafka](https://kafka.apache.org/documentation/) is a distributed streaming platform for building real-time streaming data pipelines that reliably move data between systems or applications. Kafka Connect is a tool for scalable and reliable streaming of data between Apache Kafka and other data systems. The Kafka Sink serves as the connector from Kafka and doesn't require using code. This is gold certified by Confluent - has gone through comprehensive review and testing for quality, feature completeness, compliance with standards, and for performance.
 
 * **Functionality:** Ingestion
+
 * **Ingestion type supported:** Batching, Streaming
 * **Use cases:** Logs, Telemetry, Time series
 * **Underlying SDK:** [Java](kusto/api/java/kusto-java-client-library.md)
@@ -76,9 +77,10 @@ The following table summarizes the available connectors and their capabilities:
 
 ## Apache Log4J 2
 
-* **Description:** Log4j is a popular logging framework for Java applications maintained by the Apache Foundation. Log4j allows developers to control which log statements are output with arbitrary granularity based on the logger's name, logger level, and message pattern. The Apache Log4J 2 sink allows you to stream your log data to your database, where you can analyze and visualize your logs in real time.
+Log4j is a popular logging framework for Java applications maintained by the Apache Foundation. Log4j allows developers to control which log statements are output with arbitrary granularity based on the logger's name, logger level, and message pattern. The Apache Log4J 2 sink allows you to stream your log data to your database, where you can analyze and visualize your logs in real time.
 
 * **Functionality:** Ingestion
+
 * **Ingestion type supported:** Batching, Streaming
 * **Use cases:** Logs
 * **Underlying SDK:** [Java](kusto/api/java/kusto-java-client-library.md)
@@ -90,9 +92,10 @@ The following table summarizes the available connectors and their capabilities:
 
 ## Apache Spark
 
-* **Description:** [Apache Spark](https://spark.apache.org/) is a unified analytics engine for large-scale data processing. The [Spark connector](spark-connector.md) is an open source project that can run on any Spark cluster. It implements data source and data sink for moving data to or from Spark clusters. Using the Apache Spark connector, you can build fast and scalable applications targeting data driven scenarios. For example, machine learning (ML), Extract-Transform-Load (ETL), and Log Analytics. With the connector, your database becomes a valid data store for standard Spark source and sink operations, such as read, write, and writeStream.
+[Apache Spark](https://spark.apache.org/) is a unified analytics engine for large-scale data processing. The [Spark connector](spark-connector.md) is an open source project that can run on any Spark cluster. It implements data source and data sink for moving data to or from Spark clusters. Using the Apache Spark connector, you can build fast and scalable applications targeting data driven scenarios. For example, machine learning (ML), Extract-Transform-Load (ETL), and Log Analytics. With the connector, your database becomes a valid data store for standard Spark source and sink operations, such as read, write, and writeStream.
 
 * **Functionality:** Ingestion, Export
+
 * **Ingestion type supported:** Batching, Streaming
 * **Use cases:** Telemetry
 * **Underlying SDK:** [Java](kusto/api/java/kusto-java-client-library.md)
@@ -104,71 +107,79 @@ The following table summarizes the available connectors and their capabilities:
 
 ## Apache Spark for Azure Synapse Analytics
 
-* **Description:** [Apache Spark](https://spark.apache.org/) is a parallel processing framework that supports in-memory processing to boost the performance of big data analytic applications. [Apache Spark in Azure Synapse](/azure/synapse-analytics/spark/apache-spark-overview) Analytics is one of Microsoft's implementations of Apache Spark in the cloud. You can access a database from [Synapse Studio](/azure/synapse-analytics/) with Apache Spark for Azure Synapse Analytics.
+[Apache Spark](https://spark.apache.org/) is a parallel processing framework that supports in-memory processing to boost the performance of big data analytic applications. [Apache Spark in Azure Synapse](/azure/synapse-analytics/spark/apache-spark-overview) Analytics is one of Microsoft's implementations of Apache Spark in the cloud. You can access a database from [Synapse Studio](/azure/synapse-analytics/) with Apache Spark for Azure Synapse Analytics.
 
 * **Functionality:** Ingestion, Export
+
 * **Ingestion type supported:** Batching
 * **Use cases:** Telemetry
 * **Documentation:** [Connect to an Azure Synapse workspace](/azure/synapse-analytics/quickstart-connect-azure-data-explorer)
 
 ## Azure Cosmos DB
 
-* **Description:** The [Azure Cosmos DB](/azure/cosmos-db/) change feed data connection is an ingestion pipeline that listens to your Cosmos DB change feed and ingests the data into your database.
+The [Azure Cosmos DB](/azure/cosmos-db/) change feed data connection is an ingestion pipeline that listens to your Cosmos DB change feed and ingests the data into your database.
 
 * **Functionality:** Ingestion
+
 * **Ingestion type supported:** Batching, Streaming
 * **Use cases:** Change feed
 * **Documentation:** [Ingest data from Azure Cosmos DB (Preview)](ingest-data-cosmos-db-connection.md)
 
 ## Azure Data Factory
 
-* **Description:**  [Azure Data Factory](/azure/data-factory) (ADF) is a cloud-based data integration service that allows you to integrate different data stores and perform activities on the data.
+[Azure Data Factory](/azure/data-factory) (ADF) is a cloud-based data integration service that allows you to integrate different data stores and perform activities on the data.
 
 * **Functionality:** Ingestion, Export
+
 * **Ingestion type supported:** Batching
 * **Use cases:** Data orchestration
 * **Documentation:** [Copy data to your database by using Azure Data Factory](data-factory-load-data.md)
 
 ## Azure Event Grid
 
-* **Description:** Event Grid ingestion is a pipeline that listens to Azure storage, and updates your database to pull information when subscribed events occur. You can configure continuous ingestion from Azure Storage (Blob storage and ADLSv2) with an [Azure Event Grid](/azure/event-grid/overview) subscription for blob created or blob renamed notifications and streaming the notifications via Azure Event Hubs.
+Event Grid ingestion is a pipeline that listens to Azure storage, and updates your database to pull information when subscribed events occur. You can configure continuous ingestion from Azure Storage (Blob storage and ADLSv2) with an [Azure Event Grid](/azure/event-grid/overview) subscription for blob created or blob renamed notifications and streaming the notifications via Azure Event Hubs.
 
 * **Functionality:** Ingestion
+
 * **Ingestion type supported:** Batching, Streaming
 * **Use cases:** Event processing
 * **Documentation:** [Event Grid data connection](ingest-data-event-grid-overview.md)
 
 ## Azure Event Hubs
 
-* **Description:**  [Azure Event Hubs](/azure/event-hubs/event-hubs-about) is a big data streaming platform and event ingestion service. You can configure continuous ingestion from customer-managed Event Hubs.
+[Azure Event Hubs](/azure/event-hubs/event-hubs-about) is a big data streaming platform and event ingestion service. You can configure continuous ingestion from customer-managed Event Hubs.
 
 * **Functionality:** Ingestion
+
 * **Ingestion type supported:** Batching, Streaming
 * **Documentation:** [Azure Event Hubs data connection](ingest-data-event-hub-overview.md)
 
 ## Azure Functions
 
-* **Description:**  [Azure Functions](/azure/azure-functions/functions-overview) allow you to run serverless code in the cloud on a schedule or in response to an event. With input and output bindings for Azure Functions, you can integrate your database into your workflows to ingest data and run queries against your database.
+[Azure Functions](/azure/azure-functions/functions-overview) allow you to run serverless code in the cloud on a schedule or in response to an event. With input and output bindings for Azure Functions, you can integrate your database into your workflows to ingest data and run queries against your database.
 
 * **Functionality:** Ingestion, Export
+
 * **Ingestion type supported:** Batching
 * **Use cases:** Workflow integrations.
 * **Documentation:** [Integrating Azure Functions using input and output bindings (preview)](integrate-azure-functions.md)
 
 ## Azure IoT Hubs
 
-* **Description:** [Azure IoT Hub](/azure/iot-hub/about-iot-hub) is a managed service, hosted in the cloud, that acts as a central message hub for bi-directional communication between your IoT application and the devices it manages. You can configure continuous ingestion from customer-managed IoT Hubs, using its [Event Hubs compatible built in endpoint of device-to-cloud messages](/azure/iot-hub/iot-hub-devguide-messages-d2c#routing-endpoints).
+[Azure IoT Hub](/azure/iot-hub/about-iot-hub) is a managed service, hosted in the cloud, that acts as a central message hub for bi-directional communication between your IoT application and the devices it manages. You can configure continuous ingestion from customer-managed IoT Hubs, using its [Event Hubs compatible built in endpoint of device-to-cloud messages](/azure/iot-hub/iot-hub-devguide-messages-d2c#routing-endpoints).
 
 * **Functionality:** Ingestion
+
 * **Ingestion type supported:** Batching, Streaming
 * **Use cases:**  IoT data
 * **Documentation:** [IoT Hub data connection](ingest-data-iot-hub-overview.md)
 
 ## Azure Stream Analytics
 
-* **Description:** [Azure Stream Analytics](/azure/stream-analytics/stream-analytics-introduction) is a real-time analytics and complex event-processing engine that's designed to process high volumes of fast streaming data from multiple sources simultaneously.
+[Azure Stream Analytics](/azure/stream-analytics/stream-analytics-introduction) is a real-time analytics and complex event-processing engine that's designed to process high volumes of fast streaming data from multiple sources simultaneously.
 
 * **Functionality:** Ingestion
+
 * **Ingestion type supported:** Batching, Streaming
 * **Use cases:** Event processing
 * **Documentation:** [Ingest data from Azure Stream Analytics](stream-analytics-connector.md)
@@ -177,23 +188,24 @@ The following table summarizes the available connectors and their capabilities:
 
 ## Logstash
 
-* **Description:** [The Logstash plugin](ingest-data-logstash.md) enables you to process events from Logstash into an Azure Data Explorer database for later analysis.
+[The Logstash plugin](ingest-data-logstash.md) enables you to process events from Logstash into an Azure Data Explorer database for later analysis.
 
 * **Functionality:** Ingestion
+
 * **Ingestion type supported:** Batching
 * **Use cases:** Logs
 * **Underlying SDK:** [Java](kusto/api/java/kusto-java-client-library.md)
 * **Repository:** Microsoft Azure - https://github.com/Azure/logstash-output-kusto/
 * **Documentation:** [Ingest data from Logstash to Azure Data Explorer](ingest-data-logstash.md)
-
 * **Community Blog:** [How to migrate from Elasticsearch to Azure Data Explorer](https://techcommunity.microsoft.com/t5/azure-data-explorer-blog/how-to-migrate-from-elasticsearch-to-azure-data-explorer/ba-p/1621539/)
 ::: zone-end
 
 ## NLog
 
-* **Description:** NLog is a flexible and free logging platform for various .NET platforms, including .NET standard. NLog allows you to write to several targets, such as a database, file, or console. With NLog you can change the logging configuration on-the-fly. The NLog sink is a target for NLog that allows you to send your log messages to your database. The plugin provides an efficient way to sink your logs to your cluster.
+NLog is a flexible and free logging platform for various .NET platforms, including .NET standard. NLog allows you to write to several targets, such as a database, file, or console. With NLog you can change the logging configuration on-the-fly. The NLog sink is a target for NLog that allows you to send your log messages to your database. The plugin provides an efficient way to sink your logs to your cluster.
 
 * **Functionality:** Ingestion
+
 * **Ingestion type supported:** Batching, Streaming
 * **Use cases:** Telemetry, Logs, Metrics
 * **Underlying SDK:** [.NET](kusto/api/netfx/about-the-sdk.md)
@@ -205,9 +217,10 @@ The following table summarizes the available connectors and their capabilities:
 
 ## Open Telemetry
 
-* **Description:**  [The OpenTelemetry connector](open-telemetry-connector.md) supports ingestion of data from many receivers into your database. It works as a bridge to ingest data generated by Open telemetry to your database by customizing the format of the exported data according to your needs.
+[The OpenTelemetry connector](open-telemetry-connector.md) supports ingestion of data from many receivers into your database. It works as a bridge to ingest data generated by Open telemetry to your database by customizing the format of the exported data according to your needs.
 
 * **Functionality:** Ingestion
+
 * **Ingestion type supported:** Batching, Streaming
 * **Use cases:** Traces, Metrics, Logs
 * **Underlying SDK:** [Go](kusto/api/golang/kusto-golang-client-library.md)
@@ -215,21 +228,24 @@ The following table summarizes the available connectors and their capabilities:
 * **Documentation:** [Ingest data from OpenTelemetry](open-telemetry-connector.md)
 ::: zone pivot="azuredataexplorer"
 * **Community Blog:** [Getting started with Open Telemetry and Azure Data Explorer](https://techcommunity.microsoft.com/t5/azure-data-explorer-blog/getting-started-with-open-telemetry-and-azure-data-explorer/ba-p/3675708)
+::: zone-end
 
 ## Power Automate
 
-* **Description:** [Power Automate](/power-automate/getting-started) is an orchestration service used to automate business processes. The :::no-loc text="Power Automate"::: (previously Microsoft Flow) connector enables you to orchestrate and schedule flows, send notifications, and alerts, as part of a scheduled or triggered task.
+[Power Automate](/power-automate/getting-started) is an orchestration service used to automate business processes. The :::no-loc text="Power Automate"::: (previously Microsoft Flow) connector enables you to orchestrate and schedule flows, send notifications, and alerts, as part of a scheduled or triggered task.
 
 * **Functionality:** Ingestion, Export
+
 * **Ingestion type supported:** Batching
 * **Use cases:** Data orchestration
 * **Documentation:** [Microsoft Power Automate connector](flow.md)
 
 ## Serilog
 
-* **Description:** Serilog is a popular logging framework for .NET applications. Serilog allows developers to control which log statements are output with arbitrary granularity based on the logger's name, logger level, and message pattern. The Serilog sink, also known as an appender, streams your log data to your database, where you can analyze and visualize your logs in real time.
+Serilog is a popular logging framework for .NET applications. Serilog allows developers to control which log statements are output with arbitrary granularity based on the logger's name, logger level, and message pattern. The Serilog sink, also known as an appender, streams your log data to your database, where you can analyze and visualize your logs in real time.
 
 * **Functionality:** Ingestion
+
 * **Ingestion type supported:** Batching, Streaming
 * **Use cases:** Logs
 * **Underlying SDK:** [.NET](kusto/api/netfx/about-the-sdk.md)
@@ -241,9 +257,10 @@ The following table summarizes the available connectors and their capabilities:
 
 ## Telegraf
 
-* **Description:** Telegraf is an open source, lightweight, minimal memory foot print agent for collecting, processing and writing telemetry data including logs, metrics, and IoT data. Telegraf supports hundreds of input and output plugins. It's widely used and well supported by the open source community. The output plugin serves as the connector from Telegraf and supports ingestion of data from many types of input plugins into your database.
+Telegraf is an open source, lightweight, minimal memory foot print agent for collecting, processing and writing telemetry data including logs, metrics, and IoT data. Telegraf supports hundreds of input and output plugins. It's widely used and well supported by the open source community. The output plugin serves as the connector from Telegraf and supports ingestion of data from many types of input plugins into your database.
 
 * **Functionality:** Ingestion
+
 * **Ingestion type supported:** Batching, Streaming
 * **Use cases:** Telemetry, Logs, Metrics
 * **Underlying SDK:** Go
