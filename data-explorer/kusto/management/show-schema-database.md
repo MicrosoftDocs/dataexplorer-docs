@@ -170,5 +170,5 @@ The script, returned as a string, will contain:
 ```kusto
 .show database TestDB schema as csl script
 
-.show database TestDB schema as csl script with(IncludeSecuritySettings = true)
+.show database TestDB schema as csl script with (ShowObfuscatedStrings = true)
 ```

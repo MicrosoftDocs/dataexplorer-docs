@@ -3,7 +3,7 @@ title: .create function command
 description: Learn how to use the `.create function` command to create a stored function.
 ms.reviewer: orspodek
 ms.topic: reference
-ms.date: 05/24/2023
+ms.date: 09/10/2023
 ---
 # .create function command
 
@@ -41,7 +41,10 @@ You must have at least [Database User](access-control/role-based-access-control.
 |`docstring`|string|A description of the function for UI purposes.|
 |`folder`|string|The name of a folder used for UI functions categorization.|
 |`view`|bool|Designates this function as a stored view. Stored views can participate in [search](../query/searchoperator.md) and [union *](../query/unionoperator.md) scenarios. For more information, see [Views](../query/schema-entities/views.md).|
-|`skipvalidation`|bool|Determines whether or not to run validation logic on the function, and fail the process if the function isn't valid. The default is `false`.|
+|`skipvalidation`|bool|Determines whether or not to run validation logic on the function and fail the process if the function isn't valid. The default is `false`.|
+
+> [!TIP]
+> If a function involves [cross-cluster queries](../query/cross-cluster-or-database-queries.md) and you plan to recreate the function using a [Kusto Query Language script](../../database-script.md), set `skipvalidation` to `true`.
 
 ## Returns
 

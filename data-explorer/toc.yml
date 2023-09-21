@@ -349,6 +349,14 @@ items:
             href: python-query-data.md
           - name: Debug Kusto Query Language inline Python
             href: debug-inline-python.md
+      - name: Graph Analysis
+        items:
+          - name: Overview
+            href: graph-overview.md
+          - name: Scenarios
+            href: graph-scenarios.md
+          - name: Best Practices
+            href: graph-best-practices.md
   - name: Visualize data
     items:
       - name: Data visualization overview

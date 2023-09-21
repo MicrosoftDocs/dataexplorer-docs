@@ -1265,6 +1265,18 @@ items:
     href: varianceif-aggfunction.md
   - name: variancep()
     href: variancep-aggfunction.md
+- name: Graph operators
+  items:
+    - name: Graph operators overview
+      href: graph-operators.md
+    - name: make-graph
+      href: make-graph-operator.md
+    - name: graph-match
+      href: graph-match-operator.md
+    - name: graph-merge
+      href: graph-merge-operator.md
+    - name: graph-to-table
+      href: graph-to-table-operator.md
 - name: Geospatial
   items:
   - name: Geospatial clustering overview

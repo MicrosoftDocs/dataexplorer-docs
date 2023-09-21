@@ -555,7 +555,7 @@ For example, you can modify the app to change the [ingestion batching policy](..
 // Reduce the default batching timeout to 30 seconds
 command = @$".alter-merge table {table} policy ingestionbatching '{{ ""MaximumBatchingTimeSpan"":""00:00:30"" }}'";
 
-using (var response = kusto_client.ExecuteControlCommand(database, command, null))
+using (var response = kustoClient.ExecuteControlCommand(database, command, null))
 {
   PrintResultsAsValueList(command, response);
 }
@@ -625,7 +625,7 @@ For example, you can modify the app to [display your database's retention policy
 // Show the database retention policy (drop some columns from the result)
 command = @$".show database {database} policy retention | project-away ChildEntities, EntityType";
 
-using (var response = kusto_client.ExecuteControlCommand(database, command, null)) {
+using (var response = kustoClient.ExecuteControlCommand(database, command, null)) {
   PrintResultsAsValueList(command, response);
 }
 ```
