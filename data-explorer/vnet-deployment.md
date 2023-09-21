@@ -363,7 +363,28 @@ The [ARMClient](https://chocolatey.org/packages/ARMClient) is used to demonstrat
               ],
               "provisioningState": "Succeeded"
             }
-          }
+          },
+          {
+            "id": "/subscriptions/<subscriptionId>/resourceGroups/<resourceGroup>/providers/Microsoft.Kusto/Clusters/<clusterName>/OutboundNetworkDependenciesEndpoints/InternalTracing",
+            "name": "<clustername>/InternalTracing",
+            "type": "Microsoft.Kusto/Clusters/OutboundNetworkDependenciesEndpoints",
+            "location": "Australia Central",
+            "properties": {
+              "category": "Internal Tracing",
+              "endpoints": [
+                {
+                  "domainName": "ingest-kuskuseaau.australiaeast.kusto.windows.net",
+                  "endpointDetails": [
+                    {
+                      "port": 443,
+                      "ipAddress": "20.70.218.111"
+                    }
+                  ]
+                }
+              ],
+              "provisioningState": "Succeeded"
+            }
+        }
         ...
        ]
    }
