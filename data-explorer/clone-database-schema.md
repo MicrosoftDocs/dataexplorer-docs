@@ -26,7 +26,7 @@ The following steps describe how to clone a database schema using the [Azure Dat
 1. Run the following command:
 
     ```kusto
-    .show database schema as csl script
+    .show database schema as csl script with (ShowObfuscatedStrings = true)
     ```
 
     This command returns a script of management commands to recreate the database schema. For more information, see [.show database schema command](kusto/management/show-schema-database.md#show-database-schema-as-csl-script).
