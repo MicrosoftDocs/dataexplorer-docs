@@ -10,7 +10,7 @@ ms.date: 08/22/2023
 
 A common scenario when onboarding to Azure Data Explorer is to ingest historical data, sometimes called backfill. The process involves ingesting data from an existing storage system into a table, which is a collection of [extents](kusto/management/extents-overview.md).
 
-We recommend ingesting data using the [creationTime ingestion property](ingestion-properties.md#ingestion-properties) to set the creation time of extents to the time the data was *created*. By ingesting using the creation time, your data can age normally in line with your [cache](kusto/management/cachepolicy.md) and [retention](kusto/management/retentionpolicy.md) policies, and makes time filters more efficient.
+We recommend ingesting historical data using the [creationTime ingestion property](ingestion-properties.md#ingestion-properties) to set the creation time of extents to the time the data was *created*. By ingesting using the creation time, your data can age normally in line with your [cache](kusto/management/cachepolicy.md) and [retention](kusto/management/retentionpolicy.md) policies, and makes time filters more efficient.
 
 By default, the creation time for extents is set to the time when the data is ingested, which may not produce the behavior you're expecting. For example, suppose you have a table that has a cache period of 30 days and a retention period of two years. In the normal flow, data ingested as it's produced is cached for 30 days and then moved to cold storage. After two years, based on it's creation time, older data is removed one day at a time. However, if you ingest two years of historical data where, by default, the data is marked with creation time as the time the data is ingested. This may not produce the desired outcome because:
 
