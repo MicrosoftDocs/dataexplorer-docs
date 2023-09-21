@@ -136,7 +136,7 @@ LightIngest can be useful to load historical data from an existing storage syste
 
 ### [Post ingestion](#tab/post-ingestion)
 
-### Step 1: Prepare for repartitioning
+#### Step 1: Prepare for repartitioning
 
 1. Adjust the retention policy to allow for old data. In the following example, you set retention policy for table **MyTable** to 10 years.
 
