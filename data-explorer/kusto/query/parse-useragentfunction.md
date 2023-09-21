@@ -26,11 +26,11 @@ Interprets a user-agent string, which identifies the user's browser and provides
 
 An object of type `dynamic` that contains the information about the requested parsing targets.
 
-Browser: Family, MajorVersion, MinorVersion, Patch
+**Browser**: **Family**, **MajorVersion**, **MinorVersion**, **Patch**
 
-OperatingSystem: Family, MajorVersion, MinorVersion, Patch, PatchMinor
+**OperatingSystem**: **Family**, **MajorVersion**, **MinorVersion**, **Patch**, **PatchMinor**
 
-Device: Family, Brand, Model
+**Device**: **Family**, **Brand**, **Model**
 
 > [!WARNING]
 > The function implementation is built on regex checks of the input string against a huge number of predefined patterns. Therefore the expected time and CPU consumption is high.
@@ -51,6 +51,7 @@ print useragent = "Mozilla/5.0 (Windows; U; en-US) AppleWebKit/531.9 (KHTML, lik
 
 Expected result is a dynamic object:
 
+```json
 {
   "Browser": {
     "Family": "AdobeAIR",
@@ -59,6 +60,7 @@ Expected result is a dynamic object:
     "Patch": "1"
   }
 }
+```
 
 ### Look-for parameter as dynamic array
 
@@ -72,6 +74,7 @@ print useragent = "Mozilla/5.0 (SymbianOS/9.2; U; Series60/3.1 NokiaN81-3/10.0.0
 
 Expected result is a dynamic object:
 
+```json
 {
   "Browser": {
     "Family": "Nokia OSS Browser",
@@ -92,3 +95,4 @@ Expected result is a dynamic object:
     "Model": "N81-3"
   }
 }
+```
