@@ -24,7 +24,7 @@ You must have at least [Database Admin](access-control/role-based-access-control
 
 ## Syntax
 
-`.alter` `materialized-view` *MaterializedViewName* `policy` `row_level_security` [`enable` | `disable`]
+`.alter` `materialized-view` *MaterializedViewName* `policy` `row_level_security` [`enable` | `disable`] *Query*
 
 [!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
 
