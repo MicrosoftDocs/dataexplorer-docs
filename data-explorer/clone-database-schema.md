@@ -3,7 +3,7 @@ title: Clone a database schema - Azure Data Explorer
 description: Learn how to clone a database schema in Azure Data Explorer.
 ms.reviewer: zivc
 ms.topic: how-to
-ms.date: 08/27/2023
+ms.date: 09/21/2023
 ---
 
 # Clone a database schema in Azure Data Explorer
@@ -26,7 +26,7 @@ The following steps describe how to clone a database schema using the [Azure Dat
 1. Run the following command:
 
     ```kusto
-    .show database <DatabaseName> schema as csl script
+    .show database schema as csl script
     ```
 
     This command returns a script of management commands to recreate the database schema. For more information, see [.show database schema command](kusto/management/show-schema-database.md#show-database-schema-as-csl-script).
@@ -39,7 +39,7 @@ The following steps describe how to clone a database schema using the [Azure Dat
 
     :::image type="content" source="media/clone-database-schema/select-other-database.png" alt-text="Screenshot of the other selected database in connection pane." lightbox="media/clone-database-schema/select-other-database.png":::
 
-1. Run the following command, replacing `<CSLScript>` with the copied script. If the database names differ, replace the database name in the script commands with the name of the new database.
+1. In the following command, replace `<CSLScript>` with the copied script. If the database names differ, replace the database name in the script commands with the name of the new database. Select the full command text and then run it. If you don't select the full text, the command will stop at the first empty line in the script.
 
     ```kusto
     .execute database script <| <CSLScript>
@@ -47,7 +47,10 @@ The following steps describe how to clone a database schema using the [Azure Dat
 
     This command runs the commands from the script, recreating the database schema on the new database. For more information, see [.execute database script command](kusto/management/execute-database-script.md).
 
-1. Check the output. The `Result` column should show as `Complete`. For a `Failed` result, troubleshoot and retry.
+1. Commands in the script run sequentially, stopping if a command fails. To confirm successful completion, scroll to the final command and check that the `Result` column is `Complete`. If a failure occurs, troubleshoot and run the command again.
+
+    > [!NOTE]
+    > You can rerun the script as often as needed without clearing resources from the previous run.
 
 ## Related content
 
