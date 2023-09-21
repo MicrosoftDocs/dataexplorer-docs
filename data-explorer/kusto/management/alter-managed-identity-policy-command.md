@@ -14,7 +14,7 @@ Sets the ManagedIdentity policy of the cluster or the specified database, overri
 
 ## Permissions
 
-The command to alter the cluster policy requires [AllDatabasesAdmin](access-control/role-based-access-control.md) permissions, and the command to alter the database policy requires at least [Database Admin](access-control/role-based-access-control.md) permissions.
+The command to alter the policy requires [AllDatabasesAdmin](access-control/role-based-access-control.md) permissions.
 
 ## Syntax
 

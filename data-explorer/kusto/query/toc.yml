@@ -50,6 +50,7 @@ items:
   - name: Entity types
     href: schema-entities/index.md
   - name: Entity names
+    displayName: language keywords, KQL keywords, keywords
     href: schema-entities/entity-names.md
   - name: Entity references
     href: schema-entities/entity-references.md
@@ -259,6 +260,8 @@ items:
       - name: pivotchart
         displayName: pivot chart
         href: visualization-pivotchart.md
+      - name: Plotly
+        href: visualization-plotly.md
       - name: scatterchart
         displayName: scatter chart
         href: visualization-scatterchart.md
@@ -1262,6 +1265,18 @@ items:
     href: varianceif-aggfunction.md
   - name: variancep()
     href: variancep-aggfunction.md
+- name: Graph operators
+  items:
+    - name: Graph operators overview
+      href: graph-operators.md
+    - name: make-graph
+      href: make-graph-operator.md
+    - name: graph-match
+      href: graph-match-operator.md
+    - name: graph-merge
+      href: graph-merge-operator.md
+    - name: graph-to-table
+      href: graph-to-table-operator.md
 - name: Geospatial
   items:
   - name: Geospatial clustering overview

@@ -4,7 +4,7 @@ description: Learn about how to use database script to run a Kusto Query Languag
 ms.reviewer: docohe
 ms.topic: how-to
 ms.custom: devx-track-bicep
-ms.date: 05/01/2023
+ms.date: 09/10/2023
 ---
 # Configure a database using a Kusto Query Language script
 
@@ -270,6 +270,7 @@ Use the following settings:
 
 * Script is only supported in Azure Data Explorer; it isn't supported in Synapse Data Explorer pools
 * Two scripts can't be added, modified, or removed in parallel on the same cluster. This results in the following error: `Code="ServiceIsInMaintenance"`.  You can work around the issue by placing a dependency between the two scripts so that they're created or updated sequentially.
+* To create functions with [cross-cluster queries](kusto/query/cross-cluster-or-database-queries.md) using scripts, you must set the `skipvalidation` property to `true` in the [.create function command](kusto/management/create-function.md).
 
 ## Troubleshooting
 
