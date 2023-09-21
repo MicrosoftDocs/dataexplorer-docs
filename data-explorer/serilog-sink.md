@@ -7,6 +7,8 @@ ms.reviewer: ramacg
 ---
 # Ingest data with the Serilog sink into Azure Data Explorer
 
+[!INCLUDE [real-time-analytics-connectors--note](includes/real-time-analytics-connectors--note.md)]
+
 Serilog is a popular logging framework for .NET applications. Serilog allows developers to control which log statements are output with arbitrary granularity based on the logger's name, logger level, and message pattern. The Serilog sink, also known as an appender, for Azure Data Explorer streams your log data to Azure Data Explorer, where you can analyze and visualize your logs in real time.
 
 In this article, you'll learn how to:
