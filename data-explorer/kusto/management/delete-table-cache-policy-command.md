@@ -31,5 +31,5 @@ You must have at least [Table Admin](access-control/role-based-access-control.md
 The following example deletes the caching policy.
 
 ```kusto
-.delete table MyTable policy 
+.delete table MyTable policy caching
 ```
