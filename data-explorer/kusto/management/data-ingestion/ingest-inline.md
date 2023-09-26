@@ -59,7 +59,7 @@ The following command ingests data into a table `Purchases` with two columns: `S
 .ingest inline into table Purchases <|
     Shoes,1000
     Wide Shoes,50
-    "Coats, black",20
+    "Coats black",20
     "Coats with ""quotes""",5
 ```
 
