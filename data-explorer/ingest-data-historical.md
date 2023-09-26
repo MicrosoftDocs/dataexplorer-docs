@@ -10,7 +10,7 @@ ms.date: 08/22/2023
 
 A common scenario when onboarding to Azure Data Explorer is to ingest historical data, sometimes called backfill. The process involves ingesting data from an existing storage system into a table, which is a collection of [extents](kusto/management/extents-overview.md).
 
-We recommend ingesting historical data using the [creationTime ingestion property](ingestion-properties.md#ingestion-properties) to set the creation time of extents to the time the data was *created*. By ingesting using the creation time, your data can age normally in line with your [cache](kusto/management/cachepolicy.md) and [retention](kusto/management/retentionpolicy.md) policies, and makes time filters more efficient.
+We recommend ingesting historical data using the [creationTime ingestion property](ingestion-properties.md#ingestion-properties) to set the creation time of extents to the time the data was *created*. By using the creation time as the ingestion partitioning criterion, your data can age normally in accordance with your [cache](kusto/management/cachepolicy.md) and [retention](kusto/management/retentionpolicy.md) policies, and make time filters more efficient.
 
 By default, the creation time for extents is set to the time when the data is ingested, which may not produce the behavior you're expecting. For example, suppose you have a table that has a cache period of 30 days and a retention period of two years. In the normal flow, data ingested as it's produced is cached for 30 days and then moved to cold storage. After two years, based on it's creation time, older data is removed one day at a time. However, if you ingest two years of historical data where, by default, the data is marked with creation time as the time the data is ingested. This may not produce the desired outcome because:
 
@@ -38,7 +38,7 @@ In this article, you learn how to partition historical data:
 - A Microsoft account or an Azure Active Directory user identity. An Azure subscription isn't required.
 - An Azure Data Explorer cluster and database. [Create a cluster and database](create-cluster-and-database.md).
 - [A storage account](/azure/storage/common/storage-quickstart-create-account?tabs=azure-portal).
-- For the recommended method of ingesting historical data, [install LightIngest](lightingest.md).
+- For the recommended method of using the *CreationTime* ingestion property during ingestion, [install LightIngest](lightingest.md).
 
 ## Ingest historical data
 
@@ -180,10 +180,8 @@ LightIngest can be useful to load historical data from an existing storage syste
     For information about the partitioning policy properties, see [partition properties](kusto/management/partitioningpolicy.md#partition-properties-1). For historical ingestion, how you set the following properties is important:
 
     - The **EffectiveDateTime** property must be set to a date earlier than the start of the ingestion to trigger the repartitioning.
-    - The **RangeSize** is set to one day so that the data is repartitioned into buckets of one day. However, you should set this value to align with your data. For example, if you have less than several GBs of data per day, consider setting a larger value. For a lot of data per day, consider setting a smaller value.
+    - The **RangeSize** is set to one day so that the data is repartitioned into buckets of one day. However, you should set this value to align with your data. For example, if you have less than several GBs of data per day, consider setting a larger value.
     - The **OverrideCreationTime** must be set to *true* so that after repartitioning the data into day buckets, the extents are marked with that day as the creation time.
-
-//VP: Can we quantify "a lot of/tons" of data?
 
 1. Create a merge policy to allow merging of all extents, including extents older than 14 days, to merge in hot cache. Setting this policy is important because the repartitioning process creates extents older that the default 14 days, which aren't normally merged in hot cache.
 
@@ -198,11 +196,11 @@ LightIngest can be useful to load historical data from an existing storage syste
     ```
     ~~~
 
+1. Monitor the repartitioning progress using the [.show database extents partitioning statistics](kusto/management/show-database-extents-partitioning-statistics.md) command. In the returned results, look for the table you're repartitioning and monitor the **PartitionedRowPercentage** column. When the **PartitionedRowPercentage** column's value is `100`, the repartitioning is complete.
+
 ### STEP 3: Clean up post repartitioning
 
 Once the repartitioning is complete, you can clean up the policies you set in the previous steps.
-
-// VP: How can a customer know that it's completed? Is there a way to monitor the progress?
 
 1. Remove the partitioning policy.
 
