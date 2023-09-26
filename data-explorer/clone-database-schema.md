@@ -3,7 +3,7 @@ title: Clone a database schema - Azure Data Explorer
 description: Learn how to clone a database schema in Azure Data Explorer.
 ms.reviewer: zivc
 ms.topic: how-to
-ms.date: 09/21/2023
+ms.date: 09/26/2023
 ---
 
 # Clone a database schema in Azure Data Explorer
@@ -29,7 +29,7 @@ The following steps describe how to clone a database schema using the [Azure Dat
     .show database schema as csl script with (ShowObfuscatedStrings = true)
     ```
 
-    This command returns a script of management commands to recreate the database schema. For more information, see [.show database schema command](kusto/management/show-schema-database.md#show-database-schema-as-csl-script).
+    This command returns a script of management commands to recreate the database schema. Note the number of returned records, which is used for verification in a later step. For more information, see [.show database schema command](kusto/management/show-schema-database.md#show-database-schema-as-csl-script).
 
 1. Copy the CSL script output. To do so, select all of the returned rows. Then, either right-click and select **Copy** or use the *Ctrl + C* keyboard shortcut.
 
@@ -39,7 +39,12 @@ The following steps describe how to clone a database schema using the [Azure Dat
 
     :::image type="content" source="media/clone-database-schema/select-other-database.png" alt-text="Screenshot of the other selected database in connection pane." lightbox="media/clone-database-schema/select-other-database.png":::
 
-1. In the following command, replace `<CSLScript>` with the copied script. If the database names differ, replace the database name in the script commands with the name of the new database. Select the full command text and then run it. If you don't select the full text, the command will stop at the first empty line in the script.
+1. Modify the copied script by replacing the original database name with the new database name.
+
+1. Run the following command, replacing `<CSLScript>` with the script.
+
+    > [!NOTE]
+    > Select the full command text and then run it. If you don't select the full text, the command will stop at the first empty line in the script.
 
     ```kusto
     .execute database script <| <CSLScript>
@@ -47,7 +52,7 @@ The following steps describe how to clone a database schema using the [Azure Dat
 
     This command runs the commands from the script, recreating the database schema on the new database. For more information, see [.execute database script command](kusto/management/execute-database-script.md).
 
-1. Commands in the script run sequentially, stopping if a command fails. To confirm successful completion, scroll to the final command and check that the `Result` column is `Complete`. If a failure occurs, troubleshoot and run the command again.
+1. Verify that the script ran correctly. To do so, check that the number of returned records is the same as the records from the show schema command. Then, scroll to the final command and check that the `Result` column is `Complete`. If a failure occurs, troubleshoot and run the command again.
 
     > [!NOTE]
     > You can rerun the script as often as needed without clearing resources from the previous run.
