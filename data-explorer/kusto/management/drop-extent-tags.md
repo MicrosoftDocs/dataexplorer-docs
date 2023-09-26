@@ -8,7 +8,7 @@ ms.date: 05/15/2023
 
 # .drop table extent tags
 
-Drops specific [extent tags](extents-overview.md#extent-tagging) from all or specific extents a table. The command runs in the context of a specific database.
+Drops specific [extent tags](extents-overview.md#extent-tags) from all or specific extents a table. The command runs in the context of a specific database.
 
 > [!NOTE]
 > Data shards are called **extents**, and all commands use "extent" or "extents" as a synonym.

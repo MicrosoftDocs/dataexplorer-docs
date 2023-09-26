@@ -55,7 +55,7 @@ The command returns a result table that contains the following information.
 | `ExtentSize` | long | Estimation of total size of extents (data size + index size) in bytes. |
 | `CompressionRatio` | real | Ratio of original data size to extent data size. |
 | `DataCompressedSize` | long | Extents data size in bytes, excluding indexes. |
-| `SharedIndexSize` | long | For [Engine V3](../../engine-v3.md), text index size in bytes. The text index is shared by all table columns in [Engine V3](../../engine-v3.md). |
+| `SharedIndexSize` | long | Text index size in bytes. The text index is shared by all table columns. |
 | `IndexSize` | long | Size of numeric indexes in bytes. For Engine V2, the value includes text index size as well. |
 | `IndexSizePercent` | real | Ratio of the index size to original data size in bytes. |
 | `StorageEngineVersion` | string | Engine version. If data exists for multiple engine versions, the output includes an entry for each version. |
@@ -65,7 +65,7 @@ The command returns a result table that contains the following information.
 | `IncludeColdData`| bool | Whether cold data was taken into account when calculating statistics estimate. |
 
 > [!NOTE]
-> For [Engine V3](../../engine-v3.md), `ExtentSize` doesn't include shared text index size. There are two ways to calculate total table data size:
+> `ExtentSize` doesn't include shared text index size. There are two ways to calculate total table data size:
 >
 > * Sum all `ExtentSize` values and add the `SharedIndexSize` value.
 > * Run the [.show table details](show-table-details-command.md) command, and use the `TotalExtentSize` value.

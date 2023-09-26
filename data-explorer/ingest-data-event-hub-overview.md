@@ -7,6 +7,8 @@ ms.date: 05/08/2023
 ---
 # Azure Event Hubs data connection
 
+[!INCLUDE [real-time-analytics-connectors--note](includes/real-time-analytics-connectors--note.md)]
+
 [Azure Event Hubs](/azure/event-hubs/event-hubs-about) is a big data streaming platform and event ingestion service. Azure Data Explorer offers continuous ingestion from customer-managed Event Hubs.
 
 The Event Hubs ingestion pipeline transfers events to Azure Data Explorer in several steps. You first create an event hub in the Azure portal. You then create a target table in Azure Data Explorer into which the [data in a particular format](#data-format), will be ingested using the given [ingestion properties](#ingestion-properties). The Event Hubs connection needs to know [events routing](#events-routing). Data may be embedded with selected properties according to the [event system properties](#event-system-properties-mapping). Create a connection to Event Hubs to [create an event hub](#create-an-event-hub) and [send events](#send-events). This process can be managed through the [Azure portal](ingest-data-event-hub.md), programmatically with [C#](data-connection-event-hub-csharp.md) or [Python](data-connection-event-hub-python.md), or with the [Azure Resource Manager template](data-connection-event-hub-resource-manager.md).
@@ -56,7 +58,7 @@ Ingestion properties instruct the ingestion process, where to route the data, an
 | IngestionMappingReference | Name of the existing [ingestion mapping](kusto/management/create-ingestion-mapping-command.md) to be used. Overrides the `Column mapping` set on the `Data Connection` pane.|
 | Compression | Data compression, `None` (default), or `GZip` compression.|
 | Encoding | Data encoding, the default is UTF8. Can be any of [.NET supported encodings](/dotnet/api/system.text.encoding#remarks). |
-| Tags | A list of [tags](kusto/management/extents-overview.md#extent-tagging) to associate with the ingested data, formatted as a JSON array string. There are [performance implications](kusto/management/extents-overview.md#ingest-by-extent-tags) when using tags. |
+| Tags | A list of [tags](kusto/management/extents-overview.md#extent-tags) to associate with the ingested data, formatted as a JSON array string. There are [performance implications](kusto/management/extents-overview.md#ingest-by-extent-tags) when using tags. |
 | RawHeaders | Indicates that event source is Kafka and ADX must use byte array deserialization to read other routing properties. Value is ignored. |
 
 > [!NOTE]

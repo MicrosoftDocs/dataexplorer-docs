@@ -8,6 +8,8 @@ ms.date: 09/13/2022
 
 # Integrating Azure Functions with Azure Data Explorer using input and output bindings (preview)
 
+[!INCLUDE [real-time-analytics-connectors--note](includes/real-time-analytics-connectors--note.md)]
+
 Azure Functions allow you to run serverless code in the cloud on a schedule or in response to an event. With Azure Data Explorer input and output bindings for Azure Functions, you can integrate Azure Data Explorer into your workflows to ingest data and run queries against your cluster.
 
 ## Prerequisites

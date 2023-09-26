@@ -31,8 +31,6 @@ The soft delete process is performed using the following steps:
 
 * The deletion process is final and irreversible. It isn't possible to undo this process or recover data that has been deleted, even though the storage artifacts aren't necessarily deleted following the operation.
 
-* Soft delete is only available on clusters running Engine V3.
-
 * Soft delete is supported for native tables and materialized views. It isn't supported for external tables.
 
 * Before running soft delete, verify the predicate by running a query and checking that the results match the expected outcome. You can also run the command in `whatif` mode, which returns the number of records that are expected to be deleted.

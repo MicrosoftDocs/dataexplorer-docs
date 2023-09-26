@@ -8,7 +8,7 @@ ms.date: 04/20/2023
 
 # .alter extent tags command
 
-The command runs in the context of a specific database. It alters the specified [extent tags](extents-overview.md#extent-tagging) of all of the extents returned by the query.
+The command runs in the context of a specific database. It alters the specified [extent tags](extents-overview.md#extent-tags) of all of the extents returned by the query.
 
 The extents whose tags should be altered are specified using a Kusto query that returns a record set with a column called "ExtentId".
 

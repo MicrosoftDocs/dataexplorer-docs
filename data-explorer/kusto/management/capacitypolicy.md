@@ -110,21 +110,6 @@ For more information, see [`.show capacity`](../management/diagnostics.md#show-c
 > [!WARNING]
 > The `ClusterMinimumConcurrentOperations` should only be increased if the cluster's resources are well (low CPU, available memory). Increasing these values when resources are limited may result in resources exhaustion and will badly impact the cluster's performance.
 
-### Extents rebuild capacity
-
-For more information about extents rebuild operations, see [how materialized views work](materialized-views/materialized-view-overview.md#how-materialized-views-work).
-This setting is only relevant to Engine V2 clusters. This setting isn't relevant to [EngineV3](../../engine-v3.md) clusters.
-
-The maximum number of extents rebuild is calculated by:
-  
-```kusto
-Maximum(`ClusterMaximumConcurrentOperations`, `Number of nodes in cluster` * `MaximumConcurrentOperationsPerNode`)
-```
-
-* Default values are 50 total concurrency rebuilds and maximum 5 per node.
-* The `ExtentsRebuildCapacity` policy serves as an upper limit only. The actual value used is dynamically determined by the system, based on current cluster's conditions (memory, CPU) and an estimation of the amount of resources required by the rebuild operation. In practice, concurrency can be much lower than the value specified in capacity policy.
-* The `MaterializedViewExtentsRebuild` metric provides information about how many extents were rebuilt in each materialization cycle. For more information, see [materialized views monitoring](materialized-views/materialized-views-monitoring.md).
-
 ## Stored query results capacity
 
 |Property       |Type    |Description    |
