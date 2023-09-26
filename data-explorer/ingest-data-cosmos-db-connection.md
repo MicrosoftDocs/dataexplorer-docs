@@ -8,6 +8,8 @@ ms.date: 06/15/2023
 
 # Ingest data from Azure Cosmos DB into Azure Data Explorer
 
+[!INCLUDE [real-time-analytics-connectors--note](includes/real-time-analytics-connectors--note.md)]
+
 Azure Data Explorer supports [data ingestion](ingest-data-overview.md) from [Azure Cosmos DB for NoSql](/azure/cosmos-db/nosql/) using a [change feed](/azure/cosmos-db/change-feed). The Cosmos DB change feed data connection is an ingestion pipeline that listens to your Cosmos DB change feed and ingests the data into your Data Explorer table. The change feed listens for new and updated documents but doesn't log deletes. For general information about data ingestion in Azure Data Explorer, see [Azure Data Explorer data ingestion overview](ingest-data-overview.md).
 
 Each data connection listens to a specific Cosmos DB container and ingests data into a specified table (more than one connection can ingest in a single table). The ingestion method supports streaming ingestion (when enabled) and batch ingestion.
