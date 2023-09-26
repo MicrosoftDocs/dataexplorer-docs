@@ -44,6 +44,12 @@ Continuous background optimization of extents through merging improves compressi
 
 For more information on extent and index merging, see [Merge policy](kusto/management/mergepolicy.md).
 
+## Row store
+
+Azure Data Explorer offers an intermediate storage solution known as *row store*, which is designed for efficient ingestion of data in small portions. Row store plays a key role in streaming ingestion and ensures that data is available for query immediately upon ingestion. When you [configure streaming ingestion](ingest-data-streaming.md), data is initially ingested to row store and then moved to column store extents.
+
+For more information, see [Batching vs. streaming ingestion](ingest-data-overview.md#batching-vs-streaming-ingestion).
+
 ## Column compression
 
 Azure Data Explorer maintains data in a compressed state, reducing the amount of memory required to store and process data. This behavior results in faster query performance and more efficient use of system resources.
@@ -51,12 +57,6 @@ Azure Data Explorer maintains data in a compressed state, reducing the amount of
 Azure Data Explorer avoids vertical compression, which involves sorting data to improve compression, due to its high CPU cost in free-text or semi-structured data scenarios. Instead, you can specify the preferred data sort order for scenarios with dominant query patterns. This trade-off prioritizes quick data availability for queries.
 
 For more information on specifying data sort order, see [Row order policy](kusto/management/roworderpolicy.md).
-
-## Row store
-
-Azure Data Explorer offers an intermediate storage solution known as *row store*, designed to facilitate the efficient ingestion of data in small portions. Row store plays a key role in streaming ingestion by ensuring that these smaller data segments are readily available for query immediately after ingestion.
-
-For more information, see [Batching vs. streaming ingestion](ingest-data-overview.md#batching-vs-streaming-ingestion).
 
 ## Distributed data query
 
