@@ -3,30 +3,23 @@ title:  Cache policy (hot and cold cache)
 description: This article describes Cache policy (hot and cold cache) in Azure Data Explorer.
 ms.reviewer: orspodek
 ms.topic: reference
-ms.date: 04/25/2023
+ms.date: 08/24/2023
 ---
 # Cache policy (hot and cold cache) 
 
-Ingested data is stored in reliable storage (most commonly Azure Blob Storage),
-away from its actual processing (such as Azure Compute) nodes. To speed up queries, parts of the data is cached on processing nodes, SSD, or even in RAM. There is a sophisticated cache mechanism designed to intelligently decide which data objects to cache. The cache policy allows your cluster to describe the data artifacts that it uses, so that more important data can take priority. For example, column indexes and column data shards.
+Azure Data Explorer uses a multi-tiered data cache system to ensure fast query performance. Data is stored in reliable storage, such as Azure Blob Storage, but parts of it are cached on processing nodes, SSD, or even in RAM for faster access.
 
-The best query performance is achieved when all ingested data is cached. Sometimes, certain data doesn't justify the cost of keeping it "warm" in local SSD storage.
-For example, many teams consider that rarely accessed older log records are of lesser importance.
-They prefer to have reduced performance when querying this data, rather than pay to keep it warm all the time.
+The cache policy allows you to prioritize which data should be cached. You can differentiate between *hot data cache* and *cold data cache*. Hot data is kept in local SSD storage for faster query performance, while cold data is stored in reliable storage, which is cheaper but slower to access.
 
-The granular **cache policy** allows customers to differentiate between: **hot data cache** and **cold data cache**. The cache uses 95% of the local SSD disk to keep all data that falls into the hot data cache category. If the cache policy requires more disk space than the available local SSD disk, the most recent data will preferentially be kept in the cache. The remaining 5% of the local SSD space is used to hold data that isn't categorized as hot. 
+The cache uses 95% of the local SSD disk for hot data. If there isn’t enough space, the most recent data is preferentially kept in the cache. The remaining 5% is used for data that isn’t categorized as hot. This design ensures that queries loading lots of cold data won’t evict hot data from the cache.
 
-One useful implication of this design is that queries that load lots of cold data from reliable storage won't evict data from the hot data cache. These queries won't have a major impact on other queries involving the data in the hot data cache.
+The best query performance is achieved when all ingested data is cached. However, certain data might not warrant the expense of being kept in the hot cache. For instance, infrequently accessed old log records may be considered less crucial. In such cases, teams often opt for lower querying performance over paying to keep the data warm.
 
-The main implications of setting the hot cache policy are:
-* **Cost**: The cost of reliable storage can be dramatically lower than for local SSD. It's currently about 45 times cheaper in Azure.
-* **Performance**: Data is queried faster when it's in local SSD, particularly for range queries that scan large amounts of data.  
-
-Use the [cache policy command](./show-table-cache-policy-command.md) to manage the cache policy.
+Use management commands to alter the cache policy at the [cluster](alter-cluster-cache-policy-command.md), [database](alter-database-cache-policy-command.md), [table](alter-table-cache-policy-command.md), or [materialized view](alter-materialized-view-cache-policy-command.md) level.
 
 > [!TIP]
-> Your cluster is designed for ad-hoc queries with intermediate result sets fitting the cluster's total RAM.
->For large jobs, like map-reduce, where you want to store intermediate results in persistent storage such as an SSD, use the continuous export feature. This feature enables you to do long-running batch queries using services like HDInsight or Azure Databricks.
+> Your cluster is designed for ad hoc queries with intermediate result sets that fit in the cluster's total RAM.
+> For large jobs, like map-reduce, it can be useful to store intermediate results in persistent storage. To do so, create a [continuous export](../management/data-export/continuous-data-export.md) job. This feature enables you to do long-running batch queries using services like HDInsight or Azure Databricks.
  
 ## How cache policy is applied
 
@@ -85,6 +78,6 @@ In the example, the last 28 days of data will be on the cluster SSD and the
 additional 28 days of data will be stored in Azure blob storage.
 You can run queries on the full 56 days of data.
  
-## See also
+## Related content
 
 * [Hot windows for infrequent queries over cold data](../../hot-windows.md)

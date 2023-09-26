@@ -8,6 +8,8 @@ ms.date: 04/19/2021
 
 # Azure Data Explorer Connector for Apache Spark
 
+[!INCLUDE [real-time-analytics-connectors--note](includes/real-time-analytics-connectors--note.md)]
+
 [Apache Spark](https://spark.apache.org/) is a unified analytics engine for large-scale data processing. Azure Data Explorer is a fast, fully managed data analytics service for real-time analysis on large volumes of data.
 
 The Azure Data Explorer connector for Spark is an [open source project](https://github.com/Azure/azure-kusto-spark) that can run on any Spark cluster. It implements data source and data sink for moving data across Azure Data Explorer and Spark clusters. Using Azure Data Explorer and Apache Spark, you can build fast and scalable applications targeting data driven scenarios. For example, machine learning (ML), Extract-Transform-Load (ETL), and Log Analytics. With the connector, Azure Data Explorer becomes a valid data store for standard Spark source and sink operations, such as write, read, and writeStream.

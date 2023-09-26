@@ -8,6 +8,8 @@ ms.date: 01/02/2023
 
 # Ingest data from Azure Stream Analytics into Azure Data Explorer
 
+[!INCLUDE [real-time-analytics-connectors--note](includes/real-time-analytics-connectors--note.md)]
+
 Azure Data Explorer supports [data ingestion](ingest-data-overview.md) from [Azure Stream Analytics](https://azure.microsoft.com/services/stream-analytics/). Azure Stream Analytics is a real-time analytics and complex event-processing engine that's designed to process high volumes of fast streaming data from multiple sources simultaneously.
 
 An Azure Stream Analytics *job* consists of an input source, a transformation query, and an output connection. You can create, edit, and test Stream Analytics jobs using the [Azure portal](/azure/stream-analytics/stream-analytics-quick-create-portal), Azure Resource Manager (ARM) templates, [Azure PowerShell](/azure/stream-analytics/stream-analytics-quick-create-powershell), [.NET API](/dotnet/api/microsoft.azure.management.streamanalytics.ioutputsoperations), [REST API](/rest/api/streamanalytics/), [Visual Studio](/azure/stream-analytics/stream-analytics-quick-create-vs), and the [Stream Analytics no code editor](/azure/stream-analytics/no-code-filter-ingest-data-explorer).
