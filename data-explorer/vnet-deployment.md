@@ -373,11 +373,11 @@ The [ARMClient](https://chocolatey.org/packages/ARMClient) is used to demonstrat
               "category": "Internal Tracing",
               "endpoints": [
                 {
-                  "domainName": "ingest-kuskuseaau.australiaeast.kusto.windows.net",
+                  "domainName": "ingest-<internalTracingCluster>.<region>.kusto.windows.net",
                   "endpointDetails": [
                     {
                       "port": 443,
-                      "ipAddress": "20.70.218.111"
+                      "ipAddress": "25.24.23.22"
                     }
                   ]
                 }
