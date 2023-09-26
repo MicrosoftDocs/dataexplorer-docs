@@ -3,7 +3,7 @@ title: 'Create an Event Hubs data connection - Azure Data Explorer'
 description: Learn how to ingest data from Event Hubs into Azure Data Explorer.
 ms.topic: how-to
 ms.custom:
-ms.date: 08/24/2023
+ms.date: 09/26/2023
 ---
 
 # Create an Event Hubs data connection for Azure Data Explorer
@@ -16,12 +16,9 @@ To learn how to create the connection using the Kusto SDKs, see [Create an Event
 
 > For code samples based on previous SDK versions, see the [archived article](/previous-versions/azure/data-explorer/create-event-hubs-connection).
 
-
-
 [!INCLUDE [get-data-flow](includes/get-data-flow.md)]
 
 ## Create an event hub data connection
-
 
 In this section, you establish a connection between the event hub and your Azure Data Explorer table. As long as this connection is in place, data is transmitted from the event hub into your target table. If the event hub is moved to a different resource or subscription, you need to update or recreate the connection.
 
@@ -43,9 +40,9 @@ In this section, you establish a connection between the event hub and your Azure
 
 ### Select a data source
 
-1. In the **Get data** window, the **Source** tab is selected.
+In the **Get data** window, the **Source** tab is selected.
 
-1. Select the data source from the available list. In this example, you are ingesting data from **Event Hubs**.
+Select the data source from the available list. In this example, you are ingesting data from **Event Hubs**.
 
     :::image type="content" source="media/get-data-file/select-data-source.png" alt-text="Screenshot of get data window with source tab selected." lightbox="media/get-data-file/select-data-source.png":::
 
@@ -58,8 +55,8 @@ In this section, you establish a connection between the event hub and your Azure
 
     :::image type="content" source="media/get-data-event-hubs/configure-tab.png" alt-text="Screenshot of configure tab with fields for configuring the data source of Event Hubs in Azure Data Explorer." lightbox="media/get-data-event-hubs/configure-tab.png":::
 
-1. Fill in the following fields: 
-    
+1. Fill in the following fields:
+
     | **Setting**                | **Field description**  |
     |--------------------------|----------|
     | Subscription               | The subscription ID where the event hub resource is located.     |
@@ -67,11 +64,11 @@ In this section, you establish a connection between the event hub and your Azure
     | Event hub                  | The event hub you wish to   |
     | Consumer group             | The consumer group defined in your event   |
     | Data connection name       | The name that identifies your data connection.                 |
-    | **Advanced filters**       | 
+    | **Advanced filters**       |
     | Compression                | The compression type of the event hub messages payload.       |
     | Event system properties    | The [event hub system properties](/azure/service-bus-messaging/service-bus-amqp-protocol-guide#message-annotations). If there are multiple records per event message, the system properties are added to the first one. When adding system properties, [create](kusto/management/create-table-command.md) or [update](kusto/management/alter-table-command.md) table schema and [mapping](kusto/management/mappings.md) to include the selected properties. |
     | Event retrieval start date | The data connection retrieves existing Event Hubs events created after the *Event retrieval start date*. Only events retained by Event Hubs's retention period can be retrieved. If the *Event retrieval start date* isn't specified, the default time is the time at which the data connection is created.   |
-    
+
 1. Select **Next**
 
 ### Inspect the data
@@ -80,19 +77,21 @@ The **Inspect** tab opens with a preview of the data.
 
 :::image type="content" source="media/get-data-event-hubs/inspect-data.png" alt-text="Screenshot of inspecting data for ingesting from Event Hubs to Azure Data Explorer." lightbox="media/get-data-event-hubs/inspect-data.png":::
 
-1. If the data you see in the preview window isn't complete, you may need more data to create a table with all necessary data fields. Use the following commands to fetch new data from your event hub:
+Optionally:
 
-    * **Discard and fetch new data**: Discards the data presented and searches for new events.
-    * **Fetch more data**: Searches for more events in addition to the events already found.
+* If the data you see in the preview window isn't complete, you may need more data to create a table with all necessary data fields. Use the following commands to fetch new data from your event hub:
+
+  * **Discard and fetch new data**: Discards the data presented and searches for new events.
+  * **Fetch more data**: Searches for more events in addition to the events already found.
 
     > [!NOTE]
     > To see a preview of your data, your event hub must be sending events.
-1. Select **Command viewer** to view and copy the automatic commands generated from your inputs.
-1. The data format is automatically inferred. You can change the data format by selecting the desired format from the dropdown. See [Data formats supported by Azure Data Explorer for ingestion](ingestion-supported-formats.md).
-1. Optionally, [Edit columns](#edit-columns).
-1. Optionally, explore [Advanced options based on data type](#advanced-options-based-on-data-type).
-1. Select **Finish** to complete the ingestion process.
 
+* Select **Command viewer** to view and copy the automatic commands generated from your inputs.
+* Use the **Schema definition file** dropdown to change the file that the schema is inferred from.
+* Change the automatically inferred data format by selecting the desired format from the dropdown. See [Data formats supported by Azure Data Explorer for ingestion](ingestion-supported-formats.md).
+* [Edit columns](#edit-columns).
+* Explore [Advanced options based on data type](#advanced-options-based-on-data-type).
 
 [!INCLUDE [get-data-edit-columns](includes/get-data-edit-columns.md)]
 
@@ -102,13 +101,11 @@ The **Inspect** tab opens with a preview of the data.
 
 [!INCLUDE [get-data-advanced-options](includes/get-data-advanced-options.md)]
 
-
 ### Summary
 
 In the **Data preparation** window, all three steps are marked with green check marks when data ingestion finishes successfully. You can view the commands that were used for each step, or select a card to query, visualize, or drop the ingested data.
 
 :::image type="content" source="media/get-data-event-hubs/summary.png" alt-text="Summary screenshot of getting data from Event Hubs in Azure Data Explorer." lightbox="media/get-data-event-hubs/summary.png":::
-
 
 ### [Wizard](#tab/wizard)
 

@@ -3,7 +3,7 @@ title: Get data from a file
 description: Learn how to get data from a local file in Azure Data Explorer.
 ms.reviewer: sharmaanshul
 ms.topic: how-to
-ms.date: 08/28/2023
+ms.date: 09/26/2023
 ---
 # Get data from file
 
@@ -28,9 +28,9 @@ For general information on data ingestion, see [Azure Data Explorer data ingesti
 
 ## Select a data source
 
-1. In the **Get data** window, the **Source** tab is selected.
+In the **Get data** window, the **Source** tab is selected.
 
-1. Select the data source from the available list. In this example, you are ingesting data from a **Local file**.
+Select the data source from the available list. In this example, you are ingesting data from a **Local file**.
 
     :::image type="content" source="media/get-data-file/select-data-source.png" alt-text="Screenshot of get data window with source tab selected." lightbox="media/get-data-file/select-data-source.png":::
 
@@ -41,7 +41,7 @@ For general information on data ingestion, see [Azure Data Explorer data ingesti
     > [!NOTE]
     > Table names can be up to 1024 characters including spaces, alphanumeric, hyphens, and underscores. Special characters aren't supported.
 
-1. Either drag files into the window, or select **Browse for files**. 
+1. Either drag files into the window, or select **Browse for files**.
 
     > [!NOTE]
     > You can add up to 1,000 files. Each file can be a max of 1 GB uncompressed.
@@ -54,15 +54,17 @@ For general information on data ingestion, see [Azure Data Explorer data ingesti
 
 The **Inspect** tab opens with a preview of the data.
 
+To complete the ingestion process, select **Finish**.
+
 :::image type="content" source="media/get-data-file/inspect-data.png" alt-text="Screenshot of the inspect tab." lightbox="media/get-data-file/inspect-data.png":::
 
-1. Select **Command viewer** to view and copy the automatic commands generated from your inputs.
-1. The schema definition file is used for schema creation. If you are ingesting more than one file, choose the schema definition file from the dropdown.
-1. The data format is automatically inferred. You can change the data format by selecting the desired format from the dropdown. See [Data formats supported by Azure Data Explorer for ingestion](ingestion-supported-formats.md).
-1. Optionally, [Edit columns](#edit-columns).
-1. Optionally, explore [Advanced options based on data type](#advanced-options-based-on-data-type).
-1. Select **Finish** to complete the ingestion process.
+Optionally:
 
+* Select **Command viewer** to view and copy the automatic commands generated from your inputs.
+* Use the **Schema definition file** dropdown to change the file that the schema is inferred from.
+* Change the automatically inferred data format by selecting the desired format from the dropdown. See [Data formats supported by Azure Data Explorer for ingestion](ingestion-supported-formats.md).
+* [Edit columns](#edit-columns).
+* Explore [Advanced options based on data type](#advanced-options-based-on-data-type).
 
 [!INCLUDE [get-data-edit-columns](includes/get-data-edit-columns.md)]
 

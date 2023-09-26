@@ -28,7 +28,6 @@ Select the tab that corresponds with your desired ingestion method.
 * An Azure Data Explorer cluster and database. [Create a cluster and database](create-cluster-and-database.md).
 * A [storage account](/azure/storage/common/storage-quickstart-create-account?tabs=azure-portal).
 
-
 1. From the left menu, select **Query**.
 
 1. Right-click on the database where you want to ingest the data. Select **Get data**.
@@ -37,9 +36,9 @@ Select the tab that corresponds with your desired ingestion method.
 
 ## Select a data source
 
-1. In the **Get data** window, the **Source** tab is selected.
+In the **Get data** window, the **Source** tab is selected.
 
-1. Select the data source from the available list. In this example, you're ingesting data from **Azure storage**.
+Select the data source from the available list. In this example, you're ingesting data from **Azure storage**.
 
     :::image type="content" source="media/get-data-storage/select-data-source.png" alt-text="Screenshot of get data window with source tab selected." lightbox="media/get-data-storage/select-data-source.png":::
 
@@ -80,14 +79,18 @@ Select the tab that corresponds with your desired ingestion method.
 
 The **Inspect** tab opens with a preview of the data.
 
+To complete the ingestion process, select **Finish**.
+
 :::image type="content" source="media/get-data-storage/inspect-data.png" alt-text="Screenshot of the inspect tab." lightbox="media/get-data-storage/inspect-data.png":::
 
-1. Select **Command viewer** to view and copy the automatic commands generated from your inputs.
-1. The schema definition file is used for schema creation. If you're ingesting more than one blob, choose the schema definition file from the dropdown.
-1. The data format is automatically inferred. You can change the data format by selecting the desired format from the dropdown. See [Data formats supported by Azure Data Explorer for ingestion](ingestion-supported-formats.md).
-1. Optionally, [Edit columns](#edit-columns).
-1. Optionally, explore [Advanced options based on data type](#advanced-options-based-on-data-type).
-1. Select **Finish** to complete the ingestion process.
+Optionally:
+
+* Select **Command viewer** to view and copy the automatic commands generated from your inputs.
+* Use the **Schema definition file** dropdown to change the file that the schema is inferred from.
+* Change the automatically inferred data format by selecting the desired format from the dropdown. See [Data formats supported by Azure Data Explorer for ingestion](ingestion-supported-formats.md).
+* [Edit columns](#edit-columns).
+* Explore [Advanced options based on data type](#advanced-options-based-on-data-type).
+
 [!INCLUDE [get-data-edit-columns](includes/get-data-edit-columns.md)]
 
 :::image type="content" source="media/get-data-storage/edit-columns.png" alt-text="Screenshot of columns open for editing." lightbox="media/get-data-storage/edit-columns.png":::
