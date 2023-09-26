@@ -54,7 +54,7 @@ For more information on specifying data sort order, see [Row order policy](kusto
 
 ## Row store
 
-Row store is an intermediate storage mechanism that allows efficient ingestion of data in small portions and makes the data immediately available for query. This scenario is referred to as streaming ingestion. 
+Azure Data Explorer offers an intermediate storage solution known as *row store*, designed to facilitate the efficient ingestion of data in small portions. Row store plays a key role in streaming ingestion by ensuring that these smaller data segments are readily available for query immediately after ingestion.
 
 For more information, see [Batching vs. streaming ingestion](ingest-data-overview.md#batching-vs-streaming-ingestion).
 
