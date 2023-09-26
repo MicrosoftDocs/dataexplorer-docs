@@ -97,7 +97,7 @@ Now that your service principal application registration is created, you need to
     > [!NOTE]
     > After creating the application registration, there may be a several minute delay until Azure Data Explorer can reference it. If, when executing the command, you receive an error that the application is not found, wait and try again.
 
-For more information, see [security roles management](kusto/management/security-roles.md) and [ingestion permissions](kusto/api/netfx/kusto-ingest-client-permissions.md).
+For more information, see [Role-based access control](kusto/access-control/role-based-access-control.md).
 
 ## Using application credentials to access a database
 

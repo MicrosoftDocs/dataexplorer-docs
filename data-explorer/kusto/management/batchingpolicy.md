@@ -16,7 +16,7 @@ The downside to doing batching before ingestion is the forced delay. Therefore, 
 When you define the [`IngestionBatching`](./show-table-ingestion-batching-policy.md) policy, you'll need to find a balance between optimizing for throughput and time delay. This policy applies to queued ingestion. It defines the maximum forced delay allowed when batching small blobs together. To learn more about using batching policy commands, and optimizing for throughput, see:
 
 * [Ingestion batching policy command reference](./show-table-ingestion-batching-policy.md)
-* [Ingestion best practices - optimizing for throughput](../api/netfx/kusto-ingest-best-practices.md#optimizing-for-throughput)
+* [Ingestion best practices - optimizing for throughput](../api/netfx/kusto-ingest-best-practices.md#optimize-for-throughput)
 
 ## Sealing a batch
 

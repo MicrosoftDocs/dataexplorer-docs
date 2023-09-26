@@ -3,7 +3,7 @@ title:  Query/management HTTP request
 description: This article describes Query/management HTTP request in Azure Data Explorer.
 ms.reviewer: orspodek
 ms.topic: reference
-ms.date: 01/27/2020
+ms.date: 09/12/2023
 ---
 # Query/management HTTP request
 
@@ -66,7 +66,7 @@ or as part of the body, depending on whether GET or POST is used.
 |------------|--------------------------------------------------------------------------------------------|------------------|
 |`csl`       |Text of the query or management command to execute                                             |Required          |
 |`db`        |Name of the database in scope that is the target of the query or management command            |Optional for some management commands. <br>Required for other commands and all queries. </br>                                                                   |
-|`properties`|Provides client request properties that modify how the request is processed and its results. For more information, see [client request properties](../netfx/request-properties.md)                                               | Optional         |
+|`properties`|Provides request properties that modify how the request is processed and its results. For more information, see [Request properties](../netfx/request-properties.md)                                               | Optional         |
 
 ## GET query parameters
 
@@ -151,3 +151,29 @@ This example shows how to create a request that sends the query above, using [cu
     ```
 
 1. Read the response according to [this specification](response.md).
+
+### Set client request properties and query parameters
+
+In the following example body, the query in the `csl` field declares two parameters named `n` and `d`. The values for those query parameters are specified within the `Parameters` field under the `properties` field in the request body. The `Options` field defines [client request properties](../netfx/request-properties.md).
+
+> [!NOTE]
+> Non-string and non-long parameters must be expressed as KQL literals in string format.
+
+```json
+{
+    "db": "Samples",
+    "csl": "declare query_parameters (n:long, d:dynamic); StormEvents | where State in (d) | top n by StartTime asc",
+    "properties": {
+        "Options": {
+            "maxmemoryconsumptionperiterator": 68719476736,
+            "max_memory_consumption_per_query_per_node": 68719476736,
+            "servertimeout": "50m"
+        },
+        "Parameters": {
+            "n": 10, "d": "dynamic([\"ATLANTIC SOUTH\"])"
+        }
+    }
+}
+```
+
+For more information, see [Query parameters](../netfx/request-properties.md#query-parameters).

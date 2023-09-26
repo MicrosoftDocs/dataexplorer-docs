@@ -819,6 +819,16 @@
       "source_path": "data-explorer/ingest-from-container.md",
       "redirect_url": "/azure/data-explorer/get-data-storage",
       "redirect_document_id": true
+    },
+    {
+      "source_path": "data-explorer/kusto/api/netfx/kusto-ingest-client-permissions.md",
+      "redirect_url": "/azure/data-explorer/kusto/api/netfx/about-kusto-ingest",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/api/netfx/request-properties.md",
+      "redirect_url": "/azure/data-explorer/kusto/api/rest/request-properties",
+      "redirect_document_id": true
     }
   ]
 }
