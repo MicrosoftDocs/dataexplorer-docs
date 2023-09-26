@@ -3,7 +3,7 @@ title: How Azure Data Explorer works
 description: 'Learn more about how Azure Data Explorer works.'
 ms.reviewer: avnera
 ms.topic: conceptual
-ms.date: 09/12/2023
+ms.date: 09/26/2023
 ---
 # How Azure Data Explorer works
 
@@ -51,6 +51,12 @@ Azure Data Explorer maintains data in a compressed state, reducing the amount of
 Azure Data Explorer avoids vertical compression, which involves sorting data to improve compression, due to its high CPU cost in free-text or semi-structured data scenarios. Instead, you can specify the preferred data sort order for scenarios with dominant query patterns. This trade-off prioritizes quick data availability for queries.
 
 For more information on specifying data sort order, see [Row order policy](kusto/management/roworderpolicy.md).
+
+## Row store
+
+Row store is an intermediate storage mechanism that allows efficient ingestion of data in small portions and makes the data immediately available for query. This scenario is referred to as streaming ingestion. 
+
+For more information, see [Batching vs. streaming ingestion](ingest-data-overview.md#batching-vs-streaming-ingestion).
 
 ## Distributed data query
 
