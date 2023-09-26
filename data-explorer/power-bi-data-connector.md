@@ -104,7 +104,7 @@ In the following steps, we'll be using the StormEvents table from our [help clus
     | Limit query result record number| The maximum number of records to return in the result |`1000000` |
     | Limit query result data size | The maximum data size in bytes to return in the result | `100000000` |
     | Disable result set truncation | Enable/disable result truncation by using the notruncation request option | `true` |
-    | Additional set statements | Sets query options for the duration of the query. Query options control how a query executes and returns results. | `set query_datascope=hotcache` |
+    | Additional set statements | Sets request properties for the duration of the query. Request properties control how a query executes and returns results. | `set query_datascope=hotcache` |
 
 1. On the **Navigator** screen, expand the **Samples** database, select **StormEvents**, and then select **Load Data**.
 

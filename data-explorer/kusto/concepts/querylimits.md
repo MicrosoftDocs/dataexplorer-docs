@@ -48,7 +48,7 @@ There are several strategies for dealing with this error.
 * Reduce the result set size by modifying the query to only return interesting data. This strategy is useful when the initial failing query is too "wide". For example, the query doesn't project away data columns that aren't needed.
 * Reduce the result set size by shifting post-query processing, such as aggregations, into the query itself. The strategy is useful in scenarios where the output of the query is fed to another processing system, and that then does other aggregations.
 * Switch from queries to using [data export](../management/data-export/index.md) when you want to export large sets of data from the service.
-* Instruct the service to suppress this query limit using `set` statements listed below or flags in [client request properties](../api/netfx/request-properties.md).
+* Instruct the service to suppress this query limit using `set` statements listed below or flags in [client request properties](../api/netfx/client-request-properties.md).
 
 Methods for reducing the result set size produced by the query include:
 
@@ -97,7 +97,7 @@ in a cross-cluster query, with similar effects.
 
 ### Setting multiple result truncation properties
 
-The following apply when using `set` statements, and/or when specifying flags in [client request properties](../api/netfx/request-properties.md).
+The following apply when using `set` statements, and/or when specifying flags in [client request properties](../api/netfx/client-request-properties.md).
 
 * If `notruncation` is set, and any of `truncationmaxsize`, `truncationmaxrecords`, or `query_take_max_records` are also set - `notruncation` is ignored.
 * If `truncationmaxsize`, `truncationmaxrecords` and/or `query_take_max_records` are set multiple times - the *lower* value for each property applies.
@@ -215,7 +215,7 @@ At other times, you may want to limit the CPU resources used for a particular
 query. If you run a "background job", for example, the system might tolerate higher
 latencies to give concurrent inline queries high priority.
 
-Kusto supports specifying two [client request properties](../api/netfx/request-properties.md) when running a query.
+Kusto supports specifying two [request properties](../api/rest/request-properties.md) when running a query.
 The properties are *query_fanout_threads_percent* and *query_fanout_nodes_percent*.
 Both properties are integers that default to the maximum value (100), but may be reduced for a specific query to some other value.
 

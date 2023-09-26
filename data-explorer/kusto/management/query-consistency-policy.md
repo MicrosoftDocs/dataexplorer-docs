@@ -14,7 +14,7 @@ A workload group's query consistency policy allows specifying options that contr
 Each option consists of:
 
 * A typed `Value` - the value of the limit.
-* `IsRelaxable` - a boolean value that defines if the option can be relaxed by the caller, as part of the request's [Client request properties](../api/netfx/request-properties.md). Default is `true`
+* `IsRelaxable` - a boolean value that defines if the option can be relaxed by the caller, as part of the request's [request properties](../api/rest/request-properties.md). Default is `true`.
 
 The following limits are configurable:
 
