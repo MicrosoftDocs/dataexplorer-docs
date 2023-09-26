@@ -157,7 +157,7 @@ Base Class: IngestClientException
 |Size         | long    | The size of the ingestion source
 |MaxSize      | long    | The maximal size allowed for ingestion
 
-If an ingestion source exceeds the maximal size of 4GB, then the exception is thrown. The size validation can be overridden by the `IgnoreSizeLimit` flag in the [IngestionProperties class](kusto-ingest-client-reference.md#class-kustoingestionproperties). However, it's not recommended [to ingest single sources larger than 1 GB](about-kusto-ingest.md#ingestion-best-practices).
+If an ingestion source exceeds the maximal size of 4GB, then the exception is thrown. The size validation can be overridden by the `IgnoreSizeLimit` flag in the [IngestionProperties class](kusto-ingest-client-reference.md#class-kustoingestionproperties). However, we don't recommend ingesting single sources larger than 1 GB. For more information, see [Kusto Ingest best practices](kusto-ingest-best-practices.md).
 
 ### UploadFileToTempBlobIngestClientException
 
