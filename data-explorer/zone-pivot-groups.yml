@@ -1,14 +1,6 @@
 # YamlMime:ZonePivotGroups
 # GitHub repository = 'MicrosoftDocs/dataexplorer-docs-pr'
 groups:
-- id: kql-flavors
-  title: Kusto Query Language flavors
-  prompt: Select your Azure service
-  pivots:
-  - id: azuredataexplorer
-    title: Azure Data Explorer
-  - id: azuremonitor
-    title: Azure Monitor
 - id: kql-flavors-all
   title: Kusto Query Language flavors
   prompt: Select your service
@@ -18,7 +10,20 @@ groups:
   - id: azuremonitor
     title: Azure Monitor
   - id: fabric
-    title: Microsoft Fabric  
-   
-  
-  
+    title: Microsoft Fabric
+- id: kql-flavors-adx-fabric
+  title: Kusto Query Language flavors
+  prompt: Select your Azure service
+  pivots:
+  - id: azuredataexplorer
+    title: Azure Data Explorer
+  - id: fabric
+    title: Microsoft Fabric
+- id: kql-flavors
+  title: Kusto Query Language flavors
+  prompt: Select your Azure service
+  pivots:
+  - id: azuredataexplorer
+    title: Azure Data Explorer
+  - id: azuremonitor
+    title: Azure Monitor

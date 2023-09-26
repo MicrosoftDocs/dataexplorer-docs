@@ -8,6 +8,8 @@ ms.reviewer: ramacg
 
 # Ingest data from OpenTelemetry to Azure Data Explorer
 
+[!INCLUDE [real-time-analytics-connectors--note](includes/real-time-analytics-connectors--note.md)]
+
 [OpenTelemetry](https://opentelemetry.io/docs/concepts/what-is-opentelemetry/) (OTel) is an open framework for application observability. The instrumentation is hosted by the Cloud Native Computing Foundation (CNCF), which provides standard interfaces for observability data, including [metrics](https://opentelemetry.io/docs/concepts/observability-primer/#reliability--metrics), [logs](https://opentelemetry.io/docs/concepts/observability-primer/#logs), and [traces](https://opentelemetry.io/docs/concepts/observability-primer/#distributed-traces). The OTel Collector is made up of the following three components: **receivers** deal with how to get data into the Collector, **processors** determine what to do with received data, and **exporters** are responsible for where to send the received data.
 
 The [Azure Data Explorer exporter](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/exporter/azuredataexplorerexporter) supports ingestion of data from many receivers into Azure Data Explorer. 
