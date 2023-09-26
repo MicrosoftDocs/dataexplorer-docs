@@ -30,7 +30,7 @@ The query results cache returns results only for queries that are considered "id
 
 * The two queries have the same representation (as UTF-8 strings).
 * The two queries are made to the same database.
-* The two queries share the same [client request properties](../api/netfx/request-properties.md). The following properties are ignored for caching purposes:
+* The two queries share the same [client request properties](../api/netfx/client-request-properties.md). The following properties are ignored for caching purposes:
   * [ClientRequestId](../api/netfx/request-properties.md#clientrequestid-x-ms-client-request-id)
   * [Application](../api/netfx/request-properties.md#application-x-ms-app)
   * [User](../api/netfx/request-properties.md#user-x-ms-user)

@@ -13,7 +13,7 @@ For example, the command
 can retrieve 1000 CSV-formatted blobs from Azure Blob Storage, parse
 them, and ingest them together into a single target table.
 Data is appended to the table
-without affecting existing records, and without modifying the table's schema. Minimal required permission levels are required so that you can ingest data into all existing tables in a database or into a specific existing table. For more information, see [Permissions on the Engine Service](../../api/netfx/kusto-ingest-client-permissions.md#permissions-on-the-engine-service).
+without affecting existing records, and without modifying the table's schema.
 
 ## Permissions
 

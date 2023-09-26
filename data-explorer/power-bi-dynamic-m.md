@@ -65,7 +65,7 @@ First, set up a connector for Power BI.
     | Limit query result record number| `300000` | The maximum number of records to return in the result |
     | Limit query result data size | `4194304` | The maximum data size in bytes to return in the result |
     | Disable result set truncation | `true` | Enable/disable result truncation by using the notruncation request option |
-    | Additional set statements | `set query_datascope=hotcache` | Sets query options for the duration of the query. Query options control how a query executes and returns results. |
+    | Additional set statements | `set query_datascope=hotcache` | Sets request properties for the duration of the query. Request properties control how a query executes and returns results. |
 
 1. If you don't already have a connection to the help cluster, sign in. Sign in with an organizational account, then select **Connect**.
 
