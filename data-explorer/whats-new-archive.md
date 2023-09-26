@@ -263,7 +263,7 @@ Welcome to what's new in Azure Data Explorer archive. This article is an archive
 |--|--|
 | [.alter extent tags retention policy](kusto/management/alter-extent-tags-retention-policy.md) | New article.
 | [.delete extent tags retention policy](kusto/management/delete-extent-tags-retention-policy.md) | New article.
-| [Extent tags retention policy](kusto/management/extent-tags-retention-policy.md) | New article. The extent tags retention policy controls the mechanism that automatically removes [extent tags](kusto/management/extents-overview.md#extent-tagging) from tables, based on the age of the extents.
+| [Extent tags retention policy](kusto/management/extent-tags-retention-policy.md) | New article. The extent tags retention policy controls the mechanism that automatically removes [extent tags](kusto/management/extents-overview.md#extent-tags) from tables, based on the age of the extents.
 | [.show extent tags retention policy](kusto/management/show-extent-tags-retention-policy.md) | New article.
 | [Stored query results](kusto/management/stored-query-results.md) | Updated article. General Availability.
 

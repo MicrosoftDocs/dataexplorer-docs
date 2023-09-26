@@ -6,8 +6,8 @@ items:
     items:
       - name: What is Azure Data Explorer?
         href: data-explorer-overview.md
-      - name: EngineV3
-        href: engine-v3.md
+      - name: How Azure Data Explorer works
+        href: how-it-works.md
       - name: Get started for free
         href: start-for-free.md
       - name: What's new

@@ -56,7 +56,7 @@ For more information on permissions, see [Kusto role-based access control](../..
 |`folder` | string | The folder to assign to the table. If the table already exists, this property overwrites the table's folder.|
 |`ingestIfNotExists` | string | If specified, ingestion fails if the table already has data tagged with an `ingest-by:` tag with the same value. For more information, see [ingest-by: tags](../../../kusto/management/extents-overview.md#ingest-by-extent-tags).|
 |`policy_ingestiontime` | bool | If `true`, the [Ingestion Time Policy](../show-table-ingestion-time-policy-command.md) will be enabled on the table. The default is `true`.|
-|`tags` | string | A JSON string that represents a list of [tags](../extents-overview.md#extent-tagging) to associate with the created extent. |
+|`tags` | string | A JSON string that represents a list of [tags](../extents-overview.md#extent-tags) to associate with the created extent. |
 |`docstring` | string | A description used to document the table.|
 |`distributed` | bool | If `true`, the command ingests from all nodes executing the query in parallel. Default is `false`. See [performance tips](#performance-tips).|
 |`persistDetails` |A Boolean value that, if specified, indicates that the command should persist the detailed results for retrieval by the [.show operation details](../operations.md#show-operation-details) command. Defaults to `false`. |`with (persistDetails=true)`|
