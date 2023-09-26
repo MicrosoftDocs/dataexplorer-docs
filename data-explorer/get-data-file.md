@@ -32,7 +32,7 @@ In the **Get data** window, the **Source** tab is selected.
 
 Select the data source from the available list. In this example, you are ingesting data from a **Local file**.
 
-    :::image type="content" source="media/get-data-file/select-data-source.png" alt-text="Screenshot of get data window with source tab selected." lightbox="media/get-data-file/select-data-source.png":::
+:::image type="content" source="media/get-data-file/select-data-source.png" alt-text="Screenshot of get data window with source tab selected." lightbox="media/get-data-file/select-data-source.png":::
 
 ### Configure tab
 
