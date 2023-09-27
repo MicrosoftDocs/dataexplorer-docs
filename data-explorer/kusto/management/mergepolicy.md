@@ -1,7 +1,7 @@
 ---
 title: Extents merge policy
 description: Learn how to use the merge policy to define how extents in a cluster are merged.
-ms.reviewer: orspodek
+ms.reviewer: ziham1531991
 ms.topic: reference
 ms.date: 08/24/2023
 ---
