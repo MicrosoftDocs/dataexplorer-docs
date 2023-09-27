@@ -152,7 +152,12 @@ Event Grid ingestion is a pipeline that listens to Azure storage, and updates yo
 * **Functionality:** Ingestion
 
 * **Ingestion type supported:** Batching, Streaming
+::: zone pivot="azuredataexplorer"
 * **Documentation:** [Azure Event Hubs data connection](ingest-data-event-hub-overview.md)
+::: zone-end
+::: zone pivot="fabric"
+* **Documentation:** [Get data from Azure Event Hubs](/fabric/real-time-analytics/get-data-event-hub)
+::: zone-end
 
 ## Azure Functions
 
