@@ -75,6 +75,8 @@ Select the data source from the available list. In this example, you are ingesti
 
 The **Inspect** tab opens with a preview of the data.
 
+To complete the ingestion process, select **Finish**.
+
 :::image type="content" source="media/get-data-event-hubs/inspect-data.png" alt-text="Screenshot of inspecting data for ingesting from Event Hubs to Azure Data Explorer." lightbox="media/get-data-event-hubs/inspect-data.png":::
 
 Optionally:
