@@ -3,7 +3,7 @@ title:  Kusto Data library best practices
 description: This article describes best practices for Kusto Data client library.
 ms.reviewer: orspodek
 ms.topic: reference
-ms.date: 09/07/2023
+ms.date: 09/27/2023
 ---
 # Kusto Data library best practices
 
@@ -19,7 +19,7 @@ The default database property in the Kusto client provider isn't thread-safe. We
 
 ## Dispose of the client and request results
 
-The Kusto client and request results objects should be disposed of once they're no longer needed. This disposal is essential for scalability, as request holds on to essential network resources and doesn't release them until either disposed or garbage-collected.
+Although the Kusto client object is designed for use with multiple requests, it should be disposed of when it's no longer needed to send more requests. Likewise, request results objects should be disposed of once they've fulfilled their purpose. The correct disposal of these objects is key for maintaining scalability, as they retain essential network resources until they're explicitly disposed of or subjected to garbage collection.
 
 ## Related content
 
