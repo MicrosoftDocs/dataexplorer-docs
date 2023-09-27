@@ -8,7 +8,7 @@ ms.date: 08/09/2023
 
 # Azure Data Explorer connector for Microsoft :::no-loc text="Power Automate":::
 
-[!INCLUDE [real-time-analytics-connectors--note](includes/real-time-analytics-connectors--note.md)]
+[!INCLUDE [real-time-analytics-connectors-note](includes/real-time-analytics-connectors-note.md)]
 
 The Azure Data Explorer connector for :::no-loc text="Power Automate"::: (previously Microsoft Flow) enables you to orchestrate and schedule flows, send notifications, and alerts, as part of a scheduled or triggered task.
 
