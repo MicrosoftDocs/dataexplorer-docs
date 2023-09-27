@@ -9,7 +9,7 @@ ms.date: 11/08/2021
 ---
 # Ingest data from Apache Kafka into Azure Data Explorer
 
-[!INCLUDE [real-time-analytics-connectors--note](includes/real-time-analytics-connectors--note.md)]
+[!INCLUDE [real-time-analytics-connectors-note](includes/real-time-analytics-connectors-note.md)]
 
 Azure Data Explorer supports [data ingestion](ingest-data-overview.md) from [Apache Kafka](http://kafka.apache.org/documentation/). Apache Kafka is a distributed streaming platform for building real-time streaming data pipelines that reliably move data between systems or applications. [Kafka Connect](https://docs.confluent.io/3.0.1/connect/intro.html#kafka-connect) is a tool for scalable and reliable streaming of data between Apache Kafka and other data systems. The Azure Data Explorer [Kafka Sink](https://github.com/Azure/kafka-sink-azure-kusto/blob/master/README.md) serves as the connector from Kafka and doesn't require using code. Download the sink connector jar from this [Git repo](https://github.com/Azure/kafka-sink-azure-kusto/releases) or [Confluent Connector Hub](https://www.confluent.io/hub/microsoftcorporation/kafka-sink-azure-kusto).
 
@@ -53,11 +53,11 @@ This service principal will be the identity leveraged by the connector to write 
 
     ```json
     {
-      "appId": "fe7280c7-5705-4789-b17f-71a472340429",
+      "appId": "1234abcd-e5f6-g7h8-i9j0-1234kl5678mn",
       "displayName": "kusto-kafka-spn",
       "name": "http://kusto-kafka-spn",
-      "password": "29c719dd-f2b3-46de-b71c-4004fb6116ee",
-      "tenant": "42f988bf-86f1-42af-91ab-2d7cd011db42"
+      "password": "1234abcd-e5f6-g7h8-i9j0-1234kl5678mn",
+      "tenant": "1234abcd-e5f6-g7h8-i9j0-1234kl5678mn"
     }
     ```
 
