@@ -148,7 +148,7 @@ external_table("ExternalTable")
 
 ### File filtering logic
 
-When querying an external table, the query engine improves performance by filtering out irrelevant external storage files. The process of iterating files and deciding whether a file should be processed is as follows:
+When querying an external table, performance is improved by filtering out irrelevant external storage files. The process of iterating files and deciding whether a file should be processed is as follows:
 
 1. Build a URI pattern that represents a place where files are found. Initially, the URI pattern equals a connection string provided as part of the external table definition. If there are any partitions defined, they're rendered using *PathFormat*, then appended to the URI pattern.
 
@@ -158,7 +158,7 @@ When querying an external table, the query engine improves performance by filter
    * Blob name starts with `NamePrefix`, if such a property is defined.
    * Blob name ends with `FileExtension`, if such a property is defined.
 
-Once all the conditions are met, the file is fetched and processed by the query engine.
+Once all the conditions are met, the file is fetched and processed.
 
 > [!NOTE]
 > Initial URI pattern is built using query predicate values. This works best for a limited set of string values as well as for a closed time ranges.

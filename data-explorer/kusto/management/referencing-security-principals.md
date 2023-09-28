@@ -47,7 +47,7 @@ Similarly, you can reference a security group with the group email address in [U
 
 ### Examples
 
-The following example uses the user UPN to define a principal the user role on the `Test` database. The tenant information isn't specified, so the query engine will attempt to resolve the Azure AD tenant using the UPN.
+The following example uses the user UPN to define a principal the user role on the `Test` database. The tenant information isn't specified, so your cluster will attempt to resolve the Azure AD tenant using the UPN.
 
 ```kusto
 .add database Test users ('aaduser=imikeoein@fabrikam.com') 'Test user (AAD)'

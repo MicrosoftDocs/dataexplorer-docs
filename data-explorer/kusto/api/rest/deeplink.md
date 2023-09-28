@@ -79,7 +79,7 @@ Here are a few examples for links:
 
 This REST API performs redirection that installs and runs the
 Kusto.Explorer desktop client tool with specially-crafted startup
-parameters that open a connection to a specific Kusto engine cluster
+parameters that open a connection to a specific cluster
 and execute a query against that cluster.
 
 See [Deep-linking with Kusto.Explorer](../../tools/kusto-explorer-using.md#deep-linking-queries)
