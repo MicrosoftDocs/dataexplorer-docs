@@ -33,6 +33,7 @@ You must have at least [Database Admin](access-control/role-based-access-control
 |Name|Type|Required|Description|
 |--|--|--|--|
 |*MaterializedViewName*|string|&check;|The name of the materialized view for which to turn on or off the row level security policy.|
+|*Query*| string | &check; | The query to run. For more information, see [row_level_security policy](rowlevelsecuritypolicy.md).|
 
 ### Example
 
