@@ -23,6 +23,6 @@ We recommend using the Parquet data format to optimize query performance for Azu
 
 * Parquet is a columnar storage format, meaning that data is stored in columns rather than rows. Queries that only need to access certain columns of the data can be much more efficient in Parquet, as only the relevant columns need to be read from Azure Storage.
 
-* Parquet files usually contain metadata, which is used by the query engine to significantly speed up query processing. With metadata, the query engine can quickly retrieve information such as count, min/max per column, and other statistics for each blob, without having to scan all of the rows.
+* Parquet files usually include metadata, which significantly speeds up query processing. This metadata allows for rapid retrieval of essential information like column counts, minimum and maximum values, and other statistics for each data block, eliminating the need to scan through all rows.
 
-* When running a query with filters, the metadata in Parquet files can be used to identify which files or parts of files contain relevant data, allowing the query engine to skip over irrelevant pieces of data and only process the necessary parts, resulting in faster query processing.
+* When running filtered queries, Parquet file metadata can be used to identify files or sections of files that contain relevant data. This ability means only the necessary data needs to be processed, which leads to faster query performance.

@@ -27,7 +27,7 @@ The function accepts a dynamic array containing the names of the packages to che
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-| *packages* | dynamic | | A dynamic array containing the names of the packages. Default is empty list to retrieve only the engine version |
+| *packages* | dynamic | | A dynamic array containing the names of the packages. Default is empty list to retrieve only the Python engine version. |
 
 ## Function definition
 

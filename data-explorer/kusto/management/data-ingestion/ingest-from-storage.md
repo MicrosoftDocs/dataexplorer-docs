@@ -72,7 +72,7 @@ with an empty (zero-valued) extent ID.
 
 ## Examples
 
-The next example instructs the engine to read two blobs from Azure Blob Storage
+The next example instructs your cluster to read two blobs from Azure Blob Storage
 as CSV files, and ingest their contents into table `T`. The `...` represents
 an Azure Storage shared access signature (SAS) which gives read access to each
 blob. Note also the use of obfuscated strings (the `h` in front of the string

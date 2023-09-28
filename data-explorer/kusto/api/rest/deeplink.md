@@ -8,11 +8,11 @@ ms.date: 10/30/2019
 # UI deep links
 
 UI deep links are URIs that, when opened in a web browser, result in automatically
-opening a UI tool (such as Kusto.Explorer or Kusto.WebExplorer) in a way that pre-selects
+opening a UI tool (such as Kusto.Explorer or Kusto.WebExplorer) in a way that preselects
 the desired Kusto cluster (and optionally database).
 
-For example, when a user clicks [https://help.kusto.windows.net/Samples?query=print%20123](https://help.kusto.windows.net/Samples?query=print%20123),
-Kusto.WebExplorer will open to the `help.kusto.windows.net` cluster, select the `Samples`
+For example, when a user selects [https://help.kusto.windows.net/Samples?query=print%20123](https://help.kusto.windows.net/Samples?query=print%20123),
+Kusto.WebExplorer opens to the `help.kusto.windows.net` cluster, select the `Samples`
 database as the default database, and run the associated query.
 
 UI deep links work by having the user browser receive a redirect response when issuing
@@ -42,7 +42,7 @@ Where:
 
   |Parameter |Description|
   |----------|-----------|
-  |`web`     |Selects the UI tool. By default, or if set to `1`, Kusto.WebExplorer is used. If set to `0`, Kusto.Explorer will be used. If set to `3`, Kusto.WebExplorer will be used with no pre-existing tabs.|
+  |`web`     |Selects the UI tool. By default, or if set to `1`, Kusto.WebExplorer is used. If set to `0`, Kusto.Explorer is used. If set to `3`, Kusto.WebExplorer is used with no pre-existing tabs.|
   |`query`   |The text of the query or management command to start with when opening the UI tool.|
   |`querysrc`|A URI pointing at a web resource that holds the text of the query or management command to start with when opening the UI tool.|
   |`name`    |The name of the connection to the cluster.|
@@ -57,13 +57,13 @@ Where:
 Here are a few examples for links:
 
 * `https://help.kusto.windows.net/`: When a user agent (such as a browser) issues
-  a `GET /` request it'll be redirected to the default UI tool configured
+  a `GET /` request it will be redirected to the default UI tool configured
   to query the `help` cluster.
 * `https://help.kusto.windows.net/Samples`: When a user agent (such as a browser) issues
-  a `GET /Samples` request it'll be redirected to the default UI tool configured
+  a `GET /Samples` request it will be redirected to the default UI tool configured
   to query the `help` cluster `Samples` database.
 * `http://help.kusto.windows.net/Samples?query=StormEvents`: When a user (such as a browser) issues
-  a `GET /Samples?query=StormEvents` request it'll be redirected to the default UI tool configured
+  a `GET /Samples?query=StormEvents` request it will be redirected to the default UI tool configured
   to query the `help` cluster `Samples` database, and issue the `StormEvents` query.
 
 > [!NOTE]
@@ -78,8 +78,8 @@ Here are a few examples for links:
 ## Deep linking to Kusto.Explorer
 
 This REST API performs redirection that installs and runs the
-Kusto.Explorer desktop client tool with specially-crafted startup
-parameters that open a connection to a specific Kusto engine cluster
+Kusto.Explorer desktop client tool with specially crafted startup
+parameters that open a connection to a specific cluster
 and execute a query against that cluster.
 
 See [Deep-linking with Kusto.Explorer](../../tools/kusto-explorer-using.md#deep-linking-queries)
@@ -93,11 +93,10 @@ to Kusto.WebExplorer:
 
 |Parameter   |Description|
 |------------|-----------|
-|`login_hint`|Sets the user login name (email) of the user.|
+|`login_hint`|Sets the user sign-in name (email) of the user.|
 |`tenant`    |Sets the Azure Active Directory tenant ID of the user.|
 
-By specifying the `login_hint` and `tenant` of the user, one may instruct
-Kusto.WebExplorer to login a user from another AAD tenant.
+To instruct Kusto.WebExplorer to sign-in a user from another AAD tenant, specify `login_hint` and `tenant` for the user.
 
 Redirection will be to the following URI:
 
@@ -108,16 +107,16 @@ Redirection will be to the following URI:
 When the URI query string parameter `query` is specified, it must be encoded
 according to the URI query string encoding HTML rules. Alternatively, the text of
 the query or management command can be compressed by gzip, and then encoded
-via base64 encoding. This allows you to send longer queries or control
+via base64 encoding. This feature allows you to send longer queries or control
 commands (since the latter encoding method results in shorter URIs).
 
 ## Specifying the query or management command by indirection
 
-If the query or management command is very long, even encoding it using gzip/base64 will exceed the maximum URI length of the user agent. Alternatively, the URI query string parameter
+If the query or management command is long, even encoding it using gzip/base64 may exceed the maximum URI length of the user agent. Alternatively, the URI query string parameter
 `querysrc` is provided, and its value is a short URI pointing at a web resource
 that holds the query or management command text.
 
-For example, this can be the URI for a file hosted by Azure Blob Storage.
+For example, this value can be the URI for a file hosted by Azure Blob Storage.
 
 > [!NOTE]
 > If the deep link is to the web application UI tool, the web service providing
