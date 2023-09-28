@@ -14,7 +14,7 @@ The diagram below shows the end-to-end flow for working in Azure Data Explorer a
 
 :::image type="content" source="media/data-ingestion-overview/data-management-and-ingestion-overview.png" alt-text="Overview scheme of data ingestion and management.":::
 
-The Azure Data Explorer data management service, which is responsible for data ingestion, implements the following process:
+The Azure Data Explorer Data Management service, which is responsible for data ingestion, implements the following process:
 
 Azure Data Explorer can pull data from an external source or read requests from a pending Azure queue that is shared with clients. Data is batched or streamed by the Data Management service. Batch data flowing to the same database and table is optimized for ingestion throughput. Azure Data Explorer validates initial data and converts data formats where necessary. Further data manipulation includes matching schema, organizing, indexing, encoding, and compressing the data. Data is persisted in storage according to the set retention policy. The Data Management service then triggers the ingest operation in Azure Data Explorer, where it's made available for query.
 
@@ -80,20 +80,20 @@ Azure Data Explorer provides SDKs that can be used for query and data ingestion.
 
 ### Ingest management commands
 
-Use commands to ingest data directly to the engine. This method bypasses the Data Management services, and therefore should be used only for exploration and prototyping. Don't use this method in production or high-volume scenarios.
+Use commands to ingest data directly to your cluster. This method bypasses the Data Management services, and therefore should be used only for exploration and prototyping. Don't use this method in production or high-volume scenarios.
 
-* **Inline ingestion**:  A management command [.ingest inline](kusto/management/data-ingestion/ingest-inline.md) is sent to the engine, with the data to be ingested being a part of the command text itself. This method is intended for improvised testing purposes.
+* **Inline ingestion**:  A management command [.ingest inline](kusto/management/data-ingestion/ingest-inline.md) is sent to your cluster, with the data to be ingested being a part of the command text itself. This method is intended for improvised testing purposes.
 
-* **Ingest from query**: A management command [.set, .append, .set-or-append, or .set-or-replace](kusto/management/data-ingestion/ingest-from-query.md) is sent to the engine, with the data specified indirectly as the results of a query or a command.
+* **Ingest from query**: A management command [.set, .append, .set-or-append, or .set-or-replace](kusto/management/data-ingestion/ingest-from-query.md) is sent to your cluster, with the data specified indirectly as the results of a query or a command.
 
-* **Ingest from storage (pull)**: A management command [.ingest into](kusto/management/data-ingestion/ingest-from-storage.md) is sent to the engine, with the data stored in some external storage (for example, Azure Blob Storage) accessible by the engine and pointed-to by the command.
+* **Ingest from storage (pull)**: A management command [.ingest into](kusto/management/data-ingestion/ingest-from-storage.md) is sent to your cluster, with the data stored in external storage, such as Azure Blob Storage, accessible by your cluster and pointed-to by the command.
 
 ## Comparing ingestion methods and tools
 
 | Ingestion name | Data type | Maximum file size | Streaming, batching, direct | Most common scenarios | Considerations |
 | --- | --- | --- | --- | --- | --- |
 | **Get data experience** | *sv, JSON | 1 GB uncompressed (see note)| Batching to container, local file and blob in direct ingestion | One-off, create table schema, definition of continuous ingestion with Event Grid, bulk ingestion with container (up to 5,000 blobs; no limit when using historical ingestion) |  |
-| [**LightIngest**](lightingest.md) | All formats supported | 1 GB uncompressed (see note) | Batching via DM or direct ingestion to engine |  Data migration, historical data with adjusted ingestion timestamps, bulk ingestion (no size restriction)| Case-sensitive, space-sensitive |
+| [**LightIngest**](lightingest.md) | All formats supported | 1 GB uncompressed (see note) | Batching via DM or direct ingestion |  Data migration, historical data with adjusted ingestion timestamps, bulk ingestion (no size restriction)| Case-sensitive, space-sensitive |
 | [**ADX Kafka**](ingest-data-kafka.md) |Avro, ApacheAvro, JSON, CSV, Parquet, and ORC |Unlimited. Inherits Java restrictions.| Batching, streaming |Existing pipeline, high volume consumption from the source.| Preference may be determined by which “multiple producer/consumer” service is already used, or how managed of a service is desired. |
 | [**ADX to Apache Spark**](spark-connector.md) | Every format supported by the Spark environment  | Unlimited | Batching | Existing pipeline, preprocessing on Spark before ingestion, fast way to create a safe (Spark) streaming pipeline from the various sources the Spark environment supports. | Consider cost of Spark cluster. For batch write, compare with Azure Data Explorer data connection for Event Grid. For Spark streaming, compare with the data connection for event hub.
 | [**LogStash**](ingest-data-logstash.md) | JSON | Unlimited. Inherits Java restrictions. | Inputs to the connector are Logstash events, and the connector outputs to Kusto using batching ingestion.| Existing pipeline, leverage the mature, open source nature of Logstash for high volume consumption from the input(s).| Preference may be determined by which “multiple producer/consumer” service is already used, or how managed of a service is desired.

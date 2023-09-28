@@ -129,8 +129,8 @@ This section addresses the use of copy activity where Azure Data Explorer is the
 because *Data read* is calculated according to the binary file size, while *Data written* is calculated according to the in-memory size, after data is de-serialized and decompressed.
 
 * When monitoring the activity progress, you can see that data is written to the Azure Data Explorer sink. When querying the Azure Data Explorer table, you see that data hasn't arrived. This is because there are two stages when copying to Azure Data Explorer. 
-    * First stage reads the source data, splits it to 900-MB chunks, and uploads each chunk to an Azure Blob. The first stage is seen by the ADF activity progress view. 
-    * The second stage begins once all the data is uploaded to Azure Blobs. The Azure Data Explorer engine nodes download the blobs and ingest the data into the sink table. The data is then seen in your Azure Data Explorer table.
+    * First stage reads the source data, splits it to 900-MB chunks, and uploads each chunk to an Azure Blob. The first stage is seen by the ADF activity progress view.
+    * The second stage begins once all the data is uploaded to Azure Blobs. Your cluster downloads the blobs and ingests the data into the sink table. The data is then seen in your Azure Data Explorer table.
 
 ### Failure to ingest CSV files due to improper escaping
 

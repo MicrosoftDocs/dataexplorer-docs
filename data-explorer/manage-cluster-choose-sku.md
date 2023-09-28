@@ -12,7 +12,7 @@ When you create a new cluster or optimize a cluster for a changing workload, Azu
 
 The size and VM SKU of the data management cluster are fully managed by the Azure Data Explorer service. They're determined by factors such as the engine's VM size and the ingestion workload.
 
-You can change the compute SKU for the engine cluster at any time by [scaling up the cluster](manage-cluster-vertical-scaling.md). It's best to start with the smallest SKU size that fits the initial scenario. Scaling up the cluster results in up to 30 minutes of downtime while it's re-created with the new SKU. You can also use the [Azure Advisor](azure-advisor.md) recommendations to optimize your compute SKU.
+You can change the compute SKU for the cluster at any time by [scaling up the cluster](manage-cluster-vertical-scaling.md). It's best to start with the smallest SKU size that fits the initial scenario. Scaling up the cluster results in up to 30 minutes of downtime while it's re-created with the new SKU. You can also use the [Azure Advisor](azure-advisor.md) recommendations to optimize your compute SKU.
 
 You can use the [Pricing calculator](https://aka.ms/adx.cost) to estimate the pricing of your Azure Data Explorer cluster, based on your workloads and data volume.
 
