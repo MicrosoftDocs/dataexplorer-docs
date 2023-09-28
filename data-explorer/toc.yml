@@ -148,16 +148,15 @@ items:
               - name: Get data from Amazon S3
                 displayName: ingest data
                 href: get-data-amazon-s3.md
+          - name: Ingest historical data
+            displayName: ingest backfill, historical data, ingestion
+            href: ingest-data-historical.md
           - name: Streaming ingestion
             displayName: ingest data, ingestion
             href: ingest-data-streaming.md
-          - name: LightIngest
-            items:
-              - name: Using LightIngest
-                displayName: ingest data, ingestion
-                href: lightingest.md
-              - name: Use wizard for one-time ingestion of historical data with LightIngest
-                href: generate-lightingest-command.md
+          - name: Using LightIngest
+            displayName: ingest data, ingestion
+            href: lightingest.md
           - name: Using SDKs
             items:
               - name: .NET SDK
