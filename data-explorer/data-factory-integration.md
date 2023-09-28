@@ -130,7 +130,7 @@ because *Data read* is calculated according to the binary file size, while *Data
 
 * When monitoring the activity progress, you can see that data is written to the Azure Data Explorer sink. When querying the Azure Data Explorer table, you see that data hasn't arrived. This is because there are two stages when copying to Azure Data Explorer. 
     * First stage reads the source data, splits it to 900-MB chunks, and uploads each chunk to an Azure Blob. The first stage is seen by the ADF activity progress view.
-    * The second stage begins once all the data is uploaded to Azure Blobs. Your cluster downloads the blobs and ingests the data into the sink table. The data is then seen in your Azure Data Explorer table.
+    * The second stage begins once all the data is uploaded to Azure Blobs. The nodes of your cluster download the blobs and ingest the data into the sink table. The data is then seen in your Azure Data Explorer table.
 
 ### Failure to ingest CSV files due to improper escaping
 
