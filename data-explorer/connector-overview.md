@@ -37,6 +37,7 @@ The following table summarizes the available connectors and their capabilities:
 | [Open Telemetry](#open-telemetry) | **Ingestion** | &check; |  | [Open source](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/exporter/azuredataexplorerexporter) | Traces, Metrics, Logs |
 | [Power Automate](#power-automate) | **Export** <br /><br />**Ingestion** | &#x2717; |  | First party | Data orchestration |
 | [Serilog](#serilog) | **Ingestion** | &check; | &check; | First party, [Open source](https://github.com/Azure/serilog-sinks-azuredataexplorer) | Logs |
+| [Splunk](#splunk) | **Ingestion** | &#x2717; |  | [Open source](https://github.com/Azure/azure-kusto-splunk) | Logs |
 | [Telegraf](#telegraf) | **Ingestion** | &check; |  | [Open source](https://github.com/influxdata/telegraf/tree/master/plugins/outputs/azure_data_explorer) | Metrics, Logs |
 ::: zone-end
 ::: zone pivot="fabric"
@@ -201,7 +202,7 @@ Event Grid ingestion is a pipeline that listens to Azure storage, and updates yo
 * **Use cases:** Logs
 * **Underlying SDK:** [Java](kusto/api/java/kusto-java-client-library.md)
 * **Repository:** Microsoft Azure - https://github.com/Azure/logstash-output-kusto/
-* **Documentation:** [Ingest data from Logstash to Azure Data Explorer](ingest-data-logstash.md)
+* **Documentation:** [Ingest data from Logstash](ingest-data-logstash.md)
 * **Community Blog:** [How to migrate from Elasticsearch to Azure Data Explorer](https://techcommunity.microsoft.com/t5/azure-data-explorer-blog/how-to-migrate-from-elasticsearch-to-azure-data-explorer/ba-p/1621539/)
 ::: zone-end
 
@@ -258,6 +259,22 @@ Serilog is a popular logging framework for .NET applications. Serilog allows dev
 * **Documentation:** [Ingest data with the Serilog sink](serilog-sink.md)
 ::: zone pivot="azuredataexplorer"
 * **Community Blog:** [Getting started with Serilog sink and Azure Data Explorer](https://go.microsoft.com/fwlink/p/?linkid=2227749)
+::: zone-end
+
+::: zone pivot="azuredataexplorer"
+
+## Splunk
+
+[Splunk Enterprise](https://www.splunk.com/en_us/products/splunk-enterprise.html) is a software platform that allows you to ingest data from many sources simultaneously.The [Azure Data Explorer add-on](https://splunkbase.splunk.com/app/6979) sends data from Splunk to a table in your cluster.
+
+* **Functionality:** Ingestion
+
+* **Ingestion type supported:** Batching
+* **Use cases:** Logs
+* **Underlying SDK:** [Python](kusto/api/python/kusto-python-client-library.md)
+* **Repository:** Microsoft Azure -https://github.com/Azure/azure-kusto-splunk
+* **Documentation:** [Ingest data from Splunk](ingest-data-splunk.md)
+<!-- * **Community Blog:** [???](https://techcommunity.microsoft.com/t5/azure-data-explorer-blog/getting-started-with-microsoft-azure-data-explorer-add-on-for/ba-p/3917176) -->
 ::: zone-end
 
 ## Telegraf
