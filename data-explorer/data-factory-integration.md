@@ -119,7 +119,7 @@ This section addresses the use of copy activity where Azure Data Explorer is the
 |**Amount and SKU of your ADX cluster** | High number of Azure Data Explorer nodes will boost ingestion processing time. Use of dev SKUs will severely limit performance|
 | **Parallelism** |    To copy a very large amount of data from a database, partition your data and then use a ForEach loop that copies each partition in parallel or use the [Bulk Copy from Database to Azure Data Explorer Template](data-factory-template.md). Note: **Settings** > **Degree of Parallelism** in the Copy activity isn't relevant to Azure Data Explorer. |
 | **Data processing complexity** | Latency varies according to source file format, column mapping, and compression.|
-| **The VM running your integration runtime** | <ul><li>For Azure copy, ADF VMs and machine SKUs can't be changed.</li><li> For on-prem to Azure copy, determine that the VM hosting your self-hosted IR is strong enough.</li></ul>|
+| **The VM running your integration runtime** | <ul><li>For Azure copy, ADF VMs and machine SKUs can't be changed.</li><li> For on-premises to Azure copy, determine that the VM hosting your self-hosted IR is strong enough.</li></ul>|
 
 ## Tips and common pitfalls
 
@@ -129,8 +129,8 @@ This section addresses the use of copy activity where Azure Data Explorer is the
 because *Data read* is calculated according to the binary file size, while *Data written* is calculated according to the in-memory size, after data is de-serialized and decompressed.
 
 * When monitoring the activity progress, you can see that data is written to the Azure Data Explorer sink. When querying the Azure Data Explorer table, you see that data hasn't arrived. This is because there are two stages when copying to Azure Data Explorer. 
-    * First stage reads the source data, splits it to 900-MB chunks, and uploads each chunk to an Azure Blob. The first stage is seen by the ADF activity progress view. 
-    * The second stage begins once all the data is uploaded to Azure Blobs. The Azure Data Explorer engine nodes download the blobs and ingest the data into the sink table. The data is then seen in your Azure Data Explorer table.
+    * First stage reads the source data, splits it to 900-MB chunks, and uploads each chunk to an Azure Blob. The first stage is seen by the ADF activity progress view.
+    * The second stage begins once all the data is uploaded to Azure Blobs. The nodes of your cluster download the blobs and ingest the data into the sink table. The data is then seen in your Azure Data Explorer table.
 
 ### Failure to ingest CSV files due to improper escaping
 

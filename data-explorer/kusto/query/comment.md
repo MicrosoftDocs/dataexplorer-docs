@@ -3,15 +3,15 @@ title:  Add a comment in KQL
 description: Learn how to comment single and multi-lines in Kusto Query Language.
 ms.reviewer: andresilva
 ms.topic: reference
-ms.date: 05/30/2023
+ms.date: 09/28/2023
 ---
 # Add a comment in KQL
 
-Indicates user-provided text. Comments can be inserted on a separate line, nested at the end or within a KQL query or command. The engine does not evaluate the comment. 
+Indicates user-provided text. Comments can be inserted on a separate line, nested at the end or within a KQL query or command. The comment text isn't evaluated.
 
 ## Syntax
 
-`//` **comment**
+`//` *comment*
 
 [!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
 
