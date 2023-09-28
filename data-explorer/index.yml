@@ -5,7 +5,7 @@ summary: Azure Data Explorer is a fast, fully managed data analytics service for
 
 metadata:
   title: Azure Data Explorer documentation
-  description: Azure Data Explorer is a log analytics cloud platform optimized for ad-hoc big data queries.
+  description: Azure Data Explorer is a log analytics cloud platform optimized for ad hoc big data queries.
   ms.service: data-explorer
   ms.topic: landing-page
   author: shsagir
@@ -91,6 +91,8 @@ landingContent:
         links:
           - text: Ingestion wizard
             url: ingest-data-wizard.md
+          - text: Ingest historical data
+            url: ingest-data-historical.md
           - text: Streaming ingestion
             url: ingest-data-streaming.md
           - text: Python
@@ -212,10 +214,10 @@ landingContent:
             url: /azure/architecture/example-scenario/security/security-log-retention-azure-data-explorer
           - text: Data analytics for automotive test fleets
             url: /azure/architecture/industries/automotive/automotive-telemetry-analytics
-      - linkListType: reference
-        links:
-          - text: White paper
-            url: https://aka.ms/adx.techwhitepaper
+#      - linkListType: reference
+#        links:
+#          - text: White paper
+#            url: https://aka.ms/adx.techwhitepaper
   # Card
   - title: Development
     linkLists:

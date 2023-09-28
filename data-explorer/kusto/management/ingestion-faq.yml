@@ -68,7 +68,7 @@ sections:
       - question: How can I ingest large amounts of historical data and ensure good performance?
         answer: |
           To efficiently ingest large quantities of historical data, use [LightIngest](../../lightingest.md). 
-          For ease of use, try the LightIngest [wizard](../../generate-lightingest-command.md). 
+          For more information, see [ingest historical data](../../ingest-data-historical.md). 
           To improve performance for many small files, adjust the [batching policy](batchingpolicy.md), change batching conditions and address [latencies](batchingpolicy.md#batching-latencies). 
           Use the batching policy [wizard](../../table-batching-policy-wizard.md) to quickly change policy settings. 
           To improve ingestion performance when ingesting extremely large data files, use [Azure Data Factory](/azure/data-factory/) (ADF), a cloud-based data integration service.

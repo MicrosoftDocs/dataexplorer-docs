@@ -12,7 +12,7 @@ This article describes how to interact with your cluster over HTTPS.
 ## Supported actions
 
 The list of actions supported by an endpoint differs according to whether the
-endpoint is an engine endpoint or a data management endpoint.
+endpoint is an engine endpoint (**Cluster URI**) or a data management endpoint (**Data ingestion URI**).
 
 |Action         |HTTP verb   |URI template           |Engine|Data Management|Authentication |
 |---------------|------------|-----------------------|------|---------------|---------------|

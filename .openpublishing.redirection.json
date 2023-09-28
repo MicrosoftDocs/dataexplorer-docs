@@ -801,6 +801,11 @@
       "redirect_document_id": true
     },
     {
+      "source_path": "data-explorer/generate-lightingest-command.md",
+      "redirect_url": "/azure/data-explorer/ingest-data-historical",
+      "redirect_document_id": true
+    },
+    {
       "source_path": "data-explorer/ingest-data-wizard.md",
       "redirect_url": "/azure/data-explorer/ingest-data-overview",
       "redirect_document_id": true

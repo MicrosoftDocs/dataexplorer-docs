@@ -22,7 +22,6 @@ The following table shows cases where ingestion of invalid data fails with an er
 |Invalid or corrupted format (actual data does not match the specified format)                  |BadRequest_InvalidBlob             |
 |Empty Data                                                                                     |BadRequest_NoRecordsOrWrongFormat  |
 |Malformed records in JSON data ingested with format="multijson" (e.g. missing braces or quotes)|BadRequest_InvalidBlob             |
-|CSV/JSON record larger than 64MB (Engine V2 only)                                              |Stream_InputStreamTooLarge         |
 |CSV lines with inconsistent number of fields                                                   |Stream_WrongNumberOfFields         |
 
 ## Failure without error code

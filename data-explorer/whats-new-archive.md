@@ -206,7 +206,7 @@ Welcome to what's new in Azure Data Explorer archive. This article is an archive
 
 | Article title | Description |
 |--|--|
-| [Use wizard for ingestion with LightIngest (preview)](generate-lightingest-command.md) | New article. Learn how to use a wizard for one-time ingestion of historical data with LightIngest.
+| [Use wizard for ingestion with LightIngest (preview)](ingest-data-historical.md) | New article. Learn how to use a wizard for one-time ingestion of historical data with LightIngest.
 | [Use one-click ingestion to create an event hub data connection](./event-hub-wizard.md)| Updated article. One click event hub experience.
 | [Use LightIngest to ingest data into Azure Data Explorer](lightingest.md)| Updated article. Generate LightIngest commands - one click experience.
 
