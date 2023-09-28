@@ -93,7 +93,7 @@ In the [web UI query editor](web-ui-query-overview.md#write-and-run-queries), ru
           ]```
     ~~~
 
-1. Use the service principal from [Create an Microsoft Entra ID service principal](#create-an-azure-active-directory-service-principal) to grant permission to work with the database.
+1. Use the service principal from [Create an Microsoft Entra ID service principal](#create-a-microsoft-entra-id-service-principal) to grant permission to work with the database.
 
     ```kusto
     .add database YOUR_DATABASE_NAME admins  ('aadapp=YOUR_APP_ID;YOUR_TENANT_ID') 'Entra App'
