@@ -38,7 +38,7 @@ Adding a partitioning policy on a materialized view increases the number of exte
 
 A [row level security](../rowlevelsecuritypolicy.md) can be applied on a materialized view, with several limitations:
 
-* The policy can be applied only to materialized views with [arg_max()](../../query/arg-max-aggfunction.md)/[arg_min()](../../query/arg-min-aggfunction.md)/[take_any()](../../query/take-any-aggfunction.md) aggregation functions.
+* The policy can be applied only to materialized views with [arg_max()](../../query/arg-max-aggfunction.md)/[arg_min()](../../query/arg-min-aggfunction.md)/[take_any()](../../query/take-any-aggfunction.md) aggregation functions, or when the row level security query references the group by keys of the materialized view aggregation.
 * The policy is applied to the [materialized part](materialized-view-overview.md#how-materialized-views-work) of the view only.
   * If the same row level security policy isn't defined on the source table of the materialized view, then querying the materialized view may return records that should be hidden by the policy. This happens because [querying the materialized view](materialized-view-overview.md#materialized-views-queries) queries the source table as well.
   * We recommend defining the same row level security policy both on the source table and the materialized view if the view is an [arg_max()](../../query/arg-max-aggfunction.md) or [arg_min()](../../query/arg-min-aggfunction.md)/[take_any()](../../query/take-any-aggfunction.md).
