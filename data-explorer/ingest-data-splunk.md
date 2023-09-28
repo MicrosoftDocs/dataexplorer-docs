@@ -137,15 +137,17 @@ Create an index in Splunk specifying the criteria for the data you want to send 
 
 1. Configure the connections details, as follows:
 
-    * **Cluster Ingestion URL**: Specify the ingestion URL of your Azure Data Explorer cluster. For example, `https://ingest-<mycluster>.<myregion>.kusto.windows.net`.
-    * **Client ID**: Specify the client ID of the Microsoft Entra ID application you created earlier.
-    * **Client Secret**: Specify the client secret of the Microsoft Entra ID application you created earlier.
-    * **Tenant ID**: Specify the tenant ID of the Microsoft Entra ID application you created earlier.
-    * **Database**: Specify the name of the database you want to send the data to.
-    * **Table**: Specify the name of the table you want to send the data to.
-    * **Mapping**: Specify the name of the mapping object you created earlier.
-    * **Remove Extra Fields**: Select this option to remove any empty fields from the data sent to your cluster.
-    * **Durable Mode**: Select this option to enable durability mode during ingestion. When set to true, the ingestion throughput is impacted.
+    | Setting | Description |
+    | -- | -- |
+    | **Cluster Ingestion URL** | Specify the ingestion URL of your Azure Data Explorer cluster. For example, `https://ingest-<mycluster>.<myregion>.kusto.windows.net`. |
+    | **Client ID** | Specify the client ID of the Microsoft Entra ID application you created earlier. |
+    | **Client Secret** | Specify the client secret of the Microsoft Entra ID application you created earlier. |
+    | **Tenant ID** | Specify the tenant ID of the Microsoft Entra ID application you created earlier. |
+    | **Database** | Specify the name of the database you want to send the data to. |
+    | **Table** | Specify the name of the table you want to send the data to. |
+    | **Mapping** | Specify the name of the mapping object you created earlier. |
+    | **Remove Extra Fields** | Select this option to remove any empty fields from the data sent to your cluster. |
+    | **Durable Mode** | Select this option to enable durability mode during ingestion. When set to true, the ingestion throughput is impacted. |
 
     :::image type="content" source="media/ingest-data-splunk/save-alert-as-connection.png" alt-text="Screenshot of create alert dialog showing the Azure Data Explorer add-on connection settings." lightbox="media/ingest-data-splunk/save-alert-as-connection.png":::
 
