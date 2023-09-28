@@ -8,12 +8,13 @@ ms.date: 09/28/2023
 # Kusto Query Language learning resources
 
 Kusto Query Language (KQL) is a powerful tool to explore your data and discover patterns, identify anomalies and outliers, create statistical modeling, and more. Are you new to KQL or want to improve your KQL skills? Take a look at the following learning resources.
+For more information on KQL, see [KQL overview](kusto/query/index.md).
 
 ## General training
 
 This training is not product-specific, and provides basic KQL learning:
 
-* [Free Pluralsight training: Azure Data Explorer](https://www.pluralsight.com/partners/microsoft/azure-data-explorer)
+* [Pluralsight: KQL from scratch](https://www.pluralsight.com/courses/kusto-query-language-kql-from-scratch)
 * [Kusto Detective Agency](https://detective.kusto.io/)
 * [Tutorial: Learn common operators](kusto/query/tutorials/learn-common-operators.md)
 * [Tutorial: Use aggregation functions](kusto/query/tutorials/use-aggregation-functions.md)
@@ -24,6 +25,7 @@ This training is not product-specific, and provides basic KQL learning:
 
 * [Tutorial: Create geospatial visualizations](kusto/query/tutorials/create-geospatial-visualizations.md)
 * [Data analysis in Azure Data Explorer with Kusto Query Language](/training/paths/data-analysis-data-explorer-kusto-query-language/)
+* [Free Pluralsight training: Azure Data Explorer](https://www.pluralsight.com/partners/microsoft/azure-data-explorer)
 
 ## Real-Time Analytics in Microsoft Fabric
 
@@ -31,6 +33,7 @@ This training is not product-specific, and provides basic KQL learning:
 
 ## Azure Monitor
 
+* [Tutorial: Detect and analyze anomalies using KQL in Azure Monitor](/azure/azure-monitor/logs/kql-machine-learning-azure-monitor)
 * [Analyze monitoring data with Kusto Query Language](/training/paths/analyze-monitoring-data-with-kql/)
 * [Koenig: KQL for Azure Admins](https://www.koenig-solutions.com/kql-azure-admins-training)
 
