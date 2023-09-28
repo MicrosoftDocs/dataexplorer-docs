@@ -24,25 +24,25 @@ In this article, you learn how to partition historical data:
 
 - Using the `creationTime` ingestion property during ingestion (recommended)
 
-    Where possible, ingest historical data using the [creationTime ingestion property](ingestion-properties.md#ingestion-properties), which allows you to set the creation time of the extents by extracting it from the file or blob path. If your folder structure doesn't use a creation date pattern, we recommend that you restructure your file or blob path to reflect the creation time. By using this method, the data is ingested into the table with the correct creation time, and the cache and retention periods are applied correctly.
+    Where possible, ingest historical data using the [`creationTime` ingestion property](ingestion-properties.md#ingestion-properties), which allows you to set the creation time of the extents by extracting it from the file or blob path. If your folder structure doesn't use a creation date pattern, we recommend that you restructure your file or blob path to reflect the creation time. By using this method, the data is ingested into the table with the correct creation time, and the cache and retention periods are applied correctly.
 
     > [!NOTE]
     > By default, extents are partitioned by time of creation (ingestion), and in most cases there's no need to set a data partitioning policy.
 
 - Using a partitioning policy post ingestion
 
-    If you can't use the creationTime ingestion property, for example if you're [ingesting data using the Azure Cosmos DB connector](ingest-data-cosmos-db-connection.md) where you can't control the creation time or if you can't restructure your folder structure, you can repartition the table post ingestion to achieve the same effect using the [partitioning policy](kusto/management/partitioningpolicy.md). However, this method may require some trial and error to optimize policy properties and is less efficient than using the creationTime ingestion property. We only recommended this method when using the creationTime ingestion property isn't possible.
+    If you can't use the `creationTime` ingestion property, for example if you're [ingesting data using the Azure Cosmos DB connector](ingest-data-cosmos-db-connection.md) where you can't control the creation time or if you can't restructure your folder structure, you can repartition the table post ingestion to achieve the same effect using the [partitioning policy](kusto/management/partitioningpolicy.md). However, this method may require some trial and error to optimize policy properties and is less efficient than using the `creationTime` ingestion property. We only recommended this method when using the `creationTime` ingestion property isn't possible.
 
 ## Prerequisites
 
 - A Microsoft account or an Azure Active Directory user identity. An Azure subscription isn't required.
 - An Azure Data Explorer cluster and database. [Create a cluster and database](create-cluster-and-database.md).
 - [A storage account](/azure/storage/common/storage-quickstart-create-account?tabs=azure-portal).
-- For the recommended method of using the *CreationTime* ingestion property during ingestion, [install LightIngest](lightingest.md).
+- For the recommended method of using the `creationTime` ingestion property during ingestion, [install LightIngest](lightingest.md).
 
 ## Ingest historical data
 
-We highly recommend partitioning historical data using the *CreationTime* ingestion property during ingestion. However, if you can't use this method, you can repartition the table post ingestion using a partitioning policy.
+We highly recommend partitioning historical data using the `creationTime` ingestion property during ingestion. However, if you can't use this method, you can repartition the table post ingestion using a partitioning policy.
 
 ### [During ingestion (recommended)](#tab/during-ingestion)
 
@@ -144,7 +144,7 @@ LightIngest can be useful to load historical data from an existing storage syste
     .alter-merge table MyTable policy retention softdelete = 3650d recoverability = enabled
     ```
 
-1. Adjust the caching policy so that all the data is in hot cache for the repartitioning, resulting in faster reshuffling of the data. In the following example, you set the caching for table **MyTable** to 10 years.
+1. Adjust the caching policy so that all the data is in hot cache for the repartitioning, as only hot data can be repartitioned post ingestion. In the following example, you set the caching for table **MyTable** to 10 years.
 
     ```kusto
     .alter table MyTable policy caching hot = 3650d
@@ -155,7 +155,7 @@ LightIngest can be useful to load historical data from an existing storage syste
 
 #### Step 2: Initiate repartitioning
 
-1. Create a partitioning policy that partitions the data by the creation time. In the following example, you set the partitioning policy for table **MyTable** to partition by the creation time.
+1. Create a partitioning policy that partitions the data by the column named `Timestamp`. In the following example, you set the partitioning policy for table **MyTable** to partition by the column named `Timestamp`.
 
     ~~~kusto
     .alter table MyTable policy partitioning
@@ -183,7 +183,7 @@ LightIngest can be useful to load historical data from an existing storage syste
     - The **RangeSize** is set to one day so that the data is repartitioned into buckets of one day. However, you should set this value to align with your data. For example, if you have less than several GBs of data per day, consider setting a larger value.
     - The **OverrideCreationTime** must be set to *true* so that after repartitioning the data into day buckets, the extents are marked with that day as the creation time.
 
-1. Create a merge policy to allow merging of all extents, including extents older than 14 days, to merge in hot cache. Setting this policy is important because the repartitioning process creates extents older that the default 14 days, which aren't normally merged in hot cache.
+1. Set a merge policy to allow merging of all extents, including extents older than 14 days. Setting this policy is important because the repartitioning process creates extents older than 14 days, which by default are excluded by the merge process.
 
     ~~~kusto
     .alter table MyTable policy merge
@@ -198,7 +198,7 @@ LightIngest can be useful to load historical data from an existing storage syste
 
 1. Monitor the repartitioning progress using the [.show database extents partitioning statistics](kusto/management/show-database-extents-partitioning-statistics.md) command. In the returned results, look for the table you're repartitioning and monitor the **PartitionedRowPercentage** column. When the **PartitionedRowPercentage** column's value is `100`, the repartitioning is complete.
 
-### STEP 3: Clean up post repartitioning
+#### Step 3: Clean up post repartitioning
 
 Once the repartitioning is complete, you can clean up the policies you set in the previous steps.
 
