@@ -150,6 +150,9 @@ LightIngest can be useful to load historical data from an existing storage syste
     .alter table MyTable policy caching hot = 3650d
     ```
 
+    > [!IMPORTANT]
+    > Increasing the caching policy may use considerably more hot cache than in normal operations and may result in increased cost.
+
 #### Step 2: Initiate repartitioning
 
 1. Create a partitioning policy that partitions the data by the column named `Timestamp`. In the following example, you set the partitioning policy for table **MyTable** to partition by the column named `Timestamp`.
