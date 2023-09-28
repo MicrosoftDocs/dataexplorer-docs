@@ -22,7 +22,7 @@ By default, the creation time for extents is set to the time when the data is in
 
 In this article, you learn how to partition historical data:
 
-- Using the *CreationTime* ingestion property during ingestion (recommended)
+- Using the `creationTime` ingestion property during ingestion (recommended)
 
     Where possible, ingest historical data using the [creationTime ingestion property](ingestion-properties.md#ingestion-properties), which allows you to set the creation time of the extents by extracting it from the file or blob path. If your folder structure doesn't use a creation date pattern, we recommend that you restructure your file or blob path to reflect the creation time. By using this method, the data is ingested into the table with the correct creation time, and the cache and retention periods are applied correctly.
 
