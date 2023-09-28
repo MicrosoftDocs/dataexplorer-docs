@@ -210,6 +210,14 @@ items:
                 href: create-iot-hub-connection.md
               - name: Create an IoT Hub data connection with SDKs
                 href: create-iot-hub-connection-sdk.md
+          - name: Azure Cosmos DB
+            items:
+              - name: Azure Cosmos DB data connection
+                displayName: ingest, connector
+                href: ingest-data-cosmos-db-connection.md
+              - name: Get latest Azure Cosmos DB documents
+                displayName: ingest data, ingestion
+                href: ingest-data-cosmos-db-queries.md
           - name: Azure Data Factory
             items:
               - name: Integration with Data Factory
@@ -227,32 +235,24 @@ items:
           - name: Apache Log4J 2
             displayName: ingest data, ingestion, connector
             href: apache-log4j2-connector.md
-          - name: NLog
-            displayName: ingest data, ingestion, connector
-            href: nlog-sink.md
-          - name: Serilog
-            displayName: ingest data, ingestion, connector
-            href: serilog-sink.md
           - name: Apache Spark
             displayName: connector, export, ingest
             href: spark-connector.md
-          - name: Azure Cosmos DB
-            items:
-              - name: Azure Cosmos DB data connection
-                displayName: ingest, connector
-                href: ingest-data-cosmos-db-connection.md
-              - name: Get latest Azure Cosmos DB documents
-                displayName: ingest data, ingestion
-                href: ingest-data-cosmos-db-queries.md
           - name: Azure Stream Analytics
             href: stream-analytics-connector.md
             displayName: ingest data, ingestion, connector
           - name: Logstash
             displayName: ingest data, ingestion, connector
             href: ingest-data-logstash.md
+          - name: NLog
+            displayName: ingest data, ingestion, connector
+            href: nlog-sink.md
           - name: OpenTelemetry
             href: open-telemetry-connector.md
             displayName: OTel, CNCF, Open Telemetry, ingest data, ingestion, connector
+          - name: Serilog
+            displayName: ingest data, ingestion, connector
+            href: serilog-sink.md
           - name: Splunk
             displayName: ingest data, ingestion, connector
             href: ingest-data-splunk.md
