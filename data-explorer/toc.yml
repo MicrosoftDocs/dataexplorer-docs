@@ -6,8 +6,8 @@ items:
     items:
       - name: What is Azure Data Explorer?
         href: data-explorer-overview.md
-      - name: EngineV3
-        href: engine-v3.md
+      - name: How Azure Data Explorer works
+        href: how-it-works.md
       - name: Get started for free
         href: start-for-free.md
       - name: What's new
@@ -446,10 +446,12 @@ items:
             items:
               - name: Manage database permissions
                 href: manage-database-permissions.md
-              - name: Configure a database using a Kusto Query Language script
+              - name: Configure database using a KQL script
                 href: database-script.md
               - name: Add database principal
                 href: add-database-principal.md
+              - name: Clone database schema
+                href: clone-database-schema.md
               - name: Create policies programmatically
                 displayName: database policy, database policies, table policy, table policies, python, c#
                 href: database-table-policies.md
@@ -503,7 +505,28 @@ items:
       - name: API overview
         href: kusto/api/index.md
       - name: Client libraries
-        href: kusto/api/client-libraries.md
+        items:
+          - name: Client libraries
+            href: kusto/api/client-libraries.md
+          - name: Kusto Data library
+            items:
+              - name: Kusto Data overview
+                href: kusto/api/netfx/about-kusto-data.md
+                displayName: kusto.data, SDK
+              - name: Kusto Data best practices
+                href: kusto/api/netfx/kusto-data-best-practices.md
+                displayName: kusto.data, SDK
+              - name: ClientRequestProperties class
+                href: kusto/api/netfx/client-request-properties.md
+                displayName: request properties, CRP, kusto.data, SDK
+          - name: Kusto Ingest library
+            items:
+              - name: Kusto Ingest overview
+                href: kusto/api/netfx/about-kusto-ingest.md
+                displayName: kusto.ingest, SDK
+              - name: Kusto Ingest best practices
+                href: kusto/api/netfx/kusto-ingest-best-practices.md
+                displayName: kusto.ingest, SDK
       - name: Sample app generator
         href: sample-app-generator-wizard.md
       - name: Write code with SDKs

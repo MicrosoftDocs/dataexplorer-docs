@@ -23,7 +23,6 @@ Each CSV mapping element must contain either of the following optional propertie
 >
 > * Ordinal and ConstValue are mutually exclusive.
 > * For TXT and RAW formats, only Ordinal 0 can be mapped, as text is treated as a single column of lines.
-> * `SourceLocation` transformation is only available in [EngineV3](../../engine-v3.md).
 
 [!INCLUDE [data-mapping-type-note](../../includes/data-mapping-type-note.md)]
 

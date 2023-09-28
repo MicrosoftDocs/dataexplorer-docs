@@ -30,7 +30,7 @@ The query results cache returns results only for queries that are considered "id
 
 * The two queries have the same representation (as UTF-8 strings).
 * The two queries are made to the same database.
-* The two queries share the same [client request properties](../api/netfx/request-properties.md). The following properties are ignored for caching purposes:
+* The two queries share the same [client request properties](../api/netfx/client-request-properties.md). The following properties are ignored for caching purposes:
   * [ClientRequestId](../api/netfx/request-properties.md#clientrequestid-x-ms-client-request-id)
   * [Application](../api/netfx/request-properties.md#application-x-ms-app)
   * [User](../api/netfx/request-properties.md#user-x-ms-user)
@@ -88,9 +88,6 @@ The eviction policy is LRU.
 The query results cache is effective when the exact same query is run multiple times in rapid succession and can tolerate returning slightly old data. However, some scenarios, like a live dashboard, require the most up-to-date results.
 
 For example, a query that runs every 10 seconds and spans the last 1 hour can benefit from caching intermediate query results at the storage (shard) level.
-
-> [!NOTE]
-> This feature is only available on EngineV3 clusters.
 
 The shard level query results cache is automatically enabled when the `Query results cache` is in use. Because it shares the same cache as `Query results cache`, the same capacity and eviction policies apply.
 

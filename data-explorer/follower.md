@@ -20,7 +20,6 @@ Attaching a database to a different cluster using the follower capability is use
 * A cluster can follow one database, several databases, or all databases of a leader cluster.
 * A single cluster can follow databases from multiple leader clusters.
 * A cluster can contain both follower databases and leader databases.
-* EngineV3 clusters can only follow EngineV3 clusters, similarly EngineV2 clusters can only follow V2 clusters.
 
 ## Prerequisites
 

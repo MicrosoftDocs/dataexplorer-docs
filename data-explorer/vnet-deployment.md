@@ -363,13 +363,34 @@ The [ARMClient](https://chocolatey.org/packages/ARMClient) is used to demonstrat
               ],
               "provisioningState": "Succeeded"
             }
-          }
+          },
+          {
+            "id": "/subscriptions/<subscriptionId>/resourceGroups/<resourceGroup>/providers/Microsoft.Kusto/Clusters/<clusterName>/OutboundNetworkDependenciesEndpoints/InternalTracing",
+            "name": "<clustername>/InternalTracing",
+            "type": "Microsoft.Kusto/Clusters/OutboundNetworkDependenciesEndpoints",
+            "location": "Australia Central",
+            "properties": {
+              "category": "Internal Tracing",
+              "endpoints": [
+                {
+                  "domainName": "ingest-<internalTracingCluster>.<region>.kusto.windows.net",
+                  "endpointDetails": [
+                    {
+                      "port": 443,
+                      "ipAddress": "25.24.23.22"
+                    }
+                  ]
+                }
+              ],
+              "provisioningState": "Succeeded"
+            }
+        }
         ...
        ]
    }
     ```
 
-The outbound dependencies cover categories such as "Azure Active Directory", "Azure Monitor", "Certificate Authority", and "Azure Storage". In each category, there's a list of domain names and ports that are needed to run the service. They can be used to programmatically configure the firewall appliance of choice.
+The outbound dependencies cover categories such as *Azure Active Directory*, *Azure Monitor*, *Certificate Authority*, *Azure Storage*, and *Internal Tracing*. In each category, there's a list of domain names and ports that are needed to run the service. They can be used to programmatically configure the firewall appliance of choice.
 
 ## Deploy Azure Data Explorer cluster into your virtual network using an Azure Resource Manager template
 

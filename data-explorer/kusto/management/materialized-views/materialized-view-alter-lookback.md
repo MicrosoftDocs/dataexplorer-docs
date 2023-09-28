@@ -9,9 +9,6 @@ ms.date: 03/01/2023
 
 Alters the `lookback` value of an existing materialized view. For more information on the lookback property, see [materialized view create command properties](materialized-view-create.md#properties).
 
-> [!NOTE]
-> A `lookback` for a materialized view is only supported for [EngineV3](../../../engine-v3.md) clusters, and for arg_max/arg_min/take_any materialized views.
-
 ## Permissions
 
 You must have at least [Materialized View Admin](../access-control/role-based-access-control.md) permissions to run this command.

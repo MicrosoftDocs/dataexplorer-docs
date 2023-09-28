@@ -4,14 +4,16 @@ description: In this article, you learn how to ingest (load) data into Azure Dat
 ms.reviewer: ankhanol
 ms.topic: how-to
 ms.date: 11/08/2021
- 
+
 #Customer intent: As an integration developer, I want to build integration pipelines from Kafka into Azure Data Explorer, so I can make data available for near real time analytics.
 ---
 # Ingest data from Apache Kafka into Azure Data Explorer
- 
+
+[!INCLUDE [real-time-analytics-connectors-note](includes/real-time-analytics-connectors-note.md)]
+
 Azure Data Explorer supports [data ingestion](ingest-data-overview.md) from [Apache Kafka](http://kafka.apache.org/documentation/). Apache Kafka is a distributed streaming platform for building real-time streaming data pipelines that reliably move data between systems or applications. [Kafka Connect](https://docs.confluent.io/3.0.1/connect/intro.html#kafka-connect) is a tool for scalable and reliable streaming of data between Apache Kafka and other data systems. The Azure Data Explorer [Kafka Sink](https://github.com/Azure/kafka-sink-azure-kusto/blob/master/README.md) serves as the connector from Kafka and doesn't require using code. Download the sink connector jar from this [Git repo](https://github.com/Azure/kafka-sink-azure-kusto/releases) or [Confluent Connector Hub](https://www.confluent.io/hub/microsoftcorporation/kafka-sink-azure-kusto).
 
-This article shows how to ingest data with Kafka into Azure Data Explorer, using a self-contained Docker setup to simplify the Kafka cluster and Kafka connector cluster setup. 
+This article shows how to ingest data with Kafka into Azure Data Explorer, using a self-contained Docker setup to simplify the Kafka cluster and Kafka connector cluster setup.
 
 For more information, see the connector [Git repo](https://github.com/Azure/kafka-sink-azure-kusto/blob/master/README.md) and [version specifics](https://github.com/Azure/kafka-sink-azure-kusto/blob/master/README.md#13-major-version-specifics).
 
@@ -72,12 +74,12 @@ This service principal will be the identity leveraged by the connector to write 
     ```
 
     :::image type="content" source="media/ingest-data-kafka/create-table.png" alt-text="Create a table in Azure Data Explorer portal .":::
-    
+
 1. Create the corresponding table mapping `Storms_CSV_Mapping` for ingested data using the following command:
-    
+
     ```kusto
     .create table Storms ingestion csv mapping 'Storms_CSV_Mapping' '[{"Name":"StartTime","datatype":"datetime","Ordinal":0}, {"Name":"EndTime","datatype":"datetime","Ordinal":1},{"Name":"EventId","datatype":"int","Ordinal":2},{"Name":"State","datatype":"string","Ordinal":3},{"Name":"EventType","datatype":"string","Ordinal":4},{"Name":"Source","datatype":"string","Ordinal":5}]'
-    ```    
+    ```
 
 1. Create a batch ingestion policy on the table for configurable ingestion latency.
 
@@ -152,7 +154,7 @@ The following sections explain the important parts of the files in the file tree
 #### adx-sink-config.json
 
 This file contains the Kusto sink properties file where you'll update specific configuration details:
- 
+
 ```json
 {
     "name": "storm",
@@ -237,30 +239,30 @@ services:
 ### Start the containers
 
 1. In a terminal, start the containers:
-    
+
     ```shell
     docker-compose up
     ```
 
-    The producer application will start sending events to the `storm-events` topic. 
+    The producer application will start sending events to the `storm-events` topic.
     You should see logs similar to the following logs:
 
     ```shell
     ....
     events-producer_1  | sent message to partition 0 offset 0
     events-producer_1  | event  2007-01-01 00:00:00.0000000,2007-01-01 00:00:00.0000000,13208,NORTH CAROLINA,Thunderstorm Wind,Public
-    events-producer_1  | 
+    events-producer_1  |
     events-producer_1  | sent message to partition 0 offset 1
     events-producer_1  | event  2007-01-01 00:00:00.0000000,2007-01-01 05:00:00.0000000,23358,WISCONSIN,Winter Storm,COOP Observer
     ....
     ```
-    
+
 1. To check the logs, run the following command in a separate terminal:
 
     ```shell
     docker-compose logs -f | grep kusto-connect
     ```
-    
+
 ### Start the connector
 
 Use a Kafka Connect REST call to start the connector.
@@ -270,9 +272,9 @@ Use a Kafka Connect REST call to start the connector.
     ```shell
     curl -X POST -H "Content-Type: application/json" --data @adx-sink-config.json http://localhost:8083/connectors
     ```
-    
+
 1. To check the status, run the following command in a separate terminal:
-    
+
     ```shell
     curl http://localhost:8083/connectors/storm/status
     ```
@@ -287,7 +289,7 @@ The connector will start queueing ingestion processes to Azure Data Explorer.
 ### Confirm data ingestion
 
 1. Wait for data to arrive in the `Storms` table. To confirm the transfer of data, check the row count:
-    
+
     ```kusto
     Storms | count
     ```
@@ -297,25 +299,25 @@ The connector will start queueing ingestion processes to Azure Data Explorer.
     ```kusto
     .show ingestion failures
     ```
-    
-    Once you see data, try out a few queries. 
+
+    Once you see data, try out a few queries.
 
 ### Query the data
 
 1. To see all the records, run the following [query](/azure/data-explorer/kusto/query/tutorials/learn-common-operators):
-    
+
     ```kusto
     Storms
     ```
 
 1. Use `where` and `project` to filter specific data:
-    
+
     ```kusto
     Storms
     | where EventType == 'Drought' and State == 'TEXAS'
     | project StartTime, EndTime, Source, EventId
     ```
-    
+
 1. Use the [`summarize`](kusto/query/summarizeoperator.md) operator:
 
     ```kusto
@@ -325,7 +327,7 @@ The connector will start queueing ingestion processes to Azure Data Explorer.
     | project State, event_count
     | render columnchart
     ```
-    
+
     :::image type="content" source="media/ingest-data-kafka/kusto-query.png" alt-text="Kafka query column chart results in Azure Data Explorer.":::
 
 For more query examples and guidance, see [Write queries for Azure Data Explorer](/azure/data-explorer/kusto/query/tutorials/learn-common-operators) and [Kusto Query Language documentation](./kusto/query/index.md).
@@ -353,7 +355,7 @@ az kusto database delete -n <database name> --cluster-name <cluster name> -g <re
 
 Tune the [Kafka Sink](https://github.com/Azure/kafka-sink-azure-kusto/blob/master/README.md) connector to work with the [ingestion batching policy](kusto/management/batchingpolicy.md):
 
-* Tune the Kafka Sink `flush.size.bytes` size limit starting from 1 MB, increasing by increments of 10 MB or 100 MB. 
+* Tune the Kafka Sink `flush.size.bytes` size limit starting from 1 MB, increasing by increments of 10 MB or 100 MB.
 * When using Kafka Sink, data is aggregated twice. On the connector side data is aggregated according to flush settings, and on the Azure Data Explorer service side according to the batching policy. If the batching time is too short and no data can be ingested by both connector and service, batching time must be increased. Set batching size at 1 GB and increase or decrease by 100 MB increments as needed. For example, if the flush size is 1 MB and the batching policy size is 100 MB,after a 100-MB batch is aggregated by the Kafka Sink connector, a 100-MB batch will be ingested by the Azure Data Explorer service. If the batching policy time is 20 seconds and the Kafka Sink connector flushes 50 MB in a 20-second period - then the service will ingest a 50-MB batch.
 * You can scale by adding instances and [Kafka partitions](https://kafka.apache.org/documentation/). Increase `tasks.max` to the number of partitions. Create a partition if you have enough data to produce a blob the size of the `flush.size.bytes` setting. If the blob is smaller, the batch is processed when it reaches the time limit, so the partition won't receive enough throughput. A large number of partitions means more processing overhead.
 
