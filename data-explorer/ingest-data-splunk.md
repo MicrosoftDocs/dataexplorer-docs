@@ -174,6 +174,6 @@ Once the alert is triggered, data is sent to your Azure Data Explorer table. You
 
     :::image type="content" source="media/ingest-data-splunk/verify-alert.png" alt-text="Screenshot of KQL query editor showing the results of a query to get 100 records from the table." lightbox="media/ingest-data-splunk/verify-alert.png":::
 
-## Next steps
+## Related content
 
 * [Write queries](/azure/data-explorer/kusto/query/tutorials/learn-common-operators)
