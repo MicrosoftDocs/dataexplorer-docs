@@ -105,7 +105,7 @@ var leaderClusterName = "leader";
 var attachedDatabaseConfigurationData = new KustoAttachedDatabaseConfigurationData
 {
     ClusterResourceId = new ResourceIdentifier($"/subscriptions/{leaderSubscriptionId}/resourceGroups/{leaderResourceGroup}/providers/Microsoft.Kusto/Clusters/{leaderClusterName}"),
-    DatabaseName = "<databaseName>", // Can be specific database name or * for all databases
+    DatabaseName = "<databaseName>", // Can be a specific database name in a leader cluster or * for all databases
     DefaultPrincipalsModificationKind = KustoDatabaseDefaultPrincipalsModificationKind.Union,
     Location = AzureLocation.NorthCentralUS
 };
