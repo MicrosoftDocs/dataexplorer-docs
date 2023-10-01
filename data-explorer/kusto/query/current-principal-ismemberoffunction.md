@@ -25,6 +25,9 @@ Checks group membership or principal identity of the current principal running t
 |--|--|--|--|
 | *group* | dynamic | &check; | An array of string literals in which each literal represents an Azure Active Directory (Azure AD) principal. See [examples for Azure AD principals](../management/access-control/referencing-security-principals.md).|
 
+> [!NOTE]
+> The `current_principal_is_member_of()` function only works with string literals, to avoid throttling from Azure Active Directory. Allowing providing to it values from a table's column (for example by writing `| extend IsMember = current_principal_is_member_of(GroupNameColumn)', would cause such throttling.
+
 ## Returns
 
 The function returns `true` if the current principal running the query is successfully matched for at least one input argument. If not, the function returns `false`.
