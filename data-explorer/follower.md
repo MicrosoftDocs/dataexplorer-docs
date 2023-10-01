@@ -199,7 +199,7 @@ Install : Az.Kusto
 $FollowerClustername = 'follower'
 $FollowerClusterSubscriptionID = 'xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx'
 $FollowerResourceGroupName = 'followerResourceGroup'
-$DatabaseName = "db"  ## Can be specific database name or * for all databases
+$DatabaseName = "db"  ## Can be a specific database name in a leader cluster or * for all databases
 $LeaderClustername = 'leader'
 $LeaderClusterSubscriptionID = 'xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx'
 $LeaderClusterResourceGroup = 'leaderResourceGroup'
@@ -208,9 +208,9 @@ $DefaultPrincipalsModificationKind = 'Union'
 $getleadercluster = Get-AzKustoCluster -Name $LeaderClustername -ResourceGroupName $LeaderClusterResourceGroup -SubscriptionId $LeaderClusterSubscriptionID -ErrorAction Stop
 $LeaderClusterResourceid = $getleadercluster.Id
 $Location = $getleadercluster.Location
-##Handle the config name if all databases needs to be followed
+## Handle the config name if all databases need to be followed. The config name can be given any unique name
 if($DatabaseName -eq '*')  {
-        $configname = $FollowerClustername + 'config'
+        $configname = $FollowerClustername + 'config'  
        }
 else {
         $configname = $DatabaseName
