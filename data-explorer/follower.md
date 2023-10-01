@@ -105,7 +105,7 @@ var leaderClusterName = "leader";
 var attachedDatabaseConfigurationData = new KustoAttachedDatabaseConfigurationData
 {
     ClusterResourceId = new ResourceIdentifier($"/subscriptions/{leaderSubscriptionId}/resourceGroups/{leaderResourceGroup}/providers/Microsoft.Kusto/Clusters/{leaderClusterName}"),
-    DatabaseName = "<databaseName>", // Can be specific database name or * for all databases
+    DatabaseName = "<databaseName>", // Can be a specific database name in a leader cluster or * for all databases
     DefaultPrincipalsModificationKind = KustoDatabaseDefaultPrincipalsModificationKind.Union,
     Location = AzureLocation.NorthCentralUS
 };
@@ -165,7 +165,7 @@ leader_resource_group_name = "leaderResourceGroup"
 follower_cluster_name = "follower"
 leader_cluster_name = "leader"
 attached_database_Configuration_name = "uniqueNameForAttachedDatabaseConfiguration"
-database_name  = "db" # Can be specific database name or * for all databases
+database_name  = "db" # Can be a specific database name in a leader cluster or * for all databases
 default_principals_modification_kind  = "Union"
 location = "North Central US"
 cluster_resource_id = "/subscriptions/" + leader_subscription_id + "/resourceGroups/" + leader_resource_group_name + "/providers/Microsoft.Kusto/Clusters/" + leader_cluster_name
@@ -199,7 +199,7 @@ Install : Az.Kusto
 $FollowerClustername = 'follower'
 $FollowerClusterSubscriptionID = 'xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx'
 $FollowerResourceGroupName = 'followerResourceGroup'
-$DatabaseName = "db"  ## Can be specific database name or * for all databases
+$DatabaseName = "db"  ## Can be a specific database name in a leader cluster or * for all databases
 $LeaderClustername = 'leader'
 $LeaderClusterSubscriptionID = 'xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx'
 $LeaderClusterResourceGroup = 'leaderResourceGroup'
@@ -208,9 +208,9 @@ $DefaultPrincipalsModificationKind = 'Union'
 $getleadercluster = Get-AzKustoCluster -Name $LeaderClustername -ResourceGroupName $LeaderClusterResourceGroup -SubscriptionId $LeaderClusterSubscriptionID -ErrorAction Stop
 $LeaderClusterResourceid = $getleadercluster.Id
 $Location = $getleadercluster.Location
-##Handle the config name if all databases needs to be followed
+## Handle the config name if all databases need to be followed. The config name can be given any unique name
 if($DatabaseName -eq '*')  {
-        $configname = $FollowerClustername + 'config'
+        $configname = $FollowerClustername + 'config'  
        }
 else {
         $configname = $DatabaseName
