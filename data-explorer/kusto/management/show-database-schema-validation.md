@@ -23,7 +23,7 @@ The command returns a table of schema validation issues within a database. The t
 
 |Column name|Description|
 |--|--|
-|Entity kind|The type of database entity. For example, a function or table.|
+|Entity kind|The type of database entity.|
 |Entity name|The name of the entity.|
 |Property|The property of the entity being validated. For example, this value could be the name of a policy. For a list of policies, see [Policies overview](policies.md).|
 |Reason|A message explaining the reason for the validation failure.|
