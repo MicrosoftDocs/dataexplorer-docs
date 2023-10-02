@@ -53,6 +53,15 @@ The command performs validation checks for the following scenarios:
 | | An update policy returns a scalar value instead of a tabular value. |
 | | An update policy refers to a nonexistent function or source table. |
 
+## Example
+
+> [!div class="nextstepaction"]
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA9MrzsgvV0hJLElMSixOVShOzkjNTVQoS8zJBIpl5ucBADkDV/cgAAAA" target="_blank">Run the query</a>
+
+```kusto
+.show database schema validation
+```
+
 ## Related content
 
 * [Best practices for schema management](management-best-practices.md)
