@@ -274,7 +274,8 @@ Serilog is a popular logging framework for .NET applications. Serilog allows dev
 * **Underlying SDK:** [Python](kusto/api/python/kusto-python-client-library.md)
 * **Repository:** Microsoft Azure - https://github.com/Azure/azure-kusto-splunk
 * **Documentation:** [Ingest data from Splunk](ingest-data-splunk.md)
-<!-- * **Community Blog:** [???](https://techcommunity.microsoft.com/t5/azure-data-explorer-blog/getting-started-with-microsoft-azure-data-explorer-add-on-for/ba-p/3917176) -->
+* **Splunk Base:** [Microsoft Azure Data Explorer Add-On for Splunk](https://splunkbase.splunk.com/app/6979)
+* **Community Blog:** [Getting started with Microsoft Azure Data Explorer Add-On for Splunk](https://techcommunity.microsoft.com/t5/azure-data-explorer-blog/getting-started-with-microsoft-azure-data-explorer-add-on-for/ba-p/3917176)
 ::: zone-end
 
 ## Telegraf
