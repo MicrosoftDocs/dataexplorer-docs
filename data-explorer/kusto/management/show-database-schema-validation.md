@@ -56,14 +56,3 @@ The command performs validation checks for the following scenarios:
 | | An update policy refers to a function with an incompatible output schema. |
 | | An update policy returns a scalar value instead of a tabular value. |
 | | An update policy refers to a nonexistent function or source table. |
-
-## Example
-
-```kusto
-.show database schema validation
-```
-
-**Output**
-
-|Entity kind|Entity name|Property|Reason|
-|--|--|--|--|
