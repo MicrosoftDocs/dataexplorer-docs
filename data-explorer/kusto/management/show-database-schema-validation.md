@@ -7,7 +7,7 @@ ms.date: 10/02/2023
 ---
 # .show database schema validation
 
-This command identifies any existing schema violations within a database. It performs a comprehensive validation of functions, materialized views, external tables, data mappings, continuous exports, update policies, row level security policies, and the cache policy. For more information, see [Validation scenarios](#validation-scenarios).
+This command identifies schema violations within a database. It performs a comprehensive validation of functions, materialized views, external tables, data mappings, continuous exports, update policies, row level security policies, and the cache policy. For more information, see [Validation scenarios](#validation-scenarios).
 
 ## Permissions
 
