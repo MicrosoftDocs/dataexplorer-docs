@@ -56,3 +56,7 @@ The command performs validation checks for the following scenarios:
 | | An update policy refers to a function with an incompatible output schema. |
 | | An update policy returns a scalar value instead of a tabular value. |
 | | An update policy refers to a nonexistent function or source table. |
+
+## Related content
+
+* [Best practices for schema management](management-best-practices.md)
