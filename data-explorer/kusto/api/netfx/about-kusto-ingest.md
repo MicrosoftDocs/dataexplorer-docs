@@ -53,4 +53,4 @@ Direct ingestion has low latency and doesn't involve aggregation. However, the c
 ## Related content
 
 * [Data ingestion overview](../../../ingest-data-overview.md)
-* [Create an app to get data using batching ingestion](../get-started/app-batch-ingestion.md)
+* [Create an app to get data using queued ingestion](../get-started/app-batch-ingestion.md)
