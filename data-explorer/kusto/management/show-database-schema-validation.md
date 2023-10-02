@@ -7,11 +7,11 @@ ms.date: 10/02/2023
 ---
 # .show database schema validation
 
-This command shows schema violations within a database. For information about what the command validates, see [Validation scenarios](#validation-scenarios).
+This command identifies any existing schema violations within a database. It performs a comprehensive validation of functions, materialized views, external tables, data mappings, continuous exports, update policies, row level security policies, and the cache policy. For more information, see [Validation scenarios](#validation-scenarios).
 
 ## Permissions
 
-You must have at least Database Viewer or Database Monitor permissions to run this command. For more information, see [Kusto role-based access control](access-control/role-based-access-control.md).
+You must have at least Database Viewer or Database Monitor permissions to run this command. For more information, see [role-based access control](../access-control/role-based-access-control.md).
 
 ## Syntax
 
