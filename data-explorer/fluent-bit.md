@@ -29,10 +29,10 @@ For a complete list of data connectors, see [Data connectors overview](connector
 
 ## Create a table to store your logs
 
-Fluent Bit has an Azure Data Explorer output plugin that forwards logs in the following JSON format:
+Fluent Bit forwards logs to Azure Data Explorer in the following JSON format:
 
 ```json
-{“log”: <dynamic>, “tag”: <string>, “timestamp”: <datetime>, }
+{“log”: <dynamic>, “tag”: <string>, “timestamp”: <datetime>}
 ```
 
 To create an Azure Data Explorer table for incoming logs from Fluent Bit:
