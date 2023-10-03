@@ -1,11 +1,11 @@
 ---
-title: .show database schema validation
-description: Learn how to use the `.show database schema validation` command to show schema violations within a database.
+title: .show database schema violations
+description: Learn how to use the `.show database schema violations` command to show schema violations within a database.
 ms.reviewer: shanisolomon
 ms.topic: reference
-ms.date: 10/02/2023
+ms.date: 10/03/2023
 ---
-# .show database schema validation
+# .show database schema violations
 
 This command identifies schema violations within a database. It performs a comprehensive validation of functions, materialized views, external tables, data mappings, continuous exports, update policies, row level security policies, and the cache policy. For more information, see [Validation scenarios](#validation-scenarios).
 
@@ -15,7 +15,13 @@ You must have at least Database Viewer or Database Monitor permissions to run th
 
 ## Syntax
 
-`.show` `database` `schema` `validation`
+`.show` `database` *DatabaseName* `schema` `violations`
+
+## Parameters
+
+|Name|Type|Required|Description|
+|--|--|--|--|
+|*DatabaseName*|string|&check;|The name of the database for which to validate the schema.|
 
 ## Returns
 
@@ -55,11 +61,8 @@ The command performs validation checks for the following scenarios:
 
 ## Example
 
-> [!div class="nextstepaction"]
-> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA9MrzsgvV0hJLElMSixOVShOzkjNTVQoS8zJBIpl5ucBADkDV/cgAAAA" target="_blank">Run the query</a>
-
 ```kusto
-.show database schema validation
+.show database MyDatabase schema violations
 ```
 
 ## Related content
