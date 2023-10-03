@@ -14,7 +14,7 @@ In this article, you'll learn how to:
 
 > [!div class="checklist"]
 >
-> * [Create an Azure Data Explorer table](#create-an-azure-data-explorer-table)
+> * [Create a table to store your logs](#create-a-table-to-store-your-logs)
 > * [Create an Azure AD app with permissions to ingest data](#create-an-azure-ad-app-with-permissions-to-ingest-data)
 > * [Configure Fluent Bit to send logs to your table](#configure-fluent-bit-to-send-logs-to-your-table)
 > * [Query your logs in Azure Data Explorer](#query-your-logs-in-azure-data-explorer)
@@ -27,7 +27,7 @@ For a complete list of data connectors, see [Data connectors overview](connector
 * An Azure Data Explorer cluster and database. [Create a cluster and database](create-cluster-and-database.md).
 * [Install Fluent Bit](https://docs.fluentbit.io/manual/installation/getting-started-with-fluent-bit).
 
-### Create an Azure Data Explorer table
+## Create a table to store your logs
 
 Fluent Bit has an Azure Data Explorer output plugin that forwards logs in the following JSON format:
 
@@ -104,7 +104,7 @@ To configure Fluent Bit to send logs to your table:
   
    * For the `Ingestion_Endpoint`, use the **Data Ingestion URI** found in the [Azure portal](https://ms.portal.azure.com/) under your cluster overview.
   
-   * For the `Database_Name`, `Table_Name`, and `Ingestion_Mapping_Reference`, use the values from the [Create an Azure Data Explorer table](#create-an-azure-data-explorer-table) step. If you didn't create an ingestion mapping, remove the `Ingestion_Mapping_Reference` property from the configuration file.
+   * For the `Database_Name`, `Table_Name`, and `Ingestion_Mapping_Reference`, use the values from the [Create an Azure Data Explorer table](#create-a-table-to-store-your-logs) step. If you didn't create an ingestion mapping, remove the `Ingestion_Mapping_Reference` property from the configuration file.
 
 ## Query your logs in Azure Data Explorer
 
