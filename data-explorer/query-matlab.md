@@ -103,7 +103,7 @@ To perform user authentication:
         baseFileName = matlabDllFiles(k).name;
         fullFileName = fullfile(dllFolder,baseFileName);
         fprintf(1, 'Reading  %s\n', fullFileName);
-
+    end
         % Load the downloaded assembly in MATLAB
         NET.addAssembly(fullFileName);
     ```
@@ -220,7 +220,7 @@ To perform application authentication:
         baseFileName = matlabDllFiles(k).name;
         fullFileName = fullfile(dllFolder,baseFileName);
         fprintf(1, 'Reading  %s\n', fullFileName);
-    
+    end
         % Load the downloaded assembly
         NET.addAssembly(fullFileName);
    ```
