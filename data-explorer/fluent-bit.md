@@ -85,18 +85,18 @@ To configure Fluent Bit to send logs to your table:
 
 1. Create a Fluent Bit [configuration file](https://docs.fluentbit.io/manual/administration/configuring-fluent-bit/classic-mode/configuration-file) with the following content:
 
-```txt
-[OUTPUT]
-    Match *
-    Name azure_kusto
-    Tenant_Id <Directory (tenant) ID>
-    Client_Id <Application (client) ID>
-    Client_Secret <Client secret key value>
-    Ingestion_Endpoint https://ingest-<cluster>.<region>.kusto.windows.net
-    Database_Name <MyDatabase>
-    Table_Name <MyTable>
-    Ingestion_Mapping_Reference <MyMapping>
-```
+    ```txt
+    [OUTPUT]
+        Match *
+        Name azure_kusto
+        Tenant_Id <Directory (tenant) ID>
+        Client_Id <Application (client) ID>
+        Client_Secret <Client secret key value>
+        Ingestion_Endpoint https://ingest-<cluster>.<region>.kusto.windows.net
+        Database_Name <MyDatabase>
+        Table_Name <MyTable>
+        Ingestion_Mapping_Reference <MyMapping>
+    ```
 
 1. Replace variables surrounded by angle brackets with the relevant values:
    
