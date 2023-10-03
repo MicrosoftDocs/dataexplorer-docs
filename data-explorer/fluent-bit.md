@@ -110,14 +110,14 @@ To configure Fluent Bit to send logs to your table:
 
 Once the configuration is complete, your logs are sent to your Azure Data Explorer table.
 
-1. Run the following query to verify that logs have been ingested into the table:
+1. To verify that logs have been ingested into the table, run the following query:
 
     ```Kusto
     FluentBitLogs
     | count
     ```
 
-1. Run the following query to view the log data:
+1. To view a sample of log data, run the following query:
 
     ```Kusto
     FluentBitLogs
