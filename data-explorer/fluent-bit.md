@@ -23,9 +23,9 @@ For a complete list of data connectors, see [Data connectors overview](connector
 
 ## Prerequisites
 
+* [Fluent Bit](https://docs.fluentbit.io/manual/installation/getting-started-with-fluent-bit).
 * A Microsoft account or an Azure Active Directory user identity. An Azure subscription isn't required.
 * An Azure Data Explorer cluster and database. [Create a cluster and database](create-cluster-and-database.md).
-* [Install Fluent Bit](https://docs.fluentbit.io/manual/installation/getting-started-with-fluent-bit).
 
 ## Create a table to store your logs
 
