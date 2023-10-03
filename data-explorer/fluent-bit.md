@@ -15,7 +15,7 @@ In this article, you'll learn how to:
 > [!div class="checklist"]
 >
 > * [Create an Azure Data Explorer table](#create-an-azure-data-explorer-table)
-> * [Create an Azure AD app with permissions to ingest data](#create-an-azure-ad-application-for-ingestion)
+> * [Create an Azure AD app with permissions to ingest data](#create-an-azure-ad-app-with-permissions-to-ingest-data)
 > * [Configure Fluent Bit to send logs to your table](#configure-fluent-bit-to-send-logs-to-your-table)
 > * [Query your logs in Azure Data Explorer](#query-your-logs-in-azure-data-explorer)
 
@@ -100,7 +100,7 @@ To configure Fluent Bit to send logs to your table:
 
 1. Replace variables surrounded by angle brackets with the relevant values:
    
-   * For `Tenant_Id`, `Client_Id`, and `Client_Secret`, use the values from the [Create an Azure AD application for ingestion](#create-an-azure-ad-application-for-ingestion) step.
+   * For `Tenant_Id`, `Client_Id`, and `Client_Secret`, use the values from the [Create an Azure AD application for ingestion](#create-an-azure-ad-app-with-permissions-to-ingest-data) step.
   
    * For the `Ingestion_Endpoint`, use the **Data Ingestion URI** found in the [Azure portal](https://ms.portal.azure.com/) under your cluster overview.
   
