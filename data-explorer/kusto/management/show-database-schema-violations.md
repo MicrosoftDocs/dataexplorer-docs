@@ -65,6 +65,14 @@ The command performs validation checks for the following scenarios:
 .show database MyDatabase schema violations
 ```
 
+**Output**
+
+|Entity kind|Entity name|Property|Reason|
+|--|--|--|--|
+|Function|DiagnosticMetricsExpand||Request is invalid and cannot be processed: Semantic error: SEM0100: 'mvexpand' operator: Failed to resolve table or column expression named 'DiagnosticRawRecords'|
+|ContinuousExport|SampleMetricsExport||Continuous export job 'SampleMetricsExport' is disabled|
+|MaterializedView|DailyCovid19||Invalid Materialized view job: 'DailyCovid19'. Entity ID 'Covid19' of kind 'MaterializedView' was not found.|
+
 ## Related content
 
 * [Best practices for schema management](management-best-practices.md)
