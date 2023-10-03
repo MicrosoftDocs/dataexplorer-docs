@@ -8,9 +8,16 @@ ms.date: 10/03/2023
 
 # Ingest data from Fluent Bit to Azure Data Explorer
 
-[Fluent Bit](https://docs.fluentbit.io/manual/) is an open-source agent for logs, metrics, and traces. It collects data from diverse sources like files and event streams, then filters, transforms, and sends them to storage. Azure Data Explorer is a fast and highly scalable data exploration service for log and telemetry data.
+[Fluent Bit](https://docs.fluentbit.io/manual/) is an open-source agent that collects logs, metrics, and traces from various sources. It allows you to filter, modify, and aggregate event data before sending it to storage. Azure Data Explorer is a fast and highly scalable data exploration service for log and telemetry data. This article guides you through the process of sending data from Fluent Bit to Azure Data Explorer. 
 
-In this article, you learn how to send data from Fluent Bit to a table in your Azure Data Explorer cluster. You initially create a table and data mapping, then direct Fluent Bit to send data into the table, and then validate the results.
+In this article, you'll learn how to:
+
+> [!div class="checklist"]
+>
+> * [Create an Azure Data Explorer table](#create-an-azure-data-explorer-table)
+> * [Create an Azure AD app with permissions to ingest data](#create-an-azure-ad-application-for-ingestion)
+> * [Configure Fluent Bit to send logs to your table](#configure-fluent-bit-to-send-logs-to-your-table)
+> * [Query your logs in Azure Data Explorer](#query-your-logs-in-azure-data-explorer)
 
 ## Prerequisites
 
@@ -54,7 +61,7 @@ To create an Azure Data Explorer table for incoming logs from Fluent Bit:
         ]```
     ```
 
-## Create an Azure AD application for ingestion
+## Create an Azure AD app with permissions to ingest data
 
 Azure Active Directory (Azure AD) application authentication is used for applications that need to access Azure Data Explorer without a user present. To ingest data using Fluent Bit, you need to create and register an Azure AD application principal, and then authorize this principal to ingest data into your Azure Data Explorer table.
 
