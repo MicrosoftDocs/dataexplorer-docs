@@ -3,24 +3,117 @@ title: Ingest data from Fluent Bit to Azure Data Explorer
 description: Learn how to ingest (load) data into Azure Data Explorer from Fluent Bit.
 ms.reviewer: ramacg
 ms.topic: how-to
-ms.date: 10/02/2023
+ms.date: 10/03/2023
 ---
 
 # Ingest data from Fluent Bit to Azure Data Explorer
 
-Fluent Bit is an open-source log aggregator that streamlines log management. It effortlessly collects logs from diverse sources like files and event streams, then filters, transforms, and sends them to storage. This makes it a top pick for lightweight, high-performance log processing in cloud and containerized setups. Azure Data Explorer is a fast and highly scalable data exploration service for log and telemetry data.
+[Fluent Bit](https://docs.fluentbit.io/manual/) is an open-source agent for logs, metrics, and traces. It collects data from diverse sources like files and event streams, then filters, transforms, and sends them to storage. Azure Data Explorer is a fast and highly scalable data exploration service for log and telemetry data.
 
-In this article, you learn how to use the Azure Data Explorer Fluent Bit add-on to send data from Fluent Bit to a table in your cluster. You initially create a table and data mapping, then direct Fluent Bit to send data into the table, and then validate the results.
+In this article, you learn how to send data from Fluent Bit to a table in your Azure Data Explorer cluster. You initially create a table and data mapping, then direct Fluent Bit to send data into the table, and then validate the results.
 
 ## Prerequisites
 
-* An Azure AD application (LINK)
+* A Microsoft account or an Azure Active Directory user identity. An Azure subscription isn't required.
+* An Azure Data Explorer cluster and database. [Create a cluster and database](create-cluster-and-database.md).
+* [Install Fluent Bit](https://docs.fluentbit.io/manual/installation/getting-started-with-fluent-bit).
 
-## Create a table and a mapping object
+### Create an Azure Data Explorer table
 
-## Send logs from Fluent Bit to your table
+Fluent Bit has an Azure Data Explorer output plugin that forwards logs in the following JSON format:
 
-## Query your logs
+```json
+{“log”: <dynamic>, “tag”: <string>, “timestamp”: <datetime>, }
+```
+
+To create an Azure Data Explorer table for incoming logs from Fluent Bit:
+
+1. Run the following command:
+
+    ```kusto
+    .create table FluentBitLogs (log:dynamic, tag:string, timestamp:datetime)
+    ```
+
+    Azure Data Explorer will automatically map the incoming JSON properties into the correct column. For more information, see [.create table command](kusto/management/create-table-command.md).
+
+1. (Optional) If your logs are structured, you can map log properties to designated columns using a [JSON mapping](kusto/management/mappings.md). For example, if your logs have three fields: `myString`, `myInteger`, and `myDynamic`, you can create a table with the following schema:
+
+    ```kusto
+    .create table FluentBitLogs (myString:string, myInteger:int, myDynamic: dynamic, timestamp:datetime)
+    ```
+
+    Then, create an ingestion mapping to map incoming data to the proper columns:
+
+    ```kusto
+    .create-or-alter table FluentBitLogs ingestion json mapping "LogMapping" 
+        ```[
+        {"column" : "myString", "datatype" : "string", "Properties":{"Path":"$.log.myString"}},
+        {"column" : "myInteger", "datatype" : "int", "Properties":{"Path":"$.log.myInteger"}}, 
+        {"column" : "myDynamic", "datatype" : "dynamic", "Properties":{"Path":"$.log.myInteger"}}, 
+        {"column" : "timestamp", "datatype" : "datetime", "Properties":{"Path":"$.timestamp"}} 
+        ]```
+    ```
+
+## Create an Azure AD application for ingestion
+
+Azure Active Directory (Azure AD) application authentication is used for applications that need to access Azure Data Explorer without a user present. To ingest data using Fluent Bit, you need to create and register an Azure AD application principal, and then authorize this principal to ingest data into your Azure Data Explorer table.
+
+1. Follow steps 1-7 to [create an Azure AD application](provision-azure-ad-app.md#create-azure-ad-application-registration).
+
+1. Save the **Application (client) ID**, **Directory (tenant) ID**, and client secret key **value**. These values will be used in the following steps.
+
+1. In the Azure Data Explorer web UI, run the following command:
+
+    ```kusto
+    .add database MyDatabase ingestors ('aadapp=<Application (client) ID>;<Directory (tenant) ID>' 'Fluent Bit application)
+    ```
+
+    Replace `<MyDatabase>` with the database that contains your table created in the previous section. This command grants the application permissions to ingest data into your table. For more information, see [role-based access control](kusto/access-control/role-based-access-control.md).
+
+## Configure Fluent Bit to send logs to your table
+
+To configure Fluent Bit to send logs to your table:
+
+1. Create a Fluent Bit [configuration file](https://docs.fluentbit.io/manual/administration/configuring-fluent-bit/classic-mode/configuration-file) with the following content:
+
+```txt
+[OUTPUT]
+    Match *
+    Name azure_kusto
+    Tenant_Id <Directory (tenant) ID>
+    Client_Id <Application (client) ID>
+    Client_Secret <Client secret key value>
+    Ingestion_Endpoint https://ingest-<cluster>.<region>.kusto.windows.net
+    Database_Name <MyDatabase>
+    Table_Name <MyTable>
+    Ingestion_Mapping_Reference <MyMapping>
+```
+
+1. Replace variables surrounded by angle brackets with the relevant values:
+   
+   * For `Tenant_Id`, `Client_Id`, and `Client_Secret`, use the values from the [Create an Azure AD application for ingestion](#create-an-azure-ad-application-for-ingestion) step.
+  
+   * For the `Ingestion_Endpoint`, use the **Data Ingestion URI** found in the [Azure portal](https://ms.portal.azure.com/) under your cluster overview.
+  
+   * For the `Database_Name`, `Table_Name`, and `Ingestion_Mapping_Reference`, use the values from the [Create an Azure Data Explorer table](#create-an-azure-data-explorer-table) step. If you didn't create an ingestion mapping, remove the `Ingestion_Mapping_Reference` property from the configuration file.
+
+## Query your logs in Azure Data Explorer
+
+Once the configuration is complete, your logs are sent to your Azure Data Explorer table.
+
+1. Run the following query to verify that logs have been ingested into the table:
+
+    ```Kusto
+    FluentBitLogs
+    | count
+    ```
+
+1. Run the following query to view the log data:
+
+    ```Kusto
+    FluentBitLogs
+    | take 100
+    ```
 
 ## Next step
 
