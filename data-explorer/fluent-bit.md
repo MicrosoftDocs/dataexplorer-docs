@@ -30,7 +30,13 @@ For a complete list of data connectors, see [Data connectors overview](connector
 
 Fluent Bit forwards logs to Azure Data Explorer in JSON format with three properties: `log` ([dynamic](kusto/query/scalar-data-types/dynamic.md)), `tag` ([string](kusto/query/scalar-data-types/string.md)), and `timestamp` ([datetime](kusto/query/scalar-data-types/datetime.md)).
 
-To create an Azure Data Explorer table for incoming logs from Fluent Bit:
+You can create a table with columns for each of these properties, or if you have knowledge of your log structure, you can create a customized table by mapping log properties to specific columns. Select the relevant tab.
+
+### [Default schema](#tab/default)
+
+To create a table for incoming logs from Fluent Bit:
+
+1. Select the database where you'd like to create the table.
 
 1. Run the following command:
 
@@ -39,14 +45,20 @@ To create an Azure Data Explorer table for incoming logs from Fluent Bit:
     ```
 
     Azure Data Explorer will automatically map the incoming JSON properties into the correct column. For more information, see [.create table command](kusto/management/create-table-command.md).
+    
+### [Custom schema](#tab/custom)
 
-1. (Optional) If your logs are structured, you can map log properties to designated columns using a [JSON mapping](kusto/management/mappings.md). For example, if your logs have three fields: `myString`, `myInteger`, and `myDynamic`, you can create a table with the following schema:
+To create a table for incoming structured logs from Fluent Bit:
+
+1. Select the database where you'd like to create the table.
+
+1. Run the [.create table command](kusto/management/create-table-command.md). For example, if your logs contain three fields named `myString`, `myInteger`, and `myDynamic`, you can create a table with the following schema:
 
     ```kusto
     .create table FluentBitLogs (myString:string, myInteger:int, myDynamic: dynamic, timestamp:datetime)
     ```
 
-    Then, create an ingestion mapping to map incoming data to the proper columns:
+1. Create a [JSON mapping](kusto/management/mappings.md) to map log properties to the appropriate columns. The following ingestion mapping creates a mapping based on the example in the previous step:
 
     ```kusto
     .create-or-alter table FluentBitLogs ingestion json mapping "LogMapping" 
@@ -57,6 +69,8 @@ To create an Azure Data Explorer table for incoming logs from Fluent Bit:
         {"column" : "timestamp", "datatype" : "datetime", "Properties":{"Path":"$.timestamp"}} 
         ]```
     ```
+
+---
 
 ## Register an Azure AD app with permissions to ingest data
 
