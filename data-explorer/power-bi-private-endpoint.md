@@ -34,17 +34,17 @@ After installing an on-premises data gateway, you need to create a gateway conne
     :::image type="content" source="media/power-bi-private-endpoint/new-connection.png" alt-text="Screenshot of the New connection form in Power BI service showing the required information for creating an on-premises connection." lightbox="media/power-bi-private-endpoint/new-connection.png":::
 
     | Setting | Field description | Sample value |
-    |---|---|---|
-    | Connection type| You can create three types of connections: On-premises, Virtual network, or a Cloud connection.  | **On-premises** is autoselected. |
+    |---------|---------|--------|
+    | Connection type| There are three types of connections: On-premises, Virtual network, or a Cloud connection.  | **On-premises** is autoselected. |
     | Gateway cluster name| The [on-premises gateway you installed](/data-integration/gateway/service-gateway-install). | Select your gateway cluster name from the dropdown.|
     | Connection name| The connection name connecting your on-premises data gateway to Power BI service. | Provide a meaningful name for your connection. |
     | Connection type| The data source used with the gateway. | Azure Data Explorer (Kusto).|
-    | Cluster| The Azure Data Explorer cluster used as the dataset of the report. | `https://`*clusterName*`.kusto.windows.net` |
+    | Cluster| The address of the Azure Data Explorer cluster used as the dataset of the report. | `https://`*clusterName*`.kusto.windows.net` |
 
 1. Under **Authentication**, select **Edit credentials**, and then sign in.
 1. Select **Create**, and then select **Close**. Your new connection appears in the list of connections.
 
-## Allow cloud data sources to refresh through a gateway cluster
+## Allow refresh through a gateway cluster
 
 To use any cloud data sources, such as Azure Data Explorer, you must ensure that the gateway has access to that data source.
 
@@ -55,18 +55,18 @@ To use any cloud data sources, such as Azure Data Explorer, you must ensure that
 
     :::image type="content" source="media/power-bi-private-endpoint/gateway-settings.png" alt-text="Screenshot of the data gateway settings in Power BI service." lightbox="media/power-bi-private-endpoint/gateway-settings.png":::
 
-1. Navigate back to your workspace.
+1. Return to your workspace.
 
 ## Upload report and configure dataset
 
 The link between your dataset and the data source within the gateway is based on your cluster address. The names must match. For example, if you supply an IP address for the server name within Power BI Desktop, you must use the IP address for the data source within the gateway configuration.
 
-1. Select **Upload**, and browse for a Power BI report to upload to your workspace. Along with your report, your report's dataset is automatically uploaded to the same workspace.
-1. Place your cursor over your report's dataset, and then select the **More menu [...]** > **Settings**.
+1. Select **Upload**, and browse for a Power BI report to upload to your workspace. Your report's dataset is uploaded along with your report.
+1. Place your cursor over your report's dataset, and then select the More menu **[...]** > **Settings**.
 
     :::image type="content" source="media/power-bi-private-endpoint/dataset.png" alt-text="Screenshot of a workspace in Power BI service showing the more menu of dataset.":::
 
-1. Expand **Gateway and cloud connections**.
+1. Select **>** to expand **Gateway and cloud connections**.
 1. Under **Gateway connections**, toggle on **Use an On-premises or VNet data gateway**.
 
     :::image type="content" source="media/power-bi-private-endpoint/dataset-settings.png" alt-text="Screenshot of the dataset settings showing the configured gateway and cloud connections.":::
@@ -77,7 +77,7 @@ The link between your dataset and the data source within the gateway is based on
 1. Select **Apply**.
 
     > [!NOTE]
-    > Upon republish, the data set owner must associate the dataset to a gateway and corresponding data source again. The previous association is not maintained after republishing.
+    > When you upload or republish your report, you must associate the dataset to a gateway and corresponding data source again. The previous association is not maintained after republishing.
 
     You've successfully bridged between your on-premises data gateway and your Power BI report that uses an Azure Data Explorer cluster.
 
