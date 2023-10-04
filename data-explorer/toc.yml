@@ -542,7 +542,7 @@ items:
             href: kusto/api/get-started/app-basic-query.md
           - name: Run management commands
             href: kusto/api/get-started/app-management-commands.md
-          - name: Batch ingestion
+          - name: Queued ingestion
             href: kusto/api/get-started/app-batch-ingestion.md
       - name: Connection strings
         items:

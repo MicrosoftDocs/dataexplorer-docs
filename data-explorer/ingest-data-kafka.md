@@ -81,10 +81,10 @@ This service principal will be the identity leveraged by the connector to write 
     .create table Storms ingestion csv mapping 'Storms_CSV_Mapping' '[{"Name":"StartTime","datatype":"datetime","Ordinal":0}, {"Name":"EndTime","datatype":"datetime","Ordinal":1},{"Name":"EventId","datatype":"int","Ordinal":2},{"Name":"State","datatype":"string","Ordinal":3},{"Name":"EventType","datatype":"string","Ordinal":4},{"Name":"Source","datatype":"string","Ordinal":5}]'
     ```
 
-1. Create a batch ingestion policy on the table for configurable ingestion latency.
+1. Create an [ingestion batching policy](kusto/management/batchingpolicy.md) on the table for configurable queued ingestion latency.
 
     > [!TIP]
-    > The [ingestion batching policy](kusto/management/batchingpolicy.md) is a performance optimizer and includes three parameters. The first condition satisfied triggers ingestion into the Azure Data Explorer table.
+    > The ingestion batching policy is a performance optimizer and includes three parameters. The first condition satisfied triggers ingestion into the Azure Data Explorer table.
 
     ```kusto
     .alter table Storms policy ingestionbatching @'{"MaximumBatchingTimeSpan":"00:00:15", "MaximumNumberOfItems": 100, "MaximumRawDataSizeMB": 300}'

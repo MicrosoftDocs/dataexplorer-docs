@@ -113,7 +113,7 @@ Use your goals to identify specific tests and to provide the outputs you identif
 
 Here are the typical subject areas that are evaluated with Azure Data Explorer:
 
-- **Data Ingestion and processing**: Data sources, data formats, ingestion methods, connectors, tools, ingestion policies, streaming vs batch ingestion
+- **Data Ingestion and processing**: Data sources, data formats, ingestion methods, connectors, tools, ingestion policies, streaming vs queued ingestion
 - **Data Storage**: schema, storage artifacts such as tables and materialized views
 - **Policies**: Such as partitioning, update, merge
 - **Querying and visualization**
