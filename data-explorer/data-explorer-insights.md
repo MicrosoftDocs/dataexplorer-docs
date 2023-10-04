@@ -139,7 +139,7 @@ On this tab, you can select a metric tile and deep dive to understand its trend 
 ### Ingestion tab (preview tab)
 
 The **Ingestion** tab allows you to monitor the status of queued ingestion operations to the cluster.
-In the [queued ingestion](ingest-data-overview.md#batching-vs-streaming-ingestion) process, data ingestion is optimized for high throughput. This is done by grouping small chunks of incoming data into batches based on a configurable [ingestion batching policy](kusto/management/batchingpolicy.md).
+In the [queued ingestion](ingest-data-overview.md#queued-vs-streaming-ingestion) process, data ingestion is optimized for high throughput. This is done by grouping small chunks of incoming data into batches based on a configurable [ingestion batching policy](kusto/management/batchingpolicy.md).
 The **Ingestion** tab gives you detailed information about the following:
 
 - The result of the queued ingestion, by database or table granularity.
