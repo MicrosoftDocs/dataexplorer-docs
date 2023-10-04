@@ -30,7 +30,7 @@ For a complete list of data connectors, see [Data connectors overview](connector
 
 Fluent Bit forwards logs to Azure Data Explorer in JSON format with three properties: `log` ([dynamic](kusto/query/scalar-data-types/dynamic.md)), `tag` ([string](kusto/query/scalar-data-types/string.md)), and `timestamp` ([datetime](kusto/query/scalar-data-types/datetime.md)).
 
-You can create a table with columns for each of these properties. Alternatively, if you have structured logs, you can create a table with log properties mapped to specific columns. To learn more, select the relevant tab.
+You can create a table with columns for each of these properties. Alternatively, if you have structured logs, you can create a table with log properties mapped to custom columns. To learn more, select the relevant tab.
 
 ### [Default schema](#tab/default)
 
