@@ -134,7 +134,7 @@ Here are the typical subject areas that are evaluated with Azure Data Explorer:
 Here's an example of the needed level of specificity in planning:
 
 - **Goal A**: We need to know whether our requirement for data ingestion and processing of batch data can be met under our defined SLA.
-- **Output A**: We'll have the data to determine whether our batch data ingestion and processing can meet the data processing requirement and SLA.
+- **Output A**: We'll have the data to determine whether our queued data ingestion and processing can meet the batch data processing requirement and SLA.
     - **Test A1**: Processing queries A, B, and C are identified as good performance tests as they're commonly executed by the data engineering team. Also, they represent overall data processing needs.
     - **Test A2**: Processing queries X, Y, and Z are identified as good performance tests as they contain near real-time stream processing requirements. Also, they represent overall event-based stream processing needs.
     - **Test A3**: Compare the performance of these queries at different scale of our cluster (cluster SKU, number of instances) with the benchmark obtained from the existing system.
@@ -151,7 +151,7 @@ Here's an example of the needed level of specificity in planning:
 - **Goal D**: We'll have tested the data ingestion rate of incremental data loading and will have the data points to estimate the data ingestion and processing time window.
 - **Output D**: We'll have tested the data ingestion rate and can determine whether our data ingestion and processing requirements can be met with the identified approach.
     - **Test D1**: Test daily, hourly, and near-real time data ingestion and processing.
-    - **Test D2**: Execute the continuous (batch or streaming) data ingestion and processing while running end-user queries.
+    - **Test D2**: Execute the continuous (queued or streaming) data ingestion and processing while running end-user queries.
 
 Be sure to refine your tests by adding multiple testing scenarios.
 
@@ -204,7 +204,7 @@ The following is a high level example of tasks that you can use to help you plan
 
 ### Evaluate the POC dataset
 
-Using the specific tests you identified, select a dataset to support the tests. Take time to review this dataset. You should verify that the dataset will adequately represent your future processing in terms of content, complexity, and scale. Don't use a dataset that's too small (less than 1 GB) because it won't deliver representative performance. Conversely, don't use a dataset that's too large because the POC shouldn't become a full data migration. Be sure to obtain the appropriate benchmarks from existing systems so you can use them for performance comparisons. Check if your dataset aligns with the supported data formats. Then, depending on the ingestion method (batch or streaming), your dataset can be ingested in batches of appropriate sizes.
+Using the specific tests you identified, select a dataset to support the tests. Take time to review this dataset. You should verify that the dataset will adequately represent your future processing in terms of content, complexity, and scale. Don't use a dataset that's too small (less than 1 GB) because it won't deliver representative performance. Conversely, don't use a dataset that's too large because the POC shouldn't become a full data migration. Be sure to obtain the appropriate benchmarks from existing systems so you can use them for performance comparisons. Check if your dataset aligns with the supported data formats. Then, depending on the ingestion method (queued or streaming), your dataset can be ingested in batches of appropriate sizes.
 
 > [!IMPORTANT]
 > Make sure you check with business owners for any blockers before moving any data to the cloud. Identify any security or privacy concerns or any data obfuscation needs that should be done before moving data to the cloud.
