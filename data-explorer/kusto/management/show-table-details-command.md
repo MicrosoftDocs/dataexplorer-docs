@@ -51,7 +51,7 @@ You must have at least Database User, Database Viewer, or Database Monitor permi
 | `ShardingPolicy`           | String   | The table's effective`*` sharding policy, serialized as JSON.                                   |
 | `MergePolicy`              | String   | The table's effective`*` merge policy, serialized as JSON.                                      |
 | `StreamingIngestionPolicy` | String   | The table's effective`*` streaming ingestion policy, serialized as JSON.                        |
-| `IngestionBatchingPolicy`  | String   | The table's effective`*` batching ingestion policy, serialized as JSON.                         |
+| `IngestionBatchingPolicy`  | String   | The table's effective`*` ingestion batching policy, serialized as JSON.                         |
 | `MinExtentsCreationTime`   | DateTime | The minimum creation time of an extent in the table (or null, if there are no extents)`**`.     |
 | `MaxExtentsCreationTime`   | DateTime | The maximum creation time of an extent in the table (or null, if there are no extents)`**`.     |
 | `RowOrderPolicy`           | String   | The table's effective row order policy, serialized as JSON.                                     |
