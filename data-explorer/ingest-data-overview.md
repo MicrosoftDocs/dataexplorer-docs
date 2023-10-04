@@ -3,20 +3,21 @@ title: 'Azure Data Explorer data ingestion overview'
 description: 'Learn about the different ways you can ingest (load) data in Azure Data Explorer'
 ms.reviewer: tzgitlin
 ms.topic: conceptual
-ms.date: 09/26/2023
+ms.date: 10/04/2023
 ---
 
 # Azure Data Explorer data ingestion overview
 
-Data ingestion is the process used to load data from one or more sources into a table in Azure Data Explorer. Once ingested, the data becomes available for query.
+Data ingestion is the process of loading data from one or more sources into a table in your cluster. Azure Data Explorer validates initial data and converts data formats where necessary. Further data manipulation includes matching schema, organizing, indexing, encoding, and compressing the data. Once ingested, the data is available for query.
+
+Azure Data Explorer offers queued ingestion and streaming ingestion. For more information, see [Queued vs. Streaming ingestion](#queued-vs-streaming-ingestion).
 
 The diagram below shows the end-to-end flow for working in Azure Data Explorer and shows different ingestion methods.
 
 :::image type="content" source="media/data-ingestion-overview/data-management-and-ingestion-overview.png" alt-text="Overview scheme of data ingestion and management.":::
 
-The Azure Data Explorer Data Management service, which is responsible for data ingestion, implements the following process:
-
-Azure Data Explorer can pull data from an external source or read requests from a pending Azure queue that is shared with clients. Data is batched or streamed by the Data Management service. Batch data flowing to the same database and table is optimized for ingestion throughput. Azure Data Explorer validates initial data and converts data formats where necessary. Further data manipulation includes matching schema, organizing, indexing, encoding, and compressing the data. Data is persisted in storage according to the set retention policy. The Data Management service then triggers the ingest operation in Azure Data Explorer, where it's made available for query.
+> [!NOTE]
+> Data is persisted in storage according to the set [retention policy](kusto/management/retentionpolicy.md).
 
 ## Supported data formats, properties, and permissions
 
@@ -31,7 +32,7 @@ Azure Data Explorer can pull data from an external source or read requests from 
 
     For more information, see [Kusto role-based access control](kusto/access-control/role-based-access-control.md).
 
-## Queued vs streaming ingestion
+## Queued vs. streaming ingestion
 
 * Queued ingestion does data batching and is optimized for high ingestion throughput. This method is the preferred and most performant type of ingestion. Data is batched according to ingestion properties. Small batches of data are then merged, and optimized for fast query results. By default, the maximum batching value is 5 minutes, 1000 items, or a total size of 1 GB. The data size limit for a queued ingestion command is 6 GB. To learn more, see the [ingestion batching policy](kusto/management/batchingpolicy.md).
 
