@@ -76,17 +76,17 @@ To create a table for incoming structured logs from Fluent Bit:
 
 Azure Active Directory (Azure AD) application authentication is used for applications that need to access Azure Data Explorer without a user present. To ingest data using Fluent Bit, you need to create and register an Azure AD application principal, and then authorize this principal to ingest data into your Azure Data Explorer table.
 
-1. Follow steps 1-7 to [create an Azure AD application](provision-azure-ad-app.md#create-azure-ad-application-registration).
+1. Follow steps 1-7 in [Create an Azure AD application](provision-azure-ad-app.md#create-azure-ad-application-registration).
 
-1. Save the **Application (client) ID**, **Directory (tenant) ID**, and client secret key **value**. These values will be used in the following steps.
+1. Save the **Application (client) ID**, **Directory (tenant) ID**, and client secret key **value** for use in the following steps.
 
-1. In the Azure Data Explorer web UI, run the following command:
+1. In the database where you created your table, run the following command, replacing `<MyDatabase>` with the name of the database:
 
     ```kusto
     .add database MyDatabase ingestors ('aadapp=<Application (client) ID>;<Directory (tenant) ID>' 'Fluent Bit application)
     ```
 
-    Replace `<MyDatabase>` with the database that contains your table created in the previous section. This command grants the application permissions to ingest data into your table. For more information, see [role-based access control](kusto/access-control/role-based-access-control.md).
+    This command grants the application permissions to ingest data into your table. For more information, see [role-based access control](kusto/access-control/role-based-access-control.md).
 
 ## Configure Fluent Bit to send logs to your table
 
