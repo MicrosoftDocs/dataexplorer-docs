@@ -14,10 +14,10 @@ A private endpoint is a network interface that uses private IP addresses from yo
 
 ## Prerequisites
 
-* A Microsoft account or an Azure Active Directory user identity. An Azure subscription isn't required.
+* A Microsoft account or a Microsoft Entra ID. An Azure subscription isn't required.
 * An Azure Data Explorer cluster behind a private endpoint. [Create a private endpoint for Azure Data Explorer](security-network-private-endpoint-create.md).
 * [Install an on-premises data gateway](/data-integration/gateway/service-gateway-install).
-* A [Power BI report](power-bi-data-connector.md#connectortabconnector).
+* A [Power BI report](power-bi-data-connector.md?tabs=connector).
 
 ## Create a gateway connection
 
@@ -35,7 +35,7 @@ After installing an on-premises data gateway, you need to create a gateway conne
 
     | Setting | Field description | Sample value |
     |---|---|---|
-    | Connection type| You can create three types of connections: On-premises, Virtual network, or a Cloud connection.  | **On-premises** is auto-selected. |
+    | Connection type| You can create three types of connections: On-premises, Virtual network, or a Cloud connection.  | **On-premises** is autoselected. |
     | Gateway cluster name| The [on-premises gateway you installed](/data-integration/gateway/service-gateway-install). | Select your gateway cluster name from the dropdown.|
     | Connection name| The connection name connecting your on-premises data gateway to Power BI service. | Provide a meaningful name for your connection. |
     | Connection type| The data source used with the gateway. | Azure Data Explorer (Kusto).|
