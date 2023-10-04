@@ -44,7 +44,7 @@ To create a table for incoming logs from Fluent Bit:
     .create table FluentBitLogs (log:dynamic, tag:string, timestamp:datetime)
     ```
 
-    Azure Data Explorer will automatically map the incoming JSON properties into the correct column. For more information, see [.create table command](kusto/management/create-table-command.md).
+    Azure Data Explorer automatically maps incoming JSON properties into the correct column. For more information, see [.create table command](kusto/management/create-table-command.md).
     
 ### [Custom schema](#tab/custom)
 
