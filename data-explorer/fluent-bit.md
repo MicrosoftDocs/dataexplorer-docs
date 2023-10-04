@@ -74,9 +74,9 @@ To create a table for incoming structured logs from Fluent Bit:
 
 ## Register an Azure AD app with permissions to ingest data
 
-Azure Active Directory (Azure AD) application authentication is used for applications that need to access Azure Data Explorer without a user present. To ingest data using Fluent Bit, you need to create and register an Azure AD application principal, and then authorize this principal to ingest data into your Azure Data Explorer table.
+Azure Active Directory (Azure AD) application authentication is used for applications that need to access Azure Data Explorer without a user present. To ingest data using Fluent Bit, you need to create and register an Azure AD service principal, and then authorize this principal to ingest data into your Azure Data Explorer table.
 
-1. Follow steps 1-7 in [Create an Azure AD application](provision-azure-ad-app.md#create-azure-ad-application-registration).
+1. Follow steps 1-7 in [Create an Azure AD application registration](provision-azure-ad-app.md#create-azure-ad-application-registration).
 
 1. Save the **Application (client) ID**, **Directory (tenant) ID**, and client secret key **value** for use in the following steps.
 
@@ -109,7 +109,7 @@ To configure Fluent Bit to send logs to your Azure Data Explorer table:
 
 1. Replace variables surrounded by angle brackets with the relevant values:
    
-   * For `Tenant_Id`, `Client_Id`, and `Client_Secret`, use the values from the [Create an Azure AD application for ingestion](#register-an-azure-ad-app-with-permissions-to-ingest-data) step.
+   * For `Tenant_Id`, `Client_Id`, and `Client_Secret`, use the values from the [Register an Azure AD app with permissions to ingest data](#register-an-azure-ad-app-with-permissions-to-ingest-data) step.
   
    * For the `Ingestion_Endpoint`, use the **Data Ingestion URI** found in the [Azure portal](https://ms.portal.azure.com/) under your cluster overview.
   
