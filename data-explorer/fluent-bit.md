@@ -3,7 +3,7 @@ title: Ingest data with Fluent Bit into Azure Data Explorer
 description: Learn how to ingest (load) data into Azure Data Explorer from Fluent Bit.
 ms.reviewer: ramacg
 ms.topic: how-to
-ms.date: 10/03/2023
+ms.date: 10/04/2023
 ---
 
 # Ingest data with Fluent Bit into Azure Data Explorer
@@ -28,11 +28,7 @@ For a complete list of data connectors, see [Data connectors overview](connector
 
 ## Create an Azure Data Explorer table to store your logs
 
-Fluent Bit forwards logs to Azure Data Explorer in the following JSON format:
-
-```json
-{“log”: <dynamic>, “tag”: <string>, “timestamp”: <datetime>}
-```
+Fluent Bit forwards logs to Azure Data Explorer in JSON format with three properties: `log` ([dynamic](kusto/query/scalar-data-types/dynamic.md)), `tag` ([string](kusto/query/scalar-data-types/string.md)), and `timestamp` ([datetime](kusto/query/scalar-data-types/datetime.md)).
 
 To create an Azure Data Explorer table for incoming logs from Fluent Bit:
 
