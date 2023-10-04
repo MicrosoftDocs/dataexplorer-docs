@@ -3,11 +3,11 @@ title: .show database schema violations
 description: Learn how to use the `.show database schema violations` command to show schema violations within a database.
 ms.reviewer: shanisolomon
 ms.topic: reference
-ms.date: 10/03/2023
+ms.date: 10/04/2023
 ---
 # .show database schema violations
 
-This command identifies schema violations within a database. It performs a comprehensive validation of functions, materialized views, external tables, data mappings, continuous exports, update policies, row level security policies, and the cache policy. For more information, see [Validation scenarios](#validation-scenarios).
+This command identifies schema violations within a database. It performs a comprehensive validation of functions, materialized views, external tables, data mappings, continuous exports, and various policies.
 
 ## Permissions
 
@@ -33,31 +33,6 @@ The command returns a table of schema validation issues within a database. The t
 |Entity name|The name of the entity.|
 |Property|The property of the entity being validated. For example, this value could be the name of a policy. For a list of policies, see [Policies overview](policies.md).|
 |Reason|A message explaining the reason for the validation failure.|
-
-## Validation scenarios
-
-The command performs validation checks for the following scenarios:
-
-| Entity Kind | Scenario Description |
-|--|--|
-| [Cache policy](cachepolicy.md) | A cache policy uses a negative timespan value. |
-| [Continuous export](data-export/continuous-data-export.md) | A continuous export has been disabled. |
-| | A continuous export query output doesn't match the external table schema. |
-| | A continuous export references a nonexistent external table. |
-| | A continuous export uses a deleted or blocked managed identity per the identity policy. |
-| [Data mapping](mappings.md) | A data mapping references a nonexistent column. |
-| [External table](../query/schema-entities/externaltables.md) | An external table blob path doesn't exist. |
-| [Function](../query/schema-entities/stored-functions.md) | A function participates in a recursive loop. |
-| | A function references a retyped column. |
-| | A function references a function with incorrect parameters or parameter types. |
-| | A function references a nonexistent function. |
-| | A function references a nonexistent table. |
-| [Materialized view](materialized-views/materialized-view-overview.md) | A materialized view references a nonexistent dimension table. |
-| | A materialized view references a nonexistent source table. |
-| [Row level security policy](rowlevelsecuritypolicy.md) | A row level security policy query output schema doesn't match the table's schema. |
-| [Update policy](updatepolicy.md) | An update policy refers to a function with an incompatible output schema. |
-| | An update policy returns a scalar value instead of a tabular value. |
-| | An update policy refers to a nonexistent function or source table. |
 
 ## Example
 
