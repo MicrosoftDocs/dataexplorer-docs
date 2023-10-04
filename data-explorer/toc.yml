@@ -388,6 +388,9 @@ items:
             href: power-bi-dynamic-m.md
           - name: Query with SQL in Power BI
             href: power-bi-sql-query.md
+          - name: Connect to Power BI service
+            displayName: Private endpoint, Azure Data Explorer cluster behind a private endpoints
+            href: power-bi-private-endpoint.md
       - name: Excel
         items:
           - name: Connector
