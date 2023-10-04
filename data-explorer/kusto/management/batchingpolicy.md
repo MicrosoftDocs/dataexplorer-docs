@@ -5,7 +5,7 @@ ms.reviewer: orspodek
 ms.topic: reference
 ms.date: 10/04/2023
 ---
-# IngestionBatching policy
+# Ingestion batching policy
 
 ## Overview
 
