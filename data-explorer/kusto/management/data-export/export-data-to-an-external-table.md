@@ -38,13 +38,31 @@ The following properties are supported as part of the export to external table c
 |---|---|---|---|
 | `sizeLimit`     |`long`  |The size limit in bytes of a single storage artifact being written (prior to compression). A full row group of size `parquetRowGroupSize` will be written before checking whether this row group has reached the size limit and should start a new artifact. Allowed range is 100 MB (default) to 1 GB.|
 |`distributed`   |`bool`  |Disable/enable distributed export. Setting to false is equivalent to `single` distribution hint. | Default is true.
+| `distribution` | `string` |Distribution hint (`single`, `per_node`, `per_shard`). If value equals `single`, a single thread writes to storage. Otherwise, export writes from all nodes executing the query in parallel. Defaults to `per_node`. See more details in [Distribution settings](#distribution-settings)|
+|`distributionKind`   |`string`  |Optionally switches to uniform distribution when the external table is partitioned by string partition. Valid values are `uniform` or `default`. See more details in [Distribution settings](#distribution-settings)|
+|`concurrency`|*Number*|Hints the system how many partitions to run in parallel. See more details in [Distribution settings](#distribution-settings)| The default value is 16. |
+|`spread`|*Number*|Hints the system how to distribute the partitions among cluster nodes. See more details in [Distribution settings](#distribution-settings)| The default value is `Min(64, number-of-nodes)`. |
 |`parquetRowGroupSize`|`int`  |Relevant only when data format is Parquet. Controls the row group size in the exported files. This value takes precedence over `sizeLimit`, meaning a full row group will be exported before checking whether this row group has reached the size limit and should start a new artifact. | Default row group size is 100,000 records.|
-|`concurrency`|*Number*|Hints the system how many partitions to run in parallel. **See note.**| The default value is 16. |
-|`spread`|*Number*|Hints the system how to distribute the partitions among cluster nodes. For example, if there are N partitions and the spread hint is set to P, then the N partitions will be processed by P different cluster nodes equally in parallel/sequentially depending on the concurrency hint.  **See note.**| The default value is 1. |
 |`useNativeParquetWriter`|`bool`|Use the new export implementation when exporting to Parquet **See note.**| Default is false. |
 
->[!NOTE]
-> `hint.spread` and `hint.concurrency` are properties used to decrease/increase the concurrency of write operations. For more information, see [partition operator](../../query/partitionoperator.md). These properties are only relevant when exporting to an external table which is partitioned by a string partition. By default, the number of nodes exporting concurrently will be the minimum value between 64 and the number of cluster nodes.
+### Distribution settings
+
+The distribution of an export to external table operation indicates the number of nodes and threads that are writing to storage concurrently. The default distribution depends on the external table partitioning:
+
+| External table partitioning | Default distribution
+|---|---|
+|External table is not partitioned, or partitioned by `datetime` column only|Export is distributed `per_node` - all nodes in the cluster are exporting concurrently. Each node writes the data assigned to that node. The number of files exported is the number of nodes, or greater than number of nodes if `sizeLimit` is reached.|
+|External table is partitioned by a string column|The data to export is moved between the nodes, such that each node writes a subset of the partition values. A single partition is always written by a single node. The number of files written per partition should be greater than one only if the data exceeds `sizeLimit`. If the external table includes several string partitions, then data is partitioned between the node based on the first partition. Therefore, it is recommended to define the partition with most uniform distribution as the first one.|
+
+#### Changing the default distribution settings
+
+Changing the default distribution settings can be useful in the following cases:
+
+| Use case| Description| Recommendation
+|---|---|--|
+|Reduce number of exported files|Export is creating too many small files, and you would like it to create a smaller number of larger files.|Set `distribution`=`single` or `distributed`=`false` (both are equivalent) in the command properties. Only a single thread will perform the export. The downside of this is that the export operation can be much slower, as concurrency is significantly reduced.|
+|Reduce export duration|Increasing the concurrency of the export operation, to reduce its duration.| Set `distribution`=`per_shard` in the command properties. This means concurrency of the write operations is per data shard, instead of per node. This is only relevant when exporting to an external table which is not partitioned by string partition. Note that this might create too much load on storage, potentially resulting in throttling. See [Storage failures](export-data-to-storage.md#storage-failures).|
+|Reduce export duration for external tables partitioned by string partition|Due to the way export to string-partitioned external table works (see [Distribution settings](#distribution-settings)), if the partitions are not uniformly distributed between the nodes, export might take a longer time to run. For example, if there is a single partition, that's significantly larger than others, then most of the export work will be done by the single node assigned to that partition, while other nodes will be idle most of the time.|There are several settings you can change: <br>* If there is more than a single string partition, define the one with best distribution first.</br><br>* Set `distributionKind`=`uniform` in the command properties. This setting disables the default distribution settings for string-partitioned external tables. Export will run with `per-node` distribution and each node will export the data assigned to the node. This means a single partition will be written by potentially several nodes, and the number of files will increase accordingly. If you would like to increase concurrency even further, you can set `distributionKind`=`uniform` along with `distribution`=`per_shard` for highest concurrency (at the cost of potentially many more files written)</br><br>* If the cause for slow export is not outliers in the data, then you can reduce duration by increasing concurrency, without changing partitioning settings. This can be done using the `hint.spread` and `hint.concurrency` properties, which determine the concurrency of the partitioning. For more information, see [partition operator](../../query/partitionoperator.md). By default, the number of nodes exporting concurrently (the `spread`) will be the minimum value between 64 and the number of cluster nodes. Setting `spread` to a higher number than number of nodes increases the concurrency on each node (max value for `spread` is 64).</br>
 
 ## Authentication and authorization
 
@@ -76,7 +94,7 @@ In order to export to an external table, you must set up write permissions. For 
 
 ### Number of files
 
-The number of files written per partition depends on the settings:
+The number of files written per partition depends on the [distribution settings](#distribution-hints) of the export operation:
 
  * If the external table includes datetime partitions only, or no partitions at all, the number of files written (for each partition, if exists) should be similar to the number of nodes in the cluster (or more, if `sizeLimit` is reached). When the export operation is distributed, all nodes in the cluster export concurrently. To disable distribution, so that only a single node does the writes, set `distributed` to false. This process creates fewer files, but will reduce the export performance.
 
