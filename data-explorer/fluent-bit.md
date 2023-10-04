@@ -90,7 +90,7 @@ Azure Active Directory (Azure AD) application authentication is used for applica
 
 ## Configure Fluent Bit to send logs to your table
 
-To configure Fluent Bit to send logs to your table:
+To configure Fluent Bit to send logs to your Azure Data Explorer table:
 
 1. Create a Fluent Bit [configuration file](https://docs.fluentbit.io/manual/administration/configuring-fluent-bit/classic-mode/configuration-file) with the following content:
 
@@ -117,9 +117,9 @@ To configure Fluent Bit to send logs to your table:
 
 ## Query your logs in Azure Data Explorer
 
-Once the configuration is complete, your logs are sent to your Azure Data Explorer table.
+Once the configuration is complete, logs should arrive in your Azure Data Explorer table.
 
-1. To verify that logs have been ingested into the table, run the following query:
+1. To verify that logs have been ingested, run the following query:
 
     ```Kusto
     FluentBitLogs
