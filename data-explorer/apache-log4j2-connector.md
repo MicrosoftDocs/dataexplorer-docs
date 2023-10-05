@@ -11,8 +11,6 @@ ms.reviewer: ramacg
 
 Log4J is a popular logging framework for Java applications maintained by the Apache Foundation. Log4J allows developers to control which log statements are output with arbitrary granularity based on the logger's name, logger level, and message pattern. [Apache Log4J 2](https://logging.apache.org/log4j/2.x/) is an upgrade to Log4J, with significant improvements over the preceding Log4j 1.x. Log4J 2 provides many of the improvements available in Logback, while fixing some inherent problems in Logback's architecture. The Apache log4J 2 sink, also known as an appender, for Azure Data Explorer streams your log data to Azure Data Explorer, where you can analyze and visualize your logs in real time.
 
-In this article, you'll learn how to:
-
 For a complete list of data connectors, see [Data connectors overview](connector-overview.md).
 
 ## Prerequisites
