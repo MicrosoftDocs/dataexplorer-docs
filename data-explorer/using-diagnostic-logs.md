@@ -28,9 +28,8 @@ Diagnostic logs can be used to configure the collection of the following log dat
 ### [Ingestion](#tab/ingestion)
 
 > [!NOTE]
-> Ingestion logs are supported for queued ingestion to the ingestion endpoint using SDKs, data connections, and connectors.
->
-> Ingestion logs aren't supported for streaming ingestion, direct ingestion to the engine, ingestion from query, or set-or-append commands.
+> * Ingestion logs are supported for queued ingestion to the **Data ingestion URI** using [Kusto client libraries](kusto/api/client-libraries.md) and [data connectors](connector-overview.md).
+> * Ingestion logs aren't supported for streaming ingestion, direct ingestion to the **Cluster URI**, ingestion from query, or `.set-or-append` commands.
 
 > [!NOTE]
 > Failed ingestion logs are only reported for the final state of an ingest operation, unlike the [Ingestion result](using-metrics.md#ingestion-metrics) metric, which is emitted for transient failures that are retried internally.
