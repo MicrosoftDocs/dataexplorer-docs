@@ -46,10 +46,7 @@ Also note that [query statements](../query/statements.md) appear within the quer
 part of the text (they can't precede the command itself).
 
 >[!NOTE]
-> Don't run *AdminThenQuery* operations too frequently.
-> *AdminThenQuery* pipes the result set of the management command and applies filters/aggregations on it.
->  * For example: `.show ... | where ... | summarize ...`
->   * When running something like: `.show cluster extents | count` (emphasis on the `| count`), Kusto first prepares a data table that holds all details of all extents in the cluster. The system then sends that in-memory-only table to the Kusto engine to do the count. The system actually works hard in an unoptimized path to give you such a trivial answer.
+> We recommend limiting the usage of *AdminThenQuery* operations.
 
 
 **AdminThenQuery** is indicated in one of two ways:
