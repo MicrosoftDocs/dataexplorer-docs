@@ -16,7 +16,7 @@ Sandboxes that run on [non-modern VM sizes](#virtual-machine-sizes) are subject 
 * The sandbox image is fixed - either Python 3.6.5 or R 3.4.4.
 * Data engines that enable both [disk encryption](../../security.md#data-protection) and sandboxes features must run on a VM size that supports [encryption at host](/azure/virtual-machines/disk-encryption#encryption-at-host---end-to-end-encryption-for-your-vm-data). For more information on supported VM sizes, see [Virtual machine sizes](#virtual-machine-sizes).
     * If encryption is enabled on the cluster before encryption at host is adopted as the default for supported VM sizes, the cluster may not support both features side by side. In this case, stop and start the cluster.
-* The required packages (images) for running the sandboxes are deployed to each cluster node and require dedicated SSD space to run.
+* The required packages (images) for running the sandboxes are deployed to every cluster node and require dedicated SSD space to run.
     * The estimated size is 20 GB, that is roughly 2.5% the SSD capacity of a D14_v2 VM, for example, or 0.7% the SSD capacity of a L16_v1 VM.
     * This affects the cluster's data capacity, and may affect the [cost](https://azure.microsoft.com/pricing/details/data-explorer) of the cluster.
 * Hyper-threading is disabled for hyper-threaded VM sizes when sandboxes are enabled. For more information on hyper-threaded VM sizes, see [Virtual machine sizes](#virtual-machine-sizes).
