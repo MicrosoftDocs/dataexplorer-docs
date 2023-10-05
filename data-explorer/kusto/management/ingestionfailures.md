@@ -3,25 +3,15 @@ title: .show ingestion failures command
 description: Learn how to use the `.show ingestion failures` command to show any ingestion failures when running data ingestion management commands.
 ms.reviewer: orspodek
 ms.topic: reference
-ms.date: 05/15/2023
+ms.date: 10/05/2023
 ---
 # .show ingestion failures command
 
-This command returns a result set that includes any ingestion failures that occur when the
-[data ingestion management commands](../../ingest-data-overview.md#ingest-management-commands) run.
-The `.show ingestion failures` command returns ingestion failures that occur only in the Kusto Data Engine.
-Ingestion failures that occur during other parts of the ingestion flow, such as failures that happen before data ingestion
-management commands are sent to the Kusto Data Engine service, don't appear in the results for this command.
-Failures from all parts of the ingestion process appear in the ingestion [metrics](../../using-metrics.md) and [diagnostic logs](../../using-diagnostic-logs.md).
+This command returns information about ingestion failures associated with the use of [data ingestion management commands](../../ingest-data-overview.md#ingest-management-commands). 
 
-> [!NOTE]
-> Ingestion failures that occur during other parts of the ingestion flow won't appear in the result set of this command. Such a failure may occur, for example, before data ingestion management commands are sent to the Kusto Data Engine service.
->
-> Ingestion failures should be monitored by [metrics](../../using-metrics.md), and optionally using ingestion logs. To set up ingestion logs, see [Monitor ingestion, commands, queries, and tables using diagnostic logs](../../using-diagnostic-logs.md).
->
-> For more information on monitoring failures that occur in flows that involve [queued ingestion](../api/netfx/about-kusto-ingest.md#queued-ingestion), see [this guide](../api/netfx/kusto-ingest-client-status.md).
->
-> The retention period for ingestion failures is 14 days.
+This command only shows ingestion failures related to data ingestion management commands and doesn't include failures from other stages of the ingestion process. Failures from all stages of ingestion are recorded in ingestion [metrics](../../using-metrics.md) and [diagnostic logs](../../using-diagnostic-logs.md).
+
+The retention period for ingestion failures is 14 days.
 
 ## Syntax
 
@@ -79,8 +69,9 @@ The following table is an example output from the `.show` `ingestion` `failures`
 | a9f287a1-f3e6-4154-ad18-b86438da0929 | DB1 | Table1 | 2017-02-14 22:36:26.5525250 | ...url... | Unknown error occurred: Exception of type 'System.Exception' was thrown | Transient | 9b7bb017-471e-48f6-9c96-d16fcf938d2a | DataIngestPull | 0 | Unknown | aadapp=xxxxxx |  | Format=Csv | 10 |
 | 9edb3ecc-f4b4-4738-87e1-648eed2bd998 | DB1 | Table1 | 2017-02-14 23:52:31.5460071 | ...url... | Failed to download source from Azure storage - access forbidden | Permanent | 21fa0dd6-cd7d-4493-b6f7-78916ce0d617 | DataIngestPull | 0 | Download_Forbidden | aadapp=xxxxxx |  | Format=Csv | 1 |
 
-## See also
+## Related content
 
 * [Data ingestion](../../ingest-data-overview.md)
 * [Ingestion of invalid data](../../ingest-invalid-data.md)
 * [Duplicate next ingestion failure](dup-next-failed-ingest.md)
+* [Kusto.Ingest ingestion status reporting](../api/netfx/kusto-ingest-client-status.md)
