@@ -1,13 +1,13 @@
 ---
 title: .show table data statistics command
-description: Learn how to use the `.show table data statistics` command to show the table's data statistics estimation by table column and storage engine version.
+description: Learn how to use the `.show table data statistics` command to show the table's data statistics estimation by table column.
 ms.reviewer: alexans
 ms.topic: reference
 ms.date: 05/24/2023
 ---
 # .show table data statistics command
 
-Displays the table data statistics estimation by table column and storage engine version.
+Displays the table data statistics estimation by table column.
 
 > [!NOTE]
 > This command only returns statistics for data stored in columnar stores. Row store data statistics are not returned.
