@@ -16,7 +16,7 @@ Sandboxes are run locally (meaning, processing is done close to the data), with 
 
 * Sandboxes that run on [VM sizes supporting nested virtualization](#vm-sizes-supporting-nested-virtualization) are implemented using [Hyper-V technology](https://en.wikipedia.org/wiki/Hyper-V) and have no limitations.
 * Sandboxes that run on [VM sizes not supporting nested virtualization](sandboxes-in-non-modern-skus.md#virtual-machine-sizes) are implemented using a proprietary legacy technology and are subject to [some limitations](sandboxes-in-non-modern-skus.md).
-* The image for running the sandboxes is deployed to each of the Data Engine's nodes and requires dedicated SSD space to run.
+* The image for running the sandboxes is deployed to every cluster node and requires dedicated SSD space to run.
   * The estimated size is between 10-20 GB.
   * This affects the cluster's data capacity, and may affect the [cost](https://azure.microsoft.com/pricing/details/data-explorer) of the cluster.
 

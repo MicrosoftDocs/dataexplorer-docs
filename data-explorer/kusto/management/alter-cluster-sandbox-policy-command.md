@@ -7,7 +7,7 @@ ms.date: 05/25/2023
 ---
 # .alter cluster policy sandbox command
 
-Changes the [cluster sandbox policy](sandboxpolicy.md). Specified plugins run within [sandboxes](../concepts/sandboxes.md) whose resources are managed for security and resource governance. Sandbox limitations are defined in sandbox policies, where each sandbox kind can have its own policy. The engine service can run sandboxes for specific flows that need secure isolation.
+Changes the [cluster sandbox policy](sandboxpolicy.md). Specified plugins run within [sandboxes](../concepts/sandboxes.md) whose resources are managed for security and resource governance. Sandbox limitations are defined in sandbox policies, where each sandbox kind can have its own policy. Your cluster can run sandboxes for specific flows that need secure isolation.
 Examples of these flows are user-defined scripts that run using the [Python plugin](../query/pythonplugin.md) or the [R plugin](../query/rplugin.md).
 
 Sandbox policies are managed at cluster-level and affect all the nodes in the cluster.
