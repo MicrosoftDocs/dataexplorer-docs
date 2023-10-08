@@ -10,7 +10,9 @@ ms.date: 02/21/2023
 Changes the cluster's [capacity policy](capacitypolicy.md). A capacity policy controls the computational resources for data management operations on the cluster.
 
 > [!NOTE]
-> Changes to the cluster capacity policy could take up to 1 hour to take effect.
+>
+> * Changes to the cluster capacity policy could take up to 1 hour to take effect.
+> * All properties other than the ones inputted in the command are reset to their default values. Use [.alter-merge cluster policy capacity command](alter-merge-capacity-policy-command.md) for changing only some of the properties, while keeping the others intact.
 
 ## Permissions
 
@@ -33,6 +35,8 @@ You must have [AllDatabasesAdmin](access-control/role-based-access-control.md) p
 Returns a JSON representation of the policy.
 
 ## Example
+
+Alter the capacity policy. The resulting policy is the properties in the command's input merged with the default capacity policy.
 
 ```kusto
 .alter cluster policy capacity ```
@@ -73,7 +77,8 @@ Returns a JSON representation of the policy.
     "MaximumConcurrentOperationsPerNode": 4
   },
   "MaterializedViewsCapacity": {
-    "ClusterMaximumConcurrentOperations": 1,
+    "ClusterMinimumConcurrentOperations": 1,
+    "ClusterMaximumConcurrentOperations": 10,
     "ExtentsRebuildCapacity": {
       "ClusterMaximumConcurrentOperations": 50,
       "MaximumConcurrentOperationsPerNode": 5
