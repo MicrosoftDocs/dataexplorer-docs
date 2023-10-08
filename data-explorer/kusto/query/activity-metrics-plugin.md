@@ -68,7 +68,7 @@ where the `# of customer lost in the period` is defined as:
 
 > *number of customers at the beginning of the period*
 > \- (minus)
-> *number of customers at the end of the period*
+> *number of returning customers during the period*
 
 `Churn Rate` can vary from 0.0 to 1.0
 The higher score means the larger number of users are NOT returning to the service.
