@@ -12,7 +12,7 @@ Changes the cluster's [capacity policy](capacitypolicy.md). A capacity policy co
 > [!NOTE]
 >
 > * Changes to the cluster capacity policy could take up to 1 hour to take effect.
-> * All properties other than the ones inputted in the command are reset to their default values. Use [.alter-merge cluster policy capacity command](alter-merge-capacity-policy-command.md) for changing only some of the properties, while keeping the others intact.
+> * All properties other than the ones specified in the command are reset to their default values. To change some properties, while keeping the others intact, use [.alter-merge cluster policy capacity command](alter-merge-capacity-policy-command.md).
 
 ## Permissions
 
