@@ -5,9 +5,9 @@ ms.reviewer: orspodek
 ms.topic: reference
 ms.date: 09/10/2023
 ---
-# Update data
+# Update table
 
-The `.update table` command updates a table's data by providing it with a delete and append predicates. Both the delete and append predicates should be defined by providing `let` statements defining the delete and append identifiers.
+The `.update table` command performs transactional data updates in a specified table through the use of provided delete and append predicates. This delete and append predicates are provided by `let` statements.
 
 ## Permissions
 
@@ -63,3 +63,4 @@ let A = D | extend UserData = 'updated data';
     - Delete predicate can only use the following operators: `extend`, `where` and `project`.
     - No remote entities, cross-db and cross-cluster entities can be referenced by both the delete and append predicates.
     - The predicates cannot reference other tables, nor external tables and the `externaldata` operator.
+- The delete predicate is expected to produce deterministic results and failing to do so can result in unexpected results.
