@@ -91,7 +91,7 @@ for a description of the redirect URI syntax for starting up Kusto.Explorer.
 ## Deep linking to Kusto.WebExplorer
 
 In addition to the query parameters mentioned above,
-the following parameters may appear in UI deep links
+the following parameters might appear in UI deep links
 to Kusto.WebExplorer:
 
 |Parameter   |Description|
@@ -99,7 +99,7 @@ to Kusto.WebExplorer:
 |`login_hint`|Sets the user sign-in name (email) of the user.|
 |`tenant`    |Sets the Azure Active Directory tenant ID of the user.|
 
-To instruct Kusto.WebExplorer to sign-in a user from another AAD tenant, specify `login_hint` and `tenant` for the user.
+To instruct Kusto.WebExplorer to sign-in a user from another Azure AD tenant, specify `login_hint` and `tenant` for the user.
 
 Redirection will be to the following URI:
 
@@ -115,7 +115,7 @@ commands (since the latter encoding method results in shorter URIs).
 
 ## Specifying the query or management command by indirection
 
-If the query or management command is long, even encoding it using gzip/base64 may exceed the maximum URI length of the user agent. Alternatively, the URI query string parameter
+If the query or management command is long, even encoding it using gzip/base64 might exceed the maximum URI length of the user agent. Alternatively, the URI query string parameter
 `querysrc` is provided, and its value is a short URI pointing at a web resource
 that holds the query or management command text.
 
