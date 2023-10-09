@@ -93,3 +93,7 @@ Returns a JSON representation of the policy.
 "ChildEntities": ,
 "EntityType": ,
 ```
+
+## See also
+
+Use `.alter-merge` when you wish to preserve the capacity policy settings and only override or expand certain properties. For more information, see [.alter-merge cluster policy capacity command](./alter-merge-capacity-policy-command.md).
