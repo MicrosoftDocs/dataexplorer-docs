@@ -167,7 +167,7 @@ The default capacity policy has the following JSON representation:
 
 * Use [`.show cluster policy capacity`](./show-cluster-capacity-policy-command.md) to show the current capacity policy of the cluster.
 
-* Use [`.alter cluster policy capacity`](./alter-capacity-policy-command.md) to alter the capacity policy of the cluster.
+* Use [`.alter-merge cluster policy capacity`](./alter-merge-capacity-policy-command.md) to alter the capacity policy of the cluster.
 
 ## Management commands throttling
 
