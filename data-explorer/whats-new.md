@@ -3,11 +3,38 @@ title: What's new in Azure Data Explorer documentation
 description: What's new in the Azure Data Explorer documentation
 ms.reviewer: orspodek
 ms.topic: reference
-ms.date: 09/05/2023
+ms.date: 10/10/2023
 ---
 # What's new in Azure Data Explorer documentation
 
 Welcome to what's new in Azure Data Explorer. This article details new and significantly updated content in the Azure Data Explorer documentation.
+
+## September 2023
+
+**General**
+
+| Article title | Description |
+|--|--|
+|- [Kusto Query Language (KQL) graph semantics overview (Preview)](graph-overview.md) <br/> - [Kusto Query Language (KQL) graph semantics best practices (Preview)](graph-best-practices.md) <br/> - [What are common scenarios for using Kusto Query Language (KQL) graph semantics (Preview)?](graph-scenarios.md) | New articles. Describes how to use Kusto Query Language (KQL) graph semantics.|
+| [How to ingest historical data into Azure Data Explorer](ingest-data-historical.md) | New article. Describes how to use LightIngest to ingest historical or ad hoc data into Azure Data Explorer.|
+| [Ingest data from Splunk to Azure Data Explorer](ingest-data-splunk.md)| New article. Describes how to ingest data into Azure Data Explorer from Splunk.|
+| [Kusto Query Language learning resources](kql-learning-resources.md) | New article. Describes the different learning resources for ramping up on KQL.|
+| [Dashboard-specific visuals](dashboard-visuals.md)| New article. Describes the visualizations available in Azure Data Explorer web UI or dashboards.|
+| [Create a dashboard base query](base-query.md) | New article. Describes how to create a base query for an Azure Data Explorer dashboard.|
+| [Data connectors overview](connector-overview.md) | Updated article. New connector added.|
+
+**Management**
+
+| Article title | Description |
+|--|--|
+|- [.alter-merge database policy ingestionbatching command](kusto/management/alter-merge-database-ingestion-batching-policy.md)| New article. Describes how to set the ingestion batching policy <br/> - [.alter-merge table policy ingestionbatching command](kusto/management/alter-merge-table-ingestion-batching-policy.md)| New articles. Describes how to set the ingestion batching policy.|
+
+**Query**
+
+| Article title | Description |
+|--|--|
+|- [Graph operators (Preview)](kusto/query/graph-operators.md) <br/> - [graph-match operator (Preview)](kusto/query/graph-match-operator.md) <br/> - [graph-merge operator (Preview)](kusto/query/graph-merge-operator.md) <br/> - [graph-to-table operator (Preview)](kusto/query/graph-to-table-operator.md) <br/> - [make-graph operator (Preview)](kusto/query/make-graph-operator.md) | New articles. Describes how to use graph operators. |
+| [Plotly (preview)](kusto/query/visualization-plotly.md) | New article. Describes how to visualize data using the Plotly graphics library.|
 
 ## August 2023
 
@@ -279,21 +306,3 @@ Welcome to what's new in Azure Data Explorer. This article details new and signi
 |--|--|
 |[Ingest data from OpenTelemetry](open-telemetry-connector.md)|New article. Describes how to create a connector to ingest data from OpenTelemetry.|
 |[Managed identities overview](managed-identities-overview.md)|Updated article. Added continuous export with Managed Identity.|
-
-## September 2022
-
-**API**
-
-| Article title | Description |
-|--|--|
-|[Kusto.Data exceptions](kusto/api/netfx/kusto-data-client-errors.md)|New article. Describes Kusto.Data exceptions.|
-|[Evaluate query performance in your cluster](kusto/api/load-test-cluster.md)|New article. Describes how to load test a cluster's query performance.|
-
-**General**
-
-| Article title | Description |
-|--|--|
-|[POC playbook: Big data analytics](proof-of-concept-playbook.md)|New article. Describes a high-level methodology for running an effective proof of concept (POC) project.|
-|[Azure Data Explorer web UI keyboard shortcuts](web-ui-query-keyboard-shortcuts.md)|New article. Describes query keyboard shortcuts in the web UI.|
-|[Optimize queries that use named expressions](named-expressions.md)|New article. Describes how to optimize repeat use of named expressions in a query.|
-|- [Kusto emulator overview](kusto-emulator-overview.md)<br />- [Install the Kusto emulator](kusto-emulator-install.md)|New articles. Describes the Kusto emulator, how to install it, and run your first query.|
