@@ -1,6 +1,6 @@
 ---
 title:  .update table command
-description: This article describes The .update table command in Azure Data Explorer.
+description: Learn how to use the .update table command to perform transactional data updates.
 ms.reviewer: orspodek
 ms.topic: reference
 ms.date: 09/10/2023
