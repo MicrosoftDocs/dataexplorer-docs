@@ -1,5 +1,5 @@
 ---
-title:  Kusto .update table command
+title:  .update table command
 description: This article describes The .update table command in Azure Data Explorer.
 ms.reviewer: orspodek
 ms.topic: reference
