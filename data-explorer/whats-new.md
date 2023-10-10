@@ -27,7 +27,7 @@ Welcome to what's new in Azure Data Explorer. This article details new and signi
 
 | Article title | Description |
 |--|--|
-|- [.alter-merge database policy ingestionbatching command](kusto/management/alter-merge-database-ingestion-batching-policy.md)| New article. Describes how to set the ingestion batching policy <br/> - [.alter-merge table policy ingestionbatching command](kusto/management/alter-merge-table-ingestion-batching-policy.md)| New articles. Describes how to set the ingestion batching policy.|
+|- [.alter-merge database policy ingestionbatching command](kusto/management/alter-merge-database-ingestion-batching-policy.md) <br/> - [.alter-merge table policy ingestionbatching command](kusto/management/alter-merge-table-ingestion-batching-policy.md)| New articles. Describes how to set the ingestion batching policy.|
 
 **Query**
 
