@@ -7,7 +7,7 @@ ms.date: 09/10/2023
 ---
 # Update table
 
-The `.update table` command performs transactional data updates in a specified table through the use of provided delete and append predicates. This delete and append predicates are provided by `let` statements.
+The `.update table` command performs transactional data updates in a specified table through the use of provided delete and append predicates. The delete and append predicates are provided by `let` statements.
 
 ## Permissions
 
