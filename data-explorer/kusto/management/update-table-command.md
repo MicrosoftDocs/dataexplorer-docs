@@ -56,9 +56,9 @@ let A = D | extend UserData = 'updated data';
 
 ## Limitations
 
-- Update command cannot be performed on tables which are the source tables to continuous exports and materialized views.
-- Update command does not support deleting more than 5m records.
-- Update command predicates must hold the following:
+- This command cannot be performed on tables which are the source tables to continuous exports and materialized views.
+- This command does not support deleting more than 5 million records.
+- The predicates for this command must meet the following requirements:
     - Delete predicate must include at least one `where` operator
     - Delete predicate can only use the following operators: `extend`, `where` and `project`.
     - No remote entities, cross-db and cross-cluster entities can be referenced by both the delete and append predicates.
