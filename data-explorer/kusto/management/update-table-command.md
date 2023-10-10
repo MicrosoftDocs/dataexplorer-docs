@@ -17,9 +17,9 @@ You must have at least [Table Ingestor](../access-control/role-based-access-cont
 
 `.update` `table` *TableName* `delete` *DeleteIdentifier* `append` *AppendIdentifier* `<|`
 
-`let` *DeleteIdentifier*`=....;`
+`let` *DeleteIdentifier*`=` ...`;`
 
-`let` *AppendIdentifier*`=....;`
+`let` *AppendIdentifier*`=` ...`;`
 
 ## Parameters
 
