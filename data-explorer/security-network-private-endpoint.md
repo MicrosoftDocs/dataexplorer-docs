@@ -104,4 +104,4 @@ Private endpoints or managed private endpoints are resources that incur addition
 * [Create a Managed Private Endpoints for Azure Data Explorer](security-network-managed-private-endpoint-create.md)
 * [How to restrict public access to Azure Data Explorer](security-network-restrict-public-access.md)
 * [How to restrict outbound access from Azure Data Explorer](security-network-restrict-outbound-access.md)
-* [Connect to a Power BI service with a cluster behind a private endpoint](power-bi-private-endpoint.md)
+* [Connect a cluster behind a private endpoint to a Power BI service](power-bi-private-endpoint.md)
