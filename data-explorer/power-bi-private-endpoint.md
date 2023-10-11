@@ -72,7 +72,7 @@ The link between your dataset and the data source within the gateway is based on
     :::image type="content" source="media/power-bi-private-endpoint/dataset-settings.png" alt-text="Screenshot of the dataset settings showing the configured gateway and cloud connections.":::
 
 1. Under **Gateway**, select your gateway cluster name.
-1. Under **Actions**, select **V** to view the data sources included in this dataset.
+1. Under **Actions**, use the dropdown menu to verify the data sources included in this dataset.
 1. Expand the **Maps to** dropdown, and then select the connection you created earlier. This allows the report to request data from your Azure Data Explorer cluster.
 1. Select **Apply**.
 
