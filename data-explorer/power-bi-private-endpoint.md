@@ -48,7 +48,7 @@ After installing an on-premises data gateway, you need to create a gateway conne
 
 To use any cloud data sources, such as Azure Data Explorer, you must ensure that the gateway has access to that data source.
 
-1. Under **Data (preview)**, select the **On-premises data gateways** tab.
+1. Under **Data**, select the **On-premises data gateways** tab.
 1. Select the gateway cluster name that you configured previously.
 1. On the ribbon, select **Settings**.
 1. Under **Power BI**, select **Allow user's cloud data sources to refresh through this gateway cluster**, and then select **Save**.
