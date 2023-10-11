@@ -98,9 +98,10 @@ Private endpoints aren't supported for virtual network injected Azure Data Explo
 
 Private endpoints or managed private endpoints are resources that incur additional costs. The cost varies depending on the selected solution architecture. For more information, see [Azure Private Link pricing](https://azure.microsoft.com/pricing/details/private-link/).
 
-## Next steps
+## Related content
 
 * [Create a Private Endpoints for Azure Data Explorer](security-network-private-endpoint-create.md)
 * [Create a Managed Private Endpoints for Azure Data Explorer](security-network-managed-private-endpoint-create.md)
 * [How to restrict public access to Azure Data Explorer](security-network-restrict-public-access.md)
 * [How to restrict outbound access from Azure Data Explorer](security-network-restrict-outbound-access.md)
+* [Connect to a Power BI service with a cluster behind a private endpoint](power-bi-private-endpoint.md)
