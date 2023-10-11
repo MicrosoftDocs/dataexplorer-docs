@@ -8,9 +8,9 @@ ms.date: 10/03/2023
 
 # Connect to Power BI service with an Azure Data Explorer cluster
 
-In this article, you learn how to connect to Power BI service from an Azure Data Explorer cluster that's behind a private endpoint. These steps can also be used to connect Power BI service to an Azure Data Explorer cluster that's not behind a private endpoint.
-
 A private endpoint is a network interface that uses private IP addresses from your virtual network. This network interface connects you privately and securely to your cluster powered by Azure Private Link. By enabling a private endpoint, you're bringing the service into your virtual network. For more information on private endpoints, see [Private endpoints for Azure Data Explorer](security-network-private-endpoint.md).
+
+In this article, you learn how to connect to a Power BI service from an Azure Data Explorer cluster that's behind a private endpoint. These steps can also be used to connect Power BI service to an Azure Data Explorer cluster that's not behind a private endpoint.
 
 ## Prerequisites
 
@@ -51,7 +51,7 @@ To use any cloud data sources, such as Azure Data Explorer, you must ensure that
 1. Under **Data (preview)**, select the **On-premises data gateways** tab.
 1. Select the gateway cluster name that you configured previously.
 1. On the ribbon, select **Settings**.
-1. Under **Power BI**, select the check box **Allow user's cloud data sources to refresh through this gateway cluster**, and then select **Save**.
+1. Under **Power BI**, select **Allow user's cloud data sources to refresh through this gateway cluster**, and then select **Save**.
 
     :::image type="content" source="media/power-bi-private-endpoint/gateway-settings.png" alt-text="Screenshot of the data gateway settings in Power BI service." lightbox="media/power-bi-private-endpoint/gateway-settings.png":::
 
@@ -62,11 +62,11 @@ To use any cloud data sources, such as Azure Data Explorer, you must ensure that
 The link between your dataset and the data source within the gateway is based on your cluster address. The names must match. For example, if you supply an IP address for the server name within Power BI Desktop, you must use the IP address for the data source within the gateway configuration.
 
 1. Select **Upload**, and browse for a Power BI report to upload to your workspace. Your report's dataset is uploaded along with your report.
-1. Place your cursor over your report's dataset, and then select the More menu **[...]** > **Settings**.
+1. Place your cursor over your report's dataset, and then select *More options* > **Settings**.
 
     :::image type="content" source="media/power-bi-private-endpoint/dataset.png" alt-text="Screenshot of a workspace in Power BI service showing the more menu of dataset.":::
 
-1. Select **>** to expand **Gateway and cloud connections**.
+1. Expand **Gateway and cloud connections**.
 1. Under **Gateway connections**, toggle on **Use an On-premises or VNet data gateway**.
 
     :::image type="content" source="media/power-bi-private-endpoint/dataset-settings.png" alt-text="Screenshot of the dataset settings showing the configured gateway and cloud connections.":::
