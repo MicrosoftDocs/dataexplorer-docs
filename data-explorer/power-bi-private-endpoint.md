@@ -1,16 +1,18 @@
 ---
-title: Connect to Power BI service with an Azure Data Explorer cluster
-description: Learn how to connect to Power BI service from an Azure Data Explorer cluster that's behind a private endpoint.
+title: Connect to a Power BI service with a cluster behind a private endpoint
+description: Learn how to connect to a Power BI service from an Azure Data Explorer cluster that's behind a private endpoint.
 ms.reviewer: danyhoter
 ms.topic: how-to
 ms.date: 10/03/2023
 ---
 
-# Connect to Power BI service with an Azure Data Explorer cluster
+# Connect to a Power BI service with a cluster behind a private endpoint
+
+Connect a cluster behind a private endpoint to a Power BI service
+
+In this article, you learn how to connect to a Power BI service from an Azure Data Explorer cluster that's behind a private endpoint.
 
 A private endpoint is a network interface that uses private IP addresses from your virtual network. This network interface connects you privately and securely to your cluster powered by Azure Private Link. By enabling a private endpoint, you're bringing the service into your virtual network. For more information on private endpoints, see [Private endpoints for Azure Data Explorer](security-network-private-endpoint.md).
-
-In this article, you learn how to connect to a Power BI service from an Azure Data Explorer cluster that's behind a private endpoint. These steps can also be used to connect Power BI service to an Azure Data Explorer cluster that's not behind a private endpoint.
 
 ## Prerequisites
 
