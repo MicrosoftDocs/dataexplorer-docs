@@ -16,7 +16,7 @@ This article details time series anomaly detection and forecasting capabilities 
 
 ## Prerequisites
 
-* A Microsoft account or an Azure Active Directory user identity. An Azure subscription isn't required.
+* A Microsoft account or a Microsoft Entra user identity. An Azure subscription isn't required.
 * Read [Time series analysis](time-series-analysis.md) for an overview of time series capabilities.
 
 ## Time series decomposition model
