@@ -3,7 +3,7 @@ title:  count() (aggregation function)
 description: Learn how to use the count() function to count the number of records in a group.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 11/27/2022
+ms.date: 10/12/2023
 ---
 # count() (aggregation function)
 
@@ -28,11 +28,10 @@ Returns a count of the records per summarization group (or in total, if summariz
 This example returns a count of events in states starting with letter `W`:
 
 > [!div class="nextstepaction"]
-> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAwsuyS/KdS1LzSsp5qpRKM9ILUpVCC5JLElVKC5JLCopLs8syVBQClcCShaX5uYmFmVWpSo455fmldgmg0gNTYWkSogOAJStyvpLAAAA" target="_blank">Run the query</a>
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAwsuyS/KdS1LzSsp5qpRKC7NzU0syqxKVXDOL80rsU0GkRqaCkmVCsEliSWpAIqJlTEuAAAA" target="_blank">Run the query</a>
 
 ```kusto
 StormEvents
-| where State startswith "W"
 | summarize Count=count() by State
 ```
 
@@ -40,7 +39,14 @@ StormEvents
 
 |State|Count|
 |---|---|
-|WEST VIRGINIA|757|
-|WYOMING|396|
-|WASHINGTON|261|
-|WISCONSIN|1850|
+|TEXAS	|4701|
+|KANSAS	|3166|
+|IOWA	|2337|
+|ILLINOIS	|2022|
+|MISSOURI	|2016|
+|GEORGIA	|1983|
+|MINNESOTA	|1881|
+|WISCONSIN	|1850|
+|NEBRASKA	|1766|
+|NEW YORK	|1750|
+|...|...|
