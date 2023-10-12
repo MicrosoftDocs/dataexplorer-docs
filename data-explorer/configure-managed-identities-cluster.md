@@ -7,7 +7,7 @@ ms.date: 07/16/2023
 ---
 # Configure managed identities for your Azure Data Explorer cluster
 
-A [managed identity from Azure Active Directory](/azure/active-directory/managed-identities-azure-resources/overview) allows your cluster to access other Azure AD-protected resources such as Azure Key Vault. The identity is managed by the Azure platform and doesn't require you to provision or rotate any secrets.
+A [managed identity from Microsoft Entra ID](/azure/active-directory/managed-identities-azure-resources/overview) allows your cluster to access other Microsoft Entra protected resources such as Azure Key Vault. The identity is managed by the Azure platform and doesn't require you to provision or rotate any secrets.
 
 This article shows you how to add and remove managed identities on your cluster. For more information on managed identities, see [Managed identities overview](managed-identities-overview.md).
 
@@ -69,7 +69,7 @@ To set up a managed identity using the Azure Data Explorer C# client:
 
 * Install the [Azure Data Explorer NuGet package](https://www.nuget.org/packages/Azure.ResourceManager.Kusto/).
 * Install the [Azure.Identity NuGet package](https://www.nuget.org/packages/Azure.Identity/) for authentication.
-* [Create an Azure AD application](/azure/active-directory/develop/howto-create-service-principal-portal) and service principal that can access resources. You add role assignment at the subscription scope and get the required `Directory (tenant) ID`, `Application ID`, and `Client Secret`.
+* [Create a Microsoft Entra application](/azure/active-directory/develop/howto-create-service-principal-portal) and service principal that can access resources. You add role assignment at the subscription scope and get the required `Directory (tenant) ID`, `Application ID`, and `Client Secret`.
 
 #### Create or update your cluster
 
@@ -107,7 +107,7 @@ To set up a managed identity using the Azure Data Explorer C# client:
     var tenantGuid = clusterData.Identity.TenantId.GetValueOrDefault();
     ```
 
-    `PrincipalId` and `TenantId` are replaced with GUIDs. The `TenantId` property identifies the Azure AD tenant to which the identity belongs. The `PrincipalId` is a unique identifier for the cluster's new identity. Within Azure AD, the service principal has the same name that you gave to your App Service or Azure Functions instance.
+    `PrincipalId` and `TenantId` are replaced with GUIDs. The `TenantId` property identifies the Microsoft Entra tenant to which the identity belongs. The `PrincipalId` is a unique identifier for the cluster's new identity. Within Microsoft Entra ID, the service principal has the same name that you gave to your App Service or Azure Functions instance.
 
 # [Resource Manager template](#tab/arm)
 
@@ -152,13 +152,13 @@ When the cluster is created, it has the following additional properties:
 }
 ```
 
-`<TENANTID>` and `<PRINCIPALID>` are replaced with GUIDs. The `TenantId` property identifies the Azure AD tenant to which the identity belongs. The `PrincipalId` is a unique identifier for the cluster's new identity. Within Azure AD, the service principal has the same name that you gave to your App Service or Azure Functions instance.
+`<TENANTID>` and `<PRINCIPALID>` are replaced with GUIDs. The `TenantId` property identifies the Microsoft Entra tenant to which the identity belongs. The `PrincipalId` is a unique identifier for the cluster's new identity. Within Microsoft Entra ID, the service principal has the same name that you gave to your App Service or Azure Functions instance.
 
 ---
 
 ## Remove a system-assigned identity
 
-Removing a system-assigned identity will also delete it from Azure AD. System-assigned identities are also automatically removed from Azure AD when the cluster resource is deleted. A system-assigned identity can be removed by disabling the feature. Remove the system-assigned identity using the Azure portal, C#, or Resource Manager template as detailed below.
+Removing a system-assigned identity will also delete it from Microsoft Entra ID. System-assigned identities are also automatically removed from Microsoft Entra ID when the cluster resource is deleted. A system-assigned identity can be removed by disabling the feature. Remove the system-assigned identity using the Azure portal, C#, or Resource Manager template as detailed below.
 
 # [Azure portal](#tab/portal)
 
@@ -227,7 +227,7 @@ To set up a managed identity using the Azure Data Explorer C# client:
 
 * Install the [Azure Data Explorer NuGet package](https://www.nuget.org/packages/Azure.ResourceManager.Kusto/).
 * Install the [Azure.Identity NuGet package](https://www.nuget.org/packages/Azure.Identity/) for authentication.
-* [Create an Azure AD application](/azure/active-directory/develop/howto-create-service-principal-portal) and service principal that can access resources. You add role assignment at the subscription scope and get the required `Directory (tenant) ID`, `Application ID`, and `Client Secret`.
+* [Create a Microsoft Entra application](/azure/active-directory/develop/howto-create-service-principal-portal) and service principal that can access resources. You add role assignment at the subscription scope and get the required `Directory (tenant) ID`, `Application ID`, and `Client Secret`.
 
 #### Create or update your cluster
 
@@ -273,7 +273,7 @@ To set up a managed identity using the Azure Data Explorer C# client:
     var clientGuid = userIdentity.ClientId.GetValueOrDefault();
     ```
 
-    The `PrincipalId` is a unique identifier for the identity that's used for Azure AD administration. The `ClientId` is a unique identifier for the application's new identity that's used for specifying which identity to use during runtime calls.
+    The `PrincipalId` is a unique identifier for the identity that's used for Microsoft Entra administration. The `ClientId` is a unique identifier for the application's new identity that's used for specifying which identity to use during runtime calls.
 
 # [Resource Manager template](#tab/arm)
 
@@ -330,7 +330,7 @@ When the cluster is created, it has the following additional properties:
 }
 ```
 
-The `PrincipalId` is a unique identifier for the identity that's used for Azure AD administration. The `ClientId` is a unique identifier for the application's new identity that's used for specifying which identity to use during runtime calls.
+The `PrincipalId` is a unique identifier for the identity that's used for Microsoft Entra administration. The `ClientId` is a unique identifier for the application's new identity that's used for specifying which identity to use during runtime calls.
 
 > [!NOTE]
 > A cluster can have both system-assigned and user-assigned identities at the same time. In this case, the `type` property would be `SystemAssigned,UserAssigned`.

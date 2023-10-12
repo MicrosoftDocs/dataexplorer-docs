@@ -24,7 +24,7 @@ The prerequisites vary whether creating a free or full cluster. Select the relev
 
 ### [Free cluster](#tab/free)
 
-A Microsoft account or an Azure Active Directory user identity to create a free cluster. You don't need an Azure subscription or credit card.
+A Microsoft account or a Microsoft Entra user identity to create a free cluster. You don't need an Azure subscription or credit card.
 
 ### [Full cluster](#tab/full)
 

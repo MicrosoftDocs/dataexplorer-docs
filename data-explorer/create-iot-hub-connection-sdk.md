@@ -34,7 +34,7 @@ In this section, you'll establish a connection between the IoT Hub and your Azur
 
 1. Install the [Microsoft.Azure.Management.Kusto NuGet package](https://www.nuget.org/packages/Microsoft.Azure.Management.Kusto/).
 
-1. [Create an Azure AD application principal](/azure/active-directory/develop/howto-create-service-principal-portal) to use for authentication. You'll need the directory (tenant) ID, application ID, and client secret.
+1. [Create a Microsoft Entra application principal](/azure/active-directory/develop/howto-create-service-principal-portal) to use for authentication. You'll need the directory (tenant) ID, application ID, and client secret.
 
 1. Run the following code.
 
@@ -101,7 +101,7 @@ In this section, you'll establish a connection between the IoT Hub and your Azur
     pip install azure-mgmt-kusto
     ```
 
-1. [Create an Azure AD application principal](/azure/active-directory/develop/howto-create-service-principal-portal) to use for authentication. You'll need the directory (tenant) ID, application ID, and client secret.
+1. [Create a Microsoft Entra application principal](/azure/active-directory/develop/howto-create-service-principal-portal) to use for authentication. You'll need the directory (tenant) ID, application ID, and client secret.
 
 1. Run the following code.
 

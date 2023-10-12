@@ -166,7 +166,7 @@ The following steps show how to create a connection from within a flow.
 
 ## Authentication
 
-You can authenticate with user credentials or with an Azure Active Directory (Azure AD) application. To authenticate with credentials, select **Sign in**, and enter your credentials.
+You can authenticate with user credentials or with a Microsoft Entra application. To authenticate with credentials, select **Sign in**, and enter your credentials.
 
 To authenticate with a Service Principal:
 
@@ -176,10 +176,10 @@ To authenticate with a Service Principal:
     - **Connection Name**: A descriptive and meaningful name for the new connection. In this example, we've used "MyApplication".
     - **Client ID**: Your application ID.
     - **Client Secret**: Your application key.
-    - **Tenant**: The ID of the Azure AD directory in which you created the application.
+    - **Tenant**: The ID of the Microsoft Entra directory in which you created the application.
 
     > [!Note]
-    > Make sure your application is an [Azure AD application](./provision-azure-ad-app.md) and is authorized to run queries on your cluster.
+    > Make sure your application is an [Microsoft Entra application](./provision-azure-ad-app.md) and is authorized to run queries on your cluster.
 
     :::image type="content" source="media/flow/flow-app-auth.png" alt-text="Screenshot of Azure Data Explorer connection, showing the application authentication dialog box.":::
 

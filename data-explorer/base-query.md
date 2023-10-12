@@ -19,7 +19,7 @@ To interactively explore sample dashboards, see [Quickstart: Visualize sample da
 
 ## Prerequisites
 
-* A Microsoft account or an Azure Active Directory user identity. An Azure subscription isn't required.
+* A Microsoft account or a Microsoft Entra user identity. An Azure subscription isn't required.
 * Dashboard editing permissions on an [Azure Data Explorer dashboard](azure-data-explorer-dashboards.md)
 
 ## Create a base query
