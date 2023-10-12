@@ -167,7 +167,7 @@ To create the Azure Data Explorer linked service, do the following steps:
             1. Select **Service principal key** and then, in the **Service principal key** box, enter the value for the key.
 
         > [!NOTE]
-        > * The service principal is used by Azure Data Factory to access the Azure Data Explorer service. To create a service principal, go to [create an Azure Active Directory (Azure AD) service principal](/azure-stack/operator/azure-stack-create-service-principals#manage-an-azure-ad-service-principal).
+        > * The service principal is used by Azure Data Factory to access the Azure Data Explorer service. To create a service principal, go to [create a Microsoft Entra service principal](/azure-stack/operator/azure-stack-create-service-principals#manage-an-azure-ad-service-principal).
         > * To assign permissions to a Managed Identity or a Service Principal or , see [manage permissions](manage-database-permissions.md).
         > * Do not use the Azure Key Vault method or User Assigned Managed Identity.
 

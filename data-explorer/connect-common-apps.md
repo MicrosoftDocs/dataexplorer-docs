@@ -41,9 +41,9 @@ To connect to Azure Data Explorer from Azure Data Studio, follow these steps.
 
 1. Specify the name of the Azure Data Explorer cluster as a server name. For example, *mykusto.kusto.windows.net*.
 
-1. Set the authentication type **Azure Active Directory - Universal with MFA support**.
+1. Set the authentication type **Microsoft Entra ID - Universal with MFA support**.
 
-1. Specify the account that is provisioned in the Azure AD. For example, *myname@contoso.com*. Add the account the first time.
+1. Specify the account that is provisioned in the Microsoft Entra ID. For example, *myname@contoso.com*. Add the account the first time.
 
 1. Use **Database picker** to select the database.
 
@@ -86,7 +86,7 @@ To connect to Azure Data Explorer from Microsoft SQL Server Management Studio, f
 
 1. Specify the name of Azure Data Explorer cluster as a server name. For example, *mykusto.region.kusto.windows.net*.
 
-1. Set **Azure Active Directory - Universal with MFA** for authentication and specify the username.
+1. Set **Microsoft Entra ID - Universal with MFA** for authentication and specify the username.
 
 1. Select **Options**.
 
