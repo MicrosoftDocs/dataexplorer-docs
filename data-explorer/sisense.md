@@ -65,8 +65,8 @@ You need the following to complete this article:
     |Connection String     |   `jdbc:sqlserver://<cluster_name.region>.kusto.windows.net:1433;database=<database_name>;encrypt=true;trustServerCertificate=false;hostNameInCertificate=*.kusto.windows.net;loginTimeout=30;authentication=ActiveDirectoryPassword`      |
     |JDBC JARs folder  |    `..\Sisense\DataConnectors\jdbcdrivers\adx`     |
     |Driver's Class Name    |   `com.microsoft.sqlserver.jdbc.SQLServerDriver`      |
-    |User Name   |    AAD user name     |
-    |Password     |   AAD user password      |
+    |User Name   |    Microsoft Entra user name     |
+    |Password     |   Microsoft Entra user password      |
 
 1. In the **Select Data** tab, search **Select Database** to select the relevant database to which you have permissions. In this example, select *test1*.
 

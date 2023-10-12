@@ -14,7 +14,7 @@ In this article, we'll show you how to create a free cluster, ingest data,  and 
 
 ## Prerequisites
 
-A Microsoft account or an Azure Active Directory user identity to create a free cluster. You do not require an Azure subscription or a credit card.
+A Microsoft account or a Microsoft Entra user identity to create a free cluster. You do not require an Azure subscription or a credit card.
 
 ## Create your free cluster
 

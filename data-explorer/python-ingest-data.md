@@ -23,7 +23,7 @@ First, create a table and data mapping in a cluster. You then queue ingestion to
 
 ## Prerequisites
 
-* A Microsoft account or an Azure Active Directory user identity. An Azure subscription isn't required.
+* A Microsoft account or a Microsoft Entra user identity. An Azure subscription isn't required.
 * An Azure Data Explorer cluster and database. [Create a cluster and database](create-cluster-and-database.md).
 * [Python 3.4+](https://www.python.org/downloads/).
 
@@ -46,7 +46,7 @@ from azure.kusto.data.exceptions import KustoServiceError
 from azure.kusto.data.helpers import dataframe_from_result_table
 ```
 
-To authenticate an application, Azure Data Explorer uses your Azure Active Directory tenant ID. To find your tenant ID, use the following URL, replacing your domain for *YourDomain*.
+To authenticate an application, Azure Data Explorer uses your Microsoft Entra tenant ID. To find your tenant ID, use the following URL, replacing your domain for *YourDomain*.
 
 ```http
 https://login.microsoftonline.com/<YourDomain>/.well-known/openid-configuration/
@@ -67,7 +67,7 @@ KUSTO_INGEST_URI = "https://ingest-<ClusterName>.<Region>.kusto.windows.net/"
 KUSTO_DATABASE = "<DatabaseName>"
 ```
 
-Now construct the connection string. The following example uses device authentication to access the cluster. You can also use [managed identity](managed-identities-overview.md) authentication, [Azure Active Directory application certificate](https://github.com/Azure/azure-kusto-python/blob/master/azure-kusto-data/tests/sample.py#L24), [Azure Active Directory application key](https://github.com/Azure/azure-kusto-python/blob/master/azure-kusto-data/tests/sample.py#L20), and [Azure Active Directory user and password](https://github.com/Azure/azure-kusto-python/blob/master/azure-kusto-data/tests/sample.py#L34).
+Now construct the connection string. The following example uses device authentication to access the cluster. You can also use [managed identity](managed-identities-overview.md) authentication, [Microsoft Entra application certificate](https://github.com/Azure/azure-kusto-python/blob/master/azure-kusto-data/tests/sample.py#L24), [Microsoft Entra application key](https://github.com/Azure/azure-kusto-python/blob/master/azure-kusto-data/tests/sample.py#L20), and [Microsoft Entra user and password](https://github.com/Azure/azure-kusto-python/blob/master/azure-kusto-data/tests/sample.py#L34).
 
 You create the destination table and mapping in a later step.
 
