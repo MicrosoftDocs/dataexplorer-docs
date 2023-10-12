@@ -65,8 +65,8 @@ The following tables list all the possible properties that can be included in a 
 
 | Property name | Programmatic name | Description |
 |--|--|--|
-| AAD Federated Security </br></br>**Aliases:** Federated Security, Federated, Fed, AADFed | FederatedSecurity | A boolean value that instructs the client to perform Azure Active Directory (Azure AD) authentication.|
-| Authority ID </br></br>**Alias:** TenantId | Authority | A string value that provides the name or ID of the user's tenant. The default value is `microsoft.com`. For more information, see [Azure AD authority](/azure/active-directory/develop/msal-client-application-configuration#authority). |
+| Microsoft Entra ID Federated Security </br></br>**Aliases:** Federated Security, Federated, Fed, AADFed | FederatedSecurity | A boolean value that instructs the client to perform Microsoft Entra authentication.|
+| Authority ID </br></br>**Alias:** TenantId | Authority | A string value that provides the name or ID of the user's tenant. The default value is `microsoft.com`. For more information, see [Microsoft Entra authority](/azure/active-directory/develop/msal-client-application-configuration#authority). |
 | Enforce MFA </br></br>**Alias:** MFA, EnforceMFA | EnforceMfa | An optional boolean value that instructs the client to acquire a multifactor-authentication token. |
 | User ID </br></br>**Aliases:** UID, User | UserID | A string value that instructs the client to perform user authentication with the indicated user name. |
 | User Name for Tracing | TraceUserName | An optional string value that reports to the service which user name to use when tracing the request internally. |
@@ -78,21 +78,21 @@ For user authentication, specify `AAD Federated Security` as `true`. Then, choos
 
 | Authentication mode | Property names |
 |--|--|
-| Azure AD User Prompt Authentication | - User ID (optional)</br>- Authority ID (optional)</br>- Enforce MFA (optional)</br>- User Name for Tracing (optional)|
-| Azure AD User Token Authentication | - User Token</br>- Enforce MFA (optional)</br>- User Name for Tracing (optional)|
+| Microsoft Entra user Prompt Authentication | - User ID (optional)</br>- Authority ID (optional)</br>- Enforce MFA (optional)</br>- User Name for Tracing (optional)|
+| Microsoft Entra user Token Authentication | - User Token</br>- Enforce MFA (optional)</br>- User Name for Tracing (optional)|
 
 ### Application authentication properties
 
 | Property name | Programmatic name | Description |
 |--|--|--|
-| AAD Federated Security </br></br>**Aliases:** Federated Security, Federated, Fed, AADFed | FederatedSecurity | A boolean value that instructs the client to perform Azure AD federated authentication. |
+| Microsoft Entra ID Federated Security </br></br>**Aliases:** Federated Security, Federated, Fed, AADFed | FederatedSecurity | A boolean value that instructs the client to perform Microsoft Entra ID federated authentication. |
 | Application Certificate SendX5c </br></br>**Aliases:** Application Certificate Send Public Certificate, SendX5c | ApplicationCertificateSendX5c | A boolean value that instructs the client to perform subject name and issuer based authentication. |
 | Application Certificate Thumbprint </br></br>**Alias:** AppCert | ApplicationCertificateThumbprint | A string value that provides the thumbprint of the client certificate to use when using an application client certificate authenticating flow. |
 | Application Client ID </br></br>**Alias:** AppClientId | ApplicationClientId | A string value that provides the application client ID to use when authenticating. |
 | Application Key </br></br>**Alias:** AppKey | ApplicationKey | A string value that provides the application key to use when authenticating using an application secret flow. |
 | Application Name for Tracing </br></br>**Alias:** TraceAppName | ApplicationNameForTracing | An optional string value that reports to the service which application name to use when tracing the request internally. |
 | Application Token </br></br>**Alias:** AppToken | ApplicationToken | A string value that instructs the client to perform application authenticating with the specified bearer token. |
-| Authority ID </br></br>**Alias:** TenantId | Authority | A string value that provides the name or ID of the tenant in which the application is registered. The default value is `microsoft.com`. For more information, see [Azure AD authority](/azure/active-directory/develop/msal-client-application-configuration#authority). |
+| Authority ID </br></br>**Alias:** TenantId | Authority | A string value that provides the name or ID of the tenant in which the application is registered. The default value is `microsoft.com`. For more information, see [Microsoft Entra authority](/azure/active-directory/develop/msal-client-application-configuration#authority). |
 | Azure Region </br></br>**Aliases:** AzureRegion, Region | AzureRegion | A string value that provides the name of the Azure Region in which to authenticate. |
 | ManagedServiceIdentity | EmbeddedManagedIdentity | A string value that instructs the client which application identity to use with managed identity authentication. Use `system` to indicate the system-assigned identity. </br></br>This property can't be set with a connection string, only programmatically. |
 | Application Certificate Subject Distinguished Name </br></br>**Alias:** Application Certificate Subject | ApplicationCertificateSubjectDistinguishedName |  A string value that specifies the application certificate subject distinguished name.|
@@ -104,15 +104,15 @@ For application authentication, specify `AAD Federated Security` as `true`. Then
 
 | Authentication mode | Property names |
 |--|--|
-| Azure AD Application Key Authentication | - Application Client Id</br>- Application Key</br>- Authority Id</br> - Application Name for Tracing (optional) |
-| Azure AD Application Thumbprint Authentication | - Application Client Id</br>- Application Certificate Thumbprint</br>- Authority Id</br> - Application Name for Tracing (optional) |
-| Azure AD Application Subject and Issuer Authentication | - Application Client Id</br>- Application Certificate Subject Distinguished Name</br>- Application Certificate Issuer Distinguished Name</br>- Authority Id</br>- Azure Region (optional)</br>- Application Certificate SendX5c (optional)</br> - Application Name for Tracing (optional) |
-| Azure AD Application Subject Name Authentication | - Application Client Id</br>- Application Certificate Subject Distinguished Name</br>- Authority Id</br>- and Azure Region (optional)</br> - Application Name for Tracing (optional) |
-| Azure AD Application Token Authentication | - Application Token</br> - Application Name for Tracing (optional) |
+| Microsoft Entra Application Key Authentication | - Application Client Id</br>- Application Key</br>- Authority Id</br> - Application Name for Tracing (optional) |
+| Microsoft Entra Application Thumbprint Authentication | - Application Client Id</br>- Application Certificate Thumbprint</br>- Authority Id</br> - Application Name for Tracing (optional) |
+| Microsoft Entra Application Subject and Issuer Authentication | - Application Client Id</br>- Application Certificate Subject Distinguished Name</br>- Application Certificate Issuer Distinguished Name</br>- Authority Id</br>- Azure Region (optional)</br>- Application Certificate SendX5c (optional)</br> - Application Name for Tracing (optional) |
+| Microsoft Entra Application Subject Name Authentication | - Application Client Id</br>- Application Certificate Subject Distinguished Name</br>- Authority Id</br>- and Azure Region (optional)</br> - Application Name for Tracing (optional) |
+| Microsoft Entra Application Token Authentication | - Application Token</br> - Application Name for Tracing (optional) |
 
 #### Authentication with an application certificate
 
-1. The application should be configured to accept the given certificate. [How to authentication based-on Azure AD application's certificate](https://github.com/Azure-Samples/active-directory-dotnet-daemon-certificate-credential).
+1. The application should be configured to accept the given certificate. [How to authentication based-on Microsoft Entra application's certificate](https://github.com/Azure-Samples/active-directory-dotnet-daemon-certificate-credential).
 1. The application should be configured as an authorized principal in the relevant Kusto cluster.
 1. The certificate needs to be installed in Local Machine store or in Current User store.
 1. The certificate's public key should contain at least 2048 bits.
@@ -136,7 +136,7 @@ For application authentication, specify `AAD Federated Security` as `true`. Then
 
 ## Examples
 
-**Azure AD Federated authentication using the currently logged-on user identity (user will be prompted if required)**
+**Microsoft Entra ID Federated authentication using the currently logged-on user identity (user will be prompted if required)**
 
 ```csharp
 var kustoUri = "https://<clusterName>.<region>.kusto.windows.net";
@@ -146,7 +146,7 @@ var kustoConnectionStringBuilder = new KustoConnectionStringBuilder(kustoUri)
 // Equivalent Kusto connection string: $"Data Source={kustoUri};Database=NetDefaultDB;Fed=True;Authority Id={authority}"
 ```
 
-**Azure AD Federated authentication with user id hint (user will be prompted if required)**
+**Microsoft Entra ID Federated authentication with user id hint (user will be prompted if required)**
 
 ```csharp
 var kustoUri = "https://<clusterName>.<region>.kusto.windows.net";
@@ -157,7 +157,7 @@ var kustoConnectionStringBuilder = new KustoConnectionStringBuilder(kustoUri)
 // Equivalent Kusto connection string: $"Data Source={kustoUri};Database=NetDefaultDB;Fed=True;Authority Id={authority};User ID={userId}"
 ```
 
-**Azure AD Federated application authentication using ApplicationClientId and ApplicationKey**
+**Microsoft Entra ID Federated application authentication using ApplicationClientId and ApplicationKey**
 
 ```csharp
 var kustoUri = "https://<clusterName>.<region>.kusto.windows.net";
@@ -186,7 +186,7 @@ var kustoConnectionStringBuilder = new KustoConnectionStringBuilder(kustoUri)
     .WithAadUserManagedIdentity(managedIdentityClientId);
 ```
 
-**Azure AD Federated authentication using user / application token**
+**Microsoft Entra ID Federated authentication using user / application token**
 
 ```csharp
 var kustoUri = "https://<clusterName>.<region>.kusto.windows.net";

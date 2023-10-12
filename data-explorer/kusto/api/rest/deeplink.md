@@ -97,9 +97,9 @@ to Kusto.WebExplorer:
 |Parameter   |Description|
 |------------|-----------|
 |`login_hint`|Sets the user sign-in name (email) of the user.|
-|`tenant`    |Sets the Azure Active Directory tenant ID of the user.|
+|`tenant`    |Sets the Microsoft Entra tenant ID of the user.|
 
-To instruct Kusto.WebExplorer to sign-in a user from another Azure AD tenant, specify `login_hint` and `tenant` for the user.
+To instruct Kusto.WebExplorer to sign-in a user from another Microsoft Entra tenant, specify `login_hint` and `tenant` for the user.
 
 Redirection will be to the following URI:
 

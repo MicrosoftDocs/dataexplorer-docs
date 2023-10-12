@@ -49,9 +49,9 @@ Use the following steps to handle authentication:
     })    
    ```
 
-1. Define a function to map the `event.data.scope` to Azure AD scope. Use the following table to decide how to map `event.data.scope` to Azure Active Directory (Azure AD) scopes:
+1. Define a function to map the `event.data.scope` to Microsoft Entra scope. Use the following table to decide how to map `event.data.scope` to Microsoft Entra scopes:
 
-    | Resource         | event.data.scope                                            | Azure AD Scope                                                    |
+    | Resource         | event.data.scope                                            | Microsoft Entra scope                                                    |
     | ---------------- | ----------------------------------------------------------- | -----------------------------------------------------------       |
     | Cluster          | `query`                                                     | `https://{your_cluster}.{your_region}.kusto.windows.net/.default` |
     | Graph            | `People.Read`                                               | `People.Read`, `User.ReadBasic.All`, `Group.Read.All`             |
@@ -69,9 +69,9 @@ Use the following steps to handle authentication:
         }
     ```
 
-1. Get a [JWT access token](https://tools.ietf.org/html/rfc7519) from the [Azure AD authentication endpoint](../../management/access-control/how-to-authenticate-with-aad.md#web-client-javascript-authentication-and-authorization) for the scope. This code replaces placeholder CODE-1.
+1. Get a [JWT access token](https://tools.ietf.org/html/rfc7519) from the [Microsoft Entra authentication endpoint](../../management/access-control/how-to-authenticate-with-aad.md#web-client-javascript-authentication-and-authorization) for the scope. This code replaces placeholder CODE-1.
 
-    For example, you can use @azure/msal-react to get the access token. The example uses the **mapScope** function you defined earlier.
+    For example, you can use @azure/MSAL-react to get the access token. The example uses the **mapScope** function you defined earlier.
 
     ```javascript
     import { useMsal } from "@azure/msal-react";
@@ -109,11 +109,11 @@ Use the following steps to handle authentication:
 
 ### Embed dashboards
 
-To embed a dashboard, a trust relationship must be established between the host's Azure AD app and the Azure Data Explorer dashboard service (**RTD Metadata Service**).
+To embed a dashboard, a trust relationship must be established between the host's Microsoft Entra app and the Azure Data Explorer dashboard service (**RTD Metadata Service**).
 
 1. Follow the steps in [Web Client (JavaScript) authentication and authorization](../../management/access-control/how-to-authenticate-with-aad.md#on-behalf-of-authentication#web-client-javascript-authentication-and-authorization).
 1. Open the [Azure portal](https://portal.azure.com/) and make sure that you're signed into the correct tenant. In the top-right corner, verify the identity used to sign into the portal.
-1. In the resources pane, select **Azure Active Directory** > **App registrations**.
+1. In the resources pane, select **Microsoft Entra ID** > **App registrations**.
 1. Locate the app that uses the **on-behalf-of** flow and open it.
 1. Select **Manifest**.
 1. Select **requiredResourceAccess**.
