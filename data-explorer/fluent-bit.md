@@ -135,7 +135,6 @@ Once the configuration is complete, logs should arrive in your Azure Data Explor
     | take 100
     ```
 
-## Next step
+## Related content
 
-> [!div class="nextstepaction"]
-> [Write queries](kusto/query/tutorials/learn-common-operators.md)
+* [Write queries](kusto/query/tutorials/learn-common-operators.md)
