@@ -38,17 +38,21 @@ Add the [Serilog.Sinks.AzureDataExplorer](https://www.nuget.org/packages/serilog
 Install-Package Serilog.Sinks.AzureDataExplorer
 ```
 
-### Create an Azure AD app registration
+<a name='create-an-azure-ad-app-registration'></a>
 
-Azure Active Directory (Azure AD) application authentication is used for applications that need to access Azure Data Explorer without a user present. To ingest data using the Serilog connector, you need to create and register an Azure AD service principal, and then authorize this principal to ingest data an Azure Data Explorer database.
+### Create a Microsoft Entra app registration
 
-1. Using your Azure Data Explorer cluster, follow steps 1-7 in [Create an Azure Active Directory application registration in Azure Data Explorer](provision-azure-ad-app.md).
+Microsoft Entra application authentication is used for applications that need to access Azure Data Explorer without a user present. To ingest data using the Serilog connector, you need to create and register a Microsoft Entra service principal, and then authorize this principal to ingest data an Azure Data Explorer database.
+
+1. Using your Azure Data Explorer cluster, follow steps 1-7 in [Create a Microsoft Entra application registration in Azure Data Explorer](provision-azure-ad-app.md).
 1. Save the following values to be used in later steps:
     * Application (client) ID
     * Directory (tenant) ID
     * Client secret key value
 
-### Grant the Azure AD app permissions
+<a name='grant-the-azure-ad-app-permissions'></a>
+
+### Grant the Microsoft Entra app permissions
 
 1. In the query tab of the [web UI](https://dataexplorer.azure.com/), connect to your cluster. For more information on how to connect, see [Add clusters](web-query-data.md#add-clusters).
 1. Browse to the database in which you want to ingest data.
@@ -110,9 +114,9 @@ Use the following steps to:
     | *IngestionEndPointUri* | The ingest URI for your cluster in the format *https://ingest-\<cluster>.\<region>.kusto.windows.net*. |
     | *DatabaseName* | The case-sensitive name of the target database. |
     | *TableName* | The case-sensitive name of an existing target table. For example, **SerilogTest** is the name of the table created in [Create a table and ingestion mapping](#create-a-table-and-ingestion-mapping). |
-    | *AppId* | The application client ID required for authentication. You saved this value in [Create an Azure AD App registration](#create-an-azure-ad-app-registration). |
-    | *AppKey* | The application key required for authentication. You saved this value in [Create an Azure AD App registration](#create-an-azure-ad-app-registration). |
-    | *Tenant* | The ID of the tenant in which the application is registered. You saved this value in [Create an Azure AD App registration](#create-an-azure-ad-app-registration). |
+    | *AppId* | The application client ID required for authentication. You saved this value in [Create a Microsoft Entra App registration](#create-an-azure-ad-app-registration). |
+    | *AppKey* | The application key required for authentication. You saved this value in [Create a Microsoft Entra App registration](#create-an-azure-ad-app-registration). |
+    | *Tenant* | The ID of the tenant in which the application is registered. You saved this value in [Create a Microsoft Entra App registration](#create-an-azure-ad-app-registration). |
     | *BufferBaseFileName* | Optional base file name for the buffer file. Set this value if you require your logs to be durable against loss resulting connection failures to your cluster. For example, `C:/Temp/Serilog`. |
 
     For more options, see [Sink Options](https://github.com/Azure/serilog-sinks-azuredataexplorer#options).
@@ -153,9 +157,9 @@ Use the sample log generator app as an example showing how to configure and use 
     | *IngestionEndPointUri* | The ingest URI for your cluster in the format *https://ingest-\<cluster>.\<region>.kusto.windows.net*. |
     | *DatabaseName* | The case-sensitive name of the target database. |
     | *TableName* | The case-sensitive name of an existing target table. For example, **SerilogTest** is the name of the table created in [Create a table and ingestion mapping](#create-a-table-and-ingestion-mapping). |
-    | *AppId* | Application client ID required for authentication. You saved this value in [Create an Azure AD App registration](#create-an-azure-ad-app-registration). |
-    | *AppKey* | Application key required for authentication. You saved this value in [Create an Azure AD App registration](#create-an-azure-ad-app-registration). |
-    | *Tenant* | The ID of the tenant in which the application is registered. You saved this value in [Create an Azure AD App registration](#create-an-azure-ad-app-registration). |
+    | *AppId* | Application client ID required for authentication. You saved this value in [Create a Microsoft Entra App registration](#create-an-azure-ad-app-registration). |
+    | *AppKey* | Application key required for authentication. You saved this value in [Create a Microsoft Entra App registration](#create-an-azure-ad-app-registration). |
+    | *Tenant* | The ID of the tenant in which the application is registered. You saved this value in [Create a Microsoft Entra App registration](#create-an-azure-ad-app-registration). |
     | *BufferBaseFileName* | The base file name for the buffer file. Set this value if you require your logs to be durable against loss resulting connection failures to your cluster. For example, `C:/Temp/Serilog` |
 
     You can set the environment variables manually or using the following commands:

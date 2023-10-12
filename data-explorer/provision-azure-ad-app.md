@@ -1,23 +1,25 @@
 ---
-title: Create an Azure AD application in Azure Data Explorer
-description: Learn how to create an Azure AD application in Azure Data Explorer.
+title: Create a Microsoft Entra application in Azure Data Explorer
+description: Learn how to create a Microsoft Entra application in Azure Data Explorer.
 ms.reviewer: herauch
 ms.topic: how-to
 ms.date: 07/10/2022
 ---
 
-# Create an Azure Active Directory application registration in Azure Data Explorer
+# Create a Microsoft Entra application registration in Azure Data Explorer
 
-Azure Active Directory (Azure AD) application authentication is used for applications, such as an unattended service or a scheduled flow, that need to access Azure Data Explorer without a user present. If you're connecting to an Azure Data Explorer database using an application, such as a web app, you should authenticate using service principal authentication. This article details how to create and register an Azure AD service principal and then authorize it to access an Azure Data Explorer database.
+Microsoft Entra application authentication is used for applications, such as an unattended service or a scheduled flow, that need to access Azure Data Explorer without a user present. If you're connecting to an Azure Data Explorer database using an application, such as a web app, you should authenticate using service principal authentication. This article details how to create and register a Microsoft Entra service principal and then authorize it to access an Azure Data Explorer database.
 
-## Create Azure AD application registration
+<a name='create-azure-ad-application-registration'></a>
 
-Azure AD application authentication requires creating and registering an application with Azure AD.
-A service principal is automatically created when the application registration is created in an Azure AD tenant.
+## Create Microsoft Entra application registration
 
-1. Sign in to [Azure portal](https://portal.azure.com) and open the `Azure Active Directory` blade
+Microsoft Entra application authentication requires creating and registering an application with Microsoft Entra ID.
+A service principal is automatically created when the application registration is created in a Microsoft Entra tenant.
 
-    :::image type="content" source="media/provision-azure-ad-app/create-app-reg-select-azure-active-directory.png" alt-text="Screenshot showing how to select Azure Active Directory from the portal menu.":::
+1. Sign in to [Azure portal](https://portal.azure.com) and open the **Identity** blade
+
+    :::image type="content" source="media/provision-azure-ad-app/create-app-reg-select-azure-active-directory.png" alt-text="Screenshot showing how to select Microsoft Entra ID from the portal menu.":::
 
 1. Select the **App registrations** blade and select **New registration**
 
@@ -121,7 +123,7 @@ var queryResult = client.ExecuteQuery($"{query}");
    > [!NOTE]
    > Specify the application id and key of the application registration (service principal) created earlier.
 
-For more information, see [authenticate with Azure AD for Azure Data Explorer access](kusto/access-control/how-to-authenticate-with-aad.md) and [use Azure Key Vault with .NET Core web app](/azure/key-vault/tutorial-net-create-vault-azure-web-app#create-a-net-core-web-app).
+For more information, see [authenticate with Microsoft Entra ID for Azure Data Explorer access](kusto/access-control/how-to-authenticate-with-aad.md) and [use Azure Key Vault with .NET Core web app](/azure/key-vault/tutorial-net-create-vault-azure-web-app#create-a-net-core-web-app).
 
 ## Troubleshooting
 
@@ -135,11 +137,11 @@ You'll need to follow the instructions on [setting up delegated permissions for 
 
 ### Enable user consent error
 
-Your Azure AD tenant administrator may enact a policy that prevents tenant users from giving consent to applications. This situation will result in an error similar to the following, when a user tries to sign in to your application:
+Your Microsoft Entra tenant administrator may enact a policy that prevents tenant users from giving consent to applications. This situation will result in an error similar to the following, when a user tries to sign in to your application:
 
 `AADSTS65001: The user or administrator has not consented to use the application with ID '<App ID>' named 'App Name'`
 
-You'll need to contact your Azure AD administrator to grant consent for all users in the tenant, or enable user consent for your specific application.
+You'll need to contact your Microsoft Entra administrator to grant consent for all users in the tenant, or enable user consent for your specific application.
 
 ## Next steps
 

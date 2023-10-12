@@ -24,9 +24,9 @@ In this guide, the data to be migrated is in an Elasticsearch index named **vehi
 
 To migrate your Elasticsearch data to Azure Data Explorer, you need:
 
-* A Microsoft account or an Azure Active Directory (Azure AD) user identity. An Azure subscription isn't required.
+* A Microsoft account or a Microsoft Entra user identity. An Azure subscription isn't required.
 * An Azure Data Explorer cluster and database. You can [create a free cluster](start-for-free-web-ui.md) or [create a full cluster](create-cluster-database-portal.md). To decide which is best for you, check the [feature comparison](start-for-free.md#feature-comparison).
-* An app ID and delegated permissions to access your Azure Data Explorer cluster. For more information, see [Create an Azure AD app](provision-azure-ad-app.md). You need app ID, secret, and tenant ID to configure the Logstash pipeline.
+* An app ID and delegated permissions to access your Azure Data Explorer cluster. For more information, see [Create a Microsoft Entra app](provision-azure-ad-app.md). You need app ID, secret, and tenant ID to configure the Logstash pipeline.
 * Logstash version 6+ [Installation instructions](https://www.elastic.co/guide/en/logstash/current/installing-logstash.html).
 
 ## Pre-migration
