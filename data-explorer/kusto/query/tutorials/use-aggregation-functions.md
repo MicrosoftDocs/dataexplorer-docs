@@ -29,7 +29,7 @@ This tutorial builds on the foundation from the first tutorial, [Learn common op
 
 ## Prerequisites
 
-* A Microsoft account or Azure Active Directory user identity to sign in to the [help cluster](https://dataexplorer.azure.com/clusters/help)
+* A Microsoft account or Microsoft Entra user identity to sign in to the [help cluster](https://dataexplorer.azure.com/clusters/help)
 
 ## Use the summarize operator
 
