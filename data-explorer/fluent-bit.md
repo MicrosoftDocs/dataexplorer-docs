@@ -117,7 +117,7 @@ Replace variables with the relevant values:
 |Table_Name|The name of the table from the [Create an Azure Data Explorer table](#create-an-azure-data-explorer-table-to-store-your-logs) step.|
 |Ingestion_Mapping_Reference| The name of the ingestion mapping from the [Create an Azure Data Explorer table](#create-an-azure-data-explorer-table-to-store-your-logs) step. If you didn't create an ingestion mapping, remove the property from the configuration file.|
 
-## Query your logs in Azure Data Explorer
+## Verify that data is ingested into Azure Data Explorer
 
 Once the configuration is complete, logs should arrive in your Azure Data Explorer table.
 
