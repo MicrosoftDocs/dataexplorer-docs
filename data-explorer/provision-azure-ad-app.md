@@ -46,7 +46,7 @@ A service principal is automatically created when the application registration i
     > [!TIP]
     > This article describes using a client secret for the application's credentials.  You can also use an X509 certificate to authenticate your application. Select **Upload certificate** and follow the instructions to upload the public portion of the certificate.
 
-1. Enter a description, expiration, and select **Add**
+1. Enter a description, expiration, and select **Add**.
 
     :::image type="content" source="media/provision-azure-ad-app/create-app-secret-details.png" alt-text="Screenshot showing how to enter client secret parameters.":::
 
@@ -54,8 +54,6 @@ A service principal is automatically created when the application registration i
 
     > [!NOTE]
     > When you leave this page, the key value won't be accessible.  You'll need the key to configure client credentials to the database.
-
-    :::image type="content" source="media/provision-azure-ad-app/create-app-reg-copy-client-secret.png" alt-text="Screenshot showing how to copy client secret key value.":::
 
 Your application is created. If you only need access to an authorized Azure Data Explorer resource, such as in the programmatic example below, skip the next section. For delegated permissions support, see [configure delegated permissions for the application registration](#configure-delegated-permissions-for-the-application-registration).
 
@@ -139,6 +137,6 @@ Your Microsoft Entra ID tenant administrator may enact a policy that prevents te
 
 You'll need to contact your Microsoft Entra ID administrator to grant consent for all users in the tenant, or enable user consent for your specific application.
 
-## Next steps
+## Related content
 
-* See [Kusto connection strings](kusto/api/connection-strings/kusto.md) for list of supported connection strings.
+* [Kusto connection strings](kusto/api/connection-strings/kusto.md)
