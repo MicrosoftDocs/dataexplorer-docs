@@ -112,7 +112,7 @@ This example shows how to create a request that sends the query above, using [cu
 
 1. Obtain a token for authentication.
 
-    Replace `AAD_TENANT_NAME_OR_ID`, `AAD_APPLICATION_ID`, and `AAD_APPLICATION_KEY` with the relevant values, after having set up [AAD application authentication](../../../provision-azure-ad-app.md)
+    Replace `AAD_TENANT_NAME_OR_ID`, `AAD_APPLICATION_ID`, and `AAD_APPLICATION_KEY` with the relevant values, after having set up [Microsoft Entra application authentication](../../../provision-azure-ad-app.md)
 
     ```
     curl "https://login.microsoftonline.com/AAD_TENANT_NAME_OR_ID/oauth2/token" \

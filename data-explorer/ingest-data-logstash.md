@@ -17,7 +17,7 @@ ms.date: 09/22/2022
 
 ## Prerequisites
 
-* A Microsoft account or an Azure Active Directory user identity. An Azure subscription isn't required.
+* A Microsoft account or a Microsoft Entra user identity. An Azure subscription isn't required.
 * An Azure Data Explorer cluster and database. [Create a cluster and database](create-cluster-and-database.md).
 * Logstash version 6+ [Installation instructions](https://www.elastic.co/guide/en/logstash/current/installing-logstash.html).
 
@@ -88,7 +88,7 @@ This configuration also includes the `stdin` input plugin that will enable you t
 
 ## Configure Logstash to send data to Azure Data Explorer
 
-Paste the following settings into the same config file used in the previous step. Replace all the placeholders with the relevant values for your setup. For more information, see [Creating an AAD Application](./provision-azure-ad-app.md).
+Paste the following settings into the same config file used in the previous step. Replace all the placeholders with the relevant values for your setup. For more information, see [Creating a Microsoft Entra Application](./provision-azure-ad-app.md).
 
 ```ruby
 output {

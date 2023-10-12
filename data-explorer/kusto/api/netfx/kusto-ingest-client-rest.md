@@ -13,7 +13,7 @@ This article shows you how, by using *Queued Ingestion* to your cluster for prod
 > [!NOTE]
 > The code below is written in C#, and makes use of the Azure Storage SDK, the [Microsoft Authentication Library (MSAL)](/azure/active-directory/develop/msal-overview), and the NewtonSoft.JSON package, to simplify the sample code. If needed, the corresponding code can be replaced with appropriate [Azure Storage REST API](/rest/api/storageservices/blob-service-rest-api) calls, [non-.NET MSAL package](/azure/active-directory/develop/msal-overview), and any available JSON handling package.
 
-This article deals with the recommended mode of ingestion. For the Kusto.Ingest library, its corresponding entity is the [IKustoQueuedIngestClient](kusto-ingest-client-reference.md#interface-ikustoqueuedingestclient) interface. Here, the client code interacts with your cluster by posting ingestion notification messages to an Azure queue. References to the messages are obtained from the Kusto Data Management (also known as the Ingestion) service. Interaction with the service must be authenticated with Azure Active Directory (Azure AD).
+This article deals with the recommended mode of ingestion. For the Kusto.Ingest library, its corresponding entity is the [IKustoQueuedIngestClient](kusto-ingest-client-reference.md#interface-ikustoqueuedingestclient) interface. Here, the client code interacts with your cluster by posting ingestion notification messages to an Azure queue. References to the messages are obtained from the Kusto Data Management (also known as the Ingestion) service. Interaction with the service must be authenticated with Microsoft Entra ID.
 
 The following code shows how the Kusto Data Management service handles queued data ingestion without using the Kusto.Ingest library. This example may be useful if full .NET is inaccessible or unavailable because of the environment, or other restrictions.
 
@@ -85,9 +85,11 @@ public static void IngestSingleFile(string file, string db, string table, string
 
 ## Using queued ingestion for production-grade pipelines
 
-### Obtain authentication evidence from Azure AD
+<a name='obtain-authentication-evidence-from-azure-ad'></a>
 
-Here we use [Microsoft Authentication Library (MSAL)](/azure/active-directory/develop/msal-overview) to obtain an Azure AD token to access the Kusto Data Management service and ask for its input queues. MSAL is available on multiple platforms.
+### Obtain authentication evidence from Microsoft Entra ID
+
+Here we use [Microsoft Authentication Library (MSAL)](/azure/active-directory/develop/msal-overview) to obtain a Microsoft Entra token to access the Kusto Data Management service and ask for its input queues. MSAL is available on multiple platforms.
 
 ```csharp
 // Authenticates the interactive user and retrieves Azure AD Access token for specified resource
