@@ -10,7 +10,7 @@ The Azure Data Explorer web UI has a samples gallery for you to practice writing
 
 ## Prerequisites
 
-A Microsoft account or an Azure Active Directory user identity to sign in to the [**help** cluster](https://dataexplorer.azure.com/clusters/help). An Azure subscription isn't required.
+A Microsoft account or a Microsoft Entra user identity to sign in to the [**help** cluster](https://dataexplorer.azure.com/clusters/help). An Azure subscription isn't required.
 
 ## Get started
 
@@ -22,7 +22,7 @@ The following diagram is a high-level view of the databases available in the sam
 
 Get started learning about KQL queries with a dataset from the samples gallery.
 
-1. Sign in to the [Azure Data Explorer web UI](https://dataexplorer.azure.com/home) using your Microsoft account or Azure Active Directory user identity.
+1. Sign in to the [Azure Data Explorer web UI](https://dataexplorer.azure.com/home) using your Microsoft account or Microsoft Entra user identity.
 
 1. In the **Home** page, select **Explore sample data with KQL**.
 

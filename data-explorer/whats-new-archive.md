@@ -40,7 +40,7 @@ Welcome to what's new in Azure Data Explorer archive. This article is an archive
 | Article title | Description |
 |--|--|
 |[.cancel operation command](kusto/management/cancel-operation-command.md)| New article. Describes how to use the `.cancel operation` command.|
-|[How to authenticate with Azure Active Directory](kusto/access-control/how-to-authenticate-with-aad.md)| Updated article. Updated with Microsoft Authentication Library authentication.|
+|[How to authenticate with Microsoft Entra ID](kusto/access-control/how-to-authenticate-with-aad.md)| Updated article. Updated with Microsoft Authentication Library authentication.|
 |[.drop extents](kusto/management/drop-extents.md)| Updated article. Added examples to drop specific extents.|
 |[Queries management](kusto/management/queries.md)| Updated article. Added show by user command.
 |- [Ingest from storage](kusto/management/data-ingestion/ingest-from-storage.md)|Updated article. Added ingest from Amazon S3.
