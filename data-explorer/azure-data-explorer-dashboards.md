@@ -23,7 +23,7 @@ To interactively explore sample dashboards, see [Quickstart: Visualize sample da
 
 ## Prerequisites
 
-* A Microsoft account or an Azure Active Directory user identity. An Azure subscription isn't required.
+* A Microsoft account or a Microsoft Entra user identity. An Azure subscription isn't required.
 * Create [an Azure Data Explorer cluster and database](create-cluster-and-database.md).
 * Sign in to the [Azure Data Explorer web UI](https://dataexplorer.azure.com/) and [add a connection to your cluster](web-query-data.md#add-clusters).
 
@@ -105,7 +105,7 @@ Parameters significantly improve dashboard rendering performance, and enable you
 
 ## Share dashboards
 
-Use the share menu to [grant permissions](#grant-permissions) for an Azure Active Directory (Azure AD) user or Azure AD group to access the dashboard, [change a user's permission level](#change-a-user-permission-level), and [share the dashboard link](#share-the-dashboard-link).
+Use the share menu to [grant permissions](#grant-permissions) for a Microsoft Entra user or Microsoft Entra group to access the dashboard, [change a user's permission level](#change-a-user-permission-level), and [share the dashboard link](#share-the-dashboard-link).
 
 > [!IMPORTANT]
 > To access the dashboard, a dashboard viewer needs the following:
@@ -125,7 +125,7 @@ Use the share menu to [grant permissions](#grant-permissions) for an Azure Activ
 
 To grant permissions to a user in the **Dashboard permissions** pane:
  
-1. Enter the Azure AD user or Azure AD group in **Add new members**.
+1. Enter the Microsoft Entra user or Microsoft Entra group in **Add new members**.
 1. In the **Permission** level, select one of the following values: **Can view** or **Can edit**.
 1. Select **Add**.
 

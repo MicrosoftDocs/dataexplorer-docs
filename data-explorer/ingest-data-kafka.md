@@ -24,9 +24,11 @@ For more information, see the connector [Git repo](https://github.com/Azure/kafk
 * [Azure CLI](/cli/azure/install-azure-cli).
 * [Docker](https://docs.docker.com/get-docker/) and [Docker Compose](https://docs.docker.com/compose/install).
 
-## Create an Azure Active Directory service principal
+<a name='create-an-azure-active-directory-service-principal'></a>
 
-The Azure Active Directory service principal can be created through the [Azure portal](/azure/active-directory/develop/howto-create-service-principal-portal) or programatically, as in the following example.
+## Create a Microsoft Entra service principal
+
+The Microsoft Entra service principal can be created through the [Azure portal](/azure/active-directory/develop/howto-create-service-principal-portal) or programatically, as in the following example.
 
 This service principal will be the identity leveraged by the connector to write to the Azure Data Explorer table. We'll later grant permissions for this service principal to access Azure Data Explorer.
 
@@ -90,7 +92,7 @@ This service principal will be the identity leveraged by the connector to write 
     .alter table Storms policy ingestionbatching @'{"MaximumBatchingTimeSpan":"00:00:15", "MaximumNumberOfItems": 100, "MaximumRawDataSizeMB": 300}'
     ```
 
-1. Use the service principal from [Create an Azure Active Directory service principal](#create-an-azure-active-directory-service-principal) to grant permission to work with the database.
+1. Use the service principal from [Create a Microsoft Entra service principal](#create-an-azure-active-directory-service-principal) to grant permission to work with the database.
 
     ```kusto
     .add database YOUR_DATABASE_NAME admins  ('aadapp=YOUR_APP_ID;YOUR_TENANT_ID') 'AAD App'
