@@ -125,7 +125,7 @@ items:
                 href: ingest-data-managed-identity.md
           - name: Configure customer-managed keys
             href: customer-managed-keys.md
-          - name: Create Azure AD app
+          - name: Create Microsoft Entra app
             href: provision-azure-ad-app.md
           - name: Conditional Access
             href: security-conditional-access.md

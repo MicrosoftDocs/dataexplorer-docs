@@ -17,15 +17,17 @@ The following table shows the supported authentication methods for each type of 
 
 | Authentication method | SQL Server | PostgreSQL | MySQL | Cosmos DB |
 |--|--|--|--|
-| [Azure AD-integrated (impersonation)](#azure-ad-integrated-impersonation) | :heavy_check_mark: | :x: | :x: | :heavy_check_mark: |
+| [Microsoft Entra integrated (impersonation)](#azure-ad-integrated-impersonation) | :heavy_check_mark: | :x: | :x: | :heavy_check_mark: |
 | [Managed identity](#managed-identity) | :heavy_check_mark: | :x: | :x: | :x: |
 | [Username and Password](#username-and-password) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
 
-## Azure AD-integrated (impersonation)
+<a name='azure-ad-integrated-impersonation'></a>
 
-With this authentication method, the user or application authenticates via Azure AD to Azure Data Explorer, and the same token is then used to access the SQL Server network endpoint. This method is only supported for SQL Server.
+## Microsoft Entra integrated (impersonation)
 
-To use Azure AD-integrated authentication (impersonation), add `;Authentication="Active Directory Integrated"` to the SQL connection string.
+With this authentication method, the user or application authenticates via Microsoft Entra ID to Azure Data Explorer, and the same token is then used to access the SQL Server network endpoint. This method is only supported for SQL Server.
+
+To use Microsoft Entra integrated authentication (impersonation), add `;Authentication="Active Directory Integrated"` to the SQL connection string.
 
 |Example|
 |--|

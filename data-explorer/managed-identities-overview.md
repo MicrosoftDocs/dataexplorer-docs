@@ -7,7 +7,7 @@ ms.date: 07/17/2023
 ---
 # Managed identities overview
 
-A [managed identity from Azure Active Directory (Azure AD)](/azure/active-directory/managed-identities-azure-resources/overview) allows your cluster to access other Azure AD-protected resources such as Azure Storage. The identity is managed by the Azure platform and doesn't require you to provision or rotate any secrets.
+A [managed identity from Microsoft Entra ID](/azure/active-directory/managed-identities-azure-resources/overview) allows your cluster to access other Microsoft Entra protected resources such as Azure Storage. The identity is managed by the Azure platform and doesn't require you to provision or rotate any secrets.
 
 ## Types of managed identities
 
@@ -19,7 +19,7 @@ Your Azure Data Explorer cluster can be granted two types of identities:
 
 ## Authenticate with managed identities
 
-Single-tenant Azure AD resources can only use managed identities to communicate with resources in the same tenant. This limitation restricts the use of managed identities in certain authentication scenarios. For example, you can't use an Azure Data Explorer managed identity to access an event hub located in a different tenant. In such cases, use account-key based authentication.
+Single-tenant Microsoft Entra resources can only use managed identities to communicate with resources in the same tenant. This limitation restricts the use of managed identities in certain authentication scenarios. For example, you can't use an Azure Data Explorer managed identity to access an event hub located in a different tenant. In such cases, use account-key based authentication.
 
 Azure Data Explorer is multi-tenant capable, which means that you can grant access to managed identities from different tenants. To accomplish this, assign the relevant [security roles](kusto/management/security-roles.md). When assigning the roles, refer to the managed identity as described in [Referencing security principals](kusto/management/referencing-security-principals.md#referencing-azure-ad-principals-and-groups).
 

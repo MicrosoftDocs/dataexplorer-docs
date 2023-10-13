@@ -38,17 +38,21 @@ Add the [NLog.Azure.Kusto](https://aka.ms/adx-docs-nlog-nuget) NuGet package. Us
 Install-Package NLog.Azure.Kusto
 ```
 
-### Create an Azure AD app registration
+<a name='create-an-azure-ad-app-registration'></a>
 
-Azure Active Directory (Azure AD) application authentication is used for applications that need to access Azure Data Explorer without a user present. To ingest data using the NLog connector, you need to create and register an Azure AD service principal, and then authorize this principal to ingest data an Azure Data Explorer database.
+### Create a Microsoft Entra app registration
 
-1. Using your Azure Data Explorer cluster, follow steps 1-7 in [Create an Azure Active Directory application registration in Azure Data Explorer](provision-azure-ad-app.md).
+Microsoft Entra application authentication is used for applications that need to access Azure Data Explorer without a user present. To ingest data using the NLog connector, you need to create and register a Microsoft Entra service principal, and then authorize this principal to ingest data an Azure Data Explorer database.
+
+1. Using your Azure Data Explorer cluster, follow steps 1-7 in [Create a Microsoft Entra application registration in Azure Data Explorer](provision-azure-ad-app.md).
 1. Save the following values to be used in later steps:
     * Application (client) ID
     * Directory (tenant) ID
     * Client secret key value
 
-### Grant the Azure AD app permissions
+<a name='grant-the-azure-ad-app-permissions'></a>
+
+### Grant the Microsoft Entra app permissions
 
 1. In the query tab of the [web UI](https://dataexplorer.azure.com/), connect to your cluster. For more information on how to connect, see [Add clusters](web-query-data.md#add-clusters).
 1. Browse to the database in which you want to ingest data.
@@ -134,9 +138,9 @@ Use the sample log generator app as an example showing how to configure and use 
     |---|---|
     | *INGEST_ENDPOINT* | The ingest URI for your cluster in the format *https://ingest-\<cluster>.\<region>.kusto.windows.net*. |
     | *DATABASE* | The case-sensitive name of the target database. |
-    | *APP_ID* | Application client ID required for authentication. You saved this value in [Create an Azure AD App registration](#create-an-azure-ad-app-registration). |
-    | *APP_KEY* | Application key required for authentication. You saved this value in [Create an Azure AD App registration](#create-an-azure-ad-app-registration). |
-    | *AZURE_TENANT_ID* | The ID of the tenant in which the application is registered. You saved this value in [Create an Azure AD App registration](#create-an-azure-ad-app-registration). |
+    | *APP_ID* | Application client ID required for authentication. You saved this value in [Create a Microsoft Entra App registration](#create-an-azure-ad-app-registration). |
+    | *APP_KEY* | Application key required for authentication. You saved this value in [Create a Microsoft Entra App registration](#create-an-azure-ad-app-registration). |
+    | *AZURE_TENANT_ID* | The ID of the tenant in which the application is registered. You saved this value in [Create a Microsoft Entra App registration](#create-an-azure-ad-app-registration). |
 
     You can set the environment variables manually or using the following commands:
 

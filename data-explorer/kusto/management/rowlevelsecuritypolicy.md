@@ -79,9 +79,11 @@ union AllData, PartialData
 | extend EmailAddress = "****"
 ```
 
-### Expose different data to members of different Azure AD groups
+<a name='expose-different-data-to-members-of-different-azure-ad-groups'></a>
 
-If you have multiple Azure AD groups, and you want the members of each group to see a different subset of data, use this structure for an RLS query. Assume a user can only belong to a single Azure AD group.
+### Expose different data to members of different Microsoft Entra groups
+
+If you have multiple Microsoft Entra groups, and you want the members of each group to see a different subset of data, use this structure for an RLS query. Assume a user can only belong to a single Microsoft Entra group.
 
 ```kusto
 let IsInGroup1 = current_principal_is_member_of('aadgroup=group1@domain.com');
@@ -125,7 +127,7 @@ If you want nonauthorized table users to receive an error instead of returning a
 }
 ```
 
-You can combine this approach with other examples. For example, you can display different results to users in different Azure AD Groups, and produce an error for everyone else.
+You can combine this approach with other examples. For example, you can display different results to users in different Microsoft Entra groups, and produce an error for everyone else.
 
 ### Control permissions on follower databases
 
@@ -154,7 +156,7 @@ For example:
 
 When an RLS policy is enabled on a table, there will be some performance impact on queries that access that table. Access to the table will be replaced by the RLS query that's defined on that table. The performance impact of an RLS query will normally consist of two parts:
 
-* Membership checks in Azure Active Directory: Checks are efficient. You can check membership in tens, or even hundreds of groups without major impact on the query performance.
+* Membership checks in Microsoft Entra ID: Checks are efficient. You can check membership in tens, or even hundreds of groups without major impact on the query performance.
 * Filters, joins, and other operations that are applied on the data: Impact depends on the complexity of the query
 
 For example:

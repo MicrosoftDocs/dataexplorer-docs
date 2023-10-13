@@ -11,7 +11,7 @@ You can integrate Azure Data Explorer capabilities in your app with features to 
 
 - Edit queries (including all language features such as colorization and intellisense)
 - Explore table schemas visually
-- Authenticate to Azure AD
+- Authenticate to Microsoft Entra ID
 - Execute queries
 - Display query execution results
 - Create multiple tabs
