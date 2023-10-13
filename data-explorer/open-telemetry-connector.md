@@ -35,17 +35,21 @@ In this article, you learn how to:
 
 In this section, you prepare your environment to use the OTel exporter.
 
-### Create an Azure AD app registration
+<a name='create-an-azure-ad-app-registration'></a>
 
-Azure Active Directory (Azure AD) application authentication is used for applications that need to access Azure Data Explorer without a user present. To ingest data using the OTel exporter, you need to create and register an Azure AD service principal, and then authorize this principal to ingest data an Azure Data Explorer database.
+### Create a Microsoft Entra app registration
 
-1. Using your Azure Data Explorer cluster, follow steps 1-7 in [Create an Azure Active Directory application registration in Azure Data Explorer](provision-azure-ad-app.md).
+Microsoft Entra application authentication is used for applications that need to access Azure Data Explorer without a user present. To ingest data using the OTel exporter, you need to create and register a Microsoft Entra service principal, and then authorize this principal to ingest data an Azure Data Explorer database.
+
+1. Using your Azure Data Explorer cluster, follow steps 1-7 in [Create a Microsoft Entra application registration in Azure Data Explorer](provision-azure-ad-app.md).
 1. Save the following values to be used in later steps:
     * Application (client) ID
     * Directory (tenant) ID
     * Client secret key value
 
-### Grant the Azure AD app permissions
+<a name='grant-the-azure-ad-app-permissions'></a>
+
+### Grant the Microsoft Entra app permissions
 
 1. In the query tab of the [web UI](https://dataexplorer.azure.com/), connect to your cluster. For more information on how to connect, see [Add clusters](web-query-data.md#add-clusters).
 1. Browse to the database in which you want to ingest data.

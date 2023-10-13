@@ -58,7 +58,7 @@ Select one of the following tabs to set up your preferred managed identity type.
     .add database <DatabaseName> viewers ('aadapp=<objectId>;<tenantId>')
     ```
 
-    Replace `<DatabaseName>` with the relevant database, `<objectId>` with the managed identity **Principal Id** from step 2, and `<tenantId>` with the Azure Active Directory **Tenant Id** from step 2.
+    Replace `<DatabaseName>` with the relevant database, `<objectId>` with the managed identity **Principal Id** from step 2, and `<tenantId>` with the Microsoft Entra ID **Tenant Id** from step 2.
 
 ### [System-assigned](#tab/system-assigned)
 

@@ -188,13 +188,13 @@ To perform user authentication:
 
 ## Perform application authentication
 
-Azure AD application authorization can be used for scenarios where interactive sign-in isn't desired and automated runs are necessary.
+Microsoft Entra application authorization can be used for scenarios where interactive sign-in isn't desired and automated runs are necessary.
 
 To perform application authentication:
 
 ### [Windows OS](#tab/windows)
 
-1. [Provision an Azure AD application](provision-azure-ad-app.md). For the **Redirect URI**, select **Web** and input http://localhost:8675 as the URI.
+1. [Provision a Microsoft Entra application](provision-azure-ad-app.md). For the **Redirect URI**, select **Web** and input http://localhost:8675 as the URI.
 
 1. Define the constants needed for the authorization. For more information about these values, see [Authentication parameters](kusto/api/rest/authenticate-with-msal.md#authentication-parameters).
 
@@ -225,7 +225,7 @@ To perform application authentication:
         NET.addAssembly(fullFileName);
    ```
 
-1. Use the [ConfidentialClientApplicationBuilder](/dotnet/api/microsoft.identity.client.confidentialclientapplicationbuilder) to perform a non-interactive automated sign-in with the Azure AD application:
+1. Use the [ConfidentialClientApplicationBuilder](/dotnet/api/microsoft.identity.client.confidentialclientapplicationbuilder) to perform a non-interactive automated sign-in with the Microsoft Entra application:
 
     ```matlab
     %  Create an ConfidentialClientApplicationBuilder

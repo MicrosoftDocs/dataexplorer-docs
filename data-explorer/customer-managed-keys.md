@@ -72,13 +72,13 @@ The following sections explain how to configure customer-managed keys encryption
 ### Install packages
 
 * Install the [Azure Data Explorer (Kusto) NuGet package](https://www.nuget.org/packages/Azure.ResourceManager.Kusto/).
-* Install the [Azure.Identity NuGet package](https://www.nuget.org/packages/Azure.Identity/) for authentication with Azure Active Directory (Azure AD).
+* Install the [Azure.Identity NuGet package](https://www.nuget.org/packages/Azure.Identity/) for authentication with Microsoft Entra ID.
 
 ### Authentication
 
-To run the examples in this article, [create an Azure AD application](/azure/active-directory/develop/howto-create-service-principal-portal) and service principal that can access resources. You can add role assignment at the subscription scope and get the required `Azure AD Directory (tenant) ID`, `Application ID`, and `Application Secret`.
+To run the examples in this article, [create a Microsoft Entra application](/azure/active-directory/develop/howto-create-service-principal-portal) and service principal that can access resources. You can add role assignment at the subscription scope and get the required `Microsoft Entra Directory (tenant) ID`, `Application ID`, and `Application Secret`.
 
-The following code snippet demonstrates how to use the [Microsoft Authentication Library (MSAL)](/azure/active-directory/develop/msal-overview) to acquire an Azure AD application token to access your cluster. For the flow to succeed, the application must be registered with Azure AD and you must have the credentials for application authentication, such as an Azure AD-issued application key or an Azure AD-registered X.509v2 certificate.
+The following code snippet demonstrates how to use the [Microsoft Authentication Library (MSAL)](/azure/active-directory/develop/msal-overview) to acquire a Microsoft Entra application token to access your cluster. For the flow to succeed, the application must be registered with Microsoft Entra ID and you must have the credentials for application authentication, such as a Microsoft Entra ID-issued application key or a Microsoft Entra registered X.509v2 certificate.
 
 ### Configure customer managed keys
 

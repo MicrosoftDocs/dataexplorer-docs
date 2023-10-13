@@ -35,7 +35,7 @@ In this article, you learn how to partition historical data:
 
 ## Prerequisites
 
-- A Microsoft account or an Azure Active Directory user identity. An Azure subscription isn't required.
+- A Microsoft account or a Microsoft Entra user identity. An Azure subscription isn't required.
 - An Azure Data Explorer cluster and database. [Create a cluster and database](create-cluster-and-database.md).
 - [A storage account](/azure/storage/common/storage-quickstart-create-account?tabs=azure-portal).
 - For the recommended method of using the `creationTime` ingestion property during ingestion, [install LightIngest](lightingest.md).

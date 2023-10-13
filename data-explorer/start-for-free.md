@@ -8,7 +8,7 @@ ms.date: 07/02/2023
 
 # What is a free Azure Data Explorer cluster?
 
-Free cluster allows anyone with a Microsoft account or an Azure Active Directory user identity to create a [free Azure Data Explorer cluster](start-for-free-web-ui.md) without needing an Azure subscription or a credit card.
+Free cluster allows anyone with a Microsoft account or a Microsoft Entra user identity to create a [free Azure Data Explorer cluster](start-for-free-web-ui.md) without needing an Azure subscription or a credit card.
 
 It's a frictionless way to create a free cluster that can be used for any purpose. It's the ideal solution for anyone who wants to get started quickly with Azure Data Explorer and experience the incredible engine performance and enjoy the productive Kusto Query Language.
 

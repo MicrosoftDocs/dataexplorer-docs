@@ -15,7 +15,7 @@ The `externaldata` operator returns a table whose schema is defined in the query
 > The `externaldata` operator supports a specific set of storage services, as listed under [Storage connection strings](../api/connection-strings/storage-connection-strings.md).
 
 > [!NOTE]
-> The `externaldata` operator supports Shared Access Signature (SAS) key, Access key, and Azure AD Token authentication methods. For more information, see [Storage authentication methods](../api/connection-strings/storage-authentication-methods.md).
+> The `externaldata` operator supports Shared Access Signature (SAS) key, Access key, and Microsoft Entra Token authentication methods. For more information, see [Storage authentication methods](../api/connection-strings/storage-authentication-methods.md).
 
 ::: zone pivot="azuredataexplorer, fabric"
 

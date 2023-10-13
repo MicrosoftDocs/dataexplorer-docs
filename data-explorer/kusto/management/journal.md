@@ -24,7 +24,7 @@ The metadata operations can result from a management command that a user execute
 |OriginalEntityState|UpdatedEntityState                                              |ChangeCommand                                                                                                          |Principal            |
 |-------------------|----------------------------------------------------------------|-----------------------------------------------------------------------------------------------------------------------|---------------------|
 |.               |Name: MyTable1, Attributes: Name='[MyTable1].[col1]', Type='I32'|.create table MyTable1 (col1:int)                                                                                      |imike@fabrikam.com
-|.              |The database properties (too long to be displayed here)         |.create database TestDB persist (@"https://imfbkm.blob.core.windows.net/md", @"https://imfbkm.blob.core.windows.net/data")|Azure AD app id=76263cdb-abcd-545644e9c404
+|.              |The database properties (too long to be displayed here)         |.create database TestDB persist (@"https://imfbkm.blob.core.windows.net/md", @"https://imfbkm.blob.core.windows.net/data")|Microsoft Entra app id=76263cdb-abcd-545644e9c404
 |Name: MyTable1, Attributes: Name='[MyTable1].[col1]', Type='I32'|Name: MyTable2, Attributes: Name='[MyTable1].[col1]', Type='I32'|.rename table MyTable1 to MyTable2|rdmik@fabrikam.com
 
 |Item                 |Description                                                              |                                

@@ -21,7 +21,7 @@ The examples in this tutorial use the publicly available [**help** cluster](http
 
 ## Prerequisites
 
-* A Microsoft account or Azure Active Directory user identity to sign in to the [help cluster](https://dataexplorer.azure.com/clusters/help)
+* A Microsoft account or Microsoft Entra user identity to sign in to the [help cluster](https://dataexplorer.azure.com/clusters/help)
 
 ## Use the join operator
 
