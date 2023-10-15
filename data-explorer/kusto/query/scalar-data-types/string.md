@@ -1,9 +1,9 @@
 ---
 title:  The string data type
-description: This article describes The string data type in Azure Data Explorer.
+description: Learn about the string data type in Azure Data Explorer.
 ms.reviewer: orspodek
 ms.topic: reference
-ms.date: 07/25/2023
+ms.date: 10/15/2023
 ---
 # The string data type
 
@@ -20,29 +20,21 @@ For information on string query operators, see [String operators](../datatypes-s
 
 ## String literals
 
-There are several ways to encode literals of the `string` data type in a query text:
+You can use double quotes or single quotes to encode `string` literals in query text. With double quotes, you must escape nested double quote characters with a backslash (`\`). With single quotes, you must escape nested single quote characters, and you don't need to escape double quotes.
 
-* Enclose the string in double-quotes (`"`): `"This is a string literal. Single quote characters (') don't require escaping. Double quote characters (") are escaped by a backslash (\)."`
-* Enclose the string in single-quotes (`'`): `'Another string literal. Single quote characters (') require escaping by a backslash (\). Double quote characters (") do not require escaping.'`
-
-In the two representations above, the backslash (`\`) character indicates escaping.
-The backslash is used to escape the enclosing quote characters, tab characters (`\t`),
-newline characters (`\n`), and itself (`\\`).
+Use the backslash character to escape the enclosing quote characters, tab characters (`\t`), newline characters (`\n`), and the backslash itself (`\\`).
 
 > [!NOTE]
-> The newline character (`\n`) and the return character (`\r`) can't be included
-> as part of the string literal without being quoted. See also [multi-line string literals](#multi-line-string-literals).
+> The newline character (`\n`) and the return character (`\r`) must be enclosed in quotes unless using [multi-line string literals](#multi-line-string-literals).
 
 ## Verbatim string literals
 
 Verbatim string literals are also supported. In this form, the backslash character (`\`) stands for itself, and not as an escape character. Prepending the `@` special character to string literals serves as a verbatim identifier.
 
-* Enclose in double-quotes (`"`): `@"This is a verbatim string literal that ends with a backslash\. Double quote characters (") are escaped by a double quote (")."`
-* Enclose in single-quotes (`'`): `@'This is a verbatim string literal that ends with a backslash\. Single quote characters (') are escaped by a single quote (').'`
+Instead of using a backslash as an escape character, double quotes are escaped with double quotes and single quotes are escaped with single quotes.
 
 > [!NOTE]
-> The newline character (`\n`) and the return character (`\r`) can't be included
-> as part of the string literal without being quoted. See also [multi-line string literals](#multi-line-string-literals).
+> The newline character (`\n`) and the return character (`\r`) must be enclosed in quotes unless using [multi-line string literals](#multi-line-string-literals).
 
 ## Concatenation of separated string literals
 
@@ -81,7 +73,7 @@ characters don't require escaping.
 // Simple string notation
 print s1 = 'some string', s2 = "some other string"
 
-// Strings that include single or double-quotes can be defined as follows
+// Strings that include single or double quotes can be defined as follows
 print s1 = 'string with " (double quotes)',
           s2 = "string with ' (single quotes)"
 
@@ -100,7 +92,7 @@ print program=```
   }```
 ```
 
-As can be seen, when a string is enclosed in double-quotes (`"`), the single-quote (`'`) character doesn't require escaping, and also the other way around. This method makes it easier to quote strings according to context.
+As can be seen, when a string is enclosed in double quotes (`"`), the single-quote (`'`) character doesn't require escaping, and also the other way around. This method makes it easier to quote strings according to context.
 
 ## Obfuscated string literals
 
