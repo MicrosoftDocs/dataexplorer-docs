@@ -3,7 +3,7 @@ title: Overview of data connectors and their capabilities
 description: Learn about the available data connectors and their capabilities.
 ms.reviewer: aksdi
 ms.topic: conceptual
-ms.date: 05/10/2023
+ms.date: 10/03/2023
 zone_pivot_group_filename: data-explorer/zone-pivot-groups.json
 zone_pivot_groups: kql-flavors-adx-fabric
 # CustomerIntent: As a data ingestor, I want to know what data connectors are available, so that I can choose the right one for my use case.
@@ -32,6 +32,7 @@ The following table summarizes the available connectors and their capabilities:
 | [Azure Functions](#azure-functions) | **Export** <br /><br />**Ingestion** | &#x2717; |  | First party | Workflow integrations |
 | [Azure IoT Hubs](#azure-iot-hubs) | **Ingestion** | &check; |  | First party | IoT data |
 | [Azure Stream Analytics](#azure-stream-analytics) | **Ingestion** | &check; |  | First party | Event processing |
+| [Fluent Bit](#fluent-bit) | **Ingestion** | &#x2717; |  | [Open source](https://github.com/fluent/fluent-bit) | Logs, Metrics, Traces |
 | [Logstash](#logstash) | **Ingestion** | &#x2717; |  | [Open source](https://github.com/Azure/logstash-output-kusto/) | Logs |
 | [NLog](#nlog) | **Ingestion** | &check; | &check; | First party, [Open source](https://github.com/Azure/azure-kusto-nlog-sink) | Telemetry, Logs, Metrics |
 | [Open Telemetry](#open-telemetry) | **Ingestion** | &check; |  | [Open source](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/exporter/azuredataexplorerexporter) | Traces, Metrics, Logs |
@@ -191,6 +192,17 @@ Event Grid ingestion is a pipeline that listens to Azure storage, and updates yo
 * **Documentation:** [Ingest data from Azure Stream Analytics](stream-analytics-connector.md)
 
 ::: zone pivot="azuredataexplorer"
+
+## Fluent Bit
+
+[Fluent Bit](https://fluentbit.io/) is an open-source agent that collects logs, metrics, and traces from various sources. It allows you to filter, modify, and aggregate event data before sending it to storage.
+
+* **Functionality:** Ingestion
+
+* **Ingestion type supported:** Batching, Streaming
+* **Use cases:** Logs, Metrics, Traces
+* **Repository:** [fluent-bit](https://github.com/fluent/fluent-bit)
+* **Documentation:** [Ingest data with Fluent Bit into Azure Data Explorer](fluent-bit.md)
 
 ## Logstash
 
