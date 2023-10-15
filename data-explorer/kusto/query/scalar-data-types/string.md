@@ -123,6 +123,12 @@ print s1 = 'string with " (double quotes)',
 print myPath1 = @'C:\Folder\filename.txt'
 ```
 
+### Unicode notation within strings
+
+```
+print nonbreaking_space = "Hello\u00A0World"
+```
+
 ### Escape with backslashes
 
 print s = '\\n.*(>|\'|=|\")[a-zA-Z0-9/+]{86}=='
@@ -138,8 +144,6 @@ print program=```
   }```
 
 ```
-
-As can be seen, when a string is enclosed in double quotes (`"`), the single-quote (`'`) character doesn't require escaping, and also the other way around. This method makes it easier to quote strings according to context.
 
 ## See also
 
