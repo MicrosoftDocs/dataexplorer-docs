@@ -90,25 +90,12 @@ Azure Active Directory (Azure AD) application authentication is used for applica
 
 ## Configure Fluent Bit to send logs to your table
 
-To configure Fluent Bit to send logs to your Azure Data Explorer table, create a Fluent Bit [configuration file](https://docs.fluentbit.io/manual/administration/configuring-fluent-bit/classic-mode/configuration-file) with the following content:
-
-```txt
-[OUTPUT]
-    Match *
-    Name azure_kusto
-    Tenant_Id <Directory (tenant) ID>
-    Client_Id <Application (client) ID>
-    Client_Secret <Client secret key value>
-    Ingestion_Endpoint https://ingest-<cluster>.<region>.kusto.windows.net
-    Database_Name <MyDatabase>
-    Table_Name <MyTable>
-    Ingestion_Mapping_Reference <MyMapping>
-```
-
-Replace variables with the relevant values:
+To configure Fluent Bit to send logs to your Azure Data Explorer table, create a [classic mode](https://docs.fluentbit.io/manual/administration/configuring-fluent-bit/classic-mode/configuration-file) or [YAML mode](https://docs.fluentbit.io/manual/administration/configuring-fluent-bit/yaml/configuration-file) configuration file with the following output properties:
 
 |Field|Description|
 |--|--|
+|Match|`*`|
+|Name|`azure_kusto`|
 |Tenant_Id|**Directory (tenant) ID** from the [Register an Azure AD app with permissions to ingest data](#register-an-azure-ad-app-with-permissions-to-ingest-data) step.|
 |Client_Id|**Application (client) ID** from the [Register an Azure AD app with permissions to ingest data](#register-an-azure-ad-app-with-permissions-to-ingest-data) step.|
 |Client_Secret|The client secret key value from the [Register an Azure AD app with permissions to ingest data](#register-an-azure-ad-app-with-permissions-to-ingest-data) step.|
