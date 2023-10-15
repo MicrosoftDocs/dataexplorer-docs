@@ -76,7 +76,7 @@ To create a table for incoming structured logs from Fluent Bit:
 
 Azure Active Directory (Azure AD) application authentication is used for applications that need to access Azure Data Explorer without a user present. To ingest data using Fluent Bit, you need to create and register an Azure AD service principal, and then authorize this principal to ingest data into your Azure Data Explorer table.
 
-1. Follow steps 1-7 in [Create an Azure AD application registration](provision-azure-ad-app.md#create-azure-ad-application-registration).
+1. [Create an Azure AD application registration](provision-azure-ad-app.md#create-azure-ad-application-registration).
 
 1. Save the **Application (client) ID**, **Directory (tenant) ID**, and client secret key **value** for use in the following steps.
 
@@ -96,13 +96,13 @@ To configure Fluent Bit to send logs to your Azure Data Explorer table, create a
 |--|--|
 |Name|`azure_kusto`|
 |Match|A pattern to match against the tags of incoming records. It's case-sensitive and supports the star (`*`) character as a wildcard.|
-|Tenant_Id|**Directory (tenant) ID** from the [Register an Azure AD app with permissions to ingest data](#register-an-azure-ad-app-with-permissions-to-ingest-data) step.|
-|Client_Id|**Application (client) ID** from the [Register an Azure AD app with permissions to ingest data](#register-an-azure-ad-app-with-permissions-to-ingest-data) step.|
-|Client_Secret|The client secret key value from the [Register an Azure AD app with permissions to ingest data](#register-an-azure-ad-app-with-permissions-to-ingest-data) step.|
+|Tenant_Id|**Directory (tenant) ID** from [Register an Azure AD app with permissions to ingest data](#register-an-azure-ad-app-with-permissions-to-ingest-data).|
+|Client_Id|**Application (client) ID** from [Register an Azure AD app with permissions to ingest data](#register-an-azure-ad-app-with-permissions-to-ingest-data).|
+|Client_Secret|The client secret key value [Register an Azure AD app with permissions to ingest data](#register-an-azure-ad-app-with-permissions-to-ingest-data).|
 |Ingestion_Endpoint|Use the **Data Ingestion URI** found in the [Azure portal](https://ms.portal.azure.com/) under your cluster overview.|
 |Database_Name|The name of the database that contains your logs table.|
-|Table_Name|The name of the table from the [Create an Azure Data Explorer table](#create-an-azure-data-explorer-table-to-store-your-logs) step.|
-|Ingestion_Mapping_Reference| The name of the ingestion mapping from the [Create an Azure Data Explorer table](#create-an-azure-data-explorer-table-to-store-your-logs) step. If you didn't create an ingestion mapping, remove the property from the configuration file.|
+|Table_Name|The name of the table from [Create an Azure Data Explorer table](#create-an-azure-data-explorer-table-to-store-your-logs).|
+|Ingestion_Mapping_Reference| The name of the ingestion mapping from [Create an Azure Data Explorer table](#create-an-azure-data-explorer-table-to-store-your-logs). If you didn't create an ingestion mapping, remove the property from the configuration file.|
 
 ## Verify that data is ingested into Azure Data Explorer
 
