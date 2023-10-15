@@ -1,13 +1,13 @@
 ---
 title: .show table data statistics command
-description: Learn how to use the `.show table data statistics` command to show the table's data statistics estimation by table column and storage engine version.
+description: Learn how to use the `.show table data statistics` command to show the table's data statistics estimation by table column.
 ms.reviewer: alexans
 ms.topic: reference
 ms.date: 05/24/2023
 ---
 # .show table data statistics command
 
-Displays the table data statistics estimation by table column and storage engine version.
+Displays the table data statistics estimation by table column.
 
 > [!NOTE]
 > This command only returns statistics for data stored in columnar stores. Row store data statistics are not returned.
@@ -56,7 +56,7 @@ The command returns a result table that contains the following information.
 | `CompressionRatio` | real | Ratio of original data size to extent data size. |
 | `DataCompressedSize` | long | Extents data size in bytes, excluding indexes. |
 | `SharedIndexSize` | long | Text index size in bytes. The text index is shared by all table columns. |
-| `IndexSize` | long | Size of numeric indexes in bytes. For Engine V2, the value includes text index size as well. |
+| `IndexSize` | long | Size of numeric indexes in bytes. |
 | `IndexSizePercent` | real | Ratio of the index size to original data size in bytes. |
 | `StorageEngineVersion` | string | Engine version. If data exists for multiple engine versions, the output includes an entry for each version. |
 | `PresentRowCount`| long | Total rows count, excluding [deleted](../concepts/data-soft-delete.md) rows. |
