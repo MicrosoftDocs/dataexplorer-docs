@@ -60,6 +60,8 @@ items:
           - name: .show database schema command
             displayName: .show databases schema
             href: show-schema-database.md
+          - name: .show database schema violations
+            href: show-database-schema-violations.md
           - name: .show databases entities command
             displayName: .show databases entities
             href: show-databases-entities.md

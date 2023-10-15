@@ -125,7 +125,7 @@ items:
                 href: ingest-data-managed-identity.md
           - name: Configure customer-managed keys
             href: customer-managed-keys.md
-          - name: Create Azure AD app
+          - name: Create Microsoft Entra app
             href: provision-azure-ad-app.md
           - name: Conditional Access
             href: security-conditional-access.md
@@ -371,6 +371,8 @@ items:
             href: dashboard-parameters.md
           - name: Customize dashboard visuals
             href: dashboard-customize-visuals.md
+          - name: Create a dashboard base query
+            href: base-query.md
           - name: Dashboard-specific visuals
             displayName: heat map, heatmap, funnel chart
             href: dashboard-visuals.md

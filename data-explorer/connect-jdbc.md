@@ -43,7 +43,7 @@ The following steps describe how to use JDBC to connect to Azure Data Explorer.
 
 ## JDBC user authentication
 
-Following is an example of how to programmatically authenticate using Azure AD with JDBC for a user principal.
+Following is an example of how to programmatically authenticate using Microsoft Entra ID with JDBC for a user principal.
 
 ```java
 import java.sql.Connection;
@@ -77,7 +77,7 @@ public class Sample {
 
 ## JDBC application authentication
 
-Following is an example of how to programmatically authenticate using Azure AD with JDBC for an application principal.
+Following is an example of how to programmatically authenticate using Microsoft Entra ID with JDBC for an application principal.
 
 ```java
 import java.sql.*;

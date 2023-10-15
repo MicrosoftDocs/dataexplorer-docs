@@ -23,7 +23,7 @@ If you don't have an Azure subscription, create a [free Azure account](https://a
 
 ## Prerequisites
 
-* A Microsoft account or an Azure Active Directory user identity. An Azure subscription isn't required.
+* A Microsoft account or a Microsoft Entra user identity. An Azure subscription isn't required.
 * An Azure Data Explorer cluster and database. [Create a cluster and database](create-cluster-and-database.md).
 * [Node.js](https://nodejs.org/en/download/) installed on your development computer
 
@@ -51,7 +51,7 @@ const {
 } =  require("azure-kusto-ingest");
 
 ```
-To authenticate an application, Azure Data Explorer uses your Azure Active Directory tenant ID. To find your tenant ID, follow [Find your Microsoft 365 tenant ID](/onedrive/find-your-office-365-tenant-id).
+To authenticate an application, Azure Data Explorer uses your Microsoft Entra tenant ID. To find your tenant ID, follow [Find your Microsoft 365 tenant ID](/onedrive/find-your-office-365-tenant-id).
 
 Set the values for `authorityId`, `kustoUri`, `kustoIngestUri` and `kustoDatabase` before running this code.
 
@@ -64,7 +64,7 @@ const kustoIngestUri = `https://ingest-${cluster}.${region}.kusto.windows.net`;
 const kustoDatabase  = "Weather";
 ```
 
-Now construct the connection string. This example uses device authentication to access the cluster. Check the console output to complete the authentication. You can also use an Azure Active Directory application certificate, application key, and user and password.
+Now construct the connection string. This example uses device authentication to access the cluster. Check the console output to complete the authentication. You can also use a Microsoft Entra application certificate, application key, and user and password.
 
 You create the destination table and mapping in a later step.
 

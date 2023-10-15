@@ -68,11 +68,11 @@ All authentication exceptions have a **Failure code** of `0`, no **Failure subco
 
 | Exception name | Reason |
 |--|--|--|--|--|
-| `KustoClientApplicationAuthenticationException` | Client-side Azure Active Directory Application authentication failure. </br> **Permanence**: True |
+| `KustoClientApplicationAuthenticationException` | Client-side Microsoft Entra Application authentication failure. </br> **Permanence**: True |
 | `KustoClientApplicationCertificateNotFoundException` | A certificate required for application authentication isn't found. </br> **Permanence**: True |
 | `KustoClientLocalSecretAuthenticationAccessDisabledException` | When an attempt to request authentication based on a local secret via the connection string fails and `KustoConnectionStringBuilder.PreventAccessToLocalSecretsViaKeywords` is true. </br> **Failure code**: 400 </br> **Failure subcode**: LocalSecretAuthenticationAccessDisabled</br> **Permanence**: True |
-| `KustoClientUserAuthenticationException` | Client-side Azure Active Directory User authentication failure. </br> **Permanence**: True |
-| `KustoClientUserInteractiveModeNotValidException` | Client-side failure to authenticate to Azure Active Directory. </br> **Permanence**: True |
+| `KustoClientUserAuthenticationException` | Client-side Microsoft Entra user authentication failure. </br> **Permanence**: True |
+| `KustoClientUserInteractiveModeNotValidException` | Client-side failure to authenticate to Microsoft Entra ID. </br> **Permanence**: True |
 
 ## Request Exceptions
 

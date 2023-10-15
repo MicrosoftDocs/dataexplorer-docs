@@ -338,7 +338,7 @@ See the current configuration according to which `MyDatabase` is being followed 
 
 #### Override authorized principals
 
-Replace the collection of authorized principals for `MyDatabase` on `MyFollowerCluster` with a collection that includes only one AAD user as the database admin, and one AAD user as a database viewer:
+Replace the collection of authorized principals for `MyDatabase` on `MyFollowerCluster` with a collection that includes only one Microsoft Entra user as the database admin, and one Microsoft Entra user as a database viewer:
 
 ```kusto
 .add follower database MyDatabase admins ('aaduser=jack@contoso.com')
@@ -356,8 +356,8 @@ Only those two specific principals are authorized to access `MyDatabase` on `MyF
 
 | Role                       | PrincipalType | PrincipalDisplayName                        | PrincipalObjectId                    | PrincipalFQN                                                                      | Notes |
 |----------------------------|---------------|---------------------------------------------|--------------------------------------|-----------------------------------------------------------------------------------|-------|
-| Database MyDatabase Admin  | AAD User      | Jack Kusto    (upn: jack@contoso.com)       | 12345678-abcd-efef-1234-350bf486087b | aaduser=87654321-abcd-efef-1234-350bf486087b;55555555-4444-3333-2222-2d7cd011db47 |       |
-| Database MyDatabase Viewer | AAD User      | Jill Kusto    (upn: jack@contoso.com)       | abcdefab-abcd-efef-1234-350bf486087b | aaduser=54321789-abcd-efef-1234-350bf486087b;55555555-4444-3333-2222-2d7cd011db47 |       |
+| Database MyDatabase Admin  | Microsoft Entra user      | Jack Kusto    (upn: jack@contoso.com)       | 12345678-abcd-efef-1234-350bf486087b | aaduser=87654321-abcd-efef-1234-350bf486087b;55555555-4444-3333-2222-2d7cd011db47 |       |
+| Database MyDatabase Viewer | Microsoft Entra user      | Jill Kusto    (upn: jack@contoso.com)       | abcdefab-abcd-efef-1234-350bf486087b | aaduser=54321789-abcd-efef-1234-350bf486087b;55555555-4444-3333-2222-2d7cd011db47 |       |
 
 ```kusto
 .show follower database MyDatabase

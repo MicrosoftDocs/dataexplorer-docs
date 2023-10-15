@@ -18,7 +18,7 @@ In this article, you'll learn how to use kqlmagic in a Jupyter Notebook to conne
 
 ## Prerequisites
 
-* A Microsoft account or an Azure Active Directory user identity. An Azure subscription isn't required.
+* A Microsoft account or a Microsoft Entra user identity. An Azure subscription isn't required.
 * Jupyter Notebook installed on your local machine. Otherwise, use [Azure Data Studio](/sql/azure-data-studio/notebooks/notebooks-kqlmagic).
 * Python 3.6. To change the Jupyter Notebook kernel version to Python 3.6, select **Kernel** > **Change Kernel** > **Python 3.6**.
 
@@ -44,7 +44,7 @@ Select the tab for your preferred method to connect to your cluster.
 
 ### [Code](#tab/code)
 
-The Azure Active Directory (Azure AD) code method prompts MSAL interactive sign-in. You'll receive a code to enter for authentication.
+The Microsoft Entra code method prompts MSAL interactive sign-in. You'll receive a code to enter for authentication.
 
 ```python
 %kql AzureDataExplorer://code;cluster='<cluster-name>';database='<database-name>'
@@ -52,7 +52,7 @@ The Azure Active Directory (Azure AD) code method prompts MSAL interactive sign-
 
 ### [Application key](#tab/application)
 
-The Azure AD application method allows for a non-interactive sign-in using an Azure AD application ID and key.
+The Microsoft Entra application method allows for a non-interactive sign-in using a Microsoft Entra application ID and key.
 
 ```python
 %kql AzureDataExplorer://tenant='<tenant-id>';clientid='<aad-appid>';clientsecret='<aad-appkey>';cluster='<cluster-name>';database='<database-name>'
@@ -60,7 +60,7 @@ The Azure AD application method allows for a non-interactive sign-in using an Az
 
 ### [Username and password](#tab/userpass)
 
-The Azure AD username and password method only works on corporate network. If a username is provided without a password, the user is prompted to provide the password.
+The Microsoft Entra username and password method only works on corporate network. If a username is provided without a password, the user is prompted to provide the password.
 
 ```python
 %kql AzureDataExplorer://username='<username>';password='<password>';cluster='<cluster-name>';database='<database-name>'
@@ -68,7 +68,7 @@ The Azure AD username and password method only works on corporate network. If a 
 
 ### [Certificate](#tab/certificate)
 
-The Azure AD certificate should be stored in a file accessible from the notebook. This file can be referenced in the connection string.
+The Microsoft Entra certificate should be stored in a file accessible from the notebook. This file can be referenced in the connection string.
 
 ```python
 %kql AzureDataExplorer://tenant='<tenant-id>';certificate='<certificate>';certificate_thumbprint='<thumbprint>';cluster='<cluster-name>';database='<database-name>'
@@ -91,7 +91,7 @@ Anonymous authentication is equivalent to no authentication, which is only suppo
 
 ### Example of cluster connection
 
-The following command uses the Azure AD code method to authenticate to the `Samples` database hosted on the `help` cluster. For non-Microsoft Azure AD users, replace the tenant name `Microsoft.com` with your Azure AD Tenant.
+The following command uses the Microsoft Entra code method to authenticate to the `Samples` database hosted on the `help` cluster. For non-Microsoft Entra users, replace the tenant name `Microsoft.com` with your Microsoft Entra tenant.
 
 ```python
 %kql AzureDataExplorer://tenant="Microsoft.com";code;cluster='help';database='Samples'
