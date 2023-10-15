@@ -57,42 +57,14 @@ print strlen("Hello"
 
 ## Multi-line string literals
 
-Multi-line string literals are string literals for which the newline (`\n`) and return (`\r`)
-characters don't require escaping.
+Indicate a multi-line string literals by a "triple-backtick chord" (`\``) at the beginning and end of the literal.
 
-* Multi-line string literals always appear between two occurrences of the "triple-backtick chord" (`\``).
+Multi-line string literals support newline (`\n`) and return (`\r`) characters, which means they don't require escaping.
 
 > [!NOTE]
 > * Multi-line string literals do not support escaped characters. Similar to 
-> [verbatim string literals](#verbatim-string-literals), multi-line string literals allow newline and return characters.
-> * Multi-line string literals don't support obfuscation.
-
-## Examples
-
-```kusto
-// Simple string notation
-print s1 = 'some string', s2 = "some other string"
-
-// Strings that include single or double quotes can be defined as follows
-print s1 = 'string with " (double quotes)',
-          s2 = "string with ' (single quotes)"
-
-// Strings with '\' can be prefixed with '@' (as in c#)
-print myPath1 = @'C:\Folder\filename.txt'
-
-// Escaping using '\' notation
-print s = '\\n.*(>|\'|=|\")[a-zA-Z0-9/+]{86}=='
-
-// Encode a C# program in a Kusto multi-line string
-print program=```
-  public class Program {
-    public static void Main() {
-      System.Console.WriteLine("Hello!");
-    }
-  }```
-```
-
-As can be seen, when a string is enclosed in double quotes (`"`), the single-quote (`'`) character doesn't require escaping, and also the other way around. This method makes it easier to quote strings according to context.
+> [verbatim string literals](#verbatim-string-literals).
+> * Multi-line string literals don't support [obfuscation](#obfuscated-string-literals).
 
 ## Obfuscated string literals
 
@@ -129,6 +101,45 @@ For example:
 print x="https://contoso.blob.core.windows.net/container/blob.txt?"
   h'sv=2012-02-12&se=2013-04-13T0...'
 ```
+
+## Examples
+
+### Simple string notation
+
+```kusto
+print s1 = 'some string', s2 = "some other string"
+```
+
+### Strings that include quotes
+
+```
+print s1 = 'string with " (double quotes)',
+          s2 = "string with ' (single quotes)"
+```
+
+### Verbatim strings
+
+```
+print myPath1 = @'C:\Folder\filename.txt'
+```
+
+### Escape with backslashes
+
+print s = '\\n.*(>|\'|=|\")[a-zA-Z0-9/+]{86}=='
+
+### Multi-line string
+
+```
+print program=```
+  public class Program {
+    public static void Main() {
+      System.Console.WriteLine("Hello!");
+    }
+  }```
+
+```
+
+As can be seen, when a string is enclosed in double quotes (`"`), the single-quote (`'`) character doesn't require escaping, and also the other way around. This method makes it easier to quote strings according to context.
 
 ## See also
 
