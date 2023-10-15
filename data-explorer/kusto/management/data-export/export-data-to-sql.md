@@ -36,13 +36,13 @@ You must have at least [Table Admin](../access-control/role-based-access-control
 |`createifnotexists`|`true` or `false`|If `true`, the target SQL table is created if it doesn't already exist; the `primarykey` property must be provided in this case to indicate the result column that is the primary key. The default is `false`.|
 |`primarykey`       |                 |If `createifnotexists` is `true`, this property indicates the name of the column in the result that will be used as the SQL table's primary key if it's created by this command.|
 |`persistDetails`   |`bool`           |Indicates that the command should persist its results (see `async` flag). Defaults to `true` in async runs, but can be turned off if the caller doesn't require the results). Defaults to `false` in synchronous executions, but can be turned on. |
-|`token`            |`string`         |The Azure AD access token that Kusto will forward to the SQL endpoint for authentication. When set, the SQL connection string shouldn't include authentication information like `Authentication`, `User ID`, or `Password`.|
+|`token`            |`string`         |The Microsoft Entra access token that Kusto will forward to the SQL endpoint for authentication. When set, the SQL connection string shouldn't include authentication information like `Authentication`, `User ID`, or `Password`.|
 
 ## Authentication and authorization
 
 The authentication method is based on the connection string provided, and the permissions required to access the SQL database vary depending on the authentication method.
 
-The supported authentication methods for exporting data to SQL are [Azure AD-integrated (impersonation) authentication](../../api/connection-strings/sql-authentication-methods.md#azure-ad-integrated-impersonation) and [username/password authentication](../../api/connection-strings/storage-authentication-methods.md#shared-access-sas-token). For impersonation authentication, be sure that the principal has the following permissions on the database:
+The supported authentication methods for exporting data to SQL are [Microsoft Entra integrated (impersonation) authentication](../../api/connection-strings/sql-authentication-methods.md#azure-ad-integrated-impersonation) and [username/password authentication](../../api/connection-strings/storage-authentication-methods.md#shared-access-sas-token). For impersonation authentication, be sure that the principal has the following permissions on the database:
 
 * Existing table: table UPDATE and INSERT
 * New table: CREATE, UPDATE, and INSERT
@@ -57,7 +57,7 @@ There are some limitations and restrictions when exporting data to an SQL databa
    cloud.)
 
 2. Kusto supports Active Directory Integrated authentication when the calling
-   principal is an Azure Active Directory principal (`aaduser=` or `aadapp=`).
+   principal is a Microsoft Entra principal (`aaduser=` or `aadapp=`).
    Alternatively, Kusto also supports providing the credentials for the SQL
    database as part of the connection string. Other methods of authentication
    aren't supported. The identity being presented to the SQL
@@ -85,10 +85,12 @@ There are some limitations and restrictions when exporting data to an SQL databa
    table due to other limitations on the primary key column. The workaround is to manually create the table in SQL before exporting the data. The reason for this limitation is that primary key columns in SQL can't be of unlimited size, but Kusto table columns
    have no declared size limitations.
 
-## Azure DB Azure AD Integrated Authentication Documentation
+<a name='azure-db-azure-ad-integrated-authentication-documentation'></a>
 
-* [Use Azure Active Directory Authentication for authentication with SQL Database](/azure/sql-database/sql-database-aad-authentication)
-<!-- * [Azure AD authentication extensions for Azure SQL DB and SQL DW tools](https://azure.microsoft.com/blog/azure-ad-authentication-extensions-for-azure-sql-db-and-sql-dw-tools/) -->
+## Azure DB Microsoft Entra integrated authentication Documentation
+
+* [Use Microsoft Entra authentication for authentication with SQL Database](/azure/sql-database/sql-database-aad-authentication)
+<!-- * [Microsoft Entra authentication extensions for Azure SQL DB and SQL DW tools](https://azure.microsoft.com/blog/azure-ad-authentication-extensions-for-azure-sql-db-and-sql-dw-tools/) -->
 
 ## Examples
 

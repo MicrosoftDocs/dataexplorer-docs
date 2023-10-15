@@ -78,7 +78,7 @@ custom headers:
 
 ## Example
 
-The following example is for a hypothetical HTTPS web service that accepts additional request headers and must be authenticated to using Azure AD:
+The following example is for a hypothetical HTTPS web service that accepts additional request headers and must be authenticated to using Microsoft Entra ID:
 
 <!-- csl -->
 ```kusto

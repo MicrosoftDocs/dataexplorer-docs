@@ -72,7 +72,7 @@ The following example shows a `.alter callout policy` command for `postgresql` *
 
 ## Username and password authentication
 
-The `postgresql_request` plugin only supports username and password authentication to the PostgreSQL server endpoint and doesn't integrate with Azure Active Directory authentication.
+The `postgresql_request` plugin only supports username and password authentication to the PostgreSQL server endpoint and doesn't integrate with Microsoft Entra authentication.
 
 The username and password are provided as part of the connections string using the following parameters:
 

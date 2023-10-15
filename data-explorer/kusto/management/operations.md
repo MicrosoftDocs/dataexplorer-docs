@@ -23,18 +23,21 @@ The `.show operations` command returns a table with all administrative operation
 which were executed in the last two weeks. The command may run in two "modes":
 
 * **Log mode**: In this mode, all entries in the log that the user has access to
-  are returned. Multiple records might be returned for a single operation. Up to one record indicates the terminal state of `Completed` or `Failed`. This mode is used when the command doesn't indicate the operation ID(s).
+  are returned. Multiple records might be returned for a single operation. Up to one record indicates the terminal state of `Completed` or `Failed`.
+  Use this mode to query the history of operations; note that it might take some time for records to appear in the historic log
+  (that is, a record that is returned by the command when running in latest update mode will take some time to appear when running in log mode.)
 
 * **Latest update mode**: In this mode, the latest updated record for each operation ID
-  provided by the user is returned. This mode is used when the command indicates which operation ID(s) to inspect.
+  provided by the user is returned, provided the user has access to that data and the record is less than 6 hours old.
+  Use this mode to find the latest status of one or more operations that have just been run.
 
 **Syntax**
 
-|Syntax option|Description|
+|Syntax option|Mode|Description|
 |---|---|
-|`.show` `operations`              |Returns all operations that the cluster is processing or operations the cluster has processed|
-|`.show` `operations` *OperationId*|Returns operation status for a specific ID|
-|`.show` `operations` `(`*OperationId1*`,` *OperationId2*`,` ...)|Returns operations status for specific IDs|
+|`.show` `operations`              |Log|Returns all operations that the cluster is processing or operations the cluster has processed|
+|`.show` `operations` *OperationId*|Latest update|Returns operation status for a specific ID|
+|`.show` `operations` `(`*OperationId1*`,` *OperationId2*`,` ...)|Latest update|Returns operations status for specific IDs|
 
 **Results**
 

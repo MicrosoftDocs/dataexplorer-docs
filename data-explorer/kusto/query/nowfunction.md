@@ -29,6 +29,24 @@ The current UTC clock time, plus the *offset* time if provided, as a `datetime`.
 
 ## Examples
 
+### Show the current time
+
+> [!div class="nextstepaction"]
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAwsuyS/KdS1LzSsp5qpRSK0oSc1LUXDNSSwoTk2xzcsv19BU0FUILkksKgnJzE0FKilJzE5VMDQAAK5wFN84AAAA" target="_blank">Run the query</a>
+
+```kusto
+print now()
+```
+
+### Show the time 2 days ago
+
+> [!div class="nextstepaction"]
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAwsuyS/KdS1LzSsp5qpRSK0oSc1LUXDNSSwoTk2xzcsv19BU0FUILkksKgnJzE0FKilJzE5VMDQAAK5wFN84AAAA" target="_blank">Run the query</a>
+
+```kusto
+print now(-2d)
+```
+
 ### Find time elapsed from a given event
 
 The following example shows the time elapsed since the start of the storm events.

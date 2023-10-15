@@ -26,7 +26,7 @@ In this section, you establish a connection between the event hub and your Azure
 
 ### Prerequisites
 
-* A Microsoft account or an Azure Active Directory user identity. An Azure subscription isn't required.
+* A Microsoft account or a Microsoft Entra user identity. An Azure subscription isn't required.
 * An Azure Data Explorer cluster and database. [Create a cluster and database](create-cluster-and-database.md).
 * Streaming ingestion must be [configured on your Azure Data Explorer cluster](ingest-data-streaming.md).
 

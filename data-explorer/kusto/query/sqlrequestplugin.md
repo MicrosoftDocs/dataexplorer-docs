@@ -28,7 +28,7 @@ The plugin is invoked with the [`evaluate`](evaluateoperator.md) operator.
 | *ConnectionString* | string | &check; | The connection string that points at the SQL Server network endpoint. See [valid methods of authentication](#authentication-and-authorization) and how to specify the [network endpoint](#specify-the-network-endpoint). |
 | *SqlQuery* | string | &check; | The query that is to be executed against the SQL endpoint. The query must return one or more row sets, but only the first one is made available for the rest of the Kusto query. |
 | *SqlParameters* | dynamic | | A property bag of key-value pairs to pass as parameters along with the query. |
-|*Options* | dynamic | | A property bag of key-value pairs to pass more advanced settings along with the query. Currently, only `token` can be set, to pass a caller-provided Azure AD access token that is forwarded to the SQL endpoint for authentication.|
+|*Options* | dynamic | | A property bag of key-value pairs to pass more advanced settings along with the query. Currently, only `token` can be set, to pass a caller-provided Microsoft Entra access token that is forwarded to the SQL endpoint for authentication.|
 | *OutputSchema* | string | | The names and types for the expected columns of the `sql_request` plugin output. Use the following syntax: `(` *ColumnName* `:` *ColumnType* [`,` ...] `)`.|
 
 > [!NOTE]
@@ -43,20 +43,22 @@ SQL Server endpoint.
 
 |Authentication method|Syntax|How|Description|
 |--|--|--|
-|Azure AD-integrated|`Authentication="Active Directory Integrated"`|Add to the *ConnectionString* parameter.|This is the preferred authentication method. The user or application authenticates via Azure AD to your cluster, and the same token is used to access the SQL Server network endpoint.<br/>The principal must have the appropriate permissions on the SQL resource to perform the requested action. For example, to read from the database the principal needs table SELECT permissions, and to write to an existing table the principal needs UPDATE and INSERT permissions. To write to a new table, CREATE permissions are also required.|
+|Microsoft Entra integrated|`Authentication="Active Directory Integrated"`|Add to the *ConnectionString* parameter.|This is the preferred authentication method. The user or application authenticates via Microsoft Entra ID to your cluster, and the same token is used to access the SQL Server network endpoint.<br/>The principal must have the appropriate permissions on the SQL resource to perform the requested action. For example, to read from the database the principal needs table SELECT permissions, and to write to an existing table the principal needs UPDATE and INSERT permissions. To write to a new table, CREATE permissions are also required.|
 |Username and password|`User ID=...; Password=...;`|Add to the *ConnectionString* parameter.|When possible, avoid this method as it may be less secure.|
-|Azure AD access token|`dynamic({'token': h"eyJ0..."})`|Add in the *Options* parameter.|The access token is passed as `token` property in the *Options* argument of the plugin.|
+|Microsoft Entra access token|`dynamic({'token': h"eyJ0..."})`|Add in the *Options* parameter.|The access token is passed as `token` property in the *Options* argument of the plugin.|
 
 > [!NOTE]
 > Connection strings and queries that include confidential information or information that should be guarded should be obfuscated to be omitted from any Kusto tracing. For more information, see [obfuscated string literals](scalar-data-types/string.md#obfuscated-string-literals).
 
 ## Examples
 
-### Send a SQL query using Azure AD-integrated authentication
+<a name='send-a-sql-query-using-azure-ad-integrated-authentication'></a>
+
+### Send a SQL query using Microsoft Entra integrated authentication
 
 The following example sends a SQL query to an Azure SQL DB database. It
 retrieves all records from `[dbo].[Table]`, and then processes the results on the
- Kusto side. Authentication reuses the calling user's Azure AD token.
+ Kusto side. Authentication reuses the calling user's Microsoft Entra token.
 
 > [!NOTE]
 > This example should not be taken as a recommendation to filter or project data in this manner. SQL queries should be constructed to return the smallest dataset possible.
@@ -88,7 +90,9 @@ evaluate sql_request(
 | project Name
 ```
 
-### Send a SQL query using an Azure AD access token
+<a name='send-a-sql-query-using-an-azure-ad-access-token'></a>
+
+### Send a SQL query using a Microsoft Entra access token
 
 The following example sends a SQL query to an Azure SQL database
 retrieving all records from `[dbo].[Table]`, while appending another `datetime` column,

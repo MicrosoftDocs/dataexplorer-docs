@@ -1,6 +1,6 @@
 ---
 title: Add a cluster connection in the Azure Data Explorer web UI
-description: Learn how to add cluster connections for multiple user accounts or Azure AD directories in the Azure Data Explorer web UI.
+description: Learn how to add cluster connections for multiple user accounts or Microsoft Entra directories in the Azure Data Explorer web UI.
 ms.reviewer: mibar
 ms.topic: reference
 ms.date: 07/31/2023
@@ -10,11 +10,11 @@ ms.date: 07/31/2023
 
 This article explains how to add a cluster connection in the [Azure Data Explorer web UI](https://dataexplorer.azure.com/).
 
-The Azure Data Explorer web UI allows you to seamlessly manage clusters from various user accounts or Azure AD directories. Follow the optional steps in this article to set up connections with alternative credentials. Once connected, you can switch between clusters associated with different credentials within a unified interface, without a need to repeatedly sign in and sign out or switch directories.
+The Azure Data Explorer web UI allows you to seamlessly manage clusters from various user accounts or Microsoft Entra directories. Follow the optional steps in this article to set up connections with alternative credentials. Once connected, you can switch between clusters associated with different credentials within a unified interface, without a need to repeatedly sign in and sign out or switch directories.
 
 ## Prerequisites
 
-* A Microsoft account or an Azure Active Directory user identity. An Azure subscription isn't required.
+* A Microsoft account or a Microsoft Entra user identity. An Azure subscription isn't required.
 
 ## Add a cluster connection
 
@@ -32,7 +32,7 @@ To add a connection to your Azure Data Explorer cluster:
 
 1. (Optional) If you have multiple user accounts and want to authenticate with a different account, select **Connect as another user** and proceed to add or select the appropriate account.
 
-1. (Optional) If your account is linked to multiple Azure AD directories, select **Switch directory** and choose the relevant directory for this connection.
+1. (Optional) If your account is linked to multiple Microsoft Entra directories, select **Switch directory** and choose the relevant directory for this connection.
 
     :::image type="content" source="media/web-ui-add-cluster/switch-directories.png" alt-text="Screenshot of option to switch directory." lightbox="media/web-ui-add-cluster/switch-directories.png":::
 
