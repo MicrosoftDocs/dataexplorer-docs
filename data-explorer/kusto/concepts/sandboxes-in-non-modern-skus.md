@@ -1,6 +1,6 @@
 ﻿---
 title: Sandboxes in VM sizes not supporting nested virtualization - Azure Data Explorer
-description: This article describes Sandboxes limitations in non-modern skus in Azure Data Explorer.
+description: This article describes Sandboxes limitations in non-modern SKUs in Azure Data Explorer.
 ms.reviewer:
 ms.topic: reference
 ms.date: 11/12/2022
