@@ -11,8 +11,7 @@ This article describes how to interact with your cluster over HTTPS.
 
 ## Supported actions
 
-The list of actions supported by an endpoint differs according to whether the
-endpoint is an engine endpoint (**Cluster URI**) or a data management endpoint (**Data ingestion URI**).
+The available actions for an endpoint depend on whether it's an engine endpoint or a data management endpoint. In the Azure portal cluster overview, the engine endpoint is identified as the **Cluster URI** and the data management endpoint as the **Data ingestion URI**.
 
 |Action         |HTTP verb   |URI template           |Engine|Data Management|Authentication |
 |---------------|------------|-----------------------|------|---------------|---------------|

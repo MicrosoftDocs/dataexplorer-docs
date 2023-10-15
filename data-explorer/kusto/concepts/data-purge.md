@@ -205,7 +205,7 @@ To trigger a purge in a single-step activation scenario, run the following comma
 If needed, you can cancel pending purge requests.
 
 > [!NOTE]
-> This operation is intended for error recovery scenarios. It isn't guaranteed to succeed, and shouldn't be part of a normal operational flow. It can only be applied to in-queue requests (not yet dispatched to the engine node for execution). The command is executed on the Data Management endpoint.
+> This operation is intended for error recovery scenarios. It isn't guaranteed to succeed, and shouldn't be part of a normal operational flow. It can only be applied to requests that are still in the queue and have not yet been dispatched for execution.
 
 **Syntax**
 
