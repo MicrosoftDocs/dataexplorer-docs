@@ -3,7 +3,7 @@ title: Use LightIngest to ingest data into Azure Data Explorer.
 description: Learn about LightIngest, a command-line utility for ad-hoc data ingestion into Azure Data Explorer.
 ms.reviewer: tzgitlin
 ms.topic: how-to
-ms.date: 12/08/2022
+ms.date: 10/05/2023
 ---
 
 # Use LightIngest to ingest data into Azure Data Explorer
@@ -53,10 +53,7 @@ For an example of how to auto-generate a LightIngest command, see [ingest histor
 
 ### Recommendations
 
-* The recommended method is for LightIngest to work with the ingestion endpoint at `https://ingest-{yourClusterNameAndRegion}.kusto.windows.net`. This way, the Azure Data Explorer service can manage the ingestion load, and you can easily recover from transient errors. However, you can also configure LightIngest to work directly with the engine endpoint (`https://{yourClusterNameAndRegion}.kusto.windows.net`).
-
-   > [!NOTE]
-   > If you ingest directly with the engine endpoint, you don't need to include `ingest-`. However, there won't be a DM feature to protect the engine and improve the ingestion success rate.
+* To best manage the ingestion load and recover from transient errors, use the ingestion endpoint at `https://ingest-{yourClusterNameAndRegion}.kusto.windows.net`.
 
 * For optimal ingestion performance, the raw data size is needed so LightIngest can estimate the uncompressed size of local files. However, LightIngest might not be able to correctly estimate the raw size of compressed blobs without first downloading them. Therefore, when ingesting compressed blobs, set the `rawSizeBytes` property on the blob metadata to uncompressed data size in bytes.
 
@@ -100,7 +97,7 @@ When used with Azure blobs, LightIngest will use certain blob metadata propertie
 
 ### How to ingest data using CreationTime
 
-When you load historical data from existing system to Azure Data Explorer, all records receive the same the ingestion date. To enable partitioning your data by creation time and not ingestion time, you can use the `-creationTimePattern` argument. The `-creationTimePattern` argument extracts the `CreationTime` property from the file or blob path. The pattern doesn't need to reflect the entire item path, just the section enclosing the timestamp you want to use.
+When you load historical data from existing system to Azure Data Explorer, all records receive the same ingestion date. To enable partitioning your data by creation time and not ingestion time, you can use the `-creationTimePattern` argument. The `-creationTimePattern` argument extracts the `CreationTime` property from the file or blob path. The pattern doesn't need to reflect the entire item path, just the section enclosing the timestamp you want to use.
 
 The argument values must include:
 * Constant text immediately preceding the timestamp format, enclosed in single quotes (prefix)

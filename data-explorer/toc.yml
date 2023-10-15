@@ -240,6 +240,9 @@ items:
           - name: Azure Stream Analytics
             href: stream-analytics-connector.md
             displayName: ingest data, ingestion, connector
+          - name: Fluent Bit
+            href: fluent-bit.md
+            displayName: ingest data, ingestion, connector
           - name: Logstash
             displayName: ingest data, ingestion, connector
             href: ingest-data-logstash.md
