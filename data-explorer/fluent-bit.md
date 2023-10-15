@@ -95,6 +95,7 @@ To configure Fluent Bit to send logs to your Azure Data Explorer table, create a
 |Field|Description|
 |--|--|
 |Name|`azure_kusto`|
+|Match|A pattern to match against the tags of incoming records. It's case-sensitive and supports the star (`*`) character as a wildcard.|
 |Tenant_Id|**Directory (tenant) ID** from the [Register an Azure AD app with permissions to ingest data](#register-an-azure-ad-app-with-permissions-to-ingest-data) step.|
 |Client_Id|**Application (client) ID** from the [Register an Azure AD app with permissions to ingest data](#register-an-azure-ad-app-with-permissions-to-ingest-data) step.|
 |Client_Secret|The client secret key value from the [Register an Azure AD app with permissions to ingest data](#register-an-azure-ad-app-with-permissions-to-ingest-data) step.|
