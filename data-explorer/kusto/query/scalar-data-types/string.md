@@ -71,6 +71,8 @@ For an example, see [Obfuscated string literal](#obfuscated-string-literal).
 
 ### String literal with quotes
 
+The following example demonstrates how to use quotes within string literals encompassed by single quotes and double quotes. For more information, see [String literals](#string-literals).
+
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAysoyswr4VIAgmJDBVsF9eISoEC6QnlmSYaCUkp+aVJOqkJhaX5JarGSug5EnRFQnRKyOvViIBOuTl0JAJviYe9UAAAA" target="_blank">Run the query</a>
 
@@ -86,7 +88,9 @@ print
 |--|--|
 |string with "double quotes"|string with 'single quotes'|
 
-### String literal with backslash escaping 
+### String literal with backslash escaping
+
+The following example creates a regular expression pattern using backslashes to escape special characters. For more information, see [String literals](#string-literals).
 
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAysoyswrUShILClJLcpTsFVQj4nJ09PSsKuJUa+xrYlR0oxO1K1y1I0y0LXU146ttjCrtbVVBwA/QC+dNQAAAA==" target="_blank">Run the query</a>
@@ -103,8 +107,10 @@ print pattern = '\\n.*(>|\'|=|\")[a-zA-Z0-9/+]{86}=='
 
 ### String literal with Unicode
 
+The following example shows that a backslash is needed in order to include a Unicode character in a string literal.
+
 > [!div class="nextstepaction"]
-> <a href="" target="_blank">Run the query</a>
+> <a href="https://dataexplorer.azure.com/clusters/kvc9rf7q4d68qcw5sk2d6f.northeurope/databases/MyDatabase?query=H4sIAAAAAAAAAysoyswrUSguSExOVbBVUPJIzcnJjyk1MHA0CM8vyklRAgCRNap/IAAAAA==" target="_blank">Run the query</a>
 
 ```kusto
 print space = "Hello\u00A0World"
@@ -117,6 +123,8 @@ print space = "Hello\u00A0World"
 |Hello World|
 
 ### Verbatim string literal
+
+The following example creates a path in which the backslashes are part of the path instead of escape characters. To do this, the string `@` sign is prepended to the string, creating a [verbatim string literal](#verbatim-string-literals).
 
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAysoyswrUcitDEgsyVCwVXBQd7aKccvPSUktiknLzEnNS8xN1SupKFEHAGc6ZBYoAAAA" target="_blank">Run the query</a>
@@ -132,6 +140,8 @@ print myPath = @'C:\Folder\filename.txt'
 |C:\Folder\filename.txt|
 
 ### Multi-line string literal
+
+The following example shows the syntax for a multi-line string literal, which in this case uses newlines and tabs to style a code block. For more information, see [Multi-line string literals](#multi-line-string-literals).
 
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAysoyswrUSgoyk8vSsxVsFVISEjgUlAoKE3KyUxWSM5JLC5WCIBKVgMl4FLFJYklQKosPzNFwTcxM09DEyqvoBBcWVySmqvnnJ9XnJ+TqhdelFmS6pOZl6qh5JGak5OvqKRpDVZZywXCQAsBPUXdJYQAAAA=" target="_blank">Run the query</a>
@@ -152,7 +162,7 @@ print program = ```
 
 ### Concatenated string literals
 
-The following expressions all yield a string of length 13.
+The following expressions all yield a string of length 13. For more information, see [Concatenation of separated string literals](#concatenation-of-separated-string-literals).
 
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/kvc9rf7q4d68qcw5sk2d6f.northeurope/databases/MyDatabase?query=H4sIAAAAAAAAAysoyswrUeBSAIK8/LxUBVuF4pKinNQ8DSWP1JycfCV1HQV1B6Xy/KKcFEUlTR2wwvKMzJLU4oLEZEzlCiD1Crg1OOalOOfn5qYC7cTQClYKAvr6ClBFcCEUZ4BFNa0BnYL1CrsAAAA=" target="_blank">Run the query</a>
@@ -175,7 +185,7 @@ print
 
 ### Obfuscated string literal
 
-In the following query output, the `h` string is completely visible. However, in tracing or telemetry, the `h` string is substituted with asterisks.
+In the following query output, the `h` string is completely visible. However, in tracing or telemetry, the `h` string is substituted with asterisks. For more information, see [Obfuscated string literals](#obfuscated-string-literals).
 
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAx2JSQqAMAwA775CPNhT00VPgvgJP+BSaEESaYL1+S5zm5kzJ5R6PWgdmyhy8mDMRijEBF+FjXKAknCnwoBB/rskDNn8X26Zmqp+iYqv0VvntfXa+ZbDZ522vXbdbAFAPQD1rLluAAAA" target="_blank">Run the query</a>
