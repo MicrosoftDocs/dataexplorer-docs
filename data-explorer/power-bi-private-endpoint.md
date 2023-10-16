@@ -3,7 +3,7 @@ title: Connect a cluster behind a private endpoint to a Power BI service
 description: Learn how to Connect an Azure Data Explorer cluster behind a private endpoint to a Power BI service.
 ms.reviewer: danyhoter
 ms.topic: how-to
-ms.date: 10/03/2023
+ms.date: 10/15/2023
 ---
 
 # Connect a cluster behind a private endpoint to a Power BI service
@@ -16,12 +16,13 @@ A private endpoint is a network interface that uses private IP addresses from yo
 
 * A Microsoft account or a Microsoft Entra ID. An Azure subscription isn't required.
 * An Azure Data Explorer cluster behind a private endpoint. [Create a private endpoint for Azure Data Explorer](security-network-private-endpoint-create.md).
-* [Install an on-premises data gateway](/data-integration/gateway/service-gateway-install).
+* You must have [AllDatabaseViewer](kusto/access-control/role-based-access-control.md) permissions.
+* An on-premises data gateway. For more information, see [Install an on-premises data gateway](/data-integration/gateway/service-gateway-install).
 * A [Power BI report](power-bi-data-connector.md?tabs=connector).
 
 ## Create a gateway connection
 
-After installing an on-premises data gateway, you need to create a gateway connection and add a data source that can be used with that gateway. In this example, you bridge between your on-premises data gateway and a Power BI service by using an Azure Data Explorer cluster as the data source.
+You need to create a gateway connection and add a data source that can be used with that gateway. In this example, you bridge between your on-premises data gateway and a Power BI service by using an Azure Data Explorer cluster as the data source.
 
 1. Launch a Power BI service.
 1. In the upper-right corner of the Power BI service, select the gear icon ![Settings gear icon.](./media/power-bi-private-endpoint/settings.png), and then **Manage connections and gateways**.
@@ -39,7 +40,10 @@ After installing an on-premises data gateway, you need to create a gateway conne
     | Gateway cluster name| The [on-premises gateway you installed](/data-integration/gateway/service-gateway-install). | Select your gateway cluster name from the dropdown.|
     | Connection name| The connection name connecting your on-premises data gateway to the Power BI service. | Provide a meaningful name for your connection. |
     | Connection type| The data source used with the gateway. | Azure Data Explorer (Kusto).|
-    | Cluster| The address of the Azure Data Explorer cluster used as the dataset of the report. | `https://`*clusterName*`.kusto.windows.net` |
+    | Cluster| The Azure Data Explorer cluster URI used as the dataset of the report. | `https://`*clusterName*`.kusto.windows.net` |
+
+    > [!NOTE]
+    > The link between your report's dataset and the data source within the gateway is based on your cluster URI. The names must match. For example, if you refer to the help cluster (`https://help.kusto.windows.net/`) as "help" within Power BI Desktop, you must also use "help" as the connection URI for the data source within the gateway configuration.
 
 1. Under **Authentication**, select **Edit credentials**, and then sign in.
 1. Select **Create**, and then select **Close**. Your new connection appears in the list of connections.
@@ -58,8 +62,6 @@ To use any cloud data sources, such as Azure Data Explorer, you must ensure that
 1. Return to your workspace.
 
 ## Upload report and configure dataset
-
-The link between your dataset and the data source within the gateway is based on your cluster address. The names must match. For example, if you supply an IP address for the server name within Power BI Desktop, you must use the IP address for the data source within the gateway configuration.
 
 1. Select **Upload**, and browse for a Power BI report to upload to your workspace. Your report's dataset is uploaded along with your report.
 1. Place your cursor over your report's dataset, and then select *More options* > **Settings**.
