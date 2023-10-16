@@ -31,7 +31,7 @@ Use the backslash character to escape the enclosing quote characters, tab charac
 
 Verbatim string literals are also supported. In this form, the backslash character (`\`) stands for itself and isn't an escape character. Prepending the `@` character to string literals serves as a verbatim identifier. In verbatim string literals, double quotes are escaped with double quotes and single quotes are escaped with single quotes.
 
-For an example, see [Verbatim string](#verbatim-string).
+For an example, see [Verbatim string](#verbatim-string-literal).
 
 > [!NOTE]
 > The newline character (`\n`) and the return character (`\r`) must be enclosed in quotes unless using [multi-line string literals](#multi-line-string-literals).
@@ -99,7 +99,7 @@ print pattern = '\\n.*(>|\'|=|\")[a-zA-Z0-9/+]{86}=='
 
 |pattern|
 |--|
-|\n.*(>|'|=|")[a-zA-Z0-9/+]{86}==|
+|\n.*(>\|'\|=\|")[a-zA-Z0-9/+]{86}==|
 
 ### String literal with Unicode
 
