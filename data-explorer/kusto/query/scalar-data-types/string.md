@@ -20,7 +20,7 @@ For information on string query operators, see [String operators](../datatypes-s
 
 ## String literals
 
-You can use double quotes or single quotes to encode `string` literals in query text. With double quotes, you must escape nested double quote characters with a backslash (`\`). With single quotes, you must escape nested single quote characters, and you don't need to escape double quotes.
+You can use double quotes or single quotes to encode string literals in query text. With double quotes, you must escape nested double quote characters with a backslash (`\`). With single quotes, you must escape nested single quote characters, and you don't need to escape double quotes.
 
 Use the backslash character to escape the enclosing quote characters, tab characters (`\t`), newline characters (`\n`), and the backslash itself (`\\`).
 
@@ -29,78 +29,35 @@ Use the backslash character to escape the enclosing quote characters, tab charac
 
 ## Verbatim string literals
 
-Verbatim string literals are also supported. In this form, the backslash character (`\`) stands for itself, and not as an escape character. Prepending the `@` special character to string literals serves as a verbatim identifier.
-
-Instead of using a backslash as an escape character, double quotes are escaped with double quotes and single quotes are escaped with single quotes.
+Verbatim string literals are also supported. In this form, the backslash character (`\`) stands for itself and isn't an escape character. Prepending the `@` character to string literals serves as a verbatim identifier. In verbatim string literals, double quotes are escaped with double quotes and single quotes are escaped with single quotes.
 
 > [!NOTE]
 > The newline character (`\n`) and the return character (`\r`) must be enclosed in quotes unless using [multi-line string literals](#multi-line-string-literals).
 
 ## Concatenation of separated string literals
 
-In a KQL query, when two or more adjacent string literals have no separation between them, they're automatically combined to form a new string literal. Similarly, if the string literals are separated only by whitespace or comments, they're also combined to form a new string literal.
-
-For example, the following expressions all yield a string of length 13:
-
-> [!div class="nextstepaction"]
-> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA3XOMQoCMRSE4T6nGNOsgrAHsBFsrGw8QXYzmEDyErIPwt5eFztZyym+n6ktimLRlihHe2dKxQ5nDFfbS0v+YE8XjCMeRUOUFyZqJwUamI2pOxibxg9/srrmlB7Tih6icqluJoqkdT9jsLlbyZmin7Hz6V/UiYfD/KVv7+yEm+AAAAA=" target="_blank">Run the query</a>
-
-```kusto
-print strlen("Hello"', '@"world!"); // Nothing between them
-
-print strlen("Hello" ', ' @"world!"); // Separated by whitespace only
-
-print strlen("Hello"
-  // Comment
-  ', '@"world!"); // Separated by whitespace and a comment
-```
+In a Kusto query, when two or more adjacent string literals have no separation between them, they're automatically combined to form a new string literal. Similarly, if the string literals are separated only by whitespace or comments, they're also combined to form a new string literal.
 
 ## Multi-line string literals
 
 Indicate a multi-line string literals by a "triple-backtick chord" (`\``) at the beginning and end of the literal.
 
-Multi-line string literals support newline (`\n`) and return (`\r`) characters, which means they don't require escaping.
-
 > [!NOTE]
-> * Multi-line string literals do not support escaped characters. Similar to 
-> [verbatim string literals](#verbatim-string-literals).
+> * Multi-line string literals support newline (`\n`) and return (`\r`) characters.
+> * Multi-line string literals do not support escaped characters. Similar to [verbatim string literals](#verbatim-string-literals).
 > * Multi-line string literals don't support [obfuscation](#obfuscated-string-literals).
 
 ## Obfuscated string literals
 
-The system tracks queries and stores them for telemetry and analysis purposes.
-For example, the query text might be made available to the cluster owner. If the
-query text includes secret information, such as passwords, it might leak
-information that should be kept private. To prevent such a leak from happening, the
-query author may mark specific string literals as **obfuscated string literals**.
-Such literals in the query text are automatically replaced by a number of
-star (`*`) characters, so that they aren't available for later analysis.
+Queries are stored for telemetry and analysis. To safeguard sensitive information like passwords and secrets, you can mark a string as an *obfuscated string literal*. These marked strings are replaced with asterisks (`*`) in the query text.
+
+An obfuscated string literal is created by prepending an `h` or an `H` character in front of a standard or verbatim [string literal](#string-literals).
 
 > [!IMPORTANT]
-> Mark all string literals that contain secret information, as obfuscated string literals.
+> Mark all string literals that contain secret information as obfuscated string literals.
 
-An obfuscated string literal can be formed by taking a "regular" string literal,
-and prepending an `h` or an `H` character in front of it. 
-
-For example:
-
-```kusto
-h'hello'
-h@'world'
-h"hello"
-```
-
-> [!NOTE]
-> In many cases, only a part of the string literal is secret. 
-> In those cases, split the literal into a non-secret part and a secret
-> part. Then, only mark the secret part as obfuscated.
-
-For example:
-
-```kusto
-print x="https://contoso.blob.core.windows.net/container/blob.txt?"
-  h'sv=2012-02-12&se=2013-04-13T0...'
-```
+> [!TIP]
+> In some situations, only a portion of the string literal contains secret information. In such cases, divide the literal into a non-secret part and a secret portion. Then, label only the secret part as obfuscated.
 
 ## Examples
 
