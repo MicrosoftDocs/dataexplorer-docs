@@ -43,7 +43,7 @@ You need to create a gateway connection and add a data source that can be used w
     | Cluster| The Azure Data Explorer cluster URI used as the dataset of the report. | `https://`*clusterName*`.kusto.windows.net` |
 
     > [!NOTE]
-    > The link between your report's dataset and the data source within the gateway is based on your cluster URI. The names must match. For example, if you refer to the help cluster (`https://help.kusto.windows.net/`) as "help" within Power BI Desktop, you must also use "help" as the connection URI for the data source within the gateway configuration.
+    > The link between your report's dataset and the data source within the gateway is based on your cluster URI. The names must match. For example, if you refer to the help cluster (`https://help.kusto.windows.net/`) as "help" when connecting to a data source in Power BI Desktop, you must also use "help" as the cluster URI for the data source when configuring the gateway.
 
 1. Under **Authentication**, select **Edit credentials**, and then sign in.
 1. Select **Create**, and then select **Close**. Your new connection appears in the list of connections.
