@@ -31,21 +31,27 @@ Use the backslash character to escape the enclosing quote characters, tab charac
 
 Verbatim string literals are also supported. In this form, the backslash character (`\`) stands for itself and isn't an escape character. Prepending the `@` character to string literals serves as a verbatim identifier. In verbatim string literals, double quotes are escaped with double quotes and single quotes are escaped with single quotes.
 
+For an example, see [Verbatim string](#verbatim-string).
+
 > [!NOTE]
 > The newline character (`\n`) and the return character (`\r`) must be enclosed in quotes unless using [multi-line string literals](#multi-line-string-literals).
-
-## Concatenation of separated string literals
-
-In a Kusto query, when two or more adjacent string literals have no separation between them, they're automatically combined to form a new string literal. Similarly, if the string literals are separated only by whitespace or comments, they're also combined to form a new string literal.
 
 ## Multi-line string literals
 
 Indicate a multi-line string literals by a "triple-backtick chord" (`\``) at the beginning and end of the literal.
 
+For an example, see [Multi-line string literal](#multi-line-string-literal).
+
 > [!NOTE]
 > * Multi-line string literals support newline (`\n`) and return (`\r`) characters.
 > * Multi-line string literals do not support escaped characters. Similar to [verbatim string literals](#verbatim-string-literals).
 > * Multi-line string literals don't support [obfuscation](#obfuscated-string-literals).
+
+## Concatenation of separated string literals
+
+In a Kusto query, when two or more adjacent string literals have no separation between them, they're automatically combined to form a new string literal. Similarly, if the string literals are separated only by whitespace or comments, they're also combined to form a new string literal.
+
+For an example, see [Concatenated string literals](#concatenated-string-literals).
 
 ## Obfuscated string literals
 
@@ -61,46 +67,117 @@ An obfuscated string literal is created by prepending an `h` or an `H` character
 
 ## Examples
 
-### Simple string notation
+### Strings literal with quotes
+
+> [!div class="nextstepaction"]
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAysoyswr4VIAgmJDBVsF9eISoEC6QnlmSYaCUkp+aVJOqkJhaX5JarGSug5EnRFQnRKyOvViIBOuTl0JAJviYe9UAAAA" target="_blank">Run the query</a>
 
 ```kusto
-print s1 = 'some string', s2 = "some other string"
+print
+    s1 = 'string with "double quotes"',
+    s2 = "string with 'single quotes'"
 ```
 
-### Strings that include quotes
+**Output**
 
-```
-print s1 = 'string with " (double quotes)',
-          s2 = "string with ' (single quotes)"
+|s1|s2|
+|--|--|
+|string with "double quotes"|string with 'single quotes'|
+
+### String literal with backslash escaping 
+
+> [!div class="nextstepaction"]
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAysoyswrUShILClJLcpTsFVQj4nJ09PSsKuJUa+xrYlR0oxO1K1y1I0y0LXU146ttjCrtbVVBwA/QC+dNQAAAA==" target="_blank">Run the query</a>
+
+```kusto
+print pattern = '\\n.*(>|\'|=|\")[a-zA-Z0-9/+]{86}=='
 ```
 
-### Verbatim strings
+**Output**
 
+|pattern|
+|--|
+|\n.*(>|'|=|")[a-zA-Z0-9/+]{86}==|
+
+### Verbatim string
+
+> [!div class="nextstepaction"]
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAysoyswrUcitDEgsyVCwVXBQd7aKccvPSUktiknLzEnNS8xN1SupKFEHAGc6ZBYoAAAA" target="_blank">Run the query</a>
+
+```kusto
+print myPath = @'C:\Folder\filename.txt'
 ```
-print myPath1 = @'C:\Folder\filename.txt'
-```
+
+**Output**
+
+|myPath|
+|--|
+|C:\Folder\filename.txt|
+
 
 ### Unicode notation within strings
 
-```
+> [!div class="nextstepaction"]
+> <a href="" target="_blank">Run the query</a>
+
+```kusto
 print nonbreaking_space = "Hello\u00A0World"
 ```
 
-### Escape with backslashes
+### Multi-line string literal
 
-print s = '\\n.*(>|\'|=|\")[a-zA-Z0-9/+]{86}=='
+> [!div class="nextstepaction"]
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAysoyswrUSgoyk8vSsxVsFVISEjgUlAoKE3KyUxWSM5JLC5WCIBKVgMl4FLFJYklQKosPzNFwTcxM09DEyqvoBBcWVySmqvnnJ9XnJ+TqhdelFmS6pOZl6qh5JGak5OvqKRpDVZZywXCQAsBPUXdJYQAAAA=" target="_blank">Run the query</a>
 
-### Multi-line string
-
-```
-print program=```
+```kusto
+print program = ```
   public class Program {
     public static void Main() {
       System.Console.WriteLine("Hello!");
     }
   }```
-
 ```
+**Output**
+
+|program|
+|--|
+|public class Program { public static void Main() { System.Console.WriteLine("Hello!"); } }|
+
+### Concatenated string literals
+
+The following expressions all yield a string of length 13:
+
+> [!div class="nextstepaction"]
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA3XOMQoCMRSE4T6nGNOsgrAHsBFsrGw8QXYzmEDyErIPwt5eFztZyym+n6ktimLRlihHe2dKxQ5nDFfbS0v+YE8XjCMeRUOUFyZqJwUamI2pOxibxg9/srrmlB7Tih6icqluJoqkdT9jsLlbyZmin7Hz6V/UiYfD/KVv7+yEm+AAAAA=" target="_blank">Run the query</a>
+
+```kusto
+print strlen("Hello"', '@"world!"); // Nothing between them
+
+print strlen("Hello" ', ' @"world!"); // Separated by whitespace only
+
+print strlen("Hello"
+  // Comment
+  ', '@"world!"); // Separated by whitespace and a comment
+```
+
+### Obfuscated string literals
+
+> [!div class="nextstepaction"]
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAx2JSQqAMAwA775CPNhT00VPgvgJP+BSaEESaYL1+S5zm5kzJ5R6PWgdmyhy8mDMRijEBF+FjXKAknCnwoBB/rskDNn8X26Zmqp+iYqv0VvntfXa+ZbDZ522vXbdbAFAPQD1rLluAAAA" target="_blank">Run the query</a>
+
+```kusto
+print blob="https://contoso.blob.core.windows.net/container/blob.txt?"
+    h'sv=2012-02-12&se=2013-04-13T0...'
+```
+
+> [!NOTE]
+> In the query output, the `h` string is completely visible. However, in tracing or telemetry, the `h` string is substituted with asterisks.
+
+**Output**
+
+|blob|
+|--|
+|https://contoso.blob.core.windows.net/container/blob.txt?sv=2012-02-12&se=2013-04-13T0...|
 
 ## See also
 
