@@ -141,7 +141,7 @@ print myPath = @'C:\Folder\filename.txt'
 
 ### Multi-line string literal
 
-The following example shows the syntax for a multi-line string literal, which in this case uses newlines and tabs to style a code block. For more information, see [Multi-line string literals](#multi-line-string-literals).
+The following example shows the syntax for a multi-line string literal, which uses newlines and tabs to style a code block. For more information, see [Multi-line string literals](#multi-line-string-literals).
 
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAysoyswrUSgoyk8vSsxVsFVISEjgUlAoKE3KyUxWSM5JLC5WCIBKVgMl4FLFJYklQKosPzNFwTcxM09DEyqvoBBcWVySmqvnnJ9XnJ+TqhdelFmS6pOZl6qh5JGak5OvqKRpDVZZywXCQAsBPUXdJYQAAAA=" target="_blank">Run the query</a>
@@ -185,7 +185,7 @@ print
 
 ### Obfuscated string literal
 
-In the following query output, the `h` string is completely visible. However, in tracing or telemetry, the `h` string is substituted with asterisks. For more information, see [Obfuscated string literals](#obfuscated-string-literals).
+In the following query output, the `h` string is visible. However, in tracing or telemetry, the `h` string is substituted with asterisks. For more information, see [Obfuscated string literals](#obfuscated-string-literals).
 
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAx2JSQqAMAwA775CPNhT00VPgvgJP+BSaEESaYL1+S5zm5kzJ5R6PWgdmyhy8mDMRijEBF+FjXKAknCnwoBB/rskDNn8X26Zmqp+iYqv0VvntfXa+ZbDZ522vXbdbAFAPQD1rLluAAAA" target="_blank">Run the query</a>
