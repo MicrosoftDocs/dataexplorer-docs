@@ -59,6 +59,8 @@ Queries are stored for telemetry and analysis. To safeguard sensitive informatio
 
 An obfuscated string literal is created by prepending an `h` or an `H` character in front of a standard or verbatim [string literal](#string-literals).
 
+For an example, see [Obfuscated string literal](#obfuscated-string-literal).
+
 > [!IMPORTANT]
 > Mark all string literals that contain secret information as obfuscated string literals.
 
@@ -67,7 +69,7 @@ An obfuscated string literal is created by prepending an `h` or an `H` character
 
 ## Examples
 
-### Strings literal with quotes
+### String literal with quotes
 
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAysoyswr4VIAgmJDBVsF9eISoEC6QnlmSYaCUkp+aVJOqkJhaX5JarGSug5EnRFQnRKyOvViIBOuTl0JAJviYe9UAAAA" target="_blank">Run the query</a>
@@ -99,7 +101,22 @@ print pattern = '\\n.*(>|\'|=|\")[a-zA-Z0-9/+]{86}=='
 |--|
 |\n.*(>|'|=|")[a-zA-Z0-9/+]{86}==|
 
-### Verbatim string
+### String literal with Unicode
+
+> [!div class="nextstepaction"]
+> <a href="" target="_blank">Run the query</a>
+
+```kusto
+print space = "Hello\u00A0World"
+```
+
+**Output**
+
+|space|
+|--|
+|Hello World|
+
+### Verbatim string literal
 
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAysoyswrUcitDEgsyVCwVXBQd7aKccvPSUktiknLzEnNS8xN1SupKFEHAGc6ZBYoAAAA" target="_blank">Run the query</a>
@@ -113,16 +130,6 @@ print myPath = @'C:\Folder\filename.txt'
 |myPath|
 |--|
 |C:\Folder\filename.txt|
-
-
-### Unicode notation within strings
-
-> [!div class="nextstepaction"]
-> <a href="" target="_blank">Run the query</a>
-
-```kusto
-print nonbreaking_space = "Hello\u00A0World"
-```
 
 ### Multi-line string literal
 
@@ -145,22 +152,30 @@ print program = ```
 
 ### Concatenated string literals
 
-The following expressions all yield a string of length 13:
+The following expressions all yield a string of length 13.
 
 > [!div class="nextstepaction"]
-> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA3XOMQoCMRSE4T6nGNOsgrAHsBFsrGw8QXYzmEDyErIPwt5eFztZyym+n6ktimLRlihHe2dKxQ5nDFfbS0v+YE8XjCMeRUOUFyZqJwUamI2pOxibxg9/srrmlB7Tih6icqluJoqkdT9jsLlbyZmin7Hz6V/UiYfD/KVv7+yEm+AAAAA=" target="_blank">Run the query</a>
+> <a href="https://dataexplorer.azure.com/clusters/kvc9rf7q4d68qcw5sk2d6f.northeurope/databases/MyDatabase?query=H4sIAAAAAAAAAysoyswrUeBSAIK8/LxUBVuF4pKinNQ8DSWP1JycfCV1HQV1B6Xy/KKcFEUlTR2wwvKMzJLU4oLEZEzlCiD1Crg1OOalOOfn5qYC7cTQClYKAvr6ClBFcCEUZ4BFNa0BnYL1CrsAAAA=" target="_blank">Run the query</a>
 
 ```kusto
-print strlen("Hello"', '@"world!"); // Nothing between them
-
-print strlen("Hello" ', ' @"world!"); // Separated by whitespace only
-
-print strlen("Hello"
-  // Comment
-  ', '@"world!"); // Separated by whitespace and a comment
+print 
+    none = strlen("Hello"', '@"world!"),
+    whitespace = strlen("Hello" ', ' @"world!"),
+    whitespaceAndComment = strlen("Hello" 
+        // Comment
+        ', '@"world!"
+    );
 ```
 
-### Obfuscated string literals
+**Output**
+
+|none|whitespace|whitespaceAndComment|
+|--|--|--|
+|13|13|13|
+
+### Obfuscated string literal
+
+In the following query output, the `h` string is completely visible. However, in tracing or telemetry, the `h` string is substituted with asterisks.
 
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAx2JSQqAMAwA775CPNhT00VPgvgJP+BSaEESaYL1+S5zm5kzJ5R6PWgdmyhy8mDMRijEBF+FjXKAknCnwoBB/rskDNn8X26Zmqp+iYqv0VvntfXa+ZbDZ522vXbdbAFAPQD1rLluAAAA" target="_blank">Run the query</a>
@@ -169,9 +184,6 @@ print strlen("Hello"
 print blob="https://contoso.blob.core.windows.net/container/blob.txt?"
     h'sv=2012-02-12&se=2013-04-13T0...'
 ```
-
-> [!NOTE]
-> In the query output, the `h` string is completely visible. However, in tracing or telemetry, the `h` string is substituted with asterisks.
 
 **Output**
 
