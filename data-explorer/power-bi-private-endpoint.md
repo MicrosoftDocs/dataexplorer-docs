@@ -23,7 +23,7 @@ A private endpoint is a network interface that uses private IP addresses from yo
 
 ## Create a gateway connection
 
-You need to create a gateway connection and add a data source that can be used with that gateway. In this example, you bridge between your on-premises data gateway and a Power BI service by using an Azure Data Explorer cluster as the data source.
+You need to create a gateway connection and add a data source that can be used with that gateway. In this example, you bridge between your data gateway and a Power BI service by using an Azure Data Explorer cluster as the data source.
 
 1. Launch a Power BI service.
 1. In the upper-right corner of the Power BI service, select the gear icon ![Settings gear icon.](./media/power-bi-private-endpoint/settings.png), and then **Manage connections and gateways**.
