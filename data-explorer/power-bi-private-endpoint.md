@@ -16,7 +16,7 @@ A private endpoint is a network interface that uses private IP addresses from yo
 
 * A Microsoft account or a Microsoft Entra ID. An Azure subscription isn't required.
 * An Azure Data Explorer cluster behind a private endpoint. For more information, see [Create a private endpoint for Azure Data Explorer](security-network-private-endpoint-create.md).
-* You must have [AllDatabaseViewer](kusto/access-control/role-based-access-control.md) permissions.
+* You must have [AllDatabasesViewer](kusto/access-control/role-based-access-control.md) permissions.
 * A data gateway installed on a virtual machine in the private endpoint. For more information, see [Install a data gateway](/data-integration/gateway/service-gateway-install).
 * Verify that the virtual machine where the data gateway is installed can access the data on the target cluster. For more information, see [Add a cluster connection](add-cluster-connection.md).
 * A [Power BI report](power-bi-data-connector.md?tabs=connector).
