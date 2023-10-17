@@ -15,9 +15,10 @@ A private endpoint is a network interface that uses private IP addresses from yo
 ## Prerequisites
 
 * A Microsoft account or a Microsoft Entra ID. An Azure subscription isn't required.
-* An Azure Data Explorer cluster behind a private endpoint. [Create a private endpoint for Azure Data Explorer](security-network-private-endpoint-create.md).
+* An Azure Data Explorer cluster behind a private endpoint. For more information, see [Create a private endpoint for Azure Data Explorer](security-network-private-endpoint-create.md).
 * You must have [AllDatabaseViewer](kusto/access-control/role-based-access-control.md) permissions.
-* An on-premises data gateway. For more information, see [Install an on-premises data gateway](/data-integration/gateway/service-gateway-install).
+* A data gateway installed on a virtual machine in the private endpoint. For more information, see [Install a data gateway](/data-integration/gateway/service-gateway-install).
+* Verify that the virtual machine where the data gateway is installed can access the data on the target cluster. For more information, see [Add a cluster connection](add-cluster-connection.md).
 * A [Power BI report](power-bi-data-connector.md?tabs=connector).
 
 ## Create a gateway connection
@@ -42,7 +43,7 @@ You need to create a gateway connection and add a data source that can be used w
     | Connection type| The data source used with the gateway. | Azure Data Explorer (Kusto).|
     | Cluster| The Azure Data Explorer cluster URI used as the dataset of the report. | `https://`*clusterName*`.kusto.windows.net` |
 
-    > [!NOTE]
+    > [!IMPORTANT]
     > The link between your report's dataset and the data source within the gateway is based on your cluster URI. The names must match. For example, if you refer to the help cluster (`https://help.kusto.windows.net/`) as "help" when connecting to a data source in Power BI Desktop, you must also use "help" as the cluster URI for the data source when configuring the gateway.
 
 1. Under **Authentication**, select **Edit credentials**, and then sign in.
