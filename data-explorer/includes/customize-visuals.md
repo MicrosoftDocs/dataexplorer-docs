@@ -3,14 +3,14 @@ ms.topic: include
 ms.date: 12/14/2022
 ---
 
-## Select properties to customize visuals
+## Set customization properties
 
 The following table describes the available customization properties, categorized alphabetically by section, and specifies which visuals support the given property.
 
 | Section | Property | Description | Visual types |
 |--|--|--|--|
 | **Colors** | **Color palette** | Determines the set of colors to use for the heatmap. | Heatmap |
-| **Conditional formatting** | **Hide** or **Show** | A toggle option to turn off or turn on conditional formatting. For more information, see [Apply conditional formatting](dashboard-conditional-formatting.md). | Anomaly chart, Area chart, Bar chart, Column chart, Multi Stat, Scatter chart, Table, Time chart |
+| **Conditional formatting** | **Hide** or **Show** | A toggle option to turn off or turn on conditional formatting. For more information, see [Apply conditional formatting](../dashboard-conditional-formatting.md). | Anomaly chart, Area chart, Bar chart, Column chart, Multi Stat, Scatter chart, Table, Time chart |
 | **Data** | **Y columns** | The columns that provide data for the vertical axis. | Anomaly chart, Area chart, Bar chart, Column chart, Line chart, Scatter chart, Time chart |
 |  | **X column** | The column that provides data for the horizontal axis. | Anomaly chart, Area chart, Bar chart, Column chart, Line chart, Scatter chart, Time chart |
 |  | **Series columns** | The columns used to categorize data into different series. | Anomaly chart, Area chart, Bar chart, Column chart, Line chart, Scatter chart, Time chart |
