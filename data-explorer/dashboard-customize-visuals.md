@@ -10,7 +10,7 @@ ms.date: 10/18/2023
 
 Azure Data Explorer dashboards are a collection of tiles that feature a visual representation supported by an underlying Kusto Query Language (KQL) query. This article explains how to edit the visualizations and queries of a dashboard tile and provides an overview of customization properties specific to each visualization type.
 
-All visualizations that are created in the context of the [render operator](/kusto/query/renderoperator#visualizations) are available in dashboard visualizations, along with some [dashboard-specific visuals](dashboard-visuals.md)
+All visualizations that are created in the context of the [render operator](kusto/query/renderoperator.md#visualization) are available in dashboard visualizations, along with some [dashboard-specific visuals](dashboard-visuals.md)
 
 ## Prerequisites
 
