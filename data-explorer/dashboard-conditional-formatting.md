@@ -75,7 +75,7 @@ To color your results by value:
 
 1. In the **Conditional formatting** window, set the **Rule type** to **Color by value**.
 
-    :::image type="content" source="media/dashboard-conditional-formatting/color-by-value.png" alt-text="Screenshot of option to color by value." lightbox="media/dashboard-conditional-formatting/color-by-value.png":::
+    :::image type="content" source="media/dashboard-customize-visuals/color-by-value.png" alt-text="Screenshot of option to color by value." lightbox="media/dashboard-customize-visuals/color-by-value.png":::
 
 1. Enter information for the following fields:
 
@@ -95,5 +95,5 @@ To color your results by value:
 
 ## Related content
 
-* [Visualize data with Azure Data Explorer dashboards](azure-data-explorer-dashboards)
+* [Visualize data with Azure Data Explorer dashboards](azure-data-explorer-dashboards.md)
 * [Customize Azure Data Explorer dashboard visuals](dashboard-customize-visuals.md)
