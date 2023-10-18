@@ -3,7 +3,7 @@ title:  Kusto Ingest library best practices
 description: This article describes best practices for Kusto Ingest client library.
 ms.reviewer: orspodek
 ms.topic: reference
-ms.date: 09/06/2023
+ms.date: 10/18/2023
 ---
 # Kusto Ingest library best practices
 
@@ -54,5 +54,6 @@ For cost-effective ingestion:
 
 ## Related content
 
+* [Kusto Ingest overview](about-kusto-ingest.md)
 * [Data ingestion overview](../../../ingest-data-overview.md)
 * [Create an app to get data using batching ingestion](../get-started/app-batch-ingestion.md)
