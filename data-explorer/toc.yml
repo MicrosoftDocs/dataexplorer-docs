@@ -374,6 +374,8 @@ items:
             href: dashboard-parameters.md
           - name: Customize dashboard visuals
             href: dashboard-customize-visuals.md
+          - name: Apply conditional formatting
+            href: dashboard-conditional-formatting.md
           - name: Create a dashboard base query
             href: base-query.md
           - name: Dashboard-specific visuals
