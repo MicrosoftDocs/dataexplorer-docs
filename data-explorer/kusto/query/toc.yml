@@ -39,7 +39,7 @@ items:
           href: /training/paths/sc-200-utilize-kql-for-azure-sentinel/
 - name: Query best practices
   items:
-  - name: Best practices
+  - name: Query best practices
     href: best-practices.md
   - name: Optimize queries that use named expressions
     displayName: let statement, user defined functions, as operator, calculated

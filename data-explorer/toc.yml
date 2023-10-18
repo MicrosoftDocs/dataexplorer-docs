@@ -348,19 +348,19 @@ items:
         href: set-timeout-limits.md
       - name: Query cold data with hot windows
         href: hot-windows.md
-      - name: Time Series Analysis and Machine Learning
+      - name: Time series analysis and machine learning
         items:
           - name: Azure Data Explorer Python library
             href: python-query-data.md
           - name: Debug Kusto Query Language inline Python
             href: debug-inline-python.md
-      - name: Graph Analysis
+      - name: Graph analysis
         items:
-          - name: Overview
+          - name: Graph analysis overview
             href: graph-overview.md
-          - name: Scenarios
+          - name: Graph analysis scenarios
             href: graph-scenarios.md
-          - name: Best Practices
+          - name: Graph analysis best practices
             href: graph-best-practices.md
   - name: Visualize data
     items:
