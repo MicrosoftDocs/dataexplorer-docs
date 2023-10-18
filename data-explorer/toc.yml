@@ -283,7 +283,7 @@ items:
     items:
       - name: Query data in the web UI
         items:
-          - name: Overview
+          - name: Query data in the web UI overview
             href: web-ui-query-overview.md
             displayName: web UI
           - name: Customize settings in the web UI
@@ -326,7 +326,7 @@ items:
         href: t-sql.md
       - name: Query data using SQL Server emulation
         items:
-          - name: Overview
+          - name: SQL Server emulation overview
             href: sql-server-emulation-overview.md
             displayName: SQL Server emulation
           - name: Connect with ODBC
@@ -496,7 +496,7 @@ items:
             href: monitor-batching-ingestion.md
       - name: Business continuity
         items:
-          - name: Overview
+          - name: Business continuity overview
             displayName: BCDR, bcdr
             href: business-continuity-overview.md
           - name: Create solutions
@@ -551,7 +551,7 @@ items:
             href: kusto/api/get-started/app-batch-ingestion.md
       - name: Connection strings
         items:
-          - name: Overview
+          - name: Connection strings overview
             href: kusto/api/connection-strings/index.md
           - name: Kusto connection strings
             href: kusto/api/connection-strings/kusto.md
@@ -561,15 +561,15 @@ items:
             href: kusto/api/connection-strings/sql-connection-strings.md
           - name: Generate SAS token
             href: kusto/api/connection-strings/generate-sas-token.md
-      - name: Integrate Kusto query editor in your apps
+      - name: Integrate the query editor in your apps
         items:
-          - name: Integrate Azure Data Explorer capabilities overview
+          - name: Integration overview
             displayName: monaco web UI
             href: kusto/api/monaco/monaco-overview.md
           - name: Embed the web UI in an IFrame
             displayName: monaco web UI
             href: kusto/api/monaco/host-web-ux-in-iframe.md
-          - name: Integrate the Monaco Editor with Kusto query support
+          - name: Integrate the Monaco editor with Kusto query support
             displayName: monaco monaco-kusto
             href: kusto/api/monaco/monaco-kusto.md
       - name: Kusto emulator

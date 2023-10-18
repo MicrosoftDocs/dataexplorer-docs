@@ -1,5 +1,5 @@
 items:
-- name: Kusto query overview
+- name: Kusto Query Language overview
   href: index.md
 - name: Syntax conventions
   href: syntax-conventions.md
