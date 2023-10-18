@@ -30,7 +30,7 @@ You can secure your cluster to only accept connections from your virtual network
 
 ## Plan the size of subnet in your virtual network
 
-The size of the subnet used to host a private endpoint for a cluster can't be altered once the subnet is deployed. The private endpoint consumes multiple IP addresses in your virtual network. In extreme scenarios, such as high-end ingestion, the number of IP addresses consumed by the private endpoint may increase. This increase is caused by an increased number of transient storage accounts required as staging accounts for ingesting into your cluster. If the scenario is relevant in your environment, you must plan for it when determining the size for the subnet.
+The size of the subnet used to host a private endpoint for a cluster can't be altered once the subnet is deployed. The private endpoint consumes multiple IP addresses in your virtual network. In extreme scenarios, such as high-end ingestion, the number of IP addresses consumed by the private endpoint might increase. This increase is caused by an increased number of transient storage accounts required as staging accounts for ingesting into your cluster. If the scenario is relevant in your environment, you must plan for it when determining the size for the subnet.
 
 > [!NOTE]
 > The relevant ingestion scenarios that would be responsible for scaling out the transient storage accounts are [ingestion from a local file](kusto/api/netfx/kusto-ingest-client-examples.md#ingest-from-local-file) and [async ingestion from a blob](kusto/api/netfx/kusto-ingest-client-examples.md#async-ingestion-from-a-single-azure-blob).
@@ -57,7 +57,7 @@ Clients on a virtual network using a private endpoint should use the same connec
 > [!IMPORTANT]
 > Use the same connection string to connect to the cluster using private endpoints as you'd use to connect to a public endpoint. Don't connect to the cluster using its private link subdomain URL.
 
-By default, Azure Data Explorer creates a [private DNS zone](/azure/dns/private-dns-overview) attached to the virtual network with the necessary updates for the private endpoints. However, if you're using your own DNS server, you may need to make more changes to your DNS configuration.
+By default, Azure Data Explorer creates a [private DNS zone](/azure/dns/private-dns-overview) attached to the virtual network with the necessary updates for the private endpoints. However, if you're using your own DNS server, you might need to make more changes to your DNS configuration.
 
 > [!IMPORTANT]
 > For optimal configuration, we recommend that you align your deployment with the recommendations in the [Private Endpoint and DNS configuration at Scale](/azure/cloud-adoption-framework/ready/azure-best-practices/private-link-and-dns-integration-at-scale) Cloud Adoption Framework article. Use the information in the article to automate Private DNS entry creation using Azure Policies, making it easier to manage your deployment as you scale.
@@ -98,9 +98,10 @@ Private endpoints aren't supported for virtual network injected Azure Data Explo
 
 Private endpoints or managed private endpoints are resources that incur additional costs. The cost varies depending on the selected solution architecture. For more information, see [Azure Private Link pricing](https://azure.microsoft.com/pricing/details/private-link/).
 
-## Next steps
+## Related content
 
 * [Create a Private Endpoints for Azure Data Explorer](security-network-private-endpoint-create.md)
 * [Create a Managed Private Endpoints for Azure Data Explorer](security-network-managed-private-endpoint-create.md)
 * [How to restrict public access to Azure Data Explorer](security-network-restrict-public-access.md)
 * [How to restrict outbound access from Azure Data Explorer](security-network-restrict-outbound-access.md)
+* [Connect a cluster behind a private endpoint to a Power BI service](power-bi-private-endpoint.md)

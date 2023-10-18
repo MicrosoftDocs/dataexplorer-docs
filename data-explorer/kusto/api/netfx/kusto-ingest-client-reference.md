@@ -7,7 +7,7 @@ ms.date: 05/19/2020
 ---
 # Kusto.Ingest client interfaces and classes
 
-The main interfaces and classes in the Kusto.Ingest library are:
+The main interfaces and classes in the Kusto Ingest .NET library are:
 
 * [Interface IKustoIngestClient](#interface-ikustoingestclient): The main ingestion interface
 * [Class ExtendedKustoIngestClient](#class-extendedkustoingestclient): Extensions to the main ingestion interface
@@ -18,6 +18,9 @@ The main interfaces and classes in the Kusto.Ingest library are:
 * [Enum DataSourceFormat](#enum-datasourceformat): Supported data source formats. For example, CSV or JSON.
 * [Interface IKustoQueuedIngestClient](#interface-ikustoqueuedingestclient): Interface describing operations that apply for queued ingestion only
 * [Class KustoQueuedIngestionProperties](#class-kustoqueuedingestionproperties): Properties that apply to queued ingestion only
+
+> [!NOTE]
+> This information applies specifically to the .NET client library. Different [client libraries](../client-libraries.md) may have variations in their available interfaces and classes. For a broader understanding of Kusto Ingest across all client libraries,  see [Kusto Ingest overview](about-kusto-ingest.md).
 
 ## Interface IKustoIngestClient
 
