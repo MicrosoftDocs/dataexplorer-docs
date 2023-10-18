@@ -44,7 +44,7 @@ items:
         href: query-consistency-policy.md
   - name: Schema
     items:
-      - name: Schema management best practices
+      - name: Best practices for schema management
         href: management-best-practices.md
       - name: Databases
         href: databases.md

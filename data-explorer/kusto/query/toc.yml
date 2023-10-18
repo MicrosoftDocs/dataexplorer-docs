@@ -37,9 +37,9 @@ items:
           href: /training/paths/data-analysis-data-explorer-kusto-query-language/
         - name: "Learning path: Create queries for Microsoft Sentinel using Kusto Query Language"
           href: /training/paths/sc-200-utilize-kql-for-azure-sentinel/
-- name: Query best practices
+- name: Best practices for KQL queries
   items:
-  - name: Query best practices
+  - name: Best practices for KQL queries
     href: best-practices.md
   - name: Optimize queries that use named expressions
     displayName: let statement, user defined functions, as operator, calculated

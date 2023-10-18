@@ -360,7 +360,7 @@ items:
             href: graph-overview.md
           - name: Graph analysis scenarios
             href: graph-scenarios.md
-          - name: Graph analysis best practices
+          - name: Best practices for graph analysis
             href: graph-best-practices.md
   - name: Visualize data
     items:
@@ -386,7 +386,7 @@ items:
           - name: Use data in Power BI
             displayName: Imported query
             href: power-bi-data-connector.md
-          - name: Power BI best practices
+          - name: Best practices for Power BI
             href: power-bi-best-practices.md
           - name: Dynamic M query parameters
             displayName: Power BI
@@ -521,7 +521,7 @@ items:
               - name: Kusto Data overview
                 href: kusto/api/netfx/about-kusto-data.md
                 displayName: kusto.data, SDK
-              - name: Kusto Data best practices
+              - name: Best practices for Kusto Data
                 href: kusto/api/netfx/kusto-data-best-practices.md
                 displayName: kusto.data, SDK
               - name: ClientRequestProperties class
@@ -532,7 +532,7 @@ items:
               - name: Kusto Ingest overview
                 href: kusto/api/netfx/about-kusto-ingest.md
                 displayName: kusto.ingest, SDK
-              - name: Kusto Ingest best practices
+              - name: Best practices for Kusto Ingest
                 href: kusto/api/netfx/kusto-ingest-best-practices.md
                 displayName: kusto.ingest, SDK
       - name: Sample app generator
