@@ -55,6 +55,7 @@ The following table summarizes the available connectors and their capabilities:
 | [Azure Functions](#azure-functions) | **Export** <br /><br />**Ingestion** |  &#x2717; | First party | Workflow integrations |
 | [Azure IoT Hubs](#azure-iot-hubs) | **Ingestion** | &check; | First party | IoT data |
 | [Azure Stream Analytics](#azure-stream-analytics) | **Ingestion** | &check; | First party | Event processing |
+| [Logstash](#logstash) | **Ingestion** | &#x2717; |  | [Open source](https://github.com/Azure/logstash-output-kusto/) | Logs |
 | [NLog](#nlog) | **Ingestion** | &check; | First party, [Open source](https://github.com/Azure/azure-kusto-nlog-sink) | Telemetry, Logs, Metrics |
 | [Open Telemetry](#open-telemetry) | **Ingestion** | &check; | [Open source](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/exporter/azuredataexplorerexporter) | Traces, Metrics, Logs |
 | [Power Automate](#power-automate) | **Export** <br /><br />**Ingestion** | &#x2717; | First party | Data orchestration |
@@ -203,6 +204,7 @@ Event Grid ingestion is a pipeline that listens to Azure storage, and updates yo
 * **Use cases:** Logs, Metrics, Traces
 * **Repository:** [fluent-bit](https://github.com/fluent/fluent-bit)
 * **Documentation:** [Ingest data with Fluent Bit into Azure Data Explorer](fluent-bit.md)
+::: zone-end
 
 ## Logstash
 
@@ -216,7 +218,6 @@ Event Grid ingestion is a pipeline that listens to Azure storage, and updates yo
 * **Repository:** Microsoft Azure - https://github.com/Azure/logstash-output-kusto/
 * **Documentation:** [Ingest data from Logstash](ingest-data-logstash.md)
 * **Community Blog:** [How to migrate from Elasticsearch to Azure Data Explorer](https://techcommunity.microsoft.com/t5/azure-data-explorer-blog/how-to-migrate-from-elasticsearch-to-azure-data-explorer/ba-p/1621539/)
-::: zone-end
 
 ## NLog
 
