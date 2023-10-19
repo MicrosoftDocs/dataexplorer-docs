@@ -51,7 +51,7 @@ The distribution of an export to external table operation indicates the number o
 
 | External table partitioning | Default distribution
 |---|---|
-|External table is not partitioned, or partitioned by `datetime` column only|Export is distributed `per_node` - all nodes in the cluster are exporting concurrently. Each node writes the data assigned to that node. The number of files exported is the number of nodes, or greater than number of nodes if `sizeLimit` is reached.|
+|External table is not partitioned, or partitioned by `datetime` column only|Export is distributed `per_node` - all nodes in the cluster are exporting concurrently. Each node writes the data assigned to that node. The number of files exported by a node will be greater than one, only if the size of the data from that node exceeds `sizeLimit`.|
 |External table is partitioned by a string column|The data to export is moved between the nodes, such that each node writes a subset of the partition values. A single partition is always written by a single node. The number of files written per partition should be greater than one only if the data exceeds `sizeLimit`. If the external table includes several string partitions, then data is partitioned between the node based on the first partition. Therefore, it is recommended to define the partition with most uniform distribution as the first one.|
 
 #### Changing the default distribution settings
