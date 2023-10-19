@@ -10,7 +10,7 @@ ms.date: 10/19/2023
 
 Parameters are used as building blocks for filters in Azure Data Explorer dashboards. They're managed in the dashboard scope, and can be added to queries to filter the data presented by the underlying visual. A query can use one or more parameters.
 
-This document describes the creation and use of parameters and linked filters in dashboards. Parameters can be used to filter dashboard visuals either by selecting [parameter values in the filter bar](#use-parameters-in-your-query) or by using [cross-filters](#use-cross-filters-as-dashboard-parameters)..
+This document describes the creation and use of parameters and linked filters in dashboards. Parameters can be used to filter dashboard visuals either by selecting [parameter values in the filter bar](#use-parameters-in-your-query) or by using [cross-filters](#cross-filters-parameters).
 
 The query examples used in this article are based on the `StormEvents` table in the [samples gallery](web-ui-samples-query.md).
 
@@ -58,7 +58,7 @@ In the **Add parameter** pane, configure the following properties:
 |**Show on pages**|Select the pages where this parameter will be displayed. The **Select all** option shows the parameter on all pages.|
 |**Source**|The source of the parameter values: <ul><li>**Fixed values**: Manually introduced static filter values. </li><li>**Query**: Dynamically introduced values using a KQL query.</li></ul>|
 |**Default value**|The default value of the filter. The filter will start always with the default value upon initial rendering of the dashboard.
-|**Add a "Select all" value**|Applicable only to single selection and multiple selection parameter types. Used to retrieve data for all the parameter values. This value should be built into the query to provide the functionality. See [Use the multiple-selection query-based parameter](#use-the-multiple-selection-query-based-parameter) for more examples on building such queries.|
+|**Add a "Select all" value**|Applicable only to single selection and multiple selection parameter types. Used to retrieve data for all the parameter values. This value should be built into the query to provide the functionality. See [Use the multiple-selection query-based parameter](#multiple-selection-fixed-values-parameters) for more examples on building such queries.|
 
 ## Manage parameters
 
@@ -111,7 +111,7 @@ Once saved, the time range filter shows up on the dashboard. Now it can be used 
 
 :::image type="content" source="media/dashboard-parameters/time-range-parameter.png" alt-text="filter using custom time range.":::
 
-### Single-selection fixed-values parameter
+### Single-selection fixed-values parameters
 
 Fixed value parameters are based on predefined values specified by the user. The following example shows you how to create a single selection fixed value parameter.
 
@@ -145,7 +145,7 @@ Fixed value parameters are based on predefined values specified by the user. The
 
 The parameter can be seen in the **Parameters** side pane, but aren't currently being used in any visuals.
 
-#### Use a single-selection fixed-values parameter
+#### Use a single-selection fixed-values parameters
 
 1. Run a sample query using the new *Event TypTope* parameter by using the `_eventType` variable name:
 
