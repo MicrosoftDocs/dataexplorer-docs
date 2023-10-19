@@ -27,9 +27,12 @@ For each visual, you have the flexibility to define one or more conditional form
 
 1. Select **Add rule**. A new rule appears with default values.
 
+1. On the new rule, select the **Edit** icon.
+
     :::image type="content" source="media/dashboard-customize-visuals/edit-new-rule.png" alt-text="Screenshot of editing new rule in dashboards in Azure Data Explorer.":::
 
-1. On the new rule, select the **Edit** icon. The **Conditional formatting** pane opens. For table visuals, you can either [color by condition](#color-by-condition) or [color by value](#color-by-value). For stat and multi stat visuals, you can only [color by condition](#color-by-condition).
+    The **Conditional formatting** pane opens. For table visuals, you can either [color by condition](#color-by-condition) or [color by value](#color-by-value). For stat and multi stat visuals, you can only [color by condition](#color-by-condition).
+
 
 ## Color by condition
 
@@ -74,8 +77,6 @@ The color by value rule allows you to visualize values on a color gradient. This
 To color your results by value:
 
 1. In the **Conditional formatting** window, set the **Rule type** to **Color by value**.
-
-    :::image type="content" source="media/dashboard-customize-visuals/color-by-value.png" alt-text="Screenshot of option to color by value." lightbox="media/dashboard-customize-visuals/color-by-value.png":::
 
 1. Enter information for the following fields:
 
