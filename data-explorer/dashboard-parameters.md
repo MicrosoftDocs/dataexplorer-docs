@@ -33,8 +33,16 @@ To view the list of all dashboard parameters, select the **Parameters** button a
 
 To create a parameter:
 
+1. Switch from **Viewing** to **Editing** mode.
+
+    :::image type="content" source="media/dashboard-parameters/edit-dashboard.png" alt-text="Screenshot of the editing button at the top of dashboard.":::
+
 1. Select the **Parameters** button at the top of the dashboard.
+
+    :::image type="content" source="media/dashboard-parameters/parameters-widget.png" alt-text="Screenshot of the parameters button at the top of dashboard.":::
+
 1. Select the **+ New parameter** button at the top of the right pane.
+
 1. Fill in the relevant [properties](#properties) for your parameter.
 
 ### Properties
@@ -54,7 +62,7 @@ In the **Add parameter** pane, configure the following properties:
 
 ## Manage parameters
 
-After selecting **Parameters** from the top bar, you can [view the list of existing parameters](#view-parameters-list). In each parameter card, you can select the pencil widget to edit the parameter, or select the **More [...]** menu to **Duplicate**, **Delete**, or move the parameter.
+After selecting **Parameters** from the top bar, you can [view the list of existing parameters](#view-parameters-list). In each parameter card, select the pencil widget to edit the parameter or select the **More [...]** menu to **Duplicate**, **Delete**, or move the parameter.
 
 The following indicators can be viewed in the parameter card:
 
@@ -93,16 +101,15 @@ The following examples describe how to use parameters in a query for various par
 Every dashboard has a *Time range* parameter by default. It shows up on the dashboard as a filter only when used in a query. Use the parameter keywords `_startTime` and `_endTime` to use the default time range parameter in a query as seen in the following example:
 
 ```kusto
-EventsAll
-| where Repo.name has 'Microsoft'
-| where CreatedAt between (_startTime.._endTime)
-| summarize TotalEvents = count() by RepoName=tostring(Repo.name)
+StormEvents
+| where StartTime between (_startTime.._endTime)
+| summarize TotalEvents = count() by State
 | top 5 by TotalEvents
 ```
 
 Once saved, the time range filter shows up on the dashboard. Now it can be used to filter the data on the card. You can filter your dashboard by selecting from the drop-down: **Time range** (last x minutes/hours/days) or a **Custom time range**.
 
-:::image type="content" source="media/dashboard-parameters/time-range.png" alt-text="filter using custom time range.":::
+:::image type="content" source="media/dashboard-parameters/time-range-parameter.png" alt-text="filter using custom time range.":::
 
 ### Single-selection fixed-values parameter
 
@@ -114,25 +121,25 @@ Fixed value parameters are based on predefined values specified by the user. The
 
 1. Fill in the details as follows:
 
-    * **Label**: Company
+    * **Label**: Event Type
     * **Parameter type**: Single selection
-    * **Variable name**: `_company`
+    * **Variable name**: `_eventType`
     * **Data type**: String
     * **Pin as dashboard filter**: checked
     * **Source**: Fixed values
 
-    In this example, use the following values:
+        In this example, use the following values:
 
-    | Value      | Parameter display name |
-    |------------|------------------------|
-    | google/    | Google                 |
-    | microsoft/ | Microsoft              |
-    | facebook/  | Facebook               |
-    | aws/       | AWS                    |
-    | uber/      | Uber                   |
+        | Value | Parameter display name |
+        |--|--|
+        | Thunderstorm Wind | Thunderstorm wind |
+        | Hail | Hail |
+        | Flash Flood | Flash flood |
+        | Drought | Drought |
+        | Winter Weather | Winter weather |
 
     * Add a **Select all** value: Unchecked
-    * Default value: Microsoft
+    * Default value: Thunderstorm Wind
 
 1. Select **Done** to create the parameter.
 
@@ -140,22 +147,21 @@ The parameter can be seen in the **Parameters** side pane, but aren't currently 
 
 #### Use a single-selection fixed-values parameter
 
-1. Run a sample query using the new *Company* parameter by using the `_company` variable name:
+1. Run a sample query using the new *Event TypTope* parameter by using the `_eventType` variable name:
 
     ```kusto
-    EventsAll
-    | where CreatedAt > ago(7d)
-    | where Type == "WatchEvent"
-    | where Repo.name has _company
-    | summarize WatchEvents=count() by RepoName = tolower(tostring(Repo.name))
-    | top 5 by WatchEvents
+    StormEvents
+    | where StartTime between (_startTime.._endTime)
+    | where EventType == _eventType
+    | summarize TotalEvents = count() by State
+    | top 5 by TotalEvents
     ```
 
     The new parameter shows up in the parameter list at the top of the dashboard.
 
 1. Select different values to update the visuals.
 
-    :::image type="content" source="media/dashboard-parameters/top-five-repos.png" alt-text="top five repos result.":::
+    :::image type="content" source="media/dashboard-parameters/top-five-states.png" alt-text="Top five states result.":::
 
 ### Multiple-selection fixed-values parameters
 
@@ -165,35 +171,32 @@ Fixed value parameters are based on predefined values specified by the user. The
 
 1. Select **Parameters** to open the **Parameters** pane and select **New parameter**.
 
-1. Fill in the details as mentioned in [Use the single selection fixed value parameter](#use-the-single-selection-fixed-value-parameter) with the following changes:
+1. Fill in the details as mentioned in [Use a single-selection fixed-values parameter](#use-a-single-selection-fixed-values-parameter) with the following changes:
 
-    * **Label**: Companies
+    * **Label**: Event Type
     * **Parameter type**: Multiple selection
-    * **Variable name**: `_companies`
+    * **Variable name**: `_eventType`
 
 1. Select **Done** to create the parameter.
 
 The new parameters can be seen in the **Parameters** side pane, but aren't currently being used in any visuals.
 
-#### Use a multiple-selection fixed-values parameters
+#### Use a multiple-selection fixed-values parameter
 
-1. Run a sample query using the new *companies* parameter by using the `_companies` variable.
+1. Run a sample query using the new *Event Type* parameter by using the `_eventType` variable.
 
     ```kusto
-    EventsAll
-    | where CreatedAt > ago(7d)
-    | extend RepoName = tostring(Repo.name)
-    | where Type == "WatchEvent"
-    | where RepoName has_any (_companies)
-    | summarize WatchEvents=count() by RepoName
-    | top 5 by WatchEvents
+    StormEvents
+    | where StartTime between (_startTime.._endTime)
+    | where EventType in (_eventType) or isempty(_eventType)
+    | summarize TotalEvents = count() by State
+    | top 5 by TotalEvents
     ```
-
     The new parameter shows up in the parameter list at the top of the dashboard.
 
 1. Select one or more different values to update the visuals.
 
-    :::image type="content" source="media/dashboard-parameters/select-companies.png" alt-text="select companies.":::
+    :::image type="content" source="media/dashboard-parameters/multiple-evet-types.png" alt-text="Select multiple event types.":::
 
 ### Single-selection query-based parameter
 
