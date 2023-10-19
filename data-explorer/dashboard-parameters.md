@@ -1,27 +1,31 @@
 ---
-title: Parameters in Azure Data Explorer dashboards
-description: Use parameters as a building block for dashboard filters.
+title: Use parameters in Azure Data Explorer dashboards
+description: Learn how to use parameters as a building block for dashboard filters.
 ms.reviewer: gabil
 ms.topic: how-to
-ms.date: 07/20/2023
+ms.date: 10/19/2023
 ---
 
 # Use parameters in Azure Data Explorer dashboards
 
-Parameters are used as building blocks for dashboard filters in Azure Data Explorer dashboards. They're managed in the dashboard scope, and can be added to queries to filter the data presented by the underlying visual. A query can use one or more parameters.
+Parameters are used as building blocks for filters in Azure Data Explorer dashboards. They're managed in the dashboard scope, and can be added to queries to filter the data presented by the underlying visual. A query can use one or more parameters.
 
-This document describes the creation and use of parameters and linked filters in Azure Data Explorer dashboards. Parameters can be used to slice and dice dashboard visuals either directly by selecting [parameter values in the filter bar](#use-parameters-in-your-query) or by using [cross-filters](#use-cross-filters-as-dashboard-parameters).
+This document describes the creation and use of parameters and linked filters in dashboards. Parameters can be used to filter dashboard visuals either by selecting [parameter values in the filter bar](#use-parameters-in-your-query) or by using [cross-filters](#use-cross-filters-as-dashboard-parameters)..
+
+The query examples used in this article are based on the `StormEvents` table in the [samples gallery](web-ui-samples-query.md).
 
 > [!NOTE]
 > Parameter management is available in **Editing** mode to dashboard editors.
 
 ## Prerequisites
 
-[Visualize data with Azure Data Explorer dashboards](azure-data-explorer-dashboards.md)
+* [Visualize data with Azure Data Explorer dashboards](azure-data-explorer-dashboards.md)
+* Editor permissions on an Azure Data Explorer dashboard
+* A dashboard with visuals
 
 ## View parameters list
 
-Select the **Parameters** button at the top of the dashboard to view the list of all dashboard parameters.
+To view the list of all dashboard parameters, select the **Parameters** button at the top of the dashboard.
 
 :::image type="content" source="media/dashboard-parameters/parameters-widget.png" alt-text="Screenshot of the parameters button at the top of dashboard.":::
 
@@ -35,7 +39,7 @@ To create a parameter:
 
 ### Properties
 
-In the **Add parameter** pane, configure the following properties.
+In the **Add parameter** pane, configure the following properties:
 
 |Field  |Description |
 |---------|---------|
@@ -48,7 +52,7 @@ In the **Add parameter** pane, configure the following properties.
 |**Default value**|The default value of the filter. The filter will start always with the default value upon initial rendering of the dashboard.
 |**Add a "Select all" value**|Applicable only to single selection and multiple selection parameter types. Used to retrieve data for all the parameter values. This value should be built into the query to provide the functionality. See [Use the multiple-selection query-based parameter](#use-the-multiple-selection-query-based-parameter) for more examples on building such queries.|
 
-## Manage parameters in parameter card
+## Manage parameters
 
 After selecting **Parameters** from the top bar, you can [view the list of existing parameters](#view-parameters-list). In each parameter card, you can select the pencil widget to edit the parameter, or select the **More [...]** menu to **Duplicate**, **Delete**, or move the parameter.
 
@@ -70,11 +74,21 @@ A parameter must be used in the query to make the filter applicable for that que
 > [!NOTE]
 > If the parameter isn't used in the query, the filter remains inactive. Once the parameter is added to the query, the filter becomes active.
 
-## Use different parameter types
+## Parameter types
 
-Several dashboard parameter types are supported. The following examples describe how to use parameters in a query for various parameter types.
+Several dashboard parameter types are supported, as follows:
 
-### Use the default Time range parameter
+* [Default time range parameter](#default-time-range-parameter)
+* [Single-selection fixed-values parameters](#single-selection-fixed-values-parameters)
+* [Multiple-selection fixed-values parameters](#multiple-selection-fixed-values-parameters)
+* [Single-selection query-based parameters](#single-selection-query-based-parameters)
+* [Multiple-selection query-based parameters](#multiple-selection-query-based-parameters)
+* [Free text parameters](#free-text-parameters)
+* [Data source parameters](#data-source-parameters)
+
+The following examples describe how to use parameters in a query for various parameter types.
+
+### Default time range parameter
 
 Every dashboard has a *Time range* parameter by default. It shows up on the dashboard as a filter only when used in a query. Use the parameter keywords `_startTime` and `_endTime` to use the default time range parameter in a query as seen in the following example:
 
@@ -90,11 +104,11 @@ Once saved, the time range filter shows up on the dashboard. Now it can be used 
 
 :::image type="content" source="media/dashboard-parameters/time-range.png" alt-text="filter using custom time range.":::
 
-### Use the single selection fixed value parameter
+### Single-selection fixed-values parameter
 
 Fixed value parameters are based on predefined values specified by the user. The following example shows you how to create a single selection fixed value parameter.
 
-#### Create a fixed value parameter
+#### Create a single-selection fixed-values parameter
 
 1. Select **Parameters** to open the **Parameters** pane and select **New parameter**.
 
@@ -124,7 +138,7 @@ Fixed value parameters are based on predefined values specified by the user. The
 
 The parameter can be seen in the **Parameters** side pane, but aren't currently being used in any visuals.
 
-#### Use the parameter
+#### Use a single-selection fixed-values parameter
 
 1. Run a sample query using the new *Company* parameter by using the `_company` variable name:
 
@@ -143,11 +157,11 @@ The parameter can be seen in the **Parameters** side pane, but aren't currently 
 
     :::image type="content" source="media/dashboard-parameters/top-five-repos.png" alt-text="top five repos result.":::
 
-### Use the multiple-selection fixed-value parameters
+### Multiple-selection fixed-values parameters
 
 Fixed value parameters are based on predefined values specified by the user. The following example shows you how to create and use a multiple-selection fixed-value parameter.
 
-#### Create the parameters
+#### Create a multiple-selection fixed-values parameters
 
 1. Select **Parameters** to open the **Parameters** pane and select **New parameter**.
 
@@ -161,7 +175,7 @@ Fixed value parameters are based on predefined values specified by the user. The
 
 The new parameters can be seen in the **Parameters** side pane, but aren't currently being used in any visuals.
 
-#### Use the parameters
+#### Use a multiple-selection fixed-values parameters
 
 1. Run a sample query using the new *companies* parameter by using the `_companies` variable.
 
@@ -181,11 +195,11 @@ The new parameters can be seen in the **Parameters** side pane, but aren't curre
 
     :::image type="content" source="media/dashboard-parameters/select-companies.png" alt-text="select companies.":::
 
-### Use the single selection query-based parameter
+### Single-selection query-based parameter
 
 Query-based parameter values are retrieved during dashboard loading by executing the parameter query. The following example shows you how to create and use a single selection query-based parameter.
 
-#### Create a single selection parameter
+#### Create a single-selection query-based parameter
 
 1. Select **Parameters** to open the **Parameters** pane and select **New parameter**.
 
@@ -209,7 +223,7 @@ Query-based parameter values are retrieved during dashboard loading by executing
 
 1. Select **Done** to create the parameter.
 
-#### Use a parameter in the query
+#### Use a single-selection query-based parameter
 
 1. The following sample query with the new Event parameter uses the `_event` variable:
 
@@ -223,11 +237,11 @@ Query-based parameter values are retrieved during dashboard loading by executing
 
 1. Select different values to update the visuals.
 
-### Use the multiple-selection query-based parameter
+### Multiple-selection query-based parameter
 
 Query-based parameter values are derived at dashboard load time by executing the user specified query. The following example shows how to can create a multiple-selection query-based parameter:
 
-#### Create a query-based parameter
+#### Create a multiple-selection query-based parameter
 
 1. Select **Parameters** to open the **Parameters** pane and select **+ New parameter**.
 
@@ -239,7 +253,7 @@ Query-based parameter values are derived at dashboard load time by executing the
 
 1. Select **Done** to create the parameter.
 
-#### Use the parameter in a query
+#### Use a multiple-selection query-based parameter
 
 1. The following sample query uses the new *Events* parameter by using the `_events` variable.
 
@@ -256,7 +270,7 @@ Query-based parameter values are derived at dashboard load time by executing the
 
 1. Select one or more different values to update the visuals.
 
-### Use the free text parameter
+### Free text parameters
 
 Free text parameters don't contain any values. They allow you to introduce your own value.
 
@@ -271,7 +285,7 @@ Free text parameters don't contain any values. They allow you to introduce your 
     * **Pin as dashboard filter**: checked
     * **Default value**: No default value
 
-#### Use the parameter in a query
+#### Use a free text parameter
 
 1. Run a sample query using the new *Company* parameter by using the `_company` variable name:
 
@@ -284,7 +298,7 @@ Free text parameters don't contain any values. They allow you to introduce your 
     | top 5 by WatchEvents
     ```
 
-### Use the data source parameter
+### Data source parameters
 
 Once you have [added data sources](azure-data-explorer-dashboards.md#add-data-source) to your dashboard, you can create a parameter that selects one or more of the available data sources. This parameter can be used in tiles and other parameters.
 
@@ -304,7 +318,7 @@ Once you have [added data sources](azure-data-explorer-dashboards.md#add-data-so
 
 The new parameter is now visible in the parameter list at the top of the dashboard.
 
-#### Use the parameter in a query
+#### Use a data source parameter
 
 1. Navigate to the query of a new or existing tile.
 1. In **Source**, select the name of your new parameter under **Data source parameters**. For the above-created parameter, select **Cluster**
@@ -314,7 +328,7 @@ The new parameter is now visible in the parameter list at the top of the dashboa
 1. Select **Apply changes**.
 1. Use the **Cluster** parameter to change the data source for this connected query.
 
-## Use cross-filters as dashboard parameters
+## Cross-filters parameters
 
 Cross-filters allow you to select a value in one visual and all dashboard visuals, such as line or scatter charts, are filtered to only show related data. Using cross-filters achieves the same result as selecting the equivalent value for the parameter in the parameter list at the top of the dashboard.
 
@@ -386,10 +400,9 @@ To return to the source page, in the top-right of the destination page, select *
 
 ## Use filter search for single and multiple selection filters
 
-In single and multiple selection filters, type the value that you want. The filter search will present only the recently retrieved values that match the search term.
+In single and multiple selection filters, type the value that you want. The filter updates to only show the values that match the search term.
 
-## Next Steps
+## Related content
 
-* Get data with the [ingestion wizard](ingest-data-wizard.md)
-* [Write Kusto Query Language queries in the web UI](web-ui-kql.md)
 * [Customize Azure Data Explorer dashboard visuals](dashboard-customize-visuals.md)
+* [Write Kusto Query Language queries in the web UI](web-ui-kql.md)
