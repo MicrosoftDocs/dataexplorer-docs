@@ -333,11 +333,11 @@ The new parameter is now visible in the parameter list at the top of the dashboa
 #### Use a data source parameter
 
 1. Navigate to the query of a new or existing tile.
-1. In **Source**, select the name of your new parameter under **Data source parameters**. For the above-created parameter, select **Cluster**
 
-    :::image type="content" source="media/dashboard-parameters/data-source-parameter-in-query.png" alt-text="Screenshot of selecting a data source parameter in the query.":::
+1. In **Source**, select the name of your new parameter under **Data source parameters**. For the above-created parameter, select **Cluster**.
 
 1. Select **Apply changes**.
+
 1. Use the **Cluster** parameter to change the data source for this connected query.
 
 ## Cross-filters parameters
@@ -346,12 +346,17 @@ Cross-filters allow you to select a value in one visual and all dashboard visual
 
 ### Define cross-filters
 
-To create a cross-filter, you must turn it on in the visual and then specify the parameter that is used to filter the data.
+To create a cross-filter, you must turn on the option in the visual, and then specify the parameter that is used to filter the data.
 
-1. Edit the dashboard, and then edit the visual where you want to add cross-filters.
+1. Navigate to the query of the tile where you want to add cross-filters.
+
 1. Select **Visual**.
+
 1. In the right pane, select **Interactions**, and then turn on cross-filters.
-1. Specify both the column that will be used to provide the value and a parameter used to filter the visuals' query.
+
+1. Optionally, specify the **Interaction** type. The default is **Point** where you can select a value in the visual. For selecting a range of values, such as in a time chart, select **Drag**.
+
+1. Specify both the column that is used to provide the value and a parameter used to filter the query.
 
     > [!IMPORTANT]
     > The column and parameter must be of the same data type.
@@ -362,11 +367,11 @@ To create a cross-filter, you must turn it on in the visual and then specify the
 
 Once the cross-filter is defined, you can use it to interact with your data. In visuals where you've defined cross-filters, you can select data points and use their values to filter the current dashboard page. For table visuals, select data points by right-clicking on the relevant cell and then in the context menu, select **Cross-filter**.
 
-:::image type="content" source="media/dashboard-parameters/cross-filter-query.png" alt-text="Screenshot of a table visual, showing the cross-filter context menu option.":::
+:::image type="content" source="media/dashboard-parameters/cross-filter-option.png" alt-text="Screenshot of a table visual, showing the cross-filter context menu option.":::
 
 You can reset the cross-filter by selecting **Reset** at the top of the visual where it was selected.
 
-:::image type="content" source="media/dashboard-parameters/cross-filter-reset.png" alt-text="Screenshot of a table visual, showing the reset button.":::
+:::image type="content" source="media/dashboard-parameters/reset-button.png" alt-text="Screenshot of a table visual, showing the reset button.":::
 
 ## Use drillthroughs as dashboard parameters
 
@@ -376,13 +381,7 @@ With drillthrough, you can select a value in a visual and use it to filter the v
 
 To create a drillthrough, you must first turn it on in the visual and then add one or more drillthroughs as required.
 
-1. Edit the dashboard.
-
-    :::image type="content" source="media/dashboard-parameters/drillthrough-edit.png" alt-text="Screenshot of the dashboard menu, showing the edit option.":::
-
 1. Edit the visual where you want to add a drillthrough. Make sure that the **Visual** tab is selected.
-
-    :::image type="content" source="media/dashboard-parameters/drillthrough-visual-edit.png" alt-text="Screenshot of a dashboard visual, showing the edit option.":::
 
 1. In the right pane, select **Interactions**, then turn on drillthrough.
 
@@ -399,8 +398,6 @@ To create a drillthrough, you must first turn it on in the visual and then add o
 
     > [!IMPORTANT]
     > Column and parameter pairs must be of the same data type.
-
-    :::image type="content" source="media/dashboard-parameters/drillthrough-visual-create-form.png" alt-text="Screenshot of drillthrough form, highlighting the fields to fill out.":::
 
 ## Interact with your data using drillthroughs
 
