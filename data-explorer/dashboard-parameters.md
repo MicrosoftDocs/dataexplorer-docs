@@ -206,36 +206,42 @@ Query-based parameter values are retrieved during dashboard loading by executing
 
 1. Select **Parameters** to open the **Parameters** pane and select **New parameter**.
 
-1. Fill in the details as mentioned in [Use the single selection fixed value parameter](#use-the-single-selection-fixed-value-parameter) with the following changes:
+1. Fill in the details as mentioned in [Use a single-selection fixed-values parameter](#use-a-single-selection-fixed-values-parameter) with the following changes:
 
-    * **Label**: Event
-    * **Variable name**: `_event`
+    * **Label**: State
+    * **Variable name**: `_state`
     * **Source**: Query
-    * **Data source**: GitHub
-    * Select **Add query** and enter the following query. Select **Done**.
+    * **Data source**: StormEventsSample
 
-    ```kusto
-    EventsAll
-    | distinct Type
-    | order by Type asc
-    ```
+    * Select **Edit query** and enter the following query. Select **Done**.
 
-    * **Value**: Type
-    * **Display name**: Type
-    * **Default value**: WatchEvent
+        ```kusto
+        StormEvents
+        | where StartTime between (_startTime.._endTime)
+        | where EventType in (_eventType) or isempty(_eventType)
+        | summarize TotalEvents = count() by State
+        | top 5 by TotalEvents
+        | project State
+        ```
+
+    * **Value**: State
+    * **Display name**: State
+    * **Default value**: Choose a default value
 
 1. Select **Done** to create the parameter.
 
 #### Use a single-selection query-based parameter
 
-1. The following sample query with the new Event parameter uses the `_event` variable:
+1. The following sample query with the new *State* parameter uses the `_state` variable:
 
     ``` kusto
-    EventsAll
-    | where Type has (_event)
-    | summarize count() by Type, bin(CreatedAt,7d)
+    StormEvents
+    | where StartTime between (_startTime.._endTime)
+    | where EventType in (_eventType) or isempty(_eventType)
+    | where State == _state
+    | summarize TotalEvents = count() by State
+    | top 5 by TotalEvents
     ```
-
     The new parameter shows up in the parameter list at the top of the dashboard.
 
 1. Select different values to update the visuals.
@@ -248,27 +254,30 @@ Query-based parameter values are derived at dashboard load time by executing the
 
 1. Select **Parameters** to open the **Parameters** pane and select **+ New parameter**.
 
-1. Fill in the details as mentioned in [Use the single selection fixed value parameter](#use-the-single-selection-fixed-value-parameter) with the following changes:
+1. 1. Fill in the details as mentioned in [Use a single-selection fixed-values parameter](#use-a-single-selection-fixed-values-parameter) with the following changes:
 
-    * **Label**: Events
+    * **Label**: State
     * **Parameter type**: Multiple selection
-    * **Variable name**: `_events`
+    * **Variable name**: `_state`
 
 1. Select **Done** to create the parameter.
 
 #### Use a multiple-selection query-based parameter
 
-1. The following sample query uses the new *Events* parameter by using the `_events` variable.
+1. The following sample query uses the new *State* parameter by using the `_state` variable.
 
     ``` kusto
-    EventsAll
-    | where Type in (_events) or isempty(_events)
-    | summarize count() by Type, bin(CreatedAt,7d)
+    StormEvents
+    | where StartTime between (_startTime.._endTime)
+    | where EventType in (_eventType) or isempty(_eventType)
+    | where State in (_state) or isempty(_state)
+    | summarize TotalEvents = count() by State
+    | top 5 by TotalEvents
     ```
 
     > [!NOTE]
     > This sample uses the **Select All** option by checking for empty values with the `isempty()` function.
-
+    
     The new parameter shows up in the parameter list at the top of the dashboard.
 
 1. Select one or more different values to update the visuals.
@@ -280,25 +289,26 @@ Free text parameters don't contain any values. They allow you to introduce your 
 #### Create a free text parameter
 
 1. Select **Parameters** to open the **Parameters** pane and select **+ New parameter**.
+
 1. Fill in the details as follows:
-    * **Label**: Company
+
+    * **Label**: State
     * **Parameter type**: Free text
-    * **Variable name**: _company
+    * **Variable name**: _state
     * **Data type**: String
-    * **Pin as dashboard filter**: checked
     * **Default value**: No default value
 
 #### Use a free text parameter
 
-1. Run a sample query using the new *Company* parameter by using the `_company` variable name:
+1. Run a sample query using the new *State* parameter by using the `_state` variable name:
 
     ```kusto
-    EventsAll
-    | where CreatedAt > ago(7d)
-    | where Type == "WatchEvent"
-    | where Repo.name has _company
-    | summarize WatchEvents=count() by RepoName = tolower(tostring(Repo.name))
-    | top 5 by WatchEvents
+    StormEvents
+    | where StartTime between (_startTime.._endTime)
+    | where EventType in (_eventType) or isempty(_eventType)
+    | where State contains _state
+    | summarize TotalEvents = count() by State
+    | top 5 by TotalEvents
     ```
 
 ### Data source parameters
@@ -309,13 +319,12 @@ Once you have [added data sources](azure-data-explorer-dashboards.md#add-data-so
 
 1. Select **Parameters** to open the **Parameters** pane and select **+ New parameter**.
 1. Fill in the details as follows:
-    * **Label**: Cluster
+
+    * **Label**: Source
     * **Parameter type**: Data source
     * **Show on pages**: Select all
     * **Values**: Select all
-    * **Default value**: Samples
-
-    :::image type="content" source="media/dashboard-parameters/data-source-parameter.png" alt-text="Screenshot of data source parameters.":::
+    * **Default value**: StormEventsSample
 
 1. Select **Done**.
 
