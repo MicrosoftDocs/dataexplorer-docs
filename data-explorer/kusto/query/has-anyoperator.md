@@ -25,6 +25,9 @@ For more information about other operators and to determine which operator is mo
 | *col* | string | &check; | The column by which to filter.|
 | *expression* | scalar or tabular | &check; | An expression that specifies the values for which to search. Each expression can be a [scalar](scalar-data-types/index.md) value or a [tabular expression](tabularexpressionstatements.md) that produces a set of values. If a tabular expression has multiple columns, the first column is used. The search will consider up to 10,000 distinct values.|
 
+> [!WARNING]
+> For optimal performance, please stay within 2048 values. From 2049 values onwards, has_any() internally rewrites itself as regex.
+
 > [!NOTE]
 > An inline tabular expression must be enclosed with double parentheses. See [example](#tabular-expression).
 
