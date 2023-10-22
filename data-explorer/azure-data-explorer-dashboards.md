@@ -228,6 +228,16 @@ You can update an existing dashboard, or restore a previous version, as follows:
 1. Select the file to update the dashboard.
 1. Select **Save changes**.
 
+## Add page
+
+Pages are optional containers for tiles. You can use pages to organize tiles into logical groups, such as by data source or by subject area. You can also use pages to create a dashboard with multiple views, such as a dashboard with a drillthrough from a summary page to a details page.
+
+1. On the left **Pages** pane, select **+ Add page**.
+
+1. To name the page, select the vertical **More menu [...]** > **Rename page**.
+
+1. [Add tiles](#add-tile) to the page.
+
 ## Enable auto refresh
 
 Auto refresh is a feature that allows you to automatically update the data on a dashboard without manually reloading the page or clicking a refresh button.
