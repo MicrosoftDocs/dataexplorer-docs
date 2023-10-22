@@ -367,7 +367,7 @@ To create a cross-filter, you must turn on the option in the visual, and then sp
 
 Once the cross-filter is defined, you can use it to interact with your data. In visuals where you've defined cross-filters, you can select data points and use their values to filter the current dashboard page. For table visuals, select data points by right-clicking on the relevant cell and then in the context menu, select **Cross-filter**.
 
-:::image type="content" source="media/dashboard-parameters/cross-filter-option.png" alt-text="Screenshot of a table visual, showing the cross-filter context menu option.":::
+:::image type="content" source="media/dashboard-parameters/cross-filter.png" alt-text="Screenshot of a table visual, showing the cross-filter context menu option.":::
 
 You can reset the cross-filter by selecting **Reset** at the top of the visual where it was selected.
 
