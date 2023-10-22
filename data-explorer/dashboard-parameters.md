@@ -403,9 +403,9 @@ To create a drillthrough, you must first turn it on in the visual and then add o
 
 Once drillthroughs are defined, you can use them to interact with your data. To do so, in visuals or tables where you've defined a drillthrough, right-click on a data point, and then select **Drill through to** > *destination page*. The values from the data point will be used as the parameters to filter the visuals on the target page.
 
-:::image type="content" source="media/dashboard-parameters/drillthrough-example.png" alt-text="Screenshot of a dashboard visual, showing the drillthrough interaction.":::
+:::image type="content" source="media/dashboard-parameters/drillthrough-combined.png" alt-text="Screenshot of a dashboard visual, showing the drillthrough interaction.":::
 
-To return to the source page, in the top-right of the destination page, select **Back**. All filters assigned by the drillthrough will be reset.
+To return to the source page, in the top-right of the destination page, select **Reset**. All filters assigned by the drillthrough will be reset.
 
 ## Use filter search for single and multiple selection filters
 
