@@ -145,7 +145,7 @@ Fixed value parameters are based on predefined values specified by the user. The
 
 The parameter can be seen in the **Parameters** side pane, but aren't currently being used in any visuals.
 
-#### Use a single-selection fixed-values parameters
+#### Use a single-selection fixed-values parameter
 
 1. Run a sample query using the new *Event TypTope* parameter by using the `_eventType` variable name:
 
@@ -196,9 +196,9 @@ The new parameters can be seen in the **Parameters** side pane, but aren't curre
 
 1. Select one or more different values to update the visuals.
 
-    :::image type="content" source="media/dashboard-parameters/multiple-evet-types.png" alt-text="Select multiple event types.":::
+    :::image type="content" source="media/dashboard-parameters/multiple-event-types.png" alt-text="Select multiple event types.":::
 
-### Single-selection query-based parameter
+### Single-selection query-based parameters
 
 Query-based parameter values are retrieved during dashboard loading by executing the parameter query. The following example shows you how to create and use a single selection query-based parameter.
 
@@ -246,7 +246,7 @@ Query-based parameter values are retrieved during dashboard loading by executing
 
 1. Select different values to update the visuals.
 
-### Multiple-selection query-based parameter
+### Multiple-selection query-based parameters
 
 Query-based parameter values are derived at dashboard load time by executing the user specified query. The following example shows how to can create a multiple-selection query-based parameter:
 
