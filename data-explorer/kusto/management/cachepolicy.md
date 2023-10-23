@@ -62,7 +62,7 @@ set query_datascope="hotcache";
 T | union U | join (T datascope=all | where Timestamp < ago(365d)) on X
 ```
 
-## caching policy vs retention policy
+## Caching policy vs retention policy
 
 Caching policy is independent of [retention policy](./retentionpolicy.md):
 
