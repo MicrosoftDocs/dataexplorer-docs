@@ -539,6 +539,9 @@ items:
           - name: .alter table policy row_level_security command
             displayName: .alter table row level security policy, .alter table row_level_security policy
             href: alter-table-row-level-security-policy-command.md
+          - name: .delete table policy row_level_security command
+            displayName: .delete table policy row_level_security command
+            href: delete-table-row-level-security-policy-command.md
           - name: .show materialized policy row_level_security command
             displayName: .show materialized view row level security policy, .show materialized-view row_level_security policy, .show materialized view row_level_security policy
             href: show-materialized-view-row-level-security-policy-command.md
