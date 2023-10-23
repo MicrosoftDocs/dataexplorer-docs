@@ -476,6 +476,28 @@ items:
             href: show-table-partitioning-policy-command.md
           - name: .show database extents partitioning statistics command
             href: show-database-extents-partitioning-statistics.md
+      - name: Query weak consistency
+        items:
+          - name: Query weak consistency policy
+            href: query-weak-consistency-policy.md
+          - name: .alter cluster policy query_weak_consistency command
+            href: alter-query-weak-consistency-policy.md
+          - name: .show cluster policy query_weak_consistency command
+            displayName: .show cluster policy query weak consistency, .show cluster query_weak_consistency policy, .show query weak consistency policy
+            href: show-query-weak-consistency-policy.md
+      - name: Restricted view access
+        items:
+          - name: Restricted view access policy
+            href: restrictedviewaccesspolicy.md
+          - name: .alter table policy restricted_view_access command
+            displayName: .alter table restricted view access policy, .alter tables policy restricted_view_access
+            href: alter-table-restricted-view-access-policy-command.md
+          - name: .delete table policy restricted_view_access command
+            displayName: .delete table restricted view access policy, .delete table restricted_view_access policy
+            href: delete-table-restricted-view-access-policy-command.md
+          - name: .show table policy restricted_view_access command
+            displayName: .show table restricted view access policy, .show table restricted_view_access policy
+            href: show-table-restricted-view-access-policy-command.md
       - name: Retention
         items:
           - name: Retention policy
@@ -516,28 +538,7 @@ items:
           - name: .show table policy retention command
             displayName: .show table retention policy
             href: show-table-retention-policy-command.md
-      - name: Restricted view access
-        items:
-          - name: Restricted view access policy
-            href: restrictedviewaccesspolicy.md
-          - name: .alter table policy restricted_view_access command
-            displayName: .alter table restricted view access policy, .alter tables policy restricted_view_access
-            href: alter-table-restricted-view-access-policy-command.md
-          - name: .delete table policy restricted_view_access command
-            displayName: .delete table restricted view access policy, .delete table restricted_view_access policy
-            href: delete-table-restricted-view-access-policy-command.md
-          - name: .show table policy restricted_view_access command
-            displayName: .show table restricted view access policy, .show table restricted_view_access policy
-            href: show-table-restricted-view-access-policy-command.md
-      - name: Query weak consistency
-        items:
-          - name: Query weak consistency policy
-            href: query-weak-consistency-policy.md
-          - name: .alter cluster policy query_weak_consistency command
-            href: alter-query-weak-consistency-policy.md
-          - name: .show cluster policy query_weak_consistency command
-            displayName: .show cluster policy query weak consistency, .show cluster query_weak_consistency policy, .show query weak consistency policy
-            href: show-query-weak-consistency-policy.md
+
       - name: Row level security
         items:
           - name: Row level security policy
