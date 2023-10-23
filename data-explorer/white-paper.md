@@ -402,3 +402,7 @@ Azure Data Explorer supports the notion of a follower cluster. A follower cluste
 The main motivation for the follower cluster feature is workload isolation. For instance, a lead Azure Data Explorer cluster may continuously ingest a stream of near real-time production events, powering queries from the operational dashboards and the troubleshooting scenarios. A team of data scientists that wishes to run occasional experiments on the production data may decide to stand up a follower cluster (on demand and possibly for a limited time) and run the heavier resource-intensive analytical queries on the read-only view of the same data, without interfering with the activity on the leAzure Data Explorerr cluster.
 
 The implementation of the follower cluster mechanism takes advantage of the metadata and shard data storage design, that allows an independent Engine service instance to load the latest snapshot of the relevant database and re-create full and consistent view of that database within its own cluster, and then update it periodically from the latest snapshot.
+
+## Related content
+
+* [Solution architectures](solution-architectures.md)
