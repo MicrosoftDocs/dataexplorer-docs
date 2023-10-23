@@ -10,9 +10,9 @@ ms.date: 10/23/2023
 
 The world of Big Data is growing steadily, and the number of technologies that process large amounts of data is growing along with it. Modern Big Data solutions are typically composed of multiple technologies, each addressing a particular set of requirements. The usual activities include data collection, ETL, enrichment, batch processing, real-time stream analytics, dashboards, interactive exploration, reporting, aggregation and summarization, as well as training and servicing ML models.
 
-In this whitepaper, we present the platform and technology that underlies the Azure Data Explorer (ADE) service offering (previously code named Kusto). ADE fits a specific set of needs within this landscape, and it's best illustrated with an example. Let's imagine a large-scale cloud service deployed on thousands of VM's, handling complex user transactions under strict SLAs and interacting with other external services. When properly instrumented, such a service emits an enormous number of signals: generic performance events from each VM (e.g. memory, disk and CPU usage), application-specific events (e.g. user authentication, start/progress/end of a transaction), internal health alerts and, last but not least, trace and debug statements added by the developers to aid in the service troubleshooting. Various subsets of these signals are routed to different systems: chosen performance and application events to the stream analytics solution for real-time alerting, generic performance counters to the time-series DB for operational dashboards, high-level application events to the data warehouse for further business analytics, etc. Our platform was designed to get all this data in its raw, unprocessed form, store it for a limited time interval (i.e. a sliding window to a subset of data ranging from a few days to a few months), and allow fast ad-hoc queries and analytics over this diverse data.
+In this whitepaper, we present the platform and technology that underlies the Azure Data Explorer service offering. Azure Data Explorer fits a specific set of needs within this landscape, and it's best illustrated with an example. Let's imagine a large-scale cloud service deployed on thousands of VM's, handling complex user transactions under strict SLAs and interacting with other external services. When properly instrumented, such a service emits an enormous number of signals: generic performance events from each VM (e.g. memory, disk and CPU usage), application-specific events (e.g. user authentication, start/progress/end of a transaction), internal health alerts and, last but not least, trace and debug statements added by the developers to aid in the service troubleshooting. Various subsets of these signals are routed to different systems: chosen performance and application events to the stream analytics solution for real-time alerting, generic performance counters to the time-series DB for operational dashboards, high-level application events to the data warehouse for further business analytics, etc. Our platform was designed to get all this data in its raw, unprocessed form, store it for a limited time interval (i.e. a sliding window to a subset of data ranging from a few days to a few months), and allow fast ad-hoc queries and analytics over this diverse data.
 
-More formally, the main ADE features are:
+More formally, the main Azure Data Explorer features are:
 
 - Ability to work with any kind of data: structured, semi-structured (JSON and more) and unstructured (free text).
 - High velocity (millions of events per second), low-latency (seconds) and linear scale ingestion of raw data.
@@ -34,7 +34,7 @@ A typical deployment of the platform for a given customer (tenant) consists of t
 
 The Engine service is responsible for processing the incoming raw data and serving user queries. It exposes a JSON API endpoint through which users interact with the service by sending queries and control commands.
 
-The DM service is responsible for connecting the Engine to the various data pipelines, orchestrating and maintaining continuous data ingestion process from these pipelines (including robust handling of failure and backpressure conditions) and invocation of the periodic data grooming tasks on the Engine cluster. In principle, DM service is optional, though in practice it's present in the vast majority of Kusto deployments.
+The DM service is responsible for connecting the Engine to the various data pipelines, orchestrating and maintaining continuous data ingestion process from these pipelines (including robust handling of failure and backpressure conditions) and invocation of the periodic data grooming tasks on the Engine cluster. In principle, DM service is optional, though in practice it's present in the vast majority of Azure Data Explorer deployments.
 
 The focus of this document is the Engine service, although we'll occasionally refer to the DM when discussing the relevant functionality.
 
@@ -47,7 +47,7 @@ The engine service exposes a familiar relational data model:
 - Each table defines a schema (ordered list of typed fields);
 - There are various policy objects that control authorization, data retention, data encoding and other aspects; these can be attached to a database, a table and sometimes to a table field.
 
-Unlike a typical RDBMS, there are no primary/foreign key constraints in ADE (or any other constraints, such as key uniqueness), and the necessary relationships are established at the query time. There are at least two reasons for the lack of such formal constraints: first, they would be constantly violated with the kind of raw and noisy data that the system is intended to handle; second, enforcement of these constraints in a large distributed system would result in a substantial negative impact on the data ingestion rate.
+Unlike a typical RDBMS, there are no primary/foreign key constraints in Azure Data Explorer (or any other constraints, such as key uniqueness), and the necessary relationships are established at the query time. There are at least two reasons for the lack of such formal constraints: first, they would be constantly violated with the kind of raw and noisy data that the system is intended to handle; second, enforcement of these constraints in a large distributed system would result in a substantial negative impact on the data ingestion rate.
 
 All the user interaction with the service falls into one of the two broad categories: queries and control commands. Queries reference any number of tables (including tables in different databases or even clusters) and apply various composable relational operators to express the desired computation. The result of the query is one or more tabular data streams. Queries are read-only, they never mutate the data or the logical model.
 
@@ -72,7 +72,7 @@ Each node in the cluster fulfills one or more of the following roles:
 
 #### Cluster state and metadata transactions
 
-ADE relies heavily on the Azure Blob service as a durable, highly available storage both for the data shards and for the cluster metadata. Each data shard has a unique ID and is represented by a number of blobs in the storage (we describe the shard format in a later section). A database maintains a list of available storage containers (storage account URI + container name), configured by the database administrator.
+Azure Data Explorer relies heavily on the Azure Blob service as a durable, highly available storage both for the data shards and for the cluster metadata. Each data shard has a unique ID and is represented by a number of blobs in the storage (we describe the shard format in a later section). A database maintains a list of available storage containers (storage account URI + container name), configured by the database administrator.
 
 Each data shard resides in one of those containers. A table definition holds a list of references to its data shards (i.e. list of shard IDs), along with the corresponding storage containers. Therefore, data shards are spread across multiple storage accounts and containers, balancing the load on the Blob service and allowing for efficient manipulations on a group of shards at the container level.
 
@@ -173,7 +173,7 @@ Query optimizer defines a large set of rewrite rules. Each rewrite rule can matc
 
 Subsets of related rewrite rules are grouped into passes, where each pass performs a certain optimization task. For instance, one of the rewrites in the predicate push-down pass recognizes Extend operator followed by a Filter. If the filter predicate expression doesn't depend on the values computed by the preceding Extend operator, the application of the rewrite rule reorders the two operators (thus pushing the Filter down, towards the leaf Table access).
 
-Most of the optimizations performed at this stage aren't specific to ADE and are common across many relational databases:
+Most of the optimizations performed at this stage aren't specific to Azure Data Explorer and are common across many relational databases:
 
 - Propagation of projections
 - Predicate push-down
@@ -226,7 +226,7 @@ Logs
 
 Here, the cardinality of the summarize group key is low (day of month), thus most of the computation happens at the shard level (heavy filtering and reduction of potentially billions of records into 31 groups), followed by a very lightweight summarization at the node and the top levels of the query.
 
-However, this isn't the best strategy for join and summarize operators with high cardinality of the join or group-by keys, respectively. First, the resulting hash tables might easily exceed the per-node query memory budget; second, the node-level and the top-level aggregations become significant sequential bottlenecks in the query execution. In order to overcome these limitations, ADE query planner and execution engine implement the data shuffling mechanism, which, combined with the cost-based optimization and the relevant rewrite rules, enables additional execution strategies for the join and the summarize operators that are more resilient to high-cardinality keys.
+However, this isn't the best strategy for join and summarize operators with high cardinality of the join or group-by keys, respectively. First, the resulting hash tables might easily exceed the per-node query memory budget; second, the node-level and the top-level aggregations become significant sequential bottlenecks in the query execution. In order to overcome these limitations, Azure Data Explorer query planner and execution engine implement the data shuffling mechanism, which, combined with the cost-based optimization and the relevant rewrite rules, enables additional execution strategies for the join and the summarize operators that are more resilient to high-cardinality keys.
 
 The essence of the data shuffling in the Engine service is to partition the source data records into a number of disjoint sets based on the hash of the join/summarize key and ensure that the entire partition ends up on one of the cluster nodes, where it can be processed by the local join/summarize operator implementation, independent of any other partition:
 
@@ -267,7 +267,7 @@ These operators are injected by the query planner at the appropriate junctions o
 
 ## Shard storage
 
-Data shard in ADE represents a horizontal partition of a table, and each shard is implemented as an independent compressed column store.
+Data shard in Azure Data Explorer represents a horizontal partition of a table, and each shard is implemented as an independent compressed column store.
 
 There are no hard constraints on the size of a single shard: neither on the number of logical records it represents nor on its physical size (size of the shard's encoded data in the Blob store). Nevertheless, the preferred shard size is 100K-10M records, since a large number of small shards results in significant management and query planning overhead, while small number of very large shards inhibits query execution parallelism.
 
@@ -382,7 +382,7 @@ Each of these RelOp subtrees is then rendered back into a standalone KQL query a
 
 ### Update policy
 
-Update policy is a policy set on a table that instructs ADE to automatically append data to that table (a target) whenever new data is inserted into another (source) table, by running the update policy's query on the data being inserted into the source table. This allows, for example, the creation of a one table as the filtered view of another table, possibly with a different schema, retention policy, etc. In other words, an update policy allows one to set up a simple and efficient ETL-like process within our service, without the need to establish more complex data processing flows with external dependencies.
+Update policy is a policy set on a table that instructs Azure Data Explorer to automatically append data to that table (a target) whenever new data is inserted into another (source) table, by running the update policy's query on the data being inserted into the source table. This allows, for example, the creation of a one table as the filtered view of another table, possibly with a different schema, retention policy, etc. In other words, an update policy allows one to set up a simple and efficient ETL-like process within our service, without the need to establish more complex data processing flows with external dependencies.
 
 The implementation extends the regular Data Ingest flow described earlier:
 
@@ -395,8 +395,8 @@ This feature also supports cascading updates.
 
 ### Follower clusters
 
-ADE supports the notion of a follower cluster. A follower cluster can follow one, several, or all of another cluster's databases. "Following" a database means that the follower cluster attaches to that database in read-only mode, making it possible to use the follower cluster to run queries on that database without utilizing the resources of the cluster that writes to the database (called leader cluster). The follower cluster periodically synchronizes to changes in the followed databases, so it has some data lag with respect to the leader cluster. The lag could vary between a few seconds to a few minutes, depending on the overall size of the followed databases' metadata.
+Azure Data Explorer supports the notion of a follower cluster. A follower cluster can follow one, several, or all of another cluster's databases. "Following" a database means that the follower cluster attaches to that database in read-only mode, making it possible to use the follower cluster to run queries on that database without utilizing the resources of the cluster that writes to the database (called leAzure Data Explorerr cluster). The follower cluster periodically synchronizes to changes in the followed databases, so it has some data lag with respect to the leAzure Data Explorerr cluster. The lag could vary between a few seconds to a few minutes, depending on the overall size of the followed databases' metadata.
 
-The main motivation for the follower cluster feature is workload isolation. For instance, a lead ADE cluster may continuously ingest a stream of near real-time production events, powering queries from the operational dashboards and the troubleshooting scenarios. A team of data scientists that wishes to run occasional experiments on the production data may decide to stand up a follower cluster (on demand and possibly for a limited time) and run the heavier resource-intensive analytical queries on the read-only view of the same data, without interfering with the activity on the leader cluster.
+The main motivation for the follower cluster feature is workload isolation. For instance, a lead Azure Data Explorer cluster may continuously ingest a stream of near real-time production events, powering queries from the operational dashboards and the troubleshooting scenarios. A team of data scientists that wishes to run occasional experiments on the production data may decide to stand up a follower cluster (on demand and possibly for a limited time) and run the heavier resource-intensive analytical queries on the read-only view of the same data, without interfering with the activity on the leAzure Data Explorerr cluster.
 
 The implementation of the follower cluster mechanism takes advantage of the metadata and shard data storage design, that allows an independent Engine service instance to load the latest snapshot of the relevant database and re-create full and consistent view of that database within its own cluster, and then update it periodically from the latest snapshot.
