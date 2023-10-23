@@ -351,6 +351,21 @@ items:
           - name: .show policy encoding command
             displayName: .show encoding policy
             href: show-encoding-policy.md
+      - name: Extent tags retention
+        items:
+          - name: Extent tags retention policy
+            href: extent-tags-retention-policy.md
+          - name: .alter database policy extent_tags_retention command
+            displayName: .alter database extent tags retention policy, .alter database extent_tags_retention policy
+            href: alter-extent-tags-retention-policy.md
+          - name: .alter table policy extent_tags_retention command
+            displayName: .alter table extent tags retention policy
+            href: alter-table-extent-tags-retention-policy.md
+          - name: .delete extent tags retention policy command
+            href: delete-extent-tags-retention-policy.md
+          - name: .show policy extent_tags_retention command
+            displayName: .show extent tags retention policy, .show extent_tags_retention policy, .show policy extent tags retention, .show policy extent tags retention
+            href: show-extent-tags-retention-policy.md
       - name: Ingestion batching
         items:
           - name: Ingestionbatching policy
@@ -373,7 +388,7 @@ items:
           - name: .show table policy ingestionbatching command
             displayName: .show table ingestionbatching policy, .show table ingestion batching policy
             href: show-table-ingestion-batching-policy.md
-      - name: Ingestiontime
+      - name: Ingestion time
         items:
           - name: Ingestion time policy
             href: ingestiontimepolicy.md
@@ -386,7 +401,7 @@ items:
           - name: .show table policy ingestiontime command
             displayName: .show table ingestion time policy, .show table ingestiontime policy
             href: show-table-ingestion-time-policy-command.md
-      - name: ManagedIdentity
+      - name: Managed Identity
         items:
           - name: ManagedIdentity policy
             href: managed-identity-policy.md
@@ -501,21 +516,6 @@ items:
           - name: .show table policy retention command
             displayName: .show table retention policy
             href: show-table-retention-policy-command.md
-      - name: Extent tags retention
-        items:
-          - name: Extent tags retention policy
-            href: extent-tags-retention-policy.md
-          - name: .alter database policy extent_tags_retention command
-            displayName: .alter database extent tags retention policy, .alter database extent_tags_retention policy
-            href: alter-extent-tags-retention-policy.md
-          - name: .alter table policy extent_tags_retention command
-            displayName: .alter table extent tags retention policy
-            href: alter-table-extent-tags-retention-policy.md
-          - name: .delete extent tags retention policy command
-            href: delete-extent-tags-retention-policy.md
-          - name: .show policy extent_tags_retention command
-            displayName: .show extent tags retention policy, .show extent_tags_retention policy, .show policy extent tags retention, .show policy extent tags retention
-            href: show-extent-tags-retention-policy.md
       - name: Restricted view access
         items:
           - name: Restricted view access policy
@@ -529,6 +529,15 @@ items:
           - name: .show table policy restricted_view_access command
             displayName: .show table restricted view access policy, .show table restricted_view_access policy
             href: show-table-restricted-view-access-policy-command.md
+      - name: Query weak consistency
+        items:
+          - name: Query weak consistency policy
+            href: query-weak-consistency-policy.md
+          - name: .alter cluster policy query_weak_consistency command
+            href: alter-query-weak-consistency-policy.md
+          - name: .show cluster policy query_weak_consistency command
+            displayName: .show cluster policy query weak consistency, .show cluster query_weak_consistency policy, .show query weak consistency policy
+            href: show-query-weak-consistency-policy.md
       - name: Row level security
         items:
           - name: Row level security policy
@@ -653,15 +662,6 @@ items:
             href: show-table-update-policy-command.md
           - name: Use a managed identity
             href: update-policy-with-managed-identity.md
-      - name: Query weak consistency
-        items:
-          - name: Query weak consistency policy
-            href: query-weak-consistency-policy.md
-          - name: .alter cluster policy query_weak_consistency command
-            href: alter-query-weak-consistency-policy.md
-          - name: .show cluster policy query_weak_consistency command
-            displayName: .show cluster policy query weak consistency, .show cluster query_weak_consistency policy, .show query weak consistency policy
-            href: show-query-weak-consistency-policy.md
   - name: Security roles
     items:
       - name: Security roles overview
