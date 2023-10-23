@@ -15,6 +15,7 @@ The `.show` `queries` command lists queries that have reached a final state, and
 >
 > - A [database admin or database monitor](./access-control/role-based-access-control.md) can see any command that was invoked on their database.
 > - Other users can only see queries that were invoked by them.
+> - When running in the context of Kusto Explorer or Azure Data Explorer, returned queries will only be shown for the _currently selected cluster_ in the **Connections** tree.
 
 ### Syntax
 
