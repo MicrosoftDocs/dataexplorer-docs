@@ -655,6 +655,8 @@ items:
             displayName: Failure, error code
           - name: Ingestion FAQ
             href: kusto/management/ingestion-faq.yml
+      - name: White paper
+        href: white-paper.md
   - name: Resources
     items:
       - name: Forums
