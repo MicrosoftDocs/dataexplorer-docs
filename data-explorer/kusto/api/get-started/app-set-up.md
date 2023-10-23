@@ -50,7 +50,7 @@ Verify installation: In a command shell, run `dotnet sdk check` to check that th
     - Verify installation: In a command shell, run `mvn -version` to check that the version is 3.6.3 or later
 ---
 
-### Install the package
+## Install the package
 
 This section walks you through installing the Kusto client library in your environment.
 
@@ -130,7 +130,7 @@ You also need to add the *maven-compiler-plugin* and *exec-maven-plugin* plugins
 
 ---
 
-### Learn how to create apps that use client libraries
+## Learn how to create apps that use client libraries
 
 The following articles walk you through creating apps that use the Kusto client libraries.
 
