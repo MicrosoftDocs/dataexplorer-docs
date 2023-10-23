@@ -131,16 +131,17 @@ Here's a more involved example, adapted from one of our typical troubleshooting 
 
 ```kusto
 let RelevantLogs =
-Logs
-| where TraceTimeStamp between (datetime(2018-01-01 14:00) .. 1d);
+    Logs
+    | where TraceTimeStamp between (datetime(2018-01-01 14:00) .. 1d);
 RelevantLogs
 | where EventText has "Event: NotifyUserAuthenticated (token=<User="
 | extend UserID = extract(@'User=(\w+)', 1, EventText)
 | join kind=inner (
- RelevantLogs
- | where Level == "Error”
- | summarize by ClientActivityId
- ) on ClientActivityId
+    RelevantLogs
+    | where Level == "Error”
+    | summarize by ClientActivityId
+    )
+    on ClientActivityId
 | summarize ErrorCount = count() by UserID
 | top 20 by ErrorCount desc
 ```
