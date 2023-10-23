@@ -1,13 +1,13 @@
 ---
-title:  .alter cluster cache policy command
-description: Learn how to use the `.alter cluster cache policy` command to change the cluster's cache policy.
+title:  .alter cluster caching policy command
+description: Learn how to use the `.alter cluster caching policy` command to change the cluster's caching policy.
 ms.reviewer: yonil
 ms.topic: reference
 ms.date: 05/25/2023
 ---
-# .alter cluster cache policy command
+# .alter cluster caching policy command
 
-Changes the cluster's cache policy. To speed up queries, data is cached on processing nodes, SSD, or even in RAM. The [cache policy](cachepolicy.md) allows your cluster to describe the data artifacts that it uses, so that more important data can take priority.
+Changes the cluster's caching policy. To speed up queries, data is cached on processing nodes, SSD, or even in RAM. The [caching policy](cachepolicy.md) allows your cluster to describe the data artifacts that it uses, so that more important data can take priority.
 
 ## Permissions
 
@@ -23,7 +23,7 @@ You must have [AllDatabasesAdmin](access-control/role-based-access-control.md) p
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-| *PolicyParameter* | string | &check; | One or more policy parameters. For parameters, see [cache policy](cachepolicy.md).|
+| *PolicyParameter* | string | &check; | One or more policy parameters. For parameters, see [caching policy](cachepolicy.md).|
 
 ## Returns
 
