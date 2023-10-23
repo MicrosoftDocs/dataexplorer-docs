@@ -10,7 +10,7 @@ ms.date: 10/23/2023
 
 The world of Big Data is growing steadily, and the number of technologies that process large amounts of data is growing along with it. Modern Big Data solutions are typically composed of multiple technologies, each addressing a particular set of requirements. The usual activities include data collection, ETL, enrichment, batch processing, real-time stream analytics, dashboards, interactive exploration, reporting, aggregation and summarization, as well as training and servicing ML models.
 
-In this whitepaper we present the platform and technology that underlies the Azure Data Explorer (ADE) service offering (previously codenamed Kusto). ADE fits a specific set of needs within this landscape, and it's best illustrated with an example. Let's imagine a large-scale cloud service deployed on thousands of VM's, handling complex user transactions under strict SLA's and interacting with other external services. When properly instrumented, such a service emits an enormous number of signals: generic performance events from each VM (e.g. memory, disk and CPU usage), application-specific events (e.g. user authentication, start/progress/end of a transaction), internal health alerts and, last but not least, trace and debug statements added by the developers to aid in the service troubleshooting. Various subsets of these signals are routed to different systems: chosen performance and application events to the stream analytics solution for real-time alerting, generic performance counters to the time-series DB for operational dashboards, high-level application events to the data warehouse for further business analytics, etc. Our platform was designed to get all this data in its raw, unprocessed form, store it for a limited time interval (i.e. a sliding window to a subset of data ranging from a few days to a few months), and allow fast ad-hoc queries and analytics over this diverse data.
+In this whitepaper, we present the platform and technology that underlies the Azure Data Explorer (ADE) service offering (previously code named Kusto). ADE fits a specific set of needs within this landscape, and it's best illustrated with an example. Let's imagine a large-scale cloud service deployed on thousands of VM's, handling complex user transactions under strict SLAs and interacting with other external services. When properly instrumented, such a service emits an enormous number of signals: generic performance events from each VM (e.g. memory, disk and CPU usage), application-specific events (e.g. user authentication, start/progress/end of a transaction), internal health alerts and, last but not least, trace and debug statements added by the developers to aid in the service troubleshooting. Various subsets of these signals are routed to different systems: chosen performance and application events to the stream analytics solution for real-time alerting, generic performance counters to the time-series DB for operational dashboards, high-level application events to the data warehouse for further business analytics, etc. Our platform was designed to get all this data in its raw, unprocessed form, store it for a limited time interval (i.e. a sliding window to a subset of data ranging from a few days to a few months), and allow fast ad-hoc queries and analytics over this diverse data.
 
 More formally, the main ADE features are:
 
@@ -34,7 +34,7 @@ A typical deployment of the platform for a given customer (tenant) consists of t
 
 The Engine service is responsible for processing the incoming raw data and serving user queries. It exposes a JSON API endpoint through which users interact with the service by sending queries and control commands.
 
-The DM service is responsible for connecting the Engine to the various data pipelines, orchestrating and maintaining continuous data ingestion process from these pipelines (including robust handling of failure and backpressure conditions) and invocation of the periodic data grooming tasks on the Engine cluster. In principle, DM service is optional, though in practice it is present in the vast majority of Kusto deployments.
+The DM service is responsible for connecting the Engine to the various data pipelines, orchestrating and maintaining continuous data ingestion process from these pipelines (including robust handling of failure and backpressure conditions) and invocation of the periodic data grooming tasks on the Engine cluster. In principle, DM service is optional, though in practice it's present in the vast majority of Kusto deployments.
 
 The focus of this document is the Engine service, although we'll occasionally refer to the DM when discussing the relevant functionality.
 
@@ -42,18 +42,18 @@ The focus of this document is the Engine service, although we'll occasionally re
 
 The engine service exposes a familiar relational data model:
 
-- At the top (cluster) level there is a collection of databases;
+- At the top (cluster) level there's a collection of databases;
 - Each database contains a collection of tables and stored functions;
 - Each table defines a schema (ordered list of typed fields);
 - There are various policy objects that control authorization, data retention, data encoding and other aspects; these can be attached to a database, a table and sometimes to a table field.
 
 Unlike a typical RDBMS, there are no primary/foreign key constraints in ADE (or any other constraints, such as key uniqueness), and the necessary relationships are established at the query time. There are at least two reasons for the lack of such formal constraints: first, they would be constantly violated with the kind of raw and noisy data that the system is intended to handle; second, enforcement of these constraints in a large distributed system would result in a substantial negative impact on the data ingestion rate.
 
-All the user interaction with the service falls into one of the two broad categories: queries and control commands. Queries reference any number of tables (including tables in different databases or even clusters) and apply a variety of composable relational operators to express the desired computation. The result of the query is one or more tabular data streams. Queries are read-only, they never mutate the data or the logical model.
+All the user interaction with the service falls into one of the two broad categories: queries and control commands. Queries reference any number of tables (including tables in different databases or even clusters) and apply various composable relational operators to express the desired computation. The result of the query is one or more tabular data streams. Queries are read-only, they never mutate the data or the logical model.
 
 Control commands may inspect and mutate the metadata objects (e.g. create a new database or a new table, change a schema of an existing table). The most frequent control command is "ingest data", appending a new batch of records to the table.
 
-The actual data of the logical table is stored in a number of horizontal data shards and possibly in a few row stores (row stores are discussed later in the document). For the most part the user is not concerned with the data shards, and just treats a table as a single logical entity. However, in some cases exposing the notion of the data shard is useful, therefore they're not entirely hidden from the user.
+The actual data of the logical table is stored in a number of horizontal data shards and possibly in a few row stores (row stores are discussed later in the document). For the most part the user isn't concerned with the data shards, and just treats a table as a single logical entity. However, in some cases exposing the notion of the data shard is useful, therefore they're not entirely hidden from the user.
 
 The engine service implements an RBAC-style authorization model at the cluster, database and, with some limitations, table granularity.
 
@@ -61,7 +61,7 @@ The hierarchy of databases, tables, associated policies and data shard reference
 
 ### Engine cluster architecture
 
-The engine cluster is a collection of compute nodes (virtual machines) in Azure, connected to a VNET, with the gateway nodes accessible externally through the load-balancer. Once the cluster is provisioned, it can be scaled up or down (in terms of the number of machines), either automatically or manually, in response to the changing load and/or data volume. The minimum engine cluster size is two VM's, the maximum size tested in production is about 500 machines.
+The engine cluster is a collection of compute nodes (virtual machines) in Azure, connected to a virtual network, with the gateway nodes accessible externally through the load-balancer. Once the cluster is provisioned, it can be scaled up or down (in terms of the number of machines), either automatically or manually, in response to the changing load and/or data volume. The minimum engine cluster size is two VMs, the maximum size tested in production is about 500 machines.
 
 Each node in the cluster fulfills one or more of the following roles:
 
@@ -72,9 +72,9 @@ Each node in the cluster fulfills one or more of the following roles:
 
 #### Cluster state and metadata transactions
 
-ADE relies heavily on the Azure Blob service as a durable, highly-available storage both for the data shards and for the cluster metadata. Each data shard has a unique ID and is represented by a number of blobs in the storage (we describe the shard format in a later section). A database maintains a list of available storage containers (storage account URI + container name), configured by the database administrator.
+ADE relies heavily on the Azure Blob service as a durable, highly available storage both for the data shards and for the cluster metadata. Each data shard has a unique ID and is represented by a number of blobs in the storage (we describe the shard format in a later section). A database maintains a list of available storage containers (storage account URI + container name), configured by the database administrator.
 
-Each data shard resides in one of those containers. A table definition holds a list of references to its data shards (i.e. list of shard ID's), along with the corresponding storage containers. Therefore, data shards are spread across multiple storage accounts and containers, balancing the load on the Blob service and allowing for very efficient manipulations on a group of shards at the container level.
+Each data shard resides in one of those containers. A table definition holds a list of references to its data shards (i.e. list of shard IDs), along with the corresponding storage containers. Therefore, data shards are spread across multiple storage accounts and containers, balancing the load on the Blob service and allowing for efficient manipulations on a group of shards at the container level.
 
 The latest snapshot of the metadata (along with the previous versions) is always kept in the Azure blob. The Admin node also loads it in memory and maintains it as immutable data structure (with efficient cloning and copy-on-write support). A metadata transaction clones and modifies the in-memory object tree, then commits a new snapshot to the blob and makes the new metadata tree visible to the rest of the cluster. Depending on the kind of the transaction, the snapshot written to the blob could be either a full one or a delta snapshot (to save on bandwidth and speed up the commit flow).
 
@@ -84,21 +84,21 @@ With the exception of the Row Store (a complementary storage technology within t
 
 Following are the detailed steps of the data ingestion transaction:
 
-1. An ingestion command arrives at the Admin node; it specifies the target table and the list of data sources (e.g. list of CSV file URL's).
+1. An ingestion command arrives at the Admin node; it specifies the target table and the list of data sources (e.g. list of CSV file URLs).
 2. Admin finds an available Data node to perform the processing and forwards the ingestion command to this node.
 3. Data node fetches and processes the data sources, creates a new shard, writes its artifacts to the blob storage, and returns the description of the new (uncommitted) shard to the Admin
 4. The Admin adds the new shard reference to the table metadata and commits the delta snapshot of the database metadata.
 
-When the engine starts processing a new query, it takes a snapshot of the current metadata and attaches it to the query until it is completed.
+When the engine starts processing a new query, it takes a snapshot of the current metadata and attaches it to the query until it's completed.
 
-When a data shard is deleted (either due to the retention, manual table drop command or for any other reason), its storage artifacts (blobs) are not immediately deleted from the Blob Storage. Instead, they are garbage collected at the container level later, when that container reaches the hard delete threshold. This scheme enables two features:
+When a data shard is deleted (either due to the retention, manual table drop command or for any other reason), its storage artifacts (blobs) aren't immediately deleted from the Blob Storage. Instead, they're garbage collected at the container level later, when that container reaches the hard delete threshold. This scheme enables two features:
 
 - In-progress queries that started before the metadata change can complete successfully (they continue to execute with the stale snapshot)
-- It's possible to revert the metadata to a previous version in case of a mistake. (the only exception here is the "data purge" command executed due to privacy reasons and used for the GDPR compliance, in which case all of the relevant storage artifacts are deleted immediately).
+- It's possible to revert the metadata to a previous version in case of a mistake. (the only exception here's the "data purge" command executed due to privacy reasons and used for the GDPR compliance, in which case all of the relevant storage artifacts are deleted immediately).
 
 #### Shard distribution
 
-Each data shard is assigned to one of the cluster nodes by a consistent hash function. This is a "soft" assignment: the node does not own or manage the shard lifetime in any way. Instead, the assigned node is the preferred one to cache the shard locally (in memory and on disk) and, consequently, is also the preferred one to execute the part of the distributed query relevant to this shard. Whenever there is a change in a set of participating cluster nodes (e.g. a node goes down, a cluster is scaled-out), consistent hash redistributes the proportional number of data shards across the remaining nodes.
+Each data shard is assigned to one of the cluster nodes by a consistent hash function. This is a "soft" assignment: the node doesn't own or manage the shard lifetime in any way. Instead, the assigned node is the preferred one to cache the shard locally (in memory and on disk) and, consequently, is also the preferred one to execute the part of the distributed query relevant to this shard. Whenever there's a change in a set of participating cluster nodes (e.g. a node goes down, a cluster is scaled-out), consistent hash redistributes the proportional number of data shards across the remaining nodes.
 
 ## Query execution
 
@@ -127,7 +127,7 @@ Some common query operators:
 - join - merges the rows of two tables to form a new table by matching values of the specified column(s) from each table. Supports common join flavors (inner-, outer-, semi-, etc.)
 - union - takes two or more tables and returns the rows of all of them
 
-Here is a more involved example, adapted from one of our typical troubleshooting queries:
+Here's a more involved example, adapted from one of our typical troubleshooting queries:
 
 ```kusto
 let RelevantLogs =
@@ -149,11 +149,11 @@ Here, the Logs table continuously receives the raw traces coming from one of our
 
 ### Query analysis
 
-Upon receiving the query text, the engine parses it into an Abstract Syntax Tree (AST). KQL has a few constructs that serve as syntactic convenience (aka "syntactic sugar"), these constructs are lowered to the more primitive AST nodes at this stage.
+Upon receiving the query text, the engine parses it into an Abstract Syntax Tree (AST). KQL has a few constructs that serve as syntactic convenience (also known as "syntactic sugar"), these constructs are lowered to the more primitive AST nodes at this stage.
 
 Next, the engine performs the so-called semantic pass over the AST. The objectives of this pass are:
 
-- Name resolution: find out which schema entities (databases, tables, fields, functions) are referenced by all the non-keyword names in the query
+- Name resolution: find out which schema entities (databases, tables, fields, functions) are referenced by all the nonkeyword names in the query
 - While the entities are resolved, verify that the user has the necessary permissions to access them
 - Type check and inference: ensure that the expected and the actual types of all expressions and operator arguments are consistent
 
@@ -167,13 +167,13 @@ SQL query undergoes a similar processing, the end resulting being the same abstr
 
 ### Query optimization
 
-Once the initial RelOp tree is built, the goal of the query optimizer is to transform it into an efficient distributed query plan. Note that this initial RelOp has no notion of query distribution, it is just a tree of abstract operators where the leaves are table accesses.
+Once the initial RelOp tree is built, the goal of the query optimizer is to transform it into an efficient distributed query plan. This initial RelOp has no notion of query distribution, it's just a tree of abstract operators where the leaves are table accesses.
 
 Query optimizer defines a large set of rewrite rules. Each rewrite rule can match a certain pattern of operators in the tree and apply some local transformation to these operators. Query optimization is achieved by iteratively matching and applying many rewrite rules to the RelOp tree. Most of the rewrite rules are applied unconditionally, whenever they match a target pattern of operators in the tree and these operators satisfy some additional constraints. However, some rules are applied based on the cost estimation (such as reordering of the Join inputs).
 
-Subsets of related rewrite rules are grouped into passes, where each pass performs a certain optimization task. For instance, one of the rewrites in the predicate push-down pass recognizes Extend operator followed by a Filter. If the filter predicate expression does not depend on the values computed by the preceding Extend operator, the application of the rewrite rule reorders the two operators (thus pushing the Filter down, towards the leaf Table access).
+Subsets of related rewrite rules are grouped into passes, where each pass performs a certain optimization task. For instance, one of the rewrites in the predicate push-down pass recognizes Extend operator followed by a Filter. If the filter predicate expression doesn't depend on the values computed by the preceding Extend operator, the application of the rewrite rule reorders the two operators (thus pushing the Filter down, towards the leaf Table access).
 
-Most of the optimizations performed at this stage are not specific to ADE and are common across many relational databases:
+Most of the optimizations performed at this stage aren't specific to ADE and are common across many relational databases:
 
 - Propagation of projections
 - Predicate push-down
@@ -210,9 +210,9 @@ Distributed RelOp tree:
 
 :::image type="content" source="media/white-paper/distributed-tree.jpg" alt-text="Screenshot of the distributed tree." lightbox="media/white-paper/distributed-tree.jpg":::
 
-Since the vast majority of queries deal with the uniformly distributed data shards, the query plan above usually has a lot of symmetry. In order to reduce the analysis time, the optimizer always keeps these RelOp trees in a compact, "collapsed" form, where each union has a single source operator, and maintains a separate list of relevant shards or nodes that parameterize the sub-tree. The rewrite rules, in turn, are designed to work with this compact form.
+Since the vast majority of queries deal with the uniformly distributed data shards, the query plan above usually has a lot of symmetry. In order to reduce the analysis time, the optimizer always keeps these RelOp trees in a compact, "collapsed" form, where each union has a single source operator, and maintains a separate list of relevant shards or nodes that parameterize the subtree. The rewrite rules, in turn, are designed to work with this compact form.
 
-Once we have a detailed distributed query plan, what remains is to decide where each operator is about to execute (on what DataNode), and what sub-trees of the query plan may run in parallel. A dedicated optimizer pass, guided by constraints and heuristics, makes this decision for each operator in the query plan.
+Once we have a detailed distributed query plan, what remains is to decide where each operator is about to execute (on what DataNode), and what subtrees of the query plan may run in parallel. A dedicated optimizer pass, guided by constraints and heuristics, makes this decision for each operator in the query plan.
 
 ### Data movement strategies
 
@@ -226,13 +226,13 @@ Logs
 
 Here, the cardinality of the summarize group key is low (day of month), thus most of the computation happens at the shard level (heavy filtering and reduction of potentially billions of records into 31 groups), followed by a very lightweight summarization at the node and the top levels of the query.
 
-However, this is not the best strategy for join and summarize operators with very high cardinality of the join or group-by keys, respectively. First, the resulting hash tables might easily exceed the per-node query memory budget; second, the node-level and the top-level aggregations become significant sequential bottlenecks in the query execution. In order to overcome these limitations, ADE query planner and execution engine implement the data shuffling mechanism, which, combined with the cost-based optimization and the relevant rewrite rules, enables additional execution strategies for the join and the summarize operators that are more resilient to high-cardinality keys.
+However, this isn't the best strategy for join and summarize operators with high cardinality of the join or group-by keys, respectively. First, the resulting hash tables might easily exceed the per-node query memory budget; second, the node-level and the top-level aggregations become significant sequential bottlenecks in the query execution. In order to overcome these limitations, ADE query planner and execution engine implement the data shuffling mechanism, which, combined with the cost-based optimization and the relevant rewrite rules, enables additional execution strategies for the join and the summarize operators that are more resilient to high-cardinality keys.
 
 The essence of the data shuffling in the Engine service is to partition the source data records into a number of disjoint sets based on the hash of the join/summarize key and ensure that the entire partition ends up on one of the cluster nodes, where it can be processed by the local join/summarize operator implementation, independent of any other partition:
 
 :::image type="content" source="media/white-paper/data-shuffling.jpg" alt-text="Screenshot of the data shuffling." lightbox="media/white-paper/data-shuffling.jpg":::
 
-There is no dedicated "shuffle" operator in the query engine. Instead, the engine has a more primitive yet very flexible SelectPartition operator. Logically, this operator scans the source record stream and retains only the records with the key that belongs to the requested partition P out of total N partitions (i.e. hash(K) mod N == P). The crucial difference between a regular filter operator and SelectPartition is that the latter computes all the partitions at once, performing a single pass over the source data and buffering the partitioned records using a FIFO-like cache structure. When one of the nodes X requests its own partition from the node Y, node Y locates the in-progress SelectPartition operator and pumps the buffered Node 0 Node 1 Node 2 summarize by K summarize by K summarize by K FetchPartition(hash(K) % 3 == 0) FetchPartition(hash(K) % 3 == 0) partition X from the cache. This process happens in parallel on all cluster nodes:
+There's no dedicated "shuffle" operator in the query engine. Instead, the engine has a more primitive yet very flexible SelectPartition operator. Logically, this operator scans the source record stream and retains only the records with the key that belongs to the requested partition P out of total N partitions (i.e. hash(K) mod N == P). The crucial difference between a regular filter operator and SelectPartition is that the latter computes all the partitions at once, performing a single pass over the source data and buffering the partitioned records using a FIFO-like cache structure. When one of the nodes X requests its own partition from the node Y, node Y locates the in-progress SelectPartition operator and pumps the buffered Node 0 Node 1 Node 2 summarize by K summarize by K summarize by K FetchPartition(hash(K) % 3 == 0) FetchPartition(hash(K) % 3 == 0) partition X from the cache. This process happens in parallel on all cluster nodes:
 
 :::image type="content" source="media/white-paper/select-partition.jpg" alt-text="Screenshot of the select partition operator process." lightbox="media/white-paper/select-partition.jpg":::
 
@@ -241,7 +241,7 @@ There is no dedicated "shuffle" operator in the query engine. Instead, the engin
 With the data shuffling mechanism in place, we can now discuss the implementation strategies for the join and summarize operators. For each appearance of the join operator in the RelOp tree, query optimizer estimates the size (number of records) and the cardinality (number of distinct keys) for the left and the right sides of the join. Based on this estimation, the optimizer decides on one of the three implementation strategies:
 
 - If both join sides are of similar size and the key cardinality is on the order of 1M or less, employ the regular (naïve) join implementation: bring both sides to the same node and perform a nondistributed hash-based join there;
-- If one of the join sides has up to 100K records and is significantly smaller than the other side, employ the broadcast join strategy: evaluate the smaller join side first and embed it as a table in the query plan, then distribute (broadcast) this table to each node and perform the hash join as close to the data shard as possible, in parallel on all the relevant cluster nodes and data shards;
+- If one of the join sides has up to 100 K records and is significantly smaller than the other side, employ the broadcast join strategy: evaluate the smaller join side first and embed it as a table in the query plan, then distribute (broadcast) this table to each node and perform the hash join as close to the data shard as possible, in parallel on all the relevant cluster nodes and data shards;
 - Otherwise, employ a shuffled join: apply the same partitioning scheme on both join sides, bring each partition to its dedicated node and perform a hash join within the partition on that node. By default, the number of partitions is chosen as the number of nodes in the cluster.
 
 Similar considerations apply to the summarize operator as well (with the exception of the broadcast strategy, irrelevant for summarize).
@@ -252,16 +252,16 @@ Once the data is shuffled, the optimizer will try to build a query plan that kee
 
 The final query plan has all the necessary information to execute the distributed query. The actual query execution is initiated by walking the operator tree and instantiating an Iterator for each operator (on demand).
 
-The engine implements a pull-mode iterator model, where each iterator delivers a columnar batch at a time. A typical iterator implementation will instantiate the iterators for its source operators, invoke their Next() method to pull the batches of data, process these batches according to the operator's specification, and deliver the results to the consumer iterator. For instance:
+The engine implements a pull-mode iterator model, where each iterator delivers a columnar batch at a time. A typical iterator implementation instantiates the iterators for its source operators, invoke their Next() method to pull the batches of data, process these batches according to the operator's specification, and deliver the results to the consumer iterator. For instance:
 
-- Filter's iterator Next() implementation will invoke Next() method on its source, apply the predicate to the columnar batch, and return the reduced columnar batch to the consumer;
+- Filter's iterator Next() implementation invokes Next() method on its source, apply the predicate to the columnar batch, and return the reduced columnar batch to the consumer;
 - Aggregation's iterator Next() will consume the entire source iterator upon its first invocation, while updating the "grid" with the aggregated results, then return the aggregated grid as a single batch to the consumer;
-- HashJoin iterator (the underlying implementation of the Join operator) will first instantiate its Build source iterator and prepare the hash table with the join keys. Subsequent invocations of the HashJoin's Next() method will invoke Next() on its Probe source iterator, locate the matching entries for the current columnar batch in the hash table, build the resulting (joined) batch and return it to the consumer.
+- HashJoin iterator (the underlying implementation of the Join operator) will first instantiate its Build source iterator and prepare the hash table with the join keys. Subsequent invocations of the HashJoin's Next() method invokes Next() on its Probe source iterator, locate the matching entries for the current columnar batch in the hash table, build the resulting (joined) batch and return it to the consumer.
 
 There are two special types of operators in the query plan to tackle the parallel and the distributed query execution aspects. Both are pass-through from the functionality point of view, but they affect the way that subsequent operators are executed:
 
-- ParallelSubquery: executes the query plan sub-trees in parallel;
-- RemoteSubquery: executes the query plan sub-tree on another DataNode (parameterized by the identity of the remote DataNode).
+- ParallelSubquery: executes the query plan subtrees in parallel;
+- RemoteSubquery: executes the query plan subtree on another DataNode (parameterized by the identity of the remote DataNode).
 
 These operators are injected by the query planner at the appropriate junctions of the query plan tree during the final stage of the distribution pass.
 
@@ -285,7 +285,7 @@ A sealed data shard is represented by a top-level shard directory blob, that ref
 
 :::image type="content" source="media/white-paper/shards.jpg" alt-text="Screenshot of the shard directory blob." lightbox="media/white-paper/shards.jpg":::
 
-In general, the shard storage format is designed to avoid any non-trivial parsing and minimize the number of I/O operations when accessing the relevant data objects at query time.
+In general, the shard storage format is designed to avoid any nontrivial parsing and minimize the number of I/O operations when accessing the relevant data objects at query time.
 
 ### Dynamic data type
 
@@ -322,7 +322,7 @@ To index a dynamic field, the ingestion process enumerates all "atomic" elements
 
 ### Shard merge and rebuild
 
-As we mentioned earlier, the initial data shards created by the Engine service correspond directly to the ingested batches of raw data. This is not always optimal, since small batches of ingested data result in small data shards, and over time the Engine cluster might end up with a very large number of very small shards. This impacts negatively both the shard maintenance processes within the Engine cluster as well as the query planning time and the query execution performance.
+As we mentioned earlier, the initial data shards created by the Engine service correspond directly to the ingested batches of raw data. This isn't always optimal, since small batches of ingested data result in small data shards, and over time the Engine cluster might end up with a very large number of very small shards. This impacts negatively both the shard maintenance processes within the Engine cluster as well as the query planning time and the query execution performance.
 
 The Engine service implements two operations to reduce the number of data shards: shard rebuild and shard merge, while the DM service monitors the state of the Engine cluster and orchestrates the background execution of these operations.
 
@@ -356,13 +356,13 @@ Note that both the Filter and the Top-N in this case are propagated down to the 
 
 ### Row store and streaming ingestion
 
-Shard storage allows for very efficient query but, as explained above, requires data to be ingested in relatively large chunks. Row Store provides an intermediate storage mechanism which allows efficient ingestion of data in small portions (up to several megabytes in size), while making this data immediately available for query. This scenario is called Streaming Ingestion. Row Store mechanism is not in effect by default; first, the Engine cluster must be enabled for Streaming Ingestion and then specific tables or databases must be assigned a Streaming Ingestion Policy. Enabled cluster provides fixed number of Row Stores. Each enabled table is automatically assigned one or more Row Stores along with the unique set of keys.
+Shard storage allows for very efficient query but, as explained above, requires data to be ingested in relatively large chunks. Row Store provides an intermediate storage mechanism which allows efficient ingestion of data in small portions (up to several megabytes in size), while making this data immediately available for query. This scenario is called Streaming Ingestion. Row Store mechanism isn't in effect by default; first, the Engine cluster must be enabled for Streaming Ingestion and then specific tables or databases must be assigned a Streaming Ingestion Policy. Enabled cluster provides fixed number of Row Stores. Each enabled table is automatically assigned one or more Row Stores along with the unique set of keys.
 
 Row Store is a persistent key-value store. Each value contains one or several rows of the table. Each Row Store will contain data from one or several tables identified by a key. When inserted, a value is assigned an ordinal (monotonously increasing number), committed to the Write-Ahead Log and then inserted into a key map from where it can be queried.
 
 When a table enabled for streaming ingestion is queried, the query plan tree will have the Rowstore Access operator leaves (possibly in combination with the Shard Access operators). Rowstore Access operator will simply iterate over the table rows from the Row store, forcing subsequent filters to perform a full scan over those rows.
 
-When the amount of data for the table in Row Store(s) passes an automatically maintained threshold, it is transferred to the Shard Storage thus balancing streaming ingestion and query efficiency.
+When the amount of data for the table in Row Store(s) passes an automatically maintained threshold, it's transferred to the Shard Storage thus balancing streaming ingestion and query efficiency.
 
 ## Advanced features
 
@@ -374,11 +374,11 @@ Each query operates in the context of the current cluster and the current databa
 
 When a query contains references to external databases/tables, the Query Head node will identify such references during the semantic pass and fetch the minimum necessary metadata from the corresponding remote clusters to analyze the query (e.g. fetch an external table schema). These references become Remote Table Access operators in the RelOp tree, along with the local Table Access operators.
 
-Unlike the local Table Access operators, remote tables are not expanded into a hierarchy of data shards during the query distribution pass, since the query planner has no knowledge of the remote cluster topology and shard distribution. Other than that, remote tables are subject to the same optimization rules as the local ones (predicate push down, projection propagation, aggregation distribution and many others).
+Unlike the local Table Access operators, remote tables aren't expanded into a hierarchy of data shards during the query distribution pass, since the query planner has no knowledge of the remote cluster topology and shard distribution. Other than that, remote tables are subject to the same optimization rules as the local ones (predicate push down, projection propagation, aggregation distribution and many others).
 
-Once the generic optimizations are applied to the RelOp tree, the query planner needs to decide how to execute the query that contains remote table references. Functionally correct but naïve strategy would be to bring the entire remote table data to the local cluster and perform all the computations locally. However, in most cases this is far from optimal, since it would miss the opportunity to offload the computation to the remote cluster (and benefit from the indexes, cache and query parallelism there) as well as to reduce the data transfer costs over the network (possibly across Azure regions). Instead, the query planner identifies the maximum sub-trees of the query plan containing the remote table references that should be executed on the remote clusters. E.g. if the remote table access is followed by Where and Summarize operators, these should be executed on the remote cluster as well. In general, the decision as to what sub-queries should be delegated to the remote cluster is based both on the feasibility and the cost estimation heuristics.
+Once the generic optimizations are applied to the RelOp tree, the query planner needs to decide how to execute the query that contains remote table references. Functionally correct but naïve strategy would be to bring the entire remote table data to the local cluster and perform all the computations locally. However, in most cases this is far from optimal, since it would miss the opportunity to offload the computation to the remote cluster (and benefit from the indexes, cache and query parallelism there) as well as to reduce the data transfer costs over the network (possibly across Azure regions). Instead, the query planner identifies the maximum subtrees of the query plan containing the remote table references that should be executed on the remote clusters. E.g. if the remote table access is followed by Where and Summarize operators, these should be executed on the remote cluster as well. In general, the decision as to what sub-queries should be delegated to the remote cluster is based both on the feasibility and the cost estimation heuristics.
 
-Each of these RelOp sub-trees is then rendered back into a standalone KQL query and is collapsed into a Cross-Cluster Query operator that encapsulates the partial query to be executed on the remote cluster.
+Each of these RelOp subtrees is then rendered back into a standalone KQL query and is collapsed into a Cross-Cluster Query operator that encapsulates the partial query to be executed on the remote cluster.
 
 ### Update policy
 
