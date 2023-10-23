@@ -236,7 +236,8 @@ There's no dedicated "shuffle" operator in the query engine. Instead, the engine
 
 :::image type="content" source="media/white-paper/select-partition.jpg" alt-text="Screenshot of the select partition operator process." lightbox="media/white-paper/select-partition.jpg":::
 
-> [!NOTE] SelectPartition is also running on node 0 and node 3\. We omitted it from the diagram for clarity.
+> [!NOTE]
+> SelectPartition is also running on node 0 and node 3\. We omitted it from the diagram for clarity.
 
 With the data shuffling mechanism in place, we can now discuss the implementation strategies for the join and summarize operators. For each appearance of the join operator in the RelOp tree, query optimizer estimates the size (number of records) and the cardinality (number of distinct keys) for the left and the right sides of the join. Based on this estimation, the optimizer decides on one of the three implementation strategies:
 
