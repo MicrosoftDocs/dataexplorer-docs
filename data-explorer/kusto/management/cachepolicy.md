@@ -1,13 +1,13 @@
 ---
-title:  Cache policy (hot and cold cache)
-description: This article describes Cache policy (hot and cold cache) in Azure Data Explorer.
+title:  Caching policy (hot and cold cache)
+description: This article describes caching policy (hot and cold cache) in Azure Data Explorer.
 ms.reviewer: orspodek
 ms.topic: reference
 ms.date: 10/23/2023
 zone_pivot_group_filename: data-explorer/zone-pivot-groups.json
 zone_pivot_groups: kql-flavors-adx-fabric
 ---
-# Cache policy (hot and cold cache)
+# Caching policy (hot and cold cache)
 
 ::: zone pivot="azuredataexplorer"
 
@@ -21,21 +21,27 @@ Real-Time Analytics uses a multi-tiered data cache system to ensure fast query p
 
 ::: zone-end
 
-The cache policy allows you to prioritize which data should be cached. You can differentiate between *hot data cache* and *cold data cache*. Hot data is kept in local SSD storage for faster query performance, while cold data is stored in reliable storage, which is cheaper but slower to access.
+::: zone pivot="fabric"
 
-The cache uses 95% of the local SSD disk for hot data. If there isn’t enough space, the most recent data is preferentially kept in the cache. The remaining 5% is used for data that isn’t categorized as hot. This design ensures that queries loading lots of cold data won’t evict hot data from the cache.
+Real-Time Analytics uses a multi-tiered data cache system to ensure fast query performance. Data is stored in reliable storage, such as OneLake, but parts of it are cached on processing nodes, SSD, or even in RAM for faster access.
+
+::: zone-end
+
+The caching policy allows you to prioritize which data should be cached. You can differentiate between *hot data cache* and *cold data cache*. Hot data is kept in local SSD storage for faster query performance, while cold data is stored in reliable storage, which is cheaper but slower to access.
+
+The cache uses 95% of the local SSD disk for hot data. If there isn't enough space, the most recent data is preferentially kept in the cache. The remaining 5% is used for data that isn't categorized as hot. This design ensures that queries loading lots of cold data won't evict hot data from the cache.
 
 The best query performance is achieved when all ingested data is cached. However, certain data might not warrant the expense of being kept in the hot cache. For instance, infrequently accessed old log records may be considered less crucial. In such cases, teams often opt for lower querying performance over paying to keep the data warm.
 
 ::: zone pivot="fabric"
 
-Use management commands to alter the cache policy at the [database](alter-database-cache-policy-command.md), [table](alter-table-cache-policy-command.md), or [materialized view](alter-materialized-view-cache-policy-command.md) level.
+Use management commands to alter the caching policy at the [database](alter-database-cache-policy-command.md), [table](alter-table-cache-policy-command.md), or [materialized view](alter-materialized-view-cache-policy-command.md) level.
 
 ::: zone-end
 
 ::: zone pivot="azuredataexplorer"
 
-Use management commands to alter the cache policy at the [cluster](alter-cluster-cache-policy-command.md), [database](alter-database-cache-policy-command.md), [table](alter-table-cache-policy-command.md), or [materialized view](alter-materialized-view-cache-policy-command.md) level.
+Use management commands to alter the caching policy at the [cluster](alter-cluster-cache-policy-command.md), [database](alter-database-cache-policy-command.md), [table](alter-table-cache-policy-command.md), or [materialized view](alter-materialized-view-cache-policy-command.md) level.
 
 > [!TIP]
 > Your cluster is designed for ad hoc queries with intermediate result sets that fit in the cluster's total RAM.
@@ -43,9 +49,9 @@ Use management commands to alter the cache policy at the [cluster](alter-cluster
 
 ::: zone-end
 
-## How cache policy is applied
+## How caching policy is applied
 
-When data is ingested, the system keeps track of the date and time of the ingestion, and of the extent that was created. The extent's ingestion date and time value (or maximum value, if an extent was built from multiple pre-existing extents), is used to evaluate the cache policy.
+When data is ingested, the system keeps track of the date and time of the ingestion, and of the extent that was created. The extent's ingestion date and time value (or maximum value, if an extent was built from multiple pre-existing extents), is used to evaluate the caching policy.
 
 > [!NOTE]
 > You can specify a value for the ingestion date and time by using the ingestion property `creationTime`.
@@ -82,11 +88,11 @@ set query_datascope="hotcache";
 T | union U | join (T datascope=all | where Timestamp < ago(365d)) on X
 ```
 
-## Cache policy vs retention policy
+## Caching policy vs retention policy
 
-Cache policy is independent of [retention policy](./retentionpolicy.md):
+Caching policy is independent of [retention policy](./retentionpolicy.md):
 
-* Cache policy defines how to prioritize resources. Queries for important data are faster.
+* Caching policy defines how to prioritize resources. Queries for important data are faster.
 * Retention policy defines the extent of the queryable data in a table/database (specifically, `SoftDeletePeriod`).
 
 Configure this policy to achieve the optimal balance between cost and performance, based on the expected query pattern.
