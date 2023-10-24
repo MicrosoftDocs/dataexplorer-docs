@@ -21,12 +21,6 @@ Real-Time Analytics uses a multi-tiered data cache system to ensure fast query p
 
 ::: zone-end
 
-::: zone pivot="fabric"
-
-Real-Time Analytics uses a multi-tiered data cache system to ensure fast query performance. Data is stored in reliable storage, such as OneLake, but parts of it are cached on processing nodes, SSD, or even in RAM for faster access.
-
-::: zone-end
-
 The caching policy allows you to prioritize which data should be cached. You can differentiate between *hot data cache* and *cold data cache*. Hot data is kept in local SSD storage for faster query performance, while cold data is stored in reliable storage, which is cheaper but slower to access.
 
 The cache uses 95% of the local SSD disk for hot data. If there isn't enough space, the most recent data is preferentially kept in the cache. The remaining 5% is used for data that isn't categorized as hot. This design ensures that queries loading lots of cold data won't evict hot data from the cache.
