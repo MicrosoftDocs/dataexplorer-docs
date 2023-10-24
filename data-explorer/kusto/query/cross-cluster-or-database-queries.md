@@ -39,7 +39,7 @@ For a table in a different database within the same cluster:
 database("<DatabaseName>").<TableName>
 ```
 
-For a table in a remove cluster:
+For a table in a remote cluster:
 
 ```kusto
 cluster("<ClusterName>").database("<DatabaseName>").<TableName>
