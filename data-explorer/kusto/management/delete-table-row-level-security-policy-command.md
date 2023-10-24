@@ -23,23 +23,21 @@ You must have at least [Table Admin](access-control/role-based-access-control.md
 
 | Name        | Type   | Required | Description        |
 |-------------|--------|----------|--------------------|
-| *TableName* | string | &check;  | Name of the table. |
+| *TableName* | string | &check;  | The name of the table for which to delete the row level security policy. |
 
 ## Returns
 
 | Name          | Type   | Description
 |---------------|--------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| PolicyName    | string | Name of the policy. For table row level security policy this value is **RowLevelSecurityPolicy**.
-| EntityName    | string | Name of the entity for which the policy is set. For table row level security policy this value is `[`*databaseName*`].[`*tableName*`]`, where *databaseName* corresponds to the name of the database in which in the table exists, and *tableName* to the name of the table itself.
-| Policy        | string | JSON representation of the policy object. When the policy is deleted with this command, this property is set to `null`.
-| ChildEntities | string | Child entities for which this policy is set. For table row level security policy this value is an empty string.                                                                                                                                                                     |
-| EntityType    | string | Type of entity for which this policy is set. For table row level security this value is an empty string.                                                                                                                                                                     |
+| PolicyName    | string | The name of the policy being deleted: RowLevelSecurityPolicy.
+| EntityName    | string | The name of the entity for which the policy is deleted. The name follows the format of `[`*databaseName*`].[`*tableName*`]`, where *databaseName* corresponds to the name of the database in which in the table exists, and *tableName* is the name of the table itself.
+| Policy        | string | A JSON representation of the policy object. Upon deletion of the policy, this property is set to `null`.
+| ChildEntities | string | Child entities for which this policy is set. For a table row level security policy, this value is an empty string.                                                                                                                                                                     |
+| EntityType    | string | The type of entity for which this policy is set. For a table row level security policy, this value is an empty string.                                                                                                                                                                     |
 
-## Examples
+## Example
 
-### Remove row level security policy of a table
-
-Remove row level security policy of table *T*:
+The following command removes the row level security policy of a table named `T`:
 
 ```kusto
 .delete table T policy row_level_security
