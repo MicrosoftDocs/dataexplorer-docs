@@ -299,9 +299,7 @@ The essence of the dynamic data type is a special binary encoding of the nested 
 - Strings are length-prefixed
 - Property names are dictionary-encoded and replaced by their dictionary token
 - Array starts with the list of offsets to each of its elements' encodings
-
-  - There are dedicated encoding schemes for homogeneous numeric and string arrays
-
+- There are dedicated encoding schemes for homogeneous numeric and string arrays
 - Property bag starts with the list of (name token, offset) pairs for each of its elements' encodings
 
 Thus, deeply nested elements within a dynamic value can be accessed in time that is proportional to the size of the access path, as opposed to the size of the entire object.
