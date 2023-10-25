@@ -519,7 +519,7 @@ npm run dev
 ```
 
 > [!NOTE]
-> In a browser environment, open the [developer tools console](microsoft-edge/devtools-guide-chromium/console/) to see the output.
+> In a browser environment, open the [developer tools console](/microsoft-edge/devtools-guide-chromium/console/) to see the output.
 
 <!-- ### [Go](#tab/go) -->
 
