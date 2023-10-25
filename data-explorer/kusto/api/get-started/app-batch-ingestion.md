@@ -156,7 +156,7 @@ Add the following code:
       main()
     ```
 
-    ### [Node.js](#tab/nodejs)
+    ### [Typescript](#tab/typescript)
 
     ```nodejs
     const {Client, KustoConnectionStringBuilder} = require("azure-kusto-data");
@@ -259,7 +259,7 @@ Add the following code:
     ingest_kcsb = KustoConnectionStringBuilder.with_azure_token_credential(ingest_uri, credentials)
     ```
 
-    ### [Node.js](#tab/nodejs)
+    ### [Typescript](#tab/typescript)
 
     ```nodejs
     const {IngestClient, IngestionProperties, DataFormat} = require("azure-kusto-ingest");
@@ -321,7 +321,7 @@ Add the following code:
         ingest_client.ingest_from_file(file_path, ingest_props)
     ```
 
-    ### [Node.js](#tab/nodejs)
+    ### [Typescript](#tab/typescript)
 
     ```nodejs
     const path = require('path');
@@ -402,7 +402,7 @@ Add the following code:
     print_result_as_value_list(response)
     ```
 
-    ### [Node.js](#tab/nodejs)
+    ### [Typescript](#tab/typescript)
 
     ```nodejs
     console.log("\nWaiting 30 seconds for ingestion to complete ...");
@@ -572,7 +572,7 @@ if __name__ == "__main__":
   main()
 ```
 
-### [Node.js](#tab/nodejs)
+### [Typescript](#tab/typescript)
 
 ```nodejs
 const path = require('path');
@@ -724,7 +724,7 @@ dotnet run .
 python basic_ingestion.py
 ```
 
-### [Node.js](#tab/nodejs)
+### [Typescript](#tab/typescript)
 
 ```bash
 node basic-ingestion.js
@@ -783,7 +783,7 @@ For example, you can modify the app replacing the *ingest from file* code, as fo
     from azure.kusto.ingest import StreamDescriptor
     ```
 
-    ### [Node.js](#tab/nodejs)
+    ### [Typescript](#tab/typescript)
 
     ```nodejs
     const {Readable} = require("stream");
@@ -818,7 +818,7 @@ For example, you can modify the app replacing the *ingest from file* code, as fo
     string_stream = io.StringIO(single_line)
     ```
 
-    ### [Node.js](#tab/nodejs)
+    ### [Typescript](#tab/typescript)
 
     ```nodejs
     const singleLine = '2018-01-26 00:00:00.0000000,2018-01-27 14:00:00.0000000,MEXICO,0,0,Unknown,"{}"';
@@ -853,7 +853,7 @@ For example, you can modify the app replacing the *ingest from file* code, as fo
     ingest_props = IngestionProperties(database, table, DataFormat.CSV, ignore_first_record=False)
     ```
 
-    ### [Node.js](#tab/nodejs)
+    ### [Typescript](#tab/typescript)
 
     ```nodejs
     ingestProps.ignoreFirstRecord = false;
@@ -884,7 +884,7 @@ For example, you can modify the app replacing the *ingest from file* code, as fo
     ingest_client.ingest_from_stream(stream_descriptor, ingest_props)
     ```
 
-    ### [Node.js](#tab/nodejs)
+    ### [Typescript](#tab/typescript)
 
     ```nodejs
     stringStream.size = singleLine.length;
@@ -976,7 +976,7 @@ if __name__ == "__main__":
   main()
 ```
 
-### [Node.js](#tab/nodejs)
+### [Typescript](#tab/typescript)
 
 ```nodejs
 const path = require('path');
@@ -1111,7 +1111,7 @@ For example, you can modify the app replacing the *ingest from memory* code with
     from azure.kusto.ingest import BlobDescriptor
     ```
 
-    ### [Node.js](#tab/nodejs)
+    ### [Typescript](#tab/typescript)
 
     ```nodejs
     No additional packages are required.
@@ -1148,7 +1148,7 @@ For example, you can modify the app replacing the *ingest from memory* code with
     ingest_client.ingest_from_blob(blob_descriptor, ingest_props)
     ```
 
-    ### [Node.js](#tab/nodejs)
+    ### [Typescript](#tab/typescript)
 
     ```nodejs
     const blobUri = "<your_blob_uri>";
@@ -1244,7 +1244,7 @@ if __name__ == "__main__":
   main()
 ```
 
-### [Node.js](#tab/nodejs)
+### [Typescript](#tab/typescript)
 
 ```nodejs
 

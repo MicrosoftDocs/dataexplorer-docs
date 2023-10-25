@@ -38,7 +38,7 @@ In your preferred IDE or text editor, create a project or file named *hello kust
     from azure.kusto.data import KustoClient, KustoConnectionStringBuilder
     ```
 
-    ### [Node.js](#tab/nodejs)
+    ### [Typescript](#tab/typescript)
 
     ```nodejs
     const {Client, KustoConnectionStringBuilder} = require("azure-kusto-data");
@@ -80,7 +80,7 @@ In your preferred IDE or text editor, create a project or file named *hello kust
       main()
     ```
 
-    ### [Node.js](#tab/nodejs)
+    ### [Typescript](#tab/typescript)
 
     ```nodejs
     async function main()
@@ -122,7 +122,7 @@ In your preferred IDE or text editor, create a project or file named *hello kust
     kcsb = KustoConnectionStringBuilder.with_interactive_login(cluster_uri)
     ```
 
-    ### [Node.js](#tab/nodejs)
+    ### [Typescript](#tab/typescript)
 
     ```nodejs
     const clusterUri = "https://help.kusto.windows.net";
@@ -165,7 +165,7 @@ In your preferred IDE or text editor, create a project or file named *hello kust
     with KustoClient(kcsb) as kusto_client:
     ```
 
-    ### [Node.js](#tab/nodejs)
+    ### [Typescript](#tab/typescript)
 
     ```nodejs
     const kustoClient = new Client(kcsb);
@@ -198,7 +198,7 @@ In your preferred IDE or text editor, create a project or file named *hello kust
     query = "print Welcome='Hello Kusto!'"
     ```
 
-    ### [Node.js](#tab/nodejs)
+    ### [Typescript](#tab/typescript)
 
     ```nodejs
     const database = "Samples";
@@ -236,7 +236,7 @@ In your preferred IDE or text editor, create a project or file named *hello kust
     print(response.primary_results[0][0]["Welcome"])
     ```
 
-    ### [Node.js](#tab/nodejs)
+    ### [Typescript](#tab/typescript)
 
     ```nodejs
     let response = await kustoClient.execute(database, query);
@@ -341,7 +341,7 @@ if __name__ == "__main__":
   main()
 ```
 
-### [Node.js](#tab/nodejs)
+### [Typescript](#tab/typescript)
 
 ```nodejs
 const {Client, KustoConnectionStringBuilder} = require("azure-kusto-data");
@@ -412,7 +412,7 @@ dotnet run .
 python hello_kusto.py
 ```
 
-### [Node.js](#tab/nodejs)
+### [Typescript](#tab/typescript)
 
 ```bash
 node hello-kusto.js

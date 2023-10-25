@@ -63,7 +63,7 @@ In your preferred IDE or text editor, create a project or file named *management
       main()
     ```
 
-    ### [Node.js](#tab/nodejs)
+    ### [Typescript](#tab/typescript)
 
     ```nodejs
     const {Client, KustoConnectionStringBuilder} = require("azure-kusto-data");
@@ -138,7 +138,7 @@ In your preferred IDE or text editor, create a project or file named *management
           print("\t", col, "-", row[col])
     ```
 
-    ### [Node.js](#tab/nodejs)
+    ### [Typescript](#tab/typescript)
 
     ```nodejs
     function printResultAsValueList(command, response) {
@@ -213,7 +213,7 @@ In your preferred IDE or text editor, create a project or file named *management
               " StormSummary:dynamic)"
     ```
 
-    ### [Node.js](#tab/nodejs)
+    ### [Typescript](#tab/typescript)
 
     ```nodejs
     const database = "<your_database>";
@@ -275,7 +275,7 @@ In your preferred IDE or text editor, create a project or file named *management
     print_result_as_value_list(command, response)
     ```
 
-    ### [Node.js](#tab/nodejs)
+    ### [Typescript](#tab/typescript)
 
     > [!NOTE]
     > You'll use the `executeMgmt` method to run the command.
@@ -390,7 +390,7 @@ if __name__ == "__main__":
   main()
 ```
 
-### [Node.js](#tab/nodejs)
+### [Typescript](#tab/typescript)
 
 ```nodejs
 const {Client, KustoConnectionStringBuilder} = require("azure-kusto-data");
@@ -504,7 +504,7 @@ dotnet run .
 python management_commands.py
 ```
 
-### [Node.js](#tab/nodejs)
+### [Typescript](#tab/typescript)
 
 ```bash
 node management-commands.js
@@ -571,7 +571,7 @@ response = kusto_client.execute_mgmt(database, command)
 print_result_as_value_list(command, response)
 ```
 
-### [Node.js](#tab/nodejs)
+### [Typescript](#tab/typescript)
 
 ```nodejs
 // Reduce the default batching timeout to 30 seconds
@@ -640,7 +640,7 @@ response = kusto_client.execute_mgmt(database, command)
 print_result_as_value_list(command, response)
 ```
 
-### [Node.js](#tab/nodejs)
+### [Typescript](#tab/typescript)
 
 ```nodejs
 // Show the database retention policy (drop some columns from the result)

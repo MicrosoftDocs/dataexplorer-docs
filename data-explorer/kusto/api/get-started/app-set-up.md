@@ -32,7 +32,7 @@ Verify installation: In a command shell, run `dotnet sdk check` to check that th
     - Ensure the `python` executable is in your `PATH`
     - Verify installation: In a command shell, run `python --version` to check that the version is 3.7 or later
 
-### [Node.js](#tab/nodejs)
+### [Typescript](#tab/typescript)
 
 - [Node 16 or later](https://nodejs.org/en/download/) built with ES6
     - Ensure the `node` executable is in your `PATH`
@@ -77,7 +77,7 @@ python -m pip install azure-kusto-data
 python -m pip install azure-kusto-ingest
 ```
 
-### [Node.js](#tab/nodejs)
+### [Typescript](#tab/typescript)
 
 ```bash
 npm install azure-kusto-data

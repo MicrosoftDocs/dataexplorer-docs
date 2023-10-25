@@ -61,7 +61,7 @@ In your preferred IDE or text editor, create a project or file named *basic quer
       main()
     ```
 
-    ### [Node.js](#tab/nodejs)
+    ### [Typescript](#tab/typescript)
 
     ```nodejs
     const {Client, KustoConnectionStringBuilder} = require("azure-kusto-data");
@@ -128,7 +128,7 @@ In your preferred IDE or text editor, create a project or file named *basic quer
             "| order by DailyDamage desc"
     ```
 
-    ### [Node.js](#tab/nodejs)
+    ### [Typescript](#tab/typescript)
 
     ```nodejs
     const database = "Samples";
@@ -186,7 +186,7 @@ In your preferred IDE or text editor, create a project or file named *basic quer
       print(row["StartTime"], "-", row["State"], ",", row["DailyDamage"], "$")
     ```
 
-    ### [Node.js](#tab/nodejs)
+    ### [Typescript](#tab/typescript)
 
     ```nodejs
     let response = await kusto_client.execute(database, query);
@@ -286,7 +286,7 @@ if __name__ == "__main__":
   main()
 ```
 
-### [Node.js](#tab/nodejs)
+### [Typescript](#tab/typescript)
 
 ```nodejs
 const {Client, KustoConnectionStringBuilder} = require("azure-kusto-data");
@@ -369,7 +369,7 @@ dotnet run .
 python basic_query.py
 ```
 
-### [Node.js](#tab/nodejs)
+### [Typescript](#tab/typescript)
 
 ```bash
 node basic-query.js
@@ -434,7 +434,7 @@ for row in response.primary_results[0]:
   print(row[start_time_col], "-", row[state_col], ",", row[damage_col], "$")
 ```
 
-### [Node.js](#tab/nodejs)
+### [Typescript](#tab/typescript)
 
 ```nodejs
 const columnNoState = 0;
@@ -500,7 +500,7 @@ crp.set_option(crp.request_timeout_option_name, datetime.timedelta(minutes=1))
 response = kusto_client.execute_query(database, query, crp)
 ```
 
-### [Node.js](#tab/nodejs)
+### [Typescript](#tab/typescript)
 
 ```nodejs
 const ClientRequestProperties = require("azure-kusto-data").ClientRequestProperties;
@@ -597,7 +597,7 @@ for row in response.primary_results[0]:
   print(row["StartTime"], "-", row["State"], ",", row["DailyDamage"], "$")
 ```
 
-### [Node.js](#tab/nodejs)
+### [Typescript](#tab/typescript)
 
 ```nodejs
 const query = `declare query_parameters(event_type:string, daily_damage:int);
@@ -744,7 +744,7 @@ if __name__ == "__main__":
   main()
 ```
 
-### [Node.js](#tab/nodejs)
+### [Typescript](#tab/typescript)
 
 ```nodejs
 const {Client, KustoConnectionStringBuilder, ClientRequestProperties} = require("azure-kusto-data");
