@@ -8,8 +8,7 @@ ms.date: 03/20/2023
 
 # Kusto.Explorer installation and user interface
 
-Kusto.Explorer is a rich Windows desktop application that enables you to explore your data using the Kusto Query Language in an easy-to-use user interface. This overview explains how to get started with setting up your Kusto.Explorer and explains the user interface you'll use.
-
+Kusto.Explorer is free software for download and use on your Windows desktop. Kusto.Explorer allows you to query and analyze your data with Kusto Query Language (KQL) in a user-friendly interface. This overview explains how to set up Kusto.Explorer, and describes the user interface you'll use.
 
 With Kusto.Explorer, you can:
 
@@ -22,7 +21,6 @@ With Kusto.Explorer, you can:
 
 * Download and install the Kusto.Explorer tool from:
   * [https://aka.ms/ke](https://aka.ms/ke)
-  <!--* [https://aka.ms/ke-mirror](https://aka.ms/ke-mirror) (Non-CDN location)-->
 
 * Alternatively, access your Kusto cluster with a ClickOnce-enabled browser at:
 `https://<your_cluster>/?web=0`
@@ -31,9 +29,10 @@ With Kusto.Explorer, you can:
 ### Using Google Chrome and Kusto.Explorer
 
 If Google Chrome is your default browser, installing the ClickOnce extension for Chrome is required.
-If your default browser is the Chromium-based Microsoft Edge, installing this extension *isn't* required.
-
 [https://chrome.google.com/webstore/detail/clickonce-for-google-chro/kekahkplibinaibelipdcikofmedafmb/related?hl=en-US](https://chrome.google.com/webstore/detail/clickonce-for-google-chro/kekahkplibinaibelipdcikofmedafmb/related?hl=en-US)
+
+If your default browser is the Microsoft Edge, installing this extension *isn't* required.
+Validate your ClickOnce settings in [Microsoft Edge flag settings](edge://flags/#edge-click-once).
 
 ## Overview of the user interface
 
@@ -66,7 +65,7 @@ StormEvents | count
 
 Run each line using `F5`, or similar.
 
-## Work Folders panel
+## Work Documents panel
 
 :::image type="content" source="images/kusto-explorer/work-folders-pane.png" alt-text="Screenshot of the Work Folders panel showing Unsaved work and Tracked Folders.":::
 
