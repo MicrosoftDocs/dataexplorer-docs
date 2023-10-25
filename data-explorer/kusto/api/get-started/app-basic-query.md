@@ -371,9 +371,20 @@ python basic_query.py
 
 ### [Typescript](#tab/typescript)
 
+To run the code in a Node.js environment:
+
 ```bash
 node basic-query.js
 ```
+
+To run the code in a browser environment:
+
+```bash
+npm run dev
+```
+
+> [!NOTE]
+> In a browser environment, open the [developer tools console](microsoft-edge/devtools-guide-chromium/console/) to see the output.
 
 <!-- ### [Go](#tab/go) -->
 

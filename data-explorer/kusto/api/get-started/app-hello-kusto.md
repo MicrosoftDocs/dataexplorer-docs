@@ -41,7 +41,10 @@ In your preferred IDE or text editor, create a project or file named *hello kust
     ### [Typescript](#tab/typescript)
 
     ```typescript
-    const {Client, KustoConnectionStringBuilder} = require("azure-kusto-data");
+    import {
+      Client as KustoClient,
+      KustoConnectionStringBuilder
+    } from "azure-kusto-data";
     ```
 
     <!-- ### [Go](#tab/go) -->
@@ -168,7 +171,7 @@ In your preferred IDE or text editor, create a project or file named *hello kust
     ### [Typescript](#tab/typescript)
 
     ```typescript
-    const kustoClient = new Client(kcsb);
+    const kustoClient = new KustoClient(kcsb);
     ```
 
     <!-- ### [Go](#tab/go) -->
@@ -350,7 +353,7 @@ async function main()
 {
   const clusterUri = "https://help.kusto.windows.net";
   const kcsb = KustoConnectionStringBuilder.withUserPrompt(clusterUri);
-  const kustoClient = new Client(kcsb);
+  const kustoClient = new KustoClient(kcsb);
 
   const database = "Samples";
   const query = "print Welcome='Hello Kusto!'";
@@ -414,9 +417,20 @@ python hello_kusto.py
 
 ### [Typescript](#tab/typescript)
 
+To run the code in a Node.js environment:
+
 ```bash
 node hello-kusto.js
 ```
+
+To run the code in a browser environment:
+
+```bash
+npm run dev
+```
+
+> [!NOTE]
+> In a browser environment, open the [developer tools console](microsoft-edge/devtools-guide-chromium/console/) to see the output.
 
 <!-- ### [Go](#tab/go) -->
 
