@@ -134,10 +134,10 @@
     },
     "fileMetadata": {
       "titleSuffix": {
-        "data-explorer/kusto/functions-library/**/*.md": "Azure Data Explorer & Microsoft Fabric",
-        "data-explorer/kusto/api/**/*.md": "Azure Data Explorer & Microsoft Fabric",
-        "data-explorer/kusto/management/**/*.md": "Azure Data Explorer & Microsoft Fabric",
-        "data-explorer/kusto/query/**/*.md": "Azure Data Explorer & Microsoft Fabric"
+        "kusto/functions-library/**/*.md": "Azure Data Explorer & Microsoft Fabric",
+        "kusto/api/**/*.md": "Azure Data Explorer & Microsoft Fabric",
+        "kusto/management/**/*.md": "Azure Data Explorer & Microsoft Fabric",
+        "kusto/query/**/*.md": "Azure Data Explorer & Microsoft Fabric"
       }
     },
     "template": [],
