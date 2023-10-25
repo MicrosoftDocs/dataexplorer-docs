@@ -40,10 +40,12 @@ The following table summarizes the available connectors and their capabilities:
 | [Serilog](#serilog) | **Ingestion** | &check; | &check; | First party, [Open source](https://github.com/Azure/serilog-sinks-azuredataexplorer) | Logs |
 | [Splunk](#splunk) | **Ingestion** | &#x2717; |  | [Open source](https://github.com/Azure/azure-kusto-splunk) | Logs |
 | [Telegraf](#telegraf) | **Ingestion** | &check; |  | [Open source](https://github.com/influxdata/telegraf/tree/master/plugins/outputs/azure_data_explorer) | Metrics, Logs |
+
 ::: zone-end
 ::: zone pivot="fabric"
+
 | Name | Functionality | Supports streaming? | Type | Use cases |
-|---|---|:-:|---|---|
+|--|--|:-:|--|--|
 | [Apache Kafka](#apache-kafka) | **Ingestion** | &check; | First party, [Open source](https://github.com/Azure/kafka-sink-azure-kusto/) | Logs, Telemetry, Time series |
 | [Apache Log4J 2](#apache-log4j-2) | **Ingestion** | &check; | First party, [Open source](https://github.com/Azure/azure-kusto-log4j) | Logs |
 | [Apache Spark](#apache-spark) | **Export** <br /><br />**Ingestion** | &#x2717; | [Open source](https://github.com/Azure/azure-kusto-spark/) | Telemetry |
@@ -61,6 +63,7 @@ The following table summarizes the available connectors and their capabilities:
 | [Power Automate](#power-automate) | **Export** <br /><br />**Ingestion** | &#x2717; | First party | Data orchestration |
 | [Serilog](#serilog) | **Ingestion** | &check; | First party, [Open source](https://github.com/Azure/serilog-sinks-azuredataexplorer) | Logs |
 | [Telegraf](#telegraf) | **Ingestion** | &check; | [Open source](https://github.com/influxdata/telegraf/tree/master/plugins/outputs/azure_data_explorer) | Metrics, Logs |
+
 ::: zone-end
 
 ## Apache Kafka
