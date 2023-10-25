@@ -158,7 +158,7 @@ Add the following code:
 
     ### [Typescript](#tab/typescript)
 
-    ```nodejs
+    ```typescript
     const {Client, KustoConnectionStringBuilder} = require("azure-kusto-data");
     const {InteractiveBrowserCredential} = require("@azure/identity");
 
@@ -261,7 +261,7 @@ Add the following code:
 
     ### [Typescript](#tab/typescript)
 
-    ```nodejs
+    ```typescript
     const {IngestClient, IngestionProperties, DataFormat} = require("azure-kusto-ingest");
 
     const ingestUri = "<your_ingestion_uri>";
@@ -323,7 +323,7 @@ Add the following code:
 
     ### [Typescript](#tab/typescript)
 
-    ```nodejs
+    ```typescript
     const path = require('path');
 
     const ingestClient = new IngestClient(ingestKcsb);
@@ -404,7 +404,7 @@ Add the following code:
 
     ### [Typescript](#tab/typescript)
 
-    ```nodejs
+    ```typescript
     console.log("\nWaiting 30 seconds for ingestion to complete ...");
     await sleep(30000);
 
@@ -574,7 +574,7 @@ if __name__ == "__main__":
 
 ### [Typescript](#tab/typescript)
 
-```nodejs
+```typescript
 const path = require('path');
 const {Client, KustoConnectionStringBuilder} = require("azure-kusto-data");
 const {IngestClient, IngestionProperties, DataFormat} = require("azure-kusto-ingest");
@@ -785,7 +785,7 @@ For example, you can modify the app replacing the *ingest from file* code, as fo
 
     ### [Typescript](#tab/typescript)
 
-    ```nodejs
+    ```typescript
     const {Readable} = require("stream");
     ```
 
@@ -820,7 +820,7 @@ For example, you can modify the app replacing the *ingest from file* code, as fo
 
     ### [Typescript](#tab/typescript)
 
-    ```nodejs
+    ```typescript
     const singleLine = '2018-01-26 00:00:00.0000000,2018-01-27 14:00:00.0000000,MEXICO,0,0,Unknown,"{}"';
     const stringStream = new Readable();
     stringStream.push(singleLine);
@@ -855,7 +855,7 @@ For example, you can modify the app replacing the *ingest from file* code, as fo
 
     ### [Typescript](#tab/typescript)
 
-    ```nodejs
+    ```typescript
     ingestProps.ignoreFirstRecord = false;
     ```
 
@@ -886,7 +886,7 @@ For example, you can modify the app replacing the *ingest from file* code, as fo
 
     ### [Typescript](#tab/typescript)
 
-    ```nodejs
+    ```typescript
     stringStream.size = singleLine.length;
     await ingestClient.ingestFromStream(stringStream, ingestProps);
     ```
@@ -978,7 +978,7 @@ if __name__ == "__main__":
 
 ### [Typescript](#tab/typescript)
 
-```nodejs
+```typescript
 const path = require('path');
 const {Client, KustoConnectionStringBuilder} = require("azure-kusto-data");
 const {IngestClient, IngestionProperties, DataFormat} = require("azure-kusto-ingest");
@@ -1113,7 +1113,7 @@ For example, you can modify the app replacing the *ingest from memory* code with
 
     ### [Typescript](#tab/typescript)
 
-    ```nodejs
+    ```typescript
     No additional packages are required.
     ```
 
@@ -1150,7 +1150,7 @@ For example, you can modify the app replacing the *ingest from memory* code with
 
     ### [Typescript](#tab/typescript)
 
-    ```nodejs
+    ```typescript
     const blobUri = "<your_blob_uri>";
 
     ingestProps.ignoreFirstRecord = true;
@@ -1246,7 +1246,7 @@ if __name__ == "__main__":
 
 ### [Typescript](#tab/typescript)
 
-```nodejs
+```typescript
 
 const path = require('path');
 const {Client, KustoConnectionStringBuilder} = require("azure-kusto-data");

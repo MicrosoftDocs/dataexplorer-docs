@@ -63,7 +63,7 @@ In your preferred IDE or text editor, create a project or file named *basic quer
 
     ### [Typescript](#tab/typescript)
 
-    ```nodejs
+    ```typescript
     const {Client, KustoConnectionStringBuilder} = require("azure-kusto-data");
 
     async function main() {
@@ -130,7 +130,7 @@ In your preferred IDE or text editor, create a project or file named *basic quer
 
     ### [Typescript](#tab/typescript)
 
-    ```nodejs
+    ```typescript
     const database = "Samples";
     const query = `StormEvents
                    | where EventType == 'Tornado'
@@ -188,7 +188,7 @@ In your preferred IDE or text editor, create a project or file named *basic quer
 
     ### [Typescript](#tab/typescript)
 
-    ```nodejs
+    ```typescript
     let response = await kusto_client.execute(database, query);
 
     console.log("Daily tornado damages over 100,000,000$:");
@@ -288,7 +288,7 @@ if __name__ == "__main__":
 
 ### [Typescript](#tab/typescript)
 
-```nodejs
+```typescript
 const {Client, KustoConnectionStringBuilder} = require("azure-kusto-data");
 
 async function main() {
@@ -436,7 +436,7 @@ for row in response.primary_results[0]:
 
 ### [Typescript](#tab/typescript)
 
-```nodejs
+```typescript
 const columnNoState = 0;
 const columnNoStartTime = response.primaryResults[0].columns.find(c => c.name == "StartTime").ordinal;
 const columnNoDailyDamage = 2;
@@ -502,7 +502,7 @@ response = kusto_client.execute_query(database, query, crp)
 
 ### [Typescript](#tab/typescript)
 
-```nodejs
+```typescript
 const ClientRequestProperties = require("azure-kusto-data").ClientRequestProperties;
 const uuid = require('uuid');
 
@@ -599,7 +599,7 @@ for row in response.primary_results[0]:
 
 ### [Typescript](#tab/typescript)
 
-```nodejs
+```typescript
 const query = `declare query_parameters(event_type:string, daily_damage:int);
                StormEvents
                | where EventType == event_type
@@ -746,7 +746,7 @@ if __name__ == "__main__":
 
 ### [Typescript](#tab/typescript)
 
-```nodejs
+```typescript
 const {Client, KustoConnectionStringBuilder, ClientRequestProperties} = require("azure-kusto-data");
 const uuid = require('uuid');
 

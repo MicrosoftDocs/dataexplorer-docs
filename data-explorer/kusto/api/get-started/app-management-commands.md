@@ -65,7 +65,7 @@ In your preferred IDE or text editor, create a project or file named *management
 
     ### [Typescript](#tab/typescript)
 
-    ```nodejs
+    ```typescript
     const {Client, KustoConnectionStringBuilder} = require("azure-kusto-data");
 
     async function main() {
@@ -140,7 +140,7 @@ In your preferred IDE or text editor, create a project or file named *management
 
     ### [Typescript](#tab/typescript)
 
-    ```nodejs
+    ```typescript
     function printResultAsValueList(command, response) {
       // create a list of columns
       let cols = response.primaryResults[0].columns;
@@ -215,7 +215,7 @@ In your preferred IDE or text editor, create a project or file named *management
 
     ### [Typescript](#tab/typescript)
 
-    ```nodejs
+    ```typescript
     const database = "<your_database>";
     const table = "MyStormEvents";
 
@@ -280,7 +280,7 @@ In your preferred IDE or text editor, create a project or file named *management
     > [!NOTE]
     > You'll use the `executeMgmt` method to run the command.
 
-    ```nodejs
+    ```typescript
     let response = await kustoClient.executeMgmt(database, command);
     printResultsAsValueList(command, response)
     ```
@@ -392,7 +392,7 @@ if __name__ == "__main__":
 
 ### [Typescript](#tab/typescript)
 
-```nodejs
+```typescript
 const {Client, KustoConnectionStringBuilder} = require("azure-kusto-data");
 
 async function main() {
@@ -573,7 +573,7 @@ print_result_as_value_list(command, response)
 
 ### [Typescript](#tab/typescript)
 
-```nodejs
+```typescript
 // Reduce the default batching timeout to 30 seconds
 command = ".alter-merge table " + table + " policy ingestionbatching '{ \"MaximumBatchingTimeSpan\":\"00:00:30\" }'"
 
@@ -642,7 +642,7 @@ print_result_as_value_list(command, response)
 
 ### [Typescript](#tab/typescript)
 
-```nodejs
+```typescript
 // Show the database retention policy (drop some columns from the result)
 command = ".show database " + database + " policy retention | project-away ChildEntities, EntityType"
 

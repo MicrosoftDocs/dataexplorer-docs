@@ -40,7 +40,7 @@ In your preferred IDE or text editor, create a project or file named *hello kust
 
     ### [Typescript](#tab/typescript)
 
-    ```nodejs
+    ```typescript
     const {Client, KustoConnectionStringBuilder} = require("azure-kusto-data");
     ```
 
@@ -82,7 +82,7 @@ In your preferred IDE or text editor, create a project or file named *hello kust
 
     ### [Typescript](#tab/typescript)
 
-    ```nodejs
+    ```typescript
     async function main()
     {
     }
@@ -124,7 +124,7 @@ In your preferred IDE or text editor, create a project or file named *hello kust
 
     ### [Typescript](#tab/typescript)
 
-    ```nodejs
+    ```typescript
     const clusterUri = "https://help.kusto.windows.net";
     const kcsb = KustoConnectionStringBuilder.withUserPrompt(clusterUri);
     ```
@@ -167,7 +167,7 @@ In your preferred IDE or text editor, create a project or file named *hello kust
 
     ### [Typescript](#tab/typescript)
 
-    ```nodejs
+    ```typescript
     const kustoClient = new Client(kcsb);
     ```
 
@@ -200,7 +200,7 @@ In your preferred IDE or text editor, create a project or file named *hello kust
 
     ### [Typescript](#tab/typescript)
 
-    ```nodejs
+    ```typescript
     const database = "Samples";
     const query = "print Welcome='Hello Kusto!'";
     ```
@@ -238,7 +238,7 @@ In your preferred IDE or text editor, create a project or file named *hello kust
 
     ### [Typescript](#tab/typescript)
 
-    ```nodejs
+    ```typescript
     let response = await kustoClient.execute(database, query);
 
     console.log(response.primaryResults[0][0]["Welcome"].toString());
@@ -343,7 +343,7 @@ if __name__ == "__main__":
 
 ### [Typescript](#tab/typescript)
 
-```nodejs
+```typescript
 const {Client, KustoConnectionStringBuilder} = require("azure-kusto-data");
 
 async function main()
