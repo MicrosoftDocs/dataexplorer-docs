@@ -34,13 +34,14 @@ Verify installation: In a command shell, run `dotnet sdk check` to check that th
 
 ### [Typescript](#tab/typescript)
 
-The Kusto client libraries support both JavaScript and TypeScript. In this series, we use TypeScript, but you can convert the code to JavaScript by omitting typings.
-
 - [Node 16 or later](https://nodejs.org/en/download/) built with ES6
     - Ensure the `node` executable is in your `PATH`
     - Verify installation: In a command shell, run `node --version` to check that the version is 3.7 or later
 - A Node.js app or a browser-based web app to run the provided code.
   - For browser-based apps, you must [create a Microsoft Entra application registration](../../../provision-azure-ad-app.md) for authentication.
+
+> [!NOTE]
+> The Kusto client libraries support both JavaScript and TypeScript. In this series, the examples are written in TypeScript. To convert the examples to JavaScript, remove the typings and any TypeScript-specific syntax.
 
 <!-- ### [Go](#tab/go) -->
 
