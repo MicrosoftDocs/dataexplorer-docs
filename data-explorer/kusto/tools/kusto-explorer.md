@@ -32,7 +32,7 @@ If Google Chrome is your default browser, installing the ClickOnce extension for
 [https://chrome.google.com/webstore/detail/clickonce-for-google-chro/kekahkplibinaibelipdcikofmedafmb/related?hl=en-US](https://chrome.google.com/webstore/detail/clickonce-for-google-chro/kekahkplibinaibelipdcikofmedafmb/related?hl=en-US)
 
 If your default browser is the Microsoft Edge, installing this extension *isn't* required.
-You can validate your ClickOnce settings using [edge://flags/#edge-click-once](edge://flags/#edge-click-once) link.
+Validate your ClickOnce settings in [Microsoft Edge flag settings](edge://flags/#edge-click-once).
 
 ## Overview of the user interface
 
