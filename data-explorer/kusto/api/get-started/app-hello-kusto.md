@@ -274,7 +274,7 @@ In your preferred IDE or text editor, create a project or file named *hello kust
     > - Use the [Read()](/dotnet/api/system.data.idatareader.read) method to read the first row
     > - Use the [GetString](/dotnet/api/system.data.idatarecord.getstring)() method to get the value of the first column
     >
-    > ### [Python / Node.js](#tab/python+nodejs)
+    > ### [Python / TypeScript](#tab/python+typescript)
     >
     > The response in the primary results JSON object. The object contains an array of tables, which in turn contains an array of rows. Each row contains data organized into a dictionary of columns. You can reference the result, as follows:
     >
