@@ -70,7 +70,7 @@ In your preferred IDE or text editor, create a project or file named *management
     import { InteractiveBrowserCredentialInBrowserOptions } from "@azure/identity";
 
     async function main() {
-      const clusterUri = "https://help.kusto.windows.net";
+      const clusterUri = "<your_cluster_uri>";
       const authOptions = {
         clientId: "5e39af3b-ba50-4255-b547-81abfb507c58",
         redirectUri: "http://localhost:5173",
@@ -403,7 +403,7 @@ import { Client as KustoClient, KustoConnectionStringBuilder } from "azure-kusto
 import { InteractiveBrowserCredentialInBrowserOptions } from "@azure/identity";
 
 async function main() {
-  const clusterUri = "https://help.kusto.windows.net";
+  const clusterUri = "<your_cluster_uri>";
   const authOptions = {
     clientId: "5e39af3b-ba50-4255-b547-81abfb507c58",
     redirectUri: "http://localhost:5173",
