@@ -104,6 +104,87 @@ To configure Fluent Bit to send logs to your Azure Data Explorer table, create a
 |Table_Name|The name of the table from [Create an Azure Data Explorer table](#create-an-azure-data-explorer-table-to-store-your-logs).|
 |Ingestion_Mapping_Reference| The name of the ingestion mapping from [Create an Azure Data Explorer table](#create-an-azure-data-explorer-table-to-store-your-logs). If you didn't create an ingestion mapping, remove the property from the configuration file.|
 
+To see an example configuration file, select the relevant tab:
+
+### [Classic mode](#tab/classic)
+
+```txt
+[SERVICE]
+    Daemon Off
+    Flush 1
+    Log_Level trace
+    HTTP_Server On
+    HTTP_Listen 0.0.0.0
+    HTTP_Port 2020
+    Health_Check On
+
+[INPUT]
+    Name tail
+    Path /var/log/containers/*.log
+    Tag kube.*
+    Mem_Buf_Limit 1MB
+    Skip_Long_Lines On
+    Refresh_Interval 10
+
+[OUTPUT]
+    Name azure_kusto
+    Match *
+    Tenant_Id azure-tenant-id
+    Client_Id azure-client-id
+    Client_Secret azure-client-secret
+    Ingestion_Endpoint azure-data-explorer-ingestion-endpoint
+    Database_Name azure-data-explorer-database-name
+    Table_Name azure-data-explorer-table-name
+```
+
+### [YAML mode](#tab/yaml)
+
+```yaml
+config:
+  service: |
+    [SERVICE]
+        Daemon Off
+        Flush 1
+        Log_Level trace
+        HTTP_Server On
+        HTTP_Listen 0.0.0.0
+        HTTP_Port 2020
+        Health_Check On
+        
+  inputs: |
+    [INPUT]
+        Name tail
+        Path /var/log/containers/*.log
+        multiline.parser docker, cri
+        Tag kube.*
+        Mem_Buf_Limit 1MB
+        Skip_Long_Lines On
+        Refresh_Interval 10
+
+  filters: |
+    [FILTER]
+        Name kubernetes
+        Match kube.*
+        Merge_Log On
+        Merge_Log_key log_processed
+        K8S-Logging.Parser On
+        K8S-Logging.Exclude Off
+
+
+  outputs: |
+    [OUTPUT]
+        Name azure_kusto
+    	Match *
+    	Tenant_Id azure-tenant-id
+    	Client_Id azure-client-id
+    	Client_Secret azure-client-secret
+    	Ingestion_Endpoint azure-data-explorer-ingestion-endpoint
+    	Database_Name azure-data-explorer-database-name
+    	Table_Name azure-data-explorer-table-name
+```
+
+---
+
 ## Verify that data is ingested into Azure Data Explorer
 
 Once the configuration is complete, logs should arrive in your Azure Data Explorer table.
