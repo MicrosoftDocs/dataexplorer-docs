@@ -40,8 +40,20 @@ Verify installation: In a command shell, run `dotnet sdk check` to check that th
 - [Node 16 or later](https://nodejs.org/en/download/) built with ES6
     - Ensure the `node` executable is in your `PATH`
     - Verify installation: In a command shell, run `node --version` to check that the version is 3.7 or later
-- A Node.js app or a browser-based web app to run the provided code.
-  - For browser-based apps, you must [create a Microsoft Entra application registration](../../../provision-azure-ad-app.md) for authentication.
+- A Node.js app or a browser-based web app.
+- For browser-based apps, set up an application registration with the necessary permissions for authentication:
+  
+    1. [Create a Microsoft Entra application registration](../../../provision-azure-ad-app.md).
+    2. In the **Authentication** tab, select **+ Add a platform**.
+    3. Select **Single-page application**.
+    4. Enter the desired **Redirect URIs**, select the boxes for **Access tokens** and **ID tokens**, and select **Configure**.
+    5. In the **API permissions** tab, select **Add a permission**.
+    6. Select **APIs my organization uses**.
+    7. Search for "Azure Data Explorer" and add the application that you just configured.
+    8. In the **Overview** tab, copy the **Application (client) ID**.
+
+    > [!NOTE]
+    > If you belong to an organization, restrictions based on the organization configurations might prevent you from authenticating. If these steps aren't effective, try again on a personal account.
 
 <!-- ### [Go](#tab/go) -->
 
