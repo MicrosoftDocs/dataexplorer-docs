@@ -4,4 +4,4 @@ ms.date: 10/26/2023
 ---
 
 > [!NOTE]
-> For Node.js environments, use `InteractiveBrowserCredentialNodeOptions` instead of `InteractiveBrowserCredentialInBrowserOptions`.
+> For Node.js apps, use `InteractiveBrowserCredentialNodeOptions` instead of `InteractiveBrowserCredentialInBrowserOptions`.
