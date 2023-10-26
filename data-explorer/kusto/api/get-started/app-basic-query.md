@@ -64,13 +64,13 @@ In your preferred IDE or text editor, create a project or file named *basic quer
     ### [Typescript](#tab/typescript)
 
     ```typescript
-    const {Client, KustoConnectionStringBuilder} = require("azure-kusto-data");
+    import { Client as KustoClient, KustoConnectionStringBuilder } from "azure-kusto-data";
 
     async function main() {
       const clusterUri = "https://help.kusto.windows.net";
       const kcsb = KustoConnectionStringBuilder.withUserPrompt(clusterUri);
 
-      const kusto_client = new Client(kcsb);
+      const kustoClient = new KustoClient(kcsb);
     }
 
     main();
@@ -189,7 +189,7 @@ In your preferred IDE or text editor, create a project or file named *basic quer
     ### [Typescript](#tab/typescript)
 
     ```typescript
-    let response = await kusto_client.execute(database, query);
+    let response = await kustoClient.execute(database, query);
 
     console.log("Daily tornado damages over 100,000,000$:");
     for (row of response.primaryResults[0].rows()) {
@@ -289,12 +289,12 @@ if __name__ == "__main__":
 ### [Typescript](#tab/typescript)
 
 ```typescript
-const {Client, KustoConnectionStringBuilder} = require("azure-kusto-data");
+import { Client as KustoClient, KustoConnectionStringBuilder } from "azure-kusto-data";
 
 async function main() {
   const cluster_uri = "https://help.kusto.windows.net";
   const kcsb = KustoConnectionStringBuilder.withUserPrompt(cluster_uri);
-  const kustoClient = new Client(kcsb);
+  const kustoClient = new KustoClient(kcsb);
 
   const database = "Samples";
   const query = `StormEvents

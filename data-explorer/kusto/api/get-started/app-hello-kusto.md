@@ -41,10 +41,7 @@ In your preferred IDE or text editor, create a project or file named *hello kust
     ### [Typescript](#tab/typescript)
 
     ```typescript
-    import {
-      Client as KustoClient,
-      KustoConnectionStringBuilder
-    } from "azure-kusto-data";
+    import { Client as KustoClient, KustoConnectionStringBuilder } from "azure-kusto-data";
     ```
 
     <!-- ### [Go](#tab/go) -->
@@ -347,7 +344,7 @@ if __name__ == "__main__":
 ### [Typescript](#tab/typescript)
 
 ```typescript
-const {Client, KustoConnectionStringBuilder} = require("azure-kusto-data");
+import { Client as KustoClient, KustoConnectionStringBuilder } from "azure-kusto-data/";
 
 async function main()
 {

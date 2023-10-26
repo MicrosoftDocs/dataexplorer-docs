@@ -66,13 +66,14 @@ In your preferred IDE or text editor, create a project or file named *management
     ### [Typescript](#tab/typescript)
 
     ```typescript
-    const {Client, KustoConnectionStringBuilder} = require("azure-kusto-data");
+    import { Client as KustoClient, KustoConnectionStringBuilder } from "azure-kusto-data/";
+    import { InteractiveBrowserCredentialInBrowserOptions } from "@azure/identity";
 
     async function main() {
       const clusterUri = "<your_cluster_uri>";
       const kcsb = KustoConnectionStringBuilder.withUserPrompt(clusterUri);
 
-      const kustoClient = new Client(kcsb);
+      const kustoClient = new KustoClient(kcsb);
     }
 
     main();
@@ -393,12 +394,12 @@ if __name__ == "__main__":
 ### [Typescript](#tab/typescript)
 
 ```typescript
-const {Client, KustoConnectionStringBuilder} = require("azure-kusto-data");
+import { Client as KustoClient, KustoConnectionStringBuilder } from "azure-kusto-data/";
 
 async function main() {
   const clusterUri = "https://<your_cluster_uri>";
   const kcsb = KustoConnectionStringBuilder.withUserPrompt(clusterUri);
-  const kustoClient = new Client(kcsb);
+  const kustoClient = new KustoClient(kcsb);
 
   const database = "<your_database>";
   const table = "MyStormEvents";

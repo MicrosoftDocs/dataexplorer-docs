@@ -159,8 +159,8 @@ Add the following code:
     ### [Typescript](#tab/typescript)
 
     ```typescript
-    const {Client, KustoConnectionStringBuilder} = require("azure-kusto-data");
-    const {InteractiveBrowserCredential} = require("@azure/identity");
+    import { Client as KustoClient, KustoConnectionStringBuilder } from "azure-kusto-data";
+    import { InteractiveBrowserCredential } from "@azure/identity";
 
     async function main() {
       const credentials = new InteractiveBrowserCredential();
@@ -262,7 +262,7 @@ Add the following code:
     ### [Typescript](#tab/typescript)
 
     ```typescript
-    const {IngestClient, IngestionProperties, DataFormat} = require("azure-kusto-ingest");
+    import { IngestClient, IngestionProperties, DataFormat } from "azure-kusto-ingest";
 
     const ingestUri = "<your_ingestion_uri>";
     const ingestKcsb = KustoConnectionStringBuilder.withTokenCredential(ingestUri, credentials);
@@ -575,10 +575,10 @@ if __name__ == "__main__":
 ### [Typescript](#tab/typescript)
 
 ```typescript
-const path = require('path');
-const {Client, KustoConnectionStringBuilder} = require("azure-kusto-data");
-const {IngestClient, IngestionProperties, DataFormat} = require("azure-kusto-ingest");
-const {InteractiveBrowserCredential} = require("@azure/identity");
+import path from 'path';
+import { Client, KustoConnectionStringBuilder} from "azure-kusto-data";
+import { IngestClient, IngestionProperties, DataFormat} from "azure-kusto-ingest";
+import { InteractiveBrowserCredential} from "@azure/identity";
 
 async function main() {
   const credentials = new InteractiveBrowserCredential();
