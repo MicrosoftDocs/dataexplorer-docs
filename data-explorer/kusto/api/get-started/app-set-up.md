@@ -40,15 +40,15 @@ Verify installation: In a command shell, run `dotnet sdk check` to check that th
 - [Node 16 or later](https://nodejs.org/en/download/) built with ES6
     - Ensure the `node` executable is in your `PATH`
     - Verify installation: In a command shell, run `node --version` to check that the version is 3.7 or later
-- A Node.js app or a browser-based web app.
-- For browser-based apps, set up an application registration with the necessary permissions for authentication:
+- A Node.js app or a browser-based web app, such as a React or Vue.js app.
+- For browser-based web apps, set up an application registration with the necessary permissions for authentication:
   
     1. [Create a Microsoft Entra application registration](../../../provision-azure-ad-app.md#create-microsoft-entra-application-registration).
-    1. In the **Authentication** tab, select **+ Add a platform**. Then, select **Single-page application**.
-    1. Enter the desired **Redirect URIs**, select the boxes for **Access tokens** and **ID tokens**, and select **Configure**. For more information on redirect URIs, see [Desktop app that calls web APIs](/entra/identity-platform/scenario-desktop-app-registration).
-    1. [Configure delegated permissions for the application registration](../../../provision-azure-ad-app.md#configure-delegated-permissions-for-the-application-registration).
-    1. [Grant the application registration access to an Azure Data Explorer database](../../../provision-azure-ad-app.md#grant-the-application-registration-access-to-an-azure-data-explorer-database).
-    1. In the **Overview** tab, copy the **Application (client) ID**.
+    2. In the **Authentication** tab, select **+ Add a platform**. Then, select **Single-page application**.
+    3. Enter the desired **Redirect URIs**, select the boxes for **Access tokens** and **ID tokens**, and select **Configure**. For more information on redirect URIs, see [Desktop app that calls web APIs](/entra/identity-platform/scenario-desktop-app-registration).
+    4. [Configure delegated permissions for the application registration](../../../provision-azure-ad-app.md#configure-delegated-permissions-for-the-application-registration).
+    5. [Grant the application registration access to an Azure Data Explorer database](../../../provision-azure-ad-app.md#grant-the-application-registration-access-to-an-azure-data-explorer-database).
+    6. In the **Overview** tab, copy the **Application (client) ID**.
 
     > [!NOTE]
     > If you belong to an organization, restrictions based on the organization configurations might prevent you from authenticating. If these steps aren't effective, try again on a personal account.
