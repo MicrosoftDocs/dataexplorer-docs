@@ -76,7 +76,7 @@ If your application needs to access Azure Data Explorer using the credentials of
 
     :::image type="content" source="media/provision-azure-ad-app/configure-delegated-click-add-permissions.png" alt-text="Screenshot showing how to select delegated permissions with user impersonation.":::
 
-## Grant the service principal access to an Azure Data Explorer database
+## Grant the application registration access to an Azure Data Explorer database
 
 Now that your service principal application registration is created, you need to grant the corresponding service principal access to your Azure Data Explorer database. The following example gives viewer access. For other roles, see [Manage Azure Data Explorer database permissions](manage-database-permissions.md).
 
@@ -85,7 +85,7 @@ Now that your service principal application registration is created, you need to
 1. Execute the following command:
 
     ```kusto
-    .add database <DatabaseName> viewers ('<ApplicationId>') '<Notes>'
+    .add database <DatabaseName> viewers ('aadapp=<ApplicationId>') '<Notes>'
     ```
 
     For example:
