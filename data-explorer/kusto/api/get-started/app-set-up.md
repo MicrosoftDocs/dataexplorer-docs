@@ -15,6 +15,9 @@ In this article, you learn how to install client library packages for your prefe
 
 Select the prerequisites for the programming language used to create your app.
 
+> [!NOTE]
+> Kusto client libraries support both JavaScript and TypeScript. To convert the TypeScript examples to JavaScript, simply remove the typings.
+
 ### [C\#](#tab/csharp)
 
 One or more of the following .NET SDK frameworks:
@@ -39,9 +42,6 @@ Verify installation: In a command shell, run `dotnet sdk check` to check that th
     - Verify installation: In a command shell, run `node --version` to check that the version is 3.7 or later
 - A Node.js app or a browser-based web app to run the provided code.
   - For browser-based apps, you must [create a Microsoft Entra application registration](../../../provision-azure-ad-app.md) for authentication.
-
-> [!NOTE]
-> The Kusto client libraries support both JavaScript and TypeScript. In this series, the examples are written in TypeScript. To convert the examples to JavaScript, remove the typings and any TypeScript-specific syntax.
 
 <!-- ### [Go](#tab/go) -->
 
