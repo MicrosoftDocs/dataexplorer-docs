@@ -47,6 +47,7 @@ Verify installation: In a command shell, run `dotnet sdk check` to check that th
     1. In the **Authentication** tab, select **+ Add a platform**. Then, select **Single-page application**.
     1. Enter the desired **Redirect URIs**, select the boxes for **Access tokens** and **ID tokens**, and select **Configure**. For more information on redirect URIs, see [Desktop app that calls web APIs](/entra/identity-platform/scenario-desktop-app-registration).
     1. [Configure delegated permissions for the application registration](../../../provision-azure-ad-app.md#configure-delegated-permissions-for-the-application-registration).
+    1. [Grant the application registration access to an Azure Data Explorer database](../../../provision-azure-ad-app.md#grant-the-service-principal-access-to-an-azure-data-explorer-database).
     1. In the **Overview** tab, copy the **Application (client) ID**.
 
     > [!NOTE]
