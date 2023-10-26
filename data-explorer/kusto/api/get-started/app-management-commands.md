@@ -70,9 +70,12 @@ In your preferred IDE or text editor, create a project or file named *management
     import { InteractiveBrowserCredentialInBrowserOptions } from "@azure/identity";
 
     async function main() {
-      const clusterUri = "<your_cluster_uri>";
-      const kcsb = KustoConnectionStringBuilder.withUserPrompt(clusterUri);
-
+      const clusterUri = "https://help.kusto.windows.net";
+      const authOptions = {
+        clientId: "5e39af3b-ba50-4255-b547-81abfb507c58",
+        redirectUri: "http://localhost:5173",
+      } as InteractiveBrowserCredentialInBrowserOptions;
+      const kcsb = KustoConnectionStringBuilder.withUserPrompt(clusterUri, authOptions);
       const kustoClient = new KustoClient(kcsb);
     }
 
@@ -400,8 +403,12 @@ import { Client as KustoClient, KustoConnectionStringBuilder } from "azure-kusto
 import { InteractiveBrowserCredentialInBrowserOptions } from "@azure/identity";
 
 async function main() {
-  const clusterUri = "https://<your_cluster_uri>";
-  const kcsb = KustoConnectionStringBuilder.withUserPrompt(clusterUri);
+  const clusterUri = "https://help.kusto.windows.net";
+  const authOptions = {
+    clientId: "5e39af3b-ba50-4255-b547-81abfb507c58",
+    redirectUri: "http://localhost:5173",
+  } as InteractiveBrowserCredentialInBrowserOptions;
+  const kcsb = KustoConnectionStringBuilder.withUserPrompt(clusterUri, authOptions);
   const kustoClient = new KustoClient(kcsb);
 
   const database = "<your_database>";

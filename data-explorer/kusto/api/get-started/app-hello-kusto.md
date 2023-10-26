@@ -131,12 +131,11 @@ In your preferred IDE or text editor, create a project or file named *hello kust
 
     ```typescript
     const clusterUri = "https://help.kusto.windows.net";
-    const interactiveBrowserAuthOptions = {
+    const authOptions = {
       clientId: "5e39af3b-ba50-4255-b547-81abfb507c58",
       redirectUri: "http://localhost:5173",
     } as InteractiveBrowserCredentialInBrowserOptions;
-
-    const kcsb = KustoConnectionStringBuilder.withUserPrompt(clusterUri, interactiveBrowserAuthOptions);
+    const kcsb = KustoConnectionStringBuilder.withUserPrompt(clusterUri, authOptions);
     ```
 
     [!INCLUDE [node-vs-browser-auth](../../../includes/node-vs-browser-auth.md)]
@@ -362,7 +361,11 @@ import { InteractiveBrowserCredentialInBrowserOptions } from "@azure/identity";
 async function main()
 {
   const clusterUri = "https://help.kusto.windows.net";
-  const kcsb = KustoConnectionStringBuilder.withUserPrompt(clusterUri);
+  const authOptions = {
+    clientId: "5e39af3b-ba50-4255-b547-81abfb507c58",
+    redirectUri: "http://localhost:5173",
+  } as InteractiveBrowserCredentialInBrowserOptions;
+  const kcsb = KustoConnectionStringBuilder.withUserPrompt(clusterUri, authOptions);
   const kustoClient = new KustoClient(kcsb);
 
   const database = "Samples";
