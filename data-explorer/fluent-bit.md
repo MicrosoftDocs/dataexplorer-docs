@@ -3,12 +3,12 @@ title: Ingest data with Fluent Bit into Azure Data Explorer
 description: Learn how to ingest (load) data into Azure Data Explorer from Fluent Bit.
 ms.reviewer: ramacg
 ms.topic: how-to
-ms.date: 10/04/2023
+ms.date: 10/26/2023
 ---
 
 # Ingest data with Fluent Bit into Azure Data Explorer
 
-[Fluent Bit](https://fluentbit.io/) is an open-source agent that collects logs, metrics, and traces from various sources. It allows you to filter, modify, and aggregate event data before sending it to storage. Azure Data Explorer is a fast and highly scalable data exploration service for log and telemetry data. This article guides you through the process of using Fluent Bit to send data to Azure Data Explorer. 
+[Fluent Bit](https://github.com/fluent/fluent-bit/tree/master) is an open-source agent that collects logs, metrics, and traces from various sources. It allows you to filter, modify, and aggregate event data before sending it to storage. Azure Data Explorer is a fast and highly scalable data exploration service for log and telemetry data. This article guides you through the process of using Fluent Bit to send data to Azure Data Explorer. 
 
 In this article, you'll learn how to:
 
