@@ -43,14 +43,12 @@ Verify installation: In a command shell, run `dotnet sdk check` to check that th
 - A Node.js app or a browser-based web app.
 - For browser-based apps, set up an application registration with the necessary permissions for authentication:
   
-    1. [Create a Microsoft Entra application registration](../../../provision-azure-ad-app.md).
+    1. [Create a Microsoft Entra application registration](../../../provision-azure-ad-app.md#create-microsoft-entra-application-registration).
     2. In the **Authentication** tab, select **+ Add a platform**.
     3. Select **Single-page application**.
-    4. Enter the desired **Redirect URIs**, select the boxes for **Access tokens** and **ID tokens**, and select **Configure**.
-    5. In the **API permissions** tab, select **Add a permission**.
-    6. Select **APIs my organization uses**.
-    7. Search for "Azure Data Explorer" and add the application that you just configured.
-    8. In the **Overview** tab, copy the **Application (client) ID**.
+    4. Enter the desired **Redirect URIs**, select the boxes for **Access tokens** and **ID tokens**, and select **Configure**. For more information on redirect URIs, see [Desktop app that calls web APIs](/entra/identity-platform/scenario-desktop-app-registration).
+    5. [Configure delegated permissions for the application registration](../../../provision-azure-ad-app.md#configure-delegated-permissions-for-the-application-registration).
+    6. In the **Overview** tab, copy the **Application (client) ID**.
 
     > [!NOTE]
     > If you belong to an organization, restrictions based on the organization configurations might prevent you from authenticating. If these steps aren't effective, try again on a personal account.
