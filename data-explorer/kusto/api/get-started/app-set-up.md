@@ -51,7 +51,7 @@ Verify installation: In a command shell, run `dotnet sdk check` to check that th
     6. In the **Overview** tab, copy the **Application (client) ID**.
 
     > [!NOTE]
-    > If you belong to an organization, restrictions based on the organization configurations might prevent you from authenticating. If these steps aren't effective, try again on a personal account.
+    > If you belong to an organization, restrictions based on organization configurations might prevent you from authenticating. Ask for access from an organization admin or try again on a personal account.
 
 <!-- ### [Go](#tab/go) -->
 
