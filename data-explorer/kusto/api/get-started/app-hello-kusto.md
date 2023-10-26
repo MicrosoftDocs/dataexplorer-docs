@@ -127,7 +127,7 @@ In your preferred IDE or text editor, create a project or file named *hello kust
 
     ### [Typescript](#tab/typescript)
 
-    The `clientId` is of the Microsoft Entra application that you created in [Set up your development environment](app-set-up.md#prerequisites). 
+    The `clientId` and `redirectUri` are from the Microsoft Entra app registration you created in the **Prerequisites** section of [Set up your development environment](app-set-up.md#prerequisites).
 
     ```typescript
     const clusterUri = "https://help.kusto.windows.net";
