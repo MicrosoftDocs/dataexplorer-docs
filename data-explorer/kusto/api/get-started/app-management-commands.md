@@ -79,6 +79,9 @@ In your preferred IDE or text editor, create a project or file named *management
     main();
     ```
 
+    > [!NOTE]
+    > For Node.js environments, use the `InteractiveBrowserCredentialNodeOptions` instead of the `InteractiveBrowserCredentialInBrowserOptions`.
+
     <!-- ### [Go](#tab/go) -->
 
     ### [Java](#tab/java)
@@ -395,6 +398,7 @@ if __name__ == "__main__":
 
 ```typescript
 import { Client as KustoClient, KustoConnectionStringBuilder } from "azure-kusto-data/";
+import { InteractiveBrowserCredentialInBrowserOptions } from "@azure/identity";
 
 async function main() {
   const clusterUri = "https://<your_cluster_uri>";
@@ -434,6 +438,9 @@ function printResultsAsValueList(command, response) {
 
 main();
 ```
+
+> [!NOTE]
+> For Node.js environments, use the `InteractiveBrowserCredentialNodeOptions` instead of the `InteractiveBrowserCredentialInBrowserOptions`.
 
 <!-- ### [Go](#tab/go) -->
 

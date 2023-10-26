@@ -42,7 +42,11 @@ In your preferred IDE or text editor, create a project or file named *hello kust
 
     ```typescript
     import { Client as KustoClient, KustoConnectionStringBuilder } from "azure-kusto-data";
+    import { InteractiveBrowserCredentialInBrowserOptions } from "@azure/identity";
     ```
+
+    > [!NOTE]
+    > For Node.js environments, use the `InteractiveBrowserCredentialNodeOptions` instead of the `InteractiveBrowserCredentialInBrowserOptions`.
 
     <!-- ### [Go](#tab/go) -->
 
@@ -58,7 +62,7 @@ In your preferred IDE or text editor, create a project or file named *hello kust
 
     ---
 
-1. Define an empty function named `main` and call it.
+2. Define an empty function named `main` and call it.
 
     ### [C\#](#tab/csharp)
 
@@ -106,7 +110,7 @@ In your preferred IDE or text editor, create a project or file named *hello kust
 
     ---
 
-1. Create a connection string builder object that defines the cluster URI and sets the authentication mode to interactive. For more information about the cluster URI, see [Kusto connection strings](../connection-strings/kusto.md).
+3. Create a connection string builder object that defines the cluster URI and sets the authentication mode to interactive. For more information about the cluster URI, see [Kusto connection strings](../connection-strings/kusto.md).
 
     ### [C\#](#tab/csharp)
 
@@ -124,10 +128,20 @@ In your preferred IDE or text editor, create a project or file named *hello kust
 
     ### [Typescript](#tab/typescript)
 
+    The `clientId` is of the Microsoft Entra application that you created in [Set up your development environment](app-set-up.md#prerequisites). 
+
     ```typescript
     const clusterUri = "https://help.kusto.windows.net";
-    const kcsb = KustoConnectionStringBuilder.withUserPrompt(clusterUri);
+    const interactiveBrowserAuthOptions = {
+      clientId: "5e39af3b-ba50-4255-b547-81abfb507c58",
+      redirectUri: "http://localhost:5173",
+    } as InteractiveBrowserCredentialInBrowserOptions;
+
+    const kcsb = KustoConnectionStringBuilder.withUserPrompt(clusterUri, interactiveBrowserAuthOptions);
     ```
+
+    > [!NOTE]
+    > For Node.js environments, use the `InteractiveBrowserCredentialNodeOptions` instead of the `InteractiveBrowserCredentialInBrowserOptions`.
 
     <!-- ### [Go](#tab/go) -->
 
@@ -147,7 +161,7 @@ In your preferred IDE or text editor, create a project or file named *hello kust
     > - The user is already authenticated on the device
     > - There is an existing Kusto.Explorer or Azure Date Explorer web UI authentication on the device
 
-1. Create a client object that uses the connection string builder object to connect to the cluster.
+4. Create a client object that uses the connection string builder object to connect to the cluster.
 
     > [!NOTE]
     > We highly recommended that you cache and reuse the Kusto client instance. Frequently recreating Kusto clients may lead to performance degradation in your application and increased load on your cluster.
@@ -182,7 +196,7 @@ In your preferred IDE or text editor, create a project or file named *hello kust
 
     ---
 
-1. Define the database and query to run. The query prints *Hello Kusto!* in a column named **Welcome**.
+5. Define the database and query to run. The query prints *Hello Kusto!* in a column named **Welcome**.
 
     ### [C\#](#tab/csharp)
 
@@ -216,7 +230,7 @@ In your preferred IDE or text editor, create a project or file named *hello kust
 
     ---
 
-1. Run the query and print the result.
+6. Run the query and print the result.
 
     ### [C\#](#tab/csharp)
 
@@ -239,7 +253,7 @@ In your preferred IDE or text editor, create a project or file named *hello kust
     ### [Typescript](#tab/typescript)
 
     ```typescript
-    let response = await kustoClient.execute(database, query);
+    const response = await kustoClient.execute(database, query);
 
     console.log(response.primaryResults[0][0]["Welcome"].toString());
     ```
@@ -345,6 +359,7 @@ if __name__ == "__main__":
 
 ```typescript
 import { Client as KustoClient, KustoConnectionStringBuilder } from "azure-kusto-data/";
+import { InteractiveBrowserCredentialInBrowserOptions } from "@azure/identity";
 
 async function main()
 {
@@ -354,13 +369,16 @@ async function main()
 
   const database = "Samples";
   const query = "print Welcome='Hello Kusto!'";
-  let response = await kustoClient.execute(database, query);
+  const response = await kustoClient.execute(database, query);
 
   console.log(response.primaryResults[0][0]["Welcome"].toString());
 }
 
 main();
 ```
+
+> [!NOTE]
+> For Node.js environments, use the `InteractiveBrowserCredentialNodeOptions` instead of the `InteractiveBrowserCredentialInBrowserOptions`.
 
 <!-- ### [Go](#tab/go) -->
 

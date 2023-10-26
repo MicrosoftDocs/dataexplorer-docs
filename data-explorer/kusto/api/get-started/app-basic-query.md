@@ -65,6 +65,7 @@ In your preferred IDE or text editor, create a project or file named *basic quer
 
     ```typescript
     import { Client as KustoClient, KustoConnectionStringBuilder } from "azure-kusto-data";
+    import { InteractiveBrowserCredentialInBrowserOptions } from "@azure/identity";
 
     async function main() {
       const clusterUri = "https://help.kusto.windows.net";
@@ -75,6 +76,10 @@ In your preferred IDE or text editor, create a project or file named *basic quer
 
     main();
     ```
+
+    > [!NOTE]
+    > For Node.js environments, use the `InteractiveBrowserCredentialNodeOptions` instead of the `InteractiveBrowserCredentialInBrowserOptions`.
+
 
     <!-- ### [Go](#tab/go) -->
 
@@ -189,7 +194,7 @@ In your preferred IDE or text editor, create a project or file named *basic quer
     ### [Typescript](#tab/typescript)
 
     ```typescript
-    let response = await kustoClient.execute(database, query);
+    const response = await kustoClient.execute(database, query);
 
     console.log("Daily tornado damages over 100,000,000$:");
     for (row of response.primaryResults[0].rows()) {
@@ -290,6 +295,7 @@ if __name__ == "__main__":
 
 ```typescript
 import { Client as KustoClient, KustoConnectionStringBuilder } from "azure-kusto-data";
+import { InteractiveBrowserCredentialInBrowserOptions } from "@azure/identity";
 
 async function main() {
   const cluster_uri = "https://help.kusto.windows.net";
@@ -302,7 +308,7 @@ async function main() {
                  | extend TotalDamage = DamageProperty + DamageCrops
                  | where DailyDamage > 100000000
                  | order by DailyDamage desc`;
-  let response = await kustoClient.execute(database, query);
+  const response = await kustoClient.execute(database, query);
 
   console.log("Daily tornado damages over 100,000,000$:");
   for (row of response.primaryResults[0].rows()) {
@@ -312,6 +318,9 @@ async function main() {
 
 main();
 ```
+
+> [!NOTE]
+> For Node.js environments, use the `InteractiveBrowserCredentialNodeOptions` instead of the `InteractiveBrowserCredentialInBrowserOptions`.
 
 <!-- ### [Go](#tab/go) -->
 
@@ -523,7 +532,7 @@ crp.clientRequestId = "QueryDemo" + uuid.v4();
 // Set the query timeout to 1 minute
 crp.setServerTimeout(1000 * 60);
 
-let response = await kustoClient.execute(database, query, crp);
+const response = await kustoClient.execute(database, query, crp);
 ```
 
 <!-- ### [Go](#tab/go) -->
@@ -623,7 +632,7 @@ const crp = new ClientRequestProperties();
 crp.setParameter("event_type", "Flash Flood");
 crp.setParameter("daily_damage", 200000000);
 
-let response = await kustoClient.execute(database, query, crp);
+const response = await kustoClient.execute(database, query, crp);
 
 console.log("Daily flash flood damages over 200,000,000$:");
 for (row of response.primaryResults[0].rows()) {
@@ -784,7 +793,7 @@ async function main() {
   crp.setParameter("event_type", "Flash Flood");
   crp.setParameter("daily_damage", 200000000);
 
-  let response = await kustoClient.execute(database, query, crp);
+  const response = await kustoClient.execute(database, query, crp);
 
   const columnNoState = 0;
   const columnNoStartTime = response.primaryResults[0].columns.find(c => c.name == "StartTime").ordinal;
