@@ -190,6 +190,10 @@ Add the following code:
     main();
     ```
 
+    > [!NOTE]
+    > For Node.js environments, use the `InteractiveBrowserCredentialNodeOptions` instead of the `InteractiveBrowserCredentialInBrowserOptions`.
+
+
     <!-- ### [Go](#tab/go) -->
 
     ### [Java](#tab/java)
@@ -324,7 +328,7 @@ Add the following code:
     ### [Typescript](#tab/typescript)
 
     ```typescript
-    const path = require('path');
+    import path from 'path';
 
     const ingestClient = new IngestClient(ingestKcsb);
     const filePath = path.join(__dirname, "stormevents.csv");
@@ -797,7 +801,7 @@ For example, you can modify the app replacing the *ingest from file* code, as fo
     ### [Typescript](#tab/typescript)
 
     ```typescript
-    const {Readable} = require("stream");
+    import { Readable } from "stream";
     ```
 
     <!-- ### [Go](#tab/go) -->
@@ -990,11 +994,11 @@ if __name__ == "__main__":
 ### [Typescript](#tab/typescript)
 
 ```typescript
-const path = require('path');
-const {Client, KustoConnectionStringBuilder} = require("azure-kusto-data");
-const {IngestClient, IngestionProperties, DataFormat} = require("azure-kusto-ingest");
-const {InteractiveBrowserCredential} = require("@azure/identity");
-const {Readable} = require("stream");
+import path from 'path';
+import { Client, KustoConnectionStringBuilder } from "azure-kusto-data";
+import { IngestClient, IngestionProperties, DataFormat } from "azure-kusto-ingest";
+import { InteractiveBrowserCredential } from "@azure/identity";
+import { Readable } from "stream";
 
 async function main() {
   ...
@@ -1258,12 +1262,11 @@ if __name__ == "__main__":
 ### [Typescript](#tab/typescript)
 
 ```typescript
-
-const path = require('path');
-const {Client, KustoConnectionStringBuilder} = require("azure-kusto-data");
-const {IngestClient, IngestionProperties, DataFormat} = require("azure-kusto-ingest");
-const {InteractiveBrowserCredential} = require("@azure/identity");
-const {Readable} = require("stream");
+import path from 'path';
+import { Client, KustoConnectionStringBuilder } from "azure-kusto-data";
+import { IngestClient, IngestionProperties, DataFormat } from "azure-kusto-ingest";
+import { InteractiveBrowserCredential } from "@azure/identity";
+import { Readable } from "stream";
 
 async function main() {
   ...
