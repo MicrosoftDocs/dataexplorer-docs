@@ -576,9 +576,9 @@ if __name__ == "__main__":
 
 ```typescript
 import path from 'path';
-import { Client, KustoConnectionStringBuilder} from "azure-kusto-data";
-import { IngestClient, IngestionProperties, DataFormat} from "azure-kusto-ingest";
-import { InteractiveBrowserCredential} from "@azure/identity";
+import { Client, KustoConnectionStringBuilder } from "azure-kusto-data";
+import { IngestClient, IngestionProperties, DataFormat } from "azure-kusto-ingest";
+import { InteractiveBrowserCredential } from "@azure/identity";
 
 async function main() {
   const credentials = new InteractiveBrowserCredential();
