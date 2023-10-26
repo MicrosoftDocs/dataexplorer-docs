@@ -45,8 +45,7 @@ In your preferred IDE or text editor, create a project or file named *hello kust
     import { InteractiveBrowserCredentialInBrowserOptions } from "@azure/identity";
     ```
 
-    > [!NOTE]
-    > For Node.js environments, use the `InteractiveBrowserCredentialNodeOptions` instead of the `InteractiveBrowserCredentialInBrowserOptions`.
+    [!INCLUDE [node-vs-browser-auth](../../../includes/node-vs-browser-auth.md)]
 
     <!-- ### [Go](#tab/go) -->
 
@@ -140,8 +139,7 @@ In your preferred IDE or text editor, create a project or file named *hello kust
     const kcsb = KustoConnectionStringBuilder.withUserPrompt(clusterUri, interactiveBrowserAuthOptions);
     ```
 
-    > [!NOTE]
-    > For Node.js environments, use the `InteractiveBrowserCredentialNodeOptions` instead of the `InteractiveBrowserCredentialInBrowserOptions`.
+    [!INCLUDE [node-vs-browser-auth](../../../includes/node-vs-browser-auth.md)]
 
     <!-- ### [Go](#tab/go) -->
 
@@ -377,9 +375,7 @@ async function main()
 main();
 ```
 
-> [!NOTE]
-> For Node.js environments, use the `InteractiveBrowserCredentialNodeOptions` instead of the `InteractiveBrowserCredentialInBrowserOptions`.
-
+[!INCLUDE [node-vs-browser-auth](../../../includes/node-vs-browser-auth.md)]
 <!-- ### [Go](#tab/go) -->
 
 ### [Java](#tab/java)

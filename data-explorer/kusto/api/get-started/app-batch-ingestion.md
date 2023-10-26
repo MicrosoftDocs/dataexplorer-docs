@@ -190,8 +190,7 @@ Add the following code:
     main();
     ```
 
-    > [!NOTE]
-    > For Node.js environments, use the `InteractiveBrowserCredentialNodeOptions` instead of the `InteractiveBrowserCredentialInBrowserOptions`.
+    [!INCLUDE [node-vs-browser-auth](../../../includes/node-vs-browser-auth.md)]
 
 
     <!-- ### [Go](#tab/go) -->

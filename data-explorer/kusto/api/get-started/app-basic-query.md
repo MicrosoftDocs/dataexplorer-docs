@@ -77,8 +77,7 @@ In your preferred IDE or text editor, create a project or file named *basic quer
     main();
     ```
 
-    > [!NOTE]
-    > For Node.js environments, use the `InteractiveBrowserCredentialNodeOptions` instead of the `InteractiveBrowserCredentialInBrowserOptions`.
+    [!INCLUDE [node-vs-browser-auth](../../../includes/node-vs-browser-auth.md)]
 
 
     <!-- ### [Go](#tab/go) -->
@@ -319,9 +318,7 @@ async function main() {
 main();
 ```
 
-> [!NOTE]
-> For Node.js environments, use the `InteractiveBrowserCredentialNodeOptions` instead of the `InteractiveBrowserCredentialInBrowserOptions`.
-
+[!INCLUDE [node-vs-browser-auth](../../../includes/node-vs-browser-auth.md)]
 <!-- ### [Go](#tab/go) -->
 
 ### [Java](#tab/java)
