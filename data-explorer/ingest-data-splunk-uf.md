@@ -58,6 +58,51 @@ When you download Splunk Universal Forwarder, a wizard will open to configure th
 
 1. Restart Splunk Universal Forwarder.
 
+## Configure Kusto Splunk Universal connector
+
+1. Download or clone the connector from the [GitHub repository](https://github.com/Azure/azure-kusto-splunk/tree/main/SplunkADXForwarder).
+
+1. Go to the base directory of the connector:
+
+    ```bash
+    cd .\SplunkADXForwarder\
+    ```
+
+1. Edit the *config.yml* to contain the required Kusto credentials and database details:
+
+    ```yaml
+    ingest_url: <ingest_url>
+    client_id: <ms_entra_app_client_id>
+    client_secret: <ms_entra_app_client_secret>
+    authority: <ms_entra_authority>
+    database_name: <database_name>
+    table_name: <table_name>
+    tabble_mapping_name: <table_mapping_name>
+    data_format: csv
+    ```
+
+    |Field|Description|
+    |--|--|
+    |`ingest_url`|In the Azure portal, you can find the ingestion url in the overview tab of your cluster as the **Data ingestion URI**. It should have the form of *https://ingest-<clusterName>.<region>.kusto.windows.net*.|
+    |`client_id`|The client ID of your Microsoft Entra application registration created in the [Prerequisites](#prerequisites) section.|
+    |`client_secret`|The client secret of your Microsoft Entra application registration created in the [Prerequisites](#prerequisites) section.|
+    |`authority`|The ID of the tenant that contains your Microsoft Entra application registration created in the [Prerequisites](#prerequisites) section.|
+    |`database_name`|The name of your Azure Data Explorer database.|
+    |`table_name`|The name of your Azure Data Explorer destination table.|
+    |`table_mapping_name`|The name of the [ingestion data mapping](data-mapping-overview.md) for your table.|
+    |`data_format`|The expected data format for incoming data: `csv`.|
+
+1. Build the docker image:
+
+    ```bash
+    docker build -t splunk-forwarder-listener
+    ```
+
+1. Run the docker image:
+
+    ```bash
+    docker run -p 9997:9997 splunk forwarder listener
+    ```
 
 ## Related content
 
