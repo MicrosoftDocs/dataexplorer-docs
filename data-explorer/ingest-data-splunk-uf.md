@@ -104,6 +104,24 @@ When you download Splunk Universal Forwarder, a wizard will open to configure th
     docker run -p 9997:9997 splunk-forwarder-listener
     ```
 
+## Verify that data is ingested into Azure Data Explorer
+
+Once the docker is running, data is sent to your Azure Data Explorer table. You can verify that the data is ingested by running a query in the [web UI query editor](web-ui-query-overview.md#write-and-run-queries).
+
+1. Run the following query to verify that data is ingested into the table:
+
+    ```Kusto
+    MyLogsTable
+    | count
+    ```
+
+1. Run the following query to view the data:
+
+    ```Kusto
+    MyLogsTable
+    | take 100
+    ```
+
 ## Related content
 
 * [Write queries](/azure/data-explorer/kusto/query/tutorials/learn-common-operators)
