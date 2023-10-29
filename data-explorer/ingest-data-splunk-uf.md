@@ -98,10 +98,10 @@ When you download Splunk Universal Forwarder, a wizard will open to configure th
     docker build -t splunk-forwarder-listener
     ```
 
-1. Run the docker image:
+1. Run the docker container:
 
     ```bash
-    docker run -p 9997:9997 splunk forwarder listener
+    docker run -p 9997:9997 splunk-forwarder-listener
     ```
 
 ## Related content
