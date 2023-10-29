@@ -23,14 +23,11 @@ In this article, learn how to use the Kusto Splunk Universal Forwarder Connector
 
 When you download Splunk Universal Forwarder, a wizard will open to configure the forwarder.
 
-1. Set the **Recieving Indexer** to point to the system hosting the Kusto Splunk Universal Forwarder connector. Enter `127.0.0.1` for the **Hostname or IP** and `9997` for the port.
+1. Set the **Recieving Indexer** to point to the system hosting the Kusto Splunk Universal Forwarder connector. Enter `127.0.0.1` for the **Hostname or IP** and `9997` for the port. Leave the **Destination Indexer** blank.
 
     For more information, see [Enable a receiver for Splunk Enterprise](https://docs.splunk.com/Documentation/Forwarder/9.1.1/Forwarder/Enableareceiver).
 
-    > [!NOTE]
-    > The **Destination Indexer** can be left blank.
-
-1. Go to the folder where Splunk Universal Forwarder is installed and then to the */etc/system/local* folder. Create or modify the *Inputs.conf* file to allow the forwarder to read logs:
+2. Go to the folder where Splunk Universal Forwarder is installed and then to the */etc/system/local* folder. Create or modify the *inputs.conf* file to allow the forwarder to read logs:
 
     ```txt
     [default]
@@ -43,7 +40,7 @@ When you download Splunk Universal Forwarder, a wizard will open to configure th
 
     For more information, see [Monitor files and directories with inputs.conf](https://docs.splunk.com/Documentation/Splunk/9.1.1/Data/Monitorfilesanddirectorieswithinputs.conf).
 
-1. Go to the folder where Splunk Universal Forwarder is installed and then to the */etc/system/local* folder. Create or modify the *Inputs.conf* file to determine the destination logcation for the logs, which is the hostname and port of the system hosting Kusto Splunk Universal Forwarder connector:
+3. Go to the folder where Splunk Universal Forwarder is installed and then to the */etc/system/local* folder. Create or modify the *outputs.conf* file to determine the destination logcation for the logs, which is the hostname and port of the system hosting Kusto Splunk Universal Forwarder connector:
 
     ```txt
     [tcpout]
@@ -55,8 +52,10 @@ When you download Splunk Universal Forwarder, a wizard will open to configure th
 
     [tcpout-server://127.0.0.1:9997]
     ```
+    
+    For more information, see [Configure forwarding with outputs.conf](https://docs.splunk.com/Documentation/Forwarder/9.1.1/Forwarder/Configureforwardingwithoutputs.conf).
 
-1. Restart Splunk Universal Forwarder.
+4. Restart Splunk Universal Forwarder.
 
 ## Configure Kusto Splunk Universal connector
 
