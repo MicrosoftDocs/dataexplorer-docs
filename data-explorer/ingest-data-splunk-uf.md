@@ -89,16 +89,16 @@ When you download Splunk Universal Forwarder, a wizard will open to configure th
     |`authority`|The ID of the tenant that contains your Microsoft Entra application registration created in the [Prerequisites](#prerequisites) section.|
     |`database_name`|The name of your Azure Data Explorer database.|
     |`table_name`|The name of your Azure Data Explorer destination table.|
-    |`table_mapping_name`|The name of the [ingestion data mapping](data-mappings-overview.md) for your table.|
+    |`table_mapping_name`|The name of the [ingestion data mapping](kusto/management/mappings.md) for your table.|
     |`data_format`|The expected data format for incoming data: `csv`.|
 
-1. Build the docker image:
+2. Build the docker image:
 
     ```bash
     docker build -t splunk-forwarder-listener
     ```
 
-1. Run the docker container:
+3. Run the docker container:
 
     ```bash
     docker run -p 9997:9997 splunk-forwarder-listener
