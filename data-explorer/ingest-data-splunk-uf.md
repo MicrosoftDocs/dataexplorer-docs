@@ -23,7 +23,7 @@ In this article, learn how to use the Kusto Splunk Universal Forwarder Connector
 
 When you download Splunk Universal Forwarder, a wizard will open to configure the forwarder.
 
-1. Set the **Recieving Indexer** to point to the system hosting the Kusto Splunk Universal Forwarder connector. Enter `127.0.0.1` for the **Hostname or IP** and `9997` for the port. Leave the **Destination Indexer** blank.
+1. In the wizard, set the **Recieving Indexer** to point to the system hosting the Kusto Splunk Universal Forwarder connector. Enter `127.0.0.1` for the **Hostname or IP** and `9997` for the port. Leave the **Destination Indexer** blank.
 
     For more information, see [Enable a receiver for Splunk Enterprise](https://docs.splunk.com/Documentation/Forwarder/9.1.1/Forwarder/Enableareceiver).
 
@@ -59,6 +59,8 @@ When you download Splunk Universal Forwarder, a wizard will open to configure th
 
 ## Configure Kusto Splunk Universal connector
 
+To configure the Kusto Splunk Universal connector to send logs to your Azure Data Explorer table:
+
 1. Download or clone the connector from the [GitHub repository](https://github.com/Azure/azure-kusto-splunk/tree/main/SplunkADXForwarder).
 
 1. Go to the base directory of the connector:
@@ -67,7 +69,7 @@ When you download Splunk Universal Forwarder, a wizard will open to configure th
     cd .\SplunkADXForwarder\
     ```
 
-1. Edit the *config.yml* to contain the required Kusto credentials and database details:
+2. Edit the *config.yml* to contain the following properties:
 
     ```yaml
     ingest_url: <ingest_url>
@@ -91,13 +93,13 @@ When you download Splunk Universal Forwarder, a wizard will open to configure th
     |`table_mapping_name`|The name of the [ingestion data mapping](kusto/management/mappings.md) for your table.|
     |`data_format`|The expected data format for incoming data: `csv`.|
 
-2. Build the docker image:
+3. Build the docker image:
 
     ```bash
     docker build -t splunk-forwarder-listener
     ```
 
-3. Run the docker container:
+4. Run the docker container:
 
     ```bash
     docker run -p 9997:9997 splunk-forwarder-listener
