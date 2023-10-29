@@ -94,7 +94,7 @@ In order to export to an external table, you must set up write permissions. For 
 
 ### Number of files
 
-The number of files written per partition depends on the [distribution settings](#distribution-hints) of the export operation:
+The number of files written per partition depends on the [distribution settings](#distribution-settings) of the export operation:
 
  * If the external table includes datetime partitions only, or no partitions at all, the number of files written (for each partition, if exists) should be similar to the number of nodes in the cluster (or more, if `sizeLimit` is reached). When the export operation is distributed, all nodes in the cluster export concurrently. To disable distribution, so that only a single node does the writes, set `distributed` to false. This process creates fewer files, but will reduce the export performance.
 
