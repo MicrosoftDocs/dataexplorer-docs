@@ -83,13 +83,13 @@ When you download Splunk Universal Forwarder, a wizard will open to configure th
 
     |Field|Description|
     |--|--|
-    |`ingest_url`|In the Azure portal, you can find the ingestion url in the overview tab of your cluster as the **Data ingestion URI**. It should have the form of *https://ingest-<clusterName>.<region>.kusto.windows.net*.|
+    |`ingest_url`|In the Azure portal, you can find the ingestion url in the overview tab of your cluster as the **Data ingestion URI**. It should have the form of `https://ingest-<clusterName>.<region>.kusto.windows.net`.|
     |`client_id`|The client ID of your Microsoft Entra application registration created in the [Prerequisites](#prerequisites) section.|
     |`client_secret`|The client secret of your Microsoft Entra application registration created in the [Prerequisites](#prerequisites) section.|
     |`authority`|The ID of the tenant that contains your Microsoft Entra application registration created in the [Prerequisites](#prerequisites) section.|
     |`database_name`|The name of your Azure Data Explorer database.|
     |`table_name`|The name of your Azure Data Explorer destination table.|
-    |`table_mapping_name`|The name of the [ingestion data mapping](data-mapping-overview.md) for your table.|
+    |`table_mapping_name`|The name of the [ingestion data mapping](data-mappings-overview.md) for your table.|
     |`data_format`|The expected data format for incoming data: `csv`.|
 
 1. Build the docker image:
