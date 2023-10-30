@@ -56,18 +56,18 @@ This service principal is the identity used by the connector to write to the Azu
 
 ## Create an Azure Data Explorer table
 
-Create a table to receive the data from Splunk Universal Forwarder, which sends data in a raw text format by default. In the following example, you create a table named `MySplunkLogs` with a single column (`RawText`) and then grant the service principal access to this table. The following commands can be run in the [web UI query editor](web-ui-query-overview.md#write-and-run-queries).
+Create a table to receive the data from Splunk Universal Forwarder, which sends data in a raw text format by default. In the following example, you create a table named `SplunkUFLogs` with a single column (`RawText`) and then grant the service principal access to this table. The following commands can be run in the [web UI query editor](web-ui-query-overview.md#write-and-run-queries).
 
 1. Create a table:
 
     ```Kusto
-    .create table MySplunkLogs (RawText: string)
+    .create table SplunkUFLogs (RawText: string)
     ```
 
 2. Verify that the table `WeatherAlert` was created and is empty:
 
     ```Kusto
-    MySplunkLogs
+    SplunkUFLogs
     | count
     ```
 
@@ -170,14 +170,14 @@ Once the docker is running, data is sent to your Azure Data Explorer table. You 
 1. Run the following query to verify that data is ingested into the table:
 
     ```Kusto
-    MyLogsTable
+    SplunkUFLogs
     | count
     ```
 
 1. Run the following query to view the data:
 
     ```Kusto
-    MyLogsTable
+    SplunkUFLogs
     | take 100
     ```
 
