@@ -84,14 +84,14 @@ To configure the Kusto Splunk Universal connector to send logs to your Azure Dat
 
     |Field|Description|
     |--|--|
-    |`ingest_url`|In the Azure portal, you can find the ingestion url in the overview tab of your cluster as the **Data ingestion URI**. It should have the form of `https://ingest-<clusterName>.<region>.kusto.windows.net`.|
+    |`ingest_url`|The ingestion URL for your Azure Data Explorer cluster. You can find it in the Azure portal under the **Data ingestion URI** in the **Overview** tab of your cluster. It should be in the format `https://ingest-<clusterName>.<region>.kusto.windows.net`.|
     |`client_id`|The client ID of your Microsoft Entra application registration created in the [Prerequisites](#prerequisites) section.|
     |`client_secret`|The client secret of your Microsoft Entra application registration created in the [Prerequisites](#prerequisites) section.|
-    |`authority`|The ID of the tenant that contains your Microsoft Entra application registration created in the [Prerequisites](#prerequisites) section.|
+    |`authority`|The ID of the tenant that holds your Microsoft Entra application registration created in the [Prerequisites](#prerequisites) section.|
     |`database_name`|The name of your Azure Data Explorer database.|
     |`table_name`|The name of your Azure Data Explorer destination table.|
-    |`table_mapping_name`|The name of the [ingestion data mapping](kusto/management/mappings.md) for your table.|
-    |`data_format`|The expected data format for incoming data: `csv`.|
+    |`table_mapping_name`|The name of the [ingestion data mapping](kusto/management/mappings.md) for your table. If you don't have a mapping, you can omit this property from the configuration file. You can always parse data into various columns later.|
+    |`data_format`|The expected data format for incoming data. The incoming data is in raw text format, so the recommended format is `csv`, which maps the raw text to the 0th index by default.|
 
 3. Build the docker image:
 
