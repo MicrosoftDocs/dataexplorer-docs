@@ -16,8 +16,66 @@ In this article, learn how to use the Kusto Splunk Universal Forwarder Connector
 
 * [Splunk Universal Forwarder](https://docs.splunk.com/Documentation/Forwarder/9.1.1/Forwarder/InstallaWindowsuniversalforwarderfromaninstaller) downloaded on the same machine where the logs originate.
 * An Azure Data Explorer cluster and database. [Create a cluster and database](create-cluster-and-database.md).
-* [Create a Microsoft Entra application registration](provision-azure-ad-app.md) with [access to your Azure Data Explorer database](provision-azure-ad-app.md#grant-the-application-registration-access-to-an-azure-data-explorer-database).
 * [Docker](https://www.docker.com/) installed on the system that runs the Kusto Splunk Universal Forwarder connector.
+
+## Create a Microsoft Entra service principal
+
+The Microsoft Entra service principal can be created through the [Azure portal](provision-azure-ad-app.md) or programatically, as in the following example.
+
+This service principal is the identity used by the connector to write to the Azure Data Explorer table. You later grant permissions for this service principal to access Azure Data Explorer.
+
+1. Sign in to your Azure subscription via Azure CLI. Then authenticate in the browser.
+
+   ```azurecli-interactive
+   az login
+   ```
+
+2. Choose the subscription you want use to run the lab. This step is needed when you have multiple subscriptions.
+
+   ```azurecli-interactive
+   az account set --subscription YOUR_SUBSCRIPTION_GUID
+   ```
+
+3. Create the service principal. In this example, the service principal is called `splunk-uf`.
+
+   ```azurecli-interactive
+   az ad sp create-for-rbac -n "splunk-uf" --role Contributor --scopes /subscriptions/{SubID}
+   ```
+
+4. From the returned JSON data, copy the `appId`, `password`, and `tenant`, as you need them in later steps.
+
+    ```json
+    {
+      "appId": "1234abcd-e5f6-g7h8-i9j0-1234kl5678mn",
+      "displayName": "splunk-spn",
+      "name": "http://splunk-spn",
+      "password": "1234abcd-e5f6-g7h8-i9j0-1234kl5678mn",
+      "tenant": "1234abcd-e5f6-g7h8-i9j0-1234kl5678mn"
+    }
+    ```
+
+## Create an Azure Data Explorer table
+
+Create a table to recieve the data from Splunk Universal Forwarder, which sends data in a raw text format by default. In the following example, you create a table named `MySplunkLogs` with a single column (`RawText`) and then grant the service principal access to this table. The following commands can be run in the [web UI query editor](web-ui-query-overview.md#write-and-run-queries).
+
+1. Create a table:
+
+    ```Kusto
+    .create table MySplunkLogs (RawText: string)
+    ```
+
+2. Verify that the table `WeatherAlert` was created and is empty:
+
+    ```Kusto
+    MySplunkLogs
+    | count
+    ```
+
+3. Use the service principal from [Create a Microsoft Entra service principal](#create-a-microsoft-entra-id-service-principal) to grant permission to work with the database containing your table.
+
+    ```kusto
+    .add database YOUR_DATABASE_NAME admins ('aadapp=YOUR_APP_ID;YOUR_TENANT_ID') 'Entra service principal: Splunk UF'
+    ```
 
 ## Configure Splunk Universal Forwarder
 
@@ -78,7 +136,7 @@ To configure the Kusto Splunk Universal connector to send logs to your Azure Dat
     authority: <ms_entra_authority>
     database_name: <database_name>
     table_name: <table_name>
-    tabble_mapping_name: <table_mapping_name>
+    table_mapping_name: <table_mapping_name>
     data_format: csv
     ```
 
