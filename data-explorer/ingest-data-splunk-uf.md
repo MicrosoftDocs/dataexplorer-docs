@@ -56,7 +56,7 @@ This service principal is the identity used by the connector to write to the Azu
 
 ## Create an Azure Data Explorer table
 
-Create a table to recieve the data from Splunk Universal Forwarder, which sends data in a raw text format by default. In the following example, you create a table named `MySplunkLogs` with a single column (`RawText`) and then grant the service principal access to this table. The following commands can be run in the [web UI query editor](web-ui-query-overview.md#write-and-run-queries).
+Create a table to receive the data from Splunk Universal Forwarder, which sends data in a raw text format by default. In the following example, you create a table named `MySplunkLogs` with a single column (`RawText`) and then grant the service principal access to this table. The following commands can be run in the [web UI query editor](web-ui-query-overview.md#write-and-run-queries).
 
 1. Create a table:
 
@@ -79,9 +79,9 @@ Create a table to recieve the data from Splunk Universal Forwarder, which sends 
 
 ## Configure Splunk Universal Forwarder
 
-When you download Splunk Universal Forwarder, a wizard will open to configure the forwarder.
+When you download Splunk Universal Forwarder, a wizard opens to configure the forwarder.
 
-1. In the wizard, set the **Recieving Indexer** to point to the system hosting the Kusto Splunk Universal Forwarder connector. Enter `127.0.0.1` for the **Hostname or IP** and `9997` for the port. Leave the **Destination Indexer** blank.
+1. In the wizard, set the **Receiving Indexer** to point to the system hosting the Kusto Splunk Universal Forwarder connector. Enter `127.0.0.1` for the **Hostname or IP** and `9997` for the port. Leave the **Destination Indexer** blank.
 
     For more information, see [Enable a receiver for Splunk Enterprise](https://docs.splunk.com/Documentation/Forwarder/9.1.1/Forwarder/Enableareceiver).
 
@@ -98,7 +98,7 @@ When you download Splunk Universal Forwarder, a wizard will open to configure th
 
     For more information, see [Monitor files and directories with inputs.conf](https://docs.splunk.com/Documentation/Splunk/9.1.1/Data/Monitorfilesanddirectorieswithinputs.conf).
 
-3. Go to the folder where Splunk Universal Forwarder is installed and then to the */etc/system/local* folder. Create or modify the *outputs.conf* file to determine the destination logcation for the logs, which is the hostname and port of the system hosting Kusto Splunk Universal Forwarder connector:
+3. Go to the folder where Splunk Universal Forwarder is installed and then to the */etc/system/local* folder. Create or modify the *outputs.conf* file to determine the destination location for the logs, which is the hostname and port of the system hosting Kusto Splunk Universal Forwarder connector:
 
     ```txt
     [tcpout]
@@ -149,7 +149,7 @@ To configure the Kusto Splunk Universal connector to send logs to your Azure Dat
     |`database_name`|The name of your Azure Data Explorer database.|
     |`table_name`|The name of your Azure Data Explorer destination table.|
     |`table_mapping_name`|The name of the [ingestion data mapping](kusto/management/mappings.md) for your table. If you don't have a mapping, you can omit this property from the configuration file. You can always parse data into various columns later.|
-    |`data_format`|The expected data format for incoming data. The incoming data is in raw text format, so the recommended format is `csv`, which maps the raw text to the 0th index by default.|
+    |`data_format`|The expected data format for incoming data. The incoming data is in raw text format, so the recommended format is `csv`, which maps the raw text to the zero index by default.|
 
 3. Build the docker image:
 
