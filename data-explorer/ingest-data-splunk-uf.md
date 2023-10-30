@@ -30,7 +30,7 @@ This service principal is the identity used by the connector to write to the Azu
    az login
    ```
 
-2. Choose the subscription you want use to run the lab. This step is needed when you have multiple subscriptions.
+2. Choose the subscription to host the principal. This step is needed when you have multiple subscriptions.
 
    ```azurecli-interactive
    az account set --subscription YOUR_SUBSCRIPTION_GUID
