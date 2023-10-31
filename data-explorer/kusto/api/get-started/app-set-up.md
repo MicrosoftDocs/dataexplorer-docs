@@ -59,7 +59,7 @@ Verify installation: In a command shell, run `dotnet sdk check` to check that th
     5. [Grant the application access to your Azure Data Explorer database](../../../provision-azure-ad-app.md#grant-the-application-registration-access-to-an-azure-data-explorer-database).
     6. In the **Overview** tab, copy the **Application (client) ID**.
 
-    The examples throughout the coming tutorials will show how to use the Kusto client library to prompt authentication.
+    The examples throughout the following tutorials show how to use the Kusto client library to prompt authentication.
 
     > [!NOTE]
     > If you belong to an organization, restrictions based on organization configurations might prevent you from authenticating. Ask for access from an organization admin or try again on a personal account.
