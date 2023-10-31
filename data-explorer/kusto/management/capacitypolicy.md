@@ -46,7 +46,7 @@ The effective value for `Concurrent operations per node` gets automatically adju
 merge operations is 90% or higher.
 
 > [!NOTE]
-> In clusters with three or more nodes, the admin node doesn't participate in doing merge operations. The `Number of nodes in cluster` is reduced by one.
+> In clusters with four or more nodes, the admin node doesn't participate in doing merge operations. The `Number of nodes in cluster` is reduced by one.
 
 ## Extents purge rebuild capacity
 
@@ -59,7 +59,7 @@ The cluster's total extents purge rebuild capacity (as shown by [`.show capacity
 `Number of nodes in cluster` x `MaximumConcurrentOperationsPerNode`
 
 > [!NOTE]
-> In clusters with three or more nodes, the admin node doesn't participate in doing merge operations. The `Number of nodes in cluster` is reduced by one.
+> In clusters with four or more nodes, the admin node doesn't participate in doing merge operations. The `Number of nodes in cluster` is reduced by one.
 
 ## Export capacity
 
@@ -73,7 +73,7 @@ The cluster's total export capacity, as shown by [`.show capacity`](../managemen
 Minimum(`ClusterMaximumConcurrentOperations`, `Number of nodes in cluster` * Maximum(1, `Core count per node` * `CoreUtilizationCoefficient`))
 
 > [!NOTE]
-> In clusters with three or more nodes, the admin node doesn't participate in export operations. The `Number of nodes in cluster` is reduced by one.
+> In clusters with four or more nodes, the admin node doesn't participate in export operations. The `Number of nodes in cluster` is reduced by one.
 
 ## Extents partition capacity
 
@@ -120,6 +120,9 @@ For more information, see [`.show capacity`](../management/diagnostics.md#show-c
 The cluster's total stored query results creation capacity, as shown by [`.show capacity`](../management/diagnostics.md#show-capacity), is calculated by:
 
 `Number of nodes in cluster` * Maximum(1, `Core count per node` * `CoreUtilizationCoefficient`)
+
+> [!NOTE]
+> In clusters with four or more nodes, the admin node doesn't participate in stored query results creation operations. The `Number of nodes in cluster` is reduced by one.
 
 ## Defaults
 
