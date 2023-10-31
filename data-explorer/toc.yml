@@ -125,7 +125,7 @@ items:
                 href: ingest-data-managed-identity.md
           - name: Configure customer-managed keys
             href: customer-managed-keys.md
-          - name: Create Azure AD app
+          - name: Create Microsoft Entra app
             href: provision-azure-ad-app.md
           - name: Conditional Access
             href: security-conditional-access.md
@@ -240,6 +240,9 @@ items:
           - name: Azure Stream Analytics
             href: stream-analytics-connector.md
             displayName: ingest data, ingestion, connector
+          - name: Fluent Bit
+            href: fluent-bit.md
+            displayName: ingest data, ingestion, connector
           - name: Logstash
             displayName: ingest data, ingestion, connector
             href: ingest-data-logstash.md
@@ -280,7 +283,7 @@ items:
     items:
       - name: Query data in the web UI
         items:
-          - name: Overview
+          - name: Query data in the web UI overview
             href: web-ui-query-overview.md
             displayName: web UI
           - name: Customize settings in the web UI
@@ -323,7 +326,7 @@ items:
         href: t-sql.md
       - name: Query data using SQL Server emulation
         items:
-          - name: Overview
+          - name: SQL Server emulation overview
             href: sql-server-emulation-overview.md
             displayName: SQL Server emulation
           - name: Connect with ODBC
@@ -345,19 +348,19 @@ items:
         href: set-timeout-limits.md
       - name: Query cold data with hot windows
         href: hot-windows.md
-      - name: Time Series Analysis and Machine Learning
+      - name: Time series analysis and machine learning
         items:
           - name: Azure Data Explorer Python library
             href: python-query-data.md
           - name: Debug Kusto Query Language inline Python
             href: debug-inline-python.md
-      - name: Graph Analysis
+      - name: Graph analysis
         items:
-          - name: Overview
+          - name: Graph analysis overview
             href: graph-overview.md
-          - name: Scenarios
+          - name: Graph analysis scenarios
             href: graph-scenarios.md
-          - name: Best Practices
+          - name: Best practices for graph analysis
             href: graph-best-practices.md
   - name: Visualize data
     items:
@@ -371,6 +374,8 @@ items:
             href: dashboard-parameters.md
           - name: Customize dashboard visuals
             href: dashboard-customize-visuals.md
+          - name: Apply conditional formatting
+            href: dashboard-conditional-formatting.md
           - name: Create a dashboard base query
             href: base-query.md
           - name: Dashboard-specific visuals
@@ -383,13 +388,16 @@ items:
           - name: Use data in Power BI
             displayName: Imported query
             href: power-bi-data-connector.md
-          - name: Power BI best practices
+          - name: Best practices for Power BI
             href: power-bi-best-practices.md
           - name: Dynamic M query parameters
             displayName: Power BI
             href: power-bi-dynamic-m.md
           - name: Query with SQL in Power BI
             href: power-bi-sql-query.md
+          - name: Connect to a Power BI service
+            displayName: Private endpoint, Azure Data Explorer cluster behind a private endpoint
+            href: power-bi-private-endpoint.md
       - name: Excel
         items:
           - name: Connector
@@ -493,7 +501,7 @@ items:
             href: monitor-batching-ingestion.md
       - name: Business continuity
         items:
-          - name: Overview
+          - name: Business continuity overview
             displayName: BCDR, bcdr
             href: business-continuity-overview.md
           - name: Create solutions
@@ -518,7 +526,7 @@ items:
               - name: Kusto Data overview
                 href: kusto/api/netfx/about-kusto-data.md
                 displayName: kusto.data, SDK
-              - name: Kusto Data best practices
+              - name: Best practices for Kusto Data
                 href: kusto/api/netfx/kusto-data-best-practices.md
                 displayName: kusto.data, SDK
               - name: ClientRequestProperties class
@@ -529,7 +537,7 @@ items:
               - name: Kusto Ingest overview
                 href: kusto/api/netfx/about-kusto-ingest.md
                 displayName: kusto.ingest, SDK
-              - name: Kusto Ingest best practices
+              - name: Best practices for Kusto Ingest
                 href: kusto/api/netfx/kusto-ingest-best-practices.md
                 displayName: kusto.ingest, SDK
       - name: Sample app generator
@@ -548,7 +556,7 @@ items:
             href: kusto/api/get-started/app-batch-ingestion.md
       - name: Connection strings
         items:
-          - name: Overview
+          - name: Connection strings overview
             href: kusto/api/connection-strings/index.md
           - name: Kusto connection strings
             href: kusto/api/connection-strings/kusto.md
@@ -558,15 +566,15 @@ items:
             href: kusto/api/connection-strings/sql-connection-strings.md
           - name: Generate SAS token
             href: kusto/api/connection-strings/generate-sas-token.md
-      - name: Integrate Kusto query editor in your apps
+      - name: Integrate the query editor in your apps
         items:
-          - name: Integrate Azure Data Explorer capabilities overview
+          - name: Integration overview
             displayName: monaco web UI
             href: kusto/api/monaco/monaco-overview.md
           - name: Embed the web UI in an IFrame
             displayName: monaco web UI
             href: kusto/api/monaco/host-web-ux-in-iframe.md
-          - name: Integrate the Monaco Editor with Kusto query support
+          - name: Integrate the Monaco editor with Kusto query support
             displayName: monaco monaco-kusto
             href: kusto/api/monaco/monaco-kusto.md
       - name: Kusto emulator

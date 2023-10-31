@@ -9,7 +9,7 @@ ms.date: 04/25/2023
 
 Certain plugins run within [sandboxes](../concepts/sandboxes.md) whose available resources are limited and controlled for security and for resource governance.
 
-Sandboxes run on the nodes of the Kusto engine. Some of their limitations are defined in sandbox policies, where each sandbox kind can have its own policy.
+Sandboxes run on the nodes of your cluster. Some of their limitations are defined in sandbox policies, where each sandbox kind can have its own policy.
 
 Sandbox policies are managed at cluster-level and affect all the nodes in the cluster.
 

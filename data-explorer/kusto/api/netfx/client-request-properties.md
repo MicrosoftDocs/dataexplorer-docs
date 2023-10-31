@@ -3,11 +3,11 @@ title: Kusto Data ClientRequestProperties class
 description: This article describes the ClientRequestProperties class of Kusto Data.
 ms.reviewer: orspodek
 ms.topic: reference
-ms.date: 09/18/2023
+ms.date: 10/18/2023
 ---
 # Kusto Data ClientRequestProperties class
 
-In the Kusto Data library, the `ClientRequestProperties` class helps manage interaction between your client application and the service. This class contains the following information:
+In the [Kusto Data library](about-kusto-data.md), the `ClientRequestProperties` class helps manage interaction between your client application and the service. This class contains the following information:
 
 * [Request properties](#request-properties): A mapping of specific options for customizing request behavior.
 * [Query parameters](#query-parameters): A mapping of user-declared parameters that allow for secure query customization.
@@ -44,5 +44,6 @@ The following table describes the named properties available in the `ClientReque
 
 ## Related content
 
+* [Kusto Data overview](about-kusto-data.md)
 * [Create an app to run basic queries](../get-started/app-basic-query.md)
 * [Request properties](../rest/request-properties.md)

@@ -8,8 +8,7 @@ ms.date: 03/20/2023
 
 # Kusto.Explorer installation and user interface
 
-Kusto.Explorer is a rich Windows desktop application that enables you to explore your data using the Kusto Query Language in an easy-to-use user interface. This overview explains how to get started with setting up your Kusto.Explorer and explains the user interface you'll use.
-
+Kusto.Explorer is free software for download and use on your Windows desktop. Kusto.Explorer allows you to query and analyze your data with Kusto Query Language (KQL) in a user-friendly interface. This overview explains how to set up Kusto.Explorer, and describes the user interface you'll use.
 
 With Kusto.Explorer, you can:
 
@@ -22,7 +21,6 @@ With Kusto.Explorer, you can:
 
 * Download and install the Kusto.Explorer tool from:
   * [https://aka.ms/ke](https://aka.ms/ke)
-  <!--* [https://aka.ms/ke-mirror](https://aka.ms/ke-mirror) (Non-CDN location)-->
 
 * Alternatively, access your Kusto cluster with a ClickOnce-enabled browser at:
 `https://<your_cluster>/?web=0`
@@ -31,9 +29,10 @@ With Kusto.Explorer, you can:
 ### Using Google Chrome and Kusto.Explorer
 
 If Google Chrome is your default browser, installing the ClickOnce extension for Chrome is required.
-If your default browser is the Chromium-based Microsoft Edge, installing this extension *isn't* required.
-
 [https://chrome.google.com/webstore/detail/clickonce-for-google-chro/kekahkplibinaibelipdcikofmedafmb/related?hl=en-US](https://chrome.google.com/webstore/detail/clickonce-for-google-chro/kekahkplibinaibelipdcikofmedafmb/related?hl=en-US)
+
+If your default browser is the Microsoft Edge, installing this extension *isn't* required.
+Validate your ClickOnce settings in [Microsoft Edge flag settings](edge://flags/#edge-click-once).
 
 ## Overview of the user interface
 
@@ -66,7 +65,7 @@ StormEvents | count
 
 Run each line using `F5`, or similar.
 
-## Work Folders panel
+## Work Documents panel
 
 :::image type="content" source="images/kusto-explorer/work-folders-pane.png" alt-text="Screenshot of the Work Folders panel showing Unsaved work and Tracked Folders.":::
 
@@ -193,7 +192,7 @@ For variable visualizations, see the [render operator](../query/renderoperator.m
 |Export Profile| Export a Kusto.Explorer profile.|
 ||---------*Security*---------|
 |Inspect Your ADD Principal| Shows currents active user details.|
-|Sign-out| Signs-out the current user from the connection to Microsoft Azure Active Directory (Azure AD).|
+|Sign-out| Signs-out the current user from the connection to Microsoft Entra ID.|
 ||---------*Data Scope*---------|
 |Caching scope|<ul><li>Hot DataExecute queries only on [hot data cache](../management/cachepolicy.md)</li><li>All Data: Execute queries on all available data (default).</li></ul> |
 |DateTime Column| Name of a column that may be used for time pre-filter.|
@@ -303,22 +302,22 @@ To modify the output color scheme, or turn off this behavior, from the **Tools**
 
 ### Control the user identity connecting to Kusto.Explorer
 
-The default security model for new connections is Azure AD-Federated security. Authentication is done through the Azure Active Directory using the default Azure AD user experience.
+The default security model for new connections is Microsoft Entra ID-Federated security. Authentication is done through the Microsoft Entra ID using the default Microsoft Entra user experience.
 
 If you need finer control over the authentication parameters, you can expand the
 "Advanced: Connection Strings" edit box and provide a valid
 [Kusto connection string](../api/connection-strings/kusto.md) value.
 
 For example, users with a presence in
-multiple Azure AD tenants sometimes need to use a particular "projection"
-of their identities to a specific Azure AD tenant, which can be done through
+multiple Microsoft Entra tenants sometimes need to use a particular "projection"
+of their identities to a specific Microsoft Entra tenant, which can be done through
 the connection string (replace words IN CAPITALS with specific values):
 
 ```kusto
 Data Source=https://CLUSTER_NAME.kusto.windows.net;Initial Catalog=DATABASE_NAME;AAD Federated Security=True;Authority Id=AAD_TENANT_OF_CLUSTER;User=USER_DOMAIN
 ```
 
-* `AAD_TENANT_OF_CLUSTER` is a domain name or Azure AD tenant ID (a GUID) of the tenant in which the cluster is hosted. For example, `contoso.com`.
+* `AAD_TENANT_OF_CLUSTER` is a domain name or Microsoft Entra tenant ID (a GUID) of the tenant in which the cluster is hosted. For example, `contoso.com`.
 * USER_DOMAIN is the identity of the user invited into that tenant (for example, `user@example.com`).
 
 >[!NOTE]

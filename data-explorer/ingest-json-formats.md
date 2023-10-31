@@ -8,11 +8,14 @@ ms.date: 09/14/2022
 
 # Ingest JSON formatted sample data into Azure Data Explorer
 
-This article shows you how to ingest JSON formatted data into an Azure Data Explorer database. You'll start with simple examples of raw and mapped JSON, continue to multi-lined JSON, and then tackle more complex JSON schemas containing arrays and dictionaries.  The examples detail the process of ingesting JSON formatted data using Kusto Query Language (KQL), C#, or Python. The Kusto Query Language `ingest` management commands are executed directly to the engine endpoint. In production scenarios, ingestion is executed to the Data Management service using client libraries or data connections. Read [Ingest data using the Azure Data Explorer Python library](python-ingest-data.md) and [Ingest data using the Azure Data Explorer .NET Standard SDK](./net-sdk-ingest-data.md) for a walk-through regarding ingesting data with these client libraries.
+This article shows you how to ingest JSON formatted data into an Azure Data Explorer database. You'll start with simple examples of raw and mapped JSON, continue to multi-lined JSON, and then tackle more complex JSON schemas containing arrays and dictionaries.  The examples detail the process of ingesting JSON formatted data using Kusto Query Language (KQL), C#, or Python.
+
+> [!NOTE]
+> We don't recommend using `.ingest` management commands in production scenarios. Instead, use a [data connector](connector-overview.md) or programmatically ingest data using one of the [Kusto client libraries](kusto/api/client-libraries.md).
 
 ## Prerequisites
 
-* A Microsoft account or an Azure Active Directory user identity. An Azure subscription isn't required.
+* A Microsoft account or a Microsoft Entra user identity. An Azure subscription isn't required.
 * An Azure Data Explorer cluster and database. [Create a cluster and database](create-cluster-and-database.md).
 
 ## The JSON format
@@ -20,7 +23,7 @@ This article shows you how to ingest JSON formatted data into an Azure Data Expl
 Azure Data Explorer supports two JSON file formats:
 
 * `json`: Line separated JSON. Each line in the input data has exactly one JSON record. This format supports parsing of comments and single-quoted properties. For more information, see [JSON Lines](https://jsonlines.org/).
-* `multijson`: Multi-lined JSON. The parser ignores the line separators and reads a record from the previous position to the end of a valid JSON. This format supports parsing of comments, single-quoted properties, and newlines.
+* `multijson`: Multi-lined JSON. The parser ignores the line separators and reads a record from the previous position to the end of a valid JSON.
 
 > [!NOTE]
 > When ingesting using the [ingestion wizard](ingest-data-wizard.md), the default format is `multijson`. The format can handle multiline JSON records and arrays of JSON records. When a parsing error is encountered, the entire file is discarded.
@@ -318,7 +321,7 @@ In this example, you ingest JSON records data. Each JSON property is mapped to a
 
 ## Ingest multi-lined JSON records
 
-In this example, you ingest multi-lined JSON records. Each JSON property is mapped to a single column in the table. The file 'multilined.json' has a few indented JSON records. The format `multijson` tells the engine to read records by the JSON structure.
+In this example, you ingest multi-lined JSON records. Each JSON property is mapped to a single column in the table. The file 'multilined.json' has a few indented JSON records. The format `multijson` indicates to read records by the JSON structure.
 
 ### [KQL](#tab/kusto-query-language)
 

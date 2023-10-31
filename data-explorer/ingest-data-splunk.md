@@ -21,13 +21,15 @@ The following scenarios are most suitable for ingesting data into Azure Data Exp
 
 ## Prerequisites
 
-* A Microsoft account or a Microsoft Entra ID user identity. An Azure subscription isn't required.
+* A Microsoft account or a Microsoft Entra user identity. An Azure subscription isn't required.
 * An Azure Data Explorer cluster and database. [Create a cluster and database](create-cluster-and-database.md).
 * Splunk Enterprise 9 or newer.
 
-## Create a Microsoft Entra ID service principal
+<a name='create-a-microsoft-entra-id-service-principal'></a>
 
-The Microsoft Entra ID service principal can be created through the [Azure portal](/azure/active-directory/develop/howto-create-service-principal-portal) or programatically, as in the following example.
+## Create a Microsoft Entra service principal
+
+The Microsoft Entra service principal can be created through the [Azure portal](/azure/active-directory/develop/howto-create-service-principal-portal) or programatically, as in the following example.
 
 This service principal is the identity used by the connector to write to the Azure Data Explorer table. You later grant permissions for this service principal to access Azure Data Explorer.
 
@@ -93,7 +95,7 @@ In the [web UI query editor](web-ui-query-overview.md#write-and-run-queries), ru
           ]```
     ~~~
 
-1. Use the service principal from [Create an Microsoft Entra ID service principal](#create-a-microsoft-entra-id-service-principal) to grant permission to work with the database.
+1. Use the service principal from [Create a Microsoft Entra service principal](#create-a-microsoft-entra-id-service-principal) to grant permission to work with the database.
 
     ```kusto
     .add database YOUR_DATABASE_NAME admins  ('aadapp=YOUR_APP_ID;YOUR_TENANT_ID') 'Entra App'
@@ -140,9 +142,9 @@ Create an index in Splunk specifying the criteria for the data you want to send 
     | Setting | Description |
     | -- | -- |
     | **Cluster Ingestion URL** | Specify the ingestion URL of your Azure Data Explorer cluster. For example, `https://ingest-<mycluster>.<myregion>.kusto.windows.net`. |
-    | **Client ID** | Specify the client ID of the Microsoft Entra ID application you created earlier. |
-    | **Client Secret** | Specify the client secret of the Microsoft Entra ID application you created earlier. |
-    | **Tenant ID** | Specify the tenant ID of the Microsoft Entra ID application you created earlier. |
+    | **Client ID** | Specify the client ID of the Microsoft Entra application you created earlier. |
+    | **Client Secret** | Specify the client secret of the Microsoft Entra application you created earlier. |
+    | **Tenant ID** | Specify the tenant ID of the Microsoft Entra application you created earlier. |
     | **Database** | Specify the name of the database you want to send the data to. |
     | **Table** | Specify the name of the table you want to send the data to. |
     | **Mapping** | Specify the name of the mapping object you created earlier. |

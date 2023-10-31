@@ -3,7 +3,7 @@ title: Overview of data connectors and their capabilities
 description: Learn about the available data connectors and their capabilities.
 ms.reviewer: aksdi
 ms.topic: conceptual
-ms.date: 05/10/2023
+ms.date: 10/03/2023
 zone_pivot_group_filename: data-explorer/zone-pivot-groups.json
 zone_pivot_groups: kql-flavors-adx-fabric
 # CustomerIntent: As a data ingestor, I want to know what data connectors are available, so that I can choose the right one for my use case.
@@ -15,50 +15,56 @@ zone_pivot_groups: kql-flavors-adx-fabric
 ::: zone-end
 ::: zone pivot="fabric"
 Data ingestion is the process used to load data from one or more sources into a Real-Time Analytics KQL database in Microsoft Fabric. Once ingested, the data becomes available for [query](kusto/query/index.md?context=/fabric/context/context-rta&pivots=fabric). Real-Time Analytics provides several connectors for data ingestion.
+
+The following table summarizes the available connectors and their capabilities:
 ::: zone-end
 ::: zone pivot="azuredataexplorer"
-The following table summarizes the available connectors and their capabilities:
 
 | Name | Functionality | Supports streaming? | Supports free cluster? | Type | Use cases |
 |--|--|:-:|--|--|--|
 | [Apache Kafka](#apache-kafka) | **Ingestion** | &check; |  | First party, [Open source](https://github.com/Azure/kafka-sink-azure-kusto/) | Logs, Telemetry, Time series |
 | [Apache Log4J 2](#apache-log4j-2) | **Ingestion** | &check; | &check; | First party, [Open source](https://github.com/Azure/azure-kusto-log4j) | Logs |
-| [Apache Spark](#apache-spark) | **Export** <br /><br />**Ingestion** | &#x2717; |  | [Open source](https://github.com/Azure/azure-kusto-spark/) | Telemetry |
-| [Apache Spark for Azure Synapse Analytics](#apache-spark-for-azure-synapse-analytics) | **Export** <br /><br />**Ingestion** | &#x2717; |  | First party | Telemetry |
+| [Apache Spark](#apache-spark) | **Export**<br /><br />**Ingestion** | &#x2717; |  | [Open source](https://github.com/Azure/azure-kusto-spark/) | Telemetry |
+| [Apache Spark for Azure Synapse Analytics](#apache-spark-for-azure-synapse-analytics) | **Export**<br /><br />**Ingestion** | &#x2717; |  | First party | Telemetry |
 | [Azure Cosmos DB](#azure-cosmos-db) | **Ingestion** | &check; |  | First party | Change feed |
-| [Azure Data Factory](#azure-data-factory) | **Export** <br /><br />**Ingestion** | &#x2717; |  | First party | Data orchestration |
+| [Azure Data Factory](#azure-data-factory) | **Export**<br /><br />**Ingestion** | &#x2717; |  | First party | Data orchestration |
 | [Azure Event Grid](#azure-event-grid) | **Ingestion** | &check; |  | First party | Event processing |
 | [Azure Event Hubs](#azure-event-hubs) | **Ingestion** | &check; |  | First party | Messaging |
-| [Azure Functions](#azure-functions) | **Export** <br /><br />**Ingestion** | &#x2717; |  | First party | Workflow integrations |
+| [Azure Functions](#azure-functions) | **Export**<br /><br />**Ingestion** | &#x2717; |  | First party | Workflow integrations |
 | [Azure IoT Hubs](#azure-iot-hubs) | **Ingestion** | &check; |  | First party | IoT data |
 | [Azure Stream Analytics](#azure-stream-analytics) | **Ingestion** | &check; |  | First party | Event processing |
+| [Fluent Bit](#fluent-bit) | **Ingestion** | &#x2717; |  | [Open source](https://github.com/fluent/fluent-bit) | Logs, Metrics, Traces |
 | [Logstash](#logstash) | **Ingestion** | &#x2717; |  | [Open source](https://github.com/Azure/logstash-output-kusto/) | Logs |
 | [NLog](#nlog) | **Ingestion** | &check; | &check; | First party, [Open source](https://github.com/Azure/azure-kusto-nlog-sink) | Telemetry, Logs, Metrics |
 | [Open Telemetry](#open-telemetry) | **Ingestion** | &check; |  | [Open source](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/exporter/azuredataexplorerexporter) | Traces, Metrics, Logs |
-| [Power Automate](#power-automate) | **Export** <br /><br />**Ingestion** | &#x2717; |  | First party | Data orchestration |
+| [Power Automate](#power-automate) | **Export**<br /><br />**Ingestion** | &#x2717; |  | First party | Data orchestration |
 | [Serilog](#serilog) | **Ingestion** | &check; | &check; | First party, [Open source](https://github.com/Azure/serilog-sinks-azuredataexplorer) | Logs |
 | [Splunk](#splunk) | **Ingestion** | &#x2717; |  | [Open source](https://github.com/Azure/azure-kusto-splunk) | Logs |
 | [Telegraf](#telegraf) | **Ingestion** | &check; |  | [Open source](https://github.com/influxdata/telegraf/tree/master/plugins/outputs/azure_data_explorer) | Metrics, Logs |
+
 ::: zone-end
 ::: zone pivot="fabric"
+
 | Name | Functionality | Supports streaming? | Type | Use cases |
-|---|---|:-:|---|---|
+|--|--|:-:|--|--|
 | [Apache Kafka](#apache-kafka) | **Ingestion** | &check; | First party, [Open source](https://github.com/Azure/kafka-sink-azure-kusto/) | Logs, Telemetry, Time series |
 | [Apache Log4J 2](#apache-log4j-2) | **Ingestion** | &check; | First party, [Open source](https://github.com/Azure/azure-kusto-log4j) | Logs |
-| [Apache Spark](#apache-spark) | **Export** <br /><br />**Ingestion** | &#x2717; | [Open source](https://github.com/Azure/azure-kusto-spark/) | Telemetry |
-| [Apache Spark for Azure Synapse Analytics](#apache-spark-for-azure-synapse-analytics) | **Export** <br /><br />**Ingestion** | &#x2717; | First party | Telemetry |
+| [Apache Spark](#apache-spark) | **Export**<br /><br />**Ingestion** | &#x2717; | [Open source](https://github.com/Azure/azure-kusto-spark/) | Telemetry |
+| [Apache Spark for Azure Synapse Analytics](#apache-spark-for-azure-synapse-analytics) | **Export**<br /><br />**Ingestion** | &#x2717; | First party | Telemetry |
 | [Azure Cosmos DB](#azure-cosmos-db) | **Ingestion** | &check; | First party | Change feed |
-| [Azure Data Factory](#azure-data-factory) | **Export** <br /><br />**Ingestion** | &#x2717; | First party | Data orchestration |
+| [Azure Data Factory](#azure-data-factory) | **Export**<br /><br />**Ingestion** | &#x2717; | First party | Data orchestration |
 | [Azure Event Grid](#azure-event-grid) | **Ingestion** | &check; | First party | Event processing |
 | [Azure Event Hubs](#azure-event-hubs) | **Ingestion** | &check; | First party | Messaging |
-| [Azure Functions](#azure-functions) | **Export** <br /><br />**Ingestion** |  &#x2717; | First party | Workflow integrations |
+| [Azure Functions](#azure-functions) | **Export**<br /><br />**Ingestion** | &#x2717; | First party | Workflow integrations |
 | [Azure IoT Hubs](#azure-iot-hubs) | **Ingestion** | &check; | First party | IoT data |
 | [Azure Stream Analytics](#azure-stream-analytics) | **Ingestion** | &check; | First party | Event processing |
+| [Logstash](#logstash) | **Ingestion** | &#x2717; | [Open source](https://github.com/Azure/logstash-output-kusto/) | Logs |
 | [NLog](#nlog) | **Ingestion** | &check; | First party, [Open source](https://github.com/Azure/azure-kusto-nlog-sink) | Telemetry, Logs, Metrics |
 | [Open Telemetry](#open-telemetry) | **Ingestion** | &check; | [Open source](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/exporter/azuredataexplorerexporter) | Traces, Metrics, Logs |
-| [Power Automate](#power-automate) | **Export** <br /><br />**Ingestion** | &#x2717; | First party | Data orchestration |
+| [Power Automate](#power-automate) | **Export**<br /><br />**Ingestion** | &#x2717; | First party | Data orchestration |
 | [Serilog](#serilog) | **Ingestion** | &check; | First party, [Open source](https://github.com/Azure/serilog-sinks-azuredataexplorer) | Logs |
 | [Telegraf](#telegraf) | **Ingestion** | &check; | [Open source](https://github.com/influxdata/telegraf/tree/master/plugins/outputs/azure_data_explorer) | Metrics, Logs |
+
 ::: zone-end
 
 ## Apache Kafka
@@ -192,6 +198,18 @@ Event Grid ingestion is a pipeline that listens to Azure storage, and updates yo
 
 ::: zone pivot="azuredataexplorer"
 
+## Fluent Bit
+
+[Fluent Bit](https://fluentbit.io/) is an open-source agent that collects logs, metrics, and traces from various sources. It allows you to filter, modify, and aggregate event data before sending it to storage.
+
+* **Functionality:** Ingestion
+
+* **Ingestion type supported:** Batching, Streaming
+* **Use cases:** Logs, Metrics, Traces
+* **Repository:** [fluent-bit](https://github.com/fluent/fluent-bit)
+* **Documentation:** [Ingest data with Fluent Bit into Azure Data Explorer](fluent-bit.md)
+::: zone-end
+
 ## Logstash
 
 [The Logstash plugin](ingest-data-logstash.md) enables you to process events from Logstash into an Azure Data Explorer database for later analysis.
@@ -204,7 +222,6 @@ Event Grid ingestion is a pipeline that listens to Azure storage, and updates yo
 * **Repository:** Microsoft Azure - https://github.com/Azure/logstash-output-kusto/
 * **Documentation:** [Ingest data from Logstash](ingest-data-logstash.md)
 * **Community Blog:** [How to migrate from Elasticsearch to Azure Data Explorer](https://techcommunity.microsoft.com/t5/azure-data-explorer-blog/how-to-migrate-from-elasticsearch-to-azure-data-explorer/ba-p/1621539/)
-::: zone-end
 
 ## NLog
 

@@ -27,8 +27,8 @@ This document describes a simple example on the use of the **Azure Data Explorer
 * An Azure subscription. Create a [free Azure account](https://azure.microsoft.com/free/).
 * An Azure Data Explorer cluster and database. [Create a cluster and database](create-cluster-and-database.md).
 * Azure Data Explorer cluster setup:
-    * Create Azure Active Directory (Azure AD) app by [provisioning an Azure AD application](./provision-azure-ad-app.md).
-    * Grant access to your Azure AD App on your Azure Data Explorer database by [managing Azure Data Explorer database permissions](manage-database-permissions.md).
+    * Create Microsoft Entra app by [provisioning a Microsoft Entra application](./provision-azure-ad-app.md).
+    * Grant access to your Microsoft Entra App on your Azure Data Explorer database by [managing Azure Data Explorer database permissions](manage-database-permissions.md).
 * Azure DevOps setup:
     * [Sign up for a free organization](/azure/devops/user-guide/sign-up-invite-teammates).
     * [Create an organization](/azure/devops/organizations/accounts/create-organization).
@@ -116,9 +116,9 @@ The are three ways to run admin commands against cluster in a task.
             |--|--|
             | **Connection name** | Enter a name to identify this service endpoint |
             | **Cluster Url** | Value can be found in the overview section of your Azure Data Explorer Cluster in the Azure portal |
-            | **Service Principal Id** | Enter the AAD App ID (created as prerequisite) |
-            | **Service Principal App Key** | Enter the AAD App Key (created as prerequisite) |
-            | **AAD tenant ID** | Enter your AAD tenant (such as microsoft.com or contoso.com) |
+            | **Service Principal Id** | Enter the Microsoft Entra App ID (created as prerequisite) |
+            | **Service Principal App Key** | Enter the Microsoft Entra App Key (created as prerequisite) |
+            | **Microsoft Entra tenant ID** | Enter your Microsoft Entra tenant (such as microsoft.com or contoso.com) |
 
         Select **Allow all pipelines to use this connection** checkbox and then select **OK**.
 

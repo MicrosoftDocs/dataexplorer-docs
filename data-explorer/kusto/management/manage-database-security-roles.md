@@ -68,7 +68,7 @@ The following command lists all security principals that have access to the `Sam
 
 |Role |PrincipalType |PrincipalDisplayName |PrincipalObjectId |PrincipalFQN|
 |---|---|---|---|---|
-|Database Samples Admin |Azure AD User |Abbi Atkins |cd709aed-a26c-e3953dec735e |aaduser=abbiatkins@fabrikam.com|
+|Database Samples Admin |Microsoft Entra user |Abbi Atkins |cd709aed-a26c-e3953dec735e |aaduser=abbiatkins@fabrikam.com|
 
 ## Add and drop security roles
 

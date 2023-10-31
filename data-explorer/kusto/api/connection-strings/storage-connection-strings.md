@@ -43,7 +43,7 @@ Azure Data Explorer supports the following authentication methods:
 * [Impersonation](#impersonation)
 * [Managed identity](#managed-identity)
 * [Shared Access (SAS) key](#shared-access-sas-token)
-* [Azure AD access token](#azure-ad-access-token)
+* [Microsoft Entra access token](#azure-ad-access-token)
 * [Storage account access key](#storage-account-access-key)
 * [Amazon Web Services Programmatic Access Keys](#amazon-web-services-programmatic-access-keys)
 
@@ -54,9 +54,9 @@ The following table summarizes the available authentication methods for differen
 | Authentication method | Available in Blob storage? | Available in Azure Data Lake Storage Gen 2? | Available in Azure Data Lake Storage Gen 1? | Available in Amazon S3? | When should you use this method? |
 |---|---|---|---|---|---|
 | [Impersonation](#impersonation) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :x: | Use for attended flows when you need complex access control over the external storage. For example, in continuous export flows. You can also restrict storage access at the user level. |
-| [Managed identity](#managed-identity) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :x: | Use in unattended flows, where no Azure Active Directory (Azure AD) principal can be derived to execute queries and commands. Managed identities are the only authentication solution. |
+| [Managed identity](#managed-identity) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :x: | Use in unattended flows, where no Microsoft Entra principal can be derived to execute queries and commands. Managed identities are the only authentication solution. |
 | [Shared Access (SAS) key](#shared-access-sas-token) | :heavy_check_mark: | :heavy_check_mark: | :x: | :x: | SAS tokens have an expiration time. Use when accessing storage for a limited time. |
-| [Azure AD access token](#azure-ad-access-token) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :x: | Azure AD tokens have an expiration time. Use when accessing storage for a limited time. |
+| [Microsoft Entra access token](#azure-ad-access-token) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :x: | Microsoft Entra tokens have an expiration time. Use when accessing storage for a limited time. |
 | [Storage account access key](#storage-account-access-key) | :heavy_check_mark: | :heavy_check_mark: | :x: | :x: | When you need to access resources on an ongoing basis. |
 | [Amazon Web Services Programmatic Access Keys](#amazon-web-services-programmatic-access-keys) | :x: | :x: | :x: | :heavy_check_mark: | When you need to access Amazon S3 resources on an ongoing basis. |
 
@@ -96,11 +96,13 @@ Use the SAS URL as the connection string.
 |--|
 |`"https://fabrikam.blob.core.windows.net/container/path/to/file.csv?sv=...&sp=rwd"`|
 
-### Azure AD access token
+<a name='azure-ad-access-token'></a>
 
-To add a base-64 encoded Azure AD access token, append `;token={AadToken}` to the connection string. The token must be for the resource `https://storage.azure.com/`.
+### Microsoft Entra access token
 
-For more information on how to generate an Azure AD access token, see [get an access token for authorization](/azure/storage/common/identity-library-acquire-token).
+To add a base-64 encoded Microsoft Entra access token, append `;token={AadToken}` to the connection string. The token must be for the resource `https://storage.azure.com/`.
+
+For more information on how to generate a Microsoft Entra access token, see [get an access token for authorization](/azure/storage/common/identity-library-acquire-token).
 
 |Example|
 |--|

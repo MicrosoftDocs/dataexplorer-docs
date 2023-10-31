@@ -59,7 +59,6 @@
     "globalMetadata": {
       "searchScope": ["Azure", "Data Explorer", "Azure Data Explorer", "Kusto", "kusto"],
       "breadcrumb_path": "/azure/data-explorer/breadcrumb/toc.json",
-      "extendBreadcrumb": true,
       "brand": "azure",
       "uhfHeaderId": "azure",
       "feedback_system": "Standard",
@@ -134,10 +133,10 @@
     },
     "fileMetadata": {
       "titleSuffix": {
-        "data-explorer/kusto/functions-library/*.md": "Azure Data Explorer & Microsoft Fabric",
-        "data-explorer/kusto/api/**/*.md": "Azure Data Explorer & Microsoft Fabric",
-        "data-explorer/kusto/management/**/*.md": "Azure Data Explorer & Microsoft Fabric",
-        "data-explorer/kusto/query/**/*.md": "Azure Data Explorer & Microsoft Fabric"
+        "kusto/functions-library/**/*.md": "Azure Data Explorer & Real-Time Analytics",
+        "kusto/api/**/*.md": "Azure Data Explorer & Real-Time Analytics",
+        "kusto/management/**/*.md": "Azure Data Explorer & Real-Time Analytics",
+        "kusto/query/**/*.md": "Azure Data Explorer & Real-Time Analytics"
       }
     },
     "template": [],
