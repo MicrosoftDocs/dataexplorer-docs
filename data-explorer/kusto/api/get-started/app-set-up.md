@@ -40,8 +40,16 @@ Verify installation: In a command shell, run `dotnet sdk check` to check that th
 - [Node 16 or later](https://nodejs.org/en/download/) built with ES6
     - Ensure the `node` executable is in your `PATH`
     - Verify installation: In a command shell, run `node --version` to check that the version is 3.7 or later
-- A Node.js app or a browser-based web app, such as a React or Vue.js app.
-- For browser-based web apps, to authenticate you need to set up an application registration with the necessary permissions:
+- A Node.js app or a browser-based web app.
+- For browser-based web apps:
+  - If your app has a login experience, you can use the [@auzre/identity library](https://github.com/Azure/azure-sdk-for-js/tree/main/sdk/identity/identity/test/manual/interactive-browser-credential) to issue an authorization token and later feed this token to the Kusto client using the `withTokenProvider` function:
+
+  ```typescript
+  const tokenProvider =  () => Promise.resolve("some_token")
+  KustoConnectionStringBuilder.withTokenProvider("localhost", tokenProvider)
+  ```
+
+  - If your app doesn't have a login experience, or you prefer to use the Kusto client library to prompt authentication, you need to set up an application registration with the necessary permissions:
   
     1. [Create a Microsoft Entra application registration](../../../provision-azure-ad-app.md#create-microsoft-entra-application-registration).
     2. In the **Authentication** tab, select **+ Add a platform**. Then, select **Single-page application**.
@@ -49,6 +57,8 @@ Verify installation: In a command shell, run `dotnet sdk check` to check that th
     4. [Configure delegated permissions for the application registration](../../../provision-azure-ad-app.md#configure-delegated-permissions-for-the-application-registration).
     5. [Grant the application registration access to an Azure Data Explorer database](../../../provision-azure-ad-app.md#grant-the-application-registration-access-to-an-azure-data-explorer-database).
     6. In the **Overview** tab, copy the **Application (client) ID**.
+
+    The examples throughout the coming tutorials will show how to use the Kusto client library to prompt authentication.
 
     > [!NOTE]
     > If you belong to an organization, restrictions based on organization configurations might prevent you from authenticating. Ask for access from an organization admin or try again on a personal account.
