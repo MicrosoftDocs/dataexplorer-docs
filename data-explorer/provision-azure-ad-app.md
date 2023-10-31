@@ -167,7 +167,7 @@ If your application is used to authenticate users, or applications for Azure Dat
 
 `AADSTS650057: Invalid resource. The client has requested access to a resource which is not listed in the requested permissions in the client's application registration...`
 
-You'll need to follow the instructions on [setting up delegated permissions for Azure Data Explorer service application](#configure-delegated-permissions-for-the-application-registration).
+You'll need to follow the instructions to [configure delegated permissions for the application](#configure-delegated-permissions-for-the-application).
 
 ### Enable user consent error
 
