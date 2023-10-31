@@ -21,7 +21,9 @@ In this article, learn how to use the Kusto Splunk Universal Forwarder Connector
 
 ## Create an Azure Data Explorer table
 
-Create a table to receive the data from Splunk Universal Forwarder, which sends data in a raw text format by default. In the following example, you create a table named `SplunkUFLogs` with a single column (`RawText`) and then grant the service principal access to this table. The following commands can be run in the [web UI query editor](web-ui-query-overview.md#write-and-run-queries).
+Create a table to receive the data from Splunk Universal Forwarder and then grant the service principal access to this table.
+
+In the following steps, you create a table named `SplunkUFLogs` with a single column (`RawText`). This is because Splunk Universal Forwarder sends data in a raw text format by default. The following commands can be run in the [web UI query editor](web-ui-query-overview.md#write-and-run-queries).
 
 1. Create a table:
 
@@ -29,7 +31,7 @@ Create a table to receive the data from Splunk Universal Forwarder, which sends 
     .create table SplunkUFLogs (RawText: string)
     ```
 
-2. Verify that the table `WeatherAlert` was created and is empty:
+2. Verify that the table `SplunkUFLogs` was created and is empty:
 
     ```Kusto
     SplunkUFLogs
