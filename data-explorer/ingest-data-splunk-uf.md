@@ -17,7 +17,7 @@ In this article, learn how to use the Kusto Splunk Universal Forwarder Connector
 * [Splunk Universal Forwarder](https://docs.splunk.com/Documentation/Forwarder/9.1.1/Forwarder/InstallaWindowsuniversalforwarderfromaninstaller) downloaded on the same machine where the logs originate.
 * An Azure Data Explorer cluster and database. [Create a cluster and database](create-cluster-and-database.md).
 * [Docker](https://www.docker.com/) installed on the system that runs the Kusto Splunk Universal Forwarder connector.
-* A Microsoft Entra service principal. [Create a Microsoft Entra service principal](provision-azure-ad-app.md#create-a-microsoft-entra-application-registration-in-azure-data-explorer).
+* A Microsoft Entra service principal. [Create a Microsoft Entra service principal](provision-azure-ad-app.md#programatically-create-a-microsoft-entra-service-principal).
 
 ## Create an Azure Data Explorer table
 
