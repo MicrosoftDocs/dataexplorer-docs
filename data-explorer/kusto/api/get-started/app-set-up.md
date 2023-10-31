@@ -43,10 +43,10 @@ Verify installation: In a command shell, run `dotnet sdk check` to check that th
 - A Node.js app or a browser-based web app.
 - For browser-based web apps:
   
-  - If your app has a login experience, you can use the [@auzre/identity library](https://github.com/Azure/azure-sdk-for-js/tree/main/sdk/identity/identity/test/manual/interactive-browser-credential) to issue an authorization token and later feed this token to the Kusto client using the `withTokenProvider` function:
+  - If your app has a login experience, you can use the [@auzre/identity library](https://github.com/Azure/azure-sdk-for-js/tree/main/sdk/identity/identity/test/manual/interactive-browser-credential) to issue an authorization token and use `withTokenProvider` to feed this token to the Kusto client:
 
   ```typescript
-  const tokenProvider =  () => Promise.resolve("some_token")
+  const tokenProvider =  () => Promise.resolve("someToken")
   KustoConnectionStringBuilder.withTokenProvider("localhost", tokenProvider)
   ```
 
