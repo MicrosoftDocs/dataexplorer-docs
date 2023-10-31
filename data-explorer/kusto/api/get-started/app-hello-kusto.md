@@ -140,7 +140,7 @@ In your preferred IDE or text editor, create a project or file named *hello kust
     ---
 
     > [!NOTE]
-    > For interactive authentication, you need a Microsoft account or an Azure Active Directory user identity. An Azure subscription isn't required.
+    > For interactive authentication, you need a Microsoft account or a Microsoft Entra user identity. An Azure subscription isn't required.
     >
     > In C#, the interactive authentication process may not prompt the user if:
     >

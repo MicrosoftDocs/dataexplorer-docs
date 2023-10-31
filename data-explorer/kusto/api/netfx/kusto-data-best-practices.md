@@ -1,11 +1,11 @@
 ---
-title:  Kusto Data library best practices
+title: Best practices for the Kusto Data library
 description: This article describes best practices for Kusto Data client library.
 ms.reviewer: orspodek
 ms.topic: reference
-ms.date: 09/27/2023
+ms.date: 10/18/2023
 ---
-# Kusto Data library best practices
+# Best practices for the Kusto Data library
 
 This article explains the best practices for working with the [Kusto Data library](about-kusto-data.md).
 
@@ -23,5 +23,6 @@ Although the Kusto client object is designed for use with multiple requests, it 
 
 ## Related content
 
+* [Kusto Data overview](about-kusto-data.md)
 * [Query best practices](../../query/best-practices.md)
 * [Schema management best practices](../../management/management-best-practices.md)

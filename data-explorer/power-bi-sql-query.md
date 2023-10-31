@@ -20,7 +20,7 @@ If you don't have an Azure subscription, create a [free Azure account](https://a
 
 You need the following to complete this article:
 
-* A Microsoft account or an Azure Active Directory user identity to sign in to the [help cluster](https://dataexplorer.azure.com/clusters/help/databases/Samples).
+* A Microsoft account or a Microsoft Entra user identity to sign in to the [help cluster](https://dataexplorer.azure.com/clusters/help/databases/Samples).
 * [Power BI Desktop](https://powerbi.microsoft.com/get-started/) (select **DOWNLOAD FREE**)
 
 ## Get data from Azure Data Explorer

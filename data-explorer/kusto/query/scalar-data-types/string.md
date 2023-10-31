@@ -1,9 +1,9 @@
 ---
 title:  The string data type
-description: This article describes The string data type in Azure Data Explorer.
+description: Learn about the string data type in Azure Data Explorer.
 ms.reviewer: orspodek
 ms.topic: reference
-ms.date: 07/25/2023
+ms.date: 10/15/2023
 ---
 # The string data type
 
@@ -20,123 +20,186 @@ For information on string query operators, see [String operators](../datatypes-s
 
 ## String literals
 
-There are several ways to encode literals of the `string` data type in a query text:
+You can use double quotes or single quotes to encode string literals in query text. With double quotes, you must escape nested double quote characters with a backslash (`\`). With single quotes, you must escape nested single quote characters, and you don't need to escape double quotes.
 
-* Enclose the string in double-quotes (`"`): `"This is a string literal. Single quote characters (') don't require escaping. Double quote characters (") are escaped by a backslash (\)."`
-* Enclose the string in single-quotes (`'`): `'Another string literal. Single quote characters (') require escaping by a backslash (\). Double quote characters (") do not require escaping.'`
-
-In the two representations above, the backslash (`\`) character indicates escaping.
-The backslash is used to escape the enclosing quote characters, tab characters (`\t`),
-newline characters (`\n`), and itself (`\\`).
+Use the backslash character to escape the enclosing quote characters, tab characters (`\t`), newline characters (`\n`), and the backslash itself (`\\`).
 
 > [!NOTE]
-> The newline character (`\n`) and the return character (`\r`) can't be included
-> as part of the string literal without being quoted. See also [multi-line string literals](#multi-line-string-literals).
+> The newline character (`\n`) and the return character (`\r`) must be enclosed in quotes unless using [multi-line string literals](#multi-line-string-literals).
 
 ## Verbatim string literals
 
-Verbatim string literals are also supported. In this form, the backslash character (`\`) stands for itself, and not as an escape character. Prepending the `@` special character to string literals serves as a verbatim identifier.
+Verbatim string literals are also supported. In this form, the backslash character (`\`) stands for itself and isn't an escape character. Prepending the `@` character to string literals serves as a verbatim identifier. In verbatim string literals, double quotes are escaped with double quotes and single quotes are escaped with single quotes.
 
-* Enclose in double-quotes (`"`): `@"This is a verbatim string literal that ends with a backslash\. Double quote characters (") are escaped by a double quote (")."`
-* Enclose in single-quotes (`'`): `@'This is a verbatim string literal that ends with a backslash\. Single quote characters (') are escaped by a single quote (').'`
+For an example, see [Verbatim string](#verbatim-string-literal).
 
 > [!NOTE]
-> The newline character (`\n`) and the return character (`\r`) can't be included
-> as part of the string literal without being quoted. See also [multi-line string literals](#multi-line-string-literals).
-
-## Concatenation of separated string literals
-
-In a KQL query, when two or more adjacent string literals have no separation between them, they're automatically combined to form a new string literal. Similarly, if the string literals are separated only by whitespace or comments, they're also combined to form a new string literal.
-
-For example, the following expressions all yield a string of length 13:
-
-> [!div class="nextstepaction"]
-> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA3XOMQoCMRSE4T6nGNOsgrAHsBFsrGw8QXYzmEDyErIPwt5eFztZyym+n6ktimLRlihHe2dKxQ5nDFfbS0v+YE8XjCMeRUOUFyZqJwUamI2pOxibxg9/srrmlB7Tih6icqluJoqkdT9jsLlbyZmin7Hz6V/UiYfD/KVv7+yEm+AAAAA=" target="_blank">Run the query</a>
-
-```kusto
-print strlen("Hello"', '@"world!"); // Nothing between them
-
-print strlen("Hello" ', ' @"world!"); // Separated by whitespace only
-
-print strlen("Hello"
-  // Comment
-  ', '@"world!"); // Separated by whitespace and a comment
-```
+> The newline character (`\n`) and the return character (`\r`) must be enclosed in quotes unless using [multi-line string literals](#multi-line-string-literals).
 
 ## Multi-line string literals
 
-Multi-line string literals are string literals for which the newline (`\n`) and return (`\r`)
-characters don't require escaping.
+Indicate a multi-line string literals by a "triple-backtick chord" (`\``) at the beginning and end of the literal.
 
-* Multi-line string literals always appear between two occurrences of the "triple-backtick chord" (`\``).
+For an example, see [Multi-line string literal](#multi-line-string-literal).
 
 > [!NOTE]
-> * Multi-line string literals do not support escaped characters. Similar to 
-> [verbatim string literals](#verbatim-string-literals), multi-line string literals allow newline and return characters.
-> * Multi-line string literals don't support obfuscation.
+> * Multi-line string literals support newline (`\n`) and return (`\r`) characters.
+> * Multi-line string literals do not support escaped characters. Similar to [verbatim string literals](#verbatim-string-literals).
+> * Multi-line string literals don't support [obfuscation](#obfuscated-string-literals).
+
+## Concatenation of separated string literals
+
+In a Kusto query, when two or more adjacent string literals have no separation between them, they're automatically combined to form a new string literal. Similarly, if the string literals are separated only by whitespace or comments, they're also combined to form a new string literal.
+
+For an example, see [Concatenated string literals](#concatenated-string-literals).
+
+## Obfuscated string literals
+
+Queries are stored for telemetry and analysis. To safeguard sensitive information like passwords and secrets, you can mark a string as an *obfuscated string literal*. These marked strings are replaced with asterisks (`*`) in the query text.
+
+An obfuscated string literal is created by prepending an `h` or an `H` character in front of a standard or verbatim [string literal](#string-literals).
+
+For an example, see [Obfuscated string literal](#obfuscated-string-literal).
+
+> [!IMPORTANT]
+> Mark all string literals that contain secret information as obfuscated string literals.
+
+> [!TIP]
+> In some situations, only a portion of the string literal contains secret information. In such cases, divide the literal into a non-secret part and a secret portion. Then, label only the secret part as obfuscated.
 
 ## Examples
 
+### String literal with quotes
+
+The following example demonstrates how to use quotes within string literals encompassed by single quotes and double quotes. For more information, see [String literals](#string-literals).
+
+> [!div class="nextstepaction"]
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAysoyswr4VIAgmJDBVsF9eISoEC6QnlmSYaCUkp+aVJOqkJhaX5JarGSug5EnRFQnRKyOvViIBOuTl0JAJviYe9UAAAA" target="_blank">Run the query</a>
+
 ```kusto
-// Simple string notation
-print s1 = 'some string', s2 = "some other string"
+print
+    s1 = 'string with "double quotes"',
+    s2 = "string with 'single quotes'"
+```
 
-// Strings that include single or double-quotes can be defined as follows
-print s1 = 'string with " (double quotes)',
-          s2 = "string with ' (single quotes)"
+**Output**
 
-// Strings with '\' can be prefixed with '@' (as in c#)
-print myPath1 = @'C:\Folder\filename.txt'
+|s1|s2|
+|--|--|
+|string with "double quotes"|string with 'single quotes'|
 
-// Escaping using '\' notation
-print s = '\\n.*(>|\'|=|\")[a-zA-Z0-9/+]{86}=='
+### String literal with backslash escaping
 
-// Encode a C# program in a Kusto multi-line string
-print program=```
+The following example creates a regular expression pattern using backslashes to escape special characters. For more information, see [String literals](#string-literals).
+
+> [!div class="nextstepaction"]
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAysoyswrUShILClJLcpTsFVQj4nJ09PSsKuJUa+xrYlR0oxO1K1y1I0y0LXU146ttjCrtbVVBwA/QC+dNQAAAA==" target="_blank">Run the query</a>
+
+```kusto
+print pattern = '\\n.*(>|\'|=|\")[a-zA-Z0-9/+]{86}=='
+```
+
+**Output**
+
+|pattern|
+|--|
+|\n.*(>\|'\|=\|")[a-zA-Z0-9/+]{86}==|
+
+### String literal with Unicode
+
+The following example shows that a backslash is needed in order to include a Unicode character in a string literal.
+
+> [!div class="nextstepaction"]
+> <a href="https://dataexplorer.azure.com/clusters/kvc9rf7q4d68qcw5sk2d6f.northeurope/databases/MyDatabase?query=H4sIAAAAAAAAAysoyswrUSguSExOVbBVUPJIzcnJjyk1MHA0CM8vyklRAgCRNap/IAAAAA==" target="_blank">Run the query</a>
+
+```kusto
+print space = "Hello\u00A0World"
+```
+
+**Output**
+
+|space|
+|--|
+|Hello World|
+
+### Verbatim string literal
+
+The following example creates a path in which the backslashes are part of the path instead of escape characters. To do this, the string `@` sign is prepended to the string, creating a [verbatim string literal](#verbatim-string-literals).
+
+> [!div class="nextstepaction"]
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAysoyswrUcitDEgsyVCwVXBQd7aKccvPSUktiknLzEnNS8xN1SupKFEHAGc6ZBYoAAAA" target="_blank">Run the query</a>
+
+```kusto
+print myPath = @'C:\Folder\filename.txt'
+```
+
+**Output**
+
+|myPath|
+|--|
+|C:\Folder\filename.txt|
+
+### Multi-line string literal
+
+The following example shows the syntax for a multi-line string literal, which uses newlines and tabs to style a code block. For more information, see [Multi-line string literals](#multi-line-string-literals).
+
+> [!div class="nextstepaction"]
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAysoyswrUSgoyk8vSsxVsFVISEjgUlAoKE3KyUxWSM5JLC5WCIBKVgMl4FLFJYklQKosPzNFwTcxM09DEyqvoBBcWVySmqvnnJ9XnJ+TqhdelFmS6pOZl6qh5JGak5OvqKRpDVZZywXCQAsBPUXdJYQAAAA=" target="_blank">Run the query</a>
+
+```kusto
+print program = ```
   public class Program {
     public static void Main() {
       System.Console.WriteLine("Hello!");
     }
   }```
 ```
+**Output**
 
-As can be seen, when a string is enclosed in double-quotes (`"`), the single-quote (`'`) character doesn't require escaping, and also the other way around. This method makes it easier to quote strings according to context.
+|program|
+|--|
+|public class Program { public static void Main() { System.Console.WriteLine("Hello!"); } }|
 
-## Obfuscated string literals
+### Concatenated string literals
 
-The system tracks queries and stores them for telemetry and analysis purposes.
-For example, the query text might be made available to the cluster owner. If the
-query text includes secret information, such as passwords, it might leak
-information that should be kept private. To prevent such a leak from happening, the
-query author may mark specific string literals as **obfuscated string literals**.
-Such literals in the query text are automatically replaced by a number of
-star (`*`) characters, so that they aren't available for later analysis.
+The following expressions all yield a string of length 13. For more information, see [Concatenation of separated string literals](#concatenation-of-separated-string-literals).
 
-> [!IMPORTANT]
-> Mark all string literals that contain secret information, as obfuscated string literals.
-
-An obfuscated string literal can be formed by taking a "regular" string literal,
-and prepending an `h` or an `H` character in front of it. 
-
-For example:
+> [!div class="nextstepaction"]
+> <a href="https://dataexplorer.azure.com/clusters/kvc9rf7q4d68qcw5sk2d6f.northeurope/databases/MyDatabase?query=H4sIAAAAAAAAAysoyswrUeBSAIK8/LxUBVuF4pKinNQ8DSWP1JycfCV1HQV1B6Xy/KKcFEUlTR2wwvKMzJLU4oLEZEzlCiD1Crg1OOalOOfn5qYC7cTQClYKAvr6ClBFcCEUZ4BFNa0BnYL1CrsAAAA=" target="_blank">Run the query</a>
 
 ```kusto
-h'hello'
-h@'world'
-h"hello"
+print 
+    none = strlen("Hello"', '@"world!"),
+    whitespace = strlen("Hello" ', ' @"world!"),
+    whitespaceAndComment = strlen("Hello" 
+        // Comment
+        ', '@"world!"
+    );
 ```
 
-> [!NOTE]
-> In many cases, only a part of the string literal is secret. 
-> In those cases, split the literal into a non-secret part and a secret
-> part. Then, only mark the secret part as obfuscated.
+**Output**
 
-For example:
+|none|whitespace|whitespaceAndComment|
+|--|--|--|
+|13|13|13|
+
+### Obfuscated string literal
+
+In the following query output, the `h` string is visible. However, in tracing or telemetry, the `h` string is substituted with asterisks. For more information, see [Obfuscated string literals](#obfuscated-string-literals).
+
+> [!div class="nextstepaction"]
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAx2JSQqAMAwA775CPNhT00VPgvgJP+BSaEESaYL1+S5zm5kzJ5R6PWgdmyhy8mDMRijEBF+FjXKAknCnwoBB/rskDNn8X26Zmqp+iYqv0VvntfXa+ZbDZ522vXbdbAFAPQD1rLluAAAA" target="_blank">Run the query</a>
 
 ```kusto
-print x="https://contoso.blob.core.windows.net/container/blob.txt?"
-  h'sv=2012-02-12&se=2013-04-13T0...'
+print blob="https://contoso.blob.core.windows.net/container/blob.txt?"
+    h'sv=2012-02-12&se=2013-04-13T0...'
 ```
+
+**Output**
+
+|blob|
+|--|
+|https://contoso.blob.core.windows.net/container/blob.txt?sv=2012-02-12&se=2013-04-13T0...|
 
 ## See also
 

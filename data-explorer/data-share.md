@@ -16,7 +16,7 @@ Azure Data Explorer decouples storage and compute, which allows customers to run
 
 ## Configure data sharing
 
-Use [Azure Data Share](/azure/data-share/) to send and manage invitations and shares across the company or with external partners and customers. Azure Data Share uses a [follower database](follower.md) to create a symbolic link between the provider and consumer's Azure Data Explorer cluster. This option provides you with a single pane to view and manage all your data shares across Azure Data Explorer clusters and other data services. Azure Data Share also enables you to share data across organizations in different Azure Active Directory tenants.
+Use [Azure Data Share](/azure/data-share/) to send and manage invitations and shares across the company or with external partners and customers. Azure Data Share uses a [follower database](follower.md) to create a symbolic link between the provider and consumer's Azure Data Explorer cluster. This option provides you with a single pane to view and manage all your data shares across Azure Data Explorer clusters and other data services. Azure Data Share also enables you to share data across organizations in different Microsoft Entra tenants.
 
 > [!Note]
 > An Admin on both the clusters can directly configure the [follower database](follower.md) with various APIS. This is useful in scenarios where you need additional compute to scale out for reporting.
@@ -178,4 +178,3 @@ The data consumer can now go to their Azure Data Explorer cluster to grant user 
 
 * [Azure Data Share documentation](/azure/data-share/)
 * For information about follower cluster, see [follower cluster](follower.md)
-

@@ -1,27 +1,29 @@
 ---
-title: Create an Azure AD application in Azure Data Explorer
-description: Learn how to create an Azure AD application in Azure Data Explorer.
+title: Create a Microsoft Entra application in Azure Data Explorer
+description: Learn how to create a Microsoft Entra application in Azure Data Explorer.
 ms.reviewer: herauch
 ms.topic: how-to
 ms.date: 07/10/2022
 ---
 
-# Create an Azure Active Directory application registration in Azure Data Explorer
+# Create a Microsoft Entra application registration in Azure Data Explorer
 
-Azure Active Directory (Azure AD) application authentication is used for applications, such as an unattended service or a scheduled flow, that need to access Azure Data Explorer without a user present. If you're connecting to an Azure Data Explorer database using an application, such as a web app, you should authenticate using service principal authentication. This article details how to create and register an Azure AD service principal and then authorize it to access an Azure Data Explorer database.
+Microsoft Entra application authentication is used for applications, such as an unattended service or a scheduled flow, that need to access Azure Data Explorer without a user present. If you're connecting to an Azure Data Explorer database using an application, such as a web app, you should authenticate using service principal authentication. This article details how to create and register a Microsoft Entra service principal and then authorize it to access an Azure Data Explorer database.
 
-## Create Azure AD application registration
+<a name='create-azure-ad-application-registration'></a>
 
-Azure AD application authentication requires creating and registering an application with Azure AD.
-A service principal is automatically created when the application registration is created in an Azure AD tenant.
+## Create Microsoft Entra application registration
 
-1. Sign in to [Azure portal](https://portal.azure.com) and open the `Azure Active Directory` blade
+Microsoft Entra application authentication requires creating and registering an application with Microsoft Entra ID.
+A service principal is automatically created when the application registration is created in a Microsoft Entra tenant.
 
-    :::image type="content" source="media/provision-azure-ad-app/create-app-reg-select-azure-active-directory.png" alt-text="Screenshot showing how to select Azure Active Directory from the portal menu.":::
+1. Sign in to [Azure portal](https://portal.azure.com) and open the **Identity** blade
+
+    :::image type="content" source="media/provision-azure-ad-app/create-app-select-microsoft-entra-id.png" alt-text="Screenshot showing how to select Microsoft Entra ID from the portal menu.":::
 
 1. Select the **App registrations** blade and select **New registration**
 
-    :::image type="content" source="media/provision-azure-ad-app/create-app-reg-new-registration.png" alt-text="Screenshot showing how to start a new app registration.":::
+    :::image type="content" source="media/provision-azure-ad-app/create-app-new-registration.png" alt-text="Screenshot showing how to start a new app registration.":::
 
 1. Fill in the following information:
 
@@ -32,32 +34,28 @@ A service principal is automatically created when the application registration i
         > The application type should be **Web**. The URI is optional and is left blank in this case.
     * Select **Register**
 
-    :::image type="content" source="media/provision-azure-ad-app/create-app-reg-register-app.png" alt-text="Screenshot showing how to register a new app registration.":::
+    :::image type="content" source="media/provision-azure-ad-app/create-app-register-app.png" alt-text="Screenshot showing how to register a new app registration.":::
 
-1. Select the **Overview** blade and copy the **Application ID**.
+1. Select the **Overview** blade and copy the **Application (client) ID**.
 
     > [!NOTE]
     > You'll need the application ID to authorize the service principal to access the database.
 
-    :::image type="content" source="media/provision-azure-ad-app/create-app-reg-copy-applicationid.png" alt-text="Screenshot showing how to copy an app registration I D.":::
+1. In the **Certificates & secrets** blade, select **New client secret**.
 
-1. In the **Certificates & secrets** blade, select **New client secret**
-
-    :::image type="content" source="media/provision-azure-ad-app/create-app-reg-new-client-secret.png" alt-text="Screenshot showing how to start the creation of client secret.":::
+    :::image type="content" source="media/provision-azure-ad-app/create-app-new-client-secret.png" alt-text="Screenshot showing how to start the creation of client secret.":::
 
     > [!TIP]
     > This article describes using a client secret for the application's credentials.  You can also use an X509 certificate to authenticate your application. Select **Upload certificate** and follow the instructions to upload the public portion of the certificate.
 
-1. Enter a description, expiration, and select **Add**
+1. Enter a description, expiration, and select **Add**.
 
-    :::image type="content" source="media/provision-azure-ad-app/create-app-reg-enter-client-secret-details.png" alt-text="Screenshot showing how to enter client secret parameters.":::
+    :::image type="content" source="media/provision-azure-ad-app/create-app-secret-details.png" alt-text="Screenshot showing how to enter client secret parameters.":::
 
 1. Copy the key value.
 
     > [!NOTE]
     > When you leave this page, the key value won't be accessible.  You'll need the key to configure client credentials to the database.
-
-    :::image type="content" source="media/provision-azure-ad-app/create-app-reg-copy-client-secret.png" alt-text="Screenshot showing how to copy client secret key value.":::
 
 Your application is created. If you only need access to an authorized Azure Data Explorer resource, such as in the programmatic example below, skip the next section. For delegated permissions support, see [configure delegated permissions for the application registration](#configure-delegated-permissions-for-the-application-registration).
 
@@ -74,7 +72,7 @@ If your application needs to access Azure Data Explorer using the credentials of
 
     :::image type="content" source="media/provision-azure-ad-app/configure-delegated-click-add-permissions.png" alt-text="Screenshot showing how to select delegated permissions with user impersonation.":::
 
-## Grant the service principal access to an Azure Data Explorer database
+## Grant the application registration access to an Azure Data Explorer database
 
 Now that your service principal application registration is created, you need to grant the corresponding service principal access to your Azure Data Explorer database. The following example gives viewer access. For other roles, see [Manage Azure Data Explorer database permissions](manage-database-permissions.md).
 
@@ -83,7 +81,7 @@ Now that your service principal application registration is created, you need to
 1. Execute the following command:
 
     ```kusto
-    .add database <DatabaseName> viewers ('<ApplicationId>') '<Notes>'
+    .add database <DatabaseName> viewers ('aadapp=<ApplicationId>') '<Notes>'
     ```
 
     For example:
@@ -107,7 +105,7 @@ Use the application credentials to programmatically access your database by usin
 . . .
 string applicationClientId = "<myClientID>";
 string applicationKey = "<myApplicationKey>";
-string authority = "<the Azure Active Directory Id of the application>";
+string authority = "<the Microsoft Entra ID Id of the application>";
 . . .
 var kcsb = new KustoConnectionStringBuilder($"https://{clusterName}.kusto.windows.net/{databaseName}")
     .WithAadApplicationKeyAuthentication(
@@ -121,7 +119,7 @@ var queryResult = client.ExecuteQuery($"{query}");
    > [!NOTE]
    > Specify the application id and key of the application registration (service principal) created earlier.
 
-For more information, see [authenticate with Azure AD for Azure Data Explorer access](kusto/access-control/how-to-authenticate-with-aad.md) and [use Azure Key Vault with .NET Core web app](/azure/key-vault/tutorial-net-create-vault-azure-web-app#create-a-net-core-web-app).
+For more information, see [authenticate with Microsoft Entra ID for Azure Data Explorer access](kusto/access-control/how-to-authenticate-with-aad.md) and [use Azure Key Vault with .NET Core web app](/azure/key-vault/tutorial-net-create-vault-azure-web-app#create-a-net-core-web-app).
 
 ## Troubleshooting
 
@@ -135,12 +133,12 @@ You'll need to follow the instructions on [setting up delegated permissions for 
 
 ### Enable user consent error
 
-Your Azure AD tenant administrator may enact a policy that prevents tenant users from giving consent to applications. This situation will result in an error similar to the following, when a user tries to sign in to your application:
+Your Microsoft Entra tenant administrator may enact a policy that prevents tenant users from giving consent to applications. This situation will result in an error similar to the following, when a user tries to sign in to your application:
 
 `AADSTS65001: The user or administrator has not consented to use the application with ID '<App ID>' named 'App Name'`
 
-You'll need to contact your Azure AD administrator to grant consent for all users in the tenant, or enable user consent for your specific application.
+You'll need to contact your Microsoft Entra administrator to grant consent for all users in the tenant, or enable user consent for your specific application.
 
-## Next steps
+## Related content
 
-* See [Kusto connection strings](kusto/api/connection-strings/kusto.md) for list of supported connection strings.
+* [Kusto connection strings](kusto/api/connection-strings/kusto.md)

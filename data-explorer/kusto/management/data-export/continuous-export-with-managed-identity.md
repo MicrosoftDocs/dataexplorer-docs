@@ -61,7 +61,7 @@ Select one of the following tabs to set up your preferred managed identity type.
     .add database <DatabaseName> viewers ('aadapp=<objectId>;<tenantId>')
     ```
 
-    Replace `<DatabaseName>` with the relevant database, `<objectId>` with the managed identity **Principal Id** from step 2, and `<tenantId>` with the Azure Active Directory **Tenant Id** from step 2.
+    Replace `<DatabaseName>` with the relevant database, `<objectId>` with the managed identity **Principal Id** from step 2, and `<tenantId>` with the Microsoft Entra ID **Tenant Id** from step 2.
 
 ### [System-assigned](#tab/system-assigned)
 
@@ -124,7 +124,7 @@ Select one of the following tabs to set up an Azure Storage or SQL Server extern
 
 ### [SQL Server](#tab/sql-server)
 
-1. Create a SQL Server connection string. This string indicates the resource to access and its authentication information. For continuous export flows, we recommend [Azure AD-integrated authentication](../../api/connection-strings/sql-authentication-methods.md#azure-ad-integrated-impersonation), which is impersonation authentication.
+1. Create a SQL Server connection string. This string indicates the resource to access and its authentication information. For continuous export flows, we recommend [Microsoft Entra integrated authentication](../../api/connection-strings/sql-authentication-methods.md#azure-ad-integrated-impersonation), which is impersonation authentication.
 
 1. Run the [.create or .alter external table](../external-sql-tables.md) to create the table. Use the connection string from the previous step as the *sqlServerConnectionString* argument.
 

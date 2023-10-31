@@ -68,7 +68,7 @@ where the `# of customer lost in the period` is defined as:
 
 > *number of customers at the beginning of the period*
 > \- (minus)
-> *number of customers at the end of the period*
+> *number of returning customers during the period*
 
 `Churn Rate` can vary from 0.0 to 1.0
 The higher score means the larger number of users are NOT returning to the service.
@@ -95,7 +95,7 @@ range _day from _start to _end  step 1d
 | extend d = tolong((_day - _start)/1d)
 | extend r = rand()+1
 | extend _users=range(tolong(d*50*r), tolong(d*50*r+200*r-1), 1)
-| mv-expand id=_users to typeof(long) take 1000000
+| mv-expand id=_users to typeof(long) limit 1000000
 //
 | evaluate activity_metrics(['id'], _day, _start, _end, 7d)
 | project _day, retention_rate, churn_rate
@@ -146,7 +146,7 @@ range _day from _start to _end  step 1d
 | extend d = tolong((_day - _start)/1d)
 | extend r = rand()+1
 | extend _users=range(tolong(d*50*r), tolong(d*50*r+200*r-1), 1)
-| mv-expand id=_users to typeof(long) take 1000000
+| mv-expand id=_users to typeof(long) limit 1000000
 //
 | evaluate activity_metrics(['id'], _day, _start, _end, 7d)
 | project _day, dcount_values, dcount_newvalues

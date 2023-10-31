@@ -23,11 +23,11 @@ The details of the current principal as a [dynamic](../query/scalar-data-types/d
 |--|--|
 |UserPrincipalName|The sign-in identifier for users. For more information, see [UPN](/azure/active-directory/hybrid/connect/plan-connect-userprincipalname#what-is-userprincipalname).|
 |IdentityProvider|The source that validates the identity of the principal.|
-|Authority|The Azure AD tenant ID.|
+|Authority|The Microsoft Entra tenant ID.|
 |Mfa|Indicates the use of [multi-factor authentication](/azure/active-directory/authentication/concept-mfa-howitworks). For more information, see [Access token claims reference](/azure/active-directory/develop/access-token-claims-reference#amr-claim).|
 |Type|The category of the principal: `aaduser`, `aadapp`, or `aadgroup`.|
 |DisplayName|The user-friendly name  for the principal that is displayed in the UI.|
-|ObjectId|The Azure AD object ID for the principal.|
+|ObjectId|The Microsoft Entra object ID for the principal.|
 |FQN|The Fully Qualified Name (FQN) of the principal. Valuable for [security role management commands](../management/security-roles.md). For more information, see [Referencing security principals](../management/referencing-security-principals.md).|
 
 ## Example

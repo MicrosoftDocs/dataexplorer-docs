@@ -61,7 +61,7 @@ A number of different libraries are available.
    It's built on top of the Kusto REST API, and sends HTTPS requests to the target Kusto cluster.
 * [Kusto.Ingest (Kusto Ingestion Library)](netfx/about-kusto-ingest.md): Uses `Kusto.Data` and extends it to ease data ingestion.
 
-The above libraries use Azure APIs, such as Azure Storage API and Azure Active Directory API.
+The above libraries use Azure APIs, such as Azure Storage API and Microsoft Entra API.
 
 ### Python Libraries
 

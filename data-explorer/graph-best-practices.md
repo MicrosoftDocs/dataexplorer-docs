@@ -1,5 +1,5 @@
 ---
-title: Kusto Query Language (KQL) graph semantics best practices
+title: Best practices for Kusto Query Language (KQL) graph semantics (Preview)
 description: Learn about the best practices for Kusto Query Language (KQL) graph semantics.
 ms.reviewer: herauch
 ms.topic: conceptual
@@ -7,7 +7,7 @@ ms.date: 09/03/2023
 # Customer intent: As a data analyst, I want to learn about best practices for KQL graph semantics.
 ---
 
-# Kusto Query Language (KQL) graph semantics best practices (Preview)
+# Best practices for Kusto Query Language (KQL) graph semantics (Preview)
 
 > [!WARNING]
 > This feature is currently in preview and might be subject to change. The semantics and syntax of the graph feature might change before they are released as generally available.

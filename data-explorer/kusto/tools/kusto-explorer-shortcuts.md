@@ -65,6 +65,7 @@ You can use the following keyboard shortcuts with the query editor or when the c
 | <kbd>F6</kbd> | Toggles the focus of the main application panel in the cycle of: `Connections panel` -> `Query Editor` -> `Results` |
 | <kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>R</kbd> | Focuses on Results panel |
 | <kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>T</kbd> | Focuses on Connections panel |
+| <kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>Q</kbd> | Focuses on Work Documents panel |
 | <kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>Y</kbd> | Focuses on Query editor |
 | <kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>P</kbd> | Focuses on Chart panel |
 | <kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>I</kbd> | Focuses on Query Information panel |
@@ -109,7 +110,7 @@ The following keyboard shortcuts can be used when editing a query in the query e
 | <kbd>Ctrl</kbd>+<kbd>G</kbd> | Opens `Go-to line` dialog |
 | <kbd>Ctrl</kbd>+<kbd>F8</kbd> | Show my queries past 3 days |
 | <kbd>Ctrl</kbd>+ bracket | When the cursor is at a bracket symbol: `(` , `)` , `[` , `]` , `{` , `}` - moves the cursor to the matching opening or closing bracket |
-| <kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>Q</kbd> | Prettify current query |
+| <kbd>Alt</kbd>+<kbd>Shift</kbd>+<kbd>F</kbd> | Prettify current query |
 | <kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>L</kbd> | Make current query or selection lower-case |
 | <kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>U</kbd> | Make current query or selection upper-case |
 | <kbd>Ctrl</kbd>+<kbd>Mouse wheel up</kbd> | Increases font of the query editor |
