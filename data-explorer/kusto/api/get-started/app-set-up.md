@@ -42,6 +42,7 @@ Verify installation: In a command shell, run `dotnet sdk check` to check that th
     - Verify installation: In a command shell, run `node --version` to check that the version is 3.7 or later
 - A Node.js app or a browser-based web app.
 - For browser-based web apps:
+  
   - If your app has a login experience, you can use the [@auzre/identity library](https://github.com/Azure/azure-sdk-for-js/tree/main/sdk/identity/identity/test/manual/interactive-browser-credential) to issue an authorization token and later feed this token to the Kusto client using the `withTokenProvider` function:
 
   ```typescript
