@@ -71,7 +71,7 @@ Create a table to receive the data from Splunk Universal Forwarder, which sends 
     | count
     ```
 
-3. Use the service principal from [Create a Microsoft Entra service principal](#create-a-microsoft-entra-id-service-principal) to grant permission to work with the database containing your table.
+3. Use the service principal from [Create a Microsoft Entra service principal](#create-a-microsoft-entra-service-principal) to grant permission to work with the database containing your table.
 
     ```kusto
     .add database YOUR_DATABASE_NAME admins ('aadapp=YOUR_APP_ID;YOUR_TENANT_ID') 'Entra service principal: Splunk UF'
