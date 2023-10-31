@@ -99,7 +99,7 @@ Use the following steps to:
 
     ```csharp
     var log = new LoggerConfiguration()
-    .WriteTo.AzureDataExplorer(new AzureDataExplorerSinkOptions
+    .WriteTo.AzureDataExplorerSink(new AzureDataExplorerSinkOptions
     {
         IngestionEndpointUri = "<cluster>",
         DatabaseName = "<MyDatabase>",
