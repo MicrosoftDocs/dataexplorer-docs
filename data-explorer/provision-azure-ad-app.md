@@ -15,7 +15,7 @@ Microsoft Entra application authentication is used for applications, such as an 
 ## Create Microsoft Entra application registration
 
 Microsoft Entra application authentication requires creating and registering an application with Microsoft Entra ID.
-A service principal is automatically created when the application registration is created in a Microsoft Entra tenant.
+A [service principal](#programatically-create-a-microsoft-entra-service-principal) is automatically created when the application registration is created in a Microsoft Entra tenant.
 
 1. Sign in to [Azure portal](https://portal.azure.com) and open the **Identity** blade
 
@@ -61,37 +61,37 @@ A service principal is automatically created when the application registration i
 
     :::image type="content" source="media/provision-azure-ad-app/create-app-reg-copy-client-secret.png" alt-text="Screenshot showing how to copy client secret key value.":::
 
-Your application is created. If you only need access to an authorized Azure Data Explorer resource, such as in the programmatic example below, skip the next section. For delegated permissions support, see [configure delegated permissions for the application registration](#configure-delegated-permissions-for-the-application-registration).
+Your application is created. If you only need access to an authorized Azure Data Explorer resource, such as in the programmatic example below, skip the next section. For delegated permissions support, see [configure delegated permissions for the application](#configure-delegated-permissions-for-the-application).
 
-## Configure delegated permissions for the application registration
+## Configure delegated permissions for the application
 
-If your application needs to access Azure Data Explorer using the credentials of the calling user, configure delegated permissions for your application registration. For example, if you're building a web API to access Azure Data Explorer and you want to authenticate using the credentials of the user who is *calling* your API.
+If your application needs to access Azure Data Explorer using the credentials of the calling user, configure delegated permissions for your application. For example, if you're building a web API to access Azure Data Explorer and you want to authenticate using the credentials of the user who is *calling* your API.
 
 1. In the **API permissions** blade, select **Add a permission**.
-1. Select **APIs my organization uses**. Search for and select **Azure Data Explorer**.
+2. Select **APIs my organization uses**. Search for and select **Azure Data Explorer**.
 
     :::image type="content" source="media/provision-azure-ad-app/configure-delegated-add-api-permission.png" alt-text="Screenshot showing how to add Azure Data Explorer API permission.":::
 
-1. In **Delegated permissions**, select the **user_impersonation** box and **Add permissions**.
+3. In **Delegated permissions**, select the **user_impersonation** box and **Add permissions**.
 
     :::image type="content" source="media/provision-azure-ad-app/configure-delegated-click-add-permissions.png" alt-text="Screenshot showing how to select delegated permissions with user impersonation.":::
 
-## Grant the application registration access to an Azure Data Explorer database
+## Grant a service principal access to an Azure Data Explorer database
 
-Now that your service principal application registration is created, you need to grant the corresponding service principal access to your Azure Data Explorer database. The following example gives viewer access. For other roles, see [Manage Azure Data Explorer database permissions](manage-database-permissions.md).
+Now that your application registration is created, you need to grant the corresponding service principal access to your Azure Data Explorer database. The following example gives viewer access. For other roles, see [Manage Azure Data Explorer database permissions](manage-database-permissions.md).
 
 1. In the [Azure Data Explorer web UI](https://dataexplorer.azure.com/), connect to your database and open a query tab.
 
-1. Execute the following command:
+2. Execute the following command:
 
     ```kusto
-    .add database <DatabaseName> viewers ('aadapp=<ApplicationId>') '<Notes>'
+    .add database <DatabaseName> viewers ('aadapp=<ApplicationID>;<TenantID>') '<Notes>'
     ```
 
     For example:
 
     ```kusto
-    .add database Logs viewers ('aadapp=f778b387-ba15-437f-a69e-ed9c9225278b') 'Azure Data Explorer App Registration'
+    .add database Logs viewers ('aadapp=1234abcd-e5f6-g7h8-i9j0-1234kl5678mn;9876abcd-e5f6-g7h8-i9j0-1234kl5678mn') 'Azure Data Explorer App Registration'
     ```
 
     The last parameter is a string that shows up as notes when you query the roles associated with a database.
@@ -101,7 +101,41 @@ Now that your service principal application registration is created, you need to
 
 For more information, see [Role-based access control](kusto/access-control/role-based-access-control.md).
 
-## Using application credentials to access a database
+## Programatically create a Microsoft Entra service principal
+
+A Microsoft Entra service principal can be created through the [Azure portal](provision-azure-ad-app.md) or programatically, as in the following example.
+
+1. Sign in to your Azure subscription via Azure CLI. Then authenticate in the browser.
+
+   ```azurecli-interactive
+   az login
+   ```
+
+2. Choose the subscription to host the principal. This step is needed when you have multiple subscriptions.
+
+   ```azurecli-interactive
+   az account set --subscription YOUR_SUBSCRIPTION_GUID
+   ```
+
+3. Create the service principal. In this example, the service principal is called `splunk-uf`.
+
+   ```azurecli-interactive
+   az ad sp create-for-rbac -n "my-service-principal" --role Contributor --scopes /subscriptions/{SubID}
+   ```
+
+4. From the returned JSON data, copy the `appId`, `password`, and `tenant` for future use.
+
+    ```json
+    {
+      "appId": "1234abcd-e5f6-g7h8-i9j0-1234kl5678mn",
+      "displayName": "my-service-principal",
+      "name": "my-service-principal",
+      "password": "1234abcd-e5f6-g7h8-i9j0-1234kl5678mn",
+      "tenant": "1234abcd-e5f6-g7h8-i9j0-1234kl5678mn"
+    }
+    ```
+
+## Use application credentials to access a database
 
 Use the application credentials to programmatically access your database by using the [Azure Data Explorer client library](kusto/api/netfx/about-kusto-data.md).
 
@@ -109,7 +143,7 @@ Use the application credentials to programmatically access your database by usin
 . . .
 string applicationClientId = "<myClientID>";
 string applicationKey = "<myApplicationKey>";
-string authority = "<the Azure Active Directory Id of the application>";
+string authority = "<myApplicationTenantID>";
 . . .
 var kcsb = new KustoConnectionStringBuilder($"https://{clusterName}.kusto.windows.net/{databaseName}")
     .WithAadApplicationKeyAuthentication(

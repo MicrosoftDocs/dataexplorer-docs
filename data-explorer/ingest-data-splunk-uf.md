@@ -3,7 +3,7 @@ title: Ingest data from Splunk Universal Forwarder to Azure Data Explorer
 description: Learn how to ingest (load) data into Azure Data Explorer from Splunk Universal Forwarder.
 ms.reviewer: tanmayapanda
 ms.topic: how-to
-ms.date: 10/26/2023
+ms.date: 10/31/2023
 ---
 
 # Ingest data from Splunk Universal Forwarder to Azure Data Explorer
@@ -17,42 +17,7 @@ In this article, learn how to use the Kusto Splunk Universal Forwarder Connector
 * [Splunk Universal Forwarder](https://docs.splunk.com/Documentation/Forwarder/9.1.1/Forwarder/InstallaWindowsuniversalforwarderfromaninstaller) downloaded on the same machine where the logs originate.
 * An Azure Data Explorer cluster and database. [Create a cluster and database](create-cluster-and-database.md).
 * [Docker](https://www.docker.com/) installed on the system that runs the Kusto Splunk Universal Forwarder connector.
-
-## Create a Microsoft Entra service principal
-
-The Microsoft Entra service principal can be created through the [Azure portal](provision-azure-ad-app.md) or programatically, as in the following example.
-
-This service principal is the identity used by the connector to write to the Azure Data Explorer table. You later grant permissions for this service principal to access Azure Data Explorer.
-
-1. Sign in to your Azure subscription via Azure CLI. Then authenticate in the browser.
-
-   ```azurecli-interactive
-   az login
-   ```
-
-2. Choose the subscription to host the principal. This step is needed when you have multiple subscriptions.
-
-   ```azurecli-interactive
-   az account set --subscription YOUR_SUBSCRIPTION_GUID
-   ```
-
-3. Create the service principal. In this example, the service principal is called `splunk-uf`.
-
-   ```azurecli-interactive
-   az ad sp create-for-rbac -n "splunk-uf" --role Contributor --scopes /subscriptions/{SubID}
-   ```
-
-4. From the returned JSON data, copy the `appId`, `password`, and `tenant`, as you need them in later steps.
-
-    ```json
-    {
-      "appId": "1234abcd-e5f6-g7h8-i9j0-1234kl5678mn",
-      "displayName": "splunk-spn",
-      "name": "http://splunk-spn",
-      "password": "1234abcd-e5f6-g7h8-i9j0-1234kl5678mn",
-      "tenant": "1234abcd-e5f6-g7h8-i9j0-1234kl5678mn"
-    }
-    ```
+* A Microsoft Entra service principal. [Create a Microsoft Entra service principal](provision-azure-ad-app.md).
 
 ## Create an Azure Data Explorer table
 
