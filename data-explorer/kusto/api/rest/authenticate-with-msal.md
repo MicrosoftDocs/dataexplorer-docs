@@ -100,8 +100,8 @@ In this scenario, an application is sent a Microsoft Entra access token for an a
 To perform on-behalf-of authentication:
 
 1. [Provision a Microsoft Entra application](../../../provision-azure-ad-app.md).
-1. Establish a trust relationship between the application and your cluster. To do so, follow the steps in [Configure delegated permissions](../../../provision-azure-ad-app.md#configure-delegated-permissions-for-the-application-registration).
-1. In your server code, use MSAL to perform the token exchange.
+2. Establish a trust relationship between the application and your cluster. To do so, follow the steps in [Configure delegated permissions](../../../provision-azure-ad-app.md#configure-delegated-permissions-for-the-application).
+3. In your server code, use MSAL to perform the token exchange.
 
     ```csharp
     var kustoUri = "https://<clusterName>.<region>.kusto.windows.net";
@@ -118,7 +118,7 @@ To perform on-behalf-of authentication:
     var accessTokenForAdx = result.AccessToken;
     ```
 
-1. Use the token to run queries. For example:
+4. Use the token to run queries. For example:
 
     ```csharp
     var request = WebRequest.Create(new Uri(kustoUri));
