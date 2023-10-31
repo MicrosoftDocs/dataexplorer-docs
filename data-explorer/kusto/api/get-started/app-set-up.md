@@ -54,8 +54,8 @@ Verify installation: In a command shell, run `dotnet sdk check` to check that th
     1. [Create a Microsoft Entra application registration](../../../provision-azure-ad-app.md#create-microsoft-entra-application-registration).
     2. In the **Authentication** tab, select **+ Add a platform**. Then, select **Single-page application**.
     3. Enter the desired **Redirect URIs**, select the boxes for **Access tokens** and **ID tokens**, and select **Configure**. For more information on redirect URIs, see [Desktop app that calls web APIs](/entra/identity-platform/scenario-desktop-app-registration).
-    4. [Configure delegated permissions for the application registration](../../../provision-azure-ad-app.md#configure-delegated-permissions-for-the-application-registration).
-    5. [Grant the application registration access to an Azure Data Explorer database](../../../provision-azure-ad-app.md#grant-the-application-registration-access-to-an-azure-data-explorer-database).
+    4. [Configure delegated permissions for the application](../../../provision-azure-ad-app.md#configure-delegated-permissions-for-the-application-registration).
+    5. [Grant the application access to your Azure Data Explorer database](../../../provision-azure-ad-app.md#grant-the-application-registration-access-to-an-azure-data-explorer-database).
     6. In the **Overview** tab, copy the **Application (client) ID**.
 
     The examples throughout the coming tutorials will show how to use the Kusto client library to prompt authentication.
