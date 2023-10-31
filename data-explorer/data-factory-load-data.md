@@ -43,7 +43,7 @@ In this article, you use the Data Factory Copy Data tool to load data from Amazo
 
 1. In the left pane, select **Create a resource** > **Analytics** > **Data Factory**.
 
-   ![Create a data factory in the Azure portal.](media/data-factory-load-data/create-adf.png)
+   :::image type="content" source="media/data-factory-load-data/create-adf.png" alt-text="Screenshot shows the option to create a data factory in the Azure portal.":::
 
 1. In the **New data factory** pane, provide values for the fields in the following table:
 
