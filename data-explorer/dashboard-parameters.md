@@ -109,7 +109,7 @@ StormEvents
 
 Once saved, the time range filter shows up on the dashboard. Now it can be used to filter the data on the card. You can filter your dashboard by selecting from the drop-down: **Time range** (last x minutes/hours/days) or a **Custom time range**.
 
-:::image type="content" source="media/dashboard-parameters/time-range-parameter.png" alt-text="filter using custom time range.":::
+:::image type="content" source="media/dashboard-parameters/time-range-parameter.png" alt-text="Screenshot showing how to filter using custom time range.":::
 
 ### Single-selection fixed-values parameters
 
@@ -161,7 +161,7 @@ The parameter can be seen in the **Parameters** side pane, but aren't currently 
 
 1. Select different values to update the visuals.
 
-    :::image type="content" source="media/dashboard-parameters/top-five-states.png" alt-text="Top five states result.":::
+    :::image type="content" source="media/dashboard-parameters/top-five-states.png" alt-text="Screenshow showing the top five states result.":::
 
 ### Multiple-selection fixed-values parameters
 
@@ -196,7 +196,7 @@ The new parameters can be seen in the **Parameters** side pane, but aren't curre
 
 1. Select one or more different values to update the visuals.
 
-    :::image type="content" source="media/dashboard-parameters/multiple-event-types.png" alt-text="Select multiple event types.":::
+    :::image type="content" source="media/dashboard-parameters/multiple-event-types.png" alt-text="Screenshot showing how to select multiple event types.":::
 
 ### Single-selection query-based parameters
 
