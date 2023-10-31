@@ -42,7 +42,7 @@ Create a table to receive the data from Splunk Universal Forwarder, which sends 
     .add database YOUR_DATABASE_NAME admins ('aadapp=YOUR_APP_ID;YOUR_TENANT_ID') 'Entra service principal: Splunk UF'
     ```
 
-## Configure Splunk Universal Forwarder
+## Configure the Splunk Universal Forwarder
 
 When you download Splunk Universal Forwarder, a wizard opens to configure the forwarder.
 
@@ -80,7 +80,7 @@ When you download Splunk Universal Forwarder, a wizard opens to configure the fo
 
 4. Restart Splunk Universal Forwarder.
 
-## Configure Kusto Splunk Universal connector
+## Configure the Kusto Splunk Universal connector
 
 To configure the Kusto Splunk Universal connector to send logs to your Azure Data Explorer table:
 
