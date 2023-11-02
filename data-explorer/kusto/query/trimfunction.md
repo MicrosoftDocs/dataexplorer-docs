@@ -3,7 +3,7 @@ title:  trim()
 description: Learn how to use the trim() function to remove the leading and trailing match of the specified regular expression.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 02/27/2023
+ms.date: 11/02/2023
 adobe-target: true
 ---
 # trim()
