@@ -79,7 +79,7 @@ The next statement trims all spaces from start and end of the string.
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAytKzEtPVahQSCvKz1UwVCjJVzBVKC5JLVAw5OWqUSgoys9KTS4BihQp2ILI5MQSDSVdBQUlHaWQVKCAkk6FjoOSvr6CipImSENqRUlqXopCSVFmbm5qSjxEH4in4aAUHRdTHqutpAMU1AQAsu/uCXcAAAA=" target="_blank">Run the query</a>
 
 ```kusto
-let string_to_trim = @"    string with starting and ending whitespace    ";
+let string_to_trim = @"    Hello, world!    ";
 let substring = @"\s+";
 print
     string_to_trim = string_to_trim,
@@ -90,4 +90,4 @@ print
 
 |string_to_trim|trimmed_string|
 |---|---|
-|    string with starting and ending whitespace    	|string with starting and ending whitespace|
+|    Hello, world!    	|Hello, world!|
