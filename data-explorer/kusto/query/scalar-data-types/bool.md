@@ -13,9 +13,10 @@ The `bool` (`boolean`) data type can have one of two states: `true` or `false`
 ## bool literals
 
 The `bool` data type has the following literals:
+
 * `true` and `bool(true)`: Representing trueness
 * `false` and `bool(false)`:  Representing falsehood
-* `bool(null)`: See [null values](null-values.md)
+* `bool(null)`: See [null values](/azure/data-explorer/kusto/query/scalar-data-types/null-values)
 
 ## bool operators
 

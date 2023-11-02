@@ -11,9 +11,7 @@ Receives one or more arrays. Sorts the first array in ascending order. Orders th
 
 ## Syntax
 
-`array_sort_asc(`*array1*[, ..., *argumentN*]`)`
-
-`array_sort_asc(`*array1*[, ..., *argumentN*]`,`*nulls_last*`)`
+`array_sort_asc(`*array1*[, ..., *arrayN*][`,` *nulls_last*]`)`
 
 If *nulls_last* isn't provided, a default value of `true` is used.
 

@@ -3,13 +3,13 @@ title: Query management commands
 description: Learn how to use management commands to manage your queries.
 ms.reviewer: orspodek
 ms.topic: reference
-ms.date: 05/24/2023
+ms.date: 10/24/2023
 ---
 # Query management commands
 
 ## .show queries
 
-The `.show` `queries` command lists queries that have reached a final state, and that the user invoking the command has access to see. Optionally, the command can return queries that are still running, queries by specific users, or queries grouped by user. To see both queries and commands completion, use [.show queries-and-commands](commands-and-queries.md).
+The `.show` `queries` command lists queries on the cluster that have reached a final state, and that the user invoking the command has access to see. Optionally, the command can return queries that are still running, queries by specific users, or queries grouped by user. To see both queries and commands completion, use [.show queries-and-commands](commands-and-queries.md).
 
 > [!NOTE]
 >
@@ -32,7 +32,7 @@ The `.show` `queries` command lists queries that have reached a final state, and
 
 ### Returns
 
-- Returns a table containing previously run queries and their completion statistics. You can use KQL queries to explore the results.
+- Returns a table containing previously run queries across all databases in the cluster and their completion statistics. You can use KQL queries to explore the results.
 - Returns a list of currently executing queries by the current user, or by another user, or by all users.
 
 > [!NOTE]
