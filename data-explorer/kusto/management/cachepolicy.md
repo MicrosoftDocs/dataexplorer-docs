@@ -1,9 +1,9 @@
 ---
 title:  Caching policy (hot and cold cache)
-description: This article describes caching policy (hot and cold cache) in Azure Data Explorer.
+description: This article describes caching policy (hot and cold cache).
 ms.reviewer: orspodek
 ms.topic: reference
-ms.date: 10/23/2023
+ms.date: 11/02/2023
 zone_pivot_group_filename: data-explorer/zone-pivot-groups.json
 zone_pivot_groups: kql-flavors-adx-fabric
 ---
@@ -21,7 +21,7 @@ Real-Time Analytics uses a multi-tiered data cache system to ensure fast query p
 
 ::: zone-end
 
-The caching policy allows you to prioritize which data should be cached. You can differentiate between *hot data cache* and *cold data cache*. Hot data is kept in local SSD storage for faster query performance, while cold data is stored in reliable storage, which is cheaper but slower to access.
+The caching policy allows you to choose which data should be cached. You can differentiate between *hot data cache* and *cold data cache* by setting a caching policy on hot data. Hot data is kept in local SSD storage for faster query performance, while cold data is stored in reliable storage, which is cheaper but slower to access.
 
 The cache uses 95% of the local SSD disk for hot data. If there isn't enough space, the most recent data is preferentially kept in the cache. The remaining 5% is used for data that isn't categorized as hot. This design ensures that queries loading lots of cold data won't evict hot data from the cache.
 
@@ -55,7 +55,7 @@ By default, the effective policy is `null`, which means that all the data is con
 
 ## Scoping queries to hot cache
 
-Kusto Query Language supports queries that are scoped down to hot cache data only.
+When running queries, you can limit the scop to only query data in hot cache.
 
 > [!NOTE]
 > Data scoping applies only to entities that support caching policies, such as tables and materialized views.
