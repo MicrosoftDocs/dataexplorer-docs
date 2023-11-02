@@ -27,7 +27,9 @@ Removes all leading and trailing matches of the specified regular expression.
 
 *source* after trimming matches of *regex* found in the beginning and/or the end of *source*.
 
-## Example
+## Examples
+
+### Trim specific substring
 
 The following statement trims *substring* from the start and the end of the *string_to_trim*.
 
@@ -45,6 +47,8 @@ print string_to_trim = string_to_trim, trimmed_string = trim(substring,string_to
 |string_to_trim|trimmed_string|
 |---|---|
 |`--<https://bing.com-->`|`<https://bing.com>`|
+
+### Trim non-alphanumeric characters
 
 The next statement trims all non-word characters from start and end of the string.
 
@@ -66,3 +70,24 @@ range x from 1 to 5 step 1
 |-  Te st3// $|Te st3|
 |-  Te st4// $|Te st4|
 |-  Te st5// $|Te st5|
+
+### Trim whitespaces
+
+The next statement trims all spaces from start and end of the string.
+
+> [!div class="nextstepaction"]
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAytKzEtPVahQSCvKz1UwVCjJVzBVKC5JLVAw5OWqUSgoys9KTS4BihQp2ILI5MQSDSVdBQUlHaWQVKCAkk6FjoOSvr6CipImSENqRUlqXopCSVFmbm5qSjxEH4in4aAUHRdTHqutpAMU1AQAsu/uCXcAAAA=" target="_blank">Run the query</a>
+
+```kusto
+let string_to_trim = @"    string with starting and ending whitespace    ";
+let substring = @"\s+";
+print
+    string_to_trim = string_to_trim,
+    trimmed_string = trim(substring, string_to_trim)
+```
+
+**Output**
+
+|string_to_trim|trimmed_string|
+|---|---|
+|    string with starting and ending whitespace    	|string with starting and ending whitespace|
