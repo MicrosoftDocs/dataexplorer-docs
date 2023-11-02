@@ -3,13 +3,13 @@ title: IngestionBatching policy
 description: Learn how to use the IngestionBatching policy to optimize batching for ingestion.
 ms.reviewer: orspodek
 ms.topic: reference
-ms.date: 05/24/2023
+ms.date: 10/04/2023
 ---
-# IngestionBatching policy
+# Ingestion batching policy
 
 ## Overview
 
-During the ingestion process, the service optimizes for throughput by batching small ingress data chunks together before ingestion. Batching reduces the resources consumed by the ingestion process and doesn't require post-ingestion resources to optimize the small data shards produced by non-batched ingestion.
+During the queued ingestion process, the service optimizes for throughput by batching small ingress data chunks together before ingestion. Batching reduces the resources consumed by the queued ingestion process and doesn't require post-ingestion resources to optimize the small data shards produced by non-batched ingestion.
 
 The downside to doing batching before ingestion is the forced delay. Therefore, the end-to-end time from requesting the data ingestion until the data ready for query is larger.
 
