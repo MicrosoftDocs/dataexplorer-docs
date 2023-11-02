@@ -7,9 +7,9 @@ ms.date: 08/27/2023
 ---
 # .alter-merge table policy ingestionbatching command
 
-Sets the table's [ingestion batching policy](batchingpolicy.md) to determine when data aggregation stops and a batch is sealed and ingested.
+Sets the table's [ingestion batching policy](batchingpolicy.md) to determine when data aggregation stops and a batch is sealed and ingested. The ingestion batching policy applies to [queued ingestion](../../ingest-data-overview.md#queued-vs-streaming-ingestion).
 
-If the policy isn't set for a table, the database-level policy applies. If it isn't set as well, the [default values](batchingpolicy.md#defaults-and-limits) apply.
+If the policy isn't set for a table, the database-level policy applies. If the policy isn't set at the database-level, the [default values](batchingpolicy.md#defaults-and-limits) apply.
 
 ## Permissions
 
