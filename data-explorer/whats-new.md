@@ -41,7 +41,7 @@ Welcome to what's new in Azure Data Explorer. This article details new and signi
 
 | Article title | Description |
 |--|--|
-| [Create an app to get data using batching ingestion](kusto/api/get-started/app-batch-ingestion.md)| New article. Describes how to create an app to get data using batching ingestion of the Kusto client libraries.|
+| [Create an app to get data using queued ingestion](kusto/api/get-started/app-queued-ingestion.md)| New article. Describes how to create an app to get data using queued ingestion of the Kusto client libraries.|
 
 **General**
 

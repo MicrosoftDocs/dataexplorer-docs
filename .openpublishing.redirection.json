@@ -836,8 +836,18 @@
       "redirect_document_id": true
     },
     {
+      "source_path": "data-explorer/kusto/api/get-started/app-batch-ingestion.md",
+      "redirect_url": "/azure/data-explorer/kusto/api/get-started/app-queued-ingestion",
+      "redirect_document_id": true
+    },
+    {
       "source_path": "data-explorer/provision-azure-ad-app.md",
       "redirect_url": "/azure/data-explorer/provision-entra-id-app",
+      "redirect_document_id": true
+    },
+    {
+      "source_path": "data-explorer/monitor-batching-ingestion.md",
+      "redirect_url": "/azure/data-explorer/monitor-queued-ingestion",
       "redirect_document_id": true
     }
   ]

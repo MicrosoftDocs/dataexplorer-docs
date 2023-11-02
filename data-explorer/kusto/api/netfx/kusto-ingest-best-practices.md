@@ -56,4 +56,4 @@ For cost-effective ingestion:
 
 * [Kusto Ingest overview](about-kusto-ingest.md)
 * [Data ingestion overview](../../../ingest-data-overview.md)
-* [Create an app to get data using batching ingestion](../get-started/app-batch-ingestion.md)
+* [Create an app to get data using queued ingestion](../get-started/app-batch-ingestion.md)
