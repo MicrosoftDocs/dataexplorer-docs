@@ -3,7 +3,7 @@ title: "Azure Data Explorer POC playbook: Big data analytics"
 description: "A high-level methodology for preparing and running an effective Azure Data Explorer proof of concept (POC) project."
 ms.reviewer: devsha
 ms.topic: conceptual
-ms.date: 09/22/2022
+ms.date: 11/02/2023
 ---
 
 # Azure Data Explorer POC playbook: Big data analytics

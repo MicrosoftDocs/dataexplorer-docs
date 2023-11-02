@@ -3,7 +3,7 @@ title: Azure Data Explorer tools and integrations overview - Azure Data Explorer
 description: This article describes tools and integrations in Azure Data Explorer.
 ms.reviewer: olgolden
 ms.topic: conceptual
-ms.date: 07/02/2023
+ms.date: 11/02/2023
 ---
 # Azure Data Explorer tools and integrations overview
 
