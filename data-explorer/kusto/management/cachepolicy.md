@@ -55,7 +55,7 @@ By default, the effective policy is `null`, which means that all the data is con
 
 ## Scoping queries to hot cache
 
-When running queries, you can limit the scop to only query data in hot cache.
+When running queries, you can limit the scope to only query data in hot cache.
 
 > [!NOTE]
 > Data scoping applies only to entities that support caching policies, such as tables and materialized views.
@@ -74,8 +74,7 @@ The `default` value indicates use of the cluster default settings, which determi
 
 If there's a discrepancy between the different methods, then `set` takes precedence over the client request property. Specifying a value for a table reference takes precedence over both.
 
-For example, in the following query all table references will use hot cache data only, except for the second reference to "T", that is scoped
-to all the data:
+For example, in the following query, all table references use hot cache data only, except for the second reference to "T", that is scoped to all the data:
 
 ```kusto
 set query_datascope="hotcache";
