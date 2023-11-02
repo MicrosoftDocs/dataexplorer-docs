@@ -26,7 +26,7 @@ For an example on how to assign a pretty name, see [.alter database prettyname c
 
 An identifier is the name you assign to [entities](index.md), [query parameters](../queryparametersstatement.md), or variable set through a [let statement](../letstatement.md). Valid identifiers must follow these rules:
 
-* Identifiers are case-sensitive.
+* Identifiers are case-sensitive. Database names are case-insensitive, an therefore an exception to this rule.
 * Identifiers must be between 1 and 1024 characters long.
 * Identifiers may contain letters, digits, and underscores (`_`).
 * Identifiers may contain special characters: spaces, dots (`.`), and dashes (`-`). For information on how to reference identifiers with special characters, see [Reference identifiers in queries](#reference-identifiers-in-queries).
