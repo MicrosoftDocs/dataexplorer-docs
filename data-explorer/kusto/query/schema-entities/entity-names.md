@@ -3,7 +3,7 @@ title:  Entity names
 description: This article describes Entity names in Azure Data Explorer.
 ms.reviewer: orspodek
 ms.topic: reference
-ms.date: 08/28/2023
+ms.date: 11/03/2023
 ---
 # Entity names
 
