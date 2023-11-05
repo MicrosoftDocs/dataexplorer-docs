@@ -754,10 +754,10 @@ items:
     items:
       - name: To cloud storage
         href: data-export/export-data-to-storage.md
-      - name: To a SQL table
-        href: data-export/export-data-to-sql.md
       - name: To an external table
         href: data-export/export-data-to-an-external-table.md
+      - name: To a SQL table
+        href: data-export/export-data-to-sql.md
       - name: Continuous data export
         items:
           - name: Continuous data export overview
