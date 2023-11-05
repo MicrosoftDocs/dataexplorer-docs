@@ -34,7 +34,7 @@ To pull query results into a table in the same or different cluster, use an [ing
 
 ## Service-side export (push)
 
-For scalable data export, use `.export` management commands. These commands can be used to push query results to [Azure Blob Storage](export-data-to-storage.md), an [external table](export-data-to-an-external-table.md), or a [SQL table](export-data-to-sql.md).
+For scalable data export, use `.export` management commands. These commands can be used to push query results to [cloud storage](export-data-to-storage.md), an [external table](export-data-to-an-external-table.md), or a [SQL table](export-data-to-sql.md).
 
 This approach offers improved scalability as query results bypass the bottleneck of streaming through a single network connection between the query producer and the result consumer.
 

@@ -1,13 +1,13 @@
 ---
-title:  Export data to storage
-description: Learn how to export data to external storage.
+title:  Export data to cloud storage
+description: Learn how to export data to cloud storage.
 ms.reviewer: orspodek
 ms.topic: reference
 ms.date: 11/05/2023
 ---
-# Export data to external storage
+# Export data to cloud storage
 
-Executes a query and writes the first result set to an external storage, specified by a [storage connection string](../../api/connection-strings/storage-connection-strings.md).
+Executes a query and writes the first result set to an external cloud storage, specified by a [storage connection string](../../api/connection-strings/storage-connection-strings.md).
 
 ## Permissions
 
