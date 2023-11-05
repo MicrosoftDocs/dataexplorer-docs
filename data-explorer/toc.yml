@@ -228,6 +228,9 @@ items:
                 href: data-factory-template.md
               - name: Run management commands using Azure Data Factory
                 href: data-factory-command-activity.md
+          - name: Apache Flink
+            href: ingest-data-flink.md
+            displayName: ingest data, ingestion, connector
           - name: Apache Kafka
             displayName: ingest data, ingestion, connector
             href: ingest-data-kafka.md
