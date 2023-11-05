@@ -1,14 +1,13 @@
 ---
 title:  Export data to storage
-description: This article describes Export data to storage in Azure Data Explorer.
+description: Learn how to export data to external storage.
 ms.reviewer: orspodek
 ms.topic: reference
-ms.date: 02/21/2023
+ms.date: 11/05/2023
 ---
-# Export data to storage
+# Export data to external storage
 
-Executes a query and writes the first result set to an
-external storage, specified by a [storage connection string](../../api/connection-strings/storage-connection-strings.md).
+Executes a query and writes the first result set to an external storage, specified by a [storage connection string](../../api/connection-strings/storage-connection-strings.md).
 
 ## Permissions
 
