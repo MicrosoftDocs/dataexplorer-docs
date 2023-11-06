@@ -705,7 +705,7 @@ Result:
 ## Next steps
 
 <!-- > [!div class="nextstepaction"]
-> [Create an app to ingest data using the batching manager](app-batch-ingestion.md) -->
+> [Create an app to ingest data using the batching manager](app-queued-ingestion.md) -->
 
 > [!div class="nextstepaction"]
-> [Create an app to get data using batching ingestion](app-batch-ingestion.md)
+> [Create an app to get data using queued ingestion](app-queued-ingestion.md)
