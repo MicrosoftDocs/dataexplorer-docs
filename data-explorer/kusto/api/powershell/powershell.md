@@ -29,9 +29,13 @@ To get the Kusto .NET client libraries for scripting with PowerShell:
 
 Once the .NET assemblies are loaded, use a [Kusto connection string](../connection-strings/kusto.md) to establish a connection and run queries and commands. For guidance, see [Examples](#examples).
 
-## Examples
+## Initialization
 
-### Initialization
+To begin using the libraries, you need to load them and authenticate your access to the cluster and database. Authentication methods include user authentication, application authentication, device code authentication, and Azure CLI authentication.
+
+To see examples of each authentication type, select the relevant tab.
+
+### [User](#tab/user)
 
 ```powershell
 #  Part 1 of 3
@@ -53,18 +57,40 @@ $packagesRoot = "C:\Microsoft.Azure.Kusto.Tools\tools\net472"
 $clusterUrl = "https://help.kusto.windows.net;Fed=True"
 $databaseName = "Samples"
 
+# MS Entra User Authentication
+$kcsb = New-Object Kusto.Data.KustoConnectionStringBuilder($clusterUrl, $databaseName)
+```
+
+### [Application](#tab/app)
+
+```powershell
+#  Part 1 of 3
+#  ------------
+#  Packages location - This is an example of the location from where you extract the Microsoft.Azure.Kusto.Tools package
+#  Please make sure you load the types from a local directory and not from a remote share
+#  Please make sure you load the version compatible with your PowerShell version (see explanations above)
+#  Use `dir "$packagesRoot\*" | Unblock-File` to make sure all these files can be loaded and executed
+$packagesRoot = "C:\Microsoft.Azure.Kusto.Tools\tools\net472"
+
+#  Part 2 of 3
+#  ------------
+#  Loading the Kusto.Client library and its dependencies
+[System.Reflection.Assembly]::LoadFrom("$packagesRoot\Kusto.Data.dll")
+
+#  Part 3 of 3
+#  ------------
+#  Defining the connection to your cluster / database
+$clusterUrl = "https://help.kusto.windows.net"
+$databaseName = "Samples"
+
 #   Option A: using Azure AD User Authentication
-$kcsb = New-Object Kusto.Data.KustoConnectionStringBuilder ($clusterUrl, $databaseName)
+$kcsb = New-Object Kusto.Data.KustoConnectionStringBuilder($clusterUrl, $databaseName)
 
 #   Option B: using Azure AD application Authentication
-#     $applicationId = "application ID goes here"
-#     $applicationKey = "application key goes here"
-#     $authority = "authority goes here"
-#     $kcsb = $kcsb.WithAadApplicationKeyAuthentication($applicationId, $applicationKey, $authority)
-#
-#   NOTE: if you're running with Powershell 7 (or above) and the .NET Core library,
-#         AAD user authentication with prompt will not work, and you should choose
-#         a different authentication method.
+$applicationId = "application ID goes here"
+$applicationKey = "application key goes here"
+$authority = "authority goes here"
+$kcsb = $kcsb.WithAadApplicationKeyAuthentication($applicationId, $applicationKey, $authority)
 ```
 
 **Example output**
@@ -72,6 +98,13 @@ $kcsb = New-Object Kusto.Data.KustoConnectionStringBuilder ($clusterUrl, $databa
 | GAC | Version | Location |
 |--|--|--|
 | False | v4.0.30319 | C:\Downloads\tools\net472\Kusto.Data.dll |
+
+> [!NOTE]
+> If you're running with Powershell 7 (or above) and the .NET Core library, user authentication with prompt will not work, and you should choose a different authentication method.
+
+---
+
+## Examples
 
 ### Run an admin command
 
