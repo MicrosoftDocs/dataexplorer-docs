@@ -61,7 +61,7 @@ In your preferred IDE or text editor, create a project or file named *hello kust
 
     ---
 
-2. Define an empty function named `main` and call it.
+1. Define an empty function named `main` and call it.
 
     ### [C\#](#tab/csharp)
 
@@ -109,7 +109,7 @@ In your preferred IDE or text editor, create a project or file named *hello kust
 
     ---
 
-3. Create a connection string builder object that defines the cluster URI and sets the authentication mode to interactive. For more information about the cluster URI, see [Kusto connection strings](../connection-strings/kusto.md).
+1. Create a connection string builder object that defines the cluster URI and sets the authentication mode to interactive. For more information about the cluster URI, see [Kusto connection strings](../connection-strings/kusto.md).
 
     ### [C\#](#tab/csharp)
 
@@ -158,7 +158,7 @@ In your preferred IDE or text editor, create a project or file named *hello kust
     > - The user is already authenticated on the device
     > - There is an existing Kusto.Explorer or Azure Date Explorer web UI authentication on the device
 
-4. Create a client object that uses the connection string builder object to connect to the cluster.
+1. Create a client object that uses the connection string builder object to connect to the cluster.
 
     > [!NOTE]
     > We highly recommended that you cache and reuse the Kusto client instance. Frequently recreating Kusto clients may lead to performance degradation in your application and increased load on your cluster.
@@ -193,7 +193,7 @@ In your preferred IDE or text editor, create a project or file named *hello kust
 
     ---
 
-5. Define the database and query to run. The query prints *Hello Kusto!* in a column named **Welcome**.
+1. Define the database and query to run. The query prints *Hello Kusto!* in a column named **Welcome**.
 
     ### [C\#](#tab/csharp)
 
@@ -227,7 +227,7 @@ In your preferred IDE or text editor, create a project or file named *hello kust
 
     ---
 
-6. Run the query and print the result.
+1. Run the query and print the result.
 
     ### [C\#](#tab/csharp)
 
