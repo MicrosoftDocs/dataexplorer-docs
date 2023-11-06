@@ -34,7 +34,7 @@ During the token acquisition process, the client needs to provide the following 
 |Parameter name|Description|
 |--|--|
 |Resource ID|The resource ID for which to issue the Microsoft Entra access token. The resource ID is the cluster URI without port information and path.<br/><br/>**Example**: The resource ID for the `help` cluster is `https://help.kusto.windows.net`.|
-|Microsoft Entra tenant ID|Microsoft Entra ID is a multi-tenant service, and every organization can create an object called a directory that holds security-related objects such as user accounts and applications. Microsoft Entra ID often refers to the directory as a tenant. Each tenant has a tenant ID in the form of a GUID. In many cases, the domain name of the organization may also be used to identity the Microsoft Entra tenant.<br/><br/>**Example**: An organization "Contoso" might have the tenant ID `12345678-a123-4567-b890-123a456b789c` and the domain name `contoso.com`.|
+|Microsoft Entra tenant ID|Microsoft Entra ID is a multitenant service, and every organization can create an object called a directory that holds security-related objects such as user accounts and applications. Microsoft Entra ID often refers to the directory as a tenant. Each tenant has a tenant ID in the form of a GUID. In many cases, the domain name of the organization might also be used to identity the Microsoft Entra tenant.<br/><br/>**Example**: An organization "Contoso" might have the tenant ID `12345678-a123-4567-b890-123a456b789c` and the domain name `contoso.com`.|
 |Microsoft Entra authority URI|The endpoint used for authentication. The Microsoft Entra directory, or tenant, determines the Microsoft Entra authority URI. The URI is `https://login.microsoftonline.com/{tenantId}` where `{tenantId}` is either the tenant ID or domain name.<br/><br/>**Example**: For example, `https://login.microsoftonline.com/12345678-a123-4567-b890-123a456b789c`.|
 
 > [!NOTE]
@@ -100,8 +100,8 @@ In this scenario, an application is sent a Microsoft Entra access token for an a
 To perform on-behalf-of authentication:
 
 1. [Provision a Microsoft Entra application](../../../provision-azure-ad-app.md).
-1. Establish a trust relationship between the application and your cluster. To do so, follow the steps in [Configure delegated permissions](../../../provision-azure-ad-app.md#configure-delegated-permissions-for-the-application-registration).
-1. In your server code, use MSAL to perform the token exchange.
+2. Establish a trust relationship between the application and your cluster. To do so, follow the steps in [Configure delegated permissions](../../../provision-azure-ad-app.md#configure-delegated-permissions-for-the-application).
+3. In your server code, use MSAL to perform the token exchange.
 
     ```csharp
     var kustoUri = "https://<clusterName>.<region>.kusto.windows.net";
@@ -118,7 +118,7 @@ To perform on-behalf-of authentication:
     var accessTokenForAdx = result.AccessToken;
     ```
 
-1. Use the token to run queries. For example:
+4. Use the token to run queries. For example:
 
     ```csharp
     var request = WebRequest.Create(new Uri(kustoUri));
