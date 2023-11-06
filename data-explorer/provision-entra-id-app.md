@@ -93,7 +93,7 @@ Now that your application registration is created, you need to grant the corresp
     The last parameter is a string that shows up as notes when you query the roles associated with a database.
 
     > [!NOTE]
-    > After creating the application registration, there may be a several minute delay until Azure Data Explorer can reference it. If, when executing the command, you receive an error that the application is not found, wait and try again.
+    > After creating the application registration, there might be a several minute delay until Azure Data Explorer can reference it. If, when executing the command, you receive an error that the application is not found, wait and try again.
 
 For more information, see [Role-based access control](kusto/access-control/role-based-access-control.md).
 
@@ -167,7 +167,7 @@ You'll need to follow the instructions to [configure delegated permissions for t
 
 ### Enable user consent error
 
-Your Microsoft Entra tenant administrator may enact a policy that prevents tenant users from giving consent to applications. This situation will result in an error similar to the following, when a user tries to sign in to your application:
+Your Microsoft Entra tenant administrator might enact a policy that prevents tenant users from giving consent to applications. This situation will result in an error similar to the following, when a user tries to sign in to your application:
 
 `AADSTS65001: The user or administrator has not consented to use the application with ID '<App ID>' named 'App Name'`
 
