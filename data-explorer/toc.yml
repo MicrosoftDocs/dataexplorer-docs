@@ -500,8 +500,8 @@ items:
             href: monitor-with-resource-health.md
           - name: Use Azure Data Explorer Clusters Insights
             href: data-explorer-insights.md
-          - name: Monitor batching ingestion with metrics
-            href: monitor-batching-ingestion.md
+          - name: Monitor queued ingestion with metrics
+            href: monitor-queued-ingestion.md
       - name: Business continuity
         items:
           - name: Business continuity overview
@@ -555,8 +555,8 @@ items:
             href: kusto/api/get-started/app-basic-query.md
           - name: Run management commands
             href: kusto/api/get-started/app-management-commands.md
-          - name: Batch ingestion
-            href: kusto/api/get-started/app-batch-ingestion.md
+          - name: Queued ingestion
+            href: kusto/api/get-started/app-queued-ingestion.md
       - name: Connection strings
         items:
           - name: Connection strings overview

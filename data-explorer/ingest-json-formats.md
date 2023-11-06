@@ -23,7 +23,7 @@ This article shows you how to ingest JSON formatted data into an Azure Data Expl
 Azure Data Explorer supports two JSON file formats:
 
 * `json`: Line separated JSON. Each line in the input data has exactly one JSON record. This format supports parsing of comments and single-quoted properties. For more information, see [JSON Lines](https://jsonlines.org/).
-* `multijson`: Multi-lined JSON. The parser ignores the line separators and reads a record from the previous position to the end of a valid JSON. This format supports parsing of comments, single-quoted properties, and newlines.
+* `multijson`: Multi-lined JSON. The parser ignores the line separators and reads a record from the previous position to the end of a valid JSON.
 
 > [!NOTE]
 > When ingesting using the [ingestion wizard](ingest-data-wizard.md), the default format is `multijson`. The format can handle multiline JSON records and arrays of JSON records. When a parsing error is encountered, the entire file is discarded.

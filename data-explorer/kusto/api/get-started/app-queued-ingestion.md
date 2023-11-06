@@ -1,11 +1,11 @@
 ---
-title:  Create an app to get data using batching ingestion
-description: Learn how to create an app to get data using batching ingestion of the Kusto client libraries.
+title:  Create an app to get data using queued ingestion
+description: Learn how to create an app to get data using queued ingestion of the Kusto client libraries.
 ms.reviewer: yogilad
 ms.topic: how-to
 ms.date: 07/31/2023
 ---
-# Create an app to get data using batching ingestion
+# Create an app to get data using queued ingestion
 
 Kusto is capable of handling mass data intake by optimizing and batching ingested data via its batching manager. The batching manager aggregates ingested data before it reaches its target table, allowing for more efficient processing and improved performance. Batching is typically done in bulks of 1 GB of raw data, 1000 individual files, or by a default time out of 5 minutes. Batching policies can be updated at the database and table levels, commonly to lower the batching time and reduce latency. For more information about ingestion batching, see [IngestionBatching policy](../../management/batchingpolicy.md) and [Change table level ingestion batching policy programmatically](app-management-commands.md#change-the-table-level-ingestion-batching-policy).
 
