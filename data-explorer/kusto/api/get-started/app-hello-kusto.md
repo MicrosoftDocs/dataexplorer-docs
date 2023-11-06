@@ -5,7 +5,7 @@ ms.reviewer: yogilad
 ms.topic: how-to
 ms.date: 04/24/2023
 ---
-# Hello Kusto: Create your first Kusto client app
+# Hello Kusto: Create your first app
 
 In this article, you learn how to:
 
