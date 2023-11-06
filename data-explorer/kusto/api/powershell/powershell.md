@@ -83,10 +83,9 @@ $packagesRoot = "C:\Microsoft.Azure.Kusto.Tools\tools\net472"
 $clusterUrl = "https://help.kusto.windows.net"
 $databaseName = "Samples"
 
-#   Option A: using Azure AD User Authentication
 $kcsb = New-Object Kusto.Data.KustoConnectionStringBuilder($clusterUrl, $databaseName)
 
-#   Option B: using Azure AD application Authentication
+# MS Entra Application Authentication
 $applicationId = "application ID goes here"
 $applicationKey = "application key goes here"
 $authority = "authority goes here"
@@ -99,10 +98,46 @@ $kcsb = $kcsb.WithAadApplicationKeyAuthentication($applicationId, $applicationKe
 |--|--|--|
 | False | v4.0.30319 | C:\Downloads\tools\net472\Kusto.Data.dll |
 
-> [!NOTE]
-> If you're running with Powershell 7 (or above) and the .NET Core library, user authentication with prompt will not work, and you should choose a different authentication method.
+### [Azure CLI](#tab/azure-cli)
+
+Before this method of authentication can work, you need to log in to Azure CLI with the `az` `login` command.
+
+```powershell
+#  Part 1 of 3
+#  ------------
+#  Packages location - This is an example of the location from where you extract the Microsoft.Azure.Kusto.Tools package
+#  Please make sure you load the types from a local directory and not from a remote share
+#  Please make sure you load the version compatible with your PowerShell version (see explanations above)
+#  Use `dir "$packagesRoot\*" | Unblock-File` to make sure all these files can be loaded and executed
+$packagesRoot = "C:\Microsoft.Azure.Kusto.Tools\tools\net472"
+
+#  Part 2 of 3
+#  ------------
+#  Loading the Kusto.Client library and its dependencies
+[System.Reflection.Assembly]::LoadFrom("$packagesRoot\Kusto.Data.dll")
+
+#  Part 3 of 3
+#  ------------
+#  Defining the connection to your cluster / database
+$clusterUrl = "https://help.kusto.windows.net"
+$databaseName = "Samples"
+
+$kcsb = New-Object Kusto.Data.KustoConnectionStringBuilder($clusterUrl, $databaseName)
+
+# Azure CLI Authentication
+$kcsb = $kcsb.WithAadApplicationKeyAuthentication()
+```
 
 ---
+
+**Example output**
+
+| GAC | Version | Location |
+|--|--|--|
+| False | v4.0.30319 | C:\Downloads\tools\net472\Kusto.Data.dll |
+
+> [!NOTE]
+> If you're running with Powershell 7 (or above) and the .NET Core library, user authentication with prompt will not work. Use application authentication or Azure CLI authentication.
 
 ## Examples
 
