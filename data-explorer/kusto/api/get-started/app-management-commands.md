@@ -147,7 +147,7 @@ In your preferred IDE or text editor, create a project or file named *management
     ### [Typescript](#tab/typescript)
 
     ```typescript
-    function printResultAsValueList(command: string, response: KustoResponseDataSet) {
+    function printResultsAsValueList(command: string, response: KustoResponseDataSet) {
       // create a list of columns
       let cols = response.primaryResults[0].columns;
 
