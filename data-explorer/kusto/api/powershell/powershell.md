@@ -93,12 +93,12 @@ $queryProvider = [Kusto.Data.Net.Client.KustoClientFactory]::CreateCslQueryProvi
 $query = "StormEvents | take 5"
 Write-Host "Executing query: '$query' with connection string: '$($kcsb.ToString())'"
 
-#   Optional: set a client request ID and set a client request property (e.g. Server Timeout)
+# Optional: set a client request ID and set a client request property (e.g. Server Timeout)
 $crp = New-Object Kusto.Data.Common.ClientRequestProperties
 $crp.ClientRequestId = "MyPowershellScript.ExecuteQuery." + [Guid]::NewGuid().ToString()
 $crp.SetOption([Kusto.Data.Common.ClientRequestProperties]::OptionServerTimeout, [TimeSpan]::FromSeconds(30))
 
-#   Execute the query
+# Run the query
 $reader = $queryProvider.ExecuteQuery($query, $crp)
 
 # Do something with the result datatable, for example: print it formatted as a table, sorted by the
@@ -126,7 +126,11 @@ Create a CSL admin provider and run [management commands](../../management/index
 $adminProvider = [Kusto.Data.Net.Client.KustoClientFactory]::CreateCslAdminProvider($kcsb)
 $command = [Kusto.Data.Common.CslCommandGenerator]::GenerateDiagnosticsShowCommand()
 Write-Host "Executing command: '$command' with connection string: '$($kcsb.ToString())'"
+
+# Run the command
 $reader = $adminProvider.ExecuteControlCommand($command)
+
+# Read the results
 $reader.Read() # this reads a single row/record. If you have multiple ones returned, you can read in a loop
 $isHealthy = $Reader.GetBoolean(0)
 Write-Host "IsHealthy = $isHealthy"
