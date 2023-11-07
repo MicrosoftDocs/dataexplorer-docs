@@ -3,7 +3,7 @@ title:  'Create an app to run basic queries'
 description: Learn how to create an app to run basic queries using Kusto client libraries.
 ms.reviewer: yogilad
 ms.topic: how-to
-ms.date: 04/24/2023
+ms.date: 11/07/2023
 ---
 # Create an app to run basic queries
 

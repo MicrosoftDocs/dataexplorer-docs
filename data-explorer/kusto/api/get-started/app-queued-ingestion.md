@@ -3,7 +3,7 @@ title:  Create an app to get data using queued ingestion
 description: Learn how to create an app to get data using queued ingestion of the Kusto client libraries.
 ms.reviewer: yogilad
 ms.topic: how-to
-ms.date: 07/31/2023
+ms.date: 11/07/2023
 ---
 # Create an app to get data using queued ingestion
 

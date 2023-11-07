@@ -3,7 +3,7 @@ title: Set up your development environment to use Kusto client libraries
 description: Learn how to set up your development environment to use Kusto client libraries.
 ms.reviewer: yogilad
 ms.topic: how-to
-ms.date: 04/24/2023
+ms.date: 11/07/2023
 ---
 # Set up your development environment to use Kusto client libraries
 
@@ -16,19 +16,7 @@ In this article, you learn how to install client library packages for your prefe
 Select the prerequisites for the programming language used to create your app.
 
 > [!NOTE]
-> Kusto client libraries are compatible with both JavaScript and TypeScript. To convert TypeScript examples to JavaScript, remove type annotations.
-> 
-> TypeScript example:
->
-> ```typescript
-> printResultsAsValueList(command: string, response: KustoResponseDataSet) { ... }
-> ```
->
-> JavaScript equivalent:
->
-> ```javascript
-> printResultsAsValueList(command, response) { ... }
-> ```
+> Kusto client libraries are compatible with JavaScript and TypeScript. To convert TypeScript examples to JavaScript, remove type annotations used for variables, parameters, and return values.
 
 ### [C\#](#tab/csharp)
 

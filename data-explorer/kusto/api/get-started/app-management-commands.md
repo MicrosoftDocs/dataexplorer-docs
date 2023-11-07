@@ -3,7 +3,7 @@ title:  'Create an app to run management commands'
 description: Learn how to create an app to run management commands using Kusto client libraries.
 ms.reviewer: yogilad
 ms.topic: how-to
-ms.date: 06/27/2023
+ms.date: 11/07/2023
 ---
 # Create an app to run management commands
 
