@@ -34,10 +34,10 @@ Once loaded, you can use the libraries to [establish a connection to a cluster a
 You can authenticate your access to a cluster and database with one of the following methods:
 
 * **User authentication:** Prompt the user to verify their identity in a web browser.
-* **Application authentication:** [Create an MS Entra app](../../../provision-entra-id-app.md), grant it access to your database, and use the credentials for authentication.
-* **Azure CLI authentication:** Sign-in on your machine to the Azure CLI using `az` `login`. Kusto retrieves the token from Azure CLI.
+* **Application authentication:** [Create an MS Entra app](../../../provision-entra-id-app.md) and use the credentials for authentication.
+* **Azure CLI authentication:** Sign-in to the Azure CLI on your machine, and Kusto will retrieve the token from Azure CLI.
 
-To see an example, select the relevant tab.
+Select the relevant tab.
 
 ### [User](#tab/user)
 
