@@ -136,9 +136,6 @@ $kcsb = $kcsb.WithAadApplicationKeyAuthentication()
 |--|--|--|
 | False | v4.0.30319 | C:\Downloads\tools\net472\Kusto.Data.dll |
 
-> [!NOTE]
-> If you're running with Powershell 7 (or above) and the .NET Core library, user authentication with prompt will not work. Use application authentication or Azure CLI authentication.
-
 ## Examples
 
 ### Run an admin command
