@@ -32,9 +32,9 @@ To use the Kusto .NET client libraries in PowerShell:
     |--|--|--|
     | False | v4.0.30319 | C:\Downloads\tools\net472\Kusto.Data.dll |
 
-Once loaded, you can use the libraries to [establish a connection to a cluster and database](#establish-a-connection-to-a-cluster-and-database).
+Once loaded, you can use the libraries to [establish a connection to a cluster and database](#establish-connection-to-a-cluster-and-database).
 
-## Establish a connection to a cluster and database
+## Establish connection to a cluster and database
 
 You can authenticate your access to a cluster and database with one of the following methods:
 
@@ -86,7 +86,7 @@ $kcsb = $kcsb.WithAadAzCliAuthentication()
 
 ## Run a query
 
-Create a query provider and run [Kusto Query Language](../../query/index.md) queries. For more guidance on how to run queries with the Kusto client libraries, see [Create an app to run basic queries](../get-started/app-basic-query.md).
+Create a query provider and run [Kusto Query Language](../../query/index.md) queries. The following example defines a simple [take](../../query/takeoperator.md) query to sample the data in the `StormEvents` table. Before running the query, a few [client request properties](../rest/request-properties.md) are set. Then, the query is ran and the result set is formatted and sorted.
 
 ```powershell
 $queryProvider = [Kusto.Data.Net.Client.KustoClientFactory]::CreateCslQueryProvider($kcsb)
@@ -101,8 +101,8 @@ $crp.SetOption([Kusto.Data.Common.ClientRequestProperties]::OptionServerTimeout,
 # Run the query
 $reader = $queryProvider.ExecuteQuery($query, $crp)
 
-# Do something with the result datatable, for example: print it formatted as a table, sorted by the
-# "StartTime" column, in descending order
+# Do something with the result datatable
+# For example: print it formatted as a table, sorted by the "StartTime" column in descending order
 $dataTable = [Kusto.Cloud.Platform.Data.ExtendedDataReader]::ToDataSet($reader).Tables[0]
 $dataView = New-Object System.Data.DataView($dataTable)
 $dataView | Sort StartTime -Descending | Format-Table -AutoSize
@@ -118,9 +118,11 @@ $dataView | Sort StartTime -Descending | Format-Table -AutoSize
 |2007-09-20 21:57:00 |2007-09-20 22:05:00 |    11078 |  60913 |FLORIDA        |Tornado           |             0 |               0 |           0 |             0
 |2007-09-18 20:00:00 |2007-09-19 18:00:00 |    11074 |  60904 |FLORIDA        |Heavy Rain        |             0 |               0 |           0 |             0
 
+For more guidance on how to run queries with the Kusto client libraries, see [Create an app to run basic queries](../get-started/app-basic-query.md).
+
 ## Run a management command
 
-Create a CSL admin provider and run [management commands](../../management/index.md). For more guidance on how to run management commands with the Kusto client libraries, see [Create an app to run management commands](../get-started/app-management-commands.md).
+Create a CSL admin provider and run [management commands](../../management/index.md). The following example runs a management command to check the health of the cluster.
 
 ```powershell
 $adminProvider = [Kusto.Data.Net.Client.KustoClientFactory]::CreateCslAdminProvider($kcsb)
@@ -142,6 +144,8 @@ Write-Host "IsHealthy = $isHealthy"
 IsHealthy = True
 ```
 
+For more guidance on how to run management commands with the Kusto client libraries, see [Create an app to run management commands](../get-started/app-management-commands.md).
+
 ## Example
 
 The following example demonstrates the process of loading the libraries, authenticating, and executing a query on the publicly accessible `help` cluster.
@@ -160,10 +164,10 @@ $packagesRoot = "C:\Microsoft.Azure.Kusto.Tools\tools\net472"
 $clusterUrl = "https://help.kusto.windows.net;Fed=True"
 $databaseName = "Samples"
 
-# MS Entra user authentication
+# MS Entra user authentication with interactive prompt
 $kcsb = New-Object Kusto.Data.KustoConnectionStringBuilder($clusterUrl, $databaseName)
 
-# Run a query
+# Run a simple query
 $queryProvider = [Kusto.Data.Net.Client.KustoClientFactory]::CreateCslQueryProvider($kcsb)
 $query = "StormEvents | take 5"
 $reader = $queryProvider.ExecuteQuery($query, $crp)
