@@ -143,22 +143,16 @@ IsHealthy = True
 The following example demonstrates the process of loading the libraries, authenticating, and executing a query on the publicly accessible `help` cluster.
 
 ```powershell
-#  Part 1 of 3
-#  ------------
-#  Packages location - This is an example of the location from where you extract the Microsoft.Azure.Kusto.Tools package
-#  Please make sure you load the types from a local directory and not from a remote share
-#  Please make sure you load the version compatible with your PowerShell version (see explanations above)
+#  This is an example of the location from where you extract the Microsoft.Azure.Kusto.Tools package
+#  Make sure you load the types from a local directory and not from a remote share
+#  Make sure you load the version compatible with your PowerShell version (see explanations above)
 #  Use `dir "$packagesRoot\*" | Unblock-File` to make sure all these files can be loaded and executed
 $packagesRoot = "C:\Microsoft.Azure.Kusto.Tools\tools\net472"
 
-#  Part 2 of 3
-#  ------------
-#  Loading the Kusto.Client library and its dependencies
+#  Load the Kusto client library and its dependencies
 [System.Reflection.Assembly]::LoadFrom("$packagesRoot\Kusto.Data.dll")
 
-#  Part 3 of 3
-#  ------------
-#  Defining the connection to the help cluster and database
+#  Define the connection to the help cluster and database
 $clusterUrl = "https://help.kusto.windows.net;Fed=True"
 $databaseName = "Samples"
 
