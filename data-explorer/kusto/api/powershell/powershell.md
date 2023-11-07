@@ -16,7 +16,7 @@ PowerShell's built-in integration with arbitrary (non-PowerShell) .NET libraries
 
 ## Get the libraries
 
-To get the Kusto .NET client libraries for scripting with PowerShell:
+To use the Kusto .NET client libraries in PowerShell:
 
 1. Download [`Microsoft.Azure.Kusto.Tools`](https://www.nuget.org/packages/Microsoft.Azure.Kusto.Tools/).
 1. Right-click on the downloaded package. From the menu, select your archiving tool and extract the package contents. If the archiving tool isn't visible from the menu, select **Show more options**. The extraction results in multiple folders, one of which is named *tools*.
@@ -27,12 +27,11 @@ To get the Kusto .NET client libraries for scripting with PowerShell:
     [System.Reflection.Assembly]::LoadFrom("<path>\Kusto.Data.dll")
     ```
 
-1. Use a [Kusto connection string](../connection-strings/kusto.md) to establish a connection. For guidance, see [Authentication](#authentication).
-1. Run queries and commands. For guidance, see [Examples](#examples).
+Once loaded, you can use the libraries to [establish a connection to a cluster and database](#establish-a-connection-to-a-cluster-and-database) and run queries and commands. For guidance, see [Examples](#examples).
 
-## Authentication
+## Establish a connection to a cluster and database
 
-Authenticate your access to the cluster and database with one of the following methods:
+You can authenticate your access to a cluster and database with one of the following methods:
 
 * **User authentication:** Prompt the user to verify their identity in a web browser.
 * **Application authentication:** [Create an MS Entra app](../../../provision-entra-id-app.md), grant it access to your database, and use the credentials for authentication.
@@ -116,7 +115,7 @@ $databaseName = "Samples"
 $kcsb = New-Object Kusto.Data.KustoConnectionStringBuilder($clusterUrl, $databaseName)
 ```
 
-### Run an admin command
+### Run a management command
 
 ```powershell
 $adminProvider = [Kusto.Data.Net.Client.KustoClientFactory]::CreateCslAdminProvider($kcsb)
