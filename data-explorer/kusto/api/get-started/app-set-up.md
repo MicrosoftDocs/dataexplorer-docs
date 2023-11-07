@@ -16,7 +16,7 @@ In this article, you learn how to install client library packages for your prefe
 Select the prerequisites for the programming language used to create your app.
 
 > [!NOTE]
-> Kusto client libraries are compatible with JavaScript and TypeScript. To convert TypeScript examples to JavaScript, remove type annotations used for variables, parameters, and return values.
+> Kusto client libraries are compatible with JavaScript and TypeScript. To convert TypeScript examples to JavaScript, simply remove the type annotations used for variables, parameters, and return values.
 
 ### [C\#](#tab/csharp)
 
