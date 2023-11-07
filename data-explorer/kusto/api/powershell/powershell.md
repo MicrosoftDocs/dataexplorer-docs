@@ -32,11 +32,11 @@ To use the Kusto .NET client libraries in PowerShell:
     |--|--|--|
     | False | v4.0.30319 | C:\Downloads\tools\net472\Kusto.Data.dll |
 
-Once loaded, you can use the libraries to [establish a connection to a cluster and database](#establish-connection-to-a-cluster-and-database).
+Once loaded, you can use the libraries to [Connect to a cluster and database](#connect-to-a-cluster-and-database).
 
-## Establish connection to a cluster and database
+## Connect to a cluster and database
 
-You can authenticate your access to a cluster and database with one of the following methods:
+Authenticate to a cluster and database with one of the following methods:
 
 * **User authentication:** Prompt the user to verify their identity in a web browser.
 * **Application authentication:** [Create an MS Entra app](../../../provision-entra-id-app.md) and use the credentials for authentication.
@@ -86,7 +86,9 @@ $kcsb = $kcsb.WithAadAzCliAuthentication()
 
 ## Run a query
 
-Create a query provider and run [Kusto Query Language](../../query/index.md) queries. The following example defines a simple [take](../../query/takeoperator.md) query to sample the data in the `StormEvents` table. Before running the query, a few [client request properties](../rest/request-properties.md) are set. Then, the query is ran and the result set is formatted and sorted.
+Create a query provider and run [Kusto Query Language](../../query/index.md) queries.
+
+The following example defines a simple [take](../../query/takeoperator.md) query to sample the data in the `StormEvents` table. Before running the query, a few [client request properties](../rest/request-properties.md) are set. Then, the query is ran and the result set is formatted and sorted.
 
 ```powershell
 $queryProvider = [Kusto.Data.Net.Client.KustoClientFactory]::CreateCslQueryProvider($kcsb)
@@ -122,7 +124,9 @@ For more guidance on how to run queries with the Kusto client libraries, see [Cr
 
 ## Run a management command
 
-Create a CSL admin provider and run [management commands](../../management/index.md). The following example runs a management command to check the health of the cluster.
+Create a CSL admin provider and run [management commands](../../management/index.md).
+
+The following example runs a management command to check the health of the cluster.
 
 ```powershell
 $adminProvider = [Kusto.Data.Net.Client.KustoClientFactory]::CreateCslAdminProvider($kcsb)
