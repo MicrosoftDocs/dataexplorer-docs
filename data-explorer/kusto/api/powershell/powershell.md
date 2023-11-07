@@ -27,11 +27,11 @@ To use the Kusto .NET client libraries in PowerShell:
     [System.Reflection.Assembly]::LoadFrom("<path>\Kusto.Data.dll")
     ```
 
-Once loaded, you can use the libraries to [establish a connection to a cluster and database](#establish-a-connection-to-a-cluster-and-database) and run queries and commands. For guidance, see [Examples](#examples).
+Once loaded, you can use the libraries to [establish a connection to a database](#establish-a-connection-to-a-cluster-and-database) and run queries and commands. For guidance, see [Examples](#examples).
 
-## Establish a connection to a cluster and database
+## Establish a connection to a database
 
-You can authenticate your access to a cluster and database with one of the following methods:
+You can authenticate your access to a database with one of the following methods:
 
 * **User authentication:** Prompt the user to verify their identity in a web browser.
 * **Application authentication:** [Create an MS Entra app](../../../provision-entra-id-app.md) and use the credentials for authentication.
