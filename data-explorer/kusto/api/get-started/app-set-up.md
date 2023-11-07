@@ -16,7 +16,19 @@ In this article, you learn how to install client library packages for your prefe
 Select the prerequisites for the programming language used to create your app.
 
 > [!NOTE]
-> Kusto client libraries support both JavaScript and TypeScript. To convert the TypeScript examples to JavaScript, simply remove the typings.
+> Kusto client libraries are compatible with both JavaScript and TypeScript. To convert TypeScript examples to JavaScript, remove type annotations.
+> 
+> TypeScript example:
+>
+> ```typescript
+> printResultsAsValueList(command: string, response: KustoResponseDataSet) { ... }
+> ```
+>
+> JavaScript equivalent:
+>
+> ```javascript
+> printResultsAsValueList(command, response) { ... }
+> ```
 
 ### [C\#](#tab/csharp)
 
@@ -45,10 +57,10 @@ Verify installation: In a command shell, run `dotnet sdk check` to check that th
   
   - If your app has a login experience, you can use the [@auzre/identity library](https://github.com/Azure/azure-sdk-for-js/tree/main/sdk/identity/identity/test/manual/interactive-browser-credential) to issue an authorization token and use `withTokenProvider` to feed this token to the Kusto client:
 
-  ```typescript
-  const tokenProvider =  () => Promise.resolve("someToken")
-  KustoConnectionStringBuilder.withTokenProvider("localhost", tokenProvider)
-  ```
+    ```typescript
+    const tokenProvider =  () => Promise.resolve("someToken")
+    KustoConnectionStringBuilder.withTokenProvider("localhost", tokenProvider)
+    ```
 
   - If your app doesn't have a login experience, or you prefer to use the Kusto client library to prompt authentication, you need to set up an application registration with the necessary permissions:
   
@@ -59,7 +71,7 @@ Verify installation: In a command shell, run `dotnet sdk check` to check that th
     5. [Grant the application access to your Azure Data Explorer database](../../../provision-azure-ad-app.md#grant-the-application-registration-access-to-an-azure-data-explorer-database).
     6. In the **Overview** tab, copy the **Application (client) ID**.
 
-    The examples throughout the following tutorials show how to use the Kusto client library to prompt authentication.
+    The examples throughout the following tutorials use the Kusto client library to prompt authentication.
 
     > [!NOTE]
     > If you belong to an organization, restrictions based on organization configurations might prevent you from authenticating. Ask for access from an organization admin or try again on a personal account.
