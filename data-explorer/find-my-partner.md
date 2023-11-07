@@ -410,7 +410,7 @@ With the emerging focus on IoT, Telemetry and streaming data, the need for exper
 
 **Contact**
 
-- [https://www.fellowmindcompany.com/contact/](https://www.fellowmindcompany.com/contact/)
+- [https://www.fellowmind.com/en/contact/](https://www.fellowmind.com/en/contact/)
 
 **Additional information**
 
@@ -633,7 +633,7 @@ As a project partner for software development services, we drive the success of 
 
 **Additional information**
 
-- [M&M Software GmbH website](https://www.mm-software.com)
+- [M&M Software GmbH website](https://www.mm-software.com/de)
 - [Microsoft partner site for M&M Software GmbH](https://appsource.microsoft.com/marketplace/partner-dir/6e7c735d-01be-4294-8312-c84847d048d6/overview)
 
 ## MAQ Software
