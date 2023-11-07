@@ -35,7 +35,7 @@ To get the Kusto .NET client libraries for scripting with PowerShell:
 Authenticate your access to the cluster and database with one of the following methods:
 
 * **User authentication:** Prompt the user to verify their identity in a web browser.
-* **Application authentication:** [Create an MS Entra app](../../../provision-entra-id-app.md), [grant it access to your database](../../../provision-entra-id-app.md#grant-the-application-registration-access-to-an-azure-data-explorer-database), and use the credentials for authentication.
+* **Application authentication:** [Create an MS Entra app](../../../provision-entra-id-app.md), grant it access to your database, and use the credentials for authentication.
 * **Azure CLI authentication:** Sign-in on your machine to the Azure CLI using `az` `login`. Kusto retrieves the token from Azure CLI.
 
 To see an example, select the relevant tab.
@@ -53,7 +53,7 @@ $kcsb = New-Object Kusto.Data.KustoConnectionStringBuilder($clusterUrl, $databas
 
 ### [Application](#tab/app)
 
-[Create an MS Entra app](../../../provision-entra-id-app.md) and [grant it access to your database](../../../provision-entra-id-app.md#grant-the-application-registration-access-to-an-azure-data-explorer-database). Then, provide the app credentials in place of the `$applicationId`, `$applicationKey`, and `$authority`.
+[Create an MS Entra app](../../../provision-entra-id-app.md) and grant it access to your database. Then, provide the app credentials in place of the `$applicationId`, `$applicationKey`, and `$authority`.
 
 ```powershell
 $clusterUrl = "Your cluster URI"
