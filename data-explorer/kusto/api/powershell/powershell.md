@@ -7,7 +7,7 @@ ms.date: 11/07/2023
 ---
 # Use Kusto .NET client libraries from PowerShell
 
-PowerShell scripts can use Kusto .NET client libraries through PowerShell's built-in integration with .NET libraries. In this article, learn how to load and use the client libraries to run queries and management commands.
+PowerShell scripts can use the [Kusto client libraries](../client-libraries.md), as PowerShell inherently integrates with .NET libraries. In this article, you learn how to load and use the client libraries to run queries and management commands.
 
 ## Prerequisites
 
