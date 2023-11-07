@@ -49,8 +49,8 @@ Select the relevant tab.
 Once you run your first query or command, this method will open an interactive browser window for user authorization.
 
 ```powershell
-$clusterUrl = "Your cluster URI"
-$databaseName = "Your database name"
+$clusterUrl = "<Your cluster URI>"
+$databaseName = "<Your database name>"
 
 $kcsb = New-Object Kusto.Data.KustoConnectionStringBuilder($clusterUrl, $databaseName)
 ```
@@ -60,13 +60,13 @@ $kcsb = New-Object Kusto.Data.KustoConnectionStringBuilder($clusterUrl, $databas
 [Create an MS Entra app](../../../provision-entra-id-app.md) and grant it access to your database. Then, provide the app credentials in place of the `$applicationId`, `$applicationKey`, and `$authority`.
 
 ```powershell
-$clusterUrl = "Your cluster URI"
-$databaseName = "Your database name"
+$clusterUrl = "<Your cluster URI>"
+$databaseName = "<Your database name>"
 
 $kcsb = New-Object Kusto.Data.KustoConnectionStringBuilder($clusterUrl, $databaseName)
-$applicationId = "MS Entra application (client) ID"
-$applicationKey = "MS Entra application secret key"
-$authority = "MS Entra application directory (tenant) ID"
+$applicationId = "<MS Entra application (client) ID>"
+$applicationKey = "<MS Entra application secret key>"
+$authority = "<MS Entra application directory (tenant) ID>"
 $kcsb = $kcsb.WithAadApplicationKeyAuthentication($applicationId, $applicationKey, $authority)
 ```
 
@@ -75,8 +75,8 @@ $kcsb = $kcsb.WithAadApplicationKeyAuthentication($applicationId, $applicationKe
 For this method of authentication to work, first sign-in to Azure CLI with the `az` `login` command.
 
 ```powershell
-$clusterUrl = "Your cluster URI"
-$databaseName = "Your database name"
+$clusterUrl = "<Your cluster URI>"
+$databaseName = "<Your database name>"
 
 $kcsb = New-Object Kusto.Data.KustoConnectionStringBuilder($clusterUrl, $databaseName)
 $kcsb = $kcsb.WithAadAzCliAuthentication()
