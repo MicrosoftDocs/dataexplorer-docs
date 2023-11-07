@@ -88,15 +88,15 @@ $packagesRoot = "C:\Microsoft.Azure.Kusto.Tools\tools\net472"
 #  Part 3 of 3
 #  ------------
 #  Defining the connection to your cluster / database
-$clusterUrl = "https://help.kusto.windows.net"
-$databaseName = "Samples"
+$clusterUrl = "Your cluster URI"
+$databaseName = "Your database name"
 
 $kcsb = New-Object Kusto.Data.KustoConnectionStringBuilder($clusterUrl, $databaseName)
 
 # MS Entra Application Authentication
 $applicationId = "MS Entra application (client) ID"
-$applicationKey = "MS Entra application key"
-$authority = "Tenant ID that contains the MS Entra application"
+$applicationKey = "MS Entra application secret key"
+$authority = "MS Entra application directory (tenant) ID"
 $kcsb = $kcsb.WithAadApplicationKeyAuthentication($applicationId, $applicationKey, $authority)
 ```
 
