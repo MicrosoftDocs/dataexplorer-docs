@@ -3,7 +3,7 @@ title:  Kusto .NET Client Libraries from PowerShell
 description: This article describes how to use Kusto .NET Client Libraries from PowerShell in Azure Data Explorer.
 ms.reviewer: salevy
 ms.topic: reference
-ms.date: 08/06/2023
+ms.date: 11/07/2023
 ---
 # Use Kusto .NET client libraries from PowerShell
 
@@ -31,7 +31,11 @@ Once the .NET assemblies are loaded, use a [Kusto connection string](../connecti
 
 ## Initialization
 
-To begin using the libraries, you need to load them and authenticate your access to the cluster and database. Authentication methods include user authentication, application authentication, device code authentication, and Azure CLI authentication.
+To get started with the libraries, you need to load the libraries and authenticate your access to the cluster and database. There are three main methods for authentication:
+
+* **User authentication:** Prompt the user to verify their identity in a web browser.
+* **Application authentication:** Create an MS Entra app, grant it access to your database, and use the credentials for authentication.
+* **Azure CLI authentication:** Sign-in on your machine to the Azure CLI using `az` `login`. Kusto retrieves the token from Azure CLI.
 
 To see examples of each authentication type, select the relevant tab.
 
@@ -86,9 +90,9 @@ $databaseName = "Samples"
 $kcsb = New-Object Kusto.Data.KustoConnectionStringBuilder($clusterUrl, $databaseName)
 
 # MS Entra Application Authentication
-$applicationId = "application ID goes here"
-$applicationKey = "application key goes here"
-$authority = "authority goes here"
+$applicationId = "MS Entra application (client) ID"
+$applicationKey = "MS Entra application key"
+$authority = "Tenant ID that contains the MS Entra application"
 $kcsb = $kcsb.WithAadApplicationKeyAuthentication($applicationId, $applicationKey, $authority)
 ```
 
@@ -100,7 +104,7 @@ $kcsb = $kcsb.WithAadApplicationKeyAuthentication($applicationId, $applicationKe
 
 ### [Azure CLI](#tab/azure-cli)
 
-Before this method of authentication can work, you need to log in to Azure CLI with the `az` `login` command.
+For this method of authentication to work, first sign-in to Azure CLI with the `az` `login` command.
 
 ```powershell
 #  Part 1 of 3
@@ -125,7 +129,7 @@ $databaseName = "Samples"
 $kcsb = New-Object Kusto.Data.KustoConnectionStringBuilder($clusterUrl, $databaseName)
 
 # Azure CLI Authentication
-$kcsb = $kcsb.WithAadApplicationKeyAuthentication()
+$kcsb = $kcsb.WithAadAzCliAuthentication()
 ```
 
 ---
