@@ -32,7 +32,7 @@ To use the Kusto .NET client libraries in PowerShell:
     |--|--|--|
     | False | v4.0.30319 | C:\Downloads\tools\net472\Kusto.Data.dll |
 
-Once loaded, you can use the libraries to [Connect to a cluster and database](#connect-to-a-cluster-and-database).
+Once loaded, you can use the libraries to [connect to a cluster and database](#connect-to-a-cluster-and-database).
 
 ## Connect to a cluster and database
 
@@ -88,11 +88,11 @@ $kcsb = $kcsb.WithAadAzCliAuthentication()
 
 Create a query provider and run [Kusto Query Language](../../query/index.md) queries.
 
-The following example defines a simple [take](../../query/takeoperator.md) query to sample the data in the `StormEvents` table. Before running the query, a few [client request properties](../rest/request-properties.md) are set. Then, the query is ran and the result set is formatted and sorted.
+The following example defines a simple [take](../../query/takeoperator.md) query to sample the data. To run the query, replace `<TableName>` with the name of a table in your database. Before running the query, the [ClientRequestProperties class](../netfx/client-request-properties.md) is used to set a client request ID and a server timeout. Then, the query is ran and the result set is formatted and sorted.
 
 ```powershell
 $queryProvider = [Kusto.Data.Net.Client.KustoClientFactory]::CreateCslQueryProvider($kcsb)
-$query = "StormEvents | take 5"
+$query = "<TableName> | take 5"
 Write-Host "Executing query: '$query' with connection string: '$($kcsb.ToString())'"
 
 # Optional: set a client request ID and set a client request property (e.g. Server Timeout)
