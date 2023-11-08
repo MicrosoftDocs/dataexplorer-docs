@@ -55,7 +55,7 @@ To use application authentication:
 
     For more information, see [Kusto role-based access control](kusto/access-control/role-based-access-control.md).
 
-2. Grant the application permissions on the target Azure Data Explorer table. The required table permissions depend on the method used to write data from the Flink data stream. For [SinkV2](#sinkv2), ingestor permissions are required. For [WriteAheadSink](#writeaheadsink), admin permissions are required.
+1. Grant the application permissions on the target Azure Data Explorer table. The required table permissions depend on the method used to write data from the Flink data stream. For [SinkV2](#sinkv2), ingestor permissions are required. For [WriteAheadSink](#writeaheadsink), admin permissions are required.
 
     ```kusto
     // Grant table ingestor permissions (SinkV2)
@@ -94,7 +94,7 @@ To use managed identity authentication:
 
     For more information, see [Kusto role-based access control](kusto/access-control/role-based-access-control.md).
 
-2. Grant the managed identity permissions on the target Azure Data Explorer table. The required table permissions depend on the method used to write data from the Flink data stream. For [SinkV2](#sinkv2), ingestor permissions are required. For [WriteAheadSink](#writeaheadsink), admin permissions are required.
+1. Grant the managed identity permissions on the target Azure Data Explorer table. The required table permissions depend on the method used to write data from the Flink data stream. For [SinkV2](#sinkv2), ingestor permissions are required. For [WriteAheadSink](#writeaheadsink), admin permissions are required.
 
     ```kusto
     // Grant table ingestor permissions (SinkV2)
