@@ -66,18 +66,6 @@ To use application authentication:
 
 For more information on authorization, see [Kusto role-based access control](kusto/access-control/role-based-access-control.md).
 
-### Usage
-
-To authenticate from Flink to Azure Data Explorer with your application:
-
-```java
-KustoConnectionOptions kustoConnectionOptions = KustoConnectionOptions.builder()
-  .setAppId("<Application ID>")
-  .setAppKey("<Application key>")
-  .setTenantId("<Tenant ID>")
-  .setClusterUrl("<Cluster URI>").build();
-```
-
 ### [Managed Identity](#tab/managed-identity)
 
 To use managed identity authentication:
@@ -103,16 +91,6 @@ To use managed identity authentication:
 
 For more information on authorization, see [Kusto role-based access control](kusto/access-control/role-based-access-control.md).
 
-### Usage
-
-To authenticate from Flink to Azure Data Explorer with your managed identity:
-
-```java
-KustoConnectionOptions kustoConnectionOptions = KustoConnectionOptions.builder()
-  .setManagedIdentityAppId("<Object ID>")
-  .setClusterUrl("<Cluster URI>").build();
-```
-
 ---
 
 ## Write data from Flink to Azure Data Explorer
@@ -126,13 +104,23 @@ To write data from Flink to Azure Data Explorer:
     import com.microsoft.azure.flink.config.KustoWriteOptions;
     ```
 
-1. Authenticate with one of the methods described in [Authenticate to Azure Data Explorer](#authenticate-to-azure-data-explorer). For example, application authentication:
+1. Use your application or managed identity to [Authenticate to Azure Data Explorer](#authenticate-to-azure-data-explorer).
+
+    For application authentication:
 
     ```java
     KustoConnectionOptions kustoConnectionOptions = KustoConnectionOptions.builder()
     .setAppId("<Application ID>")
     .setAppKey("<Application key>")
     .setTenantId("<Tenant ID>")
+    .setClusterUrl("<Cluster URI>").build();
+    ```
+
+    For managed identity authentication:
+
+    ```java
+    KustoConnectionOptions kustoConnectionOptions = KustoConnectionOptions.builder()
+    .setManagedIdentityAppId("<Object ID>")
     .setClusterUrl("<Cluster URI>").build();
     ```
 
@@ -168,7 +156,7 @@ To write data from Flink to Azure Data Explorer:
         , 2 /*Parallelism to use*/);
     ```
 
-Altogether, the code should look something like this:
+The complete code should look something like this:
 
 ```java
 import com.microsoft.azure.flink.config.KustoConnectionOptions;
