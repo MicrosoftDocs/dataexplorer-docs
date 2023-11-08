@@ -20,6 +20,7 @@ In this article, you learn how to use the Azure Data Explorer Flink connector to
 
 * An Azure Data Explorer cluster and database. [Create a cluster and database](create-cluster-and-database.md).
 * An Apache Flink cluster. [Create a cluster](/azure/hdinsight-aks/flink/flink-create-cluster-portal).
+* An Azure Data Explorer table and optional [ingestion mapping](kusto/management/mappings.md). [Create a table](create-table-wizard.md).
 * [Maven 3.x](https://maven.apache.org/download.cgi)
 
 ## Get the Flink connector
@@ -36,7 +37,7 @@ For Flink projects that use Maven to manage dependencies, integrate the [Flink C
 
 For projects that don't use Maven to manage dependencies, clone the [repository for the Azure Data Explorer Connector for Apache Flink](https://github.com/Azure/flink-connector-kusto/tree/main) and build it locally. This approach allows you to manually add the connector to your local Maven repository using the command `mvn clean install -DskipTests`.
 
-## Authentication
+## Authenticate to Azure Data Explorer
 
 Authenticate from Flink to your Azure Data Explorer cluster with either a Microsoft Entra ID application or a managed identity.
 
@@ -119,6 +120,77 @@ KustoConnectionOptions kustoConnectionOptions = KustoConnectionOptions.builder()
 ---
 
 ## Write data from Flink to Azure Data Explorer
+
+To write data from Flink to Azure Data Explorer:
+
+1. Import the required options:
+
+    ```java
+    import com.microsoft.azure.flink.config.KustoConnectionOptions;
+    import com.microsoft.azure.flink.config.KustoWriteOptions;
+    ```
+
+1. Authenticate with one of the methods described in [Authenticate to Azure Data Explorer](#authenticate-to-azure-data-explorer). For example, application authentication:
+
+    ```java
+    KustoConnectionOptions kustoConnectionOptions = KustoConnectionOptions.builder()
+    .setAppId("<Application ID>")
+    .setAppKey("<Application key>")
+    .setTenantId("<Tenant ID>")
+    .setClusterUrl("<Cluster URI>").build();
+    ```
+
+1. Configure the sink parameters such as database and table:
+
+    ```java
+    KustoWriteOptions kustoWriteOptions = KustoWriteOptions.builder()
+        .withDatabase("<Database name>").withTable("<Table name>").build();
+    ```
+
+    You can add more options, as described in the following table:
+
+    | Option                | Description                                            | Default Value   |
+    |-----------------------|--------------------------------------------------------|------------------|
+    | IngestionMappingRef   | References an existing Kusto ingestion mapping.      |           |
+    | FlushImmediately      | Not recommended. Flushes data to ADX/Kusto immediately, may cause performance issues.  |
+    | BatchIntervalMs       | Controls how often data is flushed to ADX/Kusto.     | 30 seconds     |
+    | BatchSize             | Sets the batch size for buffering records before flushing to ADX/Kusto. | 1000 records |
+    | ClientBatchSizeLimit  | Specifies the size in MB of aggregated data before ingestion to ADX/Kusto. | 300 MB |
+    | PollForIngestionStatus | If true, the connector polls for ingestion status after data flush. | false |
+    | DeliveryGuarantee     | Determines delivery guarantee semantics, defaults to AT_LEAST_ONCE. Even when EXACTLY_ONCE is specified, there can be scenarios os duplicates in the sink. To achieve exactly-once semantics, use WriteAheadSink. | AT_LEAST_ONCE |
+
+1. Write streaming data with one of the following methods:
+
+   * **SinkV2**: This is a stateless option that flushes data on checkpoint, ensuring at least once consistency. We recommend this option for high-volume data ingestion.
+   * **WriteAheadSink**: This method emits data to a KustoSink. It's integrated with Flink's checkpointing system and offers exactly-once guarantees. Data is stored in an AbstractStateBackend and committed only after a checkpoint is completed.
+
+    The following example uses SinkV2. To use WriteAheadSink, use the `buildWriteAheadSink` method instead of `build`:
+
+    ```java
+    KustoWriteSink.builder().setWriteOptions(kustoWriteOptions)
+        .setConnectionOptions(kustoConnectionOptions).build("<Flink source datastream>" /*Flink source data stream, example messages de-queued from Kafka*/
+        , 2 /*Parallelism to use*/);
+    ```
+
+Altogether, the code should look something like this:
+
+```java
+import com.microsoft.azure.flink.config.KustoConnectionOptions;
+import com.microsoft.azure.flink.config.KustoWriteOptions;
+
+KustoConnectionOptions kustoConnectionOptions = KustoConnectionOptions.builder()
+.setAppId("<Application ID>")
+.setAppKey("<Application key>")
+.setTenantId("<Tenant ID>")
+.setClusterUrl("<Cluster URI>").build();
+
+KustoWriteOptions kustoWriteOptions = KustoWriteOptions.builder()
+    .withDatabase("<Database name>").withTable("<Table name>").build();
+
+KustoWriteSink.builder().setWriteOptions(kustoWriteOptions)
+    .setConnectionOptions(kustoConnectionOptions).build("<Flink source datastream>" /*Flink source data stream, example messages de-queued from Kafka*/
+    , 2 /*Parallelism to use*/);
+```
 
 ## Verify that data is ingested into Azure Data Explorer
 
