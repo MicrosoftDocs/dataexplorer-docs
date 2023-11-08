@@ -23,6 +23,7 @@ The following table summarizes the available connectors and their capabilities:
 | Name | Functionality | Supports streaming? | Supports free cluster? | Type | Use cases |
 |--|--|:-:|--|--|--|
 | [Apache Kafka](#apache-kafka) | **Ingestion** | &check; |  | First party, [Open source](https://github.com/Azure/kafka-sink-azure-kusto/) | Logs, Telemetry, Time series |
+| [Apache Flink](#flink) | **Ingestion** | &check; |  | [Open source](https://github.com/Azure/flink-connector-kusto/) | Telemetry |
 | [Apache Log4J 2](#apache-log4j-2) | **Ingestion** | &check; | &check; | First party, [Open source](https://github.com/Azure/azure-kusto-log4j) | Logs |
 | [Apache Spark](#apache-spark) | **Export**<br /><br />**Ingestion** | &#x2717; |  | [Open source](https://github.com/Azure/azure-kusto-spark/) | Telemetry |
 | [Apache Spark for Azure Synapse Analytics](#apache-spark-for-azure-synapse-analytics) | **Export**<br /><br />**Ingestion** | &#x2717; |  | First party | Telemetry |
@@ -48,6 +49,7 @@ The following table summarizes the available connectors and their capabilities:
 | Name | Functionality | Supports streaming? | Type | Use cases |
 |--|--|:-:|--|--|
 | [Apache Kafka](#apache-kafka) | **Ingestion** | &check; | First party, [Open source](https://github.com/Azure/kafka-sink-azure-kusto/) | Logs, Telemetry, Time series |
+| [Apache Flink](#flink) | **Ingestion** | &check; |  | [Open source](https://github.com/Azure/flink-connector-kusto/) | Telemetry |
 | [Apache Log4J 2](#apache-log4j-2) | **Ingestion** | &check; | First party, [Open source](https://github.com/Azure/azure-kusto-log4j) | Logs |
 | [Apache Spark](#apache-spark) | **Export**<br /><br />**Ingestion** | &#x2717; | [Open source](https://github.com/Azure/azure-kusto-spark/) | Telemetry |
 | [Apache Spark for Azure Synapse Analytics](#apache-spark-for-azure-synapse-analytics) | **Export**<br /><br />**Ingestion** | &#x2717; | First party | Telemetry |
@@ -81,6 +83,17 @@ The following table summarizes the available connectors and their capabilities:
 ::: zone pivot="azuredataexplorer"
 * **Community Blog:** [Kafka ingestion into Azure Data Explorer](https://techcommunity.microsoft.com/t5/azure-data-explorer-blog/kafka-ingestion-into-azure-data-explorer-part-1/ba-p/1452439)
 ::: zone-end
+
+## Apache Flink
+
+[Apache Flink](https://flink.apache.org/) is a framework and distributed processing engine for stateful computations over unbounded and bounded data streams. The connector implements data sink for moving data across Azure Data Explorer and Flink clusters. Using Azure Data Explorer and Apache Flink, you can build fast and scalable applications targeting data driven scenarios. For example, machine learning (ML), Extract-Transform-Load (ETL), and Log Analytics.
+
+* **Functionality:** Ingestion
+* **Ingestion type supported:** Streaming
+* **Use cases:** Telemetry
+* **Underlying SDK:** [Java](kusto/api/java/kusto-java-client-library.md)
+* **Repository:** Microsoft Azure - https://github.com/Azure/flink-connector-kusto/
+* **Documentation:** [Ingest data from Apache Flink](ingest-data-flink.md)
 
 ## Apache Log4J 2
 
