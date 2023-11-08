@@ -183,14 +183,14 @@ Once the connection is configured, data is sent to your Azure Data Explorer tabl
 1. Run the following query to verify that data is ingested into the table:
 
     ```Kusto
-    <TableName>
+    <MyTable>
     | count
     ```
 
 1. Run the following query to view the data:
 
     ```Kusto
-    <TableName>
+    <MyTable>
     | take 100
     ```
 
