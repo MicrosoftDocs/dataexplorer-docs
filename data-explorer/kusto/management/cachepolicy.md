@@ -3,7 +3,7 @@ title:  Caching policy (hot and cold cache)
 description: This article describes caching policy (hot and cold cache).
 ms.reviewer: orspodek
 ms.topic: reference
-ms.date: 11/02/2023
+ms.date: 11/08/2023
 zone_pivot_group_filename: data-explorer/zone-pivot-groups.json
 zone_pivot_groups: kql-flavors-adx-fabric
 ---
@@ -25,7 +25,7 @@ The caching policy allows you to choose which data should be cached. You can dif
 
 The cache uses 95% of the local SSD disk for hot data. If there isn't enough space, the most recent data is preferentially kept in the cache. The remaining 5% is used for data that isn't categorized as hot. This design ensures that queries loading lots of cold data won't evict hot data from the cache.
 
-The best query performance is achieved when all ingested data is cached. However, certain data might not warrant the expense of being kept in the hot cache. For instance, infrequently accessed old log records may be considered less crucial. In such cases, teams often opt for lower querying performance over paying to keep the data warm.
+The best query performance is achieved when all ingested data is cached. However, certain data might not warrant the expense of being kept in the hot cache. For instance, infrequently accessed old log records might be considered less crucial. In such cases, teams often opt for lower querying performance over paying to keep the data warm.
 
 ::: zone pivot="fabric"
 
