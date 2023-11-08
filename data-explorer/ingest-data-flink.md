@@ -194,6 +194,22 @@ KustoWriteSink.builder().setWriteOptions(kustoWriteOptions)
 
 ## Verify that data is ingested into Azure Data Explorer
 
+Once the connection is configured, data is sent to your Azure Data Explorer table. You can verify that the data is ingested by running a query in the [web UI query editor](web-ui-query-overview.md#write-and-run-queries).
+
+1. Run the following query to verify that data is ingested into the table:
+
+    ```Kusto
+    <TableName>
+    | count
+    ```
+
+1. Run the following query to view the data:
+
+    ```Kusto
+    <TableName>
+    | take 100
+    ```
+
 ## Related content
 
 * [Write queries](/azure/data-explorer/kusto/query/tutorials/learn-common-operators)
