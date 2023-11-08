@@ -261,6 +261,9 @@ items:
           - name: Splunk
             displayName: ingest data, ingestion, connector
             href: ingest-data-splunk.md
+          - name: Splunk Universal Forwarder
+            displayName: ingest data, ingestion, connector
+            href: ingest-data-splunk-uf.md
           - name: Telegraf
             displayName: ingest data, ingestion, connector
             href: ingest-data-telegraf.md
