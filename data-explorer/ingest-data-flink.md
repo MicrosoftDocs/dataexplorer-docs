@@ -24,7 +24,7 @@ In this article, you learn how to use the Azure Data Explorer Flink connector to
 
 ## Get the Flink connector
 
-For Flink projects with Maven project configurations, simply integrate the [Flink Connector Core Sink For Azure Data Explorer](https://mvnrepository.com/artifact/com.microsoft.azure.kusto/flink-connector-kusto) by adding it as a dependency:
+For Flink projects that use Maven to manage dependencies, integrate the [Flink Connector Core Sink For Azure Data Explorer](https://mvnrepository.com/artifact/com.microsoft.azure.kusto/flink-connector-kusto) by adding it as a dependency:
 
 ```java
 <dependency>
@@ -34,7 +34,7 @@ For Flink projects with Maven project configurations, simply integrate the [Flin
 </dependency>
 ```
 
-For projects that don't use Maven to manage dependencies and build processes, clone the [Azure Data Explorer Connector for Apache Flink repository](https://github.com/Azure/flink-connector-kusto/tree/main) and build it locally. This approach allows you to manually add the connector to your local Maven repository using the command `mvn clean install -DskipTests`.
+For projects that don't use Maven to manage dependencies, clone the [repository for the Azure Data Explorer Connector for Apache Flink](https://github.com/Azure/flink-connector-kusto/tree/main) and build it locally. This approach allows you to manually add the connector to your local Maven repository using the command `mvn clean install -DskipTests`.
 
 ## Install the Azure Data Explorer Flink connector
 
