@@ -168,7 +168,7 @@ Follow the instructions in the video to accept the invitation, create a data sha
 
 [![Data Consumer - Receiving Data.](https://img.youtube.com/vi/vBq6iFaCpdA/0.jpg)](https://youtu.be/vBq6iFaCpdA?&autoplay=1)
 
-The data consumer can now go to their Azure Data Explorer cluster to grant user permissions to the shared databases and access the data. Data ingested using batch mode into the source Azure Data Explorer cluster will show up on the target cluster within a few seconds to a few minutes.
+The data consumer can now go to their Azure Data Explorer cluster to grant user permissions to the shared databases and access the data. Data ingested using queued ingestion into the source Azure Data Explorer cluster will show up on the target cluster within a few seconds to a few minutes.
 
 ## Limitations
 

@@ -48,7 +48,7 @@ For more information on extent and index merging, see [Merge policy](kusto/manag
 
 Azure Data Explorer offers an intermediate storage solution called *row store*. Row store allows for the efficient intake of small portions of data and ensures this data is immediately available for query. When you [enable streaming ingestion on your cluster](ingest-data-streaming.md), data is initially ingested to row store and then moved to column store extents.
 
-For more information, see [Batching vs. streaming ingestion](ingest-data-overview.md#batching-vs-streaming-ingestion).
+For more information, see [Batching vs. streaming ingestion](ingest-data-overview.md#queued-vs-streaming-ingestion).
 
 ## Column compression
 
