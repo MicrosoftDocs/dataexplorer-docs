@@ -46,14 +46,23 @@ To use application authentication:
 
 1. In the Azure portal, [create a Microsoft Entra application registration](provision-entra-id-app.md). Alternatively, you can [programatically create a Microsoft Entra service principal](provision-entra-id-app.md#programatically-create-a-microsoft-entra-service-principal). Save the application ID, application key, and tenant ID. 
 
-2. Within Azure Data Explorer, grant the application *at least* database user with table ingestor permissions:
+1. Grant the application user permissions on the target Azure Data Explorer database:
 
     ```kusto
     // Grant database user permissions
     .add database <MyDatabase> users ('aadapp=<Application ID>;<Tenant ID>')
+    ```
 
-    // Grant table ingestor permissions
+    For more information, see [Kusto role-based access control](kusto/access-control/role-based-access-control.md).
+
+2. Grant the application permissions on the target Azure Data Explorer table. The required table permissions depend on the method used to write data from the Flink data stream. For [SinkV2](#sinkv2), ingestor permissions are required. For [WriteAheadSink](#writeaheadsink), admin permissions are required.
+
+    ```kusto
+    // Grant table ingestor permissions (SinkV2)
     .add table <MyTable> ingestors ('aadapp=<Application ID>;<Tenant ID>')
+
+    // Grant table admin permissions (WriteAheadSink)
+    .add table <MyTable> admins ('aadapp=<Application ID>;<Tenant ID>')
     ```
 
     For more information, see [Kusto role-based access control](kusto/access-control/role-based-access-control.md).
@@ -76,14 +85,23 @@ To use managed identity authentication:
 
 1. Add a [system-assigned](configure-managed-identities-cluster.md#add-a-system-assigned-identity) or [user-assigned](configure-managed-identities-cluster.md#add-a-user-assigned-identity) managed identity to your cluster. Save the **Object ID**.
 
-2. Within Azure Data Explorer, grant the managed identity *at least* database user with table ingestor permissions:
+1. Grant the managed identity user permissions on the target Azure Data Explorer database:
 
     ```kusto
     // Grant database user permissions
     .add database <MyDatabase> users ('aadapp=<Object ID>;<Tenant ID>')
+    ```
 
-    // Grant table ingestor permissions
+    For more information, see [Kusto role-based access control](kusto/access-control/role-based-access-control.md).
+
+2. Grant the managed identity permissions on the target Azure Data Explorer table. The required table permissions depend on the method used to write data from the Flink data stream. For [SinkV2](#sinkv2), ingestor permissions are required. For [WriteAheadSink](#writeaheadsink), admin permissions are required.
+
+    ```kusto
+    // Grant table ingestor permissions (SinkV2)
     .add table <MyTable> ingestors ('aadapp=<Object ID>;<Tenant ID>')
+
+    // Grant table admin permissions (WriteAheadSink)
+    .add table <MyTable> admins ('aadapp=<Object ID>;<Tenant ID>')
     ```
 
     For more information, see [Kusto role-based access control](kusto/access-control/role-based-access-control.md).
@@ -100,14 +118,7 @@ KustoConnectionOptions kustoConnectionOptions = KustoConnectionOptions.builder()
 
 ---
 
-## Grant permissions to your database
-
-Grant the following privileges on an Azure Data Explorer cluster:
-
-For reading (data source), the Microsoft Entra identity must have viewer privileges on the target database, or admin privileges on the target table.
-For writing (data sink), the Microsoft Entra identity must have ingestor privileges on the target database. It must also have user privileges on the target database to create new tables. If the target table already exists, you must configure admin privileges on the target table.
-For more information on Azure Data Explorer principal roles, see role-based access control. For managing security roles, see security roles management.
-
+## Write data from Flink to Azure Data Explorer
 
 ## Verify that data is ingested into Azure Data Explorer
 
