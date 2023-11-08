@@ -1,6 +1,6 @@
 ---
 title: Connect a cluster behind a private endpoint to a Power BI service
-description: Learn how to Connect an Azure Data Explorer cluster behind a private endpoint to a Power BI service.
+description: Learn how to connect an Azure Data Explorer cluster behind a private endpoint to a Power BI service.
 ms.reviewer: danyhoter
 ms.topic: how-to
 ms.date: 10/15/2023
