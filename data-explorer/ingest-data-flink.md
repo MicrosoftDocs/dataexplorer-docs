@@ -12,15 +12,15 @@ ms.date: 11/05/2023
 
 [Apache Flink](https://flink.apache.org/) is a framework and distributed processing engine for stateful computations over unbounded and bounded data streams. Azure Data Explorer is a fast, fully managed data analytics service for real-time analysis on large volumes of data.
 
-The Azure Data Explorer connector for Flink is an [open source project](https://github.com/Azure/flink-connector-kusto/tree/main) that can run on any Flink cluster. It implements data sink for moving data across Azure Data Explorer and Flink clusters. Using Azure Data Explorer and Apache Flink, you can build fast and scalable applications targeting data driven scenarios. For example, machine learning (ML), Extract-Transform-Load (ETL), and Log Analytics. With the connector, Azure Data Explorer becomes a valid data store for standard Flink sink operations.
+The Azure Data Explorer connector for Flink is an [open source project](https://github.com/Azure/flink-connector-kusto/tree/main) that can run on any Flink cluster. It implements data sink for moving data from a Flink cluster to an Azure Data Explorer table. Using Azure Data Explorer and Apache Flink, you can build fast and scalable applications targeting data driven scenarios. For example, machine learning (ML), Extract-Transform-Load (ETL), and Log Analytics.
 
 In this article, you learn how to use the Azure Data Explorer Flink connector to send data from Flink to a table in your Azure Data Explorer cluster. You create a table and data mapping, direct Flink to send data into the table, and then validate the results.
 
 ## Prerequisites
 
 * An Azure Data Explorer cluster and database. [Create a cluster and database](create-cluster-and-database.md).
+* An Azure Data Explorer table. [Create a table](create-table-wizard.md).
 * An Apache Flink cluster. [Create a cluster](/azure/hdinsight-aks/flink/flink-create-cluster-portal).
-* An Azure Data Explorer table and optional [ingestion mapping](kusto/management/mappings.md). [Create a table](create-table-wizard.md).
 * [Maven 3.x](https://maven.apache.org/download.cgi)
 
 ## Get the Flink connector
@@ -39,24 +39,22 @@ For projects that don't use Maven to manage dependencies, clone the [repository 
 
 ## Authenticate to Azure Data Explorer
 
-Authenticate from Flink to your Azure Data Explorer cluster with either a Microsoft Entra ID application or a managed identity.
+You can authenticate from Flink to your Azure Data Explorer cluster using either a Microsoft Entra ID application or a managed identity.
 
 ### [Application](#tab/application)
 
 To use application authentication:
 
-1. In the Azure portal, [create a Microsoft Entra application registration](provision-entra-id-app.md). Alternatively, you can [programatically create a Microsoft Entra service principal](provision-entra-id-app.md#programatically-create-a-microsoft-entra-service-principal). Save the application ID, application key, and tenant ID. 
+1. In the Azure portal, [create a Microsoft Entra application registration](provision-entra-id-app.md). Alternatively, you can [programatically create a Microsoft Entra service principal](provision-entra-id-app.md#programatically-create-a-microsoft-entra-service-principal). Save the application ID, application key, and tenant ID.
 
-1. Grant the application user permissions on the target Azure Data Explorer database:
+1. Grant the application user permissions on the Azure Data Explorer database:
 
     ```kusto
     // Grant database user permissions
     .add database <MyDatabase> users ('aadapp=<Application ID>;<Tenant ID>')
     ```
 
-    For more information, see [Kusto role-based access control](kusto/access-control/role-based-access-control.md).
-
-1. Grant the application permissions on the target Azure Data Explorer table. The required table permissions depend on the method used to write data from the Flink data stream. For SinkV2, ingestor permissions are required. For WriteAndSink, admin permissions are required. For more information, see [Write data from Flink to Azure Data Explorer](#write-data-from-flink-to-azure-data-explorer).
+1. Grant the application either ingestor or admin permissions on the Azure Data Explorer table. The required permissions depend on the chosen data writing method. Ingestor permissions are sufficient for SinkV2, while WriteAndSink requires admin permissions.
 
     ```kusto
     // Grant table ingestor permissions (SinkV2)
@@ -66,7 +64,7 @@ To use application authentication:
     .add table <MyTable> admins ('aadapp=<Application ID>;<Tenant ID>')
     ```
 
-    For more information, see [Kusto role-based access control](kusto/access-control/role-based-access-control.md).
+For more information on authorization, see [Kusto role-based access control](kusto/access-control/role-based-access-control.md).
 
 ### Usage
 
@@ -86,16 +84,14 @@ To use managed identity authentication:
 
 1. Add a [system-assigned](configure-managed-identities-cluster.md#add-a-system-assigned-identity) or [user-assigned](configure-managed-identities-cluster.md#add-a-user-assigned-identity) managed identity to your cluster. Save the **Object ID**.
 
-1. Grant the managed identity user permissions on the target Azure Data Explorer database:
+1. Grant the managed identity user permissions on the Azure Data Explorer database:
 
     ```kusto
     // Grant database user permissions
     .add database <MyDatabase> users ('aadapp=<Object ID>;<Tenant ID>')
     ```
 
-    For more information, see [Kusto role-based access control](kusto/access-control/role-based-access-control.md).
-
-1. Grant the managed identity permissions on the target Azure Data Explorer table. The required table permissions depend on the method used to write data from the Flink data stream. For [SinkV2](#sinkv2), ingestor permissions are required. For [WriteAheadSink](#writeaheadsink), admin permissions are required.
+1. Grant the managed identity either ingestor or admin permissions on the Azure Data Explorer table. The required permissions depend on the chosen data writing method. Ingestor permissions are sufficient for SinkV2, while WriteAndSink requires admin permissions.
 
     ```kusto
     // Grant table ingestor permissions (SinkV2)
@@ -105,7 +101,7 @@ To use managed identity authentication:
     .add table <MyTable> admins ('aadapp=<Object ID>;<Tenant ID>')
     ```
 
-    For more information, see [Kusto role-based access control](kusto/access-control/role-based-access-control.md).
+For more information on authorization, see [Kusto role-based access control](kusto/access-control/role-based-access-control.md).
 
 ### Usage
 
@@ -151,13 +147,13 @@ To write data from Flink to Azure Data Explorer:
 
     | Option                | Description                                            | Default Value   |
     |-----------------------|--------------------------------------------------------|------------------|
-    | IngestionMappingRef   | References an existing Kusto ingestion mapping.      |           |
-    | FlushImmediately      | Not recommended. Flushes data to ADX/Kusto immediately, may cause performance issues.  |
-    | BatchIntervalMs       | Controls how often data is flushed to ADX/Kusto.     | 30 seconds     |
-    | BatchSize             | Sets the batch size for buffering records before flushing to ADX/Kusto. | 1000 records |
-    | ClientBatchSizeLimit  | Specifies the size in MB of aggregated data before ingestion to ADX/Kusto. | 300 MB |
+    | IngestionMappingRef   | References an existing [ingestion mapping](kusto/management/mappings.md).      |           |
+    | FlushImmediately      | Flushes data immediately, and may cause performance issues. This method is not recommended.  |
+    | BatchIntervalMs       | Controls how often data is flushed.     | 30 seconds     |
+    | BatchSize             | Sets the batch size for buffering records before flushing. | 1000 records |
+    | ClientBatchSizeLimit  | Specifies the size in MB of aggregated data before ingestion. | 300 MB |
     | PollForIngestionStatus | If true, the connector polls for ingestion status after data flush. | false |
-    | DeliveryGuarantee     | Determines delivery guarantee semantics, defaults to AT_LEAST_ONCE. Even when EXACTLY_ONCE is specified, there can be scenarios os duplicates in the sink. To achieve exactly-once semantics, use WriteAheadSink. | AT_LEAST_ONCE |
+    | DeliveryGuarantee     | Determines delivery guarantee semantics. To achieve exactly-once semantics, use WriteAheadSink. | AT_LEAST_ONCE |
 
 1. Write streaming data with one of the following methods:
 
