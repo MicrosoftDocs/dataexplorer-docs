@@ -36,9 +36,78 @@ For Flink projects that use Maven to manage dependencies, integrate the [Flink C
 
 For projects that don't use Maven to manage dependencies, clone the [repository for the Azure Data Explorer Connector for Apache Flink](https://github.com/Azure/flink-connector-kusto/tree/main) and build it locally. This approach allows you to manually add the connector to your local Maven repository using the command `mvn clean install -DskipTests`.
 
-## Install the Azure Data Explorer Flink connector
+## Authentication
 
-## Configure the connector to send data to Azure Data Explorer
+Authenticate from Flink to your Azure Data Explorer cluster with either a Microsoft Entra ID application or a managed identity.
+
+### [Application](#tab/application)
+
+To use application authentication:
+
+1. In the Azure portal, [create a Microsoft Entra application registration](provision-entra-id-app.md). Alternatively, you can [programatically create a Microsoft Entra service principal](provision-entra-id-app.md#programatically-create-a-microsoft-entra-service-principal). Save the application ID, application key, and tenant ID. 
+
+2. Within Azure Data Explorer, grant the application *at least* database user with table ingestor permissions:
+
+    ```kusto
+    // Grant database user permissions
+    .add database <MyDatabase> users ('aadapp=<Application ID>;<Tenant ID>')
+
+    // Grant table ingestor permissions
+    .add table <MyTable> ingestors ('aadapp=<Application ID>;<Tenant ID>')
+    ```
+
+    For more information, see [Kusto role-based access control](kusto/access-control/role-based-access-control.md).
+
+### Usage
+
+To authenticate from Flink to Azure Data Explorer with your application:
+
+```java
+KustoConnectionOptions kustoConnectionOptions = KustoConnectionOptions.builder()
+  .setAppId("<Application ID>")
+  .setAppKey("<Application key>")
+  .setTenantId("<Tenant ID>")
+  .setClusterUrl("<Cluster URI>").build();
+```
+
+### [Managed Identity](#tab/managed-identity)
+
+To use managed identity authentication:
+
+1. Add a [system-assigned](configure-managed-identities-cluster.md#add-a-system-assigned-identity) or [user-assigned](configure-managed-identities-cluster.md#add-a-user-assigned-identity) managed identity to your cluster. Save the **Object ID**.
+
+2. Within Azure Data Explorer, grant the managed identity *at least* database user with table ingestor permissions:
+
+    ```kusto
+    // Grant database user permissions
+    .add database <MyDatabase> users ('aadapp=<Object ID>;<Tenant ID>')
+
+    // Grant table ingestor permissions
+    .add table <MyTable> ingestors ('aadapp=<Object ID>;<Tenant ID>')
+    ```
+
+    For more information, see [Kusto role-based access control](kusto/access-control/role-based-access-control.md).
+
+### Usage
+
+To authenticate from Flink to Azure Data Explorer with your managed identity:
+
+```java
+KustoConnectionOptions kustoConnectionOptions = KustoConnectionOptions.builder()
+  .setManagedIdentityAppId("<Object ID>")
+  .setClusterUrl("<Cluster URI>").build();
+```
+
+---
+
+## Grant permissions to your database
+
+Grant the following privileges on an Azure Data Explorer cluster:
+
+For reading (data source), the Microsoft Entra identity must have viewer privileges on the target database, or admin privileges on the target table.
+For writing (data sink), the Microsoft Entra identity must have ingestor privileges on the target database. It must also have user privileges on the target database to create new tables. If the target table already exists, you must configure admin privileges on the target table.
+For more information on Azure Data Explorer principal roles, see role-based access control. For managing security roles, see security roles management.
+
 
 ## Verify that data is ingested into Azure Data Explorer
 
