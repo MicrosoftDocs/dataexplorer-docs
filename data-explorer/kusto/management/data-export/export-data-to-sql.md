@@ -48,7 +48,7 @@ The supported authentication methods for exporting data to SQL are [Microsoft En
 * New table: CREATE, UPDATE, and INSERT
 
 > [!NOTE]
-> To ensure secrets don't appear in traces, use [obfuscated string literals](../../query/scalar-data-types/string.md#obfuscated-string-literals).
+> To prevent secrets from showing up in traces, use [obfuscated string literals](../../query/scalar-data-types/string.md#obfuscated-string-literals).
 
 ## Limitations and restrictions
 

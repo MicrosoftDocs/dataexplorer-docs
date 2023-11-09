@@ -62,7 +62,7 @@ The following table lists the supported authentication methods and the permissio
 |[Storage account access key](../../api/connection-strings/storage-authentication-methods.md#storage-account-access-key)|No extra permissions required|No extra permissions required|
 
 > [!NOTE]
-> To ensure secrets don't appear in traces, use [obfuscated string literals](../../query/scalar-data-types/string.md#obfuscated-string-literals).
+> To prevent secrets from showing up in traces, use [obfuscated string literals](../../query/scalar-data-types/string.md#obfuscated-string-literals).
 
 ## Returns
 

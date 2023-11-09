@@ -35,7 +35,7 @@ Each storage type has a different connection string format. See the following ta
 |Amazon S3                     |`https://`|`https://`*BucketName*`.s3.`*RegionName*`.amazonaws.com/`*ObjectKey*[*CallerCredentials*]|
 
 > [!NOTE]
-> To ensure secrets don't appear in traces, use [obfuscated string literals](../../query/scalar-data-types/string.md#obfuscated-string-literals).
+> To prevent secrets from showing up in traces, use [obfuscated string literals](../../query/scalar-data-types/string.md#obfuscated-string-literals).
 
 ## Storage authentication methods
 
