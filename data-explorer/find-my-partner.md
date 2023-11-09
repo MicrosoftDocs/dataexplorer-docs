@@ -89,6 +89,7 @@ ALTEN also offers their specialist knowledge in the field of IT. We play an acti
 
 - [https://bits-chips.nl/artikel/infusing-the-mobile-crane-industry-with-iot-based-data-driven-solutions/](https://bits-chips.nl/artikel/infusing-the-mobile-crane-industry-with-iot-based-data-driven-solutions/)
 - [https://bits-chips.nl/artikel/comfortably-connected-to-the-cloud/](https://bits-chips.nl/artikel/comfortably-connected-to-the-cloud/)
+- [https://bits-chips.nl/artikel/adapting-real-time-visual-insights-to-offshore-conditions/](https://bits-chips.nl/artikel/adapting-real-time-visual-insights-to-offshore-conditions/)
 
 ## AM Squared Systems
 
