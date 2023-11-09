@@ -43,16 +43,12 @@ To interact with nonpublic external storage from Azure Data Explorer, you must s
 
 Azure Data Explorer supports the following authentication methods:
 
-- [Storage connection strings](#storage-connection-strings)
-  - [Storage connection string templates](#storage-connection-string-templates)
-  - [Storage authentication methods](#storage-authentication-methods)
-    - [Supported authentication by storage type](#supported-authentication-by-storage-type)
-    - [Impersonation](#impersonation)
-    - [Managed identity](#managed-identity)
-    - [Shared Access (SAS) token](#shared-access-sas-token)
-    - [Microsoft Entra access token](#microsoft-entra-access-token)
-    - [Storage account access key](#storage-account-access-key)
-    - [Amazon Web Services programmatic access keys](#amazon-web-services-programmatic-access-keys)
+* [Impersonation](#impersonation)
+* [Managed identity](#managed-identity)
+* [Shared Access (SAS) key](#shared-access-sas-token)
+* [Microsoft Entra access token](#azure-ad-access-token)
+* [Storage account access key](#storage-account-access-key)
+* [Amazon Web Services Programmatic Access Keys](#amazon-web-services-programmatic-access-keys)
 
 ### Supported authentication by storage type
 
