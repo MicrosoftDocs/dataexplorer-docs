@@ -49,7 +49,7 @@ The following table summarizes the available connectors and their capabilities:
 | Name | Functionality | Supports streaming? | Type | Use cases |
 |--|--|:-:|--|--|
 | [Apache Kafka](#apache-kafka) | **Ingestion** | &check; | First party, [Open source](https://github.com/Azure/kafka-sink-azure-kusto/) | Logs, Telemetry, Time series |
-| [Apache Flink](#apache-flink) | **Ingestion** | &check; |  | [Open source](https://github.com/Azure/flink-connector-kusto/) | Telemetry |
+| [Apache Flink](#apache-flink) | **Ingestion** | &check; | [Open source](https://github.com/Azure/flink-connector-kusto/) | Telemetry |
 | [Apache Log4J 2](#apache-log4j-2) | **Ingestion** | &check; | First party, [Open source](https://github.com/Azure/azure-kusto-log4j) | Logs |
 | [Apache Spark](#apache-spark) | **Export**<br /><br />**Ingestion** | &#x2717; | [Open source](https://github.com/Azure/azure-kusto-spark/) | Telemetry |
 | [Apache Spark for Azure Synapse Analytics](#apache-spark-for-azure-synapse-analytics) | **Export**<br /><br />**Ingestion** | &#x2717; | First party | Telemetry |
