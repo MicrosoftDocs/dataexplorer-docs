@@ -61,9 +61,6 @@ The following table lists the supported authentication methods and the permissio
 |[Microsoft Entra access token](../../api/connection-strings/storage-authentication-methods.md#azure-ad-access-token)|No extra permissions required|No extra permissions required|
 |[Storage account access key](../../api/connection-strings/storage-authentication-methods.md#storage-account-access-key)|No extra permissions required|No extra permissions required|
 
-> [!NOTE]
-> To prevent secrets from showing up in traces, use [obfuscated string literals](../../query/scalar-data-types/string.md#obfuscated-string-literals).
-
 ## Returns
 
 The commands return a table that describes the generated storage artifacts.
