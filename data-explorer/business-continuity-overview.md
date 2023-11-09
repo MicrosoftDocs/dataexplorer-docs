@@ -58,7 +58,7 @@ Azure availability zones are unique physical locations within the same Azure reg
 Pin an Azure Data Explorer cluster to the same zone as other connected Azure resources. For more information on enabling availability zones, see [create a cluster](create-cluster-and-database.md#create-a-cluster).
 
 > [!NOTE] 
-> Availability zone selection is only supported at the time of cluster creation and can't be modified later.
+> Deployment to availability zones is possible when creating a cluster or [can be migrated later](migrate-cluster-to-multiple-availability-zone.md).
 
 ### Outage of an Azure datacenter
 
@@ -141,6 +141,7 @@ Regardless of which disaster recovery configuration is chosen, follow these best
 * Be fully cognizant of what it takes to build a cluster from scratch.
 * Create a checklist of deployment units. Your list will be unique to your needs, but should include: deployment scripts, ingestion connections, BI tools, and other important configurations. 
 
-## Next steps
+## Next step
 
-Learn more with the [Create business continuity and disaster recovery solutions with Azure Data Explorer](business-continuity-create-solution.md).
+> [!div class="nextstepaction"]
+> [Create BCDR solutions with Azure Data Explorer](business-continuity-create-solution.md).
