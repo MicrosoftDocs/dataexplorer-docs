@@ -64,7 +64,7 @@ The following table summarizes the default values of aggregations:
 
 | Operator | Default value |
 |--|--|
-| `count()`, `countif()`, `dcount()`, `dcountif()`, `sum`, `sumif`, `variance`, `varianceif`, `stdev`, `stdevif` | 0 |
+| `count()`, `countif()`, `dcount()`, `dcountif()`, `count_distinct()`, `sum()`, `sumif()`, `variance()`, `varianceif()`, `stdev()`, `stdevif()` | 0 |
 | `make_bag()`, `make_bag_if()`, `make_list()`, `make_list_if()`, `make_set()`, `make_set_if()` | empty dynamic array              ([]) |
 | All others | null |
 
