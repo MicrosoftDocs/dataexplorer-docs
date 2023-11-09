@@ -34,18 +34,25 @@ Each storage type has a different connection string format. See the following ta
 |Azure Data Lake Storage Gen1  |`adl://`  |`adl://`*StorageAccountName*.azuredatalakestore.net/*PathToDirectoryOrFile*[*CallerCredentials*]|
 |Amazon S3                     |`https://`|`https://`*BucketName*`.s3.`*RegionName*`.amazonaws.com/`*ObjectKey*[*CallerCredentials*]|
 
+> [!NOTE]
+> To ensure secrets don't appear in traces, use [obfuscated string literals](../../query/scalar-data-types/string.md#obfuscated-string-literals).
+
 ## Storage authentication methods
 
 To interact with nonpublic external storage from Azure Data Explorer, you must specify authentication means as part of the external storage connection string. The connection string defines the resource to access and its authentication information.
 
 Azure Data Explorer supports the following authentication methods:
 
-* [Impersonation](#impersonation)
-* [Managed identity](#managed-identity)
-* [Shared Access (SAS) key](#shared-access-sas-token)
-* [Microsoft Entra access token](#azure-ad-access-token)
-* [Storage account access key](#storage-account-access-key)
-* [Amazon Web Services Programmatic Access Keys](#amazon-web-services-programmatic-access-keys)
+- [Storage connection strings](#storage-connection-strings)
+  - [Storage connection string templates](#storage-connection-string-templates)
+  - [Storage authentication methods](#storage-authentication-methods)
+    - [Supported authentication by storage type](#supported-authentication-by-storage-type)
+    - [Impersonation](#impersonation)
+    - [Managed identity](#managed-identity)
+    - [Shared Access (SAS) token](#shared-access-sas-token)
+    - [Microsoft Entra access token](#microsoft-entra-access-token)
+    - [Storage account access key](#storage-account-access-key)
+    - [Amazon Web Services programmatic access keys](#amazon-web-services-programmatic-access-keys)
 
 ### Supported authentication by storage type
 

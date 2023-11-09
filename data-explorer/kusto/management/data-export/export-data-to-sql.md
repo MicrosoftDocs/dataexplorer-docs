@@ -47,6 +47,9 @@ The supported authentication methods for exporting data to SQL are [Microsoft En
 * Existing table: table UPDATE and INSERT
 * New table: CREATE, UPDATE, and INSERT
 
+> [!NOTE]
+> To ensure secrets don't appear in traces, use [obfuscated string literals](../../query/scalar-data-types/string.md#obfuscated-string-literals).
+
 ## Limitations and restrictions
 
 There are some limitations and restrictions when exporting data to an SQL database:

@@ -23,16 +23,14 @@ Use the [ingest from query](../../management/data-ingestion/ingest-from-query.md
 
 For scalable data export, the service offers various `.export` management commands to push query results to [cloud storage](export-data-to-storage.md), an [external table](export-data-to-an-external-table.md), or an [SQL table](export-data-to-sql.md). This approach enhances scalability by avoiding the bottleneck of streaming through a single network connection.
 
+[Continuous data export](continuous-data-export.md) is supported for export to external tables.
+
 > [!NOTE]
 > The `.export` management commands are limited by the available data export capacity of your cluster. Run the [.show capacity command](../../management/diagnostics.md#show-capacity) to view the total, consumed, and remaining data export capacity.
 
-### Recommendations for secret management
+## Related content
 
-In certain scenarios, it isn't possible to use the credentials of the principal running the command for data export authentication. For instance, Azure Blob Storage relies on its own authorization tokens.
-
-In such cases, you may need to include security credentials within the data export management command.
-
-To ensure security:
-
-* Use [obfuscated string literals](../../query/scalar-data-types/string.md#obfuscated-string-literals), such as `h@"..."`, when sending secrets. The secrets will be scrubbed so that they don't appear in any trace emitted internally.
-* Safely store passwords and similar secrets, and retrieve them as needed using the application.
+* [Export to cloud storage](export-data-to-storage.md)
+* [Export to an external table](export-data-to-an-external-table.md)
+* [Export to a SQL table](export-data-to-sql.md)
+* [Continuous data export](continuous-data-export.md)

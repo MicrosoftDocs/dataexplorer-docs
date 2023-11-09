@@ -58,8 +58,11 @@ The following table lists the supported authentication methods and the permissio
 |--|--|--|
 |[Impersonation](../../api/connection-strings/storage-authentication-methods.md#impersonation)|Storage Blob Data Contributor|Contributor|
 |[Shared Access (SAS) token](../../api/connection-strings/storage-authentication-methods.md#shared-access-sas-token)|Write|Write|
-|[Microsoft Entra access token](../../api/connection-strings/storage-authentication-methods.md#azure-ad-access-token)||
-|[Storage account access key](../../api/connection-strings/storage-authentication-methods.md#storage-account-access-key)|||
+|[Microsoft Entra access token](../../api/connection-strings/storage-authentication-methods.md#azure-ad-access-token)|No extra permissions required|No extra permissions required|
+|[Storage account access key](../../api/connection-strings/storage-authentication-methods.md#storage-account-access-key)|No extra permissions required|No extra permissions required|
+
+> [!NOTE]
+> To ensure secrets don't appear in traces, use [obfuscated string literals](../../query/scalar-data-types/string.md#obfuscated-string-literals).
 
 ## Returns
 
@@ -167,7 +170,6 @@ Authentication or authorization failures during export commands can occur when t
 ### Parquet data types mapping
 
 On export, Kusto data types are mapped to Parquet data types using the following rules:
-
 
 | Kusto Data Type | Parquet Data Type | Parquet Annotation | Comments |
 | --------------- | ----------------- | ------------------ | -------- |
