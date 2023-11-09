@@ -7,7 +7,7 @@ ms.topic: how-to
 ---
 # Migrate your cluster to support multiple availability zones
 
-Many Azure regions provide availability zones, which are separated groups of datacenters within a region. Availability zones are close enough to have low-latency connections to other availability zones. They're connected by a high-performance network with a round-trip latency of less than 2ms. However, availability zones are far enough apart to reduce the likelihood that more than one will be affected by local outages or weather. Availability zones have independent power, cooling, and networking infrastructure. They're designed so that if one zone experiences an outage, then regional services, capacity, and high availability are supported by the remaining zones. For more information see [Azure Availability Zones](/azure/availability-zones/az-overview).
+Many Azure regions provide availability zones, which are separated groups of datacenters within a region. Availability zones are close enough to have low-latency connections to other availability zones. They're connected by a high-performance network with a round-trip latency of less than 2 ms. However, availability zones are far enough apart to reduce the likelihood that more than one will be affected by local outages or weather. Availability zones have independent power, cooling, and networking infrastructure. They're designed so that if one zone experiences an outage, then regional services, capacity, and high availability are supported by the remaining zones. For more information, see [Azure Availability Zones](/azure/availability-zones/az-overview).
 
 Azure Data Explorer clusters can be configured to use availability zones in supported regions. By using availability zones, a cluster can withstand the failure of a single datacenter in a region and ensure [business continuity](business-continuity-overview.md).
 
@@ -30,8 +30,8 @@ In this article, you learn about:
 
 Changing a cluster's availability zones is supported in the following scenarios:
 
-    - A cluster that was deployed without any availability zones
-    - A cluster that was deployed with a partial list of less than three availability zones
+- A cluster that was deployed without any availability zones
+- A cluster that was deployed with a partial list of less than three availability zones
 
 ## Migrate your cluster configuration to support availability zones
 
@@ -59,14 +59,14 @@ To add availability zones to an existing cluster, you must update the cluster `z
 
 When availability zones are configured, a cluster's resources are deployed as follows:
 
-- **Compute layer**: Azure Data Explorer is a distributed computing platform that has two or more nodes. If availability zones are configured, compute nodes are distributed across the defined availability zone for maximum intra-region resiliency. A zone failure won't result in complete outage but instead, performance might degrade until the recovery of the zone. We recommended configuring the maximum available zones in a region.
+- **Compute layer**: Azure Data Explorer is a distributed computing platform that has two or more nodes. If availability zones are configured, compute nodes are distributed across the defined availability zone for maximum intra-region resiliency. A zone failure doesn't result in complete outage but instead, performance might degrade until the recovery of the zone. We recommended configuring the maximum available zones in a region.
 
     > [!NOTE]
     >
     > - In some cases, due to compute capacity limitations, only partial availability zones will be available for the compute layer.
     > - A cluster's compute layer uses Virtual Machine Scale Sets (VMSS) zone redundant setup, leveraging the scale set best effort approach to evenly spread instances across selected zones. For more advanced VMSS setups, see [Create a Virtual Machine Scale Set that uses Availability Zones](/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-use-availability-zones).
 
-- **Persistent storage layer**: Clusters use Azure Storage as its durable persistence layer. If availability zones are configured, [Zone-redundant storage (ZRS)](/azure/storage/common/storage-redundancy#zone-redundant-storage) is enabled, placing storage replicas across all 3 availability zones for maximum intra-region resiliency.
+- **Persistent storage layer**: Clusters use Azure Storage as its durable persistence layer. If availability zones are configured, [Zone-redundant storage (ZRS)](/azure/storage/common/storage-redundancy#zone-redundant-storage) is enabled, placing storage replicas across all three availability zones for maximum intra-region resiliency.
 
     > [!NOTE]
     >
@@ -96,7 +96,7 @@ When an existing cluster that was deployed without any availability zones is con
 
 ### Considerations
 
-The request for migration to availability zones may not be successful due to capacity constraints. For a successful migration, there must be sufficient compute and storage capacity to support the migration. If there are capacity limitations, you will receive an error message indicating the issue.
+The request for migration to availability zones might not be successful due to capacity constraints. For a successful migration, there must be sufficient compute and storage capacity to support the migration. If there are capacity limitations, you'll receive an error message indicating the issue.
 
 ## See also
 
