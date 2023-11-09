@@ -110,7 +110,7 @@ To refine your analysis:
 | Queue length | Count | Avg | Number of pending messages in a component's input queue. The batching manager component has one message per blob. The ingestion manager component has one message per batch. A batch is a single ingest command with one or more blobs.  | Component Type |
 | Queue oldest message | Seconds | Avg | Time in seconds from when the oldest message in a component's input queue has been inserted. | Component Type | 
 | Received data size bytes | Bytes | Avg, Sum | Size of data received by data connections from input stream. | Component Type, Component Name |
-| Stage latency | Seconds | Avg | Time from when a message is accepted by Azure Data Explorer, until its content is received by an ingestion component for processing. <br> <br> Use **apply filters** and select **Component Type > EngineStorage** to show the total ingestion latency.| Database, Component Type | 
+| Stage latency | Seconds | Avg | Time from when a message is accepted by Azure Data Explorer, until its content is received by an ingestion component for processing. <br> <br> Use **apply filters** and select **Component Type > StorageEngine** to show the total ingestion latency.| Database, Component Type | 
 
 ## Streaming ingest metrics
 
