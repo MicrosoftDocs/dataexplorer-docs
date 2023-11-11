@@ -93,7 +93,7 @@ In high-concurrency applications, managing queries may cause the *admin* node's 
 
 For this scenario, we recommend using **weak** consistency mode. In this mode, more nodes are able to manage queries, which makes it possible to *horizontally scale* the number of concurrent queries. Nodes in this mode periodically refresh their copy of metadata and newly ingested data, which leads to a latency of typically less than a minute as the data is synchronized. However, this short latency is preferable to the bottleneck situation that can arise when using **strong** consistency mode.
 
-You can set the consistency mode in a [workgroup group query consistency policy](kusto/management/query-consistency-policy) or in the [client request properties](kusto/api/netfx/request-properties.md) or in the Grafana data source configuration.
+You can set the consistency mode in a [workgroup group query consistency policy](kusto/management/query-consistency-policy.md) or in the [client request properties](kusto/api/netfx/request-properties.md) or in the Grafana data source configuration.
 
 ## Set cluster policies
 
