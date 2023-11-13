@@ -3,7 +3,7 @@ title:  summarize operator
 description: Learn how to use the summarize operator to produce a table that summarizes the content of the input table.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 03/16/2023
+ms.date: 11/13/2023
 ms.localizationpriority: high 
 ---
 # summarize operator
@@ -64,11 +64,12 @@ The following table summarizes the default values of aggregations:
 
 | Operator | Default value |
 |--|--|
-| `count()`, `countif()`, `dcount()`, `dcountif()` | 0 |
-| `make_bag()`, `make_bag_if()`, `make_list()`, `make_list_if()`, `make_set()`, `make_set_if()` | empty dynamic array              ([]) |
+| `count()`, `countif()`, `dcount()`, `dcountif()`, `count_distinct()`, `sum()`, `sumif()`, `variance()`, `varianceif()`, `stdev()`, `stdevif()` | 0 |
+| `make_bag()`, `make_bag_if()`, `make_list()`, `make_list_if()`, `make_set()`, `make_set_if()` | empty dynamic array ([]) |
 | All others | null |
 
- When using these aggregates over entities that includes null values, the null values will be ignored and won't participate in the calculation (see examples below).
+> [!NOTE]
+> When applying these aggregates to entities that include null values, the null values are intentionally ignored and don't factor into the calculation. See [Examples](#examples).
 
 ## Examples
 
