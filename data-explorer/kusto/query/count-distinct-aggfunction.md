@@ -3,11 +3,13 @@ title:  count_distinct() (aggregation function) - (preview)
 description: Learn how to use the count_distinct() (aggregation function) to count unique values specified by a scalar expression per summary group.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 11/27/2022
+ms.date: 11/13/2023
 ---
 # count_distinct() (aggregation function) - (preview)
 
 Counts unique values specified by the scalar expression per summary group, or the total number of unique values if the summary group is omitted.
+
+[!INCLUDE [ignore-nulls](../../includes/ignore-nulls.md)]
 
 [!INCLUDE [data-explorer-agg-function-summarize-note](../../includes/data-explorer-agg-function-summarize-note.md)]
 

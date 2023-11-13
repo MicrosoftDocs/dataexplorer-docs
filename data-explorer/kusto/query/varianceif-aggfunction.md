@@ -3,11 +3,13 @@ title:  varianceif() (aggregation function)
 description: Learn how to use the varianceif() function to calculate the variance in an expression where the predicate evaluates to true.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 02/15/2023
+ms.date: 11/13/2023
 ---
 # varianceif() (aggregation function)
 
 Calculates the [variance](variance-aggfunction.md) of *expr* in records for which *predicate* evaluates to `true`.
+
+[!INCLUDE [ignore-nulls](../../includes/ignore-nulls.md)]
 
 [!INCLUDE [data-explorer-agg-function-summarize-note](../../includes/data-explorer-agg-function-summarize-note.md)]
 

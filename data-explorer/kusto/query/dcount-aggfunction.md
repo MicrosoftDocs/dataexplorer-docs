@@ -3,11 +3,13 @@ title:  dcount() (aggregation function)
 description: Learn how to use the dcount() function to return an estimate of the number of distinct values of an expression within a group.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 11/24/2022
+ms.date: 11/13/2023
 ---
 # dcount() (aggregation function)
 
 Calculates an estimate of the number of distinct values that are taken by a scalar expression in the summary group.
+
+[!INCLUDE [ignore-nulls](../../includes/ignore-nulls.md)]
 
 > [!NOTE]
 > The `dcount()` aggregation function is primarily useful for estimating the cardinality of huge sets. It trades accuracy for performance, and may return a result that varies between executions. The order of inputs may have an effect on its output.

@@ -3,11 +3,13 @@ title:  make_list_if() (aggregation function)
 description: Learn how to use the make_list_if() aggregation function to create a dynamic JSON object of expression values where the predicate evaluates to true.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 11/16/2022
+ms.date: 11/13/2023
 ---
 # make_list_if() (aggregation function)
 
 Creates a `dynamic` array of *expr* values in the group for which *predicate* evaluates to `true`.
+
+[!INCLUDE [ignore-nulls](../../includes/ignore-nulls.md)]
 
 [!INCLUDE [data-explorer-agg-function-summarize-note](../../includes/data-explorer-agg-function-summarize-note.md)]
 
