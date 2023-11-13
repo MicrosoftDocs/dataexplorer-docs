@@ -50,11 +50,19 @@ In this article, you learn about:
 
 ## Configure your cluster to support availability zones
 
-To add availability zones to an existing cluster, you must update the cluster `zones` attribute with a list of the target availability zones.
+To add availability zones to an existing cluster, you must update the cluster `zones` attribute with a list of the target availability zones. Follow the instructions for your preferred method, using the information in the following table:
+
+| Parameter | Value |
+| --- | --- |
+| `subscriptionId` | The subscription ID of the cluster |
+| `resourceGroupName` | The resource group name of the cluster |
+| `clusterName` | The name of the cluster |
+| `apiVersion` | `2023-05-02` |
 
 **// Qs**  
 **// WHERE CAN CUSTOMERS GET LIST OF AZs?**  
-**// IS THERE A WAY TO MONITOR PROGRESS/CHECK STATUS?**
+**// IS THERE A WAY TO MONITOR PROGRESS/CHECK STATUS?**  
+**// CAN YOU CHANGE/SWAP EXISTING AZs ON A PREVIOUSLY CONFIGURED CLUSTER?**
 
 ### [REST API](#tab/rest-api)
 
@@ -65,13 +73,6 @@ Follow the instructions on how to [deploy a template](/azure/azure-resource-mana
     ```http
     PUT https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Kusto/clusters/{clusterName}?api-version={apiVersion}
     ```
-
-    | Parameter | Value |
-    | --- | --- |
-    | `subscriptionId` | The subscription ID of the cluster |
-    | `resourceGroupName` | The resource group name of the cluster |
-    | `clusterName` | The name of the cluster |
-    | `apiVersion` | `2023-05-02` |
 
 1. Specify your availability zones in the request body. For example, to configure the cluster to use availability zones 1, 2, and 3, set the body as follows:
 
