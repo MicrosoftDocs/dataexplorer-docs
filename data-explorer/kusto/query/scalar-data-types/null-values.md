@@ -68,7 +68,7 @@ datatable(val:int)[5, int(null)]
 
 ## Null values and aggregation functions
 
-When applying the following operators to entities that include null values, the null values are intentionally ignored and don't factor into the calculation:
+When applying the following operators to entities that include null values, the null values are ignored and don't factor into the calculation:
 
 * [count()](../count-aggfunction.md)
 * [count_distinct()](../count-distinct-aggfunction.md)
