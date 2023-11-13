@@ -65,6 +65,7 @@ datatable(val:int)[5, int(null)]
 |----|-------------|-------------------|-------------|----------------|
 |5   |true         |true               |false        |true            |
 |null|null         |true               |null         |null            |
+
 ## Null values and aggregation functions
 
 When applying the following operators to entities that include null values, the null values are intentionally ignored and don't factor into the calculation:
@@ -109,7 +110,7 @@ datatable(ival:int, sval:string)[5, "a", int(null), "b"]
 |----|----|
 |null|b   |
 
-## Binary operators and null values
+## Null values and binary operators
 
 Binary operators are scalar operators that accept two scalar values and produce a third value. For example, greater-than (&gt;) and Boolean AND (&amp;&amp;) are binary operators.
 
@@ -154,7 +155,7 @@ The logical NOT operator [not()](../notfunction.md) yields the value `bool(null)
 * The [in operator](../inoperator.md) behaves like a logical OR of equality comparisons.
 * The `!in` operator behaves like a logical `AND` of inequality comparisons.
 
-## Data ingestion and null values
+## Null values and data ingestion
 
 For most data types, a missing value in the data source produces a null value in the corresponding table cell. However, columns of type `string` and CSV (or CSV-like) data formats are an exception to this rule, and a missing value produces an empty string.
 
