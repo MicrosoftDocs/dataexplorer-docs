@@ -11,49 +11,89 @@ Many Azure regions provide availability zones, which are separated groups of dat
 
 Azure Data Explorer clusters can be configured to use availability zones in supported regions. By using availability zones, a cluster can withstand the failure of a single datacenter in a region and ensure [business continuity](business-continuity-overview.md).
 
-You can configure availability zones when creating a cluster [in the Azure portal](create-cluster-and-database.md#create-a-cluster) or [programmatically](create-cluster-database.md).
+You can configure availability zones when creating a cluster [in the Azure portal](create-cluster-and-database.md#create-a-cluster) or [programmatically](create-cluster-database.md) using one of the following methods:
 
-> [!IMPORTANT]
->
-> - Once a cluster is configured with availability zones, you can't change the cluster not use availability zones.
-> - Not all regions support multiple zones. Clusters in those regions can't be configured to use availability zones.
-
-In this article, you learn about:
-
-> [!div class="checklist"]
->
-> - How to [migrate your cluster configuration to support availability zones](#migrate-your-cluster-configuration-to-support-availability-zones)
-> - The [architecture of clusters with availability zones](#architecture-of-clusters-with-availability-zones)
-> - The [migration process and considerations](#migration-process)
-
-## Prerequisites
-
-Changing a cluster's availability zones is supported in the following scenarios:
-
-- A cluster that was deployed without any availability zones
-- A cluster that was deployed with a partial list of less than three availability zones
-
-## Migrate your cluster configuration to support availability zones
-
-> [!NOTE]
-> Before you proceed, make sure you familiarize the [migration process and considerations](#migration-process).
-
-To add availability zones to an existing cluster, you must update the cluster `zones` attribute with a list of the target availability zones. You can change the programatically using one of the following methods:
-
-- ARM Template
 - REST API
 - C# SDK
 - Python SDK
 - Go SDK
 - Azure CLI
 - PowerShell
+- ARM Template
 
-1. STEP 1
-1. STEP 2
+> [!IMPORTANT]
+>
+> - Once a cluster is configured with availability zones, you can't change the cluster not use availability zones.
+> - Not all regions support multiple zones. Clusters in those regions can't be configured to use availability zones.
 
-// TODO?
-// WHERE GET LIST OF AZs?
-// MONITOR PROGRESS / CHECK STATUS
+> [!NOTE]
+>
+> - Before you proceed, make sure you familiarize the [migration process and considerations](#migration-process).
+> - You can use these steps to change the availability zones of a cluster that was deployed with a partial list of availability zones.
+
+In this article, you learn about:
+
+> [!div class="checklist"]
+>
+> - How to [configure your cluster to support availability zones](#configure-your-cluster-to-support-availability-zones)
+> - The [architecture of clusters with availability zones](#architecture-of-clusters-with-availability-zones)
+> - The [migration process and considerations](#migration-process)
+
+## Prerequisites
+
+- For migrating a cluster to support availability zones you need a cluster that was deployed without any availability zones
+
+- For changing the availability zones of a cluster you need a cluster that was deployed with a partial list of less than three availability zones
+
+- For REST API, familiarize yourself with [Manage Azure resources by using the REST API](/azure/azure-resource-manager/management/manage-resources-rest).
+- For other programmatic methods, see [Prerequisites](create-cluster-and-database.md#prerequisites).
+
+## Configure your cluster to support availability zones
+
+To add availability zones to an existing cluster, you must update the cluster `zones` attribute with a list of the target availability zones.
+
+**// Qs**
+**// WHERE CAN CUSTOMERS GET LIST OF AZs?**
+**// IS THERE A WAY TO MONITOR PROGRESS/CHECK STATUS?**
+
+### [REST API](#tab/rest-api)
+
+Follow the instructions on how to [deploy a template](/azure/azure-resource-manager/management/manage-resources-rest?tabs=azure-cli#deploy-a-template).
+
+1. Make the REST API call to the following endpoint where you replace the parameters with your values:
+
+    ```http
+    PUT https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Kusto/clusters/{clusterName}?api-version={apiVersion}
+    ```
+
+    | Parameter | Value |
+    | --- | --- |
+    | `subscriptionId` | The subscription ID of the cluster |
+    | `resourceGroupName` | The resource group name of the cluster |
+    | `clusterName` | The name of the cluster |
+    | `apiVersion` | `2023-05-02` |
+
+1. Specify your availability zones in the request body. For example, to configure the cluster to use availability zones 1, 2, and 3, set the body as follows:
+
+    ```json
+    { "zones": [ "1", "2", "3" ] }
+    ```
+
+### [ARM Template](#tab/arm)
+
+1. In your ARM template, add the following property to the `Microsoft.Kusto/clusters` resource:
+
+    ```json
+    "zones": [ "1", "2", "3" ]
+    ```
+
+    For example:
+
+    :::code language="json" source="samples/migrate-cluster-to-multiple-availability-zone/configure-zones.json" highlight="22":::
+
+1. Deploy the ARM template. For more information, see [Deploy resources with ARM templates and Azure CLI](/azure/azure-resource-manager/management/manage-resources-rest#deploy-a-template).
+
+---
 
 ## Architecture of clusters with availability zones
 
