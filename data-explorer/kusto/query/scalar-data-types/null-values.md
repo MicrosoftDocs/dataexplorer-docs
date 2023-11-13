@@ -65,6 +65,27 @@ datatable(val:int)[5, int(null)]
 |----|-------------|-------------------|-------------|----------------|
 |5   |true         |true               |false        |true            |
 |null|null         |true               |null         |null            |
+## Null values and aggregation functions
+
+When applying the following operators to entities that include null values, the null values are intentionally ignored and don't factor into the calculation:
+
+* [count()](../count-aggfunction.md)
+* [count_distinct()](../count-distinct-aggfunction.md)
+* [countif()](../countif-aggfunction.md)
+* [dcount()](../dcount-aggfunction.md)
+* [dcountif()](../dcountif-aggfunction.md)
+* [make_bag()](../make-bag-aggfunction.md)
+* [make_bag_if()](../make-bag-if-aggfunction.md)
+* [make_list()](../makelist-aggfunction.md)
+* [make_list_if()](../makelistif-aggfunction.md)
+* [make_set()](../makeset-aggfunction.md)
+* [make_set_if()](../makesetif-aggfunction.md)
+* [stdev()](../stdev-aggfunction.md)
+* [stdevif()](../stdevif-aggfunction.md)
+* [sum()](../sum-aggfunction.md)
+* [sumif()](../sumif-aggfunction.md)
+* [variance()](../variance-aggfunction.md)
+* [varianceif()](../varianceif-aggfunction.md)
 
 ## Null values and the `where` operator
 
