@@ -1,9 +1,9 @@
 ---
 title: Create a cross-tenant data connection for Azure Data Explorer
 description: Learn how to create a cross-tenant data connection for an Azure Event Hubs or Azure Event Grid service in a different tenant
-ms.reviewer: miwalia
+ms.reviewer: vilauzon
 ms.topic: reference
-ms.date: 02/14/2022
+ms.date: 11/13/2023
 ---
 # Cross-tenant data connection
 
@@ -30,7 +30,7 @@ In the following example, you'll use PowerShell to create a cross-tenant Event H
 
     |**Setting** | **Suggested value** |
     |---|---|
-    | Role | [Azure Event Hubs Data Receiver](/azure/role-based-access-control/built-in-roles) |
+    | Role | [Azure Event Hubs Data Owner](/azure/role-based-access-control/built-in-roles#azure-event-hubs-data-owner) |
     | Assign access to | User, group, or service principal |
     | Select | The email address of the user in *Tenant2* |
 
