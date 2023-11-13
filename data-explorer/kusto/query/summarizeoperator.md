@@ -173,11 +173,11 @@ StormEvents
 | Heavy Rain | 29.00:00:00 | 42 |
 | ... | ... | ... |
 
-### Aggregates default values
+### Default values
 
 When the input of `summarize` operator has at least one empty group-by key, its result is empty, too.
 
-When the input of `summarize` operator doesn't have an empty group-by key, the result is the default values of the aggregates used in the `summarize`:
+When the input of `summarize` operator doesn't have an empty group-by key, the result is the default values of the aggregates used in the `summarize` For more information, see [Aggregates default values](#aggregates-default-values).
 
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAz2PwQ7CIBBE7yb+A0cwHLz0YqI/YkyzBaQbAU3ZNtT48S7EGg4zmTe7WSwQvyE4WU7hmby63va7j8hzjDDh2wlIa1/OBA/Xs5VFaQGT7yMUjn9OFi0OG8C0AUx/sPg2OcwYbDajiyDpadcEEQ27TBOmWlFcagur1nnWl5uMS4T1Ri26jqMxBEZCZ7JuaSU+eFO8114RF3HkgCx6l6nBhb8EyfAe9QXbqS6i+AAAAA==" target="_blank">Run the query</a>
