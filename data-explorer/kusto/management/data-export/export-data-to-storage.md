@@ -1,14 +1,13 @@
 ---
-title:  Export data to storage
-description: This article describes Export data to storage in Azure Data Explorer.
+title:  Export data to cloud storage
+description: Learn how to export data to cloud storage.
 ms.reviewer: orspodek
 ms.topic: reference
-ms.date: 02/21/2023
+ms.date: 11/05/2023
 ---
-# Export data to storage
+# Export data to cloud storage
 
-Executes a query and writes the first result set to an
-external storage, specified by a [storage connection string](../../api/connection-strings/storage-connection-strings.md).
+Executes a query and writes the first result set to an external cloud storage, specified by a [storage connection string](../../api/connection-strings/storage-connection-strings.md).
 
 ## Permissions
 
@@ -59,8 +58,8 @@ The following table lists the supported authentication methods and the permissio
 |--|--|--|
 |[Impersonation](../../api/connection-strings/storage-authentication-methods.md#impersonation)|Storage Blob Data Contributor|Contributor|
 |[Shared Access (SAS) token](../../api/connection-strings/storage-authentication-methods.md#shared-access-sas-token)|Write|Write|
-|[Microsoft Entra access token](../../api/connection-strings/storage-authentication-methods.md#azure-ad-access-token)||
-|[Storage account access key](../../api/connection-strings/storage-authentication-methods.md#storage-account-access-key)|||
+|[Microsoft Entra access token](../../api/connection-strings/storage-authentication-methods.md#azure-ad-access-token)|No extra permissions required|No extra permissions required|
+|[Storage account access key](../../api/connection-strings/storage-authentication-methods.md#storage-account-access-key)|No extra permissions required|No extra permissions required|
 
 ## Returns
 
@@ -168,7 +167,6 @@ Authentication or authorization failures during export commands can occur when t
 ### Parquet data types mapping
 
 On export, Kusto data types are mapped to Parquet data types using the following rules:
-
 
 | Kusto Data Type | Parquet Data Type | Parquet Annotation | Comments |
 | --------------- | ----------------- | ------------------ | -------- |
