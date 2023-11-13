@@ -1,16 +1,16 @@
 ---
-title:  Null Values
-description: This article describes Null Values in Azure Data Explorer.
+title:  Null values
+description: Learn how to use and understand null values.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 07/25/2023
+ms.date: 11/13/2023
 zone_pivot_group_filename: data-explorer/zone-pivot-groups.json
 zone_pivot_groups: kql-flavors-all
 ---
-# Null Values
+# Null values
 
 All scalar data types in Kusto have a special value that represents a missing value.
-This value is called the **null value**, or **null**.
+This value is called the *null value*, or *null*.
 
 > [!NOTE]
 > The `string` data type doesn't support null values.
@@ -18,7 +18,11 @@ This value is called the **null value**, or **null**.
 ## Null literals
 
 The null value of a scalar type *T* is represented in the query language by the null literal `T(null)`.
+
 The following query returns a single row full of null values:
+
+> [!div class="nextstepaction"]
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAysoyswrUUjKz8/RyCvNydHUUUhJLEktycxNhfMr8xJzM5Nh3PTSzBQYG6gVxszJz0uHsYtSExGm5Zcm5cDNQpgLAOW2JXx4AAAA" target="_blank">Run the query</a>
 
 ```kusto
 print bool(null), datetime(null), dynamic(null), guid(null), int(null), long(null), real(null), double(null), time(null)
@@ -31,7 +35,7 @@ is the null value. The corresponding function [`isnotnull()`](../isnotnullfuncti
 to determine if a scalar value isn't the null value.
 
 > [!NOTE]
-> Because the `string` type doesn't support null values, it's recommended to use
+> Because the `string` type doesn't support null values, we recommend using
 > the [`isempty()`](../isemptyfunction.md) and the [`isnotempty()`](../isnotemptyfunction.md)
 > functions.
 
@@ -44,6 +48,9 @@ to determine if a scalar value isn't the null value.
 
 For example:
 
+> [!div class="nextstepaction"]
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA0tJLAHCpJxUjbLEHKvMvBLNaFMdBSCtkVeak6MZy1WjkFpRkpqXouBZ7JSZnp5aFJKRmGesYKsAVK9gp2CMQ4F/kR9QP0KZQn6RQmYxyEyQRZrIulwLSxNzQvKR1NvaIlyArNIvvwRTsSKSYgAsrfz+zgAAAA==" target="_blank">Run the query</a>
+
 ```kusto
 datatable(val:int)[5, int(null)]
 | extend IsBiggerThan3 = val > 3
@@ -52,7 +59,7 @@ datatable(val:int)[5, int(null)]
 | extend IsNotEqualToNull = val != int(null)
 ```
 
-Results:
+**Output**
 
 |val |IsBiggerThan3|IsBiggerThan3OrNull|IsEqualToNull|IsNotEqualToNull|
 |----|-------------|-------------------|-------------|----------------|
@@ -67,12 +74,15 @@ they're `bool(false)`. Records for which the predicate returns the null value ar
 
 For example:
 
+> [!div class="nextstepaction"]
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA0tJLAHCpJxUjcyyxByrzLwSHYViEKu4pCgzL10z2lRHQSlRSUcBKKORV5qTownkJynFctUolGekFqUqgLQpKNoqmAIA+YQGikoAAAA=" target="_blank">Run the query</a>
+
 ```kusto
 datatable(ival:int, sval:string)[5, "a", int(null), "b"]
 | where ival != 5
 ```
 
-Results:
+**Output**
 
 |ival|sval|
 |----|----|
@@ -97,13 +107,16 @@ In other words, the null value is "sticky".
 
 For example:
 
+> [!div class="nextstepaction"]
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA0tJLAHCpJxUjbLEHKvMvBLNaFMdBSCtkVeak6MZy1WjkFpRkpqXouCYkqJgqwBUpaCtYGiAEPctzSnJLMiphEpqASUBmujtH1UAAAA=" target="_blank">Run the query</a>
+
 ```kusto
 datatable(val:int)[5, int(null)]
 | extend Add = val + 10
 | extend Multiply = val * 10
 ```
 
-Results:
+**Output**
 
 |val |Add |Multiply|
 |----|----|--------|
