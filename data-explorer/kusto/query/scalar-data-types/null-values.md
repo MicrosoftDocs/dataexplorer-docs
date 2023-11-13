@@ -66,7 +66,7 @@ datatable(val:int)[5, int(null)]
 |5   |true         |true               |false        |true            |
 |null|null         |true               |null         |null            |
 
-## Null values and the where query operator
+## Null values and the `where` operator
 
 The [where operator](../whereoperator.md) use Boolean expressions to determine
 if to emit each input record to the output. This operator treats null values as if
@@ -92,7 +92,8 @@ datatable(ival:int, sval:string)[5, "a", int(null), "b"]
 
 Binary operators are scalar operators that accept two scalar values and produce a third value. For example, greater-than (&gt;) and Boolean AND (&amp;&amp;) are binary operators.
 
-For all binary operators except as noted [below](#exceptions-to-this-rule), the rule is as follows: <br>
+For all binary operators, except as noted in [Exceptions to this rule](#exceptions-to-this-rule), the rule is as follows:
+
 If one or both of the values input to the binary operator are null values, then the output of the binary operator is also the null value.
 In other words, the null value is "sticky".
 
@@ -123,15 +124,14 @@ datatable(val:int)[5, int(null)]
 |5   |15  |50      |
 |null|null|null    |
 
-## Null values and the logical NOT operator
+## Null values and the logical NOT (`!`) operator
 
 The logical NOT operator [not()](../notfunction.md) yields the value `bool(null)` if the argument is the null value.
 
-## Null values and the in operator
+## Null values and the `in` operator
 
 * The [in operator](../inoperator.md) behaves like a logical OR of equality comparisons.
-* The !in operator behaves like a logical AND
-of inequality comparisons.
+* The `!in` operator behaves like a logical `AND` of inequality comparisons.
 
 ## Data ingestion and null values
 
