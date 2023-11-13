@@ -52,8 +52,8 @@ In this article, you learn about:
 
 To add availability zones to an existing cluster, you must update the cluster `zones` attribute with a list of the target availability zones.
 
-**// Qs**
-**// WHERE CAN CUSTOMERS GET LIST OF AZs?**
+**// Qs**  
+**// WHERE CAN CUSTOMERS GET LIST OF AZs?**  
 **// IS THERE A WAY TO MONITOR PROGRESS/CHECK STATUS?**
 
 ### [REST API](#tab/rest-api)
