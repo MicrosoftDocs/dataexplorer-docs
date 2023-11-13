@@ -20,7 +20,7 @@ For more information about URL encoding and decoding, see [Percent-encoding](htt
 
 ## Parameters
 
-|Name|Type|Required|Parameters|
+|Name|Type|Required|Description|
 |--|--|--|--|
 |*url*|string|&check;|The URL to encode.|
 
