@@ -58,7 +58,7 @@ To summarize over ranges of numeric values, use `bin()` to reduce ranges to disc
 > * Although you can provide arbitrary expressions for both the aggregation and grouping expressions, it's more efficient to use simple column names, or apply `bin()` to a numeric column.
 > * The automatic hourly bins for datetime columns is no longer supported. Use explicit binning instead. For example, `summarize by bin(timestamp, 1h)`.
 
-## Aggregates default values
+## Default values of aggregations
 
 The following table summarizes the default values of aggregations:
 
@@ -173,11 +173,11 @@ StormEvents
 | Heavy Rain | 29.00:00:00 | 42 |
 | ... | ... | ... |
 
-### Default values
+### Aggregates default values
 
 When the input of `summarize` operator has at least one empty group-by key, its result is empty, too.
 
-When the input of `summarize` operator doesn't have an empty group-by key, the result is the default values of the aggregates used in the `summarize` For more information, see [Aggregates default values](#aggregates-default-values).
+When the input of `summarize` operator doesn't have an empty group-by key, the result is the default values of the aggregates used in the `summarize` For more information, see [Default values of aggregations](#default-values-of-aggregations).
 
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAz2PwQ7CIBBE7yb+A0cwHLz0YqI/YkyzBaQbAU3ZNtT48S7EGg4zmTe7WSwQvyE4WU7hmby63va7j8hzjDDh2wlIa1/OBA/Xs5VFaQGT7yMUjn9OFi0OG8C0AUx/sPg2OcwYbDajiyDpadcEEQ27TBOmWlFcagur1nnWl5uMS4T1Ri26jqMxBEZCZ7JuaSU+eFO8114RF3HkgCx6l6nBhb8EyfAe9QXbqS6i+AAAAA==" target="_blank">Run the query</a>
