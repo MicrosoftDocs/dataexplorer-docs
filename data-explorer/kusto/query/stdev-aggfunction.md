@@ -3,11 +3,13 @@ title:  stdev() (aggregation function)
 description: Learn how to use the stdev() aggregation function to calculate the standard deviation of an expression using Bessel's correction.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 01/31/2023
+ms.date: 11/13/2023
 ---
 # stdev() (aggregation function)
 
 Calculates the standard deviation of *expr* across the group, using [Bessel's correction](https://en.wikipedia.org/wiki/Bessel's_correction) for a small dataset that is considered a [sample](https://en.wikipedia.org/wiki/Sample_%28statistics%29).
+
+[!INCLUDE [ignore-nulls](../../includes/ignore-nulls.md)]
 
 For a large dataset that is representative of the population, use [stdevp() (aggregation function)](stdevp-aggfunction.md).
 
