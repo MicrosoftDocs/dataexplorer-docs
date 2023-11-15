@@ -122,7 +122,7 @@ $dataView | Sort StartTime -Descending | Format-Table -AutoSize
 |2007-09-20 21:57:00 |2007-09-20 22:05:00 |    11078 |  60913 |FLORIDA        |Tornado           |             0 |               0 |           0 |             0
 |2007-09-18 20:00:00 |2007-09-19 18:00:00 |    11074 |  60904 |FLORIDA        |Heavy Rain        |             0 |               0 |           0 |             0
 
-## See also
+## Related content
 
 * [Kusto client libraries](../client-libraries.md)
 * [Kusto connection strings](../connection-strings/kusto.md)

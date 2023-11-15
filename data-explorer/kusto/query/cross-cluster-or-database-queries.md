@@ -178,7 +178,7 @@ Tabular function in the default database.
 cluster("OtherCluster").database("OtherDb").GetDataPivot()
 ```
 
-## See also
+## Related content
 
 * [Cross-cluster join](../query/joincrosscluster.md)
 * [Allow cross-tenant queries and commands](../access-control/cross-tenant-query-and-commands.md)

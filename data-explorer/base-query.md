@@ -63,7 +63,7 @@ Base queries can be used in dashboard tiles, parameters, and other base queries.
 
 :::image type="content" source="media/base-query/use-base-query.png" alt-text="Screenshot of using a base query in Azure Data Explorer dashboards." lightbox="media/base-query/use-base-query.png":::
 
-## See also
+## Related content
 
 * [Visualize data with Azure Data Explorer dashboards](azure-data-explorer-dashboards.md)
 * [Use parameters in Azure Data Explorer dashboards](dashboard-parameters.md)

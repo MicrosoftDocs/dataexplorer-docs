@@ -45,7 +45,7 @@ range x from -1 to 1 step 1
 |0|0|NaN|false|
 |1|0|∞|true|
 
-## See also
+## Related content
 
 * To check if a value is null, see [isnull()](isnullfunction.md).
 * To check if a value is finite, see [isfinite()](isfinitefunction.md).

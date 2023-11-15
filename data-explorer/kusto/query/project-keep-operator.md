@@ -60,7 +60,7 @@ The following table shows only the first 10 results.
 |CON-PRT130| Roundtable: Data exploration and visualization with Azure Data Explorer |Roundtable |Online|
 |...|...|...|...|
 
-## See also
+## Related content
 
 * To choose what columns from the input to exclude from the output, use [project-away](projectawayoperator.md).
 * To rename columns, use [`project-rename`](projectrenameoperator.md).

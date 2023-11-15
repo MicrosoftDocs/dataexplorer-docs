@@ -71,7 +71,7 @@ print s=dynamic([1, 3, 5, 1, 3, 5, 2, 4, 6])
 |[1,3,5,1,3,5,2,4,6]|[1.0,3.0,5.0,1.0,3.0,5.0,1.0,3.0,5.0]|
 |[1,3,5,2,4,6,1,3,5,2,4,6]|[1.5,3.5,5.5,1.5,3.5,5.5,1.5,3.5,5.5,1.5,3.5,5.5]|
  
-## See also
+## Related content
 
 * [series_periods_detect()](series-periods-detectfunction.md)
 * [series_periods_validate()](series-periods-validatefunction.md)

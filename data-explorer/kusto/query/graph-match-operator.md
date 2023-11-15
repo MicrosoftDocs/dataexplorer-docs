@@ -133,7 +133,7 @@ reports
 |Eve|27|[<br>  "Alice",<br>  "Bob"<br>]|
 |Ben|23|[<br>  "Alice",<br>  "Chris"<br>]|
 
-## See also
+## Related content
 
 * [Graph operators](graph-operators.md)
 * [make-graph operator](make-graph-operator.md)

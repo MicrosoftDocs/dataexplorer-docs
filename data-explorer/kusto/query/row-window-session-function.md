@@ -69,6 +69,6 @@ datatable (ID:string, Timestamp:datetime) [
 | extend SessionStarted = row_window_session(Timestamp, 1h, 5m, ID != prev(ID))
 ```
 
-## See also
+## Related content
 
 * [scan operator](scan-operator.md)

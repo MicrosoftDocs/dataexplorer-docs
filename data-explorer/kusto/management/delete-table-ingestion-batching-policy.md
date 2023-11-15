@@ -33,6 +33,6 @@ The following command deletes the batching policy on a table.
 .delete table MyTable policy ingestionbatching
 ```
 
-## See also
+## Related content
 
 * [delete database batching policy](delete-database-ingestion-batching-policy.md)

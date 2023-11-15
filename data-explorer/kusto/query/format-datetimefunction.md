@@ -128,7 +128,7 @@ v3=format_datetime(dt, 'yy-MM-dd [hh:mm:ss tt]')
 |--|
 |17-01-29 [09:00:05 AM]|
 
-## See also
+## Related content
 
 * To convert from UTC to local, see [datetime_utc_to_local()](datetime-utc-to-local-function.md)
 * To convert a datetime from local to UTC, see [datetime_local_to_utc()](datetime-local-to-utc-function.md)

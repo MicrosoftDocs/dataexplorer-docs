@@ -213,7 +213,7 @@ MergeNodes
 |5|vv|||
 |6||Trent|Smith|
 
-## See also
+## Related content
 
 * [Graph operators](graph-operators.md)
 * [make-graph operator](make-graph-operator.md)

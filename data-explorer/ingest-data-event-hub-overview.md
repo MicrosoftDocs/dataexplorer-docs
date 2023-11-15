@@ -203,7 +203,7 @@ Azure Data Explorer doesn't support `Alias` event hub namespaces. To implement t
 > [!NOTE]
 > It's the user's responsibility to implement a failover from the primary namespace to the secondary namespace.
 
-## See also
+## Related content
 
 * [Ingest data from event hub into Azure Data Explorer](ingest-data-event-hub.md)
 * [Create an event hub data connection for Azure Data Explorer using C#](data-connection-event-hub-csharp.md)

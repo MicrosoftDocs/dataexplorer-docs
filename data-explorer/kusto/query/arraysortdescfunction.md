@@ -141,6 +141,6 @@ print array_sort_desc(dynamic([null,"blue","yellow","green",null]), false)
 |---|
 |[null,null,"yellow","green","blue"]|
 
-## See also
+## Related content
 
 To sort the first array in ascending order, use [array_sort_asc()](arraysortascfunction.md).

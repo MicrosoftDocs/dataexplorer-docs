@@ -34,7 +34,7 @@ A predicate run over the records of a table to compare their ingestion time agai
 A scalar value of type `bool` that indicates whether the record was ingested
 after the database cursor *RHS* (`true`) or not (`false`).
 
-## See also
+## Related content
 
 * [database cursors](../management/databasecursor.md)
 

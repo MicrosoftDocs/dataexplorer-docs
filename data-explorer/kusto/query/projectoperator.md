@@ -100,7 +100,7 @@ The following table shows only the first 10 results.
 |COLLIERVILLE| 6|
 |...|...|
 
-## See also
+## Related content
 
 * [`extend`](extendoperator.md)
 * [series_stats](series-statsfunction.md)
