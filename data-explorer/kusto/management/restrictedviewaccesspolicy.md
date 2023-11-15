@@ -21,7 +21,7 @@ While the restricted view access policy is specific to individual tables, the Un
 * The restricted view access policy can't be configured on a table on which a [Row Level Security policy](./rowlevelsecuritypolicy.md) is enabled.
 * A table with the restricted view access policy enabled can't be used as the source of a materialized view. For more information, see [materialized views limitations and known issues](materialized-views/materialized-views-limitations.md#the-materialized-view-source).
 
-## See also
+## Related content
 
 * [Azure Data Explorer role-based access control](../access-control/role-based-access-control.md)
 * [Manage database security roles](manage-database-security-roles.md)

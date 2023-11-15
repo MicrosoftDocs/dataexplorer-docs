@@ -42,7 +42,7 @@ print Quine=base64_encode_tostring("Kusto")
 |--------|
 |S3VzdG8=|
 
-## See also
+## Related content
 
 * To decode base64 strings to UTF-8 strings, see [base64_decode_tostring()](base64_decode_tostringfunction.md).
 * To decode base64 strings to an array of long values, see [base64_decode_toarray()](base64_decode_toarrayfunction.md).

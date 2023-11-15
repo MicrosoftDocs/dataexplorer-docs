@@ -93,7 +93,7 @@ StormEvents
 |1|512|8.7|\*|Thunderstorm Wind|YES
 |2|898|15.3|TEXAS|\*|\*
 
-## See also
+## Related content
 
 * [basket](./basketplugin.md)
 * [reduce](./reduceoperator.md)

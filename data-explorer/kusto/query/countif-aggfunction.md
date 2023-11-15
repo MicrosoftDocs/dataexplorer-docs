@@ -82,6 +82,6 @@ T
 |----|
 |2|
 
-## See also
+## Related content
 
 [count()](count-aggfunction.md) function, which counts rows without predicate expression.

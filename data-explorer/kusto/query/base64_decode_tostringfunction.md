@@ -57,7 +57,7 @@ print Empty=base64_decode_tostring("U3RyaW5n0KHR0tGA0L7Rh9C60LA=")
 |-----|
 ||
 
-## See also
+## Related content
 
 * To decode base64 strings to an array of long values, see [base64_decode_toarray()](base64_decode_toarrayfunction.md)
 * To encode strings to base64 string, see [base64_encode_tostring()](base64_encode_tostringfunction.md)

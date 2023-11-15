@@ -58,6 +58,6 @@ print
 |----|----|----|----|----|----|----|----|----|
 |2   |3   |-1  |-1   |3   |4   |-1  |4  |-1  |
 
-## See also
+## Related content
 
 Use [set_has_element(`arr`, `value`)](sethaselementfunction.md) to check whether a value exists in an array. This function will improve the readability of your query. Both functions have the same performance.

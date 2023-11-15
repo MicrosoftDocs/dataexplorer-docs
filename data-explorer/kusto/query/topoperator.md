@@ -48,6 +48,6 @@ The below table shows only the relevant column. Run the query above to see more 
 |422|...|
 |200|...|
 
-## See also
+## Related content
 
 * Use [top-nested](topnestedoperator.md) operator to produce hierarchical (nested) top results.

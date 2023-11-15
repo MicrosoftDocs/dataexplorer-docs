@@ -230,7 +230,7 @@ range x from 1 to 4 step 1
 |3|2|
 |4|3|
 
-## See also
+## Related content
 
 * For more examples, see [Chart count of live activities over time](./samples.md#chart-concurrent-sessions-over-time).
 * [mv-apply](./mv-applyoperator.md) operator.

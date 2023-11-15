@@ -831,6 +831,9 @@ items:
           - name: Extents overview
             href: extents-overview.md
             displayName: data shards, shard
+          - name: Extent tags
+            href: extent-tags.md
+            displayName: data shards, shard
           - name: Extents commands
             items:
               - name: .alter extent tags command

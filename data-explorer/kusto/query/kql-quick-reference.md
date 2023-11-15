@@ -52,7 +52,7 @@ This article shows you a list of functions and their descriptions to help get yo
 | **Visualization**                               | **_Operations that display the data in a graphical format_** | |
 | [render](renderoperator.md) | Renders results as a graphical output | `T | render Visualization [with (PropertyName = PropertyValue [, ...] )]` |
 
-## See also
+## Related content
 
 - [SQL cheat sheet](sqlcheatsheet.md)
 - [Splunk cheat sheet](splunk-cheat-sheet.md)

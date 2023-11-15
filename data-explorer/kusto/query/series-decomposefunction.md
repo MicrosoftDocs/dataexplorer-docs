@@ -116,6 +116,6 @@ ts
 
 :::image type="content" source="images/samples/series-decompose3.png" alt-text="Series decompose 3.":::
 
-## See also
+## Related content
 
 * Visualize results with an [anomalychart](visualization-anomalychart.md)

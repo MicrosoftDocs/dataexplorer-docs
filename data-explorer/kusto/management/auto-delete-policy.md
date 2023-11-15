@@ -27,6 +27,6 @@ An auto delete policy includes the following properties:
   * Boolean value indicating whether table should be dropped even if there are still [extents](extents-overview.md) in it.
   * Defaults to `false`.
 
-## See also
+## Related content
 
 For more information, see [auto delete policy](./show-auto-delete-policy-command.md) commands.

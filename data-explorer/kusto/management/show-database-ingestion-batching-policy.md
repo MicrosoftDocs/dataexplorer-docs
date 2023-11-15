@@ -37,6 +37,6 @@ The following command returns the batching policy on a database.
 .show database MyDatabase policy ingestionbatching
 ```
 
-## See also
+## Related content
 
 * [show table batching policy](show-table-ingestion-batching-policy.md)
