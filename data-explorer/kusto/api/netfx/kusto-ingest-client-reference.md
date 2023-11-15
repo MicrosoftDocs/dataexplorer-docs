@@ -344,7 +344,7 @@ KustoIngestionProperties class contains basic ingestion properties for fine cont
 |DatabaseName |Name of the database to ingest into |
 |TableName |Name of the table to ingest into |
 |DropByTags |Tags that each extent will have. DropByTags are permanent and can be used as follows: `.show table T extents where tags has 'some tag'` or `.drop extents <| .show table T extents where tags has 'some tag'` |
-|IngestByTags |Tags that are written per extent. Can later be used with the `IngestIfNotExists` property to avoid ingesting the same data twice. For more information, see [ingest-by: tags](../../../kusto/management/extents-overview.md#ingest-by-extent-tags). |
+|IngestByTags |Tags that are written per extent. Can later be used with the `IngestIfNotExists` property to avoid ingesting the same data twice. For more information, see [ingest-by: tags](../../../kusto/management/extent-tags.md). |
 |IngestionMapping|Holds either a reference to an exiting mapping or a list of column mappings|
 |AdditionalTags |Extra tags as needed |
 |IngestIfNotExists |List of tags that you don't want to ingest again (per table) |

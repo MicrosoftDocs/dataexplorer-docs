@@ -54,7 +54,7 @@ For more information on permissions, see [Kusto role-based access control](../..
 |`extend_schema` | bool | If `true`, the command may extend the schema of the table. Default is `false`. This option applies only to `.append`, `.set-or-append`, and `set-or-replace` commands. This option requires at least [Table Admin](../../access-control/role-based-access-control.md) permissions.|
 |`recreate_schema` | bool | If `true`, the command may recreate the schema of the table. Default is `false`. This option applies only to the `.set-or-replace` command. This option takes precedence over the `extend_schema` property if both are set. This option requires at least [Table Admin](../../access-control/role-based-access-control.md) permissions.|
 |`folder` | string | The folder to assign to the table. If the table already exists, this property overwrites the table's folder.|
-|`ingestIfNotExists` | string | If specified, ingestion fails if the table already has data tagged with an `ingest-by:` tag with the same value. For more information, see [ingest-by: tags](../../../kusto/management/extents-overview.md#ingest-by-extent-tags).|
+|`ingestIfNotExists` | string | If specified, ingestion fails if the table already has data tagged with an `ingest-by:` tag with the same value. For more information, see [ingest-by: tags](../../../kusto/management/extent-tags.md).|
 |`policy_ingestiontime` | bool | If `true`, the [Ingestion Time Policy](../show-table-ingestion-time-policy-command.md) will be enabled on the table. The default is `true`.|
 |`tags` | string | A JSON string that represents a list of [tags](../extent-tags.md) to associate with the created extent. |
 |`docstring` | string | A description used to document the table.|
