@@ -53,7 +53,7 @@ datatable(address:string, mask:long)
 |192.168.1.1/24|32|192.168.1.0|192.168.1.0/24|
 |192.168.1.1/24|-1|||
 
-## See also
+## Related content
 
 * For IPv4 address formatting without CIDR notation, see [format_ipv4()](format-ipv4-function.md).
 * For a list of functions related to IP addresses, see [IPv4 and IPv6 functions](scalarfunctions.md#ipv4ipv6-functions).

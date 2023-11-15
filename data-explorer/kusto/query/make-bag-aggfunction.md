@@ -81,6 +81,6 @@ T
 |---|---|---|
 |val_a|val_b|val_c|
 
-## See also
+## Related content
 
 [bag_unpack()](bag-unpackplugin.md).

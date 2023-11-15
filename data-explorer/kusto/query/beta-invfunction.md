@@ -61,7 +61,7 @@ datatable(p:double, alpha:double, beta:double, comment:string)
 |1.5|10|20|p > 1, yields null||
 |0.1|-1|20|alpha is < 0, yields NaN|NaN|
 
-## See also
+## Related content
 
 * For computing cumulative beta distribution function, see [beta-cdf()](./beta-cdffunction.md).
 * For computing probability beta density function, see [beta-pdf()](./beta-pdffunction.md).

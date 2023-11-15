@@ -46,7 +46,7 @@ If table T exists, and you send a `.create-merge table T (<columns specification
 * Any column in T that isn't in \<columns specification> won't be removed from T.
 * Any column in \<columns specification> that exists in T, but with a different data type will cause the command to fail.
 
-## See also
+## Related content
 
 * [`.create-merge tables`](create-merge-tables-command.md)
 * [`.create table`](create-table-command.md)

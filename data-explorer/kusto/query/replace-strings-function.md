@@ -115,7 +115,7 @@ Replace elements that aren't strings aren't replaced and the original string is 
 |---|---|
 |This is an example of using replace_strings()|This was an example of using replace_strings()|
 
-## See also
+## Related content
 
 * For a replacement of a single string, see [replace_string()](replace-string-function.md).
 * For a replacement based on regular expression, see [replace_regex()](replace-regex-function.md).

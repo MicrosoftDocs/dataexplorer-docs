@@ -104,6 +104,6 @@ result["fx"] = g * np.sin(df["x"]/n*2*np.pi*f)
     | render linechart 
  ```
 
-## See also
+## Related content
 
 For more examples of UDF functions that use the Python plugin, see the [Functions library](../kusto/functions-library/functions-library.md).

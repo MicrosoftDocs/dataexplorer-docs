@@ -176,7 +176,7 @@ print s2cell = geo_point_to_s2cell(1,1,int(null))
 |--------|
 |        |
 
-## See also
+## Related content
 
 * [geo_point_to_geohash()](geo-point-to-geohash-function.md)
 * [geo_point_to_h3cell()](geo-point-to-h3cell-function.md)

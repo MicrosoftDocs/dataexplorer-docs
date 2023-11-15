@@ -33,7 +33,7 @@ The following command disables the autocluster plugin on the cluster.
 .disable plugin autocluster
 ```
 
-## See also
+## Related content
 
 * [`.show plugins`](show-plugins.md)
 * [`.enable plugin`](enable-plugin.md)

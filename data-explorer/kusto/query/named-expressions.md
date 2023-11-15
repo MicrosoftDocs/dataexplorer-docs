@@ -101,7 +101,7 @@ print x, x, y, y
 |---|---|---|---|
 |166 |137 |70 |70|
 
-## See also
+## Related content
 
 * [Let statement](letstatement.md)
 * [as operator](asoperator.md)

@@ -41,7 +41,7 @@ print result=log10(5)
 |--|
 |0.69897000433601886|
 
-## See also
+## Related content
 
 * For natural (base-e) logarithms, see [log()](log-function.md).
 * For base-2 logarithms, see [log2()](log2-function.md)

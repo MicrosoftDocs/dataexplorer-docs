@@ -50,7 +50,7 @@ The following table contains the possible values for the *EncodingPolicyType* pa
 .alter column Logs.ActivityId policy encoding type='identifier'
 ```
 
-## See also
+## Related content
 
 * [Encoding policy](encoding-policy.md)
 * [.show encoding policy](show-encoding-policy.md)

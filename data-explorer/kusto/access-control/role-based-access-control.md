@@ -41,7 +41,7 @@ The **Manage** column offers ways to add or remove role principals.
 |Materialized view|Admin |Full permission to alter the view, delete the view, and grant admin permissions to another principal. | Database User or Table Admin |[Management commands](../management/manage-materialized-view-security-roles.md)|
 |Function|Admin |Full permission to alter the function, delete the function, and grant admin permissions to another principal. | Database User or Table Admin |[Management commands](../management/manage-function-security-roles.md)|
 
-## See also
+## Related content
 
 * [Manage cluster permissions](../../manage-cluster-permissions.md)
 * [Allow cross-tenant queries and commands](cross-tenant-query-and-commands.md)

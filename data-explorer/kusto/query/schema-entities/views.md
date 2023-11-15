@@ -44,7 +44,7 @@ The following query defines a stored view. This view behaves like any other stor
     MyView() { StormEvents | take 100 }
 ```
 
-## See also
+## Related content
 
 * [User-defined functions](../functions/user-defined-functions.md)
 * [union operator](../../query/unionoperator.md)

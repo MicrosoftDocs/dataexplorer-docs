@@ -123,7 +123,7 @@ StormEvents
 
 :::image type="content" source="images/visualization-linechart/line-chart-ysplit-panels.png" alt-text="Screenshot of the time chart query result with the ysplit panels property." lightbox="images/visualization-linechart/line-chart-ysplit-panels.png":::
 
-## See also
+## Related content
 
 * [Add a query visualization in the web UI](../../add-query-visualization.md)
 

@@ -107,7 +107,7 @@ StormEvents
 
 :::image type="content" source="images/geo-visualizations/storm-events-bubble.png" alt-text="Screenshot of storm events on a bubble map.":::
 
-## See also
+## Related content
 
 * [Geospatial clustering](geospatial-grid-systems.md)
 * [Render operator](renderoperator.md)
