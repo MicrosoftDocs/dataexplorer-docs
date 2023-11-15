@@ -226,6 +226,6 @@ range ID from 1 to 3 step 1
 |   2| Emma Evans   |
 |   3| Ashley Bowen |
 
-## See also
+## Related content
 
 For more examples of UDF functions that use the Python plugin, see the [Functions library](../kusto/functions-library/functions-library.md).

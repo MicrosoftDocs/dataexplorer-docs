@@ -91,7 +91,7 @@ To delete all the materialized view records that contain data of a given user:
 > .delete materialized-view MyMaterializedView records with (whatif=true) <| MyMaterializedView | where UserId == 'X'
 > ```
 
-## See also
+## Related content
 
 * [Soft delete](../concepts/data-soft-delete.md)
 * [Materialized views](materialized-views/materialized-view-overview.md)

@@ -41,7 +41,7 @@ print s1 = dynamic([1,2,4]), s2 = dynamic([4,2,1])
 |---|---|---|
 |[1,2,4]|[4,2,1]|[false,true,false]|
 
-## See also
+## Related content
 
 For entire series statistics comparisons, see:
 

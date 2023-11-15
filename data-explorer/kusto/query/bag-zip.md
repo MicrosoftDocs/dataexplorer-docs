@@ -146,6 +146,6 @@ Data
 |--|--|--|
 | a | [1,'2',2.5] | | TRUE |
 
-## See also
+## Related content
 
 * [zip function](zipfunction.md)

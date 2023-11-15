@@ -75,6 +75,6 @@ StormEvents
 Understanding the results:  
 The outcome is three funnels (for periods: One hour, 4 hours, and one day). For each funnel step, a number of distinct counts of  are shown. You can see that the more time is given to complete the whole sequence of `Hail` -> `Tornado` -> `Thunderstorm Wind`, the higher `dcount` value is obtained. In other words, there were more occurrences of the sequence reaching the funnel step.
 
-## See also
+## Related content
 
 * [scan operator](scan-operator.md)

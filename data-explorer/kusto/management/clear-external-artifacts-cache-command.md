@@ -47,7 +47,7 @@ This command returns a table with the following columns:
 |https://kustoscriptsamples.blob.core.windows.net/samples/R/sample_script.r|Cleared successfully on all nodes
 |https://kustoscriptsamples.blob.core.windows.net/samples/python/sample_script.py|Cleared successfully on all nodes
 
-## See also
+## Related content
 
 * [Manage language extensions in your Azure Data Explorer cluster](../../language-extensions.md)
 * [Python plugin](../query/pythonplugin.md)

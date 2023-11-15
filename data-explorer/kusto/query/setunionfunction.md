@@ -70,7 +70,7 @@ datatable (Arr1: dynamic)
 |["A4","A2","A7","A2"]|["A4","A2","A7"]|
 |["C4","C7","C1","C4"]|["C4","C7","C1"]|
 
-## See also
+## Related content
 
 * [`set_intersect()`](setintersectfunction.md)
 * [`set_difference()`](setdifferencefunction.md)

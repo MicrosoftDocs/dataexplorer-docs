@@ -69,7 +69,7 @@ You can represent each of the fields with JSONPath notation as follows:
 "$.Details.User['IP Address']" // IP Address field
 ```
 
-## See also
+## Related content
 
 * [Get the path to a dynamic field](../../web-results-grid.md#get-the-path-to-a-dynamic-field)
 * [Add filter from dynamic field](../../web-results-grid.md#add-filter-from-dynamic-field)

@@ -202,7 +202,7 @@ To set up authentication for a web client:
     const count = jsonResult.filter((x) => x.TableKind === "PrimaryResult")[0].Rows[0][0];
     ```
 
-## See also
+## Related content
 
 * [Authentication over HTTPs](authentication.md)
 * [Provision a Microsoft Entra application](../../../provision-azure-ad-app.md)

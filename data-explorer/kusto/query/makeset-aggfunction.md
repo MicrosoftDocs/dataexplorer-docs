@@ -88,7 +88,7 @@ datatable (Val: int, Arr1: dynamic)
 |--|--|
 | [1,5,7] | ["A1","A2","A3","C1","C2"] |
 
-## See also
+## Related content
 
 * Use [`mv-expand`](./mvexpandoperator.md) operator for the opposite function.
 * [`make_set_if`](./makesetif-aggfunction.md) operator is similar to `make_set`, except it also accepts a predicate.

@@ -32,7 +32,7 @@ Returns a `dynamic` array of the set of distinct values that *expr* takes in rec
 > [!TIP]
 > To only count the distinct values, use [dcountif()](dcountif-aggfunction.md).
 
-## See also
+## Related content
 
 [`make_set`](./makeset-aggfunction.md) function, which does the same, without predicate expression.
 

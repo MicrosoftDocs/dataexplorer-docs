@@ -40,7 +40,7 @@ print date_time = unixtime_seconds_todatetime(1546300800)
 |---|
 |2019-01-01 00:00:00.0000000|
 
-## See also
+## Related content
 
 * Convert unix-epoch milliseconds to UTC datetime using [unixtime_milliseconds_todatetime()](unixtime-milliseconds-todatetimefunction.md).
 * Convert unix-epoch microseconds to UTC datetime using [unixtime_microseconds_todatetime()](unixtime-microseconds-todatetimefunction.md).

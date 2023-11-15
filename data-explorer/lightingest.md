@@ -74,7 +74,7 @@ For an example of how to auto-generate a LightIngest command, see [ingest histor
 |-ingestionMappingRef, -mappingRef  |string  |Name of an ingestion column mapping that was previously created on the table. Mandatory for Json and Avro formats. See [data mappings](kusto/management/mappings.md) | Optional  |
 |-creationTimePattern      |string  |When set, is used to extract the CreationTime property from the file or blob path. See [How to ingest data using `CreationTime`](#how-to-ingest-data-using-creationtime) |Optional  |
 |-ignoreFirstRow, -ignoreFirst |bool    |If set, the first record of each file/blob is ignored (for example, if the source data has headers) | Optional  |
-|-tag            |string   |[Tags](kusto/management/extents-overview.md#extent-tags) to associate with the ingested data. Multiple occurrences are permitted | Optional  |
+|-tag            |string   |[Tags](kusto/management/extent-tags.md) to associate with the ingested data. Multiple occurrences are permitted | Optional  |
 |-dontWait           |bool     |If set to 'true', doesn't wait for ingestion completion. Useful when ingesting large amounts of files/blobs |Optional  |
 |-compression, -cr          |double |Compression ratio hint. Useful when ingesting compressed files/blobs to help Azure Data Explorer assess the raw data size. Calculated as original size divided by compressed size |Optional  |
 |-limit , -l           |integer   |If set, limits the ingestion to first N files |Optional  |

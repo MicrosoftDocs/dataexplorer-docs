@@ -36,7 +36,7 @@ The following table shows cases where ingestion succeeds without an error, silen
 |Value not matching the table schema data type. For example: floating point value ingested into an `int` column.                      |NULL value filled                             |
 |Mapped fields are missing from the data                                                                                    |NULL value filled                             |
 
-## See also
+## Related content
 
 * [Data ingestion](ingest-data-overview.md)
 * [Ingestion failures](kusto/management/ingestionfailures.md)

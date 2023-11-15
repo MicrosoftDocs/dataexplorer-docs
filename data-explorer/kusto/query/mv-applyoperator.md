@@ -247,6 +247,6 @@ datatable(SourceNumber: string, TargetNumber: string, CharsCount: long)
 |555-555-1234|555-555-1212|46|{<br> "SourceNumber": "555-555-1234",<br>   "TargetNumber": "555-555-1212"<br> }|
 |555-555-1212|&nbsp;|&nbsp;|{<br> "SourceNumber": "555-555-1212"<br> }|
 
-## See also
+## Related content
 
 * [mv-expand](./mvexpandoperator.md) operator
