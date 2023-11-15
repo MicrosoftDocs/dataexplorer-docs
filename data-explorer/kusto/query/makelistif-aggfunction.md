@@ -56,6 +56,6 @@ T
 |----|
 |["George", "Ringo"]|
 
-## See also
+## Related content
 
 [`make_list`](./makelist-aggfunction.md) function, which does the same, without predicate expression.

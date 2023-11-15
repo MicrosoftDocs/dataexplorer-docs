@@ -60,6 +60,6 @@ X | join kind=leftouter Y on Key
 |c|4|c|20|
 |c|4|c|30|
 
-## See also
+## Related content
 
 * Learn about other [join flavors](joinoperator.md#returns)

@@ -68,6 +68,6 @@ The following table shows only the first 10 results. To see the full output, run
 |2007-01-01T06:00:00Z| 2007-01-01T00:00:00Z |06:00:00|
 |2007-01-01T06:00:00Z| 2007-01-01T00:00:00Z |06:00:00|
 
-## See also
+## Related content
 
 * Use [series_stats](series-statsfunction.md) to return multiple columns

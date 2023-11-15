@@ -136,6 +136,6 @@ The following command removes all existing `viewers` on the `Samples` database.
 .set database Samples viewers none
 ```
 
-## See also
+## Related content
 
 * [current_principal_details()](../query/current-principal-detailsfunction.md)

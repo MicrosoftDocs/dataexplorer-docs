@@ -41,7 +41,7 @@ print Quine=base64_decode_toarray("S3VzdG8=")
 |-----|
 |[75,117,115,116,111]|
 
-## See also
+## Related content
 
 * To decode base64 strings to a UTF-8 string, see [base64_decode_tostring()](base64_decode_tostringfunction.md)
 * To encode strings to a base64 string, see [base64_encode_tostring()](base64_encode_tostringfunction.md)

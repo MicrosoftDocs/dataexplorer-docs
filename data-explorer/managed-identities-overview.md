@@ -60,7 +60,7 @@ After assigning the managed identity to your cluster and configuring the relevan
 
 * **Ingest from storage**: Ingest data from files located in cloud storages into a target table using managed identity authentication. For more information, see [Ingest from storage](kusto/management/data-ingestion/ingest-from-storage.md).
 
-## See also
+## Related content
 
 * [Configure managed identities for your cluster](configure-managed-identities-cluster.md)
 * [Authenticate external tables with managed identities](external-tables-managed-identities.md)

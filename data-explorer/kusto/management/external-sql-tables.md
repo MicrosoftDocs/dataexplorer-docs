@@ -146,7 +146,7 @@ with
 )  
 ```
 
-## See also
+## Related content
 
 * [External tables overview](../query/schema-entities/externaltables.md)
 * [SQL external table authentication methods](../api/connection-strings/sql-authentication-methods.md)

@@ -61,7 +61,7 @@ For all authentication methods, the principal (or managed identity) must have th
   * Existing table: table UPDATE and INSERT
   * New table: CREATE, UPDATE, and INSERT
 
-## See also
+## Related content
 
 * [Create and alter SQL external tables](../../management/external-sql-tables.md)
 * [Authentication with the sql_request plugin](../../query/sqlrequestplugin.md#authentication-and-authorization)

@@ -36,7 +36,7 @@ The following command enables the autocluster plugin on the cluster.
 .enable plugin autocluster
 ```
 
-## See also
+## Related content
 
 * [`.disable plugin`](disable-plugin.md)
 * [`.show plugins`](show-plugins.md)

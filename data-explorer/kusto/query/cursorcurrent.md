@@ -26,7 +26,7 @@ Retrieves the current value of the cursor of the database in scope.
 Returns a single value of type `string` that encodes the current value of the
 cursor of the database in scope.
 
-## See also
+## Related content
 
 * [database cursors](../management/databasecursor.md)
 

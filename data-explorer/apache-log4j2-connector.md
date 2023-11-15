@@ -215,7 +215,7 @@ Use the following steps to:
 
     :::image type="content" lightbox="media/apache-log4j2-connector/take-10-results.png" source="media/apache-log4j2-connector/take-10-results.png" alt-text="Screenshot of table with take 10 function and results.":::
 
-## See also
+## Related content
 
 * [Data connectors overview](connector-overview.md)
 * [Kusto Query Language (KQL) overview](kusto/query/index.md)
