@@ -226,10 +226,10 @@ datatable(x:long)[]
 The aggregate avg sums all the non-nulls and counts only those which participated in the calculation (won't take nulls into account).
 
 > [!div class="nextstepaction"]
-> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAy2KSwqAIBgG90F3+JYKbQxaehihXxF8hI/Q6PAptJqBmaSCITToFD0ESsSOXOiCWJcX1AqFEx0SVmvWICXEhkTKsVCd478fnM89V+9Vsg9NY31UdZvBD+MI2XFlAAAA" target="_blank">Run the query</a>
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAy2KTQqAIBQG953iWyq0EWrpYYSeIvgTTw2NDp9BqxmYYZMcocNyjlCoGRtKpRNqeUC9UjowoOGtFR1aQ61gMkGkFoL8fZdy3qXFaNjf9JkYM5rLTb7y45THYwAAAA==" target="_blank">Run the query</a>
 
 ```kusto
-range x from 1 to 2 step 1
+range x from 1 to 4 step 1
 | extend y = iff(x == 1, real(null), real(5))
 | summarize sum(y), avg(y)
 ```
@@ -238,7 +238,7 @@ range x from 1 to 2 step 1
 
 |sum_y|avg_y|
 |---|---|
-|5|5|
+|15|5|
 
 The regular count will count nulls:
 
