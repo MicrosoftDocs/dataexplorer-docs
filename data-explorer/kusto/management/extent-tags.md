@@ -7,7 +7,7 @@ ms.date: 11/15/2023
 ---
 # Extent tags
 
-An *extent tag* is a string that describes properties common to all data in an [extent](extents-overview.md). For example, during data ingestion, you can append an extent tag to signify the source of the ingested data. Subsequently, you can leverage this tag for analysis.
+An *extent tag* is a string that describes properties common to all data in an [extent](extents-overview.md). For example, during data ingestion, you can append an extent tag to signify the source of the ingested data. Then, you can use this tag for analysis.
 
 Extents can hold multiple tags as part of their metadata. When extents merge, their tags also merge, ensuring consistent metadata representation.
 
