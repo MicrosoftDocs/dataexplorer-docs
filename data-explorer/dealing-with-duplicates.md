@@ -83,7 +83,7 @@ There are several considerations that can help you choose between using material
 
 ### Solution #5: `ingest-by` extent tags
 
-['ingest-by:' extent tags](kusto/management/extents-overview.md#ingest-by-extent-tags) can be used to prevent duplicates during ingestion. This is relevant only in use cases where each ingestion batch is guaranteed to have no duplicates, and duplicates are only expected if the same ingestion batch is ingested more than once. See more details in ['ingest-by:' extent tags](kusto/management/extents-overview.md#ingest-by-extent-tags) section. Pay special attention to the *warning*.
+['ingest-by:' extent tags](kusto/management/extent-tags.md) can be used to prevent duplicates during ingestion. This is relevant only in use cases where each ingestion batch is guaranteed to have no duplicates, and duplicates are only expected if the same ingestion batch is ingested more than once.
 
 ## Summary
 
