@@ -3,11 +3,13 @@ title:  variance() (aggregation function)
 description: Learn how to use the variance() aggregation function to calculate the sample variance of the expression across the group.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 03/02/2023
+ms.date: 11/13/2023
 ---
 # variance() (aggregation function)
 
 Calculates the variance of *expr* across the group, considering the group as a [sample](https://en.wikipedia.org/wiki/Sample_%28statistics%29).
+
+[!INCLUDE [ignore-nulls](../../includes/ignore-nulls.md)]
 
 The following formula is used:
 

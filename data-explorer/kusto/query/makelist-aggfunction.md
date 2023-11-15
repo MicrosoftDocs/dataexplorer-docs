@@ -3,12 +3,14 @@ title:  make_list() (aggregation function)
 description: Learn how to use the make_list() function to create a dynamic JSON object array of all the values of the expressions in the group.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 01/05/2023
+ms.date: 11/13/2023
 adobe-target: true
 ---
 # make_list() (aggregation function)
 
 Creates a `dynamic` array of all the values of *expr* in the group.
+
+[!INCLUDE [ignore-nulls](../../includes/ignore-nulls.md)]
 
 [!INCLUDE [data-explorer-agg-function-summarize-note](../../includes/data-explorer-agg-function-summarize-note.md)]
 

@@ -9,6 +9,8 @@ ms.date: 02/05/2023
 
 Calculates the sum of *expr* across the group.
 
+[!INCLUDE [ignore-nulls](../../includes/ignore-nulls.md)]
+
 [!INCLUDE [data-explorer-agg-function-summarize-note](../../includes/data-explorer-agg-function-summarize-note.md)]
 
 ## Syntax
