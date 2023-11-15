@@ -90,6 +90,11 @@ The following command ingests the data so long as no extent in the table has the
 .ingest ... with (ingestIfNotExists = '["2016-02-17"]', tags = '["ingest-by:2016-02-17"]')
 ```
 
+## Limitations
+
+* Extent tags can only be applied to records within an extent. They are set on the extents, not directly on the individual records. Consequently, tags can't be set on streaming ingestion data before it gets stored in extents.
+* Extent tags can't be stored on data in external tables or materialized views.
+
 ## Related content
 
 * [Extents (data shards) overview](extents-overview.md)
