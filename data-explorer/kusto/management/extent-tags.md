@@ -16,7 +16,7 @@ To see the tags associated with an extent, use the [.show extents](./show-extent
 > [!IMPORTANT]
 > Tags starting with `drop-by:` or `ingest-by:` carry specific meanings. For more information, see [drop-by extent tags](#drop-by-extent-tags) and [ingest-by extent tags](#ingest-by-extent-tags).
 
-## `drop-by:` extent tags
+## `drop-by` extent tags
 
 Tags that start with a `drop-by:` prefix can be used to control which other extents to merge with. Extents that have the same set of `drop-by:` tags can be merged together, but they won't be merged with other extents if they have a different set of `drop-by:` tags.
 
@@ -52,7 +52,7 @@ The following query issues a command to drop extents according to their `drop-by
 .drop extents <| .show table MyTable extents where tags has "drop-by:2016-02-17" 
 ```
 
-## `ingest-by:` extent tags
+## `ingest-by` extent tags
 
 Tags with the prefix `ingest-by:` can be used together with the `ingestIfNotExists` property to ensure that data is ingested only once.
 
