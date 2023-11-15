@@ -22,9 +22,9 @@ Tags that start with a `drop-by:` prefix can be used to control which other exte
 
 > [!NOTE]
 >
-> * Avoid excessive use of `drop-by` tags, as they are intended for rare events.
-> * These tags should not be used to replace individual record-level data and are most effective when applied to large amounts of data.
-> * Assigning unique `drop-by` tags to each record, a small number of records, or files can significantly impact performance.
+> * Avoid excessive use of `drop-by` tags.
+> * These tags shouldn't be used to replace individual record-level data, and they are most effective when applied to large amounts of data.
+> * Assigning unique `drop-by` tags to individual records or files can significantly impact performance.
 
 ### Examples
 
@@ -61,7 +61,7 @@ The `ingestIfNotExists` property prevents duplicate ingestion by checking if an 
 > [!NOTE]
 >
 > * Avoid excessive use of `ingest-by` tags.
-> * Assigning unique `ingest-by` tags for each ingestion call might severely impact performance.
+> * Assigning unique `ingest-by` tags for each ingestion call can significantly impact performance.
 > * If the pipeline is known to have data duplications, we recommend that you solve these duplications before ingesting data.
 
 ### Examples
