@@ -3,11 +3,13 @@ title:  make_set() (aggregation function)
 description: Learn how to use the make_set() function to return a JSON array of the distinct values that the expression takes in the group. 
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 03/12/2023
+ms.date: 11/13/2023
 ---
 # make_set() (aggregation function)
 
 Creates a `dynamic` array of the set of distinct values that *expr* takes in the group.
+
+[!INCLUDE [ignore-nulls](../../includes/ignore-nulls.md)]
 
 [!INCLUDE [data-explorer-agg-function-summarize-note](../../includes/data-explorer-agg-function-summarize-note.md)]
 

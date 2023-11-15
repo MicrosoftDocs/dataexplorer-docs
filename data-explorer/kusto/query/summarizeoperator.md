@@ -3,7 +3,7 @@ title:  summarize operator
 description: Learn how to use the summarize operator to produce a table that summarizes the content of the input table.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 03/16/2023
+ms.date: 11/13/2023
 ms.localizationpriority: high 
 ---
 # summarize operator
@@ -58,17 +58,18 @@ To summarize over ranges of numeric values, use `bin()` to reduce ranges to disc
 > * Although you can provide arbitrary expressions for both the aggregation and grouping expressions, it's more efficient to use simple column names, or apply `bin()` to a numeric column.
 > * The automatic hourly bins for datetime columns is no longer supported. Use explicit binning instead. For example, `summarize by bin(timestamp, 1h)`.
 
-## Aggregates default values
+## Default values of aggregations
 
 The following table summarizes the default values of aggregations:
 
 | Operator | Default value |
 |--|--|
-| `count()`, `countif()`, `dcount()`, `dcountif()` | 0 |
-| `make_bag()`, `make_bag_if()`, `make_list()`, `make_list_if()`, `make_set()`, `make_set_if()` | empty dynamic array              ([]) |
+| `count()`, `countif()`, `dcount()`, `dcountif()`, `count_distinct()`, `sum()`, `sumif()`, `variance()`, `varianceif()`, `stdev()`, `stdevif()` | 0 |
+| `make_bag()`, `make_bag_if()`, `make_list()`, `make_list_if()`, `make_set()`, `make_set_if()` | empty dynamic array ([]) |
 | All others | null |
 
- When using these aggregates over entities that includes null values, the null values will be ignored and won't participate in the calculation (see examples below).
+> [!NOTE]
+> When applying these aggregates to entities that include null values, the null values are ignored and don't factor into the calculation. For examples, see [Aggregates default values](#aggregates-default-values).
 
 ## Examples
 
@@ -176,7 +177,7 @@ StormEvents
 
 When the input of `summarize` operator has at least one empty group-by key, its result is empty, too.
 
-When the input of `summarize` operator doesn't have an empty group-by key, the result is the default values of the aggregates used in the `summarize`:
+When the input of `summarize` operator doesn't have an empty group-by key, the result is the default values of the aggregates used in the `summarize` For more information, see [Default values of aggregations](#default-values-of-aggregations).
 
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAz2PwQ7CIBBE7yb+A0cwHLz0YqI/YkyzBaQbAU3ZNtT48S7EGg4zmTe7WSwQvyE4WU7hmby63va7j8hzjDDh2wlIa1/OBA/Xs5VFaQGT7yMUjn9OFi0OG8C0AUx/sPg2OcwYbDajiyDpadcEEQ27TBOmWlFcagur1nnWl5uMS4T1Ri26jqMxBEZCZ7JuaSU+eFO8114RF3HkgCx6l6nBhb8EyfAe9QXbqS6i+AAAAA==" target="_blank">Run the query</a>
@@ -225,10 +226,10 @@ datatable(x:long)[]
 The aggregate avg sums all the non-nulls and counts only those which participated in the calculation (won't take nulls into account).
 
 > [!div class="nextstepaction"]
-> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAy2KSwqAIBgG90F3+JYKbQxaehihXxF8hI/Q6PAptJqBmaSCITToFD0ESsSOXOiCWJcX1AqFEx0SVmvWICXEhkTKsVCd478fnM89V+9Vsg9NY31UdZvBD+MI2XFlAAAA" target="_blank">Run the query</a>
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAy2KTQqAIBQG953iWyq0EWrpYYSeIvgTTw2NDp9BqxmYYZMcocNyjlCoGRtKpRNqeUC9UjowoOGtFR1aQ61gMkGkFoL8fZdy3qXFaNjf9JkYM5rLTb7y45THYwAAAA==" target="_blank">Run the query</a>
 
 ```kusto
-range x from 1 to 2 step 1
+range x from 1 to 4 step 1
 | extend y = iff(x == 1, real(null), real(5))
 | summarize sum(y), avg(y)
 ```
@@ -237,7 +238,7 @@ range x from 1 to 2 step 1
 
 |sum_y|avg_y|
 |---|---|
-|5|5|
+|15|5|
 
 The regular count will count nulls:
 
