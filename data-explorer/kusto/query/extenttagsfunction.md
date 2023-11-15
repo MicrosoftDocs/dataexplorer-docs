@@ -11,7 +11,7 @@ zone_pivot_groups: kql-flavors-all
 
 ::: zone pivot="azuredataexplorer, fabric"
 
-Returns a dynamic array with the [tags](../management/extents-overview.md#extent-tags) of the data shard ("extent") that the current record is in.
+Returns a dynamic array with the [extent tags](../management/extent-tags.md) of the [extent](../management/extents-overview.md) that the current record is in.
 
 If you apply this function to calculated data, which isn't attached to a data shard, returns an empty value.
 
