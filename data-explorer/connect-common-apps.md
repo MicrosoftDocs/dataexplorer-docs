@@ -104,7 +104,7 @@ To connect to Azure Data Explorer from Microsoft SQL Server Management Studio, f
 
 1. Now, you can run custom SQL queries from the query window.
 
-## Next steps
+## Related content
 
 * [Query with T-SQL](t-sql.md)
 * [Run KQL queries and call stored functions](sql-kql-queries-and-stored-functions.md)

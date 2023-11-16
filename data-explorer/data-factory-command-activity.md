@@ -211,7 +211,7 @@ In an async management command, the activity polls the operations table behind t
 }
 ``` 
 
-## Next steps
+## Related content
 
-* Learn about how to [copy data to Azure Data Explorer using Azure Data Factory](data-factory-load-data.md).
-* Learn about using [Azure Data Factory template for bulk copy from database to Azure Data Explorer](data-factory-template.md).
+* [Copy data to Azure Data Explorer using Azure Data Factory](data-factory-load-data.md).
+* [Azure Data Factory template for bulk copy from database to Azure Data Explorer](data-factory-template.md).

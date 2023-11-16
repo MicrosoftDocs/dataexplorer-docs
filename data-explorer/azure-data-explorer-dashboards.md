@@ -259,8 +259,7 @@ However, database editors might want to limit the minimum refresh rate that any 
 
 1. Select **Apply** and then **Save** the dashboard.
 
-## Next Steps
+## Related content
 
-* Get data with the [ingestion wizard](ingest-data-wizard.md)
 * [Use parameters in Azure Data Explorer dashboards](dashboard-parameters.md)
 * [Customize Azure Data Explorer dashboard visuals](dashboard-customize-visuals.md)

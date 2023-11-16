@@ -134,6 +134,6 @@ Use the [optimized autoscale](manage-cluster-horizontal-scaling.md#optimized-aut
 
 Using optimized autoscale in this example saved roughly 50% of the cost in comparison to having the same horizontal and vertical scale on all replicas.
 
-## Next steps
+## Related content
 
-Get started with the [business continuity and disaster recovery overview](business-continuity-overview.md).
+* [Business continuity and disaster recovery overview](business-continuity-overview.md)
