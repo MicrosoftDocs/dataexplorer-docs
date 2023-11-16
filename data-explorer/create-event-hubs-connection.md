@@ -3,7 +3,7 @@ title: 'Create an Event Hubs data connection - Azure Data Explorer'
 description: Learn how to ingest data from Event Hubs into Azure Data Explorer.
 ms.topic: how-to
 ms.custom:
-ms.date: 09/26/2023
+ms.date: 11/16/2023
 ---
 
 # Create an Event Hubs data connection for Azure Data Explorer
@@ -38,7 +38,7 @@ In this section, you establish a connection between the event hub and your Azure
 
     :::image type="content" source="media/get-data-event-hubs/get-data.png" alt-text="Screenshot of query tab, with right-click on a database and the get options dialog open." lightbox="media/get-data-event-hubs/get-data.png":::
 
-### Select a data source
+### Source
 
 In the **Get data** window, the **Source** tab is selected.
 
@@ -46,7 +46,7 @@ Select the data source from the available list. In this example, you are ingesti
 
 :::image type="content" source="media/get-data-file/select-data-source.png" alt-text="Screenshot of get data window with source tab selected." lightbox="media/get-data-file/select-data-source.png":::
 
-#### Configure tab
+### Configure
 
 1. Select a target database and table. If you want to ingest data into a new table, select **+ New table** and enter a table name.
 
@@ -71,7 +71,7 @@ Select the data source from the available list. In this example, you are ingesti
 
 1. Select **Next**
 
-### Inspect the data
+### Inspect
 
 The **Inspect** tab opens with a preview of the data.
 
