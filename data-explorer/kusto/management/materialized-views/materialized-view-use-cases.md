@@ -57,6 +57,33 @@ For more examples, see the [.create materialized-view command](materialized-view
 
 ## Advanced scenarios
 
+The following are advanced scenarios that can be addressed by using a materialized view:
+
+* **Create/Update/Delete event processing:** Given an input of create/update/delete records, in which the data doesn't contain the latest information for each column, you can use a materialized view to get the latest update for each column. Since delete records indicate that the entire record should be deleted, the latest updates for each column will only be shown for the entities that weren't deleted. 
+    
+    Example input:
+
+    | Timestamp | cud | id | col1 | col2 | col3 |
+    |--|--|--|--|--|--|
+    | 2023-10-24 00:00:00.0000000 | C | 1 | 1 | 2 |  |
+    | 2023-10-24 01:00:00.0000000 | U | 1 |  | 22 | 33 |
+    | 2023-10-24 02:00:00.0000000 | U | 1 |  | 23 |  |
+    | 2023-10-24 00:00:00.0000000 | C | 2 | 1 | 2 |  |
+    | 2023-10-24 00:10:00.0000000 | U | 2 |  | 4 |  |
+    | 2023-10-24 02:00:00.0000000 | D | 2 |  |  |  |
+
+    Example output:
+
+    The latest update for each column for id `1`, since id `2` was deleted.
+
+    | Timestamp | id | col1 | col2 | col3 |
+    |--|--|--|--|--|
+    | 2023-10-24 02:00:00.0000000 | 1 | 1 | 23 | 33 |
+
+    To implement such a materialized view, use the [`arg_max()` (aggregation function)](../../query/arg-max-aggfunction.md) per column:
+
+    <!-- TODO ADD EXAMPLE HERE -->
+    
 ## Related content
 
 * [Materialized views overview](materialized-view-overview.md)
