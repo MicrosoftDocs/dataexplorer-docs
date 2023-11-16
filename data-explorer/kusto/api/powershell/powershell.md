@@ -120,6 +120,49 @@ $dataView | Sort StartTime -Descending | Format-Table -AutoSize
 |2007-09-20 21:57:00 |2007-09-20 22:05:00 |    11078 |  60913 |FLORIDA        |Tornado           |             0 |               0 |           0 |             0
 |2007-09-18 20:00:00 |2007-09-19 18:00:00 |    11074 |  60904 |FLORIDA        |Heavy Rain        |             0 |               0 |           0 |             0
 
+## Run a management command
+
+Create a CSL admin provider and run [management commands](../../management/index.md).
+
+The following example runs a management command to check the health of the cluster.
+
+```powershell
+$adminProvider = [Kusto.Data.Net.Client.KustoClientFactory]::CreateCslAdminProvider($kcsb)
+$command = [Kusto.Data.Common.CslCommandGenerator]::GenerateDiagnosticsShowCommand()
+Write-Host "Executing command: '$command' with connection string: '$($kcsb.ToString())'"
+# Run the command
+$reader = $adminProvider.ExecuteControlCommand($command)
+# Read the results
+$reader.Read() # this reads a single row/record. If you have multiple ones returned, you can read in a loop
+$isHealthy = $Reader.GetBoolean(0)
+Write-Host "IsHealthy = $isHealthy"
+```
+**Output**
+```
+IsHealthy = True
+```
+For more guidance on how to run management commands with the Kusto client libraries, see [Create an app to run management commands](../get-started/app-management-commands.md).
+## Example
+The following example demonstrates the process of loading the libraries, authenticating, and executing a query on the publicly accessible `help` cluster.
+```powershell
+#  This is an example of the location from where you extract the Microsoft.Azure.Kusto.Tools package
+#  Make sure you load the types from a local directory and not from a remote share
+#  Make sure you load the version compatible with your PowerShell version (see explanations above)
+#  Use `dir "$packagesRoot\*" | Unblock-File` to make sure all these files can be loaded and executed
+$packagesRoot = "C:\Microsoft.Azure.Kusto.Tools\tools\net472"
+#  Load the Kusto client library and its dependencies
+[System.Reflection.Assembly]::LoadFrom("$packagesRoot\Kusto.Data.dll")
+#  Define the connection to the help cluster and database
+$clusterUrl = "https://help.kusto.windows.net;Fed=True"
+$databaseName = "Samples"
+# MS Entra user authentication with interactive prompt
+$kcsb = New-Object Kusto.Data.KustoConnectionStringBuilder($clusterUrl, $databaseName)
+# Run a simple query
+$queryProvider = [Kusto.Data.Net.Client.KustoClientFactory]::CreateCslQueryProvider($kcsb)
+$query = "StormEvents | take 5"
+$reader = $queryProvider.ExecuteQuery($query, $crp)
+```
+
 ## Related content
 
 * [Kusto client libraries](../client-libraries.md)
