@@ -720,6 +720,12 @@ items:
   - name: endofyear()
     displayName: endofyear() end of year
     href: endofyearfunction.md
+  - name: erf()
+    displayName: Gaussian, error function, statistics, distribution
+    href: erf-function.md
+  - name: erfc()
+    displayName: complementary error function, statistics, distribution
+    href: erfc-function.md
   - name: estimate_data_size()
     displayName: estimate_data_size() estimate data size
     href: estimate-data-sizefunction.md

@@ -42,7 +42,7 @@ The following list shows conditions to seal batches related to single blob inges
 * `SingleBlob_FlushImmediately`: Ingest a single blob because ['FlushImmediately'](../api/netfx/kusto-ingest-client-reference.md#class-kustoqueuedingestionproperties) was set
 * `SingleBlob_IngestIfNotExists`: Ingest a single blob because
 ['IngestIfNotExists'](../../ingestion-properties.md#ingestion-properties) was set
-* `SingleBlob_IngestByTag`: Ingest a single blob because ['ingest-by'](extents-overview.md#ingest-by-extent-tags) was set
+* `SingleBlob_IngestByTag`: Ingest a single blob because ['ingest-by'](extent-tags.md) was set
 * `SingleBlob_SizeUnknown`: Ingest a single blob because blob size is unknown
 
 If the `SystemFlush` condition is set, a batch will be sealed when a system flush is triggered. With the `SystemFlush` parameter set, the system flushes the data, for example due to cluster scaling or internal reset of system components.

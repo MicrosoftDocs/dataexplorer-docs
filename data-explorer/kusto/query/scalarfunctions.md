@@ -136,6 +136,8 @@ This article lists all available scalar functions grouped by type. For aggregati
 |[cos()](cosfunction.md)|Returns the cosine function.|
 |[cot()](cotfunction.md)|Calculates the trigonometric cotangent of the specified angle, in radians.|
 |[degrees()](degreesfunction.md)|Converts angle value in radians into value in degrees, using formula degrees = (180 / PI) * angle-in-radians.|
+|[erf()](erf-function.md)|Returns the error function.|
+|[erfc()](erfc-function.md)|Returns the complementary error function.|
 |[exp()](exp-function.md)|The base-e exponential function of x, which is e raised to the power x: e^x.|
 |[exp10()](exp10-function.md)|The base-10 exponential function of x, which is 10 raised to the power x: 10^x.|
 |[exp2()](exp2-function.md)|The base-2 exponential function of x, which is 2 raised to the power x: 2^x.|

@@ -56,7 +56,7 @@ If the table only contained one CSV formatted mapping named "mapping1", the foll
 .show database MyDatabase ingestion csv mappings
 ```
 
-## See also
+## Related content
 
 * Learn more about [data mappings](mappings.md)
 * Use [.create ingestion mapping](create-ingestion-mapping-command.md) to create a new mapping

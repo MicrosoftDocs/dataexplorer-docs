@@ -66,6 +66,6 @@ X | join kind=inner Y on Key
 > * (c,4) on the left side, was joined twice: with both (c,20) and (c,30) on the right.
 > * (k,5) from the left and (k, 50) from the right was joined once.
 
-## See also
+## Related content
 
 * Learn about other [join flavors](joinoperator.md#returns)

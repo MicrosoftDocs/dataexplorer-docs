@@ -34,6 +34,9 @@ Each storage type has a different connection string format. See the following ta
 |Azure Data Lake Storage Gen1  |`adl://`  |`adl://`*StorageAccountName*.azuredatalakestore.net/*PathToDirectoryOrFile*[*CallerCredentials*]|
 |Amazon S3                     |`https://`|`https://`*BucketName*`.s3.`*RegionName*`.amazonaws.com/`*ObjectKey*[*CallerCredentials*]|
 
+> [!NOTE]
+> To prevent secrets from showing up in traces, use [obfuscated string literals](../../query/scalar-data-types/string.md#obfuscated-string-literals).
+
 ## Storage authentication methods
 
 To interact with nonpublic external storage from Azure Data Explorer, you must specify authentication means as part of the external storage connection string. The connection string defines the resource to access and its authentication information.

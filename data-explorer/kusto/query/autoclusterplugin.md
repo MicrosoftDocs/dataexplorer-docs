@@ -3,7 +3,7 @@ title:  autocluster plugin
 description: Learn how to use the autocluster plugin to find common patterns in data. 
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 03/09/2023
+ms.date: 11/13/2023
 ---
 # autocluster plugin
 
@@ -14,20 +14,21 @@ ms.date: 03/09/2023
 
 ## Syntax
 
-*Table* `|` `evaluate` `autocluster` `(`[*SizeWeight*, *WeightColumn*, *NumSeeds*, *CustomWildcard*, *CustomWildcard*, ...]`)`
+*T* `|` `evaluate` `autocluster` `(`[*SizeWeight* [`,` *WeightColumn* [`,` *NumSeeds* [`,` *CustomWildcard* [`,` ... ]]]]]`)`
 
 [!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
 
 ## Parameters
 
-The parameters must be ordered as specified in the [syntax](#syntax). To indicate that the default value should be used, put the string tilde value `~`. For more information, see the "Example" column of the following table.
+The parameters must be ordered as specified in the [syntax](#syntax). To indicate that the default value should be used, put the string tilde value `~`. For more information, see [Examples](#examples).
 
-|Name  | Type, range, default  |Description | Example   |
-|----------------|-----------------------------------|---------------------------|------------------------------------------------|
-| SizeWeight     | 0 < *double* < 1 [default: 0.5]   | Gives you some control over the balance between generic (high coverage) and informative (many shared) values. If you increase the value, it usually reduces the number of patterns, and each pattern tends to cover a larger percentage coverage. If you decrease the value, it usually produces more specific patterns with more shared values, and a smaller percentage coverage. The under-the-hood formula is a weighted geometric mean, between the normalized generic score and the informative score with weights `SizeWeight` and `1-SizeWeight`    | `T | evaluate autocluster(0.8)`                |
-|WeightColumn    | *column_name*     | Considers each row in the input according to the specified weight (by default each row has a weight of '1'). The argument must be a name of a numeric integer column. A common usage of a weight column is to take into account sampling or bucketing/aggregation of the data that is already embedded into each row.   | `T | evaluate autocluster('~', sample_Count)` |
-| NumSeeds        | *int* [default: 25]  | The number of seeds determines the number of initial local search points of the algorithm. In some cases, depending on the structure of the data and if you increase the number of seeds, then the number (or quality) of the results increases through the expanded search space with a slower query tradeoff. The value has diminishing results in both directions, so if you decrease it to below five, it will achieve negligible performance improvements. If you increase to above 50, it will rarely generate additional patterns.  | `T | evaluate autocluster('~', '~', 15)`       |
-| CustomWildcard  | *"any_value_per_type"* | Sets the wildcard value for a specific type in the results table. It will indicate that the current pattern doesn't have a restriction on this column. The default is null, since the string default is an empty string. If the default is a good value in the data, a different wildcard value should be used (such as `*`).   | `T | evaluate autocluster('~', '~', '~', '*', int(-1), double(-1), long(0), datetime(1900-1-1))` |
+| Name | Type | Required | Description |
+|------|------|----------|-------------|
+| *T* | string | &check; | The input tabular expression. |
+| *SizeWeight* | double | | A double between 0 and 1 that controls the balance between generic (high coverage) and informative (many shared) values. Increasing this value typically reduces the quantity of patterns while expanding coverage. Conversely, decreasing this value generates more specific patterns characterized by increased shared values and a smaller percentage coverage. The default is `0.5`. The formula is a weighted geometric mean with weights `SizeWeight` and `1-SizeWeight`. |
+| *WeightColumn* | string | | Considers each row in the input according to the specified weight. Each row has a default weight of `1`. The argument must be a name of a numeric integer column. A common usage of a weight column is to take into account sampling or bucketing or aggregation of the data that is already embedded into each row. |
+| *NumSeeds* | int | | Determines the number of initial local search points. Adjusting the number of seeds impacts result quantity or quality based on data structure. Increasing seeds can enhance results but with a slower query tradeoff. Decreasing below five yields negligible improvements, while increasing above 50 rarely generates more patterns. The default is `25`.|
+| *CustomWildcard* | string | | A type literal that sets the wildcard value for a specific type in the results table, indicating no restriction on this column. The default is `null`, which represents an empty string. If the default is a good value in the data, a different wildcard value should be used, such as `*`. You can include multiple custom wildcards by adding them consecutively.|
 
 ## Returns
 
@@ -92,7 +93,7 @@ StormEvents
 |1|512|8.7|\*|Thunderstorm Wind|YES
 |2|898|15.3|TEXAS|\*|\*
 
-## See also
+## Related content
 
 * [basket](./basketplugin.md)
 * [reduce](./reduceoperator.md)

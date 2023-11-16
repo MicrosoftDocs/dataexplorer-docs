@@ -3,11 +3,13 @@ title:  countif() (aggregation function)
 description: Learn how to use the countif() function to count the rows where the predicate evaluates to true.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 11/27/2022
+ms.date: 11/13/2023
 ---
 # countif() (aggregation function)
 
 Counts the rows in which *predicate* evaluates to `true`.
+
+[!INCLUDE [ignore-nulls](../../includes/ignore-nulls.md)]
 
 [!INCLUDE [data-explorer-agg-function-summarize-note](../../includes/data-explorer-agg-function-summarize-note.md)]
 
@@ -82,6 +84,6 @@ T
 |----|
 |2|
 
-## See also
+## Related content
 
 [count()](count-aggfunction.md) function, which counts rows without predicate expression.

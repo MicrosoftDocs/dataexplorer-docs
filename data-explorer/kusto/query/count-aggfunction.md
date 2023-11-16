@@ -3,13 +3,15 @@ title:  count() (aggregation function)
 description: Learn how to use the count() function to count the number of records in a group.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 10/12/2023
+ms.date: 11/13/2023
 ---
 # count() (aggregation function)
 
 Counts the number of records per summarization group, or total if summarization is done without grouping.
 
-Use the [countif](countif-aggfunction.md) aggregation function to count only records for which a predicate returns `true`.
+[!INCLUDE [ignore-nulls](../../includes/ignore-nulls.md)]
+
+To only count records for which a predicate returns `true`, use [countif()](countif-aggfunction.md).
 
 [!INCLUDE [data-explorer-agg-function-summarize-note](../../includes/data-explorer-agg-function-summarize-note.md)]
 

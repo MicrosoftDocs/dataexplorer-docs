@@ -201,6 +201,6 @@ print blob="https://contoso.blob.core.windows.net/container/blob.txt?"
 |--|
 |https://contoso.blob.core.windows.net/container/blob.txt?sv=2012-02-12&se=2013-04-13T0...|
 
-## See also
+## Related content
 
 * [String operators](../datatypes-string-operators.md)

@@ -43,7 +43,7 @@ print dt=now()
 |---|---|---|---|
 |2022-07-11 22:18:48.4678620|2022-07-11 15:18:48.4678620|2022-07-12 08:18:48.4678620|-17:00:00|
 
-## See also
+## Related content
 
 * To convert a datetime from local to UTC, see [datetime_local_to_utc()](datetime-local-to-utc-function.md)
 * [Timezones](timezone.md)

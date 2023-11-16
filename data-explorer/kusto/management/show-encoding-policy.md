@@ -32,7 +32,7 @@ You must have at least Database User, Database Viewer, or Database Monitor permi
 .show database Samples policy encoding
 ```
 
-## See also
+## Related content
 
 * [Encoding policy](encoding-policy.md)
 * [.alter encoding policy](alter-encoding-policy.md)

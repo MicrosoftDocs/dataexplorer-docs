@@ -397,7 +397,7 @@ For completeness, here are some commonly requested features for user-defined fun
 
 1. Default values: The default value for a scalar parameter to a function must be a scalar literal (constant).
 
-## See also
+## Related content
 
 * [Stored functions](../schema-entities/stored-functions.md)
 * [Views](../schema-entities/views.md)

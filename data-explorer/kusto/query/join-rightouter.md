@@ -58,6 +58,6 @@ X | join kind=rightouter Y on Key
 |c|4|c|30|
 |||d|40|
 
-## See also
+## Related content
 
 * Learn about other [join flavors](joinoperator.md#returns)

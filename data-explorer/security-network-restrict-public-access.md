@@ -30,6 +30,6 @@ To allow, limit, or prevent public access to your cluster, follow these steps:
 
 1. Select **Save**.
 
-## See also
+## Related content
 
 * [Troubleshooting Private Endpoints in Azure Data Explorer](security-network-private-endpoint-troubleshoot.md)

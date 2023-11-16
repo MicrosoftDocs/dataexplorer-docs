@@ -49,7 +49,7 @@ Methods for implementing paging include:
 StormEvents | take 5
 ```
 
-## See also
+## Related content
 
 * [sort operator](sort-operator.md)
 * [top operator](topoperator.md)

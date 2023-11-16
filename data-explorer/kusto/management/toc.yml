@@ -754,10 +754,10 @@ items:
     items:
       - name: To cloud storage
         href: data-export/export-data-to-storage.md
-      - name: To a SQL table
-        href: data-export/export-data-to-sql.md
       - name: To an external table
         href: data-export/export-data-to-an-external-table.md
+      - name: To an SQL table
+        href: data-export/export-data-to-sql.md
       - name: Continuous data export
         items:
           - name: Continuous data export overview
@@ -830,6 +830,9 @@ items:
         items:
           - name: Extents overview
             href: extents-overview.md
+            displayName: data shards, shard
+          - name: Extent tags
+            href: extent-tags.md
             displayName: data shards, shard
           - name: Extents commands
             items:
