@@ -24,7 +24,7 @@ Alternatively, follow the steps to [configure the ODBC data source](#configure-t
 
 ## Configure the ODBC data source
 
-Follow these steps to configure an ODBC data source using the ODBC driver for SQL Server.
+To configure an ODBC data source using the ODBC driver for SQL Server:
 
 1. In Windows, search for *ODBC Data Sources*, and open the ODBC Data Sources desktop app.
 
@@ -63,7 +63,7 @@ Follow these steps to configure an ODBC data source using the ODBC driver for SQ
 
 ## Use the ODBC data source
 
-You can use the ODBC data source from other applications to connect to Azure Data Explorer with a connection string of the following format.
+From an application that supports ODBC connection, you can connect to Azure Data Explorer with a connection string of the following format:
 
 ```odbc
 "Driver={ODBC Driver 17 for SQL Server};Server=mykustocluster.kusto.windows.net;Database=mykustodatabase;Authentication=ActiveDirectoryIntegrated"
