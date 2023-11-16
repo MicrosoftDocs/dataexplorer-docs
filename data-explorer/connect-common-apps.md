@@ -35,7 +35,7 @@ You can connect to Azure Data Explorer from LINQPad as if Azure Data Explorer we
 
 ## Azure Data Studio (1.3.4 and above)
 
-To connect to Azure Data Explorer from Azure Data Studio, follow these steps.
+You can connect to Azure Data Explorer from Azure Data Studio as if Azure Data Explorer were an SQL server.
 
 1. Set the connection type to **Microsoft SQL Server**.
 
@@ -53,13 +53,13 @@ To connect to Azure Data Explorer from Azure Data Studio, follow these steps.
 
 ## DBeaver (5.3.3 and above)
 
-To configure DBeaver for handling result sets in a manner that is compatible with Azure Data Explorer, follow these steps.
+To configure DBeaver for handling result sets in a manner that is compatible with Azure Data Explorer:
 
 1. Select **Preferences** in the **Window** menu.
 1. Select **Data Editor** in the **Editors** section.
 1. Make sure that **Refresh data on next page reading** is marked.
 
-Now, you can create a connection to the Azure Data Explorer database by doing the following actions.
+Now, connect to Azure Data Explorer from DBeaver as if Azure Data Explorer were an SQL server:
 
 1. Select **New Connection** in the **Database** menu.
 
@@ -80,7 +80,7 @@ Now, you can create a connection to the Azure Data Explorer database by doing th
 
 ## Microsoft SQL Server Management Studio (v18.x)
 
-To connect to Azure Data Explorer from Microsoft SQL Server Management Studio, follow these steps.
+To connect to Azure Data Explorer from Microsoft SQL Server Management Studio:
 
 1. Select **Connect**, and then **Database Engine** under **Object Explorer**.
 
