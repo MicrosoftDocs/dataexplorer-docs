@@ -156,12 +156,14 @@ items:
             href: materialized-views/materialized-view-overview.md
           - name: Materialized views limitations
             href: materialized-views/materialized-views-limitations.md
-          - name: Monitor materialized views
-            href: materialized-views/materialized-views-monitoring.md
           - name: Materialized views policies
+            href: materialized-views/materialized-view-policies.md
+          - name: Materialized views advanced use cases
             href: materialized-views/materialized-view-policies.md
           - name: Materialized views data purge
             href: materialized-views/materialized-view-purge.md
+          - name: Monitor materialized views
+            href: materialized-views/materialized-views-monitoring.md
           - name: .alter materialized-view
             displayName: alter
             href: materialized-views/materialized-view-alter.md

@@ -13,10 +13,10 @@ Materialized views always return an up-to-date result of the aggregation query (
 
 > [!NOTE]
 >
-> * Review the materialized views [use cases](#materialized-views-use-cases) to decide whether materialized views are suitable for you.
-> * Materialized views have some [limitations](materialized-views-limitations.md). Review the [performance considerations](#performance-considerations) before working with the feature.
-> * Consider using [update policies](../updatepolicy.md) where appropriate - see [How to choose between materialized views and update policies?](#how-to-choose-between-materialized-views-and-update-policies) for more details.
-> * Monitor the health of your materialized views based on the recommendations in the [materialized views monitoring](materialized-views-monitoring.md) page.
+> * To decide whether materialized views are suitable for you, review the materialized views [use cases](materialized-view-use-cases.md).
+> * Materialized views have some [limitations](materialized-views-limitations.md). Before working with the feature, review the [performance considerations](#performance-considerations).
+> * Consider using [update policies](../updatepolicy.md) where appropriate. For more information, see [How to choose between materialized views and update policies?](#how-to-choose-between-materialized-views-and-update-policies).
+> * Monitor the health of your materialized views based on the recommendations in [Monitor materialized views](materialized-views-monitoring.md).
 
 ## Why use materialized views?
 
@@ -28,29 +28,7 @@ By investing resources (data storage, background CPU cycles) for materialized vi
 
 * **Cost reduction:** [Querying a materialized view](#materialized-views-queries) consumes less resources from the cluster than doing the aggregation over the source table. Retention policy of source table can be reduced if only aggregation is required. This setup reduces hot cache costs for the source table.
 
-## Materialized views use cases
-
-The following are common scenarios that can be addressed by using a materialized view:
-
-* Update data by returning the last record per entity using [`arg_max()` (aggregation function)](../../query/arg-max-aggfunction.md).
-
-* Reduce the resolution of data by calculating periodic statistics over the raw data. Use various [aggregation functions](materialized-view-create.md#supported-aggregation-functions) by period of time.
-  * For example, use `T | summarize dcount(User) by bin(Timestamp, 1d)` to maintain an up-to-date snapshot of distinct users per day.
-
-* Deduplicate records in a table using [`take_any()` (aggregation function)](../../query/take-any-aggfunction.md).
-  * In deduplication scenarios, it might sometimes be useful to "hide" the source table with the materialized view, such that callers querying the table query the deduplicated materialized view instead.
-  * You can implement this pattern by creating a function with same name as the source table, that references the view instead of the source table. Since [functions override tables with same name](../../query/schema-entities/tables.md), users calling the "table" actually query the materialized view.
-  * When doing so, the materialized view definition must reference the source table using the [table()](../../query/tablefunction.md) function, to avoid cyclic references in the view definition:
-    <!-- csl -->
-    ```kusto
-    .create materialized-view MV on table T
-    {
-        table('T')
-        | summarize take_any(*) by EventId
-    } 
-    ```
-
-For examples of all use cases, see [materialized view create command](materialized-view-create.md#examples).
+For example use cases, see [Materialized view use cases](materialized-view-use-cases.md).
 
 ### How to choose between materialized views and update policies?
 
@@ -176,16 +154,12 @@ A materialized view can be created over another materialized view if the source 
 > [!TIP]
 > When querying a materialized view that is defined over another materialized view, we recommend querying the materialized part only using the `materialized_view()` function. Querying the entire view is not performant when both views aren't fully materialized. For more information, see [materialized views queries](#materialized-views-queries).
 
-## Next steps
+## Related content
 
+* [Materialized views policies](materialized-view-policies.md)
 * [Materialized views limitations and known issues](materialized-views-limitations.md)
-* [Materialized views monitoring](materialized-views-monitoring.md)
+* [Materialized views use cases](materialized-view-use-cases.md)
+* [Monitor materialized views](materialized-views-monitoring.md)
 * [`.create materialized view`](materialized-view-create.md)
 * [`.alter materialized-view`](materialized-view-alter.md)
 * [`{.disable | .enable} materialized-view`](materialized-view-enable-disable.md)
-* [`.show materialized-view(s)`](materialized-view-show-command.md)
-* [`.show materialized-view schema`](materialized-view-show-schema-command.md)
-* [`.show materialized-view details`](materialized-view-show-details-command.md)
-* [`.show materialized-view extents`](materialized-view-show-extents-command.md)
-* [`.show materialized-view failures`](materialized-view-show-failures-command.md)
-* [Materialized views policies](materialized-view-policies.md)
