@@ -14,7 +14,7 @@ ms.date: 11/16/2023
 
 The following are common scenarios that can be addressed by using a materialized view:
 
-* Update data by returning the last record per entity using [`arg_max()` (aggregation function)](../../query/arg-max-aggfunction.md). For example, create a view that will materialize only records ingested from now on:
+* **Update data:** Update data by returning the last record per entity using [`arg_max()` (aggregation function)](../../query/arg-max-aggfunction.md). For example, create a view that will materialize only records ingested from now on:
 
     ```kusto
     .create materialized-view ArgMax on table T
@@ -23,7 +23,7 @@ The following are common scenarios that can be addressed by using a materialized
     }
     ```
 
-* Reduce the resolution of data by calculating periodic statistics over the raw data. Use various [aggregation functions](materialized-view-create.md#supported-aggregation-functions) by period of time. For example, maintain an up-to-date snapshot of distinct users per day:
+* **Reduce the resolution of data** Reduce the resolution of data by calculating periodic statistics over the raw data. Use various [aggregation functions](materialized-view-create.md#supported-aggregation-functions) by period of time. For example, maintain an up-to-date snapshot of distinct users per day:
 
     ```kusto
     .create materialized-view ArgMax on table T
@@ -32,7 +32,7 @@ The following are common scenarios that can be addressed by using a materialized
     }
     ```
 
-* Deduplicate records in a table using [`take_any()` (aggregation function)](../../query/take-any-aggfunction.md). For example, create a materialized view that deduplicates the source table based on the `EventId` column, using a lookback of 6 hours. Records will be deduplicated against only records ingested 6 hours before current records.
+* **Deduplicate records:** Deduplicate records in a table using [`take_any()` (aggregation function)](../../query/take-any-aggfunction.md). For example, create a materialized view that deduplicates the source table based on the `EventId` column, using a lookback of 6 hours. Records will be deduplicated against only records ingested 6 hours before current records.
 
     ```kusto
     .create materialized-view with(lookback=6h) DeduplicatedTable on table T
@@ -54,3 +54,15 @@ The following are common scenarios that can be addressed by using a materialized
     >    ```
 
 For more examples, see the [.create materialized-view command](materialized-view-create.md#examples).
+
+## Advanced scenarios
+
+## Related content
+
+* [Materialized views overview](materialized-view-overview.md)
+* [Materialized views policies](materialized-view-policies.md)
+* [Materialized views limitations and known issues](materialized-views-limitations.md)
+* [Monitor materialized views](materialized-views-monitoring.md)
+* [`.create materialized view`](materialized-view-create.md)
+* [`.alter materialized-view`](materialized-view-alter.md)
+* [`{.disable | .enable} materialized-view`](materialized-view-enable-disable.md)
