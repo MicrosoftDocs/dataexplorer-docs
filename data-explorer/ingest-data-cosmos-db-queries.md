@@ -74,6 +74,6 @@ LatestDocumentsDeletedRemoved
 | summarize sum(Salary) by Area
 ```
 
-## Next steps
+## Related content
 
-- [Kusto Query Language (KQL) overview](kusto/query/index.md)
+* [Kusto Query Language (KQL) overview](kusto/query/index.md)

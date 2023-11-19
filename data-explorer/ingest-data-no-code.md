@@ -634,8 +634,8 @@ Query results:
 
 ---
 
-## Next steps
+## Related content
 
-* Learn to write many more queries on the data you extracted from Azure Data Explorer by using [Write queries for Azure Data Explorer](/azure/data-explorer/kusto/query/tutorials/learn-common-operators).
+* [Write queries for Azure Data Explorer](/azure/data-explorer/kusto/query/tutorials/learn-common-operators).
 * [Monitor Azure Data Explorer ingestion operations using diagnostic logs](using-diagnostic-logs.md)
 * [Use metrics to monitor cluster health](using-metrics.md)

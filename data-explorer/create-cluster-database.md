@@ -772,4 +772,4 @@ The cluster and database are created together with the ARM template in the previ
 ## Next step
 
 > [!div class="nextstepaction"]
-> [Quickstart: Ingest data into Azure Data Explorer](ingest-sample-data.md)
+> [Create a table](create-table-wizard.md)
