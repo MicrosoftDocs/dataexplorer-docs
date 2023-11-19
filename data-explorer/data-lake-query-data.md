@@ -268,6 +268,6 @@ Organize your data using "folder" partitions that enable the query to skip irrel
 
 Select VM SKUs with more cores and higher network throughput (memory is less important). For more information, see [Select the correct VM SKU for your Azure Data Explorer cluster](manage-cluster-choose-sku.md).
 
-## Next steps
+## Related content
 
-* Query your data in the Azure Data Lake using Azure Data Explorer. Learn to [write queries](/azure/data-explorer/kusto/query/tutorials/learn-common-operators) and derive more insights from your data.
+* [Tutorial: Learn common KQL operators](kusto/query/tutorials/learn-common-operators.md)

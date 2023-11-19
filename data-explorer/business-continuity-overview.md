@@ -141,6 +141,7 @@ Regardless of which disaster recovery configuration is chosen, follow these best
 * Be fully cognizant of what it takes to build a cluster from scratch.
 * Create a checklist of deployment units. Your list will be unique to your needs, but should include: deployment scripts, ingestion connections, BI tools, and other important configurations. 
 
-## Next steps
+## Next step
 
-Learn more with the [Create business continuity and disaster recovery solutions with Azure Data Explorer](business-continuity-create-solution.md).
+> [!div class="nextstepaction"]
+> [Create business continuity and disaster recovery solutions](business-continuity-create-solution.md)

@@ -276,6 +276,6 @@ Use the following settings:
 
 Commands run by a script resource don't appear in the results of the [.show commands-and-queries](kusto/management/commands-and-queries.md) command. You can trace the script execution using the [.show journal](kusto/management/journal.md) command.
 
-## Next steps
+## Related content
 
 * [Management commands overview](kusto/management/index.md)

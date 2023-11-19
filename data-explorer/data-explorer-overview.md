@@ -88,7 +88,7 @@ We would be thrilled to hear your feedback about Azure Data Explorer and the Kus
   * [Microsoft Tech Community](https://techcommunity.microsoft.com/t5/Azure-Data-Explorer/bd-p/Kusto)
 * [Make product suggestions in User Voice](https://aka.ms/AzureDataExplorer.UserVoice)
 
-## Next steps
+## Related content
 
 * [Quickstart: Create an Azure Data Explorer cluster and database](create-cluster-and-database.md)
 * [Quickstart: Ingest data from an event hub into Azure Data Explorer](ingest-data-event-hub.md)

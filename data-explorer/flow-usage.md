@@ -106,6 +106,6 @@ Results:
 
 :::image type="content" source="media/flow-usage/flow-results-multiple-attachments-2.png" alt-text="Screenshot showing results of multiple email attachments, visualized as a time chart." lightbox="media/flow-usage/flow-results-multiple-attachments-2.png":::
 
-## Next steps
+## Related content
 
-Learn about the [Azure Kusto Logic App connector](kusto/tools/logicapps.md), which is another way to run Kusto queries and commands automatically, as part of a scheduled or triggered task.
+* Use the [Azure Kusto Logic App connector](kusto/tools/logicapps.md) to run Kusto queries and commands as part of a scheduled or triggered task.
