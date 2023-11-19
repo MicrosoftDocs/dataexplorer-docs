@@ -128,9 +128,8 @@ The resulting table includes data from all the files that fit the criteria defin
 
 :::image type="content" source="media/external-table/view-table.png" alt-text="Screen shot of table output from querying external table in Azure Data Explorer.":::
 
-## Next steps
+## Related content
 
-* [Create and alter Azure Storage external tables](kusto/management/external-tables-azurestorage-azuredatalake.md)
 * [External tables overview](kusto/query/schema-entities/externaltables.md)
+* [Create and alter Azure Storage external tables](kusto/management/external-tables-azurestorage-azuredatalake.md)
 * [external_table() function](kusto/query/externaltablefunction.md)
-* [Write queries for Azure Data Explorer](/azure/data-explorer/kusto/query/tutorials/learn-common-operators)

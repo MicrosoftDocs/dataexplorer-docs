@@ -181,11 +181,8 @@ In the **Data ingestion completed** window, all three steps are marked with gree
 
 ---
 
-## Next steps
+## Related content
 
-* Explore the results in the [Azure Data Explorer web UI query](web-ui-query-overview.md)
 * [Write Kusto Query Language queries in the web UI](web-ui-kql.md)
 * [Tutorial: Learn common Kusto Query Language operators](kusto/query/tutorials/learn-common-operators.md)
 * [Visualize data with Azure Data Explorer dashboards](azure-data-explorer-dashboards.md)
-* [Use the sample app generator wizard to create code to ingest and query your data](sample-app-generator-wizard.md)
-* Drop ingested data using [.drop extents command](kusto/management/drop-extents.md) and [.drop ingestion mapping command](kusto/management/drop-ingestion-mapping-command.md)

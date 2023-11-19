@@ -423,8 +423,7 @@ To remove the event hub connection from the Azure portal, do the following:
 
 ---
 
-## Next steps
+## Related content
 
 * Check the connection with the [Event hub sample message app](https://github.com/Azure-Samples/event-hubs-dotnet-ingest)
 * [Query data in the Web UI](web-ui-query-overview.md)
-* [Visualize data with Azure Data Explorer dashboards](azure-data-explorer-dashboards.md)
