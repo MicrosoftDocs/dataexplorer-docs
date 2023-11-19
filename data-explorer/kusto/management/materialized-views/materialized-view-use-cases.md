@@ -60,8 +60,10 @@ For more examples, see the [.create materialized-view command](materialized-view
 The following are advanced scenarios that can be addressed by using a materialized view:
 
 * **Create/Update/Delete event processing:** Given an input of create/update/delete records, in which the data doesn't contain the latest information for each column, you can use a materialized view to get the latest update for each column. Since delete records indicate that the entire record should be deleted, the latest updates for each column will only be shown for the entities that weren't deleted. 
-    
-    Example input:
+
+    To implement such a materialized view, use the [`arg_max()` (aggregation function)](../../query/arg-max-aggfunction.md) per column. Consider the following input table:
+
+    **Input**
 
     | Timestamp | cud | id | col1 | col2 | col3 |
     |--|--|--|--|--|--|
@@ -71,8 +73,35 @@ The following are advanced scenarios that can be addressed by using a materializ
     | 2023-10-24 00:00:00.0000000 | C | 2 | 1 | 2 |  |
     | 2023-10-24 00:10:00.0000000 | U | 2 |  | 4 |  |
     | 2023-10-24 02:00:00.0000000 | D | 2 |  |  |  |
+    
+    ```kusto
+    .create materialized-view ItemHistory on table T
+    {
+        T
+        | extend Timestamp_col1 = iff(isnull(col1), datetime(1970-01-01), Timestamp),
+                 Timestamp_col2 = iff(isnull(col2), datetime(1970-01-01), Timestamp),
+                 Timestamp_col3 = iff(isnull(col3), datetime(1970-01-01), Timestamp)
+        | summarize arg_max(Timestamp_col1, col1), arg_max(Timestamp_col2, col2), arg_max(Timestamp_col3, col3), arg_max(Timestamp, cud) by id
+    }
+    ```
 
-    Example output:
+    **Output**
+
+    | id | Timestamp_col1 | col1 | Timestamp_col2 | col2 | Timestamp_col3 | col3 | Timestamp | cud |
+    |--|--|--|--|--|--|--|--|--|
+    | 2 | 2023-10-24 00:00:00.0000000 | 1 | 2023-10-24 00:10:00.0000000 | 4 | 1970-01-01 00:00:00.0000000 |  | 2023-10-24 02:00:00.0000000 | D |
+    | 1 | 2023-10-24 00:00:00.0000000 | 1 | 2023-10-24 02:00:00.0000000 | 23 | 2023-10-24 01:00:00.0000000 | 33 | 2023-10-24 02:00:00.0000000 | U |
+
+    To view specific information, create a [stored function](../../query/schema-entities/stored-functions.md) to manipulate the results:
+
+    ```kusto
+    ItemHistory
+    | project Timestamp, cud, id, col1, col2, col3
+    | where cud != "D"
+    | project-away cud
+    ```
+
+    **Final Output**
 
     The latest update for each column for id `1`, since id `2` was deleted.
 
@@ -80,10 +109,6 @@ The following are advanced scenarios that can be addressed by using a materializ
     |--|--|--|--|--|
     | 2023-10-24 02:00:00.0000000 | 1 | 1 | 23 | 33 |
 
-    To implement such a materialized view, use the [`arg_max()` (aggregation function)](../../query/arg-max-aggfunction.md) per column:
-
-    <!-- TODO ADD EXAMPLE HERE -->
-    
 ## Related content
 
 * [Materialized views overview](materialized-view-overview.md)
