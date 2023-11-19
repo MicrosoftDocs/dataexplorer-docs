@@ -61,7 +61,7 @@ The following are advanced scenarios that can be addressed by using a materializ
 
 * **Create/Update/Delete event processing:** Given an input of create/update/delete records, in which the data doesn't contain the latest information for each column, you can use a materialized view to get the latest update for each column. Since delete records indicate that the entire record should be deleted, the latest updates for each column will only be shown for the entities that weren't deleted. 
 
-    To implement such a materialized view, use the [`arg_max()` (aggregation function)](../../query/arg-max-aggfunction.md) per column. Consider the following input table:
+    To implement such a materialized view, use the [`arg_max()` (aggregation function)](../../query/arg-max-aggfunction.md) per column. Consider the following input table called `Events`:
 
     **Input**
 
@@ -74,10 +74,13 @@ The following are advanced scenarios that can be addressed by using a materializ
     | 2023-10-24 00:10:00.0000000 | U | 2 |  | 4 |  |
     | 2023-10-24 02:00:00.0000000 | D | 2 |  |  |  |
     
+    > [!div class="nextstepaction"]
+    > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA6WTUWvDIBDH3/Mpjj4ZMKBnYUzY0/YR2qcxiq22CJqOxEA39uGnSZs2pCkZMwZOz9//7vDUKsRv6wyQlfWmDsp/Sq2CCXFFYddoWYfKlgcKVkt3TMbu6PjVxKspWjPP3jOI46JCkKEoOCtwCYxJxnIKi9cFBU4h/UghYaRsnMvpNMrP6LpDbxjAqCHEAxYfsGJm/NvUkf4lcyZ5H33IwHKmxKWAt7HEhJ19ZD9gTsGUGvqr3aS7gxew+z2xdTpI0k4k+6j8+YkVjMcZd3vwnFs7Bmo4UsN/qImRmpihFgutG+9VZb8NqOqw8epEhjV3XRupu27sOnnKLbruvudun0gO26/4PH4BCngxSkwDAAA=" target="_blank">Run the query</a>
+
     ```kusto
-    .create materialized-view ItemHistory on table T
+    .create materialized-view ItemHistory on table Events
     {
-        T
+        Events
         | extend Timestamp_col1 = iff(isnull(col1), datetime(1970-01-01), Timestamp),
                  Timestamp_col2 = iff(isnull(col2), datetime(1970-01-01), Timestamp),
                  Timestamp_col3 = iff(isnull(col3), datetime(1970-01-01), Timestamp)
