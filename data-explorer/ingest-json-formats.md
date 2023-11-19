@@ -525,7 +525,7 @@ Array data types are an ordered collection of values. Ingestion of a JSON array 
 
 ---
 
-## Next steps
+## Related content
 
 * [Data ingestion overview](ingest-data-overview.md)
 * [Write queries](/azure/data-explorer/kusto/query/tutorials/learn-common-operators)

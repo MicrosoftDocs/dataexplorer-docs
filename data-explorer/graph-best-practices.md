@@ -282,6 +282,6 @@ graph
 
 The projection in graph-match outputs the information that the temperature sensor showed an anomaly on the specified day. It was operated by Eve who ultimately reports to Mallory. With this information, the factory manager can reach out to Eve and potentially Mallory to get a better understanding of the anomaly.
 
-## Next step
+## Related content
 
-- [Graph operators](kusto/query/graph-operators.md)
+* [Graph operators](kusto/query/graph-operators.md)

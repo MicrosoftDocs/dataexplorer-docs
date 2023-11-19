@@ -12,7 +12,7 @@ Data ingestion is the process by which data is added to a table and is made avai
 
 [!INCLUDE [ingestion-properties](includes/ingestion-properties.md)]
 
-## Next steps
+## Related content
 
 * Learn more about [data ingestion](ingest-data-overview.md).
 * Learn more about [supported data formats](ingestion-supported-formats.md).

@@ -120,6 +120,7 @@ If you don't already have one, [Create an Iot Hub](ingest-data-iot-hub.md#create
 
 See the [sample project](https://github.com/Azure-Samples/azure-iot-samples-csharp/tree/main/iot-hub/Quickstarts/SimulatedDevice) that simulates a device and generates data.
 
-## Next steps
+## Next step
 
-* [Create an IoT Hub data connection](create-iot-hub-connection.md)
+> [!div class="nextstepaction"]
+> [Create an IoT Hub data connection](create-iot-hub-connection.md)

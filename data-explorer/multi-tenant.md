@@ -97,7 +97,7 @@ This architecture is a combination of the previous architectures where the data 
 
 Although each tenant's data is segregated, they all reside in the same security context of the same database. Like the multi-database architecture, this architecture can lead to extent fragmentation. The table name is different for each tenant and therefore the queries must be customized for each tenant.
 
-## Next steps
+## Related content
 
 * [Workload groups](kusto/management/workload-groups.md)
 * [Role-based access control](kusto/access-control/role-based-access-control.md)

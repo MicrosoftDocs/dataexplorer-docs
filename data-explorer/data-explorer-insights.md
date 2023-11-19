@@ -193,6 +193,6 @@ Currently, diagnostic logs don't work retroactively. The data will start appeari
 
 [!INCLUDE [azure-monitor-vs-log-analytics](includes/azure-monitor-vs-log-analytics.md)]
 
-## Next steps
+## Related content
 
-Learn the scenarios that workbooks are designed to support, how to author new and customize existing reports, and more by reviewing [Create interactive reports with Azure Monitor workbooks](/azure/azure-monitor/visualize/workbooks-overview).
+* [Create interactive reports with Azure Monitor workbooks](/azure/azure-monitor/visualize/workbooks-overview).
