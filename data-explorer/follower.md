@@ -621,4 +621,4 @@ The follower database administrator can modify the [caching policy](./kusto/mana
 ## Next step
 
 > [!div class="nextstepaction"]
-> [Run follower commands](kusto/management/cluster-follower.md).
+> [Run follower commands](kusto/management/cluster-follower.md)
