@@ -389,6 +389,6 @@ To remove the Event Grid connection from the Azure portal, do the following step
 
 ---
 
-## Next steps
+## Related content
 
 * [Process data from your event hub using Azure Stream Analytics](/azure/event-hubs/process-data-azure-stream-analytics)

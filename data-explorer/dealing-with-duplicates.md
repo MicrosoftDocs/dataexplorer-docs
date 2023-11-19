@@ -89,7 +89,6 @@ There are several considerations that can help you choose between using material
 
 Data duplication can be handled in multiple ways. Evaluate the options carefully, taking into account price and performance, to determine the correct method for your business.
 
-## Next steps
+## Related content
 
-> [!div class="nextstepaction"]
-> [Write queries for Azure Data Explorer](/azure/data-explorer/kusto/query/tutorials/learn-common-operators)
+* [Write queries for Azure Data Explorer](/azure/data-explorer/kusto/query/tutorials/learn-common-operators)

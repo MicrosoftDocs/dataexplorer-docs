@@ -138,8 +138,7 @@ In the tiles below the **Create table** progress, explore **Quick queries** or *
 >
 > The drop commands in this workflow will only revert the changes that were made by the create table process (new table and schema mapping).
 
-## Next steps
+## Related content
 
 * [Data ingestion overview](ingest-data-overview.md)
-* [Ingestion wizard](./ingest-data-wizard.md)
 * [Write queries for Azure Data Explorer](/azure/data-explorer/kusto/query/tutorials/learn-common-operators)
