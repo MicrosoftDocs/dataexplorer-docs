@@ -56,6 +56,7 @@ When choosing the best option for your use case, you should consider the followi
 
 [!INCLUDE [kusto-emulator-limitations](includes/kusto-emulator-limitations.md)]
 
-## Next steps
+## Next step
 
-[Install the Kusto emulator](kusto-emulator-install.md)
+> [!div class="nextstepaction"]
+> [Install the Kusto emulator](kusto-emulator-install.md)

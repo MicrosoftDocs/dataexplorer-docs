@@ -330,6 +330,6 @@ To switch to the query builder mode, select **Switch to builder**. Grafana will 
 
 1. Select the **Save dashboard** icon to save your changes.
 
-## Next steps
+## Related content
 
 * [Write queries for Azure Data Explorer](/azure/data-explorer/kusto/query/tutorials/learn-common-operators)
