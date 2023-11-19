@@ -396,7 +396,7 @@ The connector invokes the Cosmos DB Change Feed API on each physical partition o
 | Fixed costs | Fixed costs are about 2 RUs per physical partition every second. |
 | Variable costs | Variable costs are about 2% of the RUs used to write documents, though this may vary depending on your scenario. For example, if you write 100 documents to a Cosmos DB container, the cost of writing those documents is 1,000 RUs. The corresponding cost for using the connector to read those document is about 2% the cost to write them, approximately 20 RUs. |
 
-## Next steps
+## Related content
 
-- [Get latest versions of Azure Cosmos DB documents](ingest-data-cosmos-db-queries.md)
-- [Kusto Query Language (KQL) overview](kusto/query/index.md)
+* [Get latest versions of Azure Cosmos DB documents](ingest-data-cosmos-db-queries.md)
+* [Kusto Query Language (KQL) overview](kusto/query/index.md)

@@ -84,8 +84,7 @@ In this article, you learn how to create manually the resources needed for Event
 
 1. Select **Create**
 
-## Next steps
+## Next step
 
-* Continue the setup and create a data ingestion connection to Azure Data Explorer via Azure portal: [Create an Event Grid data connection in Azure Data Explorer](ingest-data-event-grid.md).
-
-* If you don't plan to continue Event Grid ingestion using the resources you created and don't want to use the resources anymore, [clean up resources](ingest-data-event-grid.md#clean-up-resources) to avoid incurring costs.
+> [!div class="nextstepaction"]
+> [Create an Event Grid data connection in Azure Data Explorer](ingest-data-event-grid.md).

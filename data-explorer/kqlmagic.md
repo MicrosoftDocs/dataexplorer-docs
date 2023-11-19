@@ -259,6 +259,6 @@ In many analytics scenarios, you may want to create reusable notebooks that cont
 * [Parametrize your kqlmagic query with Python](https://mybinder.org/v2/gh/Microsoft/jupyter-kqlmagic/master?filepath=notebooks%2FParametrizeYourQuery.ipynb) 
 * [Choose colors palette for your kqlmagic query chart result](https://mybinder.org/v2/gh/Microsoft/jupyter-kqlmagic/master?filepath=notebooks%2FColorYourCharts.ipynb)
 
-## Next steps
+## Related content
 
 * Learn [Kusto Query Language (KQL)](kusto/query/index.md)

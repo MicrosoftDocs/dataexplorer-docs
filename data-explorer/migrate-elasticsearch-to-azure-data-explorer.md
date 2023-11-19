@@ -244,7 +244,7 @@ The following are some examples of queries you can run to validate the data in y
 
 1. Compare the results from both sets of queries to ensure that the data in your cluster is accurate and complete.
 
-## Next steps
+## Related content
 
 ### To learn more about Azure Database Explorer, see:
 
