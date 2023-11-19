@@ -101,6 +101,6 @@ You should now be able to see the newly created data connection in the Azure por
 > [!NOTE]
 > If the access used to build the data connection is revoked on Event Hubs, make sure you delete the data connection. Otherwise, Azure Data Explorer will continue to ingest data even if access on Event Hubs is revoked.
 
-## Next steps
+## Related content
 
 * [Query data in Azure Data Explorer](web-query-data.md)

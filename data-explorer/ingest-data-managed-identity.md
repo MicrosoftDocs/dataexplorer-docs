@@ -84,6 +84,6 @@ The following are examples of blob URIs for system and user assigned managed ide
 > * The *size* parameter should be the raw (uncompressed) data size, and not necessarily the blob size.
 > * If you do not know the size at the time of ingestion, you may provide a value of zero (0). The service will attempt to discover the size using the managed identity for authentication.
 
-## Next steps
+## Related content
 
 * [Write queries](/azure/data-explorer/kusto/query/tutorials/learn-common-operators)

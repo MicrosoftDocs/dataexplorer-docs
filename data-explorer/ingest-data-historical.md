@@ -232,7 +232,6 @@ Once the repartitioning is complete, you can clean up the policies you set in th
     .alter-merge table MyTable policy retention softdelete = 30d recoverability = enabled
     ```
 
-## Next step
+## Related content
 
-> [!div class="nextstepaction"]
-> [Query data in Azure Data Explorer](web-query-data.md)
+* [Query data in Azure Data Explorer](web-query-data.md)

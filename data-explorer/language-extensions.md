@@ -70,7 +70,7 @@ Do the following steps to disable language extensions on your cluster:
 * The language extensions runtime sandbox allocates disk space even if no query runs in the scope of the relevant language. For more detailed limitations, see [sandboxes](kusto/concepts/sandboxes.md).
 * For [VM SKUs that don't support nested virtualization](kusto/concepts/sandboxes-in-non-modern-skus.md#virtual-machine-sizes), see [limitations](kusto/concepts/sandboxes-in-non-modern-skus.md).
 
-## Next steps
+## Related content
 
 * Learn how to [run Python integrated KQL queries](kusto/query/pythonplugin.md)
 * Learn how to [run R integrated KQL queries](kusto/query/rplugin.md)
