@@ -281,4 +281,4 @@ kustoManagementClient.databases.add_principals(resource_group_name=resource_grou
 
 ## Related content
 
-* [Policies overview](/kusto/management/policies.md)
+* [Policies overview](kusto/management/policies.md)
