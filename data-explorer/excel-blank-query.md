@@ -60,6 +60,6 @@ Azure Data Explorer provides two options for connecting to data in Excel: use th
 
     ![View data in excel.](media/excel-blank-query/data-in-excel.png)
 
-## Next steps
+## Related content
 
-[Visualize data using the Azure Data Explorer connector for Excel](excel-connector.md)
+* [Visualize data using the Azure Data Explorer connector for Excel](excel-connector.md)

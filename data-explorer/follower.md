@@ -618,6 +618,7 @@ The follower database administrator can modify the [caching policy](./kusto/mana
 * You can't delete a cluster that has a database attached to a different cluster before detaching it.
 * Table level sharing properties aren't supported when following all database.
 
-## Next steps
+## Next step
 
-* For information about follower cluster configuration, see [Management commands for managing a follower cluster](kusto/management/cluster-follower.md).
+> [!div class="nextstepaction"]
+> [Run follower commands](kusto/management/cluster-follower.md)

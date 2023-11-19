@@ -74,7 +74,7 @@ After you have formatted your visual, you can pin this visual to a new or existi
 
 1. Select **Pin**.
 
-## Next steps
+## Related content
 
 * [Customize Azure Data Explorer dashboard visuals](dashboard-customize-visuals.md)
 * [Use parameters in Azure Data Explorer dashboards](dashboard-parameters.md)
