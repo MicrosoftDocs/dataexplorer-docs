@@ -40,7 +40,7 @@ Verify installation: In a command shell, run `dotnet sdk check` to check that th
 - [Node 16 or later](https://nodejs.org/en/download/) built with ES6
     - Ensure the `node` executable is in your `PATH`
     - Verify installation: In a command shell, run `node --version` to check that the version is 3.7 or later
-- A Node.js app or a browser-based web app.
+- A Node.js app or a browser-based web app, such as a React app.
 - For browser-based web apps:
   
   - If your app has a login experience, you can use the [@auzre/identity library](https://github.com/Azure/azure-sdk-for-js/tree/main/sdk/identity/identity/test/manual/interactive-browser-credential) to issue an authorization token and use `withTokenProvider` to feed this token to the Kusto client:
@@ -153,6 +153,29 @@ You also need to add the *maven-compiler-plugin* and *exec-maven-plugin* plugins
     <version>3.1.0</version>
 </plugin>
 ```
+
+---
+
+The Kusto SDKs contain quick start sample applications. These applications showcase how to authenticate, administer, query, and ingest data using the Kusto client libraries. You can use them as a starting point for your own application by modifying the code or incorporating specific sections into your project.
+
+### [C\#](#tab/csharp)
+
+[C# Quickstart App](https://github.com/Azure/azure-kusto-samples-dotnet/tree/master/client/QuickStart)
+
+### [Python](#tab/python)
+
+[Python Quickstart App](https://github.com/Azure/azure-kusto-python/tree/master/quick_start)
+
+### [Typescript](#tab/typescript)
+
+* [Node.js Quickstart App](https://github.com/Azure/azure-kusto-node/tree/master/packages/quick_start)
+* [Browser Quickstart App](https://github.com/Azure/azure-kusto-node/tree/master/packages/quick_start_browser)
+
+<!-- ### [Go](#tab/go) -->
+
+### [Java](#tab/java)
+
+[Java Quickstart App](https://github.com/Azure/azure-kusto-java/tree/master/quickstart)
 
 ---
 

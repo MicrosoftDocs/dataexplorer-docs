@@ -384,13 +384,13 @@ python basic_query.py
 
 ### [Typescript](#tab/typescript)
 
-To run the code in a Node.js environment:
+In a Node.js environment:
 
 ```bash
 node basic-query.js
 ```
 
-To run the code in a browser environment:
+In a browser environment, use the appropriate command to run your app. For example, for React:
 
 ```bash
 npm run dev
