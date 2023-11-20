@@ -23,13 +23,21 @@ The capacity policy is made of:
 
 ## Ingestion capacity
 
-|Property       |Type    |Description    |
-|-----------------------------------|--------|-----------------------------------------------------------------------------------------|
-|ClusterMaximumConcurrentOperations |long    |A maximal value for the number of concurrent ingestion operations in a cluster.               |
-|CoreUtilizationCoefficient         |double  |A coefficient for the percentage of cores to use when calculating the ingestion capacity. The calculation's result will always be normalized by `ClusterMaximumConcurrentOperations` <br> The cluster's total ingestion capacity, as shown by [.show capacity](../management/diagnostics.md#show-capacity), is calculated by: <br> Minimum(`ClusterMaximumConcurrentOperations`, `Number of nodes in cluster` * Maximum(1, `Core count per node` * `CoreUtilizationCoefficient`))
+| Property | Type | Description |
+|--|--|--|
+| `ClusterMaximumConcurrentOperations` | long | The maximum amount of concurrent ingestion operations allowed in a cluster. This sets a cap for the total ingestion capacity, as shown in the following formula. |
+| `CoreUtilizationCoefficient` | real | Determines the percentage of cores to use to set the ingestion capacity.|
+
+**Formula**
+
+The cluster's total ingestion capacity is calculated using the following formula:
+
+`Minimum(`*ClusterMaximumConcurrentOperations*`,` *Number of nodes in cluster* `*` `Maximum(1,` *Core count per node* `*` *CoreUtilizationCoefficient*`))`
+
+To see the ingestion capacity, use the [.show capacity](../management/diagnostics.md#show-capacity) command.
 
 > [!NOTE]
-> In clusters with four or more nodes, the admin node doesn't participate in ingestion operations. The `Number of nodes in cluster` is reduced by one.
+> In clusters with four or more nodes, the admin node doesn't participate in ingestion operations, so the *Number of nodes in cluster* is reduced by one.
 
 ## Extents merge capacity
 
