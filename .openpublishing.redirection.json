@@ -849,6 +849,11 @@
       "source_path": "data-explorer/monitor-batching-ingestion.md",
       "redirect_url": "/azure/data-explorer/monitor-queued-ingestion",
       "redirect_document_id": true
+    },
+    {
+      "source_path": "data-explorer/ingest-sample-data.md",
+      "redirect_url": "/azure/data-explorer/web-ui-samples-query",
+      "redirect_document_id": true
     }
   ]
 }

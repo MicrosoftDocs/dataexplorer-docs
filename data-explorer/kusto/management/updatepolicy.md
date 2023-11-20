@@ -60,8 +60,8 @@ Each such object is represented as a JSON property bag, with the following prope
 |IsEnabled  |`bool` |States if update policy is *true* - enabled, or *false* - disabled|
 |Source |`string` |Name of the table that triggers invocation of the update policy |
 |Query |`string` |A query used to produce data for the update |
-|IsTransactional |`bool` |States if the update policy is transactional or not, default is *false*). If transactional and the update policy fails, the source table is not updated. |
-|PropagateIngestionProperties  |`bool`|States if properties specified during ingestion to the source table, such as extent tags and creation time, apply to the target table. |
+|IsTransactional |`bool` |States if the update policy is transactional or not, default is *false*. If transactional and the update policy fails, the source table is not updated. |
+|PropagateIngestionProperties  |`bool`|States if properties specified during ingestion to the source table, such as [extent tags](extent-tags.md) and creation time, apply to the target table. |
 |ManagedIdentity | `string` | The managed identity on behalf of which the update policy will run. The managed identity can be an object ID, or the `system` reserved word. The update policy must be configured with a managed identity when the query references tables in other databases or tables with an enabled [row level security policy](./rowlevelsecuritypolicy.md). For more information, see [Use a managed identity to run a update policy](./update-policy-with-managed-identity.md). |
 
 > [!NOTE]

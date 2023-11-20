@@ -80,7 +80,7 @@ print result = toUnixTime(datetime(2019-01-07 21:45:31.0000000))
 |---|
 | 1546897531 |
 
-## See also
+## Related content
 
 For unix-epoch time conversions, see the following functions:
 

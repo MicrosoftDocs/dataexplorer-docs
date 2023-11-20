@@ -3,11 +3,13 @@ title:  stdevif() (aggregation function)
 description: Learn how to use the stdevif() function to calculate the standard deviation of an expression where the predicate evaluates to true.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 01/30/2023
+ms.date: 11/13/2023
 ---
 # stdevif() (aggregation function)
 
 Calculates the [standard deviation](stdev-aggfunction.md) of *expr* in records for which *predicate* evaluates to `true`.
+
+[!INCLUDE [ignore-nulls](../../includes/ignore-nulls.md)]
 
 [!INCLUDE [data-explorer-agg-function-summarize-note](../../includes/data-explorer-agg-function-summarize-note.md)]
 

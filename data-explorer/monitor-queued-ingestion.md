@@ -267,7 +267,7 @@ Click away from the settings to get the full chart that compares the number of e
 > [!NOTE]
 > There's no option to monitor outgoing message per consumer group. The **Outgoing Messages** metric counts the total number of messages that were consumed by all consumer groups. So, if you have a few consumer groups in your event hub, you may get a larger number of **Outgoing Messages** than **Events Received**.
 
-## Next Steps
+## Related content
 
 * [Monitor Azure Data Explorer performance, health, and usage with metrics](using-metrics.md)
 * [Monitor Azure Data Explorer ingestion, commands, queries, and tables using diagnostic logs](using-diagnostic-logs.md)

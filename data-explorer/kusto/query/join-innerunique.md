@@ -192,6 +192,6 @@ Events
 | project City, ActivityId, StartTime, StopTime, Duration = StopTime - StartTime
 ```
 
-## See also
+## Related content
 
 * Learn about other [join flavors](joinoperator.md#returns)

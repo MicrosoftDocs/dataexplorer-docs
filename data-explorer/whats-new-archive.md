@@ -3,11 +3,20 @@ title: What's new in Azure Data Explorer documentation archive
 description: In this article, you'll find an archive of new and significant changes in the Azure Data Explorer documentation
 ms.reviewer: orspodek
 ms.topic: reference
-ms.date: 10/10/2023
+ms.date: 11/08/2023
 ---
 # What's new in Azure Data Explorer documentation archive
 
 Welcome to what's new in Azure Data Explorer archive. This article is an archive of new and significantly updated content in the Azure Data Explorer documentation.
+
+## October 2022
+
+**General**
+
+| Article title | Description |
+|--|--|
+|[Ingest data from OpenTelemetry](open-telemetry-connector.md)|New article. Describes how to create a connector to ingest data from OpenTelemetry.|
+|[Managed identities overview](managed-identities-overview.md)|Updated article. Added continuous export with Managed Identity.|
 
 ## September 2022
 
@@ -25,7 +34,7 @@ Welcome to what's new in Azure Data Explorer archive. This article is an archive
 |[POC playbook: Big data analytics](proof-of-concept-playbook.md)|New article. Describes a high-level methodology for running an effective proof of concept (POC) project.|
 |[Azure Data Explorer web UI keyboard shortcuts](web-ui-query-keyboard-shortcuts.md)|New article. Describes query keyboard shortcuts in the web UI.|
 |[Optimize queries that use named expressions](named-expressions.md)|New article. Describes how to optimize repeat use of named expressions in a query.|
-|- [Kusto emulator overview](kusto-emulator-overview.md)<br />- [Install the Kusto emulator](kusto-emulator-install.md)|New articles. Describes the Kusto emulator, how to install it, and run your first query.|
+|- [Kusto emulator overview](kusto-emulator-overview.md)<br/>- [Install the Kusto emulator](kusto-emulator-install.md)|New articles. Describes the Kusto emulator, how to install it, and run your first query.|
 
 ## August 2022
 
@@ -33,7 +42,7 @@ Welcome to what's new in Azure Data Explorer archive. This article is an archive
 
 | Article title | Description |
 |--|--|
-|- [Use the ingestion wizard to ingest JSON data](/azure/data-explorer/ingest-from-local-file) <br />- [Web UI overview](./web-query-data.md)|Updated articles. Added references to ingestion wizard and updated UI.|
+|- [Use the ingestion wizard to ingest JSON data](/azure/data-explorer/ingest-from-local-file) <br/>- [Web UI overview](./web-query-data.md)|Updated articles. Added references to ingestion wizard and updated UI.|
 
 **Management**
 
@@ -44,7 +53,7 @@ Welcome to what's new in Azure Data Explorer archive. This article is an archive
 |[.drop extents](kusto/management/drop-extents.md)| Updated article. Added examples to drop specific extents.|
 |[Queries management](kusto/management/queries.md)| Updated article. Added show by user command.
 |- [Ingest from storage](kusto/management/data-ingestion/ingest-from-storage.md)|Updated article. Added ingest from Amazon S3.
-|- [.create-or-alter function](kusto/management/create-alter-function.md)<br />- [.create function](kusto/management/create-function.md)| New and updated article. Added new parameter for stored view.|
+|- [.create-or-alter function](kusto/management/create-alter-function.md)<br/>- [.create function](kusto/management/create-function.md)| New and updated article. Added new parameter for stored view.|
 
 ## July 2022
 
@@ -281,7 +290,7 @@ Welcome to what's new in Azure Data Explorer archive. This article is an archive
 |--|--|
 | [.alter extent tags retention policy](kusto/management/alter-extent-tags-retention-policy.md) | New article.
 | [.delete extent tags retention policy](kusto/management/delete-extent-tags-retention-policy.md) | New article.
-| [Extent tags retention policy](kusto/management/extent-tags-retention-policy.md) | New article. The extent tags retention policy controls the mechanism that automatically removes [extent tags](kusto/management/extents-overview.md#extent-tags) from tables, based on the age of the extents.
+| [Extent tags retention policy](kusto/management/extent-tags-retention-policy.md) | New article. The extent tags retention policy controls the mechanism that automatically removes [extent tags](kusto/management/extent-tags.md) from tables, based on the age of the extents.
 | [.show extent tags retention policy](kusto/management/show-extent-tags-retention-policy.md) | New article.
 | [Stored query results](kusto/management/stored-query-results.md) | Updated article. General Availability.
 

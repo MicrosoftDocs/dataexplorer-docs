@@ -3,11 +3,13 @@ title:  make_set_if() (aggregation function)
 description: Learn how to use the make_set_if() function to create a dynamic JSON object of a set of distinct values that an expression takes where the predicate evaluates to true.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 01/05/2023
+ms.date: 11/13/2023
 ---
 # make_set_if() (aggregation function)
 
 Creates a `dynamic` array of the set of distinct values that *expr* takes in records for which *predicate* evaluates to `true`.
+
+[!INCLUDE [ignore-nulls](../../includes/ignore-nulls.md)]
 
 [!INCLUDE [data-explorer-agg-function-summarize-note](../../includes/data-explorer-agg-function-summarize-note.md)]
 
@@ -32,7 +34,7 @@ Returns a `dynamic` array of the set of distinct values that *expr* takes in rec
 > [!TIP]
 > To only count the distinct values, use [dcountif()](dcountif-aggfunction.md).
 
-## See also
+## Related content
 
 [`make_set`](./makeset-aggfunction.md) function, which does the same, without predicate expression.
 

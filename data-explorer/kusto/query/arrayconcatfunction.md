@@ -48,6 +48,6 @@ range x from 1 to 3 step 1
 |[2,4,8,2,4]|
 |[3,6,12,3,6]|
 
-## See also
+## Related content
 
 * [pack_array()](packarrayfunction.md)

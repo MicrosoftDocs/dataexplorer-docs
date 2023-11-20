@@ -145,6 +145,6 @@ Run the following command in your database to clean up the `logs` table:
 .drop table logs
 ```
 
-## Next steps
+## Related content
 
 * [Write queries](/azure/data-explorer/kusto/query/tutorials/learn-common-operators)

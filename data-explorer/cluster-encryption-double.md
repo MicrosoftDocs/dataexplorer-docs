@@ -107,7 +107,7 @@ The following limitations apply to the encryption of [selected volumes](kusto/co
 * Performance impact of up to a single digit
 * Can't be used with sandboxes
 
-## Next steps
+## Related content
 
 * [Enable disk encryption for your cluster](cluster-encryption-disk.md)
 * [Check cluster health](check-cluster-health.md)

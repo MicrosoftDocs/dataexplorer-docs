@@ -83,13 +83,12 @@ There are several considerations that can help you choose between using material
 
 ### Solution #5: `ingest-by` extent tags
 
-['ingest-by:' extent tags](kusto/management/extents-overview.md#ingest-by-extent-tags) can be used to prevent duplicates during ingestion. This is relevant only in use cases where each ingestion batch is guaranteed to have no duplicates, and duplicates are only expected if the same ingestion batch is ingested more than once. See more details in ['ingest-by:' extent tags](kusto/management/extents-overview.md#ingest-by-extent-tags) section. Pay special attention to the *warning*.
+['ingest-by:' extent tags](kusto/management/extent-tags.md) can be used to prevent duplicates during ingestion. This is relevant only in use cases where each ingestion batch is guaranteed to have no duplicates, and duplicates are only expected if the same ingestion batch is ingested more than once.
 
 ## Summary
 
 Data duplication can be handled in multiple ways. Evaluate the options carefully, taking into account price and performance, to determine the correct method for your business.
 
-## Next steps
+## Related content
 
-> [!div class="nextstepaction"]
-> [Write queries for Azure Data Explorer](/azure/data-explorer/kusto/query/tutorials/learn-common-operators)
+* [Write queries for Azure Data Explorer](/azure/data-explorer/kusto/query/tutorials/learn-common-operators)

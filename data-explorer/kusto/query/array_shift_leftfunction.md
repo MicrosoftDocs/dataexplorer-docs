@@ -77,7 +77,7 @@ print arr=dynamic([1,2,3,4,5])
 |---|---|
 |[1,2,3,4,5]|[-1,-1,1,2,3]|
 
-## See also
+## Related content
 
 * To shift an array to the right, use [array_shift_right()](array_shift_rightfunction.md).
 * To rotate an array to the right, use [array_rotate_right()](array_rotate_rightfunction.md).

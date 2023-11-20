@@ -174,7 +174,7 @@ The data consumer can now go to their Azure Data Explorer cluster to grant user 
 
 * [Follower DB Limitations](follower.md#limitations)
 
-## Next steps
+## Related content
 
 * [Azure Data Share documentation](/azure/data-share/)
-* For information about follower cluster, see [follower cluster](follower.md)
+* [Use follower databases](follower.md)

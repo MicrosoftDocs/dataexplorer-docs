@@ -115,6 +115,6 @@ The following command removes all existing `admins` on the `SampleFunction` func
 .set function SampleFunction admins none
 ```
 
-## See also
+## Related content
 
 * [current_principal_details()](../query/current-principal-detailsfunction.md)

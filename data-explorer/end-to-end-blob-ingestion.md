@@ -655,8 +655,8 @@ poller.wait()
 
 ---
 
-## Next steps
+## Related content
 
-* To learn other methods to create a cluster, see [Create an Azure Data Explorer cluster and database](create-cluster-database-csharp.md).
-* To learn more about ingestion methods, see [Azure Data Explorer data ingestion](ingest-data-overview.md).
-* [Learn common operators](/azure/data-explorer/kusto/query/tutorials/learn-common-operators) of Kusto Query Language (KQL).
+* [Create an Azure Data Explorer cluster and database](create-cluster-database-csharp.md)
+* [Azure Data Explorer data ingestion overview](ingest-data-overview.md)
+* [Tutorial: Learn common KQL operators](kusto/query/tutorials/learn-common-operators.md)

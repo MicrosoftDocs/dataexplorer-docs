@@ -186,9 +186,7 @@ You can add additional [ingestion properties](ingestion-properties.md) by specif
 1. Select **New**, select either **Add node** or **Add array** as required, and then specify the ingestion property name and value. Repeat this step to add more properties.
 1. Once complete save and publish your pipeline.
 
-## Next steps
+## Next step
 
-* Learn how to [copy data to Azure Data Explorer by using Azure Data Factory](data-factory-load-data.md).
-* Learn about using [Azure Data Factory template for bulk copy from database to Azure Data Explorer](data-factory-template.md).
-* Learn about using [Azure Data Factory command activity to run Azure Data Explorer management commands](data-factory-command-activity.md).
-* Learn about [Azure Data Explorer queries](web-query-data.md) for data querying.
+> [!div class="nextstepaction"]
+> [Copy data to Azure Data Explorer by using Azure Data Factory](data-factory-load-data.md).

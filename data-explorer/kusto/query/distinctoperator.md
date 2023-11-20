@@ -51,6 +51,6 @@ StormEvents
 |TENNESSEE|Heat|
 |CALIFORNIA|Wildfire|
 
-## See also
+## Related content
 
 If the group by keys are of high cardinalities, try `summarize by ...` with the [shuffle strategy](shufflequery.md).

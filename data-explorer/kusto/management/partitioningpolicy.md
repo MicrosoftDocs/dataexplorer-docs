@@ -14,7 +14,7 @@ The policy triggers an additional background process that takes place after the 
 The primary objective of the partitioning policy is to enhance query performance in specific [supported scenarios](#supported-scenarios).
 
 > [!NOTE]
-> By default, extents are partitioned by time of creation (ingestion), and in most cases there's no need to set a data partitioning policy.
+> By default, when a data partitioning policy isn't defined (is `null`), extents are partitioned by time of creation (ingestion). In most cases there's no need to set a data partitioning policy.
 
 ## Supported scenarios
 

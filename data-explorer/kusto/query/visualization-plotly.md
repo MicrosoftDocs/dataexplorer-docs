@@ -105,7 +105,7 @@ Iris
 
 ::: zone-end
 
-## See also
+## Related content
 
 * [plotly_anomaly_fl()](../functions-library/plotly-anomaly-fl.md)
 * [plotly_scatter3d_fl()](../functions-library/plotly-scatter3d-fl.md)

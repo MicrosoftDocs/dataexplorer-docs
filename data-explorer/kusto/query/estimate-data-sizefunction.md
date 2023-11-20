@@ -46,6 +46,6 @@ range x from 1 to 10 step 1                    // x (long) is 8
 |---|
 |180|
 
-## See also
+## Related content
 
 * [Estimate table size](../management/estimate-table-size.md)

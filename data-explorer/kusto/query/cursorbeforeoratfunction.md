@@ -34,7 +34,7 @@ A predicate function run over the records of a table to compare their ingestion 
 A scalar value of type `bool` that indicates whether the record was ingested
 before or at the database cursor *RHS* (`true`) or not (`false`).
 
-## See also
+## Related content
 
 * [database cursors](../management/databasecursor.md)
 
