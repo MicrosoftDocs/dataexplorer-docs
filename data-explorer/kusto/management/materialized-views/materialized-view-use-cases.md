@@ -55,65 +55,62 @@ The following are common scenarios that can be addressed by using a materialized
 
 For more examples, see the [.create materialized-view command](materialized-view-create.md#examples).
 
-## Advanced scenarios
+## Advanced scenario
 
-The following are advanced scenarios that can be addressed by using a materialized view:
+You can use a materialized view for create/update/delete event processing. When handling records with incomplete or outdated information for each column, a materialized view can provide the latest updates for each column, excluding entities that have been deleted.
 
-* **Create/Update/Delete event processing:** Given an input of create/update/delete records, in which the data doesn't contain the latest information for each column, you can use a materialized view to get the latest update for each column. The latest updates for each column are only shown for the entities that weren't deleted. 
+Consider the following input table named `Events`:
 
-    Consider the following input table named `Events`:
+**Input**
 
-    **Input**
+| Timestamp | cud | ID | col1 | col2 | col3 |
+|--|--|--|--|--|--|
+| 2023-10-24 00:00:00.0000000 | C | 1 | 1 | 2 |  |
+| 2023-10-24 01:00:00.0000000 | U | 1 |  | 22 | 33 |
+| 2023-10-24 02:00:00.0000000 | U | 1 |  | 23 |  |
+| 2023-10-24 00:00:00.0000000 | C | 2 | 1 | 2 |  |
+| 2023-10-24 00:10:00.0000000 | U | 2 |  | 4 |  |
+| 2023-10-24 02:00:00.0000000 | D | 2 |  |  |  |
 
-    | Timestamp | cud | ID | col1 | col2 | col3 |
-    |--|--|--|--|--|--|
-    | 2023-10-24 00:00:00.0000000 | C | 1 | 1 | 2 |  |
-    | 2023-10-24 01:00:00.0000000 | U | 1 |  | 22 | 33 |
-    | 2023-10-24 02:00:00.0000000 | U | 1 |  | 23 |  |
-    | 2023-10-24 00:00:00.0000000 | C | 2 | 1 | 2 |  |
-    | 2023-10-24 00:10:00.0000000 | U | 2 |  | 4 |  |
-    | 2023-10-24 02:00:00.0000000 | D | 2 |  |  |  |
-    
-    Create a materialized view to get the latest update per column, using the [arg_max() aggregation function](../../query/arg-max-aggfunction.md):
+Create a materialized view to get the latest update per column, using the [arg_max() aggregation function](../../query/arg-max-aggfunction.md):
 
-    > [!div class="nextstepaction"]
-    > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA6WTUWvDIBDH3/Mpjj4ZMKBnYUzY0/YR2qcxiq22CJqOxEA39uGnSZs2pCkZMwZOz9//7vDUKsRv6wyQlfWmDsp/Sq2CCXFFYddoWYfKlgcKVkt3TMbu6PjVxKspWjPP3jOI46JCkKEoOCtwCYxJxnIKi9cFBU4h/UghYaRsnMvpNMrP6LpDbxjAqCHEAxYfsGJm/NvUkf4lcyZ5H33IwHKmxKWAt7HEhJ19ZD9gTsGUGvqr3aS7gxew+z2xdTpI0k4k+6j8+YkVjMcZd3vwnFs7Bmo4UsN/qImRmpihFgutG+9VZb8NqOqw8epEhjV3XRupu27sOnnKLbruvudun0gO26/4PH4BCngxSkwDAAA=" target="_blank">Run the query</a>
+> [!div class="nextstepaction"]
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA6WTUWvDIBDH3/Mpjj4ZMKBnYUzY0/YR2qcxiq22CJqOxEA39uGnSZs2pCkZMwZOz9//7vDUKsRv6wyQlfWmDsp/Sq2CCXFFYddoWYfKlgcKVkt3TMbu6PjVxKspWjPP3jOI46JCkKEoOCtwCYxJxnIKi9cFBU4h/UghYaRsnMvpNMrP6LpDbxjAqCHEAxYfsGJm/NvUkf4lcyZ5H33IwHKmxKWAt7HEhJ19ZD9gTsGUGvqr3aS7gxew+z2xdTpI0k4k+6j8+YkVjMcZd3vwnFs7Bmo4UsN/qImRmpihFgutG+9VZb8NqOqw8epEhjV3XRupu27sOnnKLbruvudun0gO26/4PH4BCngxSkwDAAA=" target="_blank">Run the query</a>
 
-    ```kusto
-    .create materialized-view ItemHistory on table Events
-    {
-        Events
-        | extend Timestamp_col1 = iff(isnull(col1), datetime(1970-01-01), Timestamp),
-                 Timestamp_col2 = iff(isnull(col2), datetime(1970-01-01), Timestamp),
-                 Timestamp_col3 = iff(isnull(col3), datetime(1970-01-01), Timestamp)
-        | summarize arg_max(Timestamp_col1, col1), arg_max(Timestamp_col2, col2), arg_max(Timestamp_col3, col3), arg_max(Timestamp, cud) by id
-    }
-    ```
+```kusto
+.create materialized-view ItemHistory on table Events
+{
+    Events
+    | extend Timestamp_col1 = iff(isnull(col1), datetime(1970-01-01), Timestamp),
+                Timestamp_col2 = iff(isnull(col2), datetime(1970-01-01), Timestamp),
+                Timestamp_col3 = iff(isnull(col3), datetime(1970-01-01), Timestamp)
+    | summarize arg_max(Timestamp_col1, col1), arg_max(Timestamp_col2, col2), arg_max(Timestamp_col3, col3), arg_max(Timestamp, cud) by id
+}
+```
 
-    **Output**
+**Output**
 
-    | ID | Timestamp_col1 | col1 | Timestamp_col2 | col2 | Timestamp_col3 | col3 | Timestamp | cud |
-    |--|--|--|--|--|--|--|--|--|
-    | 2 | 2023-10-24 00:00:00.0000000 | 1 | 2023-10-24 00:10:00.0000000 | 4 | 1970-01-01 00:00:00.0000000 |  | 2023-10-24 02:00:00.0000000 | D |
-    | 1 | 2023-10-24 00:00:00.0000000 | 1 | 2023-10-24 02:00:00.0000000 | 23 | 2023-10-24 01:00:00.0000000 | 33 | 2023-10-24 02:00:00.0000000 | U |
+| ID | Timestamp_col1 | col1 | Timestamp_col2 | col2 | Timestamp_col3 | col3 | Timestamp | cud |
+|--|--|--|--|--|--|--|--|--|
+| 2 | 2023-10-24 00:00:00.0000000 | 1 | 2023-10-24 00:10:00.0000000 | 4 | 1970-01-01 00:00:00.0000000 |  | 2023-10-24 02:00:00.0000000 | D |
+| 1 | 2023-10-24 00:00:00.0000000 | 1 | 2023-10-24 02:00:00.0000000 | 23 | 2023-10-24 01:00:00.0000000 | 33 | 2023-10-24 02:00:00.0000000 | U |
 
-    You can create a [stored function](../../query/schema-entities/stored-functions.md) to further clean the results:
+You can create a [stored function](../../query/schema-entities/stored-functions.md) to further clean the results:
 
-    ```kusto
-    ItemHistory
-    | project Timestamp, cud, id, col1, col2, col3
-    | where cud != "D"
-    | project-away cud
-    ```
+```kusto
+ItemHistory
+| project Timestamp, cud, id, col1, col2, col3
+| where cud != "D"
+| project-away cud
+```
 
-    **Final Output**
+**Final Output**
 
-    The latest update for each column for ID `1`, since ID `2` was deleted.
+The latest update for each column for ID `1`, since ID `2` was deleted.
 
-    | Timestamp | ID | col1 | col2 | col3 |
-    |--|--|--|--|--|
-    | 2023-10-24 02:00:00.0000000 | 1 | 1 | 23 | 33 |
-
+| Timestamp | ID | col1 | col2 | col3 |
+|--|--|--|--|--|
+| 2023-10-24 02:00:00.0000000 | 1 | 1 | 23 | 33 |
 
 ## Materialized views vs. update policies
 
