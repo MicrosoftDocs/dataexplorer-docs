@@ -34,7 +34,7 @@ To view the capacity of your cluster, use the [.show capacity](../management/dia
 
 The cluster's total ingestion capacity is calculated using the following formula:
 
-`Minimum(``ClusterMaximumConcurrentOperations` `,` *Number of nodes in cluster* `*` `Maximum(1,` *Core count per node* `*`  `CoreUtilizationCoefficient``))`
+`Minimum(ClusterMaximumConcurrentOperations` `,` *Number of nodes in cluster* `*` `Maximum(1,` *Core count per node* `*`  `CoreUtilizationCoefficient))`
 
 > [!NOTE]
 > In clusters with four or more nodes, the admin node doesn't participate in ingestion operations, so the *Number of nodes in cluster* is reduced by one.
@@ -83,7 +83,7 @@ The cluster's total extents purge rebuild capacity is calculated using the follo
 
 The cluster's total export capacity is calculated using the following formula:
 
-`Minimum(``ClusterMaximumConcurrentOperations` `,` *Number of nodes in cluster* `*` `Maximum(1,` *Core count per node* `*`  `CoreUtilizationCoefficient``))`
+`Minimum(ClusterMaximumConcurrentOperations` `,` *Number of nodes in cluster* `*` `Maximum(1,` *Core count per node* `*`  `CoreUtilizationCoefficient))`
 
 > [!NOTE]
 > In clusters with four or more nodes, the admin node doesn't participate in export operations. The `Number of nodes in cluster` is reduced by one.
@@ -133,7 +133,7 @@ The effective value for *Concurrent operations* is automatically adjusted by the
 
 The cluster's total stored query results creation capacity is calculated using the following formula:
 
-*Number of nodes in cluster* `*` `Maximum(1,` *Core count per node* `*` `CoreUtilizationCoefficient``)`
+*Number of nodes in cluster* `*` `Maximum(1,` *Core count per node* `*` `CoreUtilizationCoefficient)`
 
 > [!NOTE]
 > In clusters with four or more nodes, the admin node doesn't participate in stored query results creation operations, so the *Number of nodes in cluster* is reduced by one.
