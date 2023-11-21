@@ -14,7 +14,7 @@ You must have at least [Database User](access-control/role-based-access-control.
 
 ## Syntax
 
-`.show` `capacity` *Resource* [`with(``scope` `=` `cluster` | `workloadgroup``)`]
+`.show` `capacity` *Operation* [`with(``scope` `=` `cluster` | `workloadgroup``)`]
 
 [!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
 
@@ -22,7 +22,22 @@ You must have at least [Database User](access-control/role-based-access-control.
 
 |Name|Type|Required|Description|
 |--|--|--|--|
-|*Resource*|string||The name of a specific resource for which to return the relevant [capacity policy](../management/capacitypolicy.md) calculation.|
+|*Operation*|string||The name of a specific operation for which to return a capacity estimation, as based on the [capacity policy](../management/capacitypolicy.md). See [Supported operations](#supported-operations).|
+
+### Supported operations
+
+The following list outlines the opertaions for which you can get a capacity estimation:
+
+|Operation|Syntax
+|--|--|--|
+|[Data export](../management/data-export/index.md)|`data-export`|
+|[Extents merge](../management/mergepolicy.md)|`extents-merge`|
+|[Extents partition](../management/partitioningpolicy.md)|`extents-partition`|
+|[Ingestions](../../ingest-data-overview.md)|`ingestions`|
+|[Materialized view](../management/materialized-views/materialized-view-overview.md)|`materialized-view`|
+|[Stored query results](../management/stored-query-results.md)|`stored-query-results`|
+
+For more information on each of the calculations, see [Capacity policy](../management/capacitypolicy.md).
 
 ## Returns
 
