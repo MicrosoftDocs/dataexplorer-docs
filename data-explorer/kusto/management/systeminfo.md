@@ -3,13 +3,14 @@ title: System information
 description: Learn how to use system information commands available to database admins and database monitors to explore usage, track operations and investigate ingestion failures.
 ms.reviewer: orspodek
 ms.topic: reference
-ms.date: 05/23/2023
+ms.date: 11/21/2023
 ---
 # System information
 
 This section summarizes commands that are available to `Database Admins` and `Database Monitors` roles to explore usage, track operations and investigate ingestion failures.
 
 * [`.show queries`](queries.md) - displays information on completed and running queries.
+* [`.show capacity`](show-capacity-command.md) - displays an estimated capacity for various cluster resources.
 * [`.show commands`](commands.md) - displays information on completed commands and their resources utilization.
 * [`.show commands-and-queries`](commands-and-queries.md) - displays information on completed commands and queries, and their resources utilization.
 * [`.show journal`](journal.md) - displays history of the metadata operations.

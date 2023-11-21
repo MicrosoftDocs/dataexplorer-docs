@@ -809,10 +809,6 @@ items:
         href: commands-and-queries.md
       - name: Estimate table size
         href: estimate-table-size.md
-      - name: .show table data statistics command
-        href: show-table-data-statistics.md
-      - name: Diagnostics
-        href: diagnostics.md
       - name: Journal
         href: journal.md
       - name: Operations
@@ -824,6 +820,10 @@ items:
       - name: .show streamingingestion statistics command
         displayName: .show streaming ingestion statistics
         href: streamingingestionstatistics.md
+      - name: .show capacity command
+        href: show-capacity-command.md
+      - name: .show table data statistics command
+        href: show-table-data-statistics.md
   - name: Advanced data management
     items:
       - name: Extents (data shards)
