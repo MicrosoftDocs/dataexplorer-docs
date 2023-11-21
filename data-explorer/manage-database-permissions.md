@@ -47,7 +47,7 @@ This article describes the available roles and how to assign principals to those
 
 1. Select **Remove**.
 
-## Next steps
+## Related content
 
 * Learn about [Azure Data Explorer role-based access control](kusto/access-control/role-based-access-control.md).
 * To set cluster level permissions, see [Manage cluster permissions](manage-cluster-permissions.md).

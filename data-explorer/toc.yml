@@ -28,6 +28,7 @@ items:
             items:
               - name: Create a cluster and database
                 href: create-cluster-and-database.md
+                displayName: create cluster, create database
               - name: Create a cluster and database using SDKs
                 href: create-cluster-database.md
               - name: Automated provisioning

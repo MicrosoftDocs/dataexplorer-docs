@@ -55,7 +55,7 @@ The letters that appear below represent letter keys on your keyboard. For exampl
 | [Column header] Toggle the sorting state              | <kbd>Enter</kbd>                                  |
 | [Column header] Open the menu for the focused header  | <kbd>Shift</kbd>+<kbd>Enter</kbd>                 |
 
-## See also
+## Related content
 
 * [Azure Data Explorer web UI query overview](web-ui-query-overview.md)
 * [Write Kusto Query Language queries in the web UI](web-ui-kql.md)

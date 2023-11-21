@@ -88,7 +88,7 @@ The following table shows only the first 10 results.
 |Ignite 2018| Manoj Raheja|  |<https://azure.microsoft.com/resources/videos/ignite-2018-azure-data-explorer-%E2%80%93-query-billions-of-records-in-seconds/>| 200|  |20|  |Focused|
 |...|...|...|...|...|...|...|...|...|
 
-## See also
+## Related content
 
 * To choose what columns from the input to keep in the output, use [project-keep](project-keep-operator.md).
 * To rename columns, use [`project-rename`](projectrenameoperator.md).

@@ -272,6 +272,6 @@ datatable(id: string, timestamp: datetime, otherInformation: string) // Create a
 | Barak | 2017-01-20T00:00:00Z | 3 |
 | Donald | 2017-01-20T00:00:00Z | 4 |
 
-## See also
+## Related content
 
 * [partition operator](partitionoperator.md)

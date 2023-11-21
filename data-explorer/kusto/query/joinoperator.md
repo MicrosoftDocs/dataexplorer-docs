@@ -88,7 +88,7 @@ In the following example, a placeholder key is added to both tables and then use
 
 `X | extend placeholder=1 | join kind=inner (Y | extend placeholder=1) on placeholder`
 
-## See also
+## Related content
 
 * [Write multi-table queries](/training/modules/multi-table-queries-with-kusto-query-language/)
 * [Cross-cluster join](joincrosscluster.md)

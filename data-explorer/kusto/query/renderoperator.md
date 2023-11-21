@@ -191,7 +191,7 @@ These visualizations have the following conceptual model:
   * If the x-axis is an array, the values of each y-axis should also be an array of a similar length, with each y-axis occurring in a single column.
 * Zero or more columns in the table represent a unique set of dimensions that group together the measures. These columns can be specified by the `series` property, or the user agent will pick them automatically from the columns that are otherwise unspecified.
 
-## See also
+## Related content
 
 * [Add a query visualization in the web UI](../../add-query-visualization.md)
 * [Customize dashboard visuals](../../dashboard-customize-visuals.md)

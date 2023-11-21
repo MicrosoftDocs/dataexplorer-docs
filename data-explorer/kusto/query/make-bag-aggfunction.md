@@ -3,11 +3,13 @@ title:  make_bag() (aggregation function)
 description: Learn how to use the make_bag() aggregation function to create a dynamic JSON property bag.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 01/03/2023
+ms.date: 11/13/2023
 ---
 # make_bag() (aggregation function)
 
 Creates a `dynamic` JSON property bag (dictionary) of all the values of *expr* in the group.
+
+[!INCLUDE [ignore-nulls](../../includes/ignore-nulls.md)]
 
 [!INCLUDE [data-explorer-agg-function-summarize-note](../../includes/data-explorer-agg-function-summarize-note.md)]
 
@@ -81,6 +83,6 @@ T
 |---|---|---|
 |val_a|val_b|val_c|
 
-## See also
+## Related content
 
 [bag_unpack()](bag-unpackplugin.md).

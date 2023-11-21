@@ -45,7 +45,7 @@ You can set the following properties:
 | `kustoDataFormat` |  Data format. Overrides the `Data format` set on the `Data Connection` pane. |
 | `kustoIngestionMappingReference` | Name of the existing [ingestion mapping](kusto/management/create-ingestion-mapping-command.md) to be used. Overrides the `Column mapping` set on the `Data Connection` pane.|
 | `kustoIgnoreFirstRecord` | If set to `true`, Kusto ignores the first row of the blob. Use in tabular format data (CSV, TSV, or similar) to ignore headers. |
-| `kustoExtentTags` | String representing [tags](kusto/management/extents-overview.md#extent-tags) that will be attached to resulting extent. |
+| `kustoExtentTags` | String representing [tags](kusto/management/extent-tags.md) that will be attached to resulting extent. |
 | `kustoCreationTime` | Overrides [Extent Creation time](kusto/management/extents-overview.md#extent-creation-time) for the blob, formatted as an ISO 8601 string. Use for backfilling. |
 
 ## Events routing
@@ -127,7 +127,7 @@ Azure Data Explorer won't delete the blobs after ingestion. Use [Azure Blob stor
   * Event Grid notifications aren't triggered if the connection string provided to the export command or the connection string provided to an [external table](kusto/management/data-export/export-data-to-an-external-table.md) is a connecting string in [ADLS Gen2 format](kusto/api/connection-strings/storage-connection-strings.md#storage-connection-string-templates) (for example, `abfss://filesystem@accountname.dfs.core.windows.net`) but the storage account isn't enabled for hierarchical namespace.
   * If the account isn't enabled for hierarchical namespace, connection string must use the [Blob Storage](kusto/api/connection-strings/storage-connection-strings.md#storage-connection-string-templates) format (for example, `https://accountname.blob.core.windows.net`). The export works as expected even when using the ADLS Gen2 connection string, but notifications won't be triggered and Event Grid ingestion won't work.
 
-## Next steps
+## Related content
 
 * [Create an Event Grid data connection](create-event-grid-connection.md)
 * [Ingest data from Azure Event Hubs into Azure Data Explorer using the ingestion wizard](./event-hub-wizard.md)

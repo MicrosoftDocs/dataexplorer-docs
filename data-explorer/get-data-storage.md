@@ -3,7 +3,7 @@ title: Get data from Azure storage
 description: Learn how to get data from Azure storage in Azure Data Explorer.
 ms.reviewer: sharmaanshul
 ms.topic: how-to
-ms.date: 08/27/2023
+ms.date: 11/16/2023
 ---
 
 # Get data from Azure storage
@@ -34,7 +34,7 @@ Select the tab that corresponds with your desired ingestion method.
 
     :::image type="content" source="media/get-data-storage/get-data.png" alt-text="Screenshot of query tab, with right-click on a database and the get options dialog open." lightbox="media/get-data-storage/get-data.png":::
 
-## Select a data source
+## Source
 
 In the **Get data** window, the **Source** tab is selected.
 
@@ -42,7 +42,7 @@ Select the data source from the available list. In this example, you're ingestin
 
 :::image type="content" source="media/get-data-storage/select-data-source.png" alt-text="Screenshot of get data window with source tab selected." lightbox="media/get-data-storage/select-data-source.png":::
 
-### Configure tab
+## Configure
 
 1. Select a target database and table. If you want to ingest data into a new table, select **+ New table** and enter a table name.
 
@@ -75,7 +75,7 @@ Select the data source from the available list. In this example, you're ingestin
 
 1. Select **Next**
 
-## Inspect the data
+## Inspect
 
 The **Inspect** tab opens with a preview of the data.
 
@@ -259,11 +259,8 @@ Review the resources, and select **Create**.
 
 ---
 
-## Next steps
+## Related content
 
-* Explore the results in the [Azure Data Explorer web UI query](web-ui-query-overview.md)
 * [Write Kusto Query Language queries in the web UI](web-ui-kql.md)
 * [Tutorial: Learn common Kusto Query Language operators](kusto/query/tutorials/learn-common-operators.md)
 * [Visualize data with Azure Data Explorer dashboards](azure-data-explorer-dashboards.md)
-* [Use the sample app generator wizard to create code to ingest and query your data](sample-app-generator-wizard.md)
-* Drop ingested data using [.drop extents command](kusto/management/drop-extents.md) and [.drop ingestion mapping command](kusto/management/drop-ingestion-mapping-command.md)

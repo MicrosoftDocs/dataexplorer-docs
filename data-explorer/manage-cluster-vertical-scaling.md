@@ -40,10 +40,10 @@ This article explains the vertical scaling workflow:
 
 You've now configured vertical scaling for your Azure Data Explorer cluster. Add another rule for a horizontal scaling. If you need assistance with cluster-scaling issues, [open a support request](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview) in the Azure portal.
 
-## Next steps
+## Related content
 
 * [Manage cluster horizontal scaling](manage-cluster-horizontal-scaling.md) to dynamically scale out the instance count based on metrics that you specify.
-* Monitor your resource usage by following this article: [Monitor Azure Data Explorer performance, health, and usage with metrics](using-metrics.md).
+* [Monitor Azure Data Explorer performance, health, and usage with metrics](using-metrics.md).
 
 
 

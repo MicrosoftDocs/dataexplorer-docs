@@ -156,12 +156,14 @@ items:
             href: materialized-views/materialized-view-overview.md
           - name: Materialized views limitations
             href: materialized-views/materialized-views-limitations.md
-          - name: Monitor materialized views
-            href: materialized-views/materialized-views-monitoring.md
           - name: Materialized views policies
             href: materialized-views/materialized-view-policies.md
+          - name: Materialized views use cases
+            href: materialized-views/materialized-view-use-cases.md
           - name: Materialized views data purge
             href: materialized-views/materialized-view-purge.md
+          - name: Monitor materialized views
+            href: materialized-views/materialized-views-monitoring.md
           - name: .alter materialized-view
             displayName: alter
             href: materialized-views/materialized-view-alter.md
@@ -754,10 +756,10 @@ items:
     items:
       - name: To cloud storage
         href: data-export/export-data-to-storage.md
-      - name: To a SQL table
-        href: data-export/export-data-to-sql.md
       - name: To an external table
         href: data-export/export-data-to-an-external-table.md
+      - name: To an SQL table
+        href: data-export/export-data-to-sql.md
       - name: Continuous data export
         items:
           - name: Continuous data export overview
@@ -830,6 +832,9 @@ items:
         items:
           - name: Extents overview
             href: extents-overview.md
+            displayName: data shards, shard
+          - name: Extent tags
+            href: extent-tags.md
             displayName: data shards, shard
           - name: Extents commands
             items:

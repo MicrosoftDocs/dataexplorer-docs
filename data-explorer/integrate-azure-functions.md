@@ -165,6 +165,6 @@ For more information about functions, see [Azure Functions documentation](/azure
 - [GitHub](https://github.com/Azure/Webjobs.Extensions.Kusto)
 - [NuGet.org](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.Kusto/1.0.7-Preview)
 
-## Next steps
+## Related content
 
 - [Kusto Query Language (KQL) overview](kusto/query/index.md)

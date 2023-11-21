@@ -86,7 +86,7 @@ Run the query or queries you want over the time period specified in the hot wind
 
 Since you've configured optimized autoscale for that cluster, the cluster will shrink to its original size.
 
-## See also
+## Related content
 
 * [Cache policy (hot and cold cache)](kusto/management/cachepolicy.md)
 * [Optimize Autoscale](manage-cluster-horizontal-scaling.md)

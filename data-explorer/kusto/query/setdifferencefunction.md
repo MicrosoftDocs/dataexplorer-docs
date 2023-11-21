@@ -60,7 +60,7 @@ print arr = set_difference(dynamic([1,2,3]), dynamic([1,2,3]))
 |---|
 |[]|
 
-## See also
+## Related content
 
 * [`set_union()`](setunionfunction.md)
 * [`set_intersect()`](setintersectfunction.md)

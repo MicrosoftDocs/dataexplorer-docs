@@ -85,8 +85,8 @@ landingContent:
             url: ingest-data-overview.md
       - linkListType: quickstart
         links:
-          - text: Ingest sample data
-            url: ingest-sample-data.md
+          - text: Get data from a local file
+            url: get-data-file.md
       - linkListType: how-to-guide
         links:
           - text: Ingestion wizard

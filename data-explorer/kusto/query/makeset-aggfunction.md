@@ -3,11 +3,13 @@ title:  make_set() (aggregation function)
 description: Learn how to use the make_set() function to return a JSON array of the distinct values that the expression takes in the group. 
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 03/12/2023
+ms.date: 11/13/2023
 ---
 # make_set() (aggregation function)
 
 Creates a `dynamic` array of the set of distinct values that *expr* takes in the group.
+
+[!INCLUDE [ignore-nulls](../../includes/ignore-nulls.md)]
 
 [!INCLUDE [data-explorer-agg-function-summarize-note](../../includes/data-explorer-agg-function-summarize-note.md)]
 
@@ -88,7 +90,7 @@ datatable (Val: int, Arr1: dynamic)
 |--|--|
 | [1,5,7] | ["A1","A2","A3","C1","C2"] |
 
-## See also
+## Related content
 
 * Use [`mv-expand`](./mvexpandoperator.md) operator for the opposite function.
 * [`make_set_if`](./makesetif-aggfunction.md) operator is similar to `make_set`, except it also accepts a predicate.

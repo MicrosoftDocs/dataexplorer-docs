@@ -139,9 +139,8 @@ The following command creates `MySqlExternalTable` that refers to `MySqlTable` t
 
 ---
 
-## Next steps
+## Related content
 
-* Query the external table using [external_table()](kusto/query/externaltablefunction.md)
+* [Managed identities overview](managed-identities-overview.md)
 * [Export data to an external table](kusto/management/data-export/export-data-to-an-external-table.md)
-* Configure [Continuous data export](kusto/management/data-export/continuous-data-export.md)
-* Learn more about [managed identities](managed-identities-overview.md)
+* [Continuous data export](kusto/management/data-export/continuous-data-export.md)

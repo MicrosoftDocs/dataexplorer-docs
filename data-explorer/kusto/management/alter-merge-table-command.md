@@ -57,6 +57,6 @@ You must have at least [Table Admin](access-control/role-based-access-control.md
 .alter-merge table MyTable (ColumnX:string, ColumnY:int) with (docstring = "Some documentation", folder = "Folder1")
 ```
 
-## See also
+## Related content
 
 Use the `.alter` table command when you wish to further redefine the table settings. For more information, see [.alter table](../management/alter-table-command.md).

@@ -25,6 +25,6 @@ Computes the gamma function for the provided *number*.
 
 Gamma function of *number*.
 
-## See also
+## Related content
 
 For computing log-gamma function, see [loggamma()](loggammafunction.md).

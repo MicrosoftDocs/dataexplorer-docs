@@ -71,6 +71,6 @@ You must have at least [Table Admin](access-control/role-based-access-control.md
 .alter table MyTable (ColumnX:string, ColumnY:int) with (docstring = "Some documentation", folder = "Folder1")
 ```
 
-## See also
+## Related content
 
 Use `.alter-merge` when you wish to preserve the table settings and only override or expand certain columns. For more information, see [.alter-merge table](../management/alter-merge-table-command.md).

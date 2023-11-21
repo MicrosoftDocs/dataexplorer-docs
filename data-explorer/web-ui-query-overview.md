@@ -80,7 +80,7 @@ In the query page toolbar, there are several options to manage your queries and 
 
 :::image type="content" source="media/web-ui-query/toolbar-options.png" alt-text="Screenshot of extended toolbar options." lightbox="media/web-ui-query/toolbar-options.png":::
 
-## See also
+## Related content
 
 * Explore query results with the [web UI results grid](web-results-grid.md)
 * [Visualize data with Azure Data Explorer dashboards](azure-data-explorer-dashboards.md)

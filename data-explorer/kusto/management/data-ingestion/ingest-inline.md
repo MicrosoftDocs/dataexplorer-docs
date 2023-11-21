@@ -73,7 +73,7 @@ The following command ingests data into a table `Logs` with two columns: `Date` 
     [2015-01-01,"{""EventType"":""Write"", ""EventValue"":""84""}"]
 ```
 
-## See also
+## Related content
 
 * [Ingest from storage](ingest-from-storage.md)
 * [Ingest from query](ingest-from-query.md)
