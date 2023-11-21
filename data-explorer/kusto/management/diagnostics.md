@@ -14,15 +14,23 @@ These commands can be used to display system diagnostic information.
 
 ## .show capacity
 
-```kusto
-.show capacity [with(scope = cluster | workloadgroup)]
-```
+### Syntax
+
+`.show` `capacity` *Resource* [`with(``scope` `=` `cluster` | `workloadgroup``)`]
+
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+
+### Paramters
+
+|Name|Type|Required|Description|
+|--|--|--|--|
+|*Resource*|string||The name of a specific resource for which to return the relevant [capacity policy](../management/capacitypolicy.md) calculation.|
+
+### Returns
 
 Returns the results of a calculation for an estimated cluster capacity for each resource.
 
-`scope` controls the basis on which the capacities are shown. The capacity can be based on the [workload group](workload-groups.md) the command was classified to, or the cluster's total capacity. If unspecified, the default scope is `cluster`.
-
-**Results**
+The capacity can be based on the [workload group](workload-groups.md) specified in the command or the cluster's total capacity. If unspecified, the default scope is `cluster`.
 
 |Output parameter |Type |Description|
 |---|---|---|
@@ -32,7 +40,7 @@ Returns the results of a calculation for an estimated cluster capacity for each 
 |Remaining |Int64 |The amount of remaining resources of type 'Resource'|
 |Origin |Int64 |The origin of the limit on concurrent requests ([capacity policy](capacitypolicy.md) or [request rate limit policy](request-rate-limit-policy.md))|
 
-**Example**
+**Example output**
 
 |Resource |Total |Consumed |Remaining|Origin|
 |---|---|---|---|---|
