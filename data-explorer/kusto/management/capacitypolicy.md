@@ -23,7 +23,7 @@ The capacity policy is made of the following components:
 
 To view the capacity of your cluster, use the [.show capacity](../management/diagnostics.md#show-capacity) command.
 
-## Ingestion capacity
+### Ingestion capacity
 
 | Property | Type | Description |
 |--|--|--|
@@ -39,7 +39,7 @@ The [.show capacity](../management/diagnostics.md#show-capacity) command returns
 > [!NOTE]
 > In clusters with four or more nodes, the admin node doesn't participate in ingestion operations, so the *Number of nodes in cluster* is reduced by one.
 
-## Extents merge capacity
+### Extents merge capacity
 
 | Property | Type | Description |
 |--|--|--|
@@ -57,7 +57,7 @@ The effective value for *Concurrent operations per node* is automatically adjust
 > [!NOTE]
 > In clusters with four or more nodes, the admin node doesn't participate in merge operations, so *Number of nodes in cluster* is reduced by one.
 
-## Extents purge rebuild capacity
+### Extents purge rebuild capacity
 
 | Property | Type | Description |
 |--|--|--|
@@ -72,7 +72,7 @@ The [.show capacity](../management/diagnostics.md#show-capacity) command returns
 > [!NOTE]
 > In clusters with four or more nodes, the admin node doesn't participate in merge operations, so *Number of nodes in cluster* is reduced by one.
 
-## Export capacity
+### Export capacity
 
 | Property | Type | Description |
 |--|--|--|
@@ -88,7 +88,7 @@ The [.show capacity](../management/diagnostics.md#show-capacity) command returns
 > [!NOTE]
 > In clusters with four or more nodes, the admin node doesn't participate in export operations. The `Number of nodes in cluster` is reduced by one.
 
-## Extents partition capacity
+### Extents partition capacity
 
 | Property | Type | Description |
 |--|--|--|
@@ -106,7 +106,7 @@ The effective value for *Concurrent operations* is automatically adjusted by the
 [`ClusterMinimumConcurrentOperations`,`ClusterMaximumConcurrentOperations`], as long as the success rate of the
 partitioning operations is 90% or higher.
 
-## Materialized views capacity policy
+### Materialized views capacity policy
 
 The policy can be used to change concurrency settings for [materialized views](materialized-views/materialized-view-overview.md). Changing the materialized views capacity policy can be useful when there's more than a single materialized view defined on a cluster.
 
@@ -122,7 +122,7 @@ The effective value for *Concurrent operations* is automatically adjusted by the
 > [!WARNING]
 > Only increase `ClusterMinimumConcurrentOperations` if the cluster has ample resources (low CPU usage and available memory). Raising these values under resource constraints can lead to exhaustion and significantly degrade cluster performance.
 
-## Stored query results capacity
+### Stored query results capacity
 
 | Property | Type | Description |
 |--|--|--|
