@@ -27,7 +27,7 @@ To view the capacity of your cluster, use the [.show capacity](../management/dia
 
 | Property | Type | Description |
 |--|--|--|
-| `ClusterMaximumConcurrentOperations` | long | The maximum number of concurrent ingestion operations allowed in a cluster. This caps the total ingestion capacity, as shown in the following formula. |
+| `ClusterMaximumConcurrentOperations` | long | The maximum number of concurrent ingestion operations allowed in a cluster. This value caps the total ingestion capacity, as shown in the following formula. |
 | `CoreUtilizationCoefficient` | real | Determines the percentage of cores to use in the ingestion capacity calculation.|
 
 **Formula**
@@ -76,7 +76,7 @@ The cluster's total extents purge rebuild capacity is calculated using the follo
 
 | Property | Type | Description |
 |--|--|--|
-| `ClusterMaximumConcurrentOperations` | long | The maximum number of concurrent export operations in a cluster. This caps the total export capacity, as shown in the following formula. |
+| `ClusterMaximumConcurrentOperations` | long | The maximum number of concurrent export operations in a cluster. This value caps the total export capacity, as shown in the following formula. |
 | `CoreUtilizationCoefficient` | real | Determines the percentage of cores to use in the export capacity calculation. |
 
 **Formula**
@@ -108,7 +108,7 @@ partitioning operations is 90% or higher.
 
 ## Materialized views capacity policy
 
-The policy can be used to change concurrency settings for [materialized views](materialized-views/materialized-view-overview.md). Changing the materialized views capacity policy may be useful when there's more than a single materialized view defined on a cluster.
+The policy can be used to change concurrency settings for [materialized views](materialized-views/materialized-view-overview.md). Changing the materialized views capacity policy can be useful when there's more than a single materialized view defined on a cluster.
 
 | Property | Type | Description |
 |--|--|--|
