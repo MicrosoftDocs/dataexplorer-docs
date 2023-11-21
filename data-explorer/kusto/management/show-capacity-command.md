@@ -6,7 +6,7 @@ ms.date: 11/21/2023
 ---
 # .show capacity command
 
-Displays an estimated capactity for a specified cluster resource or for all resources in the cluster. For more information, see [Capacity policy](capacitypolicy.md).
+Displays capactity estimates for data management operations. For more information, see [Capacity policy](capacitypolicy.md).
 
 ## Permissions
 
