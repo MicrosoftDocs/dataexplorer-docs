@@ -29,7 +29,7 @@ You can configure availability zones when creating a cluster [in the Azure porta
 > [!NOTE]
 >
 > - Before you proceed, make sure you familiarize the [migration process and considerations](#migration-process).
-> - You can use these steps to change the availability zones of a cluster that was deployed with a partial list of availability zones.
+> - You can use these steps to change the availability zones of a cluster that was deployed availability zones.
 
 In this article, you learn about:
 
@@ -41,12 +41,55 @@ In this article, you learn about:
 
 ## Prerequisites
 
-- For migrating a cluster to support availability zones you need a cluster that was deployed without any availability zones
+- For migrating a cluster to support availability zones, you need a cluster that was deployed without any availability zones.
 
-- For changing the availability zones of a cluster you need a cluster that was deployed with a partial list of less than three availability zones
+- For changing the zones of a cluster, you need a cluster that is configured with availability zones.
 
 - For REST API, familiarize yourself with [Manage Azure resources by using the REST API](/azure/azure-resource-manager/management/manage-resources-rest).
 - For other programmatic methods, see [Prerequisites](create-cluster-and-database.md#prerequisites).
+
+## Get the list of availability zones for your cluster's region
+
+You can get a list of availability zones for a region by using the following Azure CLI command:
+
+```azurecli
+az account list-locations --query "[?name=='{regionName}']"
+```
+
+For example, the following command gets the list of availability zones for the `westeurope` region:
+
+```azurecli
+az account list-locations --query "[?name=='{westeurope}']"
+```
+
+The availability zones are listed in the `availabilityZoneMappings` property.
+
+```json
+[
+  {
+    "availabilityZoneMappings": [
+      {
+        "logicalZone": "1",
+        "physicalZone": "westeurope-az3"
+      },
+      {
+        "logicalZone": "2",
+        "physicalZone": "westeurope-az1"
+      },
+      {
+        "logicalZone": "3",
+        "physicalZone": "westeurope-az2"
+      }
+    ],
+
+    ...
+
+    "name": "westeurope",
+    "regionalDisplayName": "(Europe) West Europe",
+    "type": "Region"
+  }
+]
+```
 
 ## Configure your cluster to support availability zones
 
@@ -59,10 +102,8 @@ To add availability zones to an existing cluster, you must update the cluster `z
 | `clusterName` | The name of the cluster |
 | `apiVersion` | `2023-05-02` |
 
-**// Qs**  
-**// WHERE CAN CUSTOMERS GET LIST OF AZs?**  
-**// IS THERE A WAY TO MONITOR PROGRESS/CHECK STATUS?**  
-**// CAN YOU CHANGE/SWAP EXISTING AZs ON A PREVIOUSLY CONFIGURED CLUSTER?**
+> [!IMPORTANT]
+> Changing the availability zones for an existing cluster only changes the availability zones for the compute. The persistent storage is not changed.
 
 ### [REST API](#tab/rest-api)
 
@@ -77,7 +118,7 @@ Follow the instructions on how to [deploy a template](/azure/azure-resource-mana
 1. Specify your availability zones in the request body. For example, to configure the cluster to use availability zones 1, 2, and 3, set the body as follows:
 
     ```json
-    { "zones": [ "1", "2", "3" ] }
+    { "zones": [ "{zone1}", "{zone2}", "{zone3}" ] }
     ```
 
 ### [ARM Template](#tab/arm)
@@ -85,7 +126,7 @@ Follow the instructions on how to [deploy a template](/azure/azure-resource-mana
 1. In your ARM template, add the following property to the `Microsoft.Kusto/clusters` resource:
 
     ```json
-    "zones": [ "1", "2", "3" ]
+    "zones": [ "{zone1}", "{zone2}", "{zone3}" ]
     ```
 
     For example:
@@ -95,6 +136,10 @@ Follow the instructions on how to [deploy a template](/azure/azure-resource-mana
 1. Deploy the ARM template. For more information, see [Deploy resources with ARM templates and Azure CLI](/azure/azure-resource-manager/management/manage-resources-rest#deploy-a-template).
 
 ---
+
+During the migration the following message appears in the Azure Portal, on the cluster's overview page. The message is removed after the migration completes.
+
+> Zonality change for the storage of this cluster is in progress. Update time may vary depending on the amount of data.
 
 ## Architecture of clusters with availability zones
 
