@@ -137,7 +137,7 @@ Follow the instructions on how to [deploy a template](/azure/azure-resource-mana
 
 ---
 
-During the migration the following message appears in the Azure Portal, on the cluster's overview page. The message is removed after the migration completes.
+During the migration, the following message appears in the Azure portal, on the cluster's overview page. The message is removed after the migration completes.
 
 > Zonality change for the storage of this cluster is in progress. Update time may vary depending on the amount of data.
 
@@ -145,7 +145,7 @@ During the migration the following message appears in the Azure Portal, on the c
 
 When availability zones are configured, a cluster's resources are deployed as follows:
 
-- **Compute layer**: Azure Data Explorer is a distributed computing platform that has two or more nodes. If availability zones are configured, compute nodes are distributed across the defined availability zone for maximum intra-region resiliency. A zone failure may degrade cluster performance, until the failed compute resources are redeployed in the surviving zones. We recommended configuring the maximum available zones in a region.
+- **Compute layer**: Azure Data Explorer is a distributed computing platform that has two or more nodes. If availability zones are configured, compute nodes are distributed across the defined availability zone for maximum intra-region resiliency. A zone failure might degrade cluster performance, until the failed compute resources are redeployed in the surviving zones. We recommended configuring the maximum available zones in a region.
 
     > [!NOTE]
     >
@@ -182,7 +182,7 @@ When an existing cluster that was deployed without any availability zones is con
 
 ### Considerations
 
-The request for migration to availability zones might not be successful due to capacity constraints. For a successful migration, there must be sufficient compute and storage capacity to support the migration. If there are capacity limitations, you'll receive an error message indicating the issue.
+The request for migration to availability zones might not be successful due to capacity constraints. For a successful migration, there must be sufficient compute and storage capacity to support the migration. If there are capacity limitations, you'll get an error message indicating the issue.
 
 ## See also
 
