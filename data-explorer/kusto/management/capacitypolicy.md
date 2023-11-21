@@ -28,7 +28,7 @@ To view the capacity of your cluster, use the [.show capacity](../management/dia
 | Property | Type | Description |
 |--|--|--|
 | `ClusterMaximumConcurrentOperations` | long | The maximum number of concurrent ingestion operations allowed in a cluster. This caps the total ingestion capacity, as shown in the following formula. |
-| `CoreUtilizationCoefficient` | real | Determines the percentage of cores to use for data ingestion.|
+| `CoreUtilizationCoefficient` | real | Determines the percentage of cores to use in the ingestion capacity calculation.|
 
 **Formula**
 
@@ -77,7 +77,7 @@ The cluster's total extents purge rebuild capacity is calculated using the follo
 | Property | Type | Description |
 |--|--|--|
 | `ClusterMaximumConcurrentOperations` | long | The maximum number of concurrent export operations in a cluster. This caps the total export capacity, as shown in the following formula. |
-| `CoreUtilizationCoefficient` | real | Determines the percentage of cores to use for data export. |
+| `CoreUtilizationCoefficient` | real | Determines the percentage of cores to use in the export capacity calculation. |
 
 **Formula**
 
@@ -127,7 +127,7 @@ The effective value for *Concurrent operations* is automatically adjusted by the
 | Property | Type | Description |
 |--|--|--|
 | `MaximumConcurrentOperationsPerDbAdmin` | long | The maximum number of concurrent ingestion operations in a cluster admin node. |
-| `CoreUtilizationCoefficient` | real | Determines the percentage of cores to use for stored query results creation. |
+| `CoreUtilizationCoefficient` | real | Determines the percentage of cores to use in the stored query results creation calculation. |
 
 **Formula**
 
