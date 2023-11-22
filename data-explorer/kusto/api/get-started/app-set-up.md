@@ -47,7 +47,7 @@ Verify installation: In a command shell, run `dotnet sdk check` to check that th
 
     ```typescript
     const tokenProvider =  () => Promise.resolve("someToken")
-    KustoConnectionStringBuilder.withTokenProvider("localhost", tokenProvider)
+    KustoConnectionStringBuilder.withTokenProvider(clusterUri, tokenProvider)
     ```
 
   - If your app doesn't have a login experience, or you prefer to use the Kusto client library to prompt authentication, you need to set up an application registration with the necessary permissions:
