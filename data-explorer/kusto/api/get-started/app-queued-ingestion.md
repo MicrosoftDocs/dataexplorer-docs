@@ -3,7 +3,7 @@ title:  Create an app to get data using queued ingestion
 description: Learn how to create an app to get data using queued ingestion of the Kusto client libraries.
 ms.reviewer: yogilad
 ms.topic: how-to
-ms.date: 07/31/2023
+ms.date: 11/07/2023
 ---
 # Create an app to get data using queued ingestion
 
@@ -156,11 +156,11 @@ Add the following code:
       main()
     ```
 
-    ### [Node.js](#tab/nodejs)
+    ### [Typescript](#tab/typescript)
 
-    ```nodejs
-    const {Client, KustoConnectionStringBuilder} = require("azure-kusto-data");
-    const {InteractiveBrowserCredential} = require("@azure/identity");
+    ```typescript
+    import { Client as KustoClient, KustoConnectionStringBuilder } from "azure-kusto-data";
+    import { InteractiveBrowserCredential } from "@azure/identity";
 
     async function main() {
       const credentials = new InteractiveBrowserCredential();
@@ -189,6 +189,9 @@ Add the following code:
 
     main();
     ```
+
+    [!INCLUDE [node-vs-browser-auth](../../../includes/node-vs-browser-auth.md)]
+
 
     <!-- ### [Go](#tab/go) -->
 
@@ -259,10 +262,10 @@ Add the following code:
     ingest_kcsb = KustoConnectionStringBuilder.with_azure_token_credential(ingest_uri, credentials)
     ```
 
-    ### [Node.js](#tab/nodejs)
+    ### [Typescript](#tab/typescript)
 
-    ```nodejs
-    const {IngestClient, IngestionProperties, DataFormat} = require("azure-kusto-ingest");
+    ```typescript
+    import { IngestClient, IngestionProperties, DataFormat } from "azure-kusto-ingest";
 
     const ingestUri = "<your_ingestion_uri>";
     const ingestKcsb = KustoConnectionStringBuilder.withTokenCredential(ingestUri, credentials);
@@ -321,10 +324,10 @@ Add the following code:
         ingest_client.ingest_from_file(file_path, ingest_props)
     ```
 
-    ### [Node.js](#tab/nodejs)
+    ### [Typescript](#tab/typescript)
 
-    ```nodejs
-    const path = require('path');
+    ```typescript
+    import path from 'path';
 
     const ingestClient = new IngestClient(ingestKcsb);
     const filePath = path.join(__dirname, "stormevents.csv");
@@ -402,9 +405,9 @@ Add the following code:
     print_result_as_value_list(response)
     ```
 
-    ### [Node.js](#tab/nodejs)
+    ### [Typescript](#tab/typescript)
 
-    ```nodejs
+    ```typescript
     console.log("\nWaiting 30 seconds for ingestion to complete ...");
     await sleep(30000);
 
@@ -572,13 +575,13 @@ if __name__ == "__main__":
   main()
 ```
 
-### [Node.js](#tab/nodejs)
+### [Typescript](#tab/typescript)
 
-```nodejs
-const path = require('path');
-const {Client, KustoConnectionStringBuilder} = require("azure-kusto-data");
-const {IngestClient, IngestionProperties, DataFormat} = require("azure-kusto-ingest");
-const {InteractiveBrowserCredential} = require("@azure/identity");
+```typescript
+import path from 'path';
+import { Client, KustoConnectionStringBuilder } from "azure-kusto-data";
+import { IngestClient, IngestionProperties, DataFormat } from "azure-kusto-ingest";
+import { InteractiveBrowserCredential } from "@azure/identity";
 
 async function main() {
   const credentials = new InteractiveBrowserCredential();
@@ -724,11 +727,22 @@ dotnet run .
 python basic_ingestion.py
 ```
 
-### [Node.js](#tab/nodejs)
+### [Typescript](#tab/typescript)
+
+In a Node.js environment:
 
 ```bash
 node basic-ingestion.js
 ```
+
+In a browser environment, use the appropriate command to run your app. For example, for Vite-React:
+
+```bash
+npm run dev
+```
+
+> [!NOTE]
+> In a browser environment, open the [developer tools console](/microsoft-edge/devtools-guide-chromium/console/) to see the output.
 
 <!-- ### [Go](#tab/go) -->
 
@@ -783,10 +797,10 @@ For example, you can modify the app replacing the *ingest from file* code, as fo
     from azure.kusto.ingest import StreamDescriptor
     ```
 
-    ### [Node.js](#tab/nodejs)
+    ### [Typescript](#tab/typescript)
 
-    ```nodejs
-    const {Readable} = require("stream");
+    ```typescript
+    import { Readable } from "stream";
     ```
 
     <!-- ### [Go](#tab/go) -->
@@ -818,9 +832,9 @@ For example, you can modify the app replacing the *ingest from file* code, as fo
     string_stream = io.StringIO(single_line)
     ```
 
-    ### [Node.js](#tab/nodejs)
+    ### [Typescript](#tab/typescript)
 
-    ```nodejs
+    ```typescript
     const singleLine = '2018-01-26 00:00:00.0000000,2018-01-27 14:00:00.0000000,MEXICO,0,0,Unknown,"{}"';
     const stringStream = new Readable();
     stringStream.push(singleLine);
@@ -853,9 +867,9 @@ For example, you can modify the app replacing the *ingest from file* code, as fo
     ingest_props = IngestionProperties(database, table, DataFormat.CSV, ignore_first_record=False)
     ```
 
-    ### [Node.js](#tab/nodejs)
+    ### [Typescript](#tab/typescript)
 
-    ```nodejs
+    ```typescript
     ingestProps.ignoreFirstRecord = false;
     ```
 
@@ -884,9 +898,9 @@ For example, you can modify the app replacing the *ingest from file* code, as fo
     ingest_client.ingest_from_stream(stream_descriptor, ingest_props)
     ```
 
-    ### [Node.js](#tab/nodejs)
+    ### [Typescript](#tab/typescript)
 
-    ```nodejs
+    ```typescript
     stringStream.size = singleLine.length;
     await ingestClient.ingestFromStream(stringStream, ingestProps);
     ```
@@ -976,14 +990,14 @@ if __name__ == "__main__":
   main()
 ```
 
-### [Node.js](#tab/nodejs)
+### [Typescript](#tab/typescript)
 
-```nodejs
-const path = require('path');
-const {Client, KustoConnectionStringBuilder} = require("azure-kusto-data");
-const {IngestClient, IngestionProperties, DataFormat} = require("azure-kusto-ingest");
-const {InteractiveBrowserCredential} = require("@azure/identity");
-const {Readable} = require("stream");
+```typescript
+import path from 'path';
+import { Client, KustoConnectionStringBuilder } from "azure-kusto-data";
+import { IngestClient, IngestionProperties, DataFormat } from "azure-kusto-ingest";
+import { InteractiveBrowserCredential } from "@azure/identity";
+import { Readable } from "stream";
 
 async function main() {
   ...
@@ -1111,9 +1125,9 @@ For example, you can modify the app replacing the *ingest from memory* code with
     from azure.kusto.ingest import BlobDescriptor
     ```
 
-    ### [Node.js](#tab/nodejs)
+    ### [Typescript](#tab/typescript)
 
-    ```nodejs
+    ```typescript
     No additional packages are required.
     ```
 
@@ -1148,9 +1162,9 @@ For example, you can modify the app replacing the *ingest from memory* code with
     ingest_client.ingest_from_blob(blob_descriptor, ingest_props)
     ```
 
-    ### [Node.js](#tab/nodejs)
+    ### [Typescript](#tab/typescript)
 
-    ```nodejs
+    ```typescript
     const blobUri = "<your_blob_uri>";
 
     ingestProps.ignoreFirstRecord = true;
@@ -1244,15 +1258,14 @@ if __name__ == "__main__":
   main()
 ```
 
-### [Node.js](#tab/nodejs)
+### [Typescript](#tab/typescript)
 
-```nodejs
-
-const path = require('path');
-const {Client, KustoConnectionStringBuilder} = require("azure-kusto-data");
-const {IngestClient, IngestionProperties, DataFormat} = require("azure-kusto-ingest");
-const {InteractiveBrowserCredential} = require("@azure/identity");
-const {Readable} = require("stream");
+```typescript
+import path from 'path';
+import { Client, KustoConnectionStringBuilder } from "azure-kusto-data";
+import { IngestClient, IngestionProperties, DataFormat } from "azure-kusto-ingest";
+import { InteractiveBrowserCredential } from "@azure/identity";
+import { Readable } from "stream";
 
 async function main() {
   ...
