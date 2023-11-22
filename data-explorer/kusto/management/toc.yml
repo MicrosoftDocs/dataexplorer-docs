@@ -816,7 +816,7 @@ items:
       - name: Operations
         displayName: Operations management, operations, .show Operations
         href: operations.md
-      - name: Manage queries and commands
+      - name: Queries and commands
         items:
         - name: .cancel query
           href: cancel-query-command.md
