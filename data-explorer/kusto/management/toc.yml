@@ -820,9 +820,12 @@ items:
       - name: Operations
         displayName: Operations management, operations, .show Operations
         href: operations.md
-      - name: Query management commands
-        displayName: .show running queries .cancel query
-        href: queries.md
+      - name: Query management
+        items:
+        - name: .show queries
+          href: show-queries-command.md
+        - name: .cancel query
+          href: cancel-query-command.md
       - name: .show streamingingestion statistics command
         displayName: .show streaming ingestion statistics
         href: streamingingestionstatistics.md
