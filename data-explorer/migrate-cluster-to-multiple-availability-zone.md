@@ -28,7 +28,7 @@ You can configure availability zones when creating a cluster [in the Azure porta
 
 > [!NOTE]
 >
-> - Before you proceed, make sure you familiarize the [migration process and considerations](#migration-process).
+> - Before you proceed, make sure you familiar with the [migration process and considerations](#migration-process).
 > - You can use these steps to change the availability zones of a cluster that was deployed availability zones.
 
 In this article, you learn about:
@@ -100,7 +100,7 @@ To add availability zones to an existing cluster, you must update the cluster `z
 | `subscriptionId` | The subscription ID of the cluster |
 | `resourceGroupName` | The resource group name of the cluster |
 | `clusterName` | The name of the cluster |
-| `apiVersion` | `2023-05-02` |
+| `apiVersion` | `2023-05-02` or later |
 
 > [!IMPORTANT]
 > Changing the availability zones for an existing cluster only changes the availability zones for the compute. The persistent storage is not changed.
