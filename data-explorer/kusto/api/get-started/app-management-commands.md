@@ -524,7 +524,7 @@ In a Node.js environment:
 node management-commands.js
 ```
 
-In a browser environment, use the appropriate command to run your app. For example, for React:
+In a browser environment, use the appropriate command to run your app. For example, for Vite-React:
 
 ```bash
 npm run dev
