@@ -805,10 +805,6 @@ items:
   - name: System information
     href: systeminfo.md
     items:
-      - name: Commands
-        href: commands.md
-      - name: Commands and queries
-        href: commands-and-queries.md
       - name: Estimate table size
         href: estimate-table-size.md
       - name: .show table data statistics command
@@ -820,12 +816,16 @@ items:
       - name: Operations
         displayName: Operations management, operations, .show Operations
         href: operations.md
-      - name: Query management
+      - name: Manage queries and commands
         items:
-        - name: .show queries
-          href: show-queries-command.md
         - name: .cancel query
           href: cancel-query-command.md
+        - name: .show commands
+          href: show-commands.md
+        - name: .show commands-and-queries
+          href: commands-and-queries.md
+        - name: .show queries
+          href: show-queries-command.md
       - name: .show streamingingestion statistics command
         displayName: .show streaming ingestion statistics
         href: streamingingestionstatistics.md
