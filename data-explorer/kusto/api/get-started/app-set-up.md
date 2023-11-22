@@ -3,7 +3,7 @@ title: Set up your development environment to use Kusto client libraries
 description: Learn how to set up your development environment to use Kusto client libraries.
 ms.reviewer: yogilad
 ms.topic: how-to
-ms.date: 04/24/2023
+ms.date: 11/07/2023
 ---
 # Set up your development environment to use Kusto client libraries
 
@@ -14,6 +14,9 @@ In this article, you learn how to install client library packages for your prefe
 ## Prerequisites
 
 Select the prerequisites for the programming language used to create your app.
+
+> [!NOTE]
+> Kusto client libraries are compatible with JavaScript and TypeScript. To convert TypeScript examples to JavaScript, simply remove the type annotations used for variables, parameters, and return values.
 
 ### [C\#](#tab/csharp)
 
@@ -32,11 +35,34 @@ Verify installation: In a command shell, run `dotnet sdk check` to check that th
     - Ensure the `python` executable is in your `PATH`
     - Verify installation: In a command shell, run `python --version` to check that the version is 3.7 or later
 
-### [Node.js](#tab/nodejs)
+### [Typescript](#tab/typescript)
 
 - [Node 16 or later](https://nodejs.org/en/download/) built with ES6
     - Ensure the `node` executable is in your `PATH`
     - Verify installation: In a command shell, run `node --version` to check that the version is 3.7 or later
+- A Node.js app or a browser-based web app, such as a React app.
+- For browser-based web apps:
+  
+  - If your app has a login experience, you can use the [@auzre/identity library](https://github.com/Azure/azure-sdk-for-js/tree/main/sdk/identity/identity/test/manual/interactive-browser-credential) to issue an authorization token and use `withTokenProvider` to feed this token to the Kusto client:
+
+    ```typescript
+    const tokenProvider =  () => Promise.resolve("someToken")
+    KustoConnectionStringBuilder.withTokenProvider(clusterUri, tokenProvider)
+    ```
+
+  - If your app doesn't have a login experience, or you prefer to use the Kusto client library to prompt authentication, you need to set up an application registration with the necessary permissions:
+  
+    1. [Create a Microsoft Entra application registration](../../../provision-azure-ad-app.md#create-microsoft-entra-application-registration).
+    2. In the **Authentication** tab, select **+ Add a platform**. Then, select **Single-page application**.
+    3. Enter the desired **Redirect URIs**, select the boxes for **Access tokens** and **ID tokens**, and select **Configure**. For more information on redirect URIs, see [Desktop app that calls web APIs](/entra/identity-platform/scenario-desktop-app-registration).
+    4. [Configure delegated permissions for the application](../../../provision-azure-ad-app.md#configure-delegated-permissions-for-the-application-registration).
+    5. [Grant the application access to your Azure Data Explorer database](../../../provision-azure-ad-app.md#grant-the-application-registration-access-to-an-azure-data-explorer-database).
+    6. In the **Overview** tab, copy the **Application (client) ID**.
+
+    The examples throughout the following tutorials use the Kusto client library to prompt authentication.
+
+    > [!NOTE]
+    > If you belong to an organization, restrictions based on organization configurations might prevent you from authenticating. Ask for access from an organization admin or try again on a personal account.
 
 <!-- ### [Go](#tab/go) -->
 
@@ -77,7 +103,7 @@ python -m pip install azure-kusto-data
 python -m pip install azure-kusto-ingest
 ```
 
-### [Node.js](#tab/nodejs)
+### [Typescript](#tab/typescript)
 
 ```bash
 npm install azure-kusto-data
@@ -130,6 +156,29 @@ You also need to add the *maven-compiler-plugin* and *exec-maven-plugin* plugins
 
 ---
 
+The Kusto SDKs contain quick start sample applications. These applications showcase how to authenticate, administer, query, and ingest data using the Kusto client libraries. You can use them as a starting point for your own application by modifying the code or incorporating specific sections into your project.
+
+### [C\#](#tab/csharp)
+
+[C# Quickstart App](https://github.com/Azure/azure-kusto-samples-dotnet/tree/master/client/QuickStart)
+
+### [Python](#tab/python)
+
+[Python Quickstart App](https://github.com/Azure/azure-kusto-python/tree/master/quick_start)
+
+### [Typescript](#tab/typescript)
+
+* [Node.js Quickstart App](https://github.com/Azure/azure-kusto-node/tree/master/packages/quick_start)
+* [Browser Quickstart App](https://github.com/Azure/azure-kusto-node/tree/master/packages/quick_start_browser)
+
+<!-- ### [Go](#tab/go) -->
+
+### [Java](#tab/java)
+
+[Java Quickstart App](https://github.com/Azure/azure-kusto-java/tree/master/quickstart)
+
+---
+
 ## Learn how to create apps that use client libraries
 
 The following articles walk you through creating apps that use the Kusto client libraries.
@@ -137,6 +186,7 @@ The following articles walk you through creating apps that use the Kusto client 
 - [Create your first app](app-hello-kusto.md)
 - [Create an app to run basic queries](app-basic-query.md)
 - [Create an app to run management commands](app-management-commands.md)
+- [Create an app to get data using queued ingestion](app-queued-ingestion.md)
 
 ## Next steps
 
