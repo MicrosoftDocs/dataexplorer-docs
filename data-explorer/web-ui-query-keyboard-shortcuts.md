@@ -29,7 +29,6 @@ The letters that appear below represent letter keys on your keyboard. For exampl
 | Fold all                                      | <kbd>Ctrl</kbd>+<kbd>K</kbd> <kbd>Ctrl</kbd>+<kbd>0</kbd>    |
 | Format selection                              | <kbd>Ctrl</kbd>+<kbd>K</kbd> <kbd>Ctrl</kbd>+<kbd>F</kbd>    |
 | Format all                                    | <kbd>Shift</kbd>+<kbd>Alt</kbd>+<kbd>F</kbd>                 |
-| Go to definition                              | <kbd>Ctrl</kbd>+<kbd>F12</kbd>                               |
 | Go to line                                    | <kbd>Ctrl</kbd>+<kbd>G</kbd>                                 |
 | Go to Next Problem (Error, Warning, Info)     | <kbd>Alt</kbd>+<kbd>F8</kbd>                                 |
 | Go to Previous Problem (Error, Warning, Info) | <kbd>Shift</kbd>+<kbd>F8</kbd>                               |
@@ -46,6 +45,8 @@ The letters that appear below represent letter keys on your keyboard. For exampl
 | Run query                                     | <kbd>Shift</kbd>+<kbd>Enter</kbd>                            |
 | Recall execution result                       | <kbd>F8</kbd>                                                |
 | Reopen closed tab                             | <kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>Alt</kbd>+<kbd>T</kbd> |
+
+<!-- | Go to definition                              | <kbd>Ctrl</kbd>+<kbd>F12</kbd>                               | // Line 32-->
 
 ## Results viewer
 
