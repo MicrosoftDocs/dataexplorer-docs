@@ -55,6 +55,6 @@ Compression can be done using other tools, for example Python.
 print(base64.b64encode(zlib.compress(b'<original_string>')))
 ```
 
-## Next steps
+## Related content
 
-Use [zlib_decompress_from_base64_string()](zlib-base64-decompress.md) to retrieve the original uncompressed string.
+* Use [zlib_decompress_from_base64_string()](zlib-base64-decompress.md) to retrieve the original uncompressed string.

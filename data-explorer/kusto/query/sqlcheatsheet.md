@@ -53,6 +53,6 @@ The following table shows sample queries in SQL and their KQL equivalents.
 | Nested queries | `SELECT * FROM dependencies`<br>`WHERE resultCode == `<br>`(SELECT TOP 1 resultCode FROM dependencies`<br>`WHERE resultId = 7`<br>`ORDER BY timestamp DESC)` | `dependencies`<br>`| where resultCode == toscalar(`<br>`    dependencies`<br>`    | where resultId == 7`<br>`    | top 1 by timestamp desc`<br>`    | project resultCode)` | [toscalar](toscalarfunction.md) |
 | Having | `SELECT COUNT(\*) FROM dependencies`<br>`GROUP BY name`<br>`HAVING COUNT(\*) > 3` | `dependencies`<br>`| summarize Count = count() by name`<br>`| where Count > 3` | [summarize](summarizeoperator.md)</br>[where](whereoperator.md) |
 
-## Next steps
+## Related content
 
 * Use [T-SQL](/azure/data-explorer/t-sql) to query data

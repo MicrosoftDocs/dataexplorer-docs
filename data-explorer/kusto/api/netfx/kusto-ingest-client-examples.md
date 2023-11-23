@@ -191,7 +191,7 @@ while (ingestionStatus.Status == Status.Pending)
 Ensure.ConditionIsMet(ingestionStatus.Status == Status.Succeeded, "The file should have been ingested successfully");
 ```
 
-## Next steps
+## Related content
 
 * [Kusto.Ingest client reference](kusto-ingest-client-reference.md)
 * [Kusto.Ingest operation status](kusto-ingest-client-errors.md)

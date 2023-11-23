@@ -61,6 +61,6 @@ At least [Database Ingestor](access-control/role-based-access-control.md) permis
 |--|--|--|
 | mapping1 | JSON | [{"Properties":{"Path":"$.rownumber"},"column":"rownumber","datatype":"int"},{"Properties":{"Path":"$.rowguid"},"column":"rowguid","datatype":""}] | MyDatabase | MyTable |
 
-## Next steps
+## Related content
 
-For detailed descriptions of various ingestion mapping formats such as CSV, JSON, Avro, Parquet, and Orc, see [Data mappings](mappings.md).
+* For detailed descriptions of various ingestion mapping formats such as CSV, JSON, Avro, Parquet, and Orc, see [Data mappings](mappings.md).

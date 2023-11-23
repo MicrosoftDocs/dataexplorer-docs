@@ -228,6 +228,6 @@ You can monitor the partitioning status of tables with defined policies in a dat
 
 In both of these cases, either "fix" the data, or filter out any irrelevant records in the data before or at ingestion time, to reduce the overhead of the data partitioning on the cluster. For example, use an [update policy](updatepolicy.md).
 
-## Next steps
+## Related content
 
-Use the [partitioning policy management commands](./show-table-partitioning-policy-command.md) to manage data partitioning policies for tables.
+* [Partitioning policy management commands](./show-table-partitioning-policy-command.md)
