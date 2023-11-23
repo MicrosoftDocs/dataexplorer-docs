@@ -75,8 +75,8 @@ Since certain management commands can't be run in the **help** cluster, you can 
 | **RawServerMetrics** | The data [retention policy](kusto/management/retentionpolicy.md) can be configured to 10 days to avoid the duplication of data across raw and transformed tables. If needed, you can keep raw data for longer. For example, if there are any issues with the *TransformedServerMetrics* table, rather than going back to the source data, you can refer to the data in the *RawServerMetrics* table. | `.alter table RawServerMetrics policy retention '{"SoftDeletePeriod": "10.00:00:00", "Recoverability": "Enabled"}'` |
 | **TransformedServerMetrics** | The [update policy](kusto/management/updatepolicy.md) can be applied to transform and parse raw data. | `.alter table TransformedServerMetrics policy update @'[{"IsEnabled": true, "Source": "RawServerMetrics", "Query": "Transform_RawServerMetrics()", "IsTransactional": true, "PropagateIngestionProperties": false}]'` |
 
-## Next steps
+## Related content
 
 * [Query data in the web UI](web-ui-query-overview.md)
-* [Visualize data with Azure Data Explorer dashboards (Preview)](azure-data-explorer-dashboards.md)
+* [Visualize data with Azure Data Explorer dashboards](azure-data-explorer-dashboards.md)
 * [Customize settings in the Azure Data Explorer web UI](web-customize-settings.md)

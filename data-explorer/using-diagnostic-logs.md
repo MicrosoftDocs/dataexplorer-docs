@@ -103,7 +103,7 @@ All [Azure Monitor diagnostic logs share a common top-level schema](/azure/azure
 * [ADXTableDetails](/azure/azure-monitor/reference/tables/adxtabledetails)
 * [ADXJournal](/azure/azure-monitor/reference/tables/adxjournal)
 
-## Next steps
+## Related content
 
 * [Use metrics to monitor cluster health](using-metrics.md)
 * [Tutorial: Ingest and query monitoring data in Azure Data Explorer](ingest-data-no-code.md) for ingestion diagnostic logs

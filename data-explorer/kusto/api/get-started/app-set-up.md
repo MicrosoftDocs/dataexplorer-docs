@@ -188,11 +188,7 @@ The following articles walk you through creating apps that use the Kusto client 
 - [Create an app to run management commands](app-management-commands.md)
 - [Create an app to get data using queued ingestion](app-queued-ingestion.md)
 
-## Next steps
+## Related content
 
-<!-- Advance to the next article to learn how to create... -->
-> [!div class="nextstepaction"]
-> [KQL quick reference](../../../kql-quick-reference.md)
-
-> [!div class="nextstepaction"]
-> [Sample app generator wizard](../../../sample-app-generator-wizard.md)
+* [KQL quick reference](../../../kql-quick-reference.md)
+* [Sample app generator wizard](../../../sample-app-generator-wizard.md)

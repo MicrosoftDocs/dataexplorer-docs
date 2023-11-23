@@ -86,6 +86,6 @@ ms.date: 11/04/2019
 
     ![Complete dashboard creation.](media/redash/complete-dashboard.png)
 
-## Next steps
+## Related content
 
 * [Write queries for Azure Data Explorer](/azure/data-explorer/kusto/query/tutorials/learn-common-operators)

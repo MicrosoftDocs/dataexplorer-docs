@@ -237,6 +237,6 @@ MyIngestedSample
     docker stop <containerID>
     ```
 
-## Next steps
+## Related content
 
 - [Kusto Query Language (KQL) overview](kusto/query/index.md)
