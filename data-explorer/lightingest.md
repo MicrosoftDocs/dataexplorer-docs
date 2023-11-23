@@ -57,7 +57,7 @@ For an example of how to auto-generate a LightIngest command, see [ingest histor
 
 ## Command-line arguments
 
-| Argument name | Type | Description | Required |
+| Argument | Type | Description | Required |
 |--|--|--|--|
 |  | string | [Azure Data Explorer Connection String](kusto/api/connection-strings/kusto.md) specifying the Kusto endpoint that will handle the ingestion. This value should be enclosed with double quotes. | &check; |
 | -database, -db | string | The target Azure Data Explorer database name. |  |
