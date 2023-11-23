@@ -702,7 +702,7 @@ Result:
 }
 ```
 
-## Next steps
+## Next step
 
 <!-- > [!div class="nextstepaction"]
 > [Create an app to ingest data using the batching manager](app-queued-ingestion.md) -->

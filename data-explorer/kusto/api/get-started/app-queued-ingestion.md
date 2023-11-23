@@ -1365,7 +1365,7 @@ Last ingested row:
          StormSummary - {}
 ```
 
-## Next steps
+## Next step
 
 <!-- Advance to the next article to learn how to create... -->
 <!-- > [!div class="nextstepaction"]

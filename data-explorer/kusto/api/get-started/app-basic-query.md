@@ -875,7 +875,7 @@ Daily flash flood damages over 200,000,000$:
 2007-08-21 00:00:00+00:00 - OHIO , 253320000 $
 ```
 
-## Next steps
+## Next step
 
 <!-- Advance to the next article to learn how to create... -->
 > [!div class="nextstepaction"]

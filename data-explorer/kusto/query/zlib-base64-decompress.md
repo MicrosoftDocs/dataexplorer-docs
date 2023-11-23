@@ -62,6 +62,6 @@ print zcomp = zlib_decompress_from_base64_string("x0x0x0")
 |--|
 ||
 
-## Next steps
+## Related content
 
-Create a compressed input string with [zlib_compress_to_base64_string()](zlib-base64-compress.md).
+* Create a compressed input string with [zlib_compress_to_base64_string()](zlib-base64-compress.md).

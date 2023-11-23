@@ -94,7 +94,7 @@ To use KQL tools:
 
 :::image type="content" source="media/web-ui-kql/kql-tools.jpg" alt-text="Screenshot of the KQL tools option in the web UI toolbar." lightbox="media/web-ui-kql/kql-tools.jpg":::
 
-## Next steps
+## Related content
 
 * [Tutorial: Learn common operators](kusto/query/tutorials/learn-common-operators.md)
 * [Tutorial: Use aggregation functions](kusto/query/tutorials/use-aggregation-functions.md)

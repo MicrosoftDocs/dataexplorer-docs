@@ -462,7 +462,7 @@ You should see a result similar to the following:
 Hello Kusto!
 ```
 
-## Next steps
+## Next step
 
 <!-- Advance to the next article to learn how to create... -->
 > [!div class="nextstepaction"]

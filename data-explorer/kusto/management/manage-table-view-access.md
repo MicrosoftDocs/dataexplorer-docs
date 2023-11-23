@@ -27,7 +27,7 @@ The [Row Level Security (RLS) policy](rowlevelsecuritypolicy.md) allows you to r
 
 Create a [follower database](../../follower.md) and follow only the relevant tables that you'd like to share with the specific principal or set of principals.
 
-## Next steps
+## Related content
 
 * Learn more about [role-based access control](access-control/role-based-access-control.md)
 * Use management commands to assign [security roles](security-roles.md)

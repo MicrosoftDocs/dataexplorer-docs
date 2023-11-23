@@ -232,13 +232,10 @@ To drop an existing authorized principal, select **Drop principal** and confirm 
 
 :::image type="content" source="images/kusto-explorer-using/confirm-drop-authorized-principals.png" alt-text="Screenshot of Drop principal window showing a confirmation request for dropping an authorized principal.":::
 
-## Next steps
+## Related content
 
 * [Kusto.Explorer keyboard shortcuts](kusto-explorer-shortcuts.md)
 * [Kusto.Explorer options](kusto-explorer-options.md)
 * [Troubleshooting Kusto.Explorer](kusto-explorer-troubleshooting.md)
-
-To Learn more about Kusto.Explorer tools and utilities, See:
-
 * [Kusto.Explorer code features](kusto-explorer-code-features.md)
 * [Kusto Query Language (KQL)](../query/index.md)

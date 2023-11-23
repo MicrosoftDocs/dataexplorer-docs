@@ -218,7 +218,6 @@ If you don't want to keep the report you created, simply delete the *storm-event
 
 1. Confirm the removal.
 
-## Next steps
+## Related content
 
-> [!div class="nextstepaction"]
-> [Write queries](/azure/data-explorer/kusto/query/tutorials/learn-common-operators)
+* [Write queries](/azure/data-explorer/kusto/query/tutorials/learn-common-operators)

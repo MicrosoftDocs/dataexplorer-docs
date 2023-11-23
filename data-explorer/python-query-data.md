@@ -88,7 +88,7 @@ df
 
 You should see the top ten results from the StormEvents table.
 
-## Next steps
+## Next step
 
 > [!div class="nextstepaction"]
-> [Ingest data using the Azure Data Explorer Python library](python-ingest-data.md)
+> [Ingest data using Python](python-ingest-data.md)

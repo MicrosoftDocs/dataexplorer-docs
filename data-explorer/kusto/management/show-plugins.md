@@ -38,7 +38,7 @@ Returns a table containing the following fields:
 | autocluster | false |
 | basket      | true  |
 
-## Next steps
+## Related content
 
 * [.disable plugin](disable-plugin.md)
 * [.enable plugin](enable-plugin.md)

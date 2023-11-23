@@ -131,6 +131,6 @@ demo_make_series2
 
 This document details native KQL functions for time series anomaly detection and forecasting. Each original time series is decomposed into seasonal, trend and residual components for detecting anomalies and/or forecasting. These functionalities can be used for near real-time monitoring scenarios, such as fault detection, predictive maintenance, and demand and load forecasting.
 
-## Next steps
+## Related content
 
-Learn about [Machine learning capabilities](./machine-learning-clustering.md) with KQL.
+* Learn about [Machine learning capabilities](./machine-learning-clustering.md) with KQL

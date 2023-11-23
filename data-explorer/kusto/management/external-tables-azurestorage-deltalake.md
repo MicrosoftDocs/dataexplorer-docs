@@ -93,6 +93,6 @@ kind=delta
 * Time travel is not supported. Only the latest delta table version is used.
 * Export, or continuous export, into delta external tables is not supported.
 
-## Next steps
+## Related content
 
-* [Query external tables](../../data-lake-query-data.md).
+* [Query external tables](../../data-lake-query-data.md)

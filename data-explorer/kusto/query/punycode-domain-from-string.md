@@ -47,6 +47,6 @@ datatable(encoded:string)
 |xn--Lin-8na.Celtchair.org|Lúin.Celtchair.org|
 |xn--Ry-lja8c.xn--Jng-uta63a.xn--Bng-9ka.com|Rúyì.Jīngū.Bàng.com|
 
-## Next steps
+## Related content
 
-To encode a domain name to punycode form, see [punycode_domain_to_string()](punycode-domain-to-string.md).
+* To encode a domain name to punycode form, see [punycode_domain_to_string()](punycode-domain-to-string.md).
