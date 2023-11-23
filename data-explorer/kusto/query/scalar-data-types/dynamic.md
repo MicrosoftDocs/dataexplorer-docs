@@ -209,6 +209,6 @@ Every field is indexed during data ingestion. The scope of the index is a single
 
 To index dynamic columns, the ingestion process enumerates all “atomic” elements within the dynamic value (property names, values, array elements) and forwards them to the index builder. Otherwise, dynamic fields have the same inverted term index as string fields.
 
-## Next steps
+## Related content
 
 * To see an example query using dynamic objects and object accessors, see [Map values from one set to another](../tutorials/learn-common-operators.md#map-values-from-one-set-to-another).

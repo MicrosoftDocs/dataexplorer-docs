@@ -72,7 +72,7 @@ You can create and call [stored functions](kusto/query/schema-entities/stored-fu
 > [!NOTE]
 > To distinguish between stored functions and emulated SQL system stored procedures, call stored functions with an explicit reference to the `kusto` schema. In the example, the stored function is called using `kusto.Myfunction`.
 
-## Next steps
+## Related content
 
 * [Connect with ODBC](connect-odbc.md)
 * [Connect with JDBC](connect-jdbc.md)

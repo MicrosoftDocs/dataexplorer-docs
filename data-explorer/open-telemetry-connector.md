@@ -295,7 +295,7 @@ Using update policies, the collected data can further be processed as per applic
     @'[{ "IsEnabled": true, "Source": "RawMetricsData","Query": "ExtractHistoCountColumns()", "IsTransactional": false, "PropagateInge
     ```
 
-## Next steps
+## Related content
 
 * [KQL quick reference](kql-quick-reference.md)
 * [Kusto Query Language (KQL) overview](kusto/query/index.md)

@@ -75,6 +75,7 @@ You typically use the native query language with Azure Data Explorer, but it als
 
 If you no longer need the report you created for this article, delete the Power BI Desktop (.pbix) file.
 
-## Next steps
+## Next step
 
-[Visualize data using the Azure Data Explorer connector for Power BI](power-bi-data-connector.md)
+> [!div class="nextstepaction"]
+> [Visualize data using the Azure Data Explorer connector for Power BI](power-bi-data-connector.md)

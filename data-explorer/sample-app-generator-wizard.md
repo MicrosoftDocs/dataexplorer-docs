@@ -105,7 +105,6 @@ Detailed instructions for running the project with the selected SDK will be show
 >[!NOTE]
 > You may need to run the downloaded app for the **Quick queries** to work.
 
-## Next steps
+## Related content
 
 * [Set up your development environment to use Kusto client libraries](kusto/api/get-started/app-set-up.md)
-* [Hello Kusto: Create your first Kusto client app](kusto/api/get-started/app-hello-kusto.md)

@@ -116,6 +116,7 @@ In the following steps, we'll be using the StormEvents table from our [help clus
 
 ---
 
-## Next steps
+## Next step
 
-[Create reports and dashboards in Power BI](/power-bi/create-reports/).
+> [!div class="nextstepaction"]
+> [Create reports and dashboards in Power BI](/power-bi/create-reports/)

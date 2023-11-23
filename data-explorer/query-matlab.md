@@ -303,6 +303,6 @@ To perform application authentication:
 
 ---
 
-## Next steps
+## Related content
 
 * Query your cluster with the [REST API](kusto/api/rest/index.md)

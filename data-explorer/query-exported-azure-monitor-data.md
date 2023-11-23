@@ -54,6 +54,6 @@ external_table("HBTest","map") | take 10000
 
 [![Screenshot that shows the Query Log Analytics exported data.](media/query-exported-monitor-data/external-table-query.png)](media/query-exported-monitor-data/external-table-query.png#lightbox)
 
-## Next steps
+## Related content
 
 * [Query data in the Web UI](web-ui-query-overview.md)

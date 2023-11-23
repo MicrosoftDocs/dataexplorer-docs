@@ -291,10 +291,7 @@ Before you migrate your POC cluster to production, we highly recommend that you 
 - Data and insights consumption requirements
 - Testing requirements
 
-## Next steps
+## Related content
 
-> [!div class="nextstepaction"]
-> [Common questions about Azure Data Explorer ingestion](kusto/management/ingestion-faq.yml)
-
-> [!div class="nextstepaction"]
-> [Best practices for schema management](kusto/management/management-best-practices.md)
+* [Common questions about Azure Data Explorer ingestion](kusto/management/ingestion-faq.yml)
+* [Best practices for schema management](kusto/management/management-best-practices.md)

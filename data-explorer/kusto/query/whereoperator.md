@@ -92,7 +92,7 @@ StormEvents
 | where * has "cow"
 ```
 
-## Next steps
+## Related content
 
 * [String operators](datatypes-string-operators.md)
 * [Numerical operators](numoperators.md)

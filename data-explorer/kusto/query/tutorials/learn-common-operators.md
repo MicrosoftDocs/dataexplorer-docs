@@ -287,7 +287,7 @@ StormEvents
 |72609|Utility Company|Private|
 |...|...|...|
 
-## Next steps
+## Next step
 
 Now that you're familiar with the essentials of writing Kusto queries, go on to the next tutorial and learn how to use aggregation functions to gain deeper insight into your data.
 

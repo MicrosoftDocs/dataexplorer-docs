@@ -392,7 +392,7 @@ The following result table is truncated. To see the full output, run the query.
 | 2007-07-10T00:00:00Z | Wildfire | 0 | 200000 | 11694 |
 | ... | ... | ... |
 
-## Next steps
+## Next step
 
 Now that you're familiar with common query operators and aggregation functions, go on to the next tutorial to learn how to join data from multiple tables.
 

@@ -116,7 +116,7 @@ Azure Data Explorer offers limited support for T-SQL. The following table outlin
 |Duplicate column names|Not supported. The original name is preserved for one column.|
 |Data types|Data returned may differ in type from SQL Server. For example, `TINYINT` and `SMALLINT` have no equivalent in Azure Data Explorer, and may return as `INT32` or `INT64` instead of `BYTE` or `INT16`.|
 
-## Next steps
+## Related content
 
 * Learn about [SQL Server emulation](sql-server-emulation-overview.md) in Azure Data Explorer
 * Use the [SQL to Kusto Query Language cheat sheet](kusto/query/sqlcheatsheet.md)

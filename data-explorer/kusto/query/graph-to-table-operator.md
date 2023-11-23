@@ -190,7 +190,7 @@ E
 |3855580634910899594|Mallory|Alice|attacks|
 |3855580634910899594|Mallory|Bob|attacks|
 
-## Next steps
+## Related content
 
 * [Graph operators](graph-operators.md)
 * [make-graph operator](make-graph-operator.md)

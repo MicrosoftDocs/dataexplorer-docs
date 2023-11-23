@@ -15,16 +15,12 @@ including, but not exclusively, [Azure Databricks](https://azure.microsoft.com/s
 
 *Kusto Python Ingest Client* is a python library that lets you send, or ingest, data to your cluster.
 
-## Next steps
+## Related content
 
 * [How to install the package](https://github.com/Azure/azure-kusto-python#install)
-
 * [Kusto query sample](https://github.com/Azure/azure-kusto-python/blob/master/azure-kusto-data/tests/sample.py)
-
 * [Data ingest sample](https://github.com/Azure/azure-kusto-python/blob/master/azure-kusto-ingest/tests/sample.py)
-
 * [Ingest data using Python](../../../python-ingest-data.md)
-
 * [GitHub Repository](https://github.com/Azure/azure-kusto-python)
 
     [![Build status badge](https://badge.fury.io/py/azure-kusto-python.svg)](https://github.com/Azure/azure-kusto-python/actions/workflows/build.yml)

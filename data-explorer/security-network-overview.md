@@ -56,7 +56,7 @@ The following table shows how network security related features could be impleme
 
 Maintain FQDN lists in firewalls, or deploying public IP addresses in a restricted environment, for virtual network injection leads to a high maintenance overhead; hence, recommend using a private endpoint to connect to your cluster.
 
-## Next steps
+## Related content
 
 * [Private Endpoints for Azure Data Explorer](security-network-private-endpoint.md)
 * [Deploy Azure Data Explorer into your Virtual Network](vnet-deployment.md)

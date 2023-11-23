@@ -108,7 +108,7 @@ To see the roles assigned to all principals for a particular resource, run the f
 > [!TIP]
 > Use the [where](../query/whereoperator.md) operator to filter the results by a specific principal or role.
 
-## Next steps
+## Related content
 
-* Read about [Kusto role-based access control](access-control/role-based-access-control.md)
-* Learn how to [reference security principals](access-control/referencing-security-principals.md)
+* [Kusto role-based access control](access-control/role-based-access-control.md)
+* [Referencing security principals](access-control/referencing-security-principals.md)
