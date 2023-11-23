@@ -614,7 +614,7 @@ The follower database administrator can modify the [caching policy](./kusto/mana
 * If [Streaming ingestion](ingest-data-streaming.md) is used on a database that is being followed, the follower cluster should be enabled for Streaming Ingestion to allow following of streaming ingestion data.
 * Following a cluster with data encryption using [customer managed keys](security.md#customer-managed-keys-with-azure-key-vault) (CMK) is supported with the following limitations:
     * Neither the follower cluster nor the leader cluster is following other clusters.
-    * If a follower cluster is following a leader cluster with CMK enabled, and the leader's access to the key is revoked, both the leader and the follower clusters will be suspended. After resolving the CMK issue and resuming the leader cluster, to resume the follower cluster, you must detach the follower databases from the follower cluster, and then attach them again.
+    * If a follower cluster is following a leader cluster with CMK enabled, and the leader's access to the key is revoked, both the leader and the follower clusters will be suspended. In this situation, you can either resolve the CMK issue and then resume the follower cluster, or you can detach the follower databases from the follower cluster and resume independent of the leader cluster.
 * You can't delete a database that is attached to a different cluster before detaching it.
 * You can't delete a cluster that has a database attached to a different cluster before detaching it.
 * Table level sharing properties aren't supported when following all database.
