@@ -191,6 +191,6 @@ In some situations, you may not be able to integrate with the private DNS zone o
     > [!WARNING]
     > This information allows you to propagate your custom DNS server with the necessary records. We highly recommend that you integrate with the private DNS Zones of the virtual network and don't configure your own custom DNS server. The nature of private endpoints for Azure Data Explorer clusters is different than for other Azure PaaS services. In some situations, such as high ingestion loads,  in order to increase throughput it might be necessary for the service to scale out the number of storage accounts that are accessible via the private endpoint. If you choose to propagate your own custom DNS server, it is your responsibility to take care of updating the DNS records in such situations, and later removing records i the number of storage accounts is scaled back in.
 
-## Next steps
+## Related content
 
 * [Troubleshooting private endpoints for your cluster](security-network-private-endpoint-troubleshoot.md)

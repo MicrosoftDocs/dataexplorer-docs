@@ -67,6 +67,7 @@ The following policy sets different limits for `PythonExecution` and `RExecution
 > * Changes to the sandbox policy apply to sandboxes created starting from the time the change is applied. Sandboxes that have been pre-allocated before the policy change, will continue running according to the previous policy limits, until they are used as part of a query.
 > * There could be a delay of up to five minutes until the change in policy takes effect, because the cluster nodes periodically poll for policy changes.
 
-## Next steps
+## Related content
 
-Use the [sandbox policy management commands](./show-cluster-sandbox-policy-command.md) to manage the cluster's sandbox policy.
+
+* [Sandbox policy management commands](./show-cluster-sandbox-policy-command.md)

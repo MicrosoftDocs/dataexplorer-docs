@@ -117,7 +117,7 @@ var code = KustoCode.ParseAndAnalyze("T | summarize minmax(c)", globals);
 > [!NOTE]
 > If you remove functions or aggregates from the global state, the parser will produce an error when they're used.
 
-## Next steps
+## Related content
 
 * [Parse queries and commands](kusto-language-parse-queries.md)
 * See the [source code](https://github.com/microsoft/Kusto-Query-Language)

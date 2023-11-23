@@ -75,7 +75,7 @@ The core functionalities of these methods are:
 |[geo_h3cell_children()](geo-h3cell-children-function.md)|
 |[geo_h3cell_rings()](geo-h3cell-rings-function.md)|
 
-## Next steps
+## Related content
 
 * See a use case for geospatial clustering: [Data analytics for automotive test fleets](/azure/architecture/industries/automotive/automotive-telemetry-analytics)
 * Learn about Azure architecture for [geospatial data processing and analytics](/azure/architecture/example-scenario/data/geospatial-data-processing-analytics-azure)

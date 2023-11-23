@@ -207,7 +207,7 @@ A feature flag can be used in the URL as a query parameter. To disable adding ot
 | f-DisableCrossFiltering | IF true, disables the cross filtering feature in dashboards | false |
 | f-HideDashboardParametersBar | IF true, hides the parameters bar in a dashboard | false |
 
-## Next steps
+## Related content
 
 - [Kusto Query Language (KQL) overview](../../query/index.md)
 - [Write Kusto queries](/azure/data-explorer/kusto/query/tutorials/learn-common-operators)

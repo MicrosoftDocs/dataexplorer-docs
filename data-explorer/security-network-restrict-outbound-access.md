@@ -179,6 +179,6 @@ If you want to allow outbound access to a specific FQDN, you can add it to the `
     > [!NOTE]
     > There is a set of default policies set for Azure Data Explorer to communicate with its internal storage layer. They expose no risk for data exfiltration.
 
-## Next steps
+## Related content
 
-* [Troubleshooting Private Endpoints in Azure Data Explorer](security-network-private-endpoint-troubleshoot.md)
+* [Troubleshoot Private Endpoints in Azure Data Explorer](security-network-private-endpoint-troubleshoot.md)

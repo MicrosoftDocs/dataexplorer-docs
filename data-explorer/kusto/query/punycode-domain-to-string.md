@@ -40,6 +40,6 @@ datatable(domain:string )['Lê Lợi。Thuận Thiên。com', 'Riðill｡Skálds
 |Riðill｡Skáldskaparmál｡org|xn--Riill-jta.xn--Skldskaparml-dbbj.org|
 |Kaledvoulc'h.Artorījos.edu|Kaledvoulc'h.xn--Artorjos-ejb.edu|
 
-## Next steps
+## Related content
 
-To retrieve the original decoded string, see [punycode_domain_from_string()](punycode-domain-from-string.md).
+* To retrieve the original decoded string, see [punycode_domain_from_string()](punycode-domain-from-string.md).

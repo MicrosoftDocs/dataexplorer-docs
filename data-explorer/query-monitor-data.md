@@ -144,6 +144,6 @@ The following syntax options are available when calling the Application Insights
 |For Endpoints in the UsGov      |    cluster(`https://adx.monitor.azure.us/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/microsoft.operationalinsights/workspaces/<workspace-name>`)|
  |For Endpoints in the China 21Vianet      |    cluster(`https://adx.monitor.azure.us/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/microsoft.operationalinsights/workspaces/<workspace-name>`) |
 
-## Next steps
+## Related content
 
-[Write queries](/azure/data-explorer/kusto/query/tutorials/learn-common-operators)
+* [Write queries](/azure/data-explorer/kusto/query/tutorials/learn-common-operators)

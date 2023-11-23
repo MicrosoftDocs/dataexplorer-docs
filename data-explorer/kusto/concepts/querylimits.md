@@ -257,7 +257,7 @@ T
 
 The suggestion in this case is to review the query and reduce the columns being used by the query.
 
-## Next steps
+## Related content
 
 * [Optimize for high concurrency with Azure Data Explorer](../../high-concurrency.md)
 * [Query best practices](../query/best-practices.md)

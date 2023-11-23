@@ -281,7 +281,7 @@ For more information on Azure Data Explorer principal roles, see [role-based acc
         display(dfFiltered)
         ```
 
-## Next steps
+## Related content
 
-* Learn to use more options of the [Azure Data Explorer Spark Connector](https://github.com/Azure/azure-kusto-spark/tree/master/docs)
-* [Sample code for Scala and Python](https://github.com/Azure/azure-kusto-spark/tree/master/samples/src/main)
+* [Azure Data Explorer Spark Connector GitHub repository](https://github.com/Azure/azure-kusto-spark/tree/master/docs)
+* See the [sample code for Scala and Python](https://github.com/Azure/azure-kusto-spark/tree/master/samples/src/main)

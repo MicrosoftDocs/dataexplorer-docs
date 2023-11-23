@@ -154,6 +154,6 @@ To capture and enable dynamically returned fields, turn on the **Dynamic schema*
 
 For more information on known issues and limitations for querying data using the Azure Data Explorer connector, see [Known issues and limitations](/connectors/kusto/)
 
-## Next steps
+## Related content
 
-Learn about the [Azure Kusto Logic App connector](kusto/tools/logicapps.md), which is another way to run Kusto queries and commands automatically, as part of a scheduled or triggered task.
+* [Azure Kusto Logic App connector](kusto/tools/logicapps.md)

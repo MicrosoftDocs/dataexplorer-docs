@@ -56,7 +56,7 @@ Before carrying out an action on an Azure Data Explorer resource, all authentica
 
 The association of security principals to security roles can be defined individually or by using security groups that are defined in Microsoft Entra ID. For more information on how to assign security roles, see [Security roles overview](../management/security-roles.md).
 
-## Next steps
+## Related content
 
 * Understand [Kusto role-based access control](role-based-access-control.md).
 * For user or application authentication, use the [Kusto client libraries](../api/client-libraries.md).
