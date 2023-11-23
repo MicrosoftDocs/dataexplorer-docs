@@ -39,10 +39,9 @@ When attaching the database all tables, external tables and materialized views a
 '*TableLevelSharingProperties*' contains eight arrays of strings: `tablesToInclude`, `tablesToExclude`, `externalTablesToInclude`, `externalTablesToExclude`, `materializedViewsToInclude`, `materializedViewsToExclude`, `functionsToInclude`, and `functionsToExclude`. The maximum number of entries in all arrays together is 100.
 
 > [!NOTE]
-> Table level sharing is not supported when using '*' all databases notation.
-
-> [!NOTE]
-> When materialized views are included, their source tables are included as well.
+>
+> * Table level sharing is not supported when using '*' all databases notation.
+> * When materialized views are included, their source tables are included as well.
 
 #### Examples
 
@@ -613,7 +612,9 @@ The follower database administrator can modify the [caching policy](./kusto/mana
 
 * The follower and the leader clusters must be in the same region.
 * If [Streaming ingestion](ingest-data-streaming.md) is used on a database that is being followed, the follower cluster should be enabled for Streaming Ingestion to allow following of streaming ingestion data.
-* Data encryption using [customer managed keys](security.md#customer-managed-keys-with-azure-key-vault) isn't supported on both leader and follower clusters.
+* Following a cluster with data encryption using [customer managed keys](security.md#customer-managed-keys-with-azure-key-vault) (CMK) is supported with the following limitations:
+    * Neither the follower cluster nor the leader cluster is following other clusters.
+    * If a follower cluster is following a leader cluster with CMK enabled, and the leader's access to the key is revoked, both the leader and the follower clusters will be suspended. After resolving the CMK issue and resuming the leader cluster, to resume the follower cluster, you must detach the follower databases from the follower cluster, and then attach them again.
 * You can't delete a database that is attached to a different cluster before detaching it.
 * You can't delete a cluster that has a database attached to a different cluster before detaching it.
 * Table level sharing properties aren't supported when following all database.
