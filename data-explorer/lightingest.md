@@ -59,7 +59,7 @@ For an example of how to auto-generate a LightIngest command, see [ingest histor
 
 | Argument | Type | Description | Required |
 |--|--|--|--|
-|  | string | [Azure Data Explorer Connection String](kusto/api/connection-strings/kusto.md) specifying the Kusto endpoint that will handle the ingestion. This value should be enclosed with double quotes. | &check; |
+|  | string | A [Kusto connection string](kusto/api/connection-strings/kusto.md) specifying the Kusto endpoint that will handle the ingestion. This value should be enclosed with double quotes. | &check; |
 | -database, -db | string | The target Azure Data Explorer database name. |  |
 | -table | string | The target Azure Data Explorer table name. | &check; |
 | -sourcePath, -source | string | The location of the source data, which can be either a local file path, the root URI of an Azure Storage blob container, or the URI of an S3 blob. If the data is stored in Azure Storage blobs, the URI must include the storage account key or Shared Access Signature (SAS). If the data is in an S3 blob, the URI must include the credential key. We recommend enclosing this value in double quotes. | &check; |
