@@ -3,7 +3,7 @@ title: Use LightIngest to ingest data into Azure Data Explorer.
 description: Learn about LightIngest, a command-line utility for ad-hoc data ingestion into Azure Data Explorer.
 ms.reviewer: tzgitlin
 ms.topic: how-to
-ms.date: 11/02/2023
+ms.date: 11/23/2023
 ---
 
 # Use LightIngest to ingest data into Azure Data Explorer
@@ -16,11 +16,8 @@ For an example of how to auto-generate a LightIngest command, see [ingest histor
 
 ## Prerequisites
 
-* LightIngest - download it as part of the [Microsoft.Azure.Kusto.Tools NuGet package](https://www.nuget.org/packages/Microsoft.Azure.Kusto.Tools/)
-
-    :::image type="content" source="media/lightingest/lightingest-download-area.png" alt-text="Lightingest download.":::
-
-* WinRAR - download it from [www.win-rar.com/download.html](http://www.win-rar.com/download.html)
+* LightIngest for your operating system: Windows, OSX, or Linux. [Download LightIngest](https://github.com/Azure/Kusto-Lightingest/releases).
+* WinRAR. [Download WinRAR](http://www.win-rar.com/download.html).
 
 ## Install LightIngest
 
