@@ -62,7 +62,6 @@ In the **Summary** tab, all steps will be marked with green check marks when the
 
 :::image type="content" source="media/one-click-table-policies/one-click-table-retention-policy-finished.png" alt-text="Screenshot of final screen in the update table retention policy wizard for Azure Data Explorer.":::
 
-## Next steps
+## Related content
 
-* [Query data in Azure Data Explorer web UI](web-query-data.md)
-* [Write queries for Azure Data Explorer using Kusto Query Language](/azure/data-explorer/kusto/query/tutorials/learn-common-operators)
+* [Write queries using Kusto Query Language](kusto/query/tutorials/learn-common-operators.md)

@@ -55,7 +55,7 @@ Use the following steps to upgrade your free cluster to a full cluster. If you'r
 
     Once the upgrade is complete, your new cluster is ready to use. Existing ingestions will continue, queries will be available using all of the supported tools, and you can create a new free cluster.
 
-## Next steps
+## Related content
 
 - [Network security for Azure Data Explorer](security-network-overview.md)
 - [What is the ingestion wizard?](./ingest-data-wizard.md)

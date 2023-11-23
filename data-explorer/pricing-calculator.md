@@ -161,7 +161,7 @@ Choose a support plan:
 * Save the estimate for future reference
 * Share the estimate – sign-in is required
 
-## Next steps
+## Next step
 
-* [Create a free Azure Data Explorer cluster](./start-for-free-web-ui.md)
-* [Start-for-free cluster](./start-for-free.md)
+> [!div class="nextstepaction"]
+> [Create an Azure Data Explorer cluster](create-cluster-and-database.md)

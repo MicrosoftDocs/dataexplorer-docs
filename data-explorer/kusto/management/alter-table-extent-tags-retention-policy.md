@@ -45,7 +45,7 @@ The following command sets an extent tags retention policy for table T1. The pol
 ]```
 ~~~
 
-## Next steps
+## Related content
 
 - See [.show extents](./show-extents.md)
 commands to see the tags associated with an extent.

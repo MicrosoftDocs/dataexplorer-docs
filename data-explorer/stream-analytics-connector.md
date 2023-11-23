@@ -194,7 +194,7 @@ The following example shows an Azure Resource Manager template for adding an Azu
 
 ---
 
-## Next steps
+## Related content
 
 - [Query data in Azure Data Explorer](web-query-data.md)
 - [Run Azure Functions from Azure Stream Analytics jobs](/azure/stream-analytics/stream-analytics-with-azure-functions)

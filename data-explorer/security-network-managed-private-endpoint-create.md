@@ -197,6 +197,6 @@ Whichever method you used to create the managed private endpoint using, you must
 
 Your cluster can now connect to the resource using the managed private endpoint connection.
 
-## Next steps
+## Related content
 
 * [Troubleshooting private endpoints in Azure Data Explorer](security-network-private-endpoint-troubleshoot.md)

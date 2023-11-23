@@ -171,7 +171,7 @@ It's also possible to revert to a specific version of Kusto.Explorer:
 1. Select **Kusto.Explorer** and select **Uninstall/Change**.
 1. Select **Restore the application to its previous state**.
 
-## Next steps
+## Related content
 
 * Learn about the [Kusto.Explorer user interface](kusto-explorer.md#overview-of-the-user-interface)
 * Learn about [running Kusto.Explorer from the command line](kusto-explorer-using.md#kustoexplorer-command-line-arguments)

@@ -87,7 +87,7 @@ The following example assigns an MSA user to the user role on the `Test` databas
 .add database Test users ('msauser=abbiatkins@live.com') 'Test user (live.com)'
 ```
 
-## Next steps
+ to manage data partitioning policies for tables
 
 * Read the [authentication overview](../access-control/index.md)
 * Learn how to use [management commands to assign security roles](security-roles.md)

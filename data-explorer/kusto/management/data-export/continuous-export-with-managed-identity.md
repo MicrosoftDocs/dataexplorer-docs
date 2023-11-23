@@ -167,8 +167,8 @@ For example, the following command creates a continuous export job named `MyExpo
 
 ---
 
-## Next steps
+## Related content
 
-* To see your continuous exports, run the [.show continuous-exports](show-continuous-export.md) command.
-* Read the [continuous export overview](continuous-data-export.md).
-* Learn more about [managed identities](../../../managed-identities-overview.md).
+* [.show continuous-exports](show-continuous-export.md)
+* [Continuous export overview](continuous-data-export.md)
+* [Managed identities](../../../managed-identities-overview.md)
