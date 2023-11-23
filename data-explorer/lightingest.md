@@ -57,30 +57,30 @@ For an example of how to auto-generate a LightIngest command, see [ingest histor
 
 ## Command-line arguments
 
-|Argument name            |Type     |Description       |Mandatory/Optional
-|------------------------------|--------|----------|-----------------------------|
-|                               |string   |[Azure Data Explorer Connection String](kusto/api/connection-strings/kusto.md) specifying the Kusto endpoint that will handle the ingestion. Should be enclosed in double quotes | Mandatory
-|-database, -db          |string  |Target Azure Data Explorer database name | Optional  |
-|-table                  |string  |Target Azure Data Explorer table name | Mandatory |
-|-sourcePath, -source      |string  |Path to source files or root URI of the blob container. If the data is in blobs, must contain storage account key or SAS. Recommended to enclose in double quotes |Mandatory |
-|-prefix                  |string  |When the source data to ingest resides on blob storage, this URL prefix is shared by all blobs, excluding the container name. <br>For example, if the data is in `MyContainer/Dir1/Dir2`, then the prefix should be `Dir1/Dir2`. Enclosing in double quotes is recommended | Optional  |
-|-pattern        |string  |Pattern by which source files/blobs are picked. Supports wildcards. For example, `"*.csv"`. Recommended to enclose in double quotes | Optional  |
-|-zipPattern     |string  |Regular expression to use when selecting which files in a ZIP archive to ingest.<br>All other files in the archive will be ignored. For example, `"*.csv"`. It's recommended to surround it in double quotes | Optional  |
-|-format, -f           |string  | Source data format. Must be one of the [supported formats](ingestion-supported-formats.md) | Optional  |
-|-ingestionMappingPath, -mappingPath |string  |Path to local file for ingestion column mapping. Mandatory for Json and Avro formats. See [data mappings](kusto/management/mappings.md) | Optional  |
-|-ingestionMappingRef, -mappingRef  |string  |Name of an ingestion column mapping that was previously created on the table. Mandatory for Json and Avro formats. See [data mappings](kusto/management/mappings.md) | Optional  |
-|-creationTimePattern      |string  |When set, is used to extract the CreationTime property from the file or blob path. See [How to ingest data using `CreationTime`](#how-to-ingest-data-using-creationtime) |Optional  |
-|-ignoreFirstRow, -ignoreFirst |bool    |If set, the first record of each file/blob is ignored (for example, if the source data has headers) | Optional  |
-|-tag            |string   |[Tags](kusto/management/extent-tags.md) to associate with the ingested data. Multiple occurrences are permitted | Optional  |
-|-dontWait           |bool     |If set to 'true', doesn't wait for ingestion completion. Useful when ingesting large amounts of files/blobs |Optional  |
-|-compression, -cr          |double |Compression ratio hint. Useful when ingesting compressed files/blobs to help Azure Data Explorer assess the raw data size. Calculated as original size divided by compressed size |Optional  |
-|-limit , -l           |integer   |If set, limits the ingestion to first N files |Optional  |
-|-listOnly, -list        |bool    |If set, only displays the items that would have been selected for ingestion| Optional  |
-|-ingestTimeout   |integer  |Timeout in minutes for all ingest operations completion. Defaults to `60`| Optional  |
-|-forceSync        |bool  |If set, forces synchronous ingestion. Defaults to `false` |Optional  |
-|-dataBatchSize        |integer  |Sets the total size limit (MB, uncompressed) of each ingest operation |Optional  |
-|-filesInBatch            |integer |Sets the file/blob count limit of each ingest operation |Optional  |
-|-devTracing, -trace       |string    |If set, diagnostic logs are written to a local directory (by default, `RollingLogs` in the current directory, or can be modified by setting the switch value) | Optional  |
+| Argument name | Type | Description | Required |
+|--|--|--|--|
+|  | string | [Azure Data Explorer Connection String](kusto/api/connection-strings/kusto.md) specifying the Kusto endpoint that will handle the ingestion. Should be enclosed in double quotes | &check; |
+| -database, -db | string | Target Azure Data Explorer database name |  |
+| -table | string | Target Azure Data Explorer table name | &check; |
+| -sourcePath, -source | string | The path to source files, the root URI of an Azure Storage blob container, or the URI of an S3 blob. If the data is in blobs, this URI must include the storage account key or SAS. We recommend enclosing this value in double quotes. | &check; |
+| -prefix | string | When the source data to ingest resides on blob storage, this URL prefix is shared by all blobs, excluding the container name. <br>For example, if the data is in `MyContainer/Dir1/Dir2`, then the prefix should be `Dir1/Dir2`. Enclosing in double quotes is recommended |  |
+| -pattern | string | Pattern by which source files/blobs are picked. Supports wildcards. For example, `"*.csv"`. Recommended to enclose in double quotes |  |
+| -zipPattern | string | Regular expression to use when selecting which files in a ZIP archive to ingest.<br>All other files in the archive will be ignored. For example, `"*.csv"`. It's recommended to surround it in double quotes |  |
+| -format, -f | string | Source data format. Must be one of the [supported formats](ingestion-supported-formats.md) |  |
+| -ingestionMappingPath, -mappingPath | string | Path to local file for ingestion column mapping. Required for Json and Avro formats. See [data mappings](kusto/management/mappings.md) |  |
+| -ingestionMappingRef, -mappingRef | string | Name of an ingestion column mapping that was previously created on the table. Required for Json and Avro formats. See [data mappings](kusto/management/mappings.md) |  |
+| -creationTimePattern | string | When set, is used to extract the CreationTime property from the file or blob path. See [How to ingest data using `CreationTime`](#how-to-ingest-data-using-creationtime) | Optional |
+| -ignoreFirstRow, -ignoreFirst | bool | If set, the first record of each file/blob is ignored (for example, if the source data has headers) |  |
+| -tag | string | [Tags](kusto/management/extent-tags.md) to associate with the ingested data. Multiple occurrences are permitted |  |
+| -dontWait | bool | If set to 'true', doesn't wait for ingestion completion. Useful when ingesting large amounts of files/blobs | Optional |
+| -compression, -cr | double | Compression ratio hint. Useful when ingesting compressed files/blobs to help Azure Data Explorer assess the raw data size. Calculated as original size divided by compressed size | Optional |
+| -limit , -l | integer | If set, limits the ingestion to first N files | Optional |
+| -listOnly, -list | bool | If set, only displays the items that would have been selected for ingestion |  |
+| -ingestTimeout | integer | Timeout in minutes for all ingest operations completion. Defaults to `60` |  |
+| -forceSync | bool | If set, forces synchronous ingestion. Defaults to `false` | Optional |
+| -dataBatchSize | integer | Sets the total size limit (MB, uncompressed) of each ingest operation | Optional |
+| -filesInBatch | integer | Sets the file/blob count limit of each ingest operation | Optional |
+| -devTracing, -trace | string | If set, diagnostic logs are written to a local directory (by default, `RollingLogs` in the current directory, or can be modified by setting the switch value) |  |
 
 ## Azure blob-specific capabilities
 
