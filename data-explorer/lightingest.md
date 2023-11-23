@@ -67,8 +67,8 @@ For an example of how to auto-generate a LightIngest command, see [ingest histor
 | -pattern | string | Pattern by which source files/blobs are picked. Supports wildcards. For example, `"*.csv"`. We recommend enclosing this value in double quotes. |  |
 | -zipPattern | string | Regular expression to use when selecting which files in a ZIP archive to ingest. All other files in the archive will be ignored. For example, `"*.csv"`. We recommend enclosing this value in double quotes.|  |
 | -format, -f | string | Source data format. Must be one of the [supported formats](ingestion-supported-formats.md) |  |
-| -ingestionMappingPath, -mappingPath | string | A path to a local file for ingestion column mapping. Required for Json and Avro formats. See [data mappings](kusto/management/mappings.md). |  |
-| -ingestionMappingRef, -mappingRef | string | The name of an ingestion column mapping that was previously created on the table. Required for Json and Avro formats. See [data mappings](kusto/management/mappings.md). |  |
+| -ingestionMappingPath, -mappingPath | string | A path to a local file for ingestion column mapping. See [data mappings](kusto/management/mappings.md). |  |
+| -ingestionMappingRef, -mappingRef | string | The name of an ingestion column mapping that was previously created on the table. See [data mappings](kusto/management/mappings.md). |  |
 | -creationTimePattern | string | When set, is used to extract the CreationTime property from the file or blob path. See [How to ingest data using `CreationTime`](#how-to-ingest-data-using-creationtime). | |
 | -ignoreFirstRow, -ignoreFirst | bool | If set, the first record of each file/blob is ignored. For example, if the source data has headers. |  |
 | -tag | string | [Tags](kusto/management/extent-tags.md) to associate with the ingested data. Multiple occurrences are permitted |  |
