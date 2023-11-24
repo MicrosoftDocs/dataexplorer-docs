@@ -197,3 +197,4 @@ Once the connection is configured, data is sent to your Azure Data Explorer tabl
 ## Related content
 
 * [Write queries](/azure/data-explorer/kusto/query/tutorials/learn-common-operators)
+* Use [Apache Flink on Azure HDInsight on AKS with Azure Data Explorer](/azure/hdinsight-aks/flink/integration-of-azure-data-explorer)
