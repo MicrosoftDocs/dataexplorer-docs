@@ -95,6 +95,8 @@ items:
                     href: security-network-private-endpoint-troubleshoot.md
               - name: Virtual network injection
                 items:
+                  - name: Virtual network injection migration guide
+                    href: security-network-vnet-injection-migration.md
                   - name: Create a cluster in your VNet - Portal
                     href: vnet-create-cluster-portal.md
                   - name: Deploy your cluster to your VNet
