@@ -16,6 +16,34 @@ Workload groups are defined at the cluster level, and up to 10 custom groups can
 > [!NOTE]
 > Requests that aren't queries or management commands aren't included in the scope of workload groups. For example: streaming ingestion requests.
 
+## Use cases for custom workload groups
+
+There are a handful of common use cases for defining custom workload groups, such as:
+
+* Protect against runaway queries:
+* Control the rate of requests:
+* Create shared environments:
+* Monitor resources utilization:
+
+## Create and manage workload groups
+
+Use the following commands to manage workload groups and their policies:
+
+* [.alter-merge workload_group](alter-merge-workload-group-command.md)
+* [.create-or-alter workload_group](create-or-alter-workload-group-command.md)
+* [.drop workload_group](drop-workload-group-command.md)
+* [.show workload_group](show-workload-group-command.md)
+
+## Workload group policies
+
+The following policies can be defined per workload group:
+
+* [Request limits policy](request-limits-policy.md)
+* [Request rate limit policy](request-rate-limit-policy.md)
+* [Request rate limits enforcement policy](request-rate-limits-enforcement-policy.md)
+* [Request queuing policy](request-queuing-policy.md)
+* [Query consistency policy](query-consistency-policy.md)
+
 ## Built-in workload groups
 
 The pre-defined workload groups are:
@@ -68,34 +96,6 @@ You can change the following values in the workload group's [request limits poli
 
 > [!NOTE]
 > You can't change the criteria used for routing these requests.
-
-## Use cases for custom workload groups
-
-There are a handful of common use cases for defining custom workload groups, such as:
-
-* Protect against runaway queries:
-* Control the rate of requests:
-* Create shared environments:
-* Monitor resources utilization:
-
-## Create and manage workload groups
-
-Use the following commands to manage workload groups and their policies:
-
-* [.alter-merge workload_group](alter-merge-workload-group-command.md)
-* [.create-or-alter workload_group](create-or-alter-workload-group-command.md)
-* [.drop workload_group](drop-workload-group-command.md)
-* [.show workload_group](show-workload-group-command.md)
-
-## Workload group policies
-
-The following policies can be defined per workload group:
-
-* [Request limits policy](request-limits-policy.md)
-* [Request rate limit policy](request-rate-limit-policy.md)
-* [Request rate limits enforcement policy](request-rate-limits-enforcement-policy.md)
-* [Request queuing policy](request-queuing-policy.md)
-* [Query consistency policy](query-consistency-policy.md)
 
 ## Monitor requests by workload group
 
