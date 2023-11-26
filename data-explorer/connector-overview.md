@@ -335,7 +335,7 @@ Telegraf is an open source, lightweight, minimal memory foot print agent for col
 
 ---
 
-#### [Integrations](#tab-integrations)
+#### [Integrations](#tab/integrations)
 
 * [LightIngest](https://github.com/Azure/Kusto-Lightingest/blob/main/README.md): a command-line utility for ad-hoc data ingestion into Azure Data Explorer. For more information, see [Use LightIngest to ingest data](lightingest.md).
 * Ingestion wizard: [overview](./ingest-data-wizard.md) and ingest data [from a container to a new table](/azure/data-explorer/ingest-from-container)
