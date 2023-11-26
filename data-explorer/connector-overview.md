@@ -339,39 +339,6 @@ Telegraf is an open source, lightweight, minimal memory foot print agent for col
 |--|--|:-:|--|--|
 |  |
 
-## LightIngest
-
-[LightIngest](https://github.com/Azure/Kusto-Lightingest/blob/main/README.md)
-
-A command-line utility for ad-hoc data ingestion into Azure Data Explorer. For more information, see [Use LightIngest to ingest data](lightingest.md).
-
-## Web UI Get data
-
- [overview](./ingest-data-wizard.md) and ingest data [from a container to a new table](/azure/data-explorer/ingest-from-container)
-or [from a local file to an existing table](/azure/data-explorer/ingest-from-local-file)
-
-## Web UI Query editor
-
-[Azure Data Explorer web UI](web-query-data.md)
-
-## Kusto.Explorer
- 
-* [installation and user interface](kusto/tools/kusto-explorer.md), [using Kusto.Explorer](kusto/tools/kusto-explorer-using.md)
-* Additional topics include [options](kusto/tools/kusto-explorer-options.md), [troubleshooting](kusto/tools/kusto-explorer-troubleshooting.md), [keyboard shortcuts](kusto/tools/kusto-explorer-shortcuts.md), [code features](kusto/tools/kusto-explorer-code-features.md)
-
-## Kusto CLI
-
-[Kusto CLI](kusto/tools/kusto-cli.md)
-
-## Query open source repositories
-
-The following open source repositories contain the source code for the Kusto Query Language (KQL) parser and editor:
-
-* [Kusto Query Language parser](https://github.com/microsoft/Kusto-Query-Language) - A .NET core repository for the Kusto Query Language parser and semantic tree.
-* [Kusto Query Language setup and usage for the Monaco editor](./kusto/api/monaco/monaco-kusto.md) - The Kusto Query Language editor that can be embedded in web and electron based applications.
-  * [Kusto Query Language plugin](https://github.com/Azure/monaco-kusto) - Access the Kusto Query Language editor plugin.
-  * [Embedding the Azure Data Explorer web UI](./kusto/api/monaco/host-web-ux-in-iframe.md) - The Azure Data Explorer web UI can be embedded in an iframe and hosted in third-party websites.
-
 ## Apache Spark
 
 [Apache Spark](spark-connector.md)
@@ -380,7 +347,7 @@ The following open source repositories contain the source code for the Kusto Que
 
  [Azure Data Lake](data-lake-query-data.md)
 
-## Azure Data Factory 
+## Azure Data Factory
 
 [Azure Data Factory](data-factory-integration.md)
 
@@ -416,6 +383,12 @@ Azure Data Studio: [Kusto extension overview](/sql/azure-data-studio/extensions/
 
 [Jupyter Notebooks](kqlmagic.md)
 
+## LightIngest
+
+[LightIngest](https://github.com/Azure/Kusto-Lightingest/blob/main/README.md)
+
+A command-line utility for ad-hoc data ingestion into Azure Data Explorer. For more information, see [Use LightIngest to ingest data](lightingest.md).
+
 ## Logic Apps
 
 [Microsoft Logic App](kusto/tools/logicapps.md)
@@ -429,8 +402,35 @@ Azure Data Studio: [Kusto extension overview](/sql/azure-data-studio/extensions/
 * [Power Automate connector](flow.md)
 * [Power Automate connector usage examples](flow-usage.md)
 
+## Kusto.Explorer
+
+* [installation and user interface](kusto/tools/kusto-explorer.md), [using Kusto.Explorer](kusto/tools/kusto-explorer-using.md)
+* Additional topics include [options](kusto/tools/kusto-explorer-options.md), [troubleshooting](kusto/tools/kusto-explorer-troubleshooting.md), [keyboard shortcuts](kusto/tools/kusto-explorer-shortcuts.md), [code features](kusto/tools/kusto-explorer-code-features.md)
+
+## Kusto CLI
+
+[Kusto CLI](kusto/tools/kusto-cli.md)
+
+## Query open source repositories
+
+The following open source repositories contain the source code for the Kusto Query Language (KQL) parser and editor:
+
+* [Kusto Query Language parser](https://github.com/microsoft/Kusto-Query-Language) - A .NET core repository for the Kusto Query Language parser and semantic tree.
+* [Kusto Query Language setup and usage for the Monaco editor](./kusto/api/monaco/monaco-kusto.md) - The Kusto Query Language editor that can be embedded in web and electron based applications.
+* [Kusto Query Language plugin](https://github.com/Azure/monaco-kusto) - Access the Kusto Query Language editor plugin.
+* [Embedding the Azure Data Explorer web UI](./kusto/api/monaco/host-web-ux-in-iframe.md) - The Azure Data Explorer web UI can be embedded in an iframe and hosted in third-party websites.
+
 ## Sync Kusto
 
 [Sync Kusto](kusto/tools/synckusto.md)
+
+## Web UI Get data
+
+[overview](./ingest-data-wizard.md) and ingest data [from a container to a new table](/azure/data-explorer/ingest-from-container)
+or [from a local file to an existing table](/azure/data-explorer/ingest-from-local-file)
+
+## Web UI Query editor
+
+[Azure Data Explorer web UI](web-query-data.md)
 
 ---
