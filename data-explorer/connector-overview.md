@@ -383,6 +383,15 @@ Azure Data Studio: [Kusto extension overview](/sql/azure-data-studio/extensions/
 
 [Jupyter Notebooks](kqlmagic.md)
 
+## Kusto.Explorer
+
+* [installation and user interface](kusto/tools/kusto-explorer.md), [using Kusto.Explorer](kusto/tools/kusto-explorer-using.md)
+* Additional topics include [options](kusto/tools/kusto-explorer-options.md), [troubleshooting](kusto/tools/kusto-explorer-troubleshooting.md), [keyboard shortcuts](kusto/tools/kusto-explorer-shortcuts.md), [code features](kusto/tools/kusto-explorer-code-features.md)
+
+## Kusto CLI
+
+[Kusto CLI](kusto/tools/kusto-cli.md)
+
 ## LightIngest
 
 [LightIngest](https://github.com/Azure/Kusto-Lightingest/blob/main/README.md)
@@ -401,15 +410,6 @@ A command-line utility for ad-hoc data ingestion into Azure Data Explorer. For m
 
 * [Power Automate connector](flow.md)
 * [Power Automate connector usage examples](flow-usage.md)
-
-## Kusto.Explorer
-
-* [installation and user interface](kusto/tools/kusto-explorer.md), [using Kusto.Explorer](kusto/tools/kusto-explorer-using.md)
-* Additional topics include [options](kusto/tools/kusto-explorer-options.md), [troubleshooting](kusto/tools/kusto-explorer-troubleshooting.md), [keyboard shortcuts](kusto/tools/kusto-explorer-shortcuts.md), [code features](kusto/tools/kusto-explorer-code-features.md)
-
-## Kusto CLI
-
-[Kusto CLI](kusto/tools/kusto-cli.md)
 
 ## Query open source repositories
 
