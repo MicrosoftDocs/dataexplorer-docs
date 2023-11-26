@@ -26,7 +26,7 @@ The pre-defined workload groups are:
 
 ### Default workload group
 
-Requests are classified into the `default` group when any of the following conditions is met:
+Requests are classified into the `default` group under these conditions:
 
 * There are no criteria to classify a request.
 * An attempt was made to classify the request into a non-existent group.
@@ -38,13 +38,13 @@ You can:
 * Change the policies that apply to the `default` workload group.
 * Classify requests into the `default` workload group.
 
-Monitor what gets classified to the internal workload group and the statistics of those requests using the [Monitoring recommendations](#monitoring).
+To monitor what gets classified to the `default` workload group, see [Monitor requests by workload group](#monitor-requests-by-workload-group).
 
 > [!NOTE]
 >
-> * A limit on the maximum amount of concurrent *queries* may have been defined on some cluster using the optional *"Query throttling policy"*, which has been deprecated.
-> * In these clusters, the limit on the maximum amount of concurrent *queries* was automatically applied on the `default` workload group's [request rate limits policies](request-rate-limit-policy.md).
-> * While the old limit applied only to *queries*, the new limit applies to *all requests* - queries and management commands.
+> * A limit on the maximum amount of concurrent queries may have been defined on some cluster using the optional *"Query throttling policy"*, which has been deprecated.
+> * In these clusters, the limit on the maximum amount of concurrent queries was automatically applied on the `default` workload group's [request rate limits policies](request-rate-limit-policy.md).
+> * While the old limit applied only to queries, the new limit applies to all requests, which means queries and management commands.
 
 ### Internal workload group
 
@@ -56,11 +56,11 @@ You can't:
 * Change the policies that apply to the `internal` workload group.
 * Classify requests into the `internal` workload group.
 
-You can [monitor](#monitoring) what gets classified to the `internal` workload group, and statistics of those requests.
+To monitor what gets classified to the `internal` workload group, see [Monitor requests by workload group](#monitor-requests-by-workload-group).
 
 ### Materialized views workload group
 
-The `$materialized-views` workload group applies to the materialized views materialization process. For more information on how materialized views work, see [materialized views overview](materialized-views/materialized-view-overview.md#how-materialized-views-work).
+The `$materialized-views` workload group applies to the materialized views materialization process. For more information on how materialized views work, see [Materialized views overview](materialized-views/materialized-view-overview.md#how-materialized-views-work).
 
 You can change the following values in the workload group's [request limits policy](request-limits-policy.md):
 
