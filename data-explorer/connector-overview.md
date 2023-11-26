@@ -339,11 +339,13 @@ Telegraf is an open source, lightweight, minimal memory foot print agent for col
 |--|--|:-:|--|--|
 |  |
 
-## [LightIngest](https://github.com/Azure/Kusto-Lightingest/blob/main/README.md)
+## LightIngest
+
+[LightIngest](https://github.com/Azure/Kusto-Lightingest/blob/main/README.md)
 
 A command-line utility for ad-hoc data ingestion into Azure Data Explorer. For more information, see [Use LightIngest to ingest data](lightingest.md).
 
-## Get data
+## Web UI Get data
 
  [overview](./ingest-data-wizard.md) and ingest data [from a container to a new table](/azure/data-explorer/ingest-from-container)
 or [from a local file to an existing table](/azure/data-explorer/ingest-from-local-file)
@@ -351,7 +353,6 @@ or [from a local file to an existing table](/azure/data-explorer/ingest-from-loc
 ## Web UI Query editor
 
 [Azure Data Explorer web UI](web-query-data.md)
-
 
 ## Kusto.Explorer
  
@@ -362,7 +363,7 @@ or [from a local file to an existing table](/azure/data-explorer/ingest-from-loc
 
 [Kusto CLI](kusto/tools/kusto-cli.md)
 
-### Query open source repositories
+## Query open source repositories
 
 The following open source repositories contain the source code for the Kusto Query Language (KQL) parser and editor:
 
@@ -371,50 +372,13 @@ The following open source repositories contain the source code for the Kusto Que
   * [Kusto Query Language plugin](https://github.com/Azure/monaco-kusto) - Access the Kusto Query Language editor plugin.
   * [Embedding the Azure Data Explorer web UI](./kusto/api/monaco/host-web-ux-in-iframe.md) - The Azure Data Explorer web UI can be embedded in an iframe and hosted in third-party websites.
 
-## Azure Monitor
-
- [Azure Monitor](query-monitor-data.md)
-
-## Azure Data Lake
-
- [Azure Data Lake](data-lake-query-data.md)
-
-## Azure Synapse Apache Spark
-
- [Azure Synapse Apache Spark](/azure/synapse-analytics/quickstart-connect-azure-data-explorer?context=%252fazure%252fdata-explorer%252fcontext%252fcontext)
-
 ## Apache Spark
 
 [Apache Spark](spark-connector.md)
 
-## Power Apps
+## Azure Data Lake
 
-[Microsoft Power Apps](power-apps-connector.md)
-
-## Azure Data Studio
-
-Azure Data Studio: [Kusto extension overview](/sql/azure-data-studio/extensions/kusto-extension?context=%252fazure%252fdata-explorer%252fcontext%252fcontext), [use Kusto](/sql/azure-data-studio/notebooks/notebooks-kusto-kernel?context=%252fazure%252fdata-explorer%252fcontext%252fcontext), and [use Kqlmagic](/sql/azure-data-studio/notebooks-kqlmagic?context=%252fazure%252fdata-explorer%252fcontext%252fcontext)
-
-## Azure Notebooks
-
-[Azure Notebooks](/sql/azure-data-studio/notebooks/notebooks-kqlmagic?context=%252fazure%252fdata-explorer%252fcontext%252fcontext%253fcontext%253d%252fazure%252fdata-explorer%252fcontext%252fcontext)
-
-## Jupyter Notebooks
-
-[Jupyter Notebooks](kqlmagic.md)
-
-## Azure Data Studio
-
-Azure Data Studio: [Kusto extension overview](/sql/azure-data-studio/extensions/kusto-extension?context=%252fazure%252fdata-explorer%252fcontext%252fcontext), [use Kusto](/sql/azure-data-studio/notebooks/notebooks-kusto-kernel?context=%252fazure%252fdata-explorer%252fcontext%252fcontext), and [use Kqlmagic](/sql/azure-data-studio/notebooks-kqlmagic?context=%252fazure%252fdata-explorer%252fcontext%252fcontext)
-
-## Power Automate
-
-* [Power Automate connector](flow.md)
-* [Power Automate connector usage examples](flow-usage.md)
-
-## Logic Apps
-
-[Microsoft Logic App](kusto/tools/logicapps.md)
+ [Azure Data Lake](data-lake-query-data.md)
 
 ## Azure Data Factory 
 
@@ -424,17 +388,49 @@ Azure Data Studio: [Kusto extension overview](/sql/azure-data-studio/extensions/
 
 [Azure Data Share](data-share.md)
 
+## Azure Data Studio
 
-## Azyre Pipelines
+Azure Data Studio: [Kusto extension overview](/sql/azure-data-studio/extensions/kusto-extension?context=%252fazure%252fdata-explorer%252fcontext%252fcontext), [use Kusto](/sql/azure-data-studio/notebooks/notebooks-kusto-kernel?context=%252fazure%252fdata-explorer%252fcontext%252fcontext), and [use Kqlmagic](/sql/azure-data-studio/notebooks-kqlmagic?context=%252fazure%252fdata-explorer%252fcontext%252fcontext)
+
+## Azure Monitor
+
+ [Azure Monitor](query-monitor-data.md)
+
+## Azure Notebooks
+
+[Azure Notebooks](/sql/azure-data-studio/notebooks/notebooks-kqlmagic?context=%252fazure%252fdata-explorer%252fcontext%252fcontext%253fcontext%253d%252fazure%252fdata-explorer%252fcontext%252fcontext)
+
+## Azure Pipelines
 
 [Azure Pipelines](devops.md)
 
-## Sync Kusto
+## Azure Synapse Apache Spark
 
-[Sync Kusto](kusto/tools/synckusto.md)
+[Azure Synapse Apache Spark](/azure/synapse-analytics/quickstart-connect-azure-data-explorer?context=%252fazure%252fdata-explorer%252fcontext%252fcontext)
 
 ## Delta Kusto
 
 [Delta Kusto](https://github.com/microsoft/delta-kusto)
+
+## Jupyter Notebooks
+
+[Jupyter Notebooks](kqlmagic.md)
+
+## Logic Apps
+
+[Microsoft Logic App](kusto/tools/logicapps.md)
+
+## Power Apps
+
+[Microsoft Power Apps](power-apps-connector.md)
+
+## Power Automate
+
+* [Power Automate connector](flow.md)
+* [Power Automate connector usage examples](flow-usage.md)
+
+## Sync Kusto
+
+[Sync Kusto](kusto/tools/synckusto.md)
 
 ---
