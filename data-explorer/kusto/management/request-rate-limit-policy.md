@@ -72,7 +72,7 @@ The following table shows a few examples of requests that exceed the resource ut
 * The HTTP response code will be `429`. The subcode will be `TooManyRequests`.
 * The exception type will be `QuotaExceededException`.
 
-### Examples
+## Examples
 
 The following policies allow up to:
 
@@ -126,7 +126,7 @@ The following policies will block all requests classified to the workload group:
 ]
 ```
 
-### The `default` workload group
+## The `default` workload group
 
 The `default` workload group has the following policy defined by default. This policy can be altered.
 
@@ -160,6 +160,6 @@ The `default` workload group has the following policy defined by default. This p
     * When running `.show capacity with(scope=workloadgroup)`, different principals may see different outputs if their requests are classified into different workload groups.
     * Otherwise, the request context is ignored, and the output is only affected by the cluster's [capacity policy](capacitypolicy.md).
 
-## Management commands
+## Related content
 
-Manage the workload group's request rate limit policies with [Workload groups management commands](./show-workload-group-command.md).
+* [.show workload_group command](show-workload-group-command.md)
