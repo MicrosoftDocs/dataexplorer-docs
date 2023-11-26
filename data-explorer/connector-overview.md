@@ -10,7 +10,7 @@ zone_pivot_groups: kql-flavors-adx-fabric
 ---
 # Data connectors and integrations overview
 
-#### [Connectors](#tab/connectors)
+## [Connectors](#tab/connectors)
 
 ::: zone pivot="azuredataexplorer"
 [Data ingestion](ingest-data-overview.md) Data ingestion is the process used to load data from one or more sources into Azure Data Explorer. Once ingested, the data becomes available for [query](kusto/query/index.md). Azure Data Explorer provides several connectors for data ingestion.
@@ -335,7 +335,7 @@ Telegraf is an open source, lightweight, minimal memory foot print agent for col
 
 ---
 
-#### [Integrations and Tools](#tab-integrations)
+#### [Integrations](#tab-integrations)
 
 * [LightIngest](https://github.com/Azure/Kusto-Lightingest/blob/main/README.md): a command-line utility for ad-hoc data ingestion into Azure Data Explorer. For more information, see [Use LightIngest to ingest data](lightingest.md).
 * Ingestion wizard: [overview](./ingest-data-wizard.md) and ingest data [from a container to a new table](/azure/data-explorer/ingest-from-container)
