@@ -10,7 +10,7 @@ zone_pivot_groups: kql-flavors-adx-fabric
 ---
 # Data connectors and integrations overview
 
-## [Connectors](#tab/connectors)
+#### [Connectors](#tab/connectors)
 
 ::: zone pivot="azuredataexplorer"
 [Data ingestion](ingest-data-overview.md) Data ingestion is the process used to load data from one or more sources into Azure Data Explorer. Once ingested, the data becomes available for [query](kusto/query/index.md). Azure Data Explorer provides several connectors for data ingestion.
