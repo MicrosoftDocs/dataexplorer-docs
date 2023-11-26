@@ -337,19 +337,36 @@ Telegraf is an open source, lightweight, minimal memory foot print agent for col
 
 | Name | Functionality | Supports streaming? | Type | Use cases |
 |--|--|:-:|--|--|
-|  |
+| Lightingest |
+| Web UI "Get data" |
+| Web UI query editor |
+| Kusto.Explorer |
+| Kusto CLI |
+| KQL Parser |
+| Monaco editor (plugin/embed) |
+| Azure Monitor |
+| Azure Synapse Analytics |
+| Real-Time Analytics in Microsoft Fabric |
+| Azure Data Lake |
+| Apache Spark |
+| Azure Notebooks |
+| Jupyter Notebooks |
+| Azure Data Studio |
+| Azure Data Share |
+| Azure Pipelines |
+| SyncKusto
+| DeltaKusto
+| Purview
+| Power Shell
+| Azure CLI
 
-## Apache Spark
+## Apache Spark 
 
 [Apache Spark](spark-connector.md)
 
 ## Azure Data Lake
 
  [Azure Data Lake](data-lake-query-data.md)
-
-## Azure Data Factory
-
-[Azure Data Factory](data-factory-integration.md)
 
 ## Azure Data Share
 
@@ -383,6 +400,15 @@ Azure Data Studio: [Kusto extension overview](/sql/azure-data-studio/extensions/
 
 [Jupyter Notebooks](kqlmagic.md)
 
+## KQL Parser
+
+The following open source repositories contain the source code for the Kusto Query Language (KQL) parser and editor:
+
+* [Kusto Query Language parser](https://github.com/microsoft/Kusto-Query-Language) - A .NET core repository for the Kusto Query Language parser and semantic tree.
+* [Kusto Query Language setup and usage for the Monaco editor](./kusto/api/monaco/monaco-kusto.md) - The Kusto Query Language editor that can be embedded in web and electron based applications.
+* [Kusto Query Language plugin](https://github.com/Azure/monaco-kusto) - Access the Kusto Query Language editor plugin.
+* [Embedding the Azure Data Explorer web UI](./kusto/api/monaco/host-web-ux-in-iframe.md) - The Azure Data Explorer web UI can be embedded in an iframe and hosted in third-party websites.
+
 ## Kusto.Explorer
 
 * [installation and user interface](kusto/tools/kusto-explorer.md), [using Kusto.Explorer](kusto/tools/kusto-explorer-using.md)
@@ -398,27 +424,9 @@ Azure Data Studio: [Kusto extension overview](/sql/azure-data-studio/extensions/
 
 A command-line utility for ad-hoc data ingestion into Azure Data Explorer. For more information, see [Use LightIngest to ingest data](lightingest.md).
 
-## Logic Apps
+## Purview
 
-[Microsoft Logic App](kusto/tools/logicapps.md)
-
-## Power Apps
-
-[Microsoft Power Apps](power-apps-connector.md)
-
-## Power Automate
-
-* [Power Automate connector](flow.md)
-* [Power Automate connector usage examples](flow-usage.md)
-
-## Query open source repositories
-
-The following open source repositories contain the source code for the Kusto Query Language (KQL) parser and editor:
-
-* [Kusto Query Language parser](https://github.com/microsoft/Kusto-Query-Language) - A .NET core repository for the Kusto Query Language parser and semantic tree.
-* [Kusto Query Language setup and usage for the Monaco editor](./kusto/api/monaco/monaco-kusto.md) - The Kusto Query Language editor that can be embedded in web and electron based applications.
-* [Kusto Query Language plugin](https://github.com/Azure/monaco-kusto) - Access the Kusto Query Language editor plugin.
-* [Embedding the Azure Data Explorer web UI](./kusto/api/monaco/host-web-ux-in-iframe.md) - The Azure Data Explorer web UI can be embedded in an iframe and hosted in third-party websites.
+## Real-Time Analytics in Microsoft Fabric
 
 ## Sync Kusto
 
