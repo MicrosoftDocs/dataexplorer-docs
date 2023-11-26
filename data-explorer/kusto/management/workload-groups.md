@@ -3,13 +3,15 @@ title: Workload groups
 description: Learn how to use workload groups to govern incoming requests to the cluster.
 ms.reviewer: yonil
 ms.topic: reference
-ms.date: 05/23/2023
+ms.date: 11/26/2023
 ---
 # Workload groups
 
-A workload group serves as a container for requests (queries, commands) that have similar classification criteria. Workload groups and [workload group policies](#workload-group-policies) are a means of resource governance for incoming requests to the cluster, and allow aggregate monitoring of the requests. When a request's execution begins, the request is classified and assigned to a specific workload group. Then, the request runs using the policies assigned to the workload group.
+Workload groups allow you to group together sets of management commands and queries based on shared characteristics. Each workload group and apply policies to control per-request limits and request rate limits for each of these groups. 
 
-Workload groups are defined at the cluster level. Up to 10 custom workload groups may be defined in addition to the three built-in workload groups.
+Workload groups, together with their corresponding [workload group policies](#workload-group-policies), serve as a resource governance system for incoming requests to the cluster. When a request is initiated, it gets classified into a workload group. The classification of incoming requests is based on a user-defined function defined as part of a [request classification policy](request-classification-policy.md). Then, the request follows the policies assigned to that workload group throughout its execution. This approach provides control and aggregate monitoring of requests.
+
+Workload groups are defined at the cluster level, and up to 10 custom groups can be defined in addition to the three [built-in workload groups](#built-in-workload-groups).
 
 > [!NOTE]
 > Requests that aren't queries or management commands aren't included in the scope of workload groups. For example: streaming ingestion requests.
@@ -70,11 +72,23 @@ You can change the following values in the workload group's [request limits poli
 > [!NOTE]
 > You can't change the criteria used for routing these requests.
 
-## Request classification
+## Use cases for custom workload groups
 
-Classification of incoming requests into workload groups is based on a user-defined function.
+There are a handful of common use cases for defining custom workload groups, such as:
 
-Defining the criteria for classifying requests is done by defining a [Request classification policy](request-classification-policy.md).
+* Protect against runaway queries:
+* Control the rate of requests:
+* Create shared environments:
+* Monitor resources utilization:
+
+## Create and manage workload groups
+
+Use the following commands to manage workload groups and their policies:
+
+* [.alter-merge workload_group](alter-merge-workload-group-command.md)
+* [.create-or-alter workload_group](create-or-alter-workload-group-command.md)
+* [.drop workload_group](drop-workload-group-command.md)
+* [.show workload_group](show-workload-group-command.md)
 
 ## Workload group policies
 
@@ -86,13 +100,12 @@ The following policies can be defined per workload group:
 * [Request queuing policy](request-queuing-policy.md)
 * [Query consistency policy](query-consistency-policy.md)
 
-## Monitoring
+## Monitor requests by workload group
 
-[System commands](systeminfo.md) indicate which workload group requests were classified into.
-Use these commands to aggregate resources utilization by workload group for requests that have completed.
+[System commands](systeminfo.md) indicate the workload group into which a request was classified. You can use these commands to aggregate resources utilization by workload group for completed requests.
 
 The same information can also be viewed and analyzed in [Azure Monitor insights](/azure/azure-monitor/insights/data-explorer?toc=/azure/data-explorer/toc.json&bc=/azure/data-explorer/breadcrumb/toc.json).
 
-## Management commands
+## Related content
 
-Managing workload groups and their policies is done using [workload groups management commands](./show-workload-group-command.md).
+* [Requests classification policy](request-classification-policy.md)
