@@ -7,14 +7,14 @@ ms.date: 11/27/2023
 ---
 # Workload groups
 
-Workload groups allow you to group together sets of management commands and queries based on shared characteristics. Each workload group and apply policies to control per-request limits and request rate limits for each of these groups. 
+Workload groups allow you to group together sets of management commands and queries based on shared characteristics, and apply policies to control per-request limits and request rate limits for each of these groups.
 
-Workload groups, together with their corresponding [workload group policies](#workload-group-policies), serve as a resource governance system for incoming requests to the cluster. When a request is initiated, it gets classified into a workload group. The classification of incoming requests is based on a user-defined function defined as part of a [request classification policy](request-classification-policy.md). Then, the request follows the policies assigned to that workload group throughout its execution. This approach provides control and aggregate monitoring of requests.
+Together with [workload group policies](#workload-group-policies), workload groups serve as a resource governance system for incoming requests to the cluster. When a request is initiated, it gets classified into a workload group. The classification is based on a user-defined function defined as part of a [request classification policy](request-classification-policy.md). The request follows the policies assigned to the designated workload group throughout its execution.
 
 Workload groups are defined at the cluster level, and up to 10 custom groups can be defined in addition to the three [built-in workload groups](#built-in-workload-groups).
 
 > [!NOTE]
-> Requests that aren't queries or management commands aren't included in the scope of workload groups. For example: streaming ingestion requests.
+> Requests that aren't queries or management commands aren't included in the scope of workload groups, such as streaming ingestion requests.
 
 ## Use cases for custom workload groups
 
