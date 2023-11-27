@@ -3,7 +3,7 @@ title: Request limits policy
 description: Learn how to use the request limits policy to limit the resources used by the request during its execution.
 ms.reviewer: yonil
 ms.topic: reference
-ms.date: 11/26/2023
+ms.date: 11/27/2023
 ---
 # Request limits policy
 
@@ -31,6 +31,12 @@ The following limits are configurable:
 
 > [!NOTE]
 > A limit that isn't defined, or is defined as `null`, is taken from the `default` workload group's request limits policy.
+
+### CPU resource usage
+
+Queries can use all the CPU resources within the cluster. By default, when multiple queries are running concurrently, the system employs a fair round-robin approach to distribute resources. This strategy is optimal for achieving high performance with ad-hoc queries.
+
+However, there are scenarios where you might want to restrict the CPU resources allocated to a specific query. For instance, if you are running a background job that can accommodate higher latencies. The request limits policy provides the flexibility to specify a lower percentage of threads or nodes to be used when executing distributed sub-query operations. The default setting is 100%.
 
 ## The `default` workload group
 
