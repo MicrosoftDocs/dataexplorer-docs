@@ -32,45 +32,6 @@ The following limits are configurable:
 > [!NOTE]
 > A limit that isn't defined, or is defined as `null`, is taken from the `default` workload group's request limits policy.
 
-## Example
-
-```json
-{
-  "DataScope": {
-    "IsRelaxable": true,
-    "Value": "HotCache"
-  },
-  "MaxMemoryPerQueryPerNode": {
-    "IsRelaxable": true,
-    "Value": 2684354560
-  },
-  "MaxMemoryPerIterator": {
-    "IsRelaxable": true,
-    "Value": 2684354560
-  },
-  "MaxFanoutThreadsPercentage": {
-    "IsRelaxable": true,
-    "Value": 50
-  },
-  "MaxFanoutNodesPercentage": {
-    "IsRelaxable": true,
-    "Value": 50
-  },
-  "MaxResultRecords": {
-    "IsRelaxable": true,
-    "Value": 1000
-  },
-  "MaxResultBytes": {
-    "IsRelaxable": true,
-    "Value": 33554432
-  },
-  "MaxExecutiontime": {
-    "IsRelaxable": true,
-    "Value": "00:01:00"
-  }
-}
-```
-
 ## The `default` workload group
 
 The `default` workload group has the following policy defined by default. This policy can be altered.
@@ -115,6 +76,48 @@ The `default` workload group has the following policy defined by default. This p
 > * Limits in the `default` workload group must be defined and have a non-`null` value.
 > * All limits in the `default` workload group have `IsRelaxable` set to `true`.
 > * Request limits are turned off for specific command types within the `default` workload group, such as `.export` commands and [ingest from query](data-ingestion/ingest-from-query.md) commands like `.set-or-append` and `.set-or-replace`. When these commands are assigned to a non-default workload group, the request limits specified in the policy become applicable.
+
+
+## Example
+
+The following JSON represents a custom requests limits policy object:
+
+```json
+{
+  "DataScope": {
+    "IsRelaxable": true,
+    "Value": "HotCache"
+  },
+  "MaxMemoryPerQueryPerNode": {
+    "IsRelaxable": true,
+    "Value": 2684354560
+  },
+  "MaxMemoryPerIterator": {
+    "IsRelaxable": true,
+    "Value": 2684354560
+  },
+  "MaxFanoutThreadsPercentage": {
+    "IsRelaxable": true,
+    "Value": 50
+  },
+  "MaxFanoutNodesPercentage": {
+    "IsRelaxable": true,
+    "Value": 50
+  },
+  "MaxResultRecords": {
+    "IsRelaxable": true,
+    "Value": 1000
+  },
+  "MaxResultBytes": {
+    "IsRelaxable": true,
+    "Value": 33554432
+  },
+  "MaxExecutiontime": {
+    "IsRelaxable": true,
+    "Value": "00:01:00"
+  }
+}
+```
 
 ## Related content
 
