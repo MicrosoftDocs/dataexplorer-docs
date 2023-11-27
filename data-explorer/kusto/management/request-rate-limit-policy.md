@@ -9,6 +9,8 @@ ms.date: 05/24/2023
 
 The workload group's request rate limit policy lets you limit the number of concurrent requests classified into the workload group, per workload group or per principal.
 
+Rate limits are enforced at the level defined by the workload group's [Request rate limits enforcement policy](request-rate-limits-enforcement-policy.md).
+
 ## The policy object
 
 A request rate limit policy has the following properties:
@@ -28,6 +30,9 @@ A request rate limit of kind `ConcurrentRequests` includes the following propert
 |-----------------------|------|--------------------------------------------|------------------|
 | MaxConcurrentRequests | int  | The maximum number of concurrent requests. | [`0`, `10000`]   |
 
+> [!NOTE]
+> * If a workload group doesn't have a specified limit on the maximum concurrent requests, it's subject to the default maximum value of `10000`.
+
 When a request exceeds the limit on maximum number of concurrent requests:
 
 * The request's state, as presented by [System information commands](systeminfo.md), will be `Throttled`.
@@ -45,7 +50,8 @@ The following table shows a few examples of concurrent requests that exceed the 
 * The exception type will be `QueryThrottledException` for queries, and `ControlCommandThrottledException` for management commands.
   
 > [!NOTE]
-> Management commands may also be throttled as a result of exceeding the limit defined by the cluster's [capacity policy](./show-cluster-capacity-policy-command.md).
+> * If either of the limits defined by the [capacity policy](capacitypolicy.md) or by a request rate limit policy is exceeded, a management command will be throttled.
+> * The [capacity policy](capacitypolicy.md) may limit the request rate of requests that fall under a specific category, such as ingestions.
 
 ### Resource utilization rate limit
 
@@ -71,6 +77,34 @@ The following table shows a few examples of requests that exceed the resource ut
 
 * The HTTP response code will be `429`. The subcode will be `TooManyRequests`.
 * The exception type will be `QuotaExceededException`.
+
+## How consistency affects rate limits
+
+With strong consistency, the default limit on maximum concurrent requests depends on the SKU of the cluster, and is calculated as: `Cores-Per-Node x 10`. For example, a cluster that's set up with Azure D14_v2 nodes, where each node has 16 vCores, will have a default limit of `16` x `10` = `160`.
+
+With weak consistency, the default limit on maximum concurrent requests depends on the SKU of the cluster and number of nodes, and is calculated as: `Cores-Per-Node x 10 x Number-Of-Nodes`. For example, a cluster that's set up with Azure D14_v2 and 5 nodes, where each node has 16 vCores, will have a default limit of `16` x `10` x `5` = `800`.
+
+For more information, see [Query consistency](../concepts/queryconsistency.md).
+
+## The `default` workload group
+
+The `default` workload group has the following policy defined by default. This policy can be altered.
+
+```json
+[
+  {
+    "IsEnabled": true,
+    "Scope": "WorkloadGroup",
+    "LimitKind": "ConcurrentRequests",
+    "Properties": {
+      "MaxConcurrentRequests": < Cores-Per-Node x 10 >
+    }
+  }
+]
+```
+
+> [!NOTE]
+> * When you alter the policy for the `default` workload group, a limit must be defined for the maximum concurrent requests.
 
 ## Examples
 
@@ -125,40 +159,6 @@ The following policies will block all requests classified to the workload group:
   },
 ]
 ```
-
-## The `default` workload group
-
-The `default` workload group has the following policy defined by default. This policy can be altered.
-
-```json
-[
-  {
-    "IsEnabled": true,
-    "Scope": "WorkloadGroup",
-    "LimitKind": "ConcurrentRequests",
-    "Properties": {
-      "MaxConcurrentRequests": < Cores-Per-Node x 10 >
-    }
-  }
-]
-```
-
-#### Notes
-
-* Rate limits are enforced at the level defined by the workload group's [Request rate limits enforcement policy](request-rate-limits-enforcement-policy.md).
-* With strong consistency, the default limit on maximum concurrent requests depends on the SKU of the cluster, and is calculated as: `Cores-Per-Node x 10`.
-    * For example: A cluster that's set up with Azure D14_v2 nodes, where each node has 16 vCores, will have a default limit of `16` x `10` = `160`.
-* In case of weak consistency, the default limit on maximum concurrent requests depends on the SKU of the cluster and number of nodes, and is calculated as: `Cores-Per-Node x 10 x Number-Of-Nodes`.
-    * For example: A cluster that's set up with Azure D14_v2 and 5 nodes, where each node has 16 vCores, will have a default limit of `16` x `10` x `5` = `800`.
-* This default limit applies to the `default` workload group, and any newly created workload group that doesn't have request rate limit policies specified at the time of its creation.
-* If a workload group has no limit on maximum concurrent requests defined, then the maximum allowed value of `10000` applies.
-* When you alter the policy for the `default` workload group, a limit must be defined for the workload group's max concurrent requests.
-* The cluster's [capacity policy](capacitypolicy.md) may also limit the request rate of requests that fall under a specific category, for example *ingestions*.
-    * If either of the limits defined by the [capacity policy](capacitypolicy.md) or by a request rate limit policy is exceeded, a management command will be throttled.
-* When request rate limits of kind `ConcurrentRequests` are applied, the output of [`.show capacity`](diagnostics.md#show-capacity) may change based on those limits.
-    * [`.show capacity`](diagnostics.md#show-capacity) can show the capacities for the principal that ran the request, according to: the context of the request, the workload group it was classified into, and its effective policies.
-    * When running `.show capacity with(scope=workloadgroup)`, different principals may see different outputs if their requests are classified into different workload groups.
-    * Otherwise, the request context is ignored, and the output is only affected by the cluster's [capacity policy](capacitypolicy.md).
 
 ## Related content
 
