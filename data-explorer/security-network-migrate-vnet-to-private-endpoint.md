@@ -8,7 +8,7 @@ ms.date: 11/24/2023
 
 # Migrate Virtual Network injected Azure Data Explorer cluster (Preview)
 
-This article describes the migration of a Virtual Network (VNet) injected Azure Data Explorer (ADX) to a network security based on Azure Private Endpoints. A detailed comparison can be found in the network security [overview](security-network-overview.md#comparison-and-recommendation) documentation.
+This article describes the migration of a Virtual Network (VNet) injected Azure Data Explorer (ADX) cluster to an Azure Private Endpoints network security model. A detailed comparison can be found in the network security [overview](security-network-overview.md#comparison-and-recommendation) documentation.
 
 The process of the migration will take several minutes. During the process of migration the service creates a new cluster for the engine and the data management services which reside in a virtual network which is managed by Microsoft on behalf of our customers. Once that process was finished, the connection will be switched to the newly created services for you. This results in a minimal downtime for querying the cluster.
 
@@ -38,6 +38,8 @@ Please follow those steps to get to the configuration in the Azure Portal:
    :::image type="content" source="./media/security-network-migrate/vnet-injection-migration-overview.png" alt-text="Screenshot of the Networking option in the Azure portal for virtual network injected clusters.":::
 
 The configuration of the following sections can be found on the individual tabs.
+
+Please [validate](#validation) if the creation of the (managed) private endpoints was successful **after** you finished the migration.
 
 ### Creating Private Endpoints
 
@@ -113,7 +115,7 @@ Detailed steps on how to use this script are provided in the [README](https://gi
 
 This script will migrate the specified ADX clusters in one go, saving you the time and effort of migrating them individually.
 
-## (Optional) Validation
+## Validation
 
 After migrating to private endpoints, it's important to validate that everything is working as expected.
 
