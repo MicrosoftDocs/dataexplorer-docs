@@ -26,7 +26,7 @@ Defining custom workload groups proves beneficial in various scenarios, includin
 
 * **Create shared environments:** Imagine a scenario where you have 3 different customer teams are running queries and commands on a shared cluster, possibly even accessing shared databases. If you're billing these teams based on their resource usage, you can create three distinct workload groups, each with unique limits. These workload groups would allow you to effectively manage and monitor the resource usage of each customer team.
 
-* **Monitor resources utilization:** Workload groups can help you create periodic reports on the resource consumption of a given principal or application. For instance, if these principals represent different clients, such reports can facilitate accurate billing. The [.show commands-and-queries](commands-and-queries.md) command includes a `WorkloadGroup` column in its output, allowing you to aggregate statistics and gain insights into the resource consumption of each customer team over time.
+* **Monitor resources utilization:** Workload groups can help you create periodic reports on the resource consumption of a given principal or application. For instance, if these principals represent different clients, such reports can facilitate accurate billing. For more information, see [Monitor requests by workload group](#monitor-requests-by-workload-group).
 
 ## Create and manage workload groups
 
@@ -72,7 +72,7 @@ You can:
 To monitor what gets classified to the `default` workload group, see [Monitor requests by workload group](#monitor-requests-by-workload-group).
 
 > [!NOTE]
-> * Some clusters may have a maximum concurrent query limit defined through the deprecated *Query throttling policy*. In such clusters, this limit was automatically applied to the `default` workload group's [request rate limits policies](request-rate-limit-policy.md). While the old limit only affected queries, the new one applies to all requests, including queries and management commands.
+> Some clusters may have a maximum concurrent query limit defined through the deprecated *Query throttling policy*. In such clusters, this limit was automatically applied to the `default` workload group's [request rate limits policies](request-rate-limit-policy.md). While the old limit only affected queries, the new one applies to all requests, including queries and management commands.
 
 ### Internal workload group
 
