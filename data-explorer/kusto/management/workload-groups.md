@@ -14,7 +14,7 @@ Together with [workload group policies](#workload-group-policies), workload grou
 Workload groups are defined at the cluster level, and up to 10 custom groups can be defined in addition to the three [built-in workload groups](#built-in-workload-groups).
 
 > [!NOTE]
-> Requests that aren't queries or management commands aren't included in the scope of workload groups, such as streaming ingestion requests.
+> Requests that aren't queries or management commands, such as streaming ingestion requests, aren't included in the scope of workload groups.
 
 ## Use cases for custom workload groups
 
