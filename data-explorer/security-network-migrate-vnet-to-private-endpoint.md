@@ -1,12 +1,12 @@
 ---
-title: Migrate virtual network injected Azure Data Explorer cluster
-description: In this article, you'll learn how to migrate virtual network injected Azure Data Explorer cluster.
+title: Migrate virtual network injected your cluster
+description: In this article, you'll learn how to migrate virtual network injected your cluster.
 ms.reviewer: gunjand
 ms.topic: how-to
 ms.date: 11/28/2023
 ---
 
-# Migrate Virtual Network injected Azure Data Explorer cluster (Preview)
+# Migrate a Virtual Network injected your cluster to Private Endpoints (Preview)
 
 This article describes the migration of a Virtual Network (VNet) injected Azure Data Explorer cluster to an Azure Private Endpoints network security model. For a detailed comparison, see [Private endpoint vs. virtual network injection](security-network-overview.md#comparison-and-recommendation).
 
@@ -22,54 +22,44 @@ Following the migration, you can still connect to your cluster using the `privat
 
 ## Prepare to migrate
 
-This step is considered optional because you can make the required configuration after the migration of the cluster. Nevertheless, it's recommended to it upfront in order to limit a potential service disruption.
+We recommend configuring your cluster infrastructure in alignment with the Azure Private Endpoints network security model before initiating the migration process. While it's possible to perform this configuration post-migration, doing so may result in a service disruption.
 
-Once the Azure Data Explorer cluster was migrated from the Virtual Network you need to ensure that clients which reside in the virtual network are able to connect to the cluster. Additionally you need to ensure that the Azure Data Explorer cluster is able to connect to other services. The latter point is important in scenarios, where firewalls for [Azure Storage](/azure/storage/common/storage-network-security) or [Azure Event Hubs](/azure/event-hubs/event-hubs-ip-filtering) were used. A classic example is: You were using Service Endpoints for your Azure Storage and Azure Event Hub Namespace. Once you migrated your Azure Data Explorer cluster out of the virtual network, it will not be able to connect to those services because the Azure Data Explorer compute components are not any longer in the virtual network, which was configured for the service endpoints of Azure Storage and Azure Event Hub. To allow Azure Data Explorer to connect to them you need to setup [Managed Private Endpoints](security-network-managed-private-endpoint-create.md).
+The purpose of the following steps is to ensure that clients residing in the virtual network can connect to the cluster post-migration, as well as to ensure that the your cluster is able to connect to other services. The latter point is important in scenarios where firewalls for [Azure Storage](/azure/storage/common/storage-network-security) or [Azure Event Hubs](/azure/event-hubs/event-hubs-ip-filtering) were used. For example, if you were using Service Endpoints for your Azure Storage and Azure Event Hub Namespace, once you migrate your your cluster out of the virtual network, it will not be able to connect to those services because the Azure Data Explorer compute components are not any longer in the virtual network, which was configured for the service endpoints of Azure Storage and Azure Event Hub. To allow Azure Data Explorer to connect to them you need to setup [Managed Private Endpoints](security-network-managed-private-endpoint-create.md).
 
 > [!WARNING]
-> You need to ensure that the Azure Data Explorer cluster is able to establish a connection to services which are required for ingestion and/or external tables. Otherwise, you are risking data loss or queries which are making callouts to other network protected services might stop functioning.
+> Make sure that your cluster is able to establish a connection to services required for ingestion and external tables. Otherwise, you risk data loss, and queries which are making callouts to other network protected services might stop functioning.
 
-Please follow those steps to get to the configuration in the Azure Portal:
+To prepare your cluster for migration:
 
-1. Go to the **Azure Data Explorer** cluster you would like to migrate.
+1. In the Azure portal, go to the **Azure Data Explorer** cluster you'd like to migrate.
 
 1. From the left menu, select **Networking**.
 
-   :::image type="content" source="./media/security-network-migrate/vnet-injection-migration-overview.png" alt-text="Screenshot of the Networking option in the Azure portal for virtual network injected clusters.":::
+   :::image type="content" source="./media/security-network-migrate/vnet-injection-migration-overview.png" lightbox="./media/security-network-migrate/vnet-injection-migration-overview.png" alt-text="Screenshot of the Networking option in the Azure portal for virtual network injected clusters.":::
 
-The configuration of the following sections can be found on the individual tabs.
+1. In order to connect to your cluster even if the [public access](security-network-restrict-public-access.md) was set to `Disabled`, select the **Private Endpoints connections** tab and [create a private endpoint](security-network-private-endpoint-create.md).
 
-Please [validate](#validation) if the creation of the (managed) private endpoints was successful **after** you finished the migration.
+    :::image type="content" source="./media/security-network-migrate/vnet-injection-migration-pe.png" lightbox="./media/security-network-migrate/vnet-injection-migration-pe.png" alt-text="Screenshot of the Networking option in the Azure portal for virtual network injected clusters. Tab for private endpoints selected.":::
 
-### Creating Private Endpoints
+    > [!NOTE]
+    > This configuration will take effect only after the migration of your your cluster.
 
-> [!NOTE]
-> This configuration will take effect only after the migration of your Azure Data Explorer cluster
+1. In order to allow your cluster to connect to other network secured services, select the **Managed private endpoints tab** and [create a managed private endpoint](security-network-managed-private-endpoint-create.md).
 
-The creation of a private endpoint allows you to connect to your Azure Data Explorer cluster even if the [public access](security-network-restrict-public-access.md) was set to "Disabled". To create a private endpoint follow the regular [documentation](security-network-private-endpoint-create.md#create-a-private-endpoint).
+    :::image type="content" source="./media/security-network-migrate/vnet-injection-migration-mpe.png" lightbox="./media/security-network-migrate/vnet-injection-migration-mpe.png" alt-text="Screenshot of the Networking option in the Azure portal for virtual network injected clusters. Tab for managed private endpoints selected.":::
 
-:::image type="content" source="./media/security-network-migrate/vnet-injection-migration-pe.png" alt-text="Screenshot of the Networking option in the Azure portal for virtual network injected clusters. Tab for private endpoints selected.":::
+    > [!NOTE]
+    > This configuration will take effect only after the migration of your your cluster.
 
-### Creating Managed Private Endpoints
+1. To restrict outbound access, select the **Restrict outbound access** tab and see the documentation for how to [Restrict outbound access](security-network-restrict-outbound-access.md). These restrictions take immediate effect.
 
-> [!NOTE]
-> This configuration will take effect only after the migration of your Azure Data Explorer cluster
-
-The creation of managed private endpoint allows your Azure Data Explorer cluster to connect to other network secured services. To create managed private endpoints follow the regular [documentation](security-network-managed-private-endpoint-create.md).
-
-:::image type="content" source="./media/security-network-migrate/vnet-injection-migration-mpe.png" alt-text="Screenshot of the Networking option in the Azure portal for virtual network injected clusters. Tab for managed private endpoints selected.":::
-
-### Restricting outbound access
-
-The configuration of restricted outbound access can be configured by following the regular [documentation](security-network-restrict-outbound-access.md). It will take immediate effect even before the migration was executed.
-
-:::image type="content" source="./media/security-network-migrate/vnet-injection-migration-roa.png" alt-text="Screenshot of the Networking option in the Azure portal for virtual network injected clusters. Tab for restricted outbound access selected.":::
+    :::image type="content" source="./media/security-network-migrate/vnet-injection-migration-roa.png" alt-text="Screenshot of the Networking option in the Azure portal for virtual network injected clusters. Tab for restricted outbound access selected.":::
 
 ## Migrate your cluster
 
 ### [Azure portal](#tab/portal)
 
-To migrate the Azure Data Explorer cluster from the Azure Portal:
+To migrate the your cluster from the Azure Portal:
 
 1. Go to the **Azure Data Explorer** cluster you would like to migrate.
 
@@ -85,9 +75,9 @@ To migrate the Azure Data Explorer cluster from the Azure Portal:
 
 ### [ARM template](#tab/arm)
 
-To migrate the Azure Data Explorer cluster by modifying the ARM template:
+To migrate the your cluster by modifying the ARM template:
 
-1. Locate the [**VirtualNetworkConfiguration**](/azure/templates/microsoft.kusto/clusters?pivots=deployment-language-arm-template#virtualnetworkconfiguration-1) in the ARM template of your Azure Data Explorer cluster
+1. Locate the [**VirtualNetworkConfiguration**](/azure/templates/microsoft.kusto/clusters?pivots=deployment-language-arm-template#virtualnetworkconfiguration-1) in the ARM template of your your cluster
 
    ```json
    "virtualNetworkConfiguration": {
@@ -113,11 +103,11 @@ To migrate the Azure Data Explorer cluster by modifying the ARM template:
 
 ### [Python script](#tab/python)
 
-You can use a Python script to automate the migration of multiple Azure Data Explorer clusters. The script [migrateAzure Data Explorerclusters.py](https://github.com/Azure/azure-kusto-vnet-migration/blob/main/python/migrateAzure Data Explorerclusters.py) available in the [Azure Kusto VNet Migration GitHub repository](https://github.com/Azure/azure-kusto-vnet-migration) can be used for this purpose.
+You can use a Python script to automate the migration of multiple your clusters. The script [migrateAzure Data Explorerclusters.py](https://github.com/Azure/azure-kusto-vnet-migration/blob/main/python/migrateAzure Data Explorerclusters.py) available in the [Azure Kusto VNet Migration GitHub repository](https://github.com/Azure/azure-kusto-vnet-migration) can be used for this purpose.
 
 Detailed steps on how to use this script are provided in the [README](https://github.com/Azure/azure-kusto-vnet-migration/blob/main/python/README.md) file in the same repository. Please refer to the [README](https://github.com/Azure/azure-kusto-vnet-migration/blob/main/python/README.md) for instructions on how to clone the repository, install the required Python packages, and run the script with the necessary configuration.
 
-This script will migrate the specified Azure Data Explorer clusters in one go, saving you the time and effort of migrating them individually.
+This script will migrate the specified your clusters in one go, saving you the time and effort of migrating them individually.
 
 ---
 
