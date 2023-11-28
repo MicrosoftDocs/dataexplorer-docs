@@ -24,10 +24,7 @@ Following the migration, you can still connect to your cluster using the `privat
 
 We recommend configuring your cluster infrastructure in alignment with the Azure Private Endpoints network security model before initiating the migration process. While it's possible to perform this configuration post-migration, doing so may result in a service disruption.
 
-The purpose of the following steps is to ensure that clients residing in the virtual network can connect to the cluster post-migration, as well as to ensure that the your cluster is able to connect to other services. The latter point is important in scenarios where firewalls for [Azure Storage](/azure/storage/common/storage-network-security) or [Azure Event Hubs](/azure/event-hubs/event-hubs-ip-filtering) were used. For example, if you were using Service Endpoints for your Azure Storage and Azure Event Hub Namespace, once you migrate your your cluster out of the virtual network, it will not be able to connect to those services because the Azure Data Explorer compute components are not any longer in the virtual network, which was configured for the service endpoints of Azure Storage and Azure Event Hub. To allow Azure Data Explorer to connect to them you need to setup [Managed Private Endpoints](security-network-managed-private-endpoint-create.md).
-
-> [!WARNING]
-> Make sure that your cluster is able to establish a connection to services required for ingestion and external tables. Otherwise, you risk data loss, and queries which are making callouts to other network protected services might stop functioning.
+The following steps ensure that post-migration clients in the virtual network can connect to the cluster and that the cluster can connect to other services. When firewalls for [Azure Storage](/azure/storage/common/storage-network-security) or [Azure Event Hubs](/azure/event-hubs/event-hubs-ip-filtering) are employed, these steps are crucial. For instance, if Service Endpoints were used for Azure Storage and Azure Event Hub Namespace, migrating the cluster out of the virtual network will disrupt connections to these services. To restore connectivity, you need to set up managed private endpoints for Azure Data Explorer.
 
 To prepare your cluster for migration:
 
@@ -54,6 +51,9 @@ To prepare your cluster for migration:
 1. To restrict outbound access, select the **Restrict outbound access** tab and see the documentation for how to [Restrict outbound access](security-network-restrict-outbound-access.md). These restrictions take immediate effect.
 
     :::image type="content" source="./media/security-network-migrate/vnet-injection-migration-roa.png" alt-text="Screenshot of the Networking option in the Azure portal for virtual network injected clusters. Tab for restricted outbound access selected.":::
+
+> [!WARNING]
+> Failure of your cluster to connect to essential services for ingestion and external tables poses a risk of data loss. Additionally, queries calling out to other network-protected services may cease to function.
 
 ## Migrate your cluster
 
