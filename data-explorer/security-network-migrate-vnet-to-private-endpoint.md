@@ -103,7 +103,7 @@ To migrate your cluster by modifying the ARM template:
 
 ### [Python script](#tab/python)
 
-You can use a Python script to automate the migration of multiple your clusters. The script [migrateAzure Data Explorerclusters.py](https://github.com/Azure/azure-kusto-Virtual Network-migration/blob/main/python/migrateAzure Data Explorerclusters.py) available in the [Azure Kusto Virtual Network Migration GitHub repository](https://github.com/Azure/azure-kusto-Virtual Network-migration) can be used for this purpose.
+You can use a Python script to automate the migration of multiple your clusters. The script [migrateAzure Data Explorerclusters.py](https://github.com/Azure/azure-kusto-vnet-migration/blob/main/python/migrateADXclusters.py) available in the [Azure Kusto Virtual Network Migration GitHub repository](https://github.com/Azure/azure-kusto-vnet-migration) can be used for this purpose.
 
 Detailed steps on how to use this script are provided in the [README](https://github.com/Azure/azure-kusto-Virtual Network-migration/blob/main/python/README.md) file in the same repository. For instructions on how to clone the repository, refer to the [README](https://github.com/Azure/azure-kusto-Virtual Network-migration/blob/main/python/README.md). Install the required Python packages, and run the script with the necessary configuration.
 
