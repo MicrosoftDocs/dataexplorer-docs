@@ -20,7 +20,7 @@ Following the migration, you can still connect to your cluster using the `privat
 - (Optional) You have a virtual network and a subnet where you want to create the private endpoint for the Azure Data Explorer cluster.
 - You have the necessary permissions to establish and oversee private endpoints and private DNS zones within your subscription and resource group. For the Azure Data Explorer cluster, Contributor access is required, while other resources like Azure Storage or Event Hubs may require Owner permissions.
 
-## (Optional) Steps before the migration
+## Prepare to migrate
 
 This step is considered optional because you can make the required configuration after the migration of the cluster. Nevertheless, it's recommended to it upfront in order to limit a potential service disruption.
 
@@ -65,9 +65,11 @@ The configuration of restricted outbound access can be configured by following t
 
 :::image type="content" source="./media/security-network-migrate/vnet-injection-migration-roa.png" alt-text="Screenshot of the Networking option in the Azure portal for virtual network injected clusters. Tab for restricted outbound access selected.":::
 
-## Migration using the Azure Portal
+## Migrate your cluster
 
-Please follow those steps to get to the migrate the Azure Data Explorer cluster in the Azure Portal:
+### [Azure portal](#tab/portal)
+
+To migrate the Azure Data Explorer cluster from the Azure Portal:
 
 1. Go to the **Azure Data Explorer** cluster you would like to migrate.
 
@@ -81,7 +83,9 @@ Please follow those steps to get to the migrate the Azure Data Explorer cluster 
 
 1. **Wait** until the migration finishes.
 
-## Migration by modifying the ARM Template
+### [ARM template](#tab/arm)
+
+To migrate the Azure Data Explorer cluster by modifying the ARM template:
 
 1. Locate the [**VirtualNetworkConfiguration**](/azure/templates/microsoft.kusto/clusters?pivots=deployment-language-arm-template#virtualnetworkconfiguration-1) in the ARM template of your Azure Data Explorer cluster
 
@@ -107,7 +111,7 @@ Please follow those steps to get to the migrate the Azure Data Explorer cluster 
 
 1. [**Deploy**](/azure/azure-resource-manager/templates/deployment-tutorial-local-template?tabs=azure-powershell) the ARM template
 
-## Migration using the code
+### [Python script](#tab/python)
 
 You can use a Python script to automate the migration of multiple Azure Data Explorer clusters. The script [migrateAzure Data Explorerclusters.py](https://github.com/Azure/azure-kusto-vnet-migration/blob/main/python/migrateAzure Data Explorerclusters.py) available in the [Azure Kusto VNet Migration GitHub repository](https://github.com/Azure/azure-kusto-vnet-migration) can be used for this purpose.
 
@@ -115,7 +119,9 @@ Detailed steps on how to use this script are provided in the [README](https://gi
 
 This script will migrate the specified Azure Data Explorer clusters in one go, saving you the time and effort of migrating them individually.
 
-## Validation
+---
+
+## Validate connection to your cluster and resources
 
 After migrating to private endpoints, it's important to validate that everything is working as expected.
 
@@ -123,7 +129,7 @@ After migrating to private endpoints, it's important to validate that everything
 
 1. Verify ingestion: This is relevant in case you need to connect to network secured services for ingestion like [Azure Event Hubs](ingest-data-event-hub.md). Check if the ingestion is working properly using the [Insights](/azure/data-explorer/monitor-queued-ingestion) or the [command](kusto/management/ingestionfailures.md) to show ingestion failures.
 
-## Next steps
+## Related content
 
 - [Create a Private Endpoints for Azure Data Explorer](security-network-private-endpoint-create.md)
 - [Create a Managed Private Endpoints for Azure Data Explorer](security-network-managed-private-endpoint-create.md)
