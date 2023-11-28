@@ -32,18 +32,20 @@ The following table defines mapping types to be used when ingesting or querying 
 
 | Data Format | Mapping Type |
 |-------------|-----------------------------------------------|
-| JSON        | [JSON Mapping](json-mapping.md)               |
 | CSV         | [CSV Mapping](csv-mapping.md)                 |
 | TSV         | [CSV Mapping](csv-mapping.md)                 |
+| TSVe        | [CSV Mapping](csv-mapping.md)                 |
 | PSV         | [CSV Mapping](csv-mapping.md)                 |
 | SCSV        | [CSV Mapping](csv-mapping.md)                 |
 | SOHsv       | [CSV Mapping](csv-mapping.md)                 |
 | TXT         | [CSV Mapping](csv-mapping.md)                 |
 | RAW         | [CSV Mapping](csv-mapping.md)                 |
+| JSON        | [JSON Mapping](json-mapping.md)               |
 | AVRO        | [AVRO Mapping](avro-mapping.md)               |
-| W3CLOGFILE  | [W3CLOGFILE Mapping](w3c-log-file-mapping.md) |
+| APACHEAVRO  | [AVRO Mapping](avro-mapping.md)               |
 | Parquet     | [Parquet Mapping](parquet-mapping.md)         |
 | ORC         | [ORC Mapping](orc-mapping.md)                 |
+| W3CLOGFILE  | [W3CLOGFILE Mapping](w3c-log-file-mapping.md) |
 
 ## Identity mapping
 
