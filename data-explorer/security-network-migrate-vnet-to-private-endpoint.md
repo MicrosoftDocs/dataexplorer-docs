@@ -111,13 +111,13 @@ This script migrates the specified clusters in one go, saving you the time and e
 
 ---
 
-## Validate connection to your cluster and resources
+## Validate the configuration
 
-After migrating to private endpoints, it's important to validate that everything is working as expected.
+After migrating to private endpoints, perform the following checks to validate the new configuration:
 
-1. Check the private endpoints: Refer to the [troubleshooting guide](security-network-private-endpoint-troubleshoot.md) in case you created private endpoints.
+1. If you created new private endpoints, check that they are working as expected. If needed, refer to the [troubleshooting guide](security-network-private-endpoint-troubleshoot.md).
 
-1. Verify ingestion: This verification is relevant in case you need to connect to network secured services for ingestion like [Azure Event Hubs](ingest-data-event-hub.md). Check if the ingestion is working properly using the [Insights](/azure/data-explorer/monitor-queued-ingestion) or the [command](kusto/management/ingestionfailures.md) to show ingestion failures.
+1. Check that ingestion is working properly with the [.show ingestion failures command](kusto/management/ingestionfailures.md) or refer to the guidance in [Monitor queued ingestion with metrics](/azure/data-explorer/monitor-queued-ingestion). This verification is especially relevant if you need to connect to network secured services for ingestion with services like [Azure Event Hubs](ingest-data-event-hub.md).
 
 ## Related content
 
