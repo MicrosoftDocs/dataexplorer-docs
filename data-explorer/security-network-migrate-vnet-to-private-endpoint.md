@@ -107,7 +107,7 @@ You can use a Python script to automate the migration of multiple your clusters.
 
 Detailed steps on how to use this script are provided in the [README](https://github.com/Azure/azure-kusto-vnet-migration/blob/main/python/README.md) file in the same repository. For instructions on how to clone the repository, refer to the [README](https://github.com/Azure/azure-kusto-vnet-migration/blob/main/python/README.md). Install the required Python packages, and run the script with the necessary configuration.
 
-This script migrates the specified your clusters in one go, saving you the time and effort of migrating them individually.
+This script migrates the specified clusters in one go, saving you the time and effort of migrating them individually.
 
 ---
 
