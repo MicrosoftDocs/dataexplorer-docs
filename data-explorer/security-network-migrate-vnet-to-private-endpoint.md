@@ -1,6 +1,6 @@
 ---
 title: Migrate a Virtual Network injected cluster to private endpoints
-description: In this article, you'll learn how to migrate a Virtual Network injected Azure Data Explorer cluster to private endpoints.
+description: Learn how to migrate a Virtual Network injected Azure Data Explorer cluster to private endpoints.
 ms.reviewer: cosh
 ms.topic: how-to
 ms.date: 11/28/2023
@@ -10,21 +10,21 @@ ms.date: 11/28/2023
 
 This article describes the migration of a Microsoft Azure Virtual Network injected Azure Data Explorer cluster to an Azure Private Endpoints network security model. For a detailed comparison, see [Private endpoint vs. virtual network injection](security-network-overview.md#comparison-and-recommendation).
 
-The process of the migration will take several minutes. During the process of migration the service creates a new cluster for the engine and the data management services which reside in a virtual network which is managed by Microsoft on behalf of our customers. Once that process was finished, the connection will be switched to the newly created services for you. This results in a minimal downtime for querying the cluster.
+The process of the migration takes several minutes. The migration creates a new cluster for the engine and data management services, which reside in a virtual network managed by Microsoft. The connection is switched to the newly created services for you. This process results in a minimal downtime for querying the cluster.
 
-Following the migration, you can still connect to your cluster using the `private-[clustername].[geo-region].kusto.windows.net` (engine) and `ingest-private-[clustername].[geo-region].kusto.windows.net`\\`private-ingest-[clustername].[geo-region].kusto.windows.net` (data management) FQDNs. Nevertheless, it's recommended to move to the regular cluster endpoints which don't contain the word "private".
+Following the migration, you can still connect to your cluster using the `private-[clustername].[geo-region].kusto.windows.net` (engine) and `ingest-private-[clustername].[geo-region].kusto.windows.net`\\`private-ingest-[clustername].[geo-region].kusto.windows.net` (data management) FQDNs. Nevertheless, we recommend moving to the regular cluster endpoints that aren't prefixed with `private`.
 
 ## Prerequisites
 
 - You have an existing Azure Data Explorer cluster that uses Virtual Network injection and you want to migrate it.
 - (Optional) You have a virtual network and a subnet where you want to create the private endpoint for the Azure Data Explorer cluster.
-- You have the necessary permissions to establish and oversee private endpoints and private DNS zones within your subscription and resource group. For the Azure Data Explorer cluster, Contributor access is required, while other resources like Azure Storage or Event Hubs may require Owner permissions.
+- You have the necessary permissions to establish and oversee private endpoints and private DNS zones within your subscription and resource group. For the Azure Data Explorer cluster, Contributor access is required, while other resources like Azure Storage or Event Hubs require Owner permissions.
 
 ## Prepare to migrate
 
-We recommend configuring your cluster infrastructure in alignment with the Azure Private Endpoints network security model before initiating the migration process. While it's possible to perform this configuration post-migration, doing so may result in a service disruption.
+We recommend configuring your cluster infrastructure in alignment with the Azure Private Endpoints network security model before initiating the migration process. While it's possible to perform this configuration post-migration, doing so can result in a service disruption.
 
-The following steps ensure that post-migration clients in the virtual network can connect to the cluster and that the cluster can connect to other services. When firewalls for [Azure Storage](/azure/storage/common/storage-network-security) or [Azure Event Hubs](/azure/event-hubs/event-hubs-ip-filtering) are employed, these steps are crucial. For instance, if Service Endpoints were used for Azure Storage and Azure Event Hub Namespace, migrating the cluster out of the virtual network will disrupt connections to these services. To restore connectivity, you need to set up managed private endpoints for Azure Data Explorer.
+The following steps ensure that post-migration clients in the virtual network can connect to the cluster and that the cluster can connect to other services. When firewalls for [Azure Storage](/azure/storage/common/storage-network-security) or [Azure Event Hubs](/azure/event-hubs/event-hubs-ip-filtering) are employed, these steps are crucial. For instance, if Service Endpoints were used for Azure Storage and Azure Event Hubs namespace, migrating the cluster out of the virtual network disrupts connections to these services. To restore connectivity, you need to set up managed private endpoints for Azure Data Explorer.
 
 To prepare your cluster for migration:
 
@@ -59,7 +59,7 @@ To prepare your cluster for migration:
 
 ### [Azure portal](#tab/portal)
 
-To migrate the your cluster from the Azure Portal:
+To migrate your cluster from the Azure portal:
 
 1. Go to the **Azure Data Explorer** cluster you would like to migrate.
 
@@ -67,7 +67,7 @@ To migrate the your cluster from the Azure Portal:
 
    :::image type="content" source="./media/security-network-migrate/Virtual Network-injection-migration-overview.png" alt-text="Screenshot of the Networking option in the Azure portal for virtual network injected clusters.":::
 
-1. Click on the **Migrate** button.
+1. Select on the **Migrate** button.
 
    :::image type="content" source="./media/security-network-migrate/Virtual Network-injection-migration-migrate.png" alt-text="Screenshot of the Networking option in the Azure portal for virtual network injected clusters. Migration tab is selected.":::
 
@@ -75,9 +75,9 @@ To migrate the your cluster from the Azure Portal:
 
 ### [ARM template](#tab/arm)
 
-To migrate the your cluster by modifying the ARM template:
+To migrate your cluster by modifying the ARM template:
 
-1. Locate the [**VirtualNetworkConfiguration**](/azure/templates/microsoft.kusto/clusters?pivots=deployment-language-arm-template#virtualnetworkconfiguration-1) in the ARM template of your your cluster
+1. Locate the [**VirtualNetworkConfiguration**](/azure/templates/microsoft.kusto/clusters?pivots=deployment-language-arm-template#virtualnetworkconfiguration-1) in the ARM template of your cluster
 
    ```json
    "virtualNetworkConfiguration": {
@@ -88,7 +88,7 @@ To migrate the your cluster by modifying the ARM template:
     },
    ```
 
-1. Replace **"state": "Enabled"** with **"state": "Disabled"**. Don't modify the other properties ("subnetId", "enginePublicIpId", "dataManagementPublicIpId").
+1. Replace **"state": "Enabled"** with **"state": "Disabled"**. Don't modify the other properties.
 
    ```json
    "virtualNetworkConfiguration": {
@@ -105,9 +105,9 @@ To migrate the your cluster by modifying the ARM template:
 
 You can use a Python script to automate the migration of multiple your clusters. The script [migrateAzure Data Explorerclusters.py](https://github.com/Azure/azure-kusto-Virtual Network-migration/blob/main/python/migrateAzure Data Explorerclusters.py) available in the [Azure Kusto Virtual Network Migration GitHub repository](https://github.com/Azure/azure-kusto-Virtual Network-migration) can be used for this purpose.
 
-Detailed steps on how to use this script are provided in the [README](https://github.com/Azure/azure-kusto-Virtual Network-migration/blob/main/python/README.md) file in the same repository. Please refer to the [README](https://github.com/Azure/azure-kusto-Virtual Network-migration/blob/main/python/README.md) for instructions on how to clone the repository, install the required Python packages, and run the script with the necessary configuration.
+Detailed steps on how to use this script are provided in the [README](https://github.com/Azure/azure-kusto-Virtual Network-migration/blob/main/python/README.md) file in the same repository. For instructions on how to clone the repository, refer to the [README](https://github.com/Azure/azure-kusto-Virtual Network-migration/blob/main/python/README.md). Install the required Python packages, and run the script with the necessary configuration.
 
-This script will migrate the specified your clusters in one go, saving you the time and effort of migrating them individually.
+This script migrates the specified your clusters in one go, saving you the time and effort of migrating them individually.
 
 ---
 
@@ -117,7 +117,7 @@ After migrating to private endpoints, it's important to validate that everything
 
 1. Check the private endpoints: Refer to the [troubleshooting guide](security-network-private-endpoint-troubleshoot.md) in case you created private endpoints.
 
-1. Verify ingestion: This is relevant in case you need to connect to network secured services for ingestion like [Azure Event Hubs](ingest-data-event-hub.md). Check if the ingestion is working properly using the [Insights](/azure/data-explorer/monitor-queued-ingestion) or the [command](kusto/management/ingestionfailures.md) to show ingestion failures.
+1. Verify ingestion: This verification is relevant in case you need to connect to network secured services for ingestion like [Azure Event Hubs](ingest-data-event-hub.md). Check if the ingestion is working properly using the [Insights](/azure/data-explorer/monitor-queued-ingestion) or the [command](kusto/management/ingestionfailures.md) to show ingestion failures.
 
 ## Related content
 
