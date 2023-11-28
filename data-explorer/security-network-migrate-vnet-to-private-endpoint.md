@@ -6,9 +6,9 @@ ms.topic: how-to
 ms.date: 11/28/2023
 ---
 
-# Migrate a Virtual Network injected your cluster to Private Endpoints (Preview)
+# Migrate a Virtual Network injected Azure Data Explorer cluster to Private Endpoints (Preview)
 
-This article describes the migration of a Virtual Network (VNet) injected Azure Data Explorer cluster to an Azure Private Endpoints network security model. For a detailed comparison, see [Private endpoint vs. virtual network injection](security-network-overview.md#comparison-and-recommendation).
+This article describes the migration of a Microsoft Azure Virtual Network injected Azure Data Explorer cluster to an Azure Private Endpoints network security model. For a detailed comparison, see [Private endpoint vs. virtual network injection](security-network-overview.md#comparison-and-recommendation).
 
 The process of the migration will take several minutes. During the process of migration the service creates a new cluster for the engine and the data management services which reside in a virtual network which is managed by Microsoft on behalf of our customers. Once that process was finished, the connection will be switched to the newly created services for you. This results in a minimal downtime for querying the cluster.
 
@@ -16,7 +16,7 @@ Following the migration, you can still connect to your cluster using the `privat
 
 ## Prerequisites
 
-- You have an existing Azure Data Explorer cluster that uses VNet injection and you want to migrate it.
+- You have an existing Azure Data Explorer cluster that uses Virtual Network injection and you want to migrate it.
 - (Optional) You have a virtual network and a subnet where you want to create the private endpoint for the Azure Data Explorer cluster.
 - You have the necessary permissions to establish and oversee private endpoints and private DNS zones within your subscription and resource group. For the Azure Data Explorer cluster, Contributor access is required, while other resources like Azure Storage or Event Hubs may require Owner permissions.
 
@@ -32,25 +32,25 @@ To prepare your cluster for migration:
 
 1. From the left menu, select **Networking**.
 
-   :::image type="content" source="./media/security-network-migrate/vnet-injection-migration-overview.png" lightbox="./media/security-network-migrate/vnet-injection-migration-overview.png" alt-text="Screenshot of the Networking option in the Azure portal for virtual network injected clusters.":::
+   :::image type="content" source="./media/security-network-migrate/Virtual Network-injection-migration-overview.png" lightbox="./media/security-network-migrate/Virtual Network-injection-migration-overview.png" alt-text="Screenshot of the Networking option in the Azure portal for virtual network injected clusters.":::
 
 1. In order to connect to your cluster even if the [public access](security-network-restrict-public-access.md) was set to `Disabled`, select the **Private Endpoints connections** tab and [create a private endpoint](security-network-private-endpoint-create.md).
 
-    :::image type="content" source="./media/security-network-migrate/vnet-injection-migration-pe.png" lightbox="./media/security-network-migrate/vnet-injection-migration-pe.png" alt-text="Screenshot of the Networking option in the Azure portal for virtual network injected clusters. Tab for private endpoints selected.":::
+    :::image type="content" source="./media/security-network-migrate/Virtual Network-injection-migration-pe.png" lightbox="./media/security-network-migrate/Virtual Network-injection-migration-pe.png" alt-text="Screenshot of the Networking option in the Azure portal for virtual network injected clusters. Tab for private endpoints selected.":::
 
     > [!NOTE]
     > This configuration will take effect only after the migration of your your cluster.
 
 1. In order to allow your cluster to connect to other network secured services, select the **Managed private endpoints tab** and [create a managed private endpoint](security-network-managed-private-endpoint-create.md).
 
-    :::image type="content" source="./media/security-network-migrate/vnet-injection-migration-mpe.png" lightbox="./media/security-network-migrate/vnet-injection-migration-mpe.png" alt-text="Screenshot of the Networking option in the Azure portal for virtual network injected clusters. Tab for managed private endpoints selected.":::
+    :::image type="content" source="./media/security-network-migrate/Virtual Network-injection-migration-mpe.png" lightbox="./media/security-network-migrate/Virtual Network-injection-migration-mpe.png" alt-text="Screenshot of the Networking option in the Azure portal for virtual network injected clusters. Tab for managed private endpoints selected.":::
 
     > [!NOTE]
     > This configuration will take effect only after the migration of your your cluster.
 
 1. To restrict outbound access, select the **Restrict outbound access** tab and see the documentation for how to [Restrict outbound access](security-network-restrict-outbound-access.md). These restrictions take immediate effect.
 
-    :::image type="content" source="./media/security-network-migrate/vnet-injection-migration-roa.png" alt-text="Screenshot of the Networking option in the Azure portal for virtual network injected clusters. Tab for restricted outbound access selected.":::
+    :::image type="content" source="./media/security-network-migrate/Virtual Network-injection-migration-roa.png" alt-text="Screenshot of the Networking option in the Azure portal for virtual network injected clusters. Tab for restricted outbound access selected.":::
 
 > [!WARNING]
 > Failure of your cluster to connect to essential services for ingestion and external tables poses a risk of data loss. Additionally, queries calling out to other network-protected services may cease to function.
@@ -65,11 +65,11 @@ To migrate the your cluster from the Azure Portal:
 
 1. From the left menu, select **Networking**.
 
-   :::image type="content" source="./media/security-network-migrate/vnet-injection-migration-overview.png" alt-text="Screenshot of the Networking option in the Azure portal for virtual network injected clusters.":::
+   :::image type="content" source="./media/security-network-migrate/Virtual Network-injection-migration-overview.png" alt-text="Screenshot of the Networking option in the Azure portal for virtual network injected clusters.":::
 
 1. Click on the **Migrate** button.
 
-   :::image type="content" source="./media/security-network-migrate/vnet-injection-migration-migrate.png" alt-text="Screenshot of the Networking option in the Azure portal for virtual network injected clusters. Migration tab is selected.":::
+   :::image type="content" source="./media/security-network-migrate/Virtual Network-injection-migration-migrate.png" alt-text="Screenshot of the Networking option in the Azure portal for virtual network injected clusters. Migration tab is selected.":::
 
 1. **Wait** until the migration finishes.
 
@@ -103,9 +103,9 @@ To migrate the your cluster by modifying the ARM template:
 
 ### [Python script](#tab/python)
 
-You can use a Python script to automate the migration of multiple your clusters. The script [migrateAzure Data Explorerclusters.py](https://github.com/Azure/azure-kusto-vnet-migration/blob/main/python/migrateAzure Data Explorerclusters.py) available in the [Azure Kusto VNet Migration GitHub repository](https://github.com/Azure/azure-kusto-vnet-migration) can be used for this purpose.
+You can use a Python script to automate the migration of multiple your clusters. The script [migrateAzure Data Explorerclusters.py](https://github.com/Azure/azure-kusto-Virtual Network-migration/blob/main/python/migrateAzure Data Explorerclusters.py) available in the [Azure Kusto Virtual Network Migration GitHub repository](https://github.com/Azure/azure-kusto-Virtual Network-migration) can be used for this purpose.
 
-Detailed steps on how to use this script are provided in the [README](https://github.com/Azure/azure-kusto-vnet-migration/blob/main/python/README.md) file in the same repository. Please refer to the [README](https://github.com/Azure/azure-kusto-vnet-migration/blob/main/python/README.md) for instructions on how to clone the repository, install the required Python packages, and run the script with the necessary configuration.
+Detailed steps on how to use this script are provided in the [README](https://github.com/Azure/azure-kusto-Virtual Network-migration/blob/main/python/README.md) file in the same repository. Please refer to the [README](https://github.com/Azure/azure-kusto-Virtual Network-migration/blob/main/python/README.md) for instructions on how to clone the repository, install the required Python packages, and run the script with the necessary configuration.
 
 This script will migrate the specified your clusters in one go, saving you the time and effort of migrating them individually.
 
