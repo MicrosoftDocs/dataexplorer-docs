@@ -111,7 +111,7 @@ This script migrates the specified clusters in one go, saving you the time and e
 
 ---
 
-## Validation
+## Validate successful migration
 
 After migrating to private endpoints, perform the following checks to validate the new configuration:
 
