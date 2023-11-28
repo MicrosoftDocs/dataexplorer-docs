@@ -111,9 +111,9 @@ This script migrates the specified clusters in one go, saving you the time and e
 
 ---
 
-## Validate successful migration
+## Verify successful migration
 
-After migrating to private endpoints, perform the following checks to validate the new configuration:
+After migrating to private endpoints, perform the following checks to verify the migration was successful:
 
 1. If you created new private endpoints, check that they are working as expected. If needed, refer to the [troubleshooting guide](security-network-private-endpoint-troubleshoot.md).
 
