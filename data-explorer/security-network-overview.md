@@ -44,7 +44,9 @@ To successfully inject your cluster into a virtual network, you must configure y
 * Two public IP addresses are required to manage the cluster and ensure that it's healthy
 * Optionally, if you're using an additional firewall appliance to secure your network, you must allow your cluster to connect to a set of Fully Qualified Domain Names (FQDNs) for outgoing traffic
 
-## Comparison and recommendation
+## Private endpoint vs. virtual network injection
+
+Virtual network injection can lead to a high maintenance overhead, as a result of implementation details such as maintaining FQDN lists in firewalls or deploying public IP addresses in a restricted environment. Therefore, we recommend using a private endpoint to connect to your cluster.
 
 The following table shows how network security related features could be implemented based on a cluster injected into a virtual network or secured using a private endpoint.
 
@@ -53,8 +55,6 @@ The following table shows how network security related features could be impleme
 | Inbound IP address filtering | [Manage public access](security-network-restrict-public-access.md) | [Create an inbound Network Security Group rule](/azure/virtual-network/network-security-groups-overview) |
 | Transitive access to other services (Storage, Event Hubs, etc.) | [Create a managed private endpoint](security-network-managed-private-endpoint-create.md) | [Create a private endpoint to the resource](./vnet-endpoint-storage-event-hub.md) |
 | Restricting outbound access | Use [Callout policies or the AllowedFQDNList](security-network-restrict-outbound-access.md) | Use a [virtual appliance](/azure/firewall/tutorial-firewall-deploy-portal) to the subnet's filter outgoing traffic |
-
-Maintain FQDN lists in firewalls, or deploying public IP addresses in a restricted environment, for virtual network injection leads to a high maintenance overhead; hence, recommend using a private endpoint to connect to your cluster.
 
 ## Related content
 
