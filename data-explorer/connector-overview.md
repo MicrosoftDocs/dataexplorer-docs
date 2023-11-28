@@ -83,7 +83,7 @@ The following table summarizes the available connectors and their capabilities:
 | DeltaKusto | | | |&check; | | 
 | Lightingest | &check; |
 | Azure CLI | | | | | | &check;
-| Azure Synapse Analytics | 
+| Azure Synapse Analytics |  
 | Azure Data Lake |
 | Azure Data Studio |
 | Azure Data Share |
