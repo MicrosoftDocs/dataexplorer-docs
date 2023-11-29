@@ -47,7 +47,9 @@ For an example of how to auto-generate a LightIngest command, see [ingest histor
 |--|--|--|--|
 |  | string | A [Kusto connection string](kusto/api/connection-strings/kusto.md) specifying the Kusto endpoint that will handle the ingestion. This value should be enclosed with double quotes. | &check; |
 | -database, -db | string | The target Azure Data Explorer database name. |  |
-| -table | string | The target Azure Data Explorer table name. | &check; |
+| -table | string | The target Azure Data Explorer table name. | &check; | 
+| -managedIdentity, -mi | Client Id of the managed identity (user-assigned or system-assigned) to use for connecting. Use "system" for system-assigned identity.| |
+| -ingestWithManagedIdentity, -imgestmi|Client Id of the managed identity (user-assigned or system-assigned) to use for connecting. Use "system" for system-assigned identity.|
 | -sourcePath, -source | string | The location of the source data, which can be either a local file path, the root URI of an Azure blob container, or the URI of an Amazon S3 bucket. If the data is stored in Azure blobs, the URI must include the storage account key or Shared Access Signature (SAS). If the data is in an S3 bucket, the URI must include the credential key. We recommend enclosing this value in double quotes. For more information, see [Storage connection strings](kusto/api/connection-strings/storage-connection-strings.md). Pass *-sourcePath:;impersonate* to list azure storage items with user permissions (user prompt authorization). | &check; |
 | -prefix | string | When the source data to ingest resides on blob storage, this URL prefix is shared by all blobs, excluding the container name. <br>For example, if the data is in `MyContainer/Dir1/Dir2`, then the prefix should be `Dir1/Dir2`. We recommend enclosing this value in double quotes. |  |
 | -pattern | string | Pattern by which source files/blobs are picked. Supports wildcards. For example, `"*.csv"`. We recommend enclosing this value in double quotes. |  |
@@ -64,6 +66,7 @@ For an example of how to auto-generate a LightIngest command, see [ingest histor
 | -listOnly, -list | bool | If set, only displays the items that would have been selected for ingestion. |  |
 | -ingestTimeout | integer | Timeout in minutes for all ingest operations completion. Defaults to `60`. |  |
 | -forceSync | bool | If set, forces synchronous ingestion. Defaults to `false`. | |
+| -interactive | bool | If set to `false`, does not prompt for arguments confirmation. For unattended flows and non-interactive environments. Default is `true`.|
 | -dataBatchSize | integer | Sets the total size limit (MB, uncompressed) of each ingest operation. | |
 | -filesInBatch | integer | Sets the file/blob count limit of each ingest operation. | |
 | -devTracing, -trace | string | If set, diagnostic logs are written to a local directory (by default, `RollingLogs` in the current directory, or can be modified by setting the switch value). | |
