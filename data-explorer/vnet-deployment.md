@@ -59,7 +59,7 @@ The total number of IP addresses:
 
 ## Service endpoints for connecting to Azure Data Explorer
 
-[Azure Service Endpoints](/azure/virtual-network/virtual-network-service-endpoints-overview) enables you to secure your Azure multi-tenant resources to your virtual network.
+[Azure Service Endpoints](/azure/virtual-network/virtual-network-service-endpoints-overview) enables you to secure your Azure multitenant resources to your virtual network.
 Deploying the cluster into your subnet allows you to set up data connections with [Event Hubs](/azure/event-hubs/event-hubs-about) or [Event Grid](/azure/event-grid/overview) while restricting the underlying resources for Azure Data Explorer subnet.
 
 ## Private Endpoints
