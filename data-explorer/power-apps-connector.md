@@ -16,7 +16,7 @@ Azure Data Explorer is a fast, fully managed data analytics service for real-tim
 * Power platform license. Get started at [https://powerapps.microsoft.com](https://powerapps.microsoft.com).
 * Familiarity with the [:::no-loc text="Power Apps"::: suite](/powerapps/powerapps-overview).
 
-## 1- Connect to Azure Data Explorer Connector
+## Connect to Azure Data Explorer Connector
 
 1. Go to [https://make.powerapps.com/](https://make.powerapps.com/) and sign in.
 1. On the left menu, select **more** > **Connections**.
@@ -31,11 +31,11 @@ Azure Data Explorer is a fast, fully managed data analytics service for real-tim
 1. Select **Create** on the **Azure Data Explorer** window that appears.
 
     :::image type="content" source="media/power-apps-connector/create-connector.png" alt-text="Screenshot of the Azure Data Explorer connection dialog box, highlighting the create button.":::
-1. In the authentication window, sign in to your account.
+1. Provide your credentials in the authentication window.
 
 For more information on the Azure Data Explorer connector in :::no-loc text="Power Apps":::, see [Azure Data Explorer connector](/connectors/kusto)
 
-## 2- Create app
+## Create app
 
 1. On the left menu, select **Apps**.
 1. Select **+ New app** > **Start with a page design**.
@@ -43,7 +43,7 @@ For more information on the Azure Data Explorer connector in :::no-loc text="Pow
     :::image type="content" source="media/power-apps-connector/create-new-app.png" alt-text="Screenshot of the apps page, showing the create a new canvas app button.":::
 1. Select **Blank canvas**. By default, **Tablet** format is selected.
 
-### Add Connector
+### Add connector
 
 1. On the left menu, select **Data**.
 
@@ -71,7 +71,7 @@ Optionally, you can set how many records are retrieved from server-based connect
 ### Add Dropdown
 
 1. On the menu bar, select **+Insert**.
-1. Select **Input**, and then select **Drop down**. The Drop Down properties pane appears on the rightmost of the canvas.
+1. Select **Input**, and then select **Drop down**. The **Drop Down** properties pane appears on the rightmost of the canvas.
 1. In the properties pane, select the **Advanced** tab.
 1. Under **Data**, replace the placeholder text for **Items** with:
 
@@ -79,7 +79,7 @@ Optionally, you can set how many records are retrieved from server-based connect
     ["NEW YORK","TEXAS"]
     ```
 
-    A dropdown menu appears on the canvas. Once you have data, you can select California or Michigan by expanding the menu.
+    A dropdown menu appears on the canvas. Once you have data, you can select New York or Texas by expanding the dropdown menu.
 
     :::image type="content" source="media/power-apps-connector/populate-dropdown.png" alt-text="Screenshot of the app page, showing the populated items in dropdown menu." lightbox="media/power-apps-connector/populate-dropdown.png":::
 
@@ -101,7 +101,7 @@ Optionally, you can set how many records are retrieved from server-based connect
 1. Select **+Insert** in the menu bar.
 1. Select **Layout** > **Data table**. Reposition the data table as needed.
 1. In the properties pane, select the **Advanced** tab.
-1. Under **Data**, replace the placeholder text for **Items** with the following function. The following function specifies the desired column type to be mapped out to the formula in [Add Dropdown](#add-dropdown).
+1. Under **Data**, replace the placeholder text for **Items** with the following formula. The formula specifies the column types to be mapped out according to the formula in [Add Dropdown](#add-dropdown).
 
     ```kusto
     ForAll( 
@@ -114,7 +114,10 @@ Optionally, you can set how many records are retrieved from server-based connect
     )
     ```
 
-1. In the properties pane, select the **Properties** tab. The **Data source** is autopopulated with the source specified in the **Items** section of the data table. In this example, the source is `KustoQueryResults`.
+1. In the properties pane, select the **Properties** tab.
+
+    The **Data source** is autopopulated with the source specified in the **Items** section of the data table. In this example, the source is `KustoQueryResults`.
+
 1. Select **Edit fields**, and then select **+ Add field**.
 
     :::image type="content" source="media/power-apps-connector/data-table.png" alt-text="Screenshot of the app canvas showing the selected columns to be added to the data table." lightbox="media/power-apps-connector/data-table.png":::
@@ -125,7 +128,7 @@ Optionally, you can set how many records are retrieved from server-based connect
 
 1. On the top right corner, select **Save**, and then enter a name for your app.
 
-## 3- Validate app
+## Validate app
 
 1. Select the **Play** button on the rightmost of the menu bar, or select **F5** to preview the app.
 1. Try the dropdown, scroll through the data table, and confirm successful data retrieval and presentation.
