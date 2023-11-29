@@ -3,7 +3,7 @@ title: Request queuing policy
 description: Learn how to use the request queuing policy to control queueing of requests for delayed execution.
 ms.reviewer: yonil
 ms.topic: reference
-ms.date: 05/24/2023
+ms.date: 11/27/2023
 ---
 # Request queuing policy (Preview)
 
@@ -21,6 +21,7 @@ The policy includes a single property:
 
 * `IsEnabled`: A boolean indicating if the policy is enabled. The default value is `false`.
 
-## Management commands
+## Related content
 
-Manage the workload group's request limits policy with [Workload groups management commands](./show-workload-group-command.md).
+* [.show workload_group command](show-workload-group-command.md)
+* [.create-or-alter workload_group command](create-or-alter-workload-group-command.md)
