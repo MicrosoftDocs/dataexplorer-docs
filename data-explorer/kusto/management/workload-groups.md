@@ -18,7 +18,7 @@ Workload groups are defined at the cluster level, and up to 10 custom groups can
 
 ## Use cases for custom workload groups
 
-Defining custom workload groups proves beneficial in various scenarios, including:
+The following list covers some common use cases for creating custom workload groups:
 
 * **Protect against runaway queries:** Create a workload group with a [requests limits policy](request-limits-policy.md) to set restrictions on resource usage and parallelism during query execution. For example, this policy can regulate result set size, memory per iterator, memory per node, execution time, and CPU resource usage.
 
