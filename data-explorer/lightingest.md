@@ -10,9 +10,9 @@ ms.date: 11/29/2023
  
 [LightIngest](https://github.com/Azure/Kusto-Lightingest/blob/main/README.md) is a command-line utility for ad-hoc data ingestion into Azure Data Explorer. The utility can pull source data from a local folder, an Azure blob storage container, or an Amazon S3 bucket.
 
-LightIngest is most useful when you want to ingest a large amount of data, because there is no time constraint on ingestion duration. It's also useful when you want to later query records according to the time they were created, and not the time they were ingested.
+LightIngest is most useful when you want to ingest a large amount of data, because there's no time constraint on ingestion duration. It's also useful when you want to later query records according to the time they were created, and not the time they were ingested.
 
-For an example of how to auto-generate a LightIngest command, see [ingest historical data](ingest-data-historical.md).
+For an example of how to autogenerate a LightIngest command, see [ingest historical data](ingest-data-historical.md).
 
 ## Prerequisites
 
@@ -45,12 +45,12 @@ For an example of how to auto-generate a LightIngest command, see [ingest histor
 
 | Argument | Type | Description | Required |
 |--|--|--|--|
-|  | string | A [Kusto connection string](kusto/api/connection-strings/kusto.md) specifying the Kusto endpoint that will handle the ingestion. This value should be enclosed with double quotes. | &check; |
+|  | string | A [Kusto connection string](kusto/api/connection-strings/kusto.md) specifying the Kusto endpoint that handles the ingestion. This value should be enclosed with double quotes. | &check; |
 | -database, -db | string | The target Azure Data Explorer database name. |  |
 | -table | string | The target Azure Data Explorer table name. | &check; | 
-| -managedIdentity, -mi | Client Id of the managed identity (user-assigned or system-assigned) to use for connecting. Use "system" for system-assigned identity.| |
-| -ingestWithManagedIdentity, -imgestmi|Client Id of the managed identity (user-assigned or system-assigned) to use for connecting. Use "system" for system-assigned identity.|
-| -sourcePath, -source | string | The location of the source data, which can be either a local file path, the root URI of an Azure blob container, or the URI of an Amazon S3 bucket. If the data is stored in Azure blobs, the URI must include the storage account key or Shared Access Signature (SAS). If the data is in an S3 bucket, the URI must include the credential key. We recommend enclosing this value in double quotes. For more information, see [Storage connection strings](kusto/api/connection-strings/storage-connection-strings.md). Pass *-sourcePath:;impersonate* to list azure storage items with user permissions (user prompt authorization). | &check; |
+| -managedIdentity, -mi | Client ID of the managed identity (user-assigned or system-assigned) to use for connecting. Use "system" for system-assigned identity.| |
+| -ingestWithManagedIdentity, -imgestmi|Client ID of the managed identity (user-assigned or system-assigned) to use for connecting. Use "system" for system-assigned identity.|
+| -sourcePath, -source | string | The location of the source data, which can be either a local file path, the root URI of an Azure blob container, or the URI of an Amazon S3 bucket. If the data is stored in Azure blobs, the URI must include the storage account key or Shared Access Signature (SAS). If the data is in an S3 bucket, the URI must include the credential key. We recommend enclosing this value in double quotes. For more information, see [Storage connection strings](kusto/api/connection-strings/storage-connection-strings.md). Pass *-sourcePath:;impersonate* to list Azure storage items with user permissions (user prompt authorization). | &check; |
 | -prefix | string | When the source data to ingest resides on blob storage, this URL prefix is shared by all blobs, excluding the container name. <br>For example, if the data is in `MyContainer/Dir1/Dir2`, then the prefix should be `Dir1/Dir2`. We recommend enclosing this value in double quotes. |  |
 | -pattern | string | Pattern by which source files/blobs are picked. Supports wildcards. For example, `"*.csv"`. We recommend enclosing this value in double quotes. |  |
 | -zipPattern | string | Regular expression to use when selecting which files in a ZIP archive to ingest. All other files in the archive will be ignored. For example, `"*.csv"`. We recommend enclosing this value in double quotes.|  |
@@ -62,19 +62,19 @@ For an example of how to auto-generate a LightIngest command, see [ingest histor
 | -tag | string | [Tags](kusto/management/extent-tags.md) to associate with the ingested data. Multiple occurrences are permitted |  |
 | -dontWait | bool | If set to 'true', doesn't wait for ingestion completion. Useful when ingesting large amounts of files/blobs. | |
 | -compression, -cr | double | Compression ratio hint. Useful when ingesting compressed files/blobs to help Azure Data Explorer assess the raw data size. Calculated as original size divided by compressed size. | |
-| -limit , -l | integer | If set, limits the ingestion to first *N* files. | |
+| -limit, -l | integer | If set, limits the ingestion to first *N* files. | |
 | -listOnly, -list | bool | If set, only displays the items that would have been selected for ingestion. |  |
 | -ingestTimeout | integer | Timeout in minutes for all ingest operations completion. Defaults to `60`. |  |
 | -forceSync | bool | If set, forces synchronous ingestion. Defaults to `false`. | |
-| -interactive | bool | If set to `false`, does not prompt for arguments confirmation. For unattended flows and non-interactive environments. Default is `true`.|
+| -interactive | bool | If set to `false`, doesn't prompt for arguments confirmation. For unattended flows and non-interactive environments. Default is `true`.|
 | -dataBatchSize | integer | Sets the total size limit (MB, uncompressed) of each ingest operation. | |
 | -filesInBatch | integer | Sets the file/blob count limit of each ingest operation. | |
 | -devTracing, -trace | string | If set, diagnostic logs are written to a local directory (by default, `RollingLogs` in the current directory, or can be modified by setting the switch value). | |
-| -ingestWithManagedIdentity | string | Client id of the managed identity (user-assigned or system-assigned) to be used to download the data. Use "system" for system-assigned identity.| |
+| -ingestWithManagedIdentity | string | Client ID of the managed identity (user-assigned or system-assigned) to be used to download the data. Use "system" for system-assigned identity.| |
 
 ## Azure blob-specific capabilities
 
-When used with Azure blobs, LightIngest will use certain blob metadata properties to augment the ingestion process.
+When used with Azure blobs, LightIngest uses certain blob metadata properties to augment the ingestion process.
 
 |Metadata property                            | Usage                                                                           |
 |---------------------------------------------|---------------------------------------------------------------------------------|
@@ -119,7 +119,7 @@ The argument values must include:
 
 * Ingest 10 blobs under specified storage account `ACCOUNT`, in folder `DIR`, under container `CONT`, and matching the pattern `*.csv.gz`
 * Destination is database `DB`, table `TABLE`, and the ingestion mapping `MAPPING` is precreated on the destination
-* The tool will wait until the ingest operations complete
+* The tool waits until the ingest operations complete
 * Note the different options for specifying the target database and storage account key vs. SAS token
 
 ```
@@ -148,7 +148,7 @@ LightIngest.exe "https://ingest-{ClusterAndRegion}.kusto.windows.net;Fed=True;In
 * Ingest all blobs under specified storage account `ACCOUNT`, in folder `DIR1/DIR2`, under container `CONT`, and matching the pattern `*.csv.gz`
 * Destination is database `DB`, table `TABLE`, and the ingestion mapping `MAPPING` is precreated on the destination
 * Source blobs contain header line, so the tool is instructed to drop the first record of each blob
-* The tool will post the data for ingestion and won't wait for the ingest operations to complete
+* The tool posts the data for ingestion and doesn't wait for the ingest operations to complete
 
 ```
 LightIngest.exe "https://ingest-{ClusterAndRegion}.kusto.windows.net;Fed=True"
@@ -166,7 +166,7 @@ LightIngest.exe "https://ingest-{ClusterAndRegion}.kusto.windows.net;Fed=True"
 
 * Ingest all files under path `PATH`, matching the pattern `*.json`
 * Destination is database `DB`, table `TABLE`, and the ingestion mapping is defined in local file `MAPPING_FILE_PATH`
-* The tool will post the data for ingestion and won't wait for the ingest operations to complete
+* The tool posts the data for ingestion and doesn't wait for the ingest operations to complete
 
 ```
 LightIngest.exe "https://ingest-{ClusterAndRegion}.kusto.windows.net;Fed=True"
@@ -182,8 +182,8 @@ LightIngest.exe "https://ingest-{ClusterAndRegion}.kusto.windows.net;Fed=True"
 
 * Ingest all files under path `PATH`, matching the pattern `*.json`
 * Destination is database `DB`, table `TABLE`, and the ingestion mapping is defined in local file `MAPPING_FILE_PATH`
-* The tool will post the data for ingestion and won't wait for the ingest operations to complete
-* Diagnostics trace files will be written locally under folder `LOGS_PATH`
+* The tool posts the data for ingestion and doesn't wait for the ingest operations to complete
+* Diagnostics trace files are written locally under folder `LOGS_PATH`
 
 ```
 LightIngest.exe "https://ingest-{ClusterAndRegion}.kusto.windows.net;Fed=True"
