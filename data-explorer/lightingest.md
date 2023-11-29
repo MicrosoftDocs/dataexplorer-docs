@@ -3,7 +3,7 @@ title: Use LightIngest to ingest data into Azure Data Explorer.
 description: Learn about LightIngest, a command-line utility for ad-hoc data ingestion into Azure Data Explorer.
 ms.reviewer: tzgitlin
 ms.topic: how-to
-ms.date: 11/23/2023
+ms.date: 11/29/2023
 ---
 
 # Use LightIngest to ingest data into Azure Data Explorer
@@ -17,22 +17,9 @@ For an example of how to auto-generate a LightIngest command, see [ingest histor
 ## Prerequisites
 
 * LightIngest for your operating system: Windows, OSX, or Linux. [Download LightIngest](https://github.com/Azure/Kusto-Lightingest/releases).
-* WinRAR. [Download WinRAR](http://www.win-rar.com/download.html).
-
-## Install LightIngest
-
-1. Navigate to the location on your computer where you downloaded LightIngest.
-1. Using WinRAR, extract the *tools* directory to your computer.
 
 ## Run LightIngest
 
-1. Navigate to the extracted *tools* directory on your computer.
-1. Delete the existing location information from the location bar.
-
-    :::image type="content" source="media/lightingest/lightingest-locationbar.png" alt-text="Delete existing location information for LightIngest in Azure Data Explorer.":::
-
-
-1. Enter `cmd` and press **Enter**.
 1. At the command prompt, enter `LightIngest.exe` followed by the relevant command-line argument.
 
     > [!Tip]
@@ -40,8 +27,7 @@ For an example of how to auto-generate a LightIngest command, see [ingest histor
     >
     > :::image type="content" source="media/lightingest/lightingest-cmd-line-help.png" alt-text="Command line help for LightIngest.":::
 
-1. Enter `ingest-` followed by the connection string to the Azure Data Explorer cluster that will manage the ingestion.
-    Enclose the connection string in double quotes and follow the [Kusto connection strings specification](kusto/api/connection-strings/kusto.md).
+1. Enter `ingest-` followed by the connection string to the Azure Data Explorer cluster that will manage the ingestion. Enclose the connection string in double quotes and follow the [Kusto connection strings specification](kusto/api/connection-strings/kusto.md).
 
     For example:
 
