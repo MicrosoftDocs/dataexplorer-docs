@@ -44,13 +44,13 @@ For an example of how to autogenerate a LightIngest command, see [ingest histori
 ## Command-line arguments
 
 | Argument | Type | Description | Required |
-|--|--|--|--|
-|  | string | A [Kusto connection string](kusto/api/connection-strings/kusto.md) specifying the Kusto endpoint that handles the ingestion. This value should be enclosed with double quotes. | &check; |
+|----------|------|-------------|----------|
+|          | string | A [Kusto connection string](kusto/api/connection-strings/kusto.md) specifying the Kusto endpoint that handles the ingestion. This value should be enclosed with double quotes. | &check; |
 | -database, -db | string | The target Azure Data Explorer database name. |  |
-| -table | string | The target Azure Data Explorer table name. | &check; |  |
+| -table | string | The target Azure Data Explorer table name. | &check; |
+| -sourcePath, -source | string | The location of the source data, which can be either a local file path, the root URI of an Azure blob container, or the URI of an Amazon S3 bucket. If the data is stored in Azure blobs, the URI must include the storage account key or Shared Access Signature (SAS). If the data is in an S3 bucket, the URI must include the credential key. We recommend enclosing this value in double quotes. For more information, see [Storage connection strings](kusto/api/connection-strings/storage-connection-strings.md). Pass *-sourcePath:;impersonate* to list Azure storage items with user permissions (user prompt authorization). | &check; |
 | -managedIdentity, -mi | string | Client ID of the managed identity (user-assigned or system-assigned) to use for connecting. Use "system" for system-assigned identity. |  |
 | -ingestWithManagedIdentity, -imgestmi | string | Client ID of the managed identity (user-assigned or system-assigned) to use for connecting. Use "system" for system-assigned identity. |  |
-| -sourcePath, -source | string | The location of the source data, which can be either a local file path, the root URI of an Azure blob container, or the URI of an Amazon S3 bucket. If the data is stored in Azure blobs, the URI must include the storage account key or Shared Access Signature (SAS). If the data is in an S3 bucket, the URI must include the credential key. We recommend enclosing this value in double quotes. For more information, see [Storage connection strings](kusto/api/connection-strings/storage-connection-strings.md). Pass *-sourcePath:;impersonate* to list Azure storage items with user permissions (user prompt authorization). | &check; |
 | -connectToStorageWithUserAuth, -storageUserAuth | string | Authenticate to the data source storage service with user credentials. The options for this value are `PROMPT` or `DEVICE_CODE`. |  |
 | -connectToStorageLoginUri, -storageLoginUri | string | If `-connectToStorageWithUserAuth` is set, you can optionally provide a Microsoft Entra ID login URI. |  |
 | -prefix | string | When the source data to ingest resides on blob storage, this URL prefix is shared by all blobs, excluding the container name. <br>For example, if the data is in `MyContainer/Dir1/Dir2`, then the prefix should be `Dir1/Dir2`. We recommend enclosing this value in double quotes. |  |
@@ -62,7 +62,7 @@ For an example of how to autogenerate a LightIngest command, see [ingest histori
 | -creationTimePattern | string | When set, is used to extract the CreationTime property from the file or blob path. See [How to ingest data using `CreationTime`](#how-to-ingest-data-using-creationtime). |  |
 | -ignoreFirstRow, -ignoreFirst | bool | If set, the first record of each file/blob is ignored. For example, if the source data has headers. |  |
 | -tag | string | [Tags](kusto/management/extent-tags.md) to associate with the ingested data. Multiple occurrences are permitted |  |
-| -dontWait | bool | If set to 'true', doesn't wait for ingestion completion. Useful when ingesting large amounts of files/blobs. |  |
+| -dontWait | bool | If set to `true`, doesn't wait for ingestion completion. Useful when ingesting large amounts of files/blobs. |  |
 | -compression, -cr | double | Compression ratio hint. Useful when ingesting compressed files/blobs to help Azure Data Explorer assess the raw data size. Calculated as original size divided by compressed size. |  |
 | -limit, -l | integer | If set, limits the ingestion to first *N* files. |  |
 | -listOnly, -list | bool | If set, only displays the items that would have been selected for ingestion. |  |
