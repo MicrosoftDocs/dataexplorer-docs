@@ -26,32 +26,32 @@ The following table summarizes the available connectors and their capabilities:
 ::: zone-end
 ::: zone pivot="azuredataexplorer"
 
-| Name                                                                                  | Input   | Output  | Export  | Orchestrate | Query   |  
-| ------------------------------------------------------------------------------------- | ------- | ------- | ------- | ----------- | ------- |
-| [Apache Kafka](#apache-kafka)                                                         | &check; |         |         |             |         |
-| [Apache Flink](#apache-flink)                                                         | &check; |         |         |             |         |
-| [Apache Log4J 2](#apache-log4j-2)                                                     | &check; |         |         |             |         |
-| [Apache Spark](#apache-spark)                                                         | &check; |         | &check; |             | &check; |  
-| [Apache Spark for Azure Synapse Analytics](#apache-spark-for-azure-synapse-analytics) | &check; |         | &check; |             | &check; |
-| [Azure Cosmos DB](#azure-cosmos-db)                                                   | &check; |         |         |             |         |  
-| [Azure Data Factory](#azure-data-factory)                                             | &check; |         |         | &check;     |         |
-| [Azure Event Grid](#azure-event-grid)                                                 |         |         |         | &check;     |         |
-| [Azure Event Hubs](#azure-event-hubs)                                                 | &check; |         |         |             |         |
-| [Azure Functions](#azure-functions)                                                   | &check; | &check; |         |             | &check; |
-| [Azure IoT Hubs](#azure-iot-hubs)                                                     | &check; |         |         |             |         |
-| [Azure Stream Analytics](#azure-stream-analytics)                                     | &check; |         |         |             |         |
-| [Fluent Bit](#fluent-bit)                                                             |         |         |         |             |         |
-| [Logstash](#logstash)                                                                 | &check; |         |         |             |         |
-| [NLog](#nlog)                                                                         |         |         |         |             | &check; |
-| [Open Telemetry](#open-telemetry)                                                     | &check; |         |         |             |         |
-| Power Apps                                                                            | &check; | &check; |         |             | &check; |
-| [Power Automate](#power-automate)                                                     | &check; | &check; |         | &check;     | &check; |
-| [Serilog](#serilog)                                                                   | &check; |         |         |             |         |
-| Telegraf                                                                              | &check; |         |         |             |         |
-| [Splunk](#splunk)                                                                     |         |         |         |             |         |
-| [Telegraf](#telegraf)                                                                 |         |         |         |             |         |
-| ODBC                                                                                  |         |         |         |             | &check; |
-| JDBC                                                                                  |         |         |         | &check;     |         |
+| Name                                     | Input   | Output  | Export  | Orchestrate | Query   |
+| ---------------------------------------- | ------- | ------- | ------- | ----------- | ------- |
+| Apache Kafka                             | &check; |         |         |             |         |
+| Apache Flink                             | &check; |         |         |             |         |
+| Apache Log4J 2                           | &check; |         |         |             |         |
+| Apache Spark                             | &check; |         | &check; |             | &check; |
+| Apache Spark for Azure Synapse Analytics | &check; |         | &check; |             | &check; |
+| Azure Cosmos DB                          | &check; |         |         |             |         |
+| Azure Data Factory                       | &check; |         |         | &check;     |         |
+| Azure Event Grid                         |         |         |         | &check;     |         |
+| Azure Event Hubs                         | &check; |         |         |             |         |
+| Azure Functions                          | &check; | &check; |         |             | &check; |
+| Azure IoT Hubs                           | &check; |         |         |             |         |
+| Azure Stream Analytics                   | &check; |         |         |             |         |
+| Fluent Bit                               |         |         |         |             |         |
+| Logstash                                 | &check; |         |         |             |         |
+| NLog                                     |         |         |         |             | &check; |
+| Open Telemetry                           | &check; |         |         |             |         |
+| Power Apps                               | &check; | &check; |         |             | &check; |
+| Power Automate                           | &check; | &check; |         | &check;     | &check; |
+| Serilog                                  | &check; |         |         |             |         |
+| Telegraf                                 | &check; |         |         |             |         |
+| Splunk                                   |         |         |         |             |         |
+| Telegraf                                 |         |         |         |             |         |
+| ODBC                                     |         |         |         |             | &check; |
+| JDBC                                     |         |         |         | &check;     |         |
 
 
 ::: zone-end
