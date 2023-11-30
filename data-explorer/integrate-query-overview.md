@@ -19,7 +19,7 @@ The following tables summarizes the available query connectors, tools, and integ
 | Name | Functionality | Supports streaming? | Supports free cluster? | Type | Use cases |
 |--|--|:-:|--|--|--|
 | [Apache Spark](tools-integrations-overview.md#apache-spark) | **Export**<br /><br />**Ingestion** | &#x2717; |  | [Open source](https://github.com/Azure/azure-kusto-spark/) | Telemetry |
-| [Apache Spark for Azure Synapse Analytics](#apache-spark-for-azure-synapse-analytics) | **Export**<br /><br />**Ingestion** | &#x2717; |  | First party | Telemetry |
+| [Apache Spark for Azure Synapse Analytics](tools-integrations-overview.md#apache-spark-for-azure-synapse-analytics) | **Export**<br /><br />**Ingestion** | &#x2717; |  | First party | Telemetry |
 | [Azure Functions](tools-integrations-overview.md#azure-functions) | **Export**<br /><br />**Ingestion** | &#x2717; |  | First party | Workflow integrations |
 | [Logstash](tools-integrations-overview.md#logstash) | **Ingestion** | &#x2717; |  | [Open source](https://github.com/Azure/logstash-output-kusto/) | Logs |
 | [Power Automate](tools-integrations-overview.md#power-automate) | **Export**<br /><br />**Ingestion** | &#x2717; |  | First party | Data orchestration |
@@ -51,4 +51,4 @@ For more information about connectors and tools, see [Data connectors, tools, an
 ## Related content
 
 * [Data integrations overview](integrate-data-overview.md)
-* [Visualize integrations overview](visualize-data-integrations.md)
+* [Visualize integrations overview](integrate-visualize-overview.md)
