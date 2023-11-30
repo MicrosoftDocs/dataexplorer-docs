@@ -29,10 +29,10 @@ The following table summarizes the available connectors and their capabilities:
 | [Azure IoT Hubs](#azure-iot-hubs)                                                     | &check; |         |         |             |         |
 | [Azure Stream Analytics](#azure-stream-analytics)                                     | &check; |         |         |             |         |
 | [Fluent Bit](#fluent-bit)                                                             |         |         |         |             |         |
+| Logic Apps                                                                            |         |         |         |             |         |
 | [Logstash](#logstash)                                                                 | &check; |         |         |             |         |
 | [NLog](#nlog)                                                                         |         |         |         |             | &check; |
 | [Open Telemetry](#open-telemetry)                                                     | &check; |         |         |             |         |
-| Power Apps                                                                            | &check; | &check; |         |             | &check; |
 | [Power Automate](#power-automate)                                                     | &check; | &check; |         | &check;     | &check; |
 | [Serilog](#serilog)                                                                   | &check; |         |         |             |         |
 | [Telegraf](#telegraf)                                                                 | &check; |         |         |             |         |
