@@ -137,9 +137,9 @@ items:
           - name: Data ingestion overview
             displayName: pipelines, connectors, plugins, Python, .NET, Java, Node, REST
             href: ingest-data-overview.md
-          - name: Data connectors overview
+          - name: Data integrations overview
             displayName: connect, integrate, integration, export, orchestrate
-            href: connector-overview.md
+            href: integrate-data-overview.md
           - name: Get data in the web UI
             items:
               - name: Get data from local file
@@ -290,6 +290,8 @@ items:
             href: ingestion-supported-formats.md
   - name: Query data
     items:
+      - name: Query integrations overview
+        href: integrate-query-overview.md
       - name: Query data in the web UI
         items:
           - name: Query data in the web UI overview
@@ -373,8 +375,8 @@ items:
             href: graph-best-practices.md
   - name: Visualize data
     items:
-      - name: Data visualization overview
-        href: viz-overview.md
+      - name: Visualization integrations overview
+        href: integrate-visualize-overview.md
       - name: Visualize dashboards in the web UI
         items:
           - name: Use dashboards
@@ -594,7 +596,7 @@ items:
             href: kusto-emulator-install.md
   - name: Integrate
     items:
-      - name: Tools and integrations overview
+      - name:  Connectors , tools, and integrations overview
         href: tools-integrations-overview.md
       - name: Orchestrate
         items:

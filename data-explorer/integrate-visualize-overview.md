@@ -1,0 +1,112 @@
+---
+title: Overview of visualize integrations
+description: Learn about the available visualize integrations.
+ms.reviewer: aksdi
+ms.topic: conceptual
+ms.date: 11/26/2023
+zone_pivot_group_filename: data-explorer/zone-pivot-groups.json
+zone_pivot_groups: kql-flavors-adx-fabric
+# CustomerIntent: As a data ingestor, I want to know what data connectors and tools are available, so that I can choose the right one for my use case.
+---
+# Visualize integrations overview
+
+amounts of data. Azure Data Explorer integrates with various visualization tools, so you can visualize your data and share the results across your organization. This data can be transformed into actionable insights to make an impact on your business.
+
+Data visualization and reporting is a critical step in the data analytics process. Azure Data Explorer supports many BI services so you can use the one that best fits your scenario and budget.
+
+The following tables summarizes the available visualize connectors, tools, and integrations.
+
+## [Connectors](#tab/connectors)
+
+| Name | Functionality | Supports streaming? | Supports free cluster? | Type | Use cases |
+|--|--|:-:|--|--|--|
+| [Apache Kafka](#apache-kafka) | **Ingestion** | &check; |  | First party, [Open source](https://github.com/Azure/kafka-sink-azure-kusto/) | Logs, Telemetry, Time series |
+| [Apache Flink](#apache-flink) | **Ingestion** | &check; |  | [Open source](https://github.com/Azure/flink-connector-kusto/) | Telemetry |
+| [Apache Log4J 2](#apache-log4j-2) | **Ingestion** | &check; | &check; | First party, [Open source](https://github.com/Azure/azure-kusto-log4j) | Logs |
+| [Apache Spark](#apache-spark) | **Export**<br /><br />**Ingestion** | &#x2717; |  | [Open source](https://github.com/Azure/azure-kusto-spark/) | Telemetry |
+| [Apache Spark for Azure Synapse Analytics](#apache-spark-for-azure-synapse-analytics) | **Export**<br /><br />**Ingestion** | &#x2717; |  | First party | Telemetry |
+| [Azure Cosmos DB](#azure-cosmos-db) | **Ingestion** | &check; |  | First party | Change feed |
+| [Azure Data Factory](#azure-data-factory) | **Export**<br /><br />**Ingestion** | &#x2717; |  | First party | Data orchestration |
+| [Azure Event Grid](#azure-event-grid) | **Ingestion** | &check; |  | First party | Event processing |
+| [Azure Event Hubs](#azure-event-hubs) | **Ingestion** | &check; |  | First party | Messaging |
+| [Azure Functions](#azure-functions) | **Export**<br /><br />**Ingestion** | &#x2717; |  | First party | Workflow integrations |
+| [Azure IoT Hubs](#azure-iot-hubs) | **Ingestion** | &check; |  | First party | IoT data |
+| [Azure Stream Analytics](#azure-stream-analytics) | **Ingestion** | &check; |  | First party | Event processing |
+| [Fluent Bit](#fluent-bit) | **Ingestion** | &#x2717; |  | [Open source](https://github.com/fluent/fluent-bit) | Logs, Metrics, Traces |
+| [Logstash](#logstash) | **Ingestion** | &#x2717; |  | [Open source](https://github.com/Azure/logstash-output-kusto/) | Logs |
+| [NLog](#nlog) | **Ingestion** | &check; | &check; | First party, [Open source](https://github.com/Azure/azure-kusto-nlog-sink) | Telemetry, Logs, Metrics |
+| [Open Telemetry](#open-telemetry) | **Ingestion** | &check; |  | [Open source](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/exporter/azuredataexplorerexporter) | Traces, Metrics, Logs |
+| [Power Automate](#power-automate) | **Export**<br /><br />**Ingestion** | &#x2717; |  | First party | Data orchestration |
+| [Serilog](#serilog) | **Ingestion** | &check; | &check; | First party, [Open source](https://github.com/Azure/serilog-sinks-azuredataexplorer) | Logs |
+| [Splunk](#splunk) | **Ingestion** | &#x2717; |  | [Open source](https://github.com/Azure/azure-kusto-splunk) | Logs |
+| [Telegraf](#telegraf) | **Ingestion** | &check; |  | [Open source](https://github.com/influxdata/telegraf/tree/master/plugins/outputs/azure_data_explorer) | Metrics, Logs |
+
+## [Tools and integrations](#tab/integrations)
+
+### Azure Data Explorer dashboards
+
+Azure Data Explorer dashboards is a web application that enables you to run queries and build dashboards in the stand-alone web application, the [Azure Data Explorer web UI](web-query-data.md). Azure Data Explorer dashboards provide three main advantages:
+
+* Natively export queries from the Azure Data Explorer web UI to Azure Data Explorer dashboards.
+* Explore the data in the Azure Data Explorer web UI.
+* Optimized dashboard rendering performance.
+
+For more information, see, [Visualize data with Azure Data Explorer dashboards](azure-data-explorer-dashboards.md).
+
+### Kusto Query Language visualizations
+
+The Kusto Query Language [`render operator`](kusto/query/renderoperator.md) offers various visualizations such as tables, pie charts, and bar charts to depict query results. Query visualizations are helpful in anomaly detection and forecasting, machine learning, and more.
+
+### Power BI
+
+Azure Data Explorer provides the capability to connect to [Power BI](https://powerbi.microsoft.com) using various methods:
+
+* [Built-in native Power BI connector](power-bi-data-connector.md?tabs=connector)
+
+* [Query import from Azure Data Explorer into Power BI](power-bi-data-connector.md)
+
+* [SQL query](power-bi-sql-query.md)
+
+### Microsoft Excel
+
+Azure Data Explorer provides the capability to connect to [Microsoft Excel](https://products.office.com/excel) using the [built-in native Excel connector](excel-connector.md), or [import a query](excel-blank-query.md) from Azure Data Explorer into Excel.
+
+### Grafana
+
+[Grafana](https://grafana.com) provides an Azure Data Explorer plugin that enables you to visualize data from Azure Data Explorer. You [set up Azure Data Explorer as a data source for Grafana, and then visualize the data](grafana.md).
+
+### Kibana
+
+Azure Data Explorer provides the capability to connect to [Kibana](https://www.elastic.co/guide/en/kibana/6.8/discover.html) using K2Bridge, an open source connector. You [set up Azure Data Explorer as a data source for Kibana, and then visualize the data](k2bridge.md).
+
+### ODBC connector
+
+Azure Data Explorer provides an [Open Database Connectivity (ODBC) connector](connect-odbc.md) so any application that supports ODBC can connect to Azure Data Explorer.
+
+### Tableau
+
+Azure Data Explorer provides the capability to connect to [Tableau](https://www.tableau.com)
+ using the [ODBC connector](connect-odbc.md) and then [visualize the data in Tableau](tableau.md).
+
+### Qlik
+
+Azure Data Explorer provides the capability to connect to [Qlik](https://www.qlik.com) using the [ODBC connector](connect-odbc.md) and then create Qlik Sense dashboards and visualize the data. Using the following video, you can learn to visualize Azure Data Explorer data with Qlik.
+
+> [!VIDEO https://www.youtube.com/embed/nhWIiBwxjjU]
+
+### Sisense
+
+Azure Data Explorer provides the capability to connect to [Sisense](https://www.sisense.com) using the JDBC connector. You [set up Azure Data Explorer as a data source for Sisense, and then visualize the data](sisense.md).
+
+### Redash
+
+You can use [Redash](https://redash.io/) to build dashboards and visualize data. [Set up Azure Data Explorer as a data source for Redash, and then visualize the data](redash.md).
+
+---
+
+For more information about connectors and tools, see [Data connectors, tools, and integrations overview](tools-integrations-overview.md#detailed-descriptions).
+
+## Related content
+
+* [Data integrations overview](integrate-data-overview.md)
+* [Query integrations overview](integrate-analyze-model-overview.md)

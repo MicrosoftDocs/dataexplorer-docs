@@ -854,6 +854,16 @@
       "source_path": "data-explorer/ingest-sample-data.md",
       "redirect_url": "/azure/data-explorer/web-ui-samples-query",
       "redirect_document_id": true
+    },
+    {
+      "source_path": "data-explorer/connector-overview.md",
+      "redirect_url": "/azure/data-explorer/integrate-data-overview",
+      "redirect_document_id": true
+    },
+    {
+      "source_path": "data-explorer/viz-overview.md",
+      "redirect_url": "/azure/data-explorer/integrate-visualize-overview",
+      "redirect_document_id": true
     }
   ]
 }

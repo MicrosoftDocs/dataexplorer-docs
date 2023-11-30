@@ -1,6 +1,6 @@
 ---
-title: Overview of data integrations
-description: Learn about the available data integrations.
+title: Overview of query integrations
+description: Learn about the available query integrations.
 ms.reviewer: aksdi
 ms.topic: conceptual
 ms.date: 11/26/2023
@@ -8,11 +8,11 @@ zone_pivot_group_filename: data-explorer/zone-pivot-groups.json
 zone_pivot_groups: kql-flavors-adx-fabric
 # CustomerIntent: As a data ingestor, I want to know what data connectors and tools are available, so that I can choose the right one for my use case.
 ---
-# Data integrations overview
+# Query integrations overview
 
-[Data ingestion](ingest-data-overview.md) Data ingestion is the process used to load data from one or more sources into Azure Data Explorer. Once ingested, the data becomes available for [query](kusto/query/index.md). Azure Data Explorer provides several connectors for data ingestion.
+Blurb about query integrations.
 
-The following tables summarizes the available data connectors and tools. For more information about each connector, see [Integrations overview](connector-overview.md).
+The following tables summarizes the available query connectors, tools, and integrations.
 
 ## [Connectors](#tab/connectors)
 
@@ -39,17 +39,31 @@ The following tables summarizes the available data connectors and tools. For mor
 | [Splunk](#splunk) | **Ingestion** | &#x2717; |  | [Open source](https://github.com/Azure/azure-kusto-splunk) | Logs |
 | [Telegraf](#telegraf) | **Ingestion** | &check; |  | [Open source](https://github.com/influxdata/telegraf/tree/master/plugins/outputs/azure_data_explorer) | Metrics, Logs |
 
-## [Tools](#tab/tools)
+## [Tools and integrations](#tab/integrations)
 
-* [LightIngest](https://github.com/Azure/Kusto-Lightingest/blob/main/README.md): a command-line utility for ad-hoc data ingestion into Azure Data Explorer. For more information, see [Use LightIngest to ingest data](lightingest.md).
-* Ingestion wizard: [overview](ingest-data-wizard.md) and ingest data [from a container to a new table](/azure/data-explorer/ingest-from-container)
-or [from a local file to an existing table](/azure/data-explorer/ingest-from-local-file)
+### Query open source repositories
+
+The following open source repositories contain the source code for the Kusto Query Language (KQL) parser and editor:
+
+* [Kusto Query Language parser](https://github.com/microsoft/Kusto-Query-Language) - A .NET core repository for the Kusto Query Language parser and semantic tree.
+* [Kusto Query Language setup and usage for the Monaco editor](./kusto/api/monaco/monaco-kusto.md) - The Kusto Query Language editor that can be embedded in web and electron based applications.
+  * [Kusto Query Language plugin](https://github.com/Azure/monaco-kusto) - Access the Kusto Query Language editor plugin.
+  * [Embedding the Azure Data Explorer web UI](./kusto/api/monaco/host-web-ux-in-iframe.md) - The Azure Data Explorer web UI can be embedded in an iframe and hosted in third-party websites.
+
+### Query integrations
+
+* [Azure Monitor](query-monitor-data.md)
+* [Azure Data Lake](data-lake-query-data.md)
+* [Azure Synapse Apache Spark](/azure/synapse-analytics/quickstart-connect-azure-data-explorer?context=%252fazure%252fdata-explorer%252fcontext%252fcontext)
+* [Apache Spark](spark-connector.md)
+* [Microsoft Power Apps](power-apps-connector.md)
+* Azure Data Studio: [Kusto extension overview](/sql/azure-data-studio/extensions/kusto-extension?context=%252fazure%252fdata-explorer%252fcontext%252fcontext), [use Kusto](/sql/azure-data-studio/notebooks/notebooks-kusto-kernel?context=%252fazure%252fdata-explorer%252fcontext%252fcontext), and [use Kqlmagic](/sql/azure-data-studio/notebooks-kqlmagic?context=%252fazure%252fdata-explorer%252fcontext%252fcontext)
 
 ---
 
-For more information about connectors and tools, see [Integrations overview](connector-overview.md).
+For more information about connectors and tools, see [Data connectors, tools, and integrations overview](tools-integrations-overview.md#detailed-descriptions).
 
-### Related content
+## Related content
 
-* [Analyze and model data integrations](integrate-analyze-model.md)
-* [Visualize integrations](visualize-data-integrations.md)
+* [Data integrations overview](integrate-data-overview.md)
+* [Visualize integrations overview](visualize-data-integrations.md)
