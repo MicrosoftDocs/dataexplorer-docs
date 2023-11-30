@@ -39,10 +39,10 @@ To use the managed identity, you need to configure the managed identity policy t
 
 The managed identity policy management commands are:
 
-* [.alter managed_identity policy](kusto/management/alter-managed-identity-policy-command.md)
-* [.alter-merge managed_identity policy](kusto/management/alter-merge-managed-identity-policy-command.md)
-* [.delete managed_identity policy](kusto/management/delete-managed-identity-policy-command.md)
-* [.show managed_identity policy](kusto/management/show-managed-identity-policy-command.md)
+* [.alter policy managed_identity](kusto/management/alter-managed-identity-policy-command.md)
+* [.alter-merge policy managed_identity](kusto/management/alter-merge-managed-identity-policy-command.md)
+* [.delete policy managed_identity](kusto/management/delete-managed-identity-policy-command.md)
+* [.show policy managed_identity](kusto/management/show-managed-identity-policy-command.md)
 
 ### Use the managed identity in supported workflows
 
