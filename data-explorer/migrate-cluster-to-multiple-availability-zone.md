@@ -46,7 +46,7 @@ In this article, you learn about:
 - For changing the zones of a cluster, you need a cluster that is configured with availability zones.
 
 - For REST API, familiarize yourself with [Manage Azure resources by using the REST API](/azure/azure-resource-manager/management/manage-resources-rest).
-- For other programmatic methods, see [Prerequisites](create-cluster-and-database.md#prerequisites).
+- For other programmatic methods, see [Prerequisites](create-cluster-database.md#prerequisites).
 
 ## Get the list of availability zones for your cluster's region
 
@@ -120,6 +120,22 @@ Follow the instructions on how to [deploy a template](/azure/azure-resource-mana
     ```json
     { "zones": [ "{zone1}", "{zone2}", "{zone3}" ] }
     ```
+
+### [C\#](#tab/csharp)
+
+### [Python](#tab/python)
+
+### [Go](#tab/go)
+
+### [Azure CLI](#tab/azure-cli)
+
+### [PowerShell](#tab/powershell)
+
+You can use the following Powershell command to configure your cluster to use availability zones. Make sure you have [installed the Kusto tools libraries](kusto/api/powershell/powershell.md#get-the-libraries) and replace the parameters with your values.
+
+```powershell
+Update-AzKustoCluster -SubscriptionId {subscriptionId} -ResourceGroupName {resourceGroupName} -Name {clusterName} -Zone "{zone1}", "{zone2}", "{zone3}"
+```
 
 ### [ARM Template](#tab/arm)
 
