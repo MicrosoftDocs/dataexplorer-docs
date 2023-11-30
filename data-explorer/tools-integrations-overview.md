@@ -10,6 +10,10 @@ ms.date: 11/30/2023
 
 Short blurb about how this is a high level overview.
 
+## Overview table
+
+Blurb
+
 ### [Connectors](#tab/connectors)
 
 The following table summarizes the available connectors and their capabilities:
