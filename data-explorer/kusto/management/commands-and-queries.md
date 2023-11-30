@@ -1,11 +1,11 @@
 ---
-title: .show commands-and-queries
+title: .show commands-and-queries command
 description: Learn how to use the `.show commands and queries` command to view a table with admin commands and queries that have reached a final state.
 ms.reviewer: orspodek
 ms.topic: reference
-ms.date: 11/22/2023
+ms.date: 11/30/2023
 ---
-# .show commands-and-queries
+# .show commands-and-queries command
 
 `.show` `commands-and-queries` returns a table with admin commands and queries on the cluster that have reached a final state. These commands and queries are available for 30 days.
 

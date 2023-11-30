@@ -1,11 +1,11 @@
 ---
-title: .show commands
+title: .show commands command
 description: Learn how to use the `.show commands` command to view a table with management commands that have reached a final state.
 ms.reviewer: orspodek
 ms.topic: reference
-ms.date: 11/22/2023
+ms.date: 11/30/2023
 ---
-# .show commands
+# .show commands command
 
 `.show commands` returns a table with [management commands](index.md) that have reached a final state. These commands are available to query for 30 days.
 

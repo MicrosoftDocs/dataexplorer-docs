@@ -812,15 +812,13 @@ items:
       - name: Journal
         href: journal.md
       - name: Operations
-        displayName: Operations management, operations, .show operations
-        href: operations.md
-      - name: Statistics
         items:
-        - name: .show streamingingestion statistics
-          displayName: .show streaming ingestion statistics
-          href: streamingingestionstatistics.md
-        - name: .show table data statistics
-          href: show-table-data-statistics.md
+        - name: .show operations
+          href: show-operations.md
+          displayName: operations
+        - name: .show operations details
+          href: show-operations-details.md
+          displayName: operations
       - name: Queries and commands
         items:
         - name: .cancel query
@@ -831,6 +829,13 @@ items:
           href: commands-and-queries.md
         - name: .show queries
           href: show-queries-command.md
+      - name: Statistics
+        items:
+        - name: .show streamingingestion statistics
+          displayName: .show streaming ingestion statistics
+          href: streamingingestionstatistics.md
+        - name: .show table data statistics
+          href: show-table-data-statistics.md
   - name: Advanced data management
     items:
       - name: Extents (data shards)

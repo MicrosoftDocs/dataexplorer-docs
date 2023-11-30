@@ -864,6 +864,11 @@
       "source_path": "data-explorer/kusto/management/queries.md",
       "redirect_url": "/azure/data-explorer/kusto/management/show-queries-command",
       "redirect_document_id": true
+    },
+    {
+      "source_path": "data-explorer/kusto/management/operations.md",
+      "redirect_url": "/azure/data-explorer/kusto/management/show-operations",
+      "redirect_document_id": true
     }
   ]
 }
