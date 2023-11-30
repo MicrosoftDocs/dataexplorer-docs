@@ -592,7 +592,9 @@ items:
             href: kusto-emulator-install.md
   - name: Integrate
     items:
-      - name: Orchestrate
+       - name:  Connectors , tools, and integrations overview
+        href: tools-integrations-overview.md
+       - name: Orchestrate
         items:
           - name: Power Automate
             items:
