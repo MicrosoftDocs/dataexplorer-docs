@@ -7,7 +7,7 @@ The Python plugin runs a user-defined function (UDF) using a Python script. The 
 
 ## Syntax
 
-*T* `|` `evaluate` [`hint.distribution` `=` (`single` | `per_node`)] [`hint.distribution` `=` `local`] `python(`*output_schema*`,` *script* [`,` *script_parameters*][`,` *external_artifacts*][`,` *spill_to_disk*]`)`
+*T* `|` `evaluate` [`hint.distribution` `=` (`single` | `per_node`)] [`hint.remote` `=` `local`] `python(`*output_schema*`,` *script* [`,` *script_parameters*][`,` *external_artifacts*][`,` *spill_to_disk*]`)`
 
 [!INCLUDE [syntax-conventions-note](syntax-conventions-note.md)]
 
