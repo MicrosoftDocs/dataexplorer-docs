@@ -322,53 +322,45 @@ or [from a local file to an existing table](/azure/data-explorer/ingest-from-loc
 
 #### Azure Data Explorer query tools
 
-There are several tools available for running queries in Azure Data Explorer.
+## Detailed descriptions
 
-* [Azure Data Explorer web UI](web-query-data.md)
-* Kusto.Explorer
-  * [installation and user interface](kusto/tools/kusto-explorer.md), [using Kusto.Explorer](kusto/tools/kusto-explorer-using.md)
-  * Additional topics include [options](kusto/tools/kusto-explorer-options.md), [troubleshooting](kusto/tools/kusto-explorer-troubleshooting.md), [keyboard shortcuts](kusto/tools/kusto-explorer-shortcuts.md), [code features](kusto/tools/kusto-explorer-code-features.md)
-* [Kusto CLI](kusto/tools/kusto-cli.md)
+Brief blurb about the following:
 
 #### Query open source repositories
 
-The following open source repositories contain the source code for the Kusto Query Language (KQL) parser and editor:
+### Apache Kafka
 
-* [Kusto Query Language parser](https://github.com/microsoft/Kusto-Query-Language) - A .NET core repository for the Kusto Query Language parser and semantic tree.
-* [Kusto Query Language setup and usage for the Monaco editor](./kusto/api/monaco/monaco-kusto.md) - The Kusto Query Language editor that can be embedded in web and electron based applications.
-  * [Kusto Query Language plugin](https://github.com/Azure/monaco-kusto) - Access the Kusto Query Language editor plugin.
-  * [Embedding the Azure Data Explorer web UI](./kusto/api/monaco/host-web-ux-in-iframe.md) - The Azure Data Explorer web UI can be embedded in an iframe and hosted in third-party websites.
+[Apache Kafka](https://kafka.apache.org/documentation/) is a distributed streaming platform for building real-time streaming data pipelines that reliably move data between systems or applications. Kafka Connect is a tool for scalable and reliable streaming of data between Apache Kafka and other data systems. The Kafka Sink serves as the connector from Kafka and doesn't require using code. This is gold certified by Confluent - has gone through comprehensive review and testing for quality, feature completeness, compliance with standards, and for performance.
 
 #### Query integrations
 
-* [Azure Monitor](query-monitor-data.md)
-* [Azure Data Lake](data-lake-query-data.md)
-* [Azure Synapse Apache Spark](/azure/synapse-analytics/quickstart-connect-azure-data-explorer?context=%252fazure%252fdata-explorer%252fcontext%252fcontext)
-* [Apache Spark](spark-connector.md)
-* [Microsoft Power Apps](power-apps-connector.md)
-* Azure Data Studio: [Kusto extension overview](/sql/azure-data-studio/extensions/kusto-extension?context=%252fazure%252fdata-explorer%252fcontext%252fcontext), [use Kusto](/sql/azure-data-studio/notebooks/notebooks-kusto-kernel?context=%252fazure%252fdata-explorer%252fcontext%252fcontext), and [use Kqlmagic](/sql/azure-data-studio/notebooks-kqlmagic?context=%252fazure%252fdata-explorer%252fcontext%252fcontext)
+### Apache Flink
 
 ### Visualizations, dashboards, and reporting
 
-The [visualization overview](viz-overview.md) details data visualization, dashboards, and reporting options.
+* **Functionality:** Ingestion
+* **Ingestion type supported:** Streaming
+* **Use cases:** Telemetry
+* **Underlying SDK:** [Java](kusto/api/java/kusto-java-client-library.md)
+* **Repository:** Microsoft Azure - https://github.com/Azure/flink-connector-kusto/
+* **Documentation:** [Ingest data from Apache Flink](ingest-data-flink.md)
 
 ### Notebook connectivity
 
-* [Azure Notebooks](/sql/azure-data-studio/notebooks/notebooks-kqlmagic?context=%252fazure%252fdata-explorer%252fcontext%252fcontext%253fcontext%253d%252fazure%252fdata-explorer%252fcontext%252fcontext)
-* [Jupyter Notebooks](kqlmagic.md)
-* Azure Data Studio: [Kusto extension overview](/sql/azure-data-studio/extensions/kusto-extension?context=%252fazure%252fdata-explorer%252fcontext%252fcontext), [use Kusto](/sql/azure-data-studio/notebooks/notebooks-kusto-kernel?context=%252fazure%252fdata-explorer%252fcontext%252fcontext), and [use Kqlmagic](/sql/azure-data-studio/notebooks-kqlmagic?context=%252fazure%252fdata-explorer%252fcontext%252fcontext)
+Log4j is a popular logging framework for Java applications maintained by the Apache Foundation. Log4j allows developers to control which log statements are output with arbitrary granularity based on the logger's name, logger level, and message pattern. The Apache Log4J 2 sink allows you to stream your log data to your database, where you can analyze and visualize your logs in real time.
 
 ### Orchestration
 
-* Power Automate
-  * [Power Automate connector](flow.md)
-  * [Power Automate connector usage examples](flow-usage.md)
-* [Microsoft Logic App](kusto/tools/logicapps.md)
-* [Azure Data Factory](data-factory-integration.md)
+* **Ingestion type supported:** Batching, Streaming
+* **Use cases:** Logs
+* **Underlying SDK:** [Java](kusto/api/java/kusto-java-client-library.md)
+* **Repository:** Microsoft Azure - https://github.com/Azure/azure-kusto-log4j
+* **Documentation:** [Ingest data with the Apache Log4J 2 connector](apache-log4j2-connector.md)
+* **Community Blog:** [Getting started with Apache Log4J and Azure Data Explorer](https://techcommunity.microsoft.com/t5/azure-data-explorer-blog/getting-started-with-apache-log4j-and-azure-data-explorer/ba-p/3705242)
 
 ### Share data
 
-* [Azure Data Share](data-share.md)
+[Apache Spark](https://spark.apache.org/) is a unified analytics engine for large-scale data processing. The [Spark connector](spark-connector.md) is an open source project that can run on any Spark cluster. It implements data source and data sink for moving data to or from Spark clusters. Using the Apache Spark connector, you can build fast and scalable applications targeting data driven scenarios. For example, machine learning (ML), Extract-Transform-Load (ETL), and Log Analytics. With the connector, your database becomes a valid data store for standard Spark source and sink operations, such as read, write, and writeStream.
 
 ### Source control integration
 
