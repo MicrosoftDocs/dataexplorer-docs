@@ -3,7 +3,7 @@ title: .cancel query command
 description: Learn how to use management commands to manage your queries.
 ms.reviewer: orspodek
 ms.topic: reference
-ms.date: 11/22/2023
+ms.date: 11/30/2023
 ---
 # .cancel query command
 
@@ -19,7 +19,7 @@ The `.cancel` `query` command starts a best-effort attempt to cancel a specific 
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-| *ClientActivityId* | string | &check; | The value of the running query's `ClientActivityId` property. Find the *ClientActivityId* of a query by running the [.show queries](#show-queries) command.|
+| *ClientActivityId* | string | &check; | The value of the running query's `ClientActivityId` property. Find the *ClientActivityId* of a query by running the [.show queries command](show-queries-command.md).|
 | *ReasonPhrase* | string | &check; | Describes the reason for canceling the running query and is included in the query results if it's successfully canceled. |
 
 ## Example
