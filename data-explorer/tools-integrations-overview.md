@@ -72,7 +72,11 @@ The following table summarizes the available tools and integrations and their ca
 
 ---
 
-### [Connector descriptions](#tab/connectors)
+## Detailed descriptions
+
+Brief blurb about the following:
+
+### [Connectors](#tab/connectors)
 
 ### Apache Kafka
 
@@ -213,8 +217,6 @@ Event Grid ingestion is a pipeline that listens to Azure storage, and updates yo
 * **Repository:** [fluent-bit](https://github.com/fluent/fluent-bit)
 * **Documentation:** [Ingest data with Fluent Bit into Azure Data Explorer](fluent-bit.md)
 
-### Lightingest
-
 ### Logstash
 
 [The Logstash plugin](ingest-data-logstash.md) enables you to process events from Logstash into an Azure Data Explorer database for later analysis.
@@ -306,11 +308,13 @@ Telegraf is an open source, lightweight, minimal memory foot print agent for col
 
 
 
-### [Tools and integrations description](#tab/integrations)
+### [Tools and integrations](#tab/integrations)
 
 ### Web UI get data experience
 
 ### Web UI query editor
 
 ---
+
+## Related content
 
