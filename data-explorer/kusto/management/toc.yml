@@ -339,6 +339,7 @@ items:
         items:
           - name: Capacity policy
             href: capacitypolicy.md
+            displayName: IngestionCapacity, ExtentsMergeCapacity, ExtentsPurgeRebuildCapacity, ExportCapacity, ExtentsPartitionCapacity, MaterializedViewsCapacity, StoredQueryResultsCapacity, ingestion, extents, purge, partition
           - name: .alter cluster policy capacity command
             href: alter-capacity-policy-command.md
             displayName: .alter cluster capacity policy command
