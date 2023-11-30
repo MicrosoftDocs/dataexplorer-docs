@@ -47,7 +47,6 @@ The following table summarizes the available connectors and their capabilities:
 [Apache Kafka](https://kafka.apache.org/documentation/) is a distributed streaming platform for building real-time streaming data pipelines that reliably move data between systems or applications. Kafka Connect is a tool for scalable and reliable streaming of data between Apache Kafka and other data systems. The Kafka Sink serves as the connector from Kafka and doesn't require using code. This is gold certified by Confluent - has gone through comprehensive review and testing for quality, feature completeness, compliance with standards, and for performance.
 
 * **Functionality:** Ingestion
-
 * **Ingestion type supported:** Batching, Streaming
 * **Use cases:** Logs, Telemetry, Time series
 * **Underlying SDK:** [Java](kusto/api/java/kusto-java-client-library.md)
