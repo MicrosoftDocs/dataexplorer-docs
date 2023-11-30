@@ -50,29 +50,29 @@ The following table summarizes the available connectors and their capabilities:
 
 The following table summarizes the available tools and integrations and their capabilities:
 
-| Name                                    | Ingestion | Query   | Share   | Source control | Secure  | Administration | Visualization |
-|-----------------------------------------|-----------|---------|---------|----------------|---------|----------------|---------------|
-| DeltaKusto                              |           |         |         | &check;        |         |                |               |
-| Lightingest                             | &check;   |         |         |                |         |                |               |
-| Azure CLI                               |           |         |         |                |         | &check;        |               |
-| Azure Synapse Analytics                 | &check;   | &check; |         |                |         |                | &check;       |
-| Azure Data Lake                         | &check;   |         |         |                |         |                |               |
-| Azure Data Studio                       |           | &check; |         |                |         |                |               |
-| Azure Data Share                        |           |         | &check; |                |         |                |               |
-| Azure Monitor                           | &check;   | &check; |         |                |         |                | &check;       |
-| Azure Notebooks                         |           | &check; |         |                |         |                | &check;       |
-| Azure Pipelines                         |           |         |         | &check;        |         |                |               |
-| Jupyter Notebooks                       |           | &check; |         |                |         |                | &check;       |
-| KQL Parser                              |           | &check; |         |                |         |                |               |
-| Kusto.Explorer                          |           | &check; |         |                |         |                | &check;       |
-| Kusto CLI                               | &check;   | &check; |         |                |         | &check;        |               |
-| Microsoft Purview                       |           |         |         |                | &check; |                |               |
-| Monaco editor (plugin/embed)            |           | &check; |         |                |         |                |               |
-| PowerShell                              |           |         |         |                |         | &check;        |               |
-| Real-Time Analytics in Microsoft Fabric | &check;   | &check; |         |                |         |                | &check;       |
-| SyncKusto                               |           |         |         | &check;        |         |                |               |
-| Web UI get data                         | &check;   |         |         |                |         |                |               |
-| Web UI query editor                     |           | &check; |         |                |         |                | &check;       |
+| Name                                    | Ingest  | Query   | Share   | Source control | Secure  | Administrate | Visualize |
+|-----------------------------------------|---------|---------|---------|----------------|---------|--------------|-----------|
+| DeltaKusto                              |         |         |         | &check;        |         |              |           |
+| Lightingest                             | &check; |         |         |                |         |              |           |
+| Azure CLI                               |         |         |         |                |         | &check;      |           |
+| Azure Synapse Analytics                 | &check; | &check; |         |                |         |              | &check;   |
+| Azure Data Lake                         | &check; |         |         |                |         |              |           |
+| Azure Data Studio                       |         | &check; |         |                |         |              |           |
+| Azure Data Share                        |         |         | &check; |                |         |              |           |
+| Azure Monitor                           | &check; | &check; |         |                |         |              | &check;   |
+| Azure Notebooks                         |         | &check; |         |                |         |              | &check;   |
+| Azure Pipelines                         |         |         |         | &check;        |         |              |           |
+| Jupyter Notebooks                       |         | &check; |         |                |         |              | &check;   |
+| KQL Parser                              |         | &check; |         |                |         |              |           |
+| Kusto.Explorer                          |         | &check; |         |                |         |              | &check;   |
+| Kusto CLI                               | &check; | &check; |         |                |         | &check;      |           |
+| Microsoft Purview                       |         |         |         |                | &check; |              |           |
+| Monaco editor (plugin/embed)            |         | &check; |         |                |         |              |           |
+| PowerShell                              |         |         |         |                |         | &check;      |           |
+| Real-Time Analytics in Microsoft Fabric | &check; | &check; |         |                |         |              | &check;   |
+| SyncKusto                               |         |         |         | &check;        |         |              |           |
+| Web UI get data                         | &check; |         |         |                |         |              |           |
+| Web UI query editor                     |         | &check; |         |                |         |              | &check;   |
 
 ---
 
