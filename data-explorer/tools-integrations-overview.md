@@ -10,7 +10,7 @@ ms.date: 11/30/2023
 
 Short blurb about how this is a high level overview.
 
-## Comparison table
+## Comparison tables
 
 Blurb
 
