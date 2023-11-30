@@ -8,9 +8,9 @@ ms.date: 11/30/2023
 ---
 # Data connectors, tools, and integrations overview
 
-#### [Connectors](#tab/connectors)
-
 Short blurb about how this is a high level overview.
+
+#### [Connectors](#tab/connectors)
 
 The following table summarizes the available connectors and their capabilities:
 
@@ -31,16 +31,46 @@ The following table summarizes the available connectors and their capabilities:
 | [Fluent Bit](#fluent-bit)                                                             |         |         |         |             |         |
 | Logic Apps                                                                            |         |         |         |             |         |
 | [Logstash](#logstash)                                                                 | &check; |         |         |             |         |
+| Matlab                                                                                |         |         |         |             | &check; |
 | [NLog](#nlog)                                                                         |         |         |         |             | &check; |
 | [Open Telemetry](#open-telemetry)                                                     | &check; |         |         |             |         |
+| Power Apps                                                                            | &check; | &check; |         |             | &check; |
 | [Power Automate](#power-automate)                                                     | &check; | &check; |         | &check;     | &check; |
 | [Serilog](#serilog)                                                                   | &check; |         |         |             |         |
-| [Telegraf](#telegraf)                                                                 | &check; |         |         |             |         |
 | [Splunk](#splunk)                                                                     |         |         |         |             |         |
-| [Telegraf](#telegraf)                                                                 |         |         |         |             |         |
+| [Telegraf](#telegraf)                                                                 | &check; |         |         |             |         |
 | ODBC                                                                                  |         |         |         |             | &check; |
 | JDBC                                                                                  |         |         |         |             | &check; |
 
+#### [Tools and integrations](#tab/integrations)
+
+The following table summarizes the available tools and integrations and their capabilities:
+
+| Name                                    | Ingestion | Query   | Share   | Source control | Secure  | Administration | Visualization |
+| --------------------------------------- | --------- | ------- | ------- | -------------- | ------- | -------------- | ------------- |
+| DeltaKusto                              |           |         |         | &check;        |         |                |               |
+| Lightingest                             | &check;   |         |         |                |         |                |               |
+| Azure CLI                               |           |         |         |                |         | &check;        |               |
+| Azure Synapse Analytics                 | &check;   | &check; |         |                |         |                | &check;       |
+| Azure Data Lake                         | &check;   |         |         |                |         |                |               |
+| Azure Data Studio                       |           | &check; |         |                |         |                |               |
+| Azure Data Share                        |           |         | &check; |                |         |                |               |
+| Azure Monitor                           | &check;   | &check; |         |                |         |                | &check;       |
+| Azure Notebooks                         |           | &check; |         |                |         |                | &check;       |
+| Azure Pipelines                         |           |         |         | &check;        |         |                |               |
+| Jupyter Notebooks                       |           | &check; |         |                |         |                | &check;       |
+| KQL Parser                              |           | &check; |         |                |         |                |               |
+| Kusto.Explorer                          |           | &check; |         |                |         |                | &check;       |
+| Kusto CLI                               | &check;   | &check; |         |                |         | &check;        |               |
+| Microsoft Purview                       |           |         |         |                | &check; |                |               |
+| Monaco editor (plugin/embed)            |           | &check; |         |                |         |                |               |
+| PowerShell                              |           |         |         |                |         | &check;        |               |
+| Real-Time Analytics in Microsoft Fabric | &check;   | &check; |         |                |         |                | &check;       |
+| SyncKusto                               |           |         |         | &check;        |         |                |               |
+| Web UI "Get data"                       | &check;   |         |         |                |         |                |               |
+| Web UI query editor                     |           | &check; |         |                |         |                | &check;       |
+
+---
 
 ### Apache Kafka
 
@@ -269,33 +299,4 @@ Telegraf is an open source, lightweight, minimal memory foot print agent for col
 * **Repository:** InfluxData - https://github.com/influxdata/telegraf/tree/master/plugins/outputs/azure_data_explorer
 * **Documentation:** [Ingest data from Telegraf](ingest-data-telegraf.md)
 * **Community Blog:**  [New Azure Data Explorer output plugin for Telegraf enables SQL monitoring at huge scale](https://techcommunity.microsoft.com/t5/azure-data-explorer-blog/new-azure-data-explorer-output-plugin-for-telegraf-enables-sql/ba-p/2829444)
-
-
-#### [Tools and integrations](#tab/integrations)
-
-| Name                                    | Ingestion | Query   | Share   | Source control | Secure  | Administration | Visualization |
-| --------------------------------------- | --------- | ------- | ------- | -------------- | ------- | -------------- | ------------- |
-| DeltaKusto                              |           |         |         | &check;        |         |                |               |
-| Lightingest                             | &check;   |         |         |                |         |                |               |
-| Azure CLI                               |           |         |         |                |         | &check;        |               |
-| Azure Synapse Analytics                 | &check;   | &check; |         |                |         |                |               |
-| Azure Data Lake                         | &check;   |         |         |                |         |                |               |
-| Azure Data Studio                       |           | &check; |         |                |         |                |               |
-| Azure Data Share                        |           |         | &check; |                |         |                |               |
-| Azure Monitor                           |           |         |         |                |         |                | &check;       |
-| Azure Notebooks                         |           | &check; |         |                |         |                |               |
-| Azure Pipelines                         |           |         |         | &check;        |         |                |               |
-| Jupyter Notebooks                       |           | &check; |         |                |         |                | &check;       |
-| KQL Parser                              |           | &check; |         |                |         |                |               |
-| Kusto.Explorer                          |           | &check; |         |                |         |                | &check;       |
-| Kusto CLI                               |           | &check; |         |                |         | &check;        |               |
-| Microsoft Purview                       |           |         |         |                | &check; |                |               |
-| Monaco editor (plugin/embed)            |           | &check; |         |                |         |                |               |
-| PowerShell                              |           |         |         |                |         | &check;        |               |
-| Real-Time Analytics in Microsoft Fabric | &check;   | &check; |         |                |         |                | &check;       |
-| SyncKusto                               |           |         |         | &check;        |         |                |               |
-| Web UI "Get data"                       | &check;   |         |         |                |         |                |               |
-| Web UI query editor                     |           | &check; |         |                |         |                | &check;       |
-
----
 
