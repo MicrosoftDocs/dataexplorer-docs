@@ -50,6 +50,20 @@ All properties are optional.
 |`ycolumns`    |Comma-delimited list of columns that consist of the values provided per value of the x column.|
 |`ytitle`      |The title of the y-axis (of type `string`).                                       |
 
+## Example
+
+```kusto
+let midwesternStates = dynamic([
+    "ILLINOIS", "INDIANA", "IOWA", "KANSAS", "MICHIGAN", "MINNESOTA",
+    "MISSOURI", "NEBRASKA", "NORTH DAKOTA", "OHIO", "SOUTH DAKOTA", "WISCONSIN"
+]);
+StormEvents
+| where EventType == "Flood" and State in (midwesternStates)
+| render timepivot with (xcolumn=State)
+```
+
+:::image type="content" source="images/visualization-timepivot/time-pivot-visualization.jpg" lightbox="images/visualization-timepivot/time-pivot-visualization.jpg" alt-text="Screenshot of timepivot in Kusto.Explorer.":::
+
 ::: zone-end
 
 ::: zone pivot="azuremonitor, fabric"
