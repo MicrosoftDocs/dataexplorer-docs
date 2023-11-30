@@ -81,7 +81,7 @@ Optionally, you can set how many records are retrieved from server-based connect
 
     A dropdown menu appears on the canvas. Once you have data, you can select New York or Texas by expanding the dropdown menu.
 
-    :::image type="content" source="media/power-apps-connector/populate-dropdown.png" alt-text="Screenshot of the app page, showing the populated items in dropdown menu." lightbox="media/power-apps-connector/populate-dropdown.png":::
+    :::image type="content" source="media/power-apps-connector/add-dropdown.png" alt-text="Screenshot of the app page, showing the populated items in dropdown menu." lightbox="media/power-apps-connector/add-dropdown.png":::
 
 1. With the dropdown still selected, replace the placeholder text for **OnChange** with the following formula.
 
