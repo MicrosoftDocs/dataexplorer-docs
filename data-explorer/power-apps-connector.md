@@ -126,7 +126,7 @@ Optionally, you can set how many records are retrieved from server-based connect
 
     :::image type="content" source="media/power-apps-connector/preview-table.png" alt-text="Screenshot of the app page, showing a preview of the table populated with data.":::
 
-1. On the top right corner, select **Save**, and then enter a name for your app.
+1. Select **Save**, and then enter a name for your app.
 
 ## Validate app
 
