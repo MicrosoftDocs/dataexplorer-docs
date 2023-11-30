@@ -10,10 +10,10 @@ ms.date: 11/30/2023
 
 Kusto maintains an internal log of running and historic operations that it processes, such as ingestion operations and data management operations.
 Entries are appended to the log when operations start and change their state, including when operations reach their terminal state.
-Users can view the ongoing and past operations they started by using the [`.show operations`](#show-operations) management command.
+Users can view the ongoing and past operations they started by using the `.show operations` command.
 Database administrators can view all operations that apply to the databases they administer.
 
-Users can also view the results of an operation by using the [`.show operation details`](#show-operations)
+Users can also view the results of an operation by using the [`.show operation details`](show-operation-details.md)
 command. Normally, the results are returned as part of `.show operations` command itself. For asynchronous
 management commands, the `.show operation details` command is the only way to view the command's results.
 

@@ -817,7 +817,7 @@ items:
           href: show-operations.md
           displayName: operations
         - name: .show operations details
-          href: show-operations-details.md
+          href: show-operation-details.md
           displayName: operations
       - name: Queries and commands
         items:

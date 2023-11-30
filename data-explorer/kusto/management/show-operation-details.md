@@ -4,14 +4,13 @@ description: Learn how to use the `.show operation details` command to view the 
 ms.topic: reference
 ms.date: 11/30/2023
 ---
+# .show operation details command
 
-## .show operation details
-
-Operations can persist their results, and the `.show operation details` command can be used to retrieve the results when the operation is complete.
+The `.show operation details` command retrieves the results of opertaions that persist their results.
 
 > [!NOTE]
-> * Not all management commands persist their results. Those commands that do, usually do so by default on asynchronous executions only, using the `async` keyword. See the documentation for the specific command and check if it does. For example, see [data export](data-export/index.md).
-> * The `.show` `operation` `details` command can only be invoked after the operation completed successfully. Use the [.show operations command](show-operations.md) to check the state of the operation before running this command.
+> * Only some management commands persist their results. The commands that do usually do so by default on asynchronous executions only, using the `async` keyword. See the documentation for the specific command. For example, see [data export](data-export/index.md).
+> * This command can only be invoked after the operation completed successfully. To check the state of the operation before running this command, use the [.show operations command](show-operations.md).
 
 ## Syntax
 
