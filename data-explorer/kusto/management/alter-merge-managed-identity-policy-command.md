@@ -1,16 +1,16 @@
 ---
-title:  .alter-merge managed_identity policy command
-description: Learn how to use the `.alter-merge managed_identity policy` command to update the ManagedIdentity policy of the cluster or database.
+title:  .alter-merge policy managed_identity command
+description: Learn how to use the `.alter-merge policy managed_identity` command to update the ManagedIdentity policy of the cluster or database.
 ms.reviewer: slneimer
 ms.topic: reference
-ms.date: 04/20/2023
+ms.date: 11/30/2023
 ---
-# .alter-merge managed_identity policy command
+# .alter-merge policy managed_identity command
 
 The command updates the ManagedIdentity policy of the cluster or the specified database, adding new managed identities or adding usages to existing managed identities.
 
 > [!NOTE]
-> Managed identities should be assigned to the cluster (see [instructions](../../configure-managed-identities-cluster.md)) before you can assign them to the ManagedIdentity policy.
+> Managed identities should be assigned to a cluster before you can assign them to the ManagedIdentity policy. For more information, see [Configure managed identities for your cluster](../../configure-managed-identities-cluster.md)
 
 ## Permissions
 
