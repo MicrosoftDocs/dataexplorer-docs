@@ -43,4 +43,5 @@ This training is not product-specific, and provides basic KQL learning:
 * [Udemy: Learn KQL for Microsoft Sentinel](https://www.udemy.com/course/learn-kql-for-microsoft-sentinel/)
 * [SC-200: Create queries for Microsoft Sentinel using Kusto Query Language (KQL)](/training/paths/sc-200-utilize-kql-for-azure-sentinel/)
 * [Infosec Train: Kusto Query Language (KQL) eLearning Training Program Online](https://www.infosectrain.com/self-paced-learning/kusto-query-language-training/)
+* [Hands-On Kusto Query Language for Security Analysts](https://academy.bluraven.io/hands-on-kusto-query-language-kql-for-security-analysts)
 
