@@ -30,7 +30,7 @@ This notification happens when the software deployment occurs. As such it is not
 
 Besides viewing these events in the Azure Activity Log blade in the portal, customers can also send their Activity Log events to Azure Log Analytics. 
 
-[Azure Activity Log - Azure Monitor](https://learn.microsoft.com/en-us/azure/azure-monitor/essentials/activity-log?tabs=powershell#send-to-log-analytics-workspace)
+[Azure Activity Log - Azure Monitor](https://learn.microsoft.com/azure/azure-monitor/essentials/activity-log?tabs=powershell#send-to-log-analytics-workspace)
 
 An example of a useful query in Azure Log Analytics of the Version Deployment Notifications
 
@@ -45,7 +45,7 @@ The results would look something like this:
 
 ![la-query](./media/version-deployment-notification/la-result.png)
 
-Now that we have the data in Log Analytics and a query to parse the information we can setup alerts via Azure Monitor or visualize it using tools such as [Azure Workbooks](https://learn.microsoft.com/en-us/azure/azure-monitor/visualize/workbooks-overview), [ADX Dashboards](https://learn.microsoft.com/en-us/azure/data-explorer/azure-data-explorer-dashboards), or [Grafana](https://learn.microsoft.com/en-us/azure/azure-monitor/visualize/grafana-plugin).
+Now that we have the data in Log Analytics and a query to parse the information we can setup alerts via Azure Monitor or visualize it using tools such as [Azure Workbooks](https://learn.microsoft.com/azure/azure-monitor/visualize/workbooks-overview), [ADX Dashboards](https://learn.microsoft.com/azure/data-explorer/azure-data-explorer-dashboards), or [Grafana](https://learn.microsoft.com/azure/azure-monitor/visualize/grafana-plugin).
 
 ### Conclusion
 This notification provides transparency on when and how long software deployment takes. This notification is not an indication of downtime and can not be utilized to determine SLA of the clusters.
