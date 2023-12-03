@@ -4,9 +4,7 @@ description: Learn about the available visualize integrations.
 ms.reviewer: aksdi
 ms.topic: conceptual
 ms.date: 11/26/2023
-zone_pivot_group_filename: data-explorer/zone-pivot-groups.json
-zone_pivot_groups: kql-flavors-adx-fabric
-# CustomerIntent: As a data ingestor, I want to know what data connectors and tools are available, so that I can choose the right one for my use case.
+# CustomerIntent: As a data ingestor, I want to know what visualize connectors and tools are available, so that I can choose the right one for my use case.
 ---
 # Visualize integrations overview
 

@@ -4,7 +4,6 @@ description: Learn about the available data connectors, toold, and integrations,
 ms.reviewer: aksdi
 ms.topic: conceptual
 ms.date: 11/30/2023
-
 ---
 # Data connectors, tools, and integrations overview
 
