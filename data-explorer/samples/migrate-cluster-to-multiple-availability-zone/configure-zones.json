@@ -15,7 +15,7 @@
           "name": "[parameters('clusters_clusterName_name')]",
           "location": "North Europe",
           "sku": {
-              "name": "Dev(No SLA)_Standard_E2a_v4",
+              "name": "{skuName}",
               "tier": "Basic",
               "capacity": 1
           },

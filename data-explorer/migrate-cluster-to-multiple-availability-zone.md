@@ -17,7 +17,6 @@ You can configure availability zones when creating a cluster [in the Azure porta
 - C# SDK
 - Python SDK
 - Go SDK
-- Azure CLI
 - PowerShell
 - ARM Template
 
@@ -123,11 +122,28 @@ Follow the instructions on how to [deploy a template](/azure/azure-resource-mana
 
 ### [C\#](#tab/csharp)
 
+1. If you don't have the Azure.Identity and Azure.ResourceManager.Kusto libraries installed, use the following commaands to install them:
+
+    ```powershell
+    dotnet add package Azure.Identity
+    dotnet add package Azure.ResourceManager.Kusto
+    ```
+
+1. In your program, add the following code:
+
+    ```json
+    "zones": [ "{zone1}", "{zone2}", "{zone3}" ]
+    ```
+
+    For example, to set you zones to 1, 2, and 3, in the North Europe region, use the following code:
+
+    :::code language="json" source="samples/migrate-cluster-to-multiple-availability-zone/configure-zones.cs" highlight="21-24":::
+
+1. Run your program.
+
 ### [Python](#tab/python)
 
 ### [Go](#tab/go)
-
-### [Azure CLI](#tab/azure-cli)
 
 ### [PowerShell](#tab/powershell)
 
@@ -145,7 +161,7 @@ Update-AzKustoCluster -SubscriptionId {subscriptionId} -ResourceGroupName {resou
     "zones": [ "{zone1}", "{zone2}", "{zone3}" ]
     ```
 
-    For example:
+    For example, to set you zones to 1, 2, and 3, in the North Europe region, use the following template:
 
     :::code language="json" source="samples/migrate-cluster-to-multiple-availability-zone/configure-zones.json" highlight="22":::
 
