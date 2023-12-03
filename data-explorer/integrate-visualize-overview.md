@@ -12,6 +12,19 @@ amounts of data. Azure Data Explorer integrates with various visualization tools
 
 Data visualization and reporting is a critical step in the data analytics process. Azure Data Explorer supports many BI services so you can use the one that best fits your scenario and budget.
 
+Use the following filters to see other connectors, tools, and integrations are available for your use case.
+
+:::row:::
+   :::column span="":::
+      > [!div class="nextstepaction"]
+      > [Data integrations](integrate-data-overview.md)
+   :::column-end:::
+   :::column span="":::
+      > [!div class="nextstepaction"]
+      > [Query integrations](integrate-query-overview.md)
+   :::column-end:::
+:::row-end:::
+
 The following tables summarizes the available visualize connectors, tools, and integrations.
 
 ## [Connectors](#tab/connectors)

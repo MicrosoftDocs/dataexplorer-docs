@@ -10,6 +10,19 @@ ms.date: 11/26/2023
 
 Blurb about query integrations.
 
+Use the following filters to see other connectors, tools, and integrations are available for your use case.
+
+:::row:::
+   :::column span="":::
+      > [!div class="nextstepaction"]
+      > [Data integrations](integrate-data-overview.md)
+   :::column-end:::
+   :::column span="":::
+      > [!div class="nextstepaction"]
+      > [Visualize integrations](integrate-visualize-overview.md)
+   :::column-end:::
+:::row-end:::
+
 The following tables summarizes the available query connectors, tools, and integrations.
 
 ## [Connectors](#tab/connectors)

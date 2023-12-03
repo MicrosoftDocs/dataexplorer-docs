@@ -10,6 +10,19 @@ ms.date: 11/26/2023
 
 [Data ingestion](ingest-data-overview.md) Data ingestion is the process used to load data from one or more sources into Azure Data Explorer. Once ingested, the data becomes available for [query](kusto/query/index.md). Azure Data Explorer provides several connectors for data ingestion.
 
+Use the following filters to see other connectors, tools, and integrations are available for your use case.
+
+:::row:::
+   :::column span="":::
+      > [!div class="nextstepaction"]
+      > [Query integrations](integrate-query-overview.md)
+   :::column-end:::
+   :::column span="":::
+      > [!div class="nextstepaction"]
+      > [Visualize integrations](integrate-visualize-overview.md)
+   :::column-end:::
+:::row-end:::
+
 The following tables summarizes the available data connectors, tools, and integrations.
 
 ## [Connectors](#tab/connectors)
