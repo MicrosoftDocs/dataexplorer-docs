@@ -44,4 +44,4 @@ The results would look something like this:
 
 :::image type="content" source="media/version-deployment-notification/la-result.png" alt-text="Screenshot of Log Analytics results.":::
 
-Set up alerts via Azure Monitor or visualize it using tools such as [Azure Workbooks](https://learn.microsoft.com/azure/azure-monitor/visualize/workbooks-overview), [Azure Data Explorer Dashboards](https://learn.microsoft.com/azure/data-explorer/azure-data-explorer-dashboards), or [Grafana](https://learn.microsoft.com/azure/azure-monitor/visualize/grafana-plugin).
+Set up alerts via Azure Monitor or visualize your data in [Azure Workbooks](/azure/azure-monitor/visualize/workbooks-overview), [Azure Data Explorer Dashboards](azure-data-explorer-dashboards.md), or [Grafana](/azure/azure-monitor/visualize/grafana-plugin).
