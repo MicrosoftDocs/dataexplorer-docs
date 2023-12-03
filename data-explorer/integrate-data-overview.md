@@ -15,6 +15,10 @@ Use the following filters to see other connectors, tools, and integrations are a
 :::row:::
    :::column span="":::
       > [!div class="nextstepaction"]
+      > [Overview](tools-integrations-overview.md)
+   :::column-end:::
+   :::column span="":::
+      > [!div class="nextstepaction"]
       > [Query integrations](integrate-query-overview.md)
    :::column-end:::
    :::column span="":::
