@@ -8,11 +8,9 @@ ms.date: 12/03/2023
 
 # View version deployments for an Azure Data Explorer cluster
 
-New versions of Azure Data Explorer are regularly pushed out to your cluster. When a version deployment occurs in Azure Data Explorer, a notification is generated in the Azure Activity logs. This article explains how to find and understand these notifications.
+New versions of Azure Data Explorer are regularly pushed out to your cluster. When a version deployment occurs, a notification is generated in the Azure Activity logs. This article explains how to find and understand these notifications.
 
-These notifications aren't intended to serve as alerts for upcoming maintenance. Use them for root cause analysis, such as correlating observed cluster behavior with software deployments, or simply to understand deployment duration.
-
-A version deployment notification doesn't indicate downtime. Whenever possible, the cluster continues to operate during deployments. 
+Version deployment notifications aren't intended to serve as alerts for upcoming maintenance and don't indicate downtime, as the cluster continues to operate during deployments. Use them for root cause analysis, such as correlating observed cluster behavior with software deployments, or simply to understand deployment duration.
 
 > [!TIP]
 > To check cluster availability, use the **Keep alive** metric under **Monitoring** > **Metrics** in the Azure portal.
