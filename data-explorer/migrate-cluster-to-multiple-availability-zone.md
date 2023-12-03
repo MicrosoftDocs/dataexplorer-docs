@@ -122,7 +122,7 @@ Follow the instructions on how to [deploy a template](/azure/azure-resource-mana
 
 ### [C\#](#tab/csharp)
 
-1. If you don't have the Azure.Identity and Azure.ResourceManager.Kusto libraries installed, use the following commaands to install them:
+1. If you don't have the Azure.Identity and Azure.ResourceManager.Kusto libraries installed, use the following commands to install them:
 
     ```powershell
     dotnet add package Azure.Identity
@@ -137,7 +137,7 @@ Follow the instructions on how to [deploy a template](/azure/azure-resource-mana
 
     For example, to set you zones to 1, 2, and 3, in the North Europe region, use the following code:
 
-    :::code language="json" source="samples/migrate-cluster-to-multiple-availability-zone/configure-zones.cs" highlight="20-24":::
+    :::code language="csharp" source="samples/migrate-cluster-to-multiple-availability-zone/configure-zones.cs" highlight="20-24":::
 
 1. Run your program.
 
