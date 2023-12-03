@@ -3,7 +3,7 @@ title:  mv-expand operator
 description: Learn how to use the mv-expand operator to expand multi-value dynamic arrays or property bags into multiple records.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 03/15/2023
+ms.date: 12/03/2023
 ---
 # mv-expand operator
 
@@ -17,9 +17,9 @@ output of the operator. All columns of the input that aren't expanded are duplic
 
 ## Syntax
 
-*T* `|mv-expand` [`bagexpansion=`(`bag` | `array`)] [`with_itemindex=` *IndexColumnName*] *ColumnName* [`to typeof(` *Typename*`)`] [`,` *ColumnName* ...] [`limit` *Rowlimit*]
+*T* `|mv-expand` [`kind=`(`bag` | `array`)] [`with_itemindex=` *IndexColumnName*] *ColumnName* [`to typeof(` *Typename*`)`] [`,` *ColumnName* ...] [`limit` *Rowlimit*]
 
-*T* `|mv-expand` [`bagexpansion=`(`bag` | `array`)] [*Name* `=`] *ArrayExpression* [`to typeof(`*Typename*`)`] [`,` [*Name* `=`] *ArrayExpression* [`to typeof(`*Typename*`)`] ...] [`limit` *Rowlimit*]
+*T* `|mv-expand` [`kind=`(`bag` | `array`)] [*Name* `=`] *ArrayExpression* [`to typeof(`*Typename*`)`] [`,` [*Name* `=`] *ArrayExpression* [`to typeof(`*Typename*`)`] ...] [`limit` *Rowlimit*]
 
 [!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
 
@@ -57,8 +57,8 @@ by using the `to typeof()` clause.
 
 Two modes of property bag expansions are supported:
 
-* `bagexpansion=bag` or `kind=bag`: Property bags are expanded into single-entry property bags. This mode is the default mode.
-* `bagexpansion=array` or `kind=array`: Property bags are expanded into two-element `[`*key*`,`*value*`]` array structures, allowing uniform access to keys and values. This mode also allows, for example, running a distinct-count aggregation over property names.
+* `kind=bag` or `bagexpansion=bag`: Property bags are expanded into single-entry property bags. This mode is the default mode.
+* `kind=array` or `bagexpansion=array`: Property bags are expanded into two-element `[`*key*`,`*value*`]` array structures, allowing uniform access to keys and values. This mode also allows, for example, running a distinct-count aggregation over property names.
 
 ## Examples
 
@@ -115,7 +115,7 @@ datatable (a: int, b: dynamic)
 A simple bag expansion to key-value pairs:
 
 > [!div class="nextstepaction"]
-> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA22LwQqDMBBE74H8w5CTQgpNjoJfEjzsNqFINUoqYmj7742WHgqduczM7vO0FPMQUFGDPi4a3MDnSGN/qaVwUqDI6O9WPdScptmoBoqM0jiq3Ssb9ar1B7D/AfsL2AJI0UnxxLiewjZT9GC6HuneT7GllCiDsb+EbQnlfgsZLdidO42Vhpad6d7eMsidxwAAAA==" target="_blank">Run the query</a>
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA22LsQrDIBiEd8F3OJwSsFAdA3kSyfBbHaSJFZEQafvu1ZYOhd5N9x2fo9JqV4%2BBJoRYJOwEVyNt4TJyZjhDi5JfNtxFyrekxARBSki8p%2B7TKvEc5UfQ%2FwX9K%2BgmcLZw9sC2n%2FyRKDpcQ3Qz5UwVFv3yR%2FGd%2B4oZ1pwXiZ3W2Rq1vADUbch1vwAAAA%3D%3D" target="_blank">Run the query</a>
 
 ```kusto
 datatable (a: int, b: dynamic)
@@ -123,7 +123,7 @@ datatable (a: int, b: dynamic)
     1, dynamic({"prop1": "a1", "prop2": "b1"}),
     2, dynamic({"prop1": "a2", "prop2": "b2"})
 ]
-| mv-expand bagexpansion=array b 
+| mv-expand kind=array b 
 | extend key = b[0], val=b[1]
 ```
 
