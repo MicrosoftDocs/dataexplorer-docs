@@ -1,20 +1,20 @@
 ---
 title: .show commands command
-description: Learn how to use the `.show commands` command to view a table with management commands that have reached a final state.
+description: Learn how to use the `.show commands` command to view a table with completed management commands.
 ms.reviewer: orspodek
 ms.topic: reference
 ms.date: 11/30/2023
 ---
 # .show commands command
 
-`.show commands` returns a table with [management commands](index.md) that have reached a final state. These commands are available to query for 30 days.
+`.show commands` returns a table with completed [management commands](index.md). These commands are available to query for 30 days.
 
 > [!NOTE]
 > This command is useful for investigating performance issues, as it shows the resources consumed by each management command. See [Examples](#examples).
 
 ## Permissions
 
-A [database admin or database monitor](./access-control/role-based-access-control.md) can see any command that was invoked on their database. Other users can only see commands that were invoked by them.
+A [database admin or database monitor](./access-control/role-based-access-control.md) can see any command that was invoked on their database. Other users can only see their commands.
 
 ## Syntax
 
@@ -77,7 +77,7 @@ Top 10 CPU consuming queries in the last day.
 | project StartedOn, CommandType, ClientActivityId, TotalCpu 
 ```
 
-All queries in the last 10 hours whose TotalCpu has passed 3 minutes.
+All queries in the last 10 hours whose TotalCpu passed 3 minutes.
 
 ```kusto
 .show commands
@@ -86,7 +86,7 @@ All queries in the last 10 hours whose TotalCpu has passed 3 minutes.
 | order by TotalCpu 
 ```
 
-All queries in the last 24 hours whose TotalCpu has passed 5 minutes, grouped by User and Principal.
+All queries in the last 24 hours whose TotalCpu passed 5 minutes, grouped by User and Principal.
 
 ```kusto
 .show commands  

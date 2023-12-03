@@ -6,7 +6,7 @@ ms.date: 11/30/2023
 ---
 # .show operation details command
 
-The `.show operation details` command retrieves the results of opertaions that persist their results.
+The `.show operation details` command retrieves the results of operations that persist their results.
 
 > [!NOTE]
 > * Only some management commands persist their results. The commands that do usually do so by default on asynchronous executions only, using the `async` keyword. See the documentation for the specific command. For example, see [data export](data-export/index.md).
@@ -28,7 +28,7 @@ The result is different per type of operation, and matches the schema of the ope
 
 ## Examples
 
-The *OperationId* in the example, returns from an asynchronous execution of one
+The *OperationId* in the example returns from an asynchronous execution of one
 of the [data export](../management/data-export/index.md) commands.
 
 ```kusto
@@ -47,7 +47,7 @@ The async export command returned the following operation ID:
 |---|
 |56e51622-eb49-4d1a-b896-06a03178efcd|
 
-This operation ID can be used when the command has completed to query the exported blobs.
+This operation ID can be used when the command finished querying the exported blobs.
 
 ```kusto
 .show operation 56e51622-eb49-4d1a-b896-06a03178efcd details 
