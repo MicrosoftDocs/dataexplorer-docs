@@ -10,6 +10,23 @@ ms.date: 11/30/2023
 
 Short blurb about how this is a high level overview.
 
+Use the following filters to see which connectors, tools, and integrations are available for your use case.
+
+:::row:::
+   :::column span="":::
+      > [!div class="nextstepaction"]
+      > [Data integrations](integrate-data-overview.md)
+   :::column-end:::
+   :::column span="":::
+      > [!div class="nextstepaction"]
+      > [Query integrations](integrate-query-overview.md)
+   :::column-end:::
+   :::column span="":::
+      > [!div class="nextstepaction"]
+      > [Visualize integrations](integrate-visualize-overview.md)
+   :::column-end:::
+:::row-end:::
+
 ## Comparison tables
 
 Blurb
