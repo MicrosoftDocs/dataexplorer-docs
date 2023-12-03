@@ -854,6 +854,21 @@
       "source_path": "data-explorer/ingest-sample-data.md",
       "redirect_url": "/azure/data-explorer/web-ui-samples-query",
       "redirect_document_id": true
+    },
+    {
+      "source_path": "data-explorer/kusto/management/commands.md",
+      "redirect_url": "/azure/data-explorer/kusto/management/show-commands",
+      "redirect_document_id": true
+    },
+    {
+      "source_path": "data-explorer/kusto/management/queries.md",
+      "redirect_url": "/azure/data-explorer/kusto/management/show-queries-command",
+      "redirect_document_id": true
+    },
+    {
+      "source_path": "data-explorer/kusto/management/operations.md",
+      "redirect_url": "/azure/data-explorer/kusto/management/show-operations",
+      "redirect_document_id": true
     }
   ]
 }

@@ -805,27 +805,37 @@ items:
   - name: System information
     href: systeminfo.md
     items:
-      - name: Commands
-        href: commands.md
-      - name: Commands and queries
-        href: commands-and-queries.md
       - name: Estimate table size
         href: estimate-table-size.md
-      - name: .show table data statistics command
-        href: show-table-data-statistics.md
       - name: Diagnostics
         href: diagnostics.md
       - name: Journal
         href: journal.md
       - name: Operations
-        displayName: Operations management, operations, .show Operations
-        href: operations.md
-      - name: Query management commands
-        displayName: .show running queries .cancel query
-        href: queries.md
-      - name: .show streamingingestion statistics command
-        displayName: .show streaming ingestion statistics
-        href: streamingingestionstatistics.md
+        items:
+        - name: .show operations
+          href: show-operations.md
+          displayName: operations
+        - name: .show operations details
+          href: show-operation-details.md
+          displayName: operations
+      - name: Queries and commands
+        items:
+        - name: .cancel query
+          href: cancel-query-command.md
+        - name: .show commands
+          href: show-commands.md
+        - name: .show commands-and-queries
+          href: commands-and-queries.md
+        - name: .show queries
+          href: show-queries-command.md
+      - name: Statistics
+        items:
+        - name: .show streamingingestion statistics
+          displayName: .show streaming ingestion statistics
+          href: streamingingestionstatistics.md
+        - name: .show table data statistics
+          href: show-table-data-statistics.md
   - name: Advanced data management
     items:
       - name: Extents (data shards)
