@@ -1,12 +1,12 @@
 ---
-title: Check the version deployments of an Azure Data Explorer cluster
+title: View the version deployments of an Azure Data Explorer cluster
 description: Learn how to monitor the version deployments of your Azure Data Explorer cluster.
 ms.reviewer: bwatts
 ms.topic: how-to
 ms.date: 12/03/2023
 ---
 
-# Check the version deployments of an Azure Data Explorer cluster
+# View the version deployments of an Azure Data Explorer cluster
 
 Azure Data Explorer regularly releases new versions to your cluster. When a version deployment occurs in Azure Data Explorer, a notification is generated in the Azure Activity logs. This article explains how to find and understand these notifications.
 
