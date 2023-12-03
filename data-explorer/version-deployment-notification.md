@@ -6,7 +6,7 @@ ms.topic: how-to
 ms.date: 12/03/2023
 ---
 
-# Version Deployment Notification
+# Check the version deployments of an Azure Data Explorer cluster
 
 Azure Data Explorer regularly releases new versions to your cluster. When a version deployment occurs in Azure Data Explorer, a notification is generated in the Azure Activity logs. This article explains how to find and understand these notifications.
 
