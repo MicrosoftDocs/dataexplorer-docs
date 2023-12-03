@@ -1,22 +1,19 @@
 ---
-title: Query management commands
-description: Learn how to use management commands to manage your queries.
+title: .show queries command
+description: Learn how to use the `.show queries` command to manage see invoked queries.
 ms.reviewer: orspodek
 ms.topic: reference
-ms.date: 10/24/2023
+ms.date: 11/22/2023
 ---
-# Query management commands
-
-## .show queries
+# .show queries command
 
 The `.show` `queries` command lists queries on the cluster that have reached a final state, and that the user invoking the command has access to see. Optionally, the command can return queries that are still running, queries by specific users, or queries grouped by user. To see both queries and commands completion, use [.show queries-and-commands](commands-and-queries.md).
 
-> [!NOTE]
->
-> - A [database admin or database monitor](./access-control/role-based-access-control.md) can see any command that was invoked on their database.
-> - Other users can only see queries that were invoked by them.
+## Permissions
 
-### Syntax
+A [Database Admin or Database Monitor](./access-control/role-based-access-control.md) can see any command invoked on the database. Other users can only see their queries.
+
+## Syntax
 
 `.show` `queries`
 
@@ -24,13 +21,13 @@ The `.show` `queries` command lists queries on the cluster that have reached a f
 
 [!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
 
-### Parameters
+## Parameters
 
 | Name | Type | Required | Description |
 |--|--|--|--|
 | *UserPrincipalName* | string |  |  The UPN of a specific user for which to return a list of queries. |
 
-### Returns
+## Returns
 
 - Returns a table containing previously run queries across all databases in the cluster and their completion statistics. You can use KQL queries to explore the results.
 - Returns a list of currently executing queries by the current user, or by another user, or by all users.
@@ -62,9 +59,9 @@ The returned table schema is:
 |ResultSetStatistics | dynamic |Statistics describing returned dataset|
 |WorkloadGroup|string | Name of the workload group that query was associated with|
 
-### Examples
+## Examples
 
-#### Show completed queries
+### Show completed queries
 
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/kvc6bc487453a064d3c9de.northeurope/databases/NewDatabase1?query=H4sIAAAAAAAAA9MrzsgvVygsTS3KTC1W4OWqUSgoys9KTS5RCEmtKNFRcCktSizJzM8DyZQkZqcqGBoAAA0BJaEzAAAA" target="_blank">Run the query</a>
@@ -90,39 +87,18 @@ The returned table schema is:
 | traceAgg(now(5500d)) | 00:00:00.0312952 |
 | traceAgg(now(-5500d)) | 00:00:00.0312445 |
 
-#### Show running queries by the current user
+### Show running queries by the current user
 
 ```kusto
 .show running queries 
 ```
 
-#### Show running queries by a specified user
+### Show running queries by a specified user
 
 ```kusto
 .show running queries by user <UserPrincipalName>
 ```
 
-## .cancel query
+## Related content
 
-The `.cancel` `query` command starts a best-effort attempt to cancel a specific running query. Cluster admins can cancel any running query. Database admins can cancel any running query that was invoked on a database to which they have admin access. All principals can cancel running queries that they started.
-
-### Syntax
-
-`.cancel` `query` *ClientActivityId* [`with` `(` `reason` `=` *ReasonPhrase* `)`]
-
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
-
-### Parameters
-
-| Name | Type | Required | Description |
-|--|--|--|--|
-| *ClientActivityId* | string | &check; | The value of the running query's `ClientActivityId` property. Find the *ClientActivityId* of a query by running the [.show queries](#show-queries) command.|
-| *ReasonPhrase* | string | &check; | Describes the reason for canceling the running query and is included in the query results if it's successfully canceled. |
-
-### Example
-
-This example cancels a specific query using *ClientActivityId*.
-
-```kusto
-.cancel query "KE.RunQuery;8f70e9ab-958f-4955-99df-d2a288b32b2c"
-```
+* [.cancel query](cancel-query-command.md)
