@@ -10,14 +10,14 @@ ms.date: 12/03/2023
 
 Azure Data Explorer regularly releases new versions to your cluster. When a version deployment occurs in Azure Data Explorer, a notification is generated in the Azure Activity logs. This article explains how to find and understand these notifications.
 
-These notifications aren't designed to alert you about upcoming maintenance. Instead, they can serve as a tool for root cause analysis, allowing you to correlate observed cluster behavior with software deployments.
+These notifications aren't intended to serve as alerts for upcoming maintenance. Instead, use them for root cause analysis, such as correlating observed cluster behavior with software deployments, or simply to understand deployment duration. They can't be used to determine downtime or the SLA of the clusters.
 
 > [!NOTE]
-> A version deployment notification doesn't necessarily indicate downtime. Whenever possible, the cluster continues to operate during deployments. To check cluster availability, use the **Keep alive** metric under **Monitoring** > **Metrics** in the Azure portal.
+> A version deployment notification doesn't indicate downtime. Whenever possible, the cluster continues to operate during deployments. To check cluster availability, use the **Keep alive** metric under **Monitoring** > **Metrics** in the Azure portal.
 
 ## View version deployment history
 
-An event is generated anytime there is an Azure Data Explorer software deployment. To see the history of version deployments:
+An event is generated anytime there's an Azure Data Explorer software deployment. To see the history of version deployments:
 
 1. In the Azure portal, go to your cluster. From the left menu, select **Activity log**.
 1. Find events with an **Operation name** of "Cluster version deployment".
@@ -30,7 +30,7 @@ An event is generated anytime there is an Azure Data Explorer software deploymen
 
 ## Send data to Log Analytics
 
-To further investiage your Activity logs, [send them to an Azure Log Analytics workspace](/azure/azure-monitor/essentials/activity-log?tabs=powershell#send-to-log-analytics-workspace).
+To further investigate your Activity logs, [send them to an Azure Log Analytics workspace](/azure/azure-monitor/essentials/activity-log?tabs=powershell#send-to-log-analytics-workspace).
 
 The following query shows how to query the version deployment notifications in Azure Log Analytics: 
 
@@ -42,10 +42,6 @@ AzureActivity
 
 The results would look something like this:
 
-:::image type="content" source="media/version-deployment-notification/la-result.png" alt-text="Screenshot of log anayltics results.":::
+:::image type="content" source="media/version-deployment-notification/la-result.png" alt-text="Screenshot of Log Analytics results.":::
 
 Set up alerts via Azure Monitor or visualize it using tools such as [Azure Workbooks](https://learn.microsoft.com/azure/azure-monitor/visualize/workbooks-overview), [Azure Data Explorer Dashboards](https://learn.microsoft.com/azure/data-explorer/azure-data-explorer-dashboards), or [Grafana](https://learn.microsoft.com/azure/azure-monitor/visualize/grafana-plugin).
-
-## Conclusion
-
-This notification provides transparency on when and how long software deployment takes. This notification is not an indication of downtime and can not be utilized to determine SLA of the clusters.
