@@ -32,7 +32,7 @@ To view the capacity of your cluster, use the [.show capacity](../management/dia
 
 **Formula**
 
-The [.show capacity](../management/diagnostics.md#show-capacity) command returns an estimate for the cluster's ingestion capacity based on the following formula:
+The [.show capacity](../management/diagnostics.md#show-capacity) command returns the cluster's ingestion capacity based on the following formula:
 
 `Minimum(ClusterMaximumConcurrentOperations` `,` *Number of nodes in cluster* `*` `Maximum(1,` *Core count per node* `*`  `CoreUtilizationCoefficient))`
 
@@ -48,7 +48,7 @@ The [.show capacity](../management/diagnostics.md#show-capacity) command returns
 
 **Formula**
 
-The [.show capacity](../management/diagnostics.md#show-capacity) command returns an estimate for the cluster's extents merge capacity based on the following formula:
+The [.show capacity](../management/diagnostics.md#show-capacity) command returns the cluster's extents merge capacity based on the following formula:
 
 *Number of nodes in cluster* `*` *Concurrent operations per node*
 
@@ -65,7 +65,7 @@ The effective value for *Concurrent operations per node* is automatically adjust
 
 **Formula**
 
-The [.show capacity](../management/diagnostics.md#show-capacity) command returns an estimate for the cluster's extents purge rebuild capacity based on the following formula:
+The [.show capacity](../management/diagnostics.md#show-capacity) command returns the cluster's extents purge rebuild capacity based on the following formula:
 
 *Number of nodes in cluster* x `MaximumConcurrentOperationsPerNode`
 
@@ -81,7 +81,7 @@ The [.show capacity](../management/diagnostics.md#show-capacity) command returns
 
 **Formula**
 
-The [.show capacity](../management/diagnostics.md#show-capacity) command returns an estimate for the cluster's export capacity based on the following formula:
+The [.show capacity](../management/diagnostics.md#show-capacity) command returns the cluster's export capacity based on the following formula:
 
 `Minimum(ClusterMaximumConcurrentOperations` `,` *Number of nodes in cluster* `*` `Maximum(1,` *Core count per node* `*`  `CoreUtilizationCoefficient))`
 
@@ -97,10 +97,10 @@ The [.show capacity](../management/diagnostics.md#show-capacity) command returns
 
 **Formula**
 
-The [.show capacity](../management/diagnostics.md#show-capacity) command returns an estimate for the cluster's extents partition capacity based on the following formula:
+The [.show capacity](../management/diagnostics.md#show-capacity) command returns the cluster's extents partition capacity based on the following formula:
 
 <!-- TODO: there should be some sort of formula here.
-Based on Git Blame, it used to say: "The [.show capacity](../management/diagnostics.md#show-capacity) command returns an estimate for the cluster's extents partition capacity is defined by a single property: `ClusterMaximumConcurrentOperations`." But then there was the min property added and the formula info was lost. -->
+Based on Git Blame, it used to say: "The [.show capacity](../management/diagnostics.md#show-capacity) command returns the cluster's extents partition capacity is defined by a single property: `ClusterMaximumConcurrentOperations`." But then there was the min property added and the formula info was lost. -->
 
 The effective value for *Concurrent operations* is automatically adjusted by the system in the range
 [`ClusterMinimumConcurrentOperations`,`ClusterMaximumConcurrentOperations`], as long as the success rate of the
@@ -131,7 +131,7 @@ The effective value for *Concurrent operations* is automatically adjusted by the
 
 **Formula**
 
-The [.show capacity](../management/diagnostics.md#show-capacity) command returns an estimate for the cluster's stored query results creation capacity based on the following formula:
+The [.show capacity](../management/diagnostics.md#show-capacity) command returns the cluster's stored query results creation capacity based on the following formula:
 
 *Number of nodes in cluster* `*` `Maximum(1,` *Core count per node* `*` `CoreUtilizationCoefficient)`
 
