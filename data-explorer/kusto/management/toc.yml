@@ -341,6 +341,7 @@ items:
         items:
           - name: Capacity policy
             href: capacitypolicy.md
+            displayName: IngestionCapacity, ExtentsMergeCapacity, ExtentsPurgeRebuildCapacity, ExportCapacity, ExtentsPartitionCapacity, MaterializedViewsCapacity, StoredQueryResultsCapacity, ingestion, extents, purge, partition
           - name: .alter cluster policy capacity command
             href: alter-capacity-policy-command.md
             displayName: .alter cluster capacity policy command
@@ -350,6 +351,8 @@ items:
           - name: .show cluster policy capacity command
             href: show-cluster-capacity-policy-command.md
             displayName: .show cluster capacity policy
+          - name: .show capacity command
+            href: show-capacity-command.md
       - name: Encoding policy
         items:
           - name: Encoding policy
@@ -807,8 +810,6 @@ items:
     items:
       - name: Estimate table size
         href: estimate-table-size.md
-      - name: Diagnostics
-        href: diagnostics.md
       - name: Journal
         href: journal.md
       - name: Operations
