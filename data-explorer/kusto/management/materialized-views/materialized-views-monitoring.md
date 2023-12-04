@@ -69,7 +69,7 @@ Materialized views can be defined in [follower databases](materialized-views-lim
 
 ## Track resource consumption
 
-**Materialized views resource consumption:** the resources consumed by the materialized views materialization process can be tracked using the [`.show commands-and-queries`](../commands-and-queries.md#show-commands-and-queries) command. Filter the records for a specific view using the following (replace `DatabaseName` and `ViewName`):
+**Materialized views resource consumption:** the resources consumed by the materialized views materialization process can be tracked using the [`.show commands-and-queries`](../commands-and-queries.md) command. Filter the records for a specific view using the following (replace `DatabaseName` and `ViewName`):
 
 <!-- csl -->
 ```kusto

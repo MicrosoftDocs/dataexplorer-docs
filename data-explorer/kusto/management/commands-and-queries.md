@@ -1,24 +1,22 @@
 ---
-title: Commands and queries management
+title: .show commands-and-queries command
 description: Learn how to use the `.show commands and queries` command to view a table with admin commands and queries that have reached a final state.
 ms.reviewer: orspodek
 ms.topic: reference
-ms.date: 10/24/2023
+ms.date: 11/30/2023
 ---
-# Commands and queries management
-
-## .show commands-and-queries
+# .show commands-and-queries command
 
 `.show` `commands-and-queries` returns a table with admin commands and queries on the cluster that have reached a final state. These commands and queries are available for 30 days.
 
 The information presented in the output of the command is similar to [`.show` commands](commands.md)
 and [`.show` queries](queries.md), however it essentially lets you join both result sets in a simple manner.
 
-### Syntax
+## Syntax
 
 `.show` `commands-and-queries`
 
-### Returns
+## Returns
 
 Returns a table containing previously run admin commands and queries across all databases in the cluster and their completion statistics. You can use KQL queries to explore the results.
 
@@ -49,3 +47,7 @@ The output schema is as follows:
 
 > [!NOTE]
 > For queries, the value of `CommandType` is `Query`.
+
+## Related content
+
+* [.cancel query](cancel-query-command.md)
