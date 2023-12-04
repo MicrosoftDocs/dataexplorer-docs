@@ -95,13 +95,6 @@ The [.show capacity](../management/diagnostics.md#show-capacity) command returns
 | `ClusterMinimumConcurrentOperations` | long | The minimal number of concurrent extents partition operations in a cluster. Default is `1`. |
 | `ClusterMaximumConcurrentOperations` | long | The maximum number of concurrent extents partition operations in a cluster. Default is `32`. |
 
-**Formula**
-
-The [.show capacity](../management/diagnostics.md#show-capacity) command returns the cluster's extents partition capacity based on the following formula:
-
-<!-- TODO: there should be some sort of formula here.
-Based on Git Blame, it used to say: "The [.show capacity](../management/diagnostics.md#show-capacity) command returns the cluster's extents partition capacity is defined by a single property: `ClusterMaximumConcurrentOperations`." But then there was the min property added and the formula info was lost. -->
-
 The effective value for *Concurrent operations* is automatically adjusted by the system in the range
 [`ClusterMinimumConcurrentOperations`,`ClusterMaximumConcurrentOperations`], as long as the success rate of the
 partitioning operations is 90% or higher.
@@ -114,8 +107,6 @@ The policy can be used to change concurrency settings for [materialized views](m
 |--|--|--|
 | `ClusterMinimumConcurrentOperations` | long | The minimal number of concurrent materialization operations in a cluster. Default is `1`. |
 | `ClusterMaximumConcurrentOperations` | long | The maximum number of concurrent materialization operations in a cluster. Default is `10`. |
-
-<!-- TODO: I think there should be some sort of formula here too. -->
 
 The effective value for *Concurrent operations* is automatically adjusted by the system in the range [`ClusterMinimumConcurrentOperations`,`ClusterMaximumConcurrentOperations`], based on the number of materialized views in the cluster and the cluster's CPU.
 
