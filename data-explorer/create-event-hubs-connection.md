@@ -42,7 +42,7 @@ In this section, you establish a connection between the event hub and your Azure
 
 In the **Get data** window, the **Source** tab is selected.
 
-Select the data source from the available list. In this example, you are ingesting data from **Event Hubs**.
+Select the data source from the available list. In this example, you're ingesting data from **Event Hubs**.
 
 :::image type="content" source="media/get-data-file/select-data-source.png" alt-text="Screenshot of get data window with source tab selected." lightbox="media/get-data-file/select-data-source.png":::
 
@@ -81,7 +81,7 @@ To complete the ingestion process, select **Finish**.
 
 Optionally:
 
-* If the data you see in the preview window isn't complete, you may need more data to create a table with all necessary data fields. Use the following commands to fetch new data from your event hub:
+* If the data you see in the preview window isn't complete, you might need more data to create a table with all necessary data fields. Use the following commands to fetch new data from your event hub:
 
   * **Discard and fetch new data**: Discards the data presented and searches for new events.
   * **Fetch more data**: Searches for more events in addition to the events already found.
@@ -194,7 +194,7 @@ In the **Data preparation** window, all three steps are marked with green check 
 
 1. Select the **Data format**. For CSV-formatted data, **Ignore the first record** to ignore the heading row of the file. For JSON-formatted data, select **Ignore data format errors** to ingest the data in JSON format or leave unselected to ingest the data in multijson format. Select the **Nested levels** to determine the table column data division.
 
-1. If the data you see in the preview window isn't complete, you may need more data to create a table with all necessary data fields. Use the following commands to fetch new data from your event hub:
+1. If the data you see in the preview window isn't complete, you might need more data to create a table with all necessary data fields. Use the following commands to fetch new data from your event hub:
 
     * **Discard and fetch new data**: discards the data presented and searches for new events.
     * **Fetch more data**: Searches for more events in addition to the events already found.
