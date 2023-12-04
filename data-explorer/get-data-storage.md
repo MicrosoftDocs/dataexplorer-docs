@@ -14,19 +14,13 @@ Ingestion can be done as a one-time operation, or as a continuous method. Contin
 
 For general information on data ingestion, see [Azure Data Explorer data ingestion overview](ingest-data-overview.md).
 
-[!INCLUDE [get-data-flow](includes/get-data-flow.md)]
-
-## Get data
-
-Select the tab that corresponds with your desired ingestion method.
-
-### [Get data](#tab/get-data)
-
-### Prerequisites
+## Prerequisites
 
 * A Microsoft account or a Microsoft Entra user identity. An Azure subscription isn't required.
 * An Azure Data Explorer cluster and database. [Create a cluster and database](create-cluster-and-database.md).
 * A [storage account](/azure/storage/common/storage-quickstart-create-account?tabs=azure-portal).
+
+## Get data
 
 1. From the left menu, select **Query**.
 
