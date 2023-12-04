@@ -6,7 +6,7 @@ ms.date: 11/21/2023
 ---
 # .show capacity command
 
-Displays capactity estimates for data management operations. For more information, see [Capacity policy](capacitypolicy.md).
+Displays capacity estimates for data management operations. For more information, see [Capacity policy](capacitypolicy.md).
 
 ## Permissions
 
@@ -18,7 +18,7 @@ You must have at least [Database User](access-control/role-based-access-control.
 
 [!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
 
-## Paramters
+## Parameters
 
 |Name|Type|Required|Description|
 |--|--|--|--|
@@ -26,7 +26,7 @@ You must have at least [Database User](access-control/role-based-access-control.
 
 ### Supported operations
 
-The following list outlines the opertaions for which you can get a capacity estimation:
+The following list outlines the operations for which you can get a capacity estimation:
 
 |Operation|Syntax
 |--|--|--|
