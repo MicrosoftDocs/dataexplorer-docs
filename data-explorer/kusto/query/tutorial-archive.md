@@ -503,6 +503,6 @@ Logs | join cluster("TelemetryCluster").database("Telemetry").Metrics on Request
 
 For more information about combining data from several databases in a query, see [cross-database queries](cross-cluster-or-database-queries.md).
 
-## Next steps
+## Related content
 
 * View code samples for the [Kusto Query Language](samples.md?pivots=azuredataexplorer).

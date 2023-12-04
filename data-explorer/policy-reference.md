@@ -29,7 +29,7 @@ the link in the **Version** column to view the source on the
 |[Azure Data Explorer cluster should use a private link](https://ms.portal.azure.com/#view/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Ff7735886-8927-431f-b201-c953922512b8) |Azure Private Link lets you connect your virtual network to Azure services without a public IP address at the source or destination. The Private Link platform handles the connectivity between the consumer and services over the Azure backbone network. By mapping private endpoints to your Azure Data Explorer cluster, data leakage risks are reduced. |Audit, Disabled |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Azure%20Data%20Explorer/ADX_PrivateEndpoint_Audit.json) |
 |[Configure Azure Data Explorer clusters with private endpoints](https://ms.portal.azure.com/#view/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fa47272e1-1d5d-4b0b-b366-4873f1432fe0) |Private endpoints connect your virtual networks to Azure services without a public IP address at the source or destination.  By mapping private endpoints to Azure Data Explorer, you can reduce data leakage risks. |DeployIfNotExists, Disabled |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Azure%20Data%20Explorer/ADX_PrivateEndpoint_DeployIfNotExists.json) |
 
-## Next steps
+## Related content
 
 - See the built-ins on the [Azure Policy GitHub repo](https://github.com/Azure/azure-policy).
 - Review the [Azure Policy definition structure](/azure/governance/policy/concepts/definition-structure).

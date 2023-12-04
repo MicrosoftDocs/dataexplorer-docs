@@ -160,8 +160,7 @@ StormEvents
 |IDAHO|
 |NEVADA|
 
-## Next steps
+## Related content
 
 * Learn how to perform [cross-database and cross-cluster queries](../cross-cluster-or-database-queries.md)
 * Follow the [create geospatial visualizations](create-geospatial-visualizations.md) tutorial
-* Get a comprehensive understanding of Azure Data Explorer by reading the [white paper](https://azure.microsoft.com/mediahandler/files/resourcefiles/azure-data-explorer/Azure_Data_Explorer_white_paper.pdf)

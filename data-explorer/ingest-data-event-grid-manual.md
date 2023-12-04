@@ -87,4 +87,4 @@ In this article, you learn how to create manually the resources needed for Event
 ## Next step
 
 > [!div class="nextstepaction"]
-> [Create an Event Grid data connection in Azure Data Explorer](ingest-data-event-grid.md).
+> [Create an Event Grid data connection](ingest-data-event-grid.md)

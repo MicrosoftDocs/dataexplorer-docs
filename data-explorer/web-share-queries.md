@@ -124,7 +124,7 @@ To export the query results to a CSV file, follow these steps:
 
     :::image type="content" source="media/web-share-query/export-to-csv.png" alt-text="Screenshot of the export to CSV button." lightbox="media/web-share-query/export-to-csv.png":::
 
-## Next steps
+## Related content
 
 * [Azure Data Explorer web UI query overview](web-ui-query-overview.md)
 * [Write Kusto Query Language queries in the web UI](web-ui-kql.md)

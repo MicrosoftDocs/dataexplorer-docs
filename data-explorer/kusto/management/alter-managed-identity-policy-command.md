@@ -1,11 +1,11 @@
 ---
-title:  .alter managed_identity policy command
-description: Learn how to use the `.alter managed_identity policy` command to set the ManagedIdentity policy of the cluster or database.
+title:  .alter policy managed_identity command
+description: Learn how to use the `.alter policy managed_identity` command to set the ManagedIdentity policy of the cluster or database.
 ms.reviewer: slneimer
 ms.topic: reference
-ms.date: 04/20/2023
+ms.date: 11/30/2023
 ---
-# .alter managed_identity policy command
+# .alter policy managed_identity command
 
 Sets the ManagedIdentity policy of the cluster or the specified database, overriding the existing policy.
 

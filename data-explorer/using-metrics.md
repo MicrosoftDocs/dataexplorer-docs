@@ -145,7 +145,7 @@ Query performance metrics track query duration and total number of concurrent or
 |MaterializedViewExtentsRebuild            | Extents count | Avg | The number of extents that required updates in the materialization cycle. | Database, MaterializedViewName|
 |MaterializedViewDataLoss                  | 1       | Max    | Metric is fired when unprocessed source data is approaching retention. Indicates that the materialized view is unhealthy. | Database, MaterializedViewName, Kind |
 
-## Next steps
+## Related content
 
 * [Tutorial: Ingest and query monitoring data in Azure Data Explorer](ingest-data-no-code.md)
 * [Monitor Azure Data Explorer ingestion operations using diagnostic logs](using-diagnostic-logs.md)

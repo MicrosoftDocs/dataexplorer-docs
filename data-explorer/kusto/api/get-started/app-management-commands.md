@@ -3,7 +3,7 @@ title:  'Create an app to run management commands'
 description: Learn how to create an app to run management commands using Kusto client libraries.
 ms.reviewer: yogilad
 ms.topic: how-to
-ms.date: 06/27/2023
+ms.date: 11/07/2023
 ---
 # Create an app to run management commands
 
@@ -63,20 +63,26 @@ In your preferred IDE or text editor, create a project or file named *management
       main()
     ```
 
-    ### [Node.js](#tab/nodejs)
+    ### [Typescript](#tab/typescript)
 
-    ```nodejs
-    const {Client, KustoConnectionStringBuilder} = require("azure-kusto-data");
+    ```typescript
+    import { Client as KustoClient, KustoConnectionStringBuilder } from "azure-kusto-data/";
+    import { InteractiveBrowserCredentialInBrowserOptions } from "@azure/identity";
 
     async function main() {
       const clusterUri = "<your_cluster_uri>";
-      const kcsb = KustoConnectionStringBuilder.withUserPrompt(clusterUri);
-
-      const kustoClient = new Client(kcsb);
+      const authOptions = {
+        clientId: "5e39af3b-ba50-4255-b547-81abfb507c58",
+        redirectUri: "http://localhost:5173",
+      } as InteractiveBrowserCredentialInBrowserOptions;
+      const kcsb = KustoConnectionStringBuilder.withUserPrompt(clusterUri, authOptions);
+      const kustoClient = new KustoClient(kcsb);
     }
 
     main();
     ```
+
+    [!INCLUDE [node-vs-browser-auth](../../../includes/node-vs-browser-auth.md)]
 
     <!-- ### [Go](#tab/go) -->
 
@@ -138,10 +144,10 @@ In your preferred IDE or text editor, create a project or file named *management
           print("\t", col, "-", row[col])
     ```
 
-    ### [Node.js](#tab/nodejs)
+    ### [Typescript](#tab/typescript)
 
-    ```nodejs
-    function printResultAsValueList(command, response) {
+    ```typescript
+    function printResultsAsValueList(command: string, response: KustoResponseDataSet) {
       // create a list of columns
       let cols = response.primaryResults[0].columns;
 
@@ -213,9 +219,9 @@ In your preferred IDE or text editor, create a project or file named *management
               " StormSummary:dynamic)"
     ```
 
-    ### [Node.js](#tab/nodejs)
+    ### [Typescript](#tab/typescript)
 
-    ```nodejs
+    ```typescript
     const database = "<your_database>";
     const table = "MyStormEvents";
 
@@ -275,12 +281,12 @@ In your preferred IDE or text editor, create a project or file named *management
     print_result_as_value_list(command, response)
     ```
 
-    ### [Node.js](#tab/nodejs)
+    ### [Typescript](#tab/typescript)
 
     > [!NOTE]
     > You'll use the `executeMgmt` method to run the command.
 
-    ```nodejs
+    ```typescript
     let response = await kustoClient.executeMgmt(database, command);
     printResultsAsValueList(command, response)
     ```
@@ -390,15 +396,20 @@ if __name__ == "__main__":
   main()
 ```
 
-### [Node.js](#tab/nodejs)
+### [Typescript](#tab/typescript)
 
-```nodejs
-const {Client, KustoConnectionStringBuilder} = require("azure-kusto-data");
+```typescript
+import { Client as KustoClient, KustoConnectionStringBuilder } from "azure-kusto-data/";
+import { InteractiveBrowserCredentialInBrowserOptions } from "@azure/identity";
 
 async function main() {
-  const clusterUri = "https://<your_cluster_uri>";
-  const kcsb = KustoConnectionStringBuilder.withUserPrompt(clusterUri);
-  const kustoClient = new Client(kcsb);
+  const clusterUri = "<your_cluster_uri>";
+  const authOptions = {
+    clientId: "5e39af3b-ba50-4255-b547-81abfb507c58",
+    redirectUri: "http://localhost:5173",
+  } as InteractiveBrowserCredentialInBrowserOptions;
+  const kcsb = KustoConnectionStringBuilder.withUserPrompt(clusterUri, authOptions);
+  const kustoClient = new KustoClient(kcsb);
 
   const database = "<your_database>";
   const table = "MyStormEvents";
@@ -417,7 +428,7 @@ async function main() {
   printResultsAsValueList(command, response)
 }
 
-function printResultsAsValueList(command, response) {
+function printResultsAsValueList(command: string, response: KustoResponseDataSet) {
   // create a list of columns
   let cols = response.primaryResults[0].columns;
 
@@ -434,6 +445,7 @@ function printResultsAsValueList(command, response) {
 main();
 ```
 
+[!INCLUDE [node-vs-browser-auth](../../../includes/node-vs-browser-auth.md)]
 <!-- ### [Go](#tab/go) -->
 
 ### [Java](#tab/java)
@@ -504,11 +516,22 @@ dotnet run .
 python management_commands.py
 ```
 
-### [Node.js](#tab/nodejs)
+### [Typescript](#tab/typescript)
+
+In a Node.js environment:
 
 ```bash
 node management-commands.js
 ```
+
+In a browser environment, use the appropriate command to run your app. For example, for Vite-React:
+
+```bash
+npm run dev
+```
+
+> [!NOTE]
+> In a browser environment, open the [developer tools console](/microsoft-edge/devtools-guide-chromium/console/) to see the output.
 
 <!-- ### [Go](#tab/go) -->
 
@@ -571,9 +594,9 @@ response = kusto_client.execute_mgmt(database, command)
 print_result_as_value_list(command, response)
 ```
 
-### [Node.js](#tab/nodejs)
+### [Typescript](#tab/typescript)
 
-```nodejs
+```typescript
 // Reduce the default batching timeout to 30 seconds
 command = ".alter-merge table " + table + " policy ingestionbatching '{ \"MaximumBatchingTimeSpan\":\"00:00:30\" }'"
 
@@ -640,9 +663,9 @@ response = kusto_client.execute_mgmt(database, command)
 print_result_as_value_list(command, response)
 ```
 
-### [Node.js](#tab/nodejs)
+### [Typescript](#tab/typescript)
 
-```nodejs
+```typescript
 // Show the database retention policy (drop some columns from the result)
 command = ".show database " + database + " policy retention | project-away ChildEntities, EntityType"
 
@@ -679,7 +702,7 @@ Result:
 }
 ```
 
-## Next steps
+## Next step
 
 <!-- > [!div class="nextstepaction"]
 > [Create an app to ingest data using the batching manager](app-queued-ingestion.md) -->

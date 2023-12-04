@@ -114,8 +114,8 @@ To run a query, you must select the database on which you want to run the query 
 You didn't create any resources in this quickstart, but if you'd like to remove one or both clusters from the application, right-click the cluster and select **Remove connection**.
 Another option is to select **Clear local state** from the **Settings** > **General** tab. This action will remove all cluster connections and close all open query tabs.
 
-## Next steps
+## Related content
 
-* Read the [web UI query overview](web-ui-query-overview.md)
-* Explore results with the [web UI results grid](web-results-grid.md)
+* [Web UI query overview](web-ui-query-overview.md)
+* [Web UI results grid](web-results-grid.md)
 * [Customize settings in the web UI](web-customize-settings.md)

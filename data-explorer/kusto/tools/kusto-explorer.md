@@ -325,16 +325,11 @@ Data Source=https://CLUSTER_NAME.kusto.windows.net;Initial Catalog=DATABASE_NAME
 
 :::image type="content" source="images/kusto-explorer/advanced-connection-string.png" alt-text="Screenshot of the Add Connection pane showing the option titled Advanced Connection String.":::
 
-## Next steps
-
-To learn more about working with Kusto.Explorer, see:
+## Related content
 
 * [Using Kusto.Explorer](kusto-explorer-using.md)
 * [Kusto.Explorer keyboard shortcuts](kusto-explorer-shortcuts.md)
 * [Kusto.Explorer options](kusto-explorer-options.md)
 * [Troubleshooting Kusto.Explorer](kusto-explorer-troubleshooting.md)
-
-To learn more about Kusto.Explorer tools and utilities, see:
-
 * [Kusto.Explorer code features](kusto-explorer-code-features.md)
 * [Kusto Query Language (KQL)](/azure/kusto/query/)

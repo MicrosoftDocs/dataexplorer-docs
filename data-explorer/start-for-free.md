@@ -60,7 +60,7 @@ The free cluster is a subset of the full Azure Data Explorer cluster that provid
 | Azure Monitor and Insights | &check; | |
 | Azure Resource Manager (ARM) templates | &check; | |
 
-## Next steps
+## Related content
 
 * [Get started with your free cluster](start-for-free-web-ui.md)
 * [Manage Event Hubs data connections in your free cluster](start-for-free-event-hubs.md)

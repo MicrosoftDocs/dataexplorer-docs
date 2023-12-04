@@ -70,7 +70,7 @@ To revoke access to customer-managed keys, use PowerShell or Azure CLI. For more
 > [!Note]
 > When Azure Data Explorer identifies that access to a customer-managed key is revoked, it will automatically suspend the cluster to delete any cached data. Once access to the key is returned, the cluster will be resumed automatically.
 
-## Next steps
+## Related content
 
 * [Secure your cluster using Disk Encryption](cluster-encryption-disk.md) by enabling encryption at rest.
 * [Configure managed identities for your Azure Data Explorer cluster](./configure-managed-identities-cluster.md)

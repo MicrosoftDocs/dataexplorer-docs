@@ -156,12 +156,14 @@ items:
             href: materialized-views/materialized-view-overview.md
           - name: Materialized views limitations
             href: materialized-views/materialized-views-limitations.md
-          - name: Monitor materialized views
-            href: materialized-views/materialized-views-monitoring.md
           - name: Materialized views policies
             href: materialized-views/materialized-view-policies.md
+          - name: Materialized views use cases
+            href: materialized-views/materialized-view-use-cases.md
           - name: Materialized views data purge
             href: materialized-views/materialized-view-purge.md
+          - name: Monitor materialized views
+            href: materialized-views/materialized-views-monitoring.md
           - name: .alter materialized-view
             displayName: alter
             href: materialized-views/materialized-view-alter.md
@@ -349,6 +351,8 @@ items:
           - name: .show cluster policy capacity command
             href: show-cluster-capacity-policy-command.md
             displayName: .show cluster capacity policy
+          - name: .show capacity command
+            href: show-capacity-command.md
       - name: Encoding policy
         items:
           - name: Encoding policy
@@ -416,16 +420,16 @@ items:
           - name: Managed Identity policy
             href: managed-identity-policy.md
             displayName: managed_identity policy, managedidentity policy
-          - name: .alter managed_identity policy command
+          - name: .alter policy managed_identity command
             href: alter-managed-identity-policy-command.md
             displayName: .alter managed identity policy
-          - name: .alter-merge managed_identity policy command
+          - name: .alter-merge policy managed_identity command
             href: alter-merge-managed-identity-policy-command.md
             displayName: .alter-merge managed identity policy
-          - name: .delete managed_identity policy command
+          - name: .delete policy managed_identity command
             href: delete-managed-identity-policy-command.md
             displayName: .delete managed identity policy
-          - name: .show managed_identity policy command
+          - name: .show policy managed_identity command
             href: show-managed-identity-policy-command.md
             displayName: .show managed identity policy
       - name: Merge
@@ -804,27 +808,35 @@ items:
   - name: System information
     href: systeminfo.md
     items:
-      - name: Commands
-        href: commands.md
-      - name: Commands and queries
-        href: commands-and-queries.md
       - name: Estimate table size
         href: estimate-table-size.md
       - name: Journal
         href: journal.md
       - name: Operations
-        displayName: Operations management, operations, .show Operations
-        href: operations.md
-      - name: Query management commands
-        displayName: .show running queries .cancel query
-        href: queries.md
-      - name: .show streamingingestion statistics command
-        displayName: .show streaming ingestion statistics
-        href: streamingingestionstatistics.md
-      - name: .show capacity command
-        href: show-capacity-command.md
-      - name: .show table data statistics command
-        href: show-table-data-statistics.md
+        items:
+        - name: .show operations
+          href: show-operations.md
+          displayName: operations
+        - name: .show operations details
+          href: show-operation-details.md
+          displayName: operations
+      - name: Queries and commands
+        items:
+        - name: .cancel query
+          href: cancel-query-command.md
+        - name: .show commands
+          href: show-commands.md
+        - name: .show commands-and-queries
+          href: commands-and-queries.md
+        - name: .show queries
+          href: show-queries-command.md
+      - name: Statistics
+        items:
+        - name: .show streamingingestion statistics
+          displayName: .show streaming ingestion statistics
+          href: streamingingestionstatistics.md
+        - name: .show table data statistics
+          href: show-table-data-statistics.md
   - name: Advanced data management
     items:
       - name: Extents (data shards)

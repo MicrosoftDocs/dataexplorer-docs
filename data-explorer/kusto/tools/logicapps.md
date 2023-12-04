@@ -47,7 +47,7 @@ Logic Apps and :::no-loc text="Power Automate"::: are built on the same connecto
 
     :::image type="content" source="images/logic-apps/logic-app-kusto-connector-inline.png" alt-text="Screenshot of the designer page, showing the Azure Data Explorer actions." lightbox="images/logic-apps/logic-app-kusto-connector.png":::
 
-## Next steps
+## Related content
 
-* To learn more about configuring a recurrence action, see the [:::no-loc text="Power Automate"::: documentation page](../../flow.md)
-* Take a look at some [usage examples](../../flow-usage.md) for ideas on configuring your logic app actions
+* To learn more about configuring a recurrence action, see the [:::no-loc text="Power Automate"::: documentation page](../../flow.md).
+* Take a look at some [usage examples](../../flow-usage.md) for ideas on configuring your logic app actions.

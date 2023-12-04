@@ -82,11 +82,10 @@ KQL is used by many other Microsoft services. For specific information on the us
 * [Proactively hunt for threats with advanced hunting in Microsoft 365 Defender](/microsoft-365/security/defender/advanced-hunting-overview)
 * [CMPivot queries](/mem/configmgr/core/servers/manage/cmpivot-overview#queries)
 
-## Next steps
+## Related content
 
 * [Tutorial: Learn common operators](tutorials/learn-common-operators.md)
 * [Tutorial: Use aggregation functions](tutorials/use-aggregation-functions.md)
 * [KQL quick reference](../../kql-quick-reference.md)
 * [SQL to Kusto Query Language cheat sheet](sqlcheatsheet.md)
 * [Query best practices](best-practices.md)
-* [Query data with T-SQL](/azure/data-explorer/t-sql)

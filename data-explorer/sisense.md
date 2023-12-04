@@ -114,6 +114,6 @@ You need the following to complete this article:
 You can now explore your data with visual analytics, build additional dashboards, and
 transform data into actionable insights to make an impact on your business.
 
-## Next steps
+## Related content
 
 * [Write queries for Azure Data Explorer](/azure/data-explorer/kusto/query/tutorials/learn-common-operators)

@@ -80,9 +80,9 @@ items:
             items:
               - name: Network security overview
                 href: security-network-overview.md
-              - name: Private Endpoints
+              - name: Private endpoints
                 items:
-                  - name: Private Endpoints overview
+                  - name: Private endpoints overview
                     href: security-network-private-endpoint.md
                   - name: Create a private endpoint
                     href: security-network-private-endpoint-create.md
@@ -95,6 +95,8 @@ items:
                     href: security-network-private-endpoint-troubleshoot.md
               - name: Virtual network injection
                 items:
+                  - name: Migrate VNet injected cluster to private endpoints
+                    href: security-network-migrate-vnet-to-private-endpoint.md
                   - name: Create a cluster in your VNet - Portal
                     href: vnet-create-cluster-portal.md
                   - name: Deploy your cluster to your VNet
@@ -229,6 +231,9 @@ items:
                 href: data-factory-template.md
               - name: Run management commands using Azure Data Factory
                 href: data-factory-command-activity.md
+          - name: Apache Flink
+            href: ingest-data-flink.md
+            displayName: ingest data, ingestion, connector
           - name: Apache Kafka
             displayName: ingest data, ingestion, connector
             href: ingest-data-kafka.md

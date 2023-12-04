@@ -32,18 +32,20 @@ The following table defines mapping types to be used when ingesting or querying 
 
 | Data Format | Mapping Type |
 |-------------|-----------------------------------------------|
-| JSON        | [JSON Mapping](json-mapping.md)               |
 | CSV         | [CSV Mapping](csv-mapping.md)                 |
 | TSV         | [CSV Mapping](csv-mapping.md)                 |
+| TSVe        | [CSV Mapping](csv-mapping.md)                 |
 | PSV         | [CSV Mapping](csv-mapping.md)                 |
 | SCSV        | [CSV Mapping](csv-mapping.md)                 |
 | SOHsv       | [CSV Mapping](csv-mapping.md)                 |
 | TXT         | [CSV Mapping](csv-mapping.md)                 |
 | RAW         | [CSV Mapping](csv-mapping.md)                 |
+| JSON        | [JSON Mapping](json-mapping.md)               |
 | AVRO        | [AVRO Mapping](avro-mapping.md)               |
-| W3CLOGFILE  | [W3CLOGFILE Mapping](w3c-log-file-mapping.md) |
+| APACHEAVRO  | [AVRO Mapping](avro-mapping.md)               |
 | Parquet     | [Parquet Mapping](parquet-mapping.md)         |
 | ORC         | [ORC Mapping](orc-mapping.md)                 |
+| W3CLOGFILE  | [W3CLOGFILE Mapping](w3c-log-file-mapping.md) |
 
 ## Identity mapping
 
@@ -64,7 +66,7 @@ Some of the data format mappings (Parquet, JSON and AVRO) support simple and use
 | Path-dependant transformation | Description                                                                                                                                                             | Conditions                               |
 |-------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------|------------------------------------------|
 | PropertyBagArrayToDictionary  | Transforms JSON array of properties, such as `{events:[{"n1":"v1"},{"n2":"v2"}]}`, to dictionary and serializes it to valid JSON document, such as `{"n1":"v1","n2":"v2"}`. | Available for `JSON`, `Parquet`, `AVRO` and `ORC` mapping types. |
-| SourceLocation                | Name of the storage artifact that provided the data, type string (for example, the blob's "BaseUri" field).|Available for `JSON`, `Parquet`, `AVRO`, `ORC`, `W3CLOGFILE`, `CSV`, `TSV`, `PSV`, `SCSV`, `SOHsv`, `TXT` and `RAW` mapping types. |
+| SourceLocation                | Name of the storage artifact that provided the data, type string (for example, the blob's "BaseUri" field).|Available for `CSV`, `JSON`, `Parquet`, `AVRO`, `ORC` and `W3CLOGFILE` mapping types. |
 | SourceLineNumber              | Offset relative to that storage artifact, type long (starting with '1' and incrementing per new record).   | Available in: `JSON`, `Parquet`, `AVRO`, `ORC` and `W3CLOGFILE` mapping types. |
 | DateTimeFromUnixSeconds       | Converts number representing unix-time (seconds since 1970-01-01) to UTC datetime string.| Available for `JSON`, `Parquet`, `AVRO` and `ORC` mapping types. |
 | DateTimeFromUnixMilliseconds  | Converts number representing unix-time (milliseconds since 1970-01-01) to UTC datetime string. | Available for `JSON`, `Parquet`, `AVRO` and `ORC` mapping types. |

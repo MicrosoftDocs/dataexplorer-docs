@@ -287,7 +287,7 @@ In less than two minutes, close to 20,000 time series were analyzed and two abno
 
 These advanced capabilities combined with fast performance supply a unique and powerful solution for time series analysis.
 
-## Next steps
+## Related content
 
 - Learn about [Anomaly detection and forecasting](./anomaly-detection.md) with KQL.
 - Learn about [Machine learning capabilities](./machine-learning-clustering.md) with KQL.

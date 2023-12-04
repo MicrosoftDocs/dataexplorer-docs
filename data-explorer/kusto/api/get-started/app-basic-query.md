@@ -3,7 +3,7 @@ title:  'Create an app to run basic queries'
 description: Learn how to create an app to run basic queries using Kusto client libraries.
 ms.reviewer: yogilad
 ms.topic: how-to
-ms.date: 04/24/2023
+ms.date: 11/07/2023
 ---
 # Create an app to run basic queries
 
@@ -61,20 +61,27 @@ In your preferred IDE or text editor, create a project or file named *basic quer
       main()
     ```
 
-    ### [Node.js](#tab/nodejs)
+    ### [Typescript](#tab/typescript)
 
-    ```nodejs
-    const {Client, KustoConnectionStringBuilder} = require("azure-kusto-data");
+    ```typescript
+    import { Client as KustoClient, KustoConnectionStringBuilder } from "azure-kusto-data";
+    import { InteractiveBrowserCredentialInBrowserOptions } from "@azure/identity";
 
     async function main() {
       const clusterUri = "https://help.kusto.windows.net";
-      const kcsb = KustoConnectionStringBuilder.withUserPrompt(clusterUri);
-
-      const kusto_client = new Client(kcsb);
+      const authOptions = {
+        clientId: "5e39af3b-ba50-4255-b547-81abfb507c58",
+        redirectUri: "http://localhost:5173",
+      } as InteractiveBrowserCredentialInBrowserOptions;
+      const kcsb = KustoConnectionStringBuilder.withUserPrompt(clusterUri, authOptions);
+      const kustoClient = new KustoClient(kcsb);
     }
 
     main();
     ```
+
+    [!INCLUDE [node-vs-browser-auth](../../../includes/node-vs-browser-auth.md)]
+
 
     <!-- ### [Go](#tab/go) -->
 
@@ -128,9 +135,9 @@ In your preferred IDE or text editor, create a project or file named *basic quer
             "| order by DailyDamage desc"
     ```
 
-    ### [Node.js](#tab/nodejs)
+    ### [Typescript](#tab/typescript)
 
-    ```nodejs
+    ```typescript
     const database = "Samples";
     const query = `StormEvents
                    | where EventType == 'Tornado'
@@ -186,10 +193,10 @@ In your preferred IDE or text editor, create a project or file named *basic quer
       print(row["StartTime"], "-", row["State"], ",", row["DailyDamage"], "$")
     ```
 
-    ### [Node.js](#tab/nodejs)
+    ### [Typescript](#tab/typescript)
 
-    ```nodejs
-    let response = await kusto_client.execute(database, query);
+    ```typescript
+    const response = await kustoClient.execute(database, query);
 
     console.log("Daily tornado damages over 100,000,000$:");
     for (row of response.primaryResults[0].rows()) {
@@ -286,15 +293,20 @@ if __name__ == "__main__":
   main()
 ```
 
-### [Node.js](#tab/nodejs)
+### [Typescript](#tab/typescript)
 
-```nodejs
-const {Client, KustoConnectionStringBuilder} = require("azure-kusto-data");
+```typescript
+import { Client as KustoClient, KustoConnectionStringBuilder } from "azure-kusto-data";
+import { InteractiveBrowserCredentialInBrowserOptions } from "@azure/identity";
 
 async function main() {
-  const cluster_uri = "https://help.kusto.windows.net";
-  const kcsb = KustoConnectionStringBuilder.withUserPrompt(cluster_uri);
-  const kustoClient = new Client(kcsb);
+  const clusterUri = "https://help.kusto.windows.net";
+  const authOptions = {
+    clientId: "5e39af3b-ba50-4255-b547-81abfb507c58",
+    redirectUri: "http://localhost:5173",
+  } as InteractiveBrowserCredentialInBrowserOptions;
+  const kcsb = KustoConnectionStringBuilder.withUserPrompt(clusterUri, authOptions);
+  const kustoClient = new KustoClient(kcsb);
 
   const database = "Samples";
   const query = `StormEvents
@@ -302,7 +314,7 @@ async function main() {
                  | extend TotalDamage = DamageProperty + DamageCrops
                  | where DailyDamage > 100000000
                  | order by DailyDamage desc`;
-  let response = await kustoClient.execute(database, query);
+  const response = await kustoClient.execute(database, query);
 
   console.log("Daily tornado damages over 100,000,000$:");
   for (row of response.primaryResults[0].rows()) {
@@ -313,6 +325,7 @@ async function main() {
 main();
 ```
 
+[!INCLUDE [node-vs-browser-auth](../../../includes/node-vs-browser-auth.md)]
 <!-- ### [Go](#tab/go) -->
 
 ### [Java](#tab/java)
@@ -369,11 +382,22 @@ dotnet run .
 python basic_query.py
 ```
 
-### [Node.js](#tab/nodejs)
+### [Typescript](#tab/typescript)
+
+In a Node.js environment:
 
 ```bash
 node basic-query.js
 ```
+
+In a browser environment, use the appropriate command to run your app. For example, for Vite-React:
+
+```bash
+npm run dev
+```
+
+> [!NOTE]
+> In a browser environment, open the [developer tools console](/microsoft-edge/devtools-guide-chromium/console/) to see the output.
 
 <!-- ### [Go](#tab/go) -->
 
@@ -434,9 +458,9 @@ for row in response.primary_results[0]:
   print(row[start_time_col], "-", row[state_col], ",", row[damage_col], "$")
 ```
 
-### [Node.js](#tab/nodejs)
+### [Typescript](#tab/typescript)
 
-```nodejs
+```typescript
 const columnNoState = 0;
 const columnNoStartTime = response.primaryResults[0].columns.find(c => c.name == "StartTime").ordinal;
 const columnNoDailyDamage = 2;
@@ -500,9 +524,9 @@ crp.set_option(crp.request_timeout_option_name, datetime.timedelta(minutes=1))
 response = kusto_client.execute_query(database, query, crp)
 ```
 
-### [Node.js](#tab/nodejs)
+### [Typescript](#tab/typescript)
 
-```nodejs
+```typescript
 const ClientRequestProperties = require("azure-kusto-data").ClientRequestProperties;
 const uuid = require('uuid');
 
@@ -512,7 +536,7 @@ crp.clientRequestId = "QueryDemo" + uuid.v4();
 // Set the query timeout to 1 minute
 crp.setServerTimeout(1000 * 60);
 
-let response = await kustoClient.execute(database, query, crp);
+const response = await kustoClient.execute(database, query, crp);
 ```
 
 <!-- ### [Go](#tab/go) -->
@@ -597,9 +621,9 @@ for row in response.primary_results[0]:
   print(row["StartTime"], "-", row["State"], ",", row["DailyDamage"], "$")
 ```
 
-### [Node.js](#tab/nodejs)
+### [Typescript](#tab/typescript)
 
-```nodejs
+```typescript
 const query = `declare query_parameters(event_type:string, daily_damage:int);
                StormEvents
                | where EventType == event_type
@@ -612,7 +636,7 @@ const crp = new ClientRequestProperties();
 crp.setParameter("event_type", "Flash Flood");
 crp.setParameter("daily_damage", 200000000);
 
-let response = await kustoClient.execute(database, query, crp);
+const response = await kustoClient.execute(database, query, crp);
 
 console.log("Daily flash flood damages over 200,000,000$:");
 for (row of response.primaryResults[0].rows()) {
@@ -744,9 +768,9 @@ if __name__ == "__main__":
   main()
 ```
 
-### [Node.js](#tab/nodejs)
+### [Typescript](#tab/typescript)
 
-```nodejs
+```typescript
 const {Client, KustoConnectionStringBuilder, ClientRequestProperties} = require("azure-kusto-data");
 const uuid = require('uuid');
 
@@ -773,7 +797,7 @@ async function main() {
   crp.setParameter("event_type", "Flash Flood");
   crp.setParameter("daily_damage", 200000000);
 
-  let response = await kustoClient.execute(database, query, crp);
+  const response = await kustoClient.execute(database, query, crp);
 
   const columnNoState = 0;
   const columnNoStartTime = response.primaryResults[0].columns.find(c => c.name == "StartTime").ordinal;
@@ -851,7 +875,7 @@ Daily flash flood damages over 200,000,000$:
 2007-08-21 00:00:00+00:00 - OHIO , 253320000 $
 ```
 
-## Next steps
+## Next step
 
 <!-- Advance to the next article to learn how to create... -->
 > [!div class="nextstepaction"]
