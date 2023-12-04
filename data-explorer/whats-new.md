@@ -26,7 +26,7 @@ Welcome to what's new in Azure Data Explorer. This article details new and signi
 
 | Article title | Description |
 |--|--|
-| [Materialized views use cases](kusto/management/materialized-views/materialized-view-use-cases.md) | New article. Describe common and advanced use cases for materialized views.|
+| [Materialized views use cases](kusto/management/materialized-views/materialized-view-use-cases.md) | New article. Describes common and advanced use cases for materialized views.|
 
 ## October 2023
 
