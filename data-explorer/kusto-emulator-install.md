@@ -149,14 +149,14 @@ In the following sections, you'll use Kusto.Explorer to create a database, inges
 >
 > You must first allow unsafe connections in Tools -> Options -> Connections -> Allow unsafe connections
 > 
-> :::image type="content" source="media/kusto-emulator/unsafe-connections.png" alt-text="Screenshot of Kusto Explorer connection.":::
+> :::image type="content" source="media/kusto-emulator/unsafe-connections.png" alt-text="Screenshot of Kusto Explorer connection options.":::
 > 
 > The following image highlights the affected fields in the **Add connection** properties.
 >
 > - The **Cluster connection** must begin with `http://` and not `https://`.
 > - In **Security** > **Advanced: Connection String**, you'll need to remove the `AAD Federated Security=True` portion of the connection string to disable Microsoft Entra authentication.
 >
-> :::image type="content" source="media/kusto-emulator/kusto-emulator-connection.png" alt-text="Screenshot of Kusto Explorer connection.":::
+> :::image type="content" source="media/kusto-emulator/kusto-emulator-connection.png" alt-text="Screenshot of Kusto Explorer single connection setup.":::
 
 ## Create a database
 
