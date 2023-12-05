@@ -89,11 +89,12 @@ The following table summarizes the available connectors and their capabilities:
 [Apache Flink](https://flink.apache.org/) is a framework and distributed processing engine for stateful computations over unbounded and bounded data streams. The connector implements data sink for moving data across Azure Data Explorer and Flink clusters. Using Azure Data Explorer and Apache Flink, you can build fast and scalable applications targeting data driven scenarios. For example, machine learning (ML), Extract-Transform-Load (ETL), and Log Analytics.
 
 * **Functionality:** Ingestion
-* **Ingestion type supported:** Streaming
-* **Use cases:** Telemetry
-* **Underlying SDK:** [Java](kusto/api/java/kusto-java-client-library.md)
-* **Repository:** Microsoft Azure - https://github.com/Azure/flink-connector-kusto/
-* **Documentation:** [Ingest data from Apache Flink](ingest-data-flink.md)
+
+* **Ingestion type supported:** Streaming  
+* **Use cases:** Telemetry  
+* **Underlying SDK:** [Java](kusto/api/java/kusto-java-client-library.md)  
+* **Repository:** Microsoft Azure - https://github.com/Azure/flink-connector-kusto/  
+* **Documentation:** [Ingest data from Apache Flink](ingest-data-flink.md)  
 
 ## Apache Log4J 2
 
