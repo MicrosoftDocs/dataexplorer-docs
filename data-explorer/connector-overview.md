@@ -11,7 +11,7 @@ zone_pivot_groups: kql-flavors-adx-fabric
 # Data connectors overview
 
 ::: zone pivot="azuredataexplorer"
-[Data ingestion](ingest-data-overview.md) Data ingestion is the process used to load data from one or more sources into Azure Data Explorer. Once ingested, the data becomes available for [query](kusto/query/index.md). Azure Data Explorer provides several connectors for data ingestion.
+[Data ingestion](ingest-data-overview.md) is the process used to load data from one or more sources into Azure Data Explorer. Once ingested, the data becomes available for [query](kusto/query/index.md). Azure Data Explorer provides several connectors for data ingestion.
 ::: zone-end
 ::: zone pivot="fabric"
 Data ingestion is the process used to load data from one or more sources into a Real-Time Analytics KQL database in Microsoft Fabric. Once ingested, the data becomes available for [query](kusto/query/index.md?context=/fabric/context/context-rta&pivots=fabric). Real-Time Analytics provides several connectors for data ingestion.
@@ -89,11 +89,12 @@ The following table summarizes the available connectors and their capabilities:
 [Apache Flink](https://flink.apache.org/) is a framework and distributed processing engine for stateful computations over unbounded and bounded data streams. The connector implements data sink for moving data across Azure Data Explorer and Flink clusters. Using Azure Data Explorer and Apache Flink, you can build fast and scalable applications targeting data driven scenarios. For example, machine learning (ML), Extract-Transform-Load (ETL), and Log Analytics.
 
 * **Functionality:** Ingestion
-* **Ingestion type supported:** Streaming
-* **Use cases:** Telemetry
-* **Underlying SDK:** [Java](kusto/api/java/kusto-java-client-library.md)
-* **Repository:** Microsoft Azure - https://github.com/Azure/flink-connector-kusto/
-* **Documentation:** [Ingest data from Apache Flink](ingest-data-flink.md)
+
+* **Ingestion type supported:** Streaming  
+* **Use cases:** Telemetry  
+* **Underlying SDK:** [Java](kusto/api/java/kusto-java-client-library.md)  
+* **Repository:** Microsoft Azure - https://github.com/Azure/flink-connector-kusto/  
+* **Documentation:** [Ingest data from Apache Flink](ingest-data-flink.md)  
 
 ## Apache Log4J 2
 
