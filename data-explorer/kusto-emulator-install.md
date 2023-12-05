@@ -147,7 +147,7 @@ In the following sections, you'll use Kusto.Explorer to create a database, inges
 > [!IMPORTANT]
 > The Kusto Emulator doesn't support HTTPS or Microsoft Entra authentication.
 >
-> You must first allow unsafe connections in Tools -> Options -> Connections -> Allow unsafe connections
+> You must first allow unsafe connections in **Tools** > **Options** > **Connections** > **Allow unsafe connections**.
 > 
 > :::image type="content" source="media/kusto-emulator/unsafe-connections.png" alt-text="Screenshot of Kusto Explorer connection options.":::
 > 
