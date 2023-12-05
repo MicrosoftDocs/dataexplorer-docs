@@ -6,7 +6,7 @@ ms.date: 11/21/2023
 ---
 # .show capacity command
 
-Displays capacity estimates for data management operations. For more information, see [Capacity policy](capacitypolicy.md).
+Displays capacity for data management operations. For more information, see [Capacity policy](capacitypolicy.md).
 
 ## Permissions
 
@@ -22,11 +22,11 @@ You must have at least [Database User](access-control/role-based-access-control.
 
 |Name|Type|Required|Description|
 |--|--|--|--|
-|*Operation*|string||The name of a specific operation for which to return a capacity estimation, as based on the [capacity policy](../management/capacitypolicy.md). See [Supported operations](#supported-operations).|
+|*Operation*|string||The name of a specific operation for which to return the capacity, as based on the [capacity policy](../management/capacitypolicy.md). See [Supported operations](#supported-operations).|
 
 ### Supported operations
 
-The following list outlines the operations for which you can get a capacity estimation:
+The following list outlines the operations for which you can see the capacity:
 
 |Operation|Syntax
 |--|--|--|
@@ -41,7 +41,7 @@ For more information on each of the calculations, see [Capacity policy](../manag
 
 ## Returns
 
-Returns the results of a calculation for an estimated cluster capacity for each resource.
+Returns the results of a calculation for the cluster capacity for each resource.
 
 The capacity can be based on the [workload group](workload-groups.md) specified in the command or the cluster's total capacity. If unspecified, the default scope is `cluster`.
 
