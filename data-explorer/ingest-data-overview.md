@@ -8,9 +8,11 @@ ms.date: 12/06/2023
 
 # Azure Data Explorer data ingestion overview
 
-Data ingestion is the process of loading data from one or more sources into a table in your cluster. Azure Data Explorer validates initial data and converts data formats where necessary. Further data manipulation includes matching schema, organizing, indexing, encoding, and compressing the data. Once ingested, the data is available for query.
+Data ingestion involves loading data from various sources into a table in your cluster. Azure Data Explorer ensures data validity, converts formats as needed, and performs additional manipulations like schema matching, organization, indexing, encoding, and compression. Once ingested, data is available for query.
 
 Azure Data Explorer offers streaming ingestion and queued ingestion. For more information, see [Continuous data ingestion](#continuous-data-ingestion).
+
+To ingest data, you need access to an Azure Data Explorer table. First, [create a cluster and database](create-cluster-and-database.md). Then, either [create a table in the Azure Data Explorer web UI](create-table-wizard.md) or use the [.create table command](kusto/management/create-table-command.md).
 
 > [!NOTE]
 > Data is persisted in storage according to the set [retention policy](kusto/management/retentionpolicy.md).
@@ -87,6 +89,22 @@ For more information, see the relevant documentation:
 > [!NOTE]
 > When referenced in the above table, ingestion supports a maximum file size of 6 GB. The recommendation is to ingest files between 100 MB and 1 GB.
 
+## Data mappings
+
+[Data mappings](kusto/management/mappings.md) help bind source data fields to destination table columns. Mappings allows you to take data from different sources into the same table, based on the defined attributes. Different types of mappings are supported, both row-oriented (CSV, JSON and AVRO), and column-oriented (Parquet). In most methods, mappings can also be [pre-created on the table](kusto/management/create-ingestion-mapping-command.md) and referenced from the ingest command parameter.
+
+## Policies
+
+The following policies are the main policies related to getting and retaining data:
+
+* [Batching policy](kusto/management/batchingpolicy.md)
+* [Merge policy](kusto/management/mergepolicy.md)
+* [Partitioning policy](kusto/management/partitioningpolicy.md)
+* [Retention policy](kusto/management/retentionpolicy.md)
+* [Update policy](kusto/management/updatepolicy.md)
+
+For a list of all polices, see [Policies overview](kusto/management/policies.md).
+
 ## Permissions
 
 The following list describes the permissions required for various ingestion scenarios:
@@ -97,43 +115,9 @@ The following list describes the permissions required for various ingestion scen
 
 For more information, see [Kusto role-based access control](kusto/access-control/role-based-access-control.md).
 
-## Ingestion process
-
-Once you have chosen the most suitable ingestion method for your needs, do the following steps:
-
-1. **Set batching policy** (optional)
-
-     The batching manager batches ingestion data based on the [ingestion batching policy](kusto/management/batchingpolicy.md). Define a batching policy before ingestion. See [ingestion best practices - optimizing for throughput](kusto/api/netfx/kusto-ingest-best-practices.md#optimize-for-throughput). Batching policy changes can require up to 5 minutes to take effect. The policy sets batch limits according to three factors: time elapsed since batch creation, accumulated number of items (blobs), or total batch size. By default, settings are 5 minutes / 1000 blobs / 1 GB, with the limit first reached taking effect. Therefore there's usually a 5-minute delay when queueing sample data for ingestion.
-
-1. **Set retention policy**
-
-    Data ingested into a table in Azure Data Explorer is subject to the table's effective retention policy. Unless set on a table explicitly, the effective retention policy is derived from the database's retention policy. Hot retention is a function of cluster size and your retention policy. Ingesting more data than you have available space will force the first in data to cold retention.
-
-    Make sure that the database's retention policy is appropriate for your needs. If not, explicitly override it at the table level. For more information, see [retention policy](kusto/management/retentionpolicy.md).
-
-1. **Create a table**
-
-    To ingest data programmatically, a table needs to be created beforehand. If you're using the **Get data** experience, you can create a table as part of the ingestion flow.
-
-    * Create a table [with a command](kusto/management/create-table-command.md).
-
-    > [!Note]
-    > If a record is incomplete or a field cannot be parsed as the required data type, the corresponding table columns will be populated with null values.
-
-1. **Create schema mapping**
-
-    [Schema mapping](kusto/management/mappings.md) helps bind source data fields to destination table columns. Mapping allows you to take data from different sources into the same table, based on the defined attributes. Different types of mappings are supported, both row-oriented (CSV, JSON and AVRO), and column-oriented (Parquet). In most methods, mappings can also be [pre-created on the table](kusto/management/create-ingestion-mapping-command.md) and referenced from the ingest command parameter.
-
-1. **Set update policy** (optional)
-
-   Some of the data format mappings (Parquet, JSON, and Avro) support simple and useful ingest-time transformations. If the scenario requires more complex processing at ingestion, adjust the [update policy](./kusto/management/show-table-update-policy-command.md), which supports lightweight processing using query commands. The update policy automatically runs extractions and transformations on ingested data on the original table, and ingests the resulting data into one or more destination tables.
-
-1. **Ingest data**
-
-    You can [ingest sample data](ingest-sample-data.md) into the table you created in your database using commands or the ingestion wizard.
-    To ingest your own data, you can select from a range of options, including [ingestion tools](#comparing-ingestion-methods-and-tools), [connectors](connector-overview.md) to diverse services, [managed pipelines](#ingestion-using-managed-pipelines), [programmatic ingestion using SDKs](#programmatic-ingestion-using-sdks), and [direct access to ingestion](#ingest-management-commands).
-
 ## Related content
 
+* [Create a table](create-table-wizard.md)
+* [Create an ingestion mapping](kusto/management/mappings.md)
 * [Supported data formats](ingestion-supported-formats.md)
 * [Supported ingestion properties](ingestion-properties.md)
