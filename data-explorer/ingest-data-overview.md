@@ -3,21 +3,46 @@ title: 'Azure Data Explorer data ingestion overview'
 description: 'Learn about the different ways you can ingest (load) data in Azure Data Explorer'
 ms.reviewer: tzgitlin
 ms.topic: conceptual
-ms.date: 10/04/2023
+ms.date: 12/06/2023
 ---
 
 # Azure Data Explorer data ingestion overview
 
 Data ingestion is the process of loading data from one or more sources into a table in your cluster. Azure Data Explorer validates initial data and converts data formats where necessary. Further data manipulation includes matching schema, organizing, indexing, encoding, and compressing the data. Once ingested, the data is available for query.
 
-Azure Data Explorer offers queued ingestion and streaming ingestion. For more information, see [Queued vs. Streaming ingestion](#queued-vs-streaming-ingestion).
-
-The diagram below shows the end-to-end flow for working in Azure Data Explorer and shows different ingestion methods.
-
-:::image type="content" source="media/data-ingestion-overview/data-management-and-ingestion-overview.png" alt-text="Overview scheme of data ingestion and management.":::
+Azure Data Explorer offers streaming ingestion and queued ingestion. For more information, see [Continuous data ingestion](#continuous-data-ingestion).
 
 > [!NOTE]
 > Data is persisted in storage according to the set [retention policy](kusto/management/retentionpolicy.md).
+
+## One-time vs. continuous data ingestion
+
+Azure Data Explorer offers two main approaches to data ingestion:
+
+* [**One-time ingestion**](#one-time-data-ingestion): One-time ingestion is beneficial for importing historical data into a new database, filling in missing data, and during the initial stages of prototyping and data analysis, as it allows for quick data integration without committing to a continuous pipeline.
+
+* [**Continuous ingestion**](#continuous-data-ingestion): Continuous ingestion is ideal for scenarios requiring immediate insights from live data, such as monitoring systems or situations where a constant data flow is critical for established production environments. This method is particularly well-suited for real-time analytics and continuous data streams, such as log or event data.
+
+### One-time data ingestion
+
+There are multiple ways to perform one-time data ingestion. Use the following diagram to help you determine the most suitable option based on your specific use case:
+
+:::image type="content" source="media/ingest-data-overview/one-time-ingestion.png" lightbox="media/ingest-data-overview/one-time-ingestion.png" alt-text="Flow chart for one-time ingestion decision making.":::
+
+### Continuous data ingestion
+
+Continuous data ingestion involves setting up an ingestion pipeline, employing either streaming or queued ingestion:
+
+* **Streaming ingestion**: This method entails ongoing data ingestion from a streaming source, providing near real-time latency for small sets of data per table. The data is initially ingested into the row store and later moved to column store extents. For more information, see [Configure streaming ingestion](ingest-data-streaming.md).
+
+* **Queued ingestion**: This method performs data batching and is optimized for high ingestion throughput. Data is batched based on ingestion properties, with small batches subsequently merged and optimized for fast query results. By default, the maximum batching values are 5 minutes, 1000 items, or a total size of 1 GB. The data size limit for a queued ingestion command is 6 GB. For more information, see the [ingestion batching policy](kusto/management/batchingpolicy.md).
+
+There are multiple ways to configure continuous data ingestion. Use the following diagram to help you determine the most suitable option based on your specific use case:
+
+:::image type="content" source="media/ingest-data-overview/continuous-ingestion.png" lightbox="media/ingest-data-overview/continuous-ingestion.png" alt-text="Flow chart for continuous ingestion decision making.":::
+
+> [!NOTE]
+> For most scenarios, we recommend using queued ingestion as it is the more performant option.
 
 ## Supported data formats, properties, and permissions
 
