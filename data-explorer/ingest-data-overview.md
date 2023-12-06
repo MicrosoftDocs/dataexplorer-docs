@@ -29,6 +29,15 @@ There are multiple ways to perform one-time data ingestion. Use the following di
 
 :::image type="content" source="media/ingest-data-overview/one-time-ingestion.png" lightbox="media/ingest-data-overview/one-time-ingestion.png" alt-text="Flow chart for one-time ingestion decision making.":::
 
+For more information, see the relevant documentation:
+
+* [Ingest historical data](ingest-data-historical.md)
+* [Get data from a local file](get-data-file.md)
+* [Get data from Amazon S3](get-data-amazon-s3.md)
+* [Get data from Azure Storage](get-data-storage.md)
+* [Integrate with Azure Data Factory](data-factory-integration.md)
+* [Write custom code wth Kusto client libraries](kusto/api/client-libraries.md)
+
 ### Continuous data ingestion
 
 Continuous data ingestion involves setting up an ingestion pipeline, employing either streaming or queued ingestion:
@@ -44,7 +53,7 @@ There are multiple ways to configure continuous data ingestion. Use the followin
 > [!NOTE]
 > For most scenarios, we recommend using queued ingestion as it is the more performant option.
 
-## Permissions required for ingestion
+## Permissions
 
 The following list describes the permissions required for various ingestion scenarios:
 
