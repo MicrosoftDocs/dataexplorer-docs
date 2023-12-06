@@ -57,17 +57,9 @@ There are multiple ways to configure continuous data ingestion. Use the followin
 
     For more information, see [Kusto role-based access control](kusto/access-control/role-based-access-control.md).
 
-## Queued vs. streaming ingestion
-
-* Queued ingestion does data batching and is optimized for high ingestion throughput. This method is the preferred and most performant type of ingestion. Data is batched according to ingestion properties. Small batches of data are then merged, and optimized for fast query results. By default, the maximum batching value is 5 minutes, 1000 items, or a total size of 1 GB. The data size limit for a queued ingestion command is 6 GB. To learn more, see the [ingestion batching policy](kusto/management/batchingpolicy.md).
-
-* [Streaming ingestion](ingest-data-streaming.md) is ongoing data ingestion from a streaming source. Streaming ingestion allows near real-time latency for small sets of data per table. Data is initially ingested to row store, then moved to column store extents. Streaming ingestion can be done using an Azure Data Explorer client library or one of the supported data pipelines. To learn more, see [Configure streaming ingestion](ingest-data-streaming.md).
-
-## Ingestion methods and tools
+## Overview of ingestion methods and tools
 
 Azure Data Explorer supports several ingestion methods, each with its own target scenarios. These methods include ingestion tools, connectors and plugins to diverse services, managed pipelines, programmatic ingestion using SDKs, and direct access to ingestion.
-
-For a list of data connectors, see [Data connectors overview](connector-overview.md).
 
 ### Ingestion using managed pipelines
 
