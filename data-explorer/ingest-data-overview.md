@@ -44,18 +44,15 @@ There are multiple ways to configure continuous data ingestion. Use the followin
 > [!NOTE]
 > For most scenarios, we recommend using queued ingestion as it is the more performant option.
 
-## Supported data formats, properties, and permissions
+## Permissions required for ingestion
 
-* **[Supported data formats](ingestion-supported-formats.md)**: The data formats that Azure Data Explorer can understand and ingest natively, such as Parquet and JSON.
+The following list describes the permissions required for various ingestion scenarios:
 
-* **[Ingestion properties](ingestion-properties.md)**: The properties that affect how the data is ingested, such as tagging, mapping, and creation time.
+* To create a new table requires Database User or Database Admin permissions.
+* To ingest data into an existing table, without changing its schema, requires Database Ingestor permissions.
+* To change the schema of an existing table requires Table Admin or Database Admin permissions.
 
-* **Permissions**: * **Permissions**: The permissions required to access resources used in commands and processes, including the following:
-    * To ingest data into an existing table without changing its schema requires *Database Ingestor* permissions.
-    * To create a new table requires *Database User* or *Database Admin* permissions.
-    * To change the schema of an existing table requires *Table Admin*, inherited by the user that created the table, or *Database Admin* permissions.
-
-    For more information, see [Kusto role-based access control](kusto/access-control/role-based-access-control.md).
+For more information, see [Kusto role-based access control](kusto/access-control/role-based-access-control.md).
 
 ## Overview of ingestion methods and tools
 
