@@ -46,12 +46,21 @@ Continuous data ingestion involves setting up an ingestion pipeline, employing e
 
 * **Queued ingestion**: This method performs data batching and is optimized for high ingestion throughput. Data is batched based on ingestion properties, with small batches subsequently merged and optimized for fast query results. By default, the maximum batching values are 5 minutes, 1000 items, or a total size of 1 GB. The data size limit for a queued ingestion command is 6 GB. For more information, see the [ingestion batching policy](kusto/management/batchingpolicy.md).
 
+> [!NOTE]
+> For most scenarios, we recommend using queued ingestion as it is the more performant option.
+
 There are multiple ways to configure continuous data ingestion. Use the following diagram to help you determine the most suitable option based on your specific use case:
 
 :::image type="content" source="media/ingest-data-overview/continuous-ingestion.png" lightbox="media/ingest-data-overview/continuous-ingestion.png" alt-text="Flow chart for continuous ingestion decision making.":::
 
-> [!NOTE]
-> For most scenarios, we recommend using queued ingestion as it is the more performant option.
+For more information, see the relevant documentation:
+
+* [Create an Event Hubs data connection](create-event-hubs-connection.md)
+* [Ingest data from Apache Kafka](ingest-data-kafka.md)
+* [Create an IoT Hubs data connection](create-iot-hub-connection.md)
+* [Create an Event Grid data connection](create-event-grid-connection.md)
+* [Connectors overview](connector-overview.md)
+* [Write custom code with Kusto client libraries](kusto/api/client-libraries.md)
 
 ## Permissions
 
