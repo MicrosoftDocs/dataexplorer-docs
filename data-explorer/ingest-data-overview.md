@@ -117,7 +117,5 @@ For more information, see [Kusto role-based access control](kusto/access-control
 
 ## Related content
 
-* [Create a table](create-table-wizard.md)
-* [Create an ingestion mapping](kusto/management/mappings.md)
 * [Supported data formats](ingestion-supported-formats.md)
 * [Supported ingestion properties](ingestion-properties.md)
