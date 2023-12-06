@@ -42,7 +42,7 @@ Continuous data ingestion involves setting up an ingestion pipeline, employing e
 
 * **Streaming ingestion**: This method entails ongoing data ingestion from a streaming source, providing near real-time latency for small sets of data per table. The data is initially ingested into the row store and later moved to column store extents. For more information, see [Configure streaming ingestion](ingest-data-streaming.md).
 
-* **Queued ingestion**: This method performs data queued and is optimized for high ingestion throughput. Data is batched based on ingestion properties, with small batches subsequently merged and optimized for fast query results. By default, the maximum queued values are 5 minutes, 1000 items, or a total size of 1 GB. The data size limit for a queued ingestion command is 6 GB. For more information, see the [ingestion queued policy](kusto/management/queuedpolicy.md).
+* **Queued ingestion**: This method is optimized for high ingestion throughput. Data is batched based on ingestion properties, with small batches subsequently merged and optimized for fast query results. By default, the maximum queued values are 5 minutes, 1000 items, or a total size of 1 GB. The data size limit for a queued ingestion command is 6 GB. For more information, see the [ingestion queued policy](kusto/management/queuedpolicy.md).
 
 > [!NOTE]
 > For most scenarios, we recommend using queued ingestion as it is the more performant option.
