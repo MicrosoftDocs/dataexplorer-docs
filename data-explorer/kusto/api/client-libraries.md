@@ -24,3 +24,8 @@ Use these libraries for Azure APIs and to programmatically interact with your cl
 | Azure   CLI |  |  | [Azure CLI](/cli/azure/install-azure-cli) |
 | REST   API | [REST](rest/index.md) | [REST](rest/index.md) | [GitHub](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/azure-kusto/resource-manager/Microsoft.Kusto) |
 | TypeScript (Node.JS/Browser) | [npm](https://www.npmjs.com/package/azure-kusto-data) [GitHub](https://github.com/Azure/azure-kusto-node/tree/master/packages/azure-kusto-data) | [npm](https://www.npmjs.com/package/azure-kusto-ingest)       [GitHub](https://github.com/Azure/azure-kusto-node/tree/master/packages/azure-kusto-ingest) | [npm](https://www.npmjs.com/package/azure-arm-kusto) |
+
+## Next step
+
+> [!div class="nextstepaction"]
+> [Set up your development environment](get-started/app-hello-kusto.md)
