@@ -62,66 +62,7 @@ For more information, see the relevant documentation:
 * [Connectors overview](connector-overview.md)
 * [Write custom code with Kusto client libraries](kusto/api/client-libraries.md)
 
-## Permissions
-
-The following list describes the permissions required for various ingestion scenarios:
-
-* To create a new table requires Database User or Database Admin permissions.
-* To ingest data into an existing table, without changing its schema, requires Database Ingestor permissions.
-* To change the schema of an existing table requires Table Admin or Database Admin permissions.
-
-For more information, see [Kusto role-based access control](kusto/access-control/role-based-access-control.md).
-
-## Overview of ingestion methods and tools
-
-Azure Data Explorer supports several ingestion methods, each with its own target scenarios. These methods include ingestion tools, connectors and plugins to diverse services, managed pipelines, programmatic ingestion using SDKs, and direct access to ingestion.
-
-### Ingestion using managed pipelines
-
-For organizations who wish to have management (throttling, retries, monitors, alerts, and more) done by an external service, using a connector is likely the most appropriate solution. Queued ingestion is appropriate for large data volumes. Azure Data Explorer supports the following Azure Pipelines:
-
-* **[Event Grid](https://azure.microsoft.com/services/event-grid/)**: A pipeline that listens to Azure storage, and updates Azure Data Explorer to pull information when subscribed events occur. For more information, see [Ingest Azure Blobs into Azure Data Explorer](ingest-data-event-grid.md).
-
-* **[Event Hub](https://azure.microsoft.com/services/event-hubs/)**: A pipeline that transfers events from services to Azure Data Explorer. For more information, see [Ingest data from event hub into Azure Data Explorer](ingest-data-event-hub.md).
-
-* **[IoT Hub](https://azure.microsoft.com/services/iot-hub/)**: A pipeline that is used for the transfer of data from supported IoT devices to Azure Data Explorer. For more information, see [Ingest from IoT Hub](ingest-data-iot-hub.md).
-
-* **[Azure Data Factory (ADF)](https://azure.microsoft.com/products/data-factory/)**: A fully managed data integration service for analytic workloads in Azure. Azure Data Factory connects with over 90 supported sources to provide efficient and resilient data transfer. ADF prepares, transforms, and enriches data to give insights that can be monitored in different kinds of ways. This service can be used as a one-time solution, on a periodic timeline, or triggered by specific events.
-  * [Integrate Azure Data Explorer with Azure Data Factory](data-factory-integration.md).
-  * [Use Azure Data Factory to copy data from supported sources to Azure Data Explorer](./data-factory-load-data.md).
-  * [Copy in bulk from a database to Azure Data Explorer by using the Azure Data Factory template](data-factory-template.md).
-  * [Use Azure Data Factory command activity to run Azure Data Explorer management commands](data-factory-command-activity.md)
-
-### Programmatic ingestion using SDKs
-
-Azure Data Explorer provides SDKs that can be used for query and data ingestion. Programmatic ingestion is optimized for reducing ingestion costs (COGs), by minimizing storage transactions during and following the ingestion process.
-
-**Available SDKs and open-source projects**
-
-* [Python SDK](kusto/api/python/kusto-python-client-library.md)
-* [.NET SDK](kusto/api/netfx/about-the-sdk.md)
-* [Java SDK](kusto/api/java/kusto-java-client-library.md)
-* [Node SDK](kusto/api/node/kusto-node-client-library.md)
-* [REST API](kusto/api/netfx/kusto-ingest-client-rest.md)
-* [GO SDK](kusto/api/golang/kusto-golang-client-library.md)
-
-### Tools
-
-* The **[ingestion wizard](./ingest-data-wizard.md)**: Enables you to quickly ingest data by creating and adjusting tables from a wide range of source types. The ingestion wizard automatically suggests tables and mapping structures based on the data source in Azure Data Explorer. The wizard can be used for one-time ingestion, or to define continuous ingestion via Event Grid on the container to which the data was ingested.
-
-* **[LightIngest](lightingest.md)**: A command-line utility for ad-hoc data ingestion into Azure Data Explorer. The utility can pull source data from a local folder or from an Azure blob storage container.
-
-### Ingest management commands
-
-Use commands to ingest data directly to your cluster. This method bypasses the Data Management services, and therefore should be used only for exploration and prototyping. Don't use this method in production or high-volume scenarios.
-
-* **Inline ingestion**:  A management command [.ingest inline](kusto/management/data-ingestion/ingest-inline.md) is sent to your cluster, with the data to be ingested being a part of the command text itself. This method is intended for improvised testing purposes.
-
-* **Ingest from query**: A management command [.set, .append, .set-or-append, or .set-or-replace](kusto/management/data-ingestion/ingest-from-query.md) is sent to your cluster, with the data specified indirectly as the results of a query or a command.
-
-* **Ingest from storage (pull)**: A management command [.ingest into](kusto/management/data-ingestion/ingest-from-storage.md) is sent to your cluster, with the data stored in external storage, such as Azure Blob Storage, accessible by your cluster and pointed-to by the command.
-
-## Comparing ingestion methods and tools
+## Compare ingestion methods and tools
 
 | Ingestion name | Data type | Maximum file size | Streaming, batching, direct | Most common scenarios | Considerations |
 | --- | --- | --- | --- | --- | --- |
@@ -145,6 +86,16 @@ Use commands to ingest data directly to your cluster. This method bypasses the D
 
 > [!NOTE]
 > When referenced in the above table, ingestion supports a maximum file size of 6 GB. The recommendation is to ingest files between 100 MB and 1 GB.
+
+## Permissions
+
+The following list describes the permissions required for various ingestion scenarios:
+
+* To create a new table requires Database User or Database Admin permissions.
+* To ingest data into an existing table, without changing its schema, requires Database Ingestor permissions.
+* To change the schema of an existing table requires Table Admin or Database Admin permissions.
+
+For more information, see [Kusto role-based access control](kusto/access-control/role-based-access-control.md).
 
 ## Ingestion process
 
