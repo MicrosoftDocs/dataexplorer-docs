@@ -10,22 +10,16 @@ ms.date: 12/06/2023
 
 Data ingestion involves loading data from various sources into a table in your cluster. Azure Data Explorer ensures data validity, converts formats as needed, and performs additional manipulations like schema matching, organization, indexing, encoding, and compression. Once ingested, data is available for query.
 
-Azure Data Explorer offers streaming ingestion and queued ingestion. For more information, see [Continuous data ingestion](#continuous-data-ingestion).
+Azure Data Explorer offers one-time data ingestion or the establishment of a continuous ingestion pipeline, using either streaming or queued ingestion. To determine which is right for you, see [One-time data ingestion](#one-time-data-ingestion) and [Continuous ingestion](#continuous-data-ingestion).
 
-To ingest data, you need access to an Azure Data Explorer table. First, [create a cluster and database](create-cluster-and-database.md). Then, either [create a table in the Azure Data Explorer web UI](create-table-wizard.md) or use the [.create table command](kusto/management/create-table-command.md).
+For any method of data ingestion, you need access to a table. Once you [create a cluster and database](create-cluster-and-database.md), you can either [create a table in the Azure Data Explorer web UI](create-table-wizard.md) or use the [.create table command](kusto/management/create-table-command.md).
 
 > [!NOTE]
 > Data is persisted in storage according to the set [retention policy](kusto/management/retentionpolicy.md).
 
-## One-time vs. continuous data ingestion
+## One-time data ingestion
 
-Azure Data Explorer offers two main approaches to data ingestion:
-
-* [**One-time ingestion**](#one-time-data-ingestion): One-time ingestion is beneficial for importing historical data into a new database, filling in missing data, and during the initial stages of prototyping and data analysis, as it allows for quick data integration without committing to a continuous pipeline.
-
-* [**Continuous ingestion**](#continuous-data-ingestion): Continuous ingestion is ideal for scenarios requiring immediate insights from live data, such as monitoring systems or situations where a constant data flow is critical for established production environments. This method is particularly well-suited for real-time analytics and continuous data streams, such as log or event data.
-
-### One-time data ingestion
+One-time ingestion is beneficial for importing historical data into a new database, filling in missing data, and during the initial stages of prototyping and data analysis, as it allows for quick data integration without committing to a continuous pipeline.
 
 There are multiple ways to perform one-time data ingestion. Use the following diagram to help you determine the most suitable option based on your specific use case:
 
@@ -40,7 +34,9 @@ For more information, see the relevant documentation:
 * [Integrate with Azure Data Factory](data-factory-integration.md)
 * [Write custom code wth Kusto client libraries](kusto/api/client-libraries.md)
 
-### Continuous data ingestion
+## Continuous data ingestion
+
+Continuous ingestion is ideal for scenarios requiring immediate insights from live data, such as monitoring systems or situations where a constant data flow is critical for established production environments. This method is particularly well-suited for real-time analytics and continuous data streams, such as log or event data.
 
 Continuous data ingestion involves setting up an ingestion pipeline, employing either streaming or queued ingestion:
 
