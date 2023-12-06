@@ -1,7 +1,7 @@
 ---
 title: Migrate a Virtual Network injected cluster to private endpoints
 description: Learn how to migrate a Virtual Network injected Azure Data Explorer cluster to private endpoints.
-ms.reviewer: cosh
+ms.reviewer: cosh, gunjand
 ms.topic: how-to
 ms.date: 11/28/2023
 ---
