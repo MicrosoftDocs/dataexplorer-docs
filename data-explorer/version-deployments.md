@@ -23,11 +23,11 @@ With each Azure Data Explorer software deployment, an Azure Activity log is gene
 1. In the Azure portal, go to your cluster. From the left menu, select **Activity log**.
 1. Find events with an **Operation name** of "Cluster version deployment".
 
-    :::image type="content" source="media/version-deployment-notification/activity-log-event.png" lightbox="media/version-deployment-notification/activity-log-event.png" alt-text="Screenshot of the activity log.":::
+    :::image type="content" source="media/version-deployment-notification/cluster-version-deployment.png" lightbox="media/version-deployment-notification/cluster-version-deployment.png" alt-text="Screenshot of the activity log.":::
 
 1. (Optional) To view details about the deployment, such as start time, end time, and duration, select the event. In the **Cluster version deployment** window, select **JSON**.
 
-    :::image type="content" source="media/version-deployment-notification/event-properties.png" alt-text="Screenshot of the notification event properties.":::
+    :::image type="content" source="media/version-deployment-notification/cluster-version-deployment-json.png" alt-text="Screenshot of the notification event properties.":::
 
 ## Send event data to Log Analytics
 
