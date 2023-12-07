@@ -60,26 +60,6 @@ For more information, see the relevant documentation:
 * [Connectors overview](connector-overview.md)
 * [Write custom code with Kusto client libraries](kusto/api/client-libraries.md)
 
-## Compare ingestion methods and tools
-
-| Ingestion name | Data type | Maximum file size | Streaming, queued, direct | Most common scenarios | Considerations |
-| --- | --- | --- | --- | --- | --- |
-| **Get Data experience** | [All supported formats](ingestion-supported-formats.md) | 1 GB uncompressed (see note)| Queued to container, local file and blob in direct ingestion | One-off, create table schema, definition of continuous ingestion with Event Grid, bulk ingestion with container (up to 5,000 blobs; no limit when using historical ingestion) |  |
-| [**LightIngest**](lightingest.md) | [All supported formats](ingestion-supported-formats.md) | 1 GB uncompressed (see note) | Queued via DM or direct ingestion |  Data migration, historical data with adjusted ingestion timestamps, bulk ingestion (no size restriction)| Case-sensitive, space-sensitive |
-| [**Kafka connector**](ingest-data-kafka.md) |Avro, ApacheAvro, JSON, CSV, Parquet, and ORC |Unlimited. Inherits Java restrictions.| Queued, streaming |Existing pipeline, high volume consumption from the source.| Preference may be determined by which “multiple producer/consumer” service is already used, or how managed of a service is desired. |
-| [**Apache Spark connector**](spark-connector.md) | Every format supported by the Spark environment  | Unlimited | Queued | Existing pipeline, preprocessing on Spark before ingestion, fast way to create a safe (Spark) streaming pipeline from the various sources the Spark environment supports. | Consider cost of Spark cluster. For batch write, compare with Azure Data Explorer data connection for Event Grid. For Spark streaming, compare with the data connection for event hub.
-| [**LogStash**](ingest-data-logstash.md) | JSON | Unlimited. Inherits Java restrictions. | Inputs to the connector are Logstash events, and the connector outputs to Kusto using queued ingestion.| Existing pipeline, leverage the mature, open source nature of Logstash for high volume consumption from the input(s).| Preference may be determined by which “multiple producer/consumer” service is already used, or how managed of a service is desired.
-| [**Azure Data Factory (ADF)**](./data-factory-integration.md) | [Supported data formats](/azure/data-factory/copy-activity-overview#supported-data-stores-and-formats) | Unlimited *(per ADF restrictions) | Queued or per ADF trigger | Supports formats that are usually unsupported, large files, can copy from over 90 sources, from on perm to cloud | This method takes relatively more time until data is ingested. ADF uploads all data to memory and then begins ingestion. |
-| [**Power Automate**](./flow.md) | [All supported formats](ingestion-supported-formats.md)| 1 GB uncompressed (see note) | Queued | Ingestion commands as part of flow. Used to automate pipelines. |
-| [**Logic Apps**](kusto/tools/logicapps.md)| [All supported formats](ingestion-supported-formats.md) | 1 GB uncompressed (see note) | Queued | Used to automate pipelines |
-| [**IoT Hub**](ingest-data-iot-hub-overview.md) | [Supported data formats](ingest-data-iot-hub-overview.md#data-format)  | N/A | Queued, streaming | IoT messages, IoT events, IoT properties | |
-| [**Event Hub**](ingest-data-event-hub-overview.md) | [Supported data formats](ingest-data-event-hub-overview.md#data-format) | N/A | Queued, streaming | Messages, events | |
-| [**Event Grid**](ingest-data-event-grid-overview.md) | [Supported data formats](ingest-data-event-grid-overview.md#data-format) | 1 GB uncompressed | Queued | Continuous ingestion from Azure storage, external data in Azure storage | Ingestion can be triggered by blob renaming or blob creation actions |
-| [**Kusto client libraries**](kusto/api/client-libraries.md) | [All supported formats](ingestion-supported-formats.md) | 1 GB uncompressed (see note) | Queued, streaming, direct | Write your own code according to organizational needs |
-
-> [!NOTE]
-> When referenced in the above table, ingestion supports a maximum file size of 6 GB. The recommendation is to ingest files between 100 MB and 1 GB.
-
 ## Data mappings
 
 [Data mappings](kusto/management/mappings.md) help bind source data fields to destination table columns. Mappings allows you to take data from different sources into the same table, based on the defined attributes. Different types of mappings are supported, both row-oriented (CSV, JSON and AVRO), and column-oriented (Parquet). In most methods, mappings can also be [pre-created on the table](kusto/management/create-ingestion-mapping-command.md) and referenced from the ingest command parameter.

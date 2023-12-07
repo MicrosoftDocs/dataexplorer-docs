@@ -66,7 +66,7 @@ LightIngest can be useful to load historical data from an existing storage syste
 
     :::image type="content" source="media/ingest-data-historical/ingest-new-data.png" alt-text="Screenshot of Azure Data Explorer web UI with Data tab selected on the left menu, and Ingest data dialog open to the right.":::
 
-1. Select **Next: Source**
+1. Select **Next: Source**.
 
 1. On the **Source** tab, under **Source type**, select **Blob container** to ingest data from a blob or ADLS Gen2 container.
 
@@ -78,6 +78,8 @@ LightIngest can be useful to load historical data from an existing storage syste
     - When selecting a container from your storage account, select your **Storage subscription**, **Storage account**, and **Container** from the dropdown menus.
 
         :::image type="content" source="media/ingest-data-historical/source-tab-container-from-subscription.png" alt-text="Screenshot of dialog box for selecting container from storage subscription and account.":::
+
+    [!INCLUDE [ingestion-size-limit](includes/ingestion-size-limit.md)]
 
 1. Select **Advanced settings** to define additional settings for the ingestion process using LightIngest.
 

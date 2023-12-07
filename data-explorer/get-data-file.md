@@ -9,7 +9,7 @@ ms.date: 11/16/2023
 
 Data ingestion is the process used to load data from one or more sources into a table in Azure Data Explorer. Once ingested, the data becomes available for query. In this article, you learn you how to get data from a local file into either a new or existing table.
 
-For general information on data ingestion, see [Azure Data Explorer data ingestion overview](ingest-data-overview.md)
+For general information on data ingestion, see [Azure Data Explorer data ingestion overview](ingest-data-overview.md).
 
 [!INCLUDE [get-data-flow](includes/get-data-flow.md)]
 
@@ -33,6 +33,8 @@ In the **Get data** window, the **Source** tab is selected.
 Select the data source from the available list. In this example, you are ingesting data from a **Local file**.
 
 :::image type="content" source="media/get-data-file/select-data-source.png" alt-text="Screenshot of get data window with source tab selected." lightbox="media/get-data-file/select-data-source.png":::
+
+[!INCLUDE [ingestion-size-limit](includes/ingestion-size-limit.md)]
 
 ## Configure
 
