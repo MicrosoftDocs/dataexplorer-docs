@@ -66,7 +66,7 @@ For more information, see the relevant documentation:
 
 ## Policies
 
-The following policies are the main policies related to getting and retaining data:
+The following policies are relevant to getting and retaining data:
 
 * [Queued policy](kusto/management/queuedpolicy.md)
 * [Merge policy](kusto/management/mergepolicy.md)
