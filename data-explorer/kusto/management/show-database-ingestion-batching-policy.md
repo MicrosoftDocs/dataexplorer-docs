@@ -7,7 +7,7 @@ ms.date: 05/24/2023
 ---
 # .show database policy ingestionbatching command
 
-Display the database's [ingestion batching policy](batchingpolicy.md) that defines data aggregation for batching. The ingestion batching policy applies to [queued ingestion](../../ingest-data-overview.md#queued-vs-streaming-ingestion).
+Display the database's [ingestion batching policy](batchingpolicy.md) that defines data aggregation for batching. The ingestion batching policy applies to [queued ingestion](../../ingest-data-overview.md#continuous-data-ingestion).
 
 ## Permissions
 

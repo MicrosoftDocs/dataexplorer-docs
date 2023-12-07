@@ -146,7 +146,7 @@ Here's an example of the needed level of specificity in planning:
     - Estimate the effort for our initial historical data migration to our Azure Data Explorer cluster.
     - Plan an approach to migrate historical data.
 - **Output C**: We'll have tested and determined the data ingestion rate achievable in our environment and can determine whether our data ingestion rate is sufficient to migrate historical data during the available time window.
-    - **Test C1**: Test different approaches of historical data migration. For more information, see [Comparing ingestion methods and tools](ingest-data-overview.md#comparing-ingestion-methods-and-tools).
+    - **Test C1**: Test different approaches of historical data migration.
     - **Test C2**: Test data transfer from the data source to our cluster by using [LightIngest](https://github.com/Azure/Kusto-Lightingest), continuous ingestion from blob storage, or data lake store. For more information, see [ingest historical data](ingest-data-historical.md).
 - **Goal D**: We'll have tested the data ingestion rate of incremental data loading and will have the data points to estimate the data ingestion and processing time window.
 - **Output D**: We'll have tested the data ingestion rate and can determine whether our data ingestion and processing requirements can be met with the identified approach.
