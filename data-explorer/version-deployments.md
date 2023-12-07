@@ -43,7 +43,7 @@ AzureActivity
 
 The results would look something like this:
 
-:::image type="content" source="media/version-deployment-notification/la-result.png" alt-text="Screenshot of Log Analytics results.":::
+:::image type="content" source="media/version-deployment-notification/log-analytics-result.png" alt-text="Screenshot of Log Analytics results.":::
 
 ## Related content
 
