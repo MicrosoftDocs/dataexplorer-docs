@@ -66,7 +66,17 @@ For more information, see the relevant documentation:
 
 ## Data mappings
 
-[Data mappings](kusto/management/mappings.md) help bind source data fields to destination table columns. Mappings allows you to take data from different sources into the same table, based on the defined attributes. Different types of mappings are supported, both row-oriented (CSV, JSON and AVRO), and column-oriented (Parquet). In most methods, mappings can also be [pre-created on the table](kusto/management/create-ingestion-mapping-command.md) and referenced from the ingest command parameter.
+[Data mappings](kusto/management/mappings.md) help bind source data fields to destination table columns. Different types of mappings are supported, both row-oriented (CSV, JSON and AVRO), and column-oriented (Parquet). In most methods, mappings can also be [pre-created on the table](kusto/management/create-ingestion-mapping-command.md) and referenced from the ingest command parameter.
+
+## Permissions
+
+The following list describes the permissions required for various ingestion scenarios:
+
+* To create a new table requires Database User or Database Admin permissions.
+* To ingest data into an existing table, without changing its schema, requires Database Ingestor permissions.
+* To change the schema of an existing table requires Table Admin or Database Admin permissions.
+
+For more information, see [Kusto role-based access control](kusto/access-control/role-based-access-control.md).
 
 ## Policies
 
@@ -79,16 +89,6 @@ The following policies are relevant to getting and retaining data:
 * [Update policy](kusto/management/updatepolicy.md)
 
 For a list of all polices, see [Policies overview](kusto/management/policies.md).
-
-## Permissions
-
-The following list describes the permissions required for various ingestion scenarios:
-
-* To create a new table requires Database User or Database Admin permissions.
-* To ingest data into an existing table, without changing its schema, requires Database Ingestor permissions.
-* To change the schema of an existing table requires Table Admin or Database Admin permissions.
-
-For more information, see [Kusto role-based access control](kusto/access-control/role-based-access-control.md).
 
 ## Related content
 
