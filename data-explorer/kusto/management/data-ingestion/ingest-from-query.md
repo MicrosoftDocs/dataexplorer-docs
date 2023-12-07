@@ -18,6 +18,8 @@ These commands execute a query or a management command and ingest the results of
 
 To cancel an ingest from query command, see [`cancel operation`](../cancel-operation-command.md).
 
+[!INCLUDE [direct-ingestion-note](../../../includes/direct-ingestion-note.md)]
+
 ## Permissions
 
 To perform different actions on a table, specific permissions are required:

@@ -9,7 +9,7 @@ ms.date: 07/12/2023
 
 This command inserts data into a table by pushing the data included within the command to the table.
 
-This command is intended for manual ad-hoc testing. For production use, we recommended using the methods described in [ingest from storage](ingest-from-storage.md) or [ingest from query](ingest-from-query.md), which are better for bulk delivery of large amounts of data.
+[!INCLUDE [direct-ingestion-note](../../../includes/direct-ingestion-note.md)]
 
 ## Permissions
 
