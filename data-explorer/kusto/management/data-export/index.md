@@ -9,6 +9,8 @@ ms.date: 11/05/2023
 
 Data export involves executing a Kusto query and saving its results. This process can be carried out either on the client side or the service side.
 
+For examples on data export, see [Related content](#related-content).
+
 ## Client-side export
 
 Client-side export gives you control over saving query results either to the local file system or pushing them to a preferred storage location. This flexibility is facilitated through the use of [Kusto client libraries](../../api/client-libraries.md). You can [create an app to run queries](../../api/get-started/app-basic-query.md), read the desired data, and implement an export process tailored to your requirements.
