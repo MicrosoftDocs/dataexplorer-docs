@@ -88,5 +88,6 @@ For more information, see [Kusto role-based access control](kusto/access-control
 
 ## Related content
 
+* [Connectors overview](connector-overview.md)
 * [Supported data formats](ingestion-supported-formats.md)
 * [Supported ingestion properties](ingestion-properties.md)
