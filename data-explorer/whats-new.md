@@ -16,9 +16,8 @@ Welcome to what's new in Azure Data Explorer. This article details new and signi
 | Article title | Description |
 |--|--|
 | [Migrate a Virtual Network injected cluster to private endpoints (Preview)](security-network-migrate-vnet-to-private-endpoint.md) | New article. Describes how to migrate a Virtual Network injected Azure Data Explorer Cluster to private endpoints.|
-| [Ingest data from Splunk Universal Forwarder to Azure Data Explorer](ingest-data-splunk-uf.md)| New article. Describes how to ingest data from Splunk Universal Forwarder.|
-|- [Ingest data with Apache Flink into Azure Data Explorer](ingest-data-flink.md) <br/> - [Data connectors overview](connector-overview.md)| New article that describes how to ingest data with Apache Flink, and updated data connector overview with additional capabilities.|
-| [Use follower databases](follower.md) | Updated article. Added limitations for customer managed keys.|
+| - [Ingest data from Splunk Universal Forwarder to Azure Data Explorer](ingest-data-splunk-uf.md) <br/> - [Ingest data with Apache Flink into Azure Data Explorer](ingest-data-flink.md) <br/> - [Data connectors overview](connector-overview.md)| New articles that describe how to ingest data with Splunk Universal Forwarder and Apache Flink, and updated data connector overview. |
+| [Use follower databases](follower.md) | Updated article. Update limitations for clusters using customer-managed keys.|
 | [Create Power Apps application to query data in Azure Data Explorer](power-apps-connector.md)| Updated article. Refreshed content.|
 | [Create a Microsoft Entra application registration in Azure Data Explorer](provision-entra-id-app.md) | Updated article. Added section on creating a Microsoft Entra service principal.|
 
@@ -34,7 +33,7 @@ Welcome to what's new in Azure Data Explorer. This article details new and signi
 
 | Article title | Description |
 |--|--|
- |- [Ingest data with Fluent Bit](fluent-bit.md) <br/> - [Data connectors overview](connector-overview.md)| New article that describes how to ingest data from Fluent Bit, and updated data connector overview with additional capabilities.|
+|- [Ingest data with Fluent Bit](fluent-bit.md) <br/> - [Data connectors overview](connector-overview.md)| New article that describes how to ingest data from Fluent Bit, and updated data connector overview with additional capabilities.|
 | [Connect a cluster behind a private endpoint to a Power BI service](power-bi-private-endpoint.md)| New article. Describes how to connect an Azure Data Explorer cluster behind a private endpoint to a Power BI service.|
 
 ## September 2023
