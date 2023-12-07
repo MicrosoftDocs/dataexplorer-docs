@@ -8,11 +8,11 @@ ms.date: 12/06/2023
 
 # Azure Data Explorer data ingestion overview
 
-Data ingestion involves loading data from various sources into a table in your cluster. Azure Data Explorer ensures data validity, converts formats as needed, and performs additional manipulations like schema matching, organization, indexing, encoding, and compression. Once ingested, data is available for query.
+Data ingestion involves loading data into a table in your cluster. Azure Data Explorer ensures data validity, converts formats as needed, and performs additional manipulations like schema matching, organization, indexing, encoding, and compression. Once ingested, data is available for query.
 
-Azure Data Explorer offers one-time data ingestion or the establishment of a continuous ingestion pipeline, using either streaming or queued ingestion. To determine which is right for you, see [One-time data ingestion](#one-time-data-ingestion) and [Continuous ingestion](#continuous-data-ingestion).
+Azure Data Explorer offers one-time ingestion or the establishment of a continuous ingestion pipeline, using either streaming or queued ingestion. To determine which is right for you, see [One-time data ingestion](#one-time-data-ingestion) and [Continuous ingestion](#continuous-data-ingestion).
 
-For any method of data ingestion, you need access to a table. Once you [create a cluster and database](create-cluster-and-database.md), you can either [create a table in the Azure Data Explorer web UI](create-table-wizard.md) or use the [.create table command](kusto/management/create-table-command.md).
+For any method of ingestion, you need access to an Azure Data Explorer table. Once you [create a cluster and database](create-cluster-and-database.md), you can either [create a table in the web UI](create-table-wizard.md) or use the [.create table command](kusto/management/create-table-command.md).
 
 > [!NOTE]
 > Data is persisted in storage according to the set [retention policy](kusto/management/retentionpolicy.md).
