@@ -3,7 +3,7 @@ title: What's new in Azure Data Explorer documentation
 description: What's new in the Azure Data Explorer documentation
 ms.reviewer: orspodek
 ms.topic: reference
-ms.date: 12/04/2023
+ms.date: 12/07/2023
 ---
 # What's new in Azure Data Explorer documentation
 
@@ -16,7 +16,7 @@ Welcome to what's new in Azure Data Explorer. This article details new and signi
 | Article title | Description |
 |--|--|
 | [Migrate a Virtual Network injected cluster to private endpoints (Preview)](security-network-migrate-vnet-to-private-endpoint.md) | New article. Describes how to migrate a Virtual Network injected Azure Data Explorer Cluster to private endpoints.|
-| - [Ingest data from Splunk Universal Forwarder to Azure Data Explorer](ingest-data-splunk-uf.md) <br/> - [Ingest data with Apache Flink into Azure Data Explorer](ingest-data-flink.md) <br/> - [Data connectors overview](connector-overview.md)| New articles that describe how to ingest data with Splunk Universal Forwarder and Apache Flink, and updated data connector overview. |
+| - [Ingest data from Splunk Universal Forwarder](ingest-data-splunk-uf.md) <br/> - [Ingest data with Apache Flink](ingest-data-flink.md) <br/> - [Data connectors overview](connector-overview.md)| New articles that describe how to ingest data with Splunk Universal Forwarder and Apache Flink, and updated data connector overview. |
 | [Use follower databases](follower.md) | Updated article. Update limitations for clusters using customer-managed keys.|
 | [Create Power Apps application to query data in Azure Data Explorer](power-apps-connector.md)| Updated article. Refreshed content.|
 | [Create a Microsoft Entra application registration in Azure Data Explorer](provision-entra-id-app.md) | Updated article. Added section on creating a Microsoft Entra service principal.|
