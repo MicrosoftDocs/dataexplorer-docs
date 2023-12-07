@@ -82,7 +82,7 @@ For more information, see [Kusto role-based access control](kusto/access-control
 
 The following policies are relevant to getting and retaining data:
 
-* [Batching policy](kusto/management/batchingpolicy.md.md)
+* [Batching policy](kusto/management/batchingpolicy.md)
 * [Merge policy](kusto/management/mergepolicy.md)
 * [Partitioning policy](kusto/management/partitioningpolicy.md)
 * [Retention policy](kusto/management/retentionpolicy.md)
