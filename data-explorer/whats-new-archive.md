@@ -9,6 +9,30 @@ ms.date: 11/08/2023
 
 Welcome to what's new in Azure Data Explorer archive. This article is an archive of new and significantly updated content in the Azure Data Explorer documentation.
 
+## November 2022
+
+**Functions library**
+
+| Article title | Description |
+|--|--|
+|- [series_mv_ee_anomalies_fl()](kusto/functions-library/series-mv-ee-anomalies-fl.md)<br /> - [series_mv_if_anomalies_fl()](kusto/functions-library/series-mv-if-anomalies-fl.md)<br /> - [series_mv_oc_anomalies_fl()](kusto/functions-library/series-mv-oc-anomalies-fl.md) | New article. Describes multivariate anomalies in a series user-defined functions. |
+
+**Management**
+
+| Article title | Description |
+|--|--|
+|[.show function(s)](kusto/management/show-function.md) | Updated article. Added optional arguments and tables to `.show function`. |
+
+**Query**
+
+| Article title | Description |
+|--|--|
+|- [unicode_codepoints_from_string()](kusto/query/unicode-codepoints-from-string-function.md) <br/> - [unicode_codepoints_to_string()](kusto/query/unicode-codepoints-to-string-function.md) | Updated articles. Unicode codepoints conversion functions for strings. |
+|- [ipv6_is_in_any_range()](kusto/query/ipv6-is-in-any-range-function.md) <br/> - [ipv6_is_in_range()](kusto/query/ipv6-is-in-range-function.md) | New articles. Functions that check whether an IPv6 address is in a range.|
+|- [count_distinct() (aggregation function) - (preview)](kusto/query/count-distinct-aggfunction.md) <br/> - [count_distinctif() (aggregation function) - (preview)](kusto/query/count-distinctif-aggfunction.md) | New articles. Count unique values specified by the scalar expression per summary group. |
+|- [series_ceiling()](kusto/query/series-ceiling-function.md) <br/> - [series_floor()](kusto/query/series-floor-function.md) <br/> - [series_log()](kusto/query/series-log-function.md)| New articles. Calculate the element-wise functions of the numeric series input. |
+|- [bin_auto()](kusto/query/bin-autofunction.md) <br/> - [binary_shift_left()](kusto/query/binary-shift-leftfunction.md) <br/> - [binary_shift_right()](kusto/query/binary-shift-rightfunction.md) <br/> - [binary_xor()](kusto/query/binary-xorfunction.md) <br/> - [bin_at()](kusto/query/binatfunction.md) <br/> - [bin()](kusto/query/binfunction.md) <br/> - [bitset_count_ones()](kusto/query/bitset-count-onesfunction.md) <br/> - [buildschema() (aggregation function)](kusto/query/buildschema-aggfunction.md) <br/> - [case()](kusto/query/casefunction.md) <br/> - [ceiling()](kusto/query/ceilingfunction.md) <br/> - [cosmosdb_sql_request plugin](kusto/query/cosmosdb-plugin.md)| Updated articles. Added new tables and examples. |
+
 ## October 2022
 
 **General**
