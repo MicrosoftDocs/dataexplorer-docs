@@ -9,8 +9,6 @@ ms.date: 03/09/2023
 
 Calculates S2 cell tokens that cover a line or multiline on Earth. This function is a useful geospatial join tool.
 
-Read more about [S2 cell hierarchy](https://s2geometry.io/devguide/s2cell_hierarchy).
-
 ## Syntax
 
 `geo_line_to_s2cells(`*lineString* [`,` *level*[ `,` *radius*]]`)`
