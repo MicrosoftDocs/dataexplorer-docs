@@ -3,7 +3,7 @@ title: 'Azure Data Explorer data ingestion overview'
 description: 'Learn about the different ways you can ingest (load) data in Azure Data Explorer'
 ms.reviewer: tzgitlin
 ms.topic: conceptual
-ms.date: 12/06/2023
+ms.date: 12/10/2023
 ---
 
 # Azure Data Explorer data ingestion overview
@@ -16,6 +16,15 @@ For any method of ingestion, you need access to an Azure Data Explorer table. On
 
 > [!NOTE]
 > Data is persisted in storage according to the set [retention policy](kusto/management/retentionpolicy.md).
+
+## Permissions
+
+The following list describes the permissions required for various ingestion scenarios:
+
+* To ingest data into an existing table, without changing its schema, requires Database Ingestor permissions.
+* To change the schema of an existing table requires Table Admin or Database Admin permissions.
+
+For more information, see [Kusto role-based access control](kusto/access-control/role-based-access-control.md).
 
 ## One-time data ingestion
 
@@ -67,16 +76,6 @@ For more information, see the relevant documentation:
 ## Data mappings
 
 [Data mappings](kusto/management/mappings.md) help bind source data fields to destination table columns. Different types of mappings are supported, both row-oriented (CSV, JSON and AVRO), and column-oriented (Parquet). In most methods, mappings can also be [pre-created on the table](kusto/management/create-ingestion-mapping-command.md) and referenced from the ingest command parameter.
-
-## Permissions
-
-The following list describes the permissions required for various ingestion scenarios:
-
-* To create a new table requires Database User or Database Admin permissions.
-* To ingest data into an existing table, without changing its schema, requires Database Ingestor permissions.
-* To change the schema of an existing table requires Table Admin or Database Admin permissions.
-
-For more information, see [Kusto role-based access control](kusto/access-control/role-based-access-control.md).
 
 ## Policies
 
