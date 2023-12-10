@@ -66,7 +66,7 @@ For more information, see the relevant documentation:
 
 ## Data mappings
 
-[Data mappings](kusto/management/mappings.md) help bind source data fields to destination table columns. Different types of mappings are supported, both row-oriented (CSV, JSON and AVRO), and column-oriented (Parquet). In most methods, mappings can also be [pre-created on the table](kusto/management/create-ingestion-mapping-command.md) and referenced from the ingest command parameter.
+[Data mappings](kusto/management/mappings.md) help bind source data fields to destination table columns. Different types of mappings are supported, including row-oriented formats like CSV, JSON, and AVRO, as well as column-oriented formats like Parquet. In most methods, mappings can also be [pre-created on the table](kusto/management/create-ingestion-mapping-command.md). The method for using a mapping varies depending on the ingestion approach. For instance, when using ingestion commands, you can reference a mapping through a command parameter.
 
 ## Policies
 
