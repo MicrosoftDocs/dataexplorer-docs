@@ -17,15 +17,6 @@ For any method of ingestion, you need access to an Azure Data Explorer table. On
 > [!NOTE]
 > Data is persisted in storage according to the set [retention policy](kusto/management/retentionpolicy.md).
 
-## Permissions
-
-The following list describes the permissions required for various ingestion scenarios:
-
-* To ingest data into an existing table, without changing its schema, requires Database Ingestor permissions.
-* To change the schema of an existing table requires Table Admin or Database Admin permissions.
-
-For more information, see [Kusto role-based access control](kusto/access-control/role-based-access-control.md).
-
 ## One-time data ingestion
 
 One-time ingestion is beneficial for importing historical data into a new database, filling in missing data, and during the initial stages of prototyping and data analysis, as it allows for quick data integration without committing to a continuous pipeline.
