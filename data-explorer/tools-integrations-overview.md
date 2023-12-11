@@ -390,7 +390,7 @@ The following open source repositories contain the source code for the Kusto Que
 * [Sync Kusto](kusto/tools/synckusto.md)
 * [Delta Kusto](https://github.com/microsoft/delta-kusto)
 
-### [Visualize](#tab/visualize)
+### [Visualizations](#tab/visualizations)
 
 Visualizations, dashboards, and reporting blurb.
 
