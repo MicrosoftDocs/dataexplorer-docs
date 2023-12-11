@@ -137,9 +137,6 @@ items:
           - name: Data ingestion overview
             displayName: pipelines, connectors, plugins, Python, .NET, Java, Node, REST
             href: ingest-data-overview.md
-          - name: Data integrations overview
-            displayName: connect, integrate, integration, export, orchestrate
-            href: integrate-data-overview.md
           - name: Get data in the web UI
             items:
               - name: Get data from local file
@@ -231,45 +228,50 @@ items:
                 href: data-factory-template.md
               - name: Run management commands using Azure Data Factory
                 href: data-factory-command-activity.md
-          - name: Apache Flink
-            href: ingest-data-flink.md
-            displayName: ingest data, ingestion, connector
-          - name: Apache Kafka
-            displayName: ingest data, ingestion, connector
-            href: ingest-data-kafka.md
-          - name: Apache Log4J 2
-            displayName: ingest data, ingestion, connector
-            href: apache-log4j2-connector.md
-          - name: Apache Spark
-            displayName: connector, export, ingest
-            href: spark-connector.md
-          - name: Azure Stream Analytics
-            href: stream-analytics-connector.md
-            displayName: ingest data, ingestion, connector
-          - name: Fluent Bit
-            href: fluent-bit.md
-            displayName: ingest data, ingestion, connector
-          - name: Logstash
-            displayName: ingest data, ingestion, connector
-            href: ingest-data-logstash.md
-          - name: NLog
-            displayName: ingest data, ingestion, connector
-            href: nlog-sink.md
-          - name: OpenTelemetry
-            href: open-telemetry-connector.md
-            displayName: OTel, CNCF, Open Telemetry, ingest data, ingestion, connector
-          - name: Serilog
-            displayName: ingest data, ingestion, connector
-            href: serilog-sink.md
-          - name: Splunk
-            displayName: ingest data, ingestion, connector
-            href: ingest-data-splunk.md
-          - name: Splunk Universal Forwarder
-            displayName: ingest data, ingestion, connector
-            href: ingest-data-splunk-uf.md
-          - name: Telegraf
-            displayName: ingest data, ingestion, connector
-            href: ingest-data-telegraf.md
+          - name: Use data connectors
+            items:
+            - name: Data integrations overview
+              displayName: connect, integrate, integration, export, orchestrate
+              href: integrate-data-overview.md
+            - name: Apache Flink
+              href: ingest-data-flink.md
+              displayName: ingest data, ingestion, connector
+            - name: Apache Kafka
+              displayName: ingest data, ingestion, connector
+              href: ingest-data-kafka.md
+            - name: Apache Log4J 2
+              displayName: ingest data, ingestion, connector
+              href: apache-log4j2-connector.md
+            - name: Apache Spark
+              displayName: connector, export, ingest
+              href: spark-connector.md
+            - name: Azure Stream Analytics
+              href: stream-analytics-connector.md
+              displayName: ingest data, ingestion, connector
+            - name: Fluent Bit
+              href: fluent-bit.md
+              displayName: ingest data, ingestion, connector
+            - name: Logstash
+              displayName: ingest data, ingestion, connector
+              href: ingest-data-logstash.md
+            - name: NLog
+              displayName: ingest data, ingestion, connector
+              href: nlog-sink.md
+            - name: OpenTelemetry
+              href: open-telemetry-connector.md
+              displayName: OTel, CNCF, Open Telemetry, ingest data, ingestion, connector
+            - name: Serilog
+              displayName: ingest data, ingestion, connector
+              href: serilog-sink.md
+            - name: Splunk
+              displayName: ingest data, ingestion, connector
+              href: ingest-data-splunk.md
+            - name: Splunk Universal Forwarder
+              displayName: ingest data, ingestion, connector
+              href: ingest-data-splunk-uf.md
+            - name: Telegraf
+              displayName: ingest data, ingestion, connector
+              href: ingest-data-telegraf.md
           - name: Scenarios
             items:
               - name: E2E programmatic Blob ingestion
