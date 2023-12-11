@@ -9,8 +9,6 @@ ms.date: 03/09/2023
 
 Calculates S2 cell neighbors.
 
-Read more about [S2 cell hierarchy](https://s2geometry.io/devguide/s2cell_hierarchy).
-
 ## Syntax
 
 `geo_s2cell_neighbors(`*s2cell*`)`
