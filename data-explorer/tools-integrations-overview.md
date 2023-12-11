@@ -90,6 +90,10 @@ The following table summarizes the available tools and integrations and their ca
 | Web UI get data                         | &check; |         |         |                |         |              |           |
 | Web UI query editor                     |         | &check; |         |                |         |              | &check;   |
 
+### [Visualizations](#tab/visualizations)
+
+TBD
+
 ---
 
 ## Detailed descriptions
