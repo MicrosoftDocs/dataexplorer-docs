@@ -33,8 +33,8 @@ A sandbox policy has the following properties.
   * Values can be between 1 and 100.
   * The default value is 50.
 * **MaxMemoryMbPerSandbox**: Defines the maximum amount of memory (in megabytes) that a single sandbox can use.
-  * Values can be between 200 and 65536 (64 GB).
-  * The default value is 20480 (20 GB).
+  * For legacy sandboxes, values can be between 200 and 65536 (64 GB). The default value is 20480 (20 GB).
+  * For Hyper-V technology sandboxes, values can be between 200 and 32768 (32 GB). The default value is 1024 (1 GB). The maximum memory of all sandboxes on a node (*TargetCountPerNode* \* *MaxMemoryMbPerSandbox*) is 32768 (32 GB).
 
 If a policy isn't explicitly defined for a sandbox kind, an implicit policy with the default values and `IsEnabled` set to `true` applies.
 
@@ -50,7 +50,7 @@ The following policy sets different limits for `PythonExecution` and `RExecution
     "InitializeOnStartup": false,
     "TargetCountPerNode": 4,
     "MaxCpuRatePerSandbox": 55,
-    "MaxMemoryMbPerSandbox": 65536
+    "MaxMemoryMbPerSandbox": 8192
   },
   {
     "SandboxKind": "RExecution",
@@ -64,8 +64,7 @@ The following policy sets different limits for `PythonExecution` and `RExecution
 ```
 
 > [!NOTE]
-> * Changes to the sandbox policy apply to sandboxes created starting from the time the change is applied. Sandboxes that have been pre-allocated before the policy change, will continue running according to the previous policy limits, until they are used as part of a query.
-> * There could be a delay of up to five minutes until the change in policy takes effect, because the cluster nodes periodically poll for policy changes.
+> * There could be a delay of up to five minutes until the change in policy takes effect, because the cluster needs to recycle the sandboxes that have been pre-allocated before the policy change.
 
 ## Related content
 
