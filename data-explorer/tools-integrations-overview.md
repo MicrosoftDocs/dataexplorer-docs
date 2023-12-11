@@ -34,33 +34,33 @@ Blurb
 
 The following table summarizes the available connectors and their capabilities:
 
-| Name                                                                                  | Input   | Output  | Export  | Orchestrate | Query   | Visualize |
-| ------------------------------------------------------------------------------------- | ------- | ------- | ------- | ----------- | ------- | --------- |
-| [Apache Kafka](#apache-kafka)                                                         | &check; |         |         |             |         |           |
-| [Apache Flink](#apache-flink)                                                         | &check; |         |         |             |         |           |
-| [Apache Log4J 2](#apache-log4j-2)                                                     | &check; |         |         |             |         |           |
-| [Apache Spark](#apache-spark)                                                         | &check; |         | &check; |             | &check; |           |
-| [Apache Spark for Azure Synapse Analytics](#apache-spark-for-azure-synapse-analytics) | &check; |         | &check; |             | &check; |           |
-| [Azure Cosmos DB](#azure-cosmos-db)                                                   | &check; |         |         |             |         |           |
-| [Azure Data Factory](#azure-data-factory)                                             | &check; |         |         | &check;     |         |           |
-| [Azure Event Grid](#azure-event-grid)                                                 |         |         |         | &check;     |         |           |
-| [Azure Event Hubs](#azure-event-hubs)                                                 | &check; |         |         |             |         |           |
-| [Azure Functions](#azure-functions)                                                   | &check; | &check; |         |             | &check; |           |
-| [Azure IoT Hubs](#azure-iot-hubs)                                                     | &check; |         |         |             |         |           |
-| [Azure Stream Analytics](#azure-stream-analytics)                                     | &check; |         |         |             |         |           |
-| [Fluent Bit](#fluent-bit)                                                             |         |         |         |             |         |           |
-| Logic Apps                                                                            |         |         |         |             |         |           |
-| [Logstash](#logstash)                                                                 | &check; |         |         |             |         |           |
-| Matlab                                                                                |         |         |         |             | &check; |           |
-| [NLog](#nlog)                                                                         |         |         |         |             | &check; |           |
-| [Open Telemetry](#open-telemetry)                                                     | &check; |         |         |             |         |           |
-| Power Apps                                                                            | &check; | &check; |         |             | &check; |           |
-| [Power Automate](#power-automate)                                                     | &check; | &check; |         | &check;     | &check; |           |
-| [Serilog](#serilog)                                                                   | &check; |         |         |             |         |           |
-| [Splunk](#splunk)                                                                     |         |         |         |             |         |           |
-| [Telegraf](#telegraf)                                                                 | &check; |         |         |             |         |           |
-| ODBC                                                                                  |         |         |         |             | &check; |           |
-| JDBC                                                                                  |         |         |         |             | &check; |           |
+| Name                                                                                  | Input   | Output  | Export  | Orchestrate | Query   |
+|---------------------------------------------------------------------------------------|---------|---------|---------|-------------|---------|
+| [Apache Kafka](#apache-kafka)                                                         | &check; |         |         |             |         |
+| [Apache Flink](#apache-flink)                                                         | &check; |         |         |             |         |
+| [Apache Log4J 2](#apache-log4j-2)                                                     | &check; |         |         |             |         |
+| [Apache Spark](#apache-spark)                                                         | &check; |         | &check; |             | &check; |
+| [Apache Spark for Azure Synapse Analytics](#apache-spark-for-azure-synapse-analytics) | &check; |         | &check; |             | &check; |
+| [Azure Cosmos DB](#azure-cosmos-db)                                                   | &check; |         |         |             |         |
+| [Azure Data Factory](#azure-data-factory)                                             | &check; |         |         | &check;     |         |
+| [Azure Event Grid](#azure-event-grid)                                                 |         |         |         | &check;     |         |
+| [Azure Event Hubs](#azure-event-hubs)                                                 | &check; |         |         |             |         |
+| [Azure Functions](#azure-functions)                                                   | &check; | &check; |         |             | &check; |
+| [Azure IoT Hubs](#azure-iot-hubs)                                                     | &check; |         |         |             |         |
+| [Azure Stream Analytics](#azure-stream-analytics)                                     | &check; |         |         |             |         |
+| [Fluent Bit](#fluent-bit)                                                             |         |         |         |             |         |
+| Logic Apps                                                                            |         |         |         |             |         |
+| [Logstash](#logstash)                                                                 | &check; |         |         |             |         |
+| Matlab                                                                                |         |         |         |             | &check; |
+| [NLog](#nlog)                                                                         |         |         |         |             | &check; |
+| [Open Telemetry](#open-telemetry)                                                     | &check; |         |         |             |         |
+| Power Apps                                                                            | &check; | &check; |         |             | &check; |
+| [Power Automate](#power-automate)                                                     | &check; | &check; |         | &check;     | &check; |
+| [Serilog](#serilog)                                                                   | &check; |         |         |             |         |
+| [Splunk](#splunk)                                                                     |         |         |         |             |         |
+| [Telegraf](#telegraf)                                                                 | &check; |         |         |             |         |
+| ODBC                                                                                  |         |         |         |             | &check; |
+| JDBC                                                                                  |         |         |         |             | &check; |
 
 ### [Tools and integrations](#tab/integrations)
 
@@ -366,10 +366,6 @@ The following open source repositories contain the source code for the Kusto Que
 * [Microsoft Power Apps](power-apps-connector.md)
 * Azure Data Studio: [Kusto extension overview](/sql/azure-data-studio/extensions/kusto-extension?context=%252fazure%252fdata-explorer%252fcontext%252fcontext), [use Kusto](/sql/azure-data-studio/notebooks/notebooks-kusto-kernel?context=%252fazure%252fdata-explorer%252fcontext%252fcontext), and [use Kqlmagic](/sql/azure-data-studio/notebooks-kqlmagic?context=%252fazure%252fdata-explorer%252fcontext%252fcontext)
 
-### Visualizations, dashboards, and reporting
-
-The [visualization overview](viz-overview.md) details data visualization, dashboards, and reporting options.
-
 #### Notebook connectivity
 
 * [Azure Notebooks](/sql/azure-data-studio/notebooks/notebooks-kqlmagic?context=%252fazure%252fdata-explorer%252fcontext%252fcontext%253fcontext%253d%252fazure%252fdata-explorer%252fcontext%252fcontext)
@@ -393,6 +389,69 @@ The [visualization overview](viz-overview.md) details data visualization, dashbo
 * [Azure Pipelines](devops.md)
 * [Sync Kusto](kusto/tools/synckusto.md)
 * [Delta Kusto](https://github.com/microsoft/delta-kusto)
+
+### [Visualize](#tab/visualize)
+
+Visualizations, dashboards, and reporting blurb.
+
+### Azure Data Explorer dashboards
+
+Azure Data Explorer dashboards is a web application that enables you to run queries and build dashboards in the stand-alone web application, the [Azure Data Explorer web UI](web-query-data.md). Azure Data Explorer dashboards provide three main advantages:
+
+* Natively export queries from the Azure Data Explorer web UI to Azure Data Explorer dashboards.
+* Explore the data in the Azure Data Explorer web UI.
+* Optimized dashboard rendering performance.
+
+For more information, see, [Visualize data with Azure Data Explorer dashboards](azure-data-explorer-dashboards.md).
+
+### Kusto Query Language visualizations
+
+The Kusto Query Language [`render operator`](kusto/query/renderoperator.md) offers various visualizations such as tables, pie charts, and bar charts to depict query results. Query visualizations are helpful in anomaly detection and forecasting, machine learning, and more.
+
+### Power BI
+
+Azure Data Explorer provides the capability to connect to [Power BI](https://powerbi.microsoft.com) using various methods:
+
+* [Built-in native Power BI connector](power-bi-data-connector.md?tabs=connector)
+
+* [Query import from Azure Data Explorer into Power BI](power-bi-data-connector.md)
+
+* [SQL query](power-bi-sql-query.md)
+
+### Microsoft Excel
+
+Azure Data Explorer provides the capability to connect to [Microsoft Excel](https://products.office.com/excel) using the [built-in native Excel connector](excel-connector.md), or [import a query](excel-blank-query.md) from Azure Data Explorer into Excel.
+
+### Grafana
+
+[Grafana](https://grafana.com) provides an Azure Data Explorer plugin that enables you to visualize data from Azure Data Explorer. You [set up Azure Data Explorer as a data source for Grafana, and then visualize the data](grafana.md).
+
+### Kibana
+
+Azure Data Explorer provides the capability to connect to [Kibana](https://www.elastic.co/guide/en/kibana/6.8/discover.html) using K2Bridge, an open source connector. You [set up Azure Data Explorer as a data source for Kibana, and then visualize the data](k2bridge.md).
+
+### ODBC connector
+
+Azure Data Explorer provides an [Open Database Connectivity (ODBC) connector](connect-odbc.md) so any application that supports ODBC can connect to Azure Data Explorer.
+
+### Tableau
+
+Azure Data Explorer provides the capability to connect to [Tableau](https://www.tableau.com)
+ using the [ODBC connector](connect-odbc.md) and then [visualize the data in Tableau](tableau.md).
+
+### Qlik
+
+Azure Data Explorer provides the capability to connect to [Qlik](https://www.qlik.com) using the [ODBC connector](connect-odbc.md) and then create Qlik Sense dashboards and visualize the data. Using the following video, you can learn to visualize Azure Data Explorer data with Qlik.
+
+> [!VIDEO https://www.youtube.com/embed/nhWIiBwxjjU]
+
+### Sisense
+
+Azure Data Explorer provides the capability to connect to [Sisense](https://www.sisense.com) using the JDBC connector. You [set up Azure Data Explorer as a data source for Sisense, and then visualize the data](sisense.md).
+
+### Redash
+
+You can use [Redash](https://redash.io/) to build dashboards and visualize data. [Set up Azure Data Explorer as a data source for Redash, and then visualize the data](redash.md).
 
 ---
 
