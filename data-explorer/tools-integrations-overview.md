@@ -34,33 +34,33 @@ Blurb
 
 The following table summarizes the available connectors and their capabilities:
 
-| Name                                                                                  | Input   | Output  | Export  | Orchestrate | Query   |
-| ------------------------------------------------------------------------------------- | ------- | ------- | ------- | ----------- | ------- |
-| [Apache Kafka](#apache-kafka)                                                         | &check; |         |         |             |         |
-| [Apache Flink](#apache-flink)                                                         | &check; |         |         |             |         |
-| [Apache Log4J 2](#apache-log4j-2)                                                     | &check; |         |         |             |         |
-| [Apache Spark](#apache-spark)                                                         | &check; |         | &check; |             | &check; |
-| [Apache Spark for Azure Synapse Analytics](#apache-spark-for-azure-synapse-analytics) | &check; |         | &check; |             | &check; |
-| [Azure Cosmos DB](#azure-cosmos-db)                                                   | &check; |         |         |             |         |
-| [Azure Data Factory](#azure-data-factory)                                             | &check; |         |         | &check;     |         |
-| [Azure Event Grid](#azure-event-grid)                                                 |         |         |         | &check;     |         |
-| [Azure Event Hubs](#azure-event-hubs)                                                 | &check; |         |         |             |         |
-| [Azure Functions](#azure-functions)                                                   | &check; | &check; |         |             | &check; |
-| [Azure IoT Hubs](#azure-iot-hubs)                                                     | &check; |         |         |             |         |
-| [Azure Stream Analytics](#azure-stream-analytics)                                     | &check; |         |         |             |         |
-| [Fluent Bit](#fluent-bit)                                                             |         |         |         |             |         |
-| Logic Apps                                                                            |         |         |         |             |         |
-| [Logstash](#logstash)                                                                 | &check; |         |         |             |         |
-| Matlab                                                                                |         |         |         |             | &check; |
-| [NLog](#nlog)                                                                         |         |         |         |             | &check; |
-| [Open Telemetry](#open-telemetry)                                                     | &check; |         |         |             |         |
-| Power Apps                                                                            | &check; | &check; |         |             | &check; |
-| [Power Automate](#power-automate)                                                     | &check; | &check; |         | &check;     | &check; |
-| [Serilog](#serilog)                                                                   | &check; |         |         |             |         |
-| [Splunk](#splunk)                                                                     |         |         |         |             |         |
-| [Telegraf](#telegraf)                                                                 | &check; |         |         |             |         |
-| ODBC                                                                                  |         |         |         |             | &check; |
-| JDBC                                                                                  |         |         |         |             | &check; |
+| Name                                                                                  | Input   | Output  | Export  | Orchestrate | Query   | Visualize |
+| ------------------------------------------------------------------------------------- | ------- | ------- | ------- | ----------- | ------- | --------- |
+| [Apache Kafka](#apache-kafka)                                                         | &check; |         |         |             |         |           |
+| [Apache Flink](#apache-flink)                                                         | &check; |         |         |             |         |           |
+| [Apache Log4J 2](#apache-log4j-2)                                                     | &check; |         |         |             |         |           |
+| [Apache Spark](#apache-spark)                                                         | &check; |         | &check; |             | &check; |           |
+| [Apache Spark for Azure Synapse Analytics](#apache-spark-for-azure-synapse-analytics) | &check; |         | &check; |             | &check; |           |
+| [Azure Cosmos DB](#azure-cosmos-db)                                                   | &check; |         |         |             |         |           |
+| [Azure Data Factory](#azure-data-factory)                                             | &check; |         |         | &check;     |         |           |
+| [Azure Event Grid](#azure-event-grid)                                                 |         |         |         | &check;     |         |           |
+| [Azure Event Hubs](#azure-event-hubs)                                                 | &check; |         |         |             |         |           |
+| [Azure Functions](#azure-functions)                                                   | &check; | &check; |         |             | &check; |           |
+| [Azure IoT Hubs](#azure-iot-hubs)                                                     | &check; |         |         |             |         |           |
+| [Azure Stream Analytics](#azure-stream-analytics)                                     | &check; |         |         |             |         |           |
+| [Fluent Bit](#fluent-bit)                                                             |         |         |         |             |         |           |
+| Logic Apps                                                                            |         |         |         |             |         |           |
+| [Logstash](#logstash)                                                                 | &check; |         |         |             |         |           |
+| Matlab                                                                                |         |         |         |             | &check; |           |
+| [NLog](#nlog)                                                                         |         |         |         |             | &check; |           |
+| [Open Telemetry](#open-telemetry)                                                     | &check; |         |         |             |         |           |
+| Power Apps                                                                            | &check; | &check; |         |             | &check; |           |
+| [Power Automate](#power-automate)                                                     | &check; | &check; |         | &check;     | &check; |           |
+| [Serilog](#serilog)                                                                   | &check; |         |         |             |         |           |
+| [Splunk](#splunk)                                                                     |         |         |         |             |         |           |
+| [Telegraf](#telegraf)                                                                 | &check; |         |         |             |         |           |
+| ODBC                                                                                  |         |         |         |             | &check; |           |
+| JDBC                                                                                  |         |         |         |             | &check; |           |
 
 ### [Tools and integrations](#tab/integrations)
 
@@ -103,6 +103,7 @@ Brief blurb about the following:
 [Apache Kafka](https://kafka.apache.org/documentation/) is a distributed streaming platform for building real-time streaming data pipelines that reliably move data between systems or applications. Kafka Connect is a tool for scalable and reliable streaming of data between Apache Kafka and other data systems. The Kafka Sink serves as the connector from Kafka and doesn't require using code. This is gold certified by Confluent - has gone through comprehensive review and testing for quality, feature completeness, compliance with standards, and for performance.
 
 * **Functionality:** Ingestion
+
 * **Ingestion type supported:** Batching, Streaming
 * **Use cases:** Logs, Telemetry, Time series
 * **Underlying SDK:** [Java](kusto/api/java/kusto-java-client-library.md)
@@ -115,6 +116,7 @@ Brief blurb about the following:
 [Apache Flink](https://flink.apache.org/) is a framework and distributed processing engine for stateful computations over unbounded and bounded data streams. The connector implements data sink for moving data across Azure Data Explorer and Flink clusters. Using Azure Data Explorer and Apache Flink, you can build fast and scalable applications targeting data driven scenarios. For example, machine learning (ML), Extract-Transform-Load (ETL), and Log Analytics.
 
 * **Functionality:** Ingestion
+
 * **Ingestion type supported:** Streaming
 * **Use cases:** Telemetry
 * **Underlying SDK:** [Java](kusto/api/java/kusto-java-client-library.md)
