@@ -3,9 +3,7 @@ title:  datatable operator
 description: Learn how to use the datatable operator to define a table with given schema and data.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 11/24/2022
-zone_pivot_group_filename: data-explorer/zone-pivot-groups.json
-zone_pivot_groups: kql-flavors-all
+ms.date: 12/03/2023
 ---
 # datatable operator
 
@@ -16,29 +14,20 @@ Returns a table whose schema and values are defined in the query itself.
 
 ## Syntax
 
-`datatable(` *ColumnName* `:` *ColumnType* [`,` ...] `[` *ScalarValue* [`,` *ScalarValue* ...] `])`
+`datatable(` *ColumnName* `:` *ColumnType* [`,` ...]`)` `[` *ScalarValue* [`,` *ScalarValue* ...] `]`
 
 [!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
 
 ## Parameters
 
-::: zone pivot="azuredataexplorer, fabric"
-
 | Name | Type | Required | Description |
 |--|--|--|--|
-| *ColumnName*:*ColumnType* | string | &check; | The name of column and type of data in that column that define the schema of the table.|
+| *ColumnName*| string | &check; | The name for a column. |
+| *ColumnType* | string | &check; | The type of data in the column.|
 | *ScalarValue* | scalar | &check; | The value to insert into the table. The number of values must be an integer multiple of the columns in the table. The *n*'th value must have a type that corresponds to column *n* % *NumColumns*. |
 
-::: zone-end
-
-::: zone pivot="azuremonitor"
-
-| Name | Type | Required | Description |
-|--|--|--|--|
-| *ColumnName*: *ColumnType* | string | &check; | The name of column and type of data in that column that define the schema of the table.|
-| *ScalarValue* | scalar | &check; | The value to insert into the table. The number of values must be an integer multiple of the columns in the table. The *n*'th value must have a type that corresponds to column *n* % *NumColumns*. |
-
-::: zone-end
+> [!NOTE]
+> The column name and column value paris define the schema for the table.
 
 ## Returns
 

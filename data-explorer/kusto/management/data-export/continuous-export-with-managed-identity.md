@@ -10,20 +10,21 @@ ms.date: 06/19/2023
 A [continuous export job](continuous-data-export.md) exports data to an [external table](../../query/schema-entities/externaltables.md) with a periodically run query.
 
 The continuous export job should be configured with a [managed identity](../../../managed-identities-overview.md) in the following scenarios:
-- When the external table uses impersonation authentication.
-- When the query references tables in other databases.
-- When the query references tables with an enabled [row level security policy](../rowlevelsecuritypolicy.md). 
+
+* When the external table uses impersonation authentication.
+* When the query references tables in other databases.
+* When the query references tables with an enabled [row level security policy](../rowlevelsecuritypolicy.md).
 
 A continuous export job configured with a managed identity is performed on behalf of the managed identity.
 
-In this article, you'll learn how to configure a system-assigned or user-assigned managed identity and set up that identity to create a continuous export job.
+In this article, you learn how to configure a system-assigned or user-assigned managed identity and create a continuous export job using that identity.
 
 ## Prerequisites
 
 * A cluster and database. [Create a cluster and database](../../../create-cluster-and-database.md).
 * [All Databases Admin](../access-control/role-based-access-control.md) permissions on the database.
 
-## 1 - Configure a managed identity for continuous export
+## Configure a managed identity
 
 There are two types of managed identities:
 
@@ -41,7 +42,7 @@ Select one of the following tabs to set up your preferred managed identity type.
 
     :::image type="content" source="../../../media/continuous-export/managed-identity-ids.png" alt-text="Screenshot of Azure portal area with managed identity IDs." lightbox="../../../media/continuous-export/managed-identity-ids.png":::
 
-1. Run the following [.alter-merge managed_identity policy](../alter-merge-managed-identity-policy-command.md) command, replacing `<objectId>` with the managed identity object ID from the previous step. This command sets a [managed identity policy](../../management/managed-identity-policy.md) on the cluster that allows the managed identity to be used with continuous export.
+1. Run the following [.alter-merge policy managed_identity](../alter-merge-managed-identity-policy-command.md) command, replacing `<objectId>` with the managed identity object ID from the previous step. This command sets a [managed identity policy](../../management/managed-identity-policy.md) on the cluster that allows the managed identity to be used with continuous export.
 
     ```kusto
     .alter-merge cluster policy managed_identity ```[
@@ -69,7 +70,7 @@ Select one of the following tabs to set up your preferred managed identity type.
 
 1. Copy and save the **Object (principal) ID** for use in a later step.
 
-1. Run the following [.alter-merge managed_identity policy](../alter-merge-managed-identity-policy-command.md) command. This command sets a [managed identity policy](../../management/managed-identity-policy.md) on the cluster that allows the managed identity to be used with continuous export.
+1. Run the following [.alter-merge policy managed_identity](../alter-merge-managed-identity-policy-command.md) command. This command sets a [managed identity policy](../../management/managed-identity-policy.md) on the cluster that allows the managed identity to be used with continuous export.
 
     ```kusto
     .alter-merge cluster policy managed_identity ```[
@@ -93,7 +94,7 @@ Select one of the following tabs to set up your preferred managed identity type.
 
 ---
 
-## 2 - Set up an external table
+## Set up an external table
 
 External tables refer to data located in Azure Storage, such as Azure Blob Storage, Azure Data Lake Gen1, and Azure Data Lake Gen2, or SQL Server.
 
@@ -141,7 +142,7 @@ Select one of the following tabs to set up an Azure Storage or SQL Server extern
 
 ---
 
-## 3 - Create a continuous export job
+## Create a continuous export job
 
 Select one of the following tabs to create a continuous export job that will run on behalf of a user-assigned or system-assigned managed identity.
 
