@@ -42,7 +42,7 @@ Modifies the collection of sandbox policies at the cluster level.
     "SandboxKind": "PythonExecution",
     "IsEnabled": true,
     "InitializeOnStartup": false,
-    "TargetCountPerNode": 4,
+    "TargetCountPerNode": 3,
     "MaxCpuRatePerSandbox": 50,
     "MaxMemoryMbPerSandbox": 10240
   },
@@ -52,7 +52,7 @@ Modifies the collection of sandbox policies at the cluster level.
     "InitializeOnStartup": false,
     "TargetCountPerNode": 4,
     "MaxCpuRatePerSandbox": 50,
-    "MaxMemoryMbPerSandbox": 10240
+    "MaxMemoryMbPerSandbox": 8192
   }
 ]```
 ```
