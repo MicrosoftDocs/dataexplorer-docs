@@ -60,6 +60,9 @@ A classification function:
     | `request_text`        | string | The obfuscated text of the request. Obfuscated string literals included in the query text are replaced by multiple of star (`*`) characters. **Note:** only the leading 65,536 characters of the request text are evaluated.                                                      | `".show version"`                                                                     |
     | `request_type`        | string | The type of the request - `Command` or `Query`.                                                                                                                                                                                                                                   | `"Command"`, `"Query"`                                                                           |
 
+> [!NOTE]
+> Setting the aforementioned request options using `set` statements does not allow classification by them. The options need to be set in the client request properties object.
+
 ### Examples
 
 #### A single workload group
