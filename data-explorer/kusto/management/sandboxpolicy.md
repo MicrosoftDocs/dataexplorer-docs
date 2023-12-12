@@ -33,8 +33,8 @@ A sandbox policy has the following properties.
   * Values can be between 1 and 100.
   * The default value is 50.
 * **MaxMemoryMbPerSandbox**: Defines the maximum amount of memory (in megabytes) that a single sandbox can use.
-  * For legacy sandboxes, values can be between 200 and 65536 (64 GB). The default value is 20480 (20 GB).
   * For Hyper-V technology sandboxes, values can be between 200 and 32768 (32 GB). The default value is 1024 (1 GB). The maximum memory of all sandboxes on a node (*TargetCountPerNode* \* *MaxMemoryMbPerSandbox*) is 32768 (32 GB).
+  * For legacy sandboxes, values can be between 200 and 65536 (64 GB). The default value is 20480 (20 GB).
 
 If a policy isn't explicitly defined for a sandbox kind, an implicit policy with the default values and `IsEnabled` set to `true` applies.
 
