@@ -129,7 +129,7 @@ items:
           - name: Configure customer-managed keys
             href: customer-managed-keys.md
           - name: Create Microsoft Entra app
-            href: provision-azure-ad-app.md
+            href: provision-entra-id-app.md
           - name: Conditional Access
             href: security-conditional-access.md
       - name: Get data
