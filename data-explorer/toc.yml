@@ -129,7 +129,7 @@ items:
           - name: Configure customer-managed keys
             href: customer-managed-keys.md
           - name: Create Microsoft Entra app
-            href: provision-azure-ad-app.md
+            href: provision-entra-id-app.md
           - name: Conditional Access
             href: security-conditional-access.md
       - name: Get data
@@ -458,6 +458,8 @@ items:
                 href: language-extensions.md
               - name: Delete a cluster
                 href: delete-cluster.md
+              - name: View version deployments
+                href: version-deployments.md
           - name: Free cluster
             items:
               - name: Manage free cluster
