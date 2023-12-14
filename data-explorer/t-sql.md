@@ -3,7 +3,7 @@ title: T-SQL - Azure Data Explorer
 description: This article describes T-SQL in Azure Data Explorer.
 ms.reviewer: orspodek
 ms.topic: reference
-ms.date: 12/14/2023
+ms.date: 03/08/2023
 ---
 # Query data using T-SQL
 
@@ -106,7 +106,7 @@ SELECT * FROM kusto.MyFunction(10)
 |Name|Type|Required|Description|
 |--|--|--|--|
 |*requestPropertyName*|string|&check;|The name of the [request property](kusto/api/rest/request-properties.md) to set.|
-|*type*|string|&check;|The [T-SQL data type](/t-sql/data-types/data-types-transact-sql) of the value.|
+|*type*|string|&check;|The [T-SQL data type](/sql/t-sql/data-types/data-types-transact-sql?view=sql-server-ver16) of the value.|
 |*value*|scalar|&check;|The value to assign to the request property.|
 
 > [!NOTE]
