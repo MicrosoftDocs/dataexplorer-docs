@@ -95,7 +95,7 @@ SELECT * FROM kusto.MyFunction(10)
 
 ## Set request properties
 
-[Request properties](kusto/api/rest/request-properties.md) control how a query executes and returns results. To set request properties with T-SQL, preface your query with one or more `DECLARE` statements with the following syntax:
+[Request properties](kusto/api/rest/request-properties.md) control how a query executes and returns results. To set request properties with T-SQL, preface your query with one or more statements with the following syntax:
 
 ### Syntax
 
