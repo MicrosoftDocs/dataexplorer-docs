@@ -93,6 +93,40 @@ SELECT * FROM kusto.MyFunction(10)
 > [!NOTE]
 > To distinguish between stored functions and emulated SQL system stored procedures, execute stored functions with an explicit reference to the `kusto` schema. In the example, the stored function is executed using `kusto.Myfunction`.
 
+## Set request properties
+
+[Request properties](kusto/api/rest/request-properties.md) control how a query executes and returns results. To set request properties with T-SQL, use the following syntax.
+
+**Syntax**
+
+`DECLARE` `@__kql_set_`*requestPropertyName* *type* `=` *value*`;`
+
+**Parameters**
+
+|Name|Type|Required|Description|
+|--|--|--|--|
+|*requestPropertyName*|string|&check;|The name of the [request property](kusto/api/rest/request-properties.md) to set.|
+|*type*|string|&check;|The [T-SQL data type](/t-sql/data-types/data-types-transact-sql) of the value.|
+|*value*|scalar|&check;|The value to assign to the request property.|
+
+> [!NOTE]
+> * Set statements impact only the tabular expression statements that immediately follow them.
+> * Two statements must be separated by a semicolon, and there should be no empty line before the query.
+
+**Examples**
+
+|Request property|Example|
+|--|--|
+|`query_datetimescope_to`|DECLARE @__kql_set_query_datetimescope_to DATETIME = '2023-03-31 03:02:01';|
+|`request_app_name`|DECLARE @__kql_set_request_app_name NVARCHAR = 'kuku';|
+|`query_results_cache_max_age`|DECLARE @__kql_set_query_results_cache_max_age TIME = '00:05:00';|
+|`truncationmaxsize`|DECLARE @__kql_set_truncationmaxsize BIGINT = 4294967297;|
+|`maxoutputcolumns`|DECLARE @__kql_set_maxoutputcolumns INT = 3001;|
+|`notruncation`|DECLARE @__kql_set_notruncation BIT = 1;|
+|`noprejoin`|DECLARE @__kql_set_noprejoin BIT = 0;|
+
+To set request properties with KQL, see [set statement](kusto/query/setstatement.md)
+
 ## Coverage
 
 Azure Data Explorer offers limited support for T-SQL. The following table outlines the T-SQL statements and features that aren't supported or are partially supported.
