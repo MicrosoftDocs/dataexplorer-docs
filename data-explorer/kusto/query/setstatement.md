@@ -3,7 +3,7 @@ title:  Set statement
 description: Learn how to use the set statement to set a request property for the duration of the query.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 09/13/2023
+ms.date: 12/14/2023
 zone_pivot_group_filename: data-explorer/zone-pivot-groups.json
 zone_pivot_groups: kql-flavors-all
 ---
@@ -17,7 +17,9 @@ Request properties control how a query executes and returns results. They can be
   
 Request properties aren't formally a part of the Kusto Query Language and may be modified without being considered as a breaking language change.
 
-If using a [Kusto client library](../api/client-libraries.md), request properties can be set using the `ClientRequestProperties` class of [Kusto Data](../api/netfx/about-kusto-data.md).
+> [!NOTE]
+> * To set request properties using [T-SQL](../../t-sql.md), see [Set request properties](../../t-sql.md#set-request-properties).
+> * To set request properties using the [Kusto client libraries](../api/client-libraries.md), see [Kusto Data ClientRequestProperties class](../api/netfx/about-kusto-data.md).
 
 ## Syntax
 
