@@ -111,7 +111,7 @@ SELECT * FROM kusto.MyFunction(10)
 
 > [!NOTE]
 > * Two statements must be separated by a semicolon, and there should be no empty line before the query.
-> * Request properties apply only to the tabular expression statements that immediately follow.
+> * Request properties apply only to the [tabular expression statements](kusto/query/tabularexpressionstatements.md) that immediately follow.
 
 ### Examples
 
@@ -127,7 +127,7 @@ The following table shows examples for how to set request properties with T-SQL.
 |`notruncation`|DECLARE @__kql_set_notruncation BIT = 1;|
 |`noprejoin`|DECLARE @__kql_set_noprejoin BIT = 0;|
 
-To set request properties with KQL, see [set statement](kusto/query/setstatement.md)
+To set request properties with KQL, see [set statement](kusto/query/setstatement.md).
 
 ## Coverage
 
