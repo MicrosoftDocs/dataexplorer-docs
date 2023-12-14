@@ -69,7 +69,7 @@ The following table overviews the supported request properties.
 | `results_progressive_enabled` | bool | If set to `true`, enables the progressive query stream. |
 | `servertimeout` | timespan | Overrides the default request timeout. This option can't be modified as part of a [set statement](../../query/setstatement.md). |
 | `truncation_max_records` | long | Overrides the default maximum number of records a query is allowed to return to the caller (truncation). |
-| `truncation_max_size` | long | Overrides the default maximum data size a query is allowed to return to the caller (truncation). |
+| `truncationmaxsize` | long | Overrides the default maximum data size a query is allowed to return to the caller (truncation). |
 | `validatepermissions` | bool | Validates the user's permissions to perform the query without actually running the query. Possible results for this property are: `OK` (permissions are present and valid), `Incomplete` (validation couldn't be completed due to dynamic schema evaluation), or `KustoRequestDeniedException` (permissions weren't set). |
 
 ## How to set request properties

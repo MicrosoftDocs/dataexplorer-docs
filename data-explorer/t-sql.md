@@ -125,7 +125,7 @@ The following table shows examples for how to set request properties with T-SQL.
 |`truncationmaxsize`|DECLARE @__kql_set_truncationmaxsize BIGINT = 4294967297;|
 |`maxoutputcolumns`|DECLARE @__kql_set_maxoutputcolumns INT = 3001;|
 |`notruncation`|DECLARE @__kql_set_notruncation BIT = 1;|
-|`noprejoin`|DECLARE @__kql_set_noprejoin BIT = 0;|
+|`norequesttimeout`|DECLARE @__kql_set_norequesttimeout BIT = 0;|
 
 To set request properties with KQL, see [set statement](kusto/query/setstatement.md).
 
