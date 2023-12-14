@@ -97,11 +97,11 @@ SELECT * FROM kusto.MyFunction(10)
 
 [Request properties](kusto/api/rest/request-properties.md) control how a query executes and returns results. To set request properties with T-SQL, use the following syntax.
 
-**Syntax**
+### Syntax
 
 `DECLARE` `@__kql_set_`*requestPropertyName* *type* `=` *value*`;`
 
-**Parameters**
+### Parameters
 
 |Name|Type|Required|Description|
 |--|--|--|--|
@@ -113,7 +113,9 @@ SELECT * FROM kusto.MyFunction(10)
 > * Set statements impact only the tabular expression statements that immediately follow them.
 > * Two statements must be separated by a semicolon, and there should be no empty line before the query.
 
-**Examples**
+### Examples
+
+The following table shows examples for how to set request properties with T-SQL.
 
 |Request property|Example|
 |--|--|
