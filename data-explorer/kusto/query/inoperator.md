@@ -31,9 +31,6 @@ When possible, use the case-sensitive [in](in-cs-operator.md).
 | *col* | string | &check; | The column by which to filter.|
 | *expression* | scalar or tabular | &check; | An expression that specifies the values for which to search. Each expression can be a [scalar](scalar-data-types/index.md) value or a [tabular expression](tabularexpressionstatements.md) that produces a set of values. If a tabular expression has multiple columns, the first column is used. The search will consider up to 1,000,000 distinct values.|
 
-> [!NOTE]
-> An inline tabular expression must be enclosed with double parentheses. See [example](#tabular-expression).
-
 ## Returns
 
 Rows in *T* for which the predicate is `true`.
@@ -105,7 +102,7 @@ The following query shows how to use `in~` with an inline tabular expression. No
 
 ```kusto
 StormEvents 
-| where State in~ ((PopulationData | where Population > 5000000 | project State))
+| where State in~ (PopulationData | where Population > 5000000 | project State)
 | summarize count() by State
 ```
 
