@@ -29,12 +29,12 @@ This article explains the vertical scaling workflow:
     The SKUs are disabled because they're the current SKU, or they aren't available in the region where the cluster is located.
 1. To change your SKU, select a new SKU and then select **Apply**.
 
-  > [!NOTE]
-  >
-  > * During the vertical scaling process, while a new cluster's resources are prepared the old cluster's resources continuing to provide service. This process may take tens of minutes. Only when the new cluster's resources are ready, switchover is performed to the new cluster. The parallel process makes the SKU migration experience relatively seamless, with minimal service disruption during the switchover process that takes about one to three minutes to complete. Query performance may be impacted during SKU migration. The impact may vary due to usage patterns.
-  > * We recommend enabling [Optimized Autoscale](/azure/data-explorer/manage-cluster-horizontal-scaling) to allow the cluster to scale-in following migration. For SKU migration recommendation, see [Change Data Explorer clusters to a more cost effective and better performing SKU](/azure/data-explorer/azure-advisor).
-  > * Clusters with Virtual Network configuration may experience longer service disruptions.
-  > * The price is an estimate of the cluster's virtual machines and Azure Data Explorer service costs. Other costs are not included. For an estimate, see the Azure Data Explorer [cost estimator](https://dataexplorer.azure.com/AzureDataExplorerCostEstimator.html). For full pricing, see the Azure Data Explorer [pricing page](https://azure.microsoft.com/pricing/details/data-explorer/).
+    > [!NOTE]
+    >
+    > * During the vertical scaling process, while a new cluster's resources are prepared the old cluster's resources continuing to provide service. This process may take tens of minutes. Only when the new cluster's resources are ready, switchover is performed to the new cluster. The parallel process makes the SKU migration experience relatively seamless, with minimal service disruption during the switchover process that takes about one to three minutes to complete. Query performance may be impacted during SKU migration. The impact may vary due to usage patterns.
+    > * We recommend enabling [Optimized Autoscale](/azure/data-explorer/manage-cluster-horizontal-scaling) to allow the cluster to scale-in following migration. For SKU migration recommendation, see [Change Data Explorer clusters to a more cost effective and better performing SKU](/azure/data-explorer/azure-advisor).
+    > * Clusters with Virtual Network configuration may experience longer service disruptions.
+    > * The price is an estimate of the cluster's virtual machines and Azure Data Explorer service costs. Other costs are not included. For an estimate, see the Azure Data Explorer [cost estimator](https://dataexplorer.azure.com/AzureDataExplorerCostEstimator.html). For full pricing, see the Azure Data Explorer [pricing page](https://azure.microsoft.com/pricing/details/data-explorer/).
 
 You've now configured vertical scaling for your Azure Data Explorer cluster. Add another rule for a horizontal scaling. If you need assistance with cluster-scaling issues, [open a support request](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview) in the Azure portal.
 
