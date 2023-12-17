@@ -153,7 +153,7 @@ Follow the instructions on how to [deploy a template](/azure/azure-resource-mana
 
     For example, to set you zones to 1, 2, and 3, in the North Europe region, use the following code:
 
-    :::code language="csharp" source="samples/migrate-cluster-to-multiple-availability-zone/configure-zones.cs" highlight="12":::
+    :::code language="python" source="samples/migrate-cluster-to-multiple-availability-zone/configure-zones.py" highlight="12":::
 
 1. Run your application.
 
