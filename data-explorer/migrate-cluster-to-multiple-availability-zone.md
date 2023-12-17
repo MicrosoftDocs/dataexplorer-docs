@@ -30,7 +30,7 @@ You can configure availability zones when creating a cluster [in the Azure porta
 > [!NOTE]
 >
 > - Before you proceed, make sure you familiar with the [migration process and considerations](#migration-process).
-> - You can also use these steps to change the availability zones of an existing cluster that uses availability zones.
+> - You can also use these steps to change the zones of an existing cluster that uses availability zones.
 
 In this article, you learn about:
 
