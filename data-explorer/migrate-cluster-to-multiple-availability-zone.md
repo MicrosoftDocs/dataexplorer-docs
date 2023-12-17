@@ -11,24 +11,26 @@ Many Azure regions provide availability zones, which are separated groups of dat
 
 Azure Data Explorer clusters can be configured to use availability zones in supported regions. By using availability zones, a cluster can better withstand the failure of a single datacenter in a region to support [business continuity](business-continuity-overview.md) scenarios.
 
+incur any additional costs
+
 You can configure availability zones when creating a cluster [in the Azure portal](create-cluster-and-database.md#create-a-cluster) or [programmatically](create-cluster-database.md) using one of the following methods:
 
 - REST API
 - C# SDK
 - Python SDK
-- Go SDK
 - PowerShell
 - ARM Template
 
 > [!IMPORTANT]
 >
 > - Once a cluster is configured with availability zones, you can't change the cluster to not use availability zones.
-> - Not all regions support multiple zones. Clusters in those regions can't be configured to use availability zones.
+> - Multiple zones aren't supported in all regions. Therefore, clusters located in these regions can't be set up to use availability zones.
+> - Using availability zones incurs additional costs.
 
 > [!NOTE]
 >
 > - Before you proceed, make sure you familiar with the [migration process and considerations](#migration-process).
-> - You can use these steps to change the availability zones of a cluster that was deployed availability zones.
+> - You can also use these steps to change the availability zones of an existing cluster that uses availability zones.
 
 In this article, you learn about:
 
@@ -129,7 +131,7 @@ Follow the instructions on how to [deploy a template](/azure/azure-resource-mana
     dotnet add package Azure.ResourceManager.Kusto
     ```
 
-1. In your program, add the following code:
+1. In your application, add the following code:
 
     ```json
     "zones": [ "{zone1}", "{zone2}", "{zone3}" ]
@@ -139,11 +141,21 @@ Follow the instructions on how to [deploy a template](/azure/azure-resource-mana
 
     :::code language="csharp" source="samples/migrate-cluster-to-multiple-availability-zone/configure-zones.cs" highlight="20-24":::
 
-1. Run your program.
+1. Run your application.
 
 ### [Python](#tab/python)
 
-### [Go](#tab/go)
+1. In your application, add the following code:
+
+    ```json
+    "zones": [ "{zone1}", "{zone2}", "{zone3}" ]
+    ```
+
+    For example, to set you zones to 1, 2, and 3, in the North Europe region, use the following code:
+
+    :::code language="csharp" source="samples/migrate-cluster-to-multiple-availability-zone/configure-zones.cs" highlight="12":::
+
+1. Run your application.
 
 ### [PowerShell](#tab/powershell)
 
@@ -182,13 +194,13 @@ When availability zones are configured, a cluster's resources are deployed as fo
     > [!NOTE]
     >
     > - In some cases, due to compute capacity limitations, only partial availability zones will be available for the compute layer.
-    > - A cluster's compute layer uses Virtual Machine Scale Sets (VMSS) zone redundant setup, leveraging the scale set best effort approach to evenly spread instances across selected zones.
+    > - A cluster's compute layer implements a best effort approach to evenly spread instances across selected zones.
 
 - **Persistent storage layer**: Clusters use Azure Storage as its durable persistence layer. If availability zones are configured, [Zone-redundant storage (ZRS)](/azure/storage/common/storage-redundancy#zone-redundant-storage) is enabled, placing storage replicas across all three availability zones for maximum intra-region resiliency.
 
     > [!NOTE]
     >
-    > - ZRS entails an additional cost.
+    > - ZRS incurs an additional cost.
     > - When availability zones aren't configured, storage resources are deployed with the default setting of [Locally Redundant Storage (LRS)](/azure/storage/common/storage-redundancy#locally-redundant-storage), placing all 3 replicas is a single zone.
 
 ## Migration process
@@ -197,11 +209,11 @@ When an existing cluster that was deployed without any availability zones is con
 
 - Compute is distributed in the defined availability zones
 
-    The process of redistributing compute resources involves the creation of a new VMSS. During the preparation of this new VMSS, the existing cluster's VMSS continues to function, ensuring uninterrupted service. This preparation phase can take range up to tens of minutes. The transition to the new VMSS only occurs once it's fully prepared and operational. This parallel processing approach ensures a relatively seamless experience, with only minimal service disruption during the switchover process, typically lasting between one to three minutes. However, it's important to note that query performance might be affected during the SKU migration. The degree of impact can vary depending on specific usage patterns.
+    The process of redistributing compute resources involves a preparation stage in which the zonal Compute resources cache is warmed. During the preparation stage, the existing cluster's compute resources continue to function, ensuring uninterrupted service. This preparation phase can take up to tens of minutes. The transition to the new compute resources only occurs once it's fully prepared and operational. This parallel processing approach ensures a relatively seamless experience, with only minimal service disruption during the switchover process, typically lasting between one to three minutes. However, it's important to note that query performance might be affected during the SKU migration. The degree of impact can vary depending on specific usage patterns.
 
 - Historical persistent storage data is migrated to ZRS
 
-    The migration process is dependent on the regional support for the transition from LRS to ZRS storage, as well as the available storage accounts capacity in the selected zones. The transfer of historical data can be a time-consuming process, potentially taking several hours or even extending over multiple days.
+    The migration process is dependent on the regional support for the transition from LRS to ZRS storage, as well as the available storage accounts capacity in the selected zones. The transfer of historical data can be a time-consuming process, potentially taking several hours or even extending over to weeks.
 
 - All new data is written to ZRS
 
@@ -209,7 +221,7 @@ When an existing cluster that was deployed without any availability zones is con
 
     > [!NOTE]
     >
-    > - Following the migration request, there might be a delay of up to several minutes before all new data begins to be written in the Zone Redundant Storage (ZRS) configuration.
+    > - Following the migration request, there might be a delay of up to several minutes before all new data begins to be written in the ZRS configuration.
     > - If a cluster has streaming ingestion, then the recycling of new data to be written as ZRS data, can take up to 30 days.
 
 ### Considerations
