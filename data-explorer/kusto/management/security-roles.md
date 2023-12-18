@@ -14,7 +14,7 @@ When a principal attempts an operation, the system performs an authorization che
 The management commands listed in this article can be used to manage principals and their security roles on databases, tables, external tables, materialized views, and functions.
 
 > [!NOTE]
-> The three cluster level security roles of `AllDatabasesAdmin`, `AllDatabasesViewer`, and `AllDatabasesMonitor` can't be configured with security role management commands. For more information, see [Add cluster principals](../../add-cluster-principal.md).
+> The three cluster level security roles of `AllDatabasesAdmin`, `AllDatabasesViewer`, and `AllDatabasesMonitor` can't be configured with security role management commands. For more information, see [Manage cluster permissions](../../manage-cluster-permissions.md).
 
 ## Management commands
 

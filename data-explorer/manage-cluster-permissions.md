@@ -2,7 +2,7 @@
 title: Manage cluster permissions in Azure Data Explorer
 description: Learn how to manage role-based access controls for clusters in Azure Data Explorer.
 ms.topic: how-to
-ms.date: 11/23/2022
+ms.date: 12/18/2023
 ---
 
 # Manage Azure Data Explorer cluster permissions
@@ -11,7 +11,9 @@ Azure Data Explorer enables you to control access to resources in your cluster u
 
 This article describes the available cluster level roles and how to assign principals to those roles using the Azure portal.
 
-To manage cluster permissions in the CLI, see [Kusto commands](/cli/azure/kusto#commands).
+> [!NOTE]
+> * To configure cluster level permissions with C#, Python, and ARM templates, see [Add cluster principals](add-cluster-principal.md).
+> * To configure cluster level permissions with the Azure CLI, see [az kusto](/cli/azure/kusto#commands).
 
 ## Cluster level permissions
 
@@ -43,6 +45,5 @@ To manage cluster permissions in the CLI, see [Kusto commands](/cli/azure/kusto#
 
 ## Related content
 
-* [Add cluster principals](add-cluster-principal.md)
 * [Manage database permissions](manage-database-permissions.md)
 * [Role-based access control](/kusto/management/access-control/role-based-access-control.md)
