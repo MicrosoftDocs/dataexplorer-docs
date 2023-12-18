@@ -43,5 +43,6 @@ To manage cluster permissions in the CLI, see [Kusto commands](/cli/azure/kusto#
 
 ## Related content
 
-* To configure database or table specific access, see [Manage Azure Data Explorer database permissions](manage-database-permissions.md)
-* For a list of available roles, see [Role-based access control](./kusto/management/access-control/role-based-access-control.md)
+* [Add cluster principals](add-cluster-principal.md)
+* [Manage database permissions](manage-database-permissions.md)
+* [Role-based access control](/kusto/management/access-control/role-based-access-control.md)
