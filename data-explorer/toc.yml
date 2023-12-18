@@ -309,6 +309,7 @@ items:
             href: web-results-grid.md
           - name: Gain quick insights into table data
             href: data-profile.md
+            displayName: data profile
           - name: Share queries
             href: web-share-queries.md
           - name: Keyboard shortcuts
