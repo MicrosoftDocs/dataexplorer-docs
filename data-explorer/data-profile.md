@@ -19,7 +19,7 @@ This article guides you through the process of accessing and interpreting the da
 * A Microsoft account or a Microsoft Entra user identity. An Azure subscription isn't required.
 * Sign in to the [Azure Data Explorer web UI](https://dataexplorer.azure.com/).
 
-## Open the data profile view
+## Open the data profile for a table
 
 To open the data profile view for a table:
 
@@ -61,7 +61,9 @@ To pin the data profile, select the **Pin** icon in the upper corner:
 
 :::image type="content" source="media/data-profile/data-profile-pin.png" alt-text="Screenshot of option to pin data profile.":::
 
-This selection opens the pinned view, which looks like this:
+This selection opens the pinned view, which helps you write queries with access to sample data:
+
+<!-- TO DO: Create a GIF that uses a string and a dynamic field to create a query quickly. -->
 
 :::image type="content" source="media/data-profile/data-profile-pinned-view.png" alt-text="Screenshot of pinned view.":::
 
