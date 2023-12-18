@@ -90,6 +90,7 @@ items:
     href: scalar-data-types/long.md
   - name: real
     href: scalar-data-types/real.md
+    displayName: double
   - name: string
     href: scalar-data-types/string.md
   - name: timespan

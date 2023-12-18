@@ -13,6 +13,9 @@ When a principal attempts an operation, the system performs an authorization che
 
 The management commands listed in this article can be used to manage principals and their security roles on databases, tables, external tables, materialized views, and functions.
 
+> [!NOTE]
+> The three cluster level security roles of `AllDatabasesAdmin`, `AllDatabasesViewer`, and `AllDatabasesMonitor` can't be configured with security role management commands. For more information, see [Manage cluster permissions](../../manage-cluster-permissions.md).
+
 ## Management commands
 
 The following table describes the commands used for managing security roles.
@@ -41,9 +44,6 @@ For a full description of the security roles at each scope, see [Kusto role-base
 
 > [!NOTE]
 > It isn't possible to assign the `viewer` role for only some tables in the database. For different approaches on how to grant a principal view access to a subset of tables, see [manage table view access](manage-table-view-access.md).
-
-> [!TIP]
-> There are three cluster level security roles (`AllDatabasesAdmin`, `AllDatabasesViewer`, and `AllDatabasesMonitor`) that can only be configured in the Azure portal. To learn more, see [manage cluster permissions](../../manage-cluster-permissions.md).
 
 ## Common scenarios
 
