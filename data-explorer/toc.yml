@@ -295,18 +295,20 @@ items:
           - name: Query data in the web UI overview
             href: web-ui-query-overview.md
             displayName: web UI
-          - name: Customize settings in the web UI
-            href: web-customize-settings.md
           - name: Add a cluster connection
             href: add-cluster-connection.md
             displayName: connect to cluster
           - name: Add a query visualization
             displayName: render, visualize, chart, graph, web UI
             href: add-query-visualization.md
+          - name: Customize settings in the web UI
+            href: web-customize-settings.md
           - name: Explore the sample gallery
             href: web-ui-samples-query.md
           - name: Explore the results grid
             href: web-results-grid.md
+          - name: Gain quick insights into table data
+            href: data-profile.md
           - name: Share queries
             href: web-share-queries.md
           - name: Keyboard shortcuts
