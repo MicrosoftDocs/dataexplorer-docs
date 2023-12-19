@@ -3,7 +3,7 @@ title: View cluster version deployments
 description: Learn how to monitor the version deployments of your Azure Data Explorer cluster.
 ms.reviewer: bwatts
 ms.topic: how-to
-ms.date: 12/03/2023
+ms.date: 12/19/2023
 ---
 
 # View cluster version deployments
@@ -38,7 +38,7 @@ The following query shows how to query the version deployment notifications in A
 ```kql
 AzureActivity
 | where OperationName == 'Cluster version deployment'
-| project Cluster=Resource,StartTime=todatetime(todynamic(Properties).StartTime), EndTime=todatetime(todynamic(Properties).EndTime), Duration=totimespan(todynamic(Properties).Duration)
+| project Cluster=Resource, StartTime=todatetime(todynamic(Properties).StartTime), Duration=totimespan(todynamic(Properties).Duration)
 ```
 
 The results would look something like this:
