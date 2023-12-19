@@ -4,26 +4,27 @@ description: Learn some common usage examples for Azure Data Explorer connector 
 ms.reviewer: miwalia
 ms.topic: how-to
 ms.date: 05/04/2022
+no-loc: [Power Automate]
 ---
 
-# Usage examples for Azure Data Explorer connector to :::no-loc text="Power Automate":::
+# Usage examples for Azure Data Explorer connector to Power Automate
 
-The Azure Data Explorer :::no-loc text="Power Automate"::: (previously Microsoft flow) connector allows Azure Data Explorer to use the flow capabilities of [Microsoft :::no-loc text="Power Automate":::](https://flow.microsoft.com/). You can run Kusto queries and commands automatically, as part of a scheduled or triggered task. This article includes several common :::no-loc text="Power Automate"::: connector usage examples.
+The Azure Data Explorer Power Automate (previously Microsoft flow) connector allows Azure Data Explorer to use the flow capabilities of [Microsoft Power Automate](https://flow.microsoft.com/). You can run Kusto queries and commands automatically, as part of a scheduled or triggered task. This article includes several common Power Automate connector usage examples.
 
-For more information, see [Azure Data Explorer :::no-loc text="Power Automate"::: connector](flow.md).
+For more information, see [Azure Data Explorer Power Automate connector](flow.md).
 
-## :::no-loc text="Power Automate"::: connector and your SQL database
+## Power Automate connector and your SQL database
 
-Use the :::no-loc text="Power Automate"::: connector to query your data and aggregate it in an SQL database.
+Use the Power Automate connector to query your data and aggregate it in an SQL database.
 
 > [!Note]
-> Only use the :::no-loc text="Power Automate"::: connector for small amounts of output data. The SQL insert operation is done separately for each row.
+> Only use the Power Automate connector for small amounts of output data. The SQL insert operation is done separately for each row.
 
 :::image type="content" source="media/flow-usage/flow-sql-example.png" alt-text="Screenshot of SQL connector, showing querying data by using the Power Automate connector.":::
 
 ## Push data to a Microsoft Power BI dataset
 
-You can use the :::no-loc text="Power Automate"::: connector with the Power BI connector to push data from Kusto queries to Power BI streaming datasets.
+You can use the Power Automate connector with the Power BI connector to push data from Kusto queries to Power BI streaming datasets.
 
 1. Create a new **Run query and list results** action.
 1. Select **New step**.
@@ -43,7 +44,7 @@ The flow automatically applies the Power BI action for each row of the Kusto que
 
 ## Conditional queries
 
-You can use the results of Kusto queries as input or conditions for the next :::no-loc text="Power Automate"::: actions.
+You can use the results of Kusto queries as input or conditions for the next Power Automate actions.
 
 In the following example, we query Kusto for incidents that occurred during the last day. For each resolved incident, a Slack message is posted and a push notification is created.
 For each incident that is still active, we query Kusto for more information about similar incidents. It sends that information as an email, and opens a related task in Azure DevOps Server.
