@@ -39,7 +39,10 @@ Data ingestion is the process by which data is added to a table and is made avai
 > [!NOTE]
 >
 > * Ingestion from data storage systems that provide ACID functionality on top of regular Parquet format files (e.g. Apache Iceberg, Apache Hudi, Delta Lake) is not supported.
-> * Schema-less Avro is not supported
+>
+> * Schema-less Avro is not supported.
+>
+> * For more info on ingesting data using `json` or `multijson` formats, please refer to [this document](ingest-json-formats.md).
 
 ## Supported data compression formats
 
