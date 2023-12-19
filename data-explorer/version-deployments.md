@@ -25,7 +25,7 @@ With each Azure Data Explorer software deployment, an Azure Activity log is gene
 
     :::image type="content" source="media/version-deployment-notification/cluster-version-deployment.png" lightbox="media/version-deployment-notification/cluster-version-deployment.png" alt-text="Screenshot of the activity log.":::
 
-1. (Optional) To view details about the deployment, such as start time, end time, and duration, select the event. In the **Cluster version deployment** window, select **JSON**.
+1. (Optional) To view details about the deployment, such as start time and duration, select the event. In the **Cluster version deployment** window, select **JSON**.
 
     :::image type="content" source="media/version-deployment-notification/cluster-version-deployment-json.png" alt-text="Screenshot of the notification event properties.":::
 
