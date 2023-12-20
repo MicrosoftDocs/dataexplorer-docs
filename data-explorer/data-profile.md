@@ -8,11 +8,7 @@ ms.date: 12/20/2023
 
 # Access the data profile of a table
 
-The data profile feature in the Azure Data Explorer web UI provides a fast way to gain insights into the data within your tables.
-
-When you open a data profile, a time chart illustrates the records ingested over time or the distribution of data based on a specified datetime field. The data profile provides quick access to column names, types, essential statistics, and top values within each column.
-
-This article guides you through the process of accessing and interpreting the data profile of a table.
+The data profile feature in the Azure Data Explorer web UI provides a fast way to gain insights into the data within your tables. It includes a time chart depicting data distribution based on a specified datetime field, along with clear access to column statistics and top values.
 
 ## Prerequisites
 
