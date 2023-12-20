@@ -23,8 +23,7 @@ The data sharding policy contains the following properties:
   * **Not in effect** for [merge operations](mergepolicy.md).
     * If you must limit the number of rows in extents created by merge operations, adjust the `RowCountUpperBoundForMerge` property in the entity's [extents merge policy](mergepolicy.md).
 * **ShardEngineMaxExtentSizeInMb**:
-  * Maximum allowed compressed data size (in megabytes) for an extent created by a merge operation.
-  * In effect **only for [merge](mergepolicy.md) operations**.
+  * Maximum allowed compressed data size (in megabytes) for an extent created by a merge or rebuild operation.
   * Defaults to 8,192 (8GB).
 
 * **ShardEngineMaxOriginalSizeInMb**:

@@ -3,11 +3,11 @@ title:  todouble()
 description: Learn how to use the todouble() function to convert the input expression to a value of type `real`.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 02/20/2023
+ms.date: 12/18/2023
 ---
 # todouble()
 
-Converts the input expression to a value of type `real`.
+Converts the input expression to a value of type [real](scalar-data-types/real.md).
 
 > The `todouble()` and `toreal()` functions are equivalent
 

@@ -94,7 +94,7 @@ In the **Schema** tab, your [data format](./ingest-data-wizard.md#file-formats) 
 1. In **Mapping**, enter a name for this table's schema mapping.
 
     > [!TIP]
-    > Names can include alphanumeric characters and underscores. Spaces, special characters, and hyphens aren't supported.
+    > Names can include alphanumeric characters, hyphens, periods and underscores. Spaces and special characters aren't supported.
 
 1. Select **Next: Create table**.
 
