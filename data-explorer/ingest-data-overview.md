@@ -76,13 +76,18 @@ Use commands to ingest data directly to your cluster. This method bypasses the D
 
 ## Ingestion process
 
-The following steps outline the general ingestion process, though specifics can vary based on the method of ingestion chosen:
+The following steps outline the general ingestion process:
 
-1. **Set batching policy (optional)**: The batching manager batches ingestion data based on the [ingestion batching policy](kusto/management/batchingpolicy.md). For guidance, see [Optimize for throughput](kusto/api/netfx/kusto-ingest-best-practices.md#optimize-for-throughput). The policy sets batch limits according to three factors: time elapsed since batch creation, accumulated number of items, or total batch size. By default, settings are 5 minutes / 1000 blobs / 1 GB, with the limit first reached taking effect. As a result, there's typically a 5-minute delay when queueing sample data for ingestion.
+1. **Set batching policy (optional)**: Data is batched based on the [ingestion batching policy](kusto/management/batchingpolicy.md). The policy sets batch limits according to three factors: time elapsed since batch creation, accumulated number of items, or total batch size. By default, settings are 5 minutes / 1000 blobs / 1 GB, with the limit first reached taking effect. As a result, there's typically a 5-minute delay when queueing sample data for ingestion. For guidance, see [Optimize for throughput](kusto/api/netfx/kusto-ingest-best-practices.md#optimize-for-throughput). 
+
 1. **Set retention policy**: If the database retention policy is not suitable for your needs, override it at the table level. For more information, see [Retention policy](kusto/management/retentionpolicy.md).
+
 1. **Create a table**: If you're using the Get data experience, you can create a table as part of the ingestion flow. Otherwise, create a table prior to ingestion in the [web UI](create-table-wizard.md) or with the [.create table command](kusto/management/create-table-command.md).
+
 1. **Create a schema mapping**: [Schema mappings](kusto/management/mappings.md) help bind source data fields to destination table columns. Different types of mappings are supported, including row-oriented formats like CSV, JSON, and AVRO, as well as column-oriented formats like Parquet. In most methods, mappings can also be [pre-created on the table](kusto/management/create-ingestion-mapping-command.md). The method for using a mapping varies depending on the ingestion approach. For instance, when using ingestion commands, you can reference a mapping through a command parameter.
+
 1. **Set update policy (optional)**: Certain data formats like Parquet, JSON, and Avro enable straightforward ingest-time transformations. For more intricate processing during ingestion, modify the [update policy](kusto/management/updatepolicy.md), facilitating lightweight processing with query commands. This policy automatically executes extractions and transformations on ingested data within the original table, then ingests the modified data into one or more destination tables.
+
 1. **Ingest data**: Use your preferred ingestion tool, connector, or method to bring in the data.
 
 ## Related content
