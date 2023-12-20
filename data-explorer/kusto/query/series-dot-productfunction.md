@@ -45,6 +45,8 @@ Any non-numeric element of the input series will be ignored.
 > [!NOTE]
 > If one or both input arrays are empty, the result will be `null`.
 
+[!INCLUDE [optimization-note](../../includes/vector16-encoding-policy.md)]
+
 ## Example
 
 > [!div class="nextstepaction"]
