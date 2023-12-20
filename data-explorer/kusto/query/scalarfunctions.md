@@ -228,7 +228,7 @@ This article lists all available scalar functions grouped by type. For aggregati
 
 |Function Name     |Description                                          |
 |-------------------------|--------------------------------------------------------|
-|[series_cosine_similarity()](series-cosine-similarityfunction.md)|Calculates a [cosine similarity](https://en.wikipedia.org/wiki/Cosine_similarity) of two numeric series.|
+|[series_cosine_similarity()](series-cosine-similarityfunction.md)|Calculates the [cosine similarity](https://en.wikipedia.org/wiki/Cosine_similarity) of two numeric series.|
 |[series_decompose()](series-decomposefunction.md)|Does a decomposition of the series into components.|
 |[series_decompose_anomalies()](series-decompose-anomaliesfunction.md)|Finds anomalies in a series based on series decomposition.|
 |[series_decompose_forecast()](series-decompose-forecastfunction.md)|Forecast based on series decomposition.|
