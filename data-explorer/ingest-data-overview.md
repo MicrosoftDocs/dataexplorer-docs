@@ -78,7 +78,7 @@ Use commands to ingest data directly to your cluster. This method bypasses the D
 
 The following steps outline the general ingestion process:
 
-1. **Set batching policy (optional)**: Data is batched based on the [ingestion batching policy](kusto/management/batchingpolicy.md). The policy sets batch limits according to three factors: time elapsed since batch creation, accumulated number of items, or total batch size. By default, settings are 5 minutes / 1000 blobs / 1 GB, with the limit first reached taking effect. As a result, there's typically a 5-minute delay when queueing sample data for ingestion. For guidance, see [Optimize for throughput](kusto/api/netfx/kusto-ingest-best-practices.md#optimize-for-throughput). 
+1. **Set batching policy (optional)**: Data is batched based on the [ingestion batching policy](kusto/management/batchingpolicy.md). For guidance, see [Optimize for throughput](kusto/api/netfx/kusto-ingest-best-practices.md#optimize-for-throughput). 
 
 1. **Set retention policy**: If the database retention policy is not suitable for your needs, override it at the table level. For more information, see [Retention policy](kusto/management/retentionpolicy.md).
 
