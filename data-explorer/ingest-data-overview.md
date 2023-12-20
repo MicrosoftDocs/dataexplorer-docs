@@ -86,7 +86,7 @@ The following steps outline the general ingestion process:
 
 1. **Create a schema mapping**: [Schema mappings](kusto/management/mappings.md) help bind source data fields to destination table columns. Different types of mappings are supported, including row-oriented formats like CSV, JSON, and AVRO, as well as column-oriented formats like Parquet. In most methods, mappings can also be [pre-created on the table](kusto/management/create-ingestion-mapping-command.md).
 
-1. **Set update policy (optional)**: Certain data formats like Parquet, JSON, and Avro enable straightforward ingest-time transformations. For more intricate processing during ingestion, modify the [update policy](kusto/management/updatepolicy.md), facilitating lightweight processing with query commands. This policy automatically executes extractions and transformations on ingested data within the original table, then ingests the modified data into one or more destination tables.
+1. **Set update policy (optional)**: Certain data formats like Parquet, JSON, and Avro enable straightforward ingest-time transformations. For more intricate processing during ingestion, use the [update policy](kusto/management/updatepolicy.md). This policy automatically executes extractions and transformations on ingested data within the original table, then ingests the modified data into one or more destination tables.
 
 1. **Ingest data**: Use your preferred ingestion tool, connector, or method to bring in the data.
 
