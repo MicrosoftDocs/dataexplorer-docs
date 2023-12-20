@@ -19,7 +19,7 @@ This article guides you through the process of accessing and interpreting the da
 * A Microsoft account or a Microsoft Entra user identity. An Azure subscription isn't required.
 * Sign in to the [Azure Data Explorer web UI](https://dataexplorer.azure.com/).
 
-## Open the data profile for a table
+## Open the data profile
 
 To open the data profile view for a table:
 
