@@ -64,6 +64,14 @@ For more information, see the relevant documentation:
 * [Connectors overview](connector-overview.md)
 * [Write custom code with Kusto client libraries](kusto/api/client-libraries.md)
 
+## Ingest management commands
+
+Use commands to ingest data directly to your cluster. This method bypasses the Data Management services, and therefore should be used only for exploration and prototyping. Don't use this method in production or high-volume scenarios.
+
+* **Inline ingestion**:  A management command [.ingest inline](kusto/management/data-ingestion/ingest-inline.md) is sent to your cluster, with the data to be ingested being a part of the command text itself. This method is intended for improvised testing purposes.
+* **Ingest from query**: A management command [.set, .append, .set-or-append, or .set-or-replace](kusto/management/data-ingestion/ingest-from-query.md) is sent to your cluster, with the data specified indirectly as the results of a query or a command.
+* **Ingest from storage**: A management command [.ingest into](kusto/management/data-ingestion/ingest-from-storage.md) is sent to your cluster, with the data stored in external storage, such as Azure Blob Storage, accessible by your cluster and pointed-to by the command.
+
 ## Data mappings
 
 During ingestion, [data mappings](kusto/management/mappings.md) help bind source data fields to destination table columns. Different types of mappings are supported, including row-oriented formats like CSV, JSON, and AVRO, as well as column-oriented formats like Parquet. In most methods, mappings can also be [pre-created on the table](kusto/management/create-ingestion-mapping-command.md). The method for using a mapping varies depending on the ingestion approach. For instance, when using ingestion commands, you can reference a mapping through a command parameter.
