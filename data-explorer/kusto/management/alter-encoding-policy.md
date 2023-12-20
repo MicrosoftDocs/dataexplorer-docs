@@ -42,6 +42,7 @@ The following table contains the possible values for the *EncodingPolicyType* pa
 |`Identifier`            | Suitable for columns that have data that represents ID-like information (for example, guids). This policy applies the required index for this column to gain both query performance and reduce size in the storage. |
 |`BigObject`             | Suitable for columns of dynamic type, which holds large objects. For example, the output of [hll aggregate function](../query/hll-aggfunction.md)). This policy disables the index of this column and overrides `MaxValueSize` property in the encoding Policy to 2 MB. |
 |`BigObject32`           | Similar to `BigObject` in terms of target scenarios. Overrides `MaxValueSize` property in the encoding Policy to 32 MB. |
+|`Vector16`              | This profile is specifically designed for storing ML vector embeddings, utilizing the [Bfloat16](https://en.wikipedia.org/wiki/Bfloat16_floating-point_format) floating-point representation. Adopting this encoding reduces storage requirements by a factor of 4. Additionally, operations on feature vectors, such as [series_dot_product()](../query/series-dot-productfunction.md) or [series_cosine_similarity()](../query/series-cosine-similarityfunction.md), can be optimized, resulting in a performance boost of 50-100 times. |
 |`Null`                  | Sets the current default encoding policy to the column and clears the previous encoding policy profile.                               |
 
 ## Example

@@ -1414,6 +1414,9 @@ items:
   - name: series_cos()
     displayName: element-wise, elementwise
     href: series-cosfunction.md  
+  - name: series_cosine_similarity()
+    displayName: element-wise, elementwise
+    href: series-cosine-similarityfunction.md
   - name: series_decompose()
     displayName: seasonal, trend, baseline
     href: series-decomposefunction.md
@@ -1492,6 +1495,9 @@ items:
   - name: series_log()
     displayName: element-wise, elementwise
     href: series-log-function.md
+  - name: series_magnitude()
+    displayName: element-wise, elementwise
+    href: series-magnitudefunction.md
   - name: series_multiply()
     displayName: element-wise, elementwise
     href: series-multiplyfunction.md
@@ -1530,6 +1536,9 @@ items:
   - name: series_subtract()
     displayName: element-wise, elementwise
     href: series-subtractfunction.md
+  - name: series_sum()
+    displayName: element-wise, elementwise
+    href: series-sumfunction.md
   - name: series_tan()
     displayName: element-wise, elementwise
     href: series-tanfunction.md
