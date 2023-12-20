@@ -33,9 +33,7 @@ The data profile for the selected table view opens in a side window.
 
 ## Explore the data profile
 
-Within the profile, explore information about columns and their top values.
-
-Each column name is accompanied by a relevant statistic based on its data type, and selecting the column reveals more details specific to that data type:
+Within the profile, you can explore information about columns and their top values. Each column name is accompanied by a relevant statistic based on its data type, and selecting the column reveals more details specific to that data type:
 
 |Type|Statistic|On selection|
 |--|--|--|
