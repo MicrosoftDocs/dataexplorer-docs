@@ -618,7 +618,7 @@ The follower database administrator can modify the [caching policy](./kusto/mana
 * You can't delete a database that is attached to a different cluster before detaching it.
 * You can't delete a cluster that has a database attached to a different cluster before detaching it.
 * Table level sharing properties aren't supported when following all databases.
-* In follower databases, to query external tables that use a Managed Identity as the authentication method, the Managed Identity should be added to the follower cluster. This capability does not work when the leader and follower clusters are provisioned in different tenants.
+* In follower databases, to query external tables that use a Managed Identity as the authentication method, the Managed Identity must be added to the follower cluster. This capability doesn't work when the leader and follower clusters are provisioned in different tenants.
 
 ## Next step
 
