@@ -295,6 +295,8 @@ items:
           - name: Query data in the web UI overview
             href: web-ui-query-overview.md
             displayName: web UI
+          - name: Access a data profile of your table
+            href: data-profile.md
           - name: Add a cluster connection
             href: add-cluster-connection.md
             displayName: connect to cluster
@@ -307,8 +309,6 @@ items:
             href: web-ui-samples-query.md
           - name: Explore the results grid
             href: web-results-grid.md
-          - name: Gain quick insights into table data
-            href: data-profile.md
             displayName: data profile
           - name: Share queries
             href: web-share-queries.md
