@@ -11,6 +11,10 @@ Calculates the cosine similarity of two numerical vectors.
 
 The function `series_cosine_similarity_fl()` is a [user-defined function (UDF)](../query/functions/user-defined-functions.md) that takes an expression containing two dynamic numerical arrays as input and calculates their [cosine similarity](https://en.wikipedia.org/wiki/Cosine_similarity).
 
+> [!NOTE]
+>
+> Use the native function [series_cosine_similarity()](../query/series-cosine-similarity-function.md) instead of the function described in this document. The native function provides the same functionality and is better for performance and scalability. This document is provided for reference purposes only.
+
 ## Syntax
 
 `series_cosine_similarity_fl(`*vec1*`,` *vec2*`,` [ *vec1_size* [`,` *vec2_size* ]]`)`
