@@ -23,6 +23,7 @@ You can configure availability zones when creating a cluster [in the Azure porta
 
 > [!IMPORTANT]
 >
+> - Migration to multiple availability zones is not available in regions where storage conversion to Zone-redundant storage (ZRS) is not supported. For list of non supported regions, see [Change how a storage account is replicated](/azure/storage/common/redundancy-migration#region).
 > - Once a cluster is configured with availability zones, you can't change the cluster to not use availability zones.
 > - Multiple zones aren't supported in all regions. Therefore, clusters located in these regions can't be set up to use availability zones.
 > - Using availability zones incurs additional costs.
@@ -196,7 +197,7 @@ When availability zones are configured, a cluster's resources are deployed as fo
     > - In some cases, due to compute capacity limitations, only partial availability zones will be available for the compute layer.
     > - A cluster's compute layer implements a best effort approach to evenly spread instances across selected zones.
 
-- **Persistent storage layer**: Clusters use Azure Storage as its durable persistence layer. If availability zones are configured, [Zone-redundant storage (ZRS)](/azure/storage/common/storage-redundancy#zone-redundant-storage) is enabled, placing storage replicas across all three availability zones for maximum intra-region resiliency.
+- **Persistent storage layer**: Clusters use Azure Storage as its durable persistence layer. If availability zones are configured, [ZRS](/azure/storage/common/storage-redundancy#zone-redundant-storage) is enabled, placing storage replicas across all three availability zones for maximum intra-region resiliency.
 
     > [!NOTE]
     >
