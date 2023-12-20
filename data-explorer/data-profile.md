@@ -1,12 +1,12 @@
 ---
-title: Gain quick insights into table data
-description: Learn how to gain quick insights into table data in the Azure Data Explorer web UI.
+title: Access a data profile of your table
+description: Learn how to access a data profile of your table in the Azure Data Explorer web UI.
 ms.reviewer: mibar
 ms.topic: reference
-ms.date: 12/18/2023
+ms.date: 12/20/2023
 ---
 
-# Gain quick insights into table data
+# Access a data profile of your table
 
 The data profile feature in the Azure Data Explorer web UI provides a fast way to gain insights into the data within your tables.
 
