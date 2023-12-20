@@ -145,7 +145,7 @@ For example:
 ```
 
 > [!NOTE]
-> The RLS function above has negligeable performance impact.
+> The RLS function above has no performance impact whatsoever on queries on the leader cluster. The performance impact on queries on the follower clusters will be impacted only by the complexity of `DataForFollowerClusters`.
 
 ## More use cases
 
