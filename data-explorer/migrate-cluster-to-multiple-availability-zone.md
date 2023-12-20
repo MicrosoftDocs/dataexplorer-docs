@@ -11,8 +11,6 @@ Many Azure regions provide availability zones, which are separated groups of dat
 
 Azure Data Explorer clusters can be configured to use availability zones in supported regions. By using availability zones, a cluster can better withstand the failure of a single datacenter in a region to support [business continuity](business-continuity-overview.md) scenarios.
 
-incur any additional costs
-
 You can configure availability zones when creating a cluster [in the Azure portal](create-cluster-and-database.md#create-a-cluster) or [programmatically](create-cluster-database.md) using one of the following methods:
 
 - REST API
@@ -125,7 +123,7 @@ Follow the instructions on how to [deploy a template](/azure/azure-resource-mana
 
 ### [C\#](#tab/csharp)
 
-1. If you don't have the Azure.Identity and Azure.ResourceManager.Kusto libraries installed, use the following commands to install them:
+1. If you don't have the *Azure.Identity* and *Azure.ResourceManager.Kusto* libraries installed, use the following commands to install them:
 
     ```powershell
     dotnet add package Azure.Identity
@@ -138,7 +136,7 @@ Follow the instructions on how to [deploy a template](/azure/azure-resource-mana
     "zones": [ "{zone1}", "{zone2}", "{zone3}" ]
     ```
 
-    For example, to set you zones to 1, 2, and 3, in the North Europe region, use the following code:
+    For example, to set your zones to 1, 2, and 3, in the North Europe region, use the following code:
 
     :::code language="csharp" source="samples/migrate-cluster-to-multiple-availability-zone/configure-zones.cs" highlight="20-24":::
 
@@ -152,7 +150,7 @@ Follow the instructions on how to [deploy a template](/azure/azure-resource-mana
     "zones": [ "{zone1}", "{zone2}", "{zone3}" ]
     ```
 
-    For example, to set you zones to 1, 2, and 3, in the North Europe region, use the following code:
+    For example, to set your zones to 1, 2, and 3, in the North Europe region, use the following code:
 
     :::code language="python" source="samples/migrate-cluster-to-multiple-availability-zone/configure-zones.py" highlight="12":::
 
@@ -160,7 +158,7 @@ Follow the instructions on how to [deploy a template](/azure/azure-resource-mana
 
 ### [PowerShell](#tab/powershell)
 
-You can use the following Powershell command to configure your cluster to use availability zones. Make sure you have [installed the Kusto tools libraries](kusto/api/powershell/powershell.md#get-the-libraries) and replace the parameters with your values.
+You can use the following PowerShell command to configure your cluster to use availability zones. Make sure the [Kusto tools libraries](kusto/api/powershell/powershell.md#get-the-libraries) is installed and replace the parameters with your values.
 
 ```powershell
 Update-AzKustoCluster -SubscriptionId {subscriptionId} -ResourceGroupName {resourceGroupName} -Name {clusterName} -Zone "{zone1}", "{zone2}", "{zone3}"
@@ -174,7 +172,7 @@ Update-AzKustoCluster -SubscriptionId {subscriptionId} -ResourceGroupName {resou
     "zones": [ "{zone1}", "{zone2}", "{zone3}" ]
     ```
 
-    For example, to set you zones to 1, 2, and 3, in the North Europe region, use the following template:
+    For example, to set your zones to 1, 2, and 3, in the North Europe region, use the following template:
 
     :::code language="json" source="samples/migrate-cluster-to-multiple-availability-zone/configure-zones.json" highlight="22":::
 
@@ -229,6 +227,6 @@ When an existing cluster that was deployed without any availability zones is con
 
 The request for migration to availability zones might not be successful due to capacity constraints. For a successful migration, there must be sufficient compute and storage capacity to support the migration. If there are capacity limitations, you'll get an error message indicating the issue.
 
-## See also
+## Related content
 
 - [Business continuity and disaster recovery overview](business-continuity-overview.md)
