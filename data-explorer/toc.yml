@@ -332,6 +332,7 @@ items:
       - name: Debug KQL inline Python
         href: debug-inline-python.md
       - name: Query data using T-SQL
+        displayName: explain, sql, tsql 
         href: t-sql.md
       - name: Query data using SQL Server emulation
         items:
