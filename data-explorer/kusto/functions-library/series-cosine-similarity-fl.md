@@ -13,7 +13,7 @@ The function `series_cosine_similarity_fl()` is a [user-defined function (UDF)](
 
 > [!NOTE]
 >
-> Use the native function [series_cosine_similarity()](../query/series-cosine-similarityfunction.md) instead of the function described in this document. The native function provides the same functionality and is better for performance and scalability. This document is provided for reference purposes only.
+> Use the native function [series_cosine_similarity()](../query/series-cosine-similarity-function.md) instead of the function described in this document. The native function provides the same functionality and is better for performance and scalability. This document is provided for reference purposes only.
 
 ## Syntax
 

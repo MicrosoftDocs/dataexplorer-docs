@@ -228,7 +228,7 @@ This article lists all available scalar functions grouped by type. For aggregati
 
 |Function Name     |Description                                          |
 |-------------------------|--------------------------------------------------------|
-|[series_cosine_similarity()](series-cosine-similarityfunction.md)|Calculates the [cosine similarity](https://en.wikipedia.org/wiki/Cosine_similarity) of two numeric series.|
+|[series_cosine_similarity()](series-cosine-similarity-function.md)|Calculates the [cosine similarity](https://en.wikipedia.org/wiki/Cosine_similarity) of two numeric series.|
 |[series_decompose()](series-decomposefunction.md)|Does a decomposition of the series into components.|
 |[series_decompose_anomalies()](series-decompose-anomaliesfunction.md)|Finds anomalies in a series based on series decomposition.|
 |[series_decompose_forecast()](series-decompose-forecastfunction.md)|Forecast based on series decomposition.|
@@ -246,7 +246,7 @@ This article lists all available scalar functions grouped by type. For aggregati
 |[series_fit_poly()](series-fit-poly-function.md)|Applies polynomial regression on a series, returning multiple columns.|
 |[series_ifft()](series-ifft-function.md)|Applies the Inverse Fast Fourier Transform (IFFT) on a series.|
 |[series_iir()](series-iirfunction.md)|Applies an Infinite Impulse Response filter on a series.|
-|[series_magnitude()](series-magnitudefunction.md)|Calculates the [magnitude](https://en.wikipedia.org/wiki/Magnitude_(mathematics)#Euclidean_vector_space) of the numeric series.|
+|[series_magnitude()](series-magnitude-function.md)|Calculates the [magnitude](https://en.wikipedia.org/wiki/Magnitude_(mathematics)#Euclidean_vector_space) of the numeric series.|
 |[series_outliers()](series-outliersfunction.md)|Scores anomaly points in a series.|
 |[series_pearson_correlation()](series-pearson-correlationfunction.md)|Calculates the Pearson correlation coefficient of two series.|
 |[series_periods_detect()](series-periods-detectfunction.md)|Finds the most significant periods that exist in a time series.|
@@ -254,7 +254,7 @@ This article lists all available scalar functions grouped by type. For aggregati
 |[series_seasonal()](series-seasonalfunction.md)|Finds the seasonal component of the series.|
 |[series_stats()](series-statsfunction.md)|Returns statistics for a series in multiple columns.|
 |[series_stats_dynamic()](series-stats-dynamicfunction.md)|Returns statistics for a series in dynamic object.|
-|[series_sum()](series-sumfunction.md)|Calculates the sum of numeric series elements.|
+|[series_sum()](series-sum-function.md)|Calculates the sum of numeric series elements.|
 
 ## String functions
 
