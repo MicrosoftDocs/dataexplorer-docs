@@ -68,6 +68,18 @@ For more information, see the relevant documentation:
 
 During ingestion, [data mappings](kusto/management/mappings.md) help bind source data fields to destination table columns. Different types of mappings are supported, including row-oriented formats like CSV, JSON, and AVRO, as well as column-oriented formats like Parquet. In most methods, mappings can also be [pre-created on the table](kusto/management/create-ingestion-mapping-command.md). The method for using a mapping varies depending on the ingestion approach. For instance, when using ingestion commands, you can reference a mapping through a command parameter.
 
+## Policies
+
+The following policies are relevant to getting and retaining data:
+
+* [Batching policy](kusto/management/batchingpolicy.md)
+* [Merge policy](kusto/management/mergepolicy.md)
+* [Partitioning policy](kusto/management/partitioningpolicy.md)
+* [Retention policy](kusto/management/retentionpolicy.md)
+* [Update policy](kusto/management/updatepolicy.md)
+
+For a list of all polices, see [Policies overview](kusto/management/policies.md).
+
 ## Related content
 
 * [Connectors overview](connector-overview.md)
