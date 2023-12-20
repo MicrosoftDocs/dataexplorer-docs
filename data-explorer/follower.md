@@ -617,7 +617,8 @@ The follower database administrator can modify the [caching policy](./kusto/mana
     * If a follower cluster is following a leader cluster with CMK enabled, and the leader's access to the key is revoked, both the leader and the follower clusters will be suspended. In this situation, you can either resolve the CMK issue and then resume the follower cluster, or you can detach the follower databases from the follower cluster and resume independent of the leader cluster.
 * You can't delete a database that is attached to a different cluster before detaching it.
 * You can't delete a cluster that has a database attached to a different cluster before detaching it.
-* Table level sharing properties aren't supported when following all database.
+* Table level sharing properties aren't supported when following all databases.
+* In follower databases, to query external tables that use a Managed Identity as the authentication method, the Managed Identity must be added to the follower cluster. This capability doesn't work when the leader and follower clusters are provisioned in different tenants.
 
 ## Next step
 
