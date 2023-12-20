@@ -3,7 +3,7 @@ title: Row Level Security
 description: Learn how to use the Row Level Security policy to control access to rows in a database table.
 ms.reviewer: orspodek
 ms.topic: reference
-ms.date: 06/25/2023
+ms.date: 12/20/2023
 ---
 # Row Level Security
 
@@ -143,6 +143,9 @@ For example:
     union DataForProductionCluster, DataForFollowerClusters
 }
 ```
+
+> [!NOTE]
+> The RLS function above has no performance impact whatsoever on queries on the leader cluster. The performance impact on queries on the follower clusters will be impacted only by the complexity of `DataForFollowerClusters`.
 
 ## More use cases
 
