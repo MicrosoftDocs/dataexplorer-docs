@@ -74,7 +74,7 @@ Azure Data Explorer offers the following ingestion management commands, which in
 * **Ingest from query**: The [.set, .append, .set-or-append, or .set-or-replace commands](kusto/management/data-ingestion/ingest-from-query.md) indirectly specifies the data to ingest as the results of a query or a command.
 * **Ingest from storage**: The [.ingest into command](kusto/management/data-ingestion/ingest-from-storage.md) gets the data to ingest from external storage, such as Azure Blob Storage, accessible by your cluster and pointed-to by the command.
 
-## Ingestion process
+## The ingestion process
 
 The following steps outline the general ingestion process:
 
