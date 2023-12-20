@@ -31,10 +31,6 @@ To open the data profile view for a table:
 
 The data profile for the selected table view opens in a side window.
 
-To switch tables, select the table name at the top of the data profile, and a dropdown opens with all other tables in the context database:
-
-:::image type="content" source="media/data-profile/data-profile-switch-tables.png" alt-text="Screenshot of option to switch tables.":::
-
 ## Explore the data profile
 
 Within the profile, explore information about columns and their top values.
