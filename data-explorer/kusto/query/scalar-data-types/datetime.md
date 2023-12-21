@@ -3,7 +3,7 @@ title:  The datetime data type
 description: This article describes The datetime data type in Azure Data Explorer.
 ms.reviewer: orspodek
 ms.topic: reference
-ms.date: 10/23/2018
+ms.date: 12/21/2023
 ---
 # The datetime data type
 
@@ -15,7 +15,7 @@ January 1, 0001 A.D. (C.E.) in the GregorianCalendar calendar (excluding ticks t
 For example, a ticks value of 31241376000000000 represents the date, Friday, January 01, 0100 12:00:00 midnight.
 This is sometimes called "a moment in linear time".
 
-> [!WARNING]
+> [!NOTE]
 > A `datetime` value in Kusto is always in the UTC time zone. If displaying `datetime` values 
 > in other time zones is required, please use [datetime_utc_to_local()](../datetime-utc-to-local-function.md) 
 > or its counterpart, [datetime_local_to_utc()](../datetime-local-to-utc-function.md), to convert to a different time zone.
