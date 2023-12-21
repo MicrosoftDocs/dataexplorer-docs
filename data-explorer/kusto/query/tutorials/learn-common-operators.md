@@ -2,7 +2,7 @@
 title:  'Tutorial: Learn common Kusto Query Language operators'
 description: This tutorial describes how to write queries using common operators in the Kusto Query Language to meet common query needs.
 ms.topic: tutorial
-ms.date: 07/25/2023
+ms.date: 12/21/2023
 ---
 
 # Tutorial: Learn common operators
@@ -32,6 +32,9 @@ In this tutorial, you'll learn how to:
 > * [Map values from one set to another](#map-values-from-one-set-to-another)
 
 The examples in this tutorial use the `StormEvents` table, which is publicly available in the [**help** cluster](https://help.kusto.windows.net/Samples). To explore with your own data, [create your own free cluster](../../../start-for-free-web-ui.md).
+
+> [!NOTE]
+> For guidance on how to query logs in Azure Monitor, see [Get started with log queries](/azure/azure-monitor/logs/get-started-queries).
 
 ## Prerequisites
 
