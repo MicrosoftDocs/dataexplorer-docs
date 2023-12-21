@@ -9,6 +9,8 @@ ms.date: 12/21/2023
 
 [Kusto Query Language (KQL)](../index.md) is used to write queries in [Azure Data Explorer](https://dataexplorer.azure.com/), [Azure Monitor Log Analytics](https://azure.microsoft.com/products/monitor/#overview), [Azure Sentinel](https://azure.microsoft.com/products/microsoft-sentinel/), and more. This tutorial is an introduction to the essential KQL operators used to access and analyze your data.
 
+For more specific guidance on how to query logs in Azure Monitor, see [Get started with log queries](/azure/azure-monitor/logs/get-started-queries).
+
 > [!NOTE]
 > Can't find what you're looking for? This article was recently split, as follows:
 >
@@ -32,9 +34,6 @@ In this tutorial, you'll learn how to:
 > * [Map values from one set to another](#map-values-from-one-set-to-another)
 
 The examples in this tutorial use the `StormEvents` table, which is publicly available in the [**help** cluster](https://help.kusto.windows.net/Samples). To explore with your own data, [create your own free cluster](../../../start-for-free-web-ui.md).
-
-> [!NOTE]
-> For guidance on how to query logs in Azure Monitor, see [Get started with log queries](/azure/azure-monitor/logs/get-started-queries).
 
 ## Prerequisites
 
