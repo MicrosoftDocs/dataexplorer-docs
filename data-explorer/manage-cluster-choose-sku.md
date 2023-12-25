@@ -23,8 +23,8 @@ You can use the [Pricing calculator](https://aka.ms/adx.cost) to estimate the pr
 
 Azure Data Explorer offers two types of clusters:
 
-* **Production (with SLA)**: Production clusters contain two or more nodes for engine and data management clusters and are operated under the Azure Data Explorer SLA.
-* **Dev/Test (no SLA)**: Dev/Test clusters have a single node for the engine and data management cluster. This cluster type is the lowest cost configuration because of its low instance count and no engine markup charge. There's no redundancy or SLA for this cluster configuration.
+* **Production (with SLA)**: Production clusters contain at least two nodes for the engine cluster and at least two nodes for the data management cluster. These clusters operate under the Azure Data Explorer SLA.
+* **Dev/Test (no SLA)**: Dev/Test clusters contain a single node for the engine cluster and a single node for the data management cluster. These clusters are the lowest cost configuration because of its low instance count. There's no redundancy or SLA for this cluster configuration.
 
 ### Development vs. production
 
