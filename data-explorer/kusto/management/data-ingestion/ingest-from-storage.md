@@ -118,3 +118,9 @@ The next example ingests a single file from Amazon S3 using an [access key ID an
 .ingest into table T ('https://bucketname.s3.us-east-1.amazonaws.com/path/to/file.csv;AwsCredentials=AKIAIOSFODNN7EXAMPLE,wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY')
   with (format='csv')
 ```
+The next example ingests a single file from Amazon S3 using presigned URL [S3 PreSigned URL](https://docs.aws.amazon.com/AmazonS3/latest/userguide/ShareObjectPreSignedURL.html).
+
+```kusto
+.ingest into table T ('https://bucketname.s3.us-east-1.amazonaws.com/file.csv?<<pre signed string>>')
+  with (format='csv')
+```
