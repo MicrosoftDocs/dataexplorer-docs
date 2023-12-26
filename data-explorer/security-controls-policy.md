@@ -18,6 +18,8 @@ The title of each built-in policy definition links to the policy definition in t
 the link in the **Policy Version** column to view the source on the
 [Azure Policy GitHub repo](https://github.com/Azure/azure-policy).
 
+For resources regarding compliance for your business or organization, see the [Azure compliance documentation](/azure/compliance).
+
 > [!IMPORTANT]
 > Each control below is associated with one or more
 > [Azure Policy](/azure/governance/policy/overview) definitions. These policies may help you
@@ -48,5 +50,6 @@ more information about this compliance standard, see
 
 ## Related content
 
-- Learn more about [Azure Policy Regulatory Compliance](/azure/governance/policy/concepts/regulatory-compliance).
-- See the built-ins on the [Azure Policy GitHub repo](https://github.com/Azure/azure-policy).
+- [Azure compliance documentation](/azure/compliance)
+- [Azure security baseline for Azure Data Explorer](/security/benchmark/azure/baselines/azure-data-explorer-security-baseline)
+- See the built-ins on the [Azure Policy GitHub repo](https://github.com/Azure/azure-policy)
