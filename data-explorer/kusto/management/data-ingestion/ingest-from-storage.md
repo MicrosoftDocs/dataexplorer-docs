@@ -3,7 +3,7 @@ title:  Kusto.ingest into command (pull data from storage)
 description: This article describes The .ingest into command (pull data from storage) in Azure Data Explorer.
 ms.reviewer: orspodek
 ms.topic: reference
-ms.date: 03/08/2023
+ms.date: 12/26/2023
 ---
 # Ingest from storage
 
@@ -72,7 +72,9 @@ with an empty (zero-valued) extent ID.
 
 ## Examples
 
-The next example instructs your cluster to read two blobs from Azure Blob Storage
+### Azure Blob Storage with shared access signature
+
+The following example instructs your cluster to read two blobs from Azure Blob Storage
 as CSV files, and ingest their contents into table `T`. The `...` represents
 an Azure Storage shared access signature (SAS) which gives read access to each
 blob. Note also the use of obfuscated strings (the `h` in front of the string
@@ -85,13 +87,17 @@ values) to ensure that the SAS is never recorded.
 )
 ```
 
-The next example shows how to read a CSV file from Azure Blob Storage and ingest its contents into table `T` using managed identity authentication. For additional information on managed identity authentication method, see [Managed Identity Authentication Overview](../../api/connection-strings/storage-authentication-methods.md#managed-identity).
+### Azure Blob Storage with managed identity
+
+The following example shows how to read a CSV file from Azure Blob Storage and ingest its contents into table `T` using managed identity authentication. For additional information on managed identity authentication method, see [Managed Identity Authentication Overview](../../api/connection-strings/storage-authentication-methods.md#managed-identity).
 
 ```kusto
 .ingest into table T ('https://StorageAccount.blob.core.windows.net/Container/file.csv;managed_identity=802bada6-4d21-44b2-9d15-e66b29e4d63e')
 ```
 
-The next example is for ingesting data from Azure Data Lake Storage Gen 2
+### Azure Data Lake Storage Gen 2
+
+The following example is for ingesting data from Azure Data Lake Storage Gen 2
 (ADLSv2). The credentials used here (`...`) are the storage account credentials
 (shared key), and we use string obfuscation only for the secret part of the
 connection string.
@@ -102,7 +108,9 @@ connection string.
 )
 ```
 
-The next example ingests a single file from Azure Data Lake Storage (ADLS).
+### Azure Data Lake Storage
+
+The following example ingests a single file from Azure Data Lake Storage (ADLS).
 It uses the user's credentials to access ADLS (so there's no need to treat
 the storage URI as containing a secret). It also shows how to specify ingestion
 properties.
@@ -112,13 +120,18 @@ properties.
   with (format='csv')
 ```
 
-The next example ingests a single file from Amazon S3 using an [access key ID and a secret access key](https://docs.aws.amazon.com/general/latest/gr/aws-sec-cred-types.html#access-keys-and-secret-access-keys).
+### Amazon S3 with an access key
+
+The following example ingests a single file from Amazon S3 using an [access key ID and a secret access key](https://docs.aws.amazon.com/general/latest/gr/aws-sec-cred-types.html#access-keys-and-secret-access-keys).
 
 ```kusto
 .ingest into table T ('https://bucketname.s3.us-east-1.amazonaws.com/path/to/file.csv;AwsCredentials=AKIAIOSFODNN7EXAMPLE,wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY')
   with (format='csv')
 ```
-The next example ingests a single file from Amazon S3 using presigned URL [S3 PreSigned URL](https://docs.aws.amazon.com/AmazonS3/latest/userguide/ShareObjectPreSignedURL.html).
+
+### Amazon S3 with a presigned URL
+
+The following example ingests a single file from Amazon S3 using a [preSigned URL](https://docs.aws.amazon.com/AmazonS3/latest/userguide/ShareObjectPreSignedURL.html).
 
 ```kusto
 .ingest into table T ('https://bucketname.s3.us-east-1.amazonaws.com/file.csv?<<pre signed string>>')
