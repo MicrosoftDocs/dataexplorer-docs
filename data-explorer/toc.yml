@@ -129,7 +129,7 @@ items:
           - name: Configure customer-managed keys
             href: customer-managed-keys.md
           - name: Create Microsoft Entra app
-            href: provision-azure-ad-app.md
+            href: provision-entra-id-app.md
           - name: Conditional Access
             href: security-conditional-access.md
       - name: Get data
@@ -336,6 +336,7 @@ items:
       - name: Debug KQL inline Python
         href: debug-inline-python.md
       - name: Query data using T-SQL
+        displayName: explain, sql, tsql 
         href: t-sql.md
       - name: Query data using SQL Server emulation
         items:
@@ -453,6 +454,8 @@ items:
                 href: manage-cluster-horizontal-scaling.md
               - name: Manage cluster vertical scaling
                 href: manage-cluster-vertical-scaling.md
+              - name: Migrate cluster to support availability zones
+                href: migrate-cluster-to-multiple-availability-zone.md
               - name: Check cluster health
                 href: check-cluster-health.md
               - name: Add cluster principal
@@ -462,6 +465,8 @@ items:
                 href: language-extensions.md
               - name: Delete a cluster
                 href: delete-cluster.md
+              - name: View version deployments
+                href: version-deployments.md
           - name: Free cluster
             items:
               - name: Manage free cluster

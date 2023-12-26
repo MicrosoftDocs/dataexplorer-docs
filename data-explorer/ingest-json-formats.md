@@ -26,9 +26,9 @@ Azure Data Explorer supports two JSON file formats:
 * `multijson`: Multi-lined JSON. The parser ignores the line separators and reads a record from the previous position to the end of a valid JSON.
 
 > [!NOTE]
-> When ingesting using the [ingestion wizard](ingest-data-wizard.md), the default format is `multijson`. The format can handle multiline JSON records and arrays of JSON records. When a parsing error is encountered, the entire file is discarded.
+> When ingesting using the [ingestion wizard](ingest-data-wizard.md), the default format is `multijson`. The format can handle multiline JSON records and arrays of JSON records. When a parsing error is encountered, the entire file is discarded. To ignore invalid JSON records, select the option to "Ignore data format errors.", which will switch the format to `json` (JSON Lines).
 > 
-> If you're using the JSON Line format, where each line is a single well-formatted JSON record, and you want to be able to handle records that are not well-formed, you can select the option to "Ignore data format errors." This will allow the valid records to be ingested while skipping the ones that are not well-formed.
+> If you're using the JSON Line format (`json`), lines that don't represent a valid JSON records are skipped during parsing.
 
 ### Ingest and map JSON formatted data
 

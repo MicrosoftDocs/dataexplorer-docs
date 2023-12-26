@@ -37,7 +37,7 @@ The following table shows sample queries in SQL and their KQL equivalents.
 | Comparison operators (date) | `SELECT * FROM dependencies`<br>`WHERE timestamp > getdate()-1` | `dependencies`<br>`| where timestamp > ago(1d)` | [ago()](agofunction.md) |
 | -- | `SELECT * FROM dependencies`<br>`WHERE timestamp BETWEEN ... AND ...` | `dependencies`<br>`| where timestamp between (datetime(2016-10-01) .. datetime(2016-11-01))` | [between](betweenoperator.md) |
 | Comparison operators (string) | `SELECT * FROM dependencies`<br>`WHERE type = "Azure blob"` | `dependencies`<br>`| where type == "Azure blob"` | [Logical operators](logicaloperators.md) |
-| -- | `-- substring`<br>`SELECT * FROM dependencies`<br>`WHERE type like "%blob%"` | `// substring`<br>`dependencies`<br>`| where type contains "blob"` | [contains](contains-operator.md) |
+| -- | `-- substring`<br>`SELECT * FROM dependencies`<br>`WHERE type like "%blob%"` | `// substring`<br>`dependencies`<br>`| where type has "blob"` | [has](has-operator.md) |
 | -- | `-- wildcard`<br>`SELECT * FROM dependencies`<br>`WHERE type like "Azure%"` | `// wildcard`<br>`dependencies`<br>`| where type startswith "Azure"`<br>`// or`<br>`dependencies`<br>`| where type matches regex "^Azure.*"` | [`startswith`](startswith-operator.md)</br>[matches regex](matches-regex-operator.md) |
 | Comparison (boolean) | `SELECT * FROM dependencies`<br>`WHERE !(success)` | `dependencies`<br>`| where success == False` | [Logical operators](logicaloperators.md) |
 | Grouping, Aggregation | `SELECT name, AVG(duration) FROM dependencies`<br>`GROUP BY name` | `dependencies`<br>`| summarize avg(duration) by name` | [summarize](summarizeoperator.md)</br>[avg()](avg-aggfunction.md) |

@@ -90,6 +90,7 @@ items:
     href: scalar-data-types/long.md
   - name: real
     href: scalar-data-types/real.md
+    displayName: double
   - name: string
     href: scalar-data-types/string.md
   - name: timespan
@@ -1413,6 +1414,9 @@ items:
   - name: series_cos()
     displayName: element-wise, elementwise
     href: series-cosfunction.md  
+  - name: series_cosine_similarity()
+    displayName: element-wise, elementwise, embedding, vector, cosine, similarity
+    href: series-cosine-similarity-function.md
   - name: series_decompose()
     displayName: seasonal, trend, baseline
     href: series-decomposefunction.md
@@ -1491,6 +1495,9 @@ items:
   - name: series_log()
     displayName: element-wise, elementwise
     href: series-log-function.md
+  - name: series_magnitude()
+    displayName: element-wise, elementwise, vector
+    href: series-magnitude-function.md
   - name: series_multiply()
     displayName: element-wise, elementwise
     href: series-multiplyfunction.md
@@ -1529,6 +1536,9 @@ items:
   - name: series_subtract()
     displayName: element-wise, elementwise
     href: series-subtractfunction.md
+  - name: series_sum()
+    displayName: element-wise, elementwise
+    href: series-sum-function.md
   - name: series_tan()
     displayName: element-wise, elementwise
     href: series-tanfunction.md

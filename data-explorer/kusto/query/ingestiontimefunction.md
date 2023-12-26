@@ -3,7 +3,7 @@ title:  ingestion_time()
 description: Learn how to use the ingestion_time() function to return the approximate time of the data's ingestion. 
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 12/20/2022
+ms.date: 12/21/2023
 zone_pivot_group_filename: data-explorer/zone-pivot-groups.json
 zone_pivot_groups: kql-flavors-all
 ---
@@ -11,7 +11,7 @@ zone_pivot_groups: kql-flavors-all
 
 ::: zone pivot="azuredataexplorer, fabric"
 
-Returns the approximate time at which the current record was ingested.
+Returns the approximate [datetime](../query/scalar-data-types/datetime.md) in UTC format indicating when the current record was ingested. 
 
 This function must be used in context of a table for which the [IngestionTime policy](../management/ingestiontimepolicy.md) is enabled. Otherwise, this function produces null values.
 
