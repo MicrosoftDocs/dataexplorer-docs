@@ -21,7 +21,20 @@ Examples of schema changes are:
 If schema changes and streaming ingestion flows are uncoordinated, some of the streaming ingestion requests may fail. The failures could include schema-related errors, or the insertion of incomplete or distorted data into the table.
 When implementing custom ingestion application it is highly recommended to handle the schema-related failures by performing retries for a limited time, or by rerouting data from the failed requests via queued ingestion methods.
 
-## Clearing the schema cache
+## Schema changes
+
+The following list covers key examples of schema changes:
+
+* [Creation of tables](../create-table-command.md)
+* [Deletion of tables](../drop-table-command.md)
+* [Adding a column to a table](../alter-merge-table-command.md)
+* [Removing a column from a table](../drop-column.md)
+* [Retyping the columns of a table](../alter-column.md)
+* [Renaming the columns of a table](../rename-column.md)
+* [Adding precreated ingestion mappings](../create-ingestion-mapping-command.md)
+* [Removing precreated ingestion mappings](../drop-ingestion-mapping-command.md)
+* Adding, removing, or altering [policies](../policies.md)
+
 
 The schema cache is kept while the cluster is online. If there are schema changes, the system will automatically refresh the cache, but this may take several minutes. If you rely on the automatic refresh, you may experience uncoordinated ingestion failures. 
 
