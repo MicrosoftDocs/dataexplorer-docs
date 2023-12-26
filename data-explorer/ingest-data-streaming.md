@@ -26,7 +26,7 @@ Two streaming ingestion types are supported:
 | Ingestion type | Description |
 | -- | -- |
 | Data connection | Event Hub, IoT Hub, and Event Grid data connections can use streaming ingestion, provided it is enabled on the cluster level. The decision to use streaming ingestion is done according to the streaming ingestion policy configured on the target table.<br />For information on managing data connections, see [**Event Hub**](ingest-data-event-hub.md), [**IoT Hub**](ingest-data-iot-hub.md) and [**Event Grid**](ingest-data-event-Grid.md). |
-| **Custom ingestion** | Custom ingestion requires you to write an application that uses one of the Azure Data Explorer [client libraries](kusto/api/client-libraries.md).<br />Use the information in this topic to configure custom ingestion. You may also find the [C# streaming ingestion sample application](https://github.com/Azure/azure-kusto-samples-dotnet/tree/master/client/StreamingIngestionSample) helpful. |
+| Custom ingestion | Custom ingestion requires you to write an application that uses one of the Azure Data Explorer [client libraries](kusto/api/client-libraries.md).<br />Use the information in this topic to configure custom ingestion. You may also find the [C# streaming ingestion sample application](https://github.com/Azure/azure-kusto-samples-dotnet/tree/master/client/StreamingIngestionSample) helpful. |
 
 Use the following table to help you choose the ingestion type that's appropriate for your environment:
 
