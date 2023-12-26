@@ -3,13 +3,16 @@ title: .create-or-alter ingestion mapping command
 description: Learn how to use the `.create-or-alter ingestion mapping` command to create or alter an ingestion mapping.
 ms.reviewer: orspodek
 ms.topic: reference
-ms.date: 05/24/2023
+ms.date: 12/26/2023
 ---
 # .create-or-alter ingestion mapping command
 
 Creates or alters an ingestion mapping that can be associated with a specific format and a specific table or database.
 
 If the ingestion mapping doesn't exist, the command will create it. If the ingestion mapping already exists, the command will modify it.
+
+> [!NOTE]
+> Adding columns to an ingestion mapping expands the associated table when data is first ingested for these columns. Valid data types must be specified for these columns to enable this behavior, which is supported only for queued ingestion.
 
 ## Permissions
 
