@@ -51,4 +51,5 @@ more information about this compliance standard, see
 ## Related content
 
 - [Azure compliance documentation](/azure/compliance)
+- [Azure security baseline for Azure Data Explorer](/security/benchmark/azure/baselines/azure-data-explorer-security-baseline)
 - See the built-ins on the [Azure Policy GitHub repo](https://github.com/Azure/azure-policy)

@@ -74,6 +74,7 @@ To revoke access to customer-managed keys, use PowerShell or Azure CLI. For more
 
 ## Related content
 
+* [Azure security baseline for Azure Data Explorer](/security/benchmark/azure/baselines/azure-data-explorer-security-baseline)
 * [Secure your cluster using Disk Encryption](cluster-encryption-disk.md) by enabling encryption at rest.
 * [Configure managed identities for your cluster](configure-managed-identities-cluster.md)
 * [Configure customer-managed-keys](customer-managed-keys.md)
