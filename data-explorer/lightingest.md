@@ -20,7 +20,7 @@ For an example of how to autogenerate a LightIngest command, see [ingest histori
 
 ## Run LightIngest
 
-The command to run LightIngest varies based on how you installed the tool. Select the relevant tab.
+The command to run LightIngest varies based on the method of installation. If you downloaded the LightIngest binaries, use `LightIngest.exe`. If you installed LightIngest as a .NET tool, use `LightIngest`. Select the relevant tab.
 
 ### [Binaries](#tab/binaries)
 
