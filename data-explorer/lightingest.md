@@ -16,7 +16,7 @@ For an example of how to autogenerate a LightIngest command, see [ingest histori
 
 ## Prerequisites
 
-* LightIngest. You can [download LightIngest binaries for your operating system](https://github.com/Azure/Kusto-Lightingest/releases) or [install LightIngest as a .NET tool](https://www.nuget.org/packages/Microsoft.Azure.Kusto.LightIngest). To install it as a .NET tool, you need the .NET SDK version 6.0 or higher installed on your machine.
+* LightIngest. You can either [download LightIngest binaries for your operating system](https://github.com/Azure/Kusto-Lightingest/releases) or [install LightIngest as a .NET tool](https://www.nuget.org/packages/Microsoft.Azure.Kusto.LightIngest). To install it as a .NET tool, you need the .NET SDK version 6.0 or higher installed on your machine.
 
 ## Run LightIngest
 
