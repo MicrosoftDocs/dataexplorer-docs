@@ -10,7 +10,7 @@ ms.date: 12/26/2023
 Alters an existing ingestion mapping that is associated with a specific table/database and a specific format (full mapping replace).
 
 > [!NOTE]
-> Adding columns to an ingestion mapping expands the associated table when data is first ingested for these columns. Valid data types must be specified for these columns to enable this behavior, which is supported only for queued ingestion.
+> New columns introduced in an ingestion mapping, which aren't present in the source table, will be added to the table during the initial data ingestion for that column. This behavior is only supported for queued ingestion and is contingent on specifying a valid data type for the column.
 
 ## Permissions
 
