@@ -236,7 +236,7 @@ items:
         items:
           - name: Ingestion mappings overview
             href: mappings.md
-            displayName: schema mappings
+            displayName: schema mappings, data mappings
           - name: "CSV mapping"
             href: csv-mapping.md
           - name: "JSON mapping"
