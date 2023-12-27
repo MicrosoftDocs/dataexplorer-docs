@@ -3,7 +3,7 @@ title: Use LightIngest to ingest data into Azure Data Explorer.
 description: Learn about LightIngest, a command-line utility for ad-hoc data ingestion into Azure Data Explorer.
 ms.reviewer: tzgitlin
 ms.topic: how-to
-ms.date: 11/29/2023
+ms.date: 12/27/2023
 ---
 
 # Use LightIngest to ingest data into Azure Data Explorer
@@ -16,26 +16,18 @@ For an example of how to autogenerate a LightIngest command, see [ingest histori
 
 ## Prerequisites
 
-### Binaries
-* LightIngest for your operating system: Windows, OSX, or Linux. [Download LightIngest](https://github.com/Azure/Kusto-Lightingest/releases).
-They are standalone and as such have no other prerequisites, simply download the one tergeting your operating system and run:
-
-### Dotnet Tool
-LightIngest is published as a [dotnet tool](https://learn.microsoft.com/en-us/dotnet/core/tools/global-tools) from [this feed](https://www.nuget.org/packages/Microsoft.Azure.Kusto.LightIngest/12.0.0-preview.1)
-Dotnet tools require .Net SDK >= 6.0 installed and run an installation command:
-
-```.NET CLI
-dotnet tool install --global Microsoft.Azure.Kusto.LightIngest --version 12.0.0-preview.1
-```
+* LightIngest. [Download LightIngest binaries for your operating system](https://github.com/Azure/Kusto-Lightingest/releases) or [install LightIngest as a .NET tool](https://www.nuget.org/packages/Microsoft.Azure.Kusto.LightIngest). To install it as a .NET tool, you need the .NET SDK version 6.0 or higher installed on your machine.
 
 ## Run LightIngest
 
-1. At the command prompt, enter `LightIngest.exe` (`LightIngest` for tool) followed by the relevant command-line argument.
+The command to run LightIngest varies based on how you installed the tool. Select the relevant tab.
 
-    > [!Tip]
+### [Binaries](#tab/binaries)
+
+1. At the command prompt, enter `LightIngest.exe` followed by the relevant command-line argument.
+
+    > [!TIP]
     > For a list of supported command-line arguments, enter `LightIngest.exe /help`.
-    >
-    > :::image type="content" source="media/lightingest/lightingest-cmd-line-help.png" alt-text="Command line help for LightIngest.":::
 
 1. Enter `ingest-` followed by the connection string to the Azure Data Explorer cluster that will manage the ingestion. Enclose the connection string in double quotes and follow the [Kusto connection strings specification](kusto/api/connection-strings/kusto.md).
 
@@ -45,7 +37,24 @@ dotnet tool install --global Microsoft.Azure.Kusto.LightIngest --version 12.0.0-
     LightIngest.exe "https://ingest-{Cluster name and region}.kusto.windows.net;Fed=True" -db:{Database} -table:Trips -source:"https://{Account}.blob.core.windows.net/{ROOT_CONTAINER};{StorageAccountKey}" -pattern:"*.csv.gz" -format:csv -limit:2 -ignoreFirst:true -cr:10.0 -dontWait:true
     ```
 
-### Recommendations
+### [.NET tool](#tab/dotnet-tool)
+
+1. At the command prompt, enter `LightIngest` followed by the relevant command-line argument.
+
+    > [!TIP]
+    > For a list of supported command-line arguments, enter `LightIngest /help`.
+
+1. Enter `ingest-` followed by the connection string to the Azure Data Explorer cluster that will manage the ingestion. Enclose the connection string in double quotes and follow the [Kusto connection strings specification](kusto/api/connection-strings/kusto.md).
+
+    For example:
+
+    ```
+    LightIngest "https://ingest-{Cluster name and region}.kusto.windows.net;Fed=True" -db:{Database} -table:Trips -source:"https://{Account}.blob.core.windows.net/{ROOT_CONTAINER};{StorageAccountKey}" -pattern:"*.csv.gz" -format:csv -limit:2 -ignoreFirst:true -cr:10.0 -dontWait:true
+    ```
+
+---
+
+## Performance recommendations
 
 * To best manage the ingestion load and recover from transient errors, use the ingestion endpoint at `https://ingest-{yourClusterNameAndRegion}.kusto.windows.net`.
 
@@ -94,11 +103,14 @@ When used with Azure blobs, LightIngest uses certain blob metadata properties to
 
 ## Usage examples
 
-### How to ingest data using CreationTime
+The following examples assume you've installed LightIngest binaries for your operating system. If you've installed LightIngest as a .NET tool, substitute  `LightIngest.exe` with `LightIngest` in the examples.
+
+### Ingest historical data with the CreationTime property
 
 When you load historical data from existing system to Azure Data Explorer, all records receive the same ingestion date. To enable partitioning your data by creation time and not ingestion time, you can use the `-creationTimePattern` argument. The `-creationTimePattern` argument extracts the `CreationTime` property from the file or blob path. The pattern doesn't need to reflect the entire item path, just the section enclosing the timestamp you want to use.
 
 The argument values must include:
+
 * Constant text immediately preceding the timestamp format, enclosed in single quotes (prefix)
 * The timestamp format, in standard [.NET DateTime notation](/dotnet/standard/base-types/custom-date-and-time-format-strings)
 * Constant text immediately following the timestamp (suffix).
