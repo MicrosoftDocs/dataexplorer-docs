@@ -78,7 +78,7 @@ The command to run LightIngest varies based on how you installed the tool. Selec
 | -format, -f | string | Source data format. Must be one of the [supported formats](ingestion-supported-formats.md) |  |
 | -ingestionMappingPath, -mappingPath | string | A path to a local file for ingestion column mapping. See [data mappings](kusto/management/mappings.md). |  |
 | -ingestionMappingRef, -mappingRef | string | The name of an ingestion column mapping that was previously created on the table. See [data mappings](kusto/management/mappings.md). |  |
-| -creationTimePattern | string | When set, is used to extract the CreationTime property from the file or blob path. See [How to ingest data using `CreationTime`](#how-to-ingest-data-using-creationtime). |  |
+| -creationTimePattern | string | When set, is used to extract the CreationTime property from the file or blob path. See [How to ingest data using `CreationTime`](#ingest-historical-data-with-the-creationtime-property). |  |
 | -ignoreFirstRow, -ignoreFirst | bool | If set, the first record of each file/blob is ignored. For example, if the source data has headers. |  |
 | -tag | string | [Tags](kusto/management/extent-tags.md) to associate with the ingested data. Multiple occurrences are permitted |  |
 | -dontWait | bool | If set to `true`, doesn't wait for ingestion completion. Useful when ingesting large amounts of files/blobs. |  |
