@@ -16,11 +16,21 @@ For an example of how to autogenerate a LightIngest command, see [ingest histori
 
 ## Prerequisites
 
+### Binaries
 * LightIngest for your operating system: Windows, OSX, or Linux. [Download LightIngest](https://github.com/Azure/Kusto-Lightingest/releases).
+They are standalone and as such have no other prerequisites, simply download the one tergeting your operating system and run:
+
+### Dotnet Tool
+LightIngest is published as a [dotnet tool](https://learn.microsoft.com/en-us/dotnet/core/tools/global-tools) from [this feed](https://www.nuget.org/packages/Microsoft.Azure.Kusto.LightIngest/12.0.0-preview.1)
+Dotnet tools require .Net SDK >= 6.0 installed and run an installation command:
+
+```.NET CLI
+dotnet tool install --global Microsoft.Azure.Kusto.LightIngest --version 12.0.0-preview.1
+```
 
 ## Run LightIngest
 
-1. At the command prompt, enter `LightIngest.exe` followed by the relevant command-line argument.
+1. At the command prompt, enter `LightIngest.exe` (`LightIngest` for tool) followed by the relevant command-line argument.
 
     > [!Tip]
     > For a list of supported command-line arguments, enter `LightIngest.exe /help`.
