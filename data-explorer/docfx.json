@@ -66,6 +66,10 @@
       "feedback_help_link_url": "https://learn.microsoft.com/answers/topics/azure-data-explorer.html",
       "feedback_help_link_type": "get-help-at-qna",
       "recommendations": true,
+      "monikerRange": {
+        "**/*.md": "= azure-data-explorer  || = azure-monitor || = azure-log-analytics ",
+        "**/*.yml": "= azure-data-explorer  || = azure-monitor || = azure-log-analytics "
+      },
       "_op_documentIdPathDepotMapping": {
         "./": {
           "depot_name": "Azure.azure-documents",
@@ -74,11 +78,7 @@
         "./kusto": {
           "depot_name": "MSDN.kustolang",
           "folder_relative_path_in_docset": "docs/"
-        },
-      "monikerRange": {
-        "**/*.md": "= azure-data-explorer  || = azure-monitor || = azure-log-analytics ",
-        "**/*.yml": "= azure-data-explorer  || = azure-monitor || = azure-log-analytics "
-      },
+        } },
       "contributors_to_exclude": [
         "PRmerger",
         "PRMerger9",
