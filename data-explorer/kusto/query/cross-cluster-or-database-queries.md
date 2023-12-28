@@ -4,12 +4,9 @@ description: This article describes cross-database and cross-cluster queries in 
 ms.reviewer: alexans
 ms.topic: reference
 ms.date: 07/19/2023
-zone_pivot_group_filename: data-explorer/zone-pivot-groups.json
-zone_pivot_groups: kql-flavors-all
+monikerRange: "=azure-data-explorer"
 ---
 # Cross-cluster and cross-database queries
-
-::: zone pivot="azuredataexplorer, fabric"
 
 Queries run with a particular database designated as the *database in context*. This database acts as the default for permission checking. If an entity is referenced in a query without specifying the cluster or database, it's resolved against this database.
 
@@ -182,11 +179,3 @@ cluster("OtherCluster").database("OtherDb").GetDataPivot()
 
 * [Cross-cluster join](../query/joincrosscluster.md)
 * [Allow cross-tenant queries and commands](../access-control/cross-tenant-query-and-commands.md)
-
-::: zone-end
-
-::: zone pivot="azuremonitor"
-
-Cross-database and cross-cluster queries aren't supported in Azure Monitor. See [Cross workspace queries in Azure Monitor](/azure/azure-monitor/log-query/cross-workspace-query) for queries across multiple workspaces and apps.
-
-::: zone-end
