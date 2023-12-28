@@ -4,12 +4,9 @@ description: Learn how to use an alias statement to define an alias for a databa
 ms.reviewer: alexans
 ms.topic: reference
 ms.date: 03/14/2023
-zone_pivot_group_filename: data-explorer/zone-pivot-groups.json
-zone_pivot_groups: kql-flavors-all
+monikerRange: "=azure-data-explorer"
 ---
 # Alias statement
-
-::: zone pivot="azuredataexplorer, fabric"
 
 Alias statements allow you to define an alias for databases, which can be used later in the same query.
 
@@ -83,11 +80,3 @@ database("Samples Database Alias").StormEvents | count
 |Count|
 |--|
 |59066|
-
-::: zone-end
-
-::: zone pivot="azuremonitor"
-
-This capability isn't supported in Azure Monitor
-
-::: zone-end
