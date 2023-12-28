@@ -21,22 +21,18 @@ For general information on data types, see [scalar data types](/azure/data-explo
 * Fields that are likely to get added, removed or retyped, and aren't queried often, should be grouped into a [dynamic](/azure/data-explorer/kusto/query/scalar-data-types/dynamic) column.
 * Use the [dynamic](/azure/data-explorer/kusto/query/scalar-data-types/dynamic) type for sparse columns that aren't commonly used for filter and aggregation.
 
-* All time columns should be typed as [datetime](/azure/data-explorer/kusto/query/scalar-data-types/datetime), and not [long](/azure/data-explorer/kusto/query/scalar-data-types/long) or other data types. 
+* All time columns should be typed as [datetime](/azure/data-explorer/kusto/query/scalar-data-types/datetime), and not [long](/azure/data-explorer/kusto/query/scalar-data-types/long) or other data types.
     * For examples, see `DateTimeFromUnixMilliseconds` and similar [transformation mappings](/azure/data-explorer/kusto/management/mappings#mapping-transformations).
 
-* Use [real](/azure/data-explorer/kusto/query/scalar-data-types/real) instead of decimal there's a huge perf difference, use [Decimal](/azure/data-explorer/kusto/query/scalar-data-types/decimal) only if accuracy is required.
+* Only use the [Decimal](/azure/data-explorer/kusto/query/scalar-data-types/decimal) type if accuracy is required. Otherwise, use [real](/azure/data-explorer/kusto/query/scalar-data-types/real) type.
 
 * For better indexing, all ID (identification) columns should be typed as [string](/azure/data-explorer/kusto/query/scalar-data-types/string), not numeric.
 
 ## Tables
 
-Only move data to a dimension table if the values there often updated and you want to always use the latest value. If not, embed them as a column in the fact table to avoid joins
+* Only move data to a dimension table if the values there often updated and you want to always use the latest value. If not, embed the values as a column in the fact table to avoid joins.
 
-Optimize for narrow tables - Narrow tables are better than wide tables (hundreds of columns)
-
-## Move elsewhere
-
-If you build a multitenant system. Allocate a database per tenant
+* Optimize for narrow tables, which are preferred over wide tables with hundreds of columns.
 
 ## Related content
 
