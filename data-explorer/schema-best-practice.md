@@ -26,7 +26,7 @@ For general information on data types, see [scalar data types](/azure/data-explo
 
 * Only use the [Decimal](/azure/data-explorer/kusto/query/scalar-data-types/decimal) type if accuracy is required. Otherwise, use [real](/azure/data-explorer/kusto/query/scalar-data-types/real) type.
 
-* For better indexing, all ID (identification) columns should be typed as [string](/azure/data-explorer/kusto/query/scalar-data-types/string), not numeric.
+* For better indexing, all ID (identification) columns should be typed as [string](/azure/data-explorer/kusto/query/scalar-data-types/string), not numeric. If you only query for specific values in this column, you can use the encoding profile `Identifier`. For more information, see [encoding policy](/azure/data-explorer/kusto/management/encoding-policy).
 
 ## Tables
 
