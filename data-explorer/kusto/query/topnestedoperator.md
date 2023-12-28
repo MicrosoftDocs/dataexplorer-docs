@@ -43,7 +43,7 @@ The following aggregation functions are supported:
 * [dcount()](dcountif-aggfunction.md)
 * [avg()](avg-aggfunction.md)
 * [percentile()](percentiles-aggfunction.md)
-* [percentilew()](percentiles-aggfunction.md)
+* [percentilew()](percentilesw-aggfunction.md)
 
 > [!NOTE]
 > Any algebraic combination of the aggregations is also supported.
