@@ -89,8 +89,8 @@ LightIngest can be useful to load historical data from an existing storage syste
 
     | Property | Description|
     |---|---|
-    | Creation time pattern | Specify to override the ingestion time property of the created extent with a pattern, for example, to apply a date based on the folder structure of the container. See also [Creation time pattern](lightingest.md#how-to-ingest-data-using-creationtime). |
-    | Blob name pattern | Specify the pattern used to identify the files to be ingested. Ingest all the files that match the blob name pattern in the given container. Supports wildcards. We recommended enclosing in double quotes. |
+    | Creation time pattern | Specify a pattern used to override the ingestion time property of the created extent. For example, you can apply a date based on the folder structure of the container. See also [Creation time pattern](lightingest.md#how-to-ingest-data-using-creationtime). |
+    | Blob name pattern | Specify the pattern used to identify the files to be ingested. Ingest all the files that match the blob name pattern in the given container. Supports wildcards. We recommend enclosing this value in double quotes. |
     | Tag | A [tag](kusto/management/extent-tags.md) assigned to the ingested data. The tag can be any string. |
     | Limit number of files | Specify the number of files that can be ingested. Ingests the first `n` files that match the blob name pattern, up to the number specified.  |
     | Don't wait for ingestion to complete | If set, queues the blobs for ingestion without monitoring the ingestion process. If not set, LightIngest continues to poll the ingestion status until ingestion is complete.|
