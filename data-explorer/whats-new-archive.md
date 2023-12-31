@@ -131,7 +131,7 @@ Welcome to what's new in Azure Data Explorer archive. This article is an archive
 | Article title | Description |
 |--|--|
 | [Streaming ingestion failures](kusto/management/streaming-ingestion-failures.md) | New article. Describes the command to show streaming ingestion failures. |
-| [Streaming ingestion statistics](kusto/management/streamingingestionstatistics.md) | New article. Describes the command to show streaming ingestion statistics. |
+| [Streaming ingestion statistics](kusto/management/streaming-ingestion-statistics.md) | New article. Describes the command to show streaming ingestion statistics. |
 
 ## March 2022
 

@@ -834,7 +834,7 @@ items:
         items:
           - name: .show streamingingestion statistics
             displayName: .show streaming ingestion statistics
-            href: streamingingestionstatistics.md
+            href: streaming-ingestion-statistics.md
           - name: .show table data statistics
             href: show-table-data-statistics.md
   - name: Advanced data management
