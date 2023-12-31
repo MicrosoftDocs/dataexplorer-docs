@@ -753,7 +753,7 @@ items:
         href: ingestion-failures.md
       - name: .show streamingingestion failures command
         displayName: .show streaming ingestion failures
-        href: streamingingestionfailures.md
+        href: streaming-ingestion-failures.md
   - name: Data export
     href: data-export/index.md
     items:

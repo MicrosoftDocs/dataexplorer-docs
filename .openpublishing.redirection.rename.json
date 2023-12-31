@@ -79,6 +79,11 @@
         "source_path": "data-explorer/kusto/management/streamingingestionpolicy.md",
         "redirect_url": "/azure/data-explorer/kusto/management/streaming-ingestion-policy.md",
         "redirect_document_id": true
+      },
+      {
+        "source_path": "data-explorer/kusto/management/streamingingestionfailures.md",
+        "redirect_url": "/azure/data-explorer/kusto/management/streaming-ingestion-failures.md",
+        "redirect_document_id": true
       }
     ]
 }
