@@ -3,7 +3,7 @@ title: Row Level Security
 description: Learn how to use the Row Level Security policy to control access to rows in a database table.
 ms.reviewer: orspodek
 ms.topic: reference
-ms.date: 06/25/2023
+ms.date: 12/21/2023
 ---
 # Row Level Security
 
@@ -69,30 +69,26 @@ Sales
 | where Country in ((UserToCountryMapping | where User == current_principal_details()["UserPrincipalName"] | project Country))
 ```
 
-If you have a group that contains the managers, you might want to give them access to all rows. Query the Row Level Security policy.
+If you have a group that contains the managers, you might want to give them access to all rows. Here's the query for the Row Level Security policy.
 
 ```kusto
 let IsManager = current_principal_is_member_of('aadgroup=sales_managers@domain.com');
 let AllData = Sales | where IsManager;
-let PartialData = Sales | where not(IsManager) and (SalesPersonAadUser == current_principal());
+let PartialData = Sales | where not(IsManager) and (SalesPersonAadUser == current_principal()) | extend EmailAddress = "****";
 union AllData, PartialData
-| extend EmailAddress = "****"
 ```
 
 <a name='expose-different-data-to-members-of-different-azure-ad-groups'></a>
 
 ### Expose different data to members of different Microsoft Entra groups
 
-If you have multiple Microsoft Entra groups, and you want the members of each group to see a different subset of data, use this structure for an RLS query. Assume a user can only belong to a single Microsoft Entra group.
+If you have multiple Microsoft Entra groups, and you want the members of each group to see a different subset of data, use this structure for an RLS query.
 
 ```kusto
-let IsInGroup1 = current_principal_is_member_of('aadgroup=group1@domain.com');
-let IsInGroup2 = current_principal_is_member_of('aadgroup=group2@domain.com');
-let IsInGroup3 = current_principal_is_member_of('aadgroup=group3@domain.com');
-let DataForGroup1 = Customers | where IsInGroup1 and <filtering specific for group1>;
-let DataForGroup2 = Customers | where IsInGroup2 and <filtering specific for group2>;
-let DataForGroup3 = Customers | where IsInGroup3 and <filtering specific for group3>;
-union DataForGroup1, DataForGroup2, DataForGroup3
+Customers
+| where (current_principal_is_member_of('aadgroup=group1@domain.com') and <filtering specific for group1>) or
+        (current_principal_is_member_of('aadgroup=group2@domain.com') and <filtering specific for group2>) or
+        (current_principal_is_member_of('aadgroup=group3@domain.com') and <filtering specific for group3>)
 ```
 
 ### Apply the same RLS function on multiple tables
@@ -143,6 +139,9 @@ For example:
     union DataForProductionCluster, DataForFollowerClusters
 }
 ```
+
+> [!NOTE]
+> The RLS function above has no performance impact whatsoever on queries on the leader cluster. The performance impact on queries on the follower clusters will be impacted only by the complexity of `DataForFollowerClusters`.
 
 ## More use cases
 

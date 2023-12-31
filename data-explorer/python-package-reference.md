@@ -81,7 +81,6 @@ Python engine 3.10.8 + common data science and ML packages
 | Mako | 1.2.4 |
 | Markdown | 3.4.3 |
 | MarkupSafe | 2.1.2 |
-| matplotlib | 3.7.1 |
 | mlflow | 2.4.1 |
 | mlxtend | 0.21.0 |
 | mpmath | 1.3.0 |
@@ -252,7 +251,6 @@ Python engine 3.10.8 + common data science and ML packages
 | Mako | 1.2.4 |
 | Markdown | 3.4.3 |
 | MarkupSafe | 2.1.2 |
-| matplotlib | 3.7.1 |
 | mlflow | 2.4.1 |
 | mlxtend | 0.21.0 |
 | mpmath | 1.3.0 |
@@ -418,7 +416,6 @@ Python engine 3.10.8 + common data science and ML packages + deep learning packa
 | Mako | 1.2.4 |
 | Markdown | 3.4.2 |
 | MarkupSafe | 2.1.1 |
-| matplotlib | 3.6.1 |
 | mlflow | 2.4.1 |
 | mlxtend | 0.21.0 |
 | mpmath | 1.2.1 |

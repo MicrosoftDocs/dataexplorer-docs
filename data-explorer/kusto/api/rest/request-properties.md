@@ -3,7 +3,7 @@ title:  Request properties
 description: This article describes request properties in Azure Data Explorer.
 ms.reviewer: orspodek
 ms.topic: reference
-ms.date: 09/18/2023
+ms.date: 12/19/2023
 ---
 # Request properties
 
@@ -19,7 +19,7 @@ The following table overviews the supported request properties.
 |--|--|--|
 | `client_max_redirect_count` | long | Controls the maximum number of HTTP redirects the client follows during processing. |
 | `deferpartialqueryfailures` | bool | If set to `true`, suppresses reporting of partial query failures within the result set. |
-| `materialized_view_shuffle_query` | dynamic | Provides a hint to use the shuffle strategy for referenced materialized views in the query. This property takes an array of materialized view names and their corresponding shuffle keys. </br></br>For example, `dynamic([{ "Name": "V1", "Keys" : [ "K1", "K2" ] }])` indicates shuffling view `V1` by keys `K1` and `K2`, while `dynamic([ { "Name": "V1" } ])` shuffles view `V1` by all keys. |
+| `materialized_view_shuffle_query` | dynamic | Provides a hint to use the shuffle strategy for referenced materialized views in the query. This property exclusively impacts materialized views and not any subsequent operations, such as joins, within the query. It takes an array of materialized view names and their corresponding shuffle keys. </br></br>For example, `dynamic([{ "Name": "V1", "Keys" : [ "K1", "K2" ] }])` indicates shuffling view `V1` by keys `K1` and `K2`, while `dynamic([ { "Name": "V1" } ])` shuffles view `V1` by all keys.|
 | `max_memory_consumption_per_query_per_node` | long | Overrides the default maximum amount of memory a query may allocate per node.|
 | `maxmemoryconsumptionperiterator` | long | Overrides the default maximum amount of memory a query operator may allocate. |
 | `maxoutputcolumns` | long | Overrides the default maximum number of columns a query is allowed to produce. |
@@ -69,7 +69,7 @@ The following table overviews the supported request properties.
 | `results_progressive_enabled` | bool | If set to `true`, enables the progressive query stream. |
 | `servertimeout` | timespan | Overrides the default request timeout. This option can't be modified as part of a [set statement](../../query/setstatement.md). |
 | `truncation_max_records` | long | Overrides the default maximum number of records a query is allowed to return to the caller (truncation). |
-| `truncation_max_size` | long | Overrides the default maximum data size a query is allowed to return to the caller (truncation). |
+| `truncationmaxsize` | long | Overrides the default maximum data size a query is allowed to return to the caller (truncation). |
 | `validatepermissions` | bool | Validates the user's permissions to perform the query without actually running the query. Possible results for this property are: `OK` (permissions are present and valid), `Incomplete` (validation couldn't be completed due to dynamic schema evaluation), or `KustoRequestDeniedException` (permissions weren't set). |
 
 ## How to set request properties
