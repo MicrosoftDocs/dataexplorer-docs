@@ -622,7 +622,7 @@ items:
       - name: Sharding
         items:
           - name: Sharding policy
-            href: shardingpolicy.md
+            href: sharding-policy.md
           - name: .alter database policy sharding command
             href: alter-database-sharding-policy-command.md
             displayName: .alter database sharding policy

@@ -69,6 +69,11 @@
         "source_path": "data-explorer/kusto/management/sandboxpolicy.md",
         "redirect_url": "/azure/data-explorer/kusto/management/sandbox-policy.md",
         "redirect_document_id": true
+      },
+      {
+        "source_path": "data-explorer/kusto/management/shardingpolicy.md",
+        "redirect_url": "/azure/data-explorer/kusto/management/sharding-policy.md",
+        "redirect_document_id": true
       }
     ]
 }
