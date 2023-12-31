@@ -39,7 +39,7 @@ The query results cache returns results only for queries that are considered "id
 
 The query results won't be cached if any of the following conditions is true:
 
-* The query references a table that has the [RestrictedViewAccess](../management/restrictedviewaccesspolicy.md) policy enabled.
+* The query references a table that has the [RestrictedViewAccess](../management/restricted-view-access-policy.md) policy enabled.
 * The query references a table that has the [RowLevelSecurity](../management/rowlevelsecuritypolicy.md) policy enabled.
 * The query uses any of the following functions:
   * [current_principal](current-principalfunction.md)

@@ -17,7 +17,7 @@ To control access more effectively, we recommend that you separate tables into d
 
 ## Restricted View Access policy
 
-To restrict access to specific tables, you can turn on the [Restricted View Access policy](restrictedviewaccesspolicy.md) for those tables. This policy ensures that only principals with the `unrestrictedViewer` role can access the table. Meanwhile, principals with the regular `viewer` role can't view the table.
+To restrict access to specific tables, you can turn on the [Restricted View Access policy](restricted-view-access-policy.md) for those tables. This policy ensures that only principals with the `unrestrictedViewer` role can access the table. Meanwhile, principals with the regular `viewer` role can't view the table.
 
 ## Row Level Security policy
 

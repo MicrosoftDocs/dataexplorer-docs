@@ -510,7 +510,7 @@ items:
       - name: Restricted view access
         items:
           - name: Restricted view access policy
-            href: restrictedviewaccesspolicy.md
+            href: restricted-view-access-policy.md
             displayName: restricted_view_access policy
           - name: .alter table policy restricted_view_access command
             href: alter-table-restricted-view-access-policy-command.md

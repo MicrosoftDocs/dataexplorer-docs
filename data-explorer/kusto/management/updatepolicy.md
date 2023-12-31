@@ -30,7 +30,7 @@ If the update policy is defined on the target table, multiple queries can run on
   * It can't perform cross-cluster queries.
   * It can't access external data or external tables.
   * It can't make callouts (by using a plugin).
-* The query doesn't have read access to tables that have the [RestrictedViewAccess policy](restrictedviewaccesspolicy.md) enabled.
+* The query doesn't have read access to tables that have the [RestrictedViewAccess policy](restricted-view-access-policy.md) enabled.
 * For update policy limitations in streaming ingestion, see [streaming ingestion limitations](../../ingest-data-streaming.md#limitations).
 
 > [!WARNING]

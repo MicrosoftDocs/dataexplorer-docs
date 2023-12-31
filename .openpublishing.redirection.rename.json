@@ -44,6 +44,11 @@
         "source_path": "data-explorer/kusto/management/partitioningpolicy.md",
         "redirect_url": "/azure/data-explorer/kusto/management/partitioning-policy.md",
         "redirect_document_id": true
+      },
+      {
+        "source_path": "data-explorer/kusto/management/restrictedviewaccesspolicy.md",
+        "redirect_url": "/azure/data-explorer/kusto/management/restricted-view-access-policy.md",
+        "redirect_document_id": true
       }
     ]
 }

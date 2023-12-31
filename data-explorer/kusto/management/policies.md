@@ -22,7 +22,7 @@ The following table provides an overview of the policies for managing your clust
 |[Merge policy](merge-policy.md)|Defines rules for merging data from different extents into a single extent.|
 |[Partitioning policy](partitioning-policy.md)|Defines rules for partitioning extents for a specific table or a materialized view.|
 |[Retention policy](retentionpolicy.md)|Controls the mechanism that automatically removes data from tables or materialized views.|
-|[Restricted view access policy](restrictedviewaccesspolicy.md)|Adds an extra layer of permission requirements for principals to access and view the table.|
+|[Restricted view access policy](restricted-view-access-policy.md)|Adds an extra layer of permission requirements for principals to access and view the table.|
 |[Row level security policy](rowlevelsecuritypolicy.md)|Defines rules for access to rows in a table based on group membership or execution context.|
 |[Row order policy](roworderpolicy.md)|Maintains a specific order for rows within an extent.|
 |[Sandbox policy](sandboxpolicy.md)|Controls the usage and behavior of sandboxes, which are isolated environments for query execution.|
