@@ -3,7 +3,7 @@ title: 'Azure Data Explorer data ingestion overview'
 description: 'Learn about the different ways you can ingest (load) data in Azure Data Explorer'
 ms.reviewer: tzgitlin
 ms.topic: conceptual
-ms.date: 12/20/2023
+ms.date: 12/31/2023
 ---
 
 # Azure Data Explorer data ingestion overview
@@ -62,13 +62,30 @@ For more information, see the relevant documentation:
 * [Connectors overview](connector-overview.md)
 * [Write custom code with Kusto client libraries](kusto/api/client-libraries.md)
 
-## Management commands
+## Direct ingestion with management commands
 
-Azure Data Explorer offers the following ingestion management commands, which ingest data directly to your cluster. They should be used only for exploration and prototyping and not in production or high-volume scenarios.
+Azure Data Explorer offers the following ingestion management commands, which ingest data directly to your cluster instead of using the data management service. They should be used only for exploration and prototyping and not in production or high-volume scenarios.
 
 * **Inline ingestion**: The [.ingest inline command](kusto/management/data-ingestion/ingest-inline.md) contains the data to ingest being a part of the command text itself. This method is intended for improvised testing purposes.
 * **Ingest from query**: The [.set, .append, .set-or-append, or .set-or-replace commands](kusto/management/data-ingestion/ingest-from-query.md) indirectly specifies the data to ingest as the results of a query or a command.
 * **Ingest from storage**: The [.ingest into command](kusto/management/data-ingestion/ingest-from-storage.md) gets the data to ingest from external storage, such as Azure Blob Storage, accessible by your cluster and pointed-to by the command.
+
+## Compare ingestion methods
+
+| Ingestion name | Data type | Maximum file size | Streaming, queued, direct | Most common scenarios | Considerations |
+| --- | --- | --- | --- | --- | --- |
+| **Get data experience** | *SV, JSON | 1 GB uncompressed| Queued to container, local file and blob in direct ingestion | One-off, create table schema, definition of continuous ingestion with Event Grid, bulk ingestion with container (up to 5,000 blobs; no limit when using historical ingestion) |  |
+| [**LightIngest**](lightingest.md) | All formats supported | 1 GB uncompressed | Queued via DM or direct ingestion |  Data migration, historical data with adjusted ingestion timestamps, bulk ingestion (no size restriction)| Case-sensitive, space-sensitive |
+| [**ADX Kafka**](ingest-data-kafka.md) |Avro, ApacheAvro, JSON, CSV, Parquet, and ORC |Unlimited. Inherits Java restrictions.| Queued, streaming |Existing pipeline, high volume consumption from the source.| Preference may be determined by which “multiple producer/consumer” service is already used, or how managed of a service is desired. |
+| [**ADX to Apache Spark**](spark-connector.md) | Every format supported by the Spark environment  | Unlimited | Queued | Existing pipeline, preprocessing on Spark before ingestion, fast way to create a safe (Spark) streaming pipeline from the various sources the Spark environment supports. | Consider cost of Spark cluster. For batch write, compare with Azure Data Explorer data connection for Event Grid. For Spark streaming, compare with the data connection for event hub.
+| [**LogStash**](ingest-data-logstash.md) | JSON | Unlimited. Inherits Java restrictions. | Inputs to the connector are Logstash events, and the connector outputs to Kusto using queued ingestion.| Existing pipeline, leverage the mature, open source nature of Logstash for high volume consumption from the input(s).| Preference may be determined by which “multiple producer/consumer” service is already used, or how managed of a service is desired.
+| [**Azure Data Factory (ADF)**](./data-factory-integration.md) | [Supported data formats](/azure/data-factory/copy-activity-overview#supported-data-stores-and-formats) | Unlimited *(per ADF restrictions) | Batching or per ADF trigger | Supports formats that are usually unsupported, large files, can copy from over 90 sources, from on perm to cloud | This method takes relatively more time until data is ingested. ADF uploads all data to memory and then begins ingestion. |
+| [**Power Automate**](./flow.md) | All formats supported| 1 GB uncompressed | Queued | Ingestion commands as part of flow. Used to automate pipelines. |
+| [**Logic Apps**](kusto/tools/logicapps.md)| All formats supported | 1 GB uncompressed | Queued | Used to automate pipelines |
+| [**IoT Hub**](ingest-data-iot-hub-overview.md) | [Supported data formats](ingest-data-iot-hub-overview.md#data-format)  | N/A | Queued, streaming | IoT messages, IoT events, IoT properties | |
+| [**Event Hub**](ingest-data-event-hub-overview.md) | [Supported data formats](ingest-data-event-hub-overview.md#data-format) | N/A | Queued, streaming | Messages, events | |
+| [**Event Grid**](ingest-data-event-grid-overview.md) | [Supported data formats](ingest-data-event-grid-overview.md#data-format) | 1 GB uncompressed | Queued | Continuous ingestion from Azure storage, external data in Azure storage | Ingestion can be triggered by blob renaming or blob creation actions |
+| [**Client libraries**](kusto/api/client-libraries.md) | All formats supported | 1 GB uncompressed | Queued, streaming, direct | Write your own code according to organizational needs |
 
 ## The ingestion process
 
