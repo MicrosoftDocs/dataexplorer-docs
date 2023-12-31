@@ -274,7 +274,7 @@ The following aggregation functions are supported:
     }
     ```
 
-* **Use update policies where appropriate**: The materialized view can include transformations, normalizations, and lookups in dimension tables. However, we recommend that you move these operations to an [update policy](../updatepolicy.md). Leave only the aggregation for the materialized view.
+* **Use update policies where appropriate**: The materialized view can include transformations, normalizations, and lookups in dimension tables. However, we recommend that you move these operations to an [update policy](../update-policy.md). Leave only the aggregation for the materialized view.
 
     For example, it's better to define the following update policy:
 

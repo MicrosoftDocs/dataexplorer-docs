@@ -15,7 +15,7 @@ Materialized views always return an up-to-date result of the aggregation query (
 >
 > * To decide whether materialized views are suitable for you, review the materialized views [use cases](materialized-view-use-cases.md).
 > * Materialized views have some [limitations](materialized-views-limitations.md). Before working with the feature, review the [performance considerations](#performance-considerations).
-> * Consider using [update policies](../updatepolicy.md) where appropriate. For more information, see [Materialized views vs. update policies](materialized-view-use-cases.md#materialized-views-vs-update-policies).
+> * Consider using [update policies](../update-policy.md) where appropriate. For more information, see [Materialized views vs. update policies](materialized-view-use-cases.md#materialized-views-vs-update-policies).
 > * Monitor the health of your materialized views based on the recommendations in [Monitor materialized views](materialized-views-monitoring.md).
 
 ## Why use materialized views?

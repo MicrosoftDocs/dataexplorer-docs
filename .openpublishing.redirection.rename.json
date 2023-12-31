@@ -94,6 +94,11 @@
         "source_path": "data-explorer/kusto/management/systeminfo.md",
         "redirect_url": "/azure/data-explorer/kusto/management/system-info.md",
         "redirect_document_id": true
+      },
+      {
+        "source_path": "data-explorer/kusto/management/updatepolicy.md",
+        "redirect_url": "/azure/data-explorer/kusto/management/update-policy.md",
+        "redirect_document_id": true
       }
     ]
 }

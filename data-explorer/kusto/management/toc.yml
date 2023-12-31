@@ -679,7 +679,7 @@ items:
       - name: Update
         items:
           - name: Update policy
-            href: updatepolicy.md
+            href: update-policy.md
             displayName: SQL triggers
           - name: .alter table policy update command
             href: alter-table-update-policy-command.md

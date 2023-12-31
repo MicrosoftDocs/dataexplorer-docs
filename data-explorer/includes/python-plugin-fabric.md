@@ -46,7 +46,7 @@ To see the list of packages for the different Python images, see [Python package
 ## Use ingestion from query and update policy
 
 * Use the plugin in queries that are:
-  * Defined as part of an [update policy](../kusto/management/updatepolicy.md), whose source table is ingested to using *non-streaming* ingestion.
+  * Defined as part of an [update policy](../kusto/management/update-policy.md), whose source table is ingested to using *non-streaming* ingestion.
   * Run as part of a command that [ingests from a query](../kusto/management/data-ingestion/ingest-from-query.md), such as `.set-or-append`.
 * You can't use the plugin in a query that is defined as part of an update policy, whose source table is ingested using [streaming ingestion](../ingest-data-streaming.md).
 

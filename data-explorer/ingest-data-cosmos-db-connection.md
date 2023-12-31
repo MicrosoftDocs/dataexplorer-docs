@@ -92,7 +92,7 @@ Use the following steps to create a table and apply a table mapping:
 
 If your scenario requires more than a simple mapping of fields, you can use update policies to transform and map data ingested from your change feed.
 
-[Update policies](kusto/management/updatepolicy.md) are a way to transform data as it's ingested into your table. They're written in Kusto Query Language and are run on the ingestion pipeline. They can be used to transform data from a Cosmos DB change feed ingestion, such as in the following scenarios:
+[Update policies](kusto/management/update-policy.md) are a way to transform data as it's ingested into your table. They're written in Kusto Query Language and are run on the ingestion pipeline. They can be used to transform data from a Cosmos DB change feed ingestion, such as in the following scenarios:
 
 - Your documents contain arrays that would be easier to query if they're transformed in multiple rows using the [`mv-expand`](kusto/management/alter-table-update-policy-command.md) operator.
 - You want to filter out documents. For example, you can filter out documents by type using the [`where`](kusto/query/whereoperator.md) operator.

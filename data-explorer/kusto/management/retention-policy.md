@@ -24,7 +24,7 @@ deleted before the limit is exceeded, but deletion isn't immediate following tha
 > * A soft-delete period of 0 can be set as part of a table-level retention policy, but not as part of a database-level retention policy.
 > * When this is done, the ingested data won't be committed to the source table, avoiding the need to persist the data. As a result, `Recoverability` can only be set to `Disabled`.
 > * Such a configuration is useful mainly when the data gets ingested into a table.
-> A transactional [update policy](updatepolicy.md) is used to transform it and redirect the output into another table.
+> A transactional [update policy](update-policy.md) is used to transform it and redirect the output into another table.
 
 ## The policy object
 
