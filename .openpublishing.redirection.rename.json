@@ -39,6 +39,11 @@
         "source_path": "data-explorer/kusto/management/mergepolicy.md",
         "redirect_url": "/azure/data-explorer/kusto/management/merge-policy.md",
         "redirect_document_id": true
+      },
+      {
+        "source_path": "data-explorer/kusto/management/partitioningpolicy.md",
+        "redirect_url": "/azure/data-explorer/kusto/management/partitioning-policy.md",
+        "redirect_document_id": true
       }
     ]
 }

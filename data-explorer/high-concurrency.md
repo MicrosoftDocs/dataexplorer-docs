@@ -46,7 +46,7 @@ Use the following table schema design suggestions to minimize the CPU resources 
 
 ### Partition data
 
-Data is stored in the form of extents (data shards) and is partitioned by ingestion time by default. You can use the [partitioning policy](kusto/management/partitioningpolicy.md) to repartition the extents based on a single string column or a single datetime column in a background process. Partitioning can provide significant performance improvements when most of the queries use partition keys to filter, aggregate, or both.
+Data is stored in the form of extents (data shards) and is partitioned by ingestion time by default. You can use the [partitioning policy](kusto/management/partitioning-policy.md) to repartition the extents based on a single string column or a single datetime column in a background process. Partitioning can provide significant performance improvements when most of the queries use partition keys to filter, aggregate, or both.
 
 > [!NOTE]
 > The partitioning process itself uses CPU resources. However, the CPU reduction during query time should outweigh the CPU used for partitioning.

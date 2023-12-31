@@ -38,4 +38,4 @@ To overwrite the creation time of an extent, provide an alternate `creationTime`
 
 * [Extent tags](extent-tags.md)
 * [Merge policy](merge-policy.md)
-* [Partitioning policy](partitioningpolicy.md)
+* [Partitioning policy](partitioning-policy.md)

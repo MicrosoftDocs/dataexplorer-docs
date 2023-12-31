@@ -469,7 +469,7 @@ items:
       - name: Partitioning
         items:
           - name: Partitioning policy
-            href: partitioningpolicy.md
+            href: partitioning-policy.md
           - name: .alter materialized-view policy partitioning command
             href: alter-materialized-view-partitioning-policy-command.md
             displayName: .alter materialized-view partitioning policy

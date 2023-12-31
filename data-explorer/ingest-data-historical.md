@@ -31,7 +31,7 @@ In this article, you learn how to partition historical data:
 
 - Using a partitioning policy post ingestion
 
-    If you can't use the `creationTime` ingestion property, for example if you're [ingesting data using the Azure Cosmos DB connector](ingest-data-cosmos-db-connection.md) where you can't control the creation time or if you can't restructure your folder structure, you can repartition the table post ingestion to achieve the same effect using the [partitioning policy](kusto/management/partitioningpolicy.md). However, this method may require some trial and error to optimize policy properties and is less efficient than using the `creationTime` ingestion property. We only recommended this method when using the `creationTime` ingestion property isn't possible.
+    If you can't use the `creationTime` ingestion property, for example if you're [ingesting data using the Azure Cosmos DB connector](ingest-data-cosmos-db-connection.md) where you can't control the creation time or if you can't restructure your folder structure, you can repartition the table post ingestion to achieve the same effect using the [partitioning policy](kusto/management/partitioning-policy.md). However, this method may require some trial and error to optimize policy properties and is less efficient than using the `creationTime` ingestion property. We only recommended this method when using the `creationTime` ingestion property isn't possible.
 
 ## Prerequisites
 
@@ -177,7 +177,7 @@ LightIngest can be useful to load historical data from an existing storage syste
     ```
     ~~~
 
-    For information about the partitioning policy properties, see [partition properties](kusto/management/partitioningpolicy.md#partition-properties-1). For historical ingestion, how you set the following properties is important:
+    For information about the partitioning policy properties, see [partition properties](kusto/management/partitioning-policy.md#partition-properties-1). For historical ingestion, how you set the following properties is important:
 
     - The **EffectiveDateTime** property must be set to a date earlier than the start of the ingestion to trigger the repartitioning.
     - The **RangeSize** is set to one day so that the data is repartitioned into buckets of one day. However, you should set this value to align with your data. For example, if you have less than several GBs of data per day, consider setting a larger value.
