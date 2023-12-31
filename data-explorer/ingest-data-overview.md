@@ -3,7 +3,7 @@ title: 'Azure Data Explorer data ingestion overview'
 description: 'Learn about the different ways you can ingest (load) data in Azure Data Explorer'
 ms.reviewer: tzgitlin
 ms.topic: conceptual
-ms.date: 12/06/2023
+ms.date: 12/20/2023
 ---
 
 # Azure Data Explorer data ingestion overview
@@ -12,14 +12,12 @@ Data ingestion involves loading data into a table in your cluster. Azure Data Ex
 
 Azure Data Explorer offers one-time ingestion or the establishment of a continuous ingestion pipeline, using either streaming or queued ingestion. To determine which is right for you, see [One-time data ingestion](#one-time-data-ingestion) and [Continuous ingestion](#continuous-data-ingestion).
 
-For any method of ingestion, you need access to an Azure Data Explorer table. Once you [create a cluster and database](create-cluster-and-database.md), you can either [create a table in the web UI](create-table-wizard.md) or use the [.create table command](kusto/management/create-table-command.md).
-
 > [!NOTE]
 > Data is persisted in storage according to the set [retention policy](kusto/management/retentionpolicy.md).
 
 ## One-time data ingestion
 
-One-time ingestion is beneficial for importing historical data into a new database, filling in missing data, and during the initial stages of prototyping and data analysis, as it allows for quick data integration without committing to a continuous pipeline.
+One-time ingestion proves advantageous in various situations, including the transfer of historical data to a new database, filling in missing data, and in the initial stages of prototyping and data analysis. This approach facilitates fast data integration without the need for a continuous pipeline commitment.
 
 There are multiple ways to perform one-time data ingestion. Use the following diagram to help you determine the most suitable option based on your specific use case:
 
@@ -38,11 +36,11 @@ For more information, see the relevant documentation:
 
 ## Continuous data ingestion
 
-Continuous ingestion is ideal for scenarios requiring immediate insights from live data, such as monitoring systems or situations where a constant data flow is critical for established production environments. This method is particularly well-suited for real-time analytics and continuous data streams, such as log or event data.
+Continuous ingestion excels in situations demanding immediate insights from live data. It proves particularly useful for monitoring systems, log and event data, and real-time analytics.
 
-Continuous data ingestion involves setting up an ingestion pipeline, employing either streaming or queued ingestion:
+Continuous data ingestion involves setting up an ingestion pipeline with either streaming or queued ingestion:
 
-* **Streaming ingestion**: This method entails ongoing data ingestion from a streaming source, providing near real-time latency for small sets of data per table. The data is initially ingested into the row store and later moved to column store extents. For more information, see [Configure streaming ingestion](ingest-data-streaming.md).
+* **Streaming ingestion**: TThis method ensures near-real-time latency for small sets of data per table. Data is ingested in very small batches from a streaming source, initially placed in the row store, and subsequently transferred to column store extents. For more information, see [Configure streaming ingestion](ingest-data-streaming.md).
 
 * **Queued ingestion**: This method is optimized for high ingestion throughput. Data is batched based on ingestion properties, with small batches subsequently merged and optimized for fast query results. By default, the maximum queued values are 5 minutes, 1000 items, or a total size of 1 GB. The data size limit for a queued ingestion command is 6 GB. For more information, see the [ingestion batching policy](kusto/management/batchingpolicy.md).
 
@@ -64,34 +62,35 @@ For more information, see the relevant documentation:
 * [Connectors overview](connector-overview.md)
 * [Write custom code with Kusto client libraries](kusto/api/client-libraries.md)
 
-## Data mappings
+## Management commands
 
-[Data mappings](kusto/management/mappings.md) help bind source data fields to destination table columns. Different types of mappings are supported, both row-oriented (CSV, JSON and AVRO), and column-oriented (Parquet). In most methods, mappings can also be [pre-created on the table](kusto/management/create-ingestion-mapping-command.md) and referenced from the ingest command parameter.
+Azure Data Explorer offers the following ingestion management commands, which ingest data directly to your cluster. They should be used only for exploration and prototyping and not in production or high-volume scenarios.
 
-## Permissions
+* **Inline ingestion**: The [.ingest inline command](kusto/management/data-ingestion/ingest-inline.md) contains the data to ingest being a part of the command text itself. This method is intended for improvised testing purposes.
+* **Ingest from query**: The [.set, .append, .set-or-append, or .set-or-replace commands](kusto/management/data-ingestion/ingest-from-query.md) indirectly specifies the data to ingest as the results of a query or a command.
+* **Ingest from storage**: The [.ingest into command](kusto/management/data-ingestion/ingest-from-storage.md) gets the data to ingest from external storage, such as Azure Blob Storage, accessible by your cluster and pointed-to by the command.
 
-The following list describes the permissions required for various ingestion scenarios:
+## The ingestion process
 
-* To create a new table requires Database User or Database Admin permissions.
-* To ingest data into an existing table, without changing its schema, requires Database Ingestor permissions.
-* To change the schema of an existing table requires Table Admin or Database Admin permissions.
+The following steps outline the general ingestion process:
 
-For more information, see [Kusto role-based access control](kusto/access-control/role-based-access-control.md).
+:::image type="content" source="media/ingest-data-overview/data-ingestion-process.png" lightbox="media/ingest-data-overview/data-ingestion-process.png" alt-text="Diagram showing the steps to data ingestion.":::
 
-## Policies
+1. **Set batching policy (optional)**: Data is batched based on the [ingestion batching policy](kusto/management/batchingpolicy.md). For guidance, see [Optimize for throughput](kusto/api/netfx/kusto-ingest-best-practices.md#optimize-for-throughput). 
 
-The following policies are relevant to getting and retaining data:
+1. **Set retention policy**: If the database retention policy is not suitable for your needs, override it at the table level. For more information, see [Retention policy](kusto/management/retentionpolicy.md).
 
-* [Batching policy](kusto/management/batchingpolicy.md)
-* [Merge policy](kusto/management/mergepolicy.md)
-* [Partitioning policy](kusto/management/partitioningpolicy.md)
-* [Retention policy](kusto/management/retentionpolicy.md)
-* [Update policy](kusto/management/updatepolicy.md)
+1. **Create a table**: If you're using the Get data experience, you can create a table as part of the ingestion flow. Otherwise, create a table prior to ingestion in the [web UI](create-table-wizard.md) or with the [.create table command](kusto/management/create-table-command.md).
 
-For a list of all polices, see [Policies overview](kusto/management/policies.md).
+1. **Create a schema mapping**: [Schema mappings](kusto/management/mappings.md) help bind source data fields to destination table columns. Different types of mappings are supported, including row-oriented formats like CSV, JSON, and AVRO, as well as column-oriented formats like Parquet. In most methods, mappings can also be [pre-created on the table](kusto/management/create-ingestion-mapping-command.md).
+
+1. **Set update policy (optional)**: Certain data formats like Parquet, JSON, and Avro enable straightforward ingest-time transformations. For more intricate processing during ingestion, use the [update policy](kusto/management/updatepolicy.md). This policy automatically executes extractions and transformations on ingested data within the original table, then ingests the modified data into one or more destination tables.
+
+1. **Ingest data**: Use your preferred ingestion tool, connector, or method to bring in the data.
 
 ## Related content
 
 * [Connectors overview](connector-overview.md)
 * [Supported data formats](ingestion-supported-formats.md)
 * [Supported ingestion properties](ingestion-properties.md)
+* [Policies overview](kusto/management/policies.md)
