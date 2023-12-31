@@ -42,7 +42,7 @@ Azure Data Explorer is designed to efficiently index free-text ([string](kusto/q
 
 Continuous background optimization of extents through merging improves compression and indexing, ensuring efficient storage and low query latency. Once extents reach a certain size, only the indexes are merged to enhance query performance without compromising efficiency.
 
-For more information on extent and index merging, see [Merge policy](kusto/management/mergepolicy.md).
+For more information on extent and index merging, see [Merge policy](kusto/management/merge-policy.md).
 
 ## Row store
 

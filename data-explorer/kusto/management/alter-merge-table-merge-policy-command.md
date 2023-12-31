@@ -7,7 +7,7 @@ ms.date: 04/20/2023
 ---
 # .alter-merge table policy merge command
 
-Changes the table's [merge policy](mergepolicy.md). The merge policy defines if and how [Extents (Data Shards)](../management/extents-overview.md) in the cluster should get merged.
+Changes the table's [merge policy](merge-policy.md). The merge policy defines if and how [Extents (Data Shards)](../management/extents-overview.md) in the cluster should get merged.
 
 ## Permissions
 
@@ -24,7 +24,7 @@ You must have at least [Table Admin](access-control/role-based-access-control.md
 |Name|Type|Required|Description|
 |--|--|--|--|
 |*TableName*|string|&check;|The name of the table.|
-|*PolicyObject*|string|&check;|A serialized array of one or more JSON policy objects. For more information, see [merge policy](mergepolicy.md).|
+|*PolicyObject*|string|&check;|A serialized array of one or more JSON policy objects. For more information, see [merge policy](merge-policy.md).|
 
 ### Example
 

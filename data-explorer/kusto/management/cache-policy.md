@@ -49,7 +49,7 @@ When data is ingested, the system keeps track of the date and time of the ingest
 
 > [!NOTE]
 > You can specify a value for the ingestion date and time by using the ingestion property `creationTime`.
-> When doing so, make sure the `Lookback` property in the table's effective [Extents merge policy](mergepolicy.md) is aligned with the values you set for `creationTime`.
+> When doing so, make sure the `Lookback` property in the table's effective [Extents merge policy](merge-policy.md) is aligned with the values you set for `creationTime`.
 
 By default, the effective policy is `null`, which means that all the data is considered **hot**. A `null` policy at the table level means that the policy will be inherited from the database. A non-`null` table-level policy overrides a database-level policy.
 

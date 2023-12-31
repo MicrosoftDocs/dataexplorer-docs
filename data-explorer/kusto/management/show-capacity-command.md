@@ -31,7 +31,7 @@ The following list outlines the operations for which you can see the capacity:
 |Operation|Syntax
 |--|--|--|
 |[Data export](../management/data-export/index.md)|`data-export`|
-|[Extents merge](../management/mergepolicy.md)|`extents-merge`|
+|[Extents merge](../management/merge-policy.md)|`extents-merge`|
 |[Extents partition](../management/partitioningpolicy.md)|`extents-partition`|
 |[Ingestions](../../ingest-data-overview.md)|`ingestions`|
 |[Materialized view](../management/materialized-views/materialized-view-overview.md)|`materialized-view`|

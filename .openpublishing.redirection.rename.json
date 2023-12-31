@@ -34,6 +34,11 @@
         "source_path": "data-explorer/kusto/management/ingestiontimepolicy.md",
         "redirect_url": "/azure/data-explorer/kusto/management/ingestion-time-policy.md",
         "redirect_document_id": true
+      },
+      {
+        "source_path": "data-explorer/kusto/management/mergepolicy.md",
+        "redirect_url": "/azure/data-explorer/kusto/management/merge-policy.md",
+        "redirect_document_id": true
       }
     ]
 }

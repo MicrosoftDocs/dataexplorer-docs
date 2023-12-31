@@ -435,7 +435,7 @@ items:
       - name: Merge
         items:
           - name: Merge policy
-            href: mergepolicy.md
+            href: merge-policy.md
           - name: .alter database policy merge command
             href: alter-database-merge-policy-command.md
             displayName: .alter database merge policy

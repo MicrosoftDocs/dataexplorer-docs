@@ -11,7 +11,7 @@ Tables are partitioned into *extents*, or *data shards*. Each extent is a horizo
 
 Extents are immutable, meaning they can be queried, reassigned to a different node, or dropped out of the table but never modified. Data modification happens by creating new extents and transactionally swapping old extents with the new ones. The immutability of extents provides benefits such as increased robustness and easy reversion to previous snapshots.
 
-Extents hold a collection of records that are physically arranged in columns, enabling efficient encoding and compression of the data. To maintain query efficiency, smaller extents are merged into larger extents according to the configured [merge policy](mergepolicy.md) and [sharding policy](shardingpolicy.md). Merging extents reduces management overhead and leads to index optimization and improved compression.
+Extents hold a collection of records that are physically arranged in columns, enabling efficient encoding and compression of the data. To maintain query efficiency, smaller extents are merged into larger extents according to the configured [merge policy](merge-policy.md) and [sharding policy](shardingpolicy.md). Merging extents reduces management overhead and leads to index optimization and improved compression.
 
 The common extent lifecycle is as follows:
 
@@ -37,5 +37,5 @@ To overwrite the creation time of an extent, provide an alternate `creationTime`
 ## Related content
 
 * [Extent tags](extent-tags.md)
-* [Merge policy](mergepolicy.md)
+* [Merge policy](merge-policy.md)
 * [Partitioning policy](partitioningpolicy.md)

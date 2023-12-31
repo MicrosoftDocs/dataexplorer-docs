@@ -19,7 +19,7 @@ The following table provides an overview of the policies for managing your clust
 |[Ingestion batching policy](batching-policy.md)|Groups multiple data ingestion requests into batches for more efficient processing.|
 |[Ingestion time policy](ingestion-time-policy.md)|Adds a hidden datetime column to the table that records the time of ingestion.|
 |[ManagedIdentity policy](managed-identity-policy.md)|Controls which managed identities can be used for what purposes.|
-|[Merge policy](mergepolicy.md)|Defines rules for merging data from different extents into a single extent.|
+|[Merge policy](merge-policy.md)|Defines rules for merging data from different extents into a single extent.|
 |[Partitioning policy](partitioningpolicy.md)|Defines rules for partitioning extents for a specific table or a materialized view.|
 |[Retention policy](retentionpolicy.md)|Controls the mechanism that automatically removes data from tables or materialized views.|
 |[Restricted view access policy](restrictedviewaccesspolicy.md)|Adds an extra layer of permission requirements for principals to access and view the table.|
