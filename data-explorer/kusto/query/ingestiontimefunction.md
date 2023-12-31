@@ -13,7 +13,7 @@ zone_pivot_groups: kql-flavors-all
 
 Returns the approximate [datetime](../query/scalar-data-types/datetime.md) in UTC format indicating when the current record was ingested. 
 
-This function must be used in context of a table for which the [IngestionTime policy](../management/ingestiontimepolicy.md) is enabled. Otherwise, this function produces null values.
+This function must be used in context of a table for which the [IngestionTime policy](../management/ingestion-time-policy.md) is enabled. Otherwise, this function produces null values.
 
 ::: zone-end
 

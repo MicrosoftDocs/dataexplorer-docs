@@ -404,7 +404,7 @@ items:
       - name: Ingestion time
         items:
           - name: Ingestion time policy
-            href: ingestiontimepolicy.md
+            href: ingestion-time-policy.md
             displayName: ingestiontime policy
           - name: .alter table policy ingestiontime command
             href: alter-ingestion-time-policy-command.md

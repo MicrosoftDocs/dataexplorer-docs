@@ -15,7 +15,7 @@ A predicate run over the records of a table to compare their ingestion time agai
 
 > [!NOTE]
 > This function can only be invoked on records of a table that has the
-[IngestionTime policy](../management/ingestiontimepolicy.md) enabled.
+[IngestionTime policy](../management/ingestion-time-policy.md) enabled.
 
 ## Syntax
 

@@ -29,6 +29,11 @@
         "source_path": "data-explorer/kusto/management/ingestionfailures.md",
         "redirect_url": "/azure/data-explorer/kusto/management/ingestion-failures",
         "redirect_document_id": true
+      },
+      {
+        "source_path": "data-explorer/kusto/management/ingestiontimepolicy.md",
+        "redirect_url": "/azure/data-explorer/kusto/management/ingestion-time-policy.md",
+        "redirect_document_id": true
       }
     ]
 }

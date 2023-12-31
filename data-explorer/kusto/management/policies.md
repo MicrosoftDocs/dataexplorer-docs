@@ -17,7 +17,7 @@ The following table provides an overview of the policies for managing your clust
 |[Encoding policy](encoding-policy.md)|Defines how data is encoded, compressed, and indexed.|
 |[Extent tags retention policy](extent-tags-retention-policy.md)|Controls the mechanism that automatically removes extent tags from tables.|
 |[Ingestion batching policy](batching-policy.md)|Groups multiple data ingestion requests into batches for more efficient processing.|
-|[Ingestion time policy](ingestiontimepolicy.md)|Adds a hidden datetime column to the table that records the time of ingestion.|
+|[Ingestion time policy](ingestion-time-policy.md)|Adds a hidden datetime column to the table that records the time of ingestion.|
 |[ManagedIdentity policy](managed-identity-policy.md)|Controls which managed identities can be used for what purposes.|
 |[Merge policy](mergepolicy.md)|Defines rules for merging data from different extents into a single extent.|
 |[Partitioning policy](partitioningpolicy.md)|Defines rules for partitioning extents for a specific table or a materialized view.|
