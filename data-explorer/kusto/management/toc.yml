@@ -782,7 +782,7 @@ items:
           - name: Show continuous export failures
             href: data-export/show-continuous-failures.md
   - name: Database cursors
-    href: databasecursor.md
+    href: database-cursor.md
   - name: Plugin commands
     items:
       - name: .show plugins command

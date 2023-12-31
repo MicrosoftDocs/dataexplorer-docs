@@ -44,5 +44,5 @@ ms.date: 10/15/2022
 
 ## Other
 
-* [Cursor functions](../databasecursor.md#cursor-functions) can't be used on top of materialized views.
+* [Cursor functions](../database-cursor.md#cursor-functions) can't be used on top of materialized views.
 * Continuous export from a materialized view isn't supported.

@@ -36,7 +36,7 @@ before or at the database cursor *RHS* (`true`) or not (`false`).
 
 ## Related content
 
-* [database cursors](../management/databasecursor.md)
+* [database cursors](../management/database-cursor.md)
 
 ::: zone-end
 

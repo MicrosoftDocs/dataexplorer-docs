@@ -38,7 +38,7 @@ There are processes in Kusto that differentiate between fact tables and dimensio
 One of them is [continuous export](../management/data-export/continuous-data-export.md).
 
 These mechanisms are guaranteed to process data in fact tables precisely once. 
-They rely on the [database cursor](../management/databasecursor.md) mechanism.
+They rely on the [database cursor](../management/database-cursor.md) mechanism.
 
 For example, every execution of a continuous export job, exports all records that were ingested since the last update of the database cursor. Continuous export jobs must differentiate between fact tables and dimension tables. Fact tables only process newly ingested data, and dimension tables are used as lookups. As such, the entire table must be taken into account.
 

@@ -14,6 +14,16 @@
         "source_path": "data-explorer/kusto/management/calloutpolicy.md",
         "redirect_url": "/azure/data-explorer/kusto/management/callout-policy",
         "redirect_document_id": true
+      },
+      {
+        "source_path": "data-explorer/kusto/management/capacitypolicy.md",
+        "redirect_url": "/azure/data-explorer/kusto/management/capacity-policy",
+        "redirect_document_id": true
+      },
+      {
+        "source_path": "data-explorer/kusto/management/databasecursor.md",
+        "redirect_url": "/azure/data-explorer/kusto/management/database-cursor",
+        "redirect_document_id": true
       }
     ]
 }

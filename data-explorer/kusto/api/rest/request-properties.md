@@ -31,7 +31,7 @@ The following table overviews the supported request properties.
 | `query_cursor_after_default` | string | Sets the default parameter value for the [cursor_after()](../../query/cursorafterfunction.md) function when called without parameters. |
 | `query_cursor_before_or_at_default` | string | Sets the default parameter value for the [cursor_before_or_at()](../../query/cursorbeforeoratfunction.md) function when called without parameters. |
 | `query_cursor_current` | string | Overrides the cursor value returned by the [cursor_current()](../../query/cursorcurrent.md) function. |
-| `query_cursor_disabled` | bool | Disables the usage of [cursor functions](../../management/databasecursor.md#cursor-functions) within the query context. |
+| `query_cursor_disabled` | bool | Disables the usage of [cursor functions](../../management/database-cursor.md#cursor-functions) within the query context. |
 | `query_cursor_scoped_tables` | dynamic | Lists table names to be scoped to `cursor_after_default` .. `cursor_before_or_at()` (upper bound is optional). |
 | `query_datascope` | string | Controls the data to which the query applies. Supported values are `default`, `all`, or `hotcache`. |
 | `query_datetimescope_column` | string | Specifies the column name for the query's datetime scope (`query_datetimescope_to` / `query_datetimescope_from`). |

@@ -28,7 +28,7 @@ cursor of the database in scope.
 
 ## Related content
 
-* [database cursors](../management/databasecursor.md)
+* [database cursors](../management/database-cursor.md)
 
 ::: zone-end
 
