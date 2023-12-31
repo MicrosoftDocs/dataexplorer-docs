@@ -750,7 +750,7 @@ items:
         displayName: duplicate, failure, ingestion, troubleshoot
         href: dup-next-failed-ingest.md
       - name: .show ingestion failures command
-        href: ingestionfailures.md
+        href: ingestion-failures.md
       - name: .show streamingingestion failures command
         displayName: .show streaming ingestion failures
         href: streamingingestionfailures.md

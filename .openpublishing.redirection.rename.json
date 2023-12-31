@@ -24,6 +24,11 @@
         "source_path": "data-explorer/kusto/management/databasecursor.md",
         "redirect_url": "/azure/data-explorer/kusto/management/database-cursor",
         "redirect_document_id": true
+      },
+      {
+        "source_path": "data-explorer/kusto/management/ingestionfailures.md",
+        "redirect_url": "/azure/data-explorer/kusto/management/ingestion-failures",
+        "redirect_document_id": true
       }
     ]
 }
