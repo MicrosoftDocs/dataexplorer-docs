@@ -50,8 +50,8 @@ The following table shows a few examples of concurrent requests that exceed the 
 * The exception type will be `QueryThrottledException` for queries, and `ControlCommandThrottledException` for management commands.
   
 > [!NOTE]
-> * If either of the limits defined by the [capacity policy](capacitypolicy.md) or by a request rate limit policy is exceeded, a management command will be throttled.
-> * The [capacity policy](capacitypolicy.md) may limit the request rate of requests that fall under a specific category, such as ingestions.
+> * If either of the limits defined by the [capacity policy](capacity-policy.md) or by a request rate limit policy is exceeded, a management command will be throttled.
+> * The [capacity policy](capacity-policy.md) may limit the request rate of requests that fall under a specific category, such as ingestions.
 
 ### Resource utilization rate limit
 

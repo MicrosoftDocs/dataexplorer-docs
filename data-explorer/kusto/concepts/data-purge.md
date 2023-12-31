@@ -76,7 +76,7 @@ To reduce purge execution time:
 * Adjust the [caching policy](../management/cache-policy.md) since purge takes longer on cold data.
 * Scale out the cluster
 
-* Increase cluster purge capacity, after careful consideration, as detailed in [Extents purge rebuild capacity](../management/capacitypolicy.md#extents-purge-rebuild-capacity).
+* Increase cluster purge capacity, after careful consideration, as detailed in [Extents purge rebuild capacity](../management/capacity-policy.md#extents-purge-rebuild-capacity).
 
 ## Trigger the purge process
 
