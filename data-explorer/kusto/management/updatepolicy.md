@@ -142,7 +142,7 @@ With the default setting of `IsTransactional`:*false*, data can still be ingeste
 
 Setting `IsTransactional`:*true* guarantees consistency between data in the source and target table. However, if the policy conditions fail, data isn't ingested to the source table. Alternatively, depending on conditions, sometimes data is ingested to the source table, but not to the target table. However, if your policy is defined incorrectly, or there is a schema mismatch, data will not be ingested to the source or target table. For example, a mismatch between the query output schema and the target table could be caused by dropping a column from the target table.
 
-You can view failures using the [`.show ingestion failures` command](../management/ingestionfailures.md).
+You can view failures using the [`.show ingestion failures` command](../management/ingestion-failures.md).
 
 ```kusto
 .show ingestion failures 

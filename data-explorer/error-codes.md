@@ -11,7 +11,7 @@ This article contains error codes that may occur during [data ingestion](ingest-
 
 When you enable failed ingestion [diagnostic logs](using-diagnostic-logs.md) on your cluster, you can see error codes in the **Failed ingestion** [operation log](/azure/azure-monitor/reference/tables/failedingestion).
 
-You can use the [.show ingestion failures command](kusto/management/ingestionfailures.md) to present information on data ingestion management command failures, though this command excludes failures from other stages of the ingestion process. For a comprehensive view of failures across all stages, refer to [ingestion metrics](using-metrics.md#ingestion-metrics) and [diagnostic logs](using-diagnostic-logs.md). 
+You can use the [.show ingestion failures command](kusto/management/ingestion-failures.md) to present information on data ingestion management command failures, though this command excludes failures from other stages of the ingestion process. For a comprehensive view of failures across all stages, refer to [ingestion metrics](using-metrics.md#ingestion-metrics) and [diagnostic logs](using-diagnostic-logs.md). 
 
 The **Ingestion result** metric provides information about the **Category** of ingestion errors, although it doesn't show the specific error codes. The errors in this article are organized by these categories.
 
