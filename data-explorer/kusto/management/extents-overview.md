@@ -17,7 +17,7 @@ The common extent lifecycle is as follows:
 
 1. The extent is created by an ingestion operation.
 1. The extent is merged with other extents.
-1. The merged extent (possibly one that tracks its lineage to other extents) is eventually dropped because of a [retention policy](retentionpolicy.md).
+1. The merged extent (possibly one that tracks its lineage to other extents) is eventually dropped because of a [retention policy](retention-policy.md).
 
 ## Extent creation time
 

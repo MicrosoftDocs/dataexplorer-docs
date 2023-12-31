@@ -62,7 +62,7 @@ Each such object is represented as a JSON property bag, with the following prope
 |Query |`string` |A query used to produce data for the update |
 |IsTransactional |`bool` |States if the update policy is transactional or not, default is *false*. If transactional and the update policy fails, the source table is not updated. |
 |PropagateIngestionProperties  |`bool`|States if properties specified during ingestion to the source table, such as [extent tags](extent-tags.md) and creation time, apply to the target table. |
-|ManagedIdentity | `string` | The managed identity on behalf of which the update policy will run. The managed identity can be an object ID, or the `system` reserved word. The update policy must be configured with a managed identity when the query references tables in other databases or tables with an enabled [row level security policy](./rowlevelsecuritypolicy.md). For more information, see [Use a managed identity to run a update policy](./update-policy-with-managed-identity.md). |
+|ManagedIdentity | `string` | The managed identity on behalf of which the update policy will run. The managed identity can be an object ID, or the `system` reserved word. The update policy must be configured with a managed identity when the query references tables in other databases or tables with an enabled [row level security policy](./row-level-security-policy.md). For more information, see [Use a managed identity to run a update policy](./update-policy-with-managed-identity.md). |
 
 > [!NOTE]
 > In production systems, set `IsTransactional`:*true* to ensure that the target table doesn't lose data in transient failures.  
@@ -99,7 +99,7 @@ Update policies take effect when data is ingested or moved to a source table, or
 
 ## Remove data from source table
 
-After ingesting data to the target table, you may want to remove it from the source table. Set a soft-delete period of `0sec` (or `00:00:00`) in the source table's [retention policy](retentionpolicy.md), and the update policy as transactional. The following conditions apply:
+After ingesting data to the target table, you may want to remove it from the source table. Set a soft-delete period of `0sec` (or `00:00:00`) in the source table's [retention policy](retention-policy.md), and the update policy as transactional. The following conditions apply:
 
 * The source data isn't queryable from the source table
 * The source data doesn't persist in durable storage as part of the ingestion operation

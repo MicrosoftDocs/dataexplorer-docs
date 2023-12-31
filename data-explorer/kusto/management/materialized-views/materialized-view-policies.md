@@ -12,7 +12,7 @@ This article includes information about policies that can be set on materialized
 
 ## Retention and caching policy
 
-A materialized view has a [retention policy](../retentionpolicy.md) and [caching policy](../cache-policy.md). The materialized view derives the database retention and caching policies by default. These policies can be changed using [retention policy management commands](../show-table-retention-policy-command.md) or [caching policy management commands](../show-table-cache-policy-command.md).
+A materialized view has a [retention policy](../retention-policy.md) and [caching policy](../cache-policy.md). The materialized view derives the database retention and caching policies by default. These policies can be changed using [retention policy management commands](../show-table-retention-policy-command.md) or [caching policy management commands](../show-table-cache-policy-command.md).
 
 Both policies are applied on the *materialized part* of the materialized view only.  For an explanation of the differences between the *materialized part* and *delta part*, see [how materialized views work](materialized-view-overview.md#how-materialized-views-work). For example, if the caching policy of a materialized view is set to 7d, but the caching policy of its source table is set to 0d, there may still be disk misses when querying the materialized view. This behavior occurs because the source table (*delta part*) also participates in the query.
 
@@ -36,7 +36,7 @@ Adding a partitioning policy on a materialized view increases the number of exte
 
 ## Row level security policy
 
-A [row level security](../rowlevelsecuritypolicy.md) can be applied on a materialized view, with several limitations:
+A [row level security](../row-level-security-policy.md) can be applied on a materialized view, with several limitations:
 
 * The policy can be applied only to materialized views with [arg_max()](../../query/arg-max-aggfunction.md)/[arg_min()](../../query/arg-min-aggfunction.md)/[take_any()](../../query/take-any-aggfunction.md) aggregation functions, or when the row level security query references the group by keys of the materialized view aggregation.
 * The policy is applied to the [materialized part](materialized-view-overview.md#how-materialized-views-work) of the view only.

@@ -638,7 +638,7 @@ Result:
 
 ## Show the database level retention policy
 
-You can use management commands to display a database's [retention policy](../../management/retentionpolicy.md).
+You can use management commands to display a database's [retention policy](../../management/retention-policy.md).
 
 For example, you can modify the app to [display your database's retention policy](../../management/show-database-retention-policy-command.md) using the following code. The result is curated to project away two columns from the result:
 

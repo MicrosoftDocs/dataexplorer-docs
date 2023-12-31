@@ -7,7 +7,7 @@ ms.date: 10/23/2023
 ---
 # .delete materialized-view policy row_level_security command
 
-Deletes the row level security policy of a materialized-view. For more information, see [row level security policy](rowlevelsecuritypolicy.md).
+Deletes the row level security policy of a materialized-view. For more information, see [row level security policy](row-level-security-policy.md).
 
 ## Permissions
 

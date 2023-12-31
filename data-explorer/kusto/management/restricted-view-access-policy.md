@@ -18,7 +18,7 @@ While the restricted view access policy is specific to individual tables, the Un
 
 ## Limitations
 
-* The restricted view access policy can't be configured on a table on which a [Row Level Security policy](./rowlevelsecuritypolicy.md) is enabled.
+* The restricted view access policy can't be configured on a table on which a [Row Level Security policy](./row-level-security-policy.md) is enabled.
 * A table with the restricted view access policy enabled can't be used as the source of a materialized view. For more information, see [materialized views limitations and known issues](materialized-views/materialized-views-limitations.md#the-materialized-view-source).
 
 ## Related content

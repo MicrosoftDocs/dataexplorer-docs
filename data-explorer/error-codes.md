@@ -52,7 +52,7 @@ The **Ingestion result** metric provides information about the **Category** of i
 |BadRequest_CorruptedMessage                       |Message is corrupted.    |Permanent           |
 |BadRequest_SyntaxError                            |Request syntax error.     |Permanent           |
 |BadRequest_ZeroRetentionPolicyWithNoUpdatePolicy  |Table has zero retention policy and isn't the source table for any update policy.    |Permanent           |
-|BadRequest_CreationTimeEarlierThanSoftDeletePeriod|Creation time that was specified for ingestion, isn't within the `SoftDeletePeriod`.<br>For more information about `SoftDeletePeriod`, see [The policy object](./kusto/management/retentionpolicy.md#the-policy-object).  |Permanent   |
+|BadRequest_CreationTimeEarlierThanSoftDeletePeriod|Creation time that was specified for ingestion, isn't within the `SoftDeletePeriod`.<br>For more information about `SoftDeletePeriod`, see [The policy object](./kusto/management/retention-policy.md#the-policy-object).  |Permanent   |
 |BadRequest_NotSupported                           |Request not supported.    |Permanent           |
 |Download_SourceNotFound                           |Failed to download source from Azure Storage. Source not found.       |Permanent       |
 |BadRequest_EntityNameIsNotValid                   |Entity name isn't valid.<br>For more information about naming conventions, see [Entity names](./kusto/query/schema-entities/entity-names.md).    |Permanent           |

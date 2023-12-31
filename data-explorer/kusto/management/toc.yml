@@ -524,7 +524,7 @@ items:
       - name: Retention
         items:
           - name: Retention policy
-            href: retentionpolicy.md
+            href: retention-policy.md
           - name: .alter database policy retention command
             href: alter-database-retention-policy-command.md
             displayName: .alter database retention policy
@@ -565,7 +565,7 @@ items:
       - name: Row level security
         items:
           - name: Row level security policy
-            href: rowlevelsecuritypolicy.md
+            href: row-level-security-policy.md
             displayName: row_level_security policy
           - name: .alter materialized-view policy row_level_security command
             href: alter-materialized-view-row-level-security-policy-command.md

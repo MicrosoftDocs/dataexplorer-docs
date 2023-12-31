@@ -33,7 +33,7 @@ ms.date: 10/15/2022
 
 ## Impact of records ingested to or dropped from the source table
 
-* A materialized view only processes new records ingested into the source table. Records that are removed from the source table, either by running [data purge](../../concepts/data-purge.md)/[soft delete](../../concepts/data-soft-delete.md)/[drop extents](../drop-extents.md), or due to [retention policy](../retentionpolicy.md) or any other reason, have no impact on the materialized view.
+* A materialized view only processes new records ingested into the source table. Records that are removed from the source table, either by running [data purge](../../concepts/data-purge.md)/[soft delete](../../concepts/data-soft-delete.md)/[drop extents](../drop-extents.md), or due to [retention policy](../retention-policy.md) or any other reason, have no impact on the materialized view.
 * The materialized view has its own [retention policy](materialized-view-policies.md#retention-and-caching-policy), which is independent of the retention policy of the source table. The materialized view might include records that are not present in the source table.
 
 ## Follower databases

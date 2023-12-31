@@ -13,7 +13,7 @@ The continuous export job should be configured with a [managed identity](../../.
 
 * When the external table uses impersonation authentication.
 * When the query references tables in other databases.
-* When the query references tables with an enabled [row level security policy](../rowlevelsecuritypolicy.md).
+* When the query references tables with an enabled [row level security policy](../row-level-security-policy.md).
 
 A continuous export job configured with a managed identity is performed on behalf of the managed identity.
 

@@ -17,7 +17,7 @@ The diagram below shows the end-to-end flow for working in Azure Data Explorer a
 :::image type="content" source="media/data-ingestion-overview/data-management-and-ingestion-overview.png" alt-text="Overview scheme of data ingestion and management.":::
 
 > [!NOTE]
-> Data is persisted in storage according to the set [retention policy](kusto/management/retentionpolicy.md).
+> Data is persisted in storage according to the set [retention policy](kusto/management/retention-policy.md).
 
 ## Supported data formats, properties, and permissions
 
@@ -126,7 +126,7 @@ Once you have chosen the most suitable ingestion method for your needs, do the f
 
     Data ingested into a table in Azure Data Explorer is subject to the table's effective retention policy. Unless set on a table explicitly, the effective retention policy is derived from the database's retention policy. Hot retention is a function of cluster size and your retention policy. Ingesting more data than you have available space will force the first in data to cold retention.
 
-    Make sure that the database's retention policy is appropriate for your needs. If not, explicitly override it at the table level. For more information, see [retention policy](kusto/management/retentionpolicy.md).
+    Make sure that the database's retention policy is appropriate for your needs. If not, explicitly override it at the table level. For more information, see [retention policy](kusto/management/retention-policy.md).
 
 1. **Create a table**
 

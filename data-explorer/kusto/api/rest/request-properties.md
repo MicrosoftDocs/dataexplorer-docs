@@ -40,7 +40,7 @@ The following table overviews the supported request properties.
 | `query_distribution_nodes_span` | int | Controls the behavior of subquery merge. The executing node introduces an extra level in the query hierarchy for each subgroup of nodes, and this option sets the subgroup size.|
 | `query_fanout_nodes_percent` | int | Specifies the percentage of nodes for executing fan-out. |
 | `query_fanout_threads_percent` | int | Specifies the percentage of threads for executing fan-out. |
-| `query_force_row_level_security` | bool | If set to `true`, enforces [row level security](../../management/rowlevelsecuritypolicy.md) rules, even if the policy is disabled. |
+| `query_force_row_level_security` | bool | If set to `true`, enforces [row level security](../../management/row-level-security-policy.md) rules, even if the policy is disabled. |
 | `query_language` | string | Determines how the query text should be interpreted. Supported values are `csl`, `kql`, or `sql`. |
 | `query_log_query_parameters` | bool | Enables logging of the query parameters for later viewing in the [.show queries](../../management/queries.md) journal. |
 | `query_max_entities_in_union` | long | Overrides the default maximum number of columns a query is allowed to produce. |
@@ -56,7 +56,7 @@ The following table overviews the supported request properties.
 | `query_weakconsistency_session_id` | string | Sets the query weak consistency session ID. Takes effect when `queryconsistency` mode is set to `weakconsistency_by_session_id`. |
 | `queryconsistency` | string | Controls query consistency. Supported values are `strongconsistency`, `weakconsistency`, `weakconsistency_by_query`, `weakconsistency_by_database`, or `weakconsistency_by_session_id`. When using `weakconsistency_by_session_id`, ensure to also set the `query_weakconsistency_session_id` property. |
 | `request_app_name` | string | Specifies the request application name to be used in reporting. For example, [.show queries](../../management/queries.md). |
-| `request_block_row_level_security` | bool | If set to `true`, blocks access to tables with [row level security](../../management/rowlevelsecuritypolicy.md) policy enabled. |
+| `request_block_row_level_security` | bool | If set to `true`, blocks access to tables with [row level security](../../management/row-level-security-policy.md) policy enabled. |
 | `request_callout_disabled` | bool | If set to `true`, prevents request callout to a user-provided service. |
 | `request_description` | string | Allows inclusion of arbitrary text as the request description. |
 | `request_external_data_disabled` | bool | If set to `true`, prevents the request from accessing external data using the [externaldata](../../query/externaldata-operator.md) operator or external tables. |
