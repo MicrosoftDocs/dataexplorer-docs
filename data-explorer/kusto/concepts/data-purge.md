@@ -73,7 +73,7 @@ Monitor the purge request queue size, and keep within adequate limits to match t
 To reduce purge execution time:
 
 * Follow the [purge guidelines](#purge-guidelines) to decrease the amount of purged data.
-* Adjust the [caching policy](../management/cachepolicy.md) since purge takes longer on cold data.
+* Adjust the [caching policy](../management/cache-policy.md) since purge takes longer on cold data.
 * Scale out the cluster
 
 * Increase cluster purge capacity, after careful consideration, as detailed in [Extents purge rebuild capacity](../management/capacitypolicy.md#extents-purge-rebuild-capacity).

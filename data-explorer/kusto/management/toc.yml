@@ -289,7 +289,7 @@ items:
       - name: Caching
         items:
           - name: Caching policy (hot and cold cache)
-            href: cachepolicy.md
+            href: cache-policy.md
             displayName: cache policy
           - name: .alter cluster caching policy command
             href: alter-cluster-cache-policy-command.md

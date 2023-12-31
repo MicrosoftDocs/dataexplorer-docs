@@ -194,7 +194,7 @@ For variable visualizations, see the [render operator](../query/renderoperator.m
 |Inspect Your ADD Principal| Shows currents active user details.|
 |Sign-out| Signs-out the current user from the connection to Microsoft Entra ID.|
 ||---------*Data Scope*---------|
-|Caching scope|<ul><li>Hot DataExecute queries only on [hot data cache](../management/cachepolicy.md)</li><li>All Data: Execute queries on all available data (default).</li></ul> |
+|Caching scope|<ul><li>Hot DataExecute queries only on [hot data cache](../management/cache-policy.md)</li><li>All Data: Execute queries on all available data (default).</li></ul> |
 |DateTime Column| Name of a column that may be used for time pre-filter.|
 |Time Filter| Value of time pre-filter.|
 

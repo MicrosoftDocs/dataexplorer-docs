@@ -202,7 +202,7 @@ The following properties can be defined as part of the policy. These properties 
 * Data partitioning runs as a post-ingestion background process in the cluster.
   * A table that is continuously ingested into is expected to always have a "tail" of data that is yet to be partitioned (nonhomogeneous extents).
 * Data partitioning runs only on hot extents, regardless of the value of the `EffectiveDateTime` property in the policy.
-  * If partitioning cold extents is required, you need to temporarily adjust the [caching policy](cachepolicy.md).
+  * If partitioning cold extents is required, you need to temporarily adjust the [caching policy](cache-policy.md).
 
 You can monitor the partitioning status of tables with defined policies in a database by using the [.show database extents partitioning statistics](show-database-extents-partitioning-statistics.md) command.
 

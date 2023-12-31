@@ -55,7 +55,7 @@ The merge policy contains the following properties:
   * Timestamps are of extent creation, and don't relate to the actual data contained in the extents.
   * Applies to both Merge and Rebuild operations.
   * In [materialized views](materialized-views/materialized-view-overview.md): defaults to 336 (14 days), *unless* recoverability is disabled in the materialized view's effective [retention policy](retentionpolicy.md).
-  * This value should be set according to the effective [retention policy](./retentionpolicy.md) *SoftDeletePeriod*, or [cache policy](./cachepolicy.md) *DataHotSpan* values. Take the lower value of *SoftDeletePeriod* and *DataHotSpan*. Set the *MaxRangeInHours* value to between 2-3% of it. See the [examples](#maxrangeinhours-examples) .
+  * This value should be set according to the effective [retention policy](./retentionpolicy.md) *SoftDeletePeriod*, or [cache policy](./cache-policy.md) *DataHotSpan* values. Take the lower value of *SoftDeletePeriod* and *DataHotSpan*. Set the *MaxRangeInHours* value to between 2-3% of it. See the [examples](#maxrangeinhours-examples) .
 * **Lookback**:
   * Defines the timespan during which extents are considered for rebuild/merge.
   * Supported values:

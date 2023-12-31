@@ -4,6 +4,11 @@
         "source_path": "data-explorer/kusto/management/batchingpolicy.md",
         "redirect_url": "/azure/data-explorer/kusto/management/batching-policy",
         "redirect_document_id": true
+      },
+      {
+        "source_path": "data-explorer/kusto/management/cachepolicy.md",
+        "redirect_url": "/azure/data-explorer/kusto/management/cache-policy",
+        "redirect_document_id": true
       }
     ]
 }

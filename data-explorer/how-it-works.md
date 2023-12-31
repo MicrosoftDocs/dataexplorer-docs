@@ -34,7 +34,7 @@ For more information on data storage, see [Extents overview](kusto/management/ex
 
 Azure Data Explorer has a multi-hierarchy data cache system to ensure that the most relevant data is cached as closely as possible to the CPU. The cache system depends on the immutability of extents, and works entirely with [compressed data](#column-compression). In order to improve query performance, data remains compressed even in RAM and is only decompressed when required for a query.
 
-For more information on caching, see [Cache policy](kusto/management/cachepolicy.md).
+For more information on caching, see [Cache policy](kusto/management/cache-policy.md).
 
 ## Text indexing
 
