@@ -59,6 +59,11 @@
         "source_path": "data-explorer/kusto/management/rowlevelsecuritypolicy.md",
         "redirect_url": "/azure/data-explorer/kusto/management/row-level-security-policy.md",
         "redirect_document_id": true
+      },
+      {
+        "source_path": "data-explorer/kusto/management/roworderpolicy.md",
+        "redirect_url": "/azure/data-explorer/kusto/management/row-order-policy.md",
+        "redirect_document_id": true
       }
     ]
 }

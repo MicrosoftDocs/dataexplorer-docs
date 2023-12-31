@@ -179,8 +179,8 @@ Similarly, if `IsRestrictedUser` evaluates to `true`, then only the query for `P
 
 ### Improve query performance when RLS is used
 
-* If a filter is applied on a high-cardinality column, for example, DeviceID, consider using [Partitioning policy](./partitioning-policy.md) or [Row Order policy](./roworderpolicy.md)
-* If a filter is applied on a low-medium-cardinality column, consider using [Row Order policy](./roworderpolicy.md)
+* If a filter is applied on a high-cardinality column, for example, DeviceID, consider using [Partitioning policy](partitioning-policy.md) or [Row Order policy](row-order-policy.md)
+* If a filter is applied on a low-medium-cardinality column, consider using [Row Order policy](row-order-policy.md)
 
 ## Performance impact on ingestion
 

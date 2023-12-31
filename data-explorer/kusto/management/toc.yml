@@ -588,7 +588,7 @@ items:
       - name: Row order
         items:
           - name: Row order policy command
-            href: roworderpolicy.md
+            href: row-order-policy.md
             displayName: roworder policy
           - name: .alter table policy roworder command
             href: alter-table-row-order-policy-command.md

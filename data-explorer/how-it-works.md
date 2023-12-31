@@ -56,7 +56,7 @@ Azure Data Explorer maintains data in a compressed state, reducing the amount of
 
 Azure Data Explorer avoids vertical compression, which involves sorting data to improve compression, due to its high CPU cost in free-text or semi-structured data scenarios. Instead, you can specify the preferred data sort order for scenarios with dominant query patterns. This trade-off prioritizes quick data availability for queries.
 
-For more information on specifying data sort order, see [Row order policy](kusto/management/roworderpolicy.md).
+For more information on specifying data sort order, see [Row order policy](kusto/management/row-order-policy.md).
 
 ## Distributed data query
 

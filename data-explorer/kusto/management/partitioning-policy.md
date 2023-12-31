@@ -62,7 +62,7 @@ If the policy includes a hash partition key, all homogeneous extents that belong
 
 * A hash-modulo function is used to partition the data.
 * Data in homogeneous (partitioned) extents is ordered by the hash partition key.
-  * You don't need to include the hash partition key in the [row order policy](roworderpolicy.md), if one is defined on the table.
+  * You don't need to include the hash partition key in the [row order policy](row-order-policy.md), if one is defined on the table.
 * Queries that use the [shuffle strategy](../query/shufflequery.md), and in which the `shuffle key` used in `join`, `summarize` or `make-series` is the table's hash partition key, are expected to perform better because the amount of data required to move across cluster nodes is reduced.
 
 #### Partition properties
