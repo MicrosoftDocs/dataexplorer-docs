@@ -806,7 +806,7 @@ items:
         displayName: clear query schema cache
         href: clear-cross-cluster-schema-cache.md
   - name: System information
-    href: systeminfo.md
+    href: system-info.md
     items:
       - name: Estimate table size
         href: estimate-table-size.md
