@@ -7,7 +7,7 @@ ms.date: 05/25/2023
 ---
 # .alter cluster policy sandbox command
 
-Changes the [cluster sandbox policy](sandboxpolicy.md). Specified plugins run within [sandboxes](../concepts/sandboxes.md) whose resources are managed for security and resource governance. Sandbox limitations are defined in sandbox policies, where each sandbox kind can have its own policy. Your cluster can run sandboxes for specific flows that need secure isolation.
+Changes the [cluster sandbox policy](sandbox-policy.md). Specified plugins run within [sandboxes](../concepts/sandboxes.md) whose resources are managed for security and resource governance. Sandbox limitations are defined in sandbox policies, where each sandbox kind can have its own policy. Your cluster can run sandboxes for specific flows that need secure isolation.
 Examples of these flows are user-defined scripts that run using the [Python plugin](../query/pythonplugin.md) or the [R plugin](../query/rplugin.md).
 
 Sandbox policies are managed at cluster-level and affect all the nodes in the cluster.
@@ -26,7 +26,7 @@ You must have [AllDatabasesAdmin](access-control/role-based-access-control.md) p
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-| *ArrayOfPolicyObjects* | string | &check;  | An array with one or more policy objects defined. For policy object definitions, the [sandbox policy](sandboxpolicy.md).|
+| *ArrayOfPolicyObjects* | string | &check;  | An array with one or more policy objects defined. For policy object definitions, the [sandbox policy](sandbox-policy.md).|
 
 ## Returns
 

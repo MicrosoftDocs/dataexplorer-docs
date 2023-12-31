@@ -25,7 +25,7 @@ The following table provides an overview of the policies for managing your clust
 |[Restricted view access policy](restricted-view-access-policy.md)|Adds an extra layer of permission requirements for principals to access and view the table.|
 |[Row level security policy](row-level-security-policy.md)|Defines rules for access to rows in a table based on group membership or execution context.|
 |[Row order policy](row-order-policy.md)|Maintains a specific order for rows within an extent.|
-|[Sandbox policy](sandboxpolicy.md)|Controls the usage and behavior of sandboxes, which are isolated environments for query execution.|
+|[Sandbox policy](sandbox-policy.md)|Controls the usage and behavior of sandboxes, which are isolated environments for query execution.|
 |[Sharding policy](shardingpolicy.md)|Defines rules for how extents in your cluster are created.|
 |[Streaming ingestion policy](streamingingestionpolicy.md)|Configurations for streaming data ingestion.|
 |[Update policy](updatepolicy.md)|Allows for data to be appended to a target table upon adding data to a source table.|

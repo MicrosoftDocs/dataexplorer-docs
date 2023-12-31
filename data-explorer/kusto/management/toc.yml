@@ -609,7 +609,7 @@ items:
           - name: Using sandboxes in non-modern sku
             href: ../concepts/sandboxes-in-non-modern-skus.md
           - name: Sandbox policy
-            href: sandboxpolicy.md
+            href: sandbox-policy.md
           - name: .alter cluster policy sandbox command
             href: alter-cluster-sandbox-policy-command.md
             displayName: .alter cluster sandbox policy

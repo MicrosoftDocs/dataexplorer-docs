@@ -64,6 +64,11 @@
         "source_path": "data-explorer/kusto/management/roworderpolicy.md",
         "redirect_url": "/azure/data-explorer/kusto/management/row-order-policy.md",
         "redirect_document_id": true
+      },
+      {
+        "source_path": "data-explorer/kusto/management/sandboxpolicy.md",
+        "redirect_url": "/azure/data-explorer/kusto/management/sandbox-policy.md",
+        "redirect_document_id": true
       }
     ]
 }
