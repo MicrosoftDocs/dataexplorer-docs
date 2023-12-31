@@ -16,7 +16,7 @@ By default, the creation time for extents is set to the time when the data is in
 
 - All the data lands in cache and stays there for 30 days, using more cache than you anticipated
 - Older data isn't removed one day at a time; hence data is retained in the cluster for longer than necessary and, after two years, is all removed at once
-- Data, previously grouped by date in the source system, may now be [batched together](kusto/management/batchingpolicy.md) in the same extent leading to inefficient queries
+- Data, previously grouped by date in the source system, may now be [batched together](kusto/management/batching-policy.md) in the same extent leading to inefficient queries
 
 :::image type="content" source="media/ingest-data-historical/historical-data-expected-vs-actual.png" alt-text="Diagram showing the expected versus actual result of ingesting historical data using the default creation time.":::
 

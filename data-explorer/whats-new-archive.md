@@ -342,7 +342,7 @@ Welcome to what's new in Azure Data Explorer archive. This article is an archive
 
 | Article title | Description |
 |--|--|
-| [IngestionBatching policy](kusto/management/batchingpolicy.md) | Updated article. Document batching types
+| [IngestionBatching policy](kusto/management/batching-policy.md) | Updated article. Document batching types
 
 ## May 2021
 

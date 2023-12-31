@@ -381,7 +381,7 @@ items:
       - name: Ingestion batching
         items:
           - name: Ingestion batching policy
-            href: batchingpolicy.md
+            href: batching-policy.md
             displayName: ingestionbatching policy
           - name: .alter database policy ingestionbatching command
             href: alter-database-ingestion-batching-policy.md
@@ -814,29 +814,29 @@ items:
         href: journal.md
       - name: Operations
         items:
-        - name: .show operations
-          href: show-operations.md
-          displayName: operations
-        - name: .show operations details
-          href: show-operation-details.md
-          displayName: operations
+          - name: .show operations
+            href: show-operations.md
+            displayName: operations
+          - name: .show operations details
+            href: show-operation-details.md
+            displayName: operations
       - name: Queries and commands
         items:
-        - name: .cancel query
-          href: cancel-query-command.md
-        - name: .show commands
-          href: show-commands.md
-        - name: .show commands-and-queries
-          href: commands-and-queries.md
-        - name: .show queries
-          href: show-queries-command.md
+          - name: .cancel query
+            href: cancel-query-command.md
+          - name: .show commands
+            href: show-commands.md
+          - name: .show commands-and-queries
+            href: commands-and-queries.md
+          - name: .show queries
+            href: show-queries-command.md
       - name: Statistics
         items:
-        - name: .show streamingingestion statistics
-          displayName: .show streaming ingestion statistics
-          href: streamingingestionstatistics.md
-        - name: .show table data statistics
-          href: show-table-data-statistics.md
+          - name: .show streamingingestion statistics
+            displayName: .show streaming ingestion statistics
+            href: streamingingestionstatistics.md
+          - name: .show table data statistics
+            href: show-table-data-statistics.md
   - name: Advanced data management
     items:
       - name: Extents (data shards)

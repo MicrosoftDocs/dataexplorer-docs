@@ -34,7 +34,7 @@ The diagram below shows the end-to-end flow for working in Azure Data Explorer a
 
 ## Queued vs. streaming ingestion
 
-* Queued ingestion does data batching and is optimized for high ingestion throughput. This method is the preferred and most performant type of ingestion. Data is batched according to ingestion properties. Small batches of data are then merged, and optimized for fast query results. By default, the maximum batching value is 5 minutes, 1000 items, or a total size of 1 GB. The data size limit for a queued ingestion command is 6 GB. To learn more, see the [ingestion batching policy](kusto/management/batchingpolicy.md).
+* Queued ingestion does data batching and is optimized for high ingestion throughput. This method is the preferred and most performant type of ingestion. Data is batched according to ingestion properties. Small batches of data are then merged, and optimized for fast query results. By default, the maximum batching value is 5 minutes, 1000 items, or a total size of 1 GB. The data size limit for a queued ingestion command is 6 GB. To learn more, see the [ingestion batching policy](kusto/management/batching-policy.md).
 
 * [Streaming ingestion](ingest-data-streaming.md) is ongoing data ingestion from a streaming source. Streaming ingestion allows near real-time latency for small sets of data per table. Data is initially ingested to row store, then moved to column store extents. Streaming ingestion can be done using an Azure Data Explorer client library or one of the supported data pipelines. To learn more, see [Configure streaming ingestion](ingest-data-streaming.md).
 
@@ -120,7 +120,7 @@ Once you have chosen the most suitable ingestion method for your needs, do the f
 
 1. **Set batching policy** (optional)
 
-     The batching manager batches ingestion data based on the [ingestion batching policy](kusto/management/batchingpolicy.md). Define a batching policy before ingestion. See [ingestion best practices - optimizing for throughput](kusto/api/netfx/kusto-ingest-best-practices.md#optimize-for-throughput). Batching policy changes can require up to 5 minutes to take effect. The policy sets batch limits according to three factors: time elapsed since batch creation, accumulated number of items (blobs), or total batch size. By default, settings are 5 minutes / 1000 blobs / 1 GB, with the limit first reached taking effect. Therefore there's usually a 5-minute delay when queueing sample data for ingestion.
+     The batching manager batches ingestion data based on the [ingestion batching policy](kusto/management/batching-policy.md). Define a batching policy before ingestion. See [ingestion best practices - optimizing for throughput](kusto/api/netfx/kusto-ingest-best-practices.md#optimize-for-throughput). Batching policy changes can require up to 5 minutes to take effect. The policy sets batch limits according to three factors: time elapsed since batch creation, accumulated number of items (blobs), or total batch size. By default, settings are 5 minutes / 1000 blobs / 1 GB, with the limit first reached taking effect. Therefore there's usually a 5-minute delay when queueing sample data for ingestion.
 
 1. **Set retention policy**
 

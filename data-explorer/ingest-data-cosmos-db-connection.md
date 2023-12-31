@@ -322,7 +322,7 @@ To configure your Cosmos DB connection:
 
 > [!NOTE]
 >
-> Azure Data Explorer has an aggregation (batching) policy for queued data ingestion designed to optimize the ingestion process. The default batching policy is configured to seal a batch once one of the following conditions is true for the batch: a maximum delay time of 5 minutes, total size of one GB, or 1000 blobs. Therefore, you may experience a latency. For more information, see [batching policy](kusto/management/batchingpolicy.md). To reduce latency, configure your table to support streaming. See [streaming policy](kusto/management/streamingingestionpolicy.md).
+> Azure Data Explorer has an aggregation (batching) policy for queued data ingestion designed to optimize the ingestion process. The default batching policy is configured to seal a batch once one of the following conditions is true for the batch: a maximum delay time of 5 minutes, total size of one GB, or 1000 blobs. Therefore, you may experience a latency. For more information, see [batching policy](kusto/management/batching-policy.md). To reduce latency, configure your table to support streaming. See [streaming policy](kusto/management/streamingingestionpolicy.md).
 
 ## Considerations
 

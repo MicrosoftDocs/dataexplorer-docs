@@ -13,7 +13,7 @@ Streaming ingestion is useful for loading data when you need low latency between
 * Latency of less than a second is required.
 * To optimize operational processing of many tables where the stream of data into each table is relatively small (a few records per second), but the overall data ingestion volume is high (thousands of records per second).
 
-If the stream of data into each table is high (over 4 GB per hour), consider using [queued ingestion](kusto/management/batchingpolicy.md).
+If the stream of data into each table is high (over 4 GB per hour), consider using [queued ingestion](kusto/management/batching-policy.md).
 
 To learn more about different ingestion methods, see [data ingestion overview](ingest-data-overview.md).
 

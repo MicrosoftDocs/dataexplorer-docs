@@ -1,0 +1,9 @@
+{
+    "redirections": [
+      {
+        "source_path": "data-explorer/kusto/management/batchingpolicy.md",
+        "redirect_url": "/azure/data-explorer/kusto/management/batching-policy",
+        "redirect_document_id": true
+      }
+    ]
+}
