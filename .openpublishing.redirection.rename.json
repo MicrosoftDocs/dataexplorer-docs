@@ -74,6 +74,11 @@
         "source_path": "data-explorer/kusto/management/shardingpolicy.md",
         "redirect_url": "/azure/data-explorer/kusto/management/sharding-policy.md",
         "redirect_document_id": true
+      },
+      {
+        "source_path": "data-explorer/kusto/management/streamingingestionpolicy.md",
+        "redirect_url": "/azure/data-explorer/kusto/management/streaming-ingestion-policy.md",
+        "redirect_document_id": true
       }
     ]
 }

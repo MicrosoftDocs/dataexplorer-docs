@@ -27,6 +27,6 @@ The following table provides an overview of the policies for managing your clust
 |[Row order policy](row-order-policy.md)|Maintains a specific order for rows within an extent.|
 |[Sandbox policy](sandbox-policy.md)|Controls the usage and behavior of sandboxes, which are isolated environments for query execution.|
 |[Sharding policy](sharding-policy.md)|Defines rules for how extents in your cluster are created.|
-|[Streaming ingestion policy](streamingingestionpolicy.md)|Configurations for streaming data ingestion.|
+|[Streaming ingestion policy](streaming-ingestion-policy.md)|Configurations for streaming data ingestion.|
 |[Update policy](updatepolicy.md)|Allows for data to be appended to a target table upon adding data to a source table.|
 |[Query weak consistency policy](query-weak-consistency-policy.md)|Controls the level of consistency for query results.|

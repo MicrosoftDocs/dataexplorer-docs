@@ -650,7 +650,7 @@ items:
       - name: Streaming ingestion
         items:
           - name: Streaming ingestion policy
-            href: streamingingestionpolicy.md
+            href: streaming-ingestion-policy.md
             displayName: streamingingestion policy
           - name: .alter database policy streamingingestion command
             href: alter-database-streaming-ingestion-policy-command.md
