@@ -8,7 +8,7 @@ ms.date: 11/13/2022
 
 # Restrict outbound access from your Azure Data Explorer cluster
 
-Restricting outbound access of your cluster is important to mitigate risks like data exfiltration. A malicious actor could potentially create an external table to a storage account and extract large amounts of data. You can control outbound access at the cluster level by defining [callout policies](kusto/management/calloutpolicy.md). Managing callout policies enables you to allow outbound access to specified SQL, storage, or other endpoints.
+Restricting outbound access of your cluster is important to mitigate risks like data exfiltration. A malicious actor could potentially create an external table to a storage account and extract large amounts of data. You can control outbound access at the cluster level by defining [callout policies](kusto/management/callout-policy.md). Managing callout policies enables you to allow outbound access to specified SQL, storage, or other endpoints.
 
 In this article, you'll learn how about an extension to callout policies that enables you to further restrict call outs from your cluster.
 

@@ -12,7 +12,7 @@ The following table provides an overview of the policies for managing your clust
 |--|--|
 |[Auto delete policy](auto-delete-policy.md)|Sets an expiry date for the table. The table is automatically deleted at this expiry time.|
 |[Cache policy](cache-policy.md)|Defines how to prioritize resources. Allows customers to differentiate between hot data cache and cold data cache.|
-|[Callout policy](calloutpolicy.md)|Manages the authorized domains for external calls.|
+|[Callout policy](callout-policy.md)|Manages the authorized domains for external calls.|
 |[Capacity policy](capacitypolicy.md)|Controls the compute resources of data management operations.|
 |[Encoding policy](encoding-policy.md)|Defines how data is encoded, compressed, and indexed.|
 |[Extent tags retention policy](extent-tags-retention-policy.md)|Controls the mechanism that automatically removes extent tags from tables.|

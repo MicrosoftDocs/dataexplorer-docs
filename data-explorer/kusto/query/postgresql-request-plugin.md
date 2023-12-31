@@ -45,7 +45,7 @@ To authorize a PostgreSQL Server network endpoint, you must specify the authoriz
 
 ## Set callout policy
 
-The plugin makes callouts to the PostgreSQL database. Make sure that the cluster's [callout policy](../management/calloutpolicy.md) enables calls of type `postgresql` to the target *PostgreSqlDbUri*.
+The plugin makes callouts to the PostgreSQL database. Make sure that the cluster's [callout policy](../management/callout-policy.md) enables calls of type `postgresql` to the target *PostgreSqlDbUri*.
 
 The following example shows how to define the callout policy for PostgreSQL databases. We recommend restricting the callout policy to specific endpoints (`my_endpoint1`, `my_endpoint2`).
 

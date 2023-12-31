@@ -50,7 +50,7 @@ To authorize to an Azure Cosmos DB SQL network endpoint, you need to specify the
 
 ## Set callout policy
 
-The plugin makes callouts to the Azure Cosmos DB instance. Make sure that the cluster's [callout policy](../management/calloutpolicy.md) enables calls of type `cosmosdb` to the target *CosmosDbUri*.
+The plugin makes callouts to the Azure Cosmos DB instance. Make sure that the cluster's [callout policy](../management/callout-policy.md) enables calls of type `cosmosdb` to the target *CosmosDbUri*.
 
 The following example shows how to define the callout policy for Azure Cosmos DB. It's recommended to restrict it to specific endpoints (`my_endpoint1`, `my_endpoint2`).
 

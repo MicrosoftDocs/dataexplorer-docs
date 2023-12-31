@@ -17,7 +17,7 @@ The `http_request_post` plugin sends an HTTP POST request and converts the respo
 ## Prerequisites
 
 * Run `.enable plugin http_request_post` to [enable the plugin](../management/enable-plugin.md)
-* Set the URI to access as an allowed destination for `webapi` in the [Callout policy](../management/calloutpolicy.md)
+* Set the URI to access as an allowed destination for `webapi` in the [Callout policy](../management/callout-policy.md)
 
 ## Syntax
 

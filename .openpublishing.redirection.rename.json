@@ -9,6 +9,11 @@
         "source_path": "data-explorer/kusto/management/cachepolicy.md",
         "redirect_url": "/azure/data-explorer/kusto/management/cache-policy",
         "redirect_document_id": true
+      },
+      {
+        "source_path": "data-explorer/kusto/management/calloutpolicy.md",
+        "redirect_url": "/azure/data-explorer/kusto/management/callout-policy",
+        "redirect_document_id": true
       }
     ]
 }
