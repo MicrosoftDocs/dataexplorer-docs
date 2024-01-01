@@ -492,7 +492,7 @@ items:
         href: array-index-of-function.md
       - name: array_length()
         displayName: arraylength() array length
-        href: arraylengthfunction.md
+        href: array-length-function.md
       - name: array_reverse()
         displayName: array reverse
         href: array-reverse-function.md
