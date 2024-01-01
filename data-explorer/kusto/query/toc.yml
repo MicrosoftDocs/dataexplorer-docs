@@ -1191,11 +1191,11 @@ items:
       - name: avgif()
         href: avgif-aggfunction.md
       - name: binary_all_and
-        href: binary-all-and-aggfunction.md
+        href: binary-all-and-aggregation-function.md
       - name: binary_all_or
-        href: binary-all-or-aggfunction.md
+        href: binary-all-or-aggregation-function.md
       - name: binary_all_xor
-        href: binary-all-xor-aggfunction.md
+        href: binary-all-xor-aggregation-function.md
       - name: buildschema()
         href: buildschema-aggfunction.md
       - name: count()

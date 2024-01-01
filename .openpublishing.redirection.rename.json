@@ -264,6 +264,21 @@
         "source_path": "data-explorer/kusto/query/bin-autofunction.md",
         "redirect_url": "/azure/data-explorer/kusto/query/bin-auto-function",
         "redirect_document_id": true
+      },
+      {
+        "source_path": "data-explorer/kusto/query/binary-all-and-aggfunction.md",
+        "redirect_url": "/azure/data-explorer/kusto/query/binary-all-and-aggregation-function",
+        "redirect_document_id": true
+      },
+      {
+        "source_path": "data-explorer/kusto/query/binary-all-or-aggfunction.md",
+        "redirect_url": "/azure/data-explorer/kusto/query/binary-all-or-aggregation-function",
+        "redirect_document_id": true
+      },
+      {
+        "source_path": "data-explorer/kusto/query/binary-all-xor-aggfunction.md",
+        "redirect_url": "/azure/data-explorer/kusto/query/binary-all-xor-aggregation-function",
+        "redirect_document_id": true
       }
     ]
 }

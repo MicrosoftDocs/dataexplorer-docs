@@ -14,9 +14,9 @@ An aggregation function performs a calculation on a set of values, and returns a
 
 | Function Name | Description |
 |--|--|
-| [binary_all_and()](binary-all-and-aggfunction.md) | Returns aggregated value using the binary AND of the group. |
-| [binary_all_or()](binary-all-or-aggfunction.md) | Returns aggregated value using the binary OR of the group. |
-| [binary_all_xor()](binary-all-xor-aggfunction.md) | Returns aggregated value using the binary XOR of the group. |
+| [binary_all_and()](binary-all-and-aggregation-function.md) | Returns aggregated value using the binary AND of the group. |
+| [binary_all_or()](binary-all-or-aggregation-function.md) | Returns aggregated value using the binary OR of the group. |
+| [binary_all_xor()](binary-all-xor-aggregation-function.md) | Returns aggregated value using the binary XOR of the group. |
 
 ## Dynamic functions
 
