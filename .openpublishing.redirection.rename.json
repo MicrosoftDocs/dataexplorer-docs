@@ -239,6 +239,11 @@
         "source_path": "data-explorer/kusto/query/basketplugin.md",
         "redirect_url": "/azure/data-explorer/kusto/query/basket-plugin",
         "redirect_document_id": true
+      },
+      {
+        "source_path": "data-explorer/kusto/query/beta-cdffunction.md",
+        "redirect_url": "/azure/data-explorer/kusto/query/beta-cdf-function",
+        "redirect_document_id": true
       }
     ]
 }

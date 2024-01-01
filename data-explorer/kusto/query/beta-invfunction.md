@@ -29,7 +29,7 @@ The beta distribution can be used in project planning to model probable completi
 
 ## Returns
 
-The inverse of the beta cumulative probability density function [beta_cdf()](./beta-cdffunction.md)
+The inverse of the beta cumulative probability density function [beta_cdf()](./beta-cdf-function.md)
 
 > [!NOTE]
 >
@@ -63,5 +63,5 @@ datatable(p:double, alpha:double, beta:double, comment:string)
 
 ## Related content
 
-* For computing cumulative beta distribution function, see [beta-cdf()](./beta-cdffunction.md).
+* For computing cumulative beta distribution function, see [beta-cdf()](./beta-cdf-function.md).
 * For computing probability beta density function, see [beta-pdf()](./beta-pdffunction.md).

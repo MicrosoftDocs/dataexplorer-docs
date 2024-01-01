@@ -576,7 +576,7 @@ items:
         href: base64-encode-fromguid-function.md
       - name: beta_cdf()
         displayName: beta_cdf() beta cdf
-        href: beta-cdffunction.md
+        href: beta-cdf-function.md
       - name: beta_inv()
         displayName: beta_inv() beta inv
         href: beta-invfunction.md
