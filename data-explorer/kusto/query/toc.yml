@@ -343,7 +343,7 @@ items:
       - name: between operators
         items:
           - name: between operator
-            href: betweenoperator.md
+            href: between-operator.md
           - name: "!between operator"
             displayName: not between operator
             href: notbetweenoperator.md

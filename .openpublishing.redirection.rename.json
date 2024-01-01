@@ -254,6 +254,11 @@
         "source_path": "data-explorer/kusto/query/beta-pdffunction.md",
         "redirect_url": "/azure/data-explorer/kusto/query/beta-pdf-function",
         "redirect_document_id": true
+      },
+      {
+        "source_path": "data-explorer/kusto/query/betweenoperator.md",
+        "redirect_url": "/azure/data-explorer/kusto/query/between-operator",
+        "redirect_document_id": true
       }
     ]
 }
