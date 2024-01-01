@@ -187,7 +187,7 @@ items:
             href: joincrosscluster.md
             displayName: cross cluster
           - name: Broadcast join
-            href: broadcastjoin.md
+            href: broadcast-join.md
           - name: Time window join
             href: join-timewindow.md
       - name: lookup operator
@@ -612,7 +612,7 @@ items:
         href: binary-xor-function.md
       - name: bitset_count_ones()
         displayName: bitset_count_ones() bitset count ones
-        href: bitset-count-onesfunction.md
+        href: bitset-count-ones-function.md
       - name: case()
         href: casefunction.md
       - name: ceiling()

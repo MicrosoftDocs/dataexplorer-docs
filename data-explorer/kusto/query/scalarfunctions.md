@@ -19,7 +19,7 @@ This article lists all available scalar functions grouped by type. For aggregati
 |[binary_shift_left()](binary-shift-left-function.md)|Returns binary shift left operation on a pair of numbers: a << n.|
 |[binary_shift_right()](binary-shift-right-function.md)|Returns binary shift right operation on a pair of numbers: a >> n.|
 |[binary_xor()](binary-xor-function.md)|Returns a result of the bitwise xor operation of the two values.|
-|[bitset_count_ones()](bitset-count-onesfunction.md)|Returns the number of set bits in the binary representation of a number.|
+|[bitset_count_ones()](bitset-count-ones-function.md)|Returns the number of set bits in the binary representation of a number.|
 
 ## Conversion functions
 

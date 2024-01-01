@@ -324,6 +324,16 @@
         "source_path": "data-explorer/kusto/query/binoperators.md",
         "redirect_url": "/azure/data-explorer/kusto/query/bin-operators",
         "redirect_document_id": true
+      },
+      {
+        "source_path": "data-explorer/kusto/query/bitset-count-onesfunction.md",
+        "redirect_url": "/azure/data-explorer/kusto/query/bitset-count-ones-function",
+        "redirect_document_id": true
+      },
+      {
+        "source_path": "data-explorer/kusto/query/broadcastjoin.md",
+        "redirect_url": "/azure/data-explorer/kusto/query/broadcast-join",
+        "redirect_document_id": true
       }
     ]
 }
