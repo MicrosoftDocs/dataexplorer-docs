@@ -1197,7 +1197,7 @@ items:
       - name: binary_all_xor
         href: binary-all-xor-aggregation-function.md
       - name: buildschema()
-        href: buildschema-aggfunction.md
+        href: buildschema-aggregation-function.md
       - name: count()
         displayName: cnt()
         href: count-aggfunction.md
