@@ -1404,7 +1404,7 @@ items:
         href: series-addfunction.md
       - name: series_asin()
         displayName: element-wise, elementwise
-        href: series-asin-function.md
+        href: series-asinfunction.md
       - name: series_atan()
         displayName: element-wise, elementwise
         href: series-atanfunction.md
