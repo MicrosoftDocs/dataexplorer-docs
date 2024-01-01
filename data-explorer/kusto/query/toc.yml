@@ -138,7 +138,7 @@ items:
       - name: count operator
         href: count-operator.md
       - name: datatable operator
-        href: datatableoperator.md
+        href: datatable-operator.md
       - name: distinct operator
         href: distinctoperator.md
       - name: evaluate operator
