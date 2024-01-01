@@ -179,6 +179,11 @@
         "source_path": "data-explorer/kusto/query/arraysplitfunction.md",
         "redirect_url": "/azure/data-explorer/kusto/query/array-split-function",
         "redirect_document_id": true
+      },
+      {
+        "source_path": "data-explorer/kusto/query/asinfunction.md",
+        "redirect_url": "/azure/data-explorer/kusto/query/asin-function",
+        "redirect_document_id": true
       }
     ]
 }

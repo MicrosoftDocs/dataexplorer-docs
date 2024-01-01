@@ -525,7 +525,7 @@ items:
         href: array-sum-function.md
       - name: asin()
         displayName: asin function
-        href: asinfunction.md
+        href: asin-function.md
       - name: assert()
         href: assert-function.md
       - name: atan()
@@ -1404,7 +1404,7 @@ items:
         href: series-addfunction.md
       - name: series_asin()
         displayName: element-wise, elementwise
-        href: series-asinfunction.md
+        href: series-asin-function.md
       - name: series_atan()
         displayName: element-wise, elementwise
         href: series-atanfunction.md
