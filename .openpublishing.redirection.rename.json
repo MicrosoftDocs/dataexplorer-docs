@@ -304,6 +304,11 @@
         "source_path": "data-explorer/kusto/query/binary-shift-rightfunction.md",
         "redirect_url": "/azure/data-explorer/kusto/query/binary-shift-right-function",
         "redirect_document_id": true
+      },
+      {
+        "source_path": "data-explorer/kusto/query/binary-xorfunction.md",
+        "redirect_url": "/azure/data-explorer/kusto/query/binary-xor-function",
+        "redirect_document_id": true
       }
     ]
 }

@@ -14,4 +14,4 @@ Kusto support several bitwise (binary) operators between integers:
 * [binary_or](binary-or-function.md)
 * [binary_shift_left](binary-shift-left-function.md)
 * [binary_shift_right](binary-shift-right-function.md)
-* [binary_xor](binary-xorfunction.md)
+* [binary_xor](binary-xor-function.md)

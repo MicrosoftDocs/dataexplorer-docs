@@ -609,7 +609,7 @@ items:
         href: binary-shift-right-function.md
       - name: binary_xor()
         displayName: binary_xor() binary xor
-        href: binary-xorfunction.md
+        href: binary-xor-function.md
       - name: bitset_count_ones()
         displayName: bitset_count_ones() bitset count ones
         href: bitset-count-onesfunction.md
