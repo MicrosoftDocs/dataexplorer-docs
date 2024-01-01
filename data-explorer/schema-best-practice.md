@@ -18,7 +18,7 @@ Fields that are never searched on can disable indexing. Use the [encoding policy
 For general information on data types, see [scalar data types](/azure/data-explorer/kusto/query/scalar-data-types/).
 
 * Commonly used fields should be typed columns. Don't use the [dynamic](/azure/data-explorer/kusto/query/scalar-data-types/dynamic) type.
-* Fields that are likely to get added, removed or retyped, and aren't queried often, should be grouped into a [dynamic](/azure/data-explorer/kusto/query/scalar-data-types/dynamic) column.
+* JSON properties in a [dynamic](/azure/data-explorer/kusto/query/scalar-data-types/dynamic) column that are frequently searched for or aggregated should be promoted to a regular column in the table with a more specific type such as string, long or double.
 * Use the [dynamic](/azure/data-explorer/kusto/query/scalar-data-types/dynamic) type for sparse columns that aren't commonly used for filter and aggregation.
 
 * All time columns should be typed as [datetime](/azure/data-explorer/kusto/query/scalar-data-types/datetime), and not [long](/azure/data-explorer/kusto/query/scalar-data-types/long) or other data types.
