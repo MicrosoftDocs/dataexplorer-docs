@@ -603,10 +603,10 @@ items:
         href: binary-or-function.md
       - name: binary_shift_left()
         displayName: binary_shift_left() binary shift left
-        href: binary-shift-leftfunction.md
+        href: binary-shift-left-function.md
       - name: binary_shift_right()
         displayName: binary_shift_right() binary shift right
-        href: binary-shift-rightfunction.md
+        href: binary-shift-right-function.md
       - name: binary_xor()
         displayName: binary_xor() binary xor
         href: binary-xorfunction.md
