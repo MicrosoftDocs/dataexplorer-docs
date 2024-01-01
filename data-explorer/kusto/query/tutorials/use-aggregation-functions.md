@@ -285,7 +285,7 @@ StormEvents
 
 ## Bucket data by condition
 
-The [case()](../casefunction.md) function groups data into buckets based on specified conditions. The function returns the corresponding result expression for the first satisfied predicate, or the final else expression if none of the predicates are satisfied.
+The [case()](../case-function.md) function groups data into buckets based on specified conditions. The function returns the corresponding result expression for the first satisfied predicate, or the final else expression if none of the predicates are satisfied.
 
 This example groups states based on the number of storm-related injuries their citizens sustained.
 

@@ -614,7 +614,7 @@ items:
         displayName: bitset_count_ones() bitset count ones
         href: bitset-count-ones-function.md
       - name: case()
-        href: casefunction.md
+        href: case-function.md
       - name: ceiling()
         href: ceilingfunction.md
         displayName: ceiling() ceiling function

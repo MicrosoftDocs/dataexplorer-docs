@@ -339,6 +339,11 @@
         "source_path": "data-explorer/kusto/query/buildschema-aggfunction.md",
         "redirect_url": "/azure/data-explorer/kusto/query/buildschema-aggregation-function",
         "redirect_document_id": true
+      },
+      {
+        "source_path": "data-explorer/kusto/query/casefunction.md",
+        "redirect_url": "/azure/data-explorer/kusto/query/case-function",
+        "redirect_document_id": true
       }
     ]
 }
