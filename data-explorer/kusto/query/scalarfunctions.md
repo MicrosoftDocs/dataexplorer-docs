@@ -126,7 +126,7 @@ This article lists all available scalar functions grouped by type. For aggregati
 |Function Name     |Description                                          |
 |-------------------------|--------------------------------------------------------|
 |[abs()](abs-function.md)|Calculates the absolute value of the input.|
-|[acos()](acosfunction.md)|Returns the angle whose cosine is the specified number (the inverse operation of cos()).|
+|[acos()](acos-function.md)|Returns the angle whose cosine is the specified number (the inverse operation of cos()).|
 |[asin()](asinfunction.md)|Returns the angle whose sine is the specified number (the inverse operation of sin()).|
 |[atan()](atanfunction.md)|Returns the angle whose tangent is the specified number (the inverse operation of tan()).|
 |[atan2()](atan2function.md)|Calculates the angle, in radians, between the positive x-axis and the ray from the origin to the point (y, x).|

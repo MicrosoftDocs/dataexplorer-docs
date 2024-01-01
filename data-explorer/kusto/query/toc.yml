@@ -477,7 +477,7 @@ items:
       - name: abs()
         href: abs-function.md
       - name: acos()
-        href: acosfunction.md
+        href: acos-function.md
       - name: ago()
         href: agofunction.md
       - name: around()

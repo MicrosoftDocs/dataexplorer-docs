@@ -104,6 +104,11 @@
         "source_path": "data-explorer/kusto/query/schema-entities/externaltables.md",
         "redirect_url": "/azure/data-explorer/kusto/query/schema-entities/external-tables",
         "redirect_document_id": true
+      },
+      {
+        "source_path": "data-explorer/kusto/query/acosfunction.md",
+        "redirect_url": "/azure/data-explorer/kusto/query/acos-function",
+        "redirect_document_id": true
       }
     ]
 }
