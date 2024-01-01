@@ -489,7 +489,7 @@ items:
         href: array-iff-function.md
       - name: array_index_of()
         displayName: array index of
-        href: arrayindexoffunction.md
+        href: array-index-of-function.md
       - name: array_length()
         displayName: arraylength() array length
         href: arraylengthfunction.md

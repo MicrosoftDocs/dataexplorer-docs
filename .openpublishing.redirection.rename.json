@@ -149,6 +149,11 @@
         "source_path": "data-explorer/kusto/query/arrayifffunction.md",
         "redirect_url": "/azure/data-explorer/kusto/query/array-iff-function",
         "redirect_document_id": true
+      },
+      {
+        "source_path": "data-explorer/kusto/query/arrayindexoffunction.md",
+        "redirect_url": "/azure/data-explorer/kusto/query/array-index-of-function",
+        "redirect_document_id": true
       }
     ]
 }
