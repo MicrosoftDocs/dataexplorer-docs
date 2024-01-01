@@ -486,7 +486,7 @@ items:
         href: array-concat-function.md
       - name: array_iff()
         displayName: array_iif() array iif
-        href: arrayifffunction.md
+        href: array-iff-function.md
       - name: array_index_of()
         displayName: array index of
         href: arrayindexoffunction.md

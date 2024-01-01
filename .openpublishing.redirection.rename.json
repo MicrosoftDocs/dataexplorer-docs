@@ -144,6 +144,11 @@
         "source_path": "data-explorer/kusto/query/arrayconcatfunction.md",
         "redirect_url": "/azure/data-explorer/kusto/query/array-concat-function",
         "redirect_document_id": true
+      },
+      {
+        "source_path": "data-explorer/kusto/query/arrayifffunction.md",
+        "redirect_url": "/azure/data-explorer/kusto/query/array-iff-function",
+        "redirect_document_id": true
       }
     ]
 }
