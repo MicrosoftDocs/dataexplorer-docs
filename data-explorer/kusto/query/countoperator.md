@@ -37,4 +37,4 @@ StormEvents | count
 
 ## Related content
 
-For information about the count() aggregation function, see [count() (aggregation function)](count-aggfunction.md).
+For information about the count() aggregation function, see [count() (aggregation function)](count-aggregation-function.md).

@@ -379,6 +379,26 @@
         "source_path": "data-explorer/kusto/query/cotfunction.md",
         "redirect_url": "/azure/data-explorer/kusto/query/cot-function",
         "redirect_document_id": true
+      },
+      {
+        "source_path": "data-explorer/kusto/query/count-aggfunction.md",
+        "redirect_url": "/azure/data-explorer/kusto/query/count-aggregation-function",
+        "redirect_document_id": true
+      },
+      {
+        "source_path": "data-explorer/kusto/query/count-distinct-aggfunction.md",
+        "redirect_url": "/azure/data-explorer/kusto/query/count-distinct-aggregation-function",
+        "redirect_document_id": true
+      },
+      {
+        "source_path": "data-explorer/kusto/query/count-distinctif-aggfunction.md",
+        "redirect_url": "/azure/data-explorer/kusto/query/count-distinctif-aggregation-function",
+        "redirect_document_id": true
+      },
+      {
+        "source_path": "data-explorer/kusto/query/countif-aggfunction.md",
+        "redirect_url": "/azure/data-explorer/kusto/query/countif-aggregation-function",
+        "redirect_document_id": true
       }
     ]
 }

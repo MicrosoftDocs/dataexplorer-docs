@@ -35,7 +35,7 @@ This tutorial builds on the foundation from the first tutorial, [Learn common op
 
 The [summarize](../summarizeoperator.md) operator is essential to performing aggregations over your data. The `summarize` operator groups together rows based on the `by` clause and then uses the provided aggregation function to combine each group in a single row.
 
-Find the number of events by state using `summarize` with the [count](../count-aggfunction.md) aggregation function.
+Find the number of events by state using `summarize` with the [count](../count-aggregation-function.md) aggregation function.
 
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAwsuyS/KdS1LzSsp5qpRKC7NzU0syqxKVQjJL0nMCQZJFivYKiTnl+aVaGgqJFUqBJcklqQCABs8Zoc2AAAA" target="_blank">Run the query</a>
@@ -75,7 +75,7 @@ StormEvents
 
 ## Conditionally count rows
 
-When analyzing your data, use [countif()](../countif-aggfunction.md) to count rows based on a specific condition to understand how many rows meet the given criteria.
+When analyzing your data, use [countif()](../countif-aggregation-function.md) to count rows based on a specific condition to understand how many rows meet the given criteria.
 
 The following query uses `countif()` to count of storms that caused damage. The query then uses the `top` operator to filter the results and display the states with the highest amount of crop damage caused by storms.
 
@@ -194,7 +194,7 @@ Calculating percentages can help you understand the distribution and proportion 
 
 ### Calculate percentage based on two columns
 
-Use [count()](../count-aggfunction.md) and [countif](../countif-aggfunction.md) to find the percentage of storm events that caused crop damage in each state. First, count the total number of storms in each state. Then, count the number of storms that caused crop damage in each state.
+Use [count()](../count-aggregation-function.md) and [countif](../countif-aggregation-function.md) to find the percentage of storm events that caused crop damage in each state. First, count the total number of storms in each state. Then, count the number of storms that caused crop damage in each state.
 
 Then, use [extend](../extendoperator.md) to calculate the percentage between the two columns by dividing the number of storms with property damage by the total number of storms and multiplying by 100.
 

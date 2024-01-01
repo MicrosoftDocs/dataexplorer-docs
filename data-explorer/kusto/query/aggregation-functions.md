@@ -42,8 +42,8 @@ An aggregation function performs a calculation on a set of values, and returns a
 |--|--|
 | [avg()](avg-aggfunction.md) | Returns an average value across the group. |
 | [avgif()](avgif-aggfunction.md) | Returns an average value across the group (with predicate). |
-| [count()](count-aggfunction.md), [countif()](countif-aggfunction.md) | Returns a count of the group without/with a predicate. |
-| [count_distinct()](count-distinct-aggfunction.md), [count_distinctif()](count-distinctif-aggfunction.md) | Returns a count of unique elements in the group without/with a predicate. |
+| [count()](count-aggregation-function.md), [countif()](countif-aggregation-function.md) | Returns a count of the group without/with a predicate. |
+| [count_distinct()](count-distinct-aggregation-function.md), [count_distinctif()](count-distinctif-aggregation-function.md) | Returns a count of unique elements in the group without/with a predicate. |
 | [dcount()](dcount-aggfunction.md), [dcountif()](dcountif-aggfunction.md) | Returns an approximate distinct count of the group elements without/with a predicate. |
 | [hll()](hll-aggfunction.md) | Returns the HyperLogLog (HLL) results of the group elements, an intermediate value of the `dcount` approximation. |
 | [hll_if()](hll-if-aggregation-function.md) | Returns the HyperLogLog (HLL) results of the group elements, an intermediate value of the `dcount` approximation (with predicate). |

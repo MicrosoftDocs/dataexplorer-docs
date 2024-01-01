@@ -86,4 +86,4 @@ T
 
 ## Related content
 
-[count()](count-aggfunction.md) function, which counts rows without predicate expression.
+[count()](count-aggregation-function.md) function, which counts rows without predicate expression.

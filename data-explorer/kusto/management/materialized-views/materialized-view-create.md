@@ -210,8 +210,8 @@ The following rules limit the query used in the materialized view Query paramete
 
 The following aggregation functions are supported:
 
-* [`count`](../../query/count-aggfunction.md)
-* [`countif`](../../query/countif-aggfunction.md)
+* [`count`](../../query/count-aggregation-function.md)
+* [`countif`](../../query/countif-aggregation-function.md)
 * [`dcount`](../../query/dcount-aggfunction.md)
 * [`dcountif`](../../query/dcountif-aggfunction.md)
 * [`min`](../../query/min-aggfunction.md)
