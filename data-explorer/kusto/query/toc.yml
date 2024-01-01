@@ -513,7 +513,7 @@ items:
         href: array-slice-function.md
       - name: array_sort_asc()
         displayName: array sort asc
-        href: arraysortascfunction.md
+        href: array-sort-asc-function.md
       - name: array_sort_desc()
         displayName: array sort desc
         href: arraysortdescfunction.md
