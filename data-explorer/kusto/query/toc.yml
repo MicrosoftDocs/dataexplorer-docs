@@ -1574,7 +1574,7 @@ items:
         items:
           - name: autocluster plugin
             displayName: clustering, diagnostics, RCA, root cause
-            href: autoclusterplugin.md
+            href: autocluster-plugin.md.md
           - name: basket plugin
             displayName: clustering, diagnostics, RCA, root cause
             href: basketplugin.md

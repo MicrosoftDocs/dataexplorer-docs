@@ -46,7 +46,7 @@ The following parameters are supported:
 
 The following plugins are supported:
 
-* [autocluster plugin](autoclusterplugin.md)
+* [autocluster plugin](autocluster-plugin.md.md)
 * [azure-digital-twins-query-request plugin](azure-digital-twins-query-request-plugin.md)
 * [bag-unpack plugin](bag-unpackplugin.md)
 * [basket plugin](basketplugin.md)
