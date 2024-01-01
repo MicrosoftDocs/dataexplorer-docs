@@ -109,6 +109,11 @@
         "source_path": "data-explorer/kusto/query/acosfunction.md",
         "redirect_url": "/azure/data-explorer/kusto/query/acos-function",
         "redirect_document_id": true
+      },
+      {
+        "source_path": "data-explorer/kusto/query/agofunction.md",
+        "redirect_url": "/azure/data-explorer/kusto/query/ago-function",
+        "redirect_document_id": true
       }
     ]
 }

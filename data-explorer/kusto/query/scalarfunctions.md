@@ -35,7 +35,7 @@ This article lists all available scalar functions grouped by type. For aggregati
 
 |Function Name     |Description                                          |
 |-------------------------|--------------------------------------------------------|
-|[ago()](agofunction.md)|Subtracts the given timespan from the current UTC clock time.|
+|[ago()](ago-function.md)|Subtracts the given timespan from the current UTC clock time.|
 |[datetime_add()](datetime-addfunction.md)|Calculates a new datetime from a specified datepart multiplied by a specified amount, added to a specified datetime.|
 |[datetime_diff()](datetime-difffunction.md)|Returns the end of the year containing the date, shifted by an offset, if provided.|
 |[datetime_local_to_utc()](datetime-local-to-utc-function.md) |  Converts local datetime to UTC datetime using [a time-zone specification](../query/timezone.md).

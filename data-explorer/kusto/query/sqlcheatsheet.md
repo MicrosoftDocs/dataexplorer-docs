@@ -34,7 +34,7 @@ The following table shows sample queries in SQL and their KQL equivalents.
 | -- | `SELECT name, resultCode FROM dependencies` | `dependencies | project name, resultCode` | [project](projectoperator.md) |
 | -- | `SELECT TOP 100 * FROM dependencies` | `dependencies | take 100` | [take](takeoperator.md) |
 | Null evaluation | `SELECT * FROM dependencies`<br>`WHERE resultCode IS NOT NULL` | `dependencies`<br>`| where isnotnull(resultCode)` | [isnotnull()](isnotnullfunction.md) |
-| Comparison operators (date) | `SELECT * FROM dependencies`<br>`WHERE timestamp > getdate()-1` | `dependencies`<br>`| where timestamp > ago(1d)` | [ago()](agofunction.md) |
+| Comparison operators (date) | `SELECT * FROM dependencies`<br>`WHERE timestamp > getdate()-1` | `dependencies`<br>`| where timestamp > ago(1d)` | [ago()](ago-function.md) |
 | -- | `SELECT * FROM dependencies`<br>`WHERE timestamp BETWEEN ... AND ...` | `dependencies`<br>`| where timestamp between (datetime(2016-10-01) .. datetime(2016-11-01))` | [between](betweenoperator.md) |
 | Comparison operators (string) | `SELECT * FROM dependencies`<br>`WHERE type = "Azure blob"` | `dependencies`<br>`| where type == "Azure blob"` | [Logical operators](logicaloperators.md) |
 | -- | `-- substring`<br>`SELECT * FROM dependencies`<br>`WHERE type like "%blob%"` | `// substring`<br>`dependencies`<br>`| where type has "blob"` | [has](has-operator.md) |

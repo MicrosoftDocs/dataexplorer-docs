@@ -479,7 +479,7 @@ items:
       - name: acos()
         href: acos-function.md
       - name: ago()
-        href: agofunction.md
+        href: ago-function.md
       - name: around()
         href: around-function.md
       - name: array_concat()
