@@ -320,7 +320,7 @@ items:
   - name: Special functions
     items:
       - name: cluster()
-        href: clusterfunction.md
+        href: cluster-function.md
       - name: database()
         href: databasefunction.md
       - name: external_table()
