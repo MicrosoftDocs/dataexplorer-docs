@@ -344,6 +344,11 @@
         "source_path": "data-explorer/kusto/query/casefunction.md",
         "redirect_url": "/azure/data-explorer/kusto/query/case-function",
         "redirect_document_id": true
+      },
+      {
+        "source_path": "data-explorer/kusto/query/ceilingfunction.md",
+        "redirect_url": "/azure/data-explorer/kusto/query/ceiling-function",
+        "redirect_document_id": true
       }
     ]
 }

@@ -616,7 +616,7 @@ items:
       - name: case()
         href: case-function.md
       - name: ceiling()
-        href: ceilingfunction.md
+        href: ceiling-function.md
         displayName: ceiling() ceiling function
       - name: coalesce()
         href: coalescefunction.md
