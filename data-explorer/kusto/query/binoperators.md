@@ -9,9 +9,9 @@ ms.date: 04/11/2023
 
 Kusto support several bitwise (binary) operators between integers:
 
-* [binary_and](binary-andfunction.md)
-* [binary_not](binary-notfunction.md)
-* [binary_or](binary-orfunction.md)
+* [binary_and](binary-and-function.md)
+* [binary_not](binary-not-function.md)
+* [binary_or](binary-or-function.md)
 * [binary_shift_left](binary-shift-leftfunction.md)
 * [binary_shift_right](binary-shift-rightfunction.md)
 * [binary_xor](binary-xorfunction.md)

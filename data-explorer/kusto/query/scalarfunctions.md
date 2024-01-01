@@ -13,9 +13,9 @@ This article lists all available scalar functions grouped by type. For aggregati
 
 |Function Name     |Description                                          |
 |-------------------------|--------------------------------------------------------|
-|[binary_and()](binary-andfunction.md)|Returns a result of the bitwise and operation between two values.|
-|[binary_not()](binary-notfunction.md)|Returns a bitwise negation of the input value.|
-|[binary_or()](binary-orfunction.md)|Returns a result of the bitwise or operation of the two values.|
+|[binary_and()](binary-and-function.md)|Returns a result of the bitwise and operation between two values.|
+|[binary_not()](binary-not-function.md)|Returns a bitwise negation of the input value.|
+|[binary_or()](binary-or-function.md)|Returns a result of the bitwise or operation of the two values.|
 |[binary_shift_left()](binary-shift-leftfunction.md)|Returns binary shift left operation on a pair of numbers: a << n.|
 |[binary_shift_right()](binary-shift-rightfunction.md)|Returns binary shift right operation on a pair of numbers: a >> n.|
 |[binary_xor()](binary-xorfunction.md)|Returns a result of the bitwise xor operation of the two values.|

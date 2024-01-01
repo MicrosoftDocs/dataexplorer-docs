@@ -594,13 +594,13 @@ items:
         href: bin-auto-function.md
       - name: binary_and()
         displayName: binary_and() binary and
-        href: binary-andfunction.md
+        href: binary-and-function.md
       - name: binary_not()
         displayName: binary_not() binary not
-        href: binary-notfunction.md
+        href: binary-not-function.md
       - name: binary_or()
         displayName: binary_or() binary or
-        href: binary-orfunction.md
+        href: binary-or-function.md
       - name: binary_shift_left()
         displayName: binary_shift_left() binary shift left
         href: binary-shift-leftfunction.md

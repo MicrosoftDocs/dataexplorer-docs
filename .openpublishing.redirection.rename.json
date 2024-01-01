@@ -279,6 +279,21 @@
         "source_path": "data-explorer/kusto/query/binary-all-xor-aggfunction.md",
         "redirect_url": "/azure/data-explorer/kusto/query/binary-all-xor-aggregation-function",
         "redirect_document_id": true
+      },
+      {
+        "source_path": "data-explorer/kusto/query/binary-andfunction.md",
+        "redirect_url": "/azure/data-explorer/kusto/query/binary-and-function",
+        "redirect_document_id": true
+      },
+      {
+        "source_path": "data-explorer/kusto/query/binary-notfunction.md",
+        "redirect_url": "/azure/data-explorer/kusto/query/binary-not-function",
+        "redirect_document_id": true
+      },
+      {
+        "source_path": "data-explorer/kusto/query/binary-orfunction.md",
+        "redirect_url": "/azure/data-explorer/kusto/query/binary-or-function",
+        "redirect_document_id": true
       }
     ]
 }
