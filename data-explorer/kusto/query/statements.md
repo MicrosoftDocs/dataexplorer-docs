@@ -48,7 +48,7 @@ Following is a list of user query statements:
 
 Following is a list of application query statements:
 
-* An [alias statement](./aliasstatement.md) defines an alias to another database
+* An [alias statement](./alias-statement.md) defines an alias to another database
   (in the same cluster or on a remote cluster).
 
 * A [pattern statement](./patternstatement.md), which can be used by applications that are

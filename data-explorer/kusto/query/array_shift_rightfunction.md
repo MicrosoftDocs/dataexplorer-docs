@@ -80,5 +80,5 @@ print arr=dynamic([1,2,3,4,5])
 ## Related content
 
 * To shift an array to the left, use [array_shift_left()](array_shift_leftfunction.md).
-* To rotate an array to the right, use [array_rotate_right()](array_rotate_rightfunction.md).
-* To rotate an array to the left, use [array_rotate_left()](array_rotate_leftfunction.md).
+* To rotate an array to the right, use [array_rotate_right()](array-rotate-right-function.md).
+* To rotate an array to the left, use [array_rotate_left()](array-rotate-left-function.md).

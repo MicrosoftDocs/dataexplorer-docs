@@ -111,7 +111,7 @@ items:
       - name: Query statement types
         href: statements.md
       - name: Alias statement
-        href: aliasstatement.md
+        href: alias-statement.md
       - name: Let statement
         href: letstatement.md
       - name: Pattern statement
@@ -498,10 +498,10 @@ items:
         href: array-reverse-function.md
       - name: array_rotate_left()
         displayName: array rotate left
-        href: array_rotate_leftfunction.md
+        href: array-rotate-left-function.md
       - name: array_rotate_right()
         displayName: array rotate right
-        href: array_rotate_rightfunction.md
+        href: array-rotate-right-function.md
       - name: array_shift_left()
         displayName: array shift left
         href: array_shift_leftfunction.md

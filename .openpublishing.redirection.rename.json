@@ -114,6 +114,21 @@
         "source_path": "data-explorer/kusto/query/agofunction.md",
         "redirect_url": "/azure/data-explorer/kusto/query/ago-function",
         "redirect_document_id": true
+      },
+      {
+        "source_path": "data-explorer/kusto/query/aliasstatement.md",
+        "redirect_url": "/azure/data-explorer/kusto/query/alias-statement",
+        "redirect_document_id": true
+      },
+      {
+        "source_path": "data-explorer/kusto/query/array_rotate_leftfunction.md",
+        "redirect_url": "/azure/data-explorer/kusto/query/array-rotate-left-function",
+        "redirect_document_id": true
+      },
+      {
+        "source_path": "data-explorer/kusto/query/array_rotate_rightfunction.md",
+        "redirect_url": "/azure/data-explorer/kusto/query/array-rotate-right-function",
+        "redirect_document_id": true
       }
     ]
 }
