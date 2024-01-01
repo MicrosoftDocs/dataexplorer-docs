@@ -29,7 +29,7 @@ For more information, see [management commands for managing the Row Level Securi
 >
 > * [current_principal()](../query/current-principalfunction.md)
 > * [current_principal_details()](../query/current-principal-details-function.md)
-> * [current_principal_is_member_of()](../query/current-principal-ismemberoffunction.md)
+> * [current_principal_is_member_of()](../query/current-principal-is-member-of-function.md)
 
 ## Limitations
 

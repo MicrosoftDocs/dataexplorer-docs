@@ -171,7 +171,7 @@ This article lists all available scalar functions grouped by type. For aggregati
 |[current_database()](current-database-function.md)|Returns the name of the database in scope.|
 |[current_principal()](current-principalfunction.md)|Returns the current principal running this query.|
 |[current_principal_details()](current-principal-details-function.md)|Returns details of the principal running the query.|
-|[current_principal_is_member_of()](current-principal-ismemberoffunction.md)|Checks group membership or principal identity of the current principal running the query.|
+|[current_principal_is_member_of()](current-principal-is-member-of-function.md)|Checks group membership or principal identity of the current principal running the query.|
 |[cursor_after()](cursorafterfunction.md)|Used to access to the records that were ingested after the previous value of the cursor.|
 |[estimate_data_size()](estimate-data-sizefunction.md)|Returns an estimated data size of the selected columns of the tabular expression.|
 |[extent_id()](extentidfunction.md)|Returns a unique identifier that identifies the data shard ("extent") that the current record resides in.|

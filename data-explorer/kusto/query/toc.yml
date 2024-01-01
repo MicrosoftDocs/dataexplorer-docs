@@ -668,7 +668,7 @@ items:
         href: current-principal-details-function.md
       - name: current_principal_is_member_of()
         displayName: current_principal_is_member_of() current principal is member of
-        href: current-principal-ismemberoffunction.md
+        href: current-principal-is-member-of-function.md
       - name: cursor_after()
         displayName: cursor_after() cursor after
         href: cursorafterfunction.md
