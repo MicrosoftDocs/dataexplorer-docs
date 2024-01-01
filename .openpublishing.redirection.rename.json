@@ -364,6 +364,11 @@
         "source_path": "data-explorer/kusto/query/columnifexists.md",
         "redirect_url": "/azure/data-explorer/kusto/query/column-ifexists-function",
         "redirect_document_id": true
+      },
+      {
+        "source_path": "data-explorer/kusto/query/consumeoperator.md",
+        "redirect_url": "/azure/data-explorer/kusto/query/consume-operator",
+        "redirect_document_id": true
       }
     ]
 }
