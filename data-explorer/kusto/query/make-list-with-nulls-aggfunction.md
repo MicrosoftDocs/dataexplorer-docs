@@ -30,7 +30,7 @@ If the input to the `summarize` operator isn't sorted, the order of elements in 
 If the input to the `summarize` operator is sorted, the order of elements in the resulting array tracks that of the input.
 
 > [!TIP]
-> Use the [`array_sort_asc()`](./array-sort-asc-function.md) or [`array_sort_desc()`](./arraysortdescfunction.md) function to create an ordered list by some key.
+> Use the [`array_sort_asc()`](./array-sort-asc-function.md) or [`array_sort_desc()`](./array-sort-desc-function.md) function to create an ordered list by some key.
 
 ## Example
 

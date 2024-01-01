@@ -516,7 +516,7 @@ items:
         href: array-sort-asc-function.md
       - name: array_sort_desc()
         displayName: array sort desc
-        href: arraysortdescfunction.md
+        href: array-sort-desc-function.md
       - name: array_split()
         displayName: array split
         href: arraysplitfunction.md

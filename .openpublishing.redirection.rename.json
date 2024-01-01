@@ -169,6 +169,11 @@
         "source_path": "data-explorer/kusto/query/arraysortascfunction.md",
         "redirect_url": "/azure/data-explorer/kusto/query/array-sort-asc-function",
         "redirect_document_id": true
+      },
+      {
+        "source_path": "data-explorer/kusto/query/arraysortdescfunction.md",
+        "redirect_url": "/azure/data-explorer/kusto/query/array-sort-desc-function",
+        "redirect_document_id": true
       }
     ]
 }
