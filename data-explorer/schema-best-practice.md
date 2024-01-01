@@ -33,6 +33,7 @@ For general information on data types, see [scalar data types](/azure/data-explo
 * Only move data to a dimension table if the values there often updated and you want to always use the latest value. If not, embed the values as a column in the fact table to avoid joins.
 
 * Optimize for narrow tables, which are preferred over wide tables with hundreds of columns.
+* If there are many (more than 20 columns) that are sparse, meaning that many values are nulls, and these columns are rarely used for searches or aggregation, then group them as a json property bag in a dynamic column.
 
 ## Related content
 
