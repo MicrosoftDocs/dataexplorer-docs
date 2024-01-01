@@ -87,7 +87,7 @@ This article lists all available scalar functions grouped by type. For aggregati
 |[array_split()](array-split-function.md)|Builds an array of arrays split from the input array.|
 |[array_sum()](array-sum-function.md)|Calculates the sum of a dynamic array.|
 |[`bag_has_key()`](bag-has-key-function.md)|Checks whether a dynamic bag column contains a given key.|
-|[bag_keys()](bagkeysfunction.md)|Enumerates all the root keys in a dynamic property-bag object.|
+|[bag_keys()](bag-keys-function.md)|Enumerates all the root keys in a dynamic property-bag object.|
 |[bag_merge()](bag-merge-function.md)|Merges dynamic property-bags into a dynamic property-bag with all properties merged.|
 |[bag_pack()](packfunction.md)|Creates a dynamic object (property bag) from a list of names and values.|
 |[bag_pack_columns()](bag-pack-columns-function.md)|Creates a dynamic object (property bag) from a list of columns.|

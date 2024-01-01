@@ -537,7 +537,7 @@ items:
         href: bag-has-key-function.md
       - name: bag_keys()
         displayName: bag keys
-        href: bagkeysfunction.md
+        href: bag-keys-function.md
       - name: bag_merge()
         displayName: bag merge
         href: bag-merge-function.md

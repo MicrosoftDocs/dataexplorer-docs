@@ -204,6 +204,11 @@
         "source_path": "data-explorer/kusto/query/autoclusterplugin.md",
         "redirect_url": "/azure/data-explorer/kusto/query/autocluster-plugin",
         "redirect_document_id": true
+      },
+      {
+        "source_path": "data-explorer/kusto/query/bagkeysfunction.md",
+        "redirect_url": "/azure/data-explorer/kusto/query/bag-keys-function",
+        "redirect_document_id": true
       }
     ]
 }

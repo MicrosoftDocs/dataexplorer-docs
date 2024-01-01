@@ -188,7 +188,7 @@ For a complete list of scalar dynamic/array functions, see [dynamic/array functi
 | *value* `!in` *array*| True if there's no element of *array* that == *value*
 |[`array_length(`array`)`](../array-length-function.md)| Null if it isn't an array
 |[`bag_has_key(`bag`,`key`)`](../bag-has-key-function.md)| Checks whether a dynamic bag column contains a given key.
-|[`bag_keys(`bag`)`](../bagkeysfunction.md)| Enumerates all the root keys in a dynamic property-bag object.
+|[`bag_keys(`bag`)`](../bag-keys-function.md)| Enumerates all the root keys in a dynamic property-bag object.
 |[`bag_merge(`bag1,...,bagN`)`](../bag-merge-function.md)| Merges dynamic property-bags into a dynamic property-bag with all properties merged.
 |[`bag_set_key(`bag,key,value`)`](../bag-set-key-function.md)| Sets a given key to a given value in a dynamic property-bag.
 |[`extract_json`(path,object), `extract_json(`path,object`)`](../extractjsonfunction.md)|Use path to navigate into object.
