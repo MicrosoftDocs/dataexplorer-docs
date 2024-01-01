@@ -28,7 +28,7 @@ Finds the minimum value across the group.
 Returns the minimum value of *expr* across the group.
 
 > [!TIP]
-> This gives you the min on its own. If you want to see other columns in addition to the min, use [arg_min](arg-min-aggfunction.md).
+> This gives you the min on its own. If you want to see other columns in addition to the min, use [arg_min](arg-min-aggregation-function.md).
 
 ## Example
 

@@ -14,7 +14,7 @@ ms.date: 11/16/2023
 
 The following are common scenarios that can be addressed by using a materialized view:
 
-* **Update data:** Update data by returning the last record per entity using [`arg_max()` (aggregation function)](../../query/arg-max-aggfunction.md). For example, create a view that only materializes records ingested from now on:
+* **Update data:** Update data by returning the last record per entity using [`arg_max()` (aggregation function)](../../query/arg-max-aggregation-function.md). For example, create a view that only materializes records ingested from now on:
 
     ```kusto
     .create materialized-view ArgMax on table T
@@ -72,7 +72,7 @@ Consider the following input table named `Events`:
 | 2023-10-24 00:10:00.0000000 | U | 2 |  | 4 |  |
 | 2023-10-24 02:00:00.0000000 | D | 2 |  |  |  |
 
-Create a materialized view to get the latest update per column, using the [arg_max() aggregation function](../../query/arg-max-aggfunction.md):
+Create a materialized view to get the latest update per column, using the [arg_max() aggregation function](../../query/arg-max-aggregation-function.md):
 
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA6WTUWvDIBDH3/Mpjj4ZMKBnYUzY0/YR2qcxiq22CJqOxEA39uGnSZs2pCkZMwZOz9//7vDUKsRv6wyQlfWmDsp/Sq2CCXFFYddoWYfKlgcKVkt3TMbu6PjVxKspWjPP3jOI46JCkKEoOCtwCYxJxnIKi9cFBU4h/UghYaRsnMvpNMrP6LpDbxjAqCHEAxYfsGJm/NvUkf4lcyZ5H33IwHKmxKWAt7HEhJ19ZD9gTsGUGvqr3aS7gxew+z2xdTpI0k4k+6j8+YkVjMcZd3vwnFs7Bmo4UsN/qImRmpihFgutG+9VZb8NqOqw8epEhjV3XRupu27sOnnKLbruvudun0gO26/4PH4BCngxSkwDAAA=" target="_blank">Run the query</a>

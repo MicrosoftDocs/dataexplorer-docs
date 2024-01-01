@@ -1182,10 +1182,10 @@ items:
         href: aggregation-functions.md
       - name: arg_max()
         displayName: argmax()
-        href: arg-max-aggfunction.md
+        href: arg-max-aggregation-function.md
       - name: arg_min()
         displayName: argmin()
-        href: arg-min-aggfunction.md
+        href: arg-min-aggregation-function.md
       - name: avg()
         href: avg-aggfunction.md
       - name: avgif()

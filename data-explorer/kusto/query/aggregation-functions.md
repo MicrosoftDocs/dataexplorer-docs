@@ -32,8 +32,8 @@ An aggregation function performs a calculation on a set of values, and returns a
 
 | Function Name | Description |
 |--|--|
-| [arg_max()](arg-max-aggfunction.md) | Returns one or more expressions when the argument is maximized. |
-| [arg_min()](arg-min-aggfunction.md) | Returns one or more expressions when the argument is minimized. |
+| [arg_max()](arg-max-aggregation-function.md) | Returns one or more expressions when the argument is maximized. |
+| [arg_min()](arg-min-aggregation-function.md) | Returns one or more expressions when the argument is minimized. |
 | [take_any()](take-any-aggfunction.md), [take_anyif()](take-anyif-aggfunction.md) | Returns a random non-empty value for the group without/with a predicate. |
 
 ## Statistical functions

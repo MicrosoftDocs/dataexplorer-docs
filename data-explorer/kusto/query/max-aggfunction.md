@@ -28,7 +28,7 @@ Finds the maximum value the expression in the group.
 Returns the maximum value of *expr* across the group.
 
 > [!TIP]
-> This gives you the max on its own. If you want to see other columns in addition to the max, use [arg_max](arg-max-aggfunction.md).
+> This gives you the max on its own. If you want to see other columns in addition to the max, use [arg_max](arg-max-aggregation-function.md).
 
 ## Example
 
