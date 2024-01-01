@@ -579,7 +579,7 @@ items:
         href: beta-cdf-function.md
       - name: beta_inv()
         displayName: beta_inv() beta inv
-        href: beta-invfunction.md
+        href: beta-inv-function.md
       - name: beta_pdf()
         displayName: beta_pdf() beta pdf
         href: beta-pdffunction.md

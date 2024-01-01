@@ -244,6 +244,11 @@
         "source_path": "data-explorer/kusto/query/beta-cdffunction.md",
         "redirect_url": "/azure/data-explorer/kusto/query/beta-cdf-function",
         "redirect_document_id": true
+      },
+      {
+        "source_path": "data-explorer/kusto/query/beta-invfunction.md",
+        "redirect_url": "/azure/data-explorer/kusto/query/beta-inv-function",
+        "redirect_document_id": true
       }
     ]
 }
