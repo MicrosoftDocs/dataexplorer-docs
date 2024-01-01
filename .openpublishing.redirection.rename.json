@@ -194,6 +194,11 @@
         "source_path": "data-explorer/kusto/query/atan2function.md",
         "redirect_url": "/azure/data-explorer/kusto/query/atan2-function",
         "redirect_document_id": true
+      },
+      {
+        "source_path": "data-explorer/kusto/query/atanfunction.md",
+        "redirect_url": "/azure/data-explorer/kusto/query/atan-function",
+        "redirect_document_id": true
       }
     ]
 }

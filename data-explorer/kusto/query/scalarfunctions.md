@@ -128,7 +128,7 @@ This article lists all available scalar functions grouped by type. For aggregati
 |[abs()](abs-function.md)|Calculates the absolute value of the input.|
 |[acos()](acos-function.md)|Returns the angle whose cosine is the specified number (the inverse operation of cos()).|
 |[asin()](asin-function.md)|Returns the angle whose sine is the specified number (the inverse operation of sin()).|
-|[atan()](atanfunction.md)|Returns the angle whose tangent is the specified number (the inverse operation of tan()).|
+|[atan()](atan-function.md)|Returns the angle whose tangent is the specified number (the inverse operation of tan()).|
 |[atan2()](atan2-function.md)|Calculates the angle, in radians, between the positive x-axis and the ray from the origin to the point (y, x).|
 |[beta_cdf()](beta-cdffunction.md)|Returns the standard cumulative beta distribution function.|
 |[beta_inv()](beta-invfunction.md)|Returns the inverse of the beta cumulative probability beta density function.|
@@ -204,7 +204,7 @@ This article lists all available scalar functions grouped by type. For aggregati
 |[series_acos()](series-acosfunction.md)|Calculates the element-wise arccosine function of the numeric series input.|
 |[series_add()](series-addfunction.md)|Calculates the element-wise addition of two numeric series inputs.|
 |[series_asin()](series-asinfunction.md)|Calculates the element-wise arcsine function of the numeric series input.|
-|[series_atan()](series-atanfunction.md)|Calculates the element-wise arctangent function of the numeric series input.|
+|[series_atan()](series-atan-function.md)|Calculates the element-wise arctangent function of the numeric series input.|
 |[series_ceiling()](series-ceiling-function.md)|Calculates the element-wise ceiling function of the numeric series input.|
 |[series_cos()](series-cosfunction.md)|Calculates the element-wise cosine function of the numeric series input.|
 |[series_divide()](series-dividefunction.md)|Calculates the element-wise division of two numeric series inputs.|
