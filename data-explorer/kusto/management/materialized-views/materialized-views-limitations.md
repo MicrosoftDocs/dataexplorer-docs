@@ -19,7 +19,7 @@ ms.date: 10/15/2022
 * The source table of a materialized view must have [IngestionTime policy](../ingestion-time-policy.md) enabled (it is enabled by default).
 * The source table of a materialized view can't be a table with [restricted view access policy](../restricted-view-access-policy.md).
 * A materialized view can't be created on top of another materialized view, unless the first materialized view is of type `take_any(*)` aggregation. See [materialized view over materialized view](materialized-view-overview.md#materialized-view-over-materialized-view).
-* Materialized views cannot be defined over [external tables](../../query/schema-entities/externaltables.md).
+* Materialized views cannot be defined over [external tables](../../query/schema-entities/external-tables.md).
 
 > [!WARNING]
 >

@@ -7,7 +7,7 @@ ms.date: 03/02/2023
 ---
 # external_table()
 
-References an [external table](schema-entities/externaltables.md) by name.
+References an [external table](schema-entities/external-tables.md) by name.
 
 > [!NOTE]
 >
@@ -33,6 +33,6 @@ The authentication method to access an external table is based on the connection
 
 ## Related content
 
-* [External tables overview](schema-entities/externaltables.md)
+* [External tables overview](schema-entities/external-tables.md)
 * [Create and alter Azure Storage external tables](../management/external-tables-azurestorage-azuredatalake.md)
 * [Create and alter SQL Server external tables](../management/external-sql-tables.md).

@@ -32,72 +32,77 @@
       },
       {
         "source_path": "data-explorer/kusto/management/ingestiontimepolicy.md",
-        "redirect_url": "/azure/data-explorer/kusto/management/ingestion-time-policy.md",
+        "redirect_url": "/azure/data-explorer/kusto/management/ingestion-time-policy",
         "redirect_document_id": true
       },
       {
         "source_path": "data-explorer/kusto/management/mergepolicy.md",
-        "redirect_url": "/azure/data-explorer/kusto/management/merge-policy.md",
+        "redirect_url": "/azure/data-explorer/kusto/management/merge-policy",
         "redirect_document_id": true
       },
       {
         "source_path": "data-explorer/kusto/management/partitioningpolicy.md",
-        "redirect_url": "/azure/data-explorer/kusto/management/partitioning-policy.md",
+        "redirect_url": "/azure/data-explorer/kusto/management/partitioning-policy",
         "redirect_document_id": true
       },
       {
         "source_path": "data-explorer/kusto/management/restrictedviewaccesspolicy.md",
-        "redirect_url": "/azure/data-explorer/kusto/management/restricted-view-access-policy.md",
+        "redirect_url": "/azure/data-explorer/kusto/management/restricted-view-access-policy",
         "redirect_document_id": true
       },
       {
         "source_path": "data-explorer/kusto/management/retentionpolicy.md",
-        "redirect_url": "/azure/data-explorer/kusto/management/retention-policy.md",
+        "redirect_url": "/azure/data-explorer/kusto/management/retention-policy",
         "redirect_document_id": true
       },
       {
         "source_path": "data-explorer/kusto/management/rowlevelsecuritypolicy.md",
-        "redirect_url": "/azure/data-explorer/kusto/management/row-level-security-policy.md",
+        "redirect_url": "/azure/data-explorer/kusto/management/row-level-security-policy",
         "redirect_document_id": true
       },
       {
         "source_path": "data-explorer/kusto/management/roworderpolicy.md",
-        "redirect_url": "/azure/data-explorer/kusto/management/row-order-policy.md",
+        "redirect_url": "/azure/data-explorer/kusto/management/row-order-policy",
         "redirect_document_id": true
       },
       {
         "source_path": "data-explorer/kusto/management/sandboxpolicy.md",
-        "redirect_url": "/azure/data-explorer/kusto/management/sandbox-policy.md",
+        "redirect_url": "/azure/data-explorer/kusto/management/sandbox-policy",
         "redirect_document_id": true
       },
       {
         "source_path": "data-explorer/kusto/management/shardingpolicy.md",
-        "redirect_url": "/azure/data-explorer/kusto/management/sharding-policy.md",
+        "redirect_url": "/azure/data-explorer/kusto/management/sharding-policy",
         "redirect_document_id": true
       },
       {
         "source_path": "data-explorer/kusto/management/streamingingestionpolicy.md",
-        "redirect_url": "/azure/data-explorer/kusto/management/streaming-ingestion-policy.md",
+        "redirect_url": "/azure/data-explorer/kusto/management/streaming-ingestion-policy",
         "redirect_document_id": true
       },
       {
         "source_path": "data-explorer/kusto/management/streamingingestionfailures.md",
-        "redirect_url": "/azure/data-explorer/kusto/management/streaming-ingestion-failures.md",
+        "redirect_url": "/azure/data-explorer/kusto/management/streaming-ingestion-failures",
         "redirect_document_id": true
       },
       {
         "source_path": "data-explorer/kusto/management/streamingingestionstatistics.md",
-        "redirect_url": "/azure/data-explorer/kusto/management/streaming-ingestion-statistics.md",
+        "redirect_url": "/azure/data-explorer/kusto/management/streaming-ingestion-statistics",
         "redirect_document_id": true
       },
       {
         "source_path": "data-explorer/kusto/management/systeminfo.md",
-        "redirect_url": "/azure/data-explorer/kusto/management/system-info.md",
+        "redirect_url": "/azure/data-explorer/kusto/management/system-info",
         "redirect_document_id": true
       },
       {
         "source_path": "data-explorer/kusto/management/updatepolicy.md",
-        "redirect_url": "/azure/data-explorer/kusto/management/update-policy.md",
+        "redirect_url": "/azure/data-explorer/kusto/management/update-policy",
+        "redirect_document_id": true
+      },
+      {
+        "source_path": "data-explorer/kusto/query/schema-entities/externaltables.md",
+        "redirect_url": "/azure/data-explorer/kusto/query/schema-entities/external-tables",
         "redirect_document_id": true
       }
     ]

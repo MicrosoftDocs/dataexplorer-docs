@@ -7,7 +7,7 @@ ms.date: 06/19/2023
 ---
 # Use a managed identity to run a continuous export job
 
-A [continuous export job](continuous-data-export.md) exports data to an [external table](../../query/schema-entities/externaltables.md) with a periodically run query.
+A [continuous export job](continuous-data-export.md) exports data to an [external table](../../query/schema-entities/external-tables.md) with a periodically run query.
 
 The continuous export job should be configured with a [managed identity](../../../managed-identities-overview.md) in the following scenarios:
 

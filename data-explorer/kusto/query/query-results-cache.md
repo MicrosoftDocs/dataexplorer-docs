@@ -45,7 +45,7 @@ The query results won't be cached if any of the following conditions is true:
   * [current_principal](current-principalfunction.md)
   * [current_principal_details](current-principal-detailsfunction.md)
   * [current_principal_is_member_of](current-principal-ismemberoffunction.md)
-* The query accesses an [external table](schema-entities/externaltables.md) or an [external data](externaldata-operator.md).
+* The query accesses an [external table](schema-entities/external-tables.md) or an [external data](externaldata-operator.md).
 * The query uses the [evaluate plugin](evaluateoperator.md) operator.
 
 ## No valid cache entry

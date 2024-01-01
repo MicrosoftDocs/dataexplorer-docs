@@ -32,7 +32,7 @@ Users with table admin permissions or higher are allowed to [drop tables](kusto/
 
 #### Accidental external table deletion
 
-[External tables](kusto/query/schema-entities/externaltables.md) are Kusto query schema entities that reference data stored outside the database.
+[External tables](kusto/query/schema-entities/external-tables.md) are Kusto query schema entities that reference data stored outside the database.
 Deletion of an external table only deletes the table metadata. You can recover it by re-executing the table creation command. Use the [soft delete](/azure/storage/blobs/storage-blob-soft-delete) capability to protect against accidental deletion or overwrite of a file/blob for a user-configured amount of time.
 
 ### High availability of Azure Data Explorer
