@@ -558,19 +558,19 @@ items:
         href: bag-zip.md
       - name: base64_decode_toarray()
         displayName: base64_decode_toarray()
-        href: base64_decode_toarrayfunction.md
+        href: base64-decode-to-array-function.md
       - name: base64_decode_tostring()
         displayName: base64_decodestring() vase64 decode string
-        href: base64_decode_tostringfunction.md
+        href: base64-decode-tostring-function.md
       - name: base64_decode_toguid()
         displayName: base64_decode_toguid() base64 decode to guid
         href: base64-decode-toguid-function.md
       - name: base64_encode_fromarray()
         displayName: base64 encode from array
-        href: base64_encode_fromarrayfunction.md
+        href: base64-encode-fromarray-function.md
       - name: base64_encode_tostring()
         displayName: base64_encodestring() base 64 encode string
-        href: base64_encode_tostringfunction.md
+        href: base64-encode-tostring-function.md
       - name: base64_encode_fromguid()
         displayName: base64_encode_fromguid() base64 encode from guid
         href: base64-encode-fromguid-function.md

@@ -59,6 +59,6 @@ print empty_string = base64_encode_fromarray(empty_bytes_array)
 
 ## Related content
 
-* For decoding base64 strings to a UTF-8 string, see [base64_decode_tostring()](base64_decode_tostringfunction.md)
-* For encoding strings to a base64 string see [base64_encode_tostring()](base64_encode_tostringfunction.md)
-* This function is the inverse of [base64_decode_toarray()](base64_decode_toarrayfunction.md)
+* For decoding base64 strings to a UTF-8 string, see [base64_decode_tostring()](base64-decode-tostring-function.md)
+* For encoding strings to a base64 string see [base64_encode_tostring()](base64-encode-tostring-function.md)
+* This function is the inverse of [base64_decode_toarray()](base64-decode-toarray-function.md)

@@ -214,6 +214,26 @@
         "source_path": "data-explorer/kusto/query/arg-max-aggfunction.md",
         "redirect_url": "/azure/data-explorer/kusto/query/arg-max-aggregation-function",
         "redirect_document_id": true
+      },
+      {
+        "source_path": "data-explorer/kusto/query/base64_decode_toarrayfunction.md",
+        "redirect_url": "/azure/data-explorer/kusto/query/base64-decode-toarray-function",
+        "redirect_document_id": true
+      },
+      {
+        "source_path": "data-explorer/kusto/query/base64_decode_tostringfunction.md",
+        "redirect_url": "/azure/data-explorer/kusto/query/base64-decode-tostring-function",
+        "redirect_document_id": true
+      },
+      {
+        "source_path": "data-explorer/kusto/query/base64_encode_fromarrayfunction.md",
+        "redirect_url": "/azure/data-explorer/kusto/query/base64-encode-fromarray-function",
+        "redirect_document_id": true
+      },
+      {
+        "source_path": "data-explorer/kusto/query/base64_encode_tostringfunction.md",
+        "redirect_url": "/azure/data-explorer/kusto/query/base64-encode-tostring-function",
+        "redirect_document_id": true
       }
     ]
 }

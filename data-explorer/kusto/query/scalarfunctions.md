@@ -260,10 +260,10 @@ This article lists all available scalar functions grouped by type. For aggregati
 
 |Function Name     |Description                                          |
 |-------------------------|--------------------------------------------------------|
-|[base64_encode_tostring()](base64_encode_tostringfunction.md)|Encodes a string as base64 string.|
+|[base64_encode_tostring()](base64-encode-tostring-function.md)|Encodes a string as base64 string.|
 |[base64_encode_fromguid()](base64-encode-fromguid-function.md)|Encodes a GUID as base64 string.|
-|[base64_decode_tostring()](base64_decode_tostringfunction.md)|Decodes a base64 string to a UTF-8 string.|
-|[base64_decode_toarray()](base64_decode_toarrayfunction.md)|Decodes a base64 string to an array of long values.|
+|[base64_decode_tostring()](base64-decode-tostring-function.md)|Decodes a base64 string to a UTF-8 string.|
+|[base64_decode_toarray()](base64-decode-toarray-function.md)|Decodes a base64 string to an array of long values.|
 |[base64_decode_toguid()](base64-decode-toguid-function.md)|Decodes a base64 string to a GUID.|
 |[countof()](countoffunction.md)|Counts occurrences of a substring in a string. Plain string matches may overlap; regex matches don't.|
 |[extract()](extractfunction.md)|Get a match for a regular expression from a text string.|
