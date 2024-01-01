@@ -19,7 +19,7 @@ Columns are named entities that have a [scalar data type](../scalar-data-types/i
 
 In queries, columns are generally referenced by name only. They can only appear in expressions, and the query operator under which the expression appears determines the table or tabular data stream. The column's name doesn't need to be scoped further.
 
-For example, in the following query we have an unnamed tabular data stream that is defined through the [datatable operator](../datatableoperator.md) and has a single column, `c`. The tabular data stream is filtered by a predicate on the value of that column, and produces a new unnamed tabular data stream with the same columns but fewer rows. The [as operator](../asoperator.md) then names the tabular data stream, and its value is returned as the results of the query. Notice how column `c` is referenced by name without referencing its container:
+For example, in the following query we have an unnamed tabular data stream that is defined through the [datatable operator](../datatableoperator.md) and has a single column, `c`. The tabular data stream is filtered by a predicate on the value of that column, and produces a new unnamed tabular data stream with the same columns but fewer rows. The [as operator](../as-operator.md) then names the tabular data stream, and its value is returned as the results of the query. Notice how column `c` is referenced by name without referencing its container:
 
 ```kusto
 datatable (c:int) [int(-1), 0, 1, 2, 3]

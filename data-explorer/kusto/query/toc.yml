@@ -132,7 +132,7 @@ items:
       - name: Query operators
         href: queries.md
       - name: as operator
-        href: asoperator.md
+        href: as-operator.md
       - name: consume operator
         href: consumeoperator.md
       - name: count operator
