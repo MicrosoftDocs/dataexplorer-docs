@@ -558,7 +558,7 @@ items:
         href: bag-zip.md
       - name: base64_decode_toarray()
         displayName: base64_decode_toarray()
-        href: base64-decode-to-array-function.md
+        href: base64-decode-toarray-function.md
       - name: base64_decode_tostring()
         displayName: base64_decodestring() vase64 decode string
         href: base64-decode-tostring-function.md

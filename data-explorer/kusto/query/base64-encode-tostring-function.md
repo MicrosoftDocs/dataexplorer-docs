@@ -45,4 +45,4 @@ print Quine=base64_encode_tostring("Kusto")
 ## Related content
 
 * To decode base64 strings to UTF-8 strings, see [base64_decode_tostring()](base64-decode-tostring-function.md).
-* To decode base64 strings to an array of long values, see [base64_decode_toarray()](base64-decode-to-array-function.md).
+* To decode base64 strings to an array of long values, see [base64_decode_toarray()](base64-decode-toarray-function.md).
