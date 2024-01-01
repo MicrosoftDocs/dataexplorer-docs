@@ -249,6 +249,11 @@
         "source_path": "data-explorer/kusto/query/beta-invfunction.md",
         "redirect_url": "/azure/data-explorer/kusto/query/beta-inv-function",
         "redirect_document_id": true
+      },
+      {
+        "source_path": "data-explorer/kusto/query/beta-pdffunction.md",
+        "redirect_url": "/azure/data-explorer/kusto/query/beta-pdf-function",
+        "redirect_document_id": true
       }
     ]
 }

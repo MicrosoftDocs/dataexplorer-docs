@@ -132,7 +132,7 @@ This article lists all available scalar functions grouped by type. For aggregati
 |[atan2()](atan2-function.md)|Calculates the angle, in radians, between the positive x-axis and the ray from the origin to the point (y, x).|
 |[beta_cdf()](beta-cdf-function.md)|Returns the standard cumulative beta distribution function.|
 |[beta_inv()](beta-inv-function.md)|Returns the inverse of the beta cumulative probability beta density function.|
-|[beta_pdf()](beta-pdffunction.md)|Returns the probability density beta function.|
+|[beta_pdf()](beta-pdf-function.md)|Returns the probability density beta function.|
 |[cos()](cosfunction.md)|Returns the cosine function.|
 |[cot()](cotfunction.md)|Calculates the trigonometric cotangent of the specified angle, in radians.|
 |[degrees()](degreesfunction.md)|Converts angle value in radians into value in degrees, using formula degrees = (180 / PI) * angle-in-radians.|

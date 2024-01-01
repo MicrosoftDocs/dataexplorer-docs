@@ -582,7 +582,7 @@ items:
         href: beta-inv-function.md
       - name: beta_pdf()
         displayName: beta_pdf() beta pdf
-        href: beta-pdffunction.md
+        href: beta-pdf-function.md
       - name: bin()
         displayName: floor()
         href: binfunction.md

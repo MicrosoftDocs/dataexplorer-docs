@@ -66,4 +66,4 @@ datatable(x:double, alpha:double, beta:double, comment:string)
 ## Related content
 
 * For computing the inverse of the beta cumulative probability density function, see [beta-inv()](./beta-inv-function.md).
-* For computing probability density function, see [beta-pdf()](./beta-pdffunction.md).
+* For computing probability density function, see [beta-pdf()](./beta-pdf-function.md).
