@@ -309,6 +309,21 @@
         "source_path": "data-explorer/kusto/query/binary-xorfunction.md",
         "redirect_url": "/azure/data-explorer/kusto/query/binary-xor-function",
         "redirect_document_id": true
+      },
+      {
+        "source_path": "data-explorer/kusto/query/bin-at-function.md",
+        "redirect_url": "/azure/data-explorer/kusto/query/bin-at-function",
+        "redirect_document_id": true
+      },
+      {
+        "source_path": "data-explorer/kusto/query/binfunction.md",
+        "redirect_url": "/azure/data-explorer/kusto/query/bin-function",
+        "redirect_document_id": true
+      },
+      {
+        "source_path": "data-explorer/kusto/query/binoperators.md",
+        "redirect_url": "/azure/data-explorer/kusto/query/bin-operators",
+        "redirect_document_id": true
       }
     ]
 }

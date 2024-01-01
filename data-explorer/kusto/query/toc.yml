@@ -348,7 +348,7 @@ items:
             displayName: not between operator
             href: notbetweenoperator.md
       - name: Bitwise binary operators
-        href: binoperators.md
+        href: bin-operators.md
       - name: Datetime/timespan arithmetic
         href: datetime-timespan-arithmetic.md
       - name: in operators
@@ -585,10 +585,10 @@ items:
         href: beta-pdf-function.md
       - name: bin()
         displayName: floor()
-        href: binfunction.md
+        href: bin-function.md
       - name: bin_at()
         displayName: bin_at() bin at
-        href: binatfunction.md
+        href: bin-at-function.md
       - name: bin_auto()
         displayName: bin_auto() bin auto
         href: bin-auto-function.md

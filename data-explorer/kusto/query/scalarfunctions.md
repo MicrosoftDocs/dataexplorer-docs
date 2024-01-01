@@ -182,8 +182,8 @@ This article lists all available scalar functions grouped by type. For aggregati
 
 |Function Name     |Description                                          |
 |-------------------------|--------------------------------------------------------|
-|[bin()](binfunction.md)|Rounds values down to an integer multiple of a given bin size.|
-|[bin_at()](binatfunction.md)|Rounds values down to a fixed-size "bin", with control over the bin's starting point. (See also bin function.)|
+|[bin()](bin-function.md)|Rounds values down to an integer multiple of a given bin size.|
+|[bin_at()](bin-at-function.md)|Rounds values down to a fixed-size "bin", with control over the bin's starting point. (See also bin function.)|
 |[ceiling()](ceilingfunction.md)|Calculates the smallest integer greater than, or equal to, the specified numeric expression.|
 
 ## Conditional functions

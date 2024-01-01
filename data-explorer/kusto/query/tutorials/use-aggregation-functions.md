@@ -100,7 +100,7 @@ StormEvents
 
 ## Group data into bins
 
-To aggregate by numeric or time values, you'll first want to group the data into bins using the [bin()](../binfunction.md) function. Using `bin()` can help you understand how values are distributed within a certain range and make comparisons between different periods.
+To aggregate by numeric or time values, you'll first want to group the data into bins using the [bin()](../bin-function.md) function. Using `bin()` can help you understand how values are distributed within a certain range and make comparisons between different periods.
 
 The following query counts the number of storms that caused crop damage for each week in 2007. The `7d` argument represents a week, as the function requires a valid [timespan](../scalar-data-types/timespan.md) value.
 

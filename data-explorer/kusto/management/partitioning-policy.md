@@ -99,7 +99,7 @@ It uses the `XxHash64` hash function, with `MaxPartitionCount` set to the recomm
 
 In these cases, you can reshuffle the data between extents so that each extent includes records from a limited time range. This process results in filters on the `datetime` column being more effective at query time.
 
-The partition function used is [bin_at()](../query/binatfunction.md) and isn't customizable.
+The partition function used is [bin_at()](../query/bin-at-function.md) and isn't customizable.
 
 #### Partition properties
 
