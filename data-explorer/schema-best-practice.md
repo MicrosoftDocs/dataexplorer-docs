@@ -11,7 +11,7 @@ A table schema defines the names and data types of all the columns in the table.
 
 ## Indexing
 
-Fields that are never queried on can disable indexing. Use the [encoding policy](/azure/data-explorer/kusto/management/encoding-policy) with profile 'BigObject' to disable indexing on string or dynamic typed columns.
+Fields that are never searched on can disable indexing. Use the [encoding policy](/azure/data-explorer/kusto/management/encoding-policy) with profile 'BigObject' to disable indexing on string or dynamic typed columns.
 
 ## Data types
 
