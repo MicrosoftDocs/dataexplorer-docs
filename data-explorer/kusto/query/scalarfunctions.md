@@ -133,7 +133,7 @@ This article lists all available scalar functions grouped by type. For aggregati
 |[beta_cdf()](beta-cdf-function.md)|Returns the standard cumulative beta distribution function.|
 |[beta_inv()](beta-inv-function.md)|Returns the inverse of the beta cumulative probability beta density function.|
 |[beta_pdf()](beta-pdf-function.md)|Returns the probability density beta function.|
-|[cos()](cosfunction.md)|Returns the cosine function.|
+|[cos()](cos-function.md)|Returns the cosine function.|
 |[cot()](cotfunction.md)|Calculates the trigonometric cotangent of the specified angle, in radians.|
 |[degrees()](degreesfunction.md)|Converts angle value in radians into value in degrees, using formula degrees = (180 / PI) * angle-in-radians.|
 |[erf()](erf-function.md)|Returns the error function.|
@@ -201,12 +201,12 @@ This article lists all available scalar functions grouped by type. For aggregati
 |Function Name     |Description                                          |
 |-------------------------|--------------------------------------------------------|
 |[series_abs()](series-absfunction.md)|Calculates the element-wise absolute value of the numeric series input.|
-|[series_acos()](series-acosfunction.md)|Calculates the element-wise arccosine function of the numeric series input.|
+|[series_acos()](series-acos-function.md)|Calculates the element-wise arccosine function of the numeric series input.|
 |[series_add()](series-addfunction.md)|Calculates the element-wise addition of two numeric series inputs.|
 |[series_asin()](series-asinfunction.md)|Calculates the element-wise arcsine function of the numeric series input.|
 |[series_atan()](series-atan-function.md)|Calculates the element-wise arctangent function of the numeric series input.|
 |[series_ceiling()](series-ceiling-function.md)|Calculates the element-wise ceiling function of the numeric series input.|
-|[series_cos()](series-cosfunction.md)|Calculates the element-wise cosine function of the numeric series input.|
+|[series_cos()](series-cos-function.md)|Calculates the element-wise cosine function of the numeric series input.|
 |[series_divide()](series-dividefunction.md)|Calculates the element-wise division of two numeric series inputs.|
 |[series_equals()](series-equalsfunction.md)|Calculates the element-wise equals (`==`) logic operation of two numeric series inputs.|
 |[series_exp()](series-expfunction.md)|Calculates the element-wise base-e exponential function (e^x) of the numeric series input.|

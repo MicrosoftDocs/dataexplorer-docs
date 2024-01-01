@@ -7,7 +7,7 @@ ms.date: 04/11/2023
 ---
 # acos()
 
-Calculates the angle whose cosine is the specified number. Inverse operation of [`cos()`](cosfunction.md).
+Calculates the angle whose cosine is the specified number. Inverse operation of [`cos()`](cos-function.md).
 
 ## Syntax
 

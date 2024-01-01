@@ -106,7 +106,7 @@
         "redirect_document_id": true
       },
       {
-        "source_path": "data-explorer/kusto/query/acosfunction.md",
+        "source_path": "data-explorer/kusto/query/acos-function.md",
         "redirect_url": "/azure/data-explorer/kusto/query/acos-function",
         "redirect_document_id": true
       },
@@ -368,6 +368,11 @@
       {
         "source_path": "data-explorer/kusto/query/consumeoperator.md",
         "redirect_url": "/azure/data-explorer/kusto/query/consume-operator",
+        "redirect_document_id": true
+      },
+      {
+        "source_path": "data-explorer/kusto/query/cosfunction.md",
+        "redirect_url": "/azure/data-explorer/kusto/query/cos-function",
         "redirect_document_id": true
       }
     ]

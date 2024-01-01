@@ -648,7 +648,7 @@ items:
         displayName: convert_volume() convert volume
         href: convert-volume-function.md
       - name: cos()
-        href: cosfunction.md
+        href: cos-function.md
       - name: cot()
         href: cotfunction.md
       - name: countof()
@@ -1398,7 +1398,7 @@ items:
         href: series-absfunction.md
       - name: series_acos()
         displayName: element-wise, elementwise
-        href: series-acosfunction.md
+        href: series-acos-function.md
       - name: series_add()
         displayName: element-wise, elementwise
         href: series-addfunction.md
@@ -1413,7 +1413,7 @@ items:
         href: series-ceiling-function.md
       - name: series_cos()
         displayName: element-wise, elementwise
-        href: series-cosfunction.md
+        href: series-cos-function.md
       - name: series_cosine_similarity()
         displayName: element-wise, elementwise, embedding, vector, cosine, similarity
         href: series-cosine-similarity-function.md
