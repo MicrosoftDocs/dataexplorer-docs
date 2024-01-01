@@ -27,17 +27,17 @@ noted below.
 
 Kusto provides three functions to help implement the two above scenarios:
 
-* [cursor_current()](../query/cursorcurrent.md):
+* [cursor_current()](../query/cursor-current.md):
    Use this function to retrieve the current value of the database cursor.
    You can use this value as an argument to the two other functions.
 
-* [cursor_after(rhs:string)](../query/cursorafterfunction.md):
+* [cursor_after(rhs:string)](../query/cursor-after-function.md):
    This special function can be used on table records that have the
    [IngestionTime policy](./show-table-ingestion-time-policy-command.md) enabled. It returns
    a scalar value of type `bool` indicating whether the record's `ingestion_time()`
    database cursor value comes after the `rhs` database cursor value.
 
-* [cursor_before_or_at(rhs:string)](../query/cursorbeforeoratfunction.md):
+* [cursor_before_or_at(rhs:string)](../query/cursor-before-or-at-function.md):
    This special function can be used on the table records that have the
    [IngestionTime policy](./show-table-ingestion-time-policy-command.md) enabled. It returns
    a scalar value of type `bool` indicating whether the record's `ingestion_time()`

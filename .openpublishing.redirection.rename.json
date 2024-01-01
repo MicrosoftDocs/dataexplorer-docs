@@ -424,6 +424,16 @@
         "source_path": "data-explorer/kusto/query/current-principalfunction.md",
         "redirect_url": "/azure/data-explorer/kusto/query/current-principal-function",
         "redirect_document_id": true
+      },
+      {
+        "source_path": "data-explorer/kusto/query/cursorbeforeoratfunction.md",
+        "redirect_url": "/azure/data-explorer/kusto/query/cursor-before-or-at-function",
+        "redirect_document_id": true
+      },
+      {
+        "source_path": "data-explorer/kusto/query/cursorcurrent.md",
+        "redirect_url": "/azure/data-explorer/kusto/query/cursor-current",
+        "redirect_document_id": true
       }
     ]
 }

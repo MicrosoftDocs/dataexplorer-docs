@@ -671,13 +671,13 @@ items:
         href: current-principal-is-member-of-function.md
       - name: cursor_after()
         displayName: cursor_after() cursor after
-        href: cursorafterfunction.md
+        href: cursor-after-function.md
       - name: cursor_before_or_at()
         displayName: cursor_before_or_at() cursor before or at
-        href: cursorbeforeoratfunction.md
+        href: cursor-before-or-at-function.md
       - name: cursor_current()
         displayName: current_cursor() cursor current
-        href: cursorcurrent.md
+        href: cursor-current.md
       - name: datetime_add()
         displayName: datetime_add() datetime add
         href: datetime-addfunction.md
