@@ -531,7 +531,7 @@ items:
       - name: atan()
         href: atanfunction.md
       - name: atan2()
-        href: atan2function.md
+        href: atan2-function.md
       - name: bag_has_key()
         displayName: bag has key
         href: bag-has-key-function.md

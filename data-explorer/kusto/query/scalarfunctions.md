@@ -129,7 +129,7 @@ This article lists all available scalar functions grouped by type. For aggregati
 |[acos()](acos-function.md)|Returns the angle whose cosine is the specified number (the inverse operation of cos()).|
 |[asin()](asin-function.md)|Returns the angle whose sine is the specified number (the inverse operation of sin()).|
 |[atan()](atanfunction.md)|Returns the angle whose tangent is the specified number (the inverse operation of tan()).|
-|[atan2()](atan2function.md)|Calculates the angle, in radians, between the positive x-axis and the ray from the origin to the point (y, x).|
+|[atan2()](atan2-function.md)|Calculates the angle, in radians, between the positive x-axis and the ray from the origin to the point (y, x).|
 |[beta_cdf()](beta-cdffunction.md)|Returns the standard cumulative beta distribution function.|
 |[beta_inv()](beta-invfunction.md)|Returns the inverse of the beta cumulative probability beta density function.|
 |[beta_pdf()](beta-pdffunction.md)|Returns the probability density beta function.|

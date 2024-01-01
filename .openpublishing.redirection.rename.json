@@ -189,6 +189,11 @@
         "source_path": "data-explorer/kusto/query/asoperator.md",
         "redirect_url": "/azure/data-explorer/kusto/query/as-operator",
         "redirect_document_id": true
+      },
+      {
+        "source_path": "data-explorer/kusto/query/atan2function.md",
+        "redirect_url": "/azure/data-explorer/kusto/query/atan2-function",
+        "redirect_document_id": true
       }
     ]
 }
