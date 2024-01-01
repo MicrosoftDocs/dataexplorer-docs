@@ -79,8 +79,8 @@ This article lists all available scalar functions grouped by type. For aggregati
 |[array_reverse()](array-reverse-function.md)|Reverses the order of the elements in a dynamic array.|
 |[array_rotate_left()](array-rotate-left-function.md)|Rotates values inside a dynamic array to the left.|
 |[array_rotate_right()](array-rotate-right-function.md)|Rotates values inside a dynamic array to the right.|
-|[array_shift_left()](array_shift_leftfunction.md)|Shifts values inside a dynamic array to the left.|
-|[array_shift_right()](array_shift_rightfunction.md)|Shifts values inside a dynamic array to the right.|
+|[array_shift_left()](array-shift-left-function.md)|Shifts values inside a dynamic array to the left.|
+|[array_shift_right()](array-shift-right-function.md)|Shifts values inside a dynamic array to the right.|
 |[array_slice()](arrayslicefunction.md)|Extracts a slice of a dynamic array.|
 |[array_sort_asc()](arraysortascfunction.md)|Sorts a collection of arrays in ascending order.|
 |[array_sort_desc()](arraysortdescfunction.md)|Sorts a collection of arrays in descending order.|

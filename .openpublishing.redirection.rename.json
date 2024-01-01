@@ -129,6 +129,16 @@
         "source_path": "data-explorer/kusto/query/array_rotate_rightfunction.md",
         "redirect_url": "/azure/data-explorer/kusto/query/array-rotate-right-function",
         "redirect_document_id": true
+      },
+      {
+        "source_path": "data-explorer/kusto/query/array_shift_leftfunction.md",
+        "redirect_url": "/azure/data-explorer/kusto/query/array-shift-left-function",
+        "redirect_document_id": true
+      },
+      {
+        "source_path": "data-explorer/kusto/query/array_shift_rightfunction.md",
+        "redirect_url": "/azure/data-explorer/kusto/query/array-shift-right-function",
+        "redirect_document_id": true
       }
     ]
 }

@@ -504,10 +504,10 @@ items:
         href: array-rotate-right-function.md
       - name: array_shift_left()
         displayName: array shift left
-        href: array_shift_leftfunction.md
+        href: array-shift-left-function.md
       - name: array_shift_right()
         displayName: array shift right
-        href: array_shift_rightfunction.md
+        href: array-shift-right-function.md
       - name: array_slice()
         displayName: array slice
         href: arrayslicefunction.md
