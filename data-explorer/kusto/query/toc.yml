@@ -619,7 +619,7 @@ items:
         href: ceiling-function.md
         displayName: ceiling() ceiling function
       - name: coalesce()
-        href: coalescefunction.md
+        href: coalesce-function.md
       - name: column_ifexists()
         displayName: columnifexists() column if exists
         href: columnifexists.md
