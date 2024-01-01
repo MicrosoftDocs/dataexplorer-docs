@@ -21,13 +21,13 @@ For general information on data types, see [scalar data types](/azure/data-explo
 
 ## Tables
 
-* Denormalize dimension data by enrichment during ingestion so you don't need to use expensive joins during query time. If the dimension table used for enrichment is updated and the scenario requires the latest value, use [materialize views](/azure/data-explorer/kusto/management/materialized-views/materialized-view-overview) to keep only the latest value.
 * Optimize for narrow tables, which are preferred over wide tables with hundreds of columns.
+* To avoid expensive joins during query time, denormalize dimension data by enriching it during ingestion. If the dimension table used for enrichment is updated and the scenario requires the latest value, use [materialize views](/azure/data-explorer/kusto/management/materialized-views/materialized-view-overview) to keep only the latest value.
 * If there are more than 20 columns that are sparse, meaning that many values are nulls, and these columns are rarely used for searches or aggregation, then group the columns as a JSON property bag in a [dynamic](/azure/data-explorer/kusto/query/scalar-data-types/dynamic) column.
 
 ## Indexing
 
-Fields that are never searched on can disable indexing. Use the [encoding policy](/azure/data-explorer/kusto/management/encoding-policy) with profile 'BigObject' to disable indexing on string or dynamic typed columns.
+Fields that are never searched on can disable indexing. Use the [encoding policy](/azure/data-explorer/kusto/management/encoding-policy) with profile `BigObject` to disable indexing on string or dynamic typed columns.
 
 ## Related content
 
