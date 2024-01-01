@@ -359,6 +359,11 @@
         "source_path": "data-explorer/kusto/query/coalescefunction.md",
         "redirect_url": "/azure/data-explorer/kusto/query/coalesce-function",
         "redirect_document_id": true
+      },
+      {
+        "source_path": "data-explorer/kusto/query/columnifexists.md",
+        "redirect_url": "/azure/data-explorer/kusto/query/column-ifexists-function",
+        "redirect_document_id": true
       }
     ]
 }

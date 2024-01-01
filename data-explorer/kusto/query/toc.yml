@@ -622,7 +622,7 @@ items:
         href: coalesce-function.md
       - name: column_ifexists()
         displayName: columnifexists() column if exists
-        href: columnifexists.md
+        href: column-ifexists-function.md
       - name: convert_angle()
         displayName: convert_angle() convert angle
         href: convert-angle-function.md

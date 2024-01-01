@@ -166,7 +166,7 @@ This article lists all available scalar functions grouped by type. For aggregati
 
 |Function Name     |Description                                          |
 |-------------------------|--------------------------------------------------------|
-|[column_ifexists()](columnifexists.md)|Takes a column name as a string and a default value. Returns a reference to the column if it exists, otherwise - returns the default value.|
+|[column_ifexists()](column-ifexists-function.md)|Takes a column name as a string and a default value. Returns a reference to the column if it exists, otherwise - returns the default value.|
 |[current_cluster_endpoint()](current-cluster-endpoint-function.md)|Returns the current cluster running the query.|
 |[current_database()](current-database-function.md)|Returns the name of the database in scope.|
 |[current_principal()](current-principalfunction.md)|Returns the current principal running this query.|
