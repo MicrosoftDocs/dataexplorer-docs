@@ -159,6 +159,11 @@
         "source_path": "data-explorer/kusto/query/arraylengthfunction.md",
         "redirect_url": "/azure/data-explorer/kusto/query/array-length-function",
         "redirect_document_id": true
+      },
+      {
+        "source_path": "data-explorer/kusto/query/arrayslicefunction.md",
+        "redirect_url": "/azure/data-explorer/kusto/query/array-slice-function",
+        "redirect_document_id": true
       }
     ]
 }
