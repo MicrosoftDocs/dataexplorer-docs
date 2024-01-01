@@ -106,7 +106,7 @@
         "redirect_document_id": true
       },
       {
-        "source_path": "data-explorer/kusto/query/acos-function.md",
+        "source_path": "data-explorer/kusto/query/acosfunction.md",
         "redirect_url": "/azure/data-explorer/kusto/query/acos-function",
         "redirect_document_id": true
       },
@@ -311,7 +311,7 @@
         "redirect_document_id": true
       },
       {
-        "source_path": "data-explorer/kusto/query/bin-at-function.md",
+        "source_path": "data-explorer/kusto/query/binatfunction.md",
         "redirect_url": "/azure/data-explorer/kusto/query/bin-at-function",
         "redirect_document_id": true
       },
@@ -441,7 +441,7 @@
         "redirect_document_id": true
       },
       {
-        "source_path": "data-explorer/kusto/query/datatable-operator.md",
+        "source_path": "data-explorer/kusto/query/datatableoperator.md",
         "redirect_url": "/azure/data-explorer/kusto/query/datatable-operator",
         "redirect_document_id": true
       }
