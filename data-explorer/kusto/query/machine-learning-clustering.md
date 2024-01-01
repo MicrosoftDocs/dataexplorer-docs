@@ -19,7 +19,7 @@ The diagnosis process is complex and lengthy, and done by domain experts. The pr
 
 Since these diagnosis scenarios are common, machine learning plugins are available to make the diagnosis phase easier, and shorten the duration of the RCA.
 
-All three of the following Machine Learning plugins implement clustering algorithms: [`autocluster`](autocluster-plugin.md.md), [`basket`](basket-plugin.md), and [`diffpatterns`](diffpatternsplugin.md). The `autocluster` and `basket` plugins cluster a single record set, and the `diffpatterns` plugin clusters the differences between two record sets.
+All three of the following Machine Learning plugins implement clustering algorithms: [`autocluster`](autocluster-plugin.md), [`basket`](basket-plugin.md), and [`diffpatterns`](diffpatternsplugin.md). The `autocluster` and `basket` plugins cluster a single record set, and the `diffpatterns` plugin clusters the differences between two record sets.
 
 ## Clustering a single record set
 
@@ -117,7 +117,7 @@ demo_clustering1
 
 ### Use autocluster() for single record set clustering
 
-Even though there are less than a thousand exceptions, it's still hard to find common segments, since there are multiple values in each column. You can use the [`autocluster()`](autocluster-plugin.md.md) plugin to instantly extract a short list of common segments and find the interesting clusters within the spike's two minutes, as seen in the following query:
+Even though there are less than a thousand exceptions, it's still hard to find common segments, since there are multiple values in each column. You can use the [`autocluster()`](autocluster-plugin.md) plugin to instantly extract a short list of common segments and find the interesting clusters within the spike's two minutes, as seen in the following query:
 
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA4WOsQrCMBRF937FG5OhJYkoovQfBN1DbC8aTNqSvlgHP94IQkf3c+65AUzRD3aCe1hue8dgHyGM0rta7WuzIb09KCWPVfii7vUPNQXtEUfbhTwzkh9uunrTckcCnRI6P+NSvDO7ONEVvACDWD80zRqRRcTThVxa5DKPv00hP81KL1+4AAAA" target="_blank">Run the query</a>
