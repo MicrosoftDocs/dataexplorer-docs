@@ -374,6 +374,11 @@
         "source_path": "data-explorer/kusto/query/cosfunction.md",
         "redirect_url": "/azure/data-explorer/kusto/query/cos-function",
         "redirect_document_id": true
+      },
+      {
+        "source_path": "data-explorer/kusto/query/cotfunction.md",
+        "redirect_url": "/azure/data-explorer/kusto/query/cot-function",
+        "redirect_document_id": true
       }
     ]
 }

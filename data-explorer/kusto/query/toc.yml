@@ -650,7 +650,7 @@ items:
       - name: cos()
         href: cos-function.md
       - name: cot()
-        href: cotfunction.md
+        href: cot-function.md
       - name: countof()
         displayName: countof() count of
         href: countoffunction.md
