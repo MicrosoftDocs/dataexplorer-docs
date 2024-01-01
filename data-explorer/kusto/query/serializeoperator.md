@@ -62,7 +62,7 @@ The output row set of the following operators is marked as serialized.
 
 The output row set of the following operators is marked as nonserialized.
 
-* [count](./countoperator.md)
+* [count](./count-operator.md)
 * [distinct](./distinctoperator.md)
 * [evaluate](./evaluateoperator.md)
 * [facet](./facetoperator.md)

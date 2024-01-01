@@ -34,7 +34,7 @@ Runs multiple consumer operators in parallel.
 ### Supported query operators
 
 * [`as`](as-operator.md)
-* [`count`](countoperator.md)
+* [`count`](count-operator.md)
 * [`extend`](extendoperator.md)
 * [`parse`](parseoperator.md)
 * [`where`](whereoperator.md)

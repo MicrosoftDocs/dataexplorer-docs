@@ -12,7 +12,7 @@ You can query a SQL external table just as you would query an Azure Data Explore
 
 ## How it works
 
-SQL external table queries are translated from Kusto Query Language (KQL) to SQL. The operators after the [external_table](../query/externaltablefunction.md) function call, such as [where](../query/whereoperator.md), [project](../query/projectoperator.md), [count](../query/countoperator.md), and so on, are pushed down and translated into a single SQL query to be executed against the target SQL table.
+SQL external table queries are translated from Kusto Query Language (KQL) to SQL. The operators after the [external_table](../query/externaltablefunction.md) function call, such as [where](../query/whereoperator.md), [project](../query/projectoperator.md), [count](../query/count-operator.md), and so on, are pushed down and translated into a single SQL query to be executed against the target SQL table.
 
 ## Example
 

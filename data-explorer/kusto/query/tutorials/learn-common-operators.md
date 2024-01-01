@@ -41,7 +41,7 @@ The examples in this tutorial use the `StormEvents` table, which is publicly ava
 
 ## Count rows
 
-Begin by using the [count](../countoperator.md) operator to find the number of storm records in the `StormEvents` table.
+Begin by using the [count](../count-operator.md) operator to find the number of storm records in the `StormEvents` table.
 
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAwsuyS/KdS1LzSspVuCqUUjOL80rAQA76pZjFAAAAA==" target="_blank">Run the query</a>

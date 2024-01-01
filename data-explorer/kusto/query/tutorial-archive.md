@@ -27,7 +27,7 @@ Here's the output:
 |-----|
 |59066|
 
-For more information, see [count operator](./countoperator.md).
+For more information, see [count operator](./count-operator.md).
 
 ## Select a subset of columns: *project*
 

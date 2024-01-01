@@ -399,6 +399,16 @@
         "source_path": "data-explorer/kusto/query/countif-aggfunction.md",
         "redirect_url": "/azure/data-explorer/kusto/query/countif-aggregation-function",
         "redirect_document_id": true
+      },
+      {
+        "source_path": "data-explorer/kusto/query/countoffunction.md",
+        "redirect_url": "/azure/data-explorer/kusto/query/countof-function",
+        "redirect_document_id": true
+      },
+      {
+        "source_path": "data-explorer/kusto/query/countoperator.md",
+        "redirect_url": "/azure/data-explorer/kusto/query/count-operator",
+        "redirect_document_id": true
       }
     ]
 }

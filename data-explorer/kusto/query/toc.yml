@@ -136,7 +136,7 @@ items:
       - name: consume operator
         href: consume-operator.md
       - name: count operator
-        href: countoperator.md
+        href: count-operator.md
       - name: datatable operator
         href: datatableoperator.md
       - name: distinct operator
@@ -653,7 +653,7 @@ items:
         href: cot-function.md
       - name: countof()
         displayName: countof() count of
-        href: countoffunction.md
+        href: countof-function.md
       - name: current_cluster_endpoint()
         displayName: current_cluster_endpoint() current cluster endpoint
         href: current-cluster-endpoint-function.md

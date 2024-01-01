@@ -76,7 +76,7 @@ To use this strategy, specify `hint.strategy=shuffle`. For more information abou
 
 The following list of operators can be used in subqueries with the native or shuffle strategies:
 
-* [count](countoperator.md)
+* [count](count-operator.md)
 * [distinct](distinctoperator.md)
 * [extend](extendoperator.md)
 * [make-series](make-seriesoperator.md)
