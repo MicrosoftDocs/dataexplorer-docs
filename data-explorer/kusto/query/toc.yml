@@ -519,7 +519,7 @@ items:
         href: array-sort-desc-function.md
       - name: array_split()
         displayName: array split
-        href: arraysplitfunction.md
+        href: array-split-function.md
       - name: array_sum()
         displayName: array sum
         href: array-sum-function.md
