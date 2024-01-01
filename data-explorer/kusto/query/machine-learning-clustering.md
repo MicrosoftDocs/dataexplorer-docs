@@ -19,7 +19,7 @@ The diagnosis process is complex and lengthy, and done by domain experts. The pr
 
 Since these diagnosis scenarios are common, machine learning plugins are available to make the diagnosis phase easier, and shorten the duration of the RCA.
 
-All three of the following Machine Learning plugins implement clustering algorithms: [`autocluster`](autocluster-plugin.md.md), [`basket`](basketplugin.md), and [`diffpatterns`](diffpatternsplugin.md). The `autocluster` and `basket` plugins cluster a single record set, and the `diffpatterns` plugin clusters the differences between two record sets.
+All three of the following Machine Learning plugins implement clustering algorithms: [`autocluster`](autocluster-plugin.md.md), [`basket`](basket-plugin.md), and [`diffpatterns`](diffpatternsplugin.md). The `autocluster` and `basket` plugins cluster a single record set, and the `diffpatterns` plugin clusters the differences between two record sets.
 
 ## Clustering a single record set
 
@@ -144,7 +144,7 @@ Autocluster uses a proprietary algorithm for mining multiple dimensions and extr
 
 ### Use basket() for single record set clustering
 
-You can also use the [`basket()`](basketplugin.md) plugin as seen in the following query:
+You can also use the [`basket()`](basket-plugin.md) plugin as seen in the following query:
 
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA4WOsQ6CMBgGd57iH9sB0tZojMZ3MNG9KfBFG1og7Y84+PDWidH9LncBTNGPdoYbLF96x2AfIYzSh1oda7MjvT8pJc9V+KHu/Q81Be0RJ9uFJTOSHx+6+tD6RAJdEzqfcS/ejV2cqQWvwCi2h6bZIrKIeLmwlBa1Lg9gIb9KJv2TswAAAA==" target="_blank">Run the query</a>

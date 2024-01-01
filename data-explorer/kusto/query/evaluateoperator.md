@@ -49,7 +49,7 @@ The following plugins are supported:
 * [autocluster plugin](autocluster-plugin.md.md)
 * [azure-digital-twins-query-request plugin](azure-digital-twins-query-request-plugin.md)
 * [bag-unpack plugin](bag-unpackplugin.md)
-* [basket plugin](basketplugin.md)
+* [basket plugin](basket-plugin.md)
 * [cosmosdb-sql-request plugin](cosmosdb-plugin.md)
 * [dcount-intersect plugin](dcount-intersect-plugin.md)
 * [diffpatterns plugin](diffpatternsplugin.md)

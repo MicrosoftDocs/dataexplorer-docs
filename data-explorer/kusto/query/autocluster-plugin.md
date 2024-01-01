@@ -95,5 +95,5 @@ StormEvents
 
 ## Related content
 
-* [basket](./basketplugin.md)
+* [basket](./basket-plugin.md)
 * [reduce](./reduceoperator.md)

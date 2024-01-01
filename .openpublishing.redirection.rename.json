@@ -234,6 +234,11 @@
         "source_path": "data-explorer/kusto/query/base64_encode_tostringfunction.md",
         "redirect_url": "/azure/data-explorer/kusto/query/base64-encode-tostring-function",
         "redirect_document_id": true
+      },
+      {
+        "source_path": "data-explorer/kusto/query/basketplugin.md",
+        "redirect_url": "/azure/data-explorer/kusto/query/basket-plugin",
+        "redirect_document_id": true
       }
     ]
 }
