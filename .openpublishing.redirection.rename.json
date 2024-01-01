@@ -419,6 +419,11 @@
         "source_path": "data-explorer/kusto/query/current-principal-ismemberoffunction.md",
         "redirect_url": "/azure/data-explorer/kusto/query/current-principal-is-member-of-function",
         "redirect_document_id": true
+      },
+      {
+        "source_path": "data-explorer/kusto/query/current-principalfunction.md",
+        "redirect_url": "/azure/data-explorer/kusto/query/current-principal-function",
+        "redirect_document_id": true
       }
     ]
 }

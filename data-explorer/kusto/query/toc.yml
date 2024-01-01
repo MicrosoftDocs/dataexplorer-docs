@@ -662,7 +662,7 @@ items:
         href: current-database-function.md
       - name: current_principal()
         displayName: current_principal() current principal
-        href: current-principalfunction.md
+        href: current-principal-function.md
       - name: current_principal_details()
         displayName: current_principal_details() current principal details
         href: current-principal-details-function.md

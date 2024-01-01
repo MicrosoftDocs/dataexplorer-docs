@@ -27,7 +27,7 @@ For more information, see [management commands for managing the Row Level Securi
 > [!TIP]
 > These functions are often useful for row_level_security queries:
 >
-> * [current_principal()](../query/current-principalfunction.md)
+> * [current_principal()](../query/current-principal-function.md)
 > * [current_principal_details()](../query/current-principal-details-function.md)
 > * [current_principal_is_member_of()](../query/current-principal-is-member-of-function.md)
 
