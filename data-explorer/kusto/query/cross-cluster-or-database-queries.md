@@ -28,7 +28,7 @@ The following table explains how to identify the database in context by query en
 
 ## Perform cross-cluster or cross-database queries
 
-To access entities outside the database in context, use the [cluster()](../query/cluster-function.md) and [database()](../query/databasefunction.md) functions to qualify the entity name.
+To access entities outside the database in context, use the [cluster()](../query/cluster-function.md) and [database()](../query/database-function.md) functions to qualify the entity name.
 
 For a table in a different database within the same cluster:
 

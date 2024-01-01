@@ -91,7 +91,7 @@ For more examples, see [SymbolLoader](https://github.com/mattwar/Kusto.Toolkit/b
     var mycluster = new ClusterSymbol("mycluster.kusto.windows.net", mydb);
     ```
 
-1. Add the `ClusterSymbol` to the `GlobalState` as the default cluster with a default database, or add it as an extra cluster. Access any nondefault clusters or databases using the [cluster()](../../query/cluster-function.md) or [database()](../../query/databasefunction.md) functions.
+1. Add the `ClusterSymbol` to the `GlobalState` as the default cluster with a default database, or add it as an extra cluster. Access any nondefault clusters or databases using the [cluster()](../../query/cluster-function.md) or [database()](../../query/database-function.md) functions.
 
     ```csharp
     // Option 1: Add the cluster as the default with a specified default database.

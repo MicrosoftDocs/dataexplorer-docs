@@ -11,7 +11,7 @@ zone_pivot_groups: kql-flavors-all
 
 ::: zone pivot="azuredataexplorer, fabric"
 
-Changes the reference of the query to a remote cluster. To access a database within the same cluster, use the [database()](databasefunction.md) function. For more information, see [cross-database and cross-cluster queries](cross-cluster-or-database-queries.md).
+Changes the reference of the query to a remote cluster. To access a database within the same cluster, use the [database()](database-function.md) function. For more information, see [cross-database and cross-cluster queries](cross-cluster-or-database-queries.md).
 
 ## Syntax
 

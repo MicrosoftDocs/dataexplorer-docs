@@ -322,7 +322,7 @@ items:
       - name: cluster()
         href: cluster-function.md
       - name: database()
-        href: databasefunction.md
+        href: database-function.md
       - name: external_table()
         href: externaltablefunction.md
         displayName: external table external-table
