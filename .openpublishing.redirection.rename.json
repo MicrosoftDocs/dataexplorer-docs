@@ -409,6 +409,11 @@
         "source_path": "data-explorer/kusto/query/countoperator.md",
         "redirect_url": "/azure/data-explorer/kusto/query/count-operator",
         "redirect_document_id": true
+      },
+      {
+        "source_path": "data-explorer/kusto/query/current-principal-detailsfunction.md",
+        "redirect_url": "/azure/data-explorer/kusto/query/current-principal-details-function",
+        "redirect_document_id": true
       }
     ]
 }

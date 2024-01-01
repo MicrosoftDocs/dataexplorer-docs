@@ -665,7 +665,7 @@ items:
         href: current-principalfunction.md
       - name: current_principal_details()
         displayName: current_principal_details() current principal details
-        href: current-principal-detailsfunction.md
+        href: current-principal-details-function.md
       - name: current_principal_is_member_of()
         displayName: current_principal_is_member_of() current principal is member of
         href: current-principal-ismemberoffunction.md
