@@ -483,7 +483,7 @@ items:
       - name: around()
         href: around-function.md
       - name: array_concat()
-        href: arrayconcatfunction.md
+        href: array-concat-function.md
       - name: array_iff()
         displayName: array_iif() array iif
         href: arrayifffunction.md

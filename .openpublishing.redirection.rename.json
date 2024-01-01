@@ -139,6 +139,11 @@
         "source_path": "data-explorer/kusto/query/array_shift_rightfunction.md",
         "redirect_url": "/azure/data-explorer/kusto/query/array-shift-right-function",
         "redirect_document_id": true
+      },
+      {
+        "source_path": "data-explorer/kusto/query/arrayconcatfunction.md",
+        "redirect_url": "/azure/data-explorer/kusto/query/array-concat-function",
+        "redirect_document_id": true
       }
     ]
 }

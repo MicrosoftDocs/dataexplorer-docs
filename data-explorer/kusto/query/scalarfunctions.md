@@ -72,7 +72,7 @@ This article lists all available scalar functions grouped by type. For aggregati
 
 |Function Name     |Description                                          |
 |-------------------------|--------------------------------------------------------|
-|[array_concat()](arrayconcatfunction.md)|Concatenates a number of dynamic arrays to a single array.|
+|[array_concat()](array-concat-function.md)|Concatenates a number of dynamic arrays to a single array.|
 |[array_iff()](arrayifffunction.md)|Applies element-wise iif function on arrays.|
 |[array_index_of()](arrayindexoffunction.md)|Searches the array for the specified item, and returns its position.|
 |[array_length()](arraylengthfunction.md)|Calculates the number of elements in a dynamic array.|
