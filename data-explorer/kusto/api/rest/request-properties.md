@@ -26,8 +26,8 @@ The following table overviews the supported request properties.
 | `norequesttimeout` | bool | Sets the request timeout to its maximum value. This option can't be modified as part of a [set statement](../../query/setstatement.md). |
 | `notruncation` | bool | Disables truncation of query results returned to the caller. |
 | `push_selection_through_aggregation` | bool | If set to `true`, allows pushing simple selection through aggregation. |
-| `query_bin_auto_at` | literal | Specifies the start value to use when evaluating the [bin_auto()](../../query/bin-autofunction.md) function. |
-| `query_bin_auto_size` | literal | Specifies the bin size value to use when evaluating the [bin_auto()](../../query/bin-autofunction.md) function. |
+| `query_bin_auto_at` | literal | Specifies the start value to use when evaluating the [bin_auto()](../../query/bin-auto-function.md) function. |
+| `query_bin_auto_size` | literal | Specifies the bin size value to use when evaluating the [bin_auto()](../../query/bin-auto-function.md) function. |
 | `query_cursor_after_default` | string | Sets the default parameter value for the [cursor_after()](../../query/cursorafterfunction.md) function when called without parameters. |
 | `query_cursor_before_or_at_default` | string | Sets the default parameter value for the [cursor_before_or_at()](../../query/cursorbeforeoratfunction.md) function when called without parameters. |
 | `query_cursor_current` | string | Overrides the cursor value returned by the [cursor_current()](../../query/cursorcurrent.md) function. |

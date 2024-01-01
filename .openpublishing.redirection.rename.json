@@ -259,6 +259,11 @@
         "source_path": "data-explorer/kusto/query/betweenoperator.md",
         "redirect_url": "/azure/data-explorer/kusto/query/between-operator",
         "redirect_document_id": true
+      },
+      {
+        "source_path": "data-explorer/kusto/query/bin-autofunction.md",
+        "redirect_url": "/azure/data-explorer/kusto/query/bin-auto-function",
+        "redirect_document_id": true
       }
     ]
 }

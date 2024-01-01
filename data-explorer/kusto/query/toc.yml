@@ -591,7 +591,7 @@ items:
         href: binatfunction.md
       - name: bin_auto()
         displayName: bin_auto() bin auto
-        href: bin-autofunction.md
+        href: bin-auto-function.md
       - name: binary_and()
         displayName: binary_and() binary and
         href: binary-andfunction.md
