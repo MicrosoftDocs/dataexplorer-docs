@@ -13,7 +13,7 @@ zone_pivot_groups: kql-flavors
 
 The `postgresql_request` plugin sends a SQL query to a PostgreSQL Server network endpoint and returns the first rowset in the results. The query may return more than one rowset, but only the first rowset is made available for the rest of the Kusto query.
 
-The plugin is invoked with the [`evaluate`](evaluateoperator.md) operator.
+The plugin is invoked with the [`evaluate`](evaluate-operator.md) operator.
 
 > [!IMPORTANT]
 > The `postgresql_request` plugin is disabled by default.

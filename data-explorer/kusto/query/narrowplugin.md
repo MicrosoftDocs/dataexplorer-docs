@@ -16,7 +16,7 @@ The `narrow` plugin "unpivots" a wide table into a table with three columns:
 The `narrow` plugin is designed mainly for display purposes, as it allows wide
 tables to be displayed comfortably without the need of horizontal scrolling.
 
-The plugin is invoked with the [`evaluate`](evaluateoperator.md) operator.
+The plugin is invoked with the [`evaluate`](evaluate-operator.md) operator.
 
 ## Syntax
 

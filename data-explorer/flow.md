@@ -219,7 +219,7 @@ To see why a run failed, select the run start time. The flow appears, and the st
 - The maximum number of records per request is 50,000 and the maximum data size per request is 32 MB. These limits can't be changed.
 - Synchronous requests have a timeout of 8 minutes.
 - Asynchronous requests have a timeout of 60 minutes.
-- The connector doesn't support operators that aren't supported by the [`getschema` operator](kusto/query/getschemaoperator.md). For example, the [fork](kusto/query/forkoperator.md), [facet](kusto/query/facetoperator.md), and [evaluate](kusto/query/evaluateoperator.md) operators aren't supported.
+- The connector doesn't support operators that aren't supported by the [`getschema` operator](kusto/query/getschemaoperator.md). For example, the [fork](kusto/query/forkoperator.md), [facet](kusto/query/facetoperator.md), and [evaluate](kusto/query/evaluate-operator.md) operators aren't supported.
 - Flows work best on Microsoft Edge and Google Chrome.
 
 ## Related content

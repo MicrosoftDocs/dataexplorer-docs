@@ -142,7 +142,7 @@ items:
       - name: distinct operator
         href: distinctoperator.md
       - name: evaluate operator
-        href: evaluateoperator.md
+        href: evaluate-operator.md
       - name: extend operator
         href: extendoperator.md
       - name: externaldata operator
@@ -729,7 +729,7 @@ items:
         href: erfc-function.md
       - name: estimate_data_size()
         displayName: estimate_data_size() estimate data size
-        href: estimate-data-sizefunction.md
+        href: estimate-data-size-function.md
       - name: exp()
         href: exp-function.md
       - name: exp10()

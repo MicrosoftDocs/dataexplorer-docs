@@ -9,7 +9,7 @@ ms.date: 01/19/2023
 
 Finds rows near a specified condition.
 
-The plugin is invoked with the [`evaluate`](evaluateoperator.md) operator.
+The plugin is invoked with the [`evaluate`](evaluate-operator.md) operator.
 
 ## Syntax
 

@@ -48,7 +48,7 @@ This article shows you a list of functions and their descriptions to help get yo
 | [let](letstatement.md)                         | Binds a name to expressions that can refer to its bound value. Values can be lambda expressions to create query-defined functions as part of the query. Use `let` to create expressions over tables whose results look like a new table. | `let Name = ScalarExpression | TabularExpression | FunctionDefinitionExpression` |
 | **General**                                     | **_Miscellaneous operations and function_** | |
 | [invoke](invokeoperator.md)                    | Runs the function on the table that it receives as input. | `T | invoke function([param1, param2])` |
-| [evaluate pluginName](evaluateoperator.md)     | Evaluates query language extensions (plugins) | `[T |] evaluate [ evaluateParameters ] PluginName ( [PluginArg1 [, PluginArg2]... )` |
+| [evaluate pluginName](evaluate-operator.md)     | Evaluates query language extensions (plugins) | `[T |] evaluate [ evaluateParameters ] PluginName ( [PluginArg1 [, PluginArg2]... )` |
 | **Visualization**                               | **_Operations that display the data in a graphical format_** | |
 | [render](renderoperator.md) | Renders results as a graphical output | `T | render Visualization [with (PropertyName = PropertyValue [, ...] )]` |
 

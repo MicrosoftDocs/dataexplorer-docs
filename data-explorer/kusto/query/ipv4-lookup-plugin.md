@@ -7,7 +7,7 @@ ms.date: 01/01/2023
 ---
 # ipv4_lookup plugin
 
-The `ipv4_lookup` plugin looks up an IPv4 value in a lookup table and returns rows with matched values. The plugin is invoked with the [`evaluate`](evaluateoperator.md) operator.
+The `ipv4_lookup` plugin looks up an IPv4 value in a lookup table and returns rows with matched values. The plugin is invoked with the [`evaluate`](evaluate-operator.md) operator.
 
 ## Syntax
 

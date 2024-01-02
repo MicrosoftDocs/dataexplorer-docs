@@ -18,7 +18,7 @@ This command provides an estimation of the uncompressed size of data ingested in
 
 ## Table size in terms of access bytes
 
-Use the [estimate_data_size()](../query/estimate-data-sizefunction.md) along with the [sum()](../query/sum-aggfunction.md) aggregation function to estimate table size based on data types and their respective byte sizes. For an example, see [Use estimate_data_size()](#use-estimate_data_size).
+Use the [estimate_data_size()](../query/estimate-data-size-function.md) along with the [sum()](../query/sum-aggfunction.md) aggregation function to estimate table size based on data types and their respective byte sizes. For an example, see [Use estimate_data_size()](#use-estimate_data_size).
 
 This method provides a more precise estimation by considering the byte sizes of numeric values without formatting them as strings. For example, integer values require 4 bytes whereas long and datetime values require 8 bytes. By using this approach, you can accurately estimate the data size that would fit in memory.
 
@@ -26,7 +26,7 @@ This method provides a more precise estimation by considering the byte sizes of 
 
 ## Combined size of multiple tables
 
-You can use the [union](../query/unionoperator.md) operator along with the [estimate_data_size()](../query/estimate-data-sizefunction.md) and [sum()](../query/sum-aggfunction.md) functions to estimate the combined size of multiple tables in terms of access bytes. For an example, see [Use union with estimate_data_size()](#use-union-with-estimate_data_size).
+You can use the [union](../query/unionoperator.md) operator along with the [estimate_data_size()](../query/estimate-data-size-function.md) and [sum()](../query/sum-aggfunction.md) functions to estimate the combined size of multiple tables in terms of access bytes. For an example, see [Use union with estimate_data_size()](#use-union-with-estimate_data_size).
 
 **Example use case:** Assess the memory requirements for consolidating data from multiple tables into a single dataset.
 

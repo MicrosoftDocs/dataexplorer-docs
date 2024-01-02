@@ -9,7 +9,7 @@ ms.date: 01/08/2023
 
 Calculates useful activity metrics (distinct count values, distinct count of new values, retention rate, and churn rate) for the cohort of `New Users`. Each cohort of `New Users` (all users, which were first seen in time window) is compared to all prior cohorts.
 Comparison takes into account *all* previous time windows. For example, for records from T2 to T3, the distinct count of users will be all users in T3 who weren't seen in both T1 and T2.
-The plugin is invoked with the [`evaluate`](evaluateoperator.md) operator.
+The plugin is invoked with the [`evaluate`](evaluate-operator.md) operator.
 
 ## Syntax
 

@@ -7,7 +7,7 @@ ms.date: 01/30/2023
 ---
 # sliding_window_counts plugin
 
-Calculates counts and distinct count of values in a sliding window over a lookback period, using the technique described [here](samples.md#perform-aggregations-over-a-sliding-window). The plugin is invoked with the [`evaluate`](evaluateoperator.md) operator.
+Calculates counts and distinct count of values in a sliding window over a lookback period, using the technique described [here](samples.md#perform-aggregations-over-a-sliding-window). The plugin is invoked with the [`evaluate`](evaluate-operator.md) operator.
 
 ## Syntax
 

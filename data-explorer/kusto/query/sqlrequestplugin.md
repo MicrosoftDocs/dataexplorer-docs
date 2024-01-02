@@ -13,7 +13,7 @@ zone_pivot_groups: kql-flavors-all
 
 The `sql_request` plugin sends a SQL query to a SQL Server network endpoint and returns the results.
 If more than one rowset is returned by SQL, only the first one is used.
-The plugin is invoked with the [`evaluate`](evaluateoperator.md) operator.
+The plugin is invoked with the [`evaluate`](evaluate-operator.md) operator.
 
 ## Syntax
 

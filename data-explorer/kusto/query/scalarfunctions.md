@@ -173,7 +173,7 @@ This article lists all available scalar functions grouped by type. For aggregati
 |[current_principal_details()](current-principal-details-function.md)|Returns details of the principal running the query.|
 |[current_principal_is_member_of()](current-principal-is-member-of-function.md)|Checks group membership or principal identity of the current principal running the query.|
 |[cursor_after()](cursor-after-function.md)|Used to access to the records that were ingested after the previous value of the cursor.|
-|[estimate_data_size()](estimate-data-sizefunction.md)|Returns an estimated data size of the selected columns of the tabular expression.|
+|[estimate_data_size()](estimate-data-size-function.md)|Returns an estimated data size of the selected columns of the tabular expression.|
 |[extent_id()](extentidfunction.md)|Returns a unique identifier that identifies the data shard ("extent") that the current record resides in.|
 |[extent_tags()](extenttagsfunction.md)|Returns a dynamic array with the tags of the data shard ("extent") that the current record resides in.|
 |[ingestion_time()](ingestiontimefunction.md)|Retrieves the record's $IngestionTime hidden datetime column, or null.|
