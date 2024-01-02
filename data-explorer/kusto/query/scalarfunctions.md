@@ -135,7 +135,7 @@ This article lists all available scalar functions grouped by type. For aggregati
 |[beta_pdf()](beta-pdf-function.md)|Returns the probability density beta function.|
 |[cos()](cos-function.md)|Returns the cosine function.|
 |[cot()](cot-function.md)|Calculates the trigonometric cotangent of the specified angle, in radians.|
-|[degrees()](degreesfunction.md)|Converts angle value in radians into value in degrees, using formula degrees = (180 / PI) * angle-in-radians.|
+|[degrees()](degrees-function.md)|Converts angle value in radians into value in degrees, using formula degrees = (180 / PI) * angle-in-radians.|
 |[erf()](erf-function.md)|Returns the error function.|
 |[erfc()](erfc-function.md)|Returns the complementary error function.|
 |[exp()](exp-function.md)|The base-e exponential function of x, which is e raised to the power x: e^x.|

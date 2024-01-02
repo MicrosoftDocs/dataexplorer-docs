@@ -705,7 +705,7 @@ items:
         displayName: dcount hll
         href: dcount-hllfunction.md
       - name: degrees()
-        href: degreesfunction.md
+        href: degrees-function.md
       - name: dynamic_to_json()
         displayName: dynamic_to_json() dynamic to json
         href: dynamic-to-json-function.md
