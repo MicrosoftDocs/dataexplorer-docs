@@ -7,7 +7,7 @@ ms.date: 03/06/2023
 
 # Tutorial: Join data from multiple tables
 
-Joining data from multiple tables allows for a more comprehensive analysis by combining information from different sources and creating new relationships between data points. In the [Kusto Query Language (KQL)](../index.md), the [join](../join-operator.md) and [lookup](../lookupoperator.md) operators are used to combine data across tables.
+Joining data from multiple tables allows for a more comprehensive analysis by combining information from different sources and creating new relationships between data points. In the [Kusto Query Language (KQL)](../index.md), the [join](../join-operator.md) and [lookup](../lookup-operator.md) operators are used to combine data across tables.
 
 In this tutorial, you'll learn how to:
 
@@ -96,7 +96,7 @@ Add `| render columnchart` to the query to visualize the result.
 
 ## Use the lookup operator
 
-The [lookup](../lookupoperator.md) operator optimizes the performance of queries where a fact table is enriched with data from a dimension table. It extends the fact table with values that are looked up in a dimension table. For best performance, the system by default assumes that the left table is the larger fact table, and the right table is the smaller dimension table. This is exactly opposite to the assumption that's used by the `join` operator.
+The [lookup](../lookup-operator.md) operator optimizes the performance of queries where a fact table is enriched with data from a dimension table. It extends the fact table with values that are looked up in a dimension table. For best performance, the system by default assumes that the left table is the larger fact table, and the right table is the smaller dimension table. This is exactly opposite to the assumption that's used by the `join` operator.
 
 In the help cluster, there's another database called `ContosoSales` that contains sales data. The following query uses `lookup` to merge the `SalesFact` and `Products` tables from this database to get the total sales by product category.
 

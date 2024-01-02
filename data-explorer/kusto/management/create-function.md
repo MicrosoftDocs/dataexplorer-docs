@@ -9,9 +9,9 @@ ms.date: 09/10/2023
 
 Creates a stored function, which is a reusable KQL query,  with the given name. The function definition is persisted with the database metadata.
 
-Functions can call other functions (recursiveness isn't supported). Besides, [`let`](../query/letstatement.md) statements are allowed as part of the *Function Body*. See [`let` statements](../query/letstatement.md).
+Functions can call other functions (recursiveness isn't supported). Besides, [`let`](../query/let-statement.md) statements are allowed as part of the *Function Body*. See [`let` statements](../query/let-statement.md).
 
-Rules for parameter types and CSL statements are the same as for [`let` statements](../query/letstatement.md).
+Rules for parameter types and CSL statements are the same as for [`let` statements](../query/let-statement.md).
 
 ## Permissions
 

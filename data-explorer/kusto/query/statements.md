@@ -34,7 +34,7 @@ Some query statements are useful in both scenarios.
 
 Following is a list of user query statements:
 
-* A [let statement](./letstatement.md) defines a binding between a name and an expression.
+* A [let statement](./let-statement.md) defines a binding between a name and an expression.
   Let statements can be used to break a long query into small named parts that are easier to
   understand.
 

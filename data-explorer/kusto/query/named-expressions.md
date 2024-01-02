@@ -12,7 +12,7 @@ This article discusses how to optimize repeat use of named expressions in a quer
 
 In Kusto Query Language, you can bind names to complex expressions in several different ways:
 
-* In a [let statement](letstatement.md)
+* In a [let statement](let-statement.md)
 * In the [as operator](as-operator.md)
 * In the formal parameters list of [user-defined functions](functions/user-defined-functions.md)
 
@@ -103,6 +103,6 @@ print x, x, y, y
 
 ## Related content
 
-* [Let statement](letstatement.md)
+* [Let statement](let-statement.md)
 * [as operator](as-operator.md)
 * [toscalar()](toscalarfunction.md)

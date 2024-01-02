@@ -113,7 +113,7 @@ items:
       - name: Alias statement
         href: alias-statement.md
       - name: Let statement
-        href: letstatement.md
+        href: let-statement.md
       - name: Pattern statement
         href: patternstatement.md
       - name: Query parameters statement
@@ -191,7 +191,7 @@ items:
           - name: Time window join
             href: join-time-window.md
       - name: lookup operator
-        href: lookupoperator.md
+        href: lookup-operator.md
       - name: mv-apply operator
         href: mv-applyoperator.md
         displayName: mv apply mv_apply
@@ -365,7 +365,7 @@ items:
             displayName: not in operator
             href: not-in-operator.md
       - name: Logical or binary operators
-        href: logicaloperators.md
+        href: logical-operators.md
       - name: Numerical operators
         href: numoperators.md
       - name: String operators

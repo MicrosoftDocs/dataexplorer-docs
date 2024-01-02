@@ -22,7 +22,7 @@ A Kusto query is a read-only request to process data and return results. The req
 There are three kinds of user [query statements](statements.md):
 
 * A [tabular expression statement](tabularexpressionstatements.md)
-* A [let statement](letstatement.md)
+* A [let statement](let-statement.md)
 * A [set statement](setstatement.md)
 
 All query statements are separated by a `;` (semicolon), and only affect the query at hand.

@@ -764,6 +764,21 @@
         "source_path": "data-explorer/kusto/query/joinoperator.md",
         "redirect_url": "/azure/data-explorer/kusto/query/join-operator",
         "redirect_document_id": true
+      },
+      {
+        "source_path": "data-explorer/kusto/query/letstatement.md",
+        "redirect_url": "/azure/data-explorer/kusto/query/let-statement",
+        "redirect_document_id": true
+      },
+      {
+        "source_path": "data-explorer/kusto/query/loggammafunction.md",
+        "redirect_url": "/azure/data-explorer/kusto/query/loggamma-function",
+        "redirect_document_id": true
+      },
+      {
+        "source_path": "data-explorer/kusto/query/lookupoperator.md",
+        "redirect_url": "/azure/data-explorer/kusto/query/lookup-operator",
+        "redirect_document_id": true
       }
     ]
 }

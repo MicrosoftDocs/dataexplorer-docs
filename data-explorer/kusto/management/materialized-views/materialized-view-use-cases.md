@@ -118,7 +118,7 @@ Materialized views and update policies work differently and serve different use 
 
 * Materialized views are suitable for *aggregations*, while update policies aren't. Update policies run separately for each ingestion batch, and therefore can only perform aggregations within the same ingestion batch. If you require an aggregation query, always use materialized views.
 
-* Update policies are useful for data transformations, enrichments with dimension tables (usually using [lookup operator](../../query/lookupoperator.md)) and other data manipulations that can run in the scope of a single ingestion.
+* Update policies are useful for data transformations, enrichments with dimension tables (usually using [lookup operator](../../query/lookup-operator.md)) and other data manipulations that can run in the scope of a single ingestion.
 
 * Update policies run during ingestion time. Data isn't available for queries in the source table or the target table until all update policies run. Materialized views, on the other hand, aren't part of the ingestion pipeline. The [materialization process](materialized-view-overview.md#how-materialized-views-work) runs periodically in the background, post ingestion. Records in source table are available for queries before they're materialized.
 

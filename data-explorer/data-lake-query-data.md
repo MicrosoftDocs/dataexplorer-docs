@@ -70,7 +70,7 @@ external_table("ArchivedProducts")
 
 ## Querying external and ingested data together
 
-You can query both external tables and ingested data tables within the same query. You can [`join`](kusto/query/join-operator.md) or [`union`](kusto/query/unionoperator.md) the external table with other data from Azure Data Explorer, SQL servers, or other sources. Use a [`let( ) statement`](kusto/query/letstatement.md) to assign a shorthand name to an external table reference.
+You can query both external tables and ingested data tables within the same query. You can [`join`](kusto/query/join-operator.md) or [`union`](kusto/query/unionoperator.md) the external table with other data from Azure Data Explorer, SQL servers, or other sources. Use a [`let( ) statement`](kusto/query/let-statement.md) to assign a shorthand name to an external table reference.
 
 In the example below, *Products* is an ingested data table and *ArchivedProducts* is an external table that we've defined previously:
 

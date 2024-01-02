@@ -11,7 +11,7 @@ zone_pivot_groups: kql-flavors
 
 ::: zone pivot="azuredataexplorer, azuremonitor"
 
-Functions are reusable queries or query parts. Functions can be stored as database entities, similar to tables, called *stored functions*. Alternatively, functions can be created in an ad-hoc fashion with a [let statement](../letstatement.md), called *query-defined functions*. For more information, see [user-defined functions](../functions/user-defined-functions.md).
+Functions are reusable queries or query parts. Functions can be stored as database entities, similar to tables, called *stored functions*. Alternatively, functions can be created in an ad-hoc fashion with a [let statement](../let-statement.md), called *query-defined functions*. For more information, see [user-defined functions](../functions/user-defined-functions.md).
 
 To create and manage stored functions, see the [Stored functions management overview](../../management/functions.md).
 

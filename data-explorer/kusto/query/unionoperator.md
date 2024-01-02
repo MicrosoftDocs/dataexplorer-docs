@@ -56,8 +56,8 @@ Takes two or more tables and returns the rows of all of them.
 
 > [!NOTE]
 >
-> * The `union` scope can include [let statements](./letstatement.md) if attributed with the `view` keyword.
-> * The `union` scope will not include [functions](../management/functions.md). To include a function, define a [let statement](./letstatement.md) with the `view` keyword.
+> * The `union` scope can include [let statements](./let-statement.md) if attributed with the `view` keyword.
+> * The `union` scope will not include [functions](../management/functions.md). To include a function, define a [let statement](./let-statement.md) with the `view` keyword.
 > * There's no guarantee of the order in which the union legs will appear, but if each leg has an `order by` operator, then each leg will be sorted.
 
 ## Returns

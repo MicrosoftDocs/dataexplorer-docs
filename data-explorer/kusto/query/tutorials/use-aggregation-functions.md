@@ -230,7 +230,7 @@ StormEvents
 
 ### Calculate percentage based on table size
 
-To compare the number of storms by event type to the total number of storms in the database, first save the total number of storms in the database as a variable. [Let statements](../letstatement.md) are used to define variables within a query.
+To compare the number of storms by event type to the total number of storms in the database, first save the total number of storms in the database as a variable. [Let statements](../let-statement.md) are used to define variables within a query.
 
 Since [tabular expression statements](../tabularexpressionstatements.md) return tabular results, use the [toscalar()](../toscalarfunction.md) function to convert the tabular result of the `count()` function to a scalar value. Then, the numeric value can be used in the percentage calculation.
 

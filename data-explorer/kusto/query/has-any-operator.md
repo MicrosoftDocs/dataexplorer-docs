@@ -84,7 +84,7 @@ StormEvents
 |ATLANTIC SOUTH|193|
 |ATLANTIC NORTH|188|
 
-The same query can also be written with a [let statement](letstatement.md).
+The same query can also be written with a [let statement](let-statement.md).
 
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAyWMQQrCMBBF9z3F3yUBbyBdeoIuRWRsB1IwE5iZtER6eIvuHrzHe7ODlMkwYulCZZ3jPVhtnsMFQaqe8EjXYfKq5baxuGE4sGdWxuTkjEz2JOmIv1E6rbVSSNcPY65NPCa8+j/+AmgCW+9wAAAA" target="_blank">Run the query</a>
@@ -131,7 +131,7 @@ StormEvents
 |MINNESOTA |1881|
 |...|...|
 
-The same query can also be written with a [let statement](letstatement.md). Notice that the double parentheses as provided in the last example aren't necessary in this case.
+The same query can also be written with a [let statement](let-statement.md). Notice that the double parentheses as provided in the last example aren't necessary in this case.
 
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA02NsQrCQBBE+0D+Ycqks7ESrbQX8gFhDYuJ3N2G3b1IxI/XRIRMOW8eE9gRSO/cmpOz4YirjDmQD5LO5IQ3nj0rb2qcsN+t+cJR5cGdo1n0Q1k0LhovEyc3lMVfXil6spbSjGr7WC8ryzGSDi9GJzl5VeM2/6QPjBKdkqEAAAA=" target="_blank">Run the query</a>

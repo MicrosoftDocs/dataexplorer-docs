@@ -33,7 +33,7 @@ A scalar constant value of the evaluated expression.
 If the result is a tabular, then the first column and first row will be taken for conversion.
 
 > [!TIP]
-> You can use a [let statement](letstatement.md) for readability of the query when using `toscalar()`.
+> You can use a [let statement](let-statement.md) for readability of the query when using `toscalar()`.
 
 ## Limitations
 

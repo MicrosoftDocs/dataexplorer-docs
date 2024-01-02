@@ -447,7 +447,7 @@ The query removes zero count entries:
 
 ## Assign a result to a variable: *let*
 
-Use [let](./letstatement.md) to separate out the parts of the query expression in the preceding `join` example. The results are unchanged:
+Use [let](./let-statement.md) to separate out the parts of the query expression in the preceding `join` example. The results are unchanged:
 
 <!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto

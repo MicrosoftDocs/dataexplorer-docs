@@ -38,7 +38,7 @@ Rows in *T* for which *Predicate* is `true`.
 
 ## Performance tips
 
-* **Use simple comparisons** between column names and constants. ('Constant' means constant over the table - so `now()` and `ago()` are OK, and so are scalar values assigned using a [`let` statement](./letstatement.md).)
+* **Use simple comparisons** between column names and constants. ('Constant' means constant over the table - so `now()` and `ago()` are OK, and so are scalar values assigned using a [`let` statement](./let-statement.md).)
 
     For example, prefer `where Timestamp >= ago(1d)` to `where bin(Timestamp, 1d) == ago(1d)`.
 
@@ -96,4 +96,4 @@ StormEvents
 
 * [String operators](datatypes-string-operators.md)
 * [Numerical operators](numoperators.md)
-* [Logical operators](logicaloperators.md)
+* [Logical operators](logical-operators.md)
