@@ -55,7 +55,7 @@ This article lists all available scalar functions grouped by type. For aggregati
 |[make_datetime()](make-datetime-function.md)|Creates a datetime scalar value from the specified date and time.|
 |[make_timespan()](make-timespan-function.md)|Creates a timespan scalar value from the specified time period.|
 |[monthofyear()](monthofyear-function.md)|Returns the integer number that represents the month number of the given year.|
-|[now()](nowfunction.md)|Returns the current UTC clock time, optionally offset by a given timespan.|
+|[now()](now-function.md)|Returns the current UTC clock time, optionally offset by a given timespan.|
 |[startofday()](startofdayfunction.md)|Returns the start of the day containing the date, shifted by an offset, if provided.|
 |[startofmonth()](startofmonthfunction.md)|Returns the start of the month containing the date, shifted by an offset, if provided.|
 |[startofweek()](startofweekfunction.md)|Returns the start of the week containing the date, shifted by an offset, if provided.|
@@ -108,7 +108,7 @@ This article lists all available scalar functions grouped by type. For aggregati
 
 |Function Name     |Description                                          |
 |-------------------------|--------------------------------------------------------|
-|[next()](nextfunction.md)|For the serialized row set, returns a value of a specified column from the later row according to the offset.|
+|[next()](next-function.md)|For the serialized row set, returns a value of a specified column from the later row according to the offset.|
 |[prev()](prevfunction.md)|For the serialized row set, returns a value of a specified column from the earlier row according to the offset.|
 |[row_cumsum()](rowcumsumfunction.md)|Calculates the cumulative sum of a column.|
 |[row_number()](rownumberfunction.md)|Returns a row's number in the serialized row set - consecutive numbers starting from a given index or from 1 by default.|
@@ -149,7 +149,7 @@ This article lists all available scalar functions grouped by type. For aggregati
 |[log10()](log10-function.md)|Returns the common (base-10) logarithm function.|
 |[log2()](log2-function.md)|Returns the base-2 logarithm function.|
 |[loggamma()](loggamma-function.md)|Computes log of absolute value of the gamma function.|
-|[not()](notfunction.md)|Reverses the value of its bool argument.|
+|[not()](not-function.md)|Reverses the value of its bool argument.|
 |[pi()](pifunction.md)|Returns the constant value of Pi (π).|
 |[pow()](powfunction.md)|Returns a result of raising to power.|
 |[radians()](radiansfunction.md)|Converts angle value in degrees into value in radians, using formula radians = (PI / 180) * angle-in-degrees.|

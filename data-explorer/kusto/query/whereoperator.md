@@ -44,7 +44,7 @@ Rows in *T* for which *Predicate* is `true`.
 
 * **Simplest terms first**: If you have multiple clauses conjoined with `and`, put first the clauses that involve just one column. So `Timestamp > ago(1d) and OpId == EventId` is better than the other way around.
 
-For more information, see the summary of [available String operators](./datatypes-string-operators.md) and the summary of [available Numerical operators](./numoperators.md).
+For more information, see the summary of [available String operators](./datatypes-string-operators.md) and the summary of [available Numerical operators](./numerical-operators.md).
 
 ## Examples
 
@@ -95,5 +95,5 @@ StormEvents
 ## Related content
 
 * [String operators](datatypes-string-operators.md)
-* [Numerical operators](numoperators.md)
+* [Numerical operators](numerical-operators.md)
 * [Logical operators](logical-operators.md)

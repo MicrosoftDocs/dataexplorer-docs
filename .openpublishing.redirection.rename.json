@@ -286,7 +286,7 @@
         "redirect_document_id": true
       },
       {
-        "source_path": "data-explorer/kusto/query/binary-notfunction.md",
+        "source_path": "data-explorer/kusto/query/binary-not-function.md",
         "redirect_url": "/azure/data-explorer/kusto/query/binary-not-function",
         "redirect_document_id": true
       },
@@ -878,6 +878,41 @@
       {
         "source_path": "data-explorer/kusto/query/mysqlrequest-plugin.md",
         "redirect_url": "/azure/data-explorer/kusto/query/mysql-request-plugin",
+        "redirect_document_id": true
+      },
+      {
+        "source_path": "data-explorer/kusto/query/narrowplugin.md",
+        "redirect_url": "/azure/data-explorer/kusto/query/narrow-plugin",
+        "redirect_document_id": true
+      },
+      {
+        "source_path": "data-explorer/kusto/query/newguidfunction.md",
+        "redirect_url": "/azure/data-explorer/kusto/query/new-guid-function",
+        "redirect_document_id": true
+      },
+      {
+        "source_path": "data-explorer/kusto/query/nextfunction.md",
+        "redirect_url": "/azure/data-explorer/kusto/query/next-function",
+        "redirect_document_id": true
+      },
+      {
+        "source_path": "data-explorer/kusto/query/notbetweenoperator.md",
+        "redirect_url": "/azure/data-explorer/kusto/query/not-between-operator",
+        "redirect_document_id": true
+      },
+      {
+        "source_path": "data-explorer/kusto/query/notfunction.md",
+        "redirect_url": "/azure/data-explorer/kusto/query/not-function",
+        "redirect_document_id": true
+      },
+      {
+        "source_path": "data-explorer/kusto/query/nowfunction.md",
+        "redirect_url": "/azure/data-explorer/kusto/query/now-function",
+        "redirect_document_id": true
+      },
+      {
+        "source_path": "data-explorer/kusto/query/numoperators.md",
+        "redirect_url": "/azure/data-explorer/kusto/query/numerical-operators",
         "redirect_document_id": true
       }
     ]

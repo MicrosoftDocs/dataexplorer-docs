@@ -226,7 +226,7 @@ StormEvents
 |...|...|...|...|
 
 > [!NOTE]
-> When calculating percentages, convert at least one of the integer values in the division with [todouble() or toreal()](../todoublefunction.md). This will ensure that you don't get truncated results due to integer division. For more information, see [Type rules for arithmetic operations](../numoperators.md#type-rules-for-arithmetic-operations).
+> When calculating percentages, convert at least one of the integer values in the division with [todouble() or toreal()](../todoublefunction.md). This will ensure that you don't get truncated results due to integer division. For more information, see [Type rules for arithmetic operations](../numerical-operators.md#type-rules-for-arithmetic-operations).
 
 ### Calculate percentage based on table size
 

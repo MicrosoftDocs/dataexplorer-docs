@@ -346,7 +346,7 @@ items:
             href: between-operator.md
           - name: "!between operator"
             displayName: not between operator
-            href: notbetweenoperator.md
+            href: not-between-operator.md
       - name: Bitwise binary operators
         href: bin-operators.md
       - name: Datetime/timespan arithmetic
@@ -367,7 +367,7 @@ items:
       - name: Logical or binary operators
         href: logical-operators.md
       - name: Numerical operators
-        href: numoperators.md
+        href: numerical-operators.md
       - name: String operators
         items:
           - name: String operators overview
@@ -926,11 +926,11 @@ items:
         href: monthofyear-function.md
       - name: new_guid()
         displayName: new guid
-        href: newguidfunction.md
+        href: new-guid-function.md
       - name: not()
-        href: notfunction.md
+        href: not-function.md
       - name: now()
-        href: nowfunction.md
+        href: now-function.md
       - name: pack_all()
         displayName: pack all
         href: packallfunction.md
@@ -1561,7 +1561,7 @@ items:
           - name: bag_unpack plugin
             href: bag-unpackplugin.md
           - name: narrow plugin
-            href: narrowplugin.md
+            href: narrow-plugin.md
           - name: pivot plugin
             href: pivotplugin.md
       - name: Language plugins
@@ -1633,7 +1633,7 @@ items:
       - name: Window functions overview
         href: windowsfunctions.md
       - name: next()
-        href: nextfunction.md
+        href: next-function.md
       - name: prev()
         href: prevfunction.md
       - name: row_cumsum()

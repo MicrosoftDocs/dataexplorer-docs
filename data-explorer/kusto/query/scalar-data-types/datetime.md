@@ -32,7 +32,7 @@ are supported for *value*, as indicated by the following table:
 
 ## The now() and ago() special functions
 
-Kusto provides two special functions, [now() and ago()](../nowfunction.md),
+Kusto provides two special functions, [now() and ago()](../now-function.md),
 to allow queries to reference the time at which the query starts execution.
 
 ## Supported formats

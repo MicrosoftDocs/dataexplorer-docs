@@ -44,7 +44,7 @@ The following table overviews the supported request properties.
 | `query_language` | string | Determines how the query text should be interpreted. Supported values are `csl`, `kql`, or `sql`. |
 | `query_log_query_parameters` | bool | Enables logging of the query parameters for later viewing in the [.show queries](../../management/queries.md) journal. |
 | `query_max_entities_in_union` | long | Overrides the default maximum number of columns a query is allowed to produce. |
-| `query_now` | datetime | Overrides the datetime value returned by the [now()](../../query/nowfunction.md) function. |
+| `query_now` | datetime | Overrides the datetime value returned by the [now()](../../query/now-function.md) function. |
 | `query_python_debug` | bool or int |  If set to `true`, generates a Python debug query for the enumerated Python node.|
 | `query_results_apply_getschema` | bool | If set, retrieves the schema of each tabular data in the results of the query instead of the data itself. |
 | `query_results_cache_force_refresh` | bool |If set to `true`, forces a cache refresh of query results for a specific query. This option can't be modified as part of a [set statement](../../query/setstatement.md). |

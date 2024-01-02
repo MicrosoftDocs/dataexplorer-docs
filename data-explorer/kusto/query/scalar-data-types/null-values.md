@@ -148,7 +148,7 @@ datatable(val:int)[5, int(null)]
 
 ## Null values and the logical NOT (`!`) operator
 
-The logical NOT operator [not()](../notfunction.md) yields the value `bool(null)` if the argument is the null value.
+The logical NOT operator [not()](../not-function.md) yields the value `bool(null)` if the argument is the null value.
 
 ## Null values and the `in` operator
 
