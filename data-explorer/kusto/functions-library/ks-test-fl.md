@@ -96,7 +96,7 @@ ks_test_fl(tbl:(*), data1:string, data2:string, test_statistic:string, p_value:s
 
 ## Example
 
-The following example uses the [invoke operator](../query/invokeoperator.md) to run the function.
+The following example uses the [invoke operator](../query/invoke-operator.md) to run the function.
 
 ### [Query-defined](#tab/query-defined)
 

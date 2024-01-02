@@ -136,7 +136,7 @@ geoip_fl(tbl:(*), ip_col:string, country_col:string, state_col:string, city_col:
 
 ## Example
 
-The following example uses the [invoke operator](../query/invokeoperator.md) to run the function.
+The following example uses the [invoke operator](../query/invoke-operator.md) to run the function.
 
 ### [Query-defined](#tab/query-defined)
 

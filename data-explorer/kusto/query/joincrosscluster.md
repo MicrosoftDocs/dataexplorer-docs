@@ -99,7 +99,7 @@ T | ... | join hint.remote=right (cluster("B").database("DB").T2 | ...) on Col1
 
 ## Related content
 
-* [join operator](joinoperator.md)
+* [join operator](join-operator.md)
 * [Cross-cluster or cross-database queries](cross-cluster-or-database-queries.md)
 
 ::: zone-end

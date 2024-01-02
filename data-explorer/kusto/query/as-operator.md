@@ -28,7 +28,7 @@ To optimize multiple uses of the `as` operator within a single query, see [Named
 > [!NOTE]
 >
 > * The name given by `as` will be used in the `withsource=` column of [union](./unionoperator.md), the `source_` column of [find](./find-operator.md), and the `$table` column of [search](./searchoperator.md).
-> * The tabular expression named using the operator in a [join](./joinoperator.md)'s outer tabular input (`$left`) can also be used in the join's tabular inner input (`$right`).
+> * The tabular expression named using the operator in a [join](./join-operator.md)'s outer tabular input (`$left`) can also be used in the join's tabular inner input (`$right`).
 
 ## Examples
 

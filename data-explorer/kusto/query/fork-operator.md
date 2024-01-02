@@ -57,7 +57,7 @@ Multiple result tables, one for each of the *subquery* arguments.
 
 ## Tips
 
-* Use [`materialize`](materializefunction.md) as a replacement for [`join`](joinoperator.md) or [`union`](unionoperator.md) on fork legs. The input stream will be cached by materialize and then the cached expression can be used in join/union legs.
+* Use [`materialize`](materializefunction.md) as a replacement for [`join`](join-operator.md) or [`union`](unionoperator.md) on fork legs. The input stream will be cached by materialize and then the cached expression can be used in join/union legs.
 
 * Use [batch](batches.md) with [`materialize`](materializefunction.md) of tabular expression statements instead of the `fork` operator.
 

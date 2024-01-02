@@ -58,7 +58,7 @@ Database cursors can only be used with tables for which the
 [IngestionTime policy](./show-table-ingestion-time-policy-command.md)
 has been enabled. Each record in such a table is associated with the
 value of the database cursor that was in effect when the record was ingested.
-As such, the [ingestion_time()](../query/ingestiontimefunction.md)
+As such, the [ingestion_time()](../query/ingestion-time-function.md)
 function can be used.
 
 The database cursor object holds no meaningful value unless the database has at least one table that has an [IngestionTime policy](./show-table-ingestion-time-policy-command.md) defined.

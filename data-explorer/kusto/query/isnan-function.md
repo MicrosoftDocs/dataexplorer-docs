@@ -47,6 +47,6 @@ range x from -1 to 1 step 1
 
 ## Related content
 
-* To check if a value is null, see [isnull()](isnullfunction.md).
-* To check if a value is finite, see [isfinite()](isfinitefunction.md).
-* To check if a value is infinite, see [isinf()](isinffunction.md).
+* To check if a value is null, see [isnull()](isnull-function.md).
+* To check if a value is finite, see [isfinite()](isfinite-function.md).
+* To check if a value is infinite, see [isinf()](isinf-function.md).

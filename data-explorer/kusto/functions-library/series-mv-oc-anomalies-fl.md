@@ -99,7 +99,7 @@ series_mv_oc_anomalies_fl(tbl:(*), features_cols:dynamic, anomaly_col:string, an
 
 ## Example
 
-The following example uses the [invoke operator](../query/invokeoperator.md) to run the function.
+The following example uses the [invoke operator](../query/invoke-operator.md) to run the function.
 
 ### [Query-defined](#tab/query-defined)
 

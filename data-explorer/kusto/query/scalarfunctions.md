@@ -142,8 +142,8 @@ This article lists all available scalar functions grouped by type. For aggregati
 |[exp10()](exp10-function.md)|The base-10 exponential function of x, which is 10 raised to the power x: 10^x.|
 |[exp2()](exp2-function.md)|The base-2 exponential function of x, which is 2 raised to the power x: 2^x.|
 |[gamma()](gamma-function.md)|Computes gamma function.|
-|[isfinite()](isfinitefunction.md)|Returns whether input is a finite value (isn't infinite or NaN).|
-|[isinf()](isinffunction.md)|Returns whether input is an infinite (positive or negative) value.|
+|[isfinite()](isfinite-function.md)|Returns whether input is a finite value (isn't infinite or NaN).|
+|[isinf()](isinf-function.md)|Returns whether input is an infinite (positive or negative) value.|
 |[isnan()](isnanfunction.md)|Returns whether input is Not-a-Number (NaN) value.|
 |[log()](log-function.md)|Returns the natural logarithm function.|
 |[log10()](log10-function.md)|Returns the common (base-10) logarithm function.|
@@ -176,7 +176,7 @@ This article lists all available scalar functions grouped by type. For aggregati
 |[estimate_data_size()](estimate-data-size-function.md)|Returns an estimated data size of the selected columns of the tabular expression.|
 |[extent_id()](extent-id-function.md)|Returns a unique identifier that identifies the data shard ("extent") that the current record resides in.|
 |[extent_tags()](extenttagsfunction.md)|Returns a dynamic array with the tags of the data shard ("extent") that the current record resides in.|
-|[ingestion_time()](ingestiontimefunction.md)|Retrieves the record's $IngestionTime hidden datetime column, or null.|
+|[ingestion_time()](ingestion-time-function.md)|Retrieves the record's $IngestionTime hidden datetime column, or null.|
 
 ## Rounding functions
 
@@ -270,11 +270,11 @@ This article lists all available scalar functions grouped by type. For aggregati
 |[extract_all()](extract-all-function.md)|Get all matches for a regular expression from a text string.|
 |[extract_json()](extract-json-function.md)|Get a specified element out of a JSON text using a path expression.|
 |[has_any_index()](has-any-index-function.md)|Searches the string for items specified in the array and returns the position of the first item found in the string.|
-|[indexof()](indexoffunction.md)|Function reports the zero-based index of the first occurrence of a specified string within input string.|
-|[isempty()](isemptyfunction.md)|Returns true if the argument is an empty string or is null.|
-|[isnotempty()](isnotemptyfunction.md)|Returns true if the argument isn't an empty string or a null.|
-|[isnotnull()](isnotnullfunction.md)|Returns true if the argument is not null.|
-|[isnull()](isnullfunction.md)|Evaluates its sole argument and returns a bool value indicating if the argument evaluates to a null value.|
+|[indexof()](indexof-function.md)|Function reports the zero-based index of the first occurrence of a specified string within input string.|
+|[isempty()](isempty-function.md)|Returns true if the argument is an empty string or is null.|
+|[isnotempty()](isnotempty-function.md)|Returns true if the argument isn't an empty string or a null.|
+|[isnotnull()](isnotnull-function.md)|Returns true if the argument is not null.|
+|[isnull()](isnull-function.md)|Evaluates its sole argument and returns a bool value indicating if the argument evaluates to a null value.|
 |[parse_command_line()](parse-command-line.md)|Parses a Unicode command line string and returns an array of the command line arguments.|
 |[parse_csv()](parsecsvfunction.md)|Splits a given string representing comma-separated values and returns a string array with these values.|
 |[parse_ipv4()](parse-ipv4function.md)|Converts input to long (signed 64-bit) number representation.|
@@ -310,17 +310,17 @@ This article lists all available scalar functions grouped by type. For aggregati
 
 |Function Name     |Description                                          |
 |-------------------------|--------------------------------------------------------|
-|[ipv4_compare()](ipv4-comparefunction.md)|Compares two IPv4 strings.|
+|[ipv4_compare()](ipv4-compare-function.md)|Compares two IPv4 strings.|
 |[ipv4_is_in_range()](ipv4-is-in-range-function.md)|Checks if IPv4 string address is in IPv4-prefix notation range.|
 |[ipv4_is_in_any_range()](ipv4-is-in-any-range-function.md)|Checks if IPv4 string address is any of the IPv4-prefix notation ranges.|
-|[ipv4_is_match()](ipv4-is-matchfunction.md)|Matches two IPv4 strings.|
-|[ipv4_is_private()](ipv4-is-privatefunction.md)|Checks if IPv4 string address belongs to a set of private network IPs.|
+|[ipv4_is_match()](ipv4-is-match-function.md)|Matches two IPv4 strings.|
+|[ipv4_is_private()](ipv4-is-private-function.md)|Checks if IPv4 string address belongs to a set of private network IPs.|
 |[ipv4_netmask_suffix](ipv4-netmask-suffix-function.md)|Returns the value of the IPv4 netmask suffix from IPv4 string address.|
 |[parse_ipv4()](parse-ipv4function.md)|Converts input string to long (signed 64-bit) number representation.|
 |[parse_ipv4_mask()](parse-ipv4-maskfunction.md)|Converts input string and IP-prefix mask to long (signed 64-bit) number representation.|
 |[ipv4_range_to_cidr_list()](ipv4-range-to-cidr-list-function.md)|Converts IPv4 address range to a list of CIDR ranges.|
-|[ipv6_compare()](ipv6-comparefunction.md)|Compares two IPv4 or IPv6 strings.|
-|[ipv6_is_match()](ipv6-is-matchfunction.md)|Matches two IPv4 or IPv6 strings.|
+|[ipv6_compare()](ipv6-compare-function.md)|Compares two IPv4 or IPv6 strings.|
+|[ipv6_is_match()](ipv6-is-match-function.md)|Matches two IPv4 or IPv6 strings.|
 |[parse_ipv6()](parse-ipv6function.md)|Converts IPv6 or IPv4 string to a canonical IPv6 string representation.|
 |[parse_ipv6_mask()](parse-ipv6-maskfunction.md)|Converts IPv6 or IPv4 string and netmask to a canonical IPv6 string representation.|
 |[format_ipv4()](format-ipv4-function.md)|Parses input with a netmask and returns string representing IPv4 address.|

@@ -60,7 +60,7 @@ StormEvents
 
 ### Combine data from two tables
 
-In the following example, the [join](joinoperator.md) operator is used to combine records from two tabular data sources: the `StormEvents` table and the `PopulationData` table.
+In the following example, the [join](join-operator.md) operator is used to combine records from two tabular data sources: the `StormEvents` table and the `PopulationData` table.
 
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAwsuyS/KdS1LzSspVuDlqlEoz0gtSlXwzMsqLcpMLXbJLEpNLlHQhgt45qVAhOwUTA1A6rPyM/MUNALyC0pzEksy8/NcEksSNRXy8xSCSxJLUkEqCorys0A6wAI6CgilOgoh+SWJOTCjFWwJWwsARutqhK4AAAA=" target="_blank">Run the query</a>

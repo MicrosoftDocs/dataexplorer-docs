@@ -156,11 +156,11 @@ items:
       - name: getschema operator
         href: getschemaoperator.md
       - name: invoke operator
-        href: invokeoperator.md
+        href: invoke-operator.md
       - name: join operator
         items:
           - name: join operator
-            href: joinoperator.md
+            href: join-operator.md
           - name: join flavors
             items:
               - name: innerunique
@@ -357,7 +357,7 @@ items:
             displayName: in operator case sensitive
             href: in-cs-operator.md
           - name: in~ operator
-            href: inoperator.md
+            href: in-operator.md
           - name: "!in operator"
             displayName: not in operator case sensitive
             href: not-in-cs-operator.md
@@ -447,7 +447,7 @@ items:
             displayName: in operator case sensitive
             href: in-cs-operator.md
           - name: "in~ operator"
-            href: inoperator.md
+            href: in-operator.md
           - name: "!in operator"
             displayName: not in operator case sensitive
             href: not-in-cs-operator.md
@@ -828,16 +828,16 @@ items:
         href: ifffunction.md
       - name: indexof()
         displayName: index of
-        href: indexoffunction.md
+        href: indexof-function.md
       - name: indexof_regex()
         displayName: index of regex
-        href: indexofregexfunction.md
+        href: indexof-regex-function.md
       - name: ingestion_time()
         displayName: ingestion time
-        href: ingestiontimefunction.md
+        href: ingestion-time-function.md
       - name: ipv4_compare()
         displayName: ipv4 compare
-        href: ipv4-comparefunction.md
+        href: ipv4-compare-function.md
       - name: ipv4_is_in_range()
         displayName: ipv4 is in range
         href: ipv4-is-in-range-function.md
@@ -846,10 +846,10 @@ items:
         href: ipv4-is-in-any-range-function.md
       - name: ipv4_is_match()
         displayName: ipv4 is match
-        href: ipv4-is-matchfunction.md
+        href: ipv4-is-match-function.md
       - name: ipv4_is_private()
         displayName: ipv4 is private
-        href: ipv4-is-privatefunction.md
+        href: ipv4-is-private-function.md
       - name: ipv4_range_to_cidr_list()
         displayName: ipv4 range to cidr list
         href: ipv4-range-to-cidr-list-function.md
@@ -858,7 +858,7 @@ items:
         href: ipv4-netmask-suffix-function.md
       - name: ipv6_compare()
         displayName: ipv6 compare
-        href: ipv6-comparefunction.md
+        href: ipv6-compare-function.md
       - name: ipv6_is_in_range()
         displayName: ipv6 is in range
         href: ipv6-is-in-range-function.md
@@ -867,30 +867,30 @@ items:
         href: ipv6-is-in-any-range-function.md
       - name: ipv6_is_match()
         displayName: ipv6 is match
-        href: ipv6-is-matchfunction.md
+        href: ipv6-is-match-function.md
       - name: isascii()
         href: isascii.md
       - name: isempty()
         displayName: is empty
-        href: isemptyfunction.md
+        href: isempty-function.md
       - name: isfinite()
         displayName: is finite
-        href: isfinitefunction.md
+        href: isfinite-function.md
       - name: isinf()
         displayName: is inf
-        href: isinffunction.md
+        href: isinf-function.md
       - name: isnan()
         displayName: is nan
         href: isnanfunction.md
       - name: isnotempty()
         displayName: is not empty notempty()
-        href: isnotemptyfunction.md
+        href: isnotempty-function.md
       - name: isnotnull()
         displayName: is not null notnull()
-        href: isnotnullfunction.md
+        href: isnotnull-function.md
       - name: isnull()
         displayName: is null
-        href: isnullfunction.md
+        href: isnull-function.md
       - name: isutf8()
         displayName: is utf8
         href: isutf8.md
@@ -1549,7 +1549,7 @@ items:
           - name: dcount_intersect plugin
             href: dcount-intersect-plugin.md
           - name: infer_storage_schema plugin
-            href: inferstorageschemaplugin.md
+            href: infer-storage-schema-plugin.md
           - name: ipv4_lookup plugin
             href: ipv4-lookup-plugin.md
           - name: preview plugin

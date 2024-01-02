@@ -9,7 +9,7 @@ ms.date: 12/28/2022
 
 Reports the zero-based index of the first occurrence of a specified string within the input string.
 
-For more information, see [`indexof_regex()`](indexofregexfunction.md).
+For more information, see [`indexof_regex()`](indexof-regex-function.md).
 
 ## Syntax
 

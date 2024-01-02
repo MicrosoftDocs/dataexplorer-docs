@@ -66,7 +66,7 @@ The output row set of the following operators is marked as nonserialized.
 * [distinct](./distinct-operator.md)
 * [evaluate](./evaluate-operator.md)
 * [facet](./facet-operator.md)
-* [join](./joinoperator.md)
+* [join](./join-operator.md)
 * [make-series](./make-seriesoperator.md)
 * [mv-expand](./mvexpandoperator.md)
 * [reduce by](./reduceoperator.md)

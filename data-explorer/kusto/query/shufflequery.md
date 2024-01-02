@@ -11,7 +11,7 @@ The `shuffle` query is a semantic-preserving transformation used with a set of o
 
 You can use the following operators with the shuffle command:
 
-* [join](joinoperator.md)
+* [join](join-operator.md)
 * [summarize](summarizeoperator.md)
 * [make-series](make-seriesoperator.md)
 * [partition](partitionoperator.md)

@@ -10,7 +10,7 @@ ms.date: 01/03/2023
 Evaluates its sole argument and returns a `bool` value indicating if the argument evaluates to a null value.
 
 > [!NOTE]
-> String values can't be null. Use [isempty](./isemptyfunction.md) to determine if a value of type `string` is empty or not.
+> String values can't be null. Use [isempty](./isempty-function.md) to determine if a value of type `string` is empty or not.
 
 ## Syntax
 

@@ -10,7 +10,7 @@ ms.date: 01/01/2023
 Matches two IPv6 or IPv4 network address strings. The two IPv6/IPv4 strings are parsed and compared while accounting for the combined IP-prefix mask calculated from argument prefixes, and the optional `prefix` argument.
 
 > [!NOTE]
-> The function can accept and compare arguments representing both IPv6 and IPv4 network addresses. If the caller knows that arguments are in IPv4 format, use the [ipv4_is_match()](./ipv4-is-matchfunction.md) function. This function will result in better runtime performance.
+> The function can accept and compare arguments representing both IPv6 and IPv4 network addresses. If the caller knows that arguments are in IPv4 format, use the [ipv4_is_match()](./ipv4-is-match-function.md) function. This function will result in better runtime performance.
 
 ## Syntax
 

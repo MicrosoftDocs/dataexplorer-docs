@@ -31,10 +31,10 @@ Rows in *T* for which *Predicate* is `true`.
 > [!NOTE]
 > All filtering functions return false when compared with null values. Use special null-aware functions to write queries that handle null values.
 >
-> * [isnull()](./isnullfunction.md)
-> * [isnotnull()](./isnotnullfunction.md)
-> * [isempty()](./isemptyfunction.md)
-> * [isnotempty()](./isnotemptyfunction.md)
+> * [isnull()](./isnull-function.md)
+> * [isnotnull()](./isnotnull-function.md)
+> * [isempty()](./isempty-function.md)
+> * [isnotempty()](./isnotempty-function.md)
 
 ## Performance tips
 

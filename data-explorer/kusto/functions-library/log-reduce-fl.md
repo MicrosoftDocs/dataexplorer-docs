@@ -124,7 +124,7 @@ log_reduce_fl(tbl:(*), reduce_col:string,
 
 ## Example
 
-The following example uses the [invoke operator](../query/invokeoperator.md) to run the function. This example uses [Apache Hadoop distributed file system logs](https://hadoop.apache.org/docs/stable/hadoop-archive-logs/HadoopArchiveLogs.html).
+The following example uses the [invoke operator](../query/invoke-operator.md) to run the function. This example uses [Apache Hadoop distributed file system logs](https://hadoop.apache.org/docs/stable/hadoop-archive-logs/HadoopArchiveLogs.html).
 
 ### [Query-defined](#tab/query-defined)
 

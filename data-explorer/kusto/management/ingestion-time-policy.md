@@ -18,7 +18,7 @@ That time is measured by the Kusto cluster just before the data is committed.
 
 Since the ingestion time column is hidden, you can't directly query for its value.
 Instead, a special function called
-[ingestion_time()](../query/ingestiontimefunction.md)
+[ingestion_time()](../query/ingestion-time-function.md)
 retrieves that value. If there's no `datetime` column in the table,
 or the IngestionTime policy wasn't enabled when a record was ingested, a null
 value is returned.

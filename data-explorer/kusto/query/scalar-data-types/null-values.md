@@ -30,13 +30,13 @@ print bool(null), datetime(null), dynamic(null), guid(null), int(null), long(nul
 
 ## Predicates on null values
 
-The scalar function [`isnull()`](../isnullfunction.md) can be used to determine if a scalar value
-is the null value. The corresponding function [`isnotnull()`](../isnotnullfunction.md) can be used
+The scalar function [`isnull()`](../isnull-function.md) can be used to determine if a scalar value
+is the null value. The corresponding function [`isnotnull()`](../isnotnull-function.md) can be used
 to determine if a scalar value isn't the null value.
 
 > [!NOTE]
 > Because the `string` type doesn't support null values, we recommend using
-> the [`isempty()`](../isemptyfunction.md) and the [`isnotempty()`](../isnotemptyfunction.md)
+> the [`isempty()`](../isempty-function.md) and the [`isnotempty()`](../isnotempty-function.md)
 > functions.
 
 ## Equality and inequality of null values
@@ -152,7 +152,7 @@ The logical NOT operator [not()](../notfunction.md) yields the value `bool(null)
 
 ## Null values and the `in` operator
 
-* The [in operator](../inoperator.md) behaves like a logical OR of equality comparisons.
+* The [in operator](../in-operator.md) behaves like a logical OR of equality comparisons.
 * The `!in` operator behaves like a logical `AND` of inequality comparisons.
 
 ## Null values and data ingestion

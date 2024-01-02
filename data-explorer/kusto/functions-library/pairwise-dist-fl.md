@@ -158,7 +158,7 @@ let pairwise_dist_fl = (tbl:(*), id_col:string, partition_col:string)
 
 ## Example
 
-The following example uses the [invoke operator](../query/invokeoperator.md) to run the function.
+The following example uses the [invoke operator](../query/invoke-operator.md) to run the function.
 
 ### [Query-defined](#tab/query-defined)
 

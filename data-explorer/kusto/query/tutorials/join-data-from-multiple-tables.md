@@ -7,7 +7,7 @@ ms.date: 03/06/2023
 
 # Tutorial: Join data from multiple tables
 
-Joining data from multiple tables allows for a more comprehensive analysis by combining information from different sources and creating new relationships between data points. In the [Kusto Query Language (KQL)](../index.md), the [join](../joinoperator.md) and [lookup](../lookupoperator.md) operators are used to combine data across tables.
+Joining data from multiple tables allows for a more comprehensive analysis by combining information from different sources and creating new relationships between data points. In the [Kusto Query Language (KQL)](../index.md), the [join](../join-operator.md) and [lookup](../lookupoperator.md) operators are used to combine data across tables.
 
 In this tutorial, you'll learn how to:
 
@@ -92,7 +92,7 @@ Add `| render columnchart` to the query to visualize the result.
 :::image type="content" source="../images/kql-tutorials/damage-per-capita-chart.png" alt-text="Screenshot of column chart showing property damage per capita by state.":::
 
 > [!TIP]
-> There are many types of joins that you can perform with the `join` operator. See a [list of join flavors](../joinoperator.md#returns).
+> There are many types of joins that you can perform with the `join` operator. See a [list of join flavors](../join-operator.md#returns).
 
 ## Use the lookup operator
 

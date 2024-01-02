@@ -123,7 +123,7 @@ plotly_anomaly_fl(tbl:(*), time_col:string, val_col:string, baseline_col:string,
 
 ## Example
 
-The following example uses the [invoke operator](../query/invokeoperator.md) to run the function.
+The following example uses the [invoke operator](../query/invoke-operator.md) to run the function.
 
 ### [Query-defined](#tab/query-defined)
 

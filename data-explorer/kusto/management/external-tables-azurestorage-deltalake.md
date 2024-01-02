@@ -39,7 +39,7 @@ To `.create-or-alter` an external table using managed identity authentication re
 > * The path format is automatically inferred from the partitioning information. For more information, see [Path format](external-tables-azurestorage-azuredatalake.md#path-format)
 
 > [!TIP]
->  For a custom schema, you can use the [infer_storage_schema](../query/inferstorageschemaplugin.md) plugin to infer the schema based on the external file content.
+>  For a custom schema, you can use the [infer_storage_schema](../query/infer-storage-schema-plugin.md) plugin to infer the schema based on the external file content.
 
 
 ## Authentication and authorization

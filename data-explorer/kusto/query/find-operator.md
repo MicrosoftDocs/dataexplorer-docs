@@ -116,7 +116,7 @@ For a summary of some filtering functions, see [where operator](./whereoperator.
 * Use [tables](../management/tables.md) as opposed to [tabular expressions](./tabularexpressionstatements.md).
 If tabular expression, the find operator falls back to a `union` query that can result in degraded performance.
 * If a column that appears in multiple tables and has multiple types, is part of the project clause, prefer adding a *ColumnType* to the project clause over modifying the table before passing it to `find`.
-* Add time-based filters to the predicate. Use a datetime column value or [ingestion_time()](./ingestiontimefunction.md).
+* Add time-based filters to the predicate. Use a datetime column value or [ingestion_time()](./ingestion-time-function.md).
 * Search in specific columns rather than a full text search.
 * It's better not to reference columns that appear in multiple tables and have multiple types. If the predicate is valid when resolving such columns type for more than one type, the query will fall back to union.
 For example, see [examples of cases where find will act as a union](./find-operator.md#examples-of-cases-where-find-will-act-as-union).

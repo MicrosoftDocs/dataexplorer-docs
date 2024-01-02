@@ -9,7 +9,7 @@ The following table provides a comparison of the `in` operators:
 |-----------|--------------|----------------|-------------------------|
 |[`in`](../kusto/query/in-cs-operator.md) |Equals to one of the elements |Yes |`"abc" in ("123", "345", "abc")`|
 |[`!in`](../kusto/query/not-in-cs-operator.md) |Not equals to any of the elements |Yes | `"bca" !in ("123", "345", "abc")` |
-|[`in~`](../kusto/query/inoperator.md) |Equals to any of the elements |No | `"Abc" in~ ("123", "345", "abc")` |
+|[`in~`](../kusto/query/in-operator.md) |Equals to any of the elements |No | `"Abc" in~ ("123", "345", "abc")` |
 |[`!in~`](../kusto/query/not-in-operator.md) |Not equals to any of the elements |No | `"bCa" !in~ ("123", "345", "ABC")` |
 
 > [!NOTE]

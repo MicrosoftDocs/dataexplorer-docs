@@ -246,7 +246,7 @@ T
         Column == "valueN"
 ```
 
-For this specific case, rewrite the query using the [`in()`](../query/inoperator.md) operator.
+For this specific case, rewrite the query using the [`in()`](../query/in-operator.md) operator.
 
 ```kusto
 T 

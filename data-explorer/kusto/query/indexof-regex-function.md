@@ -9,7 +9,7 @@ ms.date: 12/28/2022
 
 Returns the zero-based index of the first occurrence of a specified lookup [regular expression](re2.md) within the input string.
 
-See [`indexof()`](indexoffunction.md).
+See [`indexof()`](indexof-function.md).
 
 ## Syntax
 

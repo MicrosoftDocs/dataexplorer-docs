@@ -23,8 +23,8 @@ Operator       |Description                         |Example
 `!=`	       |Not equals                          |`1 != 0`
 `<=`           |Less or Equal                       |`4 <= 5`
 `>=`           |Greater or Equal                    |`5 >= 4`
-`in`           |Equals to one of the elements       |[see here](inoperator.md)
-`!in`          |Not equals to any of the elements   |[see here](inoperator.md)
+`in`           |Equals to one of the elements       |[see here](in-operator.md)
+`!in`          |Not equals to any of the elements   |[see here](in-operator.md)
 
 > [!NOTE]
 > To convert from one numerical type to another, use `to*()` functions. For example, see [`tolong()`](tolongfunction.md) and [`toint()`](tointfunction.md).

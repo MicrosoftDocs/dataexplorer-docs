@@ -99,7 +99,7 @@ This match can be achieved by the following process:
 > * If possible, reduce polygons count due to nature of the data or business needs. Filter out unnecessary polygons before join, scope to the area of interest or unify polygons.
 > * In case of very big polygons, reduce their size using [geo_polygon_simplify()](geo-polygon-simplify-function.md).
 > * Changing S2 cell level may improve performance and memory consumption.
-> * Changing [join kind and hint](joinoperator.md) may improve performance and memory consumption.
+> * Changing [join kind and hint](join-operator.md) may improve performance and memory consumption.
 > * If a positive radius is set, you can try to improve performance by reverting to radius 0 on buffered shape using [geo_polygon_buffer()](geo-polygon-buffer-function.md).
 
 ## Examples

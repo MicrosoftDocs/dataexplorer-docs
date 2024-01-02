@@ -90,7 +90,7 @@ log_reduce_predict_full_fl(tbl:(*), models_tbl: (name:string, timestamp: datetim
 
 ## Example
 
-The following example uses the [invoke operator](../query/invokeoperator.md) to run the function.
+The following example uses the [invoke operator](../query/invoke-operator.md) to run the function.
 
 ### [Query-defined](#tab/query-defined)
 

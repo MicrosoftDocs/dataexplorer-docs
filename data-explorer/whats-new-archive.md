@@ -502,7 +502,7 @@ Article title | Description
 ---|---
 [mysql_request plugin (Preview)](kusto/query/mysqlrequest-plugin.md) | New article. The `mysql_request` plugin sends a SQL query to a MySQL Server network endpoint and returns the first rowset in the results.
 [ipv4_lookup plugin](kusto/query/ipv4-lookup-plugin.md) | New article. The `ipv4_lookup` plugin looks up an IPv4 value in a lookup table and returns rows with matched values.
-[ipv4_is_private()](kusto/query/ipv4-is-privatefunction.md) | New article. Checks if IPv4 string address belongs to a set of private network IPs.
+[ipv4_is_private()](kusto/query/ipv4-is-private-function.md) | New article. Checks if IPv4 string address belongs to a set of private network IPs.
 [Splunk to Kusto Query Language map](kusto/query/splunk-cheat-sheet.md) | New article. This article is intended to assist users who are familiar with Splunk learn the Kusto Query Language to write log queries with Kusto.
 [gzip_compress_to_base64_string()](kusto/query/gzip-base64-compress.md) | New article. Performs gzip compression and encodes the result to base64.
 [gzip_decompress_from_base64_string()](kusto/query/gzip-base64-decompress.md) | New article. Decodes the input string from base64 and performs gzip decompression.

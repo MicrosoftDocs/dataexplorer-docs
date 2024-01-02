@@ -146,12 +146,12 @@
         "redirect_document_id": true
       },
       {
-        "source_path": "data-explorer/kusto/query/arrayifffunction.md",
+        "source_path": "data-explorer/kusto/query/arrayiff-function.md",
         "redirect_url": "/azure/data-explorer/kusto/query/array-iff-function",
         "redirect_document_id": true
       },
       {
-        "source_path": "data-explorer/kusto/query/arrayindexoffunction.md",
+        "source_path": "data-explorer/kusto/query/arrayindexof-function.md",
         "redirect_url": "/azure/data-explorer/kusto/query/array-index-of-function",
         "redirect_document_id": true
       },
@@ -451,7 +451,7 @@
         "redirect_document_id": true
       },
       {
-        "source_path": "data-explorer/kusto/query/datetime-difffunction.md",
+        "source_path": "data-explorer/kusto/query/datetime-diff-function.md",
         "redirect_url": "/azure/data-explorer/kusto/query/datetime-diff-function",
         "redirect_document_id": true
       },
@@ -602,57 +602,147 @@
       },
       {
         "source_path": "data-explorer/kusto/query/gammafunction.md",
-        "redirect_url": "/azure/data-explorer/kusto/query/gamma-function.md",
+        "redirect_url": "/azure/data-explorer/kusto/query/gamma-function",
         "redirect_document_id": true
       },
       {
         "source_path": "data-explorer/kusto/query/getschemaoperator.md",
-        "redirect_url": "/azure/data-explorer/kusto/query/getschema-operator.md",
+        "redirect_url": "/azure/data-explorer/kusto/query/getschema-operator",
         "redirect_document_id": true
       },
       {
         "source_path": "data-explorer/kusto/query/gettypefunction.md",
-        "redirect_url": "/azure/data-explorer/kusto/query/gettype-function.md",
+        "redirect_url": "/azure/data-explorer/kusto/query/gettype-function",
         "redirect_document_id": true
       },
       {
         "source_path": "data-explorer/kusto/query/getyearfunction.md",
-        "redirect_url": "/azure/data-explorer/kusto/query/getyear-function.md",
+        "redirect_url": "/azure/data-explorer/kusto/query/getyear-function",
         "redirect_document_id": true
       },
       {
         "source_path": "data-explorer/kusto/query/has-anyoperator.md",
-        "redirect_url": "/azure/data-explorer/kusto/query/has-any-operator.md",
+        "redirect_url": "/azure/data-explorer/kusto/query/has-any-operator",
         "redirect_document_id": true
       },
       {
         "source_path": "data-explorer/kusto/query/hash_combinefunction.md",
-        "redirect_url": "/azure/data-explorer/kusto/query/hash-combine-function.md",
+        "redirect_url": "/azure/data-explorer/kusto/query/hash-combine-function",
         "redirect_document_id": true
       },
       {
         "source_path": "data-explorer/kusto/query/hash-function.md",
-        "redirect_url": "/azure/data-explorer/kusto/query/hash-function.md",
+        "redirect_url": "/azure/data-explorer/kusto/query/hash-function",
         "redirect_document_id": true
       },
       {
         "source_path": "data-explorer/kusto/query/hll-aggfunction.md",
-        "redirect_url": "/azure/data-explorer/kusto/query/hll-aggregation-function.md",
+        "redirect_url": "/azure/data-explorer/kusto/query/hll-aggregation-function",
         "redirect_document_id": true
       },
       {
         "source_path": "data-explorer/kusto/query/hll-merge-aggfunction.md",
-        "redirect_url": "/azure/data-explorer/kusto/query/hll-merge-aggregation-function.md",
+        "redirect_url": "/azure/data-explorer/kusto/query/hll-merge-aggregation-function",
         "redirect_document_id": true
       },
       {
         "source_path": "data-explorer/kusto/query/hllmergefunction.md",
-        "redirect_url": "/azure/data-explorer/kusto/query/hll-merge-function.md",
+        "redirect_url": "/azure/data-explorer/kusto/query/hll-merge-function",
         "redirect_document_id": true
       },
       {
         "source_path": "data-explorer/kusto/query/hourofdayfunction.md",
-        "redirect_url": "/azure/data-explorer/kusto/query/hour-of-day-function.md",
+        "redirect_url": "/azure/data-explorer/kusto/query/hour-of-day-function",
+        "redirect_document_id": true
+      },
+      {
+        "source_path": "data-explorer/kusto/query/ifffunction.md",
+        "redirect_url": "/azure/data-explorer/kusto/query/iff-function",
+        "redirect_document_id": true
+      },
+      {
+        "source_path": "data-explorer/kusto/query/indexoffunction.md",
+        "redirect_url": "/azure/data-explorer/kusto/query/indexof-function",
+        "redirect_document_id": true
+      },
+      {
+        "source_path": "data-explorer/kusto/query/indexofregexfunction.md",
+        "redirect_url": "/azure/data-explorer/kusto/query/indexof-regex-function",
+        "redirect_document_id": true
+      },
+      {
+        "source_path": "data-explorer/kusto/query/inferstorageschemaplugin.md",
+        "redirect_url": "/azure/data-explorer/kusto/query/infer-storage-schema-plugin",
+        "redirect_document_id": true
+      },
+      {
+        "source_path": "data-explorer/kusto/query/ingestiontimefunction.md",
+        "redirect_url": "/azure/data-explorer/kusto/query/ingestion-time-function",
+        "redirect_document_id": true
+      },
+      {
+        "source_path": "data-explorer/kusto/query/inoperator.md",
+        "redirect_url": "/azure/data-explorer/kusto/query/in-operator",
+        "redirect_document_id": true
+      },
+      {
+        "source_path": "data-explorer/kusto/query/invokeoperator.md",
+        "redirect_url": "/azure/data-explorer/kusto/query/invoke-operator",
+        "redirect_document_id": true
+      },
+      {
+        "source_path": "data-explorer/kusto/query/ipv4-comparefunction.md",
+        "redirect_url": "/azure/data-explorer/kusto/query/ipv4-compare-function",
+        "redirect_document_id": true
+      },
+      {
+        "source_path": "data-explorer/kusto/query/ipv4-is-matchfunction.md",
+        "redirect_url": "/azure/data-explorer/kusto/query/ipv4-is-match-function",
+        "redirect_document_id": true
+      },
+      {
+        "source_path": "data-explorer/kusto/query/ipv4-is-privatefunction.md",
+        "redirect_url": "/azure/data-explorer/kusto/query/ipv4-is-private-function",
+        "redirect_document_id": true
+      },
+      {
+        "source_path": "data-explorer/kusto/query/ipv6-comparefunction.md",
+        "redirect_url": "/azure/data-explorer/kusto/query/ipv6-compare-function",
+        "redirect_document_id": true
+      },
+      {
+        "source_path": "data-explorer/kusto/query/ipv6-is-matchfunction.md",
+        "redirect_url": "/azure/data-explorer/kusto/query/ipv6-is-matchfunction",
+        "redirect_document_id": true
+      },
+      {
+        "source_path": "data-explorer/kusto/query/isemptyfunction.md",
+        "redirect_url": "/azure/data-explorer/kusto/query/isempty-function.md",
+        "redirect_document_id": true
+      },
+      {
+        "source_path": "data-explorer/kusto/query/isfinitefunction.md",
+        "redirect_url": "/azure/data-explorer/kusto/query/isfinite-function.md",
+        "redirect_document_id": true
+      },
+      {
+        "source_path": "data-explorer/kusto/query/isinffunction.md",
+        "redirect_url": "/azure/data-explorer/kusto/query/isinf-function.md",
+        "redirect_document_id": true
+      },
+      {
+        "source_path": "data-explorer/kusto/query/isnotemptyfunction.md",
+        "redirect_url": "/azure/data-explorer/kusto/query/isnotempty-function.md",
+        "redirect_document_id": true
+      },
+      {
+        "source_path": "data-explorer/kusto/query/isnotnullfunction.md",
+        "redirect_url": "/azure/data-explorer/kusto/query/isnotnull-function.md",
+        "redirect_document_id": true
+      },
+      {
+        "source_path": "data-explorer/kusto/query/isnullfunction.md",
+        "redirect_url": "/azure/data-explorer/kusto/query/isnull-function.md",
         "redirect_document_id": true
       }
     ]

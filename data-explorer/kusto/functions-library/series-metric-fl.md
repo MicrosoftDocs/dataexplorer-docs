@@ -94,7 +94,7 @@ series_metric_fl(metrics_tbl:(*), timestamp_col:string, name_col:string, labels_
 
 ## Examples
 
-The following examples use the [invoke operator](../query/invokeoperator.md) to run the function.
+The following examples use the [invoke operator](../query/invoke-operator.md) to run the function.
 
 ### With specifying selector
 

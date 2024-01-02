@@ -18,7 +18,7 @@ Here, the result is a table that extends the `FactTable` (`$left`) with data fro
 with each pair (`CommonColumn1`,`Col2`) in the latter table.
 For the differences between fact and dimension tables, see [fact and dimension tables](../concepts/fact-and-dimension-tables.md).
 
-The `lookup` operator performs an operation similar to the [join operator](joinoperator.md)
+The `lookup` operator performs an operation similar to the [join operator](join-operator.md)
 with the following differences:
 
 * The result doesn't repeat columns from the `$right` table that are the basis
