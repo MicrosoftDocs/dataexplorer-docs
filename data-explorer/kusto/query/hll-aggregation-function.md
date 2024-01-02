@@ -15,7 +15,7 @@ Read about the [underlying algorithm (*H*yper*L*og*L*og) and the estimation accu
 
 > [!TIP]
 >
->- Use the [hll_merge](hllmergefunction.md) function to merge the results of multiple `hll()` functions.
+>- Use the [hll_merge](hll-merge-function.md) function to merge the results of multiple `hll()` functions.
 >- Use the [dcount_hll](dcount-hll-function.md) function to calculate the number of distinct values from the output of the `hll()` or `hll_merge` functions.
 
 > [!IMPORTANT]

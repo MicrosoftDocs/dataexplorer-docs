@@ -24,7 +24,7 @@ This article outlines the syntax conventions followed in the [Kusto Query Langua
 
 ### Scalar function
 
-This example shows the syntax and an example usage of the [hash function](hashfunction.md), followed by an explanation of how each syntax component translates into the example usage.
+This example shows the syntax and an example usage of the [hash function](hash-function.md), followed by an explanation of how each syntax component translates into the example usage.
 
 #### Syntax
 

@@ -34,7 +34,7 @@ For more information, see the [underlying algorithm (*H*yper*L*og*L*og) and esti
 The function returns the merged HLL values of *hll* across the group.
 
 > [!TIP]
-> Use the [dcount_hll](dcount-hll-function.md) function to calculate the `dcount` from [hll()](hll-aggfunction.md) and [hll_merge()](hll-merge-aggfunction.md) aggregation functions.
+> Use the [dcount_hll](dcount-hll-function.md) function to calculate the `dcount` from [hll()](hll-aggregation-function.md) and [hll_merge()](hll-merge-aggregation-function.md) aggregation functions.
 
 ## Example
 

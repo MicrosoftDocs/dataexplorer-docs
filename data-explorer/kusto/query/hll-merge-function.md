@@ -7,7 +7,7 @@ ms.date: 12/28/2022
 ---
 # hll_merge()
 
-Merges HLL results. This is the scalar version of the aggregate version [`hll_merge()`](hll-merge-aggfunction.md).
+Merges HLL results. This is the scalar version of the aggregate version [`hll_merge()`](hll-merge-aggregation-function.md).
 
 Read about the [underlying algorithm (*H*yper*L*og*L*og) and estimation accuracy](#estimation-accuracy).
 

@@ -224,7 +224,7 @@ The following aggregation functions are supported:
 * [`arg_min`](../../query/arg-min-aggregation-function.md)
 * [`take_any`](../../query/take-any-aggfunction.md)
 * [`take_anyif`](../../query/take-anyif-aggfunction.md)
-* [`hll`](../../query/hll-aggfunction.md)
+* [`hll`](../../query/hll-aggregation-function.md)
 * [`make_set`](../../query/makeset-aggfunction.md)
 * [`make_list`](../../query/makelist-aggfunction.md)
 * [`make_bag`](../../query/make-bag-aggfunction.md)

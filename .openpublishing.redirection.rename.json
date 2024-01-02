@@ -619,6 +619,41 @@
         "source_path": "data-explorer/kusto/query/getyearfunction.md",
         "redirect_url": "/azure/data-explorer/kusto/query/getyear-function.md",
         "redirect_document_id": true
+      },
+      {
+        "source_path": "data-explorer/kusto/query/has-anyoperator.md",
+        "redirect_url": "/azure/data-explorer/kusto/query/has-any-operator.md",
+        "redirect_document_id": true
+      },
+      {
+        "source_path": "data-explorer/kusto/query/hash_combinefunction.md",
+        "redirect_url": "/azure/data-explorer/kusto/query/hash-combine-function.md",
+        "redirect_document_id": true
+      },
+      {
+        "source_path": "data-explorer/kusto/query/hash-function.md",
+        "redirect_url": "/azure/data-explorer/kusto/query/hash-function.md",
+        "redirect_document_id": true
+      },
+      {
+        "source_path": "data-explorer/kusto/query/hll-aggfunction.md",
+        "redirect_url": "/azure/data-explorer/kusto/query/hll-aggregation-function.md",
+        "redirect_document_id": true
+      },
+      {
+        "source_path": "data-explorer/kusto/query/hll-merge-aggfunction.md",
+        "redirect_url": "/azure/data-explorer/kusto/query/hll-merge-aggregation-function.md",
+        "redirect_document_id": true
+      },
+      {
+        "source_path": "data-explorer/kusto/query/hllmergefunction.md",
+        "redirect_url": "/azure/data-explorer/kusto/query/hll-merge-function.md",
+        "redirect_document_id": true
+      },
+      {
+        "source_path": "data-explorer/kusto/query/hourofdayfunction.md",
+        "redirect_url": "/azure/data-explorer/kusto/query/hour-of-day-function.md",
+        "redirect_document_id": true
       }
     ]
 }

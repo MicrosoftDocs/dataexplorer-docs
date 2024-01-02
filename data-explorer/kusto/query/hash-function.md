@@ -12,7 +12,7 @@ Returns a hash value for the input value.
 > [!NOTE]
 >
 > * The function calculates hashes using the xxhash64 algorithm, but this may change. It's recommended to only use this function within a single query.
-> * If you need to persist a combined hash, it's recommended to use [hash_sha256()](sha256hashfunction.md), [hash_sha1()](sha1-hash-function.md), or [hash_md5()](md5hashfunction.md) and combine the hashes with a [bitwise operator](bin-operators.md). These functions are more complex to calculate than `hash()`.
+> * If you need to persist a combined hash, it's recommended to use [hash_sha256()](sha256hash-function.md), [hash_sha1()](sha1-hash-function.md), or [hash_md5()](md5hash-function.md) and combine the hashes with a [bitwise operator](bin-operators.md). These functions are more complex to calculate than `hash()`.
 
 ## Syntax
 

@@ -442,7 +442,7 @@ items:
             href: has-all-operator.md
           - name: has_any operator
             displayName: has any operator
-            href: has-anyoperator.md
+            href: has-any-operator.md
           - name: in operator
             displayName: in operator case sensitive
             href: in-cs-operator.md
@@ -798,31 +798,31 @@ items:
         displayName: has ipv4 prefix
         href: has-ipv4-prefix-function.md
       - name: hash()
-        href: hashfunction.md
+        href: hash-function.md
       - name: hash_combine()
         displayName: hash combine
-        href: hash_combinefunction.md
+        href: hash-combine-function.md
       - name: hash_many()
         displayName: hash many
         href: hash_manyfunction.md
       - name: hash_md5()
         displayName: hash md5
-        href: md5hashfunction.md
+        href: md5hash-function.md
       - name: hash_sha1()
         displayName: hash sha1
         href: sha1-hash-function.md
       - name: hash_sha256()
         displayName: hash sha256
-        href: sha256hashfunction.md
+        href: sha256hash-function.md
       - name: hash_xxhash64()
         displayName: hash xxhash64
         href: hash-xxhash64-function.md
       - name: hll_merge()
         displayName: hll merge
-        href: hllmergefunction.md
+        href: hll-merge-function.md
       - name: hourofday()
         displayName: hourofday() hour of day
-        href: hourofdayfunction.md
+        href: hour-of-day-function.md
       - name: iff()
         displayName: iif()
         href: ifffunction.md
@@ -1213,11 +1213,11 @@ items:
       - name: dcountif()
         href: dcountif-aggregation-function.md
       - name: hll()
-        href: hll-aggfunction.md
+        href: hll-aggregation-function.md
       - name: hll_if()
         href: hll-if-aggregation-function.md
       - name: hll_merge()
-        href: hll-merge-aggfunction.md
+        href: hll-merge-aggregation-function.md
       - name: make_bag()
         href: make-bag-aggfunction.md
       - name: make_bag_if()
