@@ -54,7 +54,7 @@ This article lists all available scalar functions grouped by type. For aggregati
 |[hourofday()](hour-of-day-function.md)|Returns the integer number representing the hour number of the given date.|
 |[make_datetime()](make-datetime-function.md)|Creates a datetime scalar value from the specified date and time.|
 |[make_timespan()](make-timespan-function.md)|Creates a timespan scalar value from the specified time period.|
-|[monthofyear()](monthofyearfunction.md)|Returns the integer number that represents the month number of the given year.|
+|[monthofyear()](monthofyear-function.md)|Returns the integer number that represents the month number of the given year.|
 |[now()](nowfunction.md)|Returns the current UTC clock time, optionally offset by a given timespan.|
 |[startofday()](startofdayfunction.md)|Returns the start of the day containing the date, shifted by an offset, if provided.|
 |[startofmonth()](startofmonthfunction.md)|Returns the start of the month containing the date, shifted by an offset, if provided.|
@@ -193,8 +193,8 @@ This article lists all available scalar functions grouped by type. For aggregati
 |[case()](case-function.md)|Evaluates a list of predicates and returns the first result expression whose predicate is satisfied.|
 |[coalesce()](coalesce-function.md)|Evaluates a list of expressions and returns the first non-null (or non-empty for string) expression.|
 |[iff()](./ifffunction.md)|Evaluate the first argument (the predicate), and returns the value of either the second or third arguments, depending on whether the predicate evaluated to true (second) or false (third).|
-|[max_of()](max-offunction.md)|Returns the maximum value of several evaluated numeric expressions.|
-|[min_of()](min-offunction.md)|Returns the minimum value of several evaluated numeric expressions.|
+|[max_of()](max-of-function.md)|Returns the maximum value of several evaluated numeric expressions.|
+|[min_of()](min-of-function.md)|Returns the minimum value of several evaluated numeric expressions.|
 
 ## Series element-wise functions
 
@@ -412,7 +412,7 @@ This article lists all available scalar functions grouped by type. For aggregati
 |[hash()](hash-function.md)|Returns a hash value for the input value.|
 |[hash_combine()](hash-combine-function.md)|Combines two or more hash values.|
 |[hash_many()](hash_manyfunction.md)|Returns a combined hash value of multiple values.|
-|[hash_md5()](md5hash-function.md)|Returns an MD5 hash value for the input value.|
+|[hash_md5()](hash-md5-function.md)|Returns an MD5 hash value for the input value.|
 |[hash_sha1()](sha1-hash-function.md)|Returns a SHA1 hash value for the input value.|
 |[hash_sha256()](sha256hash-function.md)|Returns a SHA256 hash value for the input value.|
 |[hash_xxhash64()](hash-xxhash64-function.md)|Returns an XXHASH64 hash value for the input value.|

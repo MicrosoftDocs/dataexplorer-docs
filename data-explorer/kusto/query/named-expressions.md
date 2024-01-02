@@ -34,7 +34,7 @@ To mitigate these concerns, you can materialize the calculation results in memor
 
 Use the following strategies for tabular functions:
 
-* **let statements and function parameters**: Use the [materialize()](materializefunction.md) function.
+* **let statements and function parameters**: Use the [materialize()](materialize-function.md) function.
 * **as operator**: Set the `hint.materialized` hint value to `true`.
 
 For example, the following query uses the non-deterministic tabular [sample operator](sampleoperator.md):

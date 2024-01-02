@@ -38,8 +38,8 @@ The following aggregation functions are supported:
 
 * [sum()](sum-aggfunction.md)
 * [count()](count-aggregation-function.md)
-* [max()](max-aggfunction.md)
-* [min()](min-aggfunction.md)
+* [max()](max-aggregation-function.md)
+* [min()](min-aggregation-function.md)
 * [dcount()](dcountif-aggregation-function.md)
 * [avg()](avg-aggfunction.md)
 * [percentile()](percentiles-aggfunction.md)

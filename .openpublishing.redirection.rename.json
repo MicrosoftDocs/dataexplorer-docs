@@ -211,7 +211,7 @@
         "redirect_document_id": true
       },
       {
-        "source_path": "data-explorer/kusto/query/arg-max-aggfunction.md",
+        "source_path": "data-explorer/kusto/query/arg-max-aggregation-function.md",
         "redirect_url": "/azure/data-explorer/kusto/query/arg-max-aggregation-function",
         "redirect_document_id": true
       },
@@ -813,6 +813,71 @@
       {
         "source_path": "data-explorer/kusto/query/makeset-aggfunction.md",
         "redirect_url": "/azure/data-explorer/kusto/query/make-set-aggregation-function",
+        "redirect_document_id": true
+      },
+      {
+        "source_path": "data-explorer/kusto/query/makesetif-aggfunction.md",
+        "redirect_url": "/azure/data-explorer/kusto/query/make-set-if-aggregation-function",
+        "redirect_document_id": true
+      },
+      {
+        "source_path": "data-explorer/kusto/query/materializefunction.md",
+        "redirect_url": "/azure/data-explorer/kusto/query/materialize-function",
+        "redirect_document_id": true
+      },
+      {
+        "source_path": "data-explorer/kusto/query/max-aggfunction.md",
+        "redirect_url": "/azure/data-explorer/kusto/query/max-aggregation-function",
+        "redirect_document_id": true
+      },
+      {
+        "source_path": "data-explorer/kusto/query/max-offunction.md",
+        "redirect_url": "/azure/data-explorer/kusto/query/max-of-function",
+        "redirect_document_id": true
+      },
+      {
+        "source_path": "data-explorer/kusto/query/maxif-aggfunction.md",
+        "redirect_url": "/azure/data-explorer/kusto/query/maxif-aggregation-function",
+        "redirect_document_id": true
+      },
+      {
+        "source_path": "data-explorer/kusto/query/md5hash-function.md",
+        "redirect_url": "/azure/data-explorer/kusto/query/hash-md5-function",
+        "redirect_document_id": true
+      },
+      {
+        "source_path": "data-explorer/kusto/query/min-aggfunction.md",
+        "redirect_url": "/azure/data-explorer/kusto/query/min-aggregation-function",
+        "redirect_document_id": true
+      },
+      {
+        "source_path": "data-explorer/kusto/query/min-offunction.md",
+        "redirect_url": "/azure/data-explorer/kusto/query/min-of-function",
+        "redirect_document_id": true
+      },
+      {
+        "source_path": "data-explorer/kusto/query/minif-aggfunction.md",
+        "redirect_url": "/azure/data-explorer/kusto/query/minif-aggregation-function",
+        "redirect_document_id": true
+      },
+      {
+        "source_path": "data-explorer/kusto/query/monthofyearfunction.md",
+        "redirect_url": "/azure/data-explorer/kusto/query/monthofyear-function",
+        "redirect_document_id": true
+      },
+      {
+        "source_path": "data-explorer/kusto/query/mv-applyoperator.md",
+        "redirect_url": "/azure/data-explorer/kusto/query/mv-apply-operator",
+        "redirect_document_id": true
+      },
+      {
+        "source_path": "data-explorer/kusto/query/mv-expandoperator.md",
+        "redirect_url": "/azure/data-explorer/kusto/query/mv-expand-operator",
+        "redirect_document_id": true
+      },
+      {
+        "source_path": "data-explorer/kusto/query/mysqlrequest-plugin.md",
+        "redirect_url": "/azure/data-explorer/kusto/query/mysql-request-plugin",
         "redirect_document_id": true
       }
     ]

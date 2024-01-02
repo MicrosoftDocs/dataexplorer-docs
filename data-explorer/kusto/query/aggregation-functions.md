@@ -48,8 +48,8 @@ An aggregation function performs a calculation on a set of values, and returns a
 | [hll()](hll-aggregation-function.md) | Returns the HyperLogLog (HLL) results of the group elements, an intermediate value of the `dcount` approximation. |
 | [hll_if()](hll-if-aggregation-function.md) | Returns the HyperLogLog (HLL) results of the group elements, an intermediate value of the `dcount` approximation (with predicate). |
 | [hll_merge()](hll-merge-aggregation-function.md) | Returns a value for merged HLL results. |
-| [max()](max-aggfunction.md), [maxif()](maxif-aggfunction.md) | Returns the maximum value across the group without/with a predicate. |
-| [min()](min-aggfunction.md), [minif()](minif-aggfunction.md) | Returns the minimum value across the group without/with a predicate. |
+| [max()](max-aggregation-function.md), [maxif()](maxif-aggregation-function.md) | Returns the maximum value across the group without/with a predicate. |
+| [min()](min-aggregation-function.md), [minif()](minif-aggregation-function.md) | Returns the minimum value across the group without/with a predicate. |
 | [percentile()](percentiles-aggfunction.md) | Returns a percentile estimation of the group. |
 | [percentiles()](percentiles-aggfunction.md) | Returns percentile estimations of the group. |
 | [percentiles_array()](percentiles-aggfunction.md) | Returns the percentile approximates of the array. |

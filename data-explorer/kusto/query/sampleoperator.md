@@ -45,7 +45,7 @@ union (_sample), (_sample)
 | 83  |
 | 3   |
 
-To ensure that in example above `_sample` is calculated once, one can use [materialize()](./materializefunction.md) function:
+To ensure that in example above `_sample` is calculated once, one can use [materialize()](./materialize-function.md) function:
 
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA0XLOwqAMBCE4d5TTJmARVIHzyILrhLIi2QFEQ+vYsBu4P8msGBeSAgTKqWNcWCtOcJCMqwxaMIF1g3hlY1iCfzYSMLVU/Anq+9/oUer3bAnnxNU93r85w3rZ9v0cQAAAA==" target="_blank">Run the query</a>

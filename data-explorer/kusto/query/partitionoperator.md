@@ -80,7 +80,7 @@ The following list of operators can be used in subqueries with the native or shu
 * [distinct](distinct-operator.md)
 * [extend](extend-operator.md)
 * [make-series](make-series-operator.md)
-* [mv-apply](mv-applyoperator.md)
+* [mv-apply](mv-apply-operator.md)
 * [mv-expand](mvexpandoperator.md)
 * [parse](parseoperator.md)
 * [parse-where](parsewhereoperator.md)

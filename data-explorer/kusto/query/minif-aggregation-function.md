@@ -11,7 +11,7 @@ Returns the minimum of *Expr* in records for which *Predicate* evaluates to `tru
 
 * Can be used only in context of aggregation inside [summarize](summarizeoperator.md)
 
-See also - [min()](min-aggfunction.md) function, which returns the minimum value across the group without predicate expression.
+See also - [min()](min-aggregation-function.md) function, which returns the minimum value across the group without predicate expression.
 
 ## Syntax
 

@@ -11,7 +11,7 @@ Calculates the maximum value of *expr* in records for which *predicate* evaluate
 
 [!INCLUDE [data-explorer-agg-function-summarize-note](../../includes/data-explorer-agg-function-summarize-note.md)]
 
-See also - [max()](max-aggfunction.md) function, which returns the maximum value across the group without predicate expression.
+See also - [max()](max-aggregation-function.md) function, which returns the maximum value across the group without predicate expression.
 
 ## Syntax
 

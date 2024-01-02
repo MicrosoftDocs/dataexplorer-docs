@@ -33,7 +33,7 @@ The `preview` plugin returns two result tables:
   For example, the sample query above is equivalent to running `T | count`.
 
 > [!TIP]
-> If `evaluate` is preceded by a tabular source that includes a complex filter, or a filter that references most of the source table columns, prefer to use the [`materialize`](materializefunction.md) function. For example:
+> If `evaluate` is preceded by a tabular source that includes a complex filter, or a filter that references most of the source table columns, prefer to use the [`materialize`](materialize-function.md) function. For example:
 
 ## Example
 

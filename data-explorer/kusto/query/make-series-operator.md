@@ -85,10 +85,10 @@ Finally the rows from the intermediate result arranged into groups having the sa
 |[countif()](countif-aggregation-function.md)|Returns a count with the predicate of the group|
 |[dcount()](dcount-aggfunction.md)|Returns an  approximate distinct count of the group elements|
 |[dcountif()](dcountif-aggregation-function.md)|Returns an approximate distinct count with the predicate of the group|
-|[max()](max-aggfunction.md)|Returns the maximum value across the group|
-|[maxif()](maxif-aggfunction.md)|Returns the maximum value with the predicate of the group|
-|[min()](min-aggfunction.md)|Returns the minimum value across the group|
-|[minif()](minif-aggfunction.md)|Returns the minimum value with the predicate of the group|
+|[max()](max-aggregation-function.md)|Returns the maximum value across the group|
+|[maxif()](maxif-aggregation-function.md)|Returns the maximum value with the predicate of the group|
+|[min()](min-aggregation-function.md)|Returns the minimum value across the group|
+|[minif()](minif-aggregation-function.md)|Returns the minimum value with the predicate of the group|
 |[percentile()](percentiles-aggfunction.md)|Returns the percentile value across the group|
 |[take_any()](take-any-aggfunction.md)|Returns a random non-empty value for the group|
 |[stdev()](stdev-aggfunction.md)|Returns the standard deviation across the group|

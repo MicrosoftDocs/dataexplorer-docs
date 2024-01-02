@@ -193,7 +193,7 @@ items:
       - name: lookup operator
         href: lookup-operator.md
       - name: mv-apply operator
-        href: mv-applyoperator.md
+        href: mv-apply-operator.md
         displayName: mv apply mv_apply
       - name: mv-expand operator
         href: mvexpandoperator.md
@@ -327,7 +327,7 @@ items:
         href: external-table-function.md
         displayName: external table external-table
       - name: materialize()
-        href: materializefunction.md
+        href: materialize-function.md
       - name: materialized_view()
         href: materialized-view-function.md
         displayName: materialized view materialized-view
@@ -807,7 +807,7 @@ items:
         href: hash_manyfunction.md
       - name: hash_md5()
         displayName: hash md5
-        href: md5hash-function.md
+        href: hash-md5-function.md
       - name: hash_sha1()
         displayName: hash sha1
         href: sha1-hash-function.md
@@ -914,16 +914,16 @@ items:
         href: make-timespan-function.md
       - name: max_of()
         displayName: max of
-        href: max-offunction.md
+        href: max-of-function.md
       - name: merge_tdigest()
         displayName: merge tdigest tdigest_merge()
         href: merge-tdigest-function.md
       - name: min_of()
         displayName: min of
-        href: min-offunction.md
+        href: min-of-function.md
       - name: monthofyear()
         displayName: getmonth() month of year
-        href: monthofyearfunction.md
+        href: monthofyear-function.md
       - name: new_guid()
         displayName: new guid
         href: newguidfunction.md
@@ -1235,13 +1235,13 @@ items:
       - name: make_set_if()
         href: make-set-if-aggregation-function.md
       - name: max()
-        href: max-aggfunction.md
+        href: max-aggregation-function.md
       - name: maxif()
-        href: maxif-aggfunction.md
+        href: maxif-aggregation-function.md
       - name: min()
-        href: min-aggfunction.md
+        href: min-aggregation-function.md
       - name: minif()
-        href: minif-aggfunction.md
+        href: minif-aggregation-function.md
       - name: percentile(), percentiles()
         displayName: percentiles_array()
         href: percentiles-aggfunction.md
@@ -1595,7 +1595,7 @@ items:
           - name: http_request_post plugin
             href: http-request-post-plugin.md
           - name: mysql_request plugin
-            href: mysqlrequest-plugin.md
+            href: mysql-request-plugin.md
           - name: postgresql_request plugin
             href: postgresql-request-plugin.md
           - name: sql_request plugin

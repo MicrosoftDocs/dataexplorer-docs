@@ -172,7 +172,7 @@ search MyColumn == 5
 
 ### Use a materialize function
 
-The [`materialize()`](materializefunction.md) function lets you cache subquery results during the time of query execution. When you use the `materialize()` function, the data is cached, and any subsequent invocation of the result uses cached data.
+The [`materialize()`](materialize-function.md) function lets you cache subquery results during the time of query execution. When you use the `materialize()` function, the data is cached, and any subsequent invocation of the result uses cached data.
 
 ```kusto
 let totalPagesPerDay = PageViews

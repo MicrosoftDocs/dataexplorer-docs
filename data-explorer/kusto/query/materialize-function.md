@@ -121,7 +121,7 @@ Result set 3:
 > [!TIP]
 > Materialize your column at ingestion time if most of your queries extract fields from dynamic objects across millions of rows.
 
-To use the `let` statement with a value that you use more than once, use the [materialize() function](./materializefunction.md). Try to push all possible operators that will reduce the materialized dataset and still keep the semantics of the query. For example, use filters, or project only required columns.
+To use the `let` statement with a value that you use more than once, use the [materialize() function](./materialize-function.md). Try to push all possible operators that will reduce the materialized dataset and still keep the semantics of the query. For example, use filters, or project only required columns.
 
 <!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
