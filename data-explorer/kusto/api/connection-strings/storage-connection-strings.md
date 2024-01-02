@@ -49,6 +49,7 @@ Azure Data Explorer supports the following authentication methods:
 * [Microsoft Entra access token](#azure-ad-access-token)
 * [Storage account access key](#storage-account-access-key)
 * [Amazon Web Services Programmatic Access Keys](#amazon-web-services-programmatic-access-keys)
+* [Amazon Web Services S3 presigned URL](#amazon-web-services-s3-presigned-url)
 
 ### Supported authentication by storage type
 
@@ -62,6 +63,7 @@ The following table summarizes the available authentication methods for differen
 | [Microsoft Entra access token](#azure-ad-access-token) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :x: | Microsoft Entra tokens have an expiration time. Use when accessing storage for a limited time. |
 | [Storage account access key](#storage-account-access-key) | :heavy_check_mark: | :heavy_check_mark: | :x: | :x: | When you need to access resources on an ongoing basis. |
 | [Amazon Web Services Programmatic Access Keys](#amazon-web-services-programmatic-access-keys) | :x: | :x: | :x: | :heavy_check_mark: | When you need to access Amazon S3 resources on an ongoing basis. |
+| [Amazon Web Services S3 presigned URL](#amazon-web-services-s3-presigned-url) | :x: | :x: | :x: | :heavy_check_mark: | When you need to access Amazon S3 resources with a temp presigned url. |
 
 ### Impersonation
 
@@ -127,3 +129,10 @@ To add Amazon Web Services access keys, append `;AwsCredentials={ACCESS_KEY_ID},
 |Example|
 |--|
 |`"https://yourbucketname.s3.us-east-1.amazonaws.com/path/to/file.csv;AwsCredentials=AWS1234567890EXAMPLE,1234567890abc/1234567/12345678EXAMPLEKEY"`|
+
+### Amazon Web Services S3 presigned URL
+
+Use the [S3 presigned URL](https://docs.aws.amazon.com/AmazonS3/latest/userguide/ShareObjectPreSignedURL.html) as the connection string.
+|Example|
+|--|
+|`"https://yourbucketname.s3.us-east-1.amazonaws.com/file.csv?12345678PRESIGNEDTOKEN"`|
