@@ -44,7 +44,7 @@ The following image provides a visual representation of the operation performed 
 |Hint key |Values |Description  |
 |---|---|---|
 |`hint.remote`  |`auto`, `left`, `local`, `right` |See [Cross-Cluster Join](joincrosscluster.md)|
-|`hint.strategy=broadcast` |Specifies the way to share the query load on cluster nodes. |See [broadcast join](broadcastjoin.md) |
+|`hint.strategy=broadcast` |Specifies the way to share the query load on cluster nodes. |See [broadcast join](broadcast-join.md) |
 |`hint.shufflekey=<key>` |The `shufflekey` query shares the query load on cluster nodes, using a key to partition data. |See [shuffle query](shufflequery.md) |
 |`hint.strategy=shuffle` |The `shuffle` strategy query shares the query load on cluster nodes, where each node processes one partition of the data. |See [shuffle query](shufflequery.md)  |
 
@@ -55,7 +55,7 @@ The following image provides a visual representation of the operation performed 
 |Name |Values |Description |
 |---|---|---|
 |`hint.remote`  |`auto`, `left`, `local`, `right`   | |
-|`hint.strategy=broadcast` |Specifies the way to share the query load on cluster nodes. |See [broadcast join](broadcastjoin.md) |
+|`hint.strategy=broadcast` |Specifies the way to share the query load on cluster nodes. |See [broadcast join](broadcast-join.md) |
 |`hint.shufflekey=<key>` |The `shufflekey` query shares the query load on cluster nodes, using a key to partition data. |See [shuffle query](shufflequery.md) |
 |`hint.strategy=shuffle` |The `shuffle` strategy query shares the query load on cluster nodes, where each node processes one partition of the data. |See [shuffle query](shufflequery.md)  |
 
@@ -92,5 +92,5 @@ In the following example, a placeholder key is added to both tables and then use
 
 * [Write multi-table queries](/training/modules/multi-table-queries-with-kusto-query-language/)
 * [Cross-cluster join](joincrosscluster.md)
-* [Broadcast join](broadcastjoin.md)
+* [Broadcast join](broadcast-join.md)
 * [Shuffle query](shufflequery.md)

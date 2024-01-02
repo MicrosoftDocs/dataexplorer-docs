@@ -14,15 +14,15 @@ An aggregation function performs a calculation on a set of values, and returns a
 
 | Function Name | Description |
 |--|--|
-| [binary_all_and()](binary-all-and-aggfunction.md) | Returns aggregated value using the binary AND of the group. |
-| [binary_all_or()](binary-all-or-aggfunction.md) | Returns aggregated value using the binary OR of the group. |
-| [binary_all_xor()](binary-all-xor-aggfunction.md) | Returns aggregated value using the binary XOR of the group. |
+| [binary_all_and()](binary-all-and-aggregation-function.md) | Returns aggregated value using the binary AND of the group. |
+| [binary_all_or()](binary-all-or-aggregation-function.md) | Returns aggregated value using the binary OR of the group. |
+| [binary_all_xor()](binary-all-xor-aggregation-function.md) | Returns aggregated value using the binary XOR of the group. |
 
 ## Dynamic functions
 
 | Function Name | Description |
 |--|--|
-| [buildschema()](buildschema-aggfunction.md) | Returns the minimal schema that admits all values of the dynamic input. |
+| [buildschema()](buildschema-aggregation-function.md) | Returns the minimal schema that admits all values of the dynamic input. |
 | [make_bag()](make-bag-aggfunction.md), [make_bag_if()](make-bag-if-aggfunction.md) | Returns a property bag of dynamic values within the group without/with a predicate. |
 | [make_list()](makelist-aggfunction.md), [make_list_if()](makelistif-aggfunction.md) | Returns a list of all the values within the group without/with a predicate. |
 | [make_list_with_nulls()](make-list-with-nulls-aggfunction.md) | Returns a list of all the values within the group, including null values. |
@@ -32,8 +32,8 @@ An aggregation function performs a calculation on a set of values, and returns a
 
 | Function Name | Description |
 |--|--|
-| [arg_max()](arg-max-aggfunction.md) | Returns one or more expressions when the argument is maximized. |
-| [arg_min()](arg-min-aggfunction.md) | Returns one or more expressions when the argument is minimized. |
+| [arg_max()](arg-max-aggregation-function.md) | Returns one or more expressions when the argument is maximized. |
+| [arg_min()](arg-min-aggregation-function.md) | Returns one or more expressions when the argument is minimized. |
 | [take_any()](take-any-aggfunction.md), [take_anyif()](take-anyif-aggfunction.md) | Returns a random non-empty value for the group without/with a predicate. |
 
 ## Statistical functions
@@ -42,8 +42,8 @@ An aggregation function performs a calculation on a set of values, and returns a
 |--|--|
 | [avg()](avg-aggfunction.md) | Returns an average value across the group. |
 | [avgif()](avgif-aggfunction.md) | Returns an average value across the group (with predicate). |
-| [count()](count-aggfunction.md), [countif()](countif-aggfunction.md) | Returns a count of the group without/with a predicate. |
-| [count_distinct()](count-distinct-aggfunction.md), [count_distinctif()](count-distinctif-aggfunction.md) | Returns a count of unique elements in the group without/with a predicate. |
+| [count()](count-aggregation-function.md), [countif()](countif-aggregation-function.md) | Returns a count of the group without/with a predicate. |
+| [count_distinct()](count-distinct-aggregation-function.md), [count_distinctif()](count-distinctif-aggregation-function.md) | Returns a count of unique elements in the group without/with a predicate. |
 | [dcount()](dcount-aggfunction.md), [dcountif()](dcountif-aggfunction.md) | Returns an approximate distinct count of the group elements without/with a predicate. |
 | [hll()](hll-aggfunction.md) | Returns the HyperLogLog (HLL) results of the group elements, an intermediate value of the `dcount` approximation. |
 | [hll_if()](hll-if-aggregation-function.md) | Returns the HyperLogLog (HLL) results of the group elements, an intermediate value of the `dcount` approximation (with predicate). |

@@ -18,7 +18,7 @@ This article explains how to use the graph semantics feature in KQL effectively 
 
 The [make-graph operator](kusto/query/make-graph-operator.md) creates an in-memory representation of a graph. It consists of the graph structure itself and its properties. When making a graph, use appropriate filters, projections, and aggregations to select only the relevant nodes and edges and their properties.
 
-The following example shows how to reduce the number of nodes and edges and their properties. In this scenario, Bob changed manager from Alice to Eve and the user only wants to see the latest state of the graph for their organization. To reduce the size of the graph, the nodes are first filtered by the organization property and then the property is removed from the graph using the [project-away operator](kusto/query/projectawayoperator.md). The same happens for edges. Then [summarize operator](kusto/query/summarizeoperator.md) together with [arg_max](kusto/query/arg-max-aggfunction.md) is used to get the last known state of the graph.
+The following example shows how to reduce the number of nodes and edges and their properties. In this scenario, Bob changed manager from Alice to Eve and the user only wants to see the latest state of the graph for their organization. To reduce the size of the graph, the nodes are first filtered by the organization property and then the property is removed from the graph using the [project-away operator](kusto/query/projectawayoperator.md). The same happens for edges. Then [summarize operator](kusto/query/summarizeoperator.md) together with [arg_max](kusto/query/arg-max-aggregation-function.md) is used to get the last known state of the graph.
 
 ```kusto
 let allEmployees = datatable(organization: string, name:string, age:long)
@@ -71,7 +71,7 @@ Consider creating a materialized view to improve the query performance, as follo
     .create table reportsTo (employee:string, manager:string, modificationDate: datetime)
     ```
 
-1. Create a materialized view for each table and use the [arg_max aggregation](kusto/query/arg-max-aggfunction.md) function to determine the *last known state* of employees and the *reportsTo* relation.
+1. Create a materialized view for each table and use the [arg_max aggregation](kusto/query/arg-max-aggregation-function.md) function to determine the *last known state* of employees and the *reportsTo* relation.
 
     ```kusto
     .create materialized-view employees_MV on table employees

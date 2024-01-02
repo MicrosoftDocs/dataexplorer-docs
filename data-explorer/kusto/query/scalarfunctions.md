@@ -13,13 +13,13 @@ This article lists all available scalar functions grouped by type. For aggregati
 
 |Function Name     |Description                                          |
 |-------------------------|--------------------------------------------------------|
-|[binary_and()](binary-andfunction.md)|Returns a result of the bitwise and operation between two values.|
-|[binary_not()](binary-notfunction.md)|Returns a bitwise negation of the input value.|
-|[binary_or()](binary-orfunction.md)|Returns a result of the bitwise or operation of the two values.|
-|[binary_shift_left()](binary-shift-leftfunction.md)|Returns binary shift left operation on a pair of numbers: a << n.|
-|[binary_shift_right()](binary-shift-rightfunction.md)|Returns binary shift right operation on a pair of numbers: a >> n.|
-|[binary_xor()](binary-xorfunction.md)|Returns a result of the bitwise xor operation of the two values.|
-|[bitset_count_ones()](bitset-count-onesfunction.md)|Returns the number of set bits in the binary representation of a number.|
+|[binary_and()](binary-and-function.md)|Returns a result of the bitwise and operation between two values.|
+|[binary_not()](binary-not-function.md)|Returns a bitwise negation of the input value.|
+|[binary_or()](binary-or-function.md)|Returns a result of the bitwise or operation of the two values.|
+|[binary_shift_left()](binary-shift-left-function.md)|Returns binary shift left operation on a pair of numbers: a << n.|
+|[binary_shift_right()](binary-shift-right-function.md)|Returns binary shift right operation on a pair of numbers: a >> n.|
+|[binary_xor()](binary-xor-function.md)|Returns a result of the bitwise xor operation of the two values.|
+|[bitset_count_ones()](bitset-count-ones-function.md)|Returns the number of set bits in the binary representation of a number.|
 
 ## Conversion functions
 
@@ -35,7 +35,7 @@ This article lists all available scalar functions grouped by type. For aggregati
 
 |Function Name     |Description                                          |
 |-------------------------|--------------------------------------------------------|
-|[ago()](agofunction.md)|Subtracts the given timespan from the current UTC clock time.|
+|[ago()](ago-function.md)|Subtracts the given timespan from the current UTC clock time.|
 |[datetime_add()](datetime-addfunction.md)|Calculates a new datetime from a specified datepart multiplied by a specified amount, added to a specified datetime.|
 |[datetime_diff()](datetime-difffunction.md)|Returns the end of the year containing the date, shifted by an offset, if provided.|
 |[datetime_local_to_utc()](datetime-local-to-utc-function.md) |  Converts local datetime to UTC datetime using [a time-zone specification](../query/timezone.md).
@@ -72,22 +72,22 @@ This article lists all available scalar functions grouped by type. For aggregati
 
 |Function Name     |Description                                          |
 |-------------------------|--------------------------------------------------------|
-|[array_concat()](arrayconcatfunction.md)|Concatenates a number of dynamic arrays to a single array.|
-|[array_iff()](arrayifffunction.md)|Applies element-wise iif function on arrays.|
-|[array_index_of()](arrayindexoffunction.md)|Searches the array for the specified item, and returns its position.|
-|[array_length()](arraylengthfunction.md)|Calculates the number of elements in a dynamic array.|
+|[array_concat()](array-concat-function.md)|Concatenates a number of dynamic arrays to a single array.|
+|[array_iff()](array-iff-function.md)|Applies element-wise iif function on arrays.|
+|[array_index_of()](array-index-of-function.md)|Searches the array for the specified item, and returns its position.|
+|[array_length()](array-length-function.md)|Calculates the number of elements in a dynamic array.|
 |[array_reverse()](array-reverse-function.md)|Reverses the order of the elements in a dynamic array.|
-|[array_rotate_left()](array_rotate_leftfunction.md)|Rotates values inside a dynamic array to the left.|
-|[array_rotate_right()](array_rotate_rightfunction.md)|Rotates values inside a dynamic array to the right.|
-|[array_shift_left()](array_shift_leftfunction.md)|Shifts values inside a dynamic array to the left.|
-|[array_shift_right()](array_shift_rightfunction.md)|Shifts values inside a dynamic array to the right.|
-|[array_slice()](arrayslicefunction.md)|Extracts a slice of a dynamic array.|
-|[array_sort_asc()](arraysortascfunction.md)|Sorts a collection of arrays in ascending order.|
-|[array_sort_desc()](arraysortdescfunction.md)|Sorts a collection of arrays in descending order.|
-|[array_split()](arraysplitfunction.md)|Builds an array of arrays split from the input array.|
+|[array_rotate_left()](array-rotate-left-function.md)|Rotates values inside a dynamic array to the left.|
+|[array_rotate_right()](array-rotate-right-function.md)|Rotates values inside a dynamic array to the right.|
+|[array_shift_left()](array-shift-left-function.md)|Shifts values inside a dynamic array to the left.|
+|[array_shift_right()](array-shift-right-function.md)|Shifts values inside a dynamic array to the right.|
+|[array_slice()](array-slice-function.md)|Extracts a slice of a dynamic array.|
+|[array_sort_asc()](array-sort-asc-function.md)|Sorts a collection of arrays in ascending order.|
+|[array_sort_desc()](array-sort-desc-function.md)|Sorts a collection of arrays in descending order.|
+|[array_split()](array-split-function.md)|Builds an array of arrays split from the input array.|
 |[array_sum()](array-sum-function.md)|Calculates the sum of a dynamic array.|
 |[`bag_has_key()`](bag-has-key-function.md)|Checks whether a dynamic bag column contains a given key.|
-|[bag_keys()](bagkeysfunction.md)|Enumerates all the root keys in a dynamic property-bag object.|
+|[bag_keys()](bag-keys-function.md)|Enumerates all the root keys in a dynamic property-bag object.|
 |[bag_merge()](bag-merge-function.md)|Merges dynamic property-bags into a dynamic property-bag with all properties merged.|
 |[bag_pack()](packfunction.md)|Creates a dynamic object (property bag) from a list of names and values.|
 |[bag_pack_columns()](bag-pack-columns-function.md)|Creates a dynamic object (property bag) from a list of columns.|
@@ -126,15 +126,15 @@ This article lists all available scalar functions grouped by type. For aggregati
 |Function Name     |Description                                          |
 |-------------------------|--------------------------------------------------------|
 |[abs()](abs-function.md)|Calculates the absolute value of the input.|
-|[acos()](acosfunction.md)|Returns the angle whose cosine is the specified number (the inverse operation of cos()).|
-|[asin()](asinfunction.md)|Returns the angle whose sine is the specified number (the inverse operation of sin()).|
-|[atan()](atanfunction.md)|Returns the angle whose tangent is the specified number (the inverse operation of tan()).|
-|[atan2()](atan2function.md)|Calculates the angle, in radians, between the positive x-axis and the ray from the origin to the point (y, x).|
-|[beta_cdf()](beta-cdffunction.md)|Returns the standard cumulative beta distribution function.|
-|[beta_inv()](beta-invfunction.md)|Returns the inverse of the beta cumulative probability beta density function.|
-|[beta_pdf()](beta-pdffunction.md)|Returns the probability density beta function.|
-|[cos()](cosfunction.md)|Returns the cosine function.|
-|[cot()](cotfunction.md)|Calculates the trigonometric cotangent of the specified angle, in radians.|
+|[acos()](acos-function.md)|Returns the angle whose cosine is the specified number (the inverse operation of cos()).|
+|[asin()](asin-function.md)|Returns the angle whose sine is the specified number (the inverse operation of sin()).|
+|[atan()](atan-function.md)|Returns the angle whose tangent is the specified number (the inverse operation of tan()).|
+|[atan2()](atan2-function.md)|Calculates the angle, in radians, between the positive x-axis and the ray from the origin to the point (y, x).|
+|[beta_cdf()](beta-cdf-function.md)|Returns the standard cumulative beta distribution function.|
+|[beta_inv()](beta-inv-function.md)|Returns the inverse of the beta cumulative probability beta density function.|
+|[beta_pdf()](beta-pdf-function.md)|Returns the probability density beta function.|
+|[cos()](cos-function.md)|Returns the cosine function.|
+|[cot()](cot-function.md)|Calculates the trigonometric cotangent of the specified angle, in radians.|
 |[degrees()](degreesfunction.md)|Converts angle value in radians into value in degrees, using formula degrees = (180 / PI) * angle-in-radians.|
 |[erf()](erf-function.md)|Returns the error function.|
 |[erfc()](erfc-function.md)|Returns the complementary error function.|
@@ -166,13 +166,13 @@ This article lists all available scalar functions grouped by type. For aggregati
 
 |Function Name     |Description                                          |
 |-------------------------|--------------------------------------------------------|
-|[column_ifexists()](columnifexists.md)|Takes a column name as a string and a default value. Returns a reference to the column if it exists, otherwise - returns the default value.|
+|[column_ifexists()](column-ifexists-function.md)|Takes a column name as a string and a default value. Returns a reference to the column if it exists, otherwise - returns the default value.|
 |[current_cluster_endpoint()](current-cluster-endpoint-function.md)|Returns the current cluster running the query.|
 |[current_database()](current-database-function.md)|Returns the name of the database in scope.|
-|[current_principal()](current-principalfunction.md)|Returns the current principal running this query.|
-|[current_principal_details()](current-principal-detailsfunction.md)|Returns details of the principal running the query.|
-|[current_principal_is_member_of()](current-principal-ismemberoffunction.md)|Checks group membership or principal identity of the current principal running the query.|
-|[cursor_after()](cursorafterfunction.md)|Used to access to the records that were ingested after the previous value of the cursor.|
+|[current_principal()](current-principal-function.md)|Returns the current principal running this query.|
+|[current_principal_details()](current-principal-details-function.md)|Returns details of the principal running the query.|
+|[current_principal_is_member_of()](current-principal-is-member-of-function.md)|Checks group membership or principal identity of the current principal running the query.|
+|[cursor_after()](cursor-after-function.md)|Used to access to the records that were ingested after the previous value of the cursor.|
 |[estimate_data_size()](estimate-data-sizefunction.md)|Returns an estimated data size of the selected columns of the tabular expression.|
 |[extent_id()](extentidfunction.md)|Returns a unique identifier that identifies the data shard ("extent") that the current record resides in.|
 |[extent_tags()](extenttagsfunction.md)|Returns a dynamic array with the tags of the data shard ("extent") that the current record resides in.|
@@ -182,16 +182,16 @@ This article lists all available scalar functions grouped by type. For aggregati
 
 |Function Name     |Description                                          |
 |-------------------------|--------------------------------------------------------|
-|[bin()](binfunction.md)|Rounds values down to an integer multiple of a given bin size.|
-|[bin_at()](binatfunction.md)|Rounds values down to a fixed-size "bin", with control over the bin's starting point. (See also bin function.)|
-|[ceiling()](ceilingfunction.md)|Calculates the smallest integer greater than, or equal to, the specified numeric expression.|
+|[bin()](bin-function.md)|Rounds values down to an integer multiple of a given bin size.|
+|[bin_at()](bin-at-function.md)|Rounds values down to a fixed-size "bin", with control over the bin's starting point. (See also bin function.)|
+|[ceiling()](ceiling-function.md)|Calculates the smallest integer greater than, or equal to, the specified numeric expression.|
 
 ## Conditional functions
 
 |Function Name     |Description                                          |
 |-------------------------|--------------------------------------------------------|
-|[case()](casefunction.md)|Evaluates a list of predicates and returns the first result expression whose predicate is satisfied.|
-|[coalesce()](coalescefunction.md)|Evaluates a list of expressions and returns the first non-null (or non-empty for string) expression.|
+|[case()](case-function.md)|Evaluates a list of predicates and returns the first result expression whose predicate is satisfied.|
+|[coalesce()](coalesce-function.md)|Evaluates a list of expressions and returns the first non-null (or non-empty for string) expression.|
 |[iff()](./ifffunction.md)|Evaluate the first argument (the predicate), and returns the value of either the second or third arguments, depending on whether the predicate evaluated to true (second) or false (third).|
 |[max_of()](max-offunction.md)|Returns the maximum value of several evaluated numeric expressions.|
 |[min_of()](min-offunction.md)|Returns the minimum value of several evaluated numeric expressions.|
@@ -201,12 +201,12 @@ This article lists all available scalar functions grouped by type. For aggregati
 |Function Name     |Description                                          |
 |-------------------------|--------------------------------------------------------|
 |[series_abs()](series-absfunction.md)|Calculates the element-wise absolute value of the numeric series input.|
-|[series_acos()](series-acosfunction.md)|Calculates the element-wise arccosine function of the numeric series input.|
+|[series_acos()](series-acos-function.md)|Calculates the element-wise arccosine function of the numeric series input.|
 |[series_add()](series-addfunction.md)|Calculates the element-wise addition of two numeric series inputs.|
 |[series_asin()](series-asinfunction.md)|Calculates the element-wise arcsine function of the numeric series input.|
-|[series_atan()](series-atanfunction.md)|Calculates the element-wise arctangent function of the numeric series input.|
+|[series_atan()](series-atan-function.md)|Calculates the element-wise arctangent function of the numeric series input.|
 |[series_ceiling()](series-ceiling-function.md)|Calculates the element-wise ceiling function of the numeric series input.|
-|[series_cos()](series-cosfunction.md)|Calculates the element-wise cosine function of the numeric series input.|
+|[series_cos()](series-cos-function.md)|Calculates the element-wise cosine function of the numeric series input.|
 |[series_divide()](series-dividefunction.md)|Calculates the element-wise division of two numeric series inputs.|
 |[series_equals()](series-equalsfunction.md)|Calculates the element-wise equals (`==`) logic operation of two numeric series inputs.|
 |[series_exp()](series-expfunction.md)|Calculates the element-wise base-e exponential function (e^x) of the numeric series input.|
@@ -260,12 +260,12 @@ This article lists all available scalar functions grouped by type. For aggregati
 
 |Function Name     |Description                                          |
 |-------------------------|--------------------------------------------------------|
-|[base64_encode_tostring()](base64_encode_tostringfunction.md)|Encodes a string as base64 string.|
+|[base64_encode_tostring()](base64-encode-tostring-function.md)|Encodes a string as base64 string.|
 |[base64_encode_fromguid()](base64-encode-fromguid-function.md)|Encodes a GUID as base64 string.|
-|[base64_decode_tostring()](base64_decode_tostringfunction.md)|Decodes a base64 string to a UTF-8 string.|
-|[base64_decode_toarray()](base64_decode_toarrayfunction.md)|Decodes a base64 string to an array of long values.|
+|[base64_decode_tostring()](base64-decode-tostring-function.md)|Decodes a base64 string to a UTF-8 string.|
+|[base64_decode_toarray()](base64-decode-toarray-function.md)|Decodes a base64 string to an array of long values.|
 |[base64_decode_toguid()](base64-decode-toguid-function.md)|Decodes a base64 string to a GUID.|
-|[countof()](countoffunction.md)|Counts occurrences of a substring in a string. Plain string matches may overlap; regex matches don't.|
+|[countof()](countof-function.md)|Counts occurrences of a substring in a string. Plain string matches may overlap; regex matches don't.|
 |[extract()](extractfunction.md)|Get a match for a regular expression from a text string.|
 |[extract_all()](extractallfunction.md)|Get all matches for a regular expression from a text string.|
 |[extract_json()](extractjsonfunction.md)|Get a specified element out of a JSON text using a path expression.|

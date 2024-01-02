@@ -9,7 +9,7 @@ ms.custom: contperf-fy21q1
 
 # Monitor queued ingestion with metrics
 
-In the *queued ingestion* process, Azure Data Explorer optimizes [data ingestion](ingest-data-overview.md) for high throughput by batching incoming small chunks of data into batches based on a configurable [ingestion batching policy](kusto/management/batchingpolicy.md). The batching policy allows you to set the trigger conditions for sealing a batch (data size, number of blobs, or time passed). These batches are then optimally ingested for fast query results.
+In the *queued ingestion* process, Azure Data Explorer optimizes [data ingestion](ingest-data-overview.md) for high throughput by batching incoming small chunks of data into batches based on a configurable [ingestion batching policy](kusto/management/batching-policy.md). The batching policy allows you to set the trigger conditions for sealing a batch (data size, number of blobs, or time passed). These batches are then optimally ingested for fast query results.
 
 In this article, you will learn how to use metrics to monitor queued ingestion to Azure Data Explorer in Azure portal.
 
@@ -136,7 +136,7 @@ The metrics **Stage Latency** and **Discovery Latency** monitor latency in the i
 * **Discovery Latency** is used for ingestion pipelines with data connections (such as event hub, IoT hub, and Event Grid). This metric gives information about the time span from data enqueue until discovery by Azure Data Explorer data connections. This time span is upstream to Azure Data Explorer, so it's not included in the **Stage Latency** metric that only measures the latency in Azure Data Explorer.
 
 > [!NOTE]
-> According to the default [batching policy](kusto/management/batchingpolicy.md), the default batching time is five minutes. Therefore, if the batch isn't sealed by other triggers, the batch will be sealed after five minutes.
+> According to the default [batching policy](kusto/management/batching-policy.md), the default batching time is five minutes. Therefore, if the batch isn't sealed by other triggers, the batch will be sealed after five minutes.
 
 When you see a long latency until data is ready for query, analyzing **Stage Latency** and **Discovery Latency** can help you understand whether the long latency is because of long latency in Azure Data Explorer, or is upstream to Azure Data Explorer. When the latency is in Azure Data Explorer itself, you can also detect the specific component responsible for the long latency.
 
@@ -173,7 +173,7 @@ If you use ingestion with data connections, you may want to estimate the latency
 
 ## Understand the batching process
 
-In the second stage of the queued ingestion flow, the *Batching Manager* component optimizes the ingestion throughput by batching the data it receives based on the ingestion [batching policy](kusto/management/batchingpolicy.md).
+In the second stage of the queued ingestion flow, the *Batching Manager* component optimizes the ingestion throughput by batching the data it receives based on the ingestion [batching policy](kusto/management/batching-policy.md).
 
 The following set of metrics helps you understand how your data is being batched during ingestion:
 
@@ -188,7 +188,7 @@ Let's start with an overall view of the batching process by looking at the **Bat
 
 1. In the **Metrics** pane in Azure Monitor, select **Add Metric**.
 1. Select *Batches Processed* as the **Metric** value and *Sum* as the **Aggregation** value.
-1. Select the **Apply splitting** button and choose *Batching Type* to segment the chart based on the reason the batch was sealed. For a complete list of batching types, see [Batching types](kusto/management/batchingpolicy.md#sealing-a-batch).
+1. Select the **Apply splitting** button and choose *Batching Type* to segment the chart based on the reason the batch was sealed. For a complete list of batching types, see [Batching types](kusto/management/batching-policy.md#sealing-a-batch).
 1. Select the **Add filter** button and filter on the batches sent to the *GitHub* database. After selecting the filter values, click away from the filter selector to close it.
 
 The chart shows the number of sealed batches with data sent to the *GitHub* database over time, split by the *Batching Type*.

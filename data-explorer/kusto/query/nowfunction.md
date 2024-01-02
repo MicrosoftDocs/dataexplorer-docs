@@ -86,4 +86,4 @@ T
 | minute | 00:01:00 | 2023-06-19T08:21:54.6623324Z |
 
 > [!NOTE]
-> This operation can be accomplished with the [ago() function](agofunction.md).
+> This operation can be accomplished with the [ago() function](ago-function.md).

@@ -15,7 +15,7 @@ Materialized views always return an up-to-date result of the aggregation query (
 >
 > * To decide whether materialized views are suitable for you, review the materialized views [use cases](materialized-view-use-cases.md).
 > * Materialized views have some [limitations](materialized-views-limitations.md). Before working with the feature, review the [performance considerations](#performance-considerations).
-> * Consider using [update policies](../updatepolicy.md) where appropriate. For more information, see [Materialized views vs. update policies](materialized-view-use-cases.md#materialized-views-vs-update-policies).
+> * Consider using [update policies](../update-policy.md) where appropriate. For more information, see [Materialized views vs. update policies](materialized-view-use-cases.md#materialized-views-vs-update-policies).
 > * Monitor the health of your materialized views based on the recommendations in [Monitor materialized views](materialized-views-monitoring.md).
 
 ## Why use materialized views?
@@ -129,7 +129,7 @@ The main contributors that can impact a materialized view health are:
 
 * **Ingestion rate:** There are no hard-coded limits on the data volume or ingestion rate in the source table of the materialized view. However, the recommended ingestion rate for materialized views is no more than 1-2GB/sec. Higher ingestion rates may still perform well. Performance depends on cluster size, available resources, and amount of intersection with existing data.
 
-* **Number of materialized views in cluster:** The above considerations apply to each individual materialized view defined in the cluster. Each view consumes its own resources, and many views compete with each other on available resources. While there are no hard-coded limits to the number of materialized views in a cluster, the cluster may not be able to handle all materialized views, when there are many defined. The [capacity policy](../capacitypolicy.md#materialized-views-capacity-policy) can be adjusted if there is more than a single materialized view in the cluster. Increase the value of `ClusterMinimumConcurrentOperations` in the policy to run more materialized views concurrently.
+* **Number of materialized views in cluster:** The above considerations apply to each individual materialized view defined in the cluster. Each view consumes its own resources, and many views compete with each other on available resources. While there are no hard-coded limits to the number of materialized views in a cluster, the cluster may not be able to handle all materialized views, when there are many defined. The [capacity policy](../capacity-policy.md#materialized-views-capacity-policy) can be adjusted if there is more than a single materialized view in the cluster. Increase the value of `ClusterMinimumConcurrentOperations` in the policy to run more materialized views concurrently.
 
 * **Materialized view definition**: The materialized view definition must be defined according to query best practices for best query performance. For more information, see [create command performance tips](materialized-view-create.md#performance-tips).
 

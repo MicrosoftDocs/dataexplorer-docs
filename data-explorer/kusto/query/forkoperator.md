@@ -29,12 +29,12 @@ Runs multiple consumer operators in parallel.
 > [!NOTE]
 >
 > * Avoid using `fork` with a single *subquery*.
-> * The name of the results tab will be the same name as provided with the `name` parameter or the [`as` operator](asoperator.md).
+> * The name of the results tab will be the same name as provided with the `name` parameter or the [`as` operator](as-operator.md).
 
 ### Supported query operators
 
-* [`as`](asoperator.md)
-* [`count`](countoperator.md)
+* [`as`](as-operator.md)
+* [`count`](count-operator.md)
 * [`extend`](extendoperator.md)
 * [`parse`](parseoperator.md)
 * [`where`](whereoperator.md)

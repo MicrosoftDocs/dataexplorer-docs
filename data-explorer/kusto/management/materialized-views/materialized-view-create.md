@@ -210,8 +210,8 @@ The following rules limit the query used in the materialized view Query paramete
 
 The following aggregation functions are supported:
 
-* [`count`](../../query/count-aggfunction.md)
-* [`countif`](../../query/countif-aggfunction.md)
+* [`count`](../../query/count-aggregation-function.md)
+* [`countif`](../../query/countif-aggregation-function.md)
 * [`dcount`](../../query/dcount-aggfunction.md)
 * [`dcountif`](../../query/dcountif-aggfunction.md)
 * [`min`](../../query/min-aggfunction.md)
@@ -220,8 +220,8 @@ The following aggregation functions are supported:
 * [`avgif`](../../query/avgif-aggfunction.md)
 * [`sum`](../../query/sum-aggfunction.md)
 * [`sumif`](../../query/sumif-aggfunction.md)
-* [`arg_max`](../../query/arg-max-aggfunction.md)
-* [`arg_min`](../../query/arg-min-aggfunction.md)
+* [`arg_max`](../../query/arg-max-aggregation-function.md)
+* [`arg_min`](../../query/arg-min-aggregation-function.md)
 * [`take_any`](../../query/take-any-aggfunction.md)
 * [`take_anyif`](../../query/take-anyif-aggfunction.md)
 * [`hll`](../../query/hll-aggfunction.md)
@@ -274,7 +274,7 @@ The following aggregation functions are supported:
     }
     ```
 
-* **Use update policies where appropriate**: The materialized view can include transformations, normalizations, and lookups in dimension tables. However, we recommend that you move these operations to an [update policy](../updatepolicy.md). Leave only the aggregation for the materialized view.
+* **Use update policies where appropriate**: The materialized view can include transformations, normalizations, and lookups in dimension tables. However, we recommend that you move these operations to an [update policy](../update-policy.md). Leave only the aggregation for the materialized view.
 
     For example, it's better to define the following update policy:
 
@@ -353,7 +353,7 @@ For example, the following command will backfill the materialized view from `202
 } 
 ```
 
-If the materialized view includes a datetime group-by key, the backfill process supports overriding the [extent creation time](../extents-overview.md#extent-creation-time) based on the datetime column. This can be useful, for example, if you want older records to be dropped before recent ones, because the [retention policy](../retentionpolicy.md) is based on the extent creation time. For example, the following backfill will assign creation time based on the `Timestamp` group-by key:
+If the materialized view includes a datetime group-by key, the backfill process supports overriding the [extent creation time](../extents-overview.md#extent-creation-time) based on the datetime column. This can be useful, for example, if you want older records to be dropped before recent ones, because the [retention policy](../retention-policy.md) is based on the extent creation time. For example, the following backfill will assign creation time based on the `Timestamp` group-by key:
 
 <!-- csl -->
 ```kusto

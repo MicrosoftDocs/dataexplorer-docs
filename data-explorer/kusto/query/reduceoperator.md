@@ -135,7 +135,7 @@ Trace | take 10000
 
 ## Related content
 
-[autocluster](./autoclusterplugin.md)
+[autocluster](./autocluster-plugin.md)
 
 > [!NOTE]
 > The implementation of `reduce` operator is largely based on the paper [A Data Clustering Algorithm for Mining Patterns From Event Logs](https://ristov.github.io/publications/slct-ipom03-web.pdf), by Risto Vaarandi.

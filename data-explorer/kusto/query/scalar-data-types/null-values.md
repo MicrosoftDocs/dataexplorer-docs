@@ -70,9 +70,9 @@ datatable(val:int)[5, int(null)]
 
 When applying the following operators to entities that include null values, the null values are ignored and don't factor into the calculation:
 
-* [count()](../count-aggfunction.md)
-* [count_distinct()](../count-distinct-aggfunction.md)
-* [countif()](../countif-aggfunction.md)
+* [count()](../count-aggregation-function.md)
+* [count_distinct()](../count-distinct-aggregation-function.md)
+* [countif()](../countif-aggregation-function.md)
 * [dcount()](../dcount-aggfunction.md)
 * [dcountif()](../dcountif-aggfunction.md)
 * [make_bag()](../make-bag-aggfunction.md)

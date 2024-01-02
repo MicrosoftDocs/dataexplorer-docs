@@ -45,7 +45,7 @@ To authorize to a MySQL Server network endpoint, you need to specify the authori
 
 ## Set callout policy
 
-The plugin makes callouts to the MySql database. Make sure that the cluster's [callout policy](../management/calloutpolicy.md) enables calls of type `mysql` to the target *MySqlDbUri*.
+The plugin makes callouts to the MySql database. Make sure that the cluster's [callout policy](../management/callout-policy.md) enables calls of type `mysql` to the target *MySqlDbUri*.
 
 The following example shows how to define the callout policy for MySQL databases. We recommend restricting the callout policy to specific endpoints (`my_endpoint1`, `my_endpoint2`).
 

@@ -76,7 +76,7 @@ To use this strategy, specify `hint.strategy=shuffle`. For more information abou
 
 The following list of operators can be used in subqueries with the native or shuffle strategies:
 
-* [count](countoperator.md)
+* [count](count-operator.md)
 * [distinct](distinctoperator.md)
 * [extend](extendoperator.md)
 * [make-series](make-seriesoperator.md)
@@ -236,7 +236,7 @@ range x from 1 to 2 step 1
 
 ### Partition reference
 
-The following example shows how to use the [as operator](asoperator.md) to give a "name" to each data partition and then reuse that name within the subquery. This approach is only relevant to the `legacy` strategy.
+The following example shows how to use the [as operator](as-operator.md) to give a "name" to each data partition and then reuse that name within the subquery. This approach is only relevant to the `legacy` strategy.
 
 ```kusto
 T

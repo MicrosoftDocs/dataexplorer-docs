@@ -35,7 +35,7 @@ A tabular data source produces sets of records, to be further processed by tabul
 * The tabular [range operator](rangeoperator.md)
 * The [print operator](printoperator.md)
 * An invocation of a function that returns a table
-* A [table literal](datatableoperator.md) ("datatable")
+* A [table literal](datatable-operator.md) ("datatable")
 
 ## Examples
 

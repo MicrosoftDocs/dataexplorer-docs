@@ -8,7 +8,7 @@ ms.date: 04/09/2023
 
 # Create and alter Azure Storage external tables
 
-The commands in this article can be used to create or alter an Azure Storage [external table](../query/schema-entities/externaltables.md) in the database from which the command is executed. An Azure Storage external table references data located in Azure Blob Storage, Azure Data Lake Store Gen1, or Azure Data Lake Store Gen2.
+The commands in this article can be used to create or alter an Azure Storage [external table](../query/schema-entities/external-tables.md) in the database from which the command is executed. An Azure Storage external table references data located in Azure Blob Storage, Azure Data Lake Store Gen1, or Azure Data Lake Store Gen2.
 
 > [!NOTE]
 > If the table exists, the `.create` command will fail with an error. Use `.create-or-alter` or `.alter` to modify existing tables.
@@ -70,7 +70,7 @@ The partitions list is any combination of partition columns, specified using one
 |String column value|*PartitionName* `:` `string` `=` *ColumnName*||
 |String column value [hash](../query/hashfunction.md)|*PartitionName* `:` `long` `=` `hash(`*ColumnName*`,` *Number*`)`|The hash is modulo *Number*.|
 |Truncated datetime column (value)|*PartitionName* `:` `datetime` `=` (`startofyear` \| `startofmonth` \| `startofweek` \| `startofday`) `(` *ColumnName* `)`|See documentation on [startofyear](../query/startofyearfunction.md), [startofmonth](../query/startofmonthfunction.md), [startofweek](../query/startofweekfunction.md), or [startofday](../query/startofdayfunction.md) functions.|
-|Truncated Datetime Column Value (bin)|*PartitionName* `:` `datetime` `=` `bin` `(` *ColumnName* `,` *TimeSpan* `)`|Read more about the [bin](../query/binfunction.md) function.|
+|Truncated Datetime Column Value (bin)|*PartitionName* `:` `datetime` `=` `bin` `(` *ColumnName* `,` *TimeSpan* `)`|Read more about the [bin](../query/bin-function.md) function.|
 
 ### Path format
 

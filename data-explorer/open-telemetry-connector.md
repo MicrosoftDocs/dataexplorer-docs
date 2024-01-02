@@ -249,7 +249,7 @@ Once the sample app has run, your data has been ingested into the defined tables
 
 ### Further data processing
 
-Using update policies, the collected data can further be processed as per application need. For more information, see [Update policy overview](kusto/management/updatepolicy.md).
+Using update policies, the collected data can further be processed as per application need. For more information, see [Update policy overview](kusto/management/update-policy.md).
 
 1. The following example exports histogram metrics to a histo-specific table with buckets and aggregates. Run the following command in the query pane of the Azure Data Explorer web UI:
     

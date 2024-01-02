@@ -29,9 +29,9 @@ Welcome to what's new in Azure Data Explorer archive. This article is an archive
 |--|--|
 |- [unicode_codepoints_from_string()](kusto/query/unicode-codepoints-from-string-function.md) <br/> - [unicode_codepoints_to_string()](kusto/query/unicode-codepoints-to-string-function.md) | Updated articles. Unicode codepoints conversion functions for strings. |
 |- [ipv6_is_in_any_range()](kusto/query/ipv6-is-in-any-range-function.md) <br/> - [ipv6_is_in_range()](kusto/query/ipv6-is-in-range-function.md) | New articles. Functions that check whether an IPv6 address is in a range.|
-|- [count_distinct() (aggregation function) - (preview)](kusto/query/count-distinct-aggfunction.md) <br/> - [count_distinctif() (aggregation function) - (preview)](kusto/query/count-distinctif-aggfunction.md) | New articles. Count unique values specified by the scalar expression per summary group. |
+|- [count_distinct() (aggregation function) - (preview)](kusto/query/count-distinct-aggregation-function.md) <br/> - [count_distinctif() (aggregation function) - (preview)](kusto/query/count-distinctif-aggregation-function.md) | New articles. Count unique values specified by the scalar expression per summary group. |
 |- [series_ceiling()](kusto/query/series-ceiling-function.md) <br/> - [series_floor()](kusto/query/series-floor-function.md) <br/> - [series_log()](kusto/query/series-log-function.md)| New articles. Calculate the element-wise functions of the numeric series input. |
-|- [bin_auto()](kusto/query/bin-autofunction.md) <br/> - [binary_shift_left()](kusto/query/binary-shift-leftfunction.md) <br/> - [binary_shift_right()](kusto/query/binary-shift-rightfunction.md) <br/> - [binary_xor()](kusto/query/binary-xorfunction.md) <br/> - [bin_at()](kusto/query/binatfunction.md) <br/> - [bin()](kusto/query/binfunction.md) <br/> - [bitset_count_ones()](kusto/query/bitset-count-onesfunction.md) <br/> - [buildschema() (aggregation function)](kusto/query/buildschema-aggfunction.md) <br/> - [case()](kusto/query/casefunction.md) <br/> - [ceiling()](kusto/query/ceilingfunction.md) <br/> - [cosmosdb_sql_request plugin](kusto/query/cosmosdb-plugin.md)| Updated articles. Added new tables and examples. |
+|- [bin_auto()](kusto/query/bin-auto-function.md) <br/> - [binary_shift_left()](kusto/query/binary-shift-left-function.md) <br/> - [binary_shift_right()](kusto/query/binary-shift-right-function.md) <br/> - [binary_xor()](kusto/query/binary-xor-function.md) <br/> - [bin_at()](kusto/query/bin-at-function.md) <br/> - [bin()](kusto/query/bin-function.md) <br/> - [bitset_count_ones()](kusto/query/bitset-count-ones-function.md) <br/> - [buildschema() (aggregation function)](kusto/query/buildschema-aggregation-function.md) <br/> - [case()](kusto/query/case-function.md) <br/> - [ceiling()](kusto/query/ceiling-function.md) <br/> - [cosmosdb_sql_request plugin](kusto/query/cosmosdb-plugin.md)| Updated articles. Added new tables and examples. |
 
 ## October 2022
 
@@ -99,7 +99,7 @@ Welcome to what's new in Azure Data Explorer archive. This article is an archive
 |--|--|
 | - [convert_angle](kusto/query/convert-angle-function.md) <br />- [convert_energy](kusto/query/convert-energy-function.md) <br />- [convert_force](kusto/query/convert-force-function.md) <br />- [convert_length](kusto/query/convert-length-function.md) <br />- [convert_mass](kusto/query/convert-mass-function.md) <br />- [convert_speed](kusto/query/convert-speed-function.md) <br />- [convert_temperature](kusto/query/convert-temperature-function.md) <br />- [convert_volume](kusto/query/convert-volume-function.md) | New articles. New functions for converting values. |
 | [parse-kv operator](kusto/query/parse-kv-operator.md) | New Article. Describes how to extract structured information from a string in key/value form. |
-|- [Scalar function types at a glance](kusto/query/scalarfunctions.md) <br />- [arg_max() (aggregation function)](kusto/query/arg-max-aggfunction.md) <br />- [arg_min() (aggregation function)](kusto/query/arg-min-aggfunction.md) <br />- [avg() (aggregation function)](kusto/query/avg-aggfunction.md) <br />- [max() (aggregation function)](kusto/query/max-aggfunction.md) <br />- [min() (aggregation function)](kusto/query/min-aggfunction.md) <br />- [sum() (aggregation function)](kusto/query/sum-aggfunction.md) | Updated articles. Added new examples. |
+|- [Scalar function types at a glance](kusto/query/scalarfunctions.md) <br />- [arg_max() (aggregation function)](kusto/query/arg-max-aggregation-function.md) <br />- [arg_min() (aggregation function)](kusto/query/arg-min-aggregation-function.md) <br />- [avg() (aggregation function)](kusto/query/avg-aggfunction.md) <br />- [max() (aggregation function)](kusto/query/max-aggfunction.md) <br />- [min() (aggregation function)](kusto/query/min-aggfunction.md) <br />- [sum() (aggregation function)](kusto/query/sum-aggfunction.md) | Updated articles. Added new examples. |
 
 ## June 2022
 
@@ -130,8 +130,8 @@ Welcome to what's new in Azure Data Explorer archive. This article is an archive
 
 | Article title | Description |
 |--|--|
-| [Streaming ingestion failures](kusto/management/streamingingestionfailures.md) | New article. Describes the command to show streaming ingestion failures. |
-| [Streaming ingestion statistics](kusto/management/streamingingestionstatistics.md) | New article. Describes the command to show streaming ingestion statistics. |
+| [Streaming ingestion failures](kusto/management/streaming-ingestion-failures.md) | New article. Describes the command to show streaming ingestion failures. |
+| [Streaming ingestion statistics](kusto/management/streaming-ingestion-statistics.md) | New article. Describes the command to show streaming ingestion statistics. |
 
 ## March 2022
 
@@ -237,7 +237,7 @@ Welcome to what's new in Azure Data Explorer archive. This article is an archive
 | Article title | Description |
 |--|--|
 | [Role-based access control in Kusto](kusto/access-control/role-based-access-control.md) | Updated article. Materialized views rename source table.
-| [Cache policy (hot and cold cache)](kusto/management/cachepolicy.md) | Updated article. Caching with long storage.
+| [Cache policy (hot and cold cache)](kusto/management/cache-policy.md) | Updated article. Caching with long storage.
 | [Role-based access control in Kusto](kusto/access-control/role-based-access-control.md)| Updated article. Using the AllDatabasesMonitor role.
 
 ## September 2021
@@ -342,7 +342,7 @@ Welcome to what's new in Azure Data Explorer archive. This article is an archive
 
 | Article title | Description |
 |--|--|
-| [IngestionBatching policy](kusto/management/batchingpolicy.md) | Updated article. Document batching types
+| [IngestionBatching policy](kusto/management/batching-policy.md) | Updated article. Document batching types
 
 ## May 2021
 

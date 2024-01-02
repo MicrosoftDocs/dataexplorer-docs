@@ -169,7 +169,7 @@ Several functions enable you to create new `dynamic` objects:
 Additionally, there are several aggregate functions which create `dynamic`
 arrays to hold aggregated values:
 
-* [buildschema()](../buildschema-aggfunction.md) returns the aggregate schema of multiple `dynamic` values.
+* [buildschema()](../buildschema-aggregation-function.md) returns the aggregate schema of multiple `dynamic` values.
 * [make_bag()](../make-bag-aggfunction.md) returns a property bag of dynamic values within the group.
 * [make_bag_if()](../make-bag-if-aggfunction.md) returns a property bag of dynamic values within the group (with a predicate).
 * [make_list()](../makelist-aggfunction.md) returns an array holding all values, in sequence.
@@ -186,16 +186,16 @@ For a complete list of scalar dynamic/array functions, see [dynamic/array functi
 |---|---|
 | *value* `in` *array*| True if there's an element of *array* that == *value*<br/>`where City in ('London', 'Paris', 'Rome')`
 | *value* `!in` *array*| True if there's no element of *array* that == *value*
-|[`array_length(`array`)`](../arraylengthfunction.md)| Null if it isn't an array
+|[`array_length(`array`)`](../array-length-function.md)| Null if it isn't an array
 |[`bag_has_key(`bag`,`key`)`](../bag-has-key-function.md)| Checks whether a dynamic bag column contains a given key.
-|[`bag_keys(`bag`)`](../bagkeysfunction.md)| Enumerates all the root keys in a dynamic property-bag object.
+|[`bag_keys(`bag`)`](../bag-keys-function.md)| Enumerates all the root keys in a dynamic property-bag object.
 |[`bag_merge(`bag1,...,bagN`)`](../bag-merge-function.md)| Merges dynamic property-bags into a dynamic property-bag with all properties merged.
 |[`bag_set_key(`bag,key,value`)`](../bag-set-key-function.md)| Sets a given key to a given value in a dynamic property-bag.
 |[`extract_json`(path,object), `extract_json(`path,object`)`](../extractjsonfunction.md)|Use path to navigate into object.
 |[`parse_json(`source`)`](../parsejsonfunction.md)| Turns a JSON string into a dynamic object.
 |[`range(`from,to,step`)`](../rangefunction.md)| An array of values
 |[`mv-expand` listColumn](../mvexpandoperator.md) | Replicates a row for each value in a list in a specified cell.
-|[`summarize buildschema(`column`)`](../buildschema-aggfunction.md) |Infers the type schema from column content
+|[`summarize buildschema(`column`)`](../buildschema-aggregation-function.md) |Infers the type schema from column content
 |[`summarize make_bag(`column`)`](../make-bag-aggfunction.md) | Merges the property bag (dictionary) values in the column into one property bag, without key duplication.
 |[`summarize make_bag_if(`column,predicate`)`](../make-bag-if-aggfunction.md) | Merges the property bag (dictionary) values in the column into one property bag, without key duplication (with predicate).
 |[`summarize make_list(`column`)` ](../makelist-aggfunction.md)| Flattens groups of rows and puts the values of the column in an array.

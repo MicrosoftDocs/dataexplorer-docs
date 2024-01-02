@@ -150,7 +150,7 @@ Since the collected metrics object is a complex type, the *fields* and *tags* co
     > [!NOTE]
     > This approach could impact performance when using large volumes of data. In such cases, use the update policy approach.
 
-* **Use an [update policy](kusto/management/updatepolicy.md)**: Transform dynamic data type columns using an update policy. We recommend this approach for querying large volumes of data.
+* **Use an [update policy](kusto/management/update-policy.md)**: Transform dynamic data type columns using an update policy. We recommend this approach for querying large volumes of data.
 
     ```kusto
     // Function to transform data

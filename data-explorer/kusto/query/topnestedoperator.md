@@ -28,7 +28,7 @@ The result is a table with two columns per clause. One column holds the partitio
 |--|--|--|--|
 |*T*|string|&check;|The input tabular expression.|
 |*N*|int||The number of top values to be returned for this hierarchy level. If omitted, all distinct values are returned.|
-|*Expr*|string|&check;|An expression over the input record indicating which value to return for this hierarchy level. Typically, it refers to a column from *T* or involves a calculation like [bin()](binfunction.md) on a column. Optionally, set an output column name as *Name* `=` *Expr*.|
+|*Expr*|string|&check;|An expression over the input record indicating which value to return for this hierarchy level. Typically, it refers to a column from *T* or involves a calculation like [bin()](bin-function.md) on a column. Optionally, set an output column name as *Name* `=` *Expr*.|
 |*ConstExpr*|string||If specified, for each hierarchy level, one record is added with the value that is the aggregation over all records that didn't make it to the top.|
 |*Aggregation*|string||The aggregation function applied to records with the same *Expr* value. The result determines the top records. See [Supported aggregation functions](#supported-aggregation-functions). Optionally, set an output column name as *Name* `=` *Aggregation*.|
 
@@ -37,7 +37,7 @@ The result is a table with two columns per clause. One column holds the partitio
 The following aggregation functions are supported:
 
 * [sum()](sum-aggfunction.md)
-* [count()](count-aggfunction.md)
+* [count()](count-aggregation-function.md)
 * [max()](max-aggfunction.md)
 * [min()](min-aggfunction.md)
 * [dcount()](dcountif-aggfunction.md)

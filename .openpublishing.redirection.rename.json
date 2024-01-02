@@ -1,0 +1,449 @@
+{
+    "redirections": [
+      {
+        "source_path": "data-explorer/kusto/management/batchingpolicy.md",
+        "redirect_url": "/azure/data-explorer/kusto/management/batching-policy",
+        "redirect_document_id": true
+      },
+      {
+        "source_path": "data-explorer/kusto/management/cachepolicy.md",
+        "redirect_url": "/azure/data-explorer/kusto/management/cache-policy",
+        "redirect_document_id": true
+      },
+      {
+        "source_path": "data-explorer/kusto/management/calloutpolicy.md",
+        "redirect_url": "/azure/data-explorer/kusto/management/callout-policy",
+        "redirect_document_id": true
+      },
+      {
+        "source_path": "data-explorer/kusto/management/capacitypolicy.md",
+        "redirect_url": "/azure/data-explorer/kusto/management/capacity-policy",
+        "redirect_document_id": true
+      },
+      {
+        "source_path": "data-explorer/kusto/management/databasecursor.md",
+        "redirect_url": "/azure/data-explorer/kusto/management/database-cursor",
+        "redirect_document_id": true
+      },
+      {
+        "source_path": "data-explorer/kusto/management/ingestionfailures.md",
+        "redirect_url": "/azure/data-explorer/kusto/management/ingestion-failures",
+        "redirect_document_id": true
+      },
+      {
+        "source_path": "data-explorer/kusto/management/ingestiontimepolicy.md",
+        "redirect_url": "/azure/data-explorer/kusto/management/ingestion-time-policy",
+        "redirect_document_id": true
+      },
+      {
+        "source_path": "data-explorer/kusto/management/mergepolicy.md",
+        "redirect_url": "/azure/data-explorer/kusto/management/merge-policy",
+        "redirect_document_id": true
+      },
+      {
+        "source_path": "data-explorer/kusto/management/partitioningpolicy.md",
+        "redirect_url": "/azure/data-explorer/kusto/management/partitioning-policy",
+        "redirect_document_id": true
+      },
+      {
+        "source_path": "data-explorer/kusto/management/restrictedviewaccesspolicy.md",
+        "redirect_url": "/azure/data-explorer/kusto/management/restricted-view-access-policy",
+        "redirect_document_id": true
+      },
+      {
+        "source_path": "data-explorer/kusto/management/retentionpolicy.md",
+        "redirect_url": "/azure/data-explorer/kusto/management/retention-policy",
+        "redirect_document_id": true
+      },
+      {
+        "source_path": "data-explorer/kusto/management/rowlevelsecuritypolicy.md",
+        "redirect_url": "/azure/data-explorer/kusto/management/row-level-security-policy",
+        "redirect_document_id": true
+      },
+      {
+        "source_path": "data-explorer/kusto/management/roworderpolicy.md",
+        "redirect_url": "/azure/data-explorer/kusto/management/row-order-policy",
+        "redirect_document_id": true
+      },
+      {
+        "source_path": "data-explorer/kusto/management/sandboxpolicy.md",
+        "redirect_url": "/azure/data-explorer/kusto/management/sandbox-policy",
+        "redirect_document_id": true
+      },
+      {
+        "source_path": "data-explorer/kusto/management/shardingpolicy.md",
+        "redirect_url": "/azure/data-explorer/kusto/management/sharding-policy",
+        "redirect_document_id": true
+      },
+      {
+        "source_path": "data-explorer/kusto/management/streamingingestionpolicy.md",
+        "redirect_url": "/azure/data-explorer/kusto/management/streaming-ingestion-policy",
+        "redirect_document_id": true
+      },
+      {
+        "source_path": "data-explorer/kusto/management/streamingingestionfailures.md",
+        "redirect_url": "/azure/data-explorer/kusto/management/streaming-ingestion-failures",
+        "redirect_document_id": true
+      },
+      {
+        "source_path": "data-explorer/kusto/management/streamingingestionstatistics.md",
+        "redirect_url": "/azure/data-explorer/kusto/management/streaming-ingestion-statistics",
+        "redirect_document_id": true
+      },
+      {
+        "source_path": "data-explorer/kusto/management/systeminfo.md",
+        "redirect_url": "/azure/data-explorer/kusto/management/system-info",
+        "redirect_document_id": true
+      },
+      {
+        "source_path": "data-explorer/kusto/management/updatepolicy.md",
+        "redirect_url": "/azure/data-explorer/kusto/management/update-policy",
+        "redirect_document_id": true
+      },
+      {
+        "source_path": "data-explorer/kusto/query/schema-entities/externaltables.md",
+        "redirect_url": "/azure/data-explorer/kusto/query/schema-entities/external-tables",
+        "redirect_document_id": true
+      },
+      {
+        "source_path": "data-explorer/kusto/query/acosfunction.md",
+        "redirect_url": "/azure/data-explorer/kusto/query/acos-function",
+        "redirect_document_id": true
+      },
+      {
+        "source_path": "data-explorer/kusto/query/agofunction.md",
+        "redirect_url": "/azure/data-explorer/kusto/query/ago-function",
+        "redirect_document_id": true
+      },
+      {
+        "source_path": "data-explorer/kusto/query/aliasstatement.md",
+        "redirect_url": "/azure/data-explorer/kusto/query/alias-statement",
+        "redirect_document_id": true
+      },
+      {
+        "source_path": "data-explorer/kusto/query/array_rotate_leftfunction.md",
+        "redirect_url": "/azure/data-explorer/kusto/query/array-rotate-left-function",
+        "redirect_document_id": true
+      },
+      {
+        "source_path": "data-explorer/kusto/query/array_rotate_rightfunction.md",
+        "redirect_url": "/azure/data-explorer/kusto/query/array-rotate-right-function",
+        "redirect_document_id": true
+      },
+      {
+        "source_path": "data-explorer/kusto/query/array_shift_leftfunction.md",
+        "redirect_url": "/azure/data-explorer/kusto/query/array-shift-left-function",
+        "redirect_document_id": true
+      },
+      {
+        "source_path": "data-explorer/kusto/query/array_shift_rightfunction.md",
+        "redirect_url": "/azure/data-explorer/kusto/query/array-shift-right-function",
+        "redirect_document_id": true
+      },
+      {
+        "source_path": "data-explorer/kusto/query/arrayconcatfunction.md",
+        "redirect_url": "/azure/data-explorer/kusto/query/array-concat-function",
+        "redirect_document_id": true
+      },
+      {
+        "source_path": "data-explorer/kusto/query/arrayifffunction.md",
+        "redirect_url": "/azure/data-explorer/kusto/query/array-iff-function",
+        "redirect_document_id": true
+      },
+      {
+        "source_path": "data-explorer/kusto/query/arrayindexoffunction.md",
+        "redirect_url": "/azure/data-explorer/kusto/query/array-index-of-function",
+        "redirect_document_id": true
+      },
+      {
+        "source_path": "data-explorer/kusto/query/arraylengthfunction.md",
+        "redirect_url": "/azure/data-explorer/kusto/query/array-length-function",
+        "redirect_document_id": true
+      },
+      {
+        "source_path": "data-explorer/kusto/query/arrayslicefunction.md",
+        "redirect_url": "/azure/data-explorer/kusto/query/array-slice-function",
+        "redirect_document_id": true
+      },
+      {
+        "source_path": "data-explorer/kusto/query/arraysortascfunction.md",
+        "redirect_url": "/azure/data-explorer/kusto/query/array-sort-asc-function",
+        "redirect_document_id": true
+      },
+      {
+        "source_path": "data-explorer/kusto/query/arraysortdescfunction.md",
+        "redirect_url": "/azure/data-explorer/kusto/query/array-sort-desc-function",
+        "redirect_document_id": true
+      },
+      {
+        "source_path": "data-explorer/kusto/query/arraysplitfunction.md",
+        "redirect_url": "/azure/data-explorer/kusto/query/array-split-function",
+        "redirect_document_id": true
+      },
+      {
+        "source_path": "data-explorer/kusto/query/asinfunction.md",
+        "redirect_url": "/azure/data-explorer/kusto/query/asin-function",
+        "redirect_document_id": true
+      },
+      {
+        "source_path": "data-explorer/kusto/query/asoperator.md",
+        "redirect_url": "/azure/data-explorer/kusto/query/as-operator",
+        "redirect_document_id": true
+      },
+      {
+        "source_path": "data-explorer/kusto/query/atan2function.md",
+        "redirect_url": "/azure/data-explorer/kusto/query/atan2-function",
+        "redirect_document_id": true
+      },
+      {
+        "source_path": "data-explorer/kusto/query/atanfunction.md",
+        "redirect_url": "/azure/data-explorer/kusto/query/atan-function",
+        "redirect_document_id": true
+      },
+      {
+        "source_path": "data-explorer/kusto/query/autoclusterplugin.md",
+        "redirect_url": "/azure/data-explorer/kusto/query/autocluster-plugin",
+        "redirect_document_id": true
+      },
+      {
+        "source_path": "data-explorer/kusto/query/bagkeysfunction.md",
+        "redirect_url": "/azure/data-explorer/kusto/query/bag-keys-function",
+        "redirect_document_id": true
+      },
+      {
+        "source_path": "data-explorer/kusto/query/arg-max-aggfunction.md",
+        "redirect_url": "/azure/data-explorer/kusto/query/arg-max-aggregation-function",
+        "redirect_document_id": true
+      },
+      {
+        "source_path": "data-explorer/kusto/query/base64_decode_toarrayfunction.md",
+        "redirect_url": "/azure/data-explorer/kusto/query/base64-decode-toarray-function",
+        "redirect_document_id": true
+      },
+      {
+        "source_path": "data-explorer/kusto/query/base64_decode_tostringfunction.md",
+        "redirect_url": "/azure/data-explorer/kusto/query/base64-decode-tostring-function",
+        "redirect_document_id": true
+      },
+      {
+        "source_path": "data-explorer/kusto/query/base64_encode_fromarrayfunction.md",
+        "redirect_url": "/azure/data-explorer/kusto/query/base64-encode-fromarray-function",
+        "redirect_document_id": true
+      },
+      {
+        "source_path": "data-explorer/kusto/query/base64_encode_tostringfunction.md",
+        "redirect_url": "/azure/data-explorer/kusto/query/base64-encode-tostring-function",
+        "redirect_document_id": true
+      },
+      {
+        "source_path": "data-explorer/kusto/query/basketplugin.md",
+        "redirect_url": "/azure/data-explorer/kusto/query/basket-plugin",
+        "redirect_document_id": true
+      },
+      {
+        "source_path": "data-explorer/kusto/query/beta-cdffunction.md",
+        "redirect_url": "/azure/data-explorer/kusto/query/beta-cdf-function",
+        "redirect_document_id": true
+      },
+      {
+        "source_path": "data-explorer/kusto/query/beta-invfunction.md",
+        "redirect_url": "/azure/data-explorer/kusto/query/beta-inv-function",
+        "redirect_document_id": true
+      },
+      {
+        "source_path": "data-explorer/kusto/query/beta-pdffunction.md",
+        "redirect_url": "/azure/data-explorer/kusto/query/beta-pdf-function",
+        "redirect_document_id": true
+      },
+      {
+        "source_path": "data-explorer/kusto/query/betweenoperator.md",
+        "redirect_url": "/azure/data-explorer/kusto/query/between-operator",
+        "redirect_document_id": true
+      },
+      {
+        "source_path": "data-explorer/kusto/query/bin-autofunction.md",
+        "redirect_url": "/azure/data-explorer/kusto/query/bin-auto-function",
+        "redirect_document_id": true
+      },
+      {
+        "source_path": "data-explorer/kusto/query/binary-all-and-aggfunction.md",
+        "redirect_url": "/azure/data-explorer/kusto/query/binary-all-and-aggregation-function",
+        "redirect_document_id": true
+      },
+      {
+        "source_path": "data-explorer/kusto/query/binary-all-or-aggfunction.md",
+        "redirect_url": "/azure/data-explorer/kusto/query/binary-all-or-aggregation-function",
+        "redirect_document_id": true
+      },
+      {
+        "source_path": "data-explorer/kusto/query/binary-all-xor-aggfunction.md",
+        "redirect_url": "/azure/data-explorer/kusto/query/binary-all-xor-aggregation-function",
+        "redirect_document_id": true
+      },
+      {
+        "source_path": "data-explorer/kusto/query/binary-andfunction.md",
+        "redirect_url": "/azure/data-explorer/kusto/query/binary-and-function",
+        "redirect_document_id": true
+      },
+      {
+        "source_path": "data-explorer/kusto/query/binary-notfunction.md",
+        "redirect_url": "/azure/data-explorer/kusto/query/binary-not-function",
+        "redirect_document_id": true
+      },
+      {
+        "source_path": "data-explorer/kusto/query/binary-orfunction.md",
+        "redirect_url": "/azure/data-explorer/kusto/query/binary-or-function",
+        "redirect_document_id": true
+      },
+      {
+        "source_path": "data-explorer/kusto/query/binary-shift-leftfunction.md",
+        "redirect_url": "/azure/data-explorer/kusto/query/binary-shift-left-function",
+        "redirect_document_id": true
+      },
+      {
+        "source_path": "data-explorer/kusto/query/binary-shift-rightfunction.md",
+        "redirect_url": "/azure/data-explorer/kusto/query/binary-shift-right-function",
+        "redirect_document_id": true
+      },
+      {
+        "source_path": "data-explorer/kusto/query/binary-xorfunction.md",
+        "redirect_url": "/azure/data-explorer/kusto/query/binary-xor-function",
+        "redirect_document_id": true
+      },
+      {
+        "source_path": "data-explorer/kusto/query/binatfunction.md",
+        "redirect_url": "/azure/data-explorer/kusto/query/bin-at-function",
+        "redirect_document_id": true
+      },
+      {
+        "source_path": "data-explorer/kusto/query/binfunction.md",
+        "redirect_url": "/azure/data-explorer/kusto/query/bin-function",
+        "redirect_document_id": true
+      },
+      {
+        "source_path": "data-explorer/kusto/query/binoperators.md",
+        "redirect_url": "/azure/data-explorer/kusto/query/bin-operators",
+        "redirect_document_id": true
+      },
+      {
+        "source_path": "data-explorer/kusto/query/bitset-count-onesfunction.md",
+        "redirect_url": "/azure/data-explorer/kusto/query/bitset-count-ones-function",
+        "redirect_document_id": true
+      },
+      {
+        "source_path": "data-explorer/kusto/query/broadcastjoin.md",
+        "redirect_url": "/azure/data-explorer/kusto/query/broadcast-join",
+        "redirect_document_id": true
+      },
+      {
+        "source_path": "data-explorer/kusto/query/buildschema-aggfunction.md",
+        "redirect_url": "/azure/data-explorer/kusto/query/buildschema-aggregation-function",
+        "redirect_document_id": true
+      },
+      {
+        "source_path": "data-explorer/kusto/query/casefunction.md",
+        "redirect_url": "/azure/data-explorer/kusto/query/case-function",
+        "redirect_document_id": true
+      },
+      {
+        "source_path": "data-explorer/kusto/query/ceilingfunction.md",
+        "redirect_url": "/azure/data-explorer/kusto/query/ceiling-function",
+        "redirect_document_id": true
+      },
+      {
+        "source_path": "data-explorer/kusto/query/clusterfunction.md",
+        "redirect_url": "/azure/data-explorer/kusto/query/cluster-function",
+        "redirect_document_id": true
+      },
+      {
+        "source_path": "data-explorer/kusto/query/coalescefunction.md",
+        "redirect_url": "/azure/data-explorer/kusto/query/coalesce-function",
+        "redirect_document_id": true
+      },
+      {
+        "source_path": "data-explorer/kusto/query/columnifexists.md",
+        "redirect_url": "/azure/data-explorer/kusto/query/column-ifexists-function",
+        "redirect_document_id": true
+      },
+      {
+        "source_path": "data-explorer/kusto/query/consumeoperator.md",
+        "redirect_url": "/azure/data-explorer/kusto/query/consume-operator",
+        "redirect_document_id": true
+      },
+      {
+        "source_path": "data-explorer/kusto/query/cosfunction.md",
+        "redirect_url": "/azure/data-explorer/kusto/query/cos-function",
+        "redirect_document_id": true
+      },
+      {
+        "source_path": "data-explorer/kusto/query/cotfunction.md",
+        "redirect_url": "/azure/data-explorer/kusto/query/cot-function",
+        "redirect_document_id": true
+      },
+      {
+        "source_path": "data-explorer/kusto/query/count-aggfunction.md",
+        "redirect_url": "/azure/data-explorer/kusto/query/count-aggregation-function",
+        "redirect_document_id": true
+      },
+      {
+        "source_path": "data-explorer/kusto/query/count-distinct-aggfunction.md",
+        "redirect_url": "/azure/data-explorer/kusto/query/count-distinct-aggregation-function",
+        "redirect_document_id": true
+      },
+      {
+        "source_path": "data-explorer/kusto/query/count-distinctif-aggfunction.md",
+        "redirect_url": "/azure/data-explorer/kusto/query/count-distinctif-aggregation-function",
+        "redirect_document_id": true
+      },
+      {
+        "source_path": "data-explorer/kusto/query/countif-aggfunction.md",
+        "redirect_url": "/azure/data-explorer/kusto/query/countif-aggregation-function",
+        "redirect_document_id": true
+      },
+      {
+        "source_path": "data-explorer/kusto/query/countoffunction.md",
+        "redirect_url": "/azure/data-explorer/kusto/query/countof-function",
+        "redirect_document_id": true
+      },
+      {
+        "source_path": "data-explorer/kusto/query/countoperator.md",
+        "redirect_url": "/azure/data-explorer/kusto/query/count-operator",
+        "redirect_document_id": true
+      },
+      {
+        "source_path": "data-explorer/kusto/query/current-principal-detailsfunction.md",
+        "redirect_url": "/azure/data-explorer/kusto/query/current-principal-details-function",
+        "redirect_document_id": true
+      },
+      {
+        "source_path": "data-explorer/kusto/query/current-principal-ismemberoffunction.md",
+        "redirect_url": "/azure/data-explorer/kusto/query/current-principal-is-member-of-function",
+        "redirect_document_id": true
+      },
+      {
+        "source_path": "data-explorer/kusto/query/current-principalfunction.md",
+        "redirect_url": "/azure/data-explorer/kusto/query/current-principal-function",
+        "redirect_document_id": true
+      },
+      {
+        "source_path": "data-explorer/kusto/query/cursorbeforeoratfunction.md",
+        "redirect_url": "/azure/data-explorer/kusto/query/cursor-before-or-at-function",
+        "redirect_document_id": true
+      },
+      {
+        "source_path": "data-explorer/kusto/query/cursorcurrent.md",
+        "redirect_url": "/azure/data-explorer/kusto/query/cursor-current",
+        "redirect_document_id": true
+      },
+      {
+        "source_path": "data-explorer/kusto/query/databasefunction.md",
+        "redirect_url": "/azure/data-explorer/kusto/query/database-function",
+        "redirect_document_id": true
+      },
+      {
+        "source_path": "data-explorer/kusto/query/datatableoperator.md",
+        "redirect_url": "/azure/data-explorer/kusto/query/datatable-operator",
+        "redirect_document_id": true
+      }
+    ]
+}

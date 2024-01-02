@@ -31,7 +31,7 @@ Sandboxes are run locally (meaning, processing is done close to the data), with 
 
 ## Sandbox parameters
 
-Some of the  parameters can be controlled using a cluster-level [sandbox policy](../management/sandboxpolicy.md), for each kind of sandbox.
+Some of the  parameters can be controlled using a cluster-level [sandbox policy](../management/sandbox-policy.md), for each kind of sandbox.
 
 * **Number of sandboxes per node:** The number of sandboxes per node is limited.
   * Requests that are made when there's no available sandbox will be throttled.

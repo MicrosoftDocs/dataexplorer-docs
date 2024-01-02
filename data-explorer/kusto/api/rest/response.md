@@ -132,7 +132,7 @@ Three tables are often produced:
 
 * An @ExtendedProperties table that provides additional values, such as client visualization
   instructions (information provided by the [render operator](../../query/renderoperator.md)),
-  information about the query's effective [database cursor](../../management/databasecursor.md),
+  information about the query's effective [database cursor](../../management/database-cursor.md),
   or information about the query's effective use of the [query results cache](../../query/query-results-cache.md).
   
   For queries sent using the v1 protocol, the table has a single column of type `string`,

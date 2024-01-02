@@ -44,4 +44,4 @@ print arr=dynamic(["this", "is", "an", "example"])
 
 ## Related content
 
-Use [`array_index_of(arr, value)`](arrayindexoffunction.md) to find the position at which the value exists in the array. Both functions are equally performant.
+Use [`array_index_of(arr, value)`](array-index-of-function.md) to find the position at which the value exists in the array. Both functions are equally performant.

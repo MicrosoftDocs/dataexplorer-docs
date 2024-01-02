@@ -30,7 +30,7 @@ The plugin's runtime is hosted in a [sandbox](../concepts/sandboxes.md) on the c
 |*script*|string|&check;|The valid R script to be executed.|
 |*script_parameters*|dynamic||A property bag of name and value pairs to be passed to the R script as the reserved `kargs` dictionary. For more information, see [Reserved R variables](#reserved-r-variables).|
 |`hint.distribution`|string||Hint for the plugin's execution to be distributed across multiple cluster nodes. The default value is `single`. `single` means that a single instance of the script will run over the entire query data. `per_node` means that if the query before the R block is distributed, an instance of the script will run on each node over the data that it contains.|
-|*external_artifacts*|dynamic||A property bag of name and URL pairs for artifacts that are accessible from cloud storage. They can be made available for the script to use at runtime. URLs referenced in this property bag are required to be included in the cluster's [callout policy](../management/calloutpolicy.md) and in a publicly available location, or contain the necessary credentials, as explained in [storage connection strings](../api/connection-strings/storage-connection-strings.md). The artifacts are made available for the script to consume from a local temporary directory, `.\Temp`. The names provided in the property bag are used as the local file names. See [Example](#examples). For more information, see [Install packages for the R plugin](#install-packages-for-the-r-plugin).|
+|*external_artifacts*|dynamic||A property bag of name and URL pairs for artifacts that are accessible from cloud storage. They can be made available for the script to use at runtime. URLs referenced in this property bag are required to be included in the cluster's [callout policy](../management/callout-policy.md) and in a publicly available location, or contain the necessary credentials, as explained in [storage connection strings](../api/connection-strings/storage-connection-strings.md). The artifacts are made available for the script to consume from a local temporary directory, `.\Temp`. The names provided in the property bag are used as the local file names. See [Example](#examples). For more information, see [Install packages for the R plugin](#install-packages-for-the-r-plugin).|
 
 ## Reserved R variables
 
@@ -123,7 +123,7 @@ Follow these step by step instructions to install package(s) that aren't include
 ### Prerequisites
 
   1. Create a blob container to host the packages, preferably in the same place as your cluster. For example, `https://artifactswestus.blob.core.windows.net/r`, assuming your cluster is in West US.
-  1. Alter the cluster's [callout policy](../management/calloutpolicy.md) to allow access to that location.
+  1. Alter the cluster's [callout policy](../management/callout-policy.md) to allow access to that location.
         * This change requires [AllDatabasesAdmin](../management/access-control/role-based-access-control.md) permissions.
 
         * For example, to enable access to a blob located in `https://artifactswestus.blob.core.windows.net/r`, run the following command:
