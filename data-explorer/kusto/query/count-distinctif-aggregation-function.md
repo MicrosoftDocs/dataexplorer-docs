@@ -11,7 +11,7 @@ Conditionally counts unique values specified by the scalar expression per summar
 
 [!INCLUDE [data-explorer-agg-function-summarize-note](../../includes/data-explorer-agg-function-summarize-note.md)]
 
-If you only need an estimation of unique values count, we recommend using the less resource-consuming [dcountif](dcountif-aggfunction.md) aggregation function.
+If you only need an estimation of unique values count, we recommend using the less resource-consuming [dcountif](dcountif-aggregation-function.md) aggregation function.
 
 > [!NOTE]
 >

@@ -84,7 +84,7 @@ Finally the rows from the intermediate result arranged into groups having the sa
 |[count()](count-aggregation-function.md)|Returns a count of the group|
 |[countif()](countif-aggregation-function.md)|Returns a count with the predicate of the group|
 |[dcount()](dcount-aggfunction.md)|Returns an  approximate distinct count of the group elements|
-|[dcountif()](dcountif-aggfunction.md)|Returns an approximate distinct count with the predicate of the group|
+|[dcountif()](dcountif-aggregation-function.md)|Returns an approximate distinct count with the predicate of the group|
 |[max()](max-aggfunction.md)|Returns the maximum value across the group|
 |[maxif()](maxif-aggfunction.md)|Returns the maximum value with the predicate of the group|
 |[min()](min-aggfunction.md)|Returns the minimum value across the group|

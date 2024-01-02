@@ -1211,7 +1211,7 @@ items:
       - name: dcount()
         href: dcount-aggfunction.md
       - name: dcountif()
-        href: dcountif-aggfunction.md
+        href: dcountif-aggregation-function.md
       - name: hll()
         href: hll-aggfunction.md
       - name: hll_if()

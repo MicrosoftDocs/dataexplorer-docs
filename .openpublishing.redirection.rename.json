@@ -474,6 +474,16 @@
         "source_path": "data-explorer/kusto/query/dayofyearfunction.md",
         "redirect_url": "/azure/data-explorer/kusto/query/day-of-year-function",
         "redirect_document_id": true
+      },
+      {
+        "source_path": "data-explorer/kusto/query/dcount-hllfunction.md",
+        "redirect_url": "/azure/data-explorer/kusto/query/dcount-hll-function",
+        "redirect_document_id": true
+      },
+      {
+        "source_path": "data-explorer/kusto/query/dcountif-aggfunction.md",
+        "redirect_url": "/azure/data-explorer/kusto/query/dcountif-aggregation-function",
+        "redirect_document_id": true
       }
     ]
 }

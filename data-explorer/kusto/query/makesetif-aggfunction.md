@@ -32,7 +32,7 @@ Creates a `dynamic` array of the set of distinct values that *expr* takes in rec
 Returns a `dynamic` array of the set of distinct values that *expr* takes in records for which *predicate* evaluates to `true`. The array's sort order is undefined.
 
 > [!TIP]
-> To only count the distinct values, use [dcountif()](dcountif-aggfunction.md).
+> To only count the distinct values, use [dcountif()](dcountif-aggregation-function.md).
 
 ## Related content
 

@@ -213,7 +213,7 @@ The following aggregation functions are supported:
 * [`count`](../../query/count-aggregation-function.md)
 * [`countif`](../../query/countif-aggregation-function.md)
 * [`dcount`](../../query/dcount-aggfunction.md)
-* [`dcountif`](../../query/dcountif-aggfunction.md)
+* [`dcountif`](../../query/dcountif-aggregation-function.md)
 * [`min`](../../query/min-aggfunction.md)
 * [`max`](../../query/max-aggfunction.md)
 * [`avg`](../../query/avg-aggfunction.md)
