@@ -9,7 +9,7 @@ ms.date: 03/13/2023
 
 Calculate *P(n, k)*
 
-The function `perm_fl()` is a [user-defined function (UDF)](../query/functions/user-defined-functions.md) that calculates *P(n, k)*, the number of [permutations](https://en.wikipedia.org/wiki/Permutation) for selection of k items out of n, with order. It's based on the native [gamma()](../query/gammafunction.md) function to calculate factorial, (see [facorial_fl()](factorial-fl.md)). For selection of k items without order, use [comb_fl()](comb-fl.md).
+The function `perm_fl()` is a [user-defined function (UDF)](../query/functions/user-defined-functions.md) that calculates *P(n, k)*, the number of [permutations](https://en.wikipedia.org/wiki/Permutation) for selection of k items out of n, with order. It's based on the native [gamma()](../query/gamma-function.md) function to calculate factorial, (see [facorial_fl()](factorial-fl.md)). For selection of k items without order, use [comb_fl()](comb-fl.md).
 
 ## Syntax
 

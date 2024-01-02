@@ -599,6 +599,26 @@
         "source_path": "data-explorer/kusto/query/format-timespanfunction.md",
         "redirect_url": "/azure/data-explorer/kusto/query/format-timespan-function",
         "redirect_document_id": true
+      },
+      {
+        "source_path": "data-explorer/kusto/query/gammafunction.md",
+        "redirect_url": "/azure/data-explorer/kusto/query/gamma-function.md",
+        "redirect_document_id": true
+      },
+      {
+        "source_path": "data-explorer/kusto/query/getschemaoperator.md",
+        "redirect_url": "/azure/data-explorer/kusto/query/getschema-operator.md",
+        "redirect_document_id": true
+      },
+      {
+        "source_path": "data-explorer/kusto/query/gettypefunction.md",
+        "redirect_url": "/azure/data-explorer/kusto/query/gettype-function.md",
+        "redirect_document_id": true
+      },
+      {
+        "source_path": "data-explorer/kusto/query/getyearfunction.md",
+        "redirect_url": "/azure/data-explorer/kusto/query/getyear-function.md",
+        "redirect_document_id": true
       }
     ]
 }

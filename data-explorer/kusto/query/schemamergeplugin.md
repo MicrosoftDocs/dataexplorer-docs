@@ -9,7 +9,7 @@ ms.date: 01/22/2023
 
 Merges tabular schema definitions into a unified schema.
 
-Schema definitions are expected to be in the format produced by the [`getschema`](./getschemaoperator.md) operator.
+Schema definitions are expected to be in the format produced by the [`getschema`](./getschema-operator.md) operator.
 
 The `schema merge` operation joins columns in input schemas and tries to reduce
 data types to common ones. If data types can't be reduced, an error is displayed on the problematic column.
@@ -30,7 +30,7 @@ The plugin is invoked with the [`evaluate`](evaluate-operator.md) operator.
 
 ## Returns
 
-The `schema_merge` plugin returns output similar to what [`getschema`](./getschemaoperator.md) operator returns.
+The `schema_merge` plugin returns output similar to what [`getschema`](./getschema-operator.md) operator returns.
 
 ## Examples
 

@@ -766,16 +766,16 @@ items:
         displayName: format timespan
         href: format-timespan-function.md
       - name: gamma()
-        href: gammafunction.md
+        href: gamma-function.md
       - name: geo_info_from_ip_address()
         displayName: geo info from ip address
         href: geo-info-from-ip-address-function.md
       - name: gettype()
         displayName: get type
-        href: gettypefunction.md
+        href: gettype-function.md
       - name: getyear()
         displayName: get year
-        href: getyearfunction.md
+        href: getyear-function.md
       - name: gzip_compress_to_base64_string()
         displayName: gzip compress to base64 string
         href: gzip-base64-compress.md
@@ -905,7 +905,7 @@ items:
         href: log2-function.md
       - name: loggamma()
         displayName: log gamma
-        href: loggammafunction.md
+        href: loggamma-function.md
       - name: make_datetime()
         displayName: make datetime
         href: make-datetimefunction.md

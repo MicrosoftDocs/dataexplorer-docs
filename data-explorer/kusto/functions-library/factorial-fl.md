@@ -9,7 +9,7 @@ ms.date: 04/30/2023
 
 Calculate factorial.
 
-The function `factorial_fl()` is a [UDF (user-defined function)](../query/functions/user-defined-functions.md) that calculates [factorial](https://en.wikipedia.org/wiki/Factorial) of positive integers (*n!*). It's a simple wrapper of the native [gamma()](../query/gammafunction.md) function.
+The function `factorial_fl()` is a [UDF (user-defined function)](../query/functions/user-defined-functions.md) that calculates [factorial](https://en.wikipedia.org/wiki/Factorial) of positive integers (*n!*). It's a simple wrapper of the native [gamma()](../query/gamma-function.md) function.
 
 ## Syntax
 

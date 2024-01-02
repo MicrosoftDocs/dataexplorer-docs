@@ -50,7 +50,7 @@ This article lists all available scalar functions grouped by type. For aggregati
 |[endofyear()](end-of-year-function)|Returns the end of the year containing the date, shifted by an offset, if provided.|
 |[format_datetime()](format-datetime-function.md)|Formats a datetime parameter based on the format pattern parameter.|
 |[format_timespan()](format-timespan-function.md)|Formats a format-timespan parameter based on the format pattern parameter.|
-|[getyear()](getyearfunction.md)|Returns the year part of the datetime argument.|
+|[getyear()](getyear-function.md)|Returns the year part of the datetime argument.|
 |[hourofday()](hourofdayfunction.md)|Returns the integer number representing the hour number of the given date.|
 |[make_datetime()](make-datetimefunction.md)|Creates a datetime scalar value from the specified date and time.|
 |[make_timespan()](make-timespanfunction.md)|Creates a timespan scalar value from the specified time period.|
@@ -141,14 +141,14 @@ This article lists all available scalar functions grouped by type. For aggregati
 |[exp()](exp-function.md)|The base-e exponential function of x, which is e raised to the power x: e^x.|
 |[exp10()](exp10-function.md)|The base-10 exponential function of x, which is 10 raised to the power x: 10^x.|
 |[exp2()](exp2-function.md)|The base-2 exponential function of x, which is 2 raised to the power x: 2^x.|
-|[gamma()](gammafunction.md)|Computes gamma function.|
+|[gamma()](gamma-function.md)|Computes gamma function.|
 |[isfinite()](isfinitefunction.md)|Returns whether input is a finite value (isn't infinite or NaN).|
 |[isinf()](isinffunction.md)|Returns whether input is an infinite (positive or negative) value.|
 |[isnan()](isnanfunction.md)|Returns whether input is Not-a-Number (NaN) value.|
 |[log()](log-function.md)|Returns the natural logarithm function.|
 |[log10()](log10-function.md)|Returns the common (base-10) logarithm function.|
 |[log2()](log2-function.md)|Returns the base-2 logarithm function.|
-|[loggamma()](loggammafunction.md)|Computes log of absolute value of the gamma function.|
+|[loggamma()](loggamma-function.md)|Computes log of absolute value of the gamma function.|
 |[not()](notfunction.md)|Reverses the value of its bool argument.|
 |[pi()](pifunction.md)|Returns the constant value of Pi (π).|
 |[pow()](powfunction.md)|Returns a result of raising to power.|
@@ -342,7 +342,7 @@ This article lists all available scalar functions grouped by type. For aggregati
 
 |Function Name     |Description                                          |
 |-------------------------|--------------------------------------------------------|
-|[gettype()](gettypefunction.md)|Returns the runtime type of its single argument.|
+|[gettype()](gettype-function.md)|Returns the runtime type of its single argument.|
 
 ## Scalar aggregation functions
 

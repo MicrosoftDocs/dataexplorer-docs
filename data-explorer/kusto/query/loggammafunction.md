@@ -39,4 +39,4 @@ print result=loggamma(5)
 ## Returns
 
 * Returns the natural logarithm of the absolute value of the gamma function of x.
-* For computing gamma function, see [gamma()](gammafunction.md).
+* For computing gamma function, see [gamma()](gamma-function.md).

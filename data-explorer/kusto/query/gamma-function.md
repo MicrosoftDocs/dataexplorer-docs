@@ -27,4 +27,4 @@ Gamma function of *number*.
 
 ## Related content
 
-For computing log-gamma function, see [loggamma()](loggammafunction.md).
+For computing log-gamma function, see [loggamma()](loggamma-function.md).
