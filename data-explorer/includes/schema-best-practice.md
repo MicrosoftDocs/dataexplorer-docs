@@ -9,15 +9,15 @@ A table schema defines the names and [data types](/azure/data-explorer/kusto/que
 For general information on data types, see [scalar data types](/azure/data-explorer/kusto/query/scalar-data-types/).
 
 * Commonly used fields should be typed columns, not [dynamic](/azure/data-explorer/kusto/query/scalar-data-types/dynamic) type.
-* JSON properties in a [dynamic](/azure/data-explorer/kusto/query/scalar-data-types/dynamic) column that are frequently searched for or aggregated should be converted to a regular column in the table with a more specific type such as [string](/azure/data-explorer/kusto/query/scalar-data-types/string), [long](/azure/data-explorer/kusto/query/scalar-data-types/long), or [real](/azure/data-explorer/kusto/query/scalar-data-types/real).
-* Use the [dynamic](/azure/data-explorer/kusto/query/scalar-data-types/dynamic) type for sparse columns that aren't commonly used for filter and aggregation.
+* Frequently searched for or aggregated JSON properties in a [dynamic](/azure/data-explorer/kusto/query/scalar-data-types/dynamic) column should be converted to a regular column in the table with a more specific type such as [string](/azure/data-explorer/kusto/query/scalar-data-types/string), [long](/azure/data-explorer/kusto/query/scalar-data-types/long), or [real](/azure/data-explorer/kusto/query/scalar-data-types/real).
+* Sparse columns that aren't commonly used for filter and aggregation should be typed as [dynamic](/azure/data-explorer/kusto/query/scalar-data-types/dynamic).
 
-* All time columns should be typed as [datetime](/azure/data-explorer/kusto/query/scalar-data-types/datetime), and not [long](/azure/data-explorer/kusto/query/scalar-data-types/long) or other data types.
+* Time columns should be typed as [datetime](/azure/data-explorer/kusto/query/scalar-data-types/datetime), and not [long](/azure/data-explorer/kusto/query/scalar-data-types/long) or other data types.
     * For examples, see `DateTimeFromUnixMilliseconds` and similar [transformation mappings](/azure/data-explorer/kusto/management/mappings#mapping-transformations).
 
 * The [decimal](/azure/data-explorer/kusto/query/scalar-data-types/decimal) type provides exact precision, which makes it most suitable to financial and other applications that require exact accuracy. However, it's much slower than the [real](/azure/data-explorer/kusto/query/scalar-data-types/real) type. Only use the decimal type when required.
 
-* For better indexing and to allow partitioning, all ID (identification) columns should be typed as [string](/azure/data-explorer/kusto/query/scalar-data-types/string), not numeric. [Partitioning](/azure/data-explorer/kusto/management/partitioningpolicy) can only be defined on string columns. If the query filters used on this column are only equality, for example if the column has guids, you can use the encoding profile `Identifier`. For more information, see [encoding policy](/azure/data-explorer/kusto/management/encoding-policy).
+* All ID (identification) columns should be typed as [string](/azure/data-explorer/kusto/query/scalar-data-types/string), not numeric, for better indexing. [Partitioning](/azure/data-explorer/kusto/management/partitioningpolicy) can only be defined on string columns. If the query filters used on this column are only equality, for example if the column has guids, you can use the encoding profile `Identifier`. For more information, see [encoding policy](/azure/data-explorer/kusto/management/encoding-policy).
 
 ## Tables
 
