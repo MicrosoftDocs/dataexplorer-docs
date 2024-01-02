@@ -25,18 +25,20 @@ The app registration can either be created in the Azure portal, or programatical
 
 1. Sign in to [Azure portal](https://portal.azure.com) and open the **Identity** blade
 1. Browse to **App registrations** and select **New registration**.
-1. Select the **App registrations** blade and select **New registration
 
     :::image type="content" source="media/provision-azure-ad-app/create-app-new-registration.png" alt-text="Screenshot showing how to start a new app registration." lightbox="media/provision-azure-ad-app/create-app-new-registration.png":::
 
 1. Name the application, for example "example-app".
 1. Select a supported account type, which determines who can use the application.
-1. Under **Redirect URI**, select Web for the type of application you want to create. The URI is optional and is left blank in this case.
-1. Select **Register**
+1. Under **Redirect URI**, select **We**b for the type of application you want to create. The URI is optional and is left blank in this case.
 
     :::image type="content" source="media/provision-azure-ad-app/create-app-register-app.png" alt-text="Screenshot showing how to register a new app registration.":::
 
+1. Select **Register**.
+
 #### Manage secrets
+
+Through the course of this section, you'll copy the following values: **Application ID** and **key value**. Paste these values somewhere, like a text editor, for use in the step [configure client credentials to the database](#grant-a-service-principal-access-to-the-database).
 
 1. Browse to the **Overview** blade.
 1. Copy the **Application (client) ID**.
@@ -53,13 +55,10 @@ The app registration can either be created in the Azure portal, or programatical
 
 1. Enter a description, expiration, and select **Add**.
 
-    :::image type="content" source="media/provision-azure-ad-app/create-app-secret-details.png" alt-text="Screenshot showing how to enter client secret parameters.":::
-
 1. Copy the key value.
 
     > [!NOTE]
-    > When you leave this page, the key value won't be accessible.  <br>
-    > You need the key to [configure client credentials to the database](#grant-a-service-principal-access-to-the-database).
+    > When you leave this page, the key value won't be accessible. 
 
 Your application is created. If you only need access to an authorized Azure Data Explorer resource, such as in the programmatic example, skip the next section. For delegated permissions support, see [configure delegated permissions for the application](#configure-delegated-permissions-for-the-application).
 
