@@ -749,6 +749,21 @@
         "source_path": "data-explorer/kusto/query/join-timewindow.md",
         "redirect_url": "/azure/data-explorer/kusto/query/join-time-window",
         "redirect_document_id": true
+      },
+      {
+        "source_path": "data-explorer/kusto/query/isutf8.md",
+        "redirect_url": "/azure/data-explorer/kusto/query/isutf8-function",
+        "redirect_document_id": true
+      },
+      {
+        "source_path": "data-explorer/kusto/query/joincrosscluster.md",
+        "redirect_url": "/azure/data-explorer/kusto/query/join-cross-cluster",
+        "redirect_document_id": true
+      },
+      {
+        "source_path": "data-explorer/kusto/query/joinoperator.md",
+        "redirect_url": "/azure/data-explorer/kusto/query/join-operator",
+        "redirect_document_id": true
       }
     ]
 }

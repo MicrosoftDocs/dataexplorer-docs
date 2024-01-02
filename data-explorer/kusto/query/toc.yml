@@ -184,7 +184,7 @@ items:
               - name: rightanti
                 href: join-rightanti.md
           - name: Cross-cluster join
-            href: joincrosscluster.md
+            href: join-cross-cluster.md
             displayName: cross cluster
           - name: Broadcast join
             href: broadcast-join.md
@@ -893,7 +893,7 @@ items:
         href: isnull-function.md
       - name: isutf8()
         displayName: is utf8
-        href: isutf8.md
+        href: isutf8-function.md
       - name: jaccard_index()
         displayName: jaccard index
         href: jaccard-index-function.md

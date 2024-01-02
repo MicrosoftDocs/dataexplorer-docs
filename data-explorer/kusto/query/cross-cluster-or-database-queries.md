@@ -177,5 +177,5 @@ cluster("OtherCluster").database("OtherDb").GetDataPivot()
 
 ## Related content
 
-* [Cross-cluster join](../query/joincrosscluster.md)
+* [Cross-cluster join](../query/join-cross-cluster.md)
 * [Allow cross-tenant queries and commands](../access-control/cross-tenant-query-and-commands.md)
