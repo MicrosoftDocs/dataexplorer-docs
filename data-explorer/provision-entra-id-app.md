@@ -36,6 +36,31 @@ The app registration can either be created in the Azure portal, or programatical
 
 1. Select **Register**.
 
+#### Set up authentication
+
+There are two types of authentication available for service principals: password-based authentication (application secret) and certificate-based authentication. The following section describes using a password-based authentication for the application's credentials. You can alternatively use an X509 certificate to authenticate your application. For more information, see [How to configure Microsoft Entra certificate-based authentication](/entra/identity/authentication/how-to-certificate-based-authentication).
+
+Through the course of this section, you'll copy the following values: **Application ID** and **key value**. Paste these values somewhere, like a text editor, for use in the step [configure client credentials to the database](#grant-a-service-principal-access-to-the-database).
+
+1. Browse to the **Overview** blade.
+1. Copy the **Application (client) ID**.
+
+    > [!NOTE]
+    > You'll need the application ID to authorize the service principal to access the database.
+
+1. In the **Certificates & secrets** blade, select **New client secret**.
+
+    :::image type="content" source="media/provision-azure-ad-app/create-app-new-client-secret.png" alt-text="Screenshot showing how to start the creation of client secret.":::
+
+1. Enter a description, expiration, and select **Add**.
+
+1. Copy the key value.
+
+    > [!NOTE]
+    > When you leave this page, the key value won't be accessible. 
+
+If you only need access to an authorized Azure Data Explorer resource, such as in the programmatic example, skip the next section. For delegated permissions support, see [configure delegated permissions for the application](#configure-delegated-permissions-for-the-application).
+
 You've created your Microsoft Entra application and service principal.
 
 ### [Azure CLI](#tab/azurecli)
@@ -73,31 +98,6 @@ You've created your Microsoft Entra application and service principal.
 You've created your Microsoft Entra application and service principal.
 
 ---
-
-## Set up authentication
-
-There are two types of authentication available for service principals: password-based authentication (application secret) and certificate-based authentication. The following section describes using a password-based authentication for the application's credentials. You can alternatively use an X509 certificate to authenticate your application. For more information, see [How to configure Microsoft Entra certificate-based authentication](/entra/identity/authentication/how-to-certificate-based-authentication).
-
-Through the course of this section, you'll copy the following values: **Application ID** and **key value**. Paste these values somewhere, like a text editor, for use in the step [configure client credentials to the database](#grant-a-service-principal-access-to-the-database).
-
-1. Browse to the **Overview** blade.
-1. Copy the **Application (client) ID**.
-
-    > [!NOTE]
-    > You'll need the application ID to authorize the service principal to access the database.
-
-1. In the **Certificates & secrets** blade, select **New client secret**.
-
-    :::image type="content" source="media/provision-azure-ad-app/create-app-new-client-secret.png" alt-text="Screenshot showing how to start the creation of client secret.":::
-
-1. Enter a description, expiration, and select **Add**.
-
-1. Copy the key value.
-
-    > [!NOTE]
-    > When you leave this page, the key value won't be accessible. 
-
-If you only need access to an authorized Azure Data Explorer resource, such as in the programmatic example, skip the next section. For delegated permissions support, see [configure delegated permissions for the application](#configure-delegated-permissions-for-the-application).
 
 ## Configure delegated permissions for the application
 
