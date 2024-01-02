@@ -23,7 +23,7 @@ See the following ways of creating external tables:
 * [Create and alter SQL Server external tables](../../management/external-sql-tables.md)
 * [Create external table using Azure Data Explorer web UI Wizard](../../../external-table.md)
 
-An **external table** can be referenced by its name using the [external_table()](../../query/externaltablefunction.md) function.
+An **external table** can be referenced by its name using the [external_table()](../../query/external-table-function.md) function.
 
 Use the following commands to manage external tables:
 

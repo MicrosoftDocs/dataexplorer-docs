@@ -131,7 +131,7 @@ Welcome to what's new in Azure Data Explorer. This article details new and signi
 |--|--|
 |- [punycode_domain_from_string()](kusto/query/punycode-domain-from-string.md) <br/> - [punycode_domain_to_string()](kusto/query/punycode-domain-to-string.md)| New articles. Describes how to encode and decode a punycode domain name.|
 | [geo_line_to_s2cells()](kusto/query/geo-line-to-s2cells-function.md)| New article. Describes how to use the geo_line_to_2cells() function to calculate S2 cell tokens that cover a line or a multiline on Earth.|
-| [extract_json()](kusto/query/extractjsonfunction.md)| Updated article. Added new example.|
+| [extract_json()](kusto/query/extract-json-function.md)| Updated article. Added new example.|
 | [Pivot chart](kusto/query/visualization-pivotchart.md)| Updated article. Added new example.|
 
 ## June 2023

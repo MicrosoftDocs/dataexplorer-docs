@@ -174,7 +174,7 @@ This article lists all available scalar functions grouped by type. For aggregati
 |[current_principal_is_member_of()](current-principal-is-member-of-function.md)|Checks group membership or principal identity of the current principal running the query.|
 |[cursor_after()](cursor-after-function.md)|Used to access to the records that were ingested after the previous value of the cursor.|
 |[estimate_data_size()](estimate-data-size-function.md)|Returns an estimated data size of the selected columns of the tabular expression.|
-|[extent_id()](extentidfunction.md)|Returns a unique identifier that identifies the data shard ("extent") that the current record resides in.|
+|[extent_id()](extent-id-function.md)|Returns a unique identifier that identifies the data shard ("extent") that the current record resides in.|
 |[extent_tags()](extenttagsfunction.md)|Returns a dynamic array with the tags of the data shard ("extent") that the current record resides in.|
 |[ingestion_time()](ingestiontimefunction.md)|Retrieves the record's $IngestionTime hidden datetime column, or null.|
 
@@ -266,9 +266,9 @@ This article lists all available scalar functions grouped by type. For aggregati
 |[base64_decode_toarray()](base64-decode-toarray-function.md)|Decodes a base64 string to an array of long values.|
 |[base64_decode_toguid()](base64-decode-toguid-function.md)|Decodes a base64 string to a GUID.|
 |[countof()](countof-function.md)|Counts occurrences of a substring in a string. Plain string matches may overlap; regex matches don't.|
-|[extract()](extractfunction.md)|Get a match for a regular expression from a text string.|
-|[extract_all()](extractallfunction.md)|Get all matches for a regular expression from a text string.|
-|[extract_json()](extractjsonfunction.md)|Get a specified element out of a JSON text using a path expression.|
+|[extract()](extract-function.md)|Get a match for a regular expression from a text string.|
+|[extract_all()](extract-all-function.md)|Get all matches for a regular expression from a text string.|
+|[extract_json()](extract-json-function.md)|Get a specified element out of a JSON text using a path expression.|
 |[has_any_index()](has-any-index-function.md)|Searches the string for items specified in the array and returns the position of the first item found in the string.|
 |[indexof()](indexoffunction.md)|Function reports the zero-based index of the first occurrence of a specified string within input string.|
 |[isempty()](isemptyfunction.md)|Returns true if the argument is an empty string or is null.|

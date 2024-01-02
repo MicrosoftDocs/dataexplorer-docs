@@ -534,6 +534,41 @@
         "source_path": "data-explorer/kusto/query/evaluateoperator.md",
         "redirect_url": "/azure/data-explorer/kusto/query/evaluate-operator",
         "redirect_document_id": true
+      },
+      {
+        "source_path": "data-explorer/kusto/query/extendoperator.md",
+        "redirect_url": "/azure/data-explorer/kusto/query/extend-operator",
+        "redirect_document_id": true
+      },
+      {
+        "source_path": "data-explorer/kusto/query/extentidfunction.md",
+        "redirect_url": "/azure/data-explorer/kusto/query/extent-id-function",
+        "redirect_document_id": true
+      },
+      {
+        "source_path": "data-explorer/kusto/query/extenttagsfunction.md",
+        "redirect_url": "/azure/data-explorer/kusto/query/extent-tags-function",
+        "redirect_document_id": true
+      },
+      {
+        "source_path": "data-explorer/kusto/query/externaltablefunction.md",
+        "redirect_url": "/azure/data-explorer/kusto/query/external-table-function",
+        "redirect_document_id": true
+      },
+      {
+        "source_path": "data-explorer/kusto/query/extractallfunction.md",
+        "redirect_url": "/azure/data-explorer/kusto/query/extract-all-function",
+        "redirect_document_id": true
+      },
+      {
+        "source_path": "data-explorer/kusto/query/extractfunction.md",
+        "redirect_url": "/azure/data-explorer/kusto/query/extract-function",
+        "redirect_document_id": true
+      },
+      {
+        "source_path": "data-explorer/kusto/query/extractjsonfunction.md",
+        "redirect_url": "/azure/data-explorer/kusto/query/extract-json-function",
+        "redirect_document_id": true
       }
     ]
 }

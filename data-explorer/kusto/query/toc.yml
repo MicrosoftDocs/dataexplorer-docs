@@ -144,7 +144,7 @@ items:
       - name: evaluate operator
         href: evaluate-operator.md
       - name: extend operator
-        href: extendoperator.md
+        href: extend-operator.md
       - name: externaldata operator
         href: externaldata-operator.md
       - name: facet operator
@@ -324,7 +324,7 @@ items:
       - name: database()
         href: database-function.md
       - name: external_table()
-        href: externaltablefunction.md
+        href: external-table-function.md
         displayName: external table external-table
       - name: materialize()
         href: materializefunction.md
@@ -738,18 +738,18 @@ items:
         href: exp2-function.md
       - name: extent_id()
         displayName: extentid() extent id
-        href: extentidfunction.md
+        href: extent-id-function.md
       - name: extent_tags()
         displayName: extenttags() extent tags
         href: extenttagsfunction.md
       - name: extract()
-        href: extractfunction.md
+        href: extract-function.md
       - name: extract_all()
         displayName: extractall() extract all
-        href: extractallfunction.md
+        href: extract-all-function.md
       - name: extract_json()
         displayName: extractjson() extract json
-        href: extractjsonfunction.md
+        href: extract-json-function.md
       - name: format_bytes()
         displayName: format bytes
         href: format-bytesfunction.md

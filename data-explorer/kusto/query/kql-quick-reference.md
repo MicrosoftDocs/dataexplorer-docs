@@ -31,7 +31,7 @@ This article shows you a list of functions and their descriptions to help get yo
 | [project-keep](project-keep-operator.md)         | Selects the columns to keep in the output | `T | project-keep ColumnNameOrPattern [, ...]` |
 | [project-rename](projectrenameoperator.md)     | Renames columns in the result output | `T | project-rename new_column_name = column_name` |
 | [project-reorder](projectreorderoperator.md)   | Reorders columns in the result output | `T | project-reorder Col2, Col1, Col* asc` |
-| [extend](extendoperator.md)                    | Creates a calculated column and adds it to the result set | `T | extend [ColumnName | (ColumnName[, ...]) =] Expression [, ...]` |
+| [extend](extend-operator.md)                    | Creates a calculated column and adds it to the result set | `T | extend [ColumnName | (ColumnName[, ...]) =] Expression [, ...]` |
 | **Sort and Aggregate Dataset**                 |**_Restructure the data by sorting or grouping them in meaningful ways_**|                  |
 | [sort operator](sort-operator.md) | Sort the rows of the input table by one or more columns in ascending or descending order | `T | sort by expression1 [asc|desc], expression2 [asc|desc], …` |
 | [top](topoperator.md)                          | Returns the first N rows of the dataset when the dataset is sorted using `by` | `T | top numberOfRows by expression [asc|desc] [nulls first|last]` |

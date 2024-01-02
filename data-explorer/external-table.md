@@ -132,4 +132,4 @@ The resulting table includes data from all the files that fit the criteria defin
 
 * [External tables overview](kusto/query/schema-entities/external-tables.md)
 * [Create and alter Azure Storage external tables](kusto/management/external-tables-azurestorage-azuredatalake.md)
-* [external_table() function](kusto/query/externaltablefunction.md)
+* [external_table() function](kusto/query/external-table-function.md)

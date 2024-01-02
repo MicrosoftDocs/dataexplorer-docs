@@ -193,7 +193,7 @@ The following rules limit the query used in the materialized view Query paramete
 
 * Cross-cluster and cross-database queries aren't supported.
 
-* References to [external_table()](../../query/externaltablefunction.md) and [externaldata](../../query/externaldata-operator.md) aren't supported.
+* References to [external_table()](../../query/external-table-function.md) and [externaldata](../../query/externaldata-operator.md) aren't supported.
 
 * The materialized view query can't include any callouts that require impersonation. Specifically, all [query connectivity plugins](../../query/azure-digital-twins-query-request-plugin.md) that use impersonation aren't allowed.
 

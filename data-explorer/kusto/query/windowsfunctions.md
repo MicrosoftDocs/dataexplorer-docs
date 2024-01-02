@@ -22,7 +22,7 @@ be serialized in one of the following ways:
    row sets.
 2. By using the [serialize operator](./serializeoperator.md).
 
-Many tabular operators serialize output whenever the input is already serialized, even if the operator doesn't itself guarantee that the result is serialized. For example, this property is guaranteed for the [extend operator](./extendoperator.md), the [project operator](./projectoperator.md), and the [where operator](./whereoperator.md).
+Many tabular operators serialize output whenever the input is already serialized, even if the operator doesn't itself guarantee that the result is serialized. For example, this property is guaranteed for the [extend operator](./extend-operator.md), the [project operator](./projectoperator.md), and the [where operator](./whereoperator.md).
 
 ## Operators that emit serialized row sets by sorting
 
@@ -32,7 +32,7 @@ Many tabular operators serialize output whenever the input is already serialized
 
 ## Operators that preserve the serialized row set property
 
-* [extend operator](./extendoperator.md)
+* [extend operator](./extend-operator.md)
 * [mv-expand operator](./mvexpandoperator.md)
 * [parse operator](./parseoperator.md)
 * [project operator](./projectoperator.md)

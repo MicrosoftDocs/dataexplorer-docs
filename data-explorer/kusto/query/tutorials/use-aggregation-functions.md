@@ -196,7 +196,7 @@ Calculating percentages can help you understand the distribution and proportion 
 
 Use [count()](../count-aggregation-function.md) and [countif](../countif-aggregation-function.md) to find the percentage of storm events that caused crop damage in each state. First, count the total number of storms in each state. Then, count the number of storms that caused crop damage in each state.
 
-Then, use [extend](../extendoperator.md) to calculate the percentage between the two columns by dividing the number of storms with property damage by the total number of storms and multiplying by 100.
+Then, use [extend](../extend-operator.md) to calculate the percentage between the two columns by dividing the number of storms with property damage by the total number of storms and multiplying by 100.
 
 To ensure that you get a decimal result, use the [todouble()](../todoublefunction.md) function to convert at least one of the integer count values to a double before performing the division.
 

@@ -212,7 +212,7 @@ StormEvents
 
 ## Create calculated columns
 
-The [project](../projectoperator.md) and [extend](../extendoperator.md) operators can both create calculated columns.
+The [project](../projectoperator.md) and [extend](../extend-operator.md) operators can both create calculated columns.
 
 Use `project` to specify only the columns you want to view, and use `extend` to append the calculated column to the end of the table.
 
