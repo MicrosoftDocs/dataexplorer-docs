@@ -19,7 +19,7 @@ This article shows you a list of functions and their descriptions to help get yo
 | [search](searchoperator.md)                    | Searches all columns in the table for the value | `[TabularSource |] search [kind=CaseSensitivity] [in (TableSources)] SearchPredicate` |
 | [take](takeoperator.md)                        | Returns the specified number of records. Use to test a query<br>**_Note_**: `take` and `limit` are synonyms. | `T | take NumberOfRows` |
 | [case](case-function.md)                        | Adds a condition statement, similar to if/then/elseif in other systems. | `case(predicate_1, then_1, predicate_2, then_2, predicate_3, then_3, else)` |
-| [distinct](distinctoperator.md)                | Produces a table with the distinct combination of the provided columns of the input table | `distinct [ColumnName], [ColumnName]` |
+| [distinct](distinct-operator.md)                | Produces a table with the distinct combination of the provided columns of the input table | `distinct [ColumnName], [ColumnName]` |
 | **Date/Time**                                   |**_Operations that use date and time functions_**               |                          |
 |[ago](ago-function.md)                           | Returns the time offset relative to the time the query executes. For example, `ago(1h)` is one hour before the current clock's reading. | `ago(a_timespan)` |
 | [format_datetime](format-datetimefunction.md)  | Returns data in [various date formats](format-datetimefunction.md#supported-format-elements). | `format_datetime(datetime , format)` |

@@ -72,7 +72,7 @@ To sample a certain percentage of your data (rather than a specified number of r
 StormEvents | where rand() < 0.1
 ```
 
-To sample keys rather than rows (for example - sample 10 Ids and get all rows for these Ids) you can use [`sample-distinct`](./sampledistinctoperator.md) in combination with the `in` operator.
+To sample keys rather than rows (for example - sample 10 Ids and get all rows for these Ids) you can use [`sample-distinct`](./sampledistinct-operator.md) in combination with the `in` operator.
 
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA8tJLVEoTswtyEl1Lcgszk9JLVawVQguyS/KdS1LzSspVqiBSuumZBaXZOYllygYGijkpylAlXumWHMhKeeqUSjPSC1KRUgrZOYpaKDaoAkA08y7N3UAAAA=" target="_blank">Run the query</a>
