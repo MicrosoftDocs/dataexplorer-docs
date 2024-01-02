@@ -717,32 +717,37 @@
       },
       {
         "source_path": "data-explorer/kusto/query/isemptyfunction.md",
-        "redirect_url": "/azure/data-explorer/kusto/query/isempty-function.md",
+        "redirect_url": "/azure/data-explorer/kusto/query/isempty-function",
         "redirect_document_id": true
       },
       {
         "source_path": "data-explorer/kusto/query/isfinitefunction.md",
-        "redirect_url": "/azure/data-explorer/kusto/query/isfinite-function.md",
+        "redirect_url": "/azure/data-explorer/kusto/query/isfinite-function",
         "redirect_document_id": true
       },
       {
         "source_path": "data-explorer/kusto/query/isinffunction.md",
-        "redirect_url": "/azure/data-explorer/kusto/query/isinf-function.md",
+        "redirect_url": "/azure/data-explorer/kusto/query/isinf-function",
         "redirect_document_id": true
       },
       {
         "source_path": "data-explorer/kusto/query/isnotemptyfunction.md",
-        "redirect_url": "/azure/data-explorer/kusto/query/isnotempty-function.md",
+        "redirect_url": "/azure/data-explorer/kusto/query/isnotempty-function",
         "redirect_document_id": true
       },
       {
         "source_path": "data-explorer/kusto/query/isnotnullfunction.md",
-        "redirect_url": "/azure/data-explorer/kusto/query/isnotnull-function.md",
+        "redirect_url": "/azure/data-explorer/kusto/query/isnotnull-function",
         "redirect_document_id": true
       },
       {
         "source_path": "data-explorer/kusto/query/isnullfunction.md",
-        "redirect_url": "/azure/data-explorer/kusto/query/isnull-function.md",
+        "redirect_url": "/azure/data-explorer/kusto/query/isnull-function",
+        "redirect_document_id": true
+      },
+      {
+        "source_path": "data-explorer/kusto/query/join-timewindow.md",
+        "redirect_url": "/azure/data-explorer/kusto/query/join-time-window",
         "redirect_document_id": true
       }
     ]

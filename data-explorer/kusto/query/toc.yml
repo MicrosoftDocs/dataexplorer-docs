@@ -189,7 +189,7 @@ items:
           - name: Broadcast join
             href: broadcast-join.md
           - name: Time window join
-            href: join-timewindow.md
+            href: join-time-window.md
       - name: lookup operator
         href: lookupoperator.md
       - name: mv-apply operator
