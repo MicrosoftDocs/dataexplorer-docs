@@ -2,7 +2,7 @@
 ms.topic: include
 ms.date: 01/01/2024
 ---
-A table schema defines the names and data types of all the columns in the table. The table schema can be set during table creation, or as a part of the data ingestion process. The way a table schema is defined can affect your query performance. The ideal schema for your data depends on many factors, including use case, data access patterns, and the specific data you plan to store. This article describes best practices for optimizing performance by designing efficient schemas.
+A table schema defines the names and [data types](/azure/data-explorer/kusto/query/scalar-data-types/) of all the columns in the table. The table schema can be set during [table creation](/azure/data-explorer/kusto/management/create-table-command), or as a part of the data ingestion process by modifying the applicable [ingestion mapping](/azure/data-explorer/kusto/management/create-ingestion-mapping-command). The way a table schema is defined can significantly affect your query performance. The ideal schema for your data depends on many factors, including use case, data access patterns, and the specific data you plan to store. This article describes best practices for optimizing performance by designing efficient schemas.
 
 ## Data types
 
@@ -17,7 +17,7 @@ For general information on data types, see [scalar data types](/azure/data-explo
 
 * The [decimal](/azure/data-explorer/kusto/query/scalar-data-types/decimal) type provides exact precision, which makes it most suitable to financial and other applications that require exact accuracy. However, it's much slower than the [real](/azure/data-explorer/kusto/query/scalar-data-types/real) type. Only use the decimal type when required.
 
-* For better indexing, all ID (identification) columns should be typed as [string](/azure/data-explorer/kusto/query/scalar-data-types/string), not numeric. If you only query for specific values in this column, you can use the encoding profile `Identifier`. For more information, see [encoding policy](/azure/data-explorer/kusto/management/encoding-policy).
+* For better indexing and to allow partitioning, all ID (identification) columns should be typed as [string](/azure/data-explorer/kusto/query/scalar-data-types/string), not numeric. [Partitioning](/azure/data-explorer/kusto/management/partitioningpolicy) can only be defined on string columns. If the query filters used on this column are only equality, for example if the column has guids, you can use the encoding profile `Identifier`. For more information, see [encoding policy](/azure/data-explorer/kusto/management/encoding-policy).
 
 ## Tables
 
