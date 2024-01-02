@@ -14,7 +14,7 @@ The encoding policy defines how data is encoded, compressed, and indexed. This p
 We recommend the default policy be maintained except for specific scenarios. It can be useful to modify the default column's encoding policy to fine tune control over the performance/COGS trade-off. For example:
 
 * The default indexing applied to `string` columns is built for term searches. If you only query for specific values in the column, COGS might be reduced if the index is simplified using the encoding profile `Identifier`. For more information, see [the string data type](../query/datatypes-string-operators.md).
-* Fields that are never queried on or don't need fast searches can disable indexing. You can use profile `BigObject` to turn off the indexes and increase maximal value size in dynamic or string columns.
+* Fields that are never queried on or don't need fast searches can disable indexing. You can use profile `BigObject` to turn off the indexes and increase maximal value size in dynamic or string columns. For example, use this profile to store HLL values returned by hll() function.
 
 ## How it works
 
