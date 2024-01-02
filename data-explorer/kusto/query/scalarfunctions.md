@@ -44,10 +44,10 @@ This article lists all available scalar functions grouped by type. For aggregati
 |[dayofmonth()](day-of-month-function.md)|Returns the integer number representing the day number of the given month.|
 |[dayofweek()](day-of-week-function.md)|Returns the integer number of days since the preceding Sunday, as a timespan.|
 |[dayofyear()](day-of-year-function.md)|Returns the integer number represents the day number of the given year.|
-|[endofday()](endofdayfunction.md)|Returns the end of the day containing the date, shifted by an offset, if provided.|
-|[endofmonth()](endofmonthfunction.md)|Returns the end of the month containing the date, shifted by an offset, if provided.|
-|[endofweek()](endofweekfunction.md)|Returns the end of the week containing the date, shifted by an offset, if provided.|
-|[endofyear()](endofyearfunction.md)|Returns the end of the year containing the date, shifted by an offset, if provided.|
+|[endofday()](end-of-day-function)|Returns the end of the day containing the date, shifted by an offset, if provided.|
+|[endofmonth()](end-of-month-function)|Returns the end of the month containing the date, shifted by an offset, if provided.|
+|[endofweek()](end-of-week-function)|Returns the end of the week containing the date, shifted by an offset, if provided.|
+|[endofyear()](end-of-year-function)|Returns the end of the year containing the date, shifted by an offset, if provided.|
 |[format_datetime()](format-datetimefunction.md)|Formats a datetime parameter based on the format pattern parameter.|
 |[format_timespan()](format-timespanfunction.md)|Formats a format-timespan parameter based on the format pattern parameter.|
 |[getyear()](getyearfunction.md)|Returns the year part of the datetime argument.|

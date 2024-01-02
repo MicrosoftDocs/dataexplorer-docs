@@ -504,6 +504,26 @@
         "source_path": "data-explorer/kusto/query/distinctoperator.md",
         "redirect_url": "/azure/data-explorer/kusto/query/distinct-operator",
         "redirect_document_id": true
+      },
+      {
+        "source_path": "data-explorer/kusto/query/endofdayfunction.md",
+        "redirect_url": "/azure/data-explorer/kusto/query/end-of-day-function.md",
+        "redirect_document_id": true
+      },
+      {
+        "source_path": "data-explorer/kusto/query/endofmonthfunction.md",
+        "redirect_url": "/azure/data-explorer/kusto/query/end-of-month-function.md",
+        "redirect_document_id": true
+      },
+      {
+        "source_path": "data-explorer/kusto/query/endofweekfunction.md",
+        "redirect_url": "/azure/data-explorer/kusto/query/end-of-week-function.md",
+        "redirect_document_id": true
+      },
+      {
+        "source_path": "data-explorer/kusto/query/endofyearfunction.md",
+        "redirect_url": "/azure/data-explorer/kusto/query/end-of-year-function.md",
+        "redirect_document_id": true
       }
     ]
 }

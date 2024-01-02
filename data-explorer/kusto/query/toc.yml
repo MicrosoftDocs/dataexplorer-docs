@@ -711,16 +711,16 @@ items:
         href: dynamic-to-json-function.md
       - name: endofday()
         displayName: endofday() end of day
-        href: endofdayfunction.md
+        href: end-of-day-function
       - name: endofmonth()
         displayName: endofmonth() end of month
-        href: endofmonthfunction.md
+        href: end-of-month-function
       - name: endofweek()
         displayName: endofweek() end of week
-        href: endofweekfunction.md
+        href: end-of-week-function
       - name: endofyear()
         displayName: endofyear() end of year
-        href: endofyearfunction.md
+        href: end-of-year-function
       - name: erf()
         displayName: Gaussian, error function, statistics, distribution
         href: erf-function.md
