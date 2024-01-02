@@ -459,6 +459,21 @@
         "source_path": "data-explorer/kusto/query/datetime-partfunction.md",
         "redirect_url": "/azure/data-explorer/kusto/query/datetime-part-function",
         "redirect_document_id": true
+      },
+      {
+        "source_path": "data-explorer/kusto/query/dayofmonthfunction.md",
+        "redirect_url": "/azure/data-explorer/kusto/query/day-of-month-function",
+        "redirect_document_id": true
+      },
+      {
+        "source_path": "data-explorer/kusto/query/dayofweekfunction.md",
+        "redirect_url": "/azure/data-explorer/kusto/query/day-of-week-function",
+        "redirect_document_id": true
+      },
+      {
+        "source_path": "data-explorer/kusto/query/dayofyearfunction.md",
+        "redirect_url": "/azure/data-explorer/kusto/query/day-of-year-function",
+        "redirect_document_id": true
       }
     ]
 }

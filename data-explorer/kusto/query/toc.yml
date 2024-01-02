@@ -694,13 +694,13 @@ items:
         href: datetime-utc-to-local-function.md
       - name: dayofmonth()
         displayName: dayofmonth() day of month
-        href: dayofmonthfunction.md
+        href: day-of-month-function.md
       - name: dayofweek()
         displayName: dayofweek() day of week
-        href: dayofweekfunction.md
+        href: day-of-week-function.md
       - name: dayofyear()
         displayName: day of year
-        href: dayofyearfunction.md
+        href: day-of-year-function.md
       - name: dcount_hll()
         displayName: dcount hll
         href: dcount-hllfunction.md

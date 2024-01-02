@@ -41,9 +41,9 @@ This article lists all available scalar functions grouped by type. For aggregati
 |[datetime_local_to_utc()](datetime-local-to-utc-function.md) |  Converts local datetime to UTC datetime using [a time-zone specification](../query/timezone.md).
 |[datetime_part()](datetime-part-function.md)|Extracts the requested date part as an integer value.|
 | [datetime_utc_to_local()](datetime-utc-to-local-function.md) | Converts UTC datetimgoe to local datetime using a [time-zone specification](../query/timezone.md).
-|[dayofmonth()](dayofmonthfunction.md)|Returns the integer number representing the day number of the given month.|
-|[dayofweek()](dayofweekfunction.md)|Returns the integer number of days since the preceding Sunday, as a timespan.|
-|[dayofyear()](dayofyearfunction.md)|Returns the integer number represents the day number of the given year.|
+|[dayofmonth()](day-of-month-function.md)|Returns the integer number representing the day number of the given month.|
+|[dayofweek()](day-of-week-function.md)|Returns the integer number of days since the preceding Sunday, as a timespan.|
+|[dayofyear()](day-of-year-function.md)|Returns the integer number represents the day number of the given year.|
 |[endofday()](endofdayfunction.md)|Returns the end of the day containing the date, shifted by an offset, if provided.|
 |[endofmonth()](endofmonthfunction.md)|Returns the end of the month containing the date, shifted by an offset, if provided.|
 |[endofweek()](endofweekfunction.md)|Returns the end of the week containing the date, shifted by an offset, if provided.|
