@@ -17,6 +17,10 @@ Microsoft Entra application authentication is used for applications, such as an 
 Microsoft Entra application authentication requires creating and registering an application with Microsoft Entra ID.
 A [service principal](#programatically-create-a-microsoft-entra-service-principal) is automatically created when the application registration is created in a Microsoft Entra tenant.
 
+The app registration can either be created in the Azure portal, or programatically with Azure CLI. Choose the tab that fits your scenario.
+
+### [Portal](#tab/portal)
+
 1. Sign in to [Azure portal](https://portal.azure.com) and open the **Identity** blade
 
     :::image type="content" source="media/provision-azure-ad-app/create-app-select-microsoft-entra-id.png" alt-text="Screenshot showing how to select Microsoft Entra ID from the portal menu.":::
@@ -59,6 +63,41 @@ A [service principal](#programatically-create-a-microsoft-entra-service-principa
 
 Your application is created. If you only need access to an authorized Azure Data Explorer resource, such as in the programmatic example below, skip the next section. For delegated permissions support, see [configure delegated permissions for the application](#configure-delegated-permissions-for-the-application).
 
+
+### [Azure CLI](#tab/azurecli)
+
+1. Sign in to your Azure subscription via Azure CLI. Then authenticate in the browser.
+
+   ```azurecli-interactive
+   az login
+   ```
+
+2. Choose the subscription to host the principal. This step is needed when you have multiple subscriptions.
+
+   ```azurecli-interactive
+   az account set --subscription YOUR_SUBSCRIPTION_GUID
+   ```
+
+3. Create the service principal. In this example, the service principal is called `splunk-uf`.
+
+   ```azurecli-interactive
+   az ad sp create-for-rbac -n "my-service-principal" --role Contributor --scopes /subscriptions/{SubID}
+   ```
+
+4. From the returned JSON data, copy the `appId`, `password`, and `tenant` for future use.
+
+    ```json
+    {
+      "appId": "1234abcd-e5f6-g7h8-i9j0-1234kl5678mn",
+      "displayName": "my-service-principal",
+      "name": "my-service-principal",
+      "password": "1234abcd-e5f6-g7h8-i9j0-1234kl5678mn",
+      "tenant": "1234abcd-e5f6-g7h8-i9j0-1234kl5678mn"
+    }
+    ```
+
+---
+
 ## Configure delegated permissions for the application
 
 If your application needs to access Azure Data Explorer using the credentials of the calling user, configure delegated permissions for your application. For example, if you're building a web API to access Azure Data Explorer and you want to authenticate using the credentials of the user who is *calling* your API.
@@ -97,39 +136,6 @@ Now that your application registration is created, you need to grant the corresp
 
 For more information, see [Role-based access control](kusto/access-control/role-based-access-control.md).
 
-## Programatically create a Microsoft Entra service principal
-
-A Microsoft Entra service principal can be created through the [Azure portal](provision-azure-ad-app.md) or programatically, as in the following example.
-
-1. Sign in to your Azure subscription via Azure CLI. Then authenticate in the browser.
-
-   ```azurecli-interactive
-   az login
-   ```
-
-2. Choose the subscription to host the principal. This step is needed when you have multiple subscriptions.
-
-   ```azurecli-interactive
-   az account set --subscription YOUR_SUBSCRIPTION_GUID
-   ```
-
-3. Create the service principal. In this example, the service principal is called `splunk-uf`.
-
-   ```azurecli-interactive
-   az ad sp create-for-rbac -n "my-service-principal" --role Contributor --scopes /subscriptions/{SubID}
-   ```
-
-4. From the returned JSON data, copy the `appId`, `password`, and `tenant` for future use.
-
-    ```json
-    {
-      "appId": "1234abcd-e5f6-g7h8-i9j0-1234kl5678mn",
-      "displayName": "my-service-principal",
-      "name": "my-service-principal",
-      "password": "1234abcd-e5f6-g7h8-i9j0-1234kl5678mn",
-      "tenant": "1234abcd-e5f6-g7h8-i9j0-1234kl5678mn"
-    }
-    ```
 
 ## Use application credentials to access a database
 
