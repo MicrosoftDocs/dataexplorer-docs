@@ -15,32 +15,31 @@ Microsoft Entra application authentication is used for applications, such as an 
 ## Create Microsoft Entra application registration
 
 Microsoft Entra application authentication requires creating and registering an application with Microsoft Entra ID.
-A [service principal](#programatically-create-a-microsoft-entra-service-principal) is automatically created when the application registration is created in a Microsoft Entra tenant.
+A service principal is automatically created when the application registration is created in a Microsoft Entra tenant.
 
 The app registration can either be created in the Azure portal, or programatically with Azure CLI. Choose the tab that fits your scenario.
 
 ### [Portal](#tab/portal)
 
+#### Register the app
+
 1. Sign in to [Azure portal](https://portal.azure.com) and open the **Identity** blade
+1. Browse to **App registrations** and select **New registration**.
+1. Select the **App registrations** blade and select **New registration
 
-    :::image type="content" source="media/provision-azure-ad-app/create-app-select-microsoft-entra-id.png" alt-text="Screenshot showing how to select Microsoft Entra ID from the portal menu.":::
+    :::image type="content" source="media/provision-azure-ad-app/create-app-new-registration.png" alt-text="Screenshot showing how to start a new app registration." lightbox="media/provision-azure-ad-app/create-app-new-registration.png":::
 
-1. Select the **App registrations** blade and select **New registration**
-
-    :::image type="content" source="media/provision-azure-ad-app/create-app-new-registration.png" alt-text="Screenshot showing how to start a new app registration.":::
-
-1. Fill in the following information:
-
-    * **Name**
-    * **Supported account types**
-    * **Redirect URI** > **Web**
-        > [!IMPORTANT]
-        > The application type should be **Web**. The URI is optional and is left blank in this case.
-    * Select **Register**
+1. Name the application, for example "example-app".
+1. Select a supported account type, which determines who can use the application.
+1. Under **Redirect URI**, select Web for the type of application you want to create. The URI is optional and is left blank in this case.
+1. Select **Register**
 
     :::image type="content" source="media/provision-azure-ad-app/create-app-register-app.png" alt-text="Screenshot showing how to register a new app registration.":::
 
-1. Select the **Overview** blade and copy the **Application (client) ID**.
+#### Manage secrets
+
+1. Browse to the **Overview** blade.
+1. Copy the **Application (client) ID**.
 
     > [!NOTE]
     > You'll need the application ID to authorize the service principal to access the database.
@@ -59,10 +58,10 @@ The app registration can either be created in the Azure portal, or programatical
 1. Copy the key value.
 
     > [!NOTE]
-    > When you leave this page, the key value won't be accessible.  You'll need the key to configure client credentials to the database.
+    > When you leave this page, the key value won't be accessible.  <br>
+    > You need the key to [configure client credentials to the database](#grant-a-service-principal-access-to-the-database).
 
-Your application is created. If you only need access to an authorized Azure Data Explorer resource, such as in the programmatic example below, skip the next section. For delegated permissions support, see [configure delegated permissions for the application](#configure-delegated-permissions-for-the-application).
-
+Your application is created. If you only need access to an authorized Azure Data Explorer resource, such as in the programmatic example, skip the next section. For delegated permissions support, see [configure delegated permissions for the application](#configure-delegated-permissions-for-the-application).
 
 ### [Azure CLI](#tab/azurecli)
 
@@ -111,7 +110,7 @@ If your application needs to access Azure Data Explorer using the credentials of
 
     :::image type="content" source="media/provision-azure-ad-app/configure-delegated-click-add-permissions.png" alt-text="Screenshot showing how to select delegated permissions with user impersonation.":::
 
-## Grant a service principal access to an Azure Data Explorer database
+## Grant a service principal access to the database
 
 Now that your application registration is created, you need to grant the corresponding service principal access to your Azure Data Explorer database. The following example gives viewer access. For other roles, see [Manage Azure Data Explorer database permissions](manage-database-permissions.md).
 
@@ -135,7 +134,6 @@ Now that your application registration is created, you need to grant the corresp
     > After creating the application registration, there might be a several minute delay until Azure Data Explorer can reference it. If, when executing the command, you receive an error that the application is not found, wait and try again.
 
 For more information, see [Role-based access control](kusto/access-control/role-based-access-control.md).
-
 
 ## Use application credentials to access a database
 
