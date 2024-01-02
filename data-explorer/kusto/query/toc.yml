@@ -680,15 +680,15 @@ items:
         href: cursor-current.md
       - name: datetime_add()
         displayName: datetime_add() datetime add
-        href: datetime-addfunction.md
+        href: datetime-add-function.md
       - name: datetime_diff()
         displayName: datetime_diff() datetime diff
-        href: datetime-difffunction.md
+        href: datetime-diff-function.md
       - name: datetime_local_to_utc()
         href: datetime-local-to-utc-function.md
       - name: datetime_part()
         displayName: datepart()
-        href: datetime-partfunction.md
+        href: datetime-part-function.md
       - name: datetime_utc_to_local()
         displayName: datetime_utc_to_local() datetime utc to local
         href: datetime-utc-to-local-function.md

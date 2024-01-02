@@ -444,6 +444,21 @@
         "source_path": "data-explorer/kusto/query/datatableoperator.md",
         "redirect_url": "/azure/data-explorer/kusto/query/datatable-operator",
         "redirect_document_id": true
+      },
+      {
+        "source_path": "data-explorer/kusto/query/datetime-addfunction.md",
+        "redirect_url": "/azure/data-explorer/kusto/query/datetime-add-function",
+        "redirect_document_id": true
+      },
+      {
+        "source_path": "data-explorer/kusto/query/datetime-difffunction.md",
+        "redirect_url": "/azure/data-explorer/kusto/query/datetime-diff-function",
+        "redirect_document_id": true
+      },
+      {
+        "source_path": "data-explorer/kusto/query/datetime-partfunction.md",
+        "redirect_url": "/azure/data-explorer/kusto/query/datetime-part-function",
+        "redirect_document_id": true
       }
     ]
 }
