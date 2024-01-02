@@ -8,7 +8,7 @@ ms.date: 07/10/2022
 
 # Create a Microsoft Entra application registration in Azure Data Explorer
 
-Microsoft Entra application authentication is used for applications, such as an unattended service or a scheduled flow, that need to access Azure Data Explorer without a user present. If you're connecting to an Azure Data Explorer database using an application, such as a web app, you should authenticate using service principal authentication. This article details how to create and register a Microsoft Entra service principal and then authorize it to access an Azure Data Explorer database.
+[Microsoft Entra application authentication](/entra/identity-platform/howto-create-service-principal-portal) is used for applications, such as an unattended service or a scheduled flow, that need to access Azure Data Explorer without a user present. If you're connecting to an Azure Data Explorer database using an application, such as a web app, you should authenticate using service principal authentication. This article details how to create and register a Microsoft Entra service principal and then authorize it to access an Azure Data Explorer database.
 
 <a name='create-azure-ad-application-registration'></a>
 
@@ -36,31 +36,7 @@ The app registration can either be created in the Azure portal, or programatical
 
 1. Select **Register**.
 
-#### Manage secrets
-
-Through the course of this section, you'll copy the following values: **Application ID** and **key value**. Paste these values somewhere, like a text editor, for use in the step [configure client credentials to the database](#grant-a-service-principal-access-to-the-database).
-
-1. Browse to the **Overview** blade.
-1. Copy the **Application (client) ID**.
-
-    > [!NOTE]
-    > You'll need the application ID to authorize the service principal to access the database.
-
-1. In the **Certificates & secrets** blade, select **New client secret**.
-
-    :::image type="content" source="media/provision-azure-ad-app/create-app-new-client-secret.png" alt-text="Screenshot showing how to start the creation of client secret.":::
-
-    > [!TIP]
-    > This article describes using a client secret for the application's credentials.  You can also use an X509 certificate to authenticate your application. Select **Upload certificate** and follow the instructions to upload the public portion of the certificate.
-
-1. Enter a description, expiration, and select **Add**.
-
-1. Copy the key value.
-
-    > [!NOTE]
-    > When you leave this page, the key value won't be accessible. 
-
-Your application is created. If you only need access to an authorized Azure Data Explorer resource, such as in the programmatic example, skip the next section. For delegated permissions support, see [configure delegated permissions for the application](#configure-delegated-permissions-for-the-application).
+You've created your Microsoft Entra application and service principal.
 
 ### [Azure CLI](#tab/azurecli)
 
@@ -94,7 +70,34 @@ Your application is created. If you only need access to an authorized Azure Data
     }
     ```
 
+You've created your Microsoft Entra application and service principal.
+
 ---
+
+## Set up authentication
+
+There are two types of authentication available for service principals: password-based authentication (application secret) and certificate-based authentication. The following section describes using a password-based authentication for the application's credentials. You can alternatively use an X509 certificate to authenticate your application. For more information, see [How to configure Microsoft Entra certificate-based authentication](/entra/identity/authentication/how-to-certificate-based-authentication).
+
+Through the course of this section, you'll copy the following values: **Application ID** and **key value**. Paste these values somewhere, like a text editor, for use in the step [configure client credentials to the database](#grant-a-service-principal-access-to-the-database).
+
+1. Browse to the **Overview** blade.
+1. Copy the **Application (client) ID**.
+
+    > [!NOTE]
+    > You'll need the application ID to authorize the service principal to access the database.
+
+1. In the **Certificates & secrets** blade, select **New client secret**.
+
+    :::image type="content" source="media/provision-azure-ad-app/create-app-new-client-secret.png" alt-text="Screenshot showing how to start the creation of client secret.":::
+
+1. Enter a description, expiration, and select **Add**.
+
+1. Copy the key value.
+
+    > [!NOTE]
+    > When you leave this page, the key value won't be accessible. 
+
+If you only need access to an authorized Azure Data Explorer resource, such as in the programmatic example, skip the next section. For delegated permissions support, see [configure delegated permissions for the application](#configure-delegated-permissions-for-the-application).
 
 ## Configure delegated permissions for the application
 
@@ -115,7 +118,7 @@ Now that your application registration is created, you need to grant the corresp
 
 1. In the [Azure Data Explorer web UI](https://dataexplorer.azure.com/), connect to your database and open a query tab.
 
-2. Execute the following command:
+1. Execute the following command:
 
     ```kusto
     .add database <DatabaseName> viewers ('aadapp=<ApplicationID>;<TenantID>') '<Notes>'
@@ -179,3 +182,4 @@ You'll need to contact your Microsoft Entra administrator to grant consent for a
 ## Related content
 
 * [Kusto connection strings](kusto/api/connection-strings/kusto.md)
+* [Create a Microsoft Entra application and service principal that can access resources](/entra/identity-platform/howto-create-service-principal-portal)
