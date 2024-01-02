@@ -24,7 +24,7 @@ The `diffpatterns_text` returns a set of text patterns that capture different po
 | *TextColumn* | string | &check; | The text column to analyze. |
 | *BooleanCondition* | string | &check; | An expression that evaluates to a boolean value. The algorithm splits the query into the two datasets to compare based on this expression.|
 | *MinTokens* | int | | An integer value between 0 and 200 that represents the minimal number of non-wildcard tokens per result pattern. The default is 1. |
-| *Threshold* | decimal | | A decimal value between 0.015 and 1 that sets the minimal pattern ratio difference between the two sets. Default is 0.05. See [diffpatterns](diffpatternsplugin.md).|
+| *Threshold* | decimal | | A decimal value between 0.015 and 1 that sets the minimal pattern ratio difference between the two sets. Default is 0.05. See [diffpatterns](diffpatterns-plugin.md).|
 | *MaxTokens* | int | | An integer value between 0 and 20 that sets the maximal number of tokens per result pattern, specifying a lower limit decreases the query runtime.|
 
 ## Returns

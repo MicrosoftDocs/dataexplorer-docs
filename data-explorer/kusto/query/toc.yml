@@ -1580,10 +1580,10 @@ items:
             href: basket-plugin.md
           - name: diffpatterns plugin
             displayName: clustering, diagnostics, RCA, root cause
-            href: diffpatternsplugin.md
+            href: diffpatterns-plugin.md
           - name: diffpatterns_text plugin
             displayName: clustering, diagnostics, RCA, root cause
-            href: diffpatterns-textplugin.md
+            href: diffpatterns-text-plugin.md
       - name: Query connectivity plugins
         items:
           - name: azure_digital_twins_query_request plugin

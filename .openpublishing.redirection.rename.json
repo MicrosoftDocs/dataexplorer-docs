@@ -489,6 +489,16 @@
         "source_path": "data-explorer/kusto/query/degreesfunction.md",
         "redirect_url": "/azure/data-explorer/kusto/query/degrees-function",
         "redirect_document_id": true
+      },
+      {
+        "source_path": "data-explorer/kusto/query/diffpatterns-textplugin.md",
+        "redirect_url": "/azure/data-explorer/kusto/query/diffpatterns-text-plugin",
+        "redirect_document_id": true
+      },
+      {
+        "source_path": "data-explorer/kusto/query/diffpatternsplugin.md",
+        "redirect_url": "/azure/data-explorer/kusto/query/diffpatterns-plugin",
+        "redirect_document_id": true
       }
     ]
 }
