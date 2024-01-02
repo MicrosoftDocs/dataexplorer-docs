@@ -49,7 +49,7 @@ In this article, you learn about:
 
 ### Supported regions
 
-Migration to multiple availability zones is fully supported in all regions, but is not available where capacity restrictions apply. The following regions are supported:
+Migration to multiple availability zones is fully supported in all regions, but is limited to regions that don't have capacity restrictions. The following regions are currently supported:
 
 - Australia East
 - Canada Central
