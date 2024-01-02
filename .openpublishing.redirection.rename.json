@@ -569,6 +569,36 @@
         "source_path": "data-explorer/kusto/query/extractjsonfunction.md",
         "redirect_url": "/azure/data-explorer/kusto/query/extract-json-function",
         "redirect_document_id": true
+      },
+      {
+        "source_path": "data-explorer/kusto/query/facetoperator.md",
+        "redirect_url": "/azure/data-explorer/kusto/query/facet-operator",
+        "redirect_document_id": true
+      },
+      {
+        "source_path": "data-explorer/kusto/query/findoperator.md",
+        "redirect_url": "/azure/data-explorer/kusto/query/find-operator",
+        "redirect_document_id": true
+      },
+      {
+        "source_path": "data-explorer/kusto/query/forkoperator.md",
+        "redirect_url": "/azure/data-explorer/kusto/query/fork-operator",
+        "redirect_document_id": true
+      },
+      {
+        "source_path": "data-explorer/kusto/query/format-bytesfunction.md",
+        "redirect_url": "/azure/data-explorer/kusto/query/format-bytes-function",
+        "redirect_document_id": true
+      },
+      {
+        "source_path": "data-explorer/kusto/query/format-datetimefunction.md",
+        "redirect_url": "/azure/data-explorer/kusto/query/format-datetime-function",
+        "redirect_document_id": true
+      },
+      {
+        "source_path": "data-explorer/kusto/query/format-timespanfunction.md",
+        "redirect_url": "/azure/data-explorer/kusto/query/format-timespan-function",
+        "redirect_document_id": true
       }
     ]
 }

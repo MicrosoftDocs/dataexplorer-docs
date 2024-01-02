@@ -48,8 +48,8 @@ This article lists all available scalar functions grouped by type. For aggregati
 |[endofmonth()](end-of-month-function)|Returns the end of the month containing the date, shifted by an offset, if provided.|
 |[endofweek()](end-of-week-function)|Returns the end of the week containing the date, shifted by an offset, if provided.|
 |[endofyear()](end-of-year-function)|Returns the end of the year containing the date, shifted by an offset, if provided.|
-|[format_datetime()](format-datetimefunction.md)|Formats a datetime parameter based on the format pattern parameter.|
-|[format_timespan()](format-timespanfunction.md)|Formats a format-timespan parameter based on the format pattern parameter.|
+|[format_datetime()](format-datetime-function.md)|Formats a datetime parameter based on the format pattern parameter.|
+|[format_timespan()](format-timespan-function.md)|Formats a format-timespan parameter based on the format pattern parameter.|
 |[getyear()](getyearfunction.md)|Returns the year part of the datetime argument.|
 |[hourofday()](hourofdayfunction.md)|Returns the integer number representing the hour number of the given date.|
 |[make_datetime()](make-datetimefunction.md)|Creates a datetime scalar value from the specified date and time.|

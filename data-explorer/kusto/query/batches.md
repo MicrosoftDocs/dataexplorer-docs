@@ -11,7 +11,7 @@ A query can include multiple tabular expression statements, as long as they're d
 
 > [!NOTE]
 >
-> * Prefer batching and [`materialize`](materializefunction.md) over using the [fork operator](forkoperator.md).
+> * Prefer batching and [`materialize`](materializefunction.md) over using the [fork operator](fork-operator.md).
 > * Any two statements must be separated by a semicolon.
 
 ## Examples

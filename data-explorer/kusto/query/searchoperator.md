@@ -72,7 +72,7 @@ Use boolean expressions to combine conditions and create more complex searches. 
 
 ## Remarks
 
-Unlike the [find operator](findoperator.md), the `search` operator does not support the following:
+Unlike the [find operator](find-operator.md), the `search` operator does not support the following:
 
 1. `withsource=`: The output will always include a column called `$table` of type `string` whose value
    is the table name from which each record was retrieved (or some system-generated name if the source

@@ -54,7 +54,7 @@ The following query estimates the original data size of the `StormEvents` table.
 |60192011|
 
 > [!TIP]
-> To format the bytes result to `MB`, `GB`, or another unit, use [format_bytes()](../query/format-bytesfunction.md).
+> To format the bytes result to `MB`, `GB`, or another unit, use [format_bytes()](../query/format-bytes-function.md).
 
 ### Use estimate_data_size()
 

@@ -148,11 +148,11 @@ items:
       - name: externaldata operator
         href: externaldata-operator.md
       - name: facet operator
-        href: facetoperator.md
+        href: facet-operator.md
       - name: find operator
-        href: findoperator.md
+        href: find-operator.md
       - name: fork operator
-        href: forkoperator.md
+        href: fork-operator.md
       - name: getschema operator
         href: getschemaoperator.md
       - name: invoke operator
@@ -752,10 +752,10 @@ items:
         href: extract-json-function.md
       - name: format_bytes()
         displayName: format bytes
-        href: format-bytesfunction.md
+        href: format-bytes-function.md
       - name: format_datetime()
         displayName: format datetime
-        href: format-datetimefunction.md
+        href: format-datetime-function.md
       - name: format_ipv4()
         displayName: format ipv4
         href: format-ipv4-function.md
@@ -764,7 +764,7 @@ items:
         href: format-ipv4-mask-function.md
       - name: format_timespan()
         displayName: format timespan
-        href: format-timespanfunction.md
+        href: format-timespan-function.md
       - name: gamma()
         href: gammafunction.md
       - name: geo_info_from_ip_address()

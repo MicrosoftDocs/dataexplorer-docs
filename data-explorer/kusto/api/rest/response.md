@@ -126,7 +126,7 @@ one or more tables are generated in-order, representing the results produced by 
 
 > [!NOTE]
 > There can be multiple such tables because of [batches](../../query/batches.md)
-> and [fork operators](../../query/forkoperator.md)).
+> and [fork operators](../../query/fork-operator.md)).
 
 Three tables are often produced:
 
