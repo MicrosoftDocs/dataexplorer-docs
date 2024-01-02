@@ -55,7 +55,7 @@ extend (rs, si, v)=`series_fit_2lines(`*series*`)`
 | *series* | dynamic | &check; | An array of numeric values.|
 
 > [!TIP]
-> The most convenient way of using this function is applying it to the results of [make-series](make-seriesoperator.md) operator.
+> The most convenient way of using this function is applying it to the results of [make-series](make-series-operator.md) operator.
 
 ## Examples
 

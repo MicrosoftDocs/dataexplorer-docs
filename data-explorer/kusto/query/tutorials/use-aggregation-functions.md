@@ -257,7 +257,7 @@ StormEvents
 
 ## Extract unique values
 
-Use [make_set()](../makeset-aggfunction.md) to turn a selection of rows in a table into an array of unique values.
+Use [make_set()](../make-set-aggregation-function.md) to turn a selection of rows in a table into an array of unique values.
 
 The following query uses `make_set()` to create an array of the event types that cause deaths in each state. The resulting table is then sorted by the number of storm types in each array.
 

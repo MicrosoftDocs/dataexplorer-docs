@@ -53,7 +53,7 @@ demo_make_series1
 | render timechart 
 ```
 
-- Use the [`make-series`](make-seriesoperator.md) operator to create a set of three time series, where:
+- Use the [`make-series`](make-series-operator.md) operator to create a set of three time series, where:
   - `num=count()`: time series of traffic
   - `from min_t to max_t step 1h`: time series is created in 1-hour bins in the time range (oldest and newest timestamps of table records)
   - `default=0`: specify fill method for missing bins to create regular time series. Alternatively use [`series_fill_const()`](series-fill-constfunction.md), [`series_fill_forward()`](series-fill-forwardfunction.md), [`series_fill_backward()`](series-fill-backwardfunction.md) and [`series_fill_linear()`](series-fill-linearfunction.md) for changes

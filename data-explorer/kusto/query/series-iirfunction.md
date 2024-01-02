@@ -27,7 +27,7 @@ The function takes as input the column containing the dynamic array and two stat
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-| *series* | dynamic | &check; | An array of numeric values, typically the resulting output of [make-series](make-seriesoperator.md) or [make_list](makelist-aggfunction.md) operators.|
+| *series* | dynamic | &check; | An array of numeric values, typically the resulting output of [make-series](make-series-operator.md) or [make_list](make-list-aggregation-function.md) operators.|
 | *numerators* | dynamic | &check; | An array of numeric values, containing the numerator coefficients of the filter.|
 | *denominators* | dynamic | &check; | An array of numeric values, containing the denominator coefficients of the filter.|
 

@@ -52,8 +52,8 @@ This article lists all available scalar functions grouped by type. For aggregati
 |[format_timespan()](format-timespan-function.md)|Formats a format-timespan parameter based on the format pattern parameter.|
 |[getyear()](getyear-function.md)|Returns the year part of the datetime argument.|
 |[hourofday()](hour-of-day-function.md)|Returns the integer number representing the hour number of the given date.|
-|[make_datetime()](make-datetimefunction.md)|Creates a datetime scalar value from the specified date and time.|
-|[make_timespan()](make-timespanfunction.md)|Creates a timespan scalar value from the specified time period.|
+|[make_datetime()](make-datetime-function.md)|Creates a datetime scalar value from the specified date and time.|
+|[make_timespan()](make-timespan-function.md)|Creates a timespan scalar value from the specified time period.|
 |[monthofyear()](monthofyearfunction.md)|Returns the integer number that represents the month number of the given year.|
 |[now()](nowfunction.md)|Returns the current UTC clock time, optionally offset by a given timespan.|
 |[startofday()](startofdayfunction.md)|Returns the start of the day containing the date, shifted by an offset, if provided.|

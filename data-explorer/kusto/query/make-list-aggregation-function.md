@@ -138,4 +138,4 @@ shapes
 
 ## Related content
 
-[`make_list_if`](./makelistif-aggfunction.md) operator is similar to `make_list`, except it also accepts a predicate.
+[`make_list_if`](./make-list-if-aggregation-function.md) operator is similar to `make_list`, except it also accepts a predicate.

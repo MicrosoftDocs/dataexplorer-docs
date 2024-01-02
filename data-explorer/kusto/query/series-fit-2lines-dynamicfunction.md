@@ -42,7 +42,7 @@ This operator is similar to [series_fit_2lines](series-fit-2linesfunction.md). U
 | *series* | dynamic | &check; | An array of numeric values.|
 
 > [!TIP]
-> The most convenient way of using this function is applying it to the results of the [make-series](make-seriesoperator.md) operator.
+> The most convenient way of using this function is applying it to the results of the [make-series](make-series-operator.md) operator.
 
 ## Example
 

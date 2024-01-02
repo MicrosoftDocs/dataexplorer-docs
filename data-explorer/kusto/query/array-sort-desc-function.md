@@ -105,7 +105,7 @@ datatable(command:string, command_time:datetime, user_id:string)
 |user2|[<br>  "pwd",<br>  "rm"<br>]|
 
 > [!NOTE]
-> If your data may contain `null` values, use [make_list_with_nulls](make-list-with-nulls-aggfunction.md) instead of [make_list](makelist-aggfunction.md).
+> If your data may contain `null` values, use [make_list_with_nulls](make-list-with-nulls-aggregation-function.md) instead of [make_list](make-list-aggregation-function.md).
 
 ## Example 4 - Controlling location of `null` values
 

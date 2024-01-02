@@ -23,10 +23,10 @@ An aggregation function performs a calculation on a set of values, and returns a
 | Function Name | Description |
 |--|--|
 | [buildschema()](buildschema-aggregation-function.md) | Returns the minimal schema that admits all values of the dynamic input. |
-| [make_bag()](make-bag-aggfunction.md), [make_bag_if()](make-bag-if-aggfunction.md) | Returns a property bag of dynamic values within the group without/with a predicate. |
-| [make_list()](makelist-aggfunction.md), [make_list_if()](makelistif-aggfunction.md) | Returns a list of all the values within the group without/with a predicate. |
-| [make_list_with_nulls()](make-list-with-nulls-aggfunction.md) | Returns a list of all the values within the group, including null values. |
-| [make_set()](makeset-aggfunction.md), [make_set_if()](makesetif-aggfunction.md) | Returns a set of distinct values within the group without/with a predicate. |
+| [make_bag()](make-bag-aggregation-function.md), [make_bag_if()](make-bag-if-aggregation-function.md) | Returns a property bag of dynamic values within the group without/with a predicate. |
+| [make_list()](make-list-aggregation-function.md), [make_list_if()](make-list-if-aggregation-function.md) | Returns a list of all the values within the group without/with a predicate. |
+| [make_list_with_nulls()](make-list-with-nulls-aggregation-function.md) | Returns a list of all the values within the group, including null values. |
+| [make_set()](make-set-aggregation-function.md), [make_set_if()](make-set-if-aggregation-function.md) | Returns a set of distinct values within the group without/with a predicate. |
 
 ## Row selector functions
 

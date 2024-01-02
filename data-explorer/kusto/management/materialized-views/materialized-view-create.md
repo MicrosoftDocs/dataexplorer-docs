@@ -225,9 +225,9 @@ The following aggregation functions are supported:
 * [`take_any`](../../query/take-any-aggfunction.md)
 * [`take_anyif`](../../query/take-anyif-aggfunction.md)
 * [`hll`](../../query/hll-aggregation-function.md)
-* [`make_set`](../../query/makeset-aggfunction.md)
-* [`make_list`](../../query/makelist-aggfunction.md)
-* [`make_bag`](../../query/make-bag-aggfunction.md)
+* [`make_set`](../../query/make-set-aggregation-function.md)
+* [`make_list`](../../query/make-list-aggregation-function.md)
+* [`make_bag`](../../query/make-bag-aggregation-function.md)
 * [`percentile`, `percentiles`](../../query/percentiles-aggfunction.md)
 * [`tdigest`](../../query/tdigest-aggfunction.md)
 

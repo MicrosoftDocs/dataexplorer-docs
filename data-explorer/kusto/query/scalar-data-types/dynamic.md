@@ -170,13 +170,13 @@ Additionally, there are several aggregate functions which create `dynamic`
 arrays to hold aggregated values:
 
 * [buildschema()](../buildschema-aggregation-function.md) returns the aggregate schema of multiple `dynamic` values.
-* [make_bag()](../make-bag-aggfunction.md) returns a property bag of dynamic values within the group.
-* [make_bag_if()](../make-bag-if-aggfunction.md) returns a property bag of dynamic values within the group (with a predicate).
-* [make_list()](../makelist-aggfunction.md) returns an array holding all values, in sequence.
-* [make_list_if()](../makelistif-aggfunction.md) returns an array holding all values, in sequence (with a predicate).
-* [make_list_with_nulls()](../make-list-with-nulls-aggfunction.md) returns an array holding all values, in sequence, including null values.
-* [make_set()](../makeset-aggfunction.md) returns an array holding all unique values.
-* [make_set_if()](../makesetif-aggfunction.md) returns an array holding all unique values (with a predicate).
+* [make_bag()](../make-bag-aggregation-function.md) returns a property bag of dynamic values within the group.
+* [make_bag_if()](../make-bag-if-aggregation-function.md) returns a property bag of dynamic values within the group (with a predicate).
+* [make_list()](../make-list-aggregation-function.md) returns an array holding all values, in sequence.
+* [make_list_if()](../make-list-if-aggregation-function.md) returns an array holding all values, in sequence (with a predicate).
+* [make_list_with_nulls()](../make-list-with-nulls-aggregation-function.md) returns an array holding all values, in sequence, including null values.
+* [make_set()](../make-set-aggregation-function.md) returns an array holding all unique values.
+* [make_set_if()](../make-set-if-aggregation-function.md) returns an array holding all unique values (with a predicate).
 
 ## Operators and functions over dynamic types
 
@@ -196,12 +196,12 @@ For a complete list of scalar dynamic/array functions, see [dynamic/array functi
 |[`range(`from,to,step`)`](../rangefunction.md)| An array of values
 |[`mv-expand` listColumn](../mvexpandoperator.md) | Replicates a row for each value in a list in a specified cell.
 |[`summarize buildschema(`column`)`](../buildschema-aggregation-function.md) |Infers the type schema from column content
-|[`summarize make_bag(`column`)`](../make-bag-aggfunction.md) | Merges the property bag (dictionary) values in the column into one property bag, without key duplication.
-|[`summarize make_bag_if(`column,predicate`)`](../make-bag-if-aggfunction.md) | Merges the property bag (dictionary) values in the column into one property bag, without key duplication (with predicate).
-|[`summarize make_list(`column`)` ](../makelist-aggfunction.md)| Flattens groups of rows and puts the values of the column in an array.
-|[`summarize make_list_if(`column,predicate`)` ](../makelistif-aggfunction.md)| Flattens groups of rows and puts the values of the column in an array (with predicate).
-|[`summarize make_list_with_nulls(`column`)` ](../make-list-with-nulls-aggfunction.md)| Flattens groups of rows and puts the values of the column in an array, including null values.
-|[`summarize make_set(`column`)`](../makeset-aggfunction.md) | Flattens groups of rows and puts the values of the column in an array, without duplication.
+|[`summarize make_bag(`column`)`](../make-bag-aggregation-function.md) | Merges the property bag (dictionary) values in the column into one property bag, without key duplication.
+|[`summarize make_bag_if(`column,predicate`)`](../make-bag-if-aggregation-function.md) | Merges the property bag (dictionary) values in the column into one property bag, without key duplication (with predicate).
+|[`summarize make_list(`column`)` ](../make-list-aggregation-function.md)| Flattens groups of rows and puts the values of the column in an array.
+|[`summarize make_list_if(`column,predicate`)` ](../make-list-if-aggregation-function.md)| Flattens groups of rows and puts the values of the column in an array (with predicate).
+|[`summarize make_list_with_nulls(`column`)` ](../make-list-with-nulls-aggregation-function.md)| Flattens groups of rows and puts the values of the column in an array, including null values.
+|[`summarize make_set(`column`)`](../make-set-aggregation-function.md) | Flattens groups of rows and puts the values of the column in an array, without duplication.
 
 ## Indexing for dynamic data
 

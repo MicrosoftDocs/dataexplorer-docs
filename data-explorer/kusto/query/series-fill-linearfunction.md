@@ -32,7 +32,7 @@ A series linear interpolation of *series* using the specified parameters. If *se
 
 > [!NOTE]
 >
-> * If you create *series* using the [make-series](make-seriesoperator.md) operator, specify *null* as the default value to use interpolation functions like `series_fill_linear()` afterwards. See [explanation](make-seriesoperator.md#list-of-series-interpolation-functions).
+> * If you create *series* using the [make-series](make-series-operator.md) operator, specify *null* as the default value to use interpolation functions like `series_fill_linear()` afterwards. See [explanation](make-series-operator.md#list-of-series-interpolation-functions).
 > * If *missing_value_placeholder* is `double`(*null*), or omitted, then a result may contain *null* values. To fill these *null* values, use other interpolation functions. Only [series_outliers()](series-outliersfunction.md) supports *null* values in input arrays.
 > * `series_fill_linear()` preserves the original type of the array elements.
 

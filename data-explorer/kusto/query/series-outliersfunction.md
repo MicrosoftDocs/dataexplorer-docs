@@ -35,7 +35,7 @@ The following table describes differences between `"tukey"` and `"ctukey"`:
 | `"ctukey"`| 10% / 90%              | Yes                            |
 
 > [!TIP]
-> The best way to use this function is to apply it to the results of the [make-series](make-seriesoperator.md) operator.
+> The best way to use this function is to apply it to the results of the [make-series](make-series-operator.md) operator.
 
 ## Example
 

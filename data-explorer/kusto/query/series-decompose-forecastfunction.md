@@ -21,7 +21,7 @@ Takes an expression containing a series (dynamic numerical array) as input, and 
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-|*Series*| dynamic | &check; | An array of numeric values, typically the resulting output of [make-series](make-seriesoperator.md) or [make_list](makelist-aggfunction.md) operators.|
+|*Series*| dynamic | &check; | An array of numeric values, typically the resulting output of [make-series](make-series-operator.md) or [make_list](make-list-aggregation-function.md) operators.|
 |*Points*|int|&check;| Specifies the number of points at the end of the series to predict, or forecast. These points are excluded from the learning, or regression, process.|
 |*Seasonality*|int|| Controls the seasonal analysis. The possible values are:<br/><br/>- `-1`: Autodetect seasonality using [series_periods_detect](series-periods-detectfunction.md). This is the default value.<br/>- Period: A positive integer specifying the expected period in number of bins. For example, if the series is in `1 - h` bins, a weekly period is 168 bins.<br/>- `0`: No seasonality, so skip extracting this component.|
 |*Trend*|string|| Controls the trend analysis. The possible values are:<br/><br/>- `avg`: Define trend component as `average(x)`. This is the default.<br/>- `linefit`: Extract trend component using linear regression.<br/>- `none`: No trend, so skip extracting this component.<br/>
@@ -33,7 +33,7 @@ Takes an expression containing a series (dynamic numerical array) as input, and 
 
 > [!NOTE]
 >
-> * The dynamic array of the original input series should include a number of *points* slots to be forecasted. The forecast is typically done by using [make-series](make-seriesoperator.md) and specifying the end time in the range that includes the timeframe to forecast.
+> * The dynamic array of the original input series should include a number of *points* slots to be forecasted. The forecast is typically done by using [make-series](make-series-operator.md) and specifying the end time in the range that includes the timeframe to forecast.
 > * Either seasonality or trend should be enabled, otherwise the function is redundant, and just returns a series filled with zeroes.
 
 ## Example

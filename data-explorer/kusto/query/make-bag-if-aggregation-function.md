@@ -33,7 +33,7 @@ Returns a `dynamic` JSON property bag (dictionary) of *expr* values in records f
 If a key appears in more than one row, an arbitrary value, out of the possible values for this key, will be selected.
 
 > [!NOTE]
-> This function without the predicate is similar to [`make_bag`](./make-bag-aggfunction.md).
+> This function without the predicate is similar to [`make_bag`](./make-bag-aggregation-function.md).
 
 ## Example
 

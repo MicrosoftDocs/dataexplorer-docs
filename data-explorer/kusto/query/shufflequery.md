@@ -13,7 +13,7 @@ You can use the following operators with the shuffle command:
 
 * [join](join-operator.md)
 * [summarize](summarizeoperator.md)
-* [make-series](make-seriesoperator.md)
+* [make-series](make-series-operator.md)
 * [partition](partitionoperator.md)
 
 To use the `shuffle` query strategy, add the expression `hint.strategy = shuffle` or `hint.shufflekey = <key>`. When you use `hint.strategy=shuffle`, the operator data will be shuffled by all the keys. Use this expression when the compound key is unique but each key isn't unique enough, so you'll shuffle the data using all the keys of the shuffled operator.

@@ -779,6 +779,41 @@
         "source_path": "data-explorer/kusto/query/lookupoperator.md",
         "redirect_url": "/azure/data-explorer/kusto/query/lookup-operator",
         "redirect_document_id": true
+      },
+      {
+        "source_path": "data-explorer/kusto/query/make-bag-aggfunction.md",
+        "redirect_url": "/azure/data-explorer/kusto/query/make-bag-aggregation-function",
+        "redirect_document_id": true
+      },
+      {
+        "source_path": "data-explorer/kusto/query/make-bag-if-aggfunction.md",
+        "redirect_url": "/azure/data-explorer/kusto/query/make-bag-if-aggregation-function",
+        "redirect_document_id": true
+      },
+      {
+        "source_path": "data-explorer/kusto/query/make-list-with-nulls-aggfunction.md",
+        "redirect_url": "/azure/data-explorer/kusto/query/make-list-with-nulls-aggregation-function",
+        "redirect_document_id": true
+      },
+      {
+        "source_path": "data-explorer/kusto/query/make-seriesoperator.md",
+        "redirect_url": "/azure/data-explorer/kusto/query/make-series-operator",
+        "redirect_document_id": true
+      },
+      {
+        "source_path": "data-explorer/kusto/query/makelist-aggfunction.md",
+        "redirect_url": "/azure/data-explorer/kusto/query/make-list-aggregation-function",
+        "redirect_document_id": true
+      },
+      {
+        "source_path": "data-explorer/kusto/query/makelistif-aggfunction.md",
+        "redirect_url": "/azure/data-explorer/kusto/query/make-list-if-aggregation-function",
+        "redirect_document_id": true
+      },
+      {
+        "source_path": "data-explorer/kusto/query/makeset-aggfunction.md",
+        "redirect_url": "/azure/data-explorer/kusto/query/make-set-aggregation-function",
+        "redirect_document_id": true
       }
     ]
 }

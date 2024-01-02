@@ -36,7 +36,7 @@ Returns a `dynamic` array of the set of distinct values that *expr* takes in rec
 
 ## Related content
 
-[`make_set`](./makeset-aggfunction.md) function, which does the same, without predicate expression.
+[`make_set`](./make-set-aggregation-function.md) function, which does the same, without predicate expression.
 
 ## Example
 

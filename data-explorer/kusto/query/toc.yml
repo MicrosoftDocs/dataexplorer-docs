@@ -908,10 +908,10 @@ items:
         href: loggamma-function.md
       - name: make_datetime()
         displayName: make datetime
-        href: make-datetimefunction.md
+        href: make-datetime-function.md
       - name: make_timespan()
         displayName: make timespan
-        href: make-timespanfunction.md
+        href: make-timespan-function.md
       - name: max_of()
         displayName: max of
         href: max-offunction.md
@@ -1219,21 +1219,21 @@ items:
       - name: hll_merge()
         href: hll-merge-aggregation-function.md
       - name: make_bag()
-        href: make-bag-aggfunction.md
+        href: make-bag-aggregation-function.md
       - name: make_bag_if()
-        href: make-bag-if-aggfunction.md
+        href: make-bag-if-aggregation-function.md
       - name: make_list()
         displayName: makelist()
-        href: makelist-aggfunction.md
+        href: make-list-aggregation-function.md
       - name: make_list_if()
-        href: makelistif-aggfunction.md
+        href: make-list-if-aggregation-function.md
       - name: make_list_with_nulls()
-        href: make-list-with-nulls-aggfunction.md
+        href: make-list-with-nulls-aggregation-function.md
       - name: make_set()
         displayName: makeset()
-        href: makeset-aggfunction.md
+        href: make-set-aggregation-function.md
       - name: make_set_if()
-        href: makesetif-aggfunction.md
+        href: make-set-if-aggregation-function.md
       - name: max()
         href: max-aggfunction.md
       - name: maxif()
@@ -1392,7 +1392,7 @@ items:
           - name: Machine learning
             href: machine-learning-clustering.md
       - name: make-series operator
-        href: make-seriesoperator.md
+        href: make-series-operator.md
       - name: series_abs()
         displayName: element-wise, elementwise
         href: series-absfunction.md

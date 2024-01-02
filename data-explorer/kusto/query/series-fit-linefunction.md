@@ -31,7 +31,7 @@ Takes an expression containing dynamic numerical array as input and does [linear
 | *series* | dynamic | &check; | An array of numeric values.|
 
 > [!TIP]
-> The most convenient way of using this function is to apply it to the results of [make-series](make-seriesoperator.md) operator.
+> The most convenient way of using this function is to apply it to the results of [make-series](make-series-operator.md) operator.
 
 ## Examples
 
