@@ -60,7 +60,7 @@ The following plugins are supported:
 * [narrow plugin](narrow-plugin.md)
 * [pivot plugin](pivot-plugin.md)
 * [preview plugin](preview-plugin.md)
-* [R plugin](rplugin.md)
+* [R plugin](r-plugin.md)
 * [rolling-percentile plugin](rolling-percentile-plugin.md)
 * [rows-near plugin](rows-near-plugin.md)
 * [schema-merge plugin](schemamergeplugin.md)

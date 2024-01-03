@@ -78,7 +78,7 @@ The characteristics of this architecture are:
 * **Retention and caching policies**: The policies are the same for all tenants since they all share the same table.
 
 * **Security boundary per tenant**:
-  * For multi-tenant application (proxy): Use the [Restrict statement](kusto/query/restrictstatement.md)
+  * For multi-tenant application (proxy): Use the [Restrict statement](kusto/query/restrict-statement.md)
   * For users with direct access: Use the [Row Level Security Policy](kusto/management/row-level-security-policy.md) and familiarize yourself with its [limitations](kusto/management/row-level-security-policy.md#limitations). Giving users direct access to their database creates a dependency for the implementation details, making it difficult to change the implementation. Therefore, we strongly recommend using the proxy approach for accessing the database.
 
 * **Aggregating data from multiple tenants at scale**: Users with the sufficient access permissions can run a standard aggregation query on multiple tenants' data.
@@ -102,5 +102,5 @@ Although each tenant's data is segregated, they all reside in the same security 
 * [Workload groups](kusto/management/workload-groups.md)
 * [Role-based access control](kusto/access-control/role-based-access-control.md)
 * [Row Level Security](kusto/management/row-level-security-policy.md)
-* [Restrict statement](kusto/query/restrictstatement.md)
+* [Restrict statement](kusto/query/restrict-statement.md)
 * [Partitioning policy](kusto/management/partitioning-policy.md)

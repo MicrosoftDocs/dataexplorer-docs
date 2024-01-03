@@ -39,7 +39,7 @@ TraceLogs
 
 ### Add row number to the serialized table
 
-To add a row number to the serialized table, use the [row_number()](rownumberfunction.md) function.
+To add a row number to the serialized table, use the [row_number()](row-number-function.md) function.
 
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/SampleLogs?query=H4sIAAAAAAAAAwspSkxO9clPL+blqlEoScxOVTA0AADDD5pUFAAAAA==" target="_blank">Run the query</a>
@@ -55,7 +55,7 @@ TraceLogs
 The output row set of the following operators is marked as serialized.
 
 * [getschema](./getschemaoperator.md)
-* [range](./rangeoperator.md)
+* [range](./range-operator.md)
 * [sort](./sort-operator.md)
 * [top](./topoperator.md)
 * [top-hitters](./tophittersoperator.md)
@@ -69,7 +69,7 @@ The output row set of the following operators is marked as nonserialized.
 * [join](./join-operator.md)
 * [make-series](./make-series-operator.md)
 * [mv-expand](./mvexpandoperator.md)
-* [reduce by](./reduceoperator.md)
+* [reduce by](./reduce-operator.md)
 * [sample](./sampleoperator.md)
 * [sample-distinct](./sampledistinct-operator.md)
 * [summarize](./summarizeoperator.md)

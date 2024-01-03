@@ -58,7 +58,7 @@ StormEvents
 
 ## Visualize query results
 
-Visualizing query results in a chart or graph can help you identify patterns, trends, and outliers in your data. You can do this with the [render](../renderoperator.md) operator.
+Visualizing query results in a chart or graph can help you identify patterns, trends, and outliers in your data. You can do this with the [render](../render-operator.md) operator.
 
 Throughout the tutorial, you'll see examples of how to use `render` to display your results. For now, let's use `render` to see the results from the previous query in a bar chart.
 

@@ -201,7 +201,7 @@
         "redirect_document_id": true
       },
       {
-        "source_path": "data-explorer/kusto/query/autoclusterplugin.md",
+        "source_path": "data-explorer/kusto/query/autocluster-plugin.md",
         "redirect_url": "/azure/data-explorer/kusto/query/autocluster-plugin",
         "redirect_document_id": true
       },
@@ -1123,6 +1123,91 @@
       {
         "source_path": "data-explorer/kusto/query/queryparametersstatement.md",
         "redirect_url": "/azure/data-explorer/kusto/query/query-parameters-statement",
+        "redirect_document_id": true
+      },
+      {
+        "source_path": "data-explorer/kusto/query/radiansfunction.md",
+        "redirect_url": "/azure/data-explorer/kusto/query/radians-function",
+        "redirect_document_id": true
+      },
+      {
+        "source_path": "data-explorer/kusto/query/rand-function.md",
+        "redirect_url": "/azure/data-explorer/kusto/query/rand-function",
+        "redirect_document_id": true
+      },
+      {
+        "source_path": "data-explorer/kusto/query/rangefunction.md",
+        "redirect_url": "/azure/data-explorer/kusto/query/range-function",
+        "redirect_document_id": true
+      },
+      {
+        "source_path": "data-explorer/kusto/query/rangeoperator.md",
+        "redirect_url": "/azure/data-explorer/kusto/query/range-operator",
+        "redirect_document_id": true
+      },
+      {
+        "source_path": "data-explorer/kusto/query/rank-tdigest.md",
+        "redirect_url": "/azure/data-explorer/kusto/query/rank-tdigest-function",
+        "redirect_document_id": true
+      },
+      {
+        "source_path": "data-explorer/kusto/query/reduceoperator.md",
+        "redirect_url": "/azure/data-explorer/kusto/query/reduce-operator",
+        "redirect_document_id": true
+      },
+      {
+        "source_path": "data-explorer/kusto/query/regexquotefunction.md",
+        "redirect_url": "/azure/data-explorer/kusto/query/regex-quote-function",
+        "redirect_document_id": true
+      },
+      {
+        "source_path": "data-explorer/kusto/query/renderoperator.md",
+        "redirect_url": "/azure/data-explorer/kusto/query/render-operator",
+        "redirect_document_id": true
+      },
+      {
+        "source_path": "data-explorer/kusto/query/repeatfunction.md",
+        "redirect_url": "/azure/data-explorer/kusto/query/repeat-function",
+        "redirect_document_id": true
+      },
+      {
+        "source_path": "data-explorer/kusto/query/restrictstatement.md",
+        "redirect_url": "/azure/data-explorer/kusto/query/restrict-statement",
+        "redirect_document_id": true
+      },
+      {
+        "source_path": "data-explorer/kusto/query/reversefunction.md",
+        "redirect_url": "/azure/data-explorer/kusto/query/reverse-function",
+        "redirect_document_id": true
+      },
+      {
+        "source_path": "data-explorer/kusto/query/roundfunction.md",
+        "redirect_url": "/azure/data-explorer/kusto/query/round-function",
+        "redirect_document_id": true
+      },
+      {
+        "source_path": "data-explorer/kusto/query/rowcumsumfunction.md",
+        "redirect_url": "/azure/data-explorer/kusto/query/row-cumsum-function",
+        "redirect_document_id": true
+      },
+      {
+        "source_path": "data-explorer/kusto/query/rownumberfunction.md",
+        "redirect_url": "/azure/data-explorer/kusto/query/row-number-function",
+        "redirect_document_id": true
+      },
+      {
+        "source_path": "data-explorer/kusto/query/rowrankdensefunction.md",
+        "redirect_url": "/azure/data-explorer/kusto/query/row-rank-dense-function",
+        "redirect_document_id": true
+      },
+      {
+        "source_path": "data-explorer/kusto/query/rowrankminfunction.md",
+        "redirect_url": "/azure/data-explorer/kusto/query/row-rank-min-function",
+        "redirect_document_id": true
+      },
+      {
+        "source_path": "data-explorer/kusto/query/rplugin.md.md",
+        "redirect_url": "/azure/data-explorer/kusto/query/r-plugin.md",
         "redirect_document_id": true
       }
     ]

@@ -28,7 +28,7 @@ Generates a single-column table of values.
 |*step*|int, long, real, datetime, or timespan|&check;| The difference between two consecutive values.|
 
 > [!NOTE]
-> The values can't reference the columns of any table. If you want to compute the range based on an input table, use the [range](rangefunction.md) function potentially with the [mv-expand](mvexpandoperator.md) operator.
+> The values can't reference the columns of any table. If you want to compute the range based on an input table, use the [range](range-function.md) function potentially with the [mv-expand](mvexpandoperator.md) operator.
 
 ## Returns
 

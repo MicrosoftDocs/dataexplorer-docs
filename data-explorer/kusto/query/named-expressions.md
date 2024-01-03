@@ -84,7 +84,7 @@ range x from 1 to 100 step 1
 
 Non-deterministic scalar functions can be forced to calculate exactly once by using [toscalar()](toscalarfunction.md).
 
-For example, the following query uses the non-deterministic function, [rand()](randfunction.md):
+For example, the following query uses the non-deterministic function, [rand()](rand-function.md):
 
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA8tJLVGoULBV0NBUqC5KzEvRMDQwMNCsteblygHKVEJlSvKLkxNzEos0EErAagqKMvOA+nVAqBKIAFmz1YBOAAAA" target="_blank">Run the query</a>

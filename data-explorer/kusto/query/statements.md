@@ -59,7 +59,7 @@ Following is a list of application query statements:
   that are built on top of Kusto to protect themselves against injection attacks (similar to
   how command parameters protect SQL against SQL injection attacks.)
 
-* A [restrict statement](./restrictstatement.md), which is used by applications that are built
+* A [restrict statement](./restrict-statement.md), which is used by applications that are built
   on top of Kusto to restrict queries to a specific subset of data in Kusto (including restricting
   access to specific columns and records.)
 

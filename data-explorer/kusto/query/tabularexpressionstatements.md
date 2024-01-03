@@ -32,7 +32,7 @@ Each operator accepts a tabular dataset "from the pipe", and other inputs includ
 A tabular data source produces sets of records, to be further processed by tabular data operators. The following list shows supported tabular data sources:
 
 * Table references
-* The tabular [range operator](rangeoperator.md)
+* The tabular [range operator](range-operator.md)
 * The [print operator](print-operator.md)
 * An invocation of a function that returns a table
 * A [table literal](datatable-operator.md) ("datatable")

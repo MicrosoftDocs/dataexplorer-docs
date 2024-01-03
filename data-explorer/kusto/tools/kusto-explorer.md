@@ -105,7 +105,7 @@ The Home tab shows the most frequently used operations. It includes:
 
 :::image type="content" source="images/kusto-explorer/home-visualizations-menu.png" alt-text="Screenshot of the Home tab section titled Visualizations that shows the different options for visualizing data.":::
 
-For variable visualizations, see the [render operator](../query/renderoperator.md).
+For variable visualizations, see the [render operator](../query/render-operator.md).
 
 |Menu         | Behavior|
 |-------------|---------|

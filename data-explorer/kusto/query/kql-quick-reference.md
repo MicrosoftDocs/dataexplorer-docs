@@ -39,7 +39,7 @@ This article shows you a list of functions and their descriptions to help get yo
 | [count](count-operator.md)                       | Counts records in the input table (for example, T)<br>This operator is shorthand for `summarize count() `| `T | count` |
 | [join](join-operator.md)                        | Merges the rows of two tables to form a new table by matching values of the specified column(s) from each table. Supports a full range of join types: `flouter`, `inner`, `innerunique`, `leftanti`, `leftantisemi`, `leftouter`, `leftsemi`, `rightanti`, `rightantisemi`, `rightouter`, `rightsemi` | `LeftTable | join [JoinParameters] ( RightTable ) on Attributes` |
 | [union](unionoperator.md)                      | Takes two or more tables and returns all their rows | `[T1] | union [T2], [T3], …` |
-| [range](rangeoperator.md)                      | Generates a table with an arithmetic series of values | `range columnName from start to stop step step` |
+| [range](range-operator.md)                      | Generates a table with an arithmetic series of values | `range columnName from start to stop step step` |
 | **Format Data**                                 | **_Restructure the data to output in a useful way_** | |
 | [lookup](lookup-operator.md)                    | Extends the columns of a fact table with values looked-up in a dimension table | `T1 | lookup [kind = (leftouter|inner)] ( T2 ) on Attributes` |
 | [mv-expand](mvexpandoperator.md)               | Turns dynamic arrays into rows (multi-value expansion) | `T | mv-expand Column` |
@@ -50,7 +50,7 @@ This article shows you a list of functions and their descriptions to help get yo
 | [invoke](invoke-operator.md)                    | Runs the function on the table that it receives as input. | `T | invoke function([param1, param2])` |
 | [evaluate pluginName](evaluate-operator.md)     | Evaluates query language extensions (plugins) | `[T |] evaluate [ evaluateParameters ] PluginName ( [PluginArg1 [, PluginArg2]... )` |
 | **Visualization**                               | **_Operations that display the data in a graphical format_** | |
-| [render](renderoperator.md) | Renders results as a graphical output | `T | render Visualization [with (PropertyName = PropertyValue [, ...] )]` |
+| [render](render-operator.md) | Renders results as a graphical output | `T | render Visualization [with (PropertyName = PropertyValue [, ...] )]` |
 
 ## Related content
 

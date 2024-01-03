@@ -131,7 +131,7 @@ one or more tables are generated in-order, representing the results produced by 
 Three tables are often produced:
 
 * An @ExtendedProperties table that provides additional values, such as client visualization
-  instructions (information provided by the [render operator](../../query/renderoperator.md)),
+  instructions (information provided by the [render operator](../../query/render-operator.md)),
   information about the query's effective [database cursor](../../management/database-cursor.md),
   or information about the query's effective use of the [query results cache](../../query/query-results-cache.md).
   

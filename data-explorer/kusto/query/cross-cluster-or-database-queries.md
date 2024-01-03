@@ -63,7 +63,7 @@ union withsource=TableName *, database("OtherDb*").*Table, cluster("OtherCluster
 
 ### Qualified names and restrict access statements
 
-Qualified names or patterns can also be included in [restrict access](./restrictstatement.md) statement.
+Qualified names or patterns can also be included in [restrict access](./restrict-statement.md) statement.
 Wildcards in cluster names aren't permitted.
 
 The following query restricts query access to the following entities:

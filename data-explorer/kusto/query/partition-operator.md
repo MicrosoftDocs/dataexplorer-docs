@@ -89,7 +89,7 @@ The following list of operators can be used in subqueries with the native or shu
 * [project-keep](project-keep-operator.md)
 * [project-rename](project-rename-operator.md)
 * [project-reorder](project-reorder-operator.md)
-* [reduce](reduceoperator.md)
+* [reduce](reduce-operator.md)
 * [sample](sampleoperator.md)
 * [sample-distinct](sampledistinct-operator.md)
 * [scan](scan-operator.md)

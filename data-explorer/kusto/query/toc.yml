@@ -119,7 +119,7 @@ items:
       - name: Query parameters statement
         href: query-parameters-statement.md
       - name: Restrict statement
-        href: restrictstatement.md
+        href: restrict-statement.md
       - name: Set statement
         href: setstatement.md
       - name: Tabular expression statements
@@ -228,13 +228,13 @@ items:
       - name: print operator
         href: print-operator.md
       - name: range operator
-        href: rangeoperator.md
+        href: range-operator.md
       - name: reduce operator
-        href: reduceoperator.md
+        href: reduce-operator.md
       - name: render operator
         items:
           - name: render operator
-            href: renderoperator.md
+            href: render-operator.md
           - name: visualizations
             items:
               - name: anomalychart
@@ -1002,19 +1002,19 @@ items:
         displayName: punycode domain to string
         href: punycode-domain-to-string-function.md
       - name: radians()
-        href: radiansfunction.md
+        href: radians-function.md
       - name: rand()
-        href: randfunction.md
+        href: rand-function.md
       - name: range()
-        href: rangefunction.md
+        href: range-function.md
       - name: rank_tdigest()
         displayName: rank tdigest()
-        href: rank-tdigest.md
+        href: rank-tdigest-function.md
       - name: regex_quote()
         displayName: regex quote
-        href: regexquotefunction.md
+        href: regex-quote-function.md
       - name: repeat()
-        href: repeatfunction.md
+        href: repeat-function.md
       - name: replace_regex()
         displayName: replace regex
         href: replace-regex-function.md
@@ -1025,9 +1025,9 @@ items:
         displayName: replace strings
         href: replace-strings-function.md
       - name: reverse()
-        href: reversefunction.md
+        href: reverse-function.md
       - name: round()
-        href: roundfunction.md
+        href: round-function.md
       - name: set_difference()
         displayName: set difference
         href: setdifferencefunction.md
@@ -1569,7 +1569,7 @@ items:
           - name: Python plugin
             href: python-plugin.md
           - name: R plugin
-            href: rplugin.md
+            href: r-plugin.md
       - name: Machine learning plugins
         items:
           - name: autocluster plugin
@@ -1637,13 +1637,13 @@ items:
       - name: prev()
         href: prev-function.md
       - name: row_cumsum()
-        href: rowcumsumfunction.md
+        href: row-cumsum-function.md
       - name: row_number()
-        href: rownumberfunction.md
+        href: row-number-function.md
       - name: row_rank_dense()
-        href: rowrankdensefunction.md
+        href: row-rank-dense-function.md
       - name: row_rank_min()
-        href: rowrankminfunction.md
+        href: row-rank-min-function.md
       - name: row_window_session()
         href: row-window-session-function.md
   - name: Limits and Errors

@@ -24,7 +24,7 @@ In this tutorial, you'll learn how to:
 
 ## Plot points on a map
 
-To visualize points on a map, use [project](../project-operator.md) to select the column containing the longitude and then the column containing the latitude. Then, use [render](../renderoperator.md) to see your results in a scatter chart with `kind` set to `map`.
+To visualize points on a map, use [project](../project-operator.md) to select the column containing the longitude and then the column containing the latitude. Then, use [render](../render-operator.md) to see your results in a scatter chart with `kind` set to `map`.
 
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAwsuyS/KdS1LzSsp5qpRKEnMTlUwNDAAMguK8rNSk0sUnFLTM/N88vN0oKzEEqBkUWpeSmqRQnFyYklJalFyRmJRiUJ5ZkmGgkZ2Zl6Kgq1CbmKBJgAmnyYWWwAAAA==" target="_blank">Run the query</a>
