@@ -1119,6 +1119,11 @@
         "source_path": "data-explorer/kusto/query/pythonplugin.md",
         "redirect_url": "/azure/data-explorer/kusto/query/python-plugin",
         "redirect_document_id": true
+      },
+      {
+        "source_path": "data-explorer/kusto/query/queryparametersstatement.md",
+        "redirect_url": "/azure/data-explorer/kusto/query/query-parameters-statement",
+        "redirect_document_id": true
       }
     ]
 }
