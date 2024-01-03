@@ -133,6 +133,7 @@ To add Amazon Web Services access keys, append `;AwsCredentials={ACCESS_KEY_ID},
 ### Amazon Web Services S3 presigned URL
 
 Use the [S3 presigned URL](https://docs.aws.amazon.com/AmazonS3/latest/userguide/ShareObjectPreSignedURL.html) as the connection string.
+
 |Example|
 |--|
 |`"https://yourbucketname.s3.us-east-1.amazonaws.com/file.csv?12345678PRESIGNEDTOKEN"`|
