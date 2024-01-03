@@ -211,7 +211,7 @@
         "redirect_document_id": true
       },
       {
-        "source_path": "data-explorer/kusto/query/arg-max-aggregation-function.md",
+        "source_path": "data-explorer/kusto/query/arg-max-aggfunction.md",
         "redirect_url": "/azure/data-explorer/kusto/query/arg-max-aggregation-function",
         "redirect_document_id": true
       },
@@ -286,7 +286,7 @@
         "redirect_document_id": true
       },
       {
-        "source_path": "data-explorer/kusto/query/binary-not-function.md",
+        "source_path": "data-explorer/kusto/query/binary-notfunction.md",
         "redirect_url": "/azure/data-explorer/kusto/query/binary-not-function",
         "redirect_document_id": true
       },
@@ -451,7 +451,7 @@
         "redirect_document_id": true
       },
       {
-        "source_path": "data-explorer/kusto/query/datetime-diff-function.md",
+        "source_path": "data-explorer/kusto/query/datetime-difffunction.md",
         "redirect_url": "/azure/data-explorer/kusto/query/datetime-diff-function",
         "redirect_document_id": true
       },
@@ -631,7 +631,7 @@
         "redirect_document_id": true
       },
       {
-        "source_path": "data-explorer/kusto/query/hash-function.md",
+        "source_path": "data-explorer/kusto/query/hashfunction.md",
         "redirect_url": "/azure/data-explorer/kusto/query/hash-function",
         "redirect_document_id": true
       },
