@@ -51,7 +51,7 @@ The following table shows sample queries in SQL and their KQL equivalents.
 | -- | `SELECT * FROM dependencies`<br>`WHERE timestamp > ...`<br>`UNION`<br>`SELECT * FROM exceptions`<br>`WHERE timestamp > ...` | `dependencies`<br>`| where timestamp > ago(1d)`<br>`| union`<br>`    (exceptions`<br>`    | where timestamp > ago(1d))` |  |
 | Join | `SELECT * FROM dependencies `<br>`LEFT OUTER JOIN exceptions`<br>`ON dependencies.operation_Id = exceptions.operation_Id` | `dependencies`<br>`| join kind = leftouter`<br>`    (exceptions)`<br>`on $left.operation_Id == $right.operation_Id` | [join](join-operator.md) |
 | Nested queries | `SELECT * FROM dependencies`<br>`WHERE resultCode == `<br>`(SELECT TOP 1 resultCode FROM dependencies`<br>`WHERE resultId = 7`<br>`ORDER BY timestamp DESC)` | `dependencies`<br>`| where resultCode == toscalar(`<br>`    dependencies`<br>`    | where resultId == 7`<br>`    | top 1 by timestamp desc`<br>`    | project resultCode)` | [toscalar](toscalar-function.md) |
-| Having | `SELECT COUNT(\*) FROM dependencies`<br>`GROUP BY name`<br>`HAVING COUNT(\*) > 3` | `dependencies`<br>`| summarize Count = count() by name`<br>`| where Count > 3` | [summarize](summarize-operator.md)</br>[where](whereoperator.md) |
+| Having | `SELECT COUNT(\*) FROM dependencies`<br>`GROUP BY name`<br>`HAVING COUNT(\*) > 3` | `dependencies`<br>`| summarize Count = count() by name`<br>`| where Count > 3` | [summarize](summarize-operator.md)</br>[where](where-operator.md) |
 
 ## Related content
 

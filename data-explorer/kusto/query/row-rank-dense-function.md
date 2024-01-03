@@ -7,7 +7,7 @@ ms.date: 03/22/2023
 ---
 # row_rank_dense()
 
-Returns the current row's dense rank in a [serialized row set](./windowsfunctions.md#serialized-row-set).
+Returns the current row's dense rank in a [serialized row set](./window-functions.md#serialized-row-set).
 
 The row rank starts by default at `1` for the first row, and is incremented by `1` whenever the provided *Term* is different than the previous row's *Term*.
 

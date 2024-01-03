@@ -58,7 +58,7 @@ For each pattern, columns that aren't set in the pattern (that is, without restr
 
 > [!TIP]
 >
-> * Use [where](./whereoperator.md) and [project](./project-operator.md) in the input pipe to reduce the data to just what you're interested in.
+> * Use [where](./where-operator.md) and [project](./project-operator.md) in the input pipe to reduce the data to just what you're interested in.
 > * When you find an interesting row, you might want to drill into it further by adding its specific values to your `where` filter.
 
 ## Example

@@ -7,7 +7,7 @@ ms.date: 01/19/2023
 ---
 # row_cumsum()
 
-Calculates the cumulative sum of a column in a [serialized row set](./windowsfunctions.md#serialized-row-set).
+Calculates the cumulative sum of a column in a [serialized row set](./window-functions.md#serialized-row-set).
 
 ## Syntax
 

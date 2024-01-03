@@ -8,7 +8,7 @@ ms.date: 03/22/2023
 # prev()
 
 Returns the value of a specific column in a specified row.
-The specified row is at a specified offset from the current row in a [serialized row set](./windowsfunctions.md#serialized-row-set).
+The specified row is at a specified offset from the current row in a [serialized row set](./window-functions.md#serialized-row-set).
 
 ## Syntax
 

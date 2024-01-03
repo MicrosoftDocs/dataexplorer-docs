@@ -7,7 +7,7 @@ ms.date: 03/22/2023
 ---
 # row_rank_min()
 
-Returns the current row's minimal rank in a [serialized row set](./windowsfunctions.md#serialized-row-set).
+Returns the current row's minimal rank in a [serialized row set](./window-functions.md#serialized-row-set).
 
 The rank is the minimal row number that the current row's *Term* appears in.
 

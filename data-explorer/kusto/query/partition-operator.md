@@ -101,7 +101,7 @@ The following list of operators can be used in subqueries with the native or shu
 * [top](top-operator.md)
 * [top-hitters](top-hitters-function.md)
 * [top-nested](top-nested-operator.md)
-* [where](whereoperator.md)
+* [where](where-operator.md)
 
 > [!NOTE]
 > * Operators that reference a table source other than the subtable partitions aren't compatible with the `native` and `shuffle` strategies. For example, [join](join-operator.md), [union](union-operator.md), [externaldata](externaldata-operator.md), and [evaluate](evaluate-operator.md) (plugins). For such scenarios, resort to the [legacy strategy](#legacy-strategy).

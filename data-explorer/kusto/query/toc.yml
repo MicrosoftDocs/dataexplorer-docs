@@ -316,7 +316,7 @@ items:
         href: union-operator.md
       - name: where operator
         displayName: filter operator
-        href: whereoperator.md
+        href: where-operator.md
   - name: Special functions
     items:
       - name: cluster()
@@ -1163,18 +1163,18 @@ items:
         href: url-encode-component-function.md
       - name: week_of_year()
         displayName: week of year weekofyear()
-        href: weekofyearfunction.md
+        href: week-of-year-function.md
       - name: welch_test()
         displayName: welch test
-        href: welch-testfunction.md
+        href: welch-test-function.md
       - name: zip()
-        href: zipfunction.md
+        href: zip-function.md
       - name: zlib_compress_to_base64_string()
         displayName: zlib compress to base64 string
-        href: zlib-base64-compress.md
+        href: zlib-base64-compress-function.md
       - name: zlib_decompress_from_base64_string()
         displayName: zlib decompress from base64 string
-        href: zlib-base64-decompress.md
+        href: zlib-base64-decompress-function.md
   - name: Aggregation functions
     displayName: aggregation
     items:
@@ -1271,9 +1271,9 @@ items:
       - name: variance()
         href: variance-aggregation-function.md
       - name: varianceif()
-        href: varianceif-aggfunction.md
+        href: varianceif-aggregation-function.md
       - name: variancep()
-        href: variancep-aggfunction.md
+        href: variancep-aggregation-function.md
   - name: Graph operators
     items:
       - name: Graph operators overview
@@ -1631,7 +1631,7 @@ items:
   - name: Window functions
     items:
       - name: Window functions overview
-        href: windowsfunctions.md
+        href: window-functions.md
       - name: next()
         href: next-function.md
       - name: prev()

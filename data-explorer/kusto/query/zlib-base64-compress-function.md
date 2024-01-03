@@ -57,4 +57,4 @@ print(base64.b64encode(zlib.compress(b'<original_string>')))
 
 ## Related content
 
-* Use [zlib_decompress_from_base64_string()](zlib-base64-decompress.md) to retrieve the original uncompressed string.
+* Use [zlib_decompress_from_base64_string()](zlib-base64-decompress-function.md) to retrieve the original uncompressed string.

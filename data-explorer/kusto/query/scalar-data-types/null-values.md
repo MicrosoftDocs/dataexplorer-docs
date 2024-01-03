@@ -86,11 +86,11 @@ When applying the following operators to entities that include null values, the 
 * [sum()](../sum-aggregation-function.md)
 * [sumif()](../sumif-aggregation-function.md)
 * [variance()](../variance-aggregation-function.md)
-* [varianceif()](../varianceif-aggfunction.md)
+* [varianceif()](../varianceif-aggregation-function.md)
 
 ## Null values and the `where` operator
 
-The [where operator](../whereoperator.md) use Boolean expressions to determine
+The [where operator](../where-operator.md) use Boolean expressions to determine
 if to emit each input record to the output. This operator treats null values as if
 they're `bool(false)`. Records for which the predicate returns the null value are dropped and don't appear in the output.
 

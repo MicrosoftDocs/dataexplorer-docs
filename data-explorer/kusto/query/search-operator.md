@@ -10,7 +10,7 @@ ms.date: 03/15/2023
 Searches a text pattern in multiple tables and columns.
 
 > [!NOTE]
-> If you know the specific tables and columns you want to search, it's more performant to use the [union](union-operator.md) and [where](whereoperator.md) operators. The `search` operator can be slow when searching across a large number of tables and columns.
+> If you know the specific tables and columns you want to search, it's more performant to use the [union](union-operator.md) and [where](where-operator.md) operators. The `search` operator can be slow when searching across a large number of tables and columns.
 
 ## Syntax
 

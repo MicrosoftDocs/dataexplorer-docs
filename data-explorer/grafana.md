@@ -257,7 +257,7 @@ Use query builder mode to define your query.
 1. Now that the table is defined, filter the data:
 
     1. Select **+** to the right of **Where (filter)** to select one or more columns in your table.
-    1. For each filter, define the values by using the applicable operator. This selection is similar to using the [where operator](kusto/query/whereoperator.md) in Kusto Query Language.
+    1. For each filter, define the values by using the applicable operator. This selection is similar to using the [where operator](kusto/query/where-operator.md) in Kusto Query Language.
 
 1. Select the values to present in the table:
 

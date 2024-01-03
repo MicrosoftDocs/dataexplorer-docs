@@ -1001,7 +1001,7 @@
         "redirect_document_id": true
       },
       {
-        "source_path": "data-explorer/kusto/query/parsewhereoperator.md",
+        "source_path": "data-explorer/kusto/query/parsewhere-operator.md",
         "redirect_url": "/azure/data-explorer/kusto/query/parse-where-operator",
         "redirect_document_id": true
       },
@@ -1798,6 +1798,51 @@
       {
         "source_path": "data-explorer/kusto/query/variance-aggfunction.md",
         "redirect_url": "/azure/data-explorer/kusto/query/variance-aggregation-function",
+        "redirect_document_id": true
+      },
+      {
+        "source_path": "data-explorer/kusto/query/varianceif-aggfunction.md",
+        "redirect_url": "/azure/data-explorer/kusto/query/varianceif-aggregation-function",
+        "redirect_document_id": true
+      },
+      {
+        "source_path": "data-explorer/kusto/query/variancep-aggfunction.md",
+        "redirect_url": "/azure/data-explorer/kusto/query/variancep-aggregation-function",
+        "redirect_document_id": true
+      },
+      {
+        "source_path": "data-explorer/kusto/query/weekofyearfunction.md",
+        "redirect_url": "/azure/data-explorer/kusto/query/weak-of-year-function",
+        "redirect_document_id": true
+      },
+      {
+        "source_path": "data-explorer/kusto/query/welch-testfunction.md",
+        "redirect_url": "/azure/data-explorer/kusto/query/welch-test-function",
+        "redirect_document_id": true
+      },
+      {
+        "source_path": "data-explorer/kusto/query/whereoperator.md",
+        "redirect_url": "/azure/data-explorer/kusto/query/where-operator",
+        "redirect_document_id": true
+      },
+      {
+        "source_path": "data-explorer/kusto/query/windowsfunctions.md",
+        "redirect_url": "/azure/data-explorer/kusto/query/window-functions",
+        "redirect_document_id": true
+      },
+      {
+        "source_path": "data-explorer/kusto/query/zipfunction.md",
+        "redirect_url": "/azure/data-explorer/kusto/query/zip-function",
+        "redirect_document_id": true
+      },
+      {
+        "source_path": "data-explorer/kusto/query/zlib-base64-compress.md",
+        "redirect_url": "/azure/data-explorer/kusto/query/zlib-base64-compress-function",
+        "redirect_document_id": true
+      },
+      {
+        "source_path": "data-explorer/kusto/query/zlib-base64-decompress.md",
+        "redirect_url": "/azure/data-explorer/kusto/query/zlib-base64-decompress-function",
         "redirect_document_id": true
       }
     ]

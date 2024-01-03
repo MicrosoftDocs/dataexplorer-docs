@@ -132,7 +132,7 @@ There are 46 types of storms in the table. Here's a sample of 10 of them.
 
 ## Filter by condition
 
-The [where](../whereoperator.md) operator filters rows of data based on certain criteria.
+The [where](../where-operator.md) operator filters rows of data based on certain criteria.
 
 The following query looks for storm events in a specific `State` of a specific `EventType`.
 

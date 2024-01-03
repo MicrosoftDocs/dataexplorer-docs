@@ -66,7 +66,7 @@ This article lists all available scalar functions grouped by type. For aggregati
 |[unixtime_milliseconds_todatetime()](unixtime-milliseconds-todatetime-function.md)|Converts unix-epoch milliseconds to UTC datetime.|
 |[unixtime_nanoseconds_todatetime()](unixtime-nanoseconds-todatetime-function.md)|Converts unix-epoch nanoseconds to UTC datetime.|
 |[unixtime_seconds_todatetime()](unixtime-seconds-todatetime-function.md)|Converts unix-epoch seconds to UTC datetime.|
-|[weekofyear()](weekofyearfunction.md)|Returns an integer representing the week number.|
+|[weekofyear()](week-of-year-function.md)|Returns an integer representing the week number.|
 
 ## Dynamic/array functions
 
@@ -102,7 +102,7 @@ This article lists all available scalar functions grouped by type. For aggregati
 |[set_intersect()](set-intersect-function.md)|Returns an array of the set of all distinct values that are in all arrays.|
 |[set_union()](set-union-function.md)|Returns an array of the set of all distinct values that are in any of provided arrays.|
 |[treepath()](treepath-function.md)|Enumerates all the path expressions that identify leaves in a dynamic object.|
-|[zip()](zipfunction.md)|The zip function accepts any number of dynamic arrays. Returns an array whose elements are each an array with the elements of the input arrays of the same index.|
+|[zip()](zip-function.md)|The zip function accepts any number of dynamic arrays. Returns an array whose elements are each an array with the elements of the input arrays of the same index.|
 
 ## Window scalar functions
 
@@ -160,7 +160,7 @@ This article lists all available scalar functions grouped by type. For aggregati
 |[sin()](sin-function.md)|Returns the sine function.|
 |[sqrt()](sqrt-function.md)|Returns the square root function.|
 |[tan()](tan-function.md)|Returns the tangent function.|
-|[welch_test()](welch-testfunction.md)|Computes the p-value of the [Welch-test function](https://en.wikipedia.org/wiki/Welch%27s_t-test).|
+|[welch_test()](welch-test-function.md)|Computes the p-value of the [Welch-test function](https://en.wikipedia.org/wiki/Welch%27s_t-test).|
 
 ## Metadata functions
 

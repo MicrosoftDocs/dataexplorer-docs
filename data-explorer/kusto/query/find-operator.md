@@ -32,7 +32,7 @@ find in (Table1, Table2, Table3) where Fruit=="apple"
 ```
 
 > [!NOTE]
-> `find` operator is substantially less efficient than column-specific text filtering. Whenever the columns are known, we recommend using the [where operator](whereoperator.md). `find` will not function well when the workspace contains large number of tables and columns and the data volume that is being scanned is high and the time range of the query is high.
+> `find` operator is substantially less efficient than column-specific text filtering. Whenever the columns are known, we recommend using the [where operator](where-operator.md). `find` will not function well when the workspace contains large number of tables and columns and the data volume that is being scanned is high and the time range of the query is high.
 
 ::: zone-end
 
@@ -102,7 +102,7 @@ When using `project` *ColumnName*[`:` *ColumnType* `,` ... ] [`,` `pack_all()`]:
 
 The *find* operator supports an alternative syntax for the `* has` term, and using just *term*, will search a term across all input columns.
 
-For a summary of some filtering functions, see [where operator](./whereoperator.md).
+For a summary of some filtering functions, see [where operator](./where-operator.md).
 
 ## Notes
 
