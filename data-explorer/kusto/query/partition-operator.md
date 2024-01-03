@@ -97,10 +97,10 @@ The following list of operators can be used in subqueries with the native or shu
 * [serialize](serialize-operator.md)
 * [sort](sort-operator.md)
 * [summarize](summarize-operator.md)
-* [take](takeoperator.md)
-* [top](topoperator.md)
-* [top-hitters](tophittersoperator.md)
-* [top-nested](topnestedoperator.md)
+* [take](take-operator.md)
+* [top](top-operator.md)
+* [top-hitters](top-hitters-function.md)
+* [top-nested](top-nested-operator.md)
 * [where](whereoperator.md)
 
 > [!NOTE]
@@ -125,7 +125,7 @@ To use this strategy, specify `hint.strategy=legacy` or omit any other strategy 
 
 ### Find top values
 
-In some cases, it's more performant and easier to write a query using the `partition` operator than using the [`top-nested`](topnestedoperator.md) operator. The following query runs a subquery calculating `summarize` and `top` for each `State` starting with `W`: "WYOMING", "WASHINGTON", "WEST VIRGINIA", and "WISCONSIN".
+In some cases, it's more performant and easier to write a query using the `partition` operator than using the [`top-nested`](top-nested-operator.md) operator. The following query runs a subquery calculating `summarize` and `top` for each `State` starting with `W`: "WYOMING", "WASHINGTON", "WEST VIRGINIA", and "WISCONSIN".
 
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAz2NsQ6CQBBEe75iOyAhNtZ0WlhjYn2Sjbcm3JHdOQiGj/cEdYtJJvN2pkPU4TxxgBUrzZ6VqYMDk8EpbBZ4Km9lDsfsBRIDeQk4GDRjj6UNDjIx3ZfvY0H5qk0tDYNTeTHtE20fU0BVN3QJz6TC1mak+pmTKPeoP1Ubf11GbvbWrW4lxJGO/9z2rfoN+O3/98UAAAA=" target="_blank">Run the query</a>

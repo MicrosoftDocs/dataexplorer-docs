@@ -27,8 +27,8 @@ Many tabular operators serialize output whenever the input is already serialized
 ## Operators that emit serialized row sets by sorting
 
 * [sort operator](./sort-operator.md)
-* [top operator](./topoperator.md)
-* [top-hitters operator](./tophittersoperator.md)
+* [top operator](./top-operator.md)
+* [top-hitters operator](./top-hitters-function.md)
 
 ## Operators that preserve the serialized row set property
 
@@ -38,5 +38,5 @@ Many tabular operators serialize output whenever the input is already serialized
 * [project operator](./project-operator.md)
 * [project-away operator](./project-away-operator.md)
 * [project-rename operator](./project-rename-operator.md)
-* [take operator](./takeoperator.md)
+* [take operator](./take-operator.md)
 * [where operator](./whereoperator.md)

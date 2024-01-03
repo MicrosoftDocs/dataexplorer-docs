@@ -124,7 +124,7 @@ items:
         href: set-statement.md
       - name: Tabular expression statements
         displayName: views
-        href: tabularexpressionstatements.md
+        href: tabular-expression-statements.md
       - name: Batches
         href: batches.md
   - name: Tabular operators
@@ -303,14 +303,14 @@ items:
             href: usinghlltdigest.md
       - name: take operator
         displayName: limit operator
-        href: takeoperator.md
+        href: take-operator.md
       - name: top operator
-        href: topoperator.md
+        href: top-operator.md
       - name: top-nested operator
-        href: topnestedoperator.md
+        href: top-nested-operator.md
         displayName: top nested top_nested
       - name: top-hitters operator
-        href: tophittersoperator.md
+        href: top-hitters-function.md
         displayName: top hitters top_hitters
       - name: union operator
         href: unionoperator.md
@@ -334,9 +334,9 @@ items:
       - name: Query results cache
         href: query-results-cache.md
       - name: table()
-        href: tablefunction.md
+        href: table-function.md
       - name: toscalar()
-        href: toscalarfunction.md
+        href: toscalar-function.md
         displayName: to_scalar to-scalar
   - name: Scalar operators
     items:
@@ -529,7 +529,7 @@ items:
       - name: assert()
         href: assert-function.md
       - name: atan()
-        href: atanfunction.md
+        href: atan-function.md
       - name: atan2()
         href: atan2-function.md
       - name: bag_has_key()
@@ -1085,55 +1085,55 @@ items:
         displayName: string substring
         href: substring-function.md
       - name: tan()
-        href: tanfunction.md
+        href: tan-function.md
       - name: tobool()
         displayName: to boolean toboolean
-        href: toboolfunction.md
+        href: tobool-function.md
       - name: todatetime()
         displayName: to datetime todatetime
-        href: todatetimefunction.md
+        href: todatetime-function.md
       - name: todecimal()
         displayName: to decimal todecimal
-        href: todecimalfunction.md
+        href: todecimal-function.md
       - name: todouble()
         displayName: to double todouble toreal()
-        href: todoublefunction.md
+        href: todouble-function.md
       - name: toguid()
         displayName: to guid toguid
-        href: toguidfunction.md
+        href: toguid-function.md
       - name: tohex()
         displayName: to hex tohex
-        href: tohexfunction.md
+        href: tohex-function.md
       - name: toint()
         displayName: to int toint integer
-        href: tointfunction.md
+        href: toint-function.md
       - name: tolong()
         displayName: to long tolong
-        href: tolongfunction.md
+        href: tolong-function.md
       - name: tolower()
         displayName: to lower tolower
-        href: tolowerfunction.md
+        href: tolower-function.md
       - name: tostring()
         displayName: to string tostring
-        href: tostringfunction.md
+        href: tostring-function.md
       - name: totimespan()
         displayName: to timespan totime()
-        href: totimespanfunction.md
+        href: totimespan-function.md
       - name: toupper()
         displayName: to upper toupper
-        href: toupperfunction.md
+        href: toupper-function.md
       - name: translate()
-        href: translatefunction.md
+        href: translate-function.md
       - name: treepath()
-        href: treepathfunction.md
+        href: treepath-function.md
       - name: trim()
-        href: trimfunction.md
+        href: trim-function.md
       - name: trim_end()
         displayName: trim end
-        href: trimendfunction.md
+        href: trim-end-function.md
       - name: trim_start()
         displayName: trim start
-        href: trimstartfunction.md
+        href: trim-start-function.md
       - name: unicode_codepoints_from_string()
         displayName: to_utf8() unicode codepoints from string
         href: unicode-codepoints-from-string-function.md
@@ -1142,16 +1142,16 @@ items:
         href: unicode-codepoints-to-string-function.md
       - name: unixtime_microseconds_todatetime()
         displayName: unixtime microseconds to datetime
-        href: unixtime-microseconds-todatetimefunction.md
+        href: unixtime-microseconds-todatetime-function.md
       - name: unixtime_milliseconds_todatetime()
         displayName: unixtime milliseconds to datetime
-        href: unixtime-milliseconds-todatetimefunction.md
+        href: unixtime-milliseconds-todatetime-function.md
       - name: unixtime_nanoseconds_todatetime()
         displayName: unixtime nanoseconds to datetime
-        href: unixtime-nanoseconds-todatetimefunction.md
+        href: unixtime-nanoseconds-todatetime-function.md
       - name: unixtime_seconds_todatetime()
         displayName: unixtime seconds to datetime
-        href: unixtime-seconds-todatetimefunction.md
+        href: unixtime-seconds-todatetime-function.md
       - name: url_decode()
         displayName: url decode
         href: urldecodefunction.md
@@ -1260,14 +1260,14 @@ items:
         href: sumif-aggregation-function.md
       - name: take_any()
         displayName: any()
-        href: take-any-aggfunction.md
+        href: take-any-aggregation-function.md
       - name: take_anyif()
         displayName: anyif()
-        href: take-anyif-aggfunction.md
+        href: take-anyif-aggregation-function.md
       - name: tdigest()
-        href: tdigest-aggfunction.md
+        href: tdigest-aggregation-function.md
       - name: tdigest_merge(), merge_tdigest()
-        href: tdigest-merge-aggfunction.md
+        href: tdigest-merge-aggregation-function.md
       - name: variance()
         href: variance-aggfunction.md
       - name: varianceif()

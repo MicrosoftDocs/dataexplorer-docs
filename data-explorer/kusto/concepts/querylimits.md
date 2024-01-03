@@ -53,8 +53,8 @@ There are several strategies for dealing with this error.
 Methods for reducing the result set size produced by the query include:
 
 * Use the [summarize operator](../query/summarize-operator.md) group and aggregate over
-   similar records in the query output. Potentially sample some columns by using the [take_any aggregation function](../query/take-any-aggfunction.md).
-* Use a [take operator](../query/takeoperator.md) to sample the query output.
+   similar records in the query output. Potentially sample some columns by using the [take_any aggregation function](../query/take-any-aggregation-function.md).
+* Use a [take operator](../query/take-operator.md) to sample the query output.
 * Use the [substring function](../query/substring-function.md) to trim wide free-text columns.
 * Use the [project operator](../query/project-operator.md) to drop any uninteresting column from the result set.
 

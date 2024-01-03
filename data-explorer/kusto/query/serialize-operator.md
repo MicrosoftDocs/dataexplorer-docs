@@ -57,8 +57,8 @@ The output row set of the following operators is marked as serialized.
 * [getschema](./getschemaoperator.md)
 * [range](./range-operator.md)
 * [sort](./sort-operator.md)
-* [top](./topoperator.md)
-* [top-hitters](./tophittersoperator.md)
+* [top](./top-operator.md)
+* [top-hitters](./top-hitters-function.md)
 
 The output row set of the following operators is marked as nonserialized.
 
@@ -73,6 +73,6 @@ The output row set of the following operators is marked as nonserialized.
 * [sample](./sample-operator.md)
 * [sample-distinct](./sampledistinct-operator.md)
 * [summarize](./summarize-operator.md)
-* [top-nested](./topnestedoperator.md)
+* [top-nested](./top-nested-operator.md)
 
 All other operators preserve the serialization property. If the input row set is serialized, then the output row set is also serialized.

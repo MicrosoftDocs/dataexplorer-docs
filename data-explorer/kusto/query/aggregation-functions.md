@@ -34,7 +34,7 @@ An aggregation function performs a calculation on a set of values, and returns a
 |--|--|
 | [arg_max()](arg-max-aggregation-function.md) | Returns one or more expressions when the argument is maximized. |
 | [arg_min()](arg-min-aggregation-function.md) | Returns one or more expressions when the argument is minimized. |
-| [take_any()](take-any-aggfunction.md), [take_anyif()](take-anyif-aggfunction.md) | Returns a random non-empty value for the group without/with a predicate. |
+| [take_any()](take-any-aggregation-function.md), [take_anyif()](take-anyif-aggregation-function.md) | Returns a random non-empty value for the group without/with a predicate. |
 
 ## Statistical functions
 
@@ -58,7 +58,7 @@ An aggregation function performs a calculation on a set of values, and returns a
 | [stdev()](stdev-aggregation-function.md), [stdevif()](stdevif-aggregation-function.md) | Returns the standard deviation across the group for a population that is considered a sample without/with a predicate. |
 | [stdevp()](stdevp-aggregation-function.md) | Returns the standard deviation across the group for a population that is considered representative. |
 | [sum()](sum-aggregation-function.md), [sumif()](sumif-aggregation-function.md) | Returns the sum of the elements within the group without/with a predicate. |
-| [tdigest()](tdigest-aggfunction.md) | Returns an intermediate result for the percentiles approximation, the weighted percentile approximate of the group. |
-| [tdigest_merge()](tdigest-merge-aggfunction.md) | Returns the merged `tdigest` value across the group. |
+| [tdigest()](tdigest-aggregation-function.md) | Returns an intermediate result for the percentiles approximation, the weighted percentile approximate of the group. |
+| [tdigest_merge()](tdigest-merge-aggregation-function.md) | Returns the merged `tdigest` value across the group. |
 | [variance()](variance-aggfunction.md), [varianceif()](varianceif-aggfunction.md) | Returns the variance across the group without/with a predicate. |
 | [variancep()](variancep-aggfunction.md) | Returns the variance across the group for a population that is considered representative. |

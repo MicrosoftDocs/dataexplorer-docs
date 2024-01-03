@@ -17,7 +17,7 @@ This article shows you a list of functions and their descriptions to help get yo
 | [where](whereoperator.md)                      | Filters on a specific predicate           | `T | where Predicate`                         |
 | [where contains/has](whereoperator.md)        | `Contains`: Looks for any substring match <br> `Has`: Looks for a specific word (better performance)  | `T | where col1 contains/has "[search term]"`|
 | [search](search-operator.md)                    | Searches all columns in the table for the value | `[TabularSource |] search [kind=CaseSensitivity] [in (TableSources)] SearchPredicate` |
-| [take](takeoperator.md)                        | Returns the specified number of records. Use to test a query<br>**_Note_**: `take` and `limit` are synonyms. | `T | take NumberOfRows` |
+| [take](take-operator.md)                        | Returns the specified number of records. Use to test a query<br>**_Note_**: `take` and `limit` are synonyms. | `T | take NumberOfRows` |
 | [case](case-function.md)                        | Adds a condition statement, similar to if/then/elseif in other systems. | `case(predicate_1, then_1, predicate_2, then_2, predicate_3, then_3, else)` |
 | [distinct](distinct-operator.md)                | Produces a table with the distinct combination of the provided columns of the input table | `distinct [ColumnName], [ColumnName]` |
 | **Date/Time**                                   |**_Operations that use date and time functions_**               |                          |
@@ -34,7 +34,7 @@ This article shows you a list of functions and their descriptions to help get yo
 | [extend](extend-operator.md)                    | Creates a calculated column and adds it to the result set | `T | extend [ColumnName | (ColumnName[, ...]) =] Expression [, ...]` |
 | **Sort and Aggregate Dataset**                 |**_Restructure the data by sorting or grouping them in meaningful ways_**|                  |
 | [sort operator](sort-operator.md) | Sort the rows of the input table by one or more columns in ascending or descending order | `T | sort by expression1 [asc|desc], expression2 [asc|desc], …` |
-| [top](topoperator.md)                          | Returns the first N rows of the dataset when the dataset is sorted using `by` | `T | top numberOfRows by expression [asc|desc] [nulls first|last]` |
+| [top](top-operator.md)                          | Returns the first N rows of the dataset when the dataset is sorted using `by` | `T | top numberOfRows by expression [asc|desc] [nulls first|last]` |
 | [summarize](summarize-operator.md)              | Groups the rows according to the `by` group columns, and calculates aggregations over each group | `T | summarize [[Column =] Aggregation [, ...]] [by [Column =] GroupExpression [, ...]]` |
 | [count](count-operator.md)                       | Counts records in the input table (for example, T)<br>This operator is shorthand for `summarize count() `| `T | count` |
 | [join](join-operator.md)                        | Merges the rows of two tables to form a new table by matching values of the specified column(s) from each table. Supports a full range of join types: `flouter`, `inner`, `innerunique`, `leftanti`, `leftantisemi`, `leftouter`, `leftsemi`, `rightanti`, `rightantisemi`, `rightouter`, `rightsemi` | `LeftTable | join [JoinParameters] ( RightTable ) on Attributes` |

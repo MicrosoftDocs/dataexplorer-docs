@@ -141,7 +141,7 @@ Kusto limits are reached with datasets that are too large, where you need to run
 
 ::: zone pivot="azuredataexplorer, fabric"
 
-To solve this problem, newly added data may be added to a temp table as `hll` or `tdigest` values using [`hll()`](hll-aggregation-function.md) when the required operation is `dcount` or [`tdigest()`](tdigest-aggfunction.md) when the required operation is percentile using [`set/append`](../../ingest-data-overview.md) or [`update policy`](../management/update-policy.md). In this case, the intermediate results of `dcount` or `tdigest` are saved into another dataset, which should be smaller than the target large one.
+To solve this problem, newly added data may be added to a temp table as `hll` or `tdigest` values using [`hll()`](hll-aggregation-function.md) when the required operation is `dcount` or [`tdigest()`](tdigest-aggregation-function.md) when the required operation is percentile using [`set/append`](../../ingest-data-overview.md) or [`update policy`](../management/update-policy.md). In this case, the intermediate results of `dcount` or `tdigest` are saved into another dataset, which should be smaller than the target large one.
 
 ::: zone-end
 
@@ -151,7 +151,7 @@ To solve this problem, newly added data may be added to a temp table as `hll` or
 
 ::: zone-end
 
-When you need to get the final results of these values, the queries may use `hll`/`tdigest` mergers: [`hll-merge()`](hll-merge-aggregation-function.md)/[`tdigest_merge()`](tdigest-merge-aggfunction.md). Then, after getting the merged values, [`percentile_tdigest()`](percentile-tdigest-function.md) / [`dcount_hll()`](dcount-hllfunction.md) may be invoked on these merged values to get the final result of `dcount` or percentiles.
+When you need to get the final results of these values, the queries may use `hll`/`tdigest` mergers: [`hll-merge()`](hll-merge-aggregation-function.md)/[`tdigest_merge()`](tdigest-merge-aggregation-function.md). Then, after getting the merged values, [`percentile_tdigest()`](percentile-tdigest-function.md) / [`dcount_hll()`](dcount-hllfunction.md) may be invoked on these merged values to get the final result of `dcount` or percentiles.
 
 Assuming there's a table, PageViews, into which data is ingested daily, every day on which you want to calculate the distinct count of pages viewed per minute later than date = datetime(2016-05-01 18:00:00.0000000).
 

@@ -32,7 +32,7 @@ The following are common scenarios that can be addressed by using a materialized
     }
     ```
 
-* **Deduplicate records:** Deduplicate records in a table using [`take_any()` (aggregation function)](../../query/take-any-aggfunction.md). For example, create a materialized view that deduplicates the source table based on the `EventId` column, using a lookback of 6 hours. Records are deduplicated against only records ingested 6 hours before current records.
+* **Deduplicate records:** Deduplicate records in a table using [`take_any()` (aggregation function)](../../query/take-any-aggregation-function.md). For example, create a materialized view that deduplicates the source table based on the `EventId` column, using a lookback of 6 hours. Records are deduplicated against only records ingested 6 hours before current records.
 
     ```kusto
     .create materialized-view with(lookback=6h) DeduplicatedTable on table T
@@ -43,7 +43,7 @@ The following are common scenarios that can be addressed by using a materialized
     ```
 
     > [!NOTE]
-    > You can conceal the source table by creating a function with the same name as the table that references the materialized view instead. This pattern ensures that callers querying the table access the deduplicated materialized view because [functions override tables with the same name](../../query/schema-entities/tables.md). To avoid cyclic references in the view definition, use the [table()](../../query/tablefunction.md) function to reference the source table: 
+    > You can conceal the source table by creating a function with the same name as the table that references the materialized view instead. This pattern ensures that callers querying the table access the deduplicated materialized view because [functions override tables with the same name](../../query/schema-entities/tables.md). To avoid cyclic references in the view definition, use the [table()](../../query/table-function.md) function to reference the source table: 
     >
     >    ```kusto
     >    .create materialized-view DeduplicatedTable on table T

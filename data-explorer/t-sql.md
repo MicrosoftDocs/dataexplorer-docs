@@ -111,7 +111,7 @@ SELECT * FROM kusto.MyFunction(10)
 
 > [!NOTE]
 > * Two statements must be separated by a semicolon, and there should be no empty line before the query.
-> * Request properties apply only to the [tabular expression statements](kusto/query/tabularexpressionstatements.md) that immediately follow.
+> * Request properties apply only to the [tabular expression statements](kusto/query/tabular-expression-statements.md) that immediately follow.
 
 ### Examples
 

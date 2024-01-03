@@ -50,4 +50,4 @@ The below table shows only the relevant column. Run the query above to see more 
 
 ## Related content
 
-* Use [top-nested](topnestedoperator.md) operator to produce hierarchical (nested) top results.
+* Use [top-nested](top-nested-operator.md) operator to produce hierarchical (nested) top results.

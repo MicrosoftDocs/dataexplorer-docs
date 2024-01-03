@@ -64,7 +64,7 @@ In order of importance:
   and then filter data out using a predicate on the source table name.
 
 * Take advantage of a table's data scope if the query is relevant only for a specific scope.
-  The [table() function](tablefunction.md) provides an efficient way to eliminate data
+  The [table() function](table-function.md) provides an efficient way to eliminate data
   by scoping it according to the caching policy (the *DataScope* parameter).
 
 * Apply the `where` query operator immediately following table references.

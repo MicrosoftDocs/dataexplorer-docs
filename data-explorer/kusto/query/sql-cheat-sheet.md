@@ -30,9 +30,9 @@ The following table shows sample queries in SQL and their KQL equivalents.
 
 | Category | SQL Query | Kusto Query | Learn more |
 |--|--|--|
-| Select data from table | `SELECT * FROM dependencies` | `dependencies` | [Tabular expression statements](tabularexpressionstatements.md) |
+| Select data from table | `SELECT * FROM dependencies` | `dependencies` | [Tabular expression statements](tabular-expression-statements.md) |
 | -- | `SELECT name, resultCode FROM dependencies` | `dependencies | project name, resultCode` | [project](project-operator.md) |
-| -- | `SELECT TOP 100 * FROM dependencies` | `dependencies | take 100` | [take](takeoperator.md) |
+| -- | `SELECT TOP 100 * FROM dependencies` | `dependencies | take 100` | [take](take-operator.md) |
 | Null evaluation | `SELECT * FROM dependencies`<br>`WHERE resultCode IS NOT NULL` | `dependencies`<br>`| where isnotnull(resultCode)` | [isnotnull()](isnotnull-function.md) |
 | Comparison operators (date) | `SELECT * FROM dependencies`<br>`WHERE timestamp > getdate()-1` | `dependencies`<br>`| where timestamp > ago(1d)` | [ago()](ago-function.md) |
 | -- | `SELECT * FROM dependencies`<br>`WHERE timestamp BETWEEN ... AND ...` | `dependencies`<br>`| where timestamp between (datetime(2016-10-01) .. datetime(2016-11-01))` | [between](between-operator.md) |
@@ -46,11 +46,11 @@ The following table shows sample queries in SQL and their KQL equivalents.
 | Column aliases, Extending | `SELECT operationName as Name, AVG(duration) as AvgD FROM dependencies`<br>`GROUP BY name` | `dependencies`<br>`| summarize AvgD = avg(duration) by Name=operationName` | [Alias statement](alias-statement.md) |
 | -- | `SELECT conference, CONCAT(sessionid, ' ' , session_title) AS session FROM ConferenceSessions` | `ConferenceSessions`<br>`| extend session=strcat(sessionid, " ", session_title)`<br>`| project conference, session` | [strcat()](strcat-function.md)</br>[project](project-operator.md) |
 | Ordering | `SELECT name, timestamp FROM dependencies`<br>`ORDER BY timestamp ASC` | `dependencies`<br>`| project name, timestamp`<br>`| sort by timestamp asc nulls last` | [sort](sort-operator.md) |
-| Top n by measure | `SELECT TOP 100 name, COUNT(*) as Count FROM dependencies`<br>`GROUP BY name`<br>`ORDER BY Count DESC` | `dependencies`<br>`| summarize Count = count() by name`<br>`| top 100 by Count desc` | [top](topoperator.md) |
+| Top n by measure | `SELECT TOP 100 name, COUNT(*) as Count FROM dependencies`<br>`GROUP BY name`<br>`ORDER BY Count DESC` | `dependencies`<br>`| summarize Count = count() by name`<br>`| top 100 by Count desc` | [top](top-operator.md) |
 | Union | `SELECT * FROM dependencies`<br>`UNION`<br>`SELECT * FROM exceptions` | `union dependencies, exceptions` | [union](unionoperator.md) |
 | -- | `SELECT * FROM dependencies`<br>`WHERE timestamp > ...`<br>`UNION`<br>`SELECT * FROM exceptions`<br>`WHERE timestamp > ...` | `dependencies`<br>`| where timestamp > ago(1d)`<br>`| union`<br>`    (exceptions`<br>`    | where timestamp > ago(1d))` |  |
 | Join | `SELECT * FROM dependencies `<br>`LEFT OUTER JOIN exceptions`<br>`ON dependencies.operation_Id = exceptions.operation_Id` | `dependencies`<br>`| join kind = leftouter`<br>`    (exceptions)`<br>`on $left.operation_Id == $right.operation_Id` | [join](join-operator.md) |
-| Nested queries | `SELECT * FROM dependencies`<br>`WHERE resultCode == `<br>`(SELECT TOP 1 resultCode FROM dependencies`<br>`WHERE resultId = 7`<br>`ORDER BY timestamp DESC)` | `dependencies`<br>`| where resultCode == toscalar(`<br>`    dependencies`<br>`    | where resultId == 7`<br>`    | top 1 by timestamp desc`<br>`    | project resultCode)` | [toscalar](toscalarfunction.md) |
+| Nested queries | `SELECT * FROM dependencies`<br>`WHERE resultCode == `<br>`(SELECT TOP 1 resultCode FROM dependencies`<br>`WHERE resultId = 7`<br>`ORDER BY timestamp DESC)` | `dependencies`<br>`| where resultCode == toscalar(`<br>`    dependencies`<br>`    | where resultId == 7`<br>`    | top 1 by timestamp desc`<br>`    | project resultCode)` | [toscalar](toscalar-function.md) |
 | Having | `SELECT COUNT(\*) FROM dependencies`<br>`GROUP BY name`<br>`HAVING COUNT(\*) > 3` | `dependencies`<br>`| summarize Count = count() by name`<br>`| where Count > 3` | [summarize](summarize-operator.md)</br>[where](whereoperator.md) |
 
 ## Related content

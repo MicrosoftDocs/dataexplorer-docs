@@ -18,7 +18,7 @@ There are several possible courses of action.
 * Change the query to consume fewer resources. For example, if the error indicates
   that the query result set is too large, you can:
   * Limit the number of records returned by the query by
-     * Using the [take operator](../query/takeoperator.md)
+     * Using the [take operator](../query/take-operator.md)
      * Adding additional [where clauses](../query/whereoperator.md)
   * Reduce the number of columns returned by the query by
      * Using the [project operator](../query/project-operator.md)

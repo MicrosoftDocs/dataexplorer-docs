@@ -196,7 +196,7 @@
         "redirect_document_id": true
       },
       {
-        "source_path": "data-explorer/kusto/query/atanfunction.md",
+        "source_path": "data-explorer/kusto/query/atan-function.md",
         "redirect_url": "/azure/data-explorer/kusto/query/atan-function",
         "redirect_document_id": true
       },
@@ -221,7 +221,7 @@
         "redirect_document_id": true
       },
       {
-        "source_path": "data-explorer/kusto/query/base64_decode_tostringfunction.md",
+        "source_path": "data-explorer/kusto/query/base64_decode_tostring-function.md",
         "redirect_url": "/azure/data-explorer/kusto/query/base64-decode-tostring-function",
         "redirect_document_id": true
       },
@@ -231,7 +231,7 @@
         "redirect_document_id": true
       },
       {
-        "source_path": "data-explorer/kusto/query/base64_encode_tostringfunction.md",
+        "source_path": "data-explorer/kusto/query/base64_encode_tostring-function.md",
         "redirect_url": "/azure/data-explorer/kusto/query/base64-encode-tostring-function",
         "redirect_document_id": true
       },
@@ -551,7 +551,7 @@
         "redirect_document_id": true
       },
       {
-        "source_path": "data-explorer/kusto/query/externaltablefunction.md",
+        "source_path": "data-explorer/kusto/query/externaltable-function.md",
         "redirect_url": "/azure/data-explorer/kusto/query/external-table-function",
         "redirect_document_id": true
       },
@@ -1256,7 +1256,7 @@
         "redirect_document_id": true
       },
       {
-        "source_path": "data-explorer/kusto/query/series-atanfunction.md",
+        "source_path": "data-explorer/kusto/query/series-atan-function.md",
         "redirect_url": "/azure/data-explorer/kusto/query/series-atan-function",
         "redirect_document_id": true
       },
@@ -1436,7 +1436,7 @@
         "redirect_document_id": true
       },
       {
-        "source_path": "data-explorer/kusto/query/series-tanfunction.md",
+        "source_path": "data-explorer/kusto/query/series-tan-function.md",
         "redirect_url": "/azure/data-explorer/kusto/query/series-tan-function",
         "redirect_document_id": true
       },
@@ -1598,6 +1598,151 @@
       {
         "source_path": "data-explorer/kusto/query/summarizeoperator.md",
         "redirect_url": "/azure/data-explorer/kusto/query/summarize-operator",
+        "redirect_document_id": true
+      },
+      {
+        "source_path": "data-explorer/kusto/query/tablefunction.md",
+        "redirect_url": "/azure/data-explorer/kusto/query/table-function",
+        "redirect_document_id": true
+      },
+      {
+        "source_path": "data-explorer/kusto/query/tabularexpressionstatements.md",
+        "redirect_url": "/azure/data-explorer/kusto/query/tabular-expression-statements",
+        "redirect_document_id": true
+      },
+      {
+        "source_path": "data-explorer/kusto/query/take-any-aggfunction.md",
+        "redirect_url": "/azure/data-explorer/kusto/query/take-any-aggregation-function",
+        "redirect_document_id": true
+      },
+      {
+        "source_path": "data-explorer/kusto/query/take-anyif-aggfunction.md",
+        "redirect_url": "/azure/data-explorer/kusto/query/take-anyif-aggregation-function",
+        "redirect_document_id": true
+      },
+      {
+        "source_path": "data-explorer/kusto/query/take-operator.md",
+        "redirect_url": "/azure/data-explorer/kusto/query/take-operator",
+        "redirect_document_id": true
+      },
+      {
+        "source_path": "data-explorer/kusto/query/tanfunction.md",
+        "redirect_url": "/azure/data-explorer/kusto/query/tan-function",
+        "redirect_document_id": true
+      },
+      {
+        "source_path": "data-explorer/kusto/query/tdigest-aggfunction.md",
+        "redirect_url": "/azure/data-explorer/kusto/query/tdigest-aggregation-function",
+        "redirect_document_id": true
+      },
+      {
+        "source_path": "data-explorer/kusto/query/tdigest-merge-aggfunction.md",
+        "redirect_url": "/azure/data-explorer/kusto/query/tdigest-merge-aggregation-function",
+        "redirect_document_id": true
+      },
+      {
+        "source_path": "data-explorer/kusto/query/toboolfunction.md",
+        "redirect_url": "/azure/data-explorer/kusto/query/tobool-function",
+        "redirect_document_id": true
+      },
+      {
+        "source_path": "data-explorer/kusto/query/todatetimefunction.md",
+        "redirect_url": "/azure/data-explorer/kusto/query/todatetime-function",
+        "redirect_document_id": true
+      },
+      {
+        "source_path": "data-explorer/kusto/query/todecimalfunction.md",
+        "redirect_url": "/azure/data-explorer/kusto/query/todecimal-function",
+        "redirect_document_id": true
+      },
+      {
+        "source_path": "data-explorer/kusto/query/todoublefunction.md",
+        "redirect_url": "/azure/data-explorer/kusto/query/todouble-function",
+        "redirect_document_id": true
+      },
+      {
+        "source_path": "data-explorer/kusto/query/toguidfunction.md",
+        "redirect_url": "/azure/data-explorer/kusto/query/toguid-function",
+        "redirect_document_id": true
+      },
+      {
+        "source_path": "data-explorer/kusto/query/toguidfunction.md",
+        "redirect_url": "/azure/data-explorer/kusto/query/toguid-function",
+        "redirect_document_id": true
+      },
+      {
+        "source_path": "data-explorer/kusto/query/tohexfunction.md",
+        "redirect_url": "/azure/data-explorer/kusto/query/tohex-function",
+        "redirect_document_id": true
+      },
+      {
+        "source_path": "data-explorer/kusto/query/tointfunction.md",
+        "redirect_url": "/azure/data-explorer/kusto/query/toint-function",
+        "redirect_document_id": true
+      },
+      {
+        "source_path": "data-explorer/kusto/query/tolowerfunction.md",
+        "redirect_url": "/azure/data-explorer/kusto/query/tolower-function",
+        "redirect_document_id": true
+      },
+      {
+        "source_path": "data-explorer/kusto/query/tohittersoperator.md",
+        "redirect_url": "/azure/data-explorer/kusto/query/top-hitters-operator",
+        "redirect_document_id": true
+      },
+      {
+        "source_path": "data-explorer/kusto/query/topnestedoperator.md",
+        "redirect_url": "/azure/data-explorer/kusto/query/top-nested-operator",
+        "redirect_document_id": true
+      },
+      {
+        "source_path": "data-explorer/kusto/query/topoperator.md",
+        "redirect_url": "/azure/data-explorer/kusto/query/top-operator",
+        "redirect_document_id": true
+      },
+      {
+        "source_path": "data-explorer/kusto/query/toscalarfunction.md",
+        "redirect_url": "/azure/data-explorer/kusto/query/toscalar-function",
+        "redirect_document_id": true
+      },
+      {
+        "source_path": "data-explorer/kusto/query/tostringfunction.md",
+        "redirect_url": "/azure/data-explorer/kusto/query/tostring-function",
+        "redirect_document_id": true
+      },
+      {
+        "source_path": "data-explorer/kusto/query/totimespanfunction.md",
+        "redirect_url": "/azure/data-explorer/kusto/query/totimespan-function",
+        "redirect_document_id": true
+      },
+      {
+        "source_path": "data-explorer/kusto/query/toupperfunction.md",
+        "redirect_url": "/azure/data-explorer/kusto/query/toupper-function",
+        "redirect_document_id": true
+      },
+      {
+        "source_path": "data-explorer/kusto/query/translatefunction.md",
+        "redirect_url": "/azure/data-explorer/kusto/query/translate-function",
+        "redirect_document_id": true
+      },
+      {
+        "source_path": "data-explorer/kusto/query/treepathfunction.md",
+        "redirect_url": "/azure/data-explorer/kusto/query/treepath-function",
+        "redirect_document_id": true
+      },
+      {
+        "source_path": "data-explorer/kusto/query/trimendfunction.md",
+        "redirect_url": "/azure/data-explorer/kusto/query/trim-end-function",
+        "redirect_document_id": true
+      },
+      {
+        "source_path": "data-explorer/kusto/query/trimfunction.md",
+        "redirect_url": "/azure/data-explorer/kusto/query/trim-function",
+        "redirect_document_id": true
+      },
+      {
+        "source_path": "data-explorer/kusto/query/trimstartfunction.md",
+        "redirect_url": "/azure/data-explorer/kusto/query/trim-start-function",
         "redirect_document_id": true
       }
     ]

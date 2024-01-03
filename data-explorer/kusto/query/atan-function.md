@@ -7,7 +7,7 @@ ms.date: 11/03/2022
 ---
 # atan()
 
-Returns the angle whose tangent is the specified number. This is the inverse operation of [`tan()`](tanfunction.md).
+Returns the angle whose tangent is the specified number. This is the inverse operation of [`tan()`](tan-function.md).
 
 ## Syntax
 

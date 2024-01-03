@@ -27,7 +27,7 @@ Operator       |Description                         |Example
 `!in`          |Not equals to any of the elements   |[see here](in-operator.md)
 
 > [!NOTE]
-> To convert from one numerical type to another, use `to*()` functions. For example, see [`tolong()`](tolongfunction.md) and [`toint()`](tointfunction.md).
+> To convert from one numerical type to another, use `to*()` functions. For example, see [`tolong()`](tolong-function.md) and [`toint()`](toint-function.md).
 
 ## Type rules for arithmetic operations
 

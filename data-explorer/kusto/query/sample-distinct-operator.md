@@ -27,7 +27,7 @@ The operator tries to return an answer as quickly as possible rather than trying
 
 > [!TIP]
 >
-> * Use the [top-hitters](tophittersoperator.md) operator to get the top values.
+> * Use the [top-hitters](top-hitters-function.md) operator to get the top values.
 > * Refer to the [sample operator](sample-operator.md) to sample data rows.
 
 ## Examples  

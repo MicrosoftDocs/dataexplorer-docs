@@ -119,5 +119,5 @@ Replace elements that aren't strings aren't replaced and the original string is 
 
 * For a replacement of a single string, see [replace_string()](replace-string-function.md).
 * For a replacement based on regular expression, see [replace_regex()](replace-regex-function.md).
-* For replacing a set of characters, see [translate()](translatefunction.md).
+* For replacing a set of characters, see [translate()](translate-function.md).
 

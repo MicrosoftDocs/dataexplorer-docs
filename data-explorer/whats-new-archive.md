@@ -304,8 +304,8 @@ Welcome to what's new in Azure Data Explorer archive. This article is an archive
 | Article title | Description |
 |--|--|
 | [replace_string()](kusto/query/replace-string-function.md)| New article. Replaces all string matches with another string.
-| [take_any() (aggregation function)](kusto/query/take-any-aggfunction.md) | New article. Replaces any().
-| [take_anyif() (aggregation function)](kusto/query/take-anyif-aggfunction.md) | New article. Replaces anyif().
+| [take_any() (aggregation function)](kusto/query/take-any-aggregation-function.md) | New article. Replaces any().
+| [take_anyif() (aggregation function)](kusto/query/take-anyif-aggregation-function.md) | New article. Replaces anyif().
 | [replace_regex()](kusto/query/replace-regex-function.md) | Updated article. Replace() function changed to replace_regex().
 
 **Management**

@@ -113,7 +113,7 @@ For a summary of some filtering functions, see [where operator](./whereoperator.
 
 ## Performance tips
 
-* Use [tables](../management/tables.md) as opposed to [tabular expressions](./tabularexpressionstatements.md).
+* Use [tables](../management/tables.md) as opposed to [tabular expressions](./tabular-expression-statements.md).
 If tabular expression, the find operator falls back to a `union` query that can result in degraded performance.
 * If a column that appears in multiple tables and has multiple types, is part of the project clause, prefer adding a *ColumnType* to the project clause over modifying the table before passing it to `find`.
 * Add time-based filters to the predicate. Use a datetime column value or [ingestion_time()](./ingestion-time-function.md).

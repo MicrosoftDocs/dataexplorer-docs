@@ -11,7 +11,7 @@ References an [external table](schema-entities/external-tables.md) by name.
 
 > [!NOTE]
 >
-> The `external_table` function has similar restrictions as the [table](tablefunction.md) function.
+> The `external_table` function has similar restrictions as the [table](table-function.md) function.
 > Standard [query limits](../concepts/querylimits.md) apply to external table queries as well.
 
 ## Syntax

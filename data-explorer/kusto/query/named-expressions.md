@@ -82,7 +82,7 @@ range x from 1 to 100 step 1
 
 ### Scalar functions
 
-Non-deterministic scalar functions can be forced to calculate exactly once by using [toscalar()](toscalarfunction.md).
+Non-deterministic scalar functions can be forced to calculate exactly once by using [toscalar()](toscalar-function.md).
 
 For example, the following query uses the non-deterministic function, [rand()](rand-function.md):
 
@@ -105,4 +105,4 @@ print x, x, y, y
 
 * [Let statement](let-statement.md)
 * [as operator](as-operator.md)
-* [toscalar()](toscalarfunction.md)
+* [toscalar()](toscalar-function.md)

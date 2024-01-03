@@ -25,11 +25,11 @@ This article lists all available scalar functions grouped by type. For aggregati
 
 |Function Name     |Description                                          |
 |-------------------------|--------------------------------------------------------|
-|[tobool()](toboolfunction.md)|Convert inputs to boolean (signed 8-bit) representation.|
-|[todatetime()](todatetimefunction.md)|Converts input to datetime scalar.|
-|[todouble()](todoublefunction.md)|Converts the input to a value of type real.|
-|[tostring()](tostringfunction.md)|Converts input to a string representation.|
-|[totimespan()](totimespanfunction.md)|Converts input to timespan scalar.|
+|[tobool()](tobool-function.md)|Convert inputs to boolean (signed 8-bit) representation.|
+|[todatetime()](todatetime-function.md)|Converts input to datetime scalar.|
+|[todouble()](todouble-function.md)|Converts the input to a value of type real.|
+|[tostring()](tostring-function.md)|Converts input to a string representation.|
+|[totimespan()](totimespan-function.md)|Converts input to timespan scalar.|
 
 ## DateTime/timespan functions
 
@@ -60,12 +60,12 @@ This article lists all available scalar functions grouped by type. For aggregati
 |[startofmonth()](startofmonth-function.md)|Returns the start of the month containing the date, shifted by an offset, if provided.|
 |[startofweek()](startofweek-function.md)|Returns the start of the week containing the date, shifted by an offset, if provided.|
 |[startofyear()](startofyear-function.md)|Returns the start of the year containing the date, shifted by an offset, if provided.|
-|[todatetime()](todatetimefunction.md)|Converts input to datetime scalar.|
-|[totimespan()](totimespanfunction.md)|Converts input to timespan scalar.|
-|[unixtime_microseconds_todatetime()](unixtime-microseconds-todatetimefunction.md)|Converts unix-epoch microseconds to UTC datetime.|
-|[unixtime_milliseconds_todatetime()](unixtime-milliseconds-todatetimefunction.md)|Converts unix-epoch milliseconds to UTC datetime.|
-|[unixtime_nanoseconds_todatetime()](unixtime-nanoseconds-todatetimefunction.md)|Converts unix-epoch nanoseconds to UTC datetime.|
-|[unixtime_seconds_todatetime()](unixtime-seconds-todatetimefunction.md)|Converts unix-epoch seconds to UTC datetime.|
+|[todatetime()](todatetime-function.md)|Converts input to datetime scalar.|
+|[totimespan()](totimespan-function.md)|Converts input to timespan scalar.|
+|[unixtime_microseconds_todatetime()](unixtime-microseconds-todatetime-function.md)|Converts unix-epoch microseconds to UTC datetime.|
+|[unixtime_milliseconds_todatetime()](unixtime-milliseconds-todatetime-function.md)|Converts unix-epoch milliseconds to UTC datetime.|
+|[unixtime_nanoseconds_todatetime()](unixtime-nanoseconds-todatetime-function.md)|Converts unix-epoch nanoseconds to UTC datetime.|
+|[unixtime_seconds_todatetime()](unixtime-seconds-todatetime-function.md)|Converts unix-epoch seconds to UTC datetime.|
 |[weekofyear()](weekofyearfunction.md)|Returns an integer representing the week number.|
 
 ## Dynamic/array functions
@@ -101,7 +101,7 @@ This article lists all available scalar functions grouped by type. For aggregati
 |[set_has_element()](set-has-element-function.md)|Determines whether the specified array contains the specified element.|
 |[set_intersect()](set-intersect-function.md)|Returns an array of the set of all distinct values that are in all arrays.|
 |[set_union()](set-union-function.md)|Returns an array of the set of all distinct values that are in any of provided arrays.|
-|[treepath()](treepathfunction.md)|Enumerates all the path expressions that identify leaves in a dynamic object.|
+|[treepath()](treepath-function.md)|Enumerates all the path expressions that identify leaves in a dynamic object.|
 |[zip()](zipfunction.md)|The zip function accepts any number of dynamic arrays. Returns an array whose elements are each an array with the elements of the input arrays of the same index.|
 
 ## Window scalar functions
@@ -119,7 +119,7 @@ This article lists all available scalar functions grouped by type. For aggregati
 
 |Function Name            |Description                                             |
 |-------------------------|--------------------------------------------------------|
-|[toscalar()](toscalarfunction.md)|Returns a scalar constant value of the evaluated expression.|
+|[toscalar()](toscalar-function.md)|Returns a scalar constant value of the evaluated expression.|
 
 ## Mathematical functions
 
@@ -159,7 +159,7 @@ This article lists all available scalar functions grouped by type. For aggregati
 |[sign()](sign-function.md)|Sign of a numeric expression.|
 |[sin()](sin-function.md)|Returns the sine function.|
 |[sqrt()](sqrt-function.md)|Returns the square root function.|
-|[tan()](tanfunction.md)|Returns the tangent function.|
+|[tan()](tan-function.md)|Returns the tangent function.|
 |[welch_test()](welch-testfunction.md)|Computes the p-value of the [Welch-test function](https://en.wikipedia.org/wiki/Welch%27s_t-test).|
 
 ## Metadata functions
@@ -298,11 +298,11 @@ This article lists all available scalar functions grouped by type. For aggregati
 |[strlen()](strlen-function.md)|Returns the length, in characters, of the input string.|
 |[strrep()](strrep-function.md)|Repeats given string provided number of times (default - 1).|
 |[substring()](substring-function.md)|Extracts a substring from a source string starting from some index to the end of the string.|
-|[toupper()](toupperfunction.md)|Converts a string to upper case.|
-|[translate()](translatefunction.md)|Replaces a set of characters ('searchList') with another set of characters ('replacementList') in a given a string.|
-|[trim()](trimfunction.md)|Removes all leading and trailing matches of the specified regular expression.|
-|[trim_end()](trimendfunction.md)|Removes trailing match of the specified regular expression.|
-|[trim_start()](trimstartfunction.md)|Removes leading match of the specified regular expression.|
+|[toupper()](toupper-function.md)|Converts a string to upper case.|
+|[translate()](translate-function.md)|Replaces a set of characters ('searchList') with another set of characters ('replacementList') in a given a string.|
+|[trim()](trim-function.md)|Removes all leading and trailing matches of the specified regular expression.|
+|[trim_end()](trim-end-function.md)|Removes trailing match of the specified regular expression.|
+|[trim_start()](trim-start-function.md)|Removes leading match of the specified regular expression.|
 |[url_decode()](urldecodefunction.md)|The function converts encoded URL into a regular URL representation.|
 |[url_encode()](urlencodefunction.md)|The function converts characters of the input URL into a format that can be transmitted over the Internet.|
 

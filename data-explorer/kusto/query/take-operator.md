@@ -52,5 +52,5 @@ StormEvents | take 5
 ## Related content
 
 * [sort operator](sort-operator.md)
-* [top operator](topoperator.md)
-* [top-nested operator](topnestedoperator.md)
+* [top operator](top-operator.md)
+* [top-nested operator](top-nested-operator.md)

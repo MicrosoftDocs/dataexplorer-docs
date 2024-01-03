@@ -38,7 +38,7 @@ to allow queries to reference the time at which the query starts execution.
 ## Supported formats
 
 There are several formats for `datetime` that are supported as [datetime() literals](#datetime-literals)
-and the [todatetime()](../todatetimefunction.md) function.
+and the [todatetime()](../todatetime-function.md) function.
 
 > [!WARNING]
 > It is **strongly recommended** to use only the ISO 8601 formats.

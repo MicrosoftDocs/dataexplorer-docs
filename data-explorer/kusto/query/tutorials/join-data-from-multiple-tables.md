@@ -29,7 +29,7 @@ There are two tables in the [Samples database](https://dataexplorer.azure.com/cl
 
 ### Understand the data
 
-Use the [take](../takeoperator.md) operator to see what data each table contains.
+Use the [take](../take-operator.md) operator to see what data each table contains.
 
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAwsuyS/KdS1LzSspVuCqUShJzE5VMAUAP49+9hUAAAA=" target="_blank">Run the query</a>

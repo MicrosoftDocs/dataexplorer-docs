@@ -59,7 +59,7 @@ StormEvents
 
 ## See a sample of data
 
-To get a sense of the data, use the [take](../takeoperator.md) operator to view a sample of records. This operator returns a specified number of arbitrary rows from the table, which can be useful for previewing the general data structure and contents.
+To get a sense of the data, use the [take](../take-operator.md) operator to view a sample of records. This operator returns a specified number of arbitrary rows from the table, which can be useful for previewing the general data structure and contents.
 
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAwsuyS/KdS1LzSspVuCqUShJzE5VMAUAP49+9hUAAAA=" target="_blank">Run the query</a>
@@ -183,7 +183,7 @@ StormEvents
 
 ## Get the top *n* rows
 
-The [top](../topoperator.md) operator returns the first *n* rows sorted by the specified column.
+The [top](../top-operator.md) operator returns the first *n* rows sorted by the specified column.
 
 The following query returns the five Texas floods that caused the most damaged property.
 
@@ -208,7 +208,7 @@ StormEvents
 |2007-06-26T20:00:00Z|2007-06-26T23:00:00Z|TEXAS|Flood|750000|
 
 > [!NOTE]
-> The order of the operators is important. If you put `top` before `where` here, you'll get different results. This is because the data is transformed by each operator in order. To learn more, see [tabular expression statements](../tabularexpressionstatements.md).
+> The order of the operators is important. If you put `top` before `where` here, you'll get different results. This is because the data is transformed by each operator in order. To learn more, see [tabular expression statements](../tabular-expression-statements.md).
 
 ## Create calculated columns
 
