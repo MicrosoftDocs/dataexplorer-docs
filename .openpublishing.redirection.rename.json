@@ -1286,12 +1286,12 @@
         "redirect_document_id": true
       },
       {
-        "source_path": "data-explorer/kusto/query/series-equals-function.md",
+        "source_path": "data-explorer/kusto/query/series-equalsfunction.md",
         "redirect_url": "/azure/data-explorer/kusto/query/series-equals-function",
         "redirect_document_id": true
       },
       {
-        "source_path": "data-explorer/kusto/query/series-exp-function.md",
+        "source_path": "data-explorer/kusto/query/series-expfunction.md",
         "redirect_url": "/azure/data-explorer/kusto/query/series-exp-function",
         "redirect_document_id": true
       },
@@ -1326,7 +1326,7 @@
         "redirect_document_id": true
       },
       {
-        "source_path": "data-explorer/kusto/query/series-fit-2lines-function.md",
+        "source_path": "data-explorer/kusto/query/series-fit-2linesfunction.md",
         "redirect_url": "/azure/data-explorer/kusto/query/series-fit-2lines-function",
         "redirect_document_id": true
       },
@@ -1336,7 +1336,7 @@
         "redirect_document_id": true
       },
       {
-        "source_path": "data-explorer/kusto/query/series-fit-line-function.md",
+        "source_path": "data-explorer/kusto/query/series-fit-linefunction.md",
         "redirect_url": "/azure/data-explorer/kusto/query/series-fit-line-function",
         "redirect_document_id": true
       },
@@ -1346,7 +1346,7 @@
         "redirect_document_id": true
       },
       {
-        "source_path": "data-explorer/kusto/query/series-greater-function.md",
+        "source_path": "data-explorer/kusto/query/series-greaterfunction.md",
         "redirect_url": "/azure/data-explorer/kusto/query/series-greater-function",
         "redirect_document_id": true
       },
@@ -1406,12 +1406,12 @@
         "redirect_document_id": true
       },
       {
-        "source_path": "data-explorer/kusto/query/series-sign-function.md",
+        "source_path": "data-explorer/kusto/query/series-signfunction.md",
         "redirect_url": "/azure/data-explorer/kusto/query/series-sign-function",
         "redirect_document_id": true
       },
       {
-        "source_path": "data-explorer/kusto/query/series-sin-function.md",
+        "source_path": "data-explorer/kusto/query/series-sinfunction.md",
         "redirect_url": "/azure/data-explorer/kusto/query/series-sin-function",
         "redirect_document_id": true
       },
@@ -1431,7 +1431,7 @@
         "redirect_document_id": true
       },
       {
-        "source_path": "data-explorer/kusto/query/series-tan-function.md",
+        "source_path": "data-explorer/kusto/query/series-tanfunction.md",
         "redirect_url": "/azure/data-explorer/kusto/query/series-tan-function",
         "redirect_document_id": true
       },
@@ -1616,7 +1616,7 @@
         "redirect_document_id": true
       },
       {
-        "source_path": "data-explorer/kusto/query/take-operator.md",
+        "source_path": "data-explorer/kusto/query/takeoperator.md",
         "redirect_url": "/azure/data-explorer/kusto/query/take-operator",
         "redirect_document_id": true
       },
