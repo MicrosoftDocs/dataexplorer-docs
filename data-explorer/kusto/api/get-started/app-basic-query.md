@@ -561,7 +561,7 @@ KustoOperationResult response = kusto_client.execute(database, query, crp);
 
 ## Use query parameters to protect user input
 
-Query parameters are important for maintaining the security and protection of your data. It safeguards it from potential malicious actors that may attempt to gain unauthorized access to or corrupt your data. For more information about parameterized queries, see [Query parameters declaration statement](../../query/queryparametersstatement.md).
+Query parameters are important for maintaining the security and protection of your data. It safeguards it from potential malicious actors that may attempt to gain unauthorized access to or corrupt your data. For more information about parameterized queries, see [Query parameters declaration statement](../../query/query-parameters-statement.md).
 
 For example, you can modify the previous code to pass the *EventType* value and *DailyDamage* minimum value as parameters to the query. To use parameters:
 

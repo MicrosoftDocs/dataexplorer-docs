@@ -55,7 +55,7 @@ Following is a list of application query statements:
   built on top of Kusto and expose the query language to their users to inject themselves
   into the query name resolution process.
 
-* A [query parameters statement](./queryparametersstatement.md), which is used by applications
+* A [query parameters statement](./query-parameters-statement.md), which is used by applications
   that are built on top of Kusto to protect themselves against injection attacks (similar to
   how command parameters protect SQL against SQL injection attacks.)
 

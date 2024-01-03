@@ -117,7 +117,7 @@ items:
       - name: Pattern statement
         href: pattern-statement.md
       - name: Query parameters statement
-        href: queryparametersstatement.md
+        href: query-parameters-statement.md
       - name: Restrict statement
         href: restrictstatement.md
       - name: Set statement
