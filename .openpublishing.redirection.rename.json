@@ -181,7 +181,7 @@
         "redirect_document_id": true
       },
       {
-        "source_path": "data-explorer/kusto/query/asin-function.md",
+        "source_path": "data-explorer/kusto/query/asinfunction.md",
         "redirect_url": "/azure/data-explorer/kusto/query/asin-function",
         "redirect_document_id": true
       },
@@ -196,12 +196,12 @@
         "redirect_document_id": true
       },
       {
-        "source_path": "data-explorer/kusto/query/atan-function.md",
+        "source_path": "data-explorer/kusto/query/atanfunction.md",
         "redirect_url": "/azure/data-explorer/kusto/query/atan-function",
         "redirect_document_id": true
       },
       {
-        "source_path": "data-explorer/kusto/query/autocluster-plugin.md",
+        "source_path": "data-explorer/kusto/query/autoclusterplugin.md",
         "redirect_url": "/azure/data-explorer/kusto/query/autocluster-plugin",
         "redirect_document_id": true
       },
@@ -712,7 +712,7 @@
       },
       {
         "source_path": "data-explorer/kusto/query/ipv6-is-matchfunction.md",
-        "redirect_url": "/azure/data-explorer/kusto/query/ipv6-is-matchfunction",
+        "redirect_url": "/azure/data-explorer/kusto/query/ipv6-is-match-function",
         "redirect_document_id": true
       },
       {
@@ -946,7 +946,7 @@
         "redirect_document_id": true
       },
       {
-        "source_path": "data-explorer/kusto/query/parse-ipv6-function.md",
+        "source_path": "data-explorer/kusto/query/parse-ipv6function.md",
         "redirect_url": "/azure/data-explorer/kusto/query/parse-ipv6-function",
         "redirect_document_id": true
       },
@@ -1028,11 +1028,6 @@
       {
         "source_path": "data-explorer/kusto/query/percentiles-aggfunction.md",
         "redirect_url": "/azure/data-explorer/kusto/query/percentiles-aggregation-function",
-        "redirect_document_id": true
-      },
-      {
-        "source_path": "data-explorer/kusto/query/percentilesw-aggfunction.md",
-        "redirect_url": "/azure/data-explorer/kusto/query/percentilesw-aggregation-function",
         "redirect_document_id": true
       },
       {
@@ -1131,7 +1126,7 @@
         "redirect_document_id": true
       },
       {
-        "source_path": "data-explorer/kusto/query/rand-function.md",
+        "source_path": "data-explorer/kusto/query/randfunction.md",
         "redirect_url": "/azure/data-explorer/kusto/query/rand-function",
         "redirect_document_id": true
       },
@@ -1251,12 +1246,12 @@
         "redirect_document_id": true
       },
       {
-        "source_path": "data-explorer/kusto/query/series-asin-function.md",
+        "source_path": "data-explorer/kusto/query/series-asinfunction.md",
         "redirect_url": "/azure/data-explorer/kusto/query/series-asin-function",
         "redirect_document_id": true
       },
       {
-        "source_path": "data-explorer/kusto/query/series-atan-function.md",
+        "source_path": "data-explorer/kusto/query/series-atanfunction.md",
         "redirect_url": "/azure/data-explorer/kusto/query/series-atan-function",
         "redirect_document_id": true
       },
@@ -1658,11 +1653,6 @@
       {
         "source_path": "data-explorer/kusto/query/todoublefunction.md",
         "redirect_url": "/azure/data-explorer/kusto/query/todouble-function",
-        "redirect_document_id": true
-      },
-      {
-        "source_path": "data-explorer/kusto/query/toguidfunction.md",
-        "redirect_url": "/azure/data-explorer/kusto/query/toguid-function",
         "redirect_document_id": true
       },
       {
