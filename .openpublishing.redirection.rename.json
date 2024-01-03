@@ -507,22 +507,22 @@
       },
       {
         "source_path": "data-explorer/kusto/query/endofdayfunction.md",
-        "redirect_url": "/azure/data-explorer/kusto/query/end-of-day-function",
+        "redirect_url": "/azure/data-explorer/kusto/query/endofday-function",
         "redirect_document_id": true
       },
       {
         "source_path": "data-explorer/kusto/query/endofmonthfunction.md",
-        "redirect_url": "/azure/data-explorer/kusto/query/end-of-month-function",
+        "redirect_url": "/azure/data-explorer/kusto/query/endofmonth-function",
         "redirect_document_id": true
       },
       {
         "source_path": "data-explorer/kusto/query/endofweekfunction.md",
-        "redirect_url": "/azure/data-explorer/kusto/query/end-of-week-function",
+        "redirect_url": "/azure/data-explorer/kusto/query/endofweek-function",
         "redirect_document_id": true
       },
       {
         "source_path": "data-explorer/kusto/query/endofyearfunction.md",
-        "redirect_url": "/azure/data-explorer/kusto/query/end-of-year-function",
+        "redirect_url": "/azure/data-explorer/kusto/query/endofyear-function",
         "redirect_document_id": true
       },
       {
