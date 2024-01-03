@@ -51,7 +51,7 @@ Following is a list of application query statements:
 * An [alias statement](./alias-statement.md) defines an alias to another database
   (in the same cluster or on a remote cluster).
 
-* A [pattern statement](./patternstatement.md), which can be used by applications that are
+* A [pattern statement](./pattern-statement.md), which can be used by applications that are
   built on top of Kusto and expose the query language to their users to inject themselves
   into the query name resolution process.
 

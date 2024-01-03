@@ -11,7 +11,7 @@ Merges tdigest results across the group.
 
 [!INCLUDE [data-explorer-agg-function-summarize-note](../../includes/data-explorer-agg-function-summarize-note.md)]
 
-For more information about the underlying algorithm (T-Digest) and the estimated error, see [estimation error in percentiles](percentiles-aggfunction.md#estimation-error-in-percentiles).
+For more information about the underlying algorithm (T-Digest) and the estimated error, see [estimation error in percentiles](percentiles-aggregation-function.md#estimation-error-in-percentiles).
 
 > The `tdigest_merge()` and `merge_tdigest()` functions are equivalent
 
@@ -37,7 +37,7 @@ Returns the merged tdigest values of *expr* across the group.
 
 > [!NOTE]
 >
-> * Use the function [percentile_tdigest()](percentile-tdigestfunction.md) to calculate the percentiles from the `tdigest_merge` results.
+> * Use the function [percentile_tdigest()](percentile-tdigest-function.md) to calculate the percentiles from the `tdigest_merge` results.
 > * All tdigests that are included in the same group must be of the same type.
 
 ## Example

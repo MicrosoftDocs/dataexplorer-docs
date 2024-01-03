@@ -12,7 +12,7 @@ The accuracy depends on the density of population in the region of the percentil
 
 `percentiles()` works similarly to `percentile()`. However, `percentiles()` can calculate multiple percentile values at once, which is more efficient than calculating each percentile value separately.
 
-To calculate weighted percentiles, see [percentilesw()](percentilesw-aggfunction.md).
+To calculate weighted percentiles, see [percentilesw()](percentilesw-aggregation-function.md).
 
 [!INCLUDE [data-explorer-agg-function-summarize-note](../../includes/data-explorer-agg-function-summarize-note.md)]
 
@@ -121,7 +121,7 @@ Returns an estimate for *expr* of the specified percentiles in the group as a si
 
 #### Comma-separated percentiles
 
-Multiple percentiles can be obtained as an array in a single dynamic column, instead of in multiple columns as with [percentiles()](percentiles-aggfunction.md).
+Multiple percentiles can be obtained as an array in a single dynamic column, instead of in multiple columns as with [percentiles()](percentiles-aggregation-function.md).
 
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/SampleIoTData?query=H4sIAAAAAAAAAwspSswrTssvyk1NCU7NK84vKnZJLEnk5apRKC7NzU0syqxKVShILUpOzSvJzEktjk8sKkqs1AhLzClN1VEw1VEwAmJTAx0FcyBtaaqpo5BYlg6R1lRIqlSAmOmXmJsKANY0tLFpAAAA" target="_blank">Run the query</a>

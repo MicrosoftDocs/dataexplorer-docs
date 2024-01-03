@@ -33,7 +33,7 @@ The `materialize()` function is useful in the following scenarios:
 
 >[!TIP]
 > Another way to perform materialization of tabular expression is by using the `hint.materialized` flag
-> of the [as operator](as-operator.md) and [partition operator](partitionoperator.md). They all share a
+> of the [as operator](as-operator.md) and [partition operator](partition-operator.md). They all share a
 > single materialization cache.
 
 >[!TIP]

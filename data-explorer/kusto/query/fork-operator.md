@@ -36,7 +36,7 @@ Runs multiple consumer operators in parallel.
 * [`as`](as-operator.md)
 * [`count`](count-operator.md)
 * [`extend`](extend-operator.md)
-* [`parse`](parseoperator.md)
+* [`parse`](parse-operator.md)
 * [`where`](whereoperator.md)
 * [`take`](takeoperator.md)
 * [`project`](projectoperator.md)

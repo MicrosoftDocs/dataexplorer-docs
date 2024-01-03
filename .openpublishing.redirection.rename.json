@@ -914,6 +914,156 @@
         "source_path": "data-explorer/kusto/query/numoperators.md",
         "redirect_url": "/azure/data-explorer/kusto/query/numerical-operators",
         "redirect_document_id": true
+      },
+      {
+        "source_path": "data-explorer/kusto/query/packallfunction.md",
+        "redirect_url": "/azure/data-explorer/kusto/query/pack-all-function",
+        "redirect_document_id": true
+      },
+      {
+        "source_path": "data-explorer/kusto/query/packarrayfunction.md",
+        "redirect_url": "/azure/data-explorer/kusto/query/pack-array-function",
+        "redirect_document_id": true
+      },
+      {
+        "source_path": "data-explorer/kusto/query/packfunction.md",
+        "redirect_url": "/azure/data-explorer/kusto/query/pack-function",
+        "redirect_document_id": true
+      },
+      {
+        "source_path": "data-explorer/kusto/query/parse-command-line.md",
+        "redirect_url": "/azure/data-explorer/kusto/query/parse-command-line-function",
+        "redirect_document_id": true
+      },
+      {
+        "source_path": "data-explorer/kusto/query/parse-ipv4-maskfunction.md",
+        "redirect_url": "/azure/data-explorer/kusto/query/parse-ipv4-mask-function",
+        "redirect_document_id": true
+      },
+      {
+        "source_path": "data-explorer/kusto/query/parse-ipv4function.md",
+        "redirect_url": "/azure/data-explorer/kusto/query/parse-ipv4-function",
+        "redirect_document_id": true
+      },
+      {
+        "source_path": "data-explorer/kusto/query/parse-ipv6-function.md",
+        "redirect_url": "/azure/data-explorer/kusto/query/parse-ipv6-function",
+        "redirect_document_id": true
+      },
+      {
+        "source_path": "data-explorer/kusto/query/parse-ipv6-maskfunction.md",
+        "redirect_url": "/azure/data-explorer/kusto/query/parse-ipv6-mask-function",
+        "redirect_document_id": true
+      },
+      {
+        "source_path": "data-explorer/kusto/query/parse-useragentfunction.md",
+        "redirect_url": "/azure/data-explorer/kusto/query/parse-user-agent-function",
+        "redirect_document_id": true
+      },
+      {
+        "source_path": "data-explorer/kusto/query/parse-versionfunction.md",
+        "redirect_url": "/azure/data-explorer/kusto/query/parse-version-function",
+        "redirect_document_id": true
+      },
+      {
+        "source_path": "data-explorer/kusto/query/parse-xmlfunction.md",
+        "redirect_url": "/azure/data-explorer/kusto/query/parse-xml-function",
+        "redirect_document_id": true
+      },
+      {
+        "source_path": "data-explorer/kusto/query/parsecsvfunction.md",
+        "redirect_url": "/azure/data-explorer/kusto/query/parse-csv-function",
+        "redirect_document_id": true
+      },
+      {
+        "source_path": "data-explorer/kusto/query/parsejsonfunction.md",
+        "redirect_url": "/azure/data-explorer/kusto/query/parse-json-function",
+        "redirect_document_id": true
+      },
+      {
+        "source_path": "data-explorer/kusto/query/parseoperator.md",
+        "redirect_url": "/azure/data-explorer/kusto/query/parse-operator",
+        "redirect_document_id": true
+      },
+      {
+        "source_path": "data-explorer/kusto/query/parsepathfunction.md",
+        "redirect_url": "/azure/data-explorer/kusto/query/parse-path-function",
+        "redirect_document_id": true
+      },
+      {
+        "source_path": "data-explorer/kusto/query/parseurlfunction.md",
+        "redirect_url": "/azure/data-explorer/kusto/query/parse-url-function",
+        "redirect_document_id": true
+      },
+      {
+        "source_path": "data-explorer/kusto/query/parseurlqueryfunction.md",
+        "redirect_url": "/azure/data-explorer/kusto/query/parse-url-query-function",
+        "redirect_document_id": true
+      },
+      {
+        "source_path": "data-explorer/kusto/query/parsewhereoperator.md",
+        "redirect_url": "/azure/data-explorer/kusto/query/parse-where-operator",
+        "redirect_document_id": true
+      },
+      {
+        "source_path": "data-explorer/kusto/query/partitionoperator.md",
+        "redirect_url": "/azure/data-explorer/kusto/query/partition-operator",
+        "redirect_document_id": true
+      },
+      {
+        "source_path": "data-explorer/kusto/query/patternstatement.md",
+        "redirect_url": "/azure/data-explorer/kusto/query/pattern-statement",
+        "redirect_document_id": true
+      },
+      {
+        "source_path": "data-explorer/kusto/query/percentile-array-tdigestfunction.md",
+        "redirect_url": "/azure/data-explorer/kusto/query/percentile-array-tdigest-function",
+        "redirect_document_id": true
+      },
+      {
+        "source_path": "data-explorer/kusto/query/percentile-tdigestfunction.md",
+        "redirect_url": "/azure/data-explorer/kusto/query/percentile-tdigest-function",
+        "redirect_document_id": true
+      },
+      {
+        "source_path": "data-explorer/kusto/query/percentiles-aggfunction.md",
+        "redirect_url": "/azure/data-explorer/kusto/query/percentiles-aggregation-function",
+        "redirect_document_id": true
+      },
+      {
+        "source_path": "data-explorer/kusto/query/percentilesw-aggfunction.md",
+        "redirect_url": "/azure/data-explorer/kusto/query/percentilesw-aggregation-function",
+        "redirect_document_id": true
+      },
+      {
+        "source_path": "data-explorer/kusto/query/percentilesw-aggfunction.md",
+        "redirect_url": "/azure/data-explorer/kusto/query/percentilesw-aggregation-function",
+        "redirect_document_id": true
+      },
+      {
+        "source_path": "data-explorer/kusto/query/percentrank-tdigestfunction.md",
+        "redirect_url": "/azure/data-explorer/kusto/query/percentrank-tdigest-function",
+        "redirect_document_id": true
+      },
+      {
+        "source_path": "data-explorer/kusto/query/pifunction.md",
+        "redirect_url": "/azure/data-explorer/kusto/query/pi-function",
+        "redirect_document_id": true
+      },
+      {
+        "source_path": "data-explorer/kusto/query/pivotplugin.md",
+        "redirect_url": "/azure/data-explorer/kusto/query/pivot-plugin",
+        "redirect_document_id": true
+      },
+      {
+        "source_path": "data-explorer/kusto/query/powfunction.md",
+        "redirect_url": "/azure/data-explorer/kusto/query/pow-function",
+        "redirect_document_id": true
+      },
+      {
+        "source_path": "data-explorer/kusto/query/prevfunction.md",
+        "redirect_url": "/azure/data-explorer/kusto/query/prev-function",
+        "redirect_document_id": true
       }
     ]
 }

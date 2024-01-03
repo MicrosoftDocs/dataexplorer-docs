@@ -9,9 +9,9 @@ ms.date: 01/12/2023
 
 Evaluates a string expression, and parses its value into one or more calculated columns. The result is only the successfully parsed strings.
 
-`parse-where` parses the strings in the same way as [parse](parseoperator.md), and filters out strings that were not parsed successfully.
+`parse-where` parses the strings in the same way as [parse](parse-operator.md), and filters out strings that were not parsed successfully.
 
-See [parse operator](parseoperator.md), which produces nulls for unsuccessfully parsed strings.
+See [parse operator](parse-operator.md), which produces nulls for unsuccessfully parsed strings.
 
 ## Syntax
 

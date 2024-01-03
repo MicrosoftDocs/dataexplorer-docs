@@ -7,7 +7,7 @@ ms.date: 03/15/2023
 ---
 # parse operator
 
-Evaluates a string expression and parses its value into one or more calculated columns. The calculated columns will have nulls, for unsuccessfully parsed strings. If there's no need to use rows where parsing doesn't succeed, prefer using the [parse-where operator](parsewhereoperator.md).
+Evaluates a string expression and parses its value into one or more calculated columns. The calculated columns will have nulls, for unsuccessfully parsed strings. If there's no need to use rows where parsing doesn't succeed, prefer using the [parse-where operator](parse-where-operator.md).
 
 ## Syntax
 

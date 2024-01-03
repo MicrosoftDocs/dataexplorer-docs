@@ -50,11 +50,11 @@ An aggregation function performs a calculation on a set of values, and returns a
 | [hll_merge()](hll-merge-aggregation-function.md) | Returns a value for merged HLL results. |
 | [max()](max-aggregation-function.md), [maxif()](maxif-aggregation-function.md) | Returns the maximum value across the group without/with a predicate. |
 | [min()](min-aggregation-function.md), [minif()](minif-aggregation-function.md) | Returns the minimum value across the group without/with a predicate. |
-| [percentile()](percentiles-aggfunction.md) | Returns a percentile estimation of the group. |
-| [percentiles()](percentiles-aggfunction.md) | Returns percentile estimations of the group. |
-| [percentiles_array()](percentiles-aggfunction.md) | Returns the percentile approximates of the array. |
-| [percentilesw()](percentiles-aggfunction.md) | Returns the weighted percentile approximate of the group. |
-| [percentilesw_array()](percentiles-aggfunction.md) | Returns the weighted percentile approximate of the array. |
+| [percentile()](percentiles-aggregation-function.md) | Returns a percentile estimation of the group. |
+| [percentiles()](percentiles-aggregation-function.md) | Returns percentile estimations of the group. |
+| [percentiles_array()](percentiles-aggregation-function.md) | Returns the percentile approximates of the array. |
+| [percentilesw()](percentiles-aggregation-function.md) | Returns the weighted percentile approximate of the group. |
+| [percentilesw_array()](percentiles-aggregation-function.md) | Returns the weighted percentile approximate of the array. |
 | [stdev()](stdev-aggfunction.md), [stdevif()](stdevif-aggfunction.md) | Returns the standard deviation across the group for a population that is considered a sample without/with a predicate. |
 | [stdevp()](stdevp-aggfunction.md) | Returns the standard deviation across the group for a population that is considered representative. |
 | [sum()](sum-aggfunction.md), [sumif()](sumif-aggfunction.md) | Returns the sum of the elements within the group without/with a predicate. |

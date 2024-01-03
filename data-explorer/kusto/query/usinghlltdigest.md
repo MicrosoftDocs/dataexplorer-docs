@@ -137,7 +137,7 @@ PageViewsHllTDigest
 
 ## Example: Temporary table
 
-Kusto limits are reached with datasets that are too large, where you need to run periodic queries over the dataset, but run the regular queries to calculate [`percentile()`](percentiles-aggfunction.md) or [`dcount()`](dcount-aggfunction.md) over large datasets.
+Kusto limits are reached with datasets that are too large, where you need to run periodic queries over the dataset, but run the regular queries to calculate [`percentile()`](percentiles-aggregation-function.md) or [`dcount()`](dcount-aggfunction.md) over large datasets.
 
 ::: zone pivot="azuredataexplorer, fabric"
 
@@ -151,7 +151,7 @@ To solve this problem, newly added data may be added to a temp table as `hll` or
 
 ::: zone-end
 
-When you need to get the final results of these values, the queries may use `hll`/`tdigest` mergers: [`hll-merge()`](hll-merge-aggregation-function.md)/[`tdigest_merge()`](tdigest-merge-aggfunction.md). Then, after getting the merged values, [`percentile_tdigest()`](percentile-tdigestfunction.md) / [`dcount_hll()`](dcount-hllfunction.md) may be invoked on these merged values to get the final result of `dcount` or percentiles.
+When you need to get the final results of these values, the queries may use `hll`/`tdigest` mergers: [`hll-merge()`](hll-merge-aggregation-function.md)/[`tdigest_merge()`](tdigest-merge-aggfunction.md). Then, after getting the merged values, [`percentile_tdigest()`](percentile-tdigest-function.md) / [`dcount_hll()`](dcount-hllfunction.md) may be invoked on these merged values to get the final result of `dcount` or percentiles.
 
 Assuming there's a table, PageViews, into which data is ingested daily, every day on which you want to calculate the distinct count of pages viewed per minute later than date = datetime(2016-05-01 18:00:00.0000000).
 

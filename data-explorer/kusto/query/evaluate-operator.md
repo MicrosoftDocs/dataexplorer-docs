@@ -15,7 +15,7 @@ The `evaluate` operator is a tabular operator that allows you to invoke query la
 >
 > * Syntactically, `evaluate` behaves similarly to the [invoke operator](./invoke-operator.md), which invokes tabular functions.
 > * Plugins provided through the evaluate operator aren't bound by the regular rules of query execution or argument evaluation.
-> * Specific plugins may have specific restrictions. For example, plugins whose output schema depends on the data. For example, [bag_unpack plugin](./bag-unpackplugin.md) and [pivot plugin](./pivotplugin.md) can't be used when performing cross-cluster queries.
+> * Specific plugins may have specific restrictions. For example, plugins whose output schema depends on the data. For example, [bag_unpack plugin](./bag-unpackplugin.md) and [pivot plugin](./pivot-plugin.md) can't be used when performing cross-cluster queries.
 
 ## Syntax
 
@@ -58,7 +58,7 @@ The following plugins are supported:
 * [ipv4-lookup plugin](ipv4-lookup-plugin.md)
 * [mysql-request-plugin](mysql-request-plugin.md)
 * [narrow plugin](narrow-plugin.md)
-* [pivot plugin](pivotplugin.md)
+* [pivot plugin](pivot-plugin.md)
 * [preview plugin](previewplugin.md)
 * [R plugin](rplugin.md)
 * [rolling-percentile plugin](rolling-percentile-plugin.md)

@@ -50,4 +50,4 @@ range x from 1 to 3 step 1
 
 ## Related content
 
-* [pack_array()](packarrayfunction.md)
+* [pack_array()](pack-array-function.md)

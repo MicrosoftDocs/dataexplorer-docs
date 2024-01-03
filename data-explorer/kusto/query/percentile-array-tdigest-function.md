@@ -33,7 +33,7 @@ The percentile/percentiles value of each value in *tdigest*.
 >[!TIP]
 >
 >* The function must receive at least one percent (and maybe more, see the syntax above: *percentile1* [`,` *percentile2*] ...[`,` *percentileN*]) and the result will be
-a dynamic array that includes the results. (such like [`percentiles()`](percentiles-aggfunction.md))
+a dynamic array that includes the results. (such like [`percentiles()`](percentiles-aggregation-function.md))
 >* If only one percent was provided, and the type was provided also, then the result will be a column of the same type provided with the results of that percent. In this case, all `tdigest` functions must be of that type.
 >* If *tdigest* includes `tdigest` functions of different types, don't provide the type. The result will be of type dynamic. See below examples.
 

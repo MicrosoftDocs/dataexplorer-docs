@@ -34,7 +34,7 @@ Many tabular operators serialize output whenever the input is already serialized
 
 * [extend operator](./extend-operator.md)
 * [mv-expand operator](./mvexpandoperator.md)
-* [parse operator](./parseoperator.md)
+* [parse operator](./parse-operator.md)
 * [project operator](./projectoperator.md)
 * [project-away operator](./projectawayoperator.md)
 * [project-rename operator](./projectrenameoperator.md)

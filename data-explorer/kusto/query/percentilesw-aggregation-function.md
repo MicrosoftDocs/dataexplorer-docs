@@ -7,11 +7,11 @@ ms.date: 03/15/2023
 ---
 # percentilew(), percentilesw() (aggregation function)
 
-The `percentilew()` function calculates a weighted estimate for the specified [nearest-rank percentile](percentiles-aggfunction.md#nearest-rank-percentile) of the population defined by *expr*. `percentilesw()` works similarly to `percentilew()`. However, `percentilesw()` can calculate multiple weighted percentile values at once, which is more efficient than calculating each weighted percentile value separately.
+The `percentilew()` function calculates a weighted estimate for the specified [nearest-rank percentile](percentiles-aggregation-function.md#nearest-rank-percentile) of the population defined by *expr*. `percentilesw()` works similarly to `percentilew()`. However, `percentilesw()` can calculate multiple weighted percentile values at once, which is more efficient than calculating each weighted percentile value separately.
 
 Weighted percentiles calculate percentiles in a dataset by giving each value in the input dataset a weight. In this method, each value is considered to be repeated a number of times equal to its weight, which is then used to calculate the percentile. By giving more importance to certain values, weighted percentiles provide a way to calculate percentiles in a "weighted" manner.
 
-To calculate unweighted percentiles, see [percentiles()](percentiles-aggfunction.md).
+To calculate unweighted percentiles, see [percentiles()](percentiles-aggregation-function.md).
 
 [!INCLUDE [data-explorer-agg-function-summarize-note](../../includes/data-explorer-agg-function-summarize-note.md)]
 

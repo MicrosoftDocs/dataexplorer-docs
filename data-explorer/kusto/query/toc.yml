@@ -115,7 +115,7 @@ items:
       - name: Let statement
         href: let-statement.md
       - name: Pattern statement
-        href: patternstatement.md
+        href: pattern-statement.md
       - name: Query parameters statement
         href: queryparametersstatement.md
       - name: Restrict statement
@@ -216,15 +216,15 @@ items:
         href: projectreorderoperator.md
         displayName: project reorder project_reorder
       - name: parse operator
-        href: parseoperator.md
+        href: parse-operator.md
       - name: parse-where operator
-        href: parsewhereoperator.md
+        href: parse-where-operator.md
         displayName: parse where parse_where
       - name: parse-kv operator
         href: parse-kv-operator.md
         displayName: parse kv parse_kv
       - name: partition operator
-        href: partitionoperator.md
+        href: partition-operator.md
       - name: print operator
         href: printoperator.md
       - name: range operator
@@ -933,62 +933,62 @@ items:
         href: now-function.md
       - name: pack_all()
         displayName: pack all
-        href: packallfunction.md
+        href: pack-all-function.md
       - name: pack_array()
         displayName: pack array
-        href: packarrayfunction.md
+        href: pack-array-function.md
       - name: parse_command_line()
         displayName: parse command line
-        href: parse-command-line.md
+        href: parse-command-line-function.md
       - name: parse_csv()
         displayName: parse csv
-        href: parsecsvfunction.md
+        href: parse-csv-function.md
       - name: parse_ipv4()
         displayName: parse ipv4
-        href: parse-ipv4function.md
+        href: parse-ipv4-function.md
       - name: parse_ipv4_mask()
         displayName: parse ipv4 mask
-        href: parse-ipv4-maskfunction.md
+        href: parse-ipv4-mask-function.md
       - name: parse_ipv6()
         displayName: parse ipv6
-        href: parse-ipv6function.md
+        href: parse-ipv6-function.md
       - name: parse_ipv6_mask()
         displayName: parse ipv6 mask
-        href: parse-ipv6-maskfunction.md
+        href: parse-ipv6-mask-function.md
       - name: parse_json()
         displayName: parse json toobject(), parsejson(), todynamic()
-        href: parsejsonfunction.md
+        href: parse-json-function.md
       - name: parse_path()
         displayName: parse path
-        href: parsepathfunction.md
+        href: parse-path-function.md
       - name: parse_url()
         displayName: parse url parseurl()
-        href: parseurlfunction.md
+        href: parse-url-function.md
       - name: parse_urlquery()
         displayName: parse url query parseurlquery()
-        href: parseurlqueryfunction.md
+        href: parse-url-query-function.md
       - name: parse_user_agent()
         displayName: parse user agent
-        href: parse-useragentfunction.md
+        href: parse-user-agent-function.md
       - name: parse_version()
         displayName: parse version
-        href: parse-versionfunction.md
+        href: parse-version-function.md
       - name: parse_xml()
         displayName: parse xml
-        href: parse-xmlfunction.md
+        href: parse-xml-function.md
       - name: percentile_tdigest()
         displayName: percentile tdigest()
-        href: percentile-tdigestfunction.md
+        href: percentile-tdigest-function.md
       - name: percentile_array_tdigest()
         displayName: percentile array tdigest()
-        href: percentile-array-tdigestfunction.md
+        href: percentile-array-tdigest-function.md
       - name: percentrank_tdigest()
         displayName: percentrank tdigest()
-        href: percentrank-tdigestfunction.md
+        href: percentrank-tdigest-function.md
       - name: pi()
-        href: pifunction.md
+        href: pi-function.md
       - name: pow()
-        href: powfunction.md
+        href: pow-function.md
       - name: punycode_from_string()
         displayName: punycode from string
         href: punycode-from-string.md
@@ -1244,10 +1244,10 @@ items:
         href: minif-aggregation-function.md
       - name: percentile(), percentiles()
         displayName: percentiles_array()
-        href: percentiles-aggfunction.md
+        href: percentiles-aggregation-function.md
       - name: percentilew(), percentilesw()
         displayName: percentilesw_array(), weighted percentiles
-        href: percentilesw-aggfunction.md
+        href: percentilesw-aggregation-function.md
       - name: stdev()
         href: stdev-aggfunction.md
       - name: stdevif()
@@ -1517,7 +1517,7 @@ items:
         href: series-periods-validatefunction.md
       - name: series_pow()
         displayName: element-wise, elementwise
-        href: series-powfunction.md
+        href: series-pow-function.md
       - name: series_seasonal()
         displayName: periods
         href: series-seasonalfunction.md
@@ -1563,7 +1563,7 @@ items:
           - name: narrow plugin
             href: narrow-plugin.md
           - name: pivot plugin
-            href: pivotplugin.md
+            href: pivot-plugin.md
       - name: Language plugins
         items:
           - name: Python plugin
@@ -1635,7 +1635,7 @@ items:
       - name: next()
         href: next-function.md
       - name: prev()
-        href: prevfunction.md
+        href: prev-function.md
       - name: row_cumsum()
         href: rowcumsumfunction.md
       - name: row_number()

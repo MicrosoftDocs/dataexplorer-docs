@@ -94,8 +94,8 @@ This article lists all available scalar functions grouped by type. For aggregati
 |[bag_remove_keys()](bag-remove-keys-function.md)|Removes keys and associated values from a dynamic property-bag.|
 |[bag_set_key()](bag-set-key-function.md)|Sets a given key to a given value in a dynamic property-bag.|
 |[jaccard_index()](jaccard-index-function.md)|Computes the [Jaccard index](https://en.wikipedia.org/wiki/Jaccard_index) of two sets.|
-|[pack_all()](packallfunction.md)|Creates a dynamic object (property bag) from all the columns of the tabular expression.|
-|[pack_array()](packarrayfunction.md)|Packs all input values into a dynamic array.|
+|[pack_all()](pack-all-function.md)|Creates a dynamic object (property bag) from all the columns of the tabular expression.|
+|[pack_array()](pack-array-function.md)|Packs all input values into a dynamic array.|
 |[repeat()](repeatfunction.md)|Generates a dynamic array holding a series of equal values.|
 |[set_difference()](setdifferencefunction.md)|Returns an array of the set of all distinct values that are in the first array but aren't in other arrays.|
 |[set_has_element()](sethaselementfunction.md)|Determines whether the specified array contains the specified element.|
@@ -109,7 +109,7 @@ This article lists all available scalar functions grouped by type. For aggregati
 |Function Name     |Description                                          |
 |-------------------------|--------------------------------------------------------|
 |[next()](next-function.md)|For the serialized row set, returns a value of a specified column from the later row according to the offset.|
-|[prev()](prevfunction.md)|For the serialized row set, returns a value of a specified column from the earlier row according to the offset.|
+|[prev()](prev-function.md)|For the serialized row set, returns a value of a specified column from the earlier row according to the offset.|
 |[row_cumsum()](rowcumsumfunction.md)|Calculates the cumulative sum of a column.|
 |[row_number()](rownumberfunction.md)|Returns a row's number in the serialized row set - consecutive numbers starting from a given index or from 1 by default.|
 |[row_rank_dense()](rowrankdensefunction.md)|Returns a row's dense rank in the serialized row set.|
@@ -150,8 +150,8 @@ This article lists all available scalar functions grouped by type. For aggregati
 |[log2()](log2-function.md)|Returns the base-2 logarithm function.|
 |[loggamma()](loggamma-function.md)|Computes log of absolute value of the gamma function.|
 |[not()](not-function.md)|Reverses the value of its bool argument.|
-|[pi()](pifunction.md)|Returns the constant value of Pi (π).|
-|[pow()](powfunction.md)|Returns a result of raising to power.|
+|[pi()](pi-function.md)|Returns the constant value of Pi (π).|
+|[pow()](pow-function.md)|Returns a result of raising to power.|
 |[radians()](radiansfunction.md)|Converts angle value in degrees into value in radians, using formula radians = (PI / 180) * angle-in-degrees.|
 |[rand()](randfunction.md)|Returns a random number.|
 |[range()](rangefunction.md)|Generates a dynamic array holding a series of equally spaced values.|
@@ -218,7 +218,7 @@ This article lists all available scalar functions grouped by type. For aggregati
 |[series_log()](series-log-function.md)|Calculates the element-wise natural logarithm function (base-e) of the numeric series input.|
 |[series_multiply()](series-multiplyfunction.md)|Calculates the element-wise multiplication of two numeric series inputs.|
 |[series_not_equals()](series-not-equalsfunction.md)|Calculates the element-wise not equals (`!=`) logic operation of two numeric series inputs.|
-|[series_pow()](series-powfunction.md)|Calculates the element-wise power of two numeric series inputs.|
+|[series_pow()](series-pow-function.md)|Calculates the element-wise power of two numeric series inputs.|
 |[series_sign()](series-signfunction.md)|Calculates the element-wise sign of the numeric series input.|
 |[series_sin()](series-sinfunction.md)|Calculates the element-wise sine function of the numeric series input.|
 |[series_subtract()](series-subtractfunction.md)|Calculates the element-wise subtraction of two numeric series inputs.|
@@ -275,16 +275,16 @@ This article lists all available scalar functions grouped by type. For aggregati
 |[isnotempty()](isnotempty-function.md)|Returns true if the argument isn't an empty string or a null.|
 |[isnotnull()](isnotnull-function.md)|Returns true if the argument is not null.|
 |[isnull()](isnull-function.md)|Evaluates its sole argument and returns a bool value indicating if the argument evaluates to a null value.|
-|[parse_command_line()](parse-command-line.md)|Parses a Unicode command line string and returns an array of the command line arguments.|
-|[parse_csv()](parsecsvfunction.md)|Splits a given string representing comma-separated values and returns a string array with these values.|
-|[parse_ipv4()](parse-ipv4function.md)|Converts input to long (signed 64-bit) number representation.|
-|[parse_ipv4_mask()](parse-ipv4-maskfunction.md)|Converts input string and IP-prefix mask to long (signed 64-bit) number representation.|
-|[parse_ipv6()](parse-ipv6function.md)|Converts IPv6 or IPv4 string to a canonical IPv6 string representation.|
-|[parse_ipv6_mask()](parse-ipv6-maskfunction.md)|Converts IPv6 or IPv4 string and netmask to a canonical IPv6 string representation.|
-|[parse_json()](parsejsonfunction.md)|Interprets a string as a JSON value and returns the value as dynamic.|
-|[parse_url()](parseurlfunction.md)|Parses an absolute URL string and returns a dynamic object contains all parts of the URL.|
-|[parse_urlquery()](parseurlqueryfunction.md)|Parses a url query string and returns a dynamic object contains the Query parameters.|
-|[parse_version()](parse-versionfunction.md)|Converts input string representation of version to a comparable decimal number.|
+|[parse_command_line()](parse-command-line-function.md)|Parses a Unicode command line string and returns an array of the command line arguments.|
+|[parse_csv()](parse-csv-function.md)|Splits a given string representing comma-separated values and returns a string array with these values.|
+|[parse_ipv4()](parse-ipv4-function.md)|Converts input to long (signed 64-bit) number representation.|
+|[parse_ipv4_mask()](parse-ipv4-mask-function.md)|Converts input string and IP-prefix mask to long (signed 64-bit) number representation.|
+|[parse_ipv6()](parse-ipv6-function.md)|Converts IPv6 or IPv4 string to a canonical IPv6 string representation.|
+|[parse_ipv6_mask()](parse-ipv6-mask-function.md)|Converts IPv6 or IPv4 string and netmask to a canonical IPv6 string representation.|
+|[parse_json()](parse-json-function.md)|Interprets a string as a JSON value and returns the value as dynamic.|
+|[parse_url()](parse-url-function.md)|Parses an absolute URL string and returns a dynamic object contains all parts of the URL.|
+|[parse_urlquery()](parse-url-query-function.md)|Parses a url query string and returns a dynamic object contains the Query parameters.|
+|[parse_version()](parse-version-function.md)|Converts input string representation of version to a comparable decimal number.|
 |[replace_regex()](replace-regex-function.md)|Replace all regex matches with another string.|
 |[replace_string()](replace-string-function.md)|Replace all single string matches with a specified string.|
 |[replace_strings()](replace-strings-function.md)|Replace all multiple strings matches with specified strings.|
@@ -316,13 +316,13 @@ This article lists all available scalar functions grouped by type. For aggregati
 |[ipv4_is_match()](ipv4-is-match-function.md)|Matches two IPv4 strings.|
 |[ipv4_is_private()](ipv4-is-private-function.md)|Checks if IPv4 string address belongs to a set of private network IPs.|
 |[ipv4_netmask_suffix](ipv4-netmask-suffix-function.md)|Returns the value of the IPv4 netmask suffix from IPv4 string address.|
-|[parse_ipv4()](parse-ipv4function.md)|Converts input string to long (signed 64-bit) number representation.|
-|[parse_ipv4_mask()](parse-ipv4-maskfunction.md)|Converts input string and IP-prefix mask to long (signed 64-bit) number representation.|
+|[parse_ipv4()](parse-ipv4-function.md)|Converts input string to long (signed 64-bit) number representation.|
+|[parse_ipv4_mask()](parse-ipv4-mask-function.md)|Converts input string and IP-prefix mask to long (signed 64-bit) number representation.|
 |[ipv4_range_to_cidr_list()](ipv4-range-to-cidr-list-function.md)|Converts IPv4 address range to a list of CIDR ranges.|
 |[ipv6_compare()](ipv6-compare-function.md)|Compares two IPv4 or IPv6 strings.|
 |[ipv6_is_match()](ipv6-is-match-function.md)|Matches two IPv4 or IPv6 strings.|
-|[parse_ipv6()](parse-ipv6function.md)|Converts IPv6 or IPv4 string to a canonical IPv6 string representation.|
-|[parse_ipv6_mask()](parse-ipv6-maskfunction.md)|Converts IPv6 or IPv4 string and netmask to a canonical IPv6 string representation.|
+|[parse_ipv6()](parse-ipv6-function.md)|Converts IPv6 or IPv4 string to a canonical IPv6 string representation.|
+|[parse_ipv6_mask()](parse-ipv6-mask-function.md)|Converts IPv6 or IPv4 string and netmask to a canonical IPv6 string representation.|
 |[format_ipv4()](format-ipv4-function.md)|Parses input with a netmask and returns string representing IPv4 address.|
 |[format_ipv4_mask()](format-ipv4-mask-function.md)|Parses input with a netmask and returns string representing IPv4 address as CIDR notation.|
 |[ipv6_is_in_range()](ipv6-is-in-range-function.md)|Checks if an IPv6 string address is in IPv6-prefix notation range.|
@@ -350,9 +350,9 @@ This article lists all available scalar functions grouped by type. For aggregati
 |-------------------------|--------------------------------------------------------|
 |[dcount_hll()](dcount-hll-function.md)|Calculates the dcount from hll results (which was generated by hll or hll-merge).|
 |[hll_merge()](hll-merge-function.md)|Merges hll results (scalar version of the aggregate version hll-merge()).|
-|[percentile_tdigest()](percentile-tdigestfunction.md)|Calculates the percentile result from tdigest results (which was generated by tdigest or merge_tdigest).|
-|[percentile_array_tdigest()](percentile-array-tdigestfunction.md)|Calculates the percentile array result from tdigest results (which was generated by tdigest or merge_tdigest).|
-|[percentrank_tdigest()](percentrank-tdigestfunction.md)|Calculates the percentage ranking of a value in a dataset.|
+|[percentile_tdigest()](percentile-tdigest-function.md)|Calculates the percentile result from tdigest results (which was generated by tdigest or merge_tdigest).|
+|[percentile_array_tdigest()](percentile-array-tdigest-function.md)|Calculates the percentile array result from tdigest results (which was generated by tdigest or merge_tdigest).|
+|[percentrank_tdigest()](percentrank-tdigest-function.md)|Calculates the percentage ranking of a value in a dataset.|
 |[rank_tdigest()](rank-tdigest.md)|Calculates relative rank of a value in a set.|
 |[merge_tdigest()](merge-tdigest-function.md)|Merge tdigest results (scalar version of the aggregate version tdigest-merge()).|
 

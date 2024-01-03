@@ -97,7 +97,7 @@ Welcome to what's new in Azure Data Explorer. This article details new and signi
 | Article title | Description |
 |--|--|
 | [Entity names](kusto/query/schema-entities/entity-names.md)| Updated article. Refreshed identifier naming rules and references in queries.|
-| [partition operator](kusto/query/partitionoperator.md)| Updated article. Refreshed content and added parameters.|
+| [partition operator](kusto/query/partition-operator.md)| Updated article. Refreshed content and added parameters.|
 | [scan operator](kusto/query/scan-operator.md)| Updated article. Added scan logic walkthrough.|
 | [top-nested operator](kusto/query/topnestedoperator.md)| Updated article. Refreshed content.|
 

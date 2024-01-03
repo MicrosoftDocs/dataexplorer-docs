@@ -7,11 +7,11 @@ ms.date: 02/20/2023
 ---
 # tdigest() (aggregation function)
 
-Calculates the intermediate results of [`percentiles()`](percentiles-aggfunction.md) across the group.
+Calculates the intermediate results of [`percentiles()`](percentiles-aggregation-function.md) across the group.
 
 [!INCLUDE [data-explorer-agg-function-summarize-note](../../includes/data-explorer-agg-function-summarize-note.md)]
 
-For more information, see the [underlying algorithm (T-Digest) and the estimated error](percentiles-aggfunction.md#estimation-error-in-percentiles).
+For more information, see the [underlying algorithm (T-Digest) and the estimated error](percentiles-aggregation-function.md#estimation-error-in-percentiles).
 
 > [!IMPORTANT]
 >The results of tdigest() and tdigest_merge() can be stored and later retrieved. For example, you may want to create daily percentiles summary, which can then be used to calculate weekly percentiles.
@@ -37,7 +37,7 @@ The Intermediate results of weighted percentiles of `*expr*` across the group.
 > [!TIP]
 >
 >- Use the aggregation function [tdigest_merge()](tdigest-merge-aggfunction.md) to merge the output of `tdigest` again across another group.
->- Use the function [percentile_tdigest()](percentile-tdigestfunction.md) to calculate the percentile/percentilew of the `tdigest` results.
+>- Use the function [percentile_tdigest()](percentile-tdigest-function.md) to calculate the percentile/percentilew of the `tdigest` results.
 
 ## Examples
 

@@ -265,7 +265,7 @@ Welcome to what's new in Azure Data Explorer archive. This article is an archive
 
 | Article title | Description |
 |--|--|
-| [series_pow()](kusto/query/series-powfunction.md)| New article. Calculates the element-wise power of two numeric series inputs.
+| [series_pow()](kusto/query/series-pow-function.md)| New article. Calculates the element-wise power of two numeric series inputs.
 | [Aggregation function types at a glance](kusto/query/aggregation-functions.md) | New article. Lists aggregation functions, which perform a calculation on a set of values and return a single value.
 | [Scalar function types at a glance](kusto/query/scalarfunctions.md) | Updated article. Updated aggregation function and added series_pow.
 | [materialized_view() function](kusto/query/materialized-view-function.md) | Updated article. Updated aggregation function.

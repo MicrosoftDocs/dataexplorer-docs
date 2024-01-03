@@ -160,7 +160,7 @@ In default database.
 cluster("OtherCluster").database("OtherDb").SomeTable("MyTable")
 ```
 
-The following query calls remote function `GetDataPivot` that has a variable schema output based on the data ([pivot() plugin](pivotplugin.md) has dynamic output).
+The following query calls remote function `GetDataPivot` that has a variable schema output based on the data ([pivot() plugin](pivot-plugin.md) has dynamic output).
 This call violates rule #3, so it's not valid.
 
 Tabular function in `OtherDb`.

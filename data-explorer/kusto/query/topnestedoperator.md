@@ -42,8 +42,8 @@ The following aggregation functions are supported:
 * [min()](min-aggregation-function.md)
 * [dcount()](dcountif-aggregation-function.md)
 * [avg()](avg-aggfunction.md)
-* [percentile()](percentiles-aggfunction.md)
-* [percentilew()](percentilesw-aggfunction.md)
+* [percentile()](percentiles-aggregation-function.md)
+* [percentilew()](percentilesw-aggregation-function.md)
 
 > [!NOTE]
 > Any algebraic combination of the aggregations is also supported.
@@ -274,4 +274,4 @@ datatable(id: string, timestamp: datetime, otherInformation: string) // Create a
 
 ## Related content
 
-* [partition operator](partitionoperator.md)
+* [partition operator](partition-operator.md)

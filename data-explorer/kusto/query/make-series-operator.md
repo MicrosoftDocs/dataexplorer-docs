@@ -89,7 +89,7 @@ Finally the rows from the intermediate result arranged into groups having the sa
 |[maxif()](maxif-aggregation-function.md)|Returns the maximum value with the predicate of the group|
 |[min()](min-aggregation-function.md)|Returns the minimum value across the group|
 |[minif()](minif-aggregation-function.md)|Returns the minimum value with the predicate of the group|
-|[percentile()](percentiles-aggfunction.md)|Returns the percentile value across the group|
+|[percentile()](percentiles-aggregation-function.md)|Returns the percentile value across the group|
 |[take_any()](take-any-aggfunction.md)|Returns a random non-empty value for the group|
 |[stdev()](stdev-aggfunction.md)|Returns the standard deviation across the group|
 |[sum()](sum-aggfunction.md)|Returns the sum of the elements within the group|
