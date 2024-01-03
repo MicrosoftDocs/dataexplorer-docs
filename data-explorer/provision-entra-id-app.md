@@ -107,15 +107,15 @@ If you only need access to an authorized Azure Data Explorer resource, you can s
 1. Select **Add a permission**.
 1. Select **APIs my organization uses**. Search for and select **Azure Data Explorer**.
 
-    :::image type="content" source="media/provision-azure-ad-app/configure-delegated-add-api-permission.png" alt-text="Screenshot showing how to add Azure Data Explorer API permission.":::
+    :::image type="content" source="media/provision-azure-ad-app/configure-delegated-add-api-permission.png" alt-text="Screenshot showing how to add Azure Data Explorer API permission." lightbox="media/provision-azure-ad-app/configure-delegated-add-api-permission.png":::
 
 3. In **Delegated permissions**, select the **user_impersonation** box and **Add permissions**.
 
-    :::image type="content" source="media/provision-azure-ad-app/configure-delegated-click-add-permissions.png" alt-text="Screenshot showing how to select delegated permissions with user impersonation.":::
+    :::image type="content" source="media/provision-azure-ad-app/configure-delegated-click-add-permissions.png" alt-text="Screenshot showing how to select delegated permissions with user impersonation." lightbox="media/provision-azure-ad-app/configure-delegated-click-add-permissions.png":::
 
 ## Grant a service principal access to the database
 
-Now that your application registration is created, you need to grant the corresponding service principal access to your Azure Data Explorer database. The following example gives viewer access. For other roles, see [Manage Azure Data Explorer database permissions](manage-database-permissions.md).
+Now that your application registration is created, you need to grant the corresponding service principal access to your database. The following example gives viewer access. For other roles, see [Manage database permissions](manage-database-permissions.md).
 
 1. In the [Azure Data Explorer web UI](https://dataexplorer.azure.com/), connect to your database and open a query tab.
 
@@ -134,7 +134,7 @@ Now that your application registration is created, you need to grant the corresp
     The last parameter is a string that shows up as notes when you query the roles associated with a database.
 
     > [!NOTE]
-    > After creating the application registration, there might be a several minute delay until Azure Data Explorer can reference it. If, when executing the command, you receive an error that the application is not found, wait and try again.
+    > After creating the application registration, there might be a several minute delay until it can be referenced. If you receive an error that the application is not found, wait and try again.
 
 For more information, see [Role-based access control](kusto/access-control/role-based-access-control.md).
 
