@@ -26,7 +26,7 @@ This method provides a more precise estimation by considering the byte sizes of 
 
 ## Combined size of multiple tables
 
-You can use the [union](../query/unionoperator.md) operator along with the [estimate_data_size()](../query/estimate-data-size-function.md) and [sum()](../query/sum-aggregation-function.md) functions to estimate the combined size of multiple tables in terms of access bytes. For an example, see [Use union with estimate_data_size()](#use-union-with-estimate_data_size).
+You can use the [union](../query/union-operator.md) operator along with the [estimate_data_size()](../query/estimate-data-size-function.md) and [sum()](../query/sum-aggregation-function.md) functions to estimate the combined size of multiple tables in terms of access bytes. For an example, see [Use union with estimate_data_size()](#use-union-with-estimate_data_size).
 
 **Example use case:** Assess the memory requirements for consolidating data from multiple tables into a single dataset.
 

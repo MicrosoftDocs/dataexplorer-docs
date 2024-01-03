@@ -1744,6 +1744,61 @@
         "source_path": "data-explorer/kusto/query/trimstartfunction.md",
         "redirect_url": "/azure/data-explorer/kusto/query/trim-start-function",
         "redirect_document_id": true
+      },
+      {
+        "source_path": "data-explorer/kusto/query/unionoperator.md",
+        "redirect_url": "/azure/data-explorer/kusto/query/union-operator",
+        "redirect_document_id": true
+      },
+      {
+        "source_path": "data-explorer/kusto/query/unixtime-microseconds-todatetimefunction.md",
+        "redirect_url": "/azure/data-explorer/kusto/query/unixtime-microseconds-todatetime-function",
+        "redirect_document_id": true
+      },
+      {
+        "source_path": "data-explorer/kusto/query/unixtime-milliseconds-todatetimefunction.md",
+        "redirect_url": "/azure/data-explorer/kusto/query/unixtime-milliseconds-todatetime-function",
+        "redirect_document_id": true
+      },
+      {
+        "source_path": "data-explorer/kusto/query/unixtime-nanoseconds-todatetimefunction.md",
+        "redirect_url": "/azure/data-explorer/kusto/query/unixtime-nanoseconds-todatetime-function",
+        "redirect_document_id": true
+      },
+      {
+        "source_path": "data-explorer/kusto/query/unixtime-seconds-todatetimefunction.md",
+        "redirect_url": "/azure/data-explorer/kusto/query/unixtime-seconds-todatetime-function",
+        "redirect_document_id": true
+      },
+      {
+        "source_path": "data-explorer/kusto/query/urldecodefunction.md",
+        "redirect_url": "/azure/data-explorer/kusto/query/url-decode-function",
+        "redirect_document_id": true
+      },
+      {
+        "source_path": "data-explorer/kusto/query/urlencodecomponentfunction.md",
+        "redirect_url": "/azure/data-explorer/kusto/query/url-encode-component-function",
+        "redirect_document_id": true
+      },
+      {
+        "source_path": "data-explorer/kusto/query/urlencodefunction.md",
+        "redirect_url": "/azure/data-explorer/kusto/query/url-encode-function",
+        "redirect_document_id": true
+      },
+      {
+        "source_path": "data-explorer/kusto/query/useranalytics.md",
+        "redirect_url": "/azure/data-explorer/kusto/query/user-analytics",
+        "redirect_document_id": true
+      },
+      {
+        "source_path": "data-explorer/kusto/query/usinghlltdigest.md",
+        "redirect_url": "/azure/data-explorer/kusto/query/using-hll-tdigest",
+        "redirect_document_id": true
+      },
+      {
+        "source_path": "data-explorer/kusto/query/variance-aggfunction.md",
+        "redirect_url": "/azure/data-explorer/kusto/query/variance-aggregation-function",
+        "redirect_document_id": true
       }
     ]
 }

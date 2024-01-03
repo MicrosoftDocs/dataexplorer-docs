@@ -10,7 +10,7 @@ ms.date: 03/15/2023
 Searches a text pattern in multiple tables and columns.
 
 > [!NOTE]
-> If you know the specific tables and columns you want to search, it's more performant to use the [union](unionoperator.md) and [where](whereoperator.md) operators. The `search` operator can be slow when searching across a large number of tables and columns.
+> If you know the specific tables and columns you want to search, it's more performant to use the [union](union-operator.md) and [where](whereoperator.md) operators. The `search` operator can be slow when searching across a large number of tables and columns.
 
 ## Syntax
 
@@ -22,9 +22,9 @@ Searches a text pattern in multiple tables and columns.
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-| *T* | string | | The tabular data source to be searched over, such as a table name, a [union operator](unionoperator.md), or the results of a tabular query. Cannot appear together with *TableSources*.|
+| *T* | string | | The tabular data source to be searched over, such as a table name, a [union operator](union-operator.md), or the results of a tabular query. Cannot appear together with *TableSources*.|
 | *CaseSensitivity* | string | | A flag that controls the behavior of all `string` scalar operators, such as `has`, with respect to case sensitivity. Valid values are `default`, `case_insensitive`, `case_sensitive`. The options `default` and `case_insensitive` are synonymous, since the default behavior is case insensitive.|
-| *TableSources* | string | | A comma-separated list of "wildcarded" table names to take part in the search. The list has the same syntax as the list of the [union operator](unionoperator.md). Cannot appear together with *TabularSource*.|
+| *TableSources* | string | | A comma-separated list of "wildcarded" table names to take part in the search. The list has the same syntax as the list of the [union operator](union-operator.md). Cannot appear together with *TabularSource*.|
 | *SearchPredicate* | string | &check; | A boolean expression to be evaluated for every record in the input. If it returns `true`, the record is outputted. See [Search predicate syntax](#search-predicate-syntax).|
 
 ### Search predicate syntax

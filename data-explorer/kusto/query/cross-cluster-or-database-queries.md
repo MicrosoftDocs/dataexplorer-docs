@@ -52,7 +52,7 @@ cluster("<ClusterName>").database("<DatabaseName>").<TableName>
 
 ### Qualified names and the union operator
 
-When a *qualified name* appears as an operand of the [union operator](./unionoperator.md), then wildcards can be used to specify multiple tables and multiple databases. Wildcards aren't permitted in cluster names.
+When a *qualified name* appears as an operand of the [union operator](./union-operator.md), then wildcards can be used to specify multiple tables and multiple databases. Wildcards aren't permitted in cluster names.
 
 ```kusto
 union withsource=TableName *, database("OtherDb*").*Table, cluster("OtherCluster").database("*").*

@@ -104,7 +104,7 @@ The following list of operators can be used in subqueries with the native or shu
 * [where](whereoperator.md)
 
 > [!NOTE]
-> * Operators that reference a table source other than the subtable partitions aren't compatible with the `native` and `shuffle` strategies. For example, [join](join-operator.md), [union](unionoperator.md), [externaldata](externaldata-operator.md), and [evaluate](evaluate-operator.md) (plugins). For such scenarios, resort to the [legacy strategy](#legacy-strategy).
+> * Operators that reference a table source other than the subtable partitions aren't compatible with the `native` and `shuffle` strategies. For example, [join](join-operator.md), [union](union-operator.md), [externaldata](externaldata-operator.md), and [evaluate](evaluate-operator.md) (plugins). For such scenarios, resort to the [legacy strategy](#legacy-strategy).
 > * The [fork](fork-operator.md) operator isn't supported for any strategy type, as the subquery must return a single tabular result.
 
 ### Legacy strategy

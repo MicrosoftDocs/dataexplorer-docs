@@ -303,8 +303,8 @@ This article lists all available scalar functions grouped by type. For aggregati
 |[trim()](trim-function.md)|Removes all leading and trailing matches of the specified regular expression.|
 |[trim_end()](trim-end-function.md)|Removes trailing match of the specified regular expression.|
 |[trim_start()](trim-start-function.md)|Removes leading match of the specified regular expression.|
-|[url_decode()](urldecodefunction.md)|The function converts encoded URL into a regular URL representation.|
-|[url_encode()](urlencodefunction.md)|The function converts characters of the input URL into a format that can be transmitted over the Internet.|
+|[url_decode()](url-decode-function.md)|The function converts encoded URL into a regular URL representation.|
+|[url_encode()](url-encode-function.md)|The function converts characters of the input URL into a format that can be transmitted over the Internet.|
 
 ## IPv4/IPv6 functions
 

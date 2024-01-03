@@ -85,7 +85,7 @@ When applying the following operators to entities that include null values, the 
 * [stdevif()](../stdevif-aggregation-function.md)
 * [sum()](../sum-aggregation-function.md)
 * [sumif()](../sumif-aggregation-function.md)
-* [variance()](../variance-aggfunction.md)
+* [variance()](../variance-aggregation-function.md)
 * [varianceif()](../varianceif-aggfunction.md)
 
 ## Null values and the `where` operator

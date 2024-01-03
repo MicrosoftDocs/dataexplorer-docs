@@ -300,7 +300,7 @@ items:
           - name: summarize operator overview
             href: summarize-operator.md
           - name: Using hll() and tdigest()
-            href: usinghlltdigest.md
+            href: using-hll-tdigest.md
       - name: take operator
         displayName: limit operator
         href: take-operator.md
@@ -313,7 +313,7 @@ items:
         href: top-hitters-function.md
         displayName: top hitters top_hitters
       - name: union operator
-        href: unionoperator.md
+        href: union-operator.md
       - name: where operator
         displayName: filter operator
         href: whereoperator.md
@@ -1154,13 +1154,13 @@ items:
         href: unixtime-seconds-todatetime-function.md
       - name: url_decode()
         displayName: url decode
-        href: urldecodefunction.md
+        href: url-decode-function.md
       - name: url_encode()
         displayName: url encode
-        href: urlencodefunction.md
+        href: url-encode-function.md
       - name: url_encode_component()
         displayName: url encode component
-        href: urlencodecomponentfunction.md
+        href: url-encode-component-function.md
       - name: week_of_year()
         displayName: week of year weekofyear()
         href: weekofyearfunction.md
@@ -1269,7 +1269,7 @@ items:
       - name: tdigest_merge(), merge_tdigest()
         href: tdigest-merge-aggregation-function.md
       - name: variance()
-        href: variance-aggfunction.md
+        href: variance-aggregation-function.md
       - name: varianceif()
         href: varianceif-aggfunction.md
       - name: variancep()
@@ -1603,7 +1603,7 @@ items:
       - name: User and sequence analytics plugins
         items:
           - name: User analytics plugins overview
-            href: useranalytics.md
+            href: user-analytics.md
           - name: active_users_count plugin
             href: active-users-count-plugin.md
           - name: activity_counts_metrics plugin

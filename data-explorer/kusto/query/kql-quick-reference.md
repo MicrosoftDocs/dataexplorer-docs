@@ -38,7 +38,7 @@ This article shows you a list of functions and their descriptions to help get yo
 | [summarize](summarize-operator.md)              | Groups the rows according to the `by` group columns, and calculates aggregations over each group | `T | summarize [[Column =] Aggregation [, ...]] [by [Column =] GroupExpression [, ...]]` |
 | [count](count-operator.md)                       | Counts records in the input table (for example, T)<br>This operator is shorthand for `summarize count() `| `T | count` |
 | [join](join-operator.md)                        | Merges the rows of two tables to form a new table by matching values of the specified column(s) from each table. Supports a full range of join types: `flouter`, `inner`, `innerunique`, `leftanti`, `leftantisemi`, `leftouter`, `leftsemi`, `rightanti`, `rightantisemi`, `rightouter`, `rightsemi` | `LeftTable | join [JoinParameters] ( RightTable ) on Attributes` |
-| [union](unionoperator.md)                      | Takes two or more tables and returns all their rows | `[T1] | union [T2], [T3], …` |
+| [union](union-operator.md)                      | Takes two or more tables and returns all their rows | `[T1] | union [T2], [T3], …` |
 | [range](range-operator.md)                      | Generates a table with an arithmetic series of values | `range columnName from start to stop step step` |
 | **Format Data**                                 | **_Restructure the data to output in a useful way_** | |
 | [lookup](lookup-operator.md)                    | Extends the columns of a fact table with values looked-up in a dimension table | `T1 | lookup [kind = (leftouter|inner)] ( T2 ) on Attributes` |

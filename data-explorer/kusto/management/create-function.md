@@ -40,7 +40,7 @@ You must have at least [Database User](access-control/role-based-access-control.
 |--|--|--|
 |`docstring`|string|A description of the function for UI purposes.|
 |`folder`|string|The name of a folder used for UI functions categorization.|
-|`view`|bool|Designates this function as a stored view. Stored views can participate in [search](../query/search-operator.md) and [union *](../query/unionoperator.md) scenarios. For more information, see [Views](../query/schema-entities/views.md).|
+|`view`|bool|Designates this function as a stored view. Stored views can participate in [search](../query/search-operator.md) and [union *](../query/union-operator.md) scenarios. For more information, see [Views](../query/schema-entities/views.md).|
 |`skipvalidation`|bool|Determines whether or not to run validation logic on the function and fail the process if the function isn't valid. The default is `false`.|
 
 > [!TIP]

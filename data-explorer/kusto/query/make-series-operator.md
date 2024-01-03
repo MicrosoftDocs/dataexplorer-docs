@@ -94,7 +94,7 @@ Finally the rows from the intermediate result arranged into groups having the sa
 |[stdev()](stdev-aggregation-function.md)|Returns the standard deviation across the group|
 |[sum()](sum-aggregation-function.md)|Returns the sum of the elements within the group|
 |[sumif()](sumif-aggregation-function.md)|Returns the sum of the elements with the predicate of the group|
-|[variance()](variance-aggfunction.md)|Returns the variance across the group|
+|[variance()](variance-aggregation-function.md)|Returns the variance across the group|
 
 ## List of series analysis functions
 

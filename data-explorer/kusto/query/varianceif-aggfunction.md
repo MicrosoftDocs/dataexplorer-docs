@@ -7,7 +7,7 @@ ms.date: 11/13/2023
 ---
 # varianceif() (aggregation function)
 
-Calculates the [variance](variance-aggfunction.md) of *expr* in records for which *predicate* evaluates to `true`.
+Calculates the [variance](variance-aggregation-function.md) of *expr* in records for which *predicate* evaluates to `true`.
 
 [!INCLUDE [ignore-nulls](../../includes/ignore-nulls.md)]
 

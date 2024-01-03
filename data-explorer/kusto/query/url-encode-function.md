@@ -8,7 +8,7 @@ ms.date: 03/12/2023
 # url_encode()
 
 The function converts characters of the input URL into a format that can be transmitted over the internet.
-Differs from [url_encode_component](./urlencodecomponentfunction.md) by encoding spaces as '+' and not as '%20' (see application/x-www-form-urlencoded [here](https://en.wikipedia.org/wiki/Percent-encoding)).
+Differs from [url_encode_component](./url-encode-component-function.md) by encoding spaces as '+' and not as '%20' (see application/x-www-form-urlencoded [here](https://en.wikipedia.org/wiki/Percent-encoding)).
 
 For more information about URL encoding and decoding, see [Percent-encoding](https://en.wikipedia.org/wiki/Percent-encoding).
 
