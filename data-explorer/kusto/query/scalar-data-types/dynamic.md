@@ -194,7 +194,7 @@ For a complete list of scalar dynamic/array functions, see [dynamic/array functi
 |[`extract_json`(path,object), `extract_json(`path,object`)`](../extract-json-function.md)|Use path to navigate into object.
 |[`parse_json(`source`)`](../parse-json-function.md)| Turns a JSON string into a dynamic object.
 |[`range(`from,to,step`)`](../range-function.md)| An array of values
-|[`mv-expand` listColumn](../mvexpandoperator.md) | Replicates a row for each value in a list in a specified cell.
+|[`mv-expand` listColumn](../mv-expand-operator.md) | Replicates a row for each value in a list in a specified cell.
 |[`summarize buildschema(`column`)`](../buildschema-aggregation-function.md) |Infers the type schema from column content
 |[`summarize make_bag(`column`)`](../make-bag-aggregation-function.md) | Merges the property bag (dictionary) values in the column into one property bag, without key duplication.
 |[`summarize make_bag_if(`column,predicate`)`](../make-bag-if-aggregation-function.md) | Merges the property bag (dictionary) values in the column into one property bag, without key duplication (with predicate).

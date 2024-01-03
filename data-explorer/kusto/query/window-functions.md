@@ -28,12 +28,12 @@ Many tabular operators serialize output whenever the input is already serialized
 
 * [sort operator](./sort-operator.md)
 * [top operator](./top-operator.md)
-* [top-hitters operator](./top-hitters-function.md)
+* [top-hitters operator](./top-hitters-operator.md)
 
 ## Operators that preserve the serialized row set property
 
 * [extend operator](./extend-operator.md)
-* [mv-expand operator](./mvexpandoperator.md)
+* [mv-expand operator](./mv-expand-operator.md)
 * [parse operator](./parse-operator.md)
 * [project operator](./project-operator.md)
 * [project-away operator](./project-away-operator.md)

@@ -353,7 +353,7 @@ Here's a step-by-step explanation of the query:
 1. Bin each record to a single day relative to `windowStart`.
 1. Add seven days to the bin value to set the end of the range for each record. If the value is out of the range of `windowStart` and `windowEnd`, adjust the value accordingly.
 1. Create an array of seven days for each record, starting from the current day of the record.
-1. Expand the array from step 3 with [mv-expand](../mvexpandoperator.md) in order to duplicate each record to seven records with one-day intervals between them.
+1. Expand the array from step 3 with [mv-expand](../mv-expand-operator.md) in order to duplicate each record to seven records with one-day intervals between them.
 1. Perform the aggregations for each day. Due to step 4, this step actually summarizes the previous seven days.
 1. Exclude the first seven days from the final result because there's no seven-day lookback period for them.
 

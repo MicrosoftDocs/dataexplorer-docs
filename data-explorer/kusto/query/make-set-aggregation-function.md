@@ -92,5 +92,5 @@ datatable (Val: int, Arr1: dynamic)
 
 ## Related content
 
-* Use [`mv-expand`](./mvexpandoperator.md) operator for the opposite function.
+* Use [`mv-expand`](./mv-expand-operator.md) operator for the opposite function.
 * [`make_set_if`](./make-set-if-aggregation-function.md) operator is similar to `make_set`, except it also accepts a predicate.

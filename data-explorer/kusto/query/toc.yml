@@ -196,7 +196,7 @@ items:
         href: mv-apply-operator.md
         displayName: mv apply mv_apply
       - name: mv-expand operator
-        href: mvexpandoperator.md
+        href: mv-expand-operator.md
         displayName: mv expand mv_expand
       - name: sort operator
         displayName: order operator
@@ -310,7 +310,7 @@ items:
         href: top-nested-operator.md
         displayName: top nested top_nested
       - name: top-hitters operator
-        href: top-hitters-function.md
+        href: top-hitters-operator.md
         displayName: top hitters top_hitters
       - name: union operator
         href: union-operator.md
@@ -711,16 +711,16 @@ items:
         href: dynamic-to-json-function.md
       - name: endofday()
         displayName: endofday() end of day
-        href: end-of-day-function
+        href: endofday-function.md
       - name: endofmonth()
         displayName: endofmonth() end of month
-        href: end-of-month-function
+        href: endofmonth-function.md
       - name: endofweek()
         displayName: endofweek() end of week
-        href: end-of-week-function
+        href: endofweek-function.md
       - name: endofyear()
         displayName: endofyear() end of year
-        href: end-of-year-function
+        href: endofyear-function.md
       - name: erf()
         displayName: Gaussian, error function, statistics, distribution
         href: erf-function.md
@@ -813,7 +813,7 @@ items:
         href: hash-sha1-function.md
       - name: hash_sha256()
         displayName: hash sha256
-        href: sha256hash-function.md
+        href: hash-sha256-function.md
       - name: hash_xxhash64()
         displayName: hash xxhash64
         href: hash-xxhash64-function.md
@@ -881,7 +881,7 @@ items:
         href: isinf-function.md
       - name: isnan()
         displayName: is nan
-        href: isnanfunction.md
+        href: isnan-function.md
       - name: isnotempty()
         displayName: is not empty notempty()
         href: isnotempty-function.md

@@ -49,4 +49,4 @@ range x from -1 to 1 step 1
 
 * To check if a value is null, see [isnull()](isnull-function.md).
 * To check if a value is finite, see [isfinite()](isfinite-function.md).
-* To check if a value is NaN (Not-a-Number), see [isnan()](isnanfunction.md).
+* To check if a value is NaN (Not-a-Number), see [isnan()](isnan-function.md).

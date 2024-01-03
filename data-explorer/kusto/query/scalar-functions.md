@@ -44,10 +44,10 @@ This article lists all available scalar functions grouped by type. For aggregati
 |[dayofmonth()](day-of-month-function.md)|Returns the integer number representing the day number of the given month.|
 |[dayofweek()](day-of-week-function.md)|Returns the integer number of days since the preceding Sunday, as a timespan.|
 |[dayofyear()](day-of-year-function.md)|Returns the integer number represents the day number of the given year.|
-|[endofday()](end-of-day-function)|Returns the end of the day containing the date, shifted by an offset, if provided.|
-|[endofmonth()](end-of-month-function)|Returns the end of the month containing the date, shifted by an offset, if provided.|
-|[endofweek()](end-of-week-function)|Returns the end of the week containing the date, shifted by an offset, if provided.|
-|[endofyear()](end-of-year-function)|Returns the end of the year containing the date, shifted by an offset, if provided.|
+|[endofday()](endofday-function.md)|Returns the end of the day containing the date, shifted by an offset, if provided.|
+|[endofmonth()](endofmonth-function.md)|Returns the end of the month containing the date, shifted by an offset, if provided.|
+|[endofweek()](endofweek-function.md)|Returns the end of the week containing the date, shifted by an offset, if provided.|
+|[endofyear()](endofyear-function.md)|Returns the end of the year containing the date, shifted by an offset, if provided.|
 |[format_datetime()](format-datetime-function.md)|Formats a datetime parameter based on the format pattern parameter.|
 |[format_timespan()](format-timespan-function.md)|Formats a format-timespan parameter based on the format pattern parameter.|
 |[getyear()](getyear-function.md)|Returns the year part of the datetime argument.|
@@ -144,7 +144,7 @@ This article lists all available scalar functions grouped by type. For aggregati
 |[gamma()](gamma-function.md)|Computes gamma function.|
 |[isfinite()](isfinite-function.md)|Returns whether input is a finite value (isn't infinite or NaN).|
 |[isinf()](isinf-function.md)|Returns whether input is an infinite (positive or negative) value.|
-|[isnan()](isnanfunction.md)|Returns whether input is Not-a-Number (NaN) value.|
+|[isnan()](isnan-function.md)|Returns whether input is Not-a-Number (NaN) value.|
 |[log()](log-function.md)|Returns the natural logarithm function.|
 |[log10()](log10-function.md)|Returns the common (base-10) logarithm function.|
 |[log2()](log2-function.md)|Returns the base-2 logarithm function.|
@@ -414,7 +414,7 @@ This article lists all available scalar functions grouped by type. For aggregati
 |[hash_many()](hash_manyfunction.md)|Returns a combined hash value of multiple values.|
 |[hash_md5()](hash-md5-function.md)|Returns an MD5 hash value for the input value.|
 |[hash_sha1()](hash-sha1-function.md)|Returns a SHA1 hash value for the input value.|
-|[hash_sha256()](sha256hash-function.md)|Returns a SHA256 hash value for the input value.|
+|[hash_sha256()](hash-sha256-function.md)|Returns a SHA256 hash value for the input value.|
 |[hash_xxhash64()](hash-xxhash64-function.md)|Returns an XXHASH64 hash value for the input value.|
 
 ## Units conversion functions

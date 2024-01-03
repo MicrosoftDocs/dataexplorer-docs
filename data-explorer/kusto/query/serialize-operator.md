@@ -58,7 +58,7 @@ The output row set of the following operators is marked as serialized.
 * [range](./range-operator.md)
 * [sort](./sort-operator.md)
 * [top](./top-operator.md)
-* [top-hitters](./top-hitters-function.md)
+* [top-hitters](./top-hitters-operator.md)
 
 The output row set of the following operators is marked as nonserialized.
 
@@ -68,10 +68,10 @@ The output row set of the following operators is marked as nonserialized.
 * [facet](./facet-operator.md)
 * [join](./join-operator.md)
 * [make-series](./make-series-operator.md)
-* [mv-expand](./mvexpandoperator.md)
+* [mv-expand](./mv-expand-operator.md)
 * [reduce by](./reduce-operator.md)
 * [sample](./sample-operator.md)
-* [sample-distinct](./sampledistinct-operator.md)
+* [sample-distinct](./sample-distinct-operator.md)
 * [summarize](./summarize-operator.md)
 * [top-nested](./top-nested-operator.md)
 

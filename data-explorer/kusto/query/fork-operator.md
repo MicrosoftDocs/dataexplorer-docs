@@ -48,7 +48,7 @@ Runs multiple consumer operators in parallel.
 * [`top`](top-operator.md)
 * [`top-nested`](top-nested-operator.md)
 * [`sort`](./sort-operator.md)
-* [`mv-expand`](mvexpandoperator.md)
+* [`mv-expand`](mv-expand-operator.md)
 * [`reduce`](reduce-operator.md)
 
 ## Returns
