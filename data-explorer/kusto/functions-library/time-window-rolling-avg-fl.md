@@ -9,7 +9,7 @@ ms.date: 03/13/2023
 
 The function `time_window_rolling_avg_fl()` is a [user-defined function (UDF)](../query/functions/user-defined-functions.md) that calculates the rolling average of the required value over a constant duration time window.
 
-Calculating rolling average over a constant time window for regular time series (that is, having constant intervals) can be achieved using [series_fir()](../query/series-firfunction.md), as the constant time window can be converted to a fixed width filter of equal coefficients. However, calculating it for irregular time series is more complex, as the actual number of samples in the window varies. Still it can be achieved using the powerful [scan](../query/scan-operator.md) operator.
+Calculating rolling average over a constant time window for regular time series (that is, having constant intervals) can be achieved using [series_fir()](../query/series-fir-function.md), as the constant time window can be converted to a fixed width filter of equal coefficients. However, calculating it for irregular time series is more complex, as the actual number of samples in the window varies. Still it can be achieved using the powerful [scan](../query/scan-operator.md) operator.
 
 This type of rolling window calculation is required for use cases where the metric values are emitted only when changed (and not in constant intervals). For example in IoT, where edge devices send metrics to the cloud only upon changes, optimizing communication bandwidth.
 

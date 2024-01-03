@@ -45,5 +45,5 @@ print s1 = dynamic([1,2,4]), s2 = dynamic([4,2,1])
 
 For entire series statistics comparisons, see:
 
-* [series_stats()](series-statsfunction.md)
-* [series_stats_dynamic()](series-stats-dynamicfunction.md)
+* [series_stats()](series-stats-function.md)
+* [series_stats_dynamic()](series-stats-dynamic-function.md)

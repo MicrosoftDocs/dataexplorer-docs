@@ -115,7 +115,7 @@ For variable visualizations, see the [render operator](../query/render-operator.
 |Stacked Area Chart      | Displays a stacked area chart in which the X-axis is the first column (must be numeric). All numeric columns are mapped to different series (Y-axis). |
 |Time Chart   | Displays a time chart in which the X-axis is the first column (must be datetime). All numeric columns are mapped to different series (Y-axis).|
 |Line Chart   | Displays a line chart in which the X-axis is the first column (must be numeric). All numeric columns are mapped to different series (Y-axis).|
-|Anomaly Chart| Similar to Time Chart, but finds anomalies in time series data, using a machine learning anomaly detection algorithm. The data must be in fixed interval buckets. For anomaly detection, Kusto.Explorer uses the [series_decompose_anomalies](../query/series-decompose-anomaliesfunction.md) function.
+|Anomaly Chart| Similar to Time Chart, but finds anomalies in time series data, using a machine learning anomaly detection algorithm. The data must be in fixed interval buckets. For anomaly detection, Kusto.Explorer uses the [series_decompose_anomalies](../query/series-decompose-anomalies-function.md) function.
 |Pie Chart    |    Displays a pie chart in which the color-axis is the first column. The theta-axis (must be a measure, converted to percent) is the second column.|
 |Time Ladder |    Displays a ladder chart in which the X-axis is the last two columns (must be datetime). The Y-axis is a composite of the other columns.|
 |Scatter Chart| Displays a point graph in which the X-axis is the first column (must be numeric). All numeric columns are mapped to different series (Y-axis).|

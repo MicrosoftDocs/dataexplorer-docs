@@ -37,7 +37,7 @@ Use the following strategies for tabular functions:
 * **let statements and function parameters**: Use the [materialize()](materialize-function.md) function.
 * **as operator**: Set the `hint.materialized` hint value to `true`.
 
-For example, the following query uses the non-deterministic tabular [sample operator](sampleoperator.md):
+For example, the following query uses the non-deterministic tabular [sample operator](sample-operator.md):
 
 > [!NOTE]
 > Tables aren't sorted in general, so any table reference in a query is, by definition, non-deterministic.

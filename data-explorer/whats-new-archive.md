@@ -99,7 +99,7 @@ Welcome to what's new in Azure Data Explorer archive. This article is an archive
 |--|--|
 | - [convert_angle](kusto/query/convert-angle-function.md) <br />- [convert_energy](kusto/query/convert-energy-function.md) <br />- [convert_force](kusto/query/convert-force-function.md) <br />- [convert_length](kusto/query/convert-length-function.md) <br />- [convert_mass](kusto/query/convert-mass-function.md) <br />- [convert_speed](kusto/query/convert-speed-function.md) <br />- [convert_temperature](kusto/query/convert-temperature-function.md) <br />- [convert_volume](kusto/query/convert-volume-function.md) | New articles. New functions for converting values. |
 | [parse-kv operator](kusto/query/parse-kv-operator.md) | New Article. Describes how to extract structured information from a string in key/value form. |
-|- [Scalar function types at a glance](kusto/query/scalarfunctions.md) <br />- [arg_max() (aggregation function)](kusto/query/arg-max-aggregation-function.md) <br />- [arg_min() (aggregation function)](kusto/query/arg-min-aggregation-function.md) <br />- [avg() (aggregation function)](kusto/query/avg-aggfunction.md) <br />- [max() (aggregation function)](kusto/query/max-aggregation-function.md) <br />- [min() (aggregation function)](kusto/query/min-aggregation-function.md) <br />- [sum() (aggregation function)](kusto/query/sum-aggfunction.md) | Updated articles. Added new examples. |
+|- [Scalar function types at a glance](kusto/query/scalar-functions.md) <br />- [arg_max() (aggregation function)](kusto/query/arg-max-aggregation-function.md) <br />- [arg_min() (aggregation function)](kusto/query/arg-min-aggregation-function.md) <br />- [avg() (aggregation function)](kusto/query/avg-aggfunction.md) <br />- [max() (aggregation function)](kusto/query/max-aggregation-function.md) <br />- [min() (aggregation function)](kusto/query/min-aggregation-function.md) <br />- [sum() (aggregation function)](kusto/query/sum-aggfunction.md) | Updated articles. Added new examples. |
 
 ## June 2022
 
@@ -267,7 +267,7 @@ Welcome to what's new in Azure Data Explorer archive. This article is an archive
 |--|--|
 | [series_pow()](kusto/query/series-pow-function.md)| New article. Calculates the element-wise power of two numeric series inputs.
 | [Aggregation function types at a glance](kusto/query/aggregation-functions.md) | New article. Lists aggregation functions, which perform a calculation on a set of values and return a single value.
-| [Scalar function types at a glance](kusto/query/scalarfunctions.md) | Updated article. Updated aggregation function and added series_pow.
+| [Scalar function types at a glance](kusto/query/scalar-functions.md) | Updated article. Updated aggregation function and added series_pow.
 | [materialized_view() function](kusto/query/materialized-view-function.md) | Updated article. Updated aggregation function.
 
 **Management**

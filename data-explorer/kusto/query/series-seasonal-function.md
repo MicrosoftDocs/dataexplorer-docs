@@ -20,7 +20,7 @@ Calculates the seasonal component of a series, according to the detected or give
 | Name | Type | Required | Description |
 |--|--|--|--|
 | *series* | dynamic | &check; | An array of numeric values.|
-| *period* | int | | The number of bins for each seasonal period. This value can be any positive integer. By default, the value is set to -1, which automatically detects the period using the [series_periods_detect()](series-periods-detectfunction.md) with a threshold of *0.7*. If seasonality is not detected, the function returns zeros. If a different value is set, it ignores seasonality and returns a series of zeros.|
+| *period* | int | | The number of bins for each seasonal period. This value can be any positive integer. By default, the value is set to -1, which automatically detects the period using the [series_periods_detect()](series-periods-detect-function.md) with a threshold of *0.7*. If seasonality is not detected, the function returns zeros. If a different value is set, it ignores seasonality and returns a series of zeros.|
 
 ## Returns
 
@@ -53,7 +53,7 @@ print s=dynamic([2, 5, 3, 4, 3, 2, 1, 2, 3, 4, 3, 2, 1, 2, 3, 4, 3, 2, 1, 2, 3, 
 
 ### Force a period
 
-In this example, the series' period is too short to be detected by [series_periods_detect()](series-periods-detectfunction.md), so we explicitly force the period to get the seasonal pattern.
+In this example, the series' period is too short to be detected by [series_periods_detect()](series-periods-detect-function.md), so we explicitly force the period to get the seasonal pattern.
 
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAysoyswrUSi2TanMS8zNTNaINtRRMNZRMNVRgDOMdBRMdBTMYjUVuGoUSvMy8/MUNApwaoOqxqZfE6g/taIkNS9FoTi+ODWxOD8vMUfBVqE4tSgzFSGiUQzUqQkAj46UZJkAAAA=" target="_blank">Run the query</a>
@@ -73,5 +73,5 @@ print s=dynamic([1, 3, 5, 1, 3, 5, 2, 4, 6])
  
 ## Related content
 
-* [series_periods_detect()](series-periods-detectfunction.md)
-* [series_periods_validate()](series-periods-validatefunction.md)
+* [series_periods_detect()](series-periods-detect-function.md)
+* [series_periods_validate()](series-periods-validate-function.md)

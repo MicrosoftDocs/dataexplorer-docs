@@ -63,7 +63,7 @@ The following plugins are supported:
 * [R plugin](r-plugin.md)
 * [rolling-percentile plugin](rolling-percentile-plugin.md)
 * [rows-near plugin](rows-near-plugin.md)
-* [schema-merge plugin](schemamergeplugin.md)
+* [schema-merge plugin](schema-merge-plugin.md)
 * [sql-request plugin](sqlrequestplugin.md)
 * [sequence-detect plugin](sequence-detect-plugin.md)
 

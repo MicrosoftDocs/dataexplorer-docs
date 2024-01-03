@@ -13,7 +13,7 @@ The function `series_dot_product_fl()` is a [user-defined function (UDF)](../que
 
 > [!NOTE]
 >
-> Use the native function [series_dot_product()](../query/series-dot-productfunction.md) instead of the function described in this document. The native function provides the same functionality and is better for performance and scalability. This document is provided for reference purposes only.
+> Use the native function [series_dot_product()](../query/series-dot-product-function.md) instead of the function described in this document. The native function provides the same functionality and is better for performance and scalability. This document is provided for reference purposes only.
 
 ## Syntax
 

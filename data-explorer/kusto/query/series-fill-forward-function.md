@@ -31,7 +31,7 @@ An expression containing dynamic numerical array is the input. The function repl
 > [!NOTE]
 >
 > * If you create *series* using the [make-series](make-series-operator.md) operator, specify *null* as the default value to use interpolation functions like `series_fill_forward()` afterwards. See [explanation](make-series-operator.md#list-of-series-interpolation-functions).
-> * If *missing_value_placeholder* is `double`(*null*), or omitted, then a result may contain *null* values. To fill these *null* values, use other interpolation functions. Only [series_outliers()](series-outliersfunction.md) supports *null* values in input arrays.
+> * If *missing_value_placeholder* is `double`(*null*), or omitted, then a result may contain *null* values. To fill these *null* values, use other interpolation functions. Only [series_outliers()](series-outliers-function.md) supports *null* values in input arrays.
 > * `series_fill_forward()` preserves the original type of the array elements.
 
 ## Example
@@ -57,4 +57,4 @@ data
 |---|---|
 |[null,null,36,41,null,null,16,61,33,null,null]|[null,null,36,41,41,41,16,61,33,33,33]|
 
-Use [series_fill_backward](series-fill-backwardfunction.md) or [series-fill-const](series-fill-constfunction.md) to complete interpolation of the above array.
+Use [series_fill_backward](series-fill-backward-function.md) or [series-fill-const](series-fill-const-function.md) to complete interpolation of the above array.

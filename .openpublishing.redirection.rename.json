@@ -1206,8 +1206,238 @@
         "redirect_document_id": true
       },
       {
-        "source_path": "data-explorer/kusto/query/rplugin.md.md",
-        "redirect_url": "/azure/data-explorer/kusto/query/r-plugin.md",
+        "source_path": "data-explorer/kusto/query/rplugin.md",
+        "redirect_url": "/azure/data-explorer/kusto/query/r-plugin",
+        "redirect_document_id": true
+      },
+      {
+        "source_path": "data-explorer/kusto/query/sampledistinctoperator.md",
+        "redirect_url": "/azure/data-explorer/kusto/query/sample-distinct-operator",
+        "redirect_document_id": true
+      },
+      {
+        "source_path": "data-explorer/kusto/query/sampleoperator.md",
+        "redirect_url": "/azure/data-explorer/kusto/query/sample-operator",
+        "redirect_document_id": true
+      },
+      {
+        "source_path": "data-explorer/kusto/query/scalarfunctions.md",
+        "redirect_url": "/azure/data-explorer/kusto/query/scalar-functions",
+        "redirect_document_id": true
+      },
+      {
+        "source_path": "data-explorer/kusto/query/schemamergeplugin.md",
+        "redirect_url": "/azure/data-explorer/kusto/query/schema-merge-plugin",
+        "redirect_document_id": true
+      },
+      {
+        "source_path": "data-explorer/kusto/query/searchoperator.md",
+        "redirect_url": "/azure/data-explorer/kusto/query/search-operator",
+        "redirect_document_id": true
+      },
+      {
+        "source_path": "data-explorer/kusto/query/serializeoperator.md",
+        "redirect_url": "/azure/data-explorer/kusto/query/serialize-operator",
+        "redirect_document_id": true
+      },
+      {
+        "source_path": "data-explorer/kusto/query/series-acosfunction.md",
+        "redirect_url": "/azure/data-explorer/kusto/query/series-acos-function",
+        "redirect_document_id": true
+      },
+      {
+        "source_path": "data-explorer/kusto/query/series-addfunction.md",
+        "redirect_url": "/azure/data-explorer/kusto/query/series-add-function",
+        "redirect_document_id": true
+      },
+      {
+        "source_path": "data-explorer/kusto/query/series-asinfunction.md",
+        "redirect_url": "/azure/data-explorer/kusto/query/series-asin-function",
+        "redirect_document_id": true
+      },
+      {
+        "source_path": "data-explorer/kusto/query/series-atanfunction.md",
+        "redirect_url": "/azure/data-explorer/kusto/query/series-atan-function",
+        "redirect_document_id": true
+      },
+      {
+        "source_path": "data-explorer/kusto/query/series-cosfunction.md",
+        "redirect_url": "/azure/data-explorer/kusto/query/series-cos-function",
+        "redirect_document_id": true
+      },
+      {
+        "source_path": "data-explorer/kusto/query/series-decompose-anomaliesfunction.md",
+        "redirect_url": "/azure/data-explorer/kusto/query/series-decompose-anomalies-function",
+        "redirect_document_id": true
+      },
+      {
+        "source_path": "data-explorer/kusto/query/series-decompose-forecastfunction.md",
+        "redirect_url": "/azure/data-explorer/kusto/query/series-decompose-forecast-function",
+        "redirect_document_id": true
+      },
+      {
+        "source_path": "data-explorer/kusto/query/series-decomposefunction.md",
+        "redirect_url": "/azure/data-explorer/kusto/query/series-decompose-function",
+        "redirect_document_id": true
+      },
+      {
+        "source_path": "data-explorer/kusto/query/series-dividefunction.md",
+        "redirect_url": "/azure/data-explorer/kusto/query/series-divide-function",
+        "redirect_document_id": true
+      },
+      {
+        "source_path": "data-explorer/kusto/query/series-dot-productfunction.md",
+        "redirect_url": "/azure/data-explorer/kusto/query/series-dot-product-function",
+        "redirect_document_id": true
+      },
+      {
+        "source_path": "data-explorer/kusto/query/series-equals-function.md",
+        "redirect_url": "/azure/data-explorer/kusto/query/series-equals-function",
+        "redirect_document_id": true
+      },
+      {
+        "source_path": "data-explorer/kusto/query/series-exp-function.md",
+        "redirect_url": "/azure/data-explorer/kusto/query/series-exp-function",
+        "redirect_document_id": true
+      },
+      {
+        "source_path": "data-explorer/kusto/query/series-fill-backwardfunction.md",
+        "redirect_url": "/azure/data-explorer/kusto/query/series-fill-backward-function",
+        "redirect_document_id": true
+      },
+      {
+        "source_path": "data-explorer/kusto/query/series-fill-constfunction.md",
+        "redirect_url": "/azure/data-explorer/kusto/query/series-fill-const-function",
+        "redirect_document_id": true
+      },
+      {
+        "source_path": "data-explorer/kusto/query/series-fill-forwardfunction.md",
+        "redirect_url": "/azure/data-explorer/kusto/query/series-fill-forward-function",
+        "redirect_document_id": true
+      },
+      {
+        "source_path": "data-explorer/kusto/query/series-fill-linearfunction.md",
+        "redirect_url": "/azure/data-explorer/kusto/query/series-fill-linear-function",
+        "redirect_document_id": true
+      },
+      {
+        "source_path": "data-explorer/kusto/query/series-firfunction.md",
+        "redirect_url": "/azure/data-explorer/kusto/query/series-fir-function",
+        "redirect_document_id": true
+      },
+      {
+        "source_path": "data-explorer/kusto/query/series-fit-2lines-dynamicfunction.md",
+        "redirect_url": "/azure/data-explorer/kusto/query/series-fit-2lines-dynamic-function",
+        "redirect_document_id": true
+      },
+      {
+        "source_path": "data-explorer/kusto/query/series-fit-2lines-function.md",
+        "redirect_url": "/azure/data-explorer/kusto/query/series-fit-2lines-function",
+        "redirect_document_id": true
+      },
+      {
+        "source_path": "data-explorer/kusto/query/series-fit-line-dynamicfunction.md",
+        "redirect_url": "/azure/data-explorer/kusto/query/series-fit-line-dynamic-function",
+        "redirect_document_id": true
+      },
+      {
+        "source_path": "data-explorer/kusto/query/series-fit-line-function.md",
+        "redirect_url": "/azure/data-explorer/kusto/query/series-fit-line-function",
+        "redirect_document_id": true
+      },
+      {
+        "source_path": "data-explorer/kusto/query/series-greater-equalsfunction.md",
+        "redirect_url": "/azure/data-explorer/kusto/query/series-greater-equals-function",
+        "redirect_document_id": true
+      },
+      {
+        "source_path": "data-explorer/kusto/query/series-greater-function.md",
+        "redirect_url": "/azure/data-explorer/kusto/query/series-greater-function",
+        "redirect_document_id": true
+      },
+      {
+        "source_path": "data-explorer/kusto/query/series-iirfunction.md",
+        "redirect_url": "/azure/data-explorer/kusto/query/series-irr-function",
+        "redirect_document_id": true
+      },
+      {
+        "source_path": "data-explorer/kusto/query/series-less-equalsfunction.md",
+        "redirect_url": "/azure/data-explorer/kusto/query/series-less-equals-function",
+        "redirect_document_id": true
+      },
+      {
+        "source_path": "data-explorer/kusto/query/series-lessfunction.md",
+        "redirect_url": "/azure/data-explorer/kusto/query/series-less-function",
+        "redirect_document_id": true
+      },
+      {
+        "source_path": "data-explorer/kusto/query/series-multiplyfunction.md",
+        "redirect_url": "/azure/data-explorer/kusto/query/series-multiply-function",
+        "redirect_document_id": true
+      },
+      {
+        "source_path": "data-explorer/kusto/query/series-not-equalsfunction.md",
+        "redirect_url": "/azure/data-explorer/kusto/query/series-not-equals-function",
+        "redirect_document_id": true
+      },
+      {
+        "source_path": "data-explorer/kusto/query/series-outliersfunction.md",
+        "redirect_url": "/azure/data-explorer/kusto/query/series-outliers-function",
+        "redirect_document_id": true
+      },
+      {
+        "source_path": "data-explorer/kusto/query/series-pearson-correlationfunction.md",
+        "redirect_url": "/azure/data-explorer/kusto/query/series-pearson-correlation-function",
+        "redirect_document_id": true
+      },
+      {
+        "source_path": "data-explorer/kusto/query/series-periods-detectfunction.md",
+        "redirect_url": "/azure/data-explorer/kusto/query/series-periods-detect-function",
+        "redirect_document_id": true
+      },
+      {
+        "source_path": "data-explorer/kusto/query/series-periods-validatefunction.md",
+        "redirect_url": "/azure/data-explorer/kusto/query/series-periods-validate-function",
+        "redirect_document_id": true
+      },
+      {
+        "source_path": "data-explorer/kusto/query/series-powfunction.md",
+        "redirect_url": "/azure/data-explorer/kusto/query/series-pow-function",
+        "redirect_document_id": true
+      },
+      {
+        "source_path": "data-explorer/kusto/query/series-seasonalfunction.md",
+        "redirect_url": "/azure/data-explorer/kusto/query/series-seasonal-function",
+        "redirect_document_id": true
+      },
+      {
+        "source_path": "data-explorer/kusto/query/series-signfunction.md",
+        "redirect_url": "/azure/data-explorer/kusto/query/series-sign-function",
+        "redirect_document_id": true
+      },
+      {
+        "source_path": "data-explorer/kusto/query/series-sinfunction.md",
+        "redirect_url": "/azure/data-explorer/kusto/query/series-sin-function",
+        "redirect_document_id": true
+      },
+      {
+        "source_path": "data-explorer/kusto/query/series-stats-dynamicfunction.md",
+        "redirect_url": "/azure/data-explorer/kusto/query/series-stats-dynamic-function",
+        "redirect_document_id": true
+      },
+      {
+        "source_path": "data-explorer/kusto/query/series-statsfunction.md",
+        "redirect_url": "/azure/data-explorer/kusto/query/series-stats-function",
+        "redirect_document_id": true
+      },
+      {
+        "source_path": "data-explorer/kusto/query/series-subtractfunction.md",
+        "redirect_url": "/azure/data-explorer/kusto/query/series-subtract-function",
+        "redirect_document_id": true
+      },
+      {
+        "source_path": "data-explorer/kusto/query/series-tanfunction.md",
+        "redirect_url": "/azure/data-explorer/kusto/query/series-tan-function",
         "redirect_document_id": true
       }
     ]

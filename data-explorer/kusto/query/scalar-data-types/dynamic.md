@@ -180,7 +180,7 @@ arrays to hold aggregated values:
 
 ## Operators and functions over dynamic types
 
-For a complete list of scalar dynamic/array functions, see [dynamic/array functions](../scalarfunctions.md#dynamicarray-functions).
+For a complete list of scalar dynamic/array functions, see [dynamic/array functions](../scalar-functions.md#dynamicarray-functions).
 
 |Operator or function|Usage with dynamic data types|
 |---|---|

@@ -9,7 +9,7 @@ ms.date: 01/22/2023
 
 Applies a two segmented linear regression on a series, returning multiple columns.  
 
-Takes an expression containing dynamic numerical array as input and applies a [two segmented linear regression](https://en.wikipedia.org/wiki/Segmented_regression) in order to identify and quantify a trend change in a series. The function iterates on the series indexes. In each iteration, the function splits the series to two parts, fits a separate line (using [series_fit_line()](series-fit-linefunction.md)) to each part, and calculates the total r-square. The best split is the one that maximized r-square; the function returns its parameters:
+Takes an expression containing dynamic numerical array as input and applies a [two segmented linear regression](https://en.wikipedia.org/wiki/Segmented_regression) in order to identify and quantify a trend change in a series. The function iterates on the series indexes. In each iteration, the function splits the series to two parts, fits a separate line (using [series_fit_line()](series-fit-line-function.md)) to each part, and calculates the total r-square. The best split is the one that maximized r-square; the function returns its parameters:
 
 |Parameter  |Description  |
 |---------|---------|
@@ -18,12 +18,12 @@ Takes an expression containing dynamic numerical array as input and applies a [t
 |`variance`     | Variance of the input data.        |
 |`rvariance`     | Residual variance, which is the variance between the input data values the approximated ones (by the two line segments).        |
 |`line_fit`     | Numerical array holding a series of values of the best fitted line. The series length is equal to the length of the input array. It's mainly used for charting.        |
-|`right_rsquare`     | R-square of the line on the right side of the split, see [series_fit_line()](series-fit-linefunction.md).        |
+|`right_rsquare`     | R-square of the line on the right side of the split, see [series_fit_line()](series-fit-line-function.md).        |
 |`right_slope`     | Slope of the right approximated line (of the form y=ax+b).         |
 |`right_interception`     |  Interception of the approximated left line (b from y=ax+b).       |
 |`right_variance`    | Variance of the input data on the right side of the split.        |
 |`right_rvariance`     | Residual variance of the input data on the right side of the split.        |
-|`left_rsquare`     | R-square of the line on the left side of the split, see [series_fit_line()](series-fit-linefunction.md).        |
+|`left_rsquare`     | R-square of the line on the left side of the split, see [series_fit_line()](series-fit-line-function.md).        |
 |`left_slope`    | Slope of the left approximated line (of the form y=ax+b).        |
 |`left_interception`     |   Interception of the approximated left line (of the form y=ax+b).      |
 |`left_variance`     | Variance of the input data on the left side of the split.        |

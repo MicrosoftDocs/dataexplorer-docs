@@ -14,7 +14,7 @@ zone_pivot_groups: kql-flavors-all
 The function `series_uv_anomalies_fl()` is a [user-defined function (UDF)](../query/functions/user-defined-functions.md) that detects anomalies in time series by calling the [Univariate Anomaly Detection API](/azure/cognitive-services/anomaly-detector/overview), part of [Azure Cognitive Services](/azure/cognitive-services/what-are-cognitive-services). The function accepts a limited set of time series as numerical dynamic arrays and the required anomaly detection sensitivity level. Each time series is converted into the required JSON format and posts it to the Anomaly Detector service endpoint. The service response contains dynamic arrays of high/low/all anomalies, the modeled baseline time series, its normal high/low boundaries (a value above or below the high/low boundary is an anomaly) and the detected seasonality.
 
 > [!NOTE]
-> Consider using the native function [series_decompose_anomalies()](../query/series-decompose-anomaliesfunction.md) which is more scalable and runs faster.
+> Consider using the native function [series_decompose_anomalies()](../query/series-decompose-anomalies-function.md) which is more scalable and runs faster.
 
 ## Prerequisites
 

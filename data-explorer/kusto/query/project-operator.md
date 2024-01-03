@@ -103,4 +103,4 @@ The following table shows only the first 10 results.
 ## Related content
 
 * [`extend`](extend-operator.md)
-* [series_stats](series-statsfunction.md)
+* [series_stats](series-stats-function.md)

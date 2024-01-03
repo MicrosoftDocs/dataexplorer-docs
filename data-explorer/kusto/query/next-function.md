@@ -75,7 +75,7 @@ TransformedSensorsData
 
 ### Extend row with data from the next row
 
-In the following query, as part of the serialization done with the [serialize operator](serializeoperator.md), a new column `next_session_type` is added with data from the next row.
+In the following query, as part of the serialization done with the [serialize operator](serialize-operator.md), a new column `next_session_type` is added with data from the next row.
 
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA3POz0tLLUrNS04NTi0uzszPK+aqUSjPAAopJMOlFGxtFdSdSjNzUhSMDAwt1YFKilOLMhNzMqtSFfJSK0riiyGa40sqC4CqwWIayGKaQC0FRflZqcklCiWZuanxiXkp8SmlRYklQBU6CnClmSU5qUhcoE4dTAsAcOu/KLQAAAA=" target="_blank">Run the query</a>

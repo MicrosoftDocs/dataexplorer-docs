@@ -14,7 +14,7 @@ zone_pivot_groups: kql-flavors-all
 The function `series_fbprophet_forecast_fl()` is a [user-defined function (UDF)](../query/functions/user-defined-functions.md) that takes an expression containing a time series as input, and predicts the values of the last trailing points using the [Prophet algorithm](https://facebook.github.io/prophet/). The function returns both the forecasted points and their confidence intervals. This function is a Kusto Query Language (KQL) wrapper to Prophet() class, and exposes only the parameters that are mandatory for prediction. Feel free to modify your copy to support more parameters. such as holidays, change points, Fourier order, and so on.
 
 > [!NOTE]
-> Consider using the native function [series_decompose_forecast()](../query/series-decompose-forecastfunction.md). The native function is based on a simpler model, but is more scalable and runs faster.
+> Consider using the native function [series_decompose_forecast()](../query/series-decompose-forecast-function.md). The native function is based on a simpler model, but is more scalable and runs faster.
 
 [!INCLUDE [python-zone-pivot-fabric](../../includes/python-zone-pivot-fabric.md)]
 

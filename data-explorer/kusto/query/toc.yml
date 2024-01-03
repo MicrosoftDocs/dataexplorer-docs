@@ -282,16 +282,16 @@ items:
               - name: treemap
                 href: visualization-treemap.md
       - name: sample operator
-        href: sampleoperator.md
+        href: sample-operator.md
       - name: sample-distinct operator
-        href: sampledistinctoperator.md
+        href: sample-distinct-operator.md
         displayName: sample distinct sample_distinct
       - name: scan operator
         href: scan-operator.md
       - name: search operator
-        href: searchoperator.md
+        href: search-operator.md
       - name: serialize operator
-        href: serializeoperator.md
+        href: serialize-operator.md
       - name: shuffle query
         displayName: hint.shufflekey, hint.strategy, shufflekey, hint, strategy
         href: shufflequery.md
@@ -473,7 +473,7 @@ items:
     items:
       - name: Scalar function types
         displayName: stored procedures
-        href: scalarfunctions.md
+        href: scalar-functions.md
       - name: abs()
         href: abs-function.md
       - name: acos()
@@ -1395,19 +1395,19 @@ items:
         href: make-series-operator.md
       - name: series_abs()
         displayName: element-wise, elementwise
-        href: series-absfunction.md
+        href: series-abs-function.md
       - name: series_acos()
         displayName: element-wise, elementwise
         href: series-acos-function.md
       - name: series_add()
         displayName: element-wise, elementwise
-        href: series-addfunction.md
+        href: series-add-function.md
       - name: series_asin()
         displayName: element-wise, elementwise
-        href: series-asinfunction.md
+        href: series-asin-function.md
       - name: series_atan()
         displayName: element-wise, elementwise
-        href: series-atanfunction.md
+        href: series-atan-function.md
       - name: series_ceiling()
         displayName: element-wise, elementwise
         href: series-ceiling-function.md
@@ -1419,55 +1419,55 @@ items:
         href: series-cosine-similarity-function.md
       - name: series_decompose()
         displayName: seasonal, trend, baseline
-        href: series-decomposefunction.md
+        href: series-decompose-function.md
       - name: series_decompose_anomalies()
         displayName: seasonal, trend, baseline
-        href: series-decompose-anomaliesfunction.md
+        href: series-decompose-anomalies-function.md
       - name: series_decompose_forecast()
         displayName: seasonal, trend, baseline
-        href: series-decompose-forecastfunction.md
+        href: series-decompose-forecast-function.md
       - name: series_divide()
         displayName: element-wise, elementwise
-        href: series-dividefunction.md
+        href: series-divide-function.md
       - name: series_dot_product()
         displayName: element-wise, elementwise
-        href: series-dot-productfunction.md
+        href: series-dot-product-function.md
       - name: series_equals()
         displayName: element-wise, elementwise
-        href: series-equalsfunction.md
+        href: series-equals-function.md
       - name: series_exp()
         displayName: element-wise, elementwise
-        href: series-expfunction.md
+        href: series-exp-function.md
       - name: series_fft()
         displayName: spectral, frequency, seasonality, transform, Fourier
         href: series-fft-function.md
       - name: series_fill_backward()
         displayName: missing values
-        href: series-fill-backwardfunction.md
+        href: series-fill-backward-function.md
       - name: series_fill_const()
         displayName: missing values
-        href: series-fill-constfunction.md
+        href: series-fill-const-function.md
       - name: series_fill_forward()
         displayName: missing values
-        href: series-fill-forwardfunction.md
+        href: series-fill-forward-function.md
       - name: series_fill_linear()
         displayName: missing values
-        href: series-fill-linearfunction.md
+        href: series-fill-linear-function.md
       - name: series_fir()
         displayName: filter, finite impulse response
-        href: series-firfunction.md
+        href: series-fir-function.md
       - name: series_fit_2lines()
         displayName: regression
-        href: series-fit-2linesfunction.md
+        href: series-fit-2lines-function.md
       - name: series_fit_2lines_dynamic()
         displayName: regression
-        href: series-fit-2lines-dynamicfunction.md
+        href: series-fit-2lines-dynamic-function.md
       - name: series_fit_line()
         displayName: regression
-        href: series-fit-linefunction.md
+        href: series-fit-line-function.md
       - name: series_fit_line_dynamic()
         displayName: regression
-        href: series-fit-line-dynamicfunction.md
+        href: series-fit-line-dynamic-function.md
       - name: series_fit_poly()
         displayName: regression, polynomial
         href: series-fit-poly-function.md
@@ -1476,22 +1476,22 @@ items:
         href: series-floor-function.md
       - name: series_greater()
         displayName: element-wise, elementwise
-        href: series-greaterfunction.md
+        href: series-greater-function.md
       - name: series_greater_equals()
         displayName: element-wise, elementwise
-        href: series-greater-equalsfunction.md
+        href: series-greater-equals-function.md
       - name: series_ifft()
         displayName: spectral, frequency, seasonality, transform, Fourier
         href: series-ifft-function.md
       - name: series_iir()
         displayName: filter, infinite impulse response
-        href: series-iirfunction.md
+        href: series-iir-function.md
       - name: series_less()
         displayName: element-wise, elementwise
-        href: series-lessfunction.md
+        href: series-less-function.md
       - name: series_less_equals()
         displayName: element-wise, elementwise
-        href: series-less-equalsfunction.md
+        href: series-less-equals-function.md
       - name: series_log()
         displayName: element-wise, elementwise
         href: series-log-function.md
@@ -1500,48 +1500,48 @@ items:
         href: series-magnitude-function.md
       - name: series_multiply()
         displayName: element-wise, elementwise
-        href: series-multiplyfunction.md
+        href: series-multiply-function.md
       - name: series_not_equals()
         displayName: element-wise, elementwise
-        href: series-not-equalsfunction.md
+        href: series-not-equals-function.md
       - name: series_outliers()
         displayName: anomaly detection, Tukey
-        href: series-outliersfunction.md
+        href: series-outliers-function.md
       - name: series_pearson_correlation()
-        href: series-pearson-correlationfunction.md
+        href: series-pearson-correlation-function.md
       - name: series_periods_detect()
         displayName: spectral, fft, frequency, seasonality
-        href: series-periods-detectfunction.md
+        href: series-periods-detect-function.md
       - name: series_periods_validate()
         displayName: spectral, fft, frequency, seasonality
-        href: series-periods-validatefunction.md
+        href: series-periods-validate-function.md
       - name: series_pow()
         displayName: element-wise, elementwise
         href: series-pow-function.md
       - name: series_seasonal()
         displayName: periods
-        href: series-seasonalfunction.md
+        href: series-seasonal-function.md
       - name: series_sign()
         displayName: element-wise, elementwise
-        href: series-signfunction.md
+        href: series-sign-function.md
       - name: series_sin()
         displayName: element-wise, elementwise
-        href: series-sinfunction.md
+        href: series-sin-function.md
       - name: series_stats()
         displayName: statistics, average, standard deviation, variance
-        href: series-statsfunction.md
+        href: series-stats-function.md
       - name: series_stats_dynamic()
         displayName: statistics, average, standard deviation, variance
-        href: series-stats-dynamicfunction.md
+        href: series-stats-dynamic-function.md
       - name: series_subtract()
         displayName: element-wise, elementwise
-        href: series-subtractfunction.md
+        href: series-subtract-function.md
       - name: series_sum()
         displayName: element-wise, elementwise
         href: series-sum-function.md
       - name: series_tan()
         displayName: element-wise, elementwise
-        href: series-tanfunction.md
+        href: series-tan-function.md
   - name: Plugins
     items:
       - name: General plugins
@@ -1555,7 +1555,7 @@ items:
           - name: preview plugin
             href: preview-plugin.md
           - name: schema_merge plugin
-            href: schemamergeplugin.md
+            href: schema-merge-plugin.md
       - name: Data reshaping plugins
         items:
           - name: bag_unpack plugin

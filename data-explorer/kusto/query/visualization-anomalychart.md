@@ -11,7 +11,7 @@ zone_pivot_groups: kql-flavors-all
 
 ::: zone pivot="azuredataexplorer, fabric"
 
-The anomaly chart visualization is similar to a [timechart](visualization-timechart.md), but [highlights anomalies](./samples.md#get-more-from-your-data-by-using-kusto-with-machine-learning) using the [series_decompose_anomalies](./series-decompose-anomaliesfunction.md) function.  
+The anomaly chart visualization is similar to a [timechart](visualization-timechart.md), but [highlights anomalies](./samples.md#get-more-from-your-data-by-using-kusto-with-machine-learning) using the [series_decompose_anomalies](./series-decompose-anomalies-function.md) function.  
 
 > [!NOTE]
 > This visualization can only be used in the context of the [render operator](render-operator.md).

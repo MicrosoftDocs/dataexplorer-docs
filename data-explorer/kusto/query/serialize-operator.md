@@ -70,7 +70,7 @@ The output row set of the following operators is marked as nonserialized.
 * [make-series](./make-series-operator.md)
 * [mv-expand](./mvexpandoperator.md)
 * [reduce by](./reduce-operator.md)
-* [sample](./sampleoperator.md)
+* [sample](./sample-operator.md)
 * [sample-distinct](./sampledistinct-operator.md)
 * [summarize](./summarizeoperator.md)
 * [top-nested](./topnestedoperator.md)

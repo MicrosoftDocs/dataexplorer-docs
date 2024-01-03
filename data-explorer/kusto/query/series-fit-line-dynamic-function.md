@@ -18,7 +18,7 @@ Takes an expression containing dynamic numerical array as input, and does [linea
 * `interception`: Interception of the approximated line (the *b*-value from *y=ax+b*)
 * `line_fit`: Numerical array containing a series of values of the best fit line. The series length is equal to the length of the input array. It's used mainly for charting.
 
-This operator is similar to [series_fit_line](series-fit-linefunction.md), but unlike `series-fit-line` it returns a dynamic bag.
+This operator is similar to [series_fit_line](series-fit-line-function.md), but unlike `series-fit-line` it returns a dynamic bag.
 
 ## Syntax
 

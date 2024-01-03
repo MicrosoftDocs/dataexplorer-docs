@@ -187,7 +187,7 @@ The following rules limit the query used in the materialized view Query paramete
 
 * The query shouldn't include any operators that depend on `now()`. For example, the query shouldn't have `where Timestamp > ago(5d)`. Use the retention policy on the materialized view to limit the period of time that the view covers.
 
-* The following operators are not supported in the materialized view query: [`sort`](../../query/sort-operator.md), [`top-nested`](../../query/topnestedoperator.md), [`top`](../../query/topoperator.md), [`partition`](../../query/partition-operator.md), [`serialize`](../../query/serializeoperator.md).
+* The following operators are not supported in the materialized view query: [`sort`](../../query/sort-operator.md), [`top-nested`](../../query/topnestedoperator.md), [`top`](../../query/topoperator.md), [`partition`](../../query/partition-operator.md), [`serialize`](../../query/serialize-operator.md).
 
 * Composite aggregations are not supported in the definition of the materialized view. For instance, instead of using `SourceTableName | summarize Result=sum(Column1)/sum(Column2) by Id`, define the materialized view as: `SourceTableName | summarize a=sum(Column1), b=sum(Column2) by Id`. During view query time, run `MaterializedViewName | project Id, Result=a/b`. The required output of the view, including the calculated column (`a/b`), can be encapsulated in a [stored function](../../query/functions/user-defined-functions.md). Access the stored function instead of accessing the materialized view directly.
 

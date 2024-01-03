@@ -10,7 +10,7 @@ ms.date: 03/29/2023
 Returns statistics for a numerical series in a table with a column for each statistic.
 
 > [!NOTE]
-> This function returns multiple values. If you only need a single value, such as the average, consider using [series_stats_dynamic](./series-stats-dynamicfunction.md).
+> This function returns multiple values. If you only need a single value, such as the average, consider using [series_stats_dynamic](./series-stats-dynamic-function.md).
 
 ## Syntax
 

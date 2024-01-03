@@ -11,7 +11,7 @@ Applies a polynomial regression from an independent variable (x_series) to a dep
 
 > [!TIP]
 >
-> * For linear regression of an evenly spaced series, as created by [make-series operator](make-series-operator.md), use the simpler function [series_fit_line()](series-fit-linefunction.md). See [Example 2](#example-2).
+> * For linear regression of an evenly spaced series, as created by [make-series operator](make-series-operator.md), use the simpler function [series_fit_line()](series-fit-line-function.md). See [Example 2](#example-2).
 > * If *x_series* is supplied, and the regression is done for a high degree, consider normalizing to the [0-1] range. See [Example 3](#example-3).
 > * If *x_series* is of datetime type, it must be converted to double and normalized. See [Example 3](#example-3).
 > * For reference implementation of polynomial regression using inline Python, see [series_fit_poly_fl()](../functions-library/series-fit-poly-fl.md).

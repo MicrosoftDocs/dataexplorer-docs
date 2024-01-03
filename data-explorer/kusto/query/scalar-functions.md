@@ -200,60 +200,60 @@ This article lists all available scalar functions grouped by type. For aggregati
 
 |Function Name     |Description                                          |
 |-------------------------|--------------------------------------------------------|
-|[series_abs()](series-absfunction.md)|Calculates the element-wise absolute value of the numeric series input.|
+|[series_abs()](series-abs-function.md)|Calculates the element-wise absolute value of the numeric series input.|
 |[series_acos()](series-acos-function.md)|Calculates the element-wise arccosine function of the numeric series input.|
-|[series_add()](series-addfunction.md)|Calculates the element-wise addition of two numeric series inputs.|
-|[series_asin()](series-asinfunction.md)|Calculates the element-wise arcsine function of the numeric series input.|
+|[series_add()](series-add-function.md)|Calculates the element-wise addition of two numeric series inputs.|
+|[series_asin()](series-asin-function.md)|Calculates the element-wise arcsine function of the numeric series input.|
 |[series_atan()](series-atan-function.md)|Calculates the element-wise arctangent function of the numeric series input.|
 |[series_ceiling()](series-ceiling-function.md)|Calculates the element-wise ceiling function of the numeric series input.|
 |[series_cos()](series-cos-function.md)|Calculates the element-wise cosine function of the numeric series input.|
-|[series_divide()](series-dividefunction.md)|Calculates the element-wise division of two numeric series inputs.|
-|[series_equals()](series-equalsfunction.md)|Calculates the element-wise equals (`==`) logic operation of two numeric series inputs.|
-|[series_exp()](series-expfunction.md)|Calculates the element-wise base-e exponential function (e^x) of the numeric series input.|
+|[series_divide()](series-divide-function.md)|Calculates the element-wise division of two numeric series inputs.|
+|[series_equals()](series-equals-function.md)|Calculates the element-wise equals (`==`) logic operation of two numeric series inputs.|
+|[series_exp()](series-exp-function.md)|Calculates the element-wise base-e exponential function (e^x) of the numeric series input.|
 |[series_floor()](series-floor-function.md)|Calculates the element-wise floor function of the numeric series input.|
-|[series_greater()](series-greaterfunction.md)|Calculates the element-wise greater (`>`) logic operation of two numeric series inputs.|
-|[series_greater_equals()](series-greater-equalsfunction.md)|Calculates the element-wise greater or equals (`>=`) logic operation of two numeric series inputs.|
-|[series_less()](series-lessfunction.md)|Calculates the element-wise less (`<`) logic operation of two numeric series inputs.|
-|[series_less_equals()](series-less-equalsfunction.md)|Calculates the element-wise less or equal (`<=`) logic operation of two numeric series inputs.|
+|[series_greater()](series-greater-function.md)|Calculates the element-wise greater (`>`) logic operation of two numeric series inputs.|
+|[series_greater_equals()](series-greater-equals-function.md)|Calculates the element-wise greater or equals (`>=`) logic operation of two numeric series inputs.|
+|[series_less()](series-less-function.md)|Calculates the element-wise less (`<`) logic operation of two numeric series inputs.|
+|[series_less_equals()](series-less-equals-function.md)|Calculates the element-wise less or equal (`<=`) logic operation of two numeric series inputs.|
 |[series_log()](series-log-function.md)|Calculates the element-wise natural logarithm function (base-e) of the numeric series input.|
-|[series_multiply()](series-multiplyfunction.md)|Calculates the element-wise multiplication of two numeric series inputs.|
-|[series_not_equals()](series-not-equalsfunction.md)|Calculates the element-wise not equals (`!=`) logic operation of two numeric series inputs.|
+|[series_multiply()](series-multiply-function.md)|Calculates the element-wise multiplication of two numeric series inputs.|
+|[series_not_equals()](series-not-equals-function.md)|Calculates the element-wise not equals (`!=`) logic operation of two numeric series inputs.|
 |[series_pow()](series-pow-function.md)|Calculates the element-wise power of two numeric series inputs.|
-|[series_sign()](series-signfunction.md)|Calculates the element-wise sign of the numeric series input.|
-|[series_sin()](series-sinfunction.md)|Calculates the element-wise sine function of the numeric series input.|
-|[series_subtract()](series-subtractfunction.md)|Calculates the element-wise subtraction of two numeric series inputs.|
-|[series_tan()](series-tanfunction.md)|Calculates the element-wise tangent function of the numeric series input.|
+|[series_sign()](series-sign-function.md)|Calculates the element-wise sign of the numeric series input.|
+|[series_sin()](series-sin-function.md)|Calculates the element-wise sine function of the numeric series input.|
+|[series_subtract()](series-subtract-function.md)|Calculates the element-wise subtraction of two numeric series inputs.|
+|[series_tan()](series-tan-function.md)|Calculates the element-wise tangent function of the numeric series input.|
 
 ## Series processing functions
 
 |Function Name     |Description                                          |
 |-------------------------|--------------------------------------------------------|
 |[series_cosine_similarity()](series-cosine-similarity-function.md)|Calculates the [cosine similarity](https://en.wikipedia.org/wiki/Cosine_similarity) of two numeric series.|
-|[series_decompose()](series-decomposefunction.md)|Does a decomposition of the series into components.|
-|[series_decompose_anomalies()](series-decompose-anomaliesfunction.md)|Finds anomalies in a series based on series decomposition.|
-|[series_decompose_forecast()](series-decompose-forecastfunction.md)|Forecast based on series decomposition.|
-|[series_dot_product()](series-dot-productfunction.md)|Calculates the [dot product](https://en.wikipedia.org/wiki/Dot_product) of two numeric series.|
-|[series_fill_backward()](series-fill-backwardfunction.md)|Performs backward fill interpolation of missing values in a series.|
-|[series_fill_const()](series-fill-constfunction.md)|Replaces missing values in a series with a specified constant value.|
-|[series_fill_forward()](series-fill-forwardfunction.md)|Performs forward fill interpolation of missing values in a series.|
-|[series_fill_linear()](series-fill-linearfunction.md)|Performs linear interpolation of missing values in a series.|
+|[series_decompose()](series-decompose-function.md)|Does a decomposition of the series into components.|
+|[series_decompose_anomalies()](series-decompose-anomalies-function.md)|Finds anomalies in a series based on series decomposition.|
+|[series_decompose_forecast()](series-decompose-forecast-function.md)|Forecast based on series decomposition.|
+|[series_dot_product()](series-dot-product-function.md)|Calculates the [dot product](https://en.wikipedia.org/wiki/Dot_product) of two numeric series.|
+|[series_fill_backward()](series-fill-backward-function.md)|Performs backward fill interpolation of missing values in a series.|
+|[series_fill_const()](series-fill-const-function.md)|Replaces missing values in a series with a specified constant value.|
+|[series_fill_forward()](series-fill-forward-function.md)|Performs forward fill interpolation of missing values in a series.|
+|[series_fill_linear()](series-fill-linear-function.md)|Performs linear interpolation of missing values in a series.|
 |[series_fft()](series-fft-function.md)|Applies the Fast Fourier Transform (FFT) on a series.|
-|[series_fir()](series-firfunction.md)|Applies a Finite Impulse Response filter on a series.|
-|[series_fit_2lines()](series-fit-2linesfunction.md)|Applies two segments linear regression on a series, returning multiple columns.|
-|[series_fit_2lines_dynamic()](series-fit-2lines-dynamicfunction.md)|Applies two segments linear regression on a series, returning dynamic object.|
-|[series_fit_line()](series-fit-linefunction.md)|Applies linear regression on a series, returning multiple columns.|
-|[series_fit_line_dynamic()](series-fit-line-dynamicfunction.md)|Applies linear regression on a series, returning dynamic object.|
+|[series_fir()](series-fir-function.md)|Applies a Finite Impulse Response filter on a series.|
+|[series_fit_2lines()](series-fit-2lines-function.md)|Applies two segments linear regression on a series, returning multiple columns.|
+|[series_fit_2lines_dynamic()](series-fit-2lines-dynamic-function.md)|Applies two segments linear regression on a series, returning dynamic object.|
+|[series_fit_line()](series-fit-line-function.md)|Applies linear regression on a series, returning multiple columns.|
+|[series_fit_line_dynamic()](series-fit-line-dynamic-function.md)|Applies linear regression on a series, returning dynamic object.|
 |[series_fit_poly()](series-fit-poly-function.md)|Applies polynomial regression on a series, returning multiple columns.|
 |[series_ifft()](series-ifft-function.md)|Applies the Inverse Fast Fourier Transform (IFFT) on a series.|
-|[series_iir()](series-iirfunction.md)|Applies an Infinite Impulse Response filter on a series.|
+|[series_iir()](series-iir-function.md)|Applies an Infinite Impulse Response filter on a series.|
 |[series_magnitude()](series-magnitude-function.md)|Calculates the [magnitude](https://en.wikipedia.org/wiki/Magnitude_(mathematics)#Euclidean_vector_space) of the numeric series.|
-|[series_outliers()](series-outliersfunction.md)|Scores anomaly points in a series.|
-|[series_pearson_correlation()](series-pearson-correlationfunction.md)|Calculates the Pearson correlation coefficient of two series.|
-|[series_periods_detect()](series-periods-detectfunction.md)|Finds the most significant periods that exist in a time series.|
-|[series_periods_validate()](series-periods-validatefunction.md)|Checks whether a time series contains periodic patterns of given lengths.|
-|[series_seasonal()](series-seasonalfunction.md)|Finds the seasonal component of the series.|
-|[series_stats()](series-statsfunction.md)|Returns statistics for a series in multiple columns.|
-|[series_stats_dynamic()](series-stats-dynamicfunction.md)|Returns statistics for a series in dynamic object.|
+|[series_outliers()](series-outliers-function.md)|Scores anomaly points in a series.|
+|[series_pearson_correlation()](series-pearson-correlation-function.md)|Calculates the Pearson correlation coefficient of two series.|
+|[series_periods_detect()](series-periods-detect-function.md)|Finds the most significant periods that exist in a time series.|
+|[series_periods_validate()](series-periods-validate-function.md)|Checks whether a time series contains periodic patterns of given lengths.|
+|[series_seasonal()](series-seasonal-function.md)|Finds the seasonal component of the series.|
+|[series_stats()](series-stats-function.md)|Returns statistics for a series in multiple columns.|
+|[series_stats_dynamic()](series-stats-dynamic-function.md)|Returns statistics for a series in dynamic object.|
 |[series_sum()](series-sum-function.md)|Calculates the sum of numeric series elements.|
 
 ## String functions

@@ -70,4 +70,4 @@ The following table shows only the first 10 results. To see the full output, run
 
 ## Related content
 
-* Use [series_stats](series-statsfunction.md) to return multiple columns
+* Use [series_stats](series-stats-function.md) to return multiple columns
