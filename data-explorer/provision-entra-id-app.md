@@ -52,8 +52,8 @@ Through the course of this section, you'll copy the following values: **Applicat
 
     :::image type="content" source="media/provision-azure-ad-app/create-app-new-client-secret.png" alt-text="Screenshot showing how to start the creation of client secret." lightbox="media/provision-azure-ad-app/create-app-new-client-secret.png":::
 
-1. Enter a description, expiration, and select **Add**.
-
+1. Enter a description and expiration.
+1. Select **Add**.
 1. Copy the key value.
 
     > [!NOTE]
@@ -97,7 +97,7 @@ You've created your Microsoft Entra application and service principal.
 
 ---
 
-## Configure delegated permissions for the application
+## Configure delegated permissions for the application - optional
 
 If your application needs to access Azure Data Explorer using the credentials of the calling user, configure delegated permissions for your application. For example, if you're building a web API to access Azure Data Explorer and you want to authenticate using the credentials of the user who is *calling* your API.
 
@@ -105,11 +105,13 @@ If you only need access to an authorized Azure Data Explorer resource, you can s
 
 1. Browse to the the **API permissions** blade of your **App registration**.
 1. Select **Add a permission**.
-1. Select **APIs my organization uses**. Search for and select **Azure Data Explorer**.
+1. Select **APIs my organization uses**. 
+1. Search for and select **Azure Data Explorer**.
 
     :::image type="content" source="media/provision-azure-ad-app/configure-delegated-add-api-permission.png" alt-text="Screenshot showing how to add Azure Data Explorer API permission." lightbox="media/provision-azure-ad-app/configure-delegated-add-api-permission.png":::
 
-3. In **Delegated permissions**, select the **user_impersonation** box and **Add permissions**.
+1. In **Delegated permissions**, select the **user_impersonation** box
+1. Select **Add permissions**.
 
     :::image type="content" source="media/provision-azure-ad-app/configure-delegated-click-add-permissions.png" alt-text="Screenshot showing how to select delegated permissions with user impersonation." lightbox="media/provision-azure-ad-app/configure-delegated-click-add-permissions.png":::
 
