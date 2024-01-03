@@ -30,9 +30,9 @@ The app registration can either be created in the Azure portal, or programatical
 
 1. Name the application, for example "example-app".
 1. Select a supported account type, which determines who can use the application.
-1. Under **Redirect URI**, select **We**b for the type of application you want to create. The URI is optional and is left blank in this case.
+1. Under **Redirect URI**, select **Web** for the type of application you want to create. The URI is optional and is left blank in this case.
 
-    :::image type="content" source="media/provision-azure-ad-app/create-app-register-app.png" alt-text="Screenshot showing how to register a new app registration.":::
+    :::image type="content" source="media/provision-azure-ad-app/create-app-register-app.png" alt-text="Screenshot showing how to register a new app registration." lightbox="media/provision-azure-ad-app/create-app-register-app.png":::
 
 1. Select **Register**.
 
@@ -50,7 +50,7 @@ Through the course of this section, you'll copy the following values: **Applicat
 
 1. In the **Certificates & secrets** blade, select **New client secret**.
 
-    :::image type="content" source="media/provision-azure-ad-app/create-app-new-client-secret.png" alt-text="Screenshot showing how to start the creation of client secret.":::
+    :::image type="content" source="media/provision-azure-ad-app/create-app-new-client-secret.png" alt-text="Screenshot showing how to start the creation of client secret." lightbox="media/provision-azure-ad-app/create-app-new-client-secret.png":::
 
 1. Enter a description, expiration, and select **Add**.
 
@@ -58,8 +58,6 @@ Through the course of this section, you'll copy the following values: **Applicat
 
     > [!NOTE]
     > When you leave this page, the key value won't be accessible. 
-
-If you only need access to an authorized Azure Data Explorer resource, such as in the programmatic example, skip the next section. For delegated permissions support, see [configure delegated permissions for the application](#configure-delegated-permissions-for-the-application).
 
 You've created your Microsoft Entra application and service principal.
 
@@ -103,8 +101,11 @@ You've created your Microsoft Entra application and service principal.
 
 If your application needs to access Azure Data Explorer using the credentials of the calling user, configure delegated permissions for your application. For example, if you're building a web API to access Azure Data Explorer and you want to authenticate using the credentials of the user who is *calling* your API.
 
-1. In the **API permissions** blade, select **Add a permission**.
-2. Select **APIs my organization uses**. Search for and select **Azure Data Explorer**.
+If you only need access to an authorized Azure Data Explorer resource, you can skip this section.
+
+1. Browse to the the **API permissions** blade of your **App registration**.
+1. Select **Add a permission**.
+1. Select **APIs my organization uses**. Search for and select **Azure Data Explorer**.
 
     :::image type="content" source="media/provision-azure-ad-app/configure-delegated-add-api-permission.png" alt-text="Screenshot showing how to add Azure Data Explorer API permission.":::
 
