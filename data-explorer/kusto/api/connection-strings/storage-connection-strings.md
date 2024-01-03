@@ -63,7 +63,7 @@ The following table summarizes the available authentication methods for differen
 | [Microsoft Entra access token](#azure-ad-access-token) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :x: | Microsoft Entra tokens have an expiration time. Use when accessing storage for a limited time. |
 | [Storage account access key](#storage-account-access-key) | :heavy_check_mark: | :heavy_check_mark: | :x: | :x: | When you need to access resources on an ongoing basis. |
 | [Amazon Web Services Programmatic Access Keys](#amazon-web-services-programmatic-access-keys) | :x: | :x: | :x: | :heavy_check_mark: | When you need to access Amazon S3 resources on an ongoing basis. |
-| [Amazon Web Services S3 presigned URL](#amazon-web-services-s3-presigned-url) | :x: | :x: | :x: | :heavy_check_mark: | When you need to access Amazon S3 resources with a temp presigned url. |
+| [Amazon Web Services S3 presigned URL](#amazon-web-services-s3-presigned-url) | :x: | :x: | :x: | :heavy_check_mark: | When you need to access Amazon S3 resources with a temp presigned URL. |
 
 ### Impersonation
 
