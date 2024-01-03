@@ -81,7 +81,7 @@ The following table shows only 6 of the 22 returned columns. To see the full out
 
 ## Select a subset of columns
 
-Use the [project](../projectoperator.md) operator to simplify the view and select a specific subset of columns. Using `project` is often more efficient and easier to read than viewing all columns.
+Use the [project](../project-operator.md) operator to simplify the view and select a specific subset of columns. Using `project` is often more efficient and easier to read than viewing all columns.
 
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAwsuyS/KdS1LzSsp5qpRKEnMTlUwBTIKivKzUpNLFIJLEktSdRTACkIqC4BMl8TcxPTUgKL8gtSikkoA88jUEj8AAAA=" target="_blank">Run the query</a>
@@ -212,7 +212,7 @@ StormEvents
 
 ## Create calculated columns
 
-The [project](../projectoperator.md) and [extend](../extend-operator.md) operators can both create calculated columns.
+The [project](../project-operator.md) and [extend](../extend-operator.md) operators can both create calculated columns.
 
 Use `project` to specify only the columns you want to view, and use `extend` to append the calculated column to the end of the table.
 

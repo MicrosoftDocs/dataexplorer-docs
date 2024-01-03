@@ -32,7 +32,7 @@ Evaluates a string expression and parses its value into one or more calculated c
 > * The parse pattern may start with *ColumnName* and not only with *StringConstant*.
 > * Use `*` in the pattern to skip junk values. The `*` can't be used after a `string` type column.
 > * If the parsed *expression* isn't of type `string`, it will be converted to type `string`.
-> * Use [`project`](projectoperator.md) if you also want to drop or rename some columns.
+> * Use [`project`](project-operator.md) if you also want to drop or rename some columns.
 
 ### Supported kind values
 

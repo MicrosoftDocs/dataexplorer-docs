@@ -11,7 +11,7 @@ zone_pivot_groups: kql-flavors-all
 
 ::: zone pivot="azuredataexplorer, fabric"
 
-`get_packages_version_fl()` is a [user-defined function](../query/functions/user-defined-functions.md) that retrieves the versions of the Python engine and packages of the [inline python() plugin](../query/pythonplugin.md).
+`get_packages_version_fl()` is a [user-defined function](../query/functions/user-defined-functions.md) that retrieves the versions of the Python engine and packages of the [inline python() plugin](../query/python-plugin.md).
 
 The function accepts a dynamic array containing the names of the packages to check, and returns their respective versions and the Python engine version.
 

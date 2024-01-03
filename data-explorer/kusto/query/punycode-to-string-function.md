@@ -41,4 +41,4 @@ Decodes input string from [punycode](https://en.wikipedia.org/wiki/Punycode) for
 
 ## Related content
 
-* Use [punycode_from_string()](punycode-from-string.md) to encode a string to punycode form.
+* Use [punycode_from_string()](punycode-from-string-function.md) to encode a string to punycode form.

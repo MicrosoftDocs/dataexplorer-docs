@@ -72,5 +72,5 @@ Do the following steps to disable language extensions on your cluster:
 
 ## Related content
 
-* Learn how to [run Python integrated KQL queries](kusto/query/pythonplugin.md)
+* Learn how to [run Python integrated KQL queries](kusto/query/python-plugin.md)
 * Learn how to [run R integrated KQL queries](kusto/query/rplugin.md)

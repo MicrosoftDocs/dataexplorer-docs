@@ -1064,6 +1064,61 @@
         "source_path": "data-explorer/kusto/query/prevfunction.md",
         "redirect_url": "/azure/data-explorer/kusto/query/prev-function",
         "redirect_document_id": true
+      },
+      {
+        "source_path": "data-explorer/kusto/query/previewplugin.md",
+        "redirect_url": "/azure/data-explorer/kusto/query/preview-plugin",
+        "redirect_document_id": true
+      },
+      {
+        "source_path": "data-explorer/kusto/query/printoperator.md",
+        "redirect_url": "/azure/data-explorer/kusto/query/print-operator",
+        "redirect_document_id": true
+      },
+      {
+        "source_path": "data-explorer/kusto/query/projectawayoperator.md",
+        "redirect_url": "/azure/data-explorer/kusto/query/project-away-operator",
+        "redirect_document_id": true
+      },
+      {
+        "source_path": "data-explorer/kusto/query/projectoperator.md",
+        "redirect_url": "/azure/data-explorer/kusto/query/project-operator",
+        "redirect_document_id": true
+      },
+      {
+        "source_path": "data-explorer/kusto/query/projectrenameoperator.md",
+        "redirect_url": "/azure/data-explorer/kusto/query/project-rename-operator",
+        "redirect_document_id": true
+      },
+      {
+        "source_path": "data-explorer/kusto/query/projectreorderoperator.md",
+        "redirect_url": "/azure/data-explorer/kusto/query/project-reorder-operator",
+        "redirect_document_id": true
+      },
+      {
+        "source_path": "data-explorer/kusto/query/punycode-domain-from-string.md",
+        "redirect_url": "/azure/data-explorer/kusto/query/punycode-domain-from-string-function",
+        "redirect_document_id": true
+      },
+      {
+        "source_path": "data-explorer/kusto/query/punycode-domain-to-string.md",
+        "redirect_url": "/azure/data-explorer/kusto/query/punycode-domain-to-string-function",
+        "redirect_document_id": true
+      },
+      {
+        "source_path": "data-explorer/kusto/query/punycode-from-string.md",
+        "redirect_url": "/azure/data-explorer/kusto/query/punycode-from-string-function",
+        "redirect_document_id": true
+      },
+      {
+        "source_path": "data-explorer/kusto/query/punycode-to-string.md",
+        "redirect_url": "/azure/data-explorer/kusto/query/punycode-to-string-function",
+        "redirect_document_id": true
+      },
+      {
+        "source_path": "data-explorer/kusto/query/pythonplugin.md",
+        "redirect_url": "/azure/data-explorer/kusto/query/python-plugin",
+        "redirect_document_id": true
       }
     ]
 }

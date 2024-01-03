@@ -28,9 +28,9 @@ Reorders columns in the output table.
 > * If no explicit ordering is specified, the order is determined by the matching columns as they appear in the source table.
 > * In ambiguous *ColumnNameOrPattern* matching, the column appears in the first position matching the pattern.
 > * Specifying columns for the `project-reorder` is optional. Columns that aren't specified explicitly appear as the last columns of the output table.
-> * To remove columns, use [`project-away`](projectawayoperator.md).
+> * To remove columns, use [`project-away`](project-away-operator.md).
 > * To choose which columns to keep, use [`project-keep`](project-keep-operator.md).
-> * To rename columns, use [`project-rename`](projectrenameoperator.md).
+> * To rename columns, use [`project-rename`](project-rename-operator.md).
 
 ## Returns
 

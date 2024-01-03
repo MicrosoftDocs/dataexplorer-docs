@@ -39,7 +39,7 @@ The first column is the segment ID. The next two columns are the count and perce
 The patterns aren't distinct, may be overlapping, and usually don't cover all the original rows. Some rows may not fall under any pattern.
 
 > [!TIP]
-> Use [where](./whereoperator.md) and [project](./projectoperator.md) in the input pipe to reduce the data to just what you're interested in.
+> Use [where](./whereoperator.md) and [project](./project-operator.md) in the input pipe to reduce the data to just what you're interested in.
 >
 > When you find an interesting row, you might want to drill into it further by adding its specific values to your `where` filter.
 

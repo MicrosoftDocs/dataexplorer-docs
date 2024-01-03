@@ -202,18 +202,18 @@ items:
         displayName: order operator
         href: sort-operator.md
       - name: project operator
-        href: projectoperator.md
+        href: project-operator.md
       - name: project-away operator
-        href: projectawayoperator.md
+        href: project-away-operator.md
         displayName: project away project_away
       - name: project-keep operator
         href: project-keep-operator.md
         displayName: project keep project_keep
       - name: project-rename operator
-        href: projectrenameoperator.md
+        href: project-rename-operator.md
         displayName: project rename project_rename
       - name: project-reorder operator
-        href: projectreorderoperator.md
+        href: project-reorder-operator.md
         displayName: project reorder project_reorder
       - name: parse operator
         href: parse-operator.md
@@ -226,7 +226,7 @@ items:
       - name: partition operator
         href: partition-operator.md
       - name: print operator
-        href: printoperator.md
+        href: print-operator.md
       - name: range operator
         href: rangeoperator.md
       - name: reduce operator
@@ -991,16 +991,16 @@ items:
         href: pow-function.md
       - name: punycode_from_string()
         displayName: punycode from string
-        href: punycode-from-string.md
+        href: punycode-from-string-function.md
       - name: punycode_to_string()
         displayName: punycode to string
-        href: punycode-to-string.md
+        href: punycode-to-string-function.md
       - name: punycode_domain_from_string()
         displayName: punycode domain from string
-        href: punycode-domain-from-string.md
+        href: punycode-domain-from-string-function.md
       - name: punycode_domain_to_string()
         displayName: punycode domain to string
-        href: punycode-domain-to-string.md
+        href: punycode-domain-to-string-function.md
       - name: radians()
         href: radiansfunction.md
       - name: rand()
@@ -1553,7 +1553,7 @@ items:
           - name: ipv4_lookup plugin
             href: ipv4-lookup-plugin.md
           - name: preview plugin
-            href: previewplugin.md
+            href: preview-plugin.md
           - name: schema_merge plugin
             href: schemamergeplugin.md
       - name: Data reshaping plugins
@@ -1567,7 +1567,7 @@ items:
       - name: Language plugins
         items:
           - name: Python plugin
-            href: pythonplugin.md
+            href: python-plugin.md
           - name: R plugin
             href: rplugin.md
       - name: Machine learning plugins

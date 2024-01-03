@@ -129,7 +129,7 @@ Welcome to what's new in Azure Data Explorer. This article details new and signi
 
 | Article title | Description |
 |--|--|
-|- [punycode_domain_from_string()](kusto/query/punycode-domain-from-string.md) <br/> - [punycode_domain_to_string()](kusto/query/punycode-domain-to-string.md)| New articles. Describes how to encode and decode a punycode domain name.|
+|- [punycode_domain_from_string()](kusto/query/punycode-domain-from-string-function.md) <br/> - [punycode_domain_to_string()](kusto/query/punycode-domain-to-string-function.md)| New articles. Describes how to encode and decode a punycode domain name.|
 | [geo_line_to_s2cells()](kusto/query/geo-line-to-s2cells-function.md)| New article. Describes how to use the geo_line_to_2cells() function to calculate S2 cell tokens that cover a line or a multiline on Earth.|
 | [extract_json()](kusto/query/extract-json-function.md)| Updated article. Added new example.|
 | [Pivot chart](kusto/query/visualization-pivotchart.md)| Updated article. Added new example.|
@@ -210,7 +210,7 @@ Welcome to what's new in Azure Data Explorer. This article details new and signi
 | Article title | Description |
 |--|--|
 |[Syntax conventions for reference documentation](kusto/query/syntax-conventions.md)| New article. Describes the syntax conventions for the Kusto Query Language and management command documentation.|
-|- [punycode_from_string()](kusto/query/punycode-from-string.md) <br/> - [punycode_to_string()](kusto/query/punycode-to-string.md)| New articles. Describes how to encode and decode Punycode.|
+|- [punycode_from_string()](kusto/query/punycode-from-string-function.md) <br/> - [punycode_to_string()](kusto/query/punycode-to-string-function.md)| New articles. Describes how to encode and decode Punycode.|
 
 ## March 2023
 

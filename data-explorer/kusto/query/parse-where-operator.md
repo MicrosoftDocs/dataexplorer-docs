@@ -33,7 +33,7 @@ See [parse operator](parse-operator.md), which produces nulls for unsuccessfully
 
 >[!NOTE]
 >
-> * Use [project](projectoperator.md) if you also want to drop or rename some columns.
+> * Use [project](project-operator.md) if you also want to drop or rename some columns.
 > * Use `*` in the pattern to skip junk values. This value can't be used after `string` column.
 > * The parse pattern may start with *ColumnName*, in addition to *StringConstant*.
 > * If the parsed *expression* isn't of type `string`, it will be converted to type `string`.

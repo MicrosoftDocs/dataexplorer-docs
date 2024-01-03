@@ -58,4 +58,4 @@ The result string contains only ASCII characters. The result string doesn't star
 
 ## Related content
 
-* Use [punycode_to_string()](punycode-to-string.md) to retrieve the original decoded string.
+* Use [punycode_to_string()](punycode-to-string-function.md) to retrieve the original decoded string.

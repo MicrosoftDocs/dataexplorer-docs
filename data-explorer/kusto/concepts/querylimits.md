@@ -56,7 +56,7 @@ Methods for reducing the result set size produced by the query include:
    similar records in the query output. Potentially sample some columns by using the [take_any aggregation function](../query/take-any-aggfunction.md).
 * Use a [take operator](../query/takeoperator.md) to sample the query output.
 * Use the [substring function](../query/substringfunction.md) to trim wide free-text columns.
-* Use the [project operator](../query/projectoperator.md) to drop any uninteresting column from the result set.
+* Use the [project operator](../query/project-operator.md) to drop any uninteresting column from the result set.
 
 You can disable result truncation by using the `notruncation` request option.
 We recommend that some form of limitation is still put in place.

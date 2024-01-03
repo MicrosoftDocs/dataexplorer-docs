@@ -43,7 +43,7 @@ Query Azure Data Explorer with the [Kusto Query Language (KQL)](kusto/query/inde
 
 ### Advanced analytics
 
-Use Azure Data Explorer for time series analysis with a large set of functions including: adding and subtracting time series, filtering, regression, seasonality detection, geospatial analysis, anomaly detection, scanning, and forecasting. Time series functions are optimized for processing thousands of time series in seconds. Pattern detection is made easy with cluster plugins that can diagnose anomalies and do root cause analysis. You can also extend Azure Data Explorer capabilities by [embedding python code](kusto/query/pythonplugin.md) in KQL queries.
+Use Azure Data Explorer for time series analysis with a large set of functions including: adding and subtracting time series, filtering, regression, seasonality detection, geospatial analysis, anomaly detection, scanning, and forecasting. Time series functions are optimized for processing thousands of time series in seconds. Pattern detection is made easy with cluster plugins that can diagnose anomalies and do root cause analysis. You can also extend Azure Data Explorer capabilities by [embedding python code](kusto/query/python-plugin.md) in KQL queries.
 
 ### Easy-to-use wizard
 

@@ -91,5 +91,5 @@ The following table shows only the first 10 results.
 ## Related content
 
 * To choose what columns from the input to keep in the output, use [project-keep](project-keep-operator.md).
-* To rename columns, use [`project-rename`](projectrenameoperator.md).
-* To reorder columns, use [`project-reorder`](projectreorderoperator.md).
+* To rename columns, use [`project-rename`](project-rename-operator.md).
+* To reorder columns, use [`project-reorder`](project-reorder-operator.md).

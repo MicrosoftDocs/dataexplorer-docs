@@ -49,4 +49,4 @@ datatable(encoded:string)
 
 ## Related content
 
-* To encode a domain name to punycode form, see [punycode_domain_to_string()](punycode-domain-to-string.md).
+* To encode a domain name to punycode form, see [punycode_domain_to_string()](punycode-domain-to-string-function.md).

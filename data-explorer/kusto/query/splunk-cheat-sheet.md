@@ -112,7 +112,7 @@ Kusto uses the `project-rename` operator to rename a field. In the `project-rena
 
 ### Format results and projection
 
-Splunk uses the `table` command to select which columns to include in the results. Kusto has a `project` operator that does the same and [more](projectoperator.md).
+Splunk uses the `table` command to select which columns to include in the results. Kusto has a `project` operator that does the same and [more](project-operator.md).
 
 | Product | Operator | Example |
 |:---|:---|:---|

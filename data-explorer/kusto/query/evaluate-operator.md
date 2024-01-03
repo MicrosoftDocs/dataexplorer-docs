@@ -59,7 +59,7 @@ The following plugins are supported:
 * [mysql-request-plugin](mysql-request-plugin.md)
 * [narrow plugin](narrow-plugin.md)
 * [pivot plugin](pivot-plugin.md)
-* [preview plugin](previewplugin.md)
+* [preview plugin](preview-plugin.md)
 * [R plugin](rplugin.md)
 * [rolling-percentile plugin](rolling-percentile-plugin.md)
 * [rows-near plugin](rows-near-plugin.md)

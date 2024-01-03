@@ -31,7 +31,7 @@ For more information, see [count operator](./count-operator.md).
 
 ## Select a subset of columns: *project*
 
-Use [project](./projectoperator.md) to pick out only the columns you want. See the following example, which uses both the [project](./projectoperator.md)
+Use [project](./project-operator.md) to pick out only the columns you want. See the following example, which uses both the [project](./project-operator.md)
 and the [take](./takeoperator.md) operators.
 
 ## Filter by Boolean expression: *where*

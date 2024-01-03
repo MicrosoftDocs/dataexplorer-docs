@@ -424,7 +424,7 @@ Daily damages tornado with damages over 100,000,000$:
 When the order of columns in a query result is known, it's more efficient to access the values of the columns by their ordinal position in the result set than by their column name. Optionally, at runtime you can use a library method to determine a column ordinal from its column name.
 
 > [!NOTE]
-> You can control the presence and order of columns in a query result by using the [`project`](../../query/projectoperator.md) or [`project-away`](../../query/projectawayoperator.md) operators.
+> You can control the presence and order of columns in a query result by using the [`project`](../../query/project-operator.md) or [`project-away`](../../query/project-away-operator.md) operators.
 
 For example, you can modify the previous code to access the values of the `StartTime`, `State`, and `DailyDamage` columns by their ordinal positions in the result set:
 

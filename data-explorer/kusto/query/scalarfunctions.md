@@ -288,8 +288,8 @@ This article lists all available scalar functions grouped by type. For aggregati
 |[replace_regex()](replace-regex-function.md)|Replace all regex matches with another string.|
 |[replace_string()](replace-string-function.md)|Replace all single string matches with a specified string.|
 |[replace_strings()](replace-strings-function.md)|Replace all multiple strings matches with specified strings.|
-|[punycode_from_string()](punycode-from-string.md)| Encodes domain name to Punycode form.|
-|[punycode_to_string()](punycode-to-string.md)| Decodes domain name from Punycode form.|
+|[punycode_from_string()](punycode-from-string-function.md)| Encodes domain name to Punycode form.|
+|[punycode_to_string()](punycode-to-string-function.md)| Decodes domain name from Punycode form.|
 |[reverse()](reversefunction.md)|Function makes reverse of input string.|
 |[split()](splitfunction.md)|Splits a given string according to a given delimiter and returns a string array with the contained substrings.|
 |[strcat()](strcatfunction.md)|Concatenates between 1 and 64 arguments.|

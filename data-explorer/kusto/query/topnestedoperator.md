@@ -61,7 +61,7 @@ To include all values of a column at a specific level:
 1. Don't specify the value of *N*.
 1. Use the column name as the value of *Expr*.
 1. Use `Ignore=max(1)` as the value of *Aggregation*.
-1. Remove the unnecessary `Ignore` column with [project-away](projectawayoperator.md).
+1. Remove the unnecessary `Ignore` column with [project-away](project-away-operator.md).
 
 For an example, see [Get the most recent events per state with additional data from other columns](#get-the-most-recent-events-per-state-with-additional-data-from-other-columns).
 
@@ -100,7 +100,7 @@ StormEvents                                        // Data source.
 
 ### Enhance top-nested results with data from another column
 
-The following query builds upon the previous example by introducing an extra `top-nested` clause. In this new clause, the absence of a numeric specification results in the extraction of all distinct values of `EventType` across the partitions. The `max(1)` aggregation function is merely a placeholder, rendering its outcome irrelevant, so the [project-away](projectawayoperator.md) operator removes the `Ignore` column. The result shows all event types associated with the previously aggregated data.
+The following query builds upon the previous example by introducing an extra `top-nested` clause. In this new clause, the absence of a numeric specification results in the extraction of all distinct values of `EventType` across the partitions. The `max(1)` aggregation function is merely a placeholder, rendering its outcome irrelevant, so the [project-away](project-away-operator.md) operator removes the `Ignore` column. The result shows all event types associated with the previously aggregated data.
 
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAwsuyS/KdS1LzSsp5qpRKMkv0M1LLS5JTVEwUshPUwguSSxJVYCApEqF4tJcDafU9Mw8n8QSTR0uBWT1xmD1+aVFyalEqTcEqXfNS/HJT04syczPI6ReAawe5NCQyoJUiPme6Xn5RakKtgq5iRUahppADxQU5WelJpfoJpYnwqQBMzafY+IAAAA=" target="_blank">Run the query</a>

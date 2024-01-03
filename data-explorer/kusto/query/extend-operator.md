@@ -40,7 +40,7 @@ A copy of the input tabular result set, such that:
   **not** have an index. In most cases, if the new column is set to be exactly
   the same as an existing table column that has an index, Kusto can automatically
   use the existing index. However, in some complex scenarios this propagation is
-  not done. In such cases, if the goal is to rename a column, use the [`project-rename` operator](projectrenameoperator.md) instead.
+  not done. In such cases, if the goal is to rename a column, use the [`project-rename` operator](project-rename-operator.md) instead.
 
 ## Example
 

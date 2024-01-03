@@ -24,4 +24,4 @@ In general, this offering isn't suited for production workloads.
   - There's no guarantee the [extent](../kusto/management/extents-overview.md) format will be compatible between versions of the Kusto emulator
   - Extents aren't [merged](../kusto/management/merge-policy.md) and therefore can become fragmented as data get ingested
   - Retention policies can be set but won't be honored
-- The [Python plugin](../kusto/query/pythonplugin.md?pivots=azuredataexplorer) isn't supported
+- The [Python plugin](../kusto/query/python-plugin.md?pivots=azuredataexplorer) isn't supported

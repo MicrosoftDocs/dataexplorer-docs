@@ -31,7 +31,7 @@ The following table shows sample queries in SQL and their KQL equivalents.
 | Category | SQL Query | Kusto Query | Learn more |
 |--|--|--|
 | Select data from table | `SELECT * FROM dependencies` | `dependencies` | [Tabular expression statements](tabularexpressionstatements.md) |
-| -- | `SELECT name, resultCode FROM dependencies` | `dependencies | project name, resultCode` | [project](projectoperator.md) |
+| -- | `SELECT name, resultCode FROM dependencies` | `dependencies | project name, resultCode` | [project](project-operator.md) |
 | -- | `SELECT TOP 100 * FROM dependencies` | `dependencies | take 100` | [take](takeoperator.md) |
 | Null evaluation | `SELECT * FROM dependencies`<br>`WHERE resultCode IS NOT NULL` | `dependencies`<br>`| where isnotnull(resultCode)` | [isnotnull()](isnotnull-function.md) |
 | Comparison operators (date) | `SELECT * FROM dependencies`<br>`WHERE timestamp > getdate()-1` | `dependencies`<br>`| where timestamp > ago(1d)` | [ago()](ago-function.md) |
@@ -44,7 +44,7 @@ The following table shows sample queries in SQL and their KQL equivalents.
 | Distinct | `SELECT DISTINCT name, type  FROM dependencies` | `dependencies`<br>`| summarize by name, type` | [summarize](summarizeoperator.md)</br>[distinct](distinctoperator.md) |
 | -- | `SELECT name, COUNT(DISTINCT type) `<br>` FROM dependencies `<br>` GROUP BY name` | ` dependencies `<br>`| summarize by name, type | summarize count() by name `<br>`// or approximate for large sets `<br>` dependencies `<br>` | summarize dcount(type) by name  ` | [count()](count-aggregation-function.md)</br>[dcount()](dcount-aggfunction.md) |
 | Column aliases, Extending | `SELECT operationName as Name, AVG(duration) as AvgD FROM dependencies`<br>`GROUP BY name` | `dependencies`<br>`| summarize AvgD = avg(duration) by Name=operationName` | [Alias statement](alias-statement.md) |
-| -- | `SELECT conference, CONCAT(sessionid, ' ' , session_title) AS session FROM ConferenceSessions` | `ConferenceSessions`<br>`| extend session=strcat(sessionid, " ", session_title)`<br>`| project conference, session` | [strcat()](strcatfunction.md)</br>[project](projectoperator.md) |
+| -- | `SELECT conference, CONCAT(sessionid, ' ' , session_title) AS session FROM ConferenceSessions` | `ConferenceSessions`<br>`| extend session=strcat(sessionid, " ", session_title)`<br>`| project conference, session` | [strcat()](strcatfunction.md)</br>[project](project-operator.md) |
 | Ordering | `SELECT name, timestamp FROM dependencies`<br>`ORDER BY timestamp ASC` | `dependencies`<br>`| project name, timestamp`<br>`| sort by timestamp asc nulls last` | [sort](sort-operator.md) |
 | Top n by measure | `SELECT TOP 100 name, COUNT(*) as Count FROM dependencies`<br>`GROUP BY name`<br>`ORDER BY Count DESC` | `dependencies`<br>`| summarize Count = count() by name`<br>`| top 100 by Count desc` | [top](topoperator.md) |
 | Union | `SELECT * FROM dependencies`<br>`UNION`<br>`SELECT * FROM exceptions` | `union dependencies, exceptions` | [union](unionoperator.md) |

@@ -42,4 +42,4 @@ datatable(domain:string )['Lê Lợi。Thuận Thiên。com', 'Riðill｡Skálds
 
 ## Related content
 
-* To retrieve the original decoded string, see [punycode_domain_from_string()](punycode-domain-from-string.md).
+* To retrieve the original decoded string, see [punycode_domain_from_string()](punycode-domain-from-string-function.md).

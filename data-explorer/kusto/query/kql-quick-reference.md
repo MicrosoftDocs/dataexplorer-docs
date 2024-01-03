@@ -25,12 +25,12 @@ This article shows you a list of functions and their descriptions to help get yo
 | [format_datetime](format-datetime-function.md)  | Returns data in [various date formats](format-datetime-function.md#supported-format-elements). | `format_datetime(datetime , format)` |
 | [bin](bin-function.md)                          | Rounds all values in a timeframe and groups them | `bin(value,roundTo)` |
 | **Create/Remove Columns**                   |**_Add or remove columns in a table_** |                                                    |
-| [print](printoperator.md)                      | Outputs a single row with one or more scalar expressions | `print [ColumnName =] ScalarExpression [',' ...]` |
-| [project](projectoperator.md)                  | Selects the columns to include in the order specified | `T | project ColumnName [= Expression] [, ...]` <br> Or <br> `T | project [ColumnName | (ColumnName[,]) =] Expression [, ...]` |
-| [project-away](projectawayoperator.md)         | Selects the columns to exclude from the output | `T | project-away ColumnNameOrPattern [, ...]` |
+| [print](print-operator.md)                      | Outputs a single row with one or more scalar expressions | `print [ColumnName =] ScalarExpression [',' ...]` |
+| [project](project-operator.md)                  | Selects the columns to include in the order specified | `T | project ColumnName [= Expression] [, ...]` <br> Or <br> `T | project [ColumnName | (ColumnName[,]) =] Expression [, ...]` |
+| [project-away](project-away-operator.md)         | Selects the columns to exclude from the output | `T | project-away ColumnNameOrPattern [, ...]` |
 | [project-keep](project-keep-operator.md)         | Selects the columns to keep in the output | `T | project-keep ColumnNameOrPattern [, ...]` |
-| [project-rename](projectrenameoperator.md)     | Renames columns in the result output | `T | project-rename new_column_name = column_name` |
-| [project-reorder](projectreorderoperator.md)   | Reorders columns in the result output | `T | project-reorder Col2, Col1, Col* asc` |
+| [project-rename](project-rename-operator.md)     | Renames columns in the result output | `T | project-rename new_column_name = column_name` |
+| [project-reorder](project-reorder-operator.md)   | Reorders columns in the result output | `T | project-reorder Col2, Col1, Col* asc` |
 | [extend](extend-operator.md)                    | Creates a calculated column and adds it to the result set | `T | extend [ColumnName | (ColumnName[, ...]) =] Expression [, ...]` |
 | **Sort and Aggregate Dataset**                 |**_Restructure the data by sorting or grouping them in meaningful ways_**|                  |
 | [sort operator](sort-operator.md) | Sort the rows of the input table by one or more columns in ascending or descending order | `T | sort by expression1 [asc|desc], expression2 [asc|desc], …` |
