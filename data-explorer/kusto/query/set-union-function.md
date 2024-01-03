@@ -72,5 +72,5 @@ datatable (Arr1: dynamic)
 
 ## Related content
 
-* [`set_intersect()`](setintersectfunction.md)
-* [`set_difference()`](setdifferencefunction.md)
+* [`set_intersect()`](set-intersect-function.md)
+* [`set_difference()`](set-difference-function.md)

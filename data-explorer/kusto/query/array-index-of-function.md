@@ -60,4 +60,4 @@ print
 
 ## Related content
 
-Use [set_has_element(`arr`, `value`)](sethaselementfunction.md) to check whether a value exists in an array. This function will improve the readability of your query. Both functions have the same performance.
+Use [set_has_element(`arr`, `value`)](set-has-element-function.md) to check whether a value exists in an array. This function will improve the readability of your query. Both functions have the same performance.

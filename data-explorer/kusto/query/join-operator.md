@@ -45,8 +45,8 @@ The following image provides a visual representation of the operation performed 
 |---|---|---|
 |`hint.remote`  |`auto`, `left`, `local`, `right` |See [Cross-Cluster Join](join-cross-cluster.md)|
 |`hint.strategy=broadcast` |Specifies the way to share the query load on cluster nodes. |See [broadcast join](broadcast-join.md) |
-|`hint.shufflekey=<key>` |The `shufflekey` query shares the query load on cluster nodes, using a key to partition data. |See [shuffle query](shufflequery.md) |
-|`hint.strategy=shuffle` |The `shuffle` strategy query shares the query load on cluster nodes, where each node processes one partition of the data. |See [shuffle query](shufflequery.md)  |
+|`hint.shufflekey=<key>` |The `shufflekey` query shares the query load on cluster nodes, using a key to partition data. |See [shuffle query](shuffle-query.md) |
+|`hint.strategy=shuffle` |The `shuffle` strategy query shares the query load on cluster nodes, where each node processes one partition of the data. |See [shuffle query](shuffle-query.md)  |
 
 ::: zone-end
 
@@ -56,8 +56,8 @@ The following image provides a visual representation of the operation performed 
 |---|---|---|
 |`hint.remote`  |`auto`, `left`, `local`, `right`   | |
 |`hint.strategy=broadcast` |Specifies the way to share the query load on cluster nodes. |See [broadcast join](broadcast-join.md) |
-|`hint.shufflekey=<key>` |The `shufflekey` query shares the query load on cluster nodes, using a key to partition data. |See [shuffle query](shufflequery.md) |
-|`hint.strategy=shuffle` |The `shuffle` strategy query shares the query load on cluster nodes, where each node processes one partition of the data. |See [shuffle query](shufflequery.md)  |
+|`hint.shufflekey=<key>` |The `shufflekey` query shares the query load on cluster nodes, using a key to partition data. |See [shuffle query](shuffle-query.md) |
+|`hint.strategy=shuffle` |The `shuffle` strategy query shares the query load on cluster nodes, where each node processes one partition of the data. |See [shuffle query](shuffle-query.md)  |
 
 ::: zone-end
 
@@ -93,4 +93,4 @@ In the following example, a placeholder key is added to both tables and then use
 * [Write multi-table queries](/training/modules/multi-table-queries-with-kusto-query-language/)
 * [Cross-cluster join](join-cross-cluster.md)
 * [Broadcast join](broadcast-join.md)
-* [Shuffle query](shufflequery.md)
+* [Shuffle query](shuffle-query.md)

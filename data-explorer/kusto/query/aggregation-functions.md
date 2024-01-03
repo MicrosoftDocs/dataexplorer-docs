@@ -8,7 +8,7 @@ ms.date: 09/20/2022
 
 # Aggregation function types at a glance
 
-An aggregation function performs a calculation on a set of values, and returns a single value. These functions are used in conjunction with the [summarize operator](summarizeoperator.md). This article lists all available aggregation functions grouped by type. For scalar functions, see [Scalar function types](scalar-functions.md).
+An aggregation function performs a calculation on a set of values, and returns a single value. These functions are used in conjunction with the [summarize operator](summarize-operator.md). This article lists all available aggregation functions grouped by type. For scalar functions, see [Scalar function types](scalar-functions.md).
 
 ## Binary functions
 
@@ -55,9 +55,9 @@ An aggregation function performs a calculation on a set of values, and returns a
 | [percentiles_array()](percentiles-aggregation-function.md) | Returns the percentile approximates of the array. |
 | [percentilesw()](percentiles-aggregation-function.md) | Returns the weighted percentile approximate of the group. |
 | [percentilesw_array()](percentiles-aggregation-function.md) | Returns the weighted percentile approximate of the array. |
-| [stdev()](stdev-aggfunction.md), [stdevif()](stdevif-aggfunction.md) | Returns the standard deviation across the group for a population that is considered a sample without/with a predicate. |
-| [stdevp()](stdevp-aggfunction.md) | Returns the standard deviation across the group for a population that is considered representative. |
-| [sum()](sum-aggfunction.md), [sumif()](sumif-aggfunction.md) | Returns the sum of the elements within the group without/with a predicate. |
+| [stdev()](stdev-aggregation-function.md), [stdevif()](stdevif-aggregation-function.md) | Returns the standard deviation across the group for a population that is considered a sample without/with a predicate. |
+| [stdevp()](stdevp-aggregation-function.md) | Returns the standard deviation across the group for a population that is considered representative. |
+| [sum()](sum-aggregation-function.md), [sumif()](sumif-aggregation-function.md) | Returns the sum of the elements within the group without/with a predicate. |
 | [tdigest()](tdigest-aggfunction.md) | Returns an intermediate result for the percentiles approximation, the weighted percentile approximate of the group. |
 | [tdigest_merge()](tdigest-merge-aggfunction.md) | Returns the merged `tdigest` value across the group. |
 | [variance()](variance-aggfunction.md), [varianceif()](varianceif-aggfunction.md) | Returns the variance across the group without/with a predicate. |

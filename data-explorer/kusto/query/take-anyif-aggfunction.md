@@ -7,7 +7,7 @@ ms.date: 02/05/2023
 ---
 # take_anyif() (aggregation function)
 
-Arbitrarily selects one record for each group in a [summarize operator](summarizeoperator.md) in records for which the *predicate*
+Arbitrarily selects one record for each group in a [summarize operator](summarize-operator.md) in records for which the *predicate*
 is 'true'. The function returns the value of an expression over each such record.
 
 This function is useful when you want to get a sample value of one column per value of the compound group key, subject to some predicate that is *true*. If such a value is present, the function attempts to return a non-null/non-empty value.

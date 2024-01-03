@@ -264,7 +264,7 @@ Use query builder mode to define your query.
     1. Select **+** to the right of **Value columns** to select the value columns that will appear on the pane.
     1. For each value column, set the aggregation type.
 
-       You can set one or more value columns. This selection is equivalent to using the [summarize operator](kusto/query/summarizeoperator.md).
+       You can set one or more value columns. This selection is equivalent to using the [summarize operator](kusto/query/summarize-operator.md).
 
 1. Select **+** to the right of **Group by (summarize)** to select one or more columns that will be used to arrange the values into groups. This selection is equivalent to the group expression in the `summarize` operator.
 

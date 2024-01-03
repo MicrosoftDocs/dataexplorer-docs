@@ -38,7 +38,7 @@ Following is a list of user query statements:
   Let statements can be used to break a long query into small named parts that are easier to
   understand.
 
-* A [set statement](./setstatement.md) sets a request property that affects how the query
+* A [set statement](./set-statement.md) sets a request property that affects how the query
   is processed and its results returned.
 
 * A [tabular expression statement](./tabularexpressionstatements.md), the most important

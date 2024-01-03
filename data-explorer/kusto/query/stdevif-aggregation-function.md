@@ -7,7 +7,7 @@ ms.date: 11/13/2023
 ---
 # stdevif() (aggregation function)
 
-Calculates the [standard deviation](stdev-aggfunction.md) of *expr* in records for which *predicate* evaluates to `true`.
+Calculates the [standard deviation](stdev-aggregation-function.md) of *expr* in records for which *predicate* evaluates to `true`.
 
 [!INCLUDE [ignore-nulls](../../includes/ignore-nulls.md)]
 

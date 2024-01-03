@@ -24,5 +24,5 @@ There are several possible courses of action.
      * Using the [project operator](../query/project-operator.md)
      * Using the [project-away operator](../query/project-away-operator.md)
      * Using the [project-keep operator](../query/project-keep-operator.md)
-  * Use the [summarize operator](../query/summarizeoperator.md) to get aggregated data.
+  * Use the [summarize operator](../query/summarize-operator.md) to get aggregated data.
 * Increase the relevant query limit temporarily for that query. For more information, see [query limits - limit on memory per iterator](querylimits.md). This method, however, isn't recommended. The limits exist to protect the cluster and to make sure that a single query doesn't disrupt concurrent queries running on the cluster.

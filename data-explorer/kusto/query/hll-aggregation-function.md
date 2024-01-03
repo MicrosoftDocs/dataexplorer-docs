@@ -7,7 +7,7 @@ ms.date: 12/26/2022
 ---
 # hll() (aggregation function)
 
-The `hll()` function is a way to estimate the number of unique values in a set of values. It does this by calculating intermediate results for aggregation within the [summarize](summarizeoperator.md) operator for a group of data using the [`dcount`](dcount-aggfunction.md) function.
+The `hll()` function is a way to estimate the number of unique values in a set of values. It does this by calculating intermediate results for aggregation within the [summarize](summarize-operator.md) operator for a group of data using the [`dcount`](dcount-aggfunction.md) function.
 
 Read about the [underlying algorithm (*H*yper*L*og*L*og) and the estimation accuracy](#estimation-accuracy).
 

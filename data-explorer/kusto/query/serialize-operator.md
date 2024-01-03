@@ -72,7 +72,7 @@ The output row set of the following operators is marked as nonserialized.
 * [reduce by](./reduce-operator.md)
 * [sample](./sample-operator.md)
 * [sample-distinct](./sampledistinct-operator.md)
-* [summarize](./summarizeoperator.md)
+* [summarize](./summarize-operator.md)
 * [top-nested](./topnestedoperator.md)
 
 All other operators preserve the serialization property. If the input row set is serialized, then the output row set is also serialized.

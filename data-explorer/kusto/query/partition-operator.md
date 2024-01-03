@@ -70,7 +70,7 @@ This strategy should be applied when the number of distinct values of the partit
 
 The subquery must be a tabular transformation that doesn't specify a tabular source. The source is implicit and is assigned according to the subtable partitions. Only certain [supported operators](#supported-operators-for-the-native-and-shuffle-strategies) can be used in the subquery. There's no restriction on the number of partitions.
 
-To use this strategy, specify `hint.strategy=shuffle`. For more information about shuffle strategy and performance, see [shuffle query](shufflequery.md).
+To use this strategy, specify `hint.strategy=shuffle`. For more information about shuffle strategy and performance, see [shuffle query](shuffle-query.md).
 
 ### Supported operators for the native and shuffle strategies
 
@@ -96,7 +96,7 @@ The following list of operators can be used in subqueries with the native or shu
 * [search](search-operator.md)
 * [serialize](serialize-operator.md)
 * [sort](sort-operator.md)
-* [summarize](summarizeoperator.md)
+* [summarize](summarize-operator.md)
 * [take](takeoperator.md)
 * [top](topoperator.md)
 * [top-hitters](tophittersoperator.md)

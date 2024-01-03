@@ -44,7 +44,7 @@ Runs multiple consumer operators in parallel.
 * [`project-keep`](project-keep-operator.md)
 * [`project-rename`](project-rename-operator.md)
 * [`project-reorder`](project-reorder-operator.md)
-* [`summarize`](summarizeoperator.md)
+* [`summarize`](summarize-operator.md)
 * [`top`](topoperator.md)
 * [`top-nested`](topnestedoperator.md)
 * [`sort`](./sort-operator.md)

@@ -27,7 +27,7 @@ Callout policies are managed at cluster-level and are classified into the follow
 | Callout policy type | Description                                                                                                                                                           |
 |---------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | kusto               | Controls cross-cluster queries.                                                                                                                   |
-| sql                 | Controls the [SQL plugin](../query/sqlrequestplugin.md).                                                                                                              |
+| sql                 | Controls the [SQL plugin](../query/sql-request-plugin.md).                                                                                                              |
 | mysql               | Controls the [MySQL plugin](../query/mysql-request-plugin.md).                                                                                                         |
 | azure_digital_twins | Controls the [Azure Digital Twins plugin](../query/azure-digital-twins-query-request-plugin.md).                                                                      |
 | cosmosdb            | Controls the [Cosmos DB plugin](../query/cosmosdb-plugin.md).                                                                                                         |

@@ -176,12 +176,12 @@
         "redirect_document_id": true
       },
       {
-        "source_path": "data-explorer/kusto/query/arraysplitfunction.md",
+        "source_path": "data-explorer/kusto/query/arraysplit-function.md",
         "redirect_url": "/azure/data-explorer/kusto/query/array-split-function",
         "redirect_document_id": true
       },
       {
-        "source_path": "data-explorer/kusto/query/asinfunction.md",
+        "source_path": "data-explorer/kusto/query/asin-function.md",
         "redirect_url": "/azure/data-explorer/kusto/query/asin-function",
         "redirect_document_id": true
       },
@@ -1251,7 +1251,7 @@
         "redirect_document_id": true
       },
       {
-        "source_path": "data-explorer/kusto/query/series-asinfunction.md",
+        "source_path": "data-explorer/kusto/query/series-asin-function.md",
         "redirect_url": "/azure/data-explorer/kusto/query/series-asin-function",
         "redirect_document_id": true
       },
@@ -1411,12 +1411,12 @@
         "redirect_document_id": true
       },
       {
-        "source_path": "data-explorer/kusto/query/series-signfunction.md",
+        "source_path": "data-explorer/kusto/query/series-sign-function.md",
         "redirect_url": "/azure/data-explorer/kusto/query/series-sign-function",
         "redirect_document_id": true
       },
       {
-        "source_path": "data-explorer/kusto/query/series-sinfunction.md",
+        "source_path": "data-explorer/kusto/query/series-sin-function.md",
         "redirect_url": "/azure/data-explorer/kusto/query/series-sin-function",
         "redirect_document_id": true
       },
@@ -1438,6 +1438,166 @@
       {
         "source_path": "data-explorer/kusto/query/series-tanfunction.md",
         "redirect_url": "/azure/data-explorer/kusto/query/series-tan-function",
+        "redirect_document_id": true
+      },
+      {
+        "source_path": "data-explorer/kusto/query/setdifferencefunction.md",
+        "redirect_url": "/azure/data-explorer/kusto/query/set-difference-function",
+        "redirect_document_id": true
+      },
+      {
+        "source_path": "data-explorer/kusto/query/sethaselementfunction.md",
+        "redirect_url": "/azure/data-explorer/kusto/query/set-has-element-function",
+        "redirect_document_id": true
+      },
+      {
+        "source_path": "data-explorer/kusto/query/setintersectfunction.md",
+        "redirect_url": "/azure/data-explorer/kusto/query/set-intersect-function",
+        "redirect_document_id": true
+      },
+      {
+        "source_path": "data-explorer/kusto/query/setstatement.md",
+        "redirect_url": "/azure/data-explorer/kusto/query/set-statement",
+        "redirect_document_id": true
+      },
+      {
+        "source_path": "data-explorer/kusto/query/setunionfunction.md",
+        "redirect_url": "/azure/data-explorer/kusto/query/set-union-function",
+        "redirect_document_id": true
+      },
+      {
+        "source_path": "data-explorer/kusto/query/sha1-hash-function.md",
+        "redirect_url": "/azure/data-explorer/kusto/query/hash-sha1-function",
+        "redirect_document_id": true
+      },
+      {
+        "source_path": "data-explorer/kusto/query/sha256hashfunction.md",
+        "redirect_url": "/azure/data-explorer/kusto/query/hash-sha256-function",
+        "redirect_document_id": true
+      },
+      {
+        "source_path": "data-explorer/kusto/query/shufflequery.md",
+        "redirect_url": "/azure/data-explorer/kusto/query/shuffle-query",
+        "redirect_document_id": true
+      },
+      {
+        "source_path": "data-explorer/kusto/query/signfunction.md",
+        "redirect_url": "/azure/data-explorer/kusto/query/sign-function",
+        "redirect_document_id": true
+      },
+      {
+        "source_path": "data-explorer/kusto/query/sinfunction.md",
+        "redirect_url": "/azure/data-explorer/kusto/query/sin-function",
+        "redirect_document_id": true
+      },
+      {
+        "source_path": "data-explorer/kusto/query/splitfunction.md",
+        "redirect_url": "/azure/data-explorer/kusto/query/split-function",
+        "redirect_document_id": true
+      },
+      {
+        "source_path": "data-explorer/kusto/query/sqlcheatsheet.md",
+        "redirect_url": "/azure/data-explorer/kusto/query/sql-cheat-sheet",
+        "redirect_document_id": true
+      },
+      {
+        "source_path": "data-explorer/kusto/query/sqlrequestplugin.md",
+        "redirect_url": "/azure/data-explorer/kusto/query/sql-request-plugin",
+        "redirect_document_id": true
+      },
+      {
+        "source_path": "data-explorer/kusto/query/sqrtfunction.md",
+        "redirect_url": "/azure/data-explorer/kusto/query/sqrt-function",
+        "redirect_document_id": true
+      },
+      {
+        "source_path": "data-explorer/kusto/query/startofdayfunction.md",
+        "redirect_url": "/azure/data-explorer/kusto/query/startofday-function",
+        "redirect_document_id": true
+      },
+      {
+        "source_path": "data-explorer/kusto/query/startofmonthfunction.md",
+        "redirect_url": "/azure/data-explorer/kusto/query/startofmonth-function",
+        "redirect_document_id": true
+      },
+      {
+        "source_path": "data-explorer/kusto/query/startofweekfunction.md",
+        "redirect_url": "/azure/data-explorer/kusto/query/startofweek-function",
+        "redirect_document_id": true
+      },
+      {
+        "source_path": "data-explorer/kusto/query/startofyearfunction.md",
+        "redirect_url": "/azure/data-explorer/kusto/query/startofyear-function",
+        "redirect_document_id": true
+      },
+      {
+        "source_path": "data-explorer/kusto/query/stdev-aggfunction.md",
+        "redirect_url": "/azure/data-explorer/kusto/query/stdev-aggregation-function",
+        "redirect_document_id": true
+      },
+      {
+        "source_path": "data-explorer/kusto/query/stdevif-aggfunction.md",
+        "redirect_url": "/azure/data-explorer/kusto/query/stdevif-aggregation-function",
+        "redirect_document_id": true
+      },
+      {
+        "source_path": "data-explorer/kusto/query/stdevp-aggfunction.md",
+        "redirect_url": "/azure/data-explorer/kusto/query/stdevp-aggregation-function",
+        "redirect_document_id": true
+      },
+      {
+        "source_path": "data-explorer/kusto/query/strcat-arrayfunction.md",
+        "redirect_url": "/azure/data-explorer/kusto/query/strcat-array-function",
+        "redirect_document_id": true
+      },
+      {
+        "source_path": "data-explorer/kusto/query/strcat-delimfunction.md",
+        "redirect_url": "/azure/data-explorer/kusto/query/strcat-delim-function",
+        "redirect_document_id": true
+      },
+      {
+        "source_path": "data-explorer/kusto/query/strcatfunction.md",
+        "redirect_url": "/azure/data-explorer/kusto/query/strcat-function",
+        "redirect_document_id": true
+      },
+      {
+        "source_path": "data-explorer/kusto/query/strcmpfunction.md",
+        "redirect_url": "/azure/data-explorer/kusto/query/strcmp-function",
+        "redirect_document_id": true
+      },
+      {
+        "source_path": "data-explorer/kusto/query/stringsizefunction.md",
+        "redirect_url": "/azure/data-explorer/kusto/query/string-size-function",
+        "redirect_document_id": true
+      },
+      {
+        "source_path": "data-explorer/kusto/query/strlenfunction.md",
+        "redirect_url": "/azure/data-explorer/kusto/query/strlen-function",
+        "redirect_document_id": true
+      },
+      {
+        "source_path": "data-explorer/kusto/query/strrepfunction.md",
+        "redirect_url": "/azure/data-explorer/kusto/query/strrep-function",
+        "redirect_document_id": true
+      },
+      {
+        "source_path": "data-explorer/kusto/query/substringfunction.md",
+        "redirect_url": "/azure/data-explorer/kusto/query/substring-function",
+        "redirect_document_id": true
+      },
+      {
+        "source_path": "data-explorer/kusto/query/sum-aggfunction.md",
+        "redirect_url": "/azure/data-explorer/kusto/query/sum-aggregation-function",
+        "redirect_document_id": true
+      },
+      {
+        "source_path": "data-explorer/kusto/query/sumif-aggfunction.md",
+        "redirect_url": "/azure/data-explorer/kusto/query/sumif-aggregation-function",
+        "redirect_document_id": true
+      },
+      {
+        "source_path": "data-explorer/kusto/query/summarizeoperator.md",
+        "redirect_url": "/azure/data-explorer/kusto/query/summarize-operator",
         "redirect_document_id": true
       }
     ]

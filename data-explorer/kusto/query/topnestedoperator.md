@@ -36,7 +36,7 @@ The result is a table with two columns per clause. One column holds the partitio
 
 The following aggregation functions are supported:
 
-* [sum()](sum-aggfunction.md)
+* [sum()](sum-aggregation-function.md)
 * [count()](count-aggregation-function.md)
 * [max()](max-aggregation-function.md)
 * [min()](min-aggregation-function.md)

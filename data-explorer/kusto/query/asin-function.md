@@ -7,7 +7,7 @@ ms.date: 11/03/2022
 ---
 # asin()
 
-Calculates the angle whose sine is the specified number, or the arc sine. This is the inverse operation of [`sin()`](sinfunction.md).
+Calculates the angle whose sine is the specified number, or the arc sine. This is the inverse operation of [`sin()`](sin-function.md).
 
 ## Syntax
 

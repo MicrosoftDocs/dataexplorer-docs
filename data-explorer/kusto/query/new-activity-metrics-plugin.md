@@ -26,7 +26,7 @@ The plugin is invoked with the [`evaluate`](evaluate-operator.md) operator.
 | *TimelineColumn*| string | &check; | The name of the column that represents the timeline.|
 | *Start*| scalar | &check; | The value of the analysis start period.|
 | *End*| scalar | &check; | The value of the analysis end period.|
-| *Window*| scalar | &check; | The value of the analysis window period. Can be a numeric, datetime, or timespan value, or a string that is one of `week`, `month` or `year`, in which case all periods will be [startofweek](startofweekfunction.md)/[startofmonth](startofmonthfunction.md)/[startofyear](startofyearfunction.md) accordingly. When using `startofweek`, make sure start time is a Sunday, otherwise first cohort will be empty (since [startofweek](startofweekfunction.md) is considered to be a Sunday).|
+| *Window*| scalar | &check; | The value of the analysis window period. Can be a numeric, datetime, or timespan value, or a string that is one of `week`, `month` or `year`, in which case all periods will be [startofweek](startofweek-function.md)/[startofmonth](startofmonth-function.md)/[startofyear](startofyear-function.md) accordingly. When using `startofweek`, make sure start time is a Sunday, otherwise first cohort will be empty (since [startofweek](startofweek-function.md) is considered to be a Sunday).|
 | *Cohort*| scalar | | Indicates a specific cohort. If not provided, all cohorts corresponding to the analysis time window are calculated and returned.|
 | *dim1*, *dim2*, ...| dynamic | | An array of the dimensions columns that slice the activity metrics calculation.|
 | *Lookback*| string | | A tabular expression with a set of IDs that belong to the 'look back' period.|

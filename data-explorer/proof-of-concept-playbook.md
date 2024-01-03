@@ -247,7 +247,7 @@ Here are some examples of high-level tasks:
     - Make data available in Azure by extracting from the source or by creating sample data in Azure. For an initial test on ingesting data in Azure Data Explorer, use the [ingestion wizard](ingest-data-wizard.md).
     - Test the connector/integration methods you've planned to use to ingest data into your cluster.
 1. Write Kusto Queries to query data:
-    - If you're migrating from SQL based system, you can use the [SQL to Kusto cheat sheet](kusto/query/sqlcheatsheet.md) to help you get started.
+    - If you're migrating from SQL based system, you can use the [SQL to Kusto cheat sheet](kusto/query/sql-cheat-sheet.md) to help you get started.
 1. Execute the tests:
     - Many tests can be executed in parallel on your clusters using different client interfaces such as dashboards, PowerBIm and the Azure Data Explorer [web UI](./web-query-data.md).
     - You can create [load test using JMeter or Grafana k6](kusto/api/load-test-cluster.md).

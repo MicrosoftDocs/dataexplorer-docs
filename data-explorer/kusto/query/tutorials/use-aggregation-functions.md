@@ -33,7 +33,7 @@ This tutorial builds on the foundation from the first tutorial, [Learn common op
 
 ## Use the summarize operator
 
-The [summarize](../summarizeoperator.md) operator is essential to performing aggregations over your data. The `summarize` operator groups together rows based on the `by` clause and then uses the provided aggregation function to combine each group in a single row.
+The [summarize](../summarize-operator.md) operator is essential to performing aggregations over your data. The `summarize` operator groups together rows based on the `by` clause and then uses the provided aggregation function to combine each group in a single row.
 
 Find the number of events by state using `summarize` with the [count](../count-aggregation-function.md) aggregation function.
 
@@ -168,7 +168,7 @@ StormEvents
 
 The results of the previous query indicate that Frost/Freeze events resulted in the most crop damage on average. However, the [bin() query](#group-data-into-bins) showed that events with crop damage mostly took place in the summer months.
 
-Use [sum()](../sum-aggfunction.md) to check the total number of damaged crops instead of the amount of events that caused some damage, as done with `count()` in the previous [bin() query](#group-data-into-bins).
+Use [sum()](../sum-aggregation-function.md) to check the total number of damaged crops instead of the amount of events that caused some damage, as done with `count()` in the previous [bin() query](#group-data-into-bins).
 
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA1WOsQ7CMBBD936Fx0SiVVqGTrBQvqD8QEpONENSdDmoQHw8iZAQnDw9+2SPsnA43ilKql5YZ2LCKJbl5ANhIlmJIpSzQpKJ6ozpa9NmaTQN/nnb1dtWa1TIZ6PDYIO90IGXa8IeJjekWwiW/ZNQ6MfHrmD1E9aYHph8VN8pG/RO53+m6IhROs9z9t7w8FzwwAAAAA==" target="_blank">Run the query</a>
@@ -186,7 +186,7 @@ StormEvents
 Now you can see a peak in crop damage in January, which probably was due to Frost/Freeze.
 
 > [!TIP]
-> Use [minif()](../minif-aggregation-function.md), [maxif()](../maxif-aggregation-function.md), [avgif()](../avgif-aggfunction.md), and [sumif()](../sumif-aggfunction.md) to perform conditional aggregations, like we did when in the [conditionally count rows](#conditionally-count-rows) section.
+> Use [minif()](../minif-aggregation-function.md), [maxif()](../maxif-aggregation-function.md), [avgif()](../avgif-aggfunction.md), and [sumif()](../sumif-aggregation-function.md) to perform conditional aggregations, like we did when in the [conditionally count rows](#conditionally-count-rows) section.
 
 ## Calculate percentages
 

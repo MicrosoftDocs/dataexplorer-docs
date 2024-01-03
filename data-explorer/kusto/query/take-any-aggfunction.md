@@ -7,7 +7,7 @@ ms.date: 02/20/2023
 ---
 # take_any() (aggregation function)
 
-Arbitrarily chooses one record for each group in a [summarize operator](summarizeoperator.md),
+Arbitrarily chooses one record for each group in a [summarize operator](summarize-operator.md),
 and returns the value of one or more expressions over each such record.
 
 > **Deprecated aliases:** any()

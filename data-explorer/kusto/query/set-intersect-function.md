@@ -62,5 +62,5 @@ print arr = set_intersect(dynamic([1, 2, 3]), dynamic([4,5]))
 
 ## Related content
 
-* [`set_union()`](setunionfunction.md)
-* [`set_difference()`](setdifferencefunction.md)
+* [`set_union()`](set-union-function.md)
+* [`set_difference()`](set-difference-function.md)

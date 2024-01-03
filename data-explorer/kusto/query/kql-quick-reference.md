@@ -35,7 +35,7 @@ This article shows you a list of functions and their descriptions to help get yo
 | **Sort and Aggregate Dataset**                 |**_Restructure the data by sorting or grouping them in meaningful ways_**|                  |
 | [sort operator](sort-operator.md) | Sort the rows of the input table by one or more columns in ascending or descending order | `T | sort by expression1 [asc|desc], expression2 [asc|desc], …` |
 | [top](topoperator.md)                          | Returns the first N rows of the dataset when the dataset is sorted using `by` | `T | top numberOfRows by expression [asc|desc] [nulls first|last]` |
-| [summarize](summarizeoperator.md)              | Groups the rows according to the `by` group columns, and calculates aggregations over each group | `T | summarize [[Column =] Aggregation [, ...]] [by [Column =] GroupExpression [, ...]]` |
+| [summarize](summarize-operator.md)              | Groups the rows according to the `by` group columns, and calculates aggregations over each group | `T | summarize [[Column =] Aggregation [, ...]] [by [Column =] GroupExpression [, ...]]` |
 | [count](count-operator.md)                       | Counts records in the input table (for example, T)<br>This operator is shorthand for `summarize count() `| `T | count` |
 | [join](join-operator.md)                        | Merges the rows of two tables to form a new table by matching values of the specified column(s) from each table. Supports a full range of join types: `flouter`, `inner`, `innerunique`, `leftanti`, `leftantisemi`, `leftouter`, `leftsemi`, `rightanti`, `rightantisemi`, `rightouter`, `rightsemi` | `LeftTable | join [JoinParameters] ( RightTable ) on Attributes` |
 | [union](unionoperator.md)                      | Takes two or more tables and returns all their rows | `[T1] | union [T2], [T3], …` |
@@ -54,5 +54,5 @@ This article shows you a list of functions and their descriptions to help get yo
 
 ## Related content
 
-- [SQL cheat sheet](sqlcheatsheet.md)
+- [SQL cheat sheet](sql-cheat-sheet.md)
 - [Splunk cheat sheet](splunk-cheat-sheet.md)

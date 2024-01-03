@@ -9,7 +9,7 @@ ms.date: 03/12/2023
 
 Returns the minimum of *Expr* in records for which *Predicate* evaluates to `true`.
 
-* Can be used only in context of aggregation inside [summarize](summarizeoperator.md)
+* Can be used only in context of aggregation inside [summarize](summarize-operator.md)
 
 See also - [min()](min-aggregation-function.md) function, which returns the minimum value across the group without predicate expression.
 

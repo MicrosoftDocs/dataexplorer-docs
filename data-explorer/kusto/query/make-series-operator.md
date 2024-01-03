@@ -42,7 +42,7 @@ Create series of specified aggregated values along a specified axis.
 |Name|Description|
 |--|--|
 |`kind` |Produces default result when the input of make-series operator is empty. Value: `nonempty`|   
-|`hint.shufflekey=<key>` |The `shufflekey` query shares the query load on cluster nodes, using a key to partition data. See [shuffle query](shufflequery.md) |  
+|`hint.shufflekey=<key>` |The `shufflekey` query shares the query load on cluster nodes, using a key to partition data. See [shuffle query](shuffle-query.md) |  
 
 > [!NOTE]
 >
@@ -91,9 +91,9 @@ Finally the rows from the intermediate result arranged into groups having the sa
 |[minif()](minif-aggregation-function.md)|Returns the minimum value with the predicate of the group|
 |[percentile()](percentiles-aggregation-function.md)|Returns the percentile value across the group|
 |[take_any()](take-any-aggfunction.md)|Returns a random non-empty value for the group|
-|[stdev()](stdev-aggfunction.md)|Returns the standard deviation across the group|
-|[sum()](sum-aggfunction.md)|Returns the sum of the elements within the group|
-|[sumif()](sumif-aggfunction.md)|Returns the sum of the elements with the predicate of the group|
+|[stdev()](stdev-aggregation-function.md)|Returns the standard deviation across the group|
+|[sum()](sum-aggregation-function.md)|Returns the sum of the elements within the group|
+|[sumif()](sumif-aggregation-function.md)|Returns the sum of the elements with the predicate of the group|
 |[variance()](variance-aggfunction.md)|Returns the variance across the group|
 
 ## List of series analysis functions

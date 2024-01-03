@@ -81,7 +81,7 @@ There are 2 ways to query a materialized view:
 When querying the entire view, the materialized part is combined with the `delta` during query time. This includes aggregating the `delta` and joining it with the materialized part.
 
 * Querying the entire view performs better if the query includes filters on the group by keys of the materialized view query. See more tips about how to create your materialized view, based on your query pattern, in the [`.create materialized-view` performance tips](materialized-view-create.md#performance-tips) section.
-* The query optimizer chooses summarize/join strategies that are expected to improve query performance. For example, the decision on whether to [shuffle](../../query/shufflequery.md) the query is based on number of records in `delta` part. The following [client request properties](../../api/netfx/request-properties.md) provide some control over the optimizations applied. You can test these properties with your materialized view queries and evaluate their impact on queries performance.
+* The query optimizer chooses summarize/join strategies that are expected to improve query performance. For example, the decision on whether to [shuffle](../../query/shuffle-query.md) the query is based on number of records in `delta` part. The following [client request properties](../../api/netfx/request-properties.md) provide some control over the optimizations applied. You can test these properties with your materialized view queries and evaluate their impact on queries performance.
 
 |Client request property name|Type|Description|
 |------------------------|-------|-------------------|

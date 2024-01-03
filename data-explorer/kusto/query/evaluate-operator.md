@@ -64,7 +64,7 @@ The following plugins are supported:
 * [rolling-percentile plugin](rolling-percentile-plugin.md)
 * [rows-near plugin](rows-near-plugin.md)
 * [schema-merge plugin](schema-merge-plugin.md)
-* [sql-request plugin](sqlrequestplugin.md)
+* [sql-request plugin](sql-request-plugin.md)
 * [sequence-detect plugin](sequence-detect-plugin.md)
 
 ## Distribution hints

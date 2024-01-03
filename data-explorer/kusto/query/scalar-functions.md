@@ -56,10 +56,10 @@ This article lists all available scalar functions grouped by type. For aggregati
 |[make_timespan()](make-timespan-function.md)|Creates a timespan scalar value from the specified time period.|
 |[monthofyear()](monthofyear-function.md)|Returns the integer number that represents the month number of the given year.|
 |[now()](now-function.md)|Returns the current UTC clock time, optionally offset by a given timespan.|
-|[startofday()](startofdayfunction.md)|Returns the start of the day containing the date, shifted by an offset, if provided.|
-|[startofmonth()](startofmonthfunction.md)|Returns the start of the month containing the date, shifted by an offset, if provided.|
-|[startofweek()](startofweekfunction.md)|Returns the start of the week containing the date, shifted by an offset, if provided.|
-|[startofyear()](startofyearfunction.md)|Returns the start of the year containing the date, shifted by an offset, if provided.|
+|[startofday()](startofday-function.md)|Returns the start of the day containing the date, shifted by an offset, if provided.|
+|[startofmonth()](startofmonth-function.md)|Returns the start of the month containing the date, shifted by an offset, if provided.|
+|[startofweek()](startofweek-function.md)|Returns the start of the week containing the date, shifted by an offset, if provided.|
+|[startofyear()](startofyear-function.md)|Returns the start of the year containing the date, shifted by an offset, if provided.|
 |[todatetime()](todatetimefunction.md)|Converts input to datetime scalar.|
 |[totimespan()](totimespanfunction.md)|Converts input to timespan scalar.|
 |[unixtime_microseconds_todatetime()](unixtime-microseconds-todatetimefunction.md)|Converts unix-epoch microseconds to UTC datetime.|
@@ -97,10 +97,10 @@ This article lists all available scalar functions grouped by type. For aggregati
 |[pack_all()](pack-all-function.md)|Creates a dynamic object (property bag) from all the columns of the tabular expression.|
 |[pack_array()](pack-array-function.md)|Packs all input values into a dynamic array.|
 |[repeat()](repeat-function.md)|Generates a dynamic array holding a series of equal values.|
-|[set_difference()](setdifferencefunction.md)|Returns an array of the set of all distinct values that are in the first array but aren't in other arrays.|
-|[set_has_element()](sethaselementfunction.md)|Determines whether the specified array contains the specified element.|
-|[set_intersect()](setintersectfunction.md)|Returns an array of the set of all distinct values that are in all arrays.|
-|[set_union()](setunionfunction.md)|Returns an array of the set of all distinct values that are in any of provided arrays.|
+|[set_difference()](set-difference-function.md)|Returns an array of the set of all distinct values that are in the first array but aren't in other arrays.|
+|[set_has_element()](set-has-element-function.md)|Determines whether the specified array contains the specified element.|
+|[set_intersect()](set-intersect-function.md)|Returns an array of the set of all distinct values that are in all arrays.|
+|[set_union()](set-union-function.md)|Returns an array of the set of all distinct values that are in any of provided arrays.|
 |[treepath()](treepathfunction.md)|Enumerates all the path expressions that identify leaves in a dynamic object.|
 |[zip()](zipfunction.md)|The zip function accepts any number of dynamic arrays. Returns an array whose elements are each an array with the elements of the input arrays of the same index.|
 
@@ -156,9 +156,9 @@ This article lists all available scalar functions grouped by type. For aggregati
 |[rand()](rand-function.md)|Returns a random number.|
 |[range()](range-function.md)|Generates a dynamic array holding a series of equally spaced values.|
 |[round()](round-function.md)|Returns the rounded source to the specified precision.|
-|[sign()](signfunction.md)|Sign of a numeric expression.|
-|[sin()](sinfunction.md)|Returns the sine function.|
-|[sqrt()](sqrtfunction.md)|Returns the square root function.|
+|[sign()](sign-function.md)|Sign of a numeric expression.|
+|[sin()](sin-function.md)|Returns the sine function.|
+|[sqrt()](sqrt-function.md)|Returns the square root function.|
 |[tan()](tanfunction.md)|Returns the tangent function.|
 |[welch_test()](welch-testfunction.md)|Computes the p-value of the [Welch-test function](https://en.wikipedia.org/wiki/Welch%27s_t-test).|
 
@@ -291,13 +291,13 @@ This article lists all available scalar functions grouped by type. For aggregati
 |[punycode_from_string()](punycode-from-string-function.md)| Encodes domain name to Punycode form.|
 |[punycode_to_string()](punycode-to-string-function.md)| Decodes domain name from Punycode form.|
 |[reverse()](reverse-function.md)|Function makes reverse of input string.|
-|[split()](splitfunction.md)|Splits a given string according to a given delimiter and returns a string array with the contained substrings.|
-|[strcat()](strcatfunction.md)|Concatenates between 1 and 64 arguments.|
-|[strcat_delim()](strcat-delimfunction.md)|Concatenates between 2 and 64 arguments, with delimiter, provided as first argument.|
-|[strcmp()](strcmpfunction.md)|Compares two strings.|
-|[strlen()](strlenfunction.md)|Returns the length, in characters, of the input string.|
-|[strrep()](strrepfunction.md)|Repeats given string provided number of times (default - 1).|
-|[substring()](substringfunction.md)|Extracts a substring from a source string starting from some index to the end of the string.|
+|[split()](split-function.md)|Splits a given string according to a given delimiter and returns a string array with the contained substrings.|
+|[strcat()](strcat-function.md)|Concatenates between 1 and 64 arguments.|
+|[strcat_delim()](strcat-delim-function.md)|Concatenates between 2 and 64 arguments, with delimiter, provided as first argument.|
+|[strcmp()](strcmp-function.md)|Compares two strings.|
+|[strlen()](strlen-function.md)|Returns the length, in characters, of the input string.|
+|[strrep()](strrep-function.md)|Repeats given string provided number of times (default - 1).|
+|[substring()](substring-function.md)|Extracts a substring from a source string starting from some index to the end of the string.|
 |[toupper()](toupperfunction.md)|Converts a string to upper case.|
 |[translate()](translatefunction.md)|Replaces a set of characters ('searchList') with another set of characters ('replacementList') in a given a string.|
 |[trim()](trimfunction.md)|Removes all leading and trailing matches of the specified regular expression.|
@@ -413,7 +413,7 @@ This article lists all available scalar functions grouped by type. For aggregati
 |[hash_combine()](hash-combine-function.md)|Combines two or more hash values.|
 |[hash_many()](hash_manyfunction.md)|Returns a combined hash value of multiple values.|
 |[hash_md5()](hash-md5-function.md)|Returns an MD5 hash value for the input value.|
-|[hash_sha1()](sha1-hash-function.md)|Returns a SHA1 hash value for the input value.|
+|[hash_sha1()](hash-sha1-function.md)|Returns a SHA1 hash value for the input value.|
 |[hash_sha256()](sha256hash-function.md)|Returns a SHA256 hash value for the input value.|
 |[hash_xxhash64()](hash-xxhash64-function.md)|Returns an XXHASH64 hash value for the input value.|
 

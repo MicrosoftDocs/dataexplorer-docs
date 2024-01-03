@@ -121,7 +121,7 @@ items:
       - name: Restrict statement
         href: restrict-statement.md
       - name: Set statement
-        href: setstatement.md
+        href: set-statement.md
       - name: Tabular expression statements
         displayName: views
         href: tabularexpressionstatements.md
@@ -294,11 +294,11 @@ items:
         href: serialize-operator.md
       - name: shuffle query
         displayName: hint.shufflekey, hint.strategy, shufflekey, hint, strategy
-        href: shufflequery.md
+        href: shuffle-query.md
       - name: summarize operator
         items:
           - name: summarize operator overview
-            href: summarizeoperator.md
+            href: summarize-operator.md
           - name: Using hll() and tdigest()
             href: usinghlltdigest.md
       - name: take operator
@@ -810,7 +810,7 @@ items:
         href: hash-md5-function.md
       - name: hash_sha1()
         displayName: hash sha1
-        href: sha1-hash-function.md
+        href: hash-sha1-function.md
       - name: hash_sha256()
         displayName: hash sha256
         href: sha256hash-function.md
@@ -1030,60 +1030,60 @@ items:
         href: round-function.md
       - name: set_difference()
         displayName: set difference
-        href: setdifferencefunction.md
+        href: set-difference-function.md
       - name: set_has_element()
         displayName: set has element
-        href: sethaselementfunction.md
+        href: set-has-element-function.md
       - name: set_intersect()
         displayName: set intersect
-        href: setintersectfunction.md
+        href: set-intersect-function.md
       - name: set_union()
         displayName: set union
-        href: setunionfunction.md
+        href: set-union-function.md
       - name: sign()
-        href: signfunction.md
+        href: sign-function.md
       - name: sin()
-        href: sinfunction.md
+        href: sin-function.md
       - name: split()
-        href: splitfunction.md
+        href: split-function.md
       - name: sqrt()
-        href: sqrtfunction.md
+        href: sqrt-function.md
       - name: startofday()
         displayName: start of day
-        href: startofdayfunction.md
+        href: startofday-function.md
       - name: startofmonth()
         displayName: start of month
-        href: startofmonthfunction.md
+        href: startofmonth-function.md
       - name: startofweek()
         displayName: start of week
-        href: startofweekfunction.md
+        href: startofweek-function.md
       - name: startofyear()
         displayName: start of year
-        href: startofyearfunction.md
+        href: startofyear-function.md
       - name: strcat()
         displayName: string concat
-        href: strcatfunction.md
+        href: strcat-function.md
       - name: strcat_array()
         displayName: string concat array
-        href: strcat-arrayfunction.md
+        href: strcat-array-function.md
       - name: strcat_delim()
         displayName: string concat delim
-        href: strcat-delimfunction.md
+        href: strcat-delim-function.md
       - name: strcmp()
         displayName: string compare
-        href: strcmpfunction.md
+        href: strcmp-function.md
       - name: string_size()
         displayName: string size
-        href: stringsizefunction.md
+        href: string-size-function.md
       - name: strlen()
         displayName: string length
-        href: strlenfunction.md
+        href: strlen-function.md
       - name: strrep()
         displayName: string replace
-        href: strrepfunction.md
+        href: strrep-function.md
       - name: substring()
         displayName: string substring
-        href: substringfunction.md
+        href: substring-function.md
       - name: tan()
         href: tanfunction.md
       - name: tobool()
@@ -1249,15 +1249,15 @@ items:
         displayName: percentilesw_array(), weighted percentiles
         href: percentilesw-aggregation-function.md
       - name: stdev()
-        href: stdev-aggfunction.md
+        href: stdev-aggregation-function.md
       - name: stdevif()
-        href: stdevif-aggfunction.md
+        href: stdevif-aggregation-function.md
       - name: stdevp()
-        href: stdevp-aggfunction.md
+        href: stdevp-aggregation-function.md
       - name: sum()
-        href: sum-aggfunction.md
+        href: sum-aggregation-function.md
       - name: sumif()
-        href: sumif-aggfunction.md
+        href: sumif-aggregation-function.md
       - name: take_any()
         displayName: any()
         href: take-any-aggfunction.md
@@ -1599,7 +1599,7 @@ items:
           - name: postgresql_request plugin
             href: postgresql-request-plugin.md
           - name: sql_request plugin
-            href: sqlrequestplugin.md
+            href: sql-request-plugin.md
       - name: User and sequence analytics plugins
         items:
           - name: User analytics plugins overview
@@ -1670,7 +1670,7 @@ items:
         href: jsonpath.md
       - name: SQL to Kusto cheat sheet
         displayName: Kusto
-        href: sqlcheatsheet.md
+        href: sql-cheat-sheet.md
       - name: Splunk to Kusto cheat sheet
         href: splunk-cheat-sheet.md
       - name: Timezones
