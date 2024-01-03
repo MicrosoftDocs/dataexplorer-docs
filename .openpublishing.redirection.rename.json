@@ -1352,7 +1352,7 @@
       },
       {
         "source_path": "data-explorer/kusto/query/series-iirfunction.md",
-        "redirect_url": "/azure/data-explorer/kusto/query/series-irr-function",
+        "redirect_url": "/azure/data-explorer/kusto/query/series-iir-function",
         "redirect_document_id": true
       },
       {
@@ -1802,7 +1802,7 @@
       },
       {
         "source_path": "data-explorer/kusto/query/weekofyearfunction.md",
-        "redirect_url": "/azure/data-explorer/kusto/query/weak-of-year-function",
+        "redirect_url": "/azure/data-explorer/kusto/query/week-of-year-function",
         "redirect_document_id": true
       },
       {
