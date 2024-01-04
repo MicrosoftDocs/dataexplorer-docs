@@ -7,7 +7,7 @@ ms.date: 11/16/2022
 ---
 # avgif() (aggregation function)
 
-Calculates the [average](avg-aggfunction.md) of *expr* in records for which *predicate* evaluates to `true`.
+Calculates the [average](avg-aggregation-function.md) of *expr* in records for which *predicate* evaluates to `true`.
 
 [!INCLUDE [data-explorer-agg-function-summarize-note](../../includes/data-explorer-agg-function-summarize-note.md)]
 

@@ -235,4 +235,4 @@ range x from 1 to 4 step 1
 * For more examples, see [Chart count of live activities over time](./samples.md#chart-concurrent-sessions-over-time).
 * [mv-apply](./mv-apply-operator.md) operator.
 * For the opposite of the mv-expand operator, see [summarize make_list()](make-list-aggregation-function.md).
-* For expanding dynamic JSON objects into columns using property bag keys, see [bag_unpack()](bag-unpackplugin.md) plugin.
+* For expanding dynamic JSON objects into columns using property bag keys, see [bag_unpack()](bag-unpack-plugin.md) plugin.

@@ -1189,7 +1189,7 @@ items:
       - name: avg()
         href: avg-aggfunction.md
       - name: avgif()
-        href: avgif-aggfunction.md
+        href: avgif-aggregation-function.md
       - name: binary_all_and
         href: binary-all-and-aggregation-function.md
       - name: binary_all_or
@@ -1559,7 +1559,7 @@ items:
       - name: Data reshaping plugins
         items:
           - name: bag_unpack plugin
-            href: bag-unpackplugin.md
+            href: bag-unpack-plugin.md
           - name: narrow plugin
             href: narrow-plugin.md
           - name: pivot plugin

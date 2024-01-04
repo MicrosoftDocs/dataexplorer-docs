@@ -1834,6 +1834,21 @@
         "source_path": "data-explorer/kusto/query/zlib-base64-decompress.md",
         "redirect_url": "/azure/data-explorer/kusto/query/zlib-base64-decompress-function",
         "redirect_document_id": true
+      },
+      {
+        "source_path": "data-explorer/kusto/query/avg-aggfunction.md",
+        "redirect_url": "/azure/data-explorer/kusto/query/avg-aggregation-function",
+        "redirect_document_id": true
+      },
+      {
+        "source_path": "data-explorer/kusto/query/avgif-aggfunction.md",
+        "redirect_url": "/azure/data-explorer/kusto/query/avgif-aggregation-function",
+        "redirect_document_id": true
+      },
+      {
+        "source_path": "data-explorer/kusto/query/bag-unpackplugin.md",
+        "redirect_url": "/azure/data-explorer/kusto/query/bag-unpack-plugin",
+        "redirect_document_id": true
       }
     ]
 }

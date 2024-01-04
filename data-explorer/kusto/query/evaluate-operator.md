@@ -15,7 +15,7 @@ The `evaluate` operator is a tabular operator that allows you to invoke query la
 >
 > * Syntactically, `evaluate` behaves similarly to the [invoke operator](./invoke-operator.md), which invokes tabular functions.
 > * Plugins provided through the evaluate operator aren't bound by the regular rules of query execution or argument evaluation.
-> * Specific plugins may have specific restrictions. For example, plugins whose output schema depends on the data. For example, [bag_unpack plugin](./bag-unpackplugin.md) and [pivot plugin](./pivot-plugin.md) can't be used when performing cross-cluster queries.
+> * Specific plugins may have specific restrictions. For example, plugins whose output schema depends on the data. For example, [bag_unpack plugin](./bag-unpack-plugin.md) and [pivot plugin](./pivot-plugin.md) can't be used when performing cross-cluster queries.
 
 ## Syntax
 
@@ -48,7 +48,7 @@ The following plugins are supported:
 
 * [autocluster plugin](autocluster-plugin.md)
 * [azure-digital-twins-query-request plugin](azure-digital-twins-query-request-plugin.md)
-* [bag-unpack plugin](bag-unpackplugin.md)
+* [bag-unpack plugin](bag-unpack-plugin.md)
 * [basket plugin](basket-plugin.md)
 * [cosmosdb-sql-request plugin](cosmosdb-plugin.md)
 * [dcount-intersect plugin](dcount-intersect-plugin.md)

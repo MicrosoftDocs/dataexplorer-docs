@@ -80,7 +80,7 @@ Finally the rows from the intermediate result arranged into groups having the sa
 |Function|Description|
 |--------|-----------|
 |[avg()](avg-aggfunction.md)|Returns an average value across the group|
-|[avgif()](avgif-aggfunction.md)|Returns an average with the predicate of the group|
+|[avgif()](avgif-aggregation-function.md)|Returns an average with the predicate of the group|
 |[count()](count-aggregation-function.md)|Returns a count of the group|
 |[countif()](countif-aggregation-function.md)|Returns a count with the predicate of the group|
 |[dcount()](dcount-aggfunction.md)|Returns an  approximate distinct count of the group elements|

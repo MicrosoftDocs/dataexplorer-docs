@@ -59,7 +59,7 @@ T
 |----|
 |{ "prop01": "val_a", "prop02": "val_b", "prop03": "val_c" } |
 
-Use the [bag_unpack()](bag-unpackplugin.md) plugin for transforming the bag keys in the make_bag() output into columns.
+Use the [bag_unpack()](bag-unpack-plugin.md) plugin for transforming the bag keys in the make_bag() output into columns.
 
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA1WNvQrDMAyEdz+F8BSDh/5sLXmLbKUYOREhxHZNYpdS+vCVTQKttJy+O3GOEnTQwoCJ1zpq4vKIlzUtUxg1PNFl2i4lbgJ4ZEkcjlKDZNug1D/4tGP7h8877hnfr6ITH6BXojBA5HaLo4nYz7V8a1UcWbP3uExvKonW40yGRROLRyWFqVomh/rOUn0B38wbbdIAAAA=" target="_blank">Run the query</a>
@@ -85,4 +85,4 @@ T
 
 ## Related content
 
-[bag_unpack()](bag-unpackplugin.md).
+[bag_unpack()](bag-unpack-plugin.md).

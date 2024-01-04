@@ -61,7 +61,7 @@ The following properties are supported in the `with` `(`*PropertyName* `=` *Prop
 > [!WARNING]
 >
 > * The system will automatically disable a materialized view if changes to the source table of the materialized view, or changes in data, lead to incompatibility between the materialized view query and the expected materialized view schema.
-> * To avoid this error, the materialized view query must be deterministic. For example, the [bag_unpack](../../query/bag-unpackplugin.md) or [pivot](../../query/pivot-plugin.md) plugin results in a non-deterministic schema.
+> * To avoid this error, the materialized view query must be deterministic. For example, the [bag_unpack](../../query/bag-unpack-plugin.md) or [pivot](../../query/pivot-plugin.md) plugin results in a non-deterministic schema.
 > * When you're using an `arg_max(Timestamp, *)` aggregation and when `autoUpdateSchema` is false, changes to the source table can also lead to schema mismatches. Avoid this failure by defining the view query as `arg_max(Timestamp, Column1, Column2, ...)`, or by using the `autoUpdateSchema` option.
 > * Using `autoUpdateSchema` might lead to irreversible data loss when columns in the source table are dropped.
 > * Monitor automatic disabling of materialized views by using the [MaterializedViewResult metric](materialized-views-monitoring.md#materializedviewresult-metric).
@@ -216,8 +216,8 @@ The following aggregation functions are supported:
 * [`dcountif`](../../query/dcountif-aggregation-function.md)
 * [`min`](../../query/min-aggregation-function.md)
 * [`max`](../../query/max-aggregation-function.md)
-* [`avg`](../../query/avg-aggfunction.md)
-* [`avgif`](../../query/avgif-aggfunction.md)
+* [`avg`](../../query/avg-aggregation-function.md)
+* [`avgif`](../../query/avgif-aggregation-function.md)
 * [`sum`](../../query/sum-aggregation-function.md)
 * [`sumif`](../../query/sumif-aggregation-function.md)
 * [`arg_max`](../../query/arg-max-aggregation-function.md)
