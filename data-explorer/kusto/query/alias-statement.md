@@ -4,7 +4,6 @@ description: Learn how to use an alias statement to define an alias for a databa
 ms.reviewer: alexans
 ms.topic: reference
 ms.date: 03/14/2023
-monikerRange: "=azure-data-explorer"
 ---
 # Alias statement
 
