@@ -19,7 +19,7 @@ ms.date: 06/18/2023
 
 | Parameters name | Values | Description |
 |--|--|--|
-| `hint.remote` | `auto`, `left`, `local`, `right` | See [Cross-Cluster Join](../kusto/query/joincrosscluster.md) |
+| `hint.remote` | `auto`, `left`, `local`, `right` | See [Cross-Cluster Join](../kusto/query/join-cross-cluster.md) |
 | `hint.strategy=broadcast` | Specifies the way to share the query load on cluster nodes. | See [broadcast join](../kusto/query/broadcast-join.md) |
-| `hint.shufflekey=<key>` | The `shufflekey` query shares the query load on cluster nodes, using a key to partition data. | See [shuffle query](../kusto/query/shufflequery.md) |
-| `hint.strategy=shuffle` | The `shuffle` strategy query shares the query load on cluster nodes, where each node processes one partition of the data. | See [shuffle query](../kusto/query/shufflequery.md) |
+| `hint.shufflekey=<key>` | The `shufflekey` query shares the query load on cluster nodes, using a key to partition data. | See [shuffle query](../kusto/query/shuffle-query.md) |
+| `hint.strategy=shuffle` | The `shuffle` strategy query shares the query load on cluster nodes, where each node processes one partition of the data. | See [shuffle query](../kusto/query/shuffle-query.md) |

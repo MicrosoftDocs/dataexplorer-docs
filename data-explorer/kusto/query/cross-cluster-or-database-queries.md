@@ -52,7 +52,7 @@ cluster("<ClusterName>").database("<DatabaseName>").<TableName>
 
 ### Qualified names and the union operator
 
-When a *qualified name* appears as an operand of the [union operator](./unionoperator.md), then wildcards can be used to specify multiple tables and multiple databases. Wildcards aren't permitted in cluster names.
+When a *qualified name* appears as an operand of the [union operator](./union-operator.md), then wildcards can be used to specify multiple tables and multiple databases. Wildcards aren't permitted in cluster names.
 
 ```kusto
 union withsource=TableName *, database("OtherDb*").*Table, cluster("OtherCluster").database("*").*
@@ -63,7 +63,7 @@ union withsource=TableName *, database("OtherDb*").*Table, cluster("OtherCluster
 
 ### Qualified names and restrict access statements
 
-Qualified names or patterns can also be included in [restrict access](./restrictstatement.md) statement.
+Qualified names or patterns can also be included in [restrict access](./restrict-statement.md) statement.
 Wildcards in cluster names aren't permitted.
 
 The following query restricts query access to the following entities:
@@ -160,7 +160,7 @@ In default database.
 cluster("OtherCluster").database("OtherDb").SomeTable("MyTable")
 ```
 
-The following query calls remote function `GetDataPivot` that has a variable schema output based on the data ([pivot() plugin](pivotplugin.md) has dynamic output).
+The following query calls remote function `GetDataPivot` that has a variable schema output based on the data ([pivot() plugin](pivot-plugin.md) has dynamic output).
 This call violates rule #3, so it's not valid.
 
 Tabular function in `OtherDb`.
@@ -177,5 +177,5 @@ cluster("OtherCluster").database("OtherDb").GetDataPivot()
 
 ## Related content
 
-* [Cross-cluster join](../query/joincrosscluster.md)
+* [Cross-cluster join](../query/join-cross-cluster.md)
 * [Allow cross-tenant queries and commands](../access-control/cross-tenant-query-and-commands.md)

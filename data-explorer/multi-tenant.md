@@ -51,7 +51,7 @@ The characteristics of this architecture are:
   * For multi-tenant application (proxy): Configure your application to target the relevant database. Use [access restriction](kusto/query/cross-cluster-or-database-queries.md#qualified-names-and-restrict-access-statements) on queries to prohibit [cross-database queries](kusto/query/cross-cluster-or-database-queries.md).
   * For users with direct access: Users can be granted access at the [database level](kusto/access-control/role-based-access-control.md). Giving users direct access to their database creates a dependency for the implementation details, making it difficult to change the implementation. Therefore, we strongly recommend using the proxy approach for accessing the database.
 
-* **Aggregating data from multiple tenants at scale**: Use the [union operator](kusto/query/unionoperator.md) to aggregate data between databases. However, this method can become cumbersome as the number of tenants increases. Even though aggregating data from multiple tenants might be a design goal from the tenant's perspective, it might be of interest for solution owner to aggregate data from all tenants to gather statistics.
+* **Aggregating data from multiple tenants at scale**: Use the [union operator](kusto/query/union-operator.md) to aggregate data between databases. However, this method can become cumbersome as the number of tenants increases. Even though aggregating data from multiple tenants might be a design goal from the tenant's perspective, it might be of interest for solution owner to aggregate data from all tenants to gather statistics.
 
 * **Extents fragmentation**: Each tenant ingesting a few records per database table leads to the creation of small [extents](kusto/management/extents-overview.md) that later need to be merged. This results in higher cost for extent management. Therefore, we strongly recommend using [streaming ingestion](ingest-data-streaming.md), such as Event Hubs or Event Grid ingestion. To use streaming ingestion, you must make sure it's enabled on the cluster and table.
 
@@ -78,7 +78,7 @@ The characteristics of this architecture are:
 * **Retention and caching policies**: The policies are the same for all tenants since they all share the same table.
 
 * **Security boundary per tenant**:
-  * For multi-tenant application (proxy): Use the [Restrict statement](kusto/query/restrictstatement.md)
+  * For multi-tenant application (proxy): Use the [Restrict statement](kusto/query/restrict-statement.md)
   * For users with direct access: Use the [Row Level Security Policy](kusto/management/row-level-security-policy.md) and familiarize yourself with its [limitations](kusto/management/row-level-security-policy.md#limitations). Giving users direct access to their database creates a dependency for the implementation details, making it difficult to change the implementation. Therefore, we strongly recommend using the proxy approach for accessing the database.
 
 * **Aggregating data from multiple tenants at scale**: Users with the sufficient access permissions can run a standard aggregation query on multiple tenants' data.
@@ -102,5 +102,5 @@ Although each tenant's data is segregated, they all reside in the same security 
 * [Workload groups](kusto/management/workload-groups.md)
 * [Role-based access control](kusto/access-control/role-based-access-control.md)
 * [Row Level Security](kusto/management/row-level-security-policy.md)
-* [Restrict statement](kusto/query/restrictstatement.md)
+* [Restrict statement](kusto/query/restrict-statement.md)
 * [Partitioning policy](kusto/management/partitioning-policy.md)

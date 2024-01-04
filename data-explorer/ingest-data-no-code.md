@@ -316,7 +316,7 @@ To map the activity log data to the table, use the following query:
 
 #### Create data update policy for diagnostics metrics
 
-1. Create a [function](kusto/management/functions.md) that expands the collection of diagnostic metric records so that each value in the collection receives a separate row. Use the [`mv-expand`](kusto/query/mvexpandoperator.md) operator:
+1. Create a [function](kusto/management/functions.md) that expands the collection of diagnostic metric records so that each value in the collection receives a separate row. Use the [`mv-expand`](kusto/query/mv-expand-operator.md) operator:
 
      ```kusto
     .create function DiagnosticMetricsExpand() {
@@ -346,7 +346,7 @@ To map the activity log data to the table, use the following query:
 
 #### Create data update policy for diagnostics logs
 
-1. Create a [function](kusto/management/functions.md) that expands the collection of diagnostic logs records so that each value in the collection receives a separate row. You'll enable ingestion logs on an Azure Data Explorer cluster, and use [ingestion logs schema](using-diagnostic-logs.md#diagnostic-logs-schema). You'll create one table for succeeded and for failed ingestion, while some of the fields will be empty for succeeded ingestion (ErrorCode for example). Use the [`mv-expand`](kusto/query/mvexpandoperator.md) operator:
+1. Create a [function](kusto/management/functions.md) that expands the collection of diagnostic logs records so that each value in the collection receives a separate row. You'll enable ingestion logs on an Azure Data Explorer cluster, and use [ingestion logs schema](using-diagnostic-logs.md#diagnostic-logs-schema). You'll create one table for succeeded and for failed ingestion, while some of the fields will be empty for succeeded ingestion (ErrorCode for example). Use the [`mv-expand`](kusto/query/mv-expand-operator.md) operator:
 
     ```kusto
     .create function DiagnosticLogsExpand() {
@@ -380,7 +380,7 @@ To map the activity log data to the table, use the following query:
 
 #### Create data update policy for activity logs
 
-1. Create a [function](kusto/management/functions.md) that expands the collection of activity log records so that each value in the collection receives a separate row. Use the [`mv-expand`](kusto/query/mvexpandoperator.md) operator:
+1. Create a [function](kusto/management/functions.md) that expands the collection of activity log records so that each value in the collection receives a separate row. Use the [`mv-expand`](kusto/query/mv-expand-operator.md) operator:
 
     ```kusto
     .create function ActivityLogRecordsExpand() {

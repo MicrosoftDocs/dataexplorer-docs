@@ -15,7 +15,7 @@ Treemaps display hierarchical data as a set of nested rectangles. Each level of 
 
 > [!NOTE]
 >
-> * This visualization can only be used in the context of the [render operator](renderoperator.md).
+> * This visualization can only be used in the context of the [render operator](render-operator.md).
 > * This visualization can be used in Kusto.Explorer but is not available in the Azure Data Explorer web UI.
 
 ## Syntax

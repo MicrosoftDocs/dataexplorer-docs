@@ -33,7 +33,7 @@ To `.create-or-alter` an external table using managed identity authentication re
 |Name|Type|Required|Description|
 |--|--|--|--|
 |*TableName*|string|&check;|An external table name that adheres to the [entity names](../query/schema-entities/entity-names.md) rules. An external table can't have the same name as a regular table in the same database.|
-|*Schema*|string|&check;|The external data schema is a comma-separated list of one or more column names and [data types](../query/scalar-data-types/index.md), where each item follows the format: *ColumnName* `:` *ColumnType*. If the schema is unknown, use [infer\_storage\_schema](../query/inferstorageschemaplugin.md) to infer the schema based on external file contents.|
+|*Schema*|string|&check;|The external data schema is a comma-separated list of one or more column names and [data types](../query/scalar-data-types/index.md), where each item follows the format: *ColumnName* `:` *ColumnType*. If the schema is unknown, use [infer\_storage\_schema](../query/infer-storage-schema-plugin.md) to infer the schema based on external file contents.|
 |*Partitions*|string|| A comma-separated list of columns by which the external table is partitioned. Partition column can exist in the data file itself, or as part of the file path. See [partitions formatting](#partitions-formatting) to learn how this value should look.|
 |*PathFormat*|string||An external data folder URI path format to use with partitions. See [path format](#path-format).|
 |*DataFormat*|string|&check;|The data format, which can be any of the [ingestion formats](../../ingestion-supported-formats.md). We recommend using the `Parquet` format for external tables to improve query and export performance, unless you use `JSON` paths mapping. When using an external table for [export scenario](data-export/export-data-to-an-external-table.md), you're limited to the following formats: `CSV`, `TSV`, `JSON` and `Parquet`.|
@@ -68,8 +68,8 @@ The partitions list is any combination of partition columns, specified using one
 |--|--|--|
 |Virtual column|*PartitionName* `:` (`datetime` \| `string`)|Read more on [virtual columns](#virtual-columns).|
 |String column value|*PartitionName* `:` `string` `=` *ColumnName*||
-|String column value [hash](../query/hashfunction.md)|*PartitionName* `:` `long` `=` `hash(`*ColumnName*`,` *Number*`)`|The hash is modulo *Number*.|
-|Truncated datetime column (value)|*PartitionName* `:` `datetime` `=` (`startofyear` \| `startofmonth` \| `startofweek` \| `startofday`) `(` *ColumnName* `)`|See documentation on [startofyear](../query/startofyearfunction.md), [startofmonth](../query/startofmonthfunction.md), [startofweek](../query/startofweekfunction.md), or [startofday](../query/startofdayfunction.md) functions.|
+|String column value [hash](../query/hash-function.md)|*PartitionName* `:` `long` `=` `hash(`*ColumnName*`,` *Number*`)`|The hash is modulo *Number*.|
+|Truncated datetime column (value)|*PartitionName* `:` `datetime` `=` (`startofyear` \| `startofmonth` \| `startofweek` \| `startofday`) `(` *ColumnName* `)`|See documentation on [startofyear](../query/startofyear-function.md), [startofmonth](../query/startofmonth-function.md), [startofweek](../query/startofweek-function.md), or [startofday](../query/startofday-function.md) functions.|
 |Truncated Datetime Column Value (bin)|*PartitionName* `:` `datetime` `=` `bin` `(` *ColumnName* `,` *TimeSpan* `)`|Read more about the [bin](../query/bin-function.md) function.|
 
 ### Path format

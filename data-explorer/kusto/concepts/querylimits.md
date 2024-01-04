@@ -52,11 +52,11 @@ There are several strategies for dealing with this error.
 
 Methods for reducing the result set size produced by the query include:
 
-* Use the [summarize operator](../query/summarizeoperator.md) group and aggregate over
-   similar records in the query output. Potentially sample some columns by using the [take_any aggregation function](../query/take-any-aggfunction.md).
-* Use a [take operator](../query/takeoperator.md) to sample the query output.
-* Use the [substring function](../query/substringfunction.md) to trim wide free-text columns.
-* Use the [project operator](../query/projectoperator.md) to drop any uninteresting column from the result set.
+* Use the [summarize operator](../query/summarize-operator.md) group and aggregate over
+   similar records in the query output. Potentially sample some columns by using the [take_any aggregation function](../query/take-any-aggregation-function.md).
+* Use a [take operator](../query/take-operator.md) to sample the query output.
+* Use the [substring function](../query/substring-function.md) to trim wide free-text columns.
+* Use the [project operator](../query/project-operator.md) to drop any uninteresting column from the result set.
 
 You can disable result truncation by using the `notruncation` request option.
 We recommend that some form of limitation is still put in place.
@@ -145,7 +145,7 @@ Runaway query (E_RUNAWAY_QUERY). Aggregation over string column exceeded the mem
 ```
 
 When this limit is exceeded, most likely the relevant query operator is a `join`, `summarize`, or `make-series`.
-To work-around the limit, one should modify the query to use the [shuffle query](../query/shufflequery.md) strategy.
+To work-around the limit, one should modify the query to use the [shuffle query](../query/shuffle-query.md) strategy.
 (This is also likely to improve the performance of the query.)
 
 In all cases of `E_RUNAWAY_QUERY`, an additional option (beyond increasing the limit by setting the request option and changing the
@@ -171,7 +171,7 @@ MyTable | ...
 
 If `max_memory_consumption_per_query_per_node` is set multiple times, for example in both client request properties and using a `set` statement, the lower value applies.
 
-If the query uses `summarize`, `join`, or `make-series` operators, you can use the [shuffle query](../query/shufflequery.md) strategy to reduce memory pressure on a single machine.
+If the query uses `summarize`, `join`, or `make-series` operators, you can use the [shuffle query](../query/shuffle-query.md) strategy to reduce memory pressure on a single machine.
 
 ## Limit execution timeout
 
@@ -246,7 +246,7 @@ T
         Column == "valueN"
 ```
 
-For this specific case, rewrite the query using the [`in()`](../query/inoperator.md) operator.
+For this specific case, rewrite the query using the [`in()`](../query/in-operator.md) operator.
 
 ```kusto
 T 

@@ -32,7 +32,7 @@ The following are common scenarios that can be addressed by using a materialized
     }
     ```
 
-* **Deduplicate records:** Deduplicate records in a table using [`take_any()` (aggregation function)](../../query/take-any-aggfunction.md). For example, create a materialized view that deduplicates the source table based on the `EventId` column, using a lookback of 6 hours. Records are deduplicated against only records ingested 6 hours before current records.
+* **Deduplicate records:** Deduplicate records in a table using [`take_any()` (aggregation function)](../../query/take-any-aggregation-function.md). For example, create a materialized view that deduplicates the source table based on the `EventId` column, using a lookback of 6 hours. Records are deduplicated against only records ingested 6 hours before current records.
 
     ```kusto
     .create materialized-view with(lookback=6h) DeduplicatedTable on table T
@@ -43,7 +43,7 @@ The following are common scenarios that can be addressed by using a materialized
     ```
 
     > [!NOTE]
-    > You can conceal the source table by creating a function with the same name as the table that references the materialized view instead. This pattern ensures that callers querying the table access the deduplicated materialized view because [functions override tables with the same name](../../query/schema-entities/tables.md). To avoid cyclic references in the view definition, use the [table()](../../query/tablefunction.md) function to reference the source table: 
+    > You can conceal the source table by creating a function with the same name as the table that references the materialized view instead. This pattern ensures that callers querying the table access the deduplicated materialized view because [functions override tables with the same name](../../query/schema-entities/tables.md). To avoid cyclic references in the view definition, use the [table()](../../query/table-function.md) function to reference the source table: 
     >
     >    ```kusto
     >    .create materialized-view DeduplicatedTable on table T
@@ -118,11 +118,11 @@ Materialized views and update policies work differently and serve different use 
 
 * Materialized views are suitable for *aggregations*, while update policies aren't. Update policies run separately for each ingestion batch, and therefore can only perform aggregations within the same ingestion batch. If you require an aggregation query, always use materialized views.
 
-* Update policies are useful for data transformations, enrichments with dimension tables (usually using [lookup operator](../../query/lookupoperator.md)) and other data manipulations that can run in the scope of a single ingestion.
+* Update policies are useful for data transformations, enrichments with dimension tables (usually using [lookup operator](../../query/lookup-operator.md)) and other data manipulations that can run in the scope of a single ingestion.
 
 * Update policies run during ingestion time. Data isn't available for queries in the source table or the target table until all update policies run. Materialized views, on the other hand, aren't part of the ingestion pipeline. The [materialization process](materialized-view-overview.md#how-materialized-views-work) runs periodically in the background, post ingestion. Records in source table are available for queries before they're materialized.
 
-* Both update policies and materialized views can incorporate [joins](../../query/joinoperator.md), but their effectiveness is limited to specific scenarios. Specifically, joins are suitable only when the data required for the join from both sides is accessible at the time of the update policy or materialization process. If matching entities are ingested when the update policy or materialization runs, there's a risk of overlooking data. See more about `dimension tables` in  [materialized view query parameter](materialized-view-create.md#query-parameter) and in [fact and dimension tables](../../concepts/fact-and-dimension-tables.md).
+* Both update policies and materialized views can incorporate [joins](../../query/join-operator.md), but their effectiveness is limited to specific scenarios. Specifically, joins are suitable only when the data required for the join from both sides is accessible at the time of the update policy or materialization process. If matching entities are ingested when the update policy or materialization runs, there's a risk of overlooking data. See more about `dimension tables` in  [materialized view query parameter](materialized-view-create.md#query-parameter) and in [fact and dimension tables](../../concepts/fact-and-dimension-tables.md).
   
 > [!NOTE]
 > If you do need to *materialize* joins, which are not suitable for update policies and materialized views, you can orchestrate your own process for doing so, using [orchestration tools](../../../tools-integrations-overview.md#orchestration) and [ingest from query commands](../data-ingestion/ingest-from-query.md).

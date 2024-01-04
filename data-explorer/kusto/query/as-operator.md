@@ -7,7 +7,7 @@ ms.date: 03/14/2023
 ---
 # as operator
 
-Binds a name to the operator's input tabular expression. This allows the query to reference the value of the tabular expression multiple times without breaking the query and binding a name through the [let statement](letstatement.md).
+Binds a name to the operator's input tabular expression. This allows the query to reference the value of the tabular expression multiple times without breaking the query and binding a name through the [let statement](let-statement.md).
 
 To optimize multiple uses of the `as` operator within a single query, see [Named expressions](named-expressions.md).
 
@@ -23,12 +23,12 @@ To optimize multiple uses of the `as` operator within a single query, see [Named
 |--|--|--|--|
 |*T*| string | &check; | The tabular expression to rename.|
 | *Name*| string| &check; | The temporary name for the tabular expression.|
-| *`hint.materialized`*| bool |  | If *Materialized* is set to `true`, the value of the tabular expression will be as if it was wrapped by a [materialize()](./materializefunction.md) function call. Otherwise, the value will be recalculated on every reference.|
+| *`hint.materialized`*| bool |  | If *Materialized* is set to `true`, the value of the tabular expression will be as if it was wrapped by a [materialize()](./materialize-function.md) function call. Otherwise, the value will be recalculated on every reference.|
 
 > [!NOTE]
 >
-> * The name given by `as` will be used in the `withsource=` column of [union](./unionoperator.md), the `source_` column of [find](./findoperator.md), and the `$table` column of [search](./searchoperator.md).
-> * The tabular expression named using the operator in a [join](./joinoperator.md)'s outer tabular input (`$left`) can also be used in the join's tabular inner input (`$right`).
+> * The name given by `as` will be used in the `withsource=` column of [union](./union-operator.md), the `source_` column of [find](./find-operator.md), and the `$table` column of [search](./search-operator.md).
+> * The tabular expression named using the operator in a [join](./join-operator.md)'s outer tabular input (`$left`) can also be used in the join's tabular inner input (`$right`).
 
 ## Examples
 

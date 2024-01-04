@@ -320,7 +320,7 @@ The connector will start queueing ingestion processes to Azure Data Explorer.
     | project StartTime, EndTime, Source, EventId
     ```
 
-1. Use the [`summarize`](kusto/query/summarizeoperator.md) operator:
+1. Use the [`summarize`](kusto/query/summarize-operator.md) operator:
 
     ```kusto
     Storms

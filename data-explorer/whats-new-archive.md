@@ -99,7 +99,7 @@ Welcome to what's new in Azure Data Explorer archive. This article is an archive
 |--|--|
 | - [convert_angle](kusto/query/convert-angle-function.md) <br />- [convert_energy](kusto/query/convert-energy-function.md) <br />- [convert_force](kusto/query/convert-force-function.md) <br />- [convert_length](kusto/query/convert-length-function.md) <br />- [convert_mass](kusto/query/convert-mass-function.md) <br />- [convert_speed](kusto/query/convert-speed-function.md) <br />- [convert_temperature](kusto/query/convert-temperature-function.md) <br />- [convert_volume](kusto/query/convert-volume-function.md) | New articles. New functions for converting values. |
 | [parse-kv operator](kusto/query/parse-kv-operator.md) | New Article. Describes how to extract structured information from a string in key/value form. |
-|- [Scalar function types at a glance](kusto/query/scalarfunctions.md) <br />- [arg_max() (aggregation function)](kusto/query/arg-max-aggregation-function.md) <br />- [arg_min() (aggregation function)](kusto/query/arg-min-aggregation-function.md) <br />- [avg() (aggregation function)](kusto/query/avg-aggfunction.md) <br />- [max() (aggregation function)](kusto/query/max-aggfunction.md) <br />- [min() (aggregation function)](kusto/query/min-aggfunction.md) <br />- [sum() (aggregation function)](kusto/query/sum-aggfunction.md) | Updated articles. Added new examples. |
+|- [Scalar function types at a glance](kusto/query/scalar-functions.md) <br />- [arg_max() (aggregation function)](kusto/query/arg-max-aggregation-function.md) <br />- [arg_min() (aggregation function)](kusto/query/arg-min-aggregation-function.md) <br />- [avg() (aggregation function)](kusto/query/avg-aggregation-function.md) <br />- [max() (aggregation function)](kusto/query/max-aggregation-function.md) <br />- [min() (aggregation function)](kusto/query/min-aggregation-function.md) <br />- [sum() (aggregation function)](kusto/query/sum-aggregation-function.md) | Updated articles. Added new examples. |
 
 ## June 2022
 
@@ -265,9 +265,9 @@ Welcome to what's new in Azure Data Explorer archive. This article is an archive
 
 | Article title | Description |
 |--|--|
-| [series_pow()](kusto/query/series-powfunction.md)| New article. Calculates the element-wise power of two numeric series inputs.
+| [series_pow()](kusto/query/series-pow-function.md)| New article. Calculates the element-wise power of two numeric series inputs.
 | [Aggregation function types at a glance](kusto/query/aggregation-functions.md) | New article. Lists aggregation functions, which perform a calculation on a set of values and return a single value.
-| [Scalar function types at a glance](kusto/query/scalarfunctions.md) | Updated article. Updated aggregation function and added series_pow.
+| [Scalar function types at a glance](kusto/query/scalar-functions.md) | Updated article. Updated aggregation function and added series_pow.
 | [materialized_view() function](kusto/query/materialized-view-function.md) | Updated article. Updated aggregation function.
 
 **Management**
@@ -304,8 +304,8 @@ Welcome to what's new in Azure Data Explorer archive. This article is an archive
 | Article title | Description |
 |--|--|
 | [replace_string()](kusto/query/replace-string-function.md)| New article. Replaces all string matches with another string.
-| [take_any() (aggregation function)](kusto/query/take-any-aggfunction.md) | New article. Replaces any().
-| [take_anyif() (aggregation function)](kusto/query/take-anyif-aggfunction.md) | New article. Replaces anyif().
+| [take_any() (aggregation function)](kusto/query/take-any-aggregation-function.md) | New article. Replaces any().
+| [take_anyif() (aggregation function)](kusto/query/take-anyif-aggregation-function.md) | New article. Replaces anyif().
 | [replace_regex()](kusto/query/replace-regex-function.md) | Updated article. Replace() function changed to replace_regex().
 
 **Management**
@@ -420,7 +420,7 @@ Article title | Description
 [ipv4_is_in_range()](kusto/query/ipv4-is-in-range-function.md) | New article. Checks if IPv4 string address is in IPv4-prefix notation range.
 [ipv4_netmask_suffix()](kusto/query/ipv4-netmask-suffix-function.md) | New article. Returns the value of the IPv4 netmask suffix from IPv4 string address.
 [has_all operator](kusto/query/has-all-operator.md) | New article. `has_all` operator filters based on the provided set of values (all values must be present).
-[row_rank()](./kusto/query/rowrankdensefunction.md) | New article. Returns the current row's rank in a [serialized row set](kusto/query/windowsfunctions.md#serialized-row-set).
+[row_rank()](./kusto/query/row-rank-dense-function.md) | New article. Returns the current row's rank in a [serialized row set](kusto/query/window-functions.md#serialized-row-set).
 | [Null Values](kusto/query/scalar-data-types/null-values.md) | Updated article. New behavior in Engine V3.
 | [String operators](kusto/query/datatypes-string-operators.md) | Updated article. String term indexing for Engine V3.
 
@@ -500,9 +500,9 @@ Article title | Description
 
 Article title | Description
 ---|---
-[mysql_request plugin (Preview)](kusto/query/mysqlrequest-plugin.md) | New article. The `mysql_request` plugin sends a SQL query to a MySQL Server network endpoint and returns the first rowset in the results.
+[mysql_request plugin (Preview)](kusto/query/mysql-request-plugin.md) | New article. The `mysql_request` plugin sends a SQL query to a MySQL Server network endpoint and returns the first rowset in the results.
 [ipv4_lookup plugin](kusto/query/ipv4-lookup-plugin.md) | New article. The `ipv4_lookup` plugin looks up an IPv4 value in a lookup table and returns rows with matched values.
-[ipv4_is_private()](kusto/query/ipv4-is-privatefunction.md) | New article. Checks if IPv4 string address belongs to a set of private network IPs.
+[ipv4_is_private()](kusto/query/ipv4-is-private-function.md) | New article. Checks if IPv4 string address belongs to a set of private network IPs.
 [Splunk to Kusto Query Language map](kusto/query/splunk-cheat-sheet.md) | New article. This article is intended to assist users who are familiar with Splunk learn the Kusto Query Language to write log queries with Kusto.
 [gzip_compress_to_base64_string()](kusto/query/gzip-base64-compress.md) | New article. Performs gzip compression and encodes the result to base64.
 [gzip_decompress_from_base64_string()](kusto/query/gzip-base64-decompress.md) | New article. Decodes the input string from base64 and performs gzip decompression.

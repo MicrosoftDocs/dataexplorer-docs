@@ -30,13 +30,13 @@ print bool(null), datetime(null), dynamic(null), guid(null), int(null), long(nul
 
 ## Predicates on null values
 
-The scalar function [`isnull()`](../isnullfunction.md) can be used to determine if a scalar value
-is the null value. The corresponding function [`isnotnull()`](../isnotnullfunction.md) can be used
+The scalar function [`isnull()`](../isnull-function.md) can be used to determine if a scalar value
+is the null value. The corresponding function [`isnotnull()`](../isnotnull-function.md) can be used
 to determine if a scalar value isn't the null value.
 
 > [!NOTE]
 > Because the `string` type doesn't support null values, we recommend using
-> the [`isempty()`](../isemptyfunction.md) and the [`isnotempty()`](../isnotemptyfunction.md)
+> the [`isempty()`](../isempty-function.md) and the [`isnotempty()`](../isnotempty-function.md)
 > functions.
 
 ## Equality and inequality of null values
@@ -74,23 +74,23 @@ When applying the following operators to entities that include null values, the 
 * [count_distinct()](../count-distinct-aggregation-function.md)
 * [countif()](../countif-aggregation-function.md)
 * [dcount()](../dcount-aggfunction.md)
-* [dcountif()](../dcountif-aggfunction.md)
-* [make_bag()](../make-bag-aggfunction.md)
-* [make_bag_if()](../make-bag-if-aggfunction.md)
-* [make_list()](../makelist-aggfunction.md)
-* [make_list_if()](../makelistif-aggfunction.md)
-* [make_set()](../makeset-aggfunction.md)
-* [make_set_if()](../makesetif-aggfunction.md)
-* [stdev()](../stdev-aggfunction.md)
-* [stdevif()](../stdevif-aggfunction.md)
-* [sum()](../sum-aggfunction.md)
-* [sumif()](../sumif-aggfunction.md)
-* [variance()](../variance-aggfunction.md)
-* [varianceif()](../varianceif-aggfunction.md)
+* [dcountif()](../dcountif-aggregation-function.md)
+* [make_bag()](../make-bag-aggregation-function.md)
+* [make_bag_if()](../make-bag-if-aggregation-function.md)
+* [make_list()](../make-list-aggregation-function.md)
+* [make_list_if()](../make-list-if-aggregation-function.md)
+* [make_set()](../make-set-aggregation-function.md)
+* [make_set_if()](../make-set-if-aggregation-function.md)
+* [stdev()](../stdev-aggregation-function.md)
+* [stdevif()](../stdevif-aggregation-function.md)
+* [sum()](../sum-aggregation-function.md)
+* [sumif()](../sumif-aggregation-function.md)
+* [variance()](../variance-aggregation-function.md)
+* [varianceif()](../varianceif-aggregation-function.md)
 
 ## Null values and the `where` operator
 
-The [where operator](../whereoperator.md) use Boolean expressions to determine
+The [where operator](../where-operator.md) use Boolean expressions to determine
 if to emit each input record to the output. This operator treats null values as if
 they're `bool(false)`. Records for which the predicate returns the null value are dropped and don't appear in the output.
 
@@ -148,11 +148,11 @@ datatable(val:int)[5, int(null)]
 
 ## Null values and the logical NOT (`!`) operator
 
-The logical NOT operator [not()](../notfunction.md) yields the value `bool(null)` if the argument is the null value.
+The logical NOT operator [not()](../not-function.md) yields the value `bool(null)` if the argument is the null value.
 
 ## Null values and the `in` operator
 
-* The [in operator](../inoperator.md) behaves like a logical OR of equality comparisons.
+* The [in operator](../in-operator.md) behaves like a logical OR of equality comparisons.
 * The `!in` operator behaves like a logical `AND` of inequality comparisons.
 
 ## Null values and data ingestion

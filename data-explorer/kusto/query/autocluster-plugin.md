@@ -7,7 +7,7 @@ ms.date: 11/13/2023
 ---
 # autocluster plugin
 
-`autocluster` finds common patterns of discrete attributes (dimensions) in the data. It then reduces the results of the original query, whether it's 100 or 100,000 rows, to a few patterns. The plugin was developed to help analyze failures (such as exceptions or crashes) but can potentially work on any filtered dataset. The plugin is invoked with the [`evaluate`](evaluateoperator.md) operator.
+`autocluster` finds common patterns of discrete attributes (dimensions) in the data. It then reduces the results of the original query, whether it's 100 or 100,000 rows, to a few patterns. The plugin was developed to help analyze failures (such as exceptions or crashes) but can potentially work on any filtered dataset. The plugin is invoked with the [`evaluate`](evaluate-operator.md) operator.
 
 > [!NOTE]
 > `autocluster` is largely based on the Seed-Expand algorithm from the following paper: [Algorithms for Telemetry Data Mining using Discrete Attributes](https://www.scitepress.org/DigitalLibrary/PublicationsDetail.aspx?ID=d5kcrO+cpEU=&t=1).
@@ -39,7 +39,7 @@ The first column is the segment ID. The next two columns are the count and perce
 The patterns aren't distinct, may be overlapping, and usually don't cover all the original rows. Some rows may not fall under any pattern.
 
 > [!TIP]
-> Use [where](./whereoperator.md) and [project](./projectoperator.md) in the input pipe to reduce the data to just what you're interested in.
+> Use [where](./where-operator.md) and [project](./project-operator.md) in the input pipe to reduce the data to just what you're interested in.
 >
 > When you find an interesting row, you might want to drill into it further by adding its specific values to your `where` filter.
 
@@ -96,4 +96,4 @@ StormEvents
 ## Related content
 
 * [basket](./basket-plugin.md)
-* [reduce](./reduceoperator.md)
+* [reduce](./reduce-operator.md)

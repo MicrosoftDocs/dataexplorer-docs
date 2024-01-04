@@ -33,7 +33,7 @@ This tutorial builds on the foundation from the first tutorial, [Learn common op
 
 ## Use the summarize operator
 
-The [summarize](../summarizeoperator.md) operator is essential to performing aggregations over your data. The `summarize` operator groups together rows based on the `by` clause and then uses the provided aggregation function to combine each group in a single row.
+The [summarize](../summarize-operator.md) operator is essential to performing aggregations over your data. The `summarize` operator groups together rows based on the `by` clause and then uses the provided aggregation function to combine each group in a single row.
 
 Find the number of events by state using `summarize` with the [count](../count-aggregation-function.md) aggregation function.
 
@@ -58,7 +58,7 @@ StormEvents
 
 ## Visualize query results
 
-Visualizing query results in a chart or graph can help you identify patterns, trends, and outliers in your data. You can do this with the [render](../renderoperator.md) operator.
+Visualizing query results in a chart or graph can help you identify patterns, trends, and outliers in your data. You can do this with the [render](../render-operator.md) operator.
 
 Throughout the tutorial, you'll see examples of how to use `render` to display your results. For now, let's use `render` to see the results from the previous query in a bar chart.
 
@@ -137,7 +137,7 @@ Add `| render timechart` to the end of the query to visualize the results.
 
 ## Calculate the min, max, avg, and sum
 
-To learn more about types of storms that cause crop damage, calculate the [min()](../min-aggfunction.md), [max()](../max-aggfunction.md), and [avg()](../avg-aggfunction.md) crop damage for each event type, and then sort the result by the average damage.
+To learn more about types of storms that cause crop damage, calculate the [min()](../min-aggregation-function.md), [max()](../max-aggregation-function.md), and [avg()](../avg-aggfunction.md) crop damage for each event type, and then sort the result by the average damage.
 
 Note that you can use multiple aggregation functions in a single `summarize` operator to produce several computed columns.
 
@@ -168,7 +168,7 @@ StormEvents
 
 The results of the previous query indicate that Frost/Freeze events resulted in the most crop damage on average. However, the [bin() query](#group-data-into-bins) showed that events with crop damage mostly took place in the summer months.
 
-Use [sum()](../sum-aggfunction.md) to check the total number of damaged crops instead of the amount of events that caused some damage, as done with `count()` in the previous [bin() query](#group-data-into-bins).
+Use [sum()](../sum-aggregation-function.md) to check the total number of damaged crops instead of the amount of events that caused some damage, as done with `count()` in the previous [bin() query](#group-data-into-bins).
 
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA1WOsQ7CMBBD936Fx0SiVVqGTrBQvqD8QEpONENSdDmoQHw8iZAQnDw9+2SPsnA43ilKql5YZ2LCKJbl5ANhIlmJIpSzQpKJ6ozpa9NmaTQN/nnb1dtWa1TIZ6PDYIO90IGXa8IeJjekWwiW/ZNQ6MfHrmD1E9aYHph8VN8pG/RO53+m6IhROs9z9t7w8FzwwAAAAA==" target="_blank">Run the query</a>
@@ -186,7 +186,7 @@ StormEvents
 Now you can see a peak in crop damage in January, which probably was due to Frost/Freeze.
 
 > [!TIP]
-> Use [minif()](../minif-aggfunction.md), [maxif()](../maxif-aggfunction.md), [avgif()](../avgif-aggfunction.md), and [sumif()](../sumif-aggfunction.md) to perform conditional aggregations, like we did when in the [conditionally count rows](#conditionally-count-rows) section.
+> Use [minif()](../minif-aggregation-function.md), [maxif()](../maxif-aggregation-function.md), [avgif()](../avgif-aggregation-function.md), and [sumif()](../sumif-aggregation-function.md) to perform conditional aggregations, like we did when in the [conditionally count rows](#conditionally-count-rows) section.
 
 ## Calculate percentages
 
@@ -196,9 +196,9 @@ Calculating percentages can help you understand the distribution and proportion 
 
 Use [count()](../count-aggregation-function.md) and [countif](../countif-aggregation-function.md) to find the percentage of storm events that caused crop damage in each state. First, count the total number of storms in each state. Then, count the number of storms that caused crop damage in each state.
 
-Then, use [extend](../extendoperator.md) to calculate the percentage between the two columns by dividing the number of storms with property damage by the total number of storms and multiplying by 100.
+Then, use [extend](../extend-operator.md) to calculate the percentage between the two columns by dividing the number of storms with property damage by the total number of storms and multiplying by 100.
 
-To ensure that you get a decimal result, use the [todouble()](../todoublefunction.md) function to convert at least one of the integer count values to a double before performing the division.
+To ensure that you get a decimal result, use the [todouble()](../todouble-function.md) function to convert at least one of the integer count values to a double before performing the division.
 
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA3WPsQ7CMAxE936FxwRVorDDBANbpSIxp62BSk1cOS6iiI8nTQVT8GjfvTtXQmyPD3Tiszf40VrD3QshgzBnEtNXs8KfXCVGEHbQ0OhE6TwqluOlk3vJNCDLdDDW3H667qqWxfcMeyh0tNYTRGSIxaega6FEbkKRJC1aOCBbpYRaGuse1b90DetU9xVsikLnsNXzq8SydEgzPoPkmgkZAQAA" target="_blank">Run the query</a>
@@ -226,13 +226,13 @@ StormEvents
 |...|...|...|...|
 
 > [!NOTE]
-> When calculating percentages, convert at least one of the integer values in the division with [todouble() or toreal()](../todoublefunction.md). This will ensure that you don't get truncated results due to integer division. For more information, see [Type rules for arithmetic operations](../numoperators.md#type-rules-for-arithmetic-operations).
+> When calculating percentages, convert at least one of the integer values in the division with [todouble() or toreal()](../todouble-function.md). This will ensure that you don't get truncated results due to integer division. For more information, see [Type rules for arithmetic operations](../numerical-operators.md#type-rules-for-arithmetic-operations).
 
 ### Calculate percentage based on table size
 
-To compare the number of storms by event type to the total number of storms in the database, first save the total number of storms in the database as a variable. [Let statements](../letstatement.md) are used to define variables within a query.
+To compare the number of storms by event type to the total number of storms in the database, first save the total number of storms in the database as a variable. [Let statements](../let-statement.md) are used to define variables within a query.
 
-Since [tabular expression statements](../tabularexpressionstatements.md) return tabular results, use the [toscalar()](../toscalarfunction.md) function to convert the tabular result of the `count()` function to a scalar value. Then, the numeric value can be used in the percentage calculation.
+Since [tabular expression statements](../tabular-expression-statements.md) return tabular results, use the [toscalar()](../toscalar-function.md) function to convert the tabular result of the `count()` function to a scalar value. Then, the numeric value can be used in the percentage calculation.
 
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA1XOwQrCMAyA4fueIsdWhtazeBLvgnuBrgZR2mWkqTDZw69WYfWYny8hHgU6EuuvQhwiHEEoOustq1LOLxwkwgwxhWD58UZwlAZRWh+aSjS1KOn0Yfnej0M/fXs3jZj1yPREJ2trq7UWLsguT/aO5aUbpd6jWoWG3d/fG9gbszULDOumf88AAAA=" target="_blank">Run the query</a>
@@ -257,7 +257,7 @@ StormEvents
 
 ## Extract unique values
 
-Use [make_set()](../makeset-aggfunction.md) to turn a selection of rows in a table into an array of unique values.
+Use [make_set()](../make-set-aggregation-function.md) to turn a selection of rows in a table into an array of unique values.
 
 The following query uses `make_set()` to create an array of the event types that cause deaths in each state. The resulting table is then sorted by the number of storm types in each array.
 
@@ -353,7 +353,7 @@ Here's a step-by-step explanation of the query:
 1. Bin each record to a single day relative to `windowStart`.
 1. Add seven days to the bin value to set the end of the range for each record. If the value is out of the range of `windowStart` and `windowEnd`, adjust the value accordingly.
 1. Create an array of seven days for each record, starting from the current day of the record.
-1. Expand the array from step 3 with [mv-expand](../mvexpandoperator.md) in order to duplicate each record to seven records with one-day intervals between them.
+1. Expand the array from step 3 with [mv-expand](../mv-expand-operator.md) in order to duplicate each record to seven records with one-day intervals between them.
 1. Perform the aggregations for each day. Due to step 4, this step actually summarizes the previous seven days.
 1. Exclude the first seven days from the final result because there's no seven-day lookback period for them.
 

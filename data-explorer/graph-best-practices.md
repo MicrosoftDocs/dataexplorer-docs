@@ -18,7 +18,7 @@ This article explains how to use the graph semantics feature in KQL effectively 
 
 The [make-graph operator](kusto/query/make-graph-operator.md) creates an in-memory representation of a graph. It consists of the graph structure itself and its properties. When making a graph, use appropriate filters, projections, and aggregations to select only the relevant nodes and edges and their properties.
 
-The following example shows how to reduce the number of nodes and edges and their properties. In this scenario, Bob changed manager from Alice to Eve and the user only wants to see the latest state of the graph for their organization. To reduce the size of the graph, the nodes are first filtered by the organization property and then the property is removed from the graph using the [project-away operator](kusto/query/projectawayoperator.md). The same happens for edges. Then [summarize operator](kusto/query/summarizeoperator.md) together with [arg_max](kusto/query/arg-max-aggregation-function.md) is used to get the last known state of the graph.
+The following example shows how to reduce the number of nodes and edges and their properties. In this scenario, Bob changed manager from Alice to Eve and the user only wants to see the latest state of the graph for their organization. To reduce the size of the graph, the nodes are first filtered by the organization property and then the property is removed from the graph using the [project-away operator](kusto/query/project-away-operator.md). The same happens for edges. Then [summarize operator](kusto/query/summarize-operator.md) together with [arg_max](kusto/query/arg-max-aggregation-function.md) is used to get the last known state of the graph.
 
 ```kusto
 let allEmployees = datatable(organization: string, name:string, age:long)
@@ -223,7 +223,7 @@ let assetHierarchy = datatable(source:string, destination:string)
 ];
 ```
 
-The *employees*, *sensors*, and other entities and relationships don't share a canonical data model. You can use the [union operator](kusto/query/unionoperator.md) to combine and canonize the data.
+The *employees*, *sensors*, and other entities and relationships don't share a canonical data model. You can use the [union operator](kusto/query/union-operator.md) to combine and canonize the data.
 
 The following query joins the sensor data with the time series data to find the sensors that have abnormal readings. Then, it uses a projection to create a common model for the graph nodes.
 

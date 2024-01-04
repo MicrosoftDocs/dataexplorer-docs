@@ -23,7 +23,7 @@ The following table overviews the supported request properties.
 | `max_memory_consumption_per_query_per_node` | long | Overrides the default maximum amount of memory a query may allocate per node.|
 | `maxmemoryconsumptionperiterator` | long | Overrides the default maximum amount of memory a query operator may allocate. |
 | `maxoutputcolumns` | long | Overrides the default maximum number of columns a query is allowed to produce. |
-| `norequesttimeout` | bool | Sets the request timeout to its maximum value. This option can't be modified as part of a [set statement](../../query/setstatement.md). |
+| `norequesttimeout` | bool | Sets the request timeout to its maximum value. This option can't be modified as part of a [set statement](../../query/set-statement.md). |
 | `notruncation` | bool | Disables truncation of query results returned to the caller. |
 | `push_selection_through_aggregation` | bool | If set to `true`, allows pushing simple selection through aggregation. |
 | `query_bin_auto_at` | literal | Specifies the start value to use when evaluating the [bin_auto()](../../query/bin-auto-function.md) function. |
@@ -44,10 +44,10 @@ The following table overviews the supported request properties.
 | `query_language` | string | Determines how the query text should be interpreted. Supported values are `csl`, `kql`, or `sql`. |
 | `query_log_query_parameters` | bool | Enables logging of the query parameters for later viewing in the [.show queries](../../management/queries.md) journal. |
 | `query_max_entities_in_union` | long | Overrides the default maximum number of columns a query is allowed to produce. |
-| `query_now` | datetime | Overrides the datetime value returned by the [now()](../../query/nowfunction.md) function. |
+| `query_now` | datetime | Overrides the datetime value returned by the [now()](../../query/now-function.md) function. |
 | `query_python_debug` | bool or int |  If set to `true`, generates a Python debug query for the enumerated Python node.|
 | `query_results_apply_getschema` | bool | If set, retrieves the schema of each tabular data in the results of the query instead of the data itself. |
-| `query_results_cache_force_refresh` | bool |If set to `true`, forces a cache refresh of query results for a specific query. This option can't be modified as part of a [set statement](../../query/setstatement.md). |
+| `query_results_cache_force_refresh` | bool |If set to `true`, forces a cache refresh of query results for a specific query. This option can't be modified as part of a [set statement](../../query/set-statement.md). |
 | `query_results_cache_max_age` | timespan | Controls the maximum age of the cached query results that the service is allowed to return. |
 | `query_results_cache_per_shard` | bool | If set to `true`, enables per [extent](../../management/extents-overview.md) query caching. |
 | `query_results_progressive_row_count` | long | Provides a hint for how many records to send in each update. Takes effect only if `results_progressive_enabled` is set. |
@@ -67,7 +67,7 @@ The following table overviews the supported request properties.
 | `request_sandboxed_execution_disabled` | bool | If set to `true`, prevents the request from invoking code in the sandbox. |
 | `request_user` | string | Specifies the request user to be used in reporting. For example, [.show queries](../../management/queries.md). |
 | `results_progressive_enabled` | bool | If set to `true`, enables the progressive query stream. |
-| `servertimeout` | timespan | Overrides the default request timeout. This option can't be modified as part of a [set statement](../../query/setstatement.md). |
+| `servertimeout` | timespan | Overrides the default request timeout. This option can't be modified as part of a [set statement](../../query/set-statement.md). |
 | `truncation_max_records` | long | Overrides the default maximum number of records a query is allowed to return to the caller (truncation). |
 | `truncationmaxsize` | long | Overrides the default maximum data size a query is allowed to return to the caller (truncation). |
 | `validatepermissions` | bool | Validates the user's permissions to perform the query without actually running the query. Possible results for this property are: `OK` (permissions are present and valid), `Incomplete` (validation couldn't be completed due to dynamic schema evaluation), or `KustoRequestDeniedException` (permissions weren't set). |
@@ -77,7 +77,7 @@ The following table overviews the supported request properties.
 You can set request properties in the following ways:
 
 * The POST body of an [HTTP request](./request.md)
-* A Kusto Query Language [set statement](../../query/setstatement.md)
+* A Kusto Query Language [set statement](../../query/set-statement.md)
 * The set option method of the [`ClientRequestProperties` class](../netfx/client-request-properties.md)
 
 > [!NOTE]
