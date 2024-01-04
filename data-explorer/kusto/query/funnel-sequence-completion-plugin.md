@@ -7,7 +7,7 @@ ms.date: 12/18/2022
 ---
 # funnel_sequence_completion plugin
 
-Calculates a funnel of completed sequence steps while comparing different time periods. The plugin is invoked with the [`evaluate`](evaluateoperator.md) operator.
+Calculates a funnel of completed sequence steps while comparing different time periods. The plugin is invoked with the [`evaluate`](evaluate-operator.md) operator.
 
 ## Syntax
 

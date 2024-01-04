@@ -73,7 +73,7 @@ To learn more about the Kusto Query Language, see [Kusto Query Language](../quer
 > [!NOTE]
 > There are two types of query parametrization techniques in Kusto:
 >
-> * [Language-integrated query parametrization](../query/queryparametersstatement.md) is implemented server-side and is meant to be used by applications that query the service programmatically. This method is not described in this document.
+> * [Language-integrated query parametrization](../query/query-parameters-statement.md) is implemented server-side and is meant to be used by applications that query the service programmatically. This method is not described in this document.
 >
 > * Client-side query parametrization, described below, is a feature of the Kusto.Explorer application only. It's equivalent to using string-replace operations on the queries before sending them to be executed by the service. The syntax described below is not part of the query language itself and can't be used when sending queries to the service by means other than Kusto.Explorer.
 

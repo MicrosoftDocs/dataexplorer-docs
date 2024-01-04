@@ -52,4 +52,4 @@ print Empty = base64_encode_fromguid("abcd1231")
 ## Related content
 
 * To decode a base64 string to a [GUID](./scalar-data-types/guid.md), see [base64_decode_toguid()](base64-decode-toguid-function.md).
-* To create a [GUID](./scalar-data-types/guid.md) from a string, see [toguid()](toguidfunction.md).
+* To create a [GUID](./scalar-data-types/guid.md) from a string, see [toguid()](toguid-function.md).

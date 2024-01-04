@@ -150,7 +150,7 @@ Since the collected metrics object is a complex type, the *fields* and *tags* co
     > [!NOTE]
     > This approach could impact performance when using large volumes of data. In such cases, use the update policy approach.
 
-* **Use an [update policy](kusto/management/updatepolicy.md)**: Transform dynamic data type columns using an update policy. We recommend this approach for querying large volumes of data.
+* **Use an [update policy](kusto/management/update-policy.md)**: Transform dynamic data type columns using an update policy. We recommend this approach for querying large volumes of data.
 
     ```kusto
     // Function to transform data
@@ -177,7 +177,7 @@ The following table shows sample metrics data collected by Syslog input plugin:
 | syslog | {"appname":"azsecmond","facility":"user","host":"adx-linux-vm","hostname":"adx-linux-vm","severity":"info"} | 2021-09-20T14:36:44Z | {"facility_code":1,"message":" 2021/09/20 14:36:44.890110 Failed to connect to mdsd: dial unix /var/run/mdsd/default_djson.socket: connect: no such file or directory","procid":"2184","severity_code":6,"timestamp":"1632148604890477000","version":1} |
 | syslog | {"appname":"CRON","facility":"authpriv","host":"adx-linux-vm","hostname":"adx-linux-vm","severity":"info"} | 2021-09-20T14:37:01Z | {"facility_code":10,"message":" pam_unix(cron:session): session opened for user root by (uid=0)","procid":"26446","severity_code":6,"timestamp":"1632148621120781000","version":1} |
 
-There are multiple ways to flatten dynamic columns by using the [extend](kusto/query/extendoperator.md) operator or [bag_unpack()](kusto/query/bag-unpackplugin.md) plugin. You can use either of them in the update policy *Transform_TargetTableName()* function.
+There are multiple ways to flatten dynamic columns by using the [extend](kusto/query/extend-operator.md) operator or [bag_unpack()](kusto/query/bag-unpack-plugin.md) plugin. You can use either of them in the update policy *Transform_TargetTableName()* function.
 
 * **Use the extend operator**: We recommend using this approach as it's faster and robust. Even if the schema changes, it will not break queries or dashboards.
 

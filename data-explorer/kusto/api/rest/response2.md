@@ -299,12 +299,12 @@ Where:
 
 ### The meaning of tables in the response
 
-* `PrimaryResult` - The main tabular result of the query. For each [tabular expression statement](../../query/tabularexpressionstatements.md), one or more tables are generated in-order, representing the results produced by the statement. There can be multiple such tables because of [batches](../../query/batches.md) and [fork operators](../../query/forkoperator.md).
+* `PrimaryResult` - The main tabular result of the query. For each [tabular expression statement](../../query/tabular-expression-statements.md), one or more tables are generated in-order, representing the results produced by the statement. There can be multiple such tables because of [batches](../../query/batches.md) and [fork operators](../../query/fork-operator.md).
 * `QueryCompletionInformation` - Provides additional information about the execution of the query itself, such as
  whether it completed successfully or not, and what were the resources consumed by the query (similar to the QueryStatus table
  in the v1 response).
 * `QueryProperties` - Provides additional values such as client visualization instructions (emitted, for example, to reflect the
- information in the [render operator](../../query/renderoperator.md)) and [database cursor](../../management/databasecursor.md) information.
+ information in the [render operator](../../query/render-operator.md)) and [database cursor](../../management/database-cursor.md) information.
 * `QueryTraceLog` - The performance trace log information (returned when `perftrace` in [client request properties](../netfx/request-properties.md) is set to true).
 
 ## DataSetCompletion

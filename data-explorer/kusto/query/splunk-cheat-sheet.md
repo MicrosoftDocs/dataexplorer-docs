@@ -23,7 +23,7 @@ The following table compares concepts and data structures between Splunk and Kus
  | record attribute | field |  column |  In Kusto, this setting is predefined as part of the table structure. In Splunk, each event has its own set of fields. |
  | types | datatype |  datatype |  Kusto data types are more explicit because they're set on the columns. Both have the ability to work dynamically with data types and roughly equivalent set of datatypes, including JSON support. |
  | query and search  | search | query |  Concepts essentially are the same between Kusto and Splunk. |
- | event ingestion time | system time | `ingestion_time()` |  In Splunk, each event gets a system timestamp of the time the event was indexed. In Kusto, you can define a policy called [ingestion_time](../management/ingestiontimepolicy.md) that exposes a system column that can be referenced through the [ingestion_time()](ingestiontimefunction.md) function. |
+ | event ingestion time | system time | `ingestion_time()` |  In Splunk, each event gets a system timestamp of the time the event was indexed. In Kusto, you can define a policy called [ingestion_time](../management/ingestion-time-policy.md) that exposes a system column that can be referenced through the [ingestion_time()](ingestion-time-function.md) function. |
 
 ## Functions
 
@@ -112,7 +112,7 @@ Kusto uses the `project-rename` operator to rename a field. In the `project-rena
 
 ### Format results and projection
 
-Splunk uses the `table` command to select which columns to include in the results. Kusto has a `project` operator that does the same and [more](projectoperator.md).
+Splunk uses the `table` command to select which columns to include in the results. Kusto has a `project` operator that does the same and [more](project-operator.md).
 
 | Product | Operator | Example |
 |:---|:---|:---|

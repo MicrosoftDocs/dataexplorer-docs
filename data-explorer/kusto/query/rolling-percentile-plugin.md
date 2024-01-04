@@ -9,7 +9,7 @@ ms.date: 01/17/2023
 
 Returns an estimate for the specified percentile of the *ValueColumn* population in a rolling (sliding) *BinsPerWindow* size window per *BinSize*.
 
-The plugin is invoked with the [`evaluate`](evaluateoperator.md) operator.
+The plugin is invoked with the [`evaluate`](evaluate-operator.md) operator.
 
 ## Syntax
 

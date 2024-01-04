@@ -134,4 +134,4 @@ The following command removes all existing `ingestors` on the `StormEvents` tabl
 
 ## Related content
 
-* [current_principal_details()](../query/current-principal-detailsfunction.md)
+* [current_principal_details()](../query/current-principal-details-function.md)

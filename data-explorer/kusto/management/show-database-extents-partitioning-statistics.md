@@ -7,7 +7,7 @@ ms.date: 08/17/2023
 ---
 # .show database extents partitioning statistics
 
-Displays statistics of data partitioning for all tables in the database that have a [data partitioning policy](partitioningpolicy.md) defined.
+Displays statistics of data partitioning for all tables in the database that have a [data partitioning policy](partitioning-policy.md) defined.
 
 ## Permissions
 

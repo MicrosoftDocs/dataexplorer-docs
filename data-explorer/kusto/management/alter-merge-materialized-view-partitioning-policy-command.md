@@ -7,7 +7,7 @@ ms.date: 05/28/2023
 ---
 # .alter-merge materialized-view policy partitioning command
 
-Creates the materialized view's [partitioning policy](partitioningpolicy.md). The partitioning policy defines if and how [extents (data shards)](../management/extents-overview.md) should be partitioned for a specific table or a [materialized view](materialized-views/materialized-view-overview.md).
+Creates the materialized view's [partitioning policy](partitioning-policy.md). The partitioning policy defines if and how [extents (data shards)](../management/extents-overview.md) should be partitioned for a specific table or a [materialized view](materialized-views/materialized-view-overview.md).
 
 ## Permissions
 
@@ -24,7 +24,7 @@ You must have at least [Database Admin](access-control/role-based-access-control
 |Name|Type|Required|Description|
 |--|--|--|--|
 |*MaterializedViewName*|string|&check;|The name of the materialized view.|
-|*PolicyObject*|string|&check;|A serialized array of one or more JSON policy objects. For more information, see [partitioning policy](partitioningpolicy.md).|
+|*PolicyObject*|string|&check;|A serialized array of one or more JSON policy objects. For more information, see [partitioning policy](partitioning-policy.md).|
 
 ## Example
 
