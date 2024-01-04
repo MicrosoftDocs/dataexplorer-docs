@@ -4,7 +4,6 @@ description: This article describes cross-database and cross-cluster queries in 
 ms.reviewer: alexans
 ms.topic: reference
 ms.date: 07/19/2023
-monikerRange: "=azure-data-explorer"
 ---
 # Cross-cluster and cross-database queries
 
