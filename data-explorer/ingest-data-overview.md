@@ -1,6 +1,6 @@
 ---
-title: 'Azure Data Explorer data ingestion overview'
-description: 'Learn about the different ways you can ingest (load) data in Azure Data Explorer'
+title: Azure Data Explorer data ingestion overview
+description: Learn about the different ways you can ingest (load) data in Azure Data Explorer
 ms.reviewer: tzgitlin
 ms.topic: conceptual
 ms.date: 12/31/2023
