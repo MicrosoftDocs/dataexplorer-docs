@@ -1,5 +1,5 @@
 ---
-title: Use LightIngest to ingest data into Azure Data Explorer.
+title: Use LightIngest to ingest data into Azure Data Explorer
 description: Learn about LightIngest, a command-line utility for ad-hoc data ingestion into Azure Data Explorer.
 ms.reviewer: tzgitlin
 ms.topic: how-to
