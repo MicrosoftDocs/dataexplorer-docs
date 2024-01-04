@@ -11,6 +11,8 @@ This topic discusses the life cycle of tables and associated management commands
 
 Select the links in the table below for more information about them.
 
+For information on optimizing table schema, see [Schema optimization best practices](../../schema-best-practice.md).
+
 | Commands | Operation|
 |---|---|
 | [`.alter table docstring`](alter-table-docstring-command.md), [`.alter table folder`](alter-table-folder-command.md) | Manage table display properties |
