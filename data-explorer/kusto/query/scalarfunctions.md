@@ -360,8 +360,8 @@ This article lists all available scalar functions grouped by type. For aggregati
 
 |Function Name|Description|
 |--------------------------------------------------------------------------|--------------------------------------------------------|
-|[geo_angle()](geo-angle-function.md)|bla.|
-|[geo_azimuth()](geo-azimuth-function.md)|bla.|
+|[geo_angle()](geo-angle-function.md)|Calculates clockwise angle in radians between two lines on Earth.|
+|[geo_azimuth()](geo-azimuth-function.md)|Calculates clockwise angle in radians between the line from point1 to true north and a line from point1 to point2 on Earth.|
 |[geo_distance_2points()](geo-distance-2points-function.md)|Calculates the shortest distance between two geospatial coordinates on Earth.|
 |[geo_distance_point_to_line()](geo-distance-point-to-line-function.md)|Calculates the shortest distance between a coordinate and a line or multiline on Earth.|
 |[geo_distance_point_to_polygon()](geo-distance-point-to-polygon-function.md)|Calculates the shortest distance between a coordinate and a polygon or multipolygon on Earth.|
@@ -390,7 +390,7 @@ This article lists all available scalar functions grouped by type. For aggregati
 |[geo_polygon_perimeter()](geo-polygon-perimeter-function.md)|Calculates the length of the boundary of polygon or a multipolygon on Earth.|
 |[geo_polygon_simplify()](geo-polygon-simplify-function.md)|Simplifies polygon or a multipolygon by replacing nearly straight chains of short edges with a single long edge on Earth.|
 |[geo_polygon_to_s2cells()](geo-polygon-to-s2cells-function.md)|Calculates S2 Cell tokens that cover a polygon or multipolygon on Earth. Useful geospatial join tool.|
-|[geo_polygon_to_h3cells()](geo-polygon-to-h3cells-function.md)|bla.|
+|[geo_polygon_to_h3cells()](geo-polygon-to-h3cells-function.md)|Converts polygon to H3 cells. Useful geospatial join and visualization tool.|
 |[geo_geohash_to_central_point()](geo-geohash-to-central-point-function.md)|Calculates the geospatial coordinates that represent the center of a Geohash rectangular area.|
 |[geo_geohash_neighbors()](geo-geohash-neighbors-function.md)|Calculates the geohash neighbors.|
 |[geo_geohash_to_polygon()](geo-geohash-to-polygon-function.md)|Calculates the polygon that represents the geohash rectangular area.|
