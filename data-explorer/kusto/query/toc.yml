@@ -1293,9 +1293,9 @@ items:
     href: geospatial-grid-systems.md
   - name: Geospatial visualizations
     href: geospatial-visualizations.md
-  - name: geo-angle()
+  - name: geo_angle()
     href: geo-angle-function.md
-  - name: geo-azimuth()
+  - name: geo_azimuth()
     href: geo-azimuth-function.md
   - name: geo_distance_2points()
     href: geo-distance-2points-function.md
