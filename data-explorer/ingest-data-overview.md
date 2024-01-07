@@ -27,12 +27,12 @@ There are multiple ways to perform one-time data ingestion. Use the following di
 
 For more information, see the relevant documentation:
 
-* [Ingest historical data](ingest-data-historical.md)
-* [Get data from a local file](get-data-file.md)
-* [Get data from Amazon S3](get-data-amazon-s3.md)
-* [Get data from Azure Storage](get-data-storage.md)
-* [Integrate with Azure Data Factory](data-factory-integration.md)
-* [Write custom code with Kusto client libraries](kusto/api/client-libraries.md)
+* **[Ingest historical data](ingest-data-historical.md)**: Get data from an existing storage system into an Azure Data Explorer table with the proper creation date associated with each record.
+* **[Get data from a local file](get-data-file.md)**: Get data from a local file in a [supported data format](ingestion-supported-formats.md) into a new or existing Azure Data Explorer table.
+* **[Get data from Amazon S3](get-data-amazon-s3.md)**: Get data from Amazon S3 storage into either a new or existing Azure Data Explorer table.
+* **[Get data from Azure Storage](get-data-storage.md)**: Get data from an Azure Data Lake Gen2 container, Azure Storage blob container, or individual blobs into either a new or existing Azure Data Explorer table.
+* **[Integrate with Azure Data Factory](data-factory-integration.md)**: Azure Data Factory (ADF) is a fully managed data integration service for analytic workloads. ADF connects with over 90 supported sources to provide efficient and resilient data transfer. ADF prepares, transforms, and enriches data to give insights that can be monitored in different kinds of ways. This service can be used as a one-time solution, on a periodic timeline, or triggered by specific events.
+* **[Write custom code with Kusto client libraries](kusto/api/client-libraries.md)**: Write code with C#, Python, Java, Javascript, Typescript, or Go to ingest data into an Azure Data Explorer table.
 
 ## Continuous data ingestion
 
@@ -64,7 +64,7 @@ For more information, see the relevant documentation:
 * [Create an IoT Hubs data connection](create-iot-hub-connection.md)
 * [Create an Event Grid data connection](create-event-grid-connection.md)
 * [Connectors overview](connector-overview.md)
-* [Write custom code with Kusto client libraries](kusto/api/client-libraries.md)
+* **[Write custom code with Kusto client libraries](kusto/api/client-libraries.md)**: Write code with C#, Python, Java, Javascript, Typescript, or Go to ingest data into an Azure Data Explorer table.
 
 ## Direct ingestion with management commands
 
