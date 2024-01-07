@@ -50,8 +50,12 @@ Continuous data ingestion involves setting up an ingestion pipeline with either 
 There are multiple ways to configure continuous data ingestion. Use the following diagram to help you determine the most suitable option based on your specific use case:
 
 :::image type="complex" source="media/ingest-data-overview/continuous-ingestion.png" lightbox="media/ingest-data-overview/continuous-ingestion.png" alt-text="Flow chart for continuous ingestion decision making.":::
-    "Flow chart for continuous ingestion decision making. First, determine the type and location of your data. For event data, you can create an Event Hubs data connection or ingest data with Apache Kafka. For IoT data, you can create an IoT Hubs data connection. For data in Azure Storage, you can create an Event Grid data connection. For data stored in other places, check the connectors overview to see if there's a dedicated connector that can fit your use case. If so, follow the guidance to use that connector. If not, write custom code using Kusto client libraries. For low latency, set up the connection with streaming ingestion. For high throughput, set up the connection with queued ingestion. Articles with guidance on each of these options are linked to directly following this flow chart."
+    "Flow chart for continuous ingestion decision making. First, determine the type and location of your data. For event data, you can create an Event Hubs data connection or ingest data with Apache Kafka. For IoT data, you can create an IoT Hubs data connection. For data in Azure Storage, you can create an Event Grid data connection. For data stored in other places, check the connectors overview to see if there's a dedicated connector that can fit your use case. If so, follow the guidance to use that connector. If not, write custom code using Kusto client libraries. Articles with guidance on each of these options are linked to directly following this flow chart."
 :::image-end:::
+
+
+> [!NOTE]
+> Not all ingestion methods support streaming ingestion. For support details, check the guidance for the specific ingestion method.
 
 For more information, see the relevant documentation:
 
