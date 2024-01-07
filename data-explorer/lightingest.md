@@ -1,9 +1,9 @@
 ---
-title: Use LightIngest to ingest data into Azure Data Explorer.
+title: Use LightIngest to ingest data into Azure Data Explorer
 description: Learn about LightIngest, a command-line utility for ad-hoc data ingestion into Azure Data Explorer.
 ms.reviewer: tzgitlin
 ms.topic: how-to
-ms.date: 11/29/2023
+ms.date: 12/27/2023
 ---
 
 # Use LightIngest to ingest data into Azure Data Explorer
@@ -16,26 +16,32 @@ For an example of how to autogenerate a LightIngest command, see [ingest histori
 
 ## Prerequisites
 
-* LightIngest for your operating system: Windows, OSX, or Linux. [Download LightIngest](https://github.com/Azure/Kusto-Lightingest/releases).
+* LightIngest. There are two ways to get LightIngest:
+  * [Download LightIngest binaries for your operating system](https://github.com/Azure/Kusto-Lightingest/releases). Make sure to unzip the binaries after download.
+  * [Install LightIngest as a .NET tool](https://www.nuget.org/packages/Microsoft.Azure.Kusto.LightIngest). This method requires that you have the .NET SDK version 6.0 or higher installed on your machine. Then, run the following command:
+
+      ```
+      dotnet tool install -g Microsoft.Azure.Kusto.LightIngest
+      ```
 
 ## Run LightIngest
 
-1. At the command prompt, enter `LightIngest.exe` followed by the relevant command-line argument.
+To run LightIngest:
 
-    > [!Tip]
-    > For a list of supported command-line arguments, enter `LightIngest.exe /help`.
-    >
-    > :::image type="content" source="media/lightingest/lightingest-cmd-line-help.png" alt-text="Command line help for LightIngest.":::
+1. At the command prompt, enter `LightIngest` followed by the relevant command-line argument.
+
+    > [!TIP]
+    > For a list of supported command-line arguments, enter `LightIngest /help`.
 
 1. Enter `ingest-` followed by the connection string to the Azure Data Explorer cluster that will manage the ingestion. Enclose the connection string in double quotes and follow the [Kusto connection strings specification](kusto/api/connection-strings/kusto.md).
 
     For example:
 
     ```
-    LightIngest.exe "https://ingest-{Cluster name and region}.kusto.windows.net;Fed=True" -db:{Database} -table:Trips -source:"https://{Account}.blob.core.windows.net/{ROOT_CONTAINER};{StorageAccountKey}" -pattern:"*.csv.gz" -format:csv -limit:2 -ignoreFirst:true -cr:10.0 -dontWait:true
+    LightIngest "https://ingest-{Cluster name and region}.kusto.windows.net;Fed=True" -db:{Database} -table:Trips -source:"https://{Account}.blob.core.windows.net/{ROOT_CONTAINER};{StorageAccountKey}" -pattern:"*.csv.gz" -format:csv -limit:2 -ignoreFirst:true -cr:10.0 -dontWait:true
     ```
 
-### Recommendations
+## Performance recommendations
 
 * To best manage the ingestion load and recover from transient errors, use the ingestion endpoint at `https://ingest-{yourClusterNameAndRegion}.kusto.windows.net`.
 
@@ -59,7 +65,7 @@ For an example of how to autogenerate a LightIngest command, see [ingest histori
 | -format, -f | string | Source data format. Must be one of the [supported formats](ingestion-supported-formats.md) |  |
 | -ingestionMappingPath, -mappingPath | string | A path to a local file for ingestion column mapping. See [data mappings](kusto/management/mappings.md). |  |
 | -ingestionMappingRef, -mappingRef | string | The name of an ingestion column mapping that was previously created on the table. See [data mappings](kusto/management/mappings.md). |  |
-| -creationTimePattern | string | When set, is used to extract the CreationTime property from the file or blob path. See [How to ingest data using `CreationTime`](#how-to-ingest-data-using-creationtime). |  |
+| -creationTimePattern | string | When set, is used to extract the CreationTime property from the file or blob path. See [How to ingest data using `CreationTime`](#ingest-historical-data-with-the-creationtime-property). |  |
 | -ignoreFirstRow, -ignoreFirst | bool | If set, the first record of each file/blob is ignored. For example, if the source data has headers. |  |
 | -tag | string | [Tags](kusto/management/extent-tags.md) to associate with the ingested data. Multiple occurrences are permitted |  |
 | -dontWait | bool | If set to `true`, doesn't wait for ingestion completion. Useful when ingesting large amounts of files/blobs. |  |
@@ -84,11 +90,14 @@ When used with Azure blobs, LightIngest uses certain blob metadata properties to
 
 ## Usage examples
 
-### How to ingest data using CreationTime
+The following examples assume you've installed LightIngest binaries for your operating system. If you've installed LightIngest as a .NET tool, substitute  `LightIngest` with `LightIngest` in the examples.
+
+### Ingest historical data with the CreationTime property
 
 When you load historical data from existing system to Azure Data Explorer, all records receive the same ingestion date. To enable partitioning your data by creation time and not ingestion time, you can use the `-creationTimePattern` argument. The `-creationTimePattern` argument extracts the `CreationTime` property from the file or blob path. The pattern doesn't need to reflect the entire item path, just the section enclosing the timestamp you want to use.
 
 The argument values must include:
+
 * Constant text immediately preceding the timestamp format, enclosed in single quotes (prefix)
 * The timestamp format, in standard [.NET DateTime notation](/dotnet/standard/base-types/custom-date-and-time-format-strings)
 * Constant text immediately following the timestamp (suffix).
@@ -103,7 +112,7 @@ The argument values must include:
     The value for `-creationTimePattern` argument is part of the filename: *"'historicalvalues'yyyyMMdd'.parquet'"*
 
     ```kusto
-    LightIngest.exe "https://ingest-{Cluster name and region}.kusto.windows.net;Fed=True" -db:{Database} -table:Trips -source:"https://{Account}.blob.core.windows.net/{ROOT_CONTAINER};{StorageAccountKey}" -creationTimePattern:"'historicalvalues'yyyyMMdd'.parquet'"
+    LightIngest "https://ingest-{Cluster name and region}.kusto.windows.net;Fed=True" -db:{Database} -table:Trips -source:"https://{Account}.blob.core.windows.net/{ROOT_CONTAINER};{StorageAccountKey}" -creationTimePattern:"'historicalvalues'yyyyMMdd'.parquet'"
      -pattern:"*.parquet" -format:parquet -limit:2 -cr:10.0 -dontWait:true
     ```
 
@@ -112,7 +121,7 @@ The argument values must include:
     The value for `-creationTimePattern` argument is part of the folder structure: *"'folder/'yyyy/MM/dd'/blob'"*
 
    ```kusto
-    LightIngest.exe "https://ingest-{Cluster name and region}.kusto.windows.net;Fed=True" -db:{Database} -table:Trips -source:"https://{Account}.blob.core.windows.net/{ROOT_CONTAINER};{StorageAccountKey}" -creationTimePattern:"'mycontainer/myfolder/'yyyy/MM/dd'/'"
+    LightIngest "https://ingest-{Cluster name and region}.kusto.windows.net;Fed=True" -db:{Database} -table:Trips -source:"https://{Account}.blob.core.windows.net/{ROOT_CONTAINER};{StorageAccountKey}" -creationTimePattern:"'mycontainer/myfolder/'yyyy/MM/dd'/'"
      -pattern:"*.csv.gz" -format:csv -limit:2 -ignoreFirst:true -cr:10.0 -dontWait:true
     ```
 
@@ -124,7 +133,7 @@ The argument values must include:
 * Note the different options for specifying the target database and storage account key vs. SAS token
 
 ```
-LightIngest.exe "https://ingest-{ClusterAndRegion}.kusto.windows.net;Fed=True"
+LightIngest "https://ingest-{ClusterAndRegion}.kusto.windows.net;Fed=True"
   -database:DB
   -table:TABLE
   -source:"https://ACCOUNT.blob.core.windows.net/{ROOT_CONTAINER};{StorageAccountKey}"
@@ -134,7 +143,7 @@ LightIngest.exe "https://ingest-{ClusterAndRegion}.kusto.windows.net;Fed=True"
   -mappingRef:MAPPING
   -limit:10
 
-LightIngest.exe "https://ingest-{ClusterAndRegion}.kusto.windows.net;Fed=True;Initial Catalog=DB"
+LightIngest "https://ingest-{ClusterAndRegion}.kusto.windows.net;Fed=True;Initial Catalog=DB"
   -table:TABLE
   -source:"https://ACCOUNT.blob.core.windows.net/{ROOT_CONTAINER}?{SAS token}"
   -prefix:"DIR"
@@ -152,7 +161,7 @@ LightIngest.exe "https://ingest-{ClusterAndRegion}.kusto.windows.net;Fed=True;In
 * The tool posts the data for ingestion and doesn't wait for the ingest operations to complete
 
 ```
-LightIngest.exe "https://ingest-{ClusterAndRegion}.kusto.windows.net;Fed=True"
+LightIngest "https://ingest-{ClusterAndRegion}.kusto.windows.net;Fed=True"
   -database:DB
   -table:TABLE
   -source:"https://ACCOUNT.blob.core.windows.net/{ROOT_CONTAINER}?{SAS token}"
@@ -170,7 +179,7 @@ LightIngest.exe "https://ingest-{ClusterAndRegion}.kusto.windows.net;Fed=True"
 * The tool posts the data for ingestion and doesn't wait for the ingest operations to complete
 
 ```
-LightIngest.exe "https://ingest-{ClusterAndRegion}.kusto.windows.net;Fed=True"
+LightIngest "https://ingest-{ClusterAndRegion}.kusto.windows.net;Fed=True"
   -database:DB
   -table:TABLE
   -source:"PATH"
@@ -187,7 +196,7 @@ LightIngest.exe "https://ingest-{ClusterAndRegion}.kusto.windows.net;Fed=True"
 * Diagnostics trace files are written locally under folder `LOGS_PATH`
 
 ```
-LightIngest.exe "https://ingest-{ClusterAndRegion}.kusto.windows.net;Fed=True"
+LightIngest "https://ingest-{ClusterAndRegion}.kusto.windows.net;Fed=True"
   -database:DB
   -table:TABLE
   -source:"PATH"
