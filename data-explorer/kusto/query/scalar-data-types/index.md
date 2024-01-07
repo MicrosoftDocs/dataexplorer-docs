@@ -18,26 +18,32 @@ that can be used with Kusto.
 > [!NOTE]
 > User-defined data types are not supported in Kusto.
 
-The following table lists the data types supported by Kusto, alongside
-additional aliases you can use to refer to them and a roughly equivalent
-.NET Framework type.
+## Supported data types
 
-| Type       | Additional name(s)   | Equivalent .NET type              | gettype()   |
-| ---------- | -------------------- | --------------------------------- | ----------- |
-| `bool`     | `boolean`            | `System.Boolean`                  | `bool`      |
-| `datetime` | `date`               | `System.DateTime`                 | `datetime`  |
-| `dynamic`  |                      | `System.Object`                   | `array` or `dictionary` or any of the other values |
-| `guid`     |                      | `System.Guid`                     | `guid`      |
-| `int`      |                      | `System.Int32`                    | `int`       |
-| `long`     |                      | `System.Int64`                    | `long`      |
-| `real`     | `double`             | `System.Double`                   | `real`      |
-| `string`   |                      | `System.String`                   | `string`    |
-| `timespan` | `time`               | `System.TimeSpan`                 | `timespan`  |
-| `decimal`  |                      | `System.Data.SqlTypes.SqlDecimal` | `decimal`   |
+The following data types are supported:
 
-All non-string data types include a special "null" value, which represents the lack of data
-or a mismatch of data. For example, attempting to ingest the string `"abc"`
-into an `int` column results in this value.
-It isn't possible to materialize this value explicitly, but you can detect
-whether an expression evaluates to this value by using the `isnull()` function.
+| Type | Description |
+|--|--|
+| [bool](bool.md) (`boolean`) | A value of `true` (1), `false` (0), or null. |
+| [datetime](datetime.md) (`date`) | An instant in time, typically expressed as a date and time of day. |
+| [dynamic](dynamic.md) | An array, a property bag, null, or a value of any of the other scalar data types.|
+| [guid](guid.md) | A 128-bit globally-unique value. |
+| [int](int.md) | A signed, 32-bit wide, integer. |
+| [long](long.md) | A signed, 64-bit wide, integer. |
+| [real](real.md) (double) | A 64-bit wide, double-precision, floating-point number. |
+| [string](string.md) | A sequence of zero or more [Unicode](https://home.unicode.org/) characters.|
+| [timespan](timespan.md) (time) | A time interval. |
+| [decimal](decimal.md) | A 128-bit wide, decimal number.|
 
+> [!TIP]
+> To check the data type of a value, use the the [gettype()](../../query/gettypefunction.md) function.
+
+## Null values
+
+All non-string data types can be null, indicating the absence or mismatch of data. For example, if you try to input the string "abc" into an integer column, it results in the null value.
+
+You can't create the null value directly, but you can check if an expression equals this value using the [isnull()](../../query/isnullfunction.md) function.
+
+## Related content
+
+* [Null values](null-values.md)
