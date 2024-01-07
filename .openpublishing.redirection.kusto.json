@@ -1889,6 +1889,56 @@
         "source_path": "data-explorer/kusto/query/bag-unpackplugin.md",
         "redirect_url": "/azure/data-explorer/kusto/query/bag-unpack-plugin",
         "redirect_document_id": true
+      },
+      {
+        "source_path": "data-explorer/kusto/api/rest/response2.md",
+        "redirect_url": "/azure/data-explorer/kusto/api/rest/response-v2",
+        "redirect_document_id": true
+      },
+      {
+        "source_path": "data-explorer/kusto/concepts/resulttruncation.md",
+        "redirect_url": "/azure/data-explorer/kusto/concepts/result-truncation",
+        "redirect_document_id": true
+      },
+      {
+        "source_path": "data-explorer/kusto/concepts/partialqueryfailures.md",
+        "redirect_url": "/azure/data-explorer/kusto/concepts/partial-query-failures",
+        "redirect_document_id": true
+      },
+      {
+        "source_path": "data-explorer/kusto/concepts/querylimits.md",
+        "redirect_url": "/azure/data-explorer/kusto/concepts/query-limits",
+        "redirect_document_id": true
+      },
+      {
+        "source_path": "data-explorer/kusto/concepts/runawayqueries.md",
+        "redirect_url": "/azure/data-explorer/kusto/concepts/runaway-queries",
+        "redirect_document_id": true
+      },
+      {
+        "source_path": "data-explorer/kusto/management/external-tables-azurestorage-azuredatalake.md",
+        "redirect_url": "/azure/data-explorer/kusto/management/external-tables-azure-storage",
+        "redirect_document_id": true
+      },
+      {
+        "source_path": "data-explorer/kusto/management/external-tables-azurestorage-deltalake.md",
+        "redirect_url": "/azure/data-explorer/kusto/management/external-tables-delta-lake",
+        "redirect_document_id": true
+      },
+      {
+        "source_path": "data-explorer/kusto/management/referencing-security-principals.md",
+        "redirect_url": "/azure/data-explorer/kusto/management/reference-security-principals",
+        "redirect_document_id": true
+      },
+      {
+        "source_path": "data-explorer/kusto/management/referencing-security-principals.md",
+        "redirect_url": "/azure/data-explorer/kusto/management/reference-security-principals",
+        "redirect_document_id": true
+      },
+      {
+        "source_path": "data-explorer/kusto/query/hash_manyfunction.md",
+        "redirect_url": "/azure/data-explorer/kusto/query/hash-many-function",
+        "redirect_document_id": true
       }
     ]
 }
