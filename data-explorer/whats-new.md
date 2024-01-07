@@ -21,7 +21,7 @@ Welcome to what's new in Azure Data Explorer. This article details new and signi
 
 | Article title | Description |
 |--|--|
-|-[Scalar function types at a glance](kusto/query/scalarfunctions.md) <br/> -[series_cosine_similarity()](kusto/query/series-cosine-similarity-function.md) <br/> - [series_magnitude()](kusto/query/series-magnitude-function.md) <br/> - [series_sum()](kusto/query/series-sum-function.md) | New articles that describe how to calculate series elements, and updated scalar functions overview with new series processing functions.|
+|-[Scalar function types at a glance](kusto/query/scalarfunctions.md) <br/> -[series_cosine_similarity()](kusto/query/series-cosine-similarity-function.md) <br/> - [series_magnitude()](kusto/query/series-magnitude-function.md) <br/> - [series_sum()](kusto/query/series-sum-function.md) | New articles. Describes how to calculate series elements, and added to scalar functions overview.|
 |[series_dot_product()](kusto/query/series-dot-productfunction.md)| Updated article. Added section on performance optimization.|
 
 ## November 2023
