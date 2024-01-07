@@ -10,7 +10,7 @@ For general information on data types, see [scalar data types](/azure/data-explo
 
 * Commonly used fields should be typed columns, not [dynamic](/azure/data-explorer/kusto/query/scalar-data-types/dynamic) type.
 * Frequently searched for or aggregated JSON properties in a [dynamic](/azure/data-explorer/kusto/query/scalar-data-types/dynamic) column should be converted to a regular column in the table with a more specific type such as [string](/azure/data-explorer/kusto/query/scalar-data-types/string), [long](/azure/data-explorer/kusto/query/scalar-data-types/long), or [real](/azure/data-explorer/kusto/query/scalar-data-types/real).
-* Sparse columns that aren't commonly used for filter and aggregation should be should be collected as a property bag in a [dynamic](/azure/data-explorer/kusto/query/scalar-data-types/dynamic) column using the `DropMappedFields` [mapping transformation](/azure/data-explorer/kusto/management/mappings#dropmappedfields-transformation).
+* Sparse columns that aren't commonly used for filter and aggregation should be collected as a property bag in a [dynamic](/azure/data-explorer/kusto/query/scalar-data-types/dynamic) column using the `DropMappedFields` [mapping transformation](/azure/data-explorer/kusto/management/mappings#dropmappedfields-transformation).
 
 * Date time columns should be typed as [datetime](/azure/data-explorer/kusto/query/scalar-data-types/datetime), and not [long](/azure/data-explorer/kusto/query/scalar-data-types/long) or other data types.
     * Use the DateTime from unix [transformation mappings](/azure/data-explorer/kusto/management/mappings#mapping-transformations), for example `DateTimeFromUnixMilliseconds`. .
