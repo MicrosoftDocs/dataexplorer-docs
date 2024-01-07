@@ -1931,11 +1931,6 @@
         "redirect_document_id": true
       },
       {
-        "source_path": "data-explorer/kusto/management/referencing-security-principals.md",
-        "redirect_url": "/azure/data-explorer/kusto/management/reference-security-principals",
-        "redirect_document_id": true
-      },
-      {
         "source_path": "data-explorer/kusto/query/hash_manyfunction.md",
         "redirect_url": "/azure/data-explorer/kusto/query/hash-many-function",
         "redirect_document_id": true
