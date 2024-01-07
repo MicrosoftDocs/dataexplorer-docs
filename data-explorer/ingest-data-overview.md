@@ -90,11 +90,11 @@ Azure Data Explorer offers the following ingestion management commands, which in
 | [**Get data experience**](get-data-file.md) | *SV, JSON | 1 GB uncompressed | Queued to container, local file and blob in direct ingestion | One-off, create table schema, definition of continuous ingestion with Event Grid, bulk ingestion with container (up to 5,000 blobs; no limit when using historical ingestion) |  |
 | [**IoT Hub**](ingest-data-iot-hub-overview.md) | [Supported data formats](ingest-data-iot-hub-overview.md#data-format) | N/A | Queued, streaming | IoT messages, IoT events, IoT properties |  |
 | [**Kafka connector**](ingest-data-kafka.md) | Avro, ApacheAvro, JSON, CSV, Parquet, and ORC | Unlimited. Inherits Java restrictions. | Queued, streaming | Existing pipeline, high volume consumption from the source. | Preference can be determined by the existing use of a "multiple producer" or "consumer" service or the desired level of service management. |
-| [**Kusto client libraries**](kusto/api/client-libraries.md) | All formats supported | 1 GB uncompressed | Queued, streaming, direct | Write your own code according to organizational needs |
+| [**Kusto client libraries**](kusto/api/client-libraries.md) | All formats supported | 1 GB uncompressed | Queued, streaming, direct | Write your own code according to organizational needs | |
 | [**LightIngest**](lightingest.md) | All formats supported | 1 GB uncompressed | Queued via DM or direct ingestion | Data migration, historical data with adjusted ingestion timestamps, bulk ingestion (no size restriction) | Case-sensitive, space-sensitive |
-| [**Logic Apps**](kusto/tools/logicapps.md) | All formats supported | 1 GB uncompressed | Queued | Used to automate pipelines |
+| [**Logic Apps**](kusto/tools/logicapps.md) | All formats supported | 1 GB uncompressed | Queued | Used to automate pipelines | |
 | [**LogStash**](ingest-data-logstash.md) | JSON | Unlimited. Inherits Java restrictions. | Inputs to the connector are Logstash events, and the connector outputs to Kusto using queued ingestion. | Existing pipeline, use the mature, open source nature of Logstash for high volume consumption from the input(s). | Preference can be determined by the existing use of a "multiple producer" or "consumer" service or the desired level of service management. |
-| [**Power Automate**](flow.md) | All formats supported | 1 GB uncompressed | Queued | Ingestion commands as part of flow. Used to automate pipelines. |
+| [**Power Automate**](flow.md) | All formats supported | 1 GB uncompressed | Queued | Ingestion commands as part of flow. Used to automate pipelines. | |
 
 ## The ingestion process
 
