@@ -27,12 +27,12 @@ There are multiple ways to perform one-time data ingestion. Use the following di
 
 For more information, see the relevant documentation:
 
-* **[Ingest historical data](ingest-data-historical.md)**: Get data from an existing storage system into an Azure Data Explorer table with the proper creation date associated with each record.
-* **[Get data from a local file](get-data-file.md)**: Get data from a local file in a [supported data format](ingestion-supported-formats.md) into a new or existing Azure Data Explorer table.
-* **[Get data from Amazon S3](get-data-amazon-s3.md)**: Get data from Amazon S3 storage into either a new or existing Azure Data Explorer table.
-* **[Get data from Azure Storage](get-data-storage.md)**: Get data from an Azure Data Lake Gen2 container, Azure Storage blob container, or individual blobs into either a new or existing Azure Data Explorer table.
-* **[Integrate with Azure Data Factory](data-factory-integration.md)**: Azure Data Factory (ADF) is a fully managed data integration service for analytic workloads. ADF connects with over 90 supported sources to provide efficient and resilient data transfer. ADF prepares, transforms, and enriches data to give insights that can be monitored in different kinds of ways. This service can be used as a one-time solution, on a periodic timeline, or triggered by specific events.
-* **[Write custom code with Kusto client libraries](kusto/api/client-libraries.md)**: Write code with C#, Python, Java, JavaScript, TypeScript, or Go to ingest data into an Azure Data Explorer table.
+* **[Ingest historical data](ingest-data-historical.md)**: Transfer data from an existing storage system to Azure Data Explorer.
+* **[Get data from a local file](get-data-file.md)**: Get data from a local file in a [supported data format](ingestion-supported-formats.md) into a new or existing table.
+* **[Get data from Amazon S3](get-data-amazon-s3.md)**: Get data from Amazon S3 storage into either a new or existing table.
+* **[Get data from Azure Storage](get-data-storage.md)**: Get data from an Azure Data Lake Gen2 container, Azure Storage blob container, or individual blobs into either a new or existing table.
+* **[Integrate with Azure Data Factory](data-factory-integration.md)**: Azure Data Factory (ADF) is a fully managed data integration service for analytic workloads. ADF can be used as a one-time solution, on a periodic timeline, or triggered by specific events.
+* **[Write custom code with Kusto client libraries](kusto/api/client-libraries.md)**: Write code with C#, Python, Java, JavaScript, TypeScript, or Go to ingest data.
 
 ## Continuous data ingestion
 
@@ -61,12 +61,12 @@ There are multiple ways to configure continuous data ingestion. Use the followin
 
 For more information, see the relevant documentation:
 
-* **[Create an Event Hubs data connection](create-event-hubs-connection.md)**: A pipeline that transfers events from various supported services to Azure Data Explorer.
-* **[Ingest data from Apache Kafka](ingest-data-kafka.md)**: A pipeline to get data from Apache Kafka, a distributed platform for real-time streaming data. 
-* **[Create an IoT Hubs data connection](create-iot-hub-connection.md)**: A pipeline that is used for the transfer of data from supported IoT devices to Azure Data Explorer.
-* **[Create an Event Grid data connection](create-event-grid-connection.md)**: A pipeline that listens to Azure storage, and updates Azure Data Explorer to pull information when subscribed events occur.
+* **[Create an Event Hubs data connection](create-event-hubs-connection.md)**: Transfer events from various supported services.
+* **[Ingest data from Apache Kafka](ingest-data-kafka.md)**: Transfer events from Apache Kafka, a distributed platform for real-time streaming data.
+* **[Create an IoT Hubs data connection](create-iot-hub-connection.md)**: Transfer IoT data from supported devices.
+* **[Create an Event Grid data connection](create-event-grid-connection.md)**: Listen to Azure storage and pull information when subscribed events occur.
 * **[Connectors overview](connector-overview.md)**: Get data with services like Apache Spark, Azure Data Factory, Apache Kafka, Apache Flink, Azure Cosmos DB, Fluent Bit, Logstash, Open Telemetry, Power Automate, Splunk, and more.
-* **[Write custom code with Kusto client libraries](kusto/api/client-libraries.md)**: Write code with C#, Python, Java, JavaScript, TypeScript, or Go to ingest data into an Azure Data Explorer table.
+* **[Write custom code with Kusto client libraries](kusto/api/client-libraries.md)**: Write code with C#, Python, Java, JavaScript, TypeScript, or Go to ingest data.
 
 > [!NOTE]
 > Event Hubs, IoT Hubs, Event Grid, and certain data connectors offer services such as throttling, retries, monitors, and alerts. To learn more, see the [Connectors overview](connector-overview.md).
