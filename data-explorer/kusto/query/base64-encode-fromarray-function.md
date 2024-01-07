@@ -11,7 +11,7 @@ Encodes a base64 string from a bytes array.
 
 ## Syntax
 
-`base64_encode_fromarray(`*base64_string_decoded_as_array*`)`
+`base64_encode_fromarray(`*base64_string_decoded_as_a_byte_array*`)`
 
 [!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
 
@@ -19,11 +19,11 @@ Encodes a base64 string from a bytes array.
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-| *base64_string_decoded_as_array* | dynamic | &check; | The bytes array to be encoded into a base64 string. |
+| *base64_string_decoded_as_a_byte_array* | dynamic | &check; | The bytes (integer) array to be encoded into a base64 string. |
 
 ## Returns
 
-Returns the base64 string encoded from the bytes array.
+Returns the base64 string encoded from the bytes array. Note that byte is an integer type.
 
 ## Examples
 
