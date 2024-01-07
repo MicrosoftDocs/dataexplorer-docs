@@ -9,6 +9,21 @@ ms.date: 12/07/2023
 
 Welcome to what's new in Azure Data Explorer. This article details new and significantly updated content in the Azure Data Explorer documentation.
 
+## December 2023
+
+**General**
+
+| Article title | Description |
+|--|--|
+| [Migrate your cluster to support multiple availability zones](migrate-cluster-to-multiple-availability-zone.md)| New article. Describes how to migrate your cluster to support multiple availability zones.|
+
+**Query**
+
+| Article title | Description |
+|--|--|
+|-[Scalar function types at a glance](kusto/query/scalarfunctions.md) <br/> -[series_cosine_similarity()](kusto/query/series-cosine-similarity-function.md) <br/> - [series_magnitude()](kusto/query/series-magnitude-function.md) <br/> - [series_sum()](kusto/query/series-sum-function.md) | New articles that describe how to calculate series elements, and updated scalar functions overview with new series processing functions.|
+|[series_dot_product()](kusto/query/series-dot-productfunction.md)| Updated article. Added section on performance optimization.|
+
 ## November 2023
 
 **General**
@@ -287,16 +302,3 @@ Welcome to what's new in Azure Data Explorer. This article details new and signi
 | [series_dot_product()](./kusto/query/series-dot-productfunction.md) | New article. Describes how to calculate the dot product of two numeric series.|
 | [hll_if() (aggregation function)](./kusto/query/hll-if-aggregation-function.md) | New article. Describes how to calculate the intermediate results of the `dcount()` function. |
 | [bag_set_key()](./kusto/query/bag-set-key-function.md) | New article. Describes how to set a given key to a given value in a dynamic property bag. |
-
-## December 2022
-
-**General**
-
-| Article title | Description |
-|--|--|
-|[Find an Azure Data Explorer partner](find-my-partner.md) | New article. Describes the Azure Data Explorer Find My Partner Program.|
-|[Manage Azure Data Explorer cluster permissions](manage-cluster-permissions.md)| New article. Describes how to manage role-based access controls for clusters.|
-|[Ingestion behavior of invalid data](ingest-invalid-data.md) | New article. Describes the possible outcomes of ingesting invalid data|
-|[Use data from Azure Data Explorer in Power BI](power-bi-data-connector.md)| New article. Describes how to use data from Azure Data Explorer in Power BI.|
-| - [Ingest data from Azure Cosmos DB into Azure Data Explorer (Preview)](ingest-data-cosmos-db-connection.md) <br/> - [Get latest versions of Azure Cosmos DB documents (Preview)](ingest-data-cosmos-db-queries.md) | New articles. Describes how to load data and get the latest versions of Azure Cosmos DB documents.|
-|[Configure a database using a Kusto Query Language script](database-script.md)| Updated article. Database scripts supports `.add` verb.|
