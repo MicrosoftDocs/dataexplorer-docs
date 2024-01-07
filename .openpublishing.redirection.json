@@ -874,6 +874,11 @@
       "source_path": "data-explorer/kusto/management/operations.md",
       "redirect_url": "/azure/data-explorer/kusto/management/show-operations",
       "redirect_document_id": true
+    },
+    {
+      "source_path": "data-explorer/kusto/query/scalar-data-types/unsupported-data-types.md",
+      "redirect_url": "/azure/data-explorer/kusto/query/scalar-data-types/",
+      "redirect_document_id": true
     }
   ]
 }
