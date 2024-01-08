@@ -26,6 +26,7 @@ The following data types are supported:
 |--|--|
 | [bool](bool.md) (`boolean`) | `true` (`1`), `false` (`0`), or null. |
 | [datetime](datetime.md) (`date`) | An instant in time, typically expressed as a date and time of day. |
+| [decimal](decimal.md) | A 128-bit wide, decimal number.|
 | [dynamic](dynamic.md) | An array, a property bag, null, or a value of any of the other scalar data types.|
 | [guid](guid.md) | A 128-bit globally-unique value. |
 | [int](int.md) | A signed, 32-bit wide, integer. |
@@ -33,7 +34,6 @@ The following data types are supported:
 | [real](real.md) (double) | A 64-bit wide, double-precision, floating-point number. |
 | [string](string.md) | A sequence of zero or more [Unicode](https://home.unicode.org/) characters.|
 | [timespan](timespan.md) (time) | A time interval. |
-| [decimal](decimal.md) | A 128-bit wide, decimal number.|
 
 > [!TIP]
 > To check the data type of a value, use the the [gettype()](../../query/gettypefunction.md) function.
