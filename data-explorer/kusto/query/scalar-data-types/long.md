@@ -15,7 +15,7 @@ To specify a `long` literal, use one of the following syntax options:
 
 |Value|Example|
 |--|--|
-|One more or digits representing a whole number|`12`|
+|One or more digits representing a whole number|`12`|
 |The prefix `0x` followed by one or more hex digits|`0xf` is equivalent to `long(15)`|
 |`long(-`*number*`)` to indicate a negative number|`long(-1)`|
 |`long(null)` to indicate a missing value||
