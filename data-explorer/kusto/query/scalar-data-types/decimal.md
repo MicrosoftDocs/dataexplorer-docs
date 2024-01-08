@@ -11,13 +11,21 @@ The `decimal` data type represents a 128-bit wide, decimal number.
 
 > [!CAUTION]
 > Arithmetic operations involving `decimal` values are significantly slower than operations on [real](real.md) data type.
-> If your use case doesn't require very high precision, it's advised to switch to `real`.
+> If your use case doesn't require very high precision, we recommend using `real`.
 
-## datetime literals
+## `decimal` literals
 
-`decimal(1.0)`, `decimal(0.1)`, and `decimal(1e5)` are all literals of type `decimal`.
+To specify a `decimal` literal, use the following syntax:
 
-The special form `decimal(null)` represents the [null value](null-values.md).
+`decimal(`*value*`)`
+
+The following formats are supported for the *value* parameter:
+
+|Description|Example|
+|--|--|
+|One or more digits, followed by a decimal point, and then one or more digits|`decimal(1.0)`|
+|One or more digits, followed by the letter e, and then another digit, indicating scientific notation|`decimal(1e5)`|
+|`null`, which represents a missing value|`decimal(null)`|
 
 ## Related content
 
