@@ -22,7 +22,7 @@ This is sometimes called "a moment in linear time".
 > in other time zones is required, use [datetime_utc_to_local()](../datetime-utc-to-local-function.md) 
 > or [datetime_local_to_utc()](../datetime-local-to-utc-function.md).
 
-## Literals
+## `datetime` literals
 
 To specify a `datetime` literal, use the following syntax:
 
@@ -37,7 +37,7 @@ The following formats are supported for the *value* parameter:
 |Empty, which returns the current time|`datetime()`|
 |`null`, which represents a missing value|`datetime(null)`|
 
-## The now() and ago() special functions
+## The `now()` and `ago()` special functions
 
 Kusto provides two special functions, [now() and ago()](../nowfunction.md),
 to allow queries to reference the time at which the query starts execution.

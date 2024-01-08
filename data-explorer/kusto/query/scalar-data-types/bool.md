@@ -11,7 +11,7 @@ The `bool` data type can be: `true` (`1`), `false` (`0`), or null.
 
 > The `bool` and `boolean` data types are equivalent.
 
-## Literals
+## `bool` literals
 
 To specify a bool literal, use the following syntax: 
 
