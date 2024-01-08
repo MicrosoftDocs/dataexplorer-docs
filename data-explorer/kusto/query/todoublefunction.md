@@ -1,19 +1,19 @@
 ---
-title:  todouble()
-description: Learn how to use the todouble() function to convert the input expression to a value of type `real`.
+title:  toreal()
+description: Learn how to use the toreal() function to convert the input expression to a value of type `real`.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 12/18/2023
+ms.date: 01/08/2024
 ---
-# todouble()
+# toreal()
 
 Converts the input expression to a value of type [real](scalar-data-types/real.md).
 
-> The `todouble()` and `toreal()` functions are equivalent
+> The `todouble()` and `toreal()` functions are equivalent.
 
 ## Syntax
 
-`todouble(`*Expr*`)`
+`toreal(`*Expr*`)`
 
 [!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
 

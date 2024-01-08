@@ -1093,8 +1093,8 @@ items:
   - name: todecimal()
     displayName: to decimal todecimal
     href: todecimalfunction.md
-  - name: todouble()
-    displayName: to double todouble toreal()
+  - name: toreal()
+    displayName: to double todouble todouble() real
     href: todoublefunction.md
   - name: toguid()
     displayName: to guid toguid
