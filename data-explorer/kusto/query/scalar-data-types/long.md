@@ -1,9 +1,9 @@
 ---
 title:  The long data type
-description: This article describes The long data type in Azure Data Explorer.
+description: This article describes the long data type in Azure Data Explorer.
 ms.reviewer: orspodek
 ms.topic: reference
-ms.date: 10/23/2018
+ms.date: 01/08/2024
 ---
 # The long data type
 
@@ -16,6 +16,7 @@ Literals of the `long` data type can be specified in the following syntax:
 `long` `(` *Value* `)`
 
 Where *Value* can take the following forms:
+
 * One more or digits, in which case the literal value is the decimal representation
   of these digits. For example, `long(12)` is the number twelve of type `long`.
 * The prefix `0x` followed by one or more Hex digits. For example,
@@ -29,5 +30,8 @@ Kusto also supports literals of type `long` without the `long(`/`)` prefix/suffi
 for the first two forms only. Thus, `123` is a literal of type `long`, as is
 `0x123`, but `-2` is **not** a literal (it is currently interpreted as the unary
 function `-` applied to the literal `2` of type long).
- 
-For converting long into hex string - see [tohex() function](../tohexfunction.md).
+
+## Related content
+
+* [tolong()](../../query/tolongfunction.md)
+* To convert the `long` type into a hex string, see [tohex() function](../tohexfunction.md).
