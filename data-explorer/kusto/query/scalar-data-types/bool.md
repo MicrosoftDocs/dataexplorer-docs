@@ -11,15 +11,15 @@ The `bool` data type can be: `true` (`1`), `false` (`0`), or null.
 
 > The `bool` and `boolean` data types are equivalent.
 
-## bool literals
+## Literals
 
-The `bool` data type has the following literals:
+The literals for the bool data type include:
 
-* `true` and `bool(true)`: Representing trueness
-* `false` and `bool(false)`:  Representing falsehood
-* `bool(null)`: See [Null values](/azure/data-explorer/kusto/query/scalar-data-types/null-values)
+* `true` or `bool(true)` to represent trueness
+* `false` or `bool(false)` to represent falsehood
+* `bool(null)` to represent a [null value](/azure/data-explorer/kusto/query/scalar-data-types/null-values)
 
-## bool operators
+## Boolean operators
 
 The `bool` data type supports all of the [logical operators](../logicaloperators.md): equality (`==`), inequality (`!=`), logical-and (`and`), and logical-or (`or`).
 
