@@ -13,24 +13,21 @@ The `timespan` data type represents a time interval.
 
 ## `timespan` literals
 
-Literals of type `timespan` have the syntax `timespan(`*value*`)`, where a number of formats 
-are supported for *value*, as indicated by the following table:
+To specify a `timespan` literal, use one of the following syntax options:
 
-|Value|Length of time|
----|---
-`2d`|2 days
-`1.5h`|1.5 hour
-`30m`|30 minutes
-`10s`|10 seconds
-`0.1s`|0.1 second
-`100ms`| 100 millisecond
-`10microsecond`|10 microseconds
-`1tick`|100ns
-`time(15 seconds)`|15 seconds
-`time(2)`| 2 days
-`time(0.12:34:56.7)`|`0d+12h+34m+56.7s`
-
-The special form `time(null)` is the [null value](null-values.md).
+| Value | Example | Length of Time |
+|--|--|--|
+| One or more digits followed by `d` for days | `2d` | 2 days |
+| One or more digits followed by `h` for hours | `1.5h` | 1.5 hours |
+| One or more digits followed by `m` for minutes | `30m` | 30 minutes |
+| One or more digits followed by `s` for seconds | `10s` | 10 seconds |
+| One or more digits followed by `ms` for milliseconds | `100ms` | 100 milliseconds |
+| One or more digits followed by `microsecond` | `10microsecond` | 10 microseconds |
+| One or more digits followed by `tick` to indicate nanoseconds | `1tick` | 100 ns |
+| `timespan(`*x* `seconds)` | `timespan(15 seconds)` | 15 seconds |
+| `timespan(`*number*`)` | `timespan(2)` | 2 days |
+| `timespan(`*days*`.`*hours*`:`*minutes*`:`*seconds*`.`*milliseconds*`)` | `timespan(0.12:34:56.7)` | `0d+12h+34m+56.7s` |
+| `timespan(null)` |  | Represents the [null value](null-values.md). |
 
 ## `timespan` operators
 
