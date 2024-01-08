@@ -7,13 +7,7 @@ ms.date: 01/27/2020
 ---
 # Scalar data types
 
-Every data value (such as the value of an expression, or the parameter to a function) has a **data type**. A data type is either a **scalar data type**
-(one of the built-in predefined types listed below), or a **user-defined record**
-(an ordered sequence of name/scalar-data-type pairs, such as the data type of a
-row of a table).
-
-Kusto supplies a set of system data types that define all the types of data
-that can be used with Kusto.
+Every data value, like the value of an expression or a function parameter, has a *data type*. A data type is either a *scalar data type*, which is one of the built-in predefined types listed below, or a *user-defined record*, which is an ordered sequence of name and scalar-data-type pairs, like the data type of a row in a table.
 
 > [!NOTE]
 > User-defined data types are not supported in Kusto.
