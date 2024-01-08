@@ -1,13 +1,13 @@
 ---
 title:  The datetime data type
-description: This article describes The datetime data type in Azure Data Explorer.
+description: This article describes the datetime data type in Azure Data Explorer.
 ms.reviewer: orspodek
 ms.topic: reference
 ms.date: 01/08/2024
 ---
 # The datetime data type
 
-The `datetime` (`date`) data type represents an instant in time, typically expressed as a date and time of day.
+The `datetime` data type represents an instant in time, typically expressed as a date and time of day.
 Values range from 00:00:00 (midnight), January 1, 0001 Anno Domini (Common Era) through 11:59:59 P.M., December 31, 9999 A.D. (C.E.) in the Gregorian calendar. 
 
 Time values are measured in 100-nanosecond units called ticks, and a particular date is the number of ticks since 12:00 midnight,
@@ -15,20 +15,27 @@ January 1, 0001 A.D. (C.E.) in the GregorianCalendar calendar (excluding ticks t
 For example, a ticks value of 31241376000000000 represents the date, Friday, January 01, 0100 12:00:00 midnight.
 This is sometimes called "a moment in linear time".
 
+> The `datetime` and `date` data types are equivalent.
+
 > [!NOTE]
 > A `datetime` value in Kusto is always in the UTC time zone. If displaying `datetime` values 
-> in other time zones is required, please use [datetime_utc_to_local()](../datetime-utc-to-local-function.md) 
-> or its counterpart, [datetime_local_to_utc()](../datetime-local-to-utc-function.md), to convert to a different time zone.
+> in other time zones is required, use [datetime_utc_to_local()](../datetime-utc-to-local-function.md) 
+> or [datetime_local_to_utc()](../datetime-local-to-utc-function.md).
 
-## datetime literals
+## Literals
 
-Literals of type `datetime` have the syntax `datetime(`*value*`)`, where a number of formats 
-are supported for *value*, as indicated by the following table:
+To specify a `datetime` literal, use the following syntax:
 
-|Example                                                     |Value                                                         |
-|------------------------------------------------------------|--------------------------------------------------------------|
-|`datetime(2015-12-31 23:59:59.9)`<br/>`datetime(2015-12-31)`|Times are always in UTC. Omitting the date gives a time today.|
-|`datetime(null)`                                            |See [null values](null-values.md).                            |
+`datetime(`*value*`)`
+
+The following formats are supported for the *value* parameter:
+
+|Description|Example|
+|--|--|--|
+|A day and time in UTC format|`datetime(2015-12-31 23:59:59.9)`|
+|A day in UTC format|`datetime(2015-12-31)`|
+|Empty, which returns the current time|`datetime()`|
+|`null`, which represents a missing value|`datetime(null)`|
 
 ## The now() and ago() special functions
 
