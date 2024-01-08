@@ -17,7 +17,7 @@ To specify an `int` literal, use the following syntax:
 
 The following formats are supported for the *value* parameter:
 
-|Description|Example|
+|Value|Example|
 |--|--|
 |One or more digits|`int(2)`|
 |A negative sign (`-`) followed by one or more digits|`int(-2)`|

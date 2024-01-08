@@ -37,13 +37,19 @@ To specify a `dynamic` literal, use the following syntax:
 
 The following formats are supported for the *value* parameter:
 
-|Description|Example|
+|Value|Example|
 |--|--|
 |An array of dynamic or other scalar literals|`dynamic([1, 2, "hello"])`|
 |A property bag with the format `{`*Name* `=` *Value* [`,` ... ]`}`|`dynamic({"a":1, "b":{"a":2}})`|
 |A literal of another scalar data type|`dynamic(4)`|
 |`null` to represent a missing value|`dynamic(null)`|
 
+## Examples
+
+The following query creates a dynamic property bag:
+
+> [!div class="nextstepaction"]
+> <a href="https://dataexplorer.azure.com/clusters/kvc9rf7q4d68qcw5sk2d6f.northeurope/databases/MyDatabase?query=H4sIAAAAAAAAAw3HsQqAIBAA0D3oH46bCo4g3QS%2FJBrUExJMIxoK69%2B76fGOM5ULquWnuD2FoaFDMytNgB4NbjHnipKAZplJkV4ljKZ939h3L8T7ioXB2To5Ai94giAEAhb4B3199sBhAAAA" target="_blank">Run the query</a>
 
 ```kusto
 print o=dynamic({"a":123, "b":"hello", "c":[1,2,3], "d":{}})

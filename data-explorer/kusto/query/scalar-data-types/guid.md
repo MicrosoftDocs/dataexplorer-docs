@@ -19,7 +19,7 @@ To specify a `guid` literal, use the following syntax:
 
 The following formats are supported for the *value* parameter:
 
-|Description|Example|
+|Value|Example|
 |--|--|
 |A guid string|`guid(74be27de-1e4e-49d9-b579-fe0b331d3642)`|
 |`null` to represent a missing value|`guid(null)`|

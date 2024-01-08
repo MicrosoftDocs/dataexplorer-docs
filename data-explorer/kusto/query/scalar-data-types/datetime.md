@@ -30,11 +30,11 @@ To specify a `datetime` literal, use the following syntax:
 
 The following formats are supported for the *value* parameter:
 
-|Description|Example|
+|Value|Example|
 |--|--|
 |A day and time in UTC format|`datetime(2015-12-31 23:59:59.9)`|
 |A day in UTC format|`datetime(2015-12-31)`|
-|Empty, which returns the current time|`datetime()`|
+|Empty to return the current time|`datetime()`|
 |`null` to represent a missing value|`datetime(null)`|
 
 ## The `now()` and `ago()` special functions

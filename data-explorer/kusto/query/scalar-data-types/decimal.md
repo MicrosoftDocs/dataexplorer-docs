@@ -21,7 +21,7 @@ To specify a `decimal` literal, use the following syntax:
 
 The following formats are supported for the *value* parameter:
 
-|Description|Example|
+|Value|Example|
 |--|--|
 |One or more digits, followed by a decimal point, and then one or more digits|`decimal(1.0)`|
 |One or more digits, followed by the letter e, and then another digit, indicating scientific notation|`decimal(1e5)`|
