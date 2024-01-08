@@ -18,10 +18,10 @@ The following data types are supported:
 
 | Type | Description |
 |--|--|
-| [bool](bool.md) (`boolean`) | `true` (`1`), `false` (`0`), or null. |
+| [bool](bool.md) (`boolean`) | `true` (`1`) or `false` (`0`). |
 | [datetime](datetime.md) (`date`) | An instant in time, typically expressed as a date and time of day. |
 | [decimal](decimal.md) | A 128-bit wide, decimal number.|
-| [dynamic](dynamic.md) | An array, a property bag, null, or a value of any of the other scalar data types.|
+| [dynamic](dynamic.md) | An array, a property bag, or a value of any of the other scalar data types.|
 | [guid](guid.md) | A 128-bit globally-unique value. |
 | [int](int.md) | A signed, 32-bit wide, integer. |
 | [long](long.md) | A signed, 64-bit wide, integer. |
