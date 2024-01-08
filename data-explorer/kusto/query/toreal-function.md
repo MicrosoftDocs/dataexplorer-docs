@@ -11,6 +11,9 @@ Converts the input expression to a value of type [real](scalar-data-types/real.m
 
 > The `todouble()` and `toreal()` functions are equivalent.
 
+> [!NOTE]
+> When possible, use [real literals](./scalar-data-types/real.md) instead.
+
 ## Syntax
 
 `toreal(`*Expr*`)`
@@ -32,6 +35,3 @@ If conversion is successful, the result is a value of type `real`. Otherwise, th
 ```kusto
 todouble("123.4") == 123.4
 ```
-
-> [!NOTE]
-> Use [double() or real()](./scalar-data-types/real.md) when possible.

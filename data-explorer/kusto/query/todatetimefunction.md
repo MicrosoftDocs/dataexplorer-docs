@@ -10,7 +10,7 @@ ms.date: 01/08/2024
 Converts the input to a [datetime](./scalar-data-types/datetime.md) scalar value.
 
 > [!NOTE]
-> For optimal efficiency, use [datetime literals](./scalar-data-types/datetime.md#) when possible.
+> When possible, use [datetime literals](./scalar-data-types/datetime.md#) instead.
 
 ## Syntax
 

@@ -10,7 +10,7 @@ ms.date: 01/08/2024
 Converts a string to a [`guid`](./scalar-data-types/guid.md) scalar.
 
 > [!NOTE]
-> For optimal efficiency, use [guid literals](./scalar-data-types/guid.md#guid-literals) when possible, namely if you have a hard-coded guid.
+> When possible, use [guid literals](./scalar-data-types/guid.md#guid-literals) instead.
 
 ## Syntax
 

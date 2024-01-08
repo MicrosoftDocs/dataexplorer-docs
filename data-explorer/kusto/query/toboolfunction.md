@@ -12,7 +12,7 @@ Convert inputs to boolean (signed 8-bit) representation.
 > The `tobool()` and `toboolean()` functions are equivalent
 
 > [!NOTE]
-> For optimal efficiency, use [bool literals](../query/scalar-data-types/bool.md#literals) when possible.
+> When possible, use [bool literals](../query/scalar-data-types/bool.md#literals) instead.
 
 ## Syntax
 
