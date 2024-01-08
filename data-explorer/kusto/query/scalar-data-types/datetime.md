@@ -3,7 +3,7 @@ title:  The datetime data type
 description: This article describes The datetime data type in Azure Data Explorer.
 ms.reviewer: orspodek
 ms.topic: reference
-ms.date: 12/21/2023
+ms.date: 01/08/2024
 ---
 # The datetime data type
 
@@ -94,3 +94,7 @@ and the [todatetime()](../todatetimefunction.md) function.
 |%Y-%n-%eT%H:%M:%s %Z|2014-11-08T15:05:25 GMT|
 |%Y-%n-%eT%H:%M|2014-11-08T15:05|
 |%Y-%n-%eT%H:%M %Z|2014-11-08T15:05 GMT|
+
+## Related content
+
+* [todatetime()](../../query/todatetimefunction.md)
