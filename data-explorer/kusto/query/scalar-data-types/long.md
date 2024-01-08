@@ -20,12 +20,12 @@ The following formats are supported for the *value* parameter:
 |Description|Example|
 |--|--|
 |One more or digits, in which case the literal value is the decimal representation of these digits|`long(12)`|
-|The prefix `0x` followed by one or more hex digits|`long(0xf)` is equivalent to `long(15)`|
+|The prefix `0x` followed by one or more hex digits (hexadecimal number)|`long(0xf)` is equivalent to `long(15)`|
 |A negative (`-`) sign followed by one or more digits|`long(-1)`|
 |`null` to represent a missing value|`long(null)`|
 
 > [!NOTE]
-> Whole numbers and those specified with the 0x prefix followed by hex digits are considered `long` literals. For example, `123` and `0x123` are direct literals of type long. However, `-2` isn't considered a literal in this context. Instead, it's interpreted as the unary function `-` applied to the literal `2` of type long.
+> By default, whole numbers and hexadecimal numbers are `long` literals. For example, `123` and `0x123` are direct literals of type `long`. However, `-2` isn't considered a literal in this context. Instead, it's interpreted as the unary function `-` applied to the literal `2` of type long.
 
 ## Related content
 
