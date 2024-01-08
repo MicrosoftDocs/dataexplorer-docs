@@ -11,25 +11,21 @@ The `long` data type represents a signed, 64-bit wide, integer.
 
 ## long literals
 
-Literals of the `long` data type can be specified in the following syntax:
+To specify a `long` literal, use the following syntax:
 
-`long` `(` *Value* `)`
+`long(`*value*`)`
 
-Where *Value* can take the following forms:
+The following formats are supported for the *value* parameter:
 
-* One more or digits, in which case the literal value is the decimal representation
-  of these digits. For example, `long(12)` is the number twelve of type `long`.
-* The prefix `0x` followed by one or more Hex digits. For example,
-  `long(0xf)` is equivalent to `long(15)`.
-* A minus (`-`) sign followed by one or more digits. For example, `long(-1)`
-  is the number minus one of type `long`.
-* `null`, in which case this is the [null value](null-values.md)
-  of the `long` data type. Thus, the null value of type `long` is `long(null)`.
+|Description|Example|
+|--|--|
+|One more or digits, in which case the literal value is the decimal representation of these digits.|`long(12)`|
+|The prefix `0x` followed by one or more hex digits.|`long(0xf)` is equivalent to `long(15)`|
+|A negative (`-`) sign followed by one or more digits.|`long(-1)`|
+|`null`, which represents a missing value.|`long(null)`|
 
-Kusto also supports literals of type `long` without the `long(`/`)` prefix/suffi
-for the first two forms only. Thus, `123` is a literal of type `long`, as is
-`0x123`, but `-2` is **not** a literal (it is currently interpreted as the unary
-function `-` applied to the literal `2` of type long).
+> [!NOTE]
+> Whole numbers and those specified with the 0x prefix followed by hex digits are considered `long` literals. For example, `123` and `0x123` are direct literals of type long. However, `-2` isn't considered a literal in this context. Instead, it's interpreted as the unary function `-` applied to the literal `2` of type long.
 
 ## Related content
 
