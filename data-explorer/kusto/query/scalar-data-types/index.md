@@ -22,7 +22,7 @@ The following data types are supported:
 | [datetime](datetime.md) (`date`) | An instant in time, typically expressed as a date and time of day. |
 | [decimal](decimal.md) | A 128-bit wide, decimal number.|
 | [dynamic](dynamic.md) | An array, a property bag, or a value of any of the other scalar data types.|
-| [guid](guid.md) | A 128-bit globally-unique value. |
+| [guid](guid.md) (`uuid`, `uniqueid`)| A 128-bit globally-unique value. |
 | [int](int.md) | A signed, 32-bit wide, integer. |
 | [long](long.md) | A signed, 64-bit wide, integer. |
 | [real](real.md) (double) | A 64-bit wide, double-precision, floating-point number. |
