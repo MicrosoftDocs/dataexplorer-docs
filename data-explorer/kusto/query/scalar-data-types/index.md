@@ -34,10 +34,8 @@ The following data types are supported:
 
 ## Null values
 
-All non-string data types can be null, indicating the absence or mismatch of data. For example, if you try to input the string `abc` into an integer column, it results in the null value.
+All non-string data types can be null. When a value is null, it indicates an absence or mismatch of data. For example, if you try to input the string `abc` into an integer column, it results in the null value.
 
 You can't create the null value directly, but you can check if an expression equals this value using the [isnull()](../../query/isnullfunction.md) function.
 
-## Related content
-
-* [Null values](null-values.md)
+For more information, see [Null values](null-values.md)
