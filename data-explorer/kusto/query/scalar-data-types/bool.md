@@ -13,7 +13,7 @@ The `bool` data type can be: `true` (`1`), `false` (`0`), or null.
 
 ## Literals
 
-The literals for the bool data type include:
+To specify a bool literal, use the following syntax: 
 
 * `true` or `bool(true)` to represent trueness
 * `false` or `bool(false)` to represent falsehood
