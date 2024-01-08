@@ -14,7 +14,7 @@ The JSONPath notation is used in the following scenarios:
 
 - To specify [data mappings for ingestion](../management/mappings.md)
 - To specify [data mappings for external tables](../management/external-table-mapping-create.md)
-- In Kusto Query Language (KQL) functions that process dynamic objects, like [bag_remove_keys()](bag-remove-keys-function.md) and [extract_json()](extractjsonfunction.md)
+- In Kusto Query Language (KQL) functions that process dynamic objects, like [bag_remove_keys()](bag-remove-keys-function.md) and [extract_json()](extract-json-function.md)
 
 The following subset of the JSONPath notation is supported:
 

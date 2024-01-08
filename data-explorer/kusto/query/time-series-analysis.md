@@ -53,10 +53,10 @@ demo_make_series1
 | render timechart 
 ```
 
-- Use the [`make-series`](make-seriesoperator.md) operator to create a set of three time series, where:
+- Use the [`make-series`](make-series-operator.md) operator to create a set of three time series, where:
   - `num=count()`: time series of traffic
   - `from min_t to max_t step 1h`: time series is created in 1-hour bins in the time range (oldest and newest timestamps of table records)
-  - `default=0`: specify fill method for missing bins to create regular time series. Alternatively use [`series_fill_const()`](series-fill-constfunction.md), [`series_fill_forward()`](series-fill-forwardfunction.md), [`series_fill_backward()`](series-fill-backwardfunction.md) and [`series_fill_linear()`](series-fill-linearfunction.md) for changes
+  - `default=0`: specify fill method for missing bins to create regular time series. Alternatively use [`series_fill_const()`](series-fill-const-function.md), [`series_fill_forward()`](series-fill-forward-function.md), [`series_fill_backward()`](series-fill-backward-function.md) and [`series_fill_linear()`](series-fill-linear-function.md) for changes
   - `by OsVer`:  partition by OS
 - The actual time series data structure is a numeric array of the aggregated value per each time bin. We use `render timechart` for visualization.
 
@@ -73,8 +73,8 @@ In this section, we'll perform typical series processing functions. Once a set o
 Filtering is a common practice in signal processing and useful for time series processing tasks (for example, smooth a noisy signal, change detection).
 
 - There are two generic filtering functions:
-  - [`series_fir()`](series-firfunction.md): Applying FIR filter. Used for simple calculation of moving average and differentiation of the time series for change detection.
-  - [`series_iir()`](series-iirfunction.md): Applying IIR filter. Used for exponential smoothing and cumulative sum.
+  - [`series_fir()`](series-fir-function.md): Applying FIR filter. Used for simple calculation of moving average and differentiation of the time series for change detection.
+  - [`series_iir()`](series-iir-function.md): Applying IIR filter. Used for exponential smoothing and cumulative sum.
 - `Extend` the time series set by adding a new moving average series of size 5 bins (named *ma_num*) to the query:
 
 > [!div class="nextstepaction"]
@@ -95,8 +95,8 @@ demo_make_series1
 
 ADX supports segmented linear regression analysis to estimate the trend of the time series.
 
-- Use [series_fit_line()](series-fit-linefunction.md) to fit the best line to a time series for general trend detection.
-- Use [series_fit_2lines()](series-fit-2linesfunction.md) to detect trend changes, relative to the baseline, that are useful in monitoring scenarios.
+- Use [series_fit_line()](series-fit-line-function.md) to fit the best line to a time series for general trend detection.
+- Use [series_fit_2lines()](series-fit-2lines-function.md) to detect trend changes, relative to the baseline, that are useful in monitoring scenarios.
 
 Example of `series_fit_line()` and  `series_fit_2lines()` functions in a time series query:
 
@@ -134,8 +134,8 @@ demo_series3
 
 ![Time series seasonality.](../../media/time-series-analysis/time-series-seasonality.png)
 
-- Use [series_periods_detect()](series-periods-detectfunction.md) to automatically detect the periods in the time series.
-- Use [series_periods_validate()](series-periods-validatefunction.md) if we know that a metric should have specific distinct period(s) and we want to verify that they exist.
+- Use [series_periods_detect()](series-periods-detect-function.md) to automatically detect the periods in the time series.
+- Use [series_periods_validate()](series-periods-validate-function.md) if we know that a metric should have specific distinct period(s) and we want to verify that they exist.
 
 > [!NOTE]
 > It's an anomaly if specific distinct periods don't exist
@@ -159,7 +159,7 @@ The function detects daily and weekly seasonality. The daily scores less than th
 
 ### Element-wise functions
 
-Arithmetic and logical operations can be done on a time series. Using [series_subtract()](series-subtractfunction.md) we can calculate a residual time series, that is, the difference between original raw metric and a smoothed one, and look for anomalies in the residual signal:
+Arithmetic and logical operations can be done on a time series. Using [series_subtract()](series-subtract-function.md) we can calculate a residual time series, that is, the difference between original raw metric and a smoothed one, and look for anomalies in the residual signal:
 
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA5WQQU/DMAyF7/sVT5waqWjrgRPqb+AAgmPltR6LSNLJcdhA+/G4izRAnLhEerbfl2cHVkSfBkUPnfNIgaSZOM5DpDceMovn3OGMXGIk8Z+8jDdPPvKjUjw4d78KC4NO/2LQ6Tfjz/jqjEXeVolUYj/OJWnjMPGOStB+gznhSoFPEEqv3Fz2aWukFt3eYfuBh/zMYlA+KafJmsOCrPRh56Ux2UL4wKRN1+LOtVApXF/37RTOfioUfvpz2arQqBVS2Q7rtc6wa4wlkPLVCLXIqE7DHvcsXOOh73Hz4tM0HzO6zQ1gDOx8UOvZrtayst0Y7z4babkkYQxMyQbGPYnCiGIxTS/fXGpfwk+n7uQBAAA=" target="_blank">Run the query</a>

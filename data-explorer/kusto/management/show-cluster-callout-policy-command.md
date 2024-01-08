@@ -7,7 +7,7 @@ ms.date: 05/24/2023
 ---
 # .show cluster policy callout command
 
-Display a cluster's [callout policy](calloutpolicy.md).
+Display a cluster's [callout policy](callout-policy.md).
 
 ## Permissions
 

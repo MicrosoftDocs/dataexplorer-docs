@@ -12,7 +12,7 @@ Creates a new empty table based on an existing table. This command must run in t
 > [!NOTE]
 > All properties of the source table are copied to the new table, with the following exceptions:
 >
-> * [Update policy](updatepolicy.md)
+> * [Update policy](update-policy.md)
 > * [Authorized principals](security-roles.md): When using the `.create table based-on` command, the current principal is added to the table admins.
 
 ## Permissions

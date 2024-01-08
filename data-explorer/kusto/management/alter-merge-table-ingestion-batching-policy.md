@@ -7,9 +7,9 @@ ms.date: 08/27/2023
 ---
 # .alter-merge table policy ingestionbatching command
 
-Sets the table's [ingestion batching policy](batchingpolicy.md) to determine when data aggregation stops and a batch is sealed and ingested. The ingestion batching policy applies to [queued ingestion](../../ingest-data-overview.md#queued-vs-streaming-ingestion).
+Sets the table's [ingestion batching policy](batching-policy.md) to determine when data aggregation stops and a batch is sealed and ingested. The ingestion batching policy applies to [queued ingestion](../../ingest-data-overview.md#queued-vs-streaming-ingestion).
 
-If the policy isn't set for a table, the database-level policy applies. If the policy isn't set at the database-level, the [default values](batchingpolicy.md#defaults-and-limits) apply.
+If the policy isn't set for a table, the database-level policy applies. If the policy isn't set at the database-level, the [default values](batching-policy.md#defaults-and-limits) apply.
 
 ## Permissions
 
@@ -17,7 +17,7 @@ You must have at least [Table Admin](access-control/role-based-access-control.md
 
 ## Defaults and limits
 
-See [defaults and limits](batchingpolicy.md#defaults-and-limits).
+See [defaults and limits](batching-policy.md#defaults-and-limits).
 
 ## Syntax
 
@@ -33,7 +33,7 @@ See [defaults and limits](batchingpolicy.md#defaults-and-limits).
 |--|--|--|--|
 | *TableName* | string | &check; | The name of the table to alter.|
 | *DatabaseName* | string | | The name of the database. When you run the command from the database context that contains the table to alter, *DatabaseName* is not required.|
-| *PolicyObject* |string|&check;| A serialized JSON policy object. See [ingestion batching policy](batchingpolicy.md).|
+| *PolicyObject* |string|&check;| A serialized JSON policy object. See [ingestion batching policy](batching-policy.md).|
 
 ## Examples
 
@@ -63,7 +63,7 @@ The following command sets a batch ingress data time of 45 seconds, for 450 file
 ````
 
 >[!NOTE]
-> If you specify only some parameters of a *PolicyObject*, they will replace the values in the current policy, while the other parameters will remain intact. To set the [default values](batchingpolicy.md#sealing-a-batch) for unspecified parameters, use the [alter command](alter-table-ingestion-batching-policy.md) command.
+> If you specify only some parameters of a *PolicyObject*, they will replace the values in the current policy, while the other parameters will remain intact. To set the [default values](batching-policy.md#sealing-a-batch) for unspecified parameters, use the [alter command](alter-table-ingestion-batching-policy.md) command.
 
 ## Related content
 

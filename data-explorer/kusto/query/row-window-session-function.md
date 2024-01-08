@@ -7,7 +7,7 @@ ms.date: 01/18/2023
 ---
 # row_window_session()
 
-Calculates session start values of a column in a [serialized row set](./windowsfunctions.md#serialized-row-set).
+Calculates session start values of a column in a [serialized row set](./window-functions.md#serialized-row-set).
 
 ## Syntax
 
