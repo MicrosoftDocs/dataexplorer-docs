@@ -27,7 +27,7 @@ The following data types are supported:
 | [long](long.md) | A signed, 64-bit wide, integer. |
 | [real](real.md) (double) | A 64-bit wide, double-precision, floating-point number. |
 | [string](string.md) | A sequence of zero or more [Unicode](https://home.unicode.org/) characters.|
-| [timespan](timespan.md) (time) | A time interval. |
+| [timespan](timespan.md) (`time`) | A time interval. |
 
 > [!TIP]
 > To check the data type of a value, use the the [gettype()](../../query/gettypefunction.md) function.
