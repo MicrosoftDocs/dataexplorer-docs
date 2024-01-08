@@ -10,13 +10,13 @@ ms.date: 08/22/2023
 
 A common scenario when onboarding to Azure Data Explorer is to ingest historical data, sometimes called backfill. The process involves ingesting data from an existing storage system into a table, which is a collection of [extents](kusto/management/extents-overview.md).
 
-We recommend ingesting historical data using the [creationTime ingestion property](ingestion-properties.md#ingestion-properties) to set the creation time of extents to the time the data was *created*. By using the creation time as the ingestion partitioning criterion, your data can age normally in accordance with your [cache](kusto/management/cachepolicy.md) and [retention](kusto/management/retentionpolicy.md) policies, and make time filters more efficient.
+We recommend ingesting historical data using the [creationTime ingestion property](ingestion-properties.md#ingestion-properties) to set the creation time of extents to the time the data was *created*. By using the creation time as the ingestion partitioning criterion, your data can age normally in accordance with your [cache](kusto/management/cache-policy.md) and [retention](kusto/management/retention-policy.md) policies, and make time filters more efficient.
 
 By default, the creation time for extents is set to the time when the data is ingested, which may not produce the behavior you're expecting. For example, suppose you have a table that has a cache period of 30 days and a retention period of two years. In the normal flow, data ingested as it's produced is cached for 30 days and then moved to cold storage. After two years, based on it's creation time, older data is removed one day at a time. However, if you ingest two years of historical data where, by default, the data is marked with creation time as the time the data is ingested. This may not produce the desired outcome because:
 
 - All the data lands in cache and stays there for 30 days, using more cache than you anticipated
 - Older data isn't removed one day at a time; hence data is retained in the cluster for longer than necessary and, after two years, is all removed at once
-- Data, previously grouped by date in the source system, may now be [batched together](kusto/management/batchingpolicy.md) in the same extent leading to inefficient queries
+- Data, previously grouped by date in the source system, may now be [batched together](kusto/management/batching-policy.md) in the same extent leading to inefficient queries
 
 :::image type="content" source="media/ingest-data-historical/historical-data-expected-vs-actual.png" alt-text="Diagram showing the expected versus actual result of ingesting historical data using the default creation time.":::
 
@@ -31,7 +31,7 @@ In this article, you learn how to partition historical data:
 
 - Using a partitioning policy post ingestion
 
-    If you can't use the `creationTime` ingestion property, for example if you're [ingesting data using the Azure Cosmos DB connector](ingest-data-cosmos-db-connection.md) where you can't control the creation time or if you can't restructure your folder structure, you can repartition the table post ingestion to achieve the same effect using the [partitioning policy](kusto/management/partitioningpolicy.md). However, this method may require some trial and error to optimize policy properties and is less efficient than using the `creationTime` ingestion property. We only recommended this method when using the `creationTime` ingestion property isn't possible.
+    If you can't use the `creationTime` ingestion property, for example if you're [ingesting data using the Azure Cosmos DB connector](ingest-data-cosmos-db-connection.md) where you can't control the creation time or if you can't restructure your folder structure, you can repartition the table post ingestion to achieve the same effect using the [partitioning policy](kusto/management/partitioning-policy.md). However, this method may require some trial and error to optimize policy properties and is less efficient than using the `creationTime` ingestion property. We only recommended this method when using the `creationTime` ingestion property isn't possible.
 
 ## Prerequisites
 
@@ -177,7 +177,7 @@ LightIngest can be useful to load historical data from an existing storage syste
     ```
     ~~~
 
-    For information about the partitioning policy properties, see [partition properties](kusto/management/partitioningpolicy.md#partition-properties-1). For historical ingestion, how you set the following properties is important:
+    For information about the partitioning policy properties, see [partition properties](kusto/management/partitioning-policy.md#partition-properties-1). For historical ingestion, how you set the following properties is important:
 
     - The **EffectiveDateTime** property must be set to a date earlier than the start of the ingestion to trigger the repartitioning.
     - The **RangeSize** is set to one day so that the data is repartitioned into buckets of one day. However, you should set this value to align with your data. For example, if you have less than several GBs of data per day, consider setting a larger value.

@@ -1,1698 +1,1698 @@
 items:
-- name: Kusto Query Language overview
-  href: index.md
-- name: Syntax conventions
-  href: syntax-conventions.md
-- name: Kusto Query Language learning resources
-  href: ../../kql-learning-resources.md
-- name: Add a comment in KQL
-  href: comment.md
-- name: Get started with KQL
-  items:
-    - name: Quick reference guide
-      href: kql-quick-reference.md
-    - name: 1 - Learn common operators
-      href: tutorials/learn-common-operators.md
-    - name: 2 - Use aggregation functions
-      href: tutorials/use-aggregation-functions.md
-    - name: 3 - Join data from multiple tables
-      href: tutorials/join-data-from-multiple-tables.md
-    - name: 4 - Create geospatial visualizations
-      href: tutorials/create-geospatial-visualizations.md
-    - name: Train me
-      items:
-        - name: "Introduction to Azure Data Explorer"
-          href: /training/modules/intro-to-azure-data-explorer/intro-to-azure-data-explorer/
-        - name: "Write your first query with Kusto Query Language"
-          href: /training/modules/write-first-query-kusto-query-language/
-        - name: "Gain insights from your data by using Kusto Query Language"
-          href: /training/modules/gain-insights-data-kusto-query-language/
-        - name: "Multi-table queries using Kusto Query Language"
-          href: /training/modules/multi-table-queries-with-kusto-query-language/
-        - name: "Characterize an unfamiliar dataset with Azure Data Explorer"
-          href: /training/modules/characterize-data-azure-data-explorer/
-        - name: "Create dashboards in Azure Data Explorer"
-          href: /training/modules/create-dashboards-azure-data-explorer/
-        - name: "Learning path: Data analysis in Azure Data Explorer with Kusto Query Language"
-          href: /training/paths/data-analysis-data-explorer-kusto-query-language/
-        - name: "Learning path: Create queries for Microsoft Sentinel using Kusto Query Language"
-          href: /training/paths/sc-200-utilize-kql-for-azure-sentinel/
-- name: Best practices for KQL queries
-  items:
+  - name: Kusto Query Language overview
+    href: index.md
+  - name: Syntax conventions
+    href: syntax-conventions.md
+  - name: Kusto Query Language learning resources
+    href: ../../kql-learning-resources.md
+  - name: Add a comment in KQL
+    href: comment.md
+  - name: Get started with KQL
+    items:
+      - name: Quick reference guide
+        href: kql-quick-reference.md
+      - name: 1 - Learn common operators
+        href: tutorials/learn-common-operators.md
+      - name: 2 - Use aggregation functions
+        href: tutorials/use-aggregation-functions.md
+      - name: 3 - Join data from multiple tables
+        href: tutorials/join-data-from-multiple-tables.md
+      - name: 4 - Create geospatial visualizations
+        href: tutorials/create-geospatial-visualizations.md
+      - name: Train me
+        items:
+          - name: "Introduction to Azure Data Explorer"
+            href: /training/modules/intro-to-azure-data-explorer/intro-to-azure-data-explorer/
+          - name: "Write your first query with Kusto Query Language"
+            href: /training/modules/write-first-query-kusto-query-language/
+          - name: "Gain insights from your data by using Kusto Query Language"
+            href: /training/modules/gain-insights-data-kusto-query-language/
+          - name: "Multi-table queries using Kusto Query Language"
+            href: /training/modules/multi-table-queries-with-kusto-query-language/
+          - name: "Characterize an unfamiliar dataset with Azure Data Explorer"
+            href: /training/modules/characterize-data-azure-data-explorer/
+          - name: "Create dashboards in Azure Data Explorer"
+            href: /training/modules/create-dashboards-azure-data-explorer/
+          - name: "Learning path: Data analysis in Azure Data Explorer with Kusto Query Language"
+            href: /training/paths/data-analysis-data-explorer-kusto-query-language/
+          - name: "Learning path: Create queries for Microsoft Sentinel using Kusto Query Language"
+            href: /training/paths/sc-200-utilize-kql-for-azure-sentinel/
   - name: Best practices for KQL queries
-    href: best-practices.md
-  - name: Optimize queries that use named expressions
-    displayName: let statement, user defined functions, as operator, calculated
-    href: named-expressions.md
-- name: Cross-cluster and cross-database queries
-  href: cross-cluster-or-database-queries.md
-  displayName: cross cluster, cross database, schema change, schemas, partial query failure
-- name: Entities
-  items:
-  - name: Entity types
-    href: schema-entities/index.md
-  - name: Entity names
-    displayName: language keywords, KQL keywords, keywords
-    href: schema-entities/entity-names.md
-  - name: Entity references
-    href: schema-entities/entity-references.md
-  - name: Databases
-    href: schema-entities/databases.md
-  - name: Tables
-    href: schema-entities/tables.md
-  - name: Columns
-    href: schema-entities/columns.md
-  - name: Stored functions
-    href: schema-entities/stored-functions.md
-  - name: Views
-    href: schema-entities/views.md
-  - name: External tables
-    href: schema-entities/externaltables.md
-  - name: Fact and dimension tables
-    href: ../concepts/fact-and-dimension-tables.md
-- name: Data types
-  items:
-  - name: Scalar data types
-    href: scalar-data-types/index.md
-  - name: bool
-    href: scalar-data-types/bool.md
-  - name: datetime
-    href: scalar-data-types/datetime.md
-  - name: decimal
-    href: scalar-data-types/decimal.md
-  - name: dynamic
-    href: scalar-data-types/dynamic.md
-  - name: guid
-    href: scalar-data-types/guid.md
-  - name: int
-    href: scalar-data-types/int.md
-  - name: long
-    href: scalar-data-types/long.md
-  - name: real
-    href: scalar-data-types/real.md
-    displayName: double
-  - name: string
-    href: scalar-data-types/string.md
-  - name: timespan
-    href: scalar-data-types/timespan.md
-  - name: Null values
-    href: scalar-data-types/null-values.md
-  - name: Unsupported scalar data types
-    href: scalar-data-types/unsupported-data-types.md
-- name: Functions
-  items:
-  - name: Function types
-    href: functions/index.md
-  - name: User-defined functions
-    displayName: Kusto view, views, Kusto function
-    href: functions/user-defined-functions.md
-- name: Query statements
-  items:
-  - name: Query statement types
-    href: statements.md
-  - name: Alias statement
-    href: aliasstatement.md
-  - name: Let statement
-    href: letstatement.md
-  - name: Pattern statement
-    href: patternstatement.md
-  - name: Query parameters statement
-    href: queryparametersstatement.md
-  - name: Restrict statement
-    href: restrictstatement.md
-  - name: Set statement
-    href: setstatement.md
-  - name: Tabular expression statements
-    displayName: views
-    href: tabularexpressionstatements.md
-  - name: Batches
-    href: batches.md
-- name: Tabular operators
-  items:
-  - name: Query operators
-    href: queries.md
-  - name: as operator
-    href: asoperator.md
-  - name: consume operator
-    href: consumeoperator.md
-  - name: count operator
-    href: countoperator.md
-  - name: datatable operator
-    href: datatableoperator.md
-  - name: distinct operator
-    href: distinctoperator.md
-  - name: evaluate operator
-    href: evaluateoperator.md
-  - name: extend operator
-    href: extendoperator.md
-  - name: externaldata operator
-    href: externaldata-operator.md
-  - name: facet operator
-    href: facetoperator.md
-  - name: find operator
-    href: findoperator.md
-  - name: fork operator
-    href: forkoperator.md
-  - name: getschema operator
-    href: getschemaoperator.md
-  - name: invoke operator
-    href: invokeoperator.md
-  - name: join operator
     items:
-    - name: join operator
-      href: joinoperator.md
-    - name: join flavors
-      items:
-      - name: innerunique
-        href: join-innerunique.md
-      - name: inner
-        href: join-inner.md
-      - name: leftouter
-        href: join-leftouter.md
-      - name: rightouter
-        href: join-rightouter.md
-      - name: fullouter
-        href: join-fullouter.md
-      - name: leftsemi
-        href: join-leftsemi.md
-      - name: leftanti
-        href: join-leftanti.md
-        displayName: leftantisemi, anti
-      - name: rightsemi
-        href: join-rightsemi.md
-        displayName: rightantisemi
-      - name: rightanti
-        href: join-rightanti.md
-    - name: Cross-cluster join
-      href: joincrosscluster.md
-      displayName: cross cluster
-    - name: Broadcast join
-      href: broadcastjoin.md
-    - name: Time window join
-      href: join-timewindow.md
-  - name: lookup operator
-    href: lookupoperator.md
-  - name: mv-apply operator
-    href: mv-applyoperator.md
-    displayName: mv apply mv_apply
-  - name: mv-expand operator
-    href: mvexpandoperator.md
-    displayName: mv expand mv_expand
-  - name: sort operator
-    displayName: order operator
-    href: sort-operator.md
-  - name: project operator
-    href: projectoperator.md
-  - name: project-away operator
-    href: projectawayoperator.md
-    displayName: project away project_away
-  - name: project-keep operator
-    href: project-keep-operator.md
-    displayName: project keep project_keep
-  - name: project-rename operator
-    href: projectrenameoperator.md
-    displayName: project rename project_rename
-  - name: project-reorder operator
-    href: projectreorderoperator.md
-    displayName: project reorder project_reorder
-  - name: parse operator
-    href: parseoperator.md
-  - name: parse-where operator
-    href: parsewhereoperator.md
-    displayName: parse where parse_where
-  - name: parse-kv operator
-    href: parse-kv-operator.md
-    displayName: parse kv parse_kv
-  - name: partition operator
-    href: partitionoperator.md
-  - name: print operator
-    href: printoperator.md
-  - name: range operator
-    href: rangeoperator.md
-  - name: reduce operator
-    href: reduceoperator.md
-  - name: render operator
+      - name: Best practices for KQL queries
+        href: best-practices.md
+      - name: Optimize queries that use named expressions
+        displayName: let statement, user defined functions, as operator, calculated
+        href: named-expressions.md
+  - name: Cross-cluster and cross-database queries
+    href: cross-cluster-or-database-queries.md
+    displayName: cross cluster, cross database, schema change, schemas, partial query failure
+  - name: Entities
     items:
-    - name: render operator
-      href: renderoperator.md
-    - name: visualizations
-      items: 
-      - name: anomalychart
-        displayName: anomaly chart
-        href: visualization-anomalychart.md
-      - name: areachart
-        displayName: area chart
-        href: visualization-areachart.md
-      - name: barchart
-        displayName: bar chart
-        href: visualization-barchart.md
-      - name: card
-        href: visualization-card.md
-      - name: columnchart
-        displayName: column chart
-        href: visualization-columnchart.md
-      - name: ladderchart
-        displayName: ladder chart
-        href: visualization-ladderchart.md
-      - name: linechart
-        displayName: line chart
-        href: visualization-linechart.md
-      - name: piechart
-        displayName: pie chart
-        href: visualization-piechart.md
-      - name: pivotchart
-        displayName: pivot chart
-        href: visualization-pivotchart.md
-      - name: Plotly
-        href: visualization-plotly.md
-      - name: scatterchart
-        displayName: scatter chart
-        href: visualization-scatterchart.md
-      - name: stackedareachart
-        displayName: stacked area chart
-        href: visualization-stackedareachart.md
-      - name: table
-        href: visualization-table.md
-      - name: timechart
-        displayName: time chart
-        href: visualization-timechart.md
-      - name: timepivot
-        displayName: time pivot
-        href: visualization-timepivot.md
-      - name: treemap
-        href: visualization-treemap.md
-  - name: sample operator
-    href: sampleoperator.md
-  - name: sample-distinct operator
-    href: sampledistinctoperator.md
-    displayName: sample distinct sample_distinct
-  - name: scan operator
-    href: scan-operator.md
-  - name: search operator
-    href: searchoperator.md
-  - name: serialize operator
-    href: serializeoperator.md
-  - name: shuffle query
-    displayName: hint.shufflekey, hint.strategy, shufflekey, hint, strategy
-    href: shufflequery.md
-  - name: summarize operator
+      - name: Entity types
+        href: schema-entities/index.md
+      - name: Entity names
+        displayName: language keywords, KQL keywords, keywords
+        href: schema-entities/entity-names.md
+      - name: Entity references
+        href: schema-entities/entity-references.md
+      - name: Databases
+        href: schema-entities/databases.md
+      - name: Tables
+        href: schema-entities/tables.md
+      - name: Columns
+        href: schema-entities/columns.md
+      - name: Stored functions
+        href: schema-entities/stored-functions.md
+      - name: Views
+        href: schema-entities/views.md
+      - name: External tables
+        href: schema-entities/external-tables.md
+      - name: Fact and dimension tables
+        href: ../concepts/fact-and-dimension-tables.md
+  - name: Data types
     items:
-    - name: summarize operator overview
-      href: summarizeoperator.md
-    - name: Using hll() and tdigest()
-      href: usinghlltdigest.md
-  - name: take operator
-    displayName: limit operator
-    href: takeoperator.md
-  - name: top operator
-    href: topoperator.md
-  - name: top-nested operator
-    href: topnestedoperator.md
-    displayName: top nested top_nested
-  - name: top-hitters operator
-    href: tophittersoperator.md
-    displayName: top hitters top_hitters
-  - name: union operator
-    href: unionoperator.md
-  - name: where operator
-    displayName: filter operator
-    href: whereoperator.md
-- name: Special functions
-  items:
-  - name: cluster()
-    href: clusterfunction.md
-  - name: database()
-    href: databasefunction.md
-  - name: external_table()
-    href: externaltablefunction.md
-    displayName: external table external-table
-  - name: materialize()
-    href: materializefunction.md
-  - name: materialized_view()
-    href: materialized-view-function.md
-    displayName: materialized view materialized-view
-  - name: Query results cache
-    href: query-results-cache.md
-  - name: table()
-    href: tablefunction.md
-  - name: toscalar()
-    href: toscalarfunction.md
-    displayName: to_scalar to-scalar
-- name: Scalar operators
-  items:
-  - name: between operators  
-    items:  
-    - name: between operator 
-      href: betweenoperator.md
-    - name: "!between operator" 
-      displayName: not between operator
-      href: notbetweenoperator.md
-  - name: Bitwise binary operators
-    href: binoperators.md
-  - name: Datetime/timespan arithmetic
-    href: datetime-timespan-arithmetic.md
-  - name: in operators  
+      - name: Scalar data types
+        href: scalar-data-types/index.md
+      - name: bool
+        href: scalar-data-types/bool.md
+      - name: datetime
+        href: scalar-data-types/datetime.md
+      - name: decimal
+        href: scalar-data-types/decimal.md
+      - name: dynamic
+        href: scalar-data-types/dynamic.md
+      - name: guid
+        href: scalar-data-types/guid.md
+      - name: int
+        href: scalar-data-types/int.md
+      - name: long
+        href: scalar-data-types/long.md
+      - name: real
+        href: scalar-data-types/real.md
+        displayName: double
+      - name: string
+        href: scalar-data-types/string.md
+      - name: timespan
+        href: scalar-data-types/timespan.md
+      - name: Null values
+        href: scalar-data-types/null-values.md
+      - name: Unsupported scalar data types
+        href: scalar-data-types/unsupported-data-types.md
+  - name: Functions
     items:
-    - name: in operator 
-      displayName: in operator case sensitive
-      href: in-cs-operator.md
-    - name: in~ operator 
-      href: inoperator.md
-    - name: "!in operator"
-      displayName: not in operator case sensitive
-      href: not-in-cs-operator.md
-    - name: "!in~ operator" 
-      displayName: not in operator
-      href: not-in-operator.md 
-  - name: Logical or binary operators
-    href: logicaloperators.md
-  - name: Numerical operators
-    href: numoperators.md
-  - name: String operators
+      - name: Function types
+        href: functions/index.md
+      - name: User-defined functions
+        displayName: Kusto view, views, Kusto function
+        href: functions/user-defined-functions.md
+  - name: Query statements
     items:
-    - name: String operators overview
-      href: datatypes-string-operators.md
-    - name: contains operator
-      href: contains-operator.md
-    - name: contains_cs operator
-      displayName: contains operator case sensitive
-      href: contains-cs-operator.md
-    - name: "!contains operator"
-      displayName: not contains operator
-      href: not-contains-operator.md
-    - name: "!contains_cs operator" 
-      displayName: not contains operator case sensitive
-      href: not-contains-cs-operator.md 
-    - name: endswith operator
-      href: endswith-operator.md
-    - name: endswith_cs operator
-      displayName: ends with operator case sensitive
-      href: endswith-cs-operator.md
-    - name: "!endswith operator"
-      displayName: not ends with operator
-      href: not-endswith-operator.md
-    - name: "!endswith_cs operator"
-      displayName: not ends with operator case sensitive
-      href: not-endswith-cs-operator.md
-    - name: "== (equals) operator"
-      displayName: equals case sensitive operator
-      href: equals-cs-operator.md
-    - name: "=~ (equals) operator" 
-      href: equals-operator.md
-    - name: "!= (not equals) operator"
-      displayName: not equals case sensitive operator
-      href: not-equals-cs-operator.md
-    - name: "!~ (not equals) operator"
-      href: not-equals-operator.md    
-    - name: has operator
-      href: has-operator.md
-    - name: has_cs operator
-      displayName: has operator case sensitive
-      href: has-cs-operator.md
-    - name: "!has operator"
-      displayName: not has operator
-      href: not-has-operator.md
-    - name: "!has_cs operator" 
-      displayName: not has operator case sensitive
-      href: not-has-cs-operator.md  
-    - name: hasprefix operator
-      href: hasprefix-operator.md
-    - name: hasprefix_cs operator
-      displayName: has prefix operator case sensitive
-      href: hasprefix-cs-operator.md
-    - name: "!hasprefix operator"
-      displayName: not has prefix operator
-      href: not-hasprefix-operator.md
-    - name: "!hasprefix_cs operator" 
-      displayName: not has prefix operator case sensitive
-      href: not-hasprefix-cs-operator.md    
-    - name: hassuffix operator
-      href: hassuffix-operator.md
-    - name: hassuffix_cs operator
-      displayName: has suffix operator case sensitive
-      href: hassuffix-cs-operator.md
-    - name: "!hassuffix operator" 
-      displayName: not has suffix operator
-      href: not-hassuffix-operator.md
-    - name: "!hassuffix_cs operator"
-      displayName: not has suffix operator case sensitive
-      href: not-hassuffix-cs-operator.md 
-    - name: has_all operator
-      displayName: has all operator
-      href: has-all-operator.md
-    - name: has_any operator
-      displayName: has any operator
-      href: has-anyoperator.md
-    - name: in operator 
-      displayName: in operator case sensitive
-      href: in-cs-operator.md
-    - name: "in~ operator" 
-      href: inoperator.md
-    - name: "!in operator"
-      displayName: not in operator case sensitive
-      href: not-in-cs-operator.md
-    - name: "!in~ operator" 
-      displayName: not in operator
-      href: not-in-operator.md 
-    - name: matches regex operator
-      displayName: case-sensitive matches regex
-      href: matches-regex-operator.md
-    - name: startswith operator
-      displayName: starts with operator
-      href: startswith-operator.md
-    - name: startswith_cs operator
-      displayName: starts with operator case sensitive
-      href: startswith-cs-operator.md
-    - name: "!startswith operator"
-      displayName: not starts with operator
-      href: not-startswith-operator.md
-    - name: "!startswith_cs operator"
-      displayName: not starts with operator case sensitive
-      href: not-startswith-cs-operator.md  
-- name: Scalar functions
-  items:
-  - name: Scalar function types
-    displayName: stored procedures
-    href: scalarfunctions.md
-  - name: abs()
-    href: abs-function.md
-  - name: acos()
-    href: acosfunction.md
-  - name: ago()
-    href: agofunction.md
-  - name: around()
-    href: around-function.md
-  - name: array_concat()
-    href: arrayconcatfunction.md
-  - name: array_iff()
-    displayName: array_iif() array iif
-    href: arrayifffunction.md
-  - name: array_index_of()
-    displayName: array index of
-    href: arrayindexoffunction.md
-  - name: array_length()
-    displayName: arraylength() array length
-    href: arraylengthfunction.md
-  - name: array_reverse()
-    displayName: array reverse
-    href: array-reverse-function.md
-  - name: array_rotate_left()
-    displayName: array rotate left
-    href: array_rotate_leftfunction.md
-  - name: array_rotate_right()
-    displayName: array rotate right
-    href: array_rotate_rightfunction.md
-  - name: array_shift_left()
-    displayName: array shift left
-    href: array_shift_leftfunction.md
-  - name: array_shift_right()
-    displayName: array shift right
-    href: array_shift_rightfunction.md
-  - name: array_slice()
-    displayName: array slice
-    href: arrayslicefunction.md
-  - name: array_sort_asc()
-    displayName: array sort asc
-    href: arraysortascfunction.md
-  - name: array_sort_desc()
-    displayName: array sort desc
-    href: arraysortdescfunction.md
-  - name: array_split()
-    displayName: array split
-    href: arraysplitfunction.md
-  - name: array_sum()
-    displayName: array sum
-    href: array-sum-function.md
-  - name: asin()
-    displayName: asin function
-    href: asinfunction.md
-  - name: assert()
-    href: assert-function.md
-  - name: atan()
-    href: atanfunction.md
-  - name: atan2()
-    href: atan2function.md
-  - name: bag_has_key()
-    displayName: bag has key
-    href: bag-has-key-function.md
-  - name: bag_keys()
-    displayName: bag keys
-    href: bagkeysfunction.md
-  - name: bag_merge()
-    displayName: bag merge
-    href: bag-merge-function.md
-  - name: bag_pack()
-    displayName: pack(), pack_dictionary(), bag pack
-    href: packfunction.md
-  - name: bag_pack_columns()
-    displayName: bag pack columns, dynamic object, property bag
-    href: bag-pack-columns-function.md
-  - name: bag_remove_keys()
-    displayName: bag remove keys
-    href: bag-remove-keys-function.md
-  - name: bag_set_key()
-    displayName: bag set key
-    href: bag-set-key-function.md
-  - name: bag_zip()
-    displayName: bag zip
-    href: bag-zip.md
-  - name: base64_decode_toarray()
-    displayName: base64_decode_toarray()
-    href: base64_decode_toarrayfunction.md
-  - name: base64_decode_tostring()
-    displayName: base64_decodestring() vase64 decode string
-    href: base64_decode_tostringfunction.md
-  - name: base64_decode_toguid()
-    displayName: base64_decode_toguid() base64 decode to guid
-    href: base64-decode-toguid-function.md
-  - name: base64_encode_fromarray()
-    displayName: base64 encode from array
-    href: base64_encode_fromarrayfunction.md
-  - name: base64_encode_tostring()
-    displayName: base64_encodestring() base 64 encode string
-    href: base64_encode_tostringfunction.md
-  - name: base64_encode_fromguid()
-    displayName: base64_encode_fromguid() base64 encode from guid
-    href: base64-encode-fromguid-function.md
-  - name: beta_cdf()
-    displayName: beta_cdf() beta cdf
-    href: beta-cdffunction.md
-  - name: beta_inv()
-    displayName: beta_inv() beta inv
-    href: beta-invfunction.md
-  - name: beta_pdf()
-    displayName: beta_pdf() beta pdf
-    href: beta-pdffunction.md
-  - name: bin()
-    displayName: floor()
-    href: binfunction.md
-  - name: bin_at()
-    displayName: bin_at() bin at
-    href: binatfunction.md
-  - name: bin_auto()
-    displayName: bin_auto() bin auto
-    href: bin-autofunction.md
-  - name: binary_and()
-    displayName: binary_and() binary and 
-    href: binary-andfunction.md
-  - name: binary_not()
-    displayName: binary_not() binary not
-    href: binary-notfunction.md
-  - name: binary_or()
-    displayName: binary_or() binary or
-    href: binary-orfunction.md
-  - name: binary_shift_left()
-    displayName: binary_shift_left() binary shift left
-    href: binary-shift-leftfunction.md
-  - name: binary_shift_right()
-    displayName: binary_shift_right() binary shift right
-    href: binary-shift-rightfunction.md
-  - name: binary_xor()
-    displayName: binary_xor() binary xor
-    href: binary-xorfunction.md
-  - name: bitset_count_ones()
-    displayName: bitset_count_ones() bitset count ones
-    href: bitset-count-onesfunction.md
-  - name: case()
-    href: casefunction.md
-  - name: ceiling()
-    href: ceilingfunction.md
-    displayName: ceiling() ceiling function
-  - name: coalesce()
-    href: coalescefunction.md
-  - name: column_ifexists()
-    displayName: columnifexists() column if exists
-    href: columnifexists.md
-  - name: convert_angle()
-    displayName: convert_angle() convert angle
-    href: convert-angle-function.md
-  - name: convert_energy()
-    displayName: convert_energy() convert energy
-    href: convert-energy-function.md
-  - name: convert_force()
-    displayName: convert_force() convert force
-    href: convert-force-function.md
-  - name: convert_length()
-    displayName: convert_length() convert length
-    href: convert-length-function.md
-  - name: convert_mass()
-    displayName: convert_mass() convert mass
-    href: convert-mass-function.md
-  - name: convert_speed()
-    displayName: convert_speed() convert speed
-    href: convert-speed-function.md
-  - name: convert_temperature()
-    displayName: convert_temperature() convert temperature
-    href: convert-temperature-function.md
-  - name: convert_volume()
-    displayName: convert_volume() convert volume
-    href: convert-volume-function.md
-  - name: cos()
-    href: cosfunction.md
-  - name: cot()
-    href: cotfunction.md
-  - name: countof()
-    displayName: countof() count of
-    href: countoffunction.md
-  - name: current_cluster_endpoint()
-    displayName: current_cluster_endpoint() current cluster endpoint
-    href: current-cluster-endpoint-function.md
-  - name: current_database()
-    displayName: current_database() current database
-    href: current-database-function.md
-  - name: current_principal()
-    displayName: current_principal() current principal
-    href: current-principalfunction.md
-  - name: current_principal_details()
-    displayName: current_principal_details() current principal details
-    href: current-principal-detailsfunction.md
-  - name: current_principal_is_member_of()
-    displayName: current_principal_is_member_of() current principal is member of
-    href: current-principal-ismemberoffunction.md
-  - name: cursor_after()
-    displayName: cursor_after() cursor after
-    href: cursorafterfunction.md
-  - name: cursor_before_or_at()
-    displayName: cursor_before_or_at() cursor before or at
-    href: cursorbeforeoratfunction.md
-  - name: cursor_current()
-    displayName: current_cursor() cursor current
-    href: cursorcurrent.md
-  - name: datetime_add()
-    displayName: datetime_add() datetime add
-    href: datetime-addfunction.md
-  - name: datetime_diff()
-    displayName: datetime_diff() datetime diff
-    href: datetime-difffunction.md
-  - name: datetime_local_to_utc()
-    href: datetime-local-to-utc-function.md
-  - name: datetime_part()
-    displayName: datepart()
-    href: datetime-partfunction.md
-  - name: datetime_utc_to_local()
-    displayName: datetime_utc_to_local() datetime utc to local
-    href: datetime-utc-to-local-function.md
-  - name: dayofmonth()
-    displayName: dayofmonth() day of month
-    href: dayofmonthfunction.md
-  - name: dayofweek()
-    displayName: dayofweek() day of week
-    href: dayofweekfunction.md
-  - name: dayofyear()
-    displayName: day of year
-    href: dayofyearfunction.md
-  - name: dcount_hll()
-    displayName: dcount hll
-    href: dcount-hllfunction.md
-  - name: degrees()
-    href: degreesfunction.md
-  - name: dynamic_to_json()
-    displayName: dynamic_to_json() dynamic to json
-    href: dynamic-to-json-function.md
-  - name: endofday()
-    displayName: endofday() end of day
-    href: endofdayfunction.md
-  - name: endofmonth()
-    displayName: endofmonth() end of month
-    href: endofmonthfunction.md
-  - name: endofweek()
-    displayName: endofweek() end of week
-    href: endofweekfunction.md
-  - name: endofyear()
-    displayName: endofyear() end of year
-    href: endofyearfunction.md
-  - name: erf()
-    displayName: Gaussian, error function, statistics, distribution
-    href: erf-function.md
-  - name: erfc()
-    displayName: complementary error function, statistics, distribution
-    href: erfc-function.md
-  - name: estimate_data_size()
-    displayName: estimate_data_size() estimate data size
-    href: estimate-data-sizefunction.md
-  - name: exp()
-    href: exp-function.md
-  - name: exp10()
-    href: exp10-function.md
-  - name: exp2()
-    href: exp2-function.md
-  - name: extent_id()
-    displayName: extentid() extent id
-    href: extentidfunction.md
-  - name: extent_tags()
-    displayName: extenttags() extent tags
-    href: extenttagsfunction.md
-  - name: extract()
-    href: extractfunction.md
-  - name: extract_all()
-    displayName: extractall() extract all
-    href: extractallfunction.md
-  - name: extract_json()
-    displayName: extractjson() extract json
-    href: extractjsonfunction.md
-  - name: format_bytes()
-    displayName: format bytes
-    href: format-bytesfunction.md
-  - name: format_datetime()
-    displayName: format datetime
-    href: format-datetimefunction.md
-  - name: format_ipv4()
-    displayName: format ipv4
-    href: format-ipv4-function.md
-  - name: format_ipv4_mask()
-    displayName: format ipv4 mask
-    href: format-ipv4-mask-function.md
-  - name: format_timespan()
-    displayName: format timespan
-    href: format-timespanfunction.md
-  - name: gamma()
-    href: gammafunction.md
-  - name: geo_info_from_ip_address()
-    displayName: geo info from ip address
-    href: geo-info-from-ip-address-function.md
-  - name: gettype()
-    displayName: get type
-    href: gettypefunction.md
-  - name: getyear()
-    displayName: get year
-    href: getyearfunction.md
-  - name: gzip_compress_to_base64_string()
-    displayName: gzip compress to base64 string
-    href: gzip-base64-compress.md
-  - name: gzip_decompress_from_base64_string()
-    displayName: gzip decompress from base64 string
-    href: gzip-base64-decompress.md
-  - name: has_any_index()
-    displayName: has any index
-    href: has-any-index-function.md
-  - name: has_any_ipv4()
-    displayName: has any ipv4
-    href: has-any-ipv4-function.md
-  - name: has_ipv4()
-    displayName: has ipv4
-    href: has-ipv4-function.md
-  - name: has_any_ipv4_prefix()
-    displayName: has any ipv4 prefix
-    href: has-any-ipv4-prefix-function.md
-  - name: has_ipv4_prefix()
-    displayName: has ipv4 prefix
-    href: has-ipv4-prefix-function.md
-  - name: hash()
-    href: hashfunction.md
-  - name: hash_combine()
-    displayName: hash combine
-    href: hash_combinefunction.md
-  - name: hash_many()
-    displayName: hash many
-    href: hash_manyfunction.md
-  - name: hash_md5()
-    displayName: hash md5
-    href: md5hashfunction.md
-  - name: hash_sha1()
-    displayName: hash sha1
-    href: sha1-hash-function.md
-  - name: hash_sha256()
-    displayName: hash sha256
-    href: sha256hashfunction.md
-  - name: hash_xxhash64()
-    displayName: hash xxhash64
-    href: hash-xxhash64-function.md
-  - name: hll_merge()
-    displayName: hll merge
-    href: hllmergefunction.md
-  - name: hourofday()
-    displayName: hourofday() hour of day
-    href: hourofdayfunction.md
-  - name: iff()
-    displayName: iif()
-    href: ifffunction.md
-  - name: indexof()
-    displayName: index of
-    href: indexoffunction.md
-  - name: indexof_regex()
-    displayName: index of regex
-    href: indexofregexfunction.md
-  - name: ingestion_time()
-    displayName: ingestion time
-    href: ingestiontimefunction.md
-  - name: ipv4_compare()
-    displayName: ipv4 compare
-    href: ipv4-comparefunction.md
-  - name: ipv4_is_in_range()
-    displayName: ipv4 is in range
-    href: ipv4-is-in-range-function.md
-  - name: ipv4_is_in_any_range()
-    displayName: ipv4 is in any range
-    href: ipv4-is-in-any-range-function.md
-  - name: ipv4_is_match()
-    displayName: ipv4 is match
-    href: ipv4-is-matchfunction.md
-  - name: ipv4_is_private()
-    displayName: ipv4 is private
-    href: ipv4-is-privatefunction.md
-  - name: ipv4_range_to_cidr_list()
-    displayName: ipv4 range to cidr list
-    href: ipv4-range-to-cidr-list-function.md
-  - name: ipv4_netmask_suffix()
-    displayName: ipv4 netmask suffix
-    href: ipv4-netmask-suffix-function.md
-  - name: ipv6_compare()
-    displayName: ipv6 compare
-    href: ipv6-comparefunction.md
-  - name: ipv6_is_in_range()
-    displayName: ipv6 is in range
-    href: ipv6-is-in-range-function.md
-  - name: ipv6_is_in_any_range()
-    displayName: ipv6 is in any range
-    href: ipv6-is-in-any-range-function.md
-  - name: ipv6_is_match()
-    displayName: ipv6 is match
-    href: ipv6-is-matchfunction.md
-  - name: isascii()
-    href: isascii.md
-  - name: isempty()
-    displayName: is empty
-    href: isemptyfunction.md
-  - name: isfinite()
-    displayName: is finite
-    href: isfinitefunction.md
-  - name: isinf()
-    displayName: is inf
-    href: isinffunction.md
-  - name: isnan()
-    displayName: is nan
-    href: isnanfunction.md
-  - name: isnotempty()
-    displayName: is not empty notempty()
-    href: isnotemptyfunction.md
-  - name: isnotnull()
-    displayName: is not null notnull()
-    href: isnotnullfunction.md
-  - name: isnull()
-    displayName: is null
-    href: isnullfunction.md
-  - name: isutf8()
-    displayName: is utf8
-    href: isutf8.md
-  - name: jaccard_index()
-    displayName: jaccard index
-    href: jaccard-index-function.md
-  - name: log()
-    href: log-function.md
-  - name: log10()
-    href: log10-function.md
-  - name: log2()
-    href: log2-function.md
-  - name: loggamma()
-    displayName: log gamma
-    href: loggammafunction.md
-  - name: make_datetime()
-    displayName: make datetime
-    href: make-datetimefunction.md
-  - name: make_timespan()
-    displayName: make timespan
-    href: make-timespanfunction.md
-  - name: max_of()
-    displayName: max of
-    href: max-offunction.md
-  - name: merge_tdigest()
-    displayName: merge tdigest tdigest_merge()
-    href: merge-tdigest-function.md
-  - name: min_of()
-    displayName: min of
-    href: min-offunction.md
-  - name: monthofyear()
-    displayName: getmonth() month of year
-    href: monthofyearfunction.md
-  - name: new_guid()
-    displayName: new guid
-    href: newguidfunction.md
-  - name: not()
-    href: notfunction.md
-  - name: now()
-    href: nowfunction.md
-  - name: pack_all()
-    displayName: pack all
-    href: packallfunction.md
-  - name: pack_array()
-    displayName: pack array
-    href: packarrayfunction.md
-  - name: parse_command_line()
-    displayName: parse command line
-    href: parse-command-line.md
-  - name: parse_csv()
-    displayName: parse csv
-    href: parsecsvfunction.md
-  - name: parse_ipv4()
-    displayName: parse ipv4
-    href: parse-ipv4function.md
-  - name: parse_ipv4_mask()
-    displayName: parse ipv4 mask
-    href: parse-ipv4-maskfunction.md
-  - name: parse_ipv6()
-    displayName: parse ipv6
-    href: parse-ipv6function.md
-  - name: parse_ipv6_mask()
-    displayName: parse ipv6 mask
-    href: parse-ipv6-maskfunction.md
-  - name: parse_json()
-    displayName: parse json toobject(), parsejson(), todynamic()
-    href: parsejsonfunction.md
-  - name: parse_path()
-    displayName: parse path
-    href: parsepathfunction.md
-  - name: parse_url()
-    displayName: parse url parseurl()
-    href: parseurlfunction.md
-  - name: parse_urlquery()
-    displayName: parse url query parseurlquery()
-    href: parseurlqueryfunction.md
-  - name: parse_user_agent()
-    displayName: parse user agent
-    href: parse-useragentfunction.md
-  - name: parse_version()
-    displayName: parse version
-    href: parse-versionfunction.md
-  - name: parse_xml()
-    displayName: parse xml
-    href: parse-xmlfunction.md
-  - name: percentile_tdigest()
-    displayName: percentile tdigest()
-    href: percentile-tdigestfunction.md
-  - name: percentile_array_tdigest()
-    displayName: percentile array tdigest()
-    href: percentile-array-tdigestfunction.md
-  - name: percentrank_tdigest()
-    displayName: percentrank tdigest()
-    href: percentrank-tdigestfunction.md
-  - name: pi()
-    href: pifunction.md
-  - name: pow()
-    href: powfunction.md
-  - name: punycode_from_string()
-    displayName: punycode from string
-    href: punycode-from-string.md
-  - name: punycode_to_string()
-    displayName: punycode to string
-    href: punycode-to-string.md
-  - name: punycode_domain_from_string()
-    displayName: punycode domain from string
-    href: punycode-domain-from-string.md
-  - name: punycode_domain_to_string()
-    displayName: punycode domain to string
-    href: punycode-domain-to-string.md
-  - name: radians()
-    href: radiansfunction.md
-  - name: rand()
-    href: randfunction.md
-  - name: range()
-    href: rangefunction.md
-  - name: rank_tdigest()
-    displayName: rank tdigest()
-    href: rank-tdigest.md
-  - name: regex_quote()
-    displayName: regex quote
-    href: regexquotefunction.md
-  - name: repeat()
-    href: repeatfunction.md
-  - name: replace_regex()
-    displayName: replace regex
-    href: replace-regex-function.md
-  - name: replace_string()
-    displayName: replace string
-    href: replace-string-function.md
-  - name: replace_strings()
-    displayName: replace strings
-    href: replace-strings-function.md
-  - name: reverse()
-    href: reversefunction.md
-  - name: round()
-    href: roundfunction.md
-  - name: set_difference()
-    displayName: set difference
-    href: setdifferencefunction.md
-  - name: set_has_element()
-    displayName: set has element
-    href: sethaselementfunction.md
-  - name: set_intersect()
-    displayName: set intersect
-    href: setintersectfunction.md
-  - name: set_union()
-    displayName: set union
-    href: setunionfunction.md
-  - name: sign()
-    href: signfunction.md
-  - name: sin()
-    href: sinfunction.md
-  - name: split()
-    href: splitfunction.md
-  - name: sqrt()
-    href: sqrtfunction.md
-  - name: startofday()
-    displayName: start of day
-    href: startofdayfunction.md
-  - name: startofmonth()
-    displayName: start of month
-    href: startofmonthfunction.md
-  - name: startofweek()
-    displayName: start of week
-    href: startofweekfunction.md
-  - name: startofyear()
-    displayName: start of year
-    href: startofyearfunction.md
-  - name: strcat()
-    displayName: string concat
-    href: strcatfunction.md
-  - name: strcat_array()
-    displayName: string concat array
-    href: strcat-arrayfunction.md
-  - name: strcat_delim()
-    displayName: string concat delim
-    href: strcat-delimfunction.md
-  - name: strcmp()
-    displayName: string compare
-    href: strcmpfunction.md
-  - name: string_size()
-    displayName: string size
-    href: stringsizefunction.md
-  - name: strlen()
-    displayName: string length
-    href: strlenfunction.md
-  - name: strrep()
-    displayName: string replace
-    href: strrepfunction.md
-  - name: substring()
-    displayName: string substring
-    href: substringfunction.md
-  - name: tan()
-    href: tanfunction.md
-  - name: tobool()
-    displayName: to boolean toboolean
-    href: toboolfunction.md
-  - name: todatetime()
-    displayName: to datetime todatetime
-    href: todatetimefunction.md
-  - name: todecimal()
-    displayName: to decimal todecimal
-    href: todecimalfunction.md
-  - name: todouble()
-    displayName: to double todouble toreal()
-    href: todoublefunction.md
-  - name: toguid()
-    displayName: to guid toguid
-    href: toguidfunction.md
-  - name: tohex()
-    displayName: to hex tohex
-    href: tohexfunction.md
-  - name: toint()
-    displayName: to int toint integer
-    href: tointfunction.md
-  - name: tolong()
-    displayName: to long tolong
-    href: tolongfunction.md
-  - name: tolower()
-    displayName: to lower tolower
-    href: tolowerfunction.md
-  - name: tostring()
-    displayName: to string tostring
-    href: tostringfunction.md
-  - name: totimespan()
-    displayName: to timespan totime()
-    href: totimespanfunction.md
-  - name: toupper()
-    displayName: to upper toupper
-    href: toupperfunction.md
-  - name: translate()
-    href: translatefunction.md
-  - name: treepath()
-    href: treepathfunction.md
-  - name: trim()
-    href: trimfunction.md
-  - name: trim_end()
-    displayName: trim end 
-    href: trimendfunction.md
-  - name: trim_start()
-    displayName: trim start
-    href: trimstartfunction.md
-  - name: unicode_codepoints_from_string()
-    displayName: to_utf8() unicode codepoints from string
-    href: unicode-codepoints-from-string-function.md
-  - name: unicode_codepoints_to_string()
-    displayName: unicode codepoints to string make_string()
-    href: unicode-codepoints-to-string-function.md
-  - name: unixtime_microseconds_todatetime()
-    displayName: unixtime microseconds to datetime
-    href: unixtime-microseconds-todatetimefunction.md
-  - name: unixtime_milliseconds_todatetime()
-    displayName: unixtime milliseconds to datetime
-    href: unixtime-milliseconds-todatetimefunction.md
-  - name: unixtime_nanoseconds_todatetime()
-    displayName: unixtime nanoseconds to datetime
-    href: unixtime-nanoseconds-todatetimefunction.md
-  - name: unixtime_seconds_todatetime()
-    displayName: unixtime seconds to datetime
-    href: unixtime-seconds-todatetimefunction.md
-  - name: url_decode()
-    displayName: url decode
-    href: urldecodefunction.md
-  - name: url_encode()
-    displayName: url encode
-    href: urlencodefunction.md
-  - name: url_encode_component()
-    displayName: url encode component
-    href: urlencodecomponentfunction.md
-  - name: week_of_year()
-    displayName: week of year weekofyear()
-    href: weekofyearfunction.md
-  - name: welch_test()
-    displayName: welch test
-    href: welch-testfunction.md
-  - name: zip()
-    href: zipfunction.md
-  - name: zlib_compress_to_base64_string()
-    displayName: zlib compress to base64 string
-    href: zlib-base64-compress.md
-  - name: zlib_decompress_from_base64_string()
-    displayName: zlib decompress from base64 string
-    href: zlib-base64-decompress.md
-- name: Aggregation functions
-  displayName: aggregation
-  items:
-  - name: Aggregation function types
-    href: aggregation-functions.md
-  - name: arg_max()
-    displayName: argmax()
-    href: arg-max-aggfunction.md
-  - name: arg_min()
-    displayName: argmin()
-    href: arg-min-aggfunction.md
-  - name: avg()
-    href: avg-aggfunction.md
-  - name: avgif()
-    href: avgif-aggfunction.md
-  - name: binary_all_and
-    href: binary-all-and-aggfunction.md
-  - name: binary_all_or
-    href: binary-all-or-aggfunction.md
-  - name: binary_all_xor
-    href: binary-all-xor-aggfunction.md
-  - name: buildschema()
-    href: buildschema-aggfunction.md
-  - name: count()
-    displayName: cnt()
-    href: count-aggfunction.md
-  - name: count_distinct()
-    href: count-distinct-aggfunction.md
-  - name: count_distinctif()
-    href: count-distinctif-aggfunction.md
-  - name: countif()
-    displayName: count(predicate)
-    href: countif-aggfunction.md
-  - name: dcount()
-    href: dcount-aggfunction.md
-  - name: dcountif()
-    href: dcountif-aggfunction.md
-  - name: hll()
-    href: hll-aggfunction.md
-  - name: hll_if()
-    href: hll-if-aggregation-function.md
-  - name: hll_merge()
-    href: hll-merge-aggfunction.md
-  - name: make_bag()
-    href: make-bag-aggfunction.md
-  - name: make_bag_if()
-    href: make-bag-if-aggfunction.md
-  - name: make_list()
-    displayName: makelist()
-    href: makelist-aggfunction.md
-  - name: make_list_if()
-    href: makelistif-aggfunction.md
-  - name: make_list_with_nulls()
-    href: make-list-with-nulls-aggfunction.md
-  - name: make_set()
-    displayName: makeset()
-    href: makeset-aggfunction.md
-  - name: make_set_if()
-    href: makesetif-aggfunction.md
-  - name: max()
-    href: max-aggfunction.md
-  - name: maxif()
-    href: maxif-aggfunction.md
-  - name: min()
-    href: min-aggfunction.md
-  - name: minif()
-    href: minif-aggfunction.md
-  - name: percentile(), percentiles()
-    displayName: percentiles_array()
-    href: percentiles-aggfunction.md
-  - name: percentilew(), percentilesw()
-    displayName: percentilesw_array(), weighted percentiles
-    href: percentilesw-aggfunction.md
-  - name: stdev()
-    href: stdev-aggfunction.md
-  - name: stdevif()
-    href: stdevif-aggfunction.md
-  - name: stdevp()
-    href: stdevp-aggfunction.md
-  - name: sum()
-    href: sum-aggfunction.md
-  - name: sumif()
-    href: sumif-aggfunction.md
-  - name: take_any()
-    displayName: any()
-    href: take-any-aggfunction.md
-  - name: take_anyif()
-    displayName: anyif()
-    href: take-anyif-aggfunction.md        
-  - name: tdigest()
-    href: tdigest-aggfunction.md
-  - name: tdigest_merge(), merge_tdigest()
-    href: tdigest-merge-aggfunction.md
-  - name: variance()
-    href: variance-aggfunction.md
-  - name: varianceif()
-    href: varianceif-aggfunction.md
-  - name: variancep()
-    href: variancep-aggfunction.md
-- name: Graph operators
-  items:
-    - name: Graph operators overview
-      href: graph-operators.md
-    - name: make-graph
-      href: make-graph-operator.md
-    - name: graph-match
-      href: graph-match-operator.md
-    - name: graph-merge
-      href: graph-merge-operator.md
-    - name: graph-to-table
-      href: graph-to-table-operator.md
-- name: Geospatial
-  items:
-  - name: Geospatial clustering overview
-    displayName: H3, S2, Geohash
-    href: geospatial-grid-systems.md
-  - name: Geospatial visualizations
-    href: geospatial-visualizations.md
-  - name: geo_distance_2points()
-    href: geo-distance-2points-function.md
-  - name: geo_distance_point_to_line()
-    href: geo-distance-point-to-line-function.md
-  - name: geo_distance_point_to_polygon()
-    href: geo-distance-point-to-polygon-function.md
-  - name: geo_intersects_2lines()
-    href: geo-intersects-2lines-function.md
-  - name: geo_intersects_2polygons()
-    href: geo-intersects-2polygons-function.md
-  - name: geo_intersects_line_with_polygon()
-    href: geo-intersects-line-with-polygon-function.md
-  - name: geo_intersection_2lines()
-    href: geo-intersection-2lines-function.md
-  - name: geo_intersection_2polygons()
-    href: geo-intersection-2polygons-function.md
-  - name: geo_intersection_line_with_polygon()
-    href: geo-intersection-line-with-polygon-function.md
-  - name: geo_line_buffer()
-    href: geo-line-buffer-function.md
-  - name: geo_line_centroid()
-    href: geo-line-centroid-function.md
-  - name: geo_line_densify()
-    href: geo-line-densify-function.md
-  - name: geo_line_length()
-    href: geo-line-length-function.md
-  - name: geo_line_simplify()
-    href: geo-line-simplify-function.md  
-  - name: geo_line_to_s2cells()
-    href: geo-line-to-s2cells-function.md
-  - name: geo_polygon_area()
-    href: geo-polygon-area-function.md
-  - name: geo_polygon_buffer()
-    href: geo-polygon-buffer-function.md
-  - name: geo_polygon_centroid()
-    href: geo-polygon-centroid-function.md
-  - name: geo_polygon_densify()
-    href: geo-polygon-densify-function.md
-  - name: geo_polygon_perimeter()
-    href: geo-polygon-perimeter-function.md
-  - name: geo_polygon_simplify()
-    href: geo-polygon-simplify-function.md  
-  - name: geo_polygon_to_s2cells()
-    href: geo-polygon-to-s2cells-function.md
-  - name: geo_point_buffer()
-    href: geo-point-buffer-function.md
-  - name: geo_point_in_circle()
-    href: geo-point-in-circle-function.md
-  - name: geo_point_in_polygon()
-    href: geo-point-in-polygon-function.md
-  - name: geo_point_to_geohash()
-    href: geo-point-to-geohash-function.md
-  - name: geo_point_to_h3cell()
-    href: geo-point-to-h3cell-function.md
-  - name: geo_point_to_s2cell()
-    href: geo-point-to-s2cell-function.md
-  - name: geo_geohash_to_central_point()
-    href: geo-geohash-to-central-point-function.md
-  - name: geo_geohash_neighbors()
-    href: geo-geohash-neighbors-function.md
-  - name: geo_geohash_to_polygon()
-    href: geo-geohash-to-polygon-function.md
-  - name: geo_s2cell_to_central_point()
-    href: geo-s2cell-to-central-point-function.md
-  - name: geo_s2cell_neighbors()
-    href: geo-s2cell-neighbors-function.md
-  - name: geo_s2cell_to_polygon()
-    href: geo-s2cell-to-polygon-function.md
-  - name: geo_h3cell_to_central_point()
-    href: geo-h3cell-to-central-point-function.md
-  - name: geo_h3cell_neighbors()
-    href: geo-h3cell-neighbors-function.md
-  - name: geo_h3cell_to_polygon()
-    href: geo-h3cell-to-polygon-function.md
-  - name: geo_h3cell_parent()
-    href: geo-h3cell-parent-function.md
-  - name: geo_h3cell_children()
-    href: geo-h3cell-children-function.md
-  - name: geo_h3cell_level()
-    href: geo-h3cell-level-function.md
-  - name: geo_h3cell_rings()
-    href: geo-h3cell-rings-function.md
-  - name: geo_simplify_polygons_array()
-    href: geo-simplify-polygons-array-function.md
-  - name: geo_union_lines_array()
-    href: geo-union-lines-array-function.md
-  - name: geo_union_polygons_array()
-    href: geo-union-polygons-array-function.md
-- name: Time series analysis
-  items:
-  - name: Example use cases
+      - name: Query statement types
+        href: statements.md
+      - name: Alias statement
+        href: alias-statement.md
+      - name: Let statement
+        href: let-statement.md
+      - name: Pattern statement
+        href: pattern-statement.md
+      - name: Query parameters statement
+        href: query-parameters-statement.md
+      - name: Restrict statement
+        href: restrict-statement.md
+      - name: Set statement
+        href: set-statement.md
+      - name: Tabular expression statements
+        displayName: views
+        href: tabular-expression-statements.md
+      - name: Batches
+        href: batches.md
+  - name: Tabular operators
     items:
-    - name: Time series analysis
-      href: time-series-analysis.md
-    - name: Anomaly detection and forecasting
-      href: anomaly-detection.md
-    - name: Machine learning
-      href: machine-learning-clustering.md
-  - name: make-series operator
-    href: make-seriesoperator.md
-  - name: series_abs()
-    displayName: element-wise, elementwise
-    href: series-absfunction.md
-  - name: series_acos()
-    displayName: element-wise, elementwise
-    href: series-acosfunction.md  
-  - name: series_add()
-    displayName: element-wise, elementwise
-    href: series-addfunction.md
-  - name: series_asin()
-    displayName: element-wise, elementwise
-    href: series-asinfunction.md 
-  - name: series_atan()
-    displayName: element-wise, elementwise
-    href: series-atanfunction.md
-  - name: series_ceiling()
-    displayName: element-wise, elementwise
-    href: series-ceiling-function.md
-  - name: series_cos()
-    displayName: element-wise, elementwise
-    href: series-cosfunction.md  
-  - name: series_cosine_similarity()
-    displayName: element-wise, elementwise, embedding, vector, cosine, similarity
-    href: series-cosine-similarity-function.md
-  - name: series_decompose()
-    displayName: seasonal, trend, baseline
-    href: series-decomposefunction.md
-  - name: series_decompose_anomalies()
-    displayName: seasonal, trend, baseline
-    href: series-decompose-anomaliesfunction.md
-  - name: series_decompose_forecast()
-    displayName: seasonal, trend, baseline
-    href: series-decompose-forecastfunction.md
-  - name: series_divide()
-    displayName: element-wise, elementwise
-    href: series-dividefunction.md
-  - name: series_dot_product()
-    displayName: element-wise, elementwise
-    href: series-dot-productfunction.md
-  - name: series_equals()
-    displayName: element-wise, elementwise
-    href: series-equalsfunction.md
-  - name: series_exp()
-    displayName: element-wise, elementwise
-    href: series-expfunction.md
-  - name: series_fft()
-    displayName: spectral, frequency, seasonality, transform, Fourier
-    href: series-fft-function.md
-  - name: series_fill_backward()
-    displayName: missing values
-    href: series-fill-backwardfunction.md
-  - name: series_fill_const()
-    displayName: missing values
-    href: series-fill-constfunction.md
-  - name: series_fill_forward()
-    displayName: missing values
-    href: series-fill-forwardfunction.md
-  - name: series_fill_linear()
-    displayName: missing values
-    href: series-fill-linearfunction.md
-  - name: series_fir()
-    displayName: filter, finite impulse response
-    href: series-firfunction.md
-  - name: series_fit_2lines()
-    displayName: regression
-    href: series-fit-2linesfunction.md
-  - name: series_fit_2lines_dynamic()
-    displayName: regression
-    href: series-fit-2lines-dynamicfunction.md
-  - name: series_fit_line()
-    displayName: regression
-    href: series-fit-linefunction.md
-  - name: series_fit_line_dynamic()
-    displayName: regression
-    href: series-fit-line-dynamicfunction.md
-  - name: series_fit_poly()
-    displayName: regression, polynomial
-    href: series-fit-poly-function.md
-  - name: series_floor()
-    displayName: element-wise, elementwise
-    href: series-floor-function.md
-  - name: series_greater()
-    displayName: element-wise, elementwise
-    href: series-greaterfunction.md
-  - name: series_greater_equals()
-    displayName: element-wise, elementwise
-    href: series-greater-equalsfunction.md
-  - name: series_ifft()
-    displayName: spectral, frequency, seasonality, transform, Fourier
-    href: series-ifft-function.md
-  - name: series_iir()
-    displayName: filter, infinite impulse response
-    href: series-iirfunction.md
-  - name: series_less()
-    displayName: element-wise, elementwise
-    href: series-lessfunction.md
-  - name: series_less_equals()
-    displayName: element-wise, elementwise
-    href: series-less-equalsfunction.md
-  - name: series_log()
-    displayName: element-wise, elementwise
-    href: series-log-function.md
-  - name: series_magnitude()
-    displayName: element-wise, elementwise, vector
-    href: series-magnitude-function.md
-  - name: series_multiply()
-    displayName: element-wise, elementwise
-    href: series-multiplyfunction.md
-  - name: series_not_equals()
-    displayName: element-wise, elementwise
-    href: series-not-equalsfunction.md
-  - name: series_outliers()
-    displayName: anomaly detection, Tukey
-    href: series-outliersfunction.md
-  - name: series_pearson_correlation()
-    href: series-pearson-correlationfunction.md
-  - name: series_periods_detect()
-    displayName: spectral, fft, frequency, seasonality
-    href: series-periods-detectfunction.md
-  - name: series_periods_validate()
-    displayName: spectral, fft, frequency, seasonality
-    href: series-periods-validatefunction.md
-  - name: series_pow()
-    displayName: element-wise, elementwise
-    href: series-powfunction.md  
-  - name: series_seasonal()
-    displayName: periods
-    href: series-seasonalfunction.md
-  - name: series_sign()
-    displayName: element-wise, elementwise
-    href: series-signfunction.md
-  - name: series_sin()
-    displayName: element-wise, elementwise
-    href: series-sinfunction.md    
-  - name: series_stats()
-    displayName: statistics, average, standard deviation, variance
-    href: series-statsfunction.md
-  - name: series_stats_dynamic()
-    displayName: statistics, average, standard deviation, variance
-    href: series-stats-dynamicfunction.md
-  - name: series_subtract()
-    displayName: element-wise, elementwise
-    href: series-subtractfunction.md
-  - name: series_sum()
-    displayName: element-wise, elementwise
-    href: series-sum-function.md
-  - name: series_tan()
-    displayName: element-wise, elementwise
-    href: series-tanfunction.md
-- name: Plugins
-  items:
-  - name: General plugins
+      - name: Query operators
+        href: queries.md
+      - name: as operator
+        href: as-operator.md
+      - name: consume operator
+        href: consume-operator.md
+      - name: count operator
+        href: count-operator.md
+      - name: datatable operator
+        href: datatable-operator.md
+      - name: distinct operator
+        href: distinctoperator.md
+      - name: evaluate operator
+        href: evaluate-operator.md
+      - name: extend operator
+        href: extend-operator.md
+      - name: externaldata operator
+        href: externaldata-operator.md
+      - name: facet operator
+        href: facet-operator.md
+      - name: find operator
+        href: find-operator.md
+      - name: fork operator
+        href: fork-operator.md
+      - name: getschema operator
+        href: getschemaoperator.md
+      - name: invoke operator
+        href: invoke-operator.md
+      - name: join operator
+        items:
+          - name: join operator
+            href: join-operator.md
+          - name: join flavors
+            items:
+              - name: innerunique
+                href: join-innerunique.md
+              - name: inner
+                href: join-inner.md
+              - name: leftouter
+                href: join-leftouter.md
+              - name: rightouter
+                href: join-rightouter.md
+              - name: fullouter
+                href: join-fullouter.md
+              - name: leftsemi
+                href: join-leftsemi.md
+              - name: leftanti
+                href: join-leftanti.md
+                displayName: leftantisemi, anti
+              - name: rightsemi
+                href: join-rightsemi.md
+                displayName: rightantisemi
+              - name: rightanti
+                href: join-rightanti.md
+          - name: Cross-cluster join
+            href: join-cross-cluster.md
+            displayName: cross cluster
+          - name: Broadcast join
+            href: broadcast-join.md
+          - name: Time window join
+            href: join-time-window.md
+      - name: lookup operator
+        href: lookup-operator.md
+      - name: mv-apply operator
+        href: mv-apply-operator.md
+        displayName: mv apply mv_apply
+      - name: mv-expand operator
+        href: mv-expand-operator.md
+        displayName: mv expand mv_expand
+      - name: sort operator
+        displayName: order operator
+        href: sort-operator.md
+      - name: project operator
+        href: project-operator.md
+      - name: project-away operator
+        href: project-away-operator.md
+        displayName: project away project_away
+      - name: project-keep operator
+        href: project-keep-operator.md
+        displayName: project keep project_keep
+      - name: project-rename operator
+        href: project-rename-operator.md
+        displayName: project rename project_rename
+      - name: project-reorder operator
+        href: project-reorder-operator.md
+        displayName: project reorder project_reorder
+      - name: parse operator
+        href: parse-operator.md
+      - name: parse-where operator
+        href: parse-where-operator.md
+        displayName: parse where parse_where
+      - name: parse-kv operator
+        href: parse-kv-operator.md
+        displayName: parse kv parse_kv
+      - name: partition operator
+        href: partition-operator.md
+      - name: print operator
+        href: print-operator.md
+      - name: range operator
+        href: range-operator.md
+      - name: reduce operator
+        href: reduce-operator.md
+      - name: render operator
+        items:
+          - name: render operator
+            href: render-operator.md
+          - name: visualizations
+            items:
+              - name: anomalychart
+                displayName: anomaly chart
+                href: visualization-anomalychart.md
+              - name: areachart
+                displayName: area chart
+                href: visualization-areachart.md
+              - name: barchart
+                displayName: bar chart
+                href: visualization-barchart.md
+              - name: card
+                href: visualization-card.md
+              - name: columnchart
+                displayName: column chart
+                href: visualization-columnchart.md
+              - name: ladderchart
+                displayName: ladder chart
+                href: visualization-ladderchart.md
+              - name: linechart
+                displayName: line chart
+                href: visualization-linechart.md
+              - name: piechart
+                displayName: pie chart
+                href: visualization-piechart.md
+              - name: pivotchart
+                displayName: pivot chart
+                href: visualization-pivotchart.md
+              - name: Plotly
+                href: visualization-plotly.md
+              - name: scatterchart
+                displayName: scatter chart
+                href: visualization-scatterchart.md
+              - name: stackedareachart
+                displayName: stacked area chart
+                href: visualization-stackedareachart.md
+              - name: table
+                href: visualization-table.md
+              - name: timechart
+                displayName: time chart
+                href: visualization-timechart.md
+              - name: timepivot
+                displayName: time pivot
+                href: visualization-timepivot.md
+              - name: treemap
+                href: visualization-treemap.md
+      - name: sample operator
+        href: sample-operator.md
+      - name: sample-distinct operator
+        href: sample-distinct-operator.md
+        displayName: sample distinct sample_distinct
+      - name: scan operator
+        href: scan-operator.md
+      - name: search operator
+        href: search-operator.md
+      - name: serialize operator
+        href: serialize-operator.md
+      - name: shuffle query
+        displayName: hint.shufflekey, hint.strategy, shufflekey, hint, strategy
+        href: shuffle-query.md
+      - name: summarize operator
+        items:
+          - name: summarize operator overview
+            href: summarize-operator.md
+          - name: Using hll() and tdigest()
+            href: using-hll-tdigest.md
+      - name: take operator
+        displayName: limit operator
+        href: take-operator.md
+      - name: top operator
+        href: top-operator.md
+      - name: top-nested operator
+        href: top-nested-operator.md
+        displayName: top nested top_nested
+      - name: top-hitters operator
+        href: top-hitters-operator.md
+        displayName: top hitters top_hitters
+      - name: union operator
+        href: union-operator.md
+      - name: where operator
+        displayName: filter operator
+        href: where-operator.md
+  - name: Special functions
     items:
-    - name: dcount_intersect plugin
-      href: dcount-intersect-plugin.md
-    - name: infer_storage_schema plugin
-      href: inferstorageschemaplugin.md
-    - name: ipv4_lookup plugin
-      href: ipv4-lookup-plugin.md
-    - name: preview plugin
-      href: previewplugin.md
-    - name: schema_merge plugin
-      href: schemamergeplugin.md
-  - name: Data reshaping plugins
+      - name: cluster()
+        href: cluster-function.md
+      - name: database()
+        href: database-function.md
+      - name: external_table()
+        href: external-table-function.md
+        displayName: external table external-table
+      - name: materialize()
+        href: materialize-function.md
+      - name: materialized_view()
+        href: materialized-view-function.md
+        displayName: materialized view materialized-view
+      - name: Query results cache
+        href: query-results-cache.md
+      - name: table()
+        href: table-function.md
+      - name: toscalar()
+        href: toscalar-function.md
+        displayName: to_scalar to-scalar
+  - name: Scalar operators
     items:
-    - name: bag_unpack plugin
-      href: bag-unpackplugin.md 
-    - name: narrow plugin
-      href: narrowplugin.md
-    - name: pivot plugin
-      href: pivotplugin.md 
-  - name: Language plugins
+      - name: between operators
+        items:
+          - name: between operator
+            href: between-operator.md
+          - name: "!between operator"
+            displayName: not between operator
+            href: not-between-operator.md
+      - name: Bitwise binary operators
+        href: bin-operators.md
+      - name: Datetime/timespan arithmetic
+        href: datetime-timespan-arithmetic.md
+      - name: in operators
+        items:
+          - name: in operator
+            displayName: in operator case sensitive
+            href: in-cs-operator.md
+          - name: in~ operator
+            href: in-operator.md
+          - name: "!in operator"
+            displayName: not in operator case sensitive
+            href: not-in-cs-operator.md
+          - name: "!in~ operator"
+            displayName: not in operator
+            href: not-in-operator.md
+      - name: Logical or binary operators
+        href: logical-operators.md
+      - name: Numerical operators
+        href: numerical-operators.md
+      - name: String operators
+        items:
+          - name: String operators overview
+            href: datatypes-string-operators.md
+          - name: contains operator
+            href: contains-operator.md
+          - name: contains_cs operator
+            displayName: contains operator case sensitive
+            href: contains-cs-operator.md
+          - name: "!contains operator"
+            displayName: not contains operator
+            href: not-contains-operator.md
+          - name: "!contains_cs operator"
+            displayName: not contains operator case sensitive
+            href: not-contains-cs-operator.md
+          - name: endswith operator
+            href: endswith-operator.md
+          - name: endswith_cs operator
+            displayName: ends with operator case sensitive
+            href: endswith-cs-operator.md
+          - name: "!endswith operator"
+            displayName: not ends with operator
+            href: not-endswith-operator.md
+          - name: "!endswith_cs operator"
+            displayName: not ends with operator case sensitive
+            href: not-endswith-cs-operator.md
+          - name: "== (equals) operator"
+            displayName: equals case sensitive operator
+            href: equals-cs-operator.md
+          - name: "=~ (equals) operator"
+            href: equals-operator.md
+          - name: "!= (not equals) operator"
+            displayName: not equals case sensitive operator
+            href: not-equals-cs-operator.md
+          - name: "!~ (not equals) operator"
+            href: not-equals-operator.md
+          - name: has operator
+            href: has-operator.md
+          - name: has_cs operator
+            displayName: has operator case sensitive
+            href: has-cs-operator.md
+          - name: "!has operator"
+            displayName: not has operator
+            href: not-has-operator.md
+          - name: "!has_cs operator"
+            displayName: not has operator case sensitive
+            href: not-has-cs-operator.md
+          - name: hasprefix operator
+            href: hasprefix-operator.md
+          - name: hasprefix_cs operator
+            displayName: has prefix operator case sensitive
+            href: hasprefix-cs-operator.md
+          - name: "!hasprefix operator"
+            displayName: not has prefix operator
+            href: not-hasprefix-operator.md
+          - name: "!hasprefix_cs operator"
+            displayName: not has prefix operator case sensitive
+            href: not-hasprefix-cs-operator.md
+          - name: hassuffix operator
+            href: hassuffix-operator.md
+          - name: hassuffix_cs operator
+            displayName: has suffix operator case sensitive
+            href: hassuffix-cs-operator.md
+          - name: "!hassuffix operator"
+            displayName: not has suffix operator
+            href: not-hassuffix-operator.md
+          - name: "!hassuffix_cs operator"
+            displayName: not has suffix operator case sensitive
+            href: not-hassuffix-cs-operator.md
+          - name: has_all operator
+            displayName: has all operator
+            href: has-all-operator.md
+          - name: has_any operator
+            displayName: has any operator
+            href: has-any-operator.md
+          - name: in operator
+            displayName: in operator case sensitive
+            href: in-cs-operator.md
+          - name: "in~ operator"
+            href: in-operator.md
+          - name: "!in operator"
+            displayName: not in operator case sensitive
+            href: not-in-cs-operator.md
+          - name: "!in~ operator"
+            displayName: not in operator
+            href: not-in-operator.md
+          - name: matches regex operator
+            displayName: case-sensitive matches regex
+            href: matches-regex-operator.md
+          - name: startswith operator
+            displayName: starts with operator
+            href: startswith-operator.md
+          - name: startswith_cs operator
+            displayName: starts with operator case sensitive
+            href: startswith-cs-operator.md
+          - name: "!startswith operator"
+            displayName: not starts with operator
+            href: not-startswith-operator.md
+          - name: "!startswith_cs operator"
+            displayName: not starts with operator case sensitive
+            href: not-startswith-cs-operator.md
+  - name: Scalar functions
     items:
-    - name: Python plugin
-      href: pythonplugin.md
-    - name: R plugin
-      href: rplugin.md
-  - name: Machine learning plugins
+      - name: Scalar function types
+        displayName: stored procedures
+        href: scalar-functions.md
+      - name: abs()
+        href: abs-function.md
+      - name: acos()
+        href: acos-function.md
+      - name: ago()
+        href: ago-function.md
+      - name: around()
+        href: around-function.md
+      - name: array_concat()
+        href: array-concat-function.md
+      - name: array_iff()
+        displayName: array_iif() array iif
+        href: array-iff-function.md
+      - name: array_index_of()
+        displayName: array index of
+        href: array-index-of-function.md
+      - name: array_length()
+        displayName: arraylength() array length
+        href: array-length-function.md
+      - name: array_reverse()
+        displayName: array reverse
+        href: array-reverse-function.md
+      - name: array_rotate_left()
+        displayName: array rotate left
+        href: array-rotate-left-function.md
+      - name: array_rotate_right()
+        displayName: array rotate right
+        href: array-rotate-right-function.md
+      - name: array_shift_left()
+        displayName: array shift left
+        href: array-shift-left-function.md
+      - name: array_shift_right()
+        displayName: array shift right
+        href: array-shift-right-function.md
+      - name: array_slice()
+        displayName: array slice
+        href: array-slice-function.md
+      - name: array_sort_asc()
+        displayName: array sort asc
+        href: array-sort-asc-function.md
+      - name: array_sort_desc()
+        displayName: array sort desc
+        href: array-sort-desc-function.md
+      - name: array_split()
+        displayName: array split
+        href: array-split-function.md
+      - name: array_sum()
+        displayName: array sum
+        href: array-sum-function.md
+      - name: asin()
+        displayName: asin function
+        href: asin-function.md
+      - name: assert()
+        href: assert-function.md
+      - name: atan()
+        href: atan-function.md
+      - name: atan2()
+        href: atan2-function.md
+      - name: bag_has_key()
+        displayName: bag has key
+        href: bag-has-key-function.md
+      - name: bag_keys()
+        displayName: bag keys
+        href: bag-keys-function.md
+      - name: bag_merge()
+        displayName: bag merge
+        href: bag-merge-function.md
+      - name: bag_pack()
+        displayName: pack(), pack_dictionary(), bag pack
+        href: packfunction.md
+      - name: bag_pack_columns()
+        displayName: bag pack columns, dynamic object, property bag
+        href: bag-pack-columns-function.md
+      - name: bag_remove_keys()
+        displayName: bag remove keys
+        href: bag-remove-keys-function.md
+      - name: bag_set_key()
+        displayName: bag set key
+        href: bag-set-key-function.md
+      - name: bag_zip()
+        displayName: bag zip
+        href: bag-zip.md
+      - name: base64_decode_toarray()
+        displayName: base64_decode_toarray()
+        href: base64-decode-toarray-function.md
+      - name: base64_decode_tostring()
+        displayName: base64_decodestring() vase64 decode string
+        href: base64-decode-tostring-function.md
+      - name: base64_decode_toguid()
+        displayName: base64_decode_toguid() base64 decode to guid
+        href: base64-decode-toguid-function.md
+      - name: base64_encode_fromarray()
+        displayName: base64 encode from array
+        href: base64-encode-fromarray-function.md
+      - name: base64_encode_tostring()
+        displayName: base64_encodestring() base 64 encode string
+        href: base64-encode-tostring-function.md
+      - name: base64_encode_fromguid()
+        displayName: base64_encode_fromguid() base64 encode from guid
+        href: base64-encode-fromguid-function.md
+      - name: beta_cdf()
+        displayName: beta_cdf() beta cdf
+        href: beta-cdf-function.md
+      - name: beta_inv()
+        displayName: beta_inv() beta inv
+        href: beta-inv-function.md
+      - name: beta_pdf()
+        displayName: beta_pdf() beta pdf
+        href: beta-pdf-function.md
+      - name: bin()
+        displayName: floor()
+        href: bin-function.md
+      - name: bin_at()
+        displayName: bin_at() bin at
+        href: bin-at-function.md
+      - name: bin_auto()
+        displayName: bin_auto() bin auto
+        href: bin-auto-function.md
+      - name: binary_and()
+        displayName: binary_and() binary and
+        href: binary-and-function.md
+      - name: binary_not()
+        displayName: binary_not() binary not
+        href: binary-not-function.md
+      - name: binary_or()
+        displayName: binary_or() binary or
+        href: binary-or-function.md
+      - name: binary_shift_left()
+        displayName: binary_shift_left() binary shift left
+        href: binary-shift-left-function.md
+      - name: binary_shift_right()
+        displayName: binary_shift_right() binary shift right
+        href: binary-shift-right-function.md
+      - name: binary_xor()
+        displayName: binary_xor() binary xor
+        href: binary-xor-function.md
+      - name: bitset_count_ones()
+        displayName: bitset_count_ones() bitset count ones
+        href: bitset-count-ones-function.md
+      - name: case()
+        href: case-function.md
+      - name: ceiling()
+        href: ceiling-function.md
+        displayName: ceiling() ceiling function
+      - name: coalesce()
+        href: coalesce-function.md
+      - name: column_ifexists()
+        displayName: columnifexists() column if exists
+        href: column-ifexists-function.md
+      - name: convert_angle()
+        displayName: convert_angle() convert angle
+        href: convert-angle-function.md
+      - name: convert_energy()
+        displayName: convert_energy() convert energy
+        href: convert-energy-function.md
+      - name: convert_force()
+        displayName: convert_force() convert force
+        href: convert-force-function.md
+      - name: convert_length()
+        displayName: convert_length() convert length
+        href: convert-length-function.md
+      - name: convert_mass()
+        displayName: convert_mass() convert mass
+        href: convert-mass-function.md
+      - name: convert_speed()
+        displayName: convert_speed() convert speed
+        href: convert-speed-function.md
+      - name: convert_temperature()
+        displayName: convert_temperature() convert temperature
+        href: convert-temperature-function.md
+      - name: convert_volume()
+        displayName: convert_volume() convert volume
+        href: convert-volume-function.md
+      - name: cos()
+        href: cos-function.md
+      - name: cot()
+        href: cot-function.md
+      - name: countof()
+        displayName: countof() count of
+        href: countof-function.md
+      - name: current_cluster_endpoint()
+        displayName: current_cluster_endpoint() current cluster endpoint
+        href: current-cluster-endpoint-function.md
+      - name: current_database()
+        displayName: current_database() current database
+        href: current-database-function.md
+      - name: current_principal()
+        displayName: current_principal() current principal
+        href: current-principal-function.md
+      - name: current_principal_details()
+        displayName: current_principal_details() current principal details
+        href: current-principal-details-function.md
+      - name: current_principal_is_member_of()
+        displayName: current_principal_is_member_of() current principal is member of
+        href: current-principal-is-member-of-function.md
+      - name: cursor_after()
+        displayName: cursor_after() cursor after
+        href: cursor-after-function.md
+      - name: cursor_before_or_at()
+        displayName: cursor_before_or_at() cursor before or at
+        href: cursor-before-or-at-function.md
+      - name: cursor_current()
+        displayName: current_cursor() cursor current
+        href: cursor-current.md
+      - name: datetime_add()
+        displayName: datetime_add() datetime add
+        href: datetime-add-function.md
+      - name: datetime_diff()
+        displayName: datetime_diff() datetime diff
+        href: datetime-diff-function.md
+      - name: datetime_local_to_utc()
+        href: datetime-local-to-utc-function.md
+      - name: datetime_part()
+        displayName: datepart()
+        href: datetime-part-function.md
+      - name: datetime_utc_to_local()
+        displayName: datetime_utc_to_local() datetime utc to local
+        href: datetime-utc-to-local-function.md
+      - name: dayofmonth()
+        displayName: dayofmonth() day of month
+        href: day-of-month-function.md
+      - name: dayofweek()
+        displayName: dayofweek() day of week
+        href: day-of-week-function.md
+      - name: dayofyear()
+        displayName: day of year
+        href: day-of-year-function.md
+      - name: dcount_hll()
+        displayName: dcount hll
+        href: dcount-hllfunction.md
+      - name: degrees()
+        href: degrees-function.md
+      - name: dynamic_to_json()
+        displayName: dynamic_to_json() dynamic to json
+        href: dynamic-to-json-function.md
+      - name: endofday()
+        displayName: endofday() end of day
+        href: endofday-function.md
+      - name: endofmonth()
+        displayName: endofmonth() end of month
+        href: endofmonth-function.md
+      - name: endofweek()
+        displayName: endofweek() end of week
+        href: endofweek-function.md
+      - name: endofyear()
+        displayName: endofyear() end of year
+        href: endofyear-function.md
+      - name: erf()
+        displayName: Gaussian, error function, statistics, distribution
+        href: erf-function.md
+      - name: erfc()
+        displayName: complementary error function, statistics, distribution
+        href: erfc-function.md
+      - name: estimate_data_size()
+        displayName: estimate_data_size() estimate data size
+        href: estimate-data-size-function.md
+      - name: exp()
+        href: exp-function.md
+      - name: exp10()
+        href: exp10-function.md
+      - name: exp2()
+        href: exp2-function.md
+      - name: extent_id()
+        displayName: extentid() extent id
+        href: extent-id-function.md
+      - name: extent_tags()
+        displayName: extenttags() extent tags
+        href: extenttagsfunction.md
+      - name: extract()
+        href: extract-function.md
+      - name: extract_all()
+        displayName: extractall() extract all
+        href: extract-all-function.md
+      - name: extract_json()
+        displayName: extractjson() extract json
+        href: extract-json-function.md
+      - name: format_bytes()
+        displayName: format bytes
+        href: format-bytes-function.md
+      - name: format_datetime()
+        displayName: format datetime
+        href: format-datetime-function.md
+      - name: format_ipv4()
+        displayName: format ipv4
+        href: format-ipv4-function.md
+      - name: format_ipv4_mask()
+        displayName: format ipv4 mask
+        href: format-ipv4-mask-function.md
+      - name: format_timespan()
+        displayName: format timespan
+        href: format-timespan-function.md
+      - name: gamma()
+        href: gamma-function.md
+      - name: geo_info_from_ip_address()
+        displayName: geo info from ip address
+        href: geo-info-from-ip-address-function.md
+      - name: gettype()
+        displayName: get type
+        href: gettype-function.md
+      - name: getyear()
+        displayName: get year
+        href: getyear-function.md
+      - name: gzip_compress_to_base64_string()
+        displayName: gzip compress to base64 string
+        href: gzip-base64-compress.md
+      - name: gzip_decompress_from_base64_string()
+        displayName: gzip decompress from base64 string
+        href: gzip-base64-decompress.md
+      - name: has_any_index()
+        displayName: has any index
+        href: has-any-index-function.md
+      - name: has_any_ipv4()
+        displayName: has any ipv4
+        href: has-any-ipv4-function.md
+      - name: has_ipv4()
+        displayName: has ipv4
+        href: has-ipv4-function.md
+      - name: has_any_ipv4_prefix()
+        displayName: has any ipv4 prefix
+        href: has-any-ipv4-prefix-function.md
+      - name: has_ipv4_prefix()
+        displayName: has ipv4 prefix
+        href: has-ipv4-prefix-function.md
+      - name: hash()
+        href: hash-function.md
+      - name: hash_combine()
+        displayName: hash combine
+        href: hash-combine-function.md
+      - name: hash_many()
+        displayName: hash many
+        href: hash_manyfunction.md
+      - name: hash_md5()
+        displayName: hash md5
+        href: hash-md5-function.md
+      - name: hash_sha1()
+        displayName: hash sha1
+        href: hash-sha1-function.md
+      - name: hash_sha256()
+        displayName: hash sha256
+        href: hash-sha256-function.md
+      - name: hash_xxhash64()
+        displayName: hash xxhash64
+        href: hash-xxhash64-function.md
+      - name: hll_merge()
+        displayName: hll merge
+        href: hll-merge-function.md
+      - name: hourofday()
+        displayName: hourofday() hour of day
+        href: hour-of-day-function.md
+      - name: iff()
+        displayName: iif()
+        href: ifffunction.md
+      - name: indexof()
+        displayName: index of
+        href: indexof-function.md
+      - name: indexof_regex()
+        displayName: index of regex
+        href: indexof-regex-function.md
+      - name: ingestion_time()
+        displayName: ingestion time
+        href: ingestion-time-function.md
+      - name: ipv4_compare()
+        displayName: ipv4 compare
+        href: ipv4-compare-function.md
+      - name: ipv4_is_in_range()
+        displayName: ipv4 is in range
+        href: ipv4-is-in-range-function.md
+      - name: ipv4_is_in_any_range()
+        displayName: ipv4 is in any range
+        href: ipv4-is-in-any-range-function.md
+      - name: ipv4_is_match()
+        displayName: ipv4 is match
+        href: ipv4-is-match-function.md
+      - name: ipv4_is_private()
+        displayName: ipv4 is private
+        href: ipv4-is-private-function.md
+      - name: ipv4_range_to_cidr_list()
+        displayName: ipv4 range to cidr list
+        href: ipv4-range-to-cidr-list-function.md
+      - name: ipv4_netmask_suffix()
+        displayName: ipv4 netmask suffix
+        href: ipv4-netmask-suffix-function.md
+      - name: ipv6_compare()
+        displayName: ipv6 compare
+        href: ipv6-compare-function.md
+      - name: ipv6_is_in_range()
+        displayName: ipv6 is in range
+        href: ipv6-is-in-range-function.md
+      - name: ipv6_is_in_any_range()
+        displayName: ipv6 is in any range
+        href: ipv6-is-in-any-range-function.md
+      - name: ipv6_is_match()
+        displayName: ipv6 is match
+        href: ipv6-is-match-function.md
+      - name: isascii()
+        href: isascii.md
+      - name: isempty()
+        displayName: is empty
+        href: isempty-function.md
+      - name: isfinite()
+        displayName: is finite
+        href: isfinite-function.md
+      - name: isinf()
+        displayName: is inf
+        href: isinf-function.md
+      - name: isnan()
+        displayName: is nan
+        href: isnan-function.md
+      - name: isnotempty()
+        displayName: is not empty notempty()
+        href: isnotempty-function.md
+      - name: isnotnull()
+        displayName: is not null notnull()
+        href: isnotnull-function.md
+      - name: isnull()
+        displayName: is null
+        href: isnull-function.md
+      - name: isutf8()
+        displayName: is utf8
+        href: isutf8-function.md
+      - name: jaccard_index()
+        displayName: jaccard index
+        href: jaccard-index-function.md
+      - name: log()
+        href: log-function.md
+      - name: log10()
+        href: log10-function.md
+      - name: log2()
+        href: log2-function.md
+      - name: loggamma()
+        displayName: log gamma
+        href: loggamma-function.md
+      - name: make_datetime()
+        displayName: make datetime
+        href: make-datetime-function.md
+      - name: make_timespan()
+        displayName: make timespan
+        href: make-timespan-function.md
+      - name: max_of()
+        displayName: max of
+        href: max-of-function.md
+      - name: merge_tdigest()
+        displayName: merge tdigest tdigest_merge()
+        href: merge-tdigest-function.md
+      - name: min_of()
+        displayName: min of
+        href: min-of-function.md
+      - name: monthofyear()
+        displayName: getmonth() month of year
+        href: monthofyear-function.md
+      - name: new_guid()
+        displayName: new guid
+        href: new-guid-function.md
+      - name: not()
+        href: not-function.md
+      - name: now()
+        href: now-function.md
+      - name: pack_all()
+        displayName: pack all
+        href: pack-all-function.md
+      - name: pack_array()
+        displayName: pack array
+        href: pack-array-function.md
+      - name: parse_command_line()
+        displayName: parse command line
+        href: parse-command-line-function.md
+      - name: parse_csv()
+        displayName: parse csv
+        href: parse-csv-function.md
+      - name: parse_ipv4()
+        displayName: parse ipv4
+        href: parse-ipv4-function.md
+      - name: parse_ipv4_mask()
+        displayName: parse ipv4 mask
+        href: parse-ipv4-mask-function.md
+      - name: parse_ipv6()
+        displayName: parse ipv6
+        href: parse-ipv6-function.md
+      - name: parse_ipv6_mask()
+        displayName: parse ipv6 mask
+        href: parse-ipv6-mask-function.md
+      - name: parse_json()
+        displayName: parse json toobject(), parsejson(), todynamic()
+        href: parse-json-function.md
+      - name: parse_path()
+        displayName: parse path
+        href: parse-path-function.md
+      - name: parse_url()
+        displayName: parse url parseurl()
+        href: parse-url-function.md
+      - name: parse_urlquery()
+        displayName: parse url query parseurlquery()
+        href: parse-url-query-function.md
+      - name: parse_user_agent()
+        displayName: parse user agent
+        href: parse-user-agent-function.md
+      - name: parse_version()
+        displayName: parse version
+        href: parse-version-function.md
+      - name: parse_xml()
+        displayName: parse xml
+        href: parse-xml-function.md
+      - name: percentile_tdigest()
+        displayName: percentile tdigest()
+        href: percentile-tdigest-function.md
+      - name: percentile_array_tdigest()
+        displayName: percentile array tdigest()
+        href: percentile-array-tdigest-function.md
+      - name: percentrank_tdigest()
+        displayName: percentrank tdigest()
+        href: percentrank-tdigest-function.md
+      - name: pi()
+        href: pi-function.md
+      - name: pow()
+        href: pow-function.md
+      - name: punycode_from_string()
+        displayName: punycode from string
+        href: punycode-from-string-function.md
+      - name: punycode_to_string()
+        displayName: punycode to string
+        href: punycode-to-string-function.md
+      - name: punycode_domain_from_string()
+        displayName: punycode domain from string
+        href: punycode-domain-from-string-function.md
+      - name: punycode_domain_to_string()
+        displayName: punycode domain to string
+        href: punycode-domain-to-string-function.md
+      - name: radians()
+        href: radians-function.md
+      - name: rand()
+        href: rand-function.md
+      - name: range()
+        href: range-function.md
+      - name: rank_tdigest()
+        displayName: rank tdigest()
+        href: rank-tdigest-function.md
+      - name: regex_quote()
+        displayName: regex quote
+        href: regex-quote-function.md
+      - name: repeat()
+        href: repeat-function.md
+      - name: replace_regex()
+        displayName: replace regex
+        href: replace-regex-function.md
+      - name: replace_string()
+        displayName: replace string
+        href: replace-string-function.md
+      - name: replace_strings()
+        displayName: replace strings
+        href: replace-strings-function.md
+      - name: reverse()
+        href: reverse-function.md
+      - name: round()
+        href: round-function.md
+      - name: set_difference()
+        displayName: set difference
+        href: set-difference-function.md
+      - name: set_has_element()
+        displayName: set has element
+        href: set-has-element-function.md
+      - name: set_intersect()
+        displayName: set intersect
+        href: set-intersect-function.md
+      - name: set_union()
+        displayName: set union
+        href: set-union-function.md
+      - name: sign()
+        href: sign-function.md
+      - name: sin()
+        href: sin-function.md
+      - name: split()
+        href: split-function.md
+      - name: sqrt()
+        href: sqrt-function.md
+      - name: startofday()
+        displayName: start of day
+        href: startofday-function.md
+      - name: startofmonth()
+        displayName: start of month
+        href: startofmonth-function.md
+      - name: startofweek()
+        displayName: start of week
+        href: startofweek-function.md
+      - name: startofyear()
+        displayName: start of year
+        href: startofyear-function.md
+      - name: strcat()
+        displayName: string concat
+        href: strcat-function.md
+      - name: strcat_array()
+        displayName: string concat array
+        href: strcat-array-function.md
+      - name: strcat_delim()
+        displayName: string concat delim
+        href: strcat-delim-function.md
+      - name: strcmp()
+        displayName: string compare
+        href: strcmp-function.md
+      - name: string_size()
+        displayName: string size
+        href: string-size-function.md
+      - name: strlen()
+        displayName: string length
+        href: strlen-function.md
+      - name: strrep()
+        displayName: string replace
+        href: strrep-function.md
+      - name: substring()
+        displayName: string substring
+        href: substring-function.md
+      - name: tan()
+        href: tan-function.md
+      - name: tobool()
+        displayName: to boolean toboolean
+        href: tobool-function.md
+      - name: todatetime()
+        displayName: to datetime todatetime
+        href: todatetime-function.md
+      - name: todecimal()
+        displayName: to decimal todecimal
+        href: todecimal-function.md
+      - name: todouble()
+        displayName: to double todouble toreal()
+        href: todouble-function.md
+      - name: toguid()
+        displayName: to guid toguid
+        href: toguid-function.md
+      - name: tohex()
+        displayName: to hex tohex
+        href: tohex-function.md
+      - name: toint()
+        displayName: to int toint integer
+        href: toint-function.md
+      - name: tolong()
+        displayName: to long tolong
+        href: tolong-function.md
+      - name: tolower()
+        displayName: to lower tolower
+        href: tolower-function.md
+      - name: tostring()
+        displayName: to string tostring
+        href: tostring-function.md
+      - name: totimespan()
+        displayName: to timespan totime()
+        href: totimespan-function.md
+      - name: toupper()
+        displayName: to upper toupper
+        href: toupper-function.md
+      - name: translate()
+        href: translate-function.md
+      - name: treepath()
+        href: treepath-function.md
+      - name: trim()
+        href: trim-function.md
+      - name: trim_end()
+        displayName: trim end
+        href: trim-end-function.md
+      - name: trim_start()
+        displayName: trim start
+        href: trim-start-function.md
+      - name: unicode_codepoints_from_string()
+        displayName: to_utf8() unicode codepoints from string
+        href: unicode-codepoints-from-string-function.md
+      - name: unicode_codepoints_to_string()
+        displayName: unicode codepoints to string make_string()
+        href: unicode-codepoints-to-string-function.md
+      - name: unixtime_microseconds_todatetime()
+        displayName: unixtime microseconds to datetime
+        href: unixtime-microseconds-todatetime-function.md
+      - name: unixtime_milliseconds_todatetime()
+        displayName: unixtime milliseconds to datetime
+        href: unixtime-milliseconds-todatetime-function.md
+      - name: unixtime_nanoseconds_todatetime()
+        displayName: unixtime nanoseconds to datetime
+        href: unixtime-nanoseconds-todatetime-function.md
+      - name: unixtime_seconds_todatetime()
+        displayName: unixtime seconds to datetime
+        href: unixtime-seconds-todatetime-function.md
+      - name: url_decode()
+        displayName: url decode
+        href: url-decode-function.md
+      - name: url_encode()
+        displayName: url encode
+        href: url-encode-function.md
+      - name: url_encode_component()
+        displayName: url encode component
+        href: url-encode-component-function.md
+      - name: week_of_year()
+        displayName: week of year weekofyear()
+        href: week-of-year-function.md
+      - name: welch_test()
+        displayName: welch test
+        href: welch-test-function.md
+      - name: zip()
+        href: zip-function.md
+      - name: zlib_compress_to_base64_string()
+        displayName: zlib compress to base64 string
+        href: zlib-base64-compress-function.md
+      - name: zlib_decompress_from_base64_string()
+        displayName: zlib decompress from base64 string
+        href: zlib-base64-decompress-function.md
+  - name: Aggregation functions
+    displayName: aggregation
     items:
-    - name: autocluster plugin
-      displayName: clustering, diagnostics, RCA, root cause
-      href: autoclusterplugin.md
-    - name: basket plugin
-      displayName: clustering, diagnostics, RCA, root cause
-      href: basketplugin.md
-    - name: diffpatterns plugin
-      displayName: clustering, diagnostics, RCA, root cause
-      href: diffpatternsplugin.md
-    - name: diffpatterns_text plugin
-      displayName: clustering, diagnostics, RCA, root cause
-      href: diffpatterns-textplugin.md
-  - name: Query connectivity plugins
+      - name: Aggregation function types
+        href: aggregation-functions.md
+      - name: arg_max()
+        displayName: argmax()
+        href: arg-max-aggregation-function.md
+      - name: arg_min()
+        displayName: argmin()
+        href: arg-min-aggregation-function.md
+      - name: avg()
+        href: avg-aggfunction.md
+      - name: avgif()
+        href: avgif-aggregation-function.md
+      - name: binary_all_and
+        href: binary-all-and-aggregation-function.md
+      - name: binary_all_or
+        href: binary-all-or-aggregation-function.md
+      - name: binary_all_xor
+        href: binary-all-xor-aggregation-function.md
+      - name: buildschema()
+        href: buildschema-aggregation-function.md
+      - name: count()
+        displayName: cnt()
+        href: count-aggfunction.md
+      - name: count_distinct()
+        href: count-distinct-aggregation-function.md
+      - name: count_distinctif()
+        href: count-distinctif-aggregation-function.md
+      - name: countif()
+        displayName: count(predicate)
+        href: countif-aggfunction.md
+      - name: dcount()
+        href: dcount-aggfunction.md
+      - name: dcountif()
+        href: dcountif-aggregation-function.md
+      - name: hll()
+        href: hll-aggregation-function.md
+      - name: hll_if()
+        href: hll-if-aggregation-function.md
+      - name: hll_merge()
+        href: hll-merge-aggregation-function.md
+      - name: make_bag()
+        href: make-bag-aggregation-function.md
+      - name: make_bag_if()
+        href: make-bag-if-aggregation-function.md
+      - name: make_list()
+        displayName: makelist()
+        href: make-list-aggregation-function.md
+      - name: make_list_if()
+        href: make-list-if-aggregation-function.md
+      - name: make_list_with_nulls()
+        href: make-list-with-nulls-aggregation-function.md
+      - name: make_set()
+        displayName: makeset()
+        href: make-set-aggregation-function.md
+      - name: make_set_if()
+        href: make-set-if-aggregation-function.md
+      - name: max()
+        href: max-aggregation-function.md
+      - name: maxif()
+        href: maxif-aggregation-function.md
+      - name: min()
+        href: min-aggregation-function.md
+      - name: minif()
+        href: minif-aggregation-function.md
+      - name: percentile(), percentiles()
+        displayName: percentiles_array()
+        href: percentiles-aggregation-function.md
+      - name: percentilew(), percentilesw()
+        displayName: percentilesw_array(), weighted percentiles
+        href: percentilesw-aggregation-function.md
+      - name: stdev()
+        href: stdev-aggregation-function.md
+      - name: stdevif()
+        href: stdevif-aggregation-function.md
+      - name: stdevp()
+        href: stdevp-aggregation-function.md
+      - name: sum()
+        href: sum-aggregation-function.md
+      - name: sumif()
+        href: sumif-aggregation-function.md
+      - name: take_any()
+        displayName: any()
+        href: take-any-aggregation-function.md
+      - name: take_anyif()
+        displayName: anyif()
+        href: take-anyif-aggregation-function.md
+      - name: tdigest()
+        href: tdigest-aggregation-function.md
+      - name: tdigest_merge(), merge_tdigest()
+        href: tdigest-merge-aggregation-function.md
+      - name: variance()
+        href: variance-aggregation-function.md
+      - name: varianceif()
+        href: varianceif-aggregation-function.md
+      - name: variancep()
+        href: variancep-aggregation-function.md
+  - name: Graph operators
     items:
-    - name: azure_digital_twins_query_request plugin
-      href: azure-digital-twins-query-request-plugin.md
-    - name: cosmosdb_sql_request plugin
-      href: cosmosdb-plugin.md
-    - name: http_request plugin
-      href: http-request-plugin.md
-    - name: http_request_post plugin
-      href: http-request-post-plugin.md
-    - name: mysql_request plugin
-      href: mysqlrequest-plugin.md
-    - name: postgresql_request plugin
-      href: postgresql-request-plugin.md
-    - name: sql_request plugin
-      href: sqlrequestplugin.md
-  - name: User and sequence analytics plugins
+      - name: Graph operators overview
+        href: graph-operators.md
+      - name: make-graph
+        href: make-graph-operator.md
+      - name: graph-match
+        href: graph-match-operator.md
+      - name: graph-merge
+        href: graph-merge-operator.md
+      - name: graph-to-table
+        href: graph-to-table-operator.md
+  - name: Geospatial
     items:
-    - name: User analytics plugins overview
-      href: useranalytics.md
-    - name: active_users_count plugin
-      href: active-users-count-plugin.md
-    - name: activity_counts_metrics plugin
-      href: activity-counts-metrics-plugin.md
-    - name: activity_engagement plugin
-      href: activity-engagement-plugin.md
-    - name: activity_metrics plugin
-      href: activity-metrics-plugin.md
-    - name: new_activity_metrics plugin
-      href: new-activity-metrics-plugin.md
-    - name: funnel_sequence_completion plugin
-      href: funnel-sequence-completion-plugin.md
-    - name: funnel_sequence plugin
-      href: funnel-sequence-plugin.md
-    - name: rolling_percentile plugin
-      href: rolling-percentile-plugin.md
-    - name: rows_near plugin
-      href: rows-near-plugin.md  
-    - name: sequence_detect plugin
-      href: sequence-detect-plugin.md
-    - name: session_count plugin
-      href: session-count-plugin.md
-    - name: sliding_window_counts plugin
-      href: sliding-window-counts-plugin.md
-- name: Window functions
-  items:
-  - name: Window functions overview
-    href: windowsfunctions.md
-  - name: next()
-    href: nextfunction.md
-  - name: prev()
-    href: prevfunction.md
-  - name: row_cumsum()
-    href: rowcumsumfunction.md
-  - name: row_number()
-    href: rownumberfunction.md
-  - name: row_rank_dense()
-    href: rowrankdensefunction.md
-  - name: row_rank_min()
-    href: rowrankminfunction.md
-  - name: row_window_session()
-    href: row-window-session-function.md
-- name: Limits and Errors
-  items:
-  - name: Query consistency
-    href: ../concepts/queryconsistency.md
-  - name: Query limits
-    href: ../concepts/querylimits.md
-  - name: Partial query failures
-    href: ../concepts/partialqueryfailures.md
+      - name: Geospatial clustering overview
+        displayName: H3, S2, Geohash
+        href: geospatial-grid-systems.md
+      - name: Geospatial visualizations
+        href: geospatial-visualizations.md
+      - name: geo_distance_2points()
+        href: geo-distance-2points-function.md
+      - name: geo_distance_point_to_line()
+        href: geo-distance-point-to-line-function.md
+      - name: geo_distance_point_to_polygon()
+        href: geo-distance-point-to-polygon-function.md
+      - name: geo_intersects_2lines()
+        href: geo-intersects-2lines-function.md
+      - name: geo_intersects_2polygons()
+        href: geo-intersects-2polygons-function.md
+      - name: geo_intersects_line_with_polygon()
+        href: geo-intersects-line-with-polygon-function.md
+      - name: geo_intersection_2lines()
+        href: geo-intersection-2lines-function.md
+      - name: geo_intersection_2polygons()
+        href: geo-intersection-2polygons-function.md
+      - name: geo_intersection_line_with_polygon()
+        href: geo-intersection-line-with-polygon-function.md
+      - name: geo_line_buffer()
+        href: geo-line-buffer-function.md
+      - name: geo_line_centroid()
+        href: geo-line-centroid-function.md
+      - name: geo_line_densify()
+        href: geo-line-densify-function.md
+      - name: geo_line_length()
+        href: geo-line-length-function.md
+      - name: geo_line_simplify()
+        href: geo-line-simplify-function.md
+      - name: geo_line_to_s2cells()
+        href: geo-line-to-s2cells-function.md
+      - name: geo_polygon_area()
+        href: geo-polygon-area-function.md
+      - name: geo_polygon_buffer()
+        href: geo-polygon-buffer-function.md
+      - name: geo_polygon_centroid()
+        href: geo-polygon-centroid-function.md
+      - name: geo_polygon_densify()
+        href: geo-polygon-densify-function.md
+      - name: geo_polygon_perimeter()
+        href: geo-polygon-perimeter-function.md
+      - name: geo_polygon_simplify()
+        href: geo-polygon-simplify-function.md
+      - name: geo_polygon_to_s2cells()
+        href: geo-polygon-to-s2cells-function.md
+      - name: geo_point_buffer()
+        href: geo-point-buffer-function.md
+      - name: geo_point_in_circle()
+        href: geo-point-in-circle-function.md
+      - name: geo_point_in_polygon()
+        href: geo-point-in-polygon-function.md
+      - name: geo_point_to_geohash()
+        href: geo-point-to-geohash-function.md
+      - name: geo_point_to_h3cell()
+        href: geo-point-to-h3cell-function.md
+      - name: geo_point_to_s2cell()
+        href: geo-point-to-s2cell-function.md
+      - name: geo_geohash_to_central_point()
+        href: geo-geohash-to-central-point-function.md
+      - name: geo_geohash_neighbors()
+        href: geo-geohash-neighbors-function.md
+      - name: geo_geohash_to_polygon()
+        href: geo-geohash-to-polygon-function.md
+      - name: geo_s2cell_to_central_point()
+        href: geo-s2cell-to-central-point-function.md
+      - name: geo_s2cell_neighbors()
+        href: geo-s2cell-neighbors-function.md
+      - name: geo_s2cell_to_polygon()
+        href: geo-s2cell-to-polygon-function.md
+      - name: geo_h3cell_to_central_point()
+        href: geo-h3cell-to-central-point-function.md
+      - name: geo_h3cell_neighbors()
+        href: geo-h3cell-neighbors-function.md
+      - name: geo_h3cell_to_polygon()
+        href: geo-h3cell-to-polygon-function.md
+      - name: geo_h3cell_parent()
+        href: geo-h3cell-parent-function.md
+      - name: geo_h3cell_children()
+        href: geo-h3cell-children-function.md
+      - name: geo_h3cell_level()
+        href: geo-h3cell-level-function.md
+      - name: geo_h3cell_rings()
+        href: geo-h3cell-rings-function.md
+      - name: geo_simplify_polygons_array()
+        href: geo-simplify-polygons-array-function.md
+      - name: geo_union_lines_array()
+        href: geo-union-lines-array-function.md
+      - name: geo_union_polygons_array()
+        href: geo-union-polygons-array-function.md
+  - name: Time series analysis
     items:
-    - name: Result truncation
-      href: ../concepts/resulttruncation.md
-    - name: Runaway queries
-      href: ../concepts/runawayqueries.md
-    - name: Overflows
-      href: ../concepts/overflow.md
-- name: Reference material for Kusto Query Language
-  items:
-  - name: RE2 syntax
-    href: re2.md
-    displayName: RE2 library, regex, regular expressions
-  - name: JSONPath syntax
-    href: jsonpath.md
-  - name: SQL to Kusto cheat sheet
-    displayName: Kusto
-    href: sqlcheatsheet.md
-  - name: Splunk to Kusto cheat sheet
-    href: splunk-cheat-sheet.md
-  - name: Timezones
-    href: timezone.md
-- name: Query tools
-  items:
-  - name: Kusto.Explorer
+      - name: Example use cases
+        items:
+          - name: Time series analysis
+            href: time-series-analysis.md
+          - name: Anomaly detection and forecasting
+            href: anomaly-detection.md
+          - name: Machine learning
+            href: machine-learning-clustering.md
+      - name: make-series operator
+        href: make-series-operator.md
+      - name: series_abs()
+        displayName: element-wise, elementwise
+        href: series-abs-function.md
+      - name: series_acos()
+        displayName: element-wise, elementwise
+        href: series-acos-function.md
+      - name: series_add()
+        displayName: element-wise, elementwise
+        href: series-add-function.md
+      - name: series_asin()
+        displayName: element-wise, elementwise
+        href: series-asin-function.md
+      - name: series_atan()
+        displayName: element-wise, elementwise
+        href: series-atan-function.md
+      - name: series_ceiling()
+        displayName: element-wise, elementwise
+        href: series-ceiling-function.md
+      - name: series_cos()
+        displayName: element-wise, elementwise
+        href: series-cos-function.md
+      - name: series_cosine_similarity()
+        displayName: element-wise, elementwise, embedding, vector, cosine, similarity
+        href: series-cosine-similarity-function.md
+      - name: series_decompose()
+        displayName: seasonal, trend, baseline
+        href: series-decompose-function.md
+      - name: series_decompose_anomalies()
+        displayName: seasonal, trend, baseline
+        href: series-decompose-anomalies-function.md
+      - name: series_decompose_forecast()
+        displayName: seasonal, trend, baseline
+        href: series-decompose-forecast-function.md
+      - name: series_divide()
+        displayName: element-wise, elementwise
+        href: series-divide-function.md
+      - name: series_dot_product()
+        displayName: element-wise, elementwise
+        href: series-dot-product-function.md
+      - name: series_equals()
+        displayName: element-wise, elementwise
+        href: series-equals-function.md
+      - name: series_exp()
+        displayName: element-wise, elementwise
+        href: series-exp-function.md
+      - name: series_fft()
+        displayName: spectral, frequency, seasonality, transform, Fourier
+        href: series-fft-function.md
+      - name: series_fill_backward()
+        displayName: missing values
+        href: series-fill-backward-function.md
+      - name: series_fill_const()
+        displayName: missing values
+        href: series-fill-const-function.md
+      - name: series_fill_forward()
+        displayName: missing values
+        href: series-fill-forward-function.md
+      - name: series_fill_linear()
+        displayName: missing values
+        href: series-fill-linear-function.md
+      - name: series_fir()
+        displayName: filter, finite impulse response
+        href: series-fir-function.md
+      - name: series_fit_2lines()
+        displayName: regression
+        href: series-fit-2lines-function.md
+      - name: series_fit_2lines_dynamic()
+        displayName: regression
+        href: series-fit-2lines-dynamic-function.md
+      - name: series_fit_line()
+        displayName: regression
+        href: series-fit-line-function.md
+      - name: series_fit_line_dynamic()
+        displayName: regression
+        href: series-fit-line-dynamic-function.md
+      - name: series_fit_poly()
+        displayName: regression, polynomial
+        href: series-fit-poly-function.md
+      - name: series_floor()
+        displayName: element-wise, elementwise
+        href: series-floor-function.md
+      - name: series_greater()
+        displayName: element-wise, elementwise
+        href: series-greater-function.md
+      - name: series_greater_equals()
+        displayName: element-wise, elementwise
+        href: series-greater-equals-function.md
+      - name: series_ifft()
+        displayName: spectral, frequency, seasonality, transform, Fourier
+        href: series-ifft-function.md
+      - name: series_iir()
+        displayName: filter, infinite impulse response
+        href: series-iir-function.md
+      - name: series_less()
+        displayName: element-wise, elementwise
+        href: series-less-function.md
+      - name: series_less_equals()
+        displayName: element-wise, elementwise
+        href: series-less-equals-function.md
+      - name: series_log()
+        displayName: element-wise, elementwise
+        href: series-log-function.md
+      - name: series_magnitude()
+        displayName: element-wise, elementwise, vector
+        href: series-magnitude-function.md
+      - name: series_multiply()
+        displayName: element-wise, elementwise
+        href: series-multiply-function.md
+      - name: series_not_equals()
+        displayName: element-wise, elementwise
+        href: series-not-equals-function.md
+      - name: series_outliers()
+        displayName: anomaly detection, Tukey
+        href: series-outliers-function.md
+      - name: series_pearson_correlation()
+        href: series-pearson-correlation-function.md
+      - name: series_periods_detect()
+        displayName: spectral, fft, frequency, seasonality
+        href: series-periods-detect-function.md
+      - name: series_periods_validate()
+        displayName: spectral, fft, frequency, seasonality
+        href: series-periods-validate-function.md
+      - name: series_pow()
+        displayName: element-wise, elementwise
+        href: series-pow-function.md
+      - name: series_seasonal()
+        displayName: periods
+        href: series-seasonal-function.md
+      - name: series_sign()
+        displayName: element-wise, elementwise
+        href: series-sign-function.md
+      - name: series_sin()
+        displayName: element-wise, elementwise
+        href: series-sin-function.md
+      - name: series_stats()
+        displayName: statistics, average, standard deviation, variance
+        href: series-stats-function.md
+      - name: series_stats_dynamic()
+        displayName: statistics, average, standard deviation, variance
+        href: series-stats-dynamic-function.md
+      - name: series_subtract()
+        displayName: element-wise, elementwise
+        href: series-subtract-function.md
+      - name: series_sum()
+        displayName: element-wise, elementwise
+        href: series-sum-function.md
+      - name: series_tan()
+        displayName: element-wise, elementwise
+        href: series-tan-function.md
+  - name: Plugins
     items:
-    - name: Kusto.Explorer installation and user interface
-      href: ../tools/kusto-explorer.md
-    - name: Using Kusto.Explorer
-      href: ../tools/kusto-explorer-using.md
-    - name: Kusto.Explorer options
-      href: ../tools/kusto-explorer-options.md
-    - name: Keyboard shortcuts
-      href: ../tools/kusto-explorer-shortcuts.md
-    - name: Kusto.Explorer code features
-      displayName: Code Refactoring, Code Navigation, Code Analyzer
-      href: ../tools/kusto-explorer-code-features.md
-    - name: Troubleshooting Kusto.Explorer
-      href: ../tools/kusto-explorer-troubleshooting.md
-  - name: Kusto.Cli
-    href: ../tools/kusto-cli.md
-  - name: Kusto extension for Azure Data Studio >>
-    href: /sql/azure-data-studio/extensions/kusto-extension
+      - name: General plugins
+        items:
+          - name: dcount_intersect plugin
+            href: dcount-intersect-plugin.md
+          - name: infer_storage_schema plugin
+            href: infer-storage-schema-plugin.md
+          - name: ipv4_lookup plugin
+            href: ipv4-lookup-plugin.md
+          - name: preview plugin
+            href: preview-plugin.md
+          - name: schema_merge plugin
+            href: schema-merge-plugin.md
+      - name: Data reshaping plugins
+        items:
+          - name: bag_unpack plugin
+            href: bag-unpack-plugin.md
+          - name: narrow plugin
+            href: narrow-plugin.md
+          - name: pivot plugin
+            href: pivot-plugin.md
+      - name: Language plugins
+        items:
+          - name: Python plugin
+            href: python-plugin.md
+          - name: R plugin
+            href: r-plugin.md
+      - name: Machine learning plugins
+        items:
+          - name: autocluster plugin
+            displayName: clustering, diagnostics, RCA, root cause
+            href: autocluster-plugin.md
+          - name: basket plugin
+            displayName: clustering, diagnostics, RCA, root cause
+            href: basket-plugin.md
+          - name: diffpatterns plugin
+            displayName: clustering, diagnostics, RCA, root cause
+            href: diffpatterns-plugin.md
+          - name: diffpatterns_text plugin
+            displayName: clustering, diagnostics, RCA, root cause
+            href: diffpatterns-text-plugin.md
+      - name: Query connectivity plugins
+        items:
+          - name: azure_digital_twins_query_request plugin
+            href: azure-digital-twins-query-request-plugin.md
+          - name: cosmosdb_sql_request plugin
+            href: cosmosdb-plugin.md
+          - name: http_request plugin
+            href: http-request-plugin.md
+          - name: http_request_post plugin
+            href: http-request-post-plugin.md
+          - name: mysql_request plugin
+            href: mysql-request-plugin.md
+          - name: postgresql_request plugin
+            href: postgresql-request-plugin.md
+          - name: sql_request plugin
+            href: sql-request-plugin.md
+      - name: User and sequence analytics plugins
+        items:
+          - name: User analytics plugins overview
+            href: user-analytics.md
+          - name: active_users_count plugin
+            href: active-users-count-plugin.md
+          - name: activity_counts_metrics plugin
+            href: activity-counts-metrics-plugin.md
+          - name: activity_engagement plugin
+            href: activity-engagement-plugin.md
+          - name: activity_metrics plugin
+            href: activity-metrics-plugin.md
+          - name: new_activity_metrics plugin
+            href: new-activity-metrics-plugin.md
+          - name: funnel_sequence_completion plugin
+            href: funnel-sequence-completion-plugin.md
+          - name: funnel_sequence plugin
+            href: funnel-sequence-plugin.md
+          - name: rolling_percentile plugin
+            href: rolling-percentile-plugin.md
+          - name: rows_near plugin
+            href: rows-near-plugin.md
+          - name: sequence_detect plugin
+            href: sequence-detect-plugin.md
+          - name: session_count plugin
+            href: session-count-plugin.md
+          - name: sliding_window_counts plugin
+            href: sliding-window-counts-plugin.md
+  - name: Window functions
+    items:
+      - name: Window functions overview
+        href: window-functions.md
+      - name: next()
+        href: next-function.md
+      - name: prev()
+        href: prev-function.md
+      - name: row_cumsum()
+        href: row-cumsum-function.md
+      - name: row_number()
+        href: row-number-function.md
+      - name: row_rank_dense()
+        href: row-rank-dense-function.md
+      - name: row_rank_min()
+        href: row-rank-min-function.md
+      - name: row_window_session()
+        href: row-window-session-function.md
+  - name: Limits and Errors
+    items:
+      - name: Query consistency
+        href: ../concepts/queryconsistency.md
+      - name: Query limits
+        href: ../concepts/querylimits.md
+      - name: Partial query failures
+        href: ../concepts/partialqueryfailures.md
+        items:
+          - name: Result truncation
+            href: ../concepts/resulttruncation.md
+          - name: Runaway queries
+            href: ../concepts/runawayqueries.md
+          - name: Overflows
+            href: ../concepts/overflow.md
+  - name: Reference material for Kusto Query Language
+    items:
+      - name: RE2 syntax
+        href: re2.md
+        displayName: RE2 library, regex, regular expressions
+      - name: JSONPath syntax
+        href: jsonpath.md
+      - name: SQL to Kusto cheat sheet
+        displayName: Kusto
+        href: sql-cheat-sheet.md
+      - name: Splunk to Kusto cheat sheet
+        href: splunk-cheat-sheet.md
+      - name: Timezones
+        href: timezone.md
+  - name: Query tools
+    items:
+      - name: Kusto.Explorer
+        items:
+          - name: Kusto.Explorer installation and user interface
+            href: ../tools/kusto-explorer.md
+          - name: Using Kusto.Explorer
+            href: ../tools/kusto-explorer-using.md
+          - name: Kusto.Explorer options
+            href: ../tools/kusto-explorer-options.md
+          - name: Keyboard shortcuts
+            href: ../tools/kusto-explorer-shortcuts.md
+          - name: Kusto.Explorer code features
+            displayName: Code Refactoring, Code Navigation, Code Analyzer
+            href: ../tools/kusto-explorer-code-features.md
+          - name: Troubleshooting Kusto.Explorer
+            href: ../tools/kusto-explorer-troubleshooting.md
+      - name: Kusto.Cli
+        href: ../tools/kusto-cli.md
+      - name: Kusto extension for Azure Data Studio >>
+        href: /sql/azure-data-studio/extensions/kusto-extension

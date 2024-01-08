@@ -27,12 +27,12 @@ Here's the output:
 |-----|
 |59066|
 
-For more information, see [count operator](./countoperator.md).
+For more information, see [count operator](./count-operator.md).
 
 ## Select a subset of columns: *project*
 
-Use [project](./projectoperator.md) to pick out only the columns you want. See the following example, which uses both the [project](./projectoperator.md)
-and the [take](./takeoperator.md) operators.
+Use [project](./project-operator.md) to pick out only the columns you want. See the following example, which uses both the [project](./project-operator.md)
+and the [take](./take-operator.md) operators.
 
 ## Filter by Boolean expression: *where*
 
@@ -73,7 +73,7 @@ Here's the output:
 |2007-12-20 07:50:00.0000000|2007-12-20 07:53:00.0000000|Thunderstorm Wind|MISSISSIPPI|Numerous large trees were blown down with some down on power lines. Damage occurred in eastern Adams county.|
 |2007-12-30 16:00:00.0000000|2007-12-30 16:05:00.0000000|Thunderstorm Wind|GEORGIA|The county dispatch reported several trees were blown down along Quincey Batten Loop near State Road 206. The cost of tree removal was estimated.|
 
-But [take](./takeoperator.md) shows rows from the table in no particular order, so let's sort them. ([limit](./takeoperator.md) is an alias for [take](./takeoperator.md) and has the same effect.)
+But [take](./take-operator.md) shows rows from the table in no particular order, so let's sort them. ([limit](./take-operator.md) is an alias for [take](./take-operator.md) and has the same effect.)
 
 ## Order results: *sort*, *top*
 
@@ -99,7 +99,7 @@ Here's the output:
 |2007-12-31 23:53:00.0000000|2007-12-31 23:53:00.0000000|High Wind|CALIFORNIA|North to northeast winds gusting to around 58 mph were reported in the mountains of Ventura county.|
 |2007-12-31 23:53:00.0000000|2007-12-31 23:53:00.0000000|High Wind|CALIFORNIA|The Warm Springs RAWS sensor reported northerly winds gusting to 58 mph.|
 
-You can achieve the same result by using  either [sort](./sort-operator.md), and then [take](./takeoperator.md):
+You can achieve the same result by using  either [sort](./sort-operator.md), and then [take](./take-operator.md):
 
 <!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
@@ -160,9 +160,9 @@ StormEvents
 | summarize event_count = count() by State
 ```
 
-[summarize](./summarizeoperator.md) groups together rows that have the same values in the `by` clause, and then uses an aggregation function (for example, `count`) to combine each group in a single row. In this case, there's a row for each state and a column for the count of rows in that state.
+[summarize](./summarize-operator.md) groups together rows that have the same values in the `by` clause, and then uses an aggregation function (for example, `count`) to combine each group in a single row. In this case, there's a row for each state and a column for the count of rows in that state.
 
-A range of [aggregation functions](aggregation-functions.md) are available. You can use several aggregation functions in one `summarize` operator to produce several computed columns. For example, we could get the count of storms per state, and the sum of unique types of storm per state. Then, we could use [top](./topoperator.md) to get the most storm-affected states:
+A range of [aggregation functions](aggregation-functions.md) are available. You can use several aggregation functions in one `summarize` operator to produce several computed columns. For example, we could get the count of storms per state, and the sum of unique types of storm per state. Then, we could use [top](./top-operator.md) to get the most storm-affected states:
 
 <!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
@@ -189,7 +189,7 @@ In the results of a `summarize` operator:
 
 ## Summarize by scalar values
 
-You can use scalar (numeric, time, or interval) values in the `by` clause, but you'll want to put the values into bins by using the [bin()](./binfunction.md) function:
+You can use scalar (numeric, time, or interval) values in the `by` clause, but you'll want to put the values into bins by using the [bin()](./bin-function.md) function:
 
 <!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
@@ -210,7 +210,7 @@ The query reduces all the timestamps to intervals of one day:
 |2007-02-19 00:00:00.0000000|52|
 |2007-02-20 00:00:00.0000000|60|
 
-The [bin()](./binfunction.md) is the same as the floor() function in many languages. It simply reduces every value to the nearest multiple of the modulus that you supply, so that [summarize](./summarizeoperator.md) can assign the rows to groups.
+The [bin()](./bin-function.md) is the same as the floor() function in many languages. It simply reduces every value to the nearest multiple of the modulus that you supply, so that [summarize](./summarize-operator.md) can assign the rows to groups.
 
 <a name="displaychartortable"></a>
 
@@ -447,7 +447,7 @@ The query removes zero count entries:
 
 ## Assign a result to a variable: *let*
 
-Use [let](./letstatement.md) to separate out the parts of the query expression in the preceding `join` example. The results are unchanged:
+Use [let](./let-statement.md) to separate out the parts of the query expression in the preceding `join` example. The results are unchanged:
 
 <!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto

@@ -14,12 +14,12 @@ zone_pivot_groups: kql-flavors-all
 The function `series_fbprophet_forecast_fl()` is a [user-defined function (UDF)](../query/functions/user-defined-functions.md) that takes an expression containing a time series as input, and predicts the values of the last trailing points using the [Prophet algorithm](https://facebook.github.io/prophet/). The function returns both the forecasted points and their confidence intervals. This function is a Kusto Query Language (KQL) wrapper to Prophet() class, and exposes only the parameters that are mandatory for prediction. Feel free to modify your copy to support more parameters. such as holidays, change points, Fourier order, and so on.
 
 > [!NOTE]
-> Consider using the native function [series_decompose_forecast()](../query/series-decompose-forecastfunction.md). The native function is based on a simpler model, but is more scalable and runs faster.
+> Consider using the native function [series_decompose_forecast()](../query/series-decompose-forecast-function.md). The native function is based on a simpler model, but is more scalable and runs faster.
 
 [!INCLUDE [python-zone-pivot-fabric](../../includes/python-zone-pivot-fabric.md)]
 
 * Install the `fbprophet` package since it isn't included in the Python image. To install the package, do the following:
-  1. Follow the guidelines for [Installing packages for the Python plugin](../query/pythonplugin.md#install-packages-for-the-python-plugin).
+  1. Follow the guidelines for [Installing packages for the Python plugin](../query/python-plugin.md#install-packages-for-the-python-plugin).
      * To save time in the above guidelines, you can download the `fbprophet` zip file, containing the wheel files of `fbprophet` and its dependencies, from [https://artifcatswestus.blob.core.windows.net/public/fbprophet-0.7.1.zip](https://artifcatswestus.blob.core.windows.net/public/fbprophet-0.7.1.zip). Save this file to your allowlisted blob container.
   1. Create a SAS token with read access to your zip file. To create a SAS token, see [get the SAS for a blob container](/azure/vs-azure-tools-storage-explorer-blobs#get-the-sas-for-a-blob-container).
   1. In the [Example](#example), replace the URL reference in the `external_artifacts` parameter with your file path and its SAS token.
@@ -47,10 +47,10 @@ You can define the function by either embedding its code as a query-defined func
 
 ### [Query-defined](#tab/query-defined)
 
-Define the function using the following [let statement](../query/letstatement.md). No permissions are required.
+Define the function using the following [let statement](../query/let-statement.md). No permissions are required.
 
 > [!IMPORTANT]
-> A [let statement](../query/letstatement.md) can't run on its own. It must be followed by a [tabular expression statement](../query/tabularexpressionstatements.md). To run a working example of `series_fbprophet_forecast_fl()`, see [Example](#example).
+> A [let statement](../query/let-statement.md) can't run on its own. It must be followed by a [tabular expression statement](../query/tabular-expression-statements.md). To run a working example of `series_fbprophet_forecast_fl()`, see [Example](#example).
 
 ~~~kusto
 let series_fbprophet_forecast_fl=(tbl:(*), ts_series:string, y_series:string, y_pred_series:string, points:int=0, y_pred_low_series:string='', y_pred_high_series:string='')
@@ -165,7 +165,7 @@ series_fbprophet_forecast_fl(tbl:(*), ts_series:string, y_series:string, y_pred_
 
 ## Example
 
-The following example uses the [invoke operator](../query/invokeoperator.md) to run the function.
+The following example uses the [invoke operator](../query/invoke-operator.md) to run the function.
 
 ### [Query-defined](#tab/query-defined)
 

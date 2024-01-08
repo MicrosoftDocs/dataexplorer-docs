@@ -38,7 +38,7 @@ Use the following steps to create an [Azure Data Explorer output](/azure/stream-
 > [!NOTE]
 >
 > - All [Azure Stream Analytics](/azure/stream-analytics/stream-analytics-add-inputs) inputs are supported. The connector transforms the inputs to CSV format and then imports the data into the specified Azure Data Explorer table.
-> - Azure Data Explorer has an aggregation (batching) policy for data ingestion, designed to optimize the ingestion process. By default, the policy is configured to 5 minutes, 1000 items or 1 GB of data by default, so you may experience a latency. For information about configuring the aggregation options, see [batching policy](kusto/management/batchingpolicy.md).
+> - Azure Data Explorer has an aggregation (batching) policy for data ingestion, designed to optimize the ingestion process. By default, the policy is configured to 5 minutes, 1000 items or 1 GB of data by default, so you may experience a latency. For information about configuring the aggregation options, see [batching policy](kusto/management/batching-policy.md).
 
 ## [Azure portal](#tab/portal)
 

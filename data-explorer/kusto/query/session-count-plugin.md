@@ -7,7 +7,7 @@ ms.date: 04/11/2023
 ---
 # session_count plugin
 
-Calculates the session count based on the ID column over a timeline. The plugin is invoked with the [`evaluate`](evaluateoperator.md) operator.
+Calculates the session count based on the ID column over a timeline. The plugin is invoked with the [`evaluate`](evaluate-operator.md) operator.
 
 ## Syntax
 

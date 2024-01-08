@@ -148,4 +148,4 @@ Data
 
 ## Related content
 
-* [zip function](zipfunction.md)
+* [zip function](zip-function.md)
