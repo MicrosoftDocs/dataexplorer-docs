@@ -9,23 +9,16 @@ ms.date: 01/08/2024
 
 The `long` data type represents a signed, 64-bit wide, integer.
 
-## long literals
+## `long` literals
 
-To specify a `long` literal, use the following syntax:
+To specify a `long` literal, use one of the following syntax options:
 
-`long(`*value*`)`
-
-The following formats are supported for the *value* parameter:
-
-|Description|Example|
+|Value|Example|
 |--|--|
-|One more or digits, in which case the literal value is the decimal representation of these digits|`long(12)`|
-|The prefix `0x` followed by one or more hex digits (hexadecimal number)|`long(0xf)` is equivalent to `long(15)`|
+|One more or digits representing a whole number|`12`|
+|The prefix `0x` followed by one or more hex digits (hexadecimal number)|`0xf` is equivalent to `long(15)`|
 |A negative (`-`) sign followed by one or more digits|`long(-1)`|
-|`null` to represent a missing value|`long(null)`|
-
-> [!NOTE]
-> By default, whole numbers and hexadecimal numbers are `long` literals. For example, `123` and `0x123` are direct literals of type `long`. However, `-2` isn't considered a literal in this context. Instead, it's interpreted as the unary function `-` applied to the literal `2` of type long.
+|`long(null)` to indicate a missing value||
 
 ## Related content
 
