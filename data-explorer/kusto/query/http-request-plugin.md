@@ -17,7 +17,7 @@ The `http_request` plugin sends an HTTP GET request and converts the response in
 ## Prerequisites
 
 * Run `.enable plugin http_request` to [enable the plugin](../management/enable-plugin.md)
-* Set the URI to access as an allowed destination for `webapi` in the [Callout policy](../management/calloutpolicy.md)
+* Set the URI to access as an allowed destination for `webapi` in the [Callout policy](../management/callout-policy.md)
 
 ## Syntax
 

@@ -9,7 +9,7 @@ ms.date: 05/24/2023
 
 Returns a specified external table or all external tables in the database.
 
-This command is relevant to any external table of any type. For an overview of external tables, see [external tables](../query/schema-entities/externaltables.md).
+This command is relevant to any external table of any type. For an overview of external tables, see [external tables](../query/schema-entities/external-tables.md).
 
 ## Permissions
 

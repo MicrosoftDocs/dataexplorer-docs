@@ -30,7 +30,7 @@ Dimension tables:
 
 Dimension tables aren't regularly ingested with new data. Instead, the entire data content is updated at once, using operations such as [.set-or-replace](../management/data-ingestion/ingest-from-query.md), [.move extents](../management/move-extents.md), or [.rename tables](../management/rename-table-command.md).
 
-Sometimes, dimension tables might be derived from fact tables. This process can be done via an [update policy](../management/updatepolicy.md) on the fact table, with a query on the table that takes the last record for each entity.
+Sometimes, dimension tables might be derived from fact tables. This process can be done via an [update policy](../management/update-policy.md) on the fact table, with a query on the table that takes the last record for each entity.
 
 ## Differentiate fact and dimension tables
 
@@ -38,7 +38,7 @@ There are processes in Kusto that differentiate between fact tables and dimensio
 One of them is [continuous export](../management/data-export/continuous-data-export.md).
 
 These mechanisms are guaranteed to process data in fact tables precisely once. 
-They rely on the [database cursor](../management/databasecursor.md) mechanism.
+They rely on the [database cursor](../management/database-cursor.md) mechanism.
 
 For example, every execution of a continuous export job, exports all records that were ingested since the last update of the database cursor. Continuous export jobs must differentiate between fact tables and dimension tables. Fact tables only process newly ingested data, and dimension tables are used as lookups. As such, the entire table must be taken into account.
 

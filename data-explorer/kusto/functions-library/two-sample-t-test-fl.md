@@ -14,7 +14,7 @@ zone_pivot_groups: kql-flavors-all
 The function `two_sample_t_test_fl()` is a [user-defined function (UDF)](../query/functions/user-defined-functions.md) that performs the [Two-Sample T-Test](https://en.wikipedia.org/wiki/Student%27s_t-test#Independent_two-sample_t-test).
 
 > [!NOTE]
-> If the assumption is that the two datasets to be compared have different variances, we suggest using the native [welch_test()](../query/welch-testfunction.md).
+> If the assumption is that the two datasets to be compared have different variances, we suggest using the native [welch_test()](../query/welch-test-function.md).
 
 [!INCLUDE [python-zone-pivot-fabric](../../includes/python-zone-pivot-fabric.md)]
 
@@ -32,7 +32,7 @@ The function `two_sample_t_test_fl()` is a [user-defined function (UDF)](../quer
 | *data2* | string | &check; | The name of the column containing the second set of data to be used for the test.|
 | *test_statistic* | string | &check; | The name of the column to store test statistic value for the results.|
 | *p_value* | string | &check; | The name of the column to store p-value for the results.|
-| *equal_var* | bool | | If `true` (default), performs a standard independent 2 sample test that assumes equal population variances. If `false`, performs Welch’s t-test, which does not assume equal population variance. As mentioned above, consider using the native [welch_test()](../query/welch-testfunction.md).|
+| *equal_var* | bool | | If `true` (default), performs a standard independent 2 sample test that assumes equal population variances. If `false`, performs Welch’s t-test, which does not assume equal population variance. As mentioned above, consider using the native [welch_test()](../query/welch-test-function.md).|
 
 ## Function definition
 
@@ -40,10 +40,10 @@ You can define the function by either embedding its code as a query-defined func
 
 ### [Query-defined](#tab/query-defined)
 
-Define the function using the following [let statement](../query/letstatement.md). No permissions are required.
+Define the function using the following [let statement](../query/let-statement.md). No permissions are required.
 
 > [!IMPORTANT]
-> A [let statement](../query/letstatement.md) can't run on its own. It must be followed by a [tabular expression statement](../query/tabularexpressionstatements.md). To run a working example of `two_sample_t_test_fl()`, see [Example](#example).
+> A [let statement](../query/let-statement.md) can't run on its own. It must be followed by a [tabular expression statement](../query/tabular-expression-statements.md). To run a working example of `two_sample_t_test_fl()`, see [Example](#example).
 
 ```kusto
 let two_sample_t_test_fl = (tbl:(*), data1:string, data2:string, test_statistic:string, p_value:string, equal_var:bool=true)
@@ -108,7 +108,7 @@ two_sample_t_test_fl(tbl:(*), data1:string, data2:string, test_statistic:string,
 
 ## Example
 
-The following example uses the [invoke operator](../query/invokeoperator.md) to run the function.
+The following example uses the [invoke operator](../query/invoke-operator.md) to run the function.
 
 ### [Query-defined](#tab/query-defined)
 

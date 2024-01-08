@@ -8,7 +8,7 @@ ms.date: 12/18/2022
 
 # Geospatial visualizations
 
-Geospatial data can be visualized using the [render operator](renderoperator.md) in [Kusto Desktop Explorer](../tools/kusto-explorer-using.md) or the [Azure Data Explorer web UI](../../web-query-data.md). To download Kusto Desktop Explorer, see [Kusto.Explorer installation and user interface](../tools/kusto-explorer.md).
+Geospatial data can be visualized using the [render operator](render-operator.md) in [Kusto Desktop Explorer](../tools/kusto-explorer-using.md) or the [Azure Data Explorer web UI](../../web-query-data.md). To download Kusto Desktop Explorer, see [Kusto.Explorer installation and user interface](../tools/kusto-explorer.md).
 
 For more information about visualization options, see [Data visualization with Azure Data Explorer](../../viz-overview.md). For more information about geospatial clustering, see [Geospatial clustering](geospatial-grid-systems.md).
 
@@ -110,6 +110,6 @@ StormEvents
 ## Related content
 
 * [Geospatial clustering](geospatial-grid-systems.md)
-* [Render operator](renderoperator.md)
+* [Render operator](render-operator.md)
 * See a use case for geospatial clustering: [Data analytics for automotive test fleets](/azure/architecture/industries/automotive/automotive-telemetry-analytics)
 * Learn about Azure architecture for [geospatial data processing and analytics](/azure/architecture/example-scenario/data/geospatial-data-processing-analytics-azure)

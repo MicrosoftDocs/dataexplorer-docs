@@ -81,7 +81,7 @@ For a detailed example of this logic, see the [scan logic walkthrough](#scan-log
 
 ### Cumulative sum
 
-Calculate the cumulative sum for an input column. The result of this example is equivalent to using [row_cumsum()](rowcumsumfunction.md).
+Calculate the cumulative sum for an input column. The result of this example is equivalent to using [row_cumsum()](row-cumsum-function.md).
 
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA02NOwqAMBBE+5xiSkUQLWyUeBUJcf1ATCTZaAoPb7ByqmEej/HKroSExbsDLdihQ2A6cxcPglYWM2mjPKHQ8YhG8X7RlHrj7CqbEvfOG0QhkPOJoe3BPhLkiL8BmW+qjOv/OojyBSZSTeODAAAA" target="_blank">Run the query</a>

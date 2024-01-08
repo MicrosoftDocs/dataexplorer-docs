@@ -9,9 +9,9 @@ ms.date: 09/10/2023
 
 Creates a stored function, which is a reusable KQL query,  with the given name. The function definition is persisted with the database metadata.
 
-Functions can call other functions (recursiveness isn't supported). Besides, [`let`](../query/letstatement.md) statements are allowed as part of the *Function Body*. See [`let` statements](../query/letstatement.md).
+Functions can call other functions (recursiveness isn't supported). Besides, [`let`](../query/let-statement.md) statements are allowed as part of the *Function Body*. See [`let` statements](../query/let-statement.md).
 
-Rules for parameter types and CSL statements are the same as for [`let` statements](../query/letstatement.md).
+Rules for parameter types and CSL statements are the same as for [`let` statements](../query/let-statement.md).
 
 ## Permissions
 
@@ -40,7 +40,7 @@ You must have at least [Database User](access-control/role-based-access-control.
 |--|--|--|
 |`docstring`|string|A description of the function for UI purposes.|
 |`folder`|string|The name of a folder used for UI functions categorization.|
-|`view`|bool|Designates this function as a stored view. Stored views can participate in [search](../query/searchoperator.md) and [union *](../query/unionoperator.md) scenarios. For more information, see [Views](../query/schema-entities/views.md).|
+|`view`|bool|Designates this function as a stored view. Stored views can participate in [search](../query/search-operator.md) and [union *](../query/union-operator.md) scenarios. For more information, see [Views](../query/schema-entities/views.md).|
 |`skipvalidation`|bool|Determines whether or not to run validation logic on the function and fail the process if the function isn't valid. The default is `false`.|
 
 > [!TIP]

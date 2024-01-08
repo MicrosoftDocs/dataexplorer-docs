@@ -24,7 +24,7 @@ Calculates useful activity metrics for each time window compared/aggregated to *
 | *TimelineColumn* | string | &check; | The name of the column that represents the timeline. |
 | *Start* | datetime | &check; | The analysis start period. |
 | *End* | datetime | &check; | The analysis end period. |
-| *Step* | decimal, datetime, or timespan | &check; | The analysis window period. The value may also be a string of `week`, `month`, or `year`, in which case all periods would be [startofweek](startofweekfunction.md), [startofmonth](startofmonthfunction.md), or [startofyear](startofyearfunction.md). |
+| *Step* | decimal, datetime, or timespan | &check; | The analysis window period. The value may also be a string of `week`, `month`, or `year`, in which case all periods would be [startofweek](startofweek-function.md), [startofmonth](startofmonth-function.md), or [startofyear](startofyear-function.md). |
 |  *Dimensions* | string |   | Zero or more comma-separated dimensions columns that slice the activity metrics calculation. |
 
 ## Returns
