@@ -3,11 +3,13 @@ title:  The timespan data type
 description: This article describes The timespan data type in Azure Data Explorer.
 ms.reviewer: orspodek
 ms.topic: reference
-ms.date: 02/13/2020
+ms.date: 01/08/2024
 ---
 # The timespan data type
 
-The `timespan` (`time`) data type represents a  time interval.
+The `timespan` data type represents a time interval.
+
+> The `timespan` and `time` data types are equivalent.
 
 ## timespan literals
 
@@ -54,3 +56,7 @@ print
     seconds = 86400
 | extend t = seconds * 1s
 ```
+
+## Related content
+
+* [totimespan()](../../query/totimespanfunction.md)
