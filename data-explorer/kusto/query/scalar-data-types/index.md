@@ -24,7 +24,7 @@ The following data types are supported:
 
 | Type | Description |
 |--|--|
-| [bool](bool.md) (`boolean`) | A value of `true` (1), `false` (0), or null. |
+| [bool](bool.md) (`boolean`) | `true` (`1`), `false` (`0`), or null. |
 | [datetime](datetime.md) (`date`) | An instant in time, typically expressed as a date and time of day. |
 | [dynamic](dynamic.md) | An array, a property bag, null, or a value of any of the other scalar data types.|
 | [guid](guid.md) | A 128-bit globally-unique value. |
