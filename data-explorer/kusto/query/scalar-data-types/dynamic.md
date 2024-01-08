@@ -29,25 +29,21 @@ The `dynamic` scalar data type can be any of the following values:
 >   possible for two property bags with the same set of mappings to yield different
 >   results when they are represented as `string` values, for example.
 
-## Dynamic literals
+## `dynamic` literals
 
-A literal of type `dynamic` looks like this:
+To specify a `dynamic` literal, use the following syntax:
 
-`dynamic(` *Value* `)`
+`dynamic(`*value*`)`
 
-*Value* can be:
+The following formats are supported for the *value* parameter:
 
-* `null`, in which case the literal represents the null dynamic value:
-  `dynamic(null)`.
-* Another scalar data type literal, in which case the literal represents the
-  `dynamic` literal of the "inner" type. For example, `dynamic(4)` is
-  a dynamic value holding the value 4 of the long scalar data type.
-* An array of dynamic or other literals: `[` *ListOfValues* `]`. For example,
-  `dynamic([1, 2, "hello"])` is a dynamic array of three elements, two `long` values
-  and one `string` value.
-* A property bag: `{` *Name* `=` *Value* ... `}`. For example, `dynamic({"a":1, "b":{"a":2}})`
-  is a property bag with two slots, `a`, and `b`, with the second slot being
-  another property bag.
+|Description|Example|
+|--|--|
+|An array of dynamic or other scalar literals|`dynamic([1, 2, "hello"])`|
+|A property bag with the format `{`*Name* `=` *Value* [`,` ... ]`}`|`dynamic({"a":1, "b":{"a":2}})`|
+|A literal of another scalar data type|`dynamic(4)`|
+|`null`, which represents a missing value|`dynamic(null)`|
+
 
 ```kusto
 print o=dynamic({"a":123, "b":"hello", "c":[1,2,3], "d":{}})
