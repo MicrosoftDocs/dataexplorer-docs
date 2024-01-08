@@ -10,7 +10,7 @@ ms.date: 02/22/2023
 Converts the input to an integer value (signed 32-bit) number representation.
 
 > [!NOTE]
-> Prefer using [int()](./scalar-data-types/int.md) when possible.
+> For optimal efficiency, use [int literals](./scalar-data-types/int.md#int-literals) when possible.
 
 ## Syntax
 
