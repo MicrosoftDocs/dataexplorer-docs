@@ -10,7 +10,7 @@ ms.date: 01/08/2024
 Converts the input to a decimal number representation.
 
 > [!NOTE]
-> For optimal performance, use a [decimal literal](./scalar-data-types/decimal.md#decimal-literals) when possible.
+> For optimal performance, use [decimal literals](./scalar-data-types/decimal.md#decimal-literals) when possible.
 
 ## Syntax
 
