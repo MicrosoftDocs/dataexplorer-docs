@@ -15,7 +15,7 @@ The `timespan` data type represents a time interval.
 
 To specify a `timespan` literal, use one of the following syntax options:
 
-| Value | Example | Length of Time |
+| Syntax | Example | Length of Time |
 |--|--|--|
 | One or more digits followed by `d` for days | `2d` | 2 days |
 | One or more digits followed by `h` for hours | `1.5h` | 1.5 hours |
