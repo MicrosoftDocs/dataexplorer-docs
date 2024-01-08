@@ -11,7 +11,7 @@ The `timespan` data type represents a time interval.
 
 > The `timespan` and `time` data types are equivalent.
 
-## timespan literals
+## `timespan` literals
 
 Literals of type `timespan` have the syntax `timespan(`*value*`)`, where a number of formats 
 are supported for *value*, as indicated by the following table:
@@ -32,7 +32,7 @@ are supported for *value*, as indicated by the following table:
 
 The special form `time(null)` is the [null value](null-values.md).
 
-## timespan operators
+## `timespan` operators
 
 Two values of type `timespan` may be added, subtracted, and divided.
 The last operation returns a value of type `real` representing the
