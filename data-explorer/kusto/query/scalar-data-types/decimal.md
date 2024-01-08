@@ -15,17 +15,13 @@ The `decimal` data type represents a 128-bit wide, decimal number.
 
 ## `decimal` literals
 
-To specify a `decimal` literal, use the following syntax:
+To specify a `decimal` literal, use one of the following syntax options:
 
-`decimal(`*value*`)`
-
-The following formats are supported for the *value* parameter:
-
-|Value|Example|
+|Syntax|Description|Example|
 |--|--|
-|One or more digits, followed by a decimal point, and then one or more digits|`decimal(1.0)`|
-|One or more digits, followed by the letter `e`, and then another digit, indicating scientific notation|`decimal(1e5)`|
-|`null` to represent a missing value|`decimal(null)`|
+|`decimal(`*number*`.`*fraction*`)`|A decimal represented by one or more digits, followed by a decimal point, and then one or more digits.|`decimal(1.0)`|
+|`decimal(`*number*`e`*exponent*`)`|A decimal represented by scientific notation.|`1e5`|
+|`decimal(null)`|Represents the [null value](null-values.md).||
 
 ## Related content
 

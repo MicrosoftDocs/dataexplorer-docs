@@ -31,18 +31,14 @@ The `dynamic` scalar data type can be any of the following values:
 
 ## `dynamic` literals
 
-To specify a `dynamic` literal, use the following syntax:
+To specify a `dynamic` literal, use one of the following syntax options:
 
-`dynamic(`*value*`)`
-
-The following formats are supported for the *value* parameter:
-
-|Value|Example|
-|--|--|
-|An array of dynamic or other scalar literals|`dynamic([1, 2, "hello"])`|
-|A property bag with the format `{`*Name* `=` *Value* [`,` ... ]`}`|`dynamic({"a":1, "b":{"a":2}})`|
-|A literal of another scalar data type|`dynamic(4)`|
-|`null` to represent a missing value|`dynamic(null)`|
+|Syntax|Description|Example|
+|--|--|--|
+|`dynamic([`*value* [`,` ...]`])`|An array of dynamic or other scalar literals.|`dynamic([1, 2, "hello"])`|
+|`dynamic({`*key* `=` *value* [`,` ...]`})`|A property bag, or object. The value for a key can be a nested property bag.|`dynamic({"a":1, "b":{"a":2}})`|
+|`dynamic(`*value*`)`|A dynamic value holding the value of the inner scalar data type.|`dynamic(4)`|
+|`dynamic(null)`|Represents the [null value](null-values.md).||
 
 ## Examples
 

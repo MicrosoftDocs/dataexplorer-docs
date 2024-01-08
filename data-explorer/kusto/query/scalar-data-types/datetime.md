@@ -24,18 +24,14 @@ This is sometimes called "a moment in linear time".
 
 ## `datetime` literals
 
-To specify a `datetime` literal, use the following syntax:
+To specify a `datetime` literal, use one of the following syntax options:
 
-`datetime(`*value*`)`
-
-The following formats are supported for the *value* parameter:
-
-|Value|Example|
-|--|--|
-|A day and time in UTC format|`datetime(2015-12-31 23:59:59.9)`|
-|A day in UTC format|`datetime(2015-12-31)`|
-|Empty to return the current time|`datetime()`|
-|`null` to represent a missing value|`datetime(null)`|
+|Syntax|Description|Example|
+|--|--|--|
+|`datetime(`*dateAndTime*`)`|A day and time in UTC format.|`datetime(2015-12-31 23:59:59.9)`|
+|`datetime(`*date*`)`|A day in UTC format.|`datetime(2015-12-31)`|
+|`datetime()`|Returns the current time||
+|`datetime(null)`|Represents the [null value](null-values.md).||
 
 ## The `now()` and `ago()` special functions
 

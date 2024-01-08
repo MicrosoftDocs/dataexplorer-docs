@@ -13,12 +13,12 @@ The `long` data type represents a signed, 64-bit wide, integer.
 
 To specify a `long` literal, use one of the following syntax options:
 
-|Value|Example|
+|Syntax|Description|Example|
 |--|--|
-|One or more digits representing a whole number|`12`|
-|The prefix `0x` followed by one or more hex digits|`0xf` is equivalent to `long(15)`|
-|`long(-`*number*`)` to indicate a negative number|`long(-1)`|
-|`long(null)` to indicate a missing value||
+|*integer*|A whole number.|`12`|
+|`0x`*hex*|A hexadecimal number.|`0xf` is equivalent to `long(15)`|
+|`long(-`*number*`)`|A negative number|`long(-1)`|
+|`long(null)`|Represents the [null value](null-values.md).||
 
 ## Related content
 

@@ -11,17 +11,13 @@ The `int` data type represents a signed, 32-bit wide, integer.
 
 ## `int` literals
 
-To specify an `int` literal, use the following syntax:
+To specify an `int` literal, use one of the following syntax options:
 
-`int(`*value*`)`
-
-The following formats are supported for the *value* parameter:
-
-|Value|Example|
+|Syntax|Example|Description|
 |--|--|
-|One or more digits|`int(2)`|
-|A negative sign (`-`) followed by one or more digits|`int(-2)`|
-|`null` to represent a missing value|`int(null)`|
+|`int(`*number*`)`|`int(2)`|A positive integer.|
+|`int(-`*number*`)`|`int(-2)`|A negative integer.|
+|`int(null)`||Represents the [null value](null-values.md).|
 
 ## Related content
 

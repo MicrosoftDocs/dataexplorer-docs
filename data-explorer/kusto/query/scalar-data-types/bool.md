@@ -15,9 +15,11 @@ The `bool` data type can be: `true` (`1`), `false` (`0`), or null.
 
 To specify a bool literal, use one of the following syntax options: 
 
-* `true` or `bool(true)` to represent trueness
-* `false` or `bool(false)` to represent falsehood
-* `bool(null)` to represent a [null value](/azure/data-explorer/kusto/query/scalar-data-types/null-values)
+|Syntax|Description|
+|--|--|--|
+|`true` or `bool(true)`|Represents trueness.|
+|`false` or `bool(false)`|Represents falsehood.|
+|`bool(null)`|Represents the [null value](/azure/data-explorer/kusto/query/scalar-data-types/null-values).|
 
 ## Boolean operators
 
