@@ -3,18 +3,16 @@ title:  The dynamic data type
 description: This article describes The dynamic data type in Azure Data Explorer.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 11/13/2022
+ms.date: 01/08/2024
 ---
 # The dynamic data type
 
-The `dynamic` scalar data type is special in that it can take on any value  of other scalar data types from the list below, as well as arrays and property bags. Specifically, a `dynamic` value can be:
+The `dynamic` scalar data type can be any of the following values:
 
-* Null.
-* A value of any of the primitive scalar data types:
-  `bool`, `datetime`, `guid`, `int`, `long`, `real`, `string`, and `timespan`.
-* An array of `dynamic` values, holding zero or more values with zero-based   indexing.
-* A property bag that maps unique `string` values to `dynamic` values.
-  The property bag has zero or more such mappings (called "slots"), indexed by the unique `string` values. The slots are unordered.
+* An array of `dynamic` values, holding zero or more values with zero-based indexing.
+* A property bag that maps unique `string` values to `dynamic` values. The property bag has zero or more such mappings (called "slots"), indexed by the unique `string` values. The slots are unordered.
+* A value of any of the primitive scalar data types: `bool`, `datetime`, `guid`, `int`, `long`, `real`, `string`, and `timespan`.
+* Null. For more information, see [Null values](null-values.md).
 
 > [!NOTE]
 > * Values of type `dynamic` are limited to 1MB (2^20), uncompressed. If a cell value in a record exceeds 1MB, the value is dropped and ingestion succeeds. You can increase the `MaxValueSize` of the column by changing its [encoding policy](../../management/alter-encoding-policy.md).
