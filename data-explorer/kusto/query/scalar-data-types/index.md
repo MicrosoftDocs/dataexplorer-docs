@@ -38,4 +38,4 @@ All non-string data types can be null. When a value is null, it indicates an abs
 
 You can't create the null value directly, but you can check if an expression equals this value using the [isnull()](../../query/isnullfunction.md) function.
 
-For more information, see [Null values](null-values.md)
+For more information, see [Null values](null-values.md).
