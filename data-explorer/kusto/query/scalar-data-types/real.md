@@ -11,16 +11,23 @@ The `real` data type represents a 64-bit wide, double-precision, floating-point 
 
 ## `real` literals
 
-By default, numbers in decimal format and numbers specified with scientific notation are `real` literals. For example, `1.0`, `0.1`, and `1e5` are all `real` literals.
+To specify a `real` literal, use the following syntax:
 
-The following `real` literals indicate special cases:
+`real(`*value*`)`
 
-|Literal|Description|
+The following formats are supported for the *value* parameter:
+
+|Value|Example|
 |--|--|
-|`real(null)`|Indicates a missing value. For more information, see [null value](null-values.md).|
-|`real(nan)`|Not-a-Number (NaN). For example, the result of dividing a `0.0` by another `0.0`.|
-|`real(+inf)`|Positive infinity. For example, the result of dividing `1.0` by `0.0`.|
-|`real(-inf)`|Negative infinity. For example, the result of dividing `-1.0` by `0.0`.|
+|One or more digits, followed by a decimal point, and then one or more digits|`real(1.0)`|
+|One or more digits, followed by the letter `e`, and then another digit, indicating scientific notation|`real(1e5)`|
+|`null` to indicate a missing value|`real(null)`|
+|`nan` to indicate not-a-number (NaN), such as when dividing a `0.0` by another `0.0`|`real(nan)`|
+|`+inf` to indicate positive infinity, such as when dividing `1.0` by `0.0`.|`real(+inf)`|
+|`-inf` to indicate negative infinity, such as when dividing `-1.0` by `0.0`.|`real(-inf)`|
+
+> [!NOTE]
+> By default, decimal numbers and numbers specified with scientific notation are `real` literals. For example, `1.0`, `0.1`, and `1e5` are direct literals of type `real`.
 
 ## Related content
 
