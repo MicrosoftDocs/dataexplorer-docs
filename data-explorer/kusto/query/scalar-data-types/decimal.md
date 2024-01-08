@@ -15,7 +15,9 @@ The `decimal` data type represents a 128-bit wide, decimal number.
 
 ## datetime literals
 
-`decimal(1.0)`, `decimal(0.1)`, and `decimal(1e5)` are all literals of type `decimal`. In addition, there is `decimal(null)`, which represents the [null value](null-values.md).
+`decimal(1.0)`, `decimal(0.1)`, and `decimal(1e5)` are all literals of type `decimal`.
+
+The special form `decimal(null)` represents the [null value](null-values.md).
 
 ## Related content
 
