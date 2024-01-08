@@ -20,6 +20,7 @@ The following formats are supported for the *value* parameter:
 |Description|Example|
 |--|--|
 |A whole number|`int(2)`|
+|A negative whole number|`int(-2)`|
 |`null`, which represents a missing value|`int(null)`|
 
 ## Related content
