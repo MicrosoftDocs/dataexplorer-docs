@@ -21,7 +21,7 @@ The following formats are supported for the *value* parameter:
 |--|--|
 |One or more digits|`int(2)`|
 |A negative sign (`-`) followed by one or more digits|`int(-2)`|
-|`null`, which represents a missing value|`int(null)`|
+|`null` to represent a missing value|`int(null)`|
 
 ## Related content
 

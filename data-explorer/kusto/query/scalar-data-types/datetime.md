@@ -35,7 +35,7 @@ The following formats are supported for the *value* parameter:
 |A day and time in UTC format|`datetime(2015-12-31 23:59:59.9)`|
 |A day in UTC format|`datetime(2015-12-31)`|
 |Empty, which returns the current time|`datetime()`|
-|`null`, which represents a missing value|`datetime(null)`|
+|`null` to represent a missing value|`datetime(null)`|
 
 ## The `now()` and `ago()` special functions
 

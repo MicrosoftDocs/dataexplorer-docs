@@ -42,7 +42,7 @@ The following formats are supported for the *value* parameter:
 |An array of dynamic or other scalar literals|`dynamic([1, 2, "hello"])`|
 |A property bag with the format `{`*Name* `=` *Value* [`,` ... ]`}`|`dynamic({"a":1, "b":{"a":2}})`|
 |A literal of another scalar data type|`dynamic(4)`|
-|`null`, which represents a missing value|`dynamic(null)`|
+|`null` to represent a missing value|`dynamic(null)`|
 
 
 ```kusto

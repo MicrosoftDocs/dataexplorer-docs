@@ -22,7 +22,7 @@ The following formats are supported for the *value* parameter:
 |Description|Example|
 |--|--|
 |A guid string|`guid(74be27de-1e4e-49d9-b579-fe0b331d3642)`|
-|`null`, which represents a missing value|`guid(null)`|
+|`null` to represent a missing value|`guid(null)`|
 
 ## Related content
 

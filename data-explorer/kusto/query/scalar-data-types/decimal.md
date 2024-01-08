@@ -25,7 +25,7 @@ The following formats are supported for the *value* parameter:
 |--|--|
 |One or more digits, followed by a decimal point, and then one or more digits|`decimal(1.0)`|
 |One or more digits, followed by the letter e, and then another digit, indicating scientific notation|`decimal(1e5)`|
-|`null`, which represents a missing value|`decimal(null)`|
+|`null` to represent a missing value|`decimal(null)`|
 
 ## Related content
 
