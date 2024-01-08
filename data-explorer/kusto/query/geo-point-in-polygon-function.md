@@ -122,7 +122,7 @@ StormEvents
 | render piechart with (kind=map) // map rendering available in Kusto Explorer desktop
 ```
 
-The following example shows how to classify coordinates to polygons using the [partition](./partitionoperator.md) operator.
+The following example shows how to classify coordinates to polygons using the [partition](./partition-operator.md) operator.
 
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA51U22rbQBB991csepJAUfZ+cckfhBIIFIoxZiMtjhJFK6RNXTfJv3dkXezUpC2xwdZoztzOmd3KBXTjq/3W1x26QoUN8L2rXFy4Lm/LJpS+XqIutGW9TVEzIJeo2Nf2qcyTBYLPCqHDf/TV7dB33z6ivAx7ZFtno3SCxi9R2DcuWqJorAe+KPe+LcraBteBZ7VaXSiWaYGxUVJIKlLEMdiKc2UIw4xQsk4RoHhGJOaScCqUJhOQU4O5VooaqeQMNFgqpukME8YwIbFWRgqiBxhUZfCGCE37KgNQEoihlFMqBCEz8O/trddvSTrwcetsCJX7JBNQOqNQiirFOFN9MZVJqMYwJYRBq+rQUo/jwhAsORdj7x8DlRBamCkdl9pwIEtJRbnmM4woSbEGDwYoH6CKSkm11JIwTmfkvzo8oePaduib29ruE1wQnpkUMZmxQVdCRMa50RTmJoMUvZNR0Bl0ZKCH+hAoYFOAKi4wpwSGGoFQghsDSiui1YAzmDJjwCKcSSKOwKmXYbz1l0UFB+na57Y/MO9PUuXrbRmeC7dEsAdViioAHe3xDB1+ezvud8yIJB0sWDDVG5eX6NY/ud29ax0qazSdtZO4Xg42x4ES8HwWN+7kaRgwRPQUB2MRmZzHzeL1w043xuIVNa1/cHmYroYb28JwwAFQEPxwb8SNzR/j6ORG6RfgaIHizSz++JQkfe452X1Zh+wJFqItbVX+csVVaJ/d8BqKgGO7v4KFKX84dLc/a+Yw7Qsa76lZpoP1itzP4OritCNoHmp3bvPQ+TqGOXJb2Tb+M22SZCdB77ON2P/PNL4aswy8b53fNB6G3JT1ZgQc9+m4SUfaxvBRlQu7szMbB9fbb4lZo3bxBQAA" target="_blank">Run the query</a>

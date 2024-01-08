@@ -37,8 +37,8 @@ Returns the intermediate results of distinct count of *Expr* for which *Predicat
 
 > [!TIP]
 >
-> - You can use the aggregation function [`hll_merge`](hll-merge-aggfunction.md) to merge more than one `hll` intermediate result. Only works with `hll` output only.
-> - You can use [`dcount_hll`](dcount-hllfunction.md), to calculate the distinct count from `hll`,`hll_merge`, or `hll_if` aggregation functions.
+> - You can use the aggregation function [`hll_merge`](hll-merge-aggregation-function.md) to merge more than one `hll` intermediate result. Only works with `hll` output only.
+> - You can use [`dcount_hll`](dcount-hll-function.md), to calculate the distinct count from `hll`,`hll_merge`, or `hll_if` aggregation functions.
 
 ## Examples
 

@@ -38,10 +38,10 @@ You can define the function by either embedding its code as a query-defined func
 
 ### [Query-defined](#tab/query-defined)
 
-Define the function using the following [let statement](../query/letstatement.md). No permissions are required.
+Define the function using the following [let statement](../query/let-statement.md). No permissions are required.
 
 > [!IMPORTANT]
-> A [let statement](../query/letstatement.md) can't run on its own. It must be followed by a [tabular expression statement](../query/tabularexpressionstatements.md). To run a working example of `series_fit_lowess_fl()`, see [Examples](#examples).
+> A [let statement](../query/let-statement.md) can't run on its own. It must be followed by a [tabular expression statement](../query/tabular-expression-statements.md). To run a working example of `series_fit_lowess_fl()`, see [Examples](#examples).
 
 ```kusto
 let series_fit_lowess_fl=(tbl:(*), y_series:string, y_fit_series:string, fit_size:int=5, x_series:string='', x_istime:bool=False)
@@ -126,7 +126,7 @@ series_fit_lowess_fl(tbl:(*), y_series:string, y_fit_series:string, fit_size:int
 
 ## Examples
 
-The following examples use the [invoke operator](../query/invokeoperator.md) to run the function.
+The following examples use the [invoke operator](../query/invoke-operator.md) to run the function.
 
 ### LOWESS regression on regular time series
 

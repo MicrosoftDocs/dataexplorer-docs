@@ -7,7 +7,7 @@ ms.date: 05/14/2023
 ---
 # .delete cluster policy callout command
 
-Delete the [callout policy](calloutpolicy.md) defined for the cluster.
+Delete the [callout policy](callout-policy.md) defined for the cluster.
 
 ## Permissions
 
@@ -47,4 +47,4 @@ Delete cluster callout policy:
 
 ## Remarks
 
-Notice that this command doesn't delete the immutable predefined callout policies. For more information, see [predefined callout policies](calloutpolicy.md#predefined-callout-policies).
+Notice that this command doesn't delete the immutable predefined callout policies. For more information, see [predefined callout policies](callout-policy.md#predefined-callout-policies).

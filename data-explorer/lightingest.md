@@ -103,7 +103,7 @@ The argument values must include:
 * Constant text immediately following the timestamp (suffix).
 
 > [!IMPORTANT]
-> When specifying that the creation time should be overridden, make sure the `Lookback` property in the target table's effective [Extents merge policy](kusto/management/mergepolicy.md) is aligned with the values in your file or blob paths.
+> When specifying that the creation time should be overridden, make sure the `Lookback` property in the target table's effective [Extents merge policy](kusto/management/merge-policy.md) is aligned with the values in your file or blob paths.
 
 **Examples** 
 

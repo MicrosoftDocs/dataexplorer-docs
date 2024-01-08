@@ -112,9 +112,9 @@ Welcome to what's new in Azure Data Explorer. This article details new and signi
 | Article title | Description |
 |--|--|
 | [Entity names](kusto/query/schema-entities/entity-names.md)| Updated article. Refreshed identifier naming rules and references in queries.|
-| [partition operator](kusto/query/partitionoperator.md)| Updated article. Refreshed content and added parameters.|
+| [partition operator](kusto/query/partition-operator.md)| Updated article. Refreshed content and added parameters.|
 | [scan operator](kusto/query/scan-operator.md)| Updated article. Added scan logic walkthrough.|
-| [top-nested operator](kusto/query/topnestedoperator.md)| Updated article. Refreshed content.|
+| [top-nested operator](kusto/query/top-nested-operator.md)| Updated article. Refreshed content.|
 
 ## July 2023
 
@@ -144,9 +144,9 @@ Welcome to what's new in Azure Data Explorer. This article details new and signi
 
 | Article title | Description |
 |--|--|
-|- [punycode_domain_from_string()](kusto/query/punycode-domain-from-string.md) <br/> - [punycode_domain_to_string()](kusto/query/punycode-domain-to-string.md)| New articles. Describes how to encode and decode a punycode domain name.|
+|- [punycode_domain_from_string()](kusto/query/punycode-domain-from-string-function.md) <br/> - [punycode_domain_to_string()](kusto/query/punycode-domain-to-string-function.md)| New articles. Describes how to encode and decode a punycode domain name.|
 | [geo_line_to_s2cells()](kusto/query/geo-line-to-s2cells-function.md)| New article. Describes how to use the geo_line_to_2cells() function to calculate S2 cell tokens that cover a line or a multiline on Earth.|
-| [extract_json()](kusto/query/extractjsonfunction.md)| Updated article. Added new example.|
+| [extract_json()](kusto/query/extract-json-function.md)| Updated article. Added new example.|
 | [Pivot chart](kusto/query/visualization-pivotchart.md)| Updated article. Added new example.|
 
 ## June 2023
@@ -162,7 +162,7 @@ Welcome to what's new in Azure Data Explorer. This article details new and signi
 
 | Article title| Description|
 |--|--|
-|- [Join operator](kusto/query/joinoperator.md) <br/> - [fullouter join](kusto/query/join-fullouter.md) <br/> - [inner join](kusto/query/join-inner.md) <br/> - [innerunique join](kusto/query/join-innerunique.md) <br/> - [leftanti join](kusto/query/join-leftanti.md) <br/> - [leftouter join](kusto/query/join-leftouter.md) <br/> - [leftsemi join](kusto/query/join-leftsemi.md) <br/> - [rightanti join](kusto/query/join-rightanti.md) <br/> - [rightouter join](kusto/query/join-rightouter.md) <br/> - [rightsemi join](kusto/query/join-rightsemi.md) | Updated and new articles. Refreshed `join` overview and added topics describing each `join` kind.
+|- [Join operator](kusto/query/join-operator.md) <br/> - [fullouter join](kusto/query/join-fullouter.md) <br/> - [inner join](kusto/query/join-inner.md) <br/> - [innerunique join](kusto/query/join-innerunique.md) <br/> - [leftanti join](kusto/query/join-leftanti.md) <br/> - [leftouter join](kusto/query/join-leftouter.md) <br/> - [leftsemi join](kusto/query/join-leftsemi.md) <br/> - [rightanti join](kusto/query/join-rightanti.md) <br/> - [rightouter join](kusto/query/join-rightouter.md) <br/> - [rightsemi join](kusto/query/join-rightsemi.md) | Updated and new articles. Refreshed `join` overview and added topics describing each `join` kind.
 |[replace_strings()](kusto/query/replace-strings-function.md) | New article. Describes how to use the replace_strings() function to replace multiple string matches with multiple replacement strings.|
 
 ## May 2023
@@ -225,7 +225,7 @@ Welcome to what's new in Azure Data Explorer. This article details new and signi
 | Article title | Description |
 |--|--|
 |[Syntax conventions for reference documentation](kusto/query/syntax-conventions.md)| New article. Describes the syntax conventions for the Kusto Query Language and management command documentation.|
-|- [punycode_from_string()](kusto/query/punycode-from-string.md) <br/> - [punycode_to_string()](kusto/query/punycode-to-string.md)| New articles. Describes how to encode and decode Punycode.|
+|- [punycode_from_string()](kusto/query/punycode-from-string-function.md) <br/> - [punycode_to_string()](kusto/query/punycode-to-string-function.md)| New articles. Describes how to encode and decode Punycode.|
 
 ## March 2023
 
@@ -298,7 +298,7 @@ Welcome to what's new in Azure Data Explorer. This article details new and signi
 
 | Article title | Description |
 |--|--|
-| - [render operator](./kusto/query/renderoperator.md)<br />- [Anomaly chart](kusto/query/visualization-anomalychart.md) <br/> - [Area chart](kusto/query/visualization-areachart.md) <br/> - [Bar chart](kusto/query/visualization-barchart.md) <br/> - [Card](kusto/query/visualization-card.md) <br/> - [Column chart](kusto/query/visualization-columnchart.md) <br/> - [Ladder chart](kusto/query/visualization-ladderchart.md) <br/> - [Line chart](kusto/query/visualization-linechart.md) <br/> - [Pie chart](kusto/query/visualization-piechart.md) <br/> - [Pivot chart](kusto/query/visualization-pivotchart.md) <br/> - [Scatter chart](kusto/query/visualization-scatterchart.md) <br/> - [Stacked area chart](kusto/query/visualization-stackedareachart.md) <br/> - [Table](kusto/query/visualization-table.md) <br/> - [Time chart](kusto/query/visualization-timechart.md) <br/> - [Time pivot](kusto/query/visualization-timepivot.md) | Updated and new articles. Refreshed render overview and added topics describing each render visualization. |
-| [series_dot_product()](./kusto/query/series-dot-productfunction.md) | New article. Describes how to calculate the dot product of two numeric series.|
+| - [render operator](./kusto/query/render-operator.md)<br />- [Anomaly chart](kusto/query/visualization-anomalychart.md) <br/> - [Area chart](kusto/query/visualization-areachart.md) <br/> - [Bar chart](kusto/query/visualization-barchart.md) <br/> - [Card](kusto/query/visualization-card.md) <br/> - [Column chart](kusto/query/visualization-columnchart.md) <br/> - [Ladder chart](kusto/query/visualization-ladderchart.md) <br/> - [Line chart](kusto/query/visualization-linechart.md) <br/> - [Pie chart](kusto/query/visualization-piechart.md) <br/> - [Pivot chart](kusto/query/visualization-pivotchart.md) <br/> - [Scatter chart](kusto/query/visualization-scatterchart.md) <br/> - [Stacked area chart](kusto/query/visualization-stackedareachart.md) <br/> - [Table](kusto/query/visualization-table.md) <br/> - [Time chart](kusto/query/visualization-timechart.md) <br/> - [Time pivot](kusto/query/visualization-timepivot.md) | Updated and new articles. Refreshed render overview and added topics describing each render visualization. |
+| [series_dot_product()](./kusto/query/series-dot-product-function.md) | New article. Describes how to calculate the dot product of two numeric series.|
 | [hll_if() (aggregation function)](./kusto/query/hll-if-aggregation-function.md) | New article. Describes how to calculate the intermediate results of the `dcount()` function. |
 | [bag_set_key()](./kusto/query/bag-set-key-function.md) | New article. Describes how to set a given key to a given value in a dynamic property bag. |

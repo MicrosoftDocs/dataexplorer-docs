@@ -16,7 +16,7 @@ The function `series_fit_poly_fl()` is a [user-defined function (UDF)](../query/
 > [!NOTE]
 >
 > * Use the native function [series_fit_poly()](../query/series-fit-poly-function.md) instead of the function described in this document. The native function provides the same functionality and is better for performance and scalability. This document is provided for reference purposes only.
-> * For linear regression of an evenly spaced series, as created by [make-series operator](../query/make-seriesoperator.md), use the native function [series_fit_line()](../query/series-fit-linefunction.md).
+> * For linear regression of an evenly spaced series, as created by [make-series operator](../query/make-series-operator.md), use the native function [series_fit_line()](../query/series-fit-line-function.md).
 
 [!INCLUDE [python-zone-pivot-fabric](../../includes/python-zone-pivot-fabric.md)]
 
@@ -43,10 +43,10 @@ You can define the function by either embedding its code as a query-defined func
 
 ### [Query-defined](#tab/query-defined)
 
-Define the function using the following [let statement](../query/letstatement.md). No permissions are required.
+Define the function using the following [let statement](../query/let-statement.md). No permissions are required.
 
 > [!IMPORTANT]
-> A [let statement](../query/letstatement.md) can't run on its own. It must be followed by a [tabular expression statement](../query/tabularexpressionstatements.md). To run a working example of `series_fit_poly_fl()`, see [Examples](#examples).
+> A [let statement](../query/let-statement.md) can't run on its own. It must be followed by a [tabular expression statement](../query/tabular-expression-statements.md). To run a working example of `series_fit_poly_fl()`, see [Examples](#examples).
 
 ~~~kusto
 let series_fit_poly_fl=(tbl:(*), y_series:string, y_fit_series:string, fit_coeff:string, degree:int, x_series:string='', x_istime:bool=False)
@@ -137,7 +137,7 @@ series_fit_poly_fl(tbl:(*), y_series:string, y_fit_series:string, fit_coeff:stri
 
 ## Examples
 
-The following examples use the [invoke operator](../query/invokeoperator.md) to run the function.
+The following examples use the [invoke operator](../query/invoke-operator.md) to run the function.
 
 ### Fit fifth order polynomial to a regular time series
 

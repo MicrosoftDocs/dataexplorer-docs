@@ -31,7 +31,7 @@ You must have at least [Table Ingestor](../access-control/role-based-access-cont
 |--|--|--|--|
 |`async`|string||If specified, the command returns immediately and continues ingestion in the background. The results of the command include an `OperationId` value that can then be used with the `.show operation` command to retrieve the ingestion completion status and results.|
 |*TableName*|string|&check;|The name of the table into which to ingest data. The table name is always relative to the database in context. If no schema mapping object is provided, the schema of the database in context is used.|
-|*SourceDataLocator*|string|&check;|A single or comma-separated list of [storage connection strings](../../api/connection-strings/storage-connection-strings.md). A single connection string must refer to a single file hosted by a storage account. Ingestion of multiple files can be done by specifying multiple connection strings, or by [ingesting from a query](ingest-from-query.md) of an [external table](../../query/schema-entities/externaltables.md).|
+|*SourceDataLocator*|string|&check;|A single or comma-separated list of [storage connection strings](../../api/connection-strings/storage-connection-strings.md). A single connection string must refer to a single file hosted by a storage account. Ingestion of multiple files can be done by specifying multiple connection strings, or by [ingesting from a query](ingest-from-query.md) of an [external table](../../query/schema-entities/external-tables.md).|
 
 > [!NOTE]
 > We recommend using [obfuscated string literals](../../query/scalar-data-types/string.md#obfuscated-string-literals) for the *SourceDataPointer*. The service will scrub credentials in internal traces and error messages.

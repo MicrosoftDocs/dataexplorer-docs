@@ -41,10 +41,10 @@ You can define the function by either embedding its code as a query-defined func
 
 ### [Query-defined](#tab/query-defined)
 
-Define the function using the following [let statement](../query/letstatement.md). No permissions are required.
+Define the function using the following [let statement](../query/let-statement.md). No permissions are required.
 
 > [!IMPORTANT]
-> A [let statement](../query/letstatement.md) can't run on its own. It must be followed by a [tabular expression statement](../query/tabularexpressionstatements.md). To run a working example of `series_metric_fl()`, see [Examples](#examples).
+> A [let statement](../query/let-statement.md) can't run on its own. It must be followed by a [tabular expression statement](../query/tabular-expression-statements.md). To run a working example of `series_metric_fl()`, see [Examples](#examples).
 
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA21Ty66bMBDd8xUWG+wKbkjUVmmu+IOqm1bdVBUyMAQXY0eMk9y06b/XNhBCGm/8mPGZM+fYEgxB6AVg3oHpRZnXMqPDEnNTyB19x2JiRAdoeHfISy13aKNqHxPFO1gcSF6AxMXRicvjMmms4y4/XkSQUBrdj+dZFNmQ1m3By3bnORy4yqYFXaed5abrGsE8CaeMBX8CYof0XQ7YeZWJuqYPFUmWEVetulheoqQ/ouinxcaDFOYxNyZRHDH2eoMGV5JkhO81HdjcBXEMDknJrZ8h405pv78SeDOgqllxe9Wqd+xULmp4E2iQLtywnLnx4FQdpWRs8OXJtckuyz9ik+ZP8mYXZz0maG/nkzs3m2OSsmUntzojVm50/gu1GuswMozVilhUdYLeEKPJ8AIItwCo7VFxIS1cRuRzAz2MbWb3D8rnz9IVYM4AinoPXl68ShM73VfQO9g5nWM5BvHYdbwXv2HhQ8dbyKXtd3ZgkiSbY37PHLJjNOm8YD5K0nDMuZSEzm+TBX+D12C1CirodH7otW2ugSMGVyLUSbfw32+l0TdL5qsjY99v9MXWdPNnX8KtvnPppnMvDPiDsBLYhrsQK74O47DRaOyOt5jwPShz0Fom2226/fj+w6fk1CGmbqzDaPprmdJnypLbu9ukmzRZb5J0S9J0l7p/dyW99d4K7BLKhlsHz8I0dGCfjdb/A8laNKd+BAAA" target="_blank">Run the query</a>
@@ -94,7 +94,7 @@ series_metric_fl(metrics_tbl:(*), timestamp_col:string, name_col:string, labels_
 
 ## Examples
 
-The following examples use the [invoke operator](../query/invokeoperator.md) to run the function.
+The following examples use the [invoke operator](../query/invoke-operator.md) to run the function.
 
 ### With specifying selector
 

@@ -7,7 +7,7 @@ ms.date: 05/25/2023
 ---
 # .alter-merge database policy streamingingestion command
 
-Changes the database streaming ingestion policy. Use the [streaming policy](../management/streamingingestionpolicy.md) to manage streaming ingestion for databases and tables.  
+Changes the database streaming ingestion policy. Use the [streaming policy](../management/streaming-ingestion-policy.md) to manage streaming ingestion for databases and tables.  
 
 Streaming ingestion is best suited for low latency scenarios where the ingestion time is under 10 seconds for varying data volume. It can optimize processing for multiple tables across one or more databases, especially when the tables receive only a few records per second but the ingestion volume is thousands of records per second.
 
@@ -30,7 +30,7 @@ You must have at least [Database Admin](access-control/role-based-access-control
 |Name|Type|Required|Description|
 |--|--|--|--|
 |*DatabaseName*|string|&check;|The name of the database for which to alter the streaming ingestion policy.|
-|*ArrayOfPolicyObjects*|string|&check;|A serialized array of one or more JSON policy objects. For more information, see [streaming ingestion policy](streamingingestionpolicy.md).|
+|*ArrayOfPolicyObjects*|string|&check;|A serialized array of one or more JSON policy objects. For more information, see [streaming ingestion policy](streaming-ingestion-policy.md).|
 
 ## Returns
 

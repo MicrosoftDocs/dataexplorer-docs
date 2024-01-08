@@ -117,7 +117,7 @@ Remove all extents in tables `Table1` and `Table2` whose creation time was over 
 
 ### Remove an extent using extent_id()
 
-Remove an extent from a table using the built-in [`extent_id()`](../query/extentidfunction.md) function.
+Remove an extent from a table using the built-in [`extent_id()`](../query/extent-id-function.md) function.
 
 ```kusto
 .drop extents  <|

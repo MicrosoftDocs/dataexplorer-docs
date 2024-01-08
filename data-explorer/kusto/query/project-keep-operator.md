@@ -62,6 +62,6 @@ The following table shows only the first 10 results.
 
 ## Related content
 
-* To choose what columns from the input to exclude from the output, use [project-away](projectawayoperator.md).
-* To rename columns, use [`project-rename`](projectrenameoperator.md).
-* To reorder columns, use [`project-reorder`](projectreorderoperator.md).
+* To choose what columns from the input to exclude from the output, use [project-away](project-away-operator.md).
+* To rename columns, use [`project-rename`](project-rename-operator.md).
+* To reorder columns, use [`project-reorder`](project-reorder-operator.md).

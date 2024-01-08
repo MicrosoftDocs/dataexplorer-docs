@@ -153,7 +153,7 @@ Use C# to ingest data in raw [JSON format](#the-json-format).
     ```
 
 > [!NOTE]
-> Data is aggregated according to [batching policy](kusto/management/batchingpolicy.md), resulting in a latency of a few minutes.
+> Data is aggregated according to [batching policy](kusto/management/batching-policy.md), resulting in a latency of a few minutes.
 
 ### [Python](#tab/python)
 
@@ -196,7 +196,7 @@ Use Python to ingest data in raw [JSON format](#the-json-format).
     ```
 
     > [!NOTE]
-    > Data is aggregated according to [batching policy](kusto/management/batchingpolicy.md), resulting in a latency of a few minutes.
+    > Data is aggregated according to [batching policy](kusto/management/batching-policy.md), resulting in a latency of a few minutes.
 
 ---
 
