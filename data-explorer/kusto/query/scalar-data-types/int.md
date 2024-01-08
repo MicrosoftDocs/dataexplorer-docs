@@ -9,7 +9,18 @@ ms.date: 01/08/2024
 
 The `int` data type represents a signed, 32-bit wide, integer.
 
-The special form `int(null)` represents the [null value](null-values.md).
+## `int` literals
+
+To specify an `int` literal, use the following syntax:
+
+`int(`*value*`)`
+
+The following formats are supported for the *value* parameter:
+
+|Description|Example|
+|--|--|
+|A whole number|`int(2)`|
+|`null`, which represents a missing value|`int(null)`|
 
 ## Related content
 
