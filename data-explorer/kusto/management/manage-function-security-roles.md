@@ -117,4 +117,4 @@ The following command removes all existing `admins` on the `SampleFunction` func
 
 ## Related content
 
-* [current_principal_details()](../query/current-principal-detailsfunction.md)
+* [current_principal_details()](../query/current-principal-details-function.md)

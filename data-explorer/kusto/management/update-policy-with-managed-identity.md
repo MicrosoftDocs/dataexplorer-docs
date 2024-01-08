@@ -10,7 +10,7 @@ ms.date: 08/15/2023
 The update policy must be configured with a [managed identity](../../managed-identities-overview.md) in the following scenarios:
 
 * When the update policy query references tables in other databases.
-* When the update policy query references tables with an enabled [row level security policy](./rowlevelsecuritypolicy.md).
+* When the update policy query references tables with an enabled [row level security policy](./row-level-security-policy.md).
 
 An update policy configured with a managed identity is performed on behalf of the managed identity.
 

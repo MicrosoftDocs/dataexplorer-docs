@@ -50,7 +50,7 @@ For more information, see, [Visualize data with Azure Data Explorer dashboards](
 
 ### Kusto Query Language visualizations
 
-The Kusto Query Language [`render operator`](kusto/query/renderoperator.md) offers various visualizations such as tables, pie charts, and bar charts to depict query results. Query visualizations are helpful in anomaly detection and forecasting, machine learning, and more.
+The Kusto Query Language [`render operator`](kusto/query/render-operator.md) offers various visualizations such as tables, pie charts, and bar charts to depict query results. Query visualizations are helpful in anomaly detection and forecasting, machine learning, and more.
 
 ### Power BI
 

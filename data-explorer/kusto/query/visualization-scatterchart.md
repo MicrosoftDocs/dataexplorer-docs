@@ -13,7 +13,7 @@ In a scatter chart visual, the first column is the x-axis and should be a numeri
 
 
 > [!NOTE]
-> This visualization can only be used in the context of the [render operator](renderoperator.md).
+> This visualization can only be used in the context of the [render operator](render-operator.md).
 
 ## Syntax
 

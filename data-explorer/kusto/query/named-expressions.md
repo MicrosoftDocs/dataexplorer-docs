@@ -12,8 +12,8 @@ This article discusses how to optimize repeat use of named expressions in a quer
 
 In Kusto Query Language, you can bind names to complex expressions in several different ways:
 
-* In a [let statement](letstatement.md)
-* In the [as operator](asoperator.md)
+* In a [let statement](let-statement.md)
+* In the [as operator](as-operator.md)
 * In the formal parameters list of [user-defined functions](functions/user-defined-functions.md)
 
 When you reference these named expressions in a query, the following steps occur:
@@ -34,10 +34,10 @@ To mitigate these concerns, you can materialize the calculation results in memor
 
 Use the following strategies for tabular functions:
 
-* **let statements and function parameters**: Use the [materialize()](materializefunction.md) function.
+* **let statements and function parameters**: Use the [materialize()](materialize-function.md) function.
 * **as operator**: Set the `hint.materialized` hint value to `true`.
 
-For example, the following query uses the non-deterministic tabular [sample operator](sampleoperator.md):
+For example, the following query uses the non-deterministic tabular [sample operator](sample-operator.md):
 
 > [!NOTE]
 > Tables aren't sorted in general, so any table reference in a query is, by definition, non-deterministic.
@@ -82,9 +82,9 @@ range x from 1 to 100 step 1
 
 ### Scalar functions
 
-Non-deterministic scalar functions can be forced to calculate exactly once by using [toscalar()](toscalarfunction.md).
+Non-deterministic scalar functions can be forced to calculate exactly once by using [toscalar()](toscalar-function.md).
 
-For example, the following query uses the non-deterministic function, [rand()](randfunction.md):
+For example, the following query uses the non-deterministic function, [rand()](rand-function.md):
 
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA8tJLVGoULBV0NBUqC5KzEvRMDQwMNCsteblygHKVEJlSvKLkxNzEos0EErAagqKMvOA+nVAqBKIAFmz1YBOAAAA" target="_blank">Run the query</a>
@@ -103,6 +103,6 @@ print x, x, y, y
 
 ## Related content
 
-* [Let statement](letstatement.md)
-* [as operator](asoperator.md)
-* [toscalar()](toscalarfunction.md)
+* [Let statement](let-statement.md)
+* [as operator](as-operator.md)
+* [toscalar()](toscalar-function.md)

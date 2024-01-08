@@ -43,4 +43,4 @@ print res = gzip_compress_to_base64_string("1234567890qwertyuiop")
 ## Related content
 
 * [gzip_decompress_from_base64_string()](gzip-base64-decompress.md)
-* [zlib_compress_to_base64_string()](zlib-base64-compress.md)
+* [zlib_compress_to_base64_string()](zlib-base64-compress-function.md)

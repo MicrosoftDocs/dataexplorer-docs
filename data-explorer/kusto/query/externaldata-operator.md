@@ -93,7 +93,7 @@ with(format="csv")
 | summarize count() by ProductId
 ```
 
-The above example can be thought of as a quick way to query multiple data files without defining an [external table](schema-entities/externaltables.md).
+The above example can be thought of as a quick way to query multiple data files without defining an [external table](schema-entities/external-tables.md).
 
 > [!NOTE]
 > Data partitioning isn't recognized by the `externaldata` operator.
