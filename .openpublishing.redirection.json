@@ -879,6 +879,11 @@
       "source_path": "data-explorer/kusto/query/scalar-data-types/unsupported-data-types.md",
       "redirect_url": "/azure/data-explorer/kusto/query/scalar-data-types/",
       "redirect_document_id": true
+    },
+    {
+      "source_path": "data-explorer/kusto/query/todoublefunction.md",
+      "redirect_url": "/azure/data-explorer/kusto/query/toreal-function",
+      "redirect_document_id": true
     }
   ]
 }
