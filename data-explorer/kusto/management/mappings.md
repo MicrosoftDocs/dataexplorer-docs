@@ -1,16 +1,18 @@
 ---
-title:  Data mappings
-description: This article describes Data mappings in Azure Data Explorer.
+title:  Ingestion mappings
+description: This article describes ingestion mappings in Azure Data Explorer.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 03/08/2023
+ms.date: 12/26/2023
 ---
 
-# Data mappings
+# Ingestion mappings
 
-Data mappings are used during ingestion to map incoming data to columns inside tables.
+Ingestion mappings are used during ingestion to map incoming data to columns inside tables.
 
 Data Explorer supports different types of mappings, both row-oriented (CSV, JSON, AVRO and W3CLOGFILE), and column-oriented (Parquet and ORC).
+
+Ingestion mappings can be [pre-created](create-ingestion-mapping-command.md) and can be referenced from the ingest command using `ingestionMappingReference` parameters. Although, ingestion is possible without specifying a mapping. For more information, see [identity mapping](#identity-mapping).
 
 Each element in the mapping list is constructed from three fields:
 
@@ -21,10 +23,6 @@ Each element in the mapping list is constructed from three fields:
 | Properties  |          | Property-bag containing properties specific for each mapping as described in each specific mapping type page. |
 
 [!INCLUDE [data-mapping-type-note](../../includes/data-mapping-type-note.md)]
-
-The mappings can be [pre-created](create-ingestion-mapping-command.md) and can be referenced from the ingest command using `ingestionMappingReference` parameters.
-
-Ingestion is possible without specifying a mapping. See [identity mapping](#identity-mapping).
 
 ## Supported mapping types
 
