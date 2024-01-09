@@ -32,6 +32,9 @@ To open the data profile view for a table:
 
 The data profile for the selected table view opens in a side window.
 
+> [!NOTE]
+> The data profile is based on data from the [hot cache](kusto/management/cache-policy.md).
+
 ## Explore the data profile
 
 Within the profile, you can explore information about columns and their top values. Each column name is accompanied by a relevant statistic based on its data type, and selecting the column reveals more details specific to that data type:
