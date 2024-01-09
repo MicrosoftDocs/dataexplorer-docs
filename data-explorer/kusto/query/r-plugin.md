@@ -47,7 +47,7 @@ The following variables are reserved for interaction between Kusto Query Languag
 
 ## R sandbox image
 
-* The R sandbox image is based on *R 3.4.4 for Windows*, and includes packages from [Anaconda's R Essentials bundle](https://docs.anaconda.com/anaconda/packages/r-language-pkg-docs/).
+* The R sandbox image is based on *R 3.4.4 for Windows*, and includes packages from [Anaconda's R Essentials bundle](https://docs.anaconda.com/free/anaconda/reference/packages/r-language-pkg-docs/). 
 
 ## Examples
 
