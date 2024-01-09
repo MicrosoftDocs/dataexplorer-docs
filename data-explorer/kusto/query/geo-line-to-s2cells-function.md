@@ -49,7 +49,7 @@ If any of the following:  line, level, radius is invalid, or the cell count exce
  * If possible, reduce lines count due to nature of the data or business needs. Filter out unnecessary lines before join, scope to the area of interest or unify lines.
  * In case of very big lines, reduce their size using [geo_line_simplify()](geo-line-simplify-function.md).
  * Changing S2 cell level may improve performance and memory consumption.
- * Changing [join kind and hint](joinoperator.md) may improve performance and memory consumption.
+ * Changing [join kind and hint](join-operator.md) may improve performance and memory consumption.
  * In case positive radius is set, reverting to radius 0 on buffered shape using [geo_line_buffer()](geo-line-buffer-function.md) may improve performance.
 
 ## Examples

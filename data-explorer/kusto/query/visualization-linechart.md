@@ -15,7 +15,7 @@ The line chart visual is the most basic type of chart. The first column of the q
 
  
 > [!NOTE]
-> This visualization can only be used in the context of the [render operator](renderoperator.md).
+> This visualization can only be used in the context of the [render operator](render-operator.md).
 
 ## Syntax
 

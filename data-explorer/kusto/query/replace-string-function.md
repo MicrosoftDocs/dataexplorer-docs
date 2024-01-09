@@ -56,4 +56,4 @@ range x from 1 to 5 step 1
 
 * To replace multiple strings, see [replace_strings()](replace-strings-function.md).
 * To replace strings based on regular expression, see [replace_regex()](replace-regex-function.md).
-* To replace a set of characters, see [translate()](translatefunction.md).
+* To replace a set of characters, see [translate()](translate-function.md).

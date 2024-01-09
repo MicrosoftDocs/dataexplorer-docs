@@ -13,6 +13,9 @@ When a principal attempts an operation, the system performs an authorization che
 
 The management commands listed in this article can be used to manage principals and their security roles on databases, tables, external tables, materialized views, and functions.
 
+> [!NOTE]
+> The three cluster level security roles of `AllDatabasesAdmin`, `AllDatabasesViewer`, and `AllDatabasesMonitor` can't be configured with security role management commands. For more information, see [Manage cluster permissions](../../manage-cluster-permissions.md).
+
 ## Management commands
 
 The following table describes the commands used for managing security roles.
@@ -32,8 +35,8 @@ The following table describes the level of access granted for each role and show
 |--|--|--|--|--|--|--|
 |`admins` | View, modify, and remove the object and subobjects.|&check;|&check;|&check;|&check;|&check;|
 |`users` | View the object and create new subobjects.|&check;|||||
-|`viewers` | View the object where [RestrictedViewAccess](restrictedviewaccesspolicy.md) isn't turned on.|&check;|||||
-|`unrestrictedviewers`| View the object even where [RestrictedViewAccess](restrictedviewaccesspolicy.md) is turned on. The principal must also have `admins`, `viewers` or `users` permissions. |&check;|||||
+|`viewers` | View the object where [RestrictedViewAccess](restricted-view-access-policy.md) isn't turned on.|&check;|||||
+|`unrestrictedviewers`| View the object even where [RestrictedViewAccess](restricted-view-access-policy.md) is turned on. The principal must also have `admins`, `viewers` or `users` permissions. |&check;|||||
 |`ingestors` | Ingest data to the object without access to query. |&check;|&check;||||
 |`monitors` | View metadata such as schemas, operations, and permissions.|&check;|||||
 
@@ -41,9 +44,6 @@ For a full description of the security roles at each scope, see [Kusto role-base
 
 > [!NOTE]
 > It isn't possible to assign the `viewer` role for only some tables in the database. For different approaches on how to grant a principal view access to a subset of tables, see [manage table view access](manage-table-view-access.md).
-
-> [!TIP]
-> There are three cluster level security roles (`AllDatabasesAdmin`, `AllDatabasesViewer`, and `AllDatabasesMonitor`) that can only be configured in the Azure portal. To learn more, see [manage cluster permissions](../../manage-cluster-permissions.md).
 
 ## Common scenarios
 
@@ -106,7 +106,7 @@ To see the roles assigned to all principals for a particular resource, run the f
 ```
 
 > [!TIP]
-> Use the [where](../query/whereoperator.md) operator to filter the results by a specific principal or role.
+> Use the [where](../query/where-operator.md) operator to filter the results by a specific principal or role.
 
 ## Related content
 

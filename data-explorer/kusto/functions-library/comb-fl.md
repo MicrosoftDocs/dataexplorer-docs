@@ -9,7 +9,7 @@ ms.date: 04/30/2023
 
 Calculate *C(n, k)*
 
-The function `comb_fl()` is a [user-defined function (UDF)](../query/functions/user-defined-functions.md) that calculates *C(n, k)*, the number of [combinations](https://en.wikipedia.org/wiki/Combination) for selection of k items out of n, without order. It's based on the native [gamma()](../query/gammafunction.md) function to calculate factorial. For more information, see [facorial_fl()](factorial-fl.md). For a selection of k items with order, use [perm_fl()](perm-fl.md).
+The function `comb_fl()` is a [user-defined function (UDF)](../query/functions/user-defined-functions.md) that calculates *C(n, k)*, the number of [combinations](https://en.wikipedia.org/wiki/Combination) for selection of k items out of n, without order. It's based on the native [gamma()](../query/gamma-function.md) function to calculate factorial. For more information, see [facorial_fl()](factorial-fl.md). For a selection of k items with order, use [perm_fl()](perm-fl.md).
 
 ## Syntax
 
@@ -30,10 +30,10 @@ You can define the function by either embedding its code as a query-defined func
 
 ### [Query-defined](#tab/query-defined)
 
-Define the function using the following [let statement](../query/letstatement.md). No permissions are required.
+Define the function using the following [let statement](../query/let-statement.md). No permissions are required.
 
 > [!IMPORTANT]
-> A [let statement](../query/letstatement.md) can't run on its own. It must be followed by a [tabular expression statement](../query/tabularexpressionstatements.md). To run a working example of `comb_fl()`, see [Example](#example).
+> A [let statement](../query/let-statement.md) can't run on its own. It must be followed by a [tabular expression statement](../query/tabular-expression-statements.md). To run a working example of `comb_fl()`, see [Example](#example).
 
 ```kusto
 let comb_fl=(n:int, k:int)

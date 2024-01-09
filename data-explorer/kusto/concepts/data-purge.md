@@ -60,8 +60,8 @@ Issuing a `.purge` command triggers this process, which takes a few days to comp
 * The `predicate` parameter of the [.purge](#purge-table-tablename-records-command) command is used to specify which records to purge.
 `Predicate` size is limited to 1 MB. When constructing the `predicate`:
 
-  * Use the ['in' operator](../query/inoperator.md), for example, `where [ColumnName] in ('Id1', 'Id2', .. , 'Id1000')`.
-  * Note the limits of the ['in' operator](../query/inoperator.md) (list can contain up to `1,000,000` values).
+  * Use the ['in' operator](../query/in-operator.md), for example, `where [ColumnName] in ('Id1', 'Id2', .. , 'Id1000')`.
+  * Note the limits of the ['in' operator](../query/in-operator.md) (list can contain up to `1,000,000` values).
   * If the query size is large, use [`externaldata` operator](../query/externaldata-operator.md), for example `where UserId in (externaldata(UserId:string) ["https://...blob.core.windows.net/path/to/file?..."])`. The file stores the list of IDs to purge.
   * The total query size, after expanding all `externaldata` blobs (total size of all blobs), can't exceed 64 MB.
 
@@ -73,10 +73,10 @@ Monitor the purge request queue size, and keep within adequate limits to match t
 To reduce purge execution time:
 
 * Follow the [purge guidelines](#purge-guidelines) to decrease the amount of purged data.
-* Adjust the [caching policy](../management/cachepolicy.md) since purge takes longer on cold data.
+* Adjust the [caching policy](../management/cache-policy.md) since purge takes longer on cold data.
 * Scale out the cluster
 
-* Increase cluster purge capacity, after careful consideration, as detailed in [Extents purge rebuild capacity](../management/capacitypolicy.md#extents-purge-rebuild-capacity).
+* Increase cluster purge capacity, after careful consideration, as detailed in [Extents purge rebuild capacity](../management/capacity-policy.md#extents-purge-rebuild-capacity).
 
 ## Trigger the purge process
 

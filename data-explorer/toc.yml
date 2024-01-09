@@ -51,6 +51,8 @@ items:
               - name: Create external table
                 displayName: one-click
                 href: external-table.md
+              - name: Schema optimization best practices
+                href: schema-best-practice.md
           - name: Migrate
             items:
               - name: Migrate from Elasticsearch
@@ -66,6 +68,7 @@ items:
             href: /security/benchmark/azure/baselines/data-explorer-security-baseline?toc=/azure/data-explorer/toc.json
           - name: Security controls by Azure Policy
             href: security-controls-policy.md
+            displayName: Azure Policy Regulatory Compliance, compliance
           - name: Access control
             href: kusto/access-control/index.md
             items:
@@ -335,6 +338,7 @@ items:
       - name: Debug KQL inline Python
         href: debug-inline-python.md
       - name: Query data using T-SQL
+        displayName: explain, sql, tsql 
         href: t-sql.md
       - name: Query data using SQL Server emulation
         items:
@@ -452,6 +456,8 @@ items:
                 href: manage-cluster-horizontal-scaling.md
               - name: Manage cluster vertical scaling
                 href: manage-cluster-vertical-scaling.md
+              - name: Migrate cluster to support availability zones
+                href: migrate-cluster-to-multiple-availability-zone.md
               - name: Check cluster health
                 href: check-cluster-health.md
               - name: Add cluster principal

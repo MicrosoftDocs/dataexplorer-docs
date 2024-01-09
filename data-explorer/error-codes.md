@@ -3,11 +3,17 @@ title: Ingestion error codes - Azure Data Explorer
 description: This article lists ingestion error codes in Azure Data Explorer.
 ms.reviewer: vladikbr
 ms.topic: reference
-ms.date: 11/11/2020
+ms.date: 12/21/2023
 ---
 # Ingestion error codes
 
-The following list contains error codes you may come across during [ingestion](ingest-data-overview.md). When you enable failed ingestion [diagnostic logs](using-diagnostic-logs.md#diagnostic-logs-schema) on your cluster, you can see error codes in the **Failed ingestion** operation log. You can also monitor the **Ingestion result** [metric](using-metrics.md#ingestion-metrics) to see the **Category** of ingestion errors, but not the specific error codes. Errors below are organized by these categories.
+This article contains error codes that may occur during [data ingestion](ingest-data-overview.md).
+
+When you enable failed ingestion [diagnostic logs](using-diagnostic-logs.md) on your cluster, you can see error codes in the **Failed ingestion** [operation log](/azure/azure-monitor/reference/tables/failedingestion).
+
+You can use the [.show ingestion failures command](kusto/management/ingestion-failures.md) to present information on data ingestion management command failures, though this command excludes failures from other stages of the ingestion process. For a comprehensive view of failures across all stages, refer to [ingestion metrics](using-metrics.md#ingestion-metrics) and [diagnostic logs](using-diagnostic-logs.md). 
+
+The **Ingestion result** metric provides information about the **Category** of ingestion errors, although it doesn't show the specific error codes. The errors in this article are organized by these categories.
 
 > [!NOTE]
 > For transient errors or 'General_RetryAttemptsExceeded' error, retrying the ingestion may succeed.
@@ -46,7 +52,7 @@ The following list contains error codes you may come across during [ingestion](i
 |BadRequest_CorruptedMessage                       |Message is corrupted.    |Permanent           |
 |BadRequest_SyntaxError                            |Request syntax error.     |Permanent           |
 |BadRequest_ZeroRetentionPolicyWithNoUpdatePolicy  |Table has zero retention policy and isn't the source table for any update policy.    |Permanent           |
-|BadRequest_CreationTimeEarlierThanSoftDeletePeriod|Creation time that was specified for ingestion, isn't within the `SoftDeletePeriod`.<br>For more information about `SoftDeletePeriod`, see [The policy object](./kusto/management/retentionpolicy.md#the-policy-object).  |Permanent   |
+|BadRequest_CreationTimeEarlierThanSoftDeletePeriod|Creation time that was specified for ingestion, isn't within the `SoftDeletePeriod`.<br>For more information about `SoftDeletePeriod`, see [The policy object](./kusto/management/retention-policy.md#the-policy-object).  |Permanent   |
 |BadRequest_NotSupported                           |Request not supported.    |Permanent           |
 |Download_SourceNotFound                           |Failed to download source from Azure Storage. Source not found.       |Permanent       |
 |BadRequest_EntityNameIsNotValid                   |Entity name isn't valid.<br>For more information about naming conventions, see [Entity names](./kusto/query/schema-entities/entity-names.md).    |Permanent           |
