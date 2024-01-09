@@ -15,8 +15,8 @@ To specify a `real` literal, use one of the following syntax options:
 
 |Syntax|Description|Example|
 |--|--|--|
-|*n*`.`*fraction*|A real number represented by one or more digits, followed by a decimal point, and then one or more digits.|`1.0`|
-|*n*`e`*exponent*|A real number represented by scientific notation.|`1e5`|
+|*number*|A real number represented by one or more digits, followed by a decimal point, and then one or more digits.|`1.0`|
+|*number*`e`*exponent*|A real number represented by scientific notation.|`1e5`|
 |`real(null)`|Represents the [null value](null-values.md).||
 |`real(nan)`|Not-a-number (NaN), such as when dividing a `0.0` by another `0.0`.||
 |`real(+inf)`|Positive infinity, such as when dividing `1.0` by `0.0`.||

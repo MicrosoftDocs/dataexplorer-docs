@@ -19,8 +19,8 @@ To specify a `decimal` literal, use one of the following syntax options:
 
 |Syntax|Description|Example|
 |--|--|
-|`decimal(`*n*`.`*fraction*`)`|A decimal number represented by one or more digits, followed by a decimal point, and then one or more digits.|`decimal(1.0)`|
-|`decimal(`*n*`e`*exponent*`)`|A decimal number represented by scientific notation.|`1e5`|
+|`decimal(`*number*`)`|A decimal number represented by one or more digits, followed by a decimal point, and then one or more digits.|`decimal(1.0)`|
+|`decimal(`*number*`e`*exponent*`)`|A decimal number represented by scientific notation.|`decimal(1e5)` is equivalent to 100,000|
 |`decimal(null)`|Represents the [null value](null-values.md).||
 
 [!INCLUDE [syntax-conventions-note](../../../includes/syntax-conventions-note.md)]
