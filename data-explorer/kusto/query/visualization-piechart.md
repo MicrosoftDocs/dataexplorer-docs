@@ -19,7 +19,7 @@ The pie chart visual can also be used in the context of [Geospatial visualizatio
 
 
 > [!NOTE]
-> This visualization can only be used in the context of the [render operator](renderoperator.md).
+> This visualization can only be used in the context of the [render operator](render-operator.md).
 
 ## Syntax
 

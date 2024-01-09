@@ -7,7 +7,7 @@ ms.date: 07/02/2023
 ---
 # Create a table's ingestion batching policy with the table batching policy wizard
 
-During the ingestion process, throughput is optimized by batching small ingress data chunks together before ingestion. The  [ingestion batching policy](./kusto/management/batchingpolicy.md#sealing-a-batch) defines data aggregation for batching.
+During the ingestion process, throughput is optimized by batching small ingress data chunks together before ingestion. The  [ingestion batching policy](./kusto/management/batching-policy.md#sealing-a-batch) defines data aggregation for batching.
 In this article, you can define and assign an ingestion batching policy for a table using the table batching policy wizard.
 
 ## Prerequisites
@@ -43,7 +43,7 @@ In this article, you can define and assign an ingestion batching policy for a ta
     | Time (seconds) |  *300* | The time limit after which a batch is sealed. |
     | Size (MB) |  *1024* | The size limit after which a batch is sealed.  |
 
-    For more information, see [ingestion batching policy batch sealing](./kusto/management/batchingpolicy.md#sealing-a-batch).
+    For more information, see [ingestion batching policy batch sealing](./kusto/management/batching-policy.md#sealing-a-batch).
 
 1. Select **Update**.
 

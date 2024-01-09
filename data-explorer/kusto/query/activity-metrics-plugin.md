@@ -24,7 +24,7 @@ Calculates useful metrics that include distinct count values, distinct count of 
 | *TimelineColumn* | string | &check; | The name of the column that represents timeline. |
 | *Start* | datetime | &check; | The analysis start period. |
 | *End* | datetime | &check; | The analysis end period. |
-| *Step* | decimal, datetime, or timespan | &check; | The analysis window period. This value may also be a string of `week`, `month`, or `year`, in which case all periods will be [startofweek](startofweekfunction.md), [startofmonth](startofmonthfunction.md), or [startofyear](startofyearfunction.md) respectively. |
+| *Step* | decimal, datetime, or timespan | &check; | The analysis window period. This value may also be a string of `week`, `month`, or `year`, in which case all periods will be [startofweek](startofweek-function.md), [startofmonth](startofmonth-function.md), or [startofyear](startofyear-function.md) respectively. |
 | *dim1*, *dim2*, ... | dynamic |  | An array of the dimensions columns that slice the activity metrics calculation. |
 
 ## Returns

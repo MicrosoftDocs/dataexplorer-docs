@@ -7,7 +7,7 @@ ms.date: 05/28/2023
 ---
 # .alter-merge materialized-view policy merge command
 
-Changes the materialized view's [merge policy](mergepolicy.md). The merge policy defines if and how [Extents (Data Shards)](../management/extents-overview.md) in the cluster should get merged.
+Changes the materialized view's [merge policy](merge-policy.md). The merge policy defines if and how [Extents (Data Shards)](../management/extents-overview.md) in the cluster should get merged.
 
 ## Permissions
 
@@ -24,7 +24,7 @@ You must have at least [Database Admin](access-control/role-based-access-control
 |Name|Type|Required|Description|
 |--|--|--|--|
 |*MaterializedViewName*|string|&check;|The name of the materialized view.|
-|*PolicyObject*|string|&check;|A serialized array of one or more JSON policy objects. For more information, see [merge policy](mergepolicy.md).|
+|*PolicyObject*|string|&check;|A serialized array of one or more JSON policy objects. For more information, see [merge policy](merge-policy.md).|
 
 ### Example
 

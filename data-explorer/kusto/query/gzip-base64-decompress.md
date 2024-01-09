@@ -64,4 +64,4 @@ print res=gzip_decompress_from_base64_string("x0x0x0")
 ## Related content
 
 * [gzip_compress_to_base64_string()](gzip-base64-compress.md)
-* [zlib_decompress_from_base64_string](zlib-base64-decompress.md)
+* [zlib_decompress_from_base64_string](zlib-base64-decompress-function.md)

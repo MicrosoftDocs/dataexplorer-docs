@@ -99,7 +99,7 @@ This match can be achieved by the following process:
 > * If possible, reduce polygons count due to nature of the data or business needs. Filter out unnecessary polygons before join, scope to the area of interest or unify polygons.
 > * In case of very big polygons, reduce their size using [geo_polygon_simplify()](geo-polygon-simplify-function.md).
 > * Changing S2 cell level may improve performance and memory consumption.
-> * Changing [join kind and hint](joinoperator.md) may improve performance and memory consumption.
+> * Changing [join kind and hint](join-operator.md) may improve performance and memory consumption.
 > * If a positive radius is set, you can try to improve performance by reverting to radius 0 on buffered shape using [geo_polygon_buffer()](geo-polygon-buffer-function.md).
 
 ## Examples
@@ -145,7 +145,7 @@ Polygons
 |-73.995|40.734|Greenwich Village|
 |-73.9584|40.7688|Upper East Side|
 
-Here is even more improvement on the above query. Count storm events per US state. The below query performs a very efficient join because it doesn't carry polygons through the join and uses [lookup operator](lookupoperator.md)
+Here is even more improvement on the above query. Count storm events per US state. The below query performs a very efficient join because it doesn't carry polygons through the join and uses [lookup operator](lookup-operator.md)
 
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA31SPW/CMBDd8ys82lKo1A5dEEOp2CgL6hyZ5AgGf0T2JTQVP74XJyFAq97ke3539+5DA7I1NKDZgr3OE01u5XRbOhsIMRLBK6nVN/CEkX1usy0SGKJ3YZV3R8iRRXAjDVAQuoBe2ZLvQWLtITwRqwKPip6bt4+VSMcaxL6SSnAG0LcpUwXhFs5ZWauCC9HLQlMRHOuOCh9EqCJluWugK05USpgNzAxdFl5y0DrwAUr7tgUbkphmBl+VtMWUAh3DtgK3531DYqAenbLspGyxUNaCZwdl8YkoNIKyXey8k0UuA0b2aPzO62yLzptVAxbDr7+pJx1bWUKp7LoTrSVefYn/B0b2HyMhudNA+ETsB3KXUzBa0pjgftwzeZbt9W8q8zxPulVdmHbuVFfTOVEmVSQP8RE5H8DDjThlx8XdqBsQQfxQGyM9HeXtEN9dbXHZxkukVvPO5YLt2uk4fwDWrd0X7QIAAA==

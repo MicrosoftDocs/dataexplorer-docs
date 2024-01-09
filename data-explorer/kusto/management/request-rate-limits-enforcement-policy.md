@@ -78,4 +78,4 @@ The effective rate limits for the `default` workload group are:
 ## Related content
 
 * [.show workload_group command](show-workload-group-command.md)
-* [System information](systeminfo.md)
+* [System information](system-info.md)
