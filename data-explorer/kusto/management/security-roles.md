@@ -110,7 +110,7 @@ To see the roles assigned to all principals for a particular resource, run the f
 
 ### Modify the role assignments
 
-For details on how to modify your role assignments at the database and table levels, see [Manage database security roles](manage-database-security-roles.md) and [Manage table security roles](https://learn.microsoft.com/en-us/azure/data-explorer/kusto/management/manage-table-security-roles.md).
+For details on how to modify your role assignments at the database and table levels, see [Manage database security roles](manage-database-security-roles.md) and [Manage table security roles](manage-table-security-roles.md).
 
 ## Related content
 
