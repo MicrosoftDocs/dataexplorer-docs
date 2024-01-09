@@ -57,7 +57,7 @@ This query returns:
 *5h_MovingAvg*: Five points moving average filter. The spike is smoothed and its peak shifted by (5-1)/2 = 2h.  
 *5h_MovingAvg_centered*: Same, but by setting `center=true`, the peak stays in its original location.
 
-:::image type="content" source="images/series-firfunction/series-fir.png" alt-text="Series fir." border="false":::
+:::image type="content" source="media/series-firfunction/series-fir.png" alt-text="Series fir." border="false":::
 
 * To calculate the difference between a point and its preceding one, set *filter*=[1,-1].
 
@@ -72,4 +72,4 @@ range t from bin(now(), 1h) - 11h to bin(now(), 1h) step 1h
 | render timechart
 ```
 
-:::image type="content" source="images/series-firfunction/series-fir2.png" alt-text="Series fir 2." border="false":::
+:::image type="content" source="media/series-firfunction/series-fir2.png" alt-text="Series fir 2." border="false":::

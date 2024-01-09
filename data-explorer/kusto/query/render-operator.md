@@ -52,21 +52,21 @@ three kinds of columns:
 
 | *visualization*| Description| Illustration |
 |-----------|------------|---------|
-| [`anomalychart`](visualization-anomalychart.md)| Similar to timechart, but [highlights anomalies](./samples.md#get-more-from-your-data-by-using-kusto-with-machine-learning) using [series_decompose_anomalies](./series-decompose-anomalies-function.md) function. | :::image type="icon" source="images/renderoperator/anomaly-chart.png" border="false"::: |
-| [`areachart`](visualization-areachart.md)               | Area graph.| :::image type="icon" source="images/renderoperator/area-chart.png" border="false"::: |
-| [`barchart`](visualization-barchart.md)                 | displayed as horizontal strips.| :::image type="icon" source="images/renderoperator/bar-chart.png" border="false"::: |
-| [`card`](visualization-card.md)                         | First result record is treated as set of scalar values and shows as a card.| :::image type="icon" source="images/renderoperator/card.png" border="false":::
-| [`columnchart`](visualization-columnchart.md)           | Like `barchart` with vertical strips instead of horizontal strips.| :::image type="icon" source="images/renderoperator/column-chart.png" border="false"::: |
-| [`ladderchart`](visualization-ladderchart.md)           | Last two columns are the x-axis, other columns are y-axis.| :::image type="icon" source="images/renderoperator/ladder-chart.png" border="false":::|
-| [`linechart`](visualization-linechart.md)               | Line graph. | :::image type="icon" source="images/renderoperator/line-chart.png" border="false"::: |
-| [`piechart`](visualization-piechart.md)                 | First column is color-axis, second column is numeric.| :::image type="icon" source="images/renderoperator/pie-chart.png" border="false"::: |
-| [`pivotchart`](visualization-pivotchart.md)             | Displays a pivot table and chart. User can interactively select data, columns, rows and various chart types.| :::image type="icon" source="images/renderoperator/pivot-chart.png" border="false"::: |
-| [`scatterchart`](visualization-scatterchart.md)         | Points graph.| :::image type="icon" source="images/renderoperator/scatter-chart.png" border="false"::: |
-| [`stackedareachart`](visualization-stackedareachart.md) | Stacked area graph.| :::image type="icon" source="images/renderoperator/stacked-area-chart.png" border="false"::: |
-| [`table`](visualization-table.md)                       | Default - results are shown as a table.| :::image type="icon" source="images/renderoperator/table-visualization.png" border="false"::: |
-| [`timechart`](visualization-timechart.md)               | Line graph. First column is x-axis, and must be datetime. Other (numeric) columns are y-axes. | :::image type="icon" source="images/renderoperator/visualization-timechart.png" border="false"::: |
-| [`timepivot`](visualization-timepivot.md)               | Interactive navigation over the events time-line (pivoting on time axis)| :::image type="icon" source="images/renderoperator/visualization-time-pivot.png" border="false"::: |
-| [`treemap`](visualization-treemap.md) | Displays hierarchical data as a set of nested rectangles.| :::image type="icon" source="images/renderoperator/tree-map.png" border="false"::: |
+| [`anomalychart`](visualization-anomalychart.md)| Similar to timechart, but [highlights anomalies](./samples.md#get-more-from-your-data-by-using-kusto-with-machine-learning) using [series_decompose_anomalies](./series-decompose-anomalies-function.md) function. | :::image type="icon" source="media/renderoperator/anomaly-chart.png" border="false"::: |
+| [`areachart`](visualization-areachart.md)               | Area graph.| :::image type="icon" source="media/renderoperator/area-chart.png" border="false"::: |
+| [`barchart`](visualization-barchart.md)                 | displayed as horizontal strips.| :::image type="icon" source="media/renderoperator/bar-chart.png" border="false"::: |
+| [`card`](visualization-card.md)                         | First result record is treated as set of scalar values and shows as a card.| :::image type="icon" source="media/renderoperator/card.png" border="false":::
+| [`columnchart`](visualization-columnchart.md)           | Like `barchart` with vertical strips instead of horizontal strips.| :::image type="icon" source="media/renderoperator/column-chart.png" border="false"::: |
+| [`ladderchart`](visualization-ladderchart.md)           | Last two columns are the x-axis, other columns are y-axis.| :::image type="icon" source="media/renderoperator/ladder-chart.png" border="false":::|
+| [`linechart`](visualization-linechart.md)               | Line graph. | :::image type="icon" source="media/renderoperator/line-chart.png" border="false"::: |
+| [`piechart`](visualization-piechart.md)                 | First column is color-axis, second column is numeric.| :::image type="icon" source="media/renderoperator/pie-chart.png" border="false"::: |
+| [`pivotchart`](visualization-pivotchart.md)             | Displays a pivot table and chart. User can interactively select data, columns, rows and various chart types.| :::image type="icon" source="media/renderoperator/pivot-chart.png" border="false"::: |
+| [`scatterchart`](visualization-scatterchart.md)         | Points graph.| :::image type="icon" source="media/renderoperator/scatter-chart.png" border="false"::: |
+| [`stackedareachart`](visualization-stackedareachart.md) | Stacked area graph.| :::image type="icon" source="media/renderoperator/stacked-area-chart.png" border="false"::: |
+| [`table`](visualization-table.md)                       | Default - results are shown as a table.| :::image type="icon" source="media/renderoperator/table-visualization.png" border="false"::: |
+| [`timechart`](visualization-timechart.md)               | Line graph. First column is x-axis, and must be datetime. Other (numeric) columns are y-axes. | :::image type="icon" source="media/renderoperator/visualization-timechart.png" border="false"::: |
+| [`timepivot`](visualization-timepivot.md)               | Interactive navigation over the events time-line (pivoting on time axis)| :::image type="icon" source="media/renderoperator/visualization-time-pivot.png" border="false"::: |
+| [`treemap`](visualization-treemap.md) | Displays hierarchical data as a set of nested rectangles.| :::image type="icon" source="media/renderoperator/tree-map.png" border="false"::: |
 
 > [!NOTE]
 > The ladderchart, pivotchart, timepivot, and treemap visualizations can be used in Kusto.Explorer but are not available in the Azure Data Explorer web UI.
@@ -77,13 +77,13 @@ three kinds of columns:
 
 |*Visualization*     |Description| Illustration |
 |--------------------|----------|---------|
-| [`areachart`](visualization-areachart.md)| Area graph. First column is the x-axis and should be a numeric column. Other numeric columns are y-axes. |  :::image type="icon" source="images/renderoperator/area-chart.png" border="false"::: |
-| [`barchart`](visualization-barchart.md)  | First column is the x-axis and can be text, datetime or numeric. Other columns are numeric, displayed as horizontal strips.| :::image type="icon" source="images/renderoperator/bar-chart.png" border="false"::: |
-| [`columnchart`](visualization-columnchart.md)| Like `barchart` with vertical strips instead of horizontal strips.| :::image type="icon" source="images/renderoperator/column-chart.png" border="false"::: |
-| [`piechart`](visualization-piechart.md)  | First column is color-axis, second column is numeric. | :::image type="icon" source="images/renderoperator/pie-chart.png" border="false"::: |
-| [`scatterchart`](visualization-scatterchart.md)     | Points graph. First column is the x-axis and should be a numeric column. Other numeric columns are y-axes. | :::image type="icon" source="images/renderoperator/scatter-chart.png" border="false"::: |
-| [`table`](visualization-table.md)            | Default - results are shown as a table.| :::image type="icon" source="images/renderoperator/table-visualization.png" border="false"::: |
-| [`timechart`](visualization-timechart.md)         | Line graph. First column is x-axis, and should be datetime. Other (numeric) columns are y-axes. There's one string column whose values are used to "group" the numeric columns and create different lines in the chart (further string columns are ignored).| :::image type="icon" source="images/renderoperator/visualization-timechart.png" border="false"::: |
+| [`areachart`](visualization-areachart.md)| Area graph. First column is the x-axis and should be a numeric column. Other numeric columns are y-axes. |  :::image type="icon" source="media/renderoperator/area-chart.png" border="false"::: |
+| [`barchart`](visualization-barchart.md)  | First column is the x-axis and can be text, datetime or numeric. Other columns are numeric, displayed as horizontal strips.| :::image type="icon" source="media/renderoperator/bar-chart.png" border="false"::: |
+| [`columnchart`](visualization-columnchart.md)| Like `barchart` with vertical strips instead of horizontal strips.| :::image type="icon" source="media/renderoperator/column-chart.png" border="false"::: |
+| [`piechart`](visualization-piechart.md)  | First column is color-axis, second column is numeric. | :::image type="icon" source="media/renderoperator/pie-chart.png" border="false"::: |
+| [`scatterchart`](visualization-scatterchart.md)     | Points graph. First column is the x-axis and should be a numeric column. Other numeric columns are y-axes. | :::image type="icon" source="media/renderoperator/scatter-chart.png" border="false"::: |
+| [`table`](visualization-table.md)            | Default - results are shown as a table.| :::image type="icon" source="media/renderoperator/table-visualization.png" border="false"::: |
+| [`timechart`](visualization-timechart.md)         | Line graph. First column is x-axis, and should be datetime. Other (numeric) columns are y-axes. There's one string column whose values are used to "group" the numeric columns and create different lines in the chart (further string columns are ignored).| :::image type="icon" source="media/renderoperator/visualization-timechart.png" border="false"::: |
 
 ::: zone-end
 
@@ -91,17 +91,17 @@ three kinds of columns:
 
 | *visualization*| Description| Illustration |
 |-----------|------------|---------|
-| [`anomalychart`](visualization-anomalychart.md)| Similar to timechart, but [highlights anomalies](./samples.md#get-more-from-your-data-by-using-kusto-with-machine-learning) using [series_decompose_anomalies](./series-decompose-anomalies-function.md) function. | :::image type="icon" source="images/renderoperator/anomaly-chart.png" border="false"::: |
-| [`areachart`](visualization-areachart.md)               | Area graph.| :::image type="icon" source="images/renderoperator/area-chart.png" border="false"::: |
-| [`barchart`](visualization-barchart.md)                 | displayed as horizontal strips.| :::image type="icon" source="images/renderoperator/bar-chart.png" border="false"::: |
-| [`card`](visualization-card.md)                         | First result record is treated as set of scalar values and shows as a card.| :::image type="icon" source="images/renderoperator/card.png" border="false":::
-| [`columnchart`](visualization-columnchart.md)           | Like `barchart` with vertical strips instead of horizontal strips.| :::image type="icon" source="images/renderoperator/column-chart.png" border="false"::: |
-| [`linechart`](visualization-linechart.md)               | Line graph. | :::image type="icon" source="images/renderoperator/line-chart.png" border="false"::: |
-| [`piechart`](visualization-piechart.md)                 | First column is color-axis, second column is numeric.| :::image type="icon" source="images/renderoperator/pie-chart.png" border="false"::: |
-| [`scatterchart`](visualization-scatterchart.md)         | Points graph.| :::image type="icon" source="images/renderoperator/scatter-chart.png" border="false"::: |
-| [`stackedareachart`](visualization-stackedareachart.md) | Stacked area graph.| :::image type="icon" source="images/renderoperator/stacked-area-chart.png" border="false"::: |
-| [`table`](visualization-table.md)                       | Default - results are shown as a table.| :::image type="icon" source="images/renderoperator/table-visualization.png" border="false"::: |
-| [`timechart`](visualization-timechart.md)               | Line graph. First column is x-axis, and must be datetime. Other (numeric) columns are y-axes. | :::image type="icon" source="images/renderoperator/visualization-timechart.png" border="false"::: |
+| [`anomalychart`](visualization-anomalychart.md)| Similar to timechart, but [highlights anomalies](./samples.md#get-more-from-your-data-by-using-kusto-with-machine-learning) using [series_decompose_anomalies](./series-decompose-anomalies-function.md) function. | :::image type="icon" source="media/renderoperator/anomaly-chart.png" border="false"::: |
+| [`areachart`](visualization-areachart.md)               | Area graph.| :::image type="icon" source="media/renderoperator/area-chart.png" border="false"::: |
+| [`barchart`](visualization-barchart.md)                 | displayed as horizontal strips.| :::image type="icon" source="media/renderoperator/bar-chart.png" border="false"::: |
+| [`card`](visualization-card.md)                         | First result record is treated as set of scalar values and shows as a card.| :::image type="icon" source="media/renderoperator/card.png" border="false":::
+| [`columnchart`](visualization-columnchart.md)           | Like `barchart` with vertical strips instead of horizontal strips.| :::image type="icon" source="media/renderoperator/column-chart.png" border="false"::: |
+| [`linechart`](visualization-linechart.md)               | Line graph. | :::image type="icon" source="media/renderoperator/line-chart.png" border="false"::: |
+| [`piechart`](visualization-piechart.md)                 | First column is color-axis, second column is numeric.| :::image type="icon" source="media/renderoperator/pie-chart.png" border="false"::: |
+| [`scatterchart`](visualization-scatterchart.md)         | Points graph.| :::image type="icon" source="media/renderoperator/scatter-chart.png" border="false"::: |
+| [`stackedareachart`](visualization-stackedareachart.md) | Stacked area graph.| :::image type="icon" source="media/renderoperator/stacked-area-chart.png" border="false"::: |
+| [`table`](visualization-table.md)                       | Default - results are shown as a table.| :::image type="icon" source="media/renderoperator/table-visualization.png" border="false"::: |
+| [`timechart`](visualization-timechart.md)               | Line graph. First column is x-axis, and must be datetime. Other (numeric) columns are y-axes. | :::image type="icon" source="media/renderoperator/visualization-timechart.png" border="false"::: |
 
 ::: zone-end
 

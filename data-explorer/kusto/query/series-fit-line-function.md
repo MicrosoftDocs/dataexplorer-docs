@@ -47,7 +47,7 @@ print
 | render timechart
 ```
 
-:::image type="content" source="images/series-fit-line/series-fit-line.png" alt-text="Series fit line.":::
+:::image type="content" source="media/series-fit-line/series-fit-line.png" alt-text="Series fit line.":::
 
 | RSquare | Slope | Variance | RVariance | Interception | LineFit                                                                                     |
 |---------|-------|----------|-----------|--------------|---------------------------------------------------------------------------------------------|

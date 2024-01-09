@@ -189,7 +189,7 @@ demo_make_series1
 
 **Output**
 
-:::image type="content" source="images/series-rolling-fl/rolling-median-9.png" alt-text="Graph depicting rolling median of 9 elements." border="false":::
+:::image type="content" source="media/series-rolling-fl/rolling-median-9.png" alt-text="Graph depicting rolling median of 9 elements." border="false":::
 
 ### Calculate rolling min, max & 75th percentile of 15 elements
 
@@ -254,7 +254,7 @@ demo_make_series1
 
 **Output**
 
-:::image type="content" source="images/series-rolling-fl/graph-rolling-15.png" alt-text="Graph depicting rolling min, max & 75th percentile of 15 elements." border="false":::
+:::image type="content" source="media/series-rolling-fl/graph-rolling-15.png" alt-text="Graph depicting rolling min, max & 75th percentile of 15 elements." border="false":::
 
 ### Calculate the rolling trimmed mean
 
@@ -311,7 +311,7 @@ range x from 1 to 100 step 1
 
 **Output**
 
-:::image type="content" source="images/series-rolling-fl/rolling-trimmed-mean.png" alt-text="Graph depicting rolling trimmed mean." border="false":::
+:::image type="content" source="media/series-rolling-fl/rolling-trimmed-mean.png" alt-text="Graph depicting rolling trimmed mean." border="false":::
 
 ::: zone-end
 

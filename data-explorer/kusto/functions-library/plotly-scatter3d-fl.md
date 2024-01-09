@@ -174,8 +174,8 @@ Iris
 
 The output is a Plotly JSON string that can be rendered in an Azure Data Explorer dashboard tile. For more information on creating dashboard tiles, see [Visualize data with Azure Data Explorer dashboards ](../../azure-data-explorer-dashboards.md).
 
-![Screenshot of 3D scatter chart of a sample dataset.](images\plotly-scatter3d-fl\plotly-scatter3d-chart.png)
+![Screenshot of 3D scatter chart of a sample dataset.](media/plotly-scatter3d-fl\plotly-scatter3d-chart.png)
 
 You can rotate, zoom and hover over specific records:
 
-![Screenshot of rotated 3D scatter chart of a sample dataset.](images\plotly-scatter3d-fl\plotly-scatter3d-chart-rotated.png)
+![Screenshot of rotated 3D scatter chart of a sample dataset.](media/plotly-scatter3d-fl\plotly-scatter3d-chart-rotated.png)
