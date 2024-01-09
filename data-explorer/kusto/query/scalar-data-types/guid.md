@@ -15,10 +15,10 @@ The `guid` data type represents a 128-bit globally-unique value.
 
 To specify a `guid` literal, use one of the following syntax options:
 
-|Value|Example|
-|--|--|
-|`guid(`*id*`)`|`guid(74be27de-1e4e-49d9-b579-fe0b331d3642)`|A guid ID string.|
-|`guid(null)`||Represents the [null value](null-values.md).|
+|Syntax|Description|Example|
+|--|--|--|
+|`guid(`*id*`)`|A guid ID string.|`guid(74be27de-1e4e-49d9-b579-fe0b331d3642)`|
+|`guid(null)`|Represents the [null value](null-values.md).||
 
 ## Related content
 
