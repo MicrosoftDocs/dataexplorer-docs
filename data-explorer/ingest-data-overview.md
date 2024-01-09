@@ -118,8 +118,6 @@ Azure Data Explorer offers the following ingestion management commands, which in
 
 The following steps outline the general ingestion process:
 
-:::image type="content" source="media/ingest-data-overview/data-ingestion-process.png" lightbox="media/ingest-data-overview/data-ingestion-process.png" alt-text="Diagram showing the steps to data ingestion.":::
-
 1. **Set batching policy (optional)**: Data is batched based on the [ingestion batching policy](kusto/management/batching-policy.md). For guidance, see [Optimize for throughput](kusto/api/netfx/kusto-ingest-best-practices.md#optimize-for-throughput). 
 
 1. **Set retention policy**: If the database retention policy isn't suitable for your needs, override it at the table level. For more information, see [Retention policy](kusto/management/retentionpolicy.md).
