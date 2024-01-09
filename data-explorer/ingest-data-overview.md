@@ -33,9 +33,9 @@ For help answering the decision tree questions, see the relevant documentation:
 
 For more information on the suggested ingestion method, see the relevant documentation:
 
-:::image type="icon" source="media/ingest-data-overview/callout-01.png" alt-text="Screenshot of decision tree callout #1."::: **[Ingest historical data](ingest-data-historical.md)**: Transfer data from an existing storage system to Azure Data Explorer.
+:::image type="icon" source="media/ingest-data-overview/callout-1.png" alt-text="Screenshot of decision tree callout #1."::: **[Ingest historical data](ingest-data-historical.md)**: Transfer data from an existing storage system to Azure Data Explorer.
 
-:::image type="icon" source="media/ingest-data-overview/callout-02.png" alt-text="Screenshot of decision tree callout #2."::: **Get data experience**: In the [Azure Data Explorer web UI](https://dataexplorer.azure.com/), get data from a [local file](get-data-file.md), [Amazon S3](get-data-amazon-s3.md), or [Azure Storage](get-data-storage.md).
+:::image type="icon" source="media/ingest-data-overview/callout-2.png" alt-text="Screenshot of decision tree callout #2."::: **Get data experience**: In the [Azure Data Explorer web UI](https://dataexplorer.azure.com/), get data from a [local file](get-data-file.md), [Amazon S3](get-data-amazon-s3.md), or [Azure Storage](get-data-storage.md).
 
 :::image type="icon" source="media/ingest-data-overview/callout-03.png" alt-text="Screenshot of decision tree callout #3."::: **[Integrate with Azure Data Factory](data-factory-integration.md)**: Azure Data Factory is a fully managed data integration service for analytic workloads and can be used as a one-time solution, on a periodic timeline, or triggered by specific events.
 
