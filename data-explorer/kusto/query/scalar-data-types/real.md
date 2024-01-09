@@ -9,6 +9,8 @@ ms.date: 01/08/2024
 
 The `real` data type represents a 64-bit wide, double-precision, floating-point number.
 
+By default, decimal numbers and numbers represented with scientific notation are of type `real`.
+
 ## `real` literals
 
 To specify a `real` literal, use one of the following syntax options:

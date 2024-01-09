@@ -9,6 +9,8 @@ ms.date: 01/08/2024
 
 The `long` data type represents a signed, 64-bit wide, integer.
 
+By default, integers and integers represented with hexadecimal syntax are of type `long`.
+
 ## `long` literals
 
 To specify a `long` literal, use one of the following syntax options:
