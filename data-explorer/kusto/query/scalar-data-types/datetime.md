@@ -28,9 +28,9 @@ To specify a `datetime` literal, use one of the following syntax options:
 
 |Syntax|Description|Example|
 |--|--|--|
-|`datetime(`*dateAndTime*`)`|A day and time in UTC format.|`datetime(2015-12-31 23:59:59.9)`|
-|`datetime(`*date*`)`|A day in UTC format.|`datetime(2015-12-31)`|
-|`datetime()`|Returns the current time||
+|`datetime(`*year*`.`*month*`.`*day* *hour*`:`*minute*`:`*second*`.`*microseconds*`)`|A date and time in UTC format.|`datetime(2015-12-31 23:59:59.9)`|
+|`datetime(`*year*`.`*month*`.`*day*`)`|A date in UTC format.|`datetime(2015-12-31)`|
+|`datetime()`|Returns the current time.||
 |`datetime(null)`|Represents the [null value](null-values.md).||
 
 ## The `now()` and `ago()` special functions
