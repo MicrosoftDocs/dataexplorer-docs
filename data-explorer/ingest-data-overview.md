@@ -19,13 +19,18 @@ Azure Data Explorer offers one-time ingestion or the establishment of a continuo
 
 One-time ingestion is helpful in various scenarios, such as the transfer of historical data, filling in missing data, and for the initial stages of prototyping and data analysis. This approach facilitates fast data integration without the need for a continuous pipeline commitment.
 
-There are multiple ways to perform one-time data ingestion. Use the following diagram to help you determine the most suitable option based on your specific use case:
+There are multiple ways to perform one-time data ingestion. Use the following decision tree to determine the most suitable option for your use case:
 
 :::image type="complex" source="media/ingest-data-overview/one-time-ingestion.png" lightbox="media/ingest-data-overview/one-time-ingestion.png" alt-text="Flow chart for one-time ingestion decision making.":::
    "Diagram that acts as a decision tree for one-time ingestion. If you're ingesting historical data, you should follow the guidance in the Ingest historical data document. If you're not ingesting historical data, and the data is in a supported data format, we recommend using the Get Data experience to get data from a local file, get data from Amazon S3, or get data from Azure Storage. If the data is in an unsupported format, or if you don't want to use the Get Data experience, you can integrate with Azure Data Factory, which supports around 90 data formats, or write your own custom code using the Kusto client libraries. Articles with guidance on each of these options are linked to directly following this flow chart."
 :::image-end:::
 
-For more information, see the relevant documentation:
+For help answering the decision tree questions, see the relevant documentation:
+
+* **A**: See the [data formats supported by Azure Data Explorer for ingestion](ingestion-supported-formats.md).
+* **B**: See the [file formats supported for Azure Data Factory pipelines](/azure/data-explorer/ingestion-supported-formats).
+
+For more information on the suggested ingestion method, see the relevant documentation:
 
 1. **[Ingest historical data](ingest-data-historical.md)**: Transfer data from an existing storage system to Azure Data Explorer.
 2. **Get data experience**: In the Azure Data Explorer web UI, you can ingest data as described in the following articles:
@@ -52,7 +57,7 @@ Continuous data ingestion involves setting up an ingestion pipeline with either 
 > [!NOTE]
 > For most scenarios, we recommend using queued ingestion as it is the more performant option.
 
-There are multiple ways to configure continuous data ingestion. Use the following diagram to help you determine the most suitable option based on your specific use case:
+There are multiple ways to configure continuous data ingestion. Use the following decision tree to determine the most suitable option for your use case:
 
 :::image type="complex" source="media/ingest-data-overview/continuous-ingestion.png" lightbox="media/ingest-data-overview/continuous-ingestion.png" alt-text="Flow chart for continuous ingestion decision making.":::
     "Flow chart for continuous ingestion decision making. First, determine the type and location of your data. For event data, you can create an Event Hubs data connection or ingest data with Apache Kafka. For IoT data, you can create an IoT Hubs data connection. For data in Azure Storage, you can create an Event Grid data connection. For data stored in other places, check the connectors overview to see if there's a dedicated connector that can fit your use case. If so, follow the guidance to use that connector. If not, write custom code using Kusto client libraries. Articles with guidance on each of these options are linked to directly following this flow chart."
