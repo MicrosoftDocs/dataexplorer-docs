@@ -22,13 +22,13 @@ To open the data profile view for a table:
 1. From the left menu, select **Query**.
 1. There are two ways to open the data profile:
 
-        * Select the desired table, and then select the **Data profile** icon in the top bar:
-
-            :::image type="content" source="media/data-profile/data-profile-button.png" alt-text="Screenshot of the button to open the data profile view.":::
-
         * Right-click the desired table, and select **Data profile**:
 
             :::image type="content" source="media/data-profile/data-profile-in-menu.png" alt-text="Screenshot of data profile in menu.":::
+        
+        * Select the desired table, and then select the **Data profile** icon in the top bar:
+
+            :::image type="content" source="media/data-profile/data-profile-button.png" alt-text="Screenshot of the button to open the data profile view.":::
 
 The data profile for the selected table view opens in a side window.
 
