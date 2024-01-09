@@ -7,7 +7,9 @@ ms.date: 01/09/2024
 ---
 # dayofweek()
 
-Returns the number of days since the preceding Sunday, as a `timespan`. To convert `timespan` to `int`, see [Convert timespan to integer](#convert-timespan-to-integer).
+Returns the number of days since the preceding Sunday, as a `timespan`.
+
+To convert `timespan` to `int`, see [Convert timespan to integer](#convert-timespan-to-integer).
 
 ## Syntax
 
