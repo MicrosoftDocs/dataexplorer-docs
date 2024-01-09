@@ -55,4 +55,4 @@ ts
 | render timechart 
 ```
 
-:::image type="content" source="images/series-decompose-forecastfunction/series-decompose-forecast.png" alt-text="Series decompose forecast.":::
+:::image type="content" source="media/series-decompose-forecastfunction/series-decompose-forecast.png" alt-text="Series decompose forecast.":::

@@ -73,7 +73,7 @@ The following table summarizes the default values of aggregations:
 
 ## Examples
 
-:::image type="content" source="images/summarizeoperator/summarize-price-by-supplier.png" alt-text="Summarize price by fruit and supplier.":::
+:::image type="content" source="media/summarizeoperator/summarize-price-by-supplier.png" alt-text="Summarize price by fruit and supplier.":::
 
 ### Unique combination
 

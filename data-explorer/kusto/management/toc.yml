@@ -232,10 +232,11 @@ items:
           - name: .alter-merge table column-docstrings command
             displayName: .alter-merge column-docstrings
             href: alter-merge-table-column.md
-      - name: Data mappings
+      - name: Ingestion mappings
         items:
-          - name: Data mappings overview
+          - name: Ingestion mappings overview
             href: mappings.md
+            displayName: schema mappings, data mappings
           - name: "CSV mapping"
             href: csv-mapping.md
           - name: "JSON mapping"

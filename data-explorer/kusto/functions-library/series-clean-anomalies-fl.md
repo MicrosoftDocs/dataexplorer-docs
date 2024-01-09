@@ -106,4 +106,4 @@ demo_make_series1
 
 **Output**
 
-:::image type="content" source="images/series-clean-anomalies-fl/series-clean-anomalies-chart.png" alt-text="Graph of a time series with anomalies before and after cleaning." border="false":::
+:::image type="content" source="media/series-clean-anomalies-fl/series-clean-anomalies-chart.png" alt-text="Graph of a time series with anomalies before and after cleaning." border="false":::

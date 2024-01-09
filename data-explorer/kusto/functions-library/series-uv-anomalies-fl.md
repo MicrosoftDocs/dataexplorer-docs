@@ -201,7 +201,7 @@ ts
 
 **Output**
 
-![Graph showing anomalies on a time series.](images/series-uv-anomalies-fl/uv-anomalies-example-1.png)
+![Graph showing anomalies on a time series.](media/series-uv-anomalies-fl/uv-anomalies-example-1.png)
 
 ### Compare `series_uv_anomalies_fl()` and native `series_decompose_anomalies()`
 
@@ -275,11 +275,11 @@ ts
 
 The following graph shows anomalies detected by the Univariate Anomaly Detection API on TS1. You can also select TS2 or TS3 in the chart filter box.
 
-![Graph showing anomalies using the Univariate A P I on a time series.](images/series-uv-anomalies-fl/uv-anomalies-example-2.png)
+![Graph showing anomalies using the Univariate A P I on a time series.](media/series-uv-anomalies-fl/uv-anomalies-example-2.png)
 
 The following graph shows the anomalies detected by native function on TS1.
 
-![Graph showing anomalies using the native function on a time series.](images/series-uv-anomalies-fl/native-anomalies-example-2.png)
+![Graph showing anomalies using the native function on a time series.](media/series-uv-anomalies-fl/native-anomalies-example-2.png)
 
 ::: zone-end
 

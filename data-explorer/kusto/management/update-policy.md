@@ -10,7 +10,7 @@ ms.date: 05/23/2023
 When you trigger an [update policy](./show-table-update-policy-command.md) with a command that adds data to a source table, data also appends to a target table. The target table can have a different schema, retention policy, and other policies from the source table.
 For example, a high-rate trace source table can contain data formatted as a free-text column. The target table can include specific trace lines, with a well-structured schema generated from a transformation of the source table's free-text data using the [parse operator](../query/parse-operator.md).
 
-:::image type="content" source="images/updatepolicy/update-policy-overview.png" alt-text="Diagram shows an overview of the update policy.":::
+:::image type="content" source="media/updatepolicy/update-policy-overview.png" alt-text="Diagram shows an overview of the update policy.":::
 
 An update policy is subject to the same restrictions and best practices as regular ingestion. The policy scales-out according to the cluster size, and is more efficient when handling bulk ingestion.
 

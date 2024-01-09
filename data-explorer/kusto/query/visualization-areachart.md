@@ -87,4 +87,4 @@ demo_series3
 | render areachart
 ```
 
-:::image type="content" source="images/visualization-areachart/area-chart.png" alt-text="Screenshot of area chart visualization." lightbox="images/visualization-areachart/area-chart.png":::
+:::image type="content" source="media/visualization-areachart/area-chart.png" alt-text="Screenshot of area chart visualization." lightbox="media/visualization-areachart/area-chart.png":::

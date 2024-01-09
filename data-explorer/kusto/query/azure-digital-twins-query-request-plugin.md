@@ -45,7 +45,7 @@ evaluate azure_digital_twins_query_request(
   'SELECT T AS Twins FROM DIGITALTWINS T')
 ```
 
-:::image type="content" source="images/azure-digital-twins-query-request-plugin/adt-twins.png" alt-text="Screenshot of the twins present in the Azure Digital Twins instance.":::
+:::image type="content" source="media/azure-digital-twins-query-request-plugin/adt-twins.png" alt-text="Screenshot of the twins present in the Azure Digital Twins instance.":::
 
 ### Projection of twin properties as columns along with additional Kusto expressions
 
