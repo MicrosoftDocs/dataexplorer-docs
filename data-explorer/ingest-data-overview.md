@@ -32,15 +32,25 @@ For help answering the decision tree questions, see the relevant documentation:
 
 For more information on the suggested ingestion method, see the relevant documentation:
 
-:::image type="icon" source="media/ingest-data-overview/callout-01.png" alt-text="Screenshot of decision tree callout #1."::: **[Ingest historical data](ingest-data-historical.md)**: Transfer data from an existing storage system to Azure Data Explorer.
-:::image type="icon" source="media/ingest-data-overview/callout-02.png" alt-text="Screenshot of decision tree callout #2."::: **Get data experience**: In the Azure Data Explorer web UI, you can ingest data as described in the following articles:
+:::image type="icon" source="media/ingest-data-overview/callout-01.png" alt-text="Screenshot of decision tree callout #1.":::
 
-    * [Get data from a local file](get-data-file.md): Get data from a local file in a [supported data format](ingestion-supported-formats.md) into a new or existing table.
-    * [Get data from Amazon S3](get-data-amazon-s3.md): Get data from Amazon S3 storage into either a new or existing table.
-    * [Get data from Azure Storage](get-data-storage.md): Get data from an Azure Data Lake Gen2 container, Azure Storage blob container, or individual blobs into either a new or existing table.
+**[Ingest historical data](ingest-data-historical.md)**: Transfer data from an existing storage system to Azure Data Explorer.
 
-:::image type="icon" source="media/ingest-data-overview/callout-03.png" alt-text="Screenshot of decision tree callout #3."::: **[Integrate with Azure Data Factory](data-factory-integration.md)**: Azure Data Factory (ADF) is a fully managed data integration service for analytic workloads. ADF can be used as a one-time solution, on a periodic timeline, or triggered by specific events.
-:::image type="icon" source="media/ingest-data-overview/callout-04.png" alt-text="Screenshot of decision tree callout #4."::: **Write custom code and use the Kusto client libraries**: [Kusto client libraries](kusto/api/client-libraries.md) are available for C#, Python, Java, JavaScript, TypeScript, and Go. You can write code to manipulate your data as needed and then use the Kusto Ingest library to import the data into your Azure Data Explorer table. The data must be in one of the [supported formats](ingestion-supported-formats.md) prior to ingestion. To get started with the Kusto client libraries, see [Set up your development environment](kusto/api/get-started/app-set-up.md).
+:::image type="icon" source="media/ingest-data-overview/callout-02.png" alt-text="Screenshot of decision tree callout #2.":::
+
+**Get data experience**: In the Azure Data Explorer web UI, you can ingest data as described in the following articles:
+
+* [Get data from a local file](get-data-file.md): Get data from a local file in a [supported data format](ingestion-supported-formats.md) into a new or existing table.
+* [Get data from Amazon S3](get-data-amazon-s3.md): Get data from Amazon S3 storage into either a new or existing table.
+* [Get data from Azure Storage](get-data-storage.md): Get data from an Azure Data Lake Gen2 container, Azure Storage blob container, or individual blobs into either a new or existing table.
+
+:::image type="icon" source="media/ingest-data-overview/callout-03.png" alt-text="Screenshot of decision tree callout #3.":::
+
+**[Integrate with Azure Data Factory](data-factory-integration.md)**: Azure Data Factory (ADF) is a fully managed data integration service for analytic workloads. ADF can be used as a one-time solution, on a periodic timeline, or triggered by specific events.
+
+:::image type="icon" source="media/ingest-data-overview/callout-04.png" alt-text="Screenshot of decision tree callout #4.":::
+
+**Write custom code and use the Kusto client libraries**: [Kusto client libraries](kusto/api/client-libraries.md) are available for C#, Python, Java, JavaScript, TypeScript, and Go. You can write code to manipulate your data as needed and then use the Kusto Ingest library to import the data into your Azure Data Explorer table. The data must be in one of the [supported formats](ingestion-supported-formats.md) prior to ingestion. To get started with the Kusto client libraries, see [Set up your development environment](kusto/api/get-started/app-set-up.md).
 
 ## Continuous data ingestion
 
