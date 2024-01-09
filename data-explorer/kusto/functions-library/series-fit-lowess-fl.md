@@ -199,7 +199,7 @@ demo_make_series1
 
 **Output**
 
-:::image type="content" source="images/series-fit-lowess-fl/lowess-regular-time-series.png" alt-text="Graph showing nine points LOWESS fit to a regular time series." border="false":::
+:::image type="content" source="media/series-fit-lowess-fl/lowess-regular-time-series.png" alt-text="Graph showing nine points LOWESS fit to a regular time series." border="false":::
 
 ### Test irregular time series
 
@@ -274,7 +274,7 @@ demo_make_series1
 
 **Output**
 
-:::image type="content" source="images/series-fit-lowess-fl/lowess-irregular-time-series.png" alt-text="Graph showing nine points LOWESS fit to an irregular time series." border="false":::
+:::image type="content" source="media/series-fit-lowess-fl/lowess-irregular-time-series.png" alt-text="Graph showing nine points LOWESS fit to an irregular time series." border="false":::
 
 ### Compare LOWESS versus polynomial fit
 
@@ -349,7 +349,7 @@ range x from 1 to 200 step 1
 
 **Output**
 
-:::image type="content" source="images/series-fit-lowess-fl/lowess-vs-poly-fifth-order-noise.png" alt-text="Graphs of LOWESS vs polynomial fit for a fifth order polynomial with noise on x & y axes":::
+:::image type="content" source="media/series-fit-lowess-fl/lowess-vs-poly-fifth-order-noise.png" alt-text="Graphs of LOWESS vs polynomial fit for a fifth order polynomial with noise on x & y axes":::
 
 ::: zone-end
 

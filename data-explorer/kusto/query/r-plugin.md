@@ -68,7 +68,7 @@ typeof(*, fx:double),               //  Output schema: append a new fx column to
 | render linechart 
 ```
 
-:::image type="content" source="images/plugin/sine-demo.png" alt-text="Sine demo." border="false":::
+:::image type="content" source="media/plugin/sine-demo.png" alt-text="Sine demo." border="false":::
 
 ## Performance tips
 
@@ -176,7 +176,7 @@ The example snips below assume local R machine on Windows environment.
 
 1. Verify that new folders were added to "C:\brglm2":
 
-    :::image type="content" source="images/plugin/sample-directory.png" alt-text="Screenshot of library directory content.":::
+    :::image type="content" source="media/plugin/sample-directory.png" alt-text="Screenshot of library directory content.":::
 
 1. Select all items in that folder and zip them to e.g. libs.zip (do not zip the parent folder). You should get an archive structure like this:
 

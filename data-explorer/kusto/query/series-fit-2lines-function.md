@@ -74,4 +74,4 @@ print
 | render timechart
 ```
 
-:::image type="content" source="images/series-fit-2lines/series-fit-2lines.png" alt-text="Series fit 2 lines.":::
+:::image type="content" source="media/series-fit-2lines/series-fit-2lines.png" alt-text="Series fit 2 lines.":::

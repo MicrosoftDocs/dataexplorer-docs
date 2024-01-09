@@ -74,7 +74,7 @@ ts
 | render timechart  
 ```
 
-:::image type="content" source="images/samples/series-decompose1.png" alt-text="Series decompose 1.":::
+:::image type="content" source="media/samples/series-decompose1.png" alt-text="Series decompose 1.":::
 
 ### Weekly seasonality with trend
 
@@ -95,7 +95,7 @@ ts
 | render timechart  
 ```
 
-:::image type="content" source="images/samples/series-decompose2.png" alt-text="Series decompose 2.":::
+:::image type="content" source="media/samples/series-decompose2.png" alt-text="Series decompose 2.":::
 
 Next, we rerun the same example. Since we're expecting a trend in the series, we specify `linefit` in the trend parameter. We can see that the positive trend is detected and the baseline is much closer to the input series. The residuals are close to zero, and only the outliers stand out. We can see all the components on the series in the chart.
 
@@ -114,7 +114,7 @@ ts
 | render timechart  
 ```
 
-:::image type="content" source="images/samples/series-decompose3.png" alt-text="Series decompose 3.":::
+:::image type="content" source="media/samples/series-decompose3.png" alt-text="Series decompose 3.":::
 
 ## Related content
 

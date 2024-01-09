@@ -76,7 +76,7 @@ demo_make_series2
 | render anomalychart with(anomalycolumns=anomalies, title='Web app. traffic of a month, anomalies') //use "| render anomalychart with anomalycolumns=anomalies" to render the anomalies as bold points on the series charts.
 ```
 
-:::image type="content" source="images/visualization-anomalychart/anomaly-chart.png" alt-text="Screenshot of anomaly chart output." lightbox="images/visualization-anomalychart/anomaly-chart.png":::
+:::image type="content" source="media/visualization-anomalychart/anomaly-chart.png" alt-text="Screenshot of anomaly chart output." lightbox="media/visualization-anomalychart/anomaly-chart.png":::
 
 ::: zone-end
 
