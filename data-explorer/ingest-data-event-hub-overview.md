@@ -132,7 +132,7 @@ Specifically, the event payload is represented in the capture file as a byte arr
 To correctly decode the event payload:
 
 1. Map the `Body` field of the captured event to a column of type `dynamic` in the destination table.
-1. Apply an [update policy](./kusto/management/updatepolicy.md) that converts the byte array into a readable string using the [unicode_codepoints_to_string()](./kusto/query/unicode-codepoints-to-string-function.md) function.
+1. Apply an [update policy](./kusto/management/update-policy.md) that converts the byte array into a readable string using the [unicode_codepoints_to_string()](./kusto/query/unicode-codepoints-to-string-function.md) function.
 
 ## Ingest custom properties
 

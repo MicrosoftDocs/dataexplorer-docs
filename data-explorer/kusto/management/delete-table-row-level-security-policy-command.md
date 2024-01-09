@@ -7,7 +7,7 @@ ms.date: 10/23/2023
 ---
 # .delete table policy row_level_security command
 
-Deletes the row level security policy of a table. For more information, see [row level security policy](rowlevelsecuritypolicy.md).
+Deletes the row level security policy of a table. For more information, see [row level security policy](row-level-security-policy.md).
 
 ## Permissions
 

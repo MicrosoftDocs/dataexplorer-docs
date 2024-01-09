@@ -11,13 +11,13 @@ Tables are partitioned into *extents*, or *data shards*. Each extent is a horizo
 
 Extents are immutable, meaning they can be queried, reassigned to a different node, or dropped out of the table but never modified. Data modification happens by creating new extents and transactionally swapping old extents with the new ones. The immutability of extents provides benefits such as increased robustness and easy reversion to previous snapshots.
 
-Extents hold a collection of records that are physically arranged in columns, enabling efficient encoding and compression of the data. To maintain query efficiency, smaller extents are merged into larger extents according to the configured [merge policy](mergepolicy.md) and [sharding policy](shardingpolicy.md). Merging extents reduces management overhead and leads to index optimization and improved compression.
+Extents hold a collection of records that are physically arranged in columns, enabling efficient encoding and compression of the data. To maintain query efficiency, smaller extents are merged into larger extents according to the configured [merge policy](merge-policy.md) and [sharding policy](sharding-policy.md). Merging extents reduces management overhead and leads to index optimization and improved compression.
 
 The common extent lifecycle is as follows:
 
 1. The extent is created by an ingestion operation.
 1. The extent is merged with other extents.
-1. The merged extent (possibly one that tracks its lineage to other extents) is eventually dropped because of a [retention policy](retentionpolicy.md).
+1. The merged extent (possibly one that tracks its lineage to other extents) is eventually dropped because of a [retention policy](retention-policy.md).
 
 ## Extent creation time
 
@@ -26,8 +26,8 @@ Two [datetime](../query/scalar-data-types/datetime.md) values are tracked per ex
 The creation time of an extent is used for the following purposes:
 
 * Retention: Extents created earlier are dropped earlier.
-* Caching: Extents created recently are kept in [hot cache](cachepolicy.md).
-* Sampling: Recent extents are preferred when using query operations such as [take](../query/takeoperator.md).
+* Caching: Extents created recently are kept in [hot cache](cache-policy.md).
+* Sampling: Recent extents are preferred when using query operations such as [take](../query/take-operator.md).
 
 To overwrite the creation time of an extent, provide an alternate `creationTime` in the [data ingestion properties](../../ingestion-properties.md). This can be useful for retention purposes, such as if you want to reingest data but don't want it to appear as if it arrived late.
 
@@ -37,5 +37,5 @@ To overwrite the creation time of an extent, provide an alternate `creationTime`
 ## Related content
 
 * [Extent tags](extent-tags.md)
-* [Merge policy](mergepolicy.md)
-* [Partitioning policy](partitioningpolicy.md)
+* [Merge policy](merge-policy.md)
+* [Partitioning policy](partitioning-policy.md)

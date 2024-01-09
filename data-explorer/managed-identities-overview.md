@@ -54,7 +54,7 @@ After assigning the managed identity to your cluster and configuring the relevan
 
 * **Event Hubs Native Ingestion**: Use a managed identity with event hub native ingestion. For more information, see [Ingest data from event hub into Azure Data Explorer](ingest-data-event-hub.md).
 
-* **Python plugin**: Use a managed identity to authenticate to storage accounts of external artifacts that are used in the python plugin. Please note that the `SandboxArtifacts` usage needs to be defined on the cluster level managed identity policy. For more information, see [Python plugin](./kusto/query/pythonplugin.md).
+* **Python plugin**: Use a managed identity to authenticate to storage accounts of external artifacts that are used in the python plugin. Please note that the `SandboxArtifacts` usage needs to be defined on the cluster level managed identity policy. For more information, see [Python plugin](./kusto/query/python-plugin.md).
 
 * **SDK based ingestion**: When queuing blobs for ingestion from your own storage accounts, you can use managed identities as an alternative to shared access signature (SAS) tokens and Shared Keys authentication methods. For more information, see [Queue blobs for ingestion using managed identity authentication](ingest-data-managed-identity.md).
 

@@ -102,7 +102,7 @@ You can change the following values in the workload group's [request limits poli
 
 ## Monitor requests by workload group
 
-[System commands](systeminfo.md) indicate the workload group into which a request was classified. You can use these commands to aggregate resources utilization by workload group for completed requests.
+[System commands](system-info.md) indicate the workload group into which a request was classified. You can use these commands to aggregate resources utilization by workload group for completed requests.
 
 The same information can also be viewed and analyzed in [Azure Monitor insights](/azure/azure-monitor/insights/data-explorer?toc=/azure/data-explorer/toc.json&bc=/azure/data-explorer/breadcrumb/toc.json).
 

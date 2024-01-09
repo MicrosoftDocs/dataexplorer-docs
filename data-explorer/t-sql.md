@@ -111,7 +111,7 @@ SELECT * FROM kusto.MyFunction(10)
 
 > [!NOTE]
 > * Two statements must be separated by a semicolon, and there should be no empty line before the query.
-> * Request properties apply only to the [tabular expression statements](kusto/query/tabularexpressionstatements.md) that immediately follow.
+> * Request properties apply only to the [tabular expression statements](kusto/query/tabular-expression-statements.md) that immediately follow.
 
 ### Examples
 
@@ -127,7 +127,7 @@ The following table shows examples for how to set request properties with T-SQL.
 |`notruncation`|DECLARE @__kql_set_notruncation BIT = 1;|
 |`norequesttimeout`|DECLARE @__kql_set_norequesttimeout BIT = 0;|
 
-To set request properties with KQL, see [set statement](kusto/query/setstatement.md).
+To set request properties with KQL, see [set statement](kusto/query/set-statement.md).
 
 ## Coverage
 
@@ -155,4 +155,4 @@ Azure Data Explorer offers limited support for T-SQL. The following table outlin
 ## Related content
 
 * Learn about [SQL Server emulation](sql-server-emulation-overview.md) in Azure Data Explorer
-* Use the [SQL to Kusto Query Language cheat sheet](kusto/query/sqlcheatsheet.md)
+* Use the [SQL to Kusto Query Language cheat sheet](kusto/query/sql-cheat-sheet.md)

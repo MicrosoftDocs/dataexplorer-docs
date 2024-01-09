@@ -9,7 +9,7 @@ ms.date: 05/24/2023
 
 Creates a stored function or alters an existing function and stores it inside the database metadata.
 
-Rules for parameter types and CSL statements are the same as for [let statements](../query/letstatement.md).
+Rules for parameter types and CSL statements are the same as for [let statements](../query/let-statement.md).
 
 ## Permissions
 

@@ -49,7 +49,7 @@ To see the list of packages for the different Python images, see [Python package
 ## Use ingestion from query and update policy
 
 * Use the plugin in queries that are:
-  * Defined as part of an [update policy](../kusto/management/updatepolicy.md), whose source table is ingested to using *non-streaming* ingestion.
+  * Defined as part of an [update policy](../kusto/management/update-policy.md), whose source table is ingested to using *non-streaming* ingestion.
   * Run as part of a command that [ingests from a query](../kusto/management/data-ingestion/ingest-from-query.md), such as `.set-or-append`.
 * You can't use the plugin in a query that is defined as part of an update policy, whose source table is ingested using [streaming ingestion](../ingest-data-streaming.md).
 
@@ -105,7 +105,7 @@ print "This is an example for using 'external_artifacts'"
   * Use filters on the source dataset, when possible, with Kusto's query language.
   * To do a calculation on a subset of the source columns, project only those columns before invoking the plugin.
 * Use `hint.distribution = per_node` whenever the logic in your script is distributable.
-  * You can also use the [partition operator](../kusto/query/partitionoperator.md) for partitioning the input dataset.
+  * You can also use the [partition operator](../kusto/query/partition-operator.md) for partitioning the input dataset.
 * Use Kusto's query language whenever possible, to implement the logic of your Python script.
 
 ## Usage tips
@@ -139,7 +139,7 @@ External artifacts from cloud storage can be made available for the script and u
 
 The URLs referenced by the external artifacts property must be:
 
-* Included in the cluster's [callout policy](../kusto/management/calloutpolicy.md).
+* Included in the cluster's [callout policy](../kusto/management/callout-policy.md).
 * In a publicly available location, or provide the necessary credentials, as explained in [storage connection strings](../kusto/api/connection-strings/storage-connection-strings.md).
 
 > [!NOTE]
@@ -165,7 +165,7 @@ Install packages as follows:
 ### Prerequisites
 
   1. Create a blob container to host the packages, preferably in the same place as your cluster. For example, `https://artifactswestus.blob.core.windows.net/python`, assuming your cluster is in West US.
-  1. Alter the cluster's [callout policy](../kusto/management/calloutpolicy.md) to allow access to that location.
+  1. Alter the cluster's [callout policy](../kusto/management/callout-policy.md) to allow access to that location.
         * This change requires [AllDatabasesAdmin](../kusto/management/access-control/role-based-access-control.md) permissions.
 
         * For example, to enable access to a blob located in `https://artifactswestus.blob.core.windows.net/python`, run the following command:

@@ -33,5 +33,5 @@ If conversion is successful, the result is a value of type `real`. Otherwise, th
 ## Example
 
 ```kusto
-todouble("123.4") == 123.4
+toreal("123.4") == 123.4
 ```
