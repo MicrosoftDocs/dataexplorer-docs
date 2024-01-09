@@ -20,12 +20,12 @@ The management commands listed in this article can be used to manage principals 
 
 The following table describes the commands used for managing security roles.
 
-|Command|Description|
-|--|--|
-|`.show`|Lists principals with the given role.|
-|`.add`|Adds one or more principals to the role.|
-|`.drop`|Removes one or more principals from the role.|
-|`.set`|Sets the role to the specific list of principals, removing all previous ones.|
+|Command|Description|Examples|
+|--|--|--|
+|`.show`|Lists principals with the given role. | See [Show security roles at different levels](#show-security-roles-at-different-levels) section in this article. |
+|`.add`|Adds one or more principals to the role. | See [manage table view access](manage-table-view-access.md).|
+|`.drop`|Removes one or more principals from the role. | See [manage table view access](manage-table-view-access.md).|
+|`.set`|Sets the role to the specific list of principals, removing all previous ones. | See [manage table view access](manage-table-view-access.md).|
 
 ## Security roles
 
@@ -45,7 +45,9 @@ For a full description of the security roles at each scope, see [Kusto role-base
 > [!NOTE]
 > It isn't possible to assign the `viewer` role for only some tables in the database. For different approaches on how to grant a principal view access to a subset of tables, see [manage table view access](manage-table-view-access.md).
 
-## Common scenarios
+## Show security roles at different levels
+
+The examples below show how to use commands to view security roles at different levels. To learn how to modify role assignments, see [Manage database security roles](manage-database-security-roles.md).
 
 ### Show your roles on the cluster
 
