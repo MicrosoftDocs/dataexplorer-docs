@@ -97,8 +97,6 @@ items:
         href: scalar-data-types/timespan.md
       - name: Null values
         href: scalar-data-types/null-values.md
-      - name: Unsupported scalar data types
-        href: scalar-data-types/unsupported-data-types.md
   - name: Functions
     items:
       - name: Function types
