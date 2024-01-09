@@ -16,7 +16,7 @@ Kusto Query Language (KQL) offers many kinds of joins that each affect the schem
 
 The following image provides a visual representation of the operation performed by each join.
 
-:::image type="content" source="images/joinoperator/join-kinds.png" alt-text="Diagram showing query join kinds.":::
+:::image type="content" source="media/joinoperator/join-kinds.png" alt-text="Diagram showing query join kinds.":::
 
 ## Syntax
 
@@ -70,15 +70,15 @@ The return schema and rows depend on the join flavor. The join flavor is specifi
 
 | Join flavor | Returns | Illustration |
 | --- | --- | --- |
-| [innerunique](join-innerunique.md) (default) | Inner join with left side deduplication<br />**Schema**: All columns from both tables, including the matching keys<br />**Rows**: All deduplicated rows from the left table that match rows from the right table | :::image type="icon" source="images/joinoperator/join-innerunique.png" border="false"::: |
-| [inner](join-inner.md) | Standard inner join<br />**Schema**: All columns from both tables, including the matching keys<br />**Rows**: Only matching rows from both tables | :::image type="icon" source="images/joinoperator/join-inner.png" border="false"::: |
-| [leftouter](join-leftouter.md) | Left outer join<br />**Schema**: All columns from both tables, including the matching keys<br />**Rows**: All records from the left table and only matching rows from the right table | :::image type="icon" source="images/joinoperator/join-leftouter.png" border="false"::: |
-| [rightouter](join-rightouter.md) | Right outer join<br />**Schema**: All columns from both tables, including the matching keys<br />**Rows**: All records from the right table and only matching rows from the left table | :::image type="icon" source="images/joinoperator/join-rightouter.png" border="false"::: |
-| [fullouter](join-fullouter.md) | Full outer join<br />**Schema**: All columns from both tables, including the matching keys<br />**Rows**: All records from both tables with unmatched cells populated with null | :::image type="icon" source="images/joinoperator/join-fullouter.png" border="false"::: |
-| [leftsemi](join-leftsemi.md) | Left semi join<br />**Schema**: All columns from the left table<br />**Rows**: All records from the left table that match records from the right table | :::image type="icon" source="images/joinoperator/join-leftsemi.png" border="false"::: |
-| [`leftanti`, `anti`, `leftantisemi`](join-leftanti.md) | Left anti join and semi variant<br />**Schema**: All columns from the left table<br />**Rows**: All records from the left table that don't match records from the right table | :::image type="icon" source="images/joinoperator/join-leftanti.png" border="false"::: |
-| [rightsemi](join-rightsemi.md) | Right semi join<br />**Schema**: All columns from the right table<br />**Rows**: All records from the right table that match records from the left table | :::image type="icon" source="images/joinoperator/join-rightsemi.png" border="false"::: |
-| [`rightanti`, `rightantisemi`](join-rightanti.md) | Right anti join and semi variant<br />**Schema**: All columns from the right table<br />**Rows**: All records from the right table that don't match records from the left table | :::image type="icon" source="images/joinoperator/join-rightanti.png" border="false"::: |
+| [innerunique](join-innerunique.md) (default) | Inner join with left side deduplication<br />**Schema**: All columns from both tables, including the matching keys<br />**Rows**: All deduplicated rows from the left table that match rows from the right table | :::image type="icon" source="media/joinoperator/join-innerunique.png" border="false"::: |
+| [inner](join-inner.md) | Standard inner join<br />**Schema**: All columns from both tables, including the matching keys<br />**Rows**: Only matching rows from both tables | :::image type="icon" source="media/joinoperator/join-inner.png" border="false"::: |
+| [leftouter](join-leftouter.md) | Left outer join<br />**Schema**: All columns from both tables, including the matching keys<br />**Rows**: All records from the left table and only matching rows from the right table | :::image type="icon" source="media/joinoperator/join-leftouter.png" border="false"::: |
+| [rightouter](join-rightouter.md) | Right outer join<br />**Schema**: All columns from both tables, including the matching keys<br />**Rows**: All records from the right table and only matching rows from the left table | :::image type="icon" source="media/joinoperator/join-rightouter.png" border="false"::: |
+| [fullouter](join-fullouter.md) | Full outer join<br />**Schema**: All columns from both tables, including the matching keys<br />**Rows**: All records from both tables with unmatched cells populated with null | :::image type="icon" source="media/joinoperator/join-fullouter.png" border="false"::: |
+| [leftsemi](join-leftsemi.md) | Left semi join<br />**Schema**: All columns from the left table<br />**Rows**: All records from the left table that match records from the right table | :::image type="icon" source="media/joinoperator/join-leftsemi.png" border="false"::: |
+| [`leftanti`, `anti`, `leftantisemi`](join-leftanti.md) | Left anti join and semi variant<br />**Schema**: All columns from the left table<br />**Rows**: All records from the left table that don't match records from the right table | :::image type="icon" source="media/joinoperator/join-leftanti.png" border="false"::: |
+| [rightsemi](join-rightsemi.md) | Right semi join<br />**Schema**: All columns from the right table<br />**Rows**: All records from the right table that match records from the left table | :::image type="icon" source="media/joinoperator/join-rightsemi.png" border="false"::: |
+| [`rightanti`, `rightantisemi`](join-rightanti.md) | Right anti join and semi variant<br />**Schema**: All columns from the right table<br />**Rows**: All records from the right table that don't match records from the left table | :::image type="icon" source="media/joinoperator/join-rightanti.png" border="false"::: |
 
 ### Cross-join
 

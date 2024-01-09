@@ -27,4 +27,4 @@ The error bound is probabilistic, not a theoretical bound. The value is the stan
 The following image shows the probability distribution function of the relative
 estimation error, in percentages, for all supported accuracy settings:
 
-:::image type="content" border="false" source="../kusto/query/images/dcount-aggfunction/hll-error-distribution.png" alt-text="Graph showing the hll error distribution.":::
+:::image type="content" border="false" source="../kusto/query/media/dcount-aggfunction/hll-error-distribution.png" alt-text="Graph showing the hll error distribution.":::
