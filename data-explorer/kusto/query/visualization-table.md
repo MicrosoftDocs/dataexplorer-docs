@@ -12,7 +12,7 @@ zone_pivot_groups: kql-flavors-all
 Default - results are shown as a table.
 
 > [!NOTE]
-> This visualization can only be used in the context of the [render operator](renderoperator.md).
+> This visualization can only be used in the context of the [render operator](render-operator.md).
 
 ## Syntax
 

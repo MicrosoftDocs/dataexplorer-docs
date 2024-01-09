@@ -23,7 +23,7 @@ For example usage, see [Customize query behavior with client request properties]
 
 ## Query parameters
 
-The [query parameters declaration statement](../../query/queryparametersstatement.md) can be used to declare parameters for a [Kusto Query Language (KQL)](../../query/index.md) query. In Kusto Data, the `ClientRequestProperties` class contains methods to set, clear, and check the presence of such query parameters.
+The [query parameters declaration statement](../../query/query-parameters-statement.md) can be used to declare parameters for a [Kusto Query Language (KQL)](../../query/index.md) query. In Kusto Data, the `ClientRequestProperties` class contains methods to set, clear, and check the presence of such query parameters.
 
 The set parameter method provides overloads for common data types, such as `string` and `long`. For all other types, express the value as a KQL literal in `string` format, and make sure that the `declare` `query_parameters` statement declares the correct [scalar data type](../../query/scalar-data-types/index.md).
 

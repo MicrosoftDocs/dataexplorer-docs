@@ -13,7 +13,7 @@ Data ingestion involves loading data into a table in your cluster. Azure Data Ex
 Azure Data Explorer offers one-time ingestion or the establishment of a continuous ingestion pipeline, using either streaming or queued ingestion. To determine which is right for you, see [One-time data ingestion](#one-time-data-ingestion) and [Continuous ingestion](#continuous-data-ingestion).
 
 > [!NOTE]
-> Data is persisted in storage according to the set [retention policy](kusto/management/retentionpolicy.md).
+> Data is persisted in storage according to the set [retention policy](kusto/management/retention-policy.md).
 
 ## One-time data ingestion
 
@@ -47,7 +47,7 @@ Continuous data ingestion involves setting up an ingestion pipeline with either 
 
 * **Streaming ingestion**: This method ensures near-real-time latency for small sets of data per table. Data is ingested in micro batches from a streaming source, initially placed in the row store, and then transferred to column store extents. For more information, see [Configure streaming ingestion](ingest-data-streaming.md).
 
-* **Queued ingestion**: This method is optimized for high ingestion throughput. Data is batched based on ingestion properties, with small batches then merged and optimized for fast query results. By default, the maximum queued values are 5 minutes, 1000 items, or a total size of 1 GB. The data size limit for a queued ingestion command is 6 GB. For more information, see the [ingestion batching policy](kusto/management/batchingpolicy.md).
+* **Queued ingestion**: This method is optimized for high ingestion throughput. Data is batched based on ingestion properties, with small batches then merged and optimized for fast query results. By default, the maximum queued values are 5 minutes, 1000 items, or a total size of 1 GB. The data size limit for a queued ingestion command is 6 GB. For more information, see the [ingestion batching policy](kusto/management/batching-policy.md).
 
 > [!NOTE]
 > For most scenarios, we recommend using queued ingestion as it is the more performant option.
@@ -105,7 +105,7 @@ The following steps outline the general ingestion process:
 
 :::image type="content" source="media/ingest-data-overview/data-ingestion-process.png" lightbox="media/ingest-data-overview/data-ingestion-process.png" alt-text="Diagram showing the steps to data ingestion.":::
 
-1. **Set batching policy (optional)**: Data is batched based on the [ingestion batching policy](kusto/management/batchingpolicy.md). For guidance, see [Optimize for throughput](kusto/api/netfx/kusto-ingest-best-practices.md#optimize-for-throughput). 
+1. **Set batching policy (optional)**: Data is batched based on the [ingestion batching policy](kusto/management/batching-policy.md). For guidance, see [Optimize for throughput](kusto/api/netfx/kusto-ingest-best-practices.md#optimize-for-throughput). 
 
 1. **Set retention policy**: If the database retention policy isn't suitable for your needs, override it at the table level. For more information, see [Retention policy](kusto/management/retentionpolicy.md).
 

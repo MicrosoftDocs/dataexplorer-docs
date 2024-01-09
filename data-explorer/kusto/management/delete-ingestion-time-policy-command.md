@@ -7,7 +7,7 @@ ms.date: 06/13/2023
 ---
 # .delete table policy ingestiontime command
 
-Delete a table's [ingestion time policy](ingestiontimepolicy.md). The policy adds a hidden `datetime` column in the table, called `$IngestionTime`. Whenever new data is ingested, the time of ingestion is recorded in the hidden column.
+Delete a table's [ingestion time policy](ingestion-time-policy.md). The policy adds a hidden `datetime` column in the table, called `$IngestionTime`. Whenever new data is ingested, the time of ingestion is recorded in the hidden column.
 
 ## Permissions
 

@@ -24,7 +24,7 @@ This article outlines the syntax conventions followed in the [Kusto Query Langua
 
 ### Scalar function
 
-This example shows the syntax and an example usage of the [hash function](hashfunction.md), followed by an explanation of how each syntax component translates into the example usage.
+This example shows the syntax and an example usage of the [hash function](hash-function.md), followed by an explanation of how each syntax component translates into the example usage.
 
 #### Syntax
 
@@ -57,7 +57,7 @@ StormEvents
 ```
 
 * The StormEvents table is passed as an argument for the required *T* parameter.
-* `| sort by` is entered exactly as shown. In this case, the pipe character is part of the [tabular expression statement](tabularexpressionstatements.md) syntax, as represented by the block text. To learn more, see [What is a query statement](index.md#what-is-a-query-statement).
+* `| sort by` is entered exactly as shown. In this case, the pipe character is part of the [tabular expression statement](tabular-expression-statements.md) syntax, as represented by the block text. To learn more, see [What is a query statement](index.md#what-is-a-query-statement).
 * The State column is passed as an argument for the required *column* parameter with the optional `asc` flag.
 * After a comma, another set of arguments is passed: the StartTime column with the optional `desc` flag. The [`,` ...] syntax indicates that more argument sets may be passed but aren't required.
 

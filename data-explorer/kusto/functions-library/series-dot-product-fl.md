@@ -13,7 +13,7 @@ The function `series_dot_product_fl()` is a [user-defined function (UDF)](../que
 
 > [!NOTE]
 >
-> Use the native function [series_dot_product()](../query/series-dot-productfunction.md) instead of the function described in this document. The native function provides the same functionality and is better for performance and scalability. This document is provided for reference purposes only.
+> Use the native function [series_dot_product()](../query/series-dot-product-function.md) instead of the function described in this document. The native function provides the same functionality and is better for performance and scalability. This document is provided for reference purposes only.
 
 ## Syntax
 
@@ -34,10 +34,10 @@ You can define the function by either embedding its code as a query-defined func
 
 ### [Query-defined](#tab/query-defined)
 
-Define the function using the following [let statement](../query/letstatement.md). No permissions are required.
+Define the function using the following [let statement](../query/let-statement.md). No permissions are required.
 
 > [!IMPORTANT]
-> A [let statement](../query/letstatement.md) can't run on its own. It must be followed by a [tabular expression statement](../query/tabularexpressionstatements.md). To run a working example of `series_dot_product_fl()`, see [Example](#example).
+> A [let statement](../query/let-statement.md) can't run on its own. It must be followed by a [tabular expression statement](../query/tabular-expression-statements.md). To run a working example of `series_dot_product_fl()`, see [Example](#example).
 
 ```kusto
 let series_dot_product_fl=(vec1:dynamic, vec2:dynamic)

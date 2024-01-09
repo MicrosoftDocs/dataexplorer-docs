@@ -7,7 +7,7 @@ ms.date: 05/28/2023
 ---
 # .alter-merge materialized-view policy retention command
 
-Changes the materialized-view's [retention policy](retentionpolicy.md). The retention policy controls the mechanism that automatically removes data from tables or materialized views. It is used to remove data whose relevance is age-based.
+Changes the materialized-view's [retention policy](retention-policy.md). The retention policy controls the mechanism that automatically removes data from tables or materialized views. It is used to remove data whose relevance is age-based.
 
 ## Permissions
 
@@ -24,7 +24,7 @@ You must have at least [Database Admin](access-control/role-based-access-control
 |Name|Type|Required|Description|
 |--|--|--|--|
 |*MaterializedViewName*|string|&check;|The name of the materialized view.|
-|*PolicyParameters*|string|&check;|One or more policy parameters. For more information, see [retention policy](retentionpolicy.md).|
+|*PolicyParameters*|string|&check;|One or more policy parameters. For more information, see [retention policy](retention-policy.md).|
 
 ### Example
 

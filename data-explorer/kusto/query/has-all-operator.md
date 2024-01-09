@@ -23,7 +23,7 @@ For more information about other operators and to determine which operator is mo
 |--|--|--|--|
 | *T* | string | &check; | The tabular input to filter.|
 | *col* | string | &check; | The column by which to filter.|
-| *expression* | scalar or tabular | &check; |An expression that specifies the values for which to search. Each expression can be a [scalar value](scalar-data-types/index.md) or a [tabular expression](tabularexpressionstatements.md) that produces a set of values. If a tabular expression has multiple columns, the first column is used. The search will consider up to 256 distinct values.|
+| *expression* | scalar or tabular | &check; |An expression that specifies the values for which to search. Each expression can be a [scalar value](scalar-data-types/index.md) or a [tabular expression](tabular-expression-statements.md) that produces a set of values. If a tabular expression has multiple columns, the first column is used. The search will consider up to 256 distinct values.|
 
 ## Returns
 
@@ -75,7 +75,7 @@ StormEvents
 |Hail|392|
 |Flash Flood|24|
 
-The same query can also be written with a [let statement](letstatement.md).
+The same query can also be written with a [let statement](let-statement.md).
 
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAzWNsQrCQBBE+3zFclUCdpaSStLaaCci62U1C3e3YW8Tifjx5gI2w8zwmAlk4JWNlBFa6JeEkX19dV5C73bgsqmkV3H4XKkkkkoYkIO7NYfqbKKxmylZhuoL74GUoBs5S08nVEXjmWDAfMcQoP5/NSubpxhR+UNwlClZ64vWDTwW2AYvy0grZjLCvpQb9QMQPEgrsQAAAA==" target="_blank">Run the query</a>

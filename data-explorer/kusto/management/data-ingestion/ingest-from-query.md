@@ -52,7 +52,7 @@ For more information on permissions, see [Kusto role-based access control](../..
 
 |Property|Type|Description|
 |--|--|--|
-|`creationTime` | string | The datetime value, formatted as an ISO8601 string, to use at the creation time of the ingested data extents. If unspecified, `now()` is used. When specified, make sure the `Lookback` property in the target table's effective [Extents merge policy](../mergepolicy.md) is aligned with the specified value.|
+|`creationTime` | string | The datetime value, formatted as an ISO8601 string, to use at the creation time of the ingested data extents. If unspecified, `now()` is used. When specified, make sure the `Lookback` property in the target table's effective [Extents merge policy](../merge-policy.md) is aligned with the specified value.|
 |`extend_schema` | bool | If `true`, the command may extend the schema of the table. Default is `false`. This option applies only to `.append`, `.set-or-append`, and `set-or-replace` commands. This option requires at least [Table Admin](../../access-control/role-based-access-control.md) permissions.|
 |`recreate_schema` | bool | If `true`, the command may recreate the schema of the table. Default is `false`. This option applies only to the `.set-or-replace` command. This option takes precedence over the `extend_schema` property if both are set. This option requires at least [Table Admin](../../access-control/role-based-access-control.md) permissions.|
 |`folder` | string | The folder to assign to the table. If the table already exists, this property overwrites the table's folder.|
