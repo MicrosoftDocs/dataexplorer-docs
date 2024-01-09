@@ -27,8 +27,8 @@ There are multiple ways to perform one-time data ingestion. Use the following de
 
 For help answering the decision tree questions, see the relevant documentation:
 
-* **A**: See the [data formats supported by Azure Data Explorer for ingestion](ingestion-supported-formats.md).
-* **B**: See the [file formats supported for Azure Data Factory pipelines](/azure/data-explorer/ingestion-supported-formats).
+:::image type="icon" source="media/ingest-data-overview/callout-A.png" alt-text="Screenshot of decision tree callout A."::: See the [data formats supported by Azure Data Explorer for ingestion](ingestion-supported-formats.md).
+:::image type="icon" source="media/ingest-data-overview/callout-B.png" alt-text="Screenshot of decision tree callout B."::: See the [file formats supported for Azure Data Factory pipelines](/azure/data-explorer/ingestion-supported-formats).
 
 For more information on the suggested ingestion method, see the relevant documentation:
 
