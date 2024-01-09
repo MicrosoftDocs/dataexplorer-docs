@@ -826,11 +826,6 @@
       "redirect_document_id": true
     },
     {
-      "source_path": "data-explorer/kusto/query/todoublefunction.md",
-      "redirect_url": "/azure/data-explorer/kusto/query/toreal-function",
-      "redirect_document_id": true
-    },
-    {
       "source_path": "data-explorer/kusto/query/todouble-function.md",
       "redirect_url": "/azure/data-explorer/kusto/query/toreal-function",
       "redirect_document_id": true
