@@ -25,7 +25,7 @@ The following data types are supported:
 | [guid](guid.md) (`uuid`, `uniqueid`)| A 128-bit globally-unique value. |
 | [int](int.md) | A signed, 32-bit wide, integer. |
 | [long](long.md) | A signed, 64-bit wide, integer. |
-| [real](real.md) (double) | A 64-bit wide, double-precision, floating-point number. |
+| [real](real.md) (`double`) | A 64-bit wide, double-precision, floating-point number. |
 | [string](string.md) | A sequence of zero or more [Unicode](https://home.unicode.org/) characters.|
 | [timespan](timespan.md) (`time`) | A time interval. |
 
