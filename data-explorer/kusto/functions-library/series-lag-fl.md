@@ -111,4 +111,4 @@ demo_make_series1
 
 **Output**
 
-:::image type="content" source="images/series-lag-fl/series-lag-1-day.png" alt-text="Graph of a time series shifted by one day." border="false":::
+:::image type="content" source="media/series-lag-fl/series-lag-1-day.png" alt-text="Graph of a time series shifted by one day." border="false":::

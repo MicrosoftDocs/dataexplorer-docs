@@ -164,7 +164,7 @@ normal_2d_with_anomalies
 
 The table normal_2d_with_anomalies contains a set of 3 time series. Each time series has two-dimensional normal distribution with daily anomalies added at midnight, 8am, and 4pm respectively. You can create this sample dataset using [an example query](series-mv-ee-anomalies-fl.md#create-a-sample-dataset).
 
-![Graph showing multivariate anomalies on a time chart.](images/series-mv-if-anomalies-fl/mv-if-anomalies-time-chart.png)
+![Graph showing multivariate anomalies on a time chart.](media/series-mv-if-anomalies-fl/mv-if-anomalies-time-chart.png)
 
 To view the data as a scatter chart, replace the usage code with the following:
 
@@ -178,7 +178,7 @@ normal_2d_with_anomalies
 | render scatterchart with(series=anomalies)
 ```
 
-![Graph showing multivariate anomalies on a scatter chart.](images/series-mv-if-anomalies-fl/mv-if-anomalies-scatter-chart.png)
+![Graph showing multivariate anomalies on a scatter chart.](media/series-mv-if-anomalies-fl/mv-if-anomalies-scatter-chart.png)
 
 You can see that on TS2 most of the anomalies occurring at 8am were detected using this multivariate model.
 

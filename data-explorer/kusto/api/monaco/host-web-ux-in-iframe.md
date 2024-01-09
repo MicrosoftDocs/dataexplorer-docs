@@ -10,7 +10,7 @@ ms.date: 6/6/2023
 
 The Azure Data Explorer web UI can be embedded in an iframe and hosted in third-party websites. This article describes how to embed the Azure Data Explorer web UI in an iframe.
 
-:::image type="content" source="../images/host-web-ux-in-iframe/web-ux.png" alt-text="Screenshot of the Azure Data Explorer web U I.":::
+:::image type="content" source="../media/host-web-ux-in-iframe/web-ux.png" alt-text="Screenshot of the Azure Data Explorer web U I.":::
 
 All functionality is tested for accessibility and supports dark and light on-screen themes.
 
@@ -32,9 +32,9 @@ The `workspace=<guid>` query parameter creates a separate workspace for the embe
 
 When embedding the web UI, the hosting page is responsible for authentication. The following diagrams describe the authentication flow.
 
-:::image type="content" source="../images/host-web-ux-in-iframe/adx-embed-sequence-diagram.png" lightbox="../images/host-web-ux-in-iframe/adx-embed-sequence-diagram.png" alt-text="Diagram that shows the authentication flow for an embedded web U I iframe.":::
+:::image type="content" source="../media/host-web-ux-in-iframe/adx-embed-sequence-diagram.png" lightbox="../media/host-web-ux-in-iframe/adx-embed-sequence-diagram.png" alt-text="Diagram that shows the authentication flow for an embedded web U I iframe.":::
 
-:::image type="content" source="../images/host-web-ux-in-iframe/adx-embed-scopes.png" lightbox="../images/host-web-ux-in-iframe/adx-embed-scopes.png" alt-text="Diagram that shows the scopes required for embedding the web U I iframe.":::
+:::image type="content" source="../media/host-web-ux-in-iframe/adx-embed-scopes.png" lightbox="../media/host-web-ux-in-iframe/adx-embed-scopes.png" alt-text="Diagram that shows the scopes required for embedding the web U I iframe.":::
 
 Use the following steps to handle authentication:
 

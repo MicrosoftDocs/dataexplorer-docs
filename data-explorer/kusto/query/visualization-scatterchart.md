@@ -85,4 +85,4 @@ StormEvents
 | render scatterchart with (xtitle="State population", title="Property damage by state", legend=hidden)
 ```
 
-:::image type="content" source="images/visualization-scatterchart/scatter-chart.png" alt-text="Screenshot of scatter chart visualization output." lightbox="images/visualization-scatterchart/scatter-chart.png":::
+:::image type="content" source="media/visualization-scatterchart/scatter-chart.png" alt-text="Screenshot of scatter chart visualization output." lightbox="media/visualization-scatterchart/scatter-chart.png":::

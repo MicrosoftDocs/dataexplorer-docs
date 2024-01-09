@@ -139,7 +139,7 @@ demo_prometheus
 
 **Output**
 
-:::image type="content" source="images/series-metric-fl/disk-write-metric-10m.png" alt-text="Graph showing disk write metric over 10 minutes." border="false":::
+:::image type="content" source="media/series-metric-fl/disk-write-metric-10m.png" alt-text="Graph showing disk write metric over 10 minutes." border="false":::
 
 ### Without specifying selector
 
@@ -184,4 +184,4 @@ series_metric_fl(demo_prometheus, 'TimeStamp', 'Name', 'Labels', 'Val', 'writes'
 
 **Output**
 
-:::image type="content" source="images/series-metric-fl/all-disks-write-metric-10m.png" alt-text="Graph showing disk write metric for all disks over 10 minutes." border="false":::
+:::image type="content" source="media/series-metric-fl/all-disks-write-metric-10m.png" alt-text="Graph showing disk write metric for all disks over 10 minutes." border="false":::

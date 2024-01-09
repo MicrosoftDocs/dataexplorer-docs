@@ -67,7 +67,7 @@ ts
 | render timechart  
 ```
 
-:::image type="content" source="images/series-decompose-anomaliesfunction/weekly-seasonality-outliers.png" alt-text="Weekly seasonality showing baseline and outliers." border="false":::
+:::image type="content" source="media/series-decompose-anomaliesfunction/weekly-seasonality-outliers.png" alt-text="Weekly seasonality showing baseline and outliers." border="false":::
 
 ### Detect anomalies in weekly seasonality with trend
 
@@ -90,7 +90,7 @@ series_multiply(10, series_decompose_anomalies_y_ad_flag) // multiply by 10 for 
 | render timechart
 ```
 
-:::image type="content" source="images/series-decompose-anomaliesfunction/weekly-seasonality-outliers-with-trend.png" alt-text="Weekly seasonality outliers with trend." border="false":::
+:::image type="content" source="media/series-decompose-anomaliesfunction/weekly-seasonality-outliers-with-trend.png" alt-text="Weekly seasonality outliers with trend." border="false":::
 
 Next, run the same example, but since you're expecting a trend in the series, specify `linefit` in the trend parameter. You can see that the baseline is much closer to the input series. All the inserted outliers are detected, and also some false positives. See the next example on tweaking the threshold.
 
@@ -111,7 +111,7 @@ series_multiply(10, series_decompose_anomalies_y_ad_flag) // multiply by 10 for 
 | render timechart  
 ```
 
-:::image type="content" source="images/series-decompose-anomaliesfunction/weekly-seasonality-linefit-trend.png" alt-text="Weekly seasonality anomalies with linefit trend." border="false":::
+:::image type="content" source="media/series-decompose-anomaliesfunction/weekly-seasonality-linefit-trend.png" alt-text="Weekly seasonality anomalies with linefit trend." border="false":::
 
 ### Tweak the anomaly detection threshold
 
@@ -134,4 +134,4 @@ series_multiply(10, series_decompose_anomalies_y_ad_flag) // multiply by 10 for 
 | render timechart  
 ```
 
-:::image type="content" source="images/series-decompose-anomaliesfunction/weekly-seasonality-higher-threshold.png" alt-text="Weekly series anomalies with higher anomaly threshold." border="false":::
+:::image type="content" source="media/series-decompose-anomaliesfunction/weekly-seasonality-higher-threshold.png" alt-text="Weekly series anomalies with higher anomaly threshold." border="false":::
