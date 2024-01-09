@@ -49,7 +49,7 @@ StormEvents
 | render treemap with(title="Storm Events by EventType and State")
 ```
 
-:::image type="content" source="images/visualization-treemap/treemap.png" alt-text="Screenshot of treemap visualization output." lightbox="images/visualization-treemap/treemap.png":::
+:::image type="content" source="media/visualization-treemap/treemap.png" alt-text="Screenshot of treemap visualization output." lightbox="media/visualization-treemap/treemap.png":::
 ::: zone-end
 
 ::: zone pivot="azuremonitor, fabric"

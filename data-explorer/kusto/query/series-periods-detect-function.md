@@ -50,7 +50,7 @@ print y=dynamic([80, 139, 87, 110, 68, 54, 50, 51, 53, 133, 86, 141, 97, 156, 94
 | render linechart
 ```
 
-:::image type="content" source="images/series-periods/series-periods.png" alt-text="Series periods.":::
+:::image type="content" source="media/series-periods/series-periods.png" alt-text="Series periods.":::
 
 Running `series_periods_detect()` on this series, results in the weekly period, 14 points long.
 

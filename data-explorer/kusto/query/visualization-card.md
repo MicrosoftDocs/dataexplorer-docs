@@ -49,7 +49,7 @@ StormEvents
 | render card with (title="Floods in Virginia")
 ```
 
-:::image type="content" source="images/card/card.png" alt-text="Screenshot of card visual." lightbox="images/card/card.png":::
+:::image type="content" source="media/card/card.png" alt-text="Screenshot of card visual." lightbox="media/card/card.png":::
 
 ::: zone-end
 

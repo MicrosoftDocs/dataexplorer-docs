@@ -74,7 +74,7 @@ StormEvents
 | render linechart 
 ```
 
-:::image type="content" source="images/visualization-linechart/line-chart.png" alt-text="Screenshot of line chart visualization output." lightbox="images/visualization-linechart/line-chart.png":::
+:::image type="content" source="media/visualization-linechart/line-chart.png" alt-text="Screenshot of line chart visualization output." lightbox="media/visualization-linechart/line-chart.png":::
 
 ### Label a line chart
 
@@ -93,7 +93,7 @@ StormEvents
     )
 ```
 
-:::image type="content" source="images/visualization-linechart/line-chart-with-labels.png" alt-text="Screenshot of line chart with labels." lightbox="images/visualization-linechart/line-chart-with-labels.png":::
+:::image type="content" source="media/visualization-linechart/line-chart-with-labels.png" alt-text="Screenshot of line chart with labels." lightbox="media/visualization-linechart/line-chart-with-labels.png":::
 
 ### Limit values displayed on the y-axis
 
@@ -107,7 +107,7 @@ StormEvents
 | render linechart with (ymin=7000, ymax=300000)
 ```
 
-:::image type="content" source="images/visualization-linechart/line-chart-limit-y-values.png" alt-text="Screenshot of line chart with limitations on y-axis values." lightbox="images/visualization-linechart/line-chart-limit-y-values.png":::
+:::image type="content" source="media/visualization-linechart/line-chart-limit-y-values.png" alt-text="Screenshot of line chart with limitations on y-axis values." lightbox="media/visualization-linechart/line-chart-limit-y-values.png":::
 
 ### View multiple y-axes
 
@@ -121,7 +121,7 @@ StormEvents
 | render linechart with (ysplit=panels)
 ```
 
-:::image type="content" source="images/visualization-linechart/line-chart-ysplit-panels.png" alt-text="Screenshot of the time chart query result with the ysplit panels property." lightbox="images/visualization-linechart/line-chart-ysplit-panels.png":::
+:::image type="content" source="media/visualization-linechart/line-chart-ysplit-panels.png" alt-text="Screenshot of the time chart query result with the ysplit panels property." lightbox="media/visualization-linechart/line-chart-ysplit-panels.png":::
 
 ## Related content
 

@@ -3,11 +3,14 @@ title:  .alter ingestion mapping command
 description: Learn how to use the `.alter ingestion mapping` command to alter a table or database's existing ingestion mapping 
 ms.reviewer: orspodek
 ms.topic: reference
-ms.date: 04/20/2023
+ms.date: 12/26/2023
 ---
 # .alter ingestion mapping command
 
 Alters an existing ingestion mapping that is associated with a specific table/database and a specific format (full mapping replace).
+
+> [!NOTE]
+> New columns introduced in an ingestion mapping, which aren't present in the source table, will be added to the table during the initial data ingestion for that column. This behavior is only supported for queued ingestion and is contingent on specifying a valid data type for the column.
 
 ## Permissions
 

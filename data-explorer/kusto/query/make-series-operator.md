@@ -134,7 +134,7 @@ T | make-series PriceAvg=avg(Price) default=0
 on Purchase from datetime(2016-09-10) to datetime(2016-09-13) step 1d by Supplier, Fruit
 ```
 
-:::image type="content" source="images/make-seriesoperator/make-series.png" alt-text="Three tables. The first lists raw data, the second has only distinct supplier-fruit-date combinations, and the third contains the make-series results.":::  
+:::image type="content" source="media/make-seriesoperator/make-series.png" alt-text="Three tables. The first lists raw data, the second has only distinct supplier-fruit-date combinations, and the third contains the make-series results.":::  
 
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA3WSwW7DIAyG73kKHxMpkWxo0jRT34JbtQNbvSkaNBWgnvbwBZH1MIGEkOzvN7+FbTjAVQd9TlfQH4bbsFr2Qdv7EnOcoh4sB7d+LuBYm665NAB/rBVI00BikKRwWhC7Hkbs/ymOA1I8kR3KSEQky0jWq6RCmS2nsmCMaK4gRXI5pFqqGE9142O93bluOStBud2K4BSRqCBFItcSFRWECsf9//vm/a0xcbTrLbB7aANnoGtO+VQV49J4soJrCsKoSIvS/ILVPzx4dit70I/vNm9IB9sNXgsEX26zu2HY9nd94Purryf8i1rafwIAAA==" target="_blank">Run the query</a>

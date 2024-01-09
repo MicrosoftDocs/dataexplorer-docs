@@ -72,7 +72,7 @@ result["fx"] = g * np.sin(df["x"]/n*2*np.pi*f)
 | render linechart 
 ~~~
 
-:::image type="content" source="../kusto/query/images/plugin/sine-demo.png" alt-text="Screenshot of sine demo showing query result." border="false":::
+:::image type="content" source="../kusto/query/media/plugin/sine-demo.png" alt-text="Screenshot of sine demo showing query result." border="false":::
 
 ~~~kusto
 print "This is an example for using 'external_artifacts'"

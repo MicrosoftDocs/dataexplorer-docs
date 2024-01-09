@@ -36,7 +36,7 @@ StormEvents
 | render scatterchart with (kind = map)
 ```
 
-:::image type="content" source="../images/kql-tutorials/geospatial-storm-events-scatterchart.png" alt-text="Screenshot of sample storm events on a map.":::
+:::image type="content" source="../media/kql-tutorials/geospatial-storm-events-scatterchart.png" alt-text="Screenshot of sample storm events on a map.":::
 
 ## Plot multiple series of points
 
@@ -54,7 +54,7 @@ StormEvents
 | render scatterchart with (kind = map)
 ```
 
-:::image type="content" source="../images/kql-tutorials/geospatial-storm-events-by-type.png" alt-text="Screenshot of sample storm events on a map by type.":::
+:::image type="content" source="../media/kql-tutorials/geospatial-storm-events-by-type.png" alt-text="Screenshot of sample storm events on a map by type.":::
 
 You may also explicitly specify the `xcolumn` (Longitude), `ycolumn` (Latitude), and `series` when performing the `render`. This specification is necessary when there are more columns in the result than just the longitude, latitude, and series columns.
 
@@ -85,7 +85,7 @@ StormEvents
 | render scatterchart with (kind = map)
 ```
 
-:::image type="content" source="../images/kql-tutorials/geospatial-storm-events-centered.png" alt-text="Screenshot of sample storm events displayed using geojson.":::
+:::image type="content" source="../media/kql-tutorials/geospatial-storm-events-centered.png" alt-text="Screenshot of sample storm events displayed using geojson.":::
 
 ## Represent data points with variable-sized bubbles
 
@@ -107,7 +107,7 @@ StormEvents
 | render piechart with (kind = map)
 ```
 
-:::image type="content" source="../images/kql-tutorials/tornado-geospatial-map.png" alt-text="Screenshot of Azure Data Explorer web UI showing a geospatial map of tornado storms.":::
+:::image type="content" source="../media/kql-tutorials/tornado-geospatial-map.png" alt-text="Screenshot of Azure Data Explorer web UI showing a geospatial map of tornado storms.":::
 
 ## Display points within a specific area
 
@@ -133,7 +133,7 @@ StormEvents
 | render piechart with (kind = map)
 ```
 
-:::image type="content" source="../images/kql-tutorials/geospatial-southern-california-polygon.png" alt-text="Screenshot of Azure Data Explorer web UI showing a geospatial map of southern California storms.":::
+:::image type="content" source="../media/kql-tutorials/geospatial-southern-california-polygon.png" alt-text="Screenshot of Azure Data Explorer web UI showing a geospatial map of southern California storms.":::
 
 ## Show nearby points on a LineString
 
@@ -194,7 +194,7 @@ StormEvents
 | render scatterchart with (kind=map)
 ```
 
-:::image type="content" source="../images/kql-tutorials/geospatial-distance-from-linestring.png" alt-text="Screenshot of the result of the previous KQL query to calculate events along a LineString." lightbox="../images/kql-tutorials/geospatial-distance-from-linestring.png":::
+:::image type="content" source="../media/kql-tutorials/geospatial-distance-from-linestring.png" alt-text="Screenshot of the result of the previous KQL query to calculate events along a LineString." lightbox="../media/kql-tutorials/geospatial-distance-from-linestring.png":::
 
 ## Show nearby points in a polygon
 
@@ -253,7 +253,7 @@ StormEvents
 | render scatterchart with (kind=map)
 ```
 
-:::image type="content" source="../images/kql-tutorials/geospatial-distance-from-polygon.png" alt-text="Screenshot of the result of the previous KQL query to calculate events along a polygon." lightbox="../images/kql-tutorials/geospatial-distance-from-polygon.png":::
+:::image type="content" source="../media/kql-tutorials/geospatial-distance-from-polygon.png" alt-text="Screenshot of the result of the previous KQL query to calculate events along a polygon." lightbox="../media/kql-tutorials/geospatial-distance-from-polygon.png":::
 
 ## Find anomalies based on geospatial data
 
@@ -280,7 +280,7 @@ StormEvents
 | render anomalychart with (anomalycolumns=anomalies)
 ```
 
-:::image type="content" source="../images/kql-tutorials/geospatial-anomaly-chart.png" alt-text="Screenshot of the anomaly chart rendered by the previous KQL query." lightbox="../images/kql-tutorials/geospatial-anomaly-chart.png":::
+:::image type="content" source="../media/kql-tutorials/geospatial-anomaly-chart.png" alt-text="Screenshot of the anomaly chart rendered by the previous KQL query." lightbox="../media/kql-tutorials/geospatial-anomaly-chart.png":::
 
 ## Related content
 
