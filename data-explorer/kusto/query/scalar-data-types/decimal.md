@@ -23,6 +23,8 @@ To specify a `decimal` literal, use one of the following syntax options:
 |`decimal(`*n*`e`*exponent*`)`|A decimal number represented by scientific notation.|`1e5`|
 |`decimal(null)`|Represents the [null value](null-values.md).||
 
+[!INCLUDE [syntax-conventions-note](../../../includes/syntax-conventions-note.md)]
+
 ## Related content
 
 * [todecimal()](../../query/todecimalfunction.md)

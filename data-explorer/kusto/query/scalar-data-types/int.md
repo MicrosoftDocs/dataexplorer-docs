@@ -19,6 +19,8 @@ To specify an `int` literal, use one of the following syntax options:
 |`int(-`*number*`)`|`int(-2)`|A negative integer.|
 |`int(null)`||Represents the [null value](null-values.md).|
 
+[!INCLUDE [syntax-conventions-note](../../../includes/syntax-conventions-note.md)]
+
 ## Related content
 
 * [toint()](../../query/tointfunction.md)

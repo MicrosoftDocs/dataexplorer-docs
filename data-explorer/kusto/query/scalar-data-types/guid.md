@@ -20,6 +20,8 @@ To specify a `guid` literal, use one of the following syntax options:
 |`guid(`*id*`)`|A guid ID string.|`guid(74be27de-1e4e-49d9-b579-fe0b331d3642)`|
 |`guid(null)`|Represents the [null value](null-values.md).||
 
+[!INCLUDE [syntax-conventions-note](../../../includes/syntax-conventions-note.md)]
+
 ## Related content
 
 * [toguid()](../../query/toguidfunction.md)

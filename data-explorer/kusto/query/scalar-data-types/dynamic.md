@@ -40,6 +40,8 @@ To specify a `dynamic` literal, use one of the following syntax options:
 |`dynamic(`*value*`)`|A dynamic value holding the value of the inner scalar data type.|`dynamic(4)`|
 |`dynamic(null)`|Represents the [null value](null-values.md).||
 
+[!INCLUDE [syntax-conventions-note](../../../includes/syntax-conventions-note.md)]
+
 ## Examples
 
 The following query creates a dynamic property bag:

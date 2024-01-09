@@ -20,6 +20,8 @@ To specify a `long` literal, use one of the following syntax options:
 |`long(-`*number*`)`|A negative integer.|`long(-1)`|
 |`long(null)`|Represents the [null value](null-values.md).||
 
+[!INCLUDE [syntax-conventions-note](../../../includes/syntax-conventions-note.md)]
+
 ## Related content
 
 * [tolong()](../../query/tolongfunction.md)

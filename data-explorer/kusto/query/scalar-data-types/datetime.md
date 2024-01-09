@@ -33,6 +33,8 @@ To specify a `datetime` literal, use one of the following syntax options:
 |`datetime()`|Returns the current time.||
 |`datetime(null)`|Represents the [null value](null-values.md).||
 
+[!INCLUDE [syntax-conventions-note](../../../includes/syntax-conventions-note.md)]
+
 ## The `now()` and `ago()` special functions
 
 Kusto provides two special functions, [now() and ago()](../now-function.md),
