@@ -12,7 +12,7 @@ zone_pivot_groups: kql-flavors-all
 
 ::: zone pivot="fabric"
 
-This article lists the available Python packages in the Python plugin. For more information, see [Python plugin](kusto/query/pythonplugin.md).
+This article lists the available Python packages in the Python plugin. For more information, see [Python plugin](kusto/query/python-plugin.md).
 
 ## [3.10.8](#tab/python3-10-8)
 
@@ -182,7 +182,7 @@ Not supported
 ::: zone-end
 ::: zone pivot="azuredataexplorer"
 
-This article lists the available Python packages in the Python plugin. For more information, see [Python plugin](kusto/query/pythonplugin.md).
+This article lists the available Python packages in the Python plugin. For more information, see [Python plugin](kusto/query/python-plugin.md).
 
 ## [3.10.8](#tab/python3-10-8)
 

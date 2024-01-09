@@ -21,7 +21,7 @@ A leader database can override the following database-level policies in the foll
 
 ### Caching policy
 
-The default [caching policy](cachepolicy.md) for the follower cluster uses the leader cluster database and table-level caching policies.
+The default [caching policy](cache-policy.md) for the follower cluster uses the leader cluster database and table-level caching policies.
 
 |Option             |Description                                 |
 |-------------------|----------------------------------------------|
@@ -48,7 +48,7 @@ The default [caching policy](cachepolicy.md) for the follower cluster uses the l
 ## Table and materialized views policy overrides
 
 By default, tables and materialized views in a database that is being followed by a follower cluster keep the source entity's caching policy.
-However, table and materialized view [caching policies](cachepolicy.md) can be overridden in the follower cluster.
+However, table and materialized view [caching policies](cache-policy.md) can be overridden in the follower cluster.
 Use the `replace` option to override the source entity's caching policy.
 
 ## Database level commands

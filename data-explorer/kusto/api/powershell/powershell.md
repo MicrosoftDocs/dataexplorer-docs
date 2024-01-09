@@ -88,7 +88,7 @@ $kcsb = $kcsb.WithAadAzCliAuthentication()
 
 Create a query provider and run [Kusto Query Language](../../query/index.md) queries.
 
-The following example defines a simple [take](../../query/takeoperator.md) query to sample the data. To run the query, replace `<TableName>` with the name of a table in your database. Before running the query, the [ClientRequestProperties class](../netfx/client-request-properties.md) is used to set a client request ID and a server timeout. Then, the query is run and the result set is formatted and sorted.
+The following example defines a simple [take](../../query/take-operator.md) query to sample the data. To run the query, replace `<TableName>` with the name of a table in your database. Before running the query, the [ClientRequestProperties class](../netfx/client-request-properties.md) is used to set a client request ID and a server timeout. Then, the query is run and the result set is formatted and sorted.
 
 ```powershell
 $queryProvider = [Kusto.Data.Net.Client.KustoClientFactory]::CreateCslQueryProvider($kcsb)

@@ -54,7 +54,6 @@ You must have at least Database User, Database Viewer, or Database Monitor permi
 |--|--|--|
 | `expiresAfter` | timespan | Determines when the stored query result will expire. Maximum is 24 hours. |
 | `previewCount` | int | The number of rows to return in a preview. Setting this property to `0` (default) makes the command return all the query result rows. The property is ignored when the command is invoked using `async` mode. |
-| `distributed`  | bool | If `true`, the command will ingest from all nodes executing the query in parallel. Default is `true`. Set the flag to `false` when the amount of data produced by a query is small, or the number of cluster nodes is large, to prevent creating many small data shards. |
 
 ## Returns
 

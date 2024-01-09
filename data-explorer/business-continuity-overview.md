@@ -28,11 +28,11 @@ Accidental cluster or database deletion is an irrecoverable action. As the Azure
 
 #### Accidental table deletion
 
-Users with table admin permissions or higher are allowed to [drop tables](kusto/management/drop-table-command.md). If one of those users accidentally drops a table, you can recover it using the [`.undo drop table`](kusto/management/undo-drop-table-command.md) command. For this command to be successful, you must first enable the *recoverability* property in the [retention policy](kusto/management/retentionpolicy.md).
+Users with table admin permissions or higher are allowed to [drop tables](kusto/management/drop-table-command.md). If one of those users accidentally drops a table, you can recover it using the [`.undo drop table`](kusto/management/undo-drop-table-command.md) command. For this command to be successful, you must first enable the *recoverability* property in the [retention policy](kusto/management/retention-policy.md).
 
 #### Accidental external table deletion
 
-[External tables](kusto/query/schema-entities/externaltables.md) are Kusto query schema entities that reference data stored outside the database.
+[External tables](kusto/query/schema-entities/external-tables.md) are Kusto query schema entities that reference data stored outside the database.
 Deletion of an external table only deletes the table metadata. You can recover it by re-executing the table creation command. Use the [soft delete](/azure/storage/blobs/storage-blob-soft-delete) capability to protect against accidental deletion or overwrite of a file/blob for a user-configured amount of time.
 
 ### High availability of Azure Data Explorer

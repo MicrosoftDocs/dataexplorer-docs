@@ -68,4 +68,4 @@ X | join kind=inner Y on Key
 
 ## Related content
 
-* Learn about other [join flavors](joinoperator.md#returns)
+* Learn about other [join flavors](join-operator.md#returns)

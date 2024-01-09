@@ -20,7 +20,7 @@ To render a Plotly visual in KQL, the query must generate a table with a single 
 
 ## Write your own Plotly visualization in Python
 
- In this method, you dynamically create the Plotly JSON string in Python using the [Plotly package](https://plotly.com/python/getting-started/). This process requires use of the [python() plugin](pythonplugin.md). The Python script is run on the existing ADX nodes using the inline python() plugin. It generates a Plotly JSON that is rendered by the client application.
+ In this method, you dynamically create the Plotly JSON string in Python using the [Plotly package](https://plotly.com/python/getting-started/). This process requires use of the [python() plugin](python-plugin.md). The Python script is run on the existing ADX nodes using the inline python() plugin. It generates a Plotly JSON that is rendered by the client application.
 
 Using this method, all types of Plotly visualizations are supported.
 

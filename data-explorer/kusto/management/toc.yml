@@ -290,7 +290,7 @@ items:
       - name: Caching
         items:
           - name: Caching policy (hot and cold cache)
-            href: cachepolicy.md
+            href: cache-policy.md
             displayName: cache policy
           - name: .alter cluster caching policy command
             href: alter-cluster-cache-policy-command.md
@@ -325,7 +325,7 @@ items:
       - name: Callout
         items:
           - name: Callout policy
-            href: calloutpolicy.md
+            href: callout-policy.md
           - name: .alter cluster policy callout command
             href: alter-callout-policy-command.md
             displayName: .alter cluster callout policy
@@ -341,7 +341,7 @@ items:
       - name: Capacity
         items:
           - name: Capacity policy
-            href: capacitypolicy.md
+            href: capacity-policy.md
             displayName: IngestionCapacity, ExtentsMergeCapacity, ExtentsPurgeRebuildCapacity, ExportCapacity, ExtentsPartitionCapacity, MaterializedViewsCapacity, StoredQueryResultsCapacity, ingestion, extents, purge, partition
           - name: .alter cluster policy capacity command
             href: alter-capacity-policy-command.md
@@ -382,7 +382,7 @@ items:
       - name: Ingestion batching
         items:
           - name: Ingestion batching policy
-            href: batchingpolicy.md
+            href: batching-policy.md
             displayName: ingestionbatching policy
           - name: .alter database policy ingestionbatching command
             href: alter-database-ingestion-batching-policy.md
@@ -405,7 +405,7 @@ items:
       - name: Ingestion time
         items:
           - name: Ingestion time policy
-            href: ingestiontimepolicy.md
+            href: ingestion-time-policy.md
             displayName: ingestiontime policy
           - name: .alter table policy ingestiontime command
             href: alter-ingestion-time-policy-command.md
@@ -436,7 +436,7 @@ items:
       - name: Merge
         items:
           - name: Merge policy
-            href: mergepolicy.md
+            href: merge-policy.md
           - name: .alter database policy merge command
             href: alter-database-merge-policy-command.md
             displayName: .alter database merge policy
@@ -470,7 +470,7 @@ items:
       - name: Partitioning
         items:
           - name: Partitioning policy
-            href: partitioningpolicy.md
+            href: partitioning-policy.md
           - name: .alter materialized-view policy partitioning command
             href: alter-materialized-view-partitioning-policy-command.md
             displayName: .alter materialized-view partitioning policy
@@ -511,7 +511,7 @@ items:
       - name: Restricted view access
         items:
           - name: Restricted view access policy
-            href: restrictedviewaccesspolicy.md
+            href: restricted-view-access-policy.md
             displayName: restricted_view_access policy
           - name: .alter table policy restricted_view_access command
             href: alter-table-restricted-view-access-policy-command.md
@@ -525,7 +525,7 @@ items:
       - name: Retention
         items:
           - name: Retention policy
-            href: retentionpolicy.md
+            href: retention-policy.md
           - name: .alter database policy retention command
             href: alter-database-retention-policy-command.md
             displayName: .alter database retention policy
@@ -566,7 +566,7 @@ items:
       - name: Row level security
         items:
           - name: Row level security policy
-            href: rowlevelsecuritypolicy.md
+            href: row-level-security-policy.md
             displayName: row_level_security policy
           - name: .alter materialized-view policy row_level_security command
             href: alter-materialized-view-row-level-security-policy-command.md
@@ -589,7 +589,7 @@ items:
       - name: Row order
         items:
           - name: Row order policy command
-            href: roworderpolicy.md
+            href: row-order-policy.md
             displayName: roworder policy
           - name: .alter table policy roworder command
             href: alter-table-row-order-policy-command.md
@@ -610,7 +610,7 @@ items:
           - name: Using sandboxes in non-modern sku
             href: ../concepts/sandboxes-in-non-modern-skus.md
           - name: Sandbox policy
-            href: sandboxpolicy.md
+            href: sandbox-policy.md
           - name: .alter cluster policy sandbox command
             href: alter-cluster-sandbox-policy-command.md
             displayName: .alter cluster sandbox policy
@@ -623,7 +623,7 @@ items:
       - name: Sharding
         items:
           - name: Sharding policy
-            href: shardingpolicy.md
+            href: sharding-policy.md
           - name: .alter database policy sharding command
             href: alter-database-sharding-policy-command.md
             displayName: .alter database sharding policy
@@ -651,7 +651,7 @@ items:
       - name: Streaming ingestion
         items:
           - name: Streaming ingestion policy
-            href: streamingingestionpolicy.md
+            href: streaming-ingestion-policy.md
             displayName: streamingingestion policy
           - name: .alter database policy streamingingestion command
             href: alter-database-streaming-ingestion-policy-command.md
@@ -680,7 +680,7 @@ items:
       - name: Update
         items:
           - name: Update policy
-            href: updatepolicy.md
+            href: update-policy.md
             displayName: SQL triggers
           - name: .alter table policy update command
             href: alter-table-update-policy-command.md
@@ -751,10 +751,10 @@ items:
         displayName: duplicate, failure, ingestion, troubleshoot
         href: dup-next-failed-ingest.md
       - name: .show ingestion failures command
-        href: ingestionfailures.md
+        href: ingestion-failures.md
       - name: .show streamingingestion failures command
         displayName: .show streaming ingestion failures
-        href: streamingingestionfailures.md
+        href: streaming-ingestion-failures.md
   - name: Data export
     href: data-export/index.md
     items:
@@ -783,7 +783,7 @@ items:
           - name: Show continuous export failures
             href: data-export/show-continuous-failures.md
   - name: Database cursors
-    href: databasecursor.md
+    href: database-cursor.md
   - name: Plugin commands
     items:
       - name: .show plugins command
@@ -807,7 +807,7 @@ items:
         displayName: clear query schema cache
         href: clear-cross-cluster-schema-cache.md
   - name: System information
-    href: systeminfo.md
+    href: system-info.md
     items:
       - name: Estimate table size
         href: estimate-table-size.md
@@ -815,29 +815,29 @@ items:
         href: journal.md
       - name: Operations
         items:
-        - name: .show operations
-          href: show-operations.md
-          displayName: operations
-        - name: .show operations details
-          href: show-operation-details.md
-          displayName: operations
+          - name: .show operations
+            href: show-operations.md
+            displayName: operations
+          - name: .show operations details
+            href: show-operation-details.md
+            displayName: operations
       - name: Queries and commands
         items:
-        - name: .cancel query
-          href: cancel-query-command.md
-        - name: .show commands
-          href: show-commands.md
-        - name: .show commands-and-queries
-          href: commands-and-queries.md
-        - name: .show queries
-          href: show-queries-command.md
+          - name: .cancel query
+            href: cancel-query-command.md
+          - name: .show commands
+            href: show-commands.md
+          - name: .show commands-and-queries
+            href: commands-and-queries.md
+          - name: .show queries
+            href: show-queries-command.md
       - name: Statistics
         items:
-        - name: .show streamingingestion statistics
-          displayName: .show streaming ingestion statistics
-          href: streamingingestionstatistics.md
-        - name: .show table data statistics
-          href: show-table-data-statistics.md
+          - name: .show streamingingestion statistics
+            displayName: .show streaming ingestion statistics
+            href: streaming-ingestion-statistics.md
+          - name: .show table data statistics
+            href: show-table-data-statistics.md
   - name: Advanced data management
     items:
       - name: Extents (data shards)

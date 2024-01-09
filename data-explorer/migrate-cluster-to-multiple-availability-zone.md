@@ -21,7 +21,6 @@ You can configure availability zones when creating a cluster [in the Azure porta
 
 > [!IMPORTANT]
 >
-> - Migration to multiple availability zones is not available in regions where storage conversion to Zone-redundant storage (ZRS) is not supported. For list of non supported regions, see [Change how a storage account is replicated](/azure/storage/common/redundancy-migration#region).
 > - Once a cluster is configured with availability zones, you can't change the cluster to not use availability zones.
 > - Multiple zones aren't supported in all regions. Therefore, clusters located in these regions can't be set up to use availability zones.
 > - Using availability zones incurs additional costs.
@@ -41,12 +40,28 @@ In this article, you learn about:
 
 ## Prerequisites
 
+- Make sure your cluster is in a region where migration to multiple availability zones is supported. For more information, see [Supported regions](#supported-regions).
+
 - For migrating a cluster to support availability zones, you need a cluster that was deployed without any availability zones.
-
 - For changing the zones of a cluster, you need a cluster that is configured with availability zones.
-
 - For REST API, familiarize yourself with [Manage Azure resources by using the REST API](/azure/azure-resource-manager/management/manage-resources-rest).
 - For other programmatic methods, see [Prerequisites](create-cluster-database.md#prerequisites).
+
+### Supported regions
+
+Migration to multiple availability zones is fully supported in all regions, but is limited to regions that don't have capacity restrictions. The following regions are currently supported:
+
+- Australia East
+- Canada Central
+- China North 3
+- France Central
+- India Central
+- North Europe
+- Norway East
+- South Africa North
+- Sweden Central
+- UAE North
+- UK South
 
 ## Get the list of availability zones for your cluster's region
 

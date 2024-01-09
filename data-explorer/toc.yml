@@ -51,6 +51,8 @@ items:
               - name: Create external table
                 displayName: one-click
                 href: external-table.md
+              - name: Schema optimization best practices
+                href: schema-best-practice.md
           - name: Migrate
             items:
               - name: Migrate from Elasticsearch
@@ -66,6 +68,7 @@ items:
             href: /security/benchmark/azure/baselines/data-explorer-security-baseline?toc=/azure/data-explorer/toc.json
           - name: Security controls by Azure Policy
             href: security-controls-policy.md
+            displayName: Azure Policy Regulatory Compliance, compliance
           - name: Access control
             href: kusto/access-control/index.md
             items:
