@@ -15,9 +15,9 @@ To specify a `long` literal, use one of the following syntax options:
 
 |Syntax|Description|Example|
 |--|--|
-|*integer*|A whole number.|`12`|
-|`0x`*hex*|A hexadecimal number.|`0xf` is equivalent to `long(15)`|
-|`long(-`*number*`)`|A negative number|`long(-1)`|
+|*number*|An integer, which is by default of type `long`.|`12`|
+|`0x`*hex*|An integer represented with hexadecimal syntax.|`0xf` is equivalent to `long(15)`|
+|`long(-`*number*`)`|A negative integer.|`long(-1)`|
 |`long(null)`|Represents the [null value](null-values.md).||
 
 ## Related content

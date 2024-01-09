@@ -15,19 +15,19 @@ The `timespan` data type represents a time interval.
 
 To specify a `timespan` literal, use one of the following syntax options:
 
-| Syntax | Example | Length of time |
-|--|--|--|
-| One or more digits followed by `d` for days | `2d` | 2 days |
-| One or more digits followed by `h` for hours | `1.5h` | 1.5 hours |
-| One or more digits followed by `m` for minutes | `30m` | 30 minutes |
-| One or more digits followed by `s` for seconds | `10s` | 10 seconds |
-| One or more digits followed by `ms` for milliseconds | `100ms` | 100 milliseconds |
-| One or more digits followed by `microsecond` | `10microsecond` | 10 microseconds |
-| One or more digits followed by `tick` to indicate nanoseconds | `1tick` | 100 ns |
-| `timespan(`*x* `seconds)` | `timespan(15 seconds)` | 15 seconds |
-| `timespan(`*number*`)` | `timespan(2)` | 2 days |
-| `timespan(`*days*`.`*hours*`:`*minutes*`:`*seconds*`.`*milliseconds*`)` | `timespan(0.12:34:56.7)` | `0d+12h+34m+56.7s` |
-| `timespan(null)` |  | Represents the [null value](null-values.md). |
+| Syntax | Description | Example | Length of time |
+|--|--|--|--|
+| *n*`d` | A timespan represented by one or more digits followed by `d` for days. | `2d` | 2 days |
+| *n*`h` | A timespan represented by one or more digits followed by `h` for hours. | `1.5h` | 1.5 hours |
+| *n*`m` | A timespan represented by one or more digits followed by `m` for minutes. | `30m` | 30 minutes |
+| *n*`s` | A timespan represented by one or more digits followed by `s` for seconds. | `10s` | 10 seconds |
+| *n*`ms` | A timespan represented by one or more digits followed by `ms` for milliseconds. | `100ms` | 100 milliseconds |
+| *n*`microsecond` | A timespan represented by one or more digits followed by `microsecond`. | `10microsecond` | 10 microseconds |
+| *n*`tick` | A timespan represented by one or more digits followed by `tick` to indicate nanoseconds. | `1tick` | 100 ns |
+| `timespan(`*n* `seconds)` | A timespan in seconds. | `timespan(15 seconds)` | 15 seconds |
+| `timespan(`*n*`)` | A timespan in days. | `timespan(2)` | 2 days |
+| `timespan(`*days*`.`*hours*`:`*minutes*`:`*seconds*`.`*milliseconds*`)` | A timespan in days, hours, minutes, and seconds passed.| `timespan(0.12:34:56.7)` | `0d+12h+34m+56.7s` |
+| `timespan(null)` | Represents the [null value](null-values.md). | | |
 
 ## `timespan` operators
 
