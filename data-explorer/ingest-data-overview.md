@@ -119,7 +119,7 @@ The following steps outline the general ingestion process:
 
 The following list describes the permissions required for various ingestion scenarios:
 
-* To create a new table requires at least Database User or Database Admin permissions.
+* To create a new table requires at least Database User permissions.
 * To ingest data into an existing table, without changing its schema, requires at least Database Ingestor permissions.
 * To change the schema of an existing table requires at least Table Admin or Database Admin permissions.
 
