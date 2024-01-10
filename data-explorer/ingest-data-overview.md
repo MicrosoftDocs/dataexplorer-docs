@@ -67,7 +67,7 @@ For more information on the suggested ingestion method, see the relevant documen
         :::image type="icon" source="media/ingest-data-overview/callout-3.png" alt-text="Screenshot of decision tree callout #3.":::
     :::column-end:::
     :::column:::
-        [Integrate with Azure Data Factory](data-factory-integration.md)
+        [Copy data to Azure Data Explorer by using Azure Data Factory](data-factory-load-data.md)
     :::column-end:::
 :::row-end:::
 :::row:::
