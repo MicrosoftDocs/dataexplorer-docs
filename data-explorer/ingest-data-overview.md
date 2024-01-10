@@ -28,18 +28,18 @@ There are multiple ways to perform one-time data ingestion. Use the following de
 For help with answering the decision tree questions, see the relevant documentation:
 
 :::row:::
-   :::column:::
+   :::column span="":::
         :::image type="icon" source="media/ingest-data-overview/callout-A.png" alt-text="Screenshot of decision tree callout A.":::
    :::column-end:::
-   :::column:::
+   :::column span="":::
         [Data formats supported by Azure Data Explorer for ingestion](ingestion-supported-formats.md)
    :::column-end:::
 :::row-end:::
 :::row:::
-   :::column:::
+   :::column span="":::
         :::image type="icon" source="media/ingest-data-overview/callout-B.png" alt-text="Screenshot of decision tree callout B.":::
    :::column-end:::
-   :::column:::
+   :::column span="":::
         [File formats supported for Azure Data Factory pipelines](/azure/data-explorer/ingestion-supported-formats)
    :::column-end:::
 :::row-end:::
@@ -47,10 +47,10 @@ For help with answering the decision tree questions, see the relevant documentat
 For more information on the suggested ingestion method, see the relevant documentation:
 
 :::row:::
-    :::column:::
+    :::column span="1":::
         :::image type="icon" source="media/ingest-data-overview/callout-1.png" alt-text="Screenshot of decision tree callout #1.":::
     :::column-end:::
-    :::column:::
+    :::column span="":::
         [How to ingest historical data into Azure Data Explorer](ingest-data-historical.md)
     :::column-end:::
 :::row-end:::
