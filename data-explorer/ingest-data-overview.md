@@ -38,9 +38,7 @@ For more information, see the relevant documentation:
 
 ## Continuous data ingestion
 
-Continuous ingestion excels in situations demanding immediate insights from live data. It proves useful for monitoring systems, log and event data, and real-time analytics.
-
-Azure Data Explorer offers various data connectors for continuous data ingestion. Some of these connectors include external management services, such as throttling, retries, monitors, and alerts. For more information, see [Connectors overview](connector-overview.md).
+Continuous ingestion excels in situations demanding immediate insights from live data. For example, continuous ingestion is useful for monitoring systems, log and event data, and real-time analytics.
 
 Continuous data ingestion involves setting up an ingestion pipeline with either streaming or queued ingestion:
 
@@ -57,10 +55,6 @@ There are multiple ways to configure continuous data ingestion. Use the followin
     "Flow chart for continuous ingestion decision making. First, determine the type and location of your data. For event data, you can create an Event Hubs data connection or ingest data with Apache Kafka. For IoT data, you can create an IoT Hubs data connection. For data in Azure Storage, you can create an Event Grid data connection. For data stored in other places, check the connectors overview to see if there's a dedicated connector that can fit your use case. If so, follow the guidance to use that connector. If not, write custom code using Kusto client libraries. Articles with guidance on each of these options are linked to directly following this flow chart."
 :::image-end:::
 
-
-> [!NOTE]
-> Streaming ingestion isn't supported for all ingestion methods. For support details, check the documentation for the specific ingestion method.
-
 For more information, see the relevant documentation:
 
 | Callout | Relevant documentation |
@@ -73,6 +67,9 @@ For more information, see the relevant documentation:
 | :::image type="icon" source="media/ingest-data-overview/callout-5.png" alt-text="Screenshot of continuous decision tree callout #5."::: | See the guidance for the relevant connector, such as Apache Spark, Apache Kafka, Azure Cosmos DB, Fluent Bit, Logstash, Open Telemetry, Power Automate, Splunk, and more. For more information, see [Connectors overview](connector-overview.md). |
 | :::image type="icon" source="media/ingest-data-overview/callout-6.png" alt-text="Screenshot of continuous decision tree callout #6."::: | [Kusto client libraries](kusto/api/client-libraries.md) are available for C#, Python, Java, JavaScript, TypeScript, and Go. You can write code to manipulate your data and then use the Kusto Ingest library to ingest data into your Azure Data Explorer table. The data must be in one of the [supported formats](ingestion-supported-formats.md) prior to ingestion. |
 
+> [!NOTE]
+> Streaming ingestion isn't supported for all ingestion methods. For support details, check the documentation for the specific ingestion method.
+
 ## Direct ingestion with management commands
 
 Azure Data Explorer offers the following ingestion management commands, which ingest data directly to your cluster instead of using the data management service. They should be used only for exploration and prototyping and not in production or high-volume scenarios.
@@ -82,6 +79,8 @@ Azure Data Explorer offers the following ingestion management commands, which in
 * **Ingest from storage**: The [.ingest into command](kusto/management/data-ingestion/ingest-from-storage.md) gets the data to ingest from external storage, such as Azure Blob Storage, accessible by your cluster and pointed-to by the command.
 
 ## Compare ingestion methods
+
+The following table compares the main ingestion methods:
 
 | Ingestion name | Data type | Maximum file size | Streaming, queued, direct | Most common scenarios | Considerations |
 |--|--|--|--|--|--|
@@ -97,6 +96,8 @@ Azure Data Explorer offers the following ingestion management commands, which in
 | [Logic Apps](kusto/tools/logicapps.md) | All formats supported | 1 GB uncompressed | Queued | Used to automate pipelines | |
 | [LogStash](ingest-data-logstash.md) | JSON | Unlimited. Inherits Java restrictions. | Inputs to the connector are Logstash events, and the connector outputs to Kusto using queued ingestion. | Existing pipeline, use the mature, open source nature of Logstash for high volume consumption from the input(s). | Preference can be determined by the existing use of a multiple producers or consumer service or the desired level of service management. |
 | [Power Automate](flow.md) | All formats supported | 1 GB uncompressed | Queued | Ingestion commands as part of flow. Used to automate pipelines. | |
+
+For information on other connectors, see [Connectors overview](connector-overview.md).
 
 ## The ingestion process
 
