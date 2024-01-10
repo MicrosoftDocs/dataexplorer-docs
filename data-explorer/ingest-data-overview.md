@@ -115,9 +115,9 @@ The following steps outline the general ingestion process:
 
 1. **Set batching policy (optional)**: Data is batched based on the [ingestion batching policy](kusto/management/batching-policy.md). For guidance, see [Optimize for throughput](kusto/api/netfx/kusto-ingest-best-practices.md#optimize-for-throughput). 
 
-1. **Set retention policy**: If the database retention policy isn't suitable for your needs, override it at the table level. For more information, see [Retention policy](kusto/management/retentionpolicy.md).
+1. **Set retention policy (optional)**: If the database retention policy isn't suitable for your needs, override it at the table level. For more information, see [Retention policy](kusto/management/retentionpolicy.md).
 
-1. **Create a table**: If you're using the Get data experience, you can create a table as part of the ingestion flow. Otherwise, create a table prior to ingestion in the [web UI](create-table-wizard.md) or with the [.create table command](kusto/management/create-table-command.md).
+1. **Create a table**: If you're using the Get data experience, you can create a table as part of the ingestion flow. Otherwise, create a table prior to ingestion in the [Azure Data Explorer web UI](create-table-wizard.md) or with the [.create table command](kusto/management/create-table-command.md).
 
 1. **Create a schema mapping**: [Schema mappings](kusto/management/mappings.md) help bind source data fields to destination table columns. Different types of mappings are supported, including row-oriented formats like CSV, JSON, and AVRO, and column-oriented formats like Parquet. In most methods, mappings can also be [precreated on the table](kusto/management/create-ingestion-mapping-command.md).
 
