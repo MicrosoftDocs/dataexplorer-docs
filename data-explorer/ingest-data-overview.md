@@ -28,18 +28,18 @@ There are multiple ways to perform one-time data ingestion. Use the following de
 For help with answering the decision tree questions, see the relevant documentation:
 
 :::row:::
-   :::column span="":::
+   :::column span="1":::
         :::image type="icon" source="media/ingest-data-overview/callout-A.png" alt-text="Screenshot of decision tree callout A.":::
    :::column-end:::
-   :::column span="":::
+   :::column:::
         [Data formats supported by Azure Data Explorer for ingestion](ingestion-supported-formats.md)
    :::column-end:::
 :::row-end:::
 :::row:::
-   :::column span="":::
+   :::column span="1":::
         :::image type="icon" source="media/ingest-data-overview/callout-B.png" alt-text="Screenshot of decision tree callout B.":::
    :::column-end:::
-   :::column span="":::
+   :::column:::
         [File formats supported for Azure Data Factory pipelines](/azure/data-explorer/ingestion-supported-formats)
    :::column-end:::
 :::row-end:::
@@ -55,7 +55,7 @@ For more information on the suggested ingestion method, see the relevant documen
     :::column-end:::
 :::row-end:::
 :::row:::
-    :::column:::
+    :::column span="1":::
         :::image type="icon" source="media/ingest-data-overview/callout-2.png" alt-text="Screenshot of decision tree callout #2.":::
     :::column-end:::
     :::column:::
@@ -63,7 +63,7 @@ For more information on the suggested ingestion method, see the relevant documen
     :::column-end:::
 :::row-end:::
 :::row:::
-    :::column:::
+    :::column span="1":::
         :::image type="icon" source="media/ingest-data-overview/callout-3.png" alt-text="Screenshot of decision tree callout #3.":::
     :::column-end:::
     :::column:::
@@ -71,7 +71,7 @@ For more information on the suggested ingestion method, see the relevant documen
     :::column-end:::
 :::row-end:::
 :::row:::
-    :::column:::
+    :::column span="1":::
        :::image type="icon" source="media/ingest-data-overview/callout-4.png" alt-text="Screenshot of decision tree callout #4.":::
     :::column-end:::
     :::column:::
