@@ -108,6 +108,10 @@ To see the roles assigned to all principals for a particular resource, run the f
 > [!TIP]
 > Use the [where](../query/where-operator.md) operator to filter the results by a specific principal or role.
 
+### Modify the role assignments
+
+For details on how to modify your role assignments at the database and table levels, see [Manage database security roles](manage-database-security-roles.md) and [Manage table security roles](manage-table-security-roles.md).
+
 ## Related content
 
 * [Kusto role-based access control](access-control/role-based-access-control.md)
