@@ -31,9 +31,9 @@ Operator       |Description                         |Example
 
 ## Type rules for arithmetic operations
 
-The data type of the result of an arithmetic operation is determined by the data types of the operands. If one of the operands is of type `real`, the result will be of type `real`. If both operands are of type `int`, the result will also be of type `int`.
+The data type of the result of an arithmetic operation is determined by the data types of the operands. If one of the operands is of type `real`, the result will be of type `real`. If both operands are of integer types (`int` or `long`), the result will be of type `long`.
 
-Due to these rules, the result of division operations that only involve integers will be truncated to an integer, which may not always be what you want. To avoid truncation, convert at least one of the `int` values to `real` using the [real() function](scalar-data-types/real.md) before performing the operation.
+Due to these rules, the result of division operations that only involve integers will be truncated to an integer, which might not always be what you want. To avoid truncation, convert at least one of the integer values to `real` using the [todouble()](todouble-function.md) before performing the operation.
 
 The following examples illustrate how the operand types affect the result type in division operations.
 
