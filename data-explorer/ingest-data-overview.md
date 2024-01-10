@@ -17,15 +17,15 @@ Azure Data Explorer offers one-time ingestion or the establishment of a continuo
 
 ## One-time data ingestion
 
-One-time ingestion is helpful in various scenarios, such as the transfer of historical data, filling in missing data, and for the initial stages of prototyping and data analysis. This approach facilitates fast data integration without the need for a continuous pipeline commitment.
+One-time ingestion is helpful for the transfer of historical data, filling in missing data, and the initial stages of prototyping and data analysis. This approach facilitates fast data integration without the need for a continuous pipeline commitment.
 
 There are multiple ways to perform one-time data ingestion. Use the following decision tree to determine the most suitable option for your use case:
 
 :::image type="complex" source="media/ingest-data-overview/one-time-ingestion.png" lightbox="media/ingest-data-overview/one-time-ingestion.png" alt-text="Flow chart for one-time ingestion decision making.":::
-   "Diagram that acts as a decision tree for one-time ingestion. If you're ingesting historical data, you should follow the guidance in the Ingest historical data document. If you're not ingesting historical data, and the data is in a supported data format, we recommend using the Get Data experience to get data from a local file, get data from Amazon S3, or get data from Azure Storage. If the data is in an unsupported format, or if you don't want to use the Get Data experience, you can integrate with Azure Data Factory, which supports around 90 data formats, or write your own custom code using the Kusto client libraries. Articles with guidance on each of these options are linked to directly following this flow chart."
+   "Diagram that acts as a decision tree for one-time ingestion. If you're ingesting historical data, you should follow the guidance in the Ingest historical data document. If you're not ingesting historical data, and the data is in a supported data format, we recommend using the Get data experience. If the data is in an unsupported format, or if you don't want to use the Get data experience, you can integrate with Azure Data Factory or write your own custom code using the Kusto client libraries. Articles with guidance on each of these options are linked to directly following this flow chart."
 :::image-end:::
 
-For help answering the decision tree questions, see the relevant documentation:
+For help with answering the decision tree questions, see the relevant documentation:
 
 :::image type="icon" source="media/ingest-data-overview/callout-A.png" alt-text="Screenshot of decision tree callout A."::: See the [data formats supported by Azure Data Explorer for ingestion](ingestion-supported-formats.md).
 
@@ -91,16 +91,16 @@ Azure Data Explorer offers the following ingestion management commands, which in
 | Ingestion name | Data type | Maximum file size | Streaming, queued, direct | Most common scenarios | Considerations |
 |--|--|--|--|--|--|
 | [**Apache Spark connector**](spark-connector.md) | Every format supported by the Spark environment | Unlimited | Queued | Existing pipeline, preprocessing on Spark before ingestion, fast way to create a safe (Spark) streaming pipeline from the various sources the Spark environment supports. | Consider cost of Spark cluster. For batch write, compare with Azure Data Explorer data connection for Event Grid. For Spark streaming, compare with the data connection for event hub. |
-| [**Azure Data Factory (ADF)**](data-factory-integration.md) | [Supported data formats](/azure/data-factory/copy-activity-overview#supported-data-stores-and-formats) | Unlimited *(per ADF restrictions) | Batching or per ADF trigger | Supports formats that are usually unsupported, large files, can copy from over 90 sources, from on perm to cloud | This method takes relatively more time until data is ingested. ADF uploads all data to memory and then begins ingestion. |
+| [**Azure Data Factory (ADF)**](data-factory-integration.md) | [Supported data formats](/azure/data-factory/copy-activity-overview#supported-data-stores-and-formats) | Unlimited *(per ADF restrictions) | Batching or per ADF trigger | Supports formats that are unsupported, such as Excel and XML, and can copy large files from over 90 sources, from on perm to cloud | This method takes relatively more time until data is ingested. ADF uploads all data to memory and then begins ingestion. |
 | [**Event Grid**](ingest-data-event-grid-overview.md) | [Supported data formats](ingest-data-event-grid-overview.md#data-format) | 1 GB uncompressed | Queued | Continuous ingestion from Azure storage, external data in Azure storage | Ingestion can be triggered by blob renaming or blob creation actions |
 | [**Event Hub**](ingest-data-event-hub-overview.md) | [Supported data formats](ingest-data-event-hub-overview.md#data-format) | N/A | Queued, streaming | Messages, events |  |
 | [**Get data experience**](get-data-file.md) | *SV, JSON | 1 GB uncompressed | Queued to container, local file and blob in direct ingestion | One-off, create table schema, definition of continuous ingestion with Event Grid, bulk ingestion with container (up to 5,000 blobs; no limit when using historical ingestion) |  |
 | [**IoT Hub**](ingest-data-iot-hub-overview.md) | [Supported data formats](ingest-data-iot-hub-overview.md#data-format) | N/A | Queued, streaming | IoT messages, IoT events, IoT properties |  |
-| [**Kafka connector**](ingest-data-kafka.md) | Avro, ApacheAvro, JSON, CSV, Parquet, and ORC | Unlimited. Inherits Java restrictions. | Queued, streaming | Existing pipeline, high volume consumption from the source. | Preference can be determined by the existing use of a "multiple producer" or "consumer" service or the desired level of service management. |
+| [**Kafka connector**](ingest-data-kafka.md) | Avro, ApacheAvro, JSON, CSV, Parquet, and ORC | Unlimited. Inherits Java restrictions. | Queued, streaming | Existing pipeline, high volume consumption from the source. | Preference can be determined by the existing use of a multiple producers or consumer service or the desired level of service management. |
 | [**Kusto client libraries**](kusto/api/client-libraries.md) | All formats supported | 1 GB uncompressed | Queued, streaming, direct | Write your own code according to organizational needs | |
 | [**LightIngest**](lightingest.md) | All formats supported | 1 GB uncompressed | Queued via DM or direct ingestion | Data migration, historical data with adjusted ingestion timestamps, bulk ingestion (no size restriction) | Case-sensitive, space-sensitive |
 | [**Logic Apps**](kusto/tools/logicapps.md) | All formats supported | 1 GB uncompressed | Queued | Used to automate pipelines | |
-| [**LogStash**](ingest-data-logstash.md) | JSON | Unlimited. Inherits Java restrictions. | Inputs to the connector are Logstash events, and the connector outputs to Kusto using queued ingestion. | Existing pipeline, use the mature, open source nature of Logstash for high volume consumption from the input(s). | Preference can be determined by the existing use of a "multiple producer" or "consumer" service or the desired level of service management. |
+| [**LogStash**](ingest-data-logstash.md) | JSON | Unlimited. Inherits Java restrictions. | Inputs to the connector are Logstash events, and the connector outputs to Kusto using queued ingestion. | Existing pipeline, use the mature, open source nature of Logstash for high volume consumption from the input(s). | Preference can be determined by the existing use of a multiple producers or consumer service or the desired level of service management. |
 | [**Power Automate**](flow.md) | All formats supported | 1 GB uncompressed | Queued | Ingestion commands as part of flow. Used to automate pipelines. | |
 
 ## The ingestion process
@@ -113,7 +113,7 @@ The following steps outline the general ingestion process:
 
 1. **Create a table**: If you're using the Get data experience, you can create a table as part of the ingestion flow. Otherwise, create a table prior to ingestion in the [web UI](create-table-wizard.md) or with the [.create table command](kusto/management/create-table-command.md).
 
-1. **Create a schema mapping**: [Schema mappings](kusto/management/mappings.md) help bind source data fields to destination table columns. Different types of mappings are supported, including row-oriented formats like CSV, JSON, and AVRO, as well as column-oriented formats like Parquet. In most methods, mappings can also be [precreated on the table](kusto/management/create-ingestion-mapping-command.md).
+1. **Create a schema mapping**: [Schema mappings](kusto/management/mappings.md) help bind source data fields to destination table columns. Different types of mappings are supported, including row-oriented formats like CSV, JSON, and AVRO, and column-oriented formats like Parquet. In most methods, mappings can also be [precreated on the table](kusto/management/create-ingestion-mapping-command.md).
 
 1. **Set update policy (optional)**: Certain data formats like Parquet, JSON, and Avro enable straightforward ingest-time transformations. For more intricate processing during ingestion, use the [update policy](kusto/management/updatepolicy.md). This policy automatically executes extractions and transformations on ingested data within the original table, then ingests the modified data into one or more destination tables.
 
