@@ -108,7 +108,7 @@ For more information, see the relevant documentation:
 
 | Callout | Relevant documentation |
 |--|--|
-| :::image type="icon" source="media/ingest-data-overview/callout-A.png" alt-text="Screenshot of continuous decision tree callout A."::: | [[Connectors overview](connector-overview.md)] |
+| :::image type="icon" source="media/ingest-data-overview/callout-A.png" alt-text="Screenshot of continuous decision tree callout A."::: | [Connectors overview](connector-overview.md) |
 | :::image type="icon" source="media/ingest-data-overview/callout-1.png" alt-text="Screenshot of continuous decision tree callout #1."::: | [Create an Event Hubs data connection](create-event-hubs-connection.md) |
 | :::image type="icon" source="media/ingest-data-overview/callout-2.png" alt-text="Screenshot of continuous decision tree callout #2."::: | [Ingest data from Apache Kafka](ingest-data-kafka.md) |
 | :::image type="icon" source="media/ingest-data-overview/callout-3.png" alt-text="Screenshot of continuous decision tree callout #3."::: | [Create an IoT Hubs data connection](create-iot-hub-connection.md) |
