@@ -21,7 +21,7 @@ One-time ingestion is helpful for the transfer of historical data, filling in mi
 
 There are multiple ways to perform one-time data ingestion. Use the following decision tree to determine the most suitable option for your use case:
 
-:::image type="complex" source="media/ingest-data-overview/one-time-ingestion.png" lightbox="media/ingest-data-overview/one-time-ingestion.png" alt-text="Flow chart for one-time ingestion decision making.":::
+:::image type="complex" border="false" source="media/ingest-data-overview/one-time-ingestion.png" lightbox="media/ingest-data-overview/one-time-ingestion.png" alt-text="Flow chart for one-time ingestion decision making.":::
    "Diagram that acts as a decision tree for one-time ingestion. If you're ingesting historical data, you should follow the guidance in the Ingest historical data document. If you're not ingesting historical data, and the data is in a supported data format, we recommend using the Get data experience. If the data is in an unsupported format, you can integrate with Azure Data Factory or write your own custom code using the Kusto client libraries. Articles with guidance on each of these options are linked to directly following this flow chart."
 :::image-end:::
 
