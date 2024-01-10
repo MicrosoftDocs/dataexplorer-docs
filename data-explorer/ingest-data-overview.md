@@ -106,12 +106,15 @@ There are multiple ways to configure continuous data ingestion. Use the followin
 
 For more information, see the relevant documentation:
 
-* **[Create an Event Hubs data connection](create-event-hubs-connection.md)**: Transfer events from various supported services.
-* **[Ingest data from Apache Kafka](ingest-data-kafka.md)**: Transfer events from Apache Kafka, a distributed platform for real-time streaming data.
-* **[Create an IoT Hubs data connection](create-iot-hub-connection.md)**: Transfer IoT data from supported devices.
-* **[Create an Event Grid data connection](create-event-grid-connection.md)**: Listen to Azure storage and pull information when subscribed events occur.
-* **[Connectors overview](connector-overview.md)**: Get data with services like Apache Spark, Azure Data Factory, Apache Kafka, Apache Flink, Azure Cosmos DB, Fluent Bit, Logstash, Open Telemetry, Power Automate, Splunk, and more.
-* **[Write custom code with Kusto client libraries](kusto/api/client-libraries.md)**: Write code with C#, Python, Java, JavaScript, TypeScript, or Go to ingest data.
+| Callout | Relevant documentation |
+|--|--|
+| :::image type="icon" source="media/ingest-data-overview/callout-A.png" alt-text="Screenshot of continuous decision tree callout A."::: | [[Connectors overview](connector-overview.md)] |
+| :::image type="icon" source="media/ingest-data-overview/callout-1.png" alt-text="Screenshot of continuous decision tree callout #1."::: | [Create an Event Hubs data connection](create-event-hubs-connection.md) |
+| :::image type="icon" source="media/ingest-data-overview/callout-2.png" alt-text="Screenshot of continuous decision tree callout #2."::: | [Ingest data from Apache Kafka](ingest-data-kafka.md) |
+| :::image type="icon" source="media/ingest-data-overview/callout-3.png" alt-text="Screenshot of continuous decision tree callout #3."::: | [Create an IoT Hubs data connection](create-iot-hub-connection.md) |
+| :::image type="icon" source="media/ingest-data-overview/callout-4.png" alt-text="Screenshot of continuous decision tree callout #4."::: | [Create an Event Grid data connection](create-event-grid-connection.md) |
+| :::image type="icon" source="media/ingest-data-overview/callout-5.png" alt-text="Screenshot of continuous decision tree callout #5."::: | Follow the guidance for the relevant connector, such as Apache Spark, Azure Data Factory, Apache Kafka, Apache Flink, Azure Cosmos DB, Fluent Bit, Logstash, Open Telemetry, Power Automate, Splunk, and more. For a list of connectors, see [[Connectors overview](connector-overview.md)]. |
+| :::image type="icon" source="media/ingest-data-overview/callout-6.png" alt-text="Screenshot of continuous decision tree callout #6."::: | [Kusto client libraries](kusto/api/client-libraries.md) are available for C#, Python, Java, JavaScript, TypeScript, and Go. You can write code to manipulate your data and then use the Kusto Ingest library to ingest data into your Azure Data Explorer table. The data must be in one of the [supported formats](ingestion-supported-formats.md) prior to ingestion. |
 
 > [!NOTE]
 > Event Hubs, IoT Hubs, Event Grid, and certain data connectors offer services such as throttling, retries, monitors, and alerts. To learn more, see the [Connectors overview](connector-overview.md).
