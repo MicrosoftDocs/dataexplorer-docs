@@ -28,18 +28,18 @@ There are multiple ways to perform one-time data ingestion. Use the following de
 For help with answering the decision tree questions, see the relevant documentation:
 
 :::row:::
-   :::column span="1":::
+   :::column span="":::
         :::image type="icon" source="media/ingest-data-overview/callout-A.png" alt-text="Screenshot of decision tree callout A.":::
    :::column-end:::
-   :::column span="5":::
+   :::column span="3":::
         [Data formats supported by Azure Data Explorer for ingestion](ingestion-supported-formats.md)
    :::column-end:::
 :::row-end:::
 :::row:::
-   :::column span="1":::
+   :::column span="":::
         :::image type="icon" source="media/ingest-data-overview/callout-B.png" alt-text="Screenshot of decision tree callout B.":::
    :::column-end:::
-   :::column span="5":::
+   :::column span="3":::
         [File formats supported for Azure Data Factory pipelines](/azure/data-explorer/ingestion-supported-formats)
    :::column-end:::
 :::row-end:::
@@ -47,34 +47,34 @@ For help with answering the decision tree questions, see the relevant documentat
 For more information on the suggested ingestion method, see the relevant documentation:
 
 :::row:::
-    :::column span="1":::
+    :::column span="":::
         :::image type="icon" source="media/ingest-data-overview/callout-1.png" alt-text="Screenshot of decision tree callout #1.":::
     :::column-end:::
-    :::column span="5":::
+    :::column span="3":::
         [How to ingest historical data into Azure Data Explorer](ingest-data-historical.md)
     :::column-end:::
 :::row-end:::
 :::row:::
-    :::column span="1":::
+    :::column span="":::
         :::image type="icon" source="media/ingest-data-overview/callout-2.png" alt-text="Screenshot of decision tree callout #2.":::
     :::column-end:::
-    :::column span="5":::
+    :::column span="3":::
         Get data from a [local file](get-data-file.md), [Amazon S3](get-data-amazon-s3.md), or [Azure Storage](get-data-storage.md)
     :::column-end:::
 :::row-end:::
 :::row:::
-    :::column span="1":::
+    :::column span="":::
         :::image type="icon" source="media/ingest-data-overview/callout-3.png" alt-text="Screenshot of decision tree callout #3.":::
     :::column-end:::
-    :::column span="5":::
+    :::column span="3":::
         [Copy data to Azure Data Explorer by using Azure Data Factory](data-factory-load-data.md)
     :::column-end:::
 :::row-end:::
 :::row:::
-    :::column span="1":::
+    :::column span="":::
        :::image type="icon" source="media/ingest-data-overview/callout-4.png" alt-text="Screenshot of decision tree callout #4.":::
     :::column-end:::
-    :::column span="5":::
+    :::column span="3":::
         [Kusto client libraries](kusto/api/client-libraries.md) are available for C#, Python, Java, JavaScript, TypeScript, and Go. You can write code to manipulate your data and then use the Kusto Ingest library to ingest data into your Azure Data Explorer table. The data must be in one of the [supported formats](ingestion-supported-formats.md) prior to ingestion.
     :::column-end:::
 :::row-end:::
