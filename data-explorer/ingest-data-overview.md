@@ -99,6 +99,16 @@ The following table compares the main ingestion methods:
 
 For information on other connectors, see [Connectors overview](connector-overview.md).
 
+## Permissions
+
+The following list describes the permissions required for various ingestion scenarios:
+
+* To create a new table requires at least Database User permissions.
+* To ingest data into an existing table, without changing its schema, requires at least Database Ingestor permissions.
+* To change the schema of an existing table requires at least Table Admin or Database Admin permissions.
+
+For more information, see [Kusto role-based access control](kusto/access-control/role-based-access-control.md).
+
 ## The ingestion process
 
 The following steps outline the general ingestion process:
@@ -114,16 +124,6 @@ The following steps outline the general ingestion process:
 1. **Set update policy (optional)**: Certain data formats like Parquet, JSON, and Avro enable straightforward ingest-time transformations. For more intricate processing during ingestion, use the [update policy](kusto/management/updatepolicy.md). This policy automatically executes extractions and transformations on ingested data within the original table, then ingests the modified data into one or more destination tables.
 
 1. **Ingest data**: Use your preferred ingestion tool, connector, or method to bring in the data.
-
-## Permissions
-
-The following list describes the permissions required for various ingestion scenarios:
-
-* To create a new table requires at least Database User permissions.
-* To ingest data into an existing table, without changing its schema, requires at least Database Ingestor permissions.
-* To change the schema of an existing table requires at least Table Admin or Database Admin permissions.
-
-For more information, see [Kusto role-based access control](kusto/access-control/role-based-access-control.md).
 
 ## Related content
 
