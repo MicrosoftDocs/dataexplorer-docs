@@ -17,6 +17,7 @@ For general information on data ingestion, see [Azure Data Explorer data ingesti
 ## Prerequisites
 
 * A Microsoft account or a Microsoft Entra user identity. An Azure subscription isn't required.
+* Sign-in to the [Azure Data Explorer web UI](https://dataexplorer.azure.com/home).
 * An Azure Data Explorer cluster and database. [Create a cluster and database](create-cluster-and-database.md).
 * A [storage account](/azure/storage/common/storage-quickstart-create-account?tabs=azure-portal).
 
