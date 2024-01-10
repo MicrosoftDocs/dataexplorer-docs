@@ -33,13 +33,13 @@ For help answering the decision tree questions, see the relevant documentation:
 
 For more information on the suggested ingestion method, see the relevant documentation:
 
-:::image type="icon" source="media/ingest-data-overview/callout-1.png" alt-text="Screenshot of decision tree callout #1."::: [Ingest historical data](ingest-data-historical.md) from an existing storage system.
+:::image type="icon" source="media/ingest-data-overview/callout-1.png" alt-text="Screenshot of decision tree callout #1."::: Learn [how to ingest historical data](ingest-data-historical.md) from an existing storage system.
 
 :::image type="icon" source="media/ingest-data-overview/callout-2.png" alt-text="Screenshot of decision tree callout #2."::: In the [Azure Data Explorer web UI](https://dataexplorer.azure.com/), get data from a [local file](get-data-file.md), [Amazon S3](get-data-amazon-s3.md), or [Azure Storage](get-data-storage.md).
 
-:::image type="icon" source="media/ingest-data-overview/callout-3.png" alt-text="Screenshot of decision tree callout #3."::: [Integrate with Azure Data Factory](data-factory-integration.md)**: as a one-time solution, on a periodic timeline, or triggered by specific events.
+:::image type="icon" source="media/ingest-data-overview/callout-3.png" alt-text="Screenshot of decision tree callout #3."::: [Integrate with Azure Data Factory](data-factory-integration.md).
 
-:::image type="icon" source="media/ingest-data-overview/callout-4.png" alt-text="Screenshot of decision tree callout #4."::: [Kusto client libraries](kusto/api/client-libraries.md) are available for C#, Python, Java, JavaScript, TypeScript, and Go. Write code to manipulate your data as needed and then use the Kusto Ingest library to ingest the data into your Azure Data Explorer table. The data must be in one of the [supported formats](ingestion-supported-formats.md) prior to ingestion. To get started with the Kusto client libraries, see [Set up your development environment](kusto/api/get-started/app-set-up.md).
+:::image type="icon" source="media/ingest-data-overview/callout-4.png" alt-text="Screenshot of decision tree callout #4."::: [Kusto client libraries](kusto/api/client-libraries.md) are available for C#, Python, Java, JavaScript, TypeScript, and Go. You can write code to manipulate your data and then use the Kusto Ingest library to ingest data into your Azure Data Explorer table. The data must be in one of the [supported formats](ingestion-supported-formats.md) prior to ingestion.
 
 ## Continuous data ingestion
 
