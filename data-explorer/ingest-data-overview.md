@@ -45,7 +45,7 @@ For more information on the suggested ingestion method, see the relevant documen
 
 Continuous ingestion excels in situations demanding immediate insights from live data. It proves useful for monitoring systems, log and event data, and real-time analytics.
 
-Azure Data Explorer offers various data connectors for continuous data ingestion. Some of these connectors include external management services, such as throttling, retries, monitors, and alerts. To learn more, see the [Connectors overview](connector-overview.md).
+Azure Data Explorer offers various data connectors for continuous data ingestion. Some of these connectors include external management services, such as throttling, retries, monitors, and alerts. For more information, see [Connectors overview](connector-overview.md).
 
 Continuous data ingestion involves setting up an ingestion pipeline with either streaming or queued ingestion:
 
