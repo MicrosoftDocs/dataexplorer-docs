@@ -16,13 +16,13 @@ The app registration can either be created in the Azure portal, or programatical
 1. Sign in to [Azure portal](https://portal.azure.com) and open the **Identity** blade
 1. Browse to **App registrations** and select **New registration**.
 
-    :::image type="content" source="media/provision-entra-id-app/create-app-new-registration.png" alt-text="Screenshot showing how to start a new app registration." lightbox="media/provision-entra-id-app/create-app-new-registration.png":::
+    :::image type="content" source="../media/provision-entra-id-app/create-app-new-registration.png" alt-text="Screenshot showing how to start a new app registration." lightbox="../media/provision-entra-id-app/create-app-new-registration.png":::
 
 1. Name the application, for example "example-app".
 1. Select a supported account type, which determines who can use the application.
 1. Under **Redirect URI**, select **Web** for the type of application you want to create. The URI is optional and is left blank in this case.
 
-    :::image type="content" source="media/provision-entra-id-app/create-app-register-app.png" alt-text="Screenshot showing how to register a new app registration." lightbox="media/provision-entra-id-app/create-app-register-app.png":::
+    :::image type="content" source="../media/provision-entra-id-app/create-app-register-app.png" alt-text="Screenshot showing how to register a new app registration." lightbox="../media/provision-entra-id-app/create-app-register-app.png":::
 
 1. Select **Register**.
 
@@ -40,7 +40,7 @@ Through the course of this section, you'll copy the following values: **Applicat
 
 1. In the **Certificates & secrets** blade, select **New client secret**.
 
-    :::image type="content" source="media/provision-entra-id-app/create-app-new-client-secret.png" alt-text="Screenshot showing how to start the creation of client secret." lightbox="media/provision-entra-id-app/create-app-new-client-secret.png":::
+    :::image type="content" source="../media/provision-entra-id-app/create-app-new-client-secret.png" alt-text="Screenshot showing how to start the creation of client secret." lightbox="../media/provision-entra-id-app/create-app-new-client-secret.png":::
 
 1. Enter a description and expiration.
 1. Select **Add**.
@@ -98,16 +98,16 @@ If you only need access to an authorized data resource, you can skip this sectio
 1. Select **APIs my organization uses**. 
 1. Search for and select **Azure Data Explorer**.
 
-    :::image type="content" source="media/provision-entra-id-app/configure-delegated-add-api-permission.png" alt-text="Screenshot showing how to add Azure Data Explorer API permission." lightbox="media/provision-entra-id-app/configure-delegated-add-api-permission.png":::
+    :::image type="content" source="../media/provision-entra-id-app/configure-delegated-add-api-permission.png" alt-text="Screenshot showing how to add Azure Data Explorer API permission." lightbox="../media/provision-entra-id-app/configure-delegated-add-api-permission.png":::
 
 1. In **Delegated permissions**, select the **user_impersonation** box.
 1. Select **Add permissions**.
 
-    :::image type="content" source="media/provision-entra-id-app/configure-delegated-click-add-permissions.png" alt-text="Screenshot showing how to select delegated permissions with user impersonation." lightbox="media/provision-entra-id-app/configure-delegated-click-add-permissions.png":::
+    :::image type="content" source="../media/provision-entra-id-app/configure-delegated-click-add-permissions.png" alt-text="Screenshot showing how to select delegated permissions with user impersonation." lightbox="../media/provision-entra-id-app/configure-delegated-click-add-permissions.png":::
 
 ## Grant a service principal access to the database
 
-Once your application registration is created, you need to grant the corresponding service principal access to your database. The following example gives viewer access. For other roles, see [Manage database permissions](/azure/data-explorer/manage-database-permissions.md).
+Once your application registration is created, you need to grant the corresponding service principal access to your database. The following example gives viewer access. For other roles, see [Manage database permissions](/azure/data-explorer/manage-database-permissions).
 
 1. Execute the following command in your query editor:
 
@@ -126,11 +126,11 @@ Once your application registration is created, you need to grant the correspondi
     > [!NOTE]
     > After creating the application registration, there might be a several minute delay until it can be referenced. If you receive an error that the application is not found, wait and try again.
 
-For more information, see [Role-based access control](/azure/data-explorer/kusto/access-control/role-based-access-control.md).
+For more information, see [Role-based access control](/azure/data-explorer/kusto/access-control/role-based-access-control).
 
 ## Use application credentials to access a database
 
-Use the application credentials to programmatically access your database by using the [client library](/azure/data-explorer/kusto/api/netfx/about-kusto-data.md).
+Use the application credentials to programmatically access your database by using the [client library](/azure/data-explorer/kusto/api/netfx/about-kusto-data).
 
 ```C#
 . . .
@@ -150,7 +150,7 @@ var queryResult = client.ExecuteQuery($"{query}");
    > [!NOTE]
    > Specify the application id and key of the application registration (service principal) created earlier.
 
-For more information, see [How to authenticate with Microsoft Authentication Library (MSAL) in apps](/azure/data-explorer/kusto/api/rest/authenticate-with-msal.md) and [use Azure Key Vault with .NET Core web app](/azure/key-vault/tutorial-net-create-vault-azure-web-app#create-a-net-core-web-app).
+For more information, see [How to authenticate with Microsoft Authentication Library (MSAL) in apps](/azure/data-explorer/kusto/api/rest/authenticate-with-msal) and [use Azure Key Vault with .NET Core web app](/azure/key-vault/tutorial-net-create-vault-azure-web-app#create-a-net-core-web-app).
 
 ## Troubleshooting
 
@@ -172,5 +172,5 @@ You'll need to contact your Microsoft Entra administrator to grant consent for a
 
 ## Related content
 
-* [Kusto connection strings](/azure/data-explorer/kusto/api/connection-strings/kusto.md)
+* [Kusto connection strings](/azure/data-explorer/kusto/api/connection-strings/kusto)
 * [Create a Microsoft Entra application and service principal that can access resources](/entra/identity-platform/howto-create-service-principal-portal)
