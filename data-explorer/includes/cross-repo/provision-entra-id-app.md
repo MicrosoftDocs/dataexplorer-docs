@@ -33,10 +33,10 @@ There are two types of authentication available for service principals: password
 Through the course of this section, you'll copy the following values: **Application ID** and **key value**. Paste these values somewhere, like a text editor, for use in the step [configure client credentials to the database](#grant-a-service-principal-access-to-the-database).
 
 1. Browse to the **Overview** blade.
-1. Copy the **Application (client) ID**.
+1. Copy the **Application (client) ID** and the **Directory (tenant) ID**.
 
     > [!NOTE]
-    > You'll need the application ID to authorize the service principal to access the database.
+    > You'll need the application ID and the tenant ID to [authorize the service principal to access the database](#grant-a-service-principal-access-to-the-database).
 
 1. In the **Certificates & secrets** blade, select **New client secret**.
 
@@ -109,7 +109,8 @@ If you only need access to an authorized data resource, you can skip this sectio
 
 Once your application registration is created, you need to grant the corresponding service principal access to your database. The following example gives viewer access. For other roles, see [Manage database permissions](/azure/data-explorer/manage-database-permissions).
 
-1. Execute the following command in your query editor:
+1. Use the values of Application ID and Tenant ID as copied in the [step above](#set-up-authentication).
+1. Execute the following command in your query editor, replacing the placeholder values *ApplicationID* and *TenantID* with your actual values:
 
     ```kusto
     .add database <DatabaseName> viewers ('aadapp=<ApplicationID>;<TenantID>') '<Notes>'
@@ -126,7 +127,7 @@ Once your application registration is created, you need to grant the correspondi
     > [!NOTE]
     > After creating the application registration, there might be a several minute delay until it can be referenced. If you receive an error that the application is not found, wait and try again.
 
-For more information, see [Role-based access control](/azure/data-explorer/kusto/access-control/role-based-access-control).
+For more information on roles, see [Role-based access control](/azure/data-explorer/kusto/access-control/role-based-access-control).
 
 ## Use application credentials to access a database
 
