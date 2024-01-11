@@ -27,7 +27,7 @@ Returns a count of the records per summarization group (or in total, if summariz
 
 ## Example
 
-This example returns a count of events in states starting with letter `W`:
+This example returns a count of events in states:
 
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAwsuyS/KdS1LzSsp5qpRKC7NzU0syqxKVXDOL80rsU0GkRqaCkmVCsEliSWpAIqJlTEuAAAA" target="_blank">Run the query</a>
