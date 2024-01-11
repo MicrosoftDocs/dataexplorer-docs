@@ -110,4 +110,4 @@ _data
 | render linechart 
 ```
 
-:::image type="content" source="images/session-count-plugin/example-session-count.png" alt-text="Example session count." border="false":::
+:::image type="content" source="media/session-count-plugin/example-session-count.png" alt-text="Example session count." border="false":::

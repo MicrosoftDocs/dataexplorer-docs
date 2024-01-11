@@ -17,7 +17,7 @@ For a small dataset that is a [sample](https://en.wikipedia.org/wiki/Sample_%28s
 
 This function uses the following formula.
 
-:::image type="content" source="images/stdevp-aggfunction/stdev-population.png" alt-text="Image showing a Stdev sample formula.":::
+:::image type="content" source="media/stdevp-aggfunction/stdev-population.png" alt-text="Image showing a Stdev sample formula.":::
 
 ## Syntax
 

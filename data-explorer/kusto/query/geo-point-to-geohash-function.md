@@ -69,7 +69,7 @@ For comparison with other available grid systems, see [geospatial clustering wit
 
 US storm events aggregated by geohash.
 
-:::image type="content" source="images/geo-point-to-geohash-function/geohash.png" alt-text="US geohash.":::
+:::image type="content" source="media/geo-point-to-geohash-function/geohash.png" alt-text="US geohash.":::
 
 ```kusto
 StormEvents

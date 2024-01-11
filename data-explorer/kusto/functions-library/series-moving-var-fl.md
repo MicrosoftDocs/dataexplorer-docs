@@ -143,4 +143,4 @@ union
 
 **Output**
 
-:::image type="content" source="images/series-moving-var-fl/series-moving-var-sine-wave.png" alt-text="Graph depicting moving variance applied over a sine wave." border="false":::
+:::image type="content" source="media/series-moving-var-fl/series-moving-var-sine-wave.png" alt-text="Graph depicting moving variance applied over a sine wave." border="false":::
