@@ -13,7 +13,7 @@ The app registration can either be created in the Azure portal, or programatical
 
 #### Register the app
 
-1. Sign in to [Azure portal](https://portal.azure.com) and open the **Identity** blade
+1. Sign in to [Azure portal](https://portal.azure.com) and open the **Microsoft Entra ID** blade.
 1. Browse to **App registrations** and select **New registration**.
 
     :::image type="content" source="../media/provision-entra-id-app/create-app-new-registration.png" alt-text="Screenshot showing how to start a new app registration." lightbox="../media/provision-entra-id-app/create-app-new-registration.png":::
