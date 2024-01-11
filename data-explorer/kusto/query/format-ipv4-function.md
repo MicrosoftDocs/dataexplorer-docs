@@ -56,4 +56,4 @@ datatable(address:string, mask:long)
 ## Related content
 
 * For IPv4 address formatting including CIDR notation, see [format_ipv4_mask()](format-ipv4-mask-function.md).
-* For a list of functions related to IP addresses, see [IPv4 and IPv6 functions](scalarfunctions.md#ipv4ipv6-functions).
+* For a list of functions related to IP addresses, see [IPv4 and IPv6 functions](scalar-functions.md#ipv4ipv6-functions).

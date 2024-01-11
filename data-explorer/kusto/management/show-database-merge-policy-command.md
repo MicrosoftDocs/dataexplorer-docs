@@ -7,7 +7,7 @@ ms.date: 05/24/2023
 ---
 # .show database policy merge command
 
-Display a database's [merge policy](mergepolicy.md). The merge policy defines if and how [Extents (Data Shards)](../management/extents-overview.md) in the cluster should get merged.
+Display a database's [merge policy](merge-policy.md). The merge policy defines if and how [Extents (Data Shards)](../management/extents-overview.md) in the cluster should get merged.
 
 ## Permissions
 

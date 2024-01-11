@@ -9,7 +9,7 @@ ms.date: 05/24/2023
 
 Returns the schema of the external table, as JSON or CSL.
 
-This command is relevant to any external table of any type. For an overview of external tables, see [external tables](../query/schema-entities/externaltables.md).
+This command is relevant to any external table of any type. For an overview of external tables, see [external tables](../query/schema-entities/external-tables.md).
 
 ## Permissions
 

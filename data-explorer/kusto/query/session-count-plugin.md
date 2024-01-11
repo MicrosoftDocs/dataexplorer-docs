@@ -7,7 +7,7 @@ ms.date: 04/11/2023
 ---
 # session_count plugin
 
-Calculates the session count based on the ID column over a timeline. The plugin is invoked with the [`evaluate`](evaluateoperator.md) operator.
+Calculates the session count based on the ID column over a timeline. The plugin is invoked with the [`evaluate`](evaluate-operator.md) operator.
 
 ## Syntax
 
@@ -110,4 +110,4 @@ _data
 | render linechart 
 ```
 
-:::image type="content" source="images/session-count-plugin/example-session-count.png" alt-text="Example session count." border="false":::
+:::image type="content" source="media/session-count-plugin/example-session-count.png" alt-text="Example session count." border="false":::

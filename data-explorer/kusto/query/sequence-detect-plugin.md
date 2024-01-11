@@ -7,7 +7,7 @@ ms.date: 01/22/2023
 ---
 # sequence_detect plugin
 
-Detects sequence occurrences based on provided predicates. The plugin is invoked with the [`evaluate`](evaluateoperator.md) operator.
+Detects sequence occurrences based on provided predicates. The plugin is invoked with the [`evaluate`](evaluate-operator.md) operator.
 
 ## Syntax
 

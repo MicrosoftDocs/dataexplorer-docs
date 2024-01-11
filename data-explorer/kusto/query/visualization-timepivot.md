@@ -15,7 +15,7 @@ The time pivot visualization is an interactive navigation over the events time-l
 
 > [!NOTE]
 >
-> * This visualization can only be used in the context of the [render operator](renderoperator.md).
+> * This visualization can only be used in the context of the [render operator](render-operator.md).
 > * This visualization can be used in Kusto.Explorer but is not available in the Azure Data Explorer web UI.
 
 ## Syntax
@@ -62,7 +62,7 @@ StormEvents
 | render timepivot with (xcolumn=State)
 ```
 
-:::image type="content" source="images/visualization-timepivot/time-pivot-visualization.jpg" lightbox="images/visualization-timepivot/time-pivot-visualization.jpg" alt-text="Screenshot of timepivot in Kusto.Explorer.":::
+:::image type="content" source="media/visualization-timepivot/time-pivot-visualization.jpg" lightbox="media/visualization-timepivot/time-pivot-visualization.jpg" alt-text="Screenshot of timepivot in Kusto.Explorer.":::
 
 ::: zone-end
 

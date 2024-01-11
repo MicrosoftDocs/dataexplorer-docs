@@ -132,7 +132,7 @@ landingContent:
           - text: Kusto Query Language
             url: kusto/query/index.md
           - text: SQL to Kusto cheat sheet
-            url: kusto/query/sqlcheatsheet.md
+            url: kusto/query/sql-cheat-sheet.md
 
   # Card
   - title: Visualize data

@@ -38,7 +38,7 @@ The command to alter the policy requires [AllDatabasesAdmin](access-control/role
 
 The object ID is available in the Azure portal on the managed identity's overview page.
 
-:::image type="content" source="images/managed-identity-policy\azure-portal.png" alt-text="Look for 'Object (principal) ID.":::
+:::image type="content" source="media/managed-identity-policy\azure-portal.png" alt-text="Look for 'Object (principal) ID.":::
 
 ## Returns
 

@@ -43,11 +43,11 @@ The Kusto.Explorer user interface is designed with a layout based on tabs and pa
 * Create scripts to run in the script panel
 * View the results of the scripts in the results panel
 
-:::image type="content" source="images/kusto-explorer/ke-start.png" alt-text="Screenshot of Kusto Explorer user interface that shows an overview of the interface's four panels.":::
+:::image type="content" source="media/kusto-explorer/ke-start.png" alt-text="Screenshot of Kusto Explorer user interface that shows an overview of the interface's four panels.":::
 
 ## Connections panel
 
-:::image type="content" source="images/kusto-explorer/connections-panel.png" alt-text="Screenshot of the Connections panel that shows the Help cluster's databases.":::
+:::image type="content" source="media/kusto-explorer/connections-panel.png" alt-text="Screenshot of the Connections panel that shows the Help cluster's databases.":::
 
 The Connections pane shows all the configured cluster connections. For each cluster the databases, tables, and attributes (columns) that they store are shown. Select items (which sets an implicit context
 for the search/query in the main panel), or double-click items to copy the name to the search/query panel.
@@ -67,7 +67,7 @@ Run each line using `F5`, or similar.
 
 ## Work Documents panel
 
-:::image type="content" source="images/kusto-explorer/work-folders-pane.png" alt-text="Screenshot of the Work Folders panel showing Unsaved work and Tracked Folders.":::
+:::image type="content" source="media/kusto-explorer/work-folders-pane.png" alt-text="Screenshot of the Work Folders panel showing Unsaved work and Tracked Folders.":::
 
 The Work folders pane organizes your work folders in one place to make navigating your work easier. There are two types of work folders:
 
@@ -78,13 +78,13 @@ The Work folders pane organizes your work folders in one place to make navigatin
 
 ### Home tab
 
-:::image type="content" source="images/kusto-explorer/home-tab.png" alt-text="Screenshot of the Home tab that shows the Home tab's five sections.":::
+:::image type="content" source="media/kusto-explorer/home-tab.png" alt-text="Screenshot of the Home tab that shows the Home tab's five sections.":::
 
 The Home tab shows the most frequently used operations. It includes:
 
 ### Query section
 
-:::image type="content" source="images/kusto-explorer/home-query-menu.png" alt-text="Screenshot of the Home tab section titled Tabs that shows an option for creating a new tab for queries.":::
+:::image type="content" source="media/kusto-explorer/home-query-menu.png" alt-text="Screenshot of the Home tab section titled Tabs that shows an option for creating a new tab for queries.":::
 
 |Menu|    Behavior|
 |----|----------|
@@ -93,7 +93,7 @@ The Home tab shows the most frequently used operations. It includes:
 
 ### Share section
 
-:::image type="content" source="images/kusto-explorer/home-share-menu.png" alt-text="Screenshot of the Home tab section titled Share that shows three options.":::
+:::image type="content" source="media/kusto-explorer/home-share-menu.png" alt-text="Screenshot of the Home tab section titled Share that shows three options.":::
 
 |Menu|    Behavior|
 |----|----------|
@@ -103,9 +103,9 @@ The Home tab shows the most frequently used operations. It includes:
 
 ### Visualizations section
 
-:::image type="content" source="images/kusto-explorer/home-visualizations-menu.png" alt-text="Screenshot of the Home tab section titled Visualizations that shows the different options for visualizing data.":::
+:::image type="content" source="media/kusto-explorer/home-visualizations-menu.png" alt-text="Screenshot of the Home tab section titled Visualizations that shows the different options for visualizing data.":::
 
-For variable visualizations, see the [render operator](../query/renderoperator.md).
+For variable visualizations, see the [render operator](../query/render-operator.md).
 
 |Menu         | Behavior|
 |-------------|---------|
@@ -115,7 +115,7 @@ For variable visualizations, see the [render operator](../query/renderoperator.m
 |Stacked Area Chart      | Displays a stacked area chart in which the X-axis is the first column (must be numeric). All numeric columns are mapped to different series (Y-axis). |
 |Time Chart   | Displays a time chart in which the X-axis is the first column (must be datetime). All numeric columns are mapped to different series (Y-axis).|
 |Line Chart   | Displays a line chart in which the X-axis is the first column (must be numeric). All numeric columns are mapped to different series (Y-axis).|
-|Anomaly Chart| Similar to Time Chart, but finds anomalies in time series data, using a machine learning anomaly detection algorithm. The data must be in fixed interval buckets. For anomaly detection, Kusto.Explorer uses the [series_decompose_anomalies](../query/series-decompose-anomaliesfunction.md) function.
+|Anomaly Chart| Similar to Time Chart, but finds anomalies in time series data, using a machine learning anomaly detection algorithm. The data must be in fixed interval buckets. For anomaly detection, Kusto.Explorer uses the [series_decompose_anomalies](../query/series-decompose-anomalies-function.md) function.
 |Pie Chart    |    Displays a pie chart in which the color-axis is the first column. The theta-axis (must be a measure, converted to percent) is the second column.|
 |Time Ladder |    Displays a ladder chart in which the X-axis is the last two columns (must be datetime). The Y-axis is a composite of the other columns.|
 |Scatter Chart| Displays a point graph in which the X-axis is the first column (must be numeric). All numeric columns are mapped to different series (Y-axis).|
@@ -124,7 +124,7 @@ For variable visualizations, see the [render operator](../query/renderoperator.m
 
 ### View section
 
-:::image type="content" source="images/kusto-explorer/home-view-menu.png" alt-text="Screenshot of the Home tab section titled View that shows options for altering the data view.":::
+:::image type="content" source="media/kusto-explorer/home-view-menu.png" alt-text="Screenshot of the Home tab section titled View that shows options for altering the data view.":::
 
 |Menu           | Behavior|
 |---------------|---------|
@@ -142,7 +142,7 @@ For variable visualizations, see the [render operator](../query/renderoperator.m
 
 ## File tab
 
-:::image type="content" source="images/kusto-explorer/file-tab.png" alt-text="Screenshot of the File tab that shows the File tab's five sections.":::
+:::image type="content" source="media/kusto-explorer/file-tab.png" alt-text="Screenshot of the File tab that shows the File tab's five sections.":::
 
 |Menu| Behavior|
 |---------------|---------|
@@ -174,7 +174,7 @@ For variable visualizations, see the [render operator](../query/renderoperator.m
 
 ## Connections tab
 
-:::image type="content" source="images/kusto-explorer/connections-tab.png" alt-text="Screenshot of the Connections tab that shows the Connection tab's five sections.":::
+:::image type="content" source="media/kusto-explorer/connections-tab.png" alt-text="Screenshot of the Connections tab that shows the Connection tab's five sections.":::
 
 |Menu|Behavior|
 |----|----------|
@@ -194,13 +194,13 @@ For variable visualizations, see the [render operator](../query/renderoperator.m
 |Inspect Your ADD Principal| Shows currents active user details.|
 |Sign-out| Signs-out the current user from the connection to Microsoft Entra ID.|
 ||---------*Data Scope*---------|
-|Caching scope|<ul><li>Hot DataExecute queries only on [hot data cache](../management/cachepolicy.md)</li><li>All Data: Execute queries on all available data (default).</li></ul> |
+|Caching scope|<ul><li>Hot DataExecute queries only on [hot data cache](../management/cache-policy.md)</li><li>All Data: Execute queries on all available data (default).</li></ul> |
 |DateTime Column| Name of a column that may be used for time pre-filter.|
 |Time Filter| Value of time pre-filter.|
 
 ## View tab
 
-:::image type="content" source="images/kusto-explorer/view-tab.png" alt-text="Screenshot of the View tab that shows the View tab's four sections.":::
+:::image type="content" source="media/kusto-explorer/view-tab.png" alt-text="Screenshot of the View tab that shows the View tab's four sections.":::
 
 |Menu|Behavior|
 |----|----------|
@@ -232,7 +232,7 @@ For variable visualizations, see the [render operator](../query/renderoperator.m
 
 ## Tools tab
 
-:::image type="content" source="images/kusto-explorer/tools-tab.png" alt-text="Screenshot of the Tool tab that shows the Tool tab's six sections.":::
+:::image type="content" source="media/kusto-explorer/tools-tab.png" alt-text="Screenshot of the Tool tab that shows the Tool tab's six sections.":::
 
 |Menu|Behavior|
 |----|----------|
@@ -259,15 +259,15 @@ Kusto.Explorer tries to interpret the severity or verbosity level of each row in
 
 To modify the output color scheme, or turn off this behavior, from the **Tools** menu, select **Options** > **Results Viewer** > **Verbosity color scheme**.
 
-:::image type="content" source="images/kusto-explorer/ke-color-scheme.png" alt-text="Screenshot of Kusto Explorer color scheme modification.":::
+:::image type="content" source="media/kusto-explorer/ke-color-scheme.png" alt-text="Screenshot of Kusto Explorer color scheme modification.":::
 
 **Excel** color scheme legend| **Vivid** color scheme legend
 |---|---
-| :::image type="content" source="images/kusto-explorer/excel-color-scheme.png" alt-text="Screenshot of the Excel color scheme legend in Kusto Explorer." border="false"::: |:::image type="content" source="images/kusto-explorer/vivid-color-scheme.png" alt-text="Screenshot vivid color scheme legend in Kusto Explorer." border="false":::
+| :::image type="content" source="media/kusto-explorer/excel-color-scheme.png" alt-text="Screenshot of the Excel color scheme legend in Kusto Explorer." border="false"::: |:::image type="content" source="media/kusto-explorer/vivid-color-scheme.png" alt-text="Screenshot vivid color scheme legend in Kusto Explorer." border="false":::
 
 ## Monitoring tab
 
-:::image type="content" source="images/kusto-explorer/monitoring-tab.png" alt-text="Screenshot of the Monitoring tab that shows two options for monitoring data.":::
+:::image type="content" source="media/kusto-explorer/monitoring-tab.png" alt-text="Screenshot of the Monitoring tab that shows two options for monitoring data.":::
 
 |Menu             | Behavior|
 |-----------------|---------|
@@ -278,7 +278,7 @@ To modify the output color scheme, or turn off this behavior, from the **Tools**
 
 ## Management tab
 
-:::image type="content" source="images/kusto-explorer/management-tab.png" alt-text="Screenshot of the Management tab that shows options for managing Authorized Principals. ":::
+:::image type="content" source="media/kusto-explorer/management-tab.png" alt-text="Screenshot of the Management tab that shows options for managing Authorized Principals. ":::
 
 |Menu             | Behavior|
 |-----------------|---------|
@@ -289,7 +289,7 @@ To modify the output color scheme, or turn off this behavior, from the **Tools**
 
 ## Help tab
 
-:::image type="content" source="images/kusto-explorer/help-tab.png" alt-text="Screenshot of the Help tab that shows options for Documentation.":::
+:::image type="content" source="media/kusto-explorer/help-tab.png" alt-text="Screenshot of the Help tab that shows options for Documentation.":::
 
 |Menu             | Behavior|
 |-----------------|---------|
@@ -323,7 +323,7 @@ Data Source=https://CLUSTER_NAME.kusto.windows.net;Initial Catalog=DATABASE_NAME
 >[!NOTE]
 > The domain name of the user is not necessarily the same as that of the tenant hosting the cluster.
 
-:::image type="content" source="images/kusto-explorer/advanced-connection-string.png" alt-text="Screenshot of the Add Connection pane showing the option titled Advanced Connection String.":::
+:::image type="content" source="media/kusto-explorer/advanced-connection-string.png" alt-text="Screenshot of the Add Connection pane showing the option titled Advanced Connection String.":::
 
 ## Related content
 

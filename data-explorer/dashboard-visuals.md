@@ -7,7 +7,7 @@ ms.date: 08/13/2023
 ---
 # Dashboard-specific visuals
 
-All visualizations that are created in the context of the [render operator](kusto/query/renderoperator.md) are available in dashboard visualizations. However, the following visualizations are only available in [Azure Data Explorer dashboards](azure-data-explorer-dashboards.md) or [web UI](add-query-visualization.md), and not with the render operator.
+All visualizations that are created in the context of the [render operator](kusto/query/render-operator.md) are available in dashboard visualizations. However, the following visualizations are only available in [Azure Data Explorer dashboards](azure-data-explorer-dashboards.md) or [web UI](add-query-visualization.md), and not with the render operator.
 
 To learn how to customize any dashboard visuals, see [Customize Azure Data Explorer dashboard visuals](dashboard-customize-visuals.md)
 

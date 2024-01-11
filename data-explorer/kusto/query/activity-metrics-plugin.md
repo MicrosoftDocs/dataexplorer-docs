@@ -24,7 +24,7 @@ Calculates useful metrics that include distinct count values, distinct count of 
 | *TimelineColumn* | string | &check; | The name of the column that represents timeline. |
 | *Start* | datetime | &check; | The analysis start period. |
 | *End* | datetime | &check; | The analysis end period. |
-| *Step* | decimal, datetime, or timespan | &check; | The analysis window period. This value may also be a string of `week`, `month`, or `year`, in which case all periods will be [startofweek](startofweekfunction.md), [startofmonth](startofmonthfunction.md), or [startofyear](startofyearfunction.md) respectively. |
+| *Step* | decimal, datetime, or timespan | &check; | The analysis window period. This value may also be a string of `week`, `month`, or `year`, in which case all periods will be [startofweek](startofweek-function.md), [startofmonth](startofmonth-function.md), or [startofyear](startofyear-function.md) respectively. |
 | *dim1*, *dim2*, ... | dynamic |  | An array of the dimensions columns that slice the activity metrics calculation. |
 
 ## Returns
@@ -129,7 +129,7 @@ range _day from _start to _end  step 1d
 |2017-05-22 00:00:00.0000000|0.199122325836533|0.800877674163467|
 |2017-05-29 00:00:00.0000000|0.063468992248062|0.936531007751938|
 
-:::image type="content" source="images/activity-metrics-plugin/activity-metrics-churn-and-retention.png" border="false" alt-text="Table showing the calculated retention and churn rates per seven days as specified in the query.":::
+:::image type="content" source="media/activity-metrics-plugin/activity-metrics-churn-and-retention.png" border="false" alt-text="Table showing the calculated retention and churn rates per seven days as specified in the query.":::
 
 ### Distinct values and distinct 'new' values
 
@@ -180,4 +180,4 @@ range _day from _start to _end  step 1d
 | 2017-05-22 00:00:00.0000000 | 1740 | 1017 |
 | 2017-05-29 00:00:00.0000000 | 960 | 756 |
 
-:::image type="content" source="images/activity-metrics-plugin/activity-metrics-dcount-and-dcount-newvalues.png" border="false" alt-text="Table showing the count of distinct values (dcount_values) and of new distinct values (dcount_newvalues) that didn't appear in previous time window as specified in the query.":::
+:::image type="content" source="media/activity-metrics-plugin/activity-metrics-dcount-and-dcount-newvalues.png" border="false" alt-text="Table showing the count of distinct values (dcount_values) and of new distinct values (dcount_newvalues) that didn't appear in previous time window as specified in the query.":::

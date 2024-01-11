@@ -13,7 +13,7 @@ zone_pivot_groups: kql-flavors
 
 The `postgresql_request` plugin sends a SQL query to a PostgreSQL Server network endpoint and returns the first rowset in the results. The query may return more than one rowset, but only the first rowset is made available for the rest of the Kusto query.
 
-The plugin is invoked with the [`evaluate`](evaluateoperator.md) operator.
+The plugin is invoked with the [`evaluate`](evaluate-operator.md) operator.
 
 > [!IMPORTANT]
 > The `postgresql_request` plugin is disabled by default.
@@ -45,7 +45,7 @@ To authorize a PostgreSQL Server network endpoint, you must specify the authoriz
 
 ## Set callout policy
 
-The plugin makes callouts to the PostgreSQL database. Make sure that the cluster's [callout policy](../management/calloutpolicy.md) enables calls of type `postgresql` to the target *PostgreSqlDbUri*.
+The plugin makes callouts to the PostgreSQL database. Make sure that the cluster's [callout policy](../management/callout-policy.md) enables calls of type `postgresql` to the target *PostgreSqlDbUri*.
 
 The following example shows how to define the callout policy for PostgreSQL databases. We recommend restricting the callout policy to specific endpoints (`my_endpoint1`, `my_endpoint2`).
 

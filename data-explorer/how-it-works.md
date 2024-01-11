@@ -34,7 +34,7 @@ For more information on data storage, see [Extents overview](kusto/management/ex
 
 Azure Data Explorer has a multi-hierarchy data cache system to ensure that the most relevant data is cached as closely as possible to the CPU. The cache system depends on the immutability of extents, and works entirely with [compressed data](#column-compression). In order to improve query performance, data remains compressed even in RAM and is only decompressed when required for a query.
 
-For more information on caching, see [Cache policy](kusto/management/cachepolicy.md).
+For more information on caching, see [Cache policy](kusto/management/cache-policy.md).
 
 ## Text indexing
 
@@ -42,7 +42,7 @@ Azure Data Explorer is designed to efficiently index free-text ([string](kusto/q
 
 Continuous background optimization of extents through merging improves compression and indexing, ensuring efficient storage and low query latency. Once extents reach a certain size, only the indexes are merged to enhance query performance without compromising efficiency.
 
-For more information on extent and index merging, see [Merge policy](kusto/management/mergepolicy.md).
+For more information on extent and index merging, see [Merge policy](kusto/management/merge-policy.md).
 
 ## Row store
 
@@ -56,7 +56,7 @@ Azure Data Explorer maintains data in a compressed state, reducing the amount of
 
 Azure Data Explorer avoids vertical compression, which involves sorting data to improve compression, due to its high CPU cost in free-text or semi-structured data scenarios. Instead, you can specify the preferred data sort order for scenarios with dominant query patterns. This trade-off prioritizes quick data availability for queries.
 
-For more information on specifying data sort order, see [Row order policy](kusto/management/roworderpolicy.md).
+For more information on specifying data sort order, see [Row order policy](kusto/management/row-order-policy.md).
 
 ## Distributed data query
 

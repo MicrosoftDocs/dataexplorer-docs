@@ -7,7 +7,7 @@ ms.date: 05/24/2023
 ---
 # .delete table policy update command
 
-Delete the table update policy. The [update policy](updatepolicy.md) simplifies the process of syncing and updating data between two tables. When new data is inserted into the source table, a transformation query runs over this data to modify and insert the data into the target table.
+Delete the table update policy. The [update policy](update-policy.md) simplifies the process of syncing and updating data between two tables. When new data is inserted into the source table, a transformation query runs over this data to modify and insert the data into the target table.
 
 > [!NOTE]
 > The source table and the table for which the update policy is defined must be in the same database.

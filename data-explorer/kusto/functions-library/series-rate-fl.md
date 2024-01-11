@@ -30,10 +30,10 @@ You can define the function by either embedding its code as a query-defined func
 
 ### [Query-defined](#tab/query-defined)
 
-Define the function using the following [let statement](../query/letstatement.md). No permissions are required.
+Define the function using the following [let statement](../query/let-statement.md). No permissions are required.
 
 > [!IMPORTANT]
-> A [let statement](../query/letstatement.md) can't run on its own. It must be followed by a [tabular expression statement](../query/tabularexpressionstatements.md). To run a working example of `series_rate_fl()`, see [Examples](#examples).
+> A [let statement](../query/let-statement.md) can't run on its own. It must be followed by a [tabular expression statement](../query/tabular-expression-statements.md). To run a working example of `series_rate_fl()`, see [Examples](#examples).
 
 ```kusto
 let series_rate_fl=(tbl:(timestamp:dynamic, value:dynamic), n_bins:int=1, fix_reset:bool=true)
@@ -88,7 +88,7 @@ series_rate_fl(tbl:(timestamp:dynamic, value:dynamic), n_bins:int=1, fix_reset:b
 
 ## Examples
 
-The following examples use the [invoke operator](../query/invokeoperator.md) to run the function.
+The following examples use the [invoke operator](../query/invoke-operator.md) to run the function.
 
 ### Calculate average rate of metric increase
 
@@ -140,7 +140,7 @@ demo_prometheus
 
 **Output**
 
-:::image type="content" source="images/series-rate-fl/all-disks-write-rate-2-bins.png" alt-text="Graph showing rate per second of disk write metric for all disks." border="false":::
+:::image type="content" source="media/series-rate-fl/all-disks-write-rate-2-bins.png" alt-text="Graph showing rate per second of disk write metric for all disks." border="false":::
 
 ### Selects the main disk of two hosts
 
@@ -190,4 +190,4 @@ series_rate_fl(series_metric_fl(demo_prometheus, 'TimeStamp', 'Name', 'Labels', 
 
 **Output**
 
-:::image type="content" source="images/series-rate-fl/main-disks-write-rate-10-bins.png" alt-text="Graph showing rate per second of main disk write metric in the last two hours with 10 bins gap." border="false":::
+:::image type="content" source="media/series-rate-fl/main-disks-write-rate-10-bins.png" alt-text="Graph showing rate per second of main disk write metric in the last two hours with 10 bins gap." border="false":::

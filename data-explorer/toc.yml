@@ -51,6 +51,8 @@ items:
               - name: Create external table
                 displayName: one-click
                 href: external-table.md
+              - name: Schema optimization best practices
+                href: schema-best-practice.md
           - name: Migrate
             items:
               - name: Migrate from Elasticsearch

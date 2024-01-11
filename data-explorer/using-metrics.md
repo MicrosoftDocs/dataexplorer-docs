@@ -95,7 +95,7 @@ To refine your analysis:
 | Batch blob count  | Count | Avg, Max, Min | Number of data sources in a completed batch for ingestion. | Database |
 | Batch duration    | Seconds | Avg, Max, Min | The duration of the batching phase in the ingestion flow.  | Database |
 | Batch size        | Bytes | Avg, Max, Min | Uncompressed expected data size in an aggregated batch for ingestion. | Database |
-| Batches processed | Count | Sum, Max, Min | Number of batches completed for ingestion. <br> `Batching Type`: The trigger for sealing a batch. <br> For a complete list of batching types, see [Batching types](kusto/management/batchingpolicy.md#sealing-a-batch). | Database, Batching Type |
+| Batches processed | Count | Sum, Max, Min | Number of batches completed for ingestion. <br> `Batching Type`: The trigger for sealing a batch. <br> For a complete list of batching types, see [Batching types](kusto/management/batching-policy.md#sealing-a-batch). | Database, Batching Type |
 | Blobs received    | Count | Sum, Max, Min | Number of blobs received from input stream by a component. <br> <br> Use **apply splitting** to analyze each component. | Database, Component Type, Component Name |
 | Blobs processed   | Count | Sum, Max, Min | Number of blobs processed by a component. <br> <br> Use **apply splitting** to analyze each component. | Database, Component Type, Component Name |
 | Blobs dropped     | Count | Sum, Max, Min | Number of blobs permanently dropped by a component. For each such blob, an `Ingestion result` metric with a failure reason is sent. <br> <br> Use **apply splitting** to analyze each component. | Database, Component Type, Component Name |

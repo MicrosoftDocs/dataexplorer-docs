@@ -35,10 +35,10 @@ You can define the function by either embedding its code as a query-defined func
 
 ### [Query-defined](#tab/query-defined)
 
-Define the function using the following [let statement](../query/letstatement.md). No permissions are required.
+Define the function using the following [let statement](../query/let-statement.md). No permissions are required.
 
 > [!IMPORTANT]
-> A [let statement](../query/letstatement.md) can't run on its own. It must be followed by a [tabular expression statement](../query/tabularexpressionstatements.md). To run a working example of `series_mv_oc_anomalies_fl()`, see [Example](#example).
+> A [let statement](../query/let-statement.md) can't run on its own. It must be followed by a [tabular expression statement](../query/tabular-expression-statements.md). To run a working example of `series_mv_oc_anomalies_fl()`, see [Example](#example).
 
 ```kusto
 let series_mv_oc_anomalies_fl=(tbl:(*), features_cols:dynamic, anomaly_col:string, anomalies_pct:real=4.0)
@@ -99,7 +99,7 @@ series_mv_oc_anomalies_fl(tbl:(*), features_cols:dynamic, anomaly_col:string, an
 
 ## Example
 
-The following example uses the [invoke operator](../query/invokeoperator.md) to run the function.
+The following example uses the [invoke operator](../query/invoke-operator.md) to run the function.
 
 ### [Query-defined](#tab/query-defined)
 
@@ -153,7 +153,7 @@ normal_2d_with_anomalies
 
 The table normal_2d_with_anomalies contains a set of 3 time series. Each time series has two-dimensional normal distribution with daily anomalies added at midnight, 8am, and 4pm respectively. You can create this sample dataset using [an example query](series-mv-ee-anomalies-fl.md#create-a-sample-dataset).
 
-![Graph showing multivariate anomalies on a time chart.](images/series-mv-oc-anomalies-fl/mv-oc-anomalies-time-chart.png)
+![Graph showing multivariate anomalies on a time chart.](media/series-mv-oc-anomalies-fl/mv-oc-anomalies-time-chart.png)
 
 To view the data as a scatter chart, replace the usage code with the following:
 
@@ -167,7 +167,7 @@ normal_2d_with_anomalies
 | render scatterchart with(series=anomalies)
 ```
 
-![Graph showing multivariate anomalies on a scatter chart.](images/series-mv-oc-anomalies-fl/mv-oc-anomalies-scatter-chart.png)
+![Graph showing multivariate anomalies on a scatter chart.](media/series-mv-oc-anomalies-fl/mv-oc-anomalies-scatter-chart.png)
 
 You can see that on TS1 most of the anomalies occurring at midnights were detected using this multivariate model.
 

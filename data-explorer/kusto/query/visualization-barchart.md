@@ -12,7 +12,7 @@ zone_pivot_groups: kql-flavors-all
 The bar chart visual needs a minimum of two columns in the query result. By default, the first column is used as the y-axis. This column can contain text, datetime, or numeric data types. The other columns are used as the x-axis and contain numeric data types to be displayed as horizontal lines. Bar charts are used mainly for comparing numeric and nominal discrete values, where the length of each line represents its value.
 
 > [!NOTE]
-> This visualization can only be used in the context of the [render operator](renderoperator.md).
+> This visualization can only be used in the context of the [render operator](render-operator.md).
 
 ## Syntax
 
@@ -110,7 +110,7 @@ StormEvents
     )
 ```
 
-:::image type="content" source="images/visualization-barchart/labeled-bar-chart.png" alt-text="Screenshot of a labeled bar chart." lightbox="images/visualization-barchart/labeled-bar-chart.png":::
+:::image type="content" source="media/visualization-barchart/labeled-bar-chart.png" alt-text="Screenshot of a labeled bar chart." lightbox="media/visualization-barchart/labeled-bar-chart.png":::
 
 ### Render a `stacked` bar chart
 
@@ -127,7 +127,7 @@ StormEvents
 | render barchart with (kind=stacked)
 ```
 
-:::image type="content" source="images/visualization-barchart/stacked-bar-chart.png" alt-text="Scrrenshot of a stacked bar chart visualization." lightbox="images/visualization-barchart/stacked-bar-chart.png":::
+:::image type="content" source="media/visualization-barchart/stacked-bar-chart.png" alt-text="Scrrenshot of a stacked bar chart visualization." lightbox="media/visualization-barchart/stacked-bar-chart.png":::
 
 ### Render a `stacked100` bar chart
 
@@ -144,7 +144,7 @@ StormEvents
 | render barchart with (kind=stacked100)
 ```
 
-:::image type="content" source="images/visualization-barchart/stacked-100-bar-chart.png" alt-text="Screenshot of a stacked 100 bar chart visualization." lightbox="images/visualization-barchart/stacked-100-bar-chart.png":::
+:::image type="content" source="media/visualization-barchart/stacked-100-bar-chart.png" alt-text="Screenshot of a stacked 100 bar chart visualization." lightbox="media/visualization-barchart/stacked-100-bar-chart.png":::
 
 ::: zone pivot="azuredataexplorer, fabric"
 
@@ -163,7 +163,7 @@ StormEvents
 | render barchart with (ysplit=axes)
 ```
 
-:::image type="content" source="images/visualization-barchart/bar-chart-ysplit-axes.png" alt-text="Screenshot of column chart using ysplit axes property." lightbox="images/visualization-barchart/bar-chart-ysplit-axes.png":::
+:::image type="content" source="media/visualization-barchart/bar-chart-ysplit-axes.png" alt-text="Screenshot of column chart using ysplit axes property." lightbox="media/visualization-barchart/bar-chart-ysplit-axes.png":::
 
 To split the view into separate panels, specify `panels` instead of `axes`:
 
@@ -180,7 +180,7 @@ StormEvents
 | render barchart with (ysplit=panels)
 ```
 
-:::image type="content" source="images/visualization-barchart/bar-chart-ysplit-panels.png" alt-text="Screenshot of column chart using ysplit panels property." lightbox="images/visualization-barchart/bar-chart-ysplit-panels.png":::
+:::image type="content" source="media/visualization-barchart/bar-chart-ysplit-panels.png" alt-text="Screenshot of column chart using ysplit panels property." lightbox="media/visualization-barchart/bar-chart-ysplit-panels.png":::
 
 
 ::: zone-end
