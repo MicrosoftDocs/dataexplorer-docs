@@ -76,14 +76,17 @@ items:
         href: scalar-data-types/index.md
       - name: bool
         href: scalar-data-types/bool.md
+        displayName: boolean
       - name: datetime
         href: scalar-data-types/datetime.md
+        displayName: date
       - name: decimal
         href: scalar-data-types/decimal.md
       - name: dynamic
         href: scalar-data-types/dynamic.md
       - name: guid
         href: scalar-data-types/guid.md
+        displayName: uuid, uniqueid
       - name: int
         href: scalar-data-types/int.md
       - name: long
@@ -95,6 +98,7 @@ items:
         href: scalar-data-types/string.md
       - name: timespan
         href: scalar-data-types/timespan.md
+        displayName: time
       - name: Null values
         href: scalar-data-types/null-values.md
   - name: Functions
