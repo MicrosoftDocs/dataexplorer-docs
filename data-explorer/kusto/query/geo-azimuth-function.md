@@ -69,7 +69,7 @@ print azimuth_in_degrees = degrees(azimuth_in_radians);
 |---|
 |175.015653606568|
 
-Consider a truck that emits telemetry of its location while it travels and we would like to know the direction it travels.
+Consider a truck that emits telemetry of its location while it travels and we would like to know the direction.
 
 :::image type="content" source="images/geo-azimuth-function/azimuth.png" alt-text="Azimuth between two consecutive locations.":::
 
