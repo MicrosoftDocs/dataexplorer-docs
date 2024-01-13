@@ -8,7 +8,7 @@ ms.date: 06/28/2023
 
 # Create and alter SQL external tables
 
-Creates or alters a SQL [external table](../query/schema-entities/externaltables.md) in the database in which the command is executed.
+Creates or alters a SQL [external table](../query/schema-entities/external-tables.md) in the database in which the command is executed.
 
 > [!NOTE]
 >
@@ -148,6 +148,6 @@ with
 
 ## Related content
 
-* [External tables overview](../query/schema-entities/externaltables.md)
+* [External tables overview](../query/schema-entities/external-tables.md)
 * [SQL external table authentication methods](../api/connection-strings/sql-authentication-methods.md)
 * [Create and alter Azure Storage external tables](external-tables-azurestorage-azuredatalake.md)

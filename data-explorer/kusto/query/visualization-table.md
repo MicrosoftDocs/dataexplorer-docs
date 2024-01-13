@@ -12,7 +12,7 @@ zone_pivot_groups: kql-flavors-all
 Default - results are shown as a table.
 
 > [!NOTE]
-> This visualization can only be used in the context of the [render operator](renderoperator.md).
+> This visualization can only be used in the context of the [render operator](render-operator.md).
 
 ## Syntax
 
@@ -70,4 +70,4 @@ StormEvents
 | render table 
 ```
 
-:::image type="content" source="images/visualization-table/table-visualization.png" alt-text="Screenshot of table visualization output." lightbox="images/visualization-table/table-visualization.png":::
+:::image type="content" source="media/visualization-table/table-visualization.png" alt-text="Screenshot of table visualization output." lightbox="media/visualization-table/table-visualization.png":::

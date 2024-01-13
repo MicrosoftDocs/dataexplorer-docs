@@ -7,7 +7,7 @@ ms.date: 01/30/2023
 ---
 # sliding_window_counts plugin
 
-Calculates counts and distinct count of values in a sliding window over a lookback period, using the technique described [here](samples.md#perform-aggregations-over-a-sliding-window). The plugin is invoked with the [`evaluate`](evaluateoperator.md) operator.
+Calculates counts and distinct count of values in a sliding window over a lookback period, using the technique described [here](samples.md#perform-aggregations-over-a-sliding-window). The plugin is invoked with the [`evaluate`](evaluate-operator.md) operator.
 
 ## Syntax
 
@@ -25,7 +25,7 @@ Calculates counts and distinct count of values in a sliding window over a lookba
 | *Start* | int, long, real, datetime, or timespan | &check; | The analysis start period.|
 | *End* | int, long, real, datetime, or timespan | &check; | The analysis end period.|
 | *LookbackWindow* | int, long, real, datetime, or timespan | &check; | The lookback period. This value should be a multiple of the *Bin* value, otherwise the *LookbackWindow* will be rounded down to a multiple of the *Bin* value. For example, for `dcount` users in past `7d`: *LookbackWindow* = `7d`.|
-| *Bin* | int, long, real, datetime, timespan, or string | &check; | The analysis step period. The possible string values are `week`, `month`, and `year` for which all periods will be [startofweek](startofweekfunction.md), [startofmonth](startofmonthfunction.md), [startofyear](startofyearfunction.md) respectively. |
+| *Bin* | int, long, real, datetime, timespan, or string | &check; | The analysis step period. The possible string values are `week`, `month`, and `year` for which all periods will be [startofweek](startofweek-function.md), [startofmonth](startofmonth-function.md), [startofyear](startofyear-function.md) respectively. |
 | *dim1*, *dim2*, ... | string | | A list of the dimensions columns that slice the activity metrics calculation.|
 
 ## Returns

@@ -50,7 +50,7 @@ The function returns the complex inverse fft in two series. The first series for
 
     This query returns *fft_y_real* and *fft_y_imag*:  
 
-    :::image type="content" source="images/series-fft-function/series-fft.png" alt-text="Series fft." border="false":::
+    :::image type="content" source="media/series-fft-function/series-fft.png" alt-text="Series fft." border="false":::
 
 * Transform a series to the frequency domain, and then apply the inverse transform to get back the original series:
 
@@ -74,4 +74,4 @@ The function returns the complex inverse fft in two series. The first series for
 
     This query returns *y_real2* and *y_imag2, which are the same as *y_real* and *y_imag*:  
 
-    :::image type="content" source="images/series-fft-function/series-ifft.png" alt-text="Series ifft." border="false":::
+    :::image type="content" source="media/series-fft-function/series-ifft.png" alt-text="Series ifft." border="false":::

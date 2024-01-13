@@ -54,7 +54,7 @@ Move extents specified by query results:
 
 | Property name | Type | Required | Description |
 |--|--|--|--|
-| `setNewIngestionTime` | bool |  | If set to `true`, a new [ingestion time](../query/ingestiontimefunction.md) is assigned to all records in extents being moved. This is useful when records should be processed by workloads that depend on [database cursors](databasecursor.md), such as [materialized views](materialized-views/materialized-view-overview.md) and [continuous data export](data-export/continuous-data-export.md). |
+| `setNewIngestionTime` | bool |  | If set to `true`, a new [ingestion time](../query/ingestion-time-function.md) is assigned to all records in extents being moved. This is useful when records should be processed by workloads that depend on [database cursors](database-cursor.md), such as [materialized views](materialized-views/materialized-view-overview.md) and [continuous data export](data-export/continuous-data-export.md). |
 | `extentCreatedOnFrom` | datetime | &check; | Apply on extents created after this point in time. |
 | `extentCreatedOnTo` | datetime | &check; | Apply on extents created before this point in time. |
 

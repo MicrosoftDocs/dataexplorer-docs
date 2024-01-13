@@ -7,7 +7,7 @@ ms.date: 01/01/2023
 ---
 # ipv4_lookup plugin
 
-The `ipv4_lookup` plugin looks up an IPv4 value in a lookup table and returns rows with matched values. The plugin is invoked with the [`evaluate`](evaluateoperator.md) operator.
+The `ipv4_lookup` plugin looks up an IPv4 value in a lookup table and returns rows with matched values. The plugin is invoked with the [`evaluate`](evaluate-operator.md) operator.
 
 ## Syntax
 
@@ -28,7 +28,7 @@ The `ipv4_lookup` plugin looks up an IPv4 value in a lookup table and returns ro
 
 ## Returns
 
-The `ipv4_lookup` plugin returns a result of join (lookup) based on IPv4 key. The schema of the table is the union of the source table and the lookup table, similar to the result of the [`lookup` operator](lookupoperator.md).
+The `ipv4_lookup` plugin returns a result of join (lookup) based on IPv4 key. The schema of the table is the union of the source table and the lookup table, similar to the result of the [`lookup` operator](lookup-operator.md).
 
 If the *return_unmatched* argument is set to `true`, the resulting table will include both matched and unmatched rows (filled with nulls).
 

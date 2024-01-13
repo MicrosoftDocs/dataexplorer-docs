@@ -14,7 +14,7 @@ zone_pivot_groups: kql-flavors-all
 The card visual only shows one element. If there are multiple columns and rows in the output, the first result record is treated as set of scalar values and shows as a card.
 
 > [!NOTE]
-> This visualization can only be used in the context of the [render operator](renderoperator.md).
+> This visualization can only be used in the context of the [render operator](render-operator.md).
 
 ## Syntax
 
@@ -49,7 +49,7 @@ StormEvents
 | render card with (title="Floods in Virginia")
 ```
 
-:::image type="content" source="images/card/card.png" alt-text="Screenshot of card visual." lightbox="images/card/card.png":::
+:::image type="content" source="media/card/card.png" alt-text="Screenshot of card visual." lightbox="media/card/card.png":::
 
 ::: zone-end
 

@@ -41,10 +41,10 @@ You can define the function by either embedding its code as a query-defined func
 
 ### [Query-defined](#tab/query-defined)
 
-Define the function using the following [let statement](../query/letstatement.md). No permissions are required.
+Define the function using the following [let statement](../query/let-statement.md). No permissions are required.
 
 > [!IMPORTANT]
-> A [let statement](../query/letstatement.md) can't run on its own. It must be followed by a [tabular expression statement](../query/tabularexpressionstatements.md). To run a working example of `plotly_scatter3d_fl()`, see [Example](#example).
+> A [let statement](../query/let-statement.md) can't run on its own. It must be followed by a [tabular expression statement](../query/tabular-expression-statements.md). To run a working example of `plotly_scatter3d_fl()`, see [Example](#example).
 
 ```kusto
 let plotly_scatter3d_fl=(tbl:(*), x_col:string, y_col:string, z_col:string, aggr_col:string='', chart_title:string='3D Scatter chart')
@@ -119,7 +119,7 @@ plotly_scatter3d_fl(tbl:(*), x_col:string, y_col:string, z_col:string, aggr_col:
 
 ## Example
 
-The following example uses the [invoke operator](../query/invokeoperator.md) to run the function.
+The following example uses the [invoke operator](../query/invoke-operator.md) to run the function.
 
 ### [Query-defined](#tab/query-defined)
 
@@ -174,8 +174,8 @@ Iris
 
 The output is a Plotly JSON string that can be rendered in an Azure Data Explorer dashboard tile. For more information on creating dashboard tiles, see [Visualize data with Azure Data Explorer dashboards ](../../azure-data-explorer-dashboards.md).
 
-![Screenshot of 3D scatter chart of a sample dataset.](images\plotly-scatter3d-fl\plotly-scatter3d-chart.png)
+![Screenshot of 3D scatter chart of a sample dataset.](media/plotly-scatter3d-fl\plotly-scatter3d-chart.png)
 
 You can rotate, zoom and hover over specific records:
 
-![Screenshot of rotated 3D scatter chart of a sample dataset.](images\plotly-scatter3d-fl\plotly-scatter3d-chart-rotated.png)
+![Screenshot of rotated 3D scatter chart of a sample dataset.](media/plotly-scatter3d-fl\plotly-scatter3d-chart-rotated.png)

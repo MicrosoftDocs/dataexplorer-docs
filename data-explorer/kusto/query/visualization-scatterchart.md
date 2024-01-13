@@ -13,7 +13,7 @@ In a scatter chart visual, the first column is the x-axis and should be a numeri
 
 
 > [!NOTE]
-> This visualization can only be used in the context of the [render operator](renderoperator.md).
+> This visualization can only be used in the context of the [render operator](render-operator.md).
 
 ## Syntax
 
@@ -85,4 +85,4 @@ StormEvents
 | render scatterchart with (xtitle="State population", title="Property damage by state", legend=hidden)
 ```
 
-:::image type="content" source="images/visualization-scatterchart/scatter-chart.png" alt-text="Screenshot of scatter chart visualization output." lightbox="images/visualization-scatterchart/scatter-chart.png":::
+:::image type="content" source="media/visualization-scatterchart/scatter-chart.png" alt-text="Screenshot of scatter chart visualization output." lightbox="media/visualization-scatterchart/scatter-chart.png":::
