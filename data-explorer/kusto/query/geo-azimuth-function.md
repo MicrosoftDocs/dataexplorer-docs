@@ -74,7 +74,7 @@ Consider a truck that emits telemetry of its location while it travels and we wo
 :::image type="content" source="images/geo-azimuth-function/azimuth.png" alt-text="Azimuth between two consecutive locations.":::
 
 > [!div class="nextstepaction"]
-> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA4WUyY7bMAyG7wHyDsKc7MJJRS2UlHaOvfbSAgVaFIEm0SRundhwlE7Xdy%2B9JV2M2AsgUz8%2FUaTFIkS2C3G9zeuwiXl5ZPcs8d%2FzwznuV3XwRTqf%2FZjPGF0FSauc5qs8SV90tvzxcVCzlzTxXGRkvXtd1nG%2FeOVP8S4bFzYyEr4pzzeF8lnH7IXvwlU4fvVLt8I0bcL8Re%2FWR7ofipDE%2FEBT%2FlCtyBaar4wVx127VRr5OGz6Q7fKoEoEF2rBgZ63nK84rLRccmU1x%2FdpxhYAeqm4ROQGnVRgMiaRLFoDSuAKBUJ2GylGkFJotIQUku4WSWwuQAmDHGAKKUeQwkghHEeiQIcUVmnrQFnhHAV%2BG6nGkBokWApSEqVDUshCOoWopBYTSD2GJDdKHkophiiNVlorw6XVoCeQOIIE6xRlj6pjNfYbF9hUS0lAM5XLUSTX5GsBrELbI5023Opm2ziVSzuC5KgsgqJUKpA9EoAbJQXpzFQu3X9ItXRWW07uaIzsN%2B6M5ehQc2eoYjeRwMeQHMgdNRWF%2Fuv2v0SqFji0IDUiIT%2FOZz%2FZiU4je%2FjGLseO%2BdOGNTPhawzHLavq8GVNB7BpKzRMaEhrdFYfL1Yf08bpaR%2FqwPLTsYzHc1Ekg3fKPLH%2BtfdO%2FUp%2Fdri%2FOl6yC%2BW6bzkX4jWGtj%2B0rSFtcVVdfiLHK%2B8qaKZrWivU7LTxMYZ6s%2FeUgKecmlnyOaco7tnBV%2Blvoeuqd3YFAAA%3D" target="_blank">Run the query</a>
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA4WUyW7bMBCG734KIiepkFMOlyHpNMdee2mBAi0Cg3GYWK28QGaaru%2FeX7LsdBFsyQd6%2BM83C8VpUhYPKc%2Fv6jYtcr1Zi2tRxO%2F16jEvZ22KTTn5MRF4Ggi3NXa3dVFe9ab6%2Fv4gFa9gf6kqWC%2FebNq8nL6Ou3xRjeo6FXRvN4%2BndPrFnjjo3qejbvwZ4va6skSKv64mdzHjvW1SkesVNuJqO4Mtdf8q0awf%2BhKxinko9mMf4aAplFRmKgm%2Fd1LOJM2svpTGW8kfykpMieylkZpZOg7akKuEZlisJdYkDSum6iRRjRC1suxBVBpvTwRaKjLKsSQ6Q9QjROW0UkEyILQnKm%2BsD2S8CgFpnySaMaIlTR4pakD2RCSsdDDMRlt1mmjHiPBC41hrdcjRWWOtcVJ7S%2FY0kUeI5INB53Aw3vJQteLuoIwmdmf66MaI0sLVE3nDfiAG66S3Xc18po9%2BhCjZeCaDNhrSA5FIOqMVdO5MH8N%2FRHMZvPUS3uycHqoOzksObGVwOKxTRJJjREnwZovzwOfcf4%2BMg6LAnrRlriY3k59ih%2Bsnbr%2BJ400TcbcQ2Ehfc1rfiW2bvsxx5boRgmWBJQLsrTEfrTGX8HlapjaJerfe5PVj0xQH51JEoP61732GOH9Osr8mW%2FGQNvNhvhyBzxn086AfBWVH27abT%2FB7xj3vY7dFpNSK3SLmnNrFMqL2pxpzq%2FhcI4drsYrb8je1JEbnXAUAAA%3D%3D" target="_blank">Run the query</a>
 ```kusto
 let get_direction = (azimuth:real)
 {
@@ -92,7 +92,7 @@ datatable(timestamp:datetime, lng:real, lat:real)
     datetime(2024-01-01T00:04:53.048506Z), -115.2513186233914, 36.27622394664352,
     datetime(2024-01-01T00:05:53.048506Z), -115.2352055633212, 36.27545547038515,
     datetime(2024-01-01T00:06:53.048506Z), -115.1894341934856, 36.28266934431671,
-    datetime(2024-01-01T00:06:53.048506Z), -115.1054318118468, 36.28957085435267,
+    datetime(2024-01-01T00:07:53.048506Z), -115.1054318118468, 36.28957085435267,
     datetime(2024-01-01T00:08:53.048506Z), -115.0648614339413, 36.28110743285072,
     datetime(2024-01-01T00:09:53.048506Z), -114.9858032867736, 36.29780696509714,
     datetime(2024-01-01T00:10:53.048506Z), -114.9016966527561, 36.36556196813566,
