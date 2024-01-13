@@ -69,6 +69,41 @@ print azimuth_in_degrees = degrees(azimuth_in_radians);
 |---|
 |175.015653606568|
 
+Consider a truck that emits telemetry of its location while it travels and we would like to know the direction it travels.
+
+:::image type="content" source="images/geo-azimuth-function/azimuth.png" alt-text="Azimuth between two consecutive locations.":::
+
+> [!div class="nextstepaction"]
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA4WUyY7bMAyG7wHyDsKc7MJJRS2UlHaOvfbSAgVaFIEm0SRundhwlE7Xdy%2B9JV2M2AsgUz8%2FUaTFIkS2C3G9zeuwiXl5ZPcs8d%2FzwznuV3XwRTqf%2FZjPGF0FSauc5qs8SV90tvzxcVCzlzTxXGRkvXtd1nG%2FeOVP8S4bFzYyEr4pzzeF8lnH7IXvwlU4fvVLt8I0bcL8Re%2FWR7ofipDE%2FEBT%2FlCtyBaar4wVx127VRr5OGz6Q7fKoEoEF2rBgZ63nK84rLRccmU1x%2FdpxhYAeqm4ROQGnVRgMiaRLFoDSuAKBUJ2GylGkFJotIQUku4WSWwuQAmDHGAKKUeQwkghHEeiQIcUVmnrQFnhHAV%2BG6nGkBokWApSEqVDUshCOoWopBYTSD2GJDdKHkophiiNVlorw6XVoCeQOIIE6xRlj6pjNfYbF9hUS0lAM5XLUSTX5GsBrELbI5023Opm2ziVSzuC5KgsgqJUKpA9EoAbJQXpzFQu3X9ItXRWW07uaIzsN%2B6M5ehQc2eoYjeRwMeQHMgdNRWF%2Fuv2v0SqFji0IDUiIT%2FOZz%2FZiU4je%2FjGLseO%2BdOGNTPhawzHLavq8GVNB7BpKzRMaEhrdFYfL1Yf08bpaR%2FqwPLTsYzHc1Ekg3fKPLH%2BtfdO%2FUp%2Fdri%2FOl6yC%2BW6bzkX4jWGtj%2B0rSFtcVVdfiLHK%2B8qaKZrWivU7LTxMYZ6s%2FeUgKecmlnyOaco7tnBV%2Blvoeuqd3YFAAA%3D" target="_blank">Run the query</a>
+```kusto
+let get_direction = (azimuth:real)
+{
+    let pi = pi();
+    iff(azimuth < pi/2,   "North-East",
+    iff(azimuth < pi,     "South-East",
+    iff(azimuth < 3*pi/2, "South-West",
+                          "North-West")));
+};
+datatable(timestamp:datetime, lng:real, lat:real)
+[
+    datetime(2024-01-01T00:01:53.048506Z), -115.4036607693417, 36.40551631046261,
+    datetime(2024-01-01T00:02:53.048506Z), -115.3256807623232, 36.34102142760111,
+    datetime(2024-01-01T00:03:53.048506Z), -115.2732290602112, 36.28458914829917,
+    datetime(2024-01-01T00:04:53.048506Z), -115.2513186233914, 36.27622394664352,
+    datetime(2024-01-01T00:05:53.048506Z), -115.2352055633212, 36.27545547038515,
+    datetime(2024-01-01T00:06:53.048506Z), -115.1894341934856, 36.28266934431671,
+    datetime(2024-01-01T00:06:53.048506Z), -115.1054318118468, 36.28957085435267,
+    datetime(2024-01-01T00:08:53.048506Z), -115.0648614339413, 36.28110743285072,
+    datetime(2024-01-01T00:09:53.048506Z), -114.9858032867736, 36.29780696509714,
+    datetime(2024-01-01T00:10:53.048506Z), -114.9016966527561, 36.36556196813566,
+]
+| sort by timestamp asc 
+| extend prev_lng = prev(lng), prev_lat = prev(lat)
+| where isnotnull(prev_lng) and isnotnull(prev_lat)
+| extend direction = get_direction(geo_azimuth(prev_lng, prev_lat, lng, lat))
+| project direction, lng, lat
+| render scatterchart with (kind = map)
+```
 
 The following example returns null because 1st point equals to 2nd point.
 
