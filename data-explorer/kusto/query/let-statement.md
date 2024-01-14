@@ -8,7 +8,7 @@ ms.localizationpriority: high
 ---
 # Let statement
 
-A `let` statement is used to set a variable name equal to an expression or a function, or to create [views](schema-entities/views.md). The `let` statement binds the name to the calculation, not to the evaluated value of that calculation.
+A `let` statement is used to set a variable name equal to an expression or a function, or to create [views](schema-entities/views.md).
 
 `let` statements are useful for:
 
@@ -19,6 +19,9 @@ A `let` statement is used to set a variable name equal to an expression or a fun
 If the variable previously represented another value, for example in nested statements, the innermost `let` statement applies.
 
 To optimize multiple uses of the `let` statement within a single query, see [Optimize queries that use named expressions](named-expressions.md).
+
+> [!NOTE]
+> The `let` statement binds a name to a calculation, not to the evaluated value of that calculation. This behavior means that repeated references to the same name can cause the calculation to be evaluated multiple times and potentially return different values. To avoid this behavior, use either [toscalar()](to-scalar-function.md) or [materialize()](materialize-function.md).
 
 ## Syntax: Scalar or tabular expressions
 
