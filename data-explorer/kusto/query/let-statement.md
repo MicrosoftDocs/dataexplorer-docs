@@ -21,7 +21,7 @@ If the variable previously represented another value, for example in nested stat
 To optimize multiple uses of the `let` statement within a single query, see [Optimize queries that use named expressions](named-expressions.md).
 
 > [!NOTE]
-> The `let` statement binds a name to a calculation, not to the evaluated value of that calculation. This behavior means that repeated references to the same name can cause the calculation to be evaluated multiple times and potentially return different values. To avoid this behavior, use either [toscalar()](to-scalar-function.md) or [materialize()](materialize-function.md).
+> The `let` statement binds a name to a calculation, not to the evaluated value of that calculation. This behavior means that repeated references to the same name can cause the calculation to be evaluated multiple times and potentially return different values. To avoid this behavior, use either [toscalar()](toscalar-function.md) or [materialize()](materialize-function.md).
 
 ## Syntax: Scalar or tabular expressions
 
