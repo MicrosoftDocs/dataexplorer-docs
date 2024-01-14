@@ -9,8 +9,6 @@ ms.date: 03/09/2023
 
 Calculates S2 cell tokens that cover a line or multiline on Earth. This function is a useful geospatial join tool.
 
-Read more about [S2 cell hierarchy](https://s2geometry.io/devguide/s2cell_hierarchy).
-
 ## Syntax
 
 `geo_line_to_s2cells(`*lineString* [`,` *level*[ `,` *radius*]]`)`
@@ -51,7 +49,7 @@ If any of the following:  line, level, radius is invalid, or the cell count exce
  * If possible, reduce lines count due to nature of the data or business needs. Filter out unnecessary lines before join, scope to the area of interest or unify lines.
  * In case of very big lines, reduce their size using [geo_line_simplify()](geo-line-simplify-function.md).
  * Changing S2 cell level may improve performance and memory consumption.
- * Changing [join kind and hint](joinoperator.md) may improve performance and memory consumption.
+ * Changing [join kind and hint](join-operator.md) may improve performance and memory consumption.
  * In case positive radius is set, reverting to radius 0 on buffered shape using [geo_line_buffer()](geo-line-buffer-function.md) may improve performance.
 
 ## Examples

@@ -30,4 +30,4 @@ for the first two forms only. Thus, `123` is a literal of type `long`, as is
 `0x123`, but `-2` is **not** a literal (it is currently interpreted as the unary
 function `-` applied to the literal `2` of type long).
  
-For converting long into hex string - see [tohex() function](../tohexfunction.md).
+For converting long into hex string - see [tohex() function](../tohex-function.md).

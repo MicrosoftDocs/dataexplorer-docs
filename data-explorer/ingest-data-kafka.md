@@ -83,7 +83,7 @@ This service principal will be the identity leveraged by the connector to write 
     .create table Storms ingestion csv mapping 'Storms_CSV_Mapping' '[{"Name":"StartTime","datatype":"datetime","Ordinal":0}, {"Name":"EndTime","datatype":"datetime","Ordinal":1},{"Name":"EventId","datatype":"int","Ordinal":2},{"Name":"State","datatype":"string","Ordinal":3},{"Name":"EventType","datatype":"string","Ordinal":4},{"Name":"Source","datatype":"string","Ordinal":5}]'
     ```
 
-1. Create an [ingestion batching policy](kusto/management/batchingpolicy.md) on the table for configurable queued ingestion latency.
+1. Create an [ingestion batching policy](kusto/management/batching-policy.md) on the table for configurable queued ingestion latency.
 
     > [!TIP]
     > The ingestion batching policy is a performance optimizer and includes three parameters. The first condition satisfied triggers ingestion into the Azure Data Explorer table.
@@ -320,7 +320,7 @@ The connector will start queueing ingestion processes to Azure Data Explorer.
     | project StartTime, EndTime, Source, EventId
     ```
 
-1. Use the [`summarize`](kusto/query/summarizeoperator.md) operator:
+1. Use the [`summarize`](kusto/query/summarize-operator.md) operator:
 
     ```kusto
     Storms
@@ -355,7 +355,7 @@ az kusto database delete -n <database name> --cluster-name <cluster name> -g <re
 
 ## Tuning the Kafka Sink connector
 
-Tune the [Kafka Sink](https://github.com/Azure/kafka-sink-azure-kusto/blob/master/README.md) connector to work with the [ingestion batching policy](kusto/management/batchingpolicy.md):
+Tune the [Kafka Sink](https://github.com/Azure/kafka-sink-azure-kusto/blob/master/README.md) connector to work with the [ingestion batching policy](kusto/management/batching-policy.md):
 
 * Tune the Kafka Sink `flush.size.bytes` size limit starting from 1 MB, increasing by increments of 10 MB or 100 MB.
 * When using Kafka Sink, data is aggregated twice. On the connector side data is aggregated according to flush settings, and on the Azure Data Explorer service side according to the batching policy. If the batching time is too short and no data can be ingested by both connector and service, batching time must be increased. Set batching size at 1 GB and increase or decrease by 100 MB increments as needed. For example, if the flush size is 1 MB and the batching policy size is 100 MB, after a 100-MB batch is aggregated by the Kafka Sink connector, a 100-MB batch will be ingested by the Azure Data Explorer service. If the batching policy time is 20 seconds and the Kafka Sink connector flushes 50 MB in a 20-second period - then the service will ingest a 50-MB batch.

@@ -12,7 +12,7 @@ zone_pivot_groups: kql-flavors-all
 The column chart visual needs a minimum of two columns in the query result. By default, the first column is used as the x-axis. This column can contain text, datetime, or numeric data types. The other columns are used as the y-axis and contain numeric data types to be displayed as vertical lines. Column charts are used for comparing specific sub category items in a main category range, where the length of each line represents its value.
 
 > [!NOTE]
-> This visualization can only be used in the context of the [render operator](renderoperator.md).
+> This visualization can only be used in the context of the [render operator](render-operator.md).
 
 ## Syntax
 
@@ -105,7 +105,7 @@ StormEvents
 | render columnchart
 ```
 
-:::image type="content" source="images/visualization-columnchart/column-chart.png" alt-text="Screenshot of column chart visualization." lightbox="images/visualization-columnchart/column-chart.png":::
+:::image type="content" source="media/visualization-columnchart/column-chart.png" alt-text="Screenshot of column chart visualization." lightbox="media/visualization-columnchart/column-chart.png":::
 
 ### Use the `ysplit` property
 
@@ -122,7 +122,7 @@ StormEvents
 | render columnchart with (ysplit=axes)
 ```
 
-:::image type="content" source="images/visualization-columnchart/column-chart-ysplit-axes.png" alt-text="Screenshot of column chart using ysplit axes property." lightbox="images/visualization-columnchart/column-chart-ysplit-axes.png":::
+:::image type="content" source="media/visualization-columnchart/column-chart-ysplit-axes.png" alt-text="Screenshot of column chart using ysplit axes property." lightbox="media/visualization-columnchart/column-chart-ysplit-axes.png":::
 
 To split the view into separate panels, specify `panels` instead of `axes`:
 
@@ -139,7 +139,7 @@ StormEvents
 | render columnchart with (ysplit=panels)
 ```
 
-:::image type="content" source="images/visualization-columnchart/column-chart-ysplit-panels.png" alt-text="Screenshot of column chart using ysplit panels property." lightbox="images/visualization-columnchart/column-chart-ysplit-panels.png":::
+:::image type="content" source="media/visualization-columnchart/column-chart-ysplit-panels.png" alt-text="Screenshot of column chart using ysplit panels property." lightbox="media/visualization-columnchart/column-chart-ysplit-panels.png":::
 
 ::: zone-end
 
@@ -158,6 +158,6 @@ StormEvents
 | render columnchart
 ```
 
-:::image type="content" source="images/visualization-columnchart/column-chart.png" alt-text="Screenshot of column chart visualization." lightbox="images/visualization-columnchart/column-chart.png":::
+:::image type="content" source="media/visualization-columnchart/column-chart.png" alt-text="Screenshot of column chart visualization." lightbox="media/visualization-columnchart/column-chart.png":::
 
 ::: zone-end

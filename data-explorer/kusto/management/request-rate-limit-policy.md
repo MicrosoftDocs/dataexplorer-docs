@@ -35,7 +35,7 @@ A request rate limit of kind `ConcurrentRequests` includes the following propert
 
 When a request exceeds the limit on maximum number of concurrent requests:
 
-* The request's state, as presented by [System information commands](systeminfo.md), will be `Throttled`.
+* The request's state, as presented by [System information commands](system-info.md), will be `Throttled`.
 * The error message will include the *origin* of the throttling and the *capacity* that's been exceeded.
 
 The following table shows a few examples of concurrent requests that exceed the maximum limit and the error message that these requests return:
@@ -50,8 +50,8 @@ The following table shows a few examples of concurrent requests that exceed the 
 * The exception type will be `QueryThrottledException` for queries, and `ControlCommandThrottledException` for management commands.
   
 > [!NOTE]
-> * If either of the limits defined by the [capacity policy](capacitypolicy.md) or by a request rate limit policy is exceeded, a management command will be throttled.
-> * The [capacity policy](capacitypolicy.md) may limit the request rate of requests that fall under a specific category, such as ingestions.
+> * If either of the limits defined by the [capacity policy](capacity-policy.md) or by a request rate limit policy is exceeded, a management command will be throttled.
+> * The [capacity policy](capacity-policy.md) may limit the request rate of requests that fall under a specific category, such as ingestions.
 
 ### Resource utilization rate limit
 
@@ -65,7 +65,7 @@ A request rate limit of kind `ResourceUtilization` includes the following proper
 
 When a request exceeds the limit on resources utilization:
 
-* The request's state, as presented by [System information commands](systeminfo.md), will be `Throttled`.
+* The request's state, as presented by [System information commands](system-info.md), will be `Throttled`.
 * The error message will include the *origin* of the throttling and the *quota* that's been exceeded. For example:
 
 The following table shows a few examples of requests that exceed the resource utilization rate limit and the error message that these requests return:

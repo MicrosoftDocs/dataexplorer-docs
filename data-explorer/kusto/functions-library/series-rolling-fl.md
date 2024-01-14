@@ -61,10 +61,10 @@ You can define the function by either embedding its code as a query-defined func
 
 ### [Query-defined](#tab/query-defined)
 
-Define the function using the following [let statement](../query/letstatement.md). No permissions are required.
+Define the function using the following [let statement](../query/let-statement.md). No permissions are required.
 
 > [!IMPORTANT]
-> A [let statement](../query/letstatement.md) can't run on its own. It must be followed by a [tabular expression statement](../query/tabularexpressionstatements.md). To run a working example of `series_rolling_fl()`, see [Examples](#examples).
+> A [let statement](../query/let-statement.md) can't run on its own. It must be followed by a [tabular expression statement](../query/tabular-expression-statements.md). To run a working example of `series_rolling_fl()`, see [Examples](#examples).
 
 ```kusto
 let series_rolling_fl = (tbl:(*), y_series:string, y_rolling_series:string, n:int, aggr:string, aggr_params:dynamic=dynamic([null]), center:bool=true)
@@ -128,7 +128,7 @@ series_rolling_fl(tbl:(*), y_series:string, y_rolling_series:string, n:int, aggr
 ---
 ## Examples
 
-The following examples use the [invoke operator](../query/invokeoperator.md) to run the function.
+The following examples use the [invoke operator](../query/invoke-operator.md) to run the function.
 
 ### Calculate rolling median of 9 elements
 
@@ -189,7 +189,7 @@ demo_make_series1
 
 **Output**
 
-:::image type="content" source="images/series-rolling-fl/rolling-median-9.png" alt-text="Graph depicting rolling median of 9 elements." border="false":::
+:::image type="content" source="media/series-rolling-fl/rolling-median-9.png" alt-text="Graph depicting rolling median of 9 elements." border="false":::
 
 ### Calculate rolling min, max & 75th percentile of 15 elements
 
@@ -254,7 +254,7 @@ demo_make_series1
 
 **Output**
 
-:::image type="content" source="images/series-rolling-fl/graph-rolling-15.png" alt-text="Graph depicting rolling min, max & 75th percentile of 15 elements." border="false":::
+:::image type="content" source="media/series-rolling-fl/graph-rolling-15.png" alt-text="Graph depicting rolling min, max & 75th percentile of 15 elements." border="false":::
 
 ### Calculate the rolling trimmed mean
 
@@ -311,7 +311,7 @@ range x from 1 to 100 step 1
 
 **Output**
 
-:::image type="content" source="images/series-rolling-fl/rolling-trimmed-mean.png" alt-text="Graph depicting rolling trimmed mean." border="false":::
+:::image type="content" source="media/series-rolling-fl/rolling-trimmed-mean.png" alt-text="Graph depicting rolling trimmed mean." border="false":::
 
 ::: zone-end
 

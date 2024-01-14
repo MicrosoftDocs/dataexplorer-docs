@@ -8,7 +8,7 @@ ms.date: 12/18/2022
 
 # Geospatial visualizations
 
-Geospatial data can be visualized using the [render operator](renderoperator.md) in [Kusto Desktop Explorer](../tools/kusto-explorer-using.md) or the [Azure Data Explorer web UI](../../web-query-data.md). To download Kusto Desktop Explorer, see [Kusto.Explorer installation and user interface](../tools/kusto-explorer.md).
+Geospatial data can be visualized using the [render operator](render-operator.md) in [Kusto Desktop Explorer](../tools/kusto-explorer-using.md) or the [Azure Data Explorer web UI](../../web-query-data.md). To download Kusto Desktop Explorer, see [Kusto.Explorer installation and user interface](../tools/kusto-explorer.md).
 
 For more information about visualization options, see [Data visualization with Azure Data Explorer](../../viz-overview.md). For more information about geospatial clustering, see [Geospatial clustering](geospatial-grid-systems.md).
 
@@ -26,7 +26,7 @@ StormEvents
 | render scatterchart with (kind = map)
 ```
 
-:::image type="content" source="images/geo-visualizations/storm-events-sample.png" alt-text="Screenshot of sample storm events on a map.":::
+:::image type="content" source="media/geo-visualizations/storm-events-sample.png" alt-text="Screenshot of sample storm events on a map.":::
 
 ### Example: Visualize multiple series of points on a map
 
@@ -40,7 +40,7 @@ StormEvents
 | render scatterchart with (kind = map)
 ```
 
-:::image type="content" source="images/geo-visualizations/storm-events-series-sample.png" alt-text="Screenshot of sample storm series events on a map.":::
+:::image type="content" source="media/geo-visualizations/storm-events-series-sample.png" alt-text="Screenshot of sample storm series events on a map.":::
 
 ### Example: Visualize series of points on data with multiple columns
 
@@ -53,7 +53,7 @@ StormEvents
 | render scatterchart with (kind = map, xcolumn = BeginLon, ycolumns = BeginLat, series = EventType)
 ```
 
-:::image type="content" source="images/geo-visualizations/storm-events-series-sample.png" alt-text="Screenshot of sample storm series events using arguments.":::
+:::image type="content" source="media/geo-visualizations/storm-events-series-sample.png" alt-text="Screenshot of sample storm series events using arguments.":::
 
 ### Example: Visualize points on a map defined by GeoJSON dynamic values
 
@@ -68,7 +68,7 @@ StormEvents
 | render scatterchart with (kind = map)
 ```
 
-:::image type="content" source="images/geo-visualizations/storm-events-s2cell.png" alt-text="Screenshot of sample storm GeoJSON events.":::
+:::image type="content" source="media/geo-visualizations/storm-events-s2cell.png" alt-text="Screenshot of sample storm GeoJSON events.":::
 
 ## Visualization of pies or bubbles on a map
 
@@ -88,7 +88,7 @@ StormEvents
 | render piechart with (kind = map) // pie map rendering available only in Kusto Explorer desktop
 ```
 
-:::image type="content" source="images/geo-visualizations/storm-events-pie.png" alt-text="Screenshot of storm events on a pie map.":::
+:::image type="content" source="media/geo-visualizations/storm-events-pie.png" alt-text="Screenshot of storm events on a pie map.":::
 
 ### Example: Visualize bubbles using a color axis
 
@@ -105,11 +105,11 @@ StormEvents
 | render piechart with (kind = map) // pie map rendering available only in Kusto Explorer desktop
 ```
 
-:::image type="content" source="images/geo-visualizations/storm-events-bubble.png" alt-text="Screenshot of storm events on a bubble map.":::
+:::image type="content" source="media/geo-visualizations/storm-events-bubble.png" alt-text="Screenshot of storm events on a bubble map.":::
 
 ## Related content
 
 * [Geospatial clustering](geospatial-grid-systems.md)
-* [Render operator](renderoperator.md)
+* [Render operator](render-operator.md)
 * See a use case for geospatial clustering: [Data analytics for automotive test fleets](/azure/architecture/industries/automotive/automotive-telemetry-analytics)
 * Learn about Azure architecture for [geospatial data processing and analytics](/azure/architecture/example-scenario/data/geospatial-data-processing-analytics-azure)

@@ -39,14 +39,14 @@ The query results cache returns results only for queries that are considered "id
 
 The query results won't be cached if any of the following conditions is true:
 
-* The query references a table that has the [RestrictedViewAccess](../management/restrictedviewaccesspolicy.md) policy enabled.
-* The query references a table that has the [RowLevelSecurity](../management/rowlevelsecuritypolicy.md) policy enabled.
+* The query references a table that has the [RestrictedViewAccess](../management/restricted-view-access-policy.md) policy enabled.
+* The query references a table that has the [RowLevelSecurity](../management/row-level-security-policy.md) policy enabled.
 * The query uses any of the following functions:
-  * [current_principal](current-principalfunction.md)
-  * [current_principal_details](current-principal-detailsfunction.md)
-  * [current_principal_is_member_of](current-principal-ismemberoffunction.md)
-* The query accesses an [external table](schema-entities/externaltables.md) or an [external data](externaldata-operator.md).
-* The query uses the [evaluate plugin](evaluateoperator.md) operator.
+  * [current_principal](current-principal-function.md)
+  * [current_principal_details](current-principal-details-function.md)
+  * [current_principal_is_member_of](current-principal-is-member-of-function.md)
+* The query accesses an [external table](schema-entities/external-tables.md) or an [external data](externaldata-operator.md).
+* The query uses the [evaluate plugin](evaluate-operator.md) operator.
 
 ## No valid cache entry
 

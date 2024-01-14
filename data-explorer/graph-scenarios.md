@@ -66,7 +66,7 @@ let rawLogs = datatable (rawLog: string) [
 ];
 ```
 
-One possible way to model a graph from this table is to treat the source IP addresses as nodes and the web requests to resources as edges. You can use the [parse operator](kusto/query/parseoperator.md) to extract the columns you need for the graph and then you can create a graph that represents the network traffic and interactions between different sources and destinations. To create the graph, you can use the [make-graph operator](kusto/query/make-graph-operator.md) specifying the source and destination columns as the edge endpoints, and optionally providing additional columns as edge or node properties.
+One possible way to model a graph from this table is to treat the source IP addresses as nodes and the web requests to resources as edges. You can use the [parse operator](kusto/query/parse-operator.md) to extract the columns you need for the graph and then you can create a graph that represents the network traffic and interactions between different sources and destinations. To create the graph, you can use the [make-graph operator](kusto/query/make-graph-operator.md) specifying the source and destination columns as the edge endpoints, and optionally providing additional columns as edge or node properties.
 
 The following query creates a graph from the raw logs:
 

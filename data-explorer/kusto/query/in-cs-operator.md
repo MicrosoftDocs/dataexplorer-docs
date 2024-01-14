@@ -27,7 +27,7 @@ Filters a record set for data with a case-sensitive string.
 |--|--|--|--|
 | *T* | string | &check; | The tabular input to filter.|
 | *col* | string | &check; | The column by which to filter.|
-| *expression* | scalar or tabular | &check; | An expression that specifies the values for which to search. the values for which to search. Each expression can be a [scalar](scalar-data-types/index.md) value or a [tabular expression](tabularexpressionstatements.md) that produces a set of values. If a tabular expression has multiple columns, the first column is used. The search will consider up to 1,000,000 distinct values.|
+| *expression* | scalar or tabular | &check; | An expression that specifies the values for which to search. the values for which to search. Each expression can be a [scalar](scalar-data-types/index.md) value or a [tabular expression](tabular-expression-statements.md) that produces a set of values. If a tabular expression has multiple columns, the first column is used. The search will consider up to 1,000,000 distinct values.|
 
 > [!NOTE]
 > An inline tabular expression must be enclosed with double parentheses. See [example](#tabular-expression).
@@ -94,18 +94,18 @@ StormEvents
 | count
 ```
 
-The same query can be written with an inline tabular expression statement. Notice that an inline tabular expression must be enclosed with double parentheses.
+The same query can be written with an inline tabular expression statement.
 
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAwsuyS/KdS1LzSspVuDlqlEoz0gtSlUILkksSVXIzFPQ0ODlUgCCYIQyiECNQnFpbm5iUWZVqkJyfmleiYamQlIlRCNMRUl+gYIpSBSsIB4irKkJtgcsBAD4wHSifQAAAA==" target="_blank">Run the query</a>
 
 ```kusto
 StormEvents 
-| where State in ((
+| where State in (
     StormEvents
     | summarize count() by State
     | top 5 by count_
-    )) 
+    ) 
 | count
 ```
 

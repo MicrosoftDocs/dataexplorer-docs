@@ -8,7 +8,7 @@ ms.date: 11/07/2022
 ---
 # azure_digital_twins_query_request plugin
 
-The `azure_digital_twins_query_request` plugin runs an Azure Digital Twins query as part of a Kusto Query Language (KQL) query. The plugin is invoked with the [`evaluate`](evaluateoperator.md) operator.
+The `azure_digital_twins_query_request` plugin runs an Azure Digital Twins query as part of a Kusto Query Language (KQL) query. The plugin is invoked with the [`evaluate`](evaluate-operator.md) operator.
 
 Using the plugin, you can query across data in both Azure Digital Twins and any data source accessible through KQL. For example, you can [perform time series analytics](#perform-time-series-analytics).
 
@@ -45,7 +45,7 @@ evaluate azure_digital_twins_query_request(
   'SELECT T AS Twins FROM DIGITALTWINS T')
 ```
 
-:::image type="content" source="images/azure-digital-twins-query-request-plugin/adt-twins.png" alt-text="Screenshot of the twins present in the Azure Digital Twins instance.":::
+:::image type="content" source="media/azure-digital-twins-query-request-plugin/adt-twins.png" alt-text="Screenshot of the twins present in the Azure Digital Twins instance.":::
 
 ### Projection of twin properties as columns along with additional Kusto expressions
 

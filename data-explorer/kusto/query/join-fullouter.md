@@ -10,7 +10,7 @@ ms.date: 06/18/2023
 
 A `fullouter` join combines the effect of applying both left and right outer-joins. For columns of the table that lack a matching row, the result set contains `null` values. For those records that do match, a single row is produced in the result set containing fields populated from both tables.
 
-:::image type="content" source="images/joinoperator/join-fullouter.png" alt-text="Diagram that shows how the join works." lightbox="images/joinoperator/join-kinds.png":::
+:::image type="content" source="media/joinoperator/join-fullouter.png" alt-text="Diagram that shows how the join works." lightbox="media/joinoperator/join-kinds.png":::
 
 ## Syntax
 
@@ -61,4 +61,4 @@ X | join kind=fullouter Y on Key
 
 ## Related content
 
-* Learn about other [join flavors](joinoperator.md#returns)
+* Learn about other [join flavors](join-operator.md#returns)

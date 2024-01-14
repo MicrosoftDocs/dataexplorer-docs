@@ -30,10 +30,10 @@ You can define the function by either embedding its code as a query-defined func
 
 ### [Query-defined](#tab/query-defined)
 
-Define the function using the following [let statement](../query/letstatement.md). No permissions are required.
+Define the function using the following [let statement](../query/let-statement.md). No permissions are required.
 
 > [!IMPORTANT]
-> A [let statement](../query/letstatement.md) can't run on its own. It must be followed by a [tabular expression statement](../query/tabularexpressionstatements.md). To run a working example of `series_exp_smoothing_fl()`, see [Example](#example).
+> A [let statement](../query/let-statement.md) can't run on its own. It must be followed by a [tabular expression statement](../query/tabular-expression-statements.md). To run a working example of `series_exp_smoothing_fl()`, see [Example](#example).
 
 ```kusto
 let series_exp_smoothing_fl = (y_series:dynamic, alpha:double=0.5)
@@ -98,4 +98,4 @@ range x from 1 to 50 step 1
 
 **Output**
 
-:::image type="content" source="images/series-exp-smoothing-fl/exp-smoothing-demo.png" alt-text="Graph showing exponential smoothing of artificial series." border="false":::
+:::image type="content" source="media/series-exp-smoothing-fl/exp-smoothing-demo.png" alt-text="Graph showing exponential smoothing of artificial series." border="false":::

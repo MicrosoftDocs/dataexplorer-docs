@@ -9,7 +9,7 @@ ms.date: 04/30/2023
 
 Calculate factorial.
 
-The function `factorial_fl()` is a [UDF (user-defined function)](../query/functions/user-defined-functions.md) that calculates [factorial](https://en.wikipedia.org/wiki/Factorial) of positive integers (*n!*). It's a simple wrapper of the native [gamma()](../query/gammafunction.md) function.
+The function `factorial_fl()` is a [UDF (user-defined function)](../query/functions/user-defined-functions.md) that calculates [factorial](https://en.wikipedia.org/wiki/Factorial) of positive integers (*n!*). It's a simple wrapper of the native [gamma()](../query/gamma-function.md) function.
 
 ## Syntax
 
@@ -29,10 +29,10 @@ You can define the function by either embedding its code as a query-defined func
 
 ### [Query-defined](#tab/query-defined)
 
-Define the function using the following [let statement](../query/letstatement.md). No permissions are required.
+Define the function using the following [let statement](../query/let-statement.md). No permissions are required.
 
 > [!IMPORTANT]
-> A [let statement](../query/letstatement.md) can't run on its own. It must be followed by a [tabular expression statement](../query/tabularexpressionstatements.md). To run a working example of `factorial_fl()`, see [Example](#example).
+> A [let statement](../query/let-statement.md) can't run on its own. It must be followed by a [tabular expression statement](../query/tabular-expression-statements.md). To run a working example of `factorial_fl()`, see [Example](#example).
 
 ```kusto
 let factorial_fl=(n:int)

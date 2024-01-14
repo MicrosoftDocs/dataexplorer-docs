@@ -9,7 +9,7 @@ ms.date: 08/13/2023
 
 A view is a virtual table based on the result-set of a Kusto Query Language (KQL) query.
 
-Like real tables, views organize data with rows and columns, and participate in tasks that involve wildcard table name resolution, such as [union *](../../query/unionoperator.md) and [search *](../../query/searchoperator.md) scenarios. However, unlike real tables, views don't maintain dedicated data storage. Rather, they dynamically represent the result of a query.
+Like real tables, views organize data with rows and columns, and participate in tasks that involve wildcard table name resolution, such as [union *](../../query/union-operator.md) and [search *](../../query/search-operator.md) scenarios. However, unlike real tables, views don't maintain dedicated data storage. Rather, they dynamically represent the result of a query.
 
 ## How to define a view
 
@@ -47,5 +47,5 @@ The following query defines a stored view. This view behaves like any other stor
 ## Related content
 
 * [User-defined functions](../functions/user-defined-functions.md)
-* [union operator](../../query/unionoperator.md)
-* [search operator](../../query/searchoperator.md)
+* [union operator](../../query/union-operator.md)
+* [search operator](../../query/search-operator.md)

@@ -32,7 +32,7 @@ Syntax:
 
 ## Delete data using a retention policy
 
-Automatically delete data based on a [retention policy](kusto/management/retentionpolicy.md). You can set the retention policy at the database or table level. There is no guarantee as to when the deletion occurs, but it will not be deleted before the retention period. This is a very efficient and convenient way to remove old data.
+Automatically delete data based on a [retention policy](kusto/management/retention-policy.md). You can set the retention policy at the database or table level. There is no guarantee as to when the deletion occurs, but it will not be deleted before the retention period. This is a very efficient and convenient way to remove old data.
 
 Consider a database or table that is set for 90 days of retention. If only 60 days of data are needed, delete the older data as follows:
 

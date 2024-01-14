@@ -30,10 +30,10 @@ You can define the function by either embedding its code as a query-defined func
 
 ### [Query-defined](#tab/query-defined)
 
-Define the function using the following [let statement](../query/letstatement.md). No permissions are required.
+Define the function using the following [let statement](../query/let-statement.md). No permissions are required.
 
 > [!IMPORTANT]
-> A [let statement](../query/letstatement.md) can't run on its own. It must be followed by a [tabular expression statement](../query/tabularexpressionstatements.md). To run a working example of `series_clean_anomalies_fl()`, see [Example](#example).
+> A [let statement](../query/let-statement.md) can't run on its own. It must be followed by a [tabular expression statement](../query/tabular-expression-statements.md). To run a working example of `series_clean_anomalies_fl()`, see [Example](#example).
 
 ```kusto
 let series_clean_anomalies_fl = (y_series:dynamic, anomalies:dynamic)
@@ -106,4 +106,4 @@ demo_make_series1
 
 **Output**
 
-:::image type="content" source="images/series-clean-anomalies-fl/series-clean-anomalies-chart.png" alt-text="Graph of a time series with anomalies before and after cleaning." border="false":::
+:::image type="content" source="media/series-clean-anomalies-fl/series-clean-anomalies-chart.png" alt-text="Graph of a time series with anomalies before and after cleaning." border="false":::
