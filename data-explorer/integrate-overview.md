@@ -3,7 +3,7 @@ title: Overview of data connectors, tools, and integrations
 description: Learn about the available data connectors, toold, and integrations, and their capabilities.
 ms.reviewer: aksdi
 ms.topic: conceptual
-ms.date: 11/30/2023
+ms.date: 01/14/2024
 ---
 # Data connectors, tools, and integrations overview
 

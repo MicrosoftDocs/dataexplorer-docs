@@ -3,7 +3,7 @@ title: Overview of query integrations
 description: Learn about the available query integrations.
 ms.reviewer: aksdi
 ms.topic: conceptual
-ms.date: 11/26/2023
+ms.date: 01/14/2024
 # CustomerIntent: As a data ingestor, I want to know what query connectors and tools are available, so that I can choose the right one for my use case.
 ---
 # Query integrations overview
@@ -15,7 +15,7 @@ Use the following filters to see other connectors, tools, and integrations are a
 :::row:::
    :::column span="":::
       > [!div class="nextstepaction"]
-      > [Overview](tools-integrations-overview.md)
+      > [Overview](integrate-overview.md)
    :::column-end:::
    :::column span="":::
       > [!div class="nextstepaction"]
