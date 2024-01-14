@@ -18,7 +18,7 @@
     {
       "source_path": "data-explorer/tools-integrations-overview.md",
       "redirect_url": "/azure/data-explorer/integrate-overview",
-      "redirect_document_id": true
+      "redirect_document_id": false
     },
     {
       "source_path": "data-explorer/kusto/management/drop-database.md",
