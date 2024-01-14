@@ -1295,6 +1295,10 @@ items:
         href: geospatial-grid-systems.md
       - name: Geospatial visualizations
         href: geospatial-visualizations.md
+      - name: geo_angle()
+        href: geo-angle-function.md
+      - name: geo_azimuth()
+        href: geo-azimuth-function.md
       - name: geo_distance_2points()
         href: geo-distance-2points-function.md
       - name: geo_distance_point_to_line()
@@ -1339,6 +1343,8 @@ items:
         href: geo-polygon-simplify-function.md
       - name: geo_polygon_to_s2cells()
         href: geo-polygon-to-s2cells-function.md
+      - name: geo_polygon_to_h3cells()
+        href: geo-polygon-to-h3cells-function.md
       - name: geo_point_buffer()
         href: geo-point-buffer-function.md
       - name: geo_point_in_circle()
