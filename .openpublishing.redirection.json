@@ -822,7 +822,7 @@
     },
     {
       "source_path": "data-explorer/kusto/query/scalar-data-types/unsupported-data-types.md",
-      "redirect_url": "/azure/data-explorer/kusto/query/scalar-data-types/",
+      "redirect_url": "/azure/data-explorer/kusto/query/scalar-data-types/index",
       "redirect_document_id": true
     },
     {
