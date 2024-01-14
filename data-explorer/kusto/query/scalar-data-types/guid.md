@@ -7,7 +7,7 @@ ms.date: 01/08/2024
 ---
 # The guid data type
 
-The `guid` data type represents a 128-bit globally-unique value.
+The `guid` data type represents a 128-bit globally unique value.
 
 > The `guid`, `uuid`, and `uniqueid` data types are equivalent.
 

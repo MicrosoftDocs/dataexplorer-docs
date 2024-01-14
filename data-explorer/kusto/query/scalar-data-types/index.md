@@ -22,7 +22,7 @@ The following data types are supported:
 | [datetime](datetime.md) (`date`) | An instant in time, typically expressed as a date and time of day. |
 | [decimal](decimal.md) | A 128-bit wide, decimal number.|
 | [dynamic](dynamic.md) | An array, a property bag, or a value of any of the other scalar data types.|
-| [guid](guid.md) (`uuid`, `uniqueid`)| A 128-bit globally-unique value. |
+| [guid](guid.md) (`uuid`, `uniqueid`)| A 128-bit globally unique value. |
 | [int](int.md) | A signed, 32-bit wide, integer. |
 | [long](long.md) | A signed, 64-bit wide, integer. |
 | [real](real.md) (`double`) | A 64-bit wide, double-precision, floating-point number. |
@@ -34,6 +34,6 @@ The following data types are supported:
 
 ## Null values
 
-All non-string data types can be null. When a value is null, it indicates an absence or mismatch of data. For example, if you try to input the string `abc` into an integer column, it results in the null value. To check if an expression is null, use the [isnull()](../../query/isnullfunction.md) function.
+All nonstring data types can be null. When a value is null, it indicates an absence or mismatch of data. For example, if you try to input the string `abc` into an integer column, it results in the null value. To check if an expression is null, use the [isnull()](../../query/isnullfunction.md) function.
 
 For more information, see [Null values](null-values.md).
