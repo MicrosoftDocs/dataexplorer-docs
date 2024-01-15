@@ -37,14 +37,14 @@ The data profile for the selected table view opens in a side window.
 
 ## Filter data by time range
 
-To filter the data presented in the data profile by ingestion time, select one of the tabs at the top of the profile. These tabs allow you to filter by one day (`1d`), one week (`7d`), one month (`30d`), one year (`365d`) or the full time range of your data (`max`). 
+To filter the data presented in the data profile, select one of the tabs at the top of the profile. These tabs allow you to filter by one day (`1d`), one week (`7d`), one month (`30d`), one year (`365d`) or the full time range of your data (`max`). 
 
 :::image type="content" source="media/data-profile/data-profile-filter-time-range.png" alt-text="Screenshot of the time range filter tabs.":::
 
 
 ## Filter time chart by datetime columns
 
-To filter the time chart by a different datetime column, select the dropdown tab at the top right of the chart. All of the filter options will be presented there, which will include the ingestion time as well as any other datetime columns.
+To filter the time chart by a different datetime column, select the dropdown tab at the top right of the chart. You can filter by ingestion time and any other datetime columns.
 
 :::image type="content" source="media/data-profile/data-profile-filter-time-chart.png" alt-text="Screenshot of the time chart filter.":::
 
