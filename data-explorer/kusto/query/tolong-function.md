@@ -10,7 +10,7 @@ ms.date: 02/22/2023
 Converts the input value to a long (signed 64-bit) number representation.
 
 > [!NOTE]
-> Prefer using [long()](./scalar-data-types/long.md) when possible.
+> When possible, use [long literals](scalar-data-types/long.md#long-literals) instead.
 
 ## Syntax
 
