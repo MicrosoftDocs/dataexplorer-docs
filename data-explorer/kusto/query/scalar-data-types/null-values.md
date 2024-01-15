@@ -22,10 +22,10 @@ The null value of a scalar type *T* is represented in the query language by the 
 The following query returns a single row full of null values:
 
 > [!div class="nextstepaction"]
-> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAysoyswrUUjKz8/RyCvNydHUUUhJLEktycxNhfMr8xJzM5Nh3PTSzBQYG6gVxszJz0uHsYtSExGm5Zcm5cDNQpgLAOW2JXx4AAAA" target="_blank">Run the query</a>
+> <a href="https://dataexplorer.azure.com/clusters/kvc9rf7q4d68qcw5sk2d6f.northeurope/databases/MyDatabase?query=H4sIAAAAAAAAA0WMQQ6AIAzAvsJREz81ZCFLxkZgO%2Fh7NWZ4aw9tHySWsipv4sz7kQoYGjVcfgk0OkOrUwl%2B0kBWqcED4b%2BpZ16v9zs7yOc37tkiEnwAAAA%3D" target="_blank">Run the query</a>
 
 ```kusto
-print bool(null), datetime(null), dynamic(null), guid(null), int(null), long(null), real(null), double(null), time(null)
+print bool(null), datetime(null), dynamic(null), guid(null), int(null), long(null), real(null), double(null), timespan(null)
 ```
 
 ## Predicates on null values

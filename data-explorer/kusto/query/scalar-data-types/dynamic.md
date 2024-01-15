@@ -3,18 +3,16 @@ title:  The dynamic data type
 description: This article describes The dynamic data type in Azure Data Explorer.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 11/13/2022
+ms.date: 01/08/2024
 ---
 # The dynamic data type
 
-The `dynamic` scalar data type is special in that it can take on any value  of other scalar data types from the list below, as well as arrays and property bags. Specifically, a `dynamic` value can be:
+The `dynamic` scalar data type can be any of the following values:
 
-* Null.
-* A value of any of the primitive scalar data types:
-  `bool`, `datetime`, `guid`, `int`, `long`, `real`, `string`, and `timespan`.
-* An array of `dynamic` values, holding zero or more values with zero-based   indexing.
-* A property bag that maps unique `string` values to `dynamic` values.
-  The property bag has zero or more such mappings (called "slots"), indexed by the unique `string` values. The slots are unordered.
+* An array of `dynamic` values, holding zero or more values with zero-based indexing.
+* A property bag that maps unique `string` values to `dynamic` values. The property bag has zero or more such mappings (called "slots"), indexed by the unique `string` values. The slots are unordered.
+* A value of any of the primitive scalar data types: `bool`, `datetime`, `guid`, `int`, `long`, `real`, `string`, and `timespan`.
+* Null. For more information, see [Null values](null-values.md).
 
 > [!NOTE]
 > * Values of type `dynamic` are limited to 1MB (2^20), uncompressed. If a cell value in a record exceeds 1MB, the value is dropped and ingestion succeeds. You can increase the `MaxValueSize` of the column by changing its [encoding policy](../../management/alter-encoding-policy.md).
@@ -31,25 +29,25 @@ The `dynamic` scalar data type is special in that it can take on any value  of o
 >   possible for two property bags with the same set of mappings to yield different
 >   results when they are represented as `string` values, for example.
 
-## Dynamic literals
+## `dynamic` literals
 
-A literal of type `dynamic` looks like this:
+To specify a `dynamic` literal, use one of the following syntax options:
 
-`dynamic(` *Value* `)`
+|Syntax|Description|Example|
+|--|--|--|
+|`dynamic([`*value* [`,` ...]`])`|An array of dynamic or other scalar literals.|`dynamic([1, 2, "hello"])`|
+|`dynamic({`*key* `=` *value* [`,` ...]`})`|A property bag, or object. The value for a key can be a nested property bag.|`dynamic({"a":1, "b":{"a":2}})`|
+|`dynamic(`*value*`)`|A dynamic value holding the value of the inner scalar data type.|`dynamic(4)`|
+|`dynamic(null)`|Represents the [null value](null-values.md).||
 
-*Value* can be:
+[!INCLUDE [syntax-conventions-note](../../../includes/syntax-conventions-note.md)]
 
-* `null`, in which case the literal represents the null dynamic value:
-  `dynamic(null)`.
-* Another scalar data type literal, in which case the literal represents the
-  `dynamic` literal of the "inner" type. For example, `dynamic(4)` is
-  a dynamic value holding the value 4 of the long scalar data type.
-* An array of dynamic or other literals: `[` *ListOfValues* `]`. For example,
-  `dynamic([1, 2, "hello"])` is a dynamic array of three elements, two `long` values
-  and one `string` value.
-* A property bag: `{` *Name* `=` *Value* ... `}`. For example, `dynamic({"a":1, "b":{"a":2}})`
-  is a property bag with two slots, `a`, and `b`, with the second slot being
-  another property bag.
+## Examples
+
+The following query creates a dynamic property bag:
+
+> [!div class="nextstepaction"]
+> <a href="https://dataexplorer.azure.com/clusters/kvc9rf7q4d68qcw5sk2d6f.northeurope/databases/MyDatabase?query=H4sIAAAAAAAAAw3HsQqAIBAA0D3oH46bCo4g3QS%2FJBrUExJMIxoK69%2B76fGOM5ULquWnuD2FoaFDMytNgB4NbjHnipKAZplJkV4ljKZ939h3L8T7ioXB2To5Ai94giAEAhb4B3199sBhAAAA" target="_blank">Run the query</a>
 
 ```kusto
 print o=dynamic({"a":123, "b":"hello", "c":[1,2,3], "d":{}})
