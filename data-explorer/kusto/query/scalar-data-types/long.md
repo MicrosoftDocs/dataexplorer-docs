@@ -1,33 +1,30 @@
 ---
 title:  The long data type
-description: This article describes The long data type in Azure Data Explorer.
+description: This article describes the long data type in Azure Data Explorer.
 ms.reviewer: orspodek
 ms.topic: reference
-ms.date: 10/23/2018
+ms.date: 01/08/2024
 ---
 # The long data type
 
 The `long` data type represents a signed, 64-bit wide, integer.
 
-## long literals
+By default, integers and integers represented with hexadecimal syntax are of type `long`.
 
-Literals of the `long` data type can be specified in the following syntax:
+## `long` literals
 
-`long` `(` *Value* `)`
+To specify a `long` literal, use one of the following syntax options:
 
-Where *Value* can take the following forms:
-* One more or digits, in which case the literal value is the decimal representation
-  of these digits. For example, `long(12)` is the number twelve of type `long`.
-* The prefix `0x` followed by one or more Hex digits. For example,
-  `long(0xf)` is equivalent to `long(15)`.
-* A minus (`-`) sign followed by one or more digits. For example, `long(-1)`
-  is the number minus one of type `long`.
-* `null`, in which case this is the [null value](null-values.md)
-  of the `long` data type. Thus, the null value of type `long` is `long(null)`.
+|Syntax|Description|Example|
+|--|--|
+|*number*|An integer. You don't need to wrap the integer with `long()` because integers are by default of type `long`.|`12`|
+|`0x`*hex*|An integer represented with hexadecimal syntax.|`0xf` is equivalent to 15|
+|`long(-`*number*`)`|A negative integer.|`long(-1)`|
+|`long(null)`|Represents the [null value](null-values.md).||
 
-Kusto also supports literals of type `long` without the `long(`/`)` prefix/suffi
-for the first two forms only. Thus, `123` is a literal of type `long`, as is
-`0x123`, but `-2` is **not** a literal (it is currently interpreted as the unary
-function `-` applied to the literal `2` of type long).
- 
-For converting long into hex string - see [tohex() function](../tohex-function.md).
+[!INCLUDE [syntax-conventions-note](../../../includes/syntax-conventions-note.md)]
+
+## Related content
+
+* [tolong()](../../query/tolongfunction.md)
+* To convert the `long` type into a hex string, see [tohex() function](../tohexfunction.md).

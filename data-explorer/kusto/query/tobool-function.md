@@ -3,13 +3,16 @@ title:  tobool()
 description: Learn how to use the tobool() function to convert an input to a boolean representation.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 02/05/2023
+ms.date: 01/08/2024
 ---
 # tobool()
 
 Convert inputs to boolean (signed 8-bit) representation.
 
 > The `tobool()` and `toboolean()` functions are equivalent
+
+> [!NOTE]
+> When possible, use [bool literals](../query/scalar-data-types/bool.md#bool-literals) instead.
 
 ## Syntax
 
