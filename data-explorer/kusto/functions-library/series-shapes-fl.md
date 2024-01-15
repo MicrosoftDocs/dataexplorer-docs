@@ -219,7 +219,7 @@ union
 
 **Output**
 
-:::image type="content" source="images/series-shapes-fl/series-shapes-demo.png" alt-text="Graph showing 4 time series with trends and jumps." border="false":::
+:::image type="content" source="media/series-shapes-fl/series-shapes-demo.png" alt-text="Graph showing 4 time series with trends and jumps." border="false":::
 
 The respective trend and jump scores:
 

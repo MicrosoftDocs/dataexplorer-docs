@@ -3,14 +3,14 @@ title:  todecimal()
 description: Learn how to use the todecimal() function to convert the input expression to a decimal number representation. 
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 02/20/2023
+ms.date: 01/08/2024
 ---
 # todecimal()
 
 Converts the input to a decimal number representation.
 
 > [!NOTE]
-> Prefer using [real()](./scalar-data-types/real.md) when possible.
+> When possible, use [decimal literals](./scalar-data-types/decimal.md#decimal-literals) instead.
 
 ## Syntax
 

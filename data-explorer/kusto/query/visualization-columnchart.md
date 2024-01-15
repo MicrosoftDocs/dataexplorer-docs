@@ -105,7 +105,7 @@ StormEvents
 | render columnchart
 ```
 
-:::image type="content" source="images/visualization-columnchart/column-chart.png" alt-text="Screenshot of column chart visualization." lightbox="images/visualization-columnchart/column-chart.png":::
+:::image type="content" source="media/visualization-columnchart/column-chart.png" alt-text="Screenshot of column chart visualization." lightbox="media/visualization-columnchart/column-chart.png":::
 
 ### Use the `ysplit` property
 
@@ -122,7 +122,7 @@ StormEvents
 | render columnchart with (ysplit=axes)
 ```
 
-:::image type="content" source="images/visualization-columnchart/column-chart-ysplit-axes.png" alt-text="Screenshot of column chart using ysplit axes property." lightbox="images/visualization-columnchart/column-chart-ysplit-axes.png":::
+:::image type="content" source="media/visualization-columnchart/column-chart-ysplit-axes.png" alt-text="Screenshot of column chart using ysplit axes property." lightbox="media/visualization-columnchart/column-chart-ysplit-axes.png":::
 
 To split the view into separate panels, specify `panels` instead of `axes`:
 
@@ -139,7 +139,7 @@ StormEvents
 | render columnchart with (ysplit=panels)
 ```
 
-:::image type="content" source="images/visualization-columnchart/column-chart-ysplit-panels.png" alt-text="Screenshot of column chart using ysplit panels property." lightbox="images/visualization-columnchart/column-chart-ysplit-panels.png":::
+:::image type="content" source="media/visualization-columnchart/column-chart-ysplit-panels.png" alt-text="Screenshot of column chart using ysplit panels property." lightbox="media/visualization-columnchart/column-chart-ysplit-panels.png":::
 
 ::: zone-end
 
@@ -158,6 +158,6 @@ StormEvents
 | render columnchart
 ```
 
-:::image type="content" source="images/visualization-columnchart/column-chart.png" alt-text="Screenshot of column chart visualization." lightbox="images/visualization-columnchart/column-chart.png":::
+:::image type="content" source="media/visualization-columnchart/column-chart.png" alt-text="Screenshot of column chart visualization." lightbox="media/visualization-columnchart/column-chart.png":::
 
 ::: zone-end

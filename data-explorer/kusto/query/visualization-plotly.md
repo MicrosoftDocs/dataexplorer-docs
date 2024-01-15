@@ -101,7 +101,7 @@ Iris
 | render plotly
 ```
 
-:::image type="content" source="images/visualization-plotly/plotly-scatter.png" alt-text="Screenshot of output of plotly exampe in Azure Data Explorer.":::
+:::image type="content" source="media/visualization-plotly/plotly-scatter.png" alt-text="Screenshot of output of plotly exampe in Azure Data Explorer.":::
 
 ::: zone-end
 

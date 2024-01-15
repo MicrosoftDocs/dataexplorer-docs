@@ -76,14 +76,17 @@ items:
         href: scalar-data-types/index.md
       - name: bool
         href: scalar-data-types/bool.md
+        displayName: boolean
       - name: datetime
         href: scalar-data-types/datetime.md
+        displayName: date
       - name: decimal
         href: scalar-data-types/decimal.md
       - name: dynamic
         href: scalar-data-types/dynamic.md
       - name: guid
         href: scalar-data-types/guid.md
+        displayName: uuid, uniqueid
       - name: int
         href: scalar-data-types/int.md
       - name: long
@@ -95,10 +98,9 @@ items:
         href: scalar-data-types/string.md
       - name: timespan
         href: scalar-data-types/timespan.md
+        displayName: time
       - name: Null values
         href: scalar-data-types/null-values.md
-      - name: Unsupported scalar data types
-        href: scalar-data-types/unsupported-data-types.md
   - name: Functions
     items:
       - name: Function types
@@ -1095,9 +1097,6 @@ items:
       - name: todecimal()
         displayName: to decimal todecimal
         href: todecimal-function.md
-      - name: todouble()
-        displayName: to double todouble toreal()
-        href: todouble-function.md
       - name: toguid()
         displayName: to guid toguid
         href: toguid-function.md
@@ -1113,6 +1112,9 @@ items:
       - name: tolower()
         displayName: to lower tolower
         href: tolower-function.md
+      - name: toreal()
+        displayName: to real toreal todouble double todouble()
+        href: toreal-function.md
       - name: tostring()
         displayName: to string tostring
         href: tostring-function.md
@@ -1293,6 +1295,10 @@ items:
         href: geospatial-grid-systems.md
       - name: Geospatial visualizations
         href: geospatial-visualizations.md
+      - name: geo_angle()
+        href: geo-angle-function.md
+      - name: geo_azimuth()
+        href: geo-azimuth-function.md
       - name: geo_distance_2points()
         href: geo-distance-2points-function.md
       - name: geo_distance_point_to_line()
@@ -1337,6 +1343,8 @@ items:
         href: geo-polygon-simplify-function.md
       - name: geo_polygon_to_s2cells()
         href: geo-polygon-to-s2cells-function.md
+      - name: geo_polygon_to_h3cells()
+        href: geo-polygon-to-h3cells-function.md
       - name: geo_point_buffer()
         href: geo-point-buffer-function.md
       - name: geo_point_in_circle()

@@ -88,7 +88,7 @@ print centroid = geo_line_centroid(line)
 | render scatterchart with (kind = map)
 ```
 
-:::image type="content" source="images/geo-line-centroid-function/nyc-central-park-centroid.png" alt-text="Screenshot of N Y C Central park line centroid.":::
+:::image type="content" source="media/geo-line-centroid-function/nyc-central-park-centroid.png" alt-text="Screenshot of N Y C Central park line centroid.":::
 
 The following example returns True because of the invalid line.
 
