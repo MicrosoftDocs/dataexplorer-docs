@@ -3,7 +3,7 @@ title: Access the data profile of a table
 description: Learn how to access the data profile of a table in the Azure Data Explorer web UI.
 ms.reviewer: mibar
 ms.topic: reference
-ms.date: 12/20/2023
+ms.date: 01/15/2024
 ---
 
 # Access the data profile of a table
