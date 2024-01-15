@@ -32,11 +32,9 @@ Array of H3 cell token strings of the same resolution that represet a polygon or
 > * Converting polygon to H3 cell tokens can be useful in matching coordinates to polygons that might include these coordinates and matching polygons to polygons.
 > * The maximum count of tokens per polygon is 61680.
 > * Polygon edges are straight lines.
+> * A polygon is represented by the cells whose centroids are inside the polygon. This means that the cells are not exactly the same as the polygon, but they get closer as the resolution increases. To make sure that every point in the polygon is covered by a cell, the polygon can be buffered. This also ensures that neighboring polygons that touch each other will have separate cells, so no cell will belong to more than one polygon.
 
 Seel also [geo_polygon_to_s2cells()](geo-polygon-to-s2cells-function.md).
-
-> [!WARNING]
-> This feature is currently in preview and might be subject to change. The cells that represent the polygon are contained within the polygon where containment is determined by the cells' centroids. Hence the cells representation approximates the polygon. The higher the resolution is, the more accurate polygon approximation is. If full polygon coverage is needed, where every point inside polygon is matched to a cell, it's possible to buffer the polygon. An advantage of this behavior is that polygons that don't overlap but share borders will have distinct cells representation, in other words there won't be a cell that belongs to a more than one polygon.
 
 ## Examples
 
