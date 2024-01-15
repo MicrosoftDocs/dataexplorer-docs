@@ -51,27 +51,6 @@ For example, in the following image, the `Manufacturer` column of type string is
 
 :::image type="content" source="media/data-profile/data-profile-columns.png" alt-text="Screenshot of example column selected.":::
 
-## Write queries with an open data profile
-
-You can pin the data profile to keep it visible while writing queries. This view is valuable for quickly accessing available column names or understanding the structure of columnar data while crafting queries.
-
-To pin the data profile, select the **Pin** icon in the upper corner:
-
-:::image type="content" source="media/data-profile/data-profile-pin.png" alt-text="Screenshot of option to pin data profile.":::
-
-This selection opens the pinned view, which helps you write queries with access to sample data:
-
-<!-- TO DO: Create a GIF that uses a string and a dynamic field to create a query quickly. -->
-
-:::image type="content" source="media/data-profile/data-profile-pinned-view.png" alt-text="Screenshot of pinned view.":::
-
-> [!TIP]
-> While in the pinned view, you can choose different tables in the connection pane to switch the data profile view from one table to another.
-
-To unpin the data profile, select the **Unpin** button in the upper corner of the profile pane:
-
-:::image type="content" source="media/data-profile/data-profile-unpin.png" alt-text="Screenshot of option to unpin data profile.":::
-
 ## Related content
 
 * [Write Kusto Query Language queries in the Azure Data Explorer web UI](web-ui-kql.md)
