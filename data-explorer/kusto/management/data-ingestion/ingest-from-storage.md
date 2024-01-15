@@ -15,6 +15,8 @@ them, and ingest them together into a single target table.
 Data is appended to the table
 without affecting existing records, and without modifying the table's schema.
 
+[!INCLUDE [direct-ingestion-note](../../../includes/direct-ingestion-note.md)]
+
 ## Permissions
 
 You must have at least [Table Ingestor](../access-control/role-based-access-control.md) permissions to run this command.
