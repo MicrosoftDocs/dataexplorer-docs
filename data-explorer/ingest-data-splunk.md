@@ -9,6 +9,8 @@ ms.date: 09/28/2023
 
 # Ingest data from Splunk to Azure Data Explorer
 
+[!INCLUDE [real-time-analytics-connectors-note](includes/real-time-analytics-connectors-note.md)]
+
 [Splunk Enterprise](https://www.splunk.com/en_us/products/splunk-enterprise.html) is a software platform that allows you to ingest data from many sources simultaneously. The Splunk indexer processes the data and stores it by default in the main index or a specified custom index. Searching in Splunk uses the indexed data for creating metrics, dashboards, and alerts. Azure Data Explorer is a fast and highly scalable data exploration service for log and telemetry data.
 
 In this article, you learn how to the Azure Data Explorer Splunk add-on to send data from Splunk to a table in your cluster. You initially create a table and data mapping, then direct Splunk to send data into the table, and then validate the results.
