@@ -34,33 +34,35 @@ The following tables summarize the capabilities of each item. Select the tab cor
 
 The following table summarizes the available connectors and their capabilities:
 
-| Name                                                                                  | Input   | Output  | Export  | Orchestrate | Query   |
-| ------------------------------------------------------------------------------------- | ------- | ------- | ------- | ----------- | ------- |
-| [Apache Kafka](#apache-kafka)                                                         | :heavy_check_mark: |         |         |             |         |
-| [Apache Flink](#apache-flink)                                                         | :heavy_check_mark: |         |         |             |         |
-| [Apache Log4J 2](#apache-log4j-2)                                                     | :heavy_check_mark: |         |         |             |         |
-| [Apache Spark](#apache-spark)                                                         | :heavy_check_mark: |         | :heavy_check_mark: |             | :heavy_check_mark: |
-| [Apache Spark for Azure Synapse Analytics](#apache-spark-for-azure-synapse-analytics) | :heavy_check_mark: |         | :heavy_check_mark: |             | :heavy_check_mark: |
-| [Azure Cosmos DB](#azure-cosmos-db)                                                   | :heavy_check_mark: |         |         |             |         |
-| [Azure Data Factory](#azure-data-factory)                                             | :heavy_check_mark: |         |         | :heavy_check_mark:     |         |
-| [Azure Event Grid](#azure-event-grid)                                                 |         |         |         | :heavy_check_mark:     |         |
-| [Azure Event Hubs](#azure-event-hubs)                                                 | :heavy_check_mark: |         |         |             |         |
-| [Azure Functions](#azure-functions)                                                   | :heavy_check_mark: | :heavy_check_mark: |         |             | :heavy_check_mark: |
-| [Azure IoT Hubs](#azure-iot-hubs)                                                     | :heavy_check_mark: |         |         |             |         |
-| [Azure Stream Analytics](#azure-stream-analytics)                                     | :heavy_check_mark: |         |         |             |         |
-| [Fluent Bit](#fluent-bit)                                                             |         |         |         |             |         |
-| [Logic Apps](#logic-apps)                                                             |         |         |         |             | :heavy_check_mark: |
-| [Logstash](#logstash)                                                                 | :heavy_check_mark: |         |         |             |         |
-| [Matlab](#matlab)                                                                     |         |         |         |             | :heavy_check_mark: |
-| [NLog](#nlog)                                                                         |         |         |         |             | :heavy_check_mark: |
-| [Open Telemetry](#open-telemetry)                                                     | :heavy_check_mark: |         |         |             |         |
-| [Power Apps](#power-apps)                                                             | :heavy_check_mark: | :heavy_check_mark: |         |             | :heavy_check_mark: |
-| [Power Automate](#power-automate)                                                     | :heavy_check_mark: | :heavy_check_mark: |         | :heavy_check_mark:     | :heavy_check_mark: |
-| [Serilog](#serilog)                                                                   | :heavy_check_mark: |         |         |             |         |
-| [Splunk](#splunk)                                                                     |         |         |         |             |         |
-| [Telegraf](#telegraf)                                                                 | :heavy_check_mark: |         |         |             |         |
-| [ODBC](#odbc)                                                                         |         |         |         |             | :heavy_check_mark: |
-| [JDBC](#jdbc)                                                                         |         |         |         |             | :heavy_check_mark: |
+| Name                                                                                  | Input              | Output             | Export             | Orchestrate        | Query              |
+| ------------------------------------------------------------------------------------- | ------------------ | ------------------ | ------------------ | ------------------ | ------------------ |
+| [Apache Kafka](#apache-kafka)                                                         | :heavy_check_mark: |                    |                    |                    |                    |
+| [Apache Flink](#apache-flink)                                                         | :heavy_check_mark: |                    |                    |                    |                    |
+| [Apache Log4J 2](#apache-log4j-2)                                                     | :heavy_check_mark: |                    |                    |                    |                    |
+| [Apache Spark](#apache-spark)                                                         | :heavy_check_mark: |                    | :heavy_check_mark: |                    | :heavy_check_mark: |
+| [Apache Spark for Azure Synapse Analytics](#apache-spark-for-azure-synapse-analytics) | :heavy_check_mark: |                    | :heavy_check_mark: |                    | :heavy_check_mark: |
+| [Azure Cosmos DB](#azure-cosmos-db)                                                   | :heavy_check_mark: |                    |                    |                    |                    |
+| [Azure Data Factory](#azure-data-factory)                                             | :heavy_check_mark: |                    |                    | :heavy_check_mark: |                    |
+| [Azure Event Grid](#azure-event-grid)                                                 |                    |                    |                    | :heavy_check_mark: |                    |
+| [Azure Event Hubs](#azure-event-hubs)                                                 | :heavy_check_mark: |                    |                    |                    |                    |
+| [Azure Functions](#azure-functions)                                                   | :heavy_check_mark: | :heavy_check_mark: |                    |                    | :heavy_check_mark: |
+| [Azure IoT Hubs](#azure-iot-hubs)                                                     | :heavy_check_mark: |                    |                    |                    |                    |
+| [Azure Stream Analytics](#azure-stream-analytics)                                     | :heavy_check_mark: |                    |                    |                    |                    |
+| [Fluent Bit](#fluent-bit)                                                             |                    |                    |                    |                    |                    |
+| [JDBC](#jdbc)                                                                         |                    |                    |                    |                    | :heavy_check_mark: |
+| [Logic Apps](#logic-apps)                                                             |                    |                    |                    |                    | :heavy_check_mark: |
+| [Logstash](#logstash)                                                                 | :heavy_check_mark: |                    |                    |                    |                    |
+| [Matlab](#matlab)                                                                     |                    |                    |                    |                    | :heavy_check_mark: |
+| [NLog](#nlog)                                                                         |                    |                    |                    |                    | :heavy_check_mark: |
+| [ODBC](#odbc)                                                                         |                    |                    |                    |                    | :heavy_check_mark: |
+| [Open Telemetry](#open-telemetry)                                                     | :heavy_check_mark: |                    |                    |                    |                    |
+| [Power Apps](#power-apps)                                                             | :heavy_check_mark: | :heavy_check_mark: |                    |                    | :heavy_check_mark: |
+| [Power Automate](#power-automate)                                                     | :heavy_check_mark: | :heavy_check_mark: |                    | :heavy_check_mark: | :heavy_check_mark: |
+| [Serilog](#serilog)                                                                   | :heavy_check_mark: |                    |                    |                    |                    |
+| [Splunk](#splunk)                                                                     | :heavy_check_mark: |                    |                    |                    |                    |
+| [Splunk Universal Forwarder](#splunk-universal-forwarder)                             | :heavy_check_mark: |                    |                    |                    |                    |
+| [Telegraf](#telegraf)                                                                 | :heavy_check_mark: |                    |                    |                    |                    |
+
 
 ### [Tools and integrations](#tab/integrations)
 
@@ -366,11 +368,22 @@ Serilog is a popular logging framework for .NET applications. Serilog allows dev
 * **Ingestion type supported:** Batching
 * **Use cases:** Logs
 * **Underlying SDK:** [Python](kusto/api/python/kusto-python-client-library.md)
-* **Repository:** Microsoft Azure - https://github.com/Azure/azure-kusto-splunk
+* **Repository:** 
 * **Documentation:** [Ingest data from Splunk](ingest-data-splunk.md)
-* **Splunk Base:** [Microsoft Azure Data Explorer Add-On for Splunk](https://splunkbase.splunk.com/app/6979)
-* **Community Blog:** [Getting started with Microsoft Azure Data Explorer Add-On for Splunk](https://techcommunity.microsoft.com/t5/azure-data-explorer-blog/getting-started-with-microsoft-azure-data-explorer-add-on-for/ba-p/3917176)
+* **Splunk Base:**
+* **Community Blog:** 
 
+### Splunk Universal Forwarder
+
+* **Functionality:** Ingestion
+
+* **Ingestion type supported:** Batching
+* **Use cases:** Logs
+* **Underlying SDK:** [Python](kusto/api/python/kusto-python-client-library.md)
+* **Repository:** Microsoft Azure - https://github.com/Azure/azure-kusto-splunk
+* **Documentation:** [Ingest data from Splunk Universal Forwarder to Azure Data Explorer](ingest-data-splunk-uf.md)
+* **Splunk Base:** [Microsoft Azure Data Explorer Add-On for Splunk](https://splunkbase.splunk.com/app/6979)
+* **Community Blog:** 
 ### Telegraf
 
 Telegraf is an open source, lightweight, minimal memory foot print agent for collecting, processing and writing telemetry data including logs, metrics, and IoT data. Telegraf supports hundreds of input and output plugins. It's widely used and well supported by the open source community. The output plugin serves as the connector from Telegraf and supports ingestion of data from many types of input plugins into your database.
