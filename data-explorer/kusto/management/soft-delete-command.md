@@ -32,6 +32,12 @@ To delete individual records with a system guarantee that the storage artifacts 
 > * The predicate can only use the following operators: `extend`, `where` and `project`.
 > * The predicate can't reference other tables, nor use `externaldata`.
 
+## Supported properties
+
+|Name|Type|Description|
+|--|--|--|
+|`whatif`|bool|If `true`, returns the number of records that will be deleted in every shard, without actually deleting any records. The default is `false`.
+
 ## Returns
 
 The output of the command contains information about which extents were replaced.
@@ -43,14 +49,6 @@ To delete all the records that contain data of a given user:
 ```kusto
 .delete table MyTable records <| MyTable | where UserId == 'X'
 ```
-
-> [!NOTE]
->
-> To determine the number of records that would be deleted by the operation without actually deleting them, check the value in the RecordsMatchPredicate column when running the command in `whatif` mode:
->
-> ```kusto
-> .delete table MyTable records with (whatif=true) <| MyTable | where UserId == 'X'
-> ```
 
 ## .delete materialized-view records - soft delete command
 
@@ -75,6 +73,12 @@ When soft delete is executed on materialized views, the same concepts and limita
 > Soft delete might fail in case of conflicts with the [materialization process](materialized-views/materialized-view-overview.md#how-materialized-views-work) running in the background. Retrying the operation can help in this case. To avoid conflicts, you can [disable the materialized view](materialized-views/materialized-view-enable-disable.md) before executing soft delete, and re-enable it when the operation completes.
 > Usage of function [materialized_view()](../query/materialized-view-function.md) is not allowed in *Predicate*.
 
+## Supported properties
+
+|Name|Type|Description|
+|--|--|--|
+|`whatif`|bool|If `true`, returns the number of records that will be deleted in every shard, without actually deleting any records. The default is `false`.
+
 ## Example - materialized views
 
 To delete all the materialized view records that contain data of a given user:
@@ -82,14 +86,6 @@ To delete all the materialized view records that contain data of a given user:
 ```kusto
 .delete materialized-view MyMaterializedView records <| MyMaterializedView | where UserId == 'X'
 ```
-
-> [!NOTE]
->
-> To determine the number of records that would be deleted by the operation without actually deleting them, check the value in the RecordsMatchPredicate column while running the command in `whatif` mode:
->
-> ```kusto
-> .delete materialized-view MyMaterializedView records with (whatif=true) <| MyMaterializedView | where UserId == 'X'
-> ```
 
 ## Related content
 
