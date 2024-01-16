@@ -88,4 +88,4 @@ After updating the `trustedExternalTenants` property, you can give access to pri
 
 ## Limitations
 
-The configuration of this feature applies solely to Microsoft Entra identities (Users, Applications) trying to connect to Azure Data Explorer. It has no impact on cross Microsoft Entra ingestion.
+The configuration of this feature applies solely to Microsoft Entra identities (Users, Applications, Groups) trying to connect to Azure Data Explorer. It has no impact on cross Microsoft Entra ingestion.
