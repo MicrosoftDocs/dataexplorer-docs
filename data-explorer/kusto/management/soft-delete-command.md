@@ -73,7 +73,7 @@ When soft delete is executed on materialized views, the same concepts and limita
 > Soft delete might fail in case of conflicts with the [materialization process](materialized-views/materialized-view-overview.md#how-materialized-views-work) running in the background. Retrying the operation can help in this case. To avoid conflicts, you can [disable the materialized view](materialized-views/materialized-view-enable-disable.md) before executing soft delete, and re-enable it when the operation completes.
 > Usage of function [materialized_view()](../query/materialized-view-function.md) is not allowed in *Predicate*.
 
-## Supported properties
+## Supported properties - materialized views
 
 |Name|Type|Description|
 |--|--|--|
