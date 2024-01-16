@@ -3,7 +3,7 @@ title:  percentilew(), percentilesw()
 description: Learn how to use the percentilew(), percentilesw() functions to calculate weighted percentiles in Azure Data Explorer.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 03/15/2023
+ms.date: 01/09/2024
 ---
 # percentilew(), percentilesw() (aggregation function)
 
@@ -28,9 +28,9 @@ To calculate unweighted percentiles, see [percentiles()](percentiles-aggregation
 | Name | Type | Required | Description |
 |--|--|--|--|
 |*expr* | string | &check; | The expression to use for aggregation calculation.|
+|*weightExpr*|long|&check;|The weight to give each value.|
 |*percentile*| int or long | &check;| A constant that specifies the percentile.|
 |*percentiles* | int or long | &check; | One or more comma-separated percentiles.|
-|*weightExpr*|long|&check;|The weight to give each value.|
 
 ## Returns
 
