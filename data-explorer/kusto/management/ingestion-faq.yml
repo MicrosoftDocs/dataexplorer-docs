@@ -16,7 +16,7 @@ sections:
         answer: |
           Queued ingestion is optimized for high ingestion throughput, and is the preferred and most performant type of ingestion. 
           In contrast, streaming ingestion is optimized for low ingestion latency. 
-          Learn more about [queued versus streaming ingestion](../../ingest-data-overview.md#queued-vs-streaming-ingestion).
+          Learn more about [queued versus streaming ingestion](../../ingest-data-overview.md#continuous-data-ingestion).
       - question: Do I need to change the batching policy?
         answer: |
           If default settings for the [ingestion batching policy](batching-policy.md) do not suit your needs, you can try lowering the batching policy `time`. 
@@ -51,7 +51,7 @@ sections:
         answer: |
           The full ingestion process can be monitored using ingestion [metrics](../../using-metrics.md) and [diagnostic logs](../../using-diagnostic-logs.md). 
           Ingestion failures can be monitored using the `IngestionResult` metric or the `FailedIngestion` diagnostic log.
-          The [`.show ingestion failures`](ingestion-failures.md) command shows ingestion failures associated with the [data ingestion management commands](../../ingest-data-overview.md#ingest-management-commands), and is not recommended for monitoring errors. 
+          The [`.show ingestion failures`](ingestion-failures.md) command shows ingestion failures associated with the data ingestion management commands, and is not recommended for monitoring errors. 
           The [`.dup-next-failed-ingest`](dup-next-failed-ingest.md) command provides information on the next failed ingestion by uploading ingestion files and metadata to a storage container. 
           This can be useful for checking an ingestion flow, though is not advised for steady monitoring.
       - question: What can I do if I find many retry errors?
