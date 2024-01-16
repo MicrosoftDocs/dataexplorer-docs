@@ -138,7 +138,7 @@ items:
       - name: Get data
         items:
           - name: Data ingestion overview
-            displayName: pipelines, connectors, plugins, Python, .NET, Java, Node, REST
+            displayName: ingest, pipelines, connectors, plugins, Python, .NET, Java, Node, REST
             href: ingest-data-overview.md
           - name: Get data in the web UI
             items:
