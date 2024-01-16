@@ -36,8 +36,10 @@ The following tables summarize the available query connectors, tools, and integr
 | [Apache Spark](integrate-overview.md#apache-spark)                                                         | [Open source](https://github.com/Azure/azure-kusto-spark/)     | Telemetry             |
 | [Apache Spark for Azure Synapse Analytics](integrate-overview.md#apache-spark-for-azure-synapse-analytics) | First party                                                    | Telemetry             |
 | [Azure Functions](integrate-overview.md#azure-functions)                                                   | First party                                                    | Workflow integrations |
+| [JDBC](integrate-overview.md#jdbc)                                                                         |                                                                |                       |
 | [Logstash](integrate-overview.md#logstash)                                                                 | [Open source](https://github.com/Azure/logstash-output-kusto/) | Logs                  |
-| [Microsoft Power Apps](integrate-overview.md#power-apps)                                                           | First party                                                    | Data orchestration    |
+| [Microsoft Power Apps](integrate-overview.md#power-apps)                                                   | First party                                                    | Data orchestration    |
+| [ODBC](integrate-overview.md#odbc)                                                                         |                                                                |                       |
 | [Power Automate](integrate-overview.md#power-automate)                                                     | First party                                                    | Data orchestration    |
 
 ## [Tools and integrations](#tab/integrations)
