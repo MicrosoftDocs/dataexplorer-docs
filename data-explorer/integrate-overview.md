@@ -1,13 +1,13 @@
 ---
 title: Overview of connectors, tools, and integrations
-description: Learn about the available data connectors, toold, and integrations, and their capabilities.
+description: Learn about the available data connectors, tools, and integrations, and their capabilities.
 ms.reviewer: aksdi
 ms.topic: conceptual
 ms.date: 01/16/2024
 ---
 # Connectors, tools, and integrations overview
 
-There are many data connectors, tools, and integrations that work seamlessly with the platform for ingestion, orchestration, output, and data query. This document is a high level overview about the availale connectors, tools, and integrations. Detailed information is provided for each connector, as well as links to their full documentation.
+There are many data connectors, tools, and integrations that work seamlessly with the platform for ingestion, orchestration, output, and data query. This document is a high level overview about the available connectors, tools, and integrations. Detailed information is provided for each connector, and links to their full documentation.
 
 For overview pages on a specific type of connector, select one of the following buttons.
 
@@ -382,7 +382,7 @@ Telegraf is an open source, lightweight, minimal memory foot print agent for col
 
 
 
-* **Functionality:** Ingestion
+* **Functionality:** 
 
 * **Ingestion type supported:**
 * **Use cases:** 
@@ -393,10 +393,35 @@ Telegraf is an open source, lightweight, minimal memory foot print agent for col
 
 ### Azure CLI
 
+
+* **Functionality:** 
+
+* **Ingestion type supported:**
+* **Use cases:** 
+* **Documentation:**
+* **Community Blog:** 
+
+
 ### Azure Synapse Analytics
 
 
+* **Functionality:** 
+
+* **Ingestion type supported:**
+* **Use cases:** 
+* **Documentation:**
+* **Community Blog:** 
+
+
 ### Azure Data Lake
+
+
+* **Functionality:** 
+
+* **Ingestion type supported:**
+* **Use cases:** 
+* **Documentation:**
+* **Community Blog:** 
 
 [Azure Data Lake](data-lake-query-data.md)
 
@@ -404,54 +429,141 @@ Telegraf is an open source, lightweight, minimal memory foot print agent for col
 
 Azure Data Studio: [Kusto extension overview](/sql/azure-data-studio/extensions/kusto-extension?context=%252fazure%252fdata-explorer%252fcontext%252fcontext), [use Kusto](/sql/azure-data-studio/notebooks/notebooks-kusto-kernel?context=%252fazure%252fdata-explorer%252fcontext%252fcontext), and [use Kqlmagic](/sql/azure-data-studio/notebooks-kqlmagic?context=%252fazure%252fdata-explorer%252fcontext%252fcontext)
 
+
+* **Functionality:** 
+
+* **Ingestion type supported:**
+* **Use cases:** 
+* **Documentation:**
+* **Community Blog:** 
+
+
 ### Azure Data Share
 
 [Azure Data Share](data-share.md)
+
+
+* **Functionality:** 
+
+* **Ingestion type supported:**
+* **Use cases:** 
+* **Documentation:**
+* **Community Blog:** 
 
 ### Azure Monitor
 
 [Azure Monitor](query-monitor-data.md)
 
 
+* **Functionality:** 
+
+* **Ingestion type supported:**
+* **Use cases:** 
+* **Documentation:**
+* **Community Blog:** 
+
 ### Azure Notebooks
 
 [Azure Notebooks](/sql/azure-data-studio/notebooks/notebooks-kqlmagic?context=%252fazure%252fdata-explorer%252fcontext%252fcontext%253fcontext%253d%252fazure%252fdata-explorer%252fcontext%252fcontext)
+
+* **Functionality:** 
+
+* **Ingestion type supported:**
+* **Use cases:** 
+* **Documentation:**
+* **Community Blog:** 
 
 ### Azure Pipelines
 
 [Azure Pipelines](devops.md)
 
+* **Functionality:** 
+
+* **Ingestion type supported:**
+* **Use cases:** 
+* **Documentation:**
+* **Community Blog:** 
+
 ### DeltaKusto
 
 [Delta Kusto](https://github.com/microsoft/delta-kusto)
+
+* **Functionality:** 
+
+* **Ingestion type supported:**
+* **Use cases:** 
+* **Documentation:**
+* **Community Blog:** 
 
 ### Jupyter Notebooks
 
 [Jupyter Notebooks](kqlmagic.md)
 
 
+* **Functionality:** 
+
+* **Ingestion type supported:**
+* **Use cases:** 
+* **Documentation:**
+* **Community Blog:** 
+
 ### KQL Parser
 
 [Kusto Query Language parser](https://github.com/microsoft/Kusto-Query-Language) - A .NET core repository for the Kusto Query Language parser and semantic tree.
 
 
+* **Functionality:** 
+
+* **Ingestion type supported:**
+* **Use cases:** 
+* **Documentation:**
+* **Community Blog:** 
+
 ### Kusto.Explorer  
 
 [installation and user interface](kusto/tools/kusto-explorer.md), [using Kusto.Explorer](kusto/tools/kusto-explorer-using.md)
-  * Additional topics include [options](kusto/tools/kusto-explorer-options.md), [troubleshooting](kusto/tools/kusto-explorer-troubleshooting.md), [keyboard shortcuts](kusto/tools/kusto-explorer-shortcuts.md), [code features](kusto/tools/kusto-explorer-code-features.md)
+  * Additional articles include [options](kusto/tools/kusto-explorer-options.md), [troubleshooting](kusto/tools/kusto-explorer-troubleshooting.md), [keyboard shortcuts](kusto/tools/kusto-explorer-shortcuts.md), [code features](kusto/tools/kusto-explorer-code-features.md)
 
+
+* **Functionality:** 
+
+* **Ingestion type supported:**
+* **Use cases:** 
+* **Documentation:**
+* **Community Blog:** 
 
 ### Kusto CLI
 
 [Kusto CLI](kusto/tools/kusto-cli.md)
 
 
+* **Functionality:** 
+
+* **Ingestion type supported:**
+* **Use cases:** 
+* **Documentation:**
+* **Community Blog:** 
+
 ### Lightingest
 
 [LightIngest](https://github.com/Azure/Kusto-Lightingest/blob/main/README.md): a command-line utility for ad-hoc data ingestion into Azure Data Explorer. For more information, see [Use LightIngest to ingest data](lightingest.md)                            
 
+* **Functionality:** 
+
+* **Ingestion type supported:**
+* **Use cases:** 
+* **Documentation:**
+* **Community Blog:** 
+
 ### Microsoft Purview
 
+
+* **Functionality:** 
+
+* **Ingestion type supported:**
+* **Use cases:** 
+* **Documentation:**
+* **Community Blog:** 
 
 ### Monaco editor (plugin/embed)
 
@@ -459,16 +571,44 @@ Azure Data Studio: [Kusto extension overview](/sql/azure-data-studio/extensions/
   * [Kusto Query Language plugin](https://github.com/Azure/monaco-kusto) - Access the Kusto Query Language editor plugin.
   * [Embedding the Azure Data Explorer web UI](./kusto/api/monaco/host-web-ux-in-iframe.md) - The Azure Data Explorer web UI can be embedded in an iframe and hosted in third-party websites.
 
+* **Functionality:** 
+
+* **Ingestion type supported:**
+* **Use cases:** 
+* **Documentation:**
+* **Community Blog:** 
+
 
 ### PowerShell
 
 
+* **Functionality:** 
+
+* **Ingestion type supported:**
+* **Use cases:** 
+* **Documentation:**
+* **Community Blog:** 
+
 ### Real-Time Analytics in Microsoft Fabric
 
+
+* **Functionality:** 
+
+* **Ingestion type supported:**
+* **Use cases:** 
+* **Documentation:**
+* **Community Blog:** 
 
 ### SyncKusto
 
 [Sync Kusto](kusto/tools/synckusto.md)
+
+* **Functionality:** 
+
+* **Ingestion type supported:**
+* **Use cases:** 
+* **Documentation:**
+* **Community Blog:** 
 
 
 ### Web UI
@@ -478,6 +618,13 @@ or [from a local file to an existing table](/azure/data-explorer/ingest-from-loc
 
 [Azure Data Explorer web UI](web-query-data.md)
 
+
+* **Functionality:** 
+
+* **Ingestion type supported:**
+* **Use cases:** 
+* **Documentation:**
+* **Community Blog:** 
 ---
 
 ## Related content
