@@ -35,7 +35,7 @@ The following tables summarize the capabilities of each item. Select the tab cor
 The following table summarizes the available connectors and their capabilities:
 
 | Name                                                                                  | Input   | Output  | Export  | Orchestrate | Query   |
-|---------------------------------------------------------------------------------------|---------|---------|---------|-------------|---------|
+| ------------------------------------------------------------------------------------- | ------- | ------- | ------- | ----------- | ------- |
 | [Apache Kafka](#apache-kafka)                                                         | &check; |         |         |             |         |
 | [Apache Flink](#apache-flink)                                                         | &check; |         |         |             |         |
 | [Apache Log4J 2](#apache-log4j-2)                                                     | &check; |         |         |             |         |
@@ -49,46 +49,46 @@ The following table summarizes the available connectors and their capabilities:
 | [Azure IoT Hubs](#azure-iot-hubs)                                                     | &check; |         |         |             |         |
 | [Azure Stream Analytics](#azure-stream-analytics)                                     | &check; |         |         |             |         |
 | [Fluent Bit](#fluent-bit)                                                             |         |         |         |             |         |
-| Logic Apps                                                                            |         |         |         |             |         |
+| [Logic Apps](#logic-apps)                                                             |         |         |         |             |         |
 | [Logstash](#logstash)                                                                 | &check; |         |         |             |         |
-| Matlab                                                                                |         |         |         |             | &check; |
+| [Matlab](#matlab)                                                                     |         |         |         |             | &check; |
 | [NLog](#nlog)                                                                         |         |         |         |             | &check; |
 | [Open Telemetry](#open-telemetry)                                                     | &check; |         |         |             |         |
-| Power Apps                                                                            | &check; | &check; |         |             | &check; |
+| [Power Apps](#power-apps)                                                             | &check; | &check; |         |             | &check; |
 | [Power Automate](#power-automate)                                                     | &check; | &check; |         | &check;     | &check; |
 | [Serilog](#serilog)                                                                   | &check; |         |         |             |         |
 | [Splunk](#splunk)                                                                     |         |         |         |             |         |
 | [Telegraf](#telegraf)                                                                 | &check; |         |         |             |         |
-| ODBC                                                                                  |         |         |         |             | &check; |
-| JDBC                                                                                  |         |         |         |             | &check; |
+| [ODBC](#odbc)                                                                         |         |         |         |             | &check; |
+| [JDBC](#jdbc)                                                                         |         |         |         |             | &check; |
 
 ### [Tools and integrations](#tab/integrations)
 
 The following table summarizes the available tools and integrations and their capabilities:
 
-| Name                                    | Ingest  | Query   | Share   | Source control | Secure  | Administrate | Visualize |
-|-----------------------------------------|---------|---------|---------|----------------|---------|--------------|-----------|
-| Azure CLI                               |         |         |         |                |         | &check;      |           |
-| Azure Synapse Analytics                 | &check; | &check; |         |                |         |              | &check;   |
-| Azure Data Lake                         | &check; |         |         |                |         |              |           |
-| Azure Data Studio                       |         | &check; |         |                |         |              |           |
-| Azure Data Share                        |         |         | &check; |                |         |              |           |
-| Azure Monitor                           | &check; | &check; |         |                |         |              | &check;   |
-| Azure Notebooks                         |         | &check; |         |                |         |              | &check;   |
-| Azure Pipelines                         |         |         |         | &check;        |         |              |           |
-| DeltaKusto                              |         |         |         | &check;        |         |              |           |
-| Jupyter Notebooks                       |         | &check; |         |                |         |              | &check;   |
-| KQL Parser                              |         | &check; |         |                |         |              |           |
-| Kusto.Explorer                          |         | &check; |         |                |         |              | &check;   |
-| Kusto CLI                               | &check; | &check; |         |                |         | &check;      |           |
-| Lightingest                             | &check; |         |         |                |         |              |           |
-| Microsoft Purview                       |         |         |         |                | &check; |              |           |
-| Monaco editor (plugin/embed)            |         | &check; |         |                |         |              |           |
-| PowerShell                              |         |         |         |                |         | &check;      |           |
-| Real-Time Analytics in Microsoft Fabric | &check; | &check; |         |                |         |              | &check;   |
-| SyncKusto                               |         |         |         | &check;        |         |              |           |
-| Web UI get data                         | &check; |         |         |                |         |              |           |
-| Web UI query editor                     |         | &check; |         |                |         |              | &check;   |
+| Name                                                                                | Ingest  | Query   | Share   | Source control | Secure  | Administrate | Visualize |
+| ----------------------------------------------------------------------------------- | ------- | ------- | ------- | -------------- | ------- | ------------ | --------- |
+| [Azure CLI](#azure-cli)                                                             |         |         |         |                |         | &check;      |           |
+| [Azure Synapse Analytics](#azure-synapse-analytics)                                 | &check; | &check; |         |                |         |              | &check;   |
+| [Azure Data Lake](#azure-data-lake)                                                 | &check; |         |         |                |         |              |           |
+| [Azure Data Studio](#azure-data-studio)                                             |         | &check; |         |                |         |              |           |
+| [Azure Data Share](#azure-data-share)                                               |         |         | &check; |                |         |              |           |
+| [Azure Monitor](#azure-monitor)                                                     | &check; | &check; |         |                |         |              | &check;   |
+| [Azure Notebooks](#azure-notebooks)                                                 |         | &check; |         |                |         |              | &check;   |
+| [Azure Pipelines](#azure-pipelines)                                                 |         |         |         | &check;        |         |              |           |
+| [DeltaKusto](#deltakusto)                                                           |         |         |         | &check;        |         |              |           |
+| [Jupyter Notebooks](#jupyter-notebooks)                                             |         | &check; |         |                |         |              | &check;   |
+| [KQL Parser](#kql-parser)                                                           |         | &check; |         |                |         |              |           |
+| [Kusto.Explorer](#kustoexplorer)                                                    |         | &check; |         |                |         |              | &check;   |
+| [Kusto CLI](#kusto-cli)                                                             | &check; | &check; |         |                |         | &check;      |           |
+| [Lightingest](#lightingest)                                                         | &check; |         |         |                |         |              |           |
+| [Microsoft Purview](#microsoft-purview)                                             |         |         |         |                | &check; |              |           |
+| [Monaco editor](#monaco-editor-pluginembed)                                         |         | &check; |         |                |         |              |           |
+| [PowerShell](#powershell)                                                           |         |         |         |                |         | &check;      |           |
+| [Real-Time Analytics in Microsoft Fabric](#real-time-analytics-in-microsoft-fabric) | &check; | &check; |         |                |         |              | &check;   |
+| [SyncKusto](#synckusto)                                                             |         |         |         | &check;        |         |              |           |
+| [Web UI](#web-ui)                                                                   | &check; | &check; |         |                |         |              | &check;   |
+
 
 ---
 
@@ -239,6 +239,10 @@ Event Grid ingestion is a pipeline that listens to Azure storage, and updates yo
 * **Repository:** [fluent-bit](https://github.com/fluent/fluent-bit)
 * **Documentation:** [Ingest data with Fluent Bit into Azure Data Explorer](fluent-bit.md)
 
+### JDBC
+
+### Logic Apps
+
 ### Logstash
 
 [The Logstash plugin](ingest-data-logstash.md) enables you to process events from Logstash into an Azure Data Explorer database for later analysis.
@@ -251,6 +255,9 @@ Event Grid ingestion is a pipeline that listens to Azure storage, and updates yo
 * **Repository:** Microsoft Azure - https://github.com/Azure/logstash-output-kusto/
 * **Documentation:** [Ingest data from Logstash](ingest-data-logstash.md)
 * **Community Blog:** [How to migrate from Elasticsearch to Azure Data Explorer](https://techcommunity.microsoft.com/t5/azure-data-explorer-blog/how-to-migrate-from-elasticsearch-to-azure-data-explorer/ba-p/1621539/)
+
+### Matlab
+
 
 ### NLog
 
@@ -265,6 +272,8 @@ NLog is a flexible and free logging platform for various .NET platforms, includi
 * **Documentation:** [Ingest data with the NLog sink](nlog-sink.md)
 * **Community Blog:** [Getting started with NLog sink and Azure Data Explorer](https://aka.ms/adx-docs-nlog-blog)
 
+### ODBC
+
 ### Open Telemetry
 
 [The OpenTelemetry connector](open-telemetry-connector.md) supports ingestion of data from many receivers into your database. It works as a bridge to ingest data generated by Open telemetry to your database by customizing the format of the exported data according to your needs.
@@ -277,6 +286,9 @@ NLog is a flexible and free logging platform for various .NET platforms, includi
 * **Repository:** Open Telemetry - https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/exporter/azuredataexplorerexporter
 * **Documentation:** [Ingest data from OpenTelemetry](open-telemetry-connector.md)
 * **Community Blog:** [Getting started with Open Telemetry and Azure Data Explorer](https://techcommunity.microsoft.com/t5/azure-data-explorer-blog/getting-started-with-open-telemetry-and-azure-data-explorer/ba-p/3675708)
+
+### Power Apps
+
 
 ### Power Automate
 
@@ -345,7 +357,6 @@ Telegraf is an open source, lightweight, minimal memory foot print agent for col
 
 ### Azure Synapse Analytics
 
-[Azure Synapse Apache Spark](/azure/synapse-analytics/quickstart-connect-azure-data-explorer?context=%252fazure%252fdata-explorer%252fcontext%252fcontext)
 
 ### Azure Data Lake
 
@@ -422,12 +433,10 @@ Azure Data Studio: [Kusto extension overview](/sql/azure-data-studio/extensions/
 [Sync Kusto](kusto/tools/synckusto.md)
 
 
-### Web UI get data
+### Web UI
 
 Ingestion wizard: [overview](./ingest-data-wizard.md) and ingest data [from a container to a new table](/azure/data-explorer/ingest-from-container)
 or [from a local file to an existing table](/azure/data-explorer/ingest-from-local-file)
-
-### Web UI query editor
 
 [Azure Data Explorer web UI](web-query-data.md)
 

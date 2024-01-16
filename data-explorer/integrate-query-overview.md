@@ -31,26 +31,25 @@ The following tables summarize the available query connectors, tools, and integr
 
 ## [Connectors](#tab/connectors)
 
-| Name                                                                                                               | Type                                                           | Use cases             |
-| -------------------------------------------------------------------------------------------------------------------| -------------------------------------------------------------- | --------------------- |
-| [Apache Spark](integrate-overview.md#apache-spark)                                                        | [Open source](https://github.com/Azure/azure-kusto-spark/)     | Telemetry             |
-| [Apache Spark for Azure Synapse Analytics](integrate-overview.md#apache-spark-for-azure-synapse-analytics)| First party                                                    | Telemetry             |
-| [Azure Functions](integrate-overview.md#azure-functions)                                                  | First party                                                    | Workflow integrations |
-| [Logstash](integrate-overview.md#logstash)                                                                | [Open source](https://github.com/Azure/logstash-output-kusto/) | Logs                  |
-| [Power Automate](integrate-overview.md#power-automate)                                                    | First party                                                    | Data orchestration    |
+| Name                                                                                                       | Type                                                           | Use cases             |
+| ---------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------- | --------------------- |
+| [Apache Spark](integrate-overview.md#apache-spark)                                                         | [Open source](https://github.com/Azure/azure-kusto-spark/)     | Telemetry             |
+| [Apache Spark for Azure Synapse Analytics](integrate-overview.md#apache-spark-for-azure-synapse-analytics) | First party                                                    | Telemetry             |
+| [Azure Functions](integrate-overview.md#azure-functions)                                                   | First party                                                    | Workflow integrations |
+| [Logstash](integrate-overview.md#logstash)                                                                 | [Open source](https://github.com/Azure/logstash-output-kusto/) | Logs                  |
+| [Microsoft Power Apps](integrate-overview.md#power-apps)                                                           | First party                                                    | Data orchestration    |
+| [Power Automate](integrate-overview.md#power-automate)                                                     | First party                                                    | Data orchestration    |
 
 ## [Tools and integrations](#tab/integrations)
 
-| Name                                                                                                                                                       | Type              | Use cases                                                                                            |
-| -------------------------------------------------------------------------------------------------- | ----------------- | ------------------------------------------------------------------------------------------------- |
-| [Kusto Query Language parser](https://github.com/microsoft/Kusto-Query-Language)                   | Open source       | A .NET core repository for the Kusto Query Language parser and semantic tree.                                                                             |
-| [Kusto Query Language Monaco editor](./kusto/api/monaco/monaco-kusto.md)                           | Open source       | [Kusto Query Language plugin](https://github.com/Azure/monaco-kusto)  [Embed the Azure Data Explorer web UI](./kusto/api/monaco/host-web-ux-in-iframe.md) |
-| [Azure Monitor](query-monitor-data.md)                                                             | Query integration |                                                                                                   |
-| [Azure Data Lake](data-lake-query-data.md)                                                         | Query integration |                                                                                                   |
-| [Azure Synapse Apache Spark](/azure/synapse-analytics/quickstart-connect-azure-data-explorer?coxt) | Query integration |                                                                                                   |
-| [Apache Spark](spark-connector.md)                                                                 | Query integration |                                                                                                   |
-| [Microsoft Power Apps](power-apps-connector.md)                                                    | Query integration |                                                                                                   |
-| [Azure Data Studio](/sql/azure-data-studio/extensions/kusto-extension?context=%252fazure%252fda    | Query integration |                                                                                                   |
+| Name                                                                                  | Type              | Use cases                                                                                                                                                 |
+| ------------------------------------------------------------------------------------- | ----------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| [Kusto Query Language parser](integrate-overview.md#kql-parser)                       | Open source       | A .NET core repository for the Kusto Query Language parser and semantic tree.                                                                             |
+| [Kusto Query Language Monaco editor](integrate-overview.md#monaco-editor-pluginembed) | Open source       | [Kusto Query Language plugin](https://github.com/Azure/monaco-kusto)  [Embed the Azure Data Explorer web UI](./kusto/api/monaco/host-web-ux-in-iframe.md) |
+| [Azure Monitor](integrate-overview.md#azure-monitor)                                  | Query integration |                                                                                                                                                           |
+| [Azure Data Lake](integrate-overview.md#azure-data-lake)                              | Query integration |                                                                                                                                                           |
+| [Azure Synapse Analytics](integrate-overview.md#azure-synapse-analytics)              | Query integration |                                                                                                                                                           |
+| [Azure Data Studio](integrate-overview.md#azure-data-studio)                          | Query integration |                                                                                                                                                           |
 
 ---
 
