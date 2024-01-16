@@ -1,15 +1,15 @@
 ---
-title: Overview of data connectors, tools, and integrations
+title: Overview of connectors, tools, and integrations
 description: Learn about the available data connectors, toold, and integrations, and their capabilities.
 ms.reviewer: aksdi
 ms.topic: conceptual
-ms.date: 01/14/2024
+ms.date: 01/16/2024
 ---
-# Data connectors, tools, and integrations overview
+# Connectors, tools, and integrations overview
 
-Short blurb about how this is a high level overview.
+There are many data connectors, tools, and integrations that work seamlessly with the platform for ingestion, orchestration, output, and data query. This document is a high level overview about the availale connectors, tools, and integrations. Detailed information is provided for each connector, as well as links to their full documentation.
 
-Use the following filters to see which connectors, tools, and integrations are available for your use case.
+For overview pages on a specific type of connector, select one of the following buttons.
 
 :::row:::
    :::column span="":::
@@ -28,7 +28,7 @@ Use the following filters to see which connectors, tools, and integrations are a
 
 ## Comparison tables
 
-Blurb
+The following tables summarize the capabilities of each item. Select the tab corresponding to connectors or tools and integrations. Each item name is linked to its detailed description, which can also be found [below](#detailed-descriptions).
 
 ### [Connectors](#tab/connectors)
 
@@ -68,8 +68,6 @@ The following table summarizes the available tools and integrations and their ca
 
 | Name                                    | Ingest  | Query   | Share   | Source control | Secure  | Administrate | Visualize |
 |-----------------------------------------|---------|---------|---------|----------------|---------|--------------|-----------|
-| DeltaKusto                              |         |         |         | &check;        |         |              |           |
-| Lightingest                             | &check; |         |         |                |         |              |           |
 | Azure CLI                               |         |         |         |                |         | &check;      |           |
 | Azure Synapse Analytics                 | &check; | &check; |         |                |         |              | &check;   |
 | Azure Data Lake                         | &check; |         |         |                |         |              |           |
@@ -78,10 +76,12 @@ The following table summarizes the available tools and integrations and their ca
 | Azure Monitor                           | &check; | &check; |         |                |         |              | &check;   |
 | Azure Notebooks                         |         | &check; |         |                |         |              | &check;   |
 | Azure Pipelines                         |         |         |         | &check;        |         |              |           |
+| DeltaKusto                              |         |         |         | &check;        |         |              |           |
 | Jupyter Notebooks                       |         | &check; |         |                |         |              | &check;   |
 | KQL Parser                              |         | &check; |         |                |         |              |           |
 | Kusto.Explorer                          |         | &check; |         |                |         |              | &check;   |
 | Kusto CLI                               | &check; | &check; |         |                |         | &check;      |           |
+| Lightingest                             | &check; |         |         |                |         |              |           |
 | Microsoft Purview                       |         |         |         |                | &check; |              |           |
 | Monaco editor (plugin/embed)            |         | &check; |         |                |         |              |           |
 | PowerShell                              |         |         |         |                |         | &check;      |           |
@@ -330,65 +330,106 @@ Telegraf is an open source, lightweight, minimal memory foot print agent for col
 
 ### [Tools and integrations](#tab/integrations)
 
-### Azure Data Explorer ingestion tools
 
-* [LightIngest](https://github.com/Azure/Kusto-Lightingest/blob/main/README.md): a command-line utility for ad-hoc data ingestion into Azure Data Explorer. For more information, see [Use LightIngest to ingest data](lightingest.md).
-* Ingestion wizard: [overview](./ingest-data-wizard.md) and ingest data [from a container to a new table](/azure/data-explorer/ingest-from-container)
-or [from a local file to an existing table](/azure/data-explorer/ingest-from-local-file)
 
-### Query data
+* **Functionality:** Ingestion
 
-#### Azure Data Explorer query tools
+* **Ingestion type supported:**
+* **Use cases:** 
+* **Documentation:**
+* **Community Blog:** 
 
-There are several tools available for running queries in Azure Data Explorer.
 
-* [Azure Data Explorer web UI](web-query-data.md)
-* Kusto.Explorer
-  * [installation and user interface](kusto/tools/kusto-explorer.md), [using Kusto.Explorer](kusto/tools/kusto-explorer-using.md)
+
+### Azure CLI
+
+### Azure Synapse Analytics
+
+[Azure Synapse Apache Spark](/azure/synapse-analytics/quickstart-connect-azure-data-explorer?context=%252fazure%252fdata-explorer%252fcontext%252fcontext)
+
+### Azure Data Lake
+
+[Azure Data Lake](data-lake-query-data.md)
+
+### Azure Data Studio 
+
+Azure Data Studio: [Kusto extension overview](/sql/azure-data-studio/extensions/kusto-extension?context=%252fazure%252fdata-explorer%252fcontext%252fcontext), [use Kusto](/sql/azure-data-studio/notebooks/notebooks-kusto-kernel?context=%252fazure%252fdata-explorer%252fcontext%252fcontext), and [use Kqlmagic](/sql/azure-data-studio/notebooks-kqlmagic?context=%252fazure%252fdata-explorer%252fcontext%252fcontext)
+
+### Azure Data Share
+
+[Azure Data Share](data-share.md)
+
+### Azure Monitor
+
+[Azure Monitor](query-monitor-data.md)
+
+
+### Azure Notebooks
+
+[Azure Notebooks](/sql/azure-data-studio/notebooks/notebooks-kqlmagic?context=%252fazure%252fdata-explorer%252fcontext%252fcontext%253fcontext%253d%252fazure%252fdata-explorer%252fcontext%252fcontext)
+
+### Azure Pipelines
+
+[Azure Pipelines](devops.md)
+
+### DeltaKusto
+
+[Delta Kusto](https://github.com/microsoft/delta-kusto)
+
+### Jupyter Notebooks
+
+[Jupyter Notebooks](kqlmagic.md)
+
+
+### KQL Parser
+
+[Kusto Query Language parser](https://github.com/microsoft/Kusto-Query-Language) - A .NET core repository for the Kusto Query Language parser and semantic tree.
+
+
+### Kusto.Explorer  
+
+[installation and user interface](kusto/tools/kusto-explorer.md), [using Kusto.Explorer](kusto/tools/kusto-explorer-using.md)
   * Additional topics include [options](kusto/tools/kusto-explorer-options.md), [troubleshooting](kusto/tools/kusto-explorer-troubleshooting.md), [keyboard shortcuts](kusto/tools/kusto-explorer-shortcuts.md), [code features](kusto/tools/kusto-explorer-code-features.md)
-* [Kusto CLI](kusto/tools/kusto-cli.md)
 
-#### Query open source repositories
 
-The following open source repositories contain the source code for the Kusto Query Language (KQL) parser and editor:
+### Kusto CLI
 
-* [Kusto Query Language parser](https://github.com/microsoft/Kusto-Query-Language) - A .NET core repository for the Kusto Query Language parser and semantic tree.
-* [Kusto Query Language setup and usage for the Monaco editor](./kusto/api/monaco/monaco-kusto.md) - The Kusto Query Language editor that can be embedded in web and electron based applications.
+[Kusto CLI](kusto/tools/kusto-cli.md)
+
+
+### Lightingest
+
+[LightIngest](https://github.com/Azure/Kusto-Lightingest/blob/main/README.md): a command-line utility for ad-hoc data ingestion into Azure Data Explorer. For more information, see [Use LightIngest to ingest data](lightingest.md)                            
+
+### Microsoft Purview
+
+
+### Monaco editor (plugin/embed)
+
+[Kusto Query Language setup and usage for the Monaco editor](./kusto/api/monaco/monaco-kusto.md) - The Kusto Query Language editor that can be embedded in web and electron based applications.
   * [Kusto Query Language plugin](https://github.com/Azure/monaco-kusto) - Access the Kusto Query Language editor plugin.
   * [Embedding the Azure Data Explorer web UI](./kusto/api/monaco/host-web-ux-in-iframe.md) - The Azure Data Explorer web UI can be embedded in an iframe and hosted in third-party websites.
 
-#### Query integrations
 
-* [Azure Monitor](query-monitor-data.md)
-* [Azure Data Lake](data-lake-query-data.md)
-* [Azure Synapse Apache Spark](/azure/synapse-analytics/quickstart-connect-azure-data-explorer?context=%252fazure%252fdata-explorer%252fcontext%252fcontext)
-* [Apache Spark](spark-connector.md)
-* [Microsoft Power Apps](power-apps-connector.md)
-* Azure Data Studio: [Kusto extension overview](/sql/azure-data-studio/extensions/kusto-extension?context=%252fazure%252fdata-explorer%252fcontext%252fcontext), [use Kusto](/sql/azure-data-studio/notebooks/notebooks-kusto-kernel?context=%252fazure%252fdata-explorer%252fcontext%252fcontext), and [use Kqlmagic](/sql/azure-data-studio/notebooks-kqlmagic?context=%252fazure%252fdata-explorer%252fcontext%252fcontext)
+### PowerShell
 
-#### Notebook connectivity
 
-* [Azure Notebooks](/sql/azure-data-studio/notebooks/notebooks-kqlmagic?context=%252fazure%252fdata-explorer%252fcontext%252fcontext%253fcontext%253d%252fazure%252fdata-explorer%252fcontext%252fcontext)
-* [Jupyter Notebooks](kqlmagic.md)
-* Azure Data Studio: [Kusto extension overview](/sql/azure-data-studio/extensions/kusto-extension?context=%252fazure%252fdata-explorer%252fcontext%252fcontext), [use Kusto](/sql/azure-data-studio/notebooks/notebooks-kusto-kernel?context=%252fazure%252fdata-explorer%252fcontext%252fcontext), and [use Kqlmagic](/sql/azure-data-studio/notebooks-kqlmagic?context=%252fazure%252fdata-explorer%252fcontext%252fcontext)
+### Real-Time Analytics in Microsoft Fabric
 
-### Orchestration
 
-* Power Automate
-  * [Power Automate connector](flow.md)
-  * [Power Automate connector usage examples](flow-usage.md)
-* [Microsoft Logic App](kusto/tools/logicapps.md)
-* [Azure Data Factory](data-factory-integration.md)
+### SyncKusto
 
-### Share data
+[Sync Kusto](kusto/tools/synckusto.md)
 
-* [Azure Data Share](data-share.md)
 
-### Source control integration
+### Web UI get data
 
-* [Azure Pipelines](devops.md)
-* [Sync Kusto](kusto/tools/synckusto.md)
-* [Delta Kusto](https://github.com/microsoft/delta-kusto)
+Ingestion wizard: [overview](./ingest-data-wizard.md) and ingest data [from a container to a new table](/azure/data-explorer/ingest-from-container)
+or [from a local file to an existing table](/azure/data-explorer/ingest-from-local-file)
+
+### Web UI query editor
+
+[Azure Data Explorer web UI](web-query-data.md)
 
 ---
 
