@@ -457,9 +457,9 @@ The Azure Data Explorer supports cross-service queries between Azure Data Explor
 
 ### Azure Notebooks
 
+Kqlmagic is a command that extends the capabilities of the Python kernel in Azure Data Studio notebooks. You can combine Python and Kusto query language (KQL) to query and visualize data using rich Plotly library integrated with render commands. Kqlmagic brings you the benefit of notebooks, data analysis, and rich Python capabilities all in the same location. Supported data sources with Kqlmagic include Azure Data Explorer, Application Insights, and Azure Monitor logs.
 
-
-* **Functionality:** 
+* **Functionality:** Query, Visualization
 
 * **Ingestion type supported:**
 * **Use cases:** 
@@ -468,9 +468,10 @@ The Azure Data Explorer supports cross-service queries between Azure Data Explor
 
 ### Azure Pipelines
 
+[Azure DevOps Services](https://azure.microsoft.com/services/devops/) provides development collaboration tools such as high-performance pipelines, free private Git repositories, configurable Kanban boards, and extensive automated and continuous testing capabilities. [Azure Pipelines](https://azure.microsoft.com/services/devops/pipelines/) is an Azure DevOps capability that enables you to manage CI/CD to deploy your code with high-performance pipelines that work with any language, platform, and cloud.
+[Azure Data Explorer - Pipeline Tools](https://marketplace.visualstudio.com/items?itemName=Azure-Kusto.PublishToADX) is the Azure Pipelines task that enables you to create release pipelines and deploy your database changes to your Azure Data Explorer databases. It's available for free in the [Visual Studio Marketplace](https://marketplace.visualstudio.com/).
 
-
-* **Functionality:** 
+* **Functionality:** Source control
 
 * **Ingestion type supported:**
 * **Use cases:** 
@@ -479,9 +480,9 @@ The Azure Data Explorer supports cross-service queries between Azure Data Explor
 
 ### DeltaKusto
 
+Delta Kusto is a Command-line interface (CLI) enabling Continuous Integration / Continuous Deployment (CI / CD) automation with Kusto objects (for example: tables, functions, policies, security roles) in Azure Data Explorer databases. It can work on a single database, multiple databases, or an entire cluster. Delta Kusto also supports multi-tenant scenarios.
 
-
-* **Functionality:** 
+* **Functionality:** Source control
 
 * **Ingestion type supported:**
 * **Use cases:** 
@@ -573,7 +574,7 @@ You can integrate the [Monaco Editor](https://microsoft.github.io/monaco-editor)
 
 ### PowerShell
 
-PowerShell scripts can use the [Kusto client libraries](../client-libraries.md), as PowerShell inherently integrates with .NET libraries. 
+PowerShell scripts can use the [Kusto client libraries](kusto/api/client-libraries.md), as PowerShell inherently integrates with .NET libraries. 
 
 * **Functionality:** Query
 
