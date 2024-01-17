@@ -213,7 +213,7 @@ demo_make_series1
 
 **Output**
 
-:::image type="content" source="images/series-fit-poly-fl/usage-example.png" alt-text="Graph showing fifth order polynomial fit to a regular time series." border="false":::
+:::image type="content" source="media/series-fit-poly-fl/usage-example.png" alt-text="Graph showing fifth order polynomial fit to a regular time series." border="false":::
 
 ### Test irregular time series
 
@@ -291,7 +291,7 @@ demo_make_series1
 
 **Output**
 
-:::image type="content" source="images/series-fit-poly-fl/irregular-time-series.png" alt-text="Graph showing eighth order polynomial fit to an irregular time series." border="false":::
+:::image type="content" source="media/series-fit-poly-fl/irregular-time-series.png" alt-text="Graph showing eighth order polynomial fit to an irregular time series." border="false":::
 
 ### Fifth order polynomial with noise on x & y axes
 ### [Query-defined](#tab/query-defined)
@@ -366,9 +366,9 @@ range x from 1 to 200 step 1
 
 **Output**
 
-:::image type="content" source="images/series-fit-poly-fl/fifth-order-noise.png" alt-text="Graph of fit of fifth order polynomial with noise on x & y axes":::
+:::image type="content" source="media/series-fit-poly-fl/fifth-order-noise.png" alt-text="Graph of fit of fifth order polynomial with noise on x & y axes":::
 
-:::image type="content" source="images/series-fit-poly-fl/fifth-order-noise-table.png" alt-text="Coefficients of fit of fifth order polynomial with noise." border="false":::
+:::image type="content" source="media/series-fit-poly-fl/fifth-order-noise-table.png" alt-text="Coefficients of fit of fifth order polynomial with noise." border="false":::
 
 ::: zone-end
 

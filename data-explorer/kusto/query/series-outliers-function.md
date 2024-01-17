@@ -53,4 +53,4 @@ range x from 0 to 364 step 1
 | render anomalychart with(xcolumn=t, ycolumns=series, anomalycolumns=pos_anomalies)
 ```
 
-:::image type="content" source="images/series-outliersfunction/series-outliers.png" alt-text="Chart of a time series with outliers." border="false":::
+:::image type="content" source="media/series-outliersfunction/series-outliers.png" alt-text="Chart of a time series with outliers." border="false":::

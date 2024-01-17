@@ -97,7 +97,7 @@ The **Ingestion result** metric provides information about the **Category** of i
 |Error message                                 |Description                                           |Permanent/Transient|
 |---|---|---|
 |Stream_InputStreamTooLarge                        |The total size of the input data or a single field in the data is too large. HRESULT: 0x80DA0009<br>For more information about the size limit for this type of ingestion, see [The string data type](./kusto/query/scalar-data-types/string.md). |Permanent          |
-|BadRequest_FileTooLarge                           |Blob size has exceeded the size limit allowed for ingestion.<br>For more information about the size limit for ingestion, see [Azure Data Explorer data ingestion overview](ingest-data-overview.md#comparing-ingestion-methods-and-tools). |Permanent           |
+|BadRequest_FileTooLarge                           |Blob size has exceeded the size limit allowed for ingestion. |Permanent           |
 
 ## Category: InternalServiceError
 

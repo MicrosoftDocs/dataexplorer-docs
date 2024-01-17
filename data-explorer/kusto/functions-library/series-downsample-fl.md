@@ -127,7 +127,7 @@ demo_make_series1
 **Output**
 
 The time series downsampled by 4:
-:::image type="content" source="images/series-downsample-fl/downsampling-demo.png" alt-text="Graph showing downsampling of a time series." border="false":::
+:::image type="content" source="media/series-downsample-fl/downsampling-demo.png" alt-text="Graph showing downsampling of a time series." border="false":::
 
 For reference, here is the original time series (before downsampling):
 
@@ -137,4 +137,4 @@ demo_make_series1
 | render timechart with(xcolumn=TimeStamp, ycolumns=num)
 ```
 
-:::image type="content" source="images/series-downsample-fl/original-time-series.png" alt-text="Graph showing the original time series, before downsampling" border="false":::
+:::image type="content" source="media/series-downsample-fl/original-time-series.png" alt-text="Graph showing the original time series, before downsampling" border="false":::

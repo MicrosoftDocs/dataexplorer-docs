@@ -10,7 +10,7 @@ ms.date: 06/18/2023
 
 The `rightouter` join flavor returns all the records from the right side and only matching records from the left side. This join flavor resembles the [`leftouter` join flavor](join-leftouter.md), but the treatment of the tables is reversed.
 
-:::image type="content" source="images/joinoperator/join-rightouter.png" alt-text="Diagram that shows how the join works." lightbox="images/joinoperator/join-kinds.png":::
+:::image type="content" source="media/joinoperator/join-rightouter.png" alt-text="Diagram that shows how the join works." lightbox="media/joinoperator/join-kinds.png":::
 
 ## Syntax
 

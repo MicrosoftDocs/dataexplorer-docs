@@ -71,6 +71,11 @@
       "redirect_document_id": false
     },
     {
+      "source_path": "data-explorer/kusto/management/external-azure-storage-tables-query.md",
+      "redirect_url": "/azure/data-explorer/external-azure-storage-tables-query",
+      "redirect_document_id": true
+    },
+    {
       "source_path": "data-explorer/kusto/management/externaltables.md",
       "redirect_url": "/azure/data-explorer/kusto/management/external-table-commands",
       "redirect_document_id": true
@@ -818,6 +823,16 @@
     {
       "source_path": "data-explorer/kusto/management/operations.md",
       "redirect_url": "/azure/data-explorer/kusto/management/show-operations",
+      "redirect_document_id": true
+    },
+    {
+      "source_path": "data-explorer/kusto/query/scalar-data-types/unsupported-data-types.md",
+      "redirect_url": "/azure/data-explorer/kusto/query/scalar-data-types/index",
+      "redirect_document_id": true
+    },
+    {
+      "source_path": "data-explorer/kusto/query/todouble-function.md",
+      "redirect_url": "/azure/data-explorer/kusto/query/toreal-function",
       "redirect_document_id": true
     }
   ]

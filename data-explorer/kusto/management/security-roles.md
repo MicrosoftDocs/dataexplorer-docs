@@ -14,7 +14,7 @@ When a principal attempts an operation, the system performs an authorization che
 The management commands listed in this article can be used to manage principals and their security roles on databases, tables, external tables, materialized views, and functions.
 
 > [!NOTE]
-> The three cluster level security roles of `AllDatabasesAdmin`, `AllDatabasesViewer`, and `AllDatabasesMonitor` can't be configured with security role management commands. For more information, see [Manage cluster permissions](../../manage-cluster-permissions.md).
+> The three cluster level security roles of `AllDatabasesAdmin`, `AllDatabasesViewer`, and `AllDatabasesMonitor` can't be configured with security role management commands. To learn how to configure them in the Azure portal, see [Manage cluster permissions](../../manage-cluster-permissions.md).
 
 ## Management commands
 
@@ -107,6 +107,10 @@ To see the roles assigned to all principals for a particular resource, run the f
 
 > [!TIP]
 > Use the [where](../query/where-operator.md) operator to filter the results by a specific principal or role.
+
+### Modify the role assignments
+
+For details on how to modify your role assignments at the database and table levels, see [Manage database security roles](manage-database-security-roles.md) and [Manage table security roles](manage-table-security-roles.md).
 
 ## Related content
 
