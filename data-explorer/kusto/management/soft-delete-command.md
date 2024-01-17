@@ -13,7 +13,7 @@ To delete individual records with a system guarantee that the storage artifacts 
 
 ## Syntax
 
-`.delete` [`async`] `table` *TableName* `records` [`with (`propertyName `=` propertyValue [`,` ...]`)`] `<|` *Predicate*
+`.delete` [`async`] `table` *TableName* `records` [`with` `(` *propertyName* `=` *propertyValue* [`,` ...]`)`] `<|` *Predicate*
 
 [!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
 
@@ -23,6 +23,7 @@ To delete individual records with a system guarantee that the storage artifacts 
 |--|--|--|--|
 |`async`|string||If specified, indicates that the command runs in asynchronous mode.|
 |*TableName*|string|&check;|The name of the table from which to delete records.|
+| *propertyName*, *propertyValue* | string | | A comma-separated list of key-value property pairs. See [supported properties](#supported-properties).|
 |*Predicate*|string|&check;|The predicate that returns records to delete, which is specified as a query. See note.|
 
 > [!NOTE]
@@ -31,6 +32,12 @@ To delete individual records with a system guarantee that the storage artifacts 
 > * The predicate should have at least one `where` operator.
 > * The predicate can only use the following operators: `extend`, `where` and `project`.
 > * The predicate can't reference other tables, nor use `externaldata`.
+
+## Supported properties
+
+|Name|Type|Description|
+|--|--|--|
+|`whatif`|bool|If `true`, returns the number of records that will be deleted in every shard, without actually deleting any records. The default is `false`.
 
 ## Returns
 
@@ -44,13 +51,13 @@ To delete all the records that contain data of a given user:
 .delete table MyTable records <| MyTable | where UserId == 'X'
 ```
 
-> [!NOTE]
->
-> To determine the number of records that would be deleted by the operation without actually deleting them, check the value in the RecordsMatchPredicate column when running the command in `whatif` mode:
->
-> ```kusto
-> .delete table MyTable records with (whatif=true) <| MyTable | where UserId == 'X'
-> ```
+## Example: check how many records would be deleted from a table
+
+To determine the number of records that would be deleted by the operation without actually deleting them, check the value in the *RecordsMatchPredicate* column when running the command in `whatif` mode:
+
+```kusto
+.delete table MyTable records with (whatif=true) <| MyTable | where UserId == 'X'
+```
 
 ## .delete materialized-view records - soft delete command
 
@@ -58,7 +65,7 @@ When soft delete is executed on materialized views, the same concepts and limita
 
 ## Syntax - materialized views
 
-`.delete` [`async`] `materialized-view` *MaterializedViewName* `records` [`with (`propertyName `=` propertyValue [`,` ...]`)`] `<|` *Predicate*
+`.delete` [`async`] `materialized-view` *MaterializedViewName* `records` [`with` `(` *propertyName* `=` *propertyValue* [`,` ...]`)`] `<|` *Predicate*
 
 [!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
 
@@ -68,12 +75,19 @@ When soft delete is executed on materialized views, the same concepts and limita
 |--|--|--|--|
 |`async`|string||If specified, indicates that the command runs in asynchronous mode.|
 |*MaterializedViewName*|string|&check;|The name of the materialized view from which to delete records.|
+| *propertyName*, *propertyValue* | string | | A comma-separated list of key-value property pairs. See [supported properties](#supported-properties---materialized-views).|
 |*Predicate*|string|&check;|The predicate that returns records to delete. Specified as a query.|
 
 > [!NOTE]
 > The same restrictions on the *Predicate* mentioned for table apply here as well.
 > Soft delete might fail in case of conflicts with the [materialization process](materialized-views/materialized-view-overview.md#how-materialized-views-work) running in the background. Retrying the operation can help in this case. To avoid conflicts, you can [disable the materialized view](materialized-views/materialized-view-enable-disable.md) before executing soft delete, and re-enable it when the operation completes.
 > Usage of function [materialized_view()](../query/materialized-view-function.md) is not allowed in *Predicate*.
+
+## Supported properties - materialized views
+
+|Name|Type|Description|
+|--|--|--|
+|`whatif`|bool|If `true`, returns the number of records that will be deleted in every shard, without actually deleting any records. The default is `false`.
 
 ## Example - materialized views
 
@@ -83,13 +97,13 @@ To delete all the materialized view records that contain data of a given user:
 .delete materialized-view MyMaterializedView records <| MyMaterializedView | where UserId == 'X'
 ```
 
-> [!NOTE]
->
-> To determine the number of records that would be deleted by the operation without actually deleting them, check the value in the RecordsMatchPredicate column while running the command in `whatif` mode:
->
-> ```kusto
-> .delete materialized-view MyMaterializedView records with (whatif=true) <| MyMaterializedView | where UserId == 'X'
-> ```
+## Example: check how many records would be deleted from a materialized view
+
+To determine the number of records that would be deleted by the operation without actually deleting them, check the value in the *RecordsMatchPredicate* column while running the command in `whatif` mode:
+
+```kusto
+.delete materialized-view MyMaterializedView records with (whatif=true) <| MyMaterializedView | where UserId == 'X'
+```
 
 ## Related content
 
