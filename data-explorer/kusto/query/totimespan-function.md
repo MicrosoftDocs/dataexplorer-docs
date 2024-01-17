@@ -11,6 +11,9 @@ Converts the input to a [timespan](./scalar-data-types/timespan.md) scalar value
 
 > **Deprecated aliases:** totime()
 
+> [!NOTE]
+> When possible, we recommend using [timespan literals](../query/scalar-data-types/timespan.md#timespan-literals) instead.
+
 ## Syntax
 
 `totimespan(`*value*`)`

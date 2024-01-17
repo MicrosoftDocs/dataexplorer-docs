@@ -19,7 +19,7 @@ For a large dataset that is representative of the population, use [stdevp() (agg
 
 This function uses the following formula.
 
-:::image type="content" source="images/stdev-aggfunction/stdev-sample.png" alt-text="Image showing a Stdev sample formula.":::
+:::image type="content" source="media/stdev-aggfunction/stdev-sample.png" alt-text="Image showing a Stdev sample formula.":::
 
 ## Syntax
 

@@ -62,7 +62,7 @@ StormEvents
 | render timepivot with (xcolumn=State)
 ```
 
-:::image type="content" source="images/visualization-timepivot/time-pivot-visualization.jpg" lightbox="images/visualization-timepivot/time-pivot-visualization.jpg" alt-text="Screenshot of timepivot in Kusto.Explorer.":::
+:::image type="content" source="media/visualization-timepivot/time-pivot-visualization.jpg" lightbox="media/visualization-timepivot/time-pivot-visualization.jpg" alt-text="Screenshot of timepivot in Kusto.Explorer.":::
 
 ::: zone-end
 

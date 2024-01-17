@@ -76,7 +76,7 @@ For comparison with other available grid systems, see [geospatial clustering wit
 
 ### US storm events aggregated by S2 Cell
 
-:::image type="content" source="images/geo-point-to-s2cell-function/s2-cell.png" alt-text="US s2cell.":::
+:::image type="content" source="media/geo-point-to-s2cell-function/s2-cell.png" alt-text="US s2cell.":::
 
 ```kusto
 StormEvents

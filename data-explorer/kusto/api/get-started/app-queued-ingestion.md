@@ -296,6 +296,8 @@ Add the following code:
         - **True**: The first row is ignored. Use this option to drop the header row from tabular textual data.
         - **False**: The first row is ingested as a regular row.
 
+    [!INCLUDE [ingestion-size-limit](../../../includes/ingestion-size-limit.md)]
+
     ### [C\#](#tab/csharp)
 
     ```csharp

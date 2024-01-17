@@ -106,4 +106,4 @@ union
 
 **Output**
 
-:::image type="content" source="images/series-dot-product-fl/dot-product-result.png" alt-text="Table showing the result of dot product of 2 vectors using user-defined function series_dot_product_fl." border="false":::
+:::image type="content" source="media/series-dot-product-fl/dot-product-result.png" alt-text="Table showing the result of dot product of 2 vectors using user-defined function series_dot_product_fl." border="false":::

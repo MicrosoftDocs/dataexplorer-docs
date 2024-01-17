@@ -121,9 +121,9 @@ items:
           - name: Azure Storage external tables
             items:
               - name: Create or alter Azure Blob Storage/ADLS external table
-                href: external-tables-azurestorage-azuredatalake.md
+                href: external-tables-azure-storage.md
               - name: Create or alter delta external table
-                href: external-tables-azurestorage-deltalake.md
+                href: external-tables-delta-lake.md
               - name: Manage external table mappings
                 items:
                   - name: .alter external table mapping command
@@ -232,10 +232,11 @@ items:
           - name: .alter-merge table column-docstrings command
             displayName: .alter-merge column-docstrings
             href: alter-merge-table-column.md
-      - name: Data mappings
+      - name: Ingestion mappings
         items:
-          - name: Data mappings overview
+          - name: Ingestion mappings overview
             href: mappings.md
+            displayName: schema mappings, data mappings
           - name: "CSV mapping"
             href: csv-mapping.md
           - name: "JSON mapping"
@@ -386,9 +387,15 @@ items:
           - name: .alter database policy ingestionbatching command
             href: alter-database-ingestion-batching-policy.md
             displayName: .alter database ingestion batching policy, .alter database ingestionbatching policy
+          - name: .alter-merge database policy ingestionbatching command
+            href: alter-merge-database-ingestion-batching-policy.md
+            displayName: .alter-merge database ingestion batching policy, .alter-merge database ingestionbatching policy
           - name: .alter table policy ingestionbatching command
             href: alter-table-ingestion-batching-policy.md
             displayName: .alter table ingestion batching policy, .alter tables policy ingestionbatching
+          - name: .alter-merge table policy ingestionbatching command
+            href: alter-merge-table-ingestion-batching-policy.md
+            displayName: .alter-merge table ingestion batching policy, .alter-merge tables policy ingestionbatching
           - name: .delete database policy ingestionbatching command
             href: delete-database-ingestion-batching-policy.md
             displayName: .delete database ingestion batching policy, .delete database ingestionbatching policy
@@ -719,9 +726,9 @@ items:
       - name: Manage function roles
         href: manage-function-security-roles.md
         displayName: .show principal, principal access, security roles, roles, rbac
-      - name: Referencing security principals
+      - name: Reference security principals
         displayName: Security group, Identity providers, IdPs, SG, Azure AD tenants
-        href: referencing-security-principals.md
+        href: reference-security-principals.md
   - name: Data ingestion
     items:
       - name: Ingest from storage
