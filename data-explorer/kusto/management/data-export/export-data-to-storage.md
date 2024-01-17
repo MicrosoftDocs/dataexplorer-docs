@@ -46,7 +46,6 @@ You must have at least [Database Viewer](../access-control/role-based-access-con
 | `sizeLimit` | `long` | The size limit in bytes of a single storage artifact being written (prior to compression). Allowed range is 100 MB (default) to 4 GB. |
 | `parquetRowGroupSize` | `int` | Relevant only when data format is Parquet. Controls the row group size in the exported files. Default row group size is 100,000 records. |
 | `distributed` | `bool` | Disable/enable distributed export. Setting to false is equivalent to `single` distribution hint. Default is true. |
-| `useNativeParquetWriter` | `bool` | Use the new export implementation when exporting to Parquet, this implementation is a more performant, resource light export mechanism. An exported 'datetime' column is currently unsupported by Synapse SQL 'COPY'. Default is false. |
 
 ## Authentication and authorization
 
@@ -180,18 +179,3 @@ On export, Kusto data types are mapped to Parquet data types using the following
 | `string` | `BYTE_ARRAY` | UTF-8 | |
 | `timespan` | `INT64` | | Stored as ticks (100-nanosecond units) count |
 | `decimal` | `FIXED_LENGTH_BYTE_ARRAY` | DECIMAL | |
-
-When specifying 'useNativeParquetWriter=false', Kusto data types are mapped to Parquet data types using the following rules:
-
-| Kusto Data Type | Parquet Data Type | Parquet Annotation | Comments |
-| --------------- | ----------------- | ------------------ | -------- |
-| `bool`     | `BOOLEAN` | | |
-| `datetime` | `INT96` | | |
-| `dynamic`  | `BYTE_ARRAY` | UTF-8 | Serialized as JSON string |
-| `guid` | `BYTE_ARRAY` | UTF-8 | |
-| `int` | `INT32` | | |
-| `long` | `INT64` | | |
-| `real` | `DOUBLE` | | |
-| `string` | `BYTE_ARRAY` | UTF-8 | |
-| `timespan` | `INT64` | | Stored as ticks (100-nanosecond units) count |
-| `decimal` | `BYTE_ARRAY` | DECIMAL | |
