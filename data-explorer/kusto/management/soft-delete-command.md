@@ -99,7 +99,7 @@ To delete all the materialized view records that contain data of a given user:
 
 ## Example: check how many records would be deleted from a materialized view
 
-To determine the number of records that would be deleted by the operation without actually deleting them, check the value in the *Predicate* column while running the command in `whatif` mode:
+To determine the number of records that would be deleted by the operation without actually deleting them, check the value in the *RecordsMatchPredicate* column while running the command in `whatif` mode:
 
 ```kusto
 .delete materialized-view MyMaterializedView records with (whatif=true) <| MyMaterializedView | where UserId == 'X'
