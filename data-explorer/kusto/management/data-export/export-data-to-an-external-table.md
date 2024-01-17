@@ -43,7 +43,6 @@ The following properties are supported as part of the export to external table c
 |`concurrency`|*Number*|Hints the system how many partitions to run in parallel. See more details in [Distribution settings](#distribution-settings)| The default value is 16. |
 |`spread`|*Number*|Hints the system how to distribute the partitions among cluster nodes. See more details in [Distribution settings](#distribution-settings)| The default value is `Min(64, number-of-nodes)`. |
 |`parquetRowGroupSize`|`int`  |Relevant only when data format is Parquet. Controls the row group size in the exported files. This value takes precedence over `sizeLimit`, meaning a full row group will be exported before checking whether this row group has reached the size limit and should start a new artifact. | Default row group size is 100,000 records.|
-|`useNativeParquetWriter`|`bool`|Use the new export implementation when exporting to Parquet **See note.**| Default is true. |
 
 ### Distribution settings
 
