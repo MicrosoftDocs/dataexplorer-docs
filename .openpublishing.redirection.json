@@ -71,6 +71,11 @@
       "redirect_document_id": false
     },
     {
+      "source_path": "data-explorer/kusto/management/external-azure-storage-tables-query.md",
+      "redirect_url": "/azure/data-explorer/external-azure-storage-tables-query",
+      "redirect_document_id": true
+    },
+    {
       "source_path": "data-explorer/kusto/management/externaltables.md",
       "redirect_url": "/azure/data-explorer/kusto/management/external-table-commands",
       "redirect_document_id": true
