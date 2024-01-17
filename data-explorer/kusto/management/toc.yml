@@ -728,7 +728,7 @@ items:
         displayName: .show principal, principal access, security roles, roles, rbac
       - name: Reference security principals
         displayName: Security group, Identity providers, IdPs, SG, Azure AD tenants
-        href: reference-security-principals.md.md
+        href: reference-security-principals.md
   - name: Data ingestion
     items:
       - name: Ingest from storage

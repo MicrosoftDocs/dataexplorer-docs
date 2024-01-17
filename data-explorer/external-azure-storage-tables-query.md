@@ -7,7 +7,7 @@ ms.date: 05/09/2023
 
 # Query Azure Storage external tables
 
-In Azure Data Explorer, you can use [Kusto Query Language (KQL)](../query/index.md) to query external tables stored in Azure Storage. Azure Storage external tables can be queried in the same way as you would query a regular table in Azure Data Explorer.
+In Azure Data Explorer, you can use [Kusto Query Language (KQL)](kusto/query/index.md) to query external tables stored in Azure Storage. Azure Storage external tables can be queried in the same way as you would query a regular table in Azure Data Explorer.
 
 ## How it works
 

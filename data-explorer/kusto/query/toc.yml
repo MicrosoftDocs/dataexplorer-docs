@@ -1189,7 +1189,7 @@ items:
         displayName: argmin()
         href: arg-min-aggregation-function.md
       - name: avg()
-        href: avg-agg-function.md
+        href: avg-aggregation-function.md
       - name: avgif()
         href: avgif-aggregation-function.md
       - name: binary_all_and
