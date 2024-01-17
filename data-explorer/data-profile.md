@@ -8,7 +8,7 @@ ms.date: 01/15/2024
 
 # Access the data profile of a table
 
-The data profile feature in the Azure Data Explorer web UI provides a fast way to gain insights into the data within your tables. It features a time chart illustrating data distribution according to a specified datetime field and presents each column of the table along with essential related statistics. This article explains how to access and understand the data profile of a table.
+The data profile feature in the Azure Data Explorer web UI allows you to quickly gain insights into the data within your tables. It features a time chart illustrating data distribution according to a specified `datetime` field and presents each column of the table along with essential related statistics. This article explains how to access and understand the data profile of a table.
 
 ## Prerequisites
 
@@ -37,20 +37,19 @@ The data profile for the selected table view opens in a side window.
 
 ## Filter data by time range
 
-To filter the data presented in the data profile, select one of the tabs at the top of the profile. These tabs allow you to filter by one day (`1d`), one week (`7d`), one month (`30d`), one year (`365d`) or the full time range of your data (`max`). 
+To filter the data presented in the data profile by ingestion time, select one of the tabs at the top of the profile. These tabs allow you to filter by one day (`1d`), one week (`7d`), one month (`30d`), one year (`365d`) or the full time range of your data (`max`).
 
 :::image type="content" source="media/data-profile/data-profile-filter-time-range.png" alt-text="Screenshot of the time range filter tabs.":::
 
+## View data distribution by other `datetime` columns
 
-## Filter time chart by datetime columns
-
-To filter the time chart by a different datetime column, select the dropdown tab at the top right of the chart. You can filter by ingestion time and any other datetime columns.
+By default, the time chart shows the data distribution by ingestion time. To view the distribution by a different `datetime` column, select the dropdown tab at the top right of the chart.
 
 :::image type="content" source="media/data-profile/data-profile-filter-time-chart.png" alt-text="Screenshot of the time chart filter.":::
 
 ## View columns and their top values
 
-Within the profile, you can explore information about columns and their top values. Each column name is accompanied by a relevant statistic based on its data type, and selecting the column reveals more details specific to that data type:
+You can browse the table schema in the profile by looking at the columns or finding a particular column. You can also choose columns to see their top values, value distributions, and sample values depending on their data type, as follows:
 
 |Type|Statistic|On selection|
 |--|--|--|
@@ -60,7 +59,7 @@ Within the profile, you can explore information about columns and their top valu
 |dynamic|No specific statistic|Random sampled value|
 |bool|No specific statistic|Count of true and false|
 
-For example, in the following image, the `Manufacturer` column of type string is selected:
+For example, in the following image, the `Manufacturer` column of type `string` is selected:
 
 :::image type="content" source="media/data-profile/data-profile-columns.png" alt-text="Screenshot of example column selected.":::
 
