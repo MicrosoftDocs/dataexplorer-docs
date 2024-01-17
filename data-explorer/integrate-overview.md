@@ -5,7 +5,7 @@ ms.reviewer: aksdi
 ms.topic: conceptual
 ms.date: 01/14/2024
 ---
-# Data connectors, tools, and integrations overview
+# Integrations overview
 
 Short blurb about how this is a high level overview.
 

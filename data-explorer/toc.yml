@@ -606,8 +606,9 @@ items:
             href: kusto-emulator-install.md
   - name: Integrate
     items:
-      - name:  Connectors , tools, and integrations overview
+      - name:  Integrations overview
         href: integrate-overview.md
+        displayName: integrate, integration, export, orchestrate, tools, connectors, query, visualize
       - name: Orchestrate
         items:
           - name: Power Automate
