@@ -142,7 +142,7 @@ items:
       - name: datatable operator
         href: datatable-operator.md
       - name: distinct operator
-        href: distinctoperator.md
+        href: distinct-operator.md
       - name: evaluate operator
         href: evaluate-operator.md
       - name: extend operator
@@ -156,7 +156,7 @@ items:
       - name: fork operator
         href: fork-operator.md
       - name: getschema operator
-        href: getschemaoperator.md
+        href: getschema-operator.md
       - name: invoke operator
         href: invoke-operator.md
       - name: join operator
@@ -545,7 +545,7 @@ items:
         href: bag-merge-function.md
       - name: bag_pack()
         displayName: pack(), pack_dictionary(), bag pack
-        href: packfunction.md
+        href: pack-function.md
       - name: bag_pack_columns()
         displayName: bag pack columns, dynamic object, property bag
         href: bag-pack-columns-function.md
@@ -705,7 +705,7 @@ items:
         href: day-of-year-function.md
       - name: dcount_hll()
         displayName: dcount hll
-        href: dcount-hllfunction.md
+        href: dcount-hll-function.md
       - name: degrees()
         href: degrees-function.md
       - name: dynamic_to_json()
@@ -743,7 +743,7 @@ items:
         href: extent-id-function.md
       - name: extent_tags()
         displayName: extenttags() extent tags
-        href: extenttagsfunction.md
+        href: extent-tags-function.md
       - name: extract()
         href: extract-function.md
       - name: extract_all()
@@ -806,7 +806,7 @@ items:
         href: hash-combine-function.md
       - name: hash_many()
         displayName: hash many
-        href: hash_manyfunction.md
+        href: hash-many-function.md
       - name: hash_md5()
         displayName: hash md5
         href: hash-md5-function.md
@@ -827,7 +827,7 @@ items:
         href: hour-of-day-function.md
       - name: iff()
         displayName: iif()
-        href: ifffunction.md
+        href: iff-function.md
       - name: indexof()
         displayName: index of
         href: indexof-function.md
@@ -1189,7 +1189,7 @@ items:
         displayName: argmin()
         href: arg-min-aggregation-function.md
       - name: avg()
-        href: avg-aggfunction.md
+        href: avg-agg-function.md
       - name: avgif()
         href: avgif-aggregation-function.md
       - name: binary_all_and
@@ -1202,14 +1202,14 @@ items:
         href: buildschema-aggregation-function.md
       - name: count()
         displayName: cnt()
-        href: count-aggfunction.md
+        href: count-aggregation-function.md
       - name: count_distinct()
         href: count-distinct-aggregation-function.md
       - name: count_distinctif()
         href: count-distinctif-aggregation-function.md
       - name: countif()
         displayName: count(predicate)
-        href: countif-aggfunction.md
+        href: countif-aggregation-function.md
       - name: dcount()
         href: dcount-aggfunction.md
       - name: dcountif()
@@ -1659,14 +1659,14 @@ items:
       - name: Query consistency
         href: ../concepts/queryconsistency.md
       - name: Query limits
-        href: ../concepts/querylimits.md
+        href: ../concepts/query-limits.md
       - name: Partial query failures
-        href: ../concepts/partialqueryfailures.md
+        href: ../concepts/partial-query-failures.md
         items:
           - name: Result truncation
-            href: ../concepts/resulttruncation.md
+            href: ../concepts/result-truncation.md
           - name: Runaway queries
-            href: ../concepts/runawayqueries.md
+            href: ../concepts/runaway-queries.md
           - name: Overflows
             href: ../concepts/overflow.md
   - name: Reference material for Kusto Query Language
