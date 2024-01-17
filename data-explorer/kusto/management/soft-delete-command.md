@@ -53,7 +53,7 @@ To delete all the records that contain data of a given user:
 
 ## Example: check how many records would be deleted from a table
 
-To determine the number of records that would be deleted by the operation without actually deleting them, check the value in the *Predicate* column when running the command in `whatif` mode:
+To determine the number of records that would be deleted by the operation without actually deleting them, check the value in the *RecordsMatchPredicate* column when running the command in `whatif` mode:
 
 ```kusto
 .delete table MyTable records with (whatif=true) <| MyTable | where UserId == 'X'
