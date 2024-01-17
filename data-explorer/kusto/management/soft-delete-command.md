@@ -23,6 +23,7 @@ To delete individual records with a system guarantee that the storage artifacts 
 |--|--|--|--|
 |`async`|string||If specified, indicates that the command runs in asynchronous mode.|
 |*TableName*|string|&check;|The name of the table from which to delete records.|
+| *propertyName*, *propertyValue* | string | | A comma-separated list of key-value property pairs. See [supported properties](#supported-properties).|
 |*Predicate*|string|&check;|The predicate that returns records to delete, which is specified as a query. See note.|
 
 > [!NOTE]
@@ -50,6 +51,14 @@ To delete all the records that contain data of a given user:
 .delete table MyTable records <| MyTable | where UserId == 'X'
 ```
 
+## Example: check how many records would be deleted from a table
+
+To determine the number of records that would be deleted by the operation without actually deleting them, check the value in the *Predicate* column when running the command in `whatif` mode:
+
+```kusto
+.delete table MyTable records with (whatif=true) <| MyTable | where UserId == 'X'
+```
+
 ## .delete materialized-view records - soft delete command
 
 When soft delete is executed on materialized views, the same concepts and limitations apply.
@@ -66,6 +75,7 @@ When soft delete is executed on materialized views, the same concepts and limita
 |--|--|--|--|
 |`async`|string||If specified, indicates that the command runs in asynchronous mode.|
 |*MaterializedViewName*|string|&check;|The name of the materialized view from which to delete records.|
+| *propertyName*, *propertyValue* | string | | A comma-separated list of key-value property pairs. See [supported properties](#supported-properties---materialized-views).|
 |*Predicate*|string|&check;|The predicate that returns records to delete. Specified as a query.|
 
 > [!NOTE]
@@ -85,6 +95,14 @@ To delete all the materialized view records that contain data of a given user:
 
 ```kusto
 .delete materialized-view MyMaterializedView records <| MyMaterializedView | where UserId == 'X'
+```
+
+## Example: check how many records would be deleted from a materialized view
+
+To determine the number of records that would be deleted by the operation without actually deleting them, check the value in the *Predicate* column while running the command in `whatif` mode:
+
+```kusto
+.delete materialized-view MyMaterializedView records with (whatif=true) <| MyMaterializedView | where UserId == 'X'
 ```
 
 ## Related content
