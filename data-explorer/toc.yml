@@ -318,6 +318,8 @@ items:
             href: web-ui-kql.md
           - name: Query sample data
             href: web-query-data.md
+      - name: Query data in Azure Storage external tables
+        href: external-azure-storage-tables-query.md
       - name: Query data in Azure Data Lake
         href: data-lake-query-data.md
       - name: Query data in Azure Monitor
