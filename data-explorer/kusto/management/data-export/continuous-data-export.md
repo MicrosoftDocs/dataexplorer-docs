@@ -132,3 +132,9 @@ To define continuous export to a delta table, do the following steps:
 
 * Continuous export can't be enabled on a table with [Row Level Security policy](../../management/row-level-security-policy.md) unless specific conditions are met. For more information, see [Continuous export from a table with Row Level Security](#continuous-export-from-a-table-with-row-level-security).
 * Continuous export can't be configured on a table with [restricted view access policy](../restricted-view-access-policy.md).
+
+
+## Related content
+
+* [Create or alter continuous export](create-alter-continuous.md)
+* [Use a managed identity to run a continuous export job](continuous-export-with-managed-identity.md)
