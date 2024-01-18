@@ -27,7 +27,7 @@ For more information, see the [underlying algorithm (*H*yper*L*og*L*og) and esti
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-|*hll*|string|&check;|The column name containing HLL values to merge.|
+|*hll*|string| :heavy_check_mark:|The column name containing HLL values to merge.|
 
 ## Returns
 

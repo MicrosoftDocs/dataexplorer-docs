@@ -19,9 +19,9 @@ bag_set_key() receives a `dynamic` property-bag, a key and a value. The function
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-| *bag* | dynamic | &check; | The property bag to modify. |
-| *key* | string | &check; | The key to set. Either a JSON path (you can specify a key on the nested levels using [JSONPath](jsonpath.md) notation) or the key name for a root level key. Array indexing or root JSON paths aren't supported. |
-| *value* | any scalar data type | &check; | The value to which the key is set. |
+| *bag* | dynamic |  :heavy_check_mark: | The property bag to modify. |
+| *key* | string |  :heavy_check_mark: | The key to set. Either a JSON path (you can specify a key on the nested levels using [JSONPath](jsonpath.md) notation) or the key name for a root level key. Array indexing or root JSON paths aren't supported. |
+| *value* | any scalar data type |  :heavy_check_mark: | The value to which the key is set. |
 
 ## Returns
 

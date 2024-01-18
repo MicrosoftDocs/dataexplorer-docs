@@ -19,8 +19,8 @@ Checks if an IPv6 string address is in the IPv6-prefix notation range.
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-| *Ipv6Address* | string | &check; | An expression representing an IPv6 address.|
-| *Ipv6Range*| string | &check; | An expression representing an IPv6 range using [IP-prefix notation](#ip-prefix-notation).|
+| *Ipv6Address* | string |  :heavy_check_mark: | An expression representing an IPv6 address.|
+| *Ipv6Range*| string |  :heavy_check_mark: | An expression representing an IPv6 range using [IP-prefix notation](#ip-prefix-notation).|
 
 [!INCLUDE [ip-prefix-notation](../../includes/ip-prefix-notation.md)]
 

@@ -19,7 +19,7 @@ Parses the input with a netmask and returns a string representing the IPv4 addre
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-| *ip* | string | &check; | The IPv4 address. The format may be a string or number representation in big-endian order.|
+| *ip* | string |  :heavy_check_mark: | The IPv4 address. The format may be a string or number representation in big-endian order.|
 | *prefix* | int | | An integer from 0 to 32 representing the number of most-significant bits that are taken into account. If unspecified, all 32 bit-masks are used.|
 
 ## Returns

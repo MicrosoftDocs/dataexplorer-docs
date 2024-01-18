@@ -21,7 +21,7 @@ Accumulates values using the binary `OR` operation for each summarization group,
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-| *expr* | long | &check; | The value used for the binary `OR`  calculation. |
+| *expr* | long |  :heavy_check_mark: | The value used for the binary `OR`  calculation. |
 
 ## Returns
 

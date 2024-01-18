@@ -28,7 +28,7 @@ the source data is sorted. If the data is sorted, then the top values will be re
 
 |Name|Type|Required|Description|
 |--|--|--|--|
-|*NumberOfRows*|int|&check;|The number of rows to return.|
+|*NumberOfRows*|int| :heavy_check_mark:|The number of rows to return.|
 
 ## Paging of query results
 

@@ -27,7 +27,7 @@ and returns the value of one or more expressions over each such record.
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-| *expr_N* | string | &check; | The expression used for selecting a record. If the wildcard value (`*`) is given in place of an expression, all records will be selected.|
+| *expr_N* | string |  :heavy_check_mark: | The expression used for selecting a record. If the wildcard value (`*`) is given in place of an expression, all records will be selected.|
 
 ## Returns
 

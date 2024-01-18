@@ -19,7 +19,7 @@ Returns the sign of the numeric expression.
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-| *number* | real | &check; | The number for which to return the sign.|
+| *number* | real |  :heavy_check_mark: | The number for which to return the sign.|
 
 ## Returns
 

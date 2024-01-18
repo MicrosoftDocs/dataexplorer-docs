@@ -19,7 +19,7 @@ Returns the number of records in the input record set.
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-| *T* | string | &check; | The tabular input whose records are to be counted. |
+| *T* | string |  :heavy_check_mark: | The tabular input whose records are to be counted. |
 
 ## Returns
 

@@ -22,10 +22,10 @@ Generates a single-column table of values.
 
 |Name|Type|Required|Description|
 |--|--|--|--|
-|*columnName*|string|&check;| The name of the single column in the output table.|
-|*start*|int, long, real, datetime, or timespan|&check;| The smallest value in the output.|
-|*stop*|int, long, real, datetime, or timespan|&check;| The highest value being generated in the output or a bound on the highest value if *step* steps over this value.|
-|*step*|int, long, real, datetime, or timespan|&check;| The difference between two consecutive values.|
+|*columnName*|string| :heavy_check_mark:| The name of the single column in the output table.|
+|*start*|int, long, real, datetime, or timespan| :heavy_check_mark:| The smallest value in the output.|
+|*stop*|int, long, real, datetime, or timespan| :heavy_check_mark:| The highest value being generated in the output or a bound on the highest value if *step* steps over this value.|
+|*step*|int, long, real, datetime, or timespan| :heavy_check_mark:| The difference between two consecutive values.|
 
 > [!NOTE]
 > The values can't reference the columns of any table. If you want to compute the range based on an input table, use the [range](range-function.md) function potentially with the [mv-expand](mv-expand-operator.md) operator.

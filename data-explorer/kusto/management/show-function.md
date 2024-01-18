@@ -55,7 +55,7 @@ For a list of **all** functions, see [.show functions](#show-functions).
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-|*FunctionName* | string | &check; | The name of stored function.|
+|*FunctionName* | string |  :heavy_check_mark: | The name of stored function.|
 |*PropertyName*/*PropertyValue*| string | | Indicate additional information to use when showing function details. All properties are optional. See [Supported properties](#supported-properties).|
 
 ### Supported properties

@@ -21,7 +21,7 @@ Returns `true` if the argument isn't an empty string, and it isn't null.
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-|*value*|scalar|&check;| The value to check if not empty or null.|
+|*value*|scalar| :heavy_check_mark:| The value to check if not empty or null.|
 
 ## Returns
 

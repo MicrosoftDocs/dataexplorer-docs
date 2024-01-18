@@ -41,8 +41,8 @@ The `externaldata` operator returns a table whose schema is defined in the query
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-| *columnName*, *columnType* | string | &check;| A list of column names and their types. This list defines the schema of the table. |
-| *storageConnectionString* | string | &check;| A [storage connection string](../api/connection-strings/storage-connection-strings.md) of the storage artifact to query. |
+| *columnName*, *columnType* | string |  :heavy_check_mark:| A list of column names and their types. This list defines the schema of the table. |
+| *storageConnectionString* | string |  :heavy_check_mark:| A [storage connection string](../api/connection-strings/storage-connection-strings.md) of the storage artifact to query. |
 | *propertyName*, *propertyValue* | string | | A list of optional [properties](#properties) that determines how to interpret the data retrieved from storage.
 
 ### Properties

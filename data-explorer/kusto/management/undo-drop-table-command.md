@@ -23,7 +23,7 @@ You must have at least [Database Admin](../management/access-control/role-based-
 
 |Name|Type|Required|Description|
 |--|--|--|--|
-|*TableName*|string|&check;|The name of the table to restore.|
+|*TableName*|string| :heavy_check_mark:|The name of the table to restore.|
 |*NewTableName*|string||A new table name for the table.|
 |*Version*|string||The database version prior to the table deletion. The format is *MajorVersion*.*MinorVersion*. To find the version, see [Find the required database version](#find-the-required-database-version).|
 

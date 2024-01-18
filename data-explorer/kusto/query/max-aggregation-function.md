@@ -21,7 +21,7 @@ Finds the maximum value the expression in the group.
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-| *expr* | string | &check; | The expression used for the aggregation calculation. |
+| *expr* | string |  :heavy_check_mark: | The expression used for the aggregation calculation. |
 
 ## Returns
 

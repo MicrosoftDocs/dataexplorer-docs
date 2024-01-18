@@ -24,7 +24,7 @@ The cancel operation command isn't guaranteed to succeed. The output of the `.ca
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-| *OperationId* | guid | &check; | A guid of the operation ID returned from the running command.|
+| *OperationId* | guid |  :heavy_check_mark: | A guid of the operation ID returned from the running command.|
 | *ReasonPhrase* | string | | The reason for canceling the running command.|
 
 ## Returns

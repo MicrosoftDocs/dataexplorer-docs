@@ -29,7 +29,7 @@ Use the following syntax to turn on or turn off the policy for several tables.
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-| *TableName* | string | &check; | The name of the table(s) to alter. |
+| *TableName* | string |  :heavy_check_mark: | The name of the table(s) to alter. |
 
 ## Examples
 

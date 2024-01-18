@@ -41,9 +41,9 @@ For more information on permissions, see [Kusto role-based access control](../..
 |Name|Type|Required|Description|
 |--|--|--|--|
 | *async* | string | | If specified, the command will return and continue ingestion in the background. Use the returned `OperationId` with the `.show operations` command to retrieve the ingestion completion status and results. |
-| *tableName* | string | &check; | The name of the table to ingest data into. The *tableName* is always related to the database in context. |
+| *tableName* | string |  :heavy_check_mark: | The name of the table to ingest data into. The *tableName* is always related to the database in context. |
 | *propertyName*, *propertyValue* | string | | One or more [supported ingestion properties](#supported-ingestion-properties) used to control the ingestion process. |
-| *queryOrCommand* | string | &check; | The text of a query or a management command whose results are used as data to ingest.|
+| *queryOrCommand* | string |  :heavy_check_mark: | The text of a query or a management command whose results are used as data to ingest.|
 
 > [!NOTE]
 > Only `.show` management commands are supported.

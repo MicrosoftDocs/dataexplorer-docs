@@ -23,9 +23,9 @@ The beta distribution is commonly used to study variation in the percentage of s
 
 |Name|Type|Required|Description|
 |--|--|--|--|
-| *x* | int, long, or real | &check;| A value at which to evaluate the function.|
-| *alpha* | int, long, or real | &check;| A parameter of the distribution.|
-| *beta* | int, long, or real | &check;| A parameter of the distribution.|
+| *x* | int, long, or real |  :heavy_check_mark:| A value at which to evaluate the function.|
+| *alpha* | int, long, or real |  :heavy_check_mark:| A parameter of the distribution.|
+| *beta* | int, long, or real |  :heavy_check_mark:| A parameter of the distribution.|
 
 ## Returns
 

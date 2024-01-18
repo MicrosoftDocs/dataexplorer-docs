@@ -24,8 +24,8 @@ You must have at least [Materialized View Admin](../access-control/role-based-ac
 
 | Name                   | Type   | Required | Description                    |
 |------------------------|--------|----------|--------------------------------|
-| *MaterializedViewName* | string | &check;  | Name of the materialized view. |
-| *Boolean* | Bool | &check;  | `autoUpdateSchema` value to be updated. |
+| *MaterializedViewName* | string |  :heavy_check_mark:  | Name of the materialized view. |
+| *Boolean* | Bool |  :heavy_check_mark:  | `autoUpdateSchema` value to be updated. |
 
 ## Returns
 

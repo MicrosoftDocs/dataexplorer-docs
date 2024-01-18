@@ -19,8 +19,8 @@ Counts occurrences of a substring in a string. Plain string matches may overlap;
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-| *source* | string | &check; | The value to search. |
-| *search* | string | &check; | The value or [regular expression](re2.md) to match inside *source*. |
+| *source* | string |  :heavy_check_mark: | The value to search. |
+| *search* | string |  :heavy_check_mark: | The value or [regular expression](re2.md) to match inside *source*. |
 | *kind* | string | | The value `normal` or `regex`. The default is `normal`. |
 
 ## Returns

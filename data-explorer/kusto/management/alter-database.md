@@ -23,8 +23,8 @@ You must have at least [Database Admin](access-control/role-based-access-control
 
 |Name|Type|Required|Description|
 |--|--|--|--|
-|*DatabaseName*|string|&check;|The name of the database to alter.|
-|*DatabasePrettyName*|string|&check;|The new pretty name for the database.|
+|*DatabaseName*|string| :heavy_check_mark:|The name of the database to alter.|
+|*DatabasePrettyName*|string| :heavy_check_mark:|The new pretty name for the database.|
 
 ## Returns
 

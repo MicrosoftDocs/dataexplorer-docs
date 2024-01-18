@@ -21,12 +21,12 @@ This type of aggregation is required for use cases where the metric values are e
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-| *t_col* | string | &check; | The name of the column containing the time stamp of the records.|
-| *y_col* | string | &check; | The name of the column containing the metric value of the records.|
-| *key_col* | string | &check; | The name of the column containing the partition key of the records.|
-| *stime* | datetime | &check; | The start time of the aggregation window.|
-| *etime* | datetime | &check; | The end time of the aggregation window.|
-| *dt* | timespan | &check; | The aggregation time bin.|
+| *t_col* | string |  :heavy_check_mark: | The name of the column containing the time stamp of the records.|
+| *y_col* | string |  :heavy_check_mark: | The name of the column containing the metric value of the records.|
+| *key_col* | string |  :heavy_check_mark: | The name of the column containing the partition key of the records.|
+| *stime* | datetime |  :heavy_check_mark: | The start time of the aggregation window.|
+| *etime* | datetime |  :heavy_check_mark: | The end time of the aggregation window.|
+| *dt* | timespan |  :heavy_check_mark: | The aggregation time bin.|
 
 ## Function definition
 

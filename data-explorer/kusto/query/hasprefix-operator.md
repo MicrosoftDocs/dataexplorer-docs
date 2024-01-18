@@ -29,9 +29,9 @@ When possible, use the case-sensitive [hasprefix_cs](hasprefix-cs-operator.md).
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-| *T* | string | &check; | The tabular input whose records are to be filtered.|
-| *Column* | string | &check; | The column used to filter.|
-| *Expression* | string | &check; | The expression for which to search.|
+| *T* | string |  :heavy_check_mark: | The tabular input whose records are to be filtered.|
+| *Column* | string |  :heavy_check_mark: | The column used to filter.|
+| *Expression* | string |  :heavy_check_mark: | The expression for which to search.|
 
 ## Returns
 
