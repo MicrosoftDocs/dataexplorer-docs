@@ -29,8 +29,8 @@ The output of the function is pairwise distances between entities under the same
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-| *entity* | string | &check; | The name of the input table column containing the names or IDs of the entities for which the distances will be calculated. |
-| *partition* | string | &check; | The name of the input table column containing the partition or scope, so that the distances are calculated for all pairs of entities under the same partition. |
+| *entity* | string |  :heavy_check_mark: | The name of the input table column containing the names or IDs of the entities for which the distances will be calculated. |
+| *partition* | string |  :heavy_check_mark: | The name of the input table column containing the partition or scope, so that the distances are calculated for all pairs of entities under the same partition. |
 
 ## Function definition
 

@@ -19,7 +19,7 @@ Converts polygon or multipolygon planar edges to geodesics by adding intermediat
 
 |Name|Type|Required|Description|
 |--|--|--|--|
-| *polygon* | dynamic | &check; | Polygon or multipolygon in the [GeoJSON format](https://tools.ietf.org/html/rfc7946).|
+| *polygon* | dynamic |  :heavy_check_mark: | Polygon or multipolygon in the [GeoJSON format](https://tools.ietf.org/html/rfc7946).|
 | *tolerance* | int, long, or real | | Defines maximum distance in meters between the original planar edge and the converted geodesic edge chain. Supported values are in the range [0.1, 10000]. If unspecified, the default value is  `10`.|
 | *preserve_crossing* | bool | | If `true`, preserves edge crossing over antimeridian. If unspecified, the default value `false` is used.|
 

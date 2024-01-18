@@ -19,10 +19,10 @@ Calculates the shortest distance in meters between two geospatial coordinates on
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-|*p1_longitude*| real | &check; | The longitude value in degrees of the first geospatial coordinate. A valid value is in the range [-180, +180].|
-|*p1_latitude*| real | &check; | The latitude value in degrees of the first geospatial coordinate. A valid value is in the range [-90, +90].|
-|*p2_longitude*| real | &check; | The longitude value in degrees of the second geospatial coordinate. A valid value is in the range [-180, +180].|
-|*p2_latitude*| real | &check; | The latitude value in degrees of the second geospatial coordinate. A valid value is in the range [-90, +90].|
+|*p1_longitude*| real |  :heavy_check_mark: | The longitude value in degrees of the first geospatial coordinate. A valid value is in the range [-180, +180].|
+|*p1_latitude*| real |  :heavy_check_mark: | The latitude value in degrees of the first geospatial coordinate. A valid value is in the range [-90, +90].|
+|*p2_longitude*| real |  :heavy_check_mark: | The longitude value in degrees of the second geospatial coordinate. A valid value is in the range [-180, +180].|
+|*p2_latitude*| real |  :heavy_check_mark: | The latitude value in degrees of the second geospatial coordinate. A valid value is in the range [-90, +90].|
 
 ## Returns
 

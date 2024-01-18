@@ -25,10 +25,10 @@ The function `series_rolling_fl()` is a [user-defined function (UDF)](../query/f
 
 |Name|Type|Required|Description|
 |--|--|--|--|
-| *y_series* | string | &check; | The name of the column that contains the series to fit.|
-| *y_rolling_series* | string | &check; | The name of the column to store the rolling aggregation series.|
-| *n* | int | &check; | The width of the rolling window.|
-| *aggr* | string | &check; | The name of the aggregation function to use. See [aggregation functions](#aggregation-functions).|
+| *y_series* | string |  :heavy_check_mark: | The name of the column that contains the series to fit.|
+| *y_rolling_series* | string |  :heavy_check_mark: | The name of the column to store the rolling aggregation series.|
+| *n* | int |  :heavy_check_mark: | The width of the rolling window.|
+| *aggr* | string |  :heavy_check_mark: | The name of the aggregation function to use. See [aggregation functions](#aggregation-functions).|
 | *aggr_params* | string | | Optional parameters for the aggregation function.|
 | *center* | bool| |Indicates whether the rolling window is applied symmetrically before and after the current point or applied from the current point backwards. By default, *center* is `false`, for calculation on streaming data.|
 

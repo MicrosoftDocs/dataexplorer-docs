@@ -21,7 +21,7 @@ Decodes a base64 string to a UTF-8 string.
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-| *base64_string* | string | &check; | The value to decode from base64 to UTF-8 string. |
+| *base64_string* | string |  :heavy_check_mark: | The value to decode from base64 to UTF-8 string. |
 
 ## Returns
 

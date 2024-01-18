@@ -25,8 +25,8 @@ You must have at least [Table Admin](access-control/role-based-access-control.md
 
 |Name|Type|Required|Description|
 |--|--|--|--|
-|*TableName*|string|&check;|The name of the table.|
-|*PolicyObject*|string|&check;|A serialized array of one or more JSON policy objects. For more information, see [sharding policy](sharding-policy.md).|
+|*TableName*|string| :heavy_check_mark:|The name of the table.|
+|*PolicyObject*|string| :heavy_check_mark:|A serialized array of one or more JSON policy objects. For more information, see [sharding policy](sharding-policy.md).|
 
 ## Returns
 

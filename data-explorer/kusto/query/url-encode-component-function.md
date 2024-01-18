@@ -21,7 +21,7 @@ For more information about URL encoding and decoding, see [Percent-encoding](htt
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-| *url* | string | &check; | The URL to encode.|
+| *url* | string |  :heavy_check_mark: | The URL to encode.|
 
 ## Returns
 

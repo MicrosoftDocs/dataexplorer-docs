@@ -22,7 +22,7 @@ Converts the input value to a long (signed 64-bit) number representation.
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-| *value* | scalar | &check; | The value to convert to a [long](scalar-data-types/long.md).|
+| *value* | scalar |  :heavy_check_mark: | The value to convert to a [long](scalar-data-types/long.md).|
 
 ## Returns
 

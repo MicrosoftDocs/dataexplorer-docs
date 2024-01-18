@@ -22,9 +22,9 @@ To delete individual records with a system guarantee that the storage artifacts 
 |Name|Type|Required|Description|
 |--|--|--|--|
 |`async`|string||If specified, indicates that the command runs in asynchronous mode.|
-|*TableName*|string|&check;|The name of the table from which to delete records.|
+|*TableName*|string| :heavy_check_mark:|The name of the table from which to delete records.|
 | *propertyName*, *propertyValue* | string | | A comma-separated list of key-value property pairs. See [supported properties](#supported-properties).|
-|*Predicate*|string|&check;|The predicate that returns records to delete, which is specified as a query. See note.|
+|*Predicate*|string| :heavy_check_mark:|The predicate that returns records to delete, which is specified as a query. See note.|
 
 > [!NOTE]
 > The following restrictions apply to the *Predicate*:
@@ -74,9 +74,9 @@ When soft delete is executed on materialized views, the same concepts and limita
 |Name|Type|Required|Description|
 |--|--|--|--|
 |`async`|string||If specified, indicates that the command runs in asynchronous mode.|
-|*MaterializedViewName*|string|&check;|The name of the materialized view from which to delete records.|
+|*MaterializedViewName*|string| :heavy_check_mark:|The name of the materialized view from which to delete records.|
 | *propertyName*, *propertyValue* | string | | A comma-separated list of key-value property pairs. See [supported properties](#supported-properties---materialized-views).|
-|*Predicate*|string|&check;|The predicate that returns records to delete. Specified as a query.|
+|*Predicate*|string| :heavy_check_mark:|The predicate that returns records to delete. Specified as a query.|
 
 > [!NOTE]
 > The same restrictions on the *Predicate* mentioned for table apply here as well.

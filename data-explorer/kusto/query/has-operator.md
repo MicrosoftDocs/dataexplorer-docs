@@ -27,9 +27,9 @@ When possible, use the case-sensitive [has_cs](has-cs-operator.md).
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-| *T* | string | &check; | The tabular input whose records are to be filtered.|
-| *Column* | string | &check; | The column used to filter the records.|
-| *Expression* | scalar or tabular | &check; | An expression for which to search. If the value is a tabular expression and has multiple columns, the first column is used.|
+| *T* | string |  :heavy_check_mark: | The tabular input whose records are to be filtered.|
+| *Column* | string |  :heavy_check_mark: | The column used to filter the records.|
+| *Expression* | scalar or tabular |  :heavy_check_mark: | An expression for which to search. If the value is a tabular expression and has multiple columns, the first column is used.|
 
 ## Returns
 

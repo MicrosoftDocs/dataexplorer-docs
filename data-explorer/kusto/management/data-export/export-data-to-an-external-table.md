@@ -26,9 +26,9 @@ You must have at least [Table Admin](../access-control/role-based-access-control
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-| *externalTableName* | string | &check; | The name of the external table to which to export.|
+| *externalTableName* | string |  :heavy_check_mark: | The name of the external table to which to export.|
 | *propertyName*, *propertyValue* | string | | A comma-separated list of optional [properties](#properties).|
-| *query* | string | &check; | The export query.|
+| *query* | string |  :heavy_check_mark: | The export query.|
 
 ## Properties
 

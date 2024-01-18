@@ -22,7 +22,7 @@ Decodes the input string from base64 and performs zlib decompression.
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-| *string* | string | &check; | The string to decode. The string should have been compressed with zlib and then base64-encoded.|
+| *string* | string |  :heavy_check_mark: | The string to decode. The string should have been compressed with zlib and then base64-encoded.|
 
 ## Returns
 

@@ -19,7 +19,7 @@ Calculates the angle whose cosine is the specified number. Inverse operation of 
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-| *x* | real | &check; | The value used to calculate the arc cosine. |
+| *x* | real |  :heavy_check_mark: | The value used to calculate the arc cosine. |
 
 ## Returns
 

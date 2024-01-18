@@ -21,8 +21,8 @@ The function `series_lag_fl()` is a [user-defined function (UDF)](../query/funct
 
 |Name|Type|Required|Description|
 |--|--|--|--|
-| *y_series* | dynamic | &check; | An array cell of numeric values.|
-| *offset* | int | &check; | An integer specifying the required offset in bins.|
+| *y_series* | dynamic |  :heavy_check_mark: | An array cell of numeric values.|
+| *offset* | int |  :heavy_check_mark: | An integer specifying the required offset in bins.|
 
 ## Function definition
 

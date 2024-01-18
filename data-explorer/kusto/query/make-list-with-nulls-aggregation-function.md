@@ -21,7 +21,7 @@ Creates a `dynamic` array of all the values of *expr* in the group, including nu
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-| *expr* | string | &check; | The expression that to use to create the array. |
+| *expr* | string |  :heavy_check_mark: | The expression that to use to create the array. |
 
 ## Returns
 

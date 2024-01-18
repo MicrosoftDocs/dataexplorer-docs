@@ -19,7 +19,7 @@ Calculates the seasonal component of a series, according to the detected or give
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-| *series* | dynamic | &check; | An array of numeric values.|
+| *series* | dynamic |  :heavy_check_mark: | An array of numeric values.|
 | *period* | int | | The number of bins for each seasonal period. This value can be any positive integer. By default, the value is set to -1, which automatically detects the period using the [series_periods_detect()](series-periods-detect-function.md) with a threshold of *0.7*. If seasonality is not detected, the function returns zeros. If a different value is set, it ignores seasonality and returns a series of zeros.|
 
 ## Returns

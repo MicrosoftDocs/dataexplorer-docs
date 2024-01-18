@@ -20,8 +20,8 @@ The `split()` function takes a string and splits it into substrings based on a s
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-| *source* | string | &check; | The source string that is split according to the given delimiter.|
-| *delimiter* | string | &check; | The delimiter that will be used in order to split the source string.|
+| *source* | string |  :heavy_check_mark: | The source string that is split according to the given delimiter.|
+| *delimiter* | string |  :heavy_check_mark: | The delimiter that will be used in order to split the source string.|
 | *requestedIndex* | int | | A zero-based index. If provided, the returned string array contains the requested substring at the index if it exists.|
 
 ## Returns
