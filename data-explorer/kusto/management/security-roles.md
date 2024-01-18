@@ -33,12 +33,12 @@ The following table describes the level of access granted for each role and show
 
 |Role|Permissions|Databases|Tables|External tables|Materialized views|Functions|
 |--|--|--|--|--|--|--|
-|`admins` | View, modify, and remove the object and subobjects.|&check;|&check;|&check;|&check;|&check;|
-|`users` | View the object and create new subobjects.|&check;|||||
-|`viewers` | View the object where [RestrictedViewAccess](restricted-view-access-policy.md) isn't turned on.|&check;|||||
-|`unrestrictedviewers`| View the object even where [RestrictedViewAccess](restricted-view-access-policy.md) is turned on. The principal must also have `admins`, `viewers` or `users` permissions. |&check;|||||
-|`ingestors` | Ingest data to the object without access to query. |&check;|&check;||||
-|`monitors` | View metadata such as schemas, operations, and permissions.|&check;|||||
+|`admins` | View, modify, and remove the object and subobjects.| :heavy_check_mark:| :heavy_check_mark:| :heavy_check_mark:| :heavy_check_mark:| :heavy_check_mark:|
+|`users` | View the object and create new subobjects.| :heavy_check_mark:|||||
+|`viewers` | View the object where [RestrictedViewAccess](restricted-view-access-policy.md) isn't turned on.| :heavy_check_mark:|||||
+|`unrestrictedviewers`| View the object even where [RestrictedViewAccess](restricted-view-access-policy.md) is turned on. The principal must also have `admins`, `viewers` or `users` permissions. | :heavy_check_mark:|||||
+|`ingestors` | Ingest data to the object without access to query. | :heavy_check_mark:| :heavy_check_mark:||||
+|`monitors` | View metadata such as schemas, operations, and permissions.| :heavy_check_mark:|||||
 
 For a full description of the security roles at each scope, see [Kusto role-based access control](access-control/role-based-access-control.md).
 

@@ -19,7 +19,7 @@ Returns the integer number representing the hour number of the given date.
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-|*date*|datetime|&check;|The date for which to return the hour number.|
+|*date*|datetime| :heavy_check_mark:|The date for which to return the hour number.|
 
 ## Returns
 

@@ -19,7 +19,7 @@ Reverses the value of its `bool` argument.
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-|*expr*|scalar|&check;|An expression that evaluates to a boolean value. The result of this expression will be reversed.|
+|*expr*|scalar| :heavy_check_mark:|An expression that evaluates to a boolean value. The result of this expression will be reversed.|
 
 ## Returns
 

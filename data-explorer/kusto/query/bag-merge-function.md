@@ -19,7 +19,7 @@ Merges `dynamic` property bags into a `dynamic` property bag object with all pro
 
 | Name | Type | Required | Description |
 | -- | -- | -- | -- |
-| *bag1...bagN* | dynamic | &check; | The property bags to merge. The function accepts between 2 to 64 arguments. |
+| *bag1...bagN* | dynamic |  :heavy_check_mark: | The property bags to merge. The function accepts between 2 to 64 arguments. |
 
 ## Returns
 

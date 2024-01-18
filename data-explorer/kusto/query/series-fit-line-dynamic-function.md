@@ -30,7 +30,7 @@ This operator is similar to [series_fit_line](series-fit-line-function.md), but 
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-| *series* | dynamic | &check; | An array of numeric values.|
+| *series* | dynamic |  :heavy_check_mark: | An array of numeric values.|
 
 > [!TIP]
 > The most convenient way of using this function is by applying it to the results of [make-series](make-series-operator.md) operator.

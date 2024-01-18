@@ -19,7 +19,7 @@ Converts the input string representation of the version to a comparable decimal 
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-| *version* | string | &check; | The version to be parsed.|
+| *version* | string |  :heavy_check_mark: | The version to be parsed.|
 
 > [!NOTE]
 >

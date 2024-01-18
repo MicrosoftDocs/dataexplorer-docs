@@ -30,7 +30,7 @@ You must have at least [Table Admin](access-control/role-based-access-control.md
 
 |Name|Type|Required|Description|
 |--|--|--|--|
-|*EntityIdentifier*|string|&check;|The identifier for the column.|
+|*EntityIdentifier*|string| :heavy_check_mark:|The identifier for the column.|
 |*EncodingPolicyType*|string||The type of the encoding policy to apply to the specified column. See [encoding policy types](#encoding-policy-types) for the possible values.|
 
 ### Encoding policy types

@@ -21,7 +21,7 @@ The result string contains only ASCII characters. The result string doesn't star
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-| *input_string* |  `string` | &check; | A string to be encoded to punycode form. The function accepts one string argument.
+| *input_string* |  `string` |  :heavy_check_mark: | A string to be encoded to punycode form. The function accepts one string argument.
 
 ## Returns
 

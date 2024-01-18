@@ -21,7 +21,7 @@ Returns a `dynamic` object that contains the query parameters.
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-| *query* | string | &check; | The query part of the URL. The format must follow URL query standards (key=value& ...).|
+| *query* | string |  :heavy_check_mark: | The query part of the URL. The format must follow URL query standards (key=value& ...).|
 
 ## Returns
 

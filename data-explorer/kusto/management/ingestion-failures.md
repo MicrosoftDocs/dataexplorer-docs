@@ -33,8 +33,8 @@ To return an ingestion failure for a specific operation ID:
 
 |Name|Type|Required|Description|
 |--|--|--|--|
-|*Condition*|string|&check;|The condition to match in order for the ingestion failure to be returned.|
-|*OperationId|guid|&check;|The operation ID of the ingestion failure to return.|
+|*Condition*|string| :heavy_check_mark:|The condition to match in order for the ingestion failure to be returned.|
+|*OperationId|guid| :heavy_check_mark:|The operation ID of the ingestion failure to return.|
 
 ## Returns
 

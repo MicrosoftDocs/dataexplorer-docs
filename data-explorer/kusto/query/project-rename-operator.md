@@ -19,9 +19,9 @@ Renames columns in the output table.
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-| *T* | string | &check; | The input tabular data.|
-| *NewColumnName* | string | &check; | The new column name.|
-| *ExistingColumnName* | string | &check; | The name of the existing column to rename.|
+| *T* | string |  :heavy_check_mark: | The input tabular data.|
+| *NewColumnName* | string |  :heavy_check_mark: | The new column name.|
+| *ExistingColumnName* | string |  :heavy_check_mark: | The name of the existing column to rename.|
 
 ## Returns
 

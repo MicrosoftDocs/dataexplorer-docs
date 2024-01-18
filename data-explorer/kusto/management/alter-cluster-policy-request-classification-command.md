@@ -23,8 +23,8 @@ You must have [Cluster AllDatabasesAdmin](access-control/role-based-access-contr
 
 | Name                         | Type   | Required | Description                                                                                                                                                                                                                       |
 |------------------------------|--------|----------|--------------------------------------------------------------------------------------------------------------------------------|
-| *SerializedPartialPolicy*    | string | &check;  | Define a serialized JSON policy. For policy properties, see [request classification policy](request-classification-policy.md). |
-| *ClassificationFunctionBody* | string | &check;  | The body of the function to use for classifying requests.                                                                      |
+| *SerializedPartialPolicy*    | string |  :heavy_check_mark:  | Define a serialized JSON policy. For policy properties, see [request classification policy](request-classification-policy.md). |
+| *ClassificationFunctionBody* | string |  :heavy_check_mark:  | The body of the function to use for classifying requests.                                                                      |
 
 ## Returns
 

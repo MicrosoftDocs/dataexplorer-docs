@@ -27,7 +27,7 @@ You must have at least [Database Admin](access-control/role-based-access-control
 
 |Name|Type|Required|Description|
 |--|--|--|--|
-|*ControlCommandsScript*|string|&check;| Text with one or more management commands.|
+|*ControlCommandsScript*|string| :heavy_check_mark:| Text with one or more management commands.|
 |*PropertyName*, *PropertyValue*|string|| Optional properties. See [Supported properties](#supported-properties).|
 
 ### Supported properties

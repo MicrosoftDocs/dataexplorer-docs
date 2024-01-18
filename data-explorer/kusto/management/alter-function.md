@@ -24,10 +24,10 @@ You must have at least [Function Admin](../management/access-control/role-based-
 
 |Name|Type|Required|Description|
 |--|--|--|--|
-|*functionName* | string | &check; | The name of the function to alter.|
+|*functionName* | string |  :heavy_check_mark: | The name of the function to alter.|
 | *propertyName*, *propertyValue* | string | | A comma-separated list of key-value property pairs. See [supported properties](#supported-properties).|
 |*parameters*  | string | | A comma-separated list of parameters required by the function. The format for each parameter must be *ParameterName*`:`*ParameterDataType*.|
-|*body*| string | &check; | Zero or more `let` statements followed by a valid CSL expression that is evaluated upon function invocation.|
+|*body*| string |  :heavy_check_mark: | Zero or more `let` statements followed by a valid CSL expression that is evaluated upon function invocation.|
 
 > [!NOTE]
 >

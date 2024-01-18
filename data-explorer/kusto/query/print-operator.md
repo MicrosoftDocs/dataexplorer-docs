@@ -20,7 +20,7 @@ Outputs a single row with one or more scalar expression results as columns.
 | Name | Type | Required | Description |
 |--|--|--|--|
 | *ColumnName* | string | | The name to assign to the output column.|
-| *ScalarExpression* | string | &check; | The expression to evaluate.|
+| *ScalarExpression* | string |  :heavy_check_mark: | The expression to evaluate.|
 
 ## Returns
 

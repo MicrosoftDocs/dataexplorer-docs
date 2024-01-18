@@ -26,7 +26,7 @@ Calculates an estimate of the number of distinct values that are taken by a scal
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-| *expr*| string | &check; | The input whose distinct values are to be counted. |
+| *expr*| string |  :heavy_check_mark: | The input whose distinct values are to be counted. |
 | *accuracy* | int |   | The value that defines the requested estimation accuracy. The default value is `1`. See [Estimation accuracy](#estimation-accuracy) for supported values. |
 
 ## Returns

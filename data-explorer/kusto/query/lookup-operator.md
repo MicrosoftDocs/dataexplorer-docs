@@ -51,9 +51,9 @@ with the following differences:
 
 |Name|Type|Required|Description|
 |--|--|--|--|
-|*LeftTable*|string|&check;|The table or tabular expression that is the basis for the lookup. Denoted as `$left`.|
-|*RightTable*|string|&check;|The table or tabular expression that is used to "populate" new columns in the fact table. Denoted as `$right`.|
-|*Attributes*|string|&check;|A comma-delimited list of one or more rules that describe how rows from *LeftTable* are matched to rows from *RightTable*. Multiple rules are evaluated using the `and` logical operator. See [Rules](#rules).|
+|*LeftTable*|string| :heavy_check_mark:|The table or tabular expression that is the basis for the lookup. Denoted as `$left`.|
+|*RightTable*|string| :heavy_check_mark:|The table or tabular expression that is used to "populate" new columns in the fact table. Denoted as `$right`.|
+|*Attributes*|string| :heavy_check_mark:|A comma-delimited list of one or more rules that describe how rows from *LeftTable* are matched to rows from *RightTable*. Multiple rules are evaluated using the `and` logical operator. See [Rules](#rules).|
 |`kind`|string||Determines how to treat rows in *LeftTable* that have no match in *RightTable*. By default, `leftouter` is used, which means all those rows will appear in the output with null values used for the missing values of *RightTable* columns added by the operator. If `inner` is used, such rows are omitted from the output. Other kinds of join aren't supported by the `lookup` operator.|
 
 ### Rules

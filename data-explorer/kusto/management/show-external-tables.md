@@ -27,7 +27,7 @@ You must have at least Database User, Database Viewer, Database Monitor to run t
 
 |Name|Type|Required|Description|
 |--|--|--|--|
-|*TableName*|string|&check;|The name of the external table to show.|
+|*TableName*|string| :heavy_check_mark:|The name of the external table to show.|
 
 ## Returns
 

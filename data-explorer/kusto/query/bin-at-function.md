@@ -19,9 +19,9 @@ Rounds values down to a fixed-size bin, with control over the bin's starting poi
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-| *value* | int, long, real, timespan, or datetime | &check; | The value to round. |
-| *bin_size* | int, long, real, or timespan | &check; | The size of each bin. |
-| *fixed_point* | int, long, real, timespan, or datetime | &check; | A constant of the same type as *value* indicating one value of *value*, which is a *fixed point* for which `bin_at(fixed_point, bin_size, fixed_point) == fixed_point`.|
+| *value* | int, long, real, timespan, or datetime |  :heavy_check_mark: | The value to round. |
+| *bin_size* | int, long, real, or timespan |  :heavy_check_mark: | The size of each bin. |
+| *fixed_point* | int, long, real, timespan, or datetime |  :heavy_check_mark: | A constant of the same type as *value* indicating one value of *value*, which is a *fixed point* for which `bin_at(fixed_point, bin_size, fixed_point) == fixed_point`.|
 
 > [!NOTE]
 > If *value* is a timespan or datetime, then the *bin_size* must be a timespan.

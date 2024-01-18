@@ -23,7 +23,7 @@ You must have [AllDatabasesAdmin](access-control/role-based-access-control.md) p
 
 |Name|Type|Required|Description|
 |--|--|--|--|
-|*SerializedArrayOfPolicyObjects*|string|&check;|A serialized array with one or more JSON policy objects. For more information, see [capacity policy](capacity-policy.md).|
+|*SerializedArrayOfPolicyObjects*|string| :heavy_check_mark:|A serialized array with one or more JSON policy objects. For more information, see [capacity policy](capacity-policy.md).|
 
 ### Examples
 

@@ -25,10 +25,10 @@ This command requires [Database User](access-control/role-based-access-control.m
 
 |Name|Type|Required|Description|
 |--|--|--|--|
-|*functionName* | string | &check; | The name of the function to create or alter.|
+|*functionName* | string |  :heavy_check_mark: | The name of the function to create or alter.|
 | *propertyName*, *propertyValue* | string | | A comma-separated list of key-value property pairs. See [supported properties](#supported-properties).|
 |*parameters*  | string | | A comma-separated list of parameters required by the function. The format for each parameter must be *ParameterName*`:`*ParameterDataType*.|
-|*body*| string | &check; | Zero or more `let` statements followed by a valid CSL expression that is evaluated upon function invocation.|
+|*body*| string |  :heavy_check_mark: | Zero or more `let` statements followed by a valid CSL expression that is evaluated upon function invocation.|
 
 > [!NOTE]
 > If the function with the provided *functionName* doesn't exist in the database metadata, the command creates a new function. Else, that function will be changed.
