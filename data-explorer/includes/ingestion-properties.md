@@ -5,6 +5,9 @@ ms.date: 07/17/2022
 
 ## Ingestion properties
 
+> [!IMPORTANT]
+> Ingestion properties are used to [batch data together in queued ingestion](../ingest-data-overview.md#continuous-data-ingestion).  Using a lot of different ingestion properties for different data ingestion in the same table can therefore lead to poor performance due to ingestion fragmentation.
+
 The following table lists the properties supported by Azure Data Explorer, describes them, and provides examples:
 
 |Property              |Description                                              |Example                                             |
