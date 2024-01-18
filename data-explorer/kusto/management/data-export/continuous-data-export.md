@@ -7,7 +7,7 @@ ms.date: 06/25/2023
 ---
 # Continuous data export overview
 
-This article describes continuous export of data from Kusto to an [external table](../../query/schema-entities/external-tables.md) with a periodically run query. The results are stored in the external table, which defines the destination, such as Azure Blob Storage, and the schema of the exported data. This process guarantees that all records are exported "exactly once", with some [exceptions](#exactly-once-export). Continuous export isn't designed for low-latency streaming data out of your cluster.
+This article describes continuous export of data from Kusto to an [external table](../../query/schema-entities/external-tables.md) with a periodically run query. The results are stored in the external table, which defines the destination, such as Azure Blob Storage, and the schema of the exported data. This process guarantees that all records are exported "exactly once", with some [exceptions](#exactly-once-export). By default, continuous export runs in a distributed mode, where all nodes export concurrently, so the number of artifacts depends on the number of nodes in the cluster. Continuous export isn't designed for low-latency streaming data out of your cluster.
 
 To enable continuous data export, [create an external table](../external-tables-azurestorage-azuredatalake.md) and then [create a continuous export definition](create-alter-continuous.md) pointing to the external table.
 
@@ -116,21 +116,19 @@ To define continuous export to a delta table, do the following steps:
 
 ## Limitations
 
-* Continuous export can be configured to an external table with the following formats: `CSV`, `TSV`, `JSON`, and `Parquet`.
-* By default, continuous export runs in a distributed mode, where all nodes export concurrently, so the number of artifacts depends on the number of nodes in the cluster.
+* The following formats are allowed on target tables: `CSV`, `TSV`, `JSON`, and `Parquet`.
+* Continuous export isn't designed to work over [materialized views](../materialized-views/materialized-view-overview.md), since a materialized view might be updated, while data exported to storage is always append only and never updated.
 * Continuous export cannot be created on [follower databases](../../../follower.md) since follower databases are read-only and continuous export requires write operations.  
-* Continuous export will only work if records in source table are ingested to the table directly, using an [update policy](../update-policy.md), or [ingest from query commands](../data-ingestion/ingest-from-query.md). If records are moved into the table using [.move extents](../move-extents.md) or using [.rename table](../rename-table-command.md), continuous export might not process these records. See the limitations described in the [Database Cursors](../database-cursor.md#restrictions) page.
+* Records in source table must be ingested to the table directly, using an [update policy](../update-policy.md), or [ingest from query commands](../data-ingestion/ingest-from-query.md). If records are moved into the table using [.move extents](../move-extents.md) or using [.rename table](../rename-table-command.md), continuous export might not process these records. See the limitations described in the [Database Cursors](../database-cursor.md#restrictions) page.
+* If the artifacts used by continuous export are intended to trigger Event Grid notifications, see the [known issues section in the Event Grid documentation](../../../ingest-data-event-grid-overview.md#known-event-grid-issues).
 
+### Cross-database and cross-cluster
+
+* Continuous export doesn't support cross-cluster calls.
+* Continuous export supports cross-database calls only for dimension tables. All fact tables must reside in the local database. See more details in [Export from fact and dimension tables](#export-from-fact-and-dimension-tables).
+* If the continuous export includes cross-database calls, it must be configured with a [managed identity](continuous-export-with-managed-identity.md).
 
 ### Policies
 
 * Continuous export can't be enabled on a table with [Row Level Security policy](../../management/row-level-security-policy.md) unless specific conditions are met. For more information, see [Continuous export from a table with Row Level Security](#continuous-export-from-a-table-with-row-level-security).
 * Continuous export can't be configured on a table with [restricted view access policy](../restricted-view-access-policy.md).
-
-
-* Continuous export will only work if records in source table are ingested to the table directly, using an [update policy](../update-policy.md), or [ingest from query commands](../data-ingestion/ingest-from-query.md). If records are moved into the table using [.move extents](../move-extents.md) or using [.rename table](../rename-table-command.md), continuous export might not process these records. See the limitations described in the [Database Cursors](../database-cursor.md#restrictions) page.
-
-
-
-* If the artifacts used by continuous export are intended to trigger Event Grid notifications, see the [known issues section in the Event Grid documentation](../../../ingest-data-event-grid-overview.md#known-event-grid-issues).
-
