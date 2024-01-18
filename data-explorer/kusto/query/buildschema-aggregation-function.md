@@ -21,7 +21,7 @@ Builds the minimal schema that admits all values of *DynamicExpr*.
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-|*DynamicExpr*| dynamic | &check; | Expression used for the aggregation calculation.
+|*DynamicExpr*| dynamic |  :heavy_check_mark: | Expression used for the aggregation calculation.
 
 ## Returns
 

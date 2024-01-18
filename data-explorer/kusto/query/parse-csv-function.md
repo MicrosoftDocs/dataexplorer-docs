@@ -19,7 +19,7 @@ Splits a given string representing a single record of comma-separated values and
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-| *csv_text* | string | &check; | A single record of comma-separated values. |
+| *csv_text* | string |  :heavy_check_mark: | A single record of comma-separated values. |
 
 > [!NOTE]
 >

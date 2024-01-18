@@ -19,7 +19,7 @@ Converts angle value in radians into value in degrees, using the formula `degree
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-| *radians* | real | &check; | The angle in radians to convert to degrees. |
+| *radians* | real |  :heavy_check_mark: | The angle in radians to convert to degrees. |
 
 ## Returns
 

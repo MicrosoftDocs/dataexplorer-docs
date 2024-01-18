@@ -23,8 +23,8 @@ See also - [min()](min-aggregation-function.md) function, which returns the mini
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-| *Expr* | string | &check; | Expression that will be used for aggregation calculation. |
-| *Predicate* | string | &check; | Expression that will be used to filter rows. |
+| *Expr* | string |  :heavy_check_mark: | Expression that will be used for aggregation calculation. |
+| *Predicate* | string |  :heavy_check_mark: | Expression that will be used to filter rows. |
 
 ## Returns
 

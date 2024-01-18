@@ -32,7 +32,7 @@ Read about the [underlying algorithm (*H*yper*L*og*L*og) and the estimation accu
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-| *expr* |  string | &check; | The expression used for the aggregation calculation. |
+| *expr* |  string |  :heavy_check_mark: | The expression used for the aggregation calculation. |
 | *accuracy* | int |   | The value that controls the balance between speed and accuracy. If unspecified, the default value is `1`. For supported values, see [Estimation accuracy](#estimation-accuracy). |
 
 ## Returns

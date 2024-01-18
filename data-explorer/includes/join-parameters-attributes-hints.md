@@ -7,10 +7,10 @@ ms.date: 06/18/2023
 
 |Name|Type|Required|Description|
 |--|--|--|--|
-|*LeftTable*|string|&check;|The left table or tabular expression, sometimes called the outer table, whose rows are to be merged. Denoted as `$left`.|
+|*LeftTable*|string| :heavy_check_mark:|The left table or tabular expression, sometimes called the outer table, whose rows are to be merged. Denoted as `$left`.|
 |*Hints*|string||Zero or more space-separated join hints in the form of *Name* `=` *Value* that control the behavior of the row-match operation and execution plan. For more information, see [Hints](#hints).
-|*RightTable*|string|&check;|The right table or tabular expression, sometimes called the inner table, whose rows are to be merged. Denoted as `$right`.|
-|*Conditions*|string|&check;|Determines how rows from *LeftTable* are matched with rows from *RightTable*. If the columns you want to match have the same name in both tables, use the syntax `ON` *ColumnName*. Otherwise, use the syntax `ON $left.`*LeftColumn* `==` `$right.`*RightColumn*. To specify multiple conditions, you can either use the "and" keyword or separate them with commas. If you use commas, the conditions are evaluated using the "and" logical operator.|
+|*RightTable*|string| :heavy_check_mark:|The right table or tabular expression, sometimes called the inner table, whose rows are to be merged. Denoted as `$right`.|
+|*Conditions*|string| :heavy_check_mark:|Determines how rows from *LeftTable* are matched with rows from *RightTable*. If the columns you want to match have the same name in both tables, use the syntax `ON` *ColumnName*. Otherwise, use the syntax `ON $left.`*LeftColumn* `==` `$right.`*RightColumn*. To specify multiple conditions, you can either use the "and" keyword or separate them with commas. If you use commas, the conditions are evaluated using the "and" logical operator.|
 
 > [!TIP]
 > For best performance, if one table is always smaller than the other, use it as the left side of the join.

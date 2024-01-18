@@ -23,7 +23,7 @@ It's better to use the parse_json() function over the [extract_json()](./extract
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-| *json* | string | &check; | The string in the form of a [JSON-formatted value](https://json.org/) or a [dynamic](./scalar-data-types/dynamic.md) property bag to parse as JSON.|
+| *json* | string |  :heavy_check_mark: | The string in the form of a [JSON-formatted value](https://json.org/) or a [dynamic](./scalar-data-types/dynamic.md) property bag to parse as JSON.|
 
 ## Returns
 

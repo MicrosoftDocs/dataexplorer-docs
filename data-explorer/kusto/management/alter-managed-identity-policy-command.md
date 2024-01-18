@@ -28,8 +28,8 @@ The command to alter the policy requires [AllDatabasesAdmin](access-control/role
 
 |Name|Type|Required|Description|
 |--|--|--|--|
-|*ArrayOfPolicyObjects*|array|&check;|An array with zero or more [ManagedIdentity policy](managed-identity-policy.md#the-managedidentity-policy-object) objects.|
-|*DatabaseName*|string|&check;|The name of the database.|
+|*ArrayOfPolicyObjects*|array| :heavy_check_mark:|An array with zero or more [ManagedIdentity policy](managed-identity-policy.md#the-managedidentity-policy-object) objects.|
+|*DatabaseName*|string| :heavy_check_mark:|The name of the database.|
 
 > [!NOTE]
 > Policy objects must define the *ObjectId* and *AllowedUsages* properties. Other properties are automatically populated.

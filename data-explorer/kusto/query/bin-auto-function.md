@@ -19,13 +19,13 @@ Rounds values down to a fixed-size bin, with control over the bin size and start
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-| *value* | int, long, real, timespan, or datetime | &check; |  The value to round into bins. |
+| *value* | int, long, real, timespan, or datetime |  :heavy_check_mark: |  The value to round into bins. |
 
 To control the bin size and starting point, set the following parameters before using the function.
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-| *query_bin_auto_size* | int, long, real, or timespan | &check; |  Indicates the size of each bin.|
+| *query_bin_auto_size* | int, long, real, or timespan |  :heavy_check_mark: |  Indicates the size of each bin.|
 | *query_bin_auto_at* | int, long, real, or timespan | |  Indicates one value of *value* which is a "fixed point" for which `bin_auto(fixed_point)` == `fixed_point`. Default is 0.|
 
 ## Returns

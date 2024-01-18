@@ -19,7 +19,7 @@ Calculates the element-wise natural logarithm function (base-e) of the numeric s
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-| *series* | dynamic | &check; | An array of numeric values on which the natural logarithm function is applied.|
+| *series* | dynamic |  :heavy_check_mark: | An array of numeric values on which the natural logarithm function is applied.|
 
 ## Returns
 

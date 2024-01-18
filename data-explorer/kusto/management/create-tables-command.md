@@ -25,8 +25,8 @@ You must have at least [Database User](access-control/role-based-access-control.
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-| *tableName* | string | &check; | The name of the table to create. |
-| *columnName*, *columnType* | string | &check; | The name of a column mapped to the type of data in that column. The list of mappings defines the output column schema.|
+| *tableName* | string |  :heavy_check_mark: | The name of the table to create. |
+| *columnName*, *columnType* | string |  :heavy_check_mark: | The name of a column mapped to the type of data in that column. The list of mappings defines the output column schema.|
 | *propertyName*, *propertyValue* | string | | A comma-separated list of key-value property pairs. See [supported properties](#supported-properties).|
 
 ### Supported properties

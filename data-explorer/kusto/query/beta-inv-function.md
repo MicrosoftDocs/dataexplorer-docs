@@ -23,9 +23,9 @@ The beta distribution can be used in project planning to model probable completi
 
 |Name|Type|Required|Description|
 |--|--|--|--|
-| *probability* | int, long, or real | &check;| A probability associated with the beta distribution.|
-| *alpha* | int, long, or real | &check;| A parameter of the distribution.|
-| *beta* | int, long, or real | &check;| A parameter of the distribution.|
+| *probability* | int, long, or real |  :heavy_check_mark:| A probability associated with the beta distribution.|
+| *alpha* | int, long, or real |  :heavy_check_mark:| A parameter of the distribution.|
+| *beta* | int, long, or real |  :heavy_check_mark:| A parameter of the distribution.|
 
 ## Returns
 

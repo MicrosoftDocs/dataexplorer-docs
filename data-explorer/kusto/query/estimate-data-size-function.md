@@ -19,7 +19,7 @@ Returns an estimated data size in bytes of the selected columns of the tabular e
 
 |Name|Type|Required|Description|
 |--|--|--|--|
-|*columns*|string|&check;|One or more comma-separated column references in the source tabular expression to use for data size estimation. To include all columns, use the wildcard (`*`) character.|
+|*columns*|string| :heavy_check_mark:|One or more comma-separated column references in the source tabular expression to use for data size estimation. To include all columns, use the wildcard (`*`) character.|
 
 ## Returns
 

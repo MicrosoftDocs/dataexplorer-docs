@@ -19,9 +19,9 @@ Extracts a slice of a dynamic array.
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-| *array* | dynamic | &check; | The array from which to extract the slice.|
-| *start*| int | &check; | The start index of the slice (inclusive). Negative values are converted to `array_length`+`start`.|
-| *end*| int | &check; | The last index of the slice. (inclusive). Negative values are converted to `array_length`+`end`.|
+| *array* | dynamic |  :heavy_check_mark: | The array from which to extract the slice.|
+| *start*| int |  :heavy_check_mark: | The start index of the slice (inclusive). Negative values are converted to `array_length`+`start`.|
+| *end*| int |  :heavy_check_mark: | The last index of the slice. (inclusive). Negative values are converted to `array_length`+`end`.|
 
 > [!NOTE]
 > Out of bounds indices are ignored.

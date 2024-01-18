@@ -27,8 +27,8 @@ The following parameters description is a summary. For more information, see [Mo
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-| *reduce_col* | string | &check; | The name of the string column the function is applied to. |
-| *model_name* | string | &check; | The name of the output model. |
+| *reduce_col* | string |  :heavy_check_mark: | The name of the string column the function is applied to. |
+| *model_name* | string |  :heavy_check_mark: | The name of the output model. |
 | *use_logram* | bool | | Enable or disable the Logram algorithm. Default value is `true`. |
 | *use_drain* | bool | | Enable or disable the Drain algorithm. Default value is `true`. |
 | *custom_regexes* | dynamic | | A dynamic array containing pairs of regular expression and replacement symbols to be searched in each input row, and replaced with their respective matching symbol. Default value is `dynamic([])`. The default regex table replaces numbers, IPs and GUIDs. |

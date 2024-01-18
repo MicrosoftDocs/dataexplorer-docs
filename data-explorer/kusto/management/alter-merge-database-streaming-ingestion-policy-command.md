@@ -29,8 +29,8 @@ You must have at least [Database Admin](access-control/role-based-access-control
 
 |Name|Type|Required|Description|
 |--|--|--|--|
-|*DatabaseName*|string|&check;|The name of the database for which to alter the streaming ingestion policy.|
-|*ArrayOfPolicyObjects*|string|&check;|A serialized array of one or more JSON policy objects. For more information, see [streaming ingestion policy](streaming-ingestion-policy.md).|
+|*DatabaseName*|string| :heavy_check_mark:|The name of the database for which to alter the streaming ingestion policy.|
+|*ArrayOfPolicyObjects*|string| :heavy_check_mark:|A serialized array of one or more JSON policy objects. For more information, see [streaming ingestion policy](streaming-ingestion-policy.md).|
 
 ## Returns
 

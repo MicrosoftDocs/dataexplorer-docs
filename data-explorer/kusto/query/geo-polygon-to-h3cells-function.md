@@ -19,7 +19,7 @@ Converts polygon to H3 cells. This function is a useful geospatial join and visu
 
 |Name|Type|Required|Description|
 |--|--|--|--|
-| *polygon* | dynamic | &check; | Polygon or multipolygon in the [GeoJSON format](https://tools.ietf.org/html/rfc7946).|
+| *polygon* | dynamic |  :heavy_check_mark: | Polygon or multipolygon in the [GeoJSON format](https://tools.ietf.org/html/rfc7946).|
 | *resolution* | int | | Defines the requested cell resolution. Supported values are in the range [0, 15]. If unspecified, the default value `6` is used.|
 | *radius* | real | | Buffer radius in meters. If unspecified, the default value `0` is used.|
 

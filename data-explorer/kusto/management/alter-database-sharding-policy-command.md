@@ -25,8 +25,8 @@ You must have at least [Database Admin](access-control/role-based-access-control
 
 |Name|Type|Required|Description|
 |--|--|--|--|
-|*DatabaseName*|string|&check;|The name of the database for which to alter the sharding policy.|
-|*PolicyObject*|string|&check;|A policy object that defines the sharding policy. For more information, see the [sharding policy](../management/sharding-policy.md).|
+|*DatabaseName*|string| :heavy_check_mark:|The name of the database for which to alter the sharding policy.|
+|*PolicyObject*|string| :heavy_check_mark:|A policy object that defines the sharding policy. For more information, see the [sharding policy](../management/sharding-policy.md).|
 
 ## Returns
 

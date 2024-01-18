@@ -40,7 +40,7 @@ To show your roles:
 
 |Name|Type|Required|Description|
 |--|--|--|--|
-| *MaterializedViewName* | string | &check; | The name of the materialized view for which to list principals.|
+| *MaterializedViewName* | string |  :heavy_check_mark: | The name of the materialized view for which to list principals.|
 
 ### Example
 
@@ -70,9 +70,9 @@ This section provides syntax, parameters, and examples for adding and removing p
 
 |Name|Type|Required|Description|
 |--|--|--|--|
-| *Action* | string | &check; | The command `.add`, `.drop`, or `.set`.<br/>`.add` adds the specified principals, `.drop` removes the specified principals, and `.set` adds the specified principals and removes all previous ones.|
-| *MaterializedViewName* | string | &check; | The name of the materialized view for which to add principals.|
-| *Principal* | string | &check; | One or more principals. For guidance on how to specify these principals, see [Referencing security principals](./access-control/referencing-security-principals.md).|
+| *Action* | string |  :heavy_check_mark: | The command `.add`, `.drop`, or `.set`.<br/>`.add` adds the specified principals, `.drop` removes the specified principals, and `.set` adds the specified principals and removes all previous ones.|
+| *MaterializedViewName* | string |  :heavy_check_mark: | The name of the materialized view for which to add principals.|
+| *Principal* | string |  :heavy_check_mark: | One or more principals. For guidance on how to specify these principals, see [Referencing security principals](./access-control/referencing-security-principals.md).|
 | `skip-results` | string | | If provided, the command won't return the updated list of materialized view principals.|
 | *Description* | string | | Text to describe the change that will be displayed when using the `.show` command.|
 

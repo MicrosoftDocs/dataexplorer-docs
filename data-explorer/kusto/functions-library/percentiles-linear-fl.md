@@ -20,8 +20,8 @@ The function accepts a table containing the column to calculate on and an option
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-| *val_col* | string | &check; | The name of the column that contains the values with which to calculate the percentiles.|
-| *pct_arr* | dynamic | &check; | A numerical array containing the required percentiles. Each percentile should be in the range [0-100]. |
+| *val_col* | string |  :heavy_check_mark: | The name of the column that contains the values with which to calculate the percentiles.|
+| *pct_arr* | dynamic |  :heavy_check_mark: | A numerical array containing the required percentiles. Each percentile should be in the range [0-100]. |
 | *aggr_col* | string | | The name of the column that contains the grouping key.|
 
 ## Function definition
