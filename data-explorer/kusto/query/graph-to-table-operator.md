@@ -1,8 +1,6 @@
 ---
 title: graph-to-table operator (Preview)
 description: Learn how to use the graph-to-table operator to export nodes or edges from a graph to tables.
-ms.author: rocohen
-ms.service: data-explorer
 ms.reviewer: alexans
 ms.topic: reference
 ms.date: 08/30/2023

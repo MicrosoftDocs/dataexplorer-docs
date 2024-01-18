@@ -1,7 +1,7 @@
 ---
 title: Graph operators (Preview)
 description: Learn how to use KQL graph operators.
-ms.reviewer: rocohen
+ms.reviewer: alexans
 ms.topic: reference
 ms.date: 09/03/2023
 ---
