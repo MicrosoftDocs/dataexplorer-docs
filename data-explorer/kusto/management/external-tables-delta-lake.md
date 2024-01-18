@@ -3,7 +3,7 @@ title: Create and alter Azure Storage delta external tables - Azure Data Explore
 description: This article describes how to create and alter delta external tables
 ms.reviewer: igborodi
 ms.topic: reference
-ms.date: 05/08/2023
+ms.date: 01/18/2024
 ---
 # Create and alter delta external tables on Azure Storage
 
@@ -39,8 +39,10 @@ To `.create-or-alter` an external table using managed identity authentication re
 > * The path format is automatically inferred from the partitioning information. For more information, see [Path format](external-tables-azurestorage-azuredatalake.md#path-format)
 
 > [!TIP]
->  For a custom schema, you can use the [infer_storage_schema](../query/infer-storage-schema-plugin.md) plugin to infer the schema based on the external file content.
+> For a custom schema, you can use the [infer_storage_schema](../query/infer-storage-schema-plugin.md) plugin to infer the schema based on the external file content.
 
+> [!IMPORTANT]
+> Delta table partitioning isn’t supported in [Continuous data export](data-export/continuous-data-export.md#continuous-export-to-delta-table---preview).
 
 ## Authentication and authorization
 
@@ -51,7 +53,7 @@ The supported authentication methods are the same as those supported by [Azure S
 ## Optional properties
 
 | Property         | Type     | Description       |
-|------------------|----------|-------------------------------------------------------------------------------------|
+|------------------|----------|------------------------------------------------------------------------------------|
 | `folder`         | `string` | Table's folder                                                                     |
 | `docString`      | `string` | String documenting the table                                                       |
 | `namePrefix`     | `string` | If set, indicates the prefix of the files. On write operations, all files will be written with this prefix. On read operations, only files with this prefix are read. |
