@@ -21,7 +21,7 @@ To convert `timespan` to `int`, see [Convert timespan to integer](#convert-times
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-| *date* | datetime | &check; | The datetime for which to determine the day of week.|
+| *date* | datetime |  :heavy_check_mark: | The datetime for which to determine the day of week.|
 
 ## Returns
 

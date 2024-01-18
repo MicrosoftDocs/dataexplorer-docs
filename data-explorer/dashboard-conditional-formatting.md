@@ -47,11 +47,11 @@ To color your results by condition:
     | Field | Required | Description |
     |--|--|--|
     | **Rule name** |  | A name for the rule. If not defined, the condition column is used. |
-    | **Color style** | &check; | Determines the color formatting: **Bold** or **Light**. |
-    | **Column** | &check; | The column for the condition definition. |
-    | **Operator** | &check; | The operator for the condition definition. |
-    | **Value** | &check; | The value for the condition definition. |
-    | **Color** | &check; | The color to apply to the rows that meet the condition: **Red**, **Yellow**, **Green**, or **Blue**. |
+    | **Color style** |  :heavy_check_mark: | Determines the color formatting: **Bold** or **Light**. |
+    | **Column** |  :heavy_check_mark: | The column for the condition definition. |
+    | **Operator** |  :heavy_check_mark: | The operator for the condition definition. |
+    | **Value** |  :heavy_check_mark: | The value for the condition definition. |
+    | **Color** |  :heavy_check_mark: | The color to apply to the rows that meet the condition: **Red**, **Yellow**, **Green**, or **Blue**. |
     | **Tag** |  | A tag to add to the formatted column. |
     | **Icon** |  | An icon to add to the formatted column. |
 
@@ -59,8 +59,8 @@ To color your results by condition:
 
     | Field | Required | Description |
     |--|--|--|
-    | **Apply options** | &check; | Apply the formatting to cells in a specific column or to the entire row. |
-    | **Column**| &check; | The column to which to apply the formatting.|
+    | **Apply options** |  :heavy_check_mark: | Apply the formatting to cells in a specific column or to the entire row. |
+    | **Column**|  :heavy_check_mark: | The column to which to apply the formatting.|
     | **Hide text** | | A toggle option to hide text within a formatted column. This option is only available when applying formatting to cells, not to rows. Instead of coloring the cell and displaying the text, the cell is colored without revealing its content.|
 
     > [!NOTE]
@@ -83,12 +83,12 @@ To color your results by value:
     | Field | Required | Description |
     |--|--|--|
     | **Rule name** |  | A name for the rule. If not defined, the condition column is used. |
-    | **Column** | &check; | The column to be used for the condition definition. |
-    | **Theme** | &check; | The color theme: **Traffic lights**, **Cold**, **Warm**, **Blue**, **Red**, or **Yellow**. The default is **Traffic lights**. |
+    | **Column** |  :heavy_check_mark: | The column to be used for the condition definition. |
+    | **Theme** |  :heavy_check_mark: | The color theme: **Traffic lights**, **Cold**, **Warm**, **Blue**, **Red**, or **Yellow**. The default is **Traffic lights**. |
     | **Min value** |  | Minimum value for conditional coloring. |
     | **Max value** |  | Maximum value for conditional coloring. |
     | **Reverse colors** |  | A toggle option that defines the direction of the gradient. |
-    | **Apply options** | &check; | Apply the formatting to cells in a specific column or to the entire row. |
+    | **Apply options** |  :heavy_check_mark: | Apply the formatting to cells in a specific column or to the entire row. |
 
 1. Select **Save**. In the following example, the color changes based on the value in the `Event` column.
 

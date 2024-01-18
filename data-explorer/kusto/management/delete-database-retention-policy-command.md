@@ -23,7 +23,7 @@ You must have at least [Database Admin](access-control/role-based-access-control
 
 |Name|Type|Required|Description|
 |--|--|--|--|
-|*DatabaseName*|string|&check;|The name of the database for which to delete the retention policy.|
+|*DatabaseName*|string| :heavy_check_mark:|The name of the database for which to delete the retention policy.|
 
 ### Example
 

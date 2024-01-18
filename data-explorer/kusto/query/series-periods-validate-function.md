@@ -21,8 +21,8 @@ Often a metric measuring the traffic of an application is characterized by a wee
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-| *series* | dynamic | &check; | An array of numeric values, typically the resulting output of [make-series](make-series-operator.md) or [make_list](make-list-aggregation-function.md) operators.|
-| *period1*, *period2*, etc.| real | &check; | The periods to validate in units of the bin size. For example, if the series is in 1h bins, a weekly period is 168 bins. At least one period is required.|
+| *series* | dynamic |  :heavy_check_mark: | An array of numeric values, typically the resulting output of [make-series](make-series-operator.md) or [make_list](make-list-aggregation-function.md) operators.|
+| *period1*, *period2*, etc.| real |  :heavy_check_mark: | The periods to validate in units of the bin size. For example, if the series is in 1h bins, a weekly period is 168 bins. At least one period is required.|
 
 > [!IMPORTANT]
 >

@@ -19,7 +19,7 @@ Computes log of the absolute value of the [gamma function](https://en.wikipedia.
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-|*number*| real | &check; | The number for which to calculate the gamma.|
+|*number*| real |  :heavy_check_mark: | The number for which to calculate the gamma.|
 
 ## Example
 

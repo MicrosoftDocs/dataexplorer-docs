@@ -17,7 +17,7 @@ Encodes Internationalized Domain Name in Applications (IDNA) string to [Punycode
 ## Parameters
 | Name | Type | Required | Description |
 |--|--|--|--|
-| *domain* |  `string` | &check; | A string to be encoded to punycode form. The function accepts one string argument.
+| *domain* |  `string` |  :heavy_check_mark: | A string to be encoded to punycode form. The function accepts one string argument.
 
 ## Returns
 

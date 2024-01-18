@@ -23,7 +23,7 @@ Changes the reference of the query to a remote cluster. To access a database wit
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-| *name* | string | &check; | The name of the cluster to reference. The value can be specified as a fully qualified domain name, or the name of the cluster without the `.kusto.windows.net` suffix. The value can't be the result of subquery evaluation. |
+| *name* | string |  :heavy_check_mark: | The name of the cluster to reference. The value can be specified as a fully qualified domain name, or the name of the cluster without the `.kusto.windows.net` suffix. The value can't be the result of subquery evaluation. |
 
 ## Examples
 

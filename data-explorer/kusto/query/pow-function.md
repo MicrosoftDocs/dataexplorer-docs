@@ -19,8 +19,8 @@ Returns a result of raising to power
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-| *base*| int, real, or long | &check; | The base value.|
-| *exponent*| int, real, or long | &check; | The exponent value.|
+| *base*| int, real, or long |  :heavy_check_mark: | The base value.|
+| *exponent*| int, real, or long |  :heavy_check_mark: | The exponent value.|
 
 ## Returns
 

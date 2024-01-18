@@ -24,8 +24,8 @@ For more information about the plugin, see [Azure Digital Twins query plugin for
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-| *AdtInstanceEndpoint* | string | &check; | The Azure Digital Twins instance endpoint to be queried. |
-| *AdtQuery* | string | &check; | The query to run against the Azure Digital Twins endpoint. This query is written in a custom SQL-like query language for Azure Digital Twins, called the Azure Digital Twins query language. For more information, see [Query language for Azure Digital Twins](/azure/digital-twins/concepts-query-language).|
+| *AdtInstanceEndpoint* | string |  :heavy_check_mark: | The Azure Digital Twins instance endpoint to be queried. |
+| *AdtQuery* | string |  :heavy_check_mark: | The query to run against the Azure Digital Twins endpoint. This query is written in a custom SQL-like query language for Azure Digital Twins, called the Azure Digital Twins query language. For more information, see [Query language for Azure Digital Twins](/azure/digital-twins/concepts-query-language).|
 
 ## Authentication and authorization
 

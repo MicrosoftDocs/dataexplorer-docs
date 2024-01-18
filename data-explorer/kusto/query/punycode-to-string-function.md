@@ -19,7 +19,7 @@ Decodes input string from [punycode](https://en.wikipedia.org/wiki/Punycode) for
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-| *input_string* | `string` | &check; | A string to be decoded from punycode form. The function accepts one string argument.
+| *input_string* | `string` |  :heavy_check_mark: | A string to be decoded from punycode form. The function accepts one string argument.
 
 ## Returns
 

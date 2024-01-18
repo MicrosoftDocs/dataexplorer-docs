@@ -25,12 +25,12 @@ The following table describes the properties of the ManagedIdentity policy objec
 
 | Property      | Type   | Required | Description                                                                   |
 |---------------|--------|----------|-------------------------------------------------------------------------------|
-| ObjectId      | string | &check;  | Either the actual object ID of the managed identity or the reserved keyword `system` to reference the System Managed Identity of the cluster on which the command is run. |
+| ObjectId      | string |  :heavy_check_mark:  | Either the actual object ID of the managed identity or the reserved keyword `system` to reference the System Managed Identity of the cluster on which the command is run. |
 | ClientId      | string | Not applicable | The client ID of the managed identity. |
 | TenantId      | string | Not applicable | The tenant ID of the managed identity. |
 | DisplayName   | string | Not applicable | The display name of the managed identity. |
 | IsSystem      | bool   | Not applicable | A Boolean value indicating true if the identity is a System Managed Identity; false if otherwise. |
-| AllowedUsages | string | &check;  | A list of comma-separated allowed usage values for the managed identity. See [managed identity usages](#managed-identity-usages). |
+| AllowedUsages | string |  :heavy_check_mark:  | A list of comma-separated allowed usage values for the managed identity. See [managed identity usages](#managed-identity-usages). |
 
 The following is an example of a ManagedIdentity policy object:
 

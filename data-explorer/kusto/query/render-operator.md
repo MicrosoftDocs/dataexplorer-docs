@@ -42,8 +42,8 @@ three kinds of columns:
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-| *T* | string | &check; | Input table name.
-| *visualization* | string | &check; | Indicates the kind of [visualization](#visualization) to use. Must be one of the supported values in the following list.|
+| *T* | string |  :heavy_check_mark: | Input table name.
+| *visualization* | string |  :heavy_check_mark: | Indicates the kind of [visualization](#visualization) to use. Must be one of the supported values in the following list.|
 | *propertyName*, *propertyValue* | string | | A comma-separated list of key-value property pairs. See [supported properties](#supported-properties).|
 
 ### Visualization

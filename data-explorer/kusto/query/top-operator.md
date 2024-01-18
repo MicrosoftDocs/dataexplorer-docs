@@ -19,9 +19,9 @@ Returns the first *N* records sorted by the specified columns.
 
 |Name|Type|Required|Description|
 |--|--|--|--|
-| *T* | string | &check; | The tabular input to sort. |
-| *NumberOfRows* | int | &check; | The number of rows of *T* to return.|
-| *Expression* | string | &check; | The scalar expression by which to sort.|
+| *T* | string |  :heavy_check_mark: | The tabular input to sort. |
+| *NumberOfRows* | int |  :heavy_check_mark: | The number of rows of *T* to return.|
+| *Expression* | string |  :heavy_check_mark: | The scalar expression by which to sort.|
 | `asc` or `desc` | string | | Controls whether the selection is from the "bottom" or "top" of the range. Default `desc`.
 | `nulls first` or `nulls last`  | string | | Controls whether null values appear at the "bottom" or "top" of the range. Default for `asc` is `nulls first`. Default for `desc` is `nulls last`.|
 

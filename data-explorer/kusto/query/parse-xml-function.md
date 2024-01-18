@@ -19,7 +19,7 @@ Interprets a `string` as an XML value, converts the value to a JSON, and returns
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-| *xml*| string | &check; | The XML-formatted string value to parse.|
+| *xml*| string |  :heavy_check_mark: | The XML-formatted string value to parse.|
 
 ## Returns
 

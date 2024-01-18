@@ -21,7 +21,7 @@ The function `series_exp_smoothing_fl()` is a [user-defined function (UDF)](../q
 
 |Name|Type|Required|Description|
 |--|--|--|--|
-|*y_series*|dynamic|&check;|An array cell of numeric values.|
+|*y_series*|dynamic| :heavy_check_mark:|An array cell of numeric values.|
 |*alpha*|real||A value in the range [0-1] that specifies the weight of the last point vs. the weight of the previous points, which is `1 - alpha`. The default is 0.5.|
 
 ## Function definition

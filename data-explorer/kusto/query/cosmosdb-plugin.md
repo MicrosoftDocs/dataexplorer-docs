@@ -23,8 +23,8 @@ The `cosmosdb_sql_request` plugin sends a SQL query to an Azure Cosmos DB SQL ne
 
 | Name | Type | Required | Description |
 |---|---|---|---|
-| *ConnectionString* | string | &check; | The connection string that points to the Azure Cosmos DB collection to query. It must include *AccountEndpoint*, *Database*, and *Collection*. It may include *AccountKey* if a master key is used for authentication. For more information, see [Authentication and authorization](#authentication-and-authorization).</br> **Example:** `'AccountEndpoint=https://cosmosdbacc.documents.azure.com/ ;Database=MyDatabase;Collection=MyCollection;AccountKey=' h'R8PM...;'` |
-| *SqlQuery*| string | &check; | The query to execute. |
+| *ConnectionString* | string |  :heavy_check_mark: | The connection string that points to the Azure Cosmos DB collection to query. It must include *AccountEndpoint*, *Database*, and *Collection*. It may include *AccountKey* if a master key is used for authentication. For more information, see [Authentication and authorization](#authentication-and-authorization).</br> **Example:** `'AccountEndpoint=https://cosmosdbacc.documents.azure.com/ ;Database=MyDatabase;Collection=MyCollection;AccountKey=' h'R8PM...;'` |
+| *SqlQuery*| string |  :heavy_check_mark: | The query to execute. |
 | *SqlParameters* | dynamic | | The property bag object to pass as parameters along with the query. Parameter names must begin with `@`. |
 | *OutputSchema* | | | The names and types of the expected columns of the `cosmosdb_sql_request` plugin output. Use the following syntax: `(` *ColumnName* `:` *ColumnType* [`,` ...] `)`. Specifying this parameter enables multiple query optimizations. |
 | *Options* | dynamic | | A property bag object of advanced settings. If an `AccountKey` isn't provided in the *ConnectionString*, then the `armResourceId` field of this parameter is required. For more information, see [Supported options](#supported-options). |

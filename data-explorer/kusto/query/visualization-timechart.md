@@ -24,7 +24,7 @@ A time chart visual is a type of line graph. The first column of the query is th
 
 | Name | Type | Required | Description |
 | -- | -- | -- | -- |
-| *T* | string | &check; | Input table name.
+| *T* | string |  :heavy_check_mark: | Input table name.
 | *propertyName*, *propertyValue* | string | | A comma-separated list of key-value property pairs. See [supported properties](#supported-properties).|
 
 ::: zone pivot="azuredataexplorer, fabric"

@@ -23,7 +23,7 @@ You must have at least [Table Admin](access-control/role-based-access-control.md
 
 | Name        | Type   | Required | Description        |
 |-------------|--------|----------|--------------------|
-| *TableName* | string | &check;  | The name of the table for which to delete the row level security policy. |
+| *TableName* | string |  :heavy_check_mark:  | The name of the table for which to delete the row level security policy. |
 
 ## Returns
 

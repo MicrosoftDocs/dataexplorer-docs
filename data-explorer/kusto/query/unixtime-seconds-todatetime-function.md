@@ -19,7 +19,7 @@ Converts unix-epoch seconds to UTC datetime.
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-| *seconds* | real | &check; | The epoch timestamp in seconds. A `datetime` value that occurs before the epoch time (1970-01-01 00:00:00) has a negative timestamp value.|
+| *seconds* | real |  :heavy_check_mark: | The epoch timestamp in seconds. A `datetime` value that occurs before the epoch time (1970-01-01 00:00:00) has a negative timestamp value.|
 
 ## Returns
 

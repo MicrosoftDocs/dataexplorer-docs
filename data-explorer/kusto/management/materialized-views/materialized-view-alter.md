@@ -27,9 +27,9 @@ You must have at least [Materialized View Admin](../access-control/role-based-ac
 | Name                            | Type   | Required | Description                                                                                                   |
 |---------------------------------|--------|----------|---------------------------------------------------------------------------------------------------------------|
 | *PropertyName*, *PropertyValue* | string |          | List of properties in the form of name and value pairs, from the list of [supported properties](#properties). |
-| *MaterializedViewName*          | string | &check;  | Name of the materialized view.                                                                                |
-| *SourceTableName*               | string | &check;  | Name of source table on which the view is defined.                                                            |
-| *Query*                         | string | &check;  | Query definition of the materialized view.                                                                    |
+| *MaterializedViewName*          | string |  :heavy_check_mark:  | Name of the materialized view.                                                                                |
+| *SourceTableName*               | string |  :heavy_check_mark:  | Name of source table on which the view is defined.                                                            |
+| *Query*                         | string |  :heavy_check_mark:  | Query definition of the materialized view.                                                                    |
 
 ## Properties
 

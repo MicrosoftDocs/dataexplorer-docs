@@ -21,7 +21,7 @@ An expression containing dynamic numerical array is the input. The function repl
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-| *series* | dynamic | &check; | An array of numeric values.|
+| *series* | dynamic |  :heavy_check_mark: | An array of numeric values.|
 | *missing_value_placeholder* | scalar | | Specifies a placeholder for missing values. The default value is `double(`*null*`)`. The value can be of any type that will be converted to actual element types. `double`(*null*), `long`(*null*) and `int`(*null*) have the same meaning.|
 
 ## Returns

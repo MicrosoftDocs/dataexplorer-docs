@@ -19,7 +19,7 @@ Returns a combined hash value of multiple values.
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-| *s1*, *s2*, ..., *sN* | scalar | &check; | The values to hash together.|
+| *s1*, *s2*, ..., *sN* | scalar |  :heavy_check_mark: | The values to hash together.|
 
 ## Returns
 

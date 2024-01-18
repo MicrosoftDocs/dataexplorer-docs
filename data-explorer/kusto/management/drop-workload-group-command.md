@@ -23,7 +23,7 @@ You must have [Cluster AllDatabasesAdmin](access-control/role-based-access-contr
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-| *WorkloadGroupName* | string | &check; | The name of the workload group. This name can be specified with bracket notation to escape spaces. For example, ['WorkLoad Group Name']. |
+| *WorkloadGroupName* | string |  :heavy_check_mark: | The name of the workload group. This name can be specified with bracket notation to escape spaces. For example, ['WorkLoad Group Name']. |
 
 ## Returns
 
