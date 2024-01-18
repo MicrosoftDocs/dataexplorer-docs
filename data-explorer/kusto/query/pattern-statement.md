@@ -46,14 +46,14 @@ For more information, see [Working with middle-tier applications](#work-with-mid
 
 | Name | Type | Required | Description |
 | -- | -- | -- | -- |
-| *PatternName* | string | &check; | The name of the pattern. |
-| *ArgName* | string | &check; | The name of the argument. Patterns can have one or more arguments. |
-| *ArgType* | string | &check; | The scalar data type of the *ArgName* argument. Possible values: `string` |
+| *PatternName* | string |  :heavy_check_mark: | The name of the pattern. |
+| *ArgName* | string |  :heavy_check_mark: | The name of the argument. Patterns can have one or more arguments. |
+| *ArgType* | string |  :heavy_check_mark: | The scalar data type of the *ArgName* argument. Possible values: `string` |
 | *PathName* | string | | The name of the path argument. Patterns can have no path or one path. |
 | *PathArgType* | string | | The type of the *PathArgType* argument. Possible values: `string` |
-| *ArgValue* | string | &check; | The *ArgName* and optional *PathName* tuple values to be mapped to an *expression*.  |
+| *ArgValue* | string |  :heavy_check_mark: | The *ArgName* and optional *PathName* tuple values to be mapped to an *expression*.  |
 | *PathValue* | string | | The value to map for *PathName*. |
-| *expression* | string | &check; | A tabular or lambda expression that references a function returning tabular data. For example: `Logs | where Timestamp > ago(1h)` |
+| *expression* | string |  :heavy_check_mark: | A tabular or lambda expression that references a function returning tabular data. For example: `Logs | where Timestamp > ago(1h)` |
 
 ## Examples
 

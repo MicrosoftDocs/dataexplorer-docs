@@ -19,7 +19,7 @@ Returns the square root of the input.
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-| *number* | int, long, or real | &check; | The number for which to calculate the square root.|
+| *number* | int, long, or real |  :heavy_check_mark: | The number for which to calculate the square root.|
 
 ## Returns
 

@@ -21,8 +21,8 @@ Extracts the requested date part as an integer value.
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-| *part* | string | &check; | Measurement of time to extract from *date*. See [possible values](#possible-values-of-part).|
-| *date* | datetime | &check; | The full date from which to extract *part*. |
+| *part* | string |  :heavy_check_mark: | Measurement of time to extract from *date*. See [possible values](#possible-values-of-part).|
+| *date* | datetime |  :heavy_check_mark: | The full date from which to extract *part*. |
 
 ### Possible values of part
 

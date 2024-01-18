@@ -21,7 +21,7 @@ The table() function references a table by providing its name as an expression o
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-|*TableName* | string | &check; | The name of the table being referenced. The value of this expression must be constant at the point of call to the function, meaning it cannot vary by the data context.|
+|*TableName* | string |  :heavy_check_mark: | The name of the table being referenced. The value of this expression must be constant at the point of call to the function, meaning it cannot vary by the data context.|
 | *DataScope* | string | | Used to restrict the table reference to data according to how this data falls under the table's effective [cache policy](../management/cache-policy.md). If used, the actual argument must be one of the [Valid data scope values](#valid-data-scope-values).
 
 ### Valid data scope values

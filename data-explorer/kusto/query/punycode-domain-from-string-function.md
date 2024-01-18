@@ -19,7 +19,7 @@ Decodes input string from encoded Internationalized Domain Name in Applications 
 
 | Name | Type | Required | Description |
 |---|---|---|---|
-| *encoded_string* | `string` | &check; | An IDNA string to be decoded from punycode form. The function accepts one string argument.
+| *encoded_string* | `string` |  :heavy_check_mark: | An IDNA string to be decoded from punycode form. The function accepts one string argument.
 
 ## Returns
 

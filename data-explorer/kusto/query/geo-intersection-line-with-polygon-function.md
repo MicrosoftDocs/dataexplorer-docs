@@ -19,8 +19,8 @@ Calculates the intersection of a line or a multiline with a polygon or a multipo
 
 |Name|Type|Required|Description|
 |--|--|--|--|
-| *lineString* | dynamic | &check; | A LineString or MultiLineString in the [GeoJSON format](https://tools.ietf.org/html/rfc7946).|
-| *polygon* | dynamic | &check; | A Polygon or MultiPolygon in the [GeoJSON format](https://tools.ietf.org/html/rfc7946).|
+| *lineString* | dynamic |  :heavy_check_mark: | A LineString or MultiLineString in the [GeoJSON format](https://tools.ietf.org/html/rfc7946).|
+| *polygon* | dynamic |  :heavy_check_mark: | A Polygon or MultiPolygon in the [GeoJSON format](https://tools.ietf.org/html/rfc7946).|
 
 ## Returns
 

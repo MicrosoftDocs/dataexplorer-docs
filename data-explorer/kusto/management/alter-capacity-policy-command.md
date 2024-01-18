@@ -28,7 +28,7 @@ You must have [AllDatabasesAdmin](access-control/role-based-access-control.md) p
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-| *PolicyObject* | string | &check; | A JSON policy object. See [capacity policy](capacity-policy.md) for policy properties. |
+| *PolicyObject* | string |  :heavy_check_mark: | A JSON policy object. See [capacity policy](capacity-policy.md) for policy properties. |
 
 ## Returns
 

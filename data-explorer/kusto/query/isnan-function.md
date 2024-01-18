@@ -19,7 +19,7 @@ Returns whether the input is a Not-a-Number (NaN) value.
 
 | Name | Type | Required | Description |
 | -- | -- | -- | -- |
-|*number*|scalar|&check;| The value to check if NaN.|
+|*number*|scalar| :heavy_check_mark:| The value to check if NaN.|
 
 ## Returns
 

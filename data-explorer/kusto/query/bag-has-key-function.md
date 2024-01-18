@@ -19,8 +19,8 @@ Checks whether a dynamic property bag object contains a given key.
 
 | Name | Type | Required | Description |
 | -- | -- | -- | -- |
-| *bag* | dynamic | &check; | The property bag to search. |
-| *key* | string | &check; | The key for which to search.  Search for a nested key using the [JSONPath](jsonpath.md) notation. Array indexing isn't supported. |
+| *bag* | dynamic |  :heavy_check_mark: | The property bag to search. |
+| *key* | string |  :heavy_check_mark: | The key for which to search.  Search for a nested key using the [JSONPath](jsonpath.md) notation. Array indexing isn't supported. |
 
 ## Returns
 

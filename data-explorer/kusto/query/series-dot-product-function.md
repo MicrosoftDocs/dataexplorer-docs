@@ -34,7 +34,7 @@ The function `series_dot_product()` takes two numeric series as input, and calcu
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-| *series1, series2* | dynamic |  &check; | Input arrays with numeric data, to be element-wise multiplied and then summed into a value of type `real`.
+| *series1, series2* | dynamic |   :heavy_check_mark: | Input arrays with numeric data, to be element-wise multiplied and then summed into a value of type `real`.
 
 ## Returns
 

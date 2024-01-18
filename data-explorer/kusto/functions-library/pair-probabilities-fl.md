@@ -35,9 +35,9 @@ The function `pair_probabilities_fl()` is a [UDF (user-defined function)](../que
 
 |Name|Type|Required|Description|
 |--|--|--|--|
-|*A*|scalar|&check;|The first categorical variable.|
-|*B*|scalar|&check;|The second categorical variable.|
-|*Scope*|scalar|&check;|The field that contains the scope, so that the probabilities for *A* and *B* are calculated independently for each scope value.|
+|*A*|scalar| :heavy_check_mark:|The first categorical variable.|
+|*B*|scalar| :heavy_check_mark:|The second categorical variable.|
+|*Scope*|scalar| :heavy_check_mark:|The field that contains the scope, so that the probabilities for *A* and *B* are calculated independently for each scope value.|
 
 ## Function definition
 

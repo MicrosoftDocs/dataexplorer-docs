@@ -19,7 +19,7 @@ Calculates the element-wise greater (`>`) logic operation of two numeric series 
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-| *series1*, *series2* | dynamic | &check; | The arrays of numeric values to be element-wise compared.|
+| *series1*, *series2* | dynamic |  :heavy_check_mark: | The arrays of numeric values to be element-wise compared.|
 
 ## Returns
 

@@ -25,7 +25,7 @@ View all mappings or all mappings of a specific type:
 
 |Name|Type|Required|Description|
 |--|--|--|--|
-|*EntityName*|string|&check;|The name of the table or database for which to show the ingestion mapping(s).|
+|*EntityName*|string| :heavy_check_mark:|The name of the table or database for which to show the ingestion mapping(s).|
 |*MappingKind*|string||The type of mapping(s) to view. Possible values: `csv`, `json`, `avro`, `w3clogfile`, `parquet`, and `orc`.|
 |*MappingName*|string||The name of the mapping to view. This argument is required if you specify that you want to view a single `mapping` instead of multiple `mappings` for the entity. See [syntax options](#syntax).|
 

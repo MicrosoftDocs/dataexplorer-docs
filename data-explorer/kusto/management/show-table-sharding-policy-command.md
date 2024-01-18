@@ -25,7 +25,7 @@ You must have at least Database User, Database Viewer, or Database Monitor permi
 
 |Name|Type|Required|Description|
 |--|--|--|--|
-|*TableName*|string|&check;|The name of the table for which to show the policy details. A wildcard (`*`) denotes all tables.|
+|*TableName*|string| :heavy_check_mark:|The name of the table for which to show the policy details. A wildcard (`*`) denotes all tables.|
 
 ## Returns
 

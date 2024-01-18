@@ -19,7 +19,7 @@ Returns the end of the day containing the date, shifted by an offset, if provide
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-| *date* | datetime | &check;| The date to find the end of. |
+| *date* | datetime |  :heavy_check_mark:| The date to find the end of. |
 | *offset* | int | | The number of offset days from *date*. Default is 0. |
 
 ## Returns

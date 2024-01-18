@@ -23,8 +23,8 @@ You must have at least [Table Admin](access-control/role-based-access-control.md
 
 | Name                     | Type   | Required | Description                        |
 |--------------------------|--------|----------|------------------------------------|
-| *TableName*              | string | &check;  | Name of the table.                 |
-| *SerializedPolicyObject* | string | &check;  | JSON representation of the policy. |
+| *TableName*              | string |  :heavy_check_mark:  | Name of the table.                 |
+| *SerializedPolicyObject* | string |  :heavy_check_mark:  | JSON representation of the policy. |
 
 ## Returns
 

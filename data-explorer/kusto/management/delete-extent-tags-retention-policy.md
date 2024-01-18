@@ -25,8 +25,8 @@ You must have at least [Database Admin](access-control/role-based-access-control
 
 |Name|Type|Required|Description|
 |--|--|--|--|
-|*TableName*|string|&check;|The name of the table for which to delete the extent tags retention policy.|
-|*DatabaseName*|string|&check;|The name of the database for which to delete the extent tags retention policy.|
+|*TableName*|string| :heavy_check_mark:|The name of the table for which to delete the extent tags retention policy.|
+|*DatabaseName*|string| :heavy_check_mark:|The name of the database for which to delete the extent tags retention policy.|
 
 ## Example
 

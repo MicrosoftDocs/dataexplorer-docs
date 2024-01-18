@@ -367,6 +367,7 @@ var sharedKeyCredential = new StorageSharedKeyCredential(accountName, accountKey
 var dfsUri = "https://" + accountName + ".dfs.core.windows.net";
 var dataLakeServiceClient = new DataLakeServiceClient(new Uri(dfsUri), sharedKeyCredential);
 // Get a client to the the filesystem
+
 var dataLakeFileSystemClient = dataLakeServiceClient.GetFileSystemClient(fileSystemName);
 // Rename a file in the file system
 var dataLakeFileClient = dataLakeFileSystemClient.GetFileClient(sourceFilePath);

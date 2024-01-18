@@ -30,8 +30,8 @@ You must have at least [Database Admin](access-control/role-based-access-control
 | Name | Type | Required | Description |
 |--|--|--|--|
 | `ifnotexists` | string | | If specified, the table will only be created if it doesn't already exist.|
-| *tableName* | string | &check; | The name of the table to create. The case-senestive name must be unique in the database. |
-| *otherTable* | string | &check; | The name of an existing table to use as the source for the columns, docstring, and folder of the table being created. |
+| *tableName* | string |  :heavy_check_mark: | The name of the table to create. The case-senestive name must be unique in the database. |
+| *otherTable* | string |  :heavy_check_mark: | The name of an existing table to use as the source for the columns, docstring, and folder of the table being created. |
 | *propertyName*, *propertyValue* | string | | A comma-separated list of key-value property pairs. See [supported properties](#supported-properties).|
 
 ### Supported properties

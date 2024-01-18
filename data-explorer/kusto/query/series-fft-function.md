@@ -21,7 +21,7 @@ The series_fft() function takes a series of complex numbers in the time/spatial 
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-| *x_real* | dynamic | &check; | A numeric array representing the real component of the series to transform.|
+| *x_real* | dynamic |  :heavy_check_mark: | A numeric array representing the real component of the series to transform.|
 | *x_imaginary* | dynamic | | A similar array representing the imaginary component of the series. This parameter should only be specified if the input series contains complex numbers.|
 
 ## Returns

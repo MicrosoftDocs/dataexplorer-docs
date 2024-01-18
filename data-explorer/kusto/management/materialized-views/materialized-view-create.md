@@ -41,9 +41,9 @@ You must have at least [Database User](../access-control/role-based-access-contr
 | Name                            | Type   | Required | Description                                                                                                                                                                                                                          |
 |---------------------------------|--------|----------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | *PropertyName*, *PropertyValue* | string |          | List of properties in the form of name and value pairs, from the list of [supported properties](#properties).                                                                                                                        |
-| *MaterializedViewName*          | string | &check;  | Name of the materialized view. The view name can't conflict with table or function names in the same database and must adhere to the [identifier naming rules](../../query/schema-entities/entity-names.md#identifier-naming-rules). |
-| *SourceTableName*               | string | &check;  | Name of source table on which the view is defined.                                                                                                                                                                                   |
-| *Query*                         | string | &check;  | Query definition of the materialized view. For more information and limitations, see [Query parameter](#query-parameter) section.                                                                                                                                                                                                      |
+| *MaterializedViewName*          | string |  :heavy_check_mark:  | Name of the materialized view. The view name can't conflict with table or function names in the same database and must adhere to the [identifier naming rules](../../query/schema-entities/entity-names.md#identifier-naming-rules). |
+| *SourceTableName*               | string |  :heavy_check_mark:  | Name of source table on which the view is defined.                                                                                                                                                                                   |
+| *Query*                         | string |  :heavy_check_mark:  | Query definition of the materialized view. For more information and limitations, see [Query parameter](#query-parameter) section.                                                                                                                                                                                                      |
 
 > [!NOTE]
 > If the materialized view already exists:
@@ -80,9 +80,9 @@ You can create a materialized view over another materialized view only when the 
 | Name                            | Type   | Required | Description                                                                                                                                                                                                                          |
 |---------------------------------|--------|----------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | *PropertyName*, *PropertyValue* | string |          | List of properties in the form of name and value pairs, from the list of [supported properties](#properties).                                                                                                                        |
-| *MaterializedViewName*          | string | &check;  | Name of the materialized view. The view name can't conflict with table or function names in the same database and must adhere to the [identifier naming rules](../../query/schema-entities/entity-names.md#identifier-naming-rules). |
-| *SourceMaterializedViewName*    | string | &check;  | Name of source materialized view on which the view is defined.                                                                                                                                                                       |
-| *Query*                         | string | &check;  | Query definition of the materialized view.                                                                                                                                                                                           |
+| *MaterializedViewName*          | string |  :heavy_check_mark:  | Name of the materialized view. The view name can't conflict with table or function names in the same database and must adhere to the [identifier naming rules](../../query/schema-entities/entity-names.md#identifier-naming-rules). |
+| *SourceMaterializedViewName*    | string |  :heavy_check_mark:  | Name of source materialized view on which the view is defined.                                                                                                                                                                       |
+| *Query*                         | string |  :heavy_check_mark:  | Query definition of the materialized view.                                                                                                                                                                                           |
 
 ## Examples
 
@@ -467,7 +467,7 @@ If the operation is no longer in progress when the `.cancel operation` command i
 
 | Name          | Type | Required | Description                                                                   |
 |---------------|------|----------|-------------------------------------------------------------------------------|
-| `operationId` | guid | &check;  | The operation ID returned from the `.create async materialized-view` command. |
+| `operationId` | guid |  :heavy_check_mark:  | The operation ID returned from the `.create async materialized-view` command. |
 
 #### Output
 

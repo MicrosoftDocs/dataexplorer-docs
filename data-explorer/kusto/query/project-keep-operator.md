@@ -19,8 +19,8 @@ Select what columns from the input to keep in the output. Only the columns that 
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-| *T* | string | &check; | The tabular input from which to keep columns.|
-| *ColumnNameOrPattern* | string | &check; | One or more column names or column wildcard-patterns to be kept in the output.|
+| *T* | string |  :heavy_check_mark: | The tabular input from which to keep columns.|
+| *ColumnNameOrPattern* | string |  :heavy_check_mark: | One or more column names or column wildcard-patterns to be kept in the output.|
 
 ## Returns
 
