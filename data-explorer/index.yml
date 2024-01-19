@@ -215,6 +215,8 @@ landingContent:
             url: /azure/architecture/example-scenario/security/security-log-retention-azure-data-explorer
           - text: Data analytics for automotive test fleets
             url: /azure/architecture/industries/automotive/automotive-telemetry-analytics
+          - text: Real-Time analytics with Azure Service Bus
+            url: /azure/architecture/solution-ideas/articles/analytics-service-bus
   # Card
   - title: Development
     linkLists:
