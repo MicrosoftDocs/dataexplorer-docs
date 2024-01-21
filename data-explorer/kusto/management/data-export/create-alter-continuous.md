@@ -32,7 +32,7 @@ You must have at least [Database Admin](../access-control/role-based-access-cont
 > [!NOTE]
 > If the target external table uses [impersonation](../../api/connection-strings/storage-authentication-methods.md#impersonation) authentication, you must specify a managed identity to run the continuous export. For more information, see [Use a managed identity to run a continuous export job](continuous-export-with-managed-identity.md).
 
-## Properties
+## Supported properties
 
 | Property | Type | Description |
 |--|--|--|

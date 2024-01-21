@@ -30,7 +30,7 @@ You must have at least [Table Admin](../access-control/role-based-access-control
 | *propertyName*, *propertyValue* | string | | A comma-separated list of optional [properties](#properties).|
 | *query* | string |  :heavy_check_mark: | The export query.|
 
-## Properties
+## Supported properties
 
 The following properties are supported as part of the export to external table command.
 

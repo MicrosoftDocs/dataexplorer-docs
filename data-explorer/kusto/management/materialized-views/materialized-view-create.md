@@ -52,7 +52,7 @@ You must have at least [Database User](../access-control/role-based-access-contr
 > * If the `ifnotexists` flag isn't specified, an error is returned.
 > * To alter an existing materialized view, use the [.alter materialized-view](materialized-view-alter.md) command.
 
-## Properties
+## Supported properties
 
 The following properties are supported in the `with` `(`*PropertyName* `=` *PropertyValue*`)` clause. All properties are optional.
 

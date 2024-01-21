@@ -64,7 +64,7 @@ This visualization supports splitting into multiple y-axis values:
 
 ::: zone pivot="azuremonitor"
 
-### Properties 
+### Supported properties
 
 All properties are optional.
 

@@ -28,7 +28,7 @@ You must have at least [Table Admin](../access-control/role-based-access-control
 |*SqlConnectionString*|string| :heavy_check_mark:|The connection string for the SQL endpoint and database. The string must follow the `ADO.NET` connection string format. For security reasons, the connection string is restricted.|
 |*PropertyName*, *PropertyValue*|string||A list of optional [properties](#properties).|
 
-## Properties
+## Supported properties
 
 |Name               |Values           |Description|
 |-------------------|-----------------|-----------|

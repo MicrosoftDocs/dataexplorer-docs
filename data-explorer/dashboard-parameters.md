@@ -45,7 +45,7 @@ To create a parameter:
 
 1. Fill in the relevant [properties](#properties) for your parameter.
 
-### Properties
+### Supported properties
 
 In the **Add parameter** pane, configure the following properties:
 

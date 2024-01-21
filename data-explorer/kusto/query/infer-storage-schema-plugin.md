@@ -34,7 +34,7 @@ The following table lists the supported authentication methods and any required 
 |--|--|--|--|
 | *Options* | dynamic |  :heavy_check_mark: |A property bag specifying the [properties of the request](#properties-of-the-request).|
 
-### Properties of the request
+### Supported properties of the request
 
 | Name | Type | Required | Description |
 |--|--|--|--|

@@ -32,7 +32,7 @@ You must have at least [Database Viewer](../access-control/role-based-access-con
 > [!NOTE]
 > We highly recommended exporting data to storage that is co-located in the same region as the cluster itself. This includes data that is exported so it can be transferred to another cloud service in other regions. Writes should be done locally, while reads can happen remotely.
 
-## Properties
+## Supported properties
 
 | Property | Type | Description |
 |--|--|--|
