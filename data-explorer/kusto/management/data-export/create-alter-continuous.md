@@ -38,7 +38,7 @@ You must have at least [Database Admin](../access-control/role-based-access-cont
 |--|--|--|
 | `intervalBetweenRuns` | Timespan | The time span between continuous export executions. Must be greater than 1 minute. |
 | `forcedLatency` | Timespan | An optional period of time to limit the query to records that were ingested only prior to this period (relative to current time). This property is useful if, for example, the query performs some aggregations/joins and you would like to make sure all relevant records have already been ingested before running the export. |
-| `sizeLimit` | `long` | The size limit in bytes of a single storage artifact being written (prior to compression). Allowed range is 100 MB (default) to 1 GB. |
+| `sizeLimit` | `long` | The size limit in bytes of a single storage artifact being written (prior to compression). Valid range: 100 MB (default) to 1 GB. |
 | `distributed` | `bool` | Disable/enable distributed export. Setting to false is equivalent to `single` distribution hint. Default is true. |
 | `parquetRowGroupSize` | `int` | Relevant only when data format is Parquet. Controls the row group size in the exported files. Default row group size is 100,000 records. |
 | `useNativeParquetWriter` | `bool` | Use the new export implementation when exporting to Parquet, this implementation is a more performant, resource light export mechanism. Note that an exported 'datetime' column is currently unsupported by Synapse SQL 'COPY'. Default is false. |
