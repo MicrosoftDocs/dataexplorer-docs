@@ -7,7 +7,7 @@ ms.date: 03/01/2023
 ---
 # .alter materialized-view lookback
 
-Alters the `lookback` value of an existing materialized view. For more information on the lookback property, see [materialized view create command properties](materialized-view-create.md#properties).
+Alters the `lookback` value of an existing materialized view. For more information on the lookback property, see [materialized view create command properties](materialized-view-create.md#supported-properties).
 
 ## Permissions
 

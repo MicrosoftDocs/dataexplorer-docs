@@ -26,12 +26,12 @@ You must have at least [Materialized View Admin](../access-control/role-based-ac
 
 | Name                            | Type   | Required | Description                                                                                                   |
 |---------------------------------|--------|----------|---------------------------------------------------------------------------------------------------------------|
-| *PropertyName*, *PropertyValue* | string |          | List of properties in the form of name and value pairs, from the list of [supported properties](#properties). |
+| *PropertyName*, *PropertyValue* | string |          | List of properties in the form of name and value pairs, from the list of [supported properties](#supported-properties). |
 | *MaterializedViewName*          | string |  :heavy_check_mark:  | Name of the materialized view.                                                                                |
 | *SourceTableName*               | string |  :heavy_check_mark:  | Name of source table on which the view is defined.                                                            |
 | *Query*                         | string |  :heavy_check_mark:  | Query definition of the materialized view.                                                                    |
 
-## Properties
+## Supported properties
 
 The following properties are supported in the `with` `(`*PropertyName* `=` *PropertyValue*`)` clause. All properties are optional.
 

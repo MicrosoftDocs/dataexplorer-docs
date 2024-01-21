@@ -122,7 +122,7 @@ StormEvents
 
 ::: zone pivot="azuremonitor"
 
-### Properties 
+### Supported properties
 
 All properties are optional.
 

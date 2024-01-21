@@ -27,16 +27,16 @@ You must have at least [Table Admin](../access-control/role-based-access-control
 | Name | Type | Required | Description |
 |--|--|--|--|
 | *externalTableName* | string |  :heavy_check_mark: | The name of the external table to which to export.|
-| *propertyName*, *propertyValue* | string | | A comma-separated list of optional [properties](#properties).|
+| *propertyName*, *propertyValue* | string | | A comma-separated list of optional [properties](#supported-properties).|
 | *query* | string |  :heavy_check_mark: | The export query.|
 
-## Properties
+## Supported properties
 
 The following properties are supported as part of the export to external table command.
 
 | Property | Type | Description| Default
 |---|---|---|---|
-| `sizeLimit`     |`long`  |The size limit in bytes of a single storage artifact being written (prior to compression). A full row group of size `parquetRowGroupSize` will be written before checking whether this row group has reached the size limit and should start a new artifact. Allowed range is 100 MB (default) to 1 GB.|
+| `sizeLimit`     |`long`  |The size limit in bytes of a single storage artifact being written (prior to compression). A full row group of size `parquetRowGroupSize` will be written before checking whether this row group has reached the size limit and should start a new artifact. Valid range: 100 MB (default) to 1 GB.|
 |`distributed`   |`bool`  |Disable/enable distributed export. Setting to false is equivalent to `single` distribution hint. | Default is `true`.
 | `distribution` | `string` |Distribution hint (`single`, `per_node`, `per_shard`).  See more details in [Distribution settings](#distribution-settings)| Default is `per_node`.
 |`distributionKind`   |`string`  |Optionally switches to uniform distribution when the external table is partitioned by string partition. Valid values are `uniform` or `default`. See more details in [Distribution settings](#distribution-settings)|
