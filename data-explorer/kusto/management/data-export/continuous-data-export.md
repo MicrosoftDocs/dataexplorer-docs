@@ -116,6 +116,7 @@ To define continuous export to a delta table, do the following steps:
 
     > [!IMPORTANT]
     > The schema of the delta table must be in sync with the continuous export query.  If the underlying delta table changes, the export might start failing with unexpected behavior.
+    
 ## Limitations
 
 **General**:
