@@ -25,11 +25,11 @@ The function `binomial_test_fl()` is a [UDF (user-defined function)](../query/fu
 
 |Name|Type|Required|Description|
 |--|--|--|--|
-| *successes* | string |  :heavy_check_mark: | The name of the column containing the number of success results.|
-| *trials* | string |  :heavy_check_mark: | The name of the column containing the total number of trials.|
-| *p_value* | string |  :heavy_check_mark: | The name of the column to store the results.|
-| *success_prob* | real | | The success probability. The default is 0.5.|
-| *alt_hypotheis* | string | | The alternate hypothesis can be `two-sided`, `greater`, or `less`. The default is `two-sided`.|
+| *successes* | `string` |  :heavy_check_mark: | The name of the column containing the number of success results.|
+| *trials* | `string` |  :heavy_check_mark: | The name of the column containing the total number of trials.|
+| *p_value* | `string` |  :heavy_check_mark: | The name of the column to store the results.|
+| *success_prob* | `real` | | The success probability. The default is 0.5.|
+| *alt_hypotheis* | `string` | | The alternate hypothesis can be `two-sided`, `greater`, or `less`. The default is `two-sided`.|
 
 ## Function definition
 
