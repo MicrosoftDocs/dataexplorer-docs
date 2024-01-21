@@ -11,7 +11,7 @@ This plugin infers schema of external data, and returns it as CSL schema string.
 
 ## Authentication and authorization
 
-In the [properties of the request](#properties-of-the-request), you specify storage connection strings to access. Each storage connection string specifies the authorization method to use for access to the storage. Depending on the authorization method, the principal may need to be granted permissions on the external storage to perform the schema inference.
+In the [properties of the request](#supported-properties-of-the-request), you specify storage connection strings to access. Each storage connection string specifies the authorization method to use for access to the storage. Depending on the authorization method, the principal may need to be granted permissions on the external storage to perform the schema inference.
 
 The following table lists the supported authentication methods and any required permissions by storage type.
 
@@ -32,7 +32,7 @@ The following table lists the supported authentication methods and any required 
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-| *Options* | dynamic |  :heavy_check_mark: |A property bag specifying the [properties of the request](#properties-of-the-request).|
+| *Options* | dynamic |  :heavy_check_mark: |A property bag specifying the [properties of the request](#supported-properties-of-the-request).|
 
 ### Supported properties of the request
 
