@@ -75,6 +75,6 @@ The following command creates a new or alters an existing materialized view call
 
 If the materialized view does not exist, this command behaves just like [.create materialized-view](materialized-view-create.md).
 
-For more information, see the [Query parameter](materialized-view-create.md#query-parameter) and [Properties](materialized-view-create.md#properties) sections.
+For more information, see the [Query parameter](materialized-view-create.md#query-parameter) and [Properties](materialized-view-create.md#supported-properties) sections.
 
 [!INCLUDE [materialized-view-alter-limitations.md](../../../includes/materialized-view-alter-limitations.md)]
