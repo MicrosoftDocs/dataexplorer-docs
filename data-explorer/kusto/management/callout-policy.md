@@ -10,7 +10,7 @@ ms.date: 05/24/2023
 Your cluster can communicate with external services in many different scenarios.
 Cluster administrators can manage the authorized domains for external calls by updating the cluster's callout policy.
 
-## Properties of a callout
+## Supported properties of a callout
 
 A callout policy is composed of the following properties:
 
