@@ -17,11 +17,13 @@ You must have [Database User](access-control/role-based-access-control.md) permi
 
 `.show` `external` `table` *ExternalTableName* `artifacts` [`limit` *MaxResults*]
 
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+
 ## Parameters
 
 |Name|Type|Required|Description|
 |--|--|--|--|
-|*ExternalTableName*|string|&check;|The name of the external table.|
+|*ExternalTableName*|string| :heavy_check_mark:|The name of the external table.|
 |*MaxResults*|int||The maximum number of results to return.|
 
 > [!TIP]

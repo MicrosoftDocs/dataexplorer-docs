@@ -8,7 +8,7 @@ ms.date: 04/20/2023
 
 # .alter extent tags command
 
-The command runs in the context of a specific database. It alters the specified [extent tags](extents-overview.md#extent-tagging) of all of the extents returned by the query.
+The command runs in the context of a specific database. It alters the specified [extent tags](extent-tags.md) of all of the extents returned by the query.
 
 The extents whose tags should be altered are specified using a Kusto query that returns a record set with a column called "ExtentId".
 
@@ -32,13 +32,15 @@ You must have at least [Table Admin](access-control/role-based-access-control.md
 > [!NOTE]
 > For better performance, set extentCreatedOnFrom and extentCreatedOnTo parameters to the smallest possible range 
 
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+
 ## Parameters
 
 |Name|Type|Required|Description|
 |--|--|--|--|
 |`async`|string||If specified, the command will run asynchronously. The return output when run with `async` is an operation ID (guid) that can be used to monitor the operation's status. Use [`.show operations`](operations.md#show-operations) or [`.show operation details`](operations.md#show-operation-details).|
-|*Tags*|string|&check;|One or more comma-separated extent tags. Each tag should be enclosed in single quotes (`'`).|
-|*Query*|string|&check;|Specifies the extents whose tags should be altered.|
+|*Tags*|string| :heavy_check_mark:|One or more comma-separated extent tags. Each tag should be enclosed in single quotes (`'`).|
+|*Query*|string| :heavy_check_mark:|Specifies the extents whose tags should be altered.|
 
 ## Restrictions
 

@@ -10,7 +10,7 @@ ms.date: 05/15/2023
 Removes one or more tables from the database.
 
 > [!NOTE]
-> The `.drop` `table` command only soft deletes the data. That is, data can't be queried, but is still recoverable from persistent storage. The underlying storage artifacts are hard-deleted according to the `recoverability` property in the [retention policy](../management/retentionpolicy.md) that was in effect at the time the data was ingested into the table.
+> The `.drop` `table` command only soft deletes the data. That is, data can't be queried, but is still recoverable from persistent storage. The underlying storage artifacts are hard-deleted according to the `recoverability` property in the [retention policy](../management/retention-policy.md) that was in effect at the time the data was ingested into the table.
 
 ## Permissions
 
@@ -22,12 +22,14 @@ You must have at least [Table Admin](access-control/role-based-access-control.md
 
 `.drop` `tables` `(`*TableName* [`,` ... ]`)` [ifexists]
 
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+
 ## Parameters
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-| *TableName* | string | &check; | The name of the table to drop. |
-|`ifexists`| string || If specified, the command won't fail if the function doesn't exist.|
+| *TableName* | string |  :heavy_check_mark: | The name of the table to drop. |
+|`ifexists`| string || If specified, the command won't fail if the table doesn't exist.|
 
 ## Returns
 

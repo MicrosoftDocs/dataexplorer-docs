@@ -15,11 +15,13 @@ Read more about [H3 Cell](https://eng.uber.com/h3/).
 
 `geo_h3cell_children(`*h3cell*`,`*resolution*`)`
 
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+
 ## Parameters
 
 |Name|Type|Required|Description|
 |--|--|--|--|
-| *h3cell* | string | &check; | An H3 Cell token value as it was calculated by [geo_point_to_h3cell()](geo-point-to-h3cell-function.md).|
+| *h3cell* | string |  :heavy_check_mark: | An H3 Cell token value as it was calculated by [geo_point_to_h3cell()](geo-point-to-h3cell-function.md).|
 | *resolution* | int | | Defines the requested children cells resolution. Supported values are in the range [1, 15]. If unspecified, an immediate children token will be calculated.|
 
 ## Returns

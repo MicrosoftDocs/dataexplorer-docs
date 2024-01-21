@@ -15,11 +15,13 @@ The series_ifft() function takes a series of complex numbers in the frequency do
 
 `series_ifft(`*fft_real* [`,` *fft_imaginary*]`)`
 
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+
 ## Parameters
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-| *fft_real* | dynamic | &check; | An array of numeric values representing the real component of the series to transform.|
+| *fft_real* | dynamic |  :heavy_check_mark: | An array of numeric values representing the real component of the series to transform.|
 | *fft_imaginary* | dynamic | | An array of numeric values representing the imaginary component of the series. This parameter should be specified only if the input series contains complex numbers.|
 
 ## Returns

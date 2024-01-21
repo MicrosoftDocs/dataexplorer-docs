@@ -21,11 +21,13 @@ You must have at least [Materialized View Admin](../access-control/role-based-ac
 
 `.enable` | `disable` `materialized-view` *MaterializedViewName*
 
+[!INCLUDE [syntax-conventions-note](../../../includes/syntax-conventions-note.md)]
+
 ## Parameters
 
 | Name                   | Type   | Required | Description                    |
 |------------------------|--------|----------|--------------------------------|
-| *MaterializedViewName* | string | &check;  | Name of the materialized view. |
+| *MaterializedViewName* | string |  :heavy_check_mark:  | Name of the materialized view. |
 
 ## Returns
 

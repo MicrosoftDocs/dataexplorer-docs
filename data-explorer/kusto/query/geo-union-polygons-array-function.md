@@ -13,11 +13,13 @@ Calculates the union of polygons or multipolygons on Earth.
 
 `geo_union_polygons_array(`*polygons*`)`
 
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+
 ## Parameters
 
 |Name|Type|Required|Description|
 |--|--|--|--|
-| *polygons* | dynamic | &check; | An array of polygons or multipolygons in the [GeoJSON format](https://tools.ietf.org/html/rfc7946).|
+| *polygons* | dynamic |  :heavy_check_mark: | An array of polygons or multipolygons in the [GeoJSON format](https://tools.ietf.org/html/rfc7946).|
 
 ## Returns
 

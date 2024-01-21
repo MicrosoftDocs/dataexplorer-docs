@@ -3,7 +3,7 @@ title: 'Azure Data Explorer integration with Azure Data Factory'
 description: 'In this topic, integrate Azure Data Explorer with Azure Data Factory to use the copy, lookup, and command activities'
 ms.reviewer: tomersh26
 ms.topic: how-to
-ms.date: 01/20/2020
+ms.date: 08/30/2023
 
 #Customer intent: I want to use Azure Data Factory to integrate with Azure Data Explorer.
 ---
@@ -80,13 +80,14 @@ See the following table for a comparison of the Copy activity, and ingestion com
 | | Copy activity | Ingest from query<br> `.set-or-append` / `.set-or-replace` / `.set` / `.replace` | Ingest from storage <br> `.ingest` |
 |---|---|---|---|
 | **Flow description** | ADF gets the data from the source data store, converts it into a tabular format, and does the required schema-mapping changes. ADF then uploads the data to Azure blobs, splits it into chunks, then downloads the blobs to ingest them into the Azure Data Explorer table. <br> (**Source data store > ADF > Azure blobs > ADX**) | These commands can execute a query or a `.show` command, and ingest the results of the query into a table (**ADX > ADX**). | This command ingests data into a table by "pulling" the data from one or more cloud storage artifacts. |
-| **Supported source data stores** |  [variety of options](/azure/data-factory/copy-activity-overview#supported-data-stores-and-formats) | ADLS Gen 2, Azure Blob, SQL (using the [sql_request() plugin](kusto/query/sqlrequestplugin.md)), Azure Cosmos DB (using the [cosmosdb_sql_request plugin](kusto/query/mysqlrequest-plugin.md)), and any other data store that provides HTTP or Python APIs. | Filesystem, Azure Blob Storage, ADLS Gen 1, ADLS Gen 2 |
+| **Supported source data stores** |  [variety of options](/azure/data-factory/copy-activity-overview#supported-data-stores-and-formats) | ADLS Gen 2, Azure Blob, SQL (using the [sql_request() plugin](kusto/query/sql-request-plugin.md)), Azure Cosmos DB (using the [cosmosdb_sql_request plugin](kusto/query/mysql-request-plugin.md)), and any other data store that provides HTTP or Python APIs. | Filesystem, Azure Blob Storage, ADLS Gen 1, ADLS Gen 2 |
 | **Performance** | Ingestions are queued and managed, which ensures small-size ingestions and assures high availability by providing load balancing, retries and error handling. | <ul><li>Those commands weren't designed for high volume data importing.</li><li>Works as expected and cheaper. But for production scenarios and when traffic rates and data sizes are large, use the Copy activity.</li></ul> |
 | **Server Limits** | <ul><li>No size limit.</li><li>Max timeout limit: 1 hour per ingested blob. |<ul><li>There's only a size limit on the query part, which can be skipped by specifying `noTruncation=true`.</li><li>Max timeout limit: 1 hour.</li></ul> | <ul><li>No size limit.</li><li>Max timeout limit: 1 hour.</li></ul>|
 
 > [!TIP]
+>
 > * When copying data from ADF to Azure Data Explorer use the `ingest from query` commands.  
-> * For large data sets (>1GB), use the Copy activity.  
+> * For large datasets (>1GB), use the Copy activity.  
 
 ## Required permissions
 
@@ -118,7 +119,7 @@ This section addresses the use of copy activity where Azure Data Explorer is the
 |**Amount and SKU of your ADX cluster** | High number of Azure Data Explorer nodes will boost ingestion processing time. Use of dev SKUs will severely limit performance|
 | **Parallelism** |    To copy a very large amount of data from a database, partition your data and then use a ForEach loop that copies each partition in parallel or use the [Bulk Copy from Database to Azure Data Explorer Template](data-factory-template.md). Note: **Settings** > **Degree of Parallelism** in the Copy activity isn't relevant to Azure Data Explorer. |
 | **Data processing complexity** | Latency varies according to source file format, column mapping, and compression.|
-| **The VM running your integration runtime** | <ul><li>For Azure copy, ADF VMs and machine SKUs can't be changed.</li><li> For on-prem to Azure copy, determine that the VM hosting your self-hosted IR is strong enough.</li></ul>|
+| **The VM running your integration runtime** | <ul><li>For Azure copy, ADF VMs and machine SKUs can't be changed.</li><li> For on-premises to Azure copy, determine that the VM hosting your self-hosted IR is strong enough.</li></ul>|
 
 ## Tips and common pitfalls
 
@@ -128,8 +129,8 @@ This section addresses the use of copy activity where Azure Data Explorer is the
 because *Data read* is calculated according to the binary file size, while *Data written* is calculated according to the in-memory size, after data is de-serialized and decompressed.
 
 * When monitoring the activity progress, you can see that data is written to the Azure Data Explorer sink. When querying the Azure Data Explorer table, you see that data hasn't arrived. This is because there are two stages when copying to Azure Data Explorer. 
-    * First stage reads the source data, splits it to 900-MB chunks, and uploads each chunk to an Azure Blob. The first stage is seen by the ADF activity progress view. 
-    * The second stage begins once all the data is uploaded to Azure Blobs. The Azure Data Explorer engine nodes download the blobs and ingest the data into the sink table. The data is then seen in your Azure Data Explorer table.
+    * First stage reads the source data, splits it to 900-MB chunks, and uploads each chunk to an Azure Blob. The first stage is seen by the ADF activity progress view.
+    * The second stage begins once all the data is uploaded to Azure Blobs. The nodes of your cluster download the blobs and ingest the data into the sink table. The data is then seen in your Azure Data Explorer table.
 
 ### Failure to ingest CSV files due to improper escaping
 
@@ -185,9 +186,7 @@ You can add additional [ingestion properties](ingestion-properties.md) by specif
 1. Select **New**, select either **Add node** or **Add array** as required, and then specify the ingestion property name and value. Repeat this step to add more properties.
 1. Once complete save and publish your pipeline.
 
-## Next steps
+## Next step
 
-* Learn how to [copy data to Azure Data Explorer by using Azure Data Factory](data-factory-load-data.md).
-* Learn about using [Azure Data Factory template for bulk copy from database to Azure Data Explorer](data-factory-template.md).
-* Learn about using [Azure Data Factory command activity to run Azure Data Explorer management commands](data-factory-command-activity.md).
-* Learn about [Azure Data Explorer queries](web-query-data.md) for data querying.
+> [!div class="nextstepaction"]
+> [Copy data to Azure Data Explorer by using Azure Data Factory](data-factory-load-data.md).

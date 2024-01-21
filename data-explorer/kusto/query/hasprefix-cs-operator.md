@@ -21,13 +21,15 @@ For best performance, use strings of three characters or more. `hasprefix_cs` se
 
 *T* `|` `where` *Column* `hasprefix_cs` `(`*Expression*`)`
 
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+
 ## Parameters
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-| *T* | string | &check; | The tabular input whose records are to be filtered.|
-| *Column* | string | &check; | The column used to filter.|
-| *Expression* | string | &check; | The expression for which to search.|
+| *T* | string |  :heavy_check_mark: | The tabular input whose records are to be filtered.|
+| *Column* | string |  :heavy_check_mark: | The column used to filter.|
+| *Expression* | string |  :heavy_check_mark: | The expression for which to search.|
 
 ## Returns
 

@@ -3,7 +3,7 @@ title: Azure Data Explorer tools and integrations overview - Azure Data Explorer
 description: This article describes tools and integrations in Azure Data Explorer.
 ms.reviewer: olgolden
 ms.topic: conceptual
-ms.date: 07/02/2023
+ms.date: 11/23/2023
 ---
 # Azure Data Explorer tools and integrations overview
 
@@ -15,15 +15,14 @@ This article supplies you with a list of Azure Data Explorer tools, connectors, 
 
 ## Ingest data
 
-Data ingestion is the process used to load data records from one or more sources into Azure Data Explorer. Once ingested, the data becomes available for query. Azure Data Explorer provides several tools and connectors for data ingestion.
+Data ingestion is the process used to load data from one or more sources into Azure Data Explorer. Once ingested, the data becomes available for query. Azure Data Explorer provides several tools and connectors for data ingestion.
 
 For a complete list of ingestion connectors, see [Data connectors Overview](connector-overview.md).
 
 ### Azure Data Explorer ingestion tools
 
-* [LightIngest](lightingest.md) - Help utility for ad-hoc data ingesting into Azure Data Explorer
-* Ingestion wizard: [overview](./ingest-data-wizard.md) and ingest data [from a container to a new table](/azure/data-explorer/ingest-from-container)
-or [from a local file to an existing table](/azure/data-explorer/ingest-from-local-file)
+* **LightIngest:** Command-line utility for ad-hoc data ingestion. [Download LightIngest](https://github.com/Azure/Kusto-Lightingest/releases) for your operating system: Windows, OSX, or Linux. To learn more about using LightIngest, see [Use LightIngest to ingest data](lightingest.md).
+* **Ingestion wizard:** A user-friendly interface that guides you through the data ingestion process. Explore the [overview](./ingest-data-wizard.md) and ingest data [from a container to a new table](/azure/data-explorer/ingest-from-container) or [from a local file to an existing table](/azure/data-explorer/ingest-from-local-file).
 
 ## Query data
 

@@ -7,13 +7,13 @@ ms.date: 05/08/2023
 ---
 # Azure Data Explorer Kusto emulator
 
-The Kusto emulator is a local environment that encapsulates the [Kusto Query Engine](engine-v3.md). You can use the environment to facilitate local development and automated testing. Since the environment runs locally, it doesn't require provisioning Azure services or incurring any cost; it's a free offering under the [Microsoft Software License Terms](https://aka.ms/adx.emulator.license).
+The Kusto emulator is a local environment that encapsulates the query engine. You can use the environment to facilitate local development and automated testing. Since the environment runs locally, it doesn't require provisioning Azure services or incurring any cost; it's a free offering under the [Microsoft Software License Terms](https://aka.ms/adx.emulator.license).
 
 > [!IMPORTANT]
 >
 > - The emulator is provided *as-is*, without any support or warranties.
 > - The emulator isn't intended for use in production environments.
-> - The [license terms](https://aka.ms/adx.emulator.license) explicitly prohibit benchmark tests using the emulator due to the built-in limitations making it a poor technology. The emulator has a very different performance profile compared to the Azure Data Explorer service.
+> - The [license terms](https://aka.ms/adx.emulator.license) explicitly prohibit benchmark tests using the emulator as it is not intended or optimized for that purpose. The emulator has a very different performance profile compared to the Azure Data Explorer service.
 
 ## Architecture
 
@@ -21,9 +21,9 @@ The emulator is available as a *Windows* or *Linux* Docker container image. It e
 
 ![Schematic representation of Kusto emulator architecture.](media/kusto-emulator/kusto-emulator-architecture.png)
 
-The emulator supports all commands and queries within its [architecture limitations](#limitations). For instance, [Row Level Security policy commands](kusto/management/rowlevelsecuritypolicy.md) are supported but since there's no authentication in the emulator, they aren't useful.
+The emulator supports all commands and queries within its [architecture limitations](#limitations). For instance, [Row Level Security policy commands](kusto/management/row-level-security-policy.md) are supported but since there's no authentication in the emulator, they aren't useful.
 
-The emulator doesn't include the [data management service](ingest-data-overview.md) and hence doesn't support queued, managed, or streaming ingestion. However, you can ingest data using [ingestion commands](kusto/management/data-ingestion/ingest-from-query.md). Data can be ingested from local files, [external tables](kusto/query/schema-entities/externaltables.md), or [external data](kusto/query/externaldata-operator.md?pivots=azuredataexplorer). By default, ingested data is persisted on the disk within the container; hence, the data is as transient as the container itself. If you want to retain the data, you can persist it outside the container by mounting a volume on the container and persisting the data to the volume.
+The emulator doesn't include the [data management service](ingest-data-overview.md) and hence doesn't support queued, managed, or streaming ingestion. However, you can ingest data using [ingestion commands](kusto/management/data-ingestion/ingest-from-query.md). Data can be ingested from local files, [external tables](kusto/query/schema-entities/external-tables.md), or [external data](kusto/query/externaldata-operator.md?pivots=azuredataexplorer). By default, ingested data is persisted on the disk within the container; hence, the data is as transient as the container itself. If you want to retain the data, you can persist it outside the container by mounting a volume on the container and persisting the data to the volume.
 
 ## Kusto emulator scenarios
 
@@ -56,6 +56,7 @@ When choosing the best option for your use case, you should consider the followi
 
 [!INCLUDE [kusto-emulator-limitations](includes/kusto-emulator-limitations.md)]
 
-## Next steps
+## Next step
 
-[Install the Kusto emulator](kusto-emulator-install.md)
+> [!div class="nextstepaction"]
+> [Install the Kusto emulator](kusto-emulator-install.md)

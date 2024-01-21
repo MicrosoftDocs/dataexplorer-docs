@@ -13,12 +13,14 @@ Select what columns from the input to keep in the output. Only the columns that 
 
 *T* `| project-keep` *ColumnNameOrPattern* [`,` ...]
 
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+
 ## Parameters
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-| *T* | string | &check; | The tabular input from which to keep columns.|
-| *ColumnNameOrPattern* | string | &check; | One or more column names or column wildcard-patterns to be kept in the output.|
+| *T* | string |  :heavy_check_mark: | The tabular input from which to keep columns.|
+| *ColumnNameOrPattern* | string |  :heavy_check_mark: | One or more column names or column wildcard-patterns to be kept in the output.|
 
 ## Returns
 
@@ -58,8 +60,8 @@ The following table shows only the first 10 results.
 |CON-PRT130| Roundtable: Data exploration and visualization with Azure Data Explorer |Roundtable |Online|
 |...|...|...|...|
 
-## See also
+## Related content
 
-* To choose what columns from the input to exclude from the output, use [project-away](projectawayoperator.md).
-* To rename columns, use [`project-rename`](projectrenameoperator.md).
-* To reorder columns, use [`project-reorder`](projectreorderoperator.md).
+* To choose what columns from the input to exclude from the output, use [project-away](project-away-operator.md).
+* To rename columns, use [`project-rename`](project-rename-operator.md).
+* To reorder columns, use [`project-reorder`](project-reorder-operator.md).

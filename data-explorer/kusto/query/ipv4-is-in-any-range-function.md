@@ -15,13 +15,15 @@ Checks whether IPv4 string address is in any of the specified IPv4 address range
 
 `ipv4_is_in_any_range(`*Ipv4Address* `,` *Ipv4Ranges* `)`
 
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+
 ## Parameters
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-| *Ipv4Address*| string | &check; | An expression representing an IPv4 address.|
-| *Ipv4Range*| string | &check; | An IPv4 range or list of IPv4 ranges written with [IP-prefix notation](#ip-prefix-notation).|
-| *Ipv4Ranges*| dynamic | &check; | A dynamic array containing IPv4 ranges written with [IP-prefix notation](#ip-prefix-notation).|
+| *Ipv4Address*| string |  :heavy_check_mark: | An expression representing an IPv4 address.|
+| *Ipv4Range*| string |  :heavy_check_mark: | An IPv4 range or list of IPv4 ranges written with [IP-prefix notation](#ip-prefix-notation).|
+| *Ipv4Ranges*| dynamic |  :heavy_check_mark: | A dynamic array containing IPv4 ranges written with [IP-prefix notation](#ip-prefix-notation).|
 
 > [!NOTE]
 > Either one or more *IPv4Range* strings or an *IPv4Ranges* dynamic array is required.

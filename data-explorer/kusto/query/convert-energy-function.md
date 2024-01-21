@@ -13,13 +13,15 @@ Convert an energy value from one unit to another.
 
 `convert_energy(`*value*`,`*from*`,`*to*`)`
 
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+
 ## Parameters
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-| *value* | real | &check; | The value to be converted. |
-| *from* | string | &check; | The unit to convert from. For possible values, see [Conversion units](#conversion-units). |
-| *to* | string | &check; | The unit to convert to. For possible values, see [Conversion units](#conversion-units). |
+| *value* | real |  :heavy_check_mark: | The value to be converted. |
+| *from* | string |  :heavy_check_mark: | The unit to convert from. For possible values, see [Conversion units](#conversion-units). |
+| *to* | string |  :heavy_check_mark: | The unit to convert to. For possible values, see [Conversion units](#conversion-units). |
 
 ### Conversion units
 

@@ -17,11 +17,13 @@ You must have at least [Table Admin](access-control/role-based-access-control.md
 
 `.delete` `table` *TableName* `policy` `auto_delete`
 
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+
 ## Parameters
 
 | Name        | Type   | Required | Description        |
 |-------------|--------|----------|--------------------|
-| *TableName* | string | &check;  | Name of the table. |
+| *TableName* | string |  :heavy_check_mark:  | Name of the table. |
 
 ## Returns
 

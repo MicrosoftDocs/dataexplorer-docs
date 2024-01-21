@@ -13,11 +13,13 @@ Returns `true` if the argument is a valid ASCII string.
 
 `isascii(`*value*`)`
 
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+
 ## Parameters
 
 | Name | Type | Required | Description |
 | -- | -- | -- | -- |
-|*value*|string|&check;| The value to check if a valid ASCII string.|
+|*value*|string| :heavy_check_mark:| The value to check if a valid ASCII string.|
 
 ## Returns
 

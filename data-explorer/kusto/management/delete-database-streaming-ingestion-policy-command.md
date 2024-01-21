@@ -7,7 +7,7 @@ ms.date: 06/13/2023
 ---
 # .delete database policy streamingingestion command
 
-Use this command to delete the database streaming ingestion policy. Use the [streaming policy](../management/streamingingestionpolicy.md) to manage streaming ingestion for databases and tables.  
+Use this command to delete the database streaming ingestion policy. Use the [streaming policy](../management/streaming-ingestion-policy.md) to manage streaming ingestion for databases and tables.  
 
 Streaming ingestion is targeted for scenarios that require low latency, with an ingestion time of less than 10 seconds for varied volume data. It's used to optimize operational processing of many tables, in one or more databases, where the stream of data into each table is relatively small (a few records per second) but the overall data ingestion volume is high (thousands of records per second).
 
@@ -23,11 +23,13 @@ You must have at least [Database Admin](access-control/role-based-access-control
 
 `.delete` `database` *DatabaseName* `policy` `streamingingestion`
 
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+
 ## Parameters
 
 |Name|Type|Required|Description|
 |--|--|--|--|
-|*DatabaseName*|string|&check;|The name of the database.|
+|*DatabaseName*|string| :heavy_check_mark:|The name of the database.|
 
 ## Example
 

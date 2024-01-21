@@ -3,7 +3,7 @@ title:  User-defined functions
 description: This article describes user-defined functions (scalar and views) in Azure Data Explorer.
 ms.reviewer: orspodek
 ms.topic: reference
-ms.date: 03/14/2023
+ms.date: 08/13/2023
 ---
 # User-defined functions
 
@@ -12,13 +12,11 @@ ms.date: 03/14/2023
 A user-defined function belongs to one of two categories:
 
 * Scalar functions
-* Tabular functions, also known as views
+* Tabular functions
 
 The function's input arguments and output determine whether it's scalar or tabular, which then establishes how it might be used.
 
- See [Stored functions](../schema-entities/stored-functions.md) to create and manage entities that allow the reuse of Kusto queries or query parts.
-
-To optimize multiple uses of the user-defined functions within a single query, see [Optimize queries that use named expressions](../named-expressions.md)
+To optimize multiple uses of the user-defined functions within a single query, see [Optimize queries that use named expressions](../named-expressions.md).
 
 ## Scalar function
 
@@ -41,7 +39,7 @@ The name must also be unique in its scope of definition.
 
 > [!NOTE]
 > If a stored function and a table both have the same name, then any reference to that name
-> resolves to the stored function, not the table name. Use the [table function](../tablefunction.md)
+> resolves to the stored function, not the table name. Use the [table function](../table-function.md)
 > to reference the table instead.
 
 ## Input arguments
@@ -149,7 +147,7 @@ The declaration of a user-defined function provides:
 > Overloading functions isn't supported. You can't create multiple functions with the same name and different input schemas.
 
 > [!TIP]
-> Lambda functions do not have a name and are bound to a name using a [let statement](../letstatement.md). Therefore, they can be regarded as user-defined stored functions.
+> Lambda functions do not have a name and are bound to a name using a [let statement](../let-statement.md). Therefore, they can be regarded as user-defined stored functions.
 > Example: Declaration for a lambda function that accepts two arguments (a `string` called `s` and a `long` called `i`). It returns the product of the first (after converting it into a number) and the second. The lambda is bound to the name `f`:
 
 ```kusto
@@ -161,8 +159,8 @@ let f=(s:string, i:long) {
 The function **body** includes:
 
 * Exactly one expression, which provides the function's return value (scalar or tabular value).
-* Any number (zero or more) of [let statements](../letstatement.md), whose scope is that of the function body. If specified, the let statements must precede the expression defining the function's return value.
-* Any number (zero or more) of [query parameters statements](../queryparametersstatement.md), which declare query parameters used by the function. If specified, they must precede the expression defining the function's return value.
+* Any number (zero or more) of [let statements](../let-statement.md), whose scope is that of the function body. If specified, the let statements must precede the expression defining the function's return value.
+* Any number (zero or more) of [query parameters statements](../query-parameters-statement.md), which declare query parameters used by the function. If specified, they must precede the expression defining the function's return value.
 
 > [!NOTE]
 > Other kinds of [query statements](../statements.md) that are supported at the query "top level" aren't supported inside a function body.
@@ -334,7 +332,7 @@ union T*
 
 The following restrictions apply:
 
-* User-defined functions can't pass into [toscalar()](../toscalarfunction.md) invocation information that depends on the row-context in which the function is called.
+* User-defined functions can't pass into [toscalar()](../toscalar-function.md) invocation information that depends on the row-context in which the function is called.
 * User-defined functions that return a tabular expression can't be invoked with an argument that varies with the row context.
 * A function taking at least one tabular input can't be invoked on a remote cluster.
 * A scalar function can't be invoked on a remote cluster.
@@ -398,3 +396,8 @@ For completeness, here are some commonly requested features for user-defined fun
 1. Function overloading: There's currently no way to overload a function (a way to create multiple functions with the same name and different input schema).
 
 1. Default values: The default value for a scalar parameter to a function must be a scalar literal (constant).
+
+## Related content
+
+* [Stored functions](../schema-entities/stored-functions.md)
+* [Views](../schema-entities/views.md)

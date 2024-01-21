@@ -57,7 +57,7 @@ The Azure Data Explorer markup units reservation discount is applied automatical
 > * You can update the scope of the Azure Data Explorer reserved capacity reservation through the [Azure portal](https://portal.azure.com), PowerShell, CLI or through the API.
 > * To learn how to manage the Azure Data Explorer reserved capacity reservation, see [manage Azure Data Explorer reserved capacity](/azure/cost-management-billing/reservations/understand-azure-data-explorer-reservation-charges).
 
-## Next steps
+## Related content
 
 To learn more about Azure Reservations, see the following articles:
 

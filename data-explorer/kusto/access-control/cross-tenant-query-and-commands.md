@@ -44,6 +44,8 @@ The trustedExternalTenants array supports also all-tenants star ('*') notation, 
 > [!NOTE]
 > The default value for `trustedExternalTenants` is all tenants: `[ { "value": "*" }]`. If the external tenants array was not defined on cluster creation, it can be overridden with a cluster update operation. An empty array means that only identities of the clusters tenant are allowed to authenticate to this cluster.
 
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+
 ### Examples
 
 The following example allows specific tenants to run queries on the cluster:
@@ -86,4 +88,4 @@ After updating the `trustedExternalTenants` property, you can give access to pri
 
 ## Limitations
 
-The configuration of this feature applies solely to Azure Active Directory identities (Users, Applications) trying to connect to Azure Data Explorer. It has no impact on cross Azure Active Directory ingestion.
+The configuration of this feature applies solely to Microsoft Entra identities (Users, Applications, Groups) trying to connect to Azure Data Explorer. It has no impact on cross Microsoft Entra ingestion.

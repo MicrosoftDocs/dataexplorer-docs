@@ -15,12 +15,14 @@ Sorts the rows of the input table into order by one or more columns.
 
 *T* `| sort by` *column* [`asc` | `desc`] [`nulls first` | `nulls last`] [`,` ...]
 
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+
 ## Parameters
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-| *T* | string | &check; | The tabular input to sort. |
-| *column* | scalar | &check; | The column of *T* by which to sort. The type of the column values must be numeric, date, time or string.|
+| *T* | string |  :heavy_check_mark: | The tabular input to sort. |
+| *column* | scalar |  :heavy_check_mark: | The column of *T* by which to sort. The type of the column values must be numeric, date, time or string.|
 | `asc` or `desc` | string | | `asc` sorts into ascending order, low to high. Default is `desc`, high to low. |
 | `nulls first` or `nulls last`  | string | | `nulls first` will place the null values at the beginning and `nulls last` will place the null values at the end. Default for `asc` is `nulls first`. Default for `desc` is `nulls last`.|
 

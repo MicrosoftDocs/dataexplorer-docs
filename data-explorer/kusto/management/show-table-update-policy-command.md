@@ -7,7 +7,7 @@ ms.date: 05/24/2023
 ---
 # .show table policy update command
 
-Show the table update policy. The [update policy](updatepolicy.md) simplifies the process of syncing and updating data between two tables. When new data is inserted into the source table, a transformation query runs over this data to modify and insert the data into the target table.
+Show the table update policy. The [update policy](update-policy.md) simplifies the process of syncing and updating data between two tables. When new data is inserted into the source table, a transformation query runs over this data to modify and insert the data into the target table.
 
 > [!NOTE]
 > The source table and the table for which the update policy is defined must be in the same database.
@@ -21,12 +21,14 @@ You must have at least Database User, Database Viewer, or Database Monitor permi
 
 `.show` `table` [ *DatabaseName*`.`]*TableName* `policy` `update`
 
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+
 ## Parameters
 
 |Name|Type|Required|Description|
 |--|--|--|--|
 |*DatabaseName*|string||The name of the database. This is required when running the command from outside the database context of the specified table.|
-|*TableName*|string|&check;|The name of the table for which to show the policy details.|
+|*TableName*|string| :heavy_check_mark:|The name of the table for which to show the policy details.|
 
 ## Returns
 

@@ -7,7 +7,7 @@ ms.date: 07/01/2021
 ---
 # Extent tags retention policy
 
-The extent tags retention policy controls the mechanism that automatically removes [extent tags](extents-overview.md#extent-tagging) from tables, based on the age of the extents.
+The extent tags retention policy controls the mechanism that automatically removes [extent tags](extent-tags.md) from tables, based on the age of the extents.
 
 It's recommended to remove any tags that are no longer helpful, or were used temporarily as part of an ingestion pipeline, and may limit the system from reaching optimal performance. For example: old `drop-by:` tags, which prevent merging extents together.
 

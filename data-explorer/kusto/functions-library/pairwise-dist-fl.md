@@ -22,13 +22,15 @@ The output of the function is pairwise distances between entities under the same
 ## Syntax
 
 `pairwise_dist_fl(`*entity*, *partition*`)`
-  
+
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+
 ## Parameters
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-| *entity* | string | &check; | The name of the input table column containing the names or IDs of the entities for which the distances will be calculated. |
-| *partition* | string | &check; | The name of the input table column containing the partition or scope, so that the distances are calculated for all pairs of entities under the same partition. |
+| *entity* | string |  :heavy_check_mark: | The name of the input table column containing the names or IDs of the entities for which the distances will be calculated. |
+| *partition* | string |  :heavy_check_mark: | The name of the input table column containing the partition or scope, so that the distances are calculated for all pairs of entities under the same partition. |
 
 ## Function definition
 
@@ -36,10 +38,10 @@ You can define the function by either embedding its code as a query-defined func
 
 ### [Query-defined](#tab/query-defined)
 
-Define the function using the following [let statement](../query/letstatement.md). No permissions are required.
+Define the function using the following [let statement](../query/let-statement.md). No permissions are required.
 
 > [!IMPORTANT]
-> A [let statement](../query/letstatement.md) can't run on its own. It must be followed by a [tabular expression statement](../query/tabularexpressionstatements.md). To run a working example of `pairwise_dist_fl()`, see [Example](#example).
+> A [let statement](../query/let-statement.md) can't run on its own. It must be followed by a [tabular expression statement](../query/tabular-expression-statements.md). To run a working example of `pairwise_dist_fl()`, see [Example](#example).
 
 ```kusto
 let pairwise_dist_fl = (tbl:(*), id_col:string, partition_col:string)
@@ -156,7 +158,7 @@ let pairwise_dist_fl = (tbl:(*), id_col:string, partition_col:string)
 
 ## Example
 
-The following example uses the [invoke operator](../query/invokeoperator.md) to run the function.
+The following example uses the [invoke operator](../query/invoke-operator.md) to run the function.
 
 ### [Query-defined](#tab/query-defined)
 

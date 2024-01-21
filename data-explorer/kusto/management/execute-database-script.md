@@ -9,6 +9,9 @@ ms.date: 05/24/2023
 
 Executes a batch of management commands in the scope of a single database.
 
+> [!NOTE]
+> Select the full command text before running it. Otherwise, it will stop at the first empty line in the script.
+
 ## Permissions
 
 You must have at least [Database Admin](access-control/role-based-access-control.md) permissions to run this command.
@@ -18,11 +21,13 @@ You must have at least [Database Admin](access-control/role-based-access-control
 `.execute` `database` `script`  
 [`with` `(` *PropertyName* `=` *PropertyValue* [`,` ...]`)`] `<|` *ControlCommandsScript*
 
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+
 ## Parameters
 
 |Name|Type|Required|Description|
 |--|--|--|--|
-|*ControlCommandsScript*|string|&check;| Text with one or more management commands.|
+|*ControlCommandsScript*|string| :heavy_check_mark:| Text with one or more management commands.|
 |*PropertyName*, *PropertyValue*|string|| Optional properties. See [Supported properties](#supported-properties).|
 
 ### Supported properties

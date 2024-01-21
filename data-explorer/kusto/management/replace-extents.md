@@ -25,16 +25,18 @@ You must have at least [Table Admin](../management/access-control/role-based-acc
 `.replace` [`async`] `extents` `in` `table` *DestinationTableName* `with` `(` `extentCreatedOnFrom` `=` *FromDate*`,` `extentCreatedOnTo` `=`*ToDate* `)` `<|`
 `{`*ExtentsToDropQuery*`},{`*ExtentsToMoveQuery*`}`
 
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+
 ## Parameters
 
 |Name|Type|Required|Description|
 |--|--|--|--|
 |`async`|string||If specified, the command runs asynchronously.|
-|*DestinationTableName*|string|&check;|The name of the table to which to move the extents.|
+|*DestinationTableName*|string| :heavy_check_mark:|The name of the table to which to move the extents.|
 |*FromDate*|datetime||The query window start date.|
 |*ToDate*|datetime||The query window end date.|
-|*ExtentsToDropQuery*|string|&check;|The results of this query specify the extent IDs that should be dropped from the destination table. Should return a recordset with a column called "ExtentId".|
-|*ExtentsToMoveQuery*|string|&check;|The results of this query specify the extent IDs in the source tables that should be moved to the destination table. Should return a recordset with a column called "ExtentId".|
+|*ExtentsToDropQuery*|string| :heavy_check_mark:|The results of this query specify the extent IDs that should be dropped from the destination table. Should return a recordset with a column called "ExtentId".|
+|*ExtentsToMoveQuery*|string| :heavy_check_mark:|The results of this [Kusto Query Language (KQL)](../query/index.md) query specify the source tables and the extent IDs to be moved to the destination table. Should return a recordset with columns called "ExtentId" and "TableName".|
 
 > [!NOTE]
 > For better performance, set extentCreatedOnFrom and extentCreatedOnTo parameters to the smallest possible range.
@@ -134,7 +136,7 @@ Implement an idempotent logic so that Kusto drops extents from table `t_dest` on
     let extents_to_move = 
         t_source
         | where extent_tags() has 'drop-by:blue'
-        | summarize by ExtentId = extent_id()
+        | summarize by ExtentId = extent_id(), TableName = 't_source'
     ;
     extents_to_move
 }

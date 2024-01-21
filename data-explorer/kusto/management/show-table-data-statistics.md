@@ -1,13 +1,13 @@
 ---
 title: .show table data statistics command
-description: Learn how to use the `.show table data statistics` command to show the table's data statistics estimation by table column and storage engine version.
+description: Learn how to use the `.show table data statistics` command to show the table's data statistics estimation by table column.
 ms.reviewer: alexans
 ms.topic: reference
 ms.date: 05/24/2023
 ---
 # .show table data statistics command
 
-Displays the table data statistics estimation by table column and storage engine version.
+Displays the table data statistics estimation by table column.
 
 > [!NOTE]
 > This command only returns statistics for data stored in columnar stores. Row store data statistics are not returned.
@@ -20,11 +20,13 @@ You must have at least Database User, Database Viewer, or Database Monitor permi
 
 `.show` `table` *TableName* `data` `statistics` [ `with` `(` *PropertyName* `=` *PropertyValue* [`,` ...]`)` ]
 
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+
 ## Parameters
 
 |Name|Type|Required|Description|
 |--|--|--|--|
-|*TableName*|string|&check;|The name of the table for which to show statistics.|
+|*TableName*|string| :heavy_check_mark:|The name of the table for which to show statistics.|
 |*PropertyName*, *PropertyValue*|string||A comma-separated list of optional [Supported properties](#supported-properties).|
 
 ### Supported properties
@@ -53,8 +55,8 @@ The command returns a result table that contains the following information.
 | `ExtentSize` | long | Estimation of total size of extents (data size + index size) in bytes. |
 | `CompressionRatio` | real | Ratio of original data size to extent data size. |
 | `DataCompressedSize` | long | Extents data size in bytes, excluding indexes. |
-| `SharedIndexSize` | long | For [Engine V3](../../engine-v3.md), text index size in bytes. The text index is shared by all table columns in [Engine V3](../../engine-v3.md). |
-| `IndexSize` | long | Size of numeric indexes in bytes. For Engine V2, the value includes text index size as well. |
+| `SharedIndexSize` | long | Text index size in bytes. The text index is shared by all table columns. |
+| `IndexSize` | long | Size of numeric indexes in bytes. |
 | `IndexSizePercent` | real | Ratio of the index size to original data size in bytes. |
 | `StorageEngineVersion` | string | Engine version. If data exists for multiple engine versions, the output includes an entry for each version. |
 | `PresentRowCount`| long | Total rows count, excluding [deleted](../concepts/data-soft-delete.md) rows. |
@@ -63,7 +65,7 @@ The command returns a result table that contains the following information.
 | `IncludeColdData`| bool | Whether cold data was taken into account when calculating statistics estimate. |
 
 > [!NOTE]
-> For [Engine V3](../../engine-v3.md), `ExtentSize` doesn't include shared text index size. There are two ways to calculate total table data size:
+> `ExtentSize` doesn't include shared text index size. There are two ways to calculate total table data size:
 >
 > * Sum all `ExtentSize` values and add the `SharedIndexSize` value.
 > * Run the [.show table details](show-table-details-command.md) command, and use the `TotalExtentSize` value.

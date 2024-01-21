@@ -179,19 +179,19 @@ var sourceOptions = new StorageSourceOptions { SourceId = fileIdentifier };
 // Execute the ingest operation and save the result.
 var clientResult = await client.IngestFromStorageAsync(filePath, kustoIngestionProperties, sourceOptions);
 // Use the fileIdentifier you supplied to get the status of your ingestion 
-var ingestionStatus = clientResult.GetIngestionStatusBySourceId(fileIdentifier);
+var ingestionStatus = clientResult.Result.GetIngestionStatusBySourceId(fileIdentifier);
 while (ingestionStatus.Status == Status.Pending)
 {
     // Wait a minute...
     Thread.Sleep(TimeSpan.FromMinutes(1));
     // Try again
-    ingestionStatus = clientResult.GetIngestionStatusBySourceId(fileIdentifier);
+    ingestionStatus = clientResult.Result.GetIngestionStatusBySourceId(fileIdentifier);
 }
 // Verify the results of the ingestion
 Ensure.ConditionIsMet(ingestionStatus.Status == Status.Succeeded, "The file should have been ingested successfully");
 ```
 
-## Next steps
+## Related content
 
 * [Kusto.Ingest client reference](kusto-ingest-client-reference.md)
 * [Kusto.Ingest operation status](kusto-ingest-client-errors.md)

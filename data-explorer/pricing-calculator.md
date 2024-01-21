@@ -63,7 +63,7 @@ In the calculator, enter estimates for the following fields:
 
 * **Data Collected per day (GB/TB)**: Data that you plan to ingest without compression into Azure Data Explorer cluster every day. Calculate this estimate based on the number of files and the average size of a file being ingested. If you're streaming the data using messages, review the average size of a single message and how many messages you're ingesting.
 
-* **Hot cache retention (days)**: Period for which your data is stored in cache for fast query access. Ingested data that's cached according to our [cache policy](./kusto/management/cachepolicy.md) on the local SSD of the Engine service. Your query performance requirement determines the amount of compute nodes and local SSD storage needed.
+* **Hot cache retention (days)**: Period for which your data is stored in cache for fast query access. Ingested data that's cached according to our [cache policy](./kusto/management/cache-policy.md) on the local SSD of the Engine service. Your query performance requirement determines the amount of compute nodes and local SSD storage needed.
 
 * **Total retention (days)**: Period for which your data is stored and available for query. Following the retention window, your data will be automatically removed. Choose the data retention window based on compliance or other regulatory requirements. Apply the [hot window capability](../data-explorer/hot-windows.md) to warm the data based on the time window for faster queries.  
 
@@ -161,7 +161,7 @@ Choose a support plan:
 * Save the estimate for future reference
 * Share the estimate – sign-in is required
 
-## Next steps
+## Next step
 
-* [Create a free Azure Data Explorer cluster](./start-for-free-web-ui.md)
-* [Start-for-free cluster](./start-for-free.md)
+> [!div class="nextstepaction"]
+> [Create an Azure Data Explorer cluster](create-cluster-and-database.md)

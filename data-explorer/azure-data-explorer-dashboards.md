@@ -23,7 +23,7 @@ To interactively explore sample dashboards, see [Quickstart: Visualize sample da
 
 ## Prerequisites
 
-* A Microsoft account or an Azure Active Directory user identity. An Azure subscription isn't required.
+* A Microsoft account or a Microsoft Entra user identity. An Azure subscription isn't required.
 * Create [an Azure Data Explorer cluster and database](create-cluster-and-database.md).
 * Sign in to the [Azure Data Explorer web UI](https://dataexplorer.azure.com/) and [add a connection to your cluster](web-query-data.md#add-clusters).
 
@@ -105,7 +105,7 @@ Parameters significantly improve dashboard rendering performance, and enable you
 
 ## Share dashboards
 
-Use the share menu to [grant permissions](#grant-permissions) for an Azure Active Directory (Azure AD) user or Azure AD group to access the dashboard, [change a user's permission level](#change-a-user-permission-level), and [share the dashboard link](#share-the-dashboard-link).
+Use the share menu to [grant permissions](#grant-permissions) for a Microsoft Entra user or Microsoft Entra group to access the dashboard, [change a user's permission level](#change-a-user-permission-level), and [share the dashboard link](#share-the-dashboard-link).
 
 > [!IMPORTANT]
 > To access the dashboard, a dashboard viewer needs the following:
@@ -125,7 +125,7 @@ Use the share menu to [grant permissions](#grant-permissions) for an Azure Activ
 
 To grant permissions to a user in the **Dashboard permissions** pane:
  
-1. Enter the Azure AD user or Azure AD group in **Add new members**.
+1. Enter the Microsoft Entra user or Microsoft Entra group in **Add new members**.
 1. In the **Permission** level, select one of the following values: **Can view** or **Can edit**.
 1. Select **Add**.
 
@@ -228,7 +228,25 @@ You can update an existing dashboard, or restore a previous version, as follows:
 1. Select the file to update the dashboard.
 1. Select **Save changes**.
 
+## Add page
+
+Pages are optional containers for tiles. You can use pages to organize tiles into logical groups, such as by data source or by subject area. You can also use pages to create a dashboard with multiple views, such as a dashboard with a drillthrough from a summary page to a details page.
+
+1. On the left **Pages** pane, select **+ Add page**.
+
+1. To name the page, select the vertical **More menu [...]** > **Rename page**.
+
+1. [Add tiles](#add-tile) to the page.
+
 ## Enable auto refresh
+
+Auto refresh is a feature that allows you to automatically update the data on a dashboard without manually reloading the page or clicking a refresh button.
+
+The default auto refresh rate can be set by a database editor. Both editors and viewers can change the actual rate of auto refresh while viewing a dashboard. 
+
+:::image type="content" source="media/adx-dashboards/auto-refresh-times.png" alt-text="Screenshot of the different time intervals available in auto refresh in dashboards.":::
+
+However, database editors might want to limit the minimum refresh rate that any viewer can set so as to reduce the cluster load. When the minimum refresh rate is set, database users can't set a refresh rate lower than the minimum.
 
 1. Select the **More menu [...]** > **Auto refresh**.
 
@@ -241,15 +259,7 @@ You can update an existing dashboard, or restore a previous version, as follows:
 
 1. Select **Apply** and then **Save** the dashboard.
 
-> [!NOTE]
->
-> * Select the smallest minimum time interval to reduce unnecessary load on the cluster.
-> * A dashboard viewer:
->   * Can change the minimum time intervals for personal use only.
->   * Can't select a value which is smaller than the **Minimum time interval** specified by the editor.
+## Related content
 
-## Next Steps
-
-* Get data with the [ingestion wizard](ingest-data-wizard.md)
 * [Use parameters in Azure Data Explorer dashboards](dashboard-parameters.md)
 * [Customize Azure Data Explorer dashboard visuals](dashboard-customize-visuals.md)

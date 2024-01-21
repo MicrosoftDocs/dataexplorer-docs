@@ -9,17 +9,17 @@ zone_pivot_groups: kql-flavors-all
 ---
 # log_reduce_fl()
 
-::: zone pivot="azuredataexplorer"
+::: zone pivot="azuredataexplorer, fabric"
 
 The function `log_reduce_fl()` finds common patterns in semi structured textual columns, such as log lines, and clusters the lines according to the extracted patterns. It outputs a summary table containing the found patterns sorted top down by their respective frequency.
 
-## Prerequisites
-
-* The Python plugin must be [enabled on the cluster](../query/pythonplugin.md#enable-the-plugin). This is required for the inline Python used in the function.
+[!INCLUDE [python-zone-pivot-fabric](../../includes/python-zone-pivot-fabric.md)]
 
 ## Syntax
 
 *T* `|` `invoke` `log_reduce_fl(`*reduce_col* [`,` *use_logram* [`,` *use_drain* [`,` *custom_regexes* [`,` *custom_regexes_policy* [`,` *delimiters* [`,` *similarity_th* [`,` *tree_depth* [`,` *trigram_th* [`,` *bigram_th* ]]]]]]]]]`)`
+
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
 
 ## Parameters
 
@@ -27,7 +27,7 @@ The following parameters description is a summary. For more information, see [Mo
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-| *reduce_col* | string | &check; | The name of the string column the function is applied to. |
+| *reduce_col* | string |  :heavy_check_mark: | The name of the string column the function is applied to. |
 | *use_logram* | bool | | Enable or disable the Logram algorithm. Default value is `true`. |
 | *use_drain* | bool | | Enable or disable the Drain algorithm. Default value is `true`. |
 | *custom_regexes* | dynamic | | A dynamic array containing pairs of regular expression and replacement symbols to be searched in each input row, and replaced with their respective matching symbol. Default value is `dynamic([])`. The default regex table replaces numbers, IPs and GUIDs. |
@@ -60,10 +60,10 @@ You can define the function by either embedding its code as a query-defined func
 
 ### [Query-defined](#tab/query-defined)
 
-Define the function using the following [let statement](../query/letstatement.md). No permissions are required.
+Define the function using the following [let statement](../query/let-statement.md). No permissions are required.
 
 > [!IMPORTANT]
-> A [let statement](../query/letstatement.md) can't run on its own. It must be followed by a [tabular expression statement](../query/tabularexpressionstatements.md). To run a working example of `log_reduce_fl()`, see [Example](#example).
+> A [let statement](../query/let-statement.md) can't run on its own. It must be followed by a [tabular expression statement](../query/tabular-expression-statements.md). To run a working example of `log_reduce_fl()`, see [Example](#example).
 
 ~~~kusto
 let log_reduce_fl=(tbl:(*), reduce_col:string,
@@ -124,7 +124,7 @@ log_reduce_fl(tbl:(*), reduce_col:string,
 
 ## Example
 
-The following example uses the [invoke operator](../query/invokeoperator.md) to run the function.
+The following example uses the [invoke operator](../query/invoke-operator.md) to run the function. This example uses [Apache Hadoop distributed file system logs](https://hadoop.apache.org/docs/stable/hadoop-archive-logs/HadoopArchiveLogs.html).
 
 ### [Query-defined](#tab/query-defined)
 
@@ -198,7 +198,7 @@ HDFS_log
 
 ::: zone-end
 
-::: zone pivot="azuremonitor, fabric"
+::: zone pivot="azuremonitor"
 
 This feature isn't supported.
 

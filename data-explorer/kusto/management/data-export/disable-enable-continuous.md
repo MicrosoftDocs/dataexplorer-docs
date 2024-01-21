@@ -18,15 +18,17 @@ You must have at least [Database Admin](../access-control/role-based-access-cont
 
 ## Syntax
 
-`.enable` `continuous-export` *ContinuousExportName* 
+`.enable` `continuous-export` *ContinuousExportName*
 
-`.disable` `continuous-export` *ContinuousExportName* 
+`.disable` `continuous-export` *ContinuousExportName*
+
+[!INCLUDE [syntax-conventions-note](../../../includes/syntax-conventions-note.md)]
 
 ## Parameters
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-| *ContinuousExportName* | string | &check; | The name of the continuous export. |
+| *ContinuousExportName* | string |  :heavy_check_mark: | The name of the continuous export. |
 
 ## Returns
 

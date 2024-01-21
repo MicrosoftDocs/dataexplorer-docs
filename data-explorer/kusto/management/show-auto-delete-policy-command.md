@@ -17,11 +17,13 @@ You must have at least Database User, Database Viewer, or Database Monitor permi
 
 `.show` `table` *TableName* `policy` `auto_delete`
 
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+
 ## Parameters
 
 | Name                     | Type   | Required | Description                        |
 |--------------------------|--------|----------|------------------------------------|
-| *TableName*              | string | &check;  | The name of the table.                 |
+| *TableName*              | string |  :heavy_check_mark:  | The name of the table.                 |
 
 ## Returns
 

@@ -13,12 +13,14 @@ Searches the string for items specified in the array and returns the position in
 
 `has_any_index` `(`*source*`,` *values*`)`
 
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+
 ## Parameters
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-| *source*| string | &check;| The value to search.|
-| *values*| dynamic | &check;| An array of scalar or literal expressions to look up. |
+| *source*| string |  :heavy_check_mark:| The value to search.|
+| *values*| dynamic |  :heavy_check_mark:| An array of scalar or literal expressions to look up. |
 
 ## Returns
 

@@ -2,14 +2,18 @@
 title: Manage cluster permissions in Azure Data Explorer
 description: Learn how to manage role-based access controls for clusters in Azure Data Explorer.
 ms.topic: how-to
-ms.date: 11/23/2022
+ms.date: 12/18/2023
 ---
 
 # Manage Azure Data Explorer cluster permissions
 
-Azure Data Explorer enables you to control access to resources in your cluster using a role-based access control model. Under this model, [principals](./kusto/management/access-control/referencing-security-principals.md)—users, groups, and apps—are mapped to [security roles](kusto/management/security-roles.md). Principals are granted access to cluster resources according to the roles they're assigned.
+Azure Data Explorer enables you to control access to resources in your cluster using a role-based access control model. Under this model, [principals](kusto/management/referencing-security-principals.md)—users, groups, and apps—are mapped to [security roles](kusto/management/security-roles.md). Principals are granted access to cluster resources according to the roles they're assigned.
 
 This article describes the available cluster level roles and how to assign principals to those roles using the Azure portal.
+
+> [!NOTE]
+> * To configure cluster level permissions with C#, Python, and ARM templates, see [Add cluster principals](add-cluster-principal.md).
+> * To configure cluster level permissions with the Azure CLI, see [az kusto](/cli/azure/kusto#commands).
 
 ## Cluster level permissions
 
@@ -39,7 +43,7 @@ This article describes the available cluster level roles and how to assign princ
 
 1. Select **Select** to complete the assignment.
 
-## See also
+## Related content
 
-* To configure database or table specific access, see [Manage Azure Data Explorer database permissions](manage-database-permissions.md)
-* For a list of available roles, see [Role-based access control](./kusto/management/access-control/role-based-access-control.md)
+* [Manage database permissions](manage-database-permissions.md)
+* [Role-based access control](kusto/access-control/role-based-access-control.md)

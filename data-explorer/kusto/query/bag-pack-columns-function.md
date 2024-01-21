@@ -13,11 +13,13 @@ Creates a dynamic property bag object from a list of columns.
 
 `bag_pack_columns(`*column1*`,` *column2*`,... )`
 
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+
 ## Parameters
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-|*column*| scalar | &check; | A column to pack. The name of the column is the property name in the property bag.|
+|*column*| scalar |  :heavy_check_mark: | A column to pack. The name of the column is the property name in the property bag.|
 
 ## Returns
 

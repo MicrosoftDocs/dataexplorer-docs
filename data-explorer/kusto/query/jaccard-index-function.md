@@ -13,12 +13,14 @@ Calculates the [Jaccard index](https://en.wikipedia.org/wiki/Jaccard_index) of t
 
 `jaccard_index`(*set1*, *set2*)
 
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+
 ## Parameters
 
 | Name | Type | Required | Description |
 | -- | -- | -- | -- |
-| *set1*| dynamic | &check; | The array representing the first set for the calculation.|
-| *set2*| dynamic | &check; | The array representing the second set for the calculation.|
+| *set1*| dynamic |  :heavy_check_mark: | The array representing the first set for the calculation.|
+| *set2*| dynamic |  :heavy_check_mark: | The array representing the second set for the calculation.|
 
 > [!NOTE]
 > Duplicate values in the input arrays are ignored.

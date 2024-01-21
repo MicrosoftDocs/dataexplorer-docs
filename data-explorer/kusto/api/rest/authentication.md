@@ -14,15 +14,17 @@ must authenticate by using the HTTP `Authorization` request header.
 
 `Authorization:` `Bearer` *AccessToken*
 
+[!INCLUDE [syntax-conventions-note](../../../includes/syntax-conventions-note.md)]
+
 ## Parameters
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-| *AccessToken*| string | &check; | An Azure Active Directory (Azure AD) access token for the service.|
+| *AccessToken*| string |  :heavy_check_mark: | A Microsoft Entra access token for the service.|
 
 ## Get an access token
 
-There are many different methods to get an Azure AD access token. To learn more, see [user authentication](../../access-control/how-to-authenticate-with-aad.md#user-authentication) and [application authentication](../../access-control/how-to-authenticate-with-aad.md#application-authentication).
+There are many different methods to get a Microsoft Entra access token. To learn more, see [user authentication](../../access-control/how-to-authenticate-with-aad.md#user-authentication) and [application authentication](../../access-control/how-to-authenticate-with-aad.md#application-authentication).
 
 ### Get an access token for a user principal using the Azure CLI
 
@@ -34,7 +36,7 @@ The following steps return an access token for the user principal making the req
       az login --output table
       ```
 
-1. Find the row where the column `Default` is `true`. Confirm that the subscription in that row is the subscription for which you want to create your Azure AD access token. To find subscription information, see [get subscription and tenant IDs in the Azure portal](/azure/azure-portal/get-subscription-tenant-id). If you need to switch to a different subscription, run one of the following commands.
+1. Find the row where the column `Default` is `true`. Confirm that the subscription in that row is the subscription for which you want to create your Microsoft Entra access token. To find subscription information, see [get subscription and tenant IDs in the Azure portal](/azure/azure-portal/get-subscription-tenant-id). If you need to switch to a different subscription, run one of the following commands.
 
       ```azurecli
       az account set --subscription <SUBSCRIPTION_ID>
@@ -54,7 +56,7 @@ The following steps return an access token for the user principal making the req
 
 ### Get an access token for a service principal using the Azure CLI
 
-Azure AD service principals represent applications or services that need access to resources, usually in non-interactive scenarios such as API calls. The following steps guide you through creating a service principal and getting a bearer token for this principal.
+Microsoft Entra service principals represent applications or services that need access to resources, usually in non-interactive scenarios such as API calls. The following steps guide you through creating a service principal and getting a bearer token for this principal.
 
 1. Sign in to the Azure CLI.
 
@@ -72,7 +74,7 @@ Azure AD service principals represent applications or services that need access 
       az account set --name "<SUBSCRIPTION_NAME>"
       ```
 
-1. Create a service principal. This following command creates an Azure AD service principal and returns the `appId`, `displayName`, `password`, and `tenantId` for the service principal.
+1. Create a service principal. This following command creates a Microsoft Entra service principal and returns the `appId`, `displayName`, `password`, and `tenantId` for the service principal.
 
       ```azurecli
       az ad sp create-for-rbac -n <SERVICE_PRINCIPAL_NAME> 
@@ -96,7 +98,7 @@ Azure AD service principals represent applications or services that need access 
         -F resource=https://api.kusto.windows.net
       ```
 
-## See also
+## Related content
 
 * [Authentication overview](../../access-control/index.md)
 * To learn how to perform On-behalf-of (OBO) authentication or Single Page Application (SPA) authentication, see [How to authenticate with Microsoft Authentication Library (MSAL)](authenticate-with-msal.md).

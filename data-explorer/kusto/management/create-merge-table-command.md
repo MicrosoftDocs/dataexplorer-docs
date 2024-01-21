@@ -19,12 +19,14 @@ This command requires [Database User](access-control/role-based-access-control.m
 
 `.create-merge` `table` *tableName* `(`*columnName*`:`*columnType* [`,` ...]`)`  [`with` `(`*propertyName* `=` *propertyValue* [`,` ...]`)`]
 
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+
 ## Parameters
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-| *tableName* | string | &check; | The name of the table to create or extend. |
-| *columnName*, *columnType* | string | &check; | The name of an existing or new column mapped to the type of data in that column. The list of mappings defines the output column schema.|
+| *tableName* | string |  :heavy_check_mark: | The name of the table to create or extend. |
+| *columnName*, *columnType* | string |  :heavy_check_mark: | The name of an existing or new column mapped to the type of data in that column. The list of mappings defines the output column schema.|
 | *propertyName*, *propertyValue* | string | | A comma-separated list of key-value property pairs. See [supported properties](#supported-properties).|
 
 ### Supported properties
@@ -44,7 +46,7 @@ If table T exists, and you send a `.create-merge table T (<columns specification
 * Any column in T that isn't in \<columns specification> won't be removed from T.
 * Any column in \<columns specification> that exists in T, but with a different data type will cause the command to fail.
 
-## See also
+## Related content
 
 * [`.create-merge tables`](create-merge-tables-command.md)
 * [`.create table`](create-table-command.md)

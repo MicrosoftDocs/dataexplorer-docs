@@ -99,7 +99,7 @@ union <ADX table>, cluster(CL1).database(<workspace-name>).<table name>
 :::image type="content" source="media/query-monitor-data/cross-query.png" alt-text="Screenshot showing cross service query from the Azure Data Explorer web U I.":::
 
 > [!TIP]
-> Using the [`join` operator](kusto/query/joinoperator.md), instead of union, may require a [`hint`](kusto/query/joinoperator.md#hints) to run it on an Azure Data Explorer native cluster.
+> Using the [`join` operator](kusto/query/join-operator.md), instead of union, may require a [`hint`](kusto/query/join-operator.md#hints) to run it on an Azure Data Explorer native cluster.
 
 ### Join data from an Azure Data Explorer cluster in one tenant with an Azure Monitor resource in another
 
@@ -135,15 +135,15 @@ To use the function, run the name in the Query window.
 
 The following syntax options are available when calling the Application Insights or Log Analytics clusters:
 
-|Syntax Description  |Application Insights  |Log Analytics  |
+|Syntax Description |Application Insights |Log Analytics |
 |----------------|---------|---------|
-| Database within a cluster that contains only the defined resource in this subscription (**recommended for cross cluster queries**) |     cluster(`https://adx.monitor.azure.com/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/microsoft.insights/components/<ai-app-name>').database('<ai-app-name>`) | cluster(`https://adx.monitor.azure.com/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/microsoft.operationalinsights/workspaces/<workspace-name>').database('<workspace-name>`)     |
-| Cluster that contains all apps/workspaces in this subscription    |     cluster(`https://adx.monitor.azure.com/subscriptions/<subscription-id>`)    |    cluster(`https://adx.monitor.azure.com/subscriptions/<subscription-id>`)     |
-|Cluster that contains all apps/workspaces in the subscription and are members of this resource group    |   cluster(`https://adx.monitor.azure.com/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>`)      |    cluster(`https://adx.monitor.azure.com/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>`)      |
-|Cluster that contains only the defined resource in this subscription      |    cluster(`https://adx.monitor.azure.com/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/microsoft.insights/components/<ai-app-name>`)    |  cluster(`https://adx.monitor.azure.com/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/microsoft.operationalinsights/workspaces/<workspace-name>`)     |
-|For Endpoints in the UsGov      |    cluster(`https://adx.monitor.azure.us/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/microsoft.operationalinsights/workspaces/<workspace-name>`)|
- |For Endpoints in the China 21Vianet      |    cluster(`https://adx.monitor.azure.us/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/microsoft.operationalinsights/workspaces/<workspace-name>`) |
+| Database within a cluster that contains only the defined resource in this subscription (**recommended for cross cluster queries**) | cluster('`https://adx.monitor.azure.com/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/microsoft.insights/components/<ai-app-name>').database('<ai-app-name>`') | cluster('`https://adx.monitor.azure.com/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/microsoft.operationalinsights/workspaces/<workspace-name>').database('<workspace-name>`') |
+| Cluster that contains all apps/workspaces in this subscription | cluster('`https://adx.monitor.azure.com/subscriptions/<subscription-id>`') | cluster('`https://adx.monitor.azure.com/subscriptions/<subscription-id>`') |
+|Cluster that contains all apps/workspaces in the subscription and are members of this resource group | cluster('`https://adx.monitor.azure.com/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>`') | cluster('`https://adx.monitor.azure.com/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>`') |
+|Cluster that contains only the defined resource in this subscription | cluster('`https://adx.monitor.azure.com/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/microsoft.insights/components/<ai-app-name>`')    |  cluster('`https://adx.monitor.azure.com/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/microsoft.operationalinsights/workspaces/<workspace-name>`') |
+|For Endpoints in the UsGov | cluster('`https://adx.monitor.azure.us/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/microsoft.operationalinsights/workspaces/<workspace-name>`')|
+|For Endpoints in the China 21Vianet | cluster('`https://adx.monitor.azure.us/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/microsoft.operationalinsights/workspaces/<workspace-name>`') |
 
-## Next steps
+## Related content
 
-[Write queries](/azure/data-explorer/kusto/query/tutorials/learn-common-operators)
+* [Write queries](/azure/data-explorer/kusto/query/tutorials/learn-common-operators)

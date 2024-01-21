@@ -7,6 +7,8 @@ ms.reviewer: ramacg
 ---
 # Ingest data with the NLog sink into Azure Data Explorer
 
+[!INCLUDE [real-time-analytics-connectors-note](includes/real-time-analytics-connectors-note.md)]
+
 NLog is a flexible and free logging platform for various .NET platforms, including .NET standard. NLog allows you to write to several targets, such as a database, file, or console. With NLog, you can change the logging configuration on-the-fly. The NLog sink is a target for NLog that allows you to send your log messages to an Azure Data Explorer cluster. The plugin is built on top of the Azure-Kusto-Data library and provides an efficient way to sink your logs to your cluster.
 
 In this article, you'll learn how to:
@@ -36,17 +38,21 @@ Add the [NLog.Azure.Kusto](https://aka.ms/adx-docs-nlog-nuget) NuGet package. Us
 Install-Package NLog.Azure.Kusto
 ```
 
-### Create an Azure AD app registration
+<a name='create-an-azure-ad-app-registration'></a>
 
-Azure Active Directory (Azure AD) application authentication is used for applications that need to access Azure Data Explorer without a user present. To ingest data using the NLog connector, you need to create and register an Azure AD service principal, and then authorize this principal to ingest data an Azure Data Explorer database.
+### Create a Microsoft Entra app registration
 
-1. Using your Azure Data Explorer cluster, follow steps 1-7 in [Create an Azure Active Directory application registration in Azure Data Explorer](provision-azure-ad-app.md).
+Microsoft Entra application authentication is used for applications that need to access Azure Data Explorer without a user present. To ingest data using the NLog connector, you need to create and register a Microsoft Entra service principal, and then authorize this principal to ingest data an Azure Data Explorer database.
+
+1. Using your Azure Data Explorer cluster, follow steps 1-7 in [Create a Microsoft Entra application registration in Azure Data Explorer](provision-azure-ad-app.md).
 1. Save the following values to be used in later steps:
     * Application (client) ID
     * Directory (tenant) ID
     * Client secret key value
 
-### Grant the Azure AD app permissions
+<a name='grant-the-azure-ad-app-permissions'></a>
+
+### Grant the Microsoft Entra app permissions
 
 1. In the query tab of the [web UI](https://dataexplorer.azure.com/), connect to your cluster. For more information on how to connect, see [Add clusters](web-query-data.md#add-clusters).
 1. Browse to the database in which you want to ingest data.
@@ -57,7 +63,7 @@ Azure Active Directory (Azure AD) application authentication is used for applica
     ```
 
     > [!NOTE]
-    > The last parameter is a string that shows up as notes when you query the roles associated with a database. For more information, see [View existing security roles](kusto/management/manage-database-security-roles.md#view-existing-security-roles).
+    > The last parameter is a string that shows up as notes when you query the roles associated with a database. For more information, see [View existing security roles](kusto/management/manage-database-security-roles.md#show-existing-security-roles).
 
 ### Create a table and ingestion mapping
 
@@ -132,9 +138,9 @@ Use the sample log generator app as an example showing how to configure and use 
     |---|---|
     | *INGEST_ENDPOINT* | The ingest URI for your cluster in the format *https://ingest-\<cluster>.\<region>.kusto.windows.net*. |
     | *DATABASE* | The case-sensitive name of the target database. |
-    | *APP_ID* | Application client ID required for authentication. You saved this value in [Create an Azure AD App registration](#create-an-azure-ad-app-registration). |
-    | *APP_KEY* | Application key required for authentication. You saved this value in [Create an Azure AD App registration](#create-an-azure-ad-app-registration). |
-    | *AZURE_TENANT_ID* | The ID of the tenant in which the application is registered. You saved this value in [Create an Azure AD App registration](#create-an-azure-ad-app-registration). |
+    | *APP_ID* | Application client ID required for authentication. You saved this value in [Create a Microsoft Entra App registration](#create-an-azure-ad-app-registration). |
+    | *APP_KEY* | Application key required for authentication. You saved this value in [Create a Microsoft Entra App registration](#create-an-azure-ad-app-registration). |
+    | *AZURE_TENANT_ID* | The ID of the tenant in which the application is registered. You saved this value in [Create a Microsoft Entra App registration](#create-an-azure-ad-app-registration). |
 
     You can set the environment variables manually or using the following commands:
 
@@ -184,7 +190,7 @@ Use the sample log generator app as an example showing how to configure and use 
 
     :::image type="content" lightbox="media/nlog-connector/take-10-results.png" source="media/nlog-connector/take-10-results.png" alt-text="Screenshot of table with take 10 function and results.":::
 
-## See also
+## Related content
 
 * [Data connectors overview](connector-overview.md)
 * [Kusto Query Language (KQL) overview](kusto/query/index.md)

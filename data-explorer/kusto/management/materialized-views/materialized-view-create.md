@@ -34,14 +34,16 @@ You must have at least [Database User](../access-control/role-based-access-contr
 
 `.create` [`async`] [`ifnotexists`] `materialized-view` [ `with` `(`*PropertyName* `=` *PropertyValue*`,`...`)`] *MaterializedViewName* `on table` *SourceTableName* `{` *Query* `}`
 
+[!INCLUDE [syntax-conventions-note](../../../includes/syntax-conventions-note.md)]
+
 ## Parameters
 
 | Name                            | Type   | Required | Description                                                                                                                                                                                                                          |
 |---------------------------------|--------|----------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| *PropertyName*, *PropertyValue* | string |          | List of properties in the form of name and value pairs, from the list of [supported properties](#properties).                                                                                                                        |
-| *MaterializedViewName*          | string | &check;  | Name of the materialized view. The view name can't conflict with table or function names in the same database and must adhere to the [identifier naming rules](../../query/schema-entities/entity-names.md#identifier-naming-rules). |
-| *SourceTableName*               | string | &check;  | Name of source table on which the view is defined.                                                                                                                                                                                   |
-| *Query*                         | string | &check;  | Query definition of the materialized view. For more information and limitations, see [Query parameter](#query-parameter) section.                                                                                                                                                                                                      |
+| *PropertyName*, *PropertyValue* | string |          | List of properties in the form of name and value pairs, from the list of [supported properties](#supported-properties).                                                                                                                        |
+| *MaterializedViewName*          | string |  :heavy_check_mark:  | Name of the materialized view. The view name can't conflict with table or function names in the same database and must adhere to the [identifier naming rules](../../query/schema-entities/entity-names.md#identifier-naming-rules). |
+| *SourceTableName*               | string |  :heavy_check_mark:  | Name of source table on which the view is defined.                                                                                                                                                                                   |
+| *Query*                         | string |  :heavy_check_mark:  | Query definition of the materialized view. For more information and limitations, see [Query parameter](#query-parameter) section.                                                                                                                                                                                                      |
 
 > [!NOTE]
 > If the materialized view already exists:
@@ -50,7 +52,7 @@ You must have at least [Database User](../access-control/role-based-access-contr
 > * If the `ifnotexists` flag isn't specified, an error is returned.
 > * To alter an existing materialized view, use the [.alter materialized-view](materialized-view-alter.md) command.
 
-## Properties
+## Supported properties
 
 The following properties are supported in the `with` `(`*PropertyName* `=` *PropertyValue*`)` clause. All properties are optional.
 
@@ -59,7 +61,7 @@ The following properties are supported in the `with` `(`*PropertyName* `=` *Prop
 > [!WARNING]
 >
 > * The system will automatically disable a materialized view if changes to the source table of the materialized view, or changes in data, lead to incompatibility between the materialized view query and the expected materialized view schema.
-> * To avoid this error, the materialized view query must be deterministic. For example, the [bag_unpack](../../query/bag-unpackplugin.md) or [pivot](../../query/pivotplugin.md) plugin results in a non-deterministic schema.
+> * To avoid this error, the materialized view query must be deterministic. For example, the [bag_unpack](../../query/bag-unpack-plugin.md) or [pivot](../../query/pivot-plugin.md) plugin results in a non-deterministic schema.
 > * When you're using an `arg_max(Timestamp, *)` aggregation and when `autoUpdateSchema` is false, changes to the source table can also lead to schema mismatches. Avoid this failure by defining the view query as `arg_max(Timestamp, Column1, Column2, ...)`, or by using the `autoUpdateSchema` option.
 > * Using `autoUpdateSchema` might lead to irreversible data loss when columns in the source table are dropped.
 > * Monitor automatic disabling of materialized views by using the [MaterializedViewResult metric](materialized-views-monitoring.md#materializedviewresult-metric).
@@ -77,10 +79,10 @@ You can create a materialized view over another materialized view only when the 
 
 | Name                            | Type   | Required | Description                                                                                                                                                                                                                          |
 |---------------------------------|--------|----------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| *PropertyName*, *PropertyValue* | string |          | List of properties in the form of name and value pairs, from the list of [supported properties](#properties).                                                                                                                        |
-| *MaterializedViewName*          | string | &check;  | Name of the materialized view. The view name can't conflict with table or function names in the same database and must adhere to the [identifier naming rules](../../query/schema-entities/entity-names.md#identifier-naming-rules). |
-| *SourceMaterializedViewName*    | string | &check;  | Name of source materialized view on which the view is defined.                                                                                                                                                                       |
-| *Query*                         | string | &check;  | Query definition of the materialized view.                                                                                                                                                                                           |
+| *PropertyName*, *PropertyValue* | string |          | List of properties in the form of name and value pairs, from the list of [supported properties](#supported-properties).                                                                                                                        |
+| *MaterializedViewName*          | string |  :heavy_check_mark:  | Name of the materialized view. The view name can't conflict with table or function names in the same database and must adhere to the [identifier naming rules](../../query/schema-entities/entity-names.md#identifier-naming-rules). |
+| *SourceMaterializedViewName*    | string |  :heavy_check_mark:  | Name of source materialized view on which the view is defined.                                                                                                                                                                       |
+| *Query*                         | string |  :heavy_check_mark:  | Query definition of the materialized view.                                                                                                                                                                                           |
 
 ## Examples
 
@@ -185,13 +187,13 @@ The following rules limit the query used in the materialized view Query paramete
 
 * The query shouldn't include any operators that depend on `now()`. For example, the query shouldn't have `where Timestamp > ago(5d)`. Use the retention policy on the materialized view to limit the period of time that the view covers.
 
-* The following operators are not supported in the materialized view query: [`sort`](../../query/sort-operator.md), [`top-nested`](../../query/topnestedoperator.md), [`top`](../../query/topoperator.md), [`partition`](../../query/partitionoperator.md), [`serialize`](../../query/serializeoperator.md).
+* The following operators are not supported in the materialized view query: [`sort`](../../query/sort-operator.md), [`top-nested`](../../query/top-nested-operator.md), [`top`](../../query/top-operator.md), [`partition`](../../query/partition-operator.md), [`serialize`](../../query/serialize-operator.md).
 
 * Composite aggregations are not supported in the definition of the materialized view. For instance, instead of using `SourceTableName | summarize Result=sum(Column1)/sum(Column2) by Id`, define the materialized view as: `SourceTableName | summarize a=sum(Column1), b=sum(Column2) by Id`. During view query time, run `MaterializedViewName | project Id, Result=a/b`. The required output of the view, including the calculated column (`a/b`), can be encapsulated in a [stored function](../../query/functions/user-defined-functions.md). Access the stored function instead of accessing the materialized view directly.
 
 * Cross-cluster and cross-database queries aren't supported.
 
-* References to [external_table()](../../query/externaltablefunction.md) and [externaldata](../../query/externaldata-operator.md) aren't supported.
+* References to [external_table()](../../query/external-table-function.md) and [externaldata](../../query/externaldata-operator.md) aren't supported.
 
 * The materialized view query can't include any callouts that require impersonation. Specifically, all [query connectivity plugins](../../query/azure-digital-twins-query-request-plugin.md) that use impersonation aren't allowed.
 
@@ -208,26 +210,26 @@ The following rules limit the query used in the materialized view Query paramete
 
 The following aggregation functions are supported:
 
-* [`count`](../../query/count-aggfunction.md)
-* [`countif`](../../query/countif-aggfunction.md)
+* [`count`](../../query/count-aggregation-function.md)
+* [`countif`](../../query/countif-aggregation-function.md)
 * [`dcount`](../../query/dcount-aggfunction.md)
-* [`dcountif`](../../query/dcountif-aggfunction.md)
-* [`min`](../../query/min-aggfunction.md)
-* [`max`](../../query/max-aggfunction.md)
-* [`avg`](../../query/avg-aggfunction.md)
-* [`avgif`](../../query/avgif-aggfunction.md)
-* [`sum`](../../query/sum-aggfunction.md)
-* [`sumif`](../../query/sumif-aggfunction.md)
-* [`arg_max`](../../query/arg-max-aggfunction.md)
-* [`arg_min`](../../query/arg-min-aggfunction.md)
-* [`take_any`](../../query/take-any-aggfunction.md)
-* [`take_anyif`](../../query/take-anyif-aggfunction.md)
-* [`hll`](../../query/hll-aggfunction.md)
-* [`make_set`](../../query/makeset-aggfunction.md)
-* [`make_list`](../../query/makelist-aggfunction.md)
-* [`make_bag`](../../query/make-bag-aggfunction.md)
-* [`percentile`, `percentiles`](../../query/percentiles-aggfunction.md)
-* [`tdigest`](../../query/tdigest-aggfunction.md)
+* [`dcountif`](../../query/dcountif-aggregation-function.md)
+* [`min`](../../query/min-aggregation-function.md)
+* [`max`](../../query/max-aggregation-function.md)
+* [`avg`](../../query/avg-aggregation-function.md)
+* [`avgif`](../../query/avgif-aggregation-function.md)
+* [`sum`](../../query/sum-aggregation-function.md)
+* [`sumif`](../../query/sumif-aggregation-function.md)
+* [`arg_max`](../../query/arg-max-aggregation-function.md)
+* [`arg_min`](../../query/arg-min-aggregation-function.md)
+* [`take_any`](../../query/take-any-aggregation-function.md)
+* [`take_anyif`](../../query/take-anyif-aggregation-function.md)
+* [`hll`](../../query/hll-aggregation-function.md)
+* [`make_set`](../../query/make-set-aggregation-function.md)
+* [`make_list`](../../query/make-list-aggregation-function.md)
+* [`make_bag`](../../query/make-bag-aggregation-function.md)
+* [`percentile`, `percentiles`](../../query/percentiles-aggregation-function.md)
+* [`tdigest`](../../query/tdigest-aggregation-function.md)
 
 ### Performance tips
 
@@ -250,7 +252,7 @@ The following aggregation functions are supported:
   >
   > We recommend that in the materialized view query, you either filter out the outlier records or normalize these records to the current time.
 
-* **Define a lookback period**: If applicable to your scenario, adding a `lookback` property can significantly improve query performance. For details, see [Properties](#properties).  
+* **Define a lookback period**: If applicable to your scenario, adding a `lookback` property can significantly improve query performance. For details, see [Supported properties](#supported-properties).  
 
 * **Add columns frequently used for filtering as group-by keys**: Materialized view queries are optimized when they're filtered by one of the materialized view's group-by keys. If you know that your query pattern will often filter by a column that's immutable according to a unique entity in the materialized view, include it in the materialized view's group-by keys.
 
@@ -272,7 +274,7 @@ The following aggregation functions are supported:
     }
     ```
 
-* **Use update policies where appropriate**: The materialized view can include transformations, normalizations, and lookups in dimension tables. However, we recommend that you move these operations to an [update policy](../updatepolicy.md). Leave only the aggregation for the materialized view.
+* **Use update policies where appropriate**: The materialized view can include transformations, normalizations, and lookups in dimension tables. However, we recommend that you move these operations to an [update policy](../update-policy.md). Leave only the aggregation for the materialized view.
 
     For example, it's better to define the following update policy:
 
@@ -351,7 +353,7 @@ For example, the following command will backfill the materialized view from `202
 } 
 ```
 
-If the materialized view includes a datetime group-by key, the backfill process supports overriding the [extent creation time](../extents-overview.md#extent-creation-time) based on the datetime column. This can be useful, for example, if you want older records to be dropped before recent ones, because the [retention policy](../retentionpolicy.md) is based on the extent creation time. For example, the following backfill will assign creation time based on the `Timestamp` group-by key:
+If the materialized view includes a datetime group-by key, the backfill process supports overriding the [extent creation time](../extents-overview.md#extent-creation-time) based on the datetime column. This can be useful, for example, if you want older records to be dropped before recent ones, because the [retention policy](../retention-policy.md) is based on the extent creation time. For example, the following backfill will assign creation time based on the `Timestamp` group-by key:
 
 <!-- csl -->
 ```kusto
@@ -427,7 +429,7 @@ The option of backfilling by move extents can be useful in two main scenarios:
 * The following example demonstrates the use of the `source_ingestion_time_from` property in the option of backfilling by move extents. Using both `source_ingestion_time_from` and `move_extents_from` indicates that the materialized view is backfilled from two sources:
 
   * **The `move_extents_from` table**: `DeduplicatedTable` in the following example. This table should include all historical data to backfill. You can optionally use the `effectiveDateTime` property to include only extents in `DeduplicatedTable` whose `MaxCreatedOn` value is greater than `effectiveDateTime`.
-  * **The source table of the materialized view**: `T` in the following example. Backfill from this table includes only records whose [ingestion_time()](../../query/ingestiontimefunction.md) value is greater than `source_ingestion_time_from`.
+  * **The source table of the materialized view**: `T` in the following example. Backfill from this table includes only records whose [ingestion_time()](../../query/ingestion-time-function.md) value is greater than `source_ingestion_time_from`.
 
      The `source_ingestion_time_from` property should be used only to handle the possible data loss in the short time between preparing the table to backfill from (`DeduplicatedTable`) and the time that the view is created. Don't set this property too far in the past. That would start the materialized view with a significant lag, which might be hard to catch up with.
 
@@ -459,11 +461,13 @@ If the operation is no longer in progress when the `.cancel operation` command i
 
 `.cancel operation` *operationId*
 
+[!INCLUDE [syntax-conventions-note](../../../includes/syntax-conventions-note.md)]
+
 #### Parameters
 
 | Name          | Type | Required | Description                                                                   |
 |---------------|------|----------|-------------------------------------------------------------------------------|
-| `operationId` | guid | &check;  | The operation ID returned from the `.create async materialized-view` command. |
+| `operationId` | guid |  :heavy_check_mark:  | The operation ID returned from the `.create async materialized-view` command. |
 
 #### Output
 

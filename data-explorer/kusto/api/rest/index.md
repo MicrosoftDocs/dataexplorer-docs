@@ -11,8 +11,7 @@ This article describes how to interact with your cluster over HTTPS.
 
 ## Supported actions
 
-The list of actions supported by an endpoint differs according to whether the
-endpoint is an engine endpoint or a data management endpoint.
+The available actions for an endpoint depend on whether it's an engine endpoint or a data management endpoint. In the Azure portal cluster overview, the engine endpoint is identified as the **Cluster URI** and the data management endpoint as the **Data ingestion URI**.
 
 |Action         |HTTP verb   |URI template           |Engine|Data Management|Authentication |
 |---------------|------------|-----------------------|------|---------------|---------------|
@@ -32,19 +31,10 @@ Where *Action* represents a group of related activities
 * The UI action can be used to start up a desktop client or web client. The action is done through an HTTP Redirect response,
 to interact with the service.
 
-## Next steps
-
-For more information on the HTTP request and response of the query and management actions, see:
+## Related content
 
 * [REST API reference](/rest/api/azurerekusto/)
 * [Query management HTTP request](request.md)
 * [Query management HTTP response](response.md)
 * [Query v2 HTTP response](response2.md)
-
-For more information on the stream ingest action, see:
-
 * [Streaming ingestion HTTP request](streaming-ingest.md)
-
-For more information on the UI action, see:
-
-* [UI deep link](deeplink.md)

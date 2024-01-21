@@ -32,9 +32,9 @@ to queries.
 Management commands can reference queries (but not vice-versa) or other management commands.
 There are several supported scenarios:
 
-1. **AdminThenQuery**: A management command is executed, and its result (represented
+* **AdminThenQuery**: A management command is executed, and its result (represented
    as a temporary data table) serves as the input to a query.
-2. **AdminFromQuery**: Either a query or a `.show` admin command is executed,
+* **AdminFromQuery**: Either a query or a `.show` admin command is executed,
    and its result (represented as a temporary data table) serves as the input to
    a management command.
 
@@ -46,17 +46,14 @@ Also note that [query statements](../query/statements.md) appear within the quer
 part of the text (they can't precede the command itself).
 
 >[!NOTE]
-> Don't run *AdminThenQuery* operations too frequently.
-> *AdminThenQuery* pipes the result set of the management command and applies filters/aggregations on it.
->  * For example: `.show ... | where ... | summarize ...`
->   * When running something like: `.show cluster extents | count` (emphasis on the `| count`), Kusto first prepares a data table that holds all details of all extents in the cluster. The system then sends that in-memory-only table to the Kusto engine to do the count. The system actually works hard in an unoptimized path to give you such a trivial answer.
+> We recommend limiting the usage of *AdminThenQuery* operations.
 
 
 **AdminThenQuery** is indicated in one of two ways:
 
-1. By using a pipe (`|`) character, the query therefore treats the results of the
+* By using a pipe (`|`) character, the query therefore treats the results of the
    management command as if it were any other data-producing query operator.
-2. By using a semicolon (`;`) character, which then introduces the results of the
+* By using a semicolon (`;`) character, which then introduces the results of the
    management command into a special symbol called `$command_results`, that one may then
    use in the query any number of times.
 

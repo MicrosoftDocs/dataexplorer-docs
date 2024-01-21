@@ -22,12 +22,14 @@ You must have at least Database User, Database Viewer, or Database Monitor permi
 
 `.clear` `cache` `remote-schema` `cluster('`*ClusterName*`').database('`*DatabaseName*`')`
 
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+
 ## Parameters
 
 |Name|Type|Required|Description|
 |--|--|--|--|
-|*ClusterName*|string|&check;|The name of the cluster containing the database for which to clear the cache.|
-|*DatabaseName*|string|&check;|The name of the database for which to clear the cache.|
+|*ClusterName*|string| :heavy_check_mark:|The name of the cluster containing the database for which to clear the cache.|
+|*DatabaseName*|string| :heavy_check_mark:|The name of the database for which to clear the cache.|
 
 ## Returns
 

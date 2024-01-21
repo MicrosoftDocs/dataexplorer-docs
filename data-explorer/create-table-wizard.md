@@ -12,8 +12,9 @@ Creating a table is an important step in the process of [data ingestion](ingest-
 
 ## Prerequisites
 
-* A Microsoft account or an Azure Active Directory user identity. An Azure subscription isn't required.
-* An Azure Data Explorer cluster and database. [Create a cluster and database](create-cluster-and-database.md).
+* A Microsoft account or a Microsoft Entra user identity. An Azure subscription isn't required.
+* An Azure Data Explorer cluster and database. [Create a cluster and database](create-cluster-and-database.md). 
+* Database User or Database Admin permissions. For more information, see [Kusto role-based access control](kusto/access-control/role-based-access-control.md).
 * Sign in to the [Azure Data Explorer web UI](https://dataexplorer.azure.com/) and [add a connection to your cluster](web-query-data.md#add-clusters).
 
 > [!NOTE]
@@ -93,7 +94,7 @@ In the **Schema** tab, your [data format](./ingest-data-wizard.md#file-formats) 
 1. In **Mapping**, enter a name for this table's schema mapping.
 
     > [!TIP]
-    > Names can include alphanumeric characters and underscores. Spaces, special characters, and hyphens aren't supported.
+    > Names can include alphanumeric characters, hyphens, periods and underscores. Spaces and special characters aren't supported.
 
 1. Select **Next: Create table**.
 
@@ -138,8 +139,7 @@ In the tiles below the **Create table** progress, explore **Quick queries** or *
 >
 > The drop commands in this workflow will only revert the changes that were made by the create table process (new table and schema mapping).
 
-## Next steps
+## Related content
 
 * [Data ingestion overview](ingest-data-overview.md)
-* [Ingestion wizard](./ingest-data-wizard.md)
 * [Write queries for Azure Data Explorer](/azure/data-explorer/kusto/query/tutorials/learn-common-operators)

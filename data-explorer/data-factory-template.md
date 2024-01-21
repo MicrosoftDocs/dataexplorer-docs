@@ -102,12 +102,11 @@ If your ControlTableDataset is in a different format, create a comparable Contro
 
 You can now use the template to efficiently copy large amounts of data from your databases and tables.
 
-## Next steps
+## Related content
 
-* Learn how to [copy data to Azure Data Explorer by using Azure Data Factory](data-factory-load-data.md).
-* Learn about the [Azure Data Explorer connector](/azure/data-factory/connector-azure-data-explorer) in Azure Data Factory.
-* Learn about [Azure Data Explorer queries](web-query-data.md) for data querying.
-
+* Learn about the [Azure Data Explorer connector](/azure/data-factory/connector-azure-data-explorer) for Azure Data Factory.
+* Edit linked services, datasets, and pipelines in the [Data Factory UI](/azure/data-factory/quickstart-create-data-factory-portal).
+* [Query data in the Azure Data Explorer web UI](web-query-data.md).
 
 
 

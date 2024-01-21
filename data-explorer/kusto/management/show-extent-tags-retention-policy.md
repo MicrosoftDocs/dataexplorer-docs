@@ -17,11 +17,13 @@ You must have at least Database User, Database Viewer, or Database Monitor permi
 
 `.show`  ( `table` | `database` ) *EntityName* `policy` `extent_tags_retention`
 
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+
 ## Parameters
 
 |Name|Type|Required|Description|
 |--|--|--|--|
-|*EntityName*|string|&check;|The table or database name for which to show the extent tags retention policy.|
+|*EntityName*|string| :heavy_check_mark:|The table or database name for which to show the extent tags retention policy.|
 
 ## Returns
 

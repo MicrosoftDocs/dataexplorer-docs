@@ -3,18 +3,16 @@ title:  The dynamic data type
 description: This article describes The dynamic data type in Azure Data Explorer.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 11/13/2022
+ms.date: 01/08/2024
 ---
 # The dynamic data type
 
-The `dynamic` scalar data type is special in that it can take on any value  of other scalar data types from the list below, as well as arrays and property bags. Specifically, a `dynamic` value can be:
+The `dynamic` scalar data type can be any of the following values:
 
-* Null.
-* A value of any of the primitive scalar data types:
-  `bool`, `datetime`, `guid`, `int`, `long`, `real`, `string`, and `timespan`.
-* An array of `dynamic` values, holding zero or more values with zero-based   indexing.
-* A property bag that maps unique `string` values to `dynamic` values.
-  The property bag has zero or more such mappings (called "slots"), indexed by the unique `string` values. The slots are unordered.
+* An array of `dynamic` values, holding zero or more values with zero-based indexing.
+* A property bag that maps unique `string` values to `dynamic` values. The property bag has zero or more such mappings (called "slots"), indexed by the unique `string` values. The slots are unordered.
+* A value of any of the primitive scalar data types: `bool`, `datetime`, `guid`, `int`, `long`, `real`, `string`, and `timespan`.
+* Null. For more information, see [Null values](null-values.md).
 
 > [!NOTE]
 > * Values of type `dynamic` are limited to 1MB (2^20), uncompressed. If a cell value in a record exceeds 1MB, the value is dropped and ingestion succeeds. You can increase the `MaxValueSize` of the column by changing its [encoding policy](../../management/alter-encoding-policy.md).
@@ -31,25 +29,25 @@ The `dynamic` scalar data type is special in that it can take on any value  of o
 >   possible for two property bags with the same set of mappings to yield different
 >   results when they are represented as `string` values, for example.
 
-## Dynamic literals
+## `dynamic` literals
 
-A literal of type `dynamic` looks like this:
+To specify a `dynamic` literal, use one of the following syntax options:
 
-`dynamic(` *Value* `)`
+|Syntax|Description|Example|
+|--|--|--|
+|`dynamic([`*value* [`,` ...]`])`|An array of dynamic or other scalar literals.|`dynamic([1, 2, "hello"])`|
+|`dynamic({`*key* `=` *value* [`,` ...]`})`|A property bag, or object. The value for a key can be a nested property bag.|`dynamic({"a":1, "b":{"a":2}})`|
+|`dynamic(`*value*`)`|A dynamic value holding the value of the inner scalar data type.|`dynamic(4)`|
+|`dynamic(null)`|Represents the [null value](null-values.md).||
 
-*Value* can be:
+[!INCLUDE [syntax-conventions-note](../../../includes/syntax-conventions-note.md)]
 
-* `null`, in which case the literal represents the null dynamic value:
-  `dynamic(null)`.
-* Another scalar data type literal, in which case the literal represents the
-  `dynamic` literal of the "inner" type. For example, `dynamic(4)` is
-  a dynamic value holding the value 4 of the long scalar data type.
-* An array of dynamic or other literals: `[` *ListOfValues* `]`. For example,
-  `dynamic([1, 2, "hello"])` is a dynamic array of three elements, two `long` values
-  and one `string` value.
-* A property bag: `{` *Name* `=` *Value* ... `}`. For example, `dynamic({"a":1, "b":{"a":2}})`
-  is a property bag with two slots, `a`, and `b`, with the second slot being
-  another property bag.
+## Examples
+
+The following query creates a dynamic property bag:
+
+> [!div class="nextstepaction"]
+> <a href="https://dataexplorer.azure.com/clusters/kvc9rf7q4d68qcw5sk2d6f.northeurope/databases/MyDatabase?query=H4sIAAAAAAAAAw3HsQqAIBAA0D3oH46bCo4g3QS%2FJBrUExJMIxoK69%2B76fGOM5ULquWnuD2FoaFDMytNgB4NbjHnipKAZplJkV4ljKZ939h3L8T7ioXB2To5Ai94giAEAhb4B3199sBhAAAA" target="_blank">Run the query</a>
 
 ```kusto
 print o=dynamic({"a":123, "b":"hello", "c":[1,2,3], "d":{}})
@@ -161,47 +159,47 @@ Cast functions are:
 Several functions enable you to create new `dynamic` objects:
 
 * [bag_pack()](../packfunction.md) creates a property bag from name/value pairs.
-* [pack_array()](../packarrayfunction.md) creates an array from name/value pairs.
-* [range()](../rangefunction.md) creates an array with an arithmetic series of numbers.
-* [zip()](../zipfunction.md) pairs "parallel" values from two arrays into a single array.
-* [repeat()](../repeatfunction.md) creates an array with a repeated value.
+* [pack_array()](../pack-array-function.md) creates an array from name/value pairs.
+* [range()](../range-function.md) creates an array with an arithmetic series of numbers.
+* [zip()](../zip-function.md) pairs "parallel" values from two arrays into a single array.
+* [repeat()](../repeat-function.md) creates an array with a repeated value.
 
 Additionally, there are several aggregate functions which create `dynamic`
 arrays to hold aggregated values:
 
-* [buildschema()](../buildschema-aggfunction.md) returns the aggregate schema of multiple `dynamic` values.
-* [make_bag()](../make-bag-aggfunction.md) returns a property bag of dynamic values within the group.
-* [make_bag_if()](../make-bag-if-aggfunction.md) returns a property bag of dynamic values within the group (with a predicate).
-* [make_list()](../makelist-aggfunction.md) returns an array holding all values, in sequence.
-* [make_list_if()](../makelistif-aggfunction.md) returns an array holding all values, in sequence (with a predicate).
-* [make_list_with_nulls()](../make-list-with-nulls-aggfunction.md) returns an array holding all values, in sequence, including null values.
-* [make_set()](../makeset-aggfunction.md) returns an array holding all unique values.
-* [make_set_if()](../makesetif-aggfunction.md) returns an array holding all unique values (with a predicate).
+* [buildschema()](../buildschema-aggregation-function.md) returns the aggregate schema of multiple `dynamic` values.
+* [make_bag()](../make-bag-aggregation-function.md) returns a property bag of dynamic values within the group.
+* [make_bag_if()](../make-bag-if-aggregation-function.md) returns a property bag of dynamic values within the group (with a predicate).
+* [make_list()](../make-list-aggregation-function.md) returns an array holding all values, in sequence.
+* [make_list_if()](../make-list-if-aggregation-function.md) returns an array holding all values, in sequence (with a predicate).
+* [make_list_with_nulls()](../make-list-with-nulls-aggregation-function.md) returns an array holding all values, in sequence, including null values.
+* [make_set()](../make-set-aggregation-function.md) returns an array holding all unique values.
+* [make_set_if()](../make-set-if-aggregation-function.md) returns an array holding all unique values (with a predicate).
 
 ## Operators and functions over dynamic types
 
-For a complete list of scalar dynamic/array functions, see [dynamic/array functions](../scalarfunctions.md#dynamicarray-functions).
+For a complete list of scalar dynamic/array functions, see [dynamic/array functions](../scalar-functions.md#dynamicarray-functions).
 
 |Operator or function|Usage with dynamic data types|
 |---|---|
 | *value* `in` *array*| True if there's an element of *array* that == *value*<br/>`where City in ('London', 'Paris', 'Rome')`
 | *value* `!in` *array*| True if there's no element of *array* that == *value*
-|[`array_length(`array`)`](../arraylengthfunction.md)| Null if it isn't an array
+|[`array_length(`array`)`](../array-length-function.md)| Null if it isn't an array
 |[`bag_has_key(`bag`,`key`)`](../bag-has-key-function.md)| Checks whether a dynamic bag column contains a given key.
-|[`bag_keys(`bag`)`](../bagkeysfunction.md)| Enumerates all the root keys in a dynamic property-bag object.
+|[`bag_keys(`bag`)`](../bag-keys-function.md)| Enumerates all the root keys in a dynamic property-bag object.
 |[`bag_merge(`bag1,...,bagN`)`](../bag-merge-function.md)| Merges dynamic property-bags into a dynamic property-bag with all properties merged.
 |[`bag_set_key(`bag,key,value`)`](../bag-set-key-function.md)| Sets a given key to a given value in a dynamic property-bag.
-|[`extract_json`(path,object), `extract_json(`path,object`)`](../extractjsonfunction.md)|Use path to navigate into object.
-|[`parse_json(`source`)`](../parsejsonfunction.md)| Turns a JSON string into a dynamic object.
-|[`range(`from,to,step`)`](../rangefunction.md)| An array of values
-|[`mv-expand` listColumn](../mvexpandoperator.md) | Replicates a row for each value in a list in a specified cell.
-|[`summarize buildschema(`column`)`](../buildschema-aggfunction.md) |Infers the type schema from column content
-|[`summarize make_bag(`column`)`](../make-bag-aggfunction.md) | Merges the property bag (dictionary) values in the column into one property bag, without key duplication.
-|[`summarize make_bag_if(`column,predicate`)`](../make-bag-if-aggfunction.md) | Merges the property bag (dictionary) values in the column into one property bag, without key duplication (with predicate).
-|[`summarize make_list(`column`)` ](../makelist-aggfunction.md)| Flattens groups of rows and puts the values of the column in an array.
-|[`summarize make_list_if(`column,predicate`)` ](../makelistif-aggfunction.md)| Flattens groups of rows and puts the values of the column in an array (with predicate).
-|[`summarize make_list_with_nulls(`column`)` ](../make-list-with-nulls-aggfunction.md)| Flattens groups of rows and puts the values of the column in an array, including null values.
-|[`summarize make_set(`column`)`](../makeset-aggfunction.md) | Flattens groups of rows and puts the values of the column in an array, without duplication.
+|[`extract_json`(path,object), `extract_json(`path,object`)`](../extract-json-function.md)|Use path to navigate into object.
+|[`parse_json(`source`)`](../parse-json-function.md)| Turns a JSON string into a dynamic object.
+|[`range(`from,to,step`)`](../range-function.md)| An array of values
+|[`mv-expand` listColumn](../mv-expand-operator.md) | Replicates a row for each value in a list in a specified cell.
+|[`summarize buildschema(`column`)`](../buildschema-aggregation-function.md) |Infers the type schema from column content
+|[`summarize make_bag(`column`)`](../make-bag-aggregation-function.md) | Merges the property bag (dictionary) values in the column into one property bag, without key duplication.
+|[`summarize make_bag_if(`column,predicate`)`](../make-bag-if-aggregation-function.md) | Merges the property bag (dictionary) values in the column into one property bag, without key duplication (with predicate).
+|[`summarize make_list(`column`)` ](../make-list-aggregation-function.md)| Flattens groups of rows and puts the values of the column in an array.
+|[`summarize make_list_if(`column,predicate`)` ](../make-list-if-aggregation-function.md)| Flattens groups of rows and puts the values of the column in an array (with predicate).
+|[`summarize make_list_with_nulls(`column`)` ](../make-list-with-nulls-aggregation-function.md)| Flattens groups of rows and puts the values of the column in an array, including null values.
+|[`summarize make_set(`column`)`](../make-set-aggregation-function.md) | Flattens groups of rows and puts the values of the column in an array, without duplication.
 
 ## Indexing for dynamic data
 
@@ -209,6 +207,6 @@ Every field is indexed during data ingestion. The scope of the index is a single
 
 To index dynamic columns, the ingestion process enumerates all “atomic” elements within the dynamic value (property names, values, array elements) and forwards them to the index builder. Otherwise, dynamic fields have the same inverted term index as string fields.
 
-## Next steps
+## Related content
 
 * To see an example query using dynamic objects and object accessors, see [Map values from one set to another](../tutorials/learn-common-operators.md#map-values-from-one-set-to-another).

@@ -38,7 +38,7 @@ Set up a managed identity using the Azure Data Explorer C# client:
 
 * Install the [Azure Data Explorer NuGet package](https://www.nuget.org/packages/Azure.ResourceManager.Kusto/).
 * Install the [Azure.Identity NuGet package](https://www.nuget.org/packages/Azure.Identity/) for authentication.
-* [Create an Azure Active Directory application](/azure/active-directory/develop/howto-create-service-principal-portal) and service principal that can access resources. You add role assignment at the subscription scope and get the required `Directory (tenant) ID`, `Application ID`, and `Client Secret`.
+* [Create a Microsoft Entra application](/azure/active-directory/develop/howto-create-service-principal-portal) and service principal that can access resources. You add role assignment at the subscription scope and get the required `Directory (tenant) ID`, `Application ID`, and `Client Secret`.
 
 ## Create your cluster
 
@@ -107,7 +107,7 @@ The following limitations apply to the encryption of [selected volumes](kusto/co
 * Performance impact of up to a single digit
 * Can't be used with sandboxes
 
-## Next steps
+## Related content
 
 * [Enable disk encryption for your cluster](cluster-encryption-disk.md)
 * [Check cluster health](check-cluster-health.md)

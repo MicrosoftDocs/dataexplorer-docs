@@ -3,7 +3,7 @@ title: Failure to create or delete DB or table in Azure Data Explorer
 description: This article describes troubleshooting steps for creating and deleting databases and tables in Azure Data Explorer.
 ms.reviewer: mblythe
 ms.topic: how-to
-ms.date: 12/01/2020
+ms.date: 08/29/2023
 ---
 
 # Troubleshoot: Failure to create or delete a database or table in Azure Data Explorer
@@ -22,6 +22,8 @@ In Azure Data Explorer, you regularly work with databases and tables. This artic
 
 Ensure you have adequate permissions. To delete or rename a database, you must be a member of the *Contributor* or *Owner* role for the Azure subscription. If necessary, work with your subscription administrator so they can add you to the appropriate role. You can also delete or rename a database if you have the *database admin* role.
 
+To learn how to delete a database, see [Delete a database](delete-database.md).
+
 ## Creating a table
 
 1. Ensure you have adequate permissions. To create a table, you must be a member of the *database admin* or *database user* role in the database or the *Contributor* or *Owner* role for the Azure subscription. If necessary, work with your subscription or cluster administrator so they can add you to the appropriate role.
@@ -36,7 +38,7 @@ Ensure you have adequate permissions. To delete or rename a database, you must b
    .rename table <OldTableName> to <NewTableName>
     ```
 
-1. Ensure you use table and column names that are not reserved keywords or literals, such as `1day` or `2hours`. When you try to create a table using keywords or literals, you'll get a syntax error. Use [identifier quoting](kusto/query/schema-entities/entity-names.md#identifier-quoting) around keywords and literals to resolve syntax errors.  
+1. Ensure you use table and column names that are not reserved keywords or literals, such as `1day` or `2hours`. When you try to create a table using keywords or literals, you'll get a syntax error. To reference entities with reserved keywords or literals, use the syntax as described in [Reference identifiers in queries](kusto/query/schema-entities/entity-names.md#reference-identifiers-in-queries).
 
 ## Deleting or renaming a table
 
@@ -52,7 +54,7 @@ For more information about permissions, see [Manage database permissions](manage
 
 1. If you still need assistance solving your issue, please open a support request in the [Azure portal](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview).
 
-## Next steps
+## Related content
 
 * [Check cluster health](check-cluster-health.md)
 * [Manage database permissions](manage-database-permissions.md)

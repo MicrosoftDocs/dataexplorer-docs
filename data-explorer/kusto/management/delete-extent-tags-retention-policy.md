@@ -19,12 +19,14 @@ You must have at least [Database Admin](access-control/role-based-access-control
 
 `.delete` `database` *DatabaseName* `policy` `extent_tags_retention`
 
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+
 ## Parameters
 
 |Name|Type|Required|Description|
 |--|--|--|--|
-|*TableName*|string|&check;|The name of the table for which to delete the extent tags retention policy.|
-|*DatabaseName*|string|&check;|The name of the database for which to delete the extent tags retention policy.|
+|*TableName*|string| :heavy_check_mark:|The name of the table for which to delete the extent tags retention policy.|
+|*DatabaseName*|string| :heavy_check_mark:|The name of the database for which to delete the extent tags retention policy.|
 
 ## Example
 

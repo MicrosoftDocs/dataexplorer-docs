@@ -13,7 +13,7 @@ To learn how to run queries, see [Quickstart: Query data in the Azure Data Explo
 
 ## Prerequisites
 
-* A Microsoft account or an Azure Active Directory user identity. An Azure subscription isn't required.
+* A Microsoft account or a Microsoft Entra user identity. An Azure subscription isn't required.
 * An Azure Data Explorer cluster and database. Use the publicly available [**help** cluster](https://dataexplorer.azure.com/help) or [create a cluster and database](create-cluster-and-database.md).
 
 ## Share options
@@ -124,7 +124,7 @@ To export the query results to a CSV file, follow these steps:
 
     :::image type="content" source="media/web-share-query/export-to-csv.png" alt-text="Screenshot of the export to CSV button." lightbox="media/web-share-query/export-to-csv.png":::
 
-## Next steps
+## Related content
 
 * [Azure Data Explorer web UI query overview](web-ui-query-overview.md)
 * [Write Kusto Query Language queries in the web UI](web-ui-kql.md)

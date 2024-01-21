@@ -19,17 +19,17 @@ The diagnosis process is complex and lengthy, and done by domain experts. The pr
 
 Since these diagnosis scenarios are common, machine learning plugins are available to make the diagnosis phase easier, and shorten the duration of the RCA.
 
-All three of the following Machine Learning plugins implement clustering algorithms: [`autocluster`](autoclusterplugin.md), [`basket`](basketplugin.md), and [`diffpatterns`](diffpatternsplugin.md). The `autocluster` and `basket` plugins cluster a single record set, and the `diffpatterns` plugin clusters the differences between two record sets.
+All three of the following Machine Learning plugins implement clustering algorithms: [`autocluster`](autocluster-plugin.md), [`basket`](basket-plugin.md), and [`diffpatterns`](diffpatterns-plugin.md). The `autocluster` and `basket` plugins cluster a single record set, and the `diffpatterns` plugin clusters the differences between two record sets.
 
 ## Clustering a single record set
 
-A common scenario includes a data set selected by a specific criteria such as:
+A common scenario includes a dataset selected by a specific criteria such as:
 
 * Time window that shows anomalous behavior
 * High temperature device readings
 * Long duration commands
 * Top spending users
-You want a fast and easy way to find common patterns (segments) in the data. Patterns are a subset of the data set whose records share the same values over multiple dimensions (categorical columns). 
+You want a fast and easy way to find common patterns (segments) in the data. Patterns are a subset of the dataset whose records share the same values over multiple dimensions (categorical columns). 
 
 The following query builds and shows a time series of service exceptions over the period of a week, in ten-minute bins:
 
@@ -117,7 +117,7 @@ demo_clustering1
 
 ### Use autocluster() for single record set clustering
 
-Even though there are less than a thousand exceptions, it's still hard to find common segments, since there are multiple values in each column. You can use the [`autocluster()`](autoclusterplugin.md) plugin to instantly extract a short list of common segments and find the interesting clusters within the spike's two minutes, as seen in the following query:
+Even though there are less than a thousand exceptions, it's still hard to find common segments, since there are multiple values in each column. You can use the [`autocluster()`](autocluster-plugin.md) plugin to instantly extract a short list of common segments and find the interesting clusters within the spike's two minutes, as seen in the following query:
 
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA4WOsQrCMBRF937FG5OhJYkoovQfBN1DbC8aTNqSvlgHP94IQkf3c+65AUzRD3aCe1hue8dgHyGM0rta7WuzIb09KCWPVfii7vUPNQXtEUfbhTwzkh9uunrTckcCnRI6P+NSvDO7ONEVvACDWD80zRqRRcTThVxa5DKPv00hP81KL1+4AAAA" target="_blank">Run the query</a>
@@ -144,7 +144,7 @@ Autocluster uses a proprietary algorithm for mining multiple dimensions and extr
 
 ### Use basket() for single record set clustering
 
-You can also use the [`basket()`](basketplugin.md) plugin as seen in the following query:
+You can also use the [`basket()`](basket-plugin.md) plugin as seen in the following query:
 
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA4WOsQ6CMBgGd57iH9sB0tZojMZ3MNG9KfBFG1og7Y84+PDWidH9LncBTNGPdoYbLF96x2AfIYzSh1oda7MjvT8pJc9V+KHu/Q81Be0RJ9uFJTOSHx+6+tD6RAJdEzqfcS/ejV2cqQWvwCi2h6bZIrKIeLmwlBa1Lg9gIb9KJv2TswAAAA==" target="_blank">Run the query</a>
@@ -179,7 +179,7 @@ Both plugins are powerful and easy to use. Their limitation is that they cluster
 
 ## Clustering the difference between two records sets
 
-The [`diffpatterns()`](diffpatternsplugin.md) plugin overcomes the limitation of `autocluster` and `basket`. `Diffpatterns` takes two record sets and extracts the main segments that are different. One set usually contains the anomalous record set being investigated. One is analyzed by `autocluster` and `basket`. The other set contains the reference record set, the baseline.
+The [`diffpatterns()`](diffpatterns-plugin.md) plugin overcomes the limitation of `autocluster` and `basket`. `Diffpatterns` takes two record sets and extracts the main segments that are different. One set usually contains the anomalous record set being investigated. One is analyzed by `autocluster` and `basket`. The other set contains the reference record set, the baseline.
 
 In the following query, `diffpatterns` finds interesting clusters within the spike's two minutes, which are different from the clusters within the baseline. The baseline window is defined as the eight minutes before 15:00, when the spike started. You extend by a binary column (AB), and specify whether a specific record belongs to the baseline or to the anomalous set. `Diffpatterns` implements a supervised learning algorithm, where the two class labels were generated by the anomalous versus the baseline flag (AB).
 

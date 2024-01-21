@@ -12,7 +12,7 @@ Creates a new empty table based on an existing table. This command must run in t
 > [!NOTE]
 > All properties of the source table are copied to the new table, with the following exceptions:
 >
-> * [Update policy](updatepolicy.md)
+> * [Update policy](update-policy.md)
 > * [Authorized principals](security-roles.md): When using the `.create table based-on` command, the current principal is added to the table admins.
 
 ## Permissions
@@ -23,13 +23,15 @@ You must have at least [Database Admin](access-control/role-based-access-control
 
 `.create` `table` *tableName* `based-on` *otherTable*  [`ifnotexists`] [`with` `(`*propertyName* `=` *propertyValue* [`,` ...]`)`]
 
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+
 ## Parameters
 
 | Name | Type | Required | Description |
 |--|--|--|--|
 | `ifnotexists` | string | | If specified, the table will only be created if it doesn't already exist.|
-| *tableName* | string | &check; | The name of the table to create. The case-senestive name must be unique in the database. |
-| *otherTable* | string | &check; | The name of an existing table to use as the source for the columns, docstring, and folder of the table being created. |
+| *tableName* | string |  :heavy_check_mark: | The name of the table to create. The case-senestive name must be unique in the database. |
+| *otherTable* | string |  :heavy_check_mark: | The name of an existing table to use as the source for the columns, docstring, and folder of the table being created. |
 | *propertyName*, *propertyValue* | string | | A comma-separated list of key-value property pairs. See [supported properties](#supported-properties).|
 
 ### Supported properties

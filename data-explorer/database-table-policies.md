@@ -23,7 +23,7 @@ Azure Data Explorer is a fast and highly scalable data exploration service for l
 ### [C#](#tab/csharp)
 
 * Install the [Azure Data Explorer (Kusto) NuGet package](https://www.nuget.org/packages/Azure.ResourceManager.Kusto/).
-* Install the [MSAL NuGet package](https://www.nuget.org/packages/Azure.Identity/) for authentication with Azure Active Directory (Azure AD).
+* Install the [MSAL NuGet package](https://www.nuget.org/packages/Azure.Identity/) for authentication with Microsoft Entra ID.
 
 ### [Python](#tab/python)
 
@@ -37,9 +37,9 @@ pip install azure-kusto-data (Optional, for changing table's policies)
 
 ## Authentication
 
-To run the examples in this article, you need an Azure AD application and service principal that can access resources. If necessary, [create an Azure AD application](/azure/active-directory/develop/howto-create-service-principal-portal) and grant it appropriate role assignments on the subscription. Save the **Directory (tenant) ID**, **Application ID**, and **Client Secret**.
+To run the examples in this article, you need a Microsoft Entra application and service principal that can access resources. If necessary, [create a Microsoft Entra application](/azure/active-directory/develop/howto-create-service-principal-portal) and grant it appropriate role assignments on the subscription. Save the **Directory (tenant) ID**, **Application ID**, and **Client Secret**.
 
-You may need to add the new Azure AD application as a principal in the database. For more information, see [Manage Azure Data Explorer database permissions](manage-database-permissions.md).
+You may need to add the new Microsoft Entra application as a principal in the database. For more information, see [Manage Azure Data Explorer database permissions](manage-database-permissions.md).
 
 ## Alter database retention policy
 
@@ -215,7 +215,7 @@ kusto_client.execute_mgmt(database_name, command)
 
 ### [C#](#tab/csharp)
 
-The following example adds a new Azure AD application as admin principal for the database.
+The following example adds a new Microsoft Entra application as admin principal for the database.
 
 ```csharp
 var tenantId = "xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx"; // Azure AD Directory (tenant) ID
@@ -243,7 +243,7 @@ database.AddPrincipals(databasePrincipalList);
 
 ### [Python](#tab/python)
 
-The following example adds a new Azure AD application as admin principal for the database
+The following example adds a new Microsoft Entra application as admin principal for the database
 
 ```python
 from azure.mgmt.kusto import KustoManagementClient
@@ -279,6 +279,6 @@ kustoManagementClient.databases.add_principals(resource_group_name=resource_grou
 
 ---
 
-## Next steps
+## Related content
 
-* [Read more about database and table policies](./kusto/management/index.md)
+* [Policies overview](kusto/management/policies.md)

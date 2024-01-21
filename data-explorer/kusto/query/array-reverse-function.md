@@ -13,11 +13,13 @@ Reverses the order of the elements in a dynamic array.
 
 `array_reverse(`*value*`)`
 
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+
 ## Parameters
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-|*value*| dynamic | &check;| The array to reverse.|
+|*value*| dynamic |  :heavy_check_mark:| The array to reverse.|
 
 ## Returns
 

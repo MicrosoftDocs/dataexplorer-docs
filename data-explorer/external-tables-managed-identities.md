@@ -8,7 +8,7 @@ ms.date: 04/20/2023
 
 # Authenticate external tables with managed identities
 
-An [external table](kusto/query/schema-entities/externaltables.md) is a schema entity that references data stored outside the Azure Data Explorer database. External tables can be defined to reference data in Azure Storage or SQL Server and support various authentication methods.
+An [external table](kusto/query/schema-entities/external-tables.md) is a schema entity that references data stored outside the Azure Data Explorer database. External tables can be defined to reference data in Azure Storage or SQL Server and support various authentication methods.
 
 In this article, you'll learn how to create an external table that authenticates with a [managed identity](managed-identities-overview.md).
 
@@ -31,7 +31,7 @@ Select one of the following tabs to set up the preferred managed identity type.
 
 1. Follow the steps to [Add a user-assigned identity](configure-managed-identities-cluster.md#add-a-user-assigned-identity) to your cluster, and save the **Object (principal) ID** for later use.
 
-1. Run the following [.alter-merge managed_identity policy](kusto/management/alter-merge-managed-identity-policy-command.md) command. This command sets a [managed identity policy](kusto/management/managed-identity-policy.md) on the cluster that allows the managed identity to be used with external tables. Replace `<objectId>` with the **Object (principal) ID** from the previous step.
+1. Run the following [.alter-merge policy managed_identity](kusto/management/alter-merge-managed-identity-policy-command.md) command. This command sets a [managed identity policy](kusto/management/managed-identity-policy.md) on the cluster that allows the managed identity to be used with external tables. Replace `<objectId>` with the **Object (principal) ID** from the previous step.
 
     ```kusto
     .alter-merge cluster policy managed_identity ```[
@@ -49,7 +49,7 @@ Select one of the following tabs to set up the preferred managed identity type.
 
 1. Follow the steps to [Add a system-assigned identity](configure-managed-identities-cluster.md#add-a-system-assigned-identity) to your cluster.
 
-1. Run the following [.alter-merge managed_identity policy](kusto/management/alter-merge-managed-identity-policy-command.md) command. This command sets a [managed identity policy](kusto/management/managed-identity-policy.md) on the cluster that allows the managed identity to be used with external tables.
+1. Run the following [.alter-merge policy managed_identity](kusto/management/alter-merge-managed-identity-policy-command.md) command. This command sets a [managed identity policy](kusto/management/managed-identity-policy.md) on the cluster that allows the managed identity to be used with external tables.
 
     ```kusto
     .alter-merge cluster policy managed_identity ```[
@@ -139,9 +139,8 @@ The following command creates `MySqlExternalTable` that refers to `MySqlTable` t
 
 ---
 
-## Next steps
+## Related content
 
-* Query the external table using [external_table()](kusto/query/externaltablefunction.md)
+* [Managed identities overview](managed-identities-overview.md)
 * [Export data to an external table](kusto/management/data-export/export-data-to-an-external-table.md)
-* Configure [Continuous data export](kusto/management/data-export/continuous-data-export.md)
-* Learn more about [managed identities](managed-identities-overview.md)
+* [Continuous data export](kusto/management/data-export/continuous-data-export.md)

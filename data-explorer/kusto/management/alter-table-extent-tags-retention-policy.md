@@ -17,12 +17,16 @@ You must have at least [Table Admin](access-control/role-based-access-control.md
 
 `.alter` `table` *TableName* `policy` `extent_tags_retention` *SerializedPolicyObject*
 
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+
 ## Parameters
 
 |Name|Type|Required|Description|
 |--|--|--|--|
-| *TableName* | string | &check; | The name of the table to alter.|
-| *SerializedPolicyObject* | string | &check; | A serialized policy object. See [extent tags retention policy](extent-tags-retention-policy.md).|
+| *TableName* | string |  :heavy_check_mark: | The name of the table to alter.|
+| *SerializedPolicyObject* | string |  :heavy_check_mark: | A serialized policy object. See [extent tags retention policy](extent-tags-retention-policy.md).|
 
 ## Example
 
@@ -41,9 +45,9 @@ The following command sets an extent tags retention policy for table T1. The pol
 ]```
 ~~~
 
-## Next steps
+## Related content
 
 - See [.show extents](./show-extents.md)
 commands to see the tags associated with an extent.
-- See the [extent-tags()](../query/extenttagsfunction.md) 
+- See the [extent-tags()](../query/extent-tags-function.md) 
 function to see the tags associated with records.

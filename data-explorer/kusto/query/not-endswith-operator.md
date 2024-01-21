@@ -21,13 +21,15 @@ When possible, use the case-sensitive [!endswith_cs](not-endswith-cs-operator.md
 
 *T* `|` `where` *col* `!endswith` `(`*expression*`)`
 
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+
 ## Parameters
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-| *T* | string | &check;| The tabular input whose records are to be filtered. |
-| *col* | string | &check; | The column to filter. |
-| *expression* | string | &check; | The expression used to filter. |
+| *T* | string |  :heavy_check_mark:| The tabular input whose records are to be filtered. |
+| *col* | string |  :heavy_check_mark: | The column to filter. |
+| *expression* | string |  :heavy_check_mark: | The expression used to filter. |
 
 ## Returns
 

@@ -13,12 +13,14 @@ Converts local datetime to UTC datetime using [a time-zone specification](timezo
 
 `datetime_local_to_utc(`*from*`,`*timezone*`)`
 
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+
 ## Parameters
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-| *from* | datetime | &check; | The local datetime to convert.|
-| *timezone* | string | &check; | The timezone of the desired datetime. The value must be one of the supported [timezones](timezone.md).|
+| *from* | datetime |  :heavy_check_mark: | The local datetime to convert.|
+| *timezone* | string |  :heavy_check_mark: | The timezone of the desired datetime. The value must be one of the supported [timezones](timezone.md).|
 
 ## Returns
 
@@ -65,7 +67,8 @@ range Local from datetime(2022-03-27 01:00:00.0000000) to datetime(2022-03-27 04
 |2022-03-27 03:00:00.0000000|2022-03-27 01:00:00.0000000|2022-03-27 03:00:00.0000000|00:00:00|
 |2022-03-27 04:00:00.0000000|2022-03-27 02:00:00.0000000|2022-03-27 04:00:00.0000000|00:00:00|
 
-## See also
+## Related content
 
 * To convert from UTC to local, see [datetime_utc_to_local()](datetime-utc-to-local-function.md)
 * List of supported [timezones](timezone.md)
+* [format_datetime()](format-datetime-function.md)

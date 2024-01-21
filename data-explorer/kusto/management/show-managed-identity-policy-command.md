@@ -1,11 +1,11 @@
 ---
-title: .show managed_identity policy command
-description: Learn how to use the `.show managed_identity policy` command to show the ManagedIdentity policy of the specified database or cluster.
+title: .show policy managed_identity command
+description: Learn how to use the `.show policy managed_identity` command to show the ManagedIdentity policy of the specified database or cluster.
 ms.reviewer: slneimer
 ms.topic: reference
 ms.date: 05/24/2023
 ---
-# .show managed_identity policy
+# .show policy managed_identity command
 
 This command returns the ManagedIdentity policy of the cluster or the specified database.
 
@@ -23,11 +23,13 @@ For more information, see [role-based access control](access-control/role-based-
 
 `.show` `database` *DatabaseName* `policy` `managed_identity`
 
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+
 ## Parameters
 
 |Name|Type|Required|Description|
 |--|--|--|--|
-|*DatabaseName*|string|&check;|The name of the database.|
+|*DatabaseName*|string| :heavy_check_mark:|The name of the database.|
 
 ## Returns
 

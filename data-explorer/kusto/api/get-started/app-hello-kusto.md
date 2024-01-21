@@ -3,9 +3,9 @@ title:  'Hello Kusto: Create your first app'
 description: Learn how to create your first app to print Hello Kusto using Kusto client libraries.
 ms.reviewer: yogilad
 ms.topic: how-to
-ms.date: 04/24/2023
+ms.date: 11/07/2023
 ---
-# Hello Kusto: Create your first Kusto client app
+# Hello Kusto: Create your first app
 
 In this article, you learn how to:
 
@@ -38,12 +38,14 @@ In your preferred IDE or text editor, create a project or file named *hello kust
     from azure.kusto.data import KustoClient, KustoConnectionStringBuilder
     ```
 
-    ### [Node.js](#tab/nodejs)
+    ### [Typescript](#tab/typescript)
 
-    ```nodejs
-    const KustoClient = require("azure-kusto-data").Client;
-    const KustoConnectionStringBuilder = require("azure-kusto-data").KustoConnectionStringBuilder;
+    ```typescript
+    import { Client as KustoClient, KustoConnectionStringBuilder } from "azure-kusto-data";
+    import { InteractiveBrowserCredentialInBrowserOptions } from "@azure/identity";
     ```
+
+    [!INCLUDE [node-vs-browser-auth](../../../includes/node-vs-browser-auth.md)]
 
     <!-- ### [Go](#tab/go) -->
 
@@ -81,9 +83,9 @@ In your preferred IDE or text editor, create a project or file named *hello kust
       main()
     ```
 
-    ### [Node.js](#tab/nodejs)
+    ### [Typescript](#tab/typescript)
 
-    ```nodejs
+    ```typescript
     async function main()
     {
     }
@@ -123,12 +125,20 @@ In your preferred IDE or text editor, create a project or file named *hello kust
     kcsb = KustoConnectionStringBuilder.with_interactive_login(cluster_uri)
     ```
 
-    ### [Node.js](#tab/nodejs)
+    ### [Typescript](#tab/typescript)
 
-    ```nodejs
+    The `clientId` and `redirectUri` are from the Microsoft Entra app registration you created in the **Prerequisites** section of [Set up your development environment](app-set-up.md#prerequisites).
+
+    ```typescript
     const clusterUri = "https://help.kusto.windows.net";
-    const kcsb = KustoConnectionStringBuilder.withUserPrompt(clusterUri);
+    const authOptions = {
+      clientId: "5e39af3b-ba50-4255-b547-81abfb507c58",
+      redirectUri: "http://localhost:5173",
+    } as InteractiveBrowserCredentialInBrowserOptions;
+    const kcsb = KustoConnectionStringBuilder.withUserPrompt(clusterUri, authOptions);
     ```
+
+    [!INCLUDE [node-vs-browser-auth](../../../includes/node-vs-browser-auth.md)]
 
     <!-- ### [Go](#tab/go) -->
 
@@ -141,7 +151,7 @@ In your preferred IDE or text editor, create a project or file named *hello kust
     ---
 
     > [!NOTE]
-    > For interactive authentication, you need a Microsoft account or an Azure Active Directory user identity. An Azure subscription isn't required.
+    > For interactive authentication, you need a Microsoft account or a Microsoft Entra user identity. An Azure subscription isn't required.
     >
     > In C#, the interactive authentication process may not prompt the user if:
     >
@@ -166,9 +176,9 @@ In your preferred IDE or text editor, create a project or file named *hello kust
     with KustoClient(kcsb) as kusto_client:
     ```
 
-    ### [Node.js](#tab/nodejs)
+    ### [Typescript](#tab/typescript)
 
-    ```nodejs
+    ```typescript
     const kustoClient = new KustoClient(kcsb);
     ```
 
@@ -199,9 +209,9 @@ In your preferred IDE or text editor, create a project or file named *hello kust
     query = "print Welcome='Hello Kusto!'"
     ```
 
-    ### [Node.js](#tab/nodejs)
+    ### [Typescript](#tab/typescript)
 
-    ```nodejs
+    ```typescript
     const database = "Samples";
     const query = "print Welcome='Hello Kusto!'";
     ```
@@ -237,10 +247,10 @@ In your preferred IDE or text editor, create a project or file named *hello kust
     print(response.primary_results[0][0]["Welcome"])
     ```
 
-    ### [Node.js](#tab/nodejs)
+    ### [Typescript](#tab/typescript)
 
-    ```nodejs
-    let response = await kustoClient.execute(database, query);
+    ```typescript
+    const response = await kustoClient.execute(database, query);
 
     console.log(response.primaryResults[0][0]["Welcome"].toString());
     ```
@@ -272,7 +282,7 @@ In your preferred IDE or text editor, create a project or file named *hello kust
     > - Use the [Read()](/dotnet/api/system.data.idatareader.read) method to read the first row
     > - Use the [GetString](/dotnet/api/system.data.idatarecord.getstring)() method to get the value of the first column
     >
-    > ### [Python / Node.js](#tab/python+nodejs)
+    > ### [Python / TypeScript](#tab/python+typescript)
     >
     > The response in the primary results JSON object. The object contains an array of tables, which in turn contains an array of rows. Each row contains data organized into a dictionary of columns. You can reference the result, as follows:
     >
@@ -342,21 +352,25 @@ if __name__ == "__main__":
   main()
 ```
 
-### [Node.js](#tab/nodejs)
+### [Typescript](#tab/typescript)
 
-```nodejs
-const kustoLibraryClient = require("azure-kusto-data").Client;
-const kustoConnectionStringBuilder = require("azure-kusto-data").KustoConnectionStringBuilder;
+```typescript
+import { Client as KustoClient, KustoConnectionStringBuilder } from "azure-kusto-data/";
+import { InteractiveBrowserCredentialInBrowserOptions } from "@azure/identity";
 
 async function main()
 {
   const clusterUri = "https://help.kusto.windows.net";
-  const kcsb = kustoConnectionStringBuilder.withUserPrompt(clusterUri);
-  const kustoClient = new kustoLibraryClient(kcsb);
+  const authOptions = {
+    clientId: "5e39af3b-ba50-4255-b547-81abfb507c58",
+    redirectUri: "http://localhost:5173",
+  } as InteractiveBrowserCredentialInBrowserOptions;
+  const kcsb = KustoConnectionStringBuilder.withUserPrompt(clusterUri, authOptions);
+  const kustoClient = new KustoClient(kcsb);
 
   const database = "Samples";
   const query = "print Welcome='Hello Kusto!'";
-  let response = await kustoClient.execute(database, query);
+  const response = await kustoClient.execute(database, query);
 
   console.log(response.primaryResults[0][0]["Welcome"].toString());
 }
@@ -364,6 +378,7 @@ async function main()
 main();
 ```
 
+[!INCLUDE [node-vs-browser-auth](../../../includes/node-vs-browser-auth.md)]
 <!-- ### [Go](#tab/go) -->
 
 ### [Java](#tab/java)
@@ -414,11 +429,22 @@ dotnet run .
 python hello_kusto.py
 ```
 
-### [Node.js](#tab/nodejs)
+### [Typescript](#tab/typescript)
+
+In a Node.js environment:
 
 ```bash
 node hello-kusto.js
 ```
+
+In a browser environment, use the appropriate command to run your app. For example, for Vite-React:
+
+```bash
+npm run dev
+```
+
+> [!NOTE]
+> In a browser environment, open the [developer tools console](/microsoft-edge/devtools-guide-chromium/console/) to see the output.
 
 <!-- ### [Go](#tab/go) -->
 
@@ -436,7 +462,7 @@ You should see a result similar to the following:
 Hello Kusto!
 ```
 
-## Next steps
+## Next step
 
 <!-- Advance to the next article to learn how to create... -->
 > [!div class="nextstepaction"]

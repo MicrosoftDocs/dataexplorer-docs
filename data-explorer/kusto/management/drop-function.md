@@ -19,11 +19,13 @@ You must have at least [Function Admin](access-control/role-based-access-control
 
 `.drop` `functions` `(` *FunctionName* [`,` ...] `)` [`ifexists`]
 
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+
 ## Parameters
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-| *FunctionName* | string | &check; | The name of the function to drop. |
+| *FunctionName* | string |  :heavy_check_mark: | The name of the function to drop. |
 |`ifexists`| string || If specified, the command won't fail if the function doesn't exist.|
 
 ## Returns

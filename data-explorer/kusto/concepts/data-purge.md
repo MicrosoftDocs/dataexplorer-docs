@@ -60,8 +60,8 @@ Issuing a `.purge` command triggers this process, which takes a few days to comp
 * The `predicate` parameter of the [.purge](#purge-table-tablename-records-command) command is used to specify which records to purge.
 `Predicate` size is limited to 1 MB. When constructing the `predicate`:
 
-  * Use the ['in' operator](../query/inoperator.md), for example, `where [ColumnName] in ('Id1', 'Id2', .. , 'Id1000')`.
-  * Note the limits of the ['in' operator](../query/inoperator.md) (list can contain up to `1,000,000` values).
+  * Use the ['in' operator](../query/in-operator.md), for example, `where [ColumnName] in ('Id1', 'Id2', .. , 'Id1000')`.
+  * Note the limits of the ['in' operator](../query/in-operator.md) (list can contain up to `1,000,000` values).
   * If the query size is large, use [`externaldata` operator](../query/externaldata-operator.md), for example `where UserId in (externaldata(UserId:string) ["https://...blob.core.windows.net/path/to/file?..."])`. The file stores the list of IDs to purge.
   * The total query size, after expanding all `externaldata` blobs (total size of all blobs), can't exceed 64 MB.
 
@@ -73,10 +73,10 @@ Monitor the purge request queue size, and keep within adequate limits to match t
 To reduce purge execution time:
 
 * Follow the [purge guidelines](#purge-guidelines) to decrease the amount of purged data.
-* Adjust the [caching policy](../management/cachepolicy.md) since purge takes longer on cold data.
+* Adjust the [caching policy](../management/cache-policy.md) since purge takes longer on cold data.
 * Scale out the cluster
 
-* Increase cluster purge capacity, after careful consideration, as detailed in [Extents purge rebuild capacity](../management/capacitypolicy.md#extents-purge-rebuild-capacity).
+* Increase cluster purge capacity, after careful consideration, as detailed in [Extents purge rebuild capacity](../management/capacity-policy.md#extents-purge-rebuild-capacity).
 
 ## Trigger the purge process
 
@@ -105,7 +105,7 @@ Purge command may be invoked in two ways for differing usage scenarios:
 * Human invocation: A two-step process that requires an explicit confirmation as a separate step. First invocation of the command returns a verification token, which should be provided to run the actual purge. This sequence reduces the risk of inadvertently deleting incorrect data.
 
  > [!NOTE]
- > The first step in the two-step invocation requires running a query on the entire data set, to identify records to be purged.
+ > The first step in the two-step invocation requires running a query on the entire dataset, to identify records to be purged.
  > This query may time-out or fail on large tables, especially with significant amount of cold cache data. In case of failures,
  > validate the predicate yourself and after verifying correctness use the single-step purge with the `noregrets` option.
 
@@ -205,7 +205,7 @@ To trigger a purge in a single-step activation scenario, run the following comma
 If needed, you can cancel pending purge requests.
 
 > [!NOTE]
-> This operation is intended for error recovery scenarios. It isn't guaranteed to succeed, and shouldn't be part of a normal operational flow. It can only be applied to in-queue requests (not yet dispatched to the engine node for execution). The command is executed on the Data Management endpoint.
+> This operation is intended for error recovery scenarios. It isn't guaranteed to succeed, and shouldn't be part of a normal operational flow. It can only be applied to requests that are still in the queue and have not yet been dispatched for execution.
 
 **Syntax**
 
@@ -413,6 +413,6 @@ The output is the same as the '.show tables' command output (returned without th
 |---|---|---|---
 |OtherTable|MyDatabase|---|---
 
-## Next steps
+## Related content
 
 * [Enable data purge on your Azure Data Explorer cluster](../../data-purge-portal.md)

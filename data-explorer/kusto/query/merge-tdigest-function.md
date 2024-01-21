@@ -7,9 +7,9 @@ ms.date: 03/12/2023
 ---
 # merge_tdigest()
 
-Merges `tdigest` results (scalar version of the aggregate version [`tdigest_merge()`](tdigest-merge-aggfunction.md)).
+Merges `tdigest` results (scalar version of the aggregate version [`tdigest_merge()`](tdigest-merge-aggregation-function.md)).
 
-Read more about the underlying algorithm (T-Digest) and the estimated error [here](percentiles-aggfunction.md#estimation-error-in-percentiles).
+Read more about the underlying algorithm (T-Digest) and the estimated error [here](percentiles-aggregation-function.md#estimation-error-in-percentiles).
 
 > The `merge_tdigest()` and `tdigest_merge()` functions are equivalent
 
@@ -21,11 +21,13 @@ Read more about the underlying algorithm (T-Digest) and the estimated error [her
 
 `merge_tdigest(`*exprs*`)`
 
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+
 ## Parameters
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-| *exprs* | dynamic | &check; | One or more comma-separated column references that have the `tdigest` values to be merged. |
+| *exprs* | dynamic |  :heavy_check_mark: | One or more comma-separated column references that have the `tdigest` values to be merged. |
 
 ## Returns
 

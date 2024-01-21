@@ -7,7 +7,7 @@ ms.date: 01/01/2023
 ---
 # ipv4_lookup plugin
 
-The `ipv4_lookup` plugin looks up an IPv4 value in a lookup table and returns rows with matched values. The plugin is invoked with the [`evaluate`](evaluateoperator.md) operator.
+The `ipv4_lookup` plugin looks up an IPv4 value in a lookup table and returns rows with matched values. The plugin is invoked with the [`evaluate`](evaluate-operator.md) operator.
 
 ## Syntax
 
@@ -17,10 +17,10 @@ The `ipv4_lookup` plugin looks up an IPv4 value in a lookup table and returns ro
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-| *T* | string | &check; | The tabular input whose column *SourceIPv4Key* will be used for IPv4 matching.|
-| *LookupTable* | string | &check; | Table or tabular expression with IPv4 lookup data, whose column *LookupKey* will be used for IPv4 matching. IPv4 values can be masked using [IP-prefix notation](#ip-prefix-notation).|
-| *SourceIPv4Key* | string | &check; | The column of *T* with IPv4 string to be looked up in *LookupTable*. IPv4 values can be masked using [IP-prefix notation](#ip-prefix-notation).|
-| *IPv4LookupKey* | string | &check; | The column of *LookupTable* with IPv4 string that is matched against each *SourceIPv4Key* value.|
+| *T* | string |  :heavy_check_mark: | The tabular input whose column *SourceIPv4Key* will be used for IPv4 matching.|
+| *LookupTable* | string |  :heavy_check_mark: | Table or tabular expression with IPv4 lookup data, whose column *LookupKey* will be used for IPv4 matching. IPv4 values can be masked using [IP-prefix notation](#ip-prefix-notation).|
+| *SourceIPv4Key* | string |  :heavy_check_mark: | The column of *T* with IPv4 string to be looked up in *LookupTable*. IPv4 values can be masked using [IP-prefix notation](#ip-prefix-notation).|
+| *IPv4LookupKey* | string |  :heavy_check_mark: | The column of *LookupTable* with IPv4 string that is matched against each *SourceIPv4Key* value.|
 | *ExtraKey1* .. *ExtraKeyN* | string | | Additional column references that are used for lookup matches. Similar to `join` operation: records with equal values will be considered matching. Column name references must exist both is source table `T` and `LookupTable`.|
 | *return_unmatched* | bool | | A boolean flag that defines if the result should include all or only matching rows (default: `false` - only matching rows returned).|
 
@@ -28,7 +28,7 @@ The `ipv4_lookup` plugin looks up an IPv4 value in a lookup table and returns ro
 
 ## Returns
 
-The `ipv4_lookup` plugin returns a result of join (lookup) based on IPv4 key. The schema of the table is the union of the source table and the lookup table, similar to the result of the [`lookup` operator](lookupoperator.md).
+The `ipv4_lookup` plugin returns a result of join (lookup) based on IPv4 key. The schema of the table is the union of the source table and the lookup table, similar to the result of the [`lookup` operator](lookup-operator.md).
 
 If the *return_unmatched* argument is set to `true`, the resulting table will include both matched and unmatched rows (filled with nulls).
 

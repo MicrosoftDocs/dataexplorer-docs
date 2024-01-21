@@ -7,7 +7,7 @@ ms.date: 04/20/2023
 ---
 # .alter-merge database policy retention command
 
-Changes the database's [retention policy](retentionpolicy.md). The retention policy controls the mechanism that automatically removes data from tables or materialized views. It's used to remove data whose relevance is age-based.
+Changes the database's [retention policy](retention-policy.md). The retention policy controls the mechanism that automatically removes data from tables or materialized views. It's used to remove data whose relevance is age-based.
 
 ## Permissions
 
@@ -17,12 +17,14 @@ You must have at least [Database Admin](access-control/role-based-access-control
 
 `.alter-merge` `database` *DatabaseName* `policy` `retention` *PolicyObjects*
 
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+
 ## Parameters
 
 |Name|Type|Required|Description|
 |--|--|--|--|
-|*DatabaseName*|string|&check;|The name of the database for which to alter the retention policy.|
-|*ArrayOfPolicyObjects*|string|&check;|A serialized array of one or more JSON policy objects. For more information, see [retention policy](retentionpolicy.md).|
+|*DatabaseName*|string| :heavy_check_mark:|The name of the database for which to alter the retention policy.|
+|*ArrayOfPolicyObjects*|string| :heavy_check_mark:|A serialized array of one or more JSON policy objects. For more information, see [retention policy](retention-policy.md).|
 
 ### Example
 

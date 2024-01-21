@@ -14,11 +14,14 @@ Read more about [geohash](https://en.wikipedia.org/wiki/Geohash).
 ## Syntax
 
 `geo_geohash_to_polygon(`*geohash*`)`
+
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+
 ## Parameters
 
 |Name|Type|Required|Description|
 |--|--|--|--|
-| *geohash* | string | &check; | A geohash value as it was calculated by [geo_point_to_geohash()](geo-point-to-geohash-function.md). The geohash string must be between 1 and 18 characters.|
+| *geohash* | string |  :heavy_check_mark: | A geohash value as it was calculated by [geo_point_to_geohash()](geo-point-to-geohash-function.md). The geohash string must be between 1 and 18 characters.|
 
 ## Returns
 

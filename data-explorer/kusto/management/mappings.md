@@ -1,30 +1,28 @@
 ---
-title:  Data mappings
-description: This article describes Data mappings in Azure Data Explorer.
+title:  Ingestion mappings
+description: This article describes ingestion mappings in Azure Data Explorer.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 03/08/2023
+ms.date: 12/26/2023
 ---
 
-# Data mappings
+# Ingestion mappings
 
-Data mappings are used during ingestion to map incoming data to columns inside tables.
+Ingestion mappings are used during ingestion to map incoming data to columns inside tables.
 
 Data Explorer supports different types of mappings, both row-oriented (CSV, JSON, AVRO and W3CLOGFILE), and column-oriented (Parquet and ORC).
+
+Ingestion mappings can be [pre-created](create-ingestion-mapping-command.md) and can be referenced from the ingest command using `ingestionMappingReference` parameters. Although, ingestion is possible without specifying a mapping. For more information, see [identity mapping](#identity-mapping).
 
 Each element in the mapping list is constructed from three fields:
 
 | Property    | Required | Description                                                                                                   |
 |-------------|----------|---------------------------------------------------------------------------------------------------------------|
-| Column      | &check;  | Target column name in the table.                                                                              |
+| Column      |  :heavy_check_mark:  | Target column name in the table.                                                                              |
 | Datatype    |          | Datatype with which to create the mapped column if it doesn't already exist in the table.                     |
 | Properties  |          | Property-bag containing properties specific for each mapping as described in each specific mapping type page. |
 
 [!INCLUDE [data-mapping-type-note](../../includes/data-mapping-type-note.md)]
-
-The mappings can be [pre-created](create-ingestion-mapping-command.md) and can be referenced from the ingest command using `ingestionMappingReference` parameters.
-
-Ingestion is possible without specifying a mapping. See [identity mapping](#identity-mapping).
 
 ## Supported mapping types
 
@@ -32,18 +30,20 @@ The following table defines mapping types to be used when ingesting or querying 
 
 | Data Format | Mapping Type |
 |-------------|-----------------------------------------------|
-| JSON        | [JSON Mapping](json-mapping.md)               |
 | CSV         | [CSV Mapping](csv-mapping.md)                 |
 | TSV         | [CSV Mapping](csv-mapping.md)                 |
+| TSVe        | [CSV Mapping](csv-mapping.md)                 |
 | PSV         | [CSV Mapping](csv-mapping.md)                 |
 | SCSV        | [CSV Mapping](csv-mapping.md)                 |
 | SOHsv       | [CSV Mapping](csv-mapping.md)                 |
 | TXT         | [CSV Mapping](csv-mapping.md)                 |
 | RAW         | [CSV Mapping](csv-mapping.md)                 |
+| JSON        | [JSON Mapping](json-mapping.md)               |
 | AVRO        | [AVRO Mapping](avro-mapping.md)               |
-| W3CLOGFILE  | [W3CLOGFILE Mapping](w3c-log-file-mapping.md) |
+| APACHEAVRO  | [AVRO Mapping](avro-mapping.md)               |
 | Parquet     | [Parquet Mapping](parquet-mapping.md)         |
 | ORC         | [ORC Mapping](orc-mapping.md)                 |
+| W3CLOGFILE  | [W3CLOGFILE Mapping](w3c-log-file-mapping.md) |
 
 ## Identity mapping
 
@@ -64,7 +64,7 @@ Some of the data format mappings (Parquet, JSON and AVRO) support simple and use
 | Path-dependant transformation | Description                                                                                                                                                             | Conditions                               |
 |-------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------|------------------------------------------|
 | PropertyBagArrayToDictionary  | Transforms JSON array of properties, such as `{events:[{"n1":"v1"},{"n2":"v2"}]}`, to dictionary and serializes it to valid JSON document, such as `{"n1":"v1","n2":"v2"}`. | Available for `JSON`, `Parquet`, `AVRO` and `ORC` mapping types. |
-| SourceLocation                | Name of the storage artifact that provided the data, type string (for example, the blob's "BaseUri" field).|Available for `JSON`, `Parquet`, `AVRO`, `ORC` and `W3CLOGFILE` mapping types. |
+| SourceLocation                | Name of the storage artifact that provided the data, type string (for example, the blob's "BaseUri" field).|Available for `CSV`, `JSON`, `Parquet`, `AVRO`, `ORC` and `W3CLOGFILE` mapping types. |
 | SourceLineNumber              | Offset relative to that storage artifact, type long (starting with '1' and incrementing per new record).   | Available in: `JSON`, `Parquet`, `AVRO`, `ORC` and `W3CLOGFILE` mapping types. |
 | DateTimeFromUnixSeconds       | Converts number representing unix-time (seconds since 1970-01-01) to UTC datetime string.| Available for `JSON`, `Parquet`, `AVRO` and `ORC` mapping types. |
 | DateTimeFromUnixMilliseconds  | Converts number representing unix-time (milliseconds since 1970-01-01) to UTC datetime string. | Available for `JSON`, `Parquet`, `AVRO` and `ORC` mapping types. |

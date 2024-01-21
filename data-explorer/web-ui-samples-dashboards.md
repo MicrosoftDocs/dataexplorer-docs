@@ -13,11 +13,11 @@ In this quickstart, you'll learn how to access and explore the built-in dashboar
 
 ## Prerequisites
 
-A Microsoft account or an Azure Active Directory user identity to sign in to the [**help** cluster](https://dataexplorer.azure.com/clusters/help). An Azure subscription isn't required.
+A Microsoft account or a Microsoft Entra user identity to sign in to the [**help** cluster](https://dataexplorer.azure.com/clusters/help). An Azure subscription isn't required.
 
 ## Explore sample dashboards
 
-1. Sign in to the [Azure Data Explorer web UI](https://dataexplorer.azure.com/home) using your Microsoft account or Azure Active Directory user identity.
+1. Sign in to the [Azure Data Explorer web UI](https://dataexplorer.azure.com/home) using your Microsoft account or Microsoft Entra user identity.
 
 1. In the **Home** page, select **Explore sample dashboards**.
 
@@ -39,7 +39,7 @@ A Microsoft account or an Azure Active Directory user identity to sign in to the
 
 1. Learn how to [view parameters](dashboard-parameters.md#view-parameters-list) and [customize visuals](dashboard-customize-visuals.md#customize-visuals).
 
-## Next steps
+## Related content
 
 * [Query data in the web UI](web-ui-query-overview.md)
 * [Visualize data with Azure Data Explorer dashboards](azure-data-explorer-dashboards.md)

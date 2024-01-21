@@ -13,15 +13,17 @@ The function `series_downsample_fl()` is a [user-defined function (UDF)](../quer
 
 `T | invoke series_downsample_fl(`*t_col*`,` *y_col*`,` *ds_t_col*`,` *ds_y_col*`,` *sampling_factor*`)`
 
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+
 ## Parameters
 
 |Name|Type|Required|Description|
 |--|--|--|--|
-|*t_col*|string|&check;|The name of the column that contains the time axis of the series to downsample.|
-|*y_col*|string|&check;|The name of the column that contains the series to downsample.|
-|*ds_t_col*|string|&check;|The name of the column to store the down sampled time axis of each series.|
-|*ds_y_col*|string|&check;|The name of the column to store the down sampled series.|
-|*sampling_factor*|int|&check;|An integer specifying the required down sampling.|
+|*t_col*|string| :heavy_check_mark:|The name of the column that contains the time axis of the series to downsample.|
+|*y_col*|string| :heavy_check_mark:|The name of the column that contains the series to downsample.|
+|*ds_t_col*|string| :heavy_check_mark:|The name of the column to store the down sampled time axis of each series.|
+|*ds_y_col*|string| :heavy_check_mark:|The name of the column to store the down sampled series.|
+|*sampling_factor*|int| :heavy_check_mark:|An integer specifying the required down sampling.|
 
 ## Function definition
 
@@ -29,10 +31,10 @@ You can define the function by either embedding its code as a query-defined func
 
 ### [Query-defined](#tab/query-defined)
 
-Define the function using the following [let statement](../query/letstatement.md). No permissions are required.
+Define the function using the following [let statement](../query/let-statement.md). No permissions are required.
 
 > [!IMPORTANT]
-> A [let statement](../query/letstatement.md) can't run on its own. It must be followed by a [tabular expression statement](../query/tabularexpressionstatements.md). To run a working example of `series_downsample_fl()`, see [Example](#example).
+> A [let statement](../query/let-statement.md) can't run on its own. It must be followed by a [tabular expression statement](../query/tabular-expression-statements.md). To run a working example of `series_downsample_fl()`, see [Example](#example).
 
 ```kusto
 let series_downsample_fl=(tbl:(*), t_col:string, y_col:string, ds_t_col:string, ds_y_col:string, sampling_factor:int)
@@ -79,7 +81,7 @@ series_downsample_fl(tbl:(*), t_col:string, y_col:string, ds_t_col:string, ds_y_
 
 ## Example
 
-The following example uses the [invoke operator](../query/invokeoperator.md) to run the function.
+The following example uses the [invoke operator](../query/invoke-operator.md) to run the function.
 
 ### [Query-defined](#tab/query-defined)
 
@@ -125,7 +127,7 @@ demo_make_series1
 **Output**
 
 The time series downsampled by 4:
-:::image type="content" source="images/series-downsample-fl/downsampling-demo.png" alt-text="Graph showing downsampling of a time series." border="false":::
+:::image type="content" source="media/series-downsample-fl/downsampling-demo.png" alt-text="Graph showing downsampling of a time series." border="false":::
 
 For reference, here is the original time series (before downsampling):
 
@@ -135,4 +137,4 @@ demo_make_series1
 | render timechart with(xcolumn=TimeStamp, ycolumns=num)
 ```
 
-:::image type="content" source="images/series-downsample-fl/original-time-series.png" alt-text="Graph showing the original time series, before downsampling" border="false":::
+:::image type="content" source="media/series-downsample-fl/original-time-series.png" alt-text="Graph showing the original time series, before downsampling" border="false":::

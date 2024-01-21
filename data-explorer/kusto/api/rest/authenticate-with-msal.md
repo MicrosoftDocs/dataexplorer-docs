@@ -7,7 +7,7 @@ ms.date: 06/28/2023
 ---
 # How to authenticate with Microsoft Authentication Library (MSAL) in apps
 
-To programmatically authenticate with your cluster, you need to request an access token from [Azure Active Directory (Azure AD)](/azure/active-directory/fundamentals/active-directory-whatis) specific to Azure Data Explorer. This access token acts as proof of identity when issuing requests to your cluster. You can use one of the [Microsoft Authentication Library (MSAL)](/azure/active-directory/develop/msal-overview) [flows](/azure/active-directory/develop/msal-authentication-flows) to create an access token.
+To programmatically authenticate with your cluster, you need to request an access token from [Microsoft Entra ID](/azure/active-directory/fundamentals/active-directory-whatis) specific to Azure Data Explorer. This access token acts as proof of identity when issuing requests to your cluster. You can use one of the [Microsoft Authentication Library (MSAL)](/azure/active-directory/develop/msal-overview) [flows](/azure/active-directory/develop/msal-authentication-flows) to create an access token.
 
 This article explains how to use MSAL to authenticate principals to your cluster. The direct use of MSAL to authenticate principals is primarily relevant in web applications that require [On-behalf-of (OBO) authentication](#perform-on-behalf-of-obo-authentication) or [Single Page Application (SPA) authentication](#perform-single-page-application-spa-authentication). For other cases, we recommend using the [Kusto client libraries](../client-libraries.md) as they simplify the authentication process.
 
@@ -33,16 +33,16 @@ During the token acquisition process, the client needs to provide the following 
 
 |Parameter name|Description|
 |--|--|
-|Resource ID|The resource ID for which to issue the Azure AD access token. The resource ID is the cluster URI without port information and path.<br/><br/>**Example**: The resource ID for the `help` cluster is `https://help.kusto.windows.net`.|
-|Azure AD tenant ID|Azure AD is a multi-tenant service, and every organization can create an object called a directory that holds security-related objects such as user accounts and applications. Azure AD often refers to the directory as a tenant. Each tenant has a tenant ID in the form of a GUID. In many cases, the domain name of the organization may also be used to identity the Azure AD tenant.<br/><br/>**Example**: An organization "Contoso" might have the tenant ID `12345678-a123-4567-b890-123a456b789c` and the domain name `contoso.com`.|
-|Azure AD authority URI|The endpoint used for authentication. The Azure AD directory, or tenant, determines the Azure AD authority URI. The URI is `https://login.microsoftonline.com/{tenantId}` where `{tenantId}` is either the tenant ID or domain name.<br/><br/>**Example**: For example, `https://login.microsoftonline.com/12345678-a123-4567-b890-123a456b789c`.|
+|Resource ID|The resource ID for which to issue the Microsoft Entra access token. The resource ID is the cluster URI without port information and path.<br/><br/>**Example**: The resource ID for the `help` cluster is `https://help.kusto.windows.net`.|
+|Microsoft Entra tenant ID|Microsoft Entra ID is a multitenant service, and every organization can create an object called a directory that holds security-related objects such as user accounts and applications. Microsoft Entra ID often refers to the directory as a tenant. Each tenant has a tenant ID in the form of a GUID. In many cases, the domain name of the organization might also be used to identity the Microsoft Entra tenant.<br/><br/>**Example**: An organization "Contoso" might have the tenant ID `12345678-a123-4567-b890-123a456b789c` and the domain name `contoso.com`.|
+|Microsoft Entra authority URI|The endpoint used for authentication. The Microsoft Entra directory, or tenant, determines the Microsoft Entra authority URI. The URI is `https://login.microsoftonline.com/{tenantId}` where `{tenantId}` is either the tenant ID or domain name.<br/><br/>**Example**: For example, `https://login.microsoftonline.com/12345678-a123-4567-b890-123a456b789c`.|
 
 > [!NOTE]
-> The Azure AD service endpoint changes in national clouds. When working with an Azure Data Explorer service deployed in a national cloud, set the corresponding national cloud Azure AD service endpoint.
+> The Microsoft Entra service endpoint changes in national clouds. When working with an Azure Data Explorer service deployed in a national cloud, set the corresponding national cloud Microsoft Entra service endpoint.
 
 ## Perform user authentication with MSAL
 
-The following code sample shows how to use MSAL to get an authorization token for your cluster. The authorization is done in a way that launches the interactive sign-in UI. The `appRedirectUri` is the URL to which Azure AD redirects after authentication completes successfully. MSAL extracts the authorization code from this redirect.
+The following code sample shows how to use MSAL to get an authorization token for your cluster. The authorization is done in a way that launches the interactive sign-in UI. The `appRedirectUri` is the URL to which Microsoft Entra ID redirects after authentication completes successfully. MSAL extracts the authorization code from this redirect.
 
 ```csharp
 var kustoUri = "https://<clusterName>.<region>.kusto.windows.net";
@@ -65,11 +65,11 @@ request.Headers.Set(HttpRequestHeader.Authorization, string.Format(CultureInfo.I
 > [!NOTE]
 >
 > * We recommend using the [Kusto client libraries](../client-libraries.md) whenever possible. These libraries simplify the authentication process by allowing you to provide authentication properties in the [Kusto connection string](../../../kusto/api/connection-strings/kusto.md).
-> * With the Kusto client libraries, Azure AD tokens are stored in a local token cache on the user's machine to reduce the number of times they're prompted for credentials. The cache file is **%APPDATA%\Kusto\userTokenCache.data** and can only be accessed by the signed-in user.
+> * With the Kusto client libraries, Microsoft Entra tokens are stored in a local token cache on the user's machine to reduce the number of times they're prompted for credentials. The cache file is **%APPDATA%\Kusto\userTokenCache.data** and can only be accessed by the signed-in user.
 
 ## Perform application authentication with MSAL
 
-The following code sample shows how to use MSAL to get an authorization token for your cluster. In this flow, no prompt is presented. The application must be registered with Azure AD and have an app key or an X509v2 certificate issued by Azure AD. To set up an application, see [Provision an Azure AD application](../../../provision-azure-ad-app.md).
+The following code sample shows how to use MSAL to get an authorization token for your cluster. In this flow, no prompt is presented. The application must be registered with Microsoft Entra ID and have an app key or an X509v2 certificate issued by Microsoft Entra ID. To set up an application, see [Provision a Microsoft Entra application](../../../provision-azure-ad-app.md).
 
 ```csharp
 var kustoUri = "https://<clusterName>.<region>.kusto.windows.net";
@@ -95,13 +95,13 @@ request.Headers.Set(HttpRequestHeader.Authorization, string.Format(CultureInfo.I
 
 [On-behalf-of authentication](/azure/active-directory/develop/msal-authentication-flows#on-behalf-of-obo) is relevant when your web application or service acts as a mediator between the user or application and your cluster.
 
-In this scenario, an application is sent an Azure AD access token for an arbitrary resource. Then, the application uses that token to acquire a new Azure AD access token for the Azure Data Explorer resource. Then, the application can access your cluster on behalf of the principal indicated by the original Azure AD access token. This flow is called the [OAuth 2.0 on-behalf-of authentication flow](/azure/active-directory/develop/v2-oauth2-on-behalf-of-flow). It generally requires multiple configuration steps with Azure AD, and in some cases might require special consent from the administrator of the Azure AD tenant.
+In this scenario, an application is sent a Microsoft Entra access token for an arbitrary resource. Then, the application uses that token to acquire a new Microsoft Entra access token for the Azure Data Explorer resource. Then, the application can access your cluster on behalf of the principal indicated by the original Microsoft Entra access token. This flow is called the [OAuth 2.0 on-behalf-of authentication flow](/azure/active-directory/develop/v2-oauth2-on-behalf-of-flow). It generally requires multiple configuration steps with Microsoft Entra ID, and in some cases might require special consent from the administrator of the Microsoft Entra tenant.
 
 To perform on-behalf-of authentication:
 
-1. [Provision an Azure AD application](../../../provision-azure-ad-app.md).
-1. Establish a trust relationship between the application and your cluster. To do so, follow the steps in [Configure delegated permissions](../../../provision-azure-ad-app.md#configure-delegated-permissions-for-the-application-registration).
-1. In your server code, use MSAL to perform the token exchange.
+1. [Provision a Microsoft Entra application](../../../provision-azure-ad-app.md).
+2. Establish a trust relationship between the application and your cluster. To do so, follow the steps in [Configure delegated permissions](../../../provision-azure-ad-app.md#configure-delegated-permissions-for-the-application).
+3. In your server code, use MSAL to perform the token exchange.
 
     ```csharp
     var kustoUri = "https://<clusterName>.<region>.kusto.windows.net";
@@ -118,7 +118,7 @@ To perform on-behalf-of authentication:
     var accessTokenForAdx = result.AccessToken;
     ```
 
-1. Use the token to run queries. For example:
+4. Use the token to run queries. For example:
 
     ```csharp
     var request = WebRequest.Create(new Uri(kustoUri));
@@ -129,15 +129,15 @@ To perform on-behalf-of authentication:
 
 For authentication for a SPA web client, use the [OAuth authorization code flow](/azure/active-directory/develop/msal-authentication-flows#authorization-code).
 
-In this scenario, the app is redirected to sign in to Azure AD. Then, Azure AD redirects back to the app with an authorization code in the URI. Then, the app makes a request to the token endpoint to get the access token. The token is valid for 24 hour during which the client can reuse it by acquiring the token silently.
+In this scenario, the app is redirected to sign in to Microsoft Entra ID. Then, Microsoft Entra ID redirects back to the app with an authorization code in the URI. Then, the app makes a request to the token endpoint to get the access token. The token is valid for 24 hour during which the client can reuse it by acquiring the token silently.
 
-Microsoft Identity Platform has detailed tutorials for different use cases such as [React](/azure/active-directory/develop/single-page-app-tutorial-01-register-app), [Angular](/azure/active-directory/develop/tutorial-v2-angular-auth-code), and [JavaScript](/azure/active-directory/develop/tutorial-v2-javascript-auth-code).
+Microsoft identity platform has detailed tutorials for different use cases such as [React](/azure/active-directory/develop/single-page-app-tutorial-01-register-app), [Angular](/azure/active-directory/develop/tutorial-v2-angular-auth-code), and [JavaScript](/azure/active-directory/develop/tutorial-v2-javascript-auth-code).
 
 To set up authentication for a web client:
 
-1. [Provision an Azure AD application](../../../provision-azure-ad-app.md).
+1. [Provision a Microsoft Entra application](../../../provision-azure-ad-app.md).
 1. Configure the app as described in [MSAL.js 2.0 with auth code flow](/azure/active-directory/develop/scenario-spa-app-registration#redirect-uri-msaljs-20-with-auth-code-flow).
-1. Use the MSAL.js 2.0 library to sign in a user and authenticate to your cluster. Microsoft Identity Platform has detailed tutorials for different use cases such as [React](/azure/active-directory/develop/single-page-app-tutorial-01-register-app), [Angular](/azure/active-directory/develop/tutorial-v2-angular-auth-code), and [JavaScript](/azure/active-directory/develop/tutorial-v2-javascript-auth-code).
+1. Use the MSAL.js 2.0 library to sign in a user and authenticate to your cluster. Microsoft identity platform has detailed tutorials for different use cases such as [React](/azure/active-directory/develop/single-page-app-tutorial-01-register-app), [Angular](/azure/active-directory/develop/tutorial-v2-angular-auth-code), and [JavaScript](/azure/active-directory/develop/tutorial-v2-javascript-auth-code).
 
     The following example uses the MSAL.js library to access Azure Data Explorer.
 
@@ -202,8 +202,8 @@ To set up authentication for a web client:
     const count = jsonResult.filter((x) => x.TableKind === "PrimaryResult")[0].Rows[0][0];
     ```
 
-## See also
+## Related content
 
 * [Authentication over HTTPs](authentication.md)
-* [Provision an Azure AD application](../../../provision-azure-ad-app.md)
+* [Provision a Microsoft Entra application](../../../provision-azure-ad-app.md)
 * [Kusto client libraries](../../api/client-libraries.md)

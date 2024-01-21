@@ -19,6 +19,8 @@ You must have at least [AllDatabasesMonitor](access-control/role-based-access-co
 
 `.show` `cluster` `policy` `sandbox`
 
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+
 ## Returns
 
 Returns a JSON representation of the policy.

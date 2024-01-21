@@ -22,7 +22,7 @@ These libraries enable you to ingest (load) data into a cluster and query data f
 
 ## Prerequisites
 
-* A Microsoft account or an Azure Active Directory user identity. An Azure subscription isn't required.
+* A Microsoft account or a Microsoft Entra user identity. An Azure subscription isn't required.
 * A cluster and database. [Create a cluster and database](create-cluster-and-database.md).
 
 ## Install the ingest library
@@ -35,7 +35,7 @@ Install-Package Microsoft.Azure.Kusto.Ingest
 
 ### Authentication
 
-To authenticate an application, the SDK uses your AAD tenant ID. To find your tenant ID, use the following URL, substituting your domain for *YourDomain*.
+To authenticate an application, the SDK uses your Microsoft Entra tenant ID. To find your tenant ID, use the following URL, substituting your domain for *YourDomain*.
 
 ```http
 https://login.microsoftonline.com/<YourDomain>/.well-known/openid-configuration/
@@ -49,12 +49,12 @@ For example, if your domain is *contoso.com*, the URL is: [https://login.microso
 
 The tenant ID in this case is `6babcaad-604b-40ac-a9d7-9fd97c0b779f`.
 
-This example uses an interactive AAD user authentication to access the cluster. You can also use AAD application authentication with certificate or application secret. Make sure to set the correct values for `tenantId` and `clusterUri` before running this code. 
+This example uses an interactive Microsoft Entra user authentication to access the cluster. You can also use Microsoft Entra application authentication with certificate or application secret. Make sure to set the correct values for `tenantId` and `clusterUri` before running this code. 
 
 The SDK provides a convenient way to set up the authentication method as part of the connection string. For complete documentation on connection strings, see [connection strings](kusto/api/connection-strings/kusto.md).
 
 > [!NOTE]
-> The current version of the SDK doesn't support interactive user authentication on .NET Core. If required, use AAD username/password or application authentication instead.
+> The current version of the SDK doesn't support interactive user authentication on .NET Core. If required, use Microsoft Entra username/password or application authentication instead.
 
 ### Construct the connection string
 
@@ -68,7 +68,7 @@ var kustoConnectionStringBuilder = new KustoConnectionStringBuilder(kustoUri).Wi
 
 ## Set source file information
 
-Set the path for the source file. This example uses a sample file hosted on Azure Blob Storage. The **StormEvents** sample data set contains weather-related data from the [National Centers for Environmental Information](https://www.ncei.noaa.gov/).
+Set the path for the source file. This example uses a sample file hosted on Azure Blob Storage. The **StormEvents** sample dataset contains weather-related data from the [National Centers for Environmental Information](https://www.ncei.noaa.gov/).
 
 ```csharp
 var blobPath = "https://kustosamples.blob.core.windows.net/samplefiles/StormEvents.csv";
@@ -164,7 +164,7 @@ using (var kustoClient = KustoClientFactory.CreateCslAdminProvider(kustoConnecti
 
 ## Define batching policy for your table
 
-Batching incoming data optimizes data shard size, which is controlled by the [ingestion batching policy](kusto/management/batchingpolicy.md). Modify the policy with the [ingestion batching policy management command](./kusto/management/show-table-ingestion-batching-policy.md). Use this policy to reduce latency of slowly arriving data.
+Batching incoming data optimizes data shard size, which is controlled by the [ingestion batching policy](kusto/management/batching-policy.md). Modify the policy with the [ingestion batching policy management command](./kusto/management/show-table-ingestion-batching-policy.md). Use this policy to reduce latency of slowly arriving data.
 
 ```csharp
 using (var kustoClient = KustoClientFactory.CreateCslAdminProvider(kustoConnectionStringBuilder))
@@ -246,6 +246,6 @@ If you plan to follow our other articles, keep the resources you created. If not
 .drop table StormEvents
 ```
 
-## Next steps
+## Related contnent
 
 * [Write queries](/azure/data-explorer/kusto/query/tutorials/learn-common-operators)

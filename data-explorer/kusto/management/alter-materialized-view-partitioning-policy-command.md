@@ -7,7 +7,7 @@ ms.date: 05/25/2023
 ---
 # .alter materialized-view policy partitioning command
 
-Changes the materialized view's [partitioning policy](partitioningpolicy.md). The partitioning policy defines if and how [extents (data shards)](../management/extents-overview.md) should be partitioned for a specific table or a [materialized view](materialized-views/materialized-view-overview.md).
+Changes the materialized view's [partitioning policy](partitioning-policy.md). The partitioning policy defines if and how [extents (data shards)](../management/extents-overview.md) should be partitioned for a specific table or a [materialized view](materialized-views/materialized-view-overview.md).
 
 ## Permissions
 
@@ -17,12 +17,14 @@ You must have at least [Table Admin](access-control/role-based-access-control.md
 
 `.alter` `materialized-view` *MaterializedViewName* `policy` `partitioning` *PolicyObject*
 
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+
 ## Parameters
 
 |Name|Type|Required|Description|
 |--|--|--|--|
-|*MaterializedViewName*|string|&check;| The name of the materialized view.|
-|*PolicyObject*|string|&check;|A policy object used to set the partitioning policy. For more information, see [partitioning policy](partitioningpolicy.md).|
+|*MaterializedViewName*|string| :heavy_check_mark:| The name of the materialized view.|
+|*PolicyObject*|string| :heavy_check_mark:|A policy object used to set the partitioning policy. For more information, see [partitioning policy](partitioning-policy.md).|
 
 ### Example
 

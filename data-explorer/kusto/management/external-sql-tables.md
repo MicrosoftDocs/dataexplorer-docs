@@ -8,12 +8,19 @@ ms.date: 06/28/2023
 
 # Create and alter SQL external tables
 
-Creates or alters a SQL [external table](../query/schema-entities/externaltables.md) in the database in which the command is executed. Supported table types include Microsoft SQL Server, MySQL, PostgreSQL, and Cosmos DB.
+Creates or alters a SQL [external table](../query/schema-entities/external-tables.md) in the database in which the command is executed.
 
 > [!NOTE]
 >
 > * If the table exists, the `.create` command will fail with an error. Use `.create-or-alter` or `.alter` to modify existing tables.
-> * Altering the schema or format of an external SQL table is not supported.
+> * Altering the schema of an external SQL table is not supported.
+
+## Supported SQL external table types
+
+1. Microsoft SQL Server
+2. MySQL
+3. PostgreSQL
+4. Cosmos DB
 
 ## Permissions
 
@@ -25,14 +32,16 @@ To `.create-or-alter` an external table using managed identity authentication re
 
 (`.create` | `.alter` | `.create-or-alter`) `external` `table` *TableName* `(`*Schema*`)` `kind` `=` `sql` [ `table` `=` *SqlTableName* ] `(`*SqlConnectionString*`)` [`with` `(` [ `sqlDialect` `=` *SqlDialect* ] `,` [ *Property* `,` ... ]`)`]
 
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+
 ## Parameters
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-|*TableName* | string | &check; | The name of the external table. The name must follow the rules for [entity names](../query/schema-entities/entity-names.md), and an external table can't have the same name as a regular table in the same database.|
-|*Schema* | string | &check; | The external data schema is a comma-separated list of one or more column names and [data types](../query/scalar-data-types/index.md), where each item follows the format: *ColumnName* `:` *ColumnType*.|
+|*TableName* | string |  :heavy_check_mark: | The name of the external table. The name must follow the rules for [entity names](../query/schema-entities/entity-names.md), and an external table can't have the same name as a regular table in the same database.|
+|*Schema* | string |  :heavy_check_mark: | The external data schema is a comma-separated list of one or more column names and [data types](../query/scalar-data-types/index.md), where each item follows the format: *ColumnName* `:` *ColumnType*.|
 |*SqlTableName*| string | | The name of the SQL table not including the database name. For example, "MySqlTable" and not "db1.MySqlTable". If the name of the table contains a period ("."), use ['Name.of.the.table'] notation.</br></br>This specification is required for all types of tables except for Cosmos DB, as for Cosmos DB the collection name is part of the connection string. |
-|*SqlConnectionString*| string |&check;| The connection string to the SQL server. |
+|*SqlConnectionString*| string | :heavy_check_mark:| The connection string to the SQL server. |
 |*SqlDialect*| string | |Indicates the type of SQL external table. Microsoft SQL Server is the default. For MySQL, specify `MySQL`. For PostgreSQL, specify `PostgreSQL`. For Cosmos DB, specify `CosmosDbSql`.|
 |*Property*|string||A key-value property pair in the format *PropertyName* `=` *PropertyValue*. See [optional properties](#optional-properties).|
 
@@ -53,7 +62,7 @@ To `.create-or-alter` an external table using managed identity authentication re
 
 To interact with an external SQL table from Azure Data Explorer, you must specify authentication means as part of the *SqlConnectionString*. The *SqlConnectionString* defines the resource to access and its authentication information.
 
-Microsoft SQL Server external tables support Azure AD-integrated (impersonation) authentication, managed identity authentication, and username and password authentication. MySQL, PostgreSQL, and Cosmos DB tables support only username and password authentication. For more information, see [SQL external table authentication methods](../api/connection-strings/sql-authentication-methods.md).
+For more information, see [SQL external table authentication methods](../api/connection-strings/sql-authentication-methods.md).
 
 > [!NOTE]
 > If the external table is used for [continuous export](data-export/continuous-data-export.md), authentication must be performed either by username/password or managed identities.
@@ -111,7 +120,7 @@ with
 kind=sql
 table=PostgreSqlTable
 ( 
-   h@'Host = hostname.postgres.database.azure.com; Port = 5432; Database= db; User Id=user; Password==pass; Timeout = 30;'
+   h@'Host = hostname.postgres.database.azure.com; Port = 5432; Database= db; User Id=user; Password=pass; Timeout = 30;'
 )
 with 
 (
@@ -137,8 +146,8 @@ with
 )  
 ```
 
-## See also
+## Related content
 
-* [External tables overview](../query/schema-entities/externaltables.md)
+* [External tables overview](../query/schema-entities/external-tables.md)
 * [SQL external table authentication methods](../api/connection-strings/sql-authentication-methods.md)
 * [Create and alter Azure Storage external tables](external-tables-azurestorage-azuredatalake.md)

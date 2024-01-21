@@ -15,12 +15,14 @@ Read more about [H3 Cell](https://eng.uber.com/h3/).
 
 `geo_point_to_h3cell(`*longitude*`,` *latitude*`,` [ *resolution* ]`)`
 
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+
 ## Parameters
 
 |Name|Type|Required|Description|
 |--|--|--|--|
-| *longitude* | real | &check; | Geospatial coordinate, longitude value in degrees. Valid value is a real number and in the range [-180, +180].|
-| *latitude* | real | &check; | Geospatial coordinate, latitude value in degrees. Valid value is a real number and in the range [-90, +90].|
+| *longitude* | real |  :heavy_check_mark: | Geospatial coordinate, longitude value in degrees. Valid value is a real number and in the range [-180, +180].|
+| *latitude* | real |  :heavy_check_mark: | Geospatial coordinate, latitude value in degrees. Valid value is a real number and in the range [-90, +90].|
 | *resolution* | int | | Defines the requested cell resolution. Supported values are in the range [0, 15]. If unspecified, the default value `6` is used.|
 
 ## Returns

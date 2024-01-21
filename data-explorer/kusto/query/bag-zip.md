@@ -13,12 +13,14 @@ Creates a dynamic property-bag from two input dynamic arrays. In the resulting p
 
 `bag_zip(`*KeysArray*`,` *ValuesArray*`)`
 
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+
 ## Parameters
 
 |Name|Type|Required|Description|
 |--|--|--|--|
-| *KeysArray* | dynamic | &check; | An array of strings. These strings represent the property names for the resulting property-bag.|
-| *ValuesArray* | dynamic | &check; | An array whose values will be the property values for the resulting property-bag.|
+| *KeysArray* | dynamic |  :heavy_check_mark: | An array of strings. These strings represent the property names for the resulting property-bag.|
+| *ValuesArray* | dynamic |  :heavy_check_mark: | An array whose values will be the property values for the resulting property-bag.|
 
 > [!NOTE]
 >
@@ -144,6 +146,6 @@ Data
 |--|--|--|
 | a | [1,'2',2.5] | | TRUE |
 
-## See also
+## Related content
 
-* [zip function](zipfunction.md)
+* [zip function](zip-function.md)

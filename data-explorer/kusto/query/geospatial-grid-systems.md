@@ -13,7 +13,6 @@ Geospatial data can be analyzed efficiently using grid systems to create geospat
 Azure Data Explorer supports the following methods of geospatial clustering:
 
 * [Geohash](https://en.wikipedia.org/wiki/Geohash)
-* [S2 Cell](https://s2geometry.io/devguide/s2cell_hierarchy)
 * [H3 Cell](https://eng.uber.com/h3/)
 
 The core functionalities of these methods are:
@@ -75,6 +74,7 @@ The core functionalities of these methods are:
 |[geo_h3cell_children()](geo-h3cell-children-function.md)|
 |[geo_h3cell_rings()](geo-h3cell-rings-function.md)|
 
-## Next steps
+## Related content
 
-* [Geospatial data processing and analytics](/azure/architecture/example-scenario/data/geospatial-data-processing-analytics-azure)
+* See a use case for geospatial clustering: [Data analytics for automotive test fleets](/azure/architecture/industries/automotive/automotive-telemetry-analytics)
+* Learn about Azure architecture for [geospatial data processing and analytics](/azure/architecture/example-scenario/data/geospatial-data-processing-analytics-azure)

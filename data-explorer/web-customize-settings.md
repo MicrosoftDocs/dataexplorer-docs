@@ -11,7 +11,7 @@ This article will guide you through the process of customizing settings in the [
 
 ## Prerequisites
 
-* A Microsoft account or an Azure Active Directory user identity. An Azure subscription isn't required.
+* A Microsoft account or a Microsoft Entra user identity. An Azure subscription isn't required.
 * Sign in to the [Azure Data Explorer web UI](https://dataexplorer.azure.com/home).
 
 ## Go to the settings
@@ -106,8 +106,7 @@ For highlighted error levels, the column must be of [data type](kusto/query/scal
     * information
     * verbose, verb, d
 
-## Next steps
+## Related content
 
-* Get data with the [ingestion wizard](ingest-data-wizard.md)
 * [Query data in the web UI](web-ui-query-overview.md)
 * [Visualize data with Azure Data Explorer dashboards](azure-data-explorer-dashboards.md)

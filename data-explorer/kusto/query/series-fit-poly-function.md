@@ -11,7 +11,7 @@ Applies a polynomial regression from an independent variable (x_series) to a dep
 
 > [!TIP]
 >
-> * For linear regression of an evenly spaced series, as created by [make-series operator](make-seriesoperator.md), use the simpler function [series_fit_line()](series-fit-linefunction.md). See [Example 2](#example-2).
+> * For linear regression of an evenly spaced series, as created by [make-series operator](make-series-operator.md), use the simpler function [series_fit_line()](series-fit-line-function.md). See [Example 2](#example-2).
 > * If *x_series* is supplied, and the regression is done for a high degree, consider normalizing to the [0-1] range. See [Example 3](#example-3).
 > * If *x_series* is of datetime type, it must be converted to double and normalized. See [Example 3](#example-3).
 > * For reference implementation of polynomial regression using inline Python, see [series_fit_poly_fl()](../functions-library/series-fit-poly-fl.md).
@@ -19,12 +19,14 @@ Applies a polynomial regression from an independent variable (x_series) to a dep
 ## Syntax
 
 `T | extend  series_fit_poly(`*y_series* [`,` *x_series*`,` *degree* ]`)`
+
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
   
 ## Parameters
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-| *y_series* | dynamic | &check; | An array of numeric values containing the [dependent variable](https://en.wikipedia.org/wiki/Dependent_and_independent_variables). |
+| *y_series* | dynamic |  :heavy_check_mark: | An array of numeric values containing the [dependent variable](https://en.wikipedia.org/wiki/Dependent_and_independent_variables). |
 | *x_series* | dynamic | | An array of numeric values containing the [independent variable](https://en.wikipedia.org/wiki/Dependent_and_independent_variables). Required only for [unevenly spaced series](https://en.wikipedia.org/wiki/Unevenly_spaced_time_series). If not specified, it's set to a default value of [1, 2, ..., length(*y_series*)].|
 | *degree* | | | The required order of the polynomial to fit. For example, 1 for linear regression, 2 for quadratic regression, and so on. Defaults to 1, which indicates linear regression.|
 
@@ -59,9 +61,9 @@ range x from 1 to 200 step 1
 | render linechart 
 ```
 
-:::image type="content" source="images/series-fit-poly-function/fifth-order-noise-1.png" alt-text="Graph showing fifth order polynomial fit to a series with noise.":::
+:::image type="content" source="media/series-fit-poly-function/fifth-order-noise-1.png" alt-text="Graph showing fifth order polynomial fit to a series with noise.":::
 
-:::image type="content" source="images/series-fit-poly-function/fifth-order-noise-table-1.png" alt-text="Coefficients of fifth order polynomial fit to  a series with noise." border="false":::
+:::image type="content" source="media/series-fit-poly-function/fifth-order-noise-table-1.png" alt-text="Coefficients of fifth order polynomial fit to  a series with noise." border="false":::
 
 ### Example 2
 
@@ -76,9 +78,9 @@ demo_series1
 | render linechart with(xcolumn=x, ycolumns=y, y_line, y_poly)
 ```
 
-:::image type="content" source="images/series-fit-poly-function/fit-poly-line.png" alt-text="Graph showing linear regression.":::
+:::image type="content" source="media/series-fit-poly-function/fit-poly-line.png" alt-text="Graph showing linear regression.":::
 
-:::image type="content" source="images/series-fit-poly-function/fit-poly-line-table.png" alt-text="Coefficients of linear regression." border="false":::
+:::image type="content" source="media/series-fit-poly-function/fit-poly-line-table.png" alt-text="Coefficients of linear regression." border="false":::
 
 ### Example 3
 
@@ -102,4 +104,4 @@ irregular_ts
 | render timechart with(ycolumns=num, fnum)
 ```
 
-:::image type="content" source="images/series-fit-poly-function/irregular-time-series-1.png" alt-text="Graph showing eighth order polynomial fit to an irregular time series.":::
+:::image type="content" source="media/series-fit-poly-function/irregular-time-series-1.png" alt-text="Graph showing eighth order polynomial fit to an irregular time series.":::

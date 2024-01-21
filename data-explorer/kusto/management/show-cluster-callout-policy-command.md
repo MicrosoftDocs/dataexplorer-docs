@@ -7,7 +7,7 @@ ms.date: 05/24/2023
 ---
 # .show cluster policy callout command
 
-Display a cluster's [callout policy](calloutpolicy.md).
+Display a cluster's [callout policy](callout-policy.md).
 
 ## Permissions
 
@@ -16,6 +16,8 @@ You must have at least [Cluster AllDatabasesMonitor](access-control/role-based-a
 ## Syntax
 
 `.show` `cluster` `policy` `callout`
+
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
 
 ## Returns
 

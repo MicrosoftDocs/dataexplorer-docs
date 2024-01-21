@@ -7,7 +7,7 @@ ms.date: 05/25/2023
 ---
 # .alter cluster policy callout command
 
-Changes the cluster's [callout policy](calloutpolicy.md).
+Changes the cluster's [callout policy](callout-policy.md).
 
 ## Permissions
 
@@ -17,11 +17,13 @@ You must have [Cluster AllDatabasesAdmin](access-control/role-based-access-contr
 
 `.alter` `cluster` `policy` `callout` *SerializedArrayOfPolicyObjects*
 
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+
 ## Parameters
 
 | Name                             | Type   | Required | Description                                                                                              |
 |----------------------------------|--------|----------|----------------------------------------------------------------------------------------------------------|
-| *SerializedArrayOfPolicyObjects* | string | &check;  | A serialized array of JSON policy objects. See [callout policy](calloutpolicy.md) for policy properties. |
+| *SerializedArrayOfPolicyObjects* | string |  :heavy_check_mark:  | A serialized array of JSON policy objects. See [callout policy](callout-policy.md) for policy properties. |
 
 ## Returns
 

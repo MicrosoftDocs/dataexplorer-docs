@@ -19,13 +19,15 @@ Filters a record set for data that doesn't have a matching case-sensitive string
 
 *T* `|` `where` *column* `!has_cs` `(`*expression*`)`  
 
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+
 ## Parameters
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-| *T* | string | &check;| The tabular input whose records are to be filtered.|
-| *column* | string | &check;| The column by which to filter.|
-| *expression* | scalar | &check;| The scalar or literal expression for which to search.|
+| *T* | string |  :heavy_check_mark:| The tabular input whose records are to be filtered.|
+| *column* | string |  :heavy_check_mark:| The column by which to filter.|
+| *expression* | scalar |  :heavy_check_mark:| The scalar or literal expression for which to search.|
 
 ## Returns
 

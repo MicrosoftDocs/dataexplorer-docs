@@ -18,11 +18,13 @@ You must have at least Database User, Database Viewer, or Database Monitor permi
 
 `.show` `continuous-export` *ContinuousExportName* `failures`
 
+[!INCLUDE [syntax-conventions-note](../../../includes/syntax-conventions-note.md)]
+
 ## Parameters
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-| *ContinuousExportName* | string | &check; | The name of the continuous export. |
+| *ContinuousExportName* | string |  :heavy_check_mark: | The name of the continuous export. |
 
 ## Returns
 

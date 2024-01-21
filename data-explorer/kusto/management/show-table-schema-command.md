@@ -23,11 +23,13 @@ Get the schema in JSON format and additional table metadata:
 
 `.show` `table` *TableName* `schema` `as` `json`
 
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+
 ## Parameters
 
 |Name|Type|Required|Description|
 |--|--|--|--|
-|*TableName*|string|&check;|The name of the table for which to show the schema.|
+|*TableName*|string| :heavy_check_mark:|The name of the table for which to show the schema.|
 
 ## Returns
 

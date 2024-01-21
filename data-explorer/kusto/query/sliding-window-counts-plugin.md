@@ -7,23 +7,25 @@ ms.date: 01/30/2023
 ---
 # sliding_window_counts plugin
 
-Calculates counts and distinct count of values in a sliding window over a lookback period, using the technique described [here](samples.md#perform-aggregations-over-a-sliding-window). The plugin is invoked with the [`evaluate`](evaluateoperator.md) operator.
+Calculates counts and distinct count of values in a sliding window over a lookback period, using the technique described [here](samples.md#perform-aggregations-over-a-sliding-window). The plugin is invoked with the [`evaluate`](evaluate-operator.md) operator.
 
 ## Syntax
 
 *T* `| evaluate` `sliding_window_counts(`*IdColumn*`,` *TimelineColumn*`,` *Start*`,` *End*`,` *LookbackWindow*`,` *Bin* `,` [*dim1*`,` *dim2*`,` ...]`)`
 
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+
 ## Parameters
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-| *T* | string | &check; | The input tabular expression.|
-| *IdColumn* | string | &check; | The name of the column with ID values that represent user activity. |
-| *TimelineColumn* | string | &check; | The name of the column representing the timeline.|
-| *Start* | int, long, real, datetime, or timespan | &check; | The analysis start period.|
-| *End* | int, long, real, datetime, or timespan | &check; | The analysis end period.|
-| *LookbackWindow* | int, long, real, datetime, or timespan | &check; | The lookback period. This value should be a multiple of the *Bin* value, otherwise the *LookbackWindow* will be rounded down to a multiple of the *Bin* value. For example, for `dcount` users in past `7d`: *LookbackWindow* = `7d`.|
-| *Bin* | int, long, real, datetime, timespan, or string | &check; | The analysis step period. The possible string values are `week`, `month`, and `year` for which all periods will be [startofweek](startofweekfunction.md), [startofmonth](startofmonthfunction.md), [startofyear](startofyearfunction.md) respectively. |
+| *T* | string |  :heavy_check_mark: | The input tabular expression.|
+| *IdColumn* | string |  :heavy_check_mark: | The name of the column with ID values that represent user activity. |
+| *TimelineColumn* | string |  :heavy_check_mark: | The name of the column representing the timeline.|
+| *Start* | int, long, real, datetime, or timespan |  :heavy_check_mark: | The analysis start period.|
+| *End* | int, long, real, datetime, or timespan |  :heavy_check_mark: | The analysis end period.|
+| *LookbackWindow* | int, long, real, datetime, or timespan |  :heavy_check_mark: | The lookback period. This value should be a multiple of the *Bin* value, otherwise the *LookbackWindow* will be rounded down to a multiple of the *Bin* value. For example, for `dcount` users in past `7d`: *LookbackWindow* = `7d`.|
+| *Bin* | int, long, real, datetime, timespan, or string |  :heavy_check_mark: | The analysis step period. The possible string values are `week`, `month`, and `year` for which all periods will be [startofweek](startofweek-function.md), [startofmonth](startofmonth-function.md), [startofyear](startofyear-function.md) respectively. |
 | *dim1*, *dim2*, ... | string | | A list of the dimensions columns that slice the activity metrics calculation.|
 
 ## Returns

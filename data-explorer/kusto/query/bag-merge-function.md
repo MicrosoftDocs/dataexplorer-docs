@@ -13,11 +13,13 @@ Merges `dynamic` property bags into a `dynamic` property bag object with all pro
 
 `bag_merge(`*bag1*`,`*bag2*`[`,`*bag3*, ...])`
 
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+
 ## Parameters
 
 | Name | Type | Required | Description |
 | -- | -- | -- | -- |
-| *bag1...bagN* | dynamic | &check; | The property bags to merge. The function accepts between 2 to 64 arguments. |
+| *bag1...bagN* | dynamic |  :heavy_check_mark: | The property bags to merge. The function accepts between 2 to 64 arguments. |
 
 ## Returns
 

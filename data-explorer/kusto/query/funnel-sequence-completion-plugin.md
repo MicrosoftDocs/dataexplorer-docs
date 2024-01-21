@@ -7,25 +7,27 @@ ms.date: 12/18/2022
 ---
 # funnel_sequence_completion plugin
 
-Calculates a funnel of completed sequence steps while comparing different time periods. The plugin is invoked with the [`evaluate`](evaluateoperator.md) operator.
+Calculates a funnel of completed sequence steps while comparing different time periods. The plugin is invoked with the [`evaluate`](evaluate-operator.md) operator.
 
 ## Syntax
 
 *T* `| evaluate` `funnel_sequence_completion(`*IdColumn*`,` *TimelineColumn*`,` *Start*`,` *End*`,` *BinSize*`,` *StateColumn*`,` *Sequence*`,` *MaxSequenceStepWindows*`)`
 
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+
 ## Parameters
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-| *T* | string | &check; | The input tabular expression. |
-| *IdColum* | string | &check; | The column reference representing the ID. The column must be present in *T*.|
-| *TimelineColumn* | string | &check; | The column reference representing the timeline. The column must be present in *T*.|
-| *Start* | datetime, timespan, or long | &check; | The analysis start period.|
-| *End* | datetime, timespan, or long | &check; | The analysis end period.|
-| *BinSize* | datetime, timespan, or long | &check; | The analysis window size. Each window is analyzed separately.|
-| *StateColumn* | string | &check; | The column reference representing the state. The column must be present in *T*.|
-| *Sequence* | dynamic | &check; | An array with the sequence values that are looked up in `StateColumn`.|
-| *MaxSequenceStepPeriods* | dynamic | &check; | An array with the values of the max allowed timespan between the first and last sequential steps in the sequence. Each period in the array generates a funnel analysis result.|
+| *T* | string |  :heavy_check_mark: | The input tabular expression. |
+| *IdColum* | string |  :heavy_check_mark: | The column reference representing the ID. The column must be present in *T*.|
+| *TimelineColumn* | string |  :heavy_check_mark: | The column reference representing the timeline. The column must be present in *T*.|
+| *Start* | datetime, timespan, or long |  :heavy_check_mark: | The analysis start period.|
+| *End* | datetime, timespan, or long |  :heavy_check_mark: | The analysis end period.|
+| *BinSize* | datetime, timespan, or long |  :heavy_check_mark: | The analysis window size. Each window is analyzed separately.|
+| *StateColumn* | string |  :heavy_check_mark: | The column reference representing the state. The column must be present in *T*.|
+| *Sequence* | dynamic |  :heavy_check_mark: | An array with the sequence values that are looked up in `StateColumn`.|
+| *MaxSequenceStepPeriods* | dynamic |  :heavy_check_mark: | An array with the values of the max allowed timespan between the first and last sequential steps in the sequence. Each period in the array generates a funnel analysis result.|
 
 ## Returns
 
@@ -73,6 +75,6 @@ StormEvents
 Understanding the results:  
 The outcome is three funnels (for periods: One hour, 4 hours, and one day). For each funnel step, a number of distinct counts of  are shown. You can see that the more time is given to complete the whole sequence of `Hail` -> `Tornado` -> `Thunderstorm Wind`, the higher `dcount` value is obtained. In other words, there were more occurrences of the sequence reaching the funnel step.
 
-## See also
+## Related content
 
 * [scan operator](scan-operator.md)

@@ -13,11 +13,13 @@ Calculates the element-wise natural logarithm function (base-e) of the numeric s
 
 `series_log(`*series*`)`
 
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+
 ## Parameters
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-| *series* | dynamic | &check; | An array of numeric values on which the natural logarithm function is applied.|
+| *series* | dynamic |  :heavy_check_mark: | An array of numeric values on which the natural logarithm function is applied.|
 
 ## Returns
 

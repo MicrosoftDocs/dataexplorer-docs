@@ -14,16 +14,16 @@ zone_pivot_groups: kql-flavors-all
 The function `series_uv_anomalies_fl()` is a [user-defined function (UDF)](../query/functions/user-defined-functions.md) that detects anomalies in time series by calling the [Univariate Anomaly Detection API](/azure/cognitive-services/anomaly-detector/overview), part of [Azure Cognitive Services](/azure/cognitive-services/what-are-cognitive-services). The function accepts a limited set of time series as numerical dynamic arrays and the required anomaly detection sensitivity level. Each time series is converted into the required JSON format and posts it to the Anomaly Detector service endpoint. The service response contains dynamic arrays of high/low/all anomalies, the modeled baseline time series, its normal high/low boundaries (a value above or below the high/low boundary is an anomaly) and the detected seasonality.
 
 > [!NOTE]
-> Consider using the native function [series_decompose_anomalies()](../query/series-decompose-anomaliesfunction.md) which is more scalable and runs faster.
+> Consider using the native function [series_decompose_anomalies()](../query/series-decompose-anomalies-function.md) which is more scalable and runs faster.
 
 ## Prerequisites
 
 * An Azure subscription. Create a [free Azure account](https://azure.microsoft.com/free/).
 * A cluster and database. [Create a cluster and database](../../create-cluster-and-database.md).
-* The Python plugin must be [enabled on the cluster](../query/pythonplugin.md#enable-the-plugin). This is required for the inline Python used in the function.
+* The Python plugin must be [enabled on the cluster](../query/python-plugin.md#enable-the-plugin). This is required for the inline Python used in the function.
 * [Create an Anomaly Detector resource and obtain its key](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesAnomalyDetector) to access the service.
 * Enable the [http_request plugin / http_request_post plugin](../query/http-request-plugin.md) on the cluster to access the anomaly detection service endpoint.
-* Modify the [callout policy](../management/calloutpolicy.md) for type `webapi` to access the anomaly detection service endpoint.
+* Modify the [callout policy](../management/callout-policy.md) for type `webapi` to access the anomaly detection service endpoint.
 
 In the following function example, replace `YOUR-AD-RESOURCE-NAME` in the uri and `YOUR-KEY` in the `Ocp-Apim-Subscription-Key` of the header with your Anomaly Detector resource name and key.
 
@@ -31,11 +31,13 @@ In the following function example, replace `YOUR-AD-RESOURCE-NAME` in the uri an
 
 `T | invoke series_uv_anomalies_fl(`*y_series* [`,` *sensitivity* [`,` *tsid*]]`)`
 
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+
 ## Parameters
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-| *y_series* | string | &check; | The name of the input table column containing the values of the series to be anomaly detected. |
+| *y_series* | string |  :heavy_check_mark: | The name of the input table column containing the values of the series to be anomaly detected. |
 | *sensitivity* | integer | | An integer in the range [0-100] specifying the anomaly detection sensitivity. 0 is the least sensitive detection, while 100 is the most sensitive indicating even a small deviation from the expected baseline would be tagged as anomaly. Default value: 85 |
 | *tsid* | string | | The name of the input table column containing the time series ID. Can be omitted when analyzing a single time series. |
 
@@ -45,10 +47,10 @@ You can define the function by either embedding its code as a query-defined func
 
 ### [Query-defined](#tab/query-defined)
 
-Define the function using the following [let statement](../query/letstatement.md). No permissions are required.
+Define the function using the following [let statement](../query/let-statement.md). No permissions are required.
 
 > [!IMPORTANT]
-> A [let statement](../query/letstatement.md) can't run on its own. It must be followed by a [tabular expression statement](../query/tabularexpressionstatements.md). To run a working example of `series_uv_anomalies_fl()`, see [Examples](#examples).
+> A [let statement](../query/let-statement.md) can't run on its own. It must be followed by a [tabular expression statement](../query/tabular-expression-statements.md). To run a working example of `series_uv_anomalies_fl()`, see [Examples](#examples).
 
 ~~~kusto
 let series_uv_anomalies_fl=(tbl:(*), y_series:string, sensitivity:int=85, tsid:string='_tsid')
@@ -127,7 +129,7 @@ series_uv_anomalies_fl(tbl:(*), y_series:string, sensitivity:int=85, tsid:string
 
 ## Examples
 
-The following examples use the [invoke operator](../query/invokeoperator.md) to run the function.
+The following examples use the [invoke operator](../query/invoke-operator.md) to run the function.
 
 ### Use `series_uv_anomalies_fl()` to detect anomalies
 
@@ -199,7 +201,7 @@ ts
 
 **Output**
 
-![Graph showing anomalies on a time series.](images/series-uv-anomalies-fl/uv-anomalies-example-1.png)
+![Graph showing anomalies on a time series.](media/series-uv-anomalies-fl/uv-anomalies-example-1.png)
 
 ### Compare `series_uv_anomalies_fl()` and native `series_decompose_anomalies()`
 
@@ -273,11 +275,11 @@ ts
 
 The following graph shows anomalies detected by the Univariate Anomaly Detection API on TS1. You can also select TS2 or TS3 in the chart filter box.
 
-![Graph showing anomalies using the Univariate A P I on a time series.](images/series-uv-anomalies-fl/uv-anomalies-example-2.png)
+![Graph showing anomalies using the Univariate A P I on a time series.](media/series-uv-anomalies-fl/uv-anomalies-example-2.png)
 
 The following graph shows the anomalies detected by native function on TS1.
 
-![Graph showing anomalies using the native function on a time series.](images/series-uv-anomalies-fl/native-anomalies-example-2.png)
+![Graph showing anomalies using the native function on a time series.](media/series-uv-anomalies-fl/native-anomalies-example-2.png)
 
 ::: zone-end
 

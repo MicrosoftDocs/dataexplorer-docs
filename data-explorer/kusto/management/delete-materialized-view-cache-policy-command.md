@@ -7,7 +7,7 @@ ms.date: 05/24/2023
 ---
 # .delete materialized-view policy caching command
 
-Delete the materialized view cache policy. To speed up queries, data is cached on processing nodes, SSD, or even in RAM. The [cache policy](cachepolicy.md) allows your cluster to describe the data artifacts that it uses, so that more important data can take priority.
+Delete the materialized view cache policy. To speed up queries, data is cached on processing nodes, SSD, or even in RAM. The [cache policy](cache-policy.md) allows your cluster to describe the data artifacts that it uses, so that more important data can take priority.
 
 ## Permissions
 
@@ -17,11 +17,13 @@ You must have at least [Table Admin](access-control/role-based-access-control.md
 
 `.delete` `materialized-view` *MaterializedViewName* `policy` `caching`
 
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+
 ## Parameters
 
 |Name|Type|Required|Description|
 |--|--|--|--|
-|*MaterializedViewName*|string|&check;|The name of the materialized view.|
+|*MaterializedViewName*|string| :heavy_check_mark:|The name of the materialized view.|
 
 ## Example
 

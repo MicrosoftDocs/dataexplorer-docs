@@ -8,29 +8,29 @@ ms.date: 04/05/2022
 
 # Private endpoints for Azure Data Explorer
 
-You can use [private endpoints](/azure/private-link/private-endpoint-overview) for your cluster to allow clients on a [virtual network (VNet)](/azure/virtual-network/virtual-networks-overview) to securely access data over a [private link](/azure/private-link/private-link-overview). Private endpoints use private IP addresses from your VNet address space to connect you privately to your cluster. Network traffic between clients on the VNet and the cluster, traverses over the VNet and a private link on the [Microsoft backbone network](/azure/networking/microsoft-global-network), eliminating exposure from the public internet.
+You can use [private endpoints](/azure/private-link/private-endpoint-overview) for your cluster to allow clients on a [virtual network](/azure/virtual-network/virtual-networks-overview) to securely access data over a [private link](/azure/private-link/private-link-overview). Private endpoints use private IP addresses from your virtual network address space to connect you privately to your cluster. Network traffic between clients on the virtual network and the cluster, traverses over the virtual network and a private link on the [Microsoft backbone network](/azure/networking/microsoft-global-network), eliminating exposure from the public internet.
 
 Using private endpoints for your cluster enables you to:
 
 * Secure your cluster by configuring the firewall to block all connections on the public endpoint to the cluster.
-* Increase security for the VNet by enabling you to block exfiltration of data from the VNet.
-* Securely connect to clusters from on-premises networks that connect to the VNet using a [VPN gateway](/azure/vpn-gateway/vpn-gateway-about-vpngateways) or [ExpressRoutes](/azure/expressroute/expressroute-locations) with private-peering.
+* Increase security for the virtual network by enabling you to block exfiltration of data from the virtual network.
+* Securely connect to clusters from on-premises networks that connect to the virtual network using a [VPN gateway](/azure/vpn-gateway/vpn-gateway-about-vpngateways) or [ExpressRoutes](/azure/expressroute/expressroute-locations) with private-peering.
 
 ## Overview
 
-A private endpoint is a special network interface for an Azure service in your VNet that is assigned IP addresses from the IP address range of your VNet. When you create a private endpoint for your cluster, it provides secure connectivity between clients on your VNet and your cluster. The connection between the private endpoint and the cluster uses a secure private link.
+A private endpoint is a special network interface for an Azure service in your virtual network that is assigned IP addresses from the IP address range of your virtual network. When you create a private endpoint for your cluster, it provides secure connectivity between clients on your virtual network and your cluster. The connection between the private endpoint and the cluster uses a secure private link.
 
 :::image type="content" source="media/security-network-private-endpoint/pe-diagram-detail.png" alt-text="Diagram showing the schema of the private endpoint architecture.":::
 
-Applications in the VNet can seamlessly connect to the cluster over the private endpoint. The connection strings and authorization mechanisms are the same as you'd use to connect to a public endpoint.
+Applications in the virtual network can seamlessly connect to the cluster over the private endpoint. The connection strings and authorization mechanisms are the same as you'd use to connect to a public endpoint.
 
-When you create a private endpoint for cluster in your VNet, a consent request is sent for approval to the cluster owner. If the user requesting the creation of the private endpoint is also an owner of the cluster, the request is automatically approved. Cluster owners can manage consent requests and private endpoints for the cluster in the Azure portal, under **Private endpoints**.
+When you create a private endpoint for cluster in your virtual network, a consent request is sent for approval to the cluster owner. If the user requesting the creation of the private endpoint is also an owner of the cluster, the request is automatically approved. Cluster owners can manage consent requests and private endpoints for the cluster in the Azure portal, under **Private endpoints**.
 
-You can secure your cluster to only accept connections from your VNet by configuring the cluster firewall to deny access through its public endpoint by default. You don't need a firewall rule to allow traffic from a VNet that has a private endpoint because the cluster firewall only controls access for the public endpoint. In contrast, private endpoints rely on the consent flow for granting subnets access to the cluster.
+You can secure your cluster to only accept connections from your virtual network by configuring the cluster firewall to deny access through its public endpoint by default. You don't need a firewall rule to allow traffic from a virtual network that has a private endpoint because the cluster firewall only controls access for the public endpoint. In contrast, private endpoints rely on the consent flow for granting subnets access to the cluster.
 
-## Plan the size of subnet in your VNet
+## Plan the size of subnet in your virtual network
 
-The size of the subnet used to host a private endpoint for a cluster can't be altered once the subnet is deployed. The private endpoint consumes multiple IP addresses in your virtual network. In extreme scenarios, such as high-end ingestion, the number of IP addresses consumed by the private endpoint may increase. This increase is caused by an increased number of transient storage accounts required as staging accounts for ingesting into your cluster. If the scenario is relevant in your environment, you must plan for it when determining the size for the subnet.
+The size of the subnet used to host a private endpoint for a cluster can't be altered once the subnet is deployed. The private endpoint consumes multiple IP addresses in your virtual network. In extreme scenarios, such as high-end ingestion, the number of IP addresses consumed by the private endpoint might increase. This increase is caused by an increased number of transient storage accounts required as staging accounts for ingesting into your cluster. If the scenario is relevant in your environment, you must plan for it when determining the size for the subnet.
 
 > [!NOTE]
 > The relevant ingestion scenarios that would be responsible for scaling out the transient storage accounts are [ingestion from a local file](kusto/api/netfx/kusto-ingest-client-examples.md#ingest-from-local-file) and [async ingestion from a blob](kusto/api/netfx/kusto-ingest-client-examples.md#async-ingestion-from-a-single-azure-blob).
@@ -52,12 +52,12 @@ If you created a subnet that is too small, you can delete it and create a new on
 
 ## Connect to a private endpoint
 
-Clients on a VNet using a private endpoint should use the same connection string for the cluster as clients connecting to a public endpoint. DNS resolution automatically routes connections from the VNet to the cluster over a private link.
+Clients on a virtual network using a private endpoint should use the same connection string for the cluster as clients connecting to a public endpoint. DNS resolution automatically routes connections from the virtual network to the cluster over a private link.
 
 > [!IMPORTANT]
 > Use the same connection string to connect to the cluster using private endpoints as you'd use to connect to a public endpoint. Don't connect to the cluster using its private link subdomain URL.
 
-By default, Azure Data Explorer creates a [private DNS zone](/azure/dns/private-dns-overview) attached to the VNet with the necessary updates for the private endpoints. However, if you're using your own DNS server, you may need to make more changes to your DNS configuration.
+By default, Azure Data Explorer creates a [private DNS zone](/azure/dns/private-dns-overview) attached to the virtual network with the necessary updates for the private endpoints. However, if you're using your own DNS server, you might need to make more changes to your DNS configuration.
 
 > [!IMPORTANT]
 > For optimal configuration, we recommend that you align your deployment with the recommendations in the [Private Endpoint and DNS configuration at Scale](/azure/cloud-adoption-framework/ready/azure-best-practices/private-link-and-dns-integration-at-scale) Cloud Adoption Framework article. Use the information in the article to automate Private DNS entry creation using Azure Policies, making it easier to manage your deployment as you scale.
@@ -98,9 +98,10 @@ Private endpoints aren't supported for virtual network injected Azure Data Explo
 
 Private endpoints or managed private endpoints are resources that incur additional costs. The cost varies depending on the selected solution architecture. For more information, see [Azure Private Link pricing](https://azure.microsoft.com/pricing/details/private-link/).
 
-## Next steps
+## Related content
 
 * [Create a Private Endpoints for Azure Data Explorer](security-network-private-endpoint-create.md)
 * [Create a Managed Private Endpoints for Azure Data Explorer](security-network-managed-private-endpoint-create.md)
 * [How to restrict public access to Azure Data Explorer](security-network-restrict-public-access.md)
 * [How to restrict outbound access from Azure Data Explorer](security-network-restrict-outbound-access.md)
+* [Connect a cluster behind a private endpoint to a Power BI service](power-bi-private-endpoint.md)

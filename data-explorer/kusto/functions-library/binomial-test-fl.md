@@ -9,25 +9,25 @@ zone_pivot_groups: kql-flavors-all
 ---
 # binomial_test_fl()
 
-::: zone pivot="azuredataexplorer"
+::: zone pivot="azuredataexplorer, fabric"
 
 The function `binomial_test_fl()` is a [UDF (user-defined function)](../query/functions/user-defined-functions.md) that performs the [binomial test](https://en.wikipedia.org/wiki/Binomial_test).
 
-## Prerequisites
-
-* The Python plugin must be [enabled on the cluster](../query/pythonplugin.md#enable-the-plugin). This is required for the inline Python used in the function.
+[!INCLUDE [python-zone-pivot-fabric](../../includes/python-zone-pivot-fabric.md)]
 
 ## Syntax
 
 `T | invoke binomial_test_fl(`*successes*`,` *trials* [`,`*success_prob* [`,` *alt_hypotheis* ]]`)`
 
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+
 ## Parameters
 
 |Name|Type|Required|Description|
 |--|--|--|--|
-| *successes* | string | &check; | The name of the column containing the number of success results.|
-| *trials* | string | &check; | The name of the column containing the total number of trials.|
-| *p_value* | string | &check; | The name of the column to store the results.|
+| *successes* | string |  :heavy_check_mark: | The name of the column containing the number of success results.|
+| *trials* | string |  :heavy_check_mark: | The name of the column containing the total number of trials.|
+| *p_value* | string |  :heavy_check_mark: | The name of the column to store the results.|
 | *success_prob* | real | | The success probability. The default is 0.5.|
 | *alt_hypotheis* | string | | The alternate hypothesis can be `two-sided`, `greater`, or `less`. The default is `two-sided`.|
 
@@ -37,10 +37,10 @@ You can define the function by either embedding its code as a query-defined func
 
 ### [Query-defined](#tab/query-defined)
 
-Define the function using the following [let statement](../query/letstatement.md). No permissions are required.
+Define the function using the following [let statement](../query/let-statement.md). No permissions are required.
 
 > [!IMPORTANT]
-> A [let statement](../query/letstatement.md) can't run on its own. It must be followed by a [tabular expression statement](../query/tabularexpressionstatements.md). To run a working example of `binomial_test_fl()`, see [Example](#example).
+> A [let statement](../query/let-statement.md) can't run on its own. It must be followed by a [tabular expression statement](../query/tabular-expression-statements.md). To run a working example of `binomial_test_fl()`, see [Example](#example).
 
 ```kusto
 let binomial_test_fl = (tbl:(*), successes:string, trials:string, p_value:string, success_prob:real=0.5, alt_hypotheis:string='two-sided')
@@ -103,7 +103,7 @@ binomial_test_fl(tbl:(*), successes:string, trials:string, p_value:string, succe
 
 ## Example
 
-The following example uses the [invoke operator](../query/invokeoperator.md) to run the function.
+The following example uses the [invoke operator](../query/invoke-operator.md) to run the function.
 
 ### [Query-defined](#tab/query-defined)
 
@@ -167,7 +167,7 @@ datatable(id:string, x:int, n:int) [
 
 ::: zone-end
 
-::: zone pivot="azuremonitor, fabric"
+::: zone pivot="azuremonitor"
 
 This feature isn't supported.
 

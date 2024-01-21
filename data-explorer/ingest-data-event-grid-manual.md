@@ -3,11 +3,12 @@ title: Create an Event Grid subscription in your storage account - Azure Data Ex
 description: This article describes how to create an Event Grid subscription in your storage account in Azure Data Explorer.
 ms.reviewer: kedamari
 ms.topic: reference
-ms.date: 01/03/2022
+ms.date: 01/09/2024
 ---
 # Manually create resources for Event Grid ingestion
 
 > [!div class="op_single_selector"]
+>
 > * [Portal](ingest-data-event-grid.md)
 > * [Portal - create resources manually](ingest-data-event-grid-manual.md)
 > * [C#](data-connection-event-grid-csharp.md)
@@ -16,7 +17,7 @@ ms.date: 01/03/2022
 
 Azure Data Explorer offers continuous ingestion from Azure Storage (Azure Blob storage and Azure Data Lake Storage Gen2) using an [Event Grid Ingestion pipeline](ingest-data-event-grid-overview.md). In the Event Grid ingestion pipeline, an Azure Event Grid service routes blob created or blob renamed events from a storage account to Azure Data Explorer via an Azure Event Hubs.
 
-In this article, you learn how to create manually the resources needed for Event Grid Ingestion: Event Grid subscription, event hub namespace, and event hub. event hub namespace and event hub creation are described in the [Prerequisites](#prerequisites). To use automatic creation of these resources while defining the Event Grid ingestion, see [Create an Event Grid data connection in Azure Data Explorer](ingest-data-event-grid.md).
+In this article, you learn how to manually create the resources needed for Event Grid Ingestion: an Event Grid subscription, an Event Hubs namespace, and an event hub. Event Hubs namespace and event hub creation are described in the [Prerequisites](#prerequisites). To use automatic creation of these resources while defining the Event Grid ingestion, see [Create an Event Grid data connection in Azure Data Explorer](ingest-data-event-grid.md).
 
 ## Prerequisites
 
@@ -29,11 +30,11 @@ In this article, you learn how to create manually the resources needed for Event
 > For best performance, create all resources in the same region as the Azure Data Explorer cluster.
 
 ## Create an Event Grid subscription
- 
+
 1. In the Azure portal, go to your storage account.
 1. In the left menu, select **Events** > **Event Subscription**.
 
-     :::image type="content" source="media/eventgrid/create-event-grid-subscription-1.png" alt-text="Create event grid subscription.":::
+     :::image type="content" source="media/eventgrid/create-event-grid-subscription-1.png" alt-text="Screenshot of create Event Grid subscription.":::
 
 1. In the **Create Event Subscription** window within the **Basic** tab, provide the following values:
 
@@ -53,11 +54,11 @@ In this article, you learn how to create manually the resources needed for Event
     :::image type="content" source="media/eventgrid/endpoint-details.png" alt-text="Pick an event handler to receive your events - event hub - Azure Data Explorer.":::
 
 1. Click **Select an endpoint** and fill in the event hub you created, for example *test-hub*.
-    
+
 1. Select the **Filters** tab if you want to filter events.
-    
+
     Use **Subject Filters** to track specific subjects events. Set the filters for the notifications as follows:
-   
+
     :::image type="content" source="media/eventgrid/filters-tab.png" alt-text="Filters tab event grid.":::
 
    1. Select **Enable subject filtering**
@@ -71,21 +72,20 @@ In this article, you learn how to create manually the resources needed for Event
 
     Use **Advanced Filters** to add custom filters that meet your requirements.
 
-    For example, When using the [Azure Data Lake SDK](https://www.nuget.org/packages/Azure.Storage.Files.DataLake/) to upload a file, file creation triggers an Event Grid event with size 0. This event is ignored by Azure Data Explorer. File flushing triggers another event if the *Close* parameter is set to *true*. This event indicates that this is the final update and the file stream has been closed.
-    To filter for *FlushAndClose* events and remove file creation events with size 0, use the following filter:
+    For example, When using the [Azure Data Lake SDK](https://www.nuget.org/packages/Azure.Storage.Files.DataLake/) to upload a file, file creation triggers an Event Grid event with size 0. This event is discarded by Azure Data Explorer. File flushing triggers another event if the *Close* parameter is set to *true*. This event indicates that this is the final update and the file stream has been closed.
+    To avoid unnecessary processing and empty file ingestion errors, filter out *CreateFile* events using the following filter:
 
-    :::image type="content" source="media/eventgrid/filters-flush-and-close.png" alt-text="Screenshot showing how to filter for flush and close events.":::
+    :::image type="content" source="media/eventgrid/filter-out-create-file.png" alt-text="Screenshot showing how to filter out create file events.":::
 
     |**Setting** | **Suggested value** | **Field description**|
     |---|---|---|
     |Key | *data.api* | The field in the event schema used for filtering. |
-    |Operator | *String is in* | An operator to be evaluates on the selected key. |
-    |Value | *FlushWithClose* | The value used to evaluate the key. |
+    |Operator | *String is not in* | An operator to be evaluates on the selected key. |
+    |Value | *CreateFile* | The value used to evaluate the key. |
 
 1. Select **Create**
 
-## Next steps
+## Next step
 
-* Continue the setup and create a data ingestion connection to Azure Data Explorer via Azure portal: [Create an Event Grid data connection in Azure Data Explorer](ingest-data-event-grid.md).
-
-* If you don't plan to continue Event Grid ingestion using the resources you created and don't want to use the resources anymore, [clean up resources](ingest-data-event-grid.md#clean-up-resources) to avoid incurring costs.
+> [!div class="nextstepaction"]
+> [Create an Event Grid data connection](ingest-data-event-grid.md)

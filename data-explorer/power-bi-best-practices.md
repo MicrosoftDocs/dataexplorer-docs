@@ -22,9 +22,9 @@ When working with terabytes of fresh raw data, follow these guidelines to keep P
 
 * **Import mode versus [DirectQuery](/power-bi/connect-data/desktop-directquery-about) mode**:
 
-  * Use **Import** mode for interaction of smaller data sets.
+  * Use **Import** mode for interaction of smaller datasets.
 
-  * Use **DirectQuery** mode for large, frequently updated data sets. For example, create dimension tables using **Import** mode since they're small and don't change often. Set the refresh interval according to the expected rate of data updates. Create fact tables using **DirectQuery** mode since these tables are large and contain raw data. Use these tables to present filtered data using Power BI [drillthrough](/power-bi/desktop-drillthrough). When using **DirectQuery**, you can use [**Query Reduction**](/power-bi/connect-data/desktop-directquery-about#report-design-guidance) to prevent reports from loading data before you're ready.
+  * Use **DirectQuery** mode for large, frequently updated datasets. For example, create dimension tables using **Import** mode since they're small and don't change often. Set the refresh interval according to the expected rate of data updates. Create fact tables using **DirectQuery** mode since these tables are large and contain raw data. Use these tables to present filtered data using Power BI [drillthrough](/power-bi/desktop-drillthrough). When using **DirectQuery**, you can use [**Query Reduction**](/power-bi/connect-data/desktop-directquery-about#report-design-guidance) to prevent reports from loading data before you're ready.
 
 * **Parallelism** – Azure Data Explorer is a linearly scalable data platform, therefore, you can improve the performance of dashboard rendering by increasing the parallelism of the end-to-end flow as follows:
 
@@ -32,7 +32,7 @@ When working with terabytes of fresh raw data, follow these guidelines to keep P
 
   * Use [weak consistency to improve parallelism](kusto/concepts/queryconsistency.md). This may have an impact on the freshness of the data.
 
-* **Effective slicers** – Use [sync slicers](/power-bi/visuals/power-bi-visualization-slicers#sync-and-use-slicers-on-other-pages) to prevent reports from loading data before you're ready. After you structure the data set, place all visuals, and mark all the slicers, you can select the sync slicer to load only the data needed.
+* **Effective slicers** – Use [sync slicers](/power-bi/visuals/power-bi-visualization-slicers#sync-and-use-slicers-on-other-pages) to prevent reports from loading data before you're ready. After you structure the dataset, place all visuals, and mark all the slicers, you can select the sync slicer to load only the data needed.
 
 * **Use filters** - Use as many Power BI filters as possible to focus the Azure Data Explorer search on the relevant data shards.
 
@@ -42,6 +42,6 @@ When working with terabytes of fresh raw data, follow these guidelines to keep P
 
 To learn about tips and tricks for using Kusto Query Language in Power BI reports and visualizations, see [Tips for using the Azure Data Explorer Connector to query data](/power-query/connectors/azuredataexplorer#tips-for-using-the-azure-data-explorer-connector-to-query-data).
 
-## Next steps
+## Related content
 
-[Use Azure Data Explorer data in Power BI](power-bi-data-connector.md).
+* [Use Azure Data Explorer data in Power BI](power-bi-data-connector.md)

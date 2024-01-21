@@ -16,7 +16,7 @@ In the Azure Data Explorer web UI, the query editor provides suggestions and war
 
 ## Prerequisites
 
-* A Microsoft account or an Azure Active Directory user identity. An Azure subscription isn't required.
+* A Microsoft account or a Microsoft Entra user identity. An Azure subscription isn't required.
 * An Azure Data Explorer cluster and database. Use the publicly available [**help** cluster](https://dataexplorer.azure.com/help) or [create a cluster and database](create-cluster-and-database.md).
 * Sign in to the [Azure Data Explorer web UI](https://dataexplorer.azure.com/).
 
@@ -114,8 +114,8 @@ To run a query, you must select the database on which you want to run the query 
 You didn't create any resources in this quickstart, but if you'd like to remove one or both clusters from the application, right-click the cluster and select **Remove connection**.
 Another option is to select **Clear local state** from the **Settings** > **General** tab. This action will remove all cluster connections and close all open query tabs.
 
-## Next steps
+## Related content
 
-* Read the [web UI query overview](web-ui-query-overview.md)
-* Explore results with the [web UI results grid](web-results-grid.md)
+* [Web UI query overview](web-ui-query-overview.md)
+* [Web UI results grid](web-results-grid.md)
 * [Customize settings in the web UI](web-customize-settings.md)

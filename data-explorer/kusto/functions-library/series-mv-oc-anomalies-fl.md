@@ -9,24 +9,24 @@ zone_pivot_groups: kql-flavors-all
 ---
 # series_mv_oc_anomalies_fl()
 
-::: zone pivot="azuredataexplorer"
+::: zone pivot="azuredataexplorer, fabric"
 
 The function `series_mv_oc_anomalies_fl()` is a [user-defined function (UDF)](../query/functions/user-defined-functions.md) that detects multivariate anomalies in series by applying the [One Class SVM model from scikit-learn](https://scikit-learn.org/stable/modules/generated/sklearn.svm.OneClassSVM.html). The function accepts a set of series as numerical dynamic arrays, the names of the features columns and the expected percentage of anomalies out of the whole series. The function trains one class SVM for each series and marks the points that fall outside the hyper sphere as anomalies.
 
-## Prerequisites
-
-* The Python plugin must be [enabled on the cluster](../query/pythonplugin.md#enable-the-plugin). This is required for the inline Python used in the function.
+[!INCLUDE [python-zone-pivot-fabric](../../includes/python-zone-pivot-fabric.md)]
 
 ## Syntax
 
 `T | invoke series_mv_oc_anomalies_fl(`*features_cols*`,` *anomaly_col* [`,` *anomalies_pct* ]`)`
-  
+
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+
 ## Parameters
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-| *features_cols* | dynamic | &check; | An array containing the names of the columns that are used for the multivariate anomaly detection model. |
-| *anomaly_col* | string | &check; | The name of the column to store the detected anomalies. |
+| *features_cols* | dynamic |  :heavy_check_mark: | An array containing the names of the columns that are used for the multivariate anomaly detection model. |
+| *anomaly_col* | string |  :heavy_check_mark: | The name of the column to store the detected anomalies. |
 | *anomalies_pct* | real | | A real number in the range [0-50] specifying the expected percentage of anomalies in the data. Default value: 4%. |
 
 ## Function definition
@@ -35,10 +35,10 @@ You can define the function by either embedding its code as a query-defined func
 
 ### [Query-defined](#tab/query-defined)
 
-Define the function using the following [let statement](../query/letstatement.md). No permissions are required.
+Define the function using the following [let statement](../query/let-statement.md). No permissions are required.
 
 > [!IMPORTANT]
-> A [let statement](../query/letstatement.md) can't run on its own. It must be followed by a [tabular expression statement](../query/tabularexpressionstatements.md). To run a working example of `series_mv_oc_anomalies_fl()`, see [Example](#example).
+> A [let statement](../query/let-statement.md) can't run on its own. It must be followed by a [tabular expression statement](../query/tabular-expression-statements.md). To run a working example of `series_mv_oc_anomalies_fl()`, see [Example](#example).
 
 ```kusto
 let series_mv_oc_anomalies_fl=(tbl:(*), features_cols:dynamic, anomaly_col:string, anomalies_pct:real=4.0)
@@ -99,7 +99,7 @@ series_mv_oc_anomalies_fl(tbl:(*), features_cols:dynamic, anomaly_col:string, an
 
 ## Example
 
-The following example uses the [invoke operator](../query/invokeoperator.md) to run the function.
+The following example uses the [invoke operator](../query/invoke-operator.md) to run the function.
 
 ### [Query-defined](#tab/query-defined)
 
@@ -151,9 +151,9 @@ normal_2d_with_anomalies
 
 **Output**
 
-The table normal_2d_with_anomalies contains a set of 3 time series. Each time series has two-dimensional normal distribution with daily anomalies added at midnight, 8am, and 4pm respectively. You can create this sample data set using [an example query](series-mv-ee-anomalies-fl.md#create-a-sample-data-set).
+The table normal_2d_with_anomalies contains a set of 3 time series. Each time series has two-dimensional normal distribution with daily anomalies added at midnight, 8am, and 4pm respectively. You can create this sample dataset using [an example query](series-mv-ee-anomalies-fl.md#create-a-sample-dataset).
 
-![Graph showing multivariate anomalies on a time chart.](images/series-mv-oc-anomalies-fl/mv-oc-anomalies-time-chart.png)
+![Graph showing multivariate anomalies on a time chart.](media/series-mv-oc-anomalies-fl/mv-oc-anomalies-time-chart.png)
 
 To view the data as a scatter chart, replace the usage code with the following:
 
@@ -167,13 +167,13 @@ normal_2d_with_anomalies
 | render scatterchart with(series=anomalies)
 ```
 
-![Graph showing multivariate anomalies on a scatter chart.](images/series-mv-oc-anomalies-fl/mv-oc-anomalies-scatter-chart.png)
+![Graph showing multivariate anomalies on a scatter chart.](media/series-mv-oc-anomalies-fl/mv-oc-anomalies-scatter-chart.png)
 
 You can see that on TS1 most of the anomalies occurring at midnights were detected using this multivariate model.
 
 ::: zone-end
 
-::: zone pivot="azuremonitor, fabric"
+::: zone pivot="azuremonitor"
 
 This feature isn't supported.
 

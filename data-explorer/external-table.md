@@ -8,7 +8,7 @@ ms.date: 08/25/2022
 
 # Create an external table using the Azure Data Explorer web UI wizard
 
-An external table is a schema entity that references data stored outside the Azure Data Explorer database. Azure Data Explorer web UI can create external tables by taking sample files from a storage container and creating schema based on these samples. You can then analyze and query data in external tables without ingestion into Azure Data Explorer. For a brief overview, see [external tables](kusto/query/schema-entities/externaltables.md). For information about different ways to create external tables, see [create and alter Azure Storage external tables](kusto/management/external-tables-azurestorage-azuredatalake.md). This article shows you how to create an external table using the creation wizard experience.
+An external table is a schema entity that references data stored outside the Azure Data Explorer database. Azure Data Explorer web UI can create external tables by taking sample files from a storage container and creating schema based on these samples. You can then analyze and query data in external tables without ingestion into Azure Data Explorer. For a brief overview, see [external tables](kusto/query/schema-entities/external-tables.md). For information about different ways to create external tables, see [create and alter Azure Storage external tables](kusto/management/external-tables-azurestorage-azuredatalake.md). This article shows you how to create an external table using the creation wizard experience.
 
 ## Prerequisites
 
@@ -83,7 +83,7 @@ The first source container will display files below **File filters**.
 
 ### Schema tab
 
-In the right-hand side of the tab, you can preview your data. On the left-hand side, you can add [partitions](kusto/management/partitioningpolicy.md) to your table definitions to access the source data more quickly and achieve better performance.
+In the right-hand side of the tab, you can preview your data. On the left-hand side, you can add [partitions](kusto/management/partitioning-policy.md) to your table definitions to access the source data more quickly and achieve better performance.
 
 > [!NOTE]
 > Mappings are not part of the definition of an external table, and are not supported in this wizard. Mappings can be [configured later](kusto/management/external-table-mapping-create.md) if necessary. Some functionalities, such as deleting the last column in CSV files or changing column names in JSON files, require mappings in order to work correctly.
@@ -128,9 +128,8 @@ The resulting table includes data from all the files that fit the criteria defin
 
 :::image type="content" source="media/external-table/view-table.png" alt-text="Screen shot of table output from querying external table in Azure Data Explorer.":::
 
-## Next steps
+## Related content
 
+* [External tables overview](kusto/query/schema-entities/external-tables.md)
 * [Create and alter Azure Storage external tables](kusto/management/external-tables-azurestorage-azuredatalake.md)
-* [External tables overview](kusto/query/schema-entities/externaltables.md)
-* [external_table() function](kusto/query/externaltablefunction.md)
-* [Write queries for Azure Data Explorer](/azure/data-explorer/kusto/query/tutorials/learn-common-operators)
+* [external_table() function](kusto/query/external-table-function.md)

@@ -21,11 +21,13 @@ You must have at least Database User, Database Viewer, or Database Monitor permi
 
 `.show` `.materialized-views` `details`
 
+[!INCLUDE [syntax-conventions-note](../../../includes/syntax-conventions-note.md)]
+
 ## Parameters
 
 | Name                   | Type   | Required | Description                    |
 |------------------------|--------|----------|--------------------------------|
-| *MaterializedViewName* | string | &check;  | Name of the materialized view. |
+| *MaterializedViewName* | string |  :heavy_check_mark:  | Name of the materialized view. |
 
 ## Returns
 

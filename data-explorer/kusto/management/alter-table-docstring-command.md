@@ -22,12 +22,14 @@ You must have at least [Table Admin](access-control/role-based-access-control.md
 
 `.alter` `table` *TableName* `docstring` *Documentation*
 
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+
 ## Parameters
 
 |Name|Type|Required|Description|
 |--|--|--|--|
-| *TableName* | string | &check; | The name of the table to alter.|
-| *Documentation* | string | &check; | Free text to describe the table.|
+| *TableName* | string |  :heavy_check_mark: | The name of the table to alter.|
+| *Documentation* | string |  :heavy_check_mark: | Free text to describe the table.|
 
 ## Example
 

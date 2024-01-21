@@ -2,12 +2,22 @@
 title:  'Tutorial: Learn common Kusto Query Language operators'
 description: This tutorial describes how to write queries using common operators in the Kusto Query Language to meet common query needs.
 ms.topic: tutorial
-ms.date: 03/06/2023
+ms.date: 12/21/2023
 ---
 
 # Tutorial: Learn common operators
 
 [Kusto Query Language (KQL)](../index.md) is used to write queries in [Azure Data Explorer](https://dataexplorer.azure.com/), [Azure Monitor Log Analytics](https://azure.microsoft.com/products/monitor/#overview), [Azure Sentinel](https://azure.microsoft.com/products/microsoft-sentinel/), and more. This tutorial is an introduction to the essential KQL operators used to access and analyze your data.
+
+For more specific guidance on how to query logs in Azure Monitor, see [Get started with log queries](/azure/azure-monitor/logs/get-started-queries).
+
+> [!NOTE]
+> Can't find what you're looking for? This article was recently split, as follows:
+>
+> - Learn common operators (this article)
+> - [Use aggregation functions](use-aggregation-functions.md)
+> - [Join data from multiple tables](join-data-from-multiple-tables.md)
+> - [Create geospatial visualizations](create-geospatial-visualizations.md)
 
 In this tutorial, you'll learn how to:
 
@@ -27,11 +37,11 @@ The examples in this tutorial use the `StormEvents` table, which is publicly ava
 
 ## Prerequisites
 
-* A Microsoft account or Azure Active Directory user identity to sign in to the [help cluster](https://dataexplorer.azure.com/clusters/help)
+* A Microsoft account or Microsoft Entra user identity to sign in to the [help cluster](https://dataexplorer.azure.com/clusters/help)
 
 ## Count rows
 
-Begin by using the [count](../countoperator.md) operator to find the number of storm records in the `StormEvents` table.
+Begin by using the [count](../count-operator.md) operator to find the number of storm records in the `StormEvents` table.
 
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAwsuyS/KdS1LzSspVuCqUUjOL80rAQA76pZjFAAAAA==" target="_blank">Run the query</a>
@@ -49,7 +59,7 @@ StormEvents
 
 ## See a sample of data
 
-To get a sense of the data, use the [take](../takeoperator.md) operator to view a sample of records. This operator returns a specified number of arbitrary rows from the table, which can be useful for previewing the general data structure and contents.
+To get a sense of the data, use the [take](../take-operator.md) operator to view a sample of records. This operator returns a specified number of arbitrary rows from the table, which can be useful for previewing the general data structure and contents.
 
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAwsuyS/KdS1LzSspVuCqUShJzE5VMAUAP49+9hUAAAA=" target="_blank">Run the query</a>
@@ -71,7 +81,7 @@ The following table shows only 6 of the 22 returned columns. To see the full out
 
 ## Select a subset of columns
 
-Use the [project](../projectoperator.md) operator to simplify the view and select a specific subset of columns. Using `project` is often more efficient and easier to read than viewing all columns.
+Use the [project](../project-operator.md) operator to simplify the view and select a specific subset of columns. Using `project` is often more efficient and easier to read than viewing all columns.
 
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAwsuyS/KdS1LzSsp5qpRKEnMTlUwBTIKivKzUpNLFIJLEktSdRTACkIqC4BMl8TcxPTUgKL8gtSikkoA88jUEj8AAAA=" target="_blank">Run the query</a>
@@ -122,7 +132,7 @@ There are 46 types of storms in the table. Here's a sample of 10 of them.
 
 ## Filter by condition
 
-The [where](../whereoperator.md) operator filters rows of data based on certain criteria.
+The [where](../where-operator.md) operator filters rows of data based on certain criteria.
 
 The following query looks for storm events in a specific `State` of a specific `EventType`.
 
@@ -173,7 +183,7 @@ StormEvents
 
 ## Get the top *n* rows
 
-The [top](../topoperator.md) operator returns the first *n* rows sorted by the specified column.
+The [top](../top-operator.md) operator returns the first *n* rows sorted by the specified column.
 
 The following query returns the five Texas floods that caused the most damaged property.
 
@@ -198,11 +208,11 @@ StormEvents
 |2007-06-26T20:00:00Z|2007-06-26T23:00:00Z|TEXAS|Flood|750000|
 
 > [!NOTE]
-> The order of the operators is important. If you put `top` before `where` here, you'll get different results. This is because the data is transformed by each operator in order. To learn more, see [tabular expression statements](../tabularexpressionstatements.md).
+> The order of the operators is important. If you put `top` before `where` here, you'll get different results. This is because the data is transformed by each operator in order. To learn more, see [tabular expression statements](../tabular-expression-statements.md).
 
 ## Create calculated columns
 
-The [project](../projectoperator.md) and [extend](../extendoperator.md) operators can both create calculated columns.
+The [project](../project-operator.md) and [extend](../extend-operator.md) operators can both create calculated columns.
 
 Use `project` to specify only the columns you want to view, and use `extend` to append the calculated column to the end of the table.
 
@@ -279,7 +289,7 @@ StormEvents
 |72609|Utility Company|Private|
 |...|...|...|
 
-## Next steps
+## Next step
 
 Now that you're familiar with the essentials of writing Kusto queries, go on to the next tutorial and learn how to use aggregation functions to gain deeper insight into your data.
 

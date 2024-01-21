@@ -9,22 +9,24 @@ ms.date: 01/17/2023
 
 Returns an estimate for the specified percentile of the *ValueColumn* population in a rolling (sliding) *BinsPerWindow* size window per *BinSize*.
 
-The plugin is invoked with the [`evaluate`](evaluateoperator.md) operator.
+The plugin is invoked with the [`evaluate`](evaluate-operator.md) operator.
 
 ## Syntax
 
 *T* `| evaluate` `rolling_percentile(`*ValueColumn*`,` *Percentile*`,` *IndexColumn*`,` *BinSize*`,` *BinsPerWindow*  [`,` *dim1*`,` *dim2*`,` ...] `)`
 
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+
 ## Parameters
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-| *T*| string | &check; | The input tabular expression.|
-| *ValueColumn*| string | &check;| The name of the column used to calculate the percentiles.|
-| *Percentile*| int, long, or real | &check;| Scalar with the percentile to calculate.|
-| *IndexColumn*| string | &check;| The name of the column over which to run the rolling window.|
-| *BinSize*| int, long, real, datetime, or timespan | &check;| Scalar with size of the bins to apply over the *IndexColumn*.|
-| *BinsPerWindow*| int | &check;| The number of bins included in each window.|
+| *T*| string |  :heavy_check_mark: | The input tabular expression.|
+| *ValueColumn*| string |  :heavy_check_mark:| The name of the column used to calculate the percentiles.|
+| *Percentile*| int, long, or real |  :heavy_check_mark:| Scalar with the percentile to calculate.|
+| *IndexColumn*| string |  :heavy_check_mark:| The name of the column over which to run the rolling window.|
+| *BinSize*| int, long, real, datetime, or timespan |  :heavy_check_mark:| Scalar with size of the bins to apply over the *IndexColumn*.|
+| *BinsPerWindow*| int |  :heavy_check_mark:| The number of bins included in each window.|
 | *dim1*, *dim2*, ... | string | | A list of the dimensions columns to slice by.|
 
 ## Returns

@@ -23,7 +23,7 @@ In this article, learn how to ingest data using the Azure Data Explorer Java lib
 
 ## Prerequisites
 
-* A Microsoft account or an Azure Active Directory user identity. An Azure subscription isn't required.
+* A Microsoft account or a Microsoft Entra user identity. An Azure subscription isn't required.
 * An Azure Data Explorer cluster and database. [Create a cluster and database](create-cluster-and-database.md).
 * [Git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git).
 * JDK version 1.8 or later.
@@ -36,7 +36,7 @@ This section is optional. Review the following code snippets to learn how the co
 
 ### Authentication
 
-The program uses Azure Active Directory authentication credentials with ConnectionStringBuilder`.
+The program uses Microsoft Entra authentication credentials with ConnectionStringBuilder`.
 
 1. Create a `com.microsoft.azure.kusto.data.Client` for query and management.
 
@@ -240,6 +240,6 @@ If you don't plan to use the resources you have created, run the following comma
 .drop table StormEvents
 ```
 
-## Next steps
+## Related content
 
-[Write queries](/azure/data-explorer/kusto/query/tutorials/learn-common-operators)
+* [Write queries](/azure/data-explorer/kusto/query/tutorials/learn-common-operators)

@@ -13,11 +13,13 @@ The natural logarithm is the base-e logarithm: the inverse of the natural expone
 
 `log(`*number*`)`
 
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+
 ## Parameters
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-|*number*| real | &check; | The number for which to calculate the logarithm.|
+|*number*| real |  :heavy_check_mark: | The number for which to calculate the logarithm.|
 
 ## Returns
 
@@ -39,7 +41,7 @@ print result=log(5)
 |--|
 |1.6094379124341003|
 
-## See also
+## Related content
 
 * For common (base-10) logarithms, see [log10()](log10-function.md).
 * For base-2 logarithms, see [log2()](log2-function.md).

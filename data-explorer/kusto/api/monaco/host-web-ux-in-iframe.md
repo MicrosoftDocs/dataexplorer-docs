@@ -3,13 +3,14 @@ title: Embed the Azure Data Explorer web UI in an **iframe**.
 description: Learn how to embed the Azure Data Explorer web UI in an **iframe**.
 ms.reviewer: izlisbon
 ms.topic: how-to
+ms.custom: has-azure-ad-ps-ref
 ms.date: 6/6/2023
 ---
 # Embed the Azure Data Explorer web UI in an iframe
 
 The Azure Data Explorer web UI can be embedded in an iframe and hosted in third-party websites. This article describes how to embed the Azure Data Explorer web UI in an iframe.
 
-:::image type="content" source="../images/host-web-ux-in-iframe/web-ux.png" alt-text="Screenshot of the Azure Data Explorer web U I.":::
+:::image type="content" source="../media/host-web-ux-in-iframe/web-ux.png" alt-text="Screenshot of the Azure Data Explorer web U I.":::
 
 All functionality is tested for accessibility and supports dark and light on-screen themes.
 
@@ -19,7 +20,7 @@ Add the following code to your website:
 
 ```html
 <iframe
-  src="https://dataexplorer.azure.com/?f-IFrameAuth=true&f-UseMeControl=false&workapce=<guid>"
+  src="https://dataexplorer.azure.com/?f-IFrameAuth=true&f-UseMeControl=false&workspace=<guid>"
 ></iframe>
 ```
 
@@ -31,9 +32,9 @@ The `workspace=<guid>` query parameter creates a separate workspace for the embe
 
 When embedding the web UI, the hosting page is responsible for authentication. The following diagrams describe the authentication flow.
 
-:::image type="content" source="../images/host-web-ux-in-iframe/adx-embed-sequence-diagram.png" lightbox="../images/host-web-ux-in-iframe/adx-embed-sequence-diagram.png" alt-text="Diagram that shows the authentication flow for an embedded web U I iframe.":::
+:::image type="content" source="../media/host-web-ux-in-iframe/adx-embed-sequence-diagram.png" lightbox="../media/host-web-ux-in-iframe/adx-embed-sequence-diagram.png" alt-text="Diagram that shows the authentication flow for an embedded web U I iframe.":::
 
-:::image type="content" source="../images/host-web-ux-in-iframe/adx-embed-scopes.png" lightbox="../images/host-web-ux-in-iframe/adx-embed-scopes.png" alt-text="Diagram that shows the scopes required for embedding the web U I iframe.":::
+:::image type="content" source="../media/host-web-ux-in-iframe/adx-embed-scopes.png" lightbox="../media/host-web-ux-in-iframe/adx-embed-scopes.png" alt-text="Diagram that shows the scopes required for embedding the web U I iframe.":::
 
 Use the following steps to handle authentication:
 
@@ -48,9 +49,9 @@ Use the following steps to handle authentication:
     })    
    ```
 
-1. Define a function to map the `event.data.scope` to Azure AD scope. Use the following table to decide how to map `event.data.scope` to Azure Active Directory (Azure AD) scopes:
+1. Define a function to map the `event.data.scope` to Microsoft Entra scope. Use the following table to decide how to map `event.data.scope` to Microsoft Entra scopes:
 
-    | Resource         | event.data.scope                                            | Azure AD Scope                                                    |
+    | Resource         | event.data.scope                                            | Microsoft Entra scope                                                    |
     | ---------------- | ----------------------------------------------------------- | -----------------------------------------------------------       |
     | Cluster          | `query`                                                     | `https://{your_cluster}.{your_region}.kusto.windows.net/.default` |
     | Graph            | `People.Read`                                               | `People.Read`, `User.ReadBasic.All`, `Group.Read.All`             |
@@ -68,9 +69,9 @@ Use the following steps to handle authentication:
         }
     ```
 
-1. Get a [JWT access token](https://tools.ietf.org/html/rfc7519) from the [Azure AD authentication endpoint](../../management/access-control/how-to-authenticate-with-aad.md#web-client-javascript-authentication-and-authorization) for the scope. This code replaces placeholder CODE-1.
+1. Get a [JWT access token](https://tools.ietf.org/html/rfc7519) from the [Microsoft Entra authentication endpoint](../../management/access-control/how-to-authenticate-with-aad.md#web-client-javascript-authentication-and-authorization) for the scope. This code replaces placeholder CODE-1.
 
-    For example, you can use @azure/msal-react to get the access token. The example uses the **mapScope** function you defined earlier.
+    For example, you can use @azure/MSAL-react to get the access token. The example uses the **mapScope** function you defined earlier.
 
     ```javascript
     import { useMsal } from "@azure/msal-react";
@@ -108,11 +109,11 @@ Use the following steps to handle authentication:
 
 ### Embed dashboards
 
-To embed a dashboard, a trust relationship must be established between the host's Azure AD app and the Azure Data Explorer dashboard service (**RTD Metadata Service**).
+To embed a dashboard, a trust relationship must be established between the host's Microsoft Entra app and the Azure Data Explorer dashboard service (**RTD Metadata Service**).
 
 1. Follow the steps in [Web Client (JavaScript) authentication and authorization](../../management/access-control/how-to-authenticate-with-aad.md#on-behalf-of-authentication#web-client-javascript-authentication-and-authorization).
 1. Open the [Azure portal](https://portal.azure.com/) and make sure that you're signed into the correct tenant. In the top-right corner, verify the identity used to sign into the portal.
-1. In the resources pane, select **Azure Active Directory** > **App registrations**.
+1. In the resources pane, select **Microsoft Entra ID** > **App registrations**.
 1. Locate the app that uses the **on-behalf-of** flow and open it.
 1. Select **Manifest**.
 1. Select **requiredResourceAccess**.
@@ -206,7 +207,7 @@ A feature flag can be used in the URL as a query parameter. To disable adding ot
 | f-DisableCrossFiltering | IF true, disables the cross filtering feature in dashboards | false |
 | f-HideDashboardParametersBar | IF true, hides the parameters bar in a dashboard | false |
 
-## Next steps
+## Related content
 
 - [Kusto Query Language (KQL) overview](../../query/index.md)
 - [Write Kusto queries](/azure/data-explorer/kusto/query/tutorials/learn-common-operators)

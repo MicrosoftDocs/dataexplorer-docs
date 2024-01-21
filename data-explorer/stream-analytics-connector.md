@@ -8,6 +8,8 @@ ms.date: 01/02/2023
 
 # Ingest data from Azure Stream Analytics into Azure Data Explorer
 
+[!INCLUDE [real-time-analytics-connectors-note](includes/real-time-analytics-connectors-note.md)]
+
 Azure Data Explorer supports [data ingestion](ingest-data-overview.md) from [Azure Stream Analytics](https://azure.microsoft.com/services/stream-analytics/). Azure Stream Analytics is a real-time analytics and complex event-processing engine that's designed to process high volumes of fast streaming data from multiple sources simultaneously.
 
 An Azure Stream Analytics *job* consists of an input source, a transformation query, and an output connection. You can create, edit, and test Stream Analytics jobs using the [Azure portal](/azure/stream-analytics/stream-analytics-quick-create-portal), Azure Resource Manager (ARM) templates, [Azure PowerShell](/azure/stream-analytics/stream-analytics-quick-create-powershell), [.NET API](/dotnet/api/microsoft.azure.management.streamanalytics.ioutputsoperations), [REST API](/rest/api/streamanalytics/), [Visual Studio](/azure/stream-analytics/stream-analytics-quick-create-vs), and the [Stream Analytics no code editor](/azure/stream-analytics/no-code-filter-ingest-data-explorer).
@@ -36,7 +38,7 @@ Use the following steps to create an [Azure Data Explorer output](/azure/stream-
 > [!NOTE]
 >
 > - All [Azure Stream Analytics](/azure/stream-analytics/stream-analytics-add-inputs) inputs are supported. The connector transforms the inputs to CSV format and then imports the data into the specified Azure Data Explorer table.
-> - Azure Data Explorer has an aggregation (batching) policy for data ingestion, designed to optimize the ingestion process. By default, the policy is configured to 5 minutes, 1000 items or 1 GB of data by default, so you may experience a latency. For information about configuring the aggregation options, see [batching policy](kusto/management/batchingpolicy.md).
+> - Azure Data Explorer has an aggregation (batching) policy for data ingestion, designed to optimize the ingestion process. By default, the policy is configured to 5 minutes, 1000 items or 1 GB of data by default, so you may experience a latency. For information about configuring the aggregation options, see [batching policy](kusto/management/batching-policy.md).
 
 ## [Azure portal](#tab/portal)
 
@@ -67,7 +69,7 @@ Before you begin, make sure you have an existing Stream Analytics job or [create
     | Cluster | The unique name that identifies your cluster. The domain name [region].kusto.windows.net is appended to the cluster name you provide. The name can contain only lowercase letters and numbers. It must contain from 4 to 22 characters. |
     | Cluster URI | The data ingestion URI of your cluster. You can specify the URI for the Azure Data Explorer or [Azure Synapse Data Explorer](/azure/synapse-analytics/data-explorer/ingest-data/data-explorer-ingest-data-overview#programmatic-ingestion-using-sdks) data ingestion endpoints. |
     | Database | The name of the database where you're sending your output. The database name must be unique within the cluster. |
-    | Authentication | An [Azure Active Directory (Azure AD) managed identity](/azure/active-directory/managed-identities-azure-resources/overview) that allows your cluster to easily access other Azure AD protected resources. The identity is managed by the Azure platform and doesn't require you to provision or rotate any secrets. Managed identity configuration enables you to use customer-managed keys for your cluster. |
+    | Authentication | A [Microsoft Entra managed identity](/azure/active-directory/managed-identities-azure-resources/overview) that allows your cluster to easily access other Microsoft Entra protected resources. The identity is managed by the Azure platform and doesn't require you to provision or rotate any secrets. Managed identity configuration enables you to use customer-managed keys for your cluster. |
     | Table | The name of the table where you're sending your output. The column names and data types in the Azure Stream Analytics output must match the schema of the Azure Data Explorer table. |
 
     :::image type="content" source="media/stream-analytics-connector/stream-analytics-new-output.png" alt-text="Screenshot of New output dialog box, showing required information.":::
@@ -192,7 +194,7 @@ The following example shows an Azure Resource Manager template for adding an Azu
 
 ---
 
-## Next steps
+## Related content
 
 - [Query data in Azure Data Explorer](web-query-data.md)
 - [Run Azure Functions from Azure Stream Analytics jobs](/azure/stream-analytics/stream-analytics-with-azure-functions)

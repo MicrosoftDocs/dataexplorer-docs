@@ -22,12 +22,14 @@ You must have at least [Function Admin](../management/access-control/role-based-
 
 `.alter` `function` *FunctionName* `docstring` *Documentation*
 
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+
 ## Parameters
 
 |Name|Type|Required|Description|
 |--|--|--|--|
-|*FunctionName*|string|&check;|The name of the function to alter.|
-|*Documentation*|string|&check;|The new docstring value for the function.|
+|*FunctionName*|string| :heavy_check_mark:|The name of the function to alter.|
+|*Documentation*|string| :heavy_check_mark:|The new docstring value for the function.|
 
 ## Returns
 

@@ -7,9 +7,9 @@ ms.date: 04/20/2023
 ---
 # .alter table policy ingestionbatching command
 
-Sets the table's [ingestion batching policy](batchingpolicy.md) to determine when data aggregation stops and a batch is sealed and ingested.
+Sets the table's [ingestion batching policy](batching-policy.md) to determine when data aggregation stops and a batch is sealed and ingested.
 
-If the policy isn't set for a table, the database-level policy applies. If it isn't set as well, the [default values](batchingpolicy.md#defaults-and-limits) apply.
+If the policy isn't set for a table, the database-level policy applies. If it isn't set as well, the [default values](batching-policy.md#defaults-and-limits) apply.
 
 ## Permissions
 
@@ -17,7 +17,7 @@ You must have at least [Table Admin](access-control/role-based-access-control.md
 
 ## Defaults and limits
 
-See [defaults and limits](batchingpolicy.md#defaults-and-limits).
+See [defaults and limits](batching-policy.md#defaults-and-limits).
 
 ## Syntax
 
@@ -25,13 +25,15 @@ See [defaults and limits](batchingpolicy.md#defaults-and-limits).
 
 `.alter` `tables` `(`*Table1* `,` *Table2*  [`,`...]`)` `policy` `ingestionbatching` *PolicyObject*
 
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+
 ## Parameters
 
 |Name|Type|Required|Description|
 |--|--|--|--|
-| *TableName* | string | &check; | The name of the table to alter.|
+| *TableName* | string |  :heavy_check_mark: | The name of the table to alter.|
 | *DatabaseName* | string | | The name of the database. When you run the command from the database context that contains the table to alter, *DatabaseName* is not required.|
-| *PolicyObject* |string|&check;| A serialized JSON policy object. See [ingestion batching policy](batchingpolicy.md).|
+| *PolicyObject* |string| :heavy_check_mark:| A serialized JSON policy object. See [ingestion batching policy](batching-policy.md).|
 
 ## Examples
 
@@ -61,9 +63,9 @@ The following command sets a batch ingress data time of 1 minute, for 20 files, 
 ```
 ````
 
->[!NOTE] 
-> If you don't specify all parameters of a *PolicyObject*, the unspecified parameters will be set to [default values](batchingpolicy.md#sealing-a-batch). For example, specifying only "MaximumBatchingTimeSpan" will result in "MaximumNumberOfItems" and "MaximumRawDataSizeMB" being set to default.
+>[!NOTE]
+> If you don't specify all parameters of a *PolicyObject*, the unspecified parameters will be set to [default values](batching-policy.md#sealing-a-batch). For example, specifying only "MaximumBatchingTimeSpan" will result in "MaximumNumberOfItems" and "MaximumRawDataSizeMB" being set to default. To override only some parameters, use the [alter-merge command](alter-merge-table-ingestion-batching-policy.md) command.
 
-## Next steps
+## Related content
 
-* [alter database batching policy](alter-database-ingestion-batching-policy.md)
+* [.alter database ingestionbatching policy](alter-database-ingestion-batching-policy.md)

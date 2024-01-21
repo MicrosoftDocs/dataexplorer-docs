@@ -23,11 +23,13 @@ You must have at least Database User, Database Viewer, or Database Monitor permi
 
 `.show` `databases` `(`*DatabaseName* `if_later_than` *"Version"* [`,` ...]`)` `schema` `details`
 
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+
 ### Parameters
 
 |Name|Type|Required|Description|
 |--|--|--|--|
-|*DatabaseName*|string|&check;|The name of the database for which to show the schema.|
+|*DatabaseName*|string| :heavy_check_mark:|The name of the database for which to show the schema.|
 |*Version*|string||The version in "vMM.mm" format. MM represents the major version and mm represents the minor version.|
 
 ### Returns
@@ -89,11 +91,13 @@ Because a version lower than the current database version was provided, the 'Tes
 
 `.show` `databases` `(`*DatabaseName* `if_later_than` *"Version"* [`,` ...]`)` `schema` `as` `json` [`with` `(`*Options*`)`]
 
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+
 ### Parameters
 
 |Name|Type|Required|Description|
 |--|--|--|--|
-|*DatabaseName*|string|&check;|The name of the database for which to show the schema.|
+|*DatabaseName*|string| :heavy_check_mark:|The name of the database for which to show the schema.|
 |*Version*|string||The version in "vMM.mm" format. MM represents the major version and mm represents the minor version.|
 |*Options*|string||A list of comma-separated key-value pairs used to determine which database entity schemas to return. If none are specified, then all entities are returned. See [supported entity options](#supported-entity-options).|
 
@@ -135,11 +139,13 @@ Generates a CSL script with all the required commands to create a copy of the gi
 
 `.show` `database` *DatabaseName* `schema` `as` `csl` `script` [`with` `(`*Options*`)`]
 
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+
 ### Parameters
 
 |Name|Type|Required|Description|
 |--|--|--|--|
-|*DatabaseName*|string|&check;|The name of the database for which to show the schema.|
+|*DatabaseName*|string| :heavy_check_mark:|The name of the database for which to show the schema.|
 |*Options*|string||A list of comma-separated key-value pairs used to determine what to return. See [supported options](#supported-options).|
 
 #### Supported options
@@ -164,5 +170,5 @@ The script, returned as a string, will contain:
 ```kusto
 .show database TestDB schema as csl script
 
-.show database TestDB schema as csl script with(IncludeSecuritySettings = true)
+.show database TestDB schema as csl script with (ShowObfuscatedStrings = true)
 ```

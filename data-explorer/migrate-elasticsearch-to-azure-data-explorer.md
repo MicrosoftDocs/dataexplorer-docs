@@ -24,9 +24,9 @@ In this guide, the data to be migrated is in an Elasticsearch index named **vehi
 
 To migrate your Elasticsearch data to Azure Data Explorer, you need:
 
-* A Microsoft account or an Azure Active Directory (Azure AD) user identity. An Azure subscription isn't required.
+* A Microsoft account or a Microsoft Entra user identity. An Azure subscription isn't required.
 * An Azure Data Explorer cluster and database. You can [create a free cluster](start-for-free-web-ui.md) or [create a full cluster](create-cluster-database-portal.md). To decide which is best for you, check the [feature comparison](start-for-free.md#feature-comparison).
-* An app ID and delegated permissions to access your Azure Data Explorer cluster. For more information, see [Create an Azure AD app](provision-azure-ad-app.md). You need app ID, secret, and tenant ID to configure the Logstash pipeline.
+* An app ID and delegated permissions to access your Azure Data Explorer cluster. For more information, see [Create a Microsoft Entra app](provision-azure-ad-app.md). You need app ID, secret, and tenant ID to configure the Logstash pipeline.
 * Logstash version 6+ [Installation instructions](https://www.elastic.co/guide/en/logstash/current/installing-logstash.html).
 
 ## Pre-migration
@@ -71,7 +71,7 @@ To create a table schema and ingestion mapping in your cluster:
 
 When migrating data to your Azure Data Explorer cluster, it's important to properly set up a [Logstash pipeline](https://www.elastic.co/guide/en/logstash/current/configuration.html). The pipeline ensures that data is correctly formatted and transferred to the target table.
 
-If you need to move data from multiple Elasticsearch clusters or indices, you can create multiple input sections in the pipeline configuration file. To achieve this, you can define one input section for each Elasticsearch cluster or index and categorize them using tags if you wish. Then, you can use these tags in conditional statements in the output section to direct these data sets to specific Azure Data Explorer cluster tables
+If you need to move data from multiple Elasticsearch clusters or indices, you can create multiple input sections in the pipeline configuration file. To achieve this, you can define one input section for each Elasticsearch cluster or index and categorize them using tags if you wish. Then, you can use these tags in conditional statements in the output section to direct these datasets to specific Azure Data Explorer cluster tables
 
 To set up a Logstash pipeline:
 
@@ -244,7 +244,7 @@ The following are some examples of queries you can run to validate the data in y
 
 1. Compare the results from both sets of queries to ensure that the data in your cluster is accurate and complete.
 
-## Next steps
+## Related content
 
 ### To learn more about Azure Database Explorer, see:
 

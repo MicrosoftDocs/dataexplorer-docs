@@ -20,6 +20,8 @@ You must have at least Database User, Database Viewer, or Database Monitor to ru
 
 `.show` `functions`
 
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+
 ### Returns
 
 |Output parameter |Type |Description|
@@ -47,11 +49,13 @@ For a list of **all** functions, see [.show functions](#show-functions).
 
 `.show` `function` *FunctionName* [`with (`*PropertyName* `=` *PropertyValue* [`,` ...]`)`]
 
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+
 ### Parameters
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-|*FunctionName* | string | &check; | The name of stored function.|
+|*FunctionName* | string |  :heavy_check_mark: | The name of stored function.|
 |*PropertyName*/*PropertyValue*| string | | Indicate additional information to use when showing function details. All properties are optional. See [Supported properties](#supported-properties).|
 
 ### Supported properties

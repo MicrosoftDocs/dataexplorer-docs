@@ -3,11 +3,116 @@ title: What's new in Azure Data Explorer documentation archive
 description: In this article, you'll find an archive of new and significant changes in the Azure Data Explorer documentation
 ms.reviewer: orspodek
 ms.topic: reference
-ms.date: 07/06/2022
+ms.date: 11/08/2023
 ---
 # What's new in Azure Data Explorer documentation archive
 
 Welcome to what's new in Azure Data Explorer archive. This article is an archive of new and significantly updated content in the Azure Data Explorer documentation.
+
+## December 2022
+
+**General**
+
+| Article title | Description |
+|--|--|
+|[Find an Azure Data Explorer partner](find-my-partner.md) | New article. Describes the Azure Data Explorer Find My Partner Program.|
+|[Manage Azure Data Explorer cluster permissions](manage-cluster-permissions.md)| New article. Describes how to manage role-based access controls for clusters.|
+|[Ingestion behavior of invalid data](ingest-invalid-data.md) | New article. Describes the possible outcomes of ingesting invalid data|
+|[Use data from Azure Data Explorer in Power BI](power-bi-data-connector.md)| New article. Describes how to use data from Azure Data Explorer in Power BI.|
+| - [Ingest data from Azure Cosmos DB into Azure Data Explorer (Preview)](ingest-data-cosmos-db-connection.md) <br/> - [Get latest versions of Azure Cosmos DB documents (Preview)](ingest-data-cosmos-db-queries.md) | New articles. Describes how to load data and get the latest versions of Azure Cosmos DB documents.|
+|[Configure a database using a Kusto Query Language script](database-script.md)| Updated article. Database scripts supports `.add` verb.|
+
+## November 2022
+
+**Functions library**
+
+| Article title | Description |
+|--|--|
+|- [series_mv_ee_anomalies_fl()](kusto/functions-library/series-mv-ee-anomalies-fl.md)<br /> - [series_mv_if_anomalies_fl()](kusto/functions-library/series-mv-if-anomalies-fl.md)<br /> - [series_mv_oc_anomalies_fl()](kusto/functions-library/series-mv-oc-anomalies-fl.md) | New article. Describes multivariate anomalies in a series user-defined functions. |
+
+**Management**
+
+| Article title | Description |
+|--|--|
+|[.show function(s)](kusto/management/show-function.md) | Updated article. Added optional arguments and tables to `.show function`. |
+
+**Query**
+
+| Article title | Description |
+|--|--|
+|- [unicode_codepoints_from_string()](kusto/query/unicode-codepoints-from-string-function.md) <br/> - [unicode_codepoints_to_string()](kusto/query/unicode-codepoints-to-string-function.md) | Updated articles. Unicode codepoints conversion functions for strings. |
+|- [ipv6_is_in_any_range()](kusto/query/ipv6-is-in-any-range-function.md) <br/> - [ipv6_is_in_range()](kusto/query/ipv6-is-in-range-function.md) | New articles. Functions that check whether an IPv6 address is in a range.|
+|- [count_distinct() (aggregation function) - (preview)](kusto/query/count-distinct-aggregation-function.md) <br/> - [count_distinctif() (aggregation function) - (preview)](kusto/query/count-distinctif-aggregation-function.md) | New articles. Count unique values specified by the scalar expression per summary group. |
+|- [series_ceiling()](kusto/query/series-ceiling-function.md) <br/> - [series_floor()](kusto/query/series-floor-function.md) <br/> - [series_log()](kusto/query/series-log-function.md)| New articles. Calculate the element-wise functions of the numeric series input. |
+|- [bin_auto()](kusto/query/bin-auto-function.md) <br/> - [binary_shift_left()](kusto/query/binary-shift-left-function.md) <br/> - [binary_shift_right()](kusto/query/binary-shift-right-function.md) <br/> - [binary_xor()](kusto/query/binary-xor-function.md) <br/> - [bin_at()](kusto/query/bin-at-function.md) <br/> - [bin()](kusto/query/bin-function.md) <br/> - [bitset_count_ones()](kusto/query/bitset-count-ones-function.md) <br/> - [buildschema() (aggregation function)](kusto/query/buildschema-aggregation-function.md) <br/> - [case()](kusto/query/case-function.md) <br/> - [ceiling()](kusto/query/ceiling-function.md) <br/> - [cosmosdb_sql_request plugin](kusto/query/cosmosdb-plugin.md)| Updated articles. Added new tables and examples. |
+
+## October 2022
+
+**General**
+
+| Article title | Description |
+|--|--|
+|[Ingest data from OpenTelemetry](open-telemetry-connector.md)|New article. Describes how to create a connector to ingest data from OpenTelemetry.|
+|[Managed identities overview](managed-identities-overview.md)|Updated article. Added continuous export with Managed Identity.|
+
+## September 2022
+
+**API**
+
+| Article title | Description |
+|--|--|
+|[Kusto.Data exceptions](kusto/api/netfx/kusto-data-client-errors.md)|New article. Describes Kusto.Data exceptions.|
+|[Evaluate query performance in your cluster](kusto/api/load-test-cluster.md)|New article. Describes how to load test a cluster's query performance.|
+
+**General**
+
+| Article title | Description |
+|--|--|
+|[POC playbook: Big data analytics](proof-of-concept-playbook.md)|New article. Describes a high-level methodology for running an effective proof of concept (POC) project.|
+|[Azure Data Explorer web UI keyboard shortcuts](web-ui-query-keyboard-shortcuts.md)|New article. Describes query keyboard shortcuts in the web UI.|
+|[Optimize queries that use named expressions](named-expressions.md)|New article. Describes how to optimize repeat use of named expressions in a query.|
+|- [Kusto emulator overview](kusto-emulator-overview.md)<br/>- [Install the Kusto emulator](kusto-emulator-install.md)|New articles. Describes the Kusto emulator, how to install it, and run your first query.|
+
+## August 2022
+
+**General**
+
+| Article title | Description |
+|--|--|
+|- [Use the ingestion wizard to ingest JSON data](/azure/data-explorer/ingest-from-local-file) <br/>- [Web UI overview](./web-query-data.md)|Updated articles. Added references to ingestion wizard and updated UI.|
+
+**Management**
+
+| Article title | Description |
+|--|--|
+|[.cancel operation command](kusto/management/cancel-operation-command.md)| New article. Describes how to use the `.cancel operation` command.|
+|[How to authenticate with Microsoft Entra ID](kusto/access-control/how-to-authenticate-with-aad.md)| Updated article. Updated with Microsoft Authentication Library authentication.|
+|[.drop extents](kusto/management/drop-extents.md)| Updated article. Added examples to drop specific extents.|
+|[Queries management](kusto/management/queries.md)| Updated article. Added show by user command.
+|- [Ingest from storage](kusto/management/data-ingestion/ingest-from-storage.md)|Updated article. Added ingest from Amazon S3.
+|- [.create-or-alter function](kusto/management/create-alter-function.md)<br/>- [.create function](kusto/management/create-function.md)| New and updated article. Added new parameter for stored view.|
+
+## July 2022
+
+**General**
+
+| Article title | Description |
+|--|--|
+| [Upgrade a free cluster](start-for-free-upgrade.md) | New Article. Describes how to upgrade a free cluster to a full cluster without losing your data. |
+
+**Management**
+
+| Article title | Description |
+|--|--|
+| [.alter extent tags](kusto/management/alter-extent.md) | Updated article. Added documentation for `alter-merge` extent tags. |
+
+**Query**
+
+| Article title | Description |
+|--|--|
+| - [convert_angle](kusto/query/convert-angle-function.md) <br />- [convert_energy](kusto/query/convert-energy-function.md) <br />- [convert_force](kusto/query/convert-force-function.md) <br />- [convert_length](kusto/query/convert-length-function.md) <br />- [convert_mass](kusto/query/convert-mass-function.md) <br />- [convert_speed](kusto/query/convert-speed-function.md) <br />- [convert_temperature](kusto/query/convert-temperature-function.md) <br />- [convert_volume](kusto/query/convert-volume-function.md) | New articles. New functions for converting values. |
+| [parse-kv operator](kusto/query/parse-kv-operator.md) | New Article. Describes how to extract structured information from a string in key/value form. |
+|- [Scalar function types at a glance](kusto/query/scalar-functions.md) <br />- [arg_max() (aggregation function)](kusto/query/arg-max-aggregation-function.md) <br />- [arg_min() (aggregation function)](kusto/query/arg-min-aggregation-function.md) <br />- [avg() (aggregation function)](kusto/query/avg-aggregation-function.md) <br />- [max() (aggregation function)](kusto/query/max-aggregation-function.md) <br />- [min() (aggregation function)](kusto/query/min-aggregation-function.md) <br />- [sum() (aggregation function)](kusto/query/sum-aggregation-function.md) | Updated articles. Added new examples. |
 
 ## June 2022
 
@@ -38,8 +143,8 @@ Welcome to what's new in Azure Data Explorer archive. This article is an archive
 
 | Article title | Description |
 |--|--|
-| [Streaming ingestion failures](kusto/management/streamingingestionfailures.md) | New article. Describes the command to show streaming ingestion failures. |
-| [Streaming ingestion statistics](kusto/management/streamingingestionstatistics.md) | New article. Describes the command to show streaming ingestion statistics. |
+| [Streaming ingestion failures](kusto/management/streaming-ingestion-failures.md) | New article. Describes the command to show streaming ingestion failures. |
+| [Streaming ingestion statistics](kusto/management/streaming-ingestion-statistics.md) | New article. Describes the command to show streaming ingestion statistics. |
 
 ## March 2022
 
@@ -145,7 +250,7 @@ Welcome to what's new in Azure Data Explorer archive. This article is an archive
 | Article title | Description |
 |--|--|
 | [Role-based access control in Kusto](kusto/access-control/role-based-access-control.md) | Updated article. Materialized views rename source table.
-| [Cache policy (hot and cold cache)](kusto/management/cachepolicy.md) | Updated article. Caching with long storage.
+| [Cache policy (hot and cold cache)](kusto/management/cache-policy.md) | Updated article. Caching with long storage.
 | [Role-based access control in Kusto](kusto/access-control/role-based-access-control.md)| Updated article. Using the AllDatabasesMonitor role.
 
 ## September 2021
@@ -165,7 +270,7 @@ Welcome to what's new in Azure Data Explorer archive. This article is an archive
 
 | Article title | Description |
 |--|--|
-| [Use wizard for ingestion with LightIngest (preview)](generate-lightingest-command.md) | New article. Learn how to use a wizard for one-time ingestion of historical data with LightIngest.
+| [Use wizard for ingestion with LightIngest (preview)](ingest-data-historical.md) | New article. Learn how to use a wizard for one-time ingestion of historical data with LightIngest.
 | [Use one-click ingestion to create an event hub data connection](./event-hub-wizard.md)| Updated article. One click event hub experience.
 | [Use LightIngest to ingest data into Azure Data Explorer](lightingest.md)| Updated article. Generate LightIngest commands - one click experience.
 
@@ -173,9 +278,9 @@ Welcome to what's new in Azure Data Explorer archive. This article is an archive
 
 | Article title | Description |
 |--|--|
-| [series_pow()](kusto/query/series-powfunction.md)| New article. Calculates the element-wise power of two numeric series inputs.
+| [series_pow()](kusto/query/series-pow-function.md)| New article. Calculates the element-wise power of two numeric series inputs.
 | [Aggregation function types at a glance](kusto/query/aggregation-functions.md) | New article. Lists aggregation functions, which perform a calculation on a set of values and return a single value.
-| [Scalar function types at a glance](kusto/query/scalarfunctions.md) | Updated article. Updated aggregation function and added series_pow.
+| [Scalar function types at a glance](kusto/query/scalar-functions.md) | Updated article. Updated aggregation function and added series_pow.
 | [materialized_view() function](kusto/query/materialized-view-function.md) | Updated article. Updated aggregation function.
 
 **Management**
@@ -212,8 +317,8 @@ Welcome to what's new in Azure Data Explorer archive. This article is an archive
 | Article title | Description |
 |--|--|
 | [replace_string()](kusto/query/replace-string-function.md)| New article. Replaces all string matches with another string.
-| [take_any() (aggregation function)](kusto/query/take-any-aggfunction.md) | New article. Replaces any().
-| [take_anyif() (aggregation function)](kusto/query/take-anyif-aggfunction.md) | New article. Replaces anyif().
+| [take_any() (aggregation function)](kusto/query/take-any-aggregation-function.md) | New article. Replaces any().
+| [take_anyif() (aggregation function)](kusto/query/take-anyif-aggregation-function.md) | New article. Replaces anyif().
 | [replace_regex()](kusto/query/replace-regex-function.md) | Updated article. Replace() function changed to replace_regex().
 
 **Management**
@@ -222,7 +327,7 @@ Welcome to what's new in Azure Data Explorer archive. This article is an archive
 |--|--|
 | [.alter extent tags retention policy](kusto/management/alter-extent-tags-retention-policy.md) | New article.
 | [.delete extent tags retention policy](kusto/management/delete-extent-tags-retention-policy.md) | New article.
-| [Extent tags retention policy](kusto/management/extent-tags-retention-policy.md) | New article. The extent tags retention policy controls the mechanism that automatically removes [extent tags](kusto/management/extents-overview.md#extent-tagging) from tables, based on the age of the extents.
+| [Extent tags retention policy](kusto/management/extent-tags-retention-policy.md) | New article. The extent tags retention policy controls the mechanism that automatically removes [extent tags](kusto/management/extent-tags.md) from tables, based on the age of the extents.
 | [.show extent tags retention policy](kusto/management/show-extent-tags-retention-policy.md) | New article.
 | [Stored query results](kusto/management/stored-query-results.md) | Updated article. General Availability.
 
@@ -250,7 +355,7 @@ Welcome to what's new in Azure Data Explorer archive. This article is an archive
 
 | Article title | Description |
 |--|--|
-| [IngestionBatching policy](kusto/management/batchingpolicy.md) | Updated article. Document batching types
+| [IngestionBatching policy](kusto/management/batching-policy.md) | Updated article. Document batching types
 
 ## May 2021
 
@@ -328,7 +433,7 @@ Article title | Description
 [ipv4_is_in_range()](kusto/query/ipv4-is-in-range-function.md) | New article. Checks if IPv4 string address is in IPv4-prefix notation range.
 [ipv4_netmask_suffix()](kusto/query/ipv4-netmask-suffix-function.md) | New article. Returns the value of the IPv4 netmask suffix from IPv4 string address.
 [has_all operator](kusto/query/has-all-operator.md) | New article. `has_all` operator filters based on the provided set of values (all values must be present).
-[row_rank()](./kusto/query/rowrankdensefunction.md) | New article. Returns the current row's rank in a [serialized row set](kusto/query/windowsfunctions.md#serialized-row-set).
+[row_rank()](./kusto/query/row-rank-dense-function.md) | New article. Returns the current row's rank in a [serialized row set](kusto/query/window-functions.md#serialized-row-set).
 | [Null Values](kusto/query/scalar-data-types/null-values.md) | Updated article. New behavior in Engine V3.
 | [String operators](kusto/query/datatypes-string-operators.md) | Updated article. String term indexing for Engine V3.
 
@@ -408,9 +513,9 @@ Article title | Description
 
 Article title | Description
 ---|---
-[mysql_request plugin (Preview)](kusto/query/mysqlrequest-plugin.md) | New article. The `mysql_request` plugin sends a SQL query to a MySQL Server network endpoint and returns the first rowset in the results.
+[mysql_request plugin (Preview)](kusto/query/mysql-request-plugin.md) | New article. The `mysql_request` plugin sends a SQL query to a MySQL Server network endpoint and returns the first rowset in the results.
 [ipv4_lookup plugin](kusto/query/ipv4-lookup-plugin.md) | New article. The `ipv4_lookup` plugin looks up an IPv4 value in a lookup table and returns rows with matched values.
-[ipv4_is_private()](kusto/query/ipv4-is-privatefunction.md) | New article. Checks if IPv4 string address belongs to a set of private network IPs.
+[ipv4_is_private()](kusto/query/ipv4-is-private-function.md) | New article. Checks if IPv4 string address belongs to a set of private network IPs.
 [Splunk to Kusto Query Language map](kusto/query/splunk-cheat-sheet.md) | New article. This article is intended to assist users who are familiar with Splunk learn the Kusto Query Language to write log queries with Kusto.
 [gzip_compress_to_base64_string()](kusto/query/gzip-base64-compress.md) | New article. Performs gzip compression and encodes the result to base64.
 [gzip_decompress_from_base64_string()](kusto/query/gzip-base64-decompress.md) | New article. Decodes the input string from base64 and performs gzip decompression.

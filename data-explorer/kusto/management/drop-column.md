@@ -27,12 +27,14 @@ You must have at least [Table Admin](access-control/role-based-access-control.md
 
 `.drop` `column` *TableName*`.`*ColumnName* [`ifexists`]
 
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+
 ## Parameters
 
 |Name|Type|Required|Description|
 |--|--|--|--|
-|*TableName*|string|&check;|The name of the table containing the column to drop.|
-|*ColumnName*|string|&check;|The name of the column to drop.|
+|*TableName*|string| :heavy_check_mark:|The name of the table containing the column to drop.|
+|*ColumnName*|string| :heavy_check_mark:|The name of the column to drop.|
 |`ifexists`|string||If specified, the command won't fail on a non-existent column.|
 
 ## Example
@@ -59,12 +61,14 @@ Removes multiple columns from a table.
 
 `.drop` `table` *TableName* `columns` `(` *ColumnName* [`,` ...] `)`
 
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+
 ### Parameters
 
 |Name|Type|Required|Description|
 |--|--|--|--|
-|*TableName*|string|&check;|The name of the table containing the column to drop.|
-|*ColumnName*|string|&check;|The name of the column to drop.|
+|*TableName*|string| :heavy_check_mark:|The name of the table containing the column to drop.|
+|*ColumnName*|string| :heavy_check_mark:|The name of the column to drop.|
 
 ### Example
 

@@ -15,12 +15,14 @@ Read more about [geohash](https://en.wikipedia.org/wiki/Geohash).
 
 `geo_point_to_geohash(`*longitude*`,` *latitude*`,`[ *accuracy* ]`)`
 
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+
 ## Parameters
 
 |Name|Type|Required|Description|
 |--|--|--|--|
-| *longitude* | real | &check; | Geospatial coordinate, longitude value in degrees. Valid value is a real number and in the range [-180, +180].|
-| *latitude* | real | &check; | Geospatial coordinate, latitude value in degrees. Valid value is a real number and in the range [-90, +90].|
+| *longitude* | real |  :heavy_check_mark: | Geospatial coordinate, longitude value in degrees. Valid value is a real number and in the range [-180, +180].|
+| *latitude* | real |  :heavy_check_mark: | Geospatial coordinate, latitude value in degrees. Valid value is a real number and in the range [-90, +90].|
 | *accuracy* | int | | Defines the requested accuracy. Supported values are in the range [1, 18]. If unspecified, the default value `5` is used.|
 
 ## Returns
@@ -67,7 +69,7 @@ For comparison with other available grid systems, see [geospatial clustering wit
 
 US storm events aggregated by geohash.
 
-:::image type="content" source="images/geo-point-to-geohash-function/geohash.png" alt-text="US geohash.":::
+:::image type="content" source="media/geo-point-to-geohash-function/geohash.png" alt-text="US geohash.":::
 
 ```kusto
 StormEvents

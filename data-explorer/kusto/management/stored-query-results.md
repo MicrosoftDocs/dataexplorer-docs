@@ -24,10 +24,6 @@ Stored query results behave like tables, in that the order of records isn't pres
 > * When you have more than 500 columns, an error is raised and the results aren't stored.
 > * Query results are stored in a storage account associated with the cluster; the data is not cached in local SSD storage.
 
-## Prerequisites
-
-* [EngineV3](../../engine-v3.md)
-
 ## Permissions
 
 You must have at least Database User, Database Viewer, or Database Monitor permissions to run these commands. For more information, see [role-based access control](access-control/role-based-access-control.md).
@@ -38,14 +34,16 @@ You must have at least Database User, Database Viewer, or Database Monitor permi
 
 `.set-or-replace` [`async`] `stored_query_result` *StoredQueryResultName* [`with` `(`*PropertyName* `=` *PropertyValue* [`,` ...]`)`] `<|` *Query*
 
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+
 ## Parameters
 
 |Name|Type|Required|Description|
 |--|--|--|--|
 | `async` | string | | If specified, the command will return and continue ingestion in the background. Use the returned `OperationId` with the `.show operations` command to retrieve the ingestion completion status and results. |
-| *StoredQueryResultName* | string | &check; | Stored query result name that adheres to [entity names](../query/schema-entities/entity-names.md) rules.|
+| *StoredQueryResultName* | string |  :heavy_check_mark: | Stored query result name that adheres to [entity names](../query/schema-entities/entity-names.md) rules.|
 | *PropertyName*, *PropertyValue* | string |  | One or more [supported properties](#supported-properties). |
-| *Query* | string | &check; | The text of a query whose results will be stored.|
+| *Query* | string |  :heavy_check_mark: | The text of a query whose results will be stored.|
 
 > [!NOTE]
 > If the *StoredQueryResultName* exists, `.set` will fail with an error. In contrast, `.set-or-replace` will delete the existing stored-query-result if it exists and then create a new one with the same name.
@@ -56,7 +54,6 @@ You must have at least Database User, Database Viewer, or Database Monitor permi
 |--|--|--|
 | `expiresAfter` | timespan | Determines when the stored query result will expire. Maximum is 24 hours. |
 | `previewCount` | int | The number of rows to return in a preview. Setting this property to `0` (default) makes the command return all the query result rows. The property is ignored when the command is invoked using `async` mode. |
-| `distributed`  | bool | If `true`, the command will ingest from all nodes executing the query in parallel. Default is `true`. Set the flag to `false` when the amount of data produced by a query is small, or the number of cluster nodes is large, to prevent creating many small data shards. |
 
 ## Returns
 
@@ -156,6 +153,8 @@ Shows information on active stored query results.
 
 `.show` `stored_query_results`
 
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+
 #### Returns
 
 | StoredQueryResultId | Name | DatabaseName | PrincipalIdentity | SizeInBytes | RowCount | CreatedOn | ExpiresOn |
@@ -172,6 +171,8 @@ Shows schema of active stored query result.
 
 `Database Viewer` permission is required for invoking this command.
 
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+
 #### Returns
 
 | StoredQueryResult | Schema |
@@ -187,6 +188,8 @@ Deletes an active stored query result created in the current database by the cur
 `.drop` `stored_query_result` *storedQueryResultName*
 
 `Database Viewer` permission is required for invoking this command.
+
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
 
 #### Returns
 
@@ -205,6 +208,8 @@ Deletes active stored query results created in the current database by the speci
 #### Syntax
 
 `.drop` `stored_query_results` `by user` *PrincipalName*
+
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
 
 #### Returns
 

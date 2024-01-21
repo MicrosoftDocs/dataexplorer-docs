@@ -3,7 +3,7 @@ title:  datetime_utc_to_local()
 description: This article describes the datetime_utc_to_local function in Azure Data Explorer.
 ms.reviewer: elgevork
 ms.topic: reference
-ms.date: 07/12/2022
+ms.date: 07/27/2023
 ---
 # datetime_utc_to_local()
 
@@ -13,12 +13,14 @@ Converts UTC [datetime](./scalar-data-types/datetime.md) to local datetime using
 
 `datetime_utc_to_local(`*from*`,`*timezone*`)`
 
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+
 ## Parameters
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-| *from* | datetime | &check; | The UTC datetime to convert.|
-| *timezone* | string | &check; | The timezone to convert to. This value must be one of the supported [timezones](timezone.md).|
+| *from* | datetime |  :heavy_check_mark: | The UTC datetime to convert.|
+| *timezone* | string |  :heavy_check_mark: | The timezone to convert to. This value must be one of the supported [timezones](timezone.md).|
 
 ## Returns
 
@@ -41,7 +43,8 @@ print dt=now()
 |---|---|---|---|
 |2022-07-11 22:18:48.4678620|2022-07-11 15:18:48.4678620|2022-07-12 08:18:48.4678620|-17:00:00|
 
-## See also
+## Related content
 
-* To convert a datetime from local to UTC, see [datetime_local_to_utc()](datetime-local-to-utc-function.md).
+* To convert a datetime from local to UTC, see [datetime_local_to_utc()](datetime-local-to-utc-function.md)
 * [Timezones](timezone.md)
+* [format_datetime()](format-datetime-function.md)

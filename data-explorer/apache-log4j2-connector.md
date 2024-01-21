@@ -7,9 +7,9 @@ ms.reviewer: ramacg
 ---
 # Ingest data with the Apache log4J 2 connector
 
-Log4J is a popular logging framework for Java applications maintained by the Apache Foundation. Log4J allows developers to control which log statements are output with arbitrary granularity based on the logger's name, logger level, and message pattern. [Apache Log4J 2](https://logging.apache.org/log4j/2.x/) is an upgrade to Log4J, with significant improvements over the preceding Log4j 1.x. Log4J 2 provides many of the improvements available in Logback, while fixing some inherent problems in Logback's architecture. The Apache log4J 2 sink, also known as an appender, for Azure Data Explorer streams your log data to Azure Data Explorer, where you can analyze and visualize your logs in real time.
+[!INCLUDE [real-time-analytics-connectors-note](includes/real-time-analytics-connectors-note.md)]
 
-In this article, you'll learn how to:
+Log4J is a popular logging framework for Java applications maintained by the Apache Foundation. Log4J allows developers to control which log statements are output with arbitrary granularity based on the logger's name, logger level, and message pattern. [Apache Log4J 2](https://logging.apache.org/log4j/2.x/) is an upgrade to Log4J, with significant improvements over the preceding Log4j 1.x. Log4J 2 provides many of the improvements available in Logback, while fixing some inherent problems in Logback's architecture. The Apache log4J 2 sink, also known as an appender, for Azure Data Explorer streams your log data to Azure Data Explorer, where you can analyze and visualize your logs in real time.
 
 For a complete list of data connectors, see [Data connectors overview](connector-overview.md).
 
@@ -39,17 +39,21 @@ To use the sink in an application, add the following dependencies to your *pom.x
 </dependency>
 ```
 
-### Create an Azure AD App registration
+<a name='create-an-azure-ad-app-registration'></a>
 
-Azure Active Directory (Azure AD) application authentication is used for applications that need to access Azure Data Explorer without a user present. To ingest data using the log4J 2 connector, you need to create and register an Azure AD service principal, and then authorize this principal to ingest data an Azure Data Explorer database.
+### Create a Microsoft Entra App registration
 
-1. Using your Azure Data Explorer cluster, follow steps 1-7 in [Create an Azure Active Directory application registration in Azure Data Explorer](provision-azure-ad-app.md).
+Microsoft Entra application authentication is used for applications that need to access Azure Data Explorer without a user present. To ingest data using the log4J 2 connector, you need to create and register a Microsoft Entra service principal, and then authorize this principal to ingest data an Azure Data Explorer database.
+
+1. Using your Azure Data Explorer cluster, follow steps 1-7 in [Create a Microsoft Entra application registration in Azure Data Explorer](provision-azure-ad-app.md).
 1. Save the following values to be used in later steps:
     * Application (client) ID
     * Directory (tenant) ID
     * Client secret key value
 
-### Grant the Azure AD app permissions
+<a name='grant-the-azure-ad-app-permissions'></a>
+
+### Grant the Microsoft Entra app permissions
 
 1. In the query tab of the [web UI](https://dataexplorer.azure.com/), connect to your cluster. For more information on how to connect, see [Add clusters](web-query-data.md#add-clusters).
 1. Browse to the database in which you want to ingest data.
@@ -117,9 +121,9 @@ Use the following steps to:
     | *clusterIngestUrl* | The ingest URI for your cluster in the format *https://ingest-\<cluster>.\<region>.kusto.windows.net*. |
     | *dbName* | The case-sensitive name of the target database. |
     | *tableName* | The case-sensitive name of an existing target table. For example, **Log4j 2Test** is the name of the table created in [Create a table and ingestion mapping](#create-a-table-and-ingestion-mapping). |
-    | *appId* | The application client ID required for authentication. You saved this value in [Create an Azure AD App registration](#create-an-azure-ad-app-registration). |
-    | *appKey* | The application key required for authentication. You saved this value in [Create an Azure AD App registration](#create-an-azure-ad-app-registration). |
-    | *appTenant* | The ID of the tenant in which the application is registered. You saved this value in [Create an Azure AD App registration](#create-an-azure-ad-app-registration). |
+    | *appId* | The application client ID required for authentication. You saved this value in [Create a Microsoft Entra App registration](#create-an-azure-ad-app-registration). |
+    | *appKey* | The application key required for authentication. You saved this value in [Create a Microsoft Entra App registration](#create-an-azure-ad-app-registration). |
+    | *appTenant* | The ID of the tenant in which the application is registered. You saved this value in [Create a Microsoft Entra App registration](#create-an-azure-ad-app-registration). |
     | *logTableMapping* | The name of the mapping. |
     | *mappingType* | The type of mapping to use. The default is *csv*. |
     | *flushImmediately* | If set to *true*, the sink flushes the buffer after each log event. The default is *false*. |
@@ -211,7 +215,7 @@ Use the following steps to:
 
     :::image type="content" lightbox="media/apache-log4j2-connector/take-10-results.png" source="media/apache-log4j2-connector/take-10-results.png" alt-text="Screenshot of table with take 10 function and results.":::
 
-## See also
+## Related content
 
 * [Data connectors overview](connector-overview.md)
 * [Kusto Query Language (KQL) overview](kusto/query/index.md)

@@ -9,20 +9,22 @@ zone_pivot_groups: kql-flavors-all
 ---
 # Area chart
 
-The area chart visual shows a time-series relationship. The first column of the query should be numeric and is used as the x-axis. Other numeric columns are the y-axes. Unlike line charts, area charts also visually represent volume. Area charts are ideal for indicating the change among different data sets.
+The area chart visual shows a time-series relationship. The first column of the query should be numeric and is used as the x-axis. Other numeric columns are the y-axes. Unlike line charts, area charts also visually represent volume. Area charts are ideal for indicating the change among different datasets.
 
 > [!NOTE]
-> This visualization can only be used in the context of the [render operator](renderoperator.md).
+> This visualization can only be used in the context of the [render operator](render-operator.md).
 
 ## Syntax
 
 *T* `|` `render` `areachart` [`with` `(`*propertyName* `=` *propertyValue* [`,` ...]`)`]
 
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+
 ## Parameters
 
 | Name | Type | Required | Description |
 | -- | -- | -- | -- |
-| *T* | string | &check; | Input table name.
+| *T* | string |  :heavy_check_mark: | Input table name.
 | *propertyName*, *propertyValue* | string | | A comma-separated list of key-value property pairs. See [supported properties](#supported-properties).|
 
 ::: zone pivot="azuredataexplorer, fabric"
@@ -51,7 +53,7 @@ All properties are optional.
 
 ::: zone pivot="azuremonitor"
 
-### Properties 
+### Supported properties
 
 All properties are optional.
 
@@ -85,4 +87,4 @@ demo_series3
 | render areachart
 ```
 
-:::image type="content" source="images/visualization-areachart/area-chart.png" alt-text="Screenshot of area chart visualization." lightbox="images/visualization-areachart/area-chart.png":::
+:::image type="content" source="media/visualization-areachart/area-chart.png" alt-text="Screenshot of area chart visualization." lightbox="media/visualization-areachart/area-chart.png":::

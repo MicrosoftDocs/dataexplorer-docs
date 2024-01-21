@@ -17,17 +17,19 @@ The `http_request_post` plugin sends an HTTP POST request and converts the respo
 ## Prerequisites
 
 * Run `.enable plugin http_request_post` to [enable the plugin](../management/enable-plugin.md)
-* Set the URI to access as an allowed destination for `webapi` in the [Callout policy](../management/calloutpolicy.md)
+* Set the URI to access as an allowed destination for `webapi` in the [Callout policy](../management/callout-policy.md)
 
 ## Syntax
 
 `evaluate` `http_request_post` `(` *Uri* [`,` *RequestHeaders* [`,` *Options* [`,` *Content*]]] `)`
 
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+
 ## Parameters
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-| *Uri* | string | &check; | The destination URI for the HTTP or HTTPS request. |
+| *Uri* | string |  :heavy_check_mark: | The destination URI for the HTTP or HTTPS request. |
 | *RequestHeaders* | dynamic |  | A property bag containing [HTTP headers](#headers) to send with the request. |
 | *Options* | dynamic |  | A property bag containing additional properties of the request. |
 | *Content* | string |  | The body content to send with the request. The content is encoded in `UTF-8` and the media type for the `Content-Type` attribute is `application/json`. |
@@ -76,7 +78,7 @@ custom headers:
 
 ## Example
 
-The following example is for a hypothetical HTTPS web service that accepts additional request headers and must be authenticated to using Azure AD:
+The following example is for a hypothetical HTTPS web service that accepts additional request headers and must be authenticated to using Microsoft Entra ID:
 
 <!-- csl -->
 ```kusto

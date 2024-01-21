@@ -16,7 +16,7 @@ In this article, you'll start with a new Power BI project and use the sample dat
 
 You need the following to complete this article:
 
-* A Microsoft account or an Azure Active Directory user identity to sign in to the [help cluster](https://dataexplorer.azure.com/clusters/help/databases/Samples).
+* A Microsoft account or a Microsoft Entra user identity to sign in to the [help cluster](https://dataexplorer.azure.com/clusters/help/databases/Samples).
 * [Power BI Desktop](https://powerbi.microsoft.com/get-started/) (select **DOWNLOAD FREE**)
 * [Enabling Dynamic M query parameters](/power-bi/connect-data/desktop-dynamic-m-query-parameters#enabling-dynamic-m-query-parameters)
 
@@ -49,13 +49,13 @@ First, set up a connector for Power BI.
     >
     > Use **Import** mode when:
     >
-    > * Your data set is small.
+    > * Your dataset is small.
     > * You don't need near real-time data.
     > * Your data is already aggregated or you perform [aggregation in Kusto](./kusto/query/aggregation-functions.md)
     >
     > Use **DirectQuery** mode when:
     >
-    > * Your data set is very large.
+    > * Your dataset is very large.
     > * You need near real-time data.
 
     **Advanced options**
@@ -65,7 +65,7 @@ First, set up a connector for Power BI.
     | Limit query result record number| `300000` | The maximum number of records to return in the result |
     | Limit query result data size | `4194304` | The maximum data size in bytes to return in the result |
     | Disable result set truncation | `true` | Enable/disable result truncation by using the notruncation request option |
-    | Additional set statements | `set query_datascope=hotcache` | Sets query options for the duration of the query. Query options control how a query executes and returns results. |
+    | Additional set statements | `set query_datascope=hotcache` | Sets request properties for the duration of the query. Request properties control how a query executes and returns results. |
 
 1. If you don't already have a connection to the help cluster, sign in. Sign in with an organizational account, then select **Connect**.
 
@@ -251,6 +251,6 @@ There are some considerations and limitations to consider when using dynamic M q
 
 If you no longer need the report you created for this article, delete the Power BI Desktop (.pbix) file.
 
-## Next steps
+## Related content
 
-[Tips for using the Azure Data Explorer connector for Power BI to query data](power-bi-best-practices.md#tips-for-using-the-azure-data-explorer-connector-for-power-bi-to-query-data)
+* [Tips for using the Azure Data Explorer connector for Power BI to query data](power-bi-best-practices.md#tips-for-using-the-azure-data-explorer-connector-for-power-bi-to-query-data)

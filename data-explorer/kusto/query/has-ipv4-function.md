@@ -18,12 +18,14 @@ IP address entrances in a text must be properly delimited with non-alphanumeric 
 
 `has_ipv4(`*source* `,` *ip_address* `)`
 
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+
 ## Parameters
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-| *source* | string | &check; | The text to search.|
-| *ip_address* | string | &check; | The value containing the IP address for which to search.|
+| *source* | string |  :heavy_check_mark: | The text to search.|
+| *ip_address* | string |  :heavy_check_mark: | The value containing the IP address for which to search.|
 
 ## Returns
 

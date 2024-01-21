@@ -9,18 +9,17 @@ zone_pivot_groups: kql-flavors-all
 ---
 # series_fbprophet_forecast_fl()
 
-::: zone pivot="azuredataexplorer"
+::: zone pivot="azuredataexplorer, fabric"
 
 The function `series_fbprophet_forecast_fl()` is a [user-defined function (UDF)](../query/functions/user-defined-functions.md) that takes an expression containing a time series as input, and predicts the values of the last trailing points using the [Prophet algorithm](https://facebook.github.io/prophet/). The function returns both the forecasted points and their confidence intervals. This function is a Kusto Query Language (KQL) wrapper to Prophet() class, and exposes only the parameters that are mandatory for prediction. Feel free to modify your copy to support more parameters. such as holidays, change points, Fourier order, and so on.
 
 > [!NOTE]
-> Consider using the native function [series_decompose_forecast()](../query/series-decompose-forecastfunction.md). The native function is based on a simpler model, but is more scalable and runs faster.
+> Consider using the native function [series_decompose_forecast()](../query/series-decompose-forecast-function.md). The native function is based on a simpler model, but is more scalable and runs faster.
 
-## Prerequisites
+[!INCLUDE [python-zone-pivot-fabric](../../includes/python-zone-pivot-fabric.md)]
 
-* The Python plugin must be [enabled on the cluster](../query/pythonplugin.md#enable-the-plugin). This is required for the inline Python used in the function.
 * Install the `fbprophet` package since it isn't included in the Python image. To install the package, do the following:
-  1. Follow the guidelines for [Installing packages for the Python plugin](../query/pythonplugin.md#install-packages-for-the-python-plugin).
+  1. Follow the guidelines for [Installing packages for the Python plugin](../query/python-plugin.md#install-packages-for-the-python-plugin).
      * To save time in the above guidelines, you can download the `fbprophet` zip file, containing the wheel files of `fbprophet` and its dependencies, from [https://artifcatswestus.blob.core.windows.net/public/fbprophet-0.7.1.zip](https://artifcatswestus.blob.core.windows.net/public/fbprophet-0.7.1.zip). Save this file to your allowlisted blob container.
   1. Create a SAS token with read access to your zip file. To create a SAS token, see [get the SAS for a blob container](/azure/vs-azure-tools-storage-explorer-blobs#get-the-sas-for-a-blob-container).
   1. In the [Example](#example), replace the URL reference in the `external_artifacts` parameter with your file path and its SAS token.
@@ -28,15 +27,17 @@ The function `series_fbprophet_forecast_fl()` is a [user-defined function (UDF)]
 ## Syntax
 
 `T | invoke series_fbprophet_forecast_fl(`*ts_series*`,` *y_series*`,` *y_pred_series*`,` [ *points* ]`,` [ *y_pred_low_series* ]`,` [ *y_pred_high_series* ]`)`
+
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
   
 ## Parameters
 
 |Name|Type|Required|Description|
 |--|--|--|--|
-|*ts_series*|string|&check;|The name of the input table column containing the time stamps of the series to predict.|
-|*y_series*|string|&check;|The name of the input table column containing the values of the series to predict.|
-|*y_pred_series*|string|&check;|The name of the column to store the predicted series.|
-|*points*|int|&check;|The number of points at the end of the series to predict (forecast). These points are excluded from the learning (regression) process. The default is 0.|
+|*ts_series*|string| :heavy_check_mark:|The name of the input table column containing the time stamps of the series to predict.|
+|*y_series*|string| :heavy_check_mark:|The name of the input table column containing the values of the series to predict.|
+|*y_pred_series*|string| :heavy_check_mark:|The name of the column to store the predicted series.|
+|*points*|int| :heavy_check_mark:|The number of points at the end of the series to predict (forecast). These points are excluded from the learning (regression) process. The default is 0.|
 |*y_pred_low_series*|string||The name of the column to store the series of the lowest values of the confidence interval. Omit if the confidence interval isn't needed.|
 |*y_pred_high_series*|string||The name of the column to store the series of the highest values of the confidence interval. Omit if the confidence interval isn't needed.|
 
@@ -46,10 +47,10 @@ You can define the function by either embedding its code as a query-defined func
 
 ### [Query-defined](#tab/query-defined)
 
-Define the function using the following [let statement](../query/letstatement.md). No permissions are required.
+Define the function using the following [let statement](../query/let-statement.md). No permissions are required.
 
 > [!IMPORTANT]
-> A [let statement](../query/letstatement.md) can't run on its own. It must be followed by a [tabular expression statement](../query/tabularexpressionstatements.md). To run a working example of `series_fbprophet_forecast_fl()`, see [Example](#example).
+> A [let statement](../query/let-statement.md) can't run on its own. It must be followed by a [tabular expression statement](../query/tabular-expression-statements.md). To run a working example of `series_fbprophet_forecast_fl()`, see [Example](#example).
 
 ~~~kusto
 let series_fbprophet_forecast_fl=(tbl:(*), ts_series:string, y_series:string, y_pred_series:string, points:int=0, y_pred_low_series:string='', y_pred_high_series:string='')
@@ -164,7 +165,7 @@ series_fbprophet_forecast_fl(tbl:(*), ts_series:string, y_series:string, y_pred_
 
 ## Example
 
-The following example uses the [invoke operator](../query/invokeoperator.md) to run the function.
+The following example uses the [invoke operator](../query/invoke-operator.md) to run the function.
 
 ### [Query-defined](#tab/query-defined)
 
@@ -258,11 +259,11 @@ demo_make_series2
 
 **Output**
 
-:::image type="content" source="images/series-fbprophet-forecast-fl/fbprophet-example.png" alt-text="Graph showing forecasting few time series." border="false":::
+:::image type="content" source="media/series-fbprophet-forecast-fl/fbprophet-example.png" alt-text="Graph showing forecasting few time series." border="false":::
 
 ::: zone-end
 
-::: zone pivot="azuremonitor, fabric"
+::: zone pivot="azuremonitor"
 
 This feature isn't supported.
 

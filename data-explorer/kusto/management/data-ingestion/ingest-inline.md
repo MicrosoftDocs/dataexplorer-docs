@@ -3,19 +3,13 @@ title:  The ingest inline command (push)
 description: This article describes the .ingest inline command (push).
 ms.reviewer: orspodek
 ms.topic: reference
-ms.date: 05/09/2023
+ms.date: 07/12/2023
 ---
 # .ingest inline command (push)
 
-This command ingests data into a table by "pushing" the data
-that is embedded inline, in the command text itself.
+This command inserts data into a table by pushing the data included within the command to the table.
 
-> [!NOTE]
-> This command is intended for manual ad-hoc testing.
-> For production use, we recommended that you use other ingestion methods
-> that are better for bulk delivery of huge amounts of data,
-> such as [ingest from storage](ingest-from-storage.md)
-> or [ingest from query](ingest-from-query.md).
+[!INCLUDE [direct-ingestion-note](../../../includes/direct-ingestion-note.md)]
 
 ## Permissions
 
@@ -27,12 +21,18 @@ You must have at least [Table Ingestor](../access-control/role-based-access-cont
 [`with` `(` *IngestionPropertyName* `=` *IngestionPropertyValue* [`,` ...] `)`]
 `<|` *Data*
 
+`.ingest` `inline` `into` `table` *TableName*
+[`with` `(` *IngestionPropertyName* `=` *IngestionPropertyValue* [`,` ...] `)`]
+`[` *Data* `]`
+
+[!INCLUDE [syntax-conventions-note](../../../includes/syntax-conventions-note.md)]
+
 ## Parameters
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-| *TableName* | string | &check; | The name of the table into which to ingest data. The table name is always relative to the database in context, and its schema is the schema that will be assumed for the data if no schema mapping object is provided.|
-| *Data* | string | &check; | The data content to ingest. Unless otherwise modified by the ingestion properties, this content is parsed as CSV.|
+| *TableName* | string |  :heavy_check_mark: | The name of the table into which to ingest data. The table name is always relative to the database in context, and its schema is the schema that will be assumed for the data if no schema mapping object is provided.|
+| *Data* | string |  :heavy_check_mark: | The data content to ingest. Unless otherwise modified by the ingestion properties, this content is parsed as CSV.|
 | *IngestionPropertyName*, *IngestionPropertyValue* | string | | Any number of [ingestion properties](../../../ingestion-properties.md) that affect the ingestion process.|
 
 > [!NOTE]
@@ -51,24 +51,29 @@ with an empty (zero-valued) extent ID.
 
 ## Examples
 
-The following command ingests data into a table (`Purchases`) with two
-columns, `SKU` (of type `string`) and `Quantity` (of type `long`).
+### Ingest with `<|` syntax
+
+The following command ingests data into a table `Purchases` with two columns: `SKU` (of type `string`) and `Quantity` (of type `long`).
 
 ```kusto
 .ingest inline into table Purchases <|
-Shoes,1000
-Wide Shoes,50
-"Coats, black",20
-"Coats with ""quotes""",5
+    Shoes,1000
+    Wide Shoes,50
+    "Coats black",20
+    "Coats with ""quotes""",5
 ```
 
-<!--
-You can generate inline ingests commands using the Kusto.Data client library. 
-Compression lets you embed new lines in quoted fields.
-    Kusto.Data.Common.CslCommandGenerator.GenerateTableIngestPushCommand(tableName, compressed: true, csvData: csvStream);
--->
+### Ingest with bracket syntax
 
-## See also
+The following command ingests data into a table `Logs` with two columns: `Date` (of type `datetime`) and `EventDetails` (of type `dynamic`).
+
+```kusto
+.ingest inline into table Logs
+    [2015-01-01,"{""EventType"":""Read"", ""Count"":""12""}"]
+    [2015-01-01,"{""EventType"":""Write"", ""EventValue"":""84""}"]
+```
+
+## Related content
 
 * [Ingest from storage](ingest-from-storage.md)
 * [Ingest from query](ingest-from-query.md)

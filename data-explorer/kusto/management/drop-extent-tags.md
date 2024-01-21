@@ -8,7 +8,7 @@ ms.date: 05/15/2023
 
 # .drop table extent tags
 
-Drops specific [extent tags](extents-overview.md#extent-tagging) from all or specific extents a table. The command runs in the context of a specific database.
+Drops specific [extent tags](extent-tags.md) from all or specific extents a table. The command runs in the context of a specific database.
 
 > [!NOTE]
 > Data shards are called **extents**, and all commands use "extent" or "extents" as a synonym.
@@ -29,16 +29,18 @@ You must have at least [Table Admin](access-control/role-based-access-control.md
 
 `.drop` [`async`] `table` *TableName* `extent` `tags` `with` `(` `extentCreatedOnFrom` `=` *FromDate* `,` `extentCreatedOnTo` `=` *ToDate*`)` `<|` *Query*
 
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+
 ## Parameters
 
 |Name|Type|Required|Description|
 |--|--|--|--|
 |`async`|string||If specified, the operation executes asynchronously.|
-|*TableName*|string|&check;|The name of the table for which to drop the extent tags.|
-|*Tag*|string|&check;|The names of the extent tags to drop.|
+|*TableName*|string| :heavy_check_mark:|The name of the table for which to drop the extent tags.|
+|*Tag*|string| :heavy_check_mark:|The names of the extent tags to drop.|
 |*FromDate*|datetime||The start date range.|
 |*ToDate*|datetime||The end date range.|
-|*Query*|string|&check;|A [Kusto Query Language (KQL)](../query/index.md) query that returns the extent tags to be dropped. See [Specify extents with a query](#specify-extents-with-a-query).|
+|*Query*|string| :heavy_check_mark:|A [Kusto Query Language (KQL)](../query/index.md) query that returns the extent tags to be dropped. See [Specify extents with a query](#specify-extents-with-a-query).|
 
 > [!NOTE]
 > For better performance, set `extentCreatedOnFrom` and `extentCreatedOnTo` parameters to the smallest possible range.

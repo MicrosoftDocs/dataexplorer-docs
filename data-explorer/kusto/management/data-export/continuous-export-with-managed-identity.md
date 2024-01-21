@@ -7,23 +7,24 @@ ms.date: 06/19/2023
 ---
 # Use a managed identity to run a continuous export job
 
-A [continuous export job](continuous-data-export.md) exports data to an [external table](../../query/schema-entities/externaltables.md) with a periodically run query.
+A [continuous export job](continuous-data-export.md) exports data to an [external table](../../query/schema-entities/external-tables.md) with a periodically run query.
 
 The continuous export job should be configured with a [managed identity](../../../managed-identities-overview.md) in the following scenarios:
-- When the external table uses impersonation authentication.
-- When the query references tables in other databases.
-- When the query references tables with an enabled [row level security policy](../rowlevelsecuritypolicy.md). 
+
+* When the external table uses impersonation authentication.
+* When the query references tables in other databases.
+* When the query references tables with an enabled [row level security policy](../row-level-security-policy.md).
 
 A continuous export job configured with a managed identity is performed on behalf of the managed identity.
 
-In this article, you'll learn how to configure a system-assigned or user-assigned managed identity and set up that identity to create a continuous export job.
+In this article, you learn how to configure a system-assigned or user-assigned managed identity and create a continuous export job using that identity.
 
 ## Prerequisites
 
 * A cluster and database. [Create a cluster and database](../../../create-cluster-and-database.md).
-* [Database Admin](../access-control/role-based-access-control.md) permissions on the database.
+* [All Databases Admin](../access-control/role-based-access-control.md) permissions on the database.
 
-## 1 - Configure a managed identity for continuous export
+## Configure a managed identity
 
 There are two types of managed identities:
 
@@ -39,9 +40,9 @@ Select one of the following tabs to set up your preferred managed identity type.
 
 1. In the Azure portal, in the left menu of your managed identity resource, select **Properties**. Copy and save the **Tenant Id** and **Principal Id** for use in the following steps.
 
-    :::image type="content" source="../../../media/continuous-export/managed-identity-ids.png" alt-text="Screenshot of Azure portal area with managed identity ids." lightbox="../../../media/continuous-export/managed-identity-ids.png":::
+    :::image type="content" source="../../../media/continuous-export/managed-identity-ids.png" alt-text="Screenshot of Azure portal area with managed identity IDs." lightbox="../../../media/continuous-export/managed-identity-ids.png":::
 
-1. Run the following [.alter-merge managed_identity policy](../alter-merge-managed-identity-policy-command.md) command, replacing `<objectId>` with the managed identity object ID from the previous step. This command sets a [managed identity policy](../../management/managed-identity-policy.md) on the cluster that allows the managed identity to be used with continuous export.
+1. Run the following [.alter-merge policy managed_identity](../alter-merge-managed-identity-policy-command.md) command, replacing `<objectId>` with the managed identity object ID from the previous step. This command sets a [managed identity policy](../../management/managed-identity-policy.md) on the cluster that allows the managed identity to be used with continuous export.
 
     ```kusto
     .alter-merge cluster policy managed_identity ```[
@@ -61,7 +62,7 @@ Select one of the following tabs to set up your preferred managed identity type.
     .add database <DatabaseName> viewers ('aadapp=<objectId>;<tenantId>')
     ```
 
-    Replace `<DatabaseName>` with the relevant database, `<objectId>` with the managed identity **Principal Id** from step 2, and `<tenantId>` with the Azure Active Directory **Tenant Id** from step 2.
+    Replace `<DatabaseName>` with the relevant database, `<objectId>` with the managed identity **Principal Id** from step 2, and `<tenantId>` with the Microsoft Entra ID **Tenant Id** from step 2.
 
 ### [System-assigned](#tab/system-assigned)
 
@@ -69,7 +70,7 @@ Select one of the following tabs to set up your preferred managed identity type.
 
 1. Copy and save the **Object (principal) ID** for use in a later step.
 
-1. Run the following [.alter-merge managed_identity policy](../alter-merge-managed-identity-policy-command.md) command. This command sets a [managed identity policy](../../management/managed-identity-policy.md) on the cluster that allows the managed identity to be used with continuous export.
+1. Run the following [.alter-merge policy managed_identity](../alter-merge-managed-identity-policy-command.md) command. This command sets a [managed identity policy](../../management/managed-identity-policy.md) on the cluster that allows the managed identity to be used with continuous export.
 
     ```kusto
     .alter-merge cluster policy managed_identity ```[
@@ -93,7 +94,7 @@ Select one of the following tabs to set up your preferred managed identity type.
 
 ---
 
-## 2 - Set up an external table
+## Set up an external table
 
 External tables refer to data located in Azure Storage, such as Azure Blob Storage, Azure Data Lake Gen1, and Azure Data Lake Gen2, or SQL Server.
 
@@ -124,7 +125,7 @@ Select one of the following tabs to set up an Azure Storage or SQL Server extern
 
 ### [SQL Server](#tab/sql-server)
 
-1. Create a SQL Server connection string. This string indicates the resource to access and its authentication information. For continuous export flows, we recommend [Azure AD-integrated authentication](../../api/connection-strings/sql-authentication-methods.md#azure-ad-integrated-impersonation), which is impersonation authentication.
+1. Create a SQL Server connection string. This string indicates the resource to access and its authentication information. For continuous export flows, we recommend [Microsoft Entra integrated authentication](../../api/connection-strings/sql-authentication-methods.md#azure-ad-integrated-impersonation), which is impersonation authentication.
 
 1. Run the [.create or .alter external table](../external-sql-tables.md) to create the table. Use the connection string from the previous step as the *sqlServerConnectionString* argument.
 
@@ -141,7 +142,7 @@ Select one of the following tabs to set up an Azure Storage or SQL Server extern
 
 ---
 
-## 3 - Create a continuous export job
+## Create a continuous export job
 
 Select one of the following tabs to create a continuous export job that will run on behalf of a user-assigned or system-assigned managed identity.
 
@@ -167,8 +168,8 @@ For example, the following command creates a continuous export job named `MyExpo
 
 ---
 
-## Next steps
+## Related content
 
-* To see your continuous exports, run the [.show continuous-exports](show-continuous-export.md) command.
-* Read the [continuous export overview](continuous-data-export.md).
-* Learn more about [managed identities](../../../managed-identities-overview.md).
+* [.show continuous-exports](show-continuous-export.md)
+* [Continuous export overview](continuous-data-export.md)
+* [Managed identities](../../../managed-identities-overview.md)

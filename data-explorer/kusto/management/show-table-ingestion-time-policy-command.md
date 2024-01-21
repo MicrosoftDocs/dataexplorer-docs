@@ -7,7 +7,7 @@ ms.date: 05/24/2023
 ---
 # .show table policy ingestiontime command
 
-Display a table's [ingestion time policy](ingestiontimepolicy.md). This policy creates a hidden `datetime` column in the table, called `$IngestionTime`. Whenever new data is ingested, the time of ingestion is recorded in the hidden column.
+Display a table's [ingestion time policy](ingestion-time-policy.md). This policy creates a hidden `datetime` column in the table, called `$IngestionTime`. Whenever new data is ingested, the time of ingestion is recorded in the hidden column.
 
 ## Permissions
 
@@ -17,11 +17,13 @@ You must have at least Database User, Database Viewer, or Database Monitor to ru
 
 `.show` `table` *TableName* `policy` `ingestiontime`
 
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+
 ## Parameters
 
 |Name|Type|Required|Description|
 |--|--|--|--|
-|*TableName*|string|&check;|The name of the table for which to show the policy details.|
+|*TableName*|string| :heavy_check_mark:|The name of the table for which to show the policy details.|
 
 ## Returns
 

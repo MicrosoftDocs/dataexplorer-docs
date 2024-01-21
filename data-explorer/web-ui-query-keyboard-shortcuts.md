@@ -1,6 +1,6 @@
 ---
 title: Azure Data Explorer web UI query keyboard shortcuts
-description: This article describes Azure Data Explorer query keyboard shortcuts (hot-keys) in Azure Data Explorer web UI.
+description: This article describes Azure Data Explorer query keyboard shortcuts (hot keys) in Azure Data Explorer web UI.
 ms.reviewer: mibar
 ms.topic: reference
 ms.date: 05/28/2023
@@ -8,9 +8,7 @@ ms.date: 05/28/2023
 
 # Azure Data Explorer web UI keyboard shortcuts
 
-Keyboard shortcuts provide a quick way to navigate websites, and allow users to work more efficiently. Instead of using a pointing device, you use keys, or combinations of keys, to run tasks. This article lists Windows keyboard shortcuts that work in the Azure Data Explorer web UI query editor window and results viewer.
-
-In the query editor, select <kbd>F1</kbd> to view a list of keyboard shortcuts in the command palette.
+Keyboard shortcuts provide a quick way to navigate websites, and allow users to work more efficiently. Instead of using a pointing device, you use keys, or combinations of keys, to run tasks. This article lists Windows keyboard shortcuts that work in the Azure Data Explorer web UI query editor window and results grid.
 
 The letters that appear below represent letter keys on your keyboard. For example, to use <kbd>G</kbd>+<kbd>N</kbd>, hold down the <kbd>G</kbd> key and then press <kbd>N</kbd>. If the command is <kbd>Ctrl</kbd>+<kbd>K</kbd> <kbd>Ctrl</kbd>+<kbd>X</kbd>, keep pressing <kbd>Ctrl</kbd>, and simultaneously press <kbd>K</kbd> and then <kbd>X</kbd>.
 
@@ -29,7 +27,6 @@ The letters that appear below represent letter keys on your keyboard. For exampl
 | Fold all                                      | <kbd>Ctrl</kbd>+<kbd>K</kbd> <kbd>Ctrl</kbd>+<kbd>0</kbd>    |
 | Format selection                              | <kbd>Ctrl</kbd>+<kbd>K</kbd> <kbd>Ctrl</kbd>+<kbd>F</kbd>    |
 | Format all                                    | <kbd>Shift</kbd>+<kbd>Alt</kbd>+<kbd>F</kbd>                 |
-| Go to definition                              | <kbd>Ctrl</kbd>+<kbd>F12</kbd>                               |
 | Go to line                                    | <kbd>Ctrl</kbd>+<kbd>G</kbd>                                 |
 | Go to Next Problem (Error, Warning, Info)     | <kbd>Alt</kbd>+<kbd>F8</kbd>                                 |
 | Go to Previous Problem (Error, Warning, Info) | <kbd>Shift</kbd>+<kbd>F8</kbd>                               |
@@ -47,7 +44,9 @@ The letters that appear below represent letter keys on your keyboard. For exampl
 | Recall execution result                       | <kbd>F8</kbd>                                                |
 | Reopen closed tab                             | <kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>Alt</kbd>+<kbd>T</kbd> |
 
-## Results viewer
+<!-- | Go to definition                              | <kbd>Ctrl</kbd>+<kbd>F12</kbd>                               | // Line 32-->
+
+## Results grid
 
 | To do this action                                     | Press                                             |
 | ----------------------------------------------------- | ------------------------------------------------- |
@@ -55,7 +54,7 @@ The letters that appear below represent letter keys on your keyboard. For exampl
 | [Column header] Toggle the sorting state              | <kbd>Enter</kbd>                                  |
 | [Column header] Open the menu for the focused header  | <kbd>Shift</kbd>+<kbd>Enter</kbd>                 |
 
-## See also
+## Related content
 
 * [Azure Data Explorer web UI query overview](web-ui-query-overview.md)
 * [Write Kusto Query Language queries in the web UI](web-ui-kql.md)

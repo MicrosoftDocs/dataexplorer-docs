@@ -8,7 +8,7 @@ ms.date: 05/03/2021
 # Sandboxes
 
 Kusto can run sandboxes for specific flows that must be run in a secure and isolated environment.
-Examples of these flows are user-defined scripts that run using the [Python plugin](../query/pythonplugin.md) or the [R plugin](../query/rplugin.md).
+Examples of these flows are user-defined scripts that run using the [Python plugin](../query/python-plugin.md) or the [R plugin](../query/r-plugin.md).
 
 Sandboxes are run locally (meaning, processing is done close to the data), with no extra latency for remote calls.
 
@@ -16,7 +16,7 @@ Sandboxes are run locally (meaning, processing is done close to the data), with 
 
 * Sandboxes that run on [VM sizes supporting nested virtualization](#vm-sizes-supporting-nested-virtualization) are implemented using [Hyper-V technology](https://en.wikipedia.org/wiki/Hyper-V) and have no limitations.
 * Sandboxes that run on [VM sizes not supporting nested virtualization](sandboxes-in-non-modern-skus.md#virtual-machine-sizes) are implemented using a proprietary legacy technology and are subject to [some limitations](sandboxes-in-non-modern-skus.md).
-* The image for running the sandboxes is deployed to each of the Data Engine's nodes and requires dedicated SSD space to run.
+* The image for running the sandboxes is deployed to every cluster node and requires dedicated SSD space to run.
   * The estimated size is between 10-20 GB.
   * This affects the cluster's data capacity, and may affect the [cost](https://azure.microsoft.com/pricing/details/data-explorer) of the cluster.
 
@@ -31,7 +31,7 @@ Sandboxes are run locally (meaning, processing is done close to the data), with 
 
 ## Sandbox parameters
 
-Some of the  parameters can be controlled using a cluster-level [sandbox policy](../management/sandboxpolicy.md), for each kind of sandbox.
+Some of the  parameters can be controlled using a cluster-level [sandbox policy](../management/sandbox-policy.md), for each kind of sandbox.
 
 * **Number of sandboxes per node:** The number of sandboxes per node is limited.
   * Requests that are made when there's no available sandbox will be throttled.
