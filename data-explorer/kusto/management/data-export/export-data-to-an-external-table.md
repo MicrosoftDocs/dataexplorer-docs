@@ -27,10 +27,10 @@ You must have at least [Table Admin](../access-control/role-based-access-control
 | Name | Type | Required | Description |
 |--|--|--|--|
 | *externalTableName* | string |  :heavy_check_mark: | The name of the external table to which to export.|
-| *propertyName*, *propertyValue* | string | | A comma-separated list of optional [properties](#properties).|
+| *propertyName*, *propertyValue* | string | | A comma-separated list of optional [properties](#supported-properties).|
 | *query* | string |  :heavy_check_mark: | The export query.|
 
-## Properties
+## Supported properties
 
 The following properties are supported as part of the export to external table command.
 
