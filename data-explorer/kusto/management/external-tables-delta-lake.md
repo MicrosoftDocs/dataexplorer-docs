@@ -93,7 +93,7 @@ kind=delta
 ## Limitations
 
 * Time travel is not supported. Only the latest delta table version is used.
-* Export, or continuous export, into delta external tables is not supported.
+
 
 ## Related content
 
