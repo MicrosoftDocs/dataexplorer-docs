@@ -23,8 +23,8 @@ You must have [Database User](access-control/role-based-access-control.md) permi
 
 |Name|Type|Required|Description|
 |--|--|--|--|
-|*ExternalTableName*|string| :heavy_check_mark:|The name of the external table.|
-|*MaxResults*|int||The maximum number of results to return.|
+|*ExternalTableName*| `string` | :heavy_check_mark:|The name of the external table.|
+|*MaxResults*| `int` ||The maximum number of results to return.|
 
 > [!TIP]
 > Iterating over all files referenced by an external table can be quite costly, depending on the number of files. Make sure to use `limit` parameter if you just want to see some URI examples.

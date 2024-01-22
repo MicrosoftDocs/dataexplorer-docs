@@ -23,11 +23,11 @@ The `cosmosdb_sql_request` plugin sends a SQL query to an Azure Cosmos DB SQL ne
 
 | Name | Type | Required | Description |
 |---|---|---|---|
-| *ConnectionString* | string |  :heavy_check_mark: | The connection string that points to the Azure Cosmos DB collection to query. It must include *AccountEndpoint*, *Database*, and *Collection*. It may include *AccountKey* if a master key is used for authentication. For more information, see [Authentication and authorization](#authentication-and-authorization).</br> **Example:** `'AccountEndpoint=https://cosmosdbacc.documents.azure.com/ ;Database=MyDatabase;Collection=MyCollection;AccountKey=' h'R8PM...;'` |
-| *SqlQuery*| string |  :heavy_check_mark: | The query to execute. |
-| *SqlParameters* | dynamic | | The property bag object to pass as parameters along with the query. Parameter names must begin with `@`. |
+| *ConnectionString* | `string` |  :heavy_check_mark: | The connection string that points to the Azure Cosmos DB collection to query. It must include *AccountEndpoint*, *Database*, and *Collection*. It may include *AccountKey* if a master key is used for authentication. For more information, see [Authentication and authorization](#authentication-and-authorization).</br> **Example:** `'AccountEndpoint=https://cosmosdbacc.documents.azure.com/ ;Database=MyDatabase;Collection=MyCollection;AccountKey=' h'R8PM...;'` |
+| *SqlQuery*| `string` |  :heavy_check_mark: | The query to execute. |
+| *SqlParameters* | `dynamic` | | The property bag object to pass as parameters along with the query. Parameter names must begin with `@`. |
 | *OutputSchema* | | | The names and types of the expected columns of the `cosmosdb_sql_request` plugin output. Use the following syntax: `(` *ColumnName* `:` *ColumnType* [`,` ...] `)`. Specifying this parameter enables multiple query optimizations. |
-| *Options* | dynamic | | A property bag object of advanced settings. If an `AccountKey` isn't provided in the *ConnectionString*, then the `armResourceId` field of this parameter is required. For more information, see [Supported options](#supported-options). |
+| *Options* | `dynamic` | | A property bag object of advanced settings. If an `AccountKey` isn't provided in the *ConnectionString*, then the `armResourceId` field of this parameter is required. For more information, see [Supported options](#supported-options). |
 
 ### Supported options
 
@@ -35,9 +35,9 @@ The following table describes the supported fields of the *Options* parameter.
 
 |Name|Type|Description|
 |--|--|--|
-| `armResourceId` | string | The  Azure Resource Manager resource ID of the Cosmos DB database. If an account key isn't provided in the connection string argument, this field is required. In such a case, the `armResourceId` is used to authenticate to Cosmos DB.</br>**Example:** `/subscriptions/a0cd6542-7eaf-43d2-bbdd-b678a869aad1/resourceGroups/ cosmoddbresourcegrouput/providers/Microsoft.DocumentDb/databaseAccounts/cosmosdbacc` |
-| `token` | string | A Microsoft Entra access token of a principal with access to the Cosmos DB database. This token is used together with the `armResourceId` to authenticate with the Azure Resource Manager. If unspecified, the token of the principal that made the query is used.|
-| `preferredLocations` | string | The region from which to query the data. </br>**Example:** `['East US']` |
+| `armResourceId` | `string` | The  Azure Resource Manager resource ID of the Cosmos DB database. If an account key isn't provided in the connection string argument, this field is required. In such a case, the `armResourceId` is used to authenticate to Cosmos DB.</br>**Example:** `/subscriptions/a0cd6542-7eaf-43d2-bbdd-b678a869aad1/resourceGroups/ cosmoddbresourcegrouput/providers/Microsoft.DocumentDb/databaseAccounts/cosmosdbacc` |
+| `token` | `string` | A Microsoft Entra access token of a principal with access to the Cosmos DB database. This token is used together with the `armResourceId` to authenticate with the Azure Resource Manager. If unspecified, the token of the principal that made the query is used.|
+| `preferredLocations` | `string` | The region from which to query the data. </br>**Example:** `['East US']` |
 
 ## Authentication and authorization
 

@@ -21,9 +21,9 @@ To optimize multiple uses of the `as` operator within a single query, see [Named
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-|*T*| string |  :heavy_check_mark: | The tabular expression to rename.|
-| *Name*| string|  :heavy_check_mark: | The temporary name for the tabular expression.|
-| *`hint.materialized`*| bool |  | If *Materialized* is set to `true`, the value of the tabular expression will be as if it was wrapped by a [materialize()](./materialize-function.md) function call. Otherwise, the value will be recalculated on every reference.|
+|*T*| `string` |  :heavy_check_mark: | The tabular expression to rename.|
+| *Name*| `string` |  :heavy_check_mark: | The temporary name for the tabular expression.|
+| *`hint.materialized`*| `bool` |  | If *Materialized* is set to `true`, the value of the tabular expression will be as if it was wrapped by a [materialize()](./materialize-function.md) function call. Otherwise, the value will be recalculated on every reference.|
 
 > [!NOTE]
 >

@@ -20,7 +20,7 @@ Calculates the sum of elements in a dynamic array.
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-| *array*| dynamic |  :heavy_check_mark:| The array to sum.|
+| *array*| `dynamic` |  :heavy_check_mark:| The array to sum.|
 
 ## Returns
 

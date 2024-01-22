@@ -21,8 +21,8 @@ Last day of the week is considered to be a Saturday.
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-| *date* | datetime |  :heavy_check_mark:| The date used to find the end of the week. |
-| *offset* | int | | The number of offset weeks from *date*. Default is 0. |
+| *date* | `datetime` |  :heavy_check_mark:| The date used to find the end of the week. |
+| *offset* | `int` | | The number of offset weeks from *date*. Default is 0. |
 
 ## Returns
 

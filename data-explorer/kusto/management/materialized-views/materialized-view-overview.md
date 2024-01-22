@@ -85,8 +85,8 @@ When querying the entire view, the materialized part is combined with the `delta
 
 |Client request property name|Type|Description|
 |------------------------|-------|-------------------|
-|`materialized_view_query_optimization_costbased_enabled`|bool|If set to `false`, disables  summarize/join optimizations in materialized view queries. Uses default strategies. Default is `true`.|
-|`materialized_view_shuffle`|dynamic|Force shuffling of the materialized view query, and (optionally) provide specific keys to shuffle by. See [examples](#examples) below.|
+|`materialized_view_query_optimization_costbased_enabled`| `bool` |If set to `false`, disables  summarize/join optimizations in materialized view queries. Uses default strategies. Default is `true`.|
+|`materialized_view_shuffle`| `dynamic` |Force shuffling of the materialized view query, and (optionally) provide specific keys to shuffle by. See [examples](#examples) below.|
 
 ### Examples
 

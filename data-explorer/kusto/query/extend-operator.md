@@ -19,9 +19,9 @@ Creates calculated columns and append them to the result set.
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-| *T* | string |  :heavy_check_mark: | Tabular input to extend. |
-| *ColumnName* | string | | Name of the column to add or update. |
-| *Expression* | string |  :heavy_check_mark: | Calculation to perform over the input.|
+| *T* | `string` |  :heavy_check_mark: | Tabular input to extend. |
+| *ColumnName* | `string` | | Name of the column to add or update. |
+| *Expression* | `string` |  :heavy_check_mark: | Calculation to perform over the input.|
 
 * If *ColumnName* is omitted, the output column name of *Expression* is automatically generated.
 * If *Expression* returns more than one column, a list of column names can be specified in parentheses. Then, *Expression*'s output columns is given the specified names. If a list of the column names isn't specified, all *Expression*'s output columns with generated names are added to the output.

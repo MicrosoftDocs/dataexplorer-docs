@@ -25,8 +25,8 @@ Checks for a condition. If the condition is false, outputs error messages and fa
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-| *condition* | bool |  :heavy_check_mark: | The conditional expression to evaluate. The condition must be evaluated to constant during the query analysis phase.|
-| *message* | string |  :heavy_check_mark: | The message used if assertion is evaluated to `false`.|
+| *condition* | `bool` |  :heavy_check_mark: | The conditional expression to evaluate. The condition must be evaluated to constant during the query analysis phase.|
+| *message* | `string` |  :heavy_check_mark: | The message used if assertion is evaluated to `false`.|
 
 ## Returns
 
