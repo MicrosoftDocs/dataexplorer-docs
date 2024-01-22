@@ -28,7 +28,7 @@ You must have at least [Database User](access-control/role-based-access-control.
 
 |Name|Type|Required|Description|
 |--|--|--|--|
-| `ifnotexists` | `string` | | | If specified, the function will only be created if the function doesn't yet exist.|
+| `ifnotexists` | `string` | | If specified, the function will only be created if the function doesn't yet exist.|
 |*functionName* | `string` |  :heavy_check_mark: | The name of the function to create or alter.|
 | *propertyName*, *propertyValue* | `string` | | A comma-separated list of key-value property pairs. See [supported properties](#supported-properties).|
 |*parameters*  | `string` | | A comma-separated list of parameters required by the function. The format for each parameter must be *ParameterName*`:`*ParameterDataType*.|
@@ -48,7 +48,7 @@ You must have at least [Database User](access-control/role-based-access-control.
 
 ## Returns
 
-|Output parameter |Type |Description
+|Output parameter |Type |Description|
 |---|---|---|
 |Name |String |The name of the function.
 |Parameters  |String |The parameters required by the function.
