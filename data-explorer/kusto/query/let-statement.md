@@ -36,8 +36,8 @@ To optimize multiple uses of the `let` statement within a single query, see [Opt
 
 |Name|Type|Required|Description|
 |--|--|--|--|
-|*Name*|string|&check;|The variable name. You can escape the name with brackets. For example, `["Name with spaces"]`.|
-|*Expression*|string|&check;|An expression with a scalar or tabular result. For example, an expression with a scalar result would be `let one=1;`, and an expression with a tabular result would be `let RecentLog = Logs  | where Timestamp > ago(1h)`.|
+|*Name*|string| :heavy_check_mark:|The variable name. You can escape the name with brackets. For example, `["Name with spaces"]`.|
+|*Expression*|string| :heavy_check_mark:|An expression with a scalar or tabular result. For example, an expression with a scalar result would be `let one=1;`, and an expression with a tabular result would be `let RecentLog = Logs  | where Timestamp > ago(1h)`.|
 
 ## Syntax: View or function
 
@@ -52,7 +52,7 @@ To optimize multiple uses of the `let` statement within a single query, see [Opt
 
 |Name|Type|Required|Description|
 |--|--|--|--|
-|*FunctionBody* |string|&check;| An expression that yields a user defined function. |
+|*FunctionBody* |string| :heavy_check_mark:| An expression that yields a user defined function. |
 |`view`|string||Only relevant for a parameter-less `let` statement. When used, the `let` statement is included in queries with a `union` operator with wildcard selection of the tables/views. For an example, see [Create a view or virtual table](#create-a-view-or-virtual-table).|
 |*Parameters*|string||Zero or more comma-separated tabular or scalar function parameters.<br/><br/>For each parameter of tabular type, the parameter should be in the format *TableName*`:`*TableSchema*, in which *TableSchema* is either a comma-separated list of columns in the format *ColumnName*`:`*ColumnType* or a wildcard (`*`). If columns are specified, then the input tabular argument must contain these columns. If a wildcard is specified, then the input tabular argument can have any schema. To reference columns in the function body, they must be specified. For examples, see [Tabular argument with schema](#tabular-argument-with-schema) and [Tabular argument with wildcard](#tabular-argument-with-wildcard).<br/><br/>For each parameter of scalar type, provide the parameter name and parameter type in the format *Name*`:`*Type*. The name can appear in the *FunctionBody* and is bound to a particular value when the user defined function is invoked. The only supported types are `bool`, `string`, `long`, `datetime`, `timespan`, `real`, `dynamic`, and the aliases to these types.|
 

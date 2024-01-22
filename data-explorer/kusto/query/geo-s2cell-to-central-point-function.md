@@ -19,7 +19,7 @@ Calculates the geospatial coordinates that represent the center of an S2 cell.
 
 |Name|Type|Required|Description|
 |--|--|--|--|
-| *s2cell* | string | &check; | S2 cell token value as it was calculated by [geo_point_to_s2cell()](geo-point-to-s2cell-function.md). The S2 cell token maximum string length is 16 characters.|
+| *s2cell* | string |  :heavy_check_mark: | S2 cell token value as it was calculated by [geo_point_to_s2cell()](geo-point-to-s2cell-function.md). The S2 cell token maximum string length is 16 characters.|
 
 ## Returns
 

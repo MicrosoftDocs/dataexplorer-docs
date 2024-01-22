@@ -24,7 +24,7 @@ Returns an integer that represents the week number. The week number is calculate
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-| *date* | datetime | &check; | The date for which to return the week of the year.|
+| *date* | datetime |  :heavy_check_mark: | The date for which to return the week of the year.|
 
 ## Returns
 

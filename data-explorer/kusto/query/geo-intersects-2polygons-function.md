@@ -19,8 +19,8 @@ Calculates whether two polygons or multipolygons intersect.
 
 |Name|Type|Required|Description|
 |--|--|--|--|
-| *polygon1* | dynamic | &check; | Polygon or multipolygon in the [GeoJSON format](https://tools.ietf.org/html/rfc7946).|
-| *polygon2* | dynamic | &check; | Polygon or multipolygon in the [GeoJSON format](https://tools.ietf.org/html/rfc7946).|
+| *polygon1* | dynamic |  :heavy_check_mark: | Polygon or multipolygon in the [GeoJSON format](https://tools.ietf.org/html/rfc7946).|
+| *polygon2* | dynamic |  :heavy_check_mark: | Polygon or multipolygon in the [GeoJSON format](https://tools.ietf.org/html/rfc7946).|
 
 ## Returns
 

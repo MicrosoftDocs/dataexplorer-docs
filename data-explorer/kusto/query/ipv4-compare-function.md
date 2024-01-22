@@ -17,7 +17,7 @@ Compares two IPv4 strings. The two IPv4 strings are parsed and compared while ac
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-|*Expr1*, *Expr2*| string | &check; | A string expression representing an IPv4 address. IPv4 strings can be masked using [IP-prefix notation](#ip-prefix-notation).
+|*Expr1*, *Expr2*| string |  :heavy_check_mark: | A string expression representing an IPv4 address. IPv4 strings can be masked using [IP-prefix notation](#ip-prefix-notation).
 |*PrefixMask*| int | | An integer from 0 to 32 representing the number of most-significant bits that are taken into account.
 
 [!INCLUDE [ip-prefix-notation](../../includes/ip-prefix-notation.md)]

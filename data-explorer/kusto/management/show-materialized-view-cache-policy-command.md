@@ -19,7 +19,7 @@ Show the materialized view cache policy. To speed up queries, data is cached on 
 
 |Name|Type|Required|Description|
 |--|--|--|--|
-|*MaterializedViewName*|string|&check;|The name of the materialized view.|
+|*MaterializedViewName*|string| :heavy_check_mark:|The name of the materialized view.|
 
 ## Returns
 

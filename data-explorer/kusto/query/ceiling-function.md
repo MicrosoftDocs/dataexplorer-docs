@@ -19,7 +19,7 @@ Calculates the smallest integer greater than, or equal to, the specified numeric
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-| *number* | int, long, or real | &check; | The value to round up. |
+| *number* | int, long, or real |  :heavy_check_mark: | The value to round up. |
 
 ## Returns
 

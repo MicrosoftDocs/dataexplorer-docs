@@ -19,7 +19,7 @@ Enumerates all the root keys in a dynamic property bag object.
 
 | Name | Type | Required | Description |
 | -- | -- | -- | -- |
-| *object* | dynamic | &check; | The property bag object for which to enumerate keys. |
+| *object* | dynamic |  :heavy_check_mark: | The property bag object for which to enumerate keys. |
 
 ## Returns
 

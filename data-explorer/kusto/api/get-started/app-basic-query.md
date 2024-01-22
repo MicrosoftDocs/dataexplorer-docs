@@ -527,12 +527,12 @@ response = kusto_client.execute_query(database, query, crp)
 ### [Typescript](#tab/typescript)
 
 ```typescript
-const ClientRequestProperties = require("azure-kusto-data").ClientRequestProperties;
-const uuid = require('uuid');
+import { ClientRequestProperties } from "azure-kusto-data";
+import { v4 as uuidv4 } from "uuid";
 
 const crp = new ClientRequestProperties();
 // Set a custom client request identifier
-crp.clientRequestId = "QueryDemo" + uuid.v4();
+crp.clientRequestId = "QueryDemo" + uuidv4();
 // Set the query timeout to 1 minute
 crp.setServerTimeout(1000 * 60);
 
@@ -771,13 +771,17 @@ if __name__ == "__main__":
 ### [Typescript](#tab/typescript)
 
 ```typescript
-const {Client, KustoConnectionStringBuilder, ClientRequestProperties} = require("azure-kusto-data");
-const uuid = require('uuid');
+import {  
+    Client as KustoClient,
+    KustoConnectionStringBuilder,
+    ClientRequestProperties
+} from "azure-kusto-data";
+import { v4 as uuidv4 } from "uuid";
 
 async function main() {
   const clusterUri = "https://help.kusto.windows.net";
   const kcsb = KustoConnectionStringBuilder.withUserPrompt(clusterUri);
-  const kustoClient = new Client(kcsb);
+  const kustoClient = new KustoClient(kcsb);
 
   const database = "Samples";
   const query = `declare query_parameters(event_type:string, daily_damage:int);
@@ -790,7 +794,7 @@ async function main() {
 
   const crp = new ClientRequestProperties();
   // Set a custom client request identifier
-  crp.clientRequestId = "QueryDemo" + uuid.v4();
+  crp.clientRequestId = "QueryDemo" + uuidv4();
   // Set the query timeout to 1 minute
   crp.setTimeout(1000 * 60);
 

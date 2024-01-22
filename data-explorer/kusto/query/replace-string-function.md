@@ -23,9 +23,9 @@ To replace multiple strings, see [replace_strings()](replace-strings-function.md
 
 |Name|Type|Required|Description|
 |--|--|--|--|
-|*text*|string|&check;|The source string.|
-|*lookup*|string|&check;|The string to be replaced.|
-|*rewrite*|string|&check;|The replacement string.|
+|*text*|string| :heavy_check_mark:|The source string.|
+|*lookup*|string| :heavy_check_mark:|The string to be replaced.|
+|*rewrite*|string| :heavy_check_mark:|The replacement string.|
 
 ## Returns
 

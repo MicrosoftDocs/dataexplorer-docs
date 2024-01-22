@@ -28,7 +28,7 @@ You must have at least [Database Admin](../access-control/role-based-access-cont
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-| *ContinuousExportName* | string | &check; | The name of the continuous export. |
+| *ContinuousExportName* | string |  :heavy_check_mark: | The name of the continuous export. |
 
 ## Returns
 

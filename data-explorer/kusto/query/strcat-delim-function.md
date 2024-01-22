@@ -19,8 +19,8 @@ Concatenates between 2 and 64 arguments, using a specified delimiter as the firs
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-| *delimiter* | string | &check; | The string to be used as separator in the concatenation.|
-| *argument1* ... *argumentN* | scalar | &check; | The expressions to concatenate.|
+| *delimiter* | string |  :heavy_check_mark: | The string to be used as separator in the concatenation.|
+| *argument1* ... *argumentN* | scalar |  :heavy_check_mark: | The expressions to concatenate.|
 
 > [!NOTE]
 > If the arguments aren't of string type, they'll be forcibly converted to string.

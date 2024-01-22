@@ -19,7 +19,7 @@ Returns the tangent value of the specified number.
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-| *x* | real | &check; | The number for which to calculate the tangent. |
+| *x* | real |  :heavy_check_mark: | The number for which to calculate the tangent. |
 
 ## Returns
 

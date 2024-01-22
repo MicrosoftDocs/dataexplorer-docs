@@ -31,9 +31,9 @@ See [defaults and limits](batching-policy.md#defaults-and-limits).
 
 |Name|Type|Required|Description|
 |--|--|--|--|
-| *TableName* | string | &check; | The name of the table to alter.|
+| *TableName* | string |  :heavy_check_mark: | The name of the table to alter.|
 | *DatabaseName* | string | | The name of the database. When you run the command from the database context that contains the table to alter, *DatabaseName* is not required.|
-| *PolicyObject* |string|&check;| A serialized JSON policy object. See [ingestion batching policy](batching-policy.md).|
+| *PolicyObject* |string| :heavy_check_mark:| A serialized JSON policy object. See [ingestion batching policy](batching-policy.md).|
 
 ## Examples
 

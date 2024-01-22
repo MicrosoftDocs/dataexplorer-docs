@@ -26,24 +26,23 @@ You must have at least [Table Admin](../access-control/role-based-access-control
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-| *externalTableName* | string | &check; | The name of the external table to which to export.|
-| *propertyName*, *propertyValue* | string | | A comma-separated list of optional [properties](#properties).|
-| *query* | string | &check; | The export query.|
+| *externalTableName* | string |  :heavy_check_mark: | The name of the external table to which to export.|
+| *propertyName*, *propertyValue* | string | | A comma-separated list of optional [properties](#supported-properties).|
+| *query* | string |  :heavy_check_mark: | The export query.|
 
-## Properties
+## Supported properties
 
 The following properties are supported as part of the export to external table command.
 
 | Property | Type | Description| Default
 |---|---|---|---|
-| `sizeLimit`     |`long`  |The size limit in bytes of a single storage artifact being written (prior to compression). A full row group of size `parquetRowGroupSize` will be written before checking whether this row group has reached the size limit and should start a new artifact. Allowed range is 100 MB (default) to 1 GB.|
+| `sizeLimit`     |`long`  |The size limit in bytes of a single storage artifact being written (prior to compression). A full row group of size `parquetRowGroupSize` will be written before checking whether this row group has reached the size limit and should start a new artifact. Valid range: 100 MB (default) to 1 GB.|
 |`distributed`   |`bool`  |Disable/enable distributed export. Setting to false is equivalent to `single` distribution hint. | Default is `true`.
 | `distribution` | `string` |Distribution hint (`single`, `per_node`, `per_shard`).  See more details in [Distribution settings](#distribution-settings)| Default is `per_node`.
 |`distributionKind`   |`string`  |Optionally switches to uniform distribution when the external table is partitioned by string partition. Valid values are `uniform` or `default`. See more details in [Distribution settings](#distribution-settings)|
 |`concurrency`|*Number*|Hints the system how many partitions to run in parallel. See more details in [Distribution settings](#distribution-settings)| The default value is 16. |
 |`spread`|*Number*|Hints the system how to distribute the partitions among cluster nodes. See more details in [Distribution settings](#distribution-settings)| The default value is `Min(64, number-of-nodes)`. |
 |`parquetRowGroupSize`|`int`  |Relevant only when data format is Parquet. Controls the row group size in the exported files. This value takes precedence over `sizeLimit`, meaning a full row group will be exported before checking whether this row group has reached the size limit and should start a new artifact. | Default row group size is 100,000 records.|
-|`useNativeParquetWriter`|`bool`|Use the new export implementation when exporting to Parquet **See note.**| Default is true. |
 
 ### Distribution settings
 

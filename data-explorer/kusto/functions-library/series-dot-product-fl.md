@@ -25,8 +25,8 @@ The function `series_dot_product_fl()` is a [user-defined function (UDF)](../que
 
 |Name|Type|Required|Description|
 |--|--|--|--|
-|*vec1*|dynamic|&check;|An array of numeric values.|
-|*vec2*|dynamic|&check;|An array of numeric values that is the same length as *vec1*.|
+|*vec1*|dynamic| :heavy_check_mark:|An array of numeric values.|
+|*vec2*|dynamic| :heavy_check_mark:|An array of numeric values that is the same length as *vec1*.|
 
 ## Function definition
 

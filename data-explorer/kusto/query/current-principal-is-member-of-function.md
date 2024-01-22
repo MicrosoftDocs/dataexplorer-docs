@@ -23,7 +23,7 @@ Checks group membership or principal identity of the current principal running t
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-| *group* | dynamic | &check; | An array of string literals in which each literal represents a Microsoft Entra principal. See [examples for Microsoft Entra principals](../management/access-control/referencing-security-principals.md).|
+| *group* | dynamic |  :heavy_check_mark: | An array of string literals in which each literal represents a Microsoft Entra principal. See [examples for Microsoft Entra principals](../management/access-control/referencing-security-principals.md).|
 
 > [!NOTE]
 > To avoid throttling from Microsoft Entra ID, the `current_principal_is_member_of()` function only works with string literals. Using values that aren't string literals will result in an error in order to avoid a potentially large number of queries to Microsoft Entra ID.

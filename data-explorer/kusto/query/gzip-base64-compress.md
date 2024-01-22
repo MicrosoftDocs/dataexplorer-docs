@@ -20,7 +20,7 @@ Performs gzip compression and encodes the result to base64.
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-| *string* | string | &check; | The value to be compressed and base64 encoded. The function accepts only one argument.|
+| *string* | string |  :heavy_check_mark: | The value to be compressed and base64 encoded. The function accepts only one argument.|
 
 ## Returns
 
