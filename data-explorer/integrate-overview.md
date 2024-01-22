@@ -11,6 +11,7 @@ There are many data connectors, tools, and integrations that work seamlessly wit
 
 For overview pages on a specific type of connector, select one of the following buttons.
 
+
 :::row:::
    :::column span="":::
       > [!div class="nextstepaction"]
@@ -28,11 +29,14 @@ For overview pages on a specific type of connector, select one of the following 
 
 ## Comparison tables
 
+
 The following tables summarize the capabilities of each item. Select the tab corresponding to connectors or tools and integrations. Each item name is linked to its detailed description, which can also be found [below](#detailed-descriptions).
+
 
 ### [Connectors](#tab/connectors)
 
 The following table summarizes the available connectors and their capabilities:
+
 
 | Name                                                                                  | Input              | Output             | Export             | Orchestrate        | Query              |
 | ------------------------------------------------------------------------------------- | ------------------ | ------------------ | ------------------ | ------------------ | ------------------ |
@@ -68,6 +72,7 @@ The following table summarizes the available connectors and their capabilities:
 
 The following table summarizes the available tools and integrations and their capabilities:
 
+
 | Name                                                                                | Ingest             | Query              | Share              | Source control     | Secure             | Administrate       | Visualize          |
 | ----------------------------------------------------------------------------------- | ------------------ | ------------------ | ------------------ | ------------------ | ------------------ | ------------------ | ------------------ |
 | [Azure CLI](#azure-cli)                                                             |                    |                    |                    |                    |                    | :heavy_check_mark: |                    |
@@ -91,10 +96,10 @@ The following table summarizes the available tools and integrations and their ca
 | [SyncKusto](#synckusto)                                                             |                    |                    |                    | :heavy_check_mark: |                    |                    |                    |
 | [Web UI](#web-ui)                                                                   | :heavy_check_mark: | :heavy_check_mark: |                    |                    |                    |                    | :heavy_check_mark: |
 
-
 ---
 
 ## Detailed descriptions
+
 
 The following are detailed descriptions of connectors and tools and integrations. Select the tab corresponding to connectors or tools and integrations. All available items are summarized in the [Comparison tables](#comparison-tables) above.
 
@@ -263,6 +268,7 @@ The [Microsoft Logic Apps](/azure/logic-apps/logic-apps-what-are-logic-apps) con
 * **Documentation:** [Ingest data from Logstash](ingest-data-logstash.md)
 * **Community Blog:** [How to migrate from Elasticsearch to Azure Data Explorer](https://techcommunity.microsoft.com/t5/azure-data-explorer-blog/how-to-migrate-from-elasticsearch-to-azure-data-explorer/ba-p/1621539/)
 
+
 ### Matlab
 
 MATLAB is a programming and numeric computing platform used to analyze data, develop algorithms, and create models. You can get an authorization token in MATLAB for querying your data in Azure Data Explorer.
@@ -282,6 +288,7 @@ NLog is a flexible and free logging platform for various .NET platforms, includi
 * **Repository:** Microsoft Azure - https://github.com/Azure/azure-kusto-nlog-sink
 * **Documentation:** [Ingest data with the NLog sink](nlog-sink.md)
 * **Community Blog:** [Getting started with NLog sink and Azure Data Explorer](https://aka.ms/adx-docs-nlog-blog)
+
 
 ### ODBC
 
@@ -306,6 +313,7 @@ Open Database Connectivity ([ODBC](/sql/odbc/reference/odbc-overview)) is a wide
 * **Documentation:** [Ingest data from OpenTelemetry](open-telemetry-connector.md)
 * **Community Blog:** [Getting started with Open Telemetry and Azure Data Explorer](https://techcommunity.microsoft.com/t5/azure-data-explorer-blog/getting-started-with-open-telemetry-and-azure-data-explorer/ba-p/3675708)
 
+
 ### Power Apps
 
 [Power Apps](https://powerapps.microsoft.com) is a suite of apps, services, connectors, and data platform that provides a rapid application development environment to build custom apps that connect to your business data. The Power Apps connector is useful if you have a large and growing collection of streaming data in Azure Data Explorer and want to build a low code, highly functional app to make use of this data. 
@@ -315,7 +323,6 @@ Open Database Connectivity ([ODBC](/sql/odbc/reference/odbc-overview)) is a wide
 * **Use cases:** 
 * **Documentation:** [Use Power Apps to query data in Azure Data Explorer](power-apps-connector.md)
 * **Community Blog:**
-
 ### Power Automate
 
 [Power Automate](/power-automate/getting-started) is an orchestration service used to automate business processes. The :::no-loc text="Power Automate"::: (previously Microsoft Flow) connector enables you to orchestrate and schedule flows, send notifications, and alerts, as part of a scheduled or triggered task.
@@ -600,6 +607,7 @@ Azure Data Explorer provides a web experience that enables you to connect to you
 * **Use cases:** 
 * **Documentation:** [Azure Data Explorer web UI](web-query-data.md), [Get data from file](get-data-file.md)
 * **Community Blog:** 
+
 ---
 
 ## Related content

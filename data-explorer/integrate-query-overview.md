@@ -4,13 +4,16 @@ description: Learn about the available query integrations.
 ms.reviewer: aksdi
 ms.topic: conceptual
 ms.date: 01/16/2024
+
 # CustomerIntent: As a data ingestor, I want to know what query connectors and tools are available, so that I can choose the right one for my use case.
 ---
 # Query integrations overview
 
+
 Kusto Query Language (KQL) is a powerful tool to explore your data and discover patterns, identify anomalies and outliers, create statistical modeling, and more. Use KQL to explore your data in different environments, and in other Microsoft services.
 
 Use the following filters to see other connectors, tools, and integrations that are available for your use case.
+
 
 :::row:::
    :::column span="":::
@@ -26,6 +29,7 @@ Use the following filters to see other connectors, tools, and integrations that 
       > [Visualize integrations](integrate-visualize-overview.md)
    :::column-end:::
 :::row-end:::
+
 
 The following tables summarize the available query connectors, tools, and integrations.
 
