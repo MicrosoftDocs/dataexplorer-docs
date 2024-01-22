@@ -417,7 +417,6 @@ Azure Data Explorer integrates with Azure Blob Storage and Azure Data Lake Stora
 * **Documentation:** [Query data in Azure Data Lake using Azure Data Explorer](data-lake-query-data.md)
 * **Community Blog:** 
 
-[Azure Data Lake](data-lake-query-data.md)
 
 ### Azure Data Studio 
 
