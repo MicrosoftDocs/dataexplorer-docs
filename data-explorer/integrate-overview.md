@@ -369,7 +369,7 @@ Telegraf is an open source, lightweight, minimal memory foot print agent for col
 Azure CLI lets you manage Kusto resources.
 
 * **Functionality:** Administration
-* **Documentation:** [az kusto](/cli/azure/kusto?view=azure-cli-latest)
+* **Documentation:** [az kusto](/cli/azure/kusto?view=azure-cli-latest&preserve-view=true)
 
 ### Azure Synapse Analytics
 
