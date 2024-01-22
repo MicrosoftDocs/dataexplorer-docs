@@ -1,16 +1,15 @@
 ---
-title: Overview of connectors, tools, and integrations
+title: Overview of data, query, and visualize integrations
 description: Learn about the available data connectors, tools, and integrations, and their capabilities.
 ms.reviewer: aksdi
 ms.topic: conceptual
 ms.date: 01/16/2024
 ---
-# Connectors, tools, and integrations overview
+# Integrations overview
 
 There are many data connectors, tools, and integrations that work seamlessly with the platform for ingestion, orchestration, output, and data query. This document is a high level overview about the available connectors, tools, and integrations. Detailed information is provided for each connector, and links to their full documentation.
 
 For overview pages on a specific type of connector, select one of the following buttons.
-
 
 :::row:::
    :::column span="":::
@@ -29,14 +28,11 @@ For overview pages on a specific type of connector, select one of the following 
 
 ## Comparison tables
 
-
 The following tables summarize the capabilities of each item. Select the tab corresponding to connectors or tools and integrations. Each item name is linked to its detailed description, which can also be found [below](#detailed-descriptions).
-
 
 ### [Connectors](#tab/connectors)
 
 The following table summarizes the available connectors and their capabilities:
-
 
 | Name                                                                                  | Input              | Output             | Export             | Orchestrate        | Query              |
 | ------------------------------------------------------------------------------------- | ------------------ | ------------------ | ------------------ | ------------------ | ------------------ |
@@ -67,11 +63,9 @@ The following table summarizes the available connectors and their capabilities:
 | [Splunk Universal Forwarder](#splunk-universal-forwarder)                             | :heavy_check_mark: |                    |                    |                    |                    |
 | [Telegraf](#telegraf)                                                                 | :heavy_check_mark: |                    |                    |                    |                    |
 
-
 ### [Tools and integrations](#tab/integrations)
 
 The following table summarizes the available tools and integrations and their capabilities:
-
 
 | Name                                                                                | Ingest             | Query              | Share              | Source control     | Secure             | Administrate       | Visualize          |
 | ----------------------------------------------------------------------------------- | ------------------ | ------------------ | ------------------ | ------------------ | ------------------ | ------------------ | ------------------ |
@@ -99,7 +93,6 @@ The following table summarizes the available tools and integrations and their ca
 ---
 
 ## Detailed descriptions
-
 
 The following are detailed descriptions of connectors and tools and integrations. Select the tab corresponding to connectors or tools and integrations. All available items are summarized in the [Comparison tables](#comparison-tables) above.
 
@@ -207,7 +200,6 @@ Event Grid ingestion is a pipeline that listens to Azure storage, and updates yo
 * **Documentation:** [Integrating Azure Functions using input and output bindings (preview)](integrate-azure-functions.md)
 * **Community Blog:** [Azure Data Explorer (Kusto) Bindings for Azure Functions](https://techcommunity.microsoft.com/t5/azure-data-explorer-blog/azure-data-explorer-kusto-bindings-for-azure-functions-public/ba-p/3828472)
 
-
 ### Azure IoT Hubs
 
 [Azure IoT Hub](/azure/iot-hub/about-iot-hub) is a managed service, hosted in the cloud, that acts as a central message hub for bi-directional communication between your IoT application and the devices it manages. You can configure continuous ingestion from customer-managed IoT Hubs, using its [Event Hubs compatible built in endpoint of device-to-cloud messages](/azure/iot-hub/iot-hub-devguide-messages-d2c#routing-endpoints).
@@ -266,7 +258,6 @@ The [Microsoft Logic Apps](/azure/logic-apps/logic-apps-what-are-logic-apps) con
 * **Documentation:** [Ingest data from Logstash](ingest-data-logstash.md)
 * **Community Blog:** [How to migrate from Elasticsearch to Azure Data Explorer](https://techcommunity.microsoft.com/t5/azure-data-explorer-blog/how-to-migrate-from-elasticsearch-to-azure-data-explorer/ba-p/1621539/)
 
-
 ### Matlab
 
 MATLAB is a programming and numeric computing platform used to analyze data, develop algorithms, and create models. You can get an authorization token in MATLAB for querying your data in Azure Data Explorer.
@@ -301,14 +292,12 @@ Open Database Connectivity ([ODBC](/sql/odbc/reference/odbc-overview)) is a wide
 [The OpenTelemetry connector](open-telemetry-connector.md) supports ingestion of data from many receivers into your database. It works as a bridge to ingest data generated by Open telemetry to your database by customizing the format of the exported data according to your needs.
 
 * **Functionality:** Ingestion
-
 * **Ingestion type supported:** Batching, Streaming
 * **Use cases:** Traces, Metrics, Logs
 * **Underlying SDK:** [Go](kusto/api/golang/kusto-golang-client-library.md)
 * **Repository:** Open Telemetry - https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/exporter/azuredataexplorerexporter
 * **Documentation:** [Ingest data from OpenTelemetry](open-telemetry-connector.md)
 * **Community Blog:** [Getting started with Open Telemetry and Azure Data Explorer](https://techcommunity.microsoft.com/t5/azure-data-explorer-blog/getting-started-with-open-telemetry-and-azure-data-explorer/ba-p/3675708)
-
 
 ### Power Apps
 
@@ -332,7 +321,6 @@ Open Database Connectivity ([ODBC](/sql/odbc/reference/odbc-overview)) is a wide
 Serilog is a popular logging framework for .NET applications. Serilog allows developers to control which log statements are output with arbitrary granularity based on the logger's name, logger level, and message pattern. The Serilog sink, also known as an appender, streams your log data to your database, where you can analyze and visualize your logs in real time.
 
 * **Functionality:** Ingestion
-
 * **Ingestion type supported:** Batching, Streaming
 * **Use cases:** Logs
 * **Underlying SDK:** [.NET](kusto/api/netfx/about-the-sdk.md)
@@ -356,7 +344,6 @@ Serilog is a popular logging framework for .NET applications. Serilog allows dev
 ### Splunk Universal Forwarder
 
 * **Functionality:** Ingestion
-
 * **Ingestion type supported:** Batching
 * **Use cases:** Logs
 * **Repository:** Microsoft Azure - https://github.com/Azure/azure-kusto-splunk
@@ -382,7 +369,7 @@ Telegraf is an open source, lightweight, minimal memory foot print agent for col
 Azure CLI lets you manage Kusto resources.
 
 * **Functionality:** Administration
-* **Documentation:** [az kusto](/cli/azure/kusto?view=azure-cli-latest)
+* **Documentation:** [az kusto](/cli/azure/kusto?view=azure-cli-latest&preserve-view=true)
 
 ### Azure Synapse Analytics
 
@@ -530,7 +517,6 @@ system, an Azure Data Explorer database, and Azure Dev Ops repos.
 Azure Data Explorer provides a web experience that enables you to connect to your Azure Data Explorer clusters and write, run, and share [Kusto Query Language (KQL)](kusto/query/index.md) commands and queries
 
 * **Functionality:** Ingestion, Export, Query, Visualization
-
 * **Ingestion type supported:** Batching, Streaming
 * **Documentation:** [Azure Data Explorer web UI](web-query-data.md), [Get data from file](get-data-file.md)
 
