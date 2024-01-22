@@ -21,9 +21,9 @@ The function `series_dbl_exp_smoothing_fl()` is a [user-defined function (UDF)](
 
 |Name|Type|Required|Description|
 |--|--|--|--|
-|*y_series*|dynamic| :heavy_check_mark:|An array of numeric values.|
-|*alpha*|real||A value in the range [0-1] that specifies the weight of the last point vs. the weight of the previous points, which is `1 - alpha`. The default is 0.5.|
-|*beta*|real||A value in the range [0-1] that specifies the weight of the last slope vs. the weight of the previous slopes, which is `1 - beta`. The default is 0.5.|
+|*y_series*| `dynamic` | :heavy_check_mark:|An array of numeric values.|
+|*alpha*| `real` ||A value in the range [0-1] that specifies the weight of the last point vs. the weight of the previous points, which is `1 - alpha`. The default is 0.5.|
+|*beta*| `real` ||A value in the range [0-1] that specifies the weight of the last slope vs. the weight of the previous slopes, which is `1 - beta`. The default is 0.5.|
 
 ## Function definition
 

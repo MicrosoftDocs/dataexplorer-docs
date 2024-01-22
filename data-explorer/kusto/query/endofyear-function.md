@@ -19,8 +19,8 @@ Returns the end of the year containing the date, shifted by an offset, if provid
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-| *date* | datetime |  :heavy_check_mark:| The date used to find the end of the year. |
-| *offset* | int | | The number of offset years from *date*. Default is 0. |
+| *date* | `datetime` |  :heavy_check_mark:| The date used to find the end of the year. |
+| *offset* | `int` | | The number of offset years from *date*. Default is 0. |
 
 ## Returns
 

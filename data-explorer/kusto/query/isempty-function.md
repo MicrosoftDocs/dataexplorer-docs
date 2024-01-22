@@ -19,7 +19,7 @@ Returns `true` if the argument is an empty string or is null.
 
 | Name | Type | Required | Description |
 | -- | -- | -- | -- |
-|*value*|string| :heavy_check_mark:| The value to check if empty or null.|
+|*value*| `string` | :heavy_check_mark:| The value to check if empty or null.|
 
 ## Returns
 

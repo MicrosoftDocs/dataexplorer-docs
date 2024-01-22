@@ -20,7 +20,7 @@ The `.show operation details` command retrieves the results of operations that p
 
 |Name|Type|Required|Description|
 |--|--|--|--|
-| *OperationId* | guid | | The operation ID for which to show details.|
+| *OperationId* | `guid` | | The operation ID for which to show details.|
 
 ## Returns
 

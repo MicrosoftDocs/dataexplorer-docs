@@ -19,8 +19,8 @@ Splits an array to multiple arrays according to the split indices and packs the 
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-| *array*| dynamic |  :heavy_check_mark: | The array to split.|
-| *index* | integer or dynamic |  :heavy_check_mark:| An integer or dynamic array of integers used to indicate the location at which to split the array. The start index of arrays is zero. Negative values are converted to `array_length` + `value`.|
+| *array*| `dynamic` |  :heavy_check_mark: | The array to split.|
+| *index* | `int` or `dynamic` |  :heavy_check_mark:| An integer or dynamic array of integers used to indicate the location at which to split the array. The start index of arrays is zero. Negative values are converted to `array_length` + `value`.|
 
 ## Returns
 

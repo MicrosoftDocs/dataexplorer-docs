@@ -20,7 +20,7 @@ If the input value isn't of type `string`, then the function forcibly casts the 
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-| *value* | string |  :heavy_check_mark: | input value.|  
+| *value* | `string` |  :heavy_check_mark: | input value.|  
 
 ## Returns
 

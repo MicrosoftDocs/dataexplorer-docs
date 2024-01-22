@@ -19,8 +19,8 @@ The function `series_shapes_fl()` is a [user-defined function (UDF)](../query/fu
 
 |Name|Type|Required|Description|
 |--|--|--|--|
-| *y_series* | dynamic |  :heavy_check_mark: |An array cell of numeric values.|
-| *advanced* | bool | | The default is `false`. Set to `true` to output additional calculated parameters.|
+| *y_series* | `dynamic` |  :heavy_check_mark: |An array cell of numeric values.|
+| *advanced* | `bool` | | The default is `false`. Set to `true` to output additional calculated parameters.|
 
 ## Function definition
 

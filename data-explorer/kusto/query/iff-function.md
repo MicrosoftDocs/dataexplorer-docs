@@ -22,7 +22,7 @@ or the value of *else* otherwise.
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-|*if*| string |  :heavy_check_mark: | An expression that evaluates to a boolean value.|
+|*if*| `string` |  :heavy_check_mark: | An expression that evaluates to a boolean value.|
 |*then*| scalar |  :heavy_check_mark: | An expression that gets evaluated and its value returned from the function if *if* evaluates to `true`.|
 |*else*| scalar |  :heavy_check_mark: | An expression that gets evaluated and its value returned from the function if *if* evaluates to `false`.|
 

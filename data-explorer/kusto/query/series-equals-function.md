@@ -19,7 +19,7 @@ Calculates the element-wise equals (`==`) logic operation of two numeric series 
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-| *series1, series2* | dynamic |  :heavy_check_mark: | The numeric arrays to be element-wise compared. |
+| *series1, series2* | `dynamic` |  :heavy_check_mark: | The numeric arrays to be element-wise compared. |
 
 ## Returns
 

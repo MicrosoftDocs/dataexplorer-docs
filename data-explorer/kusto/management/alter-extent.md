@@ -38,9 +38,9 @@ You must have at least [Table Admin](access-control/role-based-access-control.md
 
 |Name|Type|Required|Description|
 |--|--|--|--|
-|`async`|string||If specified, the command will run asynchronously. The return output when run with `async` is an operation ID (guid) that can be used to monitor the operation's status. Use [`.show operations`](operations.md#show-operations) or [`.show operation details`](operations.md#show-operation-details).|
-|*Tags*|string| :heavy_check_mark:|One or more comma-separated extent tags. Each tag should be enclosed in single quotes (`'`).|
-|*Query*|string| :heavy_check_mark:|Specifies the extents whose tags should be altered.|
+|`async`| `string` ||If specified, the command will run asynchronously. The return output when run with `async` is an operation ID (guid) that can be used to monitor the operation's status. Use [`.show operations`](operations.md#show-operations) or [`.show operation details`](operations.md#show-operation-details).|
+|*Tags*| `string` | :heavy_check_mark:|One or more comma-separated extent tags. Each tag should be enclosed in single quotes (`'`).|
+|*Query*| `string` | :heavy_check_mark:|Specifies the extents whose tags should be altered.|
 
 ## Restrictions
 
@@ -50,10 +50,10 @@ All extents must be in the context database, and must belong to the same table.
 
 |Output parameter |Type |Description|
 |---|---|---|
-|OriginalExtentId |string |A unique identifier (GUID) for the original extent whose tags have been modified. The extent is dropped as part of the operation.|
-|ResultExtentId |string |A unique identifier (GUID) for the result extent that has modified tags. The extent is created and added as part of the operation. Upon failure - "Failed".|
-|ResultExtentTags |string |The collection of tags that the result extent is tagged with, or "null" in case the operation fails.|
-|Details |string |Includes the failure details if the operation fails.|
+|OriginalExtentId | `string` |A unique identifier (GUID) for the original extent whose tags have been modified. The extent is dropped as part of the operation.|
+|ResultExtentId | `string` |A unique identifier (GUID) for the result extent that has modified tags. The extent is created and added as part of the operation. Upon failure - "Failed".|
+|ResultExtentTags | `string` |The collection of tags that the result extent is tagged with, or "null" in case the operation fails.|
+|Details | `string` |Includes the failure details if the operation fails.|
 
 ## Examples
 

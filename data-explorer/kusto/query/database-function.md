@@ -28,7 +28,7 @@ Changes the reference of the query to a specific database within the cluster sco
 
 |Name|Type|Required|Description|
 |--|--|--|--|
-| *databaseName* | string | The name of the database to reference. The *databaseName* can be either the `DatabaseName` or `PrettyName`. The argument must be a constant value and can't come from a subquery evaluation.|
+| *databaseName* | `string` | The name of the database to reference. The *databaseName* can be either the `DatabaseName` or `PrettyName`. The argument must be a constant value and can't come from a subquery evaluation.|
 
 ## Examples
 

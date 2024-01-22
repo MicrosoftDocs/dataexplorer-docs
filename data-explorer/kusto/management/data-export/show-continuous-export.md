@@ -25,7 +25,7 @@ You must have at least Database User, Database Viewer, or Database Monitor permi
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-| *ContinuousExportName* | string |  :heavy_check_mark: | The name of the continuous export. |
+| *ContinuousExportName* | `string` |  :heavy_check_mark: | The name of the continuous export. |
 
 ## Returns
 

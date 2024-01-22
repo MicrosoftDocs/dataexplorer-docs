@@ -23,8 +23,8 @@ You must have at least [Database Admin](access-control/role-based-access-control
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-| *TableName* | string |  :heavy_check_mark: | The name of the table to alter. |
-| *PolicyObject* | string |  :heavy_check_mark: | A serialized JSON policy object. See [partitioning policy](partitioning-policy.md). |
+| *TableName* | `string` |  :heavy_check_mark: | The name of the table to alter. |
+| *PolicyObject* | `string` |  :heavy_check_mark: | A serialized JSON policy object. See [partitioning policy](partitioning-policy.md). |
 
 ### Examples
 

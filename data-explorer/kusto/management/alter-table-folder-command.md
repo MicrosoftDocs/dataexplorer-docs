@@ -26,8 +26,8 @@ You must have at least [Table Admin](access-control/role-based-access-control.md
 
 |Name|Type|Required|Description|
 |--|--|--|--|
-| *TableName* | string |  :heavy_check_mark: | The name of the table to alter.|
-| *Folder* | string |  :heavy_check_mark: | The new folder for the table.|
+| *TableName* | `string` |  :heavy_check_mark: | The name of the table to alter.|
+| *Folder* | `string` |  :heavy_check_mark: | The new folder for the table.|
 
 ## Examples
 

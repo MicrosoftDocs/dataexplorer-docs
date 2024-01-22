@@ -19,7 +19,7 @@ Calculates the angle whose sine is the specified number, or the arc sine. This i
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-|*x* | real |  :heavy_check_mark:| A real number in range [-1, 1] used to calculate the arc sine.|
+|*x* | `real` |  :heavy_check_mark:| A real number in range [-1, 1] used to calculate the arc sine.|
 
 ## Returns
 

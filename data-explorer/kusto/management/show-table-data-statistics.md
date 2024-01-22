@@ -26,8 +26,8 @@ You must have at least Database User, Database Viewer, or Database Monitor permi
 
 |Name|Type|Required|Description|
 |--|--|--|--|
-|*TableName*|string| :heavy_check_mark:|The name of the table for which to show statistics.|
-|*PropertyName*, *PropertyValue*|string||A comma-separated list of optional [Supported properties](#supported-properties).|
+|*TableName*| `string` | :heavy_check_mark:|The name of the table for which to show statistics.|
+|*PropertyName*, *PropertyValue*| `string` ||A comma-separated list of optional [Supported properties](#supported-properties).|
 
 ### Supported properties
 
@@ -37,8 +37,8 @@ The following properties can be specified. All properties are optional.
 |--|--|--|
 | `samplepercent` | Scans the specified percentage of data. | Integer between 0 and 100 |
 | `scope` | Defines if only the hot cache is scanned or if the whole data is scanned.| Specify `"hotcache"` to only scan hot cache data, or `"all"` to scan all the data. |
-| `from` | Scans data extents created after this time. | datetime |
-| `to` | Scan data extents created before this time. | datetime |
+| `from` | Scans data extents created after this time. | `datetime` |
+| `to` | Scan data extents created before this time. | `datetime` |
 
 If no options are provided, only 1% of hot cache data is scanned.
 

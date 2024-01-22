@@ -21,8 +21,8 @@ The series_ifft() function takes a series of complex numbers in the frequency do
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-| *fft_real* | dynamic |  :heavy_check_mark: | An array of numeric values representing the real component of the series to transform.|
-| *fft_imaginary* | dynamic | | An array of numeric values representing the imaginary component of the series. This parameter should be specified only if the input series contains complex numbers.|
+| *fft_real* | `dynamic` |  :heavy_check_mark: | An array of numeric values representing the real component of the series to transform.|
+| *fft_imaginary* | `dynamic` | | An array of numeric values representing the imaginary component of the series. This parameter should be specified only if the input series contains complex numbers.|
 
 ## Returns
 

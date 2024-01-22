@@ -22,7 +22,7 @@ Creates a [dynamic](scalar-data-types/dynamic.md) property bag object from all t
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-| *ignore_null_empty* | bool | | Indicates whether to ignore null/empty columns and exclude them from the resulting property bag. The default value is `false`.|
+| *ignore_null_empty* | `bool` | | Indicates whether to ignore null/empty columns and exclude them from the resulting property bag. The default value is `false`.|
 
 ## Example
 
