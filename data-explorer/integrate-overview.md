@@ -376,7 +376,7 @@ Telegraf is an open source, lightweight, minimal memory foot print agent for col
 
 * **Ingestion type supported:** Batching, Streaming
 * **Use cases:** Telemetry, Logs, Metrics
-* **Underlying SDK:** [Go](https://learn.microsoft.com/en-us/azure/data-explorer/kusto/api/golang/kusto-golang-client-library)
+* **Underlying SDK:** [Go](kusto/api/golang/kusto-golang-client-library)
 * **Repository:** InfluxData - https://github.com/influxdata/telegraf/tree/master/plugins/outputs/azure_data_explorer
 * **Documentation:** [Ingest data from Telegraf](ingest-data-telegraf.md)
 * **Community Blog:**  [New Azure Data Explorer output plugin for Telegraf enables SQL monitoring at huge scale](https://techcommunity.microsoft.com/t5/azure-data-explorer-blog/new-azure-data-explorer-output-plugin-for-telegraf-enables-sql/ba-p/2829444)
@@ -424,7 +424,6 @@ Azure Data Explorer integrates with Azure Blob Storage and Azure Data Lake Stora
 The Kusto (KQL) extension for Azure Data Studio enables you to connect and query to Azure Data Explorer clusters. Users can write and run KQL queries and author notebooks with the Kusto kernel complete with IntelliSens
 
 * **Functionality:**  Query
-
 * **Use cases:** 
 * **Documentation:** [Kusto extension overview](/sql/azure-data-studio/extensions/kusto-extension?context=%252fazure%252fdata-explorer%252fcontext%252fcontext), [use Kusto](/sql/azure-data-studio/notebooks/notebooks-kusto-kernel?context=%252fazure%252fdata-explorer%252fcontext%252fcontext), and [use Kqlmagic](/sql/azure-data-studio/notebooks-kqlmagic?context=%252fazure%252fdata-explorer%252fcontext%252fcontext)
 * **Community Blog:** 
