@@ -10,7 +10,7 @@ ms.date: 02/22/2023
 Converts the input to an integer value (signed 32-bit) number representation.
 
 > [!NOTE]
-> Prefer using [int()](./scalar-data-types/int.md) when possible.
+> When possible, use [int literals](./scalar-data-types/int.md#int-literals) instead.
 
 ## Syntax
 
@@ -22,7 +22,7 @@ Converts the input to an integer value (signed 32-bit) number representation.
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-| *value* | scalar | &check; | The value to convert to an [integer](scalar-data-types/int.md).|
+| *value* | scalar |  :heavy_check_mark: | The value to convert to an [integer](scalar-data-types/int.md).|
 
 ## Returns
 

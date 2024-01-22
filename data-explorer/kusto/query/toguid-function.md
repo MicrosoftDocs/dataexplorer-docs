@@ -3,14 +3,14 @@ title:  toguid()
 description: Learn how to use the toguid() function to convert the input string to a `guid` scalar.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 02/22/2023
+ms.date: 01/08/2024
 ---
 # toguid()
 
 Converts a string to a [`guid`](./scalar-data-types/guid.md) scalar.
 
 > [!NOTE]
-> If you have a hard-coded guid, we recommend using [guid()](./scalar-data-types/guid.md).
+> When possible, use [guid literals](./scalar-data-types/guid.md#guid-literals) instead.
 
 ## Syntax
 
@@ -22,7 +22,7 @@ Converts a string to a [`guid`](./scalar-data-types/guid.md) scalar.
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-| *value* | scalar | &check; | The value to convert to [guid](scalar-data-types/guid.md).|
+| *value* | scalar |  :heavy_check_mark: | The value to convert to [guid](scalar-data-types/guid.md).|
 
 ## Returns
 

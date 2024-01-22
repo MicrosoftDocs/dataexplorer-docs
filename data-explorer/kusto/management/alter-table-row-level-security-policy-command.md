@@ -32,8 +32,8 @@ You must have at least [Table Admin](access-control/role-based-access-control.md
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-| *TableName* | string | &check;| The name of the table.|
-| *Query* | string | &check; | The query to run. For more information, see [row_level_security policy](row-level-security-policy.md).|
+| *TableName* | string |  :heavy_check_mark:| The name of the table.|
+| *Query* | string |  :heavy_check_mark: | The query to run. For more information, see [row_level_security policy](row-level-security-policy.md).|
 
 ### Examples
 

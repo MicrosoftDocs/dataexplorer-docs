@@ -29,8 +29,8 @@ You must have at least [Table Admin](access-control/role-based-access-control.md
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-| *TableName* | string | &check;| The name of the table.|
-| *PolicyObject* |string | &check; | A serialized policy object. For more information, see [streaming ingestion](../../ingest-data-streaming.md).|
+| *TableName* | string |  :heavy_check_mark:| The name of the table.|
+| *PolicyObject* |string |  :heavy_check_mark: | A serialized policy object. For more information, see [streaming ingestion](../../ingest-data-streaming.md).|
 
 ## Returns
 

@@ -19,7 +19,7 @@ Converts unix-epoch microseconds to UTC datetime.
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-| *microseconds* | real | &check; | The epoch timestamp in microseconds. A `datetime` value that occurs before the epoch time (1970-01-01 00:00:00) has a negative timestamp value.|
+| *microseconds* | real |  :heavy_check_mark: | The epoch timestamp in microseconds. A `datetime` value that occurs before the epoch time (1970-01-01 00:00:00) has a negative timestamp value.|
 
 ## Returns
 

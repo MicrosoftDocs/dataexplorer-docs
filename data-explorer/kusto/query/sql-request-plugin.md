@@ -25,8 +25,8 @@ The plugin is invoked with the [`evaluate`](evaluate-operator.md) operator.
 
 | Name | Type | Required| Description |
 |---|---|---|---|
-| *ConnectionString* | string | &check; | The connection string that points at the SQL Server network endpoint. See [valid methods of authentication](#authentication-and-authorization) and how to specify the [network endpoint](#specify-the-network-endpoint). |
-| *SqlQuery* | string | &check; | The query that is to be executed against the SQL endpoint. The query must return one or more row sets, but only the first one is made available for the rest of the Kusto query. |
+| *ConnectionString* | string |  :heavy_check_mark: | The connection string that points at the SQL Server network endpoint. See [valid methods of authentication](#authentication-and-authorization) and how to specify the [network endpoint](#specify-the-network-endpoint). |
+| *SqlQuery* | string |  :heavy_check_mark: | The query that is to be executed against the SQL endpoint. The query must return one or more row sets, but only the first one is made available for the rest of the Kusto query. |
 | *SqlParameters* | dynamic | | A property bag of key-value pairs to pass as parameters along with the query. |
 |*Options* | dynamic | | A property bag of key-value pairs to pass more advanced settings along with the query. Currently, only `token` can be set, to pass a caller-provided Microsoft Entra access token that is forwarded to the SQL endpoint for authentication.|
 | *OutputSchema* | string | | The names and types for the expected columns of the `sql_request` plugin output. Use the following syntax: `(` *ColumnName* `:` *ColumnType* [`,` ...] `)`.|

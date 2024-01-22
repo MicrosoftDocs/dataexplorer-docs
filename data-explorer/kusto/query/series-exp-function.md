@@ -19,7 +19,7 @@ Calculates the element-wise base-e exponential function (e^x) of the numeric ser
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-| *series* | dynamic | &check; | An array of numeric values whose elements are applied as the exponent in the exponential function. |
+| *series* | dynamic |  :heavy_check_mark: | An array of numeric values whose elements are applied as the exponent in the exponential function. |
 
 ## Returns
 

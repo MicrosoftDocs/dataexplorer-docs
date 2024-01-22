@@ -11,7 +11,7 @@ This plugin infers schema of external data, and returns it as CSL schema string.
 
 ## Authentication and authorization
 
-In the [properties of the request](#properties-of-the-request), you specify storage connection strings to access. Each storage connection string specifies the authorization method to use for access to the storage. Depending on the authorization method, the principal may need to be granted permissions on the external storage to perform the schema inference.
+In the [properties of the request](#supported-properties-of-the-request), you specify storage connection strings to access. Each storage connection string specifies the authorization method to use for access to the storage. Depending on the authorization method, the principal may need to be granted permissions on the external storage to perform the schema inference.
 
 The following table lists the supported authentication methods and any required permissions by storage type.
 
@@ -32,14 +32,14 @@ The following table lists the supported authentication methods and any required 
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-| *Options* | dynamic | &check; |A property bag specifying the [properties of the request](#properties-of-the-request).|
+| *Options* | dynamic |  :heavy_check_mark: |A property bag specifying the [properties of the request](#supported-properties-of-the-request).|
 
-### Properties of the request
+### Supported properties of the request
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-|*StorageContainers*| dynamic |&check;|An array of [storage connection strings](../api/connection-strings/storage-connection-strings.md) that represent prefix URI for stored data artifacts.|
-|*DataFormat*|string|&check;|One of the supported [data formats](../../ingestion-supported-formats.md).|
+|*StorageContainers*| dynamic | :heavy_check_mark:|An array of [storage connection strings](../api/connection-strings/storage-connection-strings.md) that represent prefix URI for stored data artifacts.|
+|*DataFormat*|string| :heavy_check_mark:|One of the supported [data formats](../../ingestion-supported-formats.md).|
 |*FileExtension*|string||If specified, the function will only scan files ending with this file extension. Specifying the extension may speed up the process or eliminate data reading issues.|
 |*FileNamePrefix*|string||If specified, the function will only scan files starting with this prefix. Specifying the prefix may speed up the process.|
 |*Mode*|string||The schema inference strategy. A value of: `any`, `last`, `all`. The function infers the data schema from the first found file, from the last written file, or from all files respectively. The default value is `last`.|

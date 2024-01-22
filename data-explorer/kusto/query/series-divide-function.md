@@ -19,7 +19,7 @@ Calculates the element-wise division of two numeric series inputs.
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-| *series1, series2* | dynamic | &check; | The numeric arrays over which to calculate the element-wise division. The first array is to be divided by the second. |
+| *series1, series2* | dynamic |  :heavy_check_mark: | The numeric arrays over which to calculate the element-wise division. The first array is to be divided by the second. |
 
 ## Returns
 

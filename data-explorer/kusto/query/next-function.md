@@ -20,7 +20,7 @@ current row in a [serialized row set](./window-functions.md#serialized-row-set).
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-| *column*| string |  &check; | The column from which to get the values.|
+| *column*| string |   :heavy_check_mark: | The column from which to get the values.|
 | *offset*| int | | The amount of rows to move from the current row. Default is 1. |
 | *default_value*| scalar | | The default value when there's no value in the next row. When no default value is specified, `null` is used.|
 

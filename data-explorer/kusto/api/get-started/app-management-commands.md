@@ -96,7 +96,7 @@ In your preferred IDE or text editor, create a project or file named *management
     import com.microsoft.azure.kusto.data.KustoResultColumn;
     import com.microsoft.azure.kusto.data.auth.ConnectionStringBuilder;
 
-    public class managementCommands {
+    public class ManagementCommands {
       public static void main(String[] args) throws Exception {
         try {
           String clusterUri = "<your_cluster_uri>";
@@ -149,12 +149,12 @@ In your preferred IDE or text editor, create a project or file named *management
     ```typescript
     function printResultsAsValueList(command: string, response: KustoResponseDataSet) {
       // create a list of columns
-      let cols = response.primaryResults[0].columns;
+      const cols = response.primaryResults[0].columns;
 
       console.log("\n" + "-".repeat(20) + "\n")
       console.log("Command: " + command)
       // print the values for each row
-      for (row of response.primaryResults[0].rows()) {
+      for (const row of response.primaryResults[0].rows()) {
         console.log("Result:")
         for (col of cols)
         console.log("\t", col.name, "-", row.getValueAt(col.ordinal) ? row.getValueAt(col.ordinal).toString() : "None")
@@ -227,7 +227,7 @@ In your preferred IDE or text editor, create a project or file named *management
 
     // Create a table named MyStormEvents
     // The brackets contain a list of column Name:Type pairs that defines the table schema
-    let command = `.create table ` + table + `
+    const command = `.create table ${table}
                   (StartTime:datetime,
                    EndTime:datetime,
                    State:string,
@@ -287,7 +287,7 @@ In your preferred IDE or text editor, create a project or file named *management
     > You'll use the `executeMgmt` method to run the command.
 
     ```typescript
-    let response = await kustoClient.executeMgmt(database, command);
+    const response = await kustoClient.executeMgmt(database, command);
     printResultsAsValueList(command, response)
     ```
 
@@ -399,7 +399,7 @@ if __name__ == "__main__":
 ### [Typescript](#tab/typescript)
 
 ```typescript
-import { Client as KustoClient, KustoConnectionStringBuilder } from "azure-kusto-data/";
+import { Client as KustoClient, KustoConnectionStringBuilder, KustoResponseDataSet } from "azure-kusto-data/";
 import { InteractiveBrowserCredentialInBrowserOptions } from "@azure/identity";
 
 async function main() {
@@ -416,7 +416,7 @@ async function main() {
 
   // Create a table named MyStormEvents
   // The brackets contain a list of column Name:Type pairs that defines the table schema
-  let command = `.create table ` + table + `
+  const command = `.create table ${table}
                  (StartTime:datetime,
                   EndTime:datetime,
                   State:string,
@@ -424,21 +424,22 @@ async function main() {
                   Source:string,
                   StormSummary:dynamic)`;
 
-  let response = await kustoClient.executeMgmt(database, command);
+  const response = await kustoClient.executeMgmt(database, command);
   printResultsAsValueList(command, response)
 }
 
 function printResultsAsValueList(command: string, response: KustoResponseDataSet) {
   // create a list of columns
-  let cols = response.primaryResults[0].columns;
+  const cols = response.primaryResults[0].columns;
 
   console.log("\n" + "-".repeat(20) + "\n")
   console.log("Command: " + command)
   // print the values for each row
-  for (row of response.primaryResults[0].rows()) {
+  for (const row of response.primaryResults[0].rows()) {
     console.log("Result:")
-    for (col of cols)
-    console.log("\t", col.name, "-", row.getValueAt(col.ordinal) ? row.getValueAt(col.ordinal).toString() : "None")
+    for (const col of cols) {
+        console.log("\t", col.name, "-", row.getValueAt(col.ordinal) ? row.getValueAt(col.ordinal).toString() : "None")
+    }
   }
 }
 
@@ -538,7 +539,7 @@ npm run dev
 ### [Java](#tab/java)
 
 ```bash
-mvn install exec:java -Dexec.mainClass="<groupId>.managementCommands"
+mvn install exec:java -Dexec.mainClass="<groupId>.ManagementCommands"
 ```
 
 ---

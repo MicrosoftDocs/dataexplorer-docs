@@ -28,7 +28,7 @@ You must have at least [Table Admin](access-control/role-based-access-control.md
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-| *TableName* | string | &check; | The name of the table to drop. |
+| *TableName* | string |  :heavy_check_mark: | The name of the table to drop. |
 |`ifexists`| string || If specified, the command won't fail if the table doesn't exist.|
 
 ## Returns

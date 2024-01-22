@@ -26,7 +26,7 @@ You must have at least Database User, Database Viewer, or Database Monitor permi
 
 |Name|Type|Required|Description|
 |--|--|--|--|
-|*TableName*|string|&check;|The name of the table for which to show statistics.|
+|*TableName*|string| :heavy_check_mark:|The name of the table for which to show statistics.|
 |*PropertyName*, *PropertyValue*|string||A comma-separated list of optional [Supported properties](#supported-properties).|
 
 ### Supported properties

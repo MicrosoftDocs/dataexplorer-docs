@@ -9,6 +9,8 @@ ms.date: 07/16/2023
 
 In this article, you learn how to ingest blobs from your storage account into Azure Data Explorer using an Event Grid data connection. You'll create an Event Grid data connection that sets an [Azure Event Grid](/azure/event-grid/overview) subscription. The Event Grid subscription routes events from your storage account to Azure Data Explorer via an Azure Event Hubs.
 
+[!INCLUDE [ingestion-size-limit](includes/ingestion-size-limit.md)]
+
 To learn how to create the connection using the Kusto SDKs, see [Create an Event Grid data connection with SDKs](create-event-grid-connection-sdk.md).
 
 For general information about ingesting into Azure Data Explorer from Event Grid, see [Connect to Event Grid](ingest-data-event-grid-overview.md).
@@ -365,6 +367,7 @@ var sharedKeyCredential = new StorageSharedKeyCredential(accountName, accountKey
 var dfsUri = "https://" + accountName + ".dfs.core.windows.net";
 var dataLakeServiceClient = new DataLakeServiceClient(new Uri(dfsUri), sharedKeyCredential);
 // Get a client to the the filesystem
+
 var dataLakeFileSystemClient = dataLakeServiceClient.GetFileSystemClient(fileSystemName);
 // Rename a file in the file system
 var dataLakeFileClient = dataLakeFileSystemClient.GetFileClient(sourceFilePath);

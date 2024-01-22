@@ -11,6 +11,9 @@ Converts the input to a [timespan](./scalar-data-types/timespan.md) scalar value
 
 > **Deprecated aliases:** totime()
 
+> [!NOTE]
+> When possible, we recommend using [timespan literals](../query/scalar-data-types/timespan.md#timespan-literals) instead.
+
 ## Syntax
 
 `totimespan(`*value*`)`
@@ -21,7 +24,7 @@ Converts the input to a [timespan](./scalar-data-types/timespan.md) scalar value
 
 |Name|Type|Required|Description|
 |--|--|--|--|
-| *value* | string | &check; | The value to convert to a [timespan](./scalar-data-types/timespan.md).|
+| *value* | string |  :heavy_check_mark: | The value to convert to a [timespan](./scalar-data-types/timespan.md).|
 
 ## Returns
 

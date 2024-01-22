@@ -23,8 +23,8 @@ You must have at least [Materialized View Admin](../access-control/role-based-ac
 
 | Name      | Type    | Required | Description                              |
 |-----------|--------|-----------|------------------------------------------|
-| *OldName* | string | &check;   | Name of the materialized view to rename. |
-| *NewName* | string | &check;   | New name to assign to the view.          |
+| *OldName* | string |  :heavy_check_mark:   | Name of the materialized view to rename. |
+| *NewName* | string |  :heavy_check_mark:   | New name to assign to the view.          |
 
 ## Returns
 

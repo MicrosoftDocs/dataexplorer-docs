@@ -15,8 +15,8 @@ The Python plugin runs a user-defined function (UDF) using a Python script. The 
 
 |Name|Type|Required|Description|
 |--|--|--|--|
-|*output_schema*|string|&check;|A `type` literal that defines the output schema of the tabular data, returned by the Python code. The format is: `typeof(`*ColumnName*`:` *ColumnType*[, ...]`)`. For example, `typeof(col1:string, col2:long)`. To extend the input schema, use the following syntax: `typeof(*, col1:string, col2:long)`.|
-|*script*|string|&check;|The valid Python script to execute. To generate multi-line strings, see [Usage tips](#usage-tips).|
+|*output_schema*|string| :heavy_check_mark:|A `type` literal that defines the output schema of the tabular data, returned by the Python code. The format is: `typeof(`*ColumnName*`:` *ColumnType*[, ...]`)`. For example, `typeof(col1:string, col2:long)`. To extend the input schema, use the following syntax: `typeof(*, col1:string, col2:long)`.|
+|*script*|string| :heavy_check_mark:|The valid Python script to execute. To generate multi-line strings, see [Usage tips](#usage-tips).|
 |*script_parameters*|dynamic||A property bag of name value pairs to be passed to the Python script as the reserved `kargs` dictionary. For more information, see [Reserved Python variables](#reserved-python-variables).|
 |*hint.distribution*|string||A hint for the plugin's execution to be distributed across multiple cluster nodes. The default value is `single`. `single` means a single instance of the script will run over the entire query data. `per_node` means that if the query before the Python block is distributed, an instance of the script will run on each node, on the data that it contains.|
 |*hint.remote*|string||This hint is only relevant for cross cluster queries. The default value is `auto`. `auto` means the server decides automatically in which cluster the Python code is executed. Setting the value to `local` forces executing the Python code on the local cluster. Use it in case the Python plugin is disabled on the remote cluster.|

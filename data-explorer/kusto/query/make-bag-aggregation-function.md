@@ -23,7 +23,7 @@ Creates a `dynamic` JSON property bag (dictionary) of all the values of *expr* i
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-| *expr* | dynamic | &check; | The expression used for the aggregation calculation. |
+| *expr* | dynamic |  :heavy_check_mark: | The expression used for the aggregation calculation. |
 | *maxSize* | int |  | The limit on the maximum number of elements returned. The default and max value is 1048576. |
 
 > [!NOTE]

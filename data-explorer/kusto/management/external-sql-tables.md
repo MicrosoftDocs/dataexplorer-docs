@@ -38,10 +38,10 @@ To `.create-or-alter` an external table using managed identity authentication re
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-|*TableName* | string | &check; | The name of the external table. The name must follow the rules for [entity names](../query/schema-entities/entity-names.md), and an external table can't have the same name as a regular table in the same database.|
-|*Schema* | string | &check; | The external data schema is a comma-separated list of one or more column names and [data types](../query/scalar-data-types/index.md), where each item follows the format: *ColumnName* `:` *ColumnType*.|
+|*TableName* | string |  :heavy_check_mark: | The name of the external table. The name must follow the rules for [entity names](../query/schema-entities/entity-names.md), and an external table can't have the same name as a regular table in the same database.|
+|*Schema* | string |  :heavy_check_mark: | The external data schema is a comma-separated list of one or more column names and [data types](../query/scalar-data-types/index.md), where each item follows the format: *ColumnName* `:` *ColumnType*.|
 |*SqlTableName*| string | | The name of the SQL table not including the database name. For example, "MySqlTable" and not "db1.MySqlTable". If the name of the table contains a period ("."), use ['Name.of.the.table'] notation.</br></br>This specification is required for all types of tables except for Cosmos DB, as for Cosmos DB the collection name is part of the connection string. |
-|*SqlConnectionString*| string |&check;| The connection string to the SQL server. |
+|*SqlConnectionString*| string | :heavy_check_mark:| The connection string to the SQL server. |
 |*SqlDialect*| string | |Indicates the type of SQL external table. Microsoft SQL Server is the default. For MySQL, specify `MySQL`. For PostgreSQL, specify `PostgreSQL`. For Cosmos DB, specify `CosmosDbSql`.|
 |*Property*|string||A key-value property pair in the format *PropertyName* `=` *PropertyValue*. See [optional properties](#optional-properties).|
 

@@ -30,10 +30,10 @@ The function `series_fit_poly_fl()` is a [user-defined function (UDF)](../query/
 
 |Name|Type|Required|Description|
 |--|--|--|--|
-|*y_series*|string|&check;|The name of the input table column containing the [dependent variable](https://en.wikipedia.org/wiki/Dependent_and_independent_variables). That is, the series to fit.|
-|*y_fit_series*|string|&check;|The name of the column to store the best fit series.|
-|*fit_coeff*|string|&check;|The name of the column to store the best fit polynomial coefficients.|
-|*degree*|int|&check;|The required order of the polynomial to fit. For example, 1 for linear regression, 2 for quadratic regression, and so on.|
+|*y_series*|string| :heavy_check_mark:|The name of the input table column containing the [dependent variable](https://en.wikipedia.org/wiki/Dependent_and_independent_variables). That is, the series to fit.|
+|*y_fit_series*|string| :heavy_check_mark:|The name of the column to store the best fit series.|
+|*fit_coeff*|string| :heavy_check_mark:|The name of the column to store the best fit polynomial coefficients.|
+|*degree*|int| :heavy_check_mark:|The required order of the polynomial to fit. For example, 1 for linear regression, 2 for quadratic regression, and so on.|
 |*x_series*|string||The name of the column containing the [independent variable](https://en.wikipedia.org/wiki/Dependent_and_independent_variables), that is, the x or time axis. This parameter is optional, and is needed only for [unevenly spaced series](https://en.wikipedia.org/wiki/Unevenly_spaced_time_series). The default value is an empty string, as x is redundant for the regression of an evenly spaced series.|
 |*x_istime*|bool||This parameter is needed only if *x_series* is specified and it's a vector of datetime.|
 

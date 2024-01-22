@@ -37,7 +37,7 @@ If the *TableName* isn't specified, you must have at least [Database Admin](./ac
 | Name | Type | Required | Description |
 |--|--|--|--|
 |`whatif`|string||If specified, the extents will be reported instead of being dropped.|
-| *Query* | string | &check; | The results of this [Kusto Query Language (KQL)](../query/index.md) query specify the source tables and the extent IDs to be dropped. Should return a recordset with columns called "ExtentId" and "TableName".|
+| *Query* | string |  :heavy_check_mark: | The results of this [Kusto Query Language (KQL)](../query/index.md) query specify the source tables and the extent IDs to be dropped. Should return a recordset with columns called "ExtentId" and "TableName".|
 
 ### Drop a specific or multiple extents
 
@@ -47,7 +47,7 @@ If the *TableName* isn't specified, you must have at least [Database Admin](./ac
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-| *ExtentIds* | guid | &check; | One or more comma-separated unique identifiers of the extents to be dropped.|
+| *ExtentIds* | guid |  :heavy_check_mark: | One or more comma-separated unique identifiers of the extents to be dropped.|
 | *TableName* | string |  | The name of the table where the extent to be dropped is located. |
 
 ### Drop extents by specified properties
@@ -58,10 +58,10 @@ If the *TableName* isn't specified, you must have at least [Database Admin](./ac
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-| *N* | int | &check; | Drop extents older than *N* days/hours. |
+| *N* | int |  :heavy_check_mark: | Drop extents older than *N* days/hours. |
 | *TableName* | string |  | The name of the table where the extent to be dropped is located |
-| *Size* | int | &check; | Trim the data in the database until the sum of extents matches the required size (MaxSize). |
-| *LimitCount* | int | &check; | Applied to first *LimitCount* extents. |
+| *Size* | int |  :heavy_check_mark: | Trim the data in the database until the sum of extents matches the required size (MaxSize). |
+| *LimitCount* | int |  :heavy_check_mark: | Applied to first *LimitCount* extents. |
 
 The command supports emulation mode that produces an output as if the command would have run, but without actually executing it. Use `.drop-pretend` instead of `.drop`.
 

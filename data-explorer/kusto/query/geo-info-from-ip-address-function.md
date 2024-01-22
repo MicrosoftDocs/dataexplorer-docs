@@ -19,7 +19,7 @@ Retrieves geolocation information about IPv4 or IPv6 addresses.
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-| *IpAddress*| string | &check; | IPv4 or IPv6 address to retrieve geolocation information about.|
+| *IpAddress*| string |  :heavy_check_mark: | IPv4 or IPv6 address to retrieve geolocation information about.|
 
 ## Returns
 

@@ -138,7 +138,7 @@ items:
       - name: Get data
         items:
           - name: Data ingestion overview
-            displayName: pipelines, connectors, plugins, Python, .NET, Java, Node, REST
+            displayName: ingest, pipelines, connectors, plugins, Python, .NET, Java, Node, REST
             href: ingest-data-overview.md
           - name: Get data in the web UI
             items:
@@ -322,6 +322,8 @@ items:
             href: web-ui-kql.md
           - name: Query sample data
             href: web-query-data.md
+      - name: Query data in Azure Storage external tables
+        href: external-azure-storage-tables-query.md
       - name: Query data in Azure Data Lake
         href: data-lake-query-data.md
       - name: Query data in Azure Monitor

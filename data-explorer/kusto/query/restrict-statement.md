@@ -30,7 +30,7 @@ The middle-tier application can prefix the user's query with a **logical model**
 
 |Name|Type|Required|Description|
 |--|--|--|--|
-|*EntitySpecifiers*|string|&check;|One or more comma-separated entity specifiers. The possible values are:<br/>- An identifier defined by a let statement as a tabular view<br/>- A table or function reference, similar to one used by a union statement<br/>- A pattern defined by a pattern declaration<br/>|
+|*EntitySpecifiers*|string| :heavy_check_mark:|One or more comma-separated entity specifiers. The possible values are:<br/>- An identifier defined by a let statement as a tabular view<br/>- A table or function reference, similar to one used by a union statement<br/>- A pattern defined by a pattern declaration<br/>|
 
 > [!NOTE]
 >

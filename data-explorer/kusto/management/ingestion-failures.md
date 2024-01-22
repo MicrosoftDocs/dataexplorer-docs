@@ -7,7 +7,7 @@ ms.date: 10/05/2023
 ---
 # .show ingestion failures command
 
-This command returns information about ingestion failures associated with the use of [data ingestion management commands](../../ingest-data-overview.md#ingest-management-commands). 
+This command returns information about ingestion failures associated with the use of data ingestion management commands. 
 
 This command only shows ingestion failures related to data ingestion management commands and doesn't include failures from other stages of the ingestion process. Failures from all stages of ingestion are recorded in ingestion [metrics](../../using-metrics.md) and [diagnostic logs](../../using-diagnostic-logs.md).
 
@@ -33,8 +33,8 @@ To return an ingestion failure for a specific operation ID:
 
 |Name|Type|Required|Description|
 |--|--|--|--|
-|*Condition*|string|&check;|The condition to match in order for the ingestion failure to be returned.|
-|*OperationId|guid|&check;|The operation ID of the ingestion failure to return.|
+|*Condition*|string| :heavy_check_mark:|The condition to match in order for the ingestion failure to be returned.|
+|*OperationId|guid| :heavy_check_mark:|The operation ID of the ingestion failure to return.|
 
 ## Returns
 

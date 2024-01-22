@@ -51,7 +51,7 @@ If the `SystemFlush` condition is set, a batch will be sealed when a system flus
 
 | Type             | Property                | Default | Low latency setting | Minimum value | Maximum value |
 |------------------|-------------------------|---------|-------------|--------|----|
-| Number of items  | MaximumNumberOfItems    | 1000    | 1000        | 1      | 25,000 |
+| Number of items  | MaximumNumberOfItems    | 500     | 500         | 1      | 25,000 |
 | Data size (MB)   | MaximumRawDataSizeMB    | 1024    | 1024        | 100     | 4096 |
 | Time (sec)       | MaximumBatchingTimeSpan | 300     | 20 - 30     | 10 | 1800 |
 

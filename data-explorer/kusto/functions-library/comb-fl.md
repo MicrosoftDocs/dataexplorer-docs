@@ -21,8 +21,8 @@ The function `comb_fl()` is a [user-defined function (UDF)](../query/functions/u
 
 |Name|Type|Required|Description|
 |--|--|--|--|
-|*n*|int, long, or real|&check;|The total number of items.|
-|*k*|int, long, or real|&check;|The selected number of items.|
+|*n*|int, long, or real| :heavy_check_mark:|The total number of items.|
+|*k*|int, long, or real| :heavy_check_mark:|The selected number of items.|
 
 ## Function definition
 

@@ -24,15 +24,15 @@ You must have at least [Database Viewer](../access-control/role-based-access-con
 | Name | Type | Required | Description |
 |--|--|--|--|
 | `async` | string | | If specified, the command runs in asynchronous mode. See [asynchronous mode](#asynchronous-mode).|
-| `compressed` | string | | If specified, the output storage artifacts are compressed as `.gz` files. See the `compressionType` [property](#properties) for compressing Parquet files as snappy.|
-| *OutputDataFormat* | string | &check; | Indicates the data format of the storage artifacts written by the command. Supported values are: `csv`, `tsv`, `json`, and `parquet`.|
+| `compressed` | string | | If specified, the output storage artifacts are compressed as `.gz` files. See the `compressionType` [supported property](#supported-properties) for compressing Parquet files as snappy.|
+| *OutputDataFormat* | string |  :heavy_check_mark: | Indicates the data format of the storage artifacts written by the command. Supported values are: `csv`, `tsv`, `json`, and `parquet`.|
 | *StorageConnectionString* | string | | One or more [storage connection strings](../../api/connection-strings/storage-connection-strings.md) that indicate which storage to write the data to. More than one storage connection string may be specified for scalable writes. Each such connection string must indicate the credentials to use when writing to storage. For example, when writing to Azure Blob Storage, the credentials can be the storage account key, or a shared access key (SAS) with the permissions to read, write, and list blobs.|
-| *PropertyName*, *PropertyValue* | string | | A comma-separated list of key-value property pairs. See [properties](#properties).|
+| *PropertyName*, *PropertyValue* | string | | A comma-separated list of key-value property pairs. See [supported properties](#supported-properties).|
 
 > [!NOTE]
 > We highly recommended exporting data to storage that is co-located in the same region as the cluster itself. This includes data that is exported so it can be transferred to another cloud service in other regions. Writes should be done locally, while reads can happen remotely.
 
-## Properties
+## Supported properties
 
 | Property | Type | Description |
 |--|--|--|
@@ -43,10 +43,9 @@ You must have at least [Database Viewer](../access-control/role-based-access-con
 | `compressionType` | `string` | Indicates the type of compression to use. Possible values are `gzip` or `snappy`. Default is `gzip`. `snappy` can (optionally) be used for `parquet` format. |
 | `distribution` | `string` | Distribution hint (`single`, `per_node`, `per_shard`). If value equals `single`, a single thread writes to storage. Otherwise, export writes from all nodes executing the query in parallel. See [evaluate plugin operator](../../query/evaluate-operator.md). Defaults to `per_shard`. |
 | `persistDetails` | `bool` | Indicates that the command should persist its results (see `async` flag). Defaults to `true` in async runs, but can be turned off if the caller doesn't require the results). Defaults to `false` in synchronous executions, but can be turned on in those as well. |
-| `sizeLimit` | `long` | The size limit in bytes of a single storage artifact being written (prior to compression). Allowed range is 100 MB (default) to 4 GB. |
+| `sizeLimit` | `long` | The size limit in bytes of a single storage artifact being written (prior to compression). Valid range: 100 MB (default) to 4 GB. |
 | `parquetRowGroupSize` | `int` | Relevant only when data format is Parquet. Controls the row group size in the exported files. Default row group size is 100,000 records. |
 | `distributed` | `bool` | Disable/enable distributed export. Setting to false is equivalent to `single` distribution hint. Default is true. |
-| `useNativeParquetWriter` | `bool` | Use the new export implementation when exporting to Parquet, this implementation is a more performant, resource light export mechanism. An exported 'datetime' column is currently unsupported by Synapse SQL 'COPY'. Default is false. |
 
 ## Authentication and authorization
 
@@ -180,18 +179,3 @@ On export, Kusto data types are mapped to Parquet data types using the following
 | `string` | `BYTE_ARRAY` | UTF-8 | |
 | `timespan` | `INT64` | | Stored as ticks (100-nanosecond units) count |
 | `decimal` | `FIXED_LENGTH_BYTE_ARRAY` | DECIMAL | |
-
-When specifying 'useNativeParquetWriter=false', Kusto data types are mapped to Parquet data types using the following rules:
-
-| Kusto Data Type | Parquet Data Type | Parquet Annotation | Comments |
-| --------------- | ----------------- | ------------------ | -------- |
-| `bool`     | `BOOLEAN` | | |
-| `datetime` | `INT96` | | |
-| `dynamic`  | `BYTE_ARRAY` | UTF-8 | Serialized as JSON string |
-| `guid` | `BYTE_ARRAY` | UTF-8 | |
-| `int` | `INT32` | | |
-| `long` | `INT64` | | |
-| `real` | `DOUBLE` | | |
-| `string` | `BYTE_ARRAY` | UTF-8 | |
-| `timespan` | `INT64` | | Stored as ticks (100-nanosecond units) count |
-| `decimal` | `BYTE_ARRAY` | DECIMAL | |

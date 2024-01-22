@@ -19,12 +19,12 @@ Computes the p_value of the [Welch-test function](https://en.wikipedia.org/wiki/
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-| *mean1* | real or long | &check; | The mean (average) value of the first series.|
-| *variance1* | real or long | &check; | The variance value of the first series.|
-| *count1* | real or long | &check; | The count of values in the first series.|
-| *mean2* | real or long | &check; | The mean (average) value of the second series.|
-| *variance2* | real or long | &check; | The variance value of the second series.|
-| *count2* | real or long | &check; | The count of values in the second series.|
+| *mean1* | real or long |  :heavy_check_mark: | The mean (average) value of the first series.|
+| *variance1* | real or long |  :heavy_check_mark: | The variance value of the first series.|
+| *count1* | real or long |  :heavy_check_mark: | The count of values in the first series.|
+| *mean2* | real or long |  :heavy_check_mark: | The mean (average) value of the second series.|
+| *variance2* | real or long |  :heavy_check_mark: | The variance value of the second series.|
+| *count2* | real or long |  :heavy_check_mark: | The count of values in the second series.|
 
 ## Returns
 

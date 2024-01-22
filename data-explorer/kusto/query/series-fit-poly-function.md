@@ -26,7 +26,7 @@ Applies a polynomial regression from an independent variable (x_series) to a dep
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-| *y_series* | dynamic | &check; | An array of numeric values containing the [dependent variable](https://en.wikipedia.org/wiki/Dependent_and_independent_variables). |
+| *y_series* | dynamic |  :heavy_check_mark: | An array of numeric values containing the [dependent variable](https://en.wikipedia.org/wiki/Dependent_and_independent_variables). |
 | *x_series* | dynamic | | An array of numeric values containing the [independent variable](https://en.wikipedia.org/wiki/Dependent_and_independent_variables). Required only for [unevenly spaced series](https://en.wikipedia.org/wiki/Unevenly_spaced_time_series). If not specified, it's set to a default value of [1, 2, ..., length(*y_series*)].|
 | *degree* | | | The required order of the polynomial to fit. For example, 1 for linear regression, 2 for quadratic regression, and so on. Defaults to 1, which indicates linear regression.|
 

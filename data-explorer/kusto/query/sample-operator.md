@@ -24,8 +24,8 @@ Returns up to the specified number of random rows from the input table.
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-| *T*| string | &check; | The input tabular expression. |
-| *NumberOfRows*| int, long, or real | &check; | The number of rows to return. You can specify any numeric expression.|
+| *T*| string |  :heavy_check_mark: | The input tabular expression. |
+| *NumberOfRows*| int, long, or real |  :heavy_check_mark: | The number of rows to return. You can specify any numeric expression.|
 
 ## Examples
 

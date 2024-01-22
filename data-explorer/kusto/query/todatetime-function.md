@@ -3,14 +3,14 @@ title:  todatetime()
 description: Learn how to use the todatetime() function to convert the input expression to a datetime value.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 07/19/2023
+ms.date: 01/08/2024
 ---
 # todatetime()
 
 Converts the input to a [datetime](./scalar-data-types/datetime.md) scalar value.
 
 > [!NOTE]
-> Prefer using [datetime()](./scalar-data-types/datetime.md) when possible.
+> When possible, use [datetime literals](./scalar-data-types/datetime.md#) instead.
 
 ## Syntax
 
@@ -22,7 +22,7 @@ Converts the input to a [datetime](./scalar-data-types/datetime.md) scalar value
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-| *value* | scalar | &check; | The value to convert to [datetime](./scalar-data-types/datetime.md).|
+| *value* | scalar |  :heavy_check_mark: | The value to convert to [datetime](./scalar-data-types/datetime.md).|
 
 ## Returns
 

@@ -21,7 +21,7 @@ An additional table can be created by using the `with` clause.
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-| *ColumnName* | string | &check; | The column name, or list of column names, to be summarized.|
+| *ColumnName* | string |  :heavy_check_mark: | The column name, or list of column names, to be summarized.|
 | *filterPipe* | string | | A query expression applied to the input table.|
 
 ## Returns
