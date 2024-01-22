@@ -607,8 +607,8 @@ items:
           - name: Install the Kusto emulator
             href: kusto-emulator-install.md
   - name: Integrate
-    items:
-      - name:  Connectors , tools, and integrations overview
+    items:    
+      - name:  Connectors, tools, and integrations overview
         href: integrate-overview.md
       - name: Orchestrate
         items:
