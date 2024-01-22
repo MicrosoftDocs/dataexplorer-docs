@@ -48,12 +48,12 @@ The following table summarizes the available connectors and their capabilities:
 | [Azure Functions](#azure-functions)                                                   | :heavy_check_mark: | :heavy_check_mark: |                    |                    | :heavy_check_mark: |
 | [Azure IoT Hubs](#azure-iot-hubs)                                                     | :heavy_check_mark: |                    |                    |                    |                    |
 | [Azure Stream Analytics](#azure-stream-analytics)                                     | :heavy_check_mark: |                    |                    |                    |                    |
-| [Fluent Bit](#fluent-bit)                                                             |                    |                    |                    |                    |                    |
+| [Fluent Bit](#fluent-bit)                                                             | :heavy_check_mark: |                    |                    |                    |                    |
 | [JDBC](#jdbc)                                                                         |                    |                    |                    |                    | :heavy_check_mark: |
-| [Logic Apps](#logic-apps)                                                             |                    |                    |                    |                    | :heavy_check_mark: |
+| [Logic Apps](#logic-apps)                                                             | :heavy_check_mark: | :heavy_check_mark: |                    | :heavy_check_mark: | :heavy_check_mark: |
 | [Logstash](#logstash)                                                                 | :heavy_check_mark: |                    |                    |                    |                    |
 | [Matlab](#matlab)                                                                     |                    |                    |                    |                    | :heavy_check_mark: |
-| [NLog](#nlog)                                                                         |                    |                    |                    |                    | :heavy_check_mark: |
+| [NLog](#nlog)                                                                         | :heavy_check_mark: |                    |                    |                    |                    |
 | [ODBC](#odbc)                                                                         |                    |                    |                    |                    | :heavy_check_mark: |
 | [Open Telemetry](#open-telemetry)                                                     | :heavy_check_mark: |                    |                    |                    |                    |
 | [Power Apps](#power-apps)                                                             | :heavy_check_mark: | :heavy_check_mark: |                    |                    | :heavy_check_mark: |
@@ -105,7 +105,6 @@ The following are detailed descriptions of connectors and tools and integrations
 [Apache Kafka](https://kafka.apache.org/documentation/) is a distributed streaming platform for building real-time streaming data pipelines that reliably move data between systems or applications. Kafka Connect is a tool for scalable and reliable streaming of data between Apache Kafka and other data systems. The Kafka Sink serves as the connector from Kafka and doesn't require using code. This is gold certified by Confluent - has gone through comprehensive review and testing for quality, feature completeness, compliance with standards, and for performance.
 
 * **Functionality:** Ingestion
-
 * **Ingestion type supported:** Batching, Streaming
 * **Use cases:** Logs, Telemetry, Time series
 * **Underlying SDK:** [Java](kusto/api/java/kusto-java-client-library.md)
@@ -118,7 +117,6 @@ The following are detailed descriptions of connectors and tools and integrations
 [Apache Flink](https://flink.apache.org/) is a framework and distributed processing engine for stateful computations over unbounded and bounded data streams. The connector implements data sink for moving data across Azure Data Explorer and Flink clusters. Using Azure Data Explorer and Apache Flink, you can build fast and scalable applications targeting data driven scenarios. For example, machine learning (ML), Extract-Transform-Load (ETL), and Log Analytics.
 
 * **Functionality:** Ingestion
-
 * **Ingestion type supported:** Streaming
 * **Use cases:** Telemetry
 * **Underlying SDK:** [Java](kusto/api/java/kusto-java-client-library.md)
@@ -127,10 +125,9 @@ The following are detailed descriptions of connectors and tools and integrations
 
 ### Apache Log4J 2
 
-Log4j is a popular logging framework for Java applications maintained by the Apache Foundation. Log4j allows developers to control which log statements are output with arbitrary granularity based on the logger's name, logger level, and message pattern. The Apache Log4J 2 sink allows you to stream your log data to your database, where you can analyze and visualize your logs in real time.
+[Log4J](https://logging.apache.org/log4j/2.x/)  is a popular logging framework for Java applications maintained by the Apache Foundation. Log4j allows developers to control which log statements are output with arbitrary granularity based on the logger's name, logger level, and message pattern. The Apache Log4J 2 sink allows you to stream your log data to your database, where you can analyze and visualize your logs in real time.
 
 * **Functionality:** Ingestion
-
 * **Ingestion type supported:** Batching, Streaming
 * **Use cases:** Logs
 * **Underlying SDK:** [Java](kusto/api/java/kusto-java-client-library.md)
@@ -143,7 +140,6 @@ Log4j is a popular logging framework for Java applications maintained by the Apa
 [Apache Spark](https://spark.apache.org/) is a unified analytics engine for large-scale data processing. The [Spark connector](spark-connector.md) is an open source project that can run on any Spark cluster. It implements data source and data sink for moving data to or from Spark clusters. Using the Apache Spark connector, you can build fast and scalable applications targeting data driven scenarios. For example, machine learning (ML), Extract-Transform-Load (ETL), and Log Analytics. With the connector, your database becomes a valid data store for standard Spark source and sink operations, such as read, write, and writeStream.
 
 * **Functionality:** Ingestion, Export
-
 * **Ingestion type supported:** Batching, Streaming
 * **Use cases:** Telemetry
 * **Underlying SDK:** [Java](kusto/api/java/kusto-java-client-library.md)
@@ -156,9 +152,9 @@ Log4j is a popular logging framework for Java applications maintained by the Apa
 [Apache Spark](https://spark.apache.org/) is a parallel processing framework that supports in-memory processing to boost the performance of big data analytic applications. [Apache Spark in Azure Synapse](/azure/synapse-analytics/spark/apache-spark-overview) Analytics is one of Microsoft's implementations of Apache Spark in the cloud. You can access a database from [Synapse Studio](/azure/synapse-analytics/) with Apache Spark for Azure Synapse Analytics.
 
 * **Functionality:** Ingestion, Export
-
 * **Ingestion type supported:** Batching
 * **Use cases:** Telemetry
+* **Underlying SDK:** [Java](kusto/api/java/kusto-java-client-library.md)
 * **Documentation:** [Connect to an Azure Synapse workspace](/azure/synapse-analytics/quickstart-connect-azure-data-explorer)
 
 ### Azure Cosmos DB
@@ -166,7 +162,6 @@ Log4j is a popular logging framework for Java applications maintained by the Apa
 The [Azure Cosmos DB](/azure/cosmos-db/) change feed data connection is an ingestion pipeline that listens to your Cosmos DB change feed and ingests the data into your database.
 
 * **Functionality:** Ingestion
-
 * **Ingestion type supported:** Batching, Streaming
 * **Use cases:** Change feed
 * **Documentation:** [Ingest data from Azure Cosmos DB (Preview)](ingest-data-cosmos-db-connection.md)
@@ -176,7 +171,6 @@ The [Azure Cosmos DB](/azure/cosmos-db/) change feed data connection is an inges
 [Azure Data Factory](/azure/data-factory) (ADF) is a cloud-based data integration service that allows you to integrate different data stores and perform activities on the data.
 
 * **Functionality:** Ingestion, Export
-
 * **Ingestion type supported:** Batching
 * **Use cases:** Data orchestration
 * **Documentation:** [Copy data to your database by using Azure Data Factory](data-factory-load-data.md)
@@ -186,7 +180,6 @@ The [Azure Cosmos DB](/azure/cosmos-db/) change feed data connection is an inges
 Event Grid ingestion is a pipeline that listens to Azure storage, and updates your database to pull information when subscribed events occur. You can configure continuous ingestion from Azure Storage (Blob storage and ADLSv2) with an [Azure Event Grid](/azure/event-grid/overview) subscription for blob created or blob renamed notifications and streaming the notifications via Azure Event Hubs.
 
 * **Functionality:** Ingestion
-
 * **Ingestion type supported:** Batching, Streaming
 * **Use cases:** Event processing
 * **Documentation:** [Event Grid data connection](ingest-data-event-grid-overview.md)
@@ -196,7 +189,6 @@ Event Grid ingestion is a pipeline that listens to Azure storage, and updates yo
 [Azure Event Hubs](/azure/event-hubs/event-hubs-about) is a big data streaming platform and event ingestion service. You can configure continuous ingestion from customer-managed Event Hubs.
 
 * **Functionality:** Ingestion
-
 * **Ingestion type supported:** Batching, Streaming
 * **Documentation:** [Azure Event Hubs data connection](ingest-data-event-hub-overview.md)
 
@@ -205,17 +197,17 @@ Event Grid ingestion is a pipeline that listens to Azure storage, and updates yo
 [Azure Functions](/azure/azure-functions/functions-overview) allow you to run serverless code in the cloud on a schedule or in response to an event. With input and output bindings for Azure Functions, you can integrate your database into your workflows to ingest data and run queries against your database.
 
 * **Functionality:** Ingestion, Export
-
 * **Ingestion type supported:** Batching
-* **Use cases:** Workflow integrations.
+* **Use cases:** Workflow integrations
 * **Documentation:** [Integrating Azure Functions using input and output bindings (preview)](integrate-azure-functions.md)
+* **Community Blog:** [Azure Data Explorer (Kusto) Bindings for Azure Functions](https://techcommunity.microsoft.com/t5/azure-data-explorer-blog/azure-data-explorer-kusto-bindings-for-azure-functions-public/ba-p/3828472)
+
 
 ### Azure IoT Hubs
 
 [Azure IoT Hub](/azure/iot-hub/about-iot-hub) is a managed service, hosted in the cloud, that acts as a central message hub for bi-directional communication between your IoT application and the devices it manages. You can configure continuous ingestion from customer-managed IoT Hubs, using its [Event Hubs compatible built in endpoint of device-to-cloud messages](/azure/iot-hub/iot-hub-devguide-messages-d2c#routing-endpoints).
 
 * **Functionality:** Ingestion
-
 * **Ingestion type supported:** Batching, Streaming
 * **Use cases:**  IoT data
 * **Documentation:** [IoT Hub data connection](ingest-data-iot-hub-overview.md)
@@ -225,7 +217,6 @@ Event Grid ingestion is a pipeline that listens to Azure storage, and updates yo
 [Azure Stream Analytics](/azure/stream-analytics/stream-analytics-introduction) is a real-time analytics and complex event-processing engine that's designed to process high volumes of fast streaming data from multiple sources simultaneously.
 
 * **Functionality:** Ingestion
-
 * **Ingestion type supported:** Batching, Streaming
 * **Use cases:** Event processing
 * **Documentation:** [Ingest data from Azure Stream Analytics](stream-analytics-connector.md)
@@ -235,33 +226,29 @@ Event Grid ingestion is a pipeline that listens to Azure storage, and updates yo
 [Fluent Bit](https://fluentbit.io/) is an open-source agent that collects logs, metrics, and traces from various sources. It allows you to filter, modify, and aggregate event data before sending it to storage.
 
 * **Functionality:** Ingestion
-
 * **Ingestion type supported:** Batching, Streaming
 * **Use cases:** Logs, Metrics, Traces
-* **Repository:** [fluent-bit](https://github.com/fluent/fluent-bit)
+* **Repository:** [fluent-bit Kusto Output Plugin](https://github.com/fluent/fluent-bit/tree/master/plugins/out_azure_kusto)
 * **Documentation:** [Ingest data with Fluent Bit into Azure Data Explorer](fluent-bit.md)
+* **Community Blog:** [Getting started with Fluent bit and Azure Data Explorer](https://techcommunity.microsoft.com/t5/azure-data-explorer-blog/getting-started-with-fluent-bit-and-azure-data-explorer/ba-p/3781918)
 
 ### JDBC
 
 Java Database Connectivity (JDBC) is a Java API used to connect to databases and execute queries. You can use JDBC to connect to Azure Data Explorer.
 
 * **Functionality:** Query, visualization
-
 * **Ingestion type supported:**
 * **Use cases:**
 * **Underlying SDK:** [Java](kusto/api/java/kusto-java-client-library.md)
-* **Repository:** 
 * **Documentation:** [Connect to Azure Data Explorer with JDBC](connect-jdbc.md)
-* **Community Blog:**
 
 ### Logic Apps
 
 The [Microsoft Logic Apps](/azure/logic-apps/logic-apps-what-are-logic-apps) connector allows you to run queries and commands automatically as part of a scheduled or triggered task.
 
-* **Functionality:** Query and commands
-
+* **Functionality:** Ingestion, Export
 * **Ingestion type supported:** Batching
-* **Use cases:** 
+* **Use cases:** Data orchestration
 * **Documentation:** [Microsoft Logic Apps and Azure Data Explorer](kusto/tools/logicapps.md)
 
 ### Logstash
@@ -269,7 +256,6 @@ The [Microsoft Logic Apps](/azure/logic-apps/logic-apps-what-are-logic-apps) con
 [The Logstash plugin](ingest-data-logstash.md) enables you to process events from Logstash into an Azure Data Explorer database for later analysis.
 
 * **Functionality:** Ingestion
-
 * **Ingestion type supported:** Batching
 * **Use cases:** Logs
 * **Underlying SDK:** [Java](kusto/api/java/kusto-java-client-library.md)
@@ -282,9 +268,7 @@ The [Microsoft Logic Apps](/azure/logic-apps/logic-apps-what-are-logic-apps) con
 MATLAB is a programming and numeric computing platform used to analyze data, develop algorithms, and create models. You can get an authorization token in MATLAB for querying your data in Azure Data Explorer.
 
 * **Functionality:** Query
-
 * **Documentation:** [Query data using MATLAB](query-matlab.md)
-* **Community Blog:**
 
 ### NLog
 
@@ -307,10 +291,7 @@ Open Database Connectivity ([ODBC](/sql/odbc/reference/odbc-overview)) is a wide
 
 * **Ingestion type supported:** Batching, Streaming
 * **Use cases:** Telemetry, Logs, Metrics
-* **Underlying SDK:** 
-* **Repository:** 
 * **Documentation:** [Connect to Azure Data Explorer with ODBC](connect-odbc.md)
-* **Community Blog:**
 
 ### Open Telemetry
 
@@ -330,7 +311,6 @@ Open Database Connectivity ([ODBC](/sql/odbc/reference/odbc-overview)) is a wide
 [Power Apps](https://powerapps.microsoft.com) is a suite of apps, services, connectors, and data platform that provides a rapid application development environment to build custom apps that connect to your business data. The Power Apps connector is useful if you have a large and growing collection of streaming data in Azure Data Explorer and want to build a low code, highly functional app to make use of this data. 
 
 * **Functionality:** Query, Ingestion, Export
-
 * **Ingestion type supported:** Batching
 * **Use cases:** 
 * **Documentation:** [Use Power Apps to query data in Azure Data Explorer](power-apps-connector.md)
@@ -341,7 +321,6 @@ Open Database Connectivity ([ODBC](/sql/odbc/reference/odbc-overview)) is a wide
 [Power Automate](/power-automate/getting-started) is an orchestration service used to automate business processes. The :::no-loc text="Power Automate"::: (previously Microsoft Flow) connector enables you to orchestrate and schedule flows, send notifications, and alerts, as part of a scheduled or triggered task.
 
 * **Functionality:** Ingestion, Export
-
 * **Ingestion type supported:** Batching
 * **Use cases:** Data orchestration
 * **Documentation:** [Microsoft Power Automate connector](flow.md)
@@ -364,14 +343,13 @@ Serilog is a popular logging framework for .NET applications. Serilog allows dev
 [Splunk Enterprise](https://www.splunk.com/en_us/products/splunk-enterprise.html) is a software platform that allows you to ingest data from many sources simultaneously.The [Azure Data Explorer add-on](https://splunkbase.splunk.com/app/6979) sends data from Splunk to a table in your cluster.
 
 * **Functionality:** Ingestion
-
 * **Ingestion type supported:** Batching
 * **Use cases:** Logs
 * **Underlying SDK:** [Python](kusto/api/python/kusto-python-client-library.md)
-* **Repository:** 
+* **Repository:** https://github.com/Azure/azure-kusto-splunk/tree/main/splunk-adx-alert-addon
 * **Documentation:** [Ingest data from Splunk](ingest-data-splunk.md)
-* **Splunk Base:**
-* **Community Blog:** 
+* **Splunk Base:** [Microsoft Azure Data Explorer Add-On for Splunk](https://splunkbase.splunk.com/app/6979)
+* **Community Blog:** [Getting started with Microsoft Azure Data Explorer Add-On for Splunk](https://techcommunity.microsoft.com/t5/azure-data-explorer-blog/getting-started-with-microsoft-azure-data-explorer-add-on-for/ba-p/3917176)
 
 ### Splunk Universal Forwarder
 
@@ -379,11 +357,10 @@ Serilog is a popular logging framework for .NET applications. Serilog allows dev
 
 * **Ingestion type supported:** Batching
 * **Use cases:** Logs
-* **Underlying SDK:** [Python](kusto/api/python/kusto-python-client-library.md)
 * **Repository:** Microsoft Azure - https://github.com/Azure/azure-kusto-splunk
 * **Documentation:** [Ingest data from Splunk Universal Forwarder to Azure Data Explorer](ingest-data-splunk-uf.md)
-* **Splunk Base:** [Microsoft Azure Data Explorer Add-On for Splunk](https://splunkbase.splunk.com/app/6979)
-* **Community Blog:** 
+* **Community Blog:** [Ingest data using Splunk Universal forwarder into Azure Data Explorer](https://techcommunity.microsoft.com/t5/azure-data-explorer-blog/ingest-data-using-splunk-universal-forwarder-into-azure-data/ba-p/3964043)
+
 ### Telegraf
 
 Telegraf is an open source, lightweight, minimal memory foot print agent for collecting, processing and writing telemetry data including logs, metrics, and IoT data. Telegraf supports hundreds of input and output plugins. It's widely used and well supported by the open source community. The output plugin serves as the connector from Telegraf and supports ingestion of data from many types of input plugins into your database.
@@ -392,7 +369,7 @@ Telegraf is an open source, lightweight, minimal memory foot print agent for col
 
 * **Ingestion type supported:** Batching, Streaming
 * **Use cases:** Telemetry, Logs, Metrics
-* **Underlying SDK:** Go
+* **Underlying SDK:** [Go](https://learn.microsoft.com/en-us/azure/data-explorer/kusto/api/golang/kusto-golang-client-library)
 * **Repository:** InfluxData - https://github.com/influxdata/telegraf/tree/master/plugins/outputs/azure_data_explorer
 * **Documentation:** [Ingest data from Telegraf](ingest-data-telegraf.md)
 * **Community Blog:**  [New Azure Data Explorer output plugin for Telegraf enables SQL monitoring at huge scale](https://techcommunity.microsoft.com/t5/azure-data-explorer-blog/new-azure-data-explorer-output-plugin-for-telegraf-enables-sql/ba-p/2829444)
@@ -509,17 +486,15 @@ Delta Kusto is a Command-line interface (CLI) enabling Continuous Integration / 
 [Kqlmagic](https://github.com/microsoft/jupyter-Kqlmagic) extends the capabilities of the Python kernel in Jupyter Notebook so you can run [Kusto Query Language (KQL)](kusto/query/index.md) queries natively. You can combine Python and KQL to query and visualize data using the rich Plot.ly library integrated with the [render](kusto/query/render-operator.md) operator. The kqlmagic extension is compatible with Jupyter Lab, Visual Studio Code Jupyter extension, and Azure Data Studio, and supported data sources include Azure Data Explorer, Azure Monitor logs, and Application Insights.
 
 * **Functionality:** Query, Visualization
-
 * **Use cases:** 
 * **Documentation:** [Jupyter Notebooks](kqlmagic.md)
-* **Community Blog:** 
+* **Community Blog:** [Analyze data in Azure Data Explorer using KQL magic for Jupyter Notebook](https://techcommunity.microsoft.com/t5/azure-data-explorer/analyze-data-in-azure-data-explorer-using-kql-magic-for-jupyter/m-p/325835)
 
 ### KQL Parser
 
 The open source repo contains C# parser and a semantic analyzer as well as a translator project that generates the same libraries in Java Script.
 
 * **Functionality:**  language parsing
-
 * **Use cases:** 
 * **Documentation:** [Kusto Query Language parser](https://github.com/microsoft/Kusto-Query-Language)
 * **Community Blog:** 
@@ -529,7 +504,6 @@ The open source repo contains C# parser and a semantic analyzer as well as a tra
 Kusto.Explorer is free software for download and use on your Windows desktop. Kusto.Explorer allows you to query and analyze your data with Kusto Query Language (KQL) in a user-friendly interface. 
 
 * **Functionality:** Query, Visualization
-
 * **Ingestion type supported:**
 * **Use cases:** 
 * **Documentation:** [Installation and user interface](kusto/tools/kusto-explorer.md), [using Kusto.Explorer](kusto/tools/kusto-explorer-using.md)
@@ -542,11 +516,9 @@ Kusto.Cli is a command-line utility for sending queries and control commands
 on a Kusto cluster. 
 
 * **Functionality:**  Query
-
 * **Ingestion type supported:**
 * **Use cases:** 
 * **Documentation:** [Kusto CLI](kusto/tools/kusto-cli.md)
-* **Community Blog:** 
 
 ### Lightingest
 
@@ -558,14 +530,12 @@ Lightingest is  a command-line utility for ad-hoc data ingestion into Azure Data
 * **Use cases:** 
 * **Repository:** [LightIngest](https://github.com/Azure/Kusto-Lightingest/blob/main/README.md)
 * **Documentation:** [Use LightIngest to ingest data](lightingest.md)   
-* **Community Blog:** 
 
 ### Microsoft Purview
 
 Microsoft Purview simplifies data governance by offering a unified service to manage your data from various sources.
 
 * **Functionality:**  Governance
-
 * **Use cases:** 
 * **Documentation:** [Integrate Azure Data Explorer with Microsoft Purview](purview.md)
 * **Community Blog:** 
