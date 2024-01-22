@@ -23,8 +23,8 @@ For more information about other operators and to determine which operator is mo
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-| *T* | string |  :heavy_check_mark: | The tabular input whose records are to be filtered.|
-| *col* | string |  :heavy_check_mark: | The column by which to filter.|
+| *T* | `string` |  :heavy_check_mark: | The tabular input whose records are to be filtered.|
+| *col* | `string` |  :heavy_check_mark: | The column by which to filter.|
 | *expression* | scalar |  :heavy_check_mark: | The [regular expression](re2.md) used to filter. The maximum number of regex groups is 16. The [regular expression](re2.md) syntax supported by Kusto is that of the RE2 library. |
 
 ## Returns

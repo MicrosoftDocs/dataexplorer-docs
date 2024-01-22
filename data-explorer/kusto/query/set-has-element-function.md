@@ -19,7 +19,7 @@ Determines whether the specified set contains the specified element.
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-| *set* | dynamic |  :heavy_check_mark: | The input array to search.|
+| *set* | `dynamic` |  :heavy_check_mark: | The input array to search.|
 | *value* | |  :heavy_check_mark: | The value for which to search. The value should be of type `long`, `int`, `double`, `datetime`, `timespan`, `decimal`, `string`, `guid`, or `bool`.|
 
 ## Returns

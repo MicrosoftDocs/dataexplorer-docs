@@ -1,6 +1,6 @@
 ---
 title:  log_reduce_fl()
-description: This article describes the log_reduce_fl() user-defined function in Azure Data Explorer.
+description: Learn how to use the log_reduce_fl() function to find common patterns in semi-structured textual columns.
 ms.reviewer: adieldar
 ms.topic: reference
 ms.date: 05/07/2023
@@ -11,7 +11,7 @@ zone_pivot_groups: kql-flavors-all
 
 ::: zone pivot="azuredataexplorer, fabric"
 
-The function `log_reduce_fl()` finds common patterns in semi structured textual columns, such as log lines, and clusters the lines according to the extracted patterns. It outputs a summary table containing the found patterns sorted top down by their respective frequency.
+The function `log_reduce_fl()` finds common patterns in semi-structured textual columns, such as log lines, and clusters the lines according to the extracted patterns. It outputs a summary table containing the found patterns sorted top down by their respective frequency.
 
 [!INCLUDE [python-zone-pivot-fabric](../../includes/python-zone-pivot-fabric.md)]
 
@@ -27,16 +27,16 @@ The following parameters description is a summary. For more information, see [Mo
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-| *reduce_col* | string |  :heavy_check_mark: | The name of the string column the function is applied to. |
-| *use_logram* | bool | | Enable or disable the Logram algorithm. Default value is `true`. |
-| *use_drain* | bool | | Enable or disable the Drain algorithm. Default value is `true`. |
-| *custom_regexes* | dynamic | | A dynamic array containing pairs of regular expression and replacement symbols to be searched in each input row, and replaced with their respective matching symbol. Default value is `dynamic([])`. The default regex table replaces numbers, IPs and GUIDs. |
-| *custom_regexes_policy* | string | | Either 'prepend', 'append' or 'replace'. Controls whether custom_regexes are prepend/append/replace the default ones. Default value is 'prepend'. |
-| *delimiters* | dynamic | | A dynamic array containing delimiter strings. Default value is `dynamic([" "])`, defining space as the only single character delimiter. |
-| *similarity_th* | real | | Similarity threshold, used by the Drain algorithm. Increasing *similarity_th* results in more refined clusters. Default value is 0.5. If Drain is disabled, then this parameter has no effect.
-| *tree_depth* | int | | Increasing *tree_depth* improves the runtime of the Drain algorithm, but might reduce its accuracy. Default value is 4. If Drain is disabled, then this parameter has no effect. |
-| *trigram_th* | int | | Decreasing *trigram_th* increases the chances of Logram to replace tokens with wildcards. Default value is 10. If Logram is disabled, then this parameter has no effect. |
-| *bigram_th* | int | | Decreasing *bigram_th* increases the chances of Logram to replace tokens with wildcards. Default value is 15. If Logram is disabled, then this parameter has no effect. |
+| *reduce_col* | `string` |  :heavy_check_mark: | The name of the string column the function is applied to. |
+| *use_logram* | `bool` | | Enable or disable the Logram algorithm. Default value is `true`. |
+| *use_drain* | `bool` | | Enable or disable the Drain algorithm. Default value is `true`. |
+| *custom_regexes* | `dynamic` | | A dynamic array containing pairs of regular expression and replacement symbols to be searched in each input row, and replaced with their respective matching symbol. Default value is `dynamic([])`. The default regex table replaces numbers, IPs and GUIDs. |
+| *custom_regexes_policy* | `string` | | Either 'prepend', 'append' or 'replace'. Controls whether custom_regexes are prepend/append/replace the default ones. Default value is 'prepend'. |
+| *delimiters* | `dynamic` | | A dynamic array containing delimiter strings. Default value is `dynamic([" "])`, defining space as the only single character delimiter. |
+| *similarity_th* | `real` | | Similarity threshold, used by the Drain algorithm. Increasing *similarity_th* results in more refined clusters. Default value is 0.5. If Drain is disabled, then this parameter has no effect.
+| *tree_depth* | `int` | | Increasing *tree_depth* improves the runtime of the Drain algorithm, but might reduce its accuracy. Default value is 4. If Drain is disabled, then this parameter has no effect. |
+| *trigram_th* | `int` | | Decreasing *trigram_th* increases the chances of Logram to replace tokens with wildcards. Default value is 10. If Logram is disabled, then this parameter has no effect. |
+| *bigram_th* | `int` | | Decreasing *bigram_th* increases the chances of Logram to replace tokens with wildcards. Default value is 15. If Logram is disabled, then this parameter has no effect. |
 
 ## More about the algorithm
 
@@ -49,7 +49,7 @@ The function runs multiples passes over the rows to be reduced to common pattern
 * **Apply [Logram algorithm](https://arxiv.org/pdf/2001.03038.pdf)**: this pass is optional, pending *use_logram* is true. We recommend using Logram when large scale is required, and when parameters can appear in the first tokens of the log entry. OTOH, disable it when the log entries are short, as the algorithm tends to replace tokens with wildcards too often in such cases.
 The Logram algorithm considers 3-tuples and 2-tuples of tokens. If a 3-tuple of tokens is common in the log lines (it appears more than *trigram_th* times), then it's likely that all three tokens are part of the pattern. If the 3-tuple is rare, then it's likely that it contains a variable that should be replaced by a wildcard. For rare 3-tuples, we consider the frequency with which 2-tuples contained in the 3-tuple appear. If a 2-tuple is common (it appears more than *bigram_th* times), then the remaining token is likely to be a parameter, and not part of the pattern.\
 The Logram algorithm is easy to parallelize. It requires two passes on the log corpus: the first one to count the frequency of each 3-tuple and 2-tuple, and the second one to apply the logic previously described to each entry. To parallelize the algorithm, we only need to partition the log entries, and unify the frequency counts of different workers.
-    
+
 * **Apply [Drain algorithm](https://jiemingzhu.github.io/pub/pjhe_icws2017.pdf)**: this pass is optional, pending *use_drain* is true. Drain is a log parsing algorithm based on a truncated depth prefix tree. Log messages are split according to their length, and for each length the first *tree_depth* tokens of the log message are used to build a prefix tree. If no match for the prefix tokens was found, a new branch is created. If a match for the prefix was found, we search for the most similar pattern among the patterns contained in the tree leaf. Pattern similarity is measured by the ratio of matched nonwildcard tokens out of all tokens. If the similarity of the most similar pattern is above the similarity threshold (the parameter *similarity_th*), then the log entry is matched to the pattern. For that pattern, the function replaces all nonmatching tokens by wildcards. If the similarity of the most similar pattern is below the similarity threshold, a new pattern containing the log entry is created.\
 We set default *tree_depth* to 4 based on testing various logs. Increasing this depth can improve runtime but might degrade patterns accuracy; decreasing it's more accurate but slower, as each node performs many more similarity tests.\
 Usually, Drain efficiently generalizes and reduces patterns (though it's hard to be parallelized). However, as it relies on a prefix tree, it might not be optimal in log entries containing parameters in the first tokens. This can be resolved in most cases by applying Logram first.

@@ -19,7 +19,7 @@ Concatenates many dynamic arrays to a single array.
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-| *arr* | dynamic |  :heavy_check_mark: | The arrays to concatenate into a dynamic array.|
+| *arr* | `dynamic` |  :heavy_check_mark: | The arrays to concatenate into a dynamic array.|
 
 ## Returns
 

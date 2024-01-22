@@ -31,7 +31,7 @@ Request properties aren't formally a part of the Kusto Query Language and may be
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-| *OptionName* | string |  :heavy_check_mark: | The name of the request property.|
+| *OptionName* | `string` |  :heavy_check_mark: | The name of the request property.|
 | *OptionValue* | |  :heavy_check_mark: | The value of the request property.|
 
 ## Example

@@ -23,7 +23,7 @@ You must have [AllDatabasesAdmin](access-control/role-based-access-control.md) p
 
 |Name|Type|Required|Description|
 |--|--|--|--|
-|*PluginName*|string| :heavy_check_mark:|The name of the plugin to disable.|
+|*PluginName*| `string` | :heavy_check_mark:|The name of the plugin to disable.|
 
 ## Example
 

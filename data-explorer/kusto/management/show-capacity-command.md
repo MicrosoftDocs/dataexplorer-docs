@@ -22,7 +22,7 @@ You must have at least [Database User](access-control/role-based-access-control.
 
 |Name|Type|Required|Description|
 |--|--|--|--|
-|*Operation*|string||The name of a specific operation for which to return the capacity, as based on the [capacity policy](../management/capacity-policy.md). See [Supported operations](#supported-operations).|
+|*Operation*| `string` ||The name of a specific operation for which to return the capacity, as based on the [capacity policy](../management/capacity-policy.md). See [Supported operations](#supported-operations).|
 
 ### Supported operations
 

@@ -28,7 +28,7 @@ Takes an expression containing dynamic numerical array as input and does [linear
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-| *series* | dynamic |  :heavy_check_mark: | An array of numeric values.|
+| *series* | `dynamic` |  :heavy_check_mark: | An array of numeric values.|
 
 > [!TIP]
 > The most convenient way of using this function is to apply it to the results of [make-series](make-series-operator.md) operator.

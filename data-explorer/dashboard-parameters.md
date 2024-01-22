@@ -53,12 +53,12 @@ In the **Add parameter** pane, configure the following properties:
 |---------|---------|
 |**Label**|The name of the parameter shown on the dashboard or the edit card.|
 |**Parameter type**|One of the following parameters:<ul><li>**Single selection**: Only one value can be selected in the filter as input for the parameter.</li><li>**Multiple selection**: One or more values can be selected in the filter as input(s) for the parameter.</li><li>**Time range**: Allows creating additional parameters to filter the queries and dashboards based on time. Every dashboard has a time range picker by default.</li><li>**Free text**: Doesn't have any values populated in the filter. The user can type a value or copy/paste a value to the text field. The filter keeps the recent values used.</li></ul>|
-|**Variable name**|The name of the parameter to be used in the query.|
+|**Variable name**|The name of the parameter to be used in the query. Tip: Prefixing variable names with a distinctive character, such as an underscore character (_), makes them easier to find when writing queries. |
 |**Data type**|The data type of the parameter values.|
 |**Show on pages**|Select the pages where this parameter will be displayed. The **Select all** option shows the parameter on all pages.|
 |**Source**|The source of the parameter values: <ul><li>**Fixed values**: Manually introduced static filter values. </li><li>**Query**: Dynamically introduced values using a KQL query.</li></ul>|
 |**Default value**|The default value of the filter. The filter will start always with the default value upon initial rendering of the dashboard.
-|**Add a "Select all" value**|Applicable only to single selection and multiple selection parameter types. Used to retrieve data for all the parameter values. This value should be built into the query to provide the functionality. See [Use the multiple-selection query-based parameter](#multiple-selection-fixed-values-parameters) for more examples on building such queries.|
+|**Add a "Select all" value**|Applicable only to single selection and multiple selection parameter types. Used to retrieve data for all the parameter values. This value should be built into the query to provide the functionality. For more examples of building such queries, see [Use the multiple-selection query-based parameter](#multiple-selection-fixed-values-parameters).|
 
 ## Manage parameters
 

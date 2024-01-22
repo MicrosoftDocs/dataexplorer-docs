@@ -110,11 +110,11 @@ Event Hubs service exposes the following system properties:
 
 |Property |Data Type |Description|
 |---|---|---|
-| x-opt-enqueued-time |datetime | UTC time when the event was enqueued |
-| x-opt-sequence-number |long | The logical sequence number of the event within the partition stream of the event hub
-| x-opt-offset |string | The offset of the event from the event hub partition stream. The offset identifier is unique within a partition of the event hub stream |
-| x-opt-publisher |string | The publisher name, if the message was sent to a publisher endpoint |
-| x-opt-partition-key |string |The partition key of the corresponding partition that stored the event |
+| x-opt-enqueued-time | `datetime` | UTC time when the event was enqueued |
+| x-opt-sequence-number | `long` | The logical sequence number of the event within the partition stream of the event hub
+| x-opt-offset | `string` | The offset of the event from the event hub partition stream. The offset identifier is unique within a partition of the event hub stream |
+| x-opt-publisher | `string` | The publisher name, if the message was sent to a publisher endpoint |
+| x-opt-partition-key | `string` |The partition key of the corresponding partition that stored the event |
 
 When you work with [IoT Central](https://azure.microsoft.com/services/iot-central/) event hubs, you can also embed IoT Hub system properties in the payload. For the complete list, see [IoT Hub system properties](ingest-data-iot-hub-overview.md#event-system-properties-mapping).
 

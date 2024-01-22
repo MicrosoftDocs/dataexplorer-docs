@@ -27,8 +27,8 @@ To view the capacity of your cluster, use the [.show capacity](../management/dia
 
 | Property | Type | Description |
 |--|--|--|
-| `ClusterMaximumConcurrentOperations` | long | The maximum number of concurrent ingestion operations allowed in a cluster. This value caps the total ingestion capacity, as shown in the following formula. |
-| `CoreUtilizationCoefficient` | real | Determines the percentage of cores to use in the ingestion capacity calculation.|
+| `ClusterMaximumConcurrentOperations` | `long` | The maximum number of concurrent ingestion operations allowed in a cluster. This value caps the total ingestion capacity, as shown in the following formula. |
+| `CoreUtilizationCoefficient` | `real` | Determines the percentage of cores to use in the ingestion capacity calculation.|
 
 **Formula**
 
@@ -43,8 +43,8 @@ The [.show capacity](../management/diagnostics.md#show-capacity) command returns
 
 | Property | Type | Description |
 |--|--|--|
-| `MinimumConcurrentOperationsPerNode` | long | The minimal number of concurrent extents merge/rebuild operations on a single node. Default is `1`. |
-| `MaximumConcurrentOperationsPerNode` | long | The maximum number of concurrent extents merge/rebuild operations on a single node. Default is `5`. |
+| `MinimumConcurrentOperationsPerNode` | `long` | The minimal number of concurrent extents merge/rebuild operations on a single node. Default is `1`. |
+| `MaximumConcurrentOperationsPerNode` |`long` | The maximum number of concurrent extents merge/rebuild operations on a single node. Default is `5`. |
 
 **Formula**
 
@@ -61,7 +61,7 @@ The effective value for *Concurrent operations per node* is automatically adjust
 
 | Property | Type | Description |
 |--|--|--|
-| `MaximumConcurrentOperationsPerNode` | long | The maximum number of concurrent rebuild extents for purge operations on a single node. |
+| `MaximumConcurrentOperationsPerNode` | `long` | The maximum number of concurrent rebuild extents for purge operations on a single node. |
 
 **Formula**
 
@@ -76,8 +76,8 @@ The [.show capacity](../management/diagnostics.md#show-capacity) command returns
 
 | Property | Type | Description |
 |--|--|--|
-| `ClusterMaximumConcurrentOperations` | long | The maximum number of concurrent export operations in a cluster. This value caps the total export capacity, as shown in the following formula. |
-| `CoreUtilizationCoefficient` | real | Determines the percentage of cores to use in the export capacity calculation. |
+| `ClusterMaximumConcurrentOperations` | `long` | The maximum number of concurrent export operations in a cluster. This value caps the total export capacity, as shown in the following formula. |
+| `CoreUtilizationCoefficient` | `long` | Determines the percentage of cores to use in the export capacity calculation. |
 
 **Formula**
 
@@ -92,8 +92,8 @@ The [.show capacity](../management/diagnostics.md#show-capacity) command returns
 
 | Property | Type | Description |
 |--|--|--|
-| `ClusterMinimumConcurrentOperations` | long | The minimal number of concurrent extents partition operations in a cluster. Default is `1`. |
-| `ClusterMaximumConcurrentOperations` | long | The maximum number of concurrent extents partition operations in a cluster. Default is `32`. |
+| `ClusterMinimumConcurrentOperations` | `long` | The minimal number of concurrent extents partition operations in a cluster. Default is `1`. |
+| `ClusterMaximumConcurrentOperations` | `long` | The maximum number of concurrent extents partition operations in a cluster. Default is `32`. |
 
 The effective value for *Concurrent operations* is automatically adjusted by the system in the range
 [`ClusterMinimumConcurrentOperations`,`ClusterMaximumConcurrentOperations`], as long as the success rate of the
@@ -105,8 +105,8 @@ The policy can be used to change concurrency settings for [materialized views](m
 
 | Property | Type | Description |
 |--|--|--|
-| `ClusterMinimumConcurrentOperations` | long | The minimal number of concurrent materialization operations in a cluster. Default is `1`. |
-| `ClusterMaximumConcurrentOperations` | long | The maximum number of concurrent materialization operations in a cluster. Default is `10`. |
+| `ClusterMinimumConcurrentOperations` | `long` | The minimal number of concurrent materialization operations in a cluster. Default is `1`. |
+| `ClusterMaximumConcurrentOperations` | `long` | The maximum number of concurrent materialization operations in a cluster. Default is `10`. |
 
 The effective value for *Concurrent operations* is automatically adjusted by the system in the range [`ClusterMinimumConcurrentOperations`,`ClusterMaximumConcurrentOperations`], based on the number of materialized views in the cluster and the cluster's CPU.
 
@@ -117,8 +117,8 @@ The effective value for *Concurrent operations* is automatically adjusted by the
 
 | Property | Type | Description |
 |--|--|--|
-| `MaximumConcurrentOperationsPerDbAdmin` | long | The maximum number of concurrent ingestion operations in a cluster admin node. |
-| `CoreUtilizationCoefficient` | real | Determines the percentage of cores to use in the stored query results creation calculation. |
+| `MaximumConcurrentOperationsPerDbAdmin` | `long` | The maximum number of concurrent ingestion operations in a cluster admin node. |
+| `CoreUtilizationCoefficient` | `real` | Determines the percentage of cores to use in the stored query results creation calculation. |
 
 **Formula**
 

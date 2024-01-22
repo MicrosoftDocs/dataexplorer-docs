@@ -21,7 +21,7 @@ Returns the integer number from 1-12 representing the month number of the given 
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-| *date* | datetime |  :heavy_check_mark: | The date for which to find the month number. |
+| *date* | `datetime` |  :heavy_check_mark: | The date for which to find the month number. |
 
 ## Returns
 

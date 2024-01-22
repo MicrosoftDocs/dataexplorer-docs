@@ -19,7 +19,7 @@ Encodes a base64 string from a bytes array.
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-| *base64_string_decoded_as_a_byte_array* | dynamic |  :heavy_check_mark: | The bytes (integer) array to be encoded into a base64 string. |
+| *base64_string_decoded_as_a_byte_array* | `dynamic` |  :heavy_check_mark: | The bytes (integer) array to be encoded into a base64 string. |
 
 ## Returns
 

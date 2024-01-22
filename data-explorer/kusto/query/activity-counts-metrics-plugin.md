@@ -19,13 +19,13 @@ Calculates useful activity metrics for each time window compared/aggregated to *
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-| *T* | string |  :heavy_check_mark: | The tabular input used to count activities. |
-| *IdColumn* | string |  :heavy_check_mark: | The name of the column with ID values that represent user activity. |
-| *TimelineColumn* | string |  :heavy_check_mark: | The name of the column that represents the timeline. |
-| *Start* | datetime |  :heavy_check_mark: | The analysis start period. |
-| *End* | datetime |  :heavy_check_mark: | The analysis end period. |
+| *T* | `string` |  :heavy_check_mark: | The tabular input used to count activities. |
+| *IdColumn* | `string` |  :heavy_check_mark: | The name of the column with ID values that represent user activity. |
+| *TimelineColumn* | `string` |  :heavy_check_mark: | The name of the column that represents the timeline. |
+| *Start* | `datetime` |  :heavy_check_mark: | The analysis start period. |
+| *End* | `datetime` |  :heavy_check_mark: | The analysis end period. |
 | *Step* | decimal, datetime, or timespan |  :heavy_check_mark: | The analysis window period. The value may also be a string of `week`, `month`, or `year`, in which case all periods would be [startofweek](startofweek-function.md), [startofmonth](startofmonth-function.md), or [startofyear](startofyear-function.md). |
-|  *Dimensions* | string |   | Zero or more comma-separated dimensions columns that slice the activity metrics calculation. |
+|  *Dimensions* | `string` |   | Zero or more comma-separated dimensions columns that slice the activity metrics calculation. |
 
 ## Returns
 

@@ -25,9 +25,9 @@ The function `normality_test_fl()` is a [UDF (user-defined function)](../query/f
 
 |Name|Type|Required|Description|
 |--|--|--|--|
-|*data*|string| :heavy_check_mark:|The name of the column containing the data to be used for the test.|
-|*test_statistic*|string| :heavy_check_mark:|The name of the column to store test statistic value for the results.|
-|*p_value*|string| :heavy_check_mark:|The name of the column to store p-value for the results.|
+|*data*| `string` | :heavy_check_mark:|The name of the column containing the data to be used for the test.|
+|*test_statistic*| `string` | :heavy_check_mark:|The name of the column to store test statistic value for the results.|
+|*p_value*| `string` | :heavy_check_mark:|The name of the column to store p-value for the results.|
 
 ## Function definition
 

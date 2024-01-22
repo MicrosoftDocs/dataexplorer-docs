@@ -23,11 +23,11 @@ Creates a [datetime](./scalar-data-types/datetime.md) scalar value between the s
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-|*year*| int |  :heavy_check_mark: | The year value between 0 to 9999.|
-|*month*| int |  :heavy_check_mark: | The month value between 1 to 12. |
-|*day*| int |  :heavy_check_mark: | The day value between 1 to 28-31, depending on the month.|
-|*hour*| int | | The hour value between 0 to 23.|
-|*minute*| int | | The minute value between 0 to 59.|
+|*year*| `int` |  :heavy_check_mark: | The year value between 0 to 9999.|
+|*month*| `int` |  :heavy_check_mark: | The month value between 1 to 12. |
+|*day*| `int` |  :heavy_check_mark: | The day value between 1 to 28-31, depending on the month.|
+|*hour*| `int` | | The hour value between 0 to 23.|
+|*minute*| `int` | | The minute value between 0 to 59.|
 |*second*| double | | The second value between 0 to 59.9999999.|
 
 ## Returns

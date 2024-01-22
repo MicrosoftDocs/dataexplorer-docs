@@ -19,7 +19,7 @@ Returns a `dynamic` array of the set of all distinct values that are in all arra
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-| *set1...setN* | dynamic |  :heavy_check_mark: | Arrays used to create an intersect set. A minimum of 2 arrays are required. See [pack_array](pack-array-function.md).|
+| *set1...setN* | `dynamic` |  :heavy_check_mark: | Arrays used to create an intersect set. A minimum of 2 arrays are required. See [pack_array](pack-array-function.md).|
 
 ## Returns
 

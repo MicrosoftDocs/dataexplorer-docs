@@ -19,9 +19,9 @@ Convert a mass value from one unit to another.
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-| *value* | real |  :heavy_check_mark: | The value to be converted. |
-| *from* | string |  :heavy_check_mark: | The unit to convert from. For possible values, see [Conversion units](#conversion-units). |
-| *to* | string |  :heavy_check_mark: | The unit to convert to. For possible values, see [Conversion units](#conversion-units). |
+| *value* | `real` |  :heavy_check_mark: | The value to be converted. |
+| *from* | `string` |  :heavy_check_mark: | The unit to convert from. For possible values, see [Conversion units](#conversion-units). |
+| *to* | `string` |  :heavy_check_mark: | The unit to convert to. For possible values, see [Conversion units](#conversion-units). |
 
 ### Conversion units
 

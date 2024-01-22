@@ -19,7 +19,7 @@ Calculates the element-wise absolute value of the numeric series input.
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-| *series* | dynamic |  :heavy_check_mark: | An array of numeric values over which the absolute value function is applied. |
+| *series* | `dynamic` |  :heavy_check_mark: | An array of numeric values over which the absolute value function is applied. |
 
 ## Returns
 

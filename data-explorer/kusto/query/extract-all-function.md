@@ -26,9 +26,9 @@ print extract_all(@"(\d+)", "a set of numbers: 123, 567 and 789") // results wit
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-| *regex* | string |  :heavy_check_mark: | A [regular expression](./re2.md) containing between one and 16 capture groups.|
-| *captureGroups* | dynamic | | An array that indicates the capture groups to extract. Valid values are from 1 to the number of capturing groups in the regular expression. Named capture groups are allowed as well. See [examples](#examples).|
-| *source* | string |  :heavy_check_mark:| The string to search.|
+| *regex* | `string` |  :heavy_check_mark: | A [regular expression](./re2.md) containing between one and 16 capture groups.|
+| *captureGroups* | `dynamic` | | An array that indicates the capture groups to extract. Valid values are from 1 to the number of capturing groups in the regular expression. Named capture groups are allowed as well. See [examples](#examples).|
+| *source* | `string` |  :heavy_check_mark:| The string to search.|
 
 ## Returns
 

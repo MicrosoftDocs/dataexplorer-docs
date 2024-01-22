@@ -22,7 +22,7 @@ being referenced is the same across all uses.
 
 | Name | Type | Required | Description |
 |---|---|---|---|
-| *timespan* | timespan |  :heavy_check_mark: | The interval to subtract from the current UTC clock time `now()`. For a full list of possible timespan values, see [timespan literals](scalar-data-types/timespan.md#timespan-literals).|
+| *timespan* | `timespan` |  :heavy_check_mark: | The interval to subtract from the current UTC clock time `now()`. For a full list of possible timespan values, see [timespan literals](scalar-data-types/timespan.md#timespan-literals).|
 
 ## Returns
 

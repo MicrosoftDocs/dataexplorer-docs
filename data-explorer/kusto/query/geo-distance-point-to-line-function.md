@@ -19,9 +19,9 @@ Calculates the shortest distance in meters between a coordinate and a line or mu
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-| *longitude* | real |  :heavy_check_mark: | The geospatial coordinate longitude value in degrees. A valid value is in the range [-180, +180].|
-| *latitude* | real |  :heavy_check_mark: | The geospatial coordinate latitude value in degrees. A valid value is in the range [-90, +90].|
-| *lineString* | dynamic |  :heavy_check_mark: | A line or multiline in the [GeoJSON format](https://tools.ietf.org/html/rfc7946).|
+| *longitude* | `real` |  :heavy_check_mark: | The geospatial coordinate longitude value in degrees. A valid value is in the range [-180, +180].|
+| *latitude* | `real` |  :heavy_check_mark: | The geospatial coordinate latitude value in degrees. A valid value is in the range [-90, +90].|
+| *lineString* | `dynamic` |  :heavy_check_mark: | A line or multiline in the [GeoJSON format](https://tools.ietf.org/html/rfc7946).|
 
 ## Returns
 

@@ -25,8 +25,8 @@ You must have at least [Table Admin](access-control/role-based-access-control.md
 
 |Name|Type|Required|Description|
 |--|--|--|--|
-|*MaterializedViewName*|string| :heavy_check_mark:| The name of the materialized view.|
-|*ArrayOfPolicyObjects*|string| :heavy_check_mark:| One or more policy objects. For more information, see [retention policy](retention-policy.md).|
+|*MaterializedViewName*| `string` | :heavy_check_mark:| The name of the materialized view.|
+|*ArrayOfPolicyObjects*| `string` | :heavy_check_mark:| One or more policy objects. For more information, see [retention policy](retention-policy.md).|
 
 ### Example
 

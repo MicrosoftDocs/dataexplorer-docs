@@ -51,9 +51,9 @@ If `hot` is specified, shows only extents that are expected to be in the hot cac
 
 |Name|Type|Required|Description|
 |--|--|--|--|
-|*TableName*|string| :heavy_check_mark:|The name of the table.|
-|*ExtentId*|string||The ID of the extent to show.|
-|*Tag*|string||The name of a tag to filter by as specified.|
+|*TableName*| `string` | :heavy_check_mark:|The name of the table.|
+|*ExtentId*| `string` ||The ID of the extent to show.|
+|*Tag*| `string` ||The name of a tag to filter by as specified.|
 
 ### Recommendations
 
@@ -84,9 +84,9 @@ If `hot` is specified - shows only extents that expected to be in the hot cache.
 
 |Name|Type|Required|Description|
 |--|--|--|--|
-|*DatabaseName*|string| :heavy_check_mark:|The name of the database.|
-|*ExtentId*|string||The ID of the extent to show.|
-|*Tag*|string||The name of a tag to filter by as specified.|
+|*DatabaseName*| `string` | :heavy_check_mark:|The name of the database.|
+|*ExtentId*| `string` ||The ID of the extent to show.|
+|*Tag*| `string` ||The name of a tag to filter by as specified.|
 
 ## Cluster scope
 

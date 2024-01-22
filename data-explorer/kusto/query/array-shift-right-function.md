@@ -19,8 +19,8 @@ Shifts the values inside a dynamic array to the right.
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-|*array* | dynamic | :heavy_check_mark: | The array to shift.|
-|*shift_count* | int |  :heavy_check_mark: | The number of positions that array elements are shifted to the right. If the value is negative, the elements are shifted to the left. |
+|*array* | `dynamic` | :heavy_check_mark: | The array to shift.|
+|*shift_count* | `int` |  :heavy_check_mark: | The number of positions that array elements are shifted to the right. If the value is negative, the elements are shifted to the left. |
 |*default_value* | scalar | | The value used for an element that was shifted and removed. The default is null or an empty string depending on the type of elements in the *array*.|
 
 ## Returns

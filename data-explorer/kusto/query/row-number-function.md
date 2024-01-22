@@ -23,8 +23,8 @@ Additionally, the row index may be reset according to some provided predicate.
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-| *StartingIndex*| long | | The value of the row index to start at or restart to. The default value is 1.|
-| *restart*| bool | | Indicates when the numbering is to be restarted to the *StartingIndex* value. The default is `false`.|
+| *StartingIndex*| `long` | | The value of the row index to start at or restart to. The default value is 1.|
+| *restart*| `bool` | | Indicates when the numbering is to be restarted to the *StartingIndex* value. The default is `false`.|
 
 ## Returns
 
