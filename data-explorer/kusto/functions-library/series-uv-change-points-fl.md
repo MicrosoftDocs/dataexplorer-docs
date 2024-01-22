@@ -35,10 +35,10 @@ The function `series_uv_change_points_fl()` is a [user-defined function (UDF)](.
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-| *y_series* | string |  :heavy_check_mark: | The name of the input table column containing the values of the series to be anomaly detected. |
-| *score_threshold* | real | | A value specifying the minimum confidence to declare a change point. Each point whose confidence is above the threshold is defined as a change point. Default value: 0.9 |
+| *y_series* | `string` |  :heavy_check_mark: | The name of the input table column containing the values of the series to be anomaly detected. |
+| *score_threshold* | `real` | | A value specifying the minimum confidence to declare a change point. Each point whose confidence is above the threshold is defined as a change point. Default value: 0.9 |
 | *trend_window* | integer | | A value specifying the minimal window size for robust calculation of trend changes. Default value: 5 |
-| *tsid* | string | | The name of the input table column containing the time series ID. Can be omitted when analyzing a single time series. |
+| *tsid* | `string` | | The name of the input table column containing the time series ID. Can be omitted when analyzing a single time series. |
 
 ## Function definition
 

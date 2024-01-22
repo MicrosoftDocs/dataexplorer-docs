@@ -19,11 +19,11 @@ The function `series_downsample_fl()` is a [user-defined function (UDF)](../quer
 
 |Name|Type|Required|Description|
 |--|--|--|--|
-|*t_col*|string| :heavy_check_mark:|The name of the column that contains the time axis of the series to downsample.|
-|*y_col*|string| :heavy_check_mark:|The name of the column that contains the series to downsample.|
-|*ds_t_col*|string| :heavy_check_mark:|The name of the column to store the down sampled time axis of each series.|
-|*ds_y_col*|string| :heavy_check_mark:|The name of the column to store the down sampled series.|
-|*sampling_factor*|int| :heavy_check_mark:|An integer specifying the required down sampling.|
+|*t_col*| `string` | :heavy_check_mark:|The name of the column that contains the time axis of the series to downsample.|
+|*y_col*| `string` | :heavy_check_mark:|The name of the column that contains the series to downsample.|
+|*ds_t_col*| `string` | :heavy_check_mark:|The name of the column to store the down sampled time axis of each series.|
+|*ds_y_col*| `string` | :heavy_check_mark:|The name of the column to store the down sampled series.|
+|*sampling_factor*| `int` | :heavy_check_mark:|An integer specifying the required down sampling.|
 
 ## Function definition
 

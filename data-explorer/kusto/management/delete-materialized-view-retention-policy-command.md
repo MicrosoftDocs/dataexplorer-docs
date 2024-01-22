@@ -19,7 +19,7 @@ Delete a materialized-view's [retention policy](retention-policy.md). The retent
 
 |Name|Type|Required|Description|
 |--|--|--|--|
-|*MaterializedViewName*|string| :heavy_check_mark:|The name of the materialized view for which to delete the retention policy.|
+|*MaterializedViewName*| `string` | :heavy_check_mark:|The name of the materialized view for which to delete the retention policy.|
 
 ### Example
 

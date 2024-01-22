@@ -27,9 +27,9 @@ You must have at least [Table Admin](../management/access-control/role-based-acc
 
 |Name|Type|Required|Description|
 |--|--|--|--|
-|*OldName*|string| :heavy_check_mark:|The name of an existing table. An error is raised and the whole command fails if *OldName* doesn't name an existing table, unless `ifexists` is specified.|
-|*NewName*|string| :heavy_check_mark:|The new name for the table that used to be called *OldName*.|
-|`ifexists`|string||If specified, the command will handle the scenario where the table doesn't exist. Instead of failing, it will proceed without attempting to rename the table that doesn't exist.|
+|*OldName*| `string` | :heavy_check_mark:|The name of an existing table. An error is raised and the whole command fails if *OldName* doesn't name an existing table, unless `ifexists` is specified.|
+|*NewName*| `string` | :heavy_check_mark:|The new name for the table that used to be called *OldName*.|
+|`ifexists`| `string` ||If specified, the command will handle the scenario where the table doesn't exist. Instead of failing, it will proceed without attempting to rename the table that doesn't exist.|
 
 **Remarks**
 

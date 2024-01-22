@@ -21,9 +21,9 @@ The function `series_moving_var_fl()` is a [user-defined function (UDF)](../quer
 
 |Name|Type|Required|Description|
 |--|--|--|--|
-|*y_series*|dynamic| :heavy_check_mark:|An array cell of numeric values.|
-|*n*|int| :heavy_check_mark:|The width of the moving variance filter.|
-|*center*|bool||Indicates whether the moving variance is either applied symmetrically on a window before and after the current point or applied on a window from the current point backwards. By default, *center* is `false`.|
+|*y_series*| `dynamic` | :heavy_check_mark:|An array cell of numeric values.|
+|*n*| `int` | :heavy_check_mark:|The width of the moving variance filter.|
+|*center*| `bool` ||Indicates whether the moving variance is either applied symmetrically on a window before and after the current point or applied on a window from the current point backwards. By default, *center* is `false`.|
 
 ## Function definition
 

@@ -21,7 +21,7 @@ You must have at least Database User, Database Viewer, or Database Monitor permi
 
 |Name|Type|Required|Description|
 |--|--|--|--|
-|*DatabaseName*|string| :heavy_check_mark:|The name of the database for which to show the partitioning statistics.|
+|*DatabaseName*| `string` | :heavy_check_mark:|The name of the database for which to show the partitioning statistics.|
 
 ## Returns
 
@@ -34,4 +34,3 @@ You must have at least Database User, Database Viewer, or Database Monitor permi
 | PartitionedRowPercentage | `real` | Percentage of partitioned rows from all rows in the table`*` |
 
 `*` *Values may be up to 15 minutes old, as they're taken from a cached summary of the table's extents.*
-

@@ -35,12 +35,12 @@ You must have at least [Table Admin](access-control/role-based-access-control.md
 
 |Name|Type|Required|Description|
 |--|--|--|--|
-|`async`|string||If specified, the operation executes asynchronously.|
-|*TableName*|string| :heavy_check_mark:|The name of the table for which to drop the extent tags.|
-|*Tag*|string| :heavy_check_mark:|The names of the extent tags to drop.|
-|*FromDate*|datetime||The start date range.|
-|*ToDate*|datetime||The end date range.|
-|*Query*|string| :heavy_check_mark:|A [Kusto Query Language (KQL)](../query/index.md) query that returns the extent tags to be dropped. See [Specify extents with a query](#specify-extents-with-a-query).|
+|`async`| `string` ||If specified, the operation executes asynchronously.|
+|*TableName*| `string` | :heavy_check_mark:|The name of the table for which to drop the extent tags.|
+|*Tag*| `string` | :heavy_check_mark:|The names of the extent tags to drop.|
+|*FromDate*| `datetime` ||The start date range.|
+|*ToDate*| `datetime` ||The end date range.|
+|*Query*| `string` | :heavy_check_mark:|A [Kusto Query Language (KQL)](../query/index.md) query that returns the extent tags to be dropped. See [Specify extents with a query](#specify-extents-with-a-query).|
 
 > [!NOTE]
 > For better performance, set `extentCreatedOnFrom` and `extentCreatedOnTo` parameters to the smallest possible range.

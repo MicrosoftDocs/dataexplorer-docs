@@ -24,10 +24,10 @@ You must have at least [Function Admin](../management/access-control/role-based-
 
 |Name|Type|Required|Description|
 |--|--|--|--|
-|*functionName* | string |  :heavy_check_mark: | The name of the function to alter.|
-| *propertyName*, *propertyValue* | string | | A comma-separated list of key-value property pairs. See [supported properties](#supported-properties).|
-|*parameters*  | string | | A comma-separated list of parameters required by the function. The format for each parameter must be *ParameterName*`:`*ParameterDataType*.|
-|*body*| string |  :heavy_check_mark: | Zero or more `let` statements followed by a valid CSL expression that is evaluated upon function invocation.|
+|*functionName* | `string` |  :heavy_check_mark: | The name of the function to alter.|
+| *propertyName*, *propertyValue* | `string` | | A comma-separated list of key-value property pairs. See [supported properties](#supported-properties).|
+|*parameters*  | `string` | | A comma-separated list of parameters required by the function. The format for each parameter must be *ParameterName*`:`*ParameterDataType*.|
+|*body*| `string` |  :heavy_check_mark: | Zero or more `let` statements followed by a valid CSL expression that is evaluated upon function invocation.|
 
 > [!NOTE]
 >
@@ -38,9 +38,9 @@ You must have at least [Function Admin](../management/access-control/role-based-
 
 |Name|Type|Description|
 |--|--|--|
-|`docstring`|string|A description of the function for UI purposes.|
-|`folder`|string|The name of a folder used for UI functions categorization.|
-|`skipvalidation`|bool|Determines whether or not to skip semantic validation of the function. This is useful when functions are created in an incorrect order and F1 that uses F2 is created earlier.|
+|`docstring`| `string` |A description of the function for UI purposes.|
+|`folder`| `string` |The name of a folder used for UI functions categorization.|
+|`skipvalidation`| `bool` |Determines whether or not to skip semantic validation of the function. This is useful when functions are created in an incorrect order and F1 that uses F2 is created earlier.|
 
 ## Example
 

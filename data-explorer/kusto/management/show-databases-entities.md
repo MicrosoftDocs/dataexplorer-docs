@@ -23,8 +23,8 @@ You must have at least Database User, Database Viewer, or Database Monitor permi
 
 |Key|Value|Description|
 |--|--|--|
-|`showObfuscatedStrings`| bool | Defaults to `false`. If `true`, credentials persisted in Kusto configurations are returned. To use this option, you must either be a database admin or entity creator. If you don't have these permissions, the command fails.|
-|`resolveFunctionsSchema`| bool | Defaults to `false`. If `true`, returned stored functions will have output schema resolved.|
+|`showObfuscatedStrings`| `bool` | Defaults to `false`. If `true`, credentials persisted in Kusto configurations are returned. To use this option, you must either be a database admin or entity creator. If you don't have these permissions, the command fails.|
+|`resolveFunctionsSchema`| `bool` | Defaults to `false`. If `true`, returned stored functions will have output schema resolved.|
 
 ### Returns
 
