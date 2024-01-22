@@ -1,13 +1,13 @@
 ---
 title:  Add a comment in KQL
-description: Learn how to comment single and multi-lines in Kusto Query Language.
+description: Learn how to add comments in Kusto Query Language.
 ms.reviewer: andresilva
 ms.topic: reference
-ms.date: 09/28/2023
+ms.date: 01/21/2024
 ---
 # Add a comment in KQL
 
-Indicates user-provided text. Comments can be inserted on a separate line, nested at the end or within a KQL query or command. The comment text isn't evaluated.
+Indicates user-provided text. Comments can be inserted on a separate line, nested at the end, or within a KQL query or command. The comment text isn't evaluated.
 
 ## Syntax
 
@@ -17,7 +17,7 @@ Indicates user-provided text. Comments can be inserted on a separate line, neste
 
 ## Remarks
 
-Use the two slashes (//) for single and multi-line comments. The following table lists the keyboard shortcuts that you can use to comment or uncomment text.
+Use the two slashes (//) to add comments. The following table lists the keyboard shortcuts that you can use to comment or uncomment text.
 
 | Hot Key  | Description  |
 | ------------ | ------------ |
