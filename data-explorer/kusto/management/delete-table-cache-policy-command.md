@@ -23,8 +23,8 @@ You must have at least [Table Admin](access-control/role-based-access-control.md
 
 |Name|Type|Required|Description|
 |--|--|--|--|
-|*DatabaseName*|string||The name of the database. Use when running outside the database context that contains the table for which to delete the cache policy.|
-|*TableName*|string| :heavy_check_mark:|The name of the table.|
+|*DatabaseName*| `string` ||The name of the database. Use when running outside the database context that contains the table for which to delete the cache policy.|
+|*TableName*| `string` | :heavy_check_mark:|The name of the table.|
 
 ## Example
 

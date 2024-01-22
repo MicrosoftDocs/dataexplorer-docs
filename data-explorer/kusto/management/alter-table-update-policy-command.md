@@ -27,9 +27,9 @@ You must have at least [Table Admin](access-control/role-based-access-control.md
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-| *DatabaseName* | string | | The name of the database. If you run the command from a database context that doesn't contain the specified table, then this parameter is required.|
-| *TableName* | string |  :heavy_check_mark:| The name of the table.|
-| *ArrayOfPolicyObjects* |string |  :heavy_check_mark: | A serialized array of policy objects. For more information, see [update policy](update-policy.md).|
+| *DatabaseName* | `string` | | The name of the database. If you run the command from a database context that doesn't contain the specified table, then this parameter is required.|
+| *TableName* | `string` |  :heavy_check_mark:| The name of the table.|
+| *ArrayOfPolicyObjects* | `string` |  :heavy_check_mark: | A serialized array of policy objects. For more information, see [update policy](update-policy.md).|
 
 ## Returns
 

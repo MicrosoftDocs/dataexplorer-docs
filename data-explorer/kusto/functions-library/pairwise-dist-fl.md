@@ -1,6 +1,6 @@
 ---
 title:  pairwise_dist_fl()
-description: This article describes the pairwise_dist_fl() user-defined function in Azure Data Explorer.
+description: Learn how to use the pairwise_dist_fl() function to calculate the multivariate distance between data points in the same partition.
 ms.reviewer: andkar
 ms.topic: reference
 ms.date: 03/13/2023
@@ -29,8 +29,8 @@ The output of the function is pairwise distances between entities under the same
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-| *entity* | string |  :heavy_check_mark: | The name of the input table column containing the names or IDs of the entities for which the distances will be calculated. |
-| *partition* | string |  :heavy_check_mark: | The name of the input table column containing the partition or scope, so that the distances are calculated for all pairs of entities under the same partition. |
+| *entity* | `string` |  :heavy_check_mark: | The name of the input table column containing the names or IDs of the entities for which the distances will be calculated. |
+| *partition* | `string` |  :heavy_check_mark: | The name of the input table column containing the partition or scope, so that the distances are calculated for all pairs of entities under the same partition. |
 
 ## Function definition
 

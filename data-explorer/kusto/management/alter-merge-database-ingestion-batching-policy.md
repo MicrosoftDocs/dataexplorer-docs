@@ -29,8 +29,8 @@ See [defaults and limits](batching-policy.md#defaults-and-limits).
 
 |Name|Type|Required|Description|
 |--|--|--|--|
-|*DatabaseName*|string| :heavy_check_mark:|The name of the database for which to alter the ingestion batching policy.|
-|*PolicyObject*|string| :heavy_check_mark:|A policy object that defines the ingestion batching policy. For more information, see [ingestion batching policy](batching-policy.md).|
+|*DatabaseName*| `string` | :heavy_check_mark:|The name of the database for which to alter the ingestion batching policy.|
+|*PolicyObject*| `string` | :heavy_check_mark:|A policy object that defines the ingestion batching policy. For more information, see [ingestion batching policy](batching-policy.md).|
 
 ## Examples
 
