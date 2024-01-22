@@ -19,7 +19,7 @@ Computes the gamma function for the provided *number*.
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-| *number* | real |  :heavy_check_mark: | The number used to calculate the gamma function. |
+| *number* | `real` |  :heavy_check_mark: | The number used to calculate the gamma function. |
 
 ## Returns
 

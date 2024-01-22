@@ -34,12 +34,12 @@ The function `series_fbprophet_forecast_fl()` is a [user-defined function (UDF)]
 
 |Name|Type|Required|Description|
 |--|--|--|--|
-|*ts_series*|string| :heavy_check_mark:|The name of the input table column containing the time stamps of the series to predict.|
-|*y_series*|string| :heavy_check_mark:|The name of the input table column containing the values of the series to predict.|
-|*y_pred_series*|string| :heavy_check_mark:|The name of the column to store the predicted series.|
-|*points*|int| :heavy_check_mark:|The number of points at the end of the series to predict (forecast). These points are excluded from the learning (regression) process. The default is 0.|
-|*y_pred_low_series*|string||The name of the column to store the series of the lowest values of the confidence interval. Omit if the confidence interval isn't needed.|
-|*y_pred_high_series*|string||The name of the column to store the series of the highest values of the confidence interval. Omit if the confidence interval isn't needed.|
+|*ts_series*| `string` | :heavy_check_mark:|The name of the input table column containing the time stamps of the series to predict.|
+|*y_series*| `string` | :heavy_check_mark:|The name of the input table column containing the values of the series to predict.|
+|*y_pred_series*| `string` | :heavy_check_mark:|The name of the column to store the predicted series.|
+|*points*| `int` | :heavy_check_mark:|The number of points at the end of the series to predict (forecast). These points are excluded from the learning (regression) process. The default is 0.|
+|*y_pred_low_series*| `string` ||The name of the column to store the series of the lowest values of the confidence interval. Omit if the confidence interval isn't needed.|
+|*y_pred_high_series*| `string` ||The name of the column to store the series of the highest values of the confidence interval. Omit if the confidence interval isn't needed.|
 
 ## Function definition
 

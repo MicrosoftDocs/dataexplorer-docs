@@ -22,7 +22,7 @@ Generates a single-column table of values.
 
 |Name|Type|Required|Description|
 |--|--|--|--|
-|*columnName*|string| :heavy_check_mark:| The name of the single column in the output table.|
+|*columnName*| `string` | :heavy_check_mark:| The name of the single column in the output table.|
 |*start*|int, long, real, datetime, or timespan| :heavy_check_mark:| The smallest value in the output.|
 |*stop*|int, long, real, datetime, or timespan| :heavy_check_mark:| The highest value being generated in the output or a bound on the highest value if *step* steps over this value.|
 |*step*|int, long, real, datetime, or timespan| :heavy_check_mark:| The difference between two consecutive values.|

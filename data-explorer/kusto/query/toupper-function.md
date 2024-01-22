@@ -19,7 +19,7 @@ Converts a string to upper case.
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-| *value* | string |  :heavy_check_mark: | The value to convert to an uppercase string.|
+| *value* | `string` |  :heavy_check_mark: | The value to convert to an uppercase string.|
 
 ## Returns
 

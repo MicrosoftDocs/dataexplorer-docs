@@ -50,7 +50,7 @@ To show your roles:
 
 |Name|Type|Required|Description|
 |--|--|--|--|
-| *TableName* | string |  :heavy_check_mark: | The name of the table for which to list principals.|
+| *TableName* | `string` |  :heavy_check_mark: | The name of the table for which to list principals.|
 
 ### Example
 
@@ -80,12 +80,12 @@ This section provides syntax, parameters, and examples for adding and removing p
 
 |Name|Type|Required|Description|
 |--|--|--|--|
-| *Action* | string |  :heavy_check_mark: | The command `.add`, `.drop`, or `.set`.<br/>`.add` adds the specified principals, `.drop` removes the specified principals, and `.set` adds the specified principals and removes all previous ones.|
-| *TableName* | string |  :heavy_check_mark: | The name of the table for which to add principals.|
-| *Role* | string |  :heavy_check_mark: | The role to assign to the principal. For tables, this can be `admins` or `ingestors`.|
-| *Principal* | string |  :heavy_check_mark: | One or more principals. For guidance on how to specify these principals, see [Referencing security principals](./access-control/referencing-security-principals.md).|
-| `skip-results` | string | | If provided, the command won't return the updated list of table principals.|
-| *Description* | string | | Text to describe the change that will be displayed when using the `.show` command.|
+| *Action* | `string` |  :heavy_check_mark: | The command `.add`, `.drop`, or `.set`.<br/>`.add` adds the specified principals, `.drop` removes the specified principals, and `.set` adds the specified principals and removes all previous ones.|
+| *TableName* | `string` |  :heavy_check_mark: | The name of the table for which to add principals.|
+| *Role* | `string` |  :heavy_check_mark: | The role to assign to the principal. For tables, this can be `admins` or `ingestors`.|
+| *Principal* | `string` |  :heavy_check_mark: | One or more principals. For guidance on how to specify these principals, see [Referencing security principals](./access-control/referencing-security-principals.md).|
+| `skip-results` | `string` | | If provided, the command won't return the updated list of table principals.|
+| *Description* | `string` | | Text to describe the change that will be displayed when using the `.show` command.|
 
 > [!NOTE]
 > The `.set` command with `none` instead of a list of principals will remove all principals of the specified role.

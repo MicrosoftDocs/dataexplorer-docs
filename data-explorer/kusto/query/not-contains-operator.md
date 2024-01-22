@@ -32,8 +32,8 @@ Use `!has` if you're looking for a [term](datatypes-string-operators.md#what-is-
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-| *T* | string |  :heavy_check_mark:| The tabular input whose records are to be filtered.|
-| *Column* | string |  :heavy_check_mark:| The column by which to filter.|
+| *T* | `string` |  :heavy_check_mark:| The tabular input whose records are to be filtered.|
+| *Column* | `string` |  :heavy_check_mark:| The column by which to filter.|
 | *Expression* | scalar |  :heavy_check_mark:| The scalar or literal expression for which to search.|
 
 ## Returns

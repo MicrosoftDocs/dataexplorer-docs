@@ -25,10 +25,10 @@ The function `quantize_fl()` is a [user-defined function (UDF)](../query/functio
 
 |Name|Type|Required|Description|
 |--|--|--|--|
-|*num_bins*|int| :heavy_check_mark:| The required number of bins.|
-|*in_cols*|dynamic| :heavy_check_mark:|An array containing the names of the columns to quantize.|
-|*out_cols*|dynamic| :heavy_check_mark:|An array containing the names of the respective output columns for the binned values.|
-|*labels*|dynamic||An array containing the label names. If unspecified, bin ranges will be used.|
+|*num_bins*| `int` | :heavy_check_mark:| The required number of bins.|
+|*in_cols*| `dynamic` | :heavy_check_mark:|An array containing the names of the columns to quantize.|
+|*out_cols*| `dynamic` | :heavy_check_mark:|An array containing the names of the respective output columns for the binned values.|
+|*labels*| `dynamic` ||An array containing the label names. If unspecified, bin ranges will be used.|
 
 ## Function definition
 

@@ -30,11 +30,11 @@ At least [Database Ingestor](access-control/role-based-access-control.md) permis
 
 |Name|Type|Required|Description|
 |--|--|--|--|
-| *TableName* | string |  :heavy_check_mark: | The name of the table.|
-| *DatabaseName* | string |  :heavy_check_mark: | The name of the database.|
-| *MappingKind* | string |  :heavy_check_mark: | The type of mapping. Valid values are `CSV`, `JSON`, `avro`, `parquet`, and `orc`.|
-| *MappingName* | string |  :heavy_check_mark: | The name of the mapping.|
-| *MappingFormattedAsJson* | string |  :heavy_check_mark: | The ingestion mapping definition formatted as a JSON value.|
+| *TableName* | `string` |  :heavy_check_mark: | The name of the table.|
+| *DatabaseName* | `string` |  :heavy_check_mark: | The name of the database.|
+| *MappingKind* | `string` |  :heavy_check_mark: | The type of mapping. Valid values are `CSV`, `JSON`, `avro`, `parquet`, and `orc`.|
+| *MappingName* | `string` |  :heavy_check_mark: | The name of the mapping.|
+| *MappingFormattedAsJson* | `string` |  :heavy_check_mark: | The ingestion mapping definition formatted as a JSON value.|
 
 > [!NOTE]
 >

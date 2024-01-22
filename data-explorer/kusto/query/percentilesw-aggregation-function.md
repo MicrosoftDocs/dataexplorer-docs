@@ -27,8 +27,8 @@ To calculate unweighted percentiles, see [percentiles()](percentiles-aggregation
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-|*expr* | string |  :heavy_check_mark: | The expression to use for aggregation calculation.|
-|*weightExpr*|long| :heavy_check_mark:|The weight to give each value.|
+|*expr* | `string` |  :heavy_check_mark: | The expression to use for aggregation calculation.|
+|*weightExpr*| `long` | :heavy_check_mark:|The weight to give each value.|
 |*percentile*| int or long |  :heavy_check_mark:| A constant that specifies the percentile.|
 |*percentiles* | int or long |  :heavy_check_mark: | One or more comma-separated percentiles.|
 
@@ -112,9 +112,9 @@ Instead of returning the values in individual columns, use the `percentilesw_arr
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-|*expr* | string |  :heavy_check_mark: | The expression to use for aggregation calculation.|
+|*expr* | `string` |  :heavy_check_mark: | The expression to use for aggregation calculation.|
 |*percentiles*| int, long, or dynamic |  :heavy_check_mark:| One or more comma-separated percentiles or a dynamic array of percentiles. Each percentile can be an integer or long value.|
-|*weightExpr*|long| :heavy_check_mark:|The weight to give each value.|
+|*weightExpr*| `long` | :heavy_check_mark:|The weight to give each value.|
 
 ### Returns
 

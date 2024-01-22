@@ -19,7 +19,7 @@ Calculates the element-wise power of two numeric series inputs.
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-| *series1*, *series2* | dynamic |  :heavy_check_mark: | Arrays of numeric values. The first array, or base, is element-wise raised to the power of the second array, or power, into a dynamic array result.|
+| *series1*, *series2* | `dynamic` |  :heavy_check_mark: | Arrays of numeric values. The first array, or base, is element-wise raised to the power of the second array, or power, into a dynamic array result.|
 
 ## Returns
 

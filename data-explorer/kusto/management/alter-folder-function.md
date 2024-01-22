@@ -26,18 +26,18 @@ You must have at least [Function Admin](../management/access-control/role-based-
 
 |Name|Type|Required|Description|
 |--|--|--|--|
-|*FunctionName*|string| :heavy_check_mark:|The name of the function to alter.|
-|*Folder*|string| :heavy_check_mark:|The name of the folder to assign to the function.|
+|*FunctionName*| `string` | :heavy_check_mark:|The name of the function to alter.|
+|*Folder*| `string` | :heavy_check_mark:|The name of the folder to assign to the function.|
 
 ## Returns
 
 |Output parameter |Type |Description|
 |---|---|---|
-|Name  |String |The name of the function.|
-|Parameters  |String |The parameters required by the function.|
-|Body  |String |Zero or more let statements followed by a valid CSL expression to be evaluated upon function invocation.|
-|Folder|String|A folder to use for UI functions categorization. This parameter doesn't change the way function is invoked.|
-|DocString|String|A description of the function for UI purposes.|
+|Name  | `string` |The name of the function.|
+|Parameters  | `string` |The parameters required by the function.|
+|Body  | `string` |Zero or more let statements followed by a valid CSL expression to be evaluated upon function invocation.|
+|Folder| `string` |A folder to use for UI functions categorization. This parameter doesn't change the way function is invoked.|
+|DocString| `string` |A description of the function for UI purposes.|
 
 ## Example
 

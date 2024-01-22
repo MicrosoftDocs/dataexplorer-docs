@@ -29,7 +29,7 @@ Get the schema in JSON format and additional table metadata:
 
 |Name|Type|Required|Description|
 |--|--|--|--|
-|*TableName*|string| :heavy_check_mark:|The name of the table for which to show the schema.|
+|*TableName*| `string` | :heavy_check_mark:|The name of the table for which to show the schema.|
 
 ## Returns
 

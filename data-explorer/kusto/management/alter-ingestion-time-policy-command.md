@@ -25,8 +25,8 @@ You must have at least [Table Ingestor](../management/access-control/role-based-
 
 |Name|Type|Required|Description|
 |--|--|--|--|
-|*TableName*|string| :heavy_check_mark:|The name of the table.|
-|*Flag*|bool| :heavy_check_mark:|Determines whether to turn on or turn off the policy. `true` turns on the policy. `false` turns off the policy.|
+|*TableName*| `string` | :heavy_check_mark:|The name of the table.|
+|*Flag*| `bool` | :heavy_check_mark:|Determines whether to turn on or turn off the policy. `true` turns on the policy. `false` turns off the policy.|
 
 ### Examples
 

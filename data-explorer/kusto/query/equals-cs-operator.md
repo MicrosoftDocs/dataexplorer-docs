@@ -34,9 +34,9 @@ For more information about other operators and to determine which operator is mo
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-| *T* | string |  :heavy_check_mark:| The tabular input whose records are to be filtered. |
-| *col* | string |  :heavy_check_mark: | The column to filter. |
-| *expression* | string |  :heavy_check_mark: | The expression used to filter. |
+| *T* | `string` |  :heavy_check_mark:| The tabular input whose records are to be filtered. |
+| *col* | `string` |  :heavy_check_mark: | The column to filter. |
+| *expression* | `string` |  :heavy_check_mark: | The expression used to filter. |
 
 ## Returns
 

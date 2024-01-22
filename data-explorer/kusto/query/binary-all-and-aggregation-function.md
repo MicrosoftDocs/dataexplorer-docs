@@ -20,7 +20,7 @@ Accumulates values using the binary `AND` operation for each summarization group
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-| *expr* | long |  :heavy_check_mark: | The value used for the binary `AND`  calculation. |
+| *expr* | `long` |  :heavy_check_mark: | The value used for the binary `AND`  calculation. |
 
 ## Returns
 

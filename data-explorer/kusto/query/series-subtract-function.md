@@ -19,7 +19,7 @@ Calculates the element-wise subtraction of two numeric series inputs.
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-| *series1*, *series2* | dynamic |  :heavy_check_mark: | Arrays of numeric values, the second array to be element-wise subtracted from the first array.|
+| *series1*, *series2* | `dynamic` |  :heavy_check_mark: | Arrays of numeric values, the second array to be element-wise subtracted from the first array.|
 
 ## Returns
 

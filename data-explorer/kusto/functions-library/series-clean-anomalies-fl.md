@@ -21,8 +21,8 @@ The function `series_clean_anomalies_fl()` is a [user-defined function (UDF)](..
 
 |Name|Type|Required|Description|
 |--|--|--|--|
-| *y_series* | dynamic |  :heavy_check_mark: | The input array of numeric values.|
-| *anomalies* | dynamic |  :heavy_check_mark: | The anomalies array containing either 0 for normal points or any other value for anomalous points.|
+| *y_series* | `dynamic` |  :heavy_check_mark: | The input array of numeric values.|
+| *anomalies* | `dynamic` |  :heavy_check_mark: | The anomalies array containing either 0 for normal points or any other value for anomalous points.|
 
 ## Function definition
 

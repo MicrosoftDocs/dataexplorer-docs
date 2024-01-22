@@ -25,10 +25,10 @@ The function `ks_test_fl()` is a [UDF (user-defined function)](../query/function
 
 |Name|Type|Required|Description|
 |--|--|--|--|
-|*data1*|string| :heavy_check_mark:|The name of the column containing the first set of data to be used for the test.|
-|*data2*|string| :heavy_check_mark:|The name of the column containing the second set of data to be used for the test.|
-|*test_statistic*|string| :heavy_check_mark:|The name of the column to store test statistic value for the results.|
-|*p_value*|string| :heavy_check_mark:|The name of the column to store p-value for the results.|
+|*data1*| `string` | :heavy_check_mark:|The name of the column containing the first set of data to be used for the test.|
+|*data2*| `string` | :heavy_check_mark:|The name of the column containing the second set of data to be used for the test.|
+|*test_statistic*| `string` | :heavy_check_mark:|The name of the column to store test statistic value for the results.|
+|*p_value*| `string` | :heavy_check_mark:|The name of the column to store p-value for the results.|
 
 ## Function definition
 

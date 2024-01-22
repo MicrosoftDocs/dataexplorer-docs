@@ -19,8 +19,8 @@ Generates a dynamic array containing a series comprised of repeated numbers.
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-| *value* | bool, int, long, real, datetime, string or timespan |  :heavy_check_mark: | The value of the element in the resulting array.|  
-| *count* | int |  :heavy_check_mark: | The count of the elements in the resulting array.|
+| *value* | `bool`, `int`, `long`, `real`, `datetime`, `string` or `timespan` |  :heavy_check_mark: | The value of the element in the resulting array.|  
+| *count* | `int` |  :heavy_check_mark: | The count of the elements in the resulting array.|
 
 ## Returns
 

@@ -19,8 +19,8 @@ Returns the start of the year containing the date, shifted by an offset, if prov
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-| *date* | datetime |  :heavy_check_mark: | The date for which to find the start of the year.|
-| *offset* | int | | The number of years to offset from the input date. The default is 0.|
+| *date* | `datetime` |  :heavy_check_mark: | The date for which to find the start of the year.|
+| *offset* | `int` | | The number of years to offset from the input date. The default is 0.|
 
 ## Returns
 

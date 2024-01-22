@@ -29,11 +29,11 @@ Extract the required 'scatter3d' template from the publicly available `PlotlyTem
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-| *x_col* | string |  :heavy_check_mark: | The name of the column for the X coordinated of the 3D plot.|
-| *y_col* | string |  :heavy_check_mark: | The name of the column for the Y coordinated of the 3D plot.|
-| *z_col* | string |  :heavy_check_mark: | The name of the column for the Z coordinated of the 3D plot.|
-| *aggr_col* | string |  :heavy_check_mark: | The name of the grouping column. Records in the same group are rendered in distinct color.|
-| *chart_title* | string | | The chart title. The default is '3D Scatter chart'.|
+| *x_col* | `string` |  :heavy_check_mark: | The name of the column for the X coordinated of the 3D plot.|
+| *y_col* | `string` |  :heavy_check_mark: | The name of the column for the Y coordinated of the 3D plot.|
+| *z_col* | `string` |  :heavy_check_mark: | The name of the column for the Z coordinated of the 3D plot.|
+| *aggr_col* | `string` |  :heavy_check_mark: | The name of the grouping column. Records in the same group are rendered in distinct color.|
+| *chart_title* | `string` | | The chart title. The default is '3D Scatter chart'.|
 
 ## Function definition
 

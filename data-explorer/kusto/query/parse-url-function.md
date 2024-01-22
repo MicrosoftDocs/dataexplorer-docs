@@ -21,7 +21,7 @@ Parses an absolute URL `string` and returns a `dynamic` object contains URL part
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-| *url* | string |  :heavy_check_mark: | An absolute URL, including its scheme, or the query part of the URL. For example, use the absolute `https://bing.com` instead of `bing.com`.|
+| *url* | `string` |  :heavy_check_mark: | An absolute URL, including its scheme, or the query part of the URL. For example, use the absolute `https://bing.com` instead of `bing.com`.|
 
 ## Returns
 
