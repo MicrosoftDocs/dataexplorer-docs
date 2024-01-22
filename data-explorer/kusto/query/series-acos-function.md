@@ -19,7 +19,7 @@ Calculates the element-wise arccosine function of the numeric series input.
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-| *series* | dynamic |  :heavy_check_mark: | An array of numeric values over which the arccosine function is applied. |
+| *series* | `dynamic` |  :heavy_check_mark: | An array of numeric values over which the arccosine function is applied. |
 
 ## Returns
 

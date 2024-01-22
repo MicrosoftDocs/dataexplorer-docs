@@ -27,11 +27,11 @@ output of the operator. All columns of the input that aren't expanded are duplic
 
 |Name|Type|Required|Description|
 |--|--|--|--|
-|*ColumnName*, *ArrayExpression*|string| :heavy_check_mark:|A column reference, or a scalar expression with a value of type `dynamic` that holds an array or a property bag. The individual top-level elements of the array or property bag get expanded into multiple records.<br>When *ArrayExpression* is used and *Name* doesn't equal any input column name, the expanded value is extended into a new column in the output. Otherwise, the existing *ColumnName* is replaced.|
-|*Name*|string| |A name for the new column.|
-|*Typename*|string| :heavy_check_mark:|Indicates the underlying type of the array's elements, which becomes the type of the column produced by the `mv-expand` operator. The operation of applying type is cast-only and doesn't include parsing or type-conversion. Array elements that don't conform with the declared type become `null` values.|
-|*RowLimit*|int||The maximum number of rows generated from each original row. The default is 2147483647. `mvexpand` is a legacy and obsolete form of the operator `mv-expand`. The legacy version has a default row limit of 128.|
-|*IndexColumnName*|string||If `with_itemindex` is specified, the output includes another column named *IndexColumnName* that contains the index starting at 0 of the item in the original expanded collection.|
+|*ColumnName*, *ArrayExpression*| `string` | :heavy_check_mark:|A column reference, or a scalar expression with a value of type `dynamic` that holds an array or a property bag. The individual top-level elements of the array or property bag get expanded into multiple records.<br>When *ArrayExpression* is used and *Name* doesn't equal any input column name, the expanded value is extended into a new column in the output. Otherwise, the existing *ColumnName* is replaced.|
+|*Name*| `string` | |A name for the new column.|
+|*Typename*| `string` | :heavy_check_mark:|Indicates the underlying type of the array's elements, which becomes the type of the column produced by the `mv-expand` operator. The operation of applying type is cast-only and doesn't include parsing or type-conversion. Array elements that don't conform with the declared type become `null` values.|
+|*RowLimit*| `int` ||The maximum number of rows generated from each original row. The default is 2147483647. `mvexpand` is a legacy and obsolete form of the operator `mv-expand`. The legacy version has a default row limit of 128.|
+|*IndexColumnName*| `string` ||If `with_itemindex` is specified, the output includes another column named *IndexColumnName* that contains the index starting at 0 of the item in the original expanded collection.|
 
 ## Returns
 
@@ -202,9 +202,9 @@ datatable (a: string, b: dynamic, c: dynamic)[
 
 | ColumnName | ColumnOrdinal | DateType | ColumnType |
 |---|---|---|---|
-| a | 0 | System.String | string |
-| b | 1 | System.Object | dynamic |
-| c | 2 | System.Int32 | int |
+| a | 0 | System.String | `string` |
+| b | 1 | System.Object | `dynamic` |
+| c | 2 | System.Int32 | `int` |
 
 Notice column `b` is returned as `dynamic` while `c` is returned as `int`.
 

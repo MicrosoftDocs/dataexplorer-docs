@@ -28,8 +28,8 @@ Filters a record set for data that doesn't have a case-sensitive ending string. 
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-| *T* | string |  :heavy_check_mark:| The tabular input whose records are to be filtered.|
-| *column* | string |  :heavy_check_mark:| The column by which to filter.|
+| *T* | `string` |  :heavy_check_mark:| The tabular input whose records are to be filtered.|
+| *column* | `string` |  :heavy_check_mark:| The column by which to filter.|
 | *expression* | scalar |  :heavy_check_mark:| The scalar or literal expression for which to search.|
 
 ## Returns

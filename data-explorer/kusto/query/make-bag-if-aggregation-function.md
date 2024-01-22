@@ -23,9 +23,9 @@ Creates a `dynamic` JSON property bag (dictionary) of *expr* values in records f
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-| *expr* | dynamic |  :heavy_check_mark: | The expression used for the aggregation calculation. |
-| *predicate* | bool |  :heavy_check_mark: | The predicate that evaluates to `true`, in order for *expr* to be added to the result. |
-| *maxSize* | int |  | The limit on the maximum number of elements returned. The default and max value is 1048576. |
+| *expr* | `dynamic` |  :heavy_check_mark: | The expression used for the aggregation calculation. |
+| *predicate* | `bool` |  :heavy_check_mark: | The predicate that evaluates to `true`, in order for *expr* to be added to the result. |
+| *maxSize* | `int` |  | The limit on the maximum number of elements returned. The default and max value is 1048576. |
 
 ## Returns
 
