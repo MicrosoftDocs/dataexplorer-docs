@@ -19,8 +19,8 @@ Creates a dynamic property-bag from two input dynamic arrays. In the resulting p
 
 |Name|Type|Required|Description|
 |--|--|--|--|
-| *KeysArray* | dynamic |  :heavy_check_mark: | An array of strings. These strings represent the property names for the resulting property-bag.|
-| *ValuesArray* | dynamic |  :heavy_check_mark: | An array whose values will be the property values for the resulting property-bag.|
+| *KeysArray* | `dynamic` |  :heavy_check_mark: | An array of strings. These strings represent the property names for the resulting property-bag.|
+| *ValuesArray* | `dynamic` |  :heavy_check_mark: | An array whose values will be the property values for the resulting property-bag.|
 
 > [!NOTE]
 >

@@ -19,8 +19,8 @@ Returns binary shift right operation on a pair of numbers.
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-| *value* | int |  :heavy_check_mark: | The value to shift right. |
-| *shift* | int |  :heavy_check_mark: | The number of bits to shift right. |
+| *value* | `int` |  :heavy_check_mark: | The value to shift right. |
+| *shift* | `int` |  :heavy_check_mark: | The number of bits to shift right. |
 
 ## Returns
 

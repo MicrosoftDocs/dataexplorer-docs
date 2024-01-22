@@ -19,8 +19,8 @@ Returns a result of the bitwise `xor` operation of the two values.
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-| *value1* | int |  :heavy_check_mark: | The left-side value of the XOR operation. |
-| *value2* | int |  :heavy_check_mark: | The right-side value of the XOR operation. |
+| *value1* | `int` |  :heavy_check_mark: | The left-side value of the XOR operation. |
+| *value2* | `int` |  :heavy_check_mark: | The right-side value of the XOR operation. |
 
 ## Returns
 

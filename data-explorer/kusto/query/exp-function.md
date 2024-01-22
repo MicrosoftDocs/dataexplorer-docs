@@ -19,7 +19,7 @@ The base-e exponential function of x, which is e raised to the power x: e^x.
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-| *x* | real |  :heavy_check_mark:| The value of the exponent. |
+| *x* | `real` |  :heavy_check_mark:| The value of the exponent. |
 
 ## Returns
 
