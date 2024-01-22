@@ -99,7 +99,7 @@ Id|Code|Colour
 
 ### Updating a single column on one row
 
-```
+```kusto
 .update table MyTable on Id with(whatif=true) <|
 MyTable
 | where Id==3
@@ -110,7 +110,7 @@ Since we set `whatif` to true, the table is unchanged but the command returns th
 
 The following command actually performs the update:
 
-```
+```kusto
 .update table MyTable on Id <|
 MyTable
 | where Id==3
@@ -119,7 +119,7 @@ MyTable
 
 ### Updating a single column on multiple rows
 
-```
+```kusto
 .update table MyTable on Id <|
 MyTable
 | where Code=="Employee"
@@ -131,7 +131,7 @@ Here we only updated the single column `Colour` to *Green*.
 
 ### Updating multiple columns on multiple rows
 
-```
+```kusto
 .update table MyTable on Id <|
 MyTable
 | where Colour=="Gray"
@@ -143,7 +143,7 @@ MyTable
 
 Here we first create the following mapping table:
 
-```
+```kusto
 .set-or-replace ColourMapping <|
   print OldColour="Red", NewColour="Pink"
   | union (print OldColour="Blue", NewColour="Purple") 
@@ -154,7 +154,7 @@ Here we first create the following mapping table:
 
 We then use that table to update map some colours in our table:
 
-```
+```kusto
 .update table MyTable on Id <|
 MyTable
 | where Code=="Customer"
@@ -168,7 +168,7 @@ A popular pattern is to first land data in a temporary / staging table before up
 
 Here we first create the following staging table:
 
-```
+```kusto
 .set-or-replace MyStagingTable <|
   range i from 70 to 130 step 5
   | project Id=i
@@ -178,7 +178,7 @@ Here we first create the following staging table:
 
 We then update the main table with the data in the staging table:
 
-```
+```kusto
 .update table MyTable on Id <|
 MyStagingTable
 | where true
@@ -188,7 +188,7 @@ Note that some records in the staging table didn't exist in the main table (i.e.
 
 ### Complete syntax - Complete control
 
-```
+```kusto
 .update table MyTable delete D append A <|
 let D = MyTable
   | where Code=="Employee";
