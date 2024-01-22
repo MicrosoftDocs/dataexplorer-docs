@@ -376,7 +376,7 @@ Telegraf is an open source, lightweight, minimal memory foot print agent for col
 
 * **Ingestion type supported:** Batching, Streaming
 * **Use cases:** Telemetry, Logs, Metrics
-* **Underlying SDK:** [Go](kusto/api/golang/kusto-golang-client-library)
+* **Underlying SDK:** [Go](kusto/api/golang/kusto-golang-client-library.md)
 * **Repository:** InfluxData - https://github.com/influxdata/telegraf/tree/master/plugins/outputs/azure_data_explorer
 * **Documentation:** [Ingest data from Telegraf](ingest-data-telegraf.md)
 * **Community Blog:**  [New Azure Data Explorer output plugin for Telegraf enables SQL monitoring at huge scale](https://techcommunity.microsoft.com/t5/azure-data-explorer-blog/new-azure-data-explorer-output-plugin-for-telegraf-enables-sql/ba-p/2829444)
