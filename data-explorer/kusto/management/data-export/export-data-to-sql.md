@@ -26,9 +26,9 @@ You must have at least [Table Admin](../access-control/role-based-access-control
 |`async`|string||If specified, the command runs asynchronously.|
 |*SqlTableName*|string| :heavy_check_mark:|The name of the SQL database table into which to insert the data. To protect against injection attacks, this name is restricted.|
 |*SqlConnectionString*|string| :heavy_check_mark:|The connection string for the SQL endpoint and database. The string must follow the `ADO.NET` connection string format. For security reasons, the connection string is restricted.|
-|*PropertyName*, *PropertyValue*|string||A list of optional [properties](#properties).|
+|*PropertyName*, *PropertyValue*|string||A list of optional [properties](#supported-properties).|
 
-## Properties
+## Supported properties
 
 |Name               |Values           |Description|
 |-------------------|-----------------|-----------|

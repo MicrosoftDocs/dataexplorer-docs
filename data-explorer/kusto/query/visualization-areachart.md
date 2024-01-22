@@ -53,7 +53,7 @@ All properties are optional.
 
 ::: zone pivot="azuremonitor"
 
-### Properties
+### Supported properties
 
 All properties are optional.
 
