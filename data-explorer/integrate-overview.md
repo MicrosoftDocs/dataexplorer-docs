@@ -242,8 +242,6 @@ Event Grid ingestion is a pipeline that listens to Azure storage, and updates yo
 Java Database Connectivity (JDBC) is a Java API used to connect to databases and execute queries. You can use JDBC to connect to Azure Data Explorer.
 
 * **Functionality:** Query, visualization
-* **Ingestion type supported:**
-* **Use cases:**
 * **Underlying SDK:** [Java](kusto/api/java/kusto-java-client-library.md)
 * **Documentation:** [Connect to Azure Data Explorer with JDBC](connect-jdbc.md)
 
@@ -289,13 +287,11 @@ NLog is a flexible and free logging platform for various .NET platforms, includi
 * **Documentation:** [Ingest data with the NLog sink](nlog-sink.md)
 * **Community Blog:** [Getting started with NLog sink and Azure Data Explorer](https://aka.ms/adx-docs-nlog-blog)
 
-
 ### ODBC
 
 Open Database Connectivity ([ODBC](/sql/odbc/reference/odbc-overview)) is a widely accepted application programming interface (API) for database access. Azure Data Explorer is compatible with a subset of the SQL Server communication protocol (MS-TDS). This compatibility enables the use of the ODBC driver for SQL Server with Azure Data Explorer.
 
 * **Functionality:** Ingestion
-
 * **Ingestion type supported:** Batching, Streaming
 * **Use cases:** Telemetry, Logs, Metrics
 * **Documentation:** [Connect to Azure Data Explorer with ODBC](connect-odbc.md)
@@ -320,9 +316,8 @@ Open Database Connectivity ([ODBC](/sql/odbc/reference/odbc-overview)) is a wide
 
 * **Functionality:** Query, Ingestion, Export
 * **Ingestion type supported:** Batching
-* **Use cases:** 
 * **Documentation:** [Use Power Apps to query data in Azure Data Explorer](power-apps-connector.md)
-* **Community Blog:**
+
 ### Power Automate
 
 [Power Automate](/power-automate/getting-started) is an orchestration service used to automate business processes. The :::no-loc text="Power Automate"::: (previously Microsoft Flow) connector enables you to orchestrate and schedule flows, send notifications, and alerts, as part of a scheduled or triggered task.
@@ -373,7 +368,6 @@ Serilog is a popular logging framework for .NET applications. Serilog allows dev
 Telegraf is an open source, lightweight, minimal memory foot print agent for collecting, processing and writing telemetry data including logs, metrics, and IoT data. Telegraf supports hundreds of input and output plugins. It's widely used and well supported by the open source community. The output plugin serves as the connector from Telegraf and supports ingestion of data from many types of input plugins into your database.
 
 * **Functionality:** Ingestion
-
 * **Ingestion type supported:** Batching, Streaming
 * **Use cases:** Telemetry, Logs, Metrics
 * **Underlying SDK:** [Go](kusto/api/golang/kusto-golang-client-library.md)
@@ -388,78 +382,49 @@ Telegraf is an open source, lightweight, minimal memory foot print agent for col
 Azure CLI lets you manage Kusto resources.
 
 * **Functionality:** Administration
-
-* **Use cases:** 
 * **Documentation:** [az kusto](/cli/azure/kusto?view=azure-cli-latest)
-* **Community Blog:** 
-
 
 ### Azure Synapse Analytics
 
 Azure Synapse Data Explorer provides customers with an interactive query experience to unlock insights from log and telemetry data. To complement existing SQL and Apache Spark analytics runtime engines, the Data Explorer analytics runtime is optimized for efficient log analytics using powerful indexing technology to automatically index free-text and semi-structured data commonly found in telemetry data.
 
-* **Functionality:** Ingestion, Query, Visualization
-
-* **Ingestion type supported:**
-* **Use cases:** 
+* **Functionality:** Ingestion, Query, Visualization 
 * **Documentation:**  [What is Azure Synapse Data Explorer?](/azure/synapse-analytics/data-explorer/data-explorer-overview)
-* **Community Blog:** 
-
 
 ### Azure Data Lake
 
 Azure Data Explorer integrates with Azure Blob Storage and Azure Data Lake Storage (Gen1 and Gen2), providing fast, cached, and indexed access to data stored in external storage.
 
 * **Functionality:** Query
-
-* **Ingestion type supported:**
-* **Use cases:** 
 * **Documentation:** [Query data in Azure Data Lake using Azure Data Explorer](data-lake-query-data.md)
-* **Community Blog:** 
 
-
-### Azure Data Studio 
+### Azure Data Studio
 
 The Kusto (KQL) extension for Azure Data Studio enables you to connect and query to Azure Data Explorer clusters. Users can write and run KQL queries and author notebooks with the Kusto kernel complete with IntelliSens
 
 * **Functionality:**  Query
-* **Use cases:** 
 * **Documentation:** [Kusto extension overview](/sql/azure-data-studio/extensions/kusto-extension?context=%252fazure%252fdata-explorer%252fcontext%252fcontext), [use Kusto](/sql/azure-data-studio/notebooks/notebooks-kusto-kernel?context=%252fazure%252fdata-explorer%252fcontext%252fcontext), and [use Kqlmagic](/sql/azure-data-studio/notebooks-kqlmagic?context=%252fazure%252fdata-explorer%252fcontext%252fcontext)
-* **Community Blog:** 
-
 
 ### Azure Data Share
 
 There are many traditional ways to share data, such as through file shares, FTP, e-mail, and APIs. These methods require both parties to build and maintain a data pipeline that moves data between teams and organizations. With Azure Data Explorer, you can easily and securely share your data with people in your company or external partners. Sharing occurs in near-real-time, with no need to build or maintain a data pipeline. All database changes, including schema and data, on the provider side are instantly available on the consumer side.
 
 * **Functionality:** Share data
-
-* **Use cases:** 
 * **Documentation:** [Azure Data Share](data-share.md)
-* **Community Blog:** 
 
 ### Azure Monitor
 
 The Azure Data Explorer supports cross-service queries between Azure Data Explorer, [Application Insights (AI)](/azure/azure-monitor/app/app-insights-overview), and [Log Analytics (LA)](/azure/azure-monitor/platform/data-platform-logs). You can query your Log Analytics or Application Insights workspace using Azure Data Explorer query tools and in a cross-service query. 
 
 * **Functionality:** Query
-
-* **Ingestion type supported:**
-* **Use cases:** 
 * **Documentation:** [Azure Monitor](query-monitor-data.md)
-
-* **Community Blog:** 
 
 ### Azure Notebooks
 
 Kqlmagic is a command that extends the capabilities of the Python kernel in Azure Data Studio notebooks. You can combine Python and Kusto query language (KQL) to query and visualize data using rich Plotly library integrated with render commands. Kqlmagic brings you the benefit of notebooks, data analysis, and rich Python capabilities all in the same location. Supported data sources with Kqlmagic include Azure Data Explorer, Application Insights, and Azure Monitor logs.
 
 * **Functionality:** Query, Visualization
-
-* **Ingestion type supported:**
-* **Use cases:** 
-* **Documentation:** [Azure Notebooks](/sql/azure-data-studio/notebooks/notebooks-kqlmagic?context=%252fazure%252fdata-explorer%252fcontext%252fcontext%253fcontext%253d%252fazure%252fdata-explorer%252fcontext%252fcontext)
-* **Community Blog:** 
+* **Documentation:** [Azure Notebooks](/sql/azure-data-studio/notebooks/notebooks-kqlmagic?context=%252fazure%252fdata-explorer%252fcontext%252fcontext%253fcontext%253d%252fazure%252fdata-explorer%252fcontext%252fcontext) 
 
 ### Azure Pipelines
 
@@ -467,22 +432,14 @@ Kqlmagic is a command that extends the capabilities of the Python kernel in Azur
 [Azure Data Explorer - Pipeline Tools](https://marketplace.visualstudio.com/items?itemName=Azure-Kusto.PublishToADX) is the Azure Pipelines task that enables you to create release pipelines and deploy your database changes to your Azure Data Explorer databases. It's available for free in the [Visual Studio Marketplace](https://marketplace.visualstudio.com/).
 
 * **Functionality:** Source control
-
-* **Ingestion type supported:**
-* **Use cases:** 
 * **Documentation:** [Azure Pipelines](devops.md)
-* **Community Blog:** 
 
 ### DeltaKusto
 
 Delta Kusto is a Command-line interface (CLI) enabling Continuous Integration / Continuous Deployment (CI / CD) automation with Kusto objects (for example: tables, functions, policies, security roles) in Azure Data Explorer databases. It can work on a single database, multiple databases, or an entire cluster. Delta Kusto also supports multi-tenant scenarios.
 
 * **Functionality:** Source control
-
-* **Ingestion type supported:**
-* **Use cases:** 
 * **Documentation:** [Delta Kusto](https://github.com/microsoft/delta-kusto)
-* **Community Blog:** 
 
 ### Jupyter Notebooks
 
@@ -491,7 +448,6 @@ Delta Kusto is a Command-line interface (CLI) enabling Continuous Integration / 
 [Kqlmagic](https://github.com/microsoft/jupyter-Kqlmagic) extends the capabilities of the Python kernel in Jupyter Notebook so you can run [Kusto Query Language (KQL)](kusto/query/index.md) queries natively. You can combine Python and KQL to query and visualize data using the rich Plot.ly library integrated with the [render](kusto/query/render-operator.md) operator. The kqlmagic extension is compatible with Jupyter Lab, Visual Studio Code Jupyter extension, and Azure Data Studio, and supported data sources include Azure Data Explorer, Azure Monitor logs, and Application Insights.
 
 * **Functionality:** Query, Visualization
-* **Use cases:** 
 * **Documentation:** [Jupyter Notebooks](kqlmagic.md)
 * **Community Blog:** [Analyze data in Azure Data Explorer using KQL magic for Jupyter Notebook](https://techcommunity.microsoft.com/t5/azure-data-explorer/analyze-data-in-azure-data-explorer-using-kql-magic-for-jupyter/m-p/325835)
 
@@ -500,20 +456,15 @@ Delta Kusto is a Command-line interface (CLI) enabling Continuous Integration / 
 The open source repo contains C# parser and a semantic analyzer as well as a translator project that generates the same libraries in Java Script.
 
 * **Functionality:**  language parsing
-* **Use cases:** 
 * **Documentation:** [Kusto Query Language parser](https://github.com/microsoft/Kusto-Query-Language)
-* **Community Blog:** 
 
 ### Kusto.Explorer  
 
 Kusto.Explorer is free software for download and use on your Windows desktop. Kusto.Explorer allows you to query and analyze your data with Kusto Query Language (KQL) in a user-friendly interface. 
 
 * **Functionality:** Query, Visualization
-* **Ingestion type supported:**
-* **Use cases:** 
 * **Documentation:** [Installation and user interface](kusto/tools/kusto-explorer.md), [using Kusto.Explorer](kusto/tools/kusto-explorer-using.md)
   * Additional articles include [options](kusto/tools/kusto-explorer-options.md), [troubleshooting](kusto/tools/kusto-explorer-troubleshooting.md), [keyboard shortcuts](kusto/tools/kusto-explorer-shortcuts.md), [code features](kusto/tools/kusto-explorer-code-features.md)
-* **Community Blog:** 
 
 ### Kusto CLI
 
@@ -521,8 +472,6 @@ Kusto.Cli is a command-line utility for sending queries and control commands
 on a Kusto cluster. 
 
 * **Functionality:**  Query
-* **Ingestion type supported:**
-* **Use cases:** 
 * **Documentation:** [Kusto CLI](kusto/tools/kusto-cli.md)
 
 ### Lightingest
@@ -530,56 +479,42 @@ on a Kusto cluster.
 Lightingest is  a command-line utility for ad-hoc data ingestion into Azure Data Explorer. 
 
 * **Functionality:** Ingestion
-
 * **Ingestion type supported:** Batching
-* **Use cases:** 
+* **Use cases:** Historical data load
 * **Repository:** [LightIngest](https://github.com/Azure/Kusto-Lightingest/blob/main/README.md)
-* **Documentation:** [Use LightIngest to ingest data](lightingest.md)   
+* **Documentation:** [Use LightIngest to ingest data](lightingest.md)
 
 ### Microsoft Purview
 
 Microsoft Purview simplifies data governance by offering a unified service to manage your data from various sources.
 
 * **Functionality:**  Governance
-* **Use cases:** 
 * **Documentation:** [Integrate Azure Data Explorer with Microsoft Purview](purview.md)
-* **Community Blog:** 
 
 ### Monaco editor (plugin/embed)
 
 You can integrate the [Monaco Editor](https://microsoft.github.io/monaco-editor) with Kusto Query Language support (*monaco-kusto*) into your app. Integrating *monaco-kusto* into your app offers you an editing experience such as completion, colorization, refactoring, renaming, and go-to-definition
 
 * **Functionality:** Query
-
-* **Ingestion type supported:**
-* **Use cases:** 
 * **Repository:** [Monaco Editor](https://microsoft.github.io/monaco-editor)
 * **Documentation:** [Kusto Query Language setup and usage for the Monaco editor](./kusto/api/monaco/monaco-kusto.md) - The Kusto Query Language editor that can be embedded in web and electron based applications.
   * [Kusto Query Language plugin](https://github.com/Azure/monaco-kusto) - Access the Kusto Query Language editor plugin.
   * [Embedding the Azure Data Explorer web UI](./kusto/api/monaco/host-web-ux-in-iframe.md) - The Azure Data Explorer web UI can be embedded in an iframe and hosted in third-party websites.
-* **Community Blog:** 
-
 
 ### PowerShell
 
 PowerShell scripts can use the [Kusto client libraries](kusto/api/client-libraries.md), as PowerShell inherently integrates with .NET libraries. 
 
 * **Functionality:** Query
-
-* **Use cases:** 
 * **Documentation:** [Use Kusto .NET client libraries from PowerShell](kusto/api/powershell/powershell.md)
-* **Community Blog:** 
 
 ### Real-Time Analytics in Microsoft Fabric
 
 Real-Time Analytics is a fully managed big data analytics platform optimized for streaming, and time-series data.
 
 * **Functionality:** Ingestion, Export, Query, Visualization
-
 * **Ingestion type supported:** Streaming, Batching
-* **Use cases:** 
 * **Documentation:** [What is Real-Time Analytics in Fabric?](/fabric/real-time-analytics/overview)
-* **Community Blog:** 
 
 ### SyncKusto
 
@@ -587,13 +522,8 @@ Sync Kusto is a tool that enables users to synchronize various Kusto schema enti
 system, an Azure Data Explorer database, and Azure Dev Ops repos.
 
 * **Functionality:** Source control
-
-* **Ingestion type supported:**
-* **Use cases:** 
 * **Repository:** [SyncKusto](https://github.com/microsoft/delta-kusto)
 * **Documentation:** [Sync Kusto](kusto/tools/synckusto.md)
-* **Community Blog:** 
-
 
 ### Web UI
 
@@ -602,9 +532,7 @@ Azure Data Explorer provides a web experience that enables you to connect to you
 * **Functionality:** Ingestion, Export, Query, Visualization
 
 * **Ingestion type supported:** Batching, Streaming
-* **Use cases:** 
 * **Documentation:** [Azure Data Explorer web UI](web-query-data.md), [Get data from file](get-data-file.md)
-* **Community Blog:** 
 
 ---
 
