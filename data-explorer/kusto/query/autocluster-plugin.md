@@ -24,11 +24,11 @@ The parameters must be ordered as specified in the [syntax](#syntax). To indicat
 
 | Name | Type | Required | Description |
 |------|------|----------|-------------|
-| *T* | string |  :heavy_check_mark: | The input tabular expression. |
+| *T* | `string` |  :heavy_check_mark: | The input tabular expression. |
 | *SizeWeight* | double | | A double between 0 and 1 that controls the balance between generic (high coverage) and informative (many shared) values. Increasing this value typically reduces the quantity of patterns while expanding coverage. Conversely, decreasing this value generates more specific patterns characterized by increased shared values and a smaller percentage coverage. The default is `0.5`. The formula is a weighted geometric mean with weights `SizeWeight` and `1-SizeWeight`. |
-| *WeightColumn* | string | | Considers each row in the input according to the specified weight. Each row has a default weight of `1`. The argument must be a name of a numeric integer column. A common usage of a weight column is to take into account sampling or bucketing or aggregation of the data that is already embedded into each row. |
-| *NumSeeds* | int | | Determines the number of initial local search points. Adjusting the number of seeds impacts result quantity or quality based on data structure. Increasing seeds can enhance results but with a slower query tradeoff. Decreasing below five yields negligible improvements, while increasing above 50 rarely generates more patterns. The default is `25`.|
-| *CustomWildcard* | string | | A type literal that sets the wildcard value for a specific type in the results table, indicating no restriction on this column. The default is `null`, which represents an empty string. If the default is a good value in the data, a different wildcard value should be used, such as `*`. You can include multiple custom wildcards by adding them consecutively.|
+| *WeightColumn* | `string` | | Considers each row in the input according to the specified weight. Each row has a default weight of `1`. The argument must be a name of a numeric integer column. A common usage of a weight column is to take into account sampling or bucketing or aggregation of the data that is already embedded into each row. |
+| *NumSeeds* | `int` | | Determines the number of initial local search points. Adjusting the number of seeds impacts result quantity or quality based on data structure. Increasing seeds can enhance results but with a slower query tradeoff. Decreasing below five yields negligible improvements, while increasing above 50 rarely generates more patterns. The default is `25`.|
+| *CustomWildcard* | `string` | | A type literal that sets the wildcard value for a specific type in the results table, indicating no restriction on this column. The default is `null`, which represents an empty string. If the default is a good value in the data, a different wildcard value should be used, such as `*`. You can include multiple custom wildcards by adding them consecutively.|
 
 ## Returns
 

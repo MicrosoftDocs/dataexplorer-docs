@@ -19,7 +19,7 @@ Returns the cosine function value of the specified angle. The angle is specified
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-| *number* | real |  :heavy_check_mark: | The value in radians for which to calculate the cosine. |
+| *number* | `real` |  :heavy_check_mark: | The value in radians for which to calculate the cosine. |
 
 ## Returns
 

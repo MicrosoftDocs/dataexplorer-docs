@@ -31,11 +31,11 @@ The command to alter database ingestion mapping requires at least [Database Inge
 
 |Name|Type|Required|Description|
 |--|--|--|--|
-| *TableName* | string |  :heavy_check_mark: | The name of the table.|
-| *DatabaseName* | string |  :heavy_check_mark: | The name of the database.|
-| *MappingKind* | string |  :heavy_check_mark: | The type of mapping. Valid values are `CSV`, `JSON`, `avro`, `parquet`, and `orc`.|
-| *MappingName* | string |  :heavy_check_mark: | The name of the mapping.|
-| *ArrayOfMappingObjects* | string |  :heavy_check_mark: | A serialized array with one or more mapping objects defined.|
+| *TableName* | `string` |  :heavy_check_mark: | The name of the table.|
+| *DatabaseName* | `string` |  :heavy_check_mark: | The name of the database.|
+| *MappingKind* | `string` |  :heavy_check_mark: | The type of mapping. Valid values are `CSV`, `JSON`, `avro`, `parquet`, and `orc`.|
+| *MappingName* | `string` |  :heavy_check_mark: | The name of the mapping.|
+| *ArrayOfMappingObjects* | `string` |  :heavy_check_mark: | A serialized array with one or more mapping objects defined.|
 
 ## Examples
  

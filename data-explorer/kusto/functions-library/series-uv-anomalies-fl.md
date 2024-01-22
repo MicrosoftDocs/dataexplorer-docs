@@ -37,9 +37,9 @@ In the following function example, replace `YOUR-AD-RESOURCE-NAME` in the uri an
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-| *y_series* | string |  :heavy_check_mark: | The name of the input table column containing the values of the series to be anomaly detected. |
+| *y_series* | `string` |  :heavy_check_mark: | The name of the input table column containing the values of the series to be anomaly detected. |
 | *sensitivity* | integer | | An integer in the range [0-100] specifying the anomaly detection sensitivity. 0 is the least sensitive detection, while 100 is the most sensitive indicating even a small deviation from the expected baseline would be tagged as anomaly. Default value: 85 |
-| *tsid* | string | | The name of the input table column containing the time series ID. Can be omitted when analyzing a single time series. |
+| *tsid* | `string` | | The name of the input table column containing the time series ID. Can be omitted when analyzing a single time series. |
 
 ## Function definition
 

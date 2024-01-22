@@ -26,7 +26,7 @@ You must have at least Database User, Database Viewer, or Database Monitor permi
 
 |Name|Type|Required|Description|
 |--|--|--|--|
-|*TableName*|string||The name of the table to show.|
+|*TableName*| `string` ||The name of the table to show.|
 
 ## Returns
 

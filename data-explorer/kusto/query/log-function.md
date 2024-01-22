@@ -19,7 +19,7 @@ The natural logarithm is the base-e logarithm: the inverse of the natural expone
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-|*number*| real |  :heavy_check_mark: | The number for which to calculate the logarithm.|
+|*number*| `real` |  :heavy_check_mark: | The number for which to calculate the logarithm.|
 
 ## Returns
 

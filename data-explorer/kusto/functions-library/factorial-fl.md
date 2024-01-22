@@ -21,7 +21,7 @@ The function `factorial_fl()` is a [UDF (user-defined function)](../query/functi
 
 |Name|Type|Required|Description|
 |--|--|--|--|
-|*n*|int| :heavy_check_mark:|The input integer for which to calculate the factorial.|
+|*n*| `int` | :heavy_check_mark:|The input integer for which to calculate the factorial.|
 
 ## Function definition
 

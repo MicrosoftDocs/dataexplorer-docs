@@ -23,8 +23,8 @@ You must have at least [Database Admin](access-control/role-based-access-control
 
 |Name|Type|Required|Description|
 |--|--|--|--|
-|*DatabaseName*|string| :heavy_check_mark:|The name of the database for which to alter the merge policy.|
-|*PolicyObject*|string| :heavy_check_mark:|A policy object that defines the merge policy. For more information, see [merge policy](merge-policy.md).|
+|*DatabaseName*| `string` | :heavy_check_mark:|The name of the database for which to alter the merge policy.|
+|*PolicyObject*| `string` | :heavy_check_mark:|A policy object that defines the merge policy. For more information, see [merge policy](merge-policy.md).|
 
 ### Examples
 

@@ -15,9 +15,9 @@ Each CSV mapping element must contain either of the following optional propertie
 
 | Property   | Type   | Description                                                                           |
 |------------|--------|---------------------------------------------------------------------------------------|
-| Ordinal    | int    | The column order number in CSV.                                                       |
-| ConstValue | string | The constant value to be used for a column instead of some value inside the CSV file. |
-| Transform  | string | Transformation that should be applied on the content with [mapping transformations](mappings.md#mapping-transformations). The only supported transformation by is `SourceLocation`. |
+| Ordinal    | `int` | The column order number in CSV.                                                       |
+| ConstValue | `string` | The constant value to be used for a column instead of some value inside the CSV file. |
+| Transform  | `string` | Transformation that should be applied on the content with [mapping transformations](mappings.md#mapping-transformations). The only supported transformation by is `SourceLocation`. |
 
 > [!NOTE]
 >

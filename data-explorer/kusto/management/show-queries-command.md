@@ -25,12 +25,12 @@ A [Database Admin or Database Monitor](./access-control/role-based-access-contro
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-| *UserPrincipalName* | string |  |  The UPN of a specific user for which to return a list of queries. |
+| *UserPrincipalName* | `string` |  |  The UPN of a specific user for which to return a list of queries. |
 
 ## Returns
 
-- Returns a table containing previously run queries across all databases in the cluster and their completion statistics. You can use KQL queries to explore the results.
-- Returns a list of currently executing queries by the current user, or by another user, or by all users.
+* Returns a table containing previously run queries across all databases in the cluster and their completion statistics. You can use KQL queries to explore the results.
+* Returns a list of currently executing queries by the current user, or by another user, or by all users.
 
 > [!NOTE]
 > The text of the query is truncated after 64 KB.

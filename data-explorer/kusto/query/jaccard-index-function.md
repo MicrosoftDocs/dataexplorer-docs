@@ -19,8 +19,8 @@ Calculates the [Jaccard index](https://en.wikipedia.org/wiki/Jaccard_index) of t
 
 | Name | Type | Required | Description |
 | -- | -- | -- | -- |
-| *set1*| dynamic |  :heavy_check_mark: | The array representing the first set for the calculation.|
-| *set2*| dynamic |  :heavy_check_mark: | The array representing the second set for the calculation.|
+| *set1*| `dynamic` |  :heavy_check_mark: | The array representing the first set for the calculation.|
+| *set2*| `dynamic` |  :heavy_check_mark: | The array representing the second set for the calculation.|
 
 > [!NOTE]
 > Duplicate values in the input arrays are ignored.

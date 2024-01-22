@@ -25,7 +25,7 @@ Any two statements must be separated by a semicolon.
 
 |Name|Type|Required|Description|
 |--|--|--|--|
-| *expression* | string |  :heavy_check_mark: | The value to convert to a scalar value.|
+| *expression* | `string` |  :heavy_check_mark: | The value to convert to a scalar value.|
 
 ## Returns
 

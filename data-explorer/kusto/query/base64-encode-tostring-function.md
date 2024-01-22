@@ -21,7 +21,7 @@ Encodes a string as base64 string.
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-| *string* | string |  :heavy_check_mark: |  The value to encode as a base64 string. |
+| *string* | `string` |  :heavy_check_mark: |  The value to encode as a base64 string. |
 
 ## Returns
 

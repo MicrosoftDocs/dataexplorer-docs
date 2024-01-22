@@ -80,12 +80,12 @@ and *SubQuery* has the same syntax of any query statement.
 
 |Name|Type|Required|Description|
 |--|--|--|--|
-|*ItemIndex*|string||Indicates the name of a column of type `long` that's appended to the input as part of the array-expansion phase and indicates the 0-based array index of the expanded value.|
-|*Name*|string||The name to assign the array-expanded values of each array-expanded expression. If not specified, the name of the column is used if available. A random name is generated if *ArrayExpression* isn't a simple column name.|
-|*ArrayExpression*|dynamic| :heavy_check_mark:|The array whose values are array-expanded. If the expression is the name of a column in the input, the input column is removed from the input and a new column of the same name, or *ColumnName* if specified, appears in the output.|
-|*Typename*|string||The name of the type that the individual elements of the `dynamic` array *ArrayExpression* take. Elements that don't conform to this type are replaced by a null value. If unspecified, `dynamic` is used by default.|
-|*RowLimit*|int||A limit on the number of records to generate from each record of the input. If unspecified, 2147483647 is used.|
-|*SubQuery*|string||A tabular query expression with an implicit tabular source that gets applied to each array-expanded subtable.|
+|*ItemIndex*| `string` ||Indicates the name of a column of type `long` that's appended to the input as part of the array-expansion phase and indicates the 0-based array index of the expanded value.|
+|*Name*| `string` ||The name to assign the array-expanded values of each array-expanded expression. If not specified, the name of the column is used if available. A random name is generated if *ArrayExpression* isn't a simple column name.|
+|*ArrayExpression*| `dynamic` | :heavy_check_mark:|The array whose values are array-expanded. If the expression is the name of a column in the input, the input column is removed from the input and a new column of the same name, or *ColumnName* if specified, appears in the output.|
+|*Typename*| `string` ||The name of the type that the individual elements of the `dynamic` array *ArrayExpression* take. Elements that don't conform to this type are replaced by a null value. If unspecified, `dynamic` is used by default.|
+|*RowLimit*| `int` ||A limit on the number of records to generate from each record of the input. If unspecified, 2147483647 is used.|
+|*SubQuery*| `string` ||A tabular query expression with an implicit tabular source that gets applied to each array-expanded subtable.|
 
 >[!NOTE]
 > Unlike the [`mv-expand`](./mv-expand-operator.md) operator, the `mv-apply` operator doesn't support `bagexpand=array` expansion. If the expression to be expanded is a property bag and not an array, you can use an inner `mv-expand` operator (see example below).

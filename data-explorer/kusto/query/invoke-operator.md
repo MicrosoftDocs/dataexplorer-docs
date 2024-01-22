@@ -22,9 +22,9 @@ Invokes a lambda expression that receives the source of `invoke` as a tabular ar
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-| *T*| string |  :heavy_check_mark: | The tabular source.|
-| *function*| string |  :heavy_check_mark: | The name of the lambda `let` expression or stored function name to be evaluated.|
-| *param1*, *param2* ... | string || Any additional lambda arguments to pass to the function.|
+| *T*| `string` |  :heavy_check_mark: | The tabular source.|
+| *function*| `string` |  :heavy_check_mark: | The name of the lambda `let` expression or stored function name to be evaluated.|
+| *param1*, *param2* ... | `string` || Any additional lambda arguments to pass to the function.|
 
 ## Returns
 

@@ -27,7 +27,7 @@ You must have at least Database User, Database Viewer, or Database Monitor, or E
 
 |Name|Type|Required|Description|
 |--|--|--|--|
-|*TableName*|string| :heavy_check_mark:|The name of the table for which to show the schema.|
+|*TableName*| `string` | :heavy_check_mark:|The name of the table for which to show the schema.|
 
 ## Returns
 

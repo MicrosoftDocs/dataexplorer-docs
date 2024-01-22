@@ -19,8 +19,8 @@ Removes keys and associated values from a `dynamic` property bag.
 
 | Name | Type | Required | Description |
 | -- | -- | -- | -- |
-| *bag* | dynamic |  :heavy_check_mark: | The property bag from which to remove keys. |
-| *keys* | dynamic |  :heavy_check_mark: | List of keys to be removed from the input. The keys are the first level of the property bag. You can specify keys on the nested levels using [JSONPath](jsonpath.md) notation. Array indexing isn't supported. |
+| *bag* | `dynamic` |  :heavy_check_mark: | The property bag from which to remove keys. |
+| *keys* | `dynamic` |  :heavy_check_mark: | List of keys to be removed from the input. The keys are the first level of the property bag. You can specify keys on the nested levels using [JSONPath](jsonpath.md) notation. Array indexing isn't supported. |
 
 ## Returns
 

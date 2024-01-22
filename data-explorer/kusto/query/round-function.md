@@ -20,7 +20,7 @@ Returns the rounded number to the specified precision.
 | Name | Type | Required | Description |
 |--|--|--|--|
 | *number*| long or real |  :heavy_check_mark: | The number to calculate the round on.|
-| *precision*| int | | The number of digits to round to. The default is 0.|
+| *precision*| `int` | | The number of digits to round to. The default is 0.|
 
 ## Returns
 

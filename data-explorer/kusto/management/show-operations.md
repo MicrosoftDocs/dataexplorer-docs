@@ -23,14 +23,13 @@ management commands, the `.show operation details` command is the only way to vi
 
 `.show operations` `(` *OperationId* [`,` ... ] `)`
 
-
 ## Parameters
 
 |Name|Type|Required|Description|
 |--|--|--|--|
-| *OperationId* | guid | | The operation ID for which to show details.|
+| *OperationId* | `guid` | | The operation ID for which to show details.|
 
-## Returns 
+## Returns
 
 When an operation ID is omitted, the command returns a table displaying all administrative operations executed in the last two weeks, whether ongoing or completed. It includes entries accessible to the user, with multiple records possible for a single operation. Only one record indicates the terminal state of 'Completed' or 'Failed.' This mode is for checking the history of operations, but note that records may take time to appear in the historic log.
 

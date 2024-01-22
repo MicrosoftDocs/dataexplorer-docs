@@ -26,8 +26,8 @@ IP address entrances in a text must be properly delimited with nonalphanumeric c
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-| *source*| string|  :heavy_check_mark:| The text to search.|
-| *ip_address_prefix*| string|  :heavy_check_mark:| The IP address prefix for which to search.|
+| *source*| `string` |  :heavy_check_mark:| The text to search.|
+| *ip_address_prefix*| `string` |  :heavy_check_mark:| The IP address prefix for which to search.|
 
 ## Returns
 

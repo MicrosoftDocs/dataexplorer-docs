@@ -27,8 +27,8 @@ You must have at least [Database Admin](access-control/role-based-access-control
 
 |Name|Type|Required|Description|
 |--|--|--|--|
-|*ControlCommandsScript*|string| :heavy_check_mark:| Text with one or more management commands.|
-|*PropertyName*, *PropertyValue*|string|| Optional properties. See [Supported properties](#supported-properties).|
+|*ControlCommandsScript*| `string` | :heavy_check_mark:| Text with one or more management commands.|
+|*PropertyName*, *PropertyValue*| `string` || Optional properties. See [Supported properties](#supported-properties).|
 
 ### Supported properties
 
@@ -41,13 +41,13 @@ You must have at least [Database Admin](access-control/role-based-access-control
 
 Each command appearing in the script will be reported as a separate record in the output table. Each record has the following fields:
 
-|Output parameter |Type |Description
-|---|---|--- 
-|OperationId  |Guid |Identifier of the command.
-|CommandType  |String |The type of the command.
-|CommandText  |String |Text of the specific command.
-|Result|String|Outcome of the specific command execution.
-|Reason|String|Detailed information about command execution outcome.
+|Output parameter |Type |Description|
+|---|---|--- |
+|OperationId  |Guid |Identifier of the command.|
+|CommandType  |String |The type of the command.|
+|CommandText  |String |Text of the specific command.|
+|Result|String|Outcome of the specific command execution.|
+|Reason|String|Detailed information about command execution outcome.|
 
 >[!NOTE]
 >
