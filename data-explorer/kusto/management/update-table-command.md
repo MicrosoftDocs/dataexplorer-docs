@@ -3,7 +3,7 @@ title:  .update table command
 description: Learn how to use the .update table command to perform transactional data updates.
 ms.reviewer: orspodek
 ms.topic: reference
-ms.date: 12/19/2023
+ms.date: 01/25/2024
 ---
 # Update table
 
@@ -19,17 +19,16 @@ The update commands has two syntaxes:
 
 * The simple syntax assumes each row can be identified by an *Id* column.  Existing rows having ids found in the *append query* is deleted:
   
-  `.update` `table` *TableName* on *IdColumnName* `<|`
+  `.update` `table` *TableName* on *IdColumnName* [`with` `(` *propertyName* `=` *propertyValue* [`,` ...]`)`] `<|`
   
   *appendQuery*
 * The complete syntax offers more flexibility as you can define a query to delete rows and a different query to append rows:
 
-  `.update` `table` *TableName* `delete` *DeleteIdentifier* `append` *AppendIdentifier* `<|`
+  `.update` `table` *TableName* `delete` *DeleteIdentifier* `append` *AppendIdentifier* [`with` `(` *propertyName* `=` *propertyValue* [`,` ...]`)`] `<|`
 
   `let` *DeleteIdentifier*`=` ...`;`
 
   `let` *AppendIdentifier*`=` ...`;`
-
 
 ## Parameters
 
@@ -40,6 +39,12 @@ Name|Type|Required|Description
 *appendQuery*|string|&check;|The text of a query or a management command whose results are used as data to append.
 *DeleteIdentifier*|string|&check;|The identifier name used to specify the delete predicate applied to the updated table.
 *AppendIdentifier*|string|&check;|The identifier name used to specify the append predicate applied to the updated table.
+
+## Supported properties
+
+Name|Type|Description
+|--|--|--
+*whatif*|bool|If `true`, returns the number of records that will be appended / deleted in every shard, without actually appending / deleting any records. The default is `false`.
 
 ## Returns
 
