@@ -23,8 +23,8 @@ Calculates the [standard deviation](stdev-aggregation-function.md) of *expr* in 
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-| *expr* | string |  :heavy_check_mark: | The expression used for the standards deviation aggregation calculation. |
-| *predicate* | string |  :heavy_check_mark: | The predicate that has to evaluate to `true` in order for *expr* to be added to the result. |
+| *expr* | `string` |  :heavy_check_mark: | The expression used for the standards deviation aggregation calculation. |
+| *predicate* | `string` |  :heavy_check_mark: | The predicate that has to evaluate to `true` in order for *expr* to be added to the result. |
 
 ## Returns
 

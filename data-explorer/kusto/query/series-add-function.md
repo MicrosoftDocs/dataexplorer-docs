@@ -19,7 +19,7 @@ Calculates the element-wise addition of two numeric series inputs.
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-| *series1, series2* | dynamic |  :heavy_check_mark: | The numeric arrays to be element-wise added into a dynamic array result. |
+| *series1, series2* | `dynamic` |  :heavy_check_mark: | The numeric arrays to be element-wise added into a dynamic array result. |
 
 ## Returns
 

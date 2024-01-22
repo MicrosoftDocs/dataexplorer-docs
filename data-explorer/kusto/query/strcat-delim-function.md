@@ -19,7 +19,7 @@ Concatenates between 2 and 64 arguments, using a specified delimiter as the firs
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-| *delimiter* | string |  :heavy_check_mark: | The string to be used as separator in the concatenation.|
+| *delimiter* | `string` |  :heavy_check_mark: | The string to be used as separator in the concatenation.|
 | *argument1* ... *argumentN* | scalar |  :heavy_check_mark: | The expressions to concatenate.|
 
 > [!NOTE]

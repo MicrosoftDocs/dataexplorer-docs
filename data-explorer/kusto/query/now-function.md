@@ -21,7 +21,7 @@ The current UTC time will stay the same across all uses of `now()` in a single q
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-| *offset* | timespan | | A timespan to add to the current UTC clock time. The default value is 0.|
+| *offset* | `timespan` | | A timespan to add to the current UTC clock time. The default value is 0.|
 
 ## Returns
 

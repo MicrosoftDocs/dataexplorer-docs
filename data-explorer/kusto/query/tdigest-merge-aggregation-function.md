@@ -29,7 +29,7 @@ For more information about the underlying algorithm (T-Digest) and the estimated
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-|*expr* | string |  :heavy_check_mark: | The expression used for the aggregation calculation.|
+|*expr* | `string` |  :heavy_check_mark: | The expression used for the aggregation calculation.|
 
 ## Returns
 

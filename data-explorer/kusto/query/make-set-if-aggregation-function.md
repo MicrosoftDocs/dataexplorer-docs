@@ -23,9 +23,9 @@ Creates a `dynamic` array of the set of distinct values that *expr* takes in rec
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-| *expr* | string |  :heavy_check_mark: | The expression used for the aggregation calculation. |
-| *predicate* | string |  :heavy_check_mark: | A predicate that has to evaluate to `true` in order for *expr* to be added to the result. |
-| *maxSize* | int |  | The maximum number of elements returned. The default and max value is 1048576. |
+| *expr* | `string` |  :heavy_check_mark: | The expression used for the aggregation calculation. |
+| *predicate* | `string` |  :heavy_check_mark: | A predicate that has to evaluate to `true` in order for *expr* to be added to the result. |
+| *maxSize* | `int` |  | The maximum number of elements returned. The default and max value is 1048576. |
 
 ## Returns
 

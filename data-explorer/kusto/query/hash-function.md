@@ -25,7 +25,7 @@ Returns a hash value for the input value.
 | Name | Type | Required | Description |
 |--|--|--|--|
 | *source* | scalar |  :heavy_check_mark: | The value to be hashed.|
-| *mod* | int | | A modulo value to be applied to the hash result, so that the output value is between `0` and `mod - 1`. This parameter is useful for limiting the range of possible output values or for compressing the output of the hash function into a smaller range.|
+| *mod* | `int` | | A modulo value to be applied to the hash result, so that the output value is between `0` and `mod - 1`. This parameter is useful for limiting the range of possible output values or for compressing the output of the hash function into a smaller range.|
 
 ## Returns
 

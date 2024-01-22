@@ -21,8 +21,8 @@ Packs all input values into a [dynamic](scalar-data-types/dynamic.md) array.
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-| *value1...valueN* | string |  :heavy_check_mark: | Input expressions to be packed into a dynamic array.|
-| *The wildcard `*`*| string | | Providing the wildcard `*` packs all input columns into a dynamic array.|
+| *value1...valueN* | `string` |  :heavy_check_mark: | Input expressions to be packed into a dynamic array.|
+| *The wildcard `*`*| `string` | | Providing the wildcard `*` packs all input columns into a dynamic array.|
 
 ## Returns
 

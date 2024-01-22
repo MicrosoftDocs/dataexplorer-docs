@@ -19,9 +19,9 @@ Reorders columns in the output table.
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-| *T* | string |  :heavy_check_mark: | The input tabular data.|
-| *ColumnNameOrPattern* | string |  :heavy_check_mark: | The name of the column or column wildcard pattern by which to order the columns. |
-| `asc`, `desc`, `granny-asc`, `granny-desc` | string | | Indicates how to order the columns when a wildcard pattern is used. `asc` or `desc` orders columns by column name in ascending or descending manner, respectively. `granny-asc` or `granny-desc` orders by ascending or descending, respectively, while secondarily sorting by the next numeric value. For example, `a100` comes before `a20` when `granny-asc` is specified.|
+| *T* | `string` |  :heavy_check_mark: | The input tabular data.|
+| *ColumnNameOrPattern* | `string` |  :heavy_check_mark: | The name of the column or column wildcard pattern by which to order the columns. |
+| `asc`, `desc`, `granny-asc`, `granny-desc` | `string` | | Indicates how to order the columns when a wildcard pattern is used. `asc` or `desc` orders columns by column name in ascending or descending manner, respectively. `granny-asc` or `granny-desc` orders by ascending or descending, respectively, while secondarily sorting by the next numeric value. For example, `a100` comes before `a20` when `granny-asc` is specified.|
 
 > [!NOTE]
 >

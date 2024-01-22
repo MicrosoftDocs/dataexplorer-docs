@@ -23,9 +23,9 @@ Each operator accepts a tabular dataset "from the pipe", and other inputs includ
 
 |Name|Type|Required|Description|
 |--|--|--|--|
-|*Source*|string| :heavy_check_mark:|A tabular data source. See [Tabular data sources](#tabular-data-sources).|
-|*Operator*|string| :heavy_check_mark:|Tabular data operators, such as filters and projections.|
-|*RenderInstruction*|string||Rendering operators or instructions.|
+|*Source*| `string` | :heavy_check_mark:|A tabular data source. See [Tabular data sources](#tabular-data-sources).|
+|*Operator*| `string` | :heavy_check_mark:|Tabular data operators, such as filters and projections.|
+|*RenderInstruction*| `string` ||Rendering operators or instructions.|
 
 ## Tabular data sources
 

@@ -19,12 +19,12 @@ Detects sequence occurrences based on provided predicates. The plugin is invoked
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-| *T*| string |  :heavy_check_mark: | The input tabular expression.|
-| *TimelineColumn*| string |  :heavy_check_mark: | The column reference representing timeline, must be present in the source expression.|
-| *MaxSequenceStepWindow*| timespan |  :heavy_check_mark: | The value of the max allowed timespan between 2 sequential steps in the sequence.|
-| *MaxSequenceSpan*| timespan |  :heavy_check_mark: | The max timespan for the sequence to complete all steps.|
-| *Expr1*, *Expr2*, ...| string |  :heavy_check_mark: | The boolean predicate expressions defining sequence steps.|
-| *Dim1*, *Dim2*, ...| string |  :heavy_check_mark: | The dimension expressions that are used to correlate sequences.|
+| *T*| `string` |  :heavy_check_mark: | The input tabular expression.|
+| *TimelineColumn*| `string` |  :heavy_check_mark: | The column reference representing timeline, must be present in the source expression.|
+| *MaxSequenceStepWindow*| `timespan` |  :heavy_check_mark: | The value of the max allowed timespan between 2 sequential steps in the sequence.|
+| *MaxSequenceSpan*| `timespan` |  :heavy_check_mark: | The max timespan for the sequence to complete all steps.|
+| *Expr1*, *Expr2*, ...| `string` |  :heavy_check_mark: | The boolean predicate expressions defining sequence steps.|
+| *Dim1*, *Dim2*, ...| `string` |  :heavy_check_mark: | The dimension expressions that are used to correlate sequences.|
 
 ## Returns
 

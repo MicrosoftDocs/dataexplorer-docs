@@ -30,8 +30,8 @@ When possible, use the case-sensitive [hassuffix_cs](hassuffix-cs-operator.md).
 
 |Name|Type|Required|Description|
 |--|--|--|--|
-|*T*|string|The tabular input whose records are to be filtered.|
-|*Column*|string|The column by which to filter.|
+|*T*| `string` |The tabular input whose records are to be filtered.|
+|*Column*| `string` |The column by which to filter.|
 |*Expression*|scalar|The scalar or literal expression for which to search.|
 
 ## Returns

@@ -21,9 +21,9 @@ To replace an individual string, see [replace_string()](replace-string-function.
 
 |Name|Type|Required|Description|
 |--|--|--|--|
-|*text*|string| :heavy_check_mark:|The source string.|
-|*lookups*|dynamic| :heavy_check_mark:|The array that includes lookup strings. Array element that isn't a string is ignored.|
-|*rewrites*|dynamic| :heavy_check_mark:|The array that includes rewrites. Array element that isn't a string is ignored (no replacement made).|
+|*text*| `string` | :heavy_check_mark:|The source string.|
+|*lookups*| `dynamic` | :heavy_check_mark:|The array that includes lookup strings. Array element that isn't a string is ignored.|
+|*rewrites*| `dynamic` | :heavy_check_mark:|The array that includes rewrites. Array element that isn't a string is ignored (no replacement made).|
 
 ## Returns
 

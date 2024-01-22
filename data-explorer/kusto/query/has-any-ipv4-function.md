@@ -24,7 +24,7 @@ IP address entrances in a text must be properly delimited with non-alphanumeric 
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-| *source*| string |  :heavy_check_mark: | The value to search.|
+| *source*| `string` |  :heavy_check_mark: | The value to search.|
 | *ip_address*| string or dynamic |  :heavy_check_mark: | An IP address, or an array of IP addresses, for which to search.|
 
 ## Returns

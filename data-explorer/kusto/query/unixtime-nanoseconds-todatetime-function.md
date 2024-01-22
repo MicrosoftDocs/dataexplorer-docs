@@ -19,7 +19,7 @@ Converts unix-epoch nanoseconds to UTC datetime.
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-| *nanoseconds* | real |  :heavy_check_mark: | The epoch timestamp in nanoseconds. A `datetime` value that occurs before the epoch time (1970-01-01 00:00:00) has a negative timestamp value.|
+| *nanoseconds* | `real` |  :heavy_check_mark: | The epoch timestamp in nanoseconds. A `datetime` value that occurs before the epoch time (1970-01-01 00:00:00) has a negative timestamp value.|
 
 ## Returns
 

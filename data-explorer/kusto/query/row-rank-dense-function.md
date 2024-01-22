@@ -21,8 +21,8 @@ The row rank starts by default at `1` for the first row, and is incremented by `
 
 |Name|Type|Required|Description|
 |--|--|--|--|
-|*Term*|string| :heavy_check_mark:|An expression indicating the value to consider for the rank. The rank is increased whenever the *Term* changes.|
-| *restart*| bool | | Indicates when the numbering is to be restarted to the *StartingIndex* value. The default is `false`.|
+|*Term*| `string` | :heavy_check_mark:|An expression indicating the value to consider for the rank. The rank is increased whenever the *Term* changes.|
+| *restart*| `bool` | | Indicates when the numbering is to be restarted to the *StartingIndex* value. The default is `false`.|
   
 ## Returns
 
