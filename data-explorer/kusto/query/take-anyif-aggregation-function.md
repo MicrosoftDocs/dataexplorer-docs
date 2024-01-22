@@ -27,8 +27,8 @@ This function is useful when you want to get a sample value of one column per va
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-| *expr* | string | &check; | The expression used for selecting a record. |
-| *predicate* | string | &check; | Indicates which records may be considered for evaluation. |
+| *expr* | string |  :heavy_check_mark: | The expression used for selecting a record. |
+| *predicate* | string |  :heavy_check_mark: | Indicates which records may be considered for evaluation. |
 
 ## Returns
 

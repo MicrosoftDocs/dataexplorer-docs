@@ -19,7 +19,7 @@ Returns an integer representing the day number of the given datetime.
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-| *date* | datetime | &check; | The datetime used to extract the day number.|
+| *date* | datetime |  :heavy_check_mark: | The datetime used to extract the day number.|
 
 ## Returns
 

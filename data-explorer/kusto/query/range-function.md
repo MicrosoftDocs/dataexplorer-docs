@@ -19,8 +19,8 @@ Generates a dynamic array holding a series of equally spaced values.
 
 |Name|Type|Required|Description|
 |--|--|--|--|
-|*start*|scalar|&check;| The value of the first element in the resulting array. |
-|*stop*|scalar|&check;| The maximum value of the last element in the resulting array, such that the last value in the series is less than or equal to the stop value. |
+|*start*|scalar| :heavy_check_mark:| The value of the first element in the resulting array. |
+|*stop*|scalar| :heavy_check_mark:| The maximum value of the last element in the resulting array, such that the last value in the series is less than or equal to the stop value. |
 |*step*|scalar||The difference between two consecutive elements of the array. The default value for *step* is `1` for numeric and `1h` for `timespan` or `datetime`.|
 
 ## Returns

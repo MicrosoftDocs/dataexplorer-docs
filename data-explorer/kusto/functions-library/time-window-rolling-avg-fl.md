@@ -23,10 +23,10 @@ This type of rolling window calculation is required for use cases where the metr
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-| *t_col* | string | &check; | The name of the column containing the time stamp of the records.|
-| *y_col* | string | &check; | The name of the column containing the metric value of the records.|
-| *key_col* | string | &check; | The name of the column containing the partition key of the records.|
-| *dt* | timespan | &check; | The duration of the rolling window.|
+| *t_col* | string |  :heavy_check_mark: | The name of the column containing the time stamp of the records.|
+| *y_col* | string |  :heavy_check_mark: | The name of the column containing the metric value of the records.|
+| *key_col* | string |  :heavy_check_mark: | The name of the column containing the partition key of the records.|
+| *dt* | timespan |  :heavy_check_mark: | The duration of the rolling window.|
 | *direction* | int | | The aggregation direction. The possible values are +1 or -1. A rolling window is set from current time forward/backward respectively. Default is -1, as backward rolling window is the only possible method for streaming scenarios.|
 
 ## Function definition

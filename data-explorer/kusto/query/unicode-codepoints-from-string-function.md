@@ -21,7 +21,7 @@ Returns a dynamic array of the Unicode codepoints of the input string. This func
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-| *value* | string | &check; | The source string to convert. |
+| *value* | string |  :heavy_check_mark: | The source string to convert. |
 
 ## Returns
 

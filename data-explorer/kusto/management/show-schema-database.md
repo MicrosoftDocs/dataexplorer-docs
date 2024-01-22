@@ -29,7 +29,7 @@ You must have at least Database User, Database Viewer, or Database Monitor permi
 
 |Name|Type|Required|Description|
 |--|--|--|--|
-|*DatabaseName*|string|&check;|The name of the database for which to show the schema.|
+|*DatabaseName*|string| :heavy_check_mark:|The name of the database for which to show the schema.|
 |*Version*|string||The version in "vMM.mm" format. MM represents the major version and mm represents the minor version.|
 
 ### Returns
@@ -97,7 +97,7 @@ Because a version lower than the current database version was provided, the 'Tes
 
 |Name|Type|Required|Description|
 |--|--|--|--|
-|*DatabaseName*|string|&check;|The name of the database for which to show the schema.|
+|*DatabaseName*|string| :heavy_check_mark:|The name of the database for which to show the schema.|
 |*Version*|string||The version in "vMM.mm" format. MM represents the major version and mm represents the minor version.|
 |*Options*|string||A list of comma-separated key-value pairs used to determine which database entity schemas to return. If none are specified, then all entities are returned. See [supported entity options](#supported-entity-options).|
 
@@ -145,7 +145,7 @@ Generates a CSL script with all the required commands to create a copy of the gi
 
 |Name|Type|Required|Description|
 |--|--|--|--|
-|*DatabaseName*|string|&check;|The name of the database for which to show the schema.|
+|*DatabaseName*|string| :heavy_check_mark:|The name of the database for which to show the schema.|
 |*Options*|string||A list of comma-separated key-value pairs used to determine what to return. See [supported options](#supported-options).|
 
 #### Supported options

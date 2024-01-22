@@ -23,7 +23,7 @@ Performs zlib compression and encodes the result to base64.
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-| *string* | string | &check; | The string to be compressed and base64 encoded.|
+| *string* | string |  :heavy_check_mark: | The string to be compressed and base64 encoded.|
 
 ## Returns
 

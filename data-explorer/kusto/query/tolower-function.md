@@ -19,7 +19,7 @@ Converts the input string to lower case.
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-| *value* | string | &check; | The value to convert to a lowercase string.|
+| *value* | string |  :heavy_check_mark: | The value to convert to a lowercase string.|
 
 ## Returns
 

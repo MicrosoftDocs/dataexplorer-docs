@@ -22,7 +22,7 @@ Converts a string to a [`guid`](./scalar-data-types/guid.md) scalar.
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-| *value* | scalar | &check; | The value to convert to [guid](scalar-data-types/guid.md).|
+| *value* | scalar |  :heavy_check_mark: | The value to convert to [guid](scalar-data-types/guid.md).|
 
 ## Returns
 

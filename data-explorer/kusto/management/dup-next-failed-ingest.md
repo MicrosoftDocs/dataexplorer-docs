@@ -32,8 +32,8 @@ You must have at least [Database Admin](access-control/role-based-access-control
 
 |Name|Type|Required|Description|
 |--|--|--|--|
-|*TableName* | string | &check; | The name of the table from which the next ingestion will be duplicated.|
-|*StorageContainerPath*| string | &check; | The path to the blob container that will store the duplication. We recommend prefacing the path with "h@" to hide sensitive information. To learn more, see [obfuscated string literals](../query/scalar-data-types/string.md#obfuscated-string-literals). |
+|*TableName* | string |  :heavy_check_mark: | The name of the table from which the next ingestion will be duplicated.|
+|*StorageContainerPath*| string |  :heavy_check_mark: | The path to the blob container that will store the duplication. We recommend prefacing the path with "h@" to hide sensitive information. To learn more, see [obfuscated string literals](../query/scalar-data-types/string.md#obfuscated-string-literals). |
 
 ## Returns
 

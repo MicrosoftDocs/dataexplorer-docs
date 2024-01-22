@@ -19,7 +19,7 @@ Captures the value of a tabular expression for the duration of the query executi
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-| *expression* | string | &check; | The tabular expression to be evaluated and cached during query execution.|
+| *expression* | string |  :heavy_check_mark: | The tabular expression to be evaluated and cached during query execution.|
 
 ## Remarks
 

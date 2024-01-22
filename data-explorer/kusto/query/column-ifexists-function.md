@@ -21,8 +21,8 @@ Takes a column name as a string and a default value. Returns a reference to the 
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-| *columnName* | string | &check; | The name of the column to check if exists.|
-| *defaultValue* | scalar | &check; | The value to use if the column doesn't exist. This value can be any scalar expression. For example, a reference to another column.|
+| *columnName* | string |  :heavy_check_mark: | The name of the column to check if exists.|
+| *defaultValue* | scalar |  :heavy_check_mark: | The value to use if the column doesn't exist. This value can be any scalar expression. For example, a reference to another column.|
 
 ## Returns
 

@@ -19,8 +19,8 @@ Returns a table with up to the specified number of rows from the input record se
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-|*T*|string|&check;|The table to preview.|
-|*NumberOfRows*| int| &check; | The number of rows to preview from the table.|
+|*T*|string| :heavy_check_mark:|The table to preview.|
+|*NumberOfRows*| int|  :heavy_check_mark: | The number of rows to preview from the table.|
 
 ## Returns
 

@@ -19,7 +19,7 @@ Calculates S2 cell tokens that cover a polygon or multipolygon on Earth. This fu
 
 |Name|Type|Required|Description|
 |--|--|--|--|
-| *polygon* | dynamic | &check; | Polygon or multipolygon in the [GeoJSON format](https://tools.ietf.org/html/rfc7946).|
+| *polygon* | dynamic |  :heavy_check_mark: | Polygon or multipolygon in the [GeoJSON format](https://tools.ietf.org/html/rfc7946).|
 | *level* | int | | Defines the requested cell level. Supported values are in the range [0, 30]. If unspecified, the default value `11` is used.|
 | *radius* | real | | Buffer radius in meters. If unspecified, the default value `0` is used.|
 

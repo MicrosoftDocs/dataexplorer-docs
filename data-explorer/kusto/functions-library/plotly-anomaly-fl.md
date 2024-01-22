@@ -32,15 +32,15 @@ Extract the required 'anomaly' template from the publicly available `PlotlyTempl
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-| *time_col* | string | &check; | The name of the column containing the dynamic array of the time points of the original time series|
-| *val_col* | string | &check; | The name of the column containing the values of the original time series|
-| *baseline_col* | string | &check; | The name of the column containing the values of the baseline time series. Anomalies are usually detected by large value offset from the expected baseline value. |
-| *time_high_col* | string | &check; | The name of the column containing the time points of high (above the baseline) anomalies |
-| *val_high_col* | string | &check; | The name of the column containing the values of the high anomalies|
-| *size_high_col* | string | &check; | The name of the column containing the marker sizes of the high anomalies|
-| *time_low_col* | string | &check; | The name of the column containing the time points of low anomalies|
-| *val_low_col* | string | &check; | The name of the column containing the values of the low anomalies|
-| *size_low_col* | string | &check; | The name of the column containing the marker sizes of the low anomalies|
+| *time_col* | string |  :heavy_check_mark: | The name of the column containing the dynamic array of the time points of the original time series|
+| *val_col* | string |  :heavy_check_mark: | The name of the column containing the values of the original time series|
+| *baseline_col* | string |  :heavy_check_mark: | The name of the column containing the values of the baseline time series. Anomalies are usually detected by large value offset from the expected baseline value. |
+| *time_high_col* | string |  :heavy_check_mark: | The name of the column containing the time points of high (above the baseline) anomalies |
+| *val_high_col* | string |  :heavy_check_mark: | The name of the column containing the values of the high anomalies|
+| *size_high_col* | string |  :heavy_check_mark: | The name of the column containing the marker sizes of the high anomalies|
+| *time_low_col* | string |  :heavy_check_mark: | The name of the column containing the time points of low anomalies|
+| *val_low_col* | string |  :heavy_check_mark: | The name of the column containing the values of the low anomalies|
+| *size_low_col* | string |  :heavy_check_mark: | The name of the column containing the marker sizes of the low anomalies|
 | *chart_title* | string | | Chart title, default is 'Anomaly Chart'|
 | *series_name* | string | | Time series name, default is 'Metric'|
 | *val_name* | string | | Value axis name, default is 'Value'|

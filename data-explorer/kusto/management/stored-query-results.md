@@ -41,9 +41,9 @@ You must have at least Database User, Database Viewer, or Database Monitor permi
 |Name|Type|Required|Description|
 |--|--|--|--|
 | `async` | string | | If specified, the command will return and continue ingestion in the background. Use the returned `OperationId` with the `.show operations` command to retrieve the ingestion completion status and results. |
-| *StoredQueryResultName* | string | &check; | Stored query result name that adheres to [entity names](../query/schema-entities/entity-names.md) rules.|
+| *StoredQueryResultName* | string |  :heavy_check_mark: | Stored query result name that adheres to [entity names](../query/schema-entities/entity-names.md) rules.|
 | *PropertyName*, *PropertyValue* | string |  | One or more [supported properties](#supported-properties). |
-| *Query* | string | &check; | The text of a query whose results will be stored.|
+| *Query* | string |  :heavy_check_mark: | The text of a query whose results will be stored.|
 
 > [!NOTE]
 > If the *StoredQueryResultName* exists, `.set` will fail with an error. In contrast, `.set-or-replace` will delete the existing stored-query-result if it exists and then create a new one with the same name.

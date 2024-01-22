@@ -26,7 +26,7 @@ You must have at least [AllDatabasesMonitor](access-control/role-based-access-co
 
 |Name|Type|Required|Description|
 |--|--|--|--|
-|*DatabaseName*|string|&check;|The name of the database to show.|
+|*DatabaseName*|string| :heavy_check_mark:|The name of the database to show.|
 
 ## Returns
 

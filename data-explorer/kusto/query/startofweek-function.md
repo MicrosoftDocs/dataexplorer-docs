@@ -21,7 +21,7 @@ Start of the week is considered to be a Sunday.
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-| *date* | datetime | &check; | The date for which to find the start of week.|
+| *date* | datetime |  :heavy_check_mark: | The date for which to find the start of week.|
 | *offset* | int | | The number of weeks to offset from the input date. The default is 0.|
 
 ## Returns

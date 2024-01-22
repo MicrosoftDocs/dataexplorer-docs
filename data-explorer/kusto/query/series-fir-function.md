@@ -21,8 +21,8 @@ The function takes an expression containing a dynamic numerical array as input a
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-| *series* | dynamic | &check; | An array of numeric values.|
-| *filter* | dynamic | &check; | An array of numeric values containing the coefficients of the filter.|
+| *series* | dynamic |  :heavy_check_mark: | An array of numeric values.|
+| *filter* | dynamic |  :heavy_check_mark: | An array of numeric values containing the coefficients of the filter.|
 | *normalize* | bool | | Indicates whether the filter should be normalized. That is, divided by the sum of the coefficients. If filter contains negative values, then *normalize* must be specified as `false`, otherwise result will be `null`. If not specified, then a default value of `true` is assumed, depending on the presence of negative values in the *filter*. If *filter* contains at least one negative value, then *normalize* is assumed to be `false`.|
 | *center* | bool | | Indicates whether the filter is applied symmetrically on a time window before and after the current point, or on a time window from the current point backwards. By default, center is `false`, which fits the scenario of streaming data so that we can only apply the filter on the current and older points. However, for ad-hoc processing you can set it to `true`, keeping it synchronized with the time series. See examples below. This parameter controls the filter’s [group delay](https://en.wikipedia.org/wiki/Group_delay_and_phase_delay).|
 

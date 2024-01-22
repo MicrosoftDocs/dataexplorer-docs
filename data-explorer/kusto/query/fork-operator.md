@@ -23,7 +23,7 @@ Runs multiple consumer operators in parallel.
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-| *subquery* | string | &check; | A downstream pipeline of [supported query operators](#supported-query-operators).|
+| *subquery* | string |  :heavy_check_mark: | A downstream pipeline of [supported query operators](#supported-query-operators).|
 | *name* | string | | A temporary name for the subquery result table.|
 
 > [!NOTE]

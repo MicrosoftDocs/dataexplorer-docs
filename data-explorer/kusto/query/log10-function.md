@@ -19,7 +19,7 @@ ms.date: 01/05/2023
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-|*number*| real | &check; | The number for which to calculate the base-10 logarithm.|
+|*number*| real |  :heavy_check_mark: | The number for which to calculate the base-10 logarithm.|
 
 ## Returns
 

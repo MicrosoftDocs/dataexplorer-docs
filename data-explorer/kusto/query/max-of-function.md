@@ -19,7 +19,7 @@ Returns the maximum value of all argument expressions.
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-|*arg_i* | scalar | &check; | The values to compare.|
+|*arg_i* | scalar |  :heavy_check_mark: | The values to compare.|
 
 * All arguments must be of the same type.
 * Maximum of 64 arguments is supported.

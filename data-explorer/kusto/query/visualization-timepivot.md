@@ -28,7 +28,7 @@ The time pivot visualization is an interactive navigation over the events time-l
 
 | Name | Type | Required | Description |
 | -- | -- | -- | -- |
-| *T* | string | &check; | Input table name.
+| *T* | string |  :heavy_check_mark: | Input table name.
 | *propertyName*, *propertyValue* | string | | A comma-separated list of key-value property pairs. See [supported properties](#supported-properties).|
 
 ### Supported properties

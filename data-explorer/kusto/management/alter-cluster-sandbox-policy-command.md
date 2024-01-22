@@ -26,7 +26,7 @@ You must have [AllDatabasesAdmin](access-control/role-based-access-control.md) p
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-| *ArrayOfPolicyObjects* | string | &check;  | An array with one or more policy objects defined. For policy object definitions, the [sandbox policy](sandbox-policy.md).|
+| *ArrayOfPolicyObjects* | string |  :heavy_check_mark:  | An array with one or more policy objects defined. For policy object definitions, the [sandbox policy](sandbox-policy.md).|
 
 ## Returns
 

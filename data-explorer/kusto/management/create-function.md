@@ -29,10 +29,10 @@ You must have at least [Database User](access-control/role-based-access-control.
 |Name|Type|Required|Description|
 |--|--|--|--|
 | `ifnotexists` | string | | If specified, the function will only be created if the function doesn't yet exist.|
-|*functionName* | string | &check; | The name of the function to create or alter.|
+|*functionName* | string |  :heavy_check_mark: | The name of the function to create or alter.|
 | *propertyName*, *propertyValue* | string | | A comma-separated list of key-value property pairs. See [supported properties](#supported-properties).|
 |*parameters*  | string | | A comma-separated list of parameters required by the function. The format for each parameter must be *ParameterName*`:`*ParameterDataType*.|
-|*body*| string | &check; | A user defined function expression.|
+|*body*| string |  :heavy_check_mark: | A user defined function expression.|
 
 ### Supported properties
 

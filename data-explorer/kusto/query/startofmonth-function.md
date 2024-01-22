@@ -19,7 +19,7 @@ Returns the start of the month containing the date, shifted by an offset, if pro
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-| *date* | datetime | &check; | The date for which to find the start of month.|
+| *date* | datetime |  :heavy_check_mark: | The date for which to find the start of month.|
 | *offset* | int | | The number of months to offset from the input date. The default is 0.|
 
 ## Returns
