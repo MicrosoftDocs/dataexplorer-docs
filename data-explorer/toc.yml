@@ -385,6 +385,7 @@ items:
     items:
       - name: Visualization integrations overview
         href: integrate-visualize-overview.md
+        displayName: connectors, tools, and integrations
       - name: Visualize dashboards in the web UI
         items:
           - name: Use dashboards
