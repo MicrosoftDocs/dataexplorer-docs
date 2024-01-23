@@ -26,8 +26,8 @@ The stacked area chart visual shows a continuous relationship. This visual is si
 
 | Name | Type | Required | Description |
 | -- | -- | -- | -- |
-| *T* | string |  :heavy_check_mark: | Input table name.|
-| *propertyName*, *propertyValue* | string | | A comma-separated list of key-value property pairs. See [supported properties](#supported-properties).|
+| *T* | `string` |  :heavy_check_mark: | Input table name.|
+| *propertyName*, *propertyValue* | `string` | | A comma-separated list of key-value property pairs. See [supported properties](#supported-properties).|
 
 ### Supported properties
 

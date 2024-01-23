@@ -26,11 +26,11 @@ You must have at least Database User, Database Viewer, or Database Monitor to ru
 
 |Output parameter |Type |Description|
 |---|---|--- |
-|Name  |String |The name of the function. |
-|Parameters  |String |The parameters required by the function.|
-|Body  |String |(Zero or more) `let` statements followed by a valid CSL expression that is evaluated upon function invocation.|
-|Folder|String|A folder used for UI functions categorization. This parameter doesn't change the way the function is invoked. |
-|DocString|String|A description of the function for UI purposes.|
+|Name  | `string` |The name of the function. |
+|Parameters  | `string` |The parameters required by the function.|
+|Body  | `string` |(Zero or more) `let` statements followed by a valid CSL expression that is evaluated upon function invocation.|
+|Folder| `string` |A folder used for UI functions categorization. This parameter doesn't change the way the function is invoked. |
+|DocString| `string` |A description of the function for UI purposes.|
 
 **Output example** 
 
@@ -70,11 +70,11 @@ For a list of **all** functions, see [.show functions](#show-functions).
 
 |Output parameter |Type |Description|
 |---|---|--- |
-|Name  |String |The name of the function. |
-|Parameters  |String |The parameters required by the function.|
-|Body  |String |(Zero or more) `let` statements followed by a valid CSL expression that is evaluated upon function invocation.|
-|Folder|String|A folder used for UI functions categorization. This parameter doesn't change the way function is invoked|
-|DocString|String|A description of the function for UI purposes.|
+|Name  | `string` |The name of the function. |
+|Parameters  | `string` |The parameters required by the function.|
+|Body  | `string` |(Zero or more) `let` statements followed by a valid CSL expression that is evaluated upon function invocation.|
+|Folder| `string` |A folder used for UI functions categorization. This parameter doesn't change the way function is invoked|
+|DocString| `string` |A description of the function for UI purposes.|
 
 > [!NOTE]
 > If the function does not exist, an error is returned.

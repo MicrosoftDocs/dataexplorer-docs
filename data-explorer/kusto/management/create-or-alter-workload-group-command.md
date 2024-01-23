@@ -41,8 +41,8 @@ Following is the schema of the output returned:
 
 | Name              | Type   | Description                                |
 |-------------------|--------|--------------------------------------------|
-| WorkloadGroupName | string | Name of the workload group.                |
-| WorkloadGroup     | string | JSON representation of the workload group. |
+| WorkloadGroupName | `string` | Name of the workload group.                |
+| WorkloadGroup     | `string` | JSON representation of the workload group. |
 
 ## Examples
 

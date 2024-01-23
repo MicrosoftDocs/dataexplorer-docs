@@ -24,8 +24,8 @@ The column chart visual needs a minimum of two columns in the query result. By d
 
 | Name | Type | Required | Description |
 | -- | -- | -- | -- |
-| *T* | string |  :heavy_check_mark: | Input table name.|
-| *propertyName*, *propertyValue* | string | | A comma-separated list of key-value property pairs. See [supported properties](#supported-properties).|
+| *T* | `string` |  :heavy_check_mark: | Input table name.|
+| *propertyName*, *propertyValue* | `string` | | A comma-separated list of key-value property pairs. See [supported properties](#supported-properties).|
 
 ::: zone pivot="azuredataexplorer, fabric"
 

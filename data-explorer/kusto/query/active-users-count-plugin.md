@@ -40,7 +40,7 @@ Output table schema is:
 
 |*TimelineColumn*|dim1|..|dim_n|dcount_values|
 |---|---|---|---|---|
-|type: as of *TimelineColumn*|..|..|..|long|
+|type: as of *TimelineColumn*|..|..|..| `long` |
 
 ## Examples
 

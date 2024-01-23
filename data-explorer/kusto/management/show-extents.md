@@ -103,22 +103,22 @@ If `hot` is specified - shows only extents that are expected to be in the hot ca
 
 |Output parameter |Type |Description |
 |---|---|---|
-|ExtentId |Guid |ID of the extent
-|DatabaseName |String |Database that the extent belongs to
-|TableName |String |Table that the extents belong to
-|MaxCreatedOn |DateTime |Date-time when the extent was created. For a merged extent, the maximum of creation times among source extents
+|ExtentId | `guid` |ID of the extent
+|DatabaseName | `string` |Database that the extent belongs to
+|TableName | `string` |Table that the extents belong to
+|MaxCreatedOn | `datetime` |Date-time when the extent was created. For a merged extent, the maximum of creation times among source extents
 |OriginalSize |Double |Original size in bytes of the extent data
 |ExtentSize |Double |Size of the extent in memory (compressed + index)
 |CompressedSize |Double |Compressed size of the extent data in memory
 |IndexSize |Double |Index size of the extent data
-|Blocks |Long |Number of data blocks in the extent
-|Segments |Long |Number of data segments in the extent
-|ExtentContainerId |String | ID of the extent container the extent is in
-|RowCount |Long |Number of rows in the extent
-|MinCreatedOn |DateTime |Date-time when the extent was created. For a merged extent, the minimum of creation times among the source extents
-|Tags|String|Tags, if any, defined for the extent
-|Kind|String|The kind of the storage engine that created the extent
-|DeletedRowCount|Long|Number of deleted rows in the extent
+|Blocks | `long` |Number of data blocks in the extent
+|Segments | `long` |Number of data segments in the extent
+|ExtentContainerId | `string` | ID of the extent container the extent is in
+|RowCount | `long` |Number of rows in the extent
+|MinCreatedOn | `datetime` |Date-time when the extent was created. For a merged extent, the minimum of creation times among the source extents
+|Tags| `string` |Tags, if any, defined for the extent
+|Kind| `string` |The kind of the storage engine that created the extent
+|DeletedRowCount| `long` |Number of deleted rows in the extent
 
 ## Examples
 
