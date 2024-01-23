@@ -57,8 +57,8 @@ The following tables summarizes the available data connectors, tools, and integr
 
 ## [Tools and integrations](#tab/integrations)
 
-* [LightIngest](integrate-overview.md&tabs=integrations#lightingest): a command-line utility for ad-hoc data ingestion into Azure Data Explorer. For more information, see [Use LightIngest to ingest data](lightingest.md).
-* [Web UI](integrate-overview.md&tabs=integrations#web-ui) ingestion wizard: [overview](ingest-data-wizard.md) and ingest data [from a container to a new table](/azure/data-explorer/ingest-from-container)
+* [LightIngest](/data-explorer/integrate-overview&tabs=integrations#lightingest): a command-line utility for ad-hoc data ingestion into Azure Data Explorer. For more information, see [Use LightIngest to ingest data](lightingest.md).
+* [Web UI](/data-explorer/integrate-overview&tabs=integrations#web-ui) ingestion wizard: [overview](ingest-data-wizard.md) and ingest data [from a container to a new table](/azure/data-explorer/ingest-from-container)
 or [from a local file to an existing table](/azure/data-explorer/ingest-from-local-file).
 
 ---
