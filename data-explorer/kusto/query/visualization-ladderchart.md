@@ -27,13 +27,13 @@ The last two columns are the x-axis, and the other columns are the y-axis.
 
 | Name | Type | Required | Description |
 | -- | -- | -- | -- |
-| *T* | string |  :heavy_check_mark: | Input table name.
-| *propertyName*, *propertyValue* | string | | A comma-separated list of key-value property pairs. See [supported properties](#supported-properties).|
+| *T* | `string` |  :heavy_check_mark: | Input table name.
+| *propertyName*, *propertyValue* | `string` | | A comma-separated list of key-value property pairs. See [supported properties](#supported-properties).|
 
 ### Supported properties
 
 All properties are optional.
-    
+
 |*PropertyName*|*PropertyValue*                                                                   |
 |--------------|----------------------------------------------------------------------------------|
 |`accumulate`  |Whether the value of each measure gets added to all its predecessors. (`true` or `false`)|

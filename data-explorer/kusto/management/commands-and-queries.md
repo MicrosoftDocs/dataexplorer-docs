@@ -24,26 +24,26 @@ The output schema is as follows:
 
 | ColumnName               | ColumnType |
 |--------------------------|------------|
-| ClientActivityId         | string     |
-| CommandType              | string     |
-| Text                     | string     |
-| Database                 | string     |
-| StartedOn                | datetime   |
-| LastUpdatedOn            | datetime   |
-| Duration                 | timespan   |
-| State                    | string     |
-| FailureReason            | string     |
-| RootActivityId           | guid       |
-| User                     | string     |
-| Application              | string     |
-| Principal                | string     |
-| ClientRequestProperties  | dynamic    |
-| TotalCpu                 | timespan   |
-| MemoryPeak               | long       |
-| CacheStatistics          | dynamic    |
-| ScannedExtentsStatistics | dynamic    |
-| ResultSetStatistics      | dynamic    |
-| WorkloadGroup            | string     |
+| ClientActivityId         | `string` |
+| CommandType              | `string` |
+| Text                     | `string` |
+| Database                 | `string` |
+| StartedOn                | `datetime` |
+| LastUpdatedOn            | `datetime` |
+| Duration                 | `timespan` |
+| State                    | `string` |
+| FailureReason            | `string` |
+| RootActivityId           | `guid` |
+| User                     | `string` |
+| Application              | `string` |
+| Principal                | `string` |
+| ClientRequestProperties  | `dynamic` |
+| TotalCpu                 | `timespan` |
+| MemoryPeak               | `long` |
+| CacheStatistics          | `dynamic` |
+| ScannedExtentsStatistics | `dynamic` |
+| ResultSetStatistics      | `dynamic` |
+| WorkloadGroup            | `string` |
 
 > [!NOTE]
 > For queries, the value of `CommandType` is `Query`.

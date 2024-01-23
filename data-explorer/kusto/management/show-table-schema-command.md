@@ -35,8 +35,8 @@ Get the schema in JSON format and additional table metadata:
 
 | Output parameter | Type   | Description                                               |
 |------------------|--------|-----------------------------------------------------------|
-| TableName        | String | The name of the table.                                    |
-| Schema           | String | The table schema either as should be used for table create/alter or in JSON format|
-| DatabaseName     | String | The database to which the table belongs                   |
-| Folder           | String | Table's folder                                            |
-| DocString        | String | Table's docstring                                         |
+| TableName        | `string` | The name of the table.                                    |
+| Schema           | `string` | The table schema either as should be used for table create/alter or in JSON format|
+| DatabaseName     | `string` | The database to which the table belongs                   |
+| Folder           | `string` | Table's folder                                            |
+| DocString        | `string` | Table's docstring                                         |

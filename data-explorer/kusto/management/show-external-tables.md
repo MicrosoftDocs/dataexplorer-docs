@@ -33,11 +33,11 @@ You must have at least Database User, Database Viewer, Database Monitor to run t
 
 | Output parameter | Type   | Description                                                         |
 |------------------|--------|---------------------------------------------------------------------|
-| TableName        | string | Name of external table                                             |
-| TableType        | string | Type of external table                                              |
-| Folder           | string | Table's folder                                                     |
-| DocString        | string | String documenting the table                                       |
-| Properties       | string | Table's JSON serialized properties (specific to the type of table) |
+| TableName        | `string` | Name of external table                                             |
+| TableType        | `string` | Type of external table                                              |
+| Folder           | `string` | Table's folder                                                     |
+| DocString        | `string` | String documenting the table                                       |
+| Properties       | `string` | Table's JSON serialized properties (specific to the type of table) |
 
 ## Example
 

@@ -33,10 +33,10 @@ You must have at least Database User, Database Viewer, or Database Monitor permi
 
 | Output parameter           | Type     | Description                                                                                     |
 |----------------------------|----------|-------------------------------------------------------------------------------------------------|
-| `TableName`                | String   | The name of the table.                                                                          |
-| `DatabaseName`             | String   | The database that the table belongs to.                                                         |
-| `Folder`                   | String   | The table's folder.                                                                             |
-| `DocString`                | String   | A string documenting the table.                                                                 |
+| `TableName`                | `string` | The name of the table.                                                                          |
+| `DatabaseName`             | `string` | The database that the table belongs to.                                                         |
+| `Folder`                   | `string` | The table's folder.                                                                             |
+| `DocString`                | `string` | A string documenting the table.                                                                 |
 | `TotalExtents`             | Int64    | The total number of extents in the table`**`.                                                   |
 | `TotalExtentSize`          | Double   | The total size of extents (compressed size + index size) in the table (in bytes)`**`.           |
 | `TotalOriginalSize`        | Double   | The total original size of data in the table (in bytes)`**`.                                    |
@@ -45,17 +45,17 @@ You must have at least Database User, Database Viewer, or Database Monitor permi
 | `HotExtentSize`            | Double   | The total size of extents (compressed size + index size) in the table, stored in the hot cache (in bytes)`**`. |
 | `HotOriginalSize`          | Double   | The total original size of data in the table, stored in the hot cache (in bytes)`**`.           |
 | `HotRowCount`              | Int64    | The total number of rows in the table, stored in the hot cache`**`.                             |
-| `AuthorizedPrincipals`     | String   | The table's authorized principals, serialized as JSON.                                          |
-| `RetentionPolicy`          | String   | The table's effective`*` retention policy, serialized as JSON.                                  |
-| `CachingPolicy`            | String   | The table's effective`*` caching policy, serialized as JSON.                                    |
-| `ShardingPolicy`           | String   | The table's effective`*` sharding policy, serialized as JSON.                                   |
-| `MergePolicy`              | String   | The table's effective`*` merge policy, serialized as JSON.                                      |
-| `StreamingIngestionPolicy` | String   | The table's effective`*` streaming ingestion policy, serialized as JSON.                        |
-| `IngestionBatchingPolicy`  | String   | The table's effective`*` ingestion batching policy, serialized as JSON.                         |
-| `MinExtentsCreationTime`   | DateTime | The minimum creation time of an extent in the table (or null, if there are no extents)`**`.     |
-| `MaxExtentsCreationTime`   | DateTime | The maximum creation time of an extent in the table (or null, if there are no extents)`**`.     |
-| `RowOrderPolicy`           | String   | The table's effective row order policy, serialized as JSON.                                     |
-| `TableId`                  | String   | The table's unique ID.                                                           |
+| `AuthorizedPrincipals`     | `string` | The table's authorized principals, serialized as JSON.                                          |
+| `RetentionPolicy`          | `string` | The table's effective`*` retention policy, serialized as JSON.                                  |
+| `CachingPolicy`            | `string` | The table's effective`*` caching policy, serialized as JSON.                                    |
+| `ShardingPolicy`           | `string` | The table's effective`*` sharding policy, serialized as JSON.                                   |
+| `MergePolicy`              | `string` | The table's effective`*` merge policy, serialized as JSON.                                      |
+| `StreamingIngestionPolicy` | `string` | The table's effective`*` streaming ingestion policy, serialized as JSON.                        |
+| `IngestionBatchingPolicy`  | `string` | The table's effective`*` ingestion batching policy, serialized as JSON.                         |
+| `MinExtentsCreationTime`   | `datetime` | The minimum creation time of an extent in the table (or null, if there are no extents)`**`.     |
+| `MaxExtentsCreationTime`   | `datetime` | The maximum creation time of an extent in the table (or null, if there are no extents)`**`.     |
+| `RowOrderPolicy`           | `string` | The table's effective row order policy, serialized as JSON.                                     |
+| `TableId`                  | `string` | The table's unique ID.                                                           |
 
 `*` *Taking into account policies of parent entities (such as database/cluster).*
 

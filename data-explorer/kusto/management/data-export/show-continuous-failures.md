@@ -30,12 +30,12 @@ You must have at least Database User, Database Viewer, or Database Monitor permi
 
 | Output parameter | Type      | Description                                         |
 |------------------|-----------|-----------------------------------------------------|
-| Timestamp        | Datetime  | Timestamp of the failure.                           |
-| OperationId      | String    | Operation ID of the failure.                    |
-| Name             | String    | Continuous export name.                             |
+| Timestamp        | `datetime` | Timestamp of the failure.                           |
+| OperationId      | `string` | Operation ID of the failure.                    |
+| Name             | `string` | Continuous export name.                             |
 | LastSuccessRun   | Timestamp | The last successful run of the continuous export.   |
-| FailureKind      | String    | Failure/PartialFailure. PartialFailure indicates some artifacts were exported successfully before the failure occurred. |
-| Details          | String    | Failure error details.                              |
+| FailureKind      | `string` | Failure/PartialFailure. PartialFailure indicates some artifacts were exported successfully before the failure occurred. |
+| Details          | `string` | Failure error details.                              |
 
 ## Example
 
