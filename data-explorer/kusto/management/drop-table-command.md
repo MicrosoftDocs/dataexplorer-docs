@@ -37,8 +37,8 @@ This command returns a list of the remaining tables in the database.
 
 | Output parameter | Type   | Description                             |
 |------------------|--------|-----------------------------------------|
-| TableName        | String | The name of the table.                  |
-| DatabaseName     | String | The database that the table belongs to. |
+| TableName        | `string` | The name of the table.                  |
+| DatabaseName     | `string` | The database that the table belongs to. |
 
 ## Examples
 

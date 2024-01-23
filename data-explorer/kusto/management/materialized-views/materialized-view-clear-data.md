@@ -35,9 +35,9 @@ Following is the schema of the output returned:
 
 | Name              | Type     | Description                                                                                                                                                                                                          |
 |-------------------|----------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| ExtentId          | guid     | Globally unique identifier of the extent containing information for the materialized part of the materialized view which has been removed.                                                                           |
-| TableName         | string   | Internal name used to refer to the materialized part of the materialized view. It consists of the prefix `_MV_` followed by the name the user assigned to the materialized view when it was created.    |
-| CreatedOn         | datetime | Date and time when the extent was originally created.                                                                                                                                                                |
+| ExtentId          | `guid` | Globally unique identifier of the extent containing information for the materialized part of the materialized view which has been removed.                                                                           |
+| TableName         | `string` | Internal name used to refer to the materialized part of the materialized view. It consists of the prefix `_MV_` followed by the name the user assigned to the materialized view when it was created.    |
+| CreatedOn         | `datetime` | Date and time when the extent was originally created.                                                                                                                                                                |
 
 ## Examples
 

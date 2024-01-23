@@ -71,9 +71,9 @@ The command returns a table with the following information.
 
 |Output parameter |Type |Description |
 |---|---|---|
-|ExtentId |String |ExtentId that was dropped because of the command
-|TableName |String |Table name, where extent belonged  
-|CreatedOn |DateTime |Timestamp that holds information about when the extent was initially created |
+|ExtentId | `string` |ExtentId that was dropped because of the command
+|TableName | `string` |Table name, where extent belonged  
+|CreatedOn | `dateTime` |Timestamp that holds information about when the extent was initially created |
 
 For example, the return value of a command might look like the following table.
 

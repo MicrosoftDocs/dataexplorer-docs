@@ -35,7 +35,7 @@ Output table schema is:
 
 |*TimelineColumn*|dcount_values|dcount_newvalues|retention_rate|churn_rate|dim1|..|dim_n|
 |---|---|---|---|---|--|--|--|--|--|--|
-|type: as of *TimelineColumn*|long|long|double|double|..|..|..|
+|type: as of *TimelineColumn*| `long` | `long` |double|double|..|..|..|
 
 ### Notes
 

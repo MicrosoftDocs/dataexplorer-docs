@@ -24,8 +24,8 @@ The area chart visual shows a time-series relationship. The first column of the 
 
 | Name | Type | Required | Description |
 | -- | -- | -- | -- |
-| *T* | string |  :heavy_check_mark: | Input table name.
-| *propertyName*, *propertyValue* | string | | A comma-separated list of key-value property pairs. See [supported properties](#supported-properties).|
+| *T* | `string` |  :heavy_check_mark: | Input table name.
+| *propertyName*, *propertyValue* | `string` | | A comma-separated list of key-value property pairs. See [supported properties](#supported-properties).|
 
 ::: zone pivot="azuredataexplorer, fabric"
 

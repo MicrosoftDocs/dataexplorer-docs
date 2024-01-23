@@ -23,11 +23,11 @@ You must have at least [Cluster AllDatabasesMonitor](access-control/role-based-a
 
 | Name          | Type   | Description                                                                                                                                                                                            |
 |---------------|--------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| PolicyName    | string | Name of the policy. For cluster callout policy this value is **CalloutPolicy**.                                                                                                                        |
-| EntityName    | string | Name of the entity for which the policy is set.                                                                                                                                                        |
-| Policy        | string | JSON representation of the policy object.                                                                                                                                                              |
-| ChildEntities | string | Child entities for which this policy is set. For cluster callout policy this value is an array of strings, each of which corresponds to the name of system and user databases attached to the cluster. |
-| EntityType    | string | Type of entity for which this policy is set. For cluster callout policy this value is *Cluster*.                                                                                                       |
+| PolicyName    | `string` | Name of the policy. For cluster callout policy this value is **CalloutPolicy**.                                                                                                                        |
+| EntityName    | `string` | Name of the entity for which the policy is set.                                                                                                                                                        |
+| Policy        | `string` | JSON representation of the policy object.                                                                                                                                                              |
+| ChildEntities | `string` | Child entities for which this policy is set. For cluster callout policy this value is an array of strings, each of which corresponds to the name of system and user databases attached to the cluster. |
+| EntityType    | `string` | Type of entity for which this policy is set. For cluster callout policy this value is *Cluster*.                                                                                                       |
 
 ### Examples
 
