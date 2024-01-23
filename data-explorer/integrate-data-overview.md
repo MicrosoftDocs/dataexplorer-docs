@@ -57,13 +57,10 @@ The following tables summarizes the available data connectors, tools, and integr
 
 ## [Tools and integrations](#tab/integrations)
 
-| Name | Functionality | Supports streaming? | Supports free cluster? | Use cases |
-|--|--|:-:|--|--|
-| [LightIngest](integrate-overview.md#lightingest) | **Ingestion** | | :heavy_check_mark: | Historical data, Logs |
-| [Web UI](integrate-overview.md#web-ui) ingestion wizard | **Ingestion** | :heavy_check_mark: | :heavy_check_mark: | Logs, Telemetry, Time series |
-
-<!-- /azure/data-explorer/integrate-overview&tabs=integrations#lightingest -->
-<!-- /azure/data-explorer/integrate-overview&tabs=integrations#web-ui -->
+| Name | Functionality | Supports streaming? | Supports free cluster? | Type | Use cases |
+|--|--|:-:|--|--|--|
+| [LightIngest](/azure/data-explorer/integrate-overview&tabs=integrations#lightingest) | **Ingestion** | | :heavy_check_mark: | First party | Historical data, Logs |
+| [Web UI](/azure/data-explorer/integrate-overview&tabs=integrations#web-ui) ingestion wizard | **Ingestion** | :heavy_check_mark: | :heavy_check_mark: | First party | Logs, Telemetry, Time series |
 
 ---
 
