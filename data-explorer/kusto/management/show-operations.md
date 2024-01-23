@@ -39,14 +39,14 @@ The output table contains the following information:
 
 |Output parameter |Type |Description|
 |---|---|---|
-|OperationId |String |Operation Identifier|
-|Operation |String |Admin command alias|
-|NodeId |String |If the command has a remote execution (for example, DataIngestPull) - NodeId will contain the ID of the executing remote node|
-|StartedOn |DateTime |Date/time (in UTC) when the operation started|
-|LastUpdatedOn |DateTime |Date/time (in UTC) when the operation last updated (can be either a step inside the operation, or a completion step)|
-|Duration |DateTime |TimeSpan between LastUpdateOn and StartedOn|
-|State |String |Command state, as listed in the **State table**|
-|Status |String |Additional help string that contains errors of failed operations|
+|OperationId | `string` |Operation Identifier|
+|Operation | `string` |Admin command alias|
+|NodeId | `string` |If the command has a remote execution (for example, DataIngestPull) - NodeId will contain the ID of the executing remote node|
+|StartedOn | `datetime` |Date/time (in UTC) when the operation started|
+|LastUpdatedOn | `datetime` |Date/time (in UTC) when the operation last updated (can be either a step inside the operation, or a completion step)|
+|Duration | `datetime` |TimeSpan between LastUpdateOn and StartedOn|
+|State | `string` |Command state, as listed in the **State table**|
+|Status | `string` |Additional help string that contains errors of failed operations|
 
 **State table**
 

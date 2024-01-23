@@ -72,10 +72,10 @@ The extents and the tags to drop are specified using a Kusto query. It returns a
 
 Output parameter |Type |Description
 ---|---|---
-OriginalExtentId |string |A unique identifier (GUID) for the original extent whose tags have been modified. The extent is dropped as part of the operation.
-ResultExtentId |string |A unique identifier (GUID) for the result extent that has modified tags. The extent is created and added as part of the operation. Upon failure - "Failed".
-ResultExtentTags |string |The collection of tags that the result extent is tagged with, if any remain, or "null" in case the operation fails.
-Details |string |Includes the failure details if the operation fails.
+OriginalExtentId | `string` |A unique identifier (GUID) for the original extent whose tags have been modified. The extent is dropped as part of the operation.
+ResultExtentId | `string` |A unique identifier (GUID) for the result extent that has modified tags. The extent is created and added as part of the operation. Upon failure - "Failed".
+ResultExtentTags | `string` |The collection of tags that the result extent is tagged with, if any remain, or "null" in case the operation fails.
+Details | `string` |Includes the failure details if the operation fails.
 
 ## Examples
 

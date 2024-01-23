@@ -33,9 +33,9 @@ You must have [Database User](access-control/role-based-access-control.md) permi
 
 | Output parameter | Type   | Description                       |
 |------------------|--------|-----------------------------------|
-| Uri              | string | URI of external storage data file |
-| Size             | long   | File length in bytes              |
-| Partition        | dynamic | Dynamic object describing file partitions for partitioned external table |
+| Uri              | `string` | URI of external storage data file |
+| Size             | `long` | File length in bytes              |
+| Partition        | `dynamic` | Dynamic object describing file partitions for partitioned external table |
 
 ## Example
 

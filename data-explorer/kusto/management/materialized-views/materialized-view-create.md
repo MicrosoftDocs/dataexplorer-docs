@@ -473,11 +473,11 @@ If the operation is no longer in progress when the `.cancel operation` command i
 
 | Name              | Type     | Description
 |-------------------|----------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| OperationId       | guid     |The operation ID of the `.create materialized-view` command.                                                                                                                                            |
-| Operation         | string   |The type of operation.                                                                                                                                                                                  |
-| StartedOn         | datetime |The start time of the create operation.                                                                                                                                                                 |
-| CancellationState | string   |One of: `Canceled successfully` (creation was canceled), `Cancellation failed` (wait for cancellation timed out), `Unknown` (view creation is no longer running but wasn't canceled by this operation). |
-| ReasonPhrase      | string   |The reason why cancellation wasn't successful.                                                                                                                                                          |
+| OperationId       | `guid` |The operation ID of the `.create materialized-view` command.                                                                                                                                            |
+| Operation         | `string` |The type of operation.                                                                                                                                                                                  |
+| StartedOn         | `datetime` |The start time of the create operation.                                                                                                                                                                 |
+| CancellationState | `string` |One of: `Canceled successfully` (creation was canceled), `Cancellation failed` (wait for cancellation timed out), `Unknown` (view creation is no longer running but wasn't canceled by this operation). |
+| ReasonPhrase      | `string` |The reason why cancellation wasn't successful.                                                                                                                                                          |
 
 #### Examples
 

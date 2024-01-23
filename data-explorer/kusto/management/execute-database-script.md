@@ -43,11 +43,11 @@ Each command appearing in the script will be reported as a separate record in th
 
 |Output parameter |Type |Description|
 |---|---|--- |
-|OperationId  |Guid |Identifier of the command.|
-|CommandType  |String |The type of the command.|
-|CommandText  |String |Text of the specific command.|
-|Result|String|Outcome of the specific command execution.|
-|Reason|String|Detailed information about command execution outcome.|
+|OperationId  | `guid` |Identifier of the command.|
+|CommandType  | `string` |The type of the command.|
+|CommandText  | `string` |Text of the specific command.|
+|Result| `string` |Outcome of the specific command execution.|
+|Reason| `string` |Detailed information about command execution outcome.|
 
 >[!NOTE]
 >

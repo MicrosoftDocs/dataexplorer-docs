@@ -71,9 +71,9 @@ In order to export to an external table, you must set up write permissions. For 
 
 |Output parameter |Type |Description
 |---|---|---
-|ExternalTableName  |String |The name of the external table.
-|Path|String|Output path.
-|NumRecords|String| Number of records exported to path.
+|ExternalTableName  | `string` |The name of the external table.
+|Path| `string` |Output path.
+|NumRecords| `string` | Number of records exported to path.
 
 ## Notes
 
