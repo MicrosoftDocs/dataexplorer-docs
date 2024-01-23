@@ -49,16 +49,16 @@ The following tables summarize the available query connectors, tools, and integr
 
 | Name | Data processing | Roles | Use cases |
 |--|--|--|--|
-| [Azure Monitor](integrate-overview.md#azure-monitor) |  |  |  |
-| [Azure Data Lake](integrate-overview.md#azure-data-lake) |  |  |  |
-| [Azure Synapse Analytics](integrate-overview.md#azure-synapse-analytics) |  |  |  |
-| [Azure Data Studio](integrate-overview.md#azure-data-studio) |  |  |  |
-| [Jupyter Notebooks](integrate-overview.md#jupyter-notebooks) |  |  |
-| [Kusto.Explorer](integrate-overview.md#kustoexplorer) |  |  |  |
-| [Kusto CLI](integrate-overview.md#kusto-cli) |  |  |  |
-| [Kusto Query Language parser](integrate-overview.md#kql-parser) |  |  |  |
-| [Kusto Query Language Monaco editor](integrate-overview.md#monaco-editor-pluginembed) |  |  |  |
-| [Real-Time Analytics in Microsoft Fabric](integrate-overview.md#real-time-analytics-in-microsoft-fabric) |  |  |  |
+| [Azure Monitor](integrate-overview.md&tabs=integrations#azure-monitor) |  |  |  |
+| [Azure Data Lake](integrate-overview.md&tabs=integrations#azure-data-lake) |  |  |  |
+| [Azure Synapse Analytics](integrate-overview.md&tabs=integrations#azure-synapse-analytics) |  |  |  |
+| [Azure Data Studio](integrate-overview.md&tabs=integrations#azure-data-studio) |  |  |  |
+| [Jupyter Notebooks](integrate-overview.md&tabs=integrations#jupyter-notebooks) |  |  |
+| [Kusto.Explorer](integrate-overview.md&tabs=integrations#kustoexplorer) |  |  |  |
+| [Kusto CLI](integrate-overview.md&tabs=integrations#kusto-cli) |  |  |  |
+| [Kusto Query Language parser](integrate-overview.md&tabs=integrations#kql-parser) |  |  |  |
+| [Kusto Query Language Monaco editor](integrate-overview.md&tabs=integrations#monaco-editor-pluginembed) |  |  |  |
+| [Real-Time Analytics in Microsoft Fabric](integrate-overview.md&tabs=integrations#real-time-analytics-in-microsoft-fabric) |  |  |  |
 | [Web UI](integrate-overview.md#web-ui) |  |  |  |
 
 ---
