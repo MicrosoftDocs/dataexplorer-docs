@@ -37,25 +37,25 @@ Following is the schema of the output returned:
 
 | Column name              | Type     | Description                                                                                                            |
 |--------------------------|----------|------------------------------------------------------------------------------------------------------------------------|
-| MaterializedViewName     | string   | Name of the materialized view.                                                                                         |
-| DatabaseName             | string   | Database that the materialized view belongs to.                                                                        |
-| Folder                   | string   | Folder under which the materialized view is created.                                                                   |
-| DocString                | string   | Description assigned to the materialized view.                                                                         |
-| TotalExtents             | int      | Total number of extents in the materialized view.                                                                      |
+| MaterializedViewName     | `string` | Name of the materialized view.                                                                                         |
+| DatabaseName             | `string` | Database that the materialized view belongs to.                                                                        |
+| Folder                   | `string` | Folder under which the materialized view is created.                                                                   |
+| DocString                | `string` | Description assigned to the materialized view.                                                                         |
+| TotalExtents             | `int` | Total number of extents in the materialized view.                                                                      |
 | TotalExtentSize          | double   | Total size of extents (compressed size + index size) in the materialized view (in bytes).                              |
 | TotalOriginalSize        | double   | Total original size of data in the materialized view (in bytes).                                                       |
-| TotalRowCount            | int      | Total number of rows in the materialized view.                                                                         |
-| HotExtents               | int      | Total number of extents in the materialized view, stored in the hot cache.                                             |
+| TotalRowCount            | `int` | Total number of rows in the materialized view.                                                                         |
+| HotExtents               | `int` | Total number of extents in the materialized view, stored in the hot cache.                                             |
 | HotExtentSize            | double   | Total size of extents (compressed size + index size) in the materialized view, stored in the hot cache (in bytes).     |
 | HotOriginalSize          | double   | Total original size of data in the materialized view, stored in the hot cache (in bytes).                              |
-| HotRowCount              | int      | Total number of rows in the materialized view, stored in the hot cache.                                                |
-| AuthorizedPrincipals     | string   | Materialized view's authorized principals, serialized as JSON.                                                         |
-| RetentionPolicy          | string   | Materialized view's effective`*` retention policy, serialized as JSON.                                                 |
-| CachingPolicy            | string   | Materialized view's effective`*` caching policy, serialized as JSON.                                                   |
-| ShardingPolicy           | string   | Materialized view's effective`*` sharding policy, serialized as JSON.                                                  |
-| MergePolicy              | string   | Materialized view's effective`*` merge policy, serialized as JSON.                                                     |
-| MinExtentsCreationTime   | datetime | Minimum creation time of an extent in the materialized view (or null, if there are no extents).                        |
-| MaxExtentsCreationTime   | datetime | Maximum creation time of an extent in the materialized view (or null, if there are no extents).                        |
+| HotRowCount              | `int` | Total number of rows in the materialized view, stored in the hot cache.                                                |
+| AuthorizedPrincipals     | `string` | Materialized view's authorized principals, serialized as JSON.                                                         |
+| RetentionPolicy          | `string` | Materialized view's effective`*` retention policy, serialized as JSON.                                                 |
+| CachingPolicy            | `string` | Materialized view's effective`*` caching policy, serialized as JSON.                                                   |
+| ShardingPolicy           | `string` | Materialized view's effective`*` sharding policy, serialized as JSON.                                                  |
+| MergePolicy              | `string` | Materialized view's effective`*` merge policy, serialized as JSON.                                                     |
+| MinExtentsCreationTime   | `datetime` | Minimum creation time of an extent in the materialized view (or null, if there are no extents).                        |
+| MaxExtentsCreationTime   | `datetime` | Maximum creation time of an extent in the materialized view (or null, if there are no extents).                        |
 
 `*` *Taking into account policies of parent entities (such as database/cluster).*
 

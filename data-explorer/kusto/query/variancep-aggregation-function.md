@@ -25,7 +25,7 @@ The following formula is used:
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-|*expr* | string |  :heavy_check_mark: | The expression to use for the variance calculation.|
+|*expr* | `string` |  :heavy_check_mark: | The expression to use for the variance calculation.|
 
 ## Returns
 

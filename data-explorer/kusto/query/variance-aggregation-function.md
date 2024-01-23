@@ -27,7 +27,7 @@ The following formula is used:
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-|*expr* | real |  :heavy_check_mark: | The expression used for the variance calculation.|
+|*expr* | `real` |  :heavy_check_mark: | The expression used for the variance calculation.|
 
 ## Returns
 

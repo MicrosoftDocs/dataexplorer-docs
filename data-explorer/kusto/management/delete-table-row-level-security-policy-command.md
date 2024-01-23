@@ -29,11 +29,11 @@ You must have at least [Table Admin](access-control/role-based-access-control.md
 
 | Name          | Type   | Description
 |---------------|--------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| PolicyName    | string | The name of the policy being deleted: RowLevelSecurityPolicy.
-| EntityName    | string | The name of the entity for which the policy is deleted. The name follows the format of `[`*databaseName*`].[`*tableName*`]`, where *databaseName* corresponds to the name of the database in which in the table exists, and *tableName* is the name of the table itself.
-| Policy        | string | A JSON representation of the policy object. Upon deletion of the policy, this property is set to `null`.
-| ChildEntities | string | Child entities for which this policy is set. For a table row level security policy, this value is an empty string.                                                                                                                                                                     |
-| EntityType    | string | The type of entity for which this policy is set. For a table row level security policy, this value is an empty string.                                                                                                                                                                     |
+| PolicyName    | `string` | The name of the policy being deleted: RowLevelSecurityPolicy.
+| EntityName    | `string` | The name of the entity for which the policy is deleted. The name follows the format of `[`*databaseName*`].[`*tableName*`]`, where *databaseName* corresponds to the name of the database in which in the table exists, and *tableName* is the name of the table itself.
+| Policy        | `string` | A JSON representation of the policy object. Upon deletion of the policy, this property is set to `null`.
+| ChildEntities | `string` | Child entities for which this policy is set. For a table row level security policy, this value is an empty string.                                                                                                                                                                     |
+| EntityType    | `string` | The type of entity for which this policy is set. For a table row level security policy, this value is an empty string.                                                                                                                                                                     |
 
 ## Example
 

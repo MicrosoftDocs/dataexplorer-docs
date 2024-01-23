@@ -22,12 +22,12 @@ Decodes the input string from base64 and performs zlib decompression.
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-| *string* | string |  :heavy_check_mark: | The string to decode. The string should have been compressed with zlib and then base64-encoded.|
+| *string* | `string` |  :heavy_check_mark: | The string to decode. The string should have been compressed with zlib and then base64-encoded.|
 
 ## Returns
 
-* Returns a `string` that represents the original string. 
-* Returns an empty result if decompression or decoding failed. 
+* Returns a `string` that represents the original string.
+* Returns an empty result if decompression or decoding failed.
     * For example, invalid zlib-compressed and base 64-encoded strings will return an empty output.
 
 ## Examples

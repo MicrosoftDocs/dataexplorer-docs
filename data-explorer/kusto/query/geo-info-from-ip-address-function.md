@@ -27,11 +27,11 @@ A dynamic object containing the information on IP address whereabouts (if the in
 
 |Name| Type | Description|
 |--|--|--|
-|`country`|string|Country name|
-|`state`|string|State (subdivision) name|
-|`city`|string|City name|
-|`latitude`|real|Latitude coordinate|
-|`longitude`|real|Longitude coordinate|
+|`country`| `string` |Country name|
+|`state`| `string` |State (subdivision) name|
+|`city`| `string` |City name|
+|`latitude`| `real` |Latitude coordinate|
+|`longitude`| `real` |Longitude coordinate|
 
 > [!NOTE]
 >
