@@ -32,34 +32,34 @@ The following tables summarize the available query connectors, tools, and integr
 
 ## [Connectors](#tab/connectors)
 
-| Name | Type | Use cases |
-|--|--|--|
-| [Apache Spark](integrate-overview.md#apache-spark) | [Open source](https://github.com/Azure/azure-kusto-spark/) | Telemetry |
-| [Apache Spark for Azure Synapse Analytics](integrate-overview.md#apache-spark-for-azure-synapse-analytics) | First party | Telemetry |
-| [Azure Functions](integrate-overview.md#azure-functions) | First party | Workflow integrations |
-| [JDBC](integrate-overview.md#jdbc) |  |  |
-| [Logic Apps](integrate-overview.md#logic-apps) | First party |  |
-| [Logstash](integrate-overview.md#logstash) | [Open source](https://github.com/Azure/logstash-output-kusto/) | Logs |
-| [Matlab](integrate-overview.md#matlab) |  |  |
-| [Microsoft Power Apps](integrate-overview.md#power-apps) | First party | Data orchestration |
-| [ODBC](integrate-overview.md#odbc) |  |  |
-| [Power Automate](integrate-overview.md#power-automate) | First party | Data orchestration |
+| Name | Data processing | Roles | Use cases |
+|--|--|--|--|
+| [Apache Spark](integrate-overview.md#apache-spark) |  |  |  |
+| [Apache Spark for Azure Synapse Analytics](integrate-overview.md#apache-spark-for-azure-synapse-analytics) |  |  |  |
+| [Azure Functions](integrate-overview.md#azure-functions) |  |  |  |
+| [JDBC](integrate-overview.md#jdbc) |  |  |  |
+| [Logic Apps](integrate-overview.md#logic-apps) |  |  |  |
+| [Logstash](integrate-overview.md#logstash) |  |  |  |
+| [Matlab](integrate-overview.md#matlab) |  |  |  |
+| [Microsoft Power Apps](integrate-overview.md#power-apps) |  |  |  |
+| [ODBC](integrate-overview.md#odbc) |  |  |  |
+| [Power Automate](integrate-overview.md#power-automate) |  |  |  |
 
 ## [Tools and integrations](#tab/integrations)
 
-| Name | Type | Use cases |
-|--|--|--|
-| [Azure Monitor](integrate-overview.md#azure-monitor) |  | Query integration |
-| [Azure Data Lake](integrate-overview.md#azure-data-lake) |  | Query integration |
-| [Azure Synapse Analytics](integrate-overview.md#azure-synapse-analytics) |  | Query integration |
-| [Azure Data Studio](integrate-overview.md#azure-data-studio) |  | Query integration |
+| Name | Data processing | Roles | Use cases |
+|--|--|--|--|
+| [Azure Monitor](integrate-overview.md#azure-monitor) |  |  |  |
+| [Azure Data Lake](integrate-overview.md#azure-data-lake) |  |  |  |
+| [Azure Synapse Analytics](integrate-overview.md#azure-synapse-analytics) |  |  |  |
+| [Azure Data Studio](integrate-overview.md#azure-data-studio) |  |  |  |
 | [Jupyter Notebooks](integrate-overview.md#jupyter-notebooks) |  |  |
-| [Kusto.Explorer](integrate-overview.md#kustoexplorer) |  |  |
-| [Kusto CLI](integrate-overview.md#kusto-cli) |  |  |
-| [Kusto Query Language parser](integrate-overview.md#kql-parser) | Open source | A .NET core repository for the Kusto Query Language parser and semantic tree. |
-| [Kusto Query Language Monaco editor](integrate-overview.md#monaco-editor-pluginembed) | Open source | [Kusto Query Language plugin](https://github.com/Azure/monaco-kusto)  [Embed the Azure Data Explorer web UI](./kusto/api/monaco/host-web-ux-in-iframe.md) |
-| [Real-Time Analytics in Microsoft Fabric](integrate-overview.md#real-time-analytics-in-microsoft-fabric) |  | Ingestion, Query, Visualization |
-| [Web UI](integrate-overview.md#web-ui) |  | Ingestion, Query, Visualization |
+| [Kusto.Explorer](integrate-overview.md#kustoexplorer) |  |  |  |
+| [Kusto CLI](integrate-overview.md#kusto-cli) |  |  |  |
+| [Kusto Query Language parser](integrate-overview.md#kql-parser) |  |  |  |
+| [Kusto Query Language Monaco editor](integrate-overview.md#monaco-editor-pluginembed) |  |  |  |
+| [Real-Time Analytics in Microsoft Fabric](integrate-overview.md#real-time-analytics-in-microsoft-fabric) |  |  |  |
+| [Web UI](integrate-overview.md#web-ui) |  |  |  |
 
 ---
 
