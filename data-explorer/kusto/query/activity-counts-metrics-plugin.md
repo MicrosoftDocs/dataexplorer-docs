@@ -36,10 +36,10 @@ The following table describes the output table schema.
 | Column name | Type | Description |
 |---|---|---|
 | `Timestamp` | Same as the provided *TimelineColumn* argument| The time window start time. |
-| `count` | long | The total records count in the time window and *dim(s)* |
-| `dcount` | long | The distinct ID values count in the time window and *dim(s)* |
-| `new_dcount` | long | The distinct ID values in the time window and *dim(s)* compared to all previous time windows. |
-| `aggregated_dcount` | long | The total aggregated distinct ID values of *dim(s)* from first-time window to current (inclusive). |
+| `count` | `long` | The total records count in the time window and *dim(s)* |
+| `dcount` | `long` | The distinct ID values count in the time window and *dim(s)* |
+| `new_dcount` | `long` | The distinct ID values in the time window and *dim(s)* compared to all previous time windows. |
+| `aggregated_dcount` | `long` | The total aggregated distinct ID values of *dim(s)* from first-time window to current (inclusive). |
 
 ## Examples
 

@@ -47,7 +47,7 @@ The capacity can be based on the [workload group](workload-groups.md) specified 
 
 |Output parameter |Type |Description|
 |---|---|---|
-|Resource |String |The name of the resource|
+|Resource | `string` |The name of the resource|
 |Total |Int64 |The total amount of resources, of type 'Resource', that are available. For example, the number of concurrent ingestions|
 |Consumed |Int64 |The amount of resources of type 'Resource' consumed right now|
 |Remaining |Int64 |The amount of remaining resources of type 'Resource'|

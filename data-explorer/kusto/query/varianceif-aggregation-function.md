@@ -23,8 +23,8 @@ Calculates the [variance](variance-aggregation-function.md) of *expr* in records
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-|*expr* | string |  :heavy_check_mark: | The expression to use for the variance calculation.|
-|*predicate*| string |  :heavy_check_mark: | If *predicate* evaluates to `true`, the *expr* calculated value will be added to the variance.|
+|*expr* | `string` |  :heavy_check_mark: | The expression to use for the variance calculation.|
+|*predicate*| `string` |  :heavy_check_mark: | If *predicate* evaluates to `true`, the *expr* calculated value will be added to the variance.|
 
 ## Returns
 

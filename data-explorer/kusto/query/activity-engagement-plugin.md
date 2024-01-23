@@ -38,7 +38,7 @@ Output table schema is:
 
 |TimelineColumn|dcount_activities_inner|dcount_activities_outer|activity_ratio|dim1|..|dim_n|
 |---|---|---|---|--|--|--|--|--|--|
-|type: as of *TimelineColumn*|long|long|double|..|..|..|
+|type: as of *TimelineColumn*| `long` |long|double|..|..|..|
 
 ## Examples
 
