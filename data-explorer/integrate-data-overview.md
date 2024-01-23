@@ -51,15 +51,16 @@ The following tables summarizes the available data connectors, tools, and integr
 | [Open Telemetry](integrate-overview.md#open-telemetry) | **Ingestion** | :heavy_check_mark: | | [Open source](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/exporter/azuredataexplorerexporter) | Traces, Metrics, Logs |
 | [Power Automate](integrate-overview.md#power-automate) | **Export**<br /><br />**Ingestion** | | | First party | Data orchestration |
 | [Serilog](integrate-overview.md#serilog) | **Ingestion** | :heavy_check_mark: | :heavy_check_mark: | First party, [Open source](https://github.com/Azure/serilog-sinks-azuredataexplorer) | Logs |
-| [Splunk](integrate-overview.md#splunk) | **Ingestion** | | | [Open source](https://github.com/Azure/azure-kusto-splunk) | Logs |
+| [Splunk](integrate-overview.md#splunk) | **Ingestion** | | | [Open source](https://github.com/Azure/azure-kusto-splunk/tree/main/splunk-adx-alert-addon) | Logs |
 | [Splunk Universal Forwarder](integrate-overview.md#splunk-universal-forwarder)| **Ingestion** | | | [Open source](https://github.com/Azure/azure-kusto-splunk) | Logs |
 | [Telegraf](integrate-overview.md#telegraf) | **Ingestion** | :heavy_check_mark: | | [Open source](https://github.com/influxdata/telegraf/tree/master/plugins/outputs/azure_data_explorer) | Metrics, Logs |
 
 ## [Tools and integrations](#tab/integrations)
 
-* [LightIngest](/azure/data-explorer/integrate-overview&tabs=integrations#lightingest): a command-line utility for ad-hoc data ingestion into Azure Data Explorer. For more information, see [Use LightIngest to ingest data](lightingest.md).
-* [Web UI](/azure/data-explorer/integrate-overview&tabs=integrations#web-ui) ingestion wizard: [overview](ingest-data-wizard.md) and ingest data [from a container to a new table](/azure/data-explorer/ingest-from-container)
-or [from a local file to an existing table](/azure/data-explorer/ingest-from-local-file).
+| Name | Functionality | Supports streaming? | Supports free cluster? | Use cases |
+|--|--|:-:|--|--|
+| [LightIngest](/azure/data-explorer/integrate-overview&tabs=integrations#lightingest) | **Ingestion** | | :heavy_check_mark: | Historical data, Logs |
+| [Web UI](/azure/data-explorer/integrate-overview&tabs=integrations#web-ui) ingestion wizard | **Ingestion** | :heavy_check_mark: | :heavy_check_mark: | Logs, Telemetry, Time series |
 
 ---
 
