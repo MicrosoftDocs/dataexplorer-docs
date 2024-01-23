@@ -336,7 +336,7 @@ Serilog is a popular logging framework for .NET applications. Serilog allows dev
 * **Ingestion type supported:** Batching
 * **Use cases:** Logs
 * **Underlying SDK:** [Python](kusto/api/python/kusto-python-client-library.md)
-* **Repository:** https://github.com/Azure/azure-kusto-splunk/tree/main/splunk-adx-alert-addon
+* **Repository:** Microsoft Azure - https://github.com/Azure/azure-kusto-splunk/tree/main/splunk-adx-alert-addon
 * **Documentation:** [Ingest data from Splunk](ingest-data-splunk.md)
 * **Splunk Base:** [Microsoft Azure Data Explorer Add-On for Splunk](https://splunkbase.splunk.com/app/6979)
 * **Community Blog:** [Getting started with Microsoft Azure Data Explorer Add-On for Splunk](https://techcommunity.microsoft.com/t5/azure-data-explorer-blog/getting-started-with-microsoft-azure-data-explorer-add-on-for/ba-p/3917176)
@@ -468,7 +468,7 @@ Lightingest is  a command-line utility for ad-hoc data ingestion into Azure Data
 * **Functionality:** Ingestion
 * **Ingestion type supported:** Batching
 * **Use cases:** Historical data load
-* **Repository:** [LightIngest](https://github.com/Azure/Kusto-Lightingest/blob/main/README.md)
+* **Repository:** [LightIngest](https://github.com/Azure/Kusto-Lightingest)
 * **Documentation:** [Use LightIngest to ingest data](lightingest.md)
 
 ### Microsoft Purview

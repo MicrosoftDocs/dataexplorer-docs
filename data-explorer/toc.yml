@@ -611,7 +611,7 @@ items:
     items:
       - name:  Integrations overview
         href: integrate-overview.md
-        displayName: integrate, integration, export, orchestrate, tools, connectors, query, visualize
+        displayName: integrate, integration, export, orchestrate, tools, connectors, query, visualize, connectors, tools
       - name: Orchestrate
         items:
           - name: Power Automate
