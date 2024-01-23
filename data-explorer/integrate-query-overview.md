@@ -59,7 +59,7 @@ The following tables summarize the available query connectors, tools, and integr
 | [Kusto Query Language parser](integrate-overview.md&tabs=integrations#kql-parser) |  |  |  |
 | [Kusto Query Language Monaco editor](integrate-overview.md&tabs=integrations#monaco-editor-pluginembed) |  |  |  |
 | [Real-Time Analytics in Microsoft Fabric](integrate-overview.md&tabs=integrations#real-time-analytics-in-microsoft-fabric) |  |  |  |
-| [Web UI](integrate-overview.md#web-ui) |  |  |  |
+| [Web UI](integrate-overview.md&tabs=integrations#web-ui) |  |  |  |
 
 ---
 
