@@ -49,17 +49,17 @@ The following tables summarize the available query connectors, tools, and integr
 
 | Name | Data processing | Roles | Use cases |
 |--|--|--|--|
-| [Azure Monitor](integrate-overview.md&tabs=integrations#azure-monitor) |  |  |  |
-| [Azure Data Lake](integrate-overview.md&tabs=integrations#azure-data-lake) |  |  |  |
-| [Azure Synapse Analytics](integrate-overview.md&tabs=integrations#azure-synapse-analytics) |  |  |  |
-| [Azure Data Studio](integrate-overview.md&tabs=integrations#azure-data-studio) |  |  |  |
-| [Jupyter Notebooks](integrate-overview.md&tabs=integrations#jupyter-notebooks) |  |  |
-| [Kusto.Explorer](integrate-overview.md&tabs=integrations#kustoexplorer) |  |  |  |
-| [Kusto CLI](integrate-overview.md&tabs=integrations#kusto-cli) |  |  |  |
-| [Kusto Query Language parser](integrate-overview.md&tabs=integrations#kql-parser) |  |  |  |
-| [Kusto Query Language Monaco editor](integrate-overview.md&tabs=integrations#monaco-editor-pluginembed) |  |  |  |
-| [Real-Time Analytics in Microsoft Fabric](integrate-overview.md&tabs=integrations#real-time-analytics-in-microsoft-fabric) |  |  |  |
-| [Web UI](integrate-overview.md&tabs=integrations#web-ui) |  |  |  |
+| [Azure Monitor](/azure/data-explorer/integrate-overview.md&tabs=integrations#azure-monitor) |  |  |  |
+| [Azure Data Lake](/azure/data-explorer/integrate-overview.md&tabs=integrations#azure-data-lake) |  |  |  |
+| [Azure Synapse Analytics](/azure/data-explorer/integrate-overview.md&tabs=integrations#azure-synapse-analytics) |  |  |  |
+| [Azure Data Studio](/azure/data-explorer/integrate-overview.md&tabs=integrations#azure-data-studio) |  |  |  |
+| [Jupyter Notebooks](/azure/data-explorer/integrate-overview.md&tabs=integrations#jupyter-notebooks) |  |  |
+| [Kusto.Explorer](/azure/data-explorer/integrate-overview.md&tabs=integrations#kustoexplorer) |  |  |  |
+| [Kusto CLI](/azure/data-explorer/integrate-overview.md&tabs=integrations#kusto-cli) |  |  |  |
+| [Kusto Query Language parser](/azure/data-explorer/integrate-overview.md&tabs=integrations#kql-parser) |  |  |  |
+| [Kusto Query Language Monaco editor](/azure/data-explorer/integrate-overview.md&tabs=integrations#monaco-editor-pluginembed) |  |  |  |
+| [Real-Time Analytics in Microsoft Fabric](/azure/data-explorer/integrate-overview.md&tabs=integrations#real-time-analytics-in-microsoft-fabric) |  |  |  |
+| [Web UI](/azure/data-explorer/integrate-overview.md&tabs=integrations#web-ui) |  |  |  |
 
 ---
 
