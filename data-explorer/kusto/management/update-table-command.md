@@ -250,6 +250,23 @@ MyStagingTable
 
 Note that some records in the staging table didn't exist in the main table (i.e. had `Id>100`) but were still inserted in the main table (upsert behaviour).
 
+### Complete syntax - Compound key
+
+```kusto
+.update table MyTable delete D append A <|
+let D = MyTable
+  | where Code=="Customer"
+  | where Colour=="Blue";
+let A = MyTable
+  | where Code=="Customer"
+  | where Colour=="Blue"
+  | extend Colour = "AppleGreen";
+```
+
+Here we do not identify the rows to update by one column (the `Id` column) but by two columns (`Code` and `Colour`).
+
+This is possible with the complete syntax since the simplified syntax assumed a single column to match deletes with appends.
+
 ### Complete syntax - Complete control
 
 ```kusto
@@ -266,3 +283,4 @@ let A = MyTable
 Here we delete all rows with `Code` *Employee* but append only the rows with `Code` *Employee* **and** `Colour` purple.  That is, we delete more rows than we insert.
 
 This is possible with the complete syntax as we control exactly what is deleted vs appended.
+
