@@ -3,11 +3,11 @@ title:  top operator
 description: Learn how to use the top operator to return the first specified number of records sorted by the specified columns.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 02/23/2023
+ms.date: 01/24/2024
 ---
 # top operator
 
-Returns the first *N* records sorted by the specified columns.
+Returns the first *N* records sorted by the specified column.
 
 ## Syntax
 
