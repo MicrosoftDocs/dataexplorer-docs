@@ -207,11 +207,13 @@ Here we first create the following mapping table:
 
 ```kusto
 .set-or-replace ColourMapping <|
-  print OldColour="Red", NewColour="Pink"
-  | union (print OldColour="Blue", NewColour="Purple") 
-  | union (print OldColour="Gray", NewColour="LightGray") 
-  | union (print OldColour="Orange", NewColour="Yellow") 
-  | union (print OldColour="Green", NewColour="AppleGreen") 
+  datatable(OldColour:string, NewColour:string)[
+    "Red", "Pink",
+    "Blue", "Purple",
+    "Gray", "LightGray",
+    "Orange", "Yellow",
+    "Green", "AppleGreen"
+  ]
 ```
 
 We then use that table to update map some colours in our table:
