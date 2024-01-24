@@ -252,20 +252,34 @@ Note that some records in the staging table didn't exist in the main table (i.e.
 
 ### Complete syntax - Compound key
 
+The simplified syntax assumes a single column can match rows in the *appendQuery* to infer rows to delete.  Sometimes we have more than one column (e.g. in cases of compound keys).
+
+Let's first such a table with compound keys:
+
 ```kusto
-.update table MyTable delete D append A <|
-let D = MyTable
-  | where Code=="Customer"
-  | where Colour=="Blue";
-let A = MyTable
-  | where Code=="Customer"
-  | where Colour=="Blue"
-  | extend Colour = "AppleGreen";
+.set-or-replace VersionedArticle <|
+  datatable(ArticleId:string, Version:int, Detail:string)[
+    "A", 1, "Early version",
+    "B", 1, "News about mobiles",
+    "C", 1, "Opinion article",
+    "B", 2, "Revision about brand X",
+    "B", 3, "Revision about brand Y",
+    "C", 2, "Fact check"
+  ]
 ```
 
-Here we do not identify the rows to update by one column (the `Id` column) but by two columns (`Code` and `Colour`).
+We can still update a specific record with the complete syntax:
 
-This is possible with the complete syntax since the simplified syntax assumed a single column to match deletes with appends.
+```kusto
+.update table VersionedArticle delete D append A <|
+let D = VersionedArticle
+  | where ArticleId=="B"
+  | where Version==3;
+let A = VersionedArticle
+  | where ArticleId=="B"
+  | where Version==3
+  | extend Detail = "Revision about brand Z";
+```
 
 ### Complete syntax - Complete control
 
