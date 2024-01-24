@@ -110,12 +110,30 @@ The result of the command is a table where each record represent an [extent](htt
 
 ## .update vs Materialized Views
 
+**VP Notes**:  I find this section important for guidance but I do not like its format.  I give an example not to be abstract but it makes the section extremelly long and story-like.  The exact syntax can be improved by the doc-writer, but please give feedback on the structure of the section.
+
 In some cases, you could use either the .update command or a [materialized view](https://learn.microsoft.com/en-us/azure/data-explorer/kusto/management/materialized-views/materialized-view-overview) to achieve the same goal in a table.  So which one would be a better option for you?
 
-An example of such use case would be 
+An example of such use case would be where a table `Widget` has a `Timestamp` and `WidgetId` column and we are only interested in the latest *version* of each widget.  We could define a materialized view as follow: 
 
+```kusto
+.create materialized-view LatestWidget on table Widget
+{
+    Widget
+    | summarize arg_max(Timestamp, *) by WidgetId
+}
+```
 
+Or, similarly, upon new data being available for that table, we could `.update` the table.
 
+We would recommend to use the `.update` in the following conditions:
+
+* Materialized View doesn't support your update pattern
+* The table has few updates compare to the ingestion rate ; for instance, maybe you ingest data all day but do corrections (updates) on records only once a day (or a week) on few records
+
+The rational behind the second point is that Materialized View uses more storage (for the source table and the materialized view) and resources (ingested data is always compared to existing data).  If you know that updates are exceptional (occurs rarely), running `.update` will consume less resources.
+
+On the other hand, automating a process with `.update` requires an external agent to run the command (e.g. [Azure Data Factory](https://learn.microsoft.com/en-us/azure/data-explorer/data-factory-integration), [Logic Apps](https://learn.microsoft.com/en-us/azure/data-explorer/kusto/tools/logicapps), [Power Automate](https://learn.microsoft.com/en-us/azure/data-explorer/flow), etc.) while a Materialized View is self-sufficient.
 
 ## Examples
 
