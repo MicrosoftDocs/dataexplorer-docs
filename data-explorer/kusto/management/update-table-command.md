@@ -100,7 +100,6 @@ The result of the command is a table where each record represent an [extent](htt
 
 ## Limitations
 
-- This command cannot be performed on tables which are the source tables to continuous exports and materialized views.
 - This command does not support deleting more than 5 million records.
 - The predicates for this command must meet the following requirements:
     - Delete predicate must include at least one `where` operator.
@@ -108,6 +107,15 @@ The result of the command is a table where each record represent an [extent](htt
     - No remote entities, cross-db and cross-cluster entities can be referenced by both the delete and append predicates.
     - The predicates cannot reference other tables, nor external tables and the `externaldata` operator.
 - The delete predicate is expected to produce deterministic results and failing to do so can result in unexpected results.
+
+## .update vs Materialized Views
+
+In some cases, you could use either the .update command or a [materialized view](https://learn.microsoft.com/en-us/azure/data-explorer/kusto/management/materialized-views/materialized-view-overview) to achieve the same goal in a table.  So which one would be a better option for you?
+
+An example of such use case would be 
+
+
+
 
 ## Examples
 
