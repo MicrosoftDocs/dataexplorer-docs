@@ -70,19 +70,19 @@ Notice that *Diana* wasn't found in the original table.  This is valid and no co
 
 ## Parameters
 
-Name|Type|Required|Description
-|--|--|--|--
-*TableName*|string|&check;|The name of the table to update. The table name is always relative to the database in context.
-*IdColumnName*|string|&check;|The name of the column identifying rows.  The column must be present in both the table and *appendQuery*.
-*appendQuery*|string|&check;|The text of a query or a management command whose results are used as data to append.
-*DeleteIdentifier*|string|&check;|The identifier name used to specify the delete predicate applied to the updated table.
-*AppendIdentifier*|string|&check;|The identifier name used to specify the append predicate applied to the updated table.
+|Name|Type|Required|Description|
+|---|---|---|---|
+|*TableName*|string|&check;|The name of the table to update. The table name is always relative to the database in context.
+|*IdColumnName*|string|&check;|The name of the column identifying rows.  The column must be present in both the table and *appendQuery*.
+|*appendQuery*|string|&check;|The text of a query or a management command whose results are used as data to append.
+|*DeleteIdentifier*|string|&check;|The identifier name used to specify the delete predicate applied to the updated table.
+|*AppendIdentifier*|string|&check;|The identifier name used to specify the append predicate applied to the updated table.
 
 ## Supported properties
 
 Name|Type|Description
-|--|--|--
-*whatif*|bool|If `true`, returns the number of records that will be appended / deleted in every shard, without actually appending / deleting any records. The default is `false`.
+|---|---|---|
+|*whatif*|bool|If `true`, returns the number of records that will be appended / deleted in every shard, without actually appending / deleting any records. The default is `false`.
 
 ## Returns
 
