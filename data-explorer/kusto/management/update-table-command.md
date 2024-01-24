@@ -15,20 +15,58 @@ You must have at least [Table Ingestor](../access-control/role-based-access-cont
 
 ## Syntax
 
-The update commands has two syntaxes:
+The update commands has two syntaxes.
 
-* The simple syntax assumes each row can be identified by an *Id* column.  Existing rows having ids found in the *append query* is deleted:
-  
-  `.update` `table` *TableName* on *IdColumnName* [`with` `(` *propertyName* `=` *propertyValue* [`,` ...]`)`] `<|`
-  
-  *appendQuery*
-* The complete syntax offers more flexibility as you can define a query to delete rows and a different query to append rows:
+### Complete Syntax
 
-  `.update` `table` *TableName* `delete` *DeleteIdentifier* `append` *AppendIdentifier* [`with` `(` *propertyName* `=` *propertyValue* [`,` ...]`)`] `<|`
+The complete syntax offers the most flexibility as you can define a query to delete rows and a different query to append rows:
 
-  `let` *DeleteIdentifier*`=` ...`;`
+`.update` `table` *TableName* `delete` *DeleteIdentifier* `append` *AppendIdentifier* [`with` `(` *propertyName* `=` *propertyValue* [`,` ...]`)`] `<|`
 
-  `let` *AppendIdentifier*`=` ...`;`
+`let` *DeleteIdentifier*`=` ...`;`
+
+`let` *AppendIdentifier*`=` ...`;`
+
+### Simplified syntax
+
+The simplified syntax only takes an append query in.  It deduces the delete queries by finding all the existing rows having an *Id Column* value that is present in the append query:
+
+`.update` `table` *TableName* on *IdColumnName* [`with` `(` *propertyName* `=` *propertyValue* [`,` ...]`)`] `<|`
+
+*appendQuery*
+
+For instance, if the table original content is:
+
+Name | Address
+-|-
+Alice|221B Baker street
+Bob|1600 Pennsylvania Avenue
+Carl|11 Wall Street New York
+
+And we perform the following update on it:
+
+```kusto
+.update table MyTable on Name <|
+appendQuery
+```
+
+Where the *appendQuery* yields the following result set:
+
+Name | Address
+-|-
+Alice|2 Macquarie Street
+Diana|350 Fifth Avenue
+
+Since we updated *on* the `Name` column, the *Alice* row will be deleted and the table after the update will look like this:
+
+Name | Address
+-|-
+Alice|2 Macquarie Street
+Bob|1600 Pennsylvania Avenue
+Carl|11 Wall Street New York
+Diana|350 Fifth Avenue
+
+Notice that *Diana* wasn't found in the original table.  This is valid and no corresponding row was deleted.
 
 ## Parameters
 
