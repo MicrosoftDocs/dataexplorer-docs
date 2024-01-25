@@ -29,7 +29,7 @@ The complete syntax offers the most flexibility as you can define a query to del
 
 ### Simplified syntax
 
-The simplified syntax only takes an append query in.  It deduces the delete queries by finding all the existing rows having an *Id Column* value that is present in the append query:
+The simplified syntax only takes an append query in.  It deduces the delete query by finding all the existing rows having an *Id Column* value present in the append query:
 
 `.update` `table` *TableName* on *IdColumnName* [`with` `(` *propertyName* `=` *propertyValue* [`,` ...]`)`] `<|`
 
