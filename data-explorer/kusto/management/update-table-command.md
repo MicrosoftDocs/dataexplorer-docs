@@ -76,9 +76,9 @@ Similarly, if there would have been multiple rows with *Alice* name in the origi
 |---|---|---|---|
 |*TableName*|string|&check;|The name of the table to update. The table name is always relative to the database in context.
 |*IdColumnName*|string|&check;|The name of the column identifying rows.  The column must be present in both the table and *appendQuery*.
-|*appendQuery*|string|&check;|The text of a query or a management command whose results are used as data to append.
-|*DeleteIdentifier*|string|&check;|The identifier name used to specify the delete predicate applied to the updated table.
-|*AppendIdentifier*|string|&check;|The identifier name used to specify the append predicate applied to the updated table.
+|*appendQuery*|string|&check;|The text of a query or a management command whose results are used as data to append.  The query's schema must be the same as the table's.  See [limitations](#limitations).
+|*DeleteIdentifier*|string|&check;|The identifier name used to specify the delete predicate applied to the updated table.  See [limitations](#limitations).
+|*AppendIdentifier*|string|&check;|The identifier name used to specify the append predicate applied to the updated table.  The query's schema must be the same as the table's.  See [limitations](#limitations).
 
 ## Supported properties
 
