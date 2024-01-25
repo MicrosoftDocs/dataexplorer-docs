@@ -10,6 +10,8 @@ ms.date: 04/11/2023
 Today, regular joins are executed on a single cluster node.
 Broadcast join is an execution strategy of join that distributes the join over cluster nodes. This strategy is useful when the left side of the join is small (up to several tens of MBs). In this case, a broadcast join is more performant than a regular join.
 
+Use the [lookup operator](lookup-operator.md) if the right side is smaller than the left side. The lookup operator runs in broadcast strategy by default when the right side is smaller than the left.
+
 > [!NOTE]
 > If the left side of the join is larger than several tens of MBs, the query will fail.
 >
@@ -34,9 +36,6 @@ leftSide
 | join hint.strategy = broadcast (factTable) on Key
 | summarize dcount(Messages) by Timestamp, Key
 ```
-
-> [!NOTE]
-> Use the [lookup operator](lookup-operator.md) if the right side is smaller than the left side. The lookup operator runs in broadcast strategy by default when the right side is smaller than the left.
 
 ## Related content
 
