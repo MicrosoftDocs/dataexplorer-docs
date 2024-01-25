@@ -244,7 +244,7 @@ Note that some records in the staging table didn't exist in the main table (i.e.
 
 The simplified syntax assumes a single column can match rows in the *appendQuery* to infer rows to delete.  Sometimes we have more than one column (e.g. in cases of compound keys).
 
-Let's first such a table with compound keys:
+Let's first create such a table with compound keys:
 
 ```kusto
 .set-or-replace VersionedArticle <|
