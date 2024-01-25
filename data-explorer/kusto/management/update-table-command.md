@@ -100,7 +100,7 @@ The result of the command is a table where each record represent an [extent](htt
 >[!NOTE]
 > When you update a table that is the source for an update policy, the result of the command contains all generated results in all tables.
 
-## Limitations
+## Limitations and considerations
 
 - This command does not support deleting more than 5 million records.
 - The predicates for this command must meet the following requirements:
@@ -109,6 +109,9 @@ The result of the command is a table where each record represent an [extent](htt
     - No remote entities, cross-db and cross-cluster entities can be referenced by both the delete and append predicates.
     - The predicates cannot reference other tables, nor external tables and the `externaldata` operator.
 - The delete predicate is expected to produce deterministic results and failing to do so can result in unexpected results.
+* Before running an update, verify the predicates by running a query and checking that the results match the expected outcome. You can also run the command in `whatif` mode.
+* Don't run multiple parallel updates on the same table, as this may result in failures of some or all the commands. However, it's possible to run multiple parallel update operations on different tables.
+* Don't run update, soft delete and purge commands on the same table in parallel. First wait for one command to complete and only then run the other command.
 
 ## .update vs Materialized Views
 
