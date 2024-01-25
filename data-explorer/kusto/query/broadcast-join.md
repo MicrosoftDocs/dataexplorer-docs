@@ -34,3 +34,10 @@ leftSide
 | join hint.strategy = broadcast (factTable) on Key
 | summarize dcount(Messages) by Timestamp, Key
 ```
+
+> [!NOTE]
+> Use the [lookup operator](lookup-operator.md) if the right side is smaller than the left side. The lookup operator runs in broadcast strategy by default when the right side is smaller than the left.
+
+## Related content
+
+* [lookup operator](lookup-operator.md).
