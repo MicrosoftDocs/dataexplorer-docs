@@ -107,3 +107,7 @@ Row     | Personal  | Family   | Alias
 3       | Bill      | Clinton  | billc
 4       | Steve     | Ballmer  | steveb
 5       | Tim       | Cook     | timc
+
+## Related content
+
+* [Broadcast join](broadcast-join.md).
