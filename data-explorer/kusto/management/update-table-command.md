@@ -134,12 +134,12 @@ We will base the examples on the following table:
   range i from 1 to 100 step 1
   | project Id=i
   | extend Code = tostring(dynamic(["Customer", "Employee"])[Id %2])
-  | extend Colour = tostring(dynamic(["Red", "Blue", "Gray"])[Id %3])
+  | extend Color = tostring(dynamic(["Red", "Blue", "Gray"])[Id %3])
 ```
 
 This creates a table with 100 records starting with:
 
-Id|Code|Colour
+Id|Code|Color
 -|-|-
 1|Employee|Blue
 2|Customer|Gray
@@ -155,7 +155,7 @@ Id|Code|Colour
 .update table MyTable on Id with(whatif=true) <|
 MyTable
 | where Id==3
-| extend Colour="Orange"
+| extend Color="Orange"
 ```
 
 Since we set `whatif` to true, the table is unchanged but the command returns that there would be an extent with one row deleted and a new extent with one row.
@@ -166,7 +166,7 @@ The following command actually performs the update:
 .update table MyTable on Id <|
 MyTable
 | where Id==3
-| extend Colour="Orange"
+| extend Color="Orange"
 ```
 
 ### Updating a single column on multiple rows
@@ -175,20 +175,20 @@ MyTable
 .update table MyTable on Id <|
 MyTable
 | where Code=="Employee"
-| where Colour=="Blue"
-| extend Colour="Green"
+| where Color=="Blue"
+| extend Color="Green"
 ```
 
-Here we only updated the single column `Colour` to *Green*. 
+Here we only updated the single column `Color` to *Green*. 
 
 ### Updating multiple columns on multiple rows
 
 ```kusto
 .update table MyTable on Id <|
 MyTable
-| where Colour=="Gray"
+| where Color=="Gray"
 | extend Code=strcat("ex-", Code)
-| extend Colour=""
+| extend Color=""
 ```
 
 ### Updating rows using another table
@@ -196,8 +196,8 @@ MyTable
 Here we first create the following mapping table:
 
 ```kusto
-.set-or-replace ColourMapping <|
-  datatable(OldColour:string, NewColour:string)[
+.set-or-replace ColorMapping <|
+  datatable(OldColor:string, NewColor:string)[
     "Red", "Pink",
     "Blue", "Purple",
     "Gray", "LightGray",
@@ -206,14 +206,14 @@ Here we first create the following mapping table:
   ]
 ```
 
-We then use that table to update map some colours in our table:
+We then use that table to update map some Colors in our table:
 
 ```kusto
 .update table MyTable on Id <|
 MyTable
 | where Code=="Customer"
-| lookup ColourMapping on $left.Colour==$right.OldColour
-| project Id, Code, Colour=NewColour
+| lookup ColorMapping on $left.Color==$right.OldColor
+| project Id, Code, Color=NewColor
 ```
 
 ### Updating rows with a staging table
@@ -227,7 +227,7 @@ Here we first create the following staging table:
   range i from 70 to 130 step 5
   | project Id=i
   | extend Code = tostring(dynamic(["Customer", "Employee"])[Id %2])
-  | extend Colour = tostring(dynamic(["Red", "Blue", "Gray"])[Id %3])
+  | extend Color = tostring(dynamic(["Red", "Blue", "Gray"])[Id %3])
 ```
 
 We then update the main table with the data in the staging table:
@@ -279,12 +279,12 @@ let D = MyTable
   | where Code=="Employee";
 let A = MyTable
   | where Code=="Employee"
-  | where Colour=="Purple"
+  | where Color=="Purple"
   | extend Code="Corporate"
-  | extend Colour="Mauve";
+  | extend Color="Mauve";
 ```
 
-Here we delete all rows with `Code` *Employee* but append only the rows with `Code` *Employee* **and** `Colour` purple.  That is, we delete more rows than we insert.
+Here we delete all rows with `Code` *Employee* but append only the rows with `Code` *Employee* **and** `Color` purple.  That is, we delete more rows than we insert.
 
 This is possible with the complete syntax as we control exactly what is deleted vs appended.
 
