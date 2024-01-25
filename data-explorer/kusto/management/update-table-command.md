@@ -107,8 +107,8 @@ The result of the command is a table where each record represent an [extent](htt
     - Delete predicate must include at least one `where` operator.
     - Delete predicate can only use the following operators: `extend`, `where` and `project`.
     - No remote entities, cross-db and cross-cluster entities can be referenced by both the delete and append predicates.
-    - The predicates cannot reference other tables, nor external tables and the `externaldata` operator.
-- The delete predicate is expected to produce deterministic results and failing to do so can result in unexpected results.
+    - The predicates cannot reference an external table or use the `externaldata` operator.
+- Append and delete queries are expected to produce deterministic results.  Non-deterministic queries can lead to unexpected results.
 * Before running an update, verify the predicates by running a query and checking that the results match the expected outcome. You can also run the command in `whatif` mode.
 * Don't run multiple parallel updates on the same table, as this may result in failures of some or all the commands. However, it's possible to run multiple parallel update operations on different tables.
 * Don't run update, soft delete and purge commands on the same table in parallel. First wait for one command to complete and only then run the other command.
