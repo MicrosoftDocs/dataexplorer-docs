@@ -113,32 +113,17 @@ The result of the command is a table where each record represent an [extent](htt
 * Don't run multiple parallel updates on the same table, as this may result in failures of some or all the commands. However, it's possible to run multiple parallel update operations on different tables.
 * Don't run update, soft delete and purge commands on the same table in parallel. First wait for one command to complete and only then run the other command.
 
-## .update vs Materialized Views
+## .update vs Materialized views
 
 **VP Notes**:  I find this section important for guidance but I do not like its format.  I give an example not to be abstract but it makes the section extremelly long and story-like.  The exact syntax can be improved by the doc-writer, but please give feedback on the structure of the section.
 
-In some cases, you could use either the .update command or a [materialized view](https://learn.microsoft.com/en-us/azure/data-explorer/kusto/management/materialized-views/materialized-view-overview) to achieve the same goal in a table.  So which one would be a better option for you?
+In some cases, you could use either the .update command or a [materialized view](https://learn.microsoft.com/en-us/azure/data-explorer/kusto/management/materialized-views/materialized-view-overview) to achieve the same goal in a table.  For instance, a materialized view could be used to keep the latest *version* of each record or an update could be used to update records upon new version.  So which one would be a better option for you?
 
-An example of such use case would be where a table `Widget` has a `Timestamp` and `WidgetId` column and we are only interested in the latest *version* of each widget.  We could define a materialized view as follow: 
+Use the following guidelines to identify which one you should use:
 
-```kusto
-.create materialized-view LatestWidget on table Widget
-{
-    Widget
-    | summarize arg_max(Timestamp, *) by WidgetId
-}
-```
-
-Or, similarly, upon new data being available for that table, we could `.update` the table.
-
-We would recommend to use the `.update` in the following conditions:
-
-* Materialized View doesn't support your update pattern
-* The table has few updates compare to the ingestion rate ; for instance, maybe you ingest data all day but do corrections (updates) on records only once a day (or a week) on few records
-
-The rational behind the second point is that Materialized View uses more storage (for the source table and the materialized view) and resources (ingested data is always compared to existing data).  If you know that updates are exceptional (occurs rarely), running `.update` will consume less resources.
-
-On the other hand, automating a process with `.update` requires an external agent to run the command (e.g. [Azure Data Factory](https://learn.microsoft.com/en-us/azure/data-explorer/data-factory-integration), [Logic Apps](https://learn.microsoft.com/en-us/azure/data-explorer/kusto/tools/logicapps), [Power Automate](https://learn.microsoft.com/en-us/azure/data-explorer/flow), etc.) while a Materialized View is self-sufficient.
+* If your update pattern isn't supported by materialized views, use the update command
+* If the source table has a very high ingestion volume, but only very few updates, using the update command can be more performant and consume less cache / storage than materialized views. This is because materialized views need to reprocess all ingested data, which is less efficient than identifying the individual records to update based on the append/delete predicates.
+* Materialized views is a fully managed solution. The materialized view is [defined once](https://learn.microsoft.com/en-us/azure/data-explorer/kusto/management/materialized-views/materialized-view-create-or-alter) and materialization happens in the background by the system. Update command, on the other hand, requires an orchestrated process (e.g. [Azure Data Factory](https://learn.microsoft.com/en-us/azure/data-explorer/data-factory-integration), [Logic Apps](https://learn.microsoft.com/en-us/azure/data-explorer/kusto/tools/logicapps), [Power Automate](https://learn.microsoft.com/en-us/azure/data-explorer/flow), etc.) that explicitly executes the update command every time there are updates. Therefore, if materialized views work well enough for your use case, using materialized views is preferable and requires much less management and maintenance.
 
 ## Examples
 
