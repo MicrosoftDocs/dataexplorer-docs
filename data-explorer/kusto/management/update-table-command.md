@@ -27,6 +27,17 @@ The complete syntax offers the most flexibility as you can define a query to del
 
 `let` *AppendIdentifier*`=` ...`;`
 
+For instance, the following command will change the column `State` to the value *Closed* for each row having value *2024-01-25T18:29:00.6811152Z* for column `Timestamp`.
+
+```kusto
+.update table MyTable delete D append A <|
+  let D = MyTable
+    | where Timestamp==datetime(2024-01-25T18:29:00.6811152Z);
+  let A = MyTable
+    | where Timestamp==datetime(2024-01-25T18:29:00.6811152Z)
+    | extend State="Closed";
+```
+
 ### Simplified syntax
 
 The simplified syntax only takes an append query in.  It deduces the delete query by finding all the existing rows having an *Id Column* value present in the append query:
@@ -71,6 +82,8 @@ Notice that *Diana* wasn't found in the original table.  This is valid and no co
 Similarly, if there would have been multiple rows with *Alice* name in the original table, they would all have been deleted and replaced by the single *Alice* row we have in the end.
 
 ## Parameters
+
+**VP Note to Doc-Writer**:  Feel free to improve the Complete vs Simplified syntax duality, including splitting the parameters into two if you think it's clearer.
 
 |Name|Type|Required|Description|
 |---|---|---|---|
