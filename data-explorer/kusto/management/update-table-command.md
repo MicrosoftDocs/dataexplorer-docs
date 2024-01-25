@@ -68,6 +68,8 @@ Diana|350 Fifth Avenue
 
 Notice that *Diana* wasn't found in the original table.  This is valid and no corresponding row was deleted.
 
+Similarly, if there would have been multiple rows with *Alice* name in the original table, they would all have been deleted and replaced by the single *Alice* row we have in the end.
+
 ## Parameters
 
 |Name|Type|Required|Description|
