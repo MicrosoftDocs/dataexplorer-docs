@@ -34,7 +34,7 @@ To prepare your cluster for migration:
 
    :::image type="content" source="./media/security-network-migrate/vnet-injection-migration-overview.png" lightbox="./media/security-network-migrate/vnet-injection-migration-overview.png" alt-text="Screenshot of the Networking option in the Azure portal for virtual network injected clusters.":::
 
-1. In order to connect to your cluster even if the [public access](security-network-restrict-public-access.md) was set to `Disabled`, select the **Private Endpoints connections** tab and [create a private endpoint](security-network-private-endpoint-create.md).
+1. In order to connect to your cluster even if the [public access](security-network-restrict-public-access.md) was set to `Disabled`, select the **Private Endpoints connections** tab and [create a private endpoint](security-network-private-endpoint-create.md). Ensure that you are not selecting the same Subnet, which you were using for your Azure Virtual Network injected Azure Data Explorer cluster. Otherwise, the deployment of the Private Endpoint would fail.
 
     :::image type="content" source="./media/security-network-migrate/vnet-injection-migration-pe.png" lightbox="./media/security-network-migrate/vnet-injection-migration-pe.png" alt-text="Screenshot of the Networking option in the Azure portal for virtual network injected clusters. Tab for private endpoints selected.":::
 
