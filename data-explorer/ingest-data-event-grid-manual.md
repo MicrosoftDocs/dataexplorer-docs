@@ -9,7 +9,7 @@ ms.date: 01/09/2024
 
 > [!div class="op_single_selector"]
 >
-> * [Portal](ingest-data-event-grid.md)
+> * [Portal](create-event-grid-connection.md)
 > * [Portal - create resources manually](ingest-data-event-grid-manual.md)
 > * [C#](data-connection-event-grid-csharp.md)
 > * [Python](data-connection-event-grid-python.md)
@@ -17,7 +17,7 @@ ms.date: 01/09/2024
 
 Azure Data Explorer offers continuous ingestion from Azure Storage (Azure Blob storage and Azure Data Lake Storage Gen2) using an [Event Grid Ingestion pipeline](ingest-data-event-grid-overview.md). In the Event Grid ingestion pipeline, an Azure Event Grid service routes blob created or blob renamed events from a storage account to Azure Data Explorer via an Azure Event Hubs.
 
-In this article, you learn how to manually create the resources needed for Event Grid Ingestion: an Event Grid subscription, an Event Hubs namespace, and an event hub. Event Hubs namespace and event hub creation are described in the [Prerequisites](#prerequisites). To use automatic creation of these resources while defining the Event Grid ingestion, see [Create an Event Grid data connection in Azure Data Explorer](ingest-data-event-grid.md).
+In this article, you learn how to manually create the resources needed for Event Grid Ingestion: an Event Grid subscription, an Event Hubs namespace, and an event hub. Event Hubs namespace and event hub creation are described in the [Prerequisites](#prerequisites). To use automatic creation of these resources while defining the Event Grid ingestion, see [Create an Event Grid data connection in Azure Data Explorer](create-event-grid-connection.md).
 
 ## Prerequisites
 
@@ -88,4 +88,4 @@ In this article, you learn how to manually create the resources needed for Event
 ## Next step
 
 > [!div class="nextstepaction"]
-> [Create an Event Grid data connection](ingest-data-event-grid.md)
+> [Create an Event Grid data connection](create-event-grid-connection.md)
