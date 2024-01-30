@@ -24,7 +24,7 @@ Use the following filters to see other connectors, tools, and integrations that 
    :::column-end:::
    :::column span="":::
       > [!div class="nextstepaction"]
-      > [Visualize integrations](integrate-visualize-overview.md)
+      > [Visualization integrations](integrate-visualize-overview.md)
    :::column-end:::
 :::row-end:::
 

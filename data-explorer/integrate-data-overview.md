@@ -3,7 +3,7 @@ title: Data integrations overview
 description: Learn about the available data integrations.
 ms.reviewer: aksdi
 ms.topic: conceptual
-ms.date: 01/14/2024
+ms.date: 01/30/2024
 # CustomerIntent: As a data ingestor, I want to know what data connectors and tools are available, so that I can choose the right one for my use case.
 ---
 # Data integrations overview
@@ -23,7 +23,7 @@ Use the following filters to see other connectors, tools, and integrations are a
    :::column-end:::
    :::column span="":::
       > [!div class="nextstepaction"]
-      > [Visualize integrations](integrate-visualize-overview.md)
+      > [Visualization integrations](integrate-visualize-overview.md)
    :::column-end:::
 :::row-end:::
 
