@@ -93,7 +93,7 @@ If your application needs to access your database using the credentials of the c
 
 If you only need access to an authorized data resource, you can skip this section and continue to [Grant a service principal access to the database](#grant-a-service-principal-access-to-the-database).
 
-1. Browse to the the **API permissions** blade of your **App registration**.
+1. Browse to the **API permissions** blade of your **App registration**.
 1. Select **Add a permission**.
 1. Select **APIs my organization uses**. 
 1. Search for and select **Azure Data Explorer**.
