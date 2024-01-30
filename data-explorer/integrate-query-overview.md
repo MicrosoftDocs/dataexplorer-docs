@@ -3,7 +3,7 @@ title: Overview of query integrations
 description: Learn about the available query integrations.
 ms.reviewer: aksdi
 ms.topic: conceptual
-ms.date: 01/16/2024
+ms.date: 01/30/2024
 
 # CustomerIntent: As a data ingestor, I want to know what query connectors and tools are available, so that I can choose the right one for my use case.
 ---
@@ -32,34 +32,32 @@ The following tables summarize the available query connectors, tools, and integr
 
 ## [Connectors](#tab/connectors)
 
-| Name | Data processing | Roles | Use cases |
-|--|--|--|--|
-| [Apache Spark](integrate-overview.md#apache-spark) |  |  |  |
-| [Apache Spark for Azure Synapse Analytics](integrate-overview.md#apache-spark-for-azure-synapse-analytics) |  |  |  |
-| [Azure Functions](integrate-overview.md#azure-functions) |  |  |  |
-| [JDBC](integrate-overview.md#jdbc) |  |  |  |
-| [Logic Apps](integrate-overview.md#logic-apps) |  |  |  |
-| [Logstash](integrate-overview.md#logstash) |  |  |  |
-| [Matlab](integrate-overview.md#matlab) |  |  |  |
-| [Microsoft Power Apps](integrate-overview.md#power-apps) |  |  |  |
-| [ODBC](integrate-overview.md#odbc) |  |  |  |
-| [Power Automate](integrate-overview.md#power-automate) |  |  |  |
+| Name                                                                                                       | Data processing         | Roles                                | Use cases                                                                                                                           |
+| ---------------------------------------------------------------------------------------------------------- | ----------------------- | ------------------------------------ | ----------------------------------------------------------------------------------------------------------------------------------- |
+| [Apache Spark](integrate-overview.md#apache-spark)                                                         | Query, Input and Export | Data Analyst, Data Scientist         | Machine learning (ML), Extract-Transform-Load (ETL), and Log Analytics scenarios using any Spark cluster                            |
+| [Apache Spark for Azure Synapse Analytics](integrate-overview.md#apache-spark-for-azure-synapse-analytics) | Query, Input and Export | Data Analyst, Data Scientist         | Machine learning (ML), Extract-Transform-Load (ETL), and Log Analytics scenarios using Synapse Analytics Spark cluster              |
+| [Azure Functions](integrate-overview.md#azure-functions)                                                   | Query and Orchestrate   | Data Engineer, Application Developer | Integrate Azure Data Explorer into your serverless workflows to ingest data and run queries against your cluster                    |
+| [JDBC](integrate-overview.md#jdbc)                                                                         | Query                   | Application Developer                | Use JDBC to connect to Azure Data Explorer databases and execute queries                                                            |
+| [Logic Apps](integrate-overview.md#logic-apps)                                                             | Query and Orchestrate   | Low Code Application Developer       | Run queries and commands automatically as part of a scheduled or triggered task.                                                    |
+| [Matlab](integrate-overview.md#matlab)                                                                     | Query                   | Data Analyst, Data Scientist         | Analyse data, develop algorithms and create models.                                                                                 |
+| [ODBC](integrate-overview.md#odbc)                                                                         | Query                   | Application Developer                | Establish a connection to Azure Data Explorer from any application that is equipped with support for the ODBC driver for SQL Serve. |
+| [Power Apps](integrate-overview.md#power-apps)                                                             | Query and Orchestrate   | Low Code Application Developer       | Build a low code, highly functional app to make use of data stored in Azure Data Explorer                                           |
+| [Power Automate](integrate-overview.md#power-automate)                                                     | Query and Orchestrate   | Low Code Application Developer       | Orchestrate and schedule flows, send notifications, and alerts, as part of a scheduled or triggered task                            |
 
 ## [Tools and integrations](#tab/integrations)
 
-| Name | Data processing | Roles | Use cases |
-|--|--|--|--|
-| [Azure Monitor](integrate-overview.md#azure-monitor) |  |  |  |
-| [Azure Data Lake](integrate-overview.md#azure-data-lake) |  |  |  |
-| [Azure Synapse Analytics](integrate-overview.md#azure-synapse-analytics) |  |  |  |
-| [Azure Data Studio](integrate-overview.md#azure-data-studio) |  |  |  |
-| [Jupyter Notebooks](integrate-overview.md#jupyter-notebooks) |  |  |
-| [Kusto.Explorer](integrate-overview.md#kustoexplorer) |  |  |  |
-| [Kusto CLI](integrate-overview.md#kusto-cli) |  |  |  |
-| [Kusto Query Language parser](integrate-overview.md#kql-parser) |  |  |  |
-| [Kusto Query Language Monaco editor](integrate-overview.md#monaco-editor-pluginembed) |  |  |  |
-| [Real-Time Analytics in Microsoft Fabric](integrate-overview.md#real-time-analytics-in-microsoft-fabric) |  |  |  |
-| [Web UI](integrate-overview.md#web-ui) |  |  |  |
+| Name                                                                                                                                            | Functionality                 | Roles                                       | Use Cases                                                                                                                                                                               |
+| ----------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------- | ------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| [Azure Data Lake](/azure/data-explorer/integrate-overview.md&tabs=integrations#azure-data-lake)                                                 | Query                         | Data Engineer, Data Analyst                 | Fast access to data stored in external storage                                                                                                                                          |
+| [Azure Data Studio](/azure/data-explorer/integrate-overview.md&tabs=integrations#azure-data-studio)                                             | Query, Author Notebooks       | Data Engineer, Data Analyst, Data Scientist | Quickly observe trends and anomalies against massive amounts of data stored in Azure Data Explorer                                                                             |
+| [Azure Monitor](/azure/data-explorer/integrate-overview.md&tabs=integrations#azure-monitor)                                                     | Query and Export              | Data Engineer                               | Low cost data retention                                                                                                                                                        |
+| [Jupyter Notebooks](/azure/data-explorer/integrate-overview.md&tabs=integrations#jupyter-notebooks)                                             | Author Notebooks              | Data Engineer, Data Scientist               | Create and share documents containing live code, equations, visualizations for statistical modeling, data visualization, and machine learning using data stored in Azure Data Explorer. |
+| [Kusto.Explorer](/azure/data-explorer/integrate-overview.md&tabs=integrations#kustoexplorer)                                                    | Query, Admin and Dashboarding | Data Engineer, Data Analyst, Data Scientist | End-to-end data exploration                                                                                                                                                             |
+| [Kusto CLI](/azure/data-explorer/integrate-overview.md&tabs=integrations#kusto-cli)                                                             | Query and Admin               | Aplication Admin, System Administrator       |     Send queries and control commands to an Azure Data Explorer cluster using command line utility                                                                                      |
+| [Kusto Query Language parser](/azure/data-explorer/integrate-overview.md&tabs=integrations#kql-parser)                                          | Query and Schema Exploration  | Application Developer                       | Parse queries, perform semantic analysis, check for errors, and optimize your queries.                                                                                                  |
+| [Kusto Query Language Monaco editor](/azure/data-explorer/integrate-overview.md&tabs=integrations#monaco-editor-pluginembed)                    | Query, Admin and Dashboarding | Application Developer, Data Engineer | Integrate Monaco Editor in your application                                                                                                                                             |
+| [Real-Time Analytics in Microsoft Fabric](/azure/data-explorer/integrate-overview.md&tabs=integrations#real-time-analytics-in-microsoft-fabric) | Query, Admin and Dashboarding | Data Engineer, Data Analyst, Data Scientist | End-to-end data exploration                                                                                                                                                             |
+| [Web UI](/azure/data-explorer/integrate-overview.md&tabs=integrations#web-ui)                                                                   | Query                         | Data Engineer, Data Analyst, Data Scientist                | End-to-end data exploration                                                                                                                                                             |
 
 ---
 
