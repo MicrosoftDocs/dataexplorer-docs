@@ -39,7 +39,6 @@ The following tables summarize the available query connectors, tools, and integr
 | [Azure Functions](integrate-overview.md#azure-functions) |  |  |  |
 | [JDBC](integrate-overview.md#jdbc) |  |  | Java-based app |
 | [Logic Apps](integrate-overview.md#logic-apps) |  |  | No code experience |
-| [Logstash](integrate-overview.md#logstash) |  |  |  |
 | [Matlab](integrate-overview.md#matlab) |  |  |  |
 | [Microsoft Power Apps](integrate-overview.md#power-apps) |  |  |  |
 | [ODBC](integrate-overview.md#odbc) |  |  |  |
