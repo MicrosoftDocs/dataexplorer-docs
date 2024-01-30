@@ -3,7 +3,7 @@ title: Overview of query integrations
 description: Learn about the available query integrations.
 ms.reviewer: aksdi
 ms.topic: conceptual
-ms.date: 01/16/2024
+ms.date: 01/30/2024
 
 # CustomerIntent: As a data ingestor, I want to know what query connectors and tools are available, so that I can choose the right one for my use case.
 ---
@@ -47,19 +47,18 @@ The following tables summarize the available query connectors, tools, and integr
 
 ## [Tools and integrations](#tab/integrations)
 
-| Name | Data processing | Roles | Use cases |
-|--|--|--|--|
-| [Azure Monitor](/azure/data-explorer/integrate-overview.md&tabs=integrations#azure-monitor) |  |  |  |
-| [Azure Data Lake](/azure/data-explorer/integrate-overview.md&tabs=integrations#azure-data-lake) |  |  |  |
-| [Azure Synapse Analytics](/azure/data-explorer/integrate-overview.md&tabs=integrations#azure-synapse-analytics) |  |  |  |
-| [Azure Data Studio](/azure/data-explorer/integrate-overview.md&tabs=integrations#azure-data-studio) |  |  |  |
-| [Jupyter Notebooks](/azure/data-explorer/integrate-overview.md&tabs=integrations#jupyter-notebooks) |  |  |
-| [Kusto.Explorer](/azure/data-explorer/integrate-overview.md&tabs=integrations#kustoexplorer) |  |  |  |
-| [Kusto CLI](/azure/data-explorer/integrate-overview.md&tabs=integrations#kusto-cli) |  |  |  |
-| [Kusto Query Language parser](/azure/data-explorer/integrate-overview.md&tabs=integrations#kql-parser) |  |  |  |
-| [Kusto Query Language Monaco editor](/azure/data-explorer/integrate-overview.md&tabs=integrations#monaco-editor-pluginembed) |  |  |  |
-| [Real-Time Analytics in Microsoft Fabric](/azure/data-explorer/integrate-overview.md&tabs=integrations#real-time-analytics-in-microsoft-fabric) |  |  |  |
-| [Web UI](/azure/data-explorer/integrate-overview.md&tabs=integrations#web-ui) |  |  |  |
+| Name                                                                                                                                            | Functionality                 | Roles                                       | Use Cases                                                                                          |
+| ----------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------- | ------------------------------------------- | -------------------------------------------------------------------------------------------------- |
+| [Azure Monitor](/azure/data-explorer/integrate-overview.md&tabs=integrations#azure-monitor)                                                     | Query and Export              | Data Engineer                               | Low cost data retention                                                                            |
+| [Azure Data Lake](/azure/data-explorer/integrate-overview.md&tabs=integrations#azure-data-lake)                                                 | Query                         | Data Engineer, Data Analyst                 | Fast access to data stored in external storage                                                     |
+| [Azure Data Studio](/azure/data-explorer/integrate-overview.md&tabs=integrations#azure-data-studio)                                             | Query, Author Notebooks       | Data Engineer, Data Analyst, Data Scientist |                                                                                                    |
+| [Jupyter Notebooks](/azure/data-explorer/integrate-overview.md&tabs=integrations#jupyter-notebooks)                                             | Author Notebooks              | Data Engineer, Data Scientist               | Quickly observe trends and anomalies against massive amounts of data stored in Azure Data Explorer |
+| [Kusto.Explorer](/azure/data-explorer/integrate-overview.md&tabs=integrations#kustoexplorer)                                                    | Query, Admin and Dashboarding | Data Engineer, Data Analyst, Data Scientist | End-to-end data exploration                                                                        |
+| [Kusto CLI](/azure/data-explorer/integrate-overview.md&tabs=integrations#kusto-cli)                                                             | Query and Admin               | Application Developer, Data Engineer        | Parse queries, perform semantic analysis, check for errors, and optimize your queries.             |
+| [Kusto Query Language parser](/azure/data-explorer/integrate-overview.md&tabs=integrations#kql-parser)                                          | Query and Schema Exploration  | Application Developer                       | Integrate Monaco Editor in your application.                                                       |
+| [Kusto Query Language Monaco editor](/azure/data-explorer/integrate-overview.md&tabs=integrations#monaco-editor-pluginembed)                    | Query, Admin and Dashboarding | Data Engineer, Data Analyst, Data Scientist | End-to-end data exploration                                                                        |
+| [Real-Time Analytics in Microsoft Fabric](/azure/data-explorer/integrate-overview.md&tabs=integrations#real-time-analytics-in-microsoft-fabric) | Query, Admin and Dashboarding | Data Engineer, Data Analyst, Data Scientist | End-to-end data exploration                                                                        |
+| [Web UI](/azure/data-explorer/integrate-overview.md&tabs=integrations#web-ui)                                                                   | Query                         | Data Analyst, Data Scientist                | Analyze data, develop algorithms and create models.                                                |
 
 ---
 
