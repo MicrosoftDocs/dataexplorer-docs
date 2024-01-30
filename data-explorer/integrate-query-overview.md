@@ -61,7 +61,7 @@ The following tables summarize the available query connectors, tools, and integr
 
 ---
 
-For more information about connectors and tools, see [Data connectors, tools, and integrations overview](integrate-overview.md#detailed-descriptions).
+For more information about connectors and tools, see [Integrations overview](integrate-overview.md#detailed-descriptions).
 
 ## Related content
 
