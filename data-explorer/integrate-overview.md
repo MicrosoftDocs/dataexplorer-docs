@@ -1,5 +1,5 @@
 ---
-title: Overview of data, query, and visualize integrations
+title: Integrations overview
 description: Learn about the available data connectors, tools, and integrations, and their capabilities.
 ms.reviewer: aksdi
 ms.topic: conceptual
