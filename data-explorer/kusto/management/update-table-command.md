@@ -116,17 +116,20 @@ The result of the command is a table where each record represent an [extent](htt
 ## Limitations
 
 * This command is irreversable
-* This command does not support deleting more than 5 million records.
+* This command does not support deleting more than 5 million records
 * The predicates for this command must meet the following requirements:
-    - Delete predicate must include at least one `where` operator.
-    - Delete predicate can only use the following operators: `extend`, `where`, `project`, `join` and `lookup`.
-    - No remote entities, cross-db and cross-cluster entities can be referenced by both the delete and append predicates.
-    - The predicates cannot reference an external table or use the `externaldata` operator.
+    - Delete predicate must include at least one `where` operator
+    - Delete predicate can only use the following operators: `extend`, `where`, `project`, `join` and `lookup`
+    - No remote entities, cross-db and cross-cluster entities can be referenced by both the delete and append predicates
+    - The predicates cannot reference an external table or use the `externaldata` operator
 * Append and delete queries are expected to produce deterministic results.  Non-deterministic queries can lead to unexpected results.
+  * A query is deterministic if and only if it would return the same data if executed multiple times
+  * For instance, using the [`take` operator](https://learn.microsoft.com/en-us/azure/data-explorer/kusto/query/take-operator), [`sample` operator](https://learn.microsoft.com/en-us/azure/data-explorer/kusto/query/sample-operator), [`rand` function](https://learn.microsoft.com/en-us/azure/data-explorer/kusto/query/rand-function), etc. aren't deterministic.
+  * The queries might be executed more than once within the `update` execution and if results are inconsistent, the results might therefore be unexpected
 
 ## Considerations & Best Practices
 
-* Before running an update, verify the predicates by running a query and checking that the results match the expected outcome. You can also run the command in `whatif` mode.
+* Before running an update, verify the predicates by running a query and checking the results match the expected outcome. You can also run the command in `whatif` mode.
 * Don't run multiple parallel updates on the same table, as this may result in failures of some or all the commands. However, it's possible to run multiple parallel update operations on different tables.
 * Don't run update, soft delete and purge commands on the same table in parallel. First wait for one command to complete and only then run the other command.
 
