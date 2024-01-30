@@ -1,5 +1,5 @@
 ---
-title: Overview of query integrations
+title: Query integrations overview
 description: Learn about the available query integrations.
 ms.reviewer: aksdi
 ms.topic: conceptual
