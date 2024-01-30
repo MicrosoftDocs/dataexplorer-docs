@@ -28,7 +28,7 @@ For overview pages on a specific type of connector, select one of the following 
 
 ## Comparison tables
 
-The following tables summarize the capabilities of each item. Select the tab corresponding to connectors or tools and integrations. Each item name is linked to its detailed description, which can also be found [below](#detailed-descriptions).
+The following tables summarize the capabilities of each item. Select the tab corresponding to connectors or tools and integrations. Each item name is linked to its [detailed description](#detailed-descriptions).
 
 ### [Connectors](#tab/connectors)
 
