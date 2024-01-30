@@ -3,7 +3,7 @@ title: Customize Azure Data Explorer dashboard visuals
 description: Easily customize your Azure Data Explorer dashboard visuals
 ms.reviewer: gabil
 ms.topic: how-to
-ms.date: 10/18/2023
+ms.date: 01/30/2024
 ---
 
 # Customize Azure Data Explorer dashboard visuals
@@ -34,6 +34,38 @@ To make changes in your dashboard:
     :::image type="content" source="media/dashboard-customize-visuals/save-changes-dashboard.png" alt-text="Screenshot of how to save the changes to your dashboard tile in Azure Data Explorer web UI.":::
 
 [!INCLUDE [customize-visuals](includes/customize-visuals.md)]
+
+## Imbed images
+
+You can imbed images in your dashboards using Markdown text.
+
+For more information on GitHub Flavored Markdown, see [GitHub Flavored Markdown Spec](https://github.github.com/gfm/).
+
+### Copy image URL
+
+1. Open your desired image in your browser of choice.
+1. Copy the image URL and paste it somewhere, like a notepad, to use in a later step.
+
+### Imbed image in dashboard
+
+1. Open a [dashboard](azure-data-explorer-dashboards.md#create-a-new-dashboard).
+1. In the top menu, select **+Add** > **Add text** to open a markdown tile.
+
+    :::image type="content" source="media/dashboard-customize-visuals/add-tile.png" alt-text="Screenshot of dashboard ribbon showing the drop down menu of the Add button.":::
+
+1. In the query pane, paste the [image URL](#copy-image-url) that you copied in a previous step using the following syntax:
+
+    ```md
+    ![](URL)
+    ```
+
+    The image renders in the tile preview.
+
+    :::image type="content" source="media/dashboard-customize-visuals/imbed-image.png" alt-text="Screenshot of dashboard query pane showing image syntax in markdown format. ":::
+
+1. Select **Apply changes** to save the tile.
+
+For more information on image syntax in GitHub Flavored Markdown, [Images](https://github.github.com/gfm/#images).
 
 ## Related content
 
