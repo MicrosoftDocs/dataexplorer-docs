@@ -29,7 +29,6 @@ Use the following filters to see other connectors, tools, and integrations are a
    :::column-end:::
 :::row-end:::
 
-The following tables summarizes the available visualize connectors, tools, and integrations.
 
 ## Azure Data Explorer dashboards
 
