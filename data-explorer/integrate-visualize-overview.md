@@ -1,5 +1,5 @@
 ---
-title: Overview of visualize integrations
+title: Visualize integrations overview
 description: Learn about the available visualize integrations.
 ms.reviewer: aksdi
 ms.topic: conceptual
