@@ -1,11 +1,11 @@
 ---
-title:  .update table command
+title:  .update table command (public preview)
 description: Learn how to use the .update table command to perform transactional data updates.
 ms.reviewer: orspodek
 ms.topic: reference
 ms.date: 01/25/2024
 ---
-# Update table
+# Update table (public preview)
 
 The `.update table` command performs  data updates in a specified table by deleting and appending data atomically.
 
@@ -113,22 +113,24 @@ The result of the command is a table where each record represent an [extent](htt
 >[!NOTE]
 > When you update a table that is the source for an update policy, the result of the command contains all generated results in all tables.
 
-## Limitations and considerations
+## Limitations
 
-- This command does not support deleting more than 5 million records.
-- The predicates for this command must meet the following requirements:
+* This command is irreversable
+* This command does not support deleting more than 5 million records.
+* The predicates for this command must meet the following requirements:
     - Delete predicate must include at least one `where` operator.
-    - Delete predicate can only use the following operators: `extend`, `where` and `project`.
+    - Delete predicate can only use the following operators: `extend`, `where`, `project`, `join` and `lookup`.
     - No remote entities, cross-db and cross-cluster entities can be referenced by both the delete and append predicates.
     - The predicates cannot reference an external table or use the `externaldata` operator.
-- Append and delete queries are expected to produce deterministic results.  Non-deterministic queries can lead to unexpected results.
+* Append and delete queries are expected to produce deterministic results.  Non-deterministic queries can lead to unexpected results.
+
+## Considerations & Best Practices
+
 * Before running an update, verify the predicates by running a query and checking that the results match the expected outcome. You can also run the command in `whatif` mode.
 * Don't run multiple parallel updates on the same table, as this may result in failures of some or all the commands. However, it's possible to run multiple parallel update operations on different tables.
 * Don't run update, soft delete and purge commands on the same table in parallel. First wait for one command to complete and only then run the other command.
 
-## .update vs Materialized views
-
-**VP Notes**:  I find this section important for guidance but I do not like its format.  I give an example not to be abstract but it makes the section extremelly long and story-like.  The exact syntax can be improved by the doc-writer, but please give feedback on the structure of the section.
+### .update vs Materialized views
 
 In some cases, you could use either the .update command or a [materialized view](https://learn.microsoft.com/en-us/azure/data-explorer/kusto/management/materialized-views/materialized-view-overview) to achieve the same goal in a table.  For instance, a materialized view could be used to keep the latest *version* of each record or an update could be used to update records upon new version.  So which one would be a better option for you?
 
