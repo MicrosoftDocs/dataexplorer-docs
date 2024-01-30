@@ -59,13 +59,13 @@ For more information on GitHub Flavored Markdown, see [GitHub Flavored Markdown 
     ![](URL)
     ```
 
-    The image renders in the tile preview.
+    The image renders in the tile's preview.
 
     :::image type="content" source="media/dashboard-customize-visuals/imbed-image.png" alt-text="Screenshot of dashboard query pane showing image syntax in markdown text. ":::
 
-1. Select **Apply changes** to save the tile.
+1. In the top menu, select **Apply changes** to save the tile.
 
-For more information on image syntax in GitHub Flavored Markdown, [Images](https://github.github.com/gfm/#images).
+For more information on image syntax in GitHub Flavored Markdown, see [Images](https://github.github.com/gfm/#images).
 
 ## Related content
 
