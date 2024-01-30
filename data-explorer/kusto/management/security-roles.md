@@ -3,7 +3,7 @@ title: Security roles
 description: Learn how to use security roles to provide principals access to resources.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 07/18/2023
+ms.date: 01/29/2024
 ---
 # Security roles overview
 
@@ -53,14 +53,6 @@ To see your own roles on the cluster, run the following command:
 
 ```kusto
 .show cluster principal roles
-```
-
-### Show the roles of all principals on the cluster
-
-To see all roles on the cluster, you must have at least [AllDatabasesMonitor](access-control/role-based-access-control.md) permissions on the cluster. To see the roles, run the following command:
-
-```kusto
-.show cluster principals
 ```
 
 ### Show your roles on a resource
