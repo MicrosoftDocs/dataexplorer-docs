@@ -32,7 +32,7 @@ The following tables summarize the available query connectors, tools, and integr
 
 ## [Connectors](#tab/connectors)
 
-| Name                                                                                                       | Data processing         | Roles                                | Use cases                                                                                                                           |
+| Name                                                                                                       | Functionality         | Roles                                | Use cases                                                                                                                           |
 | ---------------------------------------------------------------------------------------------------------- | ----------------------- | ------------------------------------ | ----------------------------------------------------------------------------------------------------------------------------------- |
 | [Apache Spark](integrate-overview.md#apache-spark)                                                         | Query, Input and Export | Data Analyst, Data Scientist         | Machine learning (ML), Extract-Transform-Load (ETL), and Log Analytics scenarios using any Spark cluster                            |
 | [Apache Spark for Azure Synapse Analytics](integrate-overview.md#apache-spark-for-azure-synapse-analytics) | Query, Input and Export | Data Analyst, Data Scientist         | Machine learning (ML), Extract-Transform-Load (ETL), and Log Analytics scenarios using Synapse Analytics Spark cluster              |
