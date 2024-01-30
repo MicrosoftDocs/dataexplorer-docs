@@ -37,8 +37,8 @@ The following tables summarize the available query connectors, tools, and integr
 | [Apache Spark](integrate-overview.md#apache-spark) |  |  |  |
 | [Apache Spark for Azure Synapse Analytics](integrate-overview.md#apache-spark-for-azure-synapse-analytics) |  |  |  |
 | [Azure Functions](integrate-overview.md#azure-functions) |  |  |  |
-| [JDBC](integrate-overview.md#jdbc) |  |  |  |
-| [Logic Apps](integrate-overview.md#logic-apps) |  |  |  |
+| [JDBC](integrate-overview.md#jdbc) |  |  | Java-based app |
+| [Logic Apps](integrate-overview.md#logic-apps) |  |  | No code experience |
 | [Logstash](integrate-overview.md#logstash) |  |  |  |
 | [Matlab](integrate-overview.md#matlab) |  |  |  |
 | [Microsoft Power Apps](integrate-overview.md#power-apps) |  |  |  |
