@@ -1,5 +1,5 @@
 ---
-title: Overview of data integrations
+title: Data integrations overview
 description: Learn about the available data integrations.
 ms.reviewer: aksdi
 ms.topic: conceptual
