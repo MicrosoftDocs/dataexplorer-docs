@@ -1,16 +1,34 @@
 ---
-title: 'Azure Data Explorer data visualization'
-description: 'Learn about the different ways you can visualize your Azure Data Explorer data'
-ms.reviewer: gabil
+title: Visualize integrations overview
+description: Learn about the available visualize integrations.
+ms.reviewer: aksdi
 ms.topic: conceptual
-ms.date: 06/22/2022
+ms.date: 01/14/2024
+# CustomerIntent: As a data ingestor, I want to know what visualize connectors and tools are available, so that I can choose the right one for my use case.
 ---
+# Visualize integrations overview
 
-# Data visualization with Azure Data Explorer
-
-Azure Data Explorer is a fast and highly scalable data exploration service for log and telemetry data that is used to build complex analytics solutions for vast amounts of data. Azure Data Explorer integrates with various visualization tools, so you can visualize your data and share the results across your organization. This data can be transformed into actionable insights to make an impact on your business.
+Azure Data Explorer integrates with various visualization tools, so you can visualize your data and share the results across your organization. This data can be transformed into actionable insights to make an impact on your business.
 
 Data visualization and reporting is a critical step in the data analytics process. Azure Data Explorer supports many BI services so you can use the one that best fits your scenario and budget.
+
+Use the following filters to see other connectors, tools, and integrations are available for your use case.
+
+:::row:::
+   :::column span="":::
+      > [!div class="nextstepaction"]
+      > [Overview](integrate-overview.md)
+   :::column-end:::
+   :::column span="":::
+      > [!div class="nextstepaction"]
+      > [Data integrations](integrate-data-overview.md)
+   :::column-end:::
+   :::column span="":::
+      > [!div class="nextstepaction"]
+      > [Query integrations](integrate-query-overview.md)
+   :::column-end:::
+:::row-end:::
+
 
 ## Azure Data Explorer dashboards
 
@@ -70,3 +88,10 @@ Azure Data Explorer provides the capability to connect to [Sisense](https://www.
 ## Redash
 
 You can use [Redash](https://redash.io/) to build dashboards and visualize data. [Set up Azure Data Explorer as a data source for Redash, and then visualize the data](redash.md).
+
+For more information about connectors and tools, see [Integrations overview](tools-integrations-overview.md#detailed-descriptions).
+
+## Related content
+
+* [Data integrations overview](integrate-data-overview.md)
+* [Query integrations overview](integrate-query-overview.md)
