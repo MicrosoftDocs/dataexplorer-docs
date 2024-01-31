@@ -115,7 +115,9 @@ The result of the command is a table where each record represent an [extent](htt
 
 ## Limitations
 
-* This command is irreversable
+Before running an update, run it in `whatif` mode.  This allows you to validate the predicates before deleting / appending data.
+
+* This command is unrecoverable
 * This command does not support deleting more than 5 million records
 * The predicates for this command must meet the following requirements:
     - Delete predicate must include at least one `where` operator
@@ -124,14 +126,8 @@ The result of the command is a table where each record represent an [extent](htt
     - The predicates cannot reference an external table or use the `externaldata` operator
 * Append and delete queries are expected to produce deterministic results.  Non-deterministic queries can lead to unexpected results.
   * A query is deterministic if and only if it would return the same data if executed multiple times
-  * For instance, using the [`take` operator](https://learn.microsoft.com/en-us/azure/data-explorer/kusto/query/take-operator), [`sample` operator](https://learn.microsoft.com/en-us/azure/data-explorer/kusto/query/sample-operator), [`rand` function](https://learn.microsoft.com/en-us/azure/data-explorer/kusto/query/rand-function), etc. aren't deterministic.
-  * The queries might be executed more than once within the `update` execution and if results are inconsistent, the results might therefore be unexpected
-
-## Considerations & Best Practices
-
-* Before running an update, verify the predicates by running a query and checking the results match the expected outcome. You can also run the command in `whatif` mode.
-* Don't run multiple parallel updates on the same table, as this may result in failures of some or all the commands. However, it's possible to run multiple parallel update operations on different tables.
-* Don't run update, soft delete and purge commands on the same table in parallel. First wait for one command to complete and only then run the other command.
+  * For instance, using the [`take` operator](https://learn.microsoft.com/en-us/azure/data-explorer/kusto/query/take-operator), [`sample` operator](https://learn.microsoft.com/en-us/azure/data-explorer/kusto/query/sample-operator), [`rand` function](https://learn.microsoft.com/en-us/azure/data-explorer/kusto/query/rand-function), etc. isn't recommended as they aren't deterministic.
+  * The queries might be executed more than once within the `update` execution and if intermediate results are inconsistent, the update might produce unexpected results
 
 ### .update vs Materialized views
 
