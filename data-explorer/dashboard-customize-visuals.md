@@ -37,7 +37,7 @@ To make changes in your dashboard:
 
 ## embed images
 
-You can imbed images in your dashboard tiles using Markdown text.
+You can embed images in your dashboard tiles using Markdown text.
 
 For more information on GitHub Flavored Markdown, see [GitHub Flavored Markdown Spec](https://github.github.com/gfm/).
 
@@ -46,7 +46,7 @@ For more information on GitHub Flavored Markdown, see [GitHub Flavored Markdown 
 1. Open your desired image in your browser of choice.
 1. Copy the image URL and paste it somewhere, like a notepad, to use in a later step.
 
-### Imbed image in dashboard
+### Embed image in dashboard
 
 1. Open a [dashboard](azure-data-explorer-dashboards.md#create-a-new-dashboard).
 1. In the top menu, select **+Add** > **Add text** to open a text tile.
@@ -61,7 +61,7 @@ For more information on GitHub Flavored Markdown, see [GitHub Flavored Markdown 
 
     The image renders in the tile's preview.
 
-    :::image type="content" source="media/dashboard-customize-visuals/imbed-image.png" alt-text="Screenshot of dashboard query pane showing image syntax in markdown text. ":::
+    :::image type="content" source="media/dashboard-customize-visuals/embed-image.png" alt-text="Screenshot of dashboard query pane showing image syntax in markdown text. ":::
 
 1. In the top menu, select **Apply changes** to save the tile.
 
