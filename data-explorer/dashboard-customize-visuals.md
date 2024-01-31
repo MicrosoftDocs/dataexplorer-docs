@@ -35,7 +35,7 @@ To make changes in your dashboard:
 
 [!INCLUDE [customize-visuals](includes/customize-visuals.md)]
 
-## embed images
+## Embed images
 
 You can embed images in your dashboard tiles using Markdown text.
 
