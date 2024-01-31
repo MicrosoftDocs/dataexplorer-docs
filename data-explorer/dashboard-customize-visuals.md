@@ -41,19 +41,12 @@ You can embed images in your dashboard tiles using Markdown text.
 
 For more information on GitHub Flavored Markdown, see [GitHub Flavored Markdown Spec](https://github.github.com/gfm/).
 
-### Copy image URL
-
-1. Open your desired image in your browser of choice.
-1. Copy the image URL and paste it somewhere, like a notepad, to use in a later step.
-
-### Embed image in dashboard
-
 1. Open a [dashboard](azure-data-explorer-dashboards.md#create-a-new-dashboard).
 1. In the top menu, select **+Add** > **Add text** to open a text tile.
 
     :::image type="content" source="media/dashboard-customize-visuals/add-tile.png" alt-text="Screenshot of dashboard ribbon showing the drop-down menu of the Add button.":::
 
-1. In the query pane, paste the [image URL](#copy-image-url) that you copied in a previous step using the following syntax:
+1. In the query pane, paste the URL of an image located in an image hosting service using the following syntax:
 
     ```md
     ![](URL)
