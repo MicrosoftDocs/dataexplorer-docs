@@ -3,7 +3,7 @@ title: Customize Azure Data Explorer dashboard visuals
 description: Easily customize your Azure Data Explorer dashboard visuals
 ms.reviewer: gabil
 ms.topic: how-to
-ms.date: 01/30/2024
+ms.date: 01/31/2024
 ---
 
 # Customize Azure Data Explorer dashboard visuals
@@ -35,7 +35,7 @@ To make changes in your dashboard:
 
 [!INCLUDE [customize-visuals](includes/customize-visuals.md)]
 
-## Imbed images
+## embed images
 
 You can imbed images in your dashboard tiles using Markdown text.
 
