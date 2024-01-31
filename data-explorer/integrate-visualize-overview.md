@@ -1,12 +1,12 @@
 ---
-title: Visualize integrations overview
+title: Visualization integrations overview
 description: Learn about the available visualize integrations.
 ms.reviewer: aksdi
 ms.topic: conceptual
 ms.date: 01/14/2024
 # CustomerIntent: As a data ingestor, I want to know what visualize connectors and tools are available, so that I can choose the right one for my use case.
 ---
-# Visualize integrations overview
+# Visualization integrations overview
 
 Azure Data Explorer integrates with various visualization tools, so you can visualize your data and share the results across your organization. This data can be transformed into actionable insights to make an impact on your business.
 
