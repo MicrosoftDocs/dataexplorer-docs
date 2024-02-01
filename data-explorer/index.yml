@@ -100,7 +100,7 @@ landingContent:
           - text: Event hub using Azure portal
             url: ingest-data-event-hub.md
           - text: Event Grid using Azure portal
-            url: ingest-data-event-grid.md
+            url: create-event-grid-connection.md
           - text: Install and use LightIngest
             url: lightingest.md
 
