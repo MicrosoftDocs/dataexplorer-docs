@@ -4,7 +4,6 @@ description: Learn how to use Azure Data Explorer metrics to monitor the cluster
 ms.reviewer: gabil
 ms.topic: how-to
 ms.date: 04/07/2021
-ms.custom: contperf-fy21q1
 ---
 
 # Monitor Azure Data Explorer performance, health, and usage with metrics
