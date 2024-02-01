@@ -121,7 +121,7 @@ In this section, you establish a connection between Event Grid and your Azure Da
 
     1. Optionally, you can specify the data routing settings according to the following information.
 
-     **Setting** | **Suggested value** | **Field description**|
+    |**Setting** | **Suggested value** | **Field description**|
     |---|---|---|
     | Allow routing the data to other databases (Multi database data connection) | Don't allow | Toggle on this option if you want to override the default target database associated with the data connection. For more information about database routing, see [Events routing](ingest-data-event-grid-overview.md#events-routing). |
     | Table name | *TestTable* | The table you created in **TestDatabase**. |
