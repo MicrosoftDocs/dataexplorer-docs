@@ -9,7 +9,7 @@ ms.date: 01/09/2024
 
 > [!div class="op_single_selector"]
 >
-> * [Portal](ingest-data-event-grid.md)
+> * [Portal](create-event-grid-connection.md)
 > * [Portal - create resources manually](ingest-data-event-grid-manual.md)
 > * [C#](data-connection-event-grid-csharp.md)
 > * [Python](data-connection-event-grid-python.md)
@@ -17,7 +17,7 @@ ms.date: 01/09/2024
 
 Azure Data Explorer offers continuous ingestion from Azure Storage (Azure Blob storage and Azure Data Lake Storage Gen2) using an [Event Grid Ingestion pipeline](ingest-data-event-grid-overview.md). In the Event Grid ingestion pipeline, an Azure Event Grid service routes blob created or blob renamed events from a storage account to Azure Data Explorer via an Azure Event Hubs.
 
-In this article, you learn how to manually create the resources needed for Event Grid Ingestion: an Event Grid subscription, an Event Hubs namespace, and an event hub. Event Hubs namespace and event hub creation are described in the [Prerequisites](#prerequisites). To use automatic creation of these resources while defining the Event Grid ingestion, see [Create an Event Grid data connection in Azure Data Explorer](ingest-data-event-grid.md).
+In this article, you learn how to manually create the resources needed for Event Grid Ingestion: an Event Grid subscription, an Event Hubs namespace, and an event hub. Event Hubs namespace and event hub creation are described in the [Prerequisites](#prerequisites). To use automatic creation of these resources while defining the Event Grid ingestion, see [Create an Event Grid data connection in Azure Data Explorer](create-event-grid-connection.md).
 
 ## Prerequisites
 
@@ -42,9 +42,9 @@ In this article, you learn how to manually create the resources needed for Event
 
     |**Setting** | **Suggested value** | **Field description**|
     |---|---|---|
-    | Name | *test-grid-connection* | The name of the event grid subscription that you want to create.|
+    | Name | *test-grid-connection* | The name of the Event Grid subscription that you want to create.|
     | Event Schema | *Event Grid Schema* | The schema that should be used for the Event Grid. |
-    | Topic Type | *Storage account* | The type of event grid topic. Automatically populated.|
+    | Topic Type | *Storage account* | The type of Event Grid topic. Automatically populated.|
     | Source Resource | *gridteststorage1* | The name of your storage account. Automatically populated.|
     | System Topic Name | *gridteststorage1...* | The system topic where Azure Storage publishes events. This system topic then forwards the event to a subscriber that receives and processes events. Automatically populated.|
     | Filter to Event Types | *Blob Created* | Which specific events to get notified for. When creating the subscription, select one of the supported types: Microsoft.Storage.BlobCreated or Microsoft.Storage.BlobRenamed. Blob renaming is supported only for ADLSv2 storage. |
@@ -59,7 +59,7 @@ In this article, you learn how to manually create the resources needed for Event
 
     Use **Subject Filters** to track specific subjects events. Set the filters for the notifications as follows:
 
-    :::image type="content" source="media/eventgrid/filters-tab.png" alt-text="Filters tab event grid.":::
+    :::image type="content" source="media/eventgrid/filters-tab.png" alt-text="Filters tab Event Grid.":::
 
    1. Select **Enable subject filtering**
    1. **Subject Begins With** field is the *literal* prefix of the subject. Since the pattern applied is *startswith*, it can span multiple containers, folders, or blobs. No wildcards are allowed.
@@ -88,4 +88,4 @@ In this article, you learn how to manually create the resources needed for Event
 ## Next step
 
 > [!div class="nextstepaction"]
-> [Create an Event Grid data connection](ingest-data-event-grid.md)
+> [Create an Event Grid data connection](create-event-grid-connection.md)
