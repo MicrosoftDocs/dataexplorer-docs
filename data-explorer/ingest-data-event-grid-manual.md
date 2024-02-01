@@ -42,9 +42,9 @@ In this article, you learn how to manually create the resources needed for Event
 
     |**Setting** | **Suggested value** | **Field description**|
     |---|---|---|
-    | Name | *test-grid-connection* | The name of the event grid subscription that you want to create.|
+    | Name | *test-grid-connection* | The name of the Event Grid subscription that you want to create.|
     | Event Schema | *Event Grid Schema* | The schema that should be used for the Event Grid. |
-    | Topic Type | *Storage account* | The type of event grid topic. Automatically populated.|
+    | Topic Type | *Storage account* | The type of Event Grid topic. Automatically populated.|
     | Source Resource | *gridteststorage1* | The name of your storage account. Automatically populated.|
     | System Topic Name | *gridteststorage1...* | The system topic where Azure Storage publishes events. This system topic then forwards the event to a subscriber that receives and processes events. Automatically populated.|
     | Filter to Event Types | *Blob Created* | Which specific events to get notified for. When creating the subscription, select one of the supported types: Microsoft.Storage.BlobCreated or Microsoft.Storage.BlobRenamed. Blob renaming is supported only for ADLSv2 storage. |
@@ -59,7 +59,7 @@ In this article, you learn how to manually create the resources needed for Event
 
     Use **Subject Filters** to track specific subjects events. Set the filters for the notifications as follows:
 
-    :::image type="content" source="media/eventgrid/filters-tab.png" alt-text="Filters tab event grid.":::
+    :::image type="content" source="media/eventgrid/filters-tab.png" alt-text="Filters tab Event Grid.":::
 
    1. Select **Enable subject filtering**
    1. **Subject Begins With** field is the *literal* prefix of the subject. Since the pattern applied is *startswith*, it can span multiple containers, folders, or blobs. No wildcards are allowed.
