@@ -43,6 +43,8 @@ To `.create-or-alter` an external table using managed identity authentication re
 
 > [!IMPORTANT]
 > Delta table partitioning isn’t supported in [Continuous data export](data-export/continuous-data-export.md#continuous-export-to-delta-table---preview).
+>
+> Kusto won't write to existing delta tables if the [delta protocol writer version](https://github.com/delta-io/delta/blob/master/PROTOCOL.md#schema-serialization-format) is higher than 1.
 
 ## Authentication and authorization
 
