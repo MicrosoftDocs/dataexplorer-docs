@@ -11,7 +11,7 @@ For more information, see the connector [Git repo](https://github.com/Azure/kafk
 ## Prerequisites
 
 * An Azure subscription. Create a [free Azure account](https://azure.microsoft.com/free/).
-* An Azure Data Explorer cluster and database with the default cache and retention policies. [Create a cluster and database](create-cluster-and-database.md). **or** a [KQL database in Microsoft Fabric](/fabric/real-time-analytics/create-database).
+* An Azure Data Explorer [cluster and database](create-cluster-and-database.md) with the default cache and retention policies **or** a [KQL database in Microsoft Fabric](/fabric/real-time-analytics/create-database).
 * [Azure CLI](/cli/azure/install-azure-cli).
 * [Docker](https://docs.docker.com/get-docker/) and [Docker Compose](https://docs.docker.com/compose/install).
 

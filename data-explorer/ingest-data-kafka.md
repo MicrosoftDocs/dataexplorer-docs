@@ -9,6 +9,8 @@ ms.date: 11/08/2021
 ---
 # Ingest data from Apache Kafka into Azure Data Explorer
 
+[!INCLUDE [ingest-data-kafka](includes/cross-repo/ingest-data-kafka.md)]
+
 ## Related content
 
 * Learn more about [Big data architecture](/azure/architecture/solution-ideas/articles/big-data-azure-data-explorer).
