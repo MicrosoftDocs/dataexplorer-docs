@@ -11,7 +11,7 @@ For more information, see the connector [Git repo](https://github.com/Azure/kafk
 ## Prerequisites
 
 * An Azure subscription. Create a [free Azure account](https://azure.microsoft.com/free/).
-* An Azure Data Explorer [cluster and database](create-cluster-and-database.md) with the default cache and retention policies **or** a [KQL database in Microsoft Fabric](/fabric/real-time-analytics/create-database).
+* An Azure Data Explorer [cluster and database](/azure/data-explorer/create-cluster-and-database) with the default cache and retention policies **or** a [KQL database in Microsoft Fabric](/fabric/real-time-analytics/create-database).
 * [Azure CLI](/cli/azure/install-azure-cli).
 * [Docker](https://docs.docker.com/get-docker/) and [Docker Compose](https://docs.docker.com/compose/install).
 
@@ -282,7 +282,7 @@ The connector will start queueing ingestion processes to Azure Data Explorer.
     | project StartTime, EndTime, Source, EventId
     ```
 
-1. Use the [`summarize`](azure/data-explorer/kusto/query/summarize-operator) operator:
+1. Use the [`summarize`](/azure/data-explorer/kusto/query/summarize-operator) operator:
 
     ```kusto
     Storms
