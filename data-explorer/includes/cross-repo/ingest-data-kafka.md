@@ -23,7 +23,7 @@ The Microsoft Entra service principal can be created through the [Azure portal](
 
 This service principal will be the identity used by the connector to write data your table in Kusto. You'll later grant permissions for this service principal to access Kusto resources.
 
-[!INCLUDE [entra-service-principal](includes/entra-service-principal.md)]
+[!INCLUDE [entra-service-principal](../includes/entra-service-principal.md)]
 
 ## Create a target table
 
