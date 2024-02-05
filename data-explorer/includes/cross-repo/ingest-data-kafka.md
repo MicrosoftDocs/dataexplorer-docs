@@ -15,8 +15,6 @@ For more information, see the connector [Git repo](https://github.com/Azure/kafk
 * [Azure CLI](/cli/azure/install-azure-cli).
 * [Docker](https://docs.docker.com/get-docker/) and [Docker Compose](https://docs.docker.com/compose/install).
 
-<a name='create-an-azure-active-directory-service-principal'></a>
-
 ## Create a Microsoft Entra service principal
 
 The Microsoft Entra service principal can be created through the [Azure portal](/azure/active-directory/develop/howto-create-service-principal-portal) or programatically, as in the following example.
@@ -27,11 +25,7 @@ This service principal will be the identity used by the connector to write data 
 
 ## Create a target table
 
-1. Sign in to the [Azure portal](https://portal.azure.com)
-
-1. Go to your Azure Data Explorer cluster.
-
-1. Create a table called `Storms` using the following command:
+1. From your query environment, create a table called `Storms` using the following command:
 
     ```kusto
     .create table Storms (StartTime: datetime, EndTime: datetime, EventId: int, State: string, EventType: string, Source: string)
@@ -54,7 +48,7 @@ This service principal will be the identity used by the connector to write data 
     .alter table Storms policy ingestionbatching @'{"MaximumBatchingTimeSpan":"00:00:15", "MaximumNumberOfItems": 100, "MaximumRawDataSizeMB": 300}'
     ```
 
-1. Use the service principal from [Create a Microsoft Entra service principal](#create-an-azure-active-directory-service-principal) to grant permission to work with the database.
+1. Use the service principal from [Create a Microsoft Entra service principal](#create-a-microsoft-entra-service-principal) to grant permission to work with the database.
 
     ```kusto
     .add database YOUR_DATABASE_NAME admins  ('aadapp=YOUR_APP_ID;YOUR_TENANT_ID') 'AAD App'
