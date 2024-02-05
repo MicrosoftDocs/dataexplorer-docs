@@ -30,7 +30,7 @@ Dimension tables:
 
 Dimension tables aren't regularly ingested with new data. Instead, the entire data content is updated at once, using operations such as [.set-or-replace](../management/data-ingestion/ingest-from-query.md), [.move extents](../management/move-extents.md), or [.rename tables](../management/rename-table-command.md).
 
-Sometimes, dimension tables might be derived from fact tables. This process can be done via an [update policy](../management/update-policy.md) on the fact table, with a query on the table that takes the last record for each entity.
+Sometimes, dimension tables might be derived from fact tables. This process can be done via a [materialized view](../management/materialized-views/materialized-view-overview.md) on the fact table, with a query on the table that takes the last record for each entity.
 
 ## Differentiate fact and dimension tables
 

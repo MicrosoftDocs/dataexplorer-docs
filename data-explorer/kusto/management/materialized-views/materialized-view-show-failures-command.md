@@ -24,18 +24,18 @@ You must have at least Database User, Database Viewer, or Database Monitor permi
 
 | Name                   | Type   | Required | Description                    |
 |------------------------|--------|----------|--------------------------------|
-| *MaterializedViewName* | string | &check;  | Name of the materialized view. |
+| *MaterializedViewName* | `string` |  :heavy_check_mark:  | Name of the materialized view. |
 
 ### Returns
 
 | Name           | Type      | Description                                                |
 |----------------|-----------|------------------------------------------------------------|
-| Timestamp      | timestamp | Date and time when the failure occurred.                    |
-| OperationId    | string    | Operation identifier of the run that failed.               |
-| Name           | string    | Name of the materialized view.                             |
-| LastSuccessRun | datetime  | Date and time of the last run that completed successfully. |
-| FailureKind    | string    | Type of failure (Permanent/Transient).                     |
-| Details        | string    | Details of the failure.                                    |
+| Timestamp      | `datetime` | Date and time when the failure occurred.                    |
+| OperationId    | `string` | Operation identifier of the run that failed.               |
+| Name           | `string` | Name of the materialized view.                             |
+| LastSuccessRun | `datetime` | Date and time of the last run that completed successfully. |
+| FailureKind    | `string` | Type of failure (Permanent/Transient).                     |
+| Details        | `string` | Details of the failure.                                    |
 
 ## Examples
 

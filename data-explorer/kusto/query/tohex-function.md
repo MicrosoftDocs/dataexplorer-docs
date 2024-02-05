@@ -19,8 +19,8 @@ Converts input to a hexadecimal string.
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-| *value* | int or long | &check; | The value that will be converted to a hex string.|
-| *minLength* | int | | The value representing the number of leading characters to include in the output.  Values between 1 and 16 are supported. Values greater than 16 will be truncated to 16. If the string is longer than *minLength* without leading characters, then *minLength* is effectively ignored. Negative numbers may only be represented at minimum by their underlying data size, so for an integer (32-bit) the *minLength* will be at minimum 8, for a long (64-bit) it will be at minimum 16.|
+| *value* | int or long |  :heavy_check_mark: | The value that will be converted to a hex string.|
+| *minLength* | `int` | | The value representing the number of leading characters to include in the output.  Values between 1 and 16 are supported. Values greater than 16 will be truncated to 16. If the string is longer than *minLength* without leading characters, then *minLength* is effectively ignored. Negative numbers may only be represented at minimum by their underlying data size, so for an integer (32-bit) the *minLength* will be at minimum 8, for a long (64-bit) it will be at minimum 16.|
 
 ## Returns
 

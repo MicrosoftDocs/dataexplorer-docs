@@ -19,8 +19,8 @@ Creates a concatenated string of array values using a specified delimiter.
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-| *array* | dynamic | &check; | An array of values to be concatenated.|
-| *delimeter* | string | &check; | The value used to concatenate the values in *array*.|
+| *array* | `dynamic` |  :heavy_check_mark: | An array of values to be concatenated.|
+| *delimeter* | `string` |  :heavy_check_mark: | The value used to concatenate the values in *array*.|
 
 ## Returns
 

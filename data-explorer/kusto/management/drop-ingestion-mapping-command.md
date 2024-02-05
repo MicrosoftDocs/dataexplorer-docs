@@ -23,9 +23,9 @@ The command to drop a database ingestion mapping requires at least [Database Ing
 
 |Name|Type|Required|Description|
 |--|--|--|--|
-|*TableOrDatabaseName*|string|&check;|The name of the table or database containing the ingestion mapping to drop.|
-|*MappingKind*|string|&check;|The kind of the ingestion mapping. Valid values are `csv`, `json`, `avro`, `parquet`, and `orc`.|
-|*MappingName*|string|&check;|The name of the ingestion mapping to drop.|
+|*TableOrDatabaseName*| `string` | :heavy_check_mark:|The name of the table or database containing the ingestion mapping to drop.|
+|*MappingKind*| `string` | :heavy_check_mark:|The kind of the ingestion mapping. Valid values are `csv`, `json`, `avro`, `parquet`, and `orc`.|
+|*MappingName*| `string` | :heavy_check_mark:|The name of the ingestion mapping to drop.|
 
 ## Examples
 

@@ -43,8 +43,8 @@ The following table describes the supported tuning options. To learn how to use 
 
 |Name|Type|Required|Description|
 |--|--|--|--|
-|*ExpectedArguments*|string|&check;|The expected value for the `Language` or `Application` field in TDS.|
-|*TuningOptions*|string||Zero or more comma-separated [supported tuning options](#supported-tuning-options). Each tuning option must be in the format of *TuningOptionName*`:`*TuningOptionValue*.|
+|*ExpectedArguments*| `string` | :heavy_check_mark:|The expected value for the `Language` or `Application` field in TDS.|
+|*TuningOptions*| `string` ||Zero or more comma-separated [supported tuning options](#supported-tuning-options). Each tuning option must be in the format of *TuningOptionName*`:`*TuningOptionValue*.|
 
 ### Example
 

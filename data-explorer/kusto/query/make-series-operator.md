@@ -24,13 +24,13 @@ Create series of specified aggregated values along a specified axis.
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-|*Column*| string | | The name for the result column. Defaults to a name derived from the expression.|
+|*Column*| `string` | | The name for the result column. Defaults to a name derived from the expression.|
 |*DefaultValue* | scalar | | A default value to use instead of absent values. If there's no row with specific values of *AxisColumn* and *GroupExpression*, then the corresponding element of the array will be assigned a *DefaultValue*. Default is 0.|
-|*Aggregation*| string | &check; | A call to an [aggregation function](make-series-operator.md#list-of-aggregation-functions), such as `count()` or `avg()`, with column names as arguments. See the [list of aggregation functions](make-series-operator.md#list-of-aggregation-functions). Only aggregation functions that return numeric results can be used with the `make-series` operator.|
-|*AxisColumn*| string | &check; | The column by which the series will be ordered. Usually the column values will be of type `datetime` or `timespan` but all numeric types are accepted.|
-|*start* | scalar | &check; | The low bound value of the *AxisColumn* for each of the series to be built. If *start* is not specified, it will be the first bin, or step, that has data in each series.|
-|*end*| scalar| &check; | The high bound non-inclusive value of the *AxisColumn*. The last index of the time series is smaller than this value and will be *start* plus integer multiple of *step* that is smaller than *end*. If *end* is not specified, it will be the upper bound of the last bin, or step, that has data per each series.|
-|*step*| scalar | &check; | The difference, or bin size, between two consecutive elements of the *AxisColumn* array. For a list of possible time intervals, see [timespan](./scalar-data-types/timespan.md).|
+|*Aggregation*| `string` |  :heavy_check_mark: | A call to an [aggregation function](make-series-operator.md#list-of-aggregation-functions), such as `count()` or `avg()`, with column names as arguments. See the [list of aggregation functions](make-series-operator.md#list-of-aggregation-functions). Only aggregation functions that return numeric results can be used with the `make-series` operator.|
+|*AxisColumn*| `string` |  :heavy_check_mark: | The column by which the series will be ordered. Usually the column values will be of type `datetime` or `timespan` but all numeric types are accepted.|
+|*start* | scalar |  :heavy_check_mark: | The low bound value of the *AxisColumn* for each of the series to be built. If *start* is not specified, it will be the first bin, or step, that has data in each series.|
+|*end*| scalar|  :heavy_check_mark: | The high bound non-inclusive value of the *AxisColumn*. The last index of the time series is smaller than this value and will be *start* plus integer multiple of *step* that is smaller than *end*. If *end* is not specified, it will be the upper bound of the last bin, or step, that has data per each series.|
+|*step*| scalar |  :heavy_check_mark: | The difference, or bin size, between two consecutive elements of the *AxisColumn* array. For a list of possible time intervals, see [timespan](./scalar-data-types/timespan.md).|
 |*GroupExpression* | | |An expression over the columns that provides a set of distinct values. Typically it's a column name that already provides a restricted set of values. |
 |*MakeSeriesParameters*| | | Zero or more space-separated parameters in the form of *Name* `=` *Value* that control the behavior. See [supported make series parameters](#supported-make-series-parameters).|
 

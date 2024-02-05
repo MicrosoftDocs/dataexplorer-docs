@@ -24,8 +24,8 @@ The bar chart visual needs a minimum of two columns in the query result. By defa
 
 | Name | Type | Required | Description |
 | -- | -- | -- | -- |
-| *T* | string | &check; | Input table name.|
-| *propertyName*, *propertyValue* | string | | A comma-separated list of key-value property pairs. See [supported properties](#supported-properties).|
+| *T* | `string` |  :heavy_check_mark: | Input table name.|
+| *propertyName*, *propertyValue* | `string` | | A comma-separated list of key-value property pairs. See [supported properties](#supported-properties).|
 
 ::: zone pivot="azuredataexplorer, fabric"
 
@@ -64,7 +64,7 @@ This visualization supports splitting into multiple y-axis values:
 
 ::: zone pivot="azuremonitor"
 
-### Properties 
+### Supported properties
 
 All properties are optional.
 

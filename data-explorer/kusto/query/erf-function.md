@@ -19,7 +19,7 @@ Returns the [error function](https://en.wikipedia.org/wiki/Error_function) of th
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-| *x* | real | &check; | The value for which to calculate the function. |
+| *x* | `real` |  :heavy_check_mark: | The value for which to calculate the function. |
 
 ## Returns
 

@@ -23,8 +23,8 @@ You must have at least [Database Admin](access-control/role-based-access-control
 
 |Name|Type|Required|Description|
 |--|--|--|--|
-|*DatabaseName*|string|&check;|The name of the database for which to alter the caching policy.|
-|*PolicyParameter*|string|&check;|One or more policy parameters. For parameters, see [cache policy](cache-policy.md).|
+|*DatabaseName*| `string` | :heavy_check_mark:|The name of the database for which to alter the caching policy.|
+|*PolicyParameter*| `string` | :heavy_check_mark:|One or more policy parameters. For parameters, see [cache policy](cache-policy.md).|
 
 ## Returns
 

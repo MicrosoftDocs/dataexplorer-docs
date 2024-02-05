@@ -13,7 +13,6 @@ zone_pivot_groups: kql-flavors-all
 
 The line chart visual is the most basic type of chart. The first column of the query should be numeric and is used as the x-axis. Other numeric columns are the y-axes. Line charts track changes over short and long periods of time. When smaller changes exist, line graphs are more useful than bar graphs.
 
- 
 > [!NOTE]
 > This visualization can only be used in the context of the [render operator](render-operator.md).
 
@@ -27,13 +26,13 @@ The line chart visual is the most basic type of chart. The first column of the q
 
 | Name | Type | Required | Description |
 | -- | -- | -- | -- |
-| *T* | string | &check; | Input table name.
-| *propertyName*, *propertyValue* | string | | A comma-separated list of key-value property pairs. See [supported properties](#supported-properties).|
+| *T* | `string` |  :heavy_check_mark: | Input table name.
+| *propertyName*, *propertyValue* | `string` | | A comma-separated list of key-value property pairs. See [supported properties](#supported-properties).|
 
 ### Supported properties
 
 All properties are optional.
-    
+
 |*PropertyName*|*PropertyValue*                                                                   |
 |--------------|----------------------------------------------------------------------------------|
 |`accumulate`  |Whether the value of each measure gets added to all its predecessors (`true` or `false`).|
@@ -59,7 +58,7 @@ This visualization supports splitting into multiple y-axis values:
 |`none`    |A single y-axis is displayed for all series data. (Default)       |
 |`axes`    |A single chart is displayed with multiple y-axes (one per series).|
 |`panels`  |One chart is rendered for each `ycolumn` value (up to some limit).|
-    
+
 ## Examples
 
 ### Render a line chart

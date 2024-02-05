@@ -19,7 +19,7 @@ Returns the size, in bytes, of the input string.
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-| *source* | string | &check; | The string for which to return the byte size.|
+| *source* | `string` |  :heavy_check_mark: | The string for which to return the byte size.|
 
 ## Returns
 

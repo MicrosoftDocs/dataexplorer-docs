@@ -33,28 +33,28 @@ To return an ingestion failure for a specific operation ID:
 
 |Name|Type|Required|Description|
 |--|--|--|--|
-|*Condition*|string|&check;|The condition to match in order for the ingestion failure to be returned.|
-|*OperationId|guid|&check;|The operation ID of the ingestion failure to return.|
+|*Condition*| `string` | :heavy_check_mark:|The condition to match in order for the ingestion failure to be returned.|
+|*OperationId| `guid` | :heavy_check_mark:|The operation ID of the ingestion failure to return.|
 
 ## Returns
 
 | Output parameter | Type | Description |
 |--|--|--|
-| OperationId | String | Operation identifier that can be used to view additional operation details via the <br> [.show operations](operations.md) command </br> |
-| Database | String | Database on which the failure occurred |
-| Table | String | Table on which the failure occurred |
-| FailedOn | DateTime | Date/time (in UTC) when the failure was registered |
-| IngestionSourcePath | String | Identifies the ingestion source (usually, an Azure Blob URI) |
-| Details | String | Failure details. Provides insight into the actual ingestion failure root cause |
-| FailureKind | String | Type of the failure (Permanent/Transient) |
-| RootActivityId | String | Root Activity ID. |
-| OperationKind | String | The ingestion operation type (phase) during which the failure was registered |
+| OperationId | `string` | Operation identifier that can be used to view additional operation details via the <br> [.show operations](operations.md) command </br> |
+| Database | `string` | Database on which the failure occurred |
+| Table | `string` | Table on which the failure occurred |
+| FailedOn | `dateTime` | Date/time (in UTC) when the failure was registered |
+| IngestionSourcePath | `string` | Identifies the ingestion source (usually, an Azure Blob URI) |
+| Details | `string` | Failure details. Provides insight into the actual ingestion failure root cause |
+| FailureKind | `string` | Type of the failure (Permanent/Transient) |
+| RootActivityId | `string` | Root Activity ID. |
+| OperationKind | `string` | The ingestion operation type (phase) during which the failure was registered |
 | OriginatesFromUpdatePolicy | Boolean | Indicates whether the failure was registered while executing an [Update Policy](./show-table-update-policy-command.md) |
-| ErrorCode | String | Ingestion error code |
-| Principal | Int | The principal whosе credentials were used for the ingestion |
-| User | Int | The user who performed the ingestion |
-| IngestionProperties | Int | The ingestion properties that were sent for the ingestion operation |
-| NumberOfSources | Int | The number if ingestion sources represented by this failure record |
+| ErrorCode | `string` | Ingestion error code |
+| Principal | `int` | The principal whosе credentials were used for the ingestion |
+| User | `int` | The user who performed the ingestion |
+| IngestionProperties | `int` | The ingestion properties that were sent for the ingestion operation |
+| NumberOfSources | `int` | The number if ingestion sources represented by this failure record |
 | ShouldRetry | Boolean | For internal use |
 
 ## Example

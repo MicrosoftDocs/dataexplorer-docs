@@ -45,7 +45,7 @@ You can authenticate from Flink to your Azure Data Explorer cluster using either
 
 To use application authentication:
 
-1. In the Azure portal, [create a Microsoft Entra application registration](provision-entra-id-app.md). Alternatively, you can [programatically create a Microsoft Entra service principal](provision-entra-id-app.md#programatically-create-a-microsoft-entra-service-principal). Save the application ID, application key, and tenant ID.
+1. In the Azure portal, [create a Microsoft Entra application registration](provision-entra-id-app.md). Alternatively, you can [programatically create a Microsoft Entra service principal](provision-entra-id-app.md#create-microsoft-entra-application-registration). Save the application ID, application key, and tenant ID.
 
 1. Grant the application user permissions on the Azure Data Explorer database:
 

@@ -31,7 +31,7 @@ This function uses the following formula.
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-| *expr* | string | &check; | The expression used for the standard deviation aggregation calculation. |
+| *expr* | `string` |  :heavy_check_mark: | The expression used for the standard deviation aggregation calculation. |
 
 ## Returns
 

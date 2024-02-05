@@ -27,7 +27,7 @@ Read more about the underlying algorithm (T-Digest) and the estimated error [her
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-| *exprs* | dynamic | &check; | One or more comma-separated column references that have the `tdigest` values to be merged. |
+| *exprs* | `dynamic` |  :heavy_check_mark: | One or more comma-separated column references that have the `tdigest` values to be merged. |
 
 ## Returns
 

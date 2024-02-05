@@ -19,7 +19,7 @@ Calculates the element-wise cosine function of the numeric series input.
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-| *series* | dynamic | &check; | An array of numeric values over which the cosine function is applied. |
+| *series* | `dynamic` |  :heavy_check_mark: | An array of numeric values over which the cosine function is applied. |
 
 ## Returns
 

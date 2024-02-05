@@ -21,7 +21,7 @@ The runtime type may be different than the nominal (static) type for expressions
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-| *value* | scalar | &check; | The value for which to find the type. |
+| *value* | scalar |  :heavy_check_mark: | The value for which to find the type. |
 
 ## Returns
 

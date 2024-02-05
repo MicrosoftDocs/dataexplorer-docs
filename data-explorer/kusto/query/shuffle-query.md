@@ -56,11 +56,11 @@ In some cases, the `hint.strategy = shuffle` is ignored, and the query won't run
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-| *T* | string | &check; | The tabular source whose data is to be processed by the operator.|
-| *DataExpression*| string | | An implicit or explicit tabular transformation expression.|
-| *Query* | string | | A transformation expression run on the records of *T*.|
-| *key*| string | | Use a `join` key, `summarize` key, `make-series` key or `partition` key.|
-| *SubQuery*| string | | A transformation expression.|
+| *T* | `string` |  :heavy_check_mark: | The tabular source whose data is to be processed by the operator.|
+| *DataExpression*| `string` | | An implicit or explicit tabular transformation expression.|
+| *Query* | `string` | | A transformation expression run on the records of *T*.|
+| *key*| `string` | | Use a `join` key, `summarize` key, `make-series` key or `partition` key.|
+| *SubQuery*| `string` | | A transformation expression.|
 
 > [!NOTE]
 > Either *DataExpression* or *Query* must be specified depending on the chosen syntax.

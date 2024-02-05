@@ -67,14 +67,14 @@ Shows a database (or databases) followed from other leader cluster, which have o
 
 | Output parameter                     | Type    | Description                                                                                                        |
 |--------------------------------------|---------|--------------------------------------------------------------------------------------------------------------------|
-| DatabaseName                         | String  | The name of the database being followed.                                                                           |
-| LeaderClusterMetadataPath            | String  | The path to the leader cluster's metadata container.                                                               |
-| CachingPolicyOverride                | String  | An override caching policy for the database, serialized as JSON, or null.                                         |
-| AuthorizedPrincipalsOverride         | String  | An override collection of authorized principals for the database, serialized as JSON, or null.                    |
-| AuthorizedPrincipalsModificationKind | String  | The modification kind to apply using AuthorizedPrincipalsOverride (`none`, `union`, or `replace`).                  |
-| CachingPoliciesModificationKind      | String  | The modification kind to apply using database or table-level caching policy overrides (`none`, `union`, or `replace`). |
-| IsAutoPrefetchEnabled                | Boolean | Whether new data is pre-fetched upon each schema refresh.        |
-| TableMetadataOverrides               | String  | If defined, A JSON serialization of table-level property overrides.              |
+| DatabaseName                         | `string` | The name of the database being followed.                                                                           |
+| LeaderClusterMetadataPath            | `string` | The path to the leader cluster's metadata container.                                                               |
+| CachingPolicyOverride                | `string` | An override caching policy for the database, serialized as JSON, or null.                                         |
+| AuthorizedPrincipalsOverride         | `string` | An override collection of authorized principals for the database, serialized as JSON, or null.                    |
+| AuthorizedPrincipalsModificationKind | `string` | The modification kind to apply using AuthorizedPrincipalsOverride (`none`, `union`, or `replace`).                  |
+| CachingPoliciesModificationKind      | `string` | The modification kind to apply using database or table-level caching policy overrides (`none`, `union`, or `replace`). |
+| IsAutoPrefetchEnabled                | `bool` | Whether new data is pre-fetched upon each schema refresh.        |
+| TableMetadataOverrides               | `string` | If defined, A JSON serialization of table-level property overrides.              |
 
 ### .alter follower database policy caching
 

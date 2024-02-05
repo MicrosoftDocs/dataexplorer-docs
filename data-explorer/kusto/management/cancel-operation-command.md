@@ -24,18 +24,18 @@ The cancel operation command isn't guaranteed to succeed. The output of the `.ca
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-| *OperationId* | guid | &check; | A guid of the operation ID returned from the running command.|
-| *ReasonPhrase* | string | | The reason for canceling the running command.|
+| *OperationId* | `guid` |  :heavy_check_mark: | A guid of the operation ID returned from the running command.|
+| *ReasonPhrase* | `string` | | The reason for canceling the running command.|
 
 ## Returns
 
 |Output parameter |Type |Description
 |---|---|---
-|OperationId | guid  | The operation ID of the operation that was canceled.
-|Operation | string | The operation kind that was canceled.
-|StartedOn | datetime | The start time of the operation that was canceled.
-|CancellationState | string | Returns one of the following options: <br> `Cancelled successfully`: the operation was canceled <br> `Cancel failed`: the operation can't be canceled at this point. The operation may still be running or may have completed.
-|ReasonPhrase | string | Reason why cancellation wasn't successful.
+|OperationId | `guid` | The operation ID of the operation that was canceled.
+|Operation | `string` | The operation kind that was canceled.
+|StartedOn | `datetime` | The start time of the operation that was canceled.
+|CancellationState | `string` | Returns one of the following options: <br> `Cancelled successfully`: the operation was canceled <br> `Cancel failed`: the operation can't be canceled at this point. The operation may still be running or may have completed.
+|ReasonPhrase | `string` | Reason why cancellation wasn't successful.
 
 ## Example
 

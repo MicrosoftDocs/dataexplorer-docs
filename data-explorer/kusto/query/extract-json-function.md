@@ -23,9 +23,9 @@ Optionally convert the extracted string to a specific type.
 
 |Name|Type|Required|Description|
 |--|--|--|--|
-| *jsonPath* | string | &check; | A [JSONPath](jsonpath.md) that defines an accessor into the JSON document.|
-| *dataSource* | string | &check; | A JSON document.|
-| *type* | string | | An optional type literal. If provided, the extracted value is converted to this type. For example, `typeof(long)` will convert the extracted value to a `long`.|
+| *jsonPath* | `string` |  :heavy_check_mark: | A [JSONPath](jsonpath.md) that defines an accessor into the JSON document.|
+| *dataSource* | `string` |  :heavy_check_mark: | A JSON document.|
+| *type* | `string` | | An optional type literal. If provided, the extracted value is converted to this type. For example, `typeof(long)` will convert the extracted value to a `long`.|
 
 ## Performance tips
 

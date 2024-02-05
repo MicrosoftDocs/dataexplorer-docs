@@ -19,7 +19,7 @@ Decodes the input string from base64 and performs gzip decompression.
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-| *string* | string | &check; | The value that was compressed with gzip and then base64-encoded. The function accepts only one argument.|
+| *string* | `string` |  :heavy_check_mark: | The value that was compressed with gzip and then base64-encoded. The function accepts only one argument.|
 
 > [!NOTE]
 >

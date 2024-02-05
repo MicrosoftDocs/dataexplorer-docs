@@ -34,7 +34,7 @@ In addition to the simple paths with both types of slashes, the function support
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-| *path* | string | &check; | The file path.|
+| *path* | `string` |  :heavy_check_mark: | The file path.|
 
 ## Returns
 

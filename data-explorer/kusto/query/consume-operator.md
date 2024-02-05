@@ -28,4 +28,4 @@ data between the nodes of the cluster.)
 
 |Name|Type|Required|Description|
 |--|--|--|--|
-| *DecodeBlocks* | bool | | If set to `true`, or if the request property `perftrace` is set to `true`, the `consume` operator won't just enumerate the records at its input, but actually force each value in those records to be decompressed and decoded.|
+| *DecodeBlocks* | `bool` | | If set to `true`, or if the request property `perftrace` is set to `true`, the `consume` operator won't just enumerate the records at its input, but actually force each value in those records to be decompressed and decoded.|

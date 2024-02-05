@@ -25,10 +25,10 @@ The function `predict_onnx_fl()` is a [user-defined function (UDF)](../query/fun
 
 |Name|Type|Required|Description|
 |--|--|--|--|
-|*models_tbl*|string|&check;|The name of the table that contains all serialized models. The table must have the following columns:<br/> `name`: the model name<br/>`timestamp`: time of model training<br/>`model`: string representation of the serialized model|
-|*model_name*|string|&check;|The name of the specific model to use.|
-|*features_cols*|synamic|&check;|An array containing the names of the features columns that are used by the model for prediction.|
-|*pred_col*|string|&check;|The name of the column that stores the predictions.|
+|*models_tbl*| `string` | :heavy_check_mark:|The name of the table that contains all serialized models. The table must have the following columns:<br/> `name`: the model name<br/>`timestamp`: time of model training<br/>`model`: string representation of the serialized model|
+|*model_name*| `string` | :heavy_check_mark:|The name of the specific model to use.|
+|*features_cols*|synamic| :heavy_check_mark:|An array containing the names of the features columns that are used by the model for prediction.|
+|*pred_col*| `string` | :heavy_check_mark:|The name of the column that stores the predictions.|
 
 ## Function definition
 

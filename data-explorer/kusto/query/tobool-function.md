@@ -24,7 +24,7 @@ Convert inputs to boolean (signed 8-bit) representation.
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-| *value* | string | &check; | The value to convert to boolean.|
+| *value* | `string` |  :heavy_check_mark: | The value to convert to boolean.|
 
 ## Returns
 

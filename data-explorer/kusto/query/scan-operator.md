@@ -30,13 +30,13 @@ The output for the matching record is determined by the input record and assignm
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-|*T*|string|&check;|The input tabular source.|
-| *MatchIdColumnName* | string | |  The name of a column of type `long` that is appended to the output as part of the scan execution. Indicates the 0-based index of the match for the record. |
-| *ColumnDeclarations* | string | | Declares an extension to the schema of *T*. These columns are assigned values in the steps. If not assigned, the *DefaultValue* is returned. Unless otherwise specified, *DefaultValue* is `null`.|
-| *StepName* | string | &check; | Used to reference values in the state of scan for conditions and assignments. The step name must be unique.|
-| *Condition* | string | &check; | An expression that evaluates to `true` or `false` that defines which records from the input match the step. A record matches the step when the condition is `true` with the step’s state or with the previous step’s state.|
-| *Assignment* | string | | A scalar expression that is assigned to the corresponding column when a record matches a step.|
-| `output` | string | | Controls the output logic of the step on repeated matches. `all` outputs all records matching the step, `last` outputs only the last record in a series of repeating matches for the step, and `none` doesn't output records matching the step. The default is `all`.|
+|*T*| `string` | :heavy_check_mark:|The input tabular source.|
+| *MatchIdColumnName* | `string` | |  The name of a column of type `long` that is appended to the output as part of the scan execution. Indicates the 0-based index of the match for the record. |
+| *ColumnDeclarations* | `string` | | Declares an extension to the schema of *T*. These columns are assigned values in the steps. If not assigned, the *DefaultValue* is returned. Unless otherwise specified, *DefaultValue* is `null`.|
+| *StepName* | `string` |  :heavy_check_mark: | Used to reference values in the state of scan for conditions and assignments. The step name must be unique.|
+| *Condition* | `string` |  :heavy_check_mark: | An expression that evaluates to `true` or `false` that defines which records from the input match the step. A record matches the step when the condition is `true` with the step’s state or with the previous step’s state.|
+| *Assignment* | `string` | | A scalar expression that is assigned to the corresponding column when a record matches a step.|
+| `output` | `string` | | Controls the output logic of the step on repeated matches. `all` outputs all records matching the step, `last` outputs only the last record in a series of repeating matches for the step, and `none` doesn't output records matching the step. The default is `all`.|
 
 ## Returns
 

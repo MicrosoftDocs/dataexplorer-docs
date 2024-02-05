@@ -23,8 +23,8 @@ You must have at least [Table Admin](access-control/role-based-access-control.md
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-| *TableName* | string | &check; | The name of the table to alter. |
-| *PolicyObject* | string | &check; | A serialized JSON policy object. See [merge policy](merge-policy.md). |
+| *TableName* | `string` |  :heavy_check_mark: | The name of the table to alter. |
+| *PolicyObject* | `string` |  :heavy_check_mark: | A serialized JSON policy object. See [merge policy](merge-policy.md). |
 
 ### Example
 

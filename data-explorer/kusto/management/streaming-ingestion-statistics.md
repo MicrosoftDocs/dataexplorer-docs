@@ -30,25 +30,25 @@ If you have Database Admin or Database Monitor permissions, you'll see all faile
 
 | Output parameter | Type | Description |
 |--|--|--|
-| Database | String | Target database of the ingestion |
-| Table | String | Target table of the ingestion |
-| StartTime | DateTime | Date/time (in UTC) of the first ingestion in the bucket |
-| EndTime | DateTime | Date/time (in UTC) of the last ingestion in the bucket |
-| Count | Long | The total count of the ingestions in the bucket |
-| MinDuration | TimeSpan | The minimum ingestion duration in the bucket |
-| MaxDuration | TimeSpan | The maximum ingestion duration in the bucket |
-| AvgDuration | TimeSpan | The average ingestion duration in the bucket |
-| TotalDataSize | Long | The total size of the data ingested in the bucket |
-| MinDataSize | Long | The minimum size of the data ingested in the bucket |
-| MaxDataSize | Long | The maximum size of the data ingested in the bucket |
-| TotalRowCount | Long | The total ingestion row count per ingestion operation in the bucket |
-| MinRowCount | Long | The minimum ingestion row count per ingestion operation in the bucket |
-| MaxRowCount | Long | The maximum ingestion row count per ingestion operation in the bucket |
-| IngestionStatus | String | The ingestion status |
-| NumOfRowStoresReferences | Int | The number of RowStore references on the table |
-| Principal | String | The principal whosе credentials were used for the ingestion |
-| NodeId | String | The machine that performed the ingestion |
-| IngestionProperties | Dynamic | The ingestion properties |
+| Database | `string` | Target database of the ingestion |
+| Table | `string` | Target table of the ingestion |
+| StartTime | `datetime` | Date/time (in UTC) of the first ingestion in the bucket |
+| EndTime | `datetime` | Date/time (in UTC) of the last ingestion in the bucket |
+| Count | `long` | The total count of the ingestions in the bucket |
+| MinDuration | `timespan` | The minimum ingestion duration in the bucket |
+| MaxDuration | `timespan` | The maximum ingestion duration in the bucket |
+| AvgDuration | `timespan` | The average ingestion duration in the bucket |
+| TotalDataSize | `long` | The total size of the data ingested in the bucket |
+| MinDataSize | `long` | The minimum size of the data ingested in the bucket |
+| MaxDataSize | `long` | The maximum size of the data ingested in the bucket |
+| TotalRowCount | `long` | The total ingestion row count per ingestion operation in the bucket |
+| MinRowCount | `long` | The minimum ingestion row count per ingestion operation in the bucket |
+| MaxRowCount | `long` | The maximum ingestion row count per ingestion operation in the bucket |
+| IngestionStatus | `string` | The ingestion status |
+| NumOfRowStoresReferences | `int` | The number of RowStore references on the table |
+| Principal | `string` | The principal whosе credentials were used for the ingestion |
+| NodeId | `string` | The machine that performed the ingestion |
+| IngestionProperties | `dynamic` | The ingestion properties |
 
 ## Example
 

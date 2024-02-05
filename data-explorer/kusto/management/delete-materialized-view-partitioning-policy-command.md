@@ -23,7 +23,7 @@ You must have at least [Table Admin](access-control/role-based-access-control.md
 
 |Name|Type|Required|Description|
 |--|--|--|--|
-|*MaterializedViewName*|string|&check;|The name of the materialized view for which to delete the partitioning policy.|
+|*MaterializedViewName*| `string` | :heavy_check_mark:|The name of the materialized view for which to delete the partitioning policy.|
 
 ### Example
 

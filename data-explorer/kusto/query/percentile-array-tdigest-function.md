@@ -21,10 +21,10 @@ Calculates the percentile result from the `tdigest` results (which was generated
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-| *tdigest*| string | &check; | The [`tdigest`](tdigest-aggregation-function.md) or [tdigest_merge()](tdigest-merge-aggregation-function.md) results used to calculate the percentiles.|
-| *percentile* | real | &check; | A value or comma-separated list of values that specifies the percentiles.|
-| *Dynamic array*| dynamic | &check; | A dynamic array of real numbers that specify the percentiles.|
-| *typeLiteral*| string | | A type literal. For example, `typeof(long)`. If provided, the result set is of this type.|
+| *tdigest*| `string` |  :heavy_check_mark: | The [`tdigest`](tdigest-aggregation-function.md) or [tdigest_merge()](tdigest-merge-aggregation-function.md) results used to calculate the percentiles.|
+| *percentile* | `real` |  :heavy_check_mark: | A value or comma-separated list of values that specifies the percentiles.|
+| *Dynamic array*| `dynamic` |  :heavy_check_mark: | A dynamic array of real numbers that specify the percentiles.|
+| *typeLiteral*| `string` | | A type literal. For example, `typeof(long)`. If provided, the result set is of this type.|
 
 ## Returns
 

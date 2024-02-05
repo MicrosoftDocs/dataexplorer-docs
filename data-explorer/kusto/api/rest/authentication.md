@@ -20,7 +20,7 @@ must authenticate by using the HTTP `Authorization` request header.
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-| *AccessToken*| string | &check; | A Microsoft Entra access token for the service.|
+| *AccessToken*| `string` |  :heavy_check_mark: | A Microsoft Entra access token for the service.|
 
 ## Get an access token
 

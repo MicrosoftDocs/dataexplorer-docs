@@ -19,8 +19,8 @@ Formats a datetime according to the provided format.
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-| *date* | datetime | &check; | The value to format.|
-| *format* | string | &check;| The output format comprised of one or more of the [supported format elements](#supported-format-elements).
+| *date* | `datetime` |  :heavy_check_mark: | The value to format.|
+| *format* | `string` |  :heavy_check_mark:| The output format comprised of one or more of the [supported format elements](#supported-format-elements).
 
 ### Supported format elements
 

@@ -19,7 +19,7 @@ Returns a sha256 hash value of the source input.
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-| *source* | scalar | &check; | The value to be hashed.|
+| *source* | scalar |  :heavy_check_mark: | The value to be hashed.|
 
 ## Returns
 

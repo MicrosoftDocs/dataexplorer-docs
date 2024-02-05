@@ -25,9 +25,9 @@ or
 
 | Name | Type | Required | Description |
 | -- | -- | -- | -- |
-| *T* | string | &check; | The tabular input for which to project certain columns. |
-| *ColumnName* | string | | A column name or comma-separated list of column names to appear in the output. |
-| *Expression* | string | | The scalar expression to perform over the input. |
+| *T* | `string` |  :heavy_check_mark: | The tabular input for which to project certain columns. |
+| *ColumnName* | `string` | | A column name or comma-separated list of column names to appear in the output. |
+| *Expression* | `string` | | The scalar expression to perform over the input. |
 
 * Either *ColumnName* or *Expression* must be specified.
 * If there's no *Expression*, then a column of *ColumnName* must appear in the input.

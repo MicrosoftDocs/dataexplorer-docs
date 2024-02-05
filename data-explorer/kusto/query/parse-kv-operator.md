@@ -36,13 +36,13 @@ The following extraction modes are supported:
 
 |Name|Type|Required|Description|
 |--|--|--|--|
-|*Expression*|string|&check;|The expression from which to extract key values.|
-|*KeysList*|string|&check;|A comma-separated list of key names and their value data types. The order of the keys doesn't have to match the order in which they appear in the text.|
-|*PairDelimiter*|string||A delimiter that separates key value pairs from each other.|
-|*KvDelimiter*|string||A delimiter that separates keys from values.|
-|*QuoteChars*|string||A one- or two-character string literal representing opening and closing quotes that key name or the extracted value may be wrapped with. The parameter can be repeated to specify a separate set of opening/closing quotes.|
-|*EscapeChar*|string||A one-character string literal describing a character that may be used for escaping special characters in a quoted value. The parameter can be repeated if multiple escape characters are used.|
-|*RegexPattern*|string||A [regular expression](re2.md) containing two capturing groups exactly. The first group represents the key name, and the second group represents the key value.|
+|*Expression*| `string` | :heavy_check_mark:|The expression from which to extract key values.|
+|*KeysList*| `string` | :heavy_check_mark:|A comma-separated list of key names and their value data types. The order of the keys doesn't have to match the order in which they appear in the text.|
+|*PairDelimiter*| `string` ||A delimiter that separates key value pairs from each other.|
+|*KvDelimiter*| `string` ||A delimiter that separates keys from values.|
+|*QuoteChars*| `string` ||A one- or two-character string literal representing opening and closing quotes that key name or the extracted value may be wrapped with. The parameter can be repeated to specify a separate set of opening/closing quotes.|
+|*EscapeChar*| `string` ||A one-character string literal describing a character that may be used for escaping special characters in a quoted value. The parameter can be repeated if multiple escape characters are used.|
+|*RegexPattern*| `string` ||A [regular expression](re2.md) containing two capturing groups exactly. The first group represents the key name, and the second group represents the key value.|
 
 ## Returns
 

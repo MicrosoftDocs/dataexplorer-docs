@@ -21,8 +21,8 @@ The function starts comparing the first character of each string. If they're equ
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-| *string1* | string | &check; | The first input string for comparison.|
-| *string2* | string | &check; | The second input string for comparison.|
+| *string1* | `string` |  :heavy_check_mark: | The first input string for comparison.|
+| *string2* | `string` |  :heavy_check_mark: | The second input string for comparison.|
 
 ## Returns
 

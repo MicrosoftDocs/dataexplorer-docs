@@ -23,10 +23,10 @@ Produces a table that aggregates the content of the input table.
 
 |Name|Type|Required|Description|
 |--|--|--|--|
-|*Column*|string||The name for the result column. Defaults to a name derived from the expression.|
-|*Aggregation*|string|&check;|A call to an [aggregation function](aggregation-functions.md) such as `count()` or `avg()`, with column names as arguments.|
-|*GroupExpression*|scalar|&check;|A scalar expression that can reference the input data. The output will have as many records as there are distinct values of all the group expressions.|
-|*SummarizeParameters*|string||Zero or more space-separated parameters in the form of *Name* `=` *Value* that control the behavior. See [supported parameters](#supported-parameters).
+|*Column*| `string` ||The name for the result column. Defaults to a name derived from the expression.|
+|*Aggregation*| `string` | :heavy_check_mark:|A call to an [aggregation function](aggregation-functions.md) such as `count()` or `avg()`, with column names as arguments.|
+|*GroupExpression*|scalar| :heavy_check_mark:|A scalar expression that can reference the input data. The output will have as many records as there are distinct values of all the group expressions.|
+|*SummarizeParameters*| `string` ||Zero or more space-separated parameters in the form of *Name* `=` *Value* that control the behavior. See [supported parameters](#supported-parameters).
 
 > [!NOTE]
 > When the input table is empty, the output depends on whether *GroupExpression*

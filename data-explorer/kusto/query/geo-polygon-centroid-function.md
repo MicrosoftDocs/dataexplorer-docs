@@ -19,7 +19,7 @@ Calculates the centroid of a polygon or a multipolygon on Earth.
 
 |Name|Type|Required|Description|
 |--|--|--|--|
-| *polygon* | dynamic | &check; | Polygon or multipolygon in the [GeoJSON format](https://tools.ietf.org/html/rfc7946).|
+| *polygon* | `dynamic` |  :heavy_check_mark: | Polygon or multipolygon in the [GeoJSON format](https://tools.ietf.org/html/rfc7946).|
 
 ## Returns
 

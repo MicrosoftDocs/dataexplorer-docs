@@ -29,7 +29,7 @@ Display the policy for all tables:
 
 |Name|Type|Required|Description|
 |--|--|--|--|
-|*TableName*|string|&check;|The name of the table for which to show the policy details.|
+|*TableName*| `string` | :heavy_check_mark:|The name of the table for which to show the policy details.|
 
 ## Returns
 

@@ -26,13 +26,13 @@ The anomaly chart visualization is similar to a [timechart](visualization-timech
 
 | Name | Type | Required | Description |
 | -- | -- | -- | -- |
-| *T* | string | &check; | Input table name.|
-| *propertyName*, *propertyValue* | string | | A comma-separated list of key-value property pairs. See [supported properties](#supported-properties).|
+| *T* | `string` |  :heavy_check_mark: | Input table name.|
+| *propertyName*, *propertyValue* | `string` | | A comma-separated list of key-value property pairs. See [supported properties](#supported-properties).|
 
 ### Supported properties
 
 All properties are optional.
-    
+
 |*PropertyName*|*PropertyValue*                                                                   |
 |--------------|----------------------------------------------------------------------------------|
 |`accumulate`  |Whether the value of each measure gets added to all its predecessors. (`true` or `false`)|
@@ -59,7 +59,7 @@ This visualization supports splitting into multiple y-axis values. The supported
 |`none`    |A single y-axis is displayed for all series data. (Default)       |
 |`axes`    |A single chart is displayed with multiple y-axes (one per series).|
 |`panels`  |One chart is rendered for each `ycolumn` value (up to some limit).|
- 
+
 ## Example
 
 > [!div class="nextstepaction"]

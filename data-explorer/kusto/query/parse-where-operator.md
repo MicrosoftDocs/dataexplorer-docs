@@ -23,13 +23,13 @@ See [parse operator](parse-operator.md), which produces nulls for unsuccessfully
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-| *T* | string | &check; | The tabular input to parse.|
-| *kind* | string | &check; | One of the [supported kind values](#supported-kind-values). The default value is `simple`.|
-| *regexFlags* | string | |If *kind* is `regex`, then you can specify regex flags to be used like `U` for ungreedy, `m` for multi-line mode, `s` for match new line `\n`, and `i` for case-insensitive. More flags can be found in [Flags](re2.md#flags).|
-| *expression* | string | &check; | An expression that evaluates to a string.|
-| *stringConstant* | string | &check; | A string constant for which to search and parse.|
-| *columnName* | string | &check; | The name of a column to assign a value to, extracted from the string expression. |
-| *columnType* | string | | The scalar value that indicates the type to convert the value to. The default is the `string`.|
+| *T* | `string` |  :heavy_check_mark: | The tabular input to parse.|
+| *kind* | `string` |  :heavy_check_mark: | One of the [supported kind values](#supported-kind-values). The default value is `simple`.|
+| *regexFlags* | `string` | |If *kind* is `regex`, then you can specify regex flags to be used like `U` for ungreedy, `m` for multi-line mode, `s` for match new line `\n`, and `i` for case-insensitive. More flags can be found in [Flags](re2.md#flags).|
+| *expression* | `string` |  :heavy_check_mark: | An expression that evaluates to a string.|
+| *stringConstant* | `string` |  :heavy_check_mark: | A string constant for which to search and parse.|
+| *columnName* | `string` |  :heavy_check_mark: | The name of a column to assign a value to, extracted from the string expression. |
+| *columnType* | `string` | | The scalar value that indicates the type to convert the value to. The default is the `string`.|
 
 >[!NOTE]
 >

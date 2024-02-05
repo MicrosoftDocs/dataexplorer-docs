@@ -19,7 +19,7 @@ Returns whether the input is an infinite (positive or negative) value.
 
 | Name | Type | Required | Description |
 | -- | -- | -- | -- |
-|*number*|real|&check;| The value to check if infinite.|
+|*number*| `real` | :heavy_check_mark:| The value to check if infinite.|
 
 ## Returns
 

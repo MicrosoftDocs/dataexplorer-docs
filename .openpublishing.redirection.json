@@ -12,8 +12,13 @@
     },
     {
       "source_path": "data-explorer/kusto/tools/index.md",
-      "redirect_url": "/azure/data-explorer/tools-integrations-overview",
+      "redirect_url": "/azure/data-explorer/integrate-overview",
       "redirect_document_id": true
+    },
+    {
+      "source_path": "data-explorer/tools-integrations-overview.md",
+      "redirect_url": "/azure/data-explorer/integrate-overview",
+      "redirect_document_id": false
     },
     {
       "source_path": "data-explorer/kusto/management/drop-database.md",
@@ -69,6 +74,11 @@
       "source_path": "data-explorer/ingest-data-streaming-csharp.md",
       "redirect_url": "/azure/data-explorer/ingest-data-streaming",
       "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/management/external-azure-storage-tables-query.md",
+      "redirect_url": "/azure/data-explorer/external-azure-storage-tables-query",
+      "redirect_document_id": true
     },
     {
       "source_path": "data-explorer/kusto/management/externaltables.md",
@@ -799,6 +809,16 @@
       "source_path": "data-explorer/ingest-sample-data.md",
       "redirect_url": "/azure/data-explorer/web-ui-samples-query",
       "redirect_document_id": true
+    },
+    {
+      "source_path": "data-explorer/connector-overview.md",
+      "redirect_url": "/azure/data-explorer/integrate-data-overview",
+      "redirect_document_id": true
+    },
+    {
+      "source_path": "data-explorer/viz-overview.md",
+      "redirect_url": "/azure/data-explorer/integrate-visualize-overview",
+      "redirect_document_id": false
     },
     {
       "source_path": "data-explorer/kusto/management/diagnostics.md",

@@ -19,8 +19,8 @@ Converts the input string of IPv4 and netmask to a signed, 64-bit wide, long num
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-| *ip*| string | &check; | The IPv4 address to convert to a long number.|
-| *prefix*| int | &check; | An integer from 0 to 32 representing the number of most-significant bits that are taken into account.|
+| *ip*| `string` |  :heavy_check_mark: | The IPv4 address to convert to a long number.|
+| *prefix*| `int` |  :heavy_check_mark: | An integer from 0 to 32 representing the number of most-significant bits that are taken into account.|
 
 ## Returns
 

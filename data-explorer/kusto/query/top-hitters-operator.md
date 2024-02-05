@@ -25,10 +25,10 @@ with the largest sum, in the input.
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-| *T* | string | &check; | The input tabular expression.|
-| *NumberOfValues* | int, long, or real | &check; | The number of distinct values of *ValueExpression*.|
-| *ValueExpression* | string | &check; | An expression over the input table *T* whose distinct values are returned.|
-| *SummingExpression* | string | | If specified, a numeric expression over the input table *T* whose sum per distinct value of *ValueExpression* establishes which values to emit. If not specified, the count of each distinct value of *ValueExpression*  is used instead.|
+| *T* | `string` |  :heavy_check_mark: | The input tabular expression.|
+| *NumberOfValues* | int, long, or real |  :heavy_check_mark: | The number of distinct values of *ValueExpression*.|
+| *ValueExpression* | `string` |  :heavy_check_mark: | An expression over the input table *T* whose distinct values are returned.|
+| *SummingExpression* | `string` | | If specified, a numeric expression over the input table *T* whose sum per distinct value of *ValueExpression* establishes which values to emit. If not specified, the count of each distinct value of *ValueExpression*  is used instead.|
 
 ## Remarks
 

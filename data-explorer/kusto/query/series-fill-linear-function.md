@@ -21,9 +21,9 @@ Takes an expression containing dynamic numerical array as input, does linear int
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-| *series* | dynamic | &check; | An array of numeric values.|
+| *series* | `dynamic` |  :heavy_check_mark: | An array of numeric values.|
 | *missing_value_placeholder* | scalar | | Specifies a placeholder for missing values. The default value is `double(`*null*`)`. The value can be of any type that will be converted to actual element types. `double`(*null*), `long`(*null*) and `int`(*null*) have the same meaning.|
-| *fill_edges* | bool | | Indicates whether *missing_value_placeholder* at the start and end of the array should be replaced with nearest value. `true` by default. If set to `false`, then *missing_value_placeholder* at the start and end of the array will be preserved.|
+| *fill_edges* | `bool` | | Indicates whether *missing_value_placeholder* at the start and end of the array should be replaced with nearest value. `true` by default. If set to `false`, then *missing_value_placeholder* at the start and end of the array will be preserved.|
 | *constant_value* | scalar | | Relevant only for arrays that entirely consist of *null* values. This parameter specifies a constant value with which to fill the series. Default value is 0. Setting this parameter it to `double(`*null*`)` preserves the *null* values.|
 
 ## Returns

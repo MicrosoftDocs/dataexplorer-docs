@@ -7,13 +7,11 @@ ms.date: 06/05/2023
 ---
 # Event Grid data connection
 
-[!INCLUDE [real-time-analytics-connectors-note](includes/real-time-analytics-connectors-note.md)]
-
 Event Grid ingestion is a pipeline that listens to Azure storage, and updates Azure Data Explorer to pull information when subscribed events occur. Azure Data Explorer offers continuous ingestion from Azure Storage (Blob storage and ADLSv2) with [Azure Event Grid](/azure/event-grid/overview) subscription for blob created or blob renamed notifications and streaming these notifications to Azure Data Explorer via an Azure Event Hubs.
 
 The Event Grid ingestion pipeline goes through several steps. You create a target table in Azure Data Explorer into which the [data in a particular format](#data-format) will be ingested. Then you create an Event Grid data connection in Azure Data Explorer. The Event Grid data connection needs to know [events routing](#events-routing) information, such as what table to send the data to and the table mapping. You also specify [ingestion properties](#ingestion-properties), which describe the data to be ingested, the target table, and the mapping. You can generate sample data and [upload blobs](#upload-blobs) or [rename blobs](#rename-blobs) to test your connection. [Delete blobs](#delete-blobs-using-storage-lifecycle) after ingestion.
 
-Event Grid ingestion can be managed through the [Azure portal](ingest-data-event-grid.md), using the [ingestion wizard](/azure/data-explorer/ingest-from-container), programmatically with [C#](data-connection-event-grid-csharp.md) or [Python](data-connection-event-grid-python.md), or with the [Azure Resource Manager template](data-connection-event-grid-resource-manager.md).
+Event Grid ingestion can be managed through the [Azure portal](create-event-grid-connection.md), using the [ingestion wizard](/azure/data-explorer/ingest-from-container), programmatically with [C#](data-connection-event-grid-csharp.md) or [Python](data-connection-event-grid-python.md), or with the [Azure Resource Manager template](data-connection-event-grid-resource-manager.md).
 
 For general information about data ingestion in Azure Data Explorer, see [Azure Data Explorer data ingestion overview](ingest-data-overview.md).
 
@@ -99,7 +97,7 @@ await blob.UploadAsync(BinaryData.FromString(File.ReadAllText("<filePath>")));
 
 ## Upload blobs
 
-You can create a blob from a local file, set ingestion properties to the blob metadata, and upload it. For examples, see [Ingest blobs into Azure Data Explorer by subscribing to Event Grid notifications](ingest-data-event-grid.md#generate-sample-data)
+You can create a blob from a local file, set ingestion properties to the blob metadata, and upload it. For examples, see  [Use the Event Grid data connection](create-event-grid-connection.md#use-the-event-grid-data-connection).
 
 > [!NOTE]
 >
@@ -115,7 +113,7 @@ When using ADLSv2, you can rename a blob to trigger blob ingestion to Azure Data
 > [!NOTE]
 >
 > * Directory renaming is possible in ADLSv2, but it doesn't trigger *blob renamed* events and ingestion of blobs inside the directory. To ingest blobs following renaming, directly rename the desired blobs.
-> * If you defined filters to track specific subjects while [creating the data connection](ingest-data-event-grid.md) or while creating [Event Grid resources manually](ingest-data-event-grid-manual.md#create-an-event-grid-subscription), these filters are applied on the destination file path.
+> * If you defined filters to track specific subjects while [creating the data connection](create-event-grid-connection.md) or while creating [Event Grid resources manually](ingest-data-event-grid-manual.md#create-an-event-grid-subscription), these filters are applied on the destination file path.
 
 ## Delete blobs using storage lifecycle
 

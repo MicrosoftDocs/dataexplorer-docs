@@ -24,8 +24,8 @@ IP address entrances in a text must be properly delimited with non-alphanumeric 
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-| *source*| string | &check; | The value to search.|
-| *ip_address_prefix*| string or dynamic | &check; | An IP address prefix, or an array of IP address prefixes, for which to search. A valid IP address prefix is either a complete IPv4 address, such as `192.168.1.11`, or its prefix ending with a dot, such as `192.`, `192.168.` or `192.168.1.`.|
+| *source*| `string` |  :heavy_check_mark: | The value to search.|
+| *ip_address_prefix*| string or dynamic |  :heavy_check_mark: | An IP address prefix, or an array of IP address prefixes, for which to search. A valid IP address prefix is either a complete IPv4 address, such as `192.168.1.11`, or its prefix ending with a dot, such as `192.`, `192.168.` or `192.168.1.`.|
 
 ## Returns
 

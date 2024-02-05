@@ -21,14 +21,14 @@ The activity_engagement plugin can be used for calculating DAU/WAU/MAU (daily/we
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-| *T* | string | &check; | The tabular input used to calculate engagement. |
-| *IdCoumn* | string | &check; | The name of the column with ID values that represent user activity. |
-| *TimelineColumn* | string | &check; | The name of the column that represents timeline. |
-| *Start* | datetime |  | The analysis start period. |
-| *End* | datetime |  | The analysis end period. |
-| *InnerActivityWindow* | timespan | &check; | The inner-scope analysis window period. |
-| *OuterActivityWindow* | timespan | &check; | The outer-scope analysis window period. |
-| *dim1*, *dim2*, ... | dynamic |  | An array of the dimensions columns that slice the activity metrics calculation. |
+| *T* | `string` |  :heavy_check_mark: | The tabular input used to calculate engagement. |
+| *IdCoumn* | `string` |  :heavy_check_mark: | The name of the column with ID values that represent user activity. |
+| *TimelineColumn* | `string` |  :heavy_check_mark: | The name of the column that represents timeline. |
+| *Start* | `datetime` |  | The analysis start period. |
+| *End* | `datetime` |  | The analysis end period. |
+| *InnerActivityWindow* | `timespan` |  :heavy_check_mark: | The inner-scope analysis window period. |
+| *OuterActivityWindow* | `timespan` |  :heavy_check_mark: | The outer-scope analysis window period. |
+| *dim1*, *dim2*, ... | `dynamic` |  | An array of the dimensions columns that slice the activity metrics calculation. |
 
 ## Returns
 
@@ -38,7 +38,7 @@ Output table schema is:
 
 |TimelineColumn|dcount_activities_inner|dcount_activities_outer|activity_ratio|dim1|..|dim_n|
 |---|---|---|---|--|--|--|--|--|--|
-|type: as of *TimelineColumn*|long|long|double|..|..|..|
+|type: as of *TimelineColumn*| `long` |long|double|..|..|..|
 
 ## Examples
 

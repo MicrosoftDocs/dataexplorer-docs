@@ -19,8 +19,8 @@ Returns a result of the bitwise `or` operation of the two values.
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-| *value1* | long | &check; | The left-hand value of the bitwise `OR` operation. |
-| *value2* | long | &check; | The right-hand value of the bitwise `OR` operation. |
+| *value1* | `long` |  :heavy_check_mark: | The left-hand value of the bitwise `OR` operation. |
+| *value2* | `long` |  :heavy_check_mark: | The right-hand value of the bitwise `OR` operation. |
 
 ## Returns
 

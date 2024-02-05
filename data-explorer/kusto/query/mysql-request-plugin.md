@@ -29,9 +29,9 @@ The plugin is invoked with the [`evaluate`](evaluate-operator.md) operator.
 
 | Name | Type | Required| Description |
 |---|---|---|---|
-| *ConnectionString* | string | &check; | The connection string that points at the MySQL Server network endpoint. See [authentication](#username-and-password-authentication) and how to specify the [network endpoint](#specify-the-network-endpoint). |
-| *SqlQuery* | string | &check; | The query that is to be executed against the SQL endpoint. Must return one or more row sets. Only the first set is made available for the rest of the query. |
-| *SqlParameters* | dynamic | | A property bag object that holds key-value pairs to pass as parameters along with the query. |
+| *ConnectionString* | `string` |  :heavy_check_mark: | The connection string that points at the MySQL Server network endpoint. See [authentication](#username-and-password-authentication) and how to specify the [network endpoint](#specify-the-network-endpoint). |
+| *SqlQuery* | `string` |  :heavy_check_mark: | The query that is to be executed against the SQL endpoint. Must return one or more row sets. Only the first set is made available for the rest of the query. |
+| *SqlParameters* | `dynamic` | | A property bag object that holds key-value pairs to pass as parameters along with the query. |
 | *OutputSchema* | | | The names and types for the expected columns of the `mysql_request` plugin output.<br /><br />**Syntax**: `(` *ColumnName* `:` *ColumnType* [`,` ...] `)` |
 
 > [!NOTE]

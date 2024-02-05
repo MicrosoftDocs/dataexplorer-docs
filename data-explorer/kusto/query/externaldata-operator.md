@@ -41,17 +41,17 @@ The `externaldata` operator returns a table whose schema is defined in the query
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-| *columnName*, *columnType* | string | &check;| A list of column names and their types. This list defines the schema of the table. |
-| *storageConnectionString* | string | &check;| A [storage connection string](../api/connection-strings/storage-connection-strings.md) of the storage artifact to query. |
-| *propertyName*, *propertyValue* | string | | A list of optional [properties](#properties) that determines how to interpret the data retrieved from storage.
+| *columnName*, *columnType* | `string` |  :heavy_check_mark:| A list of column names and their types. This list defines the schema of the table. |
+| *storageConnectionString* | `string` |  :heavy_check_mark:| A [storage connection string](../api/connection-strings/storage-connection-strings.md) of the storage artifact to query. |
+| *propertyName*, *propertyValue* | `string` | | A list of optional [supported properties](#supported-properties) that determines how to interpret the data retrieved from storage.
 
-### Properties
+### Supported properties
 
 | Property         | Type     | Description       |
 |------------------|----------|-------------------|
-| format         | string | The data format. If unspecified, an attempt is made to detect the data format from file extension. The default is `CSV`. All [ingestion data formats](../../ingestion-supported-formats.md) are supported. |
-| ignoreFirstRecord | bool | If set to `true`, the first record in every file is ignored. This property is useful when querying CSV files with headers. |
-| ingestionMapping | string | Indicates how to map data from the source file to the actual columns in the operator result set. See [data mappings](../management/mappings.md). |
+| format         | `string` | The data format. If unspecified, an attempt is made to detect the data format from file extension. The default is `CSV`. All [ingestion data formats](../../ingestion-supported-formats.md) are supported. |
+| ignoreFirstRecord | `bool` | If set to `true`, the first record in every file is ignored. This property is useful when querying CSV files with headers. |
+| ingestionMapping | `string` | Indicates how to map data from the source file to the actual columns in the operator result set. See [data mappings](../management/mappings.md). |
 
 > [!NOTE]
 >

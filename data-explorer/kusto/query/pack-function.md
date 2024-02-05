@@ -21,8 +21,8 @@ Creates a [dynamic](scalar-data-types/dynamic.md) property bag object from a lis
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-|*key*| string | &check; | The key name.|
-|*value*| string | &check; | The key value.|
+|*key*| `string` |  :heavy_check_mark: | The key name.|
+|*value*| `string` |  :heavy_check_mark: | The key value.|
 
 > [!NOTE]
 > The *key* and *value* strings are an alternating list the total length of the list must be even.

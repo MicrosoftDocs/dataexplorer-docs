@@ -22,7 +22,7 @@ Converts the input to a decimal number representation.
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-| *value* | scalar | &check; | The value to convert to a decimal.|
+| *value* | scalar |  :heavy_check_mark: | The value to convert to a decimal.|
 
 ## Returns
 

@@ -25,9 +25,9 @@ The function `series_mv_oc_anomalies_fl()` is a [user-defined function (UDF)](..
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-| *features_cols* | dynamic | &check; | An array containing the names of the columns that are used for the multivariate anomaly detection model. |
-| *anomaly_col* | string | &check; | The name of the column to store the detected anomalies. |
-| *anomalies_pct* | real | | A real number in the range [0-50] specifying the expected percentage of anomalies in the data. Default value: 4%. |
+| *features_cols* | `dynamic` |  :heavy_check_mark: | An array containing the names of the columns that are used for the multivariate anomaly detection model. |
+| *anomaly_col* | `string` |  :heavy_check_mark: | The name of the column to store the detected anomalies. |
+| *anomalies_pct* | `real` | | A real number in the range [0-50] specifying the expected percentage of anomalies in the data. Default value: 4%. |
 
 ## Function definition
 

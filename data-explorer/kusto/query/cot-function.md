@@ -19,7 +19,7 @@ Calculates the trigonometric cotangent of the specified angle, in radians.
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-| *number* | real | &check; | The value for which to calculate the cotangent. |
+| *number* | `real` |  :heavy_check_mark: | The value for which to calculate the cotangent. |
 
 ## Returns
 

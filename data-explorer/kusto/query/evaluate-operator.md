@@ -27,10 +27,10 @@ The `evaluate` operator is a tabular operator that allows you to invoke query la
 
 |Name|Type|Required|Description|
 |--|--|--|--|
-| *T* | string | | A tabular input to the plugin. Some plugins don't take any input and act as a tabular data source.|
-| *evaluateParameters* | string | | Zero or more space-separated [evaluate parameters](#evaluate-parameters) in the form of *Name* `=` *Value* that control the behavior of the evaluate operation and execution plan. Each plugin may decide differently how to handle each parameter. Refer to each plugin's documentation for specific behavior.|
-| *PluginName* | string | &check; | The mandatory name of the plugin being invoked. |
-| *PluginArgs* | string | | Zero or more comma-separated arguments to provide to the plugin.|
+| *T* | `string` | | A tabular input to the plugin. Some plugins don't take any input and act as a tabular data source.|
+| *evaluateParameters* | `string` | | Zero or more space-separated [evaluate parameters](#evaluate-parameters) in the form of *Name* `=` *Value* that control the behavior of the evaluate operation and execution plan. Each plugin may decide differently how to handle each parameter. Refer to each plugin's documentation for specific behavior.|
+| *PluginName* | `string` |  :heavy_check_mark: | The mandatory name of the plugin being invoked. |
+| *PluginArgs* | `string` | | Zero or more comma-separated arguments to provide to the plugin.|
 
 ### Evaluate parameters
 

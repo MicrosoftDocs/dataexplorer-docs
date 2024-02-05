@@ -19,8 +19,8 @@ Matches two IPv4 strings. The two IPv4 strings are parsed and compared while acc
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-| *ip1*, *ip2*| string | &check; | An expression representing an IPv4 address. IPv4 strings can be masked using [IP-prefix notation](#ip-prefix-notation).|
-| *prefix*| int | | An integer from 0 to 32 representing the number of most-significant bits that are taken into account.|
+| *ip1*, *ip2*| `string` |  :heavy_check_mark: | An expression representing an IPv4 address. IPv4 strings can be masked using [IP-prefix notation](#ip-prefix-notation).|
+| *prefix*| `int` | | An integer from 0 to 32 representing the number of most-significant bits that are taken into account.|
 
 [!INCLUDE [ip-prefix-notation](../../includes/ip-prefix-notation.md)]
 

@@ -26,13 +26,13 @@ The card visual only shows one element. If there are multiple columns and rows i
 
 | Name | Type | Required | Description |
 | -- | -- | -- | -- |
-| *T* | string | &check; | Input table name.|
-| *propertyName*, *propertyValue* | string | | A comma-separated list of key-value property pairs. See [supported properties](#supported-properties).|
+| *T* | `string` |  :heavy_check_mark: | Input table name.|
+| *propertyName*, *propertyValue* | `string` | | A comma-separated list of key-value property pairs. See [supported properties](#supported-properties).|
 
 ### Supported properties
 
 All properties are optional.
-    
+
 |*PropertyName*|*PropertyValue*                                                                   |
 |--------------|----------------------------------------------------------------------------------|
 |`title`       |The title of the visualization (of type `string`).                                |
@@ -42,7 +42,7 @@ All properties are optional.
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAy2LsQqDQBAFe7/icZX5CAuLJFxjocH+8BZd0D1ZV0Xw42OC1RQz01jS6bmR2JKd2AdSQmPBqChc6+u3r3zpECTiH32O+WdeY0rRXUOXVrGLShJJ0QWN2NkG5MY20l0uYEHL2rNwcI8vTweEO3QAAAA=" target="_blank">Run the query</a>
 
-```kusto 
+```kusto
 StormEvents
 | where State=="VIRGINIA" and EventType=="Flood"
 | count

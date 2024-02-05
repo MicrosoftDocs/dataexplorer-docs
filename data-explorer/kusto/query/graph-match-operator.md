@@ -23,11 +23,11 @@ The `graph-match` operator searches for all occurrences of a graph pattern in an
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-| *G* | string | &check; | The input graph source. |
-| *Pattern* | string | &check; | One or more comma delimited sequences of graph node elements connected by graph edge elements using graph notations. See [Graph pattern notation](#graph-pattern-notation). |
-| *Constraints* | string | &check; | A Boolean expression composed of properties of named variables in the *Pattern*. Each graph element (node/edge) has a set of properties that were attached to it during the graph construction. The constraints define which elements (nodes and edges) are matched by the pattern. A property is referenced by the variable name followed by a dot (`.`) and the property name. |
-| *Expression* | string |  | The `project` clause converts each pattern to a row in a tabular result, the project expression(s) have to be scalar and reference properties of named variables defined in the *Pattern*. A property is referenced by the variable name followed by a dot (`.`) and the attribute name. |
-| *CyclesOption* | string |  | Controls whether cycles are matched in the *Pattern*, allowed values: `all`, `none`, `unique_edges`. If `all` is specified then all cycles are matched, if `none` is specified cycles are not matched, if `unique_edges` (default) is specified, cycles are matched but only if the cycles don't include the same edge more than once. |
+| *G* | `string` |  :heavy_check_mark: | The input graph source. |
+| *Pattern* | `string` |  :heavy_check_mark: | One or more comma delimited sequences of graph node elements connected by graph edge elements using graph notations. See [Graph pattern notation](#graph-pattern-notation). |
+| *Constraints* | `string` |  :heavy_check_mark: | A Boolean expression composed of properties of named variables in the *Pattern*. Each graph element (node/edge) has a set of properties that were attached to it during the graph construction. The constraints define which elements (nodes and edges) are matched by the pattern. A property is referenced by the variable name followed by a dot (`.`) and the property name. |
+| *Expression* | `string` |  | The `project` clause converts each pattern to a row in a tabular result, the project expression(s) have to be scalar and reference properties of named variables defined in the *Pattern*. A property is referenced by the variable name followed by a dot (`.`) and the attribute name. |
+| *CyclesOption* | `string` |  | Controls whether cycles are matched in the *Pattern*, allowed values: `all`, `none`, `unique_edges`. If `all` is specified then all cycles are matched, if `none` is specified cycles are not matched, if `unique_edges` (default) is specified, cycles are matched but only if the cycles don't include the same edge more than once. |
 
 ### Graph pattern notation
 

@@ -30,7 +30,7 @@ You must have at least [Database Ingestor](../access-control/role-based-access-c
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-| *TableName* | string | &check; | The name of the table for which to clear the cache. |
+| *TableName* | `string` |  :heavy_check_mark: | The name of the table for which to clear the cache. |
 
 ## Returns
 

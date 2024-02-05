@@ -19,7 +19,7 @@ Returns whether the input is a finite value, meaning it's not infinite or NaN.
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-|*number*|real|&check;| The value to check if finite.|
+|*number*| `real` | :heavy_check_mark:| The value to check if finite.|
 
 ## Returns
 

@@ -19,7 +19,7 @@ The base-2 exponential function of x, which is 2 raised to the power x: 2^x.
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-| *x* | real | &check;| The value of the exponent. |
+| *x* | `real` |  :heavy_check_mark:| The value of the exponent. |
 
 ## Returns
 

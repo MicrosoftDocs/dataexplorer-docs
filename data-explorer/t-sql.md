@@ -105,11 +105,12 @@ SELECT * FROM kusto.MyFunction(10)
 
 |Name|Type|Required|Description|
 |--|--|--|--|
-|*requestPropertyName*|string|&check;|The name of the [request property](kusto/api/rest/request-properties.md) to set.|
-|*type*|string|&check;|The [T-SQL data type](/sql/t-sql/data-types/data-types-transact-sql) of the value.|
-|*value*|scalar|&check;|The value to assign to the request property.|
+|*requestPropertyName*| `string` | :heavy_check_mark:|The name of the [request property](kusto/api/rest/request-properties.md) to set.|
+|*type*| `string` | :heavy_check_mark:|The [T-SQL data type](/sql/t-sql/data-types/data-types-transact-sql) of the value.|
+|*value*|scalar| :heavy_check_mark:|The value to assign to the request property.|
 
 > [!NOTE]
+>
 > * Two statements must be separated by a semicolon, and there should be no empty line before the query.
 > * Request properties apply only to the [tabular expression statements](kusto/query/tabular-expression-statements.md) that immediately follow.
 

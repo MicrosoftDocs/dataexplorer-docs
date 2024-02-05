@@ -22,7 +22,7 @@ Evaluates its sole argument and returns a `bool` value indicating if the argumen
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-|*value*|scalar|&check;| The value to check if not null.|
+|*value*|scalar| :heavy_check_mark:| The value to check if not null.|
 
 ## Returns
 
