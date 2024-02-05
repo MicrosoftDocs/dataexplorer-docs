@@ -114,6 +114,9 @@ To define continuous export to a delta table, do the following steps:
 
 1. Define continuous export to this table using the commands described in [Create or alter continuous export](create-alter-continuous.md).
 
+    > [!IMPORTANT]
+    > The schema of the delta table must be in sync with the continuous export query.  If the underlying delta table changes, the export might start failing with unexpected behavior.
+    
 ## Limitations
 
 **General**:
