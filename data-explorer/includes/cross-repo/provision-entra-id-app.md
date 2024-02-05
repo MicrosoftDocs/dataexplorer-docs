@@ -53,10 +53,6 @@ You've created your Microsoft Entra application and service principal.
 
 ### [Azure CLI](#tab/azurecli)
 
-The Microsoft Entra service principal can be created through the [Azure portal](/azure/active-directory/develop/howto-create-service-principal-portal) or programatically, as in the following example.
-
-This service principal will be the identity used by the connector to write data your table in Kusto. You'll later grant permissions for this service principal to access Kusto.
-
 [!INCLUDE [entra-service-principal](../entra-service-principal.md)]
 
 ---
