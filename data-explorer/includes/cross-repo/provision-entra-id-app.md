@@ -65,7 +65,7 @@ You've created your Microsoft Entra application and service principal.
    az account set --subscription YOUR_SUBSCRIPTION_GUID
    ```
 
-3. Create the service principal. In this example, the service principal is called `splunk-uf`.
+3. Create the service principal. In this example, the service principal is called `my-service-principal`.
 
    ```azurecli-interactive
    az ad sp create-for-rbac -n "my-service-principal" --role Contributor --scopes /subscriptions/{SubID}
