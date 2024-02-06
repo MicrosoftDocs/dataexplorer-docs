@@ -32,10 +32,11 @@ A copy of the input table sorted in either ascending or descending order based o
 
 ## Sort operator behavior with special floating point values
 
-When the input to the sort operator contains the special values `null`, `NaN`, `-inf` and `+inf` the behavior will be as follows:
+When the input to the sort operator contains the special values `null`, `NaN`, `-inf` and `+inf` the order will be as follows:
 |           | asc | desc|
-|nulls first|`null`,`NaN`,`-inf`,`-5`,`0`,`5`,`+inf`|`null`,`NaN`,`+inf`,`5`,`0`,`-5`|
-|nulls last |`-inf`,`-5`,`0`,`+inf`,`NaN`,`null`|`+inf`,`5`,`0`,`-5`,`NaN`,`null`|
+|--|--|--|
+|**nulls first**|`null`,`NaN`,`-inf`,`-5`,`0`,`5`,`+inf`|`null`,`NaN`,`+inf`,`5`,`0`,`-5`|
+|**nulls last**|`-inf`,`-5`,`0`,`+inf`,`NaN`,`null`|`+inf`,`5`,`0`,`-5`,`NaN`,`null`|
 
 • Nulls and NaNs always come as a "group".
 • The order between nulls and NaNs is determined by the "first / last" property, not "asc / desc" property(since they have no asc / desc relationship).
