@@ -76,7 +76,7 @@ Here's the output:
 
 ## Order Results: 
 
-Sort and display the top 5 rows based on StartTime in descending order using the [top](https://learn.microsoft.com/en-us/azure/data-explorer/kusto/query/top-operator) and [sort](https://learn.microsoft.com/en-us/azure/data-explorer/kusto/query/sort-operator) operators.
+Sort and display the top 5 rows based on `StartTime` in descending order using the [top](https://learn.microsoft.com/en-us/azure/data-explorer/kusto/query/top-operator) and [sort](https://learn.microsoft.com/en-us/azure/data-explorer/kusto/query/sort-operator) operators.
 
 <!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
