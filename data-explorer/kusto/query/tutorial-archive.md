@@ -6,9 +6,11 @@ ms.topic: reference
 ms.date: 11/01/2021
 ---
 
-# Tutorial: Use Kusto queries archive
+# Tutorial: Mastering Essential Kusto Query Language Operators
 
-The best way to learn about the Kusto Query Language is to look at some basic queries to get a "feel" for the language. We recommend using a [database with some sample data](https://help.kusto.windows.net/Samples). The queries that are demonstrated in this tutorial should run on that database. The `StormEvents` table in the sample database provides some information about storms that happened in the United States.
+Mastering the Kusto Query Language is essential for efficient data querying and analysis. We recommend using a [database with some sample data](https://help.kusto.windows.net/Samples). This tutorial focuses on using common operators with the [StormEvents table](https://www.ncdc.noaa.gov/stormevents/), offering practical insights and hands-on examples. It is already preloaded into a sample application where you can run basic queries using Kusto Query Language. This tutorial will show you 
+
+The queries that are demonstrated in this tutorial should run on that database. The `StormEvents` table in the sample database provides some information about storms that happened in the United States.
 
 ## Count rows
 
