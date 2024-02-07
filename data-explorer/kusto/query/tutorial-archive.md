@@ -8,11 +8,12 @@ ms.date: 11/01/2021
 
 # Tutorial: Use Kusto queries archive
 
-The best way to learn about the Kusto Query Language is to look at some basic queries to get a "feel" for the language. We recommend using a [database with some sample data](https://help.kusto.windows.net/Samples). The queries that are demonstrated in this tutorial should run on that database. The `StormEvents` table in the sample database provides some information about storms that happened in the United States.
+## Introduction
+The best way to learn about the Kusto Query Language is to look at some basic queries to get a "feel" for the language. We recommend using a [database with some sample data](https://help.kusto.windows.net/Samples).  The queries that are demonstrated in this tutorial should run on the `StormEvents` table which provides information about storms that happened in the United States.
 
 ## Count rows
 
-Our example database has a table called `StormEvents`. We want to find out how large the table is. So we'll pipe its content into an operator that counts the rows in the table.
+In `StormEvents`, we want to find out how large the table is so, we'll pipe its content into an operator that counts the rows in the table.
 
 *Syntax note*: A query is a data source (usually a table name), optionally followed by one or more pairs of the pipe character and some tabular operator.
 
@@ -77,7 +78,7 @@ But [take](./take-operator.md) shows rows from the table in no particular order,
 
 ## Order results: *sort*, *top*
 
-* *Syntax note*: Some operators have parameters that are introduced by keywords like `by`.
+*Syntax note*: Some operators have parameters that are introduced by keywords like `by`.
 * In the following example, `desc` orders results in descending order and `asc` orders results in ascending order.
 
 Show me the first *n* rows, ordered by a specific column:
@@ -160,7 +161,7 @@ StormEvents
 | summarize event_count = count() by State
 ```
 
-[summarize](./summarize-operator.md) groups together rows that have the same values in the `by` clause, and then uses an aggregation function (for example, `count`) to combine each group in a single row. In this case, there's a row for each state and a column for the count of rows in that state.
+[Summarize](./summarize-operator.md) groups together rows that have the same values in the `by` clause, and then uses an aggregation function (for example, `count`) to combine each group in a single row. In this case, there's a row for each state and a column for the count of rows in that state.
 
 A range of [aggregation functions](aggregation-functions.md) are available. You can use several aggregation functions in one `summarize` operator to produce several computed columns. For example, we could get the count of storms per state, and the sum of unique types of storm per state. Then, we could use [top](./top-operator.md) to get the most storm-affected states:
 
@@ -198,7 +199,8 @@ StormEvents
 | summarize event_count = count() by bin(StartTime, 1d)
 ```
 
-The query reduces all the timestamps to intervals of one day:
+The query reduces all the timestamps to intervals of one day.
+Here's the output:
 
 |StartTime|event_count|
 |---|---|
@@ -228,6 +230,8 @@ StormEvents
 | render columnchart
 ```
 
+Here's the output:
+
 :::image type="content" source="media/tutorial/event-counts-state.png" alt-text="Screenshot that shows a column chart of storm event counts by state.":::
 
 Although we removed `mid` in the `project` operation, we still need it if we want the chart to display the states in that order.
@@ -245,6 +249,8 @@ StormEvents
 | render timechart
 ```
 
+Here's the output:
+
 :::image type="content" source="media/tutorial/time-series-start-bin.png" alt-text="Screenshot of a line chart of events binned by time.":::
 
 ## Multiple series
@@ -259,9 +265,13 @@ StormEvents
 | summarize count() by bin(StartTime, 10h), Source
 ```
 
+Here's the output:
+
 :::image type="content" source="media/tutorial/table-count-source.png" alt-text="Screenshot that shows a table count by source.":::
 
-Just add the `render` term to the preceding example: `| render timechart`.
+Just add the `render` term to the preceding example: `| render timechart`:
+
+Here's the output:
 
 :::image type="content" source="media/tutorial/line-count-source.png" alt-text="Screenshot that shows a line chart count by source.":::
 
@@ -271,7 +281,7 @@ Notice that `render timechart` uses the first column as the x-axis, and then dis
 
 How does activity vary over the average day?
 
-Count events by the time modulo one day, binned into hours.
+Count events by the time modulo one day, binned into hours:
 
 <!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
@@ -281,6 +291,8 @@ StormEvents
 | sort by hour asc
 | render timechart
 ```
+
+Here's the output:
 
 :::image type="content" source="media/tutorial/time-count-hour.png" alt-text="Screenshot that shows a timechart count by hour.":::
 
@@ -301,6 +313,8 @@ StormEvents
 | render timechart
 ```
 
+Here's the output:
+
 :::image type="content" source="media/tutorial/time-hour-state.png" alt-text="Screenshot of a timechart by hour and state.":::
 
 Divide by `1h` to turn the x-axis into an hour number instead of a duration:
@@ -313,6 +327,8 @@ StormEvents
 | summarize event_count=count() by hour, State
 | render columnchart
 ```
+
+Here's the output:
 
 :::image type="content" source="media/tutorial/column-hour-state.png" alt-text="Screenshot that shows a column chart by hour and state.":::
 
@@ -333,39 +349,14 @@ StormEvents
 | distinct State
 ```
 
+Here's the output:
+
 :::image type="content" source="media/tutorial/join-events-lightning-avalanche.png" alt-text="Screenshot that shows joining the events lightning and avalanche.":::
 
-## User session example of *join*
-
-This section doesn't use the `StormEvents` table.
-
-Assume you have data that includes events which mark the start and end of each user session with a unique ID.
-
-How would you find out how long each user session lasts?
-
-You can use `extend` to provide an alias for the two timestamps, and then compute the session duration:
-
-<!-- csl: https://help.kusto.windows.net/Samples -->
-```kusto
-Events
-| where eventName == "session_started"
-| project start_time = timestamp, stop_time, country, session_id
-| join ( Events
-    | where eventName == "session_ended"
-    | project stop_time = timestamp, session_id
-    ) on session_id
-| extend duration = stop_time - start_time
-| project start_time, stop_time, country, duration
-| take 10
-```
-
-:::image type="content" source="media/tutorial/user-session-extend.png" alt-text="Screenshot of a table of results for user session extend.":::
-
-It's a good practice to use `project` to select just the relevant columns before you perform the join. In the same clause, rename the `timestamp` column.
 
 ## Plot a distribution
 
-Returning to the `StormEvents` table, how many storms are there of different lengths?
+How many storms are there of different lengths?
 
 <!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
@@ -378,6 +369,8 @@ StormEvents
 | sort by duration asc
 | render timechart
 ```
+
+Here's the output:
 
 :::image type="content" source="media/tutorial/event-count-duration.png" alt-text="Screenshot of timechart results for event count by duration.":::
 
@@ -395,9 +388,11 @@ To get this information, use the preceding query from [Plot a distribution](#plo
 | summarize percentiles(duration, 5, 20, 50, 80, 95)
 ```
 
-In this case, we didn't use a `by` clause, so the output is a single row:
+Here's the output:
 
 :::image type="content" source="media/tutorial/summarize-percentiles-duration.png" lightbox="media/tutorial/summarize-percentiles-duration.png" alt-text="Screenshot of a table of results for summarize percentiles by duration.":::
+
+In this case, we didn't use a `by` clause, so the output is a single row.
 
 We can see from the output that:
 
@@ -419,11 +414,13 @@ StormEvents
 | summarize percentiles(duration, 5, 20, 50, 80, 95) by State
 ```
 
+Here's the output:
+
 :::image type="content" source="media/tutorial/summarize-percentiles-state.png" alt-text="Table summarize percentiles duration by state.":::
 
 ## Percentages
 
-Using the StormEvents table, we can calculate the percentage of direct injuries from all injuries.
+Calculate the percentage of direct injuries from all injuries:
 
 <!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
@@ -432,8 +429,8 @@ StormEvents
 | extend Percentage = (  100 * InjuriesDirect / (InjuriesDirect + InjuriesIndirect) )
 | project StartTime, InjuriesDirect, InjuriesIndirect, Percentage
 ```
+Here's the output:
 
-The query removes zero count entries:
 
 |StartTime|InjuriesDirect|InjuriesIndirect|Percentage
 |---|---|---|---|
@@ -444,6 +441,8 @@ The query removes zero count entries:
 |2007-09-10T13:45:00Z|4|1|80|
 |2007-12-06T08:30:00Z|3|3|50|
 |2007-12-08T12:00:00Z|1|1|50|
+
+The query removes zero count entries.
 
 ## Assign a result to a variable: *let*
 
@@ -466,43 +465,11 @@ LightningStorms
 > In Kusto Explorer, to execute the entire query, don't add blank lines between parts of the query.
 > Any two statements must be separated by a semicolon.
 
-## Combine data from several databases in a query
-
-In the following query, the `Logs` table must be in your default database:
-
-```kusto
-Logs | where ...
-```
-
-To access a table in a different database, use the following syntax:
-
-```kusto
-database("db").Table
-```
-
-For example, if you have databases named `Diagnostics` and `Telemetry` and you want to correlate some of the data in the two tables, you might use the following query (assuming `Diagnostics` is your default database):
-
-```kusto
-Logs | join database("Telemetry").Metrics on Request MachineId | ...
-```
-
-Use this query if your default database is `Telemetry`:
-
-```kusto
-union Requests, database("Diagnostics").Logs | ...
-```
-
-The preceding two queries assume that both databases are in the cluster you're currently connected to. If the `Telemetry` database was in a cluster named *TelemetryCluster.kusto.windows.net*, to access it, use this query:
-
-```kusto
-Logs | join cluster("TelemetryCluster").database("Telemetry").Metrics on Request MachineId | ...
-```
-
-> [!NOTE]
-> When the cluster is specified, the database is mandatory.
-
-For more information about combining data from several databases in a query, see [cross-database queries](cross-cluster-or-database-queries.md).
 
 ## Related content
+
+* Follow this to combine data from several databases in a query.
+
+* User session example of *join*
 
 * View code samples for the [Kusto Query Language](samples.md?pivots=azuredataexplorer).
