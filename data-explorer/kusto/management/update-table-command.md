@@ -1,13 +1,13 @@
 ---
-title:  .update table command (public preview)
+title:  .update table command (preview)
 description: Learn how to use the .update table command to perform transactional data updates.
-ms.reviewer: orspodek
+ms.reviewer: vplauzon
 ms.topic: reference
 ms.date: 01/25/2024
 ---
-# Update table (public preview)
+# Update table (preview)
 
-The `.update table` command performs  data updates in a specified table by deleting and appending data atomically.
+The `.update table` command performs data updates in a specified table by deleting and appending data atomically.
 
 ## Permissions
 
@@ -15,17 +15,88 @@ You must have at least [Table Admin](../access-control/role-based-access-control
 
 ## Syntax
 
-The update commands has two syntaxes.
+The update commands have two syntaxes.
 
-### Complete Syntax
+### Simplified syntax
 
-The complete syntax offers the most flexibility as you can define a query to delete rows and a different query to append rows:
+The simplified syntax only takes an append query in.  It deduces the delete query by finding all the existing rows having an *Id Column* value present in the append query:
+
+`.update` `table` *TableName* on *IdColumnName* [`with` `(` *propertyName* `=` *propertyValue* [`,` ...]`)`] `<|`
+
+*appendQuery*
+
+### Expanded syntax
+
+The expanded syntax offers the most flexibility as you can define a query to delete rows and a different query to append rows:
 
 `.update` `table` *TableName* `delete` *DeleteIdentifier* `append` *AppendIdentifier* [`with` `(` *propertyName* `=` *propertyValue* [`,` ...]`)`] `<|`
 
 `let` *DeleteIdentifier*`=` ...`;`
 
 `let` *AppendIdentifier*`=` ...`;`
+
+
+### Example: Expanded syntax
+
+## Parameters
+
+**VP Note to Doc-Writer**:  Feel free to improve the Complete vs Simplified syntax duality, including splitting the parameters into two if you think it's clearer.
+
+|Name|Type|Required|Description|
+|---|---|---|---|
+|*TableName*|string|&check;|The name of the table to update. The table name is always relative to the database in context.
+|*IdColumnName*|string|&check;|The name of the column identifying rows.  The column must be present in both the table and *appendQuery*.
+|*appendQuery*|string|&check;|The text of a query or a management command whose results are used as data to append.  The query's schema must be the same as the table's.  See [limitations](#limitations).
+|*DeleteIdentifier*|string|&check;|The identifier name used to specify the delete predicate applied to the updated table.  See [limitations](#limitations).
+|*AppendIdentifier*|string|&check;|The identifier name used to specify the append predicate applied to the updated table.  The query's schema must be the same as the table's.  See [limitations](#limitations).
+
+## Supported properties
+
+Name|Type|Description
+|---|---|---|
+|*whatif*|bool|If `true`, returns the number of records that will be appended / deleted in every shard, without appending / deleting any records. The default is `false`.
+
+## Returns
+
+The result of the command is a table where each record represents an [extent](extents-overview.md) that was either created with new data or had records deleted in it.
+
+| Name     | Type     | Description                                                                      |
+| -------- | -------- | -------------------------------------------------------------------------------- |
+| Table    | `guid`   | The table in which the extent was created or deleted.                            |
+| Action   | `string` | "Create" or "Delete" depending on the action performed on the extent.            |
+| ExtentId | `guid`   | The unique identifier for the extent that was created or deleted by the command. |
+| RowCount | `long`   | The number of rows created or deleted in the specified extent by the command.    |
+
+>[!NOTE]
+> When you update a table that is the source for an update policy, the result of the command contains all generated results in all tables.
+
+## Limitations
+
+Before running an update, run it in `whatif` mode.  This allows you to validate the predicates before deleting / appending data.
+
+* This command is unrecoverable
+* This command doesn't support deleting more than 5 million records
+* The predicates for this command must meet the following requirements:
+    - Delete predicate must include at least one `where` operator
+    - Delete predicate can only use the following operators: `extend`, `where`, `project`, `join` and `lookup`
+    - No remote entities, cross-db and cross-cluster entities can be referenced by both the delete and append predicates
+    - The predicates can't reference an external table or use the `externaldata` operator
+* Append and delete queries are expected to produce deterministic results.  Nondeterministic queries can lead to unexpected results.
+  * A query is deterministic if and only if it would return the same data if executed multiple times
+  * For instance, using the [`take` operator](../query/take-operator.md), [`sample` operator](../query/sample-operator.md), [`rand` function](../query/rand-function.md), etc. isn't recommended as they aren't deterministic.
+  * The queries might be executed more than once within the `update` execution and if intermediate results are inconsistent, the update might produce unexpected results
+
+### Compare update command to materialized views
+
+In some cases, you could use either the .update command or a [materialized view](materialized-views/materialized-view-overview) to achieve the same goal in a table.  For instance, a materialized view could be used to keep the latest version of each record or an update could be used to update records upon new version.  So which one would be a better option for you?
+
+Use the following guidelines to identify which one you should use:
+
+* If your update pattern isn't supported by materialized views, use the update command
+* If the source table has a high ingestion volume, but only few updates, using the update command can be more performant and consume less cache / storage than materialized views. This is because materialized views need to reprocess all ingested data, which is less efficient than identifying the individual records to update based on the append/delete predicates.
+* Materialized views is a fully managed solution. The materialized view is [defined once](materialized-views/materialized-view-create-or-alter) and materialization happens in the background by the system. Update command, on the other hand, requires an orchestrated process (for example, [Azure Data Factory](../..//data-factory-integration.md), [Logic Apps](../tools/logicapps.md), [Power Automate](../../flow.md), etc.) that explicitly executes the update command every time there are updates. Therefore, if materialized views work well enough for your use case, using materialized views is preferable and requires much less management and maintenance.
+
+
 
 For instance, the following command will change the column `State` to the value *Closed* for each row having value *2024-01-25T18:29:00.6811152Z* for column `Timestamp`.
 
@@ -38,13 +109,7 @@ For instance, the following command will change the column `State` to the value 
     | extend State="Closed";
 ```
 
-### Simplified syntax
-
-The simplified syntax only takes an append query in.  It deduces the delete query by finding all the existing rows having an *Id Column* value present in the append query:
-
-`.update` `table` *TableName* on *IdColumnName* [`with` `(` *propertyName* `=` *propertyValue* [`,` ...]`)`] `<|`
-
-*appendQuery*
+### Example: Simplified syntax
 
 For instance, if the table original content is:
 
@@ -81,67 +146,9 @@ Notice that *Diana* wasn't found in the original table.  This is valid and no co
 
 Similarly, if there would have been multiple rows with *Alice* name in the original table, they would all have been deleted and replaced by the single *Alice* row we have in the end.
 
-## Parameters
-
-**VP Note to Doc-Writer**:  Feel free to improve the Complete vs Simplified syntax duality, including splitting the parameters into two if you think it's clearer.
-
-|Name|Type|Required|Description|
-|---|---|---|---|
-|*TableName*|string|&check;|The name of the table to update. The table name is always relative to the database in context.
-|*IdColumnName*|string|&check;|The name of the column identifying rows.  The column must be present in both the table and *appendQuery*.
-|*appendQuery*|string|&check;|The text of a query or a management command whose results are used as data to append.  The query's schema must be the same as the table's.  See [limitations](#limitations).
-|*DeleteIdentifier*|string|&check;|The identifier name used to specify the delete predicate applied to the updated table.  See [limitations](#limitations).
-|*AppendIdentifier*|string|&check;|The identifier name used to specify the append predicate applied to the updated table.  The query's schema must be the same as the table's.  See [limitations](#limitations).
-
-## Supported properties
-
-Name|Type|Description
-|---|---|---|
-|*whatif*|bool|If `true`, returns the number of records that will be appended / deleted in every shard, without actually appending / deleting any records. The default is `false`.
-
-## Returns
-
-The result of the command is a table where each record represent an [extent](https://learn.microsoft.com/en-us/azure/data-explorer/kusto/management/extents-overview) that was either created (with new data) or had records deleted in it.
-
-|Name       |Type      |Description                                                                |
-|-----------|----------|---------------------------------------------------------------------------|
-|Table   |`guid`    |The table in which the extent was created or deleted.|
-|Action |`string`  |"Create" or "Delete" depending on the action performed on the extent.|
-|ExtentId   |`guid`    |The unique identifier for the extent that was created or deleted by the command.|
-|RowCount   |`long`    |The number of rows created or deleted in the specified extent by the command.|
-
->[!NOTE]
-> When you update a table that is the source for an update policy, the result of the command contains all generated results in all tables.
-
-## Limitations
-
-Before running an update, run it in `whatif` mode.  This allows you to validate the predicates before deleting / appending data.
-
-* This command is unrecoverable
-* This command does not support deleting more than 5 million records
-* The predicates for this command must meet the following requirements:
-    - Delete predicate must include at least one `where` operator
-    - Delete predicate can only use the following operators: `extend`, `where`, `project`, `join` and `lookup`
-    - No remote entities, cross-db and cross-cluster entities can be referenced by both the delete and append predicates
-    - The predicates cannot reference an external table or use the `externaldata` operator
-* Append and delete queries are expected to produce deterministic results.  Non-deterministic queries can lead to unexpected results.
-  * A query is deterministic if and only if it would return the same data if executed multiple times
-  * For instance, using the [`take` operator](https://learn.microsoft.com/en-us/azure/data-explorer/kusto/query/take-operator), [`sample` operator](https://learn.microsoft.com/en-us/azure/data-explorer/kusto/query/sample-operator), [`rand` function](https://learn.microsoft.com/en-us/azure/data-explorer/kusto/query/rand-function), etc. isn't recommended as they aren't deterministic.
-  * The queries might be executed more than once within the `update` execution and if intermediate results are inconsistent, the update might produce unexpected results
-
-### .update vs Materialized views
-
-In some cases, you could use either the .update command or a [materialized view](https://learn.microsoft.com/en-us/azure/data-explorer/kusto/management/materialized-views/materialized-view-overview) to achieve the same goal in a table.  For instance, a materialized view could be used to keep the latest *version* of each record or an update could be used to update records upon new version.  So which one would be a better option for you?
-
-Use the following guidelines to identify which one you should use:
-
-* If your update pattern isn't supported by materialized views, use the update command
-* If the source table has a very high ingestion volume, but only very few updates, using the update command can be more performant and consume less cache / storage than materialized views. This is because materialized views need to reprocess all ingested data, which is less efficient than identifying the individual records to update based on the append/delete predicates.
-* Materialized views is a fully managed solution. The materialized view is [defined once](https://learn.microsoft.com/en-us/azure/data-explorer/kusto/management/materialized-views/materialized-view-create-or-alter) and materialization happens in the background by the system. Update command, on the other hand, requires an orchestrated process (e.g. [Azure Data Factory](https://learn.microsoft.com/en-us/azure/data-explorer/data-factory-integration), [Logic Apps](https://learn.microsoft.com/en-us/azure/data-explorer/kusto/tools/logicapps), [Power Automate](https://learn.microsoft.com/en-us/azure/data-explorer/flow), etc.) that explicitly executes the update command every time there are updates. Therefore, if materialized views work well enough for your use case, using materialized views is preferable and requires much less management and maintenance.
-
 ## Examples
 
-We will base the examples on the following table:
+We'll base the examples on the following table:
 
 ```kusto
 .set-or-replace MyTable <|
@@ -252,11 +259,11 @@ MyStagingTable
 | where true
 ```
 
-Note that some records in the staging table didn't exist in the main table (i.e. had `Id>100`) but were still inserted in the main table (upsert behaviour).
+Some records in the staging table didn't exist in the main table (that is, had `Id>100`) but were still inserted in the main table (upsert behavior).
 
 ### Complete syntax - Compound key
 
-The simplified syntax assumes a single column can match rows in the *appendQuery* to infer rows to delete.  Sometimes we have more than one column (e.g. in cases of compound keys).
+The simplified syntax assumes a single column can match rows in the *appendQuery* to infer rows to delete.  Sometimes we have more than one column (for example, in cases of compound keys).
 
 Let's first create such a table with compound keys:
 
