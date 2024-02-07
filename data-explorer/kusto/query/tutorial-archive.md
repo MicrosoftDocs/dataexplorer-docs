@@ -1,4 +1,3 @@
-ADI TZADOK 1
 ---
 title: 'Tutorial: Kusto queries archive'
 description: This archive tutorial describes how to use queries in the Kusto Query Language to meet common query needs.
@@ -9,13 +8,16 @@ ms.date: 11/01/2021
 
 # Tutorial: Use Kusto queries archive
 
-The best way to learn about the Kusto Query Language is to look at some basic queries to get a "feel" for the language. We recommend using a [database with some sample data](https://help.kusto.windows.net/Samples). The queries that are demonstrated in this tutorial should run on that database. The `StormEvents` table in the sample database provides some information about storms that happened in the United States.
+This article provides a tutorial to help you learn about the [Kusto Query Language](https://learn.microsoft.com/en-us/azure/data-explorer/kusto/query/).
+
+Refer to this [sample database](https://help.kusto.windows.net/Samples) for the queries that are demonstrated below. 
+The database has a table called `StormEvents`, which provides information about storms that happened in the United States.
+
+*Syntax note*: A query is a data source (usually a table name), optionally followed by one or more pairs of the pipe character and some tabular operator. Learn more about common [syntax conventions](https://learn.microsoft.com/en-us/azure/data-explorer/kusto/query/syntax-conventions).
 
 ## Count rows
 
-Our example database has a table called `StormEvents`. We want to find out how large the table is. So we'll pipe its content into an operator that counts the rows in the table.
-
-*Syntax note*: A query is a data source (usually a table name), optionally followed by one or more pairs of the pipe character and some tabular operator.
+To find out how large the table is, you'll pipe its content into a [count operator](./count-operator.md) that counts the rows in the table.
 
 <!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
@@ -28,16 +30,18 @@ Here's the output:
 |-----|
 |59066|
 
-For more information, see [count operator](./count-operator.md).
-
 ## Select a subset of columns: *project*
 
-Use [project](./project-operator.md) to pick out only the columns you want. See the following example, which uses both the [project](./project-operator.md)
-and the [take](./take-operator.md) operators.
+Use [project](./project-operator.md) to choose the columns you want to display. 
+
+StormEvents
+| project StartTime, EndTime , State , EventType , EpisodeNarrative
 
 ## Filter by Boolean expression: *where*
 
-Let's see only `flood` events in `California` in Feb-2007:
+Use [where](https://learn.microsoft.com/en-us/azure/data-explorer/kusto/query/where-operator) to filter a table to a subset of rows.  
+
+Let's view `flood` events in `California` in Feb-2007:
 
 <!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
@@ -51,11 +55,13 @@ Here's the output:
 
 |StartTime|EndTime|State|EventType|EpisodeNarrative|
 |---|---|---|---|---|
-|2007-02-19 00:00:00.0000000|2007-02-19 08:00:00.0000000|CALIFORNIA|Flood|A frontal system moving across the Southern San Joaquin Valley brought brief periods of heavy rain to western Kern County in the early morning hours of the 19th. Minor flooding was reported across State Highway 166 near Taft.|
+|2007-02-19 00:00:00.0000000|2007-02-19 08:00:00.0000000|CALIFORNIA|Flood|A frontal system moving across the Southern San Joaquin Valley brought brief periods of heavy rain to Western Kern County. Minor flooding was reported across State Highway 166 near Taft.|
 
 ## Show *n* rows: *take*
 
-Let's see some data. What's in a random sample of five rows?
+To return up to a specified number of rows, use the [take operator](https://learn.microsoft.com/en-us/azure/data-explorer/kusto/query/take-operator)
+
+Let's see what's in a random sample of five rows:
 
 <!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
