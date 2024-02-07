@@ -1,3 +1,4 @@
+ADI
 ---
 title: 'Tutorial: Kusto queries archive'
 description: This archive tutorial describes how to use queries in the Kusto Query Language to meet common query needs.
