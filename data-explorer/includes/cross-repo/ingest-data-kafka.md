@@ -31,7 +31,7 @@ This service principal will be the identity used by the connector to write data 
     .create table Storms (StartTime: datetime, EndTime: datetime, EventId: int, State: string, EventType: string, Source: string)
     ```
 
-    :::image type="content" source="../media/ingest-data-kafka/create-table.png" alt-text="Create a table in Azure Data Explorer portal.":::
+    :::image type="content" source="/azure/data-explorer/includes/media/ingest-data-kafka/create-table.png" alt-text="Create a table in Azure Data Explorer portal.":::
 
 1. Create the corresponding table mapping `Storms_CSV_Mapping` for ingested data using the following command:
 
@@ -286,7 +286,7 @@ The connector will start queueing ingestion processes to Azure Data Explorer.
     | render columnchart
     ```
 
-    :::image type="content" source="../media/ingest-data-kafka/kusto-query.png" alt-text="Screenshot of Kafka query column chart results in Azure Data Explorer.":::
+    :::image type="content" source="/azure/data-explorer/includes/media/ingest-data-kafka/kusto-query.png" alt-text="Screenshot of Kafka query column chart results in Azure Data Explorer.":::
 
 For more query examples and guidance, see [Write queries in KQL](/azure/data-explorer/kusto/query/tutorials/learn-common-operators) and [Kusto Query Language documentation](/azure/data-explorer/kusto/query/index).
 
