@@ -237,7 +237,7 @@ Although we removed `mid` in the `project` operation, we still need it if we wan
 
 ## Timecharts
 
-Going back to numeric bins, let's display a time series:
+Let's display a time series function using the bin and timechart functions:
 
 <!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
@@ -255,18 +255,17 @@ Use multiple values in a `summarize by` clause to create a separate row for each
 <!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
 StormEvents 
-| where StartTime > datetime(2007-06-04) and StartTime < datetime(2007-06-10) 
+| where StartTime > DateTime(2007-06-04) and StartTime < datetime(2007-06-10) 
 | where Source in ("Source","Public","Emergency Manager","Trained Spotter","Law Enforcement")
 | summarize count() by bin(StartTime, 10h), Source
 ```
 
 :::image type="content" source="media/tutorial/table-count-source.png" alt-text="Screenshot that shows a table count by source.":::
 
-Just add the `render` term to the preceding example: `| render timechart`.
+Create a visualization chart by adding `| render timechart` to the preceding query. 
+Notice this uses the first column as the x-axis and displays the other columns as separate lines.
 
 :::image type="content" source="media/tutorial/line-count-source.png" alt-text="Screenshot that shows a line chart count by source.":::
-
-Notice that `render timechart` uses the first column as the x-axis, and then displays the other columns as separate lines.
 
 ## Daily average cycle
 
