@@ -37,7 +37,7 @@ StormEvents
 
 ## Filter by boolean expression
 
-Retrieve flood events in California in Feb-2007 using the [where](https://learn.microsoft.com/en-us/azure/data-explorer/kusto/query/where-operator) operator.
+Retrieve flood events in California in Feb-2007 using the [where](https://learn.microsoft.com/azure/data-explorer/kusto/query/where-operator) operator.
 
 <!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
@@ -55,7 +55,7 @@ Here's the output:
 
 ## Show *n* rows
 
-Use the [take](https://learn.microsoft.com/en-us/azure/data-explorer/kusto/query/take-operator) operator to display a random sample of five rows.
+Use the [take](https://learn.microsoft.com/azure/data-explorer/kusto/query/take-operator) operator to display a random sample of five rows.
 
 <!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
@@ -76,7 +76,7 @@ Here's the output:
 
 ## Order results 
 
-Sort and display the top 5 rows based on `StartTime` in descending order using the [top](https://learn.microsoft.com/en-us/azure/data-explorer/kusto/query/top-operator) and [sort](https://learn.microsoft.com/en-us/azure/data-explorer/kusto/query/sort-operator) operators.
+Sort and display the top 5 rows based on `StartTime` in descending order using the [top](https://learn.microsoft.com/azure/data-explorer/kusto/query/top-operator) and [sort](https://learn.microsoft.com/azure/data-explorer/kusto/query/sort-operator) operators.
 
 <!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
@@ -107,7 +107,7 @@ StormEvents
 
 ## Compute derived columns
 
-Extend your analysis by creating new columns, like `Duration`, using the [extend](https://learn.microsoft.com/en-us/azure/data-explorer/kusto/query/extend-operator) operator.
+Extend your analysis by creating new columns, like `Duration`, using the [extend](https://learn.microsoft.com/azure/data-explorer/kusto/query/extend-operator) operator.
 
 <!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
@@ -167,7 +167,7 @@ Here's the output:
 
 ## Display a chart or table
 
-Use [render](https://learn.microsoft.com/en-us/azure/data-explorer/kusto/query/render-operator?pivots=azuredataexplorer) to project two columns and use them as the x-axis and the y-axis of a chart.
+Use [render](https://learn.microsoft.com/azure/data-explorer/kusto/query/render-operator?pivots=azuredataexplorer) to project two columns and use them as the x-axis and the y-axis of a chart.
 
 <!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
@@ -185,7 +185,7 @@ While we excluded `mid` from the project operation, it's still required for main
 
 ## Display a time chart
 
-Use the [timechart](https://learn.microsoft.com/en-us/azure/data-explorer/kusto/query/visualization-timechart?pivots=azuredataexplorer) feature visualize event counts over time with a line chart.
+Use the [timechart](https://learn.microsoft.com/azure/data-explorer/kusto/query/visualization-timechart?pivots=azuredataexplorer) feature visualize event counts over time with a line chart.
 
 <!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
@@ -198,7 +198,7 @@ StormEvents
 
 ## Join data types
 
-Find states where both lightning and avalanche events occurred using the [join](https://learn.microsoft.com/en-us/azure/data-explorer/kusto/query/join-operator?pivots=azuredataexplorer) operator.
+Find states where both lightning and avalanche events occurred using the [join](https://learn.microsoft.com/azure/data-explorer/kusto/query/join-operator?pivots=azuredataexplorer) operator.
 
 <!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
@@ -258,4 +258,4 @@ LightningStorms
 
 ## Related content
 
-* Learn how to [join data from multiple tables](https://learn.microsoft.com/en-us/azure/data-explorer/kusto/query/tutorials/join-data-from-multiple-tables).
+* Learn how to [join data from multiple tables](https://learn.microsoft.com/azure/data-explorer/kusto/query/tutorials/join-data-from-multiple-tables).
