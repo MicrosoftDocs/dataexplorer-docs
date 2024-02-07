@@ -10,13 +10,13 @@ ms.date: 11/01/2021
 
 This article provides a tutorial to help you learn about the [Kusto Query Language](https://learn.microsoft.com/en-us/azure/data-explorer/kusto/query/).
 
-Refer to this [sample database](https://help.kusto.windows.net/Samples) for the queries that are demonstrated below. 
-The database has a table called `StormEvents`, which provides information about storms that happened in the United States.
+Refer to this [sample database](https://help.kusto.windows.net/Samples) for the queries that are demonstrated below.
 
 *Syntax note*: A query is a data source (usually a table name), optionally followed by one or more pairs of the pipe character and some tabular operator. Learn more about common [syntax conventions](https://learn.microsoft.com/en-us/azure/data-explorer/kusto/query/syntax-conventions).
 
 ## Count rows
 
+The database has a table called `StormEvents`, which provides information about storms that happened in the United States.
 To find out how large the table is, you'll pipe its content into a [count operator](./count-operator.md) that counts the rows in the table.
 
 <!-- csl: https://help.kusto.windows.net/Samples -->
@@ -34,14 +34,17 @@ Here's the output:
 
 Use [project](./project-operator.md) to choose the columns you want to display. 
 
+```kusto
 StormEvents
 | project StartTime, EndTime , State , EventType , EpisodeNarrative
+```
 
 ## Filter by Boolean expression: *where*
 
 Use [where](https://learn.microsoft.com/en-us/azure/data-explorer/kusto/query/where-operator) to filter a table to a subset of rows.  
 
-Let's view `flood` events in `California` in Feb-2007:
+Example:
+Show `flood` events in `California` in Feb-2007:
 
 <!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
@@ -59,9 +62,10 @@ Here's the output:
 
 ## Show *n* rows: *take*
 
-To return up to a specified number of rows, use the [take operator](https://learn.microsoft.com/en-us/azure/data-explorer/kusto/query/take-operator)
+Return up to a specified number of rows, in no particular order, using [take](https://learn.microsoft.com/en-us/azure/data-explorer/kusto/query/take-operator) or [limit](./take-operator.md) operators.
 
-Let's see what's in a random sample of five rows:
+Example: 
+Show a random sample of five rows:
 
 <!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
@@ -69,25 +73,25 @@ StormEvents
 | take 5
 | project  StartTime, EndTime, EventType, State, EventNarrative  
 ```
-
 Here's the output:
 
 |StartTime|EndTime|EventType|State|EventNarrative|
 |---|---|---|---|---|
 |2007-09-18 20:00:00.0000000|2007-09-19 18:00:00.0000000|Heavy Rain|FLORIDA|As much as 9 inches of rain fell in a 24-hour period across parts of coastal Volusia County.|
-|2007-09-20 21:57:00.0000000|2007-09-20 22:05:00.0000000|Tornado|FLORIDA|A tornado touched down in the Town of Eustis at the northern end of West Crooked Lake. The tornado quickly intensified to EF1 strength as it moved north northwest through Eustis. The track was just under two miles long and had a maximum width of 300 yards.  The tornado destroyed 7 homes. Twenty seven homes received major damage and 81 homes reported minor damage. There were no serious injuries and property damage was set at $6.2 million.|
+|2007-09-20 21:57:00.0000000|2007-09-20 22:05:00.0000000|Tornado|FLORIDA|A tornado touched down in the Town of Eustis at the northern end of West Crooked Lake. The tornado quickly intensified to EF1 strength as it moved northwest through Eustis. The track was just under two miles long and had a maximum width of 300 yards. The tornado destroyed seven homes, while 27 received major damage, and 81 reported minor damage. There were no serious injuries and property damage was set at $6.2 million.|
 |2007-09-29 08:11:00.0000000|2007-09-29 08:11:00.0000000|Waterspout|ATLANTIC SOUTH|A waterspout formed in the Atlantic southeast of Melbourne Beach and briefly moved toward shore.|
-|2007-12-20 07:50:00.0000000|2007-12-20 07:53:00.0000000|Thunderstorm Wind|MISSISSIPPI|Numerous large trees were blown down with some down on power lines. Damage occurred in eastern Adams county.|
-|2007-12-30 16:00:00.0000000|2007-12-30 16:05:00.0000000|Thunderstorm Wind|GEORGIA|The county dispatch reported several trees were blown down along Quincey Batten Loop near State Road 206. The cost of tree removal was estimated.|
-
-But [take](./take-operator.md) shows rows from the table in no particular order, so let's sort them. ([limit](./take-operator.md) is an alias for [take](./take-operator.md) and has the same effect.)
+|2007-12-20 07:50:00.0000000|2007-12-20 07:53:00.0000000|Thunderstorm Wind|MISSISSIPPI|Damage occurred in Eastern Adams county where many large trees were blown down and some fell on power lines.|
+|2007-12-30 16:00:00.0000000|2007-12-30 16:05:00.0000000|Thunderstorm Wind|GEORGIA|The County dispatch reported several trees were blown down along Quincey Batten Loop near State Road 206. The cost of tree removal was estimated around $___.|
 
 ## Order results: *sort*, *top*
+
+View the first *n* rows, ordered by a specific column, using [top](https://learn.microsoft.com/en-us/azure/data-explorer/kusto/query/top-operator) . 
 
 * *Syntax note*: Some operators have parameters that are introduced by keywords like `by`.
 * In the following example, `desc` orders results in descending order and `asc` orders results in ascending order.
 
-Show me the first *n* rows, ordered by a specific column:
+Example: 
+Show the first five rows, ordered by descending StartTime:
 
 <!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
@@ -106,7 +110,7 @@ Here's the output:
 |2007-12-31 23:53:00.0000000|2007-12-31 23:53:00.0000000|High Wind|CALIFORNIA|North to northeast winds gusting to around 58 mph were reported in the mountains of Ventura county.|
 |2007-12-31 23:53:00.0000000|2007-12-31 23:53:00.0000000|High Wind|CALIFORNIA|The Warm Springs RAWS sensor reported northerly winds gusting to 58 mph.|
 
-You can achieve the same result by using  either [sort](./sort-operator.md), and then [take](./take-operator.md):
+You can achieve the same result by using [sort](./sort-operator.md) and then [take](./take-operator.md):
 
 <!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
@@ -118,7 +122,9 @@ StormEvents
 
 ## Compute derived columns: *extend*
 
-Create a new column by computing a value in every row:
+Create a new column and append it to the result set using using [extend](https://learn.microsoft.com/en-us/azure/data-explorer/kusto/query/extend-operator).
+
+Let's look at an example where you add a column to view the Duration of the StormEvents:
 
 <!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
@@ -138,24 +144,7 @@ Here's the output:
 |2007-12-20 07:50:00.0000000|2007-12-20 07:53:00.0000000|00:03:00|Thunderstorm Wind|MISSISSIPPI|
 |2007-12-30 16:00:00.0000000|2007-12-30 16:05:00.0000000|00:05:00|Thunderstorm Wind|GEORGIA|
 
-It's possible to reuse a column name and assign a calculation result to the same column.
-
-Example:
-
-<!-- csl: https://help.kusto.windows.net/Samples -->
-```kusto
-print x=1
-| extend x = x + 1, y = x
-| extend x = x + 1
-```
-
-Here's the output:
-
-|x|y|
-|---|---|
-|3|1|
-
-[Scalar expressions](./scalar-data-types/index.md) can include all the usual operators (`+`, `-`, `*`, `/`, `%`), and a range of useful functions are available.
+A range of useful functions are also available using [scalar expressions](./scalar-data-types/index.md).
 
 ## Aggregate groups of rows: *summarize*
 
