@@ -316,9 +316,9 @@ StormEvents
 
 ## Join data types
 
-How would you find two specific event types and in which state each of them happened?
+You may want to find two specific event types and the states in which each of them occurred. This requires a [join](https://learn.microsoft.com/en-us/azure/data-explorer/kusto/query/join-operator?pivots=azuredataexplorer) operator. 
 
-You can pull storm events with the first `EventType` and the second `EventType`, and then join the two sets on `State`:
+List the first `EventType`, second `EventType`, and then join the two sets on `State`:
 
 <!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
