@@ -288,27 +288,27 @@ Notice that the `render timechart` didn't label durations properly, so you can u
 
 ## Compare multiple daily series
 
-How does activity vary over the time of day in different states?
+Find how activity varies over the time of day in different states, using the query below:
 
 <!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
 StormEvents
-| extend hour= bin( StartTime % 1d , 1h)
+| extend hour = bin (StartTime % 1d , 1h)
 | where State in ("GULF OF MEXICO","MAINE","VIRGINIA","WISCONSIN","NORTH DAKOTA","NEW JERSEY","OREGON")
-| summarize event_count=count() by hour, State
+| summarize event_count = count() by hour, State
 | render timechart
 ```
 
 :::image type="content" source="media/tutorial/time-hour-state.png" alt-text="Screenshot of a timechart by hour and state.":::
 
-Divide by `1h` to turn the x-axis into an hour number instead of a duration:
+To turn the x-axis into an hour number instead of a duration, divide the bin by `1h`:
 
 <!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
 StormEvents
-| extend hour= bin( StartTime % 1d , 1h)/ 1h
+| extend hour = bin (StartTime % 1d , 1h)/ 1h
 | where State in ("GULF OF MEXICO","MAINE","VIRGINIA","WISCONSIN","NORTH DAKOTA","NEW JERSEY","OREGON")
-| summarize event_count=count() by hour, State
+| summarize event_count = count() by hour, State
 | render columnchart
 ```
 
