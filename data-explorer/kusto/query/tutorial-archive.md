@@ -148,7 +148,10 @@ A range of useful functions are also available using [scalar expressions](./scal
 
 ## Aggregate groups of rows: *summarize*
 
-Count the number of events occur in each state:
+[Summarize](./summarize-operator.md) groups together rows that have the same values in the `by` clause. It uses an aggregation function (for example, `[count](https://learn.microsoft.com/en-us/azure/data-explorer/kusto/query/count-operator)`) to combine each group in a single row. 
+
+Example:
+Count the number of events that occurred in each state:
 
 <!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
@@ -156,14 +159,15 @@ StormEvents
 | summarize event_count = count() by State
 ```
 
-[summarize](./summarize-operator.md) groups together rows that have the same values in the `by` clause, and then uses an aggregation function (for example, `count`) to combine each group in a single row. In this case, there's a row for each state and a column for the count of rows in that state.
+A range of [aggregation functions](aggregation-functions.md) are available. You can use several aggregation functions in one `summarize` operator to produce several computed columns. 
 
-A range of [aggregation functions](aggregation-functions.md) are available. You can use several aggregation functions in one `summarize` operator to produce several computed columns. For example, we could get the count of storms per state, and the sum of unique types of storm per state. Then, we could use [top](./top-operator.md) to get the most storm-affected states:
+Example:
+Show the top five most storm-affected states. Include the storm count and the sum of unique types of storms per state:
 
 <!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
 StormEvents 
-| summarize StormCount = count(), TypeOfStorms = dcount(EventType) by State
+| summarize StormCount = count(), TypeOfStorms = count(EventType) by State
 | top 5 by StormCount desc
 ```
 
@@ -185,7 +189,12 @@ In the results of a `summarize` operator:
 
 ## Summarize by scalar values
 
-You can use scalar (numeric, time, or interval) values in the `by` clause, but you'll want to put the values into bins by using the [bin()](./bin-function.md) function:
+To use scalar (numeric, time, or interval) values in the `by` clause,  you'll want to put the values into bins by using the [bin()](./bin-function.md) function:
+
+*Syntax note*: [Bin()](./bin-function.md) is the same as the floor() function in many languages. It simply reduces every value to the nearest multiple that you supply, so that [summarize](./summarize-operator.md) can assign the rows to groups.
+
+Example:
+Reduce all the timestamps to intervals of one day:
 
 <!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
@@ -193,8 +202,6 @@ StormEvents
 | where StartTime > datetime(2007-02-14) and StartTime < datetime(2007-02-21)
 | summarize event_count = count() by bin(StartTime, 1d)
 ```
-
-The query reduces all the timestamps to intervals of one day:
 
 |StartTime|event_count|
 |---|---|
@@ -206,11 +213,12 @@ The query reduces all the timestamps to intervals of one day:
 |2007-02-19 00:00:00.0000000|52|
 |2007-02-20 00:00:00.0000000|60|
 
-The [bin()](./bin-function.md) is the same as the floor() function in many languages. It simply reduces every value to the nearest multiple of the modulus that you supply, so that [summarize](./summarize-operator.md) can assign the rows to groups.
-
 <a name="displaychartortable"></a>
 
 ## Display a chart or table: *render*
+
+Visualize your data by using the [render operator](https://learn.microsoft.com/en-us/azure/data-explorer/kusto/query/render-operator?pivots=azuredataexplorer). 
+Strictly speaking, it's a feature of the client rather than part of the query language. Still, it's integrated into the language, and it's useful for envisioning your results.
 
 You can project two columns and use them as the x-axis and the y-axis of a chart:
 
@@ -223,12 +231,9 @@ StormEvents
 | project State, event_count
 | render columnchart
 ```
-
-:::image type="content" source="media/tutorial/event-counts-state.png" alt-text="Screenshot that shows a column chart of storm event counts by state.":::
-
 Although we removed `mid` in the `project` operation, we still need it if we want the chart to display the states in that order.
 
-Strictly speaking, `render` is a feature of the client rather than part of the query language. Still, it's integrated into the language, and it's useful for envisioning your results.
+:::image type="content" source="media/tutorial/event-counts-state.png" alt-text="Screenshot that shows a column chart of storm event counts by state.":::
 
 ## Timecharts
 
@@ -237,7 +242,7 @@ Going back to numeric bins, let's display a time series:
 <!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
 StormEvents
-| summarize event_count=count() by bin(StartTime, 1d)
+| summarize event_count = count() by bin(StartTime, 1d)
 | render timechart
 ```
 
