@@ -269,22 +269,20 @@ Notice this uses the first column as the x-axis and displays the other columns a
 
 ## Daily average cycle
 
-How does activity vary over the average day?
-
-Count events by the time modulo one day, binned into hours.
+To find how StormEvent activity varies over the average day, you'll count events by the time module of one day, binned into hours.
 
 <!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
 StormEvents
-| extend hour =bin(StartTime % 1d , 1h)
-| summarize event_count=count() by hour
+| extend hour = bin (StartTime % 1d , 1h)
+| summarize event_count = count() by hour
 | sort by hour asc
 | render timechart
 ```
 
 :::image type="content" source="media/tutorial/time-count-hour.png" alt-text="Screenshot that shows a timechart count by hour.":::
 
-Currently, `render` doesn't label durations properly, but we could use `| render columnchart` instead:
+Notice that the `render timechart` didn't label durations properly, so you can use `| render columnchart` instead:
 
 :::image type="content" source="media/tutorial/column-count-hour.png" alt-text="Screenshot that shows a column chart count by hour.":::
 
