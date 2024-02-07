@@ -254,7 +254,7 @@ LightningStorms
 
 > [!TIP]
 > In Kusto Explorer, avoid adding blank lines between parts of the query.
-> Seperate any two statements with a semicolon.
+> Separate any two statements with a semicolon.
 
 ## Related content
 
