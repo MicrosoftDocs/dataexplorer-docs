@@ -16,7 +16,7 @@ Refer to this [sample database](https://help.kusto.windows.net/Samples) for the 
 
 ## Count rows
 
-The database has a table called `StormEvents`, which provides information about storms that happened in the United States.
+The sample database has a table called `StormEvents`, which provides information about storms that happened in the United States.
 To find out how large the table is, you'll pipe its content into a [count operator](./count-operator.md) that counts the rows in the table.
 
 <!-- csl: https://help.kusto.windows.net/Samples -->
@@ -62,7 +62,7 @@ Here's the output:
 
 ## Show *n* rows: *take*
 
-Return up to a specified number of rows, in no particular order, using [take](https://learn.microsoft.com/en-us/azure/data-explorer/kusto/query/take-operator) or [limit](./take-operator.md) operators.
+Use [take](https://learn.microsoft.com/en-us/azure/data-explorer/kusto/query/take-operator) or [limit](./take-operator.md) operators to return up to a specified number of rows, in no particular order.
 
 Example: 
 Show a random sample of five rows:
@@ -85,7 +85,7 @@ Here's the output:
 
 ## Order results: *sort*, *top*
 
-View the first *n* rows, ordered by a specific column, using [top](https://learn.microsoft.com/en-us/azure/data-explorer/kusto/query/top-operator) . 
+To view the first *n* rows, ordered by a specific column, use [top](https://learn.microsoft.com/en-us/azure/data-explorer/kusto/query/top-operator) . 
 
 * *Syntax note*: Some operators have parameters that are introduced by keywords like `by`.
 * In the following example, `desc` orders results in descending order and `asc` orders results in ascending order.
@@ -122,9 +122,10 @@ StormEvents
 
 ## Compute derived columns: *extend*
 
-Create a new column and append it to the result set using using [extend](https://learn.microsoft.com/en-us/azure/data-explorer/kusto/query/extend-operator).
+Create a new column and append it to the result set using [extend](https://learn.microsoft.com/en-us/azure/data-explorer/kusto/query/extend-operator).
 
-Let's look at an example where you add a column to view the Duration of the StormEvents:
+Let's look at an example where you add a column to view the Duration of the StormEvents, using [scalar expressions](./scalar-data-types/index.md).
+:
 
 <!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
@@ -144,25 +145,23 @@ Here's the output:
 |2007-12-20 07:50:00.0000000|2007-12-20 07:53:00.0000000|00:03:00|Thunderstorm Wind|MISSISSIPPI|
 |2007-12-30 16:00:00.0000000|2007-12-30 16:05:00.0000000|00:05:00|Thunderstorm Wind|GEORGIA|
 
-A range of useful functions are also available using [scalar expressions](./scalar-data-types/index.md).
-
 ## Aggregate groups of rows: *summarize*
 
-[Summarize](./summarize-operator.md) groups together rows that have the same values in the `by` clause. It uses an aggregation function (for example, `[count](https://learn.microsoft.com/en-us/azure/data-explorer/kusto/query/count-operator)`) to combine each group in a single row. 
+The [summarize](./summarize-operator.md) operator groups together rows that have the same values in the `by` clause. 
 
-Example:
-Count the number of events that occurred in each state:
+It uses an [aggregation function](aggregation-functions.md) (for example, `[count](https://learn.microsoft.com/en-us/azure/data-explorer/kusto/query/count-operator)') to combine each group in a single row. 
+
+To count the number of events that occurred in each state:
 
 <!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
 StormEvents
-| summarize event_count = count() by State
+| summarize Event_Count = count() by State
 ```
 
-A range of [aggregation functions](aggregation-functions.md) are available. You can use several aggregation functions in one `summarize` operator to produce several computed columns. 
+Use several aggregation functions in one `summarize` operator to produce several computed columns. 
 
-Example:
-Show the top five most storm-affected states. Include the storm count and the sum of unique types of storms per state:
+For example, you can find the top five most storm-affected states, including the storm count and the sum of unique types of storms per state:
 
 <!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
@@ -189,12 +188,11 @@ In the results of a `summarize` operator:
 
 ## Summarize by scalar values
 
-To use scalar (numeric, time, or interval) values in the `by` clause,  you'll want to put the values into bins by using the [bin()](./bin-function.md) function:
+To use scalar (numeric, time, or interval) values in the `by` clause,  you'll want to use the [bin()](./bin-function.md) function:
 
-*Syntax note*: [Bin()](./bin-function.md) is the same as the floor() function in many languages. It simply reduces every value to the nearest multiple that you supply, so that [summarize](./summarize-operator.md) can assign the rows to groups.
+*Syntax note*: Bin() is the same as the floor() function in many languages. It simply reduces every value to the nearest multiple that you supply, so that [summarize](./summarize-operator.md) can assign the rows to groups.
 
-Example:
-Reduce all the timestamps to intervals of one day:
+The below query reduces all timestamps to intervals of one day:
 
 <!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
@@ -202,6 +200,7 @@ StormEvents
 | where StartTime > datetime(2007-02-14) and StartTime < datetime(2007-02-21)
 | summarize event_count = count() by bin(StartTime, 1d)
 ```
+Here's the output:
 
 |StartTime|event_count|
 |---|---|
@@ -217,18 +216,19 @@ StormEvents
 
 ## Display a chart or table: *render*
 
-Visualize your data by using the [render operator](https://learn.microsoft.com/en-us/azure/data-explorer/kusto/query/render-operator?pivots=azuredataexplorer). 
-Strictly speaking, it's a feature of the client rather than part of the query language. Still, it's integrated into the language, and it's useful for envisioning your results.
+Use the [render operator](https://learn.microsoft.com/en-us/azure/data-explorer/kusto/query/render-operator?pivots=azuredataexplorer) to visualize your data. 
 
-You can project two columns and use them as the x-axis and the y-axis of a chart:
+Generally, it's a feature of the client rather than part of the query language, but is still useful for envisioning your results.
+
+Project two columns and use them as the x-axis and the y-axis of a chart:
 
 <!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
 StormEvents 
-| summarize event_count=count(), mid = avg(BeginLat) by State 
-| sort by mid
-| where event_count > 1800
-| project State, event_count
+| summarize Event_Count = count(), Mid = avg(BeginLat) by State 
+| sort by Mid
+| where Event_Count > 1800
+| project State, Event_Count
 | render columnchart
 ```
 Although we removed `mid` in the `project` operation, we still need it if we want the chart to display the states in that order.
