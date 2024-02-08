@@ -1,5 +1,5 @@
 ---
-title: 'Tutorial: Kusto queries archive'
+title: 'Tutorial: Kusto Queries Archive'
 description: This archive tutorial describes how to use queries in the Kusto Query Language to meet common query needs.
 ms.reviewer: alexans
 ms.topic: reference
@@ -314,7 +314,6 @@ StormEvents
 
 :::image type="content" source="media/tutorial/column-hour-state.png" alt-text="Screenshot that shows a column chart by hour and state.":::
 
-
 ## Plot a distribution
 
 Find how many storms are there of different lengths. 
@@ -340,36 +339,45 @@ Use `| render columnchart`: to view data differently:
 
 ## Percentiles
 
-What ranges of durations do we find in different percentages of storms?
+Use [percentiles](https://learn.microsoft.com/en-us/azure/data-explorer/kusto/query/percentiles-aggregation-function) to find the range of durations in different percentages of storms.
 
-To get this information, use the preceding query from [Plot a distribution](#plot-a-distribution), but replace `render` with:
+Copy the preceding query from [Plot a distribution](#plot-a-distribution), but replace `render` with:
 
 ```kusto
-| summarize percentiles(duration, 5, 20, 50, 80, 95)
+StormEvents
+| extend  Duration = EndTime - StartTime
+| where Duration > 0s
+| where Duration < 3h
+| summarize Event_Count = count()
+    by bin (Duration, 5m)
+| sort by Duration asc
+| summarize percentiles (Duration, 5, 20, 50, 80, 95)
 ```
 
-In this case, we didn't use a `by` clause, so the output is a single row:
+Since we didn't use a `by` clause, the output is a single row:
 
 :::image type="content" source="media/tutorial/summarize-percentiles-duration.png" lightbox="media/tutorial/summarize-percentiles-duration.png" alt-text="Screenshot of a table of results for summarize percentiles by duration.":::
 
-We can see from the output that:
+This shows that:
 
-* 5% of storms have a duration of less than 5 minutes.
+* 5% of storms lasted less than 5 minutes.
+* 20% of storms lasted less than 35 minutes.
 * 50% of storms lasted less than 1 hour and 25 minutes.
+* 80% of storms lasted less than 2 hours and 20 minutes.
 * 95% of storms lasted less than 2 hours and 50 minutes.
 
-To get a separate breakdown for each state, use the `state` column separately with both `summarize` operators:
+To breakdown the results by state, add the `state` to both `summarize` operators:
 
 <!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
 StormEvents
-| extend  duration = EndTime - StartTime
-| where duration > 0s
-| where duration < 3h
-| summarize event_count = count()
-    by bin(duration, 5m), State
-| sort by duration asc
-| summarize percentiles(duration, 5, 20, 50, 80, 95) by State
+| extend  Duration = EndTime - StartTime
+| where Duration > 0s
+| where Duration < 3h
+| summarize Event_Count = count()
+    by bin (Duration, 5m), State
+| sort by Duration asc
+| summarize percentiles (Duration, 5, 20, 50, 80, 95) by State
 ```
 
 :::image type="content" source="media/tutorial/summarize-percentiles-state.png" alt-text="Table summarize percentiles duration by state.":::
