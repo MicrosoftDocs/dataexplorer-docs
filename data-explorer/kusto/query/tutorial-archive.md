@@ -316,7 +316,7 @@ StormEvents
 
 ## Join data types
 
-You may want to find two specific event types and the states in which each of them occurred. This requires a [join](https://learn.microsoft.com/en-us/azure/data-explorer/kusto/query/join-operator?pivots=azuredataexplorer) operator. 
+To find two specific event types and the states in which each of them occurred, use a [join](https://learn.microsoft.com/en-us/azure/data-explorer/kusto/query/join-operator?pivots=azuredataexplorer) operator. 
 
 List the first `EventType`, second `EventType`, and then join the two sets on `State`:
 
@@ -332,6 +332,27 @@ StormEvents
 ```
 
 :::image type="content" source="media/tutorial/join-events-lightning-avalanche.png" alt-text="Screenshot that shows joining the events lightning and avalanche.":::
+
+## Assign a result to a variable: *let*
+
+Use [let](./let-statement.md) to separate out the parts of the query expression in the preceding `join` example. The results are unchanged:
+
+<!-- csl: https://help.kusto.windows.net/Samples -->
+```kusto
+let LightningStorms = 
+    StormEvents
+    | where EventType == "Lightning";
+let AvalancheStorms = 
+    StormEvents
+    | where EventType == "Avalanche";
+LightningStorms 
+| join (AvalancheStorms) on State
+| distinct State
+```
+
+> [!TIP]
+> In Kusto Explorer, to execute the entire query, don't add blank lines between parts of the query.
+> Any two statements must be separated by a semicolon.
 
 ## User session example of *join*
 
@@ -442,27 +463,6 @@ The query removes zero count entries:
 |2007-09-10T13:45:00Z|4|1|80|
 |2007-12-06T08:30:00Z|3|3|50|
 |2007-12-08T12:00:00Z|1|1|50|
-
-## Assign a result to a variable: *let*
-
-Use [let](./let-statement.md) to separate out the parts of the query expression in the preceding `join` example. The results are unchanged:
-
-<!-- csl: https://help.kusto.windows.net/Samples -->
-```kusto
-let LightningStorms = 
-    StormEvents
-    | where EventType == "Lightning";
-let AvalancheStorms = 
-    StormEvents
-    | where EventType == "Avalanche";
-LightningStorms 
-| join (AvalancheStorms) on State
-| distinct State
-```
-
-> [!TIP]
-> In Kusto Explorer, to execute the entire query, don't add blank lines between parts of the query.
-> Any two statements must be separated by a semicolon.
 
 ## Combine data from several databases in a query
 
