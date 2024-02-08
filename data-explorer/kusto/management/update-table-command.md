@@ -7,7 +7,10 @@ ms.date: 01/25/2024
 ---
 # Update table (preview)
 
-The `.update table` command performs data updates in a specified table by deleting and appending data atomically. This command is unrecoverable. This command doesn't support deleting more than 5 million records.
+The `.update table` command performs data updates in a specified table by deleting and appending data atomically. You can delete up to 5 million records.
+
+> [!NOTE]
+> This command is unrecoverable.
 
 ## Permissions
 
@@ -37,23 +40,24 @@ The expanded syntax offers the most flexibility as you can define a query to del
 
 `let` *AppendIdentifier*`=` ...`;`
 
+WHERE IS THE APPEND QUERY?
+
 ## Parameters
 
-| Name               | Type   | Required           | Description                                                                                                                                                                   |
-| ------------------ | ------ | ------------------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| *TableName*        | string | :heavy_check_mark: | The name of the table to update. The table name is always relative to the database in context.                                                                                |
-| *IdColumnName*     | string | :heavy_check_mark: | The name of the column identifying rows.  The column must be present in both the table and *appendQuery*.                                                                     |
-| *appendQuery*      | string | :heavy_check_mark: | The text of a query or a management command whose results are used as data to append.  The query's schema must be the same as the table's.  See [limitations](#limitations).  |
-| *DeleteIdentifier* | string | :heavy_check_mark: | The identifier name used to specify the delete predicate applied to the updated table.  See [limitations](#limitations).                                                      |
-| *AppendIdentifier* | string | :heavy_check_mark: | The identifier name used to specify the append predicate applied to the updated table.  The query's schema must be the same as the table's.  See [limitations](#limitations). |
+| Name               | Type   | Required           | Description                                                                                                                                 |
+| ------------------ | ------ | ------------------ | ------------------------------------------------------------------------------------------------------------------------------------------- |
+| *TableName*        | string | :heavy_check_mark: | The name of the table to update. The table name is always relative to the database in context.                                              |
+| *IdColumnName*     | string | :heavy_check_mark: | The name of the column identifying rows.  The column must be present in both the table and *appendQuery*.                                   |
+| *appendQuery*      | string | :heavy_check_mark: | The text of a query or a management command whose results are used as data to append.  The query's schema must be the same as the table's schema. <sup>*</sup> |
+| *DeleteIdentifier* | string | :heavy_check_mark: | The identifier name used to specify the delete predicate applied to the updated table.                                                      |
+| *AppendIdentifier* | string | :heavy_check_mark: | The identifier name used to specify the append predicate applied to the updated table.  The query's schema must be the same as the table's schema. |
 
-The delete predicate must include at least one `where` operator, and can only only use the following operators: `extend`, `where`, `project`, `join` and `lookup`.
+<sup>*</sup> The delete predicate must include at least one `where` operator, and can only only use the following operators: `extend`, `where`, `project`, `join` and `lookup`.
 Both delete and append predicates can't use remote entities, cross-db, and cross-cluster entities. Predicates can't reference an external table or use the `externaldata` operator.
 
-* Append and delete queries are expected to produce deterministic results.  Nondeterministic queries can lead to unexpected results.
-  * A query is deterministic if and only if it would return the same data if executed multiple times
-  * For instance, using the [`take` operator](../query/take-operator.md), [`sample` operator](../query/sample-operator.md), [`rand` function](../query/rand-function.md), etc. isn't recommended as they aren't deterministic.
-  * The queries might be executed more than once within the `update` execution and if intermediate results are inconsistent, the update might produce unexpected results
+* Append and delete queries are expected to produce deterministic results.  Nondeterministic queries can lead to unexpected results. A query is deterministic if and only if it would return the same data if executed multiple times.
+* For example, using the [`take` operator](../query/take-operator.md), [`sample` operator](../query/sample-operator.md), [`rand` function](../query/rand-function.md), etc. isn't recommended as they aren't deterministic.
+* The queries might be executed more than once within the `update` execution and if intermediate results are inconsistent, the update might produce unexpected results
 
 ## Supported properties
 
