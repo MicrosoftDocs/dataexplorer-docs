@@ -314,94 +314,27 @@ StormEvents
 
 :::image type="content" source="media/tutorial/column-hour-state.png" alt-text="Screenshot that shows a column chart by hour and state.":::
 
-## Join data types
-
-To find two specific event types and the states in which each of them occurred, use a [join](https://learn.microsoft.com/en-us/azure/data-explorer/kusto/query/join-operator?pivots=azuredataexplorer) operator. 
-
-List the first `EventType`, second `EventType`, and then join the two sets on `State`:
-
-<!-- csl: https://help.kusto.windows.net/Samples -->
-```kusto
-StormEvents
-| where EventType = "Lightning"
-| join (
-    StormEvents 
-    | where EventType = "Avalanche"
-) on State  
-| distinct State
-```
-
-:::image type="content" source="media/tutorial/join-events-lightning-avalanche.png" alt-text="Screenshot that shows joining the events lightning and avalanche.":::
-
-### Assign a result to a variable: *let*
-
-Use [let](./let-statement.md) to separate out the parts of the query expression in the preceding `join` example. The results are unchanged:
-
-<!-- csl: https://help.kusto.windows.net/Samples -->
-```kusto
-let LightningStorms = 
-    StormEvents
-    | where EventType = "Lightning";
-let AvalancheStorms = 
-    StormEvents
-    | where EventType = "Avalanche";
-LightningStorms 
-| join (AvalancheStorms) on State
-| distinct State
-```
-
-> [!TIP]
-> To execute the entire query, don't add blank lines between parts of the query.
-> Let statements must be followed by a semicolon.
-
-### User session example of *join*
-
-This section doesn't use the `StormEvents` table.
-
-Assume you have data that includes events which mark the start and end of each user session with a unique ID.
-Find out how long each user session lasts. 
-
-First,  use `project` to select just the relevant columns before you perform the join. 
-In the same clause, rename the `timestamp` column.
-
-Use `extend` to provide an alias for the two timestamps, and then compute the session duration:
-
-<!-- csl: https://help.kusto.windows.net/Samples -->
-```kusto
-Events
-| where EventName = "Session_Started"
-| project Start_Time = Timestamp, Stop_Time, Country, Session_ID
-| join (Events
-    | where EventName = "Session_Ended"
-    | project Stop_Time = Timestamp, Country, Session_ID
-    ) on Session_ID
-| extend Duration = Stop_Time - Start_Time
-| project Start_Time, Stop_Time, Country, Duration
-| take 10
-```
-Here's the output: 
-
-:::image type="content" source="media/tutorial/user-session-extend.png" alt-text="Screenshot of a table of results for user session extend.":::
 
 ## Plot a distribution
 
-Returning to the `StormEvents` table, how many storms are there of different lengths?
+Find how many storms are there of different lengths. 
+Use extend to define the storm duration, summarize the count by binning the time intervals, and render a timechart. 
 
 <!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
 StormEvents
-| extend  duration = EndTime - StartTime
-| where duration > 0s
-| where duration < 3h
-| summarize event_count = count()
-    by bin(duration, 5m)
-| sort by duration asc
+| extend  Duration = EndTime - StartTime
+| where Duration > 0s
+| where Duration < 3h
+| summarize Event_Count = count()
+    by bin (Duration, 5m)
+| sort by Duration asc
 | render timechart
 ```
 
 :::image type="content" source="media/tutorial/event-count-duration.png" alt-text="Screenshot of timechart results for event count by duration.":::
 
-Or, you can use `| render columnchart`:
+Use `| render columnchart`: to view data differently:
 
 :::image type="content" source="media/tutorial/column-event-count-duration.png" alt-text="Screenshot of a column chart for event count timechart by duration.":::
 
@@ -464,6 +397,75 @@ The query removes zero count entries:
 |2007-09-10T13:45:00Z|4|1|80|
 |2007-12-06T08:30:00Z|3|3|50|
 |2007-12-08T12:00:00Z|1|1|50|
+
+## Join data types
+
+To find two specific event types and the states in which each of them occurred, use a [join](https://learn.microsoft.com/en-us/azure/data-explorer/kusto/query/join-operator?pivots=azuredataexplorer) operator. 
+
+List the first `EventType`, second `EventType`, and then join the two sets on `State`:
+
+<!-- csl: https://help.kusto.windows.net/Samples -->
+```kusto
+StormEvents
+| where EventType = "Lightning"
+| join (
+    StormEvents 
+    | where EventType = "Avalanche"
+) on State  
+| distinct State
+```
+
+:::image type="content" source="media/tutorial/join-events-lightning-avalanche.png" alt-text="Screenshot that shows joining the events lightning and avalanche.":::
+
+### Assign a result to a variable: *let*
+
+Use [let](./let-statement.md) to separate out the parts of the query expression in the preceding `join` example. The results are unchanged:
+
+<!-- csl: https://help.kusto.windows.net/Samples -->
+```kusto
+let LightningStorms = 
+    StormEvents
+    | where EventType = "Lightning";
+let AvalancheStorms = 
+    StormEvents
+    | where EventType = "Avalanche";
+LightningStorms 
+| join (AvalancheStorms) on State
+| distinct State
+```
+
+> [!TIP]
+> To execute the entire query, don't add blank lines between parts of the query.
+> Let statements must be followed by a semicolon.
+
+### User session example of *join*
+
+This section doesn't use the `StormEvents` table.
+
+Assume you have data that includes events which mark the start and end of each user session with a unique ID.
+You may want to find out how long each user session lasts. 
+
+First,  use `project` to select just the relevant columns before you perform the join. 
+In the same clause, rename the `timestamp` column.
+
+Use `extend` to provide an alias for the two timestamps, and then compute the session duration:
+
+<!-- csl: https://help.kusto.windows.net/Samples -->
+```kusto
+Events
+| where EventName = "Session_Started"
+| project Start_Time = Timestamp, Stop_Time, Country, Session_ID
+| join (Events
+    | where EventName = "Session_Ended"
+    | project Stop_Time = Timestamp, Country, Session_ID
+    ) on Session_ID
+| extend Duration = Stop_Time - Start_Time
+| project Start_Time, Stop_Time, Country, Duration
+| take 10
+```
+Here's the output: 
+
+:::image type="content" source="media/tutorial/user-session-extend.png" alt-text="Screenshot of a table of results for user session extend.":::
 
 ## Combine data from several databases in a query
 
