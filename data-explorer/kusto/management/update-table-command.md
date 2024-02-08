@@ -84,13 +84,13 @@ The result of the command is a table where each record represents an [extent](ex
 
 ### Compare update command to materialized views
 
-In some cases, you could use either the .update command or a [materialized view](materialized-views/materialized-view-overview) to achieve the same goal in a table.  For instance, a materialized view could be used to keep the latest version of each record or an update could be used to update records upon new version.  So which one would be a better option for you?
+In some cases, you could use either the .update command or a [materialized view](materialized-views/materialized-view-overview.md) to achieve the same goal in a table.  For instance, a materialized view could be used to keep the latest version of each record or an update could be used to update records upon new version.  So which one would be a better option for you?
 
 Use the following guidelines to identify which one you should use:
 
 * If your update pattern isn't supported by materialized views, use the update command
 * If the source table has a high ingestion volume, but only few updates, using the update command can be more performant and consume less cache / storage than materialized views. This is because materialized views need to reprocess all ingested data, which is less efficient than identifying the individual records to update based on the append/delete predicates.
-* Materialized views is a fully managed solution. The materialized view is [defined once](materialized-views/materialized-view-create-or-alter) and materialization happens in the background by the system. Update command, on the other hand, requires an orchestrated process (for example, [Azure Data Factory](../..//data-factory-integration.md), [Logic Apps](../tools/logicapps.md), [Power Automate](../../flow.md), etc.) that explicitly executes the update command every time there are updates. Therefore, if materialized views work well enough for your use case, using materialized views is preferable and requires much less management and maintenance.
+* Materialized views is a fully managed solution. The materialized view is [defined once](materialized-views/materialized-view-create-or-alter.md) and materialization happens in the background by the system. Update command, on the other hand, requires an orchestrated process (for example, [Azure Data Factory](../../data-factory-integration.md), [Logic Apps](../tools/logicapps.md), [Power Automate](../../flow.md), etc.) that explicitly executes the update command every time there are updates. Therefore, if materialized views work well enough for your use case, using materialized views is preferable and requires much less management and maintenance.
 
 For example, the following command will change the column `State` to the value *Closed* for each row having value *2024-01-25T18:29:00.6811152Z* for column `Timestamp`.
 
