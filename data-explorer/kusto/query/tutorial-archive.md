@@ -333,7 +333,7 @@ StormEvents
 
 :::image type="content" source="media/tutorial/join-events-lightning-avalanche.png" alt-text="Screenshot that shows joining the events lightning and avalanche.":::
 
-## Assign a result to a variable: *let*
+### Assign a result to a variable: *let*
 
 Use [let](./let-statement.md) to separate out the parts of the query expression in the preceding `join` example. The results are unchanged:
 
@@ -359,7 +359,7 @@ LightningStorms
 This section doesn't use the `StormEvents` table.
 
 Assume you have data that includes events which mark the start and end of each user session with a unique ID.
-You want to find out how long each user session lasts. 
+Find out how long each user session lasts. 
 
 First,  use `project` to select just the relevant columns before you perform the join. 
 In the same clause, rename the `timestamp` column.
@@ -371,7 +371,7 @@ Use `extend` to provide an alias for the two timestamps, and then compute the se
 Events
 | where EventName = "Session_Started"
 | project Start_Time = Timestamp, Stop_Time, Country, Session_ID
-| join ( Events
+| join (Events
     | where EventName = "Session_Ended"
     | project Stop_Time = Timestamp, Country, Session_ID
     ) on Session_ID
