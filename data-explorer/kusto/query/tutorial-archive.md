@@ -384,17 +384,20 @@ StormEvents
 
 ## Percentages
 
-Using the StormEvents table, we can calculate the percentage of direct injuries from all injuries.
+Storms result in injuries, both direct and indirect. 
+
+To calculate the percentage of direct injuries from all injuries, use this query:
 
 <!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
 StormEvents
 | where (InjuriesDirect > 0) and (InjuriesIndirect > 0) 
-| extend Percentage = (  100 * InjuriesDirect / (InjuriesDirect + InjuriesIndirect) )
+| extend Percentage = (100 * InjuriesDirect / (InjuriesDirect + InjuriesIndirect))
 | project StartTime, InjuriesDirect, InjuriesIndirect, Percentage
 ```
 
-The query removes zero count entries:
+Here's the output. 
+*Note*: the query removes zero count entries.
 
 |StartTime|InjuriesDirect|InjuriesIndirect|Percentage
 |---|---|---|---|
@@ -489,13 +492,13 @@ To access a table in a different database, use the following syntax:
 database("db").Table
 ```
 
-For example, if you have databases named `Diagnostics` and `Telemetry` and you want to correlate some of the data in the two tables, you might use the following query (assuming `Diagnostics` is your default database):
+For example, if you have databases named `Diagnostics` and `Telemetry` and you want to correlate some of the data in the two tables, you can use the following query (assuming `Diagnostics` is your default database):
 
 ```kusto
 Logs | join database("Telemetry").Metrics on Request MachineId | ...
 ```
 
-Use this query if your default database is `Telemetry`:
+If your default database is `Telemetry`, use this following [union](https://learn.microsoft.com/en-us/azure/data-explorer/kusto/query/union-operator?pivots=azuredataexplorer) syntax :
 
 ```kusto
 union Requests, database("Diagnostics").Logs | ...
