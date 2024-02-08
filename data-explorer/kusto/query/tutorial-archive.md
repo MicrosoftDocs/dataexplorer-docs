@@ -237,12 +237,12 @@ Although we removed `mid` in the `project` operation, we still need it if we wan
 
 ## Timecharts
 
-Let's display a time series function using the bin and timechart functions:
+To display a time series, use the [bin()](https://learn.microsoft.com/en-us/azure/data-explorer/kusto/query/bin-function) and [timechart](https://learn.microsoft.com/en-us/azure/data-explorer/kusto/query/visualization-timechart?pivots=azuredataexplorer) functions:
 
 <!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
 StormEvents
-| summarize event_count = count() by bin(StartTime, 1d)
+| summarize Event_Count = count() by bin (StartTime, 1d)
 | render timechart
 ```
 
@@ -262,10 +262,11 @@ StormEvents
 
 :::image type="content" source="media/tutorial/table-count-source.png" alt-text="Screenshot that shows a table count by source.":::
 
-Create a visualization chart by adding `| render timechart` to the preceding query. 
-Notice this uses the first column as the x-axis and displays the other columns as separate lines.
+Add `| render timechart` to the previous query to visualize the data. 
 
 :::image type="content" source="media/tutorial/line-count-source.png" alt-text="Screenshot that shows a line chart count by source.":::
+
+Notice that `| render timechart` uses the first column as the x-axis and displays the other columns as separate lines.
 
 ## Daily average cycle
 
@@ -275,14 +276,14 @@ To find how StormEvent activity varies over the average day, you'll count events
 ```kusto
 StormEvents
 | extend hour = bin (StartTime % 1d , 1h)
-| summarize event_count = count() by hour
+| summarize Event_Count = count() by hour
 | sort by hour asc
 | render timechart
 ```
 
 :::image type="content" source="media/tutorial/time-count-hour.png" alt-text="Screenshot that shows a timechart count by hour.":::
 
-Notice that the `render timechart` didn't label durations properly, so you can use `| render columnchart` instead:
+The `render timechart` didn't label durations properly, so you can use `| render columnchart` instead:
 
 :::image type="content" source="media/tutorial/column-count-hour.png" alt-text="Screenshot that shows a column chart count by hour.":::
 
@@ -295,7 +296,7 @@ Find how activity varies over the time of day in different states, using the que
 StormEvents
 | extend hour = bin (StartTime % 1d , 1h)
 | where State in ("GULF OF MEXICO","MAINE","VIRGINIA","WISCONSIN","NORTH DAKOTA","NEW JERSEY","OREGON")
-| summarize event_count = count() by hour, State
+| summarize Event_Count = count() by hour, State
 | render timechart
 ```
 
@@ -308,7 +309,7 @@ To turn the x-axis into an hour number instead of a duration, divide the bin by 
 StormEvents
 | extend hour = bin (StartTime % 1d , 1h)/ 1h
 | where State in ("GULF OF MEXICO","MAINE","VIRGINIA","WISCONSIN","NORTH DAKOTA","NEW JERSEY","OREGON")
-| summarize event_count = count() by hour, State
+| summarize Event_Count = count() by hour, State
 | render columnchart
 ```
 
@@ -316,8 +317,9 @@ StormEvents
 
 ## Plot a distribution
 
-Find how many storms are there of different lengths. 
-Use extend to define the storm duration, summarize the count by binning the time intervals, and render a timechart. 
+You may want to find how many storms are there of different lengths. 
+
+Use [extend](https://learn.microsoft.com/en-us/azure/data-explorer/kusto/query/extend-operator) to define the storm duration, summarize the count by binning the time intervals, and render a timechart:
 
 <!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
@@ -333,13 +335,13 @@ StormEvents
 
 :::image type="content" source="media/tutorial/event-count-duration.png" alt-text="Screenshot of timechart results for event count by duration.":::
 
-Use `| render columnchart`: to view data differently:
+You can also use `| render columnchart`:
 
 :::image type="content" source="media/tutorial/column-event-count-duration.png" alt-text="Screenshot of a column chart for event count timechart by duration.":::
 
 ## Percentiles
 
-Use [percentiles](https://learn.microsoft.com/en-us/azure/data-explorer/kusto/query/percentiles-aggregation-function) to find the range of durations in different percentages of storms.
+[Percentiles](https://learn.microsoft.com/en-us/azure/data-explorer/kusto/query/percentiles-aggregation-function) can help you find the range of durations in different percentages of storms.
 
 Copy the preceding query from [Plot a distribution](#plot-a-distribution), but replace `render` with:
 
@@ -397,7 +399,6 @@ StormEvents
 ```
 
 Here's the output. 
-*Note*: the query removes zero count entries.
 
 |StartTime|InjuriesDirect|InjuriesIndirect|Percentage
 |---|---|---|---|
@@ -408,6 +409,8 @@ Here's the output.
 |2007-09-10T13:45:00Z|4|1|80|
 |2007-12-06T08:30:00Z|3|3|50|
 |2007-12-08T12:00:00Z|1|1|50|
+
+*Note*: The query removes zero count entries.
 
 ## Join data types
 
@@ -426,7 +429,38 @@ StormEvents
 | distinct State
 ```
 
+Here's the output:
+
 :::image type="content" source="media/tutorial/join-events-lightning-avalanche.png" alt-text="Screenshot that shows joining the events lightning and avalanche.":::
+
+### User session example of *join*
+
+This section doesn't use the `StormEvents` table.
+
+Assume you have data that includes events which mark the start and end of each user session with a unique ID.
+You may want to find out how long each user session lasts. 
+
+First,  use `project` to select just the relevant columns before you perform the 'join'. 
+In the same clause, rename the `timestamp` column.
+
+Use `extend` to provide an alias for the two timestamps, and then compute the session duration:
+
+<!-- csl: https://help.kusto.windows.net/Samples -->
+```kusto
+Events
+| where EventName = "Session_Started"
+| project Start_Time = Timestamp, Stop_Time, Country, Session_ID
+| join (Events
+    | where EventName = "Session_Ended"
+    | project Stop_Time = Timestamp, Country, Session_ID
+    ) on Session_ID
+| extend Duration = Stop_Time - Start_Time
+| project Start_Time, Stop_Time, Country, Duration
+| take 10
+```
+Here's the output: 
+
+:::image type="content" source="media/tutorial/user-session-extend.png" alt-text="Screenshot of a table of results for user session extend.":::
 
 ### Assign a result to a variable: *let*
 
@@ -449,36 +483,9 @@ LightningStorms
 > To execute the entire query, don't add blank lines between parts of the query.
 > Let statements must be followed by a semicolon.
 
-### User session example of *join*
-
-This section doesn't use the `StormEvents` table.
-
-Assume you have data that includes events which mark the start and end of each user session with a unique ID.
-You may want to find out how long each user session lasts. 
-
-First,  use `project` to select just the relevant columns before you perform the join. 
-In the same clause, rename the `timestamp` column.
-
-Use `extend` to provide an alias for the two timestamps, and then compute the session duration:
-
-<!-- csl: https://help.kusto.windows.net/Samples -->
-```kusto
-Events
-| where EventName = "Session_Started"
-| project Start_Time = Timestamp, Stop_Time, Country, Session_ID
-| join (Events
-    | where EventName = "Session_Ended"
-    | project Stop_Time = Timestamp, Country, Session_ID
-    ) on Session_ID
-| extend Duration = Stop_Time - Start_Time
-| project Start_Time, Stop_Time, Country, Duration
-| take 10
-```
-Here's the output: 
-
-:::image type="content" source="media/tutorial/user-session-extend.png" alt-text="Screenshot of a table of results for user session extend.":::
-
 ## Combine data from several databases in a query
+
+This section doesn't use the 'StormEvents' table. It details ways to combine data from serveral databases in a query.
 
 In the following query, the `Logs` table must be in your default database:
 
