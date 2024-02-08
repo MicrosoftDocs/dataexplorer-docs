@@ -6,7 +6,7 @@ ms.topic: reference
 ms.date: 11/01/2021
 ---
 
-# Tutorial: Use Kusto queries archive
+# Tutorial: Use Kusto Queries Archive
 
 This article provides a tutorial to help you learn about the [Kusto Query Language](https://learn.microsoft.com/en-us/azure/data-explorer/kusto/query/).
 
