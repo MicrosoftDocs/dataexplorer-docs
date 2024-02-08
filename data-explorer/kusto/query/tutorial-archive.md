@@ -323,10 +323,10 @@ List the first `EventType`, second `EventType`, and then join the two sets on `S
 <!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
 StormEvents
-| where EventType == "Lightning"
+| where EventType = "Lightning"
 | join (
     StormEvents 
-    | where EventType == "Avalanche"
+    | where EventType = "Avalanche"
 ) on State  
 | distinct State
 ```
@@ -341,46 +341,47 @@ Use [let](./let-statement.md) to separate out the parts of the query expression 
 ```kusto
 let LightningStorms = 
     StormEvents
-    | where EventType == "Lightning";
+    | where EventType = "Lightning";
 let AvalancheStorms = 
     StormEvents
-    | where EventType == "Avalanche";
+    | where EventType = "Avalanche";
 LightningStorms 
 | join (AvalancheStorms) on State
 | distinct State
 ```
 
 > [!TIP]
-> In Kusto Explorer, to execute the entire query, don't add blank lines between parts of the query.
-> Any two statements must be separated by a semicolon.
+> To execute the entire query, don't add blank lines between parts of the query.
+> Let statements must be followed by a semicolon.
 
-## User session example of *join*
+### User session example of *join*
 
 This section doesn't use the `StormEvents` table.
 
 Assume you have data that includes events which mark the start and end of each user session with a unique ID.
+You want to find out how long each user session lasts. 
 
-How would you find out how long each user session lasts?
+First,  use `project` to select just the relevant columns before you perform the join. 
+In the same clause, rename the `timestamp` column.
 
-You can use `extend` to provide an alias for the two timestamps, and then compute the session duration:
+Use `extend` to provide an alias for the two timestamps, and then compute the session duration:
 
 <!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
 Events
-| where eventName == "session_started"
-| project start_time = timestamp, stop_time, country, session_id
+| where EventName = "Session_Started"
+| project Start_Time = Timestamp, Stop_Time, Country, Session_ID
 | join ( Events
-    | where eventName == "session_ended"
-    | project stop_time = timestamp, session_id
-    ) on session_id
-| extend duration = stop_time - start_time
-| project start_time, stop_time, country, duration
+    | where EventName = "Session_Ended"
+    | project Stop_Time = Timestamp, Country, Session_ID
+    ) on Session_ID
+| extend Duration = Stop_Time - Start_Time
+| project Start_Time, Stop_Time, Country, Duration
 | take 10
 ```
+Here's the output: 
 
 :::image type="content" source="media/tutorial/user-session-extend.png" alt-text="Screenshot of a table of results for user session extend.":::
-
-It's a good practice to use `project` to select just the relevant columns before you perform the join. In the same clause, rename the `timestamp` column.
 
 ## Plot a distribution
 
