@@ -202,13 +202,13 @@ The query reduces all the timestamps to intervals of one day:
 
 |StartTime|event_count|
 |---|---|
-|2007-02-14 00:00:00.000|180|
-|2007-02-15 00:00:00.000|66|
-|2007-02-16 00:00:00.000|164|
-|2007-02-17 00:00:00.000|103|
-|2007-02-18 00:00:00.000|22|
-|2007-02-19 00:00:00.000|52|
-|2007-02-20 00:00:00.000|60|
+|2007-02-14 00:00:00.00Z|180|
+|2007-02-15 00:00:00.00Z|66|
+|2007-02-16 00:00:00.00Z|164|
+|2007-02-17 00:00:00.00Z|103|
+|2007-02-18 00:00:00.00Z|22|
+|2007-02-19 00:00:00.00Z|52|
+|2007-02-20 00:00:00.00Z|60|
 
 The [bin()](./bin-function.md) is the same as the floor() function in many languages. It simply reduces every value to the nearest multiple of the modulus that you supply, so that [summarize](./summarize-operator.md) can assign the rows to groups.
 
