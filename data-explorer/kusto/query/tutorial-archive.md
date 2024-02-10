@@ -167,8 +167,8 @@ StormEvents
 
 A range of [aggregation functions](aggregation-functions.md) are available. You can use several aggregation functions in one `summarize` operator to produce several computed columns. For example, we could get the count of storms per state, and the sum of unique types of storm per state. Then, we could use [top](./top-operator.md) to get the most storm-affected states. We can make a list of the five US states heaviest hit by storms, and how many storms each state suffered. 
 
-[!NOTE]
-It is 'desc' in the 'by' clause, in descending order. 
+< [!NOTE]  
+< It is 'desc' in the 'by' clause, in descending order.   
 
 
 <!-- csl: https://help.kusto.windows.net/Samples -->
@@ -272,8 +272,8 @@ Now, add the `render` term to the preceding example: `| render timechart`.
 
 :::image type="content" source="media/tutorial/line-count-source.png" alt-text="Screenshot that shows a line chart count by source.":::
 
-[!NOTE]
-`Render timechart` uses the first column as the _X-axis_, and then displays the other columns as _separate lines_.
+> [!NOTE]  
+> `Render timechart` uses the first column as the _X-axis_, and then displays the other columns as _separate lines_.  
 
 ## Daily Average Cycle
 
@@ -292,8 +292,8 @@ StormEvents
 
 :::image type="content" source="media/tutorial/time-count-hour.png" alt-text="Screenshot that shows a timechart count by hour.":::
 
-[!NOTE]
-Currently, `render` **_doesn't label durations properly_**, but we could use `| render columnchart` instead:
+> [!NOTE]  
+> Currently, `render` **_doesn't label durations properly_**, but we could use `| render columnchart` instead:  
 
 :::image type="content" source="media/tutorial/column-count-hour.png" alt-text="Screenshot that shows a column chart count by hour.":::
 
