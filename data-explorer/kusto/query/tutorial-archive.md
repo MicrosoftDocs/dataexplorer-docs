@@ -370,8 +370,8 @@ Events
 
 :::image type="content" source="media/tutorial/user-session-extend.png" alt-text="Screenshot of a table of results for user session extend.":::
 
-[!TIP]
-It's good practice to use `project` to select just the relevant columns before you perform the join. In the same clause, just rename the `timestamp` column.
+> [!TIP]  
+> It's good practice to use `project` to select just the relevant columns before you perform the join. In the same clause, just rename the `timestamp` column.  
 
 ## Plotting a Distribution
 
@@ -415,8 +415,8 @@ We can see from the output that:
 * 50% of storms lasted less than 1 hour and 25 minutes.
 * 95% of storms lasted less than 2 hours and 50 minutes.
 
-[!TIP]
-To get a separate breakdown for each state, use the `state` column separately with both `summarize` operators:
+> [!TIP]  
+> To get a separate breakdown for each state, use the `state` column separately with both `summarize` operators:  
 
 <!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
