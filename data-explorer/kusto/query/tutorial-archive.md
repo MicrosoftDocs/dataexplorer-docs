@@ -167,8 +167,8 @@ StormEvents
 
 A range of [aggregation functions](aggregation-functions.md) are available. You can use several aggregation functions in one `summarize` operator to produce several computed columns. For example, we could get the count of storms per state, and the sum of unique types of storm per state. Then, we could use [top](./top-operator.md) to get the most storm-affected states. We can make a list of the five US states heaviest hit by storms, and how many storms each state suffered. 
 
-< [!NOTE]  
-< It is 'desc' in the 'by' clause, in descending order.   
+> [!NOTE]  
+> It is 'desc' in the 'by' clause, in descending order.   
 
 
 <!-- csl: https://help.kusto.windows.net/Samples -->
