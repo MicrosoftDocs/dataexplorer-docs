@@ -77,7 +77,7 @@ Here's the Output:
 |2007-09-20 21:57:00Z|2007-09-20 22:05:00.00Z|Tornado|FLORIDA|A tornado touched down in the Town of Eustis at the northern end of West Crooked Lake. The tornado quickly intensified to EF1 strength as it moved north northwest through Eustis. The track was just under two miles long and had a maximum width of 300 yards.  The tornado destroyed 7 homes. Twenty seven homes received major damage and 81 homes reported minor damage. There were no serious injuries and property damage was set at $6.2 million.|
 |2007-09-29 08:11:00Z|2007-09-29 08:11:00.00Z|Waterspout|ATLANTIC SOUTH|A waterspout formed in the Atlantic Ocean, southeast of Melbourne Beach, FL, and briefly moved toward shore.|
 |2007-12-20 07:50:00Z|2007-12-20 07:53:00.00Z|Thunderstorm Wind|MISSISSIPPI|Numerous large trees were blown down, some onto power lines. Damage occurred in Eastern Adams county.|
-|2007-12-30 16:00:00Z|2007-12-30 16:05:00.00Z|Thunderstorm Wind|GEORGIA|Coffee County Dispatch reported several trees were blown down along Quincey Batten Loop near State Road 206.|
+|2007-12-30 16:00:00Z|2007-12-30 16:05:00.00Z|Thunderstorm Wind|GEORGIA|Coffee County Dispatch reported several trees were blown down along Quincey Batten Loop, near State Road 206.|
 
 However, [take](./take-operator.md) shows rows from the table in no particular order, so let's sort them. ([limit](./take-operator.md) is an alias for [take](./take-operator.md) and has the same effect.)
 
@@ -373,7 +373,7 @@ Events
 [!TIP]
 It's good practice to use `project` to select just the relevant columns before you perform the join. In the same clause, just rename the `timestamp` column.
 
-## Plot a Distribution
+## Plotting a Distribution
 
 Returning to the `StormEvents` table, how many storms are there of different lengths?
 
@@ -456,7 +456,7 @@ The query removes "zero count" entries:
 |2007-12-06T08:30:00Z|3|3|50|
 |2007-12-08T12:00:00Z|1|1|50|
 
-## Assign a Result to a Variable: *`let`*
+## Assigning a Result to a Variable: *`let`*
 
 Use [let](./let-statement.md) to separate out the parts of the query expression in the preceding `join` example. The results are unchanged:
 
@@ -477,7 +477,7 @@ LightningStorms
 > In **Kusto Explorer**, to execute the entire query, _don't_ add blank lines between parts of the query.
 > Also, any two individual statements _must_ be separated by a semicolon (;).
 
-## Combine Data from Several Databases in a Query
+## Combining Data from Several Databases in a Query
 
 In the following query, the `Logs` table must be in your default database:
 
