@@ -81,7 +81,7 @@ Here's the Output:
 
 However, [take](./take-operator.md) shows rows from the table in no particular order, so let's sort them. ([limit](./take-operator.md) is an alias for [take](./take-operator.md) and has the same effect.)
 
-## Organizing Results in Ascedning/Descending Order: *`sort`*, *`top`*
+## Organizing Results in Ascending/Descending Order: *`sort`*, *`top`*
 
 * *Syntax note*: Some operators have parameters that are introduced by keywords like `by`.
 * In the following example, `desc` orders results in _descending_ order and `asc` orders results in _ascending_ order.
@@ -513,6 +513,11 @@ Logs | join cluster("TelemetryCluster").database("Telemetry").Metrics on Request
 > When the cluster is _specified_, the database is _mandatory_.
 
 For more information about combining data from several databases in a query, see [cross-database queries](cross-cluster-or-database-queries.md).
+
+## Additional Functions: 
+
+##  *`ago`*
+
 
 ## Related Content
 
