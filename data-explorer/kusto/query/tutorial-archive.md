@@ -269,7 +269,8 @@ Now, add the `render` term to the preceding example: `| render timechart`.
 
 :::image type="content" source="media/tutorial/line-count-source.png" alt-text="Screenshot that shows a line chart count by source.":::
 
-Notice that `render timechart` uses the first column as the _X-axis_, and then displays the other columns as _separate lines_.
+[!NOTE]
+`Render timechart` uses the first column as the _X-axis_, and then displays the other columns as _separate lines_.
 
 ## Daily Average Cycle
 
@@ -288,7 +289,8 @@ StormEvents
 
 :::image type="content" source="media/tutorial/time-count-hour.png" alt-text="Screenshot that shows a timechart count by hour.":::
 
-It is important to note that, currently, **_`render` doesn't label durations properly_**, but we could use `| render columnchart` instead:
+[!NOTE]
+Currently, `render` **_doesn't label durations properly_**, but we could use `| render columnchart` instead:
 
 :::image type="content" source="media/tutorial/column-count-hour.png" alt-text="Screenshot that shows a column chart count by hour.":::
 
@@ -365,6 +367,7 @@ Events
 
 :::image type="content" source="media/tutorial/user-session-extend.png" alt-text="Screenshot of a table of results for user session extend.":::
 
+[!TIP]
 It's good practice to use `project` to select just the relevant columns before you perform the join. In the same clause, just rename the `timestamp` column.
 
 ## Plot a Distribution
@@ -409,6 +412,7 @@ We can see from the output that:
 * 50% of storms lasted less than 1 hour and 25 minutes.
 * 95% of storms lasted less than 2 hours and 50 minutes.
 
+[!TIP]
 To get a separate breakdown for each state, use the `state` column separately with both `summarize` operators:
 
 <!-- csl: https://help.kusto.windows.net/Samples -->
