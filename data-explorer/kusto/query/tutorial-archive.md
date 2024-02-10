@@ -35,12 +35,12 @@ Here's the output:
 
 For more information, see [count operator](./count-operator.md).
 
-## Select a Subset of Columns: *"project"*
+## Select a Subset of Columns: *`project`*
 
 Use [project](./project-operator.md) to pick out only the columns you want. See the following example, which uses both the [project](./project-operator.md)
 and the [take](./take-operator.md) operators.
 
-## Filter by Boolean Expression: *"where"*
+## Filter by Boolean Expression: *`where`*
 
 Let's see only `flood` events in `California` in February of 2007:
 
@@ -58,7 +58,7 @@ Here's the Output:
 |---|---|---|---|---|
 |2007-02-19 00:00:00Z|2007-02-19 08:00:00Z|CALIFORNIA|Flood|A frontal system moving across the Southern San Joaquin Valley brought brief periods of heavy rain to Western Kern County in the early morning hours of February 19th. Minor flooding was reported across State Highway 166 near Taft, CA.|
 
-## Showing *n* Rows: *"take"*
+## Showing *n* Rows: *`take`*
 
 Let's take a look at some data. What's in a random sample of five rows?
 
@@ -81,7 +81,7 @@ Here's the Output:
 
 However, [take](./take-operator.md) shows rows from the table in no particular order, so let's sort them. ([limit](./take-operator.md) is an alias for [take](./take-operator.md) and has the same effect.)
 
-## Organizing Results in Ascedning/Descending Order: *"sort"*, *"top"*
+## Organizing Results in Ascedning/Descending Order: *`sort`*, *`top`*
 
 * *Syntax note*: Some operators have parameters that are introduced by keywords like `by`.
 * In the following example, `desc` orders results in _descending_ order and `asc` orders results in _ascending_ order.
@@ -112,7 +112,7 @@ StormEvents
 | project  StartTime, EndTime, EventType, EventNarrative
 ```
 
-## Computing Derived Columns: *"extend"*
+## Computing Derived Columns: *`extend`*
 
 Create a new column by computing a value in every row:
 
@@ -153,7 +153,7 @@ Here's the Output:
 
 [Scalar Expressions](./scalar-data-types/index.md) can include all the usual operators (`+`, `-`, `*`, `/`, `%`), as well as a range of useful, available functions.
 
-## Aggregating Groups of Rows: *"summarize"*
+## Aggregating Groups of Rows: *`summarize`*
 
 Here, we can count the number of events occurring in each state:
 
@@ -218,7 +218,7 @@ The [bin()](./bin-function.md) is the same as the floor() function in many langu
 
 <a name="displaychartortable"></a>
 
-## Displaying a Chart or Table: *render*
+## Displaying a Chart or Table: *`render`*
 
 You can project two columns and use them as the _X-axis_ and the _Y-axis_ of a chart:
 
@@ -341,7 +341,7 @@ StormEvents
 
 :::image type="content" source="media/tutorial/join-events-lightning-avalanche.png" alt-text="Screenshot that shows joining the events lightning and avalanche.":::
 
-## User Session Example of *"join"*
+## User Session Example of *`join`*
 
 <ins>This section doesn't use the `StormEvents` table</ins>.
 
@@ -453,7 +453,7 @@ The query removes "zero count" entries:
 |2007-12-06T08:30:00Z|3|3|50|
 |2007-12-08T12:00:00Z|1|1|50|
 
-## Assign a Result to a Variable: *let*
+## Assign a Result to a Variable: *`let`*
 
 Use [let](./let-statement.md) to separate out the parts of the query expression in the preceding `join` example. The results are unchanged:
 
