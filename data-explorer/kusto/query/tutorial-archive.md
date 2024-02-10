@@ -8,7 +8,9 @@ ms.date: 11/01/2021
 
 # Tutorial: Using Kusto Queries Archive
 
-Let's get started! The best way to learn about the Kusto Query Language is to look at some basic queries to get a feel for the language. We recommend using a database with some sample data, like [Azura Data Explorer](https://help.kusto.windows.net/Samples). The queries that are demonstrated in this tutorial should run on that database. 
+Let's get started!
+
+ The best way to learn about the Kusto Query Language (KQL) is by looking at some basic queries to get a feel for the language itself. We recommend using a database with some sample data, like [Azura Data Explorer](https://help.kusto.windows.net/Samples). The queries that are demonstrated in this tutorial should run on that database. 
 
 Here is an example: The `StormEvents` table in the sample database provides information about storms which occured in the United States.
 
@@ -52,7 +54,7 @@ Here's the Output:
 
 |StartTime|EndTime|State|EventType|EpisodeNarrative|
 |---|---|---|---|---|
-|2007-02-19 00:00:00|2007-02-19 08:00:00|CALIFORNIA|Flood|A frontal system moving across the Southern San Joaquin Valley brought brief periods of heavy rain to Western Kern County in the early morning hours of February 19th. Minor flooding was reported across State Highway 166 near Taft, CA.|
+|2007-02-19 00:00:00Z|2007-02-19 08:00:00Z|CALIFORNIA|Flood|A frontal system moving across the Southern San Joaquin Valley brought brief periods of heavy rain to Western Kern County in the early morning hours of February 19th. Minor flooding was reported across State Highway 166 near Taft, CA.|
 
 ## Showing *n* Rows: *"take"*
 
@@ -69,11 +71,11 @@ Here's the Output:
 
 |StartTime|EndTime|EventType|State|EventNarrative|
 |---|---|---|---|---|
-|2007-09-18 20:00:00|2007-09-19 18:00:00.000|Heavy Rain|FLORIDA|As much as 9 inches of rain fell in a 24-hour period across parts of coastal Volusia County.|
-|2007-09-20 21:57:00|2007-09-20 22:05:00.000|Tornado|FLORIDA|A tornado touched down in the Town of Eustis at the northern end of West Crooked Lake. The tornado quickly intensified to EF1 strength as it moved north northwest through Eustis. The track was just under two miles long and had a maximum width of 300 yards.  The tornado destroyed 7 homes. Twenty seven homes received major damage and 81 homes reported minor damage. There were no serious injuries and property damage was set at $6.2 million.|
-|2007-09-29 08:11:00|2007-09-29 08:11:00.000|Waterspout|ATLANTIC SOUTH|A waterspout formed in the Atlantic Ocean, southeast of Melbourne Beach, FL, and briefly moved toward shore.|
-|2007-12-20 07:50:00|2007-12-20 07:53:00.000|Thunderstorm Wind|MISSISSIPPI|Numerous large trees were blown down, some onto power lines. Damage occurred in Eastern Adams county.|
-|2007-12-30 16:00:00|2007-12-30 16:05:00.000|Thunderstorm Wind|GEORGIA|The county dispatch reported several trees were blown down along Quincey Batten Loop near State Road 206.|
+|2007-09-18 20:00:00Z|2007-09-19 18:00:00.00Z|Heavy Rain|FLORIDA|As much as 9 inches of rain fell in a 24-hour period across parts of coastal Volusia County.|
+|2007-09-20 21:57:00Z|2007-09-20 22:05:00.000|Tornado|FLORIDA|A tornado touched down in the Town of Eustis at the northern end of West Crooked Lake. The tornado quickly intensified to EF1 strength as it moved north northwest through Eustis. The track was just under two miles long and had a maximum width of 300 yards.  The tornado destroyed 7 homes. Twenty seven homes received major damage and 81 homes reported minor damage. There were no serious injuries and property damage was set at $6.2 million.|
+|2007-09-29 08:11:00Z|2007-09-29 08:11:00.00Z|Waterspout|ATLANTIC SOUTH|A waterspout formed in the Atlantic Ocean, southeast of Melbourne Beach, FL, and briefly moved toward shore.|
+|2007-12-20 07:50:00Z|2007-12-20 07:53:00.00Z|Thunderstorm Wind|MISSISSIPPI|Numerous large trees were blown down, some onto power lines. Damage occurred in Eastern Adams county.|
+|2007-12-30 16:00:00Z|2007-12-30 16:05:00.00Z|Thunderstorm Wind|GEORGIA|The county dispatch reported several trees were blown down along Quincey Batten Loop near State Road 206.|
 
 However, [take](./take-operator.md) shows rows from the table in no particular order, so let's sort them. ([limit](./take-operator.md) is an alias for [take](./take-operator.md) and has the same effect.)
 
@@ -95,8 +97,8 @@ Here's the Output:
 
 |StartTime|EndTime|EventType|State|EventNarrative|
 |---|---|---|---|---|
-|2007-12-31 22:30:00.000|2007-12-31 23:59:00.000|Winter Storm|MICHIGAN|Heavy snow event which continued into the early morning hours on New Year's Day.|
-|2007-12-31 23:53:00.000|2007-12-31 23:53:00.000|High Wind|CALIFORNIA|North to Northeast winds reported by the Warm Springs, CA Remote Automated Weather Station (RAWS) Sensor around 58 mph in the mountains of Ventura County.|
+|2007-12-31 22:30:00.00Z|2007-12-31 23:59:00.00Z|Winter Storm|MICHIGAN|Heavy snow event which continued into the early morning hours on New Year's Day.|
+|2007-12-31 23:53:00.00Z|2007-12-31 23:53:00.00Z|High Wind|CALIFORNIA|North to Northeast winds reported by the Warm Springs, CA Remote Automated Weather Station (RAWS) Sensor around 58 mph in the mountains of Ventura County.|
 
 Note that you can achieve the same result by using  either [sort](./sort-operator.md), and then [take](./take-operator.md):
 
@@ -124,11 +126,11 @@ Here's the Output:
 
 |StartTime|EndTime|Duration|EventType|State|
 |---|---|---|---|---|
-|2007-09-18 20:00:00.000|2007-09-19 18:00:00.000|22:00:00|Heavy Rain|FLORIDA|
-|2007-09-20 21:57:00.000|2007-09-20 22:05:00.000|00:08:00|Tornado|FLORIDA|
-|2007-09-29 08:11:00.000|2007-09-29 08:11:00.000|00:00:00|Waterspout|ATLANTIC SOUTH|
-|2007-12-20 07:50:00.000|2007-12-20 07:53:00.000|00:03:00|Thunderstorm Wind|MISSISSIPPI|
-|2007-12-30 16:00:00.000|2007-12-30 16:05:00.000|00:05:00|Thunderstorm Wind|GEORGIA|
+|2007-09-18 20:00:00.00Z|2007-09-19 18:00:00.00Z|22:00:00|Heavy Rain|FLORIDA|
+|2007-09-20 21:57:00.00Z|2007-09-20 22:05:00.00Z|00:08:00|Tornado|FLORIDA|
+|2007-09-29 08:11:00.00Z|2007-09-29 08:11:00.00Z|00:00:00|Waterspout|ATLANTIC SOUTH|
+|2007-12-20 07:50:00.00Z|2007-12-20 07:53:00.00Z|00:03:00|Thunderstorm Wind|MISSISSIPPI|
+|2007-12-30 16:00:00.00Z|2007-12-30 16:05:00.00Z|00:05:00|Thunderstorm Wind|GEORGIA|
 
 It's possible to _reuse_ a column name and assign a calculation result to the same column.
 
@@ -361,9 +363,9 @@ Events
 
 :::image type="content" source="media/tutorial/user-session-extend.png" alt-text="Screenshot of a table of results for user session extend.":::
 
-It's a good practice to use `project` to select just the relevant columns before you perform the join. In the same clause, rename the `timestamp` column.
+It's good practice to use `project` to select just the relevant columns before you perform the join. In the same clause, just rename the `timestamp` column.
 
-## Plot a distribution
+## Plot a Distribution
 
 Returning to the `StormEvents` table, how many storms are there of different lengths?
 
