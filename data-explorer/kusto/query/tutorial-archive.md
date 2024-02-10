@@ -8,7 +8,6 @@ ms.date: 11/01/2021
 
 # Tutorial: Using Kusto Queries Archive
 
-Let's get started!
 
  The best way to learn about the Kusto Query Language (KQL) is by looking at some basic queries to get a feel for the language itself. We recommend using a database with some sample data, like [Azura Data Explorer](https://help.kusto.windows.net/Samples). The queries that are demonstrated in this tutorial should run on that database. 
 Let's get started!
@@ -57,7 +56,7 @@ Here's the Output:
 
 |StartTime|EndTime|State|EventType|EpisodeNarrative|
 |---|---|---|---|---|
-|2007-02-19 00:00:00Z|2007-02-19 08:00:00Z|CALIFORNIA|Flood|A frontal systemf moving across the Southern San Joaquin Valley brought brief periods of heavy rain to Western Kern County in the early morning hours of February 19th. Minor flooding was reported across State Highway 166 near Taft, CA.|
+|2007-02-19 00:00:00Z|2007-02-19 08:00:00Z|CALIFORNIA|Flood|A frontal system moving across the Southern San Joaquin Valley brought brief periods of heavy rain to Western Kern County in the early morning hours of February 19th. Minor flooding was reported across State Highway 166 near Taft, CA.|
 
 ## Showing *n* Rows: *"take"*
 
@@ -164,7 +163,7 @@ StormEvents
 | summarize event_count = count() by State
 ```
 
-[summarize](./summarize-operator.md) groups together rows that have the same values in the `by` clause, and then uses an aggregation function (for example, `count`) to _combine_ each group in a _single row_. In this case, there's a row for each state and a column for the count of rows in that state.
+[Summarize](./summarize-operator.md) groups together rows that have the same values in the `by` clause, and then uses an aggregation function (for example, `count`) to _combine_ each group in a _single row_. In this case, there's a row for each state and a column for the count of rows in that state.
 
 A range of [aggregation functions](aggregation-functions.md) are available. You can use several aggregation functions in one `summarize` operator to produce several computed columns. For example, we could get the count of storms per state, and the sum of unique types of storm per state. Then, we could use [top](./top-operator.md) to get the most storm-affected states. We can make a list of the five US states heaviest hit by storms, and how many storms each suffered. Note, it is 'desc' in the 'by' clause, in descending order. 
 
@@ -308,7 +307,7 @@ StormEvents
 
 :::image type="content" source="media/tutorial/time-hour-state.png" alt-text="Screenshot of a timechart by hour and state.":::
 
-Divide by `1h` to turn the X-axis into an _hour number_ instead of a duration:
+Now, divide by `1h` to turn the X-axis into an _hour number_ instead of a duration:
 
 <!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
@@ -428,7 +427,7 @@ StormEvents
 
 ## Percentages
 
-Using the StormEvents table, we can calculate the percentage of direct injuries from all injuries.
+Using the StormEvents table, we can also calculate the percentage of _direct_ injuries from _all_ injuries.
 
 <!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
@@ -438,7 +437,7 @@ StormEvents
 | project StartTime, InjuriesDirect, InjuriesIndirect, Percentage
 ```
 
-The query removes zero count entries:
+The query removes "zero count" entries:
 
 |StartTime|InjuriesDirect|InjuriesIndirect|Percentage
 |---|---|---|---|
@@ -468,8 +467,8 @@ LightningStorms
 ```
 
 > [!TIP]
-> In Kusto Explorer, to execute the entire query, don't add blank lines between parts of the query.
-> Any two statements must be separated by a semicolon.
+> In **Kusto Explorer**, to execute the entire query, _don't_ add blank lines between parts of the query.
+> Also, any two individual statements _must_ be separated by a semicolon (;).
 
 ## Combine Data from Several Databases in a Query
 
@@ -497,14 +496,14 @@ Use this query if your default database is `Telemetry`:
 union Requests, database("Diagnostics").Logs | ...
 ```
 
-The preceding two queries assume that both databases are in the cluster you're currently connected to. If the `Telemetry` database was in a cluster named *TelemetryCluster.kusto.windows.net*, to access it, use this query:
+The preceding two queries assume that both databases are in the cluster you're currently connected to. If the `Telemetry` database was in a cluster named *TelemetryCluster.kusto.windows.net*, access it using _this_ query:
 
 ```kusto
 Logs | join cluster("TelemetryCluster").database("Telemetry").Metrics on Request MachineId | ...
 ```
 
 > [!NOTE]
-> When the cluster is specified, the database is mandatory.
+> When the cluster is _specified_, the database is _mandatory_.
 
 For more information about combining data from several databases in a query, see [cross-database queries](cross-cluster-or-database-queries.md).
 
