@@ -11,6 +11,9 @@ ms.date: 11/01/2021
 Let's get started!
 
  The best way to learn about the Kusto Query Language (KQL) is by looking at some basic queries to get a feel for the language itself. We recommend using a database with some sample data, like [Azura Data Explorer](https://help.kusto.windows.net/Samples). The queries that are demonstrated in this tutorial should run on that database. 
+Let's get started!
+
+ The best way to learn about the Kusto Query Language (KQL) is by looking at some basic queries to get a feel for the language itself. We recommend using a database with some sample data, like [Azura Data Explorer](https://help.kusto.windows.net/Samples). The queries that are demonstrated in this tutorial should run on that database. 
 
 Here is an example: The `StormEvents` table in the sample database provides information about storms which occured in the United States.
 
@@ -54,7 +57,7 @@ Here's the Output:
 
 |StartTime|EndTime|State|EventType|EpisodeNarrative|
 |---|---|---|---|---|
-|2007-02-19 00:00:00Z|2007-02-19 08:00:00Z|CALIFORNIA|Flood|A frontal system moving across the Southern San Joaquin Valley brought brief periods of heavy rain to Western Kern County in the early morning hours of February 19th. Minor flooding was reported across State Highway 166 near Taft, CA.|
+|2007-02-19 00:00:00Z|2007-02-19 08:00:00Z|CALIFORNIA|Flood|A frontal systemf moving across the Southern San Joaquin Valley brought brief periods of heavy rain to Western Kern County in the early morning hours of February 19th. Minor flooding was reported across State Highway 166 near Taft, CA.|
 
 ## Showing *n* Rows: *"take"*
 
