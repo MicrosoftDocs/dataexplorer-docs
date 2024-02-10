@@ -516,8 +516,18 @@ For more information about combining data from several databases in a query, see
 
 ## Additional Functions: 
 
-##  *`ago`*
+## Subtracting a Given Timespan from UTC (Coordinated Universal Time) *`ago`*
 
+You can calculate exact time intervals between events (Timestamps) and the UTC. Use `ago` in a table with the requisite time interval: m-minute, h-hour, d-day, etc. 
+
+```kusto
+T | where Timestamp > ago(1h)
+```
+
+This is will give you all rows where event _T_ occured within the last hour.
+
+[!NOTE]
+If you use ago() multiple times in a single query statement, the current UTC time being referenced is the same across all uses.
 
 ## Related Content
 
