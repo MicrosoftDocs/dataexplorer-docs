@@ -105,7 +105,7 @@ To create a continuous export job with a query that references a table with [Row
 Continuous export to a delta table is currently in preview.
 
 > [!IMPORTANT]
-> Delta table partitioning isn’t supported in [Continuous data export](data-export/continuous-data-export.md#continuous-export-to-delta-table---preview).
+> Delta table partitioning isn’t supported in continuous data export.
 >
 > Kusto won't write to existing delta tables if the [delta protocol writer version](https://github.com/delta-io/delta/blob/master/PROTOCOL.md#schema-serialization-format) is higher than 1.
 
