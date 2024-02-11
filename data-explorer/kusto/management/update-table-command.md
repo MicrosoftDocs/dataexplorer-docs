@@ -5,11 +5,13 @@ ms.reviewer: vplauzon
 ms.topic: reference
 ms.date: 01/25/2024
 ---
-# Update table (preview)
+# .update table command (preview)
 
-The `.update table` command performs data updates in a specified table by deleting and appending data atomically. You can delete up to 5 million records.
+The `.update table` command performs data updates in a specified table by deleting and appending data atomically.
 
 > [!NOTE]
+> You can delete up to 5 million records.
+>
 > This command is unrecoverable.
 
 ## Permissions
@@ -32,7 +34,7 @@ The simplified syntax only specifies an append query.  The delete query is deduc
 
 ### Expanded syntax
 
-The expanded syntax offers the most flexibility as you can define a query to delete rows and a different query to append rows:
+The expanded syntax offers the flexibility to define a query to delete rows and a different query to append rows:
 
 `.update` `table` *TableName* `delete` *DeleteIdentifier* `append` *AppendIdentifier* [`with` `(` *propertyName* `=` *propertyValue* [`,` ...]`)`] `<|`
 
@@ -44,20 +46,20 @@ WHERE IS THE APPEND QUERY?
 
 ## Parameters
 
-| Name               | Type   | Required           | Description                                                                                                                                 |
-| ------------------ | ------ | ------------------ | ------------------------------------------------------------------------------------------------------------------------------------------- |
-| *TableName*        | string | :heavy_check_mark: | The name of the table to update. The table name is always relative to the database in context.                                              |
-| *IdColumnName*     | string | :heavy_check_mark: | The name of the column identifying rows.  The column must be present in both the table and *appendQuery*.                                   |
-| *appendQuery*      | string | :heavy_check_mark: | The text of a query or a management command whose results are used as data to append.  The query's schema must be the same as the table's schema. <sup>*</sup> |
-| *DeleteIdentifier* | string | :heavy_check_mark: | The identifier name used to specify the delete predicate applied to the updated table.                                                      |
-| *AppendIdentifier* | string | :heavy_check_mark: | The identifier name used to specify the append predicate applied to the updated table.  The query's schema must be the same as the table's schema. |
+| Name               | Type     | Required           | Description                                                                                                                                                    |
+| ------------------ | -------- | ------------------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| *TableName*        | `string` | :heavy_check_mark: | The name of the table to update.                                                                                                                               |
+| *IdColumnName*     | `string` | :heavy_check_mark: | The name of the column identifying rows.  The column must be present in both the table and *appendQuery*.                                                      |
+| *appendQuery*      | `string` | :heavy_check_mark: | The text of a query or a management command whose results are used as data to append.  The query's schema must be the same as the table's schema. <sup>*</sup> |
+| *DeleteIdentifier* | `string` | :heavy_check_mark: | The identifier name used to specify the delete predicate applied to the updated table.                                                                         |
+| *AppendIdentifier* | `string` | :heavy_check_mark: | The identifier name used to specify the append predicate applied to the updated table.                                                                         |
 
 <sup>*</sup> The delete predicate must include at least one `where` operator, and can only only use the following operators: `extend`, `where`, `project`, `join` and `lookup`.
 Both delete and append predicates can't use remote entities, cross-db, and cross-cluster entities. Predicates can't reference an external table or use the `externaldata` operator.
 
 * Append and delete queries are expected to produce deterministic results.  Nondeterministic queries can lead to unexpected results. A query is deterministic if and only if it would return the same data if executed multiple times.
-* For example, using the [`take` operator](../query/take-operator.md), [`sample` operator](../query/sample-operator.md), [`rand` function](../query/rand-function.md), etc. isn't recommended as they aren't deterministic.
-* The queries might be executed more than once within the `update` execution and if intermediate results are inconsistent, the update might produce unexpected results
+    * For example, use of [`take` operator](../query/take-operator.md), [`sample` operator](../query/sample-operator.md), [`rand` function](../query/rand-function.md), and other such operators isn't recommended because they aren't deterministic.
+* Queries might be executed more than once within the `update` execution and if intermediate results are inconsistent, the update command can produce unexpected results.
 
 ## Supported properties
 
@@ -66,7 +68,7 @@ Both delete and append predicates can't use remote entities, cross-db, and cross
 | *whatif* | bool | If `true`, returns the number of records that will be appended / deleted in every shard, without appending / deleting any records. The default is `false`. |
 
 > [!IMPORTANT]
-> We recommend running in `whatif` mode before executing the update, to validate the predicates before deleting or appending data.
+> We recommend running in `whatif` mode before executing the update to validate the predicates before deleting or appending data.
 
 ## Returns
 
@@ -84,13 +86,16 @@ The result of the command is a table where each record represents an [extent](ex
 
 ### Compare update command to materialized views
 
-In some cases, you could use either the .update command or a [materialized view](materialized-views/materialized-view-overview.md) to achieve the same goal in a table.  For instance, a materialized view could be used to keep the latest version of each record or an update could be used to update records upon new version.  So which one would be a better option for you?
+There are scenarios where you could use either the `.update table` command or a [materialized view](materialized-views/materialized-view-overview.md) to achieve the same goal in a table.  For example, a materialized view could be used to keep the latest version of each record or an update could be used to update records upon new version. 
 
-Use the following guidelines to identify which one you should use:
+Use the following guidelines to decide which method to use:
 
-* If your update pattern isn't supported by materialized views, use the update command
-* If the source table has a high ingestion volume, but only few updates, using the update command can be more performant and consume less cache / storage than materialized views. This is because materialized views need to reprocess all ingested data, which is less efficient than identifying the individual records to update based on the append/delete predicates.
-* Materialized views is a fully managed solution. The materialized view is [defined once](materialized-views/materialized-view-create-or-alter.md) and materialization happens in the background by the system. Update command, on the other hand, requires an orchestrated process (for example, [Azure Data Factory](../../data-factory-integration.md), [Logic Apps](../tools/logicapps.md), [Power Automate](../../flow.md), etc.) that explicitly executes the update command every time there are updates. Therefore, if materialized views work well enough for your use case, using materialized views is preferable and requires much less management and maintenance.
+* If your update pattern isn't supported by materialized views, use the update command.
+* If the source table has a high ingestion volume, but only few updates, using the update command can be more performant and consume less cache or storage than materialized views. This is because materialized views need to reprocess all ingested data, which is less efficient than identifying the individual records to update based on the append/delete predicates.
+* Materialized views is a fully managed solution. The materialized view is [defined once](materialized-views/materialized-view-create-or-alter.md) and materialization happens in the background by the system. The update command requires an orchestrated process (for example, [Azure Data Factory](../../data-factory-integration.md), [Logic Apps](../tools/logicapps.md), [Power Automate](../../flow.md), and others) that explicitly executes the update command every time there are updates. If materialized views work well enough for your use case, using materialized views requires less management and maintenance.
+
+
+### Example 
 
 For example, the following command will change the column `State` to the value *Closed* for each row having value *2024-01-25T18:29:00.6811152Z* for column `Timestamp`.
 
