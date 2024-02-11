@@ -42,11 +42,6 @@ To `.create-or-alter` an external table using managed identity authentication re
 > [!TIP]
 > For a custom schema, you can use the [infer_storage_schema](../query/infer-storage-schema-plugin.md) plugin to infer the schema based on the external file content.
 
-> [!IMPORTANT]
-> Delta table partitioning isn’t supported in [Continuous data export](data-export/continuous-data-export.md#continuous-export-to-delta-table---preview).
->
-> Kusto won't write to existing delta tables if the [delta protocol writer version](https://github.com/delta-io/delta/blob/master/PROTOCOL.md#schema-serialization-format) is higher than 1.
-
 ## Authentication and authorization
 
 The authentication method to access an external table is based on the connection string provided during its creation, and the permissions required to access the table vary depending on the authentication method.
