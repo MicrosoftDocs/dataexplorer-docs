@@ -531,4 +531,4 @@ This is will give you all rows where event _T_ occured within the last hour.
 
 ## Related Content
 
-* View code samples for the [Kusto Query Language](samples.md?pivots=azuredataexplorer)!
+* View code samples for the [Kusto Query Language](samples.md?pivots=azuredataexplorer)!  :point_left: 
