@@ -25,8 +25,8 @@ Creates a `dynamic` array of the set of distinct values that *expr* takes in the
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-| *expr* | string | &check; | The expression used for the aggregation calculation. |
-| *maxSize* | int |  | The maximum number of elements returned. The default and max value is 1048576. |
+| *expr* | `string` |  :heavy_check_mark: | The expression used for the aggregation calculation. |
+| *maxSize* | `int` |  | The maximum number of elements returned. The default and max value is 1048576. |
 
 > [!NOTE]
 > The deprecated version has a default *maxSize* limit of 128.

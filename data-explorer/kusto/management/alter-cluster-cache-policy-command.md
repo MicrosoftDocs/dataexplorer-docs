@@ -23,7 +23,7 @@ You must have [AllDatabasesAdmin](access-control/role-based-access-control.md) p
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-| *PolicyParameter* | string | &check; | One or more policy parameters. For parameters, see [caching policy](cache-policy.md).|
+| *PolicyParameter* | `string` |  :heavy_check_mark: | One or more policy parameters. For parameters, see [caching policy](cache-policy.md).|
 
 ## Returns
 

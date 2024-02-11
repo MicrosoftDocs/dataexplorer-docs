@@ -19,7 +19,7 @@ Returns the minimum value of several evaluated scalar expressions.
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-| *arg*, *arg_2*, ... | scalar | &check; | A comma separated list of 2-64 scalar expressions to compare. The function returns the minimum value among these expressions.|
+| *arg*, *arg_2*, ... | scalar |  :heavy_check_mark: | A comma separated list of 2-64 scalar expressions to compare. The function returns the minimum value among these expressions.|
 
 * All arguments must be of the same type.
 * Maximum of 64 arguments is supported.

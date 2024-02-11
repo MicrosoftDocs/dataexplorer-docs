@@ -50,10 +50,10 @@ find in (Table1, Table2, Table3) where Fruit=="apple"
 
 |Name|Type|Required|Description|
 |--|--|--|--|
-|*ColumnName*| string | | By default, the output will include a column called *source_* whose values indicate which source table has contributed each row. If specified, *ColumnName* will be used instead of *source_*. After wildcard matching, if the query references tables from more than one database including the default database, the value of this column will have a table name qualified with the database. Similarly *cluster* and *database* qualifications will be present in the value if more than one cluster is referenced.|
-| *Predicate* | bool | &check; | This boolean expression is evaluated for each row in each input table. For more information, see [predicate-syntax details](./find-operator.md#predicate-syntax).|
-| *Tables* | string | | Zero or more comma-separated table references. By default, `find` will look in all the tables in the current database. You can use:<br/>1. The name of a table, such as `Events`<br/>2. A query expression, such as `(Events | where id==42)`<br/>3. A set of tables specified with a wildcard. For example, `E*` would form the union of all the tables in the database whose names begin with `E`.|
-| `project-smart` or `project` | string | | If not specified, `project-smart` will be used by default. For more information, see [output-schema details](./find-operator.md#output-schema).|
+|*ColumnName*| `string` | | By default, the output will include a column called *source_* whose values indicate which source table has contributed each row. If specified, *ColumnName* will be used instead of *source_*. After wildcard matching, if the query references tables from more than one database including the default database, the value of this column will have a table name qualified with the database. Similarly *cluster* and *database* qualifications will be present in the value if more than one cluster is referenced.|
+| *Predicate* | `bool` |  :heavy_check_mark: | This boolean expression is evaluated for each row in each input table. For more information, see [predicate-syntax details](./find-operator.md#predicate-syntax).|
+| *Tables* | `string` | | Zero or more comma-separated table references. By default, `find` will look in all the tables in the current database. You can use:<br/>1. The name of a table, such as `Events`<br/>2. A query expression, such as `(Events | where id==42)`<br/>3. A set of tables specified with a wildcard. For example, `E*` would form the union of all the tables in the database whose names begin with `E`.|
+| `project-smart` or `project` | `string` | | If not specified, `project-smart` will be used by default. For more information, see [output-schema details](./find-operator.md#output-schema).|
 
 ::: zone-end
 

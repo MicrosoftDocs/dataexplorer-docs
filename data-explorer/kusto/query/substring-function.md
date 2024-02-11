@@ -21,9 +21,9 @@ Optionally, the length of the requested substring can be specified.
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-| *source* | string | &check; | The string from which to take the substring.|
-| *startingIndex* | int | &check; | The zero-based starting character position of the requested substring. If a negative number, the substring will be retrieved from the end of the source string.|
-| *length* | int | | The requested number of characters in the substring. The default behavior is to take from *startingIndex* to the end of the *source* string.|
+| *source* | `string` |  :heavy_check_mark: | The string from which to take the substring.|
+| *startingIndex* | `int` |  :heavy_check_mark: | The zero-based starting character position of the requested substring. If a negative number, the substring will be retrieved from the end of the source string.|
+| *length* | `int` | | The requested number of characters in the substring. The default behavior is to take from *startingIndex* to the end of the *source* string.|
 
 ## Returns
 

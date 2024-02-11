@@ -19,7 +19,7 @@ Returns a string that escapes all [regular expression](re2.md) characters.
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-| *string* | string | &check; | The string to escape.|
+| *string* | `string` |  :heavy_check_mark: | The string to escape.|
 
 ## Returns
 

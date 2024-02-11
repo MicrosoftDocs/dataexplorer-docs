@@ -22,8 +22,8 @@ The `materialized_view()` function supports a way of querying the *materialized*
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-| *ViewName*| string| &check;| The name of the materialized view.|
-| *max_age*| timespan || If not provided, only the *materialized* part of the view is returned. If provided, the function will return the _materialized_ part of the view if last materialization time is greater than `@now -  max_age`. Otherwise, the entire view is returned, which is identical to querying *ViewName* directly.
+| *ViewName*| `string` |  :heavy_check_mark:| The name of the materialized view.|
+| *max_age*| `timespan` || If not provided, only the *materialized* part of the view is returned. If provided, the function will return the _materialized_ part of the view if last materialization time is greater than `@now -  max_age`. Otherwise, the entire view is returned, which is identical to querying *ViewName* directly.
 
 ## Examples
 

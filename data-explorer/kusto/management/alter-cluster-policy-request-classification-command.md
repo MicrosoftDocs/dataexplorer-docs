@@ -23,8 +23,8 @@ You must have [Cluster AllDatabasesAdmin](access-control/role-based-access-contr
 
 | Name                         | Type   | Required | Description                                                                                                                                                                                                                       |
 |------------------------------|--------|----------|--------------------------------------------------------------------------------------------------------------------------------|
-| *SerializedPartialPolicy*    | string | &check;  | Define a serialized JSON policy. For policy properties, see [request classification policy](request-classification-policy.md). |
-| *ClassificationFunctionBody* | string | &check;  | The body of the function to use for classifying requests.                                                                      |
+| *SerializedPartialPolicy*    | `string` |  :heavy_check_mark:  | Define a serialized JSON policy. For policy properties, see [request classification policy](request-classification-policy.md). |
+| *ClassificationFunctionBody* | `string` |  :heavy_check_mark:  | The body of the function to use for classifying requests.                                                                      |
 
 ## Returns
 
@@ -34,11 +34,11 @@ Following is the schema of the output returned:
 
 | Name          | Type   | Description                                                                                                              |
 |---------------|--------|--------------------------------------------------------------------------------------------------------------------------|
-| PolicyName    | string | Name of the policy. For cluster request classification policy this value is **ClusterRequestClassificationPolicy**.      |
-| EntityName    | string | Name of the entity for which the policy is set. For cluster request classification policy this value is an empty string. |
-| Policy        | string | JSON representation of the policy object.                                                                                |
-| ChildEntities | string | Child entities for which this policy is set. For cluster request classification policy this value is an empty string.    |
-| EntityType    | string | Type of entity for which this policy is set. For cluster request classification policy this value is an empty string.    |
+| PolicyName    | `string` | Name of the policy. For cluster request classification policy this value is **ClusterRequestClassificationPolicy**.      |
+| EntityName    | `string` | Name of the entity for which the policy is set. For cluster request classification policy this value is an empty string. |
+| Policy        | `string` | JSON representation of the policy object.                                                                                |
+| ChildEntities | `string` | Child entities for which this policy is set. For cluster request classification policy this value is an empty string.    |
+| EntityType    | `string` | Type of entity for which this policy is set. For cluster request classification policy this value is an empty string.    |
 
 ## Examples
 

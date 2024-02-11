@@ -20,11 +20,11 @@ The `make-graph` operator builds a graph structure from tabular inputs of edges 
 
 | Name | Type | Required | Description |
 | -- | -- | -- | -- |
-| *Edges* | string | &check; | The tabular source containing the edges of the graph, each row represents an edge in the graph. |
-| *SourceNodeId* | string | &check; | The column in *Edges* with the source node IDs of the edges. |
-| *TargetNodeId* | string | &check; | The column in *Edges* with the target node IDs of the edges. |
-| *Nodes* | string || The tabular expressions containing the properties of the nodes in the graph. |
-| *NodesId* | string || The columns with the node IDs in *Nodes*. |
+| *Edges* | `string` |  :heavy_check_mark: | The tabular source containing the edges of the graph, each row represents an edge in the graph. |
+| *SourceNodeId* | `string` |  :heavy_check_mark: | The column in *Edges* with the source node IDs of the edges. |
+| *TargetNodeId* | `string` |  :heavy_check_mark: | The column in *Edges* with the target node IDs of the edges. |
+| *Nodes* | `string` || The tabular expressions containing the properties of the nodes in the graph. |
+| *NodesId* | `string` || The columns with the node IDs in *Nodes*. |
 
 ## Returns
 

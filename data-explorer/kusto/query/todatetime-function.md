@@ -22,7 +22,7 @@ Converts the input to a [datetime](./scalar-data-types/datetime.md) scalar value
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-| *value* | scalar | &check; | The value to convert to [datetime](./scalar-data-types/datetime.md).|
+| *value* | scalar |  :heavy_check_mark: | The value to convert to [datetime](./scalar-data-types/datetime.md).|
 
 ## Returns
 

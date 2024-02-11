@@ -24,7 +24,7 @@ Converts the input expression to a value of type [real](scalar-data-types/real.m
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-| *value* | scalar | &check; | The value to convert to [real](scalar-data-types/real.md).|
+| *value* | scalar |  :heavy_check_mark: | The value to convert to [real](scalar-data-types/real.md).|
 
 ## Returns
 

@@ -28,8 +28,8 @@ You must have [AllDatabasesAdmin](access-control/role-based-access-control.md) p
 
 |Name|Type|Required|Description|
 |--|--|--|--|
-|*DatabaseName*|string|&check;|The name of the database.|
-|*ArrayOPolicyObjects*|array|&check;|A serialized array with zero or more [ManagedIdentity policy](managed-identity-policy.md#the-managedidentity-policy-object) objects defined.|
+|*DatabaseName*| `string` | :heavy_check_mark:|The name of the database.|
+|*ArrayOPolicyObjects*|array| :heavy_check_mark:|A serialized array with zero or more [ManagedIdentity policy](managed-identity-policy.md#the-managedidentity-policy-object) objects defined.|
 
 > [!NOTE]
 >

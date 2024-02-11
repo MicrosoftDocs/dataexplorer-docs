@@ -20,8 +20,8 @@ The specified row is at a specified offset from the current row in a [serialized
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-| *column*| string | &check; | The column from which to get the values.|
-| *offset*| int | | The offset to go back in rows. The default is 1.|
+| *column*| `string` |  :heavy_check_mark: | The column from which to get the values.|
+| *offset*| `int` | | The offset to go back in rows. The default is 1.|
 | *default_value*| scalar | | The default value to be used when there are no previous rows from which to take the value. The default is `null`.|
 
 ## Examples

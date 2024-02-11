@@ -25,8 +25,8 @@ You can also use the [sum()](sum-aggregation-function.md) function, which sums r
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-| *expr* | string | &check; | The expression used for the aggregation calculation. |
-| *predicate* | string | &check; | The expression used to filter rows. If the predicate evaluates to `true`, the row will be included in the result.|
+| *expr* | `string` |  :heavy_check_mark: | The expression used for the aggregation calculation. |
+| *predicate* | `string` |  :heavy_check_mark: | The expression used to filter rows. If the predicate evaluates to `true`, the row will be included in the result.|
 
 ## Returns
 

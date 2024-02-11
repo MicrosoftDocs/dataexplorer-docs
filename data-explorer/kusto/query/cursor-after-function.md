@@ -27,7 +27,7 @@ A predicate run over the records of a table to compare their ingestion time agai
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-| *RHS* | string | &check; | Either an empty string literal or a valid database cursor value.|
+| *RHS* | `string` |  :heavy_check_mark: | Either an empty string literal or a valid database cursor value.|
 
 ## Returns
 

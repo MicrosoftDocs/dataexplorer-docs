@@ -21,8 +21,8 @@ Filters a table to the subset of rows that satisfy a predicate.
 
 | Name | Type | Required | Description |
 | -- | -- | -- | -- |
-| *T* | string | &check; | Tabular input whose records are to be filtered. |
-| *Predicate* | string | &check; | Expression that evaluates to a bool for each row in *T*.
+| *T* | `string` |  :heavy_check_mark: | Tabular input whose records are to be filtered. |
+| *Predicate* | `string` |  :heavy_check_mark: | Expression that evaluates to a bool for each row in *T*.
 
 ## Returns
 

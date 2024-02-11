@@ -28,33 +28,33 @@ You must have at least [Database User](access-control/role-based-access-control.
 
 |Name|Type|Required|Description|
 |--|--|--|--|
-| `ifnotexists` | string | | If specified, the function will only be created if the function doesn't yet exist.|
-|*functionName* | string | &check; | The name of the function to create or alter.|
-| *propertyName*, *propertyValue* | string | | A comma-separated list of key-value property pairs. See [supported properties](#supported-properties).|
-|*parameters*  | string | | A comma-separated list of parameters required by the function. The format for each parameter must be *ParameterName*`:`*ParameterDataType*.|
-|*body*| string | &check; | A user defined function expression.|
+| `ifnotexists` | `string` | | If specified, the function will only be created if the function doesn't yet exist.|
+|*functionName* | `string` |  :heavy_check_mark: | The name of the function to create or alter.|
+| *propertyName*, *propertyValue* | `string` | | A comma-separated list of key-value property pairs. See [supported properties](#supported-properties).|
+|*parameters*  | `string` | | A comma-separated list of parameters required by the function. The format for each parameter must be *ParameterName*`:`*ParameterDataType*.|
+|*body*| `string` |  :heavy_check_mark: | A user defined function expression.|
 
 ### Supported properties
 
 |Name|Type|Description|
 |--|--|--|
-|`docstring`|string|A description of the function for UI purposes.|
-|`folder`|string|The name of a folder used for UI functions categorization.|
-|`view`|bool|Designates this function as a stored view. Stored views can participate in [search](../query/search-operator.md) and [union *](../query/union-operator.md) scenarios. For more information, see [Views](../query/schema-entities/views.md).|
-|`skipvalidation`|bool|Determines whether or not to run validation logic on the function and fail the process if the function isn't valid. The default is `false`.|
+|`docstring`| `string` |A description of the function for UI purposes.|
+|`folder`| `string` |The name of a folder used for UI functions categorization.|
+|`view`| `bool` |Designates this function as a stored view. Stored views can participate in [search](../query/search-operator.md) and [union *](../query/union-operator.md) scenarios. For more information, see [Views](../query/schema-entities/views.md).|
+|`skipvalidation`| `bool` |Determines whether or not to run validation logic on the function and fail the process if the function isn't valid. The default is `false`.|
 
 > [!TIP]
 > If a function involves [cross-cluster queries](../query/cross-cluster-or-database-queries.md) and you plan to recreate the function using a [Kusto Query Language script](../../database-script.md), set `skipvalidation` to `true`.
 
 ## Returns
 
-|Output parameter |Type |Description
+|Output parameter |Type |Description|
 |---|---|---|
-|Name |String |The name of the function.
-|Parameters  |String |The parameters required by the function.
-|Body  |String |(Zero or more) `let` statements followed by a valid CSL expression that is evaluated upon function invocation.
-|Folder|String|A folder used for UI functions categorization. This parameter doesn't change the way function is invoked.
-|DocString|String|A description of the function for UI purposes.
+|Name | `string` |The name of the function.
+|Parameters  | `string` |The parameters required by the function.
+|Body  | `string` |(Zero or more) `let` statements followed by a valid CSL expression that is evaluated upon function invocation.
+|Folder| `string` |A folder used for UI functions categorization. This parameter doesn't change the way function is invoked.
+|DocString| `string` |A description of the function for UI purposes.
 
 > [!NOTE]
 >

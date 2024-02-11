@@ -21,11 +21,11 @@ Takes an expression containing a series (dynamic numerical array) as input, and 
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-|*Series*| dynamic | &check; | An array of numeric values, typically the resulting output of [make-series](make-series-operator.md) or [make_list](make-list-aggregation-function.md) operators.|
-|*Points*|int|&check;| Specifies the number of points at the end of the series to predict, or forecast. These points are excluded from the learning, or regression, process.|
-|*Seasonality*|int|| Controls the seasonal analysis. The possible values are:<br/><br/>- `-1`: Autodetect seasonality using [series_periods_detect](series-periods-detect-function.md). This is the default value.<br/>- Period: A positive integer specifying the expected period in number of bins. For example, if the series is in `1 - h` bins, a weekly period is 168 bins.<br/>- `0`: No seasonality, so skip extracting this component.|
-|*Trend*|string|| Controls the trend analysis. The possible values are:<br/><br/>- `avg`: Define trend component as `average(x)`. This is the default.<br/>- `linefit`: Extract trend component using linear regression.<br/>- `none`: No trend, so skip extracting this component.<br/>
-|*Seasonality_threshold*|real|| The threshold for seasonality score when *Seasonality* is set to autodetect. The default score threshold is 0.6.<br/><br/>For more information, see [series_periods_detect](series-periods-detect-function.md).|
+|*Series*| `dynamic` |  :heavy_check_mark: | An array of numeric values, typically the resulting output of [make-series](make-series-operator.md) or [make_list](make-list-aggregation-function.md) operators.|
+|*Points*| `int` | :heavy_check_mark:| Specifies the number of points at the end of the series to predict, or forecast. These points are excluded from the learning, or regression, process.|
+|*Seasonality*| `int` || Controls the seasonal analysis. The possible values are:<br/><br/>- `-1`: Autodetect seasonality using [series_periods_detect](series-periods-detect-function.md). This is the default value.<br/>- Period: A positive integer specifying the expected period in number of bins. For example, if the series is in `1 - h` bins, a weekly period is 168 bins.<br/>- `0`: No seasonality, so skip extracting this component.|
+|*Trend*| `string` || Controls the trend analysis. The possible values are:<br/><br/>- `avg`: Define trend component as `average(x)`. This is the default.<br/>- `linefit`: Extract trend component using linear regression.<br/>- `none`: No trend, so skip extracting this component.<br/>
+|*Seasonality_threshold*| `real` || The threshold for seasonality score when *Seasonality* is set to autodetect. The default score threshold is 0.6.<br/><br/>For more information, see [series_periods_detect](series-periods-detect-function.md).|
 
 ## Returns
 

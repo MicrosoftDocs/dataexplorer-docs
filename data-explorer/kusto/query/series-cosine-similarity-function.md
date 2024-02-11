@@ -21,7 +21,7 @@ The function `series_cosine_similarity()` takes two numeric series as input, and
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-| *series1, series2* | dynamic |  &check; | Input arrays with numeric data. |
+| *series1, series2* | `dynamic` |   :heavy_check_mark: | Input arrays with numeric data. |
 
 ## Returns
 

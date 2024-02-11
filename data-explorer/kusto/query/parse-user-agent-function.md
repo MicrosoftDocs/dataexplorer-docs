@@ -19,8 +19,8 @@ Interprets a user-agent string, which identifies the user's browser and provides
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-| *user-agent-string*| string | &check; | The user-agent string to parse.|
-| *look-for*| string or dynamic | &check; | The value to search for in *user-agent-string*. The possible options are "browser", "os", or "device". If only a single parsing target is required, it can be passed a `string` parameter. If two or three targets are required, they can be passed as a `dynamic` array.|
+| *user-agent-string*| `string` |  :heavy_check_mark: | The user-agent string to parse.|
+| *look-for*| string or dynamic |  :heavy_check_mark: | The value to search for in *user-agent-string*. The possible options are "browser", "os", or "device". If only a single parsing target is required, it can be passed a `string` parameter. If two or three targets are required, they can be passed as a `dynamic` array.|
 
 ## Returns
 

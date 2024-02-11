@@ -23,10 +23,10 @@ Creates a [timespan](./scalar-data-types/timespan.md) scalar value from the spec
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-|*day*| int | &check;| The day.|
-|*hour*| int | &check;| The hour. A value from 0-23.|
-|*minute*| int || The minute. A value from 0-59.|
-|*second*| real || The second. A value from 0 to 59.9999999.|
+|*day*| `int` |  :heavy_check_mark:| The day.|
+|*hour*| `int` |  :heavy_check_mark:| The hour. A value from 0-23.|
+|*minute*| `int` || The minute. A value from 0-59.|
+|*second*| `real` || The second. A value from 0 to 59.9999999.|
 
 ## Returns
 
@@ -43,6 +43,6 @@ print ['timespan'] = make_timespan(1,12,30,55.123)
 
 **Output**
 
-|timespan|
+| `timespan` |
 |---|
 |1.12:30:55.1230000|

@@ -28,8 +28,8 @@ You must have at least [Table Admin](access-control/role-based-access-control.md
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-| *TableName* | string | &check; | The name of the table to drop. |
-|`ifexists`| string || If specified, the command won't fail if the table doesn't exist.|
+| *TableName* | `string` |  :heavy_check_mark: | The name of the table to drop. |
+|`ifexists`| `string` || If specified, the command won't fail if the table doesn't exist.|
 
 ## Returns
 
@@ -37,8 +37,8 @@ This command returns a list of the remaining tables in the database.
 
 | Output parameter | Type   | Description                             |
 |------------------|--------|-----------------------------------------|
-| TableName        | String | The name of the table.                  |
-| DatabaseName     | String | The database that the table belongs to. |
+| TableName        | `string` | The name of the table.                  |
+| DatabaseName     | `string` | The database that the table belongs to. |
 
 ## Examples
 

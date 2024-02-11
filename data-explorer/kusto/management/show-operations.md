@@ -23,14 +23,13 @@ management commands, the `.show operation details` command is the only way to vi
 
 `.show operations` `(` *OperationId* [`,` ... ] `)`
 
-
 ## Parameters
 
 |Name|Type|Required|Description|
 |--|--|--|--|
-| *OperationId* | guid | | The operation ID for which to show details.|
+| *OperationId* | `guid` | | The operation ID for which to show details.|
 
-## Returns 
+## Returns
 
 When an operation ID is omitted, the command returns a table displaying all administrative operations executed in the last two weeks, whether ongoing or completed. It includes entries accessible to the user, with multiple records possible for a single operation. Only one record indicates the terminal state of 'Completed' or 'Failed.' This mode is for checking the history of operations, but note that records may take time to appear in the historic log.
 
@@ -40,14 +39,14 @@ The output table contains the following information:
 
 |Output parameter |Type |Description|
 |---|---|---|
-|OperationId |String |Operation Identifier|
-|Operation |String |Admin command alias|
-|NodeId |String |If the command has a remote execution (for example, DataIngestPull) - NodeId will contain the ID of the executing remote node|
-|StartedOn |DateTime |Date/time (in UTC) when the operation started|
-|LastUpdatedOn |DateTime |Date/time (in UTC) when the operation last updated (can be either a step inside the operation, or a completion step)|
-|Duration |DateTime |TimeSpan between LastUpdateOn and StartedOn|
-|State |String |Command state, as listed in the **State table**|
-|Status |String |Additional help string that contains errors of failed operations|
+|OperationId | `string` |Operation Identifier|
+|Operation | `string` |Admin command alias|
+|NodeId | `string` |If the command has a remote execution (for example, DataIngestPull) - NodeId will contain the ID of the executing remote node|
+|StartedOn | `datetime` |Date/time (in UTC) when the operation started|
+|LastUpdatedOn | `datetime` |Date/time (in UTC) when the operation last updated (can be either a step inside the operation, or a completion step)|
+|Duration | `datetime` |TimeSpan between LastUpdateOn and StartedOn|
+|State | `string` |Command state, as listed in the **State table**|
+|Status | `string` |Additional help string that contains errors of failed operations|
 
 **State table**
 

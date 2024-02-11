@@ -19,8 +19,8 @@ Removes leading match of the specified regular expression.
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-| *regex* | string | &check; | The string or [regular expression](re2.md) to be trimmed from the beginning of *source*.|
-| *source* | string | &check; | The source string from which to trim *regex*.|
+| *regex* | `string` |  :heavy_check_mark: | The string or [regular expression](re2.md) to be trimmed from the beginning of *source*.|
+| *source* | `string` |  :heavy_check_mark: | The source string from which to trim *regex*.|
 
 ## Returns
 

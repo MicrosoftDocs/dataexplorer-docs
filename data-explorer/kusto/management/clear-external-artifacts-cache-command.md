@@ -25,7 +25,7 @@ You must have at least [Database Admin](access-control/role-based-access-control
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-| *ArtifactURI* | `string` | &check;  | The URI for the external-artifact to clear from the cache. |
+| *ArtifactURI* | `string` |  :heavy_check_mark:  | The URI for the external-artifact to clear from the cache. |
 
 ## Returns
 

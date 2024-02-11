@@ -19,7 +19,7 @@ Returns `true` if the argument is a valid UTF8 string.
 
 | Name | Type | Required | Description |
 | -- | -- | -- | -- |
-|*value*|string|&check;| The value to check if a valid UTF8 string.|
+|*value*| `string` | :heavy_check_mark:| The value to check if a valid UTF8 string.|
 
 ## Returns
 

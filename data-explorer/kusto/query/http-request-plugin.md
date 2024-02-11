@@ -29,9 +29,9 @@ The `http_request` plugin sends an HTTP GET request and converts the response in
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-| *Uri* | string | &check; | The destination URI for the HTTP or HTTPS request. |
-| *RequestHeaders* | dynamic |  | A property bag containing [HTTP headers](#headers) to send with the request. |
-| *Options* | dynamic |  | A property bag containing additional properties of the request. |
+| *Uri* | `string` |  :heavy_check_mark: | The destination URI for the HTTP or HTTPS request. |
+| *RequestHeaders* | `dynamic` |  | A property bag containing [HTTP headers](#headers) to send with the request. |
+| *Options* | `dynamic` |  | A property bag containing additional properties of the request. |
 
 > [!NOTE]
 >

@@ -19,7 +19,7 @@ Encodes a [GUID](./scalar-data-types/guid.md) to a base64 string.
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-| *guid* | guid | &check; | The value to encode to a base64 string. |
+| *guid* | `guid` |  :heavy_check_mark: | The value to encode to a base64 string. |
 
 ## Returns
 

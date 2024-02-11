@@ -27,8 +27,8 @@ You must have at least Database User, Database Viewer, or Database Monitor permi
 
 |Name|Type|Required|Description|
 |--|--|--|--|
-|*DatabaseName*|string||The name of the database. This is required when running the command from outside the database context of the specified table.|
-|*TableName*|string|&check;|The name of the table for which to show the policy details.|
+|*DatabaseName*| `string` ||The name of the database. This is required when running the command from outside the database context of the specified table.|
+|*TableName*| `string` | :heavy_check_mark:|The name of the table for which to show the policy details.|
 
 ## Returns
 

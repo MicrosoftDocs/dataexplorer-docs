@@ -25,8 +25,8 @@ You must have at least [Table Admin](access-control/role-based-access-control.md
 
 |Name|Type|Required|Description|
 |--|--|--|--|
-| *TableName* | string | &check; | The name of the table to alter.|
-| *SerializedPolicyObject* | string | &check; | A serialized policy object. See [extent tags retention policy](extent-tags-retention-policy.md).|
+| *TableName* | `string` |  :heavy_check_mark: | The name of the table to alter.|
+| *SerializedPolicyObject* | `string` |  :heavy_check_mark: | A serialized policy object. See [extent tags retention policy](extent-tags-retention-policy.md).|
 
 ## Example
 

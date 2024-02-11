@@ -25,8 +25,8 @@ If you have a scattered set of values, they'll be grouped into a smaller set of 
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-| *value* |  int, long, real, [timespan](scalar-data-types/timespan.md), or datetime | &check; | The value to round down. |
-| *roundTo* |  int, long, real, or [timespan](scalar-data-types/timespan.md) | &check; | The "bin size" that divides *value*. |
+| *value* |  int, long, real, [timespan](scalar-data-types/timespan.md), or datetime |  :heavy_check_mark: | The value to round down. |
+| *roundTo* |  int, long, real, or [timespan](scalar-data-types/timespan.md) |  :heavy_check_mark: | The "bin size" that divides *value*. |
 
 ## Returns
 

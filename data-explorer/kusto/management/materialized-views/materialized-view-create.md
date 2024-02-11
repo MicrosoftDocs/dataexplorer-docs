@@ -40,10 +40,10 @@ You must have at least [Database User](../access-control/role-based-access-contr
 
 | Name                            | Type   | Required | Description                                                                                                                                                                                                                          |
 |---------------------------------|--------|----------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| *PropertyName*, *PropertyValue* | string |          | List of properties in the form of name and value pairs, from the list of [supported properties](#properties).                                                                                                                        |
-| *MaterializedViewName*          | string | &check;  | Name of the materialized view. The view name can't conflict with table or function names in the same database and must adhere to the [identifier naming rules](../../query/schema-entities/entity-names.md#identifier-naming-rules). |
-| *SourceTableName*               | string | &check;  | Name of source table on which the view is defined.                                                                                                                                                                                   |
-| *Query*                         | string | &check;  | Query definition of the materialized view. For more information and limitations, see [Query parameter](#query-parameter) section.                                                                                                                                                                                                      |
+| *PropertyName*, *PropertyValue* | `string` |          | List of properties in the form of name and value pairs, from the list of [supported properties](#supported-properties).                                                                                                                        |
+| *MaterializedViewName*          | `string` |  :heavy_check_mark:  | Name of the materialized view. The view name can't conflict with table or function names in the same database and must adhere to the [identifier naming rules](../../query/schema-entities/entity-names.md#identifier-naming-rules). |
+| *SourceTableName*               | `string` |  :heavy_check_mark:  | Name of source table on which the view is defined.                                                                                                                                                                                   |
+| *Query*                         | `string` |  :heavy_check_mark:  | Query definition of the materialized view. For more information and limitations, see [Query parameter](#query-parameter) section.                                                                                                                                                                                                      |
 
 > [!NOTE]
 > If the materialized view already exists:
@@ -52,7 +52,7 @@ You must have at least [Database User](../access-control/role-based-access-contr
 > * If the `ifnotexists` flag isn't specified, an error is returned.
 > * To alter an existing materialized view, use the [.alter materialized-view](materialized-view-alter.md) command.
 
-## Properties
+## Supported properties
 
 The following properties are supported in the `with` `(`*PropertyName* `=` *PropertyValue*`)` clause. All properties are optional.
 
@@ -79,10 +79,10 @@ You can create a materialized view over another materialized view only when the 
 
 | Name                            | Type   | Required | Description                                                                                                                                                                                                                          |
 |---------------------------------|--------|----------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| *PropertyName*, *PropertyValue* | string |          | List of properties in the form of name and value pairs, from the list of [supported properties](#properties).                                                                                                                        |
-| *MaterializedViewName*          | string | &check;  | Name of the materialized view. The view name can't conflict with table or function names in the same database and must adhere to the [identifier naming rules](../../query/schema-entities/entity-names.md#identifier-naming-rules). |
-| *SourceMaterializedViewName*    | string | &check;  | Name of source materialized view on which the view is defined.                                                                                                                                                                       |
-| *Query*                         | string | &check;  | Query definition of the materialized view.                                                                                                                                                                                           |
+| *PropertyName*, *PropertyValue* | `string` |          | List of properties in the form of name and value pairs, from the list of [supported properties](#supported-properties).                                                                                                                        |
+| *MaterializedViewName*          | `string` |  :heavy_check_mark:  | Name of the materialized view. The view name can't conflict with table or function names in the same database and must adhere to the [identifier naming rules](../../query/schema-entities/entity-names.md#identifier-naming-rules). |
+| *SourceMaterializedViewName*    | `string` |  :heavy_check_mark:  | Name of source materialized view on which the view is defined.                                                                                                                                                                       |
+| *Query*                         | `string` |  :heavy_check_mark:  | Query definition of the materialized view.                                                                                                                                                                                           |
 
 ## Examples
 
@@ -252,7 +252,7 @@ The following aggregation functions are supported:
   >
   > We recommend that in the materialized view query, you either filter out the outlier records or normalize these records to the current time.
 
-* **Define a lookback period**: If applicable to your scenario, adding a `lookback` property can significantly improve query performance. For details, see [Properties](#properties).  
+* **Define a lookback period**: If applicable to your scenario, adding a `lookback` property can significantly improve query performance. For details, see [Supported properties](#supported-properties).  
 
 * **Add columns frequently used for filtering as group-by keys**: Materialized view queries are optimized when they're filtered by one of the materialized view's group-by keys. If you know that your query pattern will often filter by a column that's immutable according to a unique entity in the materialized view, include it in the materialized view's group-by keys.
 
@@ -467,17 +467,17 @@ If the operation is no longer in progress when the `.cancel operation` command i
 
 | Name          | Type | Required | Description                                                                   |
 |---------------|------|----------|-------------------------------------------------------------------------------|
-| `operationId` | guid | &check;  | The operation ID returned from the `.create async materialized-view` command. |
+| `operationId` | `guid` |  :heavy_check_mark:  | The operation ID returned from the `.create async materialized-view` command. |
 
 #### Output
 
 | Name              | Type     | Description
 |-------------------|----------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| OperationId       | guid     |The operation ID of the `.create materialized-view` command.                                                                                                                                            |
-| Operation         | string   |The type of operation.                                                                                                                                                                                  |
-| StartedOn         | datetime |The start time of the create operation.                                                                                                                                                                 |
-| CancellationState | string   |One of: `Canceled successfully` (creation was canceled), `Cancellation failed` (wait for cancellation timed out), `Unknown` (view creation is no longer running but wasn't canceled by this operation). |
-| ReasonPhrase      | string   |The reason why cancellation wasn't successful.                                                                                                                                                          |
+| OperationId       | `guid` |The operation ID of the `.create materialized-view` command.                                                                                                                                            |
+| Operation         | `string` |The type of operation.                                                                                                                                                                                  |
+| StartedOn         | `datetime` |The start time of the create operation.                                                                                                                                                                 |
+| CancellationState | `string` |One of: `Canceled successfully` (creation was canceled), `Cancellation failed` (wait for cancellation timed out), `Unknown` (view creation is no longer running but wasn't canceled by this operation). |
+| ReasonPhrase      | `string` |The reason why cancellation wasn't successful.                                                                                                                                                          |
 
 #### Examples
 

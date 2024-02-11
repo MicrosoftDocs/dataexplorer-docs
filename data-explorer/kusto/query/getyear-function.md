@@ -19,7 +19,7 @@ Returns the year part of the `datetime` argument.
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-| *date* | datetime | &check; | The date for which to get the year. |
+| *date* | `datetime` |  :heavy_check_mark: | The date for which to get the year. |
 
 ## Returns
 

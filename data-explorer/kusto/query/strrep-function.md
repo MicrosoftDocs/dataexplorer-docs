@@ -19,9 +19,9 @@ Replicates a [string](scalar-data-types/string.md) the number of times specified
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-| *value* | string | &check; | The string to replicate. |
-| *multiplier* | int | &check; | The amount of times to replicate the string. Must be a value from 1 to 67108864.|
-| *delimiter* | string | | The delimeter used to separate the string replications. The default delimiter is an empty string.|
+| *value* | `string` |  :heavy_check_mark: | The string to replicate. |
+| *multiplier* | `int` |  :heavy_check_mark: | The amount of times to replicate the string. Must be a value from 1 to 67108864.|
+| *delimiter* | `string` | | The delimeter used to separate the string replications. The default delimiter is an empty string.|
 
 > [!NOTE]
 > If *value* or *delimiter* isn't a `string`, they'll be forcibly converted to string.

@@ -19,7 +19,7 @@ Reverses the order of the elements in a dynamic array.
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-|*value*| dynamic | &check;| The array to reverse.|
+|*value*| `dynamic` |  :heavy_check_mark:| The array to reverse.|
 
 ## Returns
 

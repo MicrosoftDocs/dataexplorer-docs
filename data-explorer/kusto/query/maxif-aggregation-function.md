@@ -23,8 +23,8 @@ See also - [max()](max-aggregation-function.md) function, which returns the maxi
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-| *expr* | string | &check; | The expression used for the aggregation calculation. |
-| *predicate* | string | &check; | The expression used to filter rows. |
+| *expr* | `string` |  :heavy_check_mark: | The expression used for the aggregation calculation. |
+| *predicate* | `string` |  :heavy_check_mark: | The expression used to filter rows. |
 
 ## Returns
 

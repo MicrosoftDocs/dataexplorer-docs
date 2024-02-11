@@ -23,9 +23,9 @@ You must have at least [Table Admin](access-control/role-based-access-control.md
 
 |Name|Type|Required|Description|
 |--|--|--|--|
-| *DatabaseName* | string | | The name of the database. When you run the command from the database context that contains the table to alter, *DatabaseName* is not required.|
-| *TableName* | string | &check; | The name of the table. Use without *DatabaseName* when running in the required database's context.|
-| *PolicyParameters* | string | &check; | The policy parameters to set. See [cache policy](cache-policy.md).|
+| *DatabaseName* | `string` | | The name of the database. When you run the command from the database context that contains the table to alter, *DatabaseName* is not required.|
+| *TableName* | `string` |  :heavy_check_mark: | The name of the table. Use without *DatabaseName* when running in the required database's context.|
+| *PolicyParameters* | `string` |  :heavy_check_mark: | The policy parameters to set. See [cache policy](cache-policy.md).|
 
 ## Examples
 

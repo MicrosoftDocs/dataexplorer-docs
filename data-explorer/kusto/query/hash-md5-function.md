@@ -19,7 +19,7 @@ Returns an MD5 hash value of the input.
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-| *source* | scalar | &check; | The value to be hashed.|
+| *source* | scalar |  :heavy_check_mark: | The value to be hashed.|
 
 ## Returns
 

@@ -23,8 +23,8 @@ Creates a `dynamic` array of *expr* values in the group for which *predicate* ev
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-| *expr* | string | &check; | The expression used for the aggregation calculation. |
-| *predicate* | string | &check; | A predicate that has to evaluate to `true` in order for *expr* to be added to the result. |
+| *expr* | `string` |  :heavy_check_mark: | The expression used for the aggregation calculation. |
+| *predicate* | `string` |  :heavy_check_mark: | A predicate that has to evaluate to `true` in order for *expr* to be added to the result. |
 | *maxSize* | integer |  | The maximum number of elements returned. The default and max value is 1048576. |
 
 ## Returns

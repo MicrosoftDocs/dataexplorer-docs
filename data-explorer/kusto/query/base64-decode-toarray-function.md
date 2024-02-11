@@ -19,7 +19,7 @@ Decodes a base64 string to an array of long values.
 
 | Name | Type | Required | Description |
 | -- | -- | -- | -- |
-| *base64_string* | string | &check; |  The value to decode from base64 to an array of long values.|
+| *base64_string* | `string` |  :heavy_check_mark: |  The value to decode from base64 to an array of long values.|
 
 ## Returns
 

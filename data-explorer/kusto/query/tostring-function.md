@@ -19,7 +19,7 @@ Converts the input to a string representation.
 
 |Name|Type|Required|Description|
 |--|--|--|--|
-| *value* | scalar | &check; | The value to convert to a string.|
+| *value* | scalar |  :heavy_check_mark: | The value to convert to a string.|
 
 ## Returns
 

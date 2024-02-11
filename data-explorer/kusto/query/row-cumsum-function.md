@@ -19,8 +19,8 @@ Calculates the cumulative sum of a column in a [serialized row set](./window-fun
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-| *term*| int, long, or real | &check; | The expression indicating the value to be summed.|
-| *restart*| bool | | Indicates when the accumulation operation should be restarted, or set back to 0. It can be used to indicate partitions in the data.|
+| *term*| int, long, or real |  :heavy_check_mark: | The expression indicating the value to be summed.|
+| *restart*| `bool` | | Indicates when the accumulation operation should be restarted, or set back to 0. It can be used to indicate partitions in the data.|
 
 ## Returns
 

@@ -21,7 +21,7 @@ Calculates the number of elements in a dynamic array.
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-| *array* | dynamic | &check; | The array for which to calculate length.
+| *array* | `dynamic` |  :heavy_check_mark: | The array for which to calculate length.
 
 ## Returns
 

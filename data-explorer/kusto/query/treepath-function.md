@@ -19,7 +19,7 @@ Enumerates all the path expressions that identify leaves in a dynamic object.
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-| *object* | dynamic | &check;| A dynamic property bag object for which to enumerate the path expressions.|
+| *object* | `dynamic` |  :heavy_check_mark:| A dynamic property bag object for which to enumerate the path expressions.|
 
 ## Returns
 

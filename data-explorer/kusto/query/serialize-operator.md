@@ -21,8 +21,8 @@ The operator has a declarative meaning. It marks the input row set as serialized
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-| *Name* | string | | The name of the column to add or update. If omitted, the output column name is automatically generated. |
-| *Expr* | string | &check; | The calculation to perform over the input.|
+| *Name* | `string` | | The name of the column to add or update. If omitted, the output column name is automatically generated. |
+| *Expr* | `string` |  :heavy_check_mark: | The calculation to perform over the input.|
 
 ## Examples
 

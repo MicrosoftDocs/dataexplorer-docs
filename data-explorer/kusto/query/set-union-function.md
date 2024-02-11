@@ -19,7 +19,7 @@ Returns a `dynamic` array of the set of all distinct values that are in any of t
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-| *set1...setN* | dynamic | &check; | Arrays used to create a union set. A minimum of two arrays are required. See [pack_array](pack-array-function.md).|
+| *set1...setN* | `dynamic` |  :heavy_check_mark: | Arrays used to create a union set. A minimum of two arrays are required. See [pack_array](pack-array-function.md).|
 
 ## Returns
 

@@ -22,7 +22,7 @@ Returns the length, in characters, of the input string.
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-| *source* | string | &check; | The string for which to return the length.|
+| *source* | `string` |  :heavy_check_mark: | The string for which to return the length.|
 
 ## Returns
 

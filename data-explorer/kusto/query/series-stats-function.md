@@ -22,9 +22,9 @@ Returns statistics for a numerical series in a table with a column for each stat
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-| *Name* | string | | The column labels for the output table. If not provided, the system will generate them. If you provide a limited number of names, the table will show only those columns.|
-| *series* | dynamic | &check; | An array of numeric values.|
-| *ignore_nonfinite* | bool | | Determines if the calculation includes non-finite values like `null`, `NaN`, `inf`, and so on. The default is `false`, which will result in `null` if non-finite values are present.|
+| *Name* | `string` | | The column labels for the output table. If not provided, the system will generate them. If you provide a limited number of names, the table will show only those columns.|
+| *series* | `dynamic` |  :heavy_check_mark: | An array of numeric values.|
+| *ignore_nonfinite* | `bool` | | Determines if the calculation includes non-finite values like `null`, `NaN`, `inf`, and so on. The default is `false`, which will result in `null` if non-finite values are present.|
 
 ## Returns
 

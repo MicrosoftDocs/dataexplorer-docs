@@ -19,11 +19,11 @@ Searches an array for the specified item, and returns its position.
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-| *array* | dynamic | &check; | The array to search. |
-| *value* | long, int, datetime, timespan, string, guid, or bool | &check; | The value to lookup. |
-| *start* | int |  | The search start position. A negative value will offset the starting search value from the end of the array by `abs(`*start*`)` steps. |
-| *length* | int |  | The number of values to examine. A value of -1 means unlimited length. |
-| *occurrence* | int |  | The number of the occurrence. The default is 1. |
+| *array* | `dynamic` |  :heavy_check_mark: | The array to search. |
+| *value* | long, int, datetime, timespan, string, guid, or bool |  :heavy_check_mark: | The value to lookup. |
+| *start* | `int` |  | The search start position. A negative value will offset the starting search value from the end of the array by `abs(`*start*`)` steps. |
+| *length* | `int` |  | The number of values to examine. A value of -1 means unlimited length. |
+| *occurrence* | `int` |  | The number of the occurrence. The default is 1. |
 
 ## Returns
 

@@ -23,11 +23,12 @@ It's better to use the parse_json() function over the [extract_json()](./extract
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-| *json* | string | &check; | The string in the form of a [JSON-formatted value](https://json.org/) or a [dynamic](./scalar-data-types/dynamic.md) property bag to parse as JSON.|
+| *json* | `string` |  :heavy_check_mark: | The string in the form of a [JSON-formatted value](https://json.org/) or a [dynamic](./scalar-data-types/dynamic.md) property bag to parse as JSON.|
 
 ## Returns
 
 An object of type `dynamic` that is determined by the value of *json*:
+
 * If *json* is of type `dynamic`, its value is used as-is.
 * If *json* is of type `string`, and is a [properly formatted JSON string](https://json.org/), then the string is parsed, and the value produced is returned.
 * If *json* is of type `string`, but it isn't a [properly formatted JSON string](https://json.org/), then the returned value is an object of type `dynamic` that holds the original `string` value.

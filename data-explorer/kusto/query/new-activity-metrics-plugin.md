@@ -21,15 +21,15 @@ The plugin is invoked with the [`evaluate`](evaluate-operator.md) operator.
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-| *TabularExpression*| string | &check; | The tabular expression for which to calculate activity metrics.|
-| *IdColumn*| string | &check; | The name of the column with ID values that represent user activity.|
-| *TimelineColumn*| string | &check; | The name of the column that represents the timeline.|
-| *Start*| scalar | &check; | The value of the analysis start period.|
-| *End*| scalar | &check; | The value of the analysis end period.|
-| *Window*| scalar | &check; | The value of the analysis window period. Can be a numeric, datetime, or timespan value, or a string that is one of `week`, `month` or `year`, in which case all periods will be [startofweek](startofweek-function.md)/[startofmonth](startofmonth-function.md)/[startofyear](startofyear-function.md) accordingly. When using `startofweek`, make sure start time is a Sunday, otherwise first cohort will be empty (since [startofweek](startofweek-function.md) is considered to be a Sunday).|
+| *TabularExpression*| `string` |  :heavy_check_mark: | The tabular expression for which to calculate activity metrics.|
+| *IdColumn*| `string` |  :heavy_check_mark: | The name of the column with ID values that represent user activity.|
+| *TimelineColumn*| `string` |  :heavy_check_mark: | The name of the column that represents the timeline.|
+| *Start*| scalar |  :heavy_check_mark: | The value of the analysis start period.|
+| *End*| scalar |  :heavy_check_mark: | The value of the analysis end period.|
+| *Window*| scalar |  :heavy_check_mark: | The value of the analysis window period. Can be a numeric, datetime, or timespan value, or a string that is one of `week`, `month` or `year`, in which case all periods will be [startofweek](startofweek-function.md)/[startofmonth](startofmonth-function.md)/[startofyear](startofyear-function.md) accordingly. When using `startofweek`, make sure start time is a Sunday, otherwise first cohort will be empty (since [startofweek](startofweek-function.md) is considered to be a Sunday).|
 | *Cohort*| scalar | | Indicates a specific cohort. If not provided, all cohorts corresponding to the analysis time window are calculated and returned.|
-| *dim1*, *dim2*, ...| dynamic | | An array of the dimensions columns that slice the activity metrics calculation.|
-| *Lookback*| string | | A tabular expression with a set of IDs that belong to the 'look back' period.|
+| *dim1*, *dim2*, ...| `dynamic` | | An array of the dimensions columns that slice the activity metrics calculation.|
+| *Lookback*| `string` | | A tabular expression with a set of IDs that belong to the 'look back' period.|
 
 ## Returns
 

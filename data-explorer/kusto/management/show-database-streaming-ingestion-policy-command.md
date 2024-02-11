@@ -29,7 +29,7 @@ You must have at least Database User, Database Viewer, or Database Monitor permi
 
 |Name|Type|Required|Description|
 |--|--|--|--|
-|*DatabaseName*|string|&check;|The name of the database.|
+|*DatabaseName*| `string` | :heavy_check_mark:|The name of the database.|
 
 ## Example
 

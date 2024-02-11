@@ -28,11 +28,11 @@ The function `two_sample_t_test_fl()` is a [user-defined function (UDF)](../quer
 
 |Name|Type|Required|Description|
 |--|--|--|--|
-| *data1* | string | &check; | The name of the column containing the first set of data to be used for the test.|
-| *data2* | string | &check; | The name of the column containing the second set of data to be used for the test.|
-| *test_statistic* | string | &check; | The name of the column to store test statistic value for the results.|
-| *p_value* | string | &check; | The name of the column to store p-value for the results.|
-| *equal_var* | bool | | If `true` (default), performs a standard independent 2 sample test that assumes equal population variances. If `false`, performs Welch’s t-test, which does not assume equal population variance. As mentioned above, consider using the native [welch_test()](../query/welch-test-function.md).|
+| *data1* | `string` |  :heavy_check_mark: | The name of the column containing the first set of data to be used for the test.|
+| *data2* | `string` |  :heavy_check_mark: | The name of the column containing the second set of data to be used for the test.|
+| *test_statistic* | `string` |  :heavy_check_mark: | The name of the column to store test statistic value for the results.|
+| *p_value* | `string` |  :heavy_check_mark: | The name of the column to store p-value for the results.|
+| *equal_var* | `bool` | | If `true` (default), performs a standard independent 2 sample test that assumes equal population variances. If `false`, performs Welch’s t-test, which does not assume equal population variance. As mentioned above, consider using the native [welch_test()](../query/welch-test-function.md).|
 
 ## Function definition
 

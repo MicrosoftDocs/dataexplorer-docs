@@ -103,3 +103,5 @@ and the [todatetime()](../todatetime-function.md) function.
 ## Related content
 
 * [todatetime()](../../query/todatetimefunction.md)
+* [ago()](../../query/ago-function.md)
+* [between](../../query/between-operator.md)

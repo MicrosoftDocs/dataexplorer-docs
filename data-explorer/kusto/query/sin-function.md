@@ -19,7 +19,7 @@ Returns the sine function value of the specified angle. The angle is specified i
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-| *number* | real | &check; | The value in radians for which to calculate the sine.|
+| *number* | `real` |  :heavy_check_mark: | The value in radians for which to calculate the sine.|
 
 ## Returns
 

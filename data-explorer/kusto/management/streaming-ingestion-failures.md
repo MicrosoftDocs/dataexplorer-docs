@@ -33,17 +33,17 @@ If you have Database Admin or Database Monitor permissions, you see all failed o
 
 | Output parameter | Type | Description |
 |--|--|--|
-| Database | String | Target database of the ingestion |
-| Table | String | Target table of the ingestion |
-| Principal | String | The principal whosе credentials were used for the ingestion |
-| RootActivityId | Guid | The ingestion Root Activity ID |
-| IngestionProperties | Dynamic | The ingestion properties |
-| Count | Long | The total count of failures in the bucket |
-| FirstFailureOn | DateTime | Date/time (in UTC) of the first ingestion in the bucket |
-| LastFailureOn | DateTime | Date/time (in UTC) of the last ingestion in the bucket |
-| FailureKind | String | Type of the failure (Permanent/Transient) |
-| ErrorCode | String | The error code of the failure |
-| Details | String | The details about the failure |
+| Database | `string` | Target database of the ingestion |
+| Table | `string` | Target table of the ingestion |
+| Principal | `string` | The principal whosе credentials were used for the ingestion |
+| RootActivityId | `guid` | The ingestion Root Activity ID |
+| IngestionProperties | `dynamic` | The ingestion properties |
+| Count | `long` | The total count of failures in the bucket |
+| FirstFailureOn | `datetime` | Date/time (in UTC) of the first ingestion in the bucket |
+| LastFailureOn | `datetime` | Date/time (in UTC) of the last ingestion in the bucket |
+| FailureKind | `string` | Type of the failure (Permanent/Transient) |
+| ErrorCode | `string` | The error code of the failure |
+| Details | `string` | The details about the failure |
 
 ## Example
 

@@ -19,13 +19,13 @@ Calculates useful activity metrics for each time window compared/aggregated to *
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-| *T* | string | &check; | The tabular input used to count activities. |
-| *IdColumn* | string | &check; | The name of the column with ID values that represent user activity. |
-| *TimelineColumn* | string | &check; | The name of the column that represents the timeline. |
-| *Start* | datetime | &check; | The analysis start period. |
-| *End* | datetime | &check; | The analysis end period. |
-| *Step* | decimal, datetime, or timespan | &check; | The analysis window period. The value may also be a string of `week`, `month`, or `year`, in which case all periods would be [startofweek](startofweek-function.md), [startofmonth](startofmonth-function.md), or [startofyear](startofyear-function.md). |
-|  *Dimensions* | string |   | Zero or more comma-separated dimensions columns that slice the activity metrics calculation. |
+| *T* | `string` |  :heavy_check_mark: | The tabular input used to count activities. |
+| *IdColumn* | `string` |  :heavy_check_mark: | The name of the column with ID values that represent user activity. |
+| *TimelineColumn* | `string` |  :heavy_check_mark: | The name of the column that represents the timeline. |
+| *Start* | `datetime` |  :heavy_check_mark: | The analysis start period. |
+| *End* | `datetime` |  :heavy_check_mark: | The analysis end period. |
+| *Step* | decimal, datetime, or timespan |  :heavy_check_mark: | The analysis window period. The value may also be a string of `week`, `month`, or `year`, in which case all periods would be [startofweek](startofweek-function.md), [startofmonth](startofmonth-function.md), or [startofyear](startofyear-function.md). |
+|  *Dimensions* | `string` |   | Zero or more comma-separated dimensions columns that slice the activity metrics calculation. |
 
 ## Returns
 
@@ -36,10 +36,10 @@ The following table describes the output table schema.
 | Column name | Type | Description |
 |---|---|---|
 | `Timestamp` | Same as the provided *TimelineColumn* argument| The time window start time. |
-| `count` | long | The total records count in the time window and *dim(s)* |
-| `dcount` | long | The distinct ID values count in the time window and *dim(s)* |
-| `new_dcount` | long | The distinct ID values in the time window and *dim(s)* compared to all previous time windows. |
-| `aggregated_dcount` | long | The total aggregated distinct ID values of *dim(s)* from first-time window to current (inclusive). |
+| `count` | `long` | The total records count in the time window and *dim(s)* |
+| `dcount` | `long` | The distinct ID values count in the time window and *dim(s)* |
+| `new_dcount` | `long` | The distinct ID values in the time window and *dim(s)* compared to all previous time windows. |
+| `aggregated_dcount` | `long` | The total aggregated distinct ID values of *dim(s)* from first-time window to current (inclusive). |
 
 ## Examples
 

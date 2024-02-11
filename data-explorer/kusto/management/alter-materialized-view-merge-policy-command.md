@@ -23,8 +23,8 @@ You must have at least [Table Admin](access-control/role-based-access-control.md
 
 |Name|Type|Required|Description|
 |--|--|--|--|
-|*MaterializedViewName*|string|&check;| The name of the materialized view.|
-|*PolicyObject*|string|&check;| A policy object used to set the merge policy. For more information, see  [merge policy](merge-policy.md).|
+|*MaterializedViewName*| `string` | :heavy_check_mark:| The name of the materialized view.|
+|*PolicyObject*| `string` | :heavy_check_mark:| A policy object used to set the merge policy. For more information, see  [merge policy](merge-policy.md).|
 
 ### Example
 

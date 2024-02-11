@@ -19,8 +19,8 @@ Calculates the intersection of two lines or multilines.
 
 |Name|Type|Required|Description|
 |--|--|--|--|
-| *lineString1* | dynamic | &check; | A line or multiline in the [GeoJSON format](https://tools.ietf.org/html/rfc7946).|
-| *lineString2* | dynamic | &check; | A line or multiline in the [GeoJSON format](https://tools.ietf.org/html/rfc7946).|
+| *lineString1* | `dynamic` |  :heavy_check_mark: | A line or multiline in the [GeoJSON format](https://tools.ietf.org/html/rfc7946).|
+| *lineString2* | `dynamic` |  :heavy_check_mark: | A line or multiline in the [GeoJSON format](https://tools.ietf.org/html/rfc7946).|
 
 ## Returns
 

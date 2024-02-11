@@ -19,7 +19,7 @@ Returns the number of set bits in the binary representation of a number.
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-| *value* | int | &check; | The value for which to calculate the number of set bits. |
+| *value* | `int` |  :heavy_check_mark: | The value for which to calculate the number of set bits. |
 
 ## Returns
 

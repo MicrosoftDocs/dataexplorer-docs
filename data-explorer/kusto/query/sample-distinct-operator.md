@@ -21,9 +21,9 @@ The operator tries to return an answer as quickly as possible rather than trying
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-| *T*| string | &check; | The input tabular expression. |
-| *NumberOfValues*| int, long, or real | &check; | The number distinct values of *T* to return. You can specify any numeric expression.|
-| *ColumnName*| string | &check; | The name of the column from which to sample.|
+| *T*| `string` |  :heavy_check_mark: | The input tabular expression. |
+| *NumberOfValues*| int, long, or real |  :heavy_check_mark: | The number distinct values of *T* to return. You can specify any numeric expression.|
+| *ColumnName*| `string` |  :heavy_check_mark: | The name of the column from which to sample.|
 
 > [!TIP]
 >

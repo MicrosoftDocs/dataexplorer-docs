@@ -39,7 +39,8 @@ Some of the  parameters can be controlled using a cluster-level [sandbox policy]
   * This means that the first execution of a plugin that uses sandboxes on a node will include a short warm-up period.
 * **CPU:** The maximum rate of CPU a sandbox can consume of its host's processors is limited (default is `50%`).
   * When the limit is reached, the sandbox's CPU use is throttled, but execution continues.
-* **Memory:** The maximum amount of RAM a sandbox can consume of its host's RAM is limited (default is `20GB`).
+* **Memory:** The maximum amount of RAM a sandbox can consume of its host's RAM is limited.
+  * Default memory for Hyper-V technology is 1 GB, and for legacy sandboxes 20 GB.
   * Reaching the limit results in termination of the sandbox, and a query execution error.
 
 ## Sandbox limitations

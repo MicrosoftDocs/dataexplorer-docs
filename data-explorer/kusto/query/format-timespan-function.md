@@ -19,8 +19,8 @@ Formats a timespan according to the provided format.
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-| *timespan* | timespan | &check; | The value to format.|
-| *format* | string | &check;| The output format comprised of one or more of the [supported format elements](#supported-format-elements).
+| *timespan* | `timespan` |  :heavy_check_mark: | The value to format.|
+| *format* | `string` |  :heavy_check_mark:| The output format comprised of one or more of the [supported format elements](#supported-format-elements).
 
 ### Supported format elements
 

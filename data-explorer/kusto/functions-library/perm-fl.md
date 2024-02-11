@@ -21,8 +21,8 @@ The function `perm_fl()` is a [user-defined function (UDF)](../query/functions/u
 
 |Name|Type|Required|Description|
 |--|--|--|--|
-|*n*|int|&check;|The total number of items.|
-|*k*|int|&check;|The selected number of items.|
+|*n*| `int` | :heavy_check_mark:|The total number of items.|
+|*k*| `int` | :heavy_check_mark:|The selected number of items.|
 
 ## Function definition
 

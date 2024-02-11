@@ -21,7 +21,7 @@ Accumulates values using the binary `XOR` operation for each summarization group
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-| *expr* | long | &check; | The value used for the binary `XOR`  calculation. |
+| *expr* | `long` |  :heavy_check_mark: | The value used for the binary `XOR`  calculation. |
 
 ## Returns
 

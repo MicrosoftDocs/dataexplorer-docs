@@ -23,8 +23,8 @@ You must have at least [Database Admin](access-control/role-based-access-control
 
 |Name|Type|Required|Description|
 |--|--|--|--|
-|*MaterializedViewName*|string|&check;|The name of the materialized view.|
-|*PolicyParameters*|string|&check;|One or more policy parameters. For more information, see [retention policy](retention-policy.md).|
+|*MaterializedViewName*| `string` | :heavy_check_mark:|The name of the materialized view.|
+|*PolicyParameters*| `string` | :heavy_check_mark:|One or more policy parameters. For more information, see [retention policy](retention-policy.md).|
 
 ### Example
 

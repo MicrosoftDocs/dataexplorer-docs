@@ -21,8 +21,8 @@ Read more about [H3 Cell](https://eng.uber.com/h3/).
 
 |Name|Type|Required|Description|
 |--|--|--|--|
-| *h3cell* | string | &check; | An H3 Cell token value as it was calculated by [geo_point_to_h3cell()](geo-point-to-h3cell-function.md).|
-| *distance* | int | &check; | Defines the maximum ring distance from given cell. Valid distance is in range [0, 142].|
+| *h3cell* | `string` |  :heavy_check_mark: | An H3 Cell token value as it was calculated by [geo_point_to_h3cell()](geo-point-to-h3cell-function.md).|
+| *distance* | `int` |  :heavy_check_mark: | Defines the maximum ring distance from given cell. Valid distance is in range [0, 142].|
 
 ## Returns
 

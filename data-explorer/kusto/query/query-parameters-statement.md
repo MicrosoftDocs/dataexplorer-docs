@@ -34,9 +34,9 @@ To reference query parameters, the query text, or functions it uses, must first 
 
 |Name|Type|Required|Description|
 |--|--|--|--|
-|*Name1*|string|&check;|The name of a query parameter used in the query.|
-|*Type1*|string|&check;|The corresponding type, such as `string` or `datetime`. The values provided by the user are encoded as strings. The appropriate parse method is applied to the query parameter to get a strongly-typed value.|
-|*DefaultValue1*|string||A default value for the parameter. This value must be a literal of the appropriate scalar type.|
+|*Name1*| `string` | :heavy_check_mark:|The name of a query parameter used in the query.|
+|*Type1*| `string` | :heavy_check_mark:|The corresponding type, such as `string` or `datetime`. The values provided by the user are encoded as strings. The appropriate parse method is applied to the query parameter to get a strongly-typed value.|
+|*DefaultValue1*| `string` ||A default value for the parameter. This value must be a literal of the appropriate scalar type.|
 
 > [!NOTE]
 >

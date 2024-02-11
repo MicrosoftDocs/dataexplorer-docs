@@ -21,9 +21,9 @@ Element-wise iif function on dynamic arrays.
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-| *condition_array*| dynamic | &check;| An array of *boolean* or numeric values.|
-| *when_true* | dynamic or scalar | &check; | An array of values or primitive value. This will be the result when *condition_array* is *true*.|
-| *when_false* | dynamic or scalar | &check; | An array of values or primitive value. This will be the result when *condition_array* is *false*.|
+| *condition_array*| `dynamic` |  :heavy_check_mark:| An array of *boolean* or numeric values.|
+| *when_true* | dynamic or scalar |  :heavy_check_mark: | An array of values or primitive value. This will be the result when *condition_array* is *true*.|
+| *when_false* | dynamic or scalar |  :heavy_check_mark: | An array of values or primitive value. This will be the result when *condition_array* is *false*.|
 
 > [!NOTE]
 >

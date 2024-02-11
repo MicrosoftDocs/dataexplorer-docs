@@ -20,9 +20,9 @@ The function searches for characters in the 'searchList' and replaces them with 
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-| *searchList* | string | &check; | The list of characters that should be replaced.|
-| *replacementList* | string | &check; | The list of characters that should replace the characters in *searchList*.|
-| *source* | string | &check; | A string to search.|
+| *searchList* | `string` |  :heavy_check_mark: | The list of characters that should be replaced.|
+| *replacementList* | `string` |  :heavy_check_mark: | The list of characters that should replace the characters in *searchList*.|
+| *source* | `string` |  :heavy_check_mark: | A string to search.|
 
 ## Returns
 

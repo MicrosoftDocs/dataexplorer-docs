@@ -21,7 +21,7 @@ See: [Pearson correlation coefficient](https://en.wikipedia.org/wiki/Pearson_cor
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-| *series1*, *series2* | dynamic | &check; | The arrays of numeric values for calculating the correlation coefficient.|
+| *series1*, *series2* | `dynamic` |  :heavy_check_mark: | The arrays of numeric values for calculating the correlation coefficient.|
 
 ## Returns
 

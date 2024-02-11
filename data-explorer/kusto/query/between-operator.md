@@ -21,10 +21,10 @@ Filters a record set for data matching the values in an inclusive range.
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-| *T* | string | &check; |  The tabular input whose records are to be matched. For example, the table name. |
-| *expr* | scalar | &check; |  The expression used to filter. |
-| *leftRange* | int, long, real, or datetime | &check; | The expression of the left range. The range is inclusive.|
-| *rightRange* | int, long, real, datetime, or timespan | &check; | The expression of the right range. The range is inclusive.<br/><br/>This value can only be of type [timespan](scalar-data-types/timespan.md) if *expr* and *leftRange* are both of type `datetime`. See [example](#filter-using-a-timespan-range).|
+| *T* | `string` |  :heavy_check_mark: |  The tabular input whose records are to be matched. For example, the table name. |
+| *expr* | scalar |  :heavy_check_mark: |  The expression used to filter. |
+| *leftRange* | int, long, real, or datetime |  :heavy_check_mark: | The expression of the left range. The range is inclusive.|
+| *rightRange* | int, long, real, datetime, or timespan |  :heavy_check_mark: | The expression of the right range. The range is inclusive.<br/><br/>This value can only be of type [timespan](scalar-data-types/timespan.md) if *expr* and *leftRange* are both of type `datetime`. See [example](#filter-using-a-timespan-range).|
 
 ## Returns
 

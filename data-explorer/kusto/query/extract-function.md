@@ -21,10 +21,10 @@ Optionally, convert the extracted substring to the indicated type.
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-| *regex* | string | &check; | A [regular expression](re2.md).|
-| *captureGroup* | int | &check; | The capture group to extract. 0 stands for the entire match, 1 for the value matched by the first '('parenthesis')' in the regular expression, and 2 or more for subsequent parentheses.|
-| *source* | string | &check;| The string to search.|
-| *typeLiteral* | string | | If provided, the extracted substring is converted to this type. For example, `typeof(long)`.
+| *regex* | `string` |  :heavy_check_mark: | A [regular expression](re2.md).|
+| *captureGroup* | `int` |  :heavy_check_mark: | The capture group to extract. 0 stands for the entire match, 1 for the value matched by the first '('parenthesis')' in the regular expression, and 2 or more for subsequent parentheses.|
+| *source* | `string` |  :heavy_check_mark:| The string to search.|
+| *typeLiteral* | `string` | | If provided, the extracted substring is converted to this type. For example, `typeof(long)`.
 
 ## Returns
 

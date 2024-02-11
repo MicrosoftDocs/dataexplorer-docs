@@ -23,8 +23,8 @@ You must have at least [Table Admin](access-control/role-based-access-control.md
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-| *TableName* | string | &check;| The name of the table.|
-| *SortKey* |string | &check; | The column by which to sort the data in the extent.|
+| *TableName* | `string` |  :heavy_check_mark:| The name of the table.|
+| *SortKey* | `string` |  :heavy_check_mark: | The column by which to sort the data in the extent.|
 
 > [!TIP]
 > We recommend using a maximum of two sort keys. For more information, see [Performance considerations](row-order-policy.md#performance-considerations).

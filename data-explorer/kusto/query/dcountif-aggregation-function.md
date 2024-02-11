@@ -23,9 +23,9 @@ Estimates the number of distinct values of *expr* for rows in which *predicate* 
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-| *expr* | string | &check; | The expression used for the aggregation calculation. |
-| *predicate* | string | &check; | The expression used to filter rows. |
-| *accuracy* | int |  | The control between speed and accuracy. If unspecified, the default value is `1`. See [Estimation accuracy](#estimation-accuracy) for supported values. |
+| *expr* | `string` |  :heavy_check_mark: | The expression used for the aggregation calculation. |
+| *predicate* | `string` |  :heavy_check_mark: | The expression used to filter rows. |
+| *accuracy* | `int` |  | The control between speed and accuracy. If unspecified, the default value is `1`. See [Estimation accuracy](#estimation-accuracy) for supported values. |
 
 ## Returns
 

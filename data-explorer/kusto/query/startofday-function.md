@@ -19,8 +19,8 @@ Returns the start of the day containing the date, shifted by an offset, if provi
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-| *date* | datetime | &check; | The date for which to find the start.|
-| *offset* | int | | The number of days to offset from the input date. The default is 0.|
+| *date* | `datetime` |  :heavy_check_mark: | The date for which to find the start.|
+| *offset* | `int` | | The number of days to offset from the input date. The default is 0.|
 
 ## Returns
 

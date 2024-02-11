@@ -19,7 +19,7 @@ Calculates the element-wise sign of the numeric series input.
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-| *series* | dynamic | &check; | An array of numeric values over which the sign function is applied.|
+| *series* | `dynamic` |  :heavy_check_mark: | An array of numeric values over which the sign function is applied.|
 
 ## Returns
 

@@ -21,8 +21,8 @@ The function `series_rate_fl()` is a [user-defined function (UDF)](../query/func
 
 |Name|Type|Required|Description|
 |--|--|--|--|
-|*n_bins*|int||The number of bins to specify the gap between the extracted metric values for calculation of the rate. The function calculates the difference between the current sample and the one *n_bins* before, and divide it by the difference of their respective timestamps in seconds. The default is one bin. The default settings calculate [irate()](https://prometheus.io/docs/prometheus/latest/querying/functions/#irate), the PromQL instantaneous rate function.|
-|*fix_reset*|bool||Controls whether to check for counter resets and correct it like PromQL [rate()](https://prometheus.io/docs/prometheus/latest/querying/functions/#rate) function. The default is `true`. Set it to `false` to save redundant analysis in case no need to check for resets.|
+|*n_bins*| `int` ||The number of bins to specify the gap between the extracted metric values for calculation of the rate. The function calculates the difference between the current sample and the one *n_bins* before, and divide it by the difference of their respective timestamps in seconds. The default is one bin. The default settings calculate [irate()](https://prometheus.io/docs/prometheus/latest/querying/functions/#irate), the PromQL instantaneous rate function.|
+|*fix_reset*| `bool` ||Controls whether to check for counter resets and correct it like PromQL [rate()](https://prometheus.io/docs/prometheus/latest/querying/functions/#rate) function. The default is `true`. Set it to `false` to save redundant analysis in case no need to check for resets.|
 
 ## Function definition
 

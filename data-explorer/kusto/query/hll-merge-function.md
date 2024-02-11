@@ -25,7 +25,7 @@ Read about the [underlying algorithm (*H*yper*L*og*L*og) and estimation accuracy
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-|*hll*, *hll2*, ... |string|&check;|The column names containing HLL values to merge. The function expects between 2-64 arguments.|
+|*hll*, *hll2*, ... | `string` | :heavy_check_mark:|The column names containing HLL values to merge. The function expects between 2-64 arguments.|
 
 ## Returns
 

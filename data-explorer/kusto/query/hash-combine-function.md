@@ -19,7 +19,7 @@ Combines hash values of two or more hashes.
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-| *h1*, *h2*, ... *hN* | long | &check; | The hash values to combine.|
+| *h1*, *h2*, ... *hN* | `long` |  :heavy_check_mark: | The hash values to combine.|
 
 ## Returns
 

@@ -19,7 +19,7 @@ Concatenates between 1 and 64 arguments.
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-| *argument1* ... *argumentN* | scalar | &check; | The expressions to concatenate.|
+| *argument1* ... *argumentN* | scalar |  :heavy_check_mark: | The expressions to concatenate.|
 
 > [!NOTE]
 > If the arguments aren't of string type, they'll be forcibly converted to string.

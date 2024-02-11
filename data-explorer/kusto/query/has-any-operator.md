@@ -21,9 +21,9 @@ For more information about other operators and to determine which operator is mo
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-| *T* | string | &check; | The tabular input to filter.|
-| *col* | string | &check; | The column by which to filter.|
-| *expression* | scalar or tabular | &check; | An expression that specifies the values for which to search. Each expression can be a [scalar](scalar-data-types/index.md) value or a [tabular expression](tabular-expression-statements.md) that produces a set of values. If a tabular expression has multiple columns, the first column is used. The search will consider up to 10,000 distinct values.|
+| *T* | `string` |  :heavy_check_mark: | The tabular input to filter.|
+| *col* | `string` |  :heavy_check_mark: | The column by which to filter.|
+| *expression* | scalar or tabular |  :heavy_check_mark: | An expression that specifies the values for which to search. Each expression can be a [scalar](scalar-data-types/index.md) value or a [tabular expression](tabular-expression-statements.md) that produces a set of values. If a tabular expression has multiple columns, the first column is used. The search will consider up to 10,000 distinct values.|
 
 > [!NOTE]
 > An inline tabular expression must be enclosed with double parentheses. See [example](#tabular-expression).

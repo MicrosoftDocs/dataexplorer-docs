@@ -23,9 +23,9 @@ The `graph-merge` operator merges the nodes and edges of two graphs, combining t
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-| *LeftGraph* | string | &check; | The left graph. Denoted as `$left`. |
-| *RightGraph* | string | &check; | The right graph. Denoted as `$right`. |
-| *Attributes* | string | | One or more comma-separated rules that determine how edges from *LeftGraph* are matched with edges from *RightGraph*. If the columns to match have the same name in both graphs, use the syntax `on` *ColumnName*. Otherwise, use the syntax `on` `$left.`*LeftColumn* `==` `$right.`*RightColumn*. Multiple rules are evaluated using the `and` logical operator.|
+| *LeftGraph* | `string` |  :heavy_check_mark: | The left graph. Denoted as `$left`. |
+| *RightGraph* | `string` |  :heavy_check_mark: | The right graph. Denoted as `$right`. |
+| *Attributes* | `string` | | One or more comma-separated rules that determine how edges from *LeftGraph* are matched with edges from *RightGraph*. If the columns to match have the same name in both graphs, use the syntax `on` *ColumnName*. Otherwise, use the syntax `on` `$left.`*LeftColumn* `==` `$right.`*RightColumn*. Multiple rules are evaluated using the `and` logical operator.|
 
 ## Returns
 

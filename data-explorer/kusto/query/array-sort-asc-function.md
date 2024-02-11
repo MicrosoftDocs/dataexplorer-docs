@@ -21,8 +21,8 @@ If *nulls_last* isn't provided, a default value of `true` is used.
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-|*array1...arrayN*| dynamic | &check; | The array or list of arrays to sort.|
-| *nulls_last* | bool |  | Determines whether `null`s should be last.|
+|*array1...arrayN*| `dynamic` |  :heavy_check_mark: | The array or list of arrays to sort.|
+| *nulls_last* | `bool` |  | Determines whether `null`s should be last.|
 
 ## Returns
 

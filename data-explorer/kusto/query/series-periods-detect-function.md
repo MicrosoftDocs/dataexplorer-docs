@@ -19,10 +19,10 @@ Finds the most significant periods that exist in a time series.
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-| *series* | dynamic | &check; | An array of numeric values, typically the resulting output of the [make-series](make-series-operator.md) or [make_list](make-list-aggregation-function.md) operators.|
-| *min_period* | real | &check; | The minimal period for which to search.|
-| *max_period* | real | &check; | The maximal period for which to search.|
-| *num_periods* | long | &check; | The maximum required number of periods. This number will be the length of the output dynamic arrays.|
+| *series* | `dynamic` |  :heavy_check_mark: | An array of numeric values, typically the resulting output of the [make-series](make-series-operator.md) or [make_list](make-list-aggregation-function.md) operators.|
+| *min_period* | `real` |  :heavy_check_mark: | The minimal period for which to search.|
+| *max_period* | `real` |  :heavy_check_mark: | The maximal period for which to search.|
+| *num_periods* | `long` |  :heavy_check_mark: | The maximum required number of periods. This number will be the length of the output dynamic arrays.|
 
 > [!IMPORTANT]
 >
