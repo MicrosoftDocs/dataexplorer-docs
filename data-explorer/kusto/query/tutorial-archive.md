@@ -114,7 +114,7 @@ StormEvents
 
 ## Computing Derived Columns: *`extend`*
 
-Create a new column by computing a value in every row:
+You can create a new column by computing a value in every row:
 
 <!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
@@ -151,7 +151,7 @@ Here's the Output:
 |---|---|
 |3|1|
 
-[Scalar Expressions](./scalar-data-types/index.md) can include all the usual operators (`+`, `-`, `*`, `/`, `%`), as well as a range of useful, available functions.
+[Scalar Expressions](./scalar-data-types/index.md) can include all of the usual operators (`+`, `-`, `*`, `/`, `%`), as well as a range of useful, available functions.
 
 ## Aggregating Groups of Rows: *`summarize`*
 
@@ -243,7 +243,7 @@ Strictly speaking, `render` is a feature of the client, rather than part of the 
 
 ## Timecharts
 
-Going back to _numeric bins_, let's display a **Time Series**:
+Going back to _numeric bins_, let's display a **_Time Series_**:
 
 <!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
@@ -297,7 +297,7 @@ StormEvents
 
 :::image type="content" source="media/tutorial/column-count-hour.png" alt-text="Screenshot that shows a column chart count by hour.":::
 
-## Compare Multiple Daily Series
+## Comparing Multiple Daily Series
 
 You can **also** track how activity varies over the time of day in multiple different states.
 
