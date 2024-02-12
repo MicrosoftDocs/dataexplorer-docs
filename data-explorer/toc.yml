@@ -463,8 +463,8 @@ items:
                 href: manage-cluster-horizontal-scaling.md
               - name: Manage cluster vertical scaling
                 href: manage-cluster-vertical-scaling.md
-              - name: Migrate cluster to support availability zones
-                href: migrate-cluster-to-multiple-availability-zone.md
+              # - name: Migrate cluster to support availability zones
+              #   href: migrate-cluster-to-multiple-availability-zone.md
               - name: Check cluster health
                 href: check-cluster-health.md
               - name: Add cluster principal

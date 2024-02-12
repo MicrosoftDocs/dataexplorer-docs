@@ -849,6 +849,11 @@
       "source_path": "data-explorer/kusto/query/todouble-function.md",
       "redirect_url": "/azure/data-explorer/kusto/query/toreal-function",
       "redirect_document_id": true
+    },
+    {
+      "source_path": "data-explorer/migrate-cluster-to-multiple-availability-zone.md",
+      "redirect_url": "/azure/data-explorer/whats-new",
+      "redirect_document_id": true
     }
   ]
 }
