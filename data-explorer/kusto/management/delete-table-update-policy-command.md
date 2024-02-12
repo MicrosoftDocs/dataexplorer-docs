@@ -27,8 +27,8 @@ You must have at least [Table Admin](access-control/role-based-access-control.md
 
 |Name|Type|Required|Description|
 |--|--|--|--|
-|*DatabaseName*|string||The name of the database. This is required when running the command from outside the database context of the specified table.|
-|*TableName*|string| :heavy_check_mark:|The name of the table.|
+|*DatabaseName*| `string` ||The name of the database. This is required when running the command from outside the database context of the specified table.|
+|*TableName*| `string` | :heavy_check_mark:|The name of the table.|
 
 ## Returns
 

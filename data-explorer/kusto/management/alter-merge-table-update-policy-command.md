@@ -29,9 +29,9 @@ You must have at least [Table Admin](access-control/role-based-access-control.md
 
 |Name|Type|Required|Description|
 |--|--|--|--|
-| *DatabaseName* | string | | The name of the database. When you run the command from the database context that contains the table to alter, *DatabaseName* is not required. |
-| *TableName* | string |  :heavy_check_mark: | The name of the table. A wildcard, `*`, denotes all tables.|
-| *ArrayOfPolicyObjects* | string |  :heavy_check_mark: | A serialized array of policy objects. For more information, see [update policy](update-policy.md).|
+| *DatabaseName* | `string` | | The name of the database. When you run the command from the database context that contains the table to alter, *DatabaseName* is not required. |
+| *TableName* | `string` |  :heavy_check_mark: | The name of the table. A wildcard, `*`, denotes all tables.|
+| *ArrayOfPolicyObjects* | `string` |  :heavy_check_mark: | A serialized array of policy objects. For more information, see [update policy](update-policy.md).|
 
 ## Returns
 

@@ -21,7 +21,7 @@ arrays of the same index.
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-| *arrays* | dynamic |  :heavy_check_mark: | The dynamic array values to zip. The function accepts between 2-16 arrays.|
+| *arrays* | `dynamic` |  :heavy_check_mark: | The dynamic array values to zip. The function accepts between 2-16 arrays.|
 
 ## Examples
 

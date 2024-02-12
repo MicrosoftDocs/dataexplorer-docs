@@ -19,7 +19,7 @@ Returns `true` if the argument is a valid ASCII string.
 
 | Name | Type | Required | Description |
 | -- | -- | -- | -- |
-|*value*|string| :heavy_check_mark:| The value to check if a valid ASCII string.|
+|*value*| `string` | :heavy_check_mark:| The value to check if a valid ASCII string.|
 
 ## Returns
 

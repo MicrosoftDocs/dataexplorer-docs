@@ -26,8 +26,8 @@ Creates a `dynamic` array of all the values of *expr* in the group.
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-| *expr* | dynamic |  :heavy_check_mark: | The expression used for the aggregation calculation. |
-| *maxSize* | int |  | The maximum number of elements returned. The default and max value is 1048576. |
+| *expr* | `dynamic` |  :heavy_check_mark: | The expression used for the aggregation calculation. |
+| *maxSize* | `int` |  | The maximum number of elements returned. The default and max value is 1048576. |
 
 > [!NOTE]
 > The deprecated version has a default *maxSize* limit of 128.

@@ -25,12 +25,12 @@ A [Database Admin or Database Monitor](./access-control/role-based-access-contro
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-| *UserPrincipalName* | string |  |  The UPN of a specific user for which to return a list of queries. |
+| *UserPrincipalName* | `string` |  |  The UPN of a specific user for which to return a list of queries. |
 
 ## Returns
 
-- Returns a table containing previously run queries across all databases in the cluster and their completion statistics. You can use KQL queries to explore the results.
-- Returns a list of currently executing queries by the current user, or by another user, or by all users.
+* Returns a table containing previously run queries across all databases in the cluster and their completion statistics. You can use KQL queries to explore the results.
+* Returns a list of currently executing queries by the current user, or by another user, or by all users.
 
 > [!NOTE]
 > The text of the query is truncated after 64 KB.
@@ -39,25 +39,25 @@ The returned table schema is:
 
 |ColumnName |ColumnType |Description |
 |---|---|
-|ClientActivityId|string|Client ID of the request|
-| Text | string | Query text, truncated at 64 KB|
-|Database | string | Name of the database on which the query was executed |
-| StartedOn | datetime | Timestamp when query execution started |
-| LastUpdatedOn | datetime | Timestamp of the last status update|
-| Duration |timespan | Server-side query duration |
-| State | string | Completion state|
-| RootActivityId | guid | Server-side request ID|
-|User | string | User ID that ran the query|
-|FailureReason|string|Failure reason. If query succeeded, this field is empty.
-|TotalCpu | timespan | Total CPU consumed by the query |
-| CacheStatistics | dynamic | Data-cache usage statistics |
-| Application | string | Name of the application that was used to run the query|
-|MemoryPeak | long | Peak memory statistics|
-|ScannedExtentsStatistics | dynamic | Statistics of the scanned shards (extents)|
-|Principal| string | AAD-ID of the user or application that was used to run the query|
-|ClientRequestProperties | dynamic | Client request properties|
-|ResultSetStatistics | dynamic |Statistics describing returned dataset|
-|WorkloadGroup|string | Name of the workload group that query was associated with|
+|ClientActivityId| `string` |Client ID of the request|
+| Text | `string` | Query text, truncated at 64 KB|
+|Database | `string` | Name of the database on which the query was executed |
+| StartedOn | `datetime` | Timestamp when query execution started |
+| LastUpdatedOn | `datetime` | Timestamp of the last status update|
+| Duration | `timespan` | Server-side query duration |
+| State | `string` | Completion state|
+| RootActivityId | `guid` | Server-side request ID|
+|User | `string` | User ID that ran the query|
+|FailureReason| `string` |Failure reason. If query succeeded, this field is empty.
+|TotalCpu | `timespan` | Total CPU consumed by the query |
+| CacheStatistics | `dynamic` | Data-cache usage statistics |
+| Application | `string` | Name of the application that was used to run the query|
+|MemoryPeak | `long` | Peak memory statistics|
+|ScannedExtentsStatistics | `dynamic` | Statistics of the scanned shards (extents)|
+|Principal| `string` | AAD-ID of the user or application that was used to run the query|
+|ClientRequestProperties | `dynamic` | Client request properties|
+|ResultSetStatistics | `dynamic` |Statistics describing returned dataset|
+|WorkloadGroup| `string` | Name of the workload group that query was associated with|
 
 ## Examples
 

@@ -3,7 +3,7 @@ title: Embed the Azure Data Explorer web UI in an **iframe**.
 description: Learn how to embed the Azure Data Explorer web UI in an **iframe**.
 ms.reviewer: izlisbon
 ms.topic: how-to
-ms.custom: has-azure-ad-ps-ref
+ms.custom: has-azure-ad-ps-ref, azure-ad-ref-level-one-done
 ms.date: 6/6/2023
 ---
 # Embed the Azure Data Explorer web UI in an iframe
@@ -43,7 +43,7 @@ Use the following steps to handle authentication:
     ```javascript
     window.addEventListener('message', (event) => {
        if (event.data.signature === "queryExplorer" && event.data.type === "getToken") {
-         // CODE-1: Replace this placeholder with code to get the access token from Azure AD and
+         // CODE-1: Replace this placeholder with code to get the access token from Microsoft Entra ID and
          //         then post a "postToken" message with an access token and an event.data.scope
        }
     })    
@@ -140,7 +140,7 @@ To embed a dashboard, a trust relationship must be established between the host'
 1. In Azure PowerShell, add the following new service principal for the app:
 
     ```powershell
-    New-AzureADServicePrincipal -AppId 35e917a9-4d95-4062-9d97-5781291353b9
+    New-MgServicePrincipal -AppId 35e917a9-4d95-4062-9d97-5781291353b9
     ```
 
 

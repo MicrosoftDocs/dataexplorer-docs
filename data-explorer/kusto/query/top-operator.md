@@ -1,13 +1,13 @@
 ---
 title:  top operator
-description: Learn how to use the top operator to return the first specified number of records sorted by the specified columns.
+description: Learn how to use the top operator to return the first specified number of records sorted by the specified column.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 02/23/2023
+ms.date: 01/24/2024
 ---
 # top operator
 
-Returns the first *N* records sorted by the specified columns.
+Returns the first *N* records sorted by the specified column.
 
 ## Syntax
 
@@ -19,11 +19,11 @@ Returns the first *N* records sorted by the specified columns.
 
 |Name|Type|Required|Description|
 |--|--|--|--|
-| *T* | string |  :heavy_check_mark: | The tabular input to sort. |
-| *NumberOfRows* | int |  :heavy_check_mark: | The number of rows of *T* to return.|
-| *Expression* | string |  :heavy_check_mark: | The scalar expression by which to sort.|
-| `asc` or `desc` | string | | Controls whether the selection is from the "bottom" or "top" of the range. Default `desc`.
-| `nulls first` or `nulls last`  | string | | Controls whether null values appear at the "bottom" or "top" of the range. Default for `asc` is `nulls first`. Default for `desc` is `nulls last`.|
+| *T* | `string` |  :heavy_check_mark: | The tabular input to sort. |
+| *NumberOfRows* | `int` |  :heavy_check_mark: | The number of rows of *T* to return.|
+| *Expression* | `string` |  :heavy_check_mark: | The scalar expression by which to sort.|
+| `asc` or `desc` | `string` | | Controls whether the selection is from the "bottom" or "top" of the range. Default `desc`.
+| `nulls first` or `nulls last`  | `string` | | Controls whether null values appear at the "bottom" or "top" of the range. Default for `asc` is `nulls first`. Default for `desc` is `nulls last`.|
 
 > [!TIP]
 > `top 5 by name` is equivalent to the expression `sort by name | take 5` both from semantic and performance perspectives.

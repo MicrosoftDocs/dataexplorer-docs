@@ -142,7 +142,7 @@ The following syntax options are available when calling the Application Insights
 |Cluster that contains all apps/workspaces in the subscription and are members of this resource group | cluster('`https://adx.monitor.azure.com/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>`') | cluster('`https://adx.monitor.azure.com/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>`') |
 |Cluster that contains only the defined resource in this subscription | cluster('`https://adx.monitor.azure.com/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/microsoft.insights/components/<ai-app-name>`')    |  cluster('`https://adx.monitor.azure.com/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/microsoft.operationalinsights/workspaces/<workspace-name>`') |
 |For Endpoints in the UsGov | cluster('`https://adx.monitor.azure.us/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/microsoft.operationalinsights/workspaces/<workspace-name>`')|
-|For Endpoints in the China 21Vianet | cluster('`https://adx.monitor.azure.us/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/microsoft.operationalinsights/workspaces/<workspace-name>`') |
+|For Endpoints in the China 21Vianet | cluster('`https://adx.monitor.azure.cn/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/microsoft.operationalinsights/workspaces/<workspace-name>`') |
 
 ## Related content
 

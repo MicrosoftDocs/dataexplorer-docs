@@ -12,8 +12,13 @@
     },
     {
       "source_path": "data-explorer/kusto/tools/index.md",
-      "redirect_url": "/azure/data-explorer/tools-integrations-overview",
+      "redirect_url": "/azure/data-explorer/integrate-overview",
       "redirect_document_id": true
+    },
+    {
+      "source_path": "data-explorer/tools-integrations-overview.md",
+      "redirect_url": "/azure/data-explorer/integrate-overview",
+      "redirect_document_id": false
     },
     {
       "source_path": "data-explorer/kusto/management/drop-database.md",
@@ -806,6 +811,16 @@
       "redirect_document_id": true
     },
     {
+      "source_path": "data-explorer/connector-overview.md",
+      "redirect_url": "/azure/data-explorer/integrate-data-overview",
+      "redirect_document_id": true
+    },
+    {
+      "source_path": "data-explorer/viz-overview.md",
+      "redirect_url": "/azure/data-explorer/integrate-visualize-overview",
+      "redirect_document_id": false
+    },
+    {
       "source_path": "data-explorer/kusto/management/diagnostics.md",
       "redirect_url": "/azure/data-explorer/kusto/management/systeminfo",
       "redirect_document_id": false
@@ -833,6 +848,11 @@
     {
       "source_path": "data-explorer/kusto/query/todouble-function.md",
       "redirect_url": "/azure/data-explorer/kusto/query/toreal-function",
+      "redirect_document_id": true
+    },
+    {
+      "source_path": "data-explorer/migrate-cluster-to-multiple-availability-zone.md",
+      "redirect_url": "/azure/data-explorer/whats-new",
       "redirect_document_id": true
     }
   ]

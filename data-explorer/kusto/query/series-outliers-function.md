@@ -21,8 +21,8 @@ The function takes an expression with a dynamic numerical array as input, and ge
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-| *series* | dynamic |  :heavy_check_mark: | An array of numeric values.|
-| *kind* | string | | The algorithm to use for outlier detection. The supported options are `"tukey"`, which is traditional "Tukey", and  `"ctukey"`, which is custom "Tukey". The default is `"ctukey"`.|
+| *series* | `dynamic` |  :heavy_check_mark: | An array of numeric values.|
+| *kind* | `string` | | The algorithm to use for outlier detection. The supported options are `"tukey"`, which is traditional "Tukey", and  `"ctukey"`, which is custom "Tukey". The default is `"ctukey"`.|
 | *ignore_val* | int, long, or real | | A numeric value indicating the missing values in the series. The default is `double(`*null*`)`. The score of nulls and ignore values is set to `0`.|
 | *min_percentile* | int, long, or real | | The minimum percentile to use to calculate the normal inter-quantile range. The default is 10. The value must be in the range `[2.0, 98.0]`. This parameter is only relevant for the `"ctukey"` *kind*.|
 | *max_percentile* | int, long, or real | | The maximum percentile to use to calculate the normal inter-quantile range. The default is 90. The value must be in the range `[2.0, 98.0]`. This parameter is only relevant for the `"ctukey"` *kind*.|

@@ -19,7 +19,7 @@ Returns the integer number represents the day number of the given year.
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-| *date* | datetime |  :heavy_check_mark: | The datetime for which to determine the day number.|
+| *date* | `datetime` |  :heavy_check_mark: | The datetime for which to determine the day number.|
 
 ## Returns
 

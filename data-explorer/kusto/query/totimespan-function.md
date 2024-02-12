@@ -24,7 +24,7 @@ Converts the input to a [timespan](./scalar-data-types/timespan.md) scalar value
 
 |Name|Type|Required|Description|
 |--|--|--|--|
-| *value* | string |  :heavy_check_mark: | The value to convert to a [timespan](./scalar-data-types/timespan.md).|
+| *value* | `string` |  :heavy_check_mark: | The value to convert to a [timespan](./scalar-data-types/timespan.md).|
 
 ## Returns
 

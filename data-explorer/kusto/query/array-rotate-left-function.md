@@ -19,7 +19,7 @@ Rotates values inside a `dynamic` array to the left.
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-|*array* | dynamic |  :heavy_check_mark:| The array to rotate.|
+|*array* | `dynamic` |  :heavy_check_mark:| The array to rotate.|
 |*rotate_count*| integer |  :heavy_check_mark:| The number of positions that array elements will be rotated to the left. If the value is negative, the elements will be rotated to the right.|
 
 ## Returns

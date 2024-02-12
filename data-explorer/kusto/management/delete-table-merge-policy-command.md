@@ -23,7 +23,7 @@ You must have at least [Table Admin](access-control/role-based-access-control.md
 
 |Name|Type|Required|Description|
 |--|--|--|--|
-|*TableName*|string| :heavy_check_mark:|The name of the table for which to delete the merge policy.|
+|*TableName*| `string` | :heavy_check_mark:|The name of the table for which to delete the merge policy.|
 
 ### Example
 

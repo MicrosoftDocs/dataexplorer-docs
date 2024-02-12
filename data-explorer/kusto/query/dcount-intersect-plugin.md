@@ -19,7 +19,7 @@ Calculates intersection between N sets based on `hll` values (N in range of [2..
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-|*T*|string| :heavy_check_mark:| The input tabular expression. |
+|*T*| `string` | :heavy_check_mark:| The input tabular expression. |
 |*hll_i*| The values of set S<sub>i</sub> calculated with the [`hll()`](./hll-aggregation-function.md) function.|
 
 ## Returns

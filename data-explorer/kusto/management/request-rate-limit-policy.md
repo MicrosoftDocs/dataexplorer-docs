@@ -28,9 +28,10 @@ A request rate limit of kind `ConcurrentRequests` includes the following propert
 
 | Name                  | Type | Description                                | Supported Values |
 |-----------------------|------|--------------------------------------------|------------------|
-| MaxConcurrentRequests | int  | The maximum number of concurrent requests. | [`0`, `10000`]   |
+| MaxConcurrentRequests | `int` | The maximum number of concurrent requests. | [`0`, `10000`]   |
 
 > [!NOTE]
+>
 > * If a workload group doesn't have a specified limit on the maximum concurrent requests, it's subject to the default maximum value of `10000`.
 
 When a request exceeds the limit on maximum number of concurrent requests:
@@ -50,6 +51,7 @@ The following table shows a few examples of concurrent requests that exceed the 
 * The exception type will be `QueryThrottledException` for queries, and `ControlCommandThrottledException` for management commands.
   
 > [!NOTE]
+>
 > * If either of the limits defined by the [capacity policy](capacity-policy.md) or by a request rate limit policy is exceeded, a management command will be throttled.
 > * The [capacity policy](capacity-policy.md) may limit the request rate of requests that fall under a specific category, such as ingestions.
 

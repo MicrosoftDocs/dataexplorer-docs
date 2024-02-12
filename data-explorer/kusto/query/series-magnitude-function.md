@@ -19,7 +19,7 @@ Calculates the [magnitude](https://en.wikipedia.org/wiki/Magnitude_(mathematics)
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-| *series* | dynamic |  :heavy_check_mark: | Array of numeric values. |
+| *series* | `dynamic` |  :heavy_check_mark: | Array of numeric values. |
 
 ## Returns
 

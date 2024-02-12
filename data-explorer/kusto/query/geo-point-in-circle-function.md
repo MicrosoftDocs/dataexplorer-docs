@@ -19,11 +19,11 @@ Calculates whether the geospatial coordinates are inside a circle on Earth.
 
 |Name|Type|Required|Description|
 |--|--|--|--|
-| *p_longitude* | real |  :heavy_check_mark: | Geospatial coordinate longitude value in degrees. Valid value is a real number and in the range [-180, +180].|
-| *p_latitude* | real |  :heavy_check_mark: | Geospatial coordinate latitude value in degrees. Valid value is a real number and in the range [-90, +90].|
-| *pc_longitude* | real |  :heavy_check_mark: | Circle center geospatial coordinate longitude value in degrees. Valid value is a real number and in the range [-180, +180].|
-| *pc_latitude* | real |  :heavy_check_mark: | circle center geospatial coordinate latitude value in degrees. Valid value is a real number and in the range [-90, +90].|
-| *c_radius* | real |  :heavy_check_mark: | Circle radius in meters. Valid value must be positive.|
+| *p_longitude* | `real` |  :heavy_check_mark: | Geospatial coordinate longitude value in degrees. Valid value is a real number and in the range [-180, +180].|
+| *p_latitude* | `real` |  :heavy_check_mark: | Geospatial coordinate latitude value in degrees. Valid value is a real number and in the range [-90, +90].|
+| *pc_longitude* | `real` |  :heavy_check_mark: | Circle center geospatial coordinate longitude value in degrees. Valid value is a real number and in the range [-180, +180].|
+| *pc_latitude* | `real` |  :heavy_check_mark: | circle center geospatial coordinate latitude value in degrees. Valid value is a real number and in the range [-90, +90].|
+| *c_radius* | `real` |  :heavy_check_mark: | Circle radius in meters. Valid value must be positive.|
 
 ## Returns
 

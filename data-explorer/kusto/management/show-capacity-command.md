@@ -22,7 +22,7 @@ You must have at least [Database User](access-control/role-based-access-control.
 
 |Name|Type|Required|Description|
 |--|--|--|--|
-|*Operation*|string||The name of a specific operation for which to return the capacity, as based on the [capacity policy](../management/capacity-policy.md). See [Supported operations](#supported-operations).|
+|*Operation*| `string` ||The name of a specific operation for which to return the capacity, as based on the [capacity policy](../management/capacity-policy.md). See [Supported operations](#supported-operations).|
 
 ### Supported operations
 
@@ -47,7 +47,7 @@ The capacity can be based on the [workload group](workload-groups.md) specified 
 
 |Output parameter |Type |Description|
 |---|---|---|
-|Resource |String |The name of the resource|
+|Resource | `string` |The name of the resource|
 |Total |Int64 |The total amount of resources, of type 'Resource', that are available. For example, the number of concurrent ingestions|
 |Consumed |Int64 |The amount of resources of type 'Resource' consumed right now|
 |Remaining |Int64 |The amount of remaining resources of type 'Resource'|

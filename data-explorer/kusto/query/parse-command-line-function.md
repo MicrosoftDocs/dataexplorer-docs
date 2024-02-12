@@ -19,8 +19,8 @@ Parses a Unicode command-line string and returns a [dynamic](scalar-data-types/d
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-| *command_line*| string |  :heavy_check_mark: | The command line value to parse.|
-| *parser_type*| string |  :heavy_check_mark: | The only value that is currently supported is `"windows"`, which parses the command line the same way as [CommandLineToArgvW](/windows/win32/api/shellapi/nf-shellapi-commandlinetoargvw).|
+| *command_line*| `string` |  :heavy_check_mark: | The command line value to parse.|
+| *parser_type*| `string` |  :heavy_check_mark: | The only value that is currently supported is `"windows"`, which parses the command line the same way as [CommandLineToArgvW](/windows/win32/api/shellapi/nf-shellapi-commandlinetoargvw).|
 
 ## Returns
 

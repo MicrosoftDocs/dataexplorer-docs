@@ -6,7 +6,7 @@ ms.topic: how-to
 ms.date: 11/28/2023
 ---
 
-# Migrate a Virtual Network injected cluster to private endpoints (Preview)
+# Migrate a Virtual Network injected cluster to private endpoints
 
 This article describes the migration of a Microsoft Azure Virtual Network injected Azure Data Explorer cluster to an Azure Private Endpoints network security model. For a detailed comparison, see [Private endpoint vs. virtual network injection](security-network-overview.md#private-endpoint-vs-virtual-network-injection).
 
@@ -34,7 +34,7 @@ To prepare your cluster for migration:
 
    :::image type="content" source="./media/security-network-migrate/vnet-injection-migration-overview.png" lightbox="./media/security-network-migrate/vnet-injection-migration-overview.png" alt-text="Screenshot of the Networking option in the Azure portal for virtual network injected clusters.":::
 
-1. In order to connect to your cluster even if the [public access](security-network-restrict-public-access.md) was set to `Disabled`, select the **Private Endpoints connections** tab and [create a private endpoint](security-network-private-endpoint-create.md).
+1. In order to connect to your cluster even if the [public access](security-network-restrict-public-access.md) was set to `Disabled`, select the **Private Endpoints connections** tab and [create a private endpoint](security-network-private-endpoint-create.md). Make sure that you choose a different subnet than the one you used for your Azure Data Explorer cluster with Azure Virtual Network integration, otherwise, the private endpoint deployment will fail.
 
     :::image type="content" source="./media/security-network-migrate/vnet-injection-migration-pe.png" lightbox="./media/security-network-migrate/vnet-injection-migration-pe.png" alt-text="Screenshot of the Networking option in the Azure portal for virtual network injected clusters. Tab for private endpoints selected.":::
 

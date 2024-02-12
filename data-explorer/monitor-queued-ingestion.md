@@ -4,7 +4,6 @@ description: Learn how to use Azure Data Explorer metrics to monitor queued inge
 ms.reviewer: tzviagt
 ms.topic: how-to
 ms.date: 07/18/2021
-ms.custom: contperf-fy21q1
 ---
 
 # Monitor queued ingestion with metrics

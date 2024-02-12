@@ -24,16 +24,16 @@ You must have at least Database User, Database Viewer, or Database Monitor permi
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-| *ContinuousExportName* | string |  :heavy_check_mark: | The name of the continuous export. |
+| *ContinuousExportName* | `string` |  :heavy_check_mark: | The name of the continuous export. |
 
 ## Returns
 
 | Output parameter  | Type     | Description                            |
 |-------------------|----------|----------------------------------------|
-| Timestamp         | Datetime | Timestamp of the continuous export run |
-| ExternalTableName | String   | Name of the external table             |
-| Path              | String   | Output path                            |
-| NumRecords        | long     | Number of records exported to path     |
+| Timestamp         | `datetime` | Timestamp of the continuous export run |
+| ExternalTableName | `string` | Name of the external table             |
+| Path              | `string` | Output path                            |
+| NumRecords        | `long` | Number of records exported to path     |
 
 ## Example
 

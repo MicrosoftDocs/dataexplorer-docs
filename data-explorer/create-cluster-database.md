@@ -204,7 +204,7 @@ This section guides you through the process of creating an Azure Data Explorer c
    | resource_group_name | *testrg* | The resource group name where the cluster will be created. |
 
     > [!NOTE]
-    > **Create a cluster** is a long running operation. Method **begin_create_or_update** returns an instance of LROPoller, see [LROPoller class](/python/api/msrest/msrest.polling.lropoller) to get more information.
+    > **Create a cluster** is a long running operation. Method **begin_create_or_update** returns an instance of LROPoller, see [LROPoller class](/python/api/azure-core/azure.core.polling.lropoller) to get more information.
 
 1. Run the following command to check whether your cluster was successfully created:
 

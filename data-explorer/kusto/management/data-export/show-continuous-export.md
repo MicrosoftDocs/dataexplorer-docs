@@ -25,22 +25,22 @@ You must have at least Database User, Database Viewer, or Database Monitor permi
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-| *ContinuousExportName* | string |  :heavy_check_mark: | The name of the continuous export. |
+| *ContinuousExportName* | `string` |  :heavy_check_mark: | The name of the continuous export. |
 
 ## Returns
 
 | Output parameter    | Type     | Description                                                             |
 |---------------------|----------|-------------------------------------------------------------------------|
-| CursorScopedTables  | String   | List of explicitly scoped (fact) tables (JSON serialized)               |
-| ExportProperties    | String   | Export properties (JSON serialized)                                     |
-| ExportedTo          | DateTime | The last datetime (ingestion time) that was exported successfully       |
-| ExternalTableName   | String   | Name of the external table                                              |
-| ForcedLatency       | TimeSpan | Forced latency (null if not provided)                                   |
-| IntervalBetweenRuns | TimeSpan | Interval between runs                                                   |
-| IsDisabled          | Boolean  | True if the continuous export is disabled                               |
-| IsRunning           | Boolean  | True if the continuous export is currently running                      |
-| LastRunResult       | String   | The results of the last continuous-export run (`Completed` or `Failed`) |
-| LastRunTime         | DateTime | The last time the continuous export was executed (start time)           |
-| Name                | String   | Name of the continuous export                                           |
-| Query               | String   | Export query                                                            |
-| StartCursor         | String   | Starting point of the first execution of this continuous export         |
+| CursorScopedTables  | `string` | List of explicitly scoped (fact) tables (JSON serialized)               |
+| ExportProperties    | `string` | Export properties (JSON serialized)                                     |
+| ExportedTo          | `datetime` | The last datetime (ingestion time) that was exported successfully       |
+| ExternalTableName   | `string` | Name of the external table                                              |
+| ForcedLatency       | `timeSpan` | Forced latency (null if not provided)                                   |
+| IntervalBetweenRuns | `timeSpan` | Interval between runs                                                   |
+| IsDisabled          | `bool` | True if the continuous export is disabled                               |
+| IsRunning           | `bool` | True if the continuous export is currently running                      |
+| LastRunResult       | `string` | The results of the last continuous-export run (`Completed` or `Failed`) |
+| LastRunTime         | `datetime` | The last time the continuous export was executed (start time)           |
+| Name                | `string` | Name of the continuous export                                           |
+| Query               | `string` | Export query                                                            |
+| StartCursor         | `string` | Starting point of the first execution of this continuous export         |

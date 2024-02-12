@@ -21,9 +21,9 @@ Checks whether an IPv6 string address is in any of the specified IPv6 address ra
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-| *Ipv6Address* | string |  :heavy_check_mark: | An expression representing an IPv6 address.|
-| *Ipv6Range* | string |  :heavy_check_mark: | An expression representing an IPv6 range using [IP-prefix notation](#ip-prefix-notation).|
-| *Ipv6Ranges* | dynamic |  :heavy_check_mark: | An array containing IPv6 ranges using [IP-prefix notation](#ip-prefix-notation).|
+| *Ipv6Address* | `string` |  :heavy_check_mark: | An expression representing an IPv6 address.|
+| *Ipv6Range* | `string` |  :heavy_check_mark: | An expression representing an IPv6 range using [IP-prefix notation](#ip-prefix-notation).|
+| *Ipv6Ranges* | `dynamic` |  :heavy_check_mark: | An array containing IPv6 ranges using [IP-prefix notation](#ip-prefix-notation).|
 
 > [!NOTE]
 > Either one or more *IPv6Range* strings or an *IPv6Ranges* dynamic array is required.

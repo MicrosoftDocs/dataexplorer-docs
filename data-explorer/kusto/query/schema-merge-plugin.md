@@ -26,7 +26,7 @@ The plugin is invoked with the [`evaluate`](evaluate-operator.md) operator.
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-| *PreserveOrder* | bool | | When set to `true`, directs the plugin to validate the column order as defined by the first tabular schema that is kept. If the same column is in several schemas, the column ordinal must be like the column ordinal of the first schema that it appeared in. Default value is `true`.|
+| *PreserveOrder* | `bool` | | When set to `true`, directs the plugin to validate the column order as defined by the first tabular schema that is kept. If the same column is in several schemas, the column ordinal must be like the column ordinal of the first schema that it appeared in. Default value is `true`.|
 
 ## Returns
 

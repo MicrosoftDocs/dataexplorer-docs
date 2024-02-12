@@ -26,14 +26,14 @@ The `series_metric_fl()` function is a [user-defined function (UDF)](../query/fu
 
 |Name|Type|Required|Description|
 |--|--|--|--|
-| *timestamp_col* | string |  :heavy_check_mark: | The name of the column containing the timestamp.|
-| *name_col* | string |  :heavy_check_mark: | The name of the column containing the metric name.|
-| *labels_col* | string |  :heavy_check_mark: | The name of the column containing the labels dictionary.|
-| *value_col* | string |  :heavy_check_mark: | The name of the column containing the metric value.|
-| *metric_name* | string |  :heavy_check_mark: | The metric time series to retrieve.|
-| *labels_selector* | string | | Time series selector string, [similar to PromQL](https://prometheus.io/docs/prometheus/latest/querying/basics/#time-series-selectors). It's a string containing a list of `"key":"value"` pairs, for example `'"key1":"val1","key2":"val2"'`. The default is an empty string, which means no filtering. Note that regular expressions are not supported.|
-| *lookback* | timespan | | The range vector to retrieve, [similar to PromQL](https://prometheus.io/docs/prometheus/latest/querying/basics/#range-vector-selectors). The default is 10 minutes.|
-| *offset* | datetime | | Offset back from current time to retrieve, [similar to PromQL](https://prometheus.io/docs/prometheus/latest/querying/basics/#offset-modifier). Data is retrieved from *ago(offset)-lookback* to *ago(offset)*. The default is 0, which means that data is retrieved up to `now()`.|
+| *timestamp_col* | `string` |  :heavy_check_mark: | The name of the column containing the timestamp.|
+| *name_col* | `string` |  :heavy_check_mark: | The name of the column containing the metric name.|
+| *labels_col* | `string` |  :heavy_check_mark: | The name of the column containing the labels dictionary.|
+| *value_col* | `string` |  :heavy_check_mark: | The name of the column containing the metric value.|
+| *metric_name* | `string` |  :heavy_check_mark: | The metric time series to retrieve.|
+| *labels_selector* | `string` | | Time series selector string, [similar to PromQL](https://prometheus.io/docs/prometheus/latest/querying/basics/#time-series-selectors). It's a string containing a list of `"key":"value"` pairs, for example `'"key1":"val1","key2":"val2"'`. The default is an empty string, which means no filtering. Note that regular expressions are not supported.|
+| *lookback* | `timespan` | | The range vector to retrieve, [similar to PromQL](https://prometheus.io/docs/prometheus/latest/querying/basics/#range-vector-selectors). The default is 10 minutes.|
+| *offset* | `datetime` | | Offset back from current time to retrieve, [similar to PromQL](https://prometheus.io/docs/prometheus/latest/querying/basics/#offset-modifier). Data is retrieved from *ago(offset)-lookback* to *ago(offset)*. The default is 0, which means that data is retrieved up to `now()`.|
 
 ## Function definition
 

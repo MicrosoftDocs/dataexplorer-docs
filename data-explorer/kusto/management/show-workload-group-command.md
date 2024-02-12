@@ -25,7 +25,7 @@ You must have [Cluster AllDatabasesAdmin](../management/access-control/role-base
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-| *WorkloadGroupName* | string |  :heavy_check_mark: | Name of the workload group. Can be specified with bracket notation ['WorkLoadGroupName']. |
+| *WorkloadGroupName* | `string` |  :heavy_check_mark: | Name of the workload group. Can be specified with bracket notation ['WorkLoadGroupName']. |
 
 ## Examples
 

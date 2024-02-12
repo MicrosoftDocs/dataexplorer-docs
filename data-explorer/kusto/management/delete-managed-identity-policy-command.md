@@ -28,7 +28,7 @@ You must have [AllDatabasesAdmin](access-control/role-based-access-control.md) p
 
 |Name|Type|Required|Description|
 |--|--|--|--|
-|*DatabaseName*|string| :heavy_check_mark:|The name of the database.|
+|*DatabaseName*| `string` | :heavy_check_mark:|The name of the database.|
 
 ## Returns
 

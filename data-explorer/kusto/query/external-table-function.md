@@ -24,8 +24,8 @@ References an [external table](schema-entities/external-tables.md) by name.
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-| *TableName* | string|  :heavy_check_mark: | The name of the external table being queried. Must reference an external table of kind `blob`, `adl`, or `sql`.|
-| *MappingName* | string | | A name of a mapping object that maps fields in the external data shards to columns output.|
+| *TableName* | `string` |  :heavy_check_mark: | The name of the external table being queried. Must reference an external table of kind `blob`, `adl`, or `sql`.|
+| *MappingName* | `string` | | A name of a mapping object that maps fields in the external data shards to columns output.|
 
 ## Authentication and authorization
 

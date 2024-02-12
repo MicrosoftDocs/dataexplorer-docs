@@ -19,7 +19,7 @@ Returns a bitwise negation of the input value.
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-| *value* | long |  :heavy_check_mark: | The value to negate. |
+| *value* | `long` |  :heavy_check_mark: | The value to negate. |
 
 ## Returns
 

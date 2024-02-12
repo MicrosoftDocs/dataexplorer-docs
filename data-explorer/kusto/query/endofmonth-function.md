@@ -19,8 +19,8 @@ Returns the end of the month containing the date, shifted by an offset, if provi
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-| *date* | datetime |  :heavy_check_mark:| The date used to find the end of the month. |
-| *offset* | int | | The number of offset months from *date*. Default is 0. |
+| *date* | `datetime` |  :heavy_check_mark:| The date used to find the end of the month. |
+| *offset* | `int` | | The number of offset months from *date*. Default is 0. |
 
 ## Returns
 

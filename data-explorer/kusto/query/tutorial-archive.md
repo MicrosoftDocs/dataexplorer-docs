@@ -12,7 +12,7 @@ The best way to learn about the Kusto Query Language is to look at some basic qu
 
 ## Count rows
 
-Our example database has a table called `StormEvents`. we want to find out how large the table is. So we'll pipe its content into an operator that counts the rows in the table.
+Our example database has a table called `StormEvents`. We want to find out how large the table is. So we'll pipe its content into an operator that counts the rows in the table.
 
 *Syntax note*: A query is a data source (usually a table name), optionally followed by one or more pairs of the pipe character and some tabular operator.
 

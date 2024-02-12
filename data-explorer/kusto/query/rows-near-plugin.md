@@ -21,10 +21,10 @@ The plugin is invoked with the [`evaluate`](evaluate-operator.md) operator.
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-| *T*| string |  :heavy_check_mark: | The input tabular expression.|
-| *Condition*| bool |  :heavy_check_mark: | Represents the condition to find rows around.|
-| *NumRows*| int |  :heavy_check_mark: | The number of rows to find before and after the condition.|
-| *RowsAfter*| int | | When specified, overrides the number of rows to find after the condition.|
+| *T*| `string` |  :heavy_check_mark: | The input tabular expression.|
+| *Condition*| `bool` |  :heavy_check_mark: | Represents the condition to find rows around.|
+| *NumRows*| `int` |  :heavy_check_mark: | The number of rows to find before and after the condition.|
+| *RowsAfter*| `int` | | When specified, overrides the number of rows to find after the condition.|
 
 ## Returns
 
