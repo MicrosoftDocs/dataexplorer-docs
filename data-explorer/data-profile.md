@@ -25,7 +25,7 @@ To open the data profile view for a table:
      * Right-click the desired table, and select **Data profile**:
 
          :::image type="content" source="media/data-profile/data-profile-in-menu.png" alt-text="Screenshot of data profile in menu.":::
-     
+
      * Select the desired table, and then select the **Data profile** icon in the top bar:
 
          :::image type="content" source="media/data-profile/data-profile-button.png" alt-text="Screenshot of the button to open the data profile view.":::
@@ -59,7 +59,7 @@ You can browse the table schema in the profile by looking at the columns or find
 |dynamic|No specific statistic|Random sampled value|
 |bool|No specific statistic|Count of true and false|
 
-For example, in the following image, the `Manufacturer` column of type `string` is selected:
+For example, in the following image, the `ColorName` column of type `string` is selected:
 
 :::image type="content" source="media/data-profile/data-profile-columns.png" alt-text="Screenshot of example column selected.":::
 
