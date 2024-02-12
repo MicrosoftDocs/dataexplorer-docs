@@ -42,8 +42,6 @@ The expanded syntax offers the flexibility to define a query to delete rows and 
 
 `let` *AppendIdentifier*`=` ...`;`
 
-WHERE IS THE APPEND QUERY?
-
 ## Parameters
 
 | Name               | Type     | Required           | Description                                                                                                                                                    |
@@ -77,14 +75,14 @@ The result of the command is a table where each record represents an [extent](ex
 | Name     | Type     | Description                                                                      |
 | -------- | -------- | -------------------------------------------------------------------------------- |
 | Table    | `guid`   | The table in which the extent was created or deleted.                            |
-| Action   | `string` | "Create" or "Delete" depending on the action performed on the extent.            |
+| Action   | `string` | *Create* or *Delete* depending on the action performed on the extent.            |
 | ExtentId | `guid`   | The unique identifier for the extent that was created or deleted by the command. |
 | RowCount | `long`   | The number of rows created or deleted in the specified extent by the command.    |
 
 > [!NOTE]
 > When you update a table that is the source for an update policy, the result of the command contains all generated results in all tables.
 
-### Compare update command to materialized views
+## Choose between `.update table` and materialized views
 
 There are scenarios where you could use either the `.update table` command or a [materialized view](materialized-views/materialized-view-overview.md) to achieve the same goal in a table.  For example, a materialized view could be used to keep the latest version of each record or an update could be used to update records upon new version. 
 
@@ -94,23 +92,11 @@ Use the following guidelines to decide which method to use:
 * If the source table has a high ingestion volume, but only few updates, using the update command can be more performant and consume less cache or storage than materialized views. This is because materialized views need to reprocess all ingested data, which is less efficient than identifying the individual records to update based on the append/delete predicates.
 * Materialized views is a fully managed solution. The materialized view is [defined once](materialized-views/materialized-view-create-or-alter.md) and materialization happens in the background by the system. The update command requires an orchestrated process (for example, [Azure Data Factory](../../data-factory-integration.md), [Logic Apps](../tools/logicapps.md), [Power Automate](../../flow.md), and others) that explicitly executes the update command every time there are updates. If materialized views work well enough for your use case, using materialized views requires less management and maintenance.
 
+## Examples
 
-### Example 
+### Simplified syntax
 
-For example, the following command will change the column `State` to the value *Closed* for each row having value *2024-01-25T18:29:00.6811152Z* for column `Timestamp`.
-
-```kusto
-.update table MyTable delete D append A <|
-  let D = MyTable
-    | where Timestamp==datetime(2024-01-25T18:29:00.6811152Z);
-  let A = MyTable
-    | where Timestamp==datetime(2024-01-25T18:29:00.6811152Z)
-    | extend State="Closed";
-```
-
-### Example: Simplified syntax
-
-For instance, if the table original content is:
+The original table:
 
 | Name  | Address                  |
 | ----- | ------------------------ |
@@ -118,7 +104,7 @@ For instance, if the table original content is:
 | Bob   | 1600 Pennsylvania Avenue |
 | Carl  | 11 Wall Street New York  |
 
-And we perform the following update on it:
+Then run the following update:
 
 ```kusto
 .update table MyTable on Name <|
@@ -147,7 +133,7 @@ Similarly, if there would have been multiple rows with *Alice* name in the origi
 
 ## Examples
 
-We'll base the examples on the following table:
+The following examples are based on this table:
 
 ```kusto
 .set-or-replace MyTable <|
@@ -169,7 +155,7 @@ This creates a table with 100 records starting with:
 | 6  | Customer | Red   |
 | 6  | Employee | Blue  |
 
-### Updating a single column on one row
+### Update a single column on one row
 
 ```kusto
 .update table MyTable on Id with(whatif=true) <|
@@ -189,7 +175,7 @@ MyTable
 | extend Color="Orange"
 ```
 
-### Updating a single column on multiple rows
+### Update a single column on multiple rows
 
 ```kusto
 .update table MyTable on Id <|
@@ -201,7 +187,7 @@ MyTable
 
 Here we only updated the single column `Color` to *Green*. 
 
-### Updating multiple columns on multiple rows
+### Update multiple columns on multiple rows
 
 ```kusto
 .update table MyTable on Id <|
@@ -211,7 +197,7 @@ MyTable
 | extend Color=""
 ```
 
-### Updating rows using another table
+### Update rows using another table
 
 Here we first create the following mapping table:
 
@@ -236,22 +222,22 @@ MyTable
 | project Id, Code, Color=NewColor
 ```
 
-### Updating rows with a staging table
+### Update rows with a staging table
 
 A popular pattern is to first land data in a temporary / staging table before updating the main table.
 
-Here we first create the following staging table:
+The first commandcreates a staging table:
 
-```kusto
-.set-or-replace MyStagingTable <|
-  range i from 70 to 130 step 5
-  | project Id=i
-  | extend Code = tostring(dynamic(["Customer", "Employee"])[Id %2])
-  | extend Color = tostring(dynamic(["Red", "Blue", "Gray"])[Id %3])
-```
-
-We then update the main table with the data in the staging table:
-
+  ```kusto
+  .set-or-replace MyStagingTable <|
+    range i from 70 to 130 step 5
+    | project Id=i
+    | extend Code = tostring(dynamic(["Customer", "Employee"])[Id %2])
+    | extend Color = tostring(dynamic(["Red", "Blue", "Gray"])[Id %3])
+  ```
+    
+The next command updates the main table with the data in the staging table:
+    
 ```kusto
 .update table MyTable on Id <|
 MyStagingTable
@@ -260,11 +246,11 @@ MyStagingTable
 
 Some records in the staging table didn't exist in the main table (that is, had `Id>100`) but were still inserted in the main table (upsert behavior).
 
-### Complete syntax - Compound key
+### Expanded syntax - Compound key
 
-The simplified syntax assumes a single column can match rows in the *appendQuery* to infer rows to delete.  Sometimes we have more than one column (for example, in cases of compound keys).
+The simplified syntax assumes a single column can match rows in the *appendQuery* to infer rows to delete.  More than one column can be used, for example, using compound keys.
 
-Let's first create such a table with compound keys:
+The first command creates a table with compound keys:
 
 ```kusto
 .set-or-replace VersionedArticle <|
@@ -278,7 +264,7 @@ Let's first create such a table with compound keys:
   ]
 ```
 
-We can still update a specific record with the complete syntax:
+The next command updates a specific record using the expanded syntax:
 
 ```kusto
 .update table VersionedArticle delete D append A <|
@@ -291,7 +277,9 @@ let A = VersionedArticle
   | extend Detail = "Revision about brand Z";
 ```
 
-### Complete syntax - Complete control
+### Expanded syntax - Complete control
+
+In the following example, all rows with `Code` *Employee* are deleted, and rows with `Code` *Employee* **and** `Color` purple are appended.  More rows are deleted than inserted.
 
 ```kusto
 .update table MyTable delete D append A <|
@@ -304,6 +292,4 @@ let A = MyTable
   | extend Color="Mauve";
 ```
 
-Here we delete all rows with `Code` *Employee* but append only the rows with `Code` *Employee* **and** `Color` purple.  That is, we delete more rows than we insert.
-
-This is possible with the complete syntax as we control exactly what is deleted vs appended.
+This type of action is only possible using the expanded syntax, which independently controls the delete and append operations.
