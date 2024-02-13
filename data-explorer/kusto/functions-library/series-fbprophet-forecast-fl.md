@@ -20,7 +20,7 @@ The function `series_fbprophet_forecast_fl()` is a [user-defined function (UDF)]
 
 * Install the `fbprophet` package since it isn't included in the Python image. To install the package, do the following:
   1. Follow the guidelines for [Installing packages for the Python plugin](../query/python-plugin.md#install-packages-for-the-python-plugin).
-     * To save time in the above guidelines, you can download the `fbprophet` zip file, containing the wheel files of `fbprophet` and its dependencies, from [https://artifcatswestus.blob.core.windows.net/public/fbprophet-0.7.1.zip](https://artifcatswestus.blob.core.windows.net/public/fbprophet-0.7.1.zip). Save this file to your allowlisted blob container.
+     * To save time in the above guidelines, you can download the `prophet` zip file, containing the wheel files of `prophet` and its dependencies, from [https://artifactswestus.blob.core.windows.net/public/prophet-1.1.5.zip](https://artifactswestus.blob.core.windows.net/public/prophet-1.1.5.zip). Save this file to your allowlisted blob container.
   1. Create a SAS token with read access to your zip file. To create a SAS token, see [get the SAS for a blob container](/azure/vs-azure-tools-storage-explorer-blobs#get-the-sas-for-a-blob-container).
   1. In the [Example](#example), replace the URL reference in the `external_artifacts` parameter with your file path and its SAS token.
 
@@ -58,9 +58,7 @@ let series_fbprophet_forecast_fl=(tbl:(*), ts_series:string, y_series:string, y_
     let kwargs = bag_pack('ts_series', ts_series, 'y_series', y_series, 'y_pred_series', y_pred_series, 'points', points, 'y_pred_low_series', y_pred_low_series, 'y_pred_high_series', y_pred_high_series);
     let code = ```if 1:
         from sandbox_utils import Zipackage
-        Zipackage.install("fbprophet.zip")
-        import os
-        os.chdir("D:\\\\Library\\\\mingw-w64\\\\bin")   #  If you don't set this, loading the mingw-w64 DLLs will fail
+        Zipackage.install("prophet.zip")
         ts_series = kargs["ts_series"]
         y_series = kargs["y_series"]
         y_pred_series = kargs["y_pred_series"]
@@ -73,7 +71,7 @@ let series_fbprophet_forecast_fl=(tbl:(*), ts_series:string, y_series:string, y_
             srl = pd.Series(df[y_pred_low_series])
         if y_pred_high_series != '':
             srh = pd.Series(df[y_pred_high_series])
-        from fbprophet import Prophet
+        from prophet import Prophet
         df1 = pd.DataFrame(columns=["ds", "y"])
         for i in range(df.shape[0]):
             df1["ds"] = pd.to_datetime(df[ts_series][i])
@@ -97,8 +95,7 @@ let series_fbprophet_forecast_fl=(tbl:(*), ts_series:string, y_series:string, y_
     ```;
     tbl
      | evaluate python(typeof(*), code, kwargs
-//  fbprophet v0.7.1 for Python 3.6.5, SAS key till 3/26/2030
-, external_artifacts=bag_pack('fbprophet.zip', 'https://artifcatswestus.blob.core.windows.net/public/fbprophet-0.7.1.zip?*** YOUR SAS TOKEN ***'))
+, external_artifacts=bag_pack('prophet.zip', 'https://artifactswestus.blob.core.windows.net/public/prophet-1.1.5.zip?*** YOUR SAS TOKEN ***'))
 };
 // Write your query to use the function here.
 ~~~
@@ -117,9 +114,7 @@ series_fbprophet_forecast_fl(tbl:(*), ts_series:string, y_series:string, y_pred_
     let kwargs = bag_pack('ts_series', ts_series, 'y_series', y_series, 'y_pred_series', y_pred_series, 'points', points, 'y_pred_low_series', y_pred_low_series, 'y_pred_high_series', y_pred_high_series);
     let code = ```if 1:
         from sandbox_utils import Zipackage
-        Zipackage.install("fbprophet.zip")
-        import os
-        os.chdir("D:\\\\Library\\\\mingw-w64\\\\bin")   #  If you don't set this, loading the mingw-w64 DLLs will fail
+        Zipackage.install("prophet.zip")
         ts_series = kargs["ts_series"]
         y_series = kargs["y_series"]
         y_pred_series = kargs["y_pred_series"]
@@ -132,7 +127,7 @@ series_fbprophet_forecast_fl(tbl:(*), ts_series:string, y_series:string, y_pred_
             srl = pd.Series(df[y_pred_low_series])
         if y_pred_high_series != '':
             srh = pd.Series(df[y_pred_high_series])
-        from fbprophet import Prophet
+        from prophet import Prophet
         df1 = pd.DataFrame(columns=["ds", "y"])
         for i in range(df.shape[0]):
             df1["ds"] = pd.to_datetime(df[ts_series][i])
@@ -156,8 +151,7 @@ series_fbprophet_forecast_fl(tbl:(*), ts_series:string, y_series:string, y_pred_
     ```;
     tbl
      | evaluate python(typeof(*), code, kwargs
-//  fbprophet v0.7.1 for Python 3.6.5, SAS key till 3/26/2030
-, external_artifacts=bag_pack('fbprophet.zip', 'https://artifcatswestus.blob.core.windows.net/public/fbprophet-0.7.1.zip?*** YOUR SAS TOKEN ***'))
+, external_artifacts=bag_pack('prophet.zip', 'https://artifactswestus.blob.core.windows.net/public/prophet-1.1.5.zip?*** YOUR SAS TOKEN ***'))
 }
 ~~~
 
@@ -177,9 +171,7 @@ let series_fbprophet_forecast_fl=(tbl:(*), ts_series:string, y_series:string, y_
     let kwargs = bag_pack('ts_series', ts_series, 'y_series', y_series, 'y_pred_series', y_pred_series, 'points', points, 'y_pred_low_series', y_pred_low_series, 'y_pred_high_series', y_pred_high_series);
     let code = ```if 1:
         from sandbox_utils import Zipackage
-        Zipackage.install("fbprophet.zip")
-        import os
-        os.chdir("D:\\\\Library\\\\mingw-w64\\\\bin")   #  If you don't set this, loading the mingw-w64 DLLs will fail
+        Zipackage.install("prophet.zip")
         ts_series = kargs["ts_series"]
         y_series = kargs["y_series"]
         y_pred_series = kargs["y_pred_series"]
@@ -192,7 +184,7 @@ let series_fbprophet_forecast_fl=(tbl:(*), ts_series:string, y_series:string, y_
             srl = pd.Series(df[y_pred_low_series])
         if y_pred_high_series != '':
             srh = pd.Series(df[y_pred_high_series])
-        from fbprophet import Prophet
+        from prophet import Prophet
         df1 = pd.DataFrame(columns=["ds", "y"])
         for i in range(df.shape[0]):
             df1["ds"] = pd.to_datetime(df[ts_series][i])
@@ -216,8 +208,7 @@ let series_fbprophet_forecast_fl=(tbl:(*), ts_series:string, y_series:string, y_
     ```;
     tbl
      | evaluate python(typeof(*), code, kwargs
-//  fbprophet v0.7.1 for Python 3.6.5, SAS key till 3/26/2030
-, external_artifacts=bag_pack('fbprophet.zip', 'https://artifcatswestus.blob.core.windows.net/public/fbprophet-0.7.1.zip?*** YOUR SAS TOKEN ***'))
+, external_artifacts=bag_pack('prophet.zip', 'https://artifactswestus.blob.core.windows.net/public/prophet-1.1.5.zip?*** YOUR SAS TOKEN ***'))
 };
 //
 //  Forecasting 3 time series using fbprophet, compare to forecasting using the native function series_decompose_forecast()
