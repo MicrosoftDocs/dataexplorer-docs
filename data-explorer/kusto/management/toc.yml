@@ -848,6 +848,10 @@ items:
             href: show-table-data-statistics.md
   - name: Advanced data management
     items:
+      - name: Clear cached external artifacts
+        href: clear-external-artifacts-cache-command.md
+      - name: Data purge
+        href: ../concepts/data-purge.md
       - name: Extents (data shards)
         items:
           - name: Extents overview
@@ -876,16 +880,14 @@ items:
               - name: .show extents
                 href: show-extents.md
                 displayName: data shards, shard
-      - name: Follower commands
-        displayName: Cluster commands, database commands, materialized view commands, table commands
-        href: cluster-follower.md
-      - name: Data purge
-        href: ../concepts/data-purge.md
       - name: Data soft delete
         items:
           - name: Soft delete overview
             href: ../concepts/data-soft-delete.md
           - name: Soft delete command
             href: soft-delete-command.md
-      - name: Clear cached external artifacts
-        href: clear-external-artifacts-cache-command.md
+      - name: Follower commands
+        displayName: Cluster commands, database commands, materialized view commands, table commands
+        href: cluster-follower.md
+      - name: .update table command
+        href: update-table-command.md

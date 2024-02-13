@@ -7,7 +7,7 @@ ms.date: 01/25/2024
 ---
 # .update table command (preview)
 
-The `.update table` command performs data updates in a specified table by deleting and appending data atomically.
+The `.update table` command performs data updates in a specified table by deleting and appending data entries atomically.
 
 > [!NOTE]
 > You can delete up to 5 million records.
@@ -48,16 +48,17 @@ The expanded syntax offers the flexibility to define a query to delete rows and 
 | ------------------ | -------- | ------------------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | *TableName*        | `string` | :heavy_check_mark: | The name of the table to update.                                                                                                                               |
 | *IdColumnName*     | `string` | :heavy_check_mark: | The name of the column identifying rows.  The column must be present in both the table and *appendQuery*.                                                      |
-| *appendQuery*      | `string` | :heavy_check_mark: | The text of a query or a management command whose results are used as data to append.  The query's schema must be the same as the table's schema. <sup>*</sup> |
+| *appendQuery*      | `string` | :heavy_check_mark: | The text of a query or a management command whose results are used as data to append.  The query's schema must be the same as the table's schema. [<sup>*</sup>](#note) |
 | *DeleteIdentifier* | `string` | :heavy_check_mark: | The identifier name used to specify the delete predicate applied to the updated table.                                                                         |
 | *AppendIdentifier* | `string` | :heavy_check_mark: | The identifier name used to specify the append predicate applied to the updated table.                                                                         |
 
-<sup>*</sup> The delete predicate must include at least one `where` operator, and can only only use the following operators: `extend`, `where`, `project`, `join` and `lookup`.
+<a name="note"><sup>*</sup></a> The delete predicate must include at least one `where` operator, and can only only use the following operators: `extend`, `where`, `project`, `join` and `lookup`.
 Both delete and append predicates can't use remote entities, cross-db, and cross-cluster entities. Predicates can't reference an external table or use the `externaldata` operator.
 
-* Append and delete queries are expected to produce deterministic results.  Nondeterministic queries can lead to unexpected results. A query is deterministic if and only if it would return the same data if executed multiple times.
-    * For example, use of [`take` operator](../query/take-operator.md), [`sample` operator](../query/sample-operator.md), [`rand` function](../query/rand-function.md), and other such operators isn't recommended because they aren't deterministic.
-* Queries might be executed more than once within the `update` execution and if intermediate results are inconsistent, the update command can produce unexpected results.
+> [!IMPORTANT]
+> * Append and delete queries are expected to produce deterministic results.  Nondeterministic queries can lead to unexpected results. A query is deterministic if and only if it would return the same data if executed multiple times.
+>    * For example, use of [`take` operator](../query/take-operator.md), [`sample` operator](../query/sample-operator.md), [`rand` function](../query/rand-function.md), and other such operators isn't recommended because these operators aren't deterministic.
+> * Queries might be executed more than once within the `update` execution. If the intermediate query results are inconsistent, the update command can produce unexpected results.
 
 ## Supported properties
 
@@ -66,11 +67,11 @@ Both delete and append predicates can't use remote entities, cross-db, and cross
 | *whatif* | bool | If `true`, returns the number of records that will be appended / deleted in every shard, without appending / deleting any records. The default is `false`. |
 
 > [!IMPORTANT]
-> We recommend running in `whatif` mode before executing the update to validate the predicates before deleting or appending data.
+> We recommend running in `whatif` mode first before executing the update to validate the predicates before deleting or appending data.
 
 ## Returns
 
-The result of the command is a table where each record represents an [extent](extents-overview.md) that was either created with new data or had records deleted in it.
+The result of the command is a table where each record represents an [extent](extents-overview.md) that was either created with new data or had records deleted.
 
 | Name     | Type     | Description                                                                      |
 | -------- | -------- | -------------------------------------------------------------------------------- |
@@ -92,11 +93,22 @@ Use the following guidelines to decide which method to use:
 * If the source table has a high ingestion volume, but only few updates, using the update command can be more performant and consume less cache or storage than materialized views. This is because materialized views need to reprocess all ingested data, which is less efficient than identifying the individual records to update based on the append/delete predicates.
 * Materialized views is a fully managed solution. The materialized view is [defined once](materialized-views/materialized-view-create-or-alter.md) and materialization happens in the background by the system. The update command requires an orchestrated process (for example, [Azure Data Factory](../../data-factory-integration.md), [Logic Apps](../tools/logicapps.md), [Power Automate](../../flow.md), and others) that explicitly executes the update command every time there are updates. If materialized views work well enough for your use case, using materialized views requires less management and maintenance.
 
-## Examples
+## Examples -  Simplified syntax
 
-### Simplified syntax
+The following examples use the [Simplified syntax](#simplified-syntax).
 
-The original table:
+### General example 
+
+The following table is created
+
+```kusto
+.set-or-replace MyTable <|
+datatable(Name:string, Address:string)[
+  "Alice", "221B Baker street",
+  "Bob", "1600 Pennsylvania Avenue",
+  "Carl", "11 Wall Street New York"
+]
+```
 
 | Name  | Address                  |
 | ----- | ------------------------ |
@@ -104,7 +116,7 @@ The original table:
 | Bob   | 1600 Pennsylvania Avenue |
 | Carl  | 11 Wall Street New York  |
 
-Then run the following update:
+Then the following update command is run:
 
 ```kusto
 .update table MyTable on Name <|
@@ -131,9 +143,9 @@ Notice that *Diana* wasn't found in the original table.  This is valid and no co
 
 Similarly, if there would have been multiple rows with *Alice* name in the original table, they would all have been deleted and replaced by the single *Alice* row we have in the end.
 
-## Examples
+### Example table
 
-The following examples are based on this table:
+The next examples are based on the following table:
 
 ```kusto
 .set-or-replace MyTable <|
@@ -143,7 +155,7 @@ The following examples are based on this table:
   | extend Color = tostring(dynamic(["Red", "Blue", "Gray"])[Id %3])
 ```
 
-This creates a table with 100 records starting with:
+This command creates a table with 100 records starting with:
 
 | Id | Code     | Color |
 | -- | -------- | ----- |
@@ -157,6 +169,8 @@ This creates a table with 100 records starting with:
 
 ### Update a single column on one row
 
+The following example uses the simplified syntax to update a single column on a single row that matches the append predicate:
+
 ```kusto
 .update table MyTable on Id with(whatif=true) <|
 MyTable
@@ -164,7 +178,7 @@ MyTable
 | extend Color="Orange"
 ```
 
-Since we set `whatif` to true, the table is unchanged but the command returns that there would be an extent with one row deleted and a new extent with one row.
+Notice that `whatif` is set to true. After this query, the table is unchanged, but the command returns that there would be an extent with one row deleted and a new extent with one row.
 
 The following command actually performs the update:
 
@@ -177,6 +191,8 @@ MyTable
 
 ### Update a single column on multiple rows
 
+The following example updates on one single column `Color` to the value of *Green* on those rows that matched the append predicate. 
+
 ```kusto
 .update table MyTable on Id <|
 MyTable
@@ -185,9 +201,9 @@ MyTable
 | extend Color="Green"
 ```
 
-Here we only updated the single column `Color` to *Green*. 
-
 ### Update multiple columns on multiple rows
+
+The following example updates multiple columns on all rows that match the append predicate.
 
 ```kusto
 .update table MyTable on Id <|
@@ -199,7 +215,7 @@ MyTable
 
 ### Update rows using another table
 
-Here we first create the following mapping table:
+In this example, the first step is to create the following mapping table:
 
 ```kusto
 .set-or-replace ColorMapping <|
@@ -212,7 +228,7 @@ Here we first create the following mapping table:
   ]
 ```
 
-We then use that table to update map some Colors in our table:
+This mapping table is then used to update some colors in the original table based on the append predicate and the corresponding "New Color":
 
 ```kusto
 .update table MyTable on Id <|
@@ -224,9 +240,9 @@ MyTable
 
 ### Update rows with a staging table
 
-A popular pattern is to first land data in a temporary / staging table before updating the main table.
+A popular pattern is to first land data in a staging table before updating the main table.
 
-The first commandcreates a staging table:
+The first command creates a staging table:
 
   ```kusto
   .set-or-replace MyStagingTable <|
@@ -235,9 +251,9 @@ The first commandcreates a staging table:
     | extend Code = tostring(dynamic(["Customer", "Employee"])[Id %2])
     | extend Color = tostring(dynamic(["Red", "Blue", "Gray"])[Id %3])
   ```
-    
+
 The next command updates the main table with the data in the staging table:
-    
+
 ```kusto
 .update table MyTable on Id <|
 MyStagingTable
@@ -246,7 +262,11 @@ MyStagingTable
 
 Some records in the staging table didn't exist in the main table (that is, had `Id>100`) but were still inserted in the main table (upsert behavior).
 
-### Expanded syntax - Compound key
+## Examples - Expanded syntax
+
+The following examples use the [Expanded syntax](#expanded-syntax).
+
+### Compound key
 
 The simplified syntax assumes a single column can match rows in the *appendQuery* to infer rows to delete.  More than one column can be used, for example, using compound keys.
 
@@ -277,7 +297,7 @@ let A = VersionedArticle
   | extend Detail = "Revision about brand Z";
 ```
 
-### Expanded syntax - Complete control
+### Complete control
 
 In the following example, all rows with `Code` *Employee* are deleted, and rows with `Code` *Employee* **and** `Color` purple are appended.  More rows are deleted than inserted.
 
@@ -293,3 +313,8 @@ let A = MyTable
 ```
 
 This type of action is only possible using the expanded syntax, which independently controls the delete and append operations.
+
+
+## Related content
+
+* [Materialized views](materialized-views/materialized-view-overview.md)
