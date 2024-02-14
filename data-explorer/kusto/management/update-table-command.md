@@ -50,7 +50,7 @@ The simplified syntax only specifies an append query.  The delete query is deduc
 
 The expanded syntax offers the flexibility to define a query to delete rows and a different query to append rows:
 
-`.update` `table` *TableName* `delete` *DeleteIdentifier* `append` *AppendIdentifier* [`with` `(` *propertyName* `=` *propertyValue* [`,` ...]`)`] `<|`
+`.update` `table` *TableName* `delete` *DeleteIdentifier* `append` *AppendIdentifier* [`with` `(` *propertyName* `=` *propertyValue* `)`] `<|`
 
 `let` *DeleteIdentifier*`=` ...`;`
 
