@@ -64,7 +64,7 @@ A [lookup activity](/azure/data-factory/control-flow-lookup-activity) can retrie
 
 1. When creating a new linked service, the **New Linked Service (Azure Data Explorer)** page opens:
 
-    ![ADX new linked service.](media/data-factory-command-activity/adx-new-linked-service.png)
+    ![ Azure Data Explorer new linked service.](media/data-factory-command-activity/adx-new-linked-service.png)
 
    * Select **Name** for Azure Data Explorer linked service. Add **Description** if needed.
    * In **Connect via integration runtime**, change current settings, if needed. 

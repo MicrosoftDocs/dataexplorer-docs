@@ -34,7 +34,7 @@ A string array that contains the split values.
 
 ### Filter by count of values in record
 
-Count ADX conference sessions with more than three participants.
+Count Azure Data Explorer conference sessions with more than three participants.
 
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA3POz0tLLUrNS04NTi0uzszPK+aqUSjPAAopJBYVJVbG56TmpZdkaBQkFhWnxicXl4FYJZnJmQWJeSXFmpoKdgrGQB0pmcUlmXnJJQpaAB0oOCtRAAAA" target="_blank">Run the query</a>
