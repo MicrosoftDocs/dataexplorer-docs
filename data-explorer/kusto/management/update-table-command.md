@@ -120,7 +120,10 @@ Then the following update command is run:
 
 ```kusto
 .update table MyTable on Name <|
-appendQuery
+datatable(Name:string, Address:string)[
+"Alice", "2 Macquarie Street",
+"Diana", "350 Fifth Avenue"
+]
 ```
 
 Where the *appendQuery* yields the following result set:
