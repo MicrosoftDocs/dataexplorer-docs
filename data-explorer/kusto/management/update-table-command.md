@@ -28,8 +28,7 @@ There are two syntax options, [Simplified syntax](#simplified-syntax) and [Expan
 
 The simplified syntax only specifies an append query.  The delete query is deduced by finding all the existing rows having an *Id Column* value present in the append query:
 
-`.update` `table` *TableName* on *IdColumnName* [`with` `(` *propertyName* `=` *propertyValue* `)`] `<|`
-
+`.update` `table` *TableName* on *IdColumnName* [`with` `(` *propertyName* `=` *propertyValue* `)`] `<|` <br>
 *appendQuery*
 
 ### Parameters for simplified syntax 
