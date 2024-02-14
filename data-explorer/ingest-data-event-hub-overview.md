@@ -57,7 +57,7 @@ Ingestion properties instruct the ingestion process, where to route the data, an
 | Compression | Data compression, `None` (default), or `GZip` compression.|
 | Encoding | Data encoding, the default is UTF8. Can be any of [.NET supported encodings](/dotnet/api/system.text.encoding#remarks). |
 | Tags | A list of [tags](kusto/management/extent-tags.md) to associate with the ingested data, formatted as a JSON array string. There are [performance implications](kusto/management/extent-tags.md) when using tags. |
-| RawHeaders | Indicates that event source is Kafka and ADX must use byte array deserialization to read other routing properties. Value is ignored. |
+| RawHeaders | Indicates that event source is Kafka and Azure Data Explorer must use byte array deserialization to read other routing properties. Value is ignored. |
 
 > [!NOTE]
 > Only events enqueued after you create the data connection are ingested.
