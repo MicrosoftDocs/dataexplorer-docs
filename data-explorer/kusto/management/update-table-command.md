@@ -29,8 +29,7 @@ There are two syntax options, [Simplified syntax](#simplified-syntax) and [Expan
 
 The simplified syntax only specifies an append query.  The delete query is deduced by finding all the existing rows having an *Id Column* value present in the append query:
 
-`.update` `table` *TableName* on *IdColumnName* [`with` `(` *propertyName* `=` *propertyValue* `)`] `<|`
-
+`.update` `table` *TableName* on *IdColumnName* [`with` `(` *propertyName* `=` *propertyValue* `)`] `<|` <br>
 *appendQuery*
 
 ### Parameters for simplified syntax 
@@ -51,8 +50,8 @@ The simplified syntax only specifies an append query.  The delete query is deduc
 
 The expanded syntax offers the flexibility to define a query to delete rows and a different query to append rows:
 
-`.update` `table` *TableName* `delete` *DeleteIdentifier* `append` *AppendIdentifier* [`with` `(` *propertyName* `=` *propertyValue* `)`] `<|`
-`let` *DeleteIdentifier*`=` *DeletePredicate*`;`
+`.update` `table` *TableName* `delete` *DeleteIdentifier* `append` *AppendIdentifier* [`with` `(` *propertyName* `=` *propertyValue* `)`] `<|` <br>
+`let` *DeleteIdentifier*`=` *DeletePredicate*`;` <br>
 `let` *AppendIdentifier*`=` *AppendPredicate*`;`
 
 ### Parameters for expanded syntax
