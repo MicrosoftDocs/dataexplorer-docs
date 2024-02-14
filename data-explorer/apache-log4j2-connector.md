@@ -220,4 +220,4 @@ Use the following steps to:
 * [Data connectors overview](connector-overview.md)
 * [Kusto Query Language (KQL) overview](kusto/query/index.md)
 * [Getting Started with Azure Databricks Log4J to Azure Data Explorer](https://github.com/Azure/azure-kusto-log4j/tree/master/samples-azure-databricks) Git repo
-* [Ingest Azure Databricks logs into Azure Data Explorer using Log4j2-ADX connector](https://techcommunity.microsoft.com/t5/azure-data-explorer-blog/ingest-azure-databricks-logs-into-azure-data-explorer-using/ba-p/3726265) Community blog
+* [Ingest Azure Databricks logs into Azure Data Explorer using Log4j2- Azure Data Explorer connector](https://techcommunity.microsoft.com/t5/azure-data-explorer-blog/ingest-azure-databricks-logs-into-azure-data-explorer-using/ba-p/3726265) Community blog

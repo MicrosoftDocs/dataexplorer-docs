@@ -93,7 +93,7 @@ demo_make_series1
 
 ### Regression analysis
 
-ADX supports segmented linear regression analysis to estimate the trend of the time series.
+Azure Data Explorer supports segmented linear regression analysis to estimate the trend of the time series.
 
 - Use [series_fit_line()](series-fit-line-function.md) to fit the best line to a time series for general trend detection.
 - Use [series_fit_2lines()](series-fit-2lines-function.md) to detect trend changes, relative to the baseline, that are useful in monitoring scenarios.
