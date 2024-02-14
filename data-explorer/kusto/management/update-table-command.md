@@ -3,7 +3,7 @@ title:  .update table command (preview)
 description: Learn how to use the .update table command to perform transactional data updates.
 ms.reviewer: vplauzon
 ms.topic: reference
-ms.date: 01/25/2024
+ms.date: 02/14/2024
 ---
 # .update table command (preview)
 
