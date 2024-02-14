@@ -85,7 +85,7 @@ The result of the command is a table where each record represents an [extent](ex
 
 ## Choose between `.update table` and materialized views
 
-There are scenarios where you could use either the `.update table` command or a [materialized view](materialized-views/materialized-view-overview.md) to achieve the same goal in a table.  For example, a materialized view could be used to keep the latest version of each record or an update could be used to update records upon new version. 
+There are scenarios where you could use either the `.update table` command or a [materialized view](materialized-views/materialized-view-overview.md) to achieve the same goal in a table.  For example, a materialized view could be used to keep the latest version of each record or an update could be used to update records when a new version is available. 
 
 Use the following guidelines to decide which method to use:
 
