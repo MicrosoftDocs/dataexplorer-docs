@@ -3,7 +3,7 @@ title: .drop column command
 description: Learn how to use the `.drop column` command to remove a column from a table.
 ms.reviewer: orspodek
 ms.topic: reference
-ms.date: 05/24/2023
+ms.date: 02/06/2024
 ---
 # .drop column command
 
@@ -39,7 +39,7 @@ You must have at least [Table Admin](access-control/role-based-access-control.md
 
 ## Example
 
-The following command will drop the `Value` column from the `Test` database, if such a column exists. If the column doesn't exist, the command will not fail.
+The following command will drop the `Value` column from the `Test` table, if such a column exists. If the column doesn't exist, the command will not fail.
 
 ```kusto
 .drop column Test.Value ifexists
@@ -72,7 +72,7 @@ Removes multiple columns from a table.
 
 ### Example
 
-The following command will drop the `Value` and `Item` columns from the `Test` database.
+The following command will drop the `Value` and `Item` columns from the `Test` table.
 
 ```kusto
 .drop table Test columns ( Value, Item )

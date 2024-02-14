@@ -12,7 +12,7 @@ The function `plotly_anomaly_fl()` is a [user-defined function (UDF)](../query/f
 The function accepts a table containing the source and the baseline time series, lists of positive and negative anomalies with their respective sizes, and chart labeling string. The function returns a single cell table containing [plotly JSON](https://plotly.com/chart-studio-help/json-chart-schema/). Optionally, you can render the data in an [Azure Data Explorer dashboard](../../azure-data-explorer-dashboards.md) tile. For more information, see [Plotly (preview)](../query/visualization-plotly.md).
 
 > [!NOTE]
-> Consider using ADX native [`" | render anomalychart"`](../query/render-operator.md#syntax) method for rendering a non-interactive anomaly chart.
+> Consider using Azure Data Explorer native [`" | render anomalychart"`](../query/render-operator.md#syntax) method for rendering a non-interactive anomaly chart.
 
 ## Prerequisite
 

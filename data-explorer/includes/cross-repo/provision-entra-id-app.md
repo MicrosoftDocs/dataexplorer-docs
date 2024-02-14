@@ -1,6 +1,6 @@
 ---
 ms.topic: include
-ms.date: 01/11/2024
+ms.date: 02/05/2024
 ---
 ## Create Microsoft Entra application registration
 
@@ -53,37 +53,7 @@ You've created your Microsoft Entra application and service principal.
 
 ### [Azure CLI](#tab/azurecli)
 
-1. Sign in to your Azure subscription via Azure CLI. Then authenticate in the browser.
-
-   ```azurecli-interactive
-   az login
-   ```
-
-2. Choose the subscription to host the principal. This step is needed when you have multiple subscriptions.
-
-   ```azurecli-interactive
-   az account set --subscription YOUR_SUBSCRIPTION_GUID
-   ```
-
-3. Create the service principal. In this example, the service principal is called `splunk-uf`.
-
-   ```azurecli-interactive
-   az ad sp create-for-rbac -n "my-service-principal" --role Contributor --scopes /subscriptions/{SubID}
-   ```
-
-4. From the returned JSON data, copy the `appId`, `password`, and `tenant` for future use.
-
-    ```json
-    {
-      "appId": "1234abcd-e5f6-g7h8-i9j0-1234kl5678mn",
-      "displayName": "my-service-principal",
-      "name": "my-service-principal",
-      "password": "1234abcd-e5f6-g7h8-i9j0-1234kl5678mn",
-      "tenant": "1234abcd-e5f6-g7h8-i9j0-1234kl5678mn"
-    }
-    ```
-
-You've created your Microsoft Entra application and service principal.
+[!INCLUDE [entra-service-principal](../entra-service-principal.md)]
 
 ---
 
@@ -109,7 +79,7 @@ If you only need access to an authorized data resource, you can skip this sectio
 
 Once your application registration is created, you need to grant the corresponding service principal access to your database. The following example gives viewer access. For other roles, see [Manage database permissions](/azure/data-explorer/manage-database-permissions).
 
-1. Use the values of Application ID and Tenant ID as copied in the [step above](#set-up-authentication).
+1. Use the values of Application ID and Tenant ID as copied in a [previous step](#set-up-authentication).
 1. Execute the following command in your query editor, replacing the placeholder values *ApplicationID* and *TenantID* with your actual values:
 
     ```kusto

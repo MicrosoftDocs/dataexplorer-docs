@@ -3,7 +3,7 @@ title: Create and alter Azure Storage delta external tables - Azure Data Explore
 description: This article describes how to create and alter delta external tables
 ms.reviewer: igborodi
 ms.topic: reference
-ms.date: 05/08/2023
+ms.date: 01/18/2024
 ---
 # Create and alter delta external tables on Azure Storage
 
@@ -51,7 +51,7 @@ The supported authentication methods are the same as those supported by [Azure S
 ## Optional properties
 
 | Property         | Type     | Description       |
-|------------------|----------|-------------------------------------------------------------------------------------|
+|------------------|----------|------------------------------------------------------------------------------------|
 | `folder`         | `string` | Table's folder                                                                     |
 | `docString`      | `string` | String documenting the table                                                       |
 | `namePrefix`     | `string` | If set, indicates the prefix of the files. On write operations, all files will be written with this prefix. On read operations, only files with this prefix are read. |
@@ -91,7 +91,7 @@ kind=delta
 ## Limitations
 
 * Time travel is not supported. Only the latest delta table version is used.
-* Export, or continuous export, into delta external tables is not supported.
+
 
 ## Related content
 

@@ -109,7 +109,7 @@ To access live results of your query in an Excel workbook, follow these steps:
 
     :::image type="content" source="media/web-share-query/open-in-excel.png" alt-text="Screenshot of option to open in excel." lightbox="media/web-share-query/open-in-excel.png":::
 
-1. Open and share the downloaded Excel workbook, which is connected to ADX and can be refreshed. You can refresh your Excel workbook with new data from Azure Data Explorer, and all related Excel artifacts, like charts and pivot tables, will be updated based on the new data.
+1. Open and share the downloaded Excel workbook, which is connected to Azure Data Explorer and can be refreshed. You can refresh your Excel workbook with new data from Azure Data Explorer, and all related Excel artifacts, like charts and pivot tables, will be updated based on the new data.
 
 > [!NOTE]
 > Depending on your Excel settings, you may need to enable editing and grant permission to access external data connections for the file to update.

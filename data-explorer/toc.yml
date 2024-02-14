@@ -302,18 +302,21 @@ items:
           - name: Query data in the web UI overview
             href: web-ui-query-overview.md
             displayName: web UI
-          - name: Customize settings in the web UI
-            href: web-customize-settings.md
+          - name: Access the data profile of a table
+            href: data-profile.md
           - name: Add a cluster connection
             href: add-cluster-connection.md
             displayName: connect to cluster
           - name: Add a query visualization
             displayName: render, visualize, chart, graph, web UI
             href: add-query-visualization.md
+          - name: Customize settings in the web UI
+            href: web-customize-settings.md
           - name: Explore the sample gallery
             href: web-ui-samples-query.md
           - name: Explore the results grid
             href: web-results-grid.md
+            displayName: data profile
           - name: Share queries
             href: web-share-queries.md
           - name: Keyboard shortcuts
@@ -460,8 +463,8 @@ items:
                 href: manage-cluster-horizontal-scaling.md
               - name: Manage cluster vertical scaling
                 href: manage-cluster-vertical-scaling.md
-              - name: Migrate cluster to support availability zones
-                href: migrate-cluster-to-multiple-availability-zone.md
+              # - name: Migrate cluster to support availability zones
+              #   href: migrate-cluster-to-multiple-availability-zone.md
               - name: Check cluster health
                 href: check-cluster-health.md
               - name: Add cluster principal
