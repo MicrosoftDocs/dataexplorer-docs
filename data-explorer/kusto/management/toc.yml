@@ -109,8 +109,6 @@ items:
             href: show-tables-command.md
           - name: .undo drop table command
             href: undo-drop-table-command.md
-          - name: .update table command (preview)
-            href: update-table-command.md
           - name: .show table details command
             displayName: .show tables details
             href: show-table-details-command.md
