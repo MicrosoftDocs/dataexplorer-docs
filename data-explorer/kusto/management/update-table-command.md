@@ -40,6 +40,12 @@ The simplified syntax only specifies an append query.  The delete query is deduc
 | *IdColumnName*     | `string` | :heavy_check_mark: | The name of the column identifying rows.  The column must be present in both the table and *appendQuery*.                                         |
 | *appendQuery*      | `string` | :heavy_check_mark: | The text of a query or a management command whose results are used as data to append.  The query's schema must be the same as the table's schema. |
 
+> [!IMPORTANT]
+> * The append query can't use remote entities, cross-db, and cross-cluster entities, reference an external table, or use the `externaldata` operator.
+> * The append queries is expected to produce deterministic results.  Nondeterministic queries can lead to unexpected results. A query is deterministic if and only if it would return the same data if executed multiple times.
+>    * For example, use of [`take` operator](../query/take-operator.md), [`sample` operator](../query/sample-operator.md), [`rand` function](../query/rand-function.md), and other such operators isn't recommended because these operators aren't deterministic.
+> * Queries might be executed more than once within the `update` execution. If the intermediate query results are inconsistent, the update command can produce unexpected results.
+
 ### Expanded syntax
 
 The expanded syntax offers the flexibility to define a query to delete rows and a different query to append rows:
