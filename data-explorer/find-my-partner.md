@@ -320,7 +320,7 @@ Data Mastery help businesses harness the power of their data and make data-drive
 :::image type="icon" source="media/findmypartner/datacore-logo.png":::
 
 Datacore provides professional services on Data, BI & AL solution on Azure services. Datacore develop best practices to implement Azure Data Explorer solution to variety needs for a fast and scalable data analysis platform easily and quickly and suitable for handling large amounts of diverse data in real time such as logs, tasks, distributing insights, for time series data and more.
-We are enabling our customers to make with ADX data-driven decisions and find hidden patterns and trends. which without this tool would be very difficult.
+We are enabling our customers to make with Azure Data Explorer data-driven decisions and find hidden patterns and trends. which without this tool would be very difficult.
 
 **Partner type**
 
@@ -346,9 +346,9 @@ We are enabling our customers to make with ADX data-driven decisions and find hi
 
 **IoT made simple**
 
-Device Insight is a specialist for Internet of Things and Industry 4.0 and one of the IoT pioneers in the DACH/GSA region. The company develops and operates customized applications, platforms and IoT solutions in various industries and use case domains based on a wide range of Azure technologies. As such, Device Insight provides consulting for setting up, operating and maintaining Azure Data Explorer and has strong experience in leveraging Azure Data Explorer as a time series database and analytics engine. Using ADX, the solutions provide deep insights based on IoT data, energy data, application logs and other time series data, integrated with datasets from other enterprise applications. Combining ADX with other Azure services, Device Insight provides end-to-end solutions for condition monitoring, predictive maintenance, digital customer portals, data platforms, smart services, energy optimization, production and machine digitization and similar.
+Device Insight is a specialist for Internet of Things and Industry 4.0 and one of the IoT pioneers in the DACH/GSA region. The company develops and operates customized applications, platforms and IoT solutions in various industries and use case domains based on a wide range of Azure technologies. As such, Device Insight provides consulting for setting up, operating and maintaining Azure Data Explorer and has strong experience in leveraging Azure Data Explorer as a time series database and analytics engine. Using ADX, the solutions provide deep insights based on IoT data, energy data, application logs and other time series data, integrated with datasets from other enterprise applications. Combining Azure Data Explorer with other Azure services, Device Insight provides end-to-end solutions for condition monitoring, predictive maintenance, digital customer portals, data platforms, smart services, energy optimization, production and machine digitization and similar.
 
-In addition to the 360-degree consulting & services, Device Insight offers the flexible application framework CENTERSIGHT scale. The framework offers many building blocks for IoT-related applications out of the box as managed services and comes with native support for Azure Data Explorer alongside a multi-tenancy and subtenancy capability. This allows companies to develop their custom IoT solutions much faster and be able to manage end user access to the data stored in ADX on a fine-granular level.
+In addition to the 360-degree consulting & services, Device Insight offers the flexible application framework CENTERSIGHT scale. The framework offers many building blocks for IoT-related applications out of the box as managed services and comes with native support for Azure Data Explorer alongside a multi-tenancy and subtenancy capability. This allows companies to develop their custom IoT solutions much faster and be able to manage end user access to the data stored in Azure Data Explorer on a fine-granular level.
 
 **Partner type**
 
@@ -562,7 +562,7 @@ Insight is ready to help you get more value from your data at any scale. Harness
 
 :::image type="icon" source="media/findmypartner/elasta-cloud-intelligent-spaces-logo.png":::
 
-A product spin-off of Elastacloud, Intelligent Spaces build an Azure backed Digital Twin for managing spaces used by business. Intelligent Spaces handles BIM collaboration and analytics, automated graph creation and a geospatial enrichment engine that produced 3D and AR visualizations. Operating at the intersection of spatial and real-time, their Digital Twin is connected to physical space using IoT technologies. Their Analytics Pack is an ADX powered, web UI that allows business users to drag and drop analytic operations which are then translated and executed directly in ADX. They've contributed the popular tool [AdxUtils](https://github.com/intelligentspaces/AdxUtils) back to the community. If you need Digital Twins or BIM integrations with ADX, contact Intelligent Spaces.
+A product spin-off of Elastacloud, Intelligent Spaces build an Azure backed Digital Twin for managing spaces used by business. Intelligent Spaces handles BIM collaboration and analytics, automated graph creation and a geospatial enrichment engine that produced 3D and AR visualizations. Operating at the intersection of spatial and real-time, their Digital Twin is connected to physical space using IoT technologies. Their Analytics Pack is an Azure Data Explorer powered, web UI that allows business users to drag and drop analytic operations which are then translated and executed directly in ADX. They've contributed the popular tool [AdxUtils](https://github.com/intelligentspaces/AdxUtils) back to the community. If you need Digital Twins or BIM integrations with ADX, contact Intelligent Spaces.
 
 **Partner type**
 
@@ -836,7 +836,7 @@ SpartaBI provides boutique consulting and development services in the Microsoft 
 
 ADX combines an extremely powerful and fast engine with many built-in utilizations that make life easier for both developers and users. It is an impressive PaaS offering which fits perfectly as a major player in many cloud architectures.
 
-We offer to put our experience and dedication into harnessing the impressive capabilities of ADX and take your solution to great heights.
+We offer to put our experience and dedication into harnessing the impressive capabilities of Azure Data Explorer and take your solution to great heights.
 
 **Partner type**
 

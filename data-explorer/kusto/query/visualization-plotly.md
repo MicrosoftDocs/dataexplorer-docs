@@ -20,7 +20,7 @@ To render a Plotly visual in KQL, the query must generate a table with a single 
 
 ## Write your own Plotly visualization in Python
 
- In this method, you dynamically create the Plotly JSON string in Python using the [Plotly package](https://plotly.com/python/getting-started/). This process requires use of the [python() plugin](python-plugin.md). The Python script is run on the existing ADX nodes using the inline python() plugin. It generates a Plotly JSON that is rendered by the client application.
+ In this method, you dynamically create the Plotly JSON string in Python using the [Plotly package](https://plotly.com/python/getting-started/). This process requires use of the [python() plugin](python-plugin.md). The Python script is run on the existing Azure Data Explorer nodes using the inline python() plugin. It generates a Plotly JSON that is rendered by the client application.
 
 Using this method, all types of Plotly visualizations are supported.
 
@@ -62,7 +62,7 @@ Since python is not available in this service, you create this Plotly JSON using
 
 ## Use a preprepared Plotly template
 
-In this method, a preprepared Plotly JSON for specific visualization can be reused by replacing the data objects with the required data to be rendered. The templates can be stored in a standard ADX table, and the data replacement logic can be packed in a stored function.
+In this method, a preprepared Plotly JSON for specific visualization can be reused by replacing the data objects with the required data to be rendered. The templates can be stored in a standard Azure Data Explorer table, and the data replacement logic can be packed in a stored function.
 
 Currently, the supported templates are: [plotly_anomaly_fl()](../functions-library/plotly-anomaly-fl.md) and [plotly_scatter3d_fl()](../functions-library/plotly-scatter3d-fl.md). Refer to these documents for syntax and usage.
 
