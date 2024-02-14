@@ -9,10 +9,11 @@ ms.date: 01/25/2024
 
 The `.update table` command performs data updates in a specified table by deleting and appending data entries atomically.
 
+> [!WARNING]
+> This command is unrecoverable.
+
 > [!NOTE]
 > You can delete up to 5 million records.
->
-> This command is unrecoverable.
 
 ## Permissions
 
