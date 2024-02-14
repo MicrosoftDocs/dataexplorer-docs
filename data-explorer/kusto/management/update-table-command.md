@@ -27,9 +27,9 @@ There are two syntax options, [Simplified syntax](#simplified-syntax) and [Expan
 
 ### Simplified syntax
 
-The simplified syntax only specifies an append query.  The delete query is deduced by finding all the existing rows having an *Id Column* value present in the append query:
+The simplified syntax only specifies an append query.  The delete query is deduced by finding all the existing rows having an *ID Column* value present in the append query:
 
-`.update` `table` *TableName* on *IdColumnName* [`with` `(` *propertyName* `=` *propertyValue* `)`] `<|` <br>
+`.update` `table` *TableName* on *IDColumnName* [`with` `(` *propertyName* `=` *propertyValue* `)`] `<|` <br>
 *appendQuery*
 
 ### Parameters for simplified syntax 
@@ -37,7 +37,7 @@ The simplified syntax only specifies an append query.  The delete query is deduc
 | Name               | Type     | Required           | Description                                                                                                                                       |
 | ------------------ | -------- | ------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------- |
 | *TableName*        | `string` | :heavy_check_mark: | The name of the table to update.                                                                                                                  |
-| *IdColumnName*     | `string` | :heavy_check_mark: | The name of the column identifying rows.  The column must be present in both the table and *appendQuery*.                                         |
+| *IDColumnName*     | `string` | :heavy_check_mark: | The name of the column identifying rows. The column must be present in both the table and *appendQuery*.                                         |
 | *appendQuery*      | `string` | :heavy_check_mark: | The text of a query or a management command whose results are used as data to append.  The query's schema must be the same as the table's schema. |
 
 > [!IMPORTANT]
@@ -61,7 +61,7 @@ The expanded syntax offers the flexibility to define a query to delete rows and 
 | *TableName*        | `string` | :heavy_check_mark: | The name of the table to update.                                                                                                                                                                                                                         |
 | *IdColumnName*     | `string` | :heavy_check_mark: | The name of the column identifying rows.  The column must be present in both the table and *appendQuery*.                                                                                                                                                |
 | *DeleteIdentifier* | `string` | :heavy_check_mark: | The identifier name used to specify the delete predicate applied to the updated table.                                                                                                                                                                   |
-| *DeletePredicate*  | `string` | :heavy_check_mark: | The text of a query or a management command whose results are used as data to delete. The delete predicate must include at least one `where` operator, and can only only use the following operators: `extend`, `where`, `project`, `join` and `lookup`. |
+| *DeletePredicate*  | `string` | :heavy_check_mark: | The text of a query or a management command whose results are used as data to delete. The delete predicate must include at least one `where` operator, and can only use the following operators: `extend`, `where`, `project`, `join` and `lookup`. |
 | *AppendIdentifier* | `string` | :heavy_check_mark: | The identifier name used to specify the append predicate applied to the updated table.                                                                                                                                                                   |
 | *AppendPredicate*  | `string` | :heavy_check_mark: | The text of a query or a management command whose results are used as data to append.                                                                                                                                                                    |
 
@@ -101,8 +101,8 @@ There are scenarios where you could use either the `.update table` command or a 
 Use the following guidelines to decide which method to use:
 
 * If your update pattern isn't supported by materialized views, use the update command.
-* If the source table has a high ingestion volume, but only few updates, using the update command can be more performant and consume less cache or storage than materialized views. This is because materialized views need to reprocess all ingested data, which is less efficient than identifying the individual records to update based on the append/delete predicates.
-* Materialized views is a fully managed solution. The materialized view is [defined once](materialized-views/materialized-view-create-or-alter.md) and materialization happens in the background by the system. The update command requires an orchestrated process (for example, [Azure Data Factory](../../data-factory-integration.md), [Logic Apps](../tools/logicapps.md), [Power Automate](../../flow.md), and others) that explicitly executes the update command every time there are updates. If materialized views work well enough for your use case, using materialized views requires less management and maintenance.
+* If the source table has a high ingestion volume, but only few updates, using the update command can be more performant and consume less cache or storage than materialized views. This is because materialized views need to reprocess all ingested data, which is less efficient than identifying the individual records to update based on the append or delete predicates.
+* Materialized views is a fully managed solution. The materialized view is [defined once](materialized-views/materialized-view-create-or-alter.md) and materialization happens in the background by the system. The update command requires an orchestrated process (for example, [Azure Data Factory](../../data-factory-integration.md), [Logic Apps](../tools/logicapps.md), [Power Automate](../../flow.md), and others) that explicitly executes the update command every time there are updates. If materialized views work enough for your use case, using materialized views requires less management and maintenance.
 
 ## Examples -  Simplified syntax
 
@@ -110,7 +110,7 @@ The following examples use the [Simplified syntax](#simplified-syntax).
 
 ### General example 
 
-The following table is created
+The following table is created.
 
 ```kusto
 .set-or-replace MyTable <|
@@ -170,7 +170,7 @@ The next examples are based on the following table:
 
 This command creates a table with 100 records starting with:
 
-| Id | Code     | Color |
+| ID | Code     | Color |
 | -- | -------- | ----- |
 | 1  | Employee | Blue  |
 | 2  | Customer | Gray  |
