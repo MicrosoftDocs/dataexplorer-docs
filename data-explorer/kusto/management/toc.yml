@@ -887,5 +887,5 @@ items:
       - name: Follower commands
         displayName: Cluster commands, database commands, materialized view commands, table commands
         href: cluster-follower.md
-      - name: .update table command
+      - name: .update table command (preview)
         href: update-table-command.md
