@@ -7,13 +7,13 @@ ms.date: 02/14/2024
 ---
 # .update table command (preview)
 
-The `.update table` command performs data updates in a specified table by deleting and appending data entries atomically.
+The `.update table` command performs data updates in a specified table by deleting and appending records atomically.
 
 > [!WARNING]
 > This command is unrecoverable.
 
 > [!NOTE]
-> You can delete up to 5 million records.
+> You can delete up to 5 million records in a single command.
 
 ## Permissions
 
@@ -56,14 +56,13 @@ The expanded syntax offers the flexibility to define a query to delete rows and 
 
 ### Parameters for expanded syntax
 
-| Name               | Type     | Required           | Description                                                                                                                                                                                                                                              |
-| ------------------ | -------- | ------------------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| *TableName*        | `string` | :heavy_check_mark: | The name of the table to update.                                                                                                                                                                                                                         |
-| *IdColumnName*     | `string` | :heavy_check_mark: | The name of the column identifying rows.  The column must be present in both the table and *appendQuery*.                                                                                                                                                |
-| *DeleteIdentifier* | `string` | :heavy_check_mark: | The identifier name used to specify the delete predicate applied to the updated table.                                                                                                                                                                   |
+| Name               | Type     | Required           | Description                                                                                                                                                                                                                                         |
+| ------------------ | -------- | ------------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| *TableName*        | `string` | :heavy_check_mark: | The name of the table to update.                                                                                                                                                                                                                    |
+| *DeleteIdentifier* | `string` | :heavy_check_mark: | The identifier name used to specify the delete predicate applied to the updated table.                                                                                                                                                              |
 | *DeletePredicate*  | `string` | :heavy_check_mark: | The text of a query or a management command whose results are used as data to delete. The delete predicate must include at least one `where` operator, and can only use the following operators: `extend`, `where`, `project`, `join` and `lookup`. |
-| *AppendIdentifier* | `string` | :heavy_check_mark: | The identifier name used to specify the append predicate applied to the updated table.                                                                                                                                                                   |
-| *AppendPredicate*  | `string` | :heavy_check_mark: | The text of a query or a management command whose results are used as data to append.                                                                                                                                                                    |
+| *AppendIdentifier* | `string` | :heavy_check_mark: | The identifier name used to specify the append predicate applied to the updated table.                                                                                                                                                              |
+| *AppendPredicate*  | `string` | :heavy_check_mark: | The text of a query or a management command whose results are used as data to append.                                                                                                                                                               |
 
 > [!IMPORTANT]
 > * Both delete and append predicates can't use remote entities, cross-db, and cross-cluster entities. Predicates can't reference an external table or use the `externaldata` operator.
@@ -86,13 +85,13 @@ The result of the command is a table where each record represents an [extent](ex
 
 | Name     | Type     | Description                                                                      |
 | -------- | -------- | -------------------------------------------------------------------------------- |
-| Table    | `guid`   | The table in which the extent was created or deleted.                            |
+| Table    | `string`   | The table in which the extent was created or deleted.                            |
 | Action   | `string` | *Create* or *Delete* depending on the action performed on the extent.            |
 | ExtentId | `guid`   | The unique identifier for the extent that was created or deleted by the command. |
 | RowCount | `long`   | The number of rows created or deleted in the specified extent by the command.    |
 
 > [!NOTE]
-> When you update a table that is the source for an update policy, the result of the command contains all generated results in all tables.
+> When you run the `.update table` command on a table that is the source for an [update policy](update-policy.md), the `.update table` command triggers these update policies for which the table being modified is the update policy source.
 
 ## Choose between `.update table` and materialized views
 
@@ -102,7 +101,7 @@ Use the following guidelines to decide which method to use:
 
 * If your update pattern isn't supported by materialized views, use the update command.
 * If the source table has a high ingestion volume, but only few updates, using the update command can be more performant and consume less cache or storage than materialized views. This is because materialized views need to reprocess all ingested data, which is less efficient than identifying the individual records to update based on the append or delete predicates.
-* Materialized views is a fully managed solution. The materialized view is [defined once](materialized-views/materialized-view-create-or-alter.md) and materialization happens in the background by the system. The update command requires an orchestrated process (for example, [Azure Data Factory](../../data-factory-integration.md), [Logic Apps](../tools/logicapps.md), [Power Automate](../../flow.md), and others) that explicitly executes the update command every time there are updates. If materialized views work enough for your use case, using materialized views requires less management and maintenance.
+* Materialized views is a fully managed solution. The materialized view is [defined once](materialized-views/materialized-view-create-or-alter.md) and materialization happens in the background by the system. The update command requires an orchestrated process (for example, [Azure Data Factory](../../data-factory-integration.md), [Logic Apps](../tools/logicapps.md), [Power Automate](../../flow.md), and others) that explicitly executes the update command every time there are updates. If materialized views work well enough for your use case, using materialized views requires less management and maintenance.
 
 ## Examples -  Simplified syntax
 
@@ -331,3 +330,4 @@ This type of action is only possible using the expanded syntax, which independen
 ## Related content
 
 * [Materialized views](materialized-views/materialized-view-overview.md)
+* [.delete table records - soft delete command](soft-delete-command.md)
