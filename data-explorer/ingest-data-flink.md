@@ -54,7 +54,7 @@ To write data from Flink:
     import com.microsoft.azure.flink.config.KustoWriteOptions;
     ```
 
-1. Use your application or managed identity to [Authenticate](#authenticate).
+1. Use your application or managed identity to Authenticate.
 
     For application authentication:
 
