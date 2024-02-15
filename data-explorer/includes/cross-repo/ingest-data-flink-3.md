@@ -3,7 +3,7 @@ ms.topic: include
 ms.date: 02/15/2024
 ---
 
-1. Configure the sink parameters such as database and table:
+3. Configure the sink parameters such as database and table:
 
     ```java
     KustoWriteOptions kustoWriteOptions = KustoWriteOptions.builder()

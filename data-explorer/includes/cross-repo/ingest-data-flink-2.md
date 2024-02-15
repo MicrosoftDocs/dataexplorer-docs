@@ -7,7 +7,7 @@ This service principal will be the identity used by the connector to write data 
 
 [!INCLUDE [entra-service-principal](../entra-service-principal.md)]
 
-1. Grant the application user permissions on the  database:
+1. Grant the application user permissions on the database:
 
     ```kusto
     // Grant database user permissions
