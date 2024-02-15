@@ -9,7 +9,7 @@ For a complete list of data connectors, see [Data connectors overview](/azure/da
 ## Prerequisites
 
 * [Apache Maven](https://maven.apache.org/)
-* An Azure Data Explorer [cluster and database](create-cluster-and-database.md) **or** a [KQL database in Microsoft Fabric](/fabric/real-time-analytics/create-database)
+* An Azure Data Explorer [cluster and database](/azure/data-explorer/create-cluster-and-database) **or** a [KQL database in Microsoft Fabric](/fabric/real-time-analytics/create-database)
 
 ## Set up your environment
 
@@ -36,11 +36,11 @@ To use the sink in an application, add the following dependencies to your *pom.x
 
 ### Create a Microsoft Entra App registration
 
-[!INCLUDE [entra-service-principal](includes/entra-service-principal.md)]
+[!INCLUDE [entra-service-principal](../entra-service-principal.md)]
 
 ### Grant the Microsoft Entra app permissions
 
-1. In your query environment, run the following management command, replacing the placeholders *DatabaseName* and *application ID* with the previously saved values. This command grants the app the [database ingestor](/azure/data-explorer/kusto/access-control/role-based-access-control.md) role. For more information, see [Manage database security roles](/azure/data-explorer/kusto/management/manage-database-security-roles).
+1. In your query environment, run the following management command, replacing the placeholders *DatabaseName* and *application ID* with the previously saved values. This command grants the app the [database ingestor](/azure/data-explorer/kusto/access-control/role-based-access-control) role. For more information, see [Manage database security roles](/azure/data-explorer/kusto/management/manage-database-security-roles).
 
     ```kusto
     .add database DatabaseName ingestors ('aadapp=12345-abcd-12a3-b123-ccdd12345a1b') 'Azure Data Explorer App Registration'
@@ -196,4 +196,4 @@ Use the following steps to:
 
     Your output should look similar to the following table:
 
-    :::image type="content" lightbox="media/apache-log4j2-connector/take-10-results.png" source="./../media/apache-log4j2-connector/take-10-results.png" alt-text="Screenshot of table with take 10 function and results.":::
+    :::image type="content" lightbox="/azure/data-explorer/media/apache-log4j2-connector/take-10-results.png" source="/azure/data-explorer/media/apache-log4j2-connector/take-10-results.png" alt-text="Screenshot of table with take 10 function and results.":::
