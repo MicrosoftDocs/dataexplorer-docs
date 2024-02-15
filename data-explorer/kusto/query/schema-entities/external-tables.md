@@ -39,3 +39,4 @@ For more information about how to query external tables, and ingested and uninge
 > * External table names are case-sensitive, and can't overlap with Kusto table names. For more information, see [Identifier naming rules](entity-names.md#identifier-naming-rules).
 > * Azure Data Explorer supports [export](../../management/data-export/export-data-to-an-external-table.md) and [continuous export](../../management/data-export/continuous-data-export.md) to an external table.
 > * [Data purge](../../concepts/data-purge.md) isn't applied on external tables. Records are never deleted from external tables.
+> * [Row level security policy](../../management/row-level-security-policy.md) can't be configured on external tables.
