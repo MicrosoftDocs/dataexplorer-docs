@@ -4,7 +4,7 @@ description: Learn about how to use database script to run a Kusto Query Languag
 ms.reviewer: docohe
 ms.topic: how-to
 ms.custom: devx-track-bicep
-ms.date: 09/10/2023
+ms.date: 02/16/2024
 ---
 # Configure a database using a Kusto Query Language script
 
