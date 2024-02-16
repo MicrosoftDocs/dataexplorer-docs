@@ -49,6 +49,9 @@ Continuous data ingestion involves setting up an ingestion pipeline with either 
 > [!NOTE]
 > For most scenarios, we recommend using queued ingestion as it is the more performant option.
 
+> [!NOTE]
+> Queued ingestion incorporates retry mechanisms to mitigate transient failures. In this context, queued ingestion follows an 'at least once' messaging semantics.
+
 There are multiple ways to configure continuous data ingestion. Use the following decision tree to determine the most suitable option for your use case:
 
 :::image type="complex" border="false" source="media/ingest-data-overview/continuous-ingestion.png" lightbox="media/ingest-data-overview/continuous-ingestion.png" alt-text="Diagram of decision tree for continuous ingestion.":::
