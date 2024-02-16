@@ -3,7 +3,7 @@ title: Azure Data Explorer data ingestion overview
 description: Learn about the different ways you can ingest (load) data in Azure Data Explorer
 ms.reviewer: akshay.dixit
 ms.topic: conceptual
-ms.date: 01/10/2024
+ms.date: 02/16/2024
 ---
 
 # Azure Data Explorer data ingestion overview
