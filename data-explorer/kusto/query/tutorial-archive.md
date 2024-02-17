@@ -1,5 +1,5 @@
 ---
-title: 'Tutorial: Kusto queries archive'
+title: 'Tutorial: Use Kusto queries archive'
 description: This archive tutorial describes how to use queries in the Kusto Query Language to meet common query needs.
 ms.reviewer: alexans
 ms.topic: reference
@@ -8,20 +8,23 @@ ms.date: 11/01/2021
 
 # Tutorial: Use Kusto queries archive
 
-The best way to learn about the Kusto Query Language is to look at some basic queries to get a "feel" for the language. We recommend using a [database with some sample data](https://help.kusto.windows.net/Samples). The queries that are demonstrated in this tutorial should run on that database. The `StormEvents` table in the sample database provides some information about storms that happened in the United States.
+
+Kusto Query Language (KQL) is a simple but powerful tool to query structured, semi-structured, and unstructured data. It can explore data and discover patterns, identify anomalies and outliers and create statistical modeling. KQL is used to write queries in Azure Data Explorer, Azure Monitor Log Analytics, Azure Sentinel and more.
+
+The best way to learn the Kusto Query Language and familiarize yourself with it is to look at some basic queries. We recommend using a database with some sample data. The queries in this tutorial use the `StormEvents` table, which provides information about storms in the United States. This table is available in the [**help** cluster](https://help.kusto.windows.net/Samples).
 
 ## Count rows
 
-Our example database has a table called `StormEvents`. We want to find out how large the table is. So we'll pipe its content into an operator that counts the rows in the table.
+Begin by using the [count](../count-operator.md) operator to find the number of storm records in the `StormEvents` table.
 
-*Syntax note*: A query is a data source (usually a table name), optionally followed by one or more pairs of the pipe character and some tabular operator.
+*Syntax note*: A query is a data source (usually a table name), optionally followed by one or more pairs of the pipe character and tabular operators.
 
 <!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
 StormEvents | count
 ```
 
-Here's the output:
+The output is:
 
 |Count|
 |-----|
@@ -29,41 +32,43 @@ Here's the output:
 
 For more information, see [count operator](./count-operator.md).
 
-## Select a subset of columns: *project*
-
-Use [project](./project-operator.md) to pick out only the columns you want. See the following example, which uses both the [project](./project-operator.md)
-and the [take](./take-operator.md) operators.
-
-## Filter by Boolean expression: *where*
-
-Let's see only `flood` events in `California` in Feb-2007:
-
-<!-- csl: https://help.kusto.windows.net/Samples -->
-```kusto
-StormEvents
-| where StartTime > datetime(2007-02-01) and StartTime < datetime(2007-03-01)
-| where EventType == 'Flood' and State == 'CALIFORNIA'
-| project StartTime, EndTime , State , EventType , EpisodeNarrative
-```
-
-Here's the output:
-
-|StartTime|EndTime|State|EventType|EpisodeNarrative|
-|---|---|---|---|---|
-|2007-02-19 00:00:00.0000000|2007-02-19 08:00:00.0000000|CALIFORNIA|Flood|A frontal system moving across the Southern San Joaquin Valley brought brief periods of heavy rain to western Kern County in the early morning hours of the 19th. Minor flooding was reported across State Highway 166 near Taft.|
-
 ## Show *n* rows: *take*
 
-Let's see some data. What's in a random sample of five rows?
+Use the [take](../take-operator.md) operator to view a sample of records. This operator returns a specified number of arbitrary rows from the table, which can be useful for previewing the general data structure and contents. 
+
+Run the following query to return 5 rows:
 
 <!-- csl: https://help.kusto.windows.net/Samples -->
+```Kusto
+StormEvents 
+| take 5
+```
+
+The table below shows only 6 of the 22 returned columns. To see the full output, run the query.
+
+|StartTime|EndTime|EpisodeId|EventId|State|EventType|...|
+|--|--|--|--|--|--|--|
+|2007-09-20T21:57:00Z|2007-09-20T22:05:00Z|11078|60913|FLORIDA|Tornado|...|
+|2007-12-20T07:50:00Z|2007-12-20T07:53:00Z|12554|68796|MISSISSIPPI|Thunderstorm Wind|...|
+|2007-12-30T16:00:00Z|2007-12-30T16:05:00Z|11749|64588|GEORGIA|Thunderstorm Wind|...|
+|2007-09-29T08:11:00Z|2007-09-29T08:11:00Z|11091|61032|ATLANTIC SOUTH|Waterspout|...|
+|2007-09-18T20:00:00Z|2007-09-19T18:00:00Z|11074|60904|FLORIDA|Heavy Rain|...|
+
+Note: [limit](./take-operator.md) is an alias for [take](./take-operator.md) and has the same effect.
+
+## Select a subset of columns: *project*
+
+Use the [project](../project-operator.md) operator to simplify the view and to select a specific subset of columns.
+See the following example, which uses both the [project](./project-operator.md)
+and the [take](./take-operator.md) operators.
+
 ```kusto
 StormEvents
 | take 5
 | project  StartTime, EndTime, EventType, State, EventNarrative  
 ```
 
-Here's the output:
+The output is:
 
 |StartTime|EndTime|EventType|State|EventNarrative|
 |---|---|---|---|---|
@@ -73,14 +78,37 @@ Here's the output:
 |2007-12-20 07:50:00.0000000|2007-12-20 07:53:00.0000000|Thunderstorm Wind|MISSISSIPPI|Numerous large trees were blown down with some down on power lines. Damage occurred in eastern Adams county.|
 |2007-12-30 16:00:00.0000000|2007-12-30 16:05:00.0000000|Thunderstorm Wind|GEORGIA|The county dispatch reported several trees were blown down along Quincey Batten Loop near State Road 206. The cost of tree removal was estimated.|
 
-But [take](./take-operator.md) shows rows from the table in no particular order, so let's sort them. ([limit](./take-operator.md) is an alias for [take](./take-operator.md) and has the same effect.)
+
+## Filter by Boolean expression: *where*
+
+The [where](../where-operator.md) operator filters rows of data based on certain criteria.
+
+Let's check only `flood` events in `California` in Feb-2007:
+
+<!-- csl: https://help.kusto.windows.net/Samples -->
+```kusto
+StormEvents
+| where StartTime > datetime(2007-02-01) and StartTime < datetime(2007-03-01)
+| where EventType == 'Flood' and State == 'CALIFORNIA'
+| project StartTime, EndTime , State , EventType , EpisodeNarrative
+```
+
+The output is:
+
+|StartTime|EndTime|State|EventType|EpisodeNarrative|
+|---|---|---|---|---|
+|2007-02-19 00:00:00.0000000|2007-02-19 08:00:00.0000000|CALIFORNIA|Flood|A frontal system moving across the Southern San Joaquin Valley brought brief periods of heavy rain to western Kern County in the early morning hours of the 19th. Minor flooding was reported across State Highway 166 near Taft.|
+
 
 ## Order results: *sort*, *top*
 
-* *Syntax note*: Some operators have parameters that are introduced by keywords like `by`.
-* In the following example, `desc` orders results in descending order and `asc` orders results in ascending order.
+You can sort query results:
+* Use the [sort](../sort-operator.md) operator to arrange the rows in descending or ascending order based on a specific column. The default sort order is descending (`desc`). To sort in ascending order, specify `asc`.
+* Use the [top](../top-operator.md) operator to return the first *n* rows, sorted by a specific column.
 
-Show me the first *n* rows, ordered by a specific column:
+*Syntax note*: Some operators have parameters that are introduced by keywords like `by`.
+
+To see the first *n* rows, ordered by a specific column, run:
 
 <!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
@@ -89,7 +117,7 @@ StormEvents
 | project  StartTime, EndTime, EventType, State, EventNarrative  
 ```
 
-Here's the output:
+The output is:
 
 |StartTime|EndTime|EventType|State|EventNarrative|
 |---|---|---|---|---|
@@ -99,7 +127,7 @@ Here's the output:
 |2007-12-31 23:53:00.0000000|2007-12-31 23:53:00.0000000|High Wind|CALIFORNIA|North to northeast winds gusting to around 58 mph were reported in the mountains of Ventura county.|
 |2007-12-31 23:53:00.0000000|2007-12-31 23:53:00.0000000|High Wind|CALIFORNIA|The Warm Springs RAWS sensor reported northerly winds gusting to 58 mph.|
 
-You can achieve the same result by using  either [sort](./sort-operator.md), and then [take](./take-operator.md):
+You can achieve the same result by using  [sort](./sort-operator.md) and then [take](./take-operator.md):
 
 <!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
@@ -111,7 +139,9 @@ StormEvents
 
 ## Compute derived columns: *extend*
 
-Create a new column by computing a value in every row:
+Create a new column by computing a value in every row.
+
+The following query creates a `Duration` column, which is calculated as the difference between the `StartTime` and `EndTime`:
 
 <!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
@@ -121,7 +151,7 @@ StormEvents
 | project StartTime, EndTime, Duration, EventType, State
 ```
 
-Here's the output:
+The output is:
 
 |StartTime|EndTime|Duration|EventType|State|
 |---|---|---|---|---|
@@ -133,7 +163,7 @@ Here's the output:
 
 It's possible to reuse a column name and assign a calculation result to the same column.
 
-Example:
+For example:
 
 <!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
@@ -142,7 +172,7 @@ print x=1
 | extend x = x + 1
 ```
 
-Here's the output:
+The output is:
 
 |x|y|
 |---|---|
@@ -152,7 +182,8 @@ Here's the output:
 
 ## Aggregate groups of rows: *summarize*
 
-Count the number of events occur in each state:
+The [summarize](./summarize-operator.md) operator groups together rows that have the same values in the `by` clause, and then uses an aggregation function (for example, `count`) to combine each group in a single row. In this case, there's a row for each state and a column for the count of rows in that state.
+
 
 <!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
@@ -160,18 +191,17 @@ StormEvents
 | summarize event_count = count() by State
 ```
 
-[summarize](./summarize-operator.md) groups together rows that have the same values in the `by` clause, and then uses an aggregation function (for example, `count`) to combine each group in a single row. In this case, there's a row for each state and a column for the count of rows in that state.
 
-A range of [aggregation functions](aggregation-functions.md) are available. You can use several aggregation functions in one `summarize` operator to produce several computed columns. For example, we could get the count of storms per state, and the sum of unique types of storm per state. Then, we could use [top](./top-operator.md) to get the most storm-affected states:
+A range of [aggregation functions](aggregation-functions.md) is available. You can use several aggregation functions in one `summarize` operator to produce several computed columns. For example, we could get the count of storms per state, and the sum of unique types of storms per state. Then, we could use [top](./top-operator.md) to get the most storm-affected states:
 
 <!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
 StormEvents 
-| summarize StormCount = count(), TypeOfStorms = dcount(EventType) by State
+| summarize StormCount = count(), TypeOfStorms = count(EventType) by State
 | top 5 by StormCount desc
 ```
 
-Here's the output:
+The output is:
 
 |State|StormCount|TypeOfStorms|
 |---|---|---|
@@ -181,7 +211,7 @@ Here's the output:
 |ILLINOIS|2022|23|
 |MISSOURI|2016|20|
 
-In the results of a `summarize` operator:
+*Syntax note*: In the results of a `summarize` operator:
 
 * Each column is named in `by`.
 * Each computed expression has a column.
@@ -189,7 +219,7 @@ In the results of a `summarize` operator:
 
 ## Summarize by scalar values
 
-You can use scalar (numeric, time, or interval) values in the `by` clause, but you'll want to put the values into bins by using the [bin()](./bin-function.md) function:
+You can use scalar values (numeric, time, or interval) in the `by` clause. Values should be put into bins by using the [bin()](./bin-function.md) function:
 
 <!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
@@ -216,7 +246,9 @@ The [bin()](./bin-function.md) is the same as the floor() function in many langu
 
 ## Display a chart or table: *render*
 
-You can project two columns and use them as the x-axis and the y-axis of a chart:
+The `render` operator enables you to visually communicate query results.
+
+You can use the oprerator to project two columns and use them as the x-axis and the y-axis of a chart:
 
 <!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
@@ -261,7 +293,7 @@ StormEvents
 
 :::image type="content" source="media/tutorial/table-count-source.png" alt-text="Screenshot that shows a table count by source.":::
 
-Just add the `render` term to the preceding example: `| render timechart`.
+Just add `render` to the preceding example: `| render timechart`.
 
 :::image type="content" source="media/tutorial/line-count-source.png" alt-text="Screenshot that shows a line chart count by source.":::
 
@@ -318,7 +350,8 @@ StormEvents
 
 ## Join data types
 
-How would you find two specific event types and in which state each of them happened?
+Merge the rows of two tables to form a new table by matching values of the specified columns from each table.
+For instance, how would you find two specific event types and in which state each of them happened?
 
 You can pull storm events with the first `EventType` and the second `EventType`, and then join the two sets on `State`:
 
@@ -361,7 +394,7 @@ Events
 
 :::image type="content" source="media/tutorial/user-session-extend.png" alt-text="Screenshot of a table of results for user session extend.":::
 
-It's a good practice to use `project` to select just the relevant columns before you perform the join. In the same clause, rename the `timestamp` column.
+It is good practice to use `project` to select just the relevant columns before you perform the join . In the same clause, rename the `timestamp` column.
 
 ## Plot a distribution
 
