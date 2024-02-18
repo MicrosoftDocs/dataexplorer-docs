@@ -37,6 +37,6 @@ print arr=dynamic([1,2,3,4])
 
 **Output**
 
-|s1|s2|series_sum|
-|---|---|---|
+|s1|series_sum|
+|---|---|
 |[1,2,3,4]|10|
