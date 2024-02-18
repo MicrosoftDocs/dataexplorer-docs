@@ -4,7 +4,7 @@ ms.date: 02/15/2024
 ---
 Log4J is a popular logging framework for Java applications maintained by the Apache Foundation. Log4J allows developers to control which log statements are output with arbitrary granularity based on the logger's name, logger level, and message pattern. [Apache Log4J 2](https://logging.apache.org/log4j/2.x/) is an upgrade to Log4J, with significant improvements over the preceding Log4j 1.x. Log4J 2 provides many of the improvements available in Logback, while fixing some inherent problems in Logback's architecture. The Apache log4J 2 sink, also known as an appender, streams your log data to your table in Kusto, where you can analyze and visualize your logs in real time.
 
-For a complete list of data connectors, see [Data connectors overview](/azure/data-explorer/connector-overview).
+For a complete list of data connectors, see [Data integrations overview](/azure/data-explorer/integrate-data-overview).
 
 ## Prerequisites
 
@@ -43,7 +43,7 @@ To use the sink in an application, add the following dependencies to your *pom.x
 1. In your query environment, run the following management command, replacing the placeholders *DatabaseName* and *application ID* with the previously saved values. This command grants the app the [database ingestor](/azure/data-explorer/kusto/access-control/role-based-access-control) role. For more information, see [Manage database security roles](/azure/data-explorer/kusto/management/manage-database-security-roles).
 
     ```kusto
-    .add database DatabaseName ingestors ('aadapp=12345-abcd-12a3-b123-ccdd12345a1b') 'Azure Data Explorer App Registration'
+    .add database DatabaseName ingestors ('aadappID=12345-abcd-12a3-b123-ccdd12345a1b') 'App Registration'
     ```
 
     > [!NOTE]
