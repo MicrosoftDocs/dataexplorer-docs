@@ -13,7 +13,7 @@ For a complete list of data connectors, see [Data integrations overview](/azure/
 
 ## Set up your environment
 
-In this section, you'll prepare your environment to use the Log4J 2 sink.
+In this section, you prepare your environment to use the Log4J 2 sink.
 
 ### Install the package
 
@@ -103,7 +103,7 @@ Use the following steps to:
     |---|---|
     | *clusterIngestUrl* | The ingest URI for your cluster in the format *https://ingest-\<cluster>.\<region>.kusto.windows.net*. |
     | *dbName* | The case-sensitive name of the target database. |
-    | *tableName* | The case-sensitive name of an existing target table. For example, **Log4j 2Test** is the name of the table created in [Create a table and ingestion mapping](#create-a-table-and-ingestion-mapping). |
+    | *tableName* | The case-sensitive name of an existing target table. For example, **Log4jTest** is the name of the table created in [Create a table and ingestion mapping](#create-a-table-and-ingestion-mapping). |
     | *appId* | The application client ID required for authentication. You saved this value in [Create a Microsoft Entra App registration](#create-a-microsoft-entra-app-registration). |
     | *appKey* | The application key required for authentication. You saved this value in [Create a Microsoft Entra App registration](#create-a-microsoft-entra-app-registration). |
     | *appTenant* | The ID of the tenant in which the application is registered. You saved this value in [Create a Microsoft Entra App registration](#create-a-microsoft-entra-app-registration). |
