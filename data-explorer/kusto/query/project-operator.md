@@ -55,7 +55,7 @@ StormEvents
 | project EventId, State, EventType
 ```
 
-The results table shows only the top 10 results.
+The following results table shows only the top 10 results.
 
 |EventId|State|EventType|
 |--|--|--|
