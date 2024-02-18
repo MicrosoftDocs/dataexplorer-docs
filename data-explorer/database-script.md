@@ -31,7 +31,7 @@ There are various methods you can use to configure a database with scripts. We'l
 1. [*Storage Account*](#storage-account-script): The script is created as a blob in an Azure storage account and its details (URL and [shared access signatures (SaS)](/azure/storage/common/storage-sas-overview) provided as parameters to the ARM template.
 
 > [!NOTE]
-> Each cluster can have a maximum of 50 scripts.  Script resources can be [deleted](https://learn.microsoft.com/en-us/cli/azure/kusto/script?view=azure-cli-latest#az-kusto-script-delete) to make place for new scripts (deleting a script doesn't rollback the commands from the script).
+> Each cluster can have a maximum of 50 scripts. You can [delete](/cli/azure/kusto/script#az-kusto-script-delete) existing scripts to free up space for new scripts. Deleting a script doesn't roll back the commands that were executed from that script.
 
 ## Example script with management commands
 
