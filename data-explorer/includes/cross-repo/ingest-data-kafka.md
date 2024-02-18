@@ -1,6 +1,6 @@
 ---
 ms.topic: include
-ms.date: 02/05/2024
+ms.date: 02/18/2024
 ---
 [Apache Kafka](http://kafka.apache.org/documentation/) is a distributed streaming platform for building real-time streaming data pipelines that reliably move data between systems or applications. [Kafka Connect](https://docs.confluent.io/3.0.1/connect/intro.html#kafka-connect) is a tool for scalable and reliable streaming of data between Apache Kafka and other data systems. The [Kusto Kafka Sink](https://github.com/Azure/kafka-sink-azure-kusto/blob/master/README.md) serves as the connector from Kafka and doesn't require using code. Download the sink connector jar from the [Git repo](https://github.com/Azure/kafka-sink-azure-kusto/releases) or [Confluent Connector Hub](https://www.confluent.io/hub/microsoftcorporation/kafka-sink-azure-kusto).
 
@@ -30,8 +30,6 @@ This service principal will be the identity used by the connector to write data 
     ```kusto
     .create table Storms (StartTime: datetime, EndTime: datetime, EventId: int, State: string, EventType: string, Source: string)
     ```
-
-    :::image type="content" source="/azure/data-explorer/includes/media/ingest-data-kafka/create-table.png" alt-text="Create a table in Azure Data Explorer portal.":::
 
 1. Create the corresponding table mapping `Storms_CSV_Mapping` for ingested data using the following command:
 
