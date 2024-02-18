@@ -32,8 +32,9 @@ The `preview` plugin returns two result tables:
   input record set.
   For example, the sample query above is equivalent to running `T | count`.
 
-> [!TIP]
-> If `evaluate` is preceded by a tabular source that includes a complex filter, or a filter that references most of the source table columns, prefer to use the [`materialize`](materialize-function.md) function. For example:
+> [!NOTE]
+>
+> * The `preview` plugin returns two results tables, and therefore it should the last operator of the query. Using additional operators after using `preview` will result in a query failure.
 
 ## Example
 
