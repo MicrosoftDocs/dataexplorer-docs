@@ -97,9 +97,9 @@ LightIngest can be useful to load historical data from an existing storage syste
 1. Select **Done** to return to the **Source** tab.
     1. Optionally, select **File Filters** to filter the data to ingest only files in a specific folder path or with a particular file extension.
 
-    :::image type="content" source="media/ingest-data-historical/filter-data-lightingest.png" alt-text="Screenshot of filtering data in the source tab of the Ingest new data screen.":::
+        :::image type="content" source="media/ingest-data-historical/filter-data-lightingest.png" alt-text="Screenshot of filtering data in the source tab of the Ingest new data screen.":::
 
-    By default, one of the files in the container is randomly selected and used to generate the schema for the table.
+        By default, one of the files in the container is randomly selected and used to generate the schema for the table.
 
     1. Optionally, under **Schema defining file**, you can specify the file to use.
 
@@ -109,19 +109,17 @@ LightIngest can be useful to load historical data from an existing storage syste
 
 The schema tab provides a preview of the data.
 
-Optionally, you can:
+To generate the LightIngest command, select **Next: Start Ingestion**.
 
-1. Change the automatically inferred **Data format** by selecting the desired format from the dropdown menu.
-1. Change the automatically inferred **Mapping name**. You can use alphanumeric characters and underscores. Spaces, special characters, and hyphens aren't supported.
-1. When using an existing table, you can **Keep current table schema** if the table schema matches the selected format.
+Optionally:
 
-    :::image type="content" source="media/ingest-data-historical/schema-tab-lightingest.png" alt-text="Screenshot of the schema tab in the Ingest new data dialog in Azure Data Explorer web UI.":::
-1. Select **Command viewer** to view and copy the automatic commands generated from your inputs.
-1. Edit columns. Under **Partial data preview**, select the column dropdown menus to alter various aspects of the table.
+- Change the automatically inferred **Data format** by selecting the desired format from the dropdown menu.
+- Change the automatically inferred **Mapping name**. You can use alphanumeric characters and underscores. Spaces, special characters, and hyphens aren't supported.
+- When using an existing table, you can **Keep current table schema** if the table schema matches the selected format.
+- Select **Command viewer** to view and copy the automatic commands generated from your inputs.
+- Edit columns. Under **Partial data preview**, select the column dropdown menus to alter various aspects of the table.
 
-    [!INCLUDE [data-explorer-ingestion-wizard-column-table](includes/data-explorer-ingestion-wizard-column-table.md)]
-
-1. Select **Next: Start Ingestion** to generate the LightIngest command.
+[!INCLUDE [data-explorer-ingestion-wizard-column-table](includes/data-explorer-ingestion-wizard-column-table.md)]
 
 ### Ingest
 
