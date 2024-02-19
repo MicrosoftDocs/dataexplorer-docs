@@ -157,6 +157,6 @@ With the Security Policy disabled, all users will get the full table content as 
 
 ## Related content
 
-* [Row-Level Security in SQL Server](/sql/relational-databases/security/row-level-security?view=sql-server-ver16)
+* [Row-Level Security in SQL Server](/sql/relational-databases/security/row-level-security)
 * [SQL External Table Connection Strings](kusto/api/connection-strings/sql-connection-strings.md)
 
