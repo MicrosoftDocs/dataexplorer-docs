@@ -3,20 +3,20 @@ title: Ingest historical data into Azure Data Explorer
 description: Learn how to use LightIngest to ingest historical or ad hoc data ingestion into Azure Data Explorer.
 ms.reviewer: vplauzon
 ms.topic: how-to
-ms.date: 08/22/2023
+ms.date: 02/13/2024
 # CustomerIntent: As a data analyst, I want to learn how to ingest historical data into Azure Data Explorer, so that I can analyze it and gain insights.
 ---
 # How to ingest historical data into Azure Data Explorer
 
 A common scenario when onboarding to Azure Data Explorer is to ingest historical data, sometimes called backfill. The process involves ingesting data from an existing storage system into a table, which is a collection of [extents](kusto/management/extents-overview.md).
 
-We recommend ingesting historical data using the [creationTime ingestion property](ingestion-properties.md#ingestion-properties) to set the creation time of extents to the time the data was *created*. By using the creation time as the ingestion partitioning criterion, your data can age normally in accordance with your [cache](kusto/management/cache-policy.md) and [retention](kusto/management/retention-policy.md) policies, and make time filters more efficient.
+We recommend ingesting historical data using the [creationTime ingestion property](ingestion-properties.md#ingestion-properties) to set the creation time of extents to the time the data was *created*. Using the creation time as the ingestion partitioning criterion can age your data in accordance with your [cache](kusto/management/cache-policy.md) and [retention](kusto/management/retention-policy.md) policies, and make time filters more efficient.
 
-By default, the creation time for extents is set to the time when the data is ingested, which may not produce the behavior you're expecting. For example, suppose you have a table that has a cache period of 30 days and a retention period of two years. In the normal flow, data ingested as it's produced is cached for 30 days and then moved to cold storage. After two years, based on it's creation time, older data is removed one day at a time. However, if you ingest two years of historical data where, by default, the data is marked with creation time as the time the data is ingested. This may not produce the desired outcome because:
+By default, the creation time for extents is set to the time when the data is ingested, which might not produce the behavior you're expecting. For example, suppose you have a table that has a cache period of 30 days and a retention period of two years. In the normal flow, data ingested as it's produced is cached for 30 days and then moved to cold storage. After two years, based on it's creation time, older data is removed one day at a time. However, if you ingest two years of historical data where, by default, the data is marked with creation time as the time the data is ingested. This might not produce the desired outcome because:
 
-- All the data lands in cache and stays there for 30 days, using more cache than you anticipated
-- Older data isn't removed one day at a time; hence data is retained in the cluster for longer than necessary and, after two years, is all removed at once
-- Data, previously grouped by date in the source system, may now be [batched together](kusto/management/batching-policy.md) in the same extent leading to inefficient queries
+- All the data lands in cache and stays there for 30 days, using more cache than you anticipated.
+- Older data isn't removed one day at a time; hence data is retained in the cluster for longer than necessary and, after two years, is all removed at once.
+- Data, previously grouped by date in the source system, may now be [batched together](kusto/management/batching-policy.md) in the same extent leading to inefficient queries.
 
 :::image type="content" source="media/ingest-data-historical/historical-data-expected-vs-actual.png" alt-text="Diagram showing the expected versus actual result of ingesting historical data using the default creation time.":::
 
@@ -48,33 +48,29 @@ We highly recommend partitioning historical data using the `creationTime` ingest
 
 LightIngest can be useful to load historical data from an existing storage system to Azure Data Explorer. While you can build your own command using the list of [Command-line arguments](lightingest.md#command-line-arguments), this article shows you how to autogenerate this command through an ingestion wizard. In addition to creating the command, you can use this process to create a new table, and create schema mapping. This tool infers schema mapping from your dataset.
 
->[!NOTE]
-> This process must be performed in the ingestion wizard, and is not available in the new **Get data** experience.
+### Destination
 
 1. In the Azure Data Explorer web UI, from the left menu, select **Query**.
 
-1. Right-click on the database where you want to ingest the data, and then select **Get data**.
+1. Right-click the database in which you want to ingest the data, and then select **LightIngest**.
 
-    :::image type="content" source="media/ingest-data-wizard/ingest-data-from-query-page.png" alt-text="Screenshot of selection of the ingestion wizard in the Azure Data Explorer web UI.":::
+    :::image type="content" source="media/ingest-data-historical/ingest-data-from-query-page.png" alt-text="Screenshot of the Azure Data Explorer web UI showing the database more menu."  lightbox="media/ingest-data-historical/ingest-data-from-query-page.png":::
 
-    In the **Ingest data** window, the **Destination** tab is selected. The **Cluster** and **Database** fields are automatically populated.
+   The **Ingest data** window opens with the **Destination** tab selected. The **Cluster** and **Database** fields are automatically populated.
 
-1. On the **Destination** tab, under **Table**, select either **Existing table** or **New table**. When creating a new table, enter a name for the new table. You can use alphanumeric, hyphens, and underscores. Special characters aren't supported.
+1. Select a target table. If you want to ingest data into a new table, select **New table**, and then enter a table name.
 
     > [!NOTE]
-    > Table names must be between 1 and 1024 characters.
+    > Table names can be up to 1024 characters including spaces, alphanumeric, hyphens, and underscores. Special characters aren't supported.
 
-    :::image type="content" source="media/ingest-data-historical/ingest-new-data.png" alt-text="Screenshot of Azure Data Explorer web UI with Data tab selected on the left menu, and Ingest data dialog open to the right.":::
+    :::image type="content" source="media/ingest-data-historical/ingest-new-data.png" alt-text="Screenshot of the destination tab showing the destination database and table.":::
 
 1. Select **Next: Source**.
 
-1. On the **Source** tab, under **Source type**, select **Blob container** to ingest data from a blob or ADLS Gen2 container.
+### Source
 
-    :::image type="content" source="media/ingest-data-historical/source-tab-lightingest.png" alt-text="Screenshot of Source tab in Ingest new table window. ":::
-
-1. Select **Ingestion type** > **Historical data**.
 1. Under **Select source**, select either **Add URL** or **Select container**.
-    - When adding a URL, under **Link to source**, specify the account key or SAS URL to a container. You create the SAS URL [manually](/azure/vs-azure-tools-storage-explorer-blobs#get-the-sas-for-a-blob-container) or [automatically](kusto/api/connection-strings/generate-sas-token.md).
+    - When adding a URL, under **Link to source**, specify the account key or SAS URL to a container. You can create the SAS URL [manually](/azure/vs-azure-tools-storage-explorer-blobs#get-the-sas-for-a-blob-container) or [automatically](kusto/api/connection-strings/generate-sas-token.md).
     - When selecting a container from your storage account, select your **Storage subscription**, **Storage account**, and **Container** from the dropdown menus.
 
         :::image type="content" source="media/ingest-data-historical/source-tab-container-from-subscription.png" alt-text="Screenshot of dialog box for selecting container from storage subscription and account.":::
@@ -85,56 +81,58 @@ LightIngest can be useful to load historical data from an existing storage syste
 
     :::image type="content" source="media/ingest-data-historical/source-tab-advanced-settings.png" alt-text="Screenshot of selecting advanced settings for the ingestion processing involving the tool LightIngest.":::
 
-1. In the **Advanced configuration** panel, define the following settings, and then select **Done** to return to the **Source** tab.
+1. In the **Advanced configuration** pane, define the LightIngest settings according to the following table.
 
-    :::image type="content" source="media/ingest-data-historical/advanced-configuration-dialog.png" alt-text="Screenshot of setting advanced options for the ingestion processing involving the tool LightIngest.":::
+    :::image type="content" source="media/ingest-data-historical/advanced-configuration-dialog.png" alt-text="Screenshot of the advanced configuration pane showing the additional settings for the ingestion processing involving the tool LightIngest.":::
 
     | Property | Description|
     |---|---|
-    | Creation time pattern | Specify to override the ingestion time property of the created extent with a pattern, for example, to apply a date based on the folder structure of the container. See also [Creation time pattern](lightingest.md#ingest-historical-data-with-the-creationtime-property). |
-    | Blob name pattern | Specify the pattern used to identify the files to be ingested. Ingest all the files that match the blob name pattern in the given container. Supports wildcards. We recommended enclosing in double quotes. |
-    | Tag | A [tag](kusto/management/extent-tags.md) assigned to the ingested data. The tag can be any string. |
-    | Limit number of files | Specify the number of files that can be ingested. Ingests the first `n` files that match the blob name pattern, up to the number specified.  |
-    | Don't wait for ingestion to complete | If set, queues the blobs for ingestion without monitoring the ingestion process. If not set, LightIngest continues to poll the ingestion status until ingestion is complete.|
-    | Display only selected items| List the files in the container, but doesn't ingest them.  |
+    | **Creation time pattern** | Specify to override the ingestion time property of the created extent with a pattern, for example, to apply a date based on the folder structure of the container. See also [Creation time pattern](lightingest.md#ingest-historical-data-with-the-creationtime-property). |
+    | **Blob name pattern** | Specify the pattern used to identify the files to be ingested. Ingest all the files that match the blob name pattern in the given container. Supports wildcards. We recommended enclosing in double quotes. |
+    | **Tag** | A [tag](kusto/management/extent-tags.md) assigned to the ingested data. The tag can be any string. |
+    | **Limit amount of files** | Specify the number of files that can be ingested. Ingests the first `n` files that match the blob name pattern, up to the number specified.  |
+    | **Don't wait for ingestion to complete** | If set, queues the blobs for ingestion without monitoring the ingestion process. If not set, LightIngest continues to poll the ingestion status until ingestion is complete.|
+    | **Display only selected items**| List the files in the container, but doesn't ingest them.  |
 
-1. Optionally, select **File Filters** to filter the data to ingest only files in a specific folder path or with a particular file extension.
+1. Select **Done** to return to the **Source** tab.
+    1. Optionally, select **File Filters** to filter the data to ingest only files in a specific folder path or with a particular file extension.
 
     :::image type="content" source="media/ingest-data-historical/filter-data-lightingest.png" alt-text="Screenshot of filtering data in the source tab of the Ingest new data screen.":::
 
-    By default, one of the files in the container is randomly selected and used to generate the schema for the table. Optionally, under **Schema defining file**, you can specify the file to use.
+    By default, one of the files in the container is randomly selected and used to generate the schema for the table.
+
+    1. Optionally, under **Schema defining file**, you can specify the file to use.
 
 1. Select **Next: Schema** to view and edit your table column configuration.
 
-1. On the **Schema** tab, do the following:
+### Schema
 
-    1. In **Compression type**, confirm that the derived from the schema defining source file is correct.
-    1. Under **Data format**, verify that:
-        - The file format is correct. If not, select the correct format from the dropdown menu.
-        - The **ignore the first record** check box is selected if the file has a header row.
-    1. In **Mapping name**, optionally specify a mapping name. You can use alphanumeric characters and underscores. Spaces, special characters, and hyphens aren't supported.
+The schema tab provides a preview of the data.
 
-    When using an existing table, you can **Keep current table schema** if the table schema matches the selected format.
+Optionally, you can:
+
+1. Change the automatically inferred **Data format** by selecting the desired format from the dropdown menu.
+1. Change the automatically inferred **Mapping name**. You can use alphanumeric characters and underscores. Spaces, special characters, and hyphens aren't supported.
+1. When using an existing table, you can **Keep current table schema** if the table schema matches the selected format.
 
     :::image type="content" source="media/ingest-data-historical/schema-tab-lightingest.png" alt-text="Screenshot of the schema tab in the Ingest new data dialog in Azure Data Explorer web UI.":::
+1. Select **Command viewer** to view and copy the automatic commands generated from your inputs.
+1. Edit columns. Under **Partial data preview**, select the column dropdown menus to alter various aspects of the table.
 
-1. Under **Partial data preview**, review the data preview. If the data preview is incorrect, use the column dropdown menus to alter various aspects of the table.
-
-[!INCLUDE [data-explorer-ingestion-wizard-column-table](includes/data-explorer-ingestion-wizard-column-table.md)]
-
-> [!NOTE]
-> For tabular formats, you can't map a column twice. To map to an existing column, first delete the new column.
+    [!INCLUDE [data-explorer-ingestion-wizard-column-table](includes/data-explorer-ingestion-wizard-column-table.md)]
 
 1. Select **Next: Start Ingestion** to generate the LightIngest command.
 
-1. On the **Data ingestion completed** page, once the table, mapping, and LightIngest command are marked with green check marks, select the **copy** icon on the top-right of the **Generated command** box to copy the generated LightIngest command.
+### Ingest
+
+1. Once the table, mapping, and LightIngest command are marked with green check marks, select the **copy** icon on the top-right of the **Generated command** box to copy the generated LightIngest command.
 
     :::image type="content" source="media/ingest-data-historical/summary-tab-copy-command.png" alt-text="Screenshot of Summary tab with command generated. You can copy the command using the copy icon above the generated command box." lightbox="media/ingest-data-historical/summary-tab-copy-command.png":::
 
     > [!NOTE]
     > If required, you can download the LightIngest tool by selecting **Download LightIngest**.
 
-1. To complete the ingestion process, you must [run LightIngest](lightingest.md#run-lightingest) using this copied command.
+1. To complete the ingestion process, you must [run LightIngest](lightingest.md#run-lightingest) using the copied command.
 
 ### [Post ingestion](#tab/post-ingestion)
 
