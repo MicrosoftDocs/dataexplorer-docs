@@ -63,7 +63,7 @@ A tabular subset of the records produced by the query, referred to as the "previ
 
 ## Retrieve a stored query result
 
-To retrieve a stored query result, use `stored_query_result()` function in your query:
+To retrieve a stored query result, use [stored_query_result() function](../query/stored-query-result-function.md) in your query:
 
 `stored_query_result` `(` 'storedQueryResultName' `)` `|` ...
 
