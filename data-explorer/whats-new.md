@@ -20,12 +20,6 @@ Welcome to what's new in Azure Data Explorer. This article details new and signi
 
 ## December 2023
 
-**General**
-
-| Article title | Description |
-|--|--|
-| [Migrate your cluster to support multiple availability zones](migrate-cluster-to-multiple-availability-zone.md)| New article. Describes how to migrate your cluster to support multiple availability zones.|
-
 **Query**
 
 | Article title | Description |
