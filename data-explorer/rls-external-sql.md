@@ -40,76 +40,77 @@ CREATE TABLE SourceTable (
 )
 ```
 
-**Note**: `systemuser` column will contain the User email to whom the data record belongs, and who should have access to it.
+> [!NOTE]
+> The `systemuser` column contains the user email to whom the data record belongs, and who should have access to it.
 
-### Configure Row-Level Security in the source SQL Server [SQL Server side]
+### Configure Row-Level Security in the source SQL Server - SQL Server side
 
 1. First, create a SQL Function with the logic for the data access policy: 
 
-    >``` sql
-    >CREATE SCHEMA Security;
-    >GO
-    > 
-    >CREATE FUNCTION Security.mySecurityPredicate(@CheckColumn AS nvarchar(100))
-    >    RETURNS TABLE
-    >WITH SCHEMABINDING
-    >AS
-    >    RETURN SELECT 1 AS mySecurityPredicate_result
-    >    WHERE @CheckColumn = ORIGINAL_LOGIN() OR USER_NAME() = 'Manager';
-    >GO
-    >```
-    
+    ``` sql
+    CREATE SCHEMA Security;
+    GO
+     
+    CREATE FUNCTION Security.mySecurityPredicate(@CheckColumn AS nvarchar(100))
+        RETURNS TABLE
+    WITH SCHEMABINDING
+    AS
+        RETURN SELECT 1 AS mySecurityPredicate_result
+        WHERE @CheckColumn = ORIGINAL_LOGIN() OR USER_NAME() = 'Manager';
+    GO
+    ```
+
     > [!NOTE]
     > In this example the Row-Level Security is being established upon the current user's email matching the `systemuser` column. However, this logic could be modified to meet any other business requirement.
 
 1. Create the Security Policy on the table `SourceTable` with passing the column name as the parameter:
 
-    >``` sql
-    >CREATE SECURITY POLICY SourceTableFilter
-    >ADD FILTER PREDICATE Security.mySecurityPredicate(systemuser)
-    >ON dbo.SourceTable
-    >WITH (STATE = ON)
-    >GO
-    >```
-    
+    ``` sql
+    CREATE SECURITY POLICY SourceTableFilter
+    ADD FILTER PREDICATE Security.mySecurityPredicate(systemuser)
+    ON dbo.SourceTable
+    WITH (STATE = ON)
+    GO
+    ```
+
     > [!NOTE]
     > From this moment on, the data is already restricted by the `mySecurityPredicate` function logic.
 
 1. Disable & enable the Security Policy for testing:
 
-    >``` sql
-    >ALTER SECURITY POLICY SourceTableFilter
-    >WITH (STATE = OFF);
-    >```
-    
-    >``` sql
-    >ALTER SECURITY POLICY SourceTableFilter
-    >WITH (STATE = ON);
-    >```
-    
-### Allow Azure Data Explorer user access to SQL Server [SQL Server side]
+    ``` sql
+    ALTER SECURITY POLICY SourceTableFilter
+    WITH (STATE = OFF);
+    ```
+
+    ``` sql
+    ALTER SECURITY POLICY SourceTableFilter
+    WITH (STATE = ON);
+    ```
+
+### Allow Azure Data Explorer user access to SQL Server -SQL Server side
 
 The following steps depend on the SQL Server version that you are using. For more details, please refer to the Row-Level Security in SQL Server documentation mentioned at the end of this document.
 
 1. Create the proper Login and User for each Entra ID credential that is going to access the data stored in SQL Server:
 
-    >``` sql
-    >CREATE LOGIN [user@domain.com] FROM EXTERNAL PROVIDER --MASTER
-    >
-    >CREATE USER [user@domain.com] FROM EXTERNAL PROVIDER --DATABASE
-    >```
+    ``` sql
+    CREATE LOGIN [user@domain.com] FROM EXTERNAL PROVIDER --MASTER
+    
+    CREATE USER [user@domain.com] FROM EXTERNAL PROVIDER --DATABASE
+    ```
     
 1. Grant SELECT on the Security function to the Entra ID user:
 
-    >``` sql
-    >GRANT SELECT ON Security.mySecurityPredicate to [user@domain.com]
-    >```
+    ``` sql
+    GRANT SELECT ON Security.mySecurityPredicate to [user@domain.com]
+    ```
     
 1. Grant SELECT on the `SourceTable` to the Entra ID user:
 
-    >``` sql
-    >GRANT SELECT ON dbo.SourceTable to [user@domain.com]
-    >```
+    ``` sql
+    GRANT SELECT ON dbo.SourceTable to [user@domain.com]
+    ```
     
 ### Define SQL External Table connection String [ADX side]
 
@@ -117,33 +118,33 @@ The next steps are based on the documentation also mentioned at the end of this 
 
 1. Create SQL External Table with using Connection String with `Active Directory Integrated` authentication type, as following the Entra ID Impersonation method decribed in the documentation:
 
-    >``` sql
-    >.create external table SQLSourceTable (id:long, region:string, central:string, systemser:string) 
-    >kind=sql
-    >table=SourceTable
-    >( 
-    >   h@'Server=tcp:[sql server endpoint],1433;Authentication=Active Directory Integrated;Initial Catalog=[database name];'
-    >)
-    >with 
-    >(
-    >   docstring = "Docs",
-    >   folder = "ExternalTables", 
-    >   createifnotexists = false,
-    >   primarykey = 'id'
-    >)
-    >```
+    ``` sql
+    .create external table SQLSourceTable (id:long, region:string, central:string, systemser:string) 
+    kind=sql
+    table=SourceTable
+    ( 
+       h@'Server=tcp:[sql server endpoint],1433;Authentication=Active Directory Integrated;Initial Catalog=[database name];'
+    )
+    with 
+    (
+       docstring = "Docs",
+       folder = "ExternalTables", 
+       createifnotexists = false,
+       primarykey = 'id'
+    )
+    ```
     
     **Connection String**:
 
-    >```
-    >Server=tcp:[sql server endpoint],1433;Authentication=Active Directory Integrated;Initial Catalog=[database name];
-    >```
+    ```
+    Server=tcp:[sql server endpoint],1433;Authentication=Active Directory Integrated;Initial Catalog=[database name];
+    ```
     
 1. Validate the data isolation based on the Entra ID, just like it would work with Row-Level Security on Azure Data Explorer. In this case, the data is going to be filtered based on the SourceTable's `systemuser` column, matching the Entra ID user (email address) from the Azure Data Explorer impersonation:
 
-    >``` sql
-    >external_table('SQLSourceTable')
-    >```
+    ``` sql
+    external_table('SQLSourceTable')
+    ```
     
     > [!NOTE]
     > The policy can be disabled and enabled again, on the SQL Server side, for testing purpose.
@@ -156,6 +157,6 @@ With the Security Policy disabled, all users will get the full table content as 
 
 ## Related content
 
-* [Row-Level Security in SQL Server](https://learn.microsoft.com/en-us/sql/relational-databases/security/row-level-security?view=sql-server-ver16)
-* [SQL External Table Connection Strings](https://learn.microsoft.com/en-us/azure/data-explorer/kusto/api/connection-strings/sql-connection-strings)
+* [Row-Level Security in SQL Server](/sql/relational-databases/security/row-level-security?view=sql-server-ver16)
+* [SQL External Table Connection Strings](kusto/api/connection-strings/sql-connection-strings.md)
 
