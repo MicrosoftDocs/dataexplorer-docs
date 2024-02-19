@@ -3,7 +3,7 @@ title: Azure Data Explorer data ingestion overview
 description: Learn about the different ways you can ingest (load) data in Azure Data Explorer
 ms.reviewer: akshay.dixit
 ms.topic: conceptual
-ms.date: 01/10/2024
+ms.date: 02/16/2024
 ---
 
 # Azure Data Explorer data ingestion overview
@@ -44,7 +44,7 @@ Continuous data ingestion involves setting up an ingestion pipeline with either 
 
 * **Streaming ingestion**: This method ensures near-real-time latency for small sets of data per table. Data is ingested in micro batches from a streaming source, initially placed in the row store, and then transferred to column store extents. For more information, see [Configure streaming ingestion](ingest-data-streaming.md).
 
-* **Queued ingestion**: This method is optimized for high ingestion throughput. Data is batched based on ingestion properties, with small batches then merged and optimized for fast query results. By default, the maximum queued values are 5 minutes, 1000 items, or a total size of 1 GB. The data size limit for a queued ingestion command is 6 GB. For more information, see [Ingestion batching policy](kusto/management/batching-policy.md).
+* **Queued ingestion**: This method is optimized for high ingestion throughput. Data is batched based on ingestion properties, with small batches then merged and optimized for fast query results. By default, the maximum queued values are 5 minutes, 1000 items, or a total size of 1 GB. The data size limit for a queued ingestion command is 6 GB. This method uses retry mechanisms to mitigate transient failures and follows the 'at least once' messaging semantics to ensure no messages are lost in the process. For more information about queued ingestion, see [Ingestion batching policy](kusto/management/batching-policy.md).
 
 > [!NOTE]
 > For most scenarios, we recommend using queued ingestion as it is the more performant option.
