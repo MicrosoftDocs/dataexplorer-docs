@@ -54,7 +54,8 @@ The table below shows only 6 of the 22 returned columns. To see the full output,
 |2007-09-29T08:11:00Z|2007-09-29T08:11:00Z|11091|61032|ATLANTIC SOUTH|Waterspout|...|
 |2007-09-18T20:00:00Z|2007-09-19T18:00:00Z|11074|60904|FLORIDA|Heavy Rain|...|
 
-Note: [limit](./take-operator.md) is an alias for [take](./take-operator.md) and has the same effect.
+> [!Note]
+> [limit](./take-operator.md) is an alias for [take](./take-operator.md) and has the same effect.
 
 ## Select a subset of columns: *project*
 
