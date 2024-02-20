@@ -17,7 +17,6 @@ This document describes how to apply a Row-Level Security (RLS) solution with [S
 
 ## Sample table
 
-This solution uses two existing features, one in SQL Server (the source SQL Server for your External Tables), and the other in Kusto.
 The example source is a table called `SourceTable`, with the following schema:
 
 ``` sql
