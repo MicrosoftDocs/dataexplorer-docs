@@ -30,9 +30,9 @@ Sorts the rows of the input table into order by one or more columns.
 
 A copy of the input table sorted in either ascending or descending order based on the provided column.
 
-## Sort operator behavior with special floating point values
+## Using special floating-point values
 
-When the input contains the special values `null`, `NaN`, `-inf` and `+inf`, the order will be as follows:
+When the input table contains the special values `null`, `NaN`, `-inf` and `+inf`, the order will be as follows:
 
 | Value| Ascending | Descending|
 |--|--|--|
