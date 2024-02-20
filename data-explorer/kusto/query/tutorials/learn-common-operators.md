@@ -282,7 +282,7 @@ StormEvents
 
 **Output**
 
-|EpisodeId|Source|FriendlyName|
+|EventId|Source|FriendlyName|
 |---|---|
 |68796|Emergency Manager|Public|
 |...|...|...|
