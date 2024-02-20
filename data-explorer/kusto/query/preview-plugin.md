@@ -34,7 +34,7 @@ The `preview` plugin returns two result tables:
 
 > [!NOTE]
 >
-> * The `preview` plugin returns two results tables, and therefore it should the last operator of the query. Using additional operators after using `preview` will result in a query failure.
+> * Using additional operators after the `preview` plugin results in a query failure. The `preview` plugin should be the last operator of the query because it returns two result tables.
 
 ## Example
 
