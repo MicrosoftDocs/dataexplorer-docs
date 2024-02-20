@@ -106,7 +106,7 @@ For more information on the connection string, see [SQL External Table Connectio
 
 1. Create a SQL External Table with using Connection String with `Active Directory Integrated` authentication type. For more information, see [Microsoft Entra integrated (impersonation)](/azure/data-explorer/kusto/api/connection-strings/sql-connection-strings#microsoft-entra-integrated-impersonation). 
 
-    ``` sql
+    ``` KQL
     .create external table SQLSourceTable (id:long, region:string, central:string, systemser:string) 
     kind=sql
     table=SourceTable
@@ -130,7 +130,7 @@ For more information on the connection string, see [SQL External Table Connectio
 
 1. Validate the data isolation based on the Microsoft Entra ID, like it would work with Row-Level Security on in Kusto. In this case, the data is filtered based on the SourceTable's `systemuser` column, matching the Microsoft Entra ID user (email address) from the Kusto impersonation:
 
-    ``` sql
+    ``` KQL
     external_table('SQLSourceTable')
     ```
     > [!NOTE]
