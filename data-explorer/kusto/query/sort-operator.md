@@ -30,6 +30,20 @@ Sorts the rows of the input table into order by one or more columns.
 
 A copy of the input table sorted in either ascending or descending order based on the provided column.
 
+## Using special floating-point values
+
+When the input table contains the special values `null`, `NaN`, `-inf` and `+inf`, the order will be as follows:
+
+| Value| Ascending | Descending|
+|--|--|--|
+|**Nulls first**|`null`,`NaN`,`-inf`,`-5`,`0`,`5`,`+inf`|`null`,`NaN`,`+inf`,`5`,`0`,`-5`|
+|**Nulls last**|`-inf`,`-5`,`0`,`+inf`,`NaN`,`null`|`+inf`,`5`,`0`,`-5`,`NaN`,`null`|
+ 
+> [!NOTE]
+>
+> * Null and NaN values are always grouped together.
+> * The order between null and NaN values is determined by the first and last property because nulls and NaNs don't have an ascending and descending order.
+
 ## Example
 
 The following example shows storm events by state in alphabetical order with the most recent storms in each state appearing first.
