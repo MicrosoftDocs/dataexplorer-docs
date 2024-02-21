@@ -283,7 +283,7 @@ StormEvents
 **Output**
 
 |EventId|Source|FriendlyName|
-|---|---|
+|---|---|---|
 |68796|Emergency Manager|Public|
 |...|...|...|
 |72609|Utility Company|Private|
