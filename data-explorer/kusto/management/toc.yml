@@ -143,7 +143,7 @@ items:
                 displayName: SQL Server, MySQL, PostgreSQL, Cosmos DB
               - name: Query a SQL external table
                 href: external-sql-tables-query.md
-              - name: Apply row-level security to SQL external tables
+              - name: Apply Row-Level Security to SQL external tables
                 displayName: RLS, SQL server
                 href: rls-external-sql.md
           - name: .drop external table command
