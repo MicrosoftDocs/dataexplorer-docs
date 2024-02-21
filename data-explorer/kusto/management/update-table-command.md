@@ -13,6 +13,8 @@ The `.update table` command performs data updates in a specified table by deleti
 > This command is unrecoverable.
 
 > [!NOTE]
+> When you run the `.update table` command on a table that is the source for an [update policy](update-policy.md), the `.update table` command triggers these update policies for which the table being modified is the update policy source.
+> 
 > You can delete up to 5 million records in a single command.
 
 ## Permissions
@@ -89,9 +91,6 @@ The result of the command is a table where each record represents an [extent](ex
 | Action   | `string` | *Create* or *Delete* depending on the action performed on the extent.            |
 | ExtentId | `guid`   | The unique identifier for the extent that was created or deleted by the command. |
 | RowCount | `long`   | The number of rows created or deleted in the specified extent by the command.    |
-
-> [!NOTE]
-> When you run the `.update table` command on a table that is the source for an [update policy](update-policy.md), the `.update table` command triggers these update policies for which the table being modified is the update policy source.
 
 ## Choose between `.update table` and materialized views
 
