@@ -1,6 +1,6 @@
 ---
 title:  stored_query_result() (scope function)
-description: Learn how to use the stored_query_result() function to reference a stored query result.
+description: Learn how to use the `stored_query_result()` function to reference a stored query result.
 ms.reviewer: mispecto
 ms.topic: reference
 ms.date: 02/19/2024
@@ -10,7 +10,7 @@ ms.date: 02/19/2024
 
 References a [stored query result](../management/stored-query-results.md).
 
-The `stored_query_result()` function is used for querying previously created [stored query result](../management/stored-query-results.md).
+The `stored_query_result()` function is used for querying a previously created [stored query result](../management/stored-query-results.md).
 
 ## Syntax
 
@@ -24,11 +24,10 @@ The `stored_query_result()` function is used for querying previously created [st
 |--|--|--|--|
 | *StoredQueryResultName* | `string` | :heavy_check_mark: | The name of the stored query result. |
 
-## Examples
+## Example
 
 Query stored query result named `Numbers`.
 
-<!-- csl -->
 ```kusto
 stored_query_result("Numbers")
 ```
@@ -39,3 +38,8 @@ stored_query_result("Numbers")
 | 2 |
 | 3 |
 | ... |
+
+## Related content
+
+* [Stored query result](../management/stored-query-results.md).
+
