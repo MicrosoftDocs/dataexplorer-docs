@@ -335,6 +335,9 @@ items:
         displayName: materialized view materialized-view
       - name: Query results cache
         href: query-results-cache.md
+      - name: stored_query_result()
+        href: stored-query-result-function.md
+        displayName: stored query result
       - name: table()
         href: table-function.md
       - name: toscalar()
