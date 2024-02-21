@@ -62,7 +62,7 @@ You can add up to 10 source containers.
 
     :::image type="content" source="media/external-table/add-url-button.png" alt-text="Screenshot of add URL button.":::
 
-1. Enter an [account key or SAS URL](kusto/api/connection-strings/generate-sas-token.md) to your source container with read and list permissions. When verification has completed, a green check will appear to the right of the container link.
+1. Enter a [storage connection strings](kusto/api/connection-strings/storage-connection-strings.md) to your source container with read and list permissions. When verification has completed, a green check will appear to the right of the container link.
 
     :::image type="content" source="media/external-table/add-sas-url.png" alt-text="Screenshot of adding SAS URL.":::
 
@@ -133,3 +133,4 @@ The resulting table includes data from all the files that fit the criteria defin
 * [External tables overview](kusto/query/schema-entities/external-tables.md)
 * [Create and alter Azure Storage external tables](kusto/management/external-tables-azurestorage-azuredatalake.md)
 * [external_table() function](kusto/query/external-table-function.md)
+* [Tutorial: Learn common operators](kusto/query/tutorials/learn-common-operators.md)
