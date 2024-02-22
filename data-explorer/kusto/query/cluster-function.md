@@ -1,5 +1,5 @@
 ---
-title:  cluster() (scope function)
+title:  cluster()
 description: Learn how to use the cluster() function to change the reference of the query to a remote cluster.
 ms.reviewer: alexans
 ms.topic: reference
@@ -7,7 +7,7 @@ ms.date: 11/27/2022
 zone_pivot_group_filename: data-explorer/zone-pivot-groups.json
 zone_pivot_groups: kql-flavors-all
 ---
-# cluster() (scope function)
+# cluster()
 
 ::: zone pivot="azuredataexplorer, fabric"
 

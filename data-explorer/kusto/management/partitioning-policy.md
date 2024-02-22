@@ -3,7 +3,7 @@ title: Partitioning policy
 description: Learn how to use the partitioning policy to improve query performance.
 ms.reviewer: orspodek
 ms.topic: reference
-ms.date: 08/24/2023
+ms.date: 02/21/2024
 ---
 # Partitioning policy
 
@@ -25,20 +25,19 @@ The following are the only scenarios in which setting a data partitioning policy
   * Medium cardinality is at least 10,000 distinct values.
   * Set the [hash partition key](#hash-partition-key) to be the `string` or `guid` column, and set the [`PartitionAssigmentMode` property](#partition-properties) to `uniform`.
 * **Frequent aggregations or joins on a high cardinality `string` or `guid` column**:
-  * For example, IoT information from many different sensors, or academic records of many different students. 
+  * For example, IoT information from many different sensors, or academic records of many different students.
   * High cardinality is at least 1,000,000 distinct values, where the distribution of values in the column is approximately even.
   * In this case, set the [hash partition key](#hash-partition-key) to be the column frequently grouped-by or joined-on, and set the [`PartitionAssigmentMode` property](#partition-properties) to `ByPartition`.
 * **Out-of-order data ingestion**:
-  * Data ingested into a table might not be ordered and partitioned into extents (shards) according to a specific `datetime` column that represents the data creation time and is commonly used to filter data. This could be due to a backfill from heterogeneous source files that include datetime values over a large time span. 
+  * Data ingested into a table might not be ordered and partitioned into extents (shards) according to a specific `datetime` column that represents the data creation time and is commonly used to filter data. This could be due to a backfill from heterogeneous source files that include datetime values over a large time span.
   * In this case, set the [uniform range datetime partition key](#uniform-range-datetime-partition-key) to be the `datetime` column.
   * If you need retention and caching policies to align with the datetime values in the column, instead of aligning with the time of ingestion, set the `OverrideCreationTime` property to `true`.
 
 > [!CAUTION]
 >
-> * There are no hard-coded limits set on the number of tables with the partitioning policy defined.
->   * However, every additional table adds overhead to the background data partitioning process that runs on the cluster's nodes. Setting a policy on more tables will result in more cluster resources being used, and higher cost due to underlying storage transactions.
->   * For more information, see [capacity](#partitioning-capacity).
+> * There are no hard-coded limits set on the number of tables with the partitioning policy defined. But, every additional table adds overhead to the background data partitioning process that runs on the cluster's nodes. Setting a policy on more tables will result in more cluster resources being used, and higher cost due to underlying storage transactions. For more information, see [capacity](#partitioning-capacity).
 > * It isn't recommended to set a partitioning policy if the compressed size of data per partition is expected to be less than 1GB.
+> * The partitioning process results in residual storage artifacts for all the extents replaced during the partitioning process and during the merge process. Most of the residual storage artifacts are expected to be deleted during the automatic cleanup process. Increasing the value of the `MaxPartitionCount` property increases the number of residual storage artifacts and can reduce the cleanup performance.
 > * Before applying a partitioning policy on a materialized view, review the recommendations for [materialized views partitioning policy](materialized-views/materialized-view-policies.md#partitioning-policy).
 
 ## Partition keys
@@ -55,10 +54,12 @@ The following kinds of partition keys are supported.
 If the policy includes a hash partition key, all homogeneous extents that belong to the same partition will be assigned to the same data node in the cluster.
 
 > [!NOTE]
+>
 > The data partitioning operation adds significant processing load. We recommend applying a hash partition key on a table only under the following conditions:
+>
 > * If the majority of queries use equality filters (`==`, `in()`).
 > * The majority of queries aggregate/join on a specific column of type `string` or `guid` which is of *large-dimension* (cardinality of 10M or higher), such as an `device_ID`, or `user_ID`.
-> * The usage pattern of the partitioned tables is in high concurrency query load, such as in monitoring or dashboarding applications. 
+> * The usage pattern of the partitioned tables is in high concurrency query load, such as in monitoring or dashboarding applications.
 
 * A hash-modulo function is used to partition the data.
 * Data in homogeneous (partitioned) extents is ordered by the hash partition key.
@@ -94,7 +95,7 @@ It uses the `XxHash64` hash function, with `MaxPartitionCount` set to the recomm
 
 ### Uniform range datetime partition key
 
-> [!NOTE] 
+> [!NOTE]
 > Only apply a uniform range datetime partition key on a `datetime`-typed column in a table when data ingested into the table is unlikely to be ordered according to this column.
 
 In these cases, you can reshuffle the data between extents so that each extent includes records from a limited time range. This process results in filters on the `datetime` column being more effective at query time.
@@ -147,8 +148,9 @@ The data partitioning policy has the following main properties:
 * **EffectiveDateTime**:
   * The UTC datetime from which the policy is effective.
   * This property is optional. If it isn't specified, the policy will take effect for data ingested after the policy was applied.
-  	
+  
 > [!CAUTION]
+>
 > * You can set a datetime value in the past and partition already-ingested data. However, this practice may significantly increase resources used in the partitioning process.
 > * In most cases, it is recommended to only have newly ingested data partitioned, and to avoid partitioning large amounts of historical data.
 > * If you choose to partition historical data, consider doing so gradually, by setting the *EffectiveDateTime* to a previous `datetime` in steps of up to a few days each time you alter the policy.
@@ -156,6 +158,7 @@ The data partitioning policy has the following main properties:
 ### Data partitioning example
 
 Data partitioning policy object with two partition keys.
+
 1. A hash partition key over a `string`-typed column named `tenant_id`.
     * It uses the `XxHash64` hash function, with `MaxPartitionCount` set to the recommended value `128`, and the default `Seed` of `1`.
 1. A uniform datetime range partition key over a `datetime` type column named `timestamp`.
@@ -222,8 +225,8 @@ You can monitor the partitioning status of tables with defined policies in a dat
 ## Outliers in partitioned columns
 
 * The following situations can contribute to imbalanced distribution of data across the cluster's nodes, and degrade query performance:
-    * If a hash partition key includes values that are much more prevalent than others, for example, an empty string, or a generic value (such as `null` or `N/A`).
-    * The values represent an entity (such as `tenant_id`) that is more prevalent in the dataset.
+  * If a hash partition key includes values that are much more prevalent than others, for example, an empty string, or a generic value (such as `null` or `N/A`).
+  * The values represent an entity (such as `tenant_id`) that is more prevalent in the dataset.
 * If a uniform range datetime partition key has a large enough percentage of values that are "far" from the majority of the values in the column, the overhead of the data partitioning process is increased and may lead to many small extents that the cluster will need to keep track of. An example of such a situation is datetime values from the distant past or future.
 
 In both of these cases, either "fix" the data, or filter out any irrelevant records in the data before or at ingestion time, to reduce the overhead of the data partitioning on the cluster. For example, use an [update policy](update-policy.md).

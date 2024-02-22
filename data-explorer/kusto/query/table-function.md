@@ -1,13 +1,13 @@
 ---
-title:  table() (scope function)
-description: Learn how to use the table() (scope function) function to reference a table.
+title:  table()
+description: Learn how to use the table() function to reference a table.
 ms.reviewer: alexans
 ms.topic: reference
 ms.date: 03/16/2023
 zone_pivot_group_filename: data-explorer/zone-pivot-groups.json
 zone_pivot_groups: kql-flavors-all
 ---
-# table() (scope function)
+# table()
 
 The table() function references a table by providing its name as an expression of type `string`.
 
