@@ -1,12 +1,12 @@
 ---
-title:  stored_query_result() (scope function)
+title:  stored_query_result()
 description: Learn how to use the `stored_query_result()` function to reference a stored query result.
 ms.reviewer: mispecto
 ms.topic: reference
 ms.date: 02/19/2024
 ---
 
-# stored_query_result() function
+# stored_query_result()
 
 References a [stored query result](../management/stored-query-results.md).
 
@@ -42,4 +42,3 @@ stored_query_result("Numbers")
 ## Related content
 
 * [Stored query result](../management/stored-query-results.md).
-
