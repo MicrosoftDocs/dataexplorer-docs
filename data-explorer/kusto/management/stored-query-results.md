@@ -3,7 +3,7 @@ title: Stored query results
 description: Learn how to create and use stored query results to store the results of a query on the service for up to 24 hours.
 ms.reviewer: mispecto
 ms.topic: reference
-ms.date: 05/23/2023
+ms.date: 02/22/2024
 ---
 
 # Stored query results
@@ -138,91 +138,4 @@ stored_query_result("DailyClicksByAdNetwork7Days")
 | 102 | 2020-01-02 00:00:00.0000000 | SuperAds | 123 |
 | ... | ... | ... | ... |
 
-## Management commands
-
-### .show stored_query_results
-
-Shows information on active stored query results.
-
-> [!NOTE]
->
-> * Users with `DatabaseAdmin` or `DatabaseMonitor` permissions can inspect the presence of active stored query results in the context of the database.
-> * Users with `DatabaseUser` or `DatabaseViewer` permissions can inspect the presence of active stored query results created by their principal.
-
-#### Syntax
-
-`.show` `stored_query_results`
-
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
-
-#### Returns
-
-| StoredQueryResultId | Name | DatabaseName | PrincipalIdentity | SizeInBytes | RowCount | CreatedOn | ExpiresOn |
-| ------------------- | ---- | ------------ | ----------------- | ----------- | -------- | --------- | --------- |
-| c522ada3-e490-435a-a8b1-e10d00e7d5c2 | Events | TestDB | aadapp=c28e9b80-2808-bed525fc0fbb | 104372 | 1000000 | 2020-10-07 14:26:49.6971487 | 2020-10-08 14:26:49.6971487 |
-
-### .show stored_query_result schema
-
-Shows schema of active stored query result.
-
-#### Syntax
-
-`.show` `stored_query_result` *storedQueryResultName* `schema`
-
-`Database Viewer` permission is required for invoking this command.
-
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
-
-#### Returns
-
-| StoredQueryResult | Schema |
-| ------------------- | ---- |
-| Events | [{"Column":"ID","Type":"guid"},{"Column":"EventName","Type":"string"},{"Column":"Time","Type":"datetime"}] |
-
-### .drop stored_query_result
-
-Deletes an active stored query result created in the current database by the current principal.
-
-#### Syntax
-
-`.drop` `stored_query_result` *storedQueryResultName*
-
-`Database Viewer` permission is required for invoking this command.
-
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
-
-#### Returns
-
-Returns information about deleted stored query results, for example:
-
-| StoredQueryResultId | Name | DatabaseName | PrincipalIdentity | SizeInBytes | RowCount | CreatedOn | ExpiresOn |
-| ------------------- | ---- | ------------ | ----------------- | ----------- | -------- | --------- | --------- |
-| c522ada3-e490-435a-a8b1-e10d00e7d5c2 | Events | TestDB | aadapp=c28e9b80-2808-bed525fc0fbb | 104372 | 1000000 | 2020-10-07 14:26:49.6971487 | 2020-10-08 14:26:49.6971487 |
-
-### .drop stored_query_results
-
-Deletes active stored query results created in the current database by the specified principal.
-
-`Database Admin` permission is required for invoking this command.
-
-#### Syntax
-
-`.drop` `stored_query_results` `by user` *PrincipalName*
-
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
-
-#### Returns
-
-Returns information on deleted stored query results.
-
-Example:
-
-<!-- csl -->
-```kusto
-.drop stored_query_results by user 'aadapp=c28e9b80-2808-bed525fc0fbb'
-```
-
-| StoredQueryResultId | Name | DatabaseName | PrincipalIdentity | SizeInBytes | RowCount | CreatedOn | ExpiresOn |
-| ------------------- | ---- | ------------ | ----------------- | ----------- | -------- | --------- | --------- |
-| c522ada3-e490-435a-a8b1-e10d00e7d5c2 | Events | TestDB | aadapp=c28e9b80-2808-bed525fc0fbb | 104372 | 1000000 | 2020-10-07 14:26:49.6971487 | 2020-10-08 14:26:49.6971487 |
-| 571f1a76-f5a9-49d4-b339-ba7caac19b46 | Traces | TestDB | aadapp=c28e9b80-2808-bed525fc0fbb | 5212 | 100000 | 2020-10-07 14:31:01.8271231| 2020-10-08 14:31:01.8271231 |
+## Related content

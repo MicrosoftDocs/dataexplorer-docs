@@ -213,8 +213,11 @@ items:
             displayName: show materialized view details
             href: materialized-views/materialized-view-show-details-command.md
       - name: Stored query results
+        items:
+          - name: Stored query results
         displayName: .set stored query, .show stored query, .drop stored query
-        href: stored-query-results.md
+            href: stored-query-results.md
+          - name: .set stored
       - name: Columns
         items:
           - name: Columns management
