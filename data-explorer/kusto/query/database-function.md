@@ -1,5 +1,5 @@
 ---
-title:  database() (scope function)
+title:  database()
 description: Learn how to use the database() function to change the reference of the query to a specific database within the cluster scope.
 ms.reviewer: alexans
 ms.topic: reference
@@ -7,7 +7,7 @@ ms.date: 03/09/2023
 zone_pivot_group_filename: data-explorer/zone-pivot-groups.json
 zone_pivot_groups: kql-flavors-all
 ---
-# database() (scope function)
+# database()
 
 ::: zone pivot="azuredataexplorer, fabric"
 
