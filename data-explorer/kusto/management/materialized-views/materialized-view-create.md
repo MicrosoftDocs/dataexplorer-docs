@@ -353,7 +353,7 @@ For example, the following command will backfill the materialized view from `202
 } 
 ```
 
-If the materialized view includes a datetime group-by key, the backfill process supports overriding the [extent creation time](../extents-overview.md#extent-creation-time) based on the datetime column. This can be useful, for example, if you want older records to be dropped before recent ones, because the [retention policy](../retention-policy.md) is based on the extent creation time. For example, the following backfill will assign creation time based on the `Timestamp` group-by key:
+If the materialized view includes a datetime group-by key, the backfill process supports overriding the [extent creation time](../extents-overview.md#extent-creation-time) based on the datetime column. This can be useful, for example, if you want older records to be dropped before recent ones, because the [retention policy](../retention-policy.md) is based on the extent creation time. The `updateExtentsCreationTime` property is only supported if the view includes a datetime group-by key which uses the `bin()` function. For example, the following backfill will assign creation time based on the `Timestamp` group-by key:
 
 <!-- csl -->
 ```kusto
