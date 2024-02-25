@@ -89,3 +89,4 @@ The following table lists all modern VM sizes that support Hyper-V sandbox techn
 | Standard_E4d_v5                       | compute-optimized |
 | Standard_E8d_v5                       | compute-optimized |
 | Standard_E16d_v5                      | compute-optimized |
+| Standard_D32d_v4                      | compute-optimized |
