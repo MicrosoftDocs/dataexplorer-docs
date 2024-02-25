@@ -12,12 +12,12 @@ This document describes how to apply a Row-Level Security (RLS) solution with [S
 
 ## Prerequisites
 
-* `ALTER ANY SECURITY POLCY` [permission](/sql/relational-databases/security/permissions-database-engine) on the SQL Server
+* `ALTER ANY SECURITY POLICY` [permission](/sql/relational-databases/security/permissions-database-engine) on the SQL Server
 * [Table admin level permissions](/azure/data-explorer/kusto/access-control/role-based-access-control) on the Kusto-side SQL external table
 
 ## Sample table
 
-The example source is a table called `SourceTable`, with the following schema:
+The example source is a SQL Server table called `SourceTable`, with the following schema. The `systemuser` column contains the user email to whom the data record belongs. This is the same user who should have access to this data.
 
 ``` sql
 CREATE TABLE SourceTable (
@@ -28,8 +28,6 @@ CREATE TABLE SourceTable (
 )
 ```
 
-> [!NOTE]
-> The `systemuser` column contains the user email to whom the data record belongs. This is the same user who should have access to this data.
 
 ## Configure Row-Level Security in the source SQL Server - SQL Server side
 
