@@ -3,7 +3,7 @@ title: "Use Row-Level Security with SQL External Tables in Azure Data Explorer"
 description: "This document describes how to create a Row-Level Security solution with Azure Data Explorer SQL External Tables."
 ms.reviewer: danielkoralek
 ms.topic: how-to 
-ms.date: 02/20/2024
+ms.date: 02/25/2024
 #customer intent: As a Data Administrator, I want to restrict access to the data on SQL External Tables so that each user can see only their data.
 ---
 # Apply Row-Level Security on SQL External Tables
@@ -27,7 +27,6 @@ CREATE TABLE SourceTable (
     systemuser VARCHAR(200)
 )
 ```
-
 
 ## Configure Row-Level Security in the source SQL Server - SQL Server side
 
@@ -61,17 +60,6 @@ For general information on SQL Server Row-Level Security, see [Row-Level Securit
     > [!NOTE]
     > At this point, the data is already restricted by the `mySecurityPredicate` function logic.
 
-1. Disable and enable the security policy for testing:
-
-    ``` sql
-    ALTER SECURITY POLICY SourceTableFilter
-    WITH (STATE = OFF);
-    ```
-
-    ``` sql
-    ALTER SECURITY POLICY SourceTableFilter
-    WITH (STATE = ON);
-    ```
 
 ### Allow user access to SQL Server - SQL Server side
 
@@ -132,6 +120,18 @@ For more information on the connection string, see [SQL External Table Connectio
     ```
     > [!NOTE]
     > The policy can be disabled and enabled again, on the SQL Server side, for testing purposes.
+    
+To disable and enable the policy, use the following SQL commands:
+
+    ``` sql
+    ALTER SECURITY POLICY SourceTableFilter
+    WITH (STATE = OFF);
+    ```
+
+    ``` sql
+    ALTER SECURITY POLICY SourceTableFilter
+    WITH (STATE = ON);
+    ```
 
     With the Security Policy enabled on the SQL Server side, Kusto users only see the records matching their Entra IDs, as the result of the query against the SQL External table. With the Security Policy disabled, all users are able to access the full table content as the result of the query against the SQL External table.
 
