@@ -1,14 +1,14 @@
 ---
-title: "Use Row-Level Security with SQL External Tables in Azure Data Explorer"
-description: "This document describes how to create a Row-Level Security solution with Azure Data Explorer SQL External Tables."
+title: "Use row-level security with SQL external tables in Azure Data Explorer"
+description: "This document describes how to create a row-level security solution with Azure Data Explorer SQL external tables."
 ms.reviewer: danielkoralek
 ms.topic: how-to 
 ms.date: 02/25/2024
 #customer intent: As a Data Administrator, I want to restrict access to the data on SQL External Tables so that each user can see only their data.
 ---
-# Apply Row-Level Security on SQL External Tables
+# Apply row-level security on SQL external tables
 
-This document describes how to apply a Row-Level Security (RLS) solution with [SQL external tables](/azure/data-explorer/kusto/management/external-sql-tables). [Row-Level Security](/azure/data-explorer/kusto/management/row-level-security-policy) implements data isolation at the user level, restricting the access to data based on the current user credential. However, Kusto external tables don't support RLS policy definitions, so data isolation on external SQL tables require a different approach. The following solution employs using Row-Level Security in SQL Server, and Microsoft Entra ID Impersonation in the SQL Server connection string. This combination provides the same behavior as applying user access control with RLS on standard Kusto tables, such that the users querying the SQL External Table are able to only see the records addressed to them, based on the Row-Level Security policy defined in the source database.
+This document describes how to apply a row-level security (RLS) solution with [SQL external tables](/azure/data-explorer/kusto/management/external-sql-tables). [row-level security](/azure/data-explorer/kusto/management/row-level-security-policy) implements data isolation at the user level, restricting the access to data based on the current user credential. However, Kusto external tables don't support RLS policy definitions, so data isolation on external SQL tables require a different approach. The following solution employs using row-level security in SQL Server, and Microsoft Entra ID Impersonation in the SQL Server connection string. This combination provides the same behavior as applying user access control with RLS on standard Kusto tables, such that the users querying the SQL External Table are able to only see the records addressed to them, based on the row-level security policy defined in the source database.
 
 ## Prerequisites
 
@@ -28,11 +28,11 @@ CREATE TABLE SourceTable (
 )
 ```
 
-## Configure Row-Level Security in the source SQL Server - SQL Server side
+## Configure row-level security in the source SQL Server - SQL Server side
 
-For general information on SQL Server Row-Level Security, see [Row-Level Security in SQL Server](/sql/relational-databases/security/row-level-security).
+For general information on SQL Server row-level security, see [row-level security in SQL Server](/sql/relational-databases/security/row-level-security).
 
-1. Create a SQL Function with the logic for the data access policy. In this example, the Row-Level Security is based on the current user's email matching the `systemuser` column. This logic could be modified to meet any other business requirement. 
+1. Create a SQL Function with the logic for the data access policy. In this example, the row-level security is based on the current user's email matching the `systemuser` column. This logic could be modified to meet any other business requirement. 
 
     ``` sql
     CREATE SCHEMA Security;
@@ -73,19 +73,19 @@ The following steps depend on the SQL Server version that you're using.
     CREATE USER [user@domain.com] FROM EXTERNAL PROVIDER --DATABASE
     ```
     
-1. Grant SELECT on the Security function to the Entra ID user:
+1. Grant SELECT on the Security function to the Microsoft Entra ID user:
 
     ``` sql
     GRANT SELECT ON Security.mySecurityPredicate to [user@domain.com]
     ```
     
-1. Grant SELECT on the `SourceTable` to the Entra ID user:
+1. Grant SELECT on the `SourceTable` to the Microsoft Entra ID user:
 
     ``` sql
     GRANT SELECT ON dbo.SourceTable to [user@domain.com]
     ```
 
-### Define SQL External Table connection String - Kusto side
+### Define SQL external table connection String - Kusto side
 
 For more information on the connection string, see [SQL External Table Connection Strings](/azure/data-explorer/kusto/api/connection-strings/sql-connection-strings).
 
@@ -113,7 +113,7 @@ For more information on the connection string, see [SQL External Table Connectio
     Server=tcp:[sql server endpoint],1433;Authentication=Active Directory Integrated;Initial Catalog=[database name];
     ```
 
-1. Validate the data isolation based on the Microsoft Entra ID, like it would work with Row-Level Security on in Kusto. In this case, the data is filtered based on the SourceTable's `systemuser` column, matching the Microsoft Entra ID user (email address) from the Kusto impersonation:
+1. Validate the data isolation based on the Microsoft Entra ID, like it would work with row-level security on in Kusto. In this case, the data is filtered based on the SourceTable's `systemuser` column, matching the Microsoft Entra ID user (email address) from the Kusto impersonation:
 
     ``` KQL
     external_table('SQLSourceTable')
@@ -133,9 +133,9 @@ ALTER SECURITY POLICY SourceTableFilter
 WITH (STATE = ON);
 ```
 
-With the Security Policy enabled on the SQL Server side, Kusto users only see the records matching their Entra IDs, as the result of the query against the SQL External table. With the Security Policy disabled, all users are able to access the full table content as the result of the query against the SQL External table.
+With the Security Policy enabled on the SQL Server side, Kusto users only see the records matching their Microsoft Entra IDs, as the result of the query against the SQL External table. With the Security Policy disabled, all users are able to access the full table content as the result of the query against the SQL External table.
 
 ## Related content
 
-* [Row-Level Security in SQL Server](/sql/relational-databases/security/row-level-security)
-* [SQL External Table Connection Strings](/azure/data-explorer/kusto/api/connection-strings/sql-connection-strings)
+* [Row-level security in SQL Server](/sql/relational-databases/security/row-level-security)
+* [SQL external table connection strings](/azure/data-explorer/kusto/api/connection-strings/sql-connection-strings)
