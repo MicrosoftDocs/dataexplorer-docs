@@ -123,17 +123,17 @@ For more information on the connection string, see [SQL External Table Connectio
     
 To disable and enable the policy, use the following SQL commands:
 
-    ``` sql
-    ALTER SECURITY POLICY SourceTableFilter
-    WITH (STATE = OFF);
-    ```
+``` sql
+ALTER SECURITY POLICY SourceTableFilter
+WITH (STATE = OFF);
+```
 
-    ``` sql
-    ALTER SECURITY POLICY SourceTableFilter
-    WITH (STATE = ON);
-    ```
+``` sql
+ALTER SECURITY POLICY SourceTableFilter
+WITH (STATE = ON);
+```
 
-    With the Security Policy enabled on the SQL Server side, Kusto users only see the records matching their Entra IDs, as the result of the query against the SQL External table. With the Security Policy disabled, all users are able to access the full table content as the result of the query against the SQL External table.
+With the Security Policy enabled on the SQL Server side, Kusto users only see the records matching their Entra IDs, as the result of the query against the SQL External table. With the Security Policy disabled, all users are able to access the full table content as the result of the query against the SQL External table.
 
 ## Related content
 
