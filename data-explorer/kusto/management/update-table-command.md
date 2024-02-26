@@ -3,7 +3,7 @@ title:  .update table command (preview)
 description: Learn how to use the .update table command to perform transactional data updates.
 ms.reviewer: vplauzon
 ms.topic: reference
-ms.date: 02/14/2024
+ms.date: 02/26/2024
 ---
 # .update table command (preview)
 
@@ -111,7 +111,7 @@ The following examples use the [Simplified syntax](#simplified-syntax).
 The following table is created.
 
 ```kusto
-.set-or-replace MyTable <|
+.set-or-replace People <|
 datatable(Name:string, Address:string)[
   "Alice", "221B Baker street",
   "Bob", "1600 Pennsylvania Avenue",
@@ -128,10 +128,11 @@ datatable(Name:string, Address:string)[
 Then the following update command is run:
 
 ```kusto
-.update table MyTable on Name <|
-datatable(Name:string, Address:string)[
-"Alice", "2 Macquarie Street",
-"Diana", "350 Fifth Avenue" ]
+.update table People on Name <|
+  datatable(Name:string, Address:string)[
+  "Alice", "2 Macquarie Street",
+  "Diana", "350 Fifth Avenue" ]
+  | where true
 ```
 
 Where the *appendQuery* yields the following result set:
@@ -159,7 +160,7 @@ Similarly, if there would have been multiple rows with *Alice* name in the origi
 The next examples are based on the following table:
 
 ```kusto
-.set-or-replace MyTable <|
+.set-or-replace Employees <|
   range i from 1 to 100 step 1
   | project Id=i
   | extend Code = tostring(dynamic(["Customer", "Employee"])[Id %2])
@@ -183,10 +184,10 @@ This command creates a table with 100 records starting with:
 The following example uses the simplified syntax to update a single column on a single row that matches the append predicate:
 
 ```kusto
-.update table MyTable on Id with(whatif=true) <|
-MyTable
-| where Id==3
-| extend Color="Orange"
+.update table Employees on Id with(whatif=true) <|
+    Employees
+    | where Id==3
+    | extend Color="Orange"
 ```
 
 Notice that `whatif` is set to true. After this query, the table is unchanged, but the command returns that there would be an extent with one row deleted and a new extent with one row.
@@ -194,10 +195,10 @@ Notice that `whatif` is set to true. After this query, the table is unchanged, b
 The following command actually performs the update:
 
 ```kusto
-.update table MyTable on Id <|
-MyTable
-| where Id==3
-| extend Color="Orange"
+.update table Employees on Id <|
+  Employees
+  | where Id==3
+  | extend Color="Orange"
 ```
 
 ### Update a single column on multiple rows
@@ -205,11 +206,11 @@ MyTable
 The following example updates on one single column `Color` to the value of *Green* on those rows that matched the append predicate. 
 
 ```kusto
-.update table MyTable on Id <|
-MyTable
-| where Code=="Employee"
-| where Color=="Blue"
-| extend Color="Green"
+.update table Employees on Id <|
+  Employees
+  | where Code=="Employee"
+  | where Color=="Blue"
+  | extend Color="Green"
 ```
 
 ### Update multiple columns on multiple rows
@@ -217,11 +218,11 @@ MyTable
 The following example updates multiple columns on all rows that match the append predicate.
 
 ```kusto
-.update table MyTable on Id <|
-MyTable
-| where Color=="Gray"
-| extend Code=strcat("ex-", Code)
-| extend Color=""
+.update table Employees on Id <|
+  Employees
+  | where Color=="Gray"
+  | extend Code=strcat("ex-", Code)
+  | extend Color=""
 ```
 
 ### Update rows using another table
@@ -242,11 +243,11 @@ In this example, the first step is to create the following mapping table:
 This mapping table is then used to update some colors in the original table based on the append predicate and the corresponding "New Color":
 
 ```kusto
-.update table MyTable on Id <|
-MyTable
-| where Code=="Customer"
-| lookup ColorMapping on $left.Color==$right.OldColor
-| project Id, Code, Color=NewColor
+.update table Employees on Id <|
+  Employees
+  | where Code=="Customer"
+  | lookup ColorMapping on $left.Color==$right.OldColor
+  | project Id, Code, Color=NewColor
 ```
 
 ### Update rows with a staging table
@@ -255,20 +256,20 @@ A popular pattern is to first land data in a staging table before updating the m
 
 The first command creates a staging table:
 
-  ```kusto
-  .set-or-replace MyStagingTable <|
+```kusto
+.set-or-replace MyStagingTable <|
     range i from 70 to 130 step 5
     | project Id=i
     | extend Code = tostring(dynamic(["Customer", "Employee"])[Id %2])
     | extend Color = tostring(dynamic(["Red", "Blue", "Gray"])[Id %3])
-  ```
+```
 
 The next command updates the main table with the data in the staging table:
 
 ```kusto
-.update table MyTable on Id <|
-MyStagingTable
-| where true
+.update table Employees on Id <|
+  MyStagingTable
+  | where true
 ```
 
 Some records in the staging table didn't exist in the main table (that is, had `Id>100`) but were still inserted in the main table (upsert behavior).
@@ -299,13 +300,13 @@ The next command updates a specific record using the expanded syntax:
 
 ```kusto
 .update table VersionedArticle delete D append A <|
-let D = VersionedArticle
-  | where ArticleId=="B"
-  | where Version==3;
-let A = VersionedArticle
-  | where ArticleId=="B"
-  | where Version==3
-  | extend Detail = "Revision about brand Z";
+  let D = VersionedArticle
+    | where ArticleId=="B"
+    | where Version==3;
+  let A = VersionedArticle
+    | where ArticleId=="B"
+    | where Version==3
+    | extend Detail = "Revision about brand Z";
 ```
 
 ### Complete control
@@ -313,18 +314,17 @@ let A = VersionedArticle
 In the following example, all rows with `Code` *Employee* are deleted, and rows with `Code` *Employee* **and** `Color` purple are appended.  More rows are deleted than inserted.
 
 ```kusto
-.update table MyTable delete D append A <|
-let D = MyTable
-  | where Code=="Employee";
-let A = MyTable
-  | where Code=="Employee"
-  | where Color=="Purple"
-  | extend Code="Corporate"
-  | extend Color="Mauve";
+.update table Employees delete D append A <|
+  let D = Employees
+    | where Code=="Employee";
+  let A = Employees
+    | where Code=="Employee"
+    | where Color=="Purple"
+    | extend Code="Corporate"
+    | extend Color="Mauve";
 ```
 
 This type of action is only possible using the expanded syntax, which independently controls the delete and append operations.
-
 
 ## Related content
 
