@@ -32,7 +32,7 @@ CREATE TABLE SourceTable (
 
 For general information on SQL Server row-level security, see [row-level security in SQL Server](/sql/relational-databases/security/row-level-security).
 
-1. Create a SQL Function with the logic for the data access policy. In this example, the row-level security is based on the current user's email matching the `systemuser` column. This logic could be modified to meet any other business requirement. 
+1. Create a SQL Function with the logic for the data access policy. In this example, the row-level security is based on the current user's email matching the `systemuser` column. This logic could be modified to meet any other business requirement.
 
     ``` sql
     CREATE SCHEMA Security;
