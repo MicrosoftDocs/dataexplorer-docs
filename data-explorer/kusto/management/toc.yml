@@ -218,9 +218,17 @@ items:
       - name: Stored query results
         items:
           - name: Stored query results
-        displayName: .set stored query, .show stored query, .drop stored query
+            displayName: .set stored query, .show stored query, .drop stored query
             href: stored-query-results.md
-          - name: .set stored
+          - name: .set stored query results command
+            displayName: .set stored query result, .set-or-replace stored_query_result, .set-or-replace stored query result
+            href: set-stored-query-result-command.md
+          - name: .show stored_query_result command
+            displayName: .show stored query result, .show stored_query_results
+            href: show-stored-query-result-command.md
+          - name: .drop stored_query_result command
+            displayName: .drop stored query result, .drop stored_query_results
+            href: drop-stored-query-result-command.md
       - name: Columns
         items:
           - name: Columns management
