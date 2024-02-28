@@ -78,9 +78,11 @@ In this section, you establish a connection between Event Grid and your Azure Da
         > [!NOTE]
         > Table and mapping names are case-sensitive.
 
-    1. Optionally, under **Advanced settings**, you can specify the **Managed identity type** that is used by your data connection.
+    1. Optionally, under **Advanced settings**, you can specify the **Managed identity type** that is used by your data connection. By default, **System-assigned** is selected.
 
-        By default, **System-assigned** is selected. If you select **User-assigned**, you need to manually assign a managed identity to your cluster . For more information, see [Configure managed identities for your Azure Data Explorer cluster](configure-managed-identities-cluster.md).
+        If you select **User-assigned**, you need to manually assign a managed identity. If you select a user that isn't assigned to your cluster yet, it will be auto-assigned. For more information, see [Configure managed identities for your Azure Data Explorer cluster](configure-managed-identities-cluster.md).
+
+        If you select **None**, the storage account and Event Hub are authenticated via connection strings. This method isn't recommended.
 
         :::image type="content" source="media/create-event-grid-connection/managed-identity-type.png" alt-text="Screenshot of the advanced settings section showing the managed identity types that can be used for the data connection.":::
 
@@ -138,9 +140,11 @@ In this section, you establish a connection between Event Grid and your Azure Da
         > [!NOTE]
         > Table and mapping names are case-sensitive.
 
-    1. Optionally, under **Advanced settings**, you can specify the **Managed identity type** that is used by your data connection.
+    1. Optionally, under **Advanced settings**, you can specify the **Managed identity type** that is used by your data connection. By default, **System-assigned** is selected.
 
-        By default, **System-assigned** is selected. If you select **User-assigned**, you need to manually assign a managed identity to your cluster . For more information, see [Configure managed identities for your Azure Data Explorer cluster](configure-managed-identities-cluster.md).
+        If you select **User-assigned**, you need to manually assign a managed identity. If you select a user that isn't assigned to your cluster yet, it will be auto-assigned. For more information, see [Configure managed identities for your Azure Data Explorer cluster](configure-managed-identities-cluster.md).
+
+        If you select **None**, the storage account and Event Hub are authenticated via connection strings. This method isn't recommended.
 
         :::image type="content" source="media/create-event-grid-connection/managed-identity-type.png" alt-text="Screenshot of the advanced settings section showing the managed identity types that can be used for the data connection.":::
 
