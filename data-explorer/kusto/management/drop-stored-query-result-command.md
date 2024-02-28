@@ -1,5 +1,5 @@
 ---
-title: .drop stored_query_results command
+title: .drop stored_query_result command
 description: Learn how to use the `.drop stored_query_result` command to delete an active query result.
 ms.reviewer: mispecto
 ms.topic: reference

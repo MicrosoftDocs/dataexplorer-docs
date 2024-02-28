@@ -82,6 +82,6 @@ stored_query_result("DailyClicksByAdNetwork7Days")
 
 ## Related content
 
-* [Stored query result](../management/stored-query-results.md).
-* [.show stored_query_result command](show-stored-query-result-command.md).
-* [.drop stored_query_result command](drop-stored-query-result-command.md).
+* [Stored query results](../management/stored-query-results.md).
+* [.show stored_query_result command](../management/show-stored-query-result-command.md).
+* [.drop stored_query_result command](../management/drop-stored-query-result-command.md).

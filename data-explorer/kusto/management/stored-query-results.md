@@ -15,7 +15,7 @@ Stored query results can be useful in the following scenarios:
 * Paging through query results. The initial command runs the query and returns the first "page" of records. Later queries reference other "pages" without the need to rerun the query.
 * Drill-down scenarios, in which the results of an initial query are then explored using other queries.
 
-Updates to security policies, such as database access and row level security, aren't propagated to stored query results. Use [`.drop stored_query_results`](drop-stored-query-results-command.md) if there's user permission revocation.
+Updates to security policies, such as database access and row level security, aren't propagated to stored query results. Use [`.drop stored_query_results`](drop-stored-query-result-command.md) if there's user permission revocation.
 
 Stored query results behave like tables, in that the order of records isn't preserved. To paginate through the results, we recommended that the query includes [unique ID columns](../query/stored-query-result-function.md#pagination). If there are multiple result sets returned by a query, only the first result set is stored.
 
