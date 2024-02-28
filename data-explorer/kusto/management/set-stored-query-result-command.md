@@ -50,8 +50,6 @@ A tabular subset of the records produced by the query, referred to as the "previ
 
 The following example creates a stored query result named `Numbers`.
 
-<a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA9MrTi1RKC7JL0pNiS8sTS2qjC9KLS7NKVHwK81NSi0qVrCpUShKzEtPVYhQSCvKz1UwVCjJVzA0AAOgxtQCBUMA3q5PyEQAAAA=" target="_blank">Run the query</a>
-
 ```kusto
 .set stored_query_result Numbers <| range X from 1 to 1000000 step 1
 ```
