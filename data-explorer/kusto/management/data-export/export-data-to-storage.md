@@ -46,6 +46,7 @@ You must have at least [Database Viewer](../access-control/role-based-access-con
 | `sizeLimit` | `long` | The size limit in bytes of a single storage artifact being written (prior to compression). Valid range: 100 MB (default) to 4 GB. |
 | `parquetRowGroupSize` | `int` | Relevant only when data format is Parquet. Controls the row group size in the exported files. Default row group size is 100,000 records. |
 | `distributed` | `bool` | Disable/enable distributed export. Setting to false is equivalent to `single` distribution hint. Default is true. |
+| `parquetDatetimePrecision` | `string` | Specifies the precision to use when exporting `datetime` values to Parquet. Possible values are millisecond and microsecond. Default is millisecond. |
 
 ## Authentication and authorization
 
