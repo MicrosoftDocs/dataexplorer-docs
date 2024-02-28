@@ -38,7 +38,7 @@ Methods for implementing paging include:
    generated data.
 * Write a middle-tier application that provides a stateful paging API by caching
    the results of a Kusto query.
-* Use pagination in [Stored query results](../management/stored-query-results.md#pagination).
+* Use pagination in [Stored query results](stored-query-result-function.md#pagination)
 
 ## Example
 
