@@ -8,13 +8,15 @@ ms.date: 05/23/2023
 
 # .drop stored_query_result command
 
-Deletes an active stored query result created in the current database by the current principal.
+Deletes an active stored query result.
+
+Use `.drop` `stored_query_result` *storedQueryResultName* to delete an active stored query result created in the current database.
+
+Use `.drop` `stored_query_results` `by user` *UserPrincipalName* to delete all active stored query results in the current database by the specified user principal.
 
 ## Permissions
 
-You must have [Database Viewer](access-control/role-based-access-control.md) permissions to delet
-
-You must have [Database Admin](access-control/role-based-access-control.md) permissions
+You must have [Database Viewer](access-control/role-based-access-control.md) permissions to delete stored query results in the database, and [Database Admin](access-control/role-based-access-control.md) permissions to delete stored query results created by specified user principals.
 
 ## Syntax
 
@@ -35,18 +37,13 @@ You must have [Database Admin](access-control/role-based-access-control.md) perm
 
 Returns information about deleted stored query results.
 
-## .drop stored_query_results
-
-Deletes active stored query results created in the current database by the specified user principal.
-
-`Database Admin` permission is required for invoking this command.
-
 ## Example
 
-<!-- csl -->
 ```kusto
 .drop stored_query_results by user 'aadapp=c28e9b80-2808-bed525fc0fbb'
 ```
+
+**Output**
 
 | StoredQueryResultId | Name | DatabaseName | PrincipalIdentity | SizeInBytes | RowCount | CreatedOn | ExpiresOn |
 | ------------------- | ---- | ------------ | ----------------- | ----------- | -------- | --------- | --------- |
