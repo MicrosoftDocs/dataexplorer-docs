@@ -40,7 +40,7 @@ The following command sets the folder in which a materialized view must be shown
 .alter materialized-view MyView folder "Updated folder"
 ```
 
-**Output:**
+**Output**
 
 | Name   | SourceTable | Query                                       | MaterializedTo                   | LastRun                      | LastRunResult | IsHealthy | IsEnabled | Folder           | DocString | AutoUpdateSchema | EffectiveDateTime            | Lookback   |
 |--------|-------------|---------------------------------------------|----------------------------------|------------------------------|---------------|-----------|-----------|------------------|-----------|------------------|------------------------------|------------|
@@ -54,7 +54,7 @@ The following command sets the folder in which a materialized view must be shown
 .alter materialized-view MyView folder @"First Level\Second Level"
 ```
 
-**Output:**
+**Output**
 
 | Name   | SourceTable | Query                                       | MaterializedTo                   | LastRun                      | LastRunResult | IsHealthy | IsEnabled | Folder                     | DocString | AutoUpdateSchema | EffectiveDateTime            | Lookback   |
 |--------|-------------|---------------------------------------------|----------------------------------|------------------------------|---------------|-----------|-----------|----------------------------|-----------|------------------|------------------------------|------------|

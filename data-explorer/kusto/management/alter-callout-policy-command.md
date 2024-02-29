@@ -54,7 +54,7 @@ Define permitted callouts for the cluster callout policy.
 ```
 ````
 
-**Output:**
+**Output**
 
 | PolicyName    | EntityName | Policy                                                                                                | ChildEntities | EntityType |
 |---------------|------------|-------------------------------------------------------------------------------------------------------|---------------|------------|

@@ -45,7 +45,7 @@ Remove auto delete policy of table *T*:
 .delete table T policy auto_delete
 ```
 
-**Output:**
+**Output**
 
 | PolicyName       | EntityName     | Policy                                                           | ChildEntities | EntityType |
 |------------------|----------------|------------------------------------------------------------------|---------------|------------|
