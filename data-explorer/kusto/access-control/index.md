@@ -56,18 +56,18 @@ Before carrying out an action on an Azure Data Explorer resource, all authentica
 
 The association of security principals to security roles can be defined individually or by using security groups that are defined in Microsoft Entra ID. For more information on how to assign security roles, see [Security roles overview](../management/security-roles.md).
 
-## Authorization and Group Membership
+## Group authorization
 
-Authorization can be granted to AAD Groups by assigning one or more roles to the group. 
+Authorization can be granted to Microsoft Entra ID groups by assigning one or more roles to the group. 
 
-When authorization is checked the if the current principal (user or app) does not have an explicit role assignment which allows performing the action, its membership in all groups that can allow the action is checked. If the principal is found to be a member in any of the groups the permission is granted, otherwise the action fails the authorization check.
+When the authorization of a user or application principal is checked, the system first checks for an explicit role assignment permitting the specific action. If no such role assignment exists, the system then analyzes the principal's membership across all groups that could potentially authorize the action. If the principal is confirmed to be a member of any of these groups, the requested action is authorized. Otherwise, if the principal is not a member of any such groups, the action does not pass the authorization check and the action isn't allowed.
 
-> Note!
+> [!NOTE]
 >
-> Group membership checks are costly.
-> Since group memberships do not change often, Kusto caches the membership results for extended periods.
-> The duration of the membership cache is dependent on the result (principal is or is not a member), the principal type (user or app), and other factors.
-> At most, memberships may be cached for a period 3 hours, and at minimum for 30 minutes.
+> Checking group memberships can be resource-intensive. 
+> Since group memberships often change often, the results of membership checks are cached.
+> The caching duration varies and is influenced by factors such as the membership result (whether the principal is a member or not), the type of principal (user or application), among others.
+> The maximum caching duration can extend up to three hours, while the minimum duration is 30 minutes.
 
 ## Related content
 
