@@ -60,7 +60,7 @@ The association of security principals to security roles can be defined individu
 
 Authorization can be granted to Microsoft Entra ID groups by assigning one or more roles to the group. 
 
-When the authorization of a user or application principal is checked, the system first checks for an explicit role assignment permitting the specific action. If no such role assignment exists, the system then analyzes the principal's membership across all groups that could potentially authorize the action. If the principal is confirmed to be a member of any of these groups, the requested action is authorized. Otherwise, if the principal is not a member of any such groups, the action does not pass the authorization check and the action isn't allowed.
+When the authorization of a user or application principal is checked, the system first checks for an explicit role assignment permitting the specific action. If no such role assignment exists, the system then analyzes the principal's membership across all groups that could potentially authorize the action. If the principal is confirmed to be a member of any of these groups, the requested action is authorized. Otherwise, if the principal is not a member of any such groups, the action doesn't pass the authorization check and the action isn't allowed.
 
 > [!NOTE]
 >
