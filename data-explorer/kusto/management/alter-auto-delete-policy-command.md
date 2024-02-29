@@ -46,7 +46,7 @@ Set expiry of table *T* to *2023-06-01*. Table will be deleted even if there are
 .alter table T policy auto_delete @'{ "ExpiryDate" : "2023-06-01", "DeleteIfNotEmpty": true }'
 ```
 
-**Output:**
+**Output**
 
 | PolicyName       | EntityName     | Policy                                                           | ChildEntities | EntityType |
 |------------------|----------------|------------------------------------------------------------------|---------------|------------|

@@ -51,7 +51,7 @@ The following two commands are equivalent and both display the CSL schema of mat
 .show materialized-view ViewName schema as csl
 ```
 
-**Output:**
+**Output**
 
 | TableName | Schema                                      | DatabaseName | Folder  | DocString |
 |-----------|---------------------------------------------|--------------|---------|-----------|
@@ -65,7 +65,7 @@ The following command displays the JSON schema of materialized view ViewName:
 .show materialized-view ViewName schema as json
 ```
 
-**Output:**
+**Output**
 
 | TableName | Schema                                                                                                                                                                                                                        | DatabaseName | Folder  | DocString |
 |-----------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|--------------|---------|-----------|

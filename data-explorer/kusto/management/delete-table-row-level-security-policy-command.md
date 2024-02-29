@@ -43,7 +43,7 @@ The following command removes the row level security policy of a table named `T`
 .delete table T policy row_level_security
 ```
 
-**Output:**
+**Output**
 
 | PolicyName       | EntityName     | Policy                                                           | ChildEntities | EntityType |
 |------------------|----------------|------------------------------------------------------------------|---------------|------------|

@@ -47,7 +47,7 @@ The following command enables materialized view ViewName:
 .enable materialized-view ViewName
 ```
 
-**Output:**
+**Output**
 
 | Name     | SourceTable | Query                                                 | MaterializedTo                   | LastRun                      | LastRunResult | IsHealthy | IsEnabled | Folder           | DocString | AutoUpdateSchema | EffectiveDateTime            | Lookback   |
 |----------|-------------|-------------------------------------------------------|----------------------------------|------------------------------|---------------|-----------|-----------|------------------|-----------|------------------|------------------------------|------------|
@@ -61,7 +61,7 @@ The following command disables materialized view ViewName:
 .disable materialized-view ViewName
 ```
 
-**Output:**
+**Output**
 
 | Name     | SourceTable | Query                                                 | MaterializedTo                   | LastRun                      | LastRunResult | IsHealthy | IsEnabled | Folder           | DocString | AutoUpdateSchema | EffectiveDateTime            | Lookback   |
 |----------|-------------|-------------------------------------------------------|----------------------------------|------------------------------|---------------|-----------|-----------|------------------|-----------|------------------|------------------------------|------------|

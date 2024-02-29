@@ -40,7 +40,7 @@ Delete cluster request classification policy:
 
 `.delete` `cluster` `policy` `request_classification`
 
-**Output:**
+**Output**
 
 | PolicyName                         | EntityName | Policy | ChildEntities | EntityType |
 |------------------------------------|------------|--------|---------------|------------|

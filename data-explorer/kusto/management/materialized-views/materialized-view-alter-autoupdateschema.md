@@ -41,7 +41,7 @@ The following command enables `autoUpdateSchema` for materialized view *MyView*,
 .alter materialized-view MyView autoUpdateSchema true
 ```
 
-**Output:**
+**Output**
 
 | Name   | SourceTable | Query                            | MaterializedTo                   | LastRun                      | LastRunResult | IsHealthy | IsEnabled | Folder | DocString | AutoUpdateSchema | EffectiveDateTime            | Lookback   |
 |--------|-------------|----------------------------------|----------------------------------|------------------------------|---------------|-----------|-----------|--------|-----------|------------------|------------------------------|------------|
@@ -55,7 +55,7 @@ The following command disables `autoUpdateSchema` for materialized view *MyView*
 .alter materialized-view MyView autoUpdateSchema false
 ```
 
-**Output:**
+**Output**
 
 | Name   | SourceTable | Query                                       | MaterializedTo                   | LastRun                      | LastRunResult | IsHealthy | IsEnabled | Folder | DocString | AutoUpdateSchema | EffectiveDateTime            | Lookback   |
 |--------|-------------|---------------------------------------------|----------------------------------|------------------------------|---------------|-----------|-----------|--------|-----------|------------------|------------------------------|------------|

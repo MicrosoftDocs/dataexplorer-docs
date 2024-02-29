@@ -41,7 +41,7 @@ The following command drops materialized view ViewName:
 .drop materialized-view ViewName
 ```
 
-**Output:**
+**Output**
 
 | Name   | SourceTable | Query                                               | MaterializedTo                   | LastRun                      | LastRunResult | IsHealthy | IsEnabled | Folder           | DocString | AutoUpdateSchema | EffectiveDateTime            | Lookback   |
 |--------|-------------|-----------------------------------------------------|----------------------------------|------------------------------|---------------|-----------|-----------|------------------|-----------|------------------|------------------------------|------------|

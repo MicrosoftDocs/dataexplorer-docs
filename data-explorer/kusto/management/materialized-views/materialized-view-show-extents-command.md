@@ -44,7 +44,7 @@ The following command shows the extents holding the data in the materialized par
 .show materialized-view ViewName extents
 ```
 
-**Output:**
+**Output**
 
 | ExtentId                              | DatabaseName | TableName  | MaxCreatedOn                 | OriginalSize | ExtentSize | CompressedSize | IndexSize | Blocks | Segments | ReservedSlot1 | ReservedSlot2 | ExtentContainerId | RowCount | MinCreatedOn                 | Tags | Kind      | ReservedSlot3 | DeletedRowCount |
 |---------------------------------------|--------------|------------|------------------------------|--------------|------------|----------------|-----------|--------|----------|---------------|---------------|-------------------|----------|------------------------------|------|-----------|---------------|-----------------|
@@ -59,7 +59,7 @@ The following command shows the extents holding the data in the materialized par
 .show materialized-view ViewName extents hot
 ```
 
-**Output:**
+**Output**
 
 | ExtentId                              | DatabaseName | TableName  | MaxCreatedOn                 | OriginalSize | ExtentSize | CompressedSize | IndexSize | Blocks | Segments | ReservedSlot1 | ReservedSlot2 | ExtentContainerId | RowCount | MinCreatedOn                 | Tags | Kind      | ReservedSlot3 | DeletedRowCount |
 |---------------------------------------|--------------|------------|------------------------------|--------------|------------|----------------|-----------|--------|----------|---------------|---------------|-------------------|----------|------------------------------|------|-----------|---------------|-----------------|

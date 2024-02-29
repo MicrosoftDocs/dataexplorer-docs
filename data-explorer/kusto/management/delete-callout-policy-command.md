@@ -39,7 +39,7 @@ Delete cluster callout policy:
 .delete cluster policy callout
 ````
 
-**Output:**
+**Output**
 
 | PolicyName    | EntityName | Policy                                                                                               | ChildEntities | EntityType |
 |---------------|------------|------------------------------------------------------------------------------------------------------|---------------|------------|
