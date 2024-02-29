@@ -42,7 +42,7 @@ The following command renames materialized view ViewName to NewName:
 .rename materialized-view ViewName to NewName
 ```
 
-**Output:**
+**Output**
 
 | Name    | SourceTable | Query                                               | MaterializedTo                   | LastRun                      | LastRunResult | IsHealthy | IsEnabled | Folder           | DocString | AutoUpdateSchema | EffectiveDateTime            | Lookback   |
 |---------|-------------|-----------------------------------------------------|----------------------------------|------------------------------|---------------|-----------|-----------|------------------|-----------|------------------|------------------------------|------------|

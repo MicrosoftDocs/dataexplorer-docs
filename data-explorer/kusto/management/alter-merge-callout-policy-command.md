@@ -50,7 +50,7 @@ You must have [Cluster AllDatabasesAdmin](access-control/role-based-access-contr
 ```
 ````
 
-**Output:**
+**Output**
 
 | PolicyName    | EntityName | Policy                                                                                               | ChildEntities | EntityType |
 |---------------|------------|------------------------------------------------------------------------------------------------------|---------------|------------|

@@ -42,7 +42,7 @@ range x from 1 to 5 step 1
 | extend replaced=replace_string(str, 'is', 'was')
 ```
 
-**Output:**
+**Output**
 
 | x    | str | replaced|
 |---|---|---|

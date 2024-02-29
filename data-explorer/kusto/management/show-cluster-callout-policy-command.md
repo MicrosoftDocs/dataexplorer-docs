@@ -37,7 +37,7 @@ Display the cluster's callout policy.
 .show cluster policy callout
 ```
 
-**Output:**
+**Output**
 
 | PolicyName    | EntityName | Policy                                                                                               | ChildEntities                                              | EntityType |
 |---------------|------------|------------------------------------------------------------------------------------------------------|------------------------------------------------------------|------------|
