@@ -56,6 +56,19 @@ Before carrying out an action on an Azure Data Explorer resource, all authentica
 
 The association of security principals to security roles can be defined individually or by using security groups that are defined in Microsoft Entra ID. For more information on how to assign security roles, see [Security roles overview](../management/security-roles.md).
 
+## Authorization and Group Membership
+
+Authorization can be granted to AAD Groups by assigning one or more roles to the group. 
+
+When authorization is checked the if the current principal (user or app) does not have an explicit role assignment which allows performing the action, its membership in all groups that can allow the action is checked. If the principal is found to be a member in any of the groups the permission is granted, otherwise the action fails the authorization check.
+
+> Note!
+>
+> Group membership checks are costly.
+> Since group memberships do not change often, Kusto caches the membership results for extended periods.
+> The duration of the membership cache is dependent on the result (principal is or is not a member), the principal type (user or app), and other factors.
+> At most, memberships may be cached for a period 3 hours, and at minimum for 30 minutes.
+
 ## Related content
 
 * Understand [Kusto role-based access control](role-based-access-control.md).
