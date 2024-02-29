@@ -113,6 +113,8 @@ Implementation restriction: The counting forms x{n,m}, x{n,}, and x{n} reject fo
 
 Flag syntax is xyz (set) or -xyz (clear) or xy-z (set xy, clear z).
 
+To use flags, you must specify the `kind` and `flags` parameters, as follows: `kind=` *regex* `flags=` *regexFlags*.
+
 ## Empty strings
 
 | Example   | Description                                                                    |
