@@ -45,7 +45,7 @@ Show the auto delete policy that is applied to table *T*:
 .show table T policy auto_delete
 ```
 
-**Output:**
+**Output**
 
 | PolicyName       | EntityName     | Policy                                                           | ChildEntities | EntityType |
 |------------------|----------------|------------------------------------------------------------------|---------------|------------|

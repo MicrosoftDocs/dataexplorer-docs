@@ -43,7 +43,7 @@ The following command removes the row level security policy of a materialized vi
 .delete materialized-view MyMaterializedView policy row_level_security
 ```
 
-**Output:**
+**Output**
 
 | PolicyName       | EntityName     | Policy                                                           | ChildEntities | EntityType |
 |------------------|----------------|------------------------------------------------------------------|---------------|------------|

@@ -47,7 +47,7 @@ The following command shows the failures, if any, occurred during the materializ
 .show materialized-view ViewName failures
 ```
 
-**Output:**
+**Output**
 
 | Timestamp | OperationId | Name  | LastSuccessRun | FailureKind | Details |
 |-----------|-------------|-------|----------------|-------------|---------|

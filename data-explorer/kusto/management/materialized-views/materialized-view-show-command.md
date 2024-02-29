@@ -42,7 +42,7 @@ The following command shows details for materialized view ViewName:
 .show materialized-view ViewName
 ```
 
-**Output:**
+**Output**
 
 | Name     | SourceTable | Query                                               | MaterializedTo                   | LastRun                      | LastRunResult | IsHealthy | IsEnabled | Folder           | DocString | AutoUpdateSchema | EffectiveDateTime            | Lookback   |
 |----------|-------------|-----------------------------------------------------|----------------------------------|------------------------------|---------------|-----------|-----------|------------------|-----------|------------------|------------------------------|------------|
@@ -56,7 +56,7 @@ The following command shows details for all materialized views:
 .show materialized-views
 ```
 
-**Output:**
+**Output**
 
 | Name     | SourceTable | Query                                               | MaterializedTo                   | LastRun                      | LastRunResult | IsHealthy | IsEnabled | Folder           | DocString | AutoUpdateSchema | EffectiveDateTime            | Lookback   |
 |----------|-------------|-----------------------------------------------------|----------------------------------|------------------------------|---------------|-----------|-----------|------------------|-----------|------------------|------------------------------|------------|
