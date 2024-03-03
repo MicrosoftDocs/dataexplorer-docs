@@ -105,7 +105,7 @@ Parameters significantly improve dashboard rendering performance, and enable you
 
 ## View query
 
-While viewing the dashboard, you can see the underlying query of any tile. This query can then be modified in a new query tab.
+You can view the query in either editing or viewing mode. Editing the underlying query of a tile is only possible in editing mode. In viewing mode, you can modify the query in a new query tab, without changing the underlying query of the dashboard tile.
 
 1. Browse to your dashboard.
 1. On the tile you want to explore, select the **More menu [...]** > **View query**.
