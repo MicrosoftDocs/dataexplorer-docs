@@ -3,11 +3,33 @@ title: What's new in Azure Data Explorer documentation archive
 description: In this article, you'll find an archive of new and significant changes in the Azure Data Explorer documentation
 ms.reviewer: orspodek
 ms.topic: reference
-ms.date: 11/08/2023
+ms.date: 03/03/2024
 ---
 # What's new in Azure Data Explorer documentation archive
 
 Welcome to what's new in Azure Data Explorer archive. This article is an archive of new and significantly updated content in the Azure Data Explorer documentation.
+
+## February 2023
+
+**API**
+
+| Article title | Description |
+|--|--|
+| [Authentication over HTTPS](kusto/api/rest/authentication.md)| Updated article.  REST API authorization examples added. |
+
+**General**
+
+| Article title | Description |
+|--|--|
+|[Manage Azure Data Explorer cluster locks to prevent accidental deletion in your cluster](manage-cluster-locks.md)| New article. Describes how to manage cluster locks to prevent accidental deletion of data using the Azure portal.|
+|[Connect from common apps](connect-common-apps.md) | New article. Describes how to connect to Azure Data Explorer with SQL Server emulation from various apps.|
+|- [Connect to Azure Data Explorer with JDBC](connect-jdbc.md) <br/> - [Connect to Azure Data Explorer with SQL Server emulation](sql-server-emulation-overview.md) <br/> - [Connect to Azure Data Explorer with ODBC](connect-odbc.md) | New articles. Describes how to connect to Azure Data Explorer with different connection apps.|
+|[Azure Data Explorer as a linked server from SQL Server](linked-server.md)| New article. Describes how to connect Azure Data Explorer as a linked server from SQL Server.|
+|[Set timeout limits](set-timeout-limits.md)| New article. Describes how to set query timeout limits.|
+|[Data connectors overview](connector-overview.md)| New article. Describes available data connectors and their capabilities.|
+|- [Customize settings in the Azure Data Explorer web UI](web-customize-settings.md) <br/> - [Azure Data Explorer web UI results grid](web-results-grid.md) <br/> - [Share queries from Azure Data Explorer web UI](web-share-queries.md) <br/> - [Quickstart: Visualize sample data dashboards](web-ui-samples-dashboards.md) <br/> - [Explore the samples gallery](web-ui-samples-query.md) | New articles. Describes how to use, query, visualize, and share queries in the Azure Data Explorer web UI.|
+|[Query data using T-SQL](t-sql.md)| Updated article. Support limitations added.|
+|[What is the ingestion wizard?](ingest-data-wizard.md) | Updated article. Management actions added.|
 
 ## January 2023
 

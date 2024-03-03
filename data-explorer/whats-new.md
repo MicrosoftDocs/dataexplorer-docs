@@ -9,6 +9,32 @@ ms.date: 02/01/2024
 
 Welcome to what's new in Azure Data Explorer. This article details new and significantly updated content in the Azure Data Explorer documentation.
 
+## February 2024
+
+**General**
+
+|Article title | Description|
+|--|--|
+|-[Azure Data Explorer web UI query overview](web-ui-query-overview.md) <br/> -[Access the data profile of a table](data-profile.md)| New article that describes how to access the data profile of a table in the Azure Data Explorer web UI, and updated web UI query overview.|
+| [Customize Azure Data Explorer dashboard visuals](dashboard-customize-visuals.md)| Updated article. Added section on embedding images in dashboard tiles.|
+| [Create an Event Grid data connection for Azure Data Explorer](create-event-grid-connection.md)| Updated article. Refreshed content.|
+| [How to ingest historical data into Azure Data Explorer](ingest-data-historical.md)| Updated article. Refreshed content.|
+
+**Management**
+
+|Article title| Description|
+|--|--|
+| [Apply row-level security on SQL external tables](kusto/management/row-level-security-external-sql.md)| New article. Describes how to create a row-level security solution with Azure Data Explorer SQL external tables.|
+| [.update table command (preview)](kusto/management/update-table-command.md)| New article. Describes how to use the `.update table` command to perform transactional data updates.|
+|- [Stored query results](kusto/management/stored-query-results.md) <br/> -[.set stored_query_result command](kusto/management/set-stored-query-result-command.md) <br/> -[.show stored_query_result command](kusto/management/show-stored-query-result-command.md) <br/> -[.drop stored_query_result command](kusto/management/drop-stored-query-result-command.md) <br/> - [stored_query_result()](kusto/query/stored-query-result-function.md)| New articles. Describe how to manage stored query results.|
+| [Continuous data export overview](kusto/management/data-export/continuous-data-export.md)| Updated article. Added section on continuous export to delta table, and refreshed limitations.|
+
+**Query**
+
+|Article title| Description|
+|--|--|
+| [sort operator](kusto/query/sort-operator.md)| Updated article. Added section on the use of special floating-point values.|
+
 ## January 2024
 
 **General**
@@ -254,25 +280,3 @@ Welcome to what's new in Azure Data Explorer. This article details new and signi
 | Article title | Description |
 |--|--|
 |- [Kusto.Explorer code features](kusto/tools/kusto-explorer-code-features.md) <br/> - [Kusto Explorer options](kusto/tools/kusto-explorer-options.md) <br/> - [Kusto.Explorer keyboard shortcuts (hot keys)](kusto/tools/kusto-explorer-shortcuts.md) <br/> - [Using Kusto.Explorer](kusto/tools/kusto-explorer-using.md) <br/> - [Kusto.Explorer installation and user interface](kusto/tools/kusto-explorer.md) | Updated articles. Refreshed content.|
-
-## February 2023
-
-**API**
-
-| Article title | Description |
-|--|--|
-| [Authentication over HTTPS](kusto/api/rest/authentication.md)| Updated article.  REST API authorization examples added. |
-
-**General**
-
-| Article title | Description |
-|--|--|
-|[Manage Azure Data Explorer cluster locks to prevent accidental deletion in your cluster](manage-cluster-locks.md)| New article. Describes how to manage cluster locks to prevent accidental deletion of data using the Azure portal.|
-|[Connect from common apps](connect-common-apps.md) | New article. Describes how to connect to Azure Data Explorer with SQL Server emulation from various apps.|
-|- [Connect to Azure Data Explorer with JDBC](connect-jdbc.md) <br/> - [Connect to Azure Data Explorer with SQL Server emulation](sql-server-emulation-overview.md) <br/> - [Connect to Azure Data Explorer with ODBC](connect-odbc.md) | New articles. Describes how to connect to Azure Data Explorer with different connection apps.|
-|[Azure Data Explorer as a linked server from SQL Server](linked-server.md)| New article. Describes how to connect Azure Data Explorer as a linked server from SQL Server.|
-|[Set timeout limits](set-timeout-limits.md)| New article. Describes how to set query timeout limits.|
-|[Data connectors overview](connector-overview.md)| New article. Describes available data connectors and their capabilities.|
-|- [Customize settings in the Azure Data Explorer web UI](web-customize-settings.md) <br/> - [Azure Data Explorer web UI results grid](web-results-grid.md) <br/> - [Share queries from Azure Data Explorer web UI](web-share-queries.md) <br/> - [Quickstart: Visualize sample data dashboards](web-ui-samples-dashboards.md) <br/> - [Explore the samples gallery](web-ui-samples-query.md) | New articles. Describes how to use, query, visualize, and share queries in the Azure Data Explorer web UI.|
-|[Query data using T-SQL](t-sql.md)| Updated article. Support limitations added.|
-|[What is the ingestion wizard?](ingest-data-wizard.md) | Updated article. Management actions added.|
