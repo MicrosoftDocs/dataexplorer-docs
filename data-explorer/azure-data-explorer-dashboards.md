@@ -3,7 +3,7 @@ title: Visualize data with the Azure Data Explorer dashboard
 description: Learn how to visualize data with the Azure Data Explorer dashboard
 ms.reviewer: gabil
 ms.topic: how-to
-ms.date: 05/16/2023
+ms.date: 03/03/2024
 ---
 
 # Visualize data with Azure Data Explorer dashboards 
@@ -102,6 +102,21 @@ To pin a query:
 ## Use parameters
 
 Parameters significantly improve dashboard rendering performance, and enable you to use filter values as early as possible in the query. Filtering is enabled when the parameter is included in the query associated with your tile(s).  For more information about how to set up and use different kinds of parameters, see [Use parameters in Azure Data Explorer dashboards](dashboard-parameters.md).
+
+## View query
+
+You can view the query in either editing or viewing mode. Editing the underlying query of a tile is only possible in editing mode. In viewing mode, you can modify the query in a new query tab, without changing the underlying query of the dashboard tile.
+
+1. Browse to your dashboard.
+1. On the tile you want to explore, select the **More menu [...]** > **View query**.
+    
+    A pane opens with the query and results table.
+1. Select **New query tab**. Proceed to edit the query in the [Azure Data Explorer web UI query pane](web-ui-query-overview.md).
+
+:::image type="content" source="media/adx-dashboards/view-query.png" alt-text="Screenshot of view query pane with the query in the top half of the screen and results in the bottom half.":::
+
+> [!NOTE]
+> Any edits made to the query using this flow won't be reflected in the original dashboard.
 
 ## Share dashboards
 
