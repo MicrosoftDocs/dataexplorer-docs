@@ -196,34 +196,35 @@ Calculating percentages can help you understand the distribution and proportion 
 
 Use [count()](../count-aggregation-function.md) and [countif](../countif-aggregation-function.md) to find the percentage of storm events that caused crop damage in each state. First, count the total number of storms in each state. Then, count the number of storms that caused crop damage in each state.
 
-Then, use [extend](../extend-operator.md) to calculate the percentage between the two columns by dividing the number of storms with property damage by the total number of storms and multiplying by 100.
+Then, use [extend](../extend-operator.md) to calculate the percentage between the two columns by dividing the number of storms with crop damage by the total number of storms and multiplying by 100.
 
 To ensure that you get a decimal result, use the [todouble()](../todouble-function.md) function to convert at least one of the integer count values to a double before performing the division.
 
 > [!div class="nextstepaction"]
-> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA3WPsQ7CMAxE936FxwRVorDDBANbpSIxp62BSk1cOS6iiI8nTQVT8GjfvTtXQmyPD3Tiszf40VrD3QshgzBnEtNXs8KfXCVGEHbQ0OhE6TwqluOlk3vJNCDLdDDW3H667qqWxfcMeyh0tNYTRGSIxaega6FEbkKRJC1aOCBbpYRaGuse1b90DetU9xVsikLnsNXzq8SydEgzPoPkmgkZAQAA" target="_blank">Run the query</a>
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA22Puw7CMAxF936FxwRVorDDAgxsSEViThsDlZoYJQ4CxMeTh8TSerTPfbhlcubwRMu%2B%2BoIPxig3fBAqiHMmVmObCH%2B0LStG2EBPwbKQdSbK8TLwfefosVdG3f7McBVlkU4ettDIrOnekL1iHr4YrYYTuj42mNhk3EUvLQSTptCNKOYiJSznyi5g1TSyhrVMv5Hjkj3V%2FwB77xEnBgEAAA" target="_blank">Run the query</a>
 
 ```kusto
 StormEvents
 | summarize 
     TotalStormsInState = count(),
-    StormsWithPropertyDamage = countif(DamageProperty > 0)
+    StormsWithCropDamage = countif(DamageCrops > 0)
     by State
-| extend PercentWithPropertyDamage = 
-    round((todouble(StormsWithPropertyDamage) / TotalStormsInState * 100), 2)
-| sort by StormsWithPropertyDamage
+| extend PercentWithCropDamage = 
+    round((todouble(StormsWithCropDamage) / TotalStormsInState * 100), 2)
+| sort by StormsWithCropDamage
 ```
 
 **Output**
 
 |State|TotalStormsInState|StormsWithCropDamage|PercentWithCropDamage|
 |--|--|--|--|
-|TEXAS|4701|1205|25.63|
-|IOWA|2337|1062|45.44|
-|OHIO|1233|730|59.21|
-|GEORGIA|1983|666|33.59|
-|VIRGINIA|1647|622|37.77|
+|IOWA|2337|359|15.36|
+|NEBRASKA|1766|201|11.38|
+|MISSISSIPPI|1218|105|8.62|
+|NORTH CAROLINA|1721|82|4.76|
+|MISSOURI|2016|78|3.87|
 |...|...|...|...|
+
 
 > [!NOTE]
 > When calculating percentages, convert at least one of the integer values in the division with [todouble() or toreal()](../todouble-function.md). This will ensure that you don't get truncated results due to integer division. For more information, see [Type rules for arithmetic operations](../numerical-operators.md#type-rules-for-arithmetic-operations).
