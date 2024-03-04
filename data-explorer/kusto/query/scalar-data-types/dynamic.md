@@ -165,10 +165,7 @@ value, use the `parse_json` function. For example:
 * `parse_json('{"a":123, "b":"hello", "c":[1,2,3], "d":{}}')` - gives the same value as `o` in the example above.
 
 > [!NOTE]
-> Unlike JavaScript, JSON mandates the use of double-quote
-> (`"`) characters around strings and property-bag property names.
-> Therefore, it is generally easier to quote a JSON-encoded string literal by using
-> a single-quote (`'`) character.
+> Unlike JavaScript, JSON requires the use of double-quote (`"`) characters around strings and property-bag property names. Therefore, it is generally easier to quote a JSON-encoded string literal by using a single-quote (`'`) character.
 
 ### Ingest data into dynamic columns
 
@@ -189,6 +186,8 @@ The following example shows how you can define a table that holds a `dynamic` co
 .ingest inline into table Logs
   [2015-01-01,"{""EventType"":""Demo"", ""EventValue"":""Double-quote love!""}"]
 ```
+
+When ingesting as CSV, you must quote and escape JSON strings. 
 
 **Output**
 
