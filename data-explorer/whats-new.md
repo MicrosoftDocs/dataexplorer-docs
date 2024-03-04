@@ -59,17 +59,17 @@ Welcome to what's new in Azure Data Explorer. This article details new and signi
 
 | Article title | Description |
 |--|--|
-| [Migrate a Virtual Network injected cluster to private endpoints (Preview)](security-network-migrate-vnet-to-private-endpoint.md) | New article. Describes how to migrate a Virtual Network injected Azure Data Explorer Cluster to private endpoints.|
-| - [Ingest data from Splunk Universal Forwarder](ingest-data-splunk-uf.md) <br/> - [Ingest data with Apache Flink](ingest-data-flink.md) <br/> - [Data connectors overview](connector-overview.md)| New articles that describe how to ingest data with Splunk Universal Forwarder and Apache Flink, and updated data connector overview. |
-| [Use follower databases](follower.md) | Updated article. Update limitations for clusters using customer-managed keys.|
+| [Migrate a Virtual Network injected cluster to private endpoints (Preview)](security-network-migrate-vnet-to-private-endpoint.md)| New article. Describes how to migrate a Virtual Network injected Azure Data Explorer Cluster to private endpoints.|
+| - [Ingest data from Splunk Universal Forwarder](ingest-data-splunk-uf.md) <br/> - [Ingest data with Apache Flink](ingest-data-flink.md) <br/> - [Data connectors overview](connector-overview.md)| New articles that describe how to ingest data with Splunk Universal Forwarder and Apache Flink, and updated data connector overview.|
+| [Use follower databases](follower.md)| Updated article. Update limitations for clusters using customer-managed keys.|
 | [Create Power Apps application to query data in Azure Data Explorer](power-apps-connector.md)| Updated article. Refreshed content.|
-| [Create a Microsoft Entra application registration in Azure Data Explorer](provision-entra-id-app.md) | Updated article. Added section on creating a Microsoft Entra service principal.|
+| [Create a Microsoft Entra application registration in Azure Data Explorer](provision-entra-id-app.md)| Updated article. Added section on creating a Microsoft Entra service principal.|
 
 **Management**
 
 | Article title | Description |
 |--|--|
-| [Materialized views use cases](kusto/management/materialized-views/materialized-view-use-cases.md) | New article. Describes common and advanced use cases for materialized views.|
+| [Materialized views use cases](kusto/management/materialized-views/materialized-view-use-cases.md)| New article. Describes common and advanced use cases for materialized views.|
 
 ## October 2023
 
@@ -87,11 +87,11 @@ Welcome to what's new in Azure Data Explorer. This article details new and signi
 | Article title | Description |
 |--|--|
 |- [KQL graph semantics overview (Preview)](graph-overview.md) <br/> - [KQL graph semantics best practices (Preview)](graph-best-practices.md) <br/> - [Common scenarios for using KQL graph semantics (Preview)?](graph-scenarios.md) | New articles. Describes how to use Kusto Query Language (KQL) graph semantics.|
-| [How to ingest historical data](ingest-data-historical.md) | New article. Describes how to use LightIngest to ingest historical or ad hoc data into Azure Data Explorer.|
+| [How to ingest historical data](ingest-data-historical.md)| New article. Describes how to use LightIngest to ingest historical or ad hoc data into Azure Data Explorer.|
 |- [Ingest data from Splunk to Azure Data Explorer](ingest-data-splunk.md) <br/> - [Data connectors overview](connector-overview.md)| New article that describes how to ingest data into Azure Data Explorer from Splunk, and updated data connector overview with additional capabilities.|
-| [KQL learning resources](kql-learning-resources.md) | New article. Describes the different learning resources for ramping up on KQL.|
+| [KQL learning resources](kql-learning-resources.md)| New article. Describes the different learning resources for ramping up on KQL.|
 | [Dashboard-specific visuals](dashboard-visuals.md)| New article. Describes the visualizations available in Azure Data Explorer web UI or dashboards.|
-| [Create a dashboard base query](base-query.md) | New article. Describes how to create a base query for an Azure Data Explorer dashboard.|
+| [Create a dashboard base query](base-query.md)| New article. Describes how to create a base query for an Azure Data Explorer dashboard.|
 
 **Management**
 
@@ -133,7 +133,7 @@ Welcome to what's new in Azure Data Explorer. This article details new and signi
 | Article title | Description |
 |--|--|
 | [Use a managed identity to run an update policy](kusto/management/update-policy-with-managed-identity.md)| New article. Describes how to configure a managed identity to run an update policy.|
-| [.show databases entities command](kusto/management/show-databases-entities.md)| New article. describes how to show a database's entities.|
+| [.show databases entities command](kusto/management/show-databases-entities.md)| New article. Describes how to show a database's entities.|
 | [.show database extents partitioning statistics](kusto/management/show-database-extents-partitioning-statistics.md)| New article. Describes how to display a database's partitioning statistics.|
 
 **Query**
@@ -167,7 +167,7 @@ Welcome to what's new in Azure Data Explorer. This article details new and signi
 | Article title | Description |
 |--|--|
 [Data mappings](kusto/management/mappings.md)| Updated article. Added supported data formats for mapping transformations.|
-|- [Export data to SQL](kusto/management/data-export/export-data-to-sql.md) <br/> - [Create and alter SQL external tables](kusto/management/external-sql-tables.md)| Updated articles. Added supported authentication methods and parameters .|
+|- [Export data to SQL](kusto/management/data-export/export-data-to-sql.md) <br/> - [Create and alter SQL external tables](kusto/management/external-sql-tables.md)| Updated articles. Added supported authentication methods and parameters.|
 
 **Query**
 
