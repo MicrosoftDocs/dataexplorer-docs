@@ -183,11 +183,10 @@ The following example shows how you can define a table that holds a `dynamic` co
 //    double-quote!)
 // 3. CSV-quoting also means doubling-up every instance of a double-quotes within
 //    the contents.
+
 .ingest inline into table Logs
   [2015-01-01,"{""EventType"":""Demo"", ""EventValue"":""Double-quote love!""}"]
 ```
-
-When ingesting as CSV, you must quote and escape JSON strings. 
 
 **Output**
 
