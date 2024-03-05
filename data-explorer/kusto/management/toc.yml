@@ -692,7 +692,7 @@ items:
             href: update-policy.md
             displayName: SQL triggers
           - name: Common use cases for update policies
-            href: update-policy-use-cases.md
+            href: update-policy-common-use-cases.md
           - name: Transform data using table update policies
             href: update-policy-tutorial.md
           - name: .alter table policy update command
