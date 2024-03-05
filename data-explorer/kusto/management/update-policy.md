@@ -1,5 +1,5 @@
 ---
-title: Kusto update policy
+title: Update policy overview
 description: Learn how to trigger an update policy to add data to a source table.
 ms.reviewer: orspodek
 ms.topic: reference
