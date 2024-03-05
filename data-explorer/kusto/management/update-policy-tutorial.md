@@ -18,12 +18,12 @@ In this tutorial, you learn how to:
 > * [2 - Ingest sample data](#2---ingest-sample-data)
 > * [3 - Verify the results](#3---verify-the-results)
 
-The example in this tutorial demonstrates how to use update policies for [data routing](/azure/data-explorer/kusto/management/update-policy-use-cases#data-routing) to perform complex transformations to enrich, cleanse, and transform data at ingestion time. For a list of other common use cases, see [Common use cases for table update policies](/azure/data-explorer/kusto/management/update-policy-use-cases).
+The example in this tutorial demonstrates how to use update policies for [data routing](/azure/data-explorer/kusto/management/update-policy-common-use-cases#data-routing) to perform complex transformations to enrich, cleanse, and transform data at ingestion time. For a list of other common use cases, see [Common use cases for table update policies](/azure/data-explorer/kusto/management/update-policy-common-use-cases).
 
 ## Prerequisites
 
 * A Microsoft account or a Microsoft Entra user identity. An Azure subscription isn't required.
-* An Azure Data Explorer cluster and database. [Create a cluster and database](/azure/data-explorer/kusto/management/create-cluster-and-database).
+* An Azure Data Explorer cluster and database. [Create a cluster and database](/azure/data-explorer/create-cluster-and-database).
 
 ## 1 - Create tables and update policies
 
@@ -87,7 +87,7 @@ The following steps walk you through creating a source table, transformation fun
     The destination table must have the same schema as that output of the transformation function. You can create destination tables in the following ways:
 
     * Using the `.create table` command and manually specifying the schema as demonstrated with the creation of the **Device_Telemetry** table. However, this approach can be error-prone and time-consuming.
-    * Using the `.set-or-append` command if you've already created a function to transform the data. This method creates a new table with the same schema as the output of the function, using `take 0` to make sure only the schema is returned by the function. For more information, see [.set-or-append command](/azure/data-explorer/kusto/management/set-or-append-command).
+    * Using the `.set-or-append` command if you've already created a function to transform the data. This method creates a new table with the same schema as the output of the function, using `take 0` to make sure only the schema is returned by the function. For more information, see [.set-or-append command](/azure/data-explorer/kusto/management/data-ingestion/ingest-from-query).
 
 1. Run the following command to create the update policies for the destination tables
 
