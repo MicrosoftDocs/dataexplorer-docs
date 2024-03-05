@@ -1,175 +1,159 @@
 ---
-title: "Tutorial: Transform data using table update policies"
-description: "Learn how to use table update policies to perform complex transformations and save the results to destination tables."
+title: "Tutorial: Data routing using table update policies"
+description: "Learn how to use table update policies to perform complex transformations and save the results to one or more destination tables."
 author: shsagir
 ms.author: shsagir
 ms.topic: tutorial
 ms.date: 02/15/2024
 
-#customer intent: As a <role>, I want <what> so that <why>.
+#customer intent: As a data engineer, I want to learn how to use table update policies to perform complex transformations and save the results to one or more destination tables so that I can route data to different tables based on the data content.
 
 ---
-# Tutorial: Transform data using table update policies
+# Tutorial: Data routing using table update policies
 
-When your source data involves simple and quick transformations, it's generally best to perform them upstream in the pipeline by using the event stream. However, this approach might not work well for other transformations that are complex or require specialized functionality to operate.
+When your source data involves simple and quick transformations, it's generally best to perform them upstream in the pipeline by using an event stream. However, this approach might not work well for other transformations that are complex or require specialized functionality to operate.
 
 In this tutorial, you learn how to:
 
 > [!div class="checklist"]
 >
-> * [1 - Create a source table](#1---create-a-source-table)
-> * [2 - Create a KQL function to transform the data](#2---create-a-kql-function-to-transform-the-data)
-> * [3 - Create destination tables](#3---create-destination-tables)
-> * [4 - Create update policies](#4---create-update-policies)
-> * [5 - Ingest sample data](#5---ingest-sample-data)
-> * [6 - Verify the results](#6---verify-the-results)
+> * [1 - Create tables and update policies](#1---create-tables-and-update-policies)
+> * [2 - Ingest sample data](#2---ingest-sample-data)
+> * [3 - Verify the results](#3---verify-the-results)
 
 The example in this tutorial demonstrates how to use update policies for [data routing](update-policy-use-cases.md#data-routing) to perform complex transformations to enrich, cleanse, and transform data at ingestion time. For a list of other common use cases, see [Common use cases for table update policies](update-policy-use-cases.md).
 
 ## Prerequisites
 
-**// TODO: Add prerequisites**
+* A Microsoft account or a Microsoft Entra user identity. An Azure subscription isn't required.
+* An Azure Data Explorer cluster and database. [Create a cluster and database](/azure/data-explorer/kusto/management/create-cluster-and-database).
 
-## 1 - Create a source table
+## 1 - Create tables and update policies
 
-The source table is where the ingested data is saved. The arrival of new data serves as a trigger to run a transformation function.
+The following steps walk you through creating a source table, transformation functions, destination tables, and update policies. The example demonstrates how to use table update policies to perform complex transformations and save the results to one or more destination tables. The example uses a single source table named **Raw_Table** and three destination tables named **Device_Telemetry**, **Device_Alarms**, and **Error_Log**.
 
-**// TODO: Add content from topic directly here so customer doesn't have to click through to another topic.**
+1. Run the following command to create a table named **Raw_Table**.
 
-```kusto
-.create table Raw_Table (RawData:dynamic)
-```
+    ```kusto
+    .create table Raw_Table (RawData: dynamic)
+    ```
 
-For more information, see [.create table command](/azure/data-explorer/kusto/management/create-table-command?context=/fabric/context/context-rta&pivots=fabric).
+    The source table is where the ingested data is saved. The table has a single column named **RawData** of type dynamic. The dynamic type is used to store the raw data as is, without any schema. For more information, see [.create table command](/azure/data-explorer/kusto/management/create-table-command?context=/fabric/context/context-rta&pivots=fabric).
 
-## 2 - Create a KQL function to transform the data
+1. Run the following command to create a function named **Get_Telemetry**, **Get_Alarms**, and **Log_Error** functions.
 
-When you create an update policy, you can specify an in-line KQL script that will be executed. The recommended practice, however, is to encapsulate the transformation logic into a KQL function. A function provides better code maintenance into the future.
+    ```kusto
+    .execute database script <|
+      .create-or-alter function Get_Telemetry() {
+        Raw_Table
+        | where todynamic(RawData).MessageType == 'Telemetry'
+        | extend
+          Timestamp = unixtime_seconds_todatetime(tolong(RawData.Timestamp)),
+          DeviceId = tostring(RawData.DeviceId),
+          DeviceType = tostring(RawData.DeviceType),
+          SensorName = tostring(RawData.SensorName),
+          SensorValue = toreal(RawData.SensorValue),
+          SensorUnit = tostring(RawData.SensorUnit)
+        | project-away RawData
+      }
+      .create-or-alter function Get_Alarms() {
+        Raw_Table
+        | where RawData.MessageType == 'Alarms'
+        | extend
+          Timestamp = unixtime_seconds_todatetime(tolong(RawData.Timestamp)),
+          DeviceId = tostring(RawData.DeviceId),
+          DeviceType = tostring(RawData.DeviceTpe) ,
+          AlarmType = tostring(RawData.AlarmType)
+        | project-away RawData
+      }
+      .create-or-alter function Log_Error() {
+        Raw_Table
+        | where RawData.MessageType !in ('Telemetry', 'Alarms')
+        | extend
+          TimeStamp = datetime(now),
+          ErrorType = 'Unknown MessageType'
+        | project TimeStamp, RawData, ErrorType
+      }
+    ```
 
-**// TODO: Add content from topic directly here so customer doesn't have to click through to another topic.**
+    When creating an update policy, you can specify an in-line KQL script for execution. However, we recommend encapsulating the transformation logic into a KQL function. Using a function improves code maintenance in the long run. When new data arrives, the function is executed to transform the data. The function can be reused across multiple update policies. For more information, see [.create function command](/azure/data-explorer/kusto/management/create-function).
 
-For more information, see [.create function command](/azure/data-explorer/kusto/management/create-function?context=/fabric/context/context-rta&pivots=fabric).
+1. Run the following command to create the destination tables.
 
-```kusto
-.create-or-alter function Get_Telemetry(){
-Raw_Table
-| where todynamic(RawData).MessageType == 'Telemetry'
-| extend 
-  Timestamp   = unixtime_seconds_todatetime(tolong(RawData.Timestamp)),
-  DeviceId    = tostring(RawData.DeviceId),
-  SensorId    = tostring(RawData.SensorId),
-  SensorValue = toreal(RawData.SensorValue),
-  SensorUnit  = tostring(RawData.SensorUnitId)
-| project-away RawData}
-.create-or-alter function GetAlarms(){
-MyRawTable
-| where RawData.MessageType == 'Alarms'
-| extend 
-  Timestamp   = unixtime_seconds_todatetime(tolong(RawData.Timestamp)),
-  DeviceId    = tostring(RawData.DeviceId),
-  SensorId    = tostring(RawData.SensorId),
-  AlarmType   = toint(RawData.AlarmType)
-| project-away RawData}
-.create-or-alter function DeadLetter(){
-MyRawTable
-| where  RawData.MessageType !in ('Telemetry','Alarms')
-| extend
-  TimeStamp = datetime(now),
-  ErrorType = 'Unknown MessageType'
-| project TimeStamp,RawData,ErrorType
-}
-```
+    ```kusto
+    .execute database script <|
+      .create table Device_Telemetry (Timestamp: datetime, DeviceId: string, DeviceType: string, SensorName: string, SensorValue: real, SensorUnit: string)
+      .set-or-append Device_Alarms <| Get_Alarms | take 0
+      .set-or-append Error_Log <| Log_Error | take 0
+    ```
 
-## 3 - Create destination tables
+    The destination table must have the same schema as that output of the transformation function. You can create destination tables in the following ways:
 
-The destination table must have the same schema as that output by the transformation function (see above). For maintainability reasons, you should create the destination table by using a well crafted .create table command.
+    * Using the `.create table` command and manually specifying the schema as demonstrated with the creation of the **Device_Telemetry** table. However, this approach can be error-prone and time-consuming.
+    * Using the `.set-or-append` command if you've already created a function to transform the data. This method creates a new table with the same schema as the output of the function using `take 0` to make sure only the schema and not data is returned by the function. For more information, see [.set-or-append command](/azure/data-explorer/kusto/management/set-or-append-command).
 
-If you've already developed a KQL function to transform the data, you can use the .set-or-append command to create the destination table based. The destination table will adopt the schema that's output by the function. This approach results in faster development and ensures consistency.
+1. Run the following command to create the update policies for the destination tables
 
-The following example creates a destination table named **MyNewTable** and its schema is based on the output of the **MyTransformationFunction** function.
+    ```kusto
+    .execute database script <|
+      .alter table Device_Telemetry policy update "[{\"IsEnabled\":true,\"Source\":\"Raw_Table\",\"Query\":\"Get_Telemetry\",\"IsTransactional\":false,\"PropagateIngestionProperties\":true,\"ManagedIdentity\":null}]"
+      .alter table Device_Alarms policy update "[{\"IsEnabled\":true,\"Source\":\"Raw_Table\",\"Query\":\"Get_Alarms\",\"IsTransactional\":false,\"PropagateIngestionProperties\":true,\"ManagedIdentity\":null}]"
+      .alter table Error_Log policy update "[{\"IsEnabled\":true,\"Source\":\"Raw_Table\",\"Query\":\"Log_Error\",\"IsTransactional\":false,\"PropagateIngestionProperties\":true,\"ManagedIdentity\":null}]"
+    ```
 
-```kusto
-set-or-append MyNewTable <| MyTransformationFunction | limit 0
-```
+    The `.alter table policy update` command is used to link the source table, the transformation function, and the destination table. The update policy is created on the destination table and specifies to the source table and transformation function. For more information, see [.alter table policy update command](/azure/data-explorer/kusto/management/alter-table-update-policy-command?context=/fabric/context/context-rta&pivots=fabric).
 
-Note the limit 0 operator ensures that no rows are returned by the function, and it ensures that the table is empty.
+## 2 - Ingest sample data
 
-For more information, see [Kusto query ingestion (set, append, replace)](/azure/data-explorer/kusto/management/data-ingestion/ingest-from-query?context=/fabric/context/context-rta&pivots=fabric).
-
-```kusto
-.execute database script <|
-.create table Device_Telemetry (Timestamp:datetime, DeviceId:string, DeviceType:string, SensorName:string, SensorValue:real, SensorUnit:string)
-.create table Device_Alarms (Timestamp:datetime, DeviceId:string, DeviceType:string,AlarmType:string)
-.create table Error_Log (Timestamp:datetime, RawMsg:dynamic, ErrorType:string )
-```
-
-## 4 - Create update policies
-
-The final step is to use the .alter update policy command to link the source table, the transformation function, and the destination table by using an update policy. The update policy gets created on the destination table, and it refers to the source table and transformation function.
-
-The following example creates an update policy on the **MyDestinationTable** table.
-
-``` kusto
-.alter table MyDestinationTable policy update
-[
-    {
-        "IsEnabled": true,
-        "Source": "MySourceTable",
-        "Query": "MyTransformationFunction",
-        "IsTransactional": false,
-        "PropagateIngestionProperties": false
-    }
-]
-```
-
-For more information, see [.alter table policy update command](/azure/data-explorer/kusto/management/alter-table-update-policy-command?context=/fabric/context/context-rta&pivots=fabric).
-
-> [!TIP]
-> You can use the Fabric portal to create an update policy. It generates a template script that you can update with your object names and property values.
+To test the update policies, you can ingest sample data into the source table using the `.set-or-append` command. For more information, see [Ingest data from a query](/azure/data-explorer/kusto/management/data-ingestion/ingest-from-query).
 
 ```kusto
-.execute database script <|
-.alter table MyTelemetry  policy update "[{\"IsEnabled\":true,\"Source\":\"MyRawTable\",\"Query\":\"GetTelemetry\",\"IsTransactional\":false,\"PropagateIngestionProperties\":true,\"ManagedIdentity\":null}]"
-.alter table MyAlarms  policy update "[{\"IsEnabled\":true,\"Source\":\"MyRawTable\",\"Query\":\"GetAlarms\",\"IsTransactional\":false,\"PropagateIngestionProperties\":true,\"ManagedIdentity\":null}]"
-.alter table MyDeadLetter  policy update "[{\"IsEnabled\":true,\"Source\":\"MyRawTable\",\"Query\":\"DeadLetter\",\"IsTransactional\":false,\"PropagateIngestionProperties\":true,\"ManagedIdentity\":null}]"
+.set-or-append Raw_Table <|
+  let Raw_Stream = datatable(RawData: dynamic)
+    [
+    dynamic({"TimeStamp": 1691757932, "DeviceId": "Sensor01", "MessageType": "Telemetry", "DeviceType": "Laminator", "SensorName": "Temperature", "SensorValue": 78.3, "SensorUnit": "Celcius"}),
+    dynamic({"TimeStamp": 1691757932, "DeviceId": "Sensor01", "MessageType": "Alarms", "DeviceType": "Laminator", "AlarmType": "Temperature threshold breached"}),
+    dynamic({"TimeStamp": 1691757932, "DeviceId": "Sensor01", "MessageType": "Foo", "ErrorType": "Unknown"})
+  ];
+  Raw_Stream
 ```
 
-## 5 - Ingest sample data
+## 3 - Verify the results
+
+To validate the results, you can run a query to verify that the data has been transformed and routed to the destination tables. In the following example, the `union` operator is used to combine the source and the results from the destination tables into a single result set.
 
 ```kusto
-.set-or-append MyRawTable <|
-let MyRawStream = datatable(RawData:dynamic )
-[
-  dynamic({"TimeStamp": 1691757932,"DeviceId": "Sensor01","MessageType": "Telemetry","DeviceTypeId": 34, "SensorId": 45, "SensorValue": 78.3,"SensorUnitId": 14}),
-  dynamic({"TimeStamp": 1691757932,"DeviceId": "Sensor01","MessageType": "Alarms", "SensorId": 45,"AlarmType": 2}),
-  dynamic({"TimeStamp": 1691757932,"DeviceId": "Sensor01","MessageType": "Foo", "AlarmType": 2})
-];
-MyRawStream
+Raw_Table | summarize Rows=count() by TableName = "Raw_Table"
+| union (Device_Telemetry | summarize Rows=count() by TableName = "Device_Telemetry")
+| union (Device_Alarms | summarize Rows=count() by TableName = "Device_Alarms")
+| union (Error_Log | summarize Rows=count() by TableName = "Error_Log")
+| sort by Rows desc
 ```
 
-## 6 - Verify the results
+**Output**
 
-```kusto
-(MyRawTable| summarize count() by TableName = "MyRawTable")
-|union
-(MyTelemetry| summarize count() by TableName = "MyTelemetry")
-|union 
-(MyAlarms| summarize count() by TableName = "MyAlarms")
-| union 
-(MyDeadLetter | summarize count() by TableName = "DeadLetter")
-```
+You should see the following output where the Raw_Table has 3 rows and the destination tables have 1 row each.
+
+| TableName | Rows |
+| -- | -- |
+| Raw_Table | 3 |
+| Error_Log | 1 |
+| Device_Alarms | 1 |
+| Device_Telemetry | 1 |
 
 ## Clean up resources
 
+Run the following command in your database to clean up the tables and functions crated in this tutorial.:
+
 ```kusto
 .execute database script <|
-.drop table MyRawTable
-.drop table MyTelemetry
-.drop table MyAlarms 
-.drop table MyDeadLetter
-.drop function GetTelemetry
-.drop function GetAlarms
-.drop function DeadLetter
+  .drop table Raw_Table
+  .drop table Device_Telemetry
+  .drop table Device_Alarms
+  .drop table Error_Log
+  .drop function Get_Telemetry
+  .drop function Get_Alarms
+  .drop function Log_Error
 ```
 
 ## Related content
