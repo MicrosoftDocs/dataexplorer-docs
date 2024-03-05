@@ -693,7 +693,7 @@ items:
             displayName: SQL triggers
           - name: Common use cases for update policies
             href: update-policy-common-use-cases.md
-          - name: Data routing data using table update policies
+          - name: Data routing using table update policies
             href: update-policy-tutorial.md
           - name: .alter table policy update command
             href: alter-table-update-policy-command.md
