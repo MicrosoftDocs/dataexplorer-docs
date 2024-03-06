@@ -9,7 +9,7 @@ ms.date: 05/23/2023
 
 Update policies are automation mechanisms triggered when new data is written to a table. They eliminate the need for special orchestration by running a query to transform the ingested data and save the result to a destination table. Multiple update policies can be defined on a single table, allowing for different transformations and saving data to multiple tables simultaneously. The target tables can have a different schema, retention policy, and other policies from the source table.
 
-For example, a high-rate trace source table can contain data formatted as a free-text column. The target table can include specific trace lines, with a well-structured schema generated from a transformation of the source table's free-text data using the [parse operator](../query/parse-operator.md). For more information, [common use cases](update-policy-common-use-cases.md).
+For example, a high-rate trace source table can contain data formatted as a free-text column. The target table can include specific trace lines, with a well-structured schema generated from a transformation of the source table's free-text data using the [parse operator](../query/parse-operator.md). For more information, [common scenarios](update-policy-common-scenarios.md).
 
 The following diagram depicts a high-level view of an update policy. It shows two update policies that are triggered when data in added to the second source table and results in transformed data being added to the two target tables.
 
@@ -218,5 +218,5 @@ In this example, use an update policy in conjunction with a simple function to p
 
 ## Related content
 
-* [Common use cases for table update policies](update-policy-common-use-cases.md)
+* [Common scenarios for using table update policies](update-policy-common-scenarios.md)
 * [Tutorial: Transform data using table update policies](update-policy-tutorial.md)

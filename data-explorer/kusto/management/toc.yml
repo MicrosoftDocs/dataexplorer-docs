@@ -691,8 +691,8 @@ items:
           - name: Update policy
             href: update-policy.md
             displayName: SQL triggers
-          - name: Common use cases for update policies
-            href: update-policy-common-use-cases.md
+          - name: Update policy scenarios
+            href: update-policy-common-scenarios.md
           - name: Data routing using table update policies
             href: update-policy-tutorial.md
           - name: .alter table policy update command

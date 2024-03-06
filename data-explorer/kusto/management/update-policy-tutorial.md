@@ -155,4 +155,5 @@ Run the following command in your database to clean up the tables and functions 
 
 ## Related content
 
-* [Create a table update policy](update-policy.md)
+* [Table update policies](update-policy.md)
+* [Common scenarios for using table update policies](update-policy-common-scenarios.md)

@@ -1,12 +1,14 @@
 ---
-title: "Common use cases for table update policies"
-description: "Learn about common use cases that can use table update policies to perform complex transformations and save the results to destination tables."
+title: "Common scenarios for using table update policies"
+description: "Learn about common scenarios that can use table update policies to perform complex transformations and save the results to destination tables."
 ms.topic: conceptual
-ms.date: 02/15/2024
+ms.date: 03/06/2024
 ---
-# Common use cases for table update policies
+# What are common scenarios for using table update policies
 
-This section describes some well-known use cases that use update policies. Consider adopting these use cases when your circumstances are similar.
+This section describes some well-known scenarios that use update policies. Consider adopting these scenarios when your circumstances are similar.
+
+In this article, you learn about the following common scenarios:
 
 ## Medallion architecture data enrichment
 
@@ -22,7 +24,7 @@ The following diagram illustrates an example of a data enrichment update policy 
 
 A special case of data enrichment occurs when a raw data element contains data that must be routed to a different table based on one or more attributes of the data itself.
 
-Consider an example that uses the same base data as the previous use case, but this time there are three messages. The first message is a device telemetry message, the second message is a device alarm message, and the third message is an error.
+Consider an example that uses the same base data as the previous scenario, but this time there are three messages. The first message is a device telemetry message, the second message is a device alarm message, and the third message is an error.
 
 To handle this scenario, three update policies are used. The **Get_Telemetry** update policy filters the device telemetry message, enriches the data, and saves it to the **Device_Telemetry** table. Similarly, the **Get_Alarms** update policy saves the data to the **Device_Alarms** table. Lastly, the **Log_Error** update policy sends unknown messages to the **Error_Log** table, allowing operators to detect malformed messages or unexpected schema evolution.
 
