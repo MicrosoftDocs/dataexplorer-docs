@@ -49,4 +49,4 @@ The following diagram depicts the example, which comprises an update policy name
 ## Related content
 
 * [Table update policies](update-policy.md)
-* [Tutorial: Transform data using table update policies](update-policy-tutorial.md)
+* [Tutorial: Route data using table update policies](update-policy-tutorial.md)

@@ -219,4 +219,4 @@ In this example, use an update policy in conjunction with a simple function to p
 ## Related content
 
 * [Common scenarios for using table update policies](update-policy-common-scenarios.md)
-* [Tutorial: Transform data using table update policies](update-policy-tutorial.md)
+* [Tutorial: Route data using table update policies](update-policy-tutorial.md)

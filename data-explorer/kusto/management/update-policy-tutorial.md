@@ -1,12 +1,12 @@
 ---
-title: "Tutorial: Data routing using table update policies"
+title: "Tutorial: Route data using table update policies"
 description: "Learn how to use table update policies to perform complex transformations and save the results to one or more destination tables."
 ms.topic: tutorial
 ms.date: 02/15/2024
 
 #customer intent: As a data engineer, I want to learn how to use table update policies to perform complex transformations and save the results to one or more destination tables so that I can route data to different tables based on the data content.
 ---
-# Tutorial: Data routing using table update policies
+# Tutorial: Route data using table update policies
 
 When your source data involves simple and quick transformations, it's best to perform them upstream in the pipeline by using an event stream. However, this approach might not work well for other transformations that are complex or require specialized functionality to operate.
 
