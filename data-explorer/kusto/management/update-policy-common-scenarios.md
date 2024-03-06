@@ -10,6 +10,12 @@ This section describes some well-known scenarios that use update policies. Consi
 
 In this article, you learn about the following common scenarios:
 
+> [!div class="checklist"]
+>
+> * [Medallion architecture data enrichment](#medallion-architecture-data-enrichment)
+> * [Data routing](#data-routing)
+> * [Optimize data models](#optimize-data-models)
+
 ## Medallion architecture data enrichment
 
 Update policies on tables provide an efficient way to apply rapid transformations and are compatible with the [medallion lakehouse architecture in Fabric](/fabric/onelake/onelake-medallion-lakehouse-architecture).
