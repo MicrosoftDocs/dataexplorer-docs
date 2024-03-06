@@ -24,7 +24,7 @@ In the medallion architecture, when raw data lands in a landing table (bronze la
 
 The following diagram illustrates an example of a data enrichment update policy named **Get_Values**. The enriched data is output to a silver layer table, which includes a calculated timestamp value and lookup values based on the raw data.
 
-:::image type="content" source="media/update-policy-common-use-cases/medallion-architecture-data-enrichment.png" alt-text="Diagram showing the medalliion architecture data enrichment  using update policies solution.":::
+:::image type="content" source="media/update-policy-common-scenarios/medallion-architecture-data-enrichment.png" alt-text="Diagram showing the medalliion architecture data enrichment  using update policies solution.":::
 
 ## Data routing
 
@@ -36,7 +36,7 @@ To handle this scenario, three update policies are used. The **Get_Telemetry** u
 
 The following diagram depicts the example with the three update policies.
 
-:::image type="content" source="media/update-policy-common-use-cases/data-routing.png" alt-text="Diagram showing the data routing  using update policies solution.":::
+:::image type="content" source="media/update-policy-common-scenarios/data-routing.png" alt-text="Diagram showing the data routing  using update policies solution.":::
 
 ## Optimize data models
 
@@ -50,7 +50,7 @@ For example, you can enrich raw telemetry data from a device by looking up value
 
 The following diagram depicts the example, which comprises an update policy named **Enrich_Device_Data**. It extends the output data with data sourced from the **Site** reference data table.
 
-:::image type="content" source="media/update-policy-common-use-cases/optimize-data-models.png" alt-text="Diagram showing the optimize data models using update policies solution.":::
+:::image type="content" source="media/update-policy-common-scenarios/optimize-data-models.png" alt-text="Diagram showing the optimize data models using update policies solution.":::
 
 ## Related content
 
