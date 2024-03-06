@@ -38,9 +38,9 @@ Querying tables in a star schema often requires joining tables. However, table j
 
 Joining tables at ingestion time has the added benefit of operating on a small batch of data, resulting in a reduced computational cost of the join. This approach can massively improve the performance of downstream queries.
 
-For example, you can enrich raw telemetry data from a device by looking up values from a dimension table. An update policy can perform the lookup at ingestion time and save the output to a denormalized table. Furthermore, you can extend the output with data sourced from a master data table.
+For example, you can enrich raw telemetry data from a device by looking up values from a dimension table. An update policy can perform the lookup at ingestion time and save the output to a denormalized table. Furthermore, you can extend the output with data sourced from a reference data table.
 
-The following diagram depicts the example, which comprises an update policy named **Enrich_Device_Data**. It extends the output data with data sourced from the **Site** master data table.
+The following diagram depicts the example, which comprises an update policy named **Enrich_Device_Data**. It extends the output data with data sourced from the **Site** reference data table.
 
 :::image type="content" source="media/update-policy-common-use-cases/optimize-data-models.png" alt-text="Diagram showing the optimize data models using update policies solution.":::
 
