@@ -56,7 +56,7 @@ Azure Data Explorer provides the capability to connect to [Power BI](https://pow
 
 ## Microsoft Excel
 
-Azure Data Explorer provides the capability to connect to [Microsoft Excel](https://products.office.com/excel) using the [built-in native Excel connector](excel-connector.md), or [import a query](excel-blank-query.md) from Azure Data Explorer into Excel.
+Azure Data Explorer provides the capability to connect to [Microsoft Excel](https://www.microsoft.com/microsoft-365/excel) using the [built-in native Excel connector](excel-connector.md), or [import a query](excel-blank-query.md) from Azure Data Explorer into Excel.
 
 ## Grafana
 
