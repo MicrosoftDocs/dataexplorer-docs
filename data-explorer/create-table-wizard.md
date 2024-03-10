@@ -45,8 +45,13 @@ The **Create table** window opens with the **Destination** tab selected.
 
 1. Select **Add new column** and the **Edit columns** panel opens.
 1. For each column, enter **Column name** and **Data type**. Create more columns by selecting **Add column**.
+    
+    :::image type="content" source="media/create-table-wizard/edit-columns.png" alt-text="Screenshot of Edit columns pane, in which you input the column name and data type in Azure Data Explorer.":::
+
 1. Select **Save**. The schema is displayed.
 1. Select **Next: Create table**.
+
+    :::image type="content" source="media/create-table-wizard/create-table.png" alt-text="Screenshot of create emptytable wizard with schema input in Azure Data Explorer.":::
 
 A new table is created in your target destination, with the schema you defined.
 
