@@ -12,7 +12,7 @@ PowerShell scripts can use Azure PowerShell [Az.Kusto cmdlets](/powershell/modul
 ## Prerequisites
 
 * An Azure subscription. Create a [free Azure account](https://azure.microsoft.com/free/).
-* An Azure Data Explorer cluster and database. [Create a cluster and database](create-cluster-and-database.md).
+* An Azure Data Explorer cluster and database. [Create a cluster and database](../../../create-cluster-and-database.md).
 * Follow the Azure PowerShell prerequisites relevant to your environment. For more information, see [Install Azure PowerShell](/powershell/azure/install-azure-powershell).
 
 ## Install az.Kusto cmdlets

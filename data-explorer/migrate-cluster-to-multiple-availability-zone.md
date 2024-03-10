@@ -67,7 +67,7 @@ Migration to multiple availability zones is fully supported in all regions, but 
 
 You can get a list of availability zones for your cluster in the following ways:
 
-### [Azure portal](#tab/azure-portal)
+### [Azure portal](#tab/az-azure-portal)
 
 1. In the Azure portal, go to your cluster's **Overview** page.
 
@@ -77,7 +77,7 @@ You can get a list of availability zones for your cluster in the following ways:
 
     :::image type="content" source="media/migrate-cluster-to-multiple-availability-zone/availability-zones-list.png" lightbox="media/migrate-cluster-to-multiple-availability-zone/availability-zones-list.png" alt-text="Availability zones":::
 
-### [Azure CLI](#tab/azure-cli)
+### [Azure CLI](#tab/az-azure-cli)
 
 <!-- You can get a list of availability zones for a region by using the following Azure CLI command:
 
@@ -120,7 +120,7 @@ The availability zones are listed in the `availabilityZoneMappings` property.
 ]
 ``` -->
 
-### [PowerShell](#tab/powershell)
+### [PowerShell](#tab/az-powershell)
 
 Before you start, make sure you have [az.Kusto cmdlets](kusto/api/powershell/azure-powershell.md) installed and [signed in](kusto/api/powershell/azure-powershell.md#sign-in-to-azure), and then run the following command to get the list of availability zones for your cluster's region:
 
@@ -176,7 +176,7 @@ To add availability zones to an existing cluster, you must update the cluster `z
 > [!IMPORTANT]
 > Changing the availability zones for an existing cluster only changes the availability zones for the compute. The persistent storage is not changed.
 
-### [REST API](#tab/rest-api)
+### [REST API](#tab/config-rest-api)
 
 Follow the instructions on how to [deploy a template](/azure/azure-resource-manager/management/manage-resources-rest?tabs=azure-cli#deploy-a-template).
 
@@ -192,7 +192,7 @@ Follow the instructions on how to [deploy a template](/azure/azure-resource-mana
     { "zones": [ "{zone1}", "{zone2}", "{zone3}" ] }
     ```
 
-### [C\#](#tab/csharp)
+### [C\#](#tab/config-csharp)
 
 1. If you don't have the *Azure.Identity* and *Azure.ResourceManager.Kusto* libraries installed, use the following commands to install them:
 
@@ -213,7 +213,7 @@ Follow the instructions on how to [deploy a template](/azure/azure-resource-mana
 
 1. Run your application.
 
-### [Python](#tab/python)
+### [Python](#tab/config-python)
 
 1. In your application, add the following code:
 
@@ -227,7 +227,7 @@ Follow the instructions on how to [deploy a template](/azure/azure-resource-mana
 
 1. Run your application.
 
-### [PowerShell](#tab/powershell)
+### [PowerShell](#tab/config-powershell)
 
 You can use the following PowerShell command to configure your cluster to use availability zones. Make sure the [Kusto tools libraries](kusto/api/powershell/powershell.md#get-the-libraries) is installed and replace the parameters with your values.
 
@@ -235,7 +235,7 @@ You can use the following PowerShell command to configure your cluster to use av
 Update-AzKustoCluster -SubscriptionId {subscriptionId} -ResourceGroupName {resourceGroupName} -Name {clusterName} -Zone "{zone1}", "{zone2}", "{zone3}"
 ```
 
-### [ARM Template](#tab/arm)
+### [ARM Template](#tab/config-arm)
 
 1. In your ARM template, add the following property to the `Microsoft.Kusto/clusters` resource:
 
