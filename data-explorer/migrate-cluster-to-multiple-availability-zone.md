@@ -77,9 +77,11 @@ You can get a list of availability zones for your cluster in the following ways:
 
     :::image type="content" source="media/migrate-cluster-to-multiple-availability-zone/availability-zones-list.png" lightbox="media/migrate-cluster-to-multiple-availability-zone/availability-zones-list.png" alt-text="Availability zones":::
 
+<!-- 
+
 ### [Azure CLI](#tab/az-azure-cli)
 
-<!-- You can get a list of availability zones for a region by using the following Azure CLI command:
+You can get a list of availability zones for a region by using the following Azure CLI command:
 
 ```azurecli
 az account list-locations --query "[?name=='{regionName}']"
