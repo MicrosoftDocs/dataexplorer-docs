@@ -7,7 +7,7 @@ ms.date: 11/23/2022
 ---
 # bag_merge()
 
-Merges `dynamic` property bags into a `dynamic` property bag object with all properties merged.
+The function merges multiple `dynamic` property bags into a single `dynamic` property bag object, consolidating all properties from the input bags.
 
 ## Syntax
 
@@ -23,7 +23,7 @@ Merges `dynamic` property bags into a `dynamic` property bag object with all pro
 
 ## Returns
 
-Returns a `dynamic` property bag. Results from merging all of the input property bag objects. If a key appears in more than one input object, an arbitrary value out of the possible values for this key will be chosen.
+A `dynamic` property bag containing the merged results of all input property bags. If a key is present in multiple input bags, the value associated with the key from the leftmost argument takes precedence.
 
 ## Example
 
