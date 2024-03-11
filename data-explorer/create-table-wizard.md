@@ -1,7 +1,7 @@
 ---
 title: Create a table in Azure Data Explorer
 description: Learn how to easily create a table and manually define the schema in Azure Data Explorer with the table creation wizard.
-ms.reviewer: akshays
+ms.reviewer: aksdi
 ms.topic: how-to
 ms.date: 03/07/2024
 # Customer intent: As a data engineer, I want to create an empty table in Azure Data Explorer so that I can ingest data and query it.
