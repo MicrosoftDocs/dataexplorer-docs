@@ -35,7 +35,7 @@ The data profile for the selected table view opens in a side window.
 > [!NOTE]
 > The data profile is based on data from the [hot cache](kusto/management/cache-policy.md).
 
-[!INCLUDE [data-profile](includes/cross-repo-data-profile.md)]
+[!INCLUDE [data-profile](includes/cross-repo/data-profile.md)]
 
 ## Related content
 
