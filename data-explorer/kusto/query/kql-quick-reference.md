@@ -3,7 +3,7 @@ title: KQL quick reference
 description: A list of useful KQL functions and their definitions with syntax examples.
 ms.reviewer: 
 ms.topic: conceptual
-ms.date: 01/19/2020
+ms.date: 03/11/2024
 adobe-target: true
 ---
 
