@@ -2,7 +2,7 @@
 title: Access the data profile of a table
 description: Learn how to access the data profile of a table in the Azure Data Explorer web UI.
 ms.reviewer: mibar
-ms.topic: reference
+ms.topic: how-to
 ms.date: 01/15/2024
 ---
 
@@ -35,7 +35,7 @@ The data profile for the selected table view opens in a side window.
 > [!NOTE]
 > The data profile is based on data from the [hot cache](kusto/management/cache-policy.md).
 
-[!INCLUDE [data-profile](includes/cross-repo-data-profile.md)]
+[!INCLUDE [data-profile](includes/cross-repo/data-profile.md)]
 
 ## Related content
 

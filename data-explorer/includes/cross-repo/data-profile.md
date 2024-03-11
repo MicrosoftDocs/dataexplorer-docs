@@ -10,13 +10,13 @@ ms.custom: include file
 
 To filter the data presented in the data profile by ingestion time, select one of the tabs at the top of the profile. These tabs allow you to filter by one day (`1d`), one week (`7d`), one month (`30d`), one year (`365d`) or the full time range of your data (`max`).
 
-:::image type="content" source="../media/data-profile/data-profile-filter-time-range.png" alt-text="Screenshot of the time range filter tabs.":::
+:::image type="content" source="media/data-profile/data-profile-filter-time-range.png" alt-text="Screenshot of the time range filter tabs.":::
 
 ## View data distribution by other `datetime` columns
 
 By default, the time chart shows the data distribution by ingestion time. To view the distribution by a different `datetime` column, select the dropdown tab at the top right of the chart.
 
-:::image type="content" source="../media/data-profile/data-profile-filter-time-chart.png" alt-text="Screenshot of the time chart filter.":::
+:::image type="content" source="media/data-profile/data-profile-filter-time-chart.png" alt-text="Screenshot of the time chart filter.":::
 
 ## View columns and their top values
 
@@ -32,4 +32,4 @@ You can browse the table schema in the profile by looking at the columns or find
 
 For example, in the following image, the `ColorName` column of type `string` is selected:
 
-:::image type="content" source="../media/data-profile/data-profile-columns.png" alt-text="Screenshot of example column selected.":::
+:::image type="content" source="media/data-profile/data-profile-columns.png" alt-text="Screenshot of example column selected.":::
