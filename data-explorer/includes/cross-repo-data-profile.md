@@ -10,7 +10,7 @@ ms.custom: include file
 
 To filter the data presented in the data profile by ingestion time, select one of the tabs at the top of the profile. These tabs allow you to filter by one day (`1d`), one week (`7d`), one month (`30d`), one year (`365d`) or the full time range of your data (`max`).
 
-:::image type="content" source="media/data-profile/data-profile-filter-time-range.png" alt-text="Screenshot of the time range filter tabs.":::
+:::image type="content" source="../media/data-profile/data-profile-filter-time-range.png" alt-text="Screenshot of the time range filter tabs.":::
 
 ## View data distribution by other `datetime` columns
 
