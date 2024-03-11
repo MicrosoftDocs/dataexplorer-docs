@@ -27,7 +27,7 @@ The example in this tutorial demonstrates how to use update policies for [data r
 
 ## 1 - Create tables and update policies
 
-The following steps walk you through creating a source table, transformation functions, destination tables, and update policies. The example demonstrates how to use table update policies to perform complex transformations and save the results to one or more destination tables. The example uses a single source table named **Raw_Table** and three destination tables named **Device_Telemetry**, **Device_Alarms**, and **Error_Log**.
+The following steps guide you through creating a source table, transformation functions, destination tables, and update policies. The tutorial demonstrates how to use table update policies to perform complex transformations and save the results to one or more destination tables. The example uses a single source table named **Raw_Table** and three destination tables named **Device_Telemetry**, **Device_Alarms**, and **Error_Log**.
 
 1. Run the following command to create a table named **Raw_Table**.
 
@@ -73,7 +73,7 @@ The following steps walk you through creating a source table, transformation fun
       }
     ```
 
-    When creating an update policy, you can specify an in-line script for execution. However, we recommend encapsulating the transformation logic into a KQL function. Using a function improves code maintenance. When new data arrives, the function is executed to transform the data. The function can be reused across multiple update policies. For more information, see [.create function command](/azure/data-explorer/kusto/management/create-function).
+    When creating an update policy, you can specify an in-line script for execution. However, we recommend encapsulating the transformation logic into a function. Using a function improves code maintenance. When new data arrives, the function is executed to transform the data. The function can be reused across multiple update policies. For more information, see [.create function command](/azure/data-explorer/kusto/management/create-function).
 
 1. Run the following command to create the destination tables.
 
