@@ -3,7 +3,7 @@ title: Use the sample app generator to ingest and query data in Azure Data Explo
 description: Overview of using the sample app generator to create the code to ingest and query your data in your preferred programming language.
 ms.reviewer: talzamir
 ms.topic: how-to
-ms.date: 07/24/2023
+ms.date: 03/12/2024
 ---
 
 # Use the sample app generator wizard to create code to ingest and query your data
