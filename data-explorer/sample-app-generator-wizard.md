@@ -34,7 +34,7 @@ To access the wizard from the [Azure Data Explorer web UI](https://dataexplorer.
 
 ## Generate a sample app
 
-This section describes the wizard in general. The options you select depend on what data format you are ingesting, what kind of data source you are ingesting from, and whether you are ingesting into a new or existing table.
+This section describes the wizard in general. The options you select depend on what data format you're ingesting, what kind of data source you're ingesting from, and whether you're ingesting into a new or existing table.
 
 The wizard guides you through the following options:
 
@@ -98,9 +98,9 @@ For more information, see [Mapping transformations](kusto/management/mappings.md
 
 ### Generate
 
-Once you've completed schema mapping and column manipulations, the sample app generator wizard will start the code generation process. After code generation, the sample app project will be available for download as a ZIP file.
+Once you've completed schema mapping and column manipulations, the sample app generator wizard starts the code generation process. After code generation, the sample app project will be available for download as a ZIP file.
 
-Detailed instructions for running the project with the selected SDK will be shown upon successful generation as well as inside the sample project file. In addition, the wizard gives you options to use **Quick queries** for initial exploration of your data.
+Detailed instructions for running the project with the selected SDK are provided upon successful generation and within the sample project file. In addition, the wizard gives you options to use **Quick queries** for initial exploration of your data.
 
 >[!NOTE]
 > You may need to run the downloaded app for the **Quick queries** to work.
