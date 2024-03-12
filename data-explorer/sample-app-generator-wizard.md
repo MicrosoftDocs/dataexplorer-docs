@@ -27,10 +27,10 @@ The sample app generator wizard guides you through the ingestion process.
 
 To access the wizard from the [Azure Data Explorer web UI](https://dataexplorer.azure.com/):
 
-1. Select **Data** in the left pane.
-1. Within the **Data Management** page under Quick actions, select **Generate Sample App**.
+1. Select **Query** in the left pane.
+1. Right-click on the desired table, and select **Generate** > **Sample code**.
 
-    :::image type="content" source="media/sample-app-generator-wizard/sample-app-generator-welcome.png" alt-text="Screenshot showing Sample app generator card from welcome to Azure Data Explorer.":::
+    :::image type="content" source="media/sample-app-generator-wizard/sample-app-generator-welcome.png" alt-text="Screenshot showing Sample app generator card from table context menu.":::
 
 ## Generate a sample app
 
