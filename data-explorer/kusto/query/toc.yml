@@ -1400,8 +1400,8 @@ items:
             href: time-series-analysis.md
           - name: Anomaly detection and forecasting
             href: anomaly-detection.md
-          - name: Machine learning
-            href: machine-learning-clustering.md
+          - name: Anomaly diagnosis for root cause analysis
+            href: anomaly-diagnosis.md
       - name: make-series operator
         href: make-series-operator.md
       - name: series_abs()
