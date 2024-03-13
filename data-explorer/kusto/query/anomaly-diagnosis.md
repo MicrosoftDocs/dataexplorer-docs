@@ -1,12 +1,12 @@
 ---
-title: Anomaly Diagnosis for Root Cause Analysis
+title: Anomaly diagnosis for root cause analysis
 description: Use machine learning clustering for Root Cause Analysis.
 ms.reviewer: adieldar
 ms.topic: how-to
 ms.date: 05/01/2023
 ---
 
-# Anomaly Diagnosis for Root Cause Analysis
+# Anomaly diagnosis for root cause analysis
 
 Kusto Query Language (KQL) has built-in [anomaly detection and forecasting](anomaly-detection.md) functions to check for anomalous behavior. Once such a pattern is detected, a Root Cause Analysis (RCA) can be run to mitigate or resolve the anomaly.
 
