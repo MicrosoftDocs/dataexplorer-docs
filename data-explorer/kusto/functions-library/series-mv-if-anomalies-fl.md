@@ -17,7 +17,7 @@ The function `series_mv_if_anomalies_fl()` is a [user-defined function (UDF)](..
 
 ## Syntax
 
-`T | invoke series_mv_if_anomalies_fl(`*features_cols*`,` *anomaly_col* [`,` *score_col* [`,`        *anomaly_col* [`,` *anomalies_pct* [`,` *num_trees* [`,` *samples_pct* ]]]]]`)`
+`T | invoke series_mv_if_anomalies_fl(`*features_cols*`,` *anomaly_col* [`,` *score_col* [`,` *anomalies_pct* [`,` *num_trees* [`,` *samples_pct* ]]]]`)`
 
 [!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
 
