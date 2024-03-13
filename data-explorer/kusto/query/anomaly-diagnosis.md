@@ -12,9 +12,9 @@ Kusto Query Language (KQL) has built-in [anomaly detection and forecasting](anom
 
 The diagnosis process is complex and lengthy, and done by domain experts. The process includes:
 
-* Fetching and joining additional data from different sources for the same time frame
+* Fetching and joining more data from different sources for the same time frame
 * Looking for changes in the distribution of values on multiple dimensions
-* Charting additional variables
+* Charting more variables
 * Other techniques based on domain knowledge and intuition
 
 Since these diagnosis scenarios are common, machine learning plugins are available to make the diagnosis phase easier, and shorten the duration of the RCA.
@@ -62,7 +62,7 @@ demo_clustering1
 
 ![Focus on spike timechart.](../../media/machine-learning-clustering/focus-spike-timechart.png)
 
-You'll see a narrow two-minute spike from 15:00 to 15:02. In the following query, count the exceptions in this two-minute window:
+You see a narrow two-minute spike from 15:00 to 15:02. In the following query, count the exceptions in this two-minute window:
 
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA8tJLVHIzcyLL0hNzI4vsU1JLEktycxN1TAyMDTTNbDQNTJWMDS1MjDQtObKASlNrCCk1AioNCU1Nz8+Oae0uCS1KDMv3ZCrRqE8I7UoVSGgKDU5szg1BKgvuCQxt0AhKbWkPDU1TwPhBj09hCWaQI3J+aV5JQACnQoRpwAAAA==" target="_blank">Run the query</a>
@@ -138,9 +138,9 @@ demo_clustering1
 | 3 | 68 | 6.99588477366255 | scus | su3 | 90d3d2fc7ecc430c9621ece335651a01 |  |
 | 4 | 55 | 5.65843621399177 | weu | su4 | be1d6d7ac9574cbc9a22cb8ee20f16fc |  |
 
-You can see from the results above, the most dominant segment contains 65.74% of the total exception records and shares four dimensions. The next segment is much less common. It contains only 9.67% of the records, and shares three dimensions. The other segments are even less common.
+You can see from the results above that the most dominant segment contains 65.74% of the total exception records and shares four dimensions. The next segment is much less common. It contains only 9.67% of the records, and shares three dimensions. The other segments are even less common.
 
-Autocluster uses a proprietary algorithm for mining multiple dimensions and extracting interesting segments. "Interesting" means that each segment has significant coverage of both the records set and the features set. The segments are also diverged, meaning that each one is different from the others. One or more of these segments may be relevant for the RCA process. To minimize segment review and assessment, autocluster extracts only a small segment list.
+Autocluster uses a proprietary algorithm for mining multiple dimensions and extracting interesting segments. "Interesting" means that each segment has significant coverage of both the records set and the features set. The segments are also diverged, meaning that each one is different from the others. One or more of these segments might be relevant for the RCA process. To minimize segment review and assessment, autocluster extracts only a small segment list.
 
 ### Use basket() for single record set clustering
 
