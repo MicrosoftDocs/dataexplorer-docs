@@ -17,7 +17,7 @@ The function `series_mv_ee_anomalies_fl()` is a [user-defined function (UDF)](..
 
 ## Syntax
 
-`T | invoke series_mv_ee_anomalies_fl(`*features_cols*`,` *anomaly_col* [`,` *anomalies_pct* ]`)`
+`T | invoke series_mv_ee_anomalies_fl(`*features_cols*`,` *anomaly_col* [`,` *score_col* [`,` *anomalies_pct* ]]`)`
 
 [!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
  
@@ -27,6 +27,7 @@ The function `series_mv_ee_anomalies_fl()` is a [user-defined function (UDF)](..
 |--|--|--|--|
 | *features_cols* | `dynamic` |  :heavy_check_mark: | An array containing the names of the columns that are used for the multivariate anomaly detection model. |
 | *anomaly_col* | `string` |  :heavy_check_mark: | The name of the column to store the detected anomalies. |
+| *score_col* | `string` | | The name of the column to store the scores of the anomalies. |
 | *anomalies_pct* | `real` | | A real number in the range [0-50] specifying the expected percentage of anomalies in the data. Default value: 4%. |
 
 ## Function definition
@@ -42,13 +43,14 @@ Define the function using the following [let statement](../query/let-statement.m
 
 ```kusto
 // Define function
-let series_mv_ee_anomalies_fl=(tbl:(*), features_cols:dynamic, anomaly_col:string, anomalies_pct:real=4.0)
+let series_mv_ee_anomalies_fl=(tbl:(*), features_cols:dynamic, anomaly_col:string, score_col:string='', anomalies_pct:real=4.0)
 {
-    let kwargs = bag_pack('features_cols', features_cols, 'anomaly_col', anomaly_col, 'anomalies_pct', anomalies_pct);
+    let kwargs = bag_pack('features_cols', features_cols, 'anomaly_col', anomaly_col, 'score_col', score_col, 'anomalies_pct', anomalies_pct);
     let code = ```if 1:
         from sklearn.covariance import EllipticEnvelope
         features_cols = kargs['features_cols']
         anomaly_col = kargs['anomaly_col']
+        score_col = kargs['score_col']
         anomalies_pct = kargs['anomalies_pct']
         dff = df[features_cols]
         ellipsoid = EllipticEnvelope(contamination=anomalies_pct/100.0)
@@ -57,18 +59,14 @@ let series_mv_ee_anomalies_fl=(tbl:(*), features_cols:dynamic, anomaly_col:strin
             dffe = dffi.explode(features_cols)
             ellipsoid.fit(dffe)
             df.loc[i, anomaly_col] = (ellipsoid.predict(dffe) < 0).astype(int).tolist()
+            if score_col != '':
+                df.loc[i, score_col] = ellipsoid.decision_function(dffe).tolist()
         result = df
     ```;
     tbl
-    | evaluate python(typeof(*), code, kwargs)
-}
-;
-// Usage
-normal_2d_with_anomalies
-| extend anomalies=dynamic(null)
-| invoke series_mv_ee_anomalies_fl(pack_array('x', 'y'), 'anomalies')
-| extend anomalies=series_multiply(80, anomalies)
-| render timechart
+    | evaluate hint.distribution=per_node python(typeof(*), code, kwargs)
+};
+// Write your query to use the function here.
 ```
 
 ### [Stored](#tab/stored)
@@ -80,13 +78,14 @@ Define the stored function once using the following [`.create function`](../mana
 
 ~~~kusto
 .create-or-alter function with (folder = "Packages\\Series", docstring = "Anomaly Detection for multi dimensional normally distributed data using elliptical envelope model")
-series_mv_ee_anomalies_fl(tbl:(*), features_cols:dynamic, anomaly_col:string, anomalies_pct:real=4.0)
+series_mv_ee_anomalies_fl(tbl:(*), features_cols:dynamic, anomaly_col:string, score_col:string='', anomalies_pct:real=4.0)
 {
-    let kwargs = bag_pack('features_cols', features_cols, 'anomaly_col', anomaly_col, 'anomalies_pct', anomalies_pct);
+    let kwargs = bag_pack('features_cols', features_cols, 'anomaly_col', anomaly_col, 'score_col', score_col, 'anomalies_pct', anomalies_pct);
     let code = ```if 1:
         from sklearn.covariance import EllipticEnvelope
         features_cols = kargs['features_cols']
         anomaly_col = kargs['anomaly_col']
+        score_col = kargs['score_col']
         anomalies_pct = kargs['anomalies_pct']
         dff = df[features_cols]
         ellipsoid = EllipticEnvelope(contamination=anomalies_pct/100.0)
@@ -95,10 +94,12 @@ series_mv_ee_anomalies_fl(tbl:(*), features_cols:dynamic, anomaly_col:string, an
             dffe = dffi.explode(features_cols)
             ellipsoid.fit(dffe)
             df.loc[i, anomaly_col] = (ellipsoid.predict(dffe) < 0).astype(int).tolist()
+            if score_col != '':
+                df.loc[i, score_col] = ellipsoid.decision_function(dffe).tolist()
         result = df
     ```;
     tbl
-    | evaluate python(typeof(*), code, kwargs)
+    | evaluate hint.distribution=per_node python(typeof(*), code, kwargs)
 }
 ~~~
 
@@ -114,13 +115,14 @@ To use a query-defined function, invoke it after the embedded function definitio
 
 ```kusto
 // Define function
-let series_mv_ee_anomalies_fl=(tbl:(*), features_cols:dynamic, anomaly_col:string, anomalies_pct:real=4.0)
+let series_mv_ee_anomalies_fl=(tbl:(*), features_cols:dynamic, anomaly_col:string, score_col:string='', anomalies_pct:real=4.0)
 {
-    let kwargs = bag_pack('features_cols', features_cols, 'anomaly_col', anomaly_col, 'anomalies_pct', anomalies_pct);
+    let kwargs = bag_pack('features_cols', features_cols, 'anomaly_col', anomaly_col, 'score_col', score_col, 'anomalies_pct', anomalies_pct);
     let code = ```if 1:
         from sklearn.covariance import EllipticEnvelope
         features_cols = kargs['features_cols']
         anomaly_col = kargs['anomaly_col']
+        score_col = kargs['score_col']
         anomalies_pct = kargs['anomalies_pct']
         dff = df[features_cols]
         ellipsoid = EllipticEnvelope(contamination=anomalies_pct/100.0)
@@ -129,15 +131,17 @@ let series_mv_ee_anomalies_fl=(tbl:(*), features_cols:dynamic, anomaly_col:strin
             dffe = dffi.explode(features_cols)
             ellipsoid.fit(dffe)
             df.loc[i, anomaly_col] = (ellipsoid.predict(dffe) < 0).astype(int).tolist()
+            if score_col != '':
+                df.loc[i, score_col] = ellipsoid.decision_function(dffe).tolist()
         result = df
     ```;
     tbl
-    | evaluate python(typeof(*), code, kwargs)
+    | evaluate hint.distribution=per_node python(typeof(*), code, kwargs)
 };
 // Usage
 normal_2d_with_anomalies
-| extend anomalies=dynamic(null)
-| invoke series_mv_ee_anomalies_fl(pack_array('x', 'y'), 'anomalies')
+| extend anomalies=dynamic(null), scores=dynamic(null)
+| invoke series_mv_ee_anomalies_fl(pack_array('x', 'y'), 'anomalies', 'scores')
 | extend anomalies=series_multiply(80, anomalies)
 | render timechart
 ```
@@ -149,8 +153,8 @@ normal_2d_with_anomalies
 
 ```kusto
 normal_2d_with_anomalies
-| extend anomalies=dynamic(null)
-| invoke series_mv_ee_anomalies_fl(pack_array('x', 'y'), 'anomalies')
+| extend anomalies=dynamic(null), scores=dynamic(null)
+| invoke series_mv_ee_anomalies_fl(pack_array('x', 'y'), 'anomalies', 'scores')
 | extend anomalies=series_multiply(80, anomalies)
 | render timechart
 ```
