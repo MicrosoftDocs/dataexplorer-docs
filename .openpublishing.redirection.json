@@ -311,6 +311,11 @@
       "redirect_document_id": false
     },
     {
+      "source_path": "data-explorer/kusto/query/machine-learning-clustering.md",
+      "redirect_url": "/azure/data-explorer/kusto/query/anomaly-diagnosis",
+      "redirect_document_id": true
+    },
+    {
       "source_path": "data-explorer/kusto/query/toutf8function.md",
       "redirect_url": "/azure/data-explorer/kusto/query/unicode-codepoints-from-string-function",
       "redirect_document_id": true
