@@ -172,6 +172,6 @@ If you plan to follow our other articles, keep the resources you created. If not
 .drop table StormEvents
 ```
 
-## Next steps
+## Related content
 
 * [Write queries](/azure/data-explorer/kusto/query/tutorials/learn-common-operators)

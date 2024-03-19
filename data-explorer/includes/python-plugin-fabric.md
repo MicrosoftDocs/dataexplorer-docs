@@ -7,7 +7,7 @@ The Python plugin runs a user-defined function (UDF) using a Python script. The 
 
 ## Syntax
 
-*T* `|` `evaluate` [`hint.distribution` `=` (`single` | `per_node`)] `python(`*output_schema*`,` *script* [`,` *script_parameters*][`,` *spill_to_disk*]`)`
+*T* `|` `evaluate` [`hint.distribution` `=` (`single` | `per_node`)] [`hint.remote` `=` (`auto` | `local`)] `python(`*output_schema*`,` *script* [`,` *script_parameters*] [`,` *spill_to_disk*]`)`
 
 [!INCLUDE [syntax-conventions-note](syntax-conventions-note.md)]
 
@@ -15,11 +15,12 @@ The Python plugin runs a user-defined function (UDF) using a Python script. The 
 
 |Name|Type|Required|Description|
 |--|--|--|--|
-|*output_schema*|string|&check;|A `type` literal that defines the output schema of the tabular data, returned by the Python code. The format is: `typeof(`*ColumnName*`:` *ColumnType*[, ...]`)`. For example, `typeof(col1:string, col2:long)`. To extend the input schema, use the following syntax: `typeof(*, col1:string, col2:long)`.|
-|*script*|string|&check;|The valid Python script to execute. To generate multi-line strings, see [Usage tips](#usage-tips).|
-|*script_parameters*|dynamic||A property bag of name value pairs to be passed to the Python script as the reserved `kargs` dictionary. For more information, see [Reserved Python variables](#reserved-python-variables).|
-|`hint.distribution`|string||A hint for the plugin's execution to be distributed across multiple cluster nodes. The default value is `single`. `single` means a single instance of the script will run over the entire query data. `per_node` means that if the query before the Python block is distributed, an instance of the script will run on each node, on the data that it contains.|
-|*spill_to_disk*|bool||Specifies an alternative method for serializing the input table to the Python sandbox. For serializing big tables set it to `true` to speed up the serialization and significantly reduce the sandbox memory consumption. Default is `true`.|
+|*output_schema*| `string` | :heavy_check_mark:|A `type` literal that defines the output schema of the tabular data, returned by the Python code. The format is: `typeof(`*ColumnName*`:` *ColumnType*[, ...]`)`. For example, `typeof(col1:string, col2:long)`. To extend the input schema, use the following syntax: `typeof(*, col1:string, col2:long)`.|
+|*script*| `string` | :heavy_check_mark:|The valid Python script to execute. To generate multi-line strings, see [Usage tips](#usage-tips).|
+|*script_parameters*| `dynamic` ||A property bag of name value pairs to be passed to the Python script as the reserved `kargs` dictionary. For more information, see [Reserved Python variables](#reserved-python-variables).|
+|*hint.distribution*| `string` ||A hint for the plugin's execution to be distributed across multiple cluster nodes. The default value is `single`. `single` means a single instance of the script will run over the entire query data. `per_node` means that if the query before the Python block is distributed, an instance of the script will run on each node, on the data that it contains.|
+|*hint.remote*| `string` ||This hint is only relevant for cross cluster queries. The default value is `auto`. `auto` means the server decides automatically in which cluster the Python code is executed. Setting the value to `local` forces executing the Python code on the local cluster. Use it in case the Python plugin is disabled on the remote cluster.|
+|*spill_to_disk*| `bool` ||Specifies an alternative method for serializing the input table to the Python sandbox. For serializing big tables set it to `true` to speed up the serialization and significantly reduce the sandbox memory consumption. Default is `true`.|
 
 ## Reserved Python variables
 
@@ -45,7 +46,7 @@ To see the list of packages for the different Python images, see [Python package
 ## Use ingestion from query and update policy
 
 * Use the plugin in queries that are:
-  * Defined as part of an [update policy](../kusto/management/updatepolicy.md), whose source table is ingested to using *non-streaming* ingestion.
+  * Defined as part of an [update policy](../kusto/management/update-policy.md), whose source table is ingested to using *non-streaming* ingestion.
   * Run as part of a command that [ingests from a query](../kusto/management/data-ingestion/ingest-from-query.md), such as `.set-or-append`.
 * You can't use the plugin in a query that is defined as part of an update policy, whose source table is ingested using [streaming ingestion](../ingest-data-streaming.md).
 
@@ -68,7 +69,7 @@ result["fx"] = g * np.sin(df["x"]/n*2*np.pi*f)
 | render linechart 
 ~~~
 
-:::image type="content" source="../kusto/query/images/plugin/sine-demo.png" alt-text="Screenshot of sine demo showing query result." border="false":::
+:::image type="content" source="../kusto/query/media/plugin/sine-demo.png" alt-text="Screenshot of sine demo showing query result." border="false":::
 
 ## Performance tips
 
@@ -76,7 +77,7 @@ result["fx"] = g * np.sin(df["x"]/n*2*np.pi*f)
   * Use filters on the source dataset, when possible, with Kusto's query language.
   * To do a calculation on a subset of the source columns, project only those columns before invoking the plugin.
 * Use `hint.distribution = per_node` whenever the logic in your script is distributable.
-  * You can also use the [partition operator](../kusto/query/partitionoperator.md) for partitioning the input dataset.
+  * You can also use the [partition operator](../kusto/query/partition-operator.md) for partitioning the input dataset.
 * Use Kusto's query language whenever possible, to implement the logic of your Python script.
 
 ## Usage tips
@@ -104,6 +105,6 @@ result["fx"] = g * np.sin(df["x"]/n*2*np.pi*f)
     | render linechart 
  ```
 
-## See also
+## Related content
 
 For more examples of UDF functions that use the Python plugin, see the [Functions library](../kusto/functions-library/functions-library.md).

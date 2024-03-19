@@ -36,7 +36,7 @@ Diagnostic logs can be used to configure the collection of the following log dat
 
 * **Successful ingestion operations**: These logs have information about successfully completed ingestion operations.
 * **Failed ingestion operations**: These logs have detailed information about failed ingestion operations including error details.
-* **Ingestion batching operations**: These logs have detailed statistics of batches ready for ingestion (duration, batch size, blobs count, and [batching types](kusto/management/batchingpolicy.md#sealing-a-batch)).
+* **Ingestion batching operations**: These logs have detailed statistics of batches ready for ingestion (duration, batch size, blobs count, and [batching types](kusto/management/batching-policy.md#sealing-a-batch)).
 
 ### [Commands and Queries](#tab/commands-and-queries)
 
@@ -96,14 +96,14 @@ All [Azure Monitor diagnostic logs share a common top-level schema](/azure/azure
 * [FailedIngestion](/azure/azure-monitor/reference/tables/failedingestion)
     * For information about error codes, see [Ingestion error codes](error-codes.md)
 * [ADXIngestionBatching](/azure/azure-monitor/reference/tables/adxingestionbatching)
-    * For information about batching types, see [Batching policy](kusto/management/batchingpolicy.md#sealing-a-batch)
+    * For information about batching types, see [Batching policy](kusto/management/batching-policy.md#sealing-a-batch)
 * [ADXCommand](/azure/azure-monitor/reference/tables/adxcommand)
 * [ADXQuery](/azure/azure-monitor/reference/tables/adxquery)
 * [ADXTableUsageStatistics](/azure/azure-monitor/reference/tables/adxtableusagestatistics)
 * [ADXTableDetails](/azure/azure-monitor/reference/tables/adxtabledetails)
 * [ADXJournal](/azure/azure-monitor/reference/tables/adxjournal)
 
-## Next steps
+## Related content
 
 * [Use metrics to monitor cluster health](using-metrics.md)
 * [Tutorial: Ingest and query monitoring data in Azure Data Explorer](ingest-data-no-code.md) for ingestion diagnostic logs

@@ -4,7 +4,6 @@ description: Learn how to use Azure Data Explorer metrics to monitor the cluster
 ms.reviewer: gabil
 ms.topic: how-to
 ms.date: 04/07/2021
-ms.custom: contperf-fy21q1
 ---
 
 # Monitor Azure Data Explorer performance, health, and usage with metrics
@@ -95,7 +94,7 @@ To refine your analysis:
 | Batch blob count  | Count | Avg, Max, Min | Number of data sources in a completed batch for ingestion. | Database |
 | Batch duration    | Seconds | Avg, Max, Min | The duration of the batching phase in the ingestion flow.  | Database |
 | Batch size        | Bytes | Avg, Max, Min | Uncompressed expected data size in an aggregated batch for ingestion. | Database |
-| Batches processed | Count | Sum, Max, Min | Number of batches completed for ingestion. <br> `Batching Type`: The trigger for sealing a batch. <br> For a complete list of batching types, see [Batching types](kusto/management/batchingpolicy.md#sealing-a-batch). | Database, Batching Type |
+| Batches processed | Count | Sum, Max, Min | Number of batches completed for ingestion. <br> `Batching Type`: The trigger for sealing a batch. <br> For a complete list of batching types, see [Batching types](kusto/management/batching-policy.md#sealing-a-batch). | Database, Batching Type |
 | Blobs received    | Count | Sum, Max, Min | Number of blobs received from input stream by a component. <br> <br> Use **apply splitting** to analyze each component. | Database, Component Type, Component Name |
 | Blobs processed   | Count | Sum, Max, Min | Number of blobs processed by a component. <br> <br> Use **apply splitting** to analyze each component. | Database, Component Type, Component Name |
 | Blobs dropped     | Count | Sum, Max, Min | Number of blobs permanently dropped by a component. For each such blob, an `Ingestion result` metric with a failure reason is sent. <br> <br> Use **apply splitting** to analyze each component. | Database, Component Type, Component Name |
@@ -104,13 +103,13 @@ To refine your analysis:
 | Events processed  | Count | Sum, Max, Min | Number of events processed by data connections. | Component Type, Component Name | 
 | Events dropped    | Count | Sum, Max, Min | Number of events permanently dropped by data connections. For each such event, an `Ingestion result` metric with a failure reason is sent. | Component Type, Component Name | 
 | Events processed (for Event/IoT Hubs) (deprecated)| Count | Max, Min, Sum | Total number of events read from Event Hub/ IoT Hub and processed by the cluster. These events can be split by the status: Received, Rejected, Processed. </br> This metric is deprecated and presented for backward compatibility only. Use ‘Events received’, ‘Events processed’ and ‘Events dropped’ metrics instead. | Status |
-| Ingestion latency | Seconds | Avg, Max, Min | Latency of data ingested, from the time the data was received in the cluster until it's ready for query. The ingestion latency period depends on the ingestion scenario. | None |
+| Ingestion latency | Seconds | Avg, Max, Min | Latency of data ingested, from the time the data was received in the cluster until it's ready for query. The ingestion latency period depends on the ingestion scenario.<br> `Ingestion Kind`: Streaming Ingestion or Queued Ingestion | Ingestion Kind |
 | Ingestion result  | Count | Sum | Total number of sources that either failed or succeeded to be ingested.<br> `Status`: **Success** for successful ingestion or the failure category for failures. For a complete list of possible failure categories see [Ingestion error codes in Azure Data Explorer](error-codes.md). <br> `Failure Status Type`: Whether the failure is permanent or transient. For successful ingestion, this dimension is `None`.<br><br>**Note:**<br><ul><li> Event Hubs and IoT Hub ingestion events are pre-aggregated into one blob, and then treated as a single source to be ingested. Therefore, pre-aggregated events appear as a single ingestion result after pre-aggregation.</li><br><li>Transient failures are retried internally a limited number of times. Each transient failure is reported as a transient ingestion result. Therefore, a single ingestion may result in more than one ingestion result. </li></ul> | Status, Failure Status Type |
 | Ingestion volume (in MB) | Count | Max, Sum | The total size of data ingested to the cluster (in MB) before compression. | Database |
 | Queue length | Count | Avg | Number of pending messages in a component's input queue. The batching manager component has one message per blob. The ingestion manager component has one message per batch. A batch is a single ingest command with one or more blobs.  | Component Type |
 | Queue oldest message | Seconds | Avg | Time in seconds from when the oldest message in a component's input queue has been inserted. | Component Type | 
 | Received data size bytes | Bytes | Avg, Sum | Size of data received by data connections from input stream. | Component Type, Component Name |
-| Stage latency | Seconds | Avg | Time from when a message is accepted by Azure Data Explorer, until its content is received by an ingestion component for processing. <br> <br> Use **apply filters** and select **Component Type > EngineStorage** to show the total ingestion latency.| Database, Component Type | 
+| Stage latency | Seconds | Avg | Time from when a message is accepted by Azure Data Explorer, until its content is received by an ingestion component for processing. <br> <br> Use **apply filters** and select **Component Type > StorageEngine** to show the total ingestion latency.| Database, Component Type | 
 
 ## Streaming ingest metrics
 
@@ -145,7 +144,7 @@ Query performance metrics track query duration and total number of concurrent or
 |MaterializedViewExtentsRebuild            | Extents count | Avg | The number of extents that required updates in the materialization cycle. | Database, MaterializedViewName|
 |MaterializedViewDataLoss                  | 1       | Max    | Metric is fired when unprocessed source data is approaching retention. Indicates that the materialized view is unhealthy. | Database, MaterializedViewName, Kind |
 
-## Next steps
+## Related content
 
 * [Tutorial: Ingest and query monitoring data in Azure Data Explorer](ingest-data-no-code.md)
 * [Monitor Azure Data Explorer ingestion operations using diagnostic logs](using-diagnostic-logs.md)

@@ -143,7 +143,7 @@ Although [optimized autoscale](#optimized-autoscale-recommended-option) is the r
 
 You've now configured horizontal scaling for your Azure Data Explorer cluster. Add another rule for vertical scaling. If you need assistance with cluster scaling issues, [open a support request](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview) in the Azure portal.
 
-## Next steps
+## Related content
 
 * [Monitor Azure Data Explorer performance, health, and usage with metrics](using-metrics.md)
 * [Manage cluster vertical scaling](manage-cluster-vertical-scaling.md) for appropriate sizing of a cluster.

@@ -63,6 +63,6 @@ Using this feature requires a Microsoft Entra ID P1 or P2 license. To find the r
 
      :::image type="content" source="media/conditional-access/configure-test-policy.png" alt-text="Screenshot of the M F A prompt.":::
 
-## Next steps
+## Related content
 
 * [Azure Data Explorer: Zero Trust Security with Conditional Access](https://aka.ms/kusto.conditional.access.blog)

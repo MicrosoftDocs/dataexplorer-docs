@@ -26,14 +26,14 @@ The `series_metric_fl()` function is a [user-defined function (UDF)](../query/fu
 
 |Name|Type|Required|Description|
 |--|--|--|--|
-| *timestamp_col* | string | &check; | The name of the column containing the timestamp.|
-| *name_col* | string | &check; | The name of the column containing the metric name.|
-| *labels_col* | string | &check; | The name of the column containing the labels dictionary.|
-| *value_col* | string | &check; | The name of the column containing the metric value.|
-| *metric_name* | string | &check; | The metric time series to retrieve.|
-| *labels_selector* | string | | Time series selector string, [similar to PromQL](https://prometheus.io/docs/prometheus/latest/querying/basics/#time-series-selectors). It's a string containing a list of `"key":"value"` pairs, for example `'"key1":"val1","key2":"val2"'`. The default is an empty string, which means no filtering. Note that regular expressions are not supported.|
-| *lookback* | timespan | | The range vector to retrieve, [similar to PromQL](https://prometheus.io/docs/prometheus/latest/querying/basics/#range-vector-selectors). The default is 10 minutes.|
-| *offset* | datetime | | Offset back from current time to retrieve, [similar to PromQL](https://prometheus.io/docs/prometheus/latest/querying/basics/#offset-modifier). Data is retrieved from *ago(offset)-lookback* to *ago(offset)*. The default is 0, which means that data is retrieved up to `now()`.|
+| *timestamp_col* | `string` |  :heavy_check_mark: | The name of the column containing the timestamp.|
+| *name_col* | `string` |  :heavy_check_mark: | The name of the column containing the metric name.|
+| *labels_col* | `string` |  :heavy_check_mark: | The name of the column containing the labels dictionary.|
+| *value_col* | `string` |  :heavy_check_mark: | The name of the column containing the metric value.|
+| *metric_name* | `string` |  :heavy_check_mark: | The metric time series to retrieve.|
+| *labels_selector* | `string` | | Time series selector string, [similar to PromQL](https://prometheus.io/docs/prometheus/latest/querying/basics/#time-series-selectors). It's a string containing a list of `"key":"value"` pairs, for example `'"key1":"val1","key2":"val2"'`. The default is an empty string, which means no filtering. Note that regular expressions are not supported.|
+| *lookback* | `timespan` | | The range vector to retrieve, [similar to PromQL](https://prometheus.io/docs/prometheus/latest/querying/basics/#range-vector-selectors). The default is 10 minutes.|
+| *offset* | `datetime` | | Offset back from current time to retrieve, [similar to PromQL](https://prometheus.io/docs/prometheus/latest/querying/basics/#offset-modifier). Data is retrieved from *ago(offset)-lookback* to *ago(offset)*. The default is 0, which means that data is retrieved up to `now()`.|
 
 ## Function definition
 
@@ -41,10 +41,10 @@ You can define the function by either embedding its code as a query-defined func
 
 ### [Query-defined](#tab/query-defined)
 
-Define the function using the following [let statement](../query/letstatement.md). No permissions are required.
+Define the function using the following [let statement](../query/let-statement.md). No permissions are required.
 
 > [!IMPORTANT]
-> A [let statement](../query/letstatement.md) can't run on its own. It must be followed by a [tabular expression statement](../query/tabularexpressionstatements.md). To run a working example of `series_metric_fl()`, see [Examples](#examples).
+> A [let statement](../query/let-statement.md) can't run on its own. It must be followed by a [tabular expression statement](../query/tabular-expression-statements.md). To run a working example of `series_metric_fl()`, see [Examples](#examples).
 
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA21Ty66bMBDd8xUWG+wKbkjUVmmu+IOqm1bdVBUyMAQXY0eMk9y06b/XNhBCGm/8mPGZM+fYEgxB6AVg3oHpRZnXMqPDEnNTyB19x2JiRAdoeHfISy13aKNqHxPFO1gcSF6AxMXRicvjMmms4y4/XkSQUBrdj+dZFNmQ1m3By3bnORy4yqYFXaed5abrGsE8CaeMBX8CYof0XQ7YeZWJuqYPFUmWEVetulheoqQ/ouinxcaDFOYxNyZRHDH2eoMGV5JkhO81HdjcBXEMDknJrZ8h405pv78SeDOgqllxe9Wqd+xULmp4E2iQLtywnLnx4FQdpWRs8OXJtckuyz9ik+ZP8mYXZz0maG/nkzs3m2OSsmUntzojVm50/gu1GuswMozVilhUdYLeEKPJ8AIItwCo7VFxIS1cRuRzAz2MbWb3D8rnz9IVYM4AinoPXl68ShM73VfQO9g5nWM5BvHYdbwXv2HhQ8dbyKXtd3ZgkiSbY37PHLJjNOm8YD5K0nDMuZSEzm+TBX+D12C1CirodH7otW2ugSMGVyLUSbfw32+l0TdL5qsjY99v9MXWdPNnX8KtvnPppnMvDPiDsBLYhrsQK74O47DRaOyOt5jwPShz0Fom2226/fj+w6fk1CGmbqzDaPprmdJnypLbu9ukmzRZb5J0S9J0l7p/dyW99d4K7BLKhlsHz8I0dGCfjdb/A8laNKd+BAAA" target="_blank">Run the query</a>
@@ -94,7 +94,7 @@ series_metric_fl(metrics_tbl:(*), timestamp_col:string, name_col:string, labels_
 
 ## Examples
 
-The following examples use the [invoke operator](../query/invokeoperator.md) to run the function.
+The following examples use the [invoke operator](../query/invoke-operator.md) to run the function.
 
 ### With specifying selector
 
@@ -139,7 +139,7 @@ demo_prometheus
 
 **Output**
 
-:::image type="content" source="images/series-metric-fl/disk-write-metric-10m.png" alt-text="Graph showing disk write metric over 10 minutes." border="false":::
+:::image type="content" source="media/series-metric-fl/disk-write-metric-10m.png" alt-text="Graph showing disk write metric over 10 minutes." border="false":::
 
 ### Without specifying selector
 
@@ -184,4 +184,4 @@ series_metric_fl(demo_prometheus, 'TimeStamp', 'Name', 'Labels', 'Val', 'writes'
 
 **Output**
 
-:::image type="content" source="images/series-metric-fl/all-disks-write-metric-10m.png" alt-text="Graph showing disk write metric for all disks over 10 minutes." border="false":::
+:::image type="content" source="media/series-metric-fl/all-disks-write-metric-10m.png" alt-text="Graph showing disk write metric for all disks over 10 minutes." border="false":::

@@ -47,7 +47,7 @@ For cost-effective ingestion:
 * Opt for batching.
 * Provide exact, uncompressed data size to avoid extra storage transactions.
 * Avoid setting `FlushImmediately` to `true`.
-* Avoid sending small amounts of data with `ingest-by` or `drop-by` extent tags.
+* Avoid sending small amounts of data with `ingest-by` or `drop-by` [extent tags](../../management/extent-tags.md).
 
 > [!NOTE]
 > Overusing the last two methods can disrupt data aggregation, lead to extra storage transactions, and harm ingestion and query performance.
@@ -56,4 +56,4 @@ For cost-effective ingestion:
 
 * [Kusto Ingest overview](about-kusto-ingest.md)
 * [Data ingestion overview](../../../ingest-data-overview.md)
-* [Create an app to get data using batching ingestion](../get-started/app-batch-ingestion.md)
+* [Create an app to get data using queued ingestion](../get-started/app-batch-ingestion.md)

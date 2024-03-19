@@ -21,9 +21,9 @@ Replaces all [regular expression](re2.md) matches with a specified pattern.
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-| *source*| string | &check; | The text to search and replace.|
-| *lookup_regex*| string | &check; | The [regular expression](re2.md) to search for in *text*. The expression can contain capture groups in parentheses.|
-| *rewrite_pattern*| string | &check; | The replacement regex for any match made by *matchingRegex*. Use `\0` to refer to the whole match, `\1` for the first capture group, `\2` and so on for subsequent capture groups.|
+| *source*| `string` |  :heavy_check_mark: | The text to search and replace.|
+| *lookup_regex*| `string` |  :heavy_check_mark: | The [regular expression](re2.md) to search for in *text*. The expression can contain capture groups in parentheses.|
+| *rewrite_pattern*| `string` |  :heavy_check_mark: | The replacement regex for any match made by *matchingRegex*. Use `\0` to refer to the whole match, `\1` for the first capture group, `\2` and so on for subsequent capture groups.|
 
 ## Returns
 
@@ -50,8 +50,8 @@ range x from 1 to 5 step 1
 | 4    | Number is 4.000000  | Number was: 4.000000|
 | 5    | Number is 5.000000  | Number was: 5.000000|
 
-## See also
+## Related content
 
 * To replace a single string, see [replace_string()](replace-string-function.md).
 * To replace multiple strings, see [replace_strings()](replace-strings-function.md).
-* To replace a set of characters, see [translate()](translatefunction.md).
+* To replace a set of characters, see [translate()](translate-function.md).

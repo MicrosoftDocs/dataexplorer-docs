@@ -12,7 +12,7 @@ The function `plotly_anomaly_fl()` is a [user-defined function (UDF)](../query/f
 The function accepts a table containing the source and the baseline time series, lists of positive and negative anomalies with their respective sizes, and chart labeling string. The function returns a single cell table containing [plotly JSON](https://plotly.com/chart-studio-help/json-chart-schema/). Optionally, you can render the data in an [Azure Data Explorer dashboard](../../azure-data-explorer-dashboards.md) tile. For more information, see [Plotly (preview)](../query/visualization-plotly.md).
 
 > [!NOTE]
-> Consider using ADX native [`" | render anomalychart"`](../query/renderoperator.md#syntax) method for rendering a non-interactive anomaly chart.
+> Consider using Azure Data Explorer native [`" | render anomalychart"`](../query/render-operator.md#syntax) method for rendering a non-interactive anomaly chart.
 
 ## Prerequisite
 
@@ -32,18 +32,18 @@ Extract the required 'anomaly' template from the publicly available `PlotlyTempl
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-| *time_col* | string | &check; | The name of the column containing the dynamic array of the time points of the original time series|
-| *val_col* | string | &check; | The name of the column containing the values of the original time series|
-| *baseline_col* | string | &check; | The name of the column containing the values of the baseline time series. Anomalies are usually detected by large value offset from the expected baseline value. |
-| *time_high_col* | string | &check; | The name of the column containing the time points of high (above the baseline) anomalies |
-| *val_high_col* | string | &check; | The name of the column containing the values of the high anomalies|
-| *size_high_col* | string | &check; | The name of the column containing the marker sizes of the high anomalies|
-| *time_low_col* | string | &check; | The name of the column containing the time points of low anomalies|
-| *val_low_col* | string | &check; | The name of the column containing the values of the low anomalies|
-| *size_low_col* | string | &check; | The name of the column containing the marker sizes of the low anomalies|
-| *chart_title* | string | | Chart title, default is 'Anomaly Chart'|
-| *series_name* | string | | Time series name, default is 'Metric'|
-| *val_name* | string | | Value axis name, default is 'Value'|
+| *time_col* | `string` |  :heavy_check_mark: | The name of the column containing the dynamic array of the time points of the original time series|
+| *val_col* | `string` |  :heavy_check_mark: | The name of the column containing the values of the original time series|
+| *baseline_col* | `string` |  :heavy_check_mark: | The name of the column containing the values of the baseline time series. Anomalies are usually detected by large value offset from the expected baseline value. |
+| *time_high_col* | `string` |  :heavy_check_mark: | The name of the column containing the time points of high (above the baseline) anomalies |
+| *val_high_col* | `string` |  :heavy_check_mark: | The name of the column containing the values of the high anomalies|
+| *size_high_col* | `string` |  :heavy_check_mark: | The name of the column containing the marker sizes of the high anomalies|
+| *time_low_col* | `string` |  :heavy_check_mark: | The name of the column containing the time points of low anomalies|
+| *val_low_col* | `string` |  :heavy_check_mark: | The name of the column containing the values of the low anomalies|
+| *size_low_col* | `string` |  :heavy_check_mark: | The name of the column containing the marker sizes of the low anomalies|
+| *chart_title* | `string` | | Chart title, default is 'Anomaly Chart'|
+| *series_name* | `string` | | Time series name, default is 'Metric'|
+| *val_name* | `string` | | Value axis name, default is 'Value'|
 
 ## Function definition
 
@@ -51,10 +51,10 @@ You can define the function by either embedding its code as a query-defined func
 
 ### [Query-defined](#tab/query-defined)
 
-Define the function using the following [let statement](../query/letstatement.md). No permissions are required.
+Define the function using the following [let statement](../query/let-statement.md). No permissions are required.
 
 > [!IMPORTANT]
-> A [let statement](../query/letstatement.md) can't run on its own. It must be followed by a [tabular expression statement](../query/tabularexpressionstatements.md). To run a working example of `plotly_anomaly_fl()`, see [Example](#example).
+> A [let statement](../query/let-statement.md) can't run on its own. It must be followed by a [tabular expression statement](../query/tabular-expression-statements.md). To run a working example of `plotly_anomaly_fl()`, see [Example](#example).
 
 ```kusto
 let plotly_anomaly_fl=(tbl:(*), time_col:string, val_col:string, baseline_col:string, time_high_col:string , val_high_col:string, size_high_col:string,
@@ -123,7 +123,7 @@ plotly_anomaly_fl(tbl:(*), time_col:string, val_col:string, baseline_col:string,
 
 ## Example
 
-The following example uses the [invoke operator](../query/invokeoperator.md) to run the function.
+The following example uses the [invoke operator](../query/invoke-operator.md) to run the function.
 
 ### [Query-defined](#tab/query-defined)
 
@@ -204,9 +204,9 @@ The output is a Plotly JSON string that can be rendered using '| render plotly' 
 
 The following image shows a sample anomaly chart using the above function:
 
-![Screenshot of anomaly chart of the sample dataset.](images\plotly-anomaly-fl\plotly-anomaly-chart.png)
+![Screenshot of anomaly chart of the sample dataset.](media/plotly-anomaly-fl\plotly-anomaly-chart.png)
 
 You can zoom in and hover over anomalies:
 
-![Screenshot of zoom in anomalous region.](images\plotly-anomaly-fl\plotly-anomaly-chart-zooming.png)
-![Screenshot of hover over anomaly.](images\plotly-anomaly-fl\plotly-anomaly-chart-zoomed.png)
+![Screenshot of zoom in anomalous region.](media/plotly-anomaly-fl\plotly-anomaly-chart-zooming.png)
+![Screenshot of hover over anomaly.](media/plotly-anomaly-fl\plotly-anomaly-chart-zoomed.png)

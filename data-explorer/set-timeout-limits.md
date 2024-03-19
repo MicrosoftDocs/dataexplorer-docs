@@ -127,8 +127,8 @@ This section describes how to configure a custom server timeout in Power BI.
 
 ## SDKs
 
-To learn how to set timeouts with the SDks, see [Customize query behavior with client request properties](kusto/api/get-started/app-basic-query.md#customize-query-behavior-with-client-request-properties).
+To learn how to set timeouts with the SDKs, see [Customize query behavior with client request properties](kusto/api/get-started/app-basic-query.md#customize-query-behavior-with-client-request-properties).
 
-## Next steps
+## Related content
 
-Learn more about [query limits](kusto/concepts/querylimits.md).
+* [Query limits](kusto/concepts/querylimits.md)

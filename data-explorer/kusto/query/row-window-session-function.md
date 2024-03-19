@@ -7,7 +7,7 @@ ms.date: 01/18/2023
 ---
 # row_window_session()
 
-Calculates session start values of a column in a [serialized row set](./windowsfunctions.md#serialized-row-set).
+Calculates session start values of a column in a [serialized row set](./window-functions.md#serialized-row-set).
 
 ## Syntax
 
@@ -69,6 +69,6 @@ datatable (ID:string, Timestamp:datetime) [
 | extend SessionStarted = row_window_session(Timestamp, 1h, 5m, ID != prev(ID))
 ```
 
-## See also
+## Related content
 
 * [scan operator](scan-operator.md)

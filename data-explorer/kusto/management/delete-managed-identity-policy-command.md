@@ -1,11 +1,11 @@
 ---
-title: .delete managed_identity policy command
-description: Learn how to use the `.delete managed_identity policy` command to delete the ManagedIdentity policy of a cluster or a specified database.
+title: .delete policy managed_identity command
+description: Learn how to use the `.delete policy managed_identity` command to delete the ManagedIdentity policy of a cluster or a specified database.
 ms.reviewer: slneimer
 ms.topic: reference
-ms.date: 05/24/2023
+ms.date: 11/30/2023
 ---
-# .delete managed_identity policy command
+# .delete policy managed_identity command
 
 Deletes the ManagedIdentity policy of the cluster or the specified database.
 
@@ -28,7 +28,7 @@ You must have [AllDatabasesAdmin](access-control/role-based-access-control.md) p
 
 |Name|Type|Required|Description|
 |--|--|--|--|
-|*DatabaseName*|string|&check;|The name of the database.|
+|*DatabaseName*| `string` | :heavy_check_mark:|The name of the database.|
 
 ## Returns
 

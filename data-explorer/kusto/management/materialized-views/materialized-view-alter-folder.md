@@ -23,8 +23,8 @@ You must have at least [Materialized View Admin](../access-control/role-based-ac
 
 | Name                   | Type   | Required | Description                                                                                                                                                                   |
 |------------------------|--------|----------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| *MaterializedViewName* | string | &check;  | Name of the materialized view.                                                                                                                                                |
-| *Folder*               | string | &check;  | A folder path that is used to organize materialized views in the UI. The value of this parameter doesn't change the way in which the view works or is referred to in queries. |
+| *MaterializedViewName* | `string` |  :heavy_check_mark:  | Name of the materialized view.                                                                                                                                                |
+| *Folder*               | `string` |  :heavy_check_mark:  | A folder path that is used to organize materialized views in the UI. The value of this parameter doesn't change the way in which the view works or is referred to in queries. |
 
 ## Returns
 
@@ -40,7 +40,7 @@ The following command sets the folder in which a materialized view must be shown
 .alter materialized-view MyView folder "Updated folder"
 ```
 
-**Output:**
+**Output**
 
 | Name   | SourceTable | Query                                       | MaterializedTo                   | LastRun                      | LastRunResult | IsHealthy | IsEnabled | Folder           | DocString | AutoUpdateSchema | EffectiveDateTime            | Lookback   |
 |--------|-------------|---------------------------------------------|----------------------------------|------------------------------|---------------|-----------|-----------|------------------|-----------|------------------|------------------------------|------------|
@@ -54,7 +54,7 @@ The following command sets the folder in which a materialized view must be shown
 .alter materialized-view MyView folder @"First Level\Second Level"
 ```
 
-**Output:**
+**Output**
 
 | Name   | SourceTable | Query                                       | MaterializedTo                   | LastRun                      | LastRunResult | IsHealthy | IsEnabled | Folder                     | DocString | AutoUpdateSchema | EffectiveDateTime            | Lookback   |
 |--------|-------------|---------------------------------------------|----------------------------------|------------------------------|---------------|-----------|-----------|----------------------------|-----------|------------------|------------------------------|------------|

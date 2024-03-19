@@ -18,7 +18,7 @@ For information on string query operators, see [String operators](../datatypes-s
 > * Kusto has no data type that is equivalent to a single character. A single character is represented as a string of length 1.
 > * When ingesting the `string` data type, if a single string value in a record exceeds 1MB (measured using UTF-8 encoding), the value is truncated and ingestion succeeds. If a single string value in a record, or the entire record, exceeds the allowed data limit of 64MB, ingestion fails.
 
-## String literals
+## `string` literals
 
 You can use double quotes or single quotes to encode string literals in query text. With double quotes, you must escape nested double quote characters with a backslash (`\`). With single quotes, you must escape nested single quote characters, and you don't need to escape double quotes.
 
@@ -201,6 +201,6 @@ print blob="https://contoso.blob.core.windows.net/container/blob.txt?"
 |--|
 |https://contoso.blob.core.windows.net/container/blob.txt?sv=2012-02-12&se=2013-04-13T0...|
 
-## See also
+## Related content
 
 * [String operators](../datatypes-string-operators.md)

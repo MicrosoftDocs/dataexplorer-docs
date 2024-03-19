@@ -9,8 +9,6 @@ ms.date: 03/09/2023
 
 Calculates S2 cell tokens that cover a line or multiline on Earth. This function is a useful geospatial join tool.
 
-Read more about [S2 cell hierarchy](https://s2geometry.io/devguide/s2cell_hierarchy).
-
 ## Syntax
 
 `geo_line_to_s2cells(`*lineString* [`,` *level*[ `,` *radius*]]`)`
@@ -21,13 +19,13 @@ Read more about [S2 cell hierarchy](https://s2geometry.io/devguide/s2cell_hierar
 
 |Name|Type|Required|Description|
 |--|--|--|--|
-| *lineString* | dynamic | &check; | Line or multiline in the [GeoJSON format](https://tools.ietf.org/html/rfc7946).|
-| *level* | int | | Defines the requested cell level. Supported values are in the range [0, 30]. If unspecified, the default value `11` is used.|
-| *radius* | real | | Buffer radius in meters. If unspecified, the default value `0` is used.|
+| *lineString* | `dynamic` |  :heavy_check_mark: | Line or multiline in the [GeoJSON format](https://tools.ietf.org/html/rfc7946).|
+| *level* | `int` | | Defines the requested cell level. Supported values are in the range [0, 30]. If unspecified, the default value `11` is used.|
+| *radius* | `real` | | Buffer radius in meters. If unspecified, the default value `0` is used.|
 
 ## Returns
 
-Array of S2 cell token strings that cover a line or a multiline. If the radius is set to a positive value, then the covering will be of both input shape and all points within the radius of the input geometry. 
+Array of S2 cell token strings that cover a line or a multiline. If the radius is set to a positive value, then the covering will be of both input shape and all points within the radius of the input geometry.
 
 If any of the following:  line, level, radius is invalid, or the cell count exceeds the limit, the query will produce a null result.
 
@@ -47,12 +45,12 @@ If any of the following:  line, level, radius is invalid, or the cell count exce
 
 **Performance improvement suggestions**
 
- * If possible, reduce coordinates table size before join, by grouping coordinates that are very close to each other by using [geospatial clustering](geospatial-grid-systems.md) or by filtering out unnecessary coordinates due to nature of the data or business needs.
- * If possible, reduce lines count due to nature of the data or business needs. Filter out unnecessary lines before join, scope to the area of interest or unify lines.
- * In case of very big lines, reduce their size using [geo_line_simplify()](geo-line-simplify-function.md).
- * Changing S2 cell level may improve performance and memory consumption.
- * Changing [join kind and hint](joinoperator.md) may improve performance and memory consumption.
- * In case positive radius is set, reverting to radius 0 on buffered shape using [geo_line_buffer()](geo-line-buffer-function.md) may improve performance.
+* If possible, reduce coordinates table size before join, by grouping coordinates that are very close to each other by using [geospatial clustering](geospatial-grid-systems.md) or by filtering out unnecessary coordinates due to nature of the data or business needs.
+* If possible, reduce lines count due to nature of the data or business needs. Filter out unnecessary lines before join, scope to the area of interest or unify lines.
+* In case of very big lines, reduce their size using [geo_line_simplify()](geo-line-simplify-function.md).
+* Changing S2 cell level may improve performance and memory consumption.
+* Changing [join kind and hint](join-operator.md) may improve performance and memory consumption.
+* In case positive radius is set, reverting to radius 0 on buffered shape using [geo_line_buffer()](geo-line-buffer-function.md) may improve performance.
 
 ## Examples
 
@@ -109,4 +107,3 @@ print isnull(geo_line_to_s2cells(line))
 |print_0|
 |---|
 |True|
-

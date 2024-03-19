@@ -7,7 +7,7 @@ ms.date: 06/04/2023
 ---
 # .alter table policy partitioning command
 
-Change's the table's [partitioning policy](partitioningpolicy.md). The partitioning policy defines if and how [extents (data shards)](../management/extents-overview.md) should be partitioned for a specific table or a [materialized view](materialized-views/materialized-view-overview.md).
+Change's the table's [partitioning policy](partitioning-policy.md). The partitioning policy defines if and how [extents (data shards)](../management/extents-overview.md) should be partitioned for a specific table or a [materialized view](materialized-views/materialized-view-overview.md).
 
 ## Permissions
 
@@ -23,8 +23,8 @@ You must have at least [Database Admin](access-control/role-based-access-control
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-| *TableName* | string | &check; | The name of the table to alter. |
-| *PolicyObject* | string | &check; | A serialized JSON policy object. See [partitioning policy](partitioningpolicy.md). |
+| *TableName* | `string` |  :heavy_check_mark: | The name of the table to alter. |
+| *PolicyObject* | `string` |  :heavy_check_mark: | A serialized JSON policy object. See [partitioning policy](partitioning-policy.md). |
 
 ### Examples
 

@@ -27,11 +27,11 @@ Following is the schema of the output returned:
 
 | Name          | Type   | Description                                                                                                              |
 |---------------|--------|--------------------------------------------------------------------------------------------------------------------------|
-| PolicyName    | string | Name of the policy. For cluster request classification policy this value is **ClusterRequestClassificationPolicy**.      |
-| EntityName    | string | Name of the entity for which the policy is set. For cluster request classification policy this value is an empty string. |
-| Policy        | string | JSON representation of the policy object.                                                                                |
-| ChildEntities | string | Child entities for which this policy is set. For cluster request classification policy this value is an empty string.    |
-| EntityType    | string | Type of entity for which this policy is set. For cluster request classification policy this value is an empty string.    |
+| PolicyName    | `string` | Name of the policy. For cluster request classification policy this value is **ClusterRequestClassificationPolicy**.      |
+| EntityName    | `string` | Name of the entity for which the policy is set. For cluster request classification policy this value is an empty string. |
+| Policy        | `string` | JSON representation of the policy object.                                                                                |
+| ChildEntities | `string` | Child entities for which this policy is set. For cluster request classification policy this value is an empty string.    |
+| EntityType    | `string` | Type of entity for which this policy is set. For cluster request classification policy this value is an empty string.    |
 
 ## Examples
 
@@ -43,7 +43,7 @@ Enable request classification policy for the cluster:
 .alter-merge cluster policy request_classification '{"IsEnabled":true}'
 ```
 
-**Output:**
+**Output**
 
 | PolicyName                         | EntityName | Policy                                                                                                                                                                                                                                                                   | ChildEntities | EntityType |
 |------------------------------------|------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|---------------|------------|
@@ -57,7 +57,7 @@ Disable request classification policy for the cluster:
 .alter-merge cluster policy request_classification '{"IsEnabled":false}'
 ```
 
-**Output:**
+**Output**
 
 | PolicyName                         | EntityName | Policy                                                                                                                                                                                                                                                                   | ChildEntities | EntityType |
 |------------------------------------|------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|---------------|------------|

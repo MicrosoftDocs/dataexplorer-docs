@@ -9,7 +9,7 @@ ms.date: 03/13/2023
 
 Calculate *P(n, k)*
 
-The function `perm_fl()` is a [user-defined function (UDF)](../query/functions/user-defined-functions.md) that calculates *P(n, k)*, the number of [permutations](https://en.wikipedia.org/wiki/Permutation) for selection of k items out of n, with order. It's based on the native [gamma()](../query/gammafunction.md) function to calculate factorial, (see [facorial_fl()](factorial-fl.md)). For selection of k items without order, use [comb_fl()](comb-fl.md).
+The function `perm_fl()` is a [user-defined function (UDF)](../query/functions/user-defined-functions.md) that calculates *P(n, k)*, the number of [permutations](https://en.wikipedia.org/wiki/Permutation) for selection of k items out of n, with order. It's based on the native [gamma()](../query/gamma-function.md) function to calculate factorial, (see [facorial_fl()](factorial-fl.md)). For selection of k items without order, use [comb_fl()](comb-fl.md).
 
 ## Syntax
 
@@ -21,8 +21,8 @@ The function `perm_fl()` is a [user-defined function (UDF)](../query/functions/u
 
 |Name|Type|Required|Description|
 |--|--|--|--|
-|*n*|int|&check;|The total number of items.|
-|*k*|int|&check;|The selected number of items.|
+|*n*| `int` | :heavy_check_mark:|The total number of items.|
+|*k*| `int` | :heavy_check_mark:|The selected number of items.|
 
 ## Function definition
 
@@ -30,10 +30,10 @@ You can define the function by either embedding its code as a query-defined func
 
 ### [Query-defined](#tab/query-defined)
 
-Define the function using the following [let statement](../query/letstatement.md). No permissions are required.
+Define the function using the following [let statement](../query/let-statement.md). No permissions are required.
 
 > [!IMPORTANT]
-> A [let statement](../query/letstatement.md) can't run on its own. It must be followed by a [tabular expression statement](../query/tabularexpressionstatements.md). To run a working example of `perm_fl()`, see [Example](#example).
+> A [let statement](../query/let-statement.md) can't run on its own. It must be followed by a [tabular expression statement](../query/tabular-expression-statements.md). To run a working example of `perm_fl()`, see [Example](#example).
 
 ```kusto
 let perm_fl=(n:int, k:int)

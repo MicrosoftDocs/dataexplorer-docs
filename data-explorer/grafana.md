@@ -257,14 +257,14 @@ Use query builder mode to define your query.
 1. Now that the table is defined, filter the data:
 
     1. Select **+** to the right of **Where (filter)** to select one or more columns in your table.
-    1. For each filter, define the values by using the applicable operator. This selection is similar to using the [where operator](kusto/query/whereoperator.md) in Kusto Query Language.
+    1. For each filter, define the values by using the applicable operator. This selection is similar to using the [where operator](kusto/query/where-operator.md) in Kusto Query Language.
 
 1. Select the values to present in the table:
 
     1. Select **+** to the right of **Value columns** to select the value columns that will appear on the pane.
     1. For each value column, set the aggregation type.
 
-       You can set one or more value columns. This selection is equivalent to using the [summarize operator](kusto/query/summarizeoperator.md).
+       You can set one or more value columns. This selection is equivalent to using the [summarize operator](kusto/query/summarize-operator.md).
 
 1. Select **+** to the right of **Group by (summarize)** to select one or more columns that will be used to arrange the values into groups. This selection is equivalent to the group expression in the `summarize` operator.
 
@@ -330,6 +330,6 @@ To switch to the query builder mode, select **Switch to builder**. Grafana will 
 
 1. Select the **Save dashboard** icon to save your changes.
 
-## Next steps
+## Related content
 
 * [Write queries for Azure Data Explorer](/azure/data-explorer/kusto/query/tutorials/learn-common-operators)

@@ -27,9 +27,9 @@ Read about the [underlying algorithm (*H*yper*L*og*L*og) and the estimation accu
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-| *expr* |  string | &check; | The expression used for the aggregation calculation. |
-| *predicate* |  string | &check; | The *Expr* used to filter records to add to the intermediate result of `dcount`. |
-| *accuracy* | int |   | The value that controls the balance between speed and accuracy. If unspecified, the default value is `1`. For supported values, see [Estimation accuracy](#estimation-accuracy). |
+| *expr* | `string` |  :heavy_check_mark: | The expression used for the aggregation calculation. |
+| *predicate* | `string` |  :heavy_check_mark: | The *Expr* used to filter records to add to the intermediate result of `dcount`. |
+| *accuracy* | `int` |   | The value that controls the balance between speed and accuracy. If unspecified, the default value is `1`. For supported values, see [Estimation accuracy](#estimation-accuracy). |
 
 ## Returns
 
@@ -37,8 +37,8 @@ Returns the intermediate results of distinct count of *Expr* for which *Predicat
 
 > [!TIP]
 >
-> - You can use the aggregation function [`hll_merge`](hll-merge-aggfunction.md) to merge more than one `hll` intermediate result. Only works with `hll` output only.
-> - You can use [`dcount_hll`](dcount-hllfunction.md), to calculate the distinct count from `hll`,`hll_merge`, or `hll_if` aggregation functions.
+> - You can use the aggregation function [`hll_merge`](hll-merge-aggregation-function.md) to merge more than one `hll` intermediate result. Only works with `hll` output only.
+> - You can use [`dcount_hll`](dcount-hll-function.md), to calculate the distinct count from `hll`,`hll_merge`, or `hll_if` aggregation functions.
 
 ## Examples
 

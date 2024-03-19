@@ -35,9 +35,9 @@ The function `pair_probabilities_fl()` is a [UDF (user-defined function)](../que
 
 |Name|Type|Required|Description|
 |--|--|--|--|
-|*A*|scalar|&check;|The first categorical variable.|
-|*B*|scalar|&check;|The second categorical variable.|
-|*Scope*|scalar|&check;|The field that contains the scope, so that the probabilities for *A* and *B* are calculated independently for each scope value.|
+|*A*|scalar| :heavy_check_mark:|The first categorical variable.|
+|*B*|scalar| :heavy_check_mark:|The second categorical variable.|
+|*Scope*|scalar| :heavy_check_mark:|The field that contains the scope, so that the probabilities for *A* and *B* are calculated independently for each scope value.|
 
 ## Function definition
 
@@ -45,10 +45,10 @@ You can define the function by either embedding its code as a query-defined func
 
 ### [Query-defined](#tab/query-defined)
 
-Define the function using the following [let statement](../query/letstatement.md). No permissions are required.
+Define the function using the following [let statement](../query/let-statement.md). No permissions are required.
 
 > [!IMPORTANT]
-> A [let statement](../query/letstatement.md) can't run on its own. It must be followed by a [tabular expression statement](../query/tabularexpressionstatements.md). To run a working example of `pair_probabilities_fl()`, see [Example](#example).
+> A [let statement](../query/let-statement.md) can't run on its own. It must be followed by a [tabular expression statement](../query/tabular-expression-statements.md). To run a working example of `pair_probabilities_fl()`, see [Example](#example).
 
 ```kusto
 let pair_probabilities_fl = (tbl:(*), A_col:string, B_col:string, scope_col:string)
@@ -107,7 +107,7 @@ probAB
 
 ## Example
 
-The following example uses the [invoke operator](../query/invokeoperator.md) to run the function.
+The following example uses the [invoke operator](../query/invoke-operator.md) to run the function.
 
 ### [Query-defined](#tab/query-defined)
 

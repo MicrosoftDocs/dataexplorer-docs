@@ -3,22 +3,23 @@ title: Connect to Azure Data Explorer with ODBC
 description: In this article, you learn how to set up an Open Database Connectivity (ODBC) connection to Azure Data Explorer.
 ms.reviewer: gabil
 ms.topic: how-to
-ms.date: 03/08/2023
+ms.date: 11/16/2023
 ---
 
 # Connect to Azure Data Explorer with ODBC
 
-Open Database Connectivity ([ODBC](/sql/odbc/reference/odbc-overview)) is a widely accepted application programming interface (API) for database access. Use ODBC to connect to Azure Data Explorer from applications that don't have a dedicated connector.
+Open Database Connectivity ([ODBC](/sql/odbc/reference/odbc-overview)) is a widely accepted application programming interface (API) for database access. Azure Data Explorer is compatible with a subset of the SQL Server communication protocol (MS-TDS). This compatibility enables the use of the ODBC driver for SQL Server with Azure Data Explorer.
 
-Behind the scenes, applications call functions in the ODBC interface, which are implemented in database-specific modules called *drivers*. Azure Data Explorer supports a subset of the SQL Server communication protocol ([MS-TDS](./t-sql.md)), so it can use the ODBC driver for SQL Server.
+Consequently, you can establish a connection to Azure Data Explorer from any application that is equipped with support for the ODBC driver for SQL Server.
 
-Using the following video, you can learn to create an ODBC connection. 
+Watch the following video to learn to create an ODBC connection.
 
 > [!VIDEO https://www.youtube.com/embed/qA5wxhrOwog]
 
-Alternatively, you can [configure the ODBC data source](#configure-the-odbc-data-source).
+Alternatively, follow the steps to [configure the ODBC data source](#configure-the-odbc-data-source).
 
-In the article, you learn how to use the SQL Server ODBC driver, so you can connect to Azure Data Explorer from any application that supports ODBC. 
+> [!NOTE]
+> We recommend using dedicated connectors for Azure Data Explorer whenever possible. For a list of available connectors, see [Connectors overview](connector-overview.md).
 
 ## Prerequisites
 
@@ -26,7 +27,7 @@ In the article, you learn how to use the SQL Server ODBC driver, so you can conn
 
 ## Configure the ODBC data source
 
-Follow these steps to configure an ODBC data source using the ODBC driver for SQL Server.
+To configure an ODBC data source using the ODBC driver for SQL Server:
 
 1. In Windows, search for *ODBC Data Sources*, and open the ODBC Data Sources desktop app.
 
@@ -42,7 +43,7 @@ Follow these steps to configure an ODBC data source using the ODBC driver for SQ
 
     >[!NOTE]
     > When entering the cluster URL, do not include the prefix "https://".
-    
+
     ![Select server.](media/connect-odbc/select-server.png)
 
 1. Select **Active Directory Integrated** then **Next**.
@@ -65,7 +66,7 @@ Follow these steps to configure an ODBC data source using the ODBC driver for SQ
 
 ## Use the ODBC data source
 
-You can use the ODBC data source from other applications to connect to Azure Data Explorer with a connection string of the following format.
+From an application that supports ODBC connection, you can connect to Azure Data Explorer with a connection string of the following format:
 
 ```odbc
 "Driver={ODBC Driver 17 for SQL Server};Server=mykustocluster.kusto.windows.net;Database=mykustodatabase;Authentication=ActiveDirectoryIntegrated"
@@ -78,7 +79,7 @@ You can use the ODBC data source from other applications to connect to Azure Dat
 
 To use application principal authentication with ODBC, you must provide the Microsoft Entra tenant ID. You can set this configuration in the connection string, the Windows registry, or the odbc.ini file. See examples in the following tabs. For more information, see [tuning options](sql-server-emulation-overview.md#tuning-options).
 
-# [Connection string](#tab/connection-string)
+### [Connection string](#tab/connection-string)
 
 Set the application principal with `Language=any@AadAuthority:<aad_tenant_id>` in the connection string. Replace `<aad_tenant_id>`, `<aad_application_id>`, and `<aad_application_secret>` with the Microsoft Entra tenant ID, Microsoft Entra application ID, and the Microsoft Entra application secret respectively.
 
@@ -86,7 +87,7 @@ Set the application principal with `Language=any@AadAuthority:<aad_tenant_id>` i
 "Driver={ODBC Driver 17 for SQL Server};Server=<adx_cluster_name>.<region_name>.kusto.windows.net;Database=<adx_database_name>;Authentication=ActiveDirectoryServicePrincipal;Language=any@AadAuthority:<aad_tenant_id>;UID=<aad_application_id>;PWD=<aad_application_secret>"
 ```
 
-# [Windows registry](#tab/windows-registry)
+### [Windows registry](#tab/windows-registry)
 
 Edit the `Language` field in the ODBC data source (DSN) in the registry for Windows as follows.
 
@@ -95,15 +96,15 @@ Edit the `Language` field in the ODBC data source (DSN) in the registry for Wind
 "Language"="any@AadAuthority:<aad_tenant_id>"
 ```
 
-# [odbc.ini file](#tab/odbcini-file)
+### [odbc.ini file](#tab/odbcini-file)
 
 For Linux and macOS, edit the odbc.ini file, as follows.
 
 ```odbc
 # [DSN name]
-[MSSQLTest]  
-Driver = ODBC Driver 17 for SQL Server  
-# Server = [protocol:]server[,port]  
+[MSSQLTest]
+Driver = ODBC Driver 17 for SQL Server
+# Server = [protocol:]server[,port]
 Server = tcp:<adx_cluster_name>.<region_name>.kusto.windows.net,1433
 Language = any@AadAuthority:<aad_tenant_id>
 ```
@@ -122,7 +123,7 @@ $conn.Close()
 
 ---
 
-## Next steps
+## Related content
 
-* See the overview on [SQL Server emulation in Azure Data Explorer](sql-server-emulation-overview.md)
+* [SQL Server emulation in Azure Data Explorer](sql-server-emulation-overview.md)
 * [Run KQL queries and call stored functions](sql-kql-queries-and-stored-functions.md)

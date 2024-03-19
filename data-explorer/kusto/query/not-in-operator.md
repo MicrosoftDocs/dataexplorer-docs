@@ -27,12 +27,9 @@ When possible, use the case-sensitive [!in](not-in-cs-operator.md).
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-| *T* | string | &check; | The tabular input to filter.|
-| *col* | string | &check; | The column by which to filter.|
-| *expression* | scalar or tabular | &check; | An expression that specifies the values for which to search. Each expression can be a [scalar](scalar-data-types/index.md) value or a [tabular expression](tabularexpressionstatements.md) that produces a set of values. If a tabular expression has multiple columns, the first column is used. The search will consider up to 1,000,000 distinct values. |
-
-> [!NOTE]
-> An inline tabular expression must be enclosed with double parentheses. See [example](#tabular-expression).
+| *T* | `string` |  :heavy_check_mark: | The tabular input to filter.|
+| *col* | `string` |  :heavy_check_mark: | The column by which to filter.|
+| *expression* | scalar or tabular |  :heavy_check_mark: | An expression that specifies the values for which to search. Each expression can be a [scalar](scalar-data-types/index.md) value or a [tabular expression](tabular-expression-statements.md) that produces a set of values. If a tabular expression has multiple columns, the first column is used. The search will consider up to 1,000,000 distinct values. |
 
 ## Returns
 
@@ -78,7 +75,7 @@ StormEvents
 |---|
 |54291|  
 
-The same query can also be written with a [let statement](letstatement.md).
+The same query can also be written with a [let statement](let-statement.md).
 
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAyWMvQrCQBAG+zzF51V34BtISrWzSSXB4kwWXczdwt7GEJE8uz/pBmaYgQzFolFBjX7OMXHnW3cYRLmPbgt3JNEb//FEE86iD3cJu6ox0bR/UraC6o3pTkpofitsOC/w6zZ8XRlTisovQidjNh9wndf0A62lrc5/AAAA" target="_blank">Run the query</a>
@@ -105,7 +102,7 @@ The following query shows how to use `!in~` with an inline tabular expression. N
 
 ```kusto
 StormEvents 
-| where State !in~ ((PopulationData | where Population > 5000000 | project State))
+| where State !in~ (PopulationData | where Population > 5000000 | project State)
 | summarize count() by State
 ```
 
@@ -120,7 +117,7 @@ StormEvents
 |SOUTH DAKOTA|1567|
 |...|...|
 
-The same query can also be written with a [let statement](letstatement.md). Notice that the double parentheses as provided in the last example aren't necessary in this case.
+The same query can also be written with a [let statement](let-statement.md). Notice that the double parentheses as provided in the last example aren't necessary in this case.
 
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA8tJLVHISSxKT40vLkksSS1WsFUIyC8ozUksyczPc0ksSVSoUSjPSC1KRRJWsFMwNQADoGRBUX5WanKJQjBIuzVXcEl+Ua5rWWpeSbECF0wrWE5BMTOvTkED2TJNoIri0tzcxKLMqlSF5PzSvBINTYWkSogGANAXanqbAAAA" target="_blank">Run the query</a>

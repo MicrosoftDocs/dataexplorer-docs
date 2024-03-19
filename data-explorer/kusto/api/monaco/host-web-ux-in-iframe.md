@@ -3,14 +3,14 @@ title: Embed the Azure Data Explorer web UI in an **iframe**.
 description: Learn how to embed the Azure Data Explorer web UI in an **iframe**.
 ms.reviewer: izlisbon
 ms.topic: how-to
-ms.custom: has-azure-ad-ps-ref
+ms.custom: has-azure-ad-ps-ref, azure-ad-ref-level-one-done
 ms.date: 6/6/2023
 ---
 # Embed the Azure Data Explorer web UI in an iframe
 
 The Azure Data Explorer web UI can be embedded in an iframe and hosted in third-party websites. This article describes how to embed the Azure Data Explorer web UI in an iframe.
 
-:::image type="content" source="../images/host-web-ux-in-iframe/web-ux.png" alt-text="Screenshot of the Azure Data Explorer web U I.":::
+:::image type="content" source="../media/host-web-ux-in-iframe/web-ux.png" alt-text="Screenshot of the Azure Data Explorer web U I.":::
 
 All functionality is tested for accessibility and supports dark and light on-screen themes.
 
@@ -32,9 +32,9 @@ The `workspace=<guid>` query parameter creates a separate workspace for the embe
 
 When embedding the web UI, the hosting page is responsible for authentication. The following diagrams describe the authentication flow.
 
-:::image type="content" source="../images/host-web-ux-in-iframe/adx-embed-sequence-diagram.png" lightbox="../images/host-web-ux-in-iframe/adx-embed-sequence-diagram.png" alt-text="Diagram that shows the authentication flow for an embedded web U I iframe.":::
+:::image type="content" source="../media/host-web-ux-in-iframe/adx-embed-sequence-diagram.png" lightbox="../media/host-web-ux-in-iframe/adx-embed-sequence-diagram.png" alt-text="Diagram that shows the authentication flow for an embedded web U I iframe.":::
 
-:::image type="content" source="../images/host-web-ux-in-iframe/adx-embed-scopes.png" lightbox="../images/host-web-ux-in-iframe/adx-embed-scopes.png" alt-text="Diagram that shows the scopes required for embedding the web U I iframe.":::
+:::image type="content" source="../media/host-web-ux-in-iframe/adx-embed-scopes.png" lightbox="../media/host-web-ux-in-iframe/adx-embed-scopes.png" alt-text="Diagram that shows the scopes required for embedding the web U I iframe.":::
 
 Use the following steps to handle authentication:
 
@@ -43,7 +43,7 @@ Use the following steps to handle authentication:
     ```javascript
     window.addEventListener('message', (event) => {
        if (event.data.signature === "queryExplorer" && event.data.type === "getToken") {
-         // CODE-1: Replace this placeholder with code to get the access token from Azure AD and
+         // CODE-1: Replace this placeholder with code to get the access token from Microsoft Entra ID and
          //         then post a "postToken" message with an access token and an event.data.scope
        }
     })    
@@ -140,7 +140,7 @@ To embed a dashboard, a trust relationship must be established between the host'
 1. In Azure PowerShell, add the following new service principal for the app:
 
     ```powershell
-    New-AzureADServicePrincipal -AppId 35e917a9-4d95-4062-9d97-5781291353b9
+    New-MgServicePrincipal -AppId 35e917a9-4d95-4062-9d97-5781291353b9
     ```
 
 
@@ -207,7 +207,7 @@ A feature flag can be used in the URL as a query parameter. To disable adding ot
 | f-DisableCrossFiltering | IF true, disables the cross filtering feature in dashboards | false |
 | f-HideDashboardParametersBar | IF true, hides the parameters bar in a dashboard | false |
 
-## Next steps
+## Related content
 
 - [Kusto Query Language (KQL) overview](../../query/index.md)
 - [Write Kusto queries](/azure/data-explorer/kusto/query/tutorials/learn-common-operators)

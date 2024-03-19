@@ -11,6 +11,10 @@ Calculates the cosine similarity of two numerical vectors.
 
 The function `series_cosine_similarity_fl()` is a [user-defined function (UDF)](../query/functions/user-defined-functions.md) that takes an expression containing two dynamic numerical arrays as input and calculates their [cosine similarity](https://en.wikipedia.org/wiki/Cosine_similarity).
 
+> [!NOTE]
+>
+> Use the native function [series_cosine_similarity()](../query/series-cosine-similarity-function.md) instead of the function described in this document. The native function provides the same functionality and is better for performance and scalability. This document is provided for reference purposes only.
+
 ## Syntax
 
 `series_cosine_similarity_fl(`*vec1*`,` *vec2*`,` [ *vec1_size* [`,` *vec2_size* ]]`)`
@@ -21,10 +25,10 @@ The function `series_cosine_similarity_fl()` is a [user-defined function (UDF)](
 
 |Name|Type|Required|Description|
 |--|--|--|--|
-|*vec1*|dynamic|&check;|An array of numeric values.|
-|*vec2*|dynamic|&check;|An array of numeric values that is the same length as *vec1*.|
-|*vec1_size*|real| |The size of *vec1*. This is equivalent to the square root of the dot product of the vector with itself.|
-|*vec2_size*|real| |The size of *vec2*.|
+|*vec1*| `dynamic` | :heavy_check_mark:|An array of numeric values.|
+|*vec2*| `dynamic` | :heavy_check_mark:|An array of numeric values that is the same length as *vec1*.|
+|*vec1_size*| `real` | |The size of *vec1*. This is equivalent to the square root of the dot product of the vector with itself.|
+|*vec2_size*| `real` | |The size of *vec2*.|
 
 ## Function definition
 
@@ -32,10 +36,10 @@ You can define the function by either embedding its code as a query-defined func
 
 ### [Query-defined](#tab/query-defined)
 
-Define the function using the following [let statement](../query/letstatement.md). No permissions are required.
+Define the function using the following [let statement](../query/let-statement.md). No permissions are required.
 
 > [!IMPORTANT]
-> A [let statement](../query/letstatement.md) can't run on its own. It must be followed by a [tabular expression statement](../query/tabularexpressionstatements.md). To run a working example of `series_cosine_similarity_fl()`, see [Example](#example).
+> A [let statement](../query/let-statement.md) can't run on its own. It must be followed by a [tabular expression statement](../query/tabular-expression-statements.md). To run a working example of `series_cosine_similarity_fl()`, see [Example](#example).
 
 ```kusto
 let series_cosine_similarity_fl=(vec1:dynamic, vec2:dynamic, vec1_size:real=double(null), vec2_size:real=double(null))

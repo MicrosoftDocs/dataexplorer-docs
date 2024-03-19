@@ -71,16 +71,16 @@ Microsoft Entra application authentication is used for applications that need to
 1. Run the following commands to create tables and schema mapping for the incoming data:
 
     ```kusto
-    .create-merge table <Logs-Table-Name> (Timestamp:datetime, ObservedTimestamp:datetime, TraceId:string, SpanId:string, SeverityText:string, SeverityNumber:int, Body:string, ResourceAttributes:dynamic, LogsAttributes:dynamic) 
+    .create-merge table <Logs-Table-Name> (Timestamp:datetime, ObservedTimestamp:datetime, TraceID:string, SpanID:string, SeverityText:string, SeverityNumber:int, Body:string, ResourceAttributes:dynamic, LogsAttributes:dynamic) 
     
     .create-merge table <Metrics-Table-Name> (Timestamp:datetime, MetricName:string, MetricType:string, MetricUnit:string, MetricDescription:string, MetricValue:real, Host:string, ResourceAttributes:dynamic,MetricAttributes:dynamic) 
     
-    .create-merge table <Traces-Table-Name> (TraceId:string, SpanId:string, ParentId:string, SpanName:string, SpanStatus:string, SpanKind:string, StartTime:datetime, EndTime:datetime, ResourceAttributes:dynamic, TraceAttributes:dynamic, Events:dynamic, Links:dynamic) 
+    .create-merge table <Traces-Table-Name> (TraceID:string, SpanID:string, ParentID:string, SpanName:string, SpanStatus:string, SpanKind:string, StartTime:datetime, EndTime:datetime, ResourceAttributes:dynamic, TraceAttributes:dynamic, Events:dynamic, Links:dynamic) 
     ```
 
 ### Set up streaming ingestion
 
-Azure Data Explorer has two main types of ingestion: batching and streaming. For more information, see [batching vs streaming ingestion](ingest-data-overview.md#batching-vs-streaming-ingestion). The *streaming* method is called *managed* in the Azure Data Explorer exporter configuration. Streaming ingestion may be a good choice for you if you need the logs and traces are to be available in near real time. However, streaming ingestion uses more resources than batched ingestion. The OTel framework itself batches data, which should be considered when choosing which method to use for ingestion.
+Azure Data Explorer has two main types of ingestion: batching and streaming. For more information, see [batching vs streaming ingestion](ingest-data-overview.md#continuous-data-ingestion). The *streaming* method is called *managed* in the Azure Data Explorer exporter configuration. Streaming ingestion may be a good choice for you if you need the logs and traces are to be available in near real time. However, streaming ingestion uses more resources than batched ingestion. The OTel framework itself batches data, which should be considered when choosing which method to use for ingestion.
 
 > [!NOTE]
 > [Streaming ingestion](ingest-data-streaming.md) must be enabled on Azure Data Explorer cluster to enable the `managed` option.
@@ -110,13 +110,11 @@ In order to ingest your OpenTelemetry data into Azure Data Explorer, you need [d
     | logs_table_name | The target table in the database db_name that stores exported logs data. | OTELLogs
     | traces_table_name | The target table in the database db_name that stores exported traces data. | OTELTraces
     | ingestion_type | Type of ingestion: managed (streaming) or batched | managed
-    | otelmetrics_mapping | Optional parameter. Default table mapping is defined during table creation based on OTeL [metrics attributes](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/exporter/azuredataexplorerexporter#metrics). The default mapping can be changed using this parameter. | &lt;json metrics_table_name mapping>
-    | otellogs_mapping | Optional parameter. Default table mapping is defined during table creation based on OTeL [logs attributes](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/exporter/azuredataexplorerexporter#logs). The default mapping can be changed using this parameter. | &lt;json logs_table_name mapping>
-    | oteltraces_mapping | Optional parameter. Default table mapping is defined during table creation based on OTeL [trace attributes](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/exporter/azuredataexplorerexporter#traces). The default mapping can be changed using this parameter. |&lt;json traces_table_name mapping>
-    | logLevel |  | info
-    | extensions | Services: extension components to enable | [pprof, zpages, health_check]
+    | metrics_table_json_mapping | Optional parameter. Default table mapping is defined during table creation based on OTeL [metrics attributes](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/exporter/azuredataexplorerexporter#metrics). The default mapping can be changed using this parameter. | &lt;json metrics_table_name mapping>
+    | logs_table_json_mapping | Optional parameter. Default table mapping is defined during table creation based on OTeL [logs attributes](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/exporter/azuredataexplorerexporter#logs). The default mapping can be changed using this parameter. | &lt;json logs_table_name mapping>
+    | traces_table_json_mapping | Optional parameter. Default table mapping is defined during table creation based on OTeL [trace attributes](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/exporter/azuredataexplorerexporter#traces). The default mapping can be changed using this parameter. |&lt;json traces_table_name mapping>
     | traces | Services: traces components to enable   |  receivers: [otlp] <br> processors: [batch] <br> exporters: [azuredataexplorer]
-    | metrics | Services: metrics components to enable | receivers: [otlp] <br> processors: [batch] <br> exporters: [logging, azuredataexplorer]
+    | metrics | Services: metrics components to enable | receivers: [otlp] <br> processors: [batch] <br> exporters: [azuredataexplorer]
     | logs | Services: logs components to enable | receivers: [otlp] <br> processors: [batch] <br> exporters: [ azuredataexplorer]
 
 1. Use the "--config" flag to run the Azure Data Explorer exporter.
@@ -124,6 +122,14 @@ In order to ingest your OpenTelemetry data into Azure Data Explorer, you need [d
 The following is an example configuration for the Azure Data Explorer exporter:
 
 ```yaml
+---
+receivers:
+  otlp:
+    protocols:
+      grpc:
+        endpoint: 0.0.0.0:4317
+processors:
+  batch:
 exporters:
   azuredataexplorer:
     cluster_uri: "https://<cluster>.kusto.windows.net"
@@ -135,13 +141,10 @@ exporters:
     logs_table_name: "OTELLogs"
     traces_table_name: "OTELTraces"
     ingestion_type : "managed"
-    otelmetrics_mapping : "<json metrics_table_name mapping>"
-    otellogs_mapping  : "<json logs_table_name mapping>"
-    oteltraces_mapping  : "<json traces_table_name mapping>"
-  logging:
-    logLevel: info
+    metrics_table_json_mapping : "<json metrics_table_name mapping>"
+    logs_table_json_mapping  : "<json logs_table_name mapping>"
+    traces_table_json_mapping  : "<json traces_table_name mapping>"
 service:
-  extensions: [pprof, zpages, health_check]
   pipelines:
     traces:
       receivers: [otlp]
@@ -150,7 +153,7 @@ service:
     metrics:
       receivers: [otlp]
       processors: [batch]
-      exporters: [logging, azuredataexplorer]
+      exporters: [azuredataexplorer]
     logs:
       receivers: [otlp]
       processors: [batch]
@@ -249,7 +252,7 @@ Once the sample app has run, your data has been ingested into the defined tables
 
 ### Further data processing
 
-Using update policies, the collected data can further be processed as per application need. For more information, see [Update policy overview](kusto/management/updatepolicy.md).
+Using update policies, the collected data can further be processed as per application need. For more information, see [Update policy overview](kusto/management/update-policy.md).
 
 1. The following example exports histogram metrics to a histo-specific table with buckets and aggregates. Run the following command in the query pane of the Azure Data Explorer web UI:
     
@@ -295,7 +298,7 @@ Using update policies, the collected data can further be processed as per applic
     @'[{ "IsEnabled": true, "Source": "RawMetricsData","Query": "ExtractHistoCountColumns()", "IsTransactional": false, "PropagateInge
     ```
 
-## Next steps
+## Related content
 
 * [KQL quick reference](kql-quick-reference.md)
 * [Kusto Query Language (KQL) overview](kusto/query/index.md)

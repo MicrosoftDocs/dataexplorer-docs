@@ -3,34 +3,35 @@ title:  The timespan data type
 description: This article describes The timespan data type in Azure Data Explorer.
 ms.reviewer: orspodek
 ms.topic: reference
-ms.date: 02/13/2020
+ms.date: 01/08/2024
 ---
 # The timespan data type
 
-The `timespan` (`time`) data type represents a  time interval.
+The `timespan` data type represents a time interval.
 
-## timespan literals
+> The `timespan` and `time` data types are equivalent.
 
-Literals of type `timespan` have the syntax `timespan(`*value*`)`, where a number of formats 
-are supported for *value*, as indicated by the following table:
+## `timespan` literals
 
-|Value|Length of time|
----|---
-`2d`|2 days
-`1.5h`|1.5 hour
-`30m`|30 minutes
-`10s`|10 seconds
-`0.1s`|0.1 second
-`100ms`| 100 millisecond
-`10microsecond`|10 microseconds
-`1tick`|100ns
-`time(15 seconds)`|15 seconds
-`time(2)`| 2 days
-`time(0.12:34:56.7)`|`0d+12h+34m+56.7s`
+To specify a `timespan` literal, use one of the following syntax options:
 
-The special form `time(null)` is the [null value](null-values.md).
+| Syntax | Description | Example | Length of time |
+|--|--|--|--|
+| *n*`d` | A time interval represented by one or more digits followed by `d` for days. | `2d` | 2 days |
+| *n*`h` | A time interval represented by one or more digits followed by `h` for hours. | `1.5h` | 1.5 hours |
+| *n*`m` | A time interval represented by one or more digits followed by `m` for minutes. | `30m` | 30 minutes |
+| *n*`s` | A time interval represented by one or more digits followed by `s` for seconds. | `10s` | 10 seconds |
+| *n*`ms` | A time interval represented by one or more digits followed by `ms` for milliseconds. | `100ms` | 100 milliseconds |
+| *n*`microsecond` | A time interval represented by one or more digits followed by `microsecond`. | `10microsecond` | 10 microseconds |
+| *n*`tick` | A time interval represented by one or more digits followed by `tick` to indicate nanoseconds. | `1tick` | 100 ns |
+| `timespan(`*n* `seconds)` | A time interval in seconds. | `timespan(15 seconds)` | 15 seconds |
+| `timespan(`*n*`)` | A time interval in days. | `timespan(2)` | 2 days |
+| `timespan(`*days*`.`*hours*`:`*minutes*`:`*seconds*`.`*milliseconds*`)` | A time interval in days, hours, minutes, and seconds passed.| `timespan(0.12:34:56.7)` | `0d+12h+34m+56.7s` |
+| `timespan(null)` | Represents the [null value](null-values.md). | | |
 
-## timespan operators
+[!INCLUDE [syntax-conventions-note](../../../includes/syntax-conventions-note.md)]
+
+## `timespan` operators
 
 Two values of type `timespan` may be added, subtracted, and divided.
 The last operation returns a value of type `real` representing the
@@ -54,3 +55,7 @@ print
     seconds = 86400
 | extend t = seconds * 1s
 ```
+
+## Related content
+
+* [totimespan()](../../query/totimespanfunction.md)

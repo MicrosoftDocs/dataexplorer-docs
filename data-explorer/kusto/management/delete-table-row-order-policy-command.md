@@ -7,7 +7,7 @@ ms.date: 05/14/2023
 ---
 # .delete table policy roworder command
 
-Remove a table's [row order policy](roworderpolicy.md). The row order policy is an optional policy set on tables that suggests the desired ordering of rows in an [extent (data shard)](extents-overview.md). The purpose of the policy is to improve performance of queries that are known to be narrowed to a small subset of values in the ordered columns.
+Remove a table's [row order policy](row-order-policy.md). The row order policy is an optional policy set on tables that suggests the desired ordering of rows in an [extent (data shard)](extents-overview.md). The purpose of the policy is to improve performance of queries that are known to be narrowed to a small subset of values in the ordered columns.
 
 ## Permissions
 
@@ -23,7 +23,7 @@ You must have at least [Table Admin](access-control/role-based-access-control.md
 
 |Name|Type|Required|Description|
 |--|--|--|--|
-|*TableName*|string|&check;|The name of the table.|
+|*TableName*| `string` | :heavy_check_mark:|The name of the table.|
 
 ### Example
 

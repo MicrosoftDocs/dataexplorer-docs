@@ -3,7 +3,7 @@ title: Visualize data with the Azure Data Explorer dashboard
 description: Learn how to visualize data with the Azure Data Explorer dashboard
 ms.reviewer: gabil
 ms.topic: how-to
-ms.date: 05/16/2023
+ms.date: 03/03/2024
 ---
 
 # Visualize data with Azure Data Explorer dashboards 
@@ -102,6 +102,21 @@ To pin a query:
 ## Use parameters
 
 Parameters significantly improve dashboard rendering performance, and enable you to use filter values as early as possible in the query. Filtering is enabled when the parameter is included in the query associated with your tile(s).  For more information about how to set up and use different kinds of parameters, see [Use parameters in Azure Data Explorer dashboards](dashboard-parameters.md).
+
+## View query
+
+You can view the query in either editing or viewing mode. Editing the underlying query of a tile is only possible in editing mode. In viewing mode, you can modify the query in a new query tab, without changing the underlying query of the dashboard tile.
+
+1. Browse to your dashboard.
+1. On the tile you want to explore, select the **More menu [...]** > **View query**.
+    
+    A pane opens with the query and results table.
+1. Select **New query tab**. Proceed to edit the query in the [Azure Data Explorer web UI query pane](web-ui-query-overview.md).
+
+:::image type="content" source="media/adx-dashboards/view-query.png" alt-text="Screenshot of view query pane with the query in the top half of the screen and results in the bottom half.":::
+
+> [!NOTE]
+> Any edits made to the query using this flow won't be reflected in the original dashboard.
 
 ## Share dashboards
 
@@ -228,6 +243,16 @@ You can update an existing dashboard, or restore a previous version, as follows:
 1. Select the file to update the dashboard.
 1. Select **Save changes**.
 
+## Add page
+
+Pages are optional containers for tiles. You can use pages to organize tiles into logical groups, such as by data source or by subject area. You can also use pages to create a dashboard with multiple views, such as a dashboard with a drillthrough from a summary page to a details page.
+
+1. On the left **Pages** pane, select **+ Add page**.
+
+1. To name the page, select the vertical **More menu [...]** > **Rename page**.
+
+1. [Add tiles](#add-tile) to the page.
+
 ## Enable auto refresh
 
 Auto refresh is a feature that allows you to automatically update the data on a dashboard without manually reloading the page or clicking a refresh button.
@@ -236,7 +261,7 @@ The default auto refresh rate can be set by a database editor. Both editors and 
 
 :::image type="content" source="media/adx-dashboards/auto-refresh-times.png" alt-text="Screenshot of the different time intervals available in auto refresh in dashboards.":::
 
-However, database editors may want to limit the minimum refresh rate that any viewer can set so as to reduce the cluster load. When the minimum refresh rate is set, database users can't set a refresh rate lower than the minimum.
+However, database editors might want to limit the minimum refresh rate that any viewer can set so as to reduce the cluster load. When the minimum refresh rate is set, database users can't set a refresh rate lower than the minimum.
 
 1. Select the **More menu [...]** > **Auto refresh**.
 
@@ -249,8 +274,7 @@ However, database editors may want to limit the minimum refresh rate that any vi
 
 1. Select **Apply** and then **Save** the dashboard.
 
-## Next Steps
+## Related content
 
-* Get data with the [ingestion wizard](ingest-data-wizard.md)
 * [Use parameters in Azure Data Explorer dashboards](dashboard-parameters.md)
 * [Customize Azure Data Explorer dashboard visuals](dashboard-customize-visuals.md)

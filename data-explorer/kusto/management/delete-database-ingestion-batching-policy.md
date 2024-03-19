@@ -7,7 +7,7 @@ ms.date: 06/13/2023
 ---
 # .delete database policy ingestionbatching command
 
-Use this command to remove the database [ingestion batching policy](batchingpolicy.md) that defines data aggregation for batching.
+Use this command to remove the database [ingestion batching policy](batching-policy.md) that defines data aggregation for batching. The ingestion batching policy applies to [queued ingestion](../../ingest-data-overview.md#continuous-data-ingestion).
 
 ## Permissions
 
@@ -23,7 +23,7 @@ You must have at least [Database Admin](access-control/role-based-access-control
 
 |Name|Type|Required|Description|
 |--|--|--|--|
-|*DatabaseName*|string|&check;|The name of the database.|
+|*DatabaseName*| `string` | :heavy_check_mark:|The name of the database.|
 
 ## Example
 
@@ -33,6 +33,6 @@ The following command deletes the batching policy on a database.
 .delete database MyDatabase policy ingestionbatching
 ```
 
-## See also
+## Related content
 
 * [delete table batching policy](delete-table-ingestion-batching-policy.md)

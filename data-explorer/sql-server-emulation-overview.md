@@ -43,8 +43,8 @@ The following table describes the supported tuning options. To learn how to use 
 
 |Name|Type|Required|Description|
 |--|--|--|--|
-|*ExpectedArguments*|string|&check;|The expected value for the `Language` or `Application` field in TDS.|
-|*TuningOptions*|string||Zero or more comma-separated [supported tuning options](#supported-tuning-options). Each tuning option must be in the format of *TuningOptionName*`:`*TuningOptionValue*.|
+|*ExpectedArguments*| `string` | :heavy_check_mark:|The expected value for the `Language` or `Application` field in TDS.|
+|*TuningOptions*| `string` ||Zero or more comma-separated [supported tuning options](#supported-tuning-options). Each tuning option must be in the format of *TuningOptionName*`:`*TuningOptionValue*.|
 
 ### Example
 
@@ -54,7 +54,7 @@ The following example specifies the Microsoft Entra tenant ID in an ODBC connect
 Driver={ODBC Driver 17 for SQL Server};Server=myadxcluster.westeurope.kusto.windows.net;Database=mydatabase;Authentication=ActiveDirectoryServicePrincipal;Language=any@AadAuthority:57B489CD-590C-417F-A8B9-E75D2F9A04C8,MaxStringSize:5000;UID=A9BCAB99-8AAD-4411-A232-37E2116B935E;PWD=mysecret
 ```
 
-## Next steps
+## Related content
 
 * [Connect with ODBC](connect-odbc.md)
 * [Connect with JDBC](connect-jdbc.md)

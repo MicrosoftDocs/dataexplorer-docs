@@ -7,7 +7,7 @@ ms.date: 06/04/2023
 ---
 # .alter-merge table policy update command
 
-Changes the table's update policy. The [update policy](updatepolicy.md) simplifies the process of syncing and updating data between two tables. When new data is inserted into the source table, a transformation query runs over this data to modify and insert the data into the target table.
+Changes the table's update policy. The [update policy](update-policy.md) simplifies the process of syncing and updating data between two tables. When new data is inserted into the source table, a transformation query runs over this data to modify and insert the data into the target table.
 
 > [!NOTE]
 >
@@ -29,9 +29,9 @@ You must have at least [Table Admin](access-control/role-based-access-control.md
 
 |Name|Type|Required|Description|
 |--|--|--|--|
-| *DatabaseName* | string | | The name of the database. When you run the command from the database context that contains the table to alter, *DatabaseName* is not required. |
-| *TableName* | string | &check; | The name of the table. A wildcard, `*`, denotes all tables.|
-| *ArrayOfPolicyObjects* | string | &check; | A serialized array of policy objects. For more information, see [update policy](updatepolicy.md).|
+| *DatabaseName* | `string` | | The name of the database. When you run the command from the database context that contains the table to alter, *DatabaseName* is not required. |
+| *TableName* | `string` |  :heavy_check_mark: | The name of the table. A wildcard, `*`, denotes all tables.|
+| *ArrayOfPolicyObjects* | `string` |  :heavy_check_mark: | A serialized array of policy objects. For more information, see [update policy](update-policy.md).|
 
 ## Returns
 

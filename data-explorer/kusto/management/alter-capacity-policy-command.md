@@ -7,7 +7,7 @@ ms.date: 02/21/2023
 ---
 # .alter cluster policy capacity command
 
-Changes the cluster's [capacity policy](capacitypolicy.md). A capacity policy controls the computational resources for data management operations on the cluster.
+Changes the cluster's [capacity policy](capacity-policy.md). A capacity policy controls the computational resources for data management operations on the cluster.
 
 > [!NOTE]
 >
@@ -28,7 +28,7 @@ You must have [AllDatabasesAdmin](access-control/role-based-access-control.md) p
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-| *PolicyObject* | string | &check; | A JSON policy object. See [capacity policy](capacitypolicy.md) for policy properties. |
+| *PolicyObject* | `string` |  :heavy_check_mark: | A JSON policy object. See [capacity policy](capacity-policy.md) for policy properties. |
 
 ## Returns
 

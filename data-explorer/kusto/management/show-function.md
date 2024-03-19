@@ -26,11 +26,11 @@ You must have at least Database User, Database Viewer, or Database Monitor to ru
 
 |Output parameter |Type |Description|
 |---|---|--- |
-|Name  |String |The name of the function. |
-|Parameters  |String |The parameters required by the function.|
-|Body  |String |(Zero or more) `let` statements followed by a valid CSL expression that is evaluated upon function invocation.|
-|Folder|String|A folder used for UI functions categorization. This parameter doesn't change the way the function is invoked. |
-|DocString|String|A description of the function for UI purposes.|
+|Name  | `string` |The name of the function. |
+|Parameters  | `string` |The parameters required by the function.|
+|Body  | `string` |(Zero or more) `let` statements followed by a valid CSL expression that is evaluated upon function invocation.|
+|Folder| `string` |A folder used for UI functions categorization. This parameter doesn't change the way the function is invoked. |
+|DocString| `string` |A description of the function for UI purposes.|
 
 **Output example** 
 
@@ -55,14 +55,14 @@ For a list of **all** functions, see [.show functions](#show-functions).
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-|*FunctionName* | string | &check; | The name of stored function.|
-|*PropertyName*/*PropertyValue*| string | | Indicate additional information to use when showing function details. All properties are optional. See [Supported properties](#supported-properties).|
+|*FunctionName* | `string` |  :heavy_check_mark: | The name of stored function.|
+|*PropertyName*/*PropertyValue*| `string` | | Indicate additional information to use when showing function details. All properties are optional. See [Supported properties](#supported-properties).|
 
 ### Supported properties
 
 | Property name | Property values | Description | Default |
 |---|---|---|---|
-|`ShowObfuscatedStrings` | `true` or `false`| If `true` and used by principal with proper permissions, [obfuscated strings](../query/scalar-data-types/string.md#obfuscated-string-literals) in function's body will be shown. | Defaults to `false`.|
+|`ShowObfuscatedStrings` | `true` or `false`| If `true`, [obfuscated strings](../query/scalar-data-types/string.md#obfuscated-string-literals) in function's body will be shown. To use this option, you must either be a database admin or entity creator. If you don't have these permissions, the command fails. | Defaults to `false`.|
 |`Builtin` | `true` or `false` | If `true` and used by cluster admin, shows built in function(s). | Defaults to `false`.|
 | `IncludeHiddenFunctions` | `true` or `false` | If `true`, show hidden function(s). | Defaults to `false`.|
 
@@ -70,11 +70,11 @@ For a list of **all** functions, see [.show functions](#show-functions).
 
 |Output parameter |Type |Description|
 |---|---|--- |
-|Name  |String |The name of the function. |
-|Parameters  |String |The parameters required by the function.|
-|Body  |String |(Zero or more) `let` statements followed by a valid CSL expression that is evaluated upon function invocation.|
-|Folder|String|A folder used for UI functions categorization. This parameter doesn't change the way function is invoked|
-|DocString|String|A description of the function for UI purposes.|
+|Name  | `string` |The name of the function. |
+|Parameters  | `string` |The parameters required by the function.|
+|Body  | `string` |(Zero or more) `let` statements followed by a valid CSL expression that is evaluated upon function invocation.|
+|Folder| `string` |A folder used for UI functions categorization. This parameter doesn't change the way function is invoked|
+|DocString| `string` |A description of the function for UI purposes.|
 
 > [!NOTE]
 > If the function does not exist, an error is returned.

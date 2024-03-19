@@ -215,6 +215,7 @@ The following example shows an Azure Resource Manager template for adding a clus
 
 ---
 
-## Next steps
+## Related content
 
 * [Add database principals](add-database-principal.md)
+* [Manage cluster permissions](manage-cluster-permissions.md)

@@ -19,7 +19,7 @@ ms.date: 12/26/2022
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-|*number*| real | &check; | The number for which to calculate the base-2 logarithm.|
+|*number*| `real` |  :heavy_check_mark: | The number for which to calculate the base-2 logarithm.|
 
 ## Returns
 
@@ -41,7 +41,7 @@ print result=log2(5)
 |--|
 |2.3219280948873622|
 
-## See also
+## Related content
 
 * For natural (base-e) logarithms, see [log()](log-function.md).
 * For common (base-10) logarithms, see [log10()](log10-function.md).

@@ -23,18 +23,18 @@ You must have at least [Table Admin](access-control/role-based-access-control.md
 
 | Name                     | Type   | Required | Description                        |
 |--------------------------|--------|----------|------------------------------------|
-| *TableName*              | string | &check;  | Name of the table.                 |
-| *SerializedPolicyObject* | string | &check;  | JSON representation of the policy. |
+| *TableName*              | `string` |  :heavy_check_mark:  | Name of the table.                 |
+| *SerializedPolicyObject* | `string` |  :heavy_check_mark:  | JSON representation of the policy. |
 
 ## Returns
 
 | Name          | Type   | Description                                                                                                                                                                                                                                                                  |
 |---------------|--------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| PolicyName    | string | Name of the policy. For table auto delete policy this value is **AutoDeletePolicy**.                                                                                                                                                                                         |
-| EntityName    | string | Name of the entity for which the policy is set. For table auto delete policy this value is `[`*databaseName*`].[`*tableName*`]`, where *databaseName* corresponds to the name of the database in which in the table exists, and *tableName* to the name of the table itself. |
-| Policy        | string | JSON representation of the policy object.                                                                                                                                                                                                                                    |
-| ChildEntities | string | Child entities for which this policy is set. For table auto delete policy this value is an empty string.                                                                                                                                                                     |
-| EntityType    | string | Type of entity for which this policy is set. For table auto delete policy this value is *Table*.                                                                                                                                                                             |
+| PolicyName    | `string` | Name of the policy. For table auto delete policy this value is **AutoDeletePolicy**.                                                                                                                                                                                         |
+| EntityName    | `string` | Name of the entity for which the policy is set. For table auto delete policy this value is `[`*databaseName*`].[`*tableName*`]`, where *databaseName* corresponds to the name of the database in which in the table exists, and *tableName* to the name of the table itself. |
+| Policy        | `string` | JSON representation of the policy object.                                                                                                                                                                                                                                    |
+| ChildEntities | `string` | Child entities for which this policy is set. For table auto delete policy this value is an empty string.                                                                                                                                                                     |
+| EntityType    | `string` | Type of entity for which this policy is set. For table auto delete policy this value is *Table*.                                                                                                                                                                             |
 
 ## Examples
 
@@ -46,7 +46,7 @@ Set expiry of table *T* to *2023-06-01*. Table will be deleted even if there are
 .alter table T policy auto_delete @'{ "ExpiryDate" : "2023-06-01", "DeleteIfNotEmpty": true }'
 ```
 
-**Output:**
+**Output**
 
 | PolicyName       | EntityName     | Policy                                                           | ChildEntities | EntityType |
 |------------------|----------------|------------------------------------------------------------------|---------------|------------|

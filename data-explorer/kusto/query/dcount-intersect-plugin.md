@@ -7,7 +7,7 @@ ms.date: 12/11/2022
 ---
 # dcount_intersect plugin
 
-Calculates intersection between N sets based on `hll` values (N in range of [2..16]), and returns N `dcount` values. The plugin is invoked with the [`evaluate`](evaluateoperator.md) operator.
+Calculates intersection between N sets based on `hll` values (N in range of [2..16]), and returns N `dcount` values. The plugin is invoked with the [`evaluate`](evaluate-operator.md) operator.
 
 ## Syntax
 
@@ -19,8 +19,8 @@ Calculates intersection between N sets based on `hll` values (N in range of [2..
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-|*T*|string|&check;| The input tabular expression. |
-|*hll_i*| The values of set S<sub>i</sub> calculated with the [`hll()`](./hll-aggfunction.md) function.|
+|*T*| `string` | :heavy_check_mark:| The input tabular expression. |
+|*hll_i*| The values of set S<sub>i</sub> calculated with the [`hll()`](./hll-aggregation-function.md) function.|
 
 ## Returns
 

@@ -7,7 +7,7 @@ ms.date: 04/20/2023
 ---
 # .alter-merge cluster policy callout command
 
-Turn on or turn off a cluster's [callout policy](calloutpolicy.md) or add a new, nonexisting, callout policy to the array of callout policies defined for the cluster.
+Turn on or turn off a cluster's [callout policy](callout-policy.md) or add a new, nonexisting, callout policy to the array of callout policies defined for the cluster.
 
 ## Permissions
 
@@ -23,17 +23,17 @@ You must have [Cluster AllDatabasesAdmin](access-control/role-based-access-contr
 
 | Name                             | Type   | Required | Description                                                                                              |
 |----------------------------------|--------|----------|----------------------------------------------------------------------------------------------------------|
-| *SerializedArrayOfPolicyObjects* | string | &check;  | A serialized array of JSON policy objects. See [callout policy](calloutpolicy.md) for policy properties. |
+| *SerializedArrayOfPolicyObjects* | `string` |  :heavy_check_mark:  | A serialized array of JSON policy objects. See [callout policy](callout-policy.md) for policy properties. |
 
 ## Returns
 
 | Name          | Type   | Description                                                                                               |
 |---------------|--------|-----------------------------------------------------------------------------------------------------------|
-| PolicyName    | string | Name of the policy. For cluster callout policy, this value is **CalloutPolicy**.                           |
-| EntityName    | string | Name of the entity for which the policy is set. For cluster callout policy, this value is an empty string. |
-| Policy        | string | JSON representation of the policy object.                                                                 |
-| ChildEntities | string | Child entities for which this policy is set. For cluster callout policy, this value is an empty string.    |
-| EntityType    | string | Type of entity for which this policy is set. For cluster callout policy, this value is an empty string.    |
+| PolicyName    | `string` | Name of the policy. For cluster callout policy, this value is **CalloutPolicy**.                           |
+| EntityName    | `string` | Name of the entity for which the policy is set. For cluster callout policy, this value is an empty string. |
+| Policy        | `string` | JSON representation of the policy object.                                                                 |
+| ChildEntities | `string` | Child entities for which this policy is set. For cluster callout policy, this value is an empty string.    |
+| EntityType    | `string` | Type of entity for which this policy is set. For cluster callout policy, this value is an empty string.    |
 
 ### Examples
 
@@ -50,7 +50,7 @@ You must have [Cluster AllDatabasesAdmin](access-control/role-based-access-contr
 ```
 ````
 
-**Output:**
+**Output**
 
 | PolicyName    | EntityName | Policy                                                                                               | ChildEntities | EntityType |
 |---------------|------------|------------------------------------------------------------------------------------------------------|---------------|------------|

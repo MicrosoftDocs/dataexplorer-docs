@@ -4,12 +4,8 @@ description: This article describes cross-database and cross-cluster queries in 
 ms.reviewer: alexans
 ms.topic: reference
 ms.date: 07/19/2023
-zone_pivot_group_filename: data-explorer/zone-pivot-groups.json
-zone_pivot_groups: kql-flavors-all
 ---
 # Cross-cluster and cross-database queries
-
-::: zone pivot="azuredataexplorer, fabric"
 
 Queries run with a particular database designated as the *database in context*. This database acts as the default for permission checking. If an entity is referenced in a query without specifying the cluster or database, it's resolved against this database.
 
@@ -31,7 +27,7 @@ The following table explains how to identify the database in context by query en
 
 ## Perform cross-cluster or cross-database queries
 
-To access entities outside the database in context, use the [cluster()](../query/clusterfunction.md) and [database()](../query/databasefunction.md) functions to qualify the entity name.
+To access entities outside the database in context, use the [cluster()](../query/cluster-function.md) and [database()](../query/database-function.md) functions to qualify the entity name.
 
 For a table in a different database within the same cluster:
 
@@ -39,7 +35,7 @@ For a table in a different database within the same cluster:
 database("<DatabaseName>").<TableName>
 ```
 
-For a table in a remove cluster:
+For a table in a remote cluster:
 
 ```kusto
 cluster("<ClusterName>").database("<DatabaseName>").<TableName>
@@ -55,7 +51,7 @@ cluster("<ClusterName>").database("<DatabaseName>").<TableName>
 
 ### Qualified names and the union operator
 
-When a *qualified name* appears as an operand of the [union operator](./unionoperator.md), then wildcards can be used to specify multiple tables and multiple databases. Wildcards aren't permitted in cluster names.
+When a *qualified name* appears as an operand of the [union operator](./union-operator.md), then wildcards can be used to specify multiple tables and multiple databases. Wildcards aren't permitted in cluster names.
 
 ```kusto
 union withsource=TableName *, database("OtherDb*").*Table, cluster("OtherCluster").database("*").*
@@ -66,7 +62,7 @@ union withsource=TableName *, database("OtherDb*").*Table, cluster("OtherCluster
 
 ### Qualified names and restrict access statements
 
-Qualified names or patterns can also be included in [restrict access](./restrictstatement.md) statement.
+Qualified names or patterns can also be included in [restrict access](./restrict-statement.md) statement.
 Wildcards in cluster names aren't permitted.
 
 The following query restricts query access to the following entities:
@@ -163,7 +159,7 @@ In default database.
 cluster("OtherCluster").database("OtherDb").SomeTable("MyTable")
 ```
 
-The following query calls remote function `GetDataPivot` that has a variable schema output based on the data ([pivot() plugin](pivotplugin.md) has dynamic output).
+The following query calls remote function `GetDataPivot` that has a variable schema output based on the data ([pivot() plugin](pivot-plugin.md) has dynamic output).
 This call violates rule #3, so it's not valid.
 
 Tabular function in `OtherDb`.
@@ -178,15 +174,7 @@ Tabular function in the default database.
 cluster("OtherCluster").database("OtherDb").GetDataPivot()
 ```
 
-## See also
+## Related content
 
-* [Cross-cluster join](../query/joincrosscluster.md)
+* [Cross-cluster join](../query/join-cross-cluster.md)
 * [Allow cross-tenant queries and commands](../access-control/cross-tenant-query-and-commands.md)
-
-::: zone-end
-
-::: zone pivot="azuremonitor"
-
-Cross-database and cross-cluster queries aren't supported in Azure Monitor. See [Cross workspace queries in Azure Monitor](/azure/azure-monitor/log-query/cross-workspace-query) for queries across multiple workspaces and apps.
-
-::: zone-end

@@ -257,7 +257,7 @@ You create the cluster by using the service principal credentials that you speci
 
 You can verify the deployment by running a query against the *Customer* table. You should see the three records that were imported from the CSV file.
 
-## Next steps
+## Related content
 
 * Create a [cluster and database by using an Azure Resource Manager template](./create-cluster-database-resource-manager.md).
 * Configure a database by using a [KQL script](./database-script.md)

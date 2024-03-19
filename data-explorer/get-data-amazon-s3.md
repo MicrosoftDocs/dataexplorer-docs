@@ -3,7 +3,7 @@ title: Get data from Amazon S3 into Azure Data Explorer
 description: Learn how to get data from Amazon S3 into Azure Data Explorer.
 ms.reviewer: sharmaanshul
 ms.topic: how-to
-ms.date: 09/26/2023
+ms.date: 11/16/2023
 ---
 # Get data from Amazon S3
 
@@ -13,11 +13,10 @@ For more information on Amazon S3, see [What is Amazon S3?](https://docs.aws.ama
 
 For general information on data ingestion, see [Azure Data Explorer data ingestion overview](ingest-data-overview.md).
 
-[!INCLUDE [get-data-flow](includes/get-data-flow.md)]
-
 ## Prerequisites
 
 * A Microsoft account or a Microsoft Entra user identity. An Azure subscription isn't required.
+* Sign-in to the [Azure Data Explorer web UI](https://dataexplorer.azure.com/home).
 * An Azure Data Explorer cluster and database. [Create a cluster and database](create-cluster-and-database.md).
 
 ## Get data
@@ -27,7 +26,7 @@ For general information on data ingestion, see [Azure Data Explorer data ingesti
 
     :::image type="content" source="media/get-data-amazon-s3/get-data.png" alt-text="Screenshot of query tab, with right-click on a database and the get options dialog open." lightbox="media/get-data-amazon-s3/get-data.png":::
 
-## Select a data source
+## Source
 
 In the **Get data window**, the **Source** tab is selected.
 
@@ -35,7 +34,7 @@ Select the data source from the available list. In this example, you are ingesti
 
 :::image type="content" source="media/get-data-amazon-s3/select-data-source.png" alt-text="Screenshot of get data window with source tab selected." lightbox="media/get-data-amazon-s3/select-data-source.png":::
 
-### Configure tab
+## Configure
 
 1. Select a target database and table. If you want to ingest data into a new table, select **+New table** and enter a table name.
 
@@ -52,9 +51,11 @@ Select the data source from the available list. In this example, you are ingesti
 
     :::image type="content" source="media/get-data-amazon-s3/configure-tab.png" alt-text="Screenshot of configure tab with new table entered and an Amazon S3 connection string pasted." lightbox="media/get-data-amazon-s3/configure-tab.png":::
 
+    [!INCLUDE [ingestion-size-limit](includes/ingestion-size-limit.md)]
+
 1. Select **Next**.
 
-## Inspect the data
+## Inspect
 
 The **inspect** tab opens with a preview of the data.
 
@@ -84,11 +85,8 @@ In the **Data preparation** window, all three steps are marked with green check 
 
 :::image type="content" source="media/get-data-amazon-s3/summary.png" alt-text="Screenshot of summary page with successful ingestion completed." lightbox="media/get-data-amazon-s3/summary.png":::
 
-## Next steps
+## Related content
 
-* Explore the results in the [Azure Data Explorer web UI query](web-ui-query-overview.md)
 * [Write Kusto Query Language queries in the web UI](web-ui-kql.md)
 * [Tutorial: Learn common Kusto Query Language operators](kusto/query/tutorials/learn-common-operators.md)
 * [Visualize data with Azure Data Explorer dashboards](azure-data-explorer-dashboards.md)
-* [Use the sample app generator wizard to create code to ingest and query your data](sample-app-generator-wizard.md)
-* Drop ingested data using [.drop extents command](kusto/management/drop-extents.md) and [.drop ingestion mapping command](kusto/management/drop-ingestion-mapping-command.md)

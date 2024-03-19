@@ -25,9 +25,9 @@ The function `kmeans_fl()` is a [UDF (user-defined function)](../query/functions
 
 |Name|Type|Required|Description|
 |--|--|--|--|
-|*k*|int|&check;|The number of clusters.|
-|*features_cols*|dynamic|&check;|An array containing the names of the features columns to use for clustering.|
-|*cluster_col*|string|&check;|The name of the column to store the output cluster ID for each record.|
+|*k*| `int` | :heavy_check_mark:|The number of clusters.|
+|*features_cols*| `dynamic` | :heavy_check_mark:|An array containing the names of the features columns to use for clustering.|
+|*cluster_col*| `string` | :heavy_check_mark:|The name of the column to store the output cluster ID for each record.|
 
 ## Function definition
 
@@ -35,10 +35,10 @@ You can define the function by either embedding its code as a query-defined func
 
 ### [Query-defined](#tab/query-defined)
 
-Define the function using the following [let statement](../query/letstatement.md). No permissions are required.
+Define the function using the following [let statement](../query/let-statement.md). No permissions are required.
 
 > [!IMPORTANT]
-> A [let statement](../query/letstatement.md) can't run on its own. It must be followed by a [tabular expression statement](../query/tabularexpressionstatements.md). To run a working example of `kmeans_fl()`, see [Examples](#examples).
+> A [let statement](../query/let-statement.md) can't run on its own. It must be followed by a [tabular expression statement](../query/tabular-expression-statements.md). To run a working example of `kmeans_fl()`, see [Examples](#examples).
 
 ~~~kusto
 let kmeans_fl=(tbl:(*), k:int, features:dynamic, cluster_col:string)
@@ -99,7 +99,7 @@ kmeans_fl(tbl:(*), k:int, features:dynamic, cluster_col:string)
 
 ## Examples
 
-The following examples use the [invoke operator](../query/invokeoperator.md) to run the function.
+The following examples use the [invoke operator](../query/invoke-operator.md) to run the function.
 
 ### Clusterize room occupancy from sensors measurements
 

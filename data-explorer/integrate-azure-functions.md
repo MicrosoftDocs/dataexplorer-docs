@@ -1,12 +1,12 @@
 ---
-title: Azure Data Explorer bindings for Azure Functions overview (preview)
+title: Integrate Azure Functions with Azure Data Explorer using input and output bindings (preview)
 description: Learn how to use Azure Data Explorer bindings for Azure Functions.
 ms.reviewer: ramacg
 ms.topic: conceptual
 ms.date: 09/13/2022
 ---
 
-# Integrating Azure Functions with Azure Data Explorer using input and output bindings (preview)
+# Integrate Azure Functions with Azure Data Explorer using input and output bindings (preview)
 
 [!INCLUDE [real-time-analytics-connectors-note](includes/real-time-analytics-connectors-note.md)]
 
@@ -165,6 +165,6 @@ For more information about functions, see [Azure Functions documentation](/azure
 - [GitHub](https://github.com/Azure/Webjobs.Extensions.Kusto)
 - [NuGet.org](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.Kusto/1.0.7-Preview)
 
-## Next steps
+## Related content
 
 - [Kusto Query Language (KQL) overview](kusto/query/index.md)

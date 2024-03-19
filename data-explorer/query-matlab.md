@@ -168,7 +168,7 @@ To perform user authentication:
     % References the credential file created in the previous step
     credentials = configureCredentials('Auth.json');
 
-    % Point the scopes to the ADX cluster that we want to query
+    % Point the scopes to the Azure Data Explorer cluster that we want to query
     request = azure.core.credential.TokenRequestContext();
     request.addScopes('<https://adx-cluster-changeme.kusto.windows.net/.default>');
     token=credentials.getToken(request);
@@ -286,7 +286,7 @@ To perform application authentication:
     % References the credential file created in the previous step
     credentials = configureCredentials('Auth.json');
 
-    % Point the scopes to the ADX cluster that we want to query
+    % Point the scopes to the Azure Data Explorer cluster that we want to query
     request = azure.core.credential.TokenRequestContext();request.addScopes('<https://adx-cluster-changeme.kusto.windows.net/.default>');
     token=credentials.getToken(request);
 
@@ -303,6 +303,6 @@ To perform application authentication:
 
 ---
 
-## Next steps
+## Related content
 
 * Query your cluster with the [REST API](kusto/api/rest/index.md)

@@ -19,7 +19,7 @@ Retrieves geolocation information about IPv4 or IPv6 addresses.
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-| *IpAddress*| string | &check; | IPv4 or IPv6 address to retrieve geolocation information about.|
+| *IpAddress*| `string` |  :heavy_check_mark: | IPv4 or IPv6 address to retrieve geolocation information about.|
 
 ## Returns
 
@@ -27,11 +27,11 @@ A dynamic object containing the information on IP address whereabouts (if the in
 
 |Name| Type | Description|
 |--|--|--|
-|`country`|string|Country name|
-|`state`|string|State (subdivision) name|
-|`city`|string|City name|
-|`latitude`|real|Latitude coordinate|
-|`longitude`|real|Longitude coordinate|
+|`country`| `string` |Country name|
+|`state`| `string` |State (subdivision) name|
+|`city`| `string` |City name|
+|`latitude`| `real` |Latitude coordinate|
+|`longitude`| `real` |Longitude coordinate|
 
 > [!NOTE]
 >

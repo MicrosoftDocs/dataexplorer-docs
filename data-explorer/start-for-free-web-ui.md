@@ -46,7 +46,7 @@ To start a quick action, under **Actions**, select the action you want to perfor
 
         :::image type="content" source="media/start-for-free-web-ui/start-for-free-create-database.png" alt-text="Screenshot of Create database page, showing the details for the new database.":::
 
-## Next steps
+## Related content
 
 * [Upgrade your free cluster](start-for-free-upgrade.md)
 * [Manage Event Hubs data connections in your free cluster](start-for-free-event-hubs.md)

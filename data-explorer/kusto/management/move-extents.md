@@ -44,19 +44,19 @@ Move extents specified by query results:
 
 |Name|Type|Required|Description|
 |--|--|--|--|
-|`async`|string||If specified, the command runs asynchronously.|
-|*SourceTableName*|string|&check;|The name of the table containing the extents to move.|
-|*DestinationTableName*|string|&check;|The name of the table to which to move the extents.|
-|*PropertyName*, *PropertyValue*|string||One or more [Supported properties](#supported-properties).|
-|*Query*|string|&check;|The results of this [Kusto Query Language (KQL)](../query/index.md) query specify the source table and the extent IDs to be moved from it. Should return a recordset with columns called "ExtentId" and "TableName".|
+|`async`| `string` ||If specified, the command runs asynchronously.|
+|*SourceTableName*| `string` | :heavy_check_mark:|The name of the table containing the extents to move.|
+|*DestinationTableName*| `string` | :heavy_check_mark:|The name of the table to which to move the extents.|
+|*PropertyName*, *PropertyValue*| `string` ||One or more [Supported properties](#supported-properties).|
+|*Query*| `string` | :heavy_check_mark:|The results of this [Kusto Query Language (KQL)](../query/index.md) query specify the source table and the extent IDs to be moved from it. Should return a recordset with columns called "ExtentId" and "TableName".|
 
 ## Supported properties
 
 | Property name | Type | Required | Description |
 |--|--|--|--|
-| `setNewIngestionTime` | bool |  | If set to `true`, a new [ingestion time](../query/ingestiontimefunction.md) is assigned to all records in extents being moved. This is useful when records should be processed by workloads that depend on [database cursors](databasecursor.md), such as [materialized views](materialized-views/materialized-view-overview.md) and [continuous data export](data-export/continuous-data-export.md). |
-| `extentCreatedOnFrom` | datetime | &check; | Apply on extents created after this point in time. |
-| `extentCreatedOnTo` | datetime | &check; | Apply on extents created before this point in time. |
+| `setNewIngestionTime` | `bool` |  | If set to `true`, a new [ingestion time](../query/ingestion-time-function.md) is assigned to all records in extents being moved. This is useful when records should be processed by workloads that depend on [database cursors](database-cursor.md), such as [materialized views](materialized-views/materialized-view-overview.md) and [continuous data export](data-export/continuous-data-export.md). |
+| `extentCreatedOnFrom` | `datetime` |  :heavy_check_mark: | Apply on extents created after this point in time. |
+| `extentCreatedOnTo` | `datetime` |  :heavy_check_mark: | Apply on extents created before this point in time. |
 
 > [!NOTE]
 > For better performance, set `extentCreatedOnFrom` and `extentCreatedOnTo` parameters to the smallest possible range.
@@ -67,9 +67,9 @@ When the command is run synchronously, a table with the following schema is retu
 
 | Output parameter | Type | Description |
 |--|--|--|
-| OriginalExtentId | string | A unique identifier (GUID) for the original extent in the source table, which has been moved to the destination table. |
-| ResultExtentId | string | A unique identifier (GUID) for the result extent that has been moved from the source table to the destination table. Upon failure - "Failed". |
-| Details | string | Includes the failure details, in case the operation fails. |
+| OriginalExtentId | `string` | A unique identifier (GUID) for the original extent in the source table, which has been moved to the destination table. |
+| ResultExtentId | `string` | A unique identifier (GUID) for the result extent that has been moved from the source table to the destination table. Upon failure - "Failed". |
+| Details | `string` | Includes the failure details, in case the operation fails. |
 
 When the command is run asynchronously, an operation ID (GUID) is returned. Monitor the operation's status with the [.show operations](operations.md#show-operations) command, and retrieve the results of a successful execution with the [.show operation details](operations.md#show-operation-details) command.
 

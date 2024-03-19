@@ -1,13 +1,13 @@
 ---
 title:  percentiles_linear_fl()
-description: Learn how to use the percentiles_linear_fl() user-defined function in Azure Data Explorer.
+description: Learn how to use the percentiles_linear_fl() function to calculate percentiles using the linear interpolation between closest ranks.
 ms.reviewer: adieldar
 ms.topic: reference
 ms.date: 03/05/2023
 ---
 # percentiles_linear_fl()
 
-The function `percentiles_linear_fl()` is a [user-defined function (UDF)](../query/functions/user-defined-functions.md) that calculates percentiles using linear interpolation between closest ranks, the same method used by Excel's [PERCENTILES.INC](https://support.microsoft.com/en-us/office/percentile-inc-function-680f9539-45eb-410b-9a5e-c1355e5fe2ed) function. Kusto native [percentile functions](../query/percentiles-aggfunction.md) use the nearest rank method. For large sets of values the difference between both methods is insignificant, and we recommend using the native function for best performance. For further details on these and additional percentile calculation methods have a look at [percentile article on Wikipedia](https://en.wikipedia.org/wiki/Percentile#Calculation_methods).
+The function `percentiles_linear_fl()` is a [user-defined function (UDF)](../query/functions/user-defined-functions.md) that calculates percentiles using linear interpolation between closest ranks, the same method used by Excel's [PERCENTILES.INC](https://support.microsoft.com/en-us/office/percentile-inc-function-680f9539-45eb-410b-9a5e-c1355e5fe2ed) function. Kusto native [percentile functions](../query/percentiles-aggregation-function.md) use the nearest rank method. For large sets of values the difference between both methods is insignificant, and we recommend using the native function for best performance. For further details on these and additional percentile calculation methods have a look at [percentile article on Wikipedia](https://en.wikipedia.org/wiki/Percentile#Calculation_methods).
 The function accepts a table containing the column to calculate on and an optional grouping key, and a dynamic array of the required percentiles, and returns a column containing dynamic array of the percentiles' values per each group.
 
 ## Syntax
@@ -20,9 +20,9 @@ The function accepts a table containing the column to calculate on and an option
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-| *val_col* | string | &check; | The name of the column that contains the values with which to calculate the percentiles.|
-| *pct_arr* | dynamic | &check; | A numerical array containing the required percentiles. Each percentile should be in the range [0-100]. |
-| *aggr_col* | string | | The name of the column that contains the grouping key.|
+| *val_col* | `string` |  :heavy_check_mark: | The name of the column that contains the values with which to calculate the percentiles.|
+| *pct_arr* | `dynamic` |  :heavy_check_mark: | A numerical array containing the required percentiles. Each percentile should be in the range [0-100]. |
+| *aggr_col* | `string` | | The name of the column that contains the grouping key.|
 
 ## Function definition
 
@@ -30,10 +30,10 @@ You can define the function by either embedding its code as a query-defined func
 
 ### [Query-defined](#tab/query-defined)
 
-Define the function using the following [let statement](../query/letstatement.md). No permissions are required.
+Define the function using the following [let statement](../query/let-statement.md). No permissions are required.
 
 > [!IMPORTANT]
-> A [let statement](../query/letstatement.md) can't run on its own. It must be followed by a [tabular expression statement](../query/tabularexpressionstatements.md). To run a working example of `percentiles_linear_fl()`, see [Example](#example).
+> A [let statement](../query/let-statement.md) can't run on its own. It must be followed by a [tabular expression statement](../query/tabular-expression-statements.md). To run a working example of `percentiles_linear_fl()`, see [Example](#example).
 
 ```kusto
 let percentiles_linear_fl=(tbl:(*), val_col:string, pct_arr:dynamic, aggr_col:string='')
@@ -88,7 +88,7 @@ percentiles_linear_fl(tbl:(*), val_col:string, pct_arr:dynamic, aggr_col:string=
 
 ## Example
 
-The following example uses the [invoke operator](../query/invokeoperator.md) to run the function.
+The following example uses the [invoke operator](../query/invoke-operator.md) to run the function.
 
 ### [Query-defined](#tab/query-defined)
 

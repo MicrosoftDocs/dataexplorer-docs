@@ -11,7 +11,7 @@ zone_pivot_groups: kql-flavors-all
 
 ::: zone pivot="azuredataexplorer, fabric"
 
-`get_packages_version_fl()` is a [user-defined function](../query/functions/user-defined-functions.md) that retrieves the versions of the Python engine and packages of the [inline python() plugin](../query/pythonplugin.md).
+`get_packages_version_fl()` is a [user-defined function](../query/functions/user-defined-functions.md) that retrieves the versions of the Python engine and packages of the [inline python() plugin](../query/python-plugin.md).
 
 The function accepts a dynamic array containing the names of the packages to check, and returns their respective versions and the Python engine version.
 
@@ -27,7 +27,7 @@ The function accepts a dynamic array containing the names of the packages to che
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-| *packages* | dynamic | | A dynamic array containing the names of the packages. Default is empty list to retrieve only the Python engine version. |
+| *packages* | `dynamic` | | A dynamic array containing the names of the packages. Default is empty list to retrieve only the Python engine version. |
 
 ## Function definition
 
@@ -35,10 +35,10 @@ You can define the function by either embedding its code as a query-defined func
 
 ### [Query-defined](#tab/query-defined)
 
-Define the function using the following [let statement](../query/letstatement.md). No permissions are required.
+Define the function using the following [let statement](../query/let-statement.md). No permissions are required.
 
 > [!IMPORTANT]
-> A [let statement](../query/letstatement.md) can't run on its own. It must be followed by a [tabular expression statement](../query/tabularexpressionstatements.md). To run a working example of `get_packages_version_fl()`, see [Example](#example).
+> A [let statement](../query/let-statement.md) can't run on its own. It must be followed by a [tabular expression statement](../query/tabular-expression-statements.md). To run a working example of `get_packages_version_fl()`, see [Example](#example).
 
 ```kusto
 let get_packages_version_fl = (packages:dynamic=dynamic([]))

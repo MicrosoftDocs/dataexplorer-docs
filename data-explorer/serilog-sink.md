@@ -99,7 +99,7 @@ Use the following steps to:
 
     ```csharp
     var log = new LoggerConfiguration()
-    .WriteTo.AzureDataExplorer(new AzureDataExplorerSinkOptions
+    .WriteTo.AzureDataExplorerSink(new AzureDataExplorerSinkOptions
     {
         IngestionEndpointUri = "<cluster>",
         DatabaseName = "<MyDatabase>",
@@ -211,7 +211,7 @@ Use the sample log generator app as an example showing how to configure and use 
 
     :::image type="content" lightbox="media/serilog-connector/take-10-results.png" source="media/serilog-connector/take-10-results.png" alt-text="Screenshot of table with take 10 function and results.":::
 
-## See also
+## Related content
 
 * [Data connectors overview](connector-overview.md)
 * [Kusto Query Language (KQL) overview](kusto/query/index.md)

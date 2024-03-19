@@ -7,9 +7,9 @@ ms.date: 09/14/2022
 ---
 # Create a table's retention and cache policies with the table retention policy wizard
 
-The [retention policy](kusto/management/retentionpolicy.md) controls the mechanism that automatically removes data from tables. It's used to remove data whose relevance is age-based.
+The [retention policy](kusto/management/retention-policy.md) controls the mechanism that automatically removes data from tables. It's used to remove data whose relevance is age-based.
 
-The [cache policy](kusto/management/cachepolicy.md) lets Azure Data Explorer describe the data artifacts that it uses so that important data can take priority. The cache policy defines how much data will be available in a local SSD or RAM. Data is queried faster when it's in a local SSD, particularly for queries that scan large amounts of data. However, a local SSD can cost much more.
+The [cache policy](kusto/management/cache-policy.md) lets Azure Data Explorer describe the data artifacts that it uses so that important data can take priority. The cache policy defines how much data will be available in a local SSD or RAM. Data is queried faster when it's in a local SSD, particularly for queries that scan large amounts of data. However, a local SSD can cost much more.
 
 In this article, you can define and assign a retention policy and a cache policy for a table using the table retention policy wizard.
 
@@ -62,7 +62,6 @@ In the **Summary** tab, all steps will be marked with green check marks when the
 
 :::image type="content" source="media/one-click-table-policies/one-click-table-retention-policy-finished.png" alt-text="Screenshot of final screen in the update table retention policy wizard for Azure Data Explorer.":::
 
-## Next steps
+## Related content
 
-* [Query data in Azure Data Explorer web UI](web-query-data.md)
-* [Write queries for Azure Data Explorer using Kusto Query Language](/azure/data-explorer/kusto/query/tutorials/learn-common-operators)
+* [Write queries using Kusto Query Language](kusto/query/tutorials/learn-common-operators.md)

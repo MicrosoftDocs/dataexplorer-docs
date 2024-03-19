@@ -4,13 +4,14 @@ description: Learn about using Azure Data Explorer connector for Power Automate 
 ms.reviewer: miwalia
 ms.topic: how-to
 ms.date: 08/09/2023
+no-loc: [Power Automate]
 ---
 
-# Azure Data Explorer connector for Microsoft :::no-loc text="Power Automate":::
+# Azure Data Explorer connector for Microsoft Power Automate
 
 [!INCLUDE [real-time-analytics-connectors-note](includes/real-time-analytics-connectors-note.md)]
 
-The Azure Data Explorer connector for :::no-loc text="Power Automate"::: (previously Microsoft Flow) enables you to orchestrate and schedule flows, send notifications, and alerts, as part of a scheduled or triggered task.
+The Azure Data Explorer connector for Power Automate (previously Microsoft Flow) enables you to orchestrate and schedule flows, send notifications, and alerts, as part of a scheduled or triggered task.
 
 You can:
 
@@ -19,18 +20,18 @@ You can:
 - Schedule regular jobs using management commands on clusters. For example, copy data from one table to another using the `.set-or-append` command.
 - Export and import data between Azure Data Explorer and other databases.
 
-For more information, see [Azure Data Explorer :::no-loc text="Power Automate"::: connector usage examples](flow-usage.md).
+For more information, see [Azure Data Explorer Power Automate connector usage examples](flow-usage.md).
 
 > [!NOTE]
-> In order for a :::no-loc text="Power Automate"::: connector to access a [network protected cluster](security-network-private-endpoint.md), you must add the [outbound IP addresses](/connectors/common/outbound-ip-addresses#power-platform) associated with the region of your connector to the firewall allowlist. For more information, see [Manage public access to your Azure Data Explorer cluster](security-network-restrict-public-access.md).
+> In order for a Power Automate connector to access a [network protected cluster](security-network-private-endpoint.md), you must add the [outbound IP addresses](/connectors/common/outbound-ip-addresses#power-platform) associated with the region of your connector to the firewall allowlist. For more information, see [Manage public access to your Azure Data Explorer cluster](security-network-restrict-public-access.md).
 
 ## Create a new flow using the Azure Data Explorer connector
 
 To use the connector, you must first add a trigger. You can define a trigger based on a recurring time period, or as a response to a previous flow action.
 
-1. Sign in to [:::no-loc text="Power Automate":::](/power-automate/sign-up-sign-in).
+1. Sign in to [Power Automate](/power-automate/sign-up-sign-in).
 
-1. [Create a new flow](https://flow.microsoft.com/manage/flows/new), or, from the :::no-loc text="Power Automate"::: home page, select the **My flows** > **+ New flow**.
+1. [Create a new flow](https://flow.microsoft.com/manage/flows/new), or, from the Power Automate home page, select the **My flows** > **+ New flow**.
 
     :::image type="content" source="media/flow/flow-new-flow.png" alt-text="Screenshot of the Power Automate home page, showing My flows and New highlighted.":::
 
@@ -50,7 +51,7 @@ To use the connector, you must first add a trigger. You can define a trigger bas
 1. Select an action from the list. For an explanation of each action and how to configure them, see [Flow actions](#flow-actions).
 
     > [!IMPORTANT]
-    > You must have a valid Azure Data Explorer [connection for your flow](/power-automate/add-manage-connections) to run. For information about creating a connection, see [Create an Azure Data Explorer connection in :::no-loc text="Power Automate":::](#create-an-azure-data-explorer-connection).
+    > You must have a valid Azure Data Explorer [connection for your flow](/power-automate/add-manage-connections) to run. For information about creating a connection, see [Create an Azure Data Explorer connection in Power Automate](#create-an-azure-data-explorer-connection).
 
     :::image type="content" source="media/flow/flow-action-list.png" alt-text="Screenshot of the Choose an action list, showing the list of actions highlighted.":::
 
@@ -152,7 +153,7 @@ You can include a step in any flow to send reports by email, to any email addres
 
 ## Create an Azure Data Explorer connection
 
-To run a flow that contains an Azure Data Explorer connector, you must use a valid Azure Data Explorer [connection](/power-automate/add-manage-connections). You can create and authenticate a new connection from the :::no-loc text="Power Automate"::: left pane, select **Data** > [Connections](/power-automate/add-manage-connections) or from within the flow, by selecting the Azure Data Explorer connector's menu > **Add new connection**.
+To run a flow that contains an Azure Data Explorer connector, you must use a valid Azure Data Explorer [connection](/power-automate/add-manage-connections). You can create and authenticate a new connection from the Power Automate left pane, select **Data** > [Connections](/power-automate/add-manage-connections) or from within the flow, by selecting the Azure Data Explorer connector's menu > **Add new connection**.
 
 The following steps show how to create a connection from within a flow.
 
@@ -193,7 +194,7 @@ To authenticate with a Service Principal:
 
 To check if your flow works, check the flow's run history:
 
-1. Go to the [:::no-loc text="Power Automate"::: home page](https://flow.microsoft.com/).
+1. Go to the [Power Automate home page](https://flow.microsoft.com/).
 1. From the main menu, select [My flows](https://flow.microsoft.com/manage/flows).
 
     :::image type="content" source="media/flow/flow-my-flows.png" alt-text="Screenshot of Power Automate main menu, showing My flows highlighted.":::
@@ -218,9 +219,9 @@ To see why a run failed, select the run start time. The flow appears, and the st
 - The maximum number of records per request is 50,000 and the maximum data size per request is 32 MB. These limits can't be changed.
 - Synchronous requests have a timeout of 8 minutes.
 - Asynchronous requests have a timeout of 60 minutes.
-- The connector doesn't support operators that aren't supported by the [`getschema` operator](kusto/query/getschemaoperator.md). For example, the [fork](kusto/query/forkoperator.md), [facet](kusto/query/facetoperator.md), and [evaluate](kusto/query/evaluateoperator.md) operators aren't supported.
+- The connector doesn't support operators that aren't supported by the [`getschema` operator](kusto/query/getschema-operator.md). For example, the [fork](kusto/query/fork-operator.md), [facet](kusto/query/facet-operator.md), and [evaluate](kusto/query/evaluate-operator.md) operators aren't supported.
 - Flows work best on Microsoft Edge and Google Chrome.
 
-## Next steps
+## Related content
 
-Learn about the [Azure Kusto Logic App connector](kusto/tools/logicapps.md), which is another way to run Kusto queries and commands automatically, as part of a scheduled or triggered task.
+* Use the [Azure Kusto Logic App connector](kusto/tools/logicapps.md) to run Kusto queries and commands as part of a scheduled or triggered task.

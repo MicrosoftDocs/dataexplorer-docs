@@ -17,7 +17,10 @@
         "ZonePivotGroups": "Toc"
       },
       "build_entry_point": "docs",
-      "template_folder": "_themes"
+      "template_folder": "_themes",
+      "redirection_files": [
+        ".openpublishing.redirection.kusto.json"
+      ]
     }
   ],
   "notification_subscribers": [

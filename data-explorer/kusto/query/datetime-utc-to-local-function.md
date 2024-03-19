@@ -19,8 +19,8 @@ Converts UTC [datetime](./scalar-data-types/datetime.md) to local datetime using
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-| *from* | datetime | &check; | The UTC datetime to convert.|
-| *timezone* | string | &check; | The timezone to convert to. This value must be one of the supported [timezones](timezone.md).|
+| *from* | `datetime` |  :heavy_check_mark: | The UTC datetime to convert.|
+| *timezone* | `string` |  :heavy_check_mark: | The timezone to convert to. This value must be one of the supported [timezones](timezone.md).|
 
 ## Returns
 
@@ -43,8 +43,8 @@ print dt=now()
 |---|---|---|---|
 |2022-07-11 22:18:48.4678620|2022-07-11 15:18:48.4678620|2022-07-12 08:18:48.4678620|-17:00:00|
 
-## See also
+## Related content
 
 * To convert a datetime from local to UTC, see [datetime_local_to_utc()](datetime-local-to-utc-function.md)
 * [Timezones](timezone.md)
-* [format_datetime()](format-datetimefunction.md)
+* [format_datetime()](format-datetime-function.md)

@@ -29,12 +29,12 @@ zone_pivot_groups: kql-flavors-all
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-| *ip_col* | string | &check; | The name of the column containing the IP addresses to resolve. |
-| *country_col* | string | &check; | The name of the column to store the retrieved country. |
-| *state_col* | string | &check; | The name of the column to store the retrieved state. |
-| *city_col* | string | &check; | The name of the column to store the retrieved city. |
-| *longitude_col* | real | &check; | The name of the column to store the retrieved longitude. |
-| *latitude_col* | real | &check; | The name of the column to store the retrieved latitude. |
+| *ip_col* | `string` |  :heavy_check_mark: | The name of the column containing the IP addresses to resolve. |
+| *country_col* | `string` |  :heavy_check_mark: | The name of the column to store the retrieved country. |
+| *state_col* | `string` |  :heavy_check_mark: | The name of the column to store the retrieved state. |
+| *city_col* | `string` |  :heavy_check_mark: | The name of the column to store the retrieved city. |
+| *longitude_col* | `real` |  :heavy_check_mark: | The name of the column to store the retrieved longitude. |
+| *latitude_col* | `real` |  :heavy_check_mark: | The name of the column to store the retrieved latitude. |
 
 ## Function definition
 
@@ -42,10 +42,10 @@ You can define the function by either embedding its code as a query-defined func
 
 ### [Query-defined](#tab/query-defined)
 
-Define the function using the following [let statement](../query/letstatement.md). No permissions are required.
+Define the function using the following [let statement](../query/let-statement.md). No permissions are required.
 
 > [!IMPORTANT]
-> A [let statement](../query/letstatement.md) can't run on its own. It must be followed by a [tabular expression statement](../query/tabularexpressionstatements.md). To run a working example of `geoip_fl()`, see [Example](#example).
+> A [let statement](../query/let-statement.md) can't run on its own. It must be followed by a [tabular expression statement](../query/tabular-expression-statements.md). To run a working example of `geoip_fl()`, see [Example](#example).
 
 ```kusto
 let geoip_fl=(tbl:(*), ip_col:string, country_col:string, state_col:string, city_col:string, longitude_col:string, latitude_col:string)
@@ -136,7 +136,7 @@ geoip_fl(tbl:(*), ip_col:string, country_col:string, state_col:string, city_col:
 
 ## Example
 
-The following example uses the [invoke operator](../query/invokeoperator.md) to run the function.
+The following example uses the [invoke operator](../query/invoke-operator.md) to run the function.
 
 ### [Query-defined](#tab/query-defined)
 

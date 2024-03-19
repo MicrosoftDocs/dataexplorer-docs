@@ -19,7 +19,7 @@ Calculates the centroid of a polygon or a multipolygon on Earth.
 
 |Name|Type|Required|Description|
 |--|--|--|--|
-| *polygon* | dynamic | &check; | Polygon or multipolygon in the [GeoJSON format](https://tools.ietf.org/html/rfc7946).|
+| *polygon* | `dynamic` |  :heavy_check_mark: | Polygon or multipolygon in the [GeoJSON format](https://tools.ietf.org/html/rfc7946).|
 
 ## Returns
 
@@ -110,7 +110,7 @@ centroid = geo_polygon_centroid(central_park)
 | render scatterchart with (kind = map)
 ```
 
-:::image type="content" source="images/geo-polygon-centroid-function/nyc-central-park-centroid.png" alt-text="Screenshot of N Y C Central park centroid.":::
+:::image type="content" source="media/geo-polygon-centroid-function/nyc-central-park-centroid.png" alt-text="Screenshot of N Y C Central park centroid.":::
 
 The following example returns True because of the invalid polygon.
 

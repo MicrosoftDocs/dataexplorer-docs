@@ -7,7 +7,7 @@ ms.date: 05/25/2023
 ---
 # .alter database policy sharding command
 
-Changes the database sharding policy. The [sharding policy](../management/shardingpolicy.md) is used to manage data sharding for databases and tables by defining if and how [extents (data shards)](../management/extents-overview.md) in your cluster should be sealed.
+Changes the database sharding policy. The [sharding policy](../management/sharding-policy.md) is used to manage data sharding for databases and tables by defining if and how [extents (data shards)](../management/extents-overview.md) in your cluster should be sealed.
 
 When a database is created, it contains the default data sharding policy. All tables created in the database inherit this policy unless the policy is explicitly overridden at the table level.
 
@@ -25,8 +25,8 @@ You must have at least [Database Admin](access-control/role-based-access-control
 
 |Name|Type|Required|Description|
 |--|--|--|--|
-|*DatabaseName*|string|&check;|The name of the database for which to alter the sharding policy.|
-|*PolicyObject*|string|&check;|A policy object that defines the sharding policy. For more information, see the [sharding policy](../management/shardingpolicy.md).|
+|*DatabaseName*| `string` | :heavy_check_mark:|The name of the database for which to alter the sharding policy.|
+|*PolicyObject*| `string` | :heavy_check_mark:|A policy object that defines the sharding policy. For more information, see the [sharding policy](../management/sharding-policy.md).|
 
 ## Returns
 

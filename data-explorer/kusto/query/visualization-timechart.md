@@ -12,7 +12,7 @@ zone_pivot_groups: kql-flavors-all
 A time chart visual is a type of line graph. The first column of the query is the x-axis, and should be a datetime. Other numeric columns are y-axes. One string column values are used to group the numeric columns and create different lines in the chart. Other string columns are ignored. The time chart visual is similar to a [line chart](visualization-linechart.md) except the x-axis is always time.
 
 > [!NOTE]
-> This visualization can only be used in the context of the [render operator](renderoperator.md).
+> This visualization can only be used in the context of the [render operator](render-operator.md).
 
 ## Syntax
 
@@ -24,8 +24,8 @@ A time chart visual is a type of line graph. The first column of the query is th
 
 | Name | Type | Required | Description |
 | -- | -- | -- | -- |
-| *T* | string | &check; | Input table name.
-| *propertyName*, *propertyValue* | string | | A comma-separated list of key-value property pairs. See [supported properties](#supported-properties).|
+| *T* | `string` |  :heavy_check_mark: | Input table name.
+| *propertyName*, *propertyValue* | `string` | | A comma-separated list of key-value property pairs. See [supported properties](#supported-properties).|
 
 ::: zone pivot="azuredataexplorer, fabric"
 
@@ -77,7 +77,7 @@ demo_make_series2
 | render timechart with(title='Web app. traffic of a month, decomposition')
 ```
 
-:::image type="content" source="images/visualization-timechart/visualization-timechart.png" alt-text="Screenshot of timechart visualization output." lightbox="images/visualization-timechart/visualization-timechart.png":::
+:::image type="content" source="media/visualization-timechart/visualization-timechart.png" alt-text="Screenshot of timechart visualization output." lightbox="media/visualization-timechart/visualization-timechart.png":::
 
 ### Label a time chart
 
@@ -98,7 +98,7 @@ StormEvents
     )
 ```
 
-:::image type="content" source="images/visualization-timechart/time-chart-with-labels.png" alt-text="Screenshot of timechart with labels." lightbox="images/visualization-timechart/time-chart-with-labels.png":::
+:::image type="content" source="media/visualization-timechart/time-chart-with-labels.png" alt-text="Screenshot of timechart with labels." lightbox="media/visualization-timechart/time-chart-with-labels.png":::
 
 ### View multiple y-axes
 
@@ -112,9 +112,9 @@ StormEvents
 | render timechart with (ysplit=panels)
 ```
 
-:::image type="content" source="images/visualization-timechart/ysplit-panels.png" alt-text="Screenshot of the time chart query result with the ysplit panels property." lightbox="images/visualization-timechart/ysplit-panels.png":::
+:::image type="content" source="media/visualization-timechart/ysplit-panels.png" alt-text="Screenshot of the time chart query result with the ysplit panels property." lightbox="media/visualization-timechart/ysplit-panels.png":::
 
-## See also
+## Related content
 
 * [Add a query visualization in the web UI](../../add-query-visualization.md)
 
@@ -122,7 +122,7 @@ StormEvents
 
 ::: zone pivot="azuremonitor"
 
-### Properties 
+### Supported properties
 
 All properties are optional.
 
@@ -147,6 +147,6 @@ demo_make_series2
 | render timechart with(title='Web app. traffic of a month, decomposition')
 ```
 
-:::image type="content" source="images/visualization-timechart/visualization-timechart.png" alt-text="Screenshot of timechart visualization output." lightbox="images/visualization-timechart/visualization-timechart.png":::
+:::image type="content" source="media/visualization-timechart/visualization-timechart.png" alt-text="Screenshot of timechart visualization output." lightbox="media/visualization-timechart/visualization-timechart.png":::
 
 ::: zone-end

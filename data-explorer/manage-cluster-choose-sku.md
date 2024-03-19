@@ -3,7 +3,7 @@ title: Select correct compute SKU for your Azure Data Explorer cluster
 description: This article describes how to select the optimal compute SKU size for Azure Data Explorer cluster.
 ms.reviewer: anshulsharmas
 ms.topic: how-to
-ms.date: 06/06/2022
+ms.date: 02/04/2024
 ---
 
 # Select a SKU for your Azure Data Explorer cluster
@@ -12,7 +12,7 @@ When you create a new cluster or optimize a cluster for a changing workload, Azu
 
 The size and VM SKU of the data management cluster are fully managed by the Azure Data Explorer service. They're determined by factors such as the engine's VM size and the ingestion workload.
 
-You can change the compute SKU for the cluster at any time by [scaling up the cluster](manage-cluster-vertical-scaling.md). It's best to start with the smallest SKU size that fits the initial scenario. Scaling up the cluster results in up to 30 minutes of downtime while it's re-created with the new SKU. You can also use the [Azure Advisor](azure-advisor.md) recommendations to optimize your compute SKU.
+You can change the compute SKU for the cluster at any time by [scaling up the cluster](manage-cluster-vertical-scaling.md). It's best to start with the smallest SKU size that fits the initial scenario. You can also use the [Azure Advisor](azure-advisor.md) recommendations to optimize your compute SKU.
 
 You can use the [Pricing calculator](https://aka.ms/adx.cost) to estimate the pricing of your Azure Data Explorer cluster, based on your workloads and data volume.
 
@@ -23,8 +23,8 @@ You can use the [Pricing calculator](https://aka.ms/adx.cost) to estimate the pr
 
 Azure Data Explorer offers two types of clusters:
 
-* **Production (with SLA)**: Production clusters contain two or more nodes for engine and data management clusters and are operated under the Azure Data Explorer SLA.
-* **Dev/Test (no SLA)**: Dev/Test clusters have a single node for the engine and data management cluster. This cluster type is the lowest cost configuration because of its low instance count and no engine markup charge. There's no redundancy or SLA for this cluster configuration.
+* **Production (with SLA)**: Production clusters contain at least two nodes for the engine cluster and at least two nodes for the data management cluster. These clusters operate under the Azure Data Explorer SLA.
+* **Dev/Test (no SLA)**: Dev/Test clusters contain a single node for the engine cluster and a single node for the data management cluster. These clusters are the lowest cost configuration because of its low instance count. There's no redundancy or SLA for this cluster configuration.
 
 ### Development vs. production
 
@@ -121,7 +121,7 @@ The following SKU series are available for Azure Data Explorer cluster VMs. The 
 
 Azure Data Explorer reserves a portion of the disk size shown in each of the Azure compute [SKU](#sku-options) specifications to be used for cluster operations. The exact cache size for each SKU is available in the [SKU selection section in the portal](https://ms.portal.azure.com/#create/Microsoft.AzureKusto).
 
-## Next steps
+## Related content
 
 * Learn how to use the [pricing calculator](pricing-calculator.md)
 

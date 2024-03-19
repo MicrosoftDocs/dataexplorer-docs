@@ -15,7 +15,7 @@ Displays a pivot table and chart. You can interactively select data, columns, ro
 
 > [!NOTE]
 >
-> * This visualization can only be used in the context of the [render operator](renderoperator.md).
+> * This visualization can only be used in the context of the [render operator](render-operator.md).
 > * This visualization can be used in Kusto.Explorer but is not available in the Azure Data Explorer web UI.
 
 ## Syntax
@@ -28,8 +28,8 @@ Displays a pivot table and chart. You can interactively select data, columns, ro
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-| *T* | string | &check; | Input table name.
-| *propertyName*, *propertyValue* | string | | A comma-separated list of key-value property pairs. See [supported properties](#supported-properties).|
+| *T* | `string` |  :heavy_check_mark: | Input table name.
+| *propertyName*, *propertyValue* | `string` | | A comma-separated list of key-value property pairs. See [supported properties](#supported-properties).|
 
 ### Supported properties
 
@@ -61,7 +61,7 @@ SalesFact
 | render pivotchart
 ```
 
-:::image type="content" source="images/visualize-pivotchart/pivotchart.png" alt-text="Screenshot of query result showing a pivot chart visualization."  lightbox="images/visualize-pivotchart/pivotchart.png":::
+:::image type="content" source="media/visualize-pivotchart/pivotchart.png" alt-text="Screenshot of query result showing a pivot chart visualization."  lightbox="media/visualize-pivotchart/pivotchart.png":::
 
 ::: zone-end
 

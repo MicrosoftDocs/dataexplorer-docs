@@ -17,7 +17,7 @@ For more information, see the [overview on SQL Server emulation](sql-server-emul
 
 The SQL stored procedure `sp_execute_kql` can be used to run [KQL](kusto/query/index.md) queries, including parameterized queries. The procedure is similar to the `sp_executesql` stored procedure.
 
-The first parameter of `sp_execute_kql` is the KQL query, and any other parameters are treated as [query parameters](kusto/query/queryparametersstatement.md). The following example shows how to use `sp_execute_kql`.
+The first parameter of `sp_execute_kql` is the KQL query, and any other parameters are treated as [query parameters](kusto/query/query-parameters-statement.md). The following example shows how to use `sp_execute_kql`.
 
 ```csharp
   using (var connection = new SqlConnection(csb.ToString()))
@@ -72,7 +72,7 @@ You can create and call [stored functions](kusto/query/schema-entities/stored-fu
 > [!NOTE]
 > To distinguish between stored functions and emulated SQL system stored procedures, call stored functions with an explicit reference to the `kusto` schema. In the example, the stored function is called using `kusto.Myfunction`.
 
-## Next steps
+## Related content
 
 * [Connect with ODBC](connect-odbc.md)
 * [Connect with JDBC](connect-jdbc.md)

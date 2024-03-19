@@ -25,10 +25,10 @@ The function `levene_test_fl()` is a [UDF (user-defined function)](../query/func
 
 |Name|Type|Required|Description|
 |--|--|--|--|
-|*data1*|string|&check;|The name of the column containing the first set of data to be used for the test.|
-|*data2*|string|&check;|The name of the column containing the second set of data to be used for the test.|
-|*test_statistic*|string|&check;|The name of the column to store test statistic value for the results.|
-|*p_value*|string|&check;|The name of the column to store p-value for the results.|
+|*data1*| `string` | :heavy_check_mark:|The name of the column containing the first set of data to be used for the test.|
+|*data2*| `string` | :heavy_check_mark:|The name of the column containing the second set of data to be used for the test.|
+|*test_statistic*| `string` | :heavy_check_mark:|The name of the column to store test statistic value for the results.|
+|*p_value*| `string` | :heavy_check_mark:|The name of the column to store p-value for the results.|
 
 ## Function definition
 
@@ -36,10 +36,10 @@ You can define the function by either embedding its code as a query-defined func
 
 ### [Query-defined](#tab/query-defined)
 
-Define the function using the following [let statement](../query/letstatement.md). No permissions are required.
+Define the function using the following [let statement](../query/let-statement.md). No permissions are required.
 
 > [!IMPORTANT]
-> A [let statement](../query/letstatement.md) can't run on its own. It must be followed by a [tabular expression statement](../query/tabularexpressionstatements.md). To run a working example of `levene_test_fl()`, see [Example](#example).
+> A [let statement](../query/let-statement.md) can't run on its own. It must be followed by a [tabular expression statement](../query/tabular-expression-statements.md). To run a working example of `levene_test_fl()`, see [Example](#example).
 
 ~~~kusto
 <!-- let levene_test_fl = (tbl:(*), data1:string, data2:string, test_statistic:string, p_value:string)
@@ -96,7 +96,7 @@ levene_test_fl(tbl:(*), data1:string, data2:string, test_statistic:string, p_val
 
 ## Example
 
-The following example uses the [invoke operator](../query/invokeoperator.md) to run the function.
+The following example uses the [invoke operator](../query/invoke-operator.md) to run the function.
 
 ### [Query-defined](#tab/query-defined)
 

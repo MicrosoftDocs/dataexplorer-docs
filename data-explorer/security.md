@@ -3,12 +3,14 @@ title: Secure Azure Data Explorer clusters in Azure
 description: Learn about how to secure clusters in Azure Data Explorer.
 ms.reviewer: itsagui
 ms.topic: conceptual
-ms.date: 04/05/2022
+ms.date: 12/26/2023
 ---
 
 # Security in Azure Data Explorer
 
 This article provides an introduction to security in Azure Data Explorer to help you protect your data and resources in the cloud and meet the security needs of your business. It's important to keep your clusters secure. Securing your clusters includes one or more Azure features that include secure access and storage. This article provides information to help you keep your cluster secure.
+
+For more resources regarding compliance for your business or organization, see the [Azure compliance documentation](/azure/compliance).
 
 ## Network security
 
@@ -70,9 +72,10 @@ To revoke access to customer-managed keys, use PowerShell or Azure CLI. For more
 > [!Note]
 > When Azure Data Explorer identifies that access to a customer-managed key is revoked, it will automatically suspend the cluster to delete any cached data. Once access to the key is returned, the cluster will be resumed automatically.
 
-## Next steps
+## Related content
 
+* [Azure security baseline for Azure Data Explorer](/security/benchmark/azure/baselines/azure-data-explorer-security-baseline)
 * [Secure your cluster using Disk Encryption](cluster-encryption-disk.md) by enabling encryption at rest.
-* [Configure managed identities for your Azure Data Explorer cluster](./configure-managed-identities-cluster.md)
-* [Configure customer-managed-keys using the Azure Resource Manager template](customer-managed-keys-resource-manager.md)
-* [Configure customer-managed-keys using C#](customer-managed-keys-csharp.md)
+* [Configure managed identities for your cluster](configure-managed-identities-cluster.md)
+* [Configure customer-managed-keys](customer-managed-keys.md)
+* [Azure compliance documentation](/azure/compliance)

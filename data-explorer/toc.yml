@@ -28,6 +28,7 @@ items:
             items:
               - name: Create a cluster and database
                 href: create-cluster-and-database.md
+                displayName: create cluster, create database
               - name: Create a cluster and database using SDKs
                 href: create-cluster-database.md
               - name: Automated provisioning
@@ -50,6 +51,8 @@ items:
               - name: Create external table
                 displayName: one-click
                 href: external-table.md
+              - name: Schema optimization best practices
+                href: schema-best-practice.md
           - name: Migrate
             items:
               - name: Migrate from Elasticsearch
@@ -65,6 +68,7 @@ items:
             href: /security/benchmark/azure/baselines/data-explorer-security-baseline?toc=/azure/data-explorer/toc.json
           - name: Security controls by Azure Policy
             href: security-controls-policy.md
+            displayName: Azure Policy Regulatory Compliance, compliance
           - name: Access control
             href: kusto/access-control/index.md
             items:
@@ -79,9 +83,9 @@ items:
             items:
               - name: Network security overview
                 href: security-network-overview.md
-              - name: Private Endpoints
+              - name: Private endpoints
                 items:
-                  - name: Private Endpoints overview
+                  - name: Private endpoints overview
                     href: security-network-private-endpoint.md
                   - name: Create a private endpoint
                     href: security-network-private-endpoint-create.md
@@ -94,6 +98,8 @@ items:
                     href: security-network-private-endpoint-troubleshoot.md
               - name: Virtual network injection
                 items:
+                  - name: Migrate VNet injected cluster to private endpoints
+                    href: security-network-migrate-vnet-to-private-endpoint.md
                   - name: Create a cluster in your VNet - Portal
                     href: vnet-create-cluster-portal.md
                   - name: Deploy your cluster to your VNet
@@ -126,17 +132,14 @@ items:
           - name: Configure customer-managed keys
             href: customer-managed-keys.md
           - name: Create Microsoft Entra app
-            href: provision-azure-ad-app.md
+            href: provision-entra-id-app.md
           - name: Conditional Access
             href: security-conditional-access.md
       - name: Get data
         items:
           - name: Data ingestion overview
-            displayName: pipelines, connectors, plugins, Python, .NET, Java, Node, REST
+            displayName: ingest, pipelines, connectors, plugins, Python, .NET, Java, Node, REST
             href: ingest-data-overview.md
-          - name: Data connectors overview
-            displayName: connect, integrate, integration, export, orchestrate
-            href: connector-overview.md
           - name: Get data in the web UI
             items:
               - name: Get data from local file
@@ -228,39 +231,50 @@ items:
                 href: data-factory-template.md
               - name: Run management commands using Azure Data Factory
                 href: data-factory-command-activity.md
-          - name: Apache Kafka
-            displayName: ingest data, ingestion, connector
-            href: ingest-data-kafka.md
-          - name: Apache Log4J 2
-            displayName: ingest data, ingestion, connector
-            href: apache-log4j2-connector.md
-          - name: Apache Spark
-            displayName: connector, export, ingest
-            href: spark-connector.md
-          - name: Azure Stream Analytics
-            href: stream-analytics-connector.md
-            displayName: ingest data, ingestion, connector
-          - name: Fluent Bit
-            href: fluent-bit.md
-            displayName: ingest data, ingestion, connector
-          - name: Logstash
-            displayName: ingest data, ingestion, connector
-            href: ingest-data-logstash.md
-          - name: NLog
-            displayName: ingest data, ingestion, connector
-            href: nlog-sink.md
-          - name: OpenTelemetry
-            href: open-telemetry-connector.md
-            displayName: OTel, CNCF, Open Telemetry, ingest data, ingestion, connector
-          - name: Serilog
-            displayName: ingest data, ingestion, connector
-            href: serilog-sink.md
-          - name: Splunk
-            displayName: ingest data, ingestion, connector
-            href: ingest-data-splunk.md
-          - name: Telegraf
-            displayName: ingest data, ingestion, connector
-            href: ingest-data-telegraf.md
+          - name: Use data connectors
+            items:
+            - name: Data integrations overview
+              displayName: connect, integrate, integration, export, orchestrate
+              href: integrate-data-overview.md
+            - name: Apache Flink
+              href: ingest-data-flink.md
+              displayName: ingest data, ingestion, connector
+            - name: Apache Kafka
+              displayName: ingest data, ingestion, connector
+              href: ingest-data-kafka.md
+            - name: Apache Log4J 2
+              displayName: ingest data, ingestion, connector
+              href: apache-log4j2-connector.md
+            - name: Apache Spark
+              displayName: connector, export, ingest
+              href: spark-connector.md
+            - name: Azure Stream Analytics
+              href: stream-analytics-connector.md
+              displayName: ingest data, ingestion, connector
+            - name: Fluent Bit
+              href: fluent-bit.md
+              displayName: ingest data, ingestion, connector
+            - name: Logstash
+              displayName: ingest data, ingestion, connector
+              href: ingest-data-logstash.md
+            - name: NLog
+              displayName: ingest data, ingestion, connector
+              href: nlog-sink.md
+            - name: OpenTelemetry
+              href: open-telemetry-connector.md
+              displayName: OTel, CNCF, Open Telemetry, ingest data, ingestion, connector
+            - name: Serilog
+              displayName: ingest data, ingestion, connector
+              href: serilog-sink.md
+            - name: Splunk
+              displayName: ingest data, ingestion, connector
+              href: ingest-data-splunk.md
+            - name: Splunk Universal Forwarder
+              displayName: ingest data, ingestion, connector
+              href: ingest-data-splunk-uf.md
+            - name: Telegraf
+              displayName: ingest data, ingestion, connector
+              href: ingest-data-telegraf.md
           - name: Scenarios
             items:
               - name: E2E programmatic Blob ingestion
@@ -281,23 +295,28 @@ items:
             href: ingestion-supported-formats.md
   - name: Query data
     items:
+      - name: Query integrations overview
+        href: integrate-query-overview.md
       - name: Query data in the web UI
         items:
           - name: Query data in the web UI overview
             href: web-ui-query-overview.md
             displayName: web UI
-          - name: Customize settings in the web UI
-            href: web-customize-settings.md
+          - name: Access the data profile of a table
+            href: data-profile.md
           - name: Add a cluster connection
             href: add-cluster-connection.md
             displayName: connect to cluster
           - name: Add a query visualization
             displayName: render, visualize, chart, graph, web UI
             href: add-query-visualization.md
+          - name: Customize settings in the web UI
+            href: web-customize-settings.md
           - name: Explore the sample gallery
             href: web-ui-samples-query.md
           - name: Explore the results grid
             href: web-results-grid.md
+            displayName: data profile
           - name: Share queries
             href: web-share-queries.md
           - name: Keyboard shortcuts
@@ -306,6 +325,8 @@ items:
             href: web-ui-kql.md
           - name: Query sample data
             href: web-query-data.md
+      - name: Query data in Azure Storage external tables
+        href: external-azure-storage-tables-query.md
       - name: Query data in Azure Data Lake
         href: data-lake-query-data.md
       - name: Query data in Azure Monitor
@@ -323,6 +344,7 @@ items:
       - name: Debug KQL inline Python
         href: debug-inline-python.md
       - name: Query data using T-SQL
+        displayName: explain, sql, tsql 
         href: t-sql.md
       - name: Query data using SQL Server emulation
         items:
@@ -340,8 +362,6 @@ items:
             displayName: Azure Data Studio, LINQPad, DBeaver, Microsoft SQL Server Management Studio, SQL Server emulation
           - name: Run KQL queries and stored functions
             href: sql-kql-queries-and-stored-functions.md
-      - name: Evaluate query performance in your cluster
-        href: kusto/api/load-test-cluster.md
       - name: Optimize for high concurrency
         href: high-concurrency.md
       - name: Set timeout limits
@@ -364,8 +384,9 @@ items:
             href: graph-best-practices.md
   - name: Visualize data
     items:
-      - name: Data visualization overview
-        href: viz-overview.md
+      - name: Visualization integrations overview
+        href: integrate-visualize-overview.md
+        displayName: connectors, tools, and integrations
       - name: Visualize dashboards in the web UI
         items:
           - name: Use dashboards
@@ -440,6 +461,8 @@ items:
                 href: manage-cluster-horizontal-scaling.md
               - name: Manage cluster vertical scaling
                 href: manage-cluster-vertical-scaling.md
+              - name: Migrate cluster to support availability zones
+                href: migrate-cluster-to-multiple-availability-zone.md
               - name: Check cluster health
                 href: check-cluster-health.md
               - name: Add cluster principal
@@ -449,6 +472,8 @@ items:
                 href: language-extensions.md
               - name: Delete a cluster
                 href: delete-cluster.md
+              - name: View version deployments
+                href: version-deployments.md
           - name: Free cluster
             items:
               - name: Manage free cluster
@@ -497,8 +522,8 @@ items:
             href: monitor-with-resource-health.md
           - name: Use Azure Data Explorer Clusters Insights
             href: data-explorer-insights.md
-          - name: Monitor batching ingestion with metrics
-            href: monitor-batching-ingestion.md
+          - name: Monitor queued ingestion with metrics
+            href: monitor-queued-ingestion.md
       - name: Business continuity
         items:
           - name: Business continuity overview
@@ -552,8 +577,8 @@ items:
             href: kusto/api/get-started/app-basic-query.md
           - name: Run management commands
             href: kusto/api/get-started/app-management-commands.md
-          - name: Batch ingestion
-            href: kusto/api/get-started/app-batch-ingestion.md
+          - name: Queued ingestion
+            href: kusto/api/get-started/app-queued-ingestion.md
       - name: Connection strings
         items:
           - name: Connection strings overview
@@ -585,8 +610,9 @@ items:
             href: kusto-emulator-install.md
   - name: Integrate
     items:
-      - name: Tools and integrations overview
-        href: tools-integrations-overview.md
+      - name:  Integrations overview
+        href: integrate-overview.md
+        displayName: integrate, integration, export, orchestrate, tools, connectors, query, visualize, connectors, tools
       - name: Orchestrate
         items:
           - name: Power Automate

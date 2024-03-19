@@ -12,8 +12,13 @@
     },
     {
       "source_path": "data-explorer/kusto/tools/index.md",
-      "redirect_url": "/azure/data-explorer/tools-integrations-overview",
+      "redirect_url": "/azure/data-explorer/integrate-overview",
       "redirect_document_id": true
+    },
+    {
+      "source_path": "data-explorer/tools-integrations-overview.md",
+      "redirect_url": "/azure/data-explorer/integrate-overview",
+      "redirect_document_id": false
     },
     {
       "source_path": "data-explorer/kusto/management/drop-database.md",
@@ -69,6 +74,11 @@
       "source_path": "data-explorer/ingest-data-streaming-csharp.md",
       "redirect_url": "/azure/data-explorer/ingest-data-streaming",
       "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/management/external-azure-storage-tables-query.md",
+      "redirect_url": "/azure/data-explorer/external-azure-storage-tables-query",
+      "redirect_document_id": true
     },
     {
       "source_path": "data-explorer/kusto/management/externaltables.md",
@@ -186,43 +196,8 @@
       "redirect_document_id": false
     },
     {
-      "source_path": "data-explorer/kusto/management/cache-policy.md",
-      "redirect_url": "/azure/data-explorer/kusto/management/show-table-cache-policy-command",
-      "redirect_document_id": false
-    },
-    {
-      "source_path": "data-explorer/kusto/management/callout-policy.md",
-      "redirect_url": "/azure/data-explorer/kusto/management/show-cluster-callout-policy-command",
-      "redirect_document_id": false
-    },
-    {
-      "source_path": "data-explorer/kusto/management/capacity-policy.md",
-      "redirect_url": "/azure/data-explorer/kusto/management/show-cluster-capacity-policy-command",
-      "redirect_document_id": false
-    },
-    {
-      "source_path": "data-explorer/kusto/management/batching-policy.md",
-      "redirect_url": "/azure/data-explorer/kusto/management/show-table-ingestion-batching-policy",
-      "redirect_document_id": false
-    },
-    {
       "source_path": "data-explorer/kusto/management/ingestiontime-policy.md",
       "redirect_url": "/azure/data-explorer/kusto/management/show-table-ingestion-time-policy-command",
-      "redirect_document_id": false
-    },
-    {
-      "source_path": "data-explorer/kusto/management/merge-policy.md",
-      "redirect_url": "/azure/data-explorer/kusto/management/show-table-merge-policy-command",
-      "redirect_document_id": false
-    },
-    {
-      "source_path": "data-explorer/kusto/management/partitioning-policy.md",
-      "redirect_url": "/azure/data-explorer/kusto/management/show-table-partitioning-policy-command",
-      "redirect_document_id": false
-    },
-    {
-      "source_path": "data-explorer/kusto/management/retention-policy.md",
-      "redirect_url": "/azure/data-explorer/kusto/management/show-table-retention-policy-command",
       "redirect_document_id": false
     },
     {
@@ -231,33 +206,13 @@
       "redirect_document_id": false
     },
     {
-      "source_path": "data-explorer/kusto/management/row-level-security-policy.md",
-      "redirect_url": "/azure/data-explorer/kusto/management/show-table-row-level-security-policy-command",
-      "redirect_document_id": false
-    },
-    {
       "source_path": "data-explorer/kusto/management/roworder-policy.md",
       "redirect_url": "/azure/data-explorer/kusto/management/show-table-row-order-policy-command",
       "redirect_document_id": false
     },
     {
-      "source_path": "data-explorer/kusto/management/sandbox-policy.md",
-      "redirect_url": "/azure/data-explorer/kusto/management/show-cluster-sandbox-policy-command",
-      "redirect_document_id": false
-    },
-    {
-      "source_path": "data-explorer/kusto/management/sharding-policy.md",
-      "redirect_url": "/azure/data-explorer/kusto/management/show-table-sharding-policy-command",
-      "redirect_document_id": false
-    },
-    {
       "source_path": "data-explorer/kusto/management/streamingingestion-policy.md",
       "redirect_url": "/azure/data-explorer/kusto/management/show-table-streaming-ingestion-policy-command",
-      "redirect_document_id": false
-    },
-    {
-      "source_path": "data-explorer/kusto/management/update-policy.md",
-      "redirect_url": "/azure/data-explorer/kusto/management/show-table-update-policy-command",
       "redirect_document_id": false
     },
     {
@@ -354,6 +309,11 @@
       "source_path": "data-explorer/power-bi-imported-query.md",
       "redirect_url": "/azure/data-explorer/power-bi-data-connector",
       "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/query/machine-learning-clustering.md",
+      "redirect_url": "/azure/data-explorer/kusto/query/anomaly-diagnosis",
+      "redirect_document_id": true
     },
     {
       "source_path": "data-explorer/kusto/query/toutf8function.md",
@@ -833,6 +793,66 @@
     {
       "source_path": "data-explorer/engine-v3.md",
       "redirect_url": "/azure/data-explorer/how-it-works",
+      "redirect_document_id": true
+    },
+    {
+      "source_path": "data-explorer/kusto/api/get-started/app-batch-ingestion.md",
+      "redirect_url": "/azure/data-explorer/kusto/api/get-started/app-queued-ingestion",
+      "redirect_document_id": true
+    },
+    {
+      "source_path": "data-explorer/provision-azure-ad-app.md",
+      "redirect_url": "/azure/data-explorer/provision-entra-id-app",
+      "redirect_document_id": true
+    },
+    {
+      "source_path": "data-explorer/monitor-batching-ingestion.md",
+      "redirect_url": "/azure/data-explorer/monitor-queued-ingestion",
+      "redirect_document_id": true
+    },
+    {
+      "source_path": "data-explorer/ingest-sample-data.md",
+      "redirect_url": "/azure/data-explorer/web-ui-samples-query",
+      "redirect_document_id": true
+    },
+    {
+      "source_path": "data-explorer/connector-overview.md",
+      "redirect_url": "/azure/data-explorer/integrate-data-overview",
+      "redirect_document_id": true
+    },
+    {
+      "source_path": "data-explorer/viz-overview.md",
+      "redirect_url": "/azure/data-explorer/integrate-visualize-overview",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/management/diagnostics.md",
+      "redirect_url": "/azure/data-explorer/kusto/management/systeminfo",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "data-explorer/kusto/management/commands.md",
+      "redirect_url": "/azure/data-explorer/kusto/management/show-commands",
+      "redirect_document_id": true
+    },
+    {
+      "source_path": "data-explorer/kusto/management/queries.md",
+      "redirect_url": "/azure/data-explorer/kusto/management/show-queries-command",
+      "redirect_document_id": true
+    },
+    {
+      "source_path": "data-explorer/kusto/management/operations.md",
+      "redirect_url": "/azure/data-explorer/kusto/management/show-operations",
+      "redirect_document_id": true
+    },
+    {
+      "source_path": "data-explorer/kusto/query/scalar-data-types/unsupported-data-types.md",
+      "redirect_url": "/azure/data-explorer/kusto/query/scalar-data-types/index",
+      "redirect_document_id": true
+    },
+    {
+      "source_path": "data-explorer/kusto/query/todouble-function.md",
+      "redirect_url": "/azure/data-explorer/kusto/query/toreal-function",
       "redirect_document_id": true
     }
   ]

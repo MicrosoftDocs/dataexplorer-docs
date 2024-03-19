@@ -9,6 +9,8 @@ ms.date: 09/28/2023
 
 # Ingest data from Splunk to Azure Data Explorer
 
+[!INCLUDE [real-time-analytics-connectors-note](includes/real-time-analytics-connectors-note.md)]
+
 [Splunk Enterprise](https://www.splunk.com/en_us/products/splunk-enterprise.html) is a software platform that allows you to ingest data from many sources simultaneously. The Splunk indexer processes the data and stores it by default in the main index or a specified custom index. Searching in Splunk uses the indexed data for creating metrics, dashboards, and alerts. Azure Data Explorer is a fast and highly scalable data exploration service for log and telemetry data.
 
 In this article, you learn how to the Azure Data Explorer Splunk add-on to send data from Splunk to a table in your cluster. You initially create a table and data mapping, then direct Splunk to send data into the table, and then validate the results.
@@ -24,44 +26,7 @@ The following scenarios are most suitable for ingesting data into Azure Data Exp
 * A Microsoft account or a Microsoft Entra user identity. An Azure subscription isn't required.
 * An Azure Data Explorer cluster and database. [Create a cluster and database](create-cluster-and-database.md).
 * Splunk Enterprise 9 or newer.
-
-<a name='create-a-microsoft-entra-id-service-principal'></a>
-
-## Create a Microsoft Entra service principal
-
-The Microsoft Entra service principal can be created through the [Azure portal](/azure/active-directory/develop/howto-create-service-principal-portal) or programatically, as in the following example.
-
-This service principal is the identity used by the connector to write to the Azure Data Explorer table. You later grant permissions for this service principal to access Azure Data Explorer.
-
-1. Sign in to your Azure subscription via Azure CLI. Then authenticate in the browser.
-
-   ```azurecli-interactive
-   az login
-   ```
-
-1. Choose the subscription you want use to run the lab. This step is needed when you have multiple subscriptions.
-
-   ```azurecli-interactive
-   az account set --subscription YOUR_SUBSCRIPTION_GUID
-   ```
-
-1. Create the service principal. In this example, the service principal is called `splunk-spn`.
-
-   ```azurecli-interactive
-   az ad sp create-for-rbac -n "splunk-spn" --role Contributor --scopes /subscriptions/{SubID}
-   ```
-
-1. From the returned JSON data, copy the `appId`, `password`, and `tenant`, as you  need them in later steps.
-
-    ```json
-    {
-      "appId": "1234abcd-e5f6-g7h8-i9j0-1234kl5678mn",
-      "displayName": "splunk-spn",
-      "name": "http://splunk-spn",
-      "password": "1234abcd-e5f6-g7h8-i9j0-1234kl5678mn",
-      "tenant": "1234abcd-e5f6-g7h8-i9j0-1234kl5678mn"
-    }
-    ```
+* A Microsoft Entra service principal. [Create a Microsoft Entra service principal](provision-azure-ad-app.md#programatically-create-a-microsoft-entra-service-principal).
 
 ## Create a table and a mapping object
 
@@ -95,7 +60,7 @@ In the [web UI query editor](web-ui-query-overview.md#write-and-run-queries), ru
           ]```
     ~~~
 
-1. Use the service principal from [Create a Microsoft Entra service principal](#create-a-microsoft-entra-id-service-principal) to grant permission to work with the database.
+2. Use the service principal from the [Prerequisites](#prerequisites) to grant permission to work with the database.
 
     ```kusto
     .add database YOUR_DATABASE_NAME admins  ('aadapp=YOUR_APP_ID;YOUR_TENANT_ID') 'Entra App'
