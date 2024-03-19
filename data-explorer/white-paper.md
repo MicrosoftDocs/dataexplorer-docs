@@ -3,7 +3,7 @@ title: Azure Data Explorer white paper
 description: Learn how Azure Data Explorer works under the hood.
 ms.reviewer: evgeneyr
 ms.topic: reference
-ms.date: 10/23/2023
+ms.date: 03/19/2024
 ---
 
 # Azure Data Explorer white paper
@@ -138,7 +138,7 @@ RelevantLogs
 | extend UserID = extract(@'User=(\w+)', 1, EventText)
 | join kind=inner (
     RelevantLogs
-    | where Level == "Error”
+    | where Level == "Error"
     | summarize by ClientActivityId
     )
     on ClientActivityId
@@ -221,7 +221,7 @@ Up until now we've focused on the scatter-gather pattern of the distributed quer
 
 ```kusto
 Logs
-| where Message contains “error”
+| where Message contains "error"
 | summarize count() by dayofmonth(Timestamp)
 ```
 
@@ -343,7 +343,7 @@ A more involved example is the Top-N operator that follows a Filter, at the data
 
 ```kusto
 Logs
-| where Level == “Error”
+| where Level == "Error"
 | top 100 by Timestamp
 ```
 
