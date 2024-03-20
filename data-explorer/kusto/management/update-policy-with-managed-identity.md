@@ -99,7 +99,7 @@ Select one of the following tabs to create an update policy that will run on beh
 
 Run the [.alter table policy update](alter-table-update-policy-command.md) command with the `ManagedIdentity` property set to the managed identity object ID.
 
-For example, the following command alters the update policy of the table `MyTable` in `MyDatabase` database that references the table `OtherTable` in the database `OtherDatabase` on behalf of a user-assigned managed identity. `<objectId>` should be a managed identity object ID.
+For example, the following command alters the update policy of the table `MyTable` in the `MyDatabase` database. Both parameters, `Source` and `Query`, should exclusively reference objects within the same database where the update policy is housed. However, the code inside the function used in the `Query` parameter can interact with tables residing in other databases. For instance, the code within `MyUpdatePolicyFunction()` can access `OtherTable` within the `OtherDatabase` database on behalf of a user-assigned managed identity. `<objectId>` should be a managed identity object ID.
 
 ````kusto
 .alter table MyDatabase.MyTable policy update
@@ -108,7 +108,7 @@ For example, the following command alters the update policy of the table `MyTabl
     {
         "IsEnabled": true,
         "Source": "MyTable",
-        "Query": "UpdatePolicyFunction",
+        "Query": "MyUpdatePolicyFunction()",
         "IsTransactional": false,
         "PropagateIngestionProperties": false,
         "ManagedIdentity": "<objectId>"
@@ -121,7 +121,7 @@ For example, the following command alters the update policy of the table `MyTabl
 
 Run the [.alter table policy update](alter-table-update-policy-command.md) command with the `ManagedIdentity` property set to the managed identity object ID.
 
-For example, the following command alters the update policy of the table `MyTable` in `MyDatabase` database that references the table `OtherTable` in the database `OtherDatabase` on behalf of your system-assigned managed identity.
+For example, the following command alters the update policy of the table `MyTable` in the `MyDatabase` database. Both parameters, `Source` and `Query`, should exclusively reference objects within the same database where the update policy is housed. However, the code inside the function used in the `Query` parameter can interact with tables residing in other databases. For instance, the code within `MyUpdatePolicyFunction()` can access `OtherTable` within the `OtherDatabase` database on behalf of your system-assigned managed identity.
 
 ````kusto
 .alter table MyDatabase.MyTable policy update
@@ -130,7 +130,7 @@ For example, the following command alters the update policy of the table `MyTabl
     {
         "IsEnabled": true,
         "Source": "MyTable",
-        "Query": "UpdatePolicyFunction",
+        "Query": "MyUpdatePolicyFunction()",
         "IsTransactional": false,
         "PropagateIngestionProperties": false,
         "ManagedIdentity": "system"
