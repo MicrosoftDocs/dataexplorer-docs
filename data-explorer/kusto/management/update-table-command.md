@@ -27,27 +27,6 @@ There are two syntax options, [Simplified syntax](#simplified-syntax) and [Expan
 
 [!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
 
-### Simplified syntax
-
-The simplified syntax only specifies an append query.  The delete query is deduced by finding all the existing rows having an *ID Column* value present in the append query:
-
-`.update` `table` *TableName* on *IDColumnName* [`with` `(` *propertyName* `=` *propertyValue* `)`] `<|` <br>
-*appendQuery*
-
-### Parameters for simplified syntax 
-
-| Name               | Type     | Required           | Description                                                                                                                                       |
-| ------------------ | -------- | ------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------- |
-| *TableName*        | `string` | :heavy_check_mark: | The name of the table to update.                                                                                                                  |
-| *IDColumnName*     | `string` | :heavy_check_mark: | The name of the column identifying rows. The column must be present in both the table and *appendQuery*.                                         |
-| *appendQuery*      | `string` | :heavy_check_mark: | The text of a query or a management command whose results are used as data to append.  The query's schema must be the same as the table's schema. |
-
-> [!IMPORTANT]
-> * The append query can't use remote entities, cross-db, and cross-cluster entities, reference an external table, or use the `externaldata` operator.
-> * The append query is expected to produce deterministic results.  Nondeterministic queries can lead to unexpected results. A query is deterministic if and only if it returns the same data if executed multiple times.
->    * For example, use of [`take` operator](../query/take-operator.md), [`sample` operator](../query/sample-operator.md), [`rand` function](../query/rand-function.md), and other such operators isn't recommended because these operators aren't deterministic.
-> * Queries might be executed more than once within the `update` execution. If the intermediate query results are inconsistent, the update command can produce unexpected results.
-
 ### Expanded syntax
 
 The expanded syntax offers the flexibility to define a query to delete rows and a different query to append rows:
@@ -71,6 +50,28 @@ The expanded syntax offers the flexibility to define a query to delete rows and 
 > * Append and delete queries are expected to produce deterministic results.  Nondeterministic queries can lead to unexpected results. A query is deterministic if and only if it would return the same data if executed multiple times.
 >    * For example, use of [`take` operator](../query/take-operator.md), [`sample` operator](../query/sample-operator.md), [`rand` function](../query/rand-function.md), and other such operators isn't recommended because these operators aren't deterministic.
 > * Queries might be executed more than once within the `update` execution. If the intermediate query results are inconsistent, the update command can produce unexpected results.
+
+### Simplified syntax
+
+The simplified syntax requires an append query as well as a key. The key is a column in the table that represents unique values in the table. This column is used to define which rows should be deleted from the table. A join is performed between the original table and the append query, to identify rows that agree on their value with respect to this column.
+
+`.update` `table` *TableName* on *IDColumnName* [`with` `(` *propertyName* `=` *propertyValue* `)`] `<|` <br>
+*appendQuery*
+
+### Parameters for simplified syntax 
+
+| Name               | Type     | Required           | Description                                                                                                                                       |
+| ------------------ | -------- | ------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------- |
+| *TableName*        | `string` | :heavy_check_mark: | The name of the table to update.                                                                                                                  |
+| *IDColumnName*     | `string` | :heavy_check_mark: | The name of the column identifying rows. The column must be present in both the table and *appendQuery*.                                         |
+| *appendQuery*      | `string` | :heavy_check_mark: | The text of a query or a management command whose results are used as data to append.  The query's schema must be the same as the table's schema. |
+
+> [!IMPORTANT]
+> * The append query can't use remote entities, cross-db, and cross-cluster entities, reference an external table, or use the `externaldata` operator.
+> * The append query is expected to produce deterministic results.  Nondeterministic queries can lead to unexpected results. A query is deterministic if and only if it returns the same data if executed multiple times.
+>    * For example, use of [`take` operator](../query/take-operator.md), [`sample` operator](../query/sample-operator.md), [`rand` function](../query/rand-function.md), and other such operators isn't recommended because these operators aren't deterministic.
+> * Queries might be executed more than once within the `update` execution. If the intermediate query results are inconsistent, the update command can produce unexpected results.
+
 
 ## Supported properties
 
