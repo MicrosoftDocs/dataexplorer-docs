@@ -199,6 +199,7 @@ $FollowerClustername = 'follower'
 $FollowerClusterSubscriptionID = 'xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx'
 $FollowerResourceGroupName = 'followerResourceGroup'
 $DatabaseName = "db"  ## Can be a specific database name in a leader cluster or * for all databases
+$FollowerDatabaseName = 'followerdbname' ## Use this option if the follower database requires a different name than the leader database.
 $LeaderClustername = 'leader'
 $LeaderClusterSubscriptionID = 'xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx'
 $LeaderClusterResourceGroup = 'leaderResourceGroup'
@@ -219,7 +220,8 @@ New-AzKustoAttachedDatabaseConfiguration -ClusterName $FollowerClustername `
     -Name $configname `
     -ResourceGroupName $FollowerResourceGroupName `
     -SubscriptionId $FollowerClusterSubscriptionID `
-    -DatabaseName $DatabaseName `
+    -DatabaseName $DatabaseName ` ## Leader database name.
+    -DatabaseNameOverride $FollowerDatabaseName ` ## Use this option if the follower database requires a different name than the leader database. Otherwise, this parameter can be removed.
     -ClusterResourceId $LeaderClusterResourceid `
     -DefaultPrincipalsModificationKind $DefaultPrincipalsModificationKind `
     -Location $Location `
