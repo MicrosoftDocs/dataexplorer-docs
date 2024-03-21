@@ -95,3 +95,40 @@ Use Parquet mapping during ingestion without defining a mapping schema (see [ide
         format="parquet"
     )
 ```
+
+# Parquet Type Conversions
+
+When importing or querying data from a Parquet source into Kusto, we provide comprehensive support for datatype conversions. The table below outlines which datatype conversions from Parquet to Kusto are supported, and which are not.
+
+| Parquet\Kusto    | bool | int | long  | real | decimal | datetime | timespan | string | guid | dynamic |
+|------------------|------|----------|------|------|---------|------|----------|----------|------|---------|
+| INT8             | ✓    | ✓        | ✓    | ✓    | ✓       | X    | X        | ✓        | X    | X       |
+| INT16            | ✓    | ✓        | ✓    | ✓    | ✓       | X    | X        | ✓        | X    | X       |
+| INT32            | ✓    | ✓        | ✓    | ✓    | ✓       | X    | X        | ✓        | X    | X       |
+| INT64            | ✓    | ✓        | ✓    | ✓    | ✓       | X    | X        | ✓        | X    | X       |
+| UINT8            | ✓    | ✓        | ✓    | ✓    | ✓       | X    | X        | ✓        | X    | X       |
+| UINT16           | ✓    | ✓        | ✓    | ✓    | ✓       | X    | X        | ✓        | X    | X       |
+| UINT32           | ✓    | ✓        | ✓    | ✓    | ✓       | X    | X        | ✓        | X    | X       |
+| UINT64           | ✓    | ✓        | ✓    | X    | ✓       | X    | X        | ✓        | X    | X       |
+| FLOAT32          | ✓    | ✓        | ✓    | ✓    | ✓       | X    | X        | ✓        | X    | X       |
+| FLOAT64          | ✓    | ✓        | ✓    | ✓    | ✓       | X    | X        | ✓        | X    | X       |
+| BOOLEAN          | ✓    | X        | X    | X    | ✓       | X    | X        | ✓        | X    | X       |
+| DECIMAL (I32)    | ✓    | ✓        | ✓    | ✓    | ✓       | X    | X        | ✓        | X    | X       |
+| DECIMAL (I64)    | ✓    | ✓        | ✓    | ✓    | ✓       | X    | X        | ✓        | X    | X       |
+| DECIMAL (FLBA)   | X    | X        | ✓    | ✓    | ✓       | X    | X        | ✓        | X    | X       |
+| DECIMAL (BA)     | ✓    | X        | ✓    | ✓    | ✓       | X    | X        | ✓        | X    | ✓       |
+| TIMESTAMP        | X    | X        | X    | X    | X       | ✓    | X        | ✓        | X    | X       |
+| DATE             | X    | X        | X    | X    | X       | ✓    | X        | ✓        | X    | X       |
+| STRING           | X    | ✓        | ✓    | ✓    | ✓       | X    | X        | ✓        | X    | ✓       |
+| UUID             | X    | X        | X    | X    | X       | X    | X        | ✓        | ✓    | X       |
+| JSON             | X    | X        | X    | X    | X       | X    | X        | ✓        | X    | ✓       |
+| LIST             | X    | X        | X    | X    | X       | X    | X        | X        | X    | ✓       |
+| MAP             | X    | X        | X    | X    | X       | X    | X        | X        | X    | ✓       |
+| STRUCT           | X    | X        | X    | X    | X       | X    | X        | X        | X    | ✓       |
+
+**Note:** When (X) is specified next to a Parquet column, it refers to the physical type of the Parquet type.
+
+- **I32**: INT32 (32-bit integer)
+- **I64**: INT64 (64-bit integer)
+- **FLBA**: Fixed Length Byte Array
+- **BA**: Byte Array
