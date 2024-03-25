@@ -702,6 +702,10 @@ items:
           - name: Update policy
             href: update-policy.md
             displayName: SQL triggers
+          - name: Update policy scenarios
+            href: update-policy-common-scenarios.md
+          - name: "Tutorial: Route data using table update policies"
+            href: update-policy-tutorial.md
           - name: .alter table policy update command
             href: alter-table-update-policy-command.md
             displayName: .alter table update policy
