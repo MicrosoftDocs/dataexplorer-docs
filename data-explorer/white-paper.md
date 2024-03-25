@@ -1,6 +1,6 @@
 ---
 title: Azure Data Explorer white paper
-description: Learn how Azure Data Explorer works under the hood.
+description: Learn how Azure Data Explorer works under the hood and explore its powerful features for big data processing and analytics.
 ms.reviewer: evgeneyr
 ms.topic: reference
 ms.date: 03/19/2024
@@ -403,4 +403,4 @@ The implementation of the follower cluster mechanism takes advantage of the meta
 
 ## Related content
 
-* [Solution architectures](solution-architectures.md)
+- [Solution architectures](solution-architectures.md)
