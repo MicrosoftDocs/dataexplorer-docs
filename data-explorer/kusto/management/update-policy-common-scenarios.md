@@ -50,7 +50,7 @@ For example, you can enrich raw telemetry data from a device by looking up value
 
 The following diagram depicts the example, which comprises an update policy named **Enrich_Device_Data**. It extends the output data with data sourced from the **Site** reference data table.
 
-:::image type="content" source="media/update-policy-common-scenarios/optimize-data-models.png" alt-text="Diagram showing the optimize data models scenario using update policies solution.":::
+:::image type="content" source="media/update-policy-common-scenarios/optimize-data-models.png" alt-text="Diagram showing the optimized data models scenario using update policies solution.":::
 
 ## Related content
 

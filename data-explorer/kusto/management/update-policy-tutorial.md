@@ -87,7 +87,7 @@ The following steps guide you through creating a source table, transformation fu
     The destination table must have the same schema as that output of the transformation function. You can create destination tables in the following ways:
 
     * Using the `.create table` command and manually specifying the schema as demonstrated with the creation of the **Device_Telemetry** table. However, this approach can be error-prone and time-consuming.
-    * Using the `.set-or-append` command if you've already created a function to transform the data. This method creates a new table with the same schema as the output of the function, using `take 0` to make sure only the schema is returned by the function. For more information, see [.set-or-append command](/azure/data-explorer/kusto/management/data-ingestion/ingest-from-query).
+    * Using the `.set-or-append` command if you've already created a function to transform the data. This method creates a new table with the same schema as the output of the function, using `take 0` to make sure the function only returns the schema. For more information, see [.set-or-append command](/azure/data-explorer/kusto/management/data-ingestion/ingest-from-query).
 
 1. Run the following command to create the update policies for the destination tables
 
