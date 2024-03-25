@@ -76,31 +76,11 @@ The following steps aren't required if you're running commands in Azure Cloud Sh
 
 ### [PowerShell](#tab/powershell)
 
-* An Azure subscription. Create a [free Azure account](https://azure.microsoft.com/free/).
-* You can use [Azure Cloud Shell](https://shell.azure.com) to run the code in this article without having to install anything on your local environment.
-* If you choose to install and use [PowerShell](/powershell/scripting/install/installing-powershell-on-windows) locally, follow the steps in [Configure parameters](#configure-parameters).
+* Set up your environment using the instructions in [Use Kusto cmdlets in Azure PowerShell](kusto/api/powershell/azure-powershell.md).
 
 ### Configure parameters
 
 The following steps aren't required if you're running commands in Azure Cloud Shell. If you're running the CLI locally, follow these steps to set up the environment:
-
-1. Run the following command to sign in to Azure:
-
-    ```azurepowershell-interactive
-    Connect-AzAccount
-    ```
-
-1. Set the subscription where you want your cluster to be created:
-
-    ```azurepowershell-interactive
-     Set-AzContext -SubscriptionId "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
-    ```
-
-1. When running Azure CLI locally or in the Azure Cloud Shell, you need to install the `Az.Kusto` module on your device:
-
-    ```azurepowershell-interactive
-     Install-Module -Name Az.Kusto
-    ```
 
 ### [ARM template](#tab/arm)
 
