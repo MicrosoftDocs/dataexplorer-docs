@@ -18,12 +18,12 @@ In this tutorial, you learn how to:
 > * [2 - Ingest sample data](#2---ingest-sample-data)
 > * [3 - Verify the results](#3---verify-the-results)
 
-The example in this tutorial demonstrates how to use update policies for [data routing](/azure/data-explorer/kusto/management/update-policy-common-use-cases#data-routing) to perform complex transformations to enrich, cleanse, and transform data at ingestion time. For a list of other common use cases, see [Common use cases for table update policies](/azure/data-explorer/kusto/management/update-policy-common-use-cases).
+The example in this tutorial demonstrates how to use update policies for [data routing](update-policy-common-use-cases.md#data-routing) to perform complex transformations to enrich, cleanse, and transform data at ingestion time. For a list of other common use cases, see [Common use cases for table update policies](update-policy-common-use-cases.md).
 
 ## Prerequisites
 
 * A Microsoft account or a Microsoft Entra user identity. An Azure subscription isn't required.
-* An Azure Data Explorer cluster and database. [Create a cluster and database](/azure/data-explorer/create-cluster-and-database).
+* An Azure Data Explorer cluster and database. [Create a cluster and database](/azure/data-explorer/create-cluster-and-database) **or** a [KQL database in Real-Time Analytics in Microsoft Fabric](/fabric/real-time-analytics/create-database).
 
 ## 1 - Create tables and update policies
 
