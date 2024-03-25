@@ -18,7 +18,7 @@ In this tutorial, you learn how to:
 > * [2 - Ingest sample data](#2---ingest-sample-data)
 > * [3 - Verify the results](#3---verify-the-results)
 
-The example in this tutorial demonstrates how to use update policies for [data routing](update-policy-common-use-cases.md#data-routing) to perform complex transformations to enrich, cleanse, and transform data at ingestion time. For a list of other common use cases, see [Common use cases for table update policies](update-policy-common-use-cases.md).
+The example in this tutorial demonstrates how to use update policies for [data routing](update-policy-common-scenarios.md) to perform complex transformations to enrich, cleanse, and transform data at ingestion time. For a list of other common use cases, see [Common use cases for table update policies](update-policy-common-scenarios.md).
 
 ## Prerequisites
 
