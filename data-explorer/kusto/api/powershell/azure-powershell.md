@@ -36,7 +36,7 @@ Use your Azure account login credentials to log into the browser window that ope
 
 ## Set the subscription context
 
-Optionally, set the subscription context by running the following command replacing `<SubscriptionId>` with your cluster's subscription ID. You can get your cluster's subscription ID from the Azure portal form your cluster's **Overview** page.
+Optionally, set the subscription context by running the following command replacing `<SubscriptionId>` with your cluster's subscription ID. You can get your cluster's subscription ID from the Azure portal from your cluster's **Overview** page.
 
 ```powershell
 Set-AzContext -SubscriptionId "<SubscriptionId>"
@@ -44,7 +44,7 @@ Set-AzContext -SubscriptionId "<SubscriptionId>"
 
 ## Run Kusto cmdlets
 
-To view your cluster details, run the following command replacing `<ClusterResourceID>` with your cluster's resource ID. You can get your cluster's resource ID from the Azure portal form your cluster's **Properties** page.
+To view your cluster details, run the following command replacing `<ClusterResourceID>` with your cluster's resource ID. You can get your cluster's resource ID from the Azure portal from your cluster's **Properties** page.
 
 ```powershell
 $resource_id = "<ClusterResourceID>"
