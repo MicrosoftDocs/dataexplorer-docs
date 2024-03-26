@@ -11,11 +11,15 @@ Azure Data Explorer provides a Tabular Data Stream (TDS) endpoint that allows yo
 
 In this article, you'll learn how to run [stored functions](kusto/query/schema-entities/stored-functions.md) and [Kusto Query Language (KQL)](kusto/query/index.md) queries from an SQL compatible client.
 
+Note that this applies to parameterzied calls over TDS protocol also known as RPC calls.
+
 For more information, see the [overview on SQL Server emulation](sql-server-emulation-overview.md) in Azure Data Explorer.
 
 ## Run KQL queries
 
-The SQL stored procedure `sp_execute_kql` can be used to run [KQL](kusto/query/index.md) queries, including parameterized queries. The procedure is similar to the `sp_executesql` stored procedure.
+The SQL stored procedure `sp_execute_kql` can be used to run [KQL](kusto/query/index.md) queries, including parameterized queries. The procedure is similar to the `sp_executesql` stored procedure. 
+
+`sp_execute_kql` cannot be called from plain SQL query, but only via RPC call as in example below.
 
 The first parameter of `sp_execute_kql` is the KQL query, and any other parameters are treated as [query parameters](kusto/query/query-parameters-statement.md). The following example shows how to use `sp_execute_kql`.
 
