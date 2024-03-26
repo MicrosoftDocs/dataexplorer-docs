@@ -80,6 +80,7 @@ You can create and call [stored functions](kusto/query/schema-entities/stored-fu
 
 ## Related content
 
+* [Run stored functions](t-sql.md#run-stored-functions)
 * [Connect with ODBC](connect-odbc.md)
 * [Connect with JDBC](connect-jdbc.md)
 * [Connect from common apps](connect-common-apps.md)
