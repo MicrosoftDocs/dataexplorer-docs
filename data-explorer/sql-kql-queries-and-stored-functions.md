@@ -20,7 +20,8 @@ For more information, see the [overview on SQL Server emulation](sql-server-emul
 
 The SQL stored procedure `sp_execute_kql` can be used to run [KQL](kusto/query/index.md) queries, including parameterized queries. The procedure is similar to the `sp_executesql` stored procedure. 
 
-`sp_execute_kql` cannot be called from plain SQL query, but only via RPC call as in example below.
+> [!NOTE]
+> The `sp_execute_kql` procedure can only be called via an RPC call as shown in the following example and not from within a regular SQL query.
 
 The first parameter of `sp_execute_kql` is the KQL query, and any other parameters are treated as [query parameters](kusto/query/query-parameters-statement.md). The following example shows how to use `sp_execute_kql`.
 
