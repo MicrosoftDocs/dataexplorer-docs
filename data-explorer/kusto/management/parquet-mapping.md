@@ -53,7 +53,7 @@ The following table provides a mapping of Parquet field types and the table colu
 > - **FLBA**: Fixed Length Byte Array
 > - **BA**: Byte Array
 
-| Parquet | bool | int | long | real | decimal | datetime | timespan | string | guid | dynamic |
+| Parquet type | bool | int | long | real | decimal | datetime | timespan | string | guid | dynamic |
 |--|--|--|--|--|--|--|--|--|--|--|
 | INT8 | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :x: | :x: | :heavy_check_mark: | :x: | :x: |
 | INT16 | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :x: | :x: | :heavy_check_mark: | :x: | :x: |
