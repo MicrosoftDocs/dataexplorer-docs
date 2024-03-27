@@ -3,7 +3,7 @@ title: geo_info_from_ip_address() - Azure Data Explorer
 description: Learn how to use the geo_info_from_ip_address() function to retrieve geolocation information about IPv4 or IPv6 addresses.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 05/18/2023
+ms.date: 07/25/2023
 ---
 # geo_info_from_ip_address()
 
@@ -13,11 +13,13 @@ Retrieves geolocation information about IPv4 or IPv6 addresses.
 
 `geo_info_from_ip_address(`*IpAddress* `)`
 
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+
 ## Parameters
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-| *IpAddress*| string | &check; | IPv4 or IPv6 address to retrieve geolocation information about.|
+| *IpAddress*| `string` |  :heavy_check_mark: | IPv4 or IPv6 address to retrieve geolocation information about.|
 
 ## Returns
 
@@ -25,11 +27,11 @@ A dynamic object containing the information on IP address whereabouts (if the in
 
 |Name| Type | Description|
 |--|--|--|
-|`country`|string|Country name|
-|`state`|string|State (subdivision) name|
-|`city`|string|City name|
-|`latitude`|real|Latitude coordinate|
-|`longitude`|real|Longitude coordinate|
+|`country`| `string` |Country name|
+|`state`| `string` |State (subdivision) name|
+|`city`| `string` |City name|
+|`latitude`| `real` |Latitude coordinate|
+|`longitude`| `real` |Longitude coordinate|
 
 > [!NOTE]
 >
@@ -37,6 +39,7 @@ A dynamic object containing the information on IP address whereabouts (if the in
 > * This function uses GeoLite2 data created by MaxMind, available from [https://www.maxmind.com](https://www.maxmind.com).
 > * The function is also built on the [MaxMind DB Reader](https://github.com/oschwald/maxminddb-rust) library provided under [ISC license](https://github.com/oschwald/maxminddb-rust/blob/main/LICENSE).
 
+[!INCLUDE [dynamic-access](../../includes/dynamic-access.md)]
 
 ## Examples
 

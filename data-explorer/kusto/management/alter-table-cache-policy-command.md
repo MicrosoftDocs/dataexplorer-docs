@@ -7,7 +7,7 @@ ms.date: 06/04/2023
 ---
 # .alter table policy caching command
 
-Change's the table's cache policy. To speed up queries, data is cached on processing nodes, in SSD, or even in RAM. The [cache policy](cachepolicy.md) allows your cluster to describe the data artifacts that it uses, so that more important data can take priority.
+Change's the table's cache policy. To speed up queries, data is cached on processing nodes, in SSD, or even in RAM. The [cache policy](cache-policy.md) allows your cluster to describe the data artifacts that it uses, so that more important data can take priority.
 
 ## Permissions
 
@@ -17,13 +17,15 @@ You must have at least [Table Admin](access-control/role-based-access-control.md
 
 `.alter` `table` [*DatabaseName* `.`]*TableName* `policy` `caching` *PolicyParameters*
 
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+
 ## Parameters
 
 |Name|Type|Required|Description|
 |--|--|--|--|
-| *DatabaseName* | string | | The name of the database. When you run the command from the database context that contains the table to alter, *DatabaseName* is not required.|
-| *TableName* | string | &check; | The name of the table. Use without *DatabaseName* when running in the required database's context.|
-| *PolicyParameters* | string | &check; | The policy parameters to set. See [cache policy](cachepolicy.md).|
+| *DatabaseName* | `string` | | The name of the database. When you run the command from the database context that contains the table to alter, *DatabaseName* is not required.|
+| *TableName* | `string` |  :heavy_check_mark: | The name of the table. Use without *DatabaseName* when running in the required database's context.|
+| *PolicyParameters* | `string` |  :heavy_check_mark: | The policy parameters to set. See [cache policy](cache-policy.md).|
 
 ## Examples
 

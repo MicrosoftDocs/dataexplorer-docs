@@ -17,12 +17,14 @@ You must have [Cluster AllDatabasesAdmin](access-control/role-based-access-contr
 
 `.create-or-alter` `workload_group` *WorkloadGroupName* *SerializedPolicyObject*
 
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+
 ## Parameters
 
 | Name                             | Type   | Required | Description                                                                                                                                                                                                                       |
 |----------------------------------|--------|----------|-------------------------------------------------------------------------------------------|
-| *WorkloadGroupName*              | string | &check;  | Name of the workload group. Can be specified with bracket notation ['WorkLoadGroupName']. |
-| *SerializedPolicyObject*         | string | &check;  | JSON representation of the policy. `*`                                                    |
+| *WorkloadGroupName*              | `string` |  :heavy_check_mark:  | Name of the workload group. Can be specified with bracket notation ['WorkLoadGroupName']. |
+| *SerializedPolicyObject*         | `string` |  :heavy_check_mark:  | JSON representation of the policy. `*`                                                    |
 
 `*` The following policies apply to workload groups:
 
@@ -39,8 +41,8 @@ Following is the schema of the output returned:
 
 | Name              | Type   | Description                                |
 |-------------------|--------|--------------------------------------------|
-| WorkloadGroupName | string | Name of the workload group.                |
-| WorkloadGroup     | string | JSON representation of the workload group. |
+| WorkloadGroupName | `string` | Name of the workload group.                |
+| WorkloadGroup     | `string` | JSON representation of the workload group. |
 
 ## Examples
 
@@ -92,7 +94,7 @@ Create **MyWorkloadGroup** workload group with a full definition of its request 
 } ```
 ~~~
 
-**Output:**
+**Output**
 
 | WorkloadGroupName | WorkloadGroup                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           |
 |-------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
@@ -164,7 +166,7 @@ Create **My Workload Group** workload group with a full definition of its reques
 } ```
 ~~~
 
-**Output:**
+**Output**
 
 | WorkloadGroupName | WorkloadGroup                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       |
 |-------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|

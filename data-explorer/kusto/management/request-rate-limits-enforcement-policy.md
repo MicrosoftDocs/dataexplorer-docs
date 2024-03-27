@@ -3,7 +3,7 @@ title: Request rate limits enforcement policy
 description: Learn how to use the request rate limits enforcement policy to enforce request rate limits.
 ms.reviewer: yonil
 ms.topic: reference
-ms.date: 05/24/2023
+ms.date: 11/27/2023
 ---
 # Request rate limits enforcement policy
 
@@ -75,6 +75,7 @@ The effective rate limits for the `default` workload group are:
 * The maximum number of concurrent *strongly consistent queries* is <br>`2` (database admin nodes) x `200` (max per admin node) = `400`.
 * The maximum number of concurrent *weakly consistent queries* is <br>`5` (query heads) x `200` (max per query head) = `1000`.
 
-## Management commands
+## Related content
 
-Manage the workload group's request concurrency policy with [Workload groups management commands](./show-workload-group-command.md).
+* [.show workload_group command](show-workload-group-command.md)
+* [System information](system-info.md)

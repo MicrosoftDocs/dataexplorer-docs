@@ -14,11 +14,13 @@ Calculates the sum of elements in a dynamic array.
 
 `array_sum`(*array*)
 
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+
 ## Parameters
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-| *array*| dynamic | &check;| The array to sum.|
+| *array*| `dynamic` |  :heavy_check_mark:| The array to sum.|
 
 ## Returns
 

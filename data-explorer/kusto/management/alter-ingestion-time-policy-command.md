@@ -7,7 +7,7 @@ ms.date: 05/25/2023
 ---
 # .alter table policy ingestiontime command
 
-Turns on or turns off a table's [ingestion time policy](ingestiontimepolicy.md). This policy adds a hidden `datetime` column in the table, called `$IngestionTime`. Whenever new data is ingested, the time of ingestion is recorded in the hidden column.
+Turns on or turns off a table's [ingestion time policy](ingestion-time-policy.md). This policy adds a hidden `datetime` column in the table, called `$IngestionTime`. Whenever new data is ingested, the time of ingestion is recorded in the hidden column.
 
 ## Permissions
 
@@ -19,12 +19,14 @@ You must have at least [Table Ingestor](../management/access-control/role-based-
 
 `.alter` `tables` `(`*TableName*`,` ...`)` `policy` `ingestiontime` *Flag*
 
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+
 ## Parameters
 
 |Name|Type|Required|Description|
 |--|--|--|--|
-|*TableName*|string|&check;|The name of the table.|
-|*Flag*|bool|&check;|Determines whether to turn on or turn off the policy. `true` turns on the policy. `false` turns off the policy.|
+|*TableName*| `string` | :heavy_check_mark:|The name of the table.|
+|*Flag*| `bool` | :heavy_check_mark:|Determines whether to turn on or turn off the policy. `true` turns on the policy. `false` turns off the policy.|
 
 ### Examples
 

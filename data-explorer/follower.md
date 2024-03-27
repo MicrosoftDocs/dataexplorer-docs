@@ -20,7 +20,6 @@ Attaching a database to a different cluster using the follower capability is use
 * A cluster can follow one database, several databases, or all databases of a leader cluster.
 * A single cluster can follow databases from multiple leader clusters.
 * A cluster can contain both follower databases and leader databases.
-* EngineV3 clusters can only follow EngineV3 clusters, similarly EngineV2 clusters can only follow V2 clusters.
 
 ## Prerequisites
 
@@ -40,10 +39,9 @@ When attaching the database all tables, external tables and materialized views a
 '*TableLevelSharingProperties*' contains eight arrays of strings: `tablesToInclude`, `tablesToExclude`, `externalTablesToInclude`, `externalTablesToExclude`, `materializedViewsToInclude`, `materializedViewsToExclude`, `functionsToInclude`, and `functionsToExclude`. The maximum number of entries in all arrays together is 100.
 
 > [!NOTE]
-> Table level sharing is not supported when using '*' all databases notation.
-
-> [!NOTE]
-> When materialized views are included, their source tables are included as well.
+>
+> * Table level sharing is not supported when using '*' all databases notation.
+> * When materialized views are included, their source tables are included as well.
 
 #### Examples
 
@@ -106,7 +104,7 @@ var leaderClusterName = "leader";
 var attachedDatabaseConfigurationData = new KustoAttachedDatabaseConfigurationData
 {
     ClusterResourceId = new ResourceIdentifier($"/subscriptions/{leaderSubscriptionId}/resourceGroups/{leaderResourceGroup}/providers/Microsoft.Kusto/Clusters/{leaderClusterName}"),
-    DatabaseName = "<databaseName>", // Can be specific database name or * for all databases
+    DatabaseName = "<databaseName>", // Can be a specific database name in a leader cluster or * for all databases
     DefaultPrincipalsModificationKind = KustoDatabaseDefaultPrincipalsModificationKind.Union,
     Location = AzureLocation.NorthCentralUS
 };
@@ -166,7 +164,7 @@ leader_resource_group_name = "leaderResourceGroup"
 follower_cluster_name = "follower"
 leader_cluster_name = "leader"
 attached_database_Configuration_name = "uniqueNameForAttachedDatabaseConfiguration"
-database_name  = "db" # Can be specific database name or * for all databases
+database_name  = "db" # Can be a specific database name in a leader cluster or * for all databases
 default_principals_modification_kind  = "Union"
 location = "North Central US"
 cluster_resource_id = "/subscriptions/" + leader_subscription_id + "/resourceGroups/" + leader_resource_group_name + "/providers/Microsoft.Kusto/Clusters/" + leader_cluster_name
@@ -200,7 +198,8 @@ Install : Az.Kusto
 $FollowerClustername = 'follower'
 $FollowerClusterSubscriptionID = 'xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx'
 $FollowerResourceGroupName = 'followerResourceGroup'
-$DatabaseName = "db"  ## Can be specific database name or * for all databases
+$DatabaseName = "db"  ## Can be a specific database name in a leader cluster or * for all databases
+$FollowerDatabaseName = 'followerdbname' ## Use this option if the follower database requires a different name than the leader database.
 $LeaderClustername = 'leader'
 $LeaderClusterSubscriptionID = 'xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx'
 $LeaderClusterResourceGroup = 'leaderResourceGroup'
@@ -209,9 +208,9 @@ $DefaultPrincipalsModificationKind = 'Union'
 $getleadercluster = Get-AzKustoCluster -Name $LeaderClustername -ResourceGroupName $LeaderClusterResourceGroup -SubscriptionId $LeaderClusterSubscriptionID -ErrorAction Stop
 $LeaderClusterResourceid = $getleadercluster.Id
 $Location = $getleadercluster.Location
-##Handle the config name if all databases needs to be followed
+## Handle the config name if all databases need to be followed. The config name can be given any unique name
 if($DatabaseName -eq '*')  {
-        $configname = $FollowerClustername + 'config'
+        $configname = $FollowerClustername + 'config'  
        }
 else {
         $configname = $DatabaseName
@@ -221,7 +220,8 @@ New-AzKustoAttachedDatabaseConfiguration -ClusterName $FollowerClustername `
     -Name $configname `
     -ResourceGroupName $FollowerResourceGroupName `
     -SubscriptionId $FollowerClusterSubscriptionID `
-    -DatabaseName $DatabaseName `
+    -DatabaseName $DatabaseName ` ## Leader database name.
+    -DatabaseNameOverride $FollowerDatabaseName ` ## Use this option if the follower database requires a different name than the leader database. Otherwise, this parameter can be removed.
     -ClusterResourceId $LeaderClusterResourceid `
     -DefaultPrincipalsModificationKind $DefaultPrincipalsModificationKind `
     -Location $Location `
@@ -607,18 +607,22 @@ The follower database administrator can modify the [caching policy](./kusto/mana
 * If there are conflicts between databases of leader/follower clusters, when all databases are followed by the follower cluster, they're resolved as follows:
   * A database named *DB* created on the follower cluster takes precedence over a database with the same name that was created on the leader cluster. That's why database *DB* in the follower cluster needs to be removed or renamed for the follower cluster to include the leader's database *DB*.
   * A database named *DB* followed from two or more leader clusters will be arbitrarily chosen from *one* of the leader clusters, and won't be followed more than once.
-* Commands for showing [cluster activity log and history](kusto/management/systeminfo.md) run on a follower cluster will show the activity and history on the follower cluster, and their result sets won't include those results of the leader cluster or clusters.
+* Commands for showing [cluster activity log and history](kusto/management/system-info.md) run on a follower cluster will show the activity and history on the follower cluster, and their result sets won't include those results of the leader cluster or clusters.
   * For example: a `.show queries` command run on the follower cluster will only show queries run on databases followed by follower cluster, and not queries run against the same database in the leader cluster.
 
 ## Limitations
 
 * The follower and the leader clusters must be in the same region.
 * If [Streaming ingestion](ingest-data-streaming.md) is used on a database that is being followed, the follower cluster should be enabled for Streaming Ingestion to allow following of streaming ingestion data.
-* Data encryption using [customer managed keys](security.md#customer-managed-keys-with-azure-key-vault) isn't supported on both leader and follower clusters.
+* Following a cluster with data encryption using [customer managed keys](security.md#customer-managed-keys-with-azure-key-vault) (CMK) is supported with the following limitations:
+    * Neither the follower cluster nor the leader cluster is following other clusters.
+    * If a follower cluster is following a leader cluster with CMK enabled, and the leader's access to the key is revoked, both the leader and the follower clusters will be suspended. In this situation, you can either resolve the CMK issue and then resume the follower cluster, or you can detach the follower databases from the follower cluster and resume independent of the leader cluster.
 * You can't delete a database that is attached to a different cluster before detaching it.
 * You can't delete a cluster that has a database attached to a different cluster before detaching it.
-* Table level sharing properties aren't supported when following all database.
+* Table level sharing properties aren't supported when following all databases.
+* In follower databases, to query external tables that use a Managed Identity as the authentication method, the Managed Identity must be added to the follower cluster. This capability doesn't work when the leader and follower clusters are provisioned in different tenants.
 
-## Next steps
+## Next step
 
-* For information about follower cluster configuration, see [Management commands for managing a follower cluster](kusto/management/cluster-follower.md).
+> [!div class="nextstepaction"]
+> [Run follower commands](kusto/management/cluster-follower.md)

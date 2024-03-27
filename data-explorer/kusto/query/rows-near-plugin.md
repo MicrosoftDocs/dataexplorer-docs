@@ -9,20 +9,22 @@ ms.date: 01/19/2023
 
 Finds rows near a specified condition.
 
-The plugin is invoked with the [`evaluate`](evaluateoperator.md) operator.
+The plugin is invoked with the [`evaluate`](evaluate-operator.md) operator.
 
 ## Syntax
 
 *T* `| evaluate` `rows_near(`*Condition*`,` *NumRows*`,` [`,` *RowsAfter* ]`)`
 
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+
 ## Parameters
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-| *T*| string | &check; | The input tabular expression.|
-| *Condition*| bool | &check; | Represents the condition to find rows around.|
-| *NumRows*| int | &check; | The number of rows to find before and after the condition.|
-| *RowsAfter*| int | | When specified, overrides the number of rows to find after the condition.|
+| *T*| `string` |  :heavy_check_mark: | The input tabular expression.|
+| *Condition*| `bool` |  :heavy_check_mark: | Represents the condition to find rows around.|
+| *NumRows*| `int` |  :heavy_check_mark: | The number of rows to find before and after the condition.|
+| *RowsAfter*| `int` | | When specified, overrides the number of rows to find after the condition.|
 
 ## Returns
 

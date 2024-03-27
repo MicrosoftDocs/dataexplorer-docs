@@ -3,16 +3,16 @@ title:  plotly_anomaly_fl()
 description: Learn how to use the plotly_anomaly_fl() user-defined function in Azure Data Explorer.
 ms.reviewer: adieldar
 ms.topic: reference
-ms.date: 03/13/2023
+ms.date: 08/13/2023
 ---
 # plotly_anomaly_fl()
 
 The function `plotly_anomaly_fl()` is a [user-defined function (UDF)](../query/functions/user-defined-functions.md) that allows you to customize a [plotly](https://plotly.com/python/) template to create an interactive anomaly chart.  
 
-The function accepts a table containing the source and the baseline time series, lists of positive and negative anomalies with their respective sizes, and chart labeling string. The function returns a single cell table containing [plotly JSON](https://plotly.com/chart-studio-help/json-chart-schema/). Optionally, you can render the data in an [Azure Data Explorer dashboard](../../azure-data-explorer-dashboards.md) tile. For more information, see [Plotly visual in dashboards](../../dashboard-customize-visuals.md#plotly-preview).
+The function accepts a table containing the source and the baseline time series, lists of positive and negative anomalies with their respective sizes, and chart labeling string. The function returns a single cell table containing [plotly JSON](https://plotly.com/chart-studio-help/json-chart-schema/). Optionally, you can render the data in an [Azure Data Explorer dashboard](../../azure-data-explorer-dashboards.md) tile. For more information, see [Plotly (preview)](../query/visualization-plotly.md).
 
 > [!NOTE]
-> Consider using ADX native [`" | render anomalychart"`](../query/renderoperator.md#syntax) method for rendering a non-interactive anomaly chart.
+> Consider using Azure Data Explorer native [`" | render anomalychart"`](../query/render-operator.md#syntax) method for rendering a non-interactive anomaly chart.
 
 ## Prerequisite
 
@@ -25,23 +25,25 @@ Extract the required 'anomaly' template from the publicly available `PlotlyTempl
 ## Syntax
 
 `T | invoke plotly_anomaly_fl(`*time_col*`,` *val_col*`,` *baseline_col*`,` *time_high_col*`,` *val_high_col*`,` *size_high_col*`,` *time_low_col*`,` *val_low__col*`,` *size_low_col*`,` *chart_title*`,` *series_name*`,` *val_name*`)`
-  
+
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+
 ## Parameters
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-| *time_col* | string | &check; | The name of the column containing the dynamic array of the time points of the original time series|
-| *val_col* | string | &check; | The name of the column containing the values of the original time series|
-| *baseline_col* | string | &check; | The name of the column containing the values of the baseline time series. Anomalies are usually detected by large value offset from the expected baseline value. |
-| *time_high_col* | string | &check; | The name of the column containing the time points of high (above the baseline) anomalies |
-| *val_high_col* | string | &check; | The name of the column containing the values of the high anomalies|
-| *size_high_col* | string | &check; | The name of the column containing the marker sizes of the high anomalies|
-| *time_low_col* | string | &check; | The name of the column containing the time points of low anomalies|
-| *val_low_col* | string | &check; | The name of the column containing the values of the low anomalies|
-| *size_low_col* | string | &check; | The name of the column containing the marker sizes of the low anomalies|
-| *chart_title* | string | | Chart title, default is 'Anomaly Chart'|
-| *series_name* | string | | Time series name, default is 'Metric'|
-| *val_name* | string | | Value axis name, default is 'Value'|
+| *time_col* | `string` |  :heavy_check_mark: | The name of the column containing the dynamic array of the time points of the original time series|
+| *val_col* | `string` |  :heavy_check_mark: | The name of the column containing the values of the original time series|
+| *baseline_col* | `string` |  :heavy_check_mark: | The name of the column containing the values of the baseline time series. Anomalies are usually detected by large value offset from the expected baseline value. |
+| *time_high_col* | `string` |  :heavy_check_mark: | The name of the column containing the time points of high (above the baseline) anomalies |
+| *val_high_col* | `string` |  :heavy_check_mark: | The name of the column containing the values of the high anomalies|
+| *size_high_col* | `string` |  :heavy_check_mark: | The name of the column containing the marker sizes of the high anomalies|
+| *time_low_col* | `string` |  :heavy_check_mark: | The name of the column containing the time points of low anomalies|
+| *val_low_col* | `string` |  :heavy_check_mark: | The name of the column containing the values of the low anomalies|
+| *size_low_col* | `string` |  :heavy_check_mark: | The name of the column containing the marker sizes of the low anomalies|
+| *chart_title* | `string` | | Chart title, default is 'Anomaly Chart'|
+| *series_name* | `string` | | Time series name, default is 'Metric'|
+| *val_name* | `string` | | Value axis name, default is 'Value'|
 
 ## Function definition
 
@@ -49,10 +51,10 @@ You can define the function by either embedding its code as a query-defined func
 
 ### [Query-defined](#tab/query-defined)
 
-Define the function using the following [let statement](../query/letstatement.md). No permissions are required.
+Define the function using the following [let statement](../query/let-statement.md). No permissions are required.
 
 > [!IMPORTANT]
-> A [let statement](../query/letstatement.md) can't run on its own. It must be followed by a [tabular expression statement](../query/tabularexpressionstatements.md). To run a working example of `plotly_anomaly_fl()`, see [Example](#example).
+> A [let statement](../query/let-statement.md) can't run on its own. It must be followed by a [tabular expression statement](../query/tabular-expression-statements.md). To run a working example of `plotly_anomaly_fl()`, see [Example](#example).
 
 ```kusto
 let plotly_anomaly_fl=(tbl:(*), time_col:string, val_col:string, baseline_col:string, time_high_col:string , val_high_col:string, size_high_col:string,
@@ -121,7 +123,7 @@ plotly_anomaly_fl(tbl:(*), time_col:string, val_col:string, baseline_col:string,
 
 ## Example
 
-The following example uses the [invoke operator](../query/invokeoperator.md) to run the function.
+The following example uses the [invoke operator](../query/invoke-operator.md) to run the function.
 
 ### [Query-defined](#tab/query-defined)
 
@@ -202,9 +204,9 @@ The output is a Plotly JSON string that can be rendered using '| render plotly' 
 
 The following image shows a sample anomaly chart using the above function:
 
-![Screenshot of anomaly chart of the sample data set.](images\plotly-anomaly-fl\plotly-anomaly-chart.png)
+![Screenshot of anomaly chart of the sample dataset.](media/plotly-anomaly-fl\plotly-anomaly-chart.png)
 
 You can zoom in and hover over anomalies:
 
-![Screenshot of zoom in anomalous region.](images\plotly-anomaly-fl\plotly-anomaly-chart-zooming.png)
-![Screenshot of hover over anomaly.](images\plotly-anomaly-fl\plotly-anomaly-chart-zoomed.png)
+![Screenshot of zoom in anomalous region.](media/plotly-anomaly-fl\plotly-anomaly-chart-zooming.png)
+![Screenshot of hover over anomaly.](media/plotly-anomaly-fl\plotly-anomaly-chart-zoomed.png)

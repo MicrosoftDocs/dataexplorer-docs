@@ -22,14 +22,16 @@ You must have at least [Table Admin](access-control/role-based-access-control.md
 
 `.alter` `column` [*DatabaseName* `.`] *TableName* `.` *ColumnName* `type` `=` *ColumnNewType*
 
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+
 ## Parameters
 
 |Name|Type|Required|Description|
 |--|--|--|--|
-|*DatabaseName*|string||The name of the database that contains the table.|
-|*TableName*|string|&check;|The name of the table that contains the column to alter.|
-|*ColumnName*|string|&check;|The name of the column to alter.|
-|*ColumnNewType*|string|&check;|The new [data type](../query/scalar-data-types/index.md) for the column.|
+|*DatabaseName*| `string` ||The name of the database that contains the table.|
+|*TableName*| `string` | :heavy_check_mark:|The name of the table that contains the column to alter.|
+|*ColumnName*| `string` | :heavy_check_mark:|The name of the column to alter.|
+|*ColumnNewType*| `string` | :heavy_check_mark:|The new [data type](../query/scalar-data-types/index.md) for the column.|
 
 ## Example
 

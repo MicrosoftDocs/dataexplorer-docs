@@ -10,9 +10,13 @@ ms.date: 06/18/2023
 
 The `leftsemi` join flavor returns all records from the left side that match a record from the right side. Only columns from the left side are returned.
 
+:::image type="content" source="media/joinoperator/join-leftsemi.png" alt-text="Diagram that shows how the join works." lightbox="media/joinoperator/join-kinds.png":::
+
 ## Syntax
 
 *LeftTable* `|` `join` `kind=leftsemi` [ *Hints* ] *RightTable* `on` *Conditions*
+
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
 
 [!INCLUDE [join-parameters-attributes-hints](../../includes/join-parameters-attributes-hints.md)]
 

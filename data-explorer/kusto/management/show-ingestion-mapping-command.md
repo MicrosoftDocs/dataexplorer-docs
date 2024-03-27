@@ -19,13 +19,15 @@ View all mappings or all mappings of a specific type:
 
 `.show` (`table` | `database`) *EntityName* `ingestion` [ *MappingKind* ] `mappings`
 
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+
 ## Parameters
 
 |Name|Type|Required|Description|
 |--|--|--|--|
-|*EntityName*|string|&check;|The name of the table or database for which to show the ingestion mapping(s).|
-|*MappingKind*|string||The type of mapping(s) to view. Possible values: `csv`, `json`, `avro`, `w3clogfile`, `parquet`, and `orc`.|
-|*MappingName*|string||The name of the mapping to view. This argument is required if you specify that you want to view a single `mapping` instead of multiple `mappings` for the entity. See [syntax options](#syntax).|
+|*EntityName*| `string` | :heavy_check_mark:|The name of the table or database for which to show the ingestion mapping(s).|
+|*MappingKind*| `string` ||The type of mapping(s) to view. Possible values: `csv`, `json`, `avro`, `w3clogfile`, `parquet`, and `orc`.|
+|*MappingName*| `string` ||The name of the mapping to view. This argument is required if you specify that you want to view a single `mapping` instead of multiple `mappings` for the entity. See [syntax options](#syntax).|
 
 ## Returns
 
@@ -54,7 +56,7 @@ If the table only contained one CSV formatted mapping named "mapping1", the foll
 .show database MyDatabase ingestion csv mappings
 ```
 
-## See also
+## Related content
 
 * Learn more about [data mappings](mappings.md)
 * Use [.create ingestion mapping](create-ingestion-mapping-command.md) to create a new mapping

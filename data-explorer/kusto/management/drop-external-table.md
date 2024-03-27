@@ -11,7 +11,7 @@ Drops an external table.
 
 The external table definition can't be restored following this operation.
 
-This command is relevant to any external table of any type. For an overview of external tables, see [external tables](../query/schema-entities/externaltables.md).
+This command is relevant to any external table of any type. For an overview of external tables, see [external tables](../query/schema-entities/external-tables.md).
 
 ## Permissions
 
@@ -21,12 +21,14 @@ You must have at least [External Table Admin](access-control/role-based-access-c
 
 `.drop` `external` `table` *TableName* [`ifexists`]
 
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+
 ## Parameters
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-| *TableName* | string | &check; | The name of the external table to drop. |
-|`ifexists`| string || If specified, the command won't fail if the table doesn't exist.|
+| *TableName* | `string` |  :heavy_check_mark: | The name of the external table to drop. |
+|`ifexists`| `string` || If specified, the command won't fail if the table doesn't exist.|
 
 ## Returns
 

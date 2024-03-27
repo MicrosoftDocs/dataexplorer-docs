@@ -16,7 +16,7 @@ Data ingestion is the process by which data is added to a table and is made avai
 > * CSV: http://csvlint.io/
 > * JSON: https://jsonlint.com/
 >
-> For more information about why ingestion might fail, see [Ingestion failures](kusto/management/ingestionfailures.md) and  [Ingestion error codes in Azure Data Explorer](error-codes.md).
+> For more information about why ingestion might fail, see [Ingestion failures](kusto/management/ingestion-failures.md) and  [Ingestion error codes in Azure Data Explorer](error-codes.md).
 
 |Format   |Extension   |Description|
 |---------|------------|-----------|
@@ -24,7 +24,7 @@ Data ingestion is the process by which data is added to a table and is made avai
 |Avro     |`.avro`     |A legacy implementation for [AVRO](https://avro.apache.org/docs/current/) format based on [.NET library](https://www.nuget.org/packages/Microsoft.Hadoop.Avro). The following compression codecs are supported: `null`, `deflate` (for `snappy` - use `ApacheAvro` data format). |
 |CSV      |`.csv`      |A text file with comma-separated values (`,`). See [RFC 4180: _Common Format and MIME Type for Comma-Separated Values (CSV) Files_](https://www.ietf.org/rfc/rfc4180.txt).|
 |JSON     |`.json`     |A text file with JSON objects delimited by `\n` or `\r\n`. See [JSON Lines (JSONL)](http://jsonlines.org/).|
-|MultiJSON|`.multijson`|A text file with a JSON array of property bags (each representing a record), or any number of property bags delimited by whitespace, `\n` or `\r\n`. Each property bag can be spread on multiple lines. This format is preferred over `JSON`, unless the data is non-property bags.|
+|MultiJSON|`.multijson`|A text file with a JSON array of property bags (each representing a record), or any number of property bags delimited by whitespace, `\n` or `\r\n`. Each property bag can be spread on multiple lines.|
 |ORC      |`.orc`      |An [ORC file](https://en.wikipedia.org/wiki/Apache_ORC).|
 |Parquet  |`.parquet`  |A [Parquet file](https://en.wikipedia.org/wiki/Apache_Parquet). |
 |PSV      |`.psv`      |A text file with pipe-separated values (<code>&#124;</code>). |
@@ -39,7 +39,10 @@ Data ingestion is the process by which data is added to a table and is made avai
 > [!NOTE]
 >
 > * Ingestion from data storage systems that provide ACID functionality on top of regular Parquet format files (e.g. Apache Iceberg, Apache Hudi, Delta Lake) is not supported.
-> * Schema-less Avro is not supported
+>
+> * Schema-less Avro is not supported.
+>
+> * For more info on ingesting data using `json` or `multijson` formats, please refer to [this document](ingest-json-formats.md).
 
 ## Supported data compression formats
 
@@ -62,8 +65,9 @@ must be specified as an ingestion property because it cannot be inferred.
 > [!NOTE]
 > * Some compression formats keep track of the original file extension as part of the compressed stream. This extension is generally ignored for determining the file format. If the file format can't be determined from the (compressed) blob or file name, it must be specified through the `format` ingestion property.
 > * Not to be confused with internal (chunk level) compression codec used by `Parquet`, `AVRO` and `ORC` formats. Internal compression name is usually added to a file name before file format extension, for example: `file1.gz.parquet`, `file1.snappy.avro`, etc.
+> * [Deflate64/Enhanced Deflate](https://en.wikipedia.org/wiki/Deflate#Deflate64/Enhanced_Deflate) Zip compression method is not supported. Please note that Windows built-in Zip compressor may choose to use this compression method on files of size over 2GB.
 
-## Next steps
+## Related content
 
 * Learn more about [data ingestion](ingest-data-overview.md)
 * Learn more about [Azure Data Explorer data ingestion properties](ingestion-properties.md)

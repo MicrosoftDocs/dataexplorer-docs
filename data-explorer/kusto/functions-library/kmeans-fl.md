@@ -9,25 +9,25 @@ zone_pivot_groups: kql-flavors-all
 ---
 # kmeans_fl()
 
-::: zone pivot="azuredataexplorer"
+::: zone pivot="azuredataexplorer, fabric"
 
 The function `kmeans_fl()` is a [UDF (user-defined function)](../query/functions/user-defined-functions.md) that clusterizes a dataset using the [k-means algorithm](https://en.wikipedia.org/wiki/K-means_clustering).
 
-## Prerequisites
-
-* The Python plugin must be [enabled on the cluster](../query/pythonplugin.md#enable-the-plugin). This is required for the inline Python used in the function.
+[!INCLUDE [python-zone-pivot-fabric](../../includes/python-zone-pivot-fabric.md)]
 
 ## Syntax
 
 `T | invoke kmeans_fl(`*k*`,` *features_cols*`,` *cluster_col*`)`
 
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+
 ## Parameters
 
 |Name|Type|Required|Description|
 |--|--|--|--|
-|*k*|int|&check;|The number of clusters.|
-|*features_cols*|dynamic|&check;|An array containing the names of the features columns to use for clustering.|
-|*cluster_col*|string|&check;|The name of the column to store the output cluster ID for each record.|
+|*k*| `int` | :heavy_check_mark:|The number of clusters.|
+|*features_cols*| `dynamic` | :heavy_check_mark:|An array containing the names of the features columns to use for clustering.|
+|*cluster_col*| `string` | :heavy_check_mark:|The name of the column to store the output cluster ID for each record.|
 
 ## Function definition
 
@@ -35,10 +35,10 @@ You can define the function by either embedding its code as a query-defined func
 
 ### [Query-defined](#tab/query-defined)
 
-Define the function using the following [let statement](../query/letstatement.md). No permissions are required.
+Define the function using the following [let statement](../query/let-statement.md). No permissions are required.
 
 > [!IMPORTANT]
-> A [let statement](../query/letstatement.md) can't run on its own. It must be followed by a [tabular expression statement](../query/tabularexpressionstatements.md). To run a working example of `kmeans_fl()`, see [Examples](#examples).
+> A [let statement](../query/let-statement.md) can't run on its own. It must be followed by a [tabular expression statement](../query/tabular-expression-statements.md). To run a working example of `kmeans_fl()`, see [Examples](#examples).
 
 ~~~kusto
 let kmeans_fl=(tbl:(*), k:int, features:dynamic, cluster_col:string)
@@ -99,7 +99,7 @@ kmeans_fl(tbl:(*), k:int, features:dynamic, cluster_col:string)
 
 ## Examples
 
-The following examples use the [invoke operator](../query/invokeoperator.md) to run the function.
+The following examples use the [invoke operator](../query/invoke-operator.md) to run the function.
 
 ### Clusterize room occupancy from sensors measurements
 
@@ -135,7 +135,7 @@ let kmeans_fl=(tbl:(*), k:int, features:dynamic, cluster_col:string)
 // It contains experimental data for binary classification of room occupancy from Temperature, Humidity, Light, and CO2.
 //
 OccupancyDetection
-| extend cluster_id=double(null)
+| extend cluster_id=int(null)
 | invoke kmeans_fl(5, pack_array("Temperature", "Humidity", "Light", "CO2", "HumidityRatio"), "cluster_id")
 | sample 10
 ~~~
@@ -153,7 +153,7 @@ OccupancyDetection
 // It contains experimental data for binary classification of room occupancy from Temperature, Humidity, Light, and CO2.
 //
 OccupancyDetection
-| extend cluster_id=double(null)
+| extend cluster_id=int(null)
 | invoke kmeans_fl(5, pack_array("Temperature", "Humidity", "Light", "CO2", "HumidityRatio"), "cluster_id")
 | sample 10
 ```
@@ -203,7 +203,7 @@ let kmeans_fl=(tbl:(*), k:int, features:dynamic, cluster_col:string)
     | evaluate python(typeof(*), code, kwargs)
 };
 OccupancyDetection
-| extend cluster_id=double(null)
+| extend cluster_id=int(null)
 | invoke kmeans_fl(5, pack_array("Temperature", "Humidity", "Light", "CO2", "HumidityRatio"), "cluster_id")
 | summarize Temperature=avg(Temperature), Humidity=avg(Humidity), Light=avg(Light), CO2=avg(CO2), HumidityRatio=avg(HumidityRatio), num=count() by cluster_id
 | order by num
@@ -216,7 +216,7 @@ OccupancyDetection
 
 ```kusto
 OccupancyDetection
-| extend cluster_id=double(null)
+| extend cluster_id=int(null)
 | invoke kmeans_fl(5, pack_array("Temperature", "Humidity", "Light", "CO2", "HumidityRatio"), "cluster_id")
 | summarize Temperature=avg(Temperature), Humidity=avg(Humidity), Light=avg(Light), CO2=avg(CO2), HumidityRatio=avg(HumidityRatio), num=count() by cluster_id
 | order by num
@@ -236,7 +236,7 @@ OccupancyDetection
 
 ::: zone-end
 
-::: zone pivot="azuremonitor, fabric"
+::: zone pivot="azuremonitor"
 
 This feature isn't supported.
 

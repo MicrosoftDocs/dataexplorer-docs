@@ -13,11 +13,13 @@ Simplifies a line or a multiline by replacing nearly straight chains of short ed
 
 `geo_line_simplify(`*lineString*`,` *tolerance*`)`
 
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+
 ## Parameters
 
 |Name|Type|Required|Description|
 |--|--|--|--|
-| *lineString* | dynamic | &check; | A LineString or MultiLineString in the [GeoJSON format](https://tools.ietf.org/html/rfc7946).|
+| *lineString* | `dynamic` |  :heavy_check_mark: | A LineString or MultiLineString in the [GeoJSON format](https://tools.ietf.org/html/rfc7946).|
 | *tolerance* | int, long, or real | | Defines minimum distance in meters between any two vertices. Supported values are in the range [0, ~7,800,000 meters]. If unspecified, the default value `10` is used.|
 
 ## Returns

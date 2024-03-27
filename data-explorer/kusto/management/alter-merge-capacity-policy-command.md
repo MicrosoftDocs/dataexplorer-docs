@@ -7,7 +7,7 @@ ms.date: 04/20/2023
 ---
 # .alter-merge cluster policy capacity command
 
-Turns on or turns off a cluster's [capacity policy](capacitypolicy.md). The policy is used to control the computational resources for data management operations on the cluster. This command requires [AllDatabasesAdmin](access-control/role-based-access-control.md) permission.
+Changes a cluster's [capacity policy](capacity-policy.md). The policy is used to control the computational resources for data management operations on the cluster.
 
 ## Permissions
 
@@ -17,11 +17,13 @@ You must have [AllDatabasesAdmin](access-control/role-based-access-control.md) p
 
 `.alter-merge` `cluster` `policy` `capacity` *SerializedArrayOfPolicyObjects*
 
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+
 ## Parameters
 
 |Name|Type|Required|Description|
 |--|--|--|--|
-|*SerializedArrayOfPolicyObjects*|string|&check;|A serialized array with one or more JSON policy objects. For more information, see [capacity policy](capacitypolicy.md).|
+|*SerializedArrayOfPolicyObjects*| `string` | :heavy_check_mark:|A serialized array with one or more JSON policy objects. For more information, see [capacity policy](capacity-policy.md).|
 
 ### Examples
 

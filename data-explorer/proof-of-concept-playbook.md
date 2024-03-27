@@ -3,7 +3,7 @@ title: "Azure Data Explorer POC playbook: Big data analytics"
 description: "A high-level methodology for preparing and running an effective Azure Data Explorer proof of concept (POC) project."
 ms.reviewer: devsha
 ms.topic: conceptual
-ms.date: 09/22/2022
+ms.date: 11/02/2023
 ---
 
 # Azure Data Explorer POC playbook: Big data analytics
@@ -113,7 +113,7 @@ Use your goals to identify specific tests and to provide the outputs you identif
 
 Here are the typical subject areas that are evaluated with Azure Data Explorer:
 
-- **Data Ingestion and processing**: Data sources, data formats, ingestion methods, connectors, tools, ingestion policies, streaming vs batch ingestion
+- **Data Ingestion and processing**: Data sources, data formats, ingestion methods, connectors, tools, ingestion policies, streaming vs queued ingestion
 - **Data Storage**: schema, storage artifacts such as tables and materialized views
 - **Policies**: Such as partitioning, update, merge
 - **Querying and visualization**
@@ -127,14 +127,14 @@ Here are the typical subject areas that are evaluated with Azure Data Explorer:
 > - **How do I choose the SKU for my POC cluster?**  
 >     Use the [Select a SKU for your Azure Data Explorer cluster](manage-cluster-choose-sku.md) guide to help you choose the SKU for your POC cluster. When starting a POC, we recommend starting with a smaller SKUs and scale up SKU as required when you begin testing and capturing results.
 > - **How do I choose the caching period when creating my POC cluster?**  
->     To provide best query performance, ingested data is cached on the local SSD disk. This level of performance is not always required and less frequently queried data can often be stored on cheaper blob storage. Queries on data in blob storage run slower, but this acceptable in many scenarios. Knowing this can help you identify the number of compute nodes you need to hold your data in local SSD and continue to meet your query performance requirements. For example, if you you want to query *x* days worth of data (based on ingestion age) more frequently and retain data for *y* days and query it less frequently, in your cache retention policy, specify *x* as the value for hot cache retention and *y* as the value for the total retention. For more information, see [Cache policy](kusto/management/cachepolicy.md).
+>     To provide best query performance, ingested data is cached on the local SSD disk. This level of performance is not always required and less frequently queried data can often be stored on cheaper blob storage. Queries on data in blob storage run slower, but this acceptable in many scenarios. Knowing this can help you identify the number of compute nodes you need to hold your data in local SSD and continue to meet your query performance requirements. For example, if you you want to query *x* days worth of data (based on ingestion age) more frequently and retain data for *y* days and query it less frequently, in your cache retention policy, specify *x* as the value for hot cache retention and *y* as the value for the total retention. For more information, see [Cache policy](kusto/management/cache-policy.md).
 > - **How do I choose the retention period when creating my POC cluster?**  
 >     The retention period is a combination of hot and cold cache data that is available for querying. You choose data retention based on how long you need to retain the data based on compliance or other regulatory requirements. You can use the hot window capability, to warm data stored in the cold cache, for faster queries for any auditing purpose. For more information, see [Query cold data with hot windows](hot-windows.md).
 
 Here's an example of the needed level of specificity in planning:
 
 - **Goal A**: We need to know whether our requirement for data ingestion and processing of batch data can be met under our defined SLA.
-- **Output A**: We'll have the data to determine whether our batch data ingestion and processing can meet the data processing requirement and SLA.
+- **Output A**: We'll have the data to determine whether our queued data ingestion and processing can meet the batch data processing requirement and SLA.
     - **Test A1**: Processing queries A, B, and C are identified as good performance tests as they're commonly executed by the data engineering team. Also, they represent overall data processing needs.
     - **Test A2**: Processing queries X, Y, and Z are identified as good performance tests as they contain near real-time stream processing requirements. Also, they represent overall event-based stream processing needs.
     - **Test A3**: Compare the performance of these queries at different scale of our cluster (cluster SKU, number of instances) with the benchmark obtained from the existing system.
@@ -146,12 +146,12 @@ Here's an example of the needed level of specificity in planning:
     - Estimate the effort for our initial historical data migration to our Azure Data Explorer cluster.
     - Plan an approach to migrate historical data.
 - **Output C**: We'll have tested and determined the data ingestion rate achievable in our environment and can determine whether our data ingestion rate is sufficient to migrate historical data during the available time window.
-    - **Test C1**: Test different approaches of historical data migration. For more information, see [Comparing ingestion methods and tools](ingest-data-overview.md#comparing-ingestion-methods-and-tools).
-    - **Test C2**: Test data transfer from the data source to our cluster by using either LightIngest, Continuous ingestion from blob storage or data lake store. For more information, see [Use wizard for one-time ingestion of historical data with LightIngest](generate-lightingest-command.md).
+    - **Test C1**: Test different approaches of historical data migration.
+    - **Test C2**: Test data transfer from the data source to our cluster by using [LightIngest](https://github.com/Azure/Kusto-Lightingest), continuous ingestion from blob storage, or data lake store. For more information, see [ingest historical data](ingest-data-historical.md).
 - **Goal D**: We'll have tested the data ingestion rate of incremental data loading and will have the data points to estimate the data ingestion and processing time window.
 - **Output D**: We'll have tested the data ingestion rate and can determine whether our data ingestion and processing requirements can be met with the identified approach.
     - **Test D1**: Test daily, hourly, and near-real time data ingestion and processing.
-    - **Test D2**: Execute the continuous (batch or streaming) data ingestion and processing while running end-user queries.
+    - **Test D2**: Execute the continuous (queued or streaming) data ingestion and processing while running end-user queries.
 
 Be sure to refine your tests by adding multiple testing scenarios.
 
@@ -204,7 +204,7 @@ The following is a high level example of tasks that you can use to help you plan
 
 ### Evaluate the POC dataset
 
-Using the specific tests you identified, select a dataset to support the tests. Take time to review this dataset. You should verify that the dataset will adequately represent your future processing in terms of content, complexity, and scale. Don't use a dataset that's too small (less than 1 GB) because it won't deliver representative performance. Conversely, don't use a dataset that's too large because the POC shouldn't become a full data migration. Be sure to obtain the appropriate benchmarks from existing systems so you can use them for performance comparisons. Check if your dataset aligns with the supported data formats. Then, depending on the ingestion method (batch or streaming), your dataset can be ingested in batches of appropriate sizes.
+Using the specific tests you identified, select a dataset to support the tests. Take time to review this dataset. You should verify that the dataset will adequately represent your future processing in terms of content, complexity, and scale. Don't use a dataset that's too small (less than 1 GB) because it won't deliver representative performance. Conversely, don't use a dataset that's too large because the POC shouldn't become a full data migration. Be sure to obtain the appropriate benchmarks from existing systems so you can use them for performance comparisons. Check if your dataset aligns with the supported data formats. Then, depending on the ingestion method (queued or streaming), your dataset can be ingested in batches of appropriate sizes.
 
 > [!IMPORTANT]
 > Make sure you check with business owners for any blockers before moving any data to the cloud. Identify any security or privacy concerns or any data obfuscation needs that should be done before moving data to the cloud.
@@ -213,7 +213,7 @@ Using the specific tests you identified, select a dataset to support the tests. 
 
 Based upon the high-level architecture of your proposed future state architecture, identify the components that will form part of your POC. Your high-level future state architecture likely contains many data sources, numerous data consumers, big data components, and possibly machine learning and artificial intelligence (AI) data consumers. Your POC architecture should specifically identify components that will be part of the POC. Importantly, it should identify any components that won't form part of the POC testing.
 
-If you're already using Azure, identify any resources you already have in place (Azure Active Directory, ExpressRoute, and others) that you can use during the POC. Also identify the Azure regions your organization uses. Now is a great time to identify the throughput of your ExpressRoute connection and to check with other business users that your POC can consume some of that throughput without adverse impact on production systems.
+If you're already using Azure, identify any resources you already have in place (Microsoft Entra ID, ExpressRoute, and others) that you can use during the POC. Also identify the Azure regions your organization uses. Now is a great time to identify the throughput of your ExpressRoute connection and to check with other business users that your POC can consume some of that throughput without adverse impact on production systems.
 
 For more information, see [Big data architectures](/azure/architecture/data-guide/big-data/).
 
@@ -247,7 +247,7 @@ Here are some examples of high-level tasks:
     - Make data available in Azure by extracting from the source or by creating sample data in Azure. For an initial test on ingesting data in Azure Data Explorer, use the [ingestion wizard](ingest-data-wizard.md).
     - Test the connector/integration methods you've planned to use to ingest data into your cluster.
 1. Write Kusto Queries to query data:
-    - If you're migrating from SQL based system, you can use the [SQL to Kusto cheat sheet](kusto/query/sqlcheatsheet.md) to help you get started.
+    - If you're migrating from SQL based system, you can use the [SQL to Kusto cheat sheet](kusto/query/sql-cheat-sheet.md) to help you get started.
 1. Execute the tests:
     - Many tests can be executed in parallel on your clusters using different client interfaces such as dashboards, PowerBIm and the Azure Data Explorer [web UI](./web-query-data.md).
     - You can create [load test using JMeter or Grafana k6](kusto/api/load-test-cluster.md).
@@ -291,10 +291,7 @@ Before you migrate your POC cluster to production, we highly recommend that you 
 - Data and insights consumption requirements
 - Testing requirements
 
-## Next steps
+## Related content
 
-> [!div class="nextstepaction"]
-> [Common questions about Azure Data Explorer ingestion](kusto/management/ingestion-faq.yml)
-
-> [!div class="nextstepaction"]
-> [Best practices for schema management](kusto/management/management-best-practices.md)
+* [Common questions about Azure Data Explorer ingestion](kusto/management/ingestion-faq.yml)
+* [Best practices for schema management](kusto/management/management-best-practices.md)

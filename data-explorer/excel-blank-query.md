@@ -14,7 +14,7 @@ Azure Data Explorer provides two options for connecting to data in Excel: use th
 
 ## Prerequisites
 
-* A Microsoft account or an Azure Active Directory user identity to sign in to the [help cluster](https://dataexplorer.azure.com/clusters/help/databases/Samples).
+* A Microsoft account or a Microsoft Entra user identity to sign in to the [help cluster](https://dataexplorer.azure.com/clusters/help/databases/Samples).
 
 ## Define Kusto query as an Excel data source
 
@@ -60,6 +60,6 @@ Azure Data Explorer provides two options for connecting to data in Excel: use th
 
     ![View data in excel.](media/excel-blank-query/data-in-excel.png)
 
-## Next steps
+## Related content
 
-[Visualize data using the Azure Data Explorer connector for Excel](excel-connector.md)
+* [Visualize data using the Azure Data Explorer connector for Excel](excel-connector.md)

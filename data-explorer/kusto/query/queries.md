@@ -7,7 +7,7 @@ ms.date: 04/16/2023
 ---
 # Query operators
 
-A query is a read-only operation against a Kusto Engine cluster's ingested data. Queries always run in the context of a particular database in the cluster. They may also refer to data in another database, or even in another cluster.
+A query is a read-only operation against data ingested into your cluster. Queries always run in the context of a particular database in the cluster. They may also refer to data in another database, or even in another cluster.
 
 As ad-hoc query of data is the top-priority scenario for Kusto, the Kusto Query Language syntax is optimized for non-expert users authoring and running queries over their data and being able to understand unambiguously what each query does (logically).
 

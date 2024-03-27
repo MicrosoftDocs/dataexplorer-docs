@@ -3,13 +3,16 @@ title:  Clearing cached schema for streaming ingestion
 description: This article describes management command for clearing cached database schema in Azure Data Explorer.
 ms.reviewer: orspodek
 ms.topic: reference
-ms.date: 02/21/2023
+ms.date: 12/26/2023
 ---
 # Clear schema cache for streaming ingestion
 
 Cluster nodes cache schema of the databases that receive data via streaming ingestion. This process optimizes performance and utilization of cluster resources, but can cause propagation delays when the schema change.
 
 Clear the cache to guarantee that subsequent streaming ingestion requests incorporate database or table schema changes. For more information, see [Streaming ingestion and schema changes](streaming-ingestion-schema-changes.md).
+
+> [!NOTE]
+> Using these commands can have an adverse effect on the performance of streaming ingestion.
 
 ## Permissions
 
@@ -21,11 +24,13 @@ You must have at least [Database Ingestor](../access-control/role-based-access-c
 
 `.clear` `database` `cache` `streamingingestion` `schema`
 
+[!INCLUDE [syntax-conventions-note](../../../includes/syntax-conventions-note.md)]
+
 ## Parameters
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-| *TableName* | string | &check; | The name of the table for which to clear the cache. |
+| *TableName* | `string` |  :heavy_check_mark: | The name of the table for which to clear the cache. |
 
 ## Returns
 

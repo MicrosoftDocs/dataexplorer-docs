@@ -2,7 +2,7 @@
 title: Set timeouts in Azure Data Explorer
 description: Learn how to set the query timeout length in various Azure Data Explorer tools, such as Kusto.Explorer and the Azure Data Explorer web UI.
 ms.topic: how-to
-ms.date: 05/08/2023
+ms.date: 07/18/2023
 ---
 
 # Set timeout limits
@@ -18,12 +18,12 @@ This section describes how to configure a custom query timeout and admin command
 
 ### Prerequisites
 
-* A Microsoft account or an Azure Active Directory user identity. An Azure subscription isn't required.
+* A Microsoft account or a Microsoft Entra user identity. An Azure subscription isn't required.
 * An Azure Data Explorer cluster and database. [Create a cluster and database](create-cluster-and-database.md).
 
 ### Set timeout length
 
-1. Sign in to the [Azure Data Explorer web UI](https://dataexplorer.azure.com/home) with your Microsoft account or Azure Active Directory user identity credentials.
+1. Sign in to the [Azure Data Explorer web UI](https://dataexplorer.azure.com/home) with your Microsoft account or Microsoft Entra user identity credentials.
 
 1. In the top menu, select the **Settings** icon.
 
@@ -127,37 +127,8 @@ This section describes how to configure a custom server timeout in Power BI.
 
 ## SDKs
 
-This section describes how to configure a custom server timeout when using an SDK.
+To learn how to set timeouts with the SDKs, see [Customize query behavior with client request properties](kusto/api/get-started/app-basic-query.md#customize-query-behavior-with-client-request-properties).
 
-### Prerequisites
+## Related content
 
-* The SDK for your use case: [.NET](kusto/api/netfx/about-the-sdk.md), [Python](kusto/api/python/kusto-python-client-library.md), [R](kusto/api/r/kusto-r-client-library.md), [Java](kusto/api/java/kusto-java-client-library.md), [Node](kusto/api/node/kusto-node-client-library.md), or [Go](kusto/api/golang/kusto-golang-client-library.md)
-
-### Set timeout length
-
-To set timeouts when using an SDK, you'll need to use [client request properties](kusto/api/netfx/request-properties.md).
-
-1. Install and import the necessary libraries or packages for your specific SDK.
-
-1. Create a `ClientRequestProperties` object.
-
-1. Set the *servertimeout* client request property to a valid [timespan](kusto/query/scalar-data-types/timespan.md) value, or set the *norequesttimeout* client request property to `true` to set the maximum allowed timeout. The maximum allowed timeout is 1 hour.
-
-1. Use the `ClientRequestProperties` object in your query or management-command to apply the timeout.
-
-### Example
-
-The following example shows how set a timeout when using the .NET SDK.
-
-```csharp
-var crp = new ClientRequestProperties(...) { ClientRequestId = "<clientRequestId>" };
-crp.SetOption(ClientRequestProperties.OptionServerTimeout, TimeSpan.FromMinutes(35));
-// Now pass crp to ExecuteQuery/ExecuteControlCommand/etc.
-```
-
-> [!NOTE]
-> You can edit an existing `ClientRequestProperties` object as long as it's not being used while you make the change.
-
-## Next steps
-
-Learn more about [query limits](kusto/concepts/querylimits.md).
+* [Query limits](kusto/concepts/querylimits.md)

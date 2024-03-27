@@ -91,7 +91,7 @@ For more examples, see [SymbolLoader](https://github.com/mattwar/Kusto.Toolkit/b
     var mycluster = new ClusterSymbol("mycluster.kusto.windows.net", mydb);
     ```
 
-1. Add the `ClusterSymbol` to the `GlobalState` as the default cluster with a default database, or add it as an extra cluster. Access any nondefault clusters or databases using the [cluster()](../../query/clusterfunction.md) or [database()](../../query/databasefunction.md) functions.
+1. Add the `ClusterSymbol` to the `GlobalState` as the default cluster with a default database, or add it as an extra cluster. Access any nondefault clusters or databases using the [cluster()](../../query/cluster-function.md) or [database()](../../query/database-function.md) functions.
 
     ```csharp
     // Option 1: Add the cluster as the default with a specified default database.
@@ -117,7 +117,7 @@ var code = KustoCode.ParseAndAnalyze("T | summarize minmax(c)", globals);
 > [!NOTE]
 > If you remove functions or aggregates from the global state, the parser will produce an error when they're used.
 
-## Next steps
+## Related content
 
 * [Parse queries and commands](kusto-language-parse-queries.md)
 * See the [source code](https://github.com/microsoft/Kusto-Query-Language)

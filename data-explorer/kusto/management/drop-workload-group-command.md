@@ -17,11 +17,13 @@ You must have [Cluster AllDatabasesAdmin](access-control/role-based-access-contr
 
 `.drop` `workload_group` *WorkloadGroupName*
 
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+
 ## Parameters
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-| *WorkloadGroupName* | string | &check; | The name of the workload group. This name can be specified with bracket notation to escape spaces. For example, ['WorkLoad Group Name']. |
+| *WorkloadGroupName* | `string` |  :heavy_check_mark: | The name of the workload group. This name can be specified with bracket notation to escape spaces. For example, ['WorkLoad Group Name']. |
 
 ## Returns
 
@@ -31,8 +33,8 @@ Following is the schema of the output returned:
 
 | Name              | Type   | Description                                |
 |-------------------|--------|--------------------------------------------|
-| WorkloadGroupName | string | Name of the workload group.                |
-| WorkloadGroup     | string | JSON representation of the workload group. |
+| WorkloadGroupName | `string` | Name of the workload group.                |
+| WorkloadGroup     | `string` | JSON representation of the workload group. |
 
 ## Examples
 

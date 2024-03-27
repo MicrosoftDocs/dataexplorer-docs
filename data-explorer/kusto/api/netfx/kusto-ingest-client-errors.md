@@ -73,11 +73,10 @@ Base Class: [Exception](/dotnet/api/system.exception)
 
 |Field Name |Type     |Meaning
 |-----------|---------|------------------------------|
-|Error      | String  | The error that occurred while attempting to retrieve queues from the DM
-                            
+|Error      | `string` | The error that occurred while attempting to retrieve queues from the DM
+
 Relevant only when using the [Kusto Queued Ingest Client](kusto-ingest-client-reference.md#interface-ikustoqueuedingestclient).
 During the ingestion process, several attempts are made to retrieve the Azure Queues linked to the DM. When these attempts fail, the exception containing the reason for failure, is raised in the 'Error' field. Possibly an inner exception in the 'InnerException' field is also raised.
-
 
 ### CloudBlobContainersNotFoundException
 
@@ -85,12 +84,12 @@ Raised when no blob containers were returned from the Data Management cluster
 
 Base Class: [Exception](/dotnet/api/system.exception)
 
-|Field Name   |Type     |Meaning       
+|Field Name   |Type     |Meaning|
 |-------------|---------|------------------------------|
-|KustoEndpoint| String  | The endpoint of the relevant DM
-                            
+|KustoEndpoint| `string` | The endpoint of the relevant DM
+
 Relevant only when using the [Kusto Queued Ingest Client](kusto-ingest-client-reference.md#interface-ikustoqueuedingestclient).  
-When ingesting sources that aren't already in an Azure container, such as files, DataReader, or Stream, then the data uploads to a temporary blob for ingestion. 
+When ingesting sources that aren't already in an Azure container, such as files, DataReader, or Stream, then the data uploads to a temporary blob for ingestion.
 The exception is raised when there are no containers found to upload the data to.
 
 ### DuplicateIngestionPropertyException
@@ -99,9 +98,9 @@ Raised when an ingestion property is configured more than once
 
 Base Class: [Exception](/dotnet/api/system.exception)
 
-|Field Name   |Type     |Meaning       
+|Field Name   |Type     |Meaning|
 |-------------|---------|------------------------------------|
-|PropertyName | String  | The name of the duplicate property
+|PropertyName | `string` | The name of the duplicate property
 
 ### PostMessageToQueueFailedException
 
@@ -109,11 +108,11 @@ Raised when posting a message to the queue fails
 
 Base Class: [Exception](/dotnet/api/system.exception)
 
-|Field Name   |Type     |Meaning       
+|Field Name   |Type     |Meaning|
 |-------------|---------|---------------------------------|
-|QueueUri     | String  | The URI of the queue
-|Error        | String  | The error message that was generated while attempting to post to the queue
-                            
+|QueueUri     | `string` | The URI of the queue
+|Error        | `string` | The error message that was generated while attempting to post to the queue
+
 Relevant only when using the [Kusto Queued Ingest Client](kusto-ingest-client-reference.md#interface-ikustoqueuedingestclient).  
 The queued ingest client ingests data by uploading a message to the relevant Azure queue. If there's a post failure, the exception is raised. It will contain the queue URI, the reason for the failure in the 'Error' field, and possibly an inner exception in the 'InnerException' field.
 
@@ -152,12 +151,12 @@ Raised when an ingestion source is too large
 
 Base Class: IngestClientException
 
-|Field Name   |Type     |Meaning       
+|Field Name   |Type     |Meaning|
 |-------------|---------|-----------------------|
-|Size         | long    | The size of the ingestion source
-|MaxSize      | long    | The maximal size allowed for ingestion
+|Size         | `long` | The size of the ingestion source
+|MaxSize      | `long` | The maximal size allowed for ingestion
 
-If an ingestion source exceeds the maximal size of 4GB, then the exception is thrown. The size validation can be overridden by the `IgnoreSizeLimit` flag in the [IngestionProperties class](kusto-ingest-client-reference.md#class-kustoingestionproperties). However, it's not recommended [to ingest single sources larger than 1 GB](about-kusto-ingest.md#ingestion-best-practices).
+If an ingestion source exceeds the maximal size of 4GB, then the exception is thrown. The size validation can be overridden by the `IgnoreSizeLimit` flag in the [IngestionProperties class](kusto-ingest-client-reference.md#class-kustoingestionproperties). However, we don't recommend ingesting single sources larger than 1 GB. For more information, see [Kusto Ingest best practices](kusto-ingest-best-practices.md).
 
 ### UploadFileToTempBlobIngestClientException
 
@@ -183,9 +182,7 @@ Raised when one or more errors occur during an ingestion
 
 Base Class: [AggregateException](/dotnet/api/system.aggregateexception)
 
-|Field Name      |Type                             |Meaning       
+|Field Name      |Type                             |Meaning|
 |----------------|---------------------------------|-----------------------|
 |IngestionErrors | IList\<IngestClientException>    | The errors that occur while attempting to ingest, and the sources related to them
-|IsGlobalError   | bool                            | Indicates whether the exception occurred for all sources
-
-
+|IsGlobalError   | `bool` | Indicates whether the exception occurred for all sources

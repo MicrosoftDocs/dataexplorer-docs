@@ -9,27 +9,27 @@ zone_pivot_groups: kql-flavors-all
 ---
 # mann_whitney_u_test_fl()
 
-::: zone pivot="azuredataexplorer"
+::: zone pivot="azuredataexplorer, fabric"
 
 The function `mann_whitney_u_test_fl()` is a [UDF (user-defined function)](../query/functions/user-defined-functions.md) that performs the [Mann-Whitney U Test](https://en.wikipedia.org/wiki/Mann%E2%80%93Whitney_U_test).
 
-## Prerequisites
-
-* The Python plugin must be [enabled on the cluster](../query/pythonplugin.md#enable-the-plugin). This is required for the inline Python used in the function.
+[!INCLUDE [python-zone-pivot-fabric](../../includes/python-zone-pivot-fabric.md)]
 
 ## Syntax
 
 `T | mann_whitney_u_test_fl(`*data1*`,` *data2*`,` *test_statistic*`,`*p_value* [`,` *use_continuity* ]`)`
 
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+
 ## Parameters
 
 |Name|Type|Required|Description|
 |--|--|--|--|
-|*data1*|string|&check;|The name of the column containing the first set of data to be used for the test.|
-|*data2*|string|&check;|The name of the column containing the second set of data to be used for the test.|
-|*test_statistic*|string|&check;|The name of the column to store test statistic value for the results.|
-|*p_value*|string|&check;|The name of the column to store p-value for the results.|
-|*use_continuity*|bool| |Determines if a continuity correction (1/2) is applied. Default is `true`.|
+|*data1*| `string` | :heavy_check_mark:|The name of the column containing the first set of data to be used for the test.|
+|*data2*| `string` | :heavy_check_mark:|The name of the column containing the second set of data to be used for the test.|
+|*test_statistic*| `string` | :heavy_check_mark:|The name of the column to store test statistic value for the results.|
+|*p_value*| `string` | :heavy_check_mark:|The name of the column to store p-value for the results.|
+|*use_continuity*| `bool` | |Determines if a continuity correction (1/2) is applied. Default is `true`.|
 
 ## Function definition
 
@@ -37,10 +37,10 @@ You can define the function by either embedding its code as a query-defined func
 
 ### [Query-defined](#tab/query-defined)
 
-Define the function using the following [let statement](../query/letstatement.md). No permissions are required.
+Define the function using the following [let statement](../query/let-statement.md). No permissions are required.
 
 > [!IMPORTANT]
-> A [let statement](../query/letstatement.md) can't run on its own. It must be followed by a [tabular expression statement](../query/tabularexpressionstatements.md). To run a working example of `mann_whitney_u_test_fl()`, see [Example](#example).
+> A [let statement](../query/let-statement.md) can't run on its own. It must be followed by a [tabular expression statement](../query/tabular-expression-statements.md). To run a working example of `mann_whitney_u_test_fl()`, see [Example](#example).
 
 ~~~kusto
 let mann_whitney_u_test_fl = (tbl:(*), data1:string, data2:string, test_statistic:string, p_value:string, use_continuity:bool=true)
@@ -99,7 +99,7 @@ mann_whitney_u_test_fl(tbl:(*), data1:string, data2:string, test_statistic:strin
 
 ## Example
 
-The following example uses the [invoke operator](../query/invokeoperator.md) to run the function.
+The following example uses the [invoke operator](../query/invoke-operator.md) to run the function.
 
 ### [Query-defined](#tab/query-defined)
 
@@ -161,7 +161,7 @@ datatable(id:string, sample1:dynamic, sample2:dynamic) [
 
 ::: zone-end
 
-::: zone pivot="azuremonitor, fabric"
+::: zone pivot="azuremonitor"
 
 This feature isn't supported.
 

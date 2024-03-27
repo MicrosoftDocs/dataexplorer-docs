@@ -20,12 +20,14 @@ You must have at least [Table Admin](access-control/role-based-access-control.md
 
 `.alter` `table` *TableName* `folder` *Folder*
 
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+
 ## Parameters
 
 |Name|Type|Required|Description|
 |--|--|--|--|
-| *TableName* | string | &check; | The name of the table to alter.|
-| *Folder* | string | &check; | The new folder for the table.|
+| *TableName* | `string` |  :heavy_check_mark: | The name of the table to alter.|
+| *Folder* | `string` |  :heavy_check_mark: | The new folder for the table.|
 
 ## Examples
 

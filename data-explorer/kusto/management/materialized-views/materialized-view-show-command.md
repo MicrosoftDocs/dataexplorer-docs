@@ -20,11 +20,13 @@ You must have at least Database User, Database Viewer, or Database Monitor permi
 
 `.show` `materialized-views`
 
+[!INCLUDE [syntax-conventions-note](../../../includes/syntax-conventions-note.md)]
+
 ## Parameters
 
 | Name                   | Type   | Required | Description                    |
 |------------------------|--------|----------|--------------------------------|
-| *MaterializedViewName* | string | &check;  | Name of the materialized view. |
+| *MaterializedViewName* | `string` |  :heavy_check_mark:  | Name of the materialized view. |
 
 ### Returns
 
@@ -40,7 +42,7 @@ The following command shows details for materialized view ViewName:
 .show materialized-view ViewName
 ```
 
-**Output:**
+**Output**
 
 | Name     | SourceTable | Query                                               | MaterializedTo                   | LastRun                      | LastRunResult | IsHealthy | IsEnabled | Folder           | DocString | AutoUpdateSchema | EffectiveDateTime            | Lookback   |
 |----------|-------------|-----------------------------------------------------|----------------------------------|------------------------------|---------------|-----------|-----------|------------------|-----------|------------------|------------------------------|------------|
@@ -54,7 +56,7 @@ The following command shows details for all materialized views:
 .show materialized-views
 ```
 
-**Output:**
+**Output**
 
 | Name     | SourceTable | Query                                               | MaterializedTo                   | LastRun                      | LastRunResult | IsHealthy | IsEnabled | Folder           | DocString | AutoUpdateSchema | EffectiveDateTime            | Lookback   |
 |----------|-------------|-----------------------------------------------------|----------------------------------|------------------------------|---------------|-----------|-----------|------------------|-----------|------------------|------------------------------|------------|

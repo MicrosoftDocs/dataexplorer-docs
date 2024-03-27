@@ -15,13 +15,15 @@ To replace an individual string, see [replace_string()](replace-string-function.
 
 `replace_strings(`*text*`,` *lookups*`,` *rewrites*`)`
 
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+
 ## Parameters
 
 |Name|Type|Required|Description|
 |--|--|--|--|
-|*text*|string|&check;|The source string.|
-|*lookups*|dynamic|&check;|The array that includes lookup strings. Array element that isn't a string is ignored.|
-|*rewrites*|dynamic|&check;|The array that includes rewrites. Array element that isn't a string is ignored (no replacement made).|
+|*text*| `string` | :heavy_check_mark:|The source string.|
+|*lookups*| `dynamic` | :heavy_check_mark:|The array that includes lookup strings. Array element that isn't a string is ignored.|
+|*rewrites*| `dynamic` | :heavy_check_mark:|The array that includes rewrites. Array element that isn't a string is ignored (no replacement made).|
 
 ## Returns
 
@@ -113,9 +115,9 @@ Replace elements that aren't strings aren't replaced and the original string is 
 |---|---|
 |This is an example of using replace_strings()|This was an example of using replace_strings()|
 
-## See also
+## Related content
 
 * For a replacement of a single string, see [replace_string()](replace-string-function.md).
 * For a replacement based on regular expression, see [replace_regex()](replace-regex-function.md).
-* For replacing a set of characters, see [translate()](translatefunction.md).
+* For replacing a set of characters, see [translate()](translate-function.md).
 

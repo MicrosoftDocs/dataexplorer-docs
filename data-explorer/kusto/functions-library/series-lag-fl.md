@@ -14,13 +14,15 @@ The function `series_lag_fl()` is a [user-defined function (UDF)](../query/funct
 ## Syntax
 
 `series_lag_fl(`*y_series*`,` *offset*`)`
-  
+
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+
 ## Parameters
 
 |Name|Type|Required|Description|
 |--|--|--|--|
-| *y_series* | dynamic | &check; | An array cell of numeric values.|
-| *offset* | int | &check; | An integer specifying the required offset in bins.|
+| *y_series* | `dynamic` |  :heavy_check_mark: | An array cell of numeric values.|
+| *offset* | `int` |  :heavy_check_mark: | An integer specifying the required offset in bins.|
 
 ## Function definition
 
@@ -28,10 +30,10 @@ You can define the function by either embedding its code as a query-defined func
 
 ### [Query-defined](#tab/query-defined)
 
-Define the function using the following [let statement](../query/letstatement.md). No permissions are required.
+Define the function using the following [let statement](../query/let-statement.md). No permissions are required.
 
 > [!IMPORTANT]
-> A [let statement](../query/letstatement.md) can't run on its own. It must be followed by a [tabular expression statement](../query/tabularexpressionstatements.md). To run a working example of `series_lag_fl()`, see [Example](#example).
+> A [let statement](../query/let-statement.md) can't run on its own. It must be followed by a [tabular expression statement](../query/tabular-expression-statements.md). To run a working example of `series_lag_fl()`, see [Example](#example).
 
 ```kusto
 let series_lag_fl = (series:dynamic, offset:int)
@@ -109,4 +111,4 @@ demo_make_series1
 
 **Output**
 
-:::image type="content" source="images/series-lag-fl/series-lag-1-day.png" alt-text="Graph of a time series shifted by one day." border="false":::
+:::image type="content" source="media/series-lag-fl/series-lag-1-day.png" alt-text="Graph of a time series shifted by one day." border="false":::

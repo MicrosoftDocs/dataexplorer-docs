@@ -15,13 +15,15 @@ Checks whether an IPv6 string address is in any of the specified IPv6 address ra
 
 `ipv6_is_in_any_range(`*Ipv6Address* `,` *Ipv6Ranges* `)`
 
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+
 ## Parameters
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-| *Ipv6Address* | string | &check; | An expression representing an IPv6 address.|
-| *Ipv6Range* | string | &check; | An expression representing an IPv6 range using [IP-prefix notation](#ip-prefix-notation).|
-| *Ipv6Ranges* | dynamic | &check; | An array containing IPv6 ranges using [IP-prefix notation](#ip-prefix-notation).|
+| *Ipv6Address* | `string` |  :heavy_check_mark: | An expression representing an IPv6 address.|
+| *Ipv6Range* | `string` |  :heavy_check_mark: | An expression representing an IPv6 range using [IP-prefix notation](#ip-prefix-notation).|
+| *Ipv6Ranges* | `dynamic` |  :heavy_check_mark: | An array containing IPv6 ranges using [IP-prefix notation](#ip-prefix-notation).|
 
 > [!NOTE]
 > Either one or more *IPv6Range* strings or an *IPv6Ranges* dynamic array is required.

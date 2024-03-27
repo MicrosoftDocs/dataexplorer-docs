@@ -15,19 +15,21 @@ The time pivot visualization is an interactive navigation over the events time-l
 
 > [!NOTE]
 >
-> * This visualization can only be used in the context of the [render operator](renderoperator.md).
+> * This visualization can only be used in the context of the [render operator](render-operator.md).
 > * This visualization can be used in Kusto.Explorer but is not available in the Azure Data Explorer web UI.
 
 ## Syntax
 
 *T* `|` `render` `timepivot` [`with` `(`*propertyName* `=` *propertyValue* [`,` ...]`)`]
 
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+
 ## Parameters
 
 | Name | Type | Required | Description |
 | -- | -- | -- | -- |
-| *T* | string | &check; | Input table name.
-| *propertyName*, *propertyValue* | string | | A comma-separated list of key-value property pairs. See [supported properties](#supported-properties).|
+| *T* | `string` |  :heavy_check_mark: | Input table name.
+| *propertyName*, *propertyValue* | `string` | | A comma-separated list of key-value property pairs. See [supported properties](#supported-properties).|
 
 ### Supported properties
 
@@ -47,6 +49,20 @@ All properties are optional.
 |`yaxis`       |How to scale the y-axis (`linear` or `log`).                                      |
 |`ycolumns`    |Comma-delimited list of columns that consist of the values provided per value of the x column.|
 |`ytitle`      |The title of the y-axis (of type `string`).                                       |
+
+## Example
+
+```kusto
+let midwesternStates = dynamic([
+    "ILLINOIS", "INDIANA", "IOWA", "KANSAS", "MICHIGAN", "MINNESOTA",
+    "MISSOURI", "NEBRASKA", "NORTH DAKOTA", "OHIO", "SOUTH DAKOTA", "WISCONSIN"
+]);
+StormEvents
+| where EventType == "Flood" and State in (midwesternStates)
+| render timepivot with (xcolumn=State)
+```
+
+:::image type="content" source="media/visualization-timepivot/time-pivot-visualization.jpg" lightbox="media/visualization-timepivot/time-pivot-visualization.jpg" alt-text="Screenshot of timepivot in Kusto.Explorer.":::
 
 ::: zone-end
 

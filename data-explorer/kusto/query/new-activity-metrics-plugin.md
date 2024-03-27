@@ -9,25 +9,27 @@ ms.date: 01/08/2023
 
 Calculates useful activity metrics (distinct count values, distinct count of new values, retention rate, and churn rate) for the cohort of `New Users`. Each cohort of `New Users` (all users, which were first seen in time window) is compared to all prior cohorts.
 Comparison takes into account *all* previous time windows. For example, for records from T2 to T3, the distinct count of users will be all users in T3 who weren't seen in both T1 and T2.
-The plugin is invoked with the [`evaluate`](evaluateoperator.md) operator.
+The plugin is invoked with the [`evaluate`](evaluate-operator.md) operator.
 
 ## Syntax
 
 *TabularExpression* `| evaluate` `new_activity_metrics(`*IdColumn*`,` *TimelineColumn*`,` *Start*`,` *End*`,` *Window* [`,` *Cohort*] [`,` *dim1*`,` *dim2*`,` ...] [`,` *Lookback*] `)`
 
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+
 ## Parameters
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-| *TabularExpression*| string | &check; | The tabular expression for which to calculate activity metrics.|
-| *IdColumn*| string | &check; | The name of the column with ID values that represent user activity.|
-| *TimelineColumn*| string | &check; | The name of the column that represents the timeline.|
-| *Start*| scalar | &check; | The value of the analysis start period.|
-| *End*| scalar | &check; | The value of the analysis end period.|
-| *Window*| scalar | &check; | The value of the analysis window period. Can be a numeric, datetime, or timespan value, or a string that is one of `week`, `month` or `year`, in which case all periods will be [startofweek](startofweekfunction.md)/[startofmonth](startofmonthfunction.md)/[startofyear](startofyearfunction.md) accordingly. When using `startofweek`, make sure start time is a Sunday, otherwise first cohort will be empty (since [startofweek](startofweekfunction.md) is considered to be a Sunday).|
+| *TabularExpression*| `string` |  :heavy_check_mark: | The tabular expression for which to calculate activity metrics.|
+| *IdColumn*| `string` |  :heavy_check_mark: | The name of the column with ID values that represent user activity.|
+| *TimelineColumn*| `string` |  :heavy_check_mark: | The name of the column that represents the timeline.|
+| *Start*| scalar |  :heavy_check_mark: | The value of the analysis start period.|
+| *End*| scalar |  :heavy_check_mark: | The value of the analysis end period.|
+| *Window*| scalar |  :heavy_check_mark: | The value of the analysis window period. Can be a numeric, datetime, or timespan value, or a string that is one of `week`, `month` or `year`, in which case all periods will be [startofweek](startofweek-function.md)/[startofmonth](startofmonth-function.md)/[startofyear](startofyear-function.md) accordingly. When using `startofweek`, make sure start time is a Sunday, otherwise first cohort will be empty (since [startofweek](startofweek-function.md) is considered to be a Sunday).|
 | *Cohort*| scalar | | Indicates a specific cohort. If not provided, all cohorts corresponding to the analysis time window are calculated and returned.|
-| *dim1*, *dim2*, ...| dynamic | | An array of the dimensions columns that slice the activity metrics calculation.|
-| *Lookback*| string | | A tabular expression with a set of IDs that belong to the 'look back' period.|
+| *dim1*, *dim2*, ...| `dynamic` | | An array of the dimensions columns that slice the activity metrics calculation.|
+| *Lookback*| `string` | | A tabular expression with a set of IDs that belong to the 'look back' period.|
 
 ## Returns
 
@@ -57,7 +59,7 @@ Output table schema is:
 
 ## Examples
 
-The following sample data set shows which users seen on which days. The table was generated based on a source `Users` table, as follows:
+The following sample dataset shows which users seen on which days. The table was generated based on a source `Users` table, as follows:
 
 ```kusto
 Users | summarize tostring(make_set(user)) by bin(Timestamp, 1d) | order by Timestamp asc;

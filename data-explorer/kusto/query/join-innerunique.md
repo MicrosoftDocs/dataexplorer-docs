@@ -12,9 +12,13 @@ The `innerunique` join flavor removes duplicate keys from the left side. This be
 
 By default, the `innerunique` join flavor is used if the `kind` parameter isn't specified. This default implementation is useful in log/trace analysis scenarios, where you aim to correlate two events based on a shared correlation ID. It allows you to retrieve all instances of the phenomenon while disregarding duplicate trace records that contribute to the correlation.
 
+:::image type="content" source="media/joinoperator/join-innerunique.png" alt-text="Diagram that shows how the join works." lightbox="media/joinoperator/join-kinds.png":::
+
 ## Syntax
 
 *LeftTable* `|` `join` `kind=innerunique` [ *Hints* ] *RightTable* `on` *Conditions*
+
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
 
 [!INCLUDE [join-parameters-attributes-hints](../../includes/join-parameters-attributes-hints.md)]
 
@@ -188,6 +192,6 @@ Events
 | project City, ActivityId, StartTime, StopTime, Duration = StopTime - StartTime
 ```
 
-## See also
+## Related content
 
-* Learn about other [join flavors](joinoperator.md#returns)
+* Learn about other [join flavors](join-operator.md#returns)

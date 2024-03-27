@@ -19,12 +19,13 @@ You must have at least [Database Admin](access-control/role-based-access-control
 
 `.clear` `cluster` `cache` `external-artifacts` `(` *ArtifactURI* [`,` ... ] `)`
 
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
 
 ## Parameters
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-| *ArtifactURI* | `string` | &check;  | The URI for the external-artifact to clear from the cache. |
+| *ArtifactURI* | `string` |  :heavy_check_mark:  | The URI for the external-artifact to clear from the cache. |
 
 ## Returns
 
@@ -46,8 +47,8 @@ This command returns a table with the following columns:
 |https://kustoscriptsamples.blob.core.windows.net/samples/R/sample_script.r|Cleared successfully on all nodes
 |https://kustoscriptsamples.blob.core.windows.net/samples/python/sample_script.py|Cleared successfully on all nodes
 
-## See also
+## Related content
 
 * [Manage language extensions in your Azure Data Explorer cluster](../../language-extensions.md)
-* [Python plugin](../query/pythonplugin.md)
-* [R plugin](../query/rplugin.md)
+* [Python plugin](../query/python-plugin.md)
+* [R plugin](../query/r-plugin.md)

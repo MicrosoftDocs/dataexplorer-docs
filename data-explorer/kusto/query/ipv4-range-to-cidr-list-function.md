@@ -13,12 +13,14 @@ Converts a IPv4 address range denoted by starting and ending IPv4 addresses to a
 
 `ipv4_range_to_cidr_list(`*StartAddress* `,` *EndAddress* `)`
 
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+
 ## Parameters
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-| *StartAddress*| string | &check; | An expression representing a starting IPv4 address of the range.|
-| *EndAddress*| string | &check; | An expression representing an ending IPv4 address of the range.|
+| *StartAddress*| `string` |  :heavy_check_mark: | An expression representing a starting IPv4 address of the range.|
+| *EndAddress*| `string` |  :heavy_check_mark: | An expression representing an ending IPv4 address of the range.|
 
 ## Returns
 

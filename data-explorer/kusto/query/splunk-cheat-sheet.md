@@ -5,7 +5,7 @@ ms.topic: conceptual
 ms.date: 05/01/2023
 ---
 
-# Splunk to Kusto Query Language map
+# Splunk to Kusto cheat sheet
 
 This article is intended to assist users who are familiar with Splunk learn the Kusto Query Language to write log queries with Kusto. Direct comparisons are made between the two to highlight key differences and similarities, so you can build on your existing knowledge.
 
@@ -19,11 +19,11 @@ The following table compares concepts and data structures between Splunk and Kus
  | data caches |  buckets  |  caching and retention policies |  Controls the period and caching level for the data. This setting directly affects the performance of queries and the cost of the deployment. |
  | logical partition of data  |  index  |  database  |  Allows logical separation of the data. Both implementations allow unions and joining across these partitions. |
  | structured event metadata | N/A | table |  Splunk doesn't expose the concept of event metadata to the search language. Kusto logs have the concept of a table, which has columns. Each event instance is mapped to a row. |
- | data record | event | row |  Terminology change only. |
- | data record attribute | field |  column |  In Kusto, this setting is predefined as part of the table structure. In Splunk, each event has its own set of fields. |
+ | record | event | row |  Terminology change only. |
+ | record attribute | field |  column |  In Kusto, this setting is predefined as part of the table structure. In Splunk, each event has its own set of fields. |
  | types | datatype |  datatype |  Kusto data types are more explicit because they're set on the columns. Both have the ability to work dynamically with data types and roughly equivalent set of datatypes, including JSON support. |
  | query and search  | search | query |  Concepts essentially are the same between Kusto and Splunk. |
- | event ingestion time | system time | `ingestion_time()` |  In Splunk, each event gets a system timestamp of the time the event was indexed. In Kusto, you can define a policy called [ingestion_time](../management/ingestiontimepolicy.md) that exposes a system column that can be referenced through the [ingestion_time()](ingestiontimefunction.md) function. |
+ | event ingestion time | system time | `ingestion_time()` |  In Splunk, each event gets a system timestamp of the time the event was indexed. In Kusto, you can define a policy called [ingestion_time](../management/ingestion-time-policy.md) that exposes a system column that can be referenced through the [ingestion_time()](ingestion-time-function.md) function. |
 
 ## Functions
 
@@ -112,7 +112,7 @@ Kusto uses the `project-rename` operator to rename a field. In the `project-rena
 
 ### Format results and projection
 
-Splunk uses the `table` command to select which columns to include in the results. Kusto has a `project` operator that does the same and [more](projectoperator.md).
+Splunk uses the `table` command to select which columns to include in the results. Kusto has a `project` operator that does the same and [more](project-operator.md).
 
 | Product | Operator | Example |
 |:---|:---|:---|
@@ -180,6 +180,6 @@ In Kusto, you can use `summarize arg_min()` to reverse the order of which record
 | Splunk | `dedup` |  `Event.Rule=330009.2`<br />&#124; `dedup device_id sortby -batterylife` |
 | Kusto | `summarize arg_max()` | `Office_Excel_BI_PivotTableCreate`<br />&#124; `summarize arg_max(batterylife, *) by device_id` |
 
-## Next steps
+## Related content
 
 - Walk through a tutorial on the [Kusto Query Language](/azure/data-explorer/kusto/query/tutorials/learn-common-operators?pivots=azuremonitor).

@@ -1,12 +1,12 @@
 ---
-title:  materialized_view() (scope function)
+title:  materialized_view()
 description: Learn how to use the materialized_view() function to reference the materialized part of a materialized view.
 ms.reviewer: yifats
 ms.topic: reference
 ms.date: 01/05/2023
 ---
 
-# materialized_view() function
+# materialized_view()
 
 References the materialized part of a [materialized view](../management/materialized-views/materialized-view-overview.md).
 
@@ -16,12 +16,14 @@ The `materialized_view()` function supports a way of querying the *materialized*
 
 `materialized_view(`*ViewName*`,` [ *max_age* ] `)`
 
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+
 ## Parameters
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-| *ViewName*| string| &check;| The name of the materialized view.|
-| *max_age*| timespan || If not provided, only the *materialized* part of the view is returned. If provided, the function will return the _materialized_ part of the view if last materialization time is greater than `@now -  max_age`. Otherwise, the entire view is returned, which is identical to querying *ViewName* directly.
+| *ViewName*| `string` |  :heavy_check_mark:| The name of the materialized view.|
+| *max_age*| `timespan` || If not provided, only the *materialized* part of the view is returned. If provided, the function will return the _materialized_ part of the view if last materialization time is greater than `@now -  max_age`. Otherwise, the entire view is returned, which is identical to querying *ViewName* directly.|
 
 ## Examples
 

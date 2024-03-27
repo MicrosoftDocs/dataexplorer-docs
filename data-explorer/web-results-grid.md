@@ -13,7 +13,7 @@ To learn how to run queries, see [Quickstart: Query data in the Azure Data Explo
 
 ## Prerequisites
 
-* A Microsoft account or an Azure Active Directory user identity. An Azure subscription isn't required.
+* A Microsoft account or a Microsoft Entra user identity. An Azure subscription isn't required.
 * An Azure Data Explorer cluster and database. Use the publicly available [**help** cluster](https://dataexplorer.azure.com/help) or [create a cluster and database](create-cluster-and-database.md).
 
 ## Expand a cell
@@ -277,9 +277,8 @@ To hide or show empty columns, select the eye icon in the menu of the results gr
 
 :::image type="content" source="media/web-query-data/hide-empty-columns.png" alt-text="Screenshot of eye icon to hide results grid in the Azure Data Explorer web UI."  lightbox="media/web-query-data/hide-empty-columns.png":::
 
-## Next steps
+## Related content
 
-* Get data with the [ingestion wizard](ingest-data-wizard.md)
 * [Query data in the web UI](web-ui-query-overview.md)
 * [Write Kusto Query Language queries in the web UI](web-ui-kql.md)
 * [Visualize data with Azure Data Explorer dashboards](azure-data-explorer-dashboards.md)

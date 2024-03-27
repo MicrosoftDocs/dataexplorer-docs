@@ -1,47 +1,47 @@
 ### YamlMime:FAQ
 metadata:
-  title: Azure Data Explorer ingestion FAQ 
+  title: Azure Data Explorer ingestion FAQ
   description: "Get answers to common questions about Azure Data Explorer ingestion."
   ms.date: 02/13/2022
   ms.topic: faq
 title: Common questions about Azure Data Explorer ingestion
 summary: This article answers commonly asked questions about Azure Data Explorer ingestion.
-sections: 
-  - name: Batching and data latencies
+sections:
+  - name: Queued ingestion and data latencies
     questions:
-      - question: How does batching affect my data?
+      - question: How does queued ingestion affect my data?
         answer: |
-          The batching manager buffers and batches ingress data based on the ingestion settings in the [ingestion batching policy](batchingpolicy.md). The ingestion batching policy sets batch limits according to three limiting factors, whichever is first reached: time elapsed since batch creation, accumulated number of items (blobs), or total batch size. The default batching settings are 5 minutes / 1 GB / 1000 blobs, meaning there will be at least a 5-minute delay when queueing a sample data for ingestion.
-      - question: Should I use batching or streaming ingestion?
+          The batching manager buffers and batches ingress data based on the ingestion settings in the [ingestion batching policy](batching-policy.md). The ingestion batching policy sets batch limits according to three limiting factors, whichever is first reached: time elapsed since batch creation, accumulated number of items (blobs), or total batch size. The default batching settings are 5 minutes / 1 GB / 1000 blobs, meaning there will be at least a 5-minute delay when queueing a sample data for ingestion.
+      - question: Should I use queued or streaming ingestion?
         answer: |
-          Batching ingestion is optimized for high ingestion throughput, and is the preferred and most performant type of ingestion. 
+          Queued ingestion is optimized for high ingestion throughput, and is the preferred and most performant type of ingestion. 
           In contrast, streaming ingestion is optimized for low ingestion latency. 
-          Learn more about [batching versus streaming ingestion](../../ingest-data-overview.md#batching-vs-streaming-ingestion).
+          Learn more about [queued versus streaming ingestion](../../ingest-data-overview.md#continuous-data-ingestion).
       - question: Do I need to change the batching policy?
         answer: |
-          If default settings for the [ingestion batching policy](batchingpolicy.md) do not suit your needs, you can try lowering the batching policy `time`. 
-          See also [ingestion best practices - optimizing for throughput](../api/netfx/kusto-ingest-best-practices.md#optimizing-for-throughput).
+          If default settings for the [ingestion batching policy](batching-policy.md) do not suit your needs, you can try lowering the batching policy `time`. 
+          See [Optimize for throughput](../api/netfx/kusto-ingest-best-practices.md#optimize-for-throughput).
           You should also update settings when you scale up ingestion. 
-          When you change batching policy settings, it can take up to 5-minutes to take effect. 
-      - question: What causes batching ingestion latency?
+          When you change batching policy settings, it can take up to 5-minutes to take effect.
+      - question: What causes queued ingestion latency?
         answer: |
-          Ingestion latency can result from the [ingestion batching policy](batchingpolicy.md) settings, or a data backlog buildup. To address this, adjust the [batching policy settings](batchingpolicy.md).
-          Latencies that are part of the ingestion process can be [monitored](../../monitor-batching-ingestion.md).      
-      - question: Where can I view batching latency metrics?
+          Ingestion latency can result from the [ingestion batching policy](batching-policy.md) settings, or a data backlog buildup. To address this, adjust the [batching policy settings](batching-policy.md).
+          Latencies that are part of the ingestion process can be [monitored](../../monitor-queued-ingestion.md).
+      - question: Where can I view queued ingestion latency metrics?
         answer: |
-          To view ingestion latency metrics, see [monitoring ingestion latency](../../monitor-batching-ingestion.md#view-the-ingestion-latency). The metrics `Stage Latency` and `Discovery Latency` show latencies in the ingestion process, and reveal if there are any long latencies.
-      - question: How can I shorten batching latencies? 
+          To view queued ingestion latency metrics, see [monitoring ingestion latency](../../monitor-queued-ingestion.md#view-the-ingestion-latency). The metrics `Stage Latency` and `Discovery Latency` show latencies in the ingestion process, and reveal if there are any long latencies.
+      - question: How can I shorten queued ingestion latencies?
         answer: |
-          You can [learn about latencies](batchingpolicy.md#batching-latencies) and [adjust settings in the batching policy](batchingpolicy.md) to address issues that cause latencies such as data backlogs, inefficient batching, batching large amounts of uncompressed data, or ingesting very small amounts of data. 
-      - question: How is batching data size calculated? 
+          You can [learn about latencies](batching-policy.md#batching-latencies) and [adjust settings in the batching policy](batching-policy.md) to address issues that cause latencies such as data backlogs, inefficient batching, batching large amounts of uncompressed data, or ingesting very small amounts of data.
+      - question: How is batching data size calculated?
         answer: |
-          The batching policy data size is set for uncompressed data. When ingesting compressed data, the uncompressed [data size is calculated](batchingpolicy.md#batch-data-size) from ingestion batching parameters, zip files metadata, or factor over the compressed file size.
+          The batching policy data size is set for uncompressed data. When ingesting compressed data, the uncompressed [data size is calculated](batching-policy.md#batch-data-size) from ingestion batching parameters, zip files metadata, or factor over the compressed file size.
   - name: Ingestion monitoring, metrics, and errors
-    questions: 
+    questions:
       - question: How can I monitor ingestion issues?
         answer: |
           You can monitor ingestion [using metrics](../../using-metrics.md#ingestion-metrics), and by [setting up and using ingestion diagnostic logs](../../using-diagnostic-logs.md) for detailed table-level monitoring, viewing detailed ingestion error codes, and so on. 
-          You can select specific metrics to track, choose how to aggregate your results, and create metric charts to view on your dashboard. See more about [streaming metrics](../../using-metrics.md#streaming-ingest-metrics) and [how to monitor batching ingestion](../../monitor-batching-ingestion.md).
+          You can select specific metrics to track, choose how to aggregate your results, and create metric charts to view on your dashboard. See more about [streaming metrics](../../using-metrics.md#streaming-ingest-metrics) and [how to monitor queued ingestion](../../monitor-queued-ingestion.md).
       - question: Where can I view insights about ingestion?
         answer: |
           You can use the portal's [Azure Monitor Insights](/azure/azure-monitor/app/app-insights-overview) to help you understand how Azure Data Explorer is performing and how it's being used.
@@ -51,7 +51,7 @@ sections:
         answer: |
           The full ingestion process can be monitored using ingestion [metrics](../../using-metrics.md) and [diagnostic logs](../../using-diagnostic-logs.md). 
           Ingestion failures can be monitored using the `IngestionResult` metric or the `FailedIngestion` diagnostic log.
-          The [`.show ingestion failures`](ingestionfailures.md) command shows ingestion failures that occur specifically in the Kusto Data Engine, and is not recommended for monitoring errors. 
+          The [`.show ingestion failures`](ingestion-failures.md) command shows ingestion failures associated with the data ingestion management commands, and is not recommended for monitoring errors. 
           The [`.dup-next-failed-ingest`](dup-next-failed-ingest.md) command provides information on the next failed ingestion by uploading ingestion files and metadata to a storage container. 
           This can be useful for checking an ingestion flow, though is not advised for steady monitoring.
       - question: What can I do if I find many retry errors?
@@ -68,21 +68,21 @@ sections:
       - question: How can I ingest large amounts of historical data and ensure good performance?
         answer: |
           To efficiently ingest large quantities of historical data, use [LightIngest](../../lightingest.md). 
-          For ease of use, try the LightIngest [wizard](../../generate-lightingest-command.md). 
-          To improve performance for many small files, adjust the [batching policy](batchingpolicy.md), change batching conditions and address [latencies](batchingpolicy.md#batching-latencies). 
+          For more information, see [ingest historical data](../../ingest-data-historical.md). 
+          To improve performance for many small files, adjust the [batching policy](batching-policy.md), change batching conditions and address [latencies](batching-policy.md#batching-latencies). 
           Use the batching policy [wizard](../../table-batching-policy-wizard.md) to quickly change policy settings. 
-          To improve ingestion performance when ingesting extremely large data files, use [Azure Data Factory](/azure/data-factory/) (ADF), a cloud-based data integration service. 
+          To improve ingestion performance when ingesting extremely large data files, use [Azure Data Factory](/azure/data-factory/) (ADF), a cloud-based data integration service.
   - name: Ingesting invalid data
     questions:
       - question: What happens when invalid data is ingested?
         answer: |
-          Malformed data, unparsable, too large or not conforming to schema, might fail to be ingested properly. For more information, see [Ingestion of invalid data](../../ingest-invalid-data.md). 
+          Malformed data, unparsable, too large or not conforming to schema, might fail to be ingested properly. For more information, see [Ingestion of invalid data](../../ingest-invalid-data.md).
   - name: SDKs and connectors
-    questions:     
+    questions:
       - question: How can I improve ingestion with SDKs?
         answer: |
           When ingesting via SDK, you can use the ingestion [batching policy settings to improve performance](../../net-sdk-ingest-data.md). 
           Try incrementally decreasing the size of data ingested in the table or database batching policy down towards 250 MB and check if there is an improvement.
       - question: How can I tune Kusto Kafka Sink for better ingestion performance?
         answer: |
-          [Kafka Sink](https://github.com/Azure/kafka-sink-azure-kusto/blob/master/README.md) users should [tune the connector](../../ingest-data-kafka.md) to work together with the [ingestion batching policy](batchingpolicy.md) by tuning batching time, size, and item number.
+          [Kafka Sink](https://github.com/Azure/kafka-sink-azure-kusto/blob/master/README.md) users should [tune the connector](../../ingest-data-kafka.md) to work together with the [ingestion batching policy](batching-policy.md) by tuning batching time, size, and item number.

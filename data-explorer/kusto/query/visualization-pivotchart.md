@@ -3,7 +3,7 @@ title:  Pivot chart visualization
 description: This article describes the pivot chart visualization in Azure Data Explorer.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 08/03/2022
+ms.date: 07/27/2023
 zone_pivot_group_filename: data-explorer/zone-pivot-groups.json
 zone_pivot_groups: kql-flavors-all
 ---
@@ -15,19 +15,21 @@ Displays a pivot table and chart. You can interactively select data, columns, ro
 
 > [!NOTE]
 >
-> * This visualization can only be used in the context of the [render operator](renderoperator.md).
+> * This visualization can only be used in the context of the [render operator](render-operator.md).
 > * This visualization can be used in Kusto.Explorer but is not available in the Azure Data Explorer web UI.
 
 ## Syntax
 
 *T* `|` `render` `pivotchart` [`with` `(`*propertyName* `=` *propertyValue* [`,` ...]`)`]
 
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+
 ## Parameters
 
 | Name | Type | Required | Description |
-| -- | -- | -- | -- |
-| *T* | string | &check; | Input table name.
-| *propertyName*, *propertyValue* | string | | A comma-separated list of key-value property pairs. See [supported properties](#supported-properties).|
+|--|--|--|--|
+| *T* | `string` |  :heavy_check_mark: | Input table name.
+| *propertyName*, *propertyValue* | `string` | | A comma-separated list of key-value property pairs. See [supported properties](#supported-properties).|
 
 ### Supported properties
 
@@ -47,6 +49,19 @@ All properties are optional.
 |`yaxis`       |How to scale the y-axis (`linear` or `log`).                                      |
 |`ycolumns`    |Comma-delimited list of columns that consist of the values provided per value of the x column.|
 |`ytitle`      |The title of the y-axis (of type `string`).                                       |
+
+## Example
+
+```kusto
+SalesFact
+| join kind= inner Products on ProductKey
+| where ProductCategoryName has "Computers" and ProductName has "Contoso"
+| where DateKey between (datetime(2006-12-31) .. datetime(2007-02-01))
+| project SalesAmount, ProductName, DateKey
+| render pivotchart
+```
+
+:::image type="content" source="media/visualize-pivotchart/pivotchart.png" alt-text="Screenshot of query result showing a pivot chart visualization."  lightbox="media/visualize-pivotchart/pivotchart.png":::
 
 ::: zone-end
 

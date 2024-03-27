@@ -16,6 +16,8 @@ You must have [Cluster AllDatabasesAdmin](access-control/role-based-access-contr
 
 `.delete` `cluster` `policy` `request_classification`
 
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+
 ## Returns
 
 The command returns one row showing the details of the cluster request classification policy.
@@ -24,11 +26,11 @@ Following is the schema of the output returned:
 
 | Name          | Type   | Description                                                                                                              |
 |---------------|--------|--------------------------------------------------------------------------------------------------------------------------|
-| PolicyName    | string | Name of the policy. For cluster request classification policy this value is **ClusterRequestClassificationPolicy**.      |
-| EntityName    | string | Name of the entity for which the policy is set. For cluster request classification policy this value is an empty string. |
-| Policy        | string | JSON representation of the policy object. This command sets this property to null.                                       |
-| ChildEntities | string | Child entities for which this policy is set. For cluster request classification policy this value is an empty string.    |
-| EntityType    | string | Type of entity for which this policy is set. For cluster request classification policy this value is an empty string.    |
+| PolicyName    | `string` | Name of the policy. For cluster request classification policy this value is **ClusterRequestClassificationPolicy**.      |
+| EntityName    | `string` | Name of the entity for which the policy is set. For cluster request classification policy this value is an empty string. |
+| Policy        | `string` | JSON representation of the policy object. This command sets this property to null.                                       |
+| ChildEntities | `string` | Child entities for which this policy is set. For cluster request classification policy this value is an empty string.    |
+| EntityType    | `string` | Type of entity for which this policy is set. For cluster request classification policy this value is an empty string.    |
 
 ## Examples
 
@@ -38,7 +40,7 @@ Delete cluster request classification policy:
 
 `.delete` `cluster` `policy` `request_classification`
 
-**Output:**
+**Output**
 
 | PolicyName                         | EntityName | Policy | ChildEntities | EntityType |
 |------------------------------------|------------|--------|---------------|------------|

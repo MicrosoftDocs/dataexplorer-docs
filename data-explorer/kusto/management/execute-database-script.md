@@ -9,6 +9,9 @@ ms.date: 05/24/2023
 
 Executes a batch of management commands in the scope of a single database.
 
+> [!NOTE]
+> Select the full command text before running it. Otherwise, it will stop at the first empty line in the script.
+
 ## Permissions
 
 You must have at least [Database Admin](access-control/role-based-access-control.md) permissions to run this command.
@@ -18,12 +21,14 @@ You must have at least [Database Admin](access-control/role-based-access-control
 `.execute` `database` `script`  
 [`with` `(` *PropertyName* `=` *PropertyValue* [`,` ...]`)`] `<|` *ControlCommandsScript*
 
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+
 ## Parameters
 
 |Name|Type|Required|Description|
 |--|--|--|--|
-|*ControlCommandsScript*|string|&check;| Text with one or more management commands.|
-|*PropertyName*, *PropertyValue*|string|| Optional properties. See [Supported properties](#supported-properties).|
+|*ControlCommandsScript*| `string` | :heavy_check_mark:| Text with one or more management commands.|
+|*PropertyName*, *PropertyValue*| `string` || Optional properties. See [Supported properties](#supported-properties).|
 
 ### Supported properties
 
@@ -36,13 +41,13 @@ You must have at least [Database Admin](access-control/role-based-access-control
 
 Each command appearing in the script will be reported as a separate record in the output table. Each record has the following fields:
 
-|Output parameter |Type |Description
-|---|---|--- 
-|OperationId  |Guid |Identifier of the command.
-|CommandType  |String |The type of the command.
-|CommandText  |String |Text of the specific command.
-|Result|String|Outcome of the specific command execution.
-|Reason|String|Detailed information about command execution outcome.
+|Output parameter |Type |Description|
+|---|---|--- |
+|OperationId  | `guid` |Identifier of the command.|
+|CommandType  | `string` |The type of the command.|
+|CommandText  | `string` |Text of the specific command.|
+|Result| `string` |Outcome of the specific command execution.|
+|Reason| `string` |Detailed information about command execution outcome.|
 
 >[!NOTE]
 >

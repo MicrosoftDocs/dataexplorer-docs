@@ -7,7 +7,7 @@ ms.date: 03/06/2023
 
 # Tutorial: Join data from multiple tables
 
-Joining data from multiple tables allows for a more comprehensive analysis by combining information from different sources and creating new relationships between data points. In the [Kusto Query Language (KQL)](../index.md), the [join](../joinoperator.md) and [lookup](../lookupoperator.md) operators are used to combine data across tables.
+Joining data from multiple tables allows for a more comprehensive analysis by combining information from different sources and creating new relationships between data points. In the [Kusto Query Language (KQL)](../index.md), the [join](../join-operator.md) and [lookup](../lookup-operator.md) operators are used to combine data across tables.
 
 In this tutorial, you'll learn how to:
 
@@ -21,7 +21,7 @@ The examples in this tutorial use the publicly available [**help** cluster](http
 
 ## Prerequisites
 
-* A Microsoft account or Azure Active Directory user identity to sign in to the [help cluster](https://dataexplorer.azure.com/clusters/help)
+* A Microsoft account or Microsoft Entra user identity to sign in to the [help cluster](https://dataexplorer.azure.com/clusters/help)
 
 ## Use the join operator
 
@@ -29,7 +29,7 @@ There are two tables in the [Samples database](https://dataexplorer.azure.com/cl
 
 ### Understand the data
 
-Use the [take](../takeoperator.md) operator to see what data each table contains.
+Use the [take](../take-operator.md) operator to see what data each table contains.
 
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAwsuyS/KdS1LzSspVuCqUShJzE5VMAUAP49+9hUAAAA=" target="_blank">Run the query</a>
@@ -89,14 +89,14 @@ Add `| render columnchart` to the query to visualize the result.
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA3WOwQrCQAxE735FjgqCX9CT9V7oF8Q2aGo3WdOsUPHj3aUoUvA4zLyZaV0tnB4kPm1eMKUQ0PhJ0JhGMp9rDHghqIq1XcTH2sF5htbRKZODssCNpa9YhCwJ31Nu0ZhGdFap0RFUvvloOlDni96v5hqyI0bORLU+cvjpLIfVvNz4w+eEkfRk0OmYgnRXNH8DzTGGOPMAAAA=" target="_blank">Run the query</a>
 
-:::image type="content" source="../images/kql-tutorials/damage-per-capita-chart.png" alt-text="Screenshot of column chart showing property damage per capita by state.":::
+:::image type="content" source="../media/kql-tutorials/damage-per-capita-chart.png" alt-text="Screenshot of column chart showing property damage per capita by state.":::
 
 > [!TIP]
-> There are many types of joins that you can perform with the `join` operator. See a [list of join flavors](../joinoperator.md#returns).
+> There are many types of joins that you can perform with the `join` operator. See a [list of join flavors](../join-operator.md#returns).
 
 ## Use the lookup operator
 
-The [lookup](../lookupoperator.md) operator optimizes the performance of queries where a fact table is enriched with data from a dimension table. It extends the fact table with values that are looked up in a dimension table. For best performance, the system by default assumes that the left table is the larger fact table, and the right table is the smaller dimension table. This is exactly opposite to the assumption that's used by the `join` operator.
+The [lookup](../lookup-operator.md) operator optimizes the performance of queries where a fact table is enriched with data from a dimension table. It extends the fact table with values that are looked up in a dimension table. For best performance, the system by default assumes that the left table is the larger fact table, and the right table is the smaller dimension table. This is exactly opposite to the assumption that's used by the `join` operator.
 
 In the help cluster, there's another database called `ContosoSales` that contains sales data. The following query uses `lookup` to merge the `SalesFact` and `Products` tables from this database to get the total sales by product category.
 
@@ -133,7 +133,7 @@ Joins can also be done based on query results from the same table.
 Say you want to create a list of states in which both lightning and avalanche events occurred. Use the join operator to merge the rows of two tables—one containing data on lightning events and the other containing data on avalanche events—based on the `State` column.
 
 > [!div class="nextstepaction"]
-> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAwsuyS/KdS1LzSsp5qpRKM9ILUpVAHNDKgtSFWxtFZR8MtMzSvIy89KVgApSMotLMvOSSxSCSxJLUoECWfmZeQrZmXkptpl5ealFChpcCkAQjDBVASyA3WjHssScxLzkjFQlqCI040GCmmAyPw8iBACRNof1rwAAAA==" target="_blank">Run the query</a>
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAwsuyS/KdS1LzSsp5qpRKM9ILUpVAHNDKgtSFWxtFZR8MtMzSvIy89KVgApSMotLMvOSSxSCSxJLUoECWfmZeQrZmXkptpl5ealFChpcCkAQjDBVASyA3WjHssScxLzkjFQlqCI040GCmmAyPw9uY0FRflYqTAkAZG8iCb8AAAA=" target="_blank">Run the query</a>
 
 ```kusto
 StormEvents
@@ -144,7 +144,8 @@ StormEvents
     | where EventType == "Avalanche"
     | distinct State
     )
-    on State  
+    on State
+| project State
 ```
 
 **Output**
@@ -159,8 +160,7 @@ StormEvents
 |IDAHO|
 |NEVADA|
 
-## Next steps
+## Related content
 
 * Learn how to perform [cross-database and cross-cluster queries](../cross-cluster-or-database-queries.md)
 * Follow the [create geospatial visualizations](create-geospatial-visualizations.md) tutorial
-* Get a comprehensive understanding of Azure Data Explorer by reading the [white paper](https://azure.microsoft.com/mediahandler/files/resourcefiles/azure-data-explorer/Azure_Data_Explorer_white_paper.pdf)

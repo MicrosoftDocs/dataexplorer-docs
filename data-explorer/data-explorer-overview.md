@@ -3,7 +3,7 @@ title: What is Azure Data Explorer?
 description: Azure Data Explorer is a fast and highly scalable data exploration service for log and telemetry data.
 ms.reviewer: mblythe
 ms.topic: overview
-ms.date: 07/31/2022
+ms.date: 08/28/2023
 adobe-target: true
 
 # Customer intent: As a data analyst, I want to understand Azure Data Explorer, so I can decide if it's suitable for my analytics workloads.
@@ -13,9 +13,9 @@ adobe-target: true
 
 Azure Data Explorer is a fully managed, high-performance, big data analytics platform that makes it easy to analyze high volumes of data in near real time. The Azure Data Explorer toolbox gives you an end-to-end solution for data ingestion, query, visualization, and management.
 
-By analyzing structured, semi-structured, and unstructured data across time series, and by using Machine Learning, Azure Data Explorer makes it simple to extract key insights, spot patterns and trends, and create forecasting models. Azure Data Explorer is scalable, secure, robust, and enterprise-ready, and is useful for log analytics, time series analytics, IoT, and general-purpose exploratory analytics.
+By analyzing structured, semi-structured, and unstructured data across time series, and by using Machine Learning, Azure Data Explorer makes it simple to extract key insights, spot patterns and trends, and create forecasting models. Azure Data Explorer uses a traditional relational model, organizing data into tables with strongly-typed schemas. Tables are stored within databases, and a cluster can manage multiple databases. Azure Data Explorer is scalable, secure, robust, and enterprise-ready, and is useful for log analytics, time series analytics, IoT, and general-purpose exploratory analytics.
 
-Azure Data Explorer capabilities are extended by other services built on its powerful query language, including [Azure Monitor logs](/azure/log-analytics/), [Application Insights](/azure/application-insights/), [Time Series Insights](/azure/time-series-insights/), and [Microsoft Defender for Endpoint](/microsoft-365/security/defender-endpoint/microsoft-defender-endpoint).
+Azure Data Explorer capabilities are extended by other services built on its query language: [Kusto Query Language (KQL)](kusto/query/index.md). These services include [Azure Monitor logs](/azure/log-analytics/), [Application Insights](/azure/application-insights/), [Time Series Insights](/azure/time-series-insights/), and [Microsoft Defender for Endpoint](/microsoft-365/security/defender-endpoint/microsoft-defender-endpoint).
 
 ## When should you use Azure Data Explorer?
 
@@ -35,15 +35,15 @@ Azure Data Explorer is ideal for enabling interactive analytics capabilities ove
 
 ### Data velocity, variety, and volume
 
-With Azure Data Explorer, you can ingest terabytes of data in minutes in batch or streaming mode. You can query petabytes of data, with results returned within milliseconds to seconds. Azure Data Explorer provides high velocity (millions of events per second), low latency (seconds), and linear scale ingestion of raw data. Ingest your data in different formats and structures, flowing from various pipelines and sources.
+With Azure Data Explorer, you can ingest terabytes of data in minutes via queued ingestion or streaming ingestion. You can query petabytes of data, with results returned within milliseconds to seconds. Azure Data Explorer provides high velocity (millions of events per second), low latency (seconds), and linear scale ingestion of raw data. Ingest your data in different formats and structures, flowing from various pipelines and sources.
 
 ### User-friendly query language
 
-Query Azure Data Explorer with the [Kusto Query Language (KQL)](kusto/query/index.md), an open-source language initially invented by the team. The language is simple to understand and learn, and highly productive. You can use simple operators and advanced analytics.
+Query Azure Data Explorer with the [Kusto Query Language (KQL)](kusto/query/index.md), an open-source language initially invented by the team. The language is simple to understand and learn, and highly productive. You can use simple operators and advanced analytics. Azure Data Explorer also supports [T-SQL](t-sql.md).
 
 ### Advanced analytics
 
-Use Azure Data Explorer for time series analysis with a large set of functions including: adding and subtracting time series, filtering, regression, seasonality detection, geospatial analysis, anomaly detection, scanning, and forecasting. Time series functions are optimized for processing thousands of time series in seconds. Pattern detection is made easy with cluster plugins that can diagnose anomalies and do root cause analysis. You can also extend Azure Data Explorer capabilities by [embedding python code](kusto/query/pythonplugin.md) in KQL queries.
+Use Azure Data Explorer for time series analysis with a large set of functions including: adding and subtracting time series, filtering, regression, seasonality detection, geospatial analysis, anomaly detection, scanning, and forecasting. Time series functions are optimized for processing thousands of time series in seconds. Pattern detection is made easy with cluster plugins that can diagnose anomalies and do root cause analysis. You can also extend Azure Data Explorer capabilities by [embedding python code](kusto/query/python-plugin.md) in KQL queries.
 
 ### Easy-to-use wizard
 
@@ -72,9 +72,9 @@ Generally speaking, when you interact with Azure Data Explorer, you're going to 
 
 1. **Ingest data:** Load data into database tables so that you can run queries against it. Azure Data Explorer supports several [ingestion methods](ingest-data-overview.md), each with its own target scenarios. These methods include ingestion tools, connectors and plugins to diverse services, managed pipelines, programmatic ingestion using SDKs, and direct access to ingestion. Get started with the [ingestion wizard](./ingest-data-wizard.md).
 
-1. **Query database:** Azure Data Explorer uses the [Kusto Query Language](kusto/query/index.md), which is an expressive, intuitive, and highly productive query language. It offers a smooth transition from simple one-liners to complex data processing scripts, and supports querying structured, semi-structured, and unstructured (text search) data. There's a wide variety of query language operators and functions ([aggregation](kusto/query/aggregation-functions.md), filtering, [time series functions](./kusto/query/time-series-analysis.md), [geospatial functions](kusto/query/geospatial-grid-systems.md), [joins](kusto/query/joinoperator.md), [unions](kusto/query/unionoperator.md), and more) in the language. KQL supports [cross-cluster and cross-database queries](kusto/query/cross-cluster-or-database-queries.md), and is feature rich from a parsing (json, XML, and more) perspective. The language also natively supports advanced analytics.
+1. **Query database:** Azure Data Explorer uses the [Kusto Query Language](kusto/query/index.md), which is an expressive, intuitive, and highly productive query language. It offers a smooth transition from simple one-liners to complex data processing scripts, and supports querying structured, semi-structured, and unstructured (text search) data. There's a wide variety of query language operators and functions ([aggregation](kusto/query/aggregation-functions.md), filtering, [time series functions](./kusto/query/time-series-analysis.md), [geospatial functions](kusto/query/geospatial-grid-systems.md), [joins](kusto/query/join-operator.md), [unions](kusto/query/union-operator.md), and more) in the language. KQL supports [cross-cluster and cross-database queries](kusto/query/cross-cluster-or-database-queries.md), and is feature rich from a parsing (json, XML, and more) perspective. The language also natively supports advanced analytics.
 
-    Use the web application to run, review, and share queries and results. You can also send queries programmatically (using an SDK) or to a REST API endpoint. If you're familiar with SQL, get started with the [SQL to Kusto cheat sheet](kusto/query/sqlcheatsheet.md). [Quickstart: Query data in Azure Data Explorer web UI](web-query-data.md)
+    Use the web application to run, review, and share queries and results. You can also send queries programmatically (using an SDK) or to a REST API endpoint. If you're familiar with SQL, get started with the [SQL to Kusto cheat sheet](kusto/query/sql-cheat-sheet.md). [Quickstart: Query data in Azure Data Explorer web UI](web-query-data.md)
 
 1. **Visualize results:**  Use different visual displays of your data in the native Azure Data Explorer [Dashboards](azure-data-explorer-dashboards.md). You can also display your results using connectors to some of the [leading visualization services](viz-overview.md), such as [Power BI](power-bi-data-connector.md?tabs=connector) and [Grafana](grafana.md). Azure Data Explorer also has [ODBC](connect-odbc.md) and JDBC connector support to tools such as [Tableau](tableau.md) and [Sisense](sisense.md).
 
@@ -88,7 +88,7 @@ We would be thrilled to hear your feedback about Azure Data Explorer and the Kus
   * [Microsoft Tech Community](https://techcommunity.microsoft.com/t5/Azure-Data-Explorer/bd-p/Kusto)
 * [Make product suggestions in User Voice](https://aka.ms/AzureDataExplorer.UserVoice)
 
-## Next steps
+## Related content
 
 * [Quickstart: Create an Azure Data Explorer cluster and database](create-cluster-and-database.md)
 * [Quickstart: Ingest data from an event hub into Azure Data Explorer](ingest-data-event-hub.md)

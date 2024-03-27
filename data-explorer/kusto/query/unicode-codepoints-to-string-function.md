@@ -15,11 +15,13 @@ Returns the string represented by the Unicode codepoints. This function is the i
 
 `unicode_codepoints_to_string (`*values*`)`
 
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+
 ## Parameters
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-| *values* | int, long, or dynamic | &check; | One or more comma-separated values to convert. The values may also be a [dynamic array](scalar-data-types/dynamic.md).|
+| *values* | int, long, or dynamic |  :heavy_check_mark: | One or more comma-separated values to convert. The values may also be a [dynamic array](scalar-data-types/dynamic.md).|
 
 > [!NOTE]
 > This function receives up to 64 arguments.

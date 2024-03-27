@@ -13,11 +13,13 @@ Calculates the element-wise floor function of the numeric series input.
 
 `series_floor(`*series*`)`
 
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+
 ## Parameters
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-| *series* | dynamic | &check; | An array of numeric values on which the floor function is applied.|
+| *series* | `dynamic` |  :heavy_check_mark: | An array of numeric values on which the floor function is applied.|
 
 ## Returns
 

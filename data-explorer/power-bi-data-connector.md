@@ -14,7 +14,7 @@ In this article, you'll learn about the different ways in which you can connect 
 
 ## Prerequisites
 
-* A Microsoft account or an Azure Active Directory user identity. An Azure subscription isn't required.
+* A Microsoft account or a Microsoft Entra user identity. An Azure subscription isn't required.
 * An Azure Data Explorer cluster and database. [Create a cluster and database](create-cluster-and-database.md).
 * [Power BI Desktop](https://powerbi.microsoft.com/get-started).
 
@@ -24,12 +24,12 @@ Power BI supports *Import* and *DirectQuery* connectivity modes. When building P
 
 Use **Import** mode when:
 
-* Your data set is small and you don't need near real-time data.
+* Your dataset is small and you don't need near real-time data.
 * You perform [aggregation in Kusto](./kusto/query/aggregation-functions.md).
 
 Use **DirectQuery** mode when:
 
-* Your data set is large or you need near real-time data.
+* Your dataset is large or you need near real-time data.
 
 For more information on connectivity modes, see [Import and Direct Query connectivity modes](/power-bi/desktop-directquery-about).
 
@@ -104,7 +104,7 @@ In the following steps, we'll be using the StormEvents table from our [help clus
     | Limit query result record number| The maximum number of records to return in the result |`1000000` |
     | Limit query result data size | The maximum data size in bytes to return in the result | `100000000` |
     | Disable result set truncation | Enable/disable result truncation by using the notruncation request option | `true` |
-    | Additional set statements | Sets query options for the duration of the query. Query options control how a query executes and returns results. | `set query_datascope=hotcache` |
+    | Additional set statements | Sets request properties for the duration of the query. Request properties control how a query executes and returns results. | `set query_datascope=hotcache` |
 
 1. On the **Navigator** screen, expand the **Samples** database, select **StormEvents**, and then select **Load Data**.
 
@@ -116,6 +116,7 @@ In the following steps, we'll be using the StormEvents table from our [help clus
 
 ---
 
-## Next steps
+## Next step
 
-[Create reports and dashboards in Power BI](/power-bi/create-reports/).
+> [!div class="nextstepaction"]
+> [Create reports and dashboards in Power BI](/power-bi/create-reports/)

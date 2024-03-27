@@ -12,7 +12,7 @@ ms.date: 09/14/2022
 
 ## Prerequisites
 
-* A Microsoft account or an Azure Active Directory user identity. An Azure subscription isn't required.
+* A Microsoft account or a Microsoft Entra user identity. An Azure subscription isn't required.
 * An Azure Data Explorer cluster and database. [Create a cluster and database](create-cluster-and-database.md).
 * [Tableau Desktop](https://www.tableau.com/products/desktop/download) full or trial version.
 * [Connect to Azure Data Explorer with ODBC](connect-odbc.md) using the SQL Server ODBC driver, to connect to Azure Data Explorer from Tableau.
@@ -44,6 +44,6 @@ Once you've finished configuring ODBC, you can bring sample data into Tableau.
 
 1. Now you can create visualizations in Tableau based on the data you brought in from Azure Data Explorer. For more information, see [Tableau Learning](https://www.tableau.com/learn).
 
-## Next steps
+## Related content
 
-* [Write queries for Azure Data Explorer](/azure/data-explorer/kusto/query/tutorials/learn-common-operators)
+* [Write queries using Kusto Query Language](kusto/query/tutorials/learn-common-operators.md)

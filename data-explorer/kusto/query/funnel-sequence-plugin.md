@@ -7,25 +7,27 @@ ms.date: 12/18/2022
 ---
 # funnel_sequence plugin
 
-Calculates distinct count of users who have taken a sequence of states, and the distribution of previous/next states that have led to/were followed by the sequence. The plugin is invoked with the [`evaluate`](evaluateoperator.md) operator.
+Calculates distinct count of users who have taken a sequence of states, and the distribution of previous/next states that have led to/were followed by the sequence. The plugin is invoked with the [`evaluate`](evaluate-operator.md) operator.
 
 ## Syntax
 
 *T* `| evaluate` `funnel_sequence(`*IdColumn*`,` *TimelineColumn*`,` *Start*`,` *End*`,` *MaxSequenceStepWindow*, *Step*, *StateColumn*, *Sequence*`)`
 
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+
 ## Parameters
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-| *T* | string | &check; | The input tabular expression. |
-| *IdColum* | string | &check; | The column reference representing the ID. This column must be present in *T*.|
-| *TimelineColumn* | string | &check; | The column reference representing the timeline. This column must be present in *T*.|
-| *Start* | datetime, timespan, or long | &check; | The analysis start period.|
-| *End* | datetime, timespan, or long | &check; | The analysis end period.|
-| *MaxSequenceStepWindow* | datetime, timespan, or long | &check; | The value of the max allowed timespan between two sequential steps in the sequence.|
-| *Step* | datetime, timespan, or long | &check; | The analysis step period, or bin. |
-| *StateColumn* | string | &check; | The column reference representing the state. This column must be present in *T*.|
-| *Sequence* | dynamic | &check; | An array with the sequence values that are looked up in `StateColumn`.|
+| *T* | `string` |  :heavy_check_mark: | The input tabular expression. |
+| *IdColum* | `string` |  :heavy_check_mark: | The column reference representing the ID. This column must be present in *T*.|
+| *TimelineColumn* | `string` |  :heavy_check_mark: | The column reference representing the timeline. This column must be present in *T*.|
+| *Start* | datetime, timespan, or long |  :heavy_check_mark: | The analysis start period.|
+| *End* | datetime, timespan, or long |  :heavy_check_mark: | The analysis end period.|
+| *MaxSequenceStepWindow* | datetime, timespan, or long |  :heavy_check_mark: | The value of the max allowed timespan between two sequential steps in the sequence.|
+| *Step* | datetime, timespan, or long |  :heavy_check_mark: | The analysis step period, or bin. |
+| *StateColumn* | `string` |  :heavy_check_mark: | The column reference representing the state. This column must be present in *T*.|
+| *Sequence* | `dynamic` |  :heavy_check_mark: | An array with the sequence values that are looked up in `StateColumn`.|
 
 ## Returns
 

@@ -5,7 +5,7 @@ summary: Azure Data Explorer is a fast, fully managed data analytics service for
 
 metadata:
   title: Azure Data Explorer documentation
-  description: Azure Data Explorer is a log analytics cloud platform optimized for ad-hoc big data queries.
+  description: Azure Data Explorer is a log analytics cloud platform optimized for ad hoc big data queries.
   ms.service: data-explorer
   ms.topic: landing-page
   author: shsagir
@@ -32,16 +32,16 @@ landingContent:
         links:
           - text: What is Azure Data Explorer? (19:47)
             url: https://youtu.be/D_AJk2lAepw
-          
+
   # Card
   - title: Training
-    linkLists: 
+    linkLists:
       - linkListType: learn
         links:
           - text: "Free Pluralsight training: Azure Data Explorer"
             url: https://www.pluralsight.com/partners/microsoft/azure-data-explorer
           - text: "Training module: Introduction to Azure Data Explorer"
-            url:  /training/modules/intro-to-azure-data-explorer/intro-to-azure-data-explorer/
+            url: /training/modules/intro-to-azure-data-explorer/intro-to-azure-data-explorer/
           - text: "Training module: Explore the fundamentals of data analysis using Kusto Query Language (KQL)"
             url: /training/modules/explore-fundamentals-kql/
           - text: "Training module: Write your first query with Kusto Query Language"
@@ -85,12 +85,14 @@ landingContent:
             url: ingest-data-overview.md
       - linkListType: quickstart
         links:
-          - text: Ingest sample data
-            url: ingest-sample-data.md
+          - text: Get data from a local file
+            url: get-data-file.md
       - linkListType: how-to-guide
         links:
           - text: Ingestion wizard
             url: ingest-data-wizard.md
+          - text: Ingest historical data
+            url: ingest-data-historical.md
           - text: Streaming ingestion
             url: ingest-data-streaming.md
           - text: Python
@@ -98,7 +100,7 @@ landingContent:
           - text: Event hub using Azure portal
             url: ingest-data-event-hub.md
           - text: Event Grid using Azure portal
-            url: ingest-data-event-grid.md
+            url: create-event-grid-connection.md
           - text: Install and use LightIngest
             url: lightingest.md
 
@@ -117,6 +119,8 @@ landingContent:
         links:
           - text: Query data in Azure Data Lake
             url: data-lake-query-data.md
+          - text: Query data using T-SQL
+            url: t-sql.md
           - text: Query data using Python
             url: python-query-data.md
           - text: Time series analysis
@@ -128,7 +132,7 @@ landingContent:
           - text: Kusto Query Language
             url: kusto/query/index.md
           - text: SQL to Kusto cheat sheet
-            url: kusto/query/sqlcheatsheet.md
+            url: kusto/query/sql-cheat-sheet.md
 
   # Card
   - title: Visualize data
@@ -185,7 +189,12 @@ landingContent:
             url: using-metrics.md
           - text: Use diagnostic logs to monitor ingestion
             url: using-diagnostic-logs.md
-# Card
+      - linkListType: reference
+        links:
+          - text: Management commands
+            url: kusto/management/index.md
+
+  # Card
   - title: Architecture
     linkLists:
       - linkListType: how-to-guide
@@ -200,18 +209,24 @@ landingContent:
             url: /azure/architecture/solution-ideas/articles/interactive-azure-data-explorer
           - text: IoT analytics with Azure Data Explorer
             url: /azure/architecture/solution-ideas/articles/iot-azure-data-explorer
-          - text: Geospatial data processing and analytics 
+          - text: Geospatial data processing and analytics
             url: /azure/architecture/example-scenario/data/geospatial-data-processing-analytics-azure
           - text: Long-term security log retention with Azure Data Explorer
             url: /azure/architecture/example-scenario/security/security-log-retention-azure-data-explorer
           - text: Data analytics for automotive test fleets
             url: /azure/architecture/industries/automotive/automotive-telemetry-analytics
+          - text: Real-Time analytics with Azure Service Bus
+            url: /azure/architecture/solution-ideas/articles/analytics-service-bus
   # Card
-  - title: Reference
+  - title: Development
     linkLists:
+      - linkListType: how-to-guide
+        links:
+          - text: Set up your development environment
+            url: kusto/api/get-started/app-set-up.md
       - linkListType: reference
         links:
-          - text: Management commands
-            url: kusto/management/index.md
-          - text: Azure Data Explorer API
-            url: kusto/api/index.md
+          - text: Kusto client libraries
+            url: kusto/api/client-libraries.md
+          - text: REST API overview
+            url: kusto/api/rest/index.md

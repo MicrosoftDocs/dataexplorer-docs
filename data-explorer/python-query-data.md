@@ -16,8 +16,8 @@ Azure Data Explorer provides a [data client library for Python](https://github.c
 
 ## Prerequisites
 
-* [Python 3.4+](https://www.python.org/downloads/)
-* A Microsoft account or an Azure Active Directory user identity to access the [help cluster](https://dataexplorer.azure.com/clusters/help/databases/Samples)
+* [Python 3.7 or later](https://www.python.org/downloads/)
+* A Microsoft account or a Microsoft Entra user identity to access the [help cluster](https://dataexplorer.azure.com/clusters/help/databases/Samples)
 
 ## Install the data library
 
@@ -38,7 +38,7 @@ from azure.kusto.data.helpers import dataframe_from_result_table
 import pandas as pd
 ```
 
-To authenticate an application, Azure Data Explorer uses your AAD tenant ID. To find your tenant ID, use the following URL, substituting your domain for *YourDomain*.
+To authenticate an application, Azure Data Explorer uses your Microsoft Entra tenant ID. To find your tenant ID, use the following URL, substituting your domain for *YourDomain*.
 
 ```
 https://login.microsoftonline.com/<YourDomain>/.well-known/openid-configuration/
@@ -58,7 +58,7 @@ KUSTO_CLUSTER = "https://help.kusto.windows.net/"
 KUSTO_DATABASE = "Samples"
 ```
 
-Now construct the connection string. This example uses device authentication to access the cluster. You can also use [AAD application certificate](https://github.com/Azure/azure-kusto-python/blob/master/azure-kusto-data/tests/sample.py#L24), [AAD application key](https://github.com/Azure/azure-kusto-python/blob/master/azure-kusto-data/tests/sample.py#L20), and [AAD user and password](https://github.com/Azure/azure-kusto-python/blob/master/azure-kusto-data/tests/sample.py#L34).
+Now construct the connection string. This example uses device authentication to access the cluster. You can also use [Microsoft Entra application certificate](https://github.com/Azure/azure-kusto-python/blob/master/azure-kusto-data/tests/sample.py#L24), [Microsoft Entra application key](https://github.com/Azure/azure-kusto-python/blob/master/azure-kusto-data/tests/sample.py#L20), and [Microsoft Entra user and password](https://github.com/Azure/azure-kusto-python/blob/master/azure-kusto-data/tests/sample.py#L34).
 
 ```python
 KCSB = KustoConnectionStringBuilder.with_aad_device_authentication(
@@ -88,7 +88,7 @@ df
 
 You should see the top ten results from the StormEvents table.
 
-## Next steps
+## Next step
 
 > [!div class="nextstepaction"]
-> [Ingest data using the Azure Data Explorer Python library](python-ingest-data.md)
+> [Ingest data using Python](python-ingest-data.md)

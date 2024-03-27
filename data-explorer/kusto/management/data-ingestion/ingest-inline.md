@@ -9,7 +9,7 @@ ms.date: 07/12/2023
 
 This command inserts data into a table by pushing the data included within the command to the table.
 
-This command is intended for manual ad-hoc testing. For production use, we recommended using the methods described in [ingest from storage](ingest-from-storage.md) or [ingest from query](ingest-from-query.md), which are better for bulk delivery of large amounts of data.
+[!INCLUDE [direct-ingestion-note](../../../includes/direct-ingestion-note.md)]
 
 ## Permissions
 
@@ -25,13 +25,15 @@ You must have at least [Table Ingestor](../access-control/role-based-access-cont
 [`with` `(` *IngestionPropertyName* `=` *IngestionPropertyValue* [`,` ...] `)`]
 `[` *Data* `]`
 
+[!INCLUDE [syntax-conventions-note](../../../includes/syntax-conventions-note.md)]
+
 ## Parameters
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-| *TableName* | string | &check; | The name of the table into which to ingest data. The table name is always relative to the database in context, and its schema is the schema that will be assumed for the data if no schema mapping object is provided.|
-| *Data* | string | &check; | The data content to ingest. Unless otherwise modified by the ingestion properties, this content is parsed as CSV.|
-| *IngestionPropertyName*, *IngestionPropertyValue* | string | | Any number of [ingestion properties](../../../ingestion-properties.md) that affect the ingestion process.|
+| *TableName* | `string` |  :heavy_check_mark: | The name of the table into which to ingest data. The table name is always relative to the database in context, and its schema is the schema that will be assumed for the data if no schema mapping object is provided.|
+| *Data* | `string` |  :heavy_check_mark: | The data content to ingest. Unless otherwise modified by the ingestion properties, this content is parsed as CSV.|
+| *IngestionPropertyName*, *IngestionPropertyValue* | `string` | | Any number of [ingestion properties](../../../ingestion-properties.md) that affect the ingestion process.|
 
 > [!NOTE]
 > Unlike most management commands and queries, the text of the *Data* part of the command doesn't have to follow the syntactic conventions of the language. For example, whitespace characters are important, or the `//` combination isn't treated as a comment.
@@ -57,7 +59,7 @@ The following command ingests data into a table `Purchases` with two columns: `S
 .ingest inline into table Purchases <|
     Shoes,1000
     Wide Shoes,50
-    "Coats, black",20
+    "Coats black",20
     "Coats with ""quotes""",5
 ```
 
@@ -71,7 +73,7 @@ The following command ingests data into a table `Logs` with two columns: `Date` 
     [2015-01-01,"{""EventType"":""Write"", ""EventValue"":""84""}"]
 ```
 
-## See also
+## Related content
 
 * [Ingest from storage](ingest-from-storage.md)
 * [Ingest from query](ingest-from-query.md)

@@ -7,7 +7,7 @@ ms.date: 05/24/2023
 ---
 # .alter table policy roworder command
 
-Use this command to change a table's [row order policy](roworderpolicy.md). The row order policy is an optional table policy that defines the row order in a data shard. This policy can improve performance for queries that relate to a small set of values that can be ordered.
+Use this command to change a table's [row order policy](row-order-policy.md). The row order policy is an optional table policy that defines the row order in an [extent (data shard)](extents-overview.md). This policy can improve performance for queries that relate to a small set of values that can be ordered.
 
 ## Permissions
 
@@ -15,14 +15,19 @@ You must have at least [Table Admin](access-control/role-based-access-control.md
 
 ## Syntax
 
-`.alter` `table` *TableName* `policy` `roworder` *PolicyObject*
+`.alter` `table` *TableName* `policy` `roworder` `(`*SortKey* (`asc` | `desc`) [`,` ...]`)`
+
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
 
 ## Parameters
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-| *TableName* | string | &check;| The name of the table.|
-| *PolicyObject* |string | &check; | A serialized policy object. For more information, see [row order policy](roworderpolicy.md).|
+| *TableName* | `string` |  :heavy_check_mark:| The name of the table.|
+| *SortKey* | `string` |  :heavy_check_mark: | The column by which to sort the data in the extent.|
+
+> [!TIP]
+> We recommend using a maximum of two sort keys. For more information, see [Performance considerations](row-order-policy.md#performance-considerations).
 
 ### Examples
 

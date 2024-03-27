@@ -13,7 +13,7 @@ zone_pivot_groups: kql-flavors
 
 The `postgresql_request` plugin sends a SQL query to a PostgreSQL Server network endpoint and returns the first rowset in the results. The query may return more than one rowset, but only the first rowset is made available for the rest of the Kusto query.
 
-The plugin is invoked with the [`evaluate`](evaluateoperator.md) operator.
+The plugin is invoked with the [`evaluate`](evaluate-operator.md) operator.
 
 > [!IMPORTANT]
 > The `postgresql_request` plugin is disabled by default.
@@ -23,13 +23,15 @@ The plugin is invoked with the [`evaluate`](evaluateoperator.md) operator.
 
 `evaluate` `postgresql_request` `(` *ConnectionString* `,` *SqlQuery* [`,` *SqlParameters*] `)` [`:` *OutputSchema*]
 
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+
 ## Parameters
 
 | Name | Type | Required| Description |
 |---|---|---|---|
-| *ConnectionString* | string | &check; | The connection string that points at the PostgreSQL Server network endpoint. See [authentication](#username-and-password-authentication) and how to specify the [network endpoint](#specify-the-network-endpoint). |
-| *SqlQuery* | string | &check; | The query that is to be executed against the SQL endpoint. Must return one or more row sets. Only the first set is made available for the rest of the query. |
-| *SqlParameters* | dynamic | | A property bag object that holds key-value pairs to pass as parameters along with the query. |
+| *ConnectionString* | `string` |  :heavy_check_mark: | The connection string that points at the PostgreSQL Server network endpoint. See [authentication](#username-and-password-authentication) and how to specify the [network endpoint](#specify-the-network-endpoint). |
+| *SqlQuery* | `string` |  :heavy_check_mark: | The query that is to be executed against the SQL endpoint. Must return one or more row sets. Only the first set is made available for the rest of the query. |
+| *SqlParameters* | `dynamic` | | A property bag object that holds key-value pairs to pass as parameters along with the query. |
 | *OutputSchema* | | | The names and types for the expected columns of the `postgresql_request` plugin output.<br /><br />**Syntax**: `(` *ColumnName* `:` *ColumnType* [`,` ...] `)`|
 
 > [!NOTE]
@@ -43,7 +45,7 @@ To authorize a PostgreSQL Server network endpoint, you must specify the authoriz
 
 ## Set callout policy
 
-The plugin makes callouts to the PostgreSQL database. Make sure that the cluster's [callout policy](../management/calloutpolicy.md) enables calls of type `postgresql` to the target *PostgreSqlDbUri*.
+The plugin makes callouts to the PostgreSQL database. Make sure that the cluster's [callout policy](../management/callout-policy.md) enables calls of type `postgresql` to the target *PostgreSqlDbUri*.
 
 The following example shows how to define the callout policy for PostgreSQL databases. We recommend restricting the callout policy to specific endpoints (`my_endpoint1`, `my_endpoint2`).
 
@@ -70,7 +72,7 @@ The following example shows a `.alter callout policy` command for `postgresql` *
 
 ## Username and password authentication
 
-The `postgresql_request` plugin only supports username and password authentication to the PostgreSQL server endpoint and doesn't integrate with Azure Active Directory authentication.
+The `postgresql_request` plugin only supports username and password authentication to the PostgreSQL server endpoint and doesn't integrate with Microsoft Entra authentication.
 
 The username and password are provided as part of the connections string using the following parameters:
 
@@ -104,7 +106,7 @@ Where:
 The following example sends a SQL query to an Azure PostgreSQL database. It retrieves all records from `public."Table"`, and then processes the results.
 
 > [!NOTE]
-> This example shouldn't be taken as a recommendation to filter or project data in this manner. SQL queries should be constructed to return the smallest data set possible.
+> This example shouldn't be taken as a recommendation to filter or project data in this manner. SQL queries should be constructed to return the smallest dataset possible.
 
 ```kusto
 evaluate postgresql_request(

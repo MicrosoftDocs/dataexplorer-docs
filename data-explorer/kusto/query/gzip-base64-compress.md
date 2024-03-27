@@ -14,11 +14,13 @@ Performs gzip compression and encodes the result to base64.
 
 `gzip_compress_to_base64_string(`*string*`)`
 
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+
 ## Parameters
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-| *string* | string | &check; | The value to be compressed and base64 encoded. The function accepts only one argument.|
+| *string* | `string` |  :heavy_check_mark: | The value to be compressed and base64 encoded. The function accepts only one argument.|
 
 ## Returns
 
@@ -38,7 +40,7 @@ print res = gzip_compress_to_base64_string("1234567890qwertyuiop")
 |--|
 |H4sIAAAAAAAA/wEUAOv/MTIzNDU2Nzg5MHF3ZXJ0eXVpb3A6m7f2FAAAAA==|
 
-## See also
+## Related content
 
 * [gzip_decompress_from_base64_string()](gzip-base64-decompress.md)
-* [zlib_compress_to_base64_string()](zlib-base64-compress.md)
+* [zlib_compress_to_base64_string()](zlib-base64-compress-function.md)

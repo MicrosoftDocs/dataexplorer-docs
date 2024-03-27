@@ -1,12 +1,12 @@
 ---
-title: Query data in MATLAB
+title: Query data using MATLAB
 description: Learn how to query data stored in Azure Data Explorer from within MATLAB.
 ms.reviewer: ramacg
 ms.topic: how-to
 ms.date: 07/11/2023
 ---
 
-# Query data in MATLAB
+# Query data using MATLAB
 
 MATLAB is a programming and numeric computing platform used to analyze data, develop algorithms, and create models. This article explains how to get an authorization token in MATLAB for Azure Data Explorer, and how to use the token to interact with your cluster.
 
@@ -33,7 +33,7 @@ Select the tab for the operating system used to run MATLAB.
 1. Build the MATLAB Azure SDK jar:
 
     ```bash
-    cd matlab-azure-services\Software\Java
+    cd matlab-azure-services/Software/Java
     mvn clean package
     ```
 
@@ -48,22 +48,22 @@ Select the tab for the operating system used to run MATLAB.
 1. In java static class path file, add an entry corresponding to the jar file:
 
     ```txt
-    <full-path>\matlab-azure-services\Software\MATLAB\lib\jar\azure-common-sdk-0.2.0.jar
+    (full-path)/matlab-azure-services/Software/MATLAB/lib/jar/azure-common-sdk-0.2.0.jar
     ```
 
-1. Close and reload MATLAB studio. Once reloaded, run the *startup.m* script available at *matlab-azure-services\Software\MATLAB\startup.m*. This ensures all the prerequisite functions are set up for access to Azure services. The output should look as follows:
+1. Restart the MATLAB IDE. Once reloaded, run the *startup.m* script available at *matlab-azure-services\Software\MATLAB\startup.m*. This ensures all the prerequisite functions are set up for access to Azure services. The output should look as follows:
 
     ```bash
     >> startup
     Adding Azure Paths
     ------------------
-    Adding: matlab-azure-services\Software\MATLAB\app
-    Adding: matlab-azure-services\Software\MATLAB\app\functions
-    Adding: matlab-azure-services\Software\MATLAB\app\system
-    Adding: matlab-azure-services\Software\MATLAB\lib
-    Adding: matlab-azure-services\Software\MATLAB\config
-    Skipping: matlab-azure-services\Software\Utilities
-    Checking the static Java classpath for: matlab-azure-services\Software\MATLAB\lib\jar\azure-common-sdk-0.2.0.jar
+    Adding: matlab-azure-services/Software/MATLAB/app
+    Adding: matlab-azure-services/Software/MATLAB/app/functions
+    Adding: matlab-azure-services/Software/MATLAB/app/system
+    Adding: matlab-azure-services/Software/MATLAB/lib
+    Adding: matlab-azure-services/Software/MATLAB/config
+    Skipping: matlab-azure-services/Software/Utilities
+    Checking the static Java classpath for: matlab-azure-services/Software/MATLAB/lib/jar/azure-common-sdk-0.2.0.jar
     Found: azure-common-sdk-0.2.0.jar
     ```
 
@@ -103,7 +103,7 @@ To perform user authentication:
         baseFileName = matlabDllFiles(k).name;
         fullFileName = fullfile(dllFolder,baseFileName);
         fprintf(1, 'Reading  %s\n', fullFileName);
-
+    end
         % Load the downloaded assembly in MATLAB
         NET.addAssembly(fullFileName);
     ```
@@ -151,13 +151,13 @@ To perform user authentication:
 
 ### [Linux](#tab/linux)
 
-1. Create an *Auth.json* file in your working directory with the relevant credentials:
+1. Create an *Auth.json* file in your working directory with the relevant credentials. The KustoClientAppId  returned from `https://<adx-cluster>.kusto.windows.net/v1/rest/auth/metadata` needs to be replaced with the value of ClientId below:
 
     ```json
     {
         "AuthMethod": "InteractiveBrowser",
         "TenantId" : "<AAD Tenant / Authority ID for the login>",
-        "ClientId" : "<Client ID>", // The KustoClientAppId returned from `https://<adx-cluster>.kusto.windows.net/v1/rest/auth/metadata`
+        "ClientId" : "<Client ID>",
         "RedirectUrl": "http://localhost:8675"
     }
     ```
@@ -168,8 +168,9 @@ To perform user authentication:
     % References the credential file created in the previous step
     credentials = configureCredentials('Auth.json');
 
-    % Point the scopes to the ADX cluster that we want to query
-    request = azure.core.credential.TokenRequestContext();request.addScopes('<https://adx-cluster-changeme.kusto.windows.net/.default>');
+    % Point the scopes to the Azure Data Explorer cluster that we want to query
+    request = azure.core.credential.TokenRequestContext();
+    request.addScopes('<https://adx-cluster-changeme.kusto.windows.net/.default>');
     token=credentials.getToken(request);
 
     % Prepare to query the cluster
@@ -187,13 +188,13 @@ To perform user authentication:
 
 ## Perform application authentication
 
-Azure AD application authorization can be used for scenarios where interactive sign-in isn't desired and automated runs are necessary.
+Microsoft Entra application authorization can be used for scenarios where interactive sign-in isn't desired and automated runs are necessary.
 
 To perform application authentication:
 
 ### [Windows OS](#tab/windows)
 
-1. [Provision an Azure AD application](provision-azure-ad-app.md). For the **Redirect URI**, select **Web** and input http://localhost:8675 as the URI.
+1. [Provision a Microsoft Entra application](provision-azure-ad-app.md). For the **Redirect URI**, select **Web** and input http://localhost:8675 as the URI.
 
 1. Define the constants needed for the authorization. For more information about these values, see [Authentication parameters](kusto/api/rest/authenticate-with-msal.md#authentication-parameters).
 
@@ -219,12 +220,12 @@ To perform application authentication:
         baseFileName = matlabDllFiles(k).name;
         fullFileName = fullfile(dllFolder,baseFileName);
         fprintf(1, 'Reading  %s\n', fullFileName);
-    
+    end
         % Load the downloaded assembly
         NET.addAssembly(fullFileName);
    ```
 
-1. Use the [ConfidentialClientApplicationBuilder](/dotnet/api/microsoft.identity.client.confidentialclientapplicationbuilder) to perform a non-interactive automated sign-in with the Azure AD application:
+1. Use the [ConfidentialClientApplicationBuilder](/dotnet/api/microsoft.identity.client.confidentialclientapplicationbuilder) to perform a non-interactive automated sign-in with the Microsoft Entra application:
 
     ```matlab
     %  Create an ConfidentialClientApplicationBuilder
@@ -285,7 +286,7 @@ To perform application authentication:
     % References the credential file created in the previous step
     credentials = configureCredentials('Auth.json');
 
-    % Point the scopes to the ADX cluster that we want to query
+    % Point the scopes to the Azure Data Explorer cluster that we want to query
     request = azure.core.credential.TokenRequestContext();request.addScopes('<https://adx-cluster-changeme.kusto.windows.net/.default>');
     token=credentials.getToken(request);
 
@@ -302,6 +303,6 @@ To perform application authentication:
 
 ---
 
-## Next steps
+## Related content
 
 * Query your cluster with the [REST API](kusto/api/rest/index.md)

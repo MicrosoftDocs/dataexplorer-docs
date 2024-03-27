@@ -7,7 +7,7 @@ ms.date: 04/20/2023
 ---
 # .alter-merge table policy partitioning command
 
-Changes the table's [partitioning policy](partitioningpolicy.md). The partitioning policy defines if and how [extents (data shards)](../management/extents-overview.md) should be partitioned for a specific table or a [materialized view](materialized-views/materialized-view-overview.md).
+Changes the table's [partitioning policy](partitioning-policy.md). The partitioning policy defines if and how [extents (data shards)](../management/extents-overview.md) should be partitioned for a specific table or a [materialized view](materialized-views/materialized-view-overview.md).
 
 ## Permissions
 
@@ -17,12 +17,14 @@ You must have at least [Database Admin](access-control/role-based-access-control
 
 `.alter-merge` `table` *TableName* `policy` `partitioning` *PolicyObject*
 
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+
 ## Parameters
 
 |Name|Type|Required|Description|
 |--|--|--|--|
-|*TableName*|string|&check;|The name of the table.|
-|*PolicyObject*|string|&check;|A serialized array of one or more JSON policy objects. For more information, see [partitioning policy](partitioningpolicy.md).|
+|*TableName*| `string` | :heavy_check_mark:|The name of the table.|
+|*PolicyObject*| `string` | :heavy_check_mark:|A serialized array of one or more JSON policy objects. For more information, see [partitioning policy](partitioning-policy.md).|
 
 ### Example
 

@@ -46,7 +46,7 @@ Use the following table schema design suggestions to minimize the CPU resources 
 
 ### Partition data
 
-Data is stored in the form of extents (data shards) and is partitioned by ingestion time by default. You can use the [partitioning policy](kusto/management/partitioningpolicy.md) to repartition the extents based on a single string column or a single datetime column in a background process. Partitioning can provide significant performance improvements when most of the queries use partition keys to filter, aggregate, or both.
+Data is stored in the form of extents (data shards) and is partitioned by ingestion time by default. You can use the [partitioning policy](kusto/management/partitioning-policy.md) to repartition the extents based on a single string column or a single datetime column in a background process. Partitioning can provide significant performance improvements when most of the queries use partition keys to filter, aggregate, or both.
 
 > [!NOTE]
 > The partitioning process itself uses CPU resources. However, the CPU reduction during query time should outweigh the CPU used for partitioning.
@@ -93,7 +93,7 @@ In high-concurrency applications, managing queries may cause the *admin* node's 
 
 For this scenario, we recommend using **weak** consistency mode. In this mode, more nodes are able to manage queries, which makes it possible to *horizontally scale* the number of concurrent queries. Nodes in this mode periodically refresh their copy of metadata and newly ingested data, which leads to a latency of typically less than a minute as the data is synchronized. However, this short latency is preferable to the bottleneck situation that can arise when using **strong** consistency mode.
 
-You can set the consistency mode in the [client request properties](kusto/api/netfx/request-properties.md) or in the Grafana data source configuration.
+You can set the consistency mode in a [workload group query consistency policy](kusto/management/query-consistency-policy.md), in the [client request properties](kusto/api/netfx/request-properties.md), or in the Grafana data source configuration.
 
 ## Set cluster policies
 

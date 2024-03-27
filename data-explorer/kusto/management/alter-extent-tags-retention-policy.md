@@ -17,12 +17,14 @@ You must have at least [Database Admin](access-control/role-based-access-control
 
 `.alter` `database` *DatabaseName* `policy extent_tags_retention` *SerializedArrayOfPolicyObjects*
 
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+
 ## Parameters
 
 |Name|Type|Required|Description|
 |--|--|--|--|
-|*DatabaseName*|string|&check;|The name of the database for which to alter the extent tags retention policy.|
-|*SerializedArrayOfPolicyObjects*|string|&check;|A serialized array of policy objects. For more information, see the [extent tags retention policy](extent-tags-retention-policy.md).|
+|*DatabaseName*| `string` | :heavy_check_mark:|The name of the database for which to alter the extent tags retention policy.|
+|*SerializedArrayOfPolicyObjects*| `string` | :heavy_check_mark:|A serialized array of policy objects. For more information, see the [extent tags retention policy](extent-tags-retention-policy.md).|
 
 ## Example
 

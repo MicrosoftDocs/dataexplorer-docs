@@ -13,17 +13,19 @@ Calculates useful metrics that include distinct count values, distinct count of 
 
 *T* `| evaluate` `activity_metrics(`*IdColumn*`,` *TimelineColumn*`,` [*Start*`,` *End*`,`] *Window* [`,` *dim1*`,` *dim2*`,` ...]`)`
 
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+
 ## Parameters
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-| *T* | string | &check; | The input used to calculate activity metrics. |
-| *IdCoumn* | string | &check; | The name of the column with ID values that represent user activity. |
-| *TimelineColumn* | string | &check; | The name of the column that represents timeline. |
-| *Start* | datetime | &check; | The analysis start period. |
-| *End* | datetime | &check; | The analysis end period. |
-| *Step* | decimal, datetime, or timespan | &check; | The analysis window period. This value may also be a string of `week`, `month`, or `year`, in which case all periods will be [startofweek](startofweekfunction.md), [startofmonth](startofmonthfunction.md), or [startofyear](startofyearfunction.md) respectively. |
-| *dim1*, *dim2*, ... | dynamic |  | An array of the dimensions columns that slice the activity metrics calculation. |
+| *T* | `string` |  :heavy_check_mark: | The input used to calculate activity metrics. |
+| *IdCoumn* | `string` |  :heavy_check_mark: | The name of the column with ID values that represent user activity. |
+| *TimelineColumn* | `string` |  :heavy_check_mark: | The name of the column that represents timeline. |
+| *Start* | `datetime` |  :heavy_check_mark: | The analysis start period. |
+| *End* | `datetime` |  :heavy_check_mark: | The analysis end period. |
+| *Step* | decimal, datetime, or timespan |  :heavy_check_mark: | The analysis window period. This value may also be a string of `week`, `month`, or `year`, in which case all periods will be [startofweek](startofweek-function.md), [startofmonth](startofmonth-function.md), or [startofyear](startofyear-function.md) respectively. |
+| *dim1*, *dim2*, ... | `dynamic` |  | An array of the dimensions columns that slice the activity metrics calculation. |
 
 ## Returns
 
@@ -33,7 +35,7 @@ Output table schema is:
 
 |*TimelineColumn*|dcount_values|dcount_newvalues|retention_rate|churn_rate|dim1|..|dim_n|
 |---|---|---|---|---|--|--|--|--|--|--|
-|type: as of *TimelineColumn*|long|long|double|double|..|..|..|
+|type: as of *TimelineColumn*| `long` | `long` |double|double|..|..|..|
 
 ### Notes
 
@@ -66,7 +68,7 @@ where the `# of customer lost in the period` is defined as:
 
 > *number of customers at the beginning of the period*
 > \- (minus)
-> *number of customers at the end of the period*
+> *number of returning customers during the period*
 
 `Churn Rate` can vary from 0.0 to 1.0
 The higher score means the larger number of users are NOT returning to the service.
@@ -93,7 +95,7 @@ range _day from _start to _end  step 1d
 | extend d = tolong((_day - _start)/1d)
 | extend r = rand()+1
 | extend _users=range(tolong(d*50*r), tolong(d*50*r+200*r-1), 1)
-| mv-expand id=_users to typeof(long) take 1000000
+| mv-expand id=_users to typeof(long) limit 1000000
 //
 | evaluate activity_metrics(['id'], _day, _start, _end, 7d)
 | project _day, retention_rate, churn_rate
@@ -127,7 +129,7 @@ range _day from _start to _end  step 1d
 |2017-05-22 00:00:00.0000000|0.199122325836533|0.800877674163467|
 |2017-05-29 00:00:00.0000000|0.063468992248062|0.936531007751938|
 
-:::image type="content" source="images/activity-metrics-plugin/activity-metrics-churn-and-retention.png" border="false" alt-text="Table showing the calculated retention and churn rates per seven days as specified in the query.":::
+:::image type="content" source="media/activity-metrics-plugin/activity-metrics-churn-and-retention.png" border="false" alt-text="Table showing the calculated retention and churn rates per seven days as specified in the query.":::
 
 ### Distinct values and distinct 'new' values
 
@@ -144,7 +146,7 @@ range _day from _start to _end  step 1d
 | extend d = tolong((_day - _start)/1d)
 | extend r = rand()+1
 | extend _users=range(tolong(d*50*r), tolong(d*50*r+200*r-1), 1)
-| mv-expand id=_users to typeof(long) take 1000000
+| mv-expand id=_users to typeof(long) limit 1000000
 //
 | evaluate activity_metrics(['id'], _day, _start, _end, 7d)
 | project _day, dcount_values, dcount_newvalues
@@ -178,4 +180,4 @@ range _day from _start to _end  step 1d
 | 2017-05-22 00:00:00.0000000 | 1740 | 1017 |
 | 2017-05-29 00:00:00.0000000 | 960 | 756 |
 
-:::image type="content" source="images/activity-metrics-plugin/activity-metrics-dcount-and-dcount-newvalues.png" border="false" alt-text="Table showing the count of distinct values (dcount_values) and of new distinct values (dcount_newvalues) that didn't appear in previous time window as specified in the query.":::
+:::image type="content" source="media/activity-metrics-plugin/activity-metrics-dcount-and-dcount-newvalues.png" border="false" alt-text="Table showing the count of distinct values (dcount_values) and of new distinct values (dcount_newvalues) that didn't appear in previous time window as specified in the query.":::

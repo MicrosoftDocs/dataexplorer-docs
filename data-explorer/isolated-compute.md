@@ -45,7 +45,7 @@ To enable isolated compute in Azure Data Explorer, follow one of these processes
 > [!TIP]
 > The scale up process may take a few minutes.
 
-## Next steps
+## Related content
 
 * [Manage cluster vertical scaling (scale up) in Azure Data Explorer to accommodate changing demand](manage-cluster-vertical-scaling.md)
 * [Select the correct VM SKU for your Azure Data Explorer cluster](manage-cluster-choose-sku.md)

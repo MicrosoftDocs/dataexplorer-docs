@@ -30,7 +30,7 @@ The query results cache returns results only for queries that are considered "id
 
 * The two queries have the same representation (as UTF-8 strings).
 * The two queries are made to the same database.
-* The two queries share the same [client request properties](../api/netfx/request-properties.md). The following properties are ignored for caching purposes:
+* The two queries share the same [client request properties](../api/netfx/client-request-properties.md). The following properties are ignored for caching purposes:
   * [ClientRequestId](../api/netfx/request-properties.md#clientrequestid-x-ms-client-request-id)
   * [Application](../api/netfx/request-properties.md#application-x-ms-app)
   * [User](../api/netfx/request-properties.md#user-x-ms-user)
@@ -39,14 +39,14 @@ The query results cache returns results only for queries that are considered "id
 
 The query results won't be cached if any of the following conditions is true:
 
-* The query references a table that has the [RestrictedViewAccess](../management/restrictedviewaccesspolicy.md) policy enabled.
-* The query references a table that has the [RowLevelSecurity](../management/rowlevelsecuritypolicy.md) policy enabled.
+* The query references a table that has the [RestrictedViewAccess](../management/restricted-view-access-policy.md) policy enabled.
+* The query references a table that has the [RowLevelSecurity](../management/row-level-security-policy.md) policy enabled.
 * The query uses any of the following functions:
-  * [current_principal](current-principalfunction.md)
-  * [current_principal_details](current-principal-detailsfunction.md)
-  * [current_principal_is_member_of](current-principal-ismemberoffunction.md)
-* The query accesses an [external table](schema-entities/externaltables.md) or an [external data](externaldata-operator.md).
-* The query uses the [evaluate plugin](evaluateoperator.md) operator.
+  * [current_principal](current-principal-function.md)
+  * [current_principal_details](current-principal-details-function.md)
+  * [current_principal_is_member_of](current-principal-is-member-of-function.md)
+* The query accesses an [external table](schema-entities/external-tables.md) or an [external data](externaldata-operator.md).
+* The query uses the [evaluate plugin](evaluate-operator.md) operator.
 
 ## No valid cache entry
 
@@ -89,9 +89,6 @@ The query results cache is effective when the exact same query is run multiple t
 
 For example, a query that runs every 10 seconds and spans the last 1 hour can benefit from caching intermediate query results at the storage (shard) level.
 
-> [!NOTE]
-> This feature is only available on EngineV3 clusters.
-
 The shard level query results cache is automatically enabled when the `Query results cache` is in use. Because it shares the same cache as `Query results cache`, the same capacity and eviction policies apply.
 
 ### Syntax
@@ -100,6 +97,8 @@ The shard level query results cache is automatically enabled when the `Query res
 
 > [!NOTE]
 > This option can be set in the query text or as a [client request property](../api/netfx/request-properties.md).
+
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
 
 ### Example
 

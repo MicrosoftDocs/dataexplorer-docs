@@ -21,7 +21,7 @@ A leader database can override the following database-level policies in the foll
 
 ### Caching policy
 
-The default [caching policy](cachepolicy.md) for the follower cluster uses the leader cluster database and table-level caching policies.
+The default [caching policy](cache-policy.md) for the follower cluster uses the leader cluster database and table-level caching policies.
 
 |Option             |Description                                 |
 |-------------------|----------------------------------------------|
@@ -48,7 +48,7 @@ The default [caching policy](cachepolicy.md) for the follower cluster uses the l
 ## Table and materialized views policy overrides
 
 By default, tables and materialized views in a database that is being followed by a follower cluster keep the source entity's caching policy.
-However, table and materialized view [caching policies](cachepolicy.md) can be overridden in the follower cluster.
+However, table and materialized view [caching policies](cache-policy.md) can be overridden in the follower cluster.
 Use the `replace` option to override the source entity's caching policy.
 
 ## Database level commands
@@ -67,14 +67,14 @@ Shows a database (or databases) followed from other leader cluster, which have o
 
 | Output parameter                     | Type    | Description                                                                                                        |
 |--------------------------------------|---------|--------------------------------------------------------------------------------------------------------------------|
-| DatabaseName                         | String  | The name of the database being followed.                                                                           |
-| LeaderClusterMetadataPath            | String  | The path to the leader cluster's metadata container.                                                               |
-| CachingPolicyOverride                | String  | An override caching policy for the database, serialized as JSON, or null.                                         |
-| AuthorizedPrincipalsOverride         | String  | An override collection of authorized principals for the database, serialized as JSON, or null.                    |
-| AuthorizedPrincipalsModificationKind | String  | The modification kind to apply using AuthorizedPrincipalsOverride (`none`, `union`, or `replace`).                  |
-| CachingPoliciesModificationKind      | String  | The modification kind to apply using database or table-level caching policy overrides (`none`, `union`, or `replace`). |
-| IsAutoPrefetchEnabled                | Boolean | Whether new data is pre-fetched upon each schema refresh.        |
-| TableMetadataOverrides               | String  | If defined, A JSON serialization of table-level property overrides.              |
+| DatabaseName                         | `string` | The name of the database being followed.                                                                           |
+| LeaderClusterMetadataPath            | `string` | The path to the leader cluster's metadata container.                                                               |
+| CachingPolicyOverride                | `string` | An override caching policy for the database, serialized as JSON, or null.                                         |
+| AuthorizedPrincipalsOverride         | `string` | An override collection of authorized principals for the database, serialized as JSON, or null.                    |
+| AuthorizedPrincipalsModificationKind | `string` | The modification kind to apply using AuthorizedPrincipalsOverride (`none`, `union`, or `replace`).                  |
+| CachingPoliciesModificationKind      | `string` | The modification kind to apply using database or table-level caching policy overrides (`none`, `union`, or `replace`). |
+| IsAutoPrefetchEnabled                | `bool` | Whether new data is pre-fetched upon each schema refresh.        |
+| TableMetadataOverrides               | `string` | If defined, A JSON serialization of table-level property overrides.              |
 
 ### .alter follower database policy caching
 
@@ -128,7 +128,7 @@ Adds authorized principal(s) to the follower database collection of override aut
 
 * The default `modification kind` for such authorized principals is `none`. To change the `modification kind` use  [alter follower database principals-modification-kind](#alter-follower-database-principals-modification-kind).
 * Viewing the effective collection of principals after the change can be done using the `.show` commands:
-    * [`.show database principals`](../management/manage-database-security-roles.md#view-existing-security-roles)
+    * [`.show database principals`](../management/manage-database-security-roles.md#show-existing-security-roles)
     * [`.show database details`](../management/show-databases.md)
 * Viewing the override settings on the follower database after the change can be done using [`.show follower database`](#show-follower-database)
 
@@ -148,7 +148,7 @@ Drops authorized principal(s) from the follower database collection of override 
 
 > [!NOTE]
 > * Viewing the effective collection of principals after the change can be done using the `.show` commands:
->    * [`.show database principals`](../management/manage-database-security-roles.md#view-existing-security-roles)
+>    * [`.show database principals`](../management/manage-database-security-roles.md#show-existing-security-roles)
 >    * [`.show database details`](../management/show-databases.md)
 > * Viewing the override settings on the follower database after the change can be done using [`.show follower database`](#show-follower-database)
 
@@ -169,7 +169,7 @@ Alters the follower database authorized principals modification kind.
 
 > [!NOTE]
 > * Viewing the effective collection of principals after the change can be done using the `.show` commands:
->    * [`.show database principals`](../management/manage-database-security-roles.md#view-existing-security-roles)
+>    * [`.show database principals`](../management/manage-database-security-roles.md#show-existing-security-roles)
 >    * [`.show database details`](../management/show-databases.md)
 > * Viewing the override settings on the follower database after the change can be done using [`.show follower database`](#show-follower-database)
 
@@ -338,7 +338,7 @@ See the current configuration according to which `MyDatabase` is being followed 
 
 #### Override authorized principals
 
-Replace the collection of authorized principals for `MyDatabase` on `MyFollowerCluster` with a collection that includes only one AAD user as the database admin, and one AAD user as a database viewer:
+Replace the collection of authorized principals for `MyDatabase` on `MyFollowerCluster` with a collection that includes only one Microsoft Entra user as the database admin, and one Microsoft Entra user as a database viewer:
 
 ```kusto
 .add follower database MyDatabase admins ('aaduser=jack@contoso.com')
@@ -356,8 +356,8 @@ Only those two specific principals are authorized to access `MyDatabase` on `MyF
 
 | Role                       | PrincipalType | PrincipalDisplayName                        | PrincipalObjectId                    | PrincipalFQN                                                                      | Notes |
 |----------------------------|---------------|---------------------------------------------|--------------------------------------|-----------------------------------------------------------------------------------|-------|
-| Database MyDatabase Admin  | AAD User      | Jack Kusto    (upn: jack@contoso.com)       | 12345678-abcd-efef-1234-350bf486087b | aaduser=87654321-abcd-efef-1234-350bf486087b;55555555-4444-3333-2222-2d7cd011db47 |       |
-| Database MyDatabase Viewer | AAD User      | Jill Kusto    (upn: jack@contoso.com)       | abcdefab-abcd-efef-1234-350bf486087b | aaduser=54321789-abcd-efef-1234-350bf486087b;55555555-4444-3333-2222-2d7cd011db47 |       |
+| Database MyDatabase Admin  | Microsoft Entra user      | Jack Kusto    (upn: jack@contoso.com)       | 12345678-abcd-efef-1234-350bf486087b | aaduser=87654321-abcd-efef-1234-350bf486087b;55555555-4444-3333-2222-2d7cd011db47 |       |
+| Database MyDatabase Viewer | Microsoft Entra user      | Jill Kusto    (upn: jack@contoso.com)       | abcdefab-abcd-efef-1234-350bf486087b | aaduser=54321789-abcd-efef-1234-350bf486087b;55555555-4444-3333-2222-2d7cd011db47 |       |
 
 ```kusto
 .show follower database MyDatabase

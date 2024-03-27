@@ -17,21 +17,23 @@ You must have at least Database User, Database Viewer, or Database Monitor permi
 
 `.show` `table` *TableName* `policy` `auto_delete`
 
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+
 ## Parameters
 
 | Name                     | Type   | Required | Description                        |
 |--------------------------|--------|----------|------------------------------------|
-| *TableName*              | string | &check;  | The name of the table.                 |
+| *TableName*              | `string` |  :heavy_check_mark:  | The name of the table.                 |
 
 ## Returns
 
 | Name          | Type   | Description                                                                                                                                                                                                                                                                  |
 |---------------|--------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| PolicyName    | string | Name of the policy. For table auto delete policy this value is **AutoDeletePolicy**.                                                                                                                                                                                         |
-| EntityName    | string | Name of the entity for which the policy is set. For table auto delete policy this value is `[`*databaseName*`].[`*tableName*`]`, where *databaseName* corresponds to the name of the database in which in the table exists, and *tableName* to the name of the table itself. |
-| Policy        | string | JSON representation of the policy object.                                                                                                                                                                                                                                    |
-| ChildEntities | string | Child entities for which this policy is set. For table auto delete policy this value is an empty string.                                                                                                                                                                     |
-| EntityType    | string | Type of entity for which this policy is set. For table auto delete policy this value is *Table*.                                                                                                                                                                             |
+| PolicyName    | `string` | Name of the policy. For table auto delete policy this value is **AutoDeletePolicy**.                                                                                                                                                                                         |
+| EntityName    | `string` | Name of the entity for which the policy is set. For table auto delete policy this value is `[`*databaseName*`].[`*tableName*`]`, where *databaseName* corresponds to the name of the database in which in the table exists, and *tableName* to the name of the table itself. |
+| Policy        | `string` | JSON representation of the policy object.                                                                                                                                                                                                                                    |
+| ChildEntities | `string` | Child entities for which this policy is set. For table auto delete policy this value is an empty string.                                                                                                                                                                     |
+| EntityType    | `string` | Type of entity for which this policy is set. For table auto delete policy this value is *Table*.                                                                                                                                                                             |
 
 ## Examples
 
@@ -43,7 +45,7 @@ Show the auto delete policy that is applied to table *T*:
 .show table T policy auto_delete
 ```
 
-**Output:**
+**Output**
 
 | PolicyName       | EntityName     | Policy                                                           | ChildEntities | EntityType |
 |------------------|----------------|------------------------------------------------------------------|---------------|------------|

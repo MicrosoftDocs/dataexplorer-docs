@@ -15,19 +15,21 @@ Treemaps display hierarchical data as a set of nested rectangles. Each level of 
 
 > [!NOTE]
 >
-> * This visualization can only be used in the context of the [render operator](renderoperator.md).
+> * This visualization can only be used in the context of the [render operator](render-operator.md).
 > * This visualization can be used in Kusto.Explorer but is not available in the Azure Data Explorer web UI.
 
 ## Syntax
 
 *T* `|` `render` `treemap` [`with` `(`*propertyName* `=` *propertyValue* [`,` ...]`)`]
 
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+
 ## Parameters
 
 | Name | Type | Required | Description |
 | -- | -- | -- | -- |
-| *T* | string | &check; | Input table name.
-| *propertyName*, *propertyValue* | string | | A comma-separated list of key-value property pairs. See [supported properties](#supported-properties).|
+| *T* | `string` |  :heavy_check_mark: | Input table name.
+| *propertyName*, *propertyValue* | `string` | | A comma-separated list of key-value property pairs. See [supported properties](#supported-properties).|
 
 ### Supported properties
 
@@ -47,7 +49,7 @@ StormEvents
 | render treemap with(title="Storm Events by EventType and State")
 ```
 
-:::image type="content" source="images/visualization-treemap/treemap.png" alt-text="Screenshot of treemap visualization output." lightbox="images/visualization-treemap/treemap.png":::
+:::image type="content" source="media/visualization-treemap/treemap.png" alt-text="Screenshot of treemap visualization output." lightbox="media/visualization-treemap/treemap.png":::
 ::: zone-end
 
 ::: zone pivot="azuremonitor, fabric"

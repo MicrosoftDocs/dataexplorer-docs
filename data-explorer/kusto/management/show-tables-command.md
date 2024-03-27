@@ -20,20 +20,22 @@ You must have at least Database User, Database Viewer, or Database Monitor permi
 
 `.show` `tables` [`(`*TableName* [`,` ...]`)`]
 
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+
 ## Parameters
 
 |Name|Type|Required|Description|
 |--|--|--|--|
-|*TableName*|string||The name of the table to show.|
+|*TableName*| `string` ||The name of the table to show.|
 
 ## Returns
 
 |Output parameter |Type |Description
 |---|---|---
-|TableName  |String |The name of the table.
-|DatabaseName  |String |The database that the table belongs to.
-|Folder |String |The table's folder.
-|DocString |String |A string documenting the table.
+|TableName  | `string` |The name of the table.
+|DatabaseName  | `string` |The database that the table belongs to.
+|Folder | `string` |The table's folder.
+|DocString | `string` |A string documenting the table.
 
 ## Example
 

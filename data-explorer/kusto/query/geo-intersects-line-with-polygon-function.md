@@ -13,12 +13,14 @@ Calculates whether a line or multiline intersect with a polygon or a multipolygo
 
 `geo_intersects_line_with_polygon(`*lineString*`,`*polygon*`)`
 
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+
 ## Parameters
 
 |Name|Type|Required|Description|
 |--|--|--|--|
-| *lineString* | dynamic | &check; | A LineString or MultiLineString in the [GeoJSON format](https://tools.ietf.org/html/rfc7946).|
-| *polygon* | dynamic | &check; | A Polygon or MultiPolygon in the [GeoJSON format](https://tools.ietf.org/html/rfc7946).|
+| *lineString* | `dynamic` |  :heavy_check_mark: | A LineString or MultiLineString in the [GeoJSON format](https://tools.ietf.org/html/rfc7946).|
+| *polygon* | `dynamic` |  :heavy_check_mark: | A Polygon or MultiPolygon in the [GeoJSON format](https://tools.ietf.org/html/rfc7946).|
 
 ## Returns
 

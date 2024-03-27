@@ -17,6 +17,8 @@ You must have at least [Cluster AllDatabasesMonitor](access-control/role-based-a
 
 `.show` `cluster` `policy` `request_classification`
 
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+
 ## Returns
 
 The command returns one row showing the details of the cluster request classification policy.
@@ -25,11 +27,11 @@ Following is the schema of the output returned:
 
 | Name          | Type   | Description                                                                                                                                                                                                            |
 |---------------|--------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| PolicyName    | string | Name of the policy. For cluster request classification policy, this value is **ClusterRequestClassificationPolicy**.                                                                                                   |
-| EntityName    | string | Name of the entity for which the policy is set. For cluster request classification policy, this value is an empty string.                                                                                              |
-| Policy        | string | JSON representation of the policy object.                                                                                                                                                                              |
-| ChildEntities | string | Child entities for which this policy is set. For cluster request classification policy, this value is an array of strings, each of which corresponds to the name of system and user databases attached to the cluster. |
-| EntityType    | string | Type of entity for which this policy is set. For cluster request classification policy, this value is **Cluster**.                                                                                                     |
+| PolicyName    | `string` | Name of the policy. For cluster request classification policy, this value is **ClusterRequestClassificationPolicy**.                                                                                                   |
+| EntityName    | `string` | Name of the entity for which the policy is set. For cluster request classification policy, this value is an empty string.                                                                                              |
+| Policy        | `string` | JSON representation of the policy object.                                                                                                                                                                              |
+| ChildEntities | `string` | Child entities for which this policy is set. For cluster request classification policy, this value is an array of strings, each of which corresponds to the name of system and user databases attached to the cluster. |
+| EntityType    | `string` | Type of entity for which this policy is set. For cluster request classification policy, this value is **Cluster**.                                                                                                     |
 
 ## Examples
 
@@ -41,7 +43,7 @@ Display request classification policy for the cluster:
 .show cluster policy request_classification
 ```
 
-**Output:**
+**Output**
 
 | PolicyName                         | EntityName | Policy                                                                                                                                                                                                                                                                   | ChildEntities                                                          | EntityType |
 |------------------------------------|------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|------------------------------------------------------------------------|------------|

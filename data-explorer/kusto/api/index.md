@@ -39,7 +39,7 @@ For more information, see [MS-TDS](../../t-sql.md).
 
 ## Client libraries
 
-Azure Data Explorer provides a number of client libraries that make use of the above endpoints, to make programmatic access easy.
+Azure Data Explorer provides a number of [client libraries](client-libraries.md) that make use of the above endpoints, to make programmatic access easy.
 
 * .NET SDK
 * Python SDK
@@ -61,7 +61,7 @@ A number of different libraries are available.
    It's built on top of the Kusto REST API, and sends HTTPS requests to the target Kusto cluster.
 * [Kusto.Ingest (Kusto Ingestion Library)](netfx/about-kusto-ingest.md): Uses `Kusto.Data` and extends it to ease data ingestion.
 
-The above libraries use Azure APIs, such as Azure Storage API and Azure Active Directory API.
+The above libraries use Azure APIs, such as Azure Storage API and Microsoft Entra API.
 
 ### Python Libraries
 

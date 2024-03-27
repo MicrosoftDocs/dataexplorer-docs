@@ -9,26 +9,26 @@ zone_pivot_groups: kql-flavors-all
 ---
 # predict_onnx_fl()
 
-::: zone pivot="azuredataexplorer"
+::: zone pivot="azuredataexplorer, fabric"
 
 The function `predict_onnx_fl()` is a [user-defined function (UDF)](../query/functions/user-defined-functions.md) that predicts using an existing trained machine learning model. This model has been converted to [ONNX](https://onnx.ai/) format, serialized to string, and saved in a standard table.
 
-## Prerequisites
-
-* The Python plugin must be [enabled on the cluster](../query/pythonplugin.md#enable-the-plugin). This is required for the inline Python used in the function.
+[!INCLUDE [python-zone-pivot-fabric](../../includes/python-zone-pivot-fabric.md)]
 
 ## Syntax
 
 `T | invoke predict_onnx_fl(`*models_tbl*`,` *model_name*`,` *features_cols*`,` *pred_col*`)`
 
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+
 ## Parameters
 
 |Name|Type|Required|Description|
 |--|--|--|--|
-|*models_tbl*|string|&check;|The name of the table that contains all serialized models. The table must have the following columns:<br/> `name`: the model name<br/>`timestamp`: time of model training<br/>`model`: string representation of the serialized model|
-|*model_name*|string|&check;|The name of the specific model to use.|
-|*features_cols*|synamic|&check;|An array containing the names of the features columns that are used by the model for prediction.|
-|*pred_col*|string|&check;|The name of the column that stores the predictions.|
+|*models_tbl*| `string` | :heavy_check_mark:|The name of the table that contains all serialized models. The table must have the following columns:<br/> `name`: the model name<br/>`timestamp`: time of model training<br/>`model`: string representation of the serialized model|
+|*model_name*| `string` | :heavy_check_mark:|The name of the specific model to use.|
+|*features_cols*|synamic| :heavy_check_mark:|An array containing the names of the features columns that are used by the model for prediction.|
+|*pred_col*| `string` | :heavy_check_mark:|The name of the column that stores the predictions.|
 
 ## Function definition
 
@@ -36,10 +36,10 @@ You can define the function by either embedding its code as a query-defined func
 
 ### [Query-defined](#tab/query-defined)
 
-Define the function using the following [let statement](../query/letstatement.md). No permissions are required.
+Define the function using the following [let statement](../query/let-statement.md). No permissions are required.
 
 > [!IMPORTANT]
-> A [let statement](../query/letstatement.md) can't run on its own. It must be followed by a [tabular expression statement](../query/tabularexpressionstatements.md). To run a working example of `predict_onnx_fl()`, see [Example](#example).
+> A [let statement](../query/let-statement.md) can't run on its own. It must be followed by a [tabular expression statement](../query/tabular-expression-statements.md). To run a working example of `predict_onnx_fl()`, see [Example](#example).
 
 ~~~kusto
 let predict_onnx_fl=(samples:(*), models_tbl:(name:string, timestamp:datetime, model:string), model_name:string, features_cols:dynamic, pred_col:string)
@@ -118,7 +118,7 @@ predict_onnx_fl(samples:(*), models_tbl:(name:string, timestamp:datetime, model:
 
 ## Example
 
-The following example uses the [invoke operator](../query/invokeoperator.md) to run the function.
+The following example uses the [invoke operator](../query/invoke-operator.md) to run the function.
 
 ### [Query-defined](#tab/query-defined)
 
@@ -201,7 +201,7 @@ OccupancyDetection
 
 ::: zone-end
 
-::: zone pivot="azuremonitor, fabric"
+::: zone pivot="azuremonitor"
 
 This feature isn't supported.
 

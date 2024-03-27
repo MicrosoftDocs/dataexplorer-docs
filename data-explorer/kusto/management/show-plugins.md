@@ -17,6 +17,8 @@ You must have at least Database User, Database Viewer, or Database Monitor permi
 
 `.show` `plugins`
 
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+
 ## Returns
 
 Returns a table containing the following fields:
@@ -36,7 +38,7 @@ Returns a table containing the following fields:
 | autocluster | false |
 | basket      | true  |
 
-## Next steps
+## Related content
 
 * [.disable plugin](disable-plugin.md)
 * [.enable plugin](enable-plugin.md)

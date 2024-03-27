@@ -45,19 +45,21 @@ If `hot` is specified, shows only extents that are expected to be in the hot cac
 
 `.show` `tables` `(`*TableName* [`,` ...]`)` `extents` [`(` *ExtentId* [`,` ...]`)`] [`hot`] [`where` `tags` (`has`|`contains`|`!has`|`!contains`) *TagName* [`and` `tags` (`has`|`contains`|`!has`|`!contains`) *TagName* [`,` ...]]]
 
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+
 ### Parameters
 
 |Name|Type|Required|Description|
 |--|--|--|--|
-|*TableName*|string|&check;|The name of the table.|
-|*ExtentId*|string||The ID of the extent to show.|
-|*Tag*|string||The name of a tag to filter by as specified.|
+|*TableName*| `string` | :heavy_check_mark:|The name of the table.|
+|*ExtentId*| `string` ||The ID of the extent to show.|
+|*Tag*| `string` ||The name of a tag to filter by as specified.|
 
 ### Recommendations
 
 * Using built-in filtering capabilities in the command is preferred over adding
   a query-based filter (such as adding `| where DatabaseName == '...'` and `TableName == '...'`).
-* If the optional list of extent IDs is provided, the returned data set is limited to those extents only.
+* If the optional list of extent IDs is provided, the returned dataset is limited to those extents only.
   * This method is faster than filtering (adding `| where ExtentId in(...)`) to the results of "bare" commands.
 * If `tags` filters are specified:
   * The returned list is limited to those extents whose tags collection obeys *all* of the provided tags filters.
@@ -76,17 +78,23 @@ If `hot` is specified - shows only extents that expected to be in the hot cache.
 
 `.show` `database` *DatabaseName* `extents` [`(` *ExtentId* [`,` ...]`)`] [`hot`] [`where` `tags` (`has`|`contains`|`!has`|`!contains`) *TagName* [`and` `tags` (`has`|`contains`|`!has`|`!contains`) *TagName* [`,` ...]]]
 
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+
 ### Parameters
 
 |Name|Type|Required|Description|
 |--|--|--|--|
-|*DatabaseName*|string|&check;|The name of the database.|
-|*ExtentId*|string||The ID of the extent to show.|
-|*Tag*|string||The name of a tag to filter by as specified.|
+|*DatabaseName*| `string` | :heavy_check_mark:|The name of the database.|
+|*ExtentId*| `string` ||The ID of the extent to show.|
+|*Tag*| `string` ||The name of a tag to filter by as specified.|
 
 ## Cluster scope
 
+### Syntax
+
 `.show` `cluster` `extents` [`hot`]
+
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
 
 Shows information about extents (data shards) that are present in the cluster.
 If `hot` is specified - shows only extents that are expected to be in the hot cache.
@@ -95,22 +103,22 @@ If `hot` is specified - shows only extents that are expected to be in the hot ca
 
 |Output parameter |Type |Description |
 |---|---|---|
-|ExtentId |Guid |ID of the extent
-|DatabaseName |String |Database that the extent belongs to
-|TableName |String |Table that the extents belong to
-|MaxCreatedOn |DateTime |Date-time when the extent was created. For a merged extent, the maximum of creation times among source extents
+|ExtentId | `guid` |ID of the extent
+|DatabaseName | `string` |Database that the extent belongs to
+|TableName | `string` |Table that the extents belong to
+|MaxCreatedOn | `datetime` |Date-time when the extent was created. For a merged extent, the maximum of creation times among source extents
 |OriginalSize |Double |Original size in bytes of the extent data
 |ExtentSize |Double |Size of the extent in memory (compressed + index)
 |CompressedSize |Double |Compressed size of the extent data in memory
 |IndexSize |Double |Index size of the extent data
-|Blocks |Long |Number of data blocks in the extent
-|Segments |Long |Number of data segments in the extent
-|ExtentContainerId |String | ID of the extent container the extent is in
-|RowCount |Long |Number of rows in the extent
-|MinCreatedOn |DateTime |Date-time when the extent was created. For a merged extent, the minimum of creation times among the source extents
-|Tags|String|Tags, if any, defined for the extent
-|Kind|String|The kind of the storage engine that created the extent ("StorageV2" or "StorageV3")
-|DeletedRowCount|Long|Number of deleted rows in the extent
+|Blocks | `long` |Number of data blocks in the extent
+|Segments | `long` |Number of data segments in the extent
+|ExtentContainerId | `string` | ID of the extent container the extent is in
+|RowCount | `long` |Number of rows in the extent
+|MinCreatedOn | `datetime` |Date-time when the extent was created. For a merged extent, the minimum of creation times among the source extents
+|Tags| `string` |Tags, if any, defined for the extent
+|Kind| `string` |The kind of the storage engine that created the extent
+|DeletedRowCount| `long` |Number of deleted rows in the extent
 
 ## Examples
 
@@ -140,13 +148,13 @@ Extent `E` in table `T` is tagged with tags `aaa`, `BBB`, and `ccc`.
 
 Show volume of extents being created per hour in a specific database
 
-```kusto 
+```kusto
 .show database MyDatabase extents | summarize count(ExtentId) by MaxCreatedOn bin=time(1h) | render timechart  
 ```
 
 ### Show volume of data arriving by table per hour
 
-```kusto 
+```kusto
 .show database MyDatabase extents  
 | summarize sum(OriginalSize) by TableName, MaxCreatedOn bin=time(1h)  
 | render timechart
@@ -154,19 +162,19 @@ Show volume of extents being created per hour in a specific database
 
 ### Show data size distribution by table
 
-```kusto 
+```kusto
 .show database MyDatabase extents | summarize sum(OriginalSize) by TableName
 ```
 
 ### Show all extents in the database named 'GamesDB'
 
-```kusto 
+```kusto
 .show database GamesDB extents
 ```
 
 ### Show all extents in the table named 'Games'
 
-```kusto 
+```kusto
 .show table Games extents
 ```
 
@@ -174,6 +182,6 @@ Show volume of extents being created per hour in a specific database
 
 Show all extents in the tables named 'TaggingGames1' and 'TaggingGames2', tagged with both 'tag1' and 'tag2'
 
-```kusto 
+```kusto
 .show tables (TaggingGames1,TaggingGames2) extents where tags has 'tag1' and tags has 'tag2'
 ```

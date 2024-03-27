@@ -21,13 +21,15 @@ You must have at least [Table Admin](access-control/role-based-access-control.md
 
 `.alter-merge` `table` *tableName* `(`*columnName*`:`*columnType* [`,` ...]`)`  [`with` `(`*propertyName* `=` *propertyValue* [`,` ...]`)`]
 
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+
 ## Parameters
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-| *tableName* | string | &check; | The name of the table to alter. |
-| *columnName*, *columnType* | string | &check; | The name of an existing or new column mapped to the type of data in that column. The list of these mappings defines the output column schema.|
-| *propertyName*, *propertyValue* | string | | A comma-separated list of key-value property pairs. See [supported properties](#supported-properties).|
+| *tableName* | `string` |  :heavy_check_mark: | The name of the table to alter. |
+| *columnName*, *columnType* | `string` |  :heavy_check_mark: | The name of an existing or new column mapped to the type of data in that column. The list of these mappings defines the output column schema.|
+| *propertyName*, *propertyValue* | `string` | | A comma-separated list of key-value property pairs. See [supported properties](#supported-properties).|
 
 > [!NOTE]
 > If you try to alter a column type, the command will fail. Use [`.alter column`](alter-column.md) instead.
@@ -39,8 +41,8 @@ You must have at least [Table Admin](access-control/role-based-access-control.md
 
 |Name|Type|Description|
 |--|--|--|
-|`docstring`|string|Free text describing the entity to be added. This string is presented in various UX settings next to the entity names.|
-|`folder`|string|The name of the folder to add to the table.|
+|`docstring`| `string` |Free text describing the entity to be added. This string is presented in various UX settings next to the entity names.|
+|`folder`| `string` |The name of the folder to add to the table.|
 
 ## How the command affects the data
 
@@ -55,6 +57,6 @@ You must have at least [Table Admin](access-control/role-based-access-control.md
 .alter-merge table MyTable (ColumnX:string, ColumnY:int) with (docstring = "Some documentation", folder = "Folder1")
 ```
 
-## See also
+## Related content
 
 Use the `.alter` table command when you wish to further redefine the table settings. For more information, see [.alter table](../management/alter-table-command.md).

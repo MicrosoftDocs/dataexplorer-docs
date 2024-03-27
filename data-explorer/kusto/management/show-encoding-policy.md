@@ -17,12 +17,14 @@ You must have at least Database User, Database Viewer, or Database Monitor permi
 
 `.show` *EntityType* *EntityIdentifier* `policy` `encoding`
 
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+
 ## Parameters
 
 |Name | Type | Required | Description |
 |--|--|--|--|
-| *EntityType* | string | &check; | This field determines the type of *EntityIdentifier*. The possible values are `database` or `table` or `column`.|
-| *EntityIdentifier* | string | &check; | The identifier for the entity. Column references must include the table name scope. A wildcard `*` to denote all entities for the given *EntityType* is allowed. |
+| *EntityType* | `string` |  :heavy_check_mark: | This field determines the type of *EntityIdentifier*. The possible values are `database` or `table` or `column`.|
+| *EntityIdentifier* | `string` |  :heavy_check_mark: | The identifier for the entity. Column references must include the table name scope. A wildcard `*` to denote all entities for the given *EntityType* is allowed. |
 
 ## Example
 
@@ -30,7 +32,7 @@ You must have at least Database User, Database Viewer, or Database Monitor permi
 .show database Samples policy encoding
 ```
 
-## See also
+## Related content
 
 * [Encoding policy](encoding-policy.md)
 * [.alter encoding policy](alter-encoding-policy.md)

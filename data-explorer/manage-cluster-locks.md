@@ -36,6 +36,6 @@ To delete a lock, in the row where the lock appears, select the **Delete** butto
 
 :::image type="content" source="media/manage-cluster-locks/delete-cluster-lock.png" alt-text="Screenshot showing delete a cluster lock.":::
 
-## Next steps
+## Related content
 
 - [Manage cluster horizontal scaling (scale out)](manage-cluster-horizontal-scaling.md)

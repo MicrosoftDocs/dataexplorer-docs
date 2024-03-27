@@ -17,11 +17,13 @@ You must have [AllDatabasesAdmin](access-control/role-based-access-control.md) p
 
 `.disable` `plugin` *PluginName*
 
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+
 ## Parameters
 
 |Name|Type|Required|Description|
 |--|--|--|--|
-|*PluginName*|string|&check;|The name of the plugin to disable.|
+|*PluginName*| `string` | :heavy_check_mark:|The name of the plugin to disable.|
 
 ## Example
 
@@ -31,7 +33,7 @@ The following command disables the autocluster plugin on the cluster.
 .disable plugin autocluster
 ```
 
-## See also
+## Related content
 
 * [`.show plugins`](show-plugins.md)
 * [`.enable plugin`](enable-plugin.md)

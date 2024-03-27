@@ -13,11 +13,13 @@ Calculates the union of lines or multilines on Earth.
 
 `geo_union_lines_array(`*lineStrings*`)`
 
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+
 ## Parameters
 
 |Name|Type|Required|Description|
 |--|--|--|--|
-| *lineStrings* | dynamic | &check; | An array of lines or multilines in the [GeoJSON format](https://tools.ietf.org/html/rfc7946).|
+| *lineStrings* | `dynamic` |  :heavy_check_mark: | An array of lines or multilines in the [GeoJSON format](https://tools.ietf.org/html/rfc7946).|
 
 ## Returns
 

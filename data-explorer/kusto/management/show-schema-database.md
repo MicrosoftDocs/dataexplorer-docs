@@ -23,12 +23,14 @@ You must have at least Database User, Database Viewer, or Database Monitor permi
 
 `.show` `databases` `(`*DatabaseName* `if_later_than` *"Version"* [`,` ...]`)` `schema` `details`
 
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+
 ### Parameters
 
 |Name|Type|Required|Description|
 |--|--|--|--|
-|*DatabaseName*|string|&check;|The name of the database for which to show the schema.|
-|*Version*|string||The version in "vMM.mm" format. MM represents the major version and mm represents the minor version.|
+|*DatabaseName*| `string` | :heavy_check_mark:|The name of the database for which to show the schema.|
+|*Version*| `string` ||The version in "vMM.mm" format. MM represents the major version and mm represents the minor version.|
 
 ### Returns
 
@@ -89,13 +91,15 @@ Because a version lower than the current database version was provided, the 'Tes
 
 `.show` `databases` `(`*DatabaseName* `if_later_than` *"Version"* [`,` ...]`)` `schema` `as` `json` [`with` `(`*Options*`)`]
 
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+
 ### Parameters
 
 |Name|Type|Required|Description|
 |--|--|--|--|
-|*DatabaseName*|string|&check;|The name of the database for which to show the schema.|
-|*Version*|string||The version in "vMM.mm" format. MM represents the major version and mm represents the minor version.|
-|*Options*|string||A list of comma-separated key-value pairs used to determine which database entity schemas to return. If none are specified, then all entities are returned. See [supported entity options](#supported-entity-options).|
+|*DatabaseName*| `string` | :heavy_check_mark:|The name of the database for which to show the schema.|
+|*Version*| `string` ||The version in "vMM.mm" format. MM represents the major version and mm represents the minor version.|
+|*Options*| `string` ||A list of comma-separated key-value pairs used to determine which database entity schemas to return. If none are specified, then all entities are returned. See [supported entity options](#supported-entity-options).|
 
 #### Supported entity options
 
@@ -103,10 +107,10 @@ The following table describes the values to provide for the *Options* parameter.
 
 |Key|Value|Description|
 |--|--|--|
-|`Tables`| bool | If `true`, tables are returned.|
-|`ExternalTables`| bool | If `true`, external tables are returned.|
-|`MaterializedViews`| bool | If `true`, materialized views are returned.|
-|`Functions`| bool | If `true`, functions are returned.|
+|`Tables`| `bool` | If `true`, tables are returned.|
+|`ExternalTables`| `bool` | If `true`, external tables are returned.|
+|`MaterializedViews`| `bool` | If `true`, materialized views are returned.|
+|`Functions`| `bool` | If `true`, functions are returned.|
 
 ### Returns
 
@@ -135,21 +139,23 @@ Generates a CSL script with all the required commands to create a copy of the gi
 
 `.show` `database` *DatabaseName* `schema` `as` `csl` `script` [`with` `(`*Options*`)`]
 
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+
 ### Parameters
 
 |Name|Type|Required|Description|
 |--|--|--|--|
-|*DatabaseName*|string|&check;|The name of the database for which to show the schema.|
-|*Options*|string||A list of comma-separated key-value pairs used to determine what to return. See [supported options](#supported-options).|
+|*DatabaseName*| `string` | :heavy_check_mark:|The name of the database for which to show the schema.|
+|*Options*| `string` ||A list of comma-separated key-value pairs used to determine what to return. See [supported options](#supported-options).|
 
 #### Supported options
 
 |Key|Value|Description|
 |--|--|--|
-|`IncludeEncodingPolicies`| bool | Defaults to `true`. If `true`, encoding policies at the database/table/column level are included.|
-|`IncludeSecuritySettings`| bool | Defaults to `true`. If `true`, the following options are included:<br/>- Authorized principals at the database/table level.<br/>- Row level security policies at the table level.<br/>- Restricted view access policies at the table level.|
-|`IncludeIngestionMappings`| bool | Defaults to `true`. If `true`, ingestion mappings at the table level are included.|
-|`ShowObfuscatedStrings`| bool | Defaults to `false`. If `true`, credentials persisted in Kusto configurations are returned. To use this option, you must either be a database admin or entity creator. If you don't have these permissions, the command fails.|
+|`IncludeEncodingPolicies`| `bool` | Defaults to `true`. If `true`, encoding policies at the database/table/column level are included.|
+|`IncludeSecuritySettings`| `bool` | Defaults to `true`. If `true`, the following options are included:<br/>- Authorized principals at the database/table level.<br/>- Row level security policies at the table level.<br/>- Restricted view access policies at the table level.|
+|`IncludeIngestionMappings`| `bool` | Defaults to `true`. If `true`, ingestion mappings at the table level are included.|
+|`ShowObfuscatedStrings`| `bool` | Defaults to `false`. If `true`, credentials persisted in Kusto configurations are returned. To use this option, you must either be a database admin or entity creator. If you don't have these permissions, the command fails.|
 
 ### Returns
 
@@ -164,5 +170,5 @@ The script, returned as a string, will contain:
 ```kusto
 .show database TestDB schema as csl script
 
-.show database TestDB schema as csl script with(IncludeSecuritySettings = true)
+.show database TestDB schema as csl script with (ShowObfuscatedStrings = true)
 ```

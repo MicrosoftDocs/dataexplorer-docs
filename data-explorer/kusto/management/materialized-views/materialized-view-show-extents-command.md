@@ -22,11 +22,13 @@ You must have at least Database User, Database Viewer, or Database Monitor permi
 
 `.show` `materialized-view` *MaterializedViewName* `extents` [`hot`]
 
+[!INCLUDE [syntax-conventions-note](../../../includes/syntax-conventions-note.md)]
+
 ## Parameters
 
 | Name                   | Type   | Required | Description                    |
 |------------------------|--------|----------|--------------------------------|
-| *MaterializedViewName* | string | &check;  | Name of the materialized view. |
+| *MaterializedViewName* | `string` |  :heavy_check_mark:  | Name of the materialized view. |
 
 ### Returns
 
@@ -42,7 +44,7 @@ The following command shows the extents holding the data in the materialized par
 .show materialized-view ViewName extents
 ```
 
-**Output:**
+**Output**
 
 | ExtentId                              | DatabaseName | TableName  | MaxCreatedOn                 | OriginalSize | ExtentSize | CompressedSize | IndexSize | Blocks | Segments | ReservedSlot1 | ReservedSlot2 | ExtentContainerId | RowCount | MinCreatedOn                 | Tags | Kind      | ReservedSlot3 | DeletedRowCount |
 |---------------------------------------|--------------|------------|------------------------------|--------------|------------|----------------|-----------|--------|----------|---------------|---------------|-------------------|----------|------------------------------|------|-----------|---------------|-----------------|
@@ -57,7 +59,7 @@ The following command shows the extents holding the data in the materialized par
 .show materialized-view ViewName extents hot
 ```
 
-**Output:**
+**Output**
 
 | ExtentId                              | DatabaseName | TableName  | MaxCreatedOn                 | OriginalSize | ExtentSize | CompressedSize | IndexSize | Blocks | Segments | ReservedSlot1 | ReservedSlot2 | ExtentContainerId | RowCount | MinCreatedOn                 | Tags | Kind      | ReservedSlot3 | DeletedRowCount |
 |---------------------------------------|--------------|------------|------------------------------|--------------|------------|----------------|-----------|--------|----------|---------------|---------------|-------------------|----------|------------------------------|------|-----------|---------------|-----------------|

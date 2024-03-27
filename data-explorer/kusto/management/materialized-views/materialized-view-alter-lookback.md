@@ -7,10 +7,7 @@ ms.date: 03/01/2023
 ---
 # .alter materialized-view lookback
 
-Alters the `lookback` value of an existing materialized view. For more information on the lookback property, see [materialized view create command properties](materialized-view-create.md#properties).
-
-> [!NOTE]
-> A `lookback` for a materialized view is only supported for [EngineV3](../../../engine-v3.md) clusters, and for arg_max/arg_min/take_any materialized views.
+Alters the `lookback` value of an existing materialized view. For more information on the lookback property, see [materialized view create command properties](materialized-view-create.md#supported-properties).
 
 ## Permissions
 
@@ -20,12 +17,14 @@ You must have at least [Materialized View Admin](../access-control/role-based-ac
 
 `.alter` `materialized-view` *MaterializedViewName* `lookback` *LookbackPeriod*
 
+[!INCLUDE [syntax-conventions-note](../../../includes/syntax-conventions-note.md)]
+
 ## Parameters
 
 | Name                   | Type     | Required | Description                                                                   |
 |------------------------|----------|----------|-------------------------------------------------------------------------------|
-| *MaterializedViewName* | string   | &check;  | Name of the materialized view.                                                |
-| *LookbackPeriod*       | timespan | &check;  | Time span limiting the period of time in which duplicates are expected.       |
+| *MaterializedViewName* | `string` |  :heavy_check_mark:  | Name of the materialized view.                                                |
+| *LookbackPeriod*       | `timespan` |  :heavy_check_mark:  | Time span limiting the period of time in which duplicates are expected.       |
 
 ## Returns
 
@@ -41,7 +40,7 @@ The following command sets the lookback period of materialized view MyView to si
 .alter materialized-view MyView lookback 6h
 ```
 
-**Output:**
+**Output**
 
 | Name   | SourceTable | Query                                       | MaterializedTo                   | LastRun                      | LastRunResult | IsHealthy | IsEnabled | Folder           | DocString | AutoUpdateSchema | EffectiveDateTime            | Lookback   |
 |--------|-------------|---------------------------------------------|----------------------------------|------------------------------|---------------|-----------|-----------|------------------|-----------|------------------|------------------------------|------------|
@@ -55,7 +54,7 @@ The following command removes the lookback period of materialized view MyView:
 .alter materialized-view MyView lookback timespan(null)
 ```
 
-**Output:**
+**Output**
 
 | Name   | SourceTable | Query                                       | MaterializedTo                   | LastRun                      | LastRunResult | IsHealthy | IsEnabled | Folder           | DocString | AutoUpdateSchema | EffectiveDateTime            | Lookback   |
 |--------|-------------|---------------------------------------------|----------------------------------|------------------------------|---------------|-----------|-----------|------------------|-----------|------------------|------------------------------|------------|

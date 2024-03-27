@@ -8,11 +8,13 @@ ms.date: 04/19/2021
 
 # Azure Data Explorer Connector for Apache Spark
 
+[!INCLUDE [real-time-analytics-connectors-note](includes/real-time-analytics-connectors-note.md)]
+
 [Apache Spark](https://spark.apache.org/) is a unified analytics engine for large-scale data processing. Azure Data Explorer is a fast, fully managed data analytics service for real-time analysis on large volumes of data.
 
 The Azure Data Explorer connector for Spark is an [open source project](https://github.com/Azure/azure-kusto-spark) that can run on any Spark cluster. It implements data source and data sink for moving data across Azure Data Explorer and Spark clusters. Using Azure Data Explorer and Apache Spark, you can build fast and scalable applications targeting data driven scenarios. For example, machine learning (ML), Extract-Transform-Load (ETL), and Log Analytics. With the connector, Azure Data Explorer becomes a valid data store for standard Spark source and sink operations, such as write, read, and writeStream.
 
-You can write to Azure Data Explorer in either batch or streaming mode. Reading from Azure Data Explorer supports column pruning and predicate pushdown, which filters the data in Azure Data Explorer, reducing the volume of transferred data.
+You can write to Azure Data Explorer via queued ingestion or streaming ingestion. Reading from Azure Data Explorer supports column pruning and predicate pushdown, which filters the data in Azure Data Explorer, reducing the volume of transferred data.
 
 > [!NOTE]
 > For information about working with the Synapse Spark connector for Azure Data Explorer, see [Connect to Azure Data Explorer using Apache Spark for Azure Synapse Analytics](/azure/synapse-analytics/quickstart-connect-azure-data-explorer).
@@ -101,23 +103,25 @@ For more information, see [connector usage](https://github.com/Azure/azure-kusto
 
 ## Authentication
 
-Azure Data Explorer Spark connector enables you to authenticate with Azure Active Directory (Azure AD) using one of the following methods:
+Azure Data Explorer Spark connector enables you to authenticate with Microsoft Entra ID using one of the following methods:
 
-* An [Azure AD application](#azure-ad-application-authentication)
-* An [Azure AD access token](https://github.com/Azure/azure-kusto-spark/blob/master/docs/Authentication.md#direct-authentication-with-access-token)
+* An [Microsoft Entra application](#azure-ad-application-authentication)
+* An [Microsoft Entra access token](https://github.com/Azure/azure-kusto-spark/blob/master/docs/Authentication.md#direct-authentication-with-access-token)
 * [Device authentication](https://github.com/Azure/azure-kusto-spark/blob/master/docs/Authentication.md#device-authentication) (for non-production scenarios)
 * An [Azure Key Vault](https://github.com/Azure/azure-kusto-spark/blob/master/docs/Authentication.md#key-vault)
     To access the Key Vault resource, install the azure-keyvault package and provide application credentials.
 
-### Azure AD application authentication
+<a name='azure-ad-application-authentication'></a>
 
-Azure AD application authentication is the simplest and most common authentication method and is recommended for the Azure Data Explorer Spark connector.
+### Microsoft Entra application authentication
+
+Microsoft Entra application authentication is the simplest and most common authentication method and is recommended for the Azure Data Explorer Spark connector.
 
 | Properties | Option String | Description |
 |--|--|--|
-| **KUSTO_AAD_APP_ID** | kustoAadAppId | Azure AD application (client) identifier. |
-| **KUSTO_AAD_AUTHORITY_ID** | kustoAadAuthorityID | Azure AD authentication authority. Azure AD Directory (tenant) ID. Optional - defaults to microsoft.com. For more information, see [AAD authority](/azure/active-directory/develop/msal-client-application-configuration#authority). |
-| **KUSTO_AAD_APP_SECRET** | kustoAadAppSecret | Azure AD application key for the client. |
+| **KUSTO_AAD_APP_ID** | kustoAadAppId | Microsoft Entra application (client) identifier. |
+| **KUSTO_AAD_AUTHORITY_ID** | kustoAadAuthorityID | Microsoft Entra authentication authority. Microsoft Entra Directory (tenant) ID. Optional - defaults to microsoft.com. For more information, see [Microsoft Entra authority](/azure/active-directory/develop/msal-client-application-configuration#authority). |
+| **KUSTO_AAD_APP_SECRET** | kustoAadAppSecret | Microsoft Entra application key for the client. |
 
 > [!NOTE]
 > Older API versions (less than 2.0.0) have the following naming: "kustoAADClientID", "kustoClientAADClientPassword", "kustoAADAuthorityID"
@@ -126,8 +130,8 @@ Azure AD application authentication is the simplest and most common authenticati
 
 Grant the following privileges on an Azure Data Explorer cluster:
 
-* For reading (data source), the Azure AD identity must have *viewer* privileges on the target database, or *admin* privileges on the target table.
-* For writing (data sink), the Azure AD identity must have *ingestor* privileges on the target database. It must also have *user* privileges on the target database to create new tables. If the target table already exists, you must configure *admin* privileges on the target table.
+* For reading (data source), the Microsoft Entra identity must have *viewer* privileges on the target database, or *admin* privileges on the target table.
+* For writing (data sink), the Microsoft Entra identity must have *ingestor* privileges on the target database. It must also have *user* privileges on the target database to create new tables. If the target table already exists, you must configure *admin* privileges on the target table.
 
 For more information on Azure Data Explorer principal roles, see [role-based access control](kusto/access-control/role-based-access-control.md). For managing security roles, see [security roles management](kusto/management/security-roles.md).
 
@@ -277,7 +281,7 @@ For more information on Azure Data Explorer principal roles, see [role-based acc
         display(dfFiltered)
         ```
 
-## Next steps
+## Related content
 
-* Learn to use more options of the [Azure Data Explorer Spark Connector](https://github.com/Azure/azure-kusto-spark/tree/master/docs)
-* [Sample code for Scala and Python](https://github.com/Azure/azure-kusto-spark/tree/master/samples/src/main)
+* [Azure Data Explorer Spark Connector GitHub repository](https://github.com/Azure/azure-kusto-spark/tree/master/docs)
+* See the [sample code for Scala and Python](https://github.com/Azure/azure-kusto-spark/tree/master/samples/src/main)

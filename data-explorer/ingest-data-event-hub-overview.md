@@ -56,8 +56,8 @@ Ingestion properties instruct the ingestion process, where to route the data, an
 | IngestionMappingReference | Name of the existing [ingestion mapping](kusto/management/create-ingestion-mapping-command.md) to be used. Overrides the `Column mapping` set on the `Data Connection` pane.|
 | Compression | Data compression, `None` (default), or `GZip` compression.|
 | Encoding | Data encoding, the default is UTF8. Can be any of [.NET supported encodings](/dotnet/api/system.text.encoding#remarks). |
-| Tags | A list of [tags](kusto/management/extents-overview.md#extent-tagging) to associate with the ingested data, formatted as a JSON array string. There are [performance implications](kusto/management/extents-overview.md#ingest-by-extent-tags) when using tags. |
-| RawHeaders | Indicates that event source is Kafka and ADX must use byte array deserialization to read other routing properties. Value is ignored. |
+| Tags | A list of [tags](kusto/management/extent-tags.md) to associate with the ingested data, formatted as a JSON array string. There are [performance implications](kusto/management/extent-tags.md) when using tags. |
+| RawHeaders | Indicates that event source is Kafka and Azure Data Explorer must use byte array deserialization to read other routing properties. Value is ignored. |
 
 > [!NOTE]
 > Only events enqueued after you create the data connection are ingested.
@@ -110,11 +110,11 @@ Event Hubs service exposes the following system properties:
 
 |Property |Data Type |Description|
 |---|---|---|
-| x-opt-enqueued-time |datetime | UTC time when the event was enqueued |
-| x-opt-sequence-number |long | The logical sequence number of the event within the partition stream of the event hub
-| x-opt-offset |string | The offset of the event from the event hub partition stream. The offset identifier is unique within a partition of the event hub stream |
-| x-opt-publisher |string | The publisher name, if the message was sent to a publisher endpoint |
-| x-opt-partition-key |string |The partition key of the corresponding partition that stored the event |
+| x-opt-enqueued-time | `datetime` | UTC time when the event was enqueued |
+| x-opt-sequence-number | `long` | The logical sequence number of the event within the partition stream of the event hub
+| x-opt-offset | `string` | The offset of the event from the event hub partition stream. The offset identifier is unique within a partition of the event hub stream |
+| x-opt-publisher | `string` | The publisher name, if the message was sent to a publisher endpoint |
+| x-opt-partition-key | `string` |The partition key of the corresponding partition that stored the event |
 
 When you work with [IoT Central](https://azure.microsoft.com/services/iot-central/) event hubs, you can also embed IoT Hub system properties in the payload. For the complete list, see [IoT Hub system properties](ingest-data-iot-hub-overview.md#event-system-properties-mapping).
 
@@ -132,7 +132,7 @@ Specifically, the event payload is represented in the capture file as a byte arr
 To correctly decode the event payload:
 
 1. Map the `Body` field of the captured event to a column of type `dynamic` in the destination table.
-1. Apply an [update policy](./kusto/management/updatepolicy.md) that converts the byte array into a readable string using the [unicode_codepoints_to_string()](./kusto/query/unicode-codepoints-to-string-function.md) function.
+1. Apply an [update policy](./kusto/management/update-policy.md) that converts the byte array into a readable string using the [unicode_codepoints_to_string()](./kusto/query/unicode-codepoints-to-string-function.md) function.
 
 ## Ingest custom properties
 
@@ -203,7 +203,7 @@ Azure Data Explorer doesn't support `Alias` event hub namespaces. To implement t
 > [!NOTE]
 > It's the user's responsibility to implement a failover from the primary namespace to the secondary namespace.
 
-## See also
+## Related content
 
 * [Ingest data from event hub into Azure Data Explorer](ingest-data-event-hub.md)
 * [Create an event hub data connection for Azure Data Explorer using C#](data-connection-event-hub-csharp.md)

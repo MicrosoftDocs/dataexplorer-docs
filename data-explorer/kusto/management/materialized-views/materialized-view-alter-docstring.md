@@ -17,12 +17,14 @@ You must have at least [Materialized View Admin](../access-control/role-based-ac
 
 `.alter` `materialized-view` *MaterializedViewName* `docstring` *DocString*
 
+[!INCLUDE [syntax-conventions-note](../../../includes/syntax-conventions-note.md)]
+
 ## Parameters
 
 | Name                   | Type   | Required | Description                                                                                                                                    |
 |------------------------|--------|----------|------------------------------------------------------------------------------------------------------------------------------------------------|
-| *MaterializedViewName* | string | &check;  | Name of the materialized view.                                                                                                                 |
-| *DocString*            | string | &check;  | Free text that you can attach to a materialized view to describe it. This string is presented in various UI settings next to the entity names. |
+| *MaterializedViewName* | `string` |  :heavy_check_mark:  | Name of the materialized view.                                                                                                                 |
+| *DocString*            | `string` |  :heavy_check_mark:  | Free text that you can attach to a materialized view to describe it. This string is presented in various UI settings next to the entity names. |
 
 ## Returns
 
@@ -38,7 +40,7 @@ The following command sets the description of a materialized via its docstring p
 .alter materialized-view MyView docstring "docs here..."
 ```
 
-**Output:**
+**Output**
 
 | Name   | SourceTable | Query                                       | MaterializedTo                   | LastRun                      | LastRunResult | IsHealthy | IsEnabled | Folder | DocString      | AutoUpdateSchema | EffectiveDateTime            | Lookback   |
 |--------|-------------|---------------------------------------------|----------------------------------|------------------------------|---------------|-----------|-----------|--------|----------------|------------------|------------------------------|------------|

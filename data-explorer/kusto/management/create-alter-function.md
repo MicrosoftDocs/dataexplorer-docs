@@ -9,7 +9,7 @@ ms.date: 05/24/2023
 
 Creates a stored function or alters an existing function and stores it inside the database metadata.
 
-Rules for parameter types and CSL statements are the same as for [let statements](../query/letstatement.md).
+Rules for parameter types and CSL statements are the same as for [let statements](../query/let-statement.md).
 
 ## Permissions
 
@@ -19,14 +19,16 @@ This command requires [Database User](access-control/role-based-access-control.m
 
 `.create-or-alter` `function` [ `with` `(`*propertyName* `=` *propertyValue* [`,` ...]`)`] *functionName* `(`*parameters*`)` `{` *body* `}`
 
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+
 ## Parameters
 
 |Name|Type|Required|Description|
 |--|--|--|--|
-|*functionName* | string | &check; | The name of the function to create or alter.|
-| *propertyName*, *propertyValue* | string | | A comma-separated list of key-value property pairs. See [supported properties](#supported-properties).|
-|*parameters*  | string | | A comma-separated list of parameters required by the function. The format for each parameter must be *ParameterName*`:`*ParameterDataType*.|
-|*body*| string | &check; | Zero or more `let` statements followed by a valid CSL expression that is evaluated upon function invocation.|
+|*functionName* | `string` |  :heavy_check_mark: | The name of the function to create or alter.|
+| *propertyName*, *propertyValue* | `string` | | A comma-separated list of key-value property pairs. See [supported properties](#supported-properties).|
+|*parameters*  | `string` | | A comma-separated list of parameters required by the function. The format for each parameter must be *ParameterName*`:`*ParameterDataType*.|
+|*body*| `string` |  :heavy_check_mark: | Zero or more `let` statements followed by a valid CSL expression that is evaluated upon function invocation.|
 
 > [!NOTE]
 > If the function with the provided *functionName* doesn't exist in the database metadata, the command creates a new function. Else, that function will be changed.
@@ -35,8 +37,8 @@ This command requires [Database User](access-control/role-based-access-control.m
 
 |Name|Type|Description|
 |--|--|--|
-|`docstring`|string|A description of the function for UI purposes.|
-|`folder`|string|The name of a folder used for UI functions categorization.|
+|`docstring`| `string` |A description of the function for UI purposes.|
+|`folder`| `string` |The name of a folder used for UI functions categorization.|
 
 ## Example
 

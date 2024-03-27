@@ -14,14 +14,16 @@ The function `series_moving_var_fl()` is a [user-defined function (UDF)](../quer
 ## Syntax
 
 `series_moving_var_fl(`*y_series*`,` *n* [`,` *center* ]`)`
-  
+
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+
 ## Parameters
 
 |Name|Type|Required|Description|
 |--|--|--|--|
-|*y_series*|dynamic|&check;|An array cell of numeric values.|
-|*n*|int|&check;|The width of the moving variance filter.|
-|*center*|bool||Indicates whether the moving variance is either applied symmetrically on a window before and after the current point or applied on a window from the current point backwards. By default, *center* is `false`.|
+|*y_series*| `dynamic` | :heavy_check_mark:|An array cell of numeric values.|
+|*n*| `int` | :heavy_check_mark:|The width of the moving variance filter.|
+|*center*| `bool` ||Indicates whether the moving variance is either applied symmetrically on a window before and after the current point or applied on a window from the current point backwards. By default, *center* is `false`.|
 
 ## Function definition
 
@@ -29,10 +31,10 @@ You can define the function by either embedding its code as a query-defined func
 
 ### [Query-defined](#tab/query-defined)
 
-Define the function using the following [let statement](../query/letstatement.md). No permissions are required.
+Define the function using the following [let statement](../query/let-statement.md). No permissions are required.
 
 > [!IMPORTANT]
-> A [let statement](../query/letstatement.md) can't run on its own. It must be followed by a [tabular expression statement](../query/tabularexpressionstatements.md). To run a working example of `series_moving_var_fl()`, see [Example](#example).
+> A [let statement](../query/let-statement.md) can't run on its own. It must be followed by a [tabular expression statement](../query/tabular-expression-statements.md). To run a working example of `series_moving_var_fl()`, see [Example](#example).
 
 ```kusto
 let series_moving_var_fl = (y_series:dynamic, n:int, center:bool=false)
@@ -71,7 +73,7 @@ series_moving_var_fl(y_series:dynamic, n:int, center:bool=false)
 
 ## Example
 
-The following example uses the [invoke operator](../query/invokeoperator.md) to run the function.
+The following example uses the [invoke operator](../query/invoke-operator.md) to run the function.
 
 ### [Query-defined](#tab/query-defined)
 
@@ -141,4 +143,4 @@ union
 
 **Output**
 
-:::image type="content" source="images/series-moving-var-fl/series-moving-var-sine-wave.png" alt-text="Graph depicting moving variance applied over a sine wave." border="false":::
+:::image type="content" source="media/series-moving-var-fl/series-moving-var-sine-wave.png" alt-text="Graph depicting moving variance applied over a sine wave." border="false":::

@@ -39,7 +39,7 @@ Identify syntactic and semantic errors in your queries. For queries that are par
 
 Explore and understand the parse tree in order to optimize your queries. For example, analyze the column and table references within a query to understand the compute cost associated with each operation.
 
-## Next steps
+## Related content
 
 * [Define schemas for semantic analysis](kusto-language-define-schemas.md)
 * [Parse queries and commands](kusto-language-parse-queries.md)

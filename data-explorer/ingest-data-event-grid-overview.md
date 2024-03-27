@@ -11,7 +11,7 @@ Event Grid ingestion is a pipeline that listens to Azure storage, and updates Az
 
 The Event Grid ingestion pipeline goes through several steps. You create a target table in Azure Data Explorer into which the [data in a particular format](#data-format) will be ingested. Then you create an Event Grid data connection in Azure Data Explorer. The Event Grid data connection needs to know [events routing](#events-routing) information, such as what table to send the data to and the table mapping. You also specify [ingestion properties](#ingestion-properties), which describe the data to be ingested, the target table, and the mapping. You can generate sample data and [upload blobs](#upload-blobs) or [rename blobs](#rename-blobs) to test your connection. [Delete blobs](#delete-blobs-using-storage-lifecycle) after ingestion.
 
-Event Grid ingestion can be managed through the [Azure portal](ingest-data-event-grid.md), using the [ingestion wizard](/azure/data-explorer/ingest-from-container), programmatically with [C#](data-connection-event-grid-csharp.md) or [Python](data-connection-event-grid-python.md), or with the [Azure Resource Manager template](data-connection-event-grid-resource-manager.md).
+Event Grid ingestion can be managed through the [Azure portal](create-event-grid-connection.md), using the [ingestion wizard](/azure/data-explorer/ingest-from-container), programmatically with [C#](data-connection-event-grid-csharp.md) or [Python](data-connection-event-grid-python.md), or with the [Azure Resource Manager template](data-connection-event-grid-resource-manager.md).
 
 For general information about data ingestion in Azure Data Explorer, see [Azure Data Explorer data ingestion overview](ingest-data-overview.md).
 
@@ -43,7 +43,7 @@ You can set the following properties:
 | `kustoDataFormat` |  Data format. Overrides the `Data format` set on the `Data Connection` pane. |
 | `kustoIngestionMappingReference` | Name of the existing [ingestion mapping](kusto/management/create-ingestion-mapping-command.md) to be used. Overrides the `Column mapping` set on the `Data Connection` pane.|
 | `kustoIgnoreFirstRecord` | If set to `true`, Kusto ignores the first row of the blob. Use in tabular format data (CSV, TSV, or similar) to ignore headers. |
-| `kustoExtentTags` | String representing [tags](kusto/management/extents-overview.md#extent-tagging) that will be attached to resulting extent. |
+| `kustoExtentTags` | String representing [tags](kusto/management/extent-tags.md) that will be attached to resulting extent. |
 | `kustoCreationTime` | Overrides [Extent Creation time](kusto/management/extents-overview.md#extent-creation-time) for the blob, formatted as an ISO 8601 string. Use for backfilling. |
 
 ## Events routing
@@ -97,7 +97,7 @@ await blob.UploadAsync(BinaryData.FromString(File.ReadAllText("<filePath>")));
 
 ## Upload blobs
 
-You can create a blob from a local file, set ingestion properties to the blob metadata, and upload it. For examples, see [Ingest blobs into Azure Data Explorer by subscribing to Event Grid notifications](ingest-data-event-grid.md#generate-sample-data)
+You can create a blob from a local file, set ingestion properties to the blob metadata, and upload it. For examples, see  [Use the Event Grid data connection](create-event-grid-connection.md#use-the-event-grid-data-connection).
 
 > [!NOTE]
 >
@@ -113,7 +113,7 @@ When using ADLSv2, you can rename a blob to trigger blob ingestion to Azure Data
 > [!NOTE]
 >
 > * Directory renaming is possible in ADLSv2, but it doesn't trigger *blob renamed* events and ingestion of blobs inside the directory. To ingest blobs following renaming, directly rename the desired blobs.
-> * If you defined filters to track specific subjects while [creating the data connection](ingest-data-event-grid.md) or while creating [Event Grid resources manually](ingest-data-event-grid-manual.md#create-an-event-grid-subscription), these filters are applied on the destination file path.
+> * If you defined filters to track specific subjects while [creating the data connection](create-event-grid-connection.md) or while creating [Event Grid resources manually](ingest-data-event-grid-manual.md#create-an-event-grid-subscription), these filters are applied on the destination file path.
 
 ## Delete blobs using storage lifecycle
 
@@ -125,7 +125,7 @@ Azure Data Explorer won't delete the blobs after ingestion. Use [Azure Blob stor
   * Event Grid notifications aren't triggered if the connection string provided to the export command or the connection string provided to an [external table](kusto/management/data-export/export-data-to-an-external-table.md) is a connecting string in [ADLS Gen2 format](kusto/api/connection-strings/storage-connection-strings.md#storage-connection-string-templates) (for example, `abfss://filesystem@accountname.dfs.core.windows.net`) but the storage account isn't enabled for hierarchical namespace.
   * If the account isn't enabled for hierarchical namespace, connection string must use the [Blob Storage](kusto/api/connection-strings/storage-connection-strings.md#storage-connection-string-templates) format (for example, `https://accountname.blob.core.windows.net`). The export works as expected even when using the ADLS Gen2 connection string, but notifications won't be triggered and Event Grid ingestion won't work.
 
-## Next steps
+## Related content
 
 * [Create an Event Grid data connection](create-event-grid-connection.md)
 * [Ingest data from Azure Event Hubs into Azure Data Explorer using the ingestion wizard](./event-hub-wizard.md)

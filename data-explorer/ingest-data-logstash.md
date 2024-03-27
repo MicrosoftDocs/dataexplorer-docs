@@ -10,6 +10,8 @@ ms.date: 09/22/2022
 
 # Ingest data from Logstash to Azure Data Explorer
 
+[!INCLUDE [real-time-analytics-connectors-note](includes/real-time-analytics-connectors-note.md)]
+
 [Logstash](https://www.elastic.co/products/logstash) is an open source, server-side data processing pipeline that ingests data from many sources simultaneously, transforms the data, and then sends the data to your favorite "stash". In this article, you'll send that data to Azure Data Explorer, which is a fast and highly scalable data exploration service for log and telemetry data. You'll initially create a table and data mapping in a test cluster, and then direct Logstash to send data into the table and validate the results.
 
 > [!NOTE]
@@ -17,7 +19,7 @@ ms.date: 09/22/2022
 
 ## Prerequisites
 
-* A Microsoft account or an Azure Active Directory user identity. An Azure subscription isn't required.
+* A Microsoft account or a Microsoft Entra user identity. An Azure subscription isn't required.
 * An Azure Data Explorer cluster and database. [Create a cluster and database](create-cluster-and-database.md).
 * Logstash version 6+ [Installation instructions](https://www.elastic.co/guide/en/logstash/current/installing-logstash.html).
 
@@ -88,7 +90,7 @@ This configuration also includes the `stdin` input plugin that will enable you t
 
 ## Configure Logstash to send data to Azure Data Explorer
 
-Paste the following settings into the same config file used in the previous step. Replace all the placeholders with the relevant values for your setup. For more information, see [Creating an AAD Application](./provision-azure-ad-app.md).
+Paste the following settings into the same config file used in the previous step. Replace all the placeholders with the relevant values for your setup. For more information, see [Creating a Microsoft Entra Application](./provision-azure-ad-app.md).
 
 ```ruby
 output {
@@ -143,6 +145,6 @@ Run the following command in your database to clean up the `logs` table:
 .drop table logs
 ```
 
-## Next steps
+## Related content
 
 * [Write queries](/azure/data-explorer/kusto/query/tutorials/learn-common-operators)

@@ -19,11 +19,13 @@ You must have [Cluster AllDatabasesAdmin](../management/access-control/role-base
 
 `.show` `workload_groups`
 
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+
 ## Parameters
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-| *WorkloadGroupName* | string | &check; | Name of the workload group. Can be specified with bracket notation ['WorkLoadGroupName']. |
+| *WorkloadGroupName* | `string` |  :heavy_check_mark: | Name of the workload group. Can be specified with bracket notation ['WorkLoadGroupName']. |
 
 ## Examples
 

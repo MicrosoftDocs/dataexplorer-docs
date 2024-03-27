@@ -2,7 +2,7 @@
 title:  Syntax conventions for reference documentation
 description: Learn about the syntax conventions for the Kusto Query Language and management command documentation.
 ms.topic: reference
-ms.date: 04/03/2023
+ms.date: 07/25/2023
 ---
 # Syntax conventions for reference documentation
 
@@ -10,20 +10,21 @@ This article outlines the syntax conventions followed in the [Kusto Query Langua
 
 ## Syntax conventions
 
-|Convention|Description|
+|Convention |Description |
 |--|--|
 |`Block`|String literals to be entered exactly as shown.|
 |*Italic*|Parameters to be provided a value upon use of the function or command.|
-|[ ] (square brackets)|Denotes that the enclosed item is optional.|
+|[ ] |Denotes that the enclosed item is optional.|
+|( ) |Denotes that at least one of the enclosed items is required.|
+|\| (pipe) |Used within square or round brackets to denote that you may specify one of the items separated by the pipe character. In this form, the pipe is equivalent to the logical OR operator. When in a block (`|`), the pipe is part of the KQL query syntax.|
 |[`,` ...]|Indicates that the preceding parameter can be repeated multiple times, separated by commas.|
-|\| (pipe)|Indicates that you can only use one of the syntax items separated by the pipe(s).|
 |`;`|Query statement terminator.|
 
 ## Examples
 
 ### Scalar function
 
-This example shows the syntax and an example usage of the [hash function](hashfunction.md), followed by an explanation of how each syntax component translates into the example usage.
+This example shows the syntax and an example usage of the [hash function](hash-function.md), followed by an explanation of how each syntax component translates into the example usage.
 
 #### Syntax
 
@@ -56,7 +57,7 @@ StormEvents
 ```
 
 * The StormEvents table is passed as an argument for the required *T* parameter.
-* `| sort by` is entered exactly as shown. In this case, the pipe character is part of the [tabular expression statement](tabularexpressionstatements.md) syntax, as represented by the block text. To learn more, see [What is a query statement](index.md#what-is-a-query-statement).
+* `| sort by` is entered exactly as shown. In this case, the pipe character is part of the [tabular expression statement](tabular-expression-statements.md) syntax, as represented by the block text. To learn more, see [What is a query statement](index.md#what-is-a-query-statement).
 * The State column is passed as an argument for the required *column* parameter with the optional `asc` flag.
 * After a comma, another set of arguments is passed: the StartTime column with the optional `desc` flag. The [`,` ...] syntax indicates that more argument sets may be passed but aren't required.
 
@@ -76,7 +77,7 @@ Consider the syntax for the [http_request plugin](http-request-plugin.md):
 evaluate http_request ( "https://contoso.com/", dynamic({}), dynamic({ EmployeeName: Nicole }) )
 ```
 
-## See also
+## Related content
 
 * [KQL overview](index.md)
 * [KQL quick reference](../../kql-quick-reference.md)

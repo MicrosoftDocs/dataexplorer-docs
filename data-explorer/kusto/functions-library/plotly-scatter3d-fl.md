@@ -9,7 +9,7 @@ ms.date: 03/13/2023
 
 The function `plotly_scatter3d_fl()` is a [user-defined function (UDF)](../query/functions/user-defined-functions.md) that allows you to customize a [plotly](https://plotly.com/python/) template to create an interactive 3D scatter chart.  
 
-The function accepts a table containing the records to be rendered, the names of the x, y, z & aggregation columns, and the chart title string. The function returns a single cell table containing [plotly JSON](https://plotly.com/chart-studio-help/json-chart-schema/). Optionally, you can render the data in an [Azure Data Explorer dashboard](../../azure-data-explorer-dashboards.md) tile. For more information, see [Plotly visual in dashboards](../../dashboard-customize-visuals.md#plotly-preview).
+The function accepts a table containing the records to be rendered, the names of the x, y, z & aggregation columns, and the chart title string. The function returns a single cell table containing [plotly JSON](https://plotly.com/chart-studio-help/json-chart-schema/). Optionally, you can render the data in an [Azure Data Explorer dashboard](../../azure-data-explorer-dashboards.md) tile. For more information, see [Plotly (preview)](../query/visualization-plotly.md).
 
 ## Prerequisite
 
@@ -22,16 +22,18 @@ Extract the required 'scatter3d' template from the publicly available `PlotlyTem
 ## Syntax
 
 `T | invoke plotly_scatter3d_fl(`*x_col*`,` *y_col*`,` *z_col*`,` *aggr_col* [`,` *chart_title* ]`)`
-  
+
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+
 ## Parameters
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-| *x_col* | string | &check; | The name of the column for the X coordinated of the 3D plot.|
-| *y_col* | string | &check; | The name of the column for the Y coordinated of the 3D plot.|
-| *z_col* | string | &check; | The name of the column for the Z coordinated of the 3D plot.|
-| *aggr_col* | string | &check; | The name of the grouping column. Records in the same group are rendered in distinct color.|
-| *chart_title* | string | | The chart title. The default is '3D Scatter chart'.|
+| *x_col* | `string` |  :heavy_check_mark: | The name of the column for the X coordinated of the 3D plot.|
+| *y_col* | `string` |  :heavy_check_mark: | The name of the column for the Y coordinated of the 3D plot.|
+| *z_col* | `string` |  :heavy_check_mark: | The name of the column for the Z coordinated of the 3D plot.|
+| *aggr_col* | `string` |  :heavy_check_mark: | The name of the grouping column. Records in the same group are rendered in distinct color.|
+| *chart_title* | `string` | | The chart title. The default is '3D Scatter chart'.|
 
 ## Function definition
 
@@ -39,10 +41,10 @@ You can define the function by either embedding its code as a query-defined func
 
 ### [Query-defined](#tab/query-defined)
 
-Define the function using the following [let statement](../query/letstatement.md). No permissions are required.
+Define the function using the following [let statement](../query/let-statement.md). No permissions are required.
 
 > [!IMPORTANT]
-> A [let statement](../query/letstatement.md) can't run on its own. It must be followed by a [tabular expression statement](../query/tabularexpressionstatements.md). To run a working example of `plotly_scatter3d_fl()`, see [Example](#example).
+> A [let statement](../query/let-statement.md) can't run on its own. It must be followed by a [tabular expression statement](../query/tabular-expression-statements.md). To run a working example of `plotly_scatter3d_fl()`, see [Example](#example).
 
 ```kusto
 let plotly_scatter3d_fl=(tbl:(*), x_col:string, y_col:string, z_col:string, aggr_col:string='', chart_title:string='3D Scatter chart')
@@ -117,7 +119,7 @@ plotly_scatter3d_fl(tbl:(*), x_col:string, y_col:string, z_col:string, aggr_col:
 
 ## Example
 
-The following example uses the [invoke operator](../query/invokeoperator.md) to run the function.
+The following example uses the [invoke operator](../query/invoke-operator.md) to run the function.
 
 ### [Query-defined](#tab/query-defined)
 
@@ -153,6 +155,7 @@ let plotly_scatter3d_fl=(tbl:(*), x_col:string, y_col:string, z_col:string, aggr
 };
 Iris
 | invoke plotly_scatter3d_fl(x_col='SepalLength', y_col='PetalLength', z_col='SepalWidth', aggr_col='Class', chart_title='3D scatter chart using plotly_scatter3d_fl()')
+| render plotly
 ```
 
 ### [Stored](#tab/stored)
@@ -171,8 +174,8 @@ Iris
 
 The output is a Plotly JSON string that can be rendered in an Azure Data Explorer dashboard tile. For more information on creating dashboard tiles, see [Visualize data with Azure Data Explorer dashboards ](../../azure-data-explorer-dashboards.md).
 
-![Screenshot of 3D scatter chart of a sample data set.](images\plotly-scatter3d-fl\plotly-scatter3d-chart.png)
+![Screenshot of 3D scatter chart of a sample dataset.](media/plotly-scatter3d-fl\plotly-scatter3d-chart.png)
 
 You can rotate, zoom and hover over specific records:
 
-![Screenshot of rotated 3D scatter chart of a sample data set.](images\plotly-scatter3d-fl\plotly-scatter3d-chart-rotated.png)
+![Screenshot of rotated 3D scatter chart of a sample dataset.](media/plotly-scatter3d-fl\plotly-scatter3d-chart-rotated.png)

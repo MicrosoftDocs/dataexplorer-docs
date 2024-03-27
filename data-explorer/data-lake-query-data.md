@@ -9,7 +9,7 @@ ms.date: 08/25/2022
 
 Azure Data Lake Storage is a highly scalable and cost-effective data lake solution for big data analytics. It combines the power of a high-performance file system with massive scale and economy to help you reduce your time to insight. Data Lake Storage Gen2 extends Azure Blob Storage capabilities and is optimized for analytics workloads.
 
-Azure Data Explorer integrates with Azure Blob Storage and Azure Data Lake Storage (Gen1 and Gen2), providing fast, cached, and indexed access to data stored in external storage. You can analyze and query data without prior ingestion into Azure Data Explorer. You can also query across ingested and uningested external data simultaneously. For more information, see how to [create an external table using the Azure Data Explorer web UI wizard](external-table.md). For a brief overview, see [external tables](kusto/query/schema-entities/externaltables.md).
+Azure Data Explorer integrates with Azure Blob Storage and Azure Data Lake Storage (Gen1 and Gen2), providing fast, cached, and indexed access to data stored in external storage. You can analyze and query data without prior ingestion into Azure Data Explorer. You can also query across ingested and uningested external data simultaneously. For more information, see how to [create an external table using the Azure Data Explorer web UI wizard](external-table.md). For a brief overview, see [external tables](kusto/query/schema-entities/external-tables.md).
 
 > [!TIP]
 > The best query performance necessitates data ingestion into Azure Data Explorer. The capability to query external data without prior ingestion should only be used for historical data or data that are rarely queried. [Optimize your external data query performance](#optimize-your-query-performance) for best results.
@@ -70,7 +70,7 @@ external_table("ArchivedProducts")
 
 ## Querying external and ingested data together
 
-You can query both external tables and ingested data tables within the same query. You can [`join`](kusto/query/joinoperator.md) or [`union`](kusto/query/unionoperator.md) the external table with other data from Azure Data Explorer, SQL servers, or other sources. Use a [`let( ) statement`](kusto/query/letstatement.md) to assign a shorthand name to an external table reference.
+You can query both external tables and ingested data tables within the same query. You can [`join`](kusto/query/join-operator.md) or [`union`](kusto/query/union-operator.md) the external table with other data from Azure Data Explorer, SQL servers, or other sources. Use a [`let( ) statement`](kusto/query/let-statement.md) to assign a shorthand name to an external table reference.
 
 In the example below, *Products* is an ingested data table and *ArchivedProducts* is an external table that we've defined previously:
 
@@ -208,7 +208,7 @@ Sign in to [https://dataexplorer.azure.com/clusters/help/databases/Samples](http
 
 #### Query *TaxiRides* external table without partitioning
 
-[Run this query](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAx3LSwqAMAwFwL3gHYKreh1xL7F9YrCtElP84OEV9zM4DZo5DsZjhGt6PqWTgL1p6+qhvaTEKjeI/FqyuZbGiwJf63QAi9vEL2UbAhtMEv6jyAH6+VhS9jOr1dULfUgAm2cAAAA=) on the external table *TaxiRides* to show rides for each day of the week, across the entire data set.
+[Run this query](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAx3LSwqAMAwFwL3gHYKreh1xL7F9YrCtElP84OEV9zM4DZo5DsZjhGt6PqWTgL1p6+qhvaTEKjeI/FqyuZbGiwJf63QAi9vEL2UbAhtMEv6jyAH6+VhS9jOr1dULfUgAm2cAAAA=) on the external table *TaxiRides* to show rides for each day of the week, across the entire dataset.
 
 ```kusto
 external_table("TaxiRides")
@@ -268,6 +268,6 @@ Organize your data using "folder" partitions that enable the query to skip irrel
 
 Select VM SKUs with more cores and higher network throughput (memory is less important). For more information, see [Select the correct VM SKU for your Azure Data Explorer cluster](manage-cluster-choose-sku.md).
 
-## Next steps
+## Related content
 
-* Query your data in the Azure Data Lake using Azure Data Explorer. Learn to [write queries](/azure/data-explorer/kusto/query/tutorials/learn-common-operators) and derive more insights from your data.
+* [Tutorial: Learn common KQL operators](kusto/query/tutorials/learn-common-operators.md)

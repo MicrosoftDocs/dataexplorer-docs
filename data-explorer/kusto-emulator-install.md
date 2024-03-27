@@ -3,7 +3,7 @@ title: Install the Azure Data Explorer Kusto emulator
 description: In this article, you'll learn how to install the Azure Data Explorer Kusto emulator and run your first query.
 ms.reviewer: vplauzon
 ms.topic: how-to
-ms.date: 05/08/2023
+ms.date: 12/05/2023
 ---
 
 # Install the Azure Data Explorer Kusto emulator
@@ -25,7 +25,7 @@ In this article, you'll learn how to:
 
 ## Prerequisites
 
-- The host operating system must be one of the following:
+- The host operating system must be one of:
   - Windows Server 2022
   - Windows Server 2019 Version 10.0.17763.2928 or newer
   - Windows 11
@@ -92,9 +92,9 @@ The following steps are for using PowerShell to start the emulator using the [Ku
     Invoke-WebRequest -Method post -ContentType 'application/json' -Body '{"csl":".show cluster"}' http://localhost:8080/v1/rest/mgmt
     ```
 
-    The command should return something like the following:
+    The command should return something like:
 
-    ```powershell
+    ```text
     StatusCode        : 200
     StatusDescription : OK
     Content           : {"Tables":[{"TableName":"Table_0","Columns":[{"ColumnName":"NodeId","DataType":"String","ColumnType":"string"},{"ColumnName":"Address","DataType":"St
@@ -120,7 +120,7 @@ You can use any of the following options when running the emulator:
 
 - Mount a local folder to the container: Use this option to mount a folder in the host environment into the container. Mounting a host folder enables your queries to interact with local files, which is useful for [creating a database persistent between container runs](#create-a-database) and [ingesting data](#ingest-data).
 
-    For example, to mount the folder "D:\host\local" on the host to the folder "c:\kustodatadata" in the container, use the following command on Windows Server:
+    For example, to mount the folder "D:\host\local" on the host to the folder "c:\kustodatadata" in the container, use the next command on Windows Server:
 
     ```powershell
     docker run -v d:\host\local:c:\kustodata -e ACCEPT_EULA=Y -m 4G -d -p 8080:8080 -t mcr.microsoft.com/azuredataexplorer/kustainer:latest
@@ -145,22 +145,28 @@ You can use any of the following tools to connect to and interact with the emula
 In the following sections, you'll use Kusto.Explorer to create a database, ingest data, and query it. To learn more, see [Using Kusto.Explorer](kusto/tools/kusto-explorer-using.md).
 
 > [!IMPORTANT]
-> The Kusto Emulator doesn't support HTTPS or Azure Active Directory (Azure AD) authentication. The following image highlights the affected fields in the **Add connection** properties.
+> The Kusto Emulator doesn't support HTTPS or Microsoft Entra authentication.
+>
+> You must first allow unsafe connections in **Tools** > **Options** > **Connections** > **Allow unsafe connections**.
+> 
+> :::image type="content" source="media/kusto-emulator/unsafe-connections.png" alt-text="Screenshot of Kusto Explorer connection options.":::
+> 
+> The following image highlights the affected fields in the **Add connection** properties.
 >
 > - The **Cluster connection** must begin with `http://` and not `https://`.
-> - In **Security** > **Advanced: Connection String**, you'll need to remove the `AAD Federated Security=True` portion of the connection string to disable Azure AD authentication.
+> - In **Security** > **Advanced: Connection String**, you'll need to remove the `AAD Federated Security=True` portion of the connection string to disable Microsoft Entra authentication.
 >
-> :::image type="content" source="media/kusto-emulator/kusto-emulator-connection.png" alt-text="Screenshot of Kusto Explorer connection.":::
+> :::image type="content" source="media/kusto-emulator/kusto-emulator-connection.png" alt-text="Screenshot of Kusto Explorer single connection setup.":::
 
 ## Create a database
 
-You'll need a database in your emulator for your data.
+To store data and run queries, create a database or attach the emulator to an existing database.
 
-A database can be persisted in a container folder or on a [mounted folder](#run-emulator-options).  The former's lifetime is bound to the container and won't be persisted between runs.  Also, container virtual storage is less efficient than native one.  Mounted folder enables you  to keep the data between container runs.
+A database can be persisted in a container folder or on a [mounted folder](#run-emulator-options).  The former's lifetime is bound to the container, so restarting the container loses any changes.  Also, the container virtual storage is less efficient than native one.  Mounted folder enables you to keep the data between container runs.
 
 In this example, we keep the data on the container.
 
-In the [Kusto.Explorer Query mode](kusto/tools/kusto-explorer-using.md#query-mode), run the following command to create a persistent database:
+In the [Kusto.Explorer Query mode](kusto/tools/kusto-explorer-using.md#query-mode), run the following command to create a persistent database if using a Windows container image:
 
 ```kusto
 .create database <YourDatabaseName> persist (
@@ -169,11 +175,32 @@ In the [Kusto.Explorer Query mode](kusto/tools/kusto-explorer-using.md#query-mod
   )
 ```
 
+The equivalent command for a Linux container image is:
+
+```kusto
+.create database <YourDatabaseName> persist (
+  @"/kustodata/dbs/<YourDatabaseName>/md",
+  @"/kustodata/dbs/<YourDatabaseName>/data"
+  )
+```
+
+This command requires that the folders don't already exist, to prevent over-writing existing information. To attach to an existing database, use the following command instead, specifying the path that ends with `md`:
+
+```kusto
+.attach database <YourDatabaseName> from @"<PathToMdFolder>"
+```
+
+It's also possible to detach the database from the emulator, which will keep all the database metadata and data intact (so you could reattach to it in the future):
+
+```kusto
+.detach database <YourDatabaseName>
+```
+
 ## Ingest data
 
 To ingest data, you must first create an external table linked to a file and then ingest the data into a table in the database.
 
-Use the steps in the following example to create an external table and ingest data into it. For the example, in the local folder *c:\kustodata*, you'll create a file called `sample.csv` with the following data:
+Use the steps in the following example to create an external table and ingest data into it. For the example, in the local folder *c:\kustodata*, create a file called `sample.csv` with the following data:
 
 ```text
 Alice, 1
@@ -216,6 +243,6 @@ MyIngestedSample
     docker stop <containerID>
     ```
 
-## Next steps
+## Related content
 
 - [Kusto Query Language (KQL) overview](kusto/query/index.md)

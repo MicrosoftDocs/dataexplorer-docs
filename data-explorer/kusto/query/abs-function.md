@@ -13,11 +13,13 @@ Calculates the absolute value of the input.
 
 `abs(`*x*`)`
 
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+
 ## Parameters
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-| *x* | int, real, or timespan | &check; | The value to make absolute. |
+| *x* | int, real, or timespan |  :heavy_check_mark: | The value to make absolute. |
 
 ## Returns
 

@@ -9,7 +9,7 @@ zone_pivot_groups: kql-flavors-all
 ---
 # geoip_fl()
 
-::: zone pivot="azuredataexplorer"
+::: zone pivot="azuredataexplorer, fabric"
 
 `geoip_fl()` is a [user-defined function](../query/functions/user-defined-functions.md) that retrieves geographic information of ip address.
 
@@ -17,24 +17,24 @@ zone_pivot_groups: kql-flavors-all
 > * Use the native function [geo_info_from_ip_address()](../query/geo-info-from-ip-address-function.md) instead of the function described in this document. The native function provides the same functionality and is better for performance and scalability. This document is provided for reference purposes only.
 > * This function retrieved geographic data from GeoLite2 data created by MaxMind, available from [http://www.maxmind.com](http://www.maxmind.com). Please review [GeoLite2 End User License Agreement](https://www.maxmind.com/en/geolite2/eula).
 
-## Prerequisites
-
-* The Python plugin must be [enabled on the cluster](../query/pythonplugin.md#enable-the-plugin). This is required for the inline Python used in the function.
+[!INCLUDE [python-zone-pivot-fabric](../../includes/python-zone-pivot-fabric.md)]
 
 ## Syntax
 
 `T | invoke geoip_fl(`*ip_col*`,` *country_col*`,` *state_col*`,` *city_col*`,` *longitude_col*`,` *latitude_col*`)`
-  
+
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+
 ## Parameters
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-| *ip_col* | string | &check; | The name of the column containing the IP addresses to resolve. |
-| *country_col* | string | &check; | The name of the column to store the retrieved country. |
-| *state_col* | string | &check; | The name of the column to store the retrieved state. |
-| *city_col* | string | &check; | The name of the column to store the retrieved city. |
-| *longitude_col* | real | &check; | The name of the column to store the retrieved longitude. |
-| *latitude_col* | real | &check; | The name of the column to store the retrieved latitude. |
+| *ip_col* | `string` |  :heavy_check_mark: | The name of the column containing the IP addresses to resolve. |
+| *country_col* | `string` |  :heavy_check_mark: | The name of the column to store the retrieved country. |
+| *state_col* | `string` |  :heavy_check_mark: | The name of the column to store the retrieved state. |
+| *city_col* | `string` |  :heavy_check_mark: | The name of the column to store the retrieved city. |
+| *longitude_col* | `real` |  :heavy_check_mark: | The name of the column to store the retrieved longitude. |
+| *latitude_col* | `real` |  :heavy_check_mark: | The name of the column to store the retrieved latitude. |
 
 ## Function definition
 
@@ -42,10 +42,10 @@ You can define the function by either embedding its code as a query-defined func
 
 ### [Query-defined](#tab/query-defined)
 
-Define the function using the following [let statement](../query/letstatement.md). No permissions are required.
+Define the function using the following [let statement](../query/let-statement.md). No permissions are required.
 
 > [!IMPORTANT]
-> A [let statement](../query/letstatement.md) can't run on its own. It must be followed by a [tabular expression statement](../query/tabularexpressionstatements.md). To run a working example of `geoip_fl()`, see [Example](#example).
+> A [let statement](../query/let-statement.md) can't run on its own. It must be followed by a [tabular expression statement](../query/tabular-expression-statements.md). To run a working example of `geoip_fl()`, see [Example](#example).
 
 ```kusto
 let geoip_fl=(tbl:(*), ip_col:string, country_col:string, state_col:string, city_col:string, longitude_col:string, latitude_col:string)
@@ -136,7 +136,7 @@ geoip_fl(tbl:(*), ip_col:string, country_col:string, state_col:string, city_col:
 
 ## Example
 
-The following example uses the [invoke operator](../query/invokeoperator.md) to run the function.
+The following example uses the [invoke operator](../query/invoke-operator.md) to run the function.
 
 ### [Query-defined](#tab/query-defined)
 
@@ -223,7 +223,7 @@ datatable(ip:string) [
 
 ::: zone-end
 
-::: zone pivot="azuremonitor, fabric"
+::: zone pivot="azuremonitor"
 
 This feature isn't supported.
 

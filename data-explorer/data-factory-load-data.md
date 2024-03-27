@@ -8,9 +8,11 @@ ms.date: 07/19/2022
 #Customer intent: I want to use Azure Data Factory to load data into Azure Data Explorer so that I can analyze it later.
 ---
 
-# Copy data to Azure Data Explorer by using Azure Data Factory 
+# Copy data to Azure Data Explorer by using Azure Data Factory
 
-Azure Data Explorer is a fast, fully managed, data-analytics service. It offers real-time analysis on large volumes of data that stream from many sources, such as applications, websites, and IoT devices. With Azure Data Explorer, you can iteratively explore data and identify patterns and anomalies to improve products, enhance customer experiences, monitor devices, and boost operations. It helps you explore new questions and get answers in minutes. 
+[!INCLUDE [real-time-analytics-connectors-note](includes/real-time-analytics-connectors-note.md)]
+
+Azure Data Explorer is a fast, fully managed, data-analytics service. It offers real-time analysis on large volumes of data that stream from many sources, such as applications, websites, and IoT devices. With Azure Data Explorer, you can iteratively explore data and identify patterns and anomalies to improve products, enhance customer experiences, monitor devices, and boost operations. It helps you explore new questions and get answers in minutes.
 
 Azure Data Factory is a fully managed, cloud-based, data-integration service. You can use it to populate your Azure Data Explorer database with data from your existing system. It can help you save time when you're building analytics solutions.
 
@@ -41,24 +43,24 @@ In this article, you use the Data Factory Copy Data tool to load data from Amazo
 
 1. In the left pane, select **Create a resource** > **Analytics** > **Data Factory**.
 
-   ![Create a data factory in the Azure portal.](media/data-factory-load-data/create-adf.png)
+   :::image type="content" source="media/data-factory-load-data/create-adf.png" alt-text="Screenshot shows the option to create a data factory in the Azure portal.":::
 
 1. In the **New data factory** pane, provide values for the fields in the following table:
 
-   ![The "New data factory" pane](media/data-factory-load-data/my-new-data-factory.png)  
+   ![The "New data factory" pane](media/data-factory-load-data/my-new-data-factory.png)
 
    | Setting  | Value to enter  |
    |---|---|
    | **Name** | In the box, enter a globally unique name for your data factory. If you receive an error, *Data factory name \"LoadADXDemo\" is not available*, enter a different name for the data factory. For rules about naming Data Factory artifacts, see [Data Factory naming rules](/azure/data-factory/naming-rules).|
    | **Subscription** | In the drop-down list, select the Azure subscription in which to create the data factory. |
    | **Resource Group** | Select **Create new**, and then enter the name of a new resource group. If you already have a resource group, select **Use existing**. |
-   | **Version** | In the drop-down list, select **V2**. |    
+   | **Version** | In the drop-down list, select **V2**. |
    | **Location** | In the drop-down list, select the location for the data factory. Only supported locations are displayed in the list. The data stores that are used by the data factory can exist in other locations or regions. |
 
 1. Select **Create**.
 
 1. To monitor the creation process, select **Notifications** on the toolbar. After you've created the data factory, select it.
-   
+
    The **Data Factory** pane opens.
 
    ![The Data Factory pane.](media/data-factory-load-data/data-factory-home-page.png)
@@ -101,17 +103,17 @@ You can load your data in either of the following ways:
     b. In the **Connect via integration runtime** drop-down list, select the value.
 
     c. In the **Access Key ID** box, enter the value.
-    
+
     > [!NOTE]
     > In Amazon S3, to locate your access key, select your Amazon username on the navigation bar, and then select **My Security Credentials**.
-    
+
     d. In the **Secret Access Key** box, enter a value.
 
     e. To test the linked service connection you created, select **Test Connection**.
 
     f. Select **Finish**.
-    
-      The **Source data store** pane displays your new AmazonS31 connection. 
+
+      The **Source data store** pane displays your new AmazonS31 connection.
 
 1. Select **Next**.
 
@@ -165,13 +167,13 @@ To create the Azure Data Explorer linked service, do the following steps:
             1. Select **Service principal key** and then, in the **Service principal key** box, enter the value for the key.
 
         > [!NOTE]
-        > * The service principal is used by Azure Data Factory to access the Azure Data Explorer service. To create a service principal, go to [create an Azure Active Directory (Azure AD) service principal](/azure-stack/operator/azure-stack-create-service-principals#manage-an-azure-ad-service-principal).
+        > * The service principal is used by Azure Data Factory to access the Azure Data Explorer service. To create a service principal, go to [create a Microsoft Entra service principal](/azure-stack/operator/azure-stack-create-service-principals#manage-an-azure-ad-service-principal).
         > * To assign permissions to a Managed Identity or a Service Principal or , see [manage permissions](manage-database-permissions.md).
         > * Do not use the Azure Key Vault method or User Assigned Managed Identity.
 
-   1. Under **Account selection method**, choose one of the following options: 
+   1. Under **Account selection method**, choose one of the following options:
 
-        * Select **From Azure subscription** and then, in the drop-down lists, select your **Azure subscription** and your **Cluster**. 
+        * Select **From Azure subscription** and then, in the drop-down lists, select your **Azure subscription** and your **Cluster**.
 
             > [!NOTE]
             > * The **Cluster** drop-down control lists only clusters that are associated with your subscription.
@@ -238,8 +240,8 @@ After you've created the linked service connection, the **Destination data store
 
     ![The "Deployment complete" pane](media/data-factory-load-data/deployment.png)
 
-## Next steps
+## Related content
 
-* Learn about the [Azure Data Explorer connector](/azure/data-factory/connector-azure-data-explorer) in Azure Data Factory.
-* Learn more about editing linked services, datasets, and pipelines in the [Data Factory UI](/azure/data-factory/quickstart-create-data-factory-portal).
-* Learn about [Azure Data Explorer queries](web-query-data.md) for data querying.
+* Learn about the [Azure Data Explorer connector](/azure/data-factory/connector-azure-data-explorer) for Azure Data Factory.
+* Edit linked services, datasets, and pipelines in the [Data Factory UI](/azure/data-factory/quickstart-create-data-factory-portal).
+* [Query data in the Azure Data Explorer web UI](web-query-data.md).

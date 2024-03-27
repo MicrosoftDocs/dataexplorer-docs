@@ -20,7 +20,7 @@ If you don't have an Azure subscription, create a [free Azure account](https://a
 
 You need the following to complete this article:
 
-* A Microsoft account or an Azure Active Directory user identity to sign in to the [help cluster](https://dataexplorer.azure.com/clusters/help/databases/Samples).
+* A Microsoft account or a Microsoft Entra user identity to sign in to the [help cluster](https://dataexplorer.azure.com/clusters/help/databases/Samples).
 * [Power BI Desktop](https://powerbi.microsoft.com/get-started/) (select **DOWNLOAD FREE**)
 
 ## Get data from Azure Data Explorer
@@ -39,7 +39,7 @@ You typically use the native query language with Azure Data Explorer, but it als
 
 1. On the **SQL Server database** screen, fill out the form with the following information.
 
-    ![Database, table, query options.](media/power-bi-sql-query/database-table-query.png)
+    ![Database, table, request properties.](media/power-bi-sql-query/database-table-query.png)
 
     **Setting** | **Value** | **Field description**
     |---|---|---|
@@ -75,6 +75,7 @@ You typically use the native query language with Azure Data Explorer, but it als
 
 If you no longer need the report you created for this article, delete the Power BI Desktop (.pbix) file.
 
-## Next steps
+## Next step
 
-[Visualize data using the Azure Data Explorer connector for Power BI](power-bi-data-connector.md)
+> [!div class="nextstepaction"]
+> [Visualize data using the Azure Data Explorer connector for Power BI](power-bi-data-connector.md)

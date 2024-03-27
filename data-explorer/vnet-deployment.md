@@ -10,7 +10,7 @@ ms.date: 03/30/2022
 # Deploy Azure Data Explorer cluster into your Virtual Network
 
 > [!IMPORTANT]
-> Consider moving to an Azure Private Endpoint based solution for implementing network security with Azure Data Explorer. It is less error-prone and provides [feature parity](security-network-overview.md#comparison-and-recommendation).
+> Consider moving to an Azure Private Endpoint based solution for implementing network security with Azure Data Explorer. It is less error-prone and provides [feature parity](security-network-overview.md#private-endpoint-vs-virtual-network-injection).
 
 This article explains the resources that are present when you deploy an Azure Data Explorer cluster into a custom Azure Virtual Network. This information will help you deploy a cluster into a subnet in your Virtual Network (VNet). For more information on Azure Virtual Networks, see [What is Azure Virtual Network?](/azure/virtual-network/virtual-networks-overview)
 
@@ -22,15 +22,15 @@ Azure Data Explorer supports deploying a cluster into a subnet in your Virtual N
 * Connect your on-premises network to Azure Data Explorer cluster's subnet.
 * Secure your data connection sources ([Event Hubs](/azure/event-hubs/event-hubs-about) and [Event Grid](/azure/event-grid/overview)) with [service endpoints](/azure/virtual-network/virtual-network-service-endpoints-overview).
 
-## Access your Azure Data Explorer cluster in your VNet
+## Access your Azure Data Explorer cluster in your virtual network
 
 You can access your Azure Data Explorer cluster using the following IP addresses for each service (engine and data management services):
 
-* **Private IP**: Used for accessing the cluster inside the VNet.
-* **Public IP**: Used for accessing the cluster from outside the VNet for management and monitoring, and as a source address for outbound connections started from the cluster.
+* **Private IP**: Used for accessing the cluster inside the virtual network.
+* **Public IP**: Used for accessing the cluster from outside the virtual network for management and monitoring, and as a source address for outbound connections started from the cluster.
 
 > [!IMPORTANT]
-> The default NSG rules block access to public IP addresses outside the VNet. To reach a public endpoint, you must add an exception for your public IP addresses in the NSG.
+> The default NSG rules block access to public IP addresses outside the virtual network. To reach a public endpoint, you must add an exception for your public IP addresses in the NSG.
 
 The following DNS records are created to access the service:
 
@@ -38,9 +38,9 @@ The following DNS records are created to access the service:
 
 * `private-[clustername].[geo-region].kusto.windows.net` (engine) `ingest-private-[clustername].[geo-region].kusto.windows.net`\\`private-ingest-[clustername].[geo-region].kusto.windows.net` (data management) are mapped to the private IP for each service.
 
-## Plan subnet size in your VNet
+## Plan subnet size in your virtual network
 
-The size of the subnet used to host an Azure Data Explorer cluster can't be altered after the subnet is deployed. In your VNet, Azure Data Explorer uses one private IP address for each VM and two private IP addresses for the internal load balancers (engine and data management). Azure networking also uses five IP addresses for each subnet. Azure Data Explorer provisions two VMs for the data management service. Engine service VMs are provisioned per user configuration scale capacity.
+The size of the subnet used to host an Azure Data Explorer cluster can't be altered after the subnet is deployed. In your virtual network, Azure Data Explorer uses one private IP address for each VM and two private IP addresses for the internal load balancers (engine and data management). Azure networking also uses five IP addresses for each subnet. Azure Data Explorer provisions two VMs for the data management service. Engine service VMs are provisioned per user configuration scale capacity.
 
 The total number of IP addresses:
 
@@ -59,20 +59,20 @@ The total number of IP addresses:
 
 ## Service endpoints for connecting to Azure Data Explorer
 
-[Azure Service Endpoints](/azure/virtual-network/virtual-network-service-endpoints-overview) enables you to secure your Azure multi-tenant resources to your virtual network.
+[Azure Service Endpoints](/azure/virtual-network/virtual-network-service-endpoints-overview) enables you to secure your Azure multitenant resources to your virtual network.
 Deploying the cluster into your subnet allows you to set up data connections with [Event Hubs](/azure/event-hubs/event-hubs-about) or [Event Grid](/azure/event-grid/overview) while restricting the underlying resources for Azure Data Explorer subnet.
 
 ## Private Endpoints
 
-[Private Endpoints](/azure/private-link/private-endpoint-overview) allow private access to Azure resources (such as [storage/event hub](vnet-endpoint-storage-event-hub.md)/Data Lake Gen 2), and use private IP from your Virtual Network, effectively bringing the resource into your VNet.
-Create a [private endpoint](/azure/private-link/private-endpoint-overview) to resources used by data connections, such as event hub and storage, and external tables such as Storage, Data Lake Gen 2, and SQL Database from your VNet to access the underlying resources privately.
+[Private Endpoints](/azure/private-link/private-endpoint-overview) allow private access to Azure resources (such as [storage/event hub](vnet-endpoint-storage-event-hub.md)/Data Lake Gen 2), and use private IP from your Virtual Network, effectively bringing the resource into your virtual network.
+Create a [private endpoint](/azure/private-link/private-endpoint-overview) to resources used by data connections, such as event hub and storage, and external tables such as Storage, Data Lake Gen 2, and SQL Database from your virtual network to access the underlying resources privately.
 
  > [!NOTE]
  > Setting up Private Endpoint requires [configuring DNS](/azure/private-link/private-endpoint-dns), We support [Azure Private DNS zone](/azure/dns/private-dns-privatednszone) setup only. Custom DNS server isn't supported.
 
 ## Configure Network Security Group rules
 
-[NSGs](/azure/virtual-network/security-overview) give you the ability to control network access within a VNet. You must configure NSGs for your Azure Data Explorer cluster to work in your VNet.
+[NSGs](/azure/virtual-network/security-overview) give you the ability to control network access within a virtual network. You must configure NSGs for your Azure Data Explorer cluster to work in your virtual network.
 
 ### Configure Network Security Group rules using subnet delegation
 
@@ -363,17 +363,38 @@ The [ARMClient](https://chocolatey.org/packages/ARMClient) is used to demonstrat
               ],
               "provisioningState": "Succeeded"
             }
-          }
+          },
+          {
+            "id": "/subscriptions/<subscriptionId>/resourceGroups/<resourceGroup>/providers/Microsoft.Kusto/Clusters/<clusterName>/OutboundNetworkDependenciesEndpoints/InternalTracing",
+            "name": "<clustername>/InternalTracing",
+            "type": "Microsoft.Kusto/Clusters/OutboundNetworkDependenciesEndpoints",
+            "location": "Australia Central",
+            "properties": {
+              "category": "Internal Tracing",
+              "endpoints": [
+                {
+                  "domainName": "ingest-<internalTracingCluster>.<region>.kusto.windows.net",
+                  "endpointDetails": [
+                    {
+                      "port": 443,
+                      "ipAddress": "25.24.23.22"
+                    }
+                  ]
+                }
+              ],
+              "provisioningState": "Succeeded"
+            }
+        }
         ...
        ]
    }
     ```
 
-The outbound dependencies cover categories such as "Azure Active Directory", "Azure Monitor", "Certificate Authority", and "Azure Storage". In each category, there's a list of domain names and ports that are needed to run the service. They can be used to programmatically configure the firewall appliance of choice.
+The outbound dependencies cover categories such as *Microsoft Entra ID*, *Azure Monitor*, *Certificate Authority*, *Azure Storage*, and *Internal Tracing*. In each category, there's a list of domain names and ports that are needed to run the service. They can be used to programmatically configure the firewall appliance of choice.
 
-## Deploy Azure Data Explorer cluster into your VNet using an Azure Resource Manager template
+## Deploy Azure Data Explorer cluster into your virtual network using an Azure Resource Manager template
 
-To deploy Azure Data Explorer cluster into your virtual network, use the [Deploy Azure Data Explorer cluster into your VNet](https://azure.microsoft.com/resources/templates/kusto-vnet/) Azure Resource Manager template.
+To deploy Azure Data Explorer cluster into your virtual network, use the [Deploy Azure Data Explorer cluster into your virtual network](https://azure.microsoft.com/resources/templates/kusto-vnet/) Azure Resource Manager template.
 
 This template creates the cluster, virtual network, subnet, network security group, and public IP addresses.
 

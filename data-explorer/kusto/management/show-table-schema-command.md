@@ -23,18 +23,20 @@ Get the schema in JSON format and additional table metadata:
 
 `.show` `table` *TableName* `schema` `as` `json`
 
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+
 ## Parameters
 
 |Name|Type|Required|Description|
 |--|--|--|--|
-|*TableName*|string|&check;|The name of the table for which to show the schema.|
+|*TableName*| `string` | :heavy_check_mark:|The name of the table for which to show the schema.|
 
 ## Returns
 
 | Output parameter | Type   | Description                                               |
 |------------------|--------|-----------------------------------------------------------|
-| TableName        | String | The name of the table.                                    |
-| Schema           | String | The table schema either as should be used for table create/alter or in JSON format|
-| DatabaseName     | String | The database to which the table belongs                   |
-| Folder           | String | Table's folder                                            |
-| DocString        | String | Table's docstring                                         |
+| TableName        | `string` | The name of the table.                                    |
+| Schema           | `string` | The table schema either as should be used for table create/alter or in JSON format|
+| DatabaseName     | `string` | The database to which the table belongs                   |
+| Folder           | `string` | Table's folder                                            |
+| DocString        | `string` | Table's docstring                                         |

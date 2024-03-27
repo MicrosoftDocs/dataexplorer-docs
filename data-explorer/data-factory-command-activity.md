@@ -3,7 +3,7 @@ title: 'Use Azure Data Explorer management commands in Azure Data Factory'
 description: 'In this topic, use Azure Data Explorer management commands in Azure Data Factory'
 ms.reviewer: tzgitlin
 ms.topic: how-to
-ms.date: 09/15/2019
+ms.date: 09/13/2023
 
 #Customer intent: I want to use Azure Data Explorer management commands in Azure Data Factory.
 ---
@@ -64,7 +64,7 @@ A [lookup activity](/azure/data-factory/control-flow-lookup-activity) can retrie
 
 1. When creating a new linked service, the **New Linked Service (Azure Data Explorer)** page opens:
 
-    ![ADX new linked service.](media/data-factory-command-activity/adx-new-linked-service.png)
+    ![ Azure Data Explorer new linked service.](media/data-factory-command-activity/adx-new-linked-service.png)
 
    * Select **Name** for Azure Data Explorer linked service. Add **Description** if needed.
    * In **Connect via integration runtime**, change current settings, if needed. 
@@ -72,7 +72,7 @@ A [lookup activity](/azure/data-factory/control-flow-lookup-activity) can retrie
         * Select the **From Azure subscription** radio button and select your **Azure subscription** account. Then, select your **Cluster**. Note the drop-down will only list clusters that belong to the user.
         * Instead, select **Enter manually** radio button and enter your **Endpoint** (cluster URL).
     * Specify the **Tenant**.
-    * Enter **Service principal ID**. The principal ID must have the adequate permissions, according to the permission level required by the command being used.
+    * Enter **Service principal ID**. This value can be found in the [Azure portal](https://ms.portal.azure.com/) under **App Registrations** > **Overview** > **Application (client) ID**. The principal must have the adequate permissions, according to the permission level required by the command being used.
     * Select **Service principal key** button and enter **Service Principal Key**.
     * Select your **Database** from the dropdown menu. Alternatively, select **Edit** checkbox and enter your database name.
     * Select **Test Connection** to test the linked service connection you created. If you can connect to your setup, a green checkmark **Connection successful** will appear.
@@ -211,7 +211,7 @@ In an async management command, the activity polls the operations table behind t
 }
 ``` 
 
-## Next steps
+## Related content
 
-* Learn about how to [copy data to Azure Data Explorer using Azure Data Factory](data-factory-load-data.md).
-* Learn about using [Azure Data Factory template for bulk copy from database to Azure Data Explorer](data-factory-template.md).
+* [Copy data to Azure Data Explorer using Azure Data Factory](data-factory-load-data.md).
+* [Azure Data Factory template for bulk copy from database to Azure Data Explorer](data-factory-template.md).

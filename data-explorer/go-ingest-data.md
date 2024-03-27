@@ -23,7 +23,7 @@ In this article, you first create a table and data mapping in a test cluster. Yo
 
 ## Prerequisites
 
-* A Microsoft account or an Azure Active Directory user identity. An Azure subscription isn't required.
+* A Microsoft account or a Microsoft Entra user identity. An Azure subscription isn't required.
 * An Azure Data Explorer cluster and database. [Create a cluster and database](create-cluster-and-database.md).
 * Install [Git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git).
 * Install [Go](https://golang.org/) with the following [Go SDK minimum requirements](kusto/api/golang/kusto-golang-client-library.md#minimum-requirements). 
@@ -206,6 +206,7 @@ If you plan to follow our other articles, keep the resources you created. If not
 .drop table StormEvents
 ```
 
-## Next steps
+## Next step
 
-[Write queries](/azure/data-explorer/kusto/query/tutorials/learn-common-operators)
+> [!div class="nextstepaction"]
+> [Write queries](/azure/data-explorer/kusto/query/tutorials/learn-common-operators)

@@ -7,7 +7,7 @@ ms.date: 01/18/2023
 ---
 # row_window_session()
 
-Calculates session start values of a column in a [serialized row set](./windowsfunctions.md#serialized-row-set).
+Calculates session start values of a column in a [serialized row set](./window-functions.md#serialized-row-set).
 
 ## Syntax
 
@@ -28,6 +28,8 @@ Calculates session start values of a column in a [serialized row set](./windowsf
 
 * *Restart* is an optional scalar expression of type `boolean`. If specified,
   every value that evaluates to `true` will immediately restart the session.
+
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
 
 ## Returns
 
@@ -67,6 +69,6 @@ datatable (ID:string, Timestamp:datetime) [
 | extend SessionStarted = row_window_session(Timestamp, 1h, 5m, ID != prev(ID))
 ```
 
-## See also
+## Related content
 
 * [scan operator](scan-operator.md)

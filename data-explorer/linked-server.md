@@ -9,7 +9,7 @@ ms.date: 02/13/2023
 SQL Server allows you to create linked servers to connect to other data sources. With a linked server, you can run queries that combine data from your SQL Server with data from the linked server. This way, you can access and work with data from multiple sources in a single location. This article shows how to create a linked server from SQL Server to Azure Data Explorer.
 
 > [!NOTE]
-> In order to authenticate to Azure Data Explorer, the SQL Server must use an Azure Active Directory (Azure AD) account.
+> In order to authenticate to Azure Data Explorer, the SQL Server must use a Microsoft Entra account.
 
 ## Establish the connection
 
@@ -43,7 +43,7 @@ Use Kusto [stored functions](kusto/query/schema-entities/stored-functions.md) fo
 
 SQL Server has a limitation where it can't use remote tabular functions from linked servers directly in its own queries. To overcome this limitation, use the `OpenQuery` function to run a query on the linked server. You can then use the outer T-SQL query to combine the data from the SQL server with the data returned from the Azure Data Explorer stored function.
 
-## See also
+## Related content
 
 * [Create linked servers](/sql/relational-databases/linked-servers/create-linked-servers-sql-server-database-engine)
 * [Connect with ODBC](connect-odbc.md)

@@ -12,18 +12,20 @@ zone_pivot_groups: kql-flavors-all
 Default - results are shown as a table.
 
 > [!NOTE]
-> This visualization can only be used in the context of the [render operator](renderoperator.md).
+> This visualization can only be used in the context of the [render operator](render-operator.md).
 
 ## Syntax
 
 *T* `|` `render` `table` [`with` `(`*propertyName* `=` *propertyValue* [`,` ...]`)`]
 
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+
 ## Parameters
 
 | Name | Type | Required | Description |
 | -- | -- | -- | -- |
-| *T* | string | &check; | Input table name.
-| *propertyName*, *propertyValue* | string | | A comma-separated list of key-value property pairs. See [supported properties](#supported-properties).|
+| *T* | `string` |  :heavy_check_mark: | Input table name.
+| *propertyName*, *propertyValue* | `string` | | A comma-separated list of key-value property pairs. See [supported properties](#supported-properties).|
 
 ### Supported properties
 
@@ -68,4 +70,4 @@ StormEvents
 | render table 
 ```
 
-:::image type="content" source="images/visualization-table/table-visualization.png" alt-text="Screenshot of table visualization output." lightbox="images/visualization-table/table-visualization.png":::
+:::image type="content" source="media/visualization-table/table-visualization.png" alt-text="Screenshot of table visualization output." lightbox="media/visualization-table/table-visualization.png":::

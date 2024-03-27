@@ -25,12 +25,12 @@ The following table describes the properties of the ManagedIdentity policy objec
 
 | Property      | Type   | Required | Description                                                                   |
 |---------------|--------|----------|-------------------------------------------------------------------------------|
-| ObjectId      | string | &check;  | Either the actual object ID of the managed identity or the reserved keyword `system` to reference the System Managed Identity of the cluster on which the command is run. |
-| ClientId      | string | Not applicable | The client ID of the managed identity. |
-| TenantId      | string | Not applicable | The tenant ID of the managed identity. |
-| DisplayName   | string | Not applicable | The display name of the managed identity. |
-| IsSystem      | bool   | Not applicable | A Boolean value indicating true if the identity is a System Managed Identity; false if otherwise. |
-| AllowedUsages | string | &check;  | A list of comma-separated allowed usage values for the managed identity. See [managed identity usages](#managed-identity-usages). |
+| ObjectId      | `string` |  :heavy_check_mark:  | Either the actual object ID of the managed identity or the reserved keyword `system` to reference the System Managed Identity of the cluster on which the command is run. |
+| ClientId      | `string` | Not applicable | The client ID of the managed identity. |
+| TenantId      | `string` | Not applicable | The tenant ID of the managed identity. |
+| DisplayName   | `string` | Not applicable | The display name of the managed identity. |
+| IsSystem      | `bool` | Not applicable | A Boolean value indicating true if the identity is a System Managed Identity; false if otherwise. |
+| AllowedUsages | `string` |  :heavy_check_mark:  | A list of comma-separated allowed usage values for the managed identity. See [managed identity usages](#managed-identity-usages). |
 
 The following is an example of a ManagedIdentity policy object:
 
@@ -49,10 +49,10 @@ The following is an example of a ManagedIdentity policy object:
 
 The following values specify authentication to a `usage` using the configured managed identity:
 
-| Value | Description | 
+| Value | Description |
 |---|---|
 | `All` | All current and future usages are allowed. |
-| `AutomatedFlows`| Run a continuous export automated flow on behalf of a managed identity. |
+| `AutomatedFlows`| Run a [Continuous Export](./data-export/continuous-data-export.md) or [Update Policy](./update-policy.md) automated flow on behalf of a managed identity. |
 | `DataConnection` | Authenticate to data connections to an Event Hub or an Event Grid. |
 |`ExternalTable` | Authenticate to external tables using connection strings configured with a managed identity. |
 | `NativeIngestion` |  Authenticate to an SDK for native ingestion from an external source. |

@@ -3,59 +3,38 @@ title:  Kusto connection strings
 description: This article describes Kusto connection strings in Azure Data Explorer.
 ms.reviewer: orspodek
 ms.topic: reference
-ms.date: 05/08/2023
+ms.date: 07/18/2023
 ---
 # Kusto connection strings
 
-Kusto connection strings can provide the information necessary
-for a Kusto client application to establish a connection to a Kusto service
-endpoint. Kusto connection strings are modeled after the ADO.NET connection
-strings. That is, the connection string is a semicolon-delimited list of name/value
-parameter pairs, optionally prefixed by a single URI.
+Kusto connection strings provide the information necessary for a Kusto client application to establish a connection to a Kusto service endpoint. Kusto connection strings are modeled after the ADO.NET connection strings. That is, the connection string is a semicolon-delimited list of name-value parameter pairs, optionally prefixed by a single URI.
 
-**Example:**
+For example, the following Kusto connection string begins with a URI that specifies the service endpoint for communication: `https://help.kusto.windows.net`. This URI is assigned to the `Data Source` property. Next, `/Samples` within the connection string represents the default database and is assigned to the `Initial Catalog` property. Lastly, two other properties, `Fed` and `Accept`, provide further configuration or customization options for the connection.
 
 ```text
 https://help.kusto.windows.net/Samples; Fed=true; Accept=true
 ```
 
-The URI provides the service endpoint to communicate with:
-
-* (`https://help.kusto.windows.net`) - value of the `Data Source` property.
-* `Samples`(default database) - value of the`Initial Catalog` property.
-
-Two additional properties are provided using the name/value syntax: 
-
-* `Fed` property (also called `AAD Federated Security`) set to `true`.
-* `Accept` property set to `true`.
-
 > [!NOTE]
 >
-> * Property names are not case sensitive, and spaces between name/value pairs are ignored.
-> * Property values **are** case sensitive. A property value that contains
->   a semicolon (`;`), a single quotation mark (`'`), or a double quotation mark (`"`)
+> * Property names are not case sensitive.
+> * Property values are case sensitive.
+> * Spaces between name-value parameter pairs are ignored.
+> * A property value that contains a semicolon (`;`), a single quotation mark (`'`), or a double quotation mark (`"`)
 >   must be enclosed between double quotation marks.
 
-Several Kusto client tools support an extension over the URI prefix of the connection
-string, in that they allow the shorthand format `@` _ClusterName_ `/` _InitialCatalog_ to be used.
-For example, the connection string `@help/Samples` is translated by these tools
-to `https://help.kusto.windows.net/Samples; Fed=true`, which indicates three
-properties (`Data Source`, `Initial Catalog`, and `AAD Federated Security`).
+Several Kusto client tools support an extension over the URI prefix of the connection string that allows for a shorthand format of `@`*ClusterName*`/`*InitialCatalog*. For example, these tools translate the connection string `@help/Samples` to `https://help.kusto.windows.net/Samples; Fed=true`.
 
-Programmatically, Kusto connection strings can be parsed and manipulated
-by the C# `Kusto.Data.KustoConnectionStringBuilder` class. This class validates
-all connection strings and generates a runtime exception if validation fails.
-This functionality is present in all flavors of Kusto SDK.
+Programmatically, the C# `Kusto.Data.KustoConnectionStringBuilder` class can parse and manipulate Kusto connection strings. This class validates all connection strings and generates a runtime exception if validation fails. This functionality is present in all flavors of Kusto SDK.
 
 ## Trusted endpoints
 
 A connection with a Kusto endpoint can only be established if that endpoint is trusted.
-The Kusto client trusts all endpoints whose hostname part is issued by the service
-(e.g., endpoints whose DNS hostname ends with `kusto.windows.net`) by default.
-The client won't establish connections to other endpoints; in order to allow that,
-one can use the `Kusto.Data.Common.KustoTrustedEndpoints` class to add additional endpoints
-to the list of trusted endpoints (by using either `SetOverridePolicy` which overrides
-the default policy, or `AddTrustedHosts` which adds new entries to the existing policy.)
+The Kusto client trusts all endpoints whose hostname part is issued by the service.
+For instance, endpoints whose DNS hostname ends with `kusto.windows.net`.
+
+By default, the client doesn't establish connections to other endpoints. In order to allow connections
+to other endpoints, use the `Kusto.Data.Common.KustoTrustedEndpoints` class to add endpoints to the list of trusted endpoints. Use `SetOverridePolicy` to override the default policy, and `AddTrustedHosts` to add new entries to the existing policy.
 
 ```csharp
 KustoTrustedEndpoints.AddTrustedHosts(
@@ -71,75 +50,83 @@ KustoTrustedEndpoints.AddTrustedHosts(
 
 ## Connection string properties
 
-The following table lists all the properties you can specify in a Kusto connection string.
-It lists programmatic names (which is the name of the property in the
-`Kusto.Data.KustoConnectionStringBuilder` object) as well as additional property names that are aliases.
+The following tables list all the possible properties that can be included in a Kusto connection string. The tables also provide alias names for each property. Moreover, the tables indicate the programmatic names associated with each property, which represents the name of the property in the `Kusto.Data.KustoConnectionStringBuilder` object.
 
 ### General properties
 
-| Property name              | Alternative names                      | Programmatic name  | Description                                                                                                                          |
-|----------------------------|----------------------------------------|--------------------|---------------------------------------------------|
-| Client Version for Tracing |                                        | TraceClientVersion | When tracing the client version, use this value   |
-| Data Source                | Addr, Address, Network Address, Server | DataSource         | The URI specifying the Kusto service endpoint. For example, `https://mycluster.kusto.windows.net` or `net.tcp://localhost`               |
-| Initial Catalog            | Database                               | InitialCatalog     | The name of the database to be used by default. For example, MyDatabase|
-| Query Consistency          | QueryConsistency                       | QueryConsistency   | Set to either `strongconsistency` or `weakconsistency` to determine if the query should synchronize with the metadata before running |
+| Property name | Programmatic name | Description |
+|--|--|--|
+| Client Version for Tracing | TraceClientVersion | When tracing the client version, use this property. |
+| Data Source</br></br>**Aliases:** Addr, Address, Network Address, Server | DataSource | The URI specifying the Kusto service endpoint. For example, `https://mycluster.kusto.windows.net`. |
+| Initial Catalog</br></br>**Alias:** Database | InitialCatalog | The name of the database to be used by default. For example, `MyDatabase`. |
+| Query Consistency</br></br>**Alias:** QueryConsistency | QueryConsistency | Set to either `strongconsistency` or `weakconsistency` to determine if the query should synchronize with the metadata before running. |
 
 ### User authentication properties
 
-| Property name          | Alternative names                          | Programmatic name | Description                       |
-|------------------------|--------------------------------------------|-------------------|-----------------------------------|
-| AAD Federated Security | Federated Security, Federated, Fed, AADFed | FederatedSecurity | A Boolean value that instructs the client to perform Azure Active  |
-|Authority Id            |TenantId                                    |Authority          |A String value that provides the name or ID of the user's tenant. The default value is microsoft.com. For more information, see [AAD authority](/azure/active-directory/develop/msal-client-application-configuration#authority). |
-| Enforce MFA            | MFA,EnforceMFA                             | EnforceMfa        | A Boolean value that instructs the client to acquire a multifactor-authentication token       |
-| User ID                | UID, User                                  | UserID            | A String value that instructs the client to perform user authentication with the indicated user name           |
-| User Name for Tracing  |                                            | TraceUserName     | A String value that reports to the service which user name to use when tracing the request internally         |
-| User Token             | UsrToken, UserToken                        | UserToken         | A String value that instructs the client to perform user authentication with the specified bearer token.<br/>Overrides ApplicationClientId, ApplicationKey, and ApplicationToken. (If specified, skips the actual client authentication flow in favor of the provided token.)       |
+| Property name | Programmatic name | Description |
+|--|--|--|
+| Microsoft Entra ID Federated Security </br></br>**Aliases:** Federated Security, Federated, Fed, AADFed | FederatedSecurity | A boolean value that instructs the client to perform Microsoft Entra authentication.|
+| Authority ID </br></br>**Alias:** TenantId | Authority | A string value that provides the name or ID of the user's tenant. The default value is `microsoft.com`. For more information, see [Microsoft Entra authority](/azure/active-directory/develop/msal-client-application-configuration#authority). |
+| Enforce MFA </br></br>**Alias:** MFA, EnforceMFA | EnforceMfa | An optional boolean value that instructs the client to acquire a multifactor-authentication token. |
+| User ID </br></br>**Aliases:** UID, User | UserID | A string value that instructs the client to perform user authentication with the indicated user name. |
+| User Name for Tracing | TraceUserName | An optional string value that reports to the service which user name to use when tracing the request internally. |
+| User Token </br></br>**Aliases:** UsrToken, UserToken | UserToken | A string value that instructs the client to perform user authentication with the specified bearer token. </br></br>Overrides `ApplicationClientId`, `ApplicationKey`, and `ApplicationToken`. If specified, skips the actual client authentication flow in favor of the provided token. |
 
-The following combinations of properties are supported (`AAD Federated Security` must be true for all of them):
+### Supported property combinations for user authentication
 
-* `WithAadUserPromptAuthentication`: `User ID` (optional) and `Authority Id` (optional).
-* `WithAadUserTokenAuthentication`: `User Token` (mandatory.)
+For user authentication, specify `AAD Federated Security` as `true`. Then, choose one of the following authentication modes, and specify the relevant properties for that mode.
 
-Note that `Enforce MFA` and `User Name for Tracing` are both optional, and can always be specified.
+| Authentication mode | Property names |
+|--|--|
+| Microsoft Entra user Prompt Authentication | - User ID (optional)</br>- Authority ID (optional)</br>- Enforce MFA (optional)</br>- User Name for Tracing (optional)|
+| Microsoft Entra user Token Authentication | - User Token</br>- Enforce MFA (optional)</br>- User Name for Tracing (optional)|
 
 ### Application authentication properties
 
-|Property name                                     |Alternative names                         |Programmatic name                             |Description      |
-|--------------------------------------------------|------------------------------------------|----------------------------------------------|-----------------|
-|AAD Federated Security                            |Federated Security, Federated, Fed, AADFed|FederatedSecurity                             |A Boolean value that instructs the client to perform Azure Active Directory (AAD) federated authentication|
-|Application Certificate SendX5c                   |Application Certificate Send Public Certificate, SendX5c|ApplicationCertificateSendX5c   |A Boolean value that instructs the client to send the public key of the certificate to AAD|
-|Application Certificate Thumbprint                |AppCert                                   |ApplicationCertificateThumbprint              |A String value that provides the thumbprint of the client certificate to use when using an application client certificate authenticating flow|
-|Application Client Id                             |AppClientId                               |ApplicationClientId                           |A String value that provides the application client ID to use when authenticating|
-|Application Key                                   |AppKey                                    |ApplicationKey                                |A String value that provides the application key to use when authenticating using an application secret flow|
-|Application Name for Tracing                      |TraceAppName                              |ApplicationNameForTracing                     |A String value that reports to the service which application name to use when tracing the request internally|
-|Application Token                                 |AppToken                                  |ApplicationToken                              |A String value that instructs the client to perform application authenticating with the specified bearer token|
-|Authority Id                                      |TenantId                                  |Authority                                     |A String value that provides the name or ID of the tenant in which the application is registered. The default value is microsoft.com. For more information, see [AAD authority](/azure/active-directory/develop/msal-client-application-configuration#authority). |
-|Azure Region                                      |AzureRegion, Region                       |AzureRegion                                   |A string value that provides the name of the Azure Region in which to authenticate.|
-|ManagedServiceIdentity                            |N/A                                       |EmbeddedManagedIdentity                       |A String value that instructs the client which application identity to use with managed identity authentication; use `system` to indicate the system-assigned identity. This property can't be set with a connection string, only programmatically.|
-|Application Certificate Subject Distinguished Name|Application Certificate Subject           |ApplicationCertificateSubjectDistinguishedName||
-|Application Certificate Issuer Distinguished Name |Application Certificate Issuer            |ApplicationCertificateIssuerDistinguishedName ||
-|Application Certificate Send Public Certificate   |Application Certificate SendX5c, SendX5c  |ApplicationCertificateSendPublicCertificate   ||
+| Property name | Programmatic name | Description |
+|--|--|--|
+| Microsoft Entra ID Federated Security </br></br>**Aliases:** Federated Security, Federated, Fed, AADFed | FederatedSecurity | A boolean value that instructs the client to perform Microsoft Entra ID federated authentication. |
+| Application Certificate SendX5c </br></br>**Aliases:** Application Certificate Send Public Certificate, SendX5c | ApplicationCertificateSendX5c | A boolean value that instructs the client to perform subject name and issuer based authentication. |
+| Application Certificate Thumbprint </br></br>**Alias:** AppCert | ApplicationCertificateThumbprint | A string value that provides the thumbprint of the client certificate to use when using an application client certificate authenticating flow. |
+| Application Client ID </br></br>**Alias:** AppClientId | ApplicationClientId | A string value that provides the application client ID to use when authenticating. |
+| Application Key </br></br>**Alias:** AppKey | ApplicationKey | A string value that provides the application key to use when authenticating using an application secret flow. |
+| Application Name for Tracing </br></br>**Alias:** TraceAppName | ApplicationNameForTracing | An optional string value that reports to the service which application name to use when tracing the request internally. |
+| Application Token </br></br>**Alias:** AppToken | ApplicationToken | A string value that instructs the client to perform application authenticating with the specified bearer token. |
+| Authority ID </br></br>**Alias:** TenantId | Authority | A string value that provides the name or ID of the tenant in which the application is registered. The default value is `microsoft.com`. For more information, see [Microsoft Entra authority](/azure/active-directory/develop/msal-client-application-configuration#authority). |
+| Azure Region </br></br>**Aliases:** AzureRegion, Region | AzureRegion | A string value that provides the name of the Azure Region in which to authenticate. |
+| ManagedServiceIdentity | EmbeddedManagedIdentity | A string value that instructs the client which application identity to use with managed identity authentication. Use `system` to indicate the system-assigned identity. </br></br>This property can't be set with a connection string, only programmatically. |
+| Application Certificate Subject Distinguished Name </br></br>**Alias:** Application Certificate Subject | ApplicationCertificateSubjectDistinguishedName |  A string value that specifies the application certificate subject distinguished name.|
+| Application Certificate Issuer Distinguished Name </br></br>**Alias:** Application Certificate Issuer | ApplicationCertificateIssuerDistinguishedName |  A string value that specifies the application certificate issuer distinguished name.|
 
-The following combinations of properties are supported (`AAD Federated Security` must be true for all of them):
+### Supported property combinations for application authentication
 
-* `WithAadApplicationKeyAuthentication`: `Application Client Id` (mandatory), `Application Key` (mandatory), `Authority Id` (mandatory).
-* `WithAadApplicationThumbprintAuthentication`: `Application Client Id` (mandatory), `Application Certificate Thumbprint` (mandatory), `Authority Id` (mandatory).
-* `WithAadApplicationSubjectAndIssuerAuthentication`: `Application Client Id` (mandatory), `Application Certificate Subject Distinguished Name` (mandatory), `Application Certificate Issuer Distinguished Name` (mandatory), `Authority Id` (mandatory), `Azure Region` (optional), `Application Certificate SendX5c` (optional).
-* `WithAadApplicationSubjectNameAuthentication`: `Application Client Id` (mandatory), `Application Certificate Subject Distinguished Name` (mandatory), `Authority Id` (mandatory), `Azure Region` (optional).
-* `WithAadApplicationTokenAuthentication`: `Application Token` (mandatory).
+For application authentication, specify `AAD Federated Security` as `true`. Then, choose one of the following authentication modes, and specify the relevant properties for that mode.
 
-Note that `Application Name for Tracing` is optional, and can always be specified.
+| Authentication mode | Property names |
+|--|--|
+| Microsoft Entra Application Key Authentication | - Application Client Id</br>- Application Key</br>- Authority Id</br> - Application Name for Tracing (optional) |
+| Microsoft Entra Application Thumbprint Authentication | - Application Client Id</br>- Application Certificate Thumbprint</br>- Authority Id</br> - Application Name for Tracing (optional) |
+| Microsoft Entra Application Subject and Issuer Authentication | - Application Client Id</br>- Application Certificate Subject Distinguished Name</br>- Application Certificate Issuer Distinguished Name</br>- Authority Id</br>- Azure Region (optional)</br>- Application Certificate SendX5c (optional)</br> - Application Name for Tracing (optional) |
+| Microsoft Entra Application Subject Name Authentication | - Application Client Id</br>- Application Certificate Subject Distinguished Name</br>- Authority Id</br>- and Azure Region (optional)</br> - Application Name for Tracing (optional) |
+| Microsoft Entra Application Token Authentication | - Application Token</br> - Application Name for Tracing (optional) |
+
+#### Authentication with an application certificate
+
+1. The application should be configured to accept the given certificate. [How to authentication based-on Microsoft Entra application's certificate](https://github.com/Azure-Samples/active-directory-dotnet-daemon-certificate-credential).
+1. The application should be configured as an authorized principal in the relevant Kusto cluster.
+1. The certificate needs to be installed in Local Machine store or in Current User store.
+1. The certificate's public key should contain at least 2048 bits.
 
 ### Client communication properties
 
-|Property name|Alternative names|Programmatic name  |Description                                                   |
-|-------------|-----------------|-------------------|--------------------------------------------------------------|
-|Accept       |                 |Accept             |A Boolean value that requests detailed error objects to be returned on failure.|
-|Streaming    |                 |Streaming          |A Boolean value that requests the client won't accumulate data before providing it to the caller.|
-|Uncompressed |                 |Uncompressed       |A Boolean value that requests the client won't ask for transport-level compression.|
+| Property name | Programmatic name | Description |
+|--|--|--|
+| Accept | Accept |A boolean value that requests detailed error objects to be returned on failure. |
+| Streaming | Streaming | A boolean value that requests the client not accumulate data before providing it to the caller. This is a default behavior. |
+| Uncompressed | Uncompressed | A boolean value that requests the client not ask for transport-level compression. |
 
 > [!NOTE]
-> When the Streaming flag is enabled (as is the default),
+> When the `Streaming` flag is enabled (as is the default),
 > the SDK does not buffer all response data in memory;
 > instead, it "pulls" the data from the service when the caller
 > requests it. Therefore, it is essential that in this case
@@ -147,32 +134,9 @@ Note that `Application Name for Tracing` is optional, and can always be specifie
 > once it is done reading the data, as the network connection
 > to the service is held open unnecessarily.
 
-## Authentication properties (details)
+## Examples
 
-One of the important tasks of the connection string is to tell the client how to authenticate to the service.
-The following algorithm is generally used by clients for authentication against HTTP/HTTPS endpoints:
-
-1. If AadFederatedSecurity is true:
-    1. If UserToken is specified, use AAD federated authentication with the specified token
-    1. Otherwise, if ApplicationToken is specified, perform federated authentication with the specified token
-    1. Otherwise, if ApplicationClientId and ApplicationKey are specified, perform federated authentication with the specified application client ID and key
-    1. Otherwise, if ApplicationClientId and ApplicationCertificateThumbprint are specified, perform federated authentication with the specified application client ID and certificate
-    1. Otherwise, perform federated authentication with the current logged-on user's identity (user will be prompted if this is the first authentication in the session)
-
-1. Otherwise don't authenticate.
-
-
-### AAD federated application authentication with application certificate
-
-1. Authentication based on an application's certificate is supported only for web applications (and not for native client applications).
-1. The web application should be configured to accept the given certificate. [How to authentication based-on AAD application's certificate](https://github.com/Azure-Samples/active-directory-dotnet-daemon-certificate-credential)
-1. The web application should be configured as an authorized principal in the relevant Kusto cluster.
-1. The certificate with the given thumbprint should be installed (in Local Machine store or in Current User store).
-1. The certificate's public key should contain at least 2048 bits.
-
-## AAD-based authentication examples
-
-**AAD Federated authentication using the currently logged-on user identity (user will be prompted if required)**
+**Microsoft Entra ID Federated authentication using the currently logged-on user identity (user will be prompted if required)**
 
 ```csharp
 var kustoUri = "https://<clusterName>.<region>.kusto.windows.net";
@@ -182,7 +146,7 @@ var kustoConnectionStringBuilder = new KustoConnectionStringBuilder(kustoUri)
 // Equivalent Kusto connection string: $"Data Source={kustoUri};Database=NetDefaultDB;Fed=True;Authority Id={authority}"
 ```
 
-**AAD Federated authentication with user id hint (user will be prompted if required)**
+**Microsoft Entra ID Federated authentication with user id hint (user will be prompted if required)**
 
 ```csharp
 var kustoUri = "https://<clusterName>.<region>.kusto.windows.net";
@@ -193,7 +157,7 @@ var kustoConnectionStringBuilder = new KustoConnectionStringBuilder(kustoUri)
 // Equivalent Kusto connection string: $"Data Source={kustoUri};Database=NetDefaultDB;Fed=True;Authority Id={authority};User ID={userId}"
 ```
 
-**AAD Federated application authentication using ApplicationClientId and ApplicationKey**
+**Microsoft Entra ID Federated application authentication using ApplicationClientId and ApplicationKey**
 
 ```csharp
 var kustoUri = "https://<clusterName>.<region>.kusto.windows.net";
@@ -222,7 +186,7 @@ var kustoConnectionStringBuilder = new KustoConnectionStringBuilder(kustoUri)
     .WithAadUserManagedIdentity(managedIdentityClientId);
 ```
 
-**AAD Federated authentication using user / application token**
+**Microsoft Entra ID Federated authentication using user / application token**
 
 ```csharp
 var kustoUri = "https://<clusterName>.<region>.kusto.windows.net";

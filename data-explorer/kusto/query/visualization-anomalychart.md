@@ -11,26 +11,28 @@ zone_pivot_groups: kql-flavors-all
 
 ::: zone pivot="azuredataexplorer, fabric"
 
-The anomaly chart visualization is similar to a [timechart](visualization-timechart.md), but [highlights anomalies](./samples.md#get-more-from-your-data-by-using-kusto-with-machine-learning) using the [series_decompose_anomalies](./series-decompose-anomaliesfunction.md) function.  
+The anomaly chart visualization is similar to a [timechart](visualization-timechart.md), but [highlights anomalies](./samples.md#get-more-from-your-data-by-using-kusto-with-machine-learning) using the [series_decompose_anomalies](./series-decompose-anomalies-function.md) function.  
 
 > [!NOTE]
-> This visualization can only be used in the context of the [render operator](renderoperator.md).
+> This visualization can only be used in the context of the [render operator](render-operator.md).
 
 ## Syntax
 
 *T* `|` `render` `anomalychart` [`with` `(` *propertyName* `=` *propertyValue* [`,` ...]`)`]
 
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+
 ## Parameters
 
 | Name | Type | Required | Description |
 | -- | -- | -- | -- |
-| *T* | string | &check; | Input table name.|
-| *propertyName*, *propertyValue* | string | | A comma-separated list of key-value property pairs. See [supported properties](#supported-properties).|
+| *T* | `string` |  :heavy_check_mark: | Input table name.|
+| *propertyName*, *propertyValue* | `string` | | A comma-separated list of key-value property pairs. See [supported properties](#supported-properties).|
 
 ### Supported properties
 
 All properties are optional.
-    
+
 |*PropertyName*|*PropertyValue*                                                                   |
 |--------------|----------------------------------------------------------------------------------|
 |`accumulate`  |Whether the value of each measure gets added to all its predecessors. (`true` or `false`)|
@@ -57,7 +59,7 @@ This visualization supports splitting into multiple y-axis values. The supported
 |`none`    |A single y-axis is displayed for all series data. (Default)       |
 |`axes`    |A single chart is displayed with multiple y-axes (one per series).|
 |`panels`  |One chart is rendered for each `ycolumn` value (up to some limit).|
- 
+
 ## Example
 
 > [!div class="nextstepaction"]
@@ -74,7 +76,7 @@ demo_make_series2
 | render anomalychart with(anomalycolumns=anomalies, title='Web app. traffic of a month, anomalies') //use "| render anomalychart with anomalycolumns=anomalies" to render the anomalies as bold points on the series charts.
 ```
 
-:::image type="content" source="images/visualization-anomalychart/anomaly-chart.png" alt-text="Screenshot of anomaly chart output." lightbox="images/visualization-anomalychart/anomaly-chart.png":::
+:::image type="content" source="media/visualization-anomalychart/anomaly-chart.png" alt-text="Screenshot of anomaly chart output." lightbox="media/visualization-anomalychart/anomaly-chart.png":::
 
 ::: zone-end
 

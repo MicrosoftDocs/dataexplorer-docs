@@ -17,20 +17,21 @@ The pie chart visual can also be used in the context of [Geospatial visualizatio
 
 ::: zone-end
 
-
 > [!NOTE]
-> This visualization can only be used in the context of the [render operator](renderoperator.md).
+> This visualization can only be used in the context of the [render operator](render-operator.md).
 
 ## Syntax
 
 *T* `|` `render` `piechart` [`with` `(`*propertyName* `=` *propertyValue* [`,` ...]`)`]
 
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+
 ## Parameters
 
 | Name | Type | Required | Description |
 | -- | -- | -- | -- |
-| *T* | string | &check; | Input table name.
-| *propertyName*, *propertyValue* | string | | A comma-separated list of key-value property pairs. See [supported properties](#supported-properties).|
+| *T* | `string` |  :heavy_check_mark: | Input table name.
+| *propertyName*, *propertyValue* | `string` | | A comma-separated list of key-value property pairs. See [supported properties](#supported-properties).|
 
 ### Supported properties
 
@@ -69,7 +70,7 @@ All properties are optional.
 This visualization can be further elaborated by providing the `kind` property.
 The supported values of this property are:
 
-| `kind` value | Description| 
+| `kind` value | Description|
 |---|---|
 | `map` | Expected columns are [Longitude, Latitude] or GeoJSON point, color-axis and numeric. Supported in Kusto Explorer desktop. For more information, see [Geospatial visualizations](geospatial-visualizations.md)
 
@@ -86,4 +87,4 @@ StormEvents
 | render piechart with(title="Storm Events by State")
 ```
 
-:::image type="content" source="images/visualization-piechart/pie-chart.png" alt-text="Screenshot of pie chart visualization output." lightbox="images/visualization-piechart/pie-chart.png":::
+:::image type="content" source="media/visualization-piechart/pie-chart.png" alt-text="Screenshot of pie chart visualization output." lightbox="media/visualization-piechart/pie-chart.png":::

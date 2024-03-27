@@ -7,7 +7,7 @@ ms.date: 05/24/2023
 ---
 # .show table policy caching command
 
-Show the table cache policy. To speed up queries, data is cached on processing nodes, SSD, or even in RAM. The [cache policy](cachepolicy.md) allows your cluster to describe the data artifacts that it uses, so that more important data can take priority.
+Show the table cache policy. To speed up queries, data is cached on processing nodes, SSD, or even in RAM. The [cache policy](cache-policy.md) allows your cluster to describe the data artifacts that it uses, so that more important data can take priority.
 
 ## Permissions
 
@@ -17,12 +17,14 @@ You must have at least Database User, Database Viewer, or Database Monitor permi
 
 `.show` `table` [*DatabaseName* `.`]*TableName* `policy` `caching`
 
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+
 ## Parameters
 
 |Name|Type|Required|Description|
 |--|--|--|--|
-|*DatabaseName*|string||The name of the database. This is required when running the command from outside the database context of the specified table.|
-|*TableName*|string|&check;|The name of the table.|
+|*DatabaseName*| `string` ||The name of the database. This is required when running the command from outside the database context of the specified table.|
+|*TableName*| `string` | :heavy_check_mark:|The name of the table.|
 
 ## Examples
 

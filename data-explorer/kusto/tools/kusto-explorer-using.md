@@ -21,11 +21,11 @@ Search++ mode enables you to search for a term using search syntax across one or
 
     A heat-map of the table/time-slot grid shows which terms appear and where they appear.
 
-    :::image type="content" source="images/kusto-explorer-using/search-plus-plus.png" alt-text="Search + + Kusto Explorer":::
+    :::image type="content" source="media/kusto-explorer-using/search-plus-plus.png" alt-text="Search + + Kusto Explorer":::
 
 1. Select a cell in the grid and select **View Details** to show the relevant entries in the results pane.
 
-    :::image type="content" source="images/kusto-explorer-using/search-plus-plus-results.png" alt-text="Kusto Explorer Search + + results":::
+    :::image type="content" source="media/kusto-explorer-using/search-plus-plus-results.png" alt-text="Kusto Explorer Search + + results":::
 
 ## Query mode
 
@@ -58,7 +58,7 @@ StormEvents
 | take 10
 ```
 
-:::image type="content" source="images/kusto-explorer-using/basic-query.png" alt-text="Kusto Explorer basic query.":::
+:::image type="content" source="media/kusto-explorer-using/basic-query.png" alt-text="Kusto Explorer basic query.":::
 
 To learn more about the Kusto Query Language, see [Kusto Query Language](../query/index.md).
 
@@ -73,8 +73,7 @@ To learn more about the Kusto Query Language, see [Kusto Query Language](../quer
 > [!NOTE]
 > There are two types of query parametrization techniques in Kusto:
 >
-> * [Language-integrated query parametrization](../query/queryparametersstatement.md) is implemented as part
-> of the query engine and is meant to be used by applications that query the service programmatically. This method is not described in this document.
+> * [Language-integrated query parametrization](../query/query-parameters-statement.md) is implemented server-side and is meant to be used by applications that query the service programmatically. This method is not described in this document.
 >
 > * Client-side query parametrization, described below, is a feature of the Kusto.Explorer application only. It's equivalent to using string-replace operations on the queries before sending them to be executed by the service. The syntax described below is not part of the query language itself and can't be used when sending queries to the service by means other than Kusto.Explorer.
 
@@ -82,14 +81,14 @@ If you use the same value in multiple queries or in multiple tabs, it's highly i
 
 You can easily define and edit existing query parameters:
 
-:::image type="content" source="images/kusto-explorer-using/parametrized-query.png" alt-text="Screenshot of query editor showing a query with parameters. The query editor option titled Query parameters is highlighted.":::
+:::image type="content" source="media/kusto-explorer-using/parametrized-query.png" alt-text="Screenshot of query editor showing a query with parameters. The query editor option titled Query parameters is highlighted.":::
 
-:::image type="content" source="images/kusto-explorer-using/parametrized-query-3.png" alt-text="Screenshot of the Query parameters window showing the defined parameters.":::
+:::image type="content" source="media/kusto-explorer-using/parametrized-query-3.png" alt-text="Screenshot of the Query parameters window showing the defined parameters.":::
 
 You can have multiple sets of parameters (listed in the **Parameters Set** combo box).
 Select **Add new** or **Delete current** to manipulate the list of parameter sets.
 
-:::image type="content" source="images/kusto-explorer-using/parametrized-query-5.png" alt-text="List of parameter sets.":::
+:::image type="content" source="media/kusto-explorer-using/parametrized-query-5.png" alt-text="List of parameter sets.":::
 
 ## Share queries and results
 
@@ -102,7 +101,7 @@ Kusto.Explorer provides a convenient way to share queries and query results by e
 1. [Run your query](#basic-queries) in Kusto.Explorer.
 1. In the Home tab, in the Share section, select **Query and Results to Clipboard** (or press Ctrl+Shift+C).
 
-    :::image type="content" source="images/kusto-explorer-using/menu-export.png" alt-text="Export to clipboard.":::
+    :::image type="content" source="media/kusto-explorer-using/menu-export.png" alt-text="Export to clipboard.":::
 
     Kusto.Explorer copies the following to the clipboard:
      * Your query
@@ -112,7 +111,7 @@ Kusto.Explorer provides a convenient way to share queries and query results by e
 
 1. Paste the contents of the clipboard into a new email message.
 
-    :::image type="content" source="images/kusto-explorer-using/share-results-2.png" alt-text="Share results in email." lightbox="images/kusto-explorer-using/share-results-2.png":::
+    :::image type="content" source="media/kusto-explorer-using/share-results-2.png" alt-text="Share results in email." lightbox="media/kusto-explorer-using/share-results-2.png":::
 
 ### Deep-linking queries
 
@@ -133,7 +132,7 @@ https://help.kusto.windows.net/Samples [[Run the query](https://help.kusto.windo
 The first link opens Kusto.Explorer and sets the cluster and database context appropriately.
 The second link (`Run the query`) is the deep link. If you move the link to an email message and press CTRL+K, you can see the actual URL:
 
-https://help.kusto.windows.net/Samples?web=0&query=H4sIAAAAAAAEAAsuyS%2fKdS1LzSspVuDlqlEoLs3NTSzKrEpVSM4vzSvR0FRIqlRIyszTCC5JLCoJycxN1VEwT9EEKS1KzUtJLVIoAYolZwAlFQCB3oo%2bTAAAAA%3d%3d
+> https:\/\/help.kusto.windows.net/Samples?web=0&query=H4sIAAAAAAAEAAsuyS%2fKdS1LzSspVuDlqlEoLs3NTSzKrEpVSM4vzSvR0FRIqlRIyszTCC5JLCoJycxN1VEwT9EEKS1KzUtJLVIoAYolZwAlFQCB3oo%2bTAAAAA%3d%3d
 
 #### Deep-links and parametrized queries
 
@@ -216,30 +215,27 @@ Kusto.Explorer.exe c:\temp\script.kql uri=https://help.kusto.windows.net/Samples
 
 1. To view the list of authorized principals, right-click the target entity in the [Connections panel](kusto-explorer.md#connections-tab), and select **Manage Database Authorized Principals**. (You can also select this option from the Management Menu.)
 
-    :::image type="content" source="images/kusto-explorer-using/right-click-manage-authorized-principals.png" alt-text="Screenshot of entity drop down menu. The options titled Manage Database Authorized Principals is highlighted.":::
+    :::image type="content" source="media/kusto-explorer-using/right-click-manage-authorized-principals.png" alt-text="Screenshot of entity drop down menu. The options titled Manage Database Authorized Principals is highlighted.":::
 
 1. Select **Add principal** to add an authorized principal.
-    :::image type="content" source="images/kusto-explorer-using/manage-authorized-principals-window.png" alt-text="Screenshot of the Manage authorized principals window. The options titled Drop principal and Add principal are highlighted.":::
+    :::image type="content" source="media/kusto-explorer-using/manage-authorized-principals-window.png" alt-text="Screenshot of the Manage authorized principals window. The options titled Drop principal and Add principal are highlighted.":::
 
 1. Provide the principal details, then select **Add principal**.
 
-    :::image type="content" source="images/kusto-explorer-using/add-authorized-principals-window.png" alt-text="Screenshot of the Add authorized principal window. The button titled Add principal is highlighted.":::
+    :::image type="content" source="media/kusto-explorer-using/add-authorized-principals-window.png" alt-text="Screenshot of the Add authorized principal window. The button titled Add principal is highlighted.":::
 
 1. Confirm that you want to add the authorized principal.
 
-    :::image type="content" source="images/kusto-explorer-using/confirm-add-authorized-principals.png" alt-text="Screenshot of Review Principal window showing a confirmation request for adding authorized principal.":::
+    :::image type="content" source="media/kusto-explorer-using/confirm-add-authorized-principals.png" alt-text="Screenshot of Review Principal window showing a confirmation request for adding authorized principal.":::
 
 To drop an existing authorized principal, select **Drop principal** and confirm the action.
 
-:::image type="content" source="images/kusto-explorer-using/confirm-drop-authorized-principals.png" alt-text="Screenshot of Drop principal window showing a confirmation request for dropping an authorized principal.":::
+:::image type="content" source="media/kusto-explorer-using/confirm-drop-authorized-principals.png" alt-text="Screenshot of Drop principal window showing a confirmation request for dropping an authorized principal.":::
 
-## Next steps
+## Related content
 
 * [Kusto.Explorer keyboard shortcuts](kusto-explorer-shortcuts.md)
 * [Kusto.Explorer options](kusto-explorer-options.md)
 * [Troubleshooting Kusto.Explorer](kusto-explorer-troubleshooting.md)
-
-To Learn more about Kusto.Explorer tools and utilities, See:
-
 * [Kusto.Explorer code features](kusto-explorer-code-features.md)
 * [Kusto Query Language (KQL)](../query/index.md)

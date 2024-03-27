@@ -15,11 +15,13 @@ Returns a dynamic array of the Unicode codepoints of the input string. This func
 
 `unicode_codepoints_from_string(`*value*`)`
 
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+
 ## Parameters
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-| *value* | string | &check; | The source string to convert. |
+| *value* | `string` |  :heavy_check_mark: | The source string to convert. |
 
 ## Returns
 

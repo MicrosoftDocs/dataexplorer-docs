@@ -7,17 +7,19 @@ ms.date: 06/13/2023
 ---
 # .delete database policy merge command
 
-Delete a database's [merge policy](mergepolicy.md). The merge policy defines if and how [Extents (Data Shards)](../management/extents-overview.md) in the cluster should get merged.
+Delete a database's [merge policy](merge-policy.md). The merge policy defines if and how [Extents (Data Shards)](../management/extents-overview.md) in the cluster should get merged.
 
 ## Syntax
 
 `.delete` `database` *DatabaseName* `policy` `merge`
 
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+
 ## Parameters
 
 |Name|Type|Required|Description|
 |--|--|--|--|
-|*DatabaseName*|string|&check;|The name of the database for which to delete the merge policy.|
+|*DatabaseName*| `string` | :heavy_check_mark:|The name of the database for which to delete the merge policy.|
 
 ### Example
 

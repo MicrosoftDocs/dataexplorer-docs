@@ -8,7 +8,7 @@ ms.date: 03/01/2023
 
 # .alter materialized-view autoUpdateSchema
 
-Sets the `autoUpdateSchema` value of an existing materialized view to `true` or `false`. For information on the autoUpdateSchema property, see [materialized view create command properties](materialized-view-create.md#properties).
+Sets the `autoUpdateSchema` value of an existing materialized view to `true` or `false`. For information on the autoUpdateSchema property, see [materialized view create command properties](materialized-view-create.md#supported-properties).
 
 ## Permissions
 
@@ -18,12 +18,14 @@ You must have at least [Materialized View Admin](../access-control/role-based-ac
 
 `.alter` `materialized-view` *MaterializedViewName* `autoUpdateSchema` *Boolean*
 
+[!INCLUDE [syntax-conventions-note](../../../includes/syntax-conventions-note.md)]
+
 ## Parameters
 
 | Name                   | Type   | Required | Description                    |
 |------------------------|--------|----------|--------------------------------|
-| *MaterializedViewName* | string | &check;  | Name of the materialized view. |
-| *Boolean* | Bool | &check;  | `autoUpdateSchema` value to be updated. |
+| *MaterializedViewName* | `string` |  :heavy_check_mark:  | Name of the materialized view. |
+| *Boolean* | `bool` |  :heavy_check_mark:  | `autoUpdateSchema` value to be updated. |
 
 ## Returns
 
@@ -39,7 +41,7 @@ The following command enables `autoUpdateSchema` for materialized view *MyView*,
 .alter materialized-view MyView autoUpdateSchema true
 ```
 
-**Output:**
+**Output**
 
 | Name   | SourceTable | Query                            | MaterializedTo                   | LastRun                      | LastRunResult | IsHealthy | IsEnabled | Folder | DocString | AutoUpdateSchema | EffectiveDateTime            | Lookback   |
 |--------|-------------|----------------------------------|----------------------------------|------------------------------|---------------|-----------|-----------|--------|-----------|------------------|------------------------------|------------|
@@ -53,7 +55,7 @@ The following command disables `autoUpdateSchema` for materialized view *MyView*
 .alter materialized-view MyView autoUpdateSchema false
 ```
 
-**Output:**
+**Output**
 
 | Name   | SourceTable | Query                                       | MaterializedTo                   | LastRun                      | LastRunResult | IsHealthy | IsEnabled | Folder | DocString | AutoUpdateSchema | EffectiveDateTime            | Lookback   |
 |--------|-------------|---------------------------------------------|----------------------------------|------------------------------|---------------|-----------|-----------|--------|-----------|------------------|------------------------------|------------|

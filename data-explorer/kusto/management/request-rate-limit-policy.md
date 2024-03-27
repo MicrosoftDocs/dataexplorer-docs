@@ -9,6 +9,8 @@ ms.date: 05/24/2023
 
 The workload group's request rate limit policy lets you limit the number of concurrent requests classified into the workload group, per workload group or per principal.
 
+Rate limits are enforced at the level defined by the workload group's [Request rate limits enforcement policy](request-rate-limits-enforcement-policy.md).
+
 ## The policy object
 
 A request rate limit policy has the following properties:
@@ -26,11 +28,15 @@ A request rate limit of kind `ConcurrentRequests` includes the following propert
 
 | Name                  | Type | Description                                | Supported Values |
 |-----------------------|------|--------------------------------------------|------------------|
-| MaxConcurrentRequests | int  | The maximum number of concurrent requests. | [`0`, `10000`]   |
+| MaxConcurrentRequests | `int` | The maximum number of concurrent requests. | [`0`, `10000`]   |
+
+> [!NOTE]
+>
+> * If a workload group doesn't have a specified limit on the maximum concurrent requests, it's subject to the default maximum value of `10000`.
 
 When a request exceeds the limit on maximum number of concurrent requests:
 
-* The request's state, as presented by [System information commands](systeminfo.md), will be `Throttled`.
+* The request's state, as presented by [System information commands](system-info.md), will be `Throttled`.
 * The error message will include the *origin* of the throttling and the *capacity* that's been exceeded.
 
 The following table shows a few examples of concurrent requests that exceed the maximum limit and the error message that these requests return:
@@ -45,7 +51,9 @@ The following table shows a few examples of concurrent requests that exceed the 
 * The exception type will be `QueryThrottledException` for queries, and `ControlCommandThrottledException` for management commands.
   
 > [!NOTE]
-> Management commands may also be throttled as a result of exceeding the limit defined by the cluster's [capacity policy](./show-cluster-capacity-policy-command.md).
+>
+> * If either of the limits defined by the [capacity policy](capacity-policy.md) or by a request rate limit policy is exceeded, a management command will be throttled.
+> * The [capacity policy](capacity-policy.md) may limit the request rate of requests that fall under a specific category, such as ingestions.
 
 ### Resource utilization rate limit
 
@@ -53,13 +61,13 @@ A request rate limit of kind `ResourceUtilization` includes the following proper
 
 | Name           | Type           | Description     | Supported Values      |
 |----------------|----------------|----------------|--------------|
-| ResourceKind   | `ResourceKind` | The resource to limit. **Note:** when `ResourceKind` is `TotalCpuSeconds`, the limit is enforced based on *post-execution* reports of CPU utilization of *completed* requests: Requests whose execution will *begin after* `MaxUtilization` has been reached within the defined `TimeWindow` (based on reporting of *completed* requests) will fail. Requests that report utilization of 0.005 seconds of CPU or lower are not counted. | `RequestCount`, `TotalCpuSeconds` |
-| MaxUtilization | `long`         | The maximum of the resource that can be utilized.    | RequestCount: [`1`, `1000000000`]; TotalCpuSeconds: [`1`, `828000`]      |
+| ResourceKind   | `ResourceKind` | The resource to limit.</br></br>When `ResourceKind` is `TotalCpuSeconds`, the limit is enforced based on post-execution reports of CPU utilization of completed requests. Requests that report utilization of 0.005 seconds of CPU or lower aren't counted. The limit (`MaxUtilization`) represents the total CPU seconds that can be consumed by requests within a specified time window (`TimeWindow`). For example, a user running ad-hoc queries may have a limit of 1000 CPU seconds per hour. If this limit is exceeded, subsequent queries will be throttled, even if started concurrently, as the cumulative CPU seconds have surpassed the defined limit within the sliding window period. | `RequestCount`, `TotalCpuSeconds` |
+| MaxUtilization | `long`         | The maximum of the resource that can be utilized.    | RequestCount: [`1`, `16777215`]; TotalCpuSeconds: [`1`, `828000`]      |
 | TimeWindow     | `timespan`     | The sliding time window during which the limit is applied.     | [`00:01:00`, `1.00:00:00`]        |
 
 When a request exceeds the limit on resources utilization:
 
-* The request's state, as presented by [System information commands](systeminfo.md), will be `Throttled`.
+* The request's state, as presented by [System information commands](system-info.md), will be `Throttled`.
 * The error message will include the *origin* of the throttling and the *quota* that's been exceeded. For example:
 
 The following table shows a few examples of requests that exceed the resource utilization rate limit and the error message that these requests return:
@@ -72,7 +80,35 @@ The following table shows a few examples of requests that exceed the resource ut
 * The HTTP response code will be `429`. The subcode will be `TooManyRequests`.
 * The exception type will be `QuotaExceededException`.
 
-### Examples
+## How consistency affects rate limits
+
+With strong consistency, the default limit on maximum concurrent requests depends on the SKU of the cluster, and is calculated as: `Cores-Per-Node x 10`. For example, a cluster that's set up with Azure D14_v2 nodes, where each node has 16 vCores, will have a default limit of `16` x `10` = `160`.
+
+With weak consistency, the effective default limit on maximum concurrent requests depends on the SKU of the cluster and number of query heads, and is calculated as: `Cores-Per-Node x 10 x Number-Of-Query-Heads`. For example, a cluster that's set up with Azure D14_v2 and 5 query heads, where each node has 16 vCores, will have an effective default limit of `16` x `10` x `5` = `800`.
+
+For more information, see [Query consistency](../concepts/queryconsistency.md).
+
+## The `default` workload group
+
+The `default` workload group has the following policy defined by default. This policy can be altered.
+
+```json
+[
+  {
+    "IsEnabled": true,
+    "Scope": "WorkloadGroup",
+    "LimitKind": "ConcurrentRequests",
+    "Properties": {
+      "MaxConcurrentRequests": < Cores-Per-Node x 10 >
+    }
+  }
+]
+```
+
+> [!NOTE]
+> * When you alter the policy for the `default` workload group, a limit must be defined for the maximum concurrent requests.
+
+## Examples
 
 The following policies allow up to:
 
@@ -126,38 +162,6 @@ The following policies will block all requests classified to the workload group:
 ]
 ```
 
-### The `default` workload group
+## Related content
 
-The `default` workload group has the following policy defined by default. This policy can be altered.
-
-```json
-[
-  {
-    "IsEnabled": true,
-    "Scope": "WorkloadGroup",
-    "LimitKind": "ConcurrentRequests",
-    "Properties": {
-      "MaxConcurrentRequests": < Cores-Per-Node x 10 >
-    }
-  }
-]
-```
-
-#### Notes
-
-* Rate limits are enforced at the level defined by the workload group's [Request rate limits enforcement policy](request-rate-limits-enforcement-policy.md).
-* The default limit on maximum concurrent requests depends on the SKU of the cluster, and is calculated as: `Cores-Per-Node x 10`.
-    * For example: A cluster that's set up with Azure D14_v2 nodes, where each node has 16 vCores, will have a default limit of `16` x `10` = `160`.
-    * This default limit applies to the `default` workload group, and any newly created workload group that doesn't have request rate limit policies specified at the time of its creation.
-* If a workload group has no limit on maximum concurrent requests defined, then the maximum allowed value of `10000` applies.
-* When you alter the policy for the `default` workload group, a limit must be defined for the workload group's max concurrent requests.
-* The cluster's [capacity policy](capacitypolicy.md) may also limit the request rate of requests that fall under a specific category, for example *ingestions*.
-    * If either of the limits defined by the [capacity policy](capacitypolicy.md) or by a request rate limit policy is exceeded, a management command will be throttled.
-* When request rate limits of kind `ConcurrentRequests` are applied, the output of [`.show capacity`](diagnostics.md#show-capacity) may change based on those limits.
-    * [`.show capacity`](diagnostics.md#show-capacity) can show the capacities for the principal that ran the request, according to: the context of the request, the workload group it was classified into, and its effective policies.
-    * When running `.show capacity with(scope=workloadgroup)`, different principals may see different outputs if their requests are classified into different workload groups.
-    * Otherwise, the request context is ignored, and the output is only affected by the cluster's [capacity policy](capacitypolicy.md).
-
-## Management commands
-
-Manage the workload group's request rate limit policies with [Workload groups management commands](./show-workload-group-command.md).
+* [.show workload_group command](show-workload-group-command.md)

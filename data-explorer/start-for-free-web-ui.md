@@ -14,7 +14,7 @@ In this article, we'll show you how to create a free cluster, ingest data,  and 
 
 ## Prerequisites
 
-A Microsoft account or an Azure Active Directory user identity to create a free cluster. You do not require an Azure subscription or a credit card.
+A Microsoft account or a Microsoft Entra user identity to create a free cluster. You do not require an Azure subscription or a credit card.
 
 ## Create your free cluster
 
@@ -46,7 +46,7 @@ To start a quick action, under **Actions**, select the action you want to perfor
 
         :::image type="content" source="media/start-for-free-web-ui/start-for-free-create-database.png" alt-text="Screenshot of Create database page, showing the details for the new database.":::
 
-## Next steps
+## Related content
 
 * [Upgrade your free cluster](start-for-free-upgrade.md)
 * [Manage Event Hubs data connections in your free cluster](start-for-free-event-hubs.md)
