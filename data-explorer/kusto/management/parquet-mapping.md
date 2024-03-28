@@ -41,7 +41,7 @@ Each Parquet mapping element must contain either of the following optional prope
 
 ## Parquet type conversions
 
-Comprehensive support is provided for converting data types when you're ingesting data into, or querying data from, a Parquet source into a table.
+Comprehensive support is provided for converting data types when you're ingesting or querying data from a Parquet source.
 
 The following table provides a mapping of Parquet field types, and the table column types they can be converted to. The first column lists the Parquet type, and the others show the table column types they can be converted to.
 
