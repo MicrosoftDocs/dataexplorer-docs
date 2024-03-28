@@ -340,6 +340,36 @@ We're enabling our customers to make with Azure Data Explorer data-driven decisi
 
 - [Datacore IL Ltd website](https://datacore.co.il)
 
+## Delegate A/S
+
+:::image type="icon" source="media/findmypartner/Delegate-Logo.png":::
+
+Development and design of cloud native solutions based on the latest Microsoft technologies and services. Guidance and consultancy on DevOps processes and software design, architecture and development of highly scalable solutions.
+
+**Partner type**
+
+- SI
+- ISV
+
+**Focus geography**
+
+- Denmark
+- Sweden
+- Norway
+- Iceland
+- Holland
+- Belgium
+- Luxembourg
+
+**Contact**
+
+- [https://delegate.dk/kontakt-os/](https://delegate.dk/kontakt-os/)
+
+**Additional information**
+
+- [Delegate A/S website](https://delegate.dk/)
+- [Microsoft partner site for Delegate A/S](https://appsource.microsoft.com/marketplace/partner-dir/0d3aa8f9-8168-4bc2-bda1-c3972e6d9352/overview)
+
 ## Device Insight GmbH
 
 :::image type="icon" source="media/findmypartner/device-insight-logo.jpg":::
