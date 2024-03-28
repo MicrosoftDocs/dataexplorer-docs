@@ -1,27 +1,28 @@
 ---
-title: 'Tutorial: Kusto queries archive'
-description: This archive tutorial describes how to use queries in the Kusto Query Language to meet common query needs.
+title: 'Tutorial: Using Kusto queries archive'
+description: This tutorial describes how to use queries archive in the Kusto Query Language.
 ms.reviewer: alexans
 ms.topic: reference
 ms.date: 11/01/2021
 ---
 
-# Tutorial: Use Kusto queries archive
+# Tutorial: Using Kusto queries archive
 
-The best way to learn about the Kusto Query Language is to look at some basic queries to get a "feel" for the language. We recommend using a [database with some sample data](https://help.kusto.windows.net/Samples). The queries that are demonstrated in this tutorial should run on that database. The `StormEvents` table in the sample database provides some information about storms that happened in the United States.
+The best way to learn about the Kusto Query Language is to explore some basic queries to get a feel for the language. It is recommended using a [database with sample data](https://help.kusto.windows.net/Samples), such as the `StormEvents` table in the sample database, which provides information about storms that happened in the United States.
 
-## Count rows
+## Counting rows: *count*
 
-Our example database has a table called `StormEvents`. We want to find out how large the table is. So we'll pipe its content into an operator that counts the rows in the table.
+To find out the size of the `StormEvents` table, we'll use the 'count' operator to count the rows in the table.
 
-*Syntax note*: A query is a data source (usually a table name), optionally followed by one or more pairs of the pipe character and some tabular operator.
+*Syntax note*: A query is a data source (usually a table name), optionally followed by a pipe character ('|') and a tabular operator.
+Here is an example:
 
 <!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
 StormEvents | count
 ```
 
-Here's the output:
+This query returns the output:
 
 |Count|
 |-----|
@@ -29,14 +30,17 @@ Here's the output:
 
 For more information, see [count operator](./count-operator.md).
 
-## Select a subset of columns: *project*
+## Selecting a subset of columns: *project*
 
-Use [project](./project-operator.md) to pick out only the columns you want. See the following example, which uses both the [project](./project-operator.md)
-and the [take](./take-operator.md) operators.
+Select only specific columns from the table, by using the [project](./project-operator.md) operator.
+Here is an example, which uses both the [project](./project-operator.md) and the [take](./take-operator.md) operators.
+[[Where's the example?]]
 
-## Filter by Boolean expression: *where*
 
-Let's see only `flood` events in `California` in Feb-2007:
+## Filtering rows: *where*
+
+To filter rows based on specific conditions, we can use the where operator. 
+Here's an example that filters the StormEvent table to show `flood` events in `California` in Feb-2007:
 
 <!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
