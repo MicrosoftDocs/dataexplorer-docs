@@ -24,7 +24,7 @@ The `bag_unpack` plugin unpacks a single column of type `dynamic`, by treating e
 | *OutputColumnPrefix* | `string` | | A common prefix to add to all columns produced by the plugin. |
 | *columnsConflict* | `string` | | The direction for column conflict resolution. Valid values: <br />`error` - Query produces an error (default)<br />`replace_source` - Source column is replaced<br />`keep_source` - Source column is kept
 | *ignoredProperties* | `dynamic` | An optional set of bag properties to be ignored.
-| *OutputSchema* | | | The names and types for the expected columns of the `bag_unpack` plugin output. Using * will add the source columns to the plugin output.<br /><br />**Syntax1**: `(` *ColumnName* `:` *ColumnType* [`,` ...] `)`<br /><br /><br /><br />**Syntax2**: `(` *, *ColumnName* `:` *ColumnType* [`,` ...] `)`<br /><br />Specifying the expected schema optimizes query execution by not having to first run the actual query to explore the schema. An error is raised if the run-time schema doesn't match the *OutputSchema* schema. |
+| *OutputSchema* | | | The names and types for the expected columns of the `bag_unpack` plugin output. Using * will add the source columns to the plugin output.<br /><br />**Syntax1**: `(` *ColumnName* `:` *ColumnType* [`,` ...] `)`<br /><br /><br /><br />**Syntax2**: `(` *, *ColumnName* `:` *ColumnType* [`,` ...] `)`<br /><br />Specifying the expected schema optimizes query execution by not having to first run the actual query to explore the schema. |
 
 ## Returns
 
@@ -196,7 +196,7 @@ datatable(d:dynamic)
 |Dave     |  40  |
 |Jasmine  |  30  |
 
-Expand a bag and use the `OutputSchema` option to allow various optimizations to be evaluated before running the actual query including *.
+Expand a bag and use the `OutputSchema` option to allow various optimizations to be evaluated before running the actual query. Use a wildcard * to return all columns of the input table.
 
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA3WPMQvCMBCF90L%2Fw5EplQyiTtmETh266CYi1%2BRog%2B21tGlB1P9upKKD9N5yB%2Fe9x7Pog4qapNX2xtg4oyClwfSu865lDYPvHZdJHJ3iCMJ8vuRd5NiQ0CCytmKhQOzLcG7WzyTsBz9aYi%2FUEpTiRF9oN0NHQlNRvwxlODSOf9z2L%2BwcRw%2BgCesRPUGB5WXkDs1V2gQ0yJWCt5eeSykILrpuQ70X00Yl8ggBAAA%3D" target="_blank">Run the query</a>
