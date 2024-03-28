@@ -3,7 +3,7 @@ title:  .update table command (preview)
 description: Learn how to use the .update table command to perform transactional data updates.
 ms.reviewer: vplauzon
 ms.topic: reference
-ms.date: 02/26/2024
+ms.date: 03/28/2024
 ---
 # .update table command (preview)
 
@@ -133,7 +133,6 @@ Then the following update command is run:
   datatable(Name:string, Address:string)[
   "Alice", "2 Macquarie Street",
   "Diana", "350 Fifth Avenue" ]
-  | where true
 ```
 
 Where the *appendQuery* yields the following result set:
@@ -270,7 +269,6 @@ The next command updates the main table with the data in the staging table:
 ```kusto
 .update table Employees on Id <|
   MyStagingTable
-  | where true
 ```
 
 Some records in the staging table didn't exist in the main table (that is, had `Id>100`) but were still inserted in the main table (upsert behavior).
