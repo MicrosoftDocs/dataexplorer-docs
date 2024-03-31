@@ -3,7 +3,7 @@ title: Data soft delete command - Azure Data Explorer
 description: This article describes the data soft delete commands in Azure Data Explorer.
 ms.reviewer: slneimer
 ms.topic: reference
-ms.date: 04/28/2024
+ms.date: 03/28/2024
 ---
 # .delete table records - soft delete command
 
