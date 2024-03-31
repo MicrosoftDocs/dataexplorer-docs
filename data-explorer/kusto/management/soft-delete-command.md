@@ -3,7 +3,7 @@ title: Data soft delete command - Azure Data Explorer
 description: This article describes the data soft delete commands in Azure Data Explorer.
 ms.reviewer: slneimer
 ms.topic: reference
-ms.date: 05/17/2023
+ms.date: 03/28/2024
 ---
 # .delete table records - soft delete command
 
@@ -31,7 +31,7 @@ To delete individual records with a system guarantee that the storage artifacts 
 >
 > * The predicate should have at least one `where` operator.
 > * The predicate can only use the following operators: `extend`, `where` and `project`.
-> * The predicate can't reference other tables, nor use `externaldata`.
+> * The predicate can't use `externaldata`.
 
 ## Supported properties
 
