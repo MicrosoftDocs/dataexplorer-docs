@@ -28,7 +28,7 @@ The `bag_unpack` plugin unpacks a single column of type `dynamic`, by treating e
 
 ### Output schema syntax
 
-(` *ColumnName* `:` *ColumnType* [`,` ...] `)`
+`(` *ColumnName* `:` *ColumnType* [`,` ...] `)`
 
 To add all columns of the input table to the plugin output, use a wildcard `*` as the first parameter, as follows:
 
