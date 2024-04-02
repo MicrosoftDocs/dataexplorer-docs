@@ -28,6 +28,8 @@ landingContent:
             url: start-for-free.md
           - text: Kusto Detective Agency
             url: https://detective.kusto.io/
+          - text: Find a partner
+            url: find-my-partner.md
       - linkListType: video
         links:
           - text: What is Azure Data Explorer? (19:47)
