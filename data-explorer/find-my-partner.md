@@ -667,6 +667,33 @@ As a project partner for software development services, we drive the success of 
 - [M&M Software GmbH website](https://www.mm-software.com/de)
 - [Microsoft partner site for M&M Software GmbH](https://appsource.microsoft.com/marketplace/partner-dir/6e7c735d-01be-4294-8312-c84847d048d6/overview)
 
+## Mandelbulb Technologies Private Limited
+
+:::image type="icon" source="media/findmypartner/mandelbulb-logo.png":::
+
+Mandelbulb Technologies pioneers innovative Cloud Native, Data, and AI services, tailoring cutting-edge solutions for businesses seeking to amplify their digital footprint. 
+As partners to Microsoft, we excel in leveraging Microsoft's scalable solutions to deliver beyond client expectations, focusing on data-driven insights powered by advanced analytics, machine learning, and AI integrated with Azure's robust cloud capabilities. This ensures every solution is scalable and secure.
+Our expertise extends to Azure Data Explorer (ADX) implementation, crafting swift and scalable data analysis platforms that excel in real-time management of diverse datasets, including logs and time-series data. With ADX, we enable real-time insights and decision-making, uncovering trends that drive businesses forward.
+With a strong industry presence in Retail, Healthcare, Manufacturing, Finance, and Fleet & Logistics, Mandelbulb Technologies carves customized solutions that empower informed decision-making and drive exponential business growth.
+
+**Partner type**
+
+- SI
+- ISV
+
+**Focus geography**
+
+- Global
+
+**Contact**
+
+- [sales@mandelbulbtech.com](mailto:sales@mandelbulbtech.com)
+
+**Additional information**
+
+- [Mandelbulb Technologies Private Limited website](https://mandelbulbtech.com)
+- [Microsoft partner site for Mandelbulb Technologies Private Limited](https://appsource.microsoft.com/marketplace/partner-dir/077104d2-9b90-4ca9-8afb-9657962a1309/overview)
+
 ## MAQ Software
 
 :::image type="icon" source="media/findmypartner/maq-software-logo.png":::
