@@ -3,7 +3,7 @@ title: Add a cluster connection in the Azure Data Explorer web UI
 description: Learn how to add cluster connections for multiple user accounts or Microsoft Entra directories in the Azure Data Explorer web UI.
 ms.reviewer: mibar
 ms.topic: reference
-ms.date: 07/31/2023
+ms.date: 04/02/2024
 ---
 
 # Add a cluster connection in the Azure Data Explorer web UI
