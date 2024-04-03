@@ -3,11 +3,11 @@ title:  geo_azimuth()
 description: Learn how to use the geo_azimuth() function to calculate the angle between the true north and a line on Earth.
 ms.reviewer: mbrichko
 ms.topic: reference
-ms.date: 01/05/2024
+ms.date: 04/01/2024
 ---
 # geo_azimuth()
 
-Calculates clockwise angle in radians between the line from point1 to true north and a line from point1 to point2 on Earth.
+Calculates clockwise (CW) angle in radians between the line from point1 to true north and a line from point1 to point2 on Earth.
 
 ## Syntax
 
@@ -53,7 +53,6 @@ print azimuth_in_radians = geo_azimuth(5, 10, 10, -40)
 |---|
 |3.05459939796449|
 
-
 The following example calculates azimuth in degrees.
 
 > [!div class="nextstepaction"]
@@ -70,8 +69,6 @@ print azimuth_in_degrees = degrees(azimuth_in_radians);
 |175.015653606568|
 
 Consider a truck that emits telemetry of its location while it travels and we would like to know the direction.
-
-:::image type="content" source="images/geo-azimuth-function/azimuth.png" alt-text="Azimuth between two consecutive locations.":::
 
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA4WUyW7bMBCG734KIiepkFMOlyHpNMdee2mBAi0Cg3GYWK28QGaaru%2FeX7LsdBFsyQd6%2BM83C8VpUhYPKc%2Fv6jYtcr1Zi2tRxO%2F16jEvZ22KTTn5MRF4Ggi3NXa3dVFe9ab6%2Fv4gFa9gf6kqWC%2FebNq8nL6Ou3xRjeo6FXRvN4%2BndPrFnjjo3qejbvwZ4va6skSKv64mdzHjvW1SkesVNuJqO4Mtdf8q0awf%2BhKxinko9mMf4aAplFRmKgm%2Fd1LOJM2svpTGW8kfykpMieylkZpZOg7akKuEZlisJdYkDSum6iRRjRC1suxBVBpvTwRaKjLKsSQ6Q9QjROW0UkEyILQnKm%2BsD2S8CgFpnySaMaIlTR4pakD2RCSsdDDMRlt1mmjHiPBC41hrdcjRWWOtcVJ7S%2FY0kUeI5INB53Aw3vJQteLuoIwmdmf66MaI0sLVE3nDfiAG66S3Xc18po9%2BhCjZeCaDNhrSA5FIOqMVdO5MH8N%2FRHMZvPUS3uycHqoOzksObGVwOKxTRJJjREnwZovzwOfcf4%2BMg6LAnrRlriY3k59ih%2Bsnbr%2BJ400TcbcQ2Ehfc1rfiW2bvsxx5boRgmWBJQLsrTEfrTGX8HlapjaJerfe5PVj0xQH51JEoP61732GOH9Osr8mW%2FGQNvNhvhyBzxn086AfBWVH27abT%2FB7xj3vY7dFpNSK3SLmnNrFMqL2pxpzq%2FhcI4drsYrb8je1JEbnXAUAAA%3D%3D" target="_blank">Run the query</a>
@@ -105,7 +102,11 @@ datatable(timestamp:datetime, lng:real, lat:real)
 | render scatterchart with (kind = map)
 ```
 
-The following example returns null because 1st point equals to 2nd point.
+**Output**
+
+:::image type="content" source="media/geo-azimuth-function/azimuth.png" alt-text="Azimuth between two consecutive locations.":::
+
+The following example returns `true` because the first point equals the second point.
 
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAysoyswrUcgsjs8rzclRsAWyQAyN9NT8%2BMSqzNzSkgwNUx0FQwMdBTClqQkAkB%2FPgDEAAAA%3D" target="_blank">Run the query</a>
@@ -117,4 +118,4 @@ print is_null = isnull(geo_azimuth(5, 10, 5, 10))
 
 |is_null|
 |---|
-|True|
+|true|

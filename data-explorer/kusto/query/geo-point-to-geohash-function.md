@@ -3,7 +3,7 @@ title:  geo_point_to_geohash()
 description: Learn how to use the geo_point_to_geohash() function to calculate the geohash string value of a geographic location.
 ms.reviewer: mbrichko
 ms.topic: reference
-ms.date: 03/09/2023
+ms.date: 04/01/2024
 ---
 # geo_point_to_geohash()
 
@@ -27,7 +27,7 @@ Read more about [geohash](https://en.wikipedia.org/wiki/Geohash).
 
 ## Returns
 
-The geohash string value of a given geographic location with requested accuracy length. If the coordinate or accuracy is invalid, the query will produce an empty result.
+The geohash string value of a given geographic location with requested accuracy length. If the coordinate or accuracy is invalid, the query produces an empty result.
 
 > [!NOTE]
 >
@@ -69,7 +69,8 @@ For comparison with other available grid systems, see [geospatial clustering wit
 
 US storm events aggregated by geohash.
 
-:::image type="content" source="media/geo-point-to-geohash-function/geohash.png" alt-text="US geohash.":::
+> [!div class="nextstepaction"]
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA2WNsQ7CMAxEdyT%2BwWMqdWPugsTGxgdEJrWaALEjx4BAfDwNdEBiO5%2Fv3R1MNO9uxFbXqxcUlRMFgy1NiffC%2FaLQ2rdec0ZNT4LjAyLWOEwkvkhi8yZ%2BPprp%2FuEeNt1vfcOWdAPDPK94%2BTa55n7SSjySQg1oRhoiqsE9WQR3TjwOGUv3Bl2BVCm%2FAAAA" target="_blank">Run the query</a>
 
 ```kusto
 StormEvents
@@ -79,8 +80,14 @@ StormEvents
 | render scatterchart with (kind=map)
 ```
 
+**Output**
+
+:::image type="content" source="media/geo-point-to-geohash-function/geohash.png" alt-text="Screenshot of US storm events grouped by geohash.":::
+
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAysoyswrUUhPzc9ILM5QsAWx4gvygWLxJfnxUGENQ2NLPQsDM0NDUx0FY1M9U1MTQyMLHQVDI00Aj1DetD8AAAA=" target="_blank">Run the query</a>
+
+Calculates and returns the geohash string value.
 
 ```kusto
 print geohash = geo_point_to_geohash(139.806115, 35.554128, 12)  

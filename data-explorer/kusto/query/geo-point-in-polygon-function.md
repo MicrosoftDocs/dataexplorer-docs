@@ -25,7 +25,7 @@ Calculates whether the geospatial coordinates are inside a polygon or a multipol
 
 ## Returns
 
-Indicates whether the geospatial coordinates are inside a polygon. If the coordinates or polygon is invalid, the query will produce a null result.
+Indicates whether the geospatial coordinates are inside a polygon. If the coordinates or polygon is invalid, the query produces a null result.
 
 > [!NOTE]
 >
@@ -43,9 +43,9 @@ dynamic({"type": "MultiPolygon","coordinates": [[LinearRingShell, LinearRingHole
 * LinearRingHole is optional and defined as a `clockwise` ordered array of coordinates [[lng_1,lat_1],...,[lng_i,lat_i],...,[lng_j,lat_j],...,[lng_1,lat_1]]. There can be any number of interior rings and holes.
 * LinearRing vertices must be distinct with at least three coordinates. The first coordinate must be equal to the last. At least four entries are required.
 * Coordinates [longitude, latitude] must be valid. Longitude must be a real number in the range [-180, +180] and latitude must be a real number in the range [-90, +90].
-* LinearRingShell encloses at most half of the sphere. LinearRing divides the sphere into two regions. The smaller of the two regions will be chosen.
-* LinearRing edge length must be less than 180 degrees. The shortest edge between the two vertices will be chosen.
-* LinearRings must not cross and must not share edges. LinearRings may share vertices.
+* LinearRingShell encloses at most half of the sphere. LinearRing divides the sphere into two regions. The smaller of the two regions, is chosen.
+* LinearRing edge length must be less than 180 degrees. The shortest edge between the two vertices is chosen.
+* LinearRings must not cross and must not share edges. LinearRings might share vertices.
 * Polygon doesn't necessarily contain its vertices. Point containment in polygon is defined so that if the Earth is subdivided into polygons, every point is contained by exactly one polygon.
 
 > [!TIP]
@@ -107,8 +107,6 @@ coordinates
 
 Storm events in California. The events are filtered by a California state polygon and aggregated by event type and hash.
 
-:::image type="content" source="media/geo-point-in-polygon-function/california-storm-events.png" alt-text="Storm events in California.":::
-
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA22WS2/cNhSF9/0Vglc2MFXI++AlU2RTIKt2UaDdBYExGau2mrE0mFGSuo//3kNqyEkdrzz+cHVIXZ5zqf2wdLvtfvx9Pk7jtnvT3T1N28dxd/331fJ0GK5eX/0y75/u5+lqc7Wb5+PdOG2X4XT1+t27d9974p6YScNGqHcu+BjebzKnni1G5cK9D4FX7nvH5hy471NSYlq5w9N42D/jPuG/wFE24noKoj49q+eIisSyrutjb14sZuyxLsUVWy8pxpQ2bD15lK849CpOWDeMX0Vv5dpHdSwb1j6Z03RWkT6wiKbMsbz/BksfTclXLOa8+ozNu+SockbLKGYuEp1LlXsOTgtnp8E1efRXVx1v4kPTEa8cqXAXhVu9skbD7rlPzN5Cq0+mHDIPyUK41JMk8pkrStp2jEyDZSzOuOGAU5aijhYlfUHFUZL4TReoxx4p6PN66k011CPJy5JLBXujpPWknNiqEkh8tHquHq7ImyS8NboUKicJKZTygBZzw1iVS3m04KnJMCWsnTcP72pMzTaGvWvmlCyqr9wil87gACI37/nI6gu3wJx85RScT0XdHHvRysWzSixcvESuHI8GKa2MglTFyjWEhOzgwJ0QdlZ5dOhJqU/F5jU7BEuvvvRoklnjFpPTzCkYNawaiUo5nIUYVQ5Tx1T8Jy4Fqwn0HA3JzBi+Sly5GEV7bm/wAFOUcrUkqg27FF1Rj7CtXcoxJ6TIIDqaLvWwtFszmGBjqTwmCY4yJwFugwVvCl9kLurofLR5EDn03BcOJ0gbUD7A3kU/wFFOK6eIKaOFm8RLPcJsaplbDiFVbj544TxafIKHWn1MIebUhp69Bmn6iZVyHgLWRf8aR1c05w0cFm3q0Xil0bFLTT3BpyuHX7l2mTAhFE4qHIuezzaPacaki3kuYuxR7T7BAeYTlXkp6E5s3DnLYxeRCXkaVY43hMEyV3Jq9C230r+2LqK96vyfiwvE6/xWJ01GELO8HWCcabzIwyLEWSax53oomB0IXCo8JsZJV57Y1JVbA0MqUXstTMZs5RxVlXOgKQ+DVIKLqKoPSpVjrEYpMohknaTggkSXzYcU22Eh3Wyei0yCF7nikPODl0qYpBh6TSVmA2vmjIvT+SZTLsDMVQmDptXjzinlsWxrxflSQItDvjlx+PBc5Tg4dYUjVq3HOfTOUsxcGOa56Chu8pR5jifbc31ECSOzvu2lHlESdx5qwC5onuDAIuTCRV4sDyPJicF+2jZJYWQpPPrAbZuEaxK3Z/ngcFbHywsfIu/f/3vzw3e/LvPx8e3nYVpO3/3THY7zH8Nu6X4c7sfp53nanH9tl01Xin7DRw/qvjwMx6G7H+bbwzxOy+044Uf5Drp+6dHLF9QNHj59enzcHse/hm43f5qW65vuw9NFfdM9bE8P+NK6qC/z7Yl2w37/orjdfLXx/NBam5/aQfO43a8y11n3ZvP1SmX9Wzx+HKa74dgdxmH3sD0u3ZdxeeiuP47T3ZvH7eGme/Wqw99z2Tjdd9vP23G//bAfunHqfvp0Wubu7Z+H/XyEyt1w+rjMh/8AiuopHzsKAAA=" target="_blank">Run the query</a>
 
@@ -121,6 +119,10 @@ StormEvents
 | project geo_s2cell_to_central_point(hash), EventType, count_
 | render piechart with (kind=map) // map rendering available in Kusto Explorer desktop
 ```
+
+**Output**
+
+:::image type="content" source="media/geo-point-in-polygon-function/california-storm-events.png" alt-text="Screenshot of storm events in California rendered on a map by event type as pie chart indicators.":::
 
 The following example shows how to classify coordinates to polygons using the [partition](./partition-operator.md) operator.
 
@@ -198,7 +200,10 @@ Coordinates
 |-73.9741|40.7914|Upper West Side|
 |-73.995|40.734|Greenwich Village|
 
-The following example will return a null result because of the invalid coordinate input.
+The following example returns a null result because of the invalid coordinate input.
+
+> [!div class="nextstepaction"]
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAysoyswrUcjMiy%2FIz6lMz89TsFVIT80H8oDC8QhhDSMDAx1DnZTKvMTczGSNaqWSyoJUJSsFpQCIvJKOUnJ%2BflFKZl5iSWoxUCI6OtpAxyBWJ9oQqA9GAymQYGxsraYmAJZ3JaV5AAAA" target="_blank">Run the query</a>
 
 ```kusto
 print in_polygon = geo_point_in_polygon(200,1,dynamic({"type": "Polygon","coordinates": [[[0,0],[10,10],[10,1],[0,0]]]}))
@@ -210,7 +215,10 @@ print in_polygon = geo_point_in_polygon(200,1,dynamic({"type": "Polygon","coordi
 |------------|
 |            |
 
-The following example will return a null result because of the invalid polygon input.
+The following example returns a null result because of the invalid polygon input.
+
+> [!div class="nextstepaction"]
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAysoyswrUcjMiy%2FIz6lMz89TsFVIT80H8oDC8QhhDUMdQ52UyrzE3MxkjWqlksqCVCUrBaUAiKySjlJyfn5RSmZeYklqMVAiOjraQMcgVifa0EDHEJkGicbG1mpqAgD1Iu1ceAAAAA%3D%3D" target="_blank">Run the query</a>
 
 ```kusto
 print in_polygon = geo_point_in_polygon(1,1,dynamic({"type": "Polygon","coordinates": [[[0,0],[10,10],[10,10],[0,0]]]}))
