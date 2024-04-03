@@ -42,7 +42,7 @@ dynamic({"type": "MultiPolygon","coordinates": [[ LinearRingShell, LinearRingHol
 * LinearRingHole is optional and defined as a `clockwise` ordered array of coordinates [[lng_1,lat_1],...,[lng_i,lat_i],...,[lng_j,lat_j],...,[lng_1,lat_1]]. There can be any number of interior rings and holes.
 * LinearRing vertices must be distinct with at least three coordinates. The first coordinate must be equal to the last. At least four entries are required.
 * Coordinates [longitude, latitude] must be valid. Longitude must be a real number in the range [-180, +180] and latitude must be a real number in the range [-90, +90].
-* LinearRingShell encloses at most half of the sphere. LinearRing divides the sphere into two regions. The smaller of the two regions is chosen.
+* LinearRingShell encloses at most half of the sphere. LinearRing divides the sphere into two regions and chooses the smaller of the two regions.
 * LinearRing edge length must be less than 180 degrees. The shortest edge between the two vertices is chosen.
 * LinearRings must not cross and must not share edges. LinearRings might share vertices.
 
@@ -109,6 +109,8 @@ print
 centroid = geo_polygon_centroid(central_park)
 | render scatterchart with (kind = map)
 ```
+
+**Output**
 
 :::image type="content" source="media/geo-polygon-centroid-function/nyc-central-park-centroid.png" alt-text="Screenshot of New York City Central park centroid.":::
 
