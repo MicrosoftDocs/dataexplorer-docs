@@ -82,7 +82,7 @@ You can visualize pies or bubbles either using [Longitude, Latitude] columns, or
 
 ### Example: Visualize pie charts by location
 
-The following example shows storm events aggregated by s2 cell. The chart aggregates events in pie charts by location.
+The following example shows storm events aggregated by S2 cell. The chart aggregates events in pie charts by location.
 
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA22PsU7DMBCGd57ixhiZNmmhCkOXSp1ggz1ynVNi6tjW%2BdISxMNjt5XI0OlOuv%2F%2FPvuDPQ37EzqOD78QyH%2BhZthhZ9y7d%2FK2KZZwCX1OAVPu3CMhdOib4I3jxrhGG9IWi3tNQmWLp7parOvXSkhY1YuX9fNGQlWWJTzmIRI0jsOgyPwgaD86LgQcpn%2BrhF7FHrYzK%2FsmrjRae8cqZr%2FJjWswV3QCkrJXRpGhQs41F3mT6oSuRYJgUPeKGM6GeyiOxrXpFYMKApbLfM37LWxcB%2BqkjFUHi%2BCdncA4eBsje9h%2FB%2BspAVuMR%2FbhDzcwHP56AQAA" target="_blank">Run the query</a>
@@ -99,7 +99,7 @@ StormEvents
 
 ### Example: Visualize bubbles using a color axis
 
-The following example shows storm events aggregated by s2 cell. The chart aggregates events in bubble by location. Since the color-axis ("count") is the same for all events, the `render` operator generates bubbles.
+The following example shows storm events aggregated by S2 cell. The chart aggregates events in bubble by location. Since the color-axis ("count") is the same for all events, the `render` operator generates bubbles.
 
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA22PPW%2FCMBCG9%2F6KE1NSpZBAqdKBpRJTu7V7ZMwpueL4LPsCpOqPrx2QysB0p3s%2FHvtT2PfbI1oJD7%2FgPH%2BjFnjDluwH2%2BK6KSlgMn2NDqPv1KFHaJEbx2SlIdto8tpgdi%2FpUZnsqa7mq%2Fq1ygtY1vP16vmlgKosS3hMI4%2BlYeh75ekHQfNgJcthN%2F5TC%2BhU6GBzQxVuwlKjMXeo%2Bc1vUuJiTBEdC70yl44slcYnTcQmZvAsaPcXbIi02aTMouLjHT04Qt0pL3Ai6SA7UHRvoFcuh8UiqWm%2Fmsm2oI6KjNoZBLZmBLLwPgRh2J6dYR8L9xgOwu4PYF0r54kBAAA%3D" target="_blank">Run the query</a>
