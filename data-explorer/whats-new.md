@@ -109,7 +109,7 @@ Welcome to what's new in Azure Data Explorer. This article details new and signi
 
 | Article title | Description |
 |--|--|
-|- [Graph operators (Preview)](kusto/query/graph-operators.md) <br/> - [graph-match operator (Preview)](kusto/query/graph-match-operator.md) <br/> - [graph-merge operator (Preview)](kusto/query/graph-merge-operator.md) <br/> - [graph-to-table operator (Preview)](kusto/query/graph-to-table-operator.md) <br/> - [make-graph operator (Preview)](kusto/query/make-graph-operator.md) | New articles. Describes how to use graph operators. |
+|- [Graph operators (Preview)](kusto/query/graph-operators.md) <br/> - [graph-match operator (Preview)](kusto/query/graph-match-operator.md) <br/> - [graph-to-table operator (Preview)](kusto/query/graph-to-table-operator.md) <br/> - [make-graph operator (Preview)](kusto/query/make-graph-operator.md) | New articles. Describes how to use graph operators. |
 | [Plotly (preview)](kusto/query/visualization-plotly.md) | New article. Describes how to visualize data using the Plotly graphics library.|
 
 ## August 2023
