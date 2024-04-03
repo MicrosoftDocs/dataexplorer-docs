@@ -73,8 +73,6 @@ print distance_in_meters = geo_distance_point_to_line(-115.199625, 36.210419, dy
 
 Storm events along the US south coast filtered by a maximum distance of 5 km from the defined shore line.
 
-:::image type="content" source="media/geo-distance-point-to-line-function/us-south-coast-storm-events.png" alt-text="Screenshot of rendered storm events along the south coast of the US.":::
-
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA22ST48TMQzF7/spop5aqUS2E8cOsBcQt70tt1VVjdqoHdjOVNPAagV8d9ymXS6c5o9/eX5+8XOp7jT+qPvPY3eq7t5tX4fu0G/mv2b19Vhm793soR/KY536YTdbutlmHKdtP3S1nKz49PQui0dlYOUcJOacl47Y5yxsH5hZCJFWS3chWYFTipCIDUs+J6TIIsCUstwoxIw3Rnxm5owAMUViDg2KHiLlpJeOrWn2QomIAuZgZyA2knxWJcWLWvZKyEpCwOejF0SzTSCAKPZoFGIQYZNBjOGNChol8cVXAB+Qs4qdYRZNzbyeRwwA0voZRTY+GENRz3ijko8agzTC5hCynBgCplZnj0Qg9uPqOqkFR+ZYOWljLAFAy+Qs1GI3LYyMZJZCkIQtKiWfks1zi0C9QkIJDKocRdKNUow5vuWuHoIlKeeRJVkaNwxFJDTzdoFszhNTUErCV2dgt4+EkBvEnuCsjBw4WWG1+rP4cPdYx+nw5WcZ6unutztO47eyqe5T2fXDwzgsr29dXboL9NWW0biXfZmK25Vxve1PtRs2ZX0c+6Gu67h+tj2d/0/g334v3EfHAGBKUxm2ZXKnTVdrmTb7bqrupa97N//eD9v7Q3dc/AWyeZdJHAMAAA==" target="_blank">Run the query</a>
 
@@ -86,11 +84,13 @@ StormEvents
 | render scatterchart with (kind=map)
 ```
 
+**Output**
+
+:::image type="content" source="media/geo-distance-point-to-line-function/us-south-coast-storm-events.png" alt-text="Screenshot of rendered storm events along the south coast of the US.":::
+
 ### New York taxi pickups
 
 New York taxi pickups filtered by a maximum distance of 0.1 meters from the defined multiline.
-
-:::image type="content" source="media/geo-distance-point-to-line-function/madison-ave-road.png" alt-text="Screenshot of rendered NYC taxi pickups on Madison Ave.":::
 
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA42YTW8cNwyG7%2F0VC58SwA0kkaKktDn03px6DAxjsR4k0zi7xnrSNGj73%2FuOlxzSRYsGuRj7LEmJevmxuZ%2BW3dv93fx4Ov7027R7s7v7etx%2Fmg8v%2Frhavj5MV6%2Bv3n6%2BX%2Baf5%2BP0y3Kej%2B%2Bvrq8Op9P5bj7ul%2Bnx6vW7d%2B%2B%2Bb%2FRq9DZ6oWtOrxqnLqXeXBsQHuUCMhEHwDBRUBOLg0SsrkrmAKT2rBalSXVXkovFIGrVLar0rK5ojAh4kFpwkRRAKRuQkh1wG0ld1ULJg%2BNrZlG5UrDgvllIjMHEdqra8W8DNCopEPwdQUoaQ1iGu6Im3SwEURwgiFq0nHJwRd1itNxCdstolt0GrwFwqwo6l3CqkoooGInDzXMVE8N4dqqci8aoqbRwjzSaGGD87UBMJTWNGBz2eqqaa3goCDHpBfFxG9VB7WKApQYLShajdAquOv4pIG4u6ramV11xCsdtrQ%2B74GoQALSsFnhjcVcyWJ%2B2ViTILfDQRYHUJgGk1NRVK8nTDgdVy6DihMGiQgFq0VedbABpUO3WgbJ1C87DTjUaFQcQnFpIovC0jShtYERXBaWjIEvxwmkFClVQSg8xchezKKiCADipqIVwdwdpkMpHkGevqJbwogZgFCzYylm45xEAWeFIxQ2Dq1XVCp4dN%2BHiBtAANgsZtZkrSd0rSqARy5W07LlC1W03b2snc4BOaGCIJ1EgLLtgx6u7K%2BRdO4OMklyiIp1VomtpjQCoqytkJ8aAqvSCaCXDk4jrWgNAKwl9d235qsRWuHoNCpqqWVAKHU44pWwAR3dAlexUaDE5ALQGAyOeqmAcKMCLhSSWnDW7kEL2hgxd5pwVjB5SknPVJgNSfHihm6PQLwBSKAEU63Ct91AGKCMrNTSiQgGgJg1g6FQHZSjoKQsFkO2CPXH2h6pPU1hBpwjK0FyhN2dvMlAM6wVXhfl71EY9GYAe3AJJ1xfEHBneSyrqyCw4UQ4g5Q3gS%2B6qrugCKt7JLSruZwCTzwGLNf3%2BJD4HpTa1aNgmggWEaaBQSCLWFEsJSi08FMnYLJBptyBMLLVASwspoa04Oy4SgiMLZQOhZeC2JmrIqLna182ia3AIJoghI9sXC4zaeKqMcrlYjIwh7CANm2oDLWYEgOJWUKCLDaCKrAFAejkCZFRjkCQOAKNIAWN0Oui1akrWL0kAEKYCDMLgCiWpxYmy4xIAXtAAruLgqZNdAOrG6xw9mC0GLuLvgYVsSyLuGo6LZely3J5w2HBctERRgB0zHJes9QGMMD%2BYsrZXVAOiuUUZ3WJgj%2BkBoKbyBRBmVwDMyQDyPhzAV1OwrhMB6KAHWOeBA5SgBofyQkoKFktWgBcpG8j2HugxSJxbZJuDPdUUliJOGLF6XBSjTxxcgrsCwea7WRBmp52qpbDcEWzMYv11EEChagBTxgFWNcsuGlYOgMVc4ZeFdx%2BswSUbwLLjFmvdqysUZHCFnzZqgX0qbJaE6VUvn%2BfaUvPPMea7AjjrNyD%2FhdxGxbuCKsEZloZxAVi8S3GQKBUDyP03RcnaL1cAYQdnfPnxBYAioW%2BK8k9kNhX6UmfYfpuHh%2Fz1GdHpqQcLbG8K1k7ogPF4GgOSjwBt0iywIAYgZImkLtHCehPACMsJesDYgo8RXfGWLUhAAsAELAY4WkATGwjFDmDKBgjVg5%2BEw2P0eCq0dQM5DEPCylS2GGES4xceb8GfWWClzOXfYqD22E8V6g07jzhIEYTg63T5BjmIVQl%2BrgVh1yH2UPgdEOVDWNNMDLHeatalF4DC9kUV82hTCT9TCW8qwTjsQSWS%2FWnje0hOG3gmuMoOYtpRONvTZnr25lw3UEN2MRPGBqTFN9e9cwWjx6eVLXjuEVBwFQsHTcNPtf72u7n56%2BUP3x2%2FHm6X%2Fe%2Fzd3%2FuHs6nX6fDsnuYDx8%2FP9zen47v5%2BXz3XS9fbJfnj7Ad798mM7T7v10ur2bH5f98TDdPpzm43K7nG7v5%2BP04n%2BdXIf%2FcHq5%2B%2FHNLr3KcLzsP047iBV%2Fnqfj3XTePR72yzKdDx%2F252X3ZV4%2B7F58nI93bz7tH17%2BDY7A8nu4EgAA" target="_blank">Run the query</a>
@@ -104,9 +104,11 @@ nyc_taxi
 | render scatterchart with (kind=map)
 ```
 
-The following example folds many lines into one multiline and queries this multiline. The query finds all taxi pickups that happened 10 km away from all roads in Manhattan.
+**Output**
 
-:::image type="content" source="media/geo-distance-point-to-line-function/lines-folding.png" alt-text="Screenshot of a query map rendering example of lines folded into a multiline. The example is all taxi pickups 10 km away from all Manhattan roads.":::
+:::image type="content" source="media/geo-distance-point-to-line-function/madison-ave-road.png" alt-text="Screenshot of rendered NYC taxi pickups on Madison Ave.":::
+
+The following example folds many lines into one multiline and queries this multiline. The query finds all taxi pickups that happened 10 km away from all roads in Manhattan.
 
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA6WUy2%2BbMBzH75X6P3iciMRSPzHulEnbYaf2sh12iCLkgpfQ8JJx1mVd%2F%2FeZh4mbHjYpcAD8%2Bb39xaUy4F7WO2mMrL82Mu%2FA6voK2CuXxt4PpQp%2FKGkOWnW3%2BbGWVZEtRoP1%2BBhsRxA%2BB%2BbYquA2%2BDK6BFHQ6qZV2hSqC26fgzv5oErLEWVm981opcxnvQ1eomCrmkoZfeytpiD3h9IUd0WtrGFRb22wrGl0XtTS9NHW6%2FV7TpaCYIyZiChcJkjQmLBN5ADxAKfEA4KTGXCx2WxeXhbRBQ19Rxj2HV3WSowEo2gsDNKEUldxjBGjeAKM47nHmMATEJR5gAk4AYQ4OoUiggoHCOInQCGbPQiH7PKpoM58%2BqkumwmHFGHal8VpAsm8iRxiSIlbFzCe%2BxBxMjZoASfUAwyiCQgkuAcoww4QJOKNJQ4JK5cpWBKT%2F%2FM5R7MPsZOdgL1PIEmSKYstETIPxCx2gPqhEooJmgCnXi9czKEQYYkHEg4doCLxC%2BZxQsa6mB0q9nwYdentX%2BYHI8xlwdQfJcdu%2BMz%2BfNAHCDsQJxYM6jqJ6%2BYGLJdLUDVaAT0cRPZzxJsP11elPahkWQ5H1Mo0XSZLqcORvz7AxrU%2FwEryUWVmCJZ60lq582zpRLn0qPPuDlUldfFbgUruVVoWnQnPIy3OU1W9pEsrabACD3KbtjLbh6Peo7d6B68EH4E%2BR%2Fomx8I2Xx%2Bz1MhfxfXVKVdbZPtDm5ZNvS3MIVfRvCLNsNAbP%2B2UHee5KXi3AhDIOj93GcDJz84nzW1Rss5U2jZFbVLTpH1%2F4T%2Bz2wWpO5U%2Bdk0duo1bLMBHgKC9%2BiTGDtZ%2B9a9a1bnSwO6qMUpnO6kNeCrMDoT7os5XlWwXfwES9dcdqgYAAA%3D%3D" target="_blank">Run the query</a>
@@ -132,6 +134,10 @@ nyc_taxi
 | take 10
 | render scatterchart with (kind=map)
 ```
+
+**Output**
+
+:::image type="content" source="media/geo-distance-point-to-line-function/lines-folding.png" alt-text="Screenshot of a query map rendering example of lines folded into a multiline. The example is all taxi pickups 10 km away from all Manhattan roads.":::
 
 ### Invalid LineString
 

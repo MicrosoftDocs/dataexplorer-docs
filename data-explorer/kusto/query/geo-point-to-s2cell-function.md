@@ -9,7 +9,7 @@ ms.date: 03/09/2023
 
 Calculates the S2 cell token string value of a geographic location.
 
-S2 cell can be a useful geospatial clustering tool. The S2 cell is a cell on a spherical surface and it has geodesic edges. S2 cells are part of a hierarchy dividing up the Earth's surface. S2 cells have a maximum of 31 levels, ranging from zero to 30, defining the number of times a cell is subdivided. Levels range from the largest coverage on level zero with area coverage of 85,011,012.19km² to the lowest coverage of 0.44 cm² at level 30. S2 cells preserve the cell center well as cells are subdivided at higher levels. Two geographic locations can be very close to each other but they have different S2 cell tokens.
+S2 cell can be a useful geospatial clustering tool. An S2 cell is a cell on a spherical surface and it has geodesic edges. S2 cells are part of a hierarchy dividing up the Earth's surface. They have a maximum of 31 levels, ranging from zero to 30, which define the number of times a cell is subdivided. Levels range from the largest coverage on level zero with area coverage of 85,011,012.19km², to the lowest coverage of 0.44 cm² at level 30. As S2 cells are subdivided at higher levels, the cell center is preserved well. Two geographic locations can be very close to each other but they have different S2 cell tokens.
 
 >[!NOTE]
 > If you invoke the [geo_s2cell_to_central_point()](geo-s2cell-to-central-point-function.md) function on an S2 cell token string that was calculated on longitude x and latitude y, the function won't necessarily return x and y.
@@ -74,9 +74,7 @@ For comparison with other available grid systems, see [geospatial clustering wit
 
 ## Examples
 
-### US storm events aggregated by S2 Cell
-
-:::image type="content" source="media/geo-point-to-s2cell-function/s2-cell.png" alt-text="Screenshot of a map rendering of US storm events aggregated by S2 cell.":::
+### US storm events aggregated by S2 cell
 
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA2WNsQoCMRBEe8F%2F2DIHVwmW1wh2dn5AWHPLJZpkw2ZPUfx4jWch2A3MvDdHZUn7K2Wt69UTivCZnMKOppAPnPtvQm1tnVNCCQ%2BC0x08Vj9MxLZwyGqVbd04itH8sz1su197o5Zxw9z7XDAuHtO0n7FQHkmgOlQlcR5F4RbUg7mEPA4JS%2FcCZ2nOhL0AAAA%3D" target="_blank">Run the query</a>
@@ -88,6 +86,10 @@ StormEvents
 | project geo_s2cell_to_central_point(hash)
 | render scatterchart with (kind=map)
 ```
+
+**Output**
+
+:::image type="content" source="media/geo-point-to-s2cell-function/s2-cell.png" alt-text="Screenshot of a map rendering of US storm events aggregated by S2 cell.":::
 
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAysoyswrUSg2Sk7NyVGwVUhPzY8vyAcKxZfkx0NENXQtDPQMLU0tjCx1FIxM9SwMjIwMTXUULDQBug9pJTwAAAA=" target="_blank">Run the query</a>
