@@ -1287,8 +1287,6 @@ items:
         href: make-graph-operator.md
       - name: graph-match
         href: graph-match-operator.md
-      - name: graph-merge
-        href: graph-merge-operator.md
       - name: graph-to-table
         href: graph-to-table-operator.md
   - name: Geospatial

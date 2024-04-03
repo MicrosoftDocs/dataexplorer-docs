@@ -1934,6 +1934,11 @@
         "source_path": "data-explorer/kusto/query/hash_manyfunction.md",
         "redirect_url": "/azure/data-explorer/kusto/query/hash-many-function",
         "redirect_document_id": true
+      },
+      {
+        "source_path": "data-explorer/kusto/query/graph-merge-operator.md",
+        "redirect_url": "/azure/data-explorer/kusto/query/graph-operators",
+        "redirect_document_id": true
       }
     ]
 }

@@ -192,4 +192,3 @@ E
 
 * [Graph operators](graph-operators.md)
 * [make-graph operator](make-graph-operator.md)
-* [graph-merge operator](graph-merge-operator.md)
