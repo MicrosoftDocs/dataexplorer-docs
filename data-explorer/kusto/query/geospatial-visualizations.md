@@ -14,7 +14,7 @@ For more information about visualization options, see [Data visualization with A
 
 ## Visualize points on a map
 
-It's possible to visualize points either using [Longitude, Latitude] columns, or GeoJSON column. The use of a series column is optional. Each point is defined by [Longitude, Latitude] pair, in that order.
+It's possible to visualize points either using [Longitude, Latitude] columns, or GeoJSON column. The use of a series column is optional. The [Longitude, Latitude] pair defines each point, in that order.
 
 ### Example: Visualize points on a map
 
@@ -34,7 +34,7 @@ StormEvents
 
 ### Example: Visualize multiple series of points on a map
 
-The following example visualizes multiple series of points, where each point is defined by a [Longitude, Latitude] pair, and a third column defines the series. In this example, the series is `EventType`.
+The following example visualizes multiple series of points, where the [Longitude, Latitude] pair defines each point, and a third column defines the series. In this example, the series is `EventType`.
 
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAwsuyS%2FKdS1LzSsp5qpRKEnMTlUwNDAAMguK8rNSk0sUnFLTM%2FN88vN0oKzEEh0FsPqQyoJUoLqi1LyU1CKF4uTEkpLUouSMxKIShfLMkgwFjezMvBQFW4XcxAJNAKZVk%2FhmAAAA" target="_blank">Run the query</a>
