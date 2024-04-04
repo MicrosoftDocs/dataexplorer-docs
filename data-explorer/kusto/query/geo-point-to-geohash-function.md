@@ -84,20 +84,7 @@ StormEvents
 
 :::image type="content" source="media/geo-point-to-geohash-function/geohash.png" alt-text="Screenshot of US storm events grouped by geohash.":::
 
-> [!div class="nextstepaction"]
-> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAysoyswrUUhPzc9ILM5QsAWx4gvygWLxJfnxUGENQ2NLPQsDM0NDUx0FY1M9U1MTQyMLHQVDI00Aj1DetD8AAAA=" target="_blank">Run the query</a>
-
 The following example calculates and returns the geohash string value.
-
-```kusto
-print geohash = geo_point_to_geohash(139.806115, 35.554128, 12)  
-```
-
-**Output**
-
-| geohash      |
-|--------------|
-| xn76m27ty9g4 |
 
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAysoyswrUUhPzc9ILM5QsAWx4gvygWLxJfnxUGENXQsDPUNLUwsjSx0FI1M9CwMjI0NTHQULTQB7u14ZPgAAAA==" target="_blank">Run the query</a>
