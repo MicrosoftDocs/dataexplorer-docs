@@ -18,6 +18,8 @@ It's possible to visualize points either using [Longitude, Latitude] columns, or
 
 ### Example: Visualize points on a map
 
+The following example finds storm events and visualizes 100 on a map.
+
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAwsuyS%2FKdS1LzSsp5qpRKEnMTlUwNDAAMguK8rNSk0sUnFLTM%2FN88vN0oKzEEqBkUWpeSmqRQnFyYklJalFyRmJRiUJ5ZkmGgkZ2Zl6Kgq1CbmKBJgAmnyYWWwAAAA%3D%3D" target="_blank">Run the query</a>
 
@@ -32,7 +34,7 @@ StormEvents
 
 ### Example: Visualize multiple series of points on a map
 
-To visualize multiple series of points, each point is defined by a [Longitude, Latitude] pair, and a third column defines the series. In this example, the series is `EventType`.
+The following example visualizes multiple series of points, where each point is defined by a [Longitude, Latitude] pair, and a third column defines the series. In this example, the series is `EventType`.
 
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAwsuyS%2FKdS1LzSsp5qpRKEnMTlUwNDAAMguK8rNSk0sUnFLTM%2FN88vN0oKzEEh0FsPqQyoJUoLqi1LyU1CKF4uTEkpLUouSMxKIShfLMkgwFjezMvBQFW4XcxAJNAKZVk%2FhmAAAA" target="_blank">Run the query</a>
@@ -48,7 +50,7 @@ StormEvents
 
 ### Example: Visualize series of points on data with multiple columns
 
-If you have multiple columns in the result, you must specify the columns to be used for xcolumn (Longitude), ycolumn (Latitude), and series.
+The following example visualizes a series of points on a map. If you have multiple columns in the result, you must specify the columns to be used for xcolumn (Longitude), ycolumn (Latitude), and series.
 
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAwsuyS%2FKdS1LzSsp5qpRKEnMTlUwNDAAMotS81JSixSKkxNLSlKLkjMSi0oUyjNLMhQ0sjPzUhRsFXITC3QUKpLzc0pz84Bcp9T0zDyf%2FDwdhUqIWDFcMLFER6E4tSgzFSQEtiuksiBVEwDmTUhSewAAAA%3D%3D" target="_blank">Run the query</a>
@@ -62,7 +64,7 @@ StormEvents
 
 ### Example: Visualize points on a map defined by GeoJSON dynamic values
 
-In this example, GeoJSON dynamic values define the points.
+The following example visualizes points on the map using GeoJSON dynamic values to define the points.
 
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA2WNsQoCMRBEe79iyzu4SrC8RrCz8wPCmlsu0WQ3bFZF8eO9cBaC3cDMe3My0Xy4E1vdvKGoXMgb7GmOfBQevgltKestZ9T4Ijg%2FIWAN40ziikQ2Z%2BLq1lNK3T86wK7%2FcTdo3TbKL8%2BKadV0zdq2SjyRQvVoRuoDqsEjWoDuGnmCETKW%2FgOAAdqguwAAAA%3D%3D" target="_blank">Run the query</a>
