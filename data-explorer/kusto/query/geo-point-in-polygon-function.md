@@ -3,7 +3,7 @@ title:  geo_point_in_polygon()
 description: Learn how to use the geo_point_in_polygon() function to check if the geospatial coordinates are inside a polygon or a multipolygon on Earth.
 ms.reviewer: mbrichko
 ms.topic: reference
-ms.date: 03/09/2023
+ms.date: 04/04/2024
 ---
 # geo_point_in_polygon()
 

@@ -3,7 +3,7 @@ title:  geo_distance_2points()
 description: Learn how to use the geo_distance_2points() function to calculate the shortest distance between two geospatial coordinates on Earth.
 ms.reviewer: mbrichko
 ms.topic: reference
-ms.date: 12/18/2022
+ms.date: 04/04/2024
 ---
 # geo_distance_2points()
 

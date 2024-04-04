@@ -3,7 +3,7 @@ title:  geo_point_to_s2cell()
 description: Learn how to use the geo_point_to_s2cell() function to calculate the S2 cell token string value of a geographic location.
 ms.reviewer: mbrichko
 ms.topic: reference
-ms.date: 03/09/2023
+ms.date: 04/04/2024
 ---
 # geo_point_to_s2cell()
 
