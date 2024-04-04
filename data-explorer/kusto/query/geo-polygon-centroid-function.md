@@ -48,7 +48,7 @@ dynamic({"type": "MultiPolygon","coordinates": [[ LinearRingShell, LinearRingHol
 
 ## Examples
 
-The following example calculates the Central Park centroid in New York city.
+The following example calculates the Central Park centroid in New York City.
 
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA02PzYqDMBSF9/MUklUFpyS5uT9p6TvMXkREQ5HaRKwbKX33seMIXV049+NwviHMWRviPDVDPTbTLbtk3RKbe98enmpexqBO6icNyzVFVag2panrYzOHhzqVZfnNcPTOY+H0kT35qtgiFM2WyAIC2vdTtCYhDUjGW7NjYrXxzjoH4uSvg8QisQWNzLxjDIZFaK1C8BvmEA0Q6vfZsc8dVfXKz1/j1Md/vdR3q9o1pHrcbOo9Pnzq578zKeEgEAEAAA==" target="_blank">Run the query</a>

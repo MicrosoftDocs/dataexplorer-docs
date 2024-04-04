@@ -76,6 +76,8 @@ For comparison with other available grid systems, see [geospatial clustering wit
 
 ### US storm events aggregated by S2 cell
 
+The following example finds US storm events aggregated by S2 cells.
+
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA2WNsQoCMRBEe8F%2F2DIHVwmW1wh2dn5AWHPLJZpkw2ZPUfx4jWch2A3MvDdHZUn7K2Wt69UTivCZnMKOppAPnPtvQm1tnVNCCQ%2BC0x08Vj9MxLZwyGqVbd04itH8sz1su197o5Zxw9z7XDAuHtO0n7FQHkmgOlQlcR5F4RbUg7mEPA4JS%2FcCZ2nOhL0AAAA%3D" target="_blank">Run the query</a>
 
@@ -90,6 +92,8 @@ StormEvents
 **Output**
 
 :::image type="content" source="media/geo-point-to-s2cell-function/s2-cell.png" alt-text="Screenshot of a map rendering of US storm events aggregated by S2 cell.":::
+
+The following example calculates the S2 cell ID.
 
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAysoyswrUSg2Sk7NyVGwVUhPzY8vyAcKxZfkx0NENXQtDPQMLU0tjCx1FIxM9SwMjIwMTXUULDQBug9pJTwAAAA=" target="_blank">Run the query</a>

@@ -52,7 +52,7 @@ print distance_in_meters = geo_distance_2points(-122.407628, 47.578557, -118.275
 |--------------------|
 | 1546754.35197381   |
 
-Here's an approximation of the shortest path from Seattle to London. The line consists of coordinates along the LineString and within 500 meters from it.
+The following example finds an approximation of the shortest path from Seattle to London. The line consists of coordinates along the LineString and within 500 meters from it.
 
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA03Oz2rDMAwG8PueQvhkD684paW0rG+w244hBM/WEm+JHBRBKNvefU5gf3T9vp8k9tQhJHjlPEIFkqFy28AsOEF19wkT5zcMAgN1cAX2FLWBe2D0g36o9ntjYfDyPzq7wpYeGTf0grIgkv4TsNuBM1D6G/0pHE5rcHbml3eY25hm8RSwnXIiaSW3QyLUZbMt2MYb+TEF/aHkNqG6qKeSPgsn6pRVIWeOibzgrC51vV63h1Nja2ePVdN8GQOPcHTrw4wUkWEOXgQ59J4FliQ96PdE8Tr6yXwDBC8v7i4BAAA=" target="_blank">Run the query</a>

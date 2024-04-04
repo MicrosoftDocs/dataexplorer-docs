@@ -37,7 +37,7 @@ Indicates whether the geospatial coordinates are inside a circle. If the coordin
 
 ## Examples
 
-The following query finds all the places in the area defined by the following circle: Radius of 18 km, center at [-122.317404, 47.609119] coordinates.
+The following example finds all the places in the area defined by the following circle: Radius of 18 km, center at [-122.317404, 47.609119] coordinates.
 
 :::image type="content" source="media/geo-point-in-circle-function/circle-seattle.png" alt-text="Screenshot of a map with places within 18 km of Seattle.":::
 
@@ -65,7 +65,7 @@ datatable(longitude:real, latitude:real, place:string)
 |Kirkland|
 |Redmond|
 
-Storm events in Orlando. The events are filtered by 100 km within Orlando coordinates, and aggregated by event type and hash.
+The following example finds storm events in Orlando. The events are filtered by 100 km within Orlando coordinates, and aggregated by event type and hash.
 
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA22PwU7DMAyG7zyFjw0KW7sBKoddkHaCG9yrLLVaszSJHHdjiIcn3SbRw0625P//PvlDAg/bA3pJd78QOXyhFXjFjvx78Pq6GdFwDn2eIubcsUdG6DA0MZCXhnxjia3D4laT0bjioa4W6/qlUhpW9eJp/fisoSrLEu6noTI0jcNgmH4QbBi9FAp2p3+rht6kHjYzq4QmrSw6d8OqZt9MjUtwqtgMZOMujGKCKj3XnOVNrjP6Fhkioe0NCxxJeij25NvNYKKC5RLynO7XKPkOzMGQMzuHQB7exiQBtt/RBc6kFtNeQvwDFpFHo3MBAAA=" target="_blank">Run the query</a>

@@ -67,7 +67,7 @@ For comparison with other available grid systems, see [geospatial clustering wit
 
 ## Examples
 
-US storm events aggregated by geohash.
+The following example finds US storm events aggregated by geohash.
 
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA2WNsQ7CMAxEdyT%2BwWMqdWPugsTGxgdEJrWaALEjx4BAfDwNdEBiO5%2Fv3R1MNO9uxFbXqxcUlRMFgy1NiffC%2FaLQ2rdec0ZNT4LjAyLWOEwkvkhi8yZ%2BPprp%2FuEeNt1vfcOWdAPDPK94%2BTa55n7SSjySQg1oRhoiqsE9WQR3TjwOGUv3Bl2BVCm%2FAAAA" target="_blank">Run the query</a>
@@ -87,7 +87,7 @@ StormEvents
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAysoyswrUUhPzc9ILM5QsAWx4gvygWLxJfnxUGENQ2NLPQsDM0NDUx0FY1M9U1MTQyMLHQVDI00Aj1DetD8AAAA=" target="_blank">Run the query</a>
 
-Calculates and returns the geohash string value.
+The following example calculates and returns the geohash string value.
 
 ```kusto
 print geohash = geo_point_to_geohash(139.806115, 35.554128, 12)  
