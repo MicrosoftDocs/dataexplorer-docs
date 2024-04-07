@@ -14,7 +14,7 @@ For more information about visualization options, see [Data visualization with A
 
 ## Visualize points on a map
 
-It's possible to visualize points either using [Longitude, Latitude] columns, or GeoJSON column. The use of a series column is optional. The [Longitude, Latitude] pair defines each point, in that order.
+You can visualize points either using [Longitude, Latitude] columns, or GeoJSON column. Using a series column is optional. The [Longitude, Latitude] pair defines each point, in that order.
 
 ### Example: Visualize points on a map
 
