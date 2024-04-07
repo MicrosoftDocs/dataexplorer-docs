@@ -3,7 +3,7 @@ title:  geo_line_centroid()
 description: Learn how to use the geo_line_centroid() function to calculate the centroid of a line or a multiline on Earth.
 ms.reviewer: mbrichko
 ms.topic: reference
-ms.date: 03/09/2023
+ms.date: 04/02/2024
 ---
 # geo_line_centroid()
 
@@ -23,7 +23,7 @@ Calculates the centroid of a line or a multiline on Earth.
 
 ## Returns
 
-The centroid coordinate values in [GeoJSON Format](https://tools.ietf.org/html/rfc7946) and of a [dynamic](./scalar-data-types/dynamic.md) data type. If the line or the multiline is invalid, the query will produce a null result.
+The centroid coordinate values in [GeoJSON Format](https://tools.ietf.org/html/rfc7946) and of a [dynamic](./scalar-data-types/dynamic.md) data type. If the line or the multiline is invalid, the query produces a null result.
 
 > [!NOTE]
 >
@@ -40,7 +40,7 @@ dynamic({"type": "MultiLineString","coordinates": [[line_1, line_2, ..., line_N]
 
 * LineString coordinates array must contain at least two entries.
 * Coordinates [longitude, latitude] must be valid where longitude is a real number in the range [-180, +180] and latitude is a real number in the range [-90, +90].
-* Edge length must be less than 180 degrees. The shortest edge between the two vertices will be chosen.
+* Edge length must be less than 180 degrees. The shortest edge between the two vertices is chosen.
 
 ## Examples
 
@@ -88,9 +88,9 @@ print centroid = geo_line_centroid(line)
 | render scatterchart with (kind = map)
 ```
 
-:::image type="content" source="media/geo-line-centroid-function/nyc-central-park-centroid.png" alt-text="Screenshot of N Y C Central park line centroid.":::
+:::image type="content" source="media/geo-line-centroid-function/nyc-central-park-centroid.png" alt-text="Screenshot of the New York City Central Park line centroid.":::
 
-The following example returns True because of the invalid line.
+The following example returns `true` because of the invalid line.
 
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAx2MQQqAIBAAvyJ7UvDSNegH3TpKiOkiC7aGbYeI/p50nBmYoxGLotNvIflCjGrqxFcpOmP9jY/I0iolnW4OO0X9gNwHwghzz4v0RQYLsdaWiIPgCaNzg1XDur7GmA+R8wB3ZAAAAA==" target="_blank">Run the query</a>
@@ -103,4 +103,4 @@ print is_bad_line = isnull(geo_line_centroid(dynamic({"type":"LineString","coord
 
 |is_bad_line|
 |---|
-|True|
+|true|
