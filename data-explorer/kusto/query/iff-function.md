@@ -9,7 +9,7 @@ ms.date: 12/28/2022
 
 Returns the *:::no-loc text="then":::* value when the *:::no-loc text="if":::* condition evaluates to `true`, otherwise it returns the *:::no-loc text="else":::* value.
 
-> The `iff()` and `iif()` functions are equivalent
+> The `iff()` and `iif()` functions are equivalent.
 
 ## Syntax
 
