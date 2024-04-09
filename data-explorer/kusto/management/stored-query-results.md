@@ -22,7 +22,7 @@ Stored query results behave like tables, in that the order of records isn't pres
 > [!NOTE]
 >
 > * When you have more than 500 columns, an error is raised and the results aren't stored.
-> * Query results are stored in a storage account associated with the cluster. The data is not cached in local SSD storage.
+> * Query results are stored in a storage account associated with the cluster. The data isn't cached in local SSD storage.
 > * A follower cluster needs it's own writable database to store query results.
 
 The following table lists the management commands and functions used for managing stored query results:
