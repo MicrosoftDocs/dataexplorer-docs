@@ -53,6 +53,6 @@ StormEvents
 |NEW YORK	|1750|
 |...|...|
 
-# Related content
+## Related content
 
 * [bin_at()](bin-at-function.md#bin_at) rounds values down to a fixed-size bin, which can be used to aggregate data, such as by time unit.
