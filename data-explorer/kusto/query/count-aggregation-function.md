@@ -23,7 +23,7 @@ To only count records for which a predicate returns `true`, use [countif()](coun
 
 ## Returns
 
-Returns a count of the records per summarization group (or in total, if summarization is done without grouping).
+Returns a count of the records per summarization group, or in total if summarization is done without grouping.
 
 ## Example
 
@@ -52,3 +52,7 @@ StormEvents
 |NEBRASKA	|1766|
 |NEW YORK	|1750|
 |...|...|
+
+# Related content
+
+* [bin_at()](bin-at-function.md#bin_at) rounds values down to a fixed-size bin, which can be used to aggregate data, such as by time unit.
