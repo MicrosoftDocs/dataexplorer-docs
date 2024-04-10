@@ -7,14 +7,13 @@ ms.date: 12/28/2022
 ---
 # iff()
 
-Returns the value of *then* if *if* evaluates to `true`,
-or the value of *else* otherwise.
+Returns the *:::no-loc text="then":::* value when the *:::no-loc text="if":::* condition evaluates to `true`, otherwise it returns the *:::no-loc text="else":::* value.
 
-> The `iff()` and `iif()` functions are equivalent
+> The `iff()` and `iif()` functions are equivalent.
 
 ## Syntax
 
-`iff(`*if*`,` *then*`,` *else*`)`
+`iff(`*:::no-loc text="if":::*`,` *:::no-loc text="then":::*`,` *:::no-loc text="else":::*`)`
 
 [!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
 
@@ -22,14 +21,13 @@ or the value of *else* otherwise.
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-|*if*| `string` |  :heavy_check_mark: | An expression that evaluates to a boolean value.|
-|*then*| scalar |  :heavy_check_mark: | An expression that gets evaluated and its value returned from the function if *if* evaluates to `true`.|
-|*else*| scalar |  :heavy_check_mark: | An expression that gets evaluated and its value returned from the function if *if* evaluates to `false`.|
+|*:::no-loc text="if":::*| `string` |  :heavy_check_mark: | An expression that evaluates to a boolean value.|
+|*:::no-loc text="then":::*| scalar |  :heavy_check_mark: | An expression that returns its value when the *:::no-loc text="if":::* condition evaluates to `true`.|
+|*:::no-loc text="else":::*| scalar |  :heavy_check_mark: | An expression that returns its value when the *:::no-loc text="if":::* condition evaluates to `false`.|
 
 ## Returns
 
-This function returns the value of *then* if *if* evaluates to `true`,
-or the value of *else* otherwise.
+This function returns the  *:::no-loc text="then":::* value when the *:::no-loc text="if":::* condition evaluates to `true`, otherwise it returns the *:::no-loc text="else":::* value.
 
 ## Example
 
@@ -48,9 +46,9 @@ The following table shows only the first five rows.
 
 |State|EventId|EventType|Rain|
 |--|--|--|--|
-|ATLANTIC SOUTH| 61032 |Waterspout |Not rain event
-|FLORIDA| 60904 |Heavy Rain |Rain event
-|FLORIDA| 60913 |Tornado |Not rain event
-|GEORGIA| 64588 |Thunderstorm Wind |Not rain event
-|MISSISSIPPI| 68796 |Thunderstorm Wind |Not rain event
+|ATLANTIC SOUTH| 61032 |Waterspout |Not rain event|
+|FLORIDA| 60904 |Heavy Rain |Rain event|
+|FLORIDA| 60913 |Tornado |Not rain event|
+|GEORGIA| 64588 |Thunderstorm Wind |Not rain event|
+|MISSISSIPPI| 68796 |Thunderstorm Wind |Not rain event|
 |...|...|...|...|
