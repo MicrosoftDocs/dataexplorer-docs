@@ -3,7 +3,7 @@ title:  range()
 description: Learn how to use the range() function to generate a dynamic array holding a series of equally spaced values.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 03/12/2023
+ms.date: 04/11/2024
 ---
 # range()
 
@@ -60,7 +60,6 @@ print r = range(datetime(2007-01-01), datetime(2007-12-31), 1d)
 |---|
 |["2007-01-01T00:00:00.0000000Z","2007-01-02T00:00:00.0000000Z","2007-01-03T00:00:00.0000000Z",.....,"2007-12-31T00:00:00.0000000Z"]|
 
-<!--The following example returns a range  `[1,2,3]`:-->
 The following example returns an array with numbers between one and three.
 
 <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAysoyswrUShKzEtP1TDUUTDWBACGRU%2F4EQAAAA%3D%3D" target="_blank">Run the query</a>
@@ -95,6 +94,9 @@ print range(1h, 5h)
 |`["01:00:00","02:00:00","03:00:00","04:00:00","05:00:00"]`:|
 
 The following example exceeds the maximum range value limit and is truncated to that limit. The `mv-expand` expands the results into different records based on the maximum range value limit, and returns a count up until that limit.
+
+<a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAysoyswrUShSsFUoSsxLT9Uw1DE0gAFNBV6uGoXcMt3UioLEvBSgKhA%2FOb80rwQAsKWN4TcAAAA%3D
+" target="_blank">Run the query</a>
 
 ```kusto
 print r = range(1,1000000000) 
