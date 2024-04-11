@@ -3,11 +3,11 @@ title:  bin_at()
 description: Learn how to use the bin_at() function to round values down to a fixed-size bin. 
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 11/23/2022
+ms.date: 11/04/2024
 ---
 # bin_at()
 
-Rounds values down to a fixed-size bin, with control over the bin's starting point.
+Rounds values down to the nearest bin size below the value, where bins align to a defined fixed point. Results can align before or after the fixed point.
 
 ## Syntax
 
@@ -21,26 +21,78 @@ Rounds values down to a fixed-size bin, with control over the bin's starting poi
 |--|--|--|--|
 | *value* | int, long, real, timespan, or datetime |  :heavy_check_mark: | The value to round. |
 | *bin_size* | int, long, real, or timespan |  :heavy_check_mark: | The size of each bin. |
-| *fixed_point* | int, long, real, timespan, or datetime |  :heavy_check_mark: | A constant of the same type as *value* indicating one value of *value*, which is a *fixed point* for which `bin_at(fixed_point, bin_size, fixed_point) == fixed_point`.|
+| *fixed_point* | int, long, real, timespan, or datetime |  :heavy_check_mark: | A constant of the same type as *value*, which is used as a fixed reference point.|
 
 > [!NOTE]
 > If *value* is a timespan or datetime, then the *bin_size* must be a timespan.
 
 ## Returns
 
-The nearest multiple of *bin_size* below *value*, shifted so that *fixed_point*
-will be translated into itself.
+The closest multiple of *bin_size* below the given *value* that aligns to the specified *fixed_point*.
 
 ## Examples
+<!--this is a complicated example given the result, maybe we can change it-->
+In the following example, `value` is round down to the nearest `bin_size` that aligns to the `fixed_point`.
+  
+> [!div class="nextstepaction"]
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAysoyswrUUjKzItPLNEw0zPVUTACEeaaALSGJjMZAAAA" target="_blank">Run the query</a>
 
-|Expression                                                                    |Result                           |Comments                   |
-|------------------------------------------------------------------------------|---------------------------------|---------------------------|
-|`bin_at(6.5, 2.5, 7)`                                                         |`4.5`                            ||
-|`bin_at(time(1h), 1d, 12h)`                                                   |`-12h`                           ||
-|`bin_at(datetime(2017-05-15 10:20:00.0), 1d, datetime(1970-01-01 12:00:00.0))`|`datetime(2017-05-14 12:00:00.0)`|All bins will be at noon   |
-|`bin_at(datetime(2017-05-17 10:20:00.0), 7d, datetime(2017-06-04 00:00:00.0))`|`datetime(2017-05-14 00:00:00.0)`|All bins will be on Sundays|
+```kusto
+print bin_at(6.5, 2.5, 7)
+```
 
-In the following example, notice that the `"fixed point"` arg is returned as one of the bins and the other bins are aligned to it based on the `bin_size`. Also note that each datetime bin represents the starting time of that bin:
+**Output**
+
+|print_0|
+|-------|
+| 4.5 |
+
+In the following example, the time interval is binned into daily bins aligned to a 12 hour fixed point. The return value is -12 since the time interval rounds down to zero and the bins must align to 12 hours.
+  
+> [!div class="nextstepaction"]
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAysoyswrUUjKzItPLNEoycxN1TDM0NRRMEwBYqMMTQDWMdZPHwAAAA%3D%3D" target="_blank">Run the query</a>
+
+```kusto
+print bin_at(time(1h), 1d, 12h)
+```
+
+**Output**
+
+|print_0|
+|-------|
+| -12:00:00 |
+
+In the following example, daily bins align to noon.
+
+> [!div class="nextstepaction"]
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAysoyswrUUjKzItPLNFISSxJLcnMTdUwMjA01zUw1TU0VTA0sDIysDIw0DPQ1FEwTNFRgCsytDQ30DUwBCIFQyOgCogiTQA0H6zaUgAAAA%3D%3D" target="_blank">Run the query</a>
+
+```kusto
+print bin_at(datetime(2017-05-15 10:20:00.0), 1d, datetime(1970-01-01 12:00:00.0))
+```
+
+**Output**
+
+|print_0|
+|-------|
+| 2017-05-14T12:00:00Z |
+
+In the following example bins are weekly and align to the start of Sunday June 6, 2017. The example returns a bin aligned to Sundays.
+
+> [!div class="nextstepaction"]
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAysoyswrUUjKzItPLNFISSxJLcnMTdUwMjA01zUw1TU0VzA0sDIysDIw0DPQ1FEwT9FRQFNkpmtgomAAUgFRpAkAjzZv9FIAAAA%3D" target="_blank">Run the query</a>
+
+```kusto
+print bin_at(datetime(2017-05-17 10:20:00.0), 7d, datetime(2017-06-04 00:00:00.0))`|`datetime(2017-05-14 00:00:00.0)
+```
+
+**Output**
+
+|print_0|
+|-------|
+| 2017-05-14T00:00:00Z |
+
+In the following example, the data is grouped into daily bins aligned to a specific date and time. It returns a set of bins aligned to the `fixed_point` date and time with a Date and Num column with values for each bin. The `"fixed point"` value is included in one of the returned bins and the other values align to it's time. Each bin's datetime is it's start time.
 
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA0tJLAHCpJxUDZfEklSrFCBRkpmbqqPgV5prlZlXohnNywUT1DAyMLTQNTDSNTIJMTS1MjTR1DHWwSZtHGJoBpY2wSptBtNtGsvLVaNQXJqbm1iUWZUKYmkA7dVUSKpUSMrMi08sAbtKR8EwRUcBiysUwOZYGRjoGUCApiYAxLxe/tAAAAA=" target="_blank">Run the query</a>
