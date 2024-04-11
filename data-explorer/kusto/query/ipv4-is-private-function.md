@@ -9,7 +9,7 @@ ms.date: 01/01/2023
 
 Checks if the IPv4 string address belongs to a set of private network IPs.
 
-[Private network addresses](https://en.wikipedia.org/wiki/Private_network) were originally defined to assist in delaying IPv4 address exhaustion. IP packets originating from or addressed to a private IP address can't be routed through the public internet.
+[Private network addresses](https://en.wikipedia.org/wiki/Private_network) were originally defined to help delay IPv4 address exhaustion. IP packets originating from or addressed to a private IP address can't be routed through the public internet.
 
 ## Private IPv4 addresses
 
@@ -70,3 +70,8 @@ datatable(ip_string:string)
 |10.1.2.3|true|
 |192.168.1.1/24|true|
 |127.0.0.1|false|
+
+## Related content
+
+* Overview of [IPv4/IPv6 functions](scalar-functions.md#ipv4ipv6-functions)
+* Overview of [IPv4 text match functions](scalar-functions.md#ipv4-text-match-functions)

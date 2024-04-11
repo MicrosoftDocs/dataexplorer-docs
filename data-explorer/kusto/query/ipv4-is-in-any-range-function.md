@@ -97,3 +97,8 @@ IPs
 |192.168.1.5|true|
 |123.1.11.21|false|
 |1.1.1.1|false|
+
+## Related content
+
+* Overview of [IPv4/IPv6 functions](scalar-functions.md#ipv4ipv6-functions)
+* Overview of [IPv4 text match functions](scalar-functions.md#ipv4-text-match-functions)

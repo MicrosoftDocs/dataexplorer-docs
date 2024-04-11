@@ -17,11 +17,11 @@ The `ipv4_lookup` plugin looks up an IPv4 value in a lookup table and returns ro
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-| *T* | `string` |  :heavy_check_mark: | The tabular input whose column *SourceIPv4Key* will be used for IPv4 matching.|
-| *LookupTable* | `string` |  :heavy_check_mark: | Table or tabular expression with IPv4 lookup data, whose column *LookupKey* will be used for IPv4 matching. IPv4 values can be masked using [IP-prefix notation](#ip-prefix-notation).|
+| *T* | `string` |  :heavy_check_mark: | The tabular input whose column *SourceIPv4Key* is used for IPv4 matching.|
+| *LookupTable* | `string` |  :heavy_check_mark: | Table or tabular expression with IPv4 lookup data, whose column *LookupKey* is used for IPv4 matching. IPv4 values can be masked using [IP-prefix notation](#ip-prefix-notation).|
 | *SourceIPv4Key* | `string` |  :heavy_check_mark: | The column of *T* with IPv4 string to be looked up in *LookupTable*. IPv4 values can be masked using [IP-prefix notation](#ip-prefix-notation).|
 | *IPv4LookupKey* | `string` |  :heavy_check_mark: | The column of *LookupTable* with IPv4 string that is matched against each *SourceIPv4Key* value.|
-| *ExtraKey1* .. *ExtraKeyN* | `string` | | Additional column references that are used for lookup matches. Similar to `join` operation: records with equal values will be considered matching. Column name references must exist both is source table `T` and `LookupTable`.|
+| *ExtraKey1* .. *ExtraKeyN* | `string` | | Additional column references that are used for lookup matches. Similar to `join` operation: records with equal values are considered matching. Column name references must exist both is source table `T` and `LookupTable`.|
 | *return_unmatched* | `bool` | | A boolean flag that defines if the result should include all or only matching rows (default: `false` - only matching rows returned).|
 
 [!INCLUDE [ip-prefix-notation](../../includes/ip-prefix-notation.md)]
@@ -30,9 +30,9 @@ The `ipv4_lookup` plugin looks up an IPv4 value in a lookup table and returns ro
 
 The `ipv4_lookup` plugin returns a result of join (lookup) based on IPv4 key. The schema of the table is the union of the source table and the lookup table, similar to the result of the [`lookup` operator](lookup-operator.md).
 
-If the *return_unmatched* argument is set to `true`, the resulting table will include both matched and unmatched rows (filled with nulls).
+If the *return_unmatched* argument is set to `true`, the resulting table includes both matched and unmatched rows (filled with nulls).
 
-If the *return_unmatched* argument is set to `false`, or omitted (the default value of `false` is used), the resulting table will have as many records as matching results. This variant of lookup has better performance compared to `return_unmatched=true` execution.
+If the *return_unmatched* argument is set to `false`, or omitted (the default value of `false` is used), the resulting table has as many records as matching results. This variant of lookup has better performance compared to `return_unmatched=true` execution.
 
 > [!NOTE]
 >
@@ -74,7 +74,7 @@ IPs
 |2.20.183.12|2.20.183.0/24|EU|Europe|GB|United Kingdom|
 |5.8.1.2|5.8.0.0/19|EU|Europe|RU|Russia|
 
-### IPv4 lookup - return both matching and non-matching rows
+### IPv4 lookup - return both matching and nonmatching rows
 
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA11SwW7bMAy9+yuIXNoCnhQpcZqm6GHrhqLrYUGLnobCUG0tEWJLhkQlGLCPH2U7RVIDpq3H9/gIipzD4xoa53axA1TvjV4RUH5XqDLOYa08GtVATWf44127ggRvEbuw4tyrA9sY3Mb3GLSvnEVtkVWu5UkQNAa+0c508ovp9nPeqoDa97lTnFVhnzUaj8Zw1/v13VxajQfnd6uA3thNnjyMJZeycrUeUTiBrWpP4WjR/y1NcJ/5Q+KUfZX9zoCeiRCCLZZMyCWbcnE9ySdfX1IIRtHn5zoF1Sk7yQd+wYiYqDeU+fGaQvSu0/TznE7PMfTSgS3ljMmioHdOGjn/VP7lIQXqR3XO66NovmCzBZPTKSsEn0mi/LpPodLK9rL7pxToGuExNMrW4cOOVEwsZ0ev8/4evlF4tQZ1DU9kWruWhG+343WEs6sw3Tiq46QuPooLeZETQKtxXmygpQEJNlBgoA0zGdLiRjKxKKgIE9dE6qvsrDvY1Al1kf0DvVdNVKghLUw57OvluC85gTmMi5KD1xi9LaNtFVZb6uUO0Ed99R9LR6CF6wIAAA==" target="_blank">Run the query</a>
@@ -159,3 +159,8 @@ IPs
 |---|---|---|---|---|---|---|---|---|
 |2.20.183.12|Europe|GB|2.20.183.0/24|2635167|EU|United Kingdom|0|0|
 |5.8.1.2|Europe|RU|5.8.0.0/19|2017370|EU|Russia|0|0|
+
+## Related content
+
+* Overview of [IPv4/IPv6 functions](scalar-functions.md#ipv4ipv6-functions)
+* Overview of [IPv4 text match functions](scalar-functions.md#ipv4-text-match-functions)
