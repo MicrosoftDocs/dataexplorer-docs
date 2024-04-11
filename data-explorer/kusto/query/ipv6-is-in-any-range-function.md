@@ -64,3 +64,7 @@ IPs
 |a5e:f127:8a9d:146d:e102:b5d3:c755:abce|	True|
 |a5e:f127:8a9d:146d:e102:b5d3:c755:abcf|	True|
 |a5e:f127:8a9d:146d:e102:b5d3:c756:abd1|	False|
+
+## Related content
+
+* Overview of [IPv4/IPv6 functions](scalar-functions.md#ipv4ipv6-functions)
