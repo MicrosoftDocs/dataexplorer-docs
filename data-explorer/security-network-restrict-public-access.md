@@ -30,6 +30,9 @@ To allow, limit, or prevent public access to your cluster, follow these steps:
 
 1. Select **Save**.
 
+> [!IMPORTANT]
+> When using 'Enabled from selected IP addresses', the IP address or CIDR must be in IPv4 format.
+
 ## Related content
 
 * [Troubleshooting Private Endpoints in Azure Data Explorer](security-network-private-endpoint-troubleshoot.md)
