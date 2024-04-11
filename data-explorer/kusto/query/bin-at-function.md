@@ -3,7 +3,7 @@ title:  bin_at()
 description: Learn how to use the bin_at() function to round values down to a fixed-size bin. 
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 11/04/2024
+ms.date: 04/11/2024
 ---
 # bin_at()
 
