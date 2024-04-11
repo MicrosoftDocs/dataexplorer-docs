@@ -47,7 +47,7 @@ print bin_at(6.5, 2.5, 7)
 |-------|
 | 4.5 |
 
-In the following example, the time interval is binned into daily bins aligned to a 12 hour fixed point. The return value is -12 since the time interval rounds down to zero and the bins must align to 12 hours.
+In the following example, the time interval is binned into daily bins aligned to a 12 hour fixed point. The return value is -12 since the time interval rounds down to zero, and the bins must align to 12 hours.
   
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAysoyswrUUjKzItPLNEoycxN1TDM0NRRMEwBYqMMTQDWMdZPHwAAAA%3D%3D" target="_blank">Run the query</a>
@@ -77,7 +77,7 @@ print bin_at(datetime(2017-05-15 10:20:00.0), 1d, datetime(1970-01-01 12:00:00.0
 |-------|
 | 2017-05-14T12:00:00Z |
 
-In the following example bins are weekly and align to the start of Sunday June 6, 2017. The example returns a bin aligned to Sundays.
+In the following example, bins are weekly and align to the start of Sunday June 6, 2017. The example returns a bin aligned to Sundays.
 
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAysoyswrUUjKzItPLNFISSxJLcnMTdUwMjA01zUw1TU0VzA0sDIysDIw0DPQ1FEwT9FRQFNkpmtgomAAUgFRpAkAjzZv9FIAAAA%3D" target="_blank">Run the query</a>
