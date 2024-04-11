@@ -161,6 +161,6 @@ StormEvents
 |NEVADA|
 
 ## Related content
-* Learn about different kind of join [join-operator](../join-operator.md)
+* Learn about different kinds of [join-operator](../join-operator.md)
 * Learn how to perform [cross-database and cross-cluster queries](../cross-cluster-or-database-queries.md)
 * Follow the [create geospatial visualizations](create-geospatial-visualizations.md) tutorial
