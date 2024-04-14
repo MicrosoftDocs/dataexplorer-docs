@@ -16,7 +16,7 @@ To allow, limit, or prevent public access to your cluster, follow these steps:
 
 1. In the [Azure portal](https://ms.portal.azure.com/), go to your cluster.
 
-1. From the left-hand menu, under **Security + Networking**, select **Networking**.
+1. From the left-hand menu, under **Security + Networking**, select **Networking**. If you select the *Enabled from selected IP addresses* option, you must the specify the IP address or CIDR using the IPv4 address format.
 
     :::image type="content" source="media/security-network-restrict-access/networking-public-access.png" alt-text="Screenshot of the networking public access page." lightbox="media/security-network-restrict-access/networking-public-access.png":::
 
