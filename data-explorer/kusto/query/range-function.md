@@ -97,7 +97,7 @@ print range(1h, 5h)
 |1,000,000|
 |`["01:00:00","02:00:00","03:00:00","04:00:00","05:00:00"]`:|
 
-The following example exceeds the maximum range value limit and is truncated to that limit. The `mv-expand` expands the results into different records based on the maximum range value limit, and returns a count up until that limit.
+The following example exceeds the maximum range value limit and is truncated to that limit. The `mv-expand` expands the results into different records up to the maximum range value limit, and returns a count up until that limit.
 
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAysoyswrUShSsFUoSsxLT9Uw1DE0gAFNBV6uGoXcMt3UioLEvBSgKhA%2FOb80rwQAsKWN4TcAAAA%3D
