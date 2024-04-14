@@ -7,7 +7,7 @@ ms.date: 04/11/2024
 ---
 # bin_at()
 
-Rounds values down to the nearest bin size below the value, where bins align to a defined fixed point. Results can align before or after the fixed point.
+Rounds down to a bin size below the value, aligned to a fixed point. In contrast to the [bin()](bin-function.md) function, where the point of alignment is predefined, bin_at() allows you to define a fixed point for alignment. Results can align before or after the fixed point.
 
 ## Syntax
 
@@ -32,7 +32,7 @@ The closest multiple of *bin_size* below the given *value* that aligns to the sp
 
 ## Examples
 <!--this is a complicated example given the result, maybe we can change it-->
-In the following example, `value` is round down to the nearest `bin_size` that aligns to the `fixed_point`.
+In the following example, `value` is rounded down to the nearest `bin_size` that aligns to the `fixed_point`.
   
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAysoyswrUUjKzItPLNEw0zPVUTACEeaaALSGJjMZAAAA" target="_blank">Run the query</a>
@@ -47,7 +47,7 @@ print bin_at(6.5, 2.5, 7)
 |-------|
 | 4.5 |
 
-In the following example, the time interval is binned into daily bins aligned to a 12 hour fixed point. The return value is -12 since the time interval rounds down to zero, and the bins must align to 12 hours.
+In the following example, the time interval is binned into daily bins aligned to a 12 hour fixed point. The return value is -12 since a daily bin aligned to 12 hours rounds down to 12 on the previous day.
   
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAysoyswrUUjKzItPLNEoycxN1TDM0NRRMEwBYqMMTQDWMdZPHwAAAA%3D%3D" target="_blank">Run the query</a>
