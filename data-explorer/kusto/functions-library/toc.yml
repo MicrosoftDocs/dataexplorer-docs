@@ -110,6 +110,9 @@ items:
 - name: series_lag_fl()
   displayName: functions library, filter, time shift, delay
   href: series-lag-fl.md
+- name: series_monthly_decompose_anomalies_fl()
+  displayName: functions library, anomaly detection, monthly
+  href: series-monthly-decompose-anomalies-fl.md
 - name: series_moving_avg_fl()
   displayName: functions library, filter, low-pass, smoothing
   href: series-moving-avg-fl.md
