@@ -19,12 +19,12 @@ Rounds down to a bin size below the value, aligned to a fixed point. In contrast
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-| *value* | int, long, real, timespan, or datetime |  :heavy_check_mark: | The value to round. |
-| *bin_size* | int, long, real, or timespan |  :heavy_check_mark: | The size of each bin. |
-| *fixed_point* | int, long, real, timespan, or datetime |  :heavy_check_mark: | A constant of the same type as *value*, which is used as a fixed reference point.|
+| *value* | `int`, `long`, `real`, `timespan`, or `datetime` |  :heavy_check_mark: | The value to round. |
+| *bin_size* | `int`, `long`, `real`, or `timespan` |  :heavy_check_mark: | The size of each bin. |
+| *fixed_point* | `int`, `long`, `real`, `timespan`, or `datetime` |  :heavy_check_mark: | A constant of the same type as *value*, which is used as a fixed reference point.|
 
 > [!NOTE]
-> If *value* is a timespan or datetime, then the *bin_size* must be a timespan.
+> If *value* is a `timespan` or `datetime`, then the *bin_size* must be a `timespan`.
 
 ## Returns
 
@@ -32,7 +32,7 @@ The closest multiple of *bin_size* below the given *value* that aligns to the sp
 
 ## Examples
 
-In the following example, `value` is rounded down to the nearest `bin_size` that aligns to the `fixed_point`.
+In the following example, *value* is rounded down to the nearest *bin_size* that aligns to the *fixed_point*.
   
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAysoyswrUUjKzItPLNEw0zPVUTACEeaaALSGJjMZAAAA" target="_blank">Run the query</a>
@@ -92,7 +92,7 @@ print bin_at(datetime(2017-05-17 10:20:00.0), 7d, datetime(2017-06-04 00:00:00.0
 |-------|
 | 2017-05-14T00:00:00Z |
 
-In the following example, the data is grouped into daily bins aligned to a specific date and time. It returns a set of bins aligned to the `fixed_point` date and time with a Date and Num column with values for each bin. The `"fixed point"` value is included in one of the returned bins and the other values align to it's time. Each bin's datetime is it's start time.
+In the following example, the data is grouped into daily bins aligned to a specific date and time. It returns a set of bins aligned to the *fixed_point* date and time with values for each bin. The *"fixed point"* value is included in the `Date` column of one of the returned bins and the other values align to it's time. Each bin's `datetime` is it's start time.
 
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA0tJLAHCpJxUDZfEklSrFCBRkpmbqqPgV5prlZlXohnNywUT1DAyMLTQNTDSNTIJMTS1MjTR1DHWwSZtHGJoBpY2wSptBtNtGsvLVaNQXJqbm1iUWZUKYmkA7dVUSKpUSMrMi08sAbtKR8EwRUcBiysUwOZYGRjoGUCApiYAxLxe/tAAAAA=" target="_blank">Run the query</a>
