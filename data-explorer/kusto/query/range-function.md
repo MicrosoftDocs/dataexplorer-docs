@@ -3,7 +3,7 @@ title:  range()
 description: Learn how to use the range() function to generate a dynamic array holding a series of equally spaced values.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 04/11/2024
+ms.date: 04/15/2024
 ---
 # range()
 
@@ -32,7 +32,7 @@ A dynamic array whose values are: *start*, *start* + *step*, ... up to and inclu
 
 ## Examples
 
-The following example returns a range of numbers between one and eight, incremented by three. <!--The following example returns `[1, 4, 7]`: -->
+The following example returns a range of numbers between one and eight, incremented by three.
 
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAysoyswrUShSsFUoSsxLT9Uw1FGw0FEw1gQAs67sWxgAAAA%3D" target="_blank">Run the query</a>
@@ -70,11 +70,6 @@ The following example returns an array with numbers between one and three.
 ```kusto
 print range(1, 3)
 ```
-<!-- as is this wont work because it doesnt have a step so i added a step
-```kusto
-range(1, 3)
-```-->
-
 *Output*
 
 |print_0|
