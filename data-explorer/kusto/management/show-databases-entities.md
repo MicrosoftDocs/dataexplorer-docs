@@ -24,7 +24,7 @@ You must have at least Database User, Database Viewer, or Database Monitor permi
 |Key|Value|Description|
 |--|--|--|
 |`showObfuscatedStrings`| `bool` | Defaults to `false`. If `true`, [obfuscated strings](../query/scalar-data-types/string.md#obfuscated-string-literals) in database entity bodies are shown. To use this option, you must either be a database admin or entity creator. If you don't have these permissions, the obfuscated strings are **not** shown.|
-|`resolveFunctionsSchema`| `bool` | Defaults to `false`. If `true`, returned stored functions will have output schema resolved.|
+|`resolveFunctionsSchema`| `bool` | Defaults to `false`. If `true`, returned stored functions have output schema resolved.|
 
 ### Returns
 
@@ -42,7 +42,7 @@ Returns a list of entities of all cluster databases visible to the user. Databas
 |EntityName|The name of the entity|
 |DocString|Entity documentation, if exists|
 |Folder|Folder name under which the entity is located|
-|CslInputSchema|Entity input schema in CSL schema format, if applicable. For functions, this is the function parameters schema|
+|CslInputSchema|Entity input schema in CSL schema format, if applicable. For functions, the schema is for the function parameters|
 |Content|Entity content, if applicable. For functions, it's a body of the function|
 |CslOutputSchema|Entity output schema in CSL schema format|
 |Properties|Dynamic structure that provides more details on the entity (currently unused)|
