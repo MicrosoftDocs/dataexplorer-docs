@@ -111,7 +111,7 @@ series_monthly_decompose_anomalies_fl(tbl:(_key:string, _date:datetime, _val:rea
 
 ## Example
 
-The input table must contain _key, _date and _val columns. It builds a set of time series of _val per each _key and adds anomalies, score and baseline columns.
+The input table must contain `_key`, `_date` and `_val` columns. The query builds a set of time series of `_val` per each `_key` and adds anomalies, score and baseline columns.
 
 ### [Query-defined](#tab/query-defined)
 
