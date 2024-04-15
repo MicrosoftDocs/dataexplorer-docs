@@ -174,6 +174,7 @@ demo_monthly_ts
 
 **Output**
 
+**Series A with monthly anomalies:**
 :::image type="content" source="media\series-monthly-decompose-anomalies-fl\series-monthly-decompose-anomalies-chart-A.png" alt-text="Graph of time series 'A' with monthly anomalies." lightbox="media\series-monthly-decompose-anomalies-fl\series-monthly-decompose-anomalies-chart-A.png" border="false":::
 
 :::image type="content" source="media\series-monthly-decompose-anomalies-fl\series-monthly-decompose-anomalies-chart-B.png" alt-text="Graph of time series 'B' with monthly anomalies." lightbox="media\series-monthly-decompose-anomalies-fl\series-monthly-decompose-anomalies-chart-B.png" border="false":::
