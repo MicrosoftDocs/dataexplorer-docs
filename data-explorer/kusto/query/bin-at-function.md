@@ -3,7 +3,7 @@ title:  bin_at()
 description: Learn how to use the bin_at() function to round values down to a fixed-size bin. 
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 04/11/2024
+ms.date: 04/15/2024
 ---
 # bin_at()
 
@@ -31,7 +31,7 @@ Rounds down to a bin size below the value, aligned to a fixed point. In contrast
 The closest multiple of *bin_size* below the given *value* that aligns to the specified *fixed_point*.
 
 ## Examples
-<!--this is a complicated example given the result, maybe we can change it-->
+
 In the following example, `value` is rounded down to the nearest `bin_size` that aligns to the `fixed_point`.
   
 > [!div class="nextstepaction"]
