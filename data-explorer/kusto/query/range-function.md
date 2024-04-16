@@ -32,7 +32,7 @@ A dynamic array whose values are: *start*, *start* + *step*, ... up to and inclu
 
 ## Examples
 
-The following example returns a range of numbers between one and eight, incremented by three.
+The following example returns an array of numbers from one to eight, with an increment of three.
 
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAysoyswrUShSsFUoSsxLT9Uw1FGw0FEw1gQAs67sWxgAAAA%3D" target="_blank">Run the query</a>
