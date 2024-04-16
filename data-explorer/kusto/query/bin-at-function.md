@@ -7,7 +7,9 @@ ms.date: 04/15/2024
 ---
 # bin_at()
 
-Rounds down to a bin size below the value, aligned to a fixed point. In contrast to the [bin()](bin-function.md) function, where the point of alignment is predefined, bin_at() allows you to define a fixed point for alignment. Results can align before or after the fixed point.
+Returns the value rounded down to the nearest bin size, which is aligned to a fixed reference point.
+
+In contrast to the [bin()](bin-function.md) function, where the point of alignment is predefined, bin_at() allows you to define a fixed point for alignment. Results can align before or after the fixed point.
 
 ## Syntax
 
@@ -28,7 +30,7 @@ Rounds down to a bin size below the value, aligned to a fixed point. In contrast
 
 ## Returns
 
-The closest multiple of *bin_size* below the given *value* that aligns to the specified *fixed_point*.
+The nearest multiple of *bin_size* below the given *value* that aligns to the specified *fixed_point*.
 
 ## Examples
 
@@ -92,26 +94,28 @@ print bin_at(datetime(2017-05-17 10:20:00.0), 7d, datetime(2017-06-04 00:00:00.0
 |-------|
 | 2017-05-14T00:00:00Z |
 
-In the following example, the data is grouped into daily bins aligned to a specific date and time. It returns a set of bins aligned to the *fixed_point* date and time with values for each bin. The *"fixed point"* value is included in the `Date` column of one of the returned bins and the other values align to it's time. Each bin's `datetime` is it's start time.
+In the following example, the total number of events are grouped into daily bins aligned to the *fixed_point* date and time. The *fixed_point* value is included in one of the returned bins.
 
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA0tJLAHCpJxUDZfEklSrFCBRkpmbqqPgV5prlZlXohnNywUT1DAyMLTQNTDSNTIJMTS1MjTR1DHWwSZtHGJoBpY2wSptBtNtGsvLVaNQXJqbm1iUWZUKYmkA7dVUSKpUSMrMi08sAbtKR8EwRUcBiysUwOZYGRjoGUCApiYAxLxe/tAAAAA=" target="_blank">Run the query</a>
 
 ```kusto
-datatable(Date:datetime, Num:int)[
+datatable(Date:datetime, NumOfEvents:int)[
 datetime(2018-02-24T15:14),3,
+datetime(2018-02-24T15:24),4,
 datetime(2018-02-23T16:14),4,
+datetime(2018-02-23T17:29),4,
 datetime(2018-02-26T15:14),5]
-| summarize sum(Num) by bin_at(Date, 1d, datetime(2018-02-24 15:14:00.0000000)) 
+| summarize TotalEvents=sum(NumOfEvents) by bin_at(Date, 1d, datetime(2018-02-24 15:14:00.0000000)) 
 ```
 
 **Output**
 
-|Date|sum_Num|
+|Date|TotalEvents|
 |---|---|
-|2018-02-23 15:14:00.0000000|4|
-|2018-02-24 15:14:00.0000000|3|
-|2018-02-26 15:14:00.0000000|5|
+| 2018-02-23T15:14:00Z|8|
+| 2018-02-24T15:14:00Z |7|
+| 2018-02-26T15:14:00Z |5|
 
 ## Related content
 
