@@ -20,9 +20,16 @@ All of the drop and move operations are done in a single transaction.
 
 You must have at least [Table Admin](../management/access-control/role-based-access-control.md) permissions for the source and destination tables.
 
+## Restrictions
+
+* Both source and destination tables must be in the context database.
+* All extents specified by the *ExtentsToDropQuery* are expected to belong to the destination table.
+* All columns in the source tables are expected to exist in the destination table with the same name and data type.
+* If the destination table is a source table of a [materialized view](materialized-views/materialized-view-overview.md), the command might fail since the materialized view will not process the records in the moved extents. See more details in the [materialized views limitations](materialized-views/materialized-views-limitations.md#the-materialized-view-source) page. You can workaround this error by setting a new ingestion time during the move command. See `setNewIngestionTime` in [supported properties](#supported-properties).
+
 ## Syntax
 
-`.replace` [`async`] `extents` `in` `table` *DestinationTableName* `with` `(` `extentCreatedOnFrom` `=` *FromDate*`,` `extentCreatedOnTo` `=`*ToDate* `)` `<|`
+`.replace` [`async`] `extents` `in` `table` *DestinationTableName* [ `with` `(`*PropertyName* `=` *PropertyValue* [`,` ...]`)`] `<|`
 `{`*ExtentsToDropQuery*`},{`*ExtentsToMoveQuery*`}`
 
 [!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
@@ -35,17 +42,20 @@ You must have at least [Table Admin](../management/access-control/role-based-acc
 |*DestinationTableName*| `string` | :heavy_check_mark:|The name of the table to which to move the extents.|
 |*FromDate*| `datetime` ||The query window start date.|
 |*ToDate*| `datetime` ||The query window end date.|
+|*PropertyName*, *PropertyValue*| `string` ||One or more [Supported properties](#supported-properties).|
 |*ExtentsToDropQuery*| `string` | :heavy_check_mark:|The results of this query specify the extent IDs that should be dropped from the destination table. Should return a recordset with a column called "ExtentId".|
 |*ExtentsToMoveQuery*| `string` | :heavy_check_mark:|The results of this [Kusto Query Language (KQL)](../query/index.md) query specify the source tables and the extent IDs to be moved to the destination table. Should return a recordset with columns called "ExtentId" and "TableName".|
 
+## Supported properties
+
+| Property name | Type | Required | Description |
+|--|--|--|--|
+| `setNewIngestionTime` | `bool` |  | If set to `true`, a new [ingestion time](../query/ingestion-time-function.md) is assigned to all records in extents being moved. This is useful when records should be processed by workloads that depend on [database cursors](database-cursor.md), such as [materialized views](materialized-views/materialized-view-overview.md) and [continuous data export](data-export/continuous-data-export.md). |
+| `extentCreatedOnFrom` | `datetime` |  :heavy_check_mark: | Apply on extents created after this point in time. |
+| `extentCreatedOnTo` | `datetime` |  :heavy_check_mark: | Apply on extents created before this point in time. |
+
 > [!NOTE]
 > For better performance, set extentCreatedOnFrom and extentCreatedOnTo parameters to the smallest possible range.
-
-## Restrictions
-
-* Both source and destination tables must be in the context database.
-* All extents specified by the *ExtentsToDropQuery* are expected to belong to the destination table.
-* All columns in the source tables are expected to exist in the destination table with the same name and data type.
 
 ## Returns
 
