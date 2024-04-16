@@ -46,7 +46,7 @@ The function returns the values at the beginning of each session. It uses the fo
 
 ## Examples
 
-The following example calculates session start values for a table, `datatable`, with a sequence **ID** column and a **Timestamp** column to record the time of each record. The data is sorted by the sequence IDs and timestamps and then the example returns values for **ID**, **Timestamp**, and a new **SessionStarted** column.
+The following example calculates session start values for a data table. The table has an **ID** column used to identify a sequence and a **Timestamp** column for when the sequence event occurred.  The query first sorts the data by **ID** and **Timestamp** and then returns the session start values for each record. In this example, a session is defined as not exceeding one hour and persists as long as consecutive records are less than five minutes apart.
 In the example, a session can't exceed one hour. It continues for as long as records are less than five minutes apart and the ID stays the same. The example includes records that are less than five minutes apart.
 
 > [!div class="nextstepaction"]
