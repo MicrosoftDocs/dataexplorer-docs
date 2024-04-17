@@ -23,6 +23,7 @@ You must have at least [Table Admin](../management/access-control/role-based-acc
 
 * Both source and destination tables must be in the context database.
 * All columns in the source table are expected to exist in the destination table with the same name and data type.
+* If the destination table is a source table of a [materialized view](materialized-views/materialized-view-overview.md), the command might fail since the materialized view won't process the records in the moved extents. See more details in the [materialized views limitations](materialized-views/materialized-views-limitations.md#the-materialized-view-source) page. You can workaround this error by setting a new ingestion time during the move command. See `setNewIngestionTime` in [supported properties](#supported-properties).
 
 ## Syntax
 
