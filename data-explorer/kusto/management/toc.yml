@@ -46,6 +46,10 @@ items:
     items:
       - name: Best practices for schema management
         href: management-best-practices.md
+      - name: Clusters
+        items:
+        - name: .execute cluster script command
+          href: execute-cluster-script.md
       - name: Databases
         href: databases.md
         items:
