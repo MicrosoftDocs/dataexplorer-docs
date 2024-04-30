@@ -54,7 +54,6 @@ Migration to multiple availability zones is limited to regions that don't have c
 - Australia East
 - Canada Central
 - China North 3
-- France Central
 - India Central
 - North Europe
 - Norway East
