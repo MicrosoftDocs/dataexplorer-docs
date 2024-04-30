@@ -557,6 +557,7 @@ class Program
 * [Data mappings](kusto/management/mappings.md) must be [pre-created](kusto/management/create-ingestion-mapping-command.md) for use in streaming ingestion. Individual streaming ingestion requests don't accommodate inline data mappings.
 * [Extent tags](kusto/management/extent-tags.md) can't be set on the streaming ingestion data.
 * [Update policy](kusto/management/update-policy.md). The update policy can reference only the newly ingested data in the source table and not any other data or tables in the database.
+* When an update policy with a [transactional policy](kusto/management/update-policy.md#transactional-policy) fails, the retries will fall back to batch ingestion.
 * If streaming ingestion is enabled on a cluster used as a leader for [follower databases](follower.md), streaming ingestion must be enabled on the following clusters as well to follow streaming ingestion data. Same applies whether the cluster data is shared via [Data Share](data-share.md).
 
 ## Related content
