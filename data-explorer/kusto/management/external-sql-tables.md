@@ -13,7 +13,7 @@ Creates or alters an Azure SQL [external table](../query/schema-entities/externa
 > [!NOTE]
 >
 > * If the table exists, the `.create` command will fail with an error. Use `.create-or-alter` or `.alter` to modify existing tables.
-> * Altering the schema of an external SQL table is not supported.
+> * Altering the schema of an external Azure SQL table is not supported.
 
 ## Supported Azure SQL external table types
 
@@ -40,7 +40,8 @@ To `.create-or-alter` an external table using managed identity authentication re
 |--|--|--|--|
 |*TableName* | `string` |  :heavy_check_mark: | The name of the external table. The name must follow the rules for [entity names](../query/schema-entities/entity-names.md), and an external table can't have the same name as a regular table in the same database.|
 |*Schema* | `string` |  :heavy_check_mark: | The external data schema is a comma-separated list of one or more column names and [data types](../query/scalar-data-types/index.md), where each item follows the format: *ColumnName* `:` *ColumnType*.|
-|*SqlTableName*| `string` | | The name of the SQL table not including the database name. For example, "MySqlTable" and not "db1.MySqlTable". If the name of the table contains a period ("."), use ['Name.of.the.table'] notation.</br></br>This specification is required for all types of tables except for Cosmos DB, as for Cosmos DB the collection name is part of the connection string. |
+|*SqlTableName*| `string` | | The name of the SQL table not including the database name. For example, "MySqlTable" and not "db1.MySqlTable". If the name of the table contains a period ("."), use ['Name.of.the.table'] notation.
+</br></br>This specification is required for all types of tables except for Cosmos DB, as for Cosmos DB the collection name is part of the connection string. |
 |*SqlConnectionString*| `string` | :heavy_check_mark:| The connection string to the SQL server. |
 |*SqlDialect*| `string` | |Indicates the type of Azure SQL external table. SQL Server is the default. For MySQL, specify `MySQL`. For PostgreSQL, specify `PostgreSQL`. For Cosmos DB, specify `CosmosDbSql`.|
 |*Property*| `string` ||A key-value property pair in the format *PropertyName* `=` *PropertyValue*. See [optional properties](#optional-properties).|
@@ -55,12 +56,12 @@ To `.create-or-alter` an external table using managed identity authentication re
 | `folder`            | `string`        | The table's folder.                  |
 | `docString`         | `string`        | A string documenting the table.      |
 | `firetriggers`      | `true`/`false`  | If `true`, instructs the target system to fire INSERT triggers defined on the SQL table. The default is `false`. (For more information, see [BULK INSERT](/sql/t-sql/statements/bulk-insert-transact-sql) and [System.Data.SqlClient.SqlBulkCopy](/dotnet/api/system.data.sqlclient.sqlbulkcopy)) |
-| `createifnotexists` | `true`/ `false` | If `true`, the target SQL table will be created if it doesn't already exist; the `primarykey` property must be provided in this case to indicate the result column that is the primary key. The default is `false`.  |
-| `primarykey`        | `string`        | If `createifnotexists` is `true`, the resulting column name will be used as the SQL table's primary key if it is created by this command.                  |
+| `createifnotexists` | `true`/ `false` | If `true`, the target SQL table is created if it doesn't already exist; the `primarykey` property must be provided in this case to indicate the result column that is the primary key. The default is `false`.  |
+| `primarykey`        | `string`        | If `createifnotexists` is `true`, the resulting column name is used as the SQL table's primary key if it's created by this command.                  |
 
 ## Authentication and authorization
 
-To interact with an external SQL table from Azure Data Explorer, you must specify authentication means as part of the *SqlConnectionString*. The *SqlConnectionString* defines the resource to access and its authentication information.
+To interact with an external Azure SQL table from Azure Data Explorer, you must specify authentication means as part of the *SqlConnectionString*. The *SqlConnectionString* defines the resource to access and its authentication information.
 
 For more information, see [Azure SQL external table authentication methods](../api/connection-strings/sql-authentication-methods.md).
 
@@ -69,7 +70,7 @@ For more information, see [Azure SQL external table authentication methods](../a
 
 ## Examples
 
-The following examples show how to create each type of SQL external table.
+The following examples show how to create each type of Azure SQL external table.
 
 ### SQL Server
 
