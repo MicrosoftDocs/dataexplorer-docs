@@ -11,7 +11,7 @@ zone_pivot_groups: kql-flavors-all
 
 ::: zone pivot="azuredataexplorer, fabric"
 
-The `sql_request` plugin sends a SQL query to a SQL Server network endpoint and returns the results.
+The `sql_request` plugin sends a SQL query to an Azure SQL Server network endpoint and returns the results.
 If more than one rowset is returned by SQL, only the first one is used.
 The plugin is invoked with the [`evaluate`](evaluate-operator.md) operator.
 

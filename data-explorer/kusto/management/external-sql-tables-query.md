@@ -1,18 +1,18 @@
 ---
-title:  Query SQL external tables
+title:  Query Azure SQL external tables
 description: This article describes how to query external tables based on SQL tables.
 ms.reviewer: orspodek
 ms.topic: reference
 ms.date: 04/18/2023
 ---
 
-# Query SQL external tables
+# Query Azure SQL external tables
 
 You can query a SQL external table just as you would query an Azure Data Explorer table.
 
 ## How it works
 
-SQL external table queries are translated from Kusto Query Language (KQL) to SQL. The operators after the [external_table](../query/external-table-function.md) function call, such as [where](../query/where-operator.md), [project](../query/project-operator.md), [count](../query/count-operator.md), and so on, are pushed down and translated into a single SQL query to be executed against the target SQL table.
+Azure SQL external table queries are translated from Kusto Query Language (KQL) to SQL. The operators after the [external_table](../query/external-table-function.md) function call, such as [where](../query/where-operator.md), [project](../query/project-operator.md), [count](../query/count-operator.md), and so on, are pushed down and translated into a single SQL query to be executed against the target SQL table.
 
 ## Example
 
