@@ -854,6 +854,16 @@
       "source_path": "data-explorer/kusto/query/todouble-function.md",
       "redirect_url": "/azure/data-explorer/kusto/query/toreal-function",
       "redirect_document_id": true
+    },
+    {
+      "source_path": "data-explorer/excel-blank-query.md",
+      "redirect_url": "/azure/data-explorer/excel",
+      "redirect_document_id": true    
+    },
+    {
+      "source_path": "data-explorer/excel-connector.md",
+      "redirect_url": "/azure/data-explorer/excel",
+      "redirect_document_id": true    
     }
   ]
 }
