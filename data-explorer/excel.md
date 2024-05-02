@@ -36,7 +36,7 @@ Export the query directly from Azure Data Explorer.
 
     ![Screenshot that shows Azure Data Explorer web UI query to Open in Excel.](media/excel/web-ui-query-to-excel.png)
 
-    The query is saved as an Excel workbook in Downloads.
+    The query is saved as an Excel workbook in the Downloads folder.
 
 1. Open the downloaded workbook to view your data. Enable Editing and enable Content if requested in the top ribbon.
 
