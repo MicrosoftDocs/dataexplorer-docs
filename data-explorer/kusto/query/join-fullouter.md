@@ -3,7 +3,7 @@ title:  fullouter join
 description: Learn how to use the fullouter join flavor to merge the rows of two tables. 
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 06/18/2023
+ms.date: 04/28/2024
 ---
 
 # fullouter join
@@ -28,7 +28,7 @@ A `fullouter` join combines the effect of applying both left and right outer-joi
 ## Example
 
 > [!div class="nextstepaction"]
-> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA8tJLVGIULBVSEksAcKknFQN79RKq+KSosy8dB2FsMSc0lRDq5z8vHRNrmguBSBQT1TXMdSBMJPUdYwQTGMoM1ldx4Qr1porB2h0JH6jjVCNBhpiaIAwxQiJbQxjpwBNNwAZH6FQo5CVn5mnkJ2Zl2Kbk5pWkl9akloEtDI/TwFoEwD4dnPs2gAAAA==" target="_blank">Run the query</a>
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA8tJLVGIULBVSEksAcKknFQN79RKq%2BKSosy8dB2FsMSc0lRDq5z8vHRNrmguBSBQT1TXMdSBMJPUdYwQTGMoM1ldx4Qr1porB2h0JH6jjVCNBhpiaIAwxQiJbQxjpwBNNwAZH6FQo5CVn5mnkJ2Zl2KbVpqTk19akloEtDI%2FTwFoEwDuw%2F%2BW2gAAAA%3D%3D" target="_blank">Run the query</a>
 
 ```kusto
 let X = datatable(Key:string, Value1:long)
@@ -52,12 +52,12 @@ X | join kind=fullouter Y on Key
 
 |Key|Value1|Key1|Value2|
 |---|---|---|---|
-|a|1|||
-|b|2|b|10|
 |b|3|b|10|
+|b|2|b|10|
 |c|4|c|20|
 |c|4|c|30|
 |||d|40|
+|a|1|||
 
 ## Related content
 
