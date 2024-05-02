@@ -38,7 +38,7 @@ Export the query directly from Azure Data Explorer.
 
     The query is saved as an Excel workbook in the Downloads folder.
 
-1. Open the downloaded workbook to view your data. Enable Editing and enable Content if requested in the top ribbon.
+1. Open the downloaded workbook to view your data. Enable editing and enable content if requested in the top ribbon.
 
 ### [Start from Excel](#tab/excel)
 
