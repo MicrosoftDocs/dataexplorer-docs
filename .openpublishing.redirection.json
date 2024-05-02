@@ -863,7 +863,7 @@
     {
       "source_path": "data-explorer/excel-connector.md",
       "redirect_url": "/azure/data-explorer/excel",
-      "redirect_document_id": true    
+      "redirect_document_id": false    
     }
   ]
 }
