@@ -52,12 +52,12 @@ X | join kind=fullouter Y on Key
 
 |Key|Value1|Key1|Value2|
 |---|---|---|---|
-|a|1|||
-|b|2|b|10|
 |b|3|b|10|
+|b|2|b|10|
 |c|4|c|20|
 |c|4|c|30|
 |||d|40|
+|a|1|||
 
 ## Related content
 
