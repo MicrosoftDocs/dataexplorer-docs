@@ -8,7 +8,7 @@ ms.date: 04/30/2024
 # Customer intent: As a data analyst, I want to understand how to visualize my Azure Data Explorer data in Excel.
 ---
 
-# Use Excel to visualize data from Azure Data Explorer Kusto query
+# Use Excel to visualize data from a query
 
 This article shows you how to view your Kusto query in Excel, by exporting directly from Azure Data Explorer or importing in to Excel.
 
