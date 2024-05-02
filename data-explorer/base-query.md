@@ -1,13 +1,13 @@
 ---
 title: Create a dashboard base query
-description: Learn how to create a base query for an Azure Data Explorer dashboard
+description: Learn how to create a base query for an Azure Data Explorer dashboard.
 ms.reviewer: gabil
 ms.topic: how-to
-ms.date: 07/31/2023
+ms.date: 04/30/2024
 ---
 # Create a dashboard base query
 
-Base queries are reusable query snippets that can be used as building blocks for all dashboards query components such as parameters, tiles, and other base queries. A single base query is managed in the context of a specific dashboard. Each dashboard can have one or more base queries. Base queries make query maintenance in dashboards easier, as queries can be managed in a central location.
+Base queries are reusable query snippets that can be used as building blocks for all dashboard query components such as parameters, tiles, and other base queries. A single base query is managed in the context of a specific dashboard. Each dashboard can have one or more base queries. Base queries make query maintenance in dashboards easier, as queries can be managed in a central location.
 
 To interactively explore sample dashboards, see [Quickstart: Visualize sample data dashboards](web-ui-samples-dashboards.md).
 
