@@ -132,7 +132,7 @@ await attachedDatabaseConfigurations.CreateOrUpdateAsync(WaitUntil.Completed, at
 ### Prerequisite modules
 
 ```python
-pip install azure-common
+pip install azure-identity
 pip install azure-mgmt-kusto
 ```
 
@@ -140,8 +140,8 @@ pip install azure-mgmt-kusto
 
 ```python
 from azure.mgmt.kusto import KustoManagementClient
-from azure.mgmt.kusto.models import AttachedDatabaseConfiguration
-from azure.common.credentials import ServicePrincipalCredentials
+from azure.mgmt.kusto.models import AttachedDatabaseConfiguration, TableLevelSharingProperties
+from azure.identity import ClientSecretCredential
 import datetime
 
 #Directory (tenant) ID
@@ -152,10 +152,10 @@ client_id = "xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx"
 client_secret = "xxxxxxxxxxxxxx"
 follower_subscription_id = "xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx"
 leader_subscription_id = "xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx"
-credentials = ServicePrincipalCredentials(
-        client_id=client_id,
-        secret=client_secret,
-        tenant=tenant_id
+credentials = ClientSecretCredential(
+         tenant_id=tenant_id,
+         client_id=client_id,
+         client_secret=client_secret
     )
 kusto_management_client = KustoManagementClient(credentials, follower_subscription_id)
 
@@ -179,7 +179,7 @@ if (database_name != "*"):
 attached_database_configuration_properties = AttachedDatabaseConfiguration(cluster_resource_id = cluster_resource_id, database_name = database_name, default_principals_modification_kind = default_principals_modification_kind, location = location, table_level_sharing_properties = table_level_sharing_properties)
 
 #Returns an instance of LROPoller, see https://learn.microsoft.com/python/api/msrest/msrest.polling.lropoller?view=azure-python
-poller = kusto_management_client.attached_database_configurations.create_or_update(follower_resource_group_name, follower_cluster_name, attached_database_Configuration_name, attached_database_configuration_properties)
+poller = kusto_management_client.attached_database_configurations.begin_create_or_update(follower_resource_group_name, follower_cluster_name, attached_database_Configuration_name, attached_database_configuration_properties)
 ```
 
 ## [PowerShell](#tab/azure-powershell)
