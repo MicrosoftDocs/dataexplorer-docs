@@ -74,7 +74,7 @@ datatable (
 
 **Results**
 
-|MyBag|MyBag_Dest|MyBag_Mesg
+|MyBag|MyBag_Dest|MyBag_Mesg|
 |--|--|--|
 |{"Dest":100,"Mesg":"AA"}|100|AA|
 |{"Dest":200,"Mesg":"BB"}|200|BB|
