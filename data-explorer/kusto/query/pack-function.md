@@ -22,7 +22,7 @@ Creates a [dynamic](scalar-data-types/dynamic.md) property bag object from a lis
 | Name | Type | Required | Description |
 |--|--|--|--|
 |*key*| `string` |  :heavy_check_mark: | The key name.|
-|*value*| `string` |  :heavy_check_mark: | The key value.|
+|*value*| any scalar data type |  :heavy_check_mark: | The key value.|
 
 > [!NOTE]
 > The *key* and *value* strings are an alternating list the total length of the list must be even.
@@ -51,6 +51,36 @@ print bag_pack("Level", "Information", "ProcessID", 1234, "Data", bag_pack("url"
 |{"Level":"Information","ProcessID":1234,"Data":{"url":"www.bing.com"}}|
 
 **Example 2**
+
+The following example creates a property bag adn extract value from property bag using '.' operator.
+
+> [!div class="nextstepaction"]
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA12PXwuCMBTF3wW%2Fw2VPCiv8V0Hgg9qrTz1GyE3HWMUUXZTQh2%2FTBeL2cvjtnHvPGlT63p4MPNcBfc7tq6%2FZEYRUdCYnNighUYlWLnHJhgG5dg6qF5K7jg%2BX%2BSWM4oRCGAQUSJYRCjNOdvsDhWjCeU7o3xxGFOKJFgXR3qvrfIF9FJMNlGOOPL0hrzqsHx4xXfTARSUd0024hraQb%2BJd395ZrTb4xtF%2BaZWy7vWuypjSSW6NpBabHRYb%2BQMdY4ddNwEAAA%3D%3D" target="_blank">Run the query</a>
+
+```kusto
+datatable (
+    Source: int,
+    Destination: int,
+    Message: string
+) [
+    1234, 100, "AA", 
+    4567, 200, "BB",
+    1212, 300, "CC" 
+]
+| extend MyBag=bag_pack("Dest", Destination, "Mesg", Message)
+| project-away Source, Destination, Message
+| extend MyBag_Dest=MyBag.Dest, MyBag_Mesg=MyBag.Mesg
+```
+
+**Results**
+
+|MyBag|MyBag_Dest|MyBag_Mesg
+|--|--|--|
+|{"Dest":100,"Mesg":"AA"}|100|AA|
+|{"Dest":200,"Mesg":"BB"}|200|BB|
+|{"Dest":300,"Mesg":"CC"}|300|CC|
+
+**Example 3**
 
 The following example uses two tables, *SmsMessages* and *MmsMessages*, and returns their common columns and a property bag from the other columns. The tables are created ad-hoc as part of the query.
 
