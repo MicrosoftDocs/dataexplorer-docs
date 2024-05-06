@@ -1,12 +1,12 @@
 ---
-title:  Query Azure SQL external tables
+title:  Query SQL external tables
 description: This article describes how to query external tables based on SQL tables.
 ms.reviewer: orspodek
 ms.topic: reference
 ms.date: 04/18/2023
 ---
 
-# Query Azure SQL external tables
+# Query SQL external tables
 
 You can query a SQL external table just as you would query an Azure Data Explorer table.
 
