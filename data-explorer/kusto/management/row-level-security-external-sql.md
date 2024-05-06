@@ -1,12 +1,12 @@
 ---
-title: "Use row-level security with SQL external tables in Azure Data Explorer"
+title: "Use row-level security with Azure SQL external tables in Azure Data Explorer"
 description: "This document describes how to create a row-level security solution with Azure Data Explorer SQL external tables."
 ms.reviewer: danielkoralek
 ms.topic: how-to 
 ms.date: 02/25/2024
-#customer intent: As a Data Administrator, I want to restrict access to the data on SQL External Tables so that each user can see only their data.
+#customer intent: As a Data Administrator, I want to restrict access to the data on Azure SQL External Tables so that each user can see only their data.
 ---
-# Apply row-level security on SQL external tables
+# Apply row-level security on Azure SQL external tables
 
 This document describes how to apply a row-level security (RLS) solution with [SQL external tables](/azure/data-explorer/kusto/management/external-sql-tables). [row-level security](/azure/data-explorer/kusto/management/row-level-security-policy) implements data isolation at the user level, restricting the access to data based on the current user credential. However, Kusto external tables don't support RLS policy definitions, so data isolation on external SQL tables require a different approach. The following solution employs using row-level security in SQL Server, and Microsoft Entra ID Impersonation in the SQL Server connection string. This combination provides the same behavior as applying user access control with RLS on standard Kusto tables, such that the users querying the SQL External Table are able to only see the records addressed to them, based on the row-level security policy defined in the source database.
 
