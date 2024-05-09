@@ -28,7 +28,7 @@ Export the query directly from the web UI.
 
 1. Select the **Export** tab and select **Open in Excel**.
 
-    :::image type="content" source="media/excel/web-ui-query-to-excel.png" alt-text="Screenshot that shows Azure Data Explorer web UI query to Open in Excel" lightbox="media/excel/web-ui-query-to-excel.png":::
+    :::image type="content" source="media/excel/web-ui-query-to-excel.png" alt-text="Screenshot that shows Azure Data Explorer web UI query to Open in Excel." lightbox="media/excel/web-ui-query-to-excel.png":::
 
     The query is saved as an Excel workbook in the Downloads folder.
 
@@ -82,7 +82,7 @@ Get data from Azure Data Explorer datasource into Excel.
 
     In the **Advanced Editor** window, you can edit the query and select **Done** to keep your changes.
 
-    :::image type="content" source="media/excel/advanced-editor-query.png" alt-text="Screenshot of the Advanced editor query":::
+    :::image type="content" source="media/excel/advanced-editor-query.png" alt-text="Screenshot of the Advanced editor query.":::
 
 1. Select the **Close & Load** button to get your data into Excel.
 
@@ -108,7 +108,7 @@ Once the data loads to excel and is available in your Excel sheet, you can analy
 
 1. In the **PivotTable Analyze** tab, select **PivotChart** to create visuals based on the table.
 
-    :::image type="content" source="media/excel/pivot-table-analyze-pivotchart.png" alt-text="Screenshot of the PivotTable analyze menu":::
+    :::image type="content" source="media/excel/pivot-table-analyze-pivotchart.png" alt-text="Screenshot of the PivotTable analyze menu.":::
 
 1. In the following example, use **Event Id**, **StartTime**, and **EventType** to view additional information about the weather events.
 
