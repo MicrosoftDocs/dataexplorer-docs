@@ -90,7 +90,7 @@ Get data from Azure Data Explorer datasource into Excel.
 
 1. Select the **Refresh** button under the **Table Design** tab to refresh the query.
 
-    :::image type="content" source="media/excel/data-in-excel.png" alt-text="Screenshot of the Table preview window.":::
+    :::image type="content" source="media/excel/data-in-excel.png" alt-text="Screenshot showing where to select Refresh.":::
 
 ---
 
