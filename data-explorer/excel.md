@@ -20,11 +20,8 @@ This article shows you how to view your query in Excel, by exporting directly fr
 
 You can use the following options to query data in Excel:
 
-* Start in the web UI: Open the query directly.
-
-* Start in Excel: Use the Azure Data Explorer data source.
-
 ### [Start from the web UI](#tab/azure-data-explorer)
+
 Export the query directly from the web UI.
 
 1. In [Azure Data Explorer web UI](https://dataexplorer.azure.com/clusters/help/databases/Samples), run the query and check the results.
