@@ -85,7 +85,7 @@ In the following example, bins are weekly and align to the start of Sunday June 
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAysoyswrUUjKzItPLNFISSxJLcnMTdUwMjA01zUw1TU0VzA0sDIysDIw0DPQ1FEwT9FRQFNkpmtgomAAUgFRpAkAjzZv9FIAAAA%3D" target="_blank">Run the query</a>
 
 ```kusto
-print bin_at(datetime(2017-05-17 10:20:00.0), 7d, datetime(2017-06-04 00:00:00.0))`|`datetime(2017-05-14 00:00:00.0)
+print bin_at(datetime(2017-05-17 10:20:00.0), 7d, datetime(2017-06-04 00:00:00.0))
 ```
 
 **Output**
