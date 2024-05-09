@@ -420,13 +420,7 @@ items:
             displayName: Private endpoint, Azure Data Explorer cluster behind a private endpoint
             href: power-bi-private-endpoint.md
       - name: Excel
-        items:
-          - name: Connector
-            displayName: Excel
-            href: excel-connector.md
-          - name: Blank query
-            displayName: Excel
-            href: excel-blank-query.md
+        href: excel.md
       - name: Grafana
         href: grafana.md
       - name: Tableau
