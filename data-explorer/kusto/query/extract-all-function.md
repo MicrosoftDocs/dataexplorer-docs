@@ -117,6 +117,6 @@ print Id="82b8be2d-dfa7-4bd1-8f63-24ad26d31449"
 
 ## Related content
 
-* [extract function](extractfunction.md)
-* [extract-json function](extractjsonfunction.md)
-* [parse operator](parseoperator.md)
+* [extract function](extract-function.md)
+* [extract-json function](extract-json-function.md)
+* [parse operator](parse-operator.md)
