@@ -114,3 +114,9 @@ print Id="82b8be2d-dfa7-4bd1-8f63-24ad26d31449"
 |ID|guid_bytes|
 |---|---|
 |82b8be2d-dfa7-4bd1-8f63-24ad26d31449|[["8","2b8be2","d"],["d","fa","7"],["4","bd","1"],["8","f6","3"],["2","4ad26d3144","9"]]|
+
+## Related content
+
+* [extract function](extractfunction.md)
+* [extract-json function](extractjsonfunction.md)
+* [parse operator](parseoperator.md)
