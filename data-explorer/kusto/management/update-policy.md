@@ -135,9 +135,9 @@ MyFunction
 
 ## Failures
 
-With the default setting of `IsTransactional:`*`false`*, if an update policy fails, data is ingested only to the source table and not to the target table. The ingestion operation is considered a success.
+With the default setting of `IsTransactional:`*`false`*, if an update policy fails, data is ingested only to the source table and not to the target table. The ingestion operation is successful.
 
-The `IsTransactional:`*`true`* setting guarantees consistency between data in the source and target table. If an update policy fails, data isn't ingested to the source or target table. The ingestion operation is considered unsuccessful.
+The `IsTransactional:`*`true`* setting guarantees consistency between data in the source and target table. If an update policy fails, data isn't ingested to the source or target table. The ingestion operation is unsuccessful.
 
 Common reasons for update policy failures:
 
