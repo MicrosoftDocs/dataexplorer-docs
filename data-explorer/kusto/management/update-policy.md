@@ -3,7 +3,7 @@ title: Update policy overview
 description: Learn how to trigger an update policy to add data to a source table.
 ms.reviewer: orspodek
 ms.topic: reference
-ms.date: 05/23/2023
+ms.date: 05/12/2024
 ---
 # Update policy overview
 
@@ -11,7 +11,7 @@ Update policies are automation mechanisms triggered when new data is written to 
 
 For example, a high-rate trace source table can contain data formatted as a free-text column. The target table can include specific trace lines, with a well-structured schema generated from a transformation of the source table's free-text data using the [parse operator](../query/parse-operator.md). For more information, [common scenarios](update-policy-common-scenarios.md).
 
-The following diagram depicts a high-level view of an update policy. It shows two update policies that are triggered when data in added to the second source table and results in transformed data being added to the two target tables.
+The following diagram depicts a high-level view of an update policy. It shows two update policies that are triggered when data is added to the second source table. Once they're triggered, transformed data is added to the two target tables.
 
 :::image type="content" source="media/updatepolicy/update-policy-overview.png" alt-text="Diagram shows an overview of the update policy.":::
 
@@ -135,11 +135,14 @@ MyFunction
 
 ## Failures
 
-With the default setting of `IsTransactional:`*`false`*, data can still be ingested to the source table even if the policy doesn't run. Data could also be ingested to the source table, but not to the target table. If the policy conditions fail, data isn't ingested to the source table.
+With the default setting of `IsTransactional:`*`false`*, if an update policy fails, data is ingested only to the source table and not to the target table. The ingestion operation is considered a success.
 
-The `IsTransactional:`*`true`* setting guarantees consistency between data in the source and target table.
+The `IsTransactional:`*`true`* setting guarantees consistency between data in the source and target table. If an update policy fails, data isn't ingested to the source or target table. The ingestion operation is considered unsuccessful.
 
-If your policy is defined incorrectly, or there's a schema mismatch, data isn't ingested to the source or target table. For example, a mismatch between the query output schema and the target table could be caused by dropping a column from the target table.
+Common reasons for update policy failures:
+
+* A mismatch between the query output schema and the target table.
+* Any query error.
 
 You can view failures using the [`.show ingestion failures` command](../management/ingestion-failures.md).
 
