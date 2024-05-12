@@ -3,7 +3,7 @@ title:  row_window_session()
 description: Learn how to use the row_window_session() function to calculate session start values of a column in a serialized row set.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 04/15/2024
+ms.date: 05/12/2024
 ---
 # row_window_session()
 
