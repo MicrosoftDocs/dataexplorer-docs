@@ -17,9 +17,9 @@ Calculates session start values of a column in a [serialized row set](./window-f
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-|*Expr* | scalar (`datetime`) | :heavy_check_mark: | An expression whose values are grouped together in sessions. When *Expr* results in a null value, the next value starts a new session. |
-|*MaxDistanceFromFirst* | scalar (`timespan`) | :heavy_check_mark: | Determines when a new session starts using the maximum distance between the current *Expr* value and its value at the beginning of the session. |
-|*MaxDistanceBetweenNeighbors*| scalar (`timespan`) | :heavy_check_mark: | Another criterion for starting a new session using the maximum distance from one value of *Expr* to the next. |
+|*Expr* | `datetime` | :heavy_check_mark: | An expression whose values are grouped together in sessions. When *Expr* results in a null value, the next value starts a new session. |
+|*MaxDistanceFromFirst* | `timespan` | :heavy_check_mark: | Determines when a new session starts using the maximum distance between the current *Expr* value and its value at the beginning of the session. |
+|*MaxDistanceBetweenNeighbors*| `timespan` | :heavy_check_mark: | Another criterion for starting a new session using the maximum distance from one value of *Expr* to the next. |
 | *Restart* |`boolean` | | If specified, every value that evaluates to `true` immediately restarts the session. |
 
 [!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
@@ -28,7 +28,7 @@ Calculates session start values of a column in a [serialized row set](./window-f
 
 The function returns the values at the beginning of each session. It uses the following conceptual calculation model:
 
-1. Goes over the input sequence of *Expr* values in order.
+1. Iterates over the input sequence of *Expr* values in order.
 
 1. For each value, it decides whether to create a new session.
 
