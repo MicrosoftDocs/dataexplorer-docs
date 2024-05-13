@@ -20,7 +20,7 @@ Displays a pivot table and chart. You can interactively select data, columns, ro
 
 ## Syntax
 
-*T* `|` `render` `pivotchart` [`with` `(`*propertyName* `=` *propertyValue* [`,` ...]`)`]
+*T* `|` `render` `pivotchart`
 
 [!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
 
@@ -28,9 +28,8 @@ Displays a pivot table and chart. You can interactively select data, columns, ro
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-| *T* | `string` |  :heavy_check_mark: | Input table name.
-| *propertyName*, *propertyValue* | `string` | | A comma-separated list of key-value property pairs. See [supported properties](#supported-properties).|
-                                    |
+| *T* | `string` |  :heavy_check_mark: | Input table name. |
+
 ## Example
 
 ```kusto
