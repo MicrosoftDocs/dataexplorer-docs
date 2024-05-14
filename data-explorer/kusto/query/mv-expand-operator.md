@@ -13,7 +13,7 @@ Expands multi-value dynamic arrays or property bags into multiple records.
 that pack multiple values into a single [dynamic](./scalar-data-types/dynamic.md)-typed
 array or property bag, such as `summarize` ... `make-list()` and `make-series`.
 Each element in the (scalar) array or property bag generates a new record in the
-output of the operator. All columns of the input that aren't expanded are duplicated to all the records in the output. mv-expand is limited to 2,000 records.
+output of the operator. All columns of the input that aren't expanded are duplicated to all the records in the output. `mv-expand` is limited to 2,000 records.
 
 ## Syntax
 
