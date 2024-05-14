@@ -83,7 +83,7 @@ Azure Active Directory (Azure AD) application authentication is used for applica
 1. Run the following command, replacing `<MyDatabase>` with the name of the database:
 
     ```kusto
-    .add database MyDatabase ingestors ('aadapp=<Application (client) ID>;<Directory (tenant) ID>' 'Fluent Bit application)
+    .add database MyDatabase ingestors ('aadapp=<Application (client) ID>;<Directory (tenant) ID>' 'Fluent Bit application')
     ```
 
     This command grants the application permissions to ingest data into your table. For more information, see [role-based access control](kusto/access-control/role-based-access-control.md).
