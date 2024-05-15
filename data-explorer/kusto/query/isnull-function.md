@@ -7,7 +7,7 @@ ms.date: 05/15/2024
 ---
 # isnull()
 
-Evaluates an expression and returns a boolean result indicating whether the value is null.
+Evaluates an expression and returns a Boolean result indicating whether the value is null.
 
 > [!NOTE]
 > String values can't be null. Use [isempty](./isempty-function.md) to determine if a value of type `string` is empty or not.
