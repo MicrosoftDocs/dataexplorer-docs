@@ -3,11 +3,11 @@ title:  isnull()
 description: Learn how to use the isnull() function to check if the argument value is null.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 01/03/2023
+ms.date: 05/15/2024
 ---
 # isnull()
 
-Evaluates its sole argument and returns a `bool` value indicating if the argument evaluates to a null value.
+Evaluates an expression and returns a boolean result indicating whether the value is null.
 
 > [!NOTE]
 > String values can't be null. Use [isempty](./isempty-function.md) to determine if a value of type `string` is empty or not.
@@ -22,11 +22,11 @@ Evaluates its sole argument and returns a `bool` value indicating if the argumen
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-|*value*|scalar| :heavy_check_mark:| The value to check if not null.|
+|*value*|scalar| :heavy_check_mark:| The value to check if not null. It returns scalar values other than strings and scalar dynamics. For more information, see [The dynamic data type](scalar-data-types/dynamic.md).|
 
 ## Returns
 
-`true` if *value* isn't null and `false` otherwise.
+`true` if *value* is null and `false` otherwise. Empty strings, arrays, property bags, and objects are not null.
 
 |x                |`isnull(x)`|
 |-----------------|-----------|
@@ -38,12 +38,32 @@ Evaluates its sole argument and returns a `bool` value indicating if the argumen
 
 ## Example
 
-Find the storm events for which there's not a begin location.
+Find the storm events for which there's no begin location.
 
 > [!div class="nextstepaction"]
-> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAwsuyS/KdS1LzSsp5uWqUSjPSC1KVcgszivNydFwSk3PzPNJLNFUSMxLQRXMz9MEABMUXTY6AAAA" target="_blank">Run the query</a>
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAwsuyS%2FKdS1LzSsp5qpRKM9ILUpVyCzOK83J0XBKTc%2FM80ks0VRIzEtBFczP0%2BSqKSjKz0pNLlEILkksKgnJzE3VUXDNS4EyCjKL81NSPVOATJDhIAZQXUkqlB9SWQBkwmyAsfLzAJdniFGPAAAA" target="_blank">Run the query</a>
 
 ```kusto
 StormEvents
 | where isnull(BeginLat) and isnull(BeginLon)
+|project StartTime, EndTime, EpisodeId, EventId, State, EventType, BeginLat, BeginLon
 ```
+
+**Output**
+
+|StartTime|EndTime|EpisodeId| EventId |State| EventType| BeginLat| BeginLon |
+|-----|-----|-----|-----|-----|-----|-----|-----|
+| 2007-01-01T00:00:00Z |2007-01-01T05:00:00Z |4171 |23358  |WISCONSIN  |Winter Storm  | | |
+| 2007-01-01T00:00:00Z |2007-01-31T23:59:00Z |1492  |7067  |MINNESOTA  |Drought  | | |
+| 2007-01-01T00:00:00Z |2007-01-31T23:59:00Z |1492  |7068  |MINNESOTA  |Drought  | | |
+| 2007-01-01T00:00:00Z |2007-01-31T23:59:00Z |1492  |7069  |MINNESOTA  |Drought  | | |
+| 2007-01-01T00:00:00Z |2007-01-31T23:59:00Z |1492  |7065  |MINNESOTA  |Drought  | | |
+| 2007-01-01T00:00:00Z |2007-01-31T23:59:00Z |1492  |7070  |MINNESOTA  |Drought  | | |
+| 2007-01-01T00:00:00Z |2007-01-31T23:59:00Z |1492  |7071  |MINNESOTA  |Drought  | | |
+| 2007-01-01T00:00:00Z |2007-01-31T23:59:00Z |1492  |7072  |MINNESOTA  |Drought  | | |
+| 2007-01-01T00:00:00Z |2007-01-31T23:59:00Z |2380  |11735  |MINNESOTA  |Drought  | | |
+| 2007-01-01T00:00:00Z |2007-01-31T23:59:00Z |1492  |7073  |MINNESOTA  |Drought  | | |
+| 2007-01-01T00:00:00Z |2007-01-31T23:59:00Z |2240  |10857  |TEXAS  |Drought  | | |
+| 2007-01-01T00:00:00Z |2007-01-31T23:59:00Z |2240  |10858  |TEXAS  |Drought  | | |
+| 2007-01-01T00:00:00Z |2007-01-31T23:59:00Z |1492  |7066  |MINNESOTA  |Drought  | | |
+| ... |... |... |... |...  |... |... |... |
