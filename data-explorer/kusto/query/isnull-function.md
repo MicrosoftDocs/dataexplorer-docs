@@ -22,11 +22,13 @@ Evaluates an expression and returns a Boolean result indicating whether the valu
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-|*Expr*|scalar| :heavy_check_mark:| The expression to evaluate whether the value is null. The expression can be any scalar value other than strings, arrays, or objects that always return false. For more information, see [The dynamic data type](scalar-data-types/dynamic.md).|
+|*Expr*|scalar| :heavy_check_mark:| The expression to evaluate whether the value is null. The expression can be any scalar value other than strings, arrays, or objects that always return `false`. For more information, see [The dynamic data type](scalar-data-types/dynamic.md).|
 
 ## Returns
 
-The following table provides returns for `isnull()` based on different *x* values. A return is `true` if the value is null and `false` otherwise. Empty strings, arrays, property bags, and objects always return `false`.
+Returns `true` if the value is null and `false` otherwise. Empty strings, arrays, property bags, and objects always return `false`.
+
+The following table lists return values for different expressions (*x*):
 
 |x                |`isnull(x)`|
 |-----------------|-----------|
