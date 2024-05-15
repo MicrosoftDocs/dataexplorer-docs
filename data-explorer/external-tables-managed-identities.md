@@ -90,6 +90,7 @@ To import or query data from the SQL database, grant the managed identity table 
 To import or query data from the CosmosDB database, grant the managed identity read permissions. 
 To learn more, see [Permissions](/azure/cosmos-db/how-to-setup-rbac).
 
+---
 
 ## 3 - Create an external table
 
