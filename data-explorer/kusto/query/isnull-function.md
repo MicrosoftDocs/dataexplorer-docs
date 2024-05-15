@@ -22,7 +22,7 @@ Evaluates an expression and returns a Boolean result indicating whether the valu
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-|*value*|scalar| :heavy_check_mark:| The value to check if not null. It returns scalar values other than strings and scalar dynamics. For more information, see [The dynamic data type](scalar-data-types/dynamic.md).|
+|*Expr*|scalar| :heavy_check_mark:| The expression to evaluate whether the value is null. The expression can be any scalar value other than strings, arrays, or objects that always return false. For more information, see [The dynamic data type](scalar-data-types/dynamic.md).|
 
 ## Returns
 
