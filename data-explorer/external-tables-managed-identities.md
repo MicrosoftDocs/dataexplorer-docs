@@ -31,7 +31,7 @@ Select one of the following tabs to set up the preferred managed identity type.
 
 1. Follow the steps to [Add a user-assigned identity](configure-managed-identities-cluster.md#add-a-user-assigned-identity) to your cluster, and save the **Object (principal) ID** for later use.
 
-1. Run the following [.alter-merge policy managed_identity](kusto/management/alter-merge-managed-identity-policy-command.md) command. This command sets a [managed identity policy](kusto/management/managed-identity-policy.md) on the cluster that allows the managed identity to be used with external tables. Replace `<objectId>` with the **Object (principal) ID** from the previous step.
+2. Run the following [.alter-merge policy managed_identity](kusto/management/alter-merge-managed-identity-policy-command.md) command. This command sets a [managed identity policy](kusto/management/managed-identity-policy.md) on the cluster that allows the managed identity to be used with external tables. Replace `<objectId>` with the **Object (principal) ID** from the previous step.
 
     ```kusto
     .alter-merge cluster policy managed_identity ```[
@@ -49,7 +49,7 @@ Select one of the following tabs to set up the preferred managed identity type.
 
 1. Follow the steps to [Add a system-assigned identity](configure-managed-identities-cluster.md#add-a-system-assigned-identity) to your cluster.
 
-1. Run the following [.alter-merge policy managed_identity](kusto/management/alter-merge-managed-identity-policy-command.md) command. This command sets a [managed identity policy](kusto/management/managed-identity-policy.md) on the cluster that allows the managed identity to be used with external tables.
+2. Run the following [.alter-merge policy managed_identity](kusto/management/alter-merge-managed-identity-policy-command.md) command. This command sets a [managed identity policy](kusto/management/managed-identity-policy.md) on the cluster that allows the managed identity to be used with external tables.
 
     ```kusto
     .alter-merge cluster policy managed_identity ```[
@@ -87,7 +87,7 @@ To import or query data from the SQL database, grant the managed identity table 
 
 ### [CosmosDB](#tab/cosmosdb)
 
-To import or query data from the CosmosDB database, grant the managed identity table read permissions. To learn more, see [Permissions](/azure/cosmos-db/how-to-setup-rbac).
+To import or query data from the CosmosDB database, grant the managed identity read permissions. To learn more, see [Permissions](/azure/cosmos-db/how-to-setup-rbac).
 ---
 
 ## 3 - Create an external table
@@ -156,6 +156,7 @@ The following command creates `MyCosmosDbExternalTable` that refers to data in `
 .create external table MyCosmosDbExternalTable (x:int, s:string) kind=sql
 ( 
     h@'AccountEndpoint=https://mycosmos.documents.azure.com:443/;Database=MyDatabase;Collection=MyCollection;Authentication="Active Directory Managed Identity";User Id=123456789;'
+)
 ```
 
 > [!NOTE]

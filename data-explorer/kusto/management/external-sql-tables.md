@@ -26,7 +26,7 @@ Creates or alters an Azure SQL [external table](../query/schema-entities/externa
 
 To `.create` requires at least [Database User](access-control/role-based-access-control.md) permissions and to `.alter` requires at least [Table Admin](access-control/role-based-access-control.md) permissions.
 
-To `create` / `.alter` / `.create-or-alter` an external table using managed identity authentication requires [Database Admin](access-control/role-based-access-control.md) permissions. Currently, this is only relevant for SQL Server and Cosmos DB external tables.
+To `create` / `.alter` / `.create-or-alter` an external table using managed identity authentication requires [Database Admin](access-control/role-based-access-control.md) permissions. Currently, this is supported for SQL Server and Cosmos DB external tables.
 
 ## Syntax
 
