@@ -163,6 +163,7 @@ The following command creates `MyCosmosDbExternalTable` that refers to data in `
 
 > [!NOTE]
 > To authenticate with a system-assigned managed identity, remove `;User Id={object_id}` and only specify `;Authentication="Active Directory Managed Identity"`.
+
 ---
 
 ## Related content
