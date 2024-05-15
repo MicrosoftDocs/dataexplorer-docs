@@ -26,7 +26,7 @@ Evaluates an expression and returns a Boolean result indicating whether the valu
 
 ## Returns
 
-`true` if *value* is null and `false` otherwise. Empty strings, arrays, property bags, and objects always return `false`.
+The following table provides returns for `isnull()` based on different *x* values. A return is `true` if the value is null and `false` otherwise. Empty strings, arrays, property bags, and objects always return `false`.
 
 |x                |`isnull(x)`|
 |-----------------|-----------|
