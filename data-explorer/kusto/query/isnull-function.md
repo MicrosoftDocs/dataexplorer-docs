@@ -41,12 +41,12 @@ The following table provides returns for `isnull()` based on different *x* value
 Find the storm events for which there's no begin location.
 
 > [!div class="nextstepaction"]
-> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAwsuyS%2FKdS1LzSsp5qpRKM9ILUpVyCzOK83J0XBKTc%2FM80ks0VRIzEtBFczP0%2BSqKSjKz0pNLlEILkksKgnJzE3VUXDNS4EyCjKL81NSPVOATJDhIAZQXUkqlB9SWQBkwmyAsfLzAJdniFGPAAAA" target="_blank">Run the query</a>
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAwsuyS%2FKdS1LzSsp5qpRKM9ILUpVyCzOK83J0XBKTc%2FM80ks0VRIzEtBFczP0wSqLijKz0pNLlEILkksKgnJzE3VUXDNS4EyCjKL81NSPVOATJDpIAZQXUkqlB9SWQBkwqyAsfLzAAm1x4OQAAAA" target="_blank">Run the query</a>
 
 ```kusto
 StormEvents
 | where isnull(BeginLat) and isnull(BeginLon)
-|project StartTime, EndTime, EpisodeId, EventId, State, EventType, BeginLat, BeginLon
+| project StartTime, EndTime, EpisodeId, EventId, State, EventType, BeginLat, BeginLon
 ```
 
 **Output**
