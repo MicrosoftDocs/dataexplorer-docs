@@ -137,7 +137,7 @@ MyFunction
 
 The update policy `IsTransactional` setting defines whether the update policy is transactional and can affect the behavior of the policy update. The default setting of `IsTransactional:`*`false`* doesn't guarantee consistency between data in the source and target table. If an update policy fails, data is ingested only to the source table and not to the target table. The ingestion operation is successful.
 
-However, the `IsTransactional:`*`true`* setting does guarantee consistency between data in the source and target tables. If an update policy fails, data isn't ingested to the source or target table. The ingestion operation is unsuccessful.
+The `IsTransactional:`*`true`* setting does guarantee consistency between data in the source and target tables. If an update policy fails, data isn't ingested to the source or target table. The ingestion operation is unsuccessful.
 
 ### Handling failures
 
