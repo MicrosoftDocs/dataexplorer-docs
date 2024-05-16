@@ -3,7 +3,7 @@ title: Update policy overview
 description: Learn how to trigger an update policy to add data to a source table.
 ms.reviewer: orspodek
 ms.topic: reference
-ms.date: 05/12/2024
+ms.date: 05/15/2024
 ---
 # Update policy overview
 
@@ -80,7 +80,7 @@ Update policy management commands include:
 
 ## Update policy is initiated following ingestion
 
-Update policies take effect when data is ingested or moved to a source table, or extents are created in a source table, using any of the following commands:
+Update policies take effect when data is ingested or moved to a source table, or extents are created in a source table. These actions can be done using any of the following commands:
 
 * [.ingest (pull)](../management/data-ingestion/ingest-from-storage.md)
 * [.ingest (inline)](../management/data-ingestion/ingest-inline.md)
@@ -133,33 +133,33 @@ let MySourceTable =
 MyFunction
 ```
 
-## Failures
+## Transactional settings
 
-With the default setting of `IsTransactional:`*`false`*, if an update policy fails, data is ingested only to the source table and not to the target table. The ingestion operation is successful.
+The update policy `IsTransactional` setting defines whether the update policy is transactional and can affect the behavior of the policy update. The default setting of `IsTransactional:`*`false`* doesn't guarantee consistency between data in the source and target table. If an update policy fails, data is ingested only to the source table and not to the target table. The ingestion operation is successful.
 
-The `IsTransactional:`*`true`* setting guarantees consistency between data in the source and target table. If an update policy fails, data isn't ingested to the source or target table. The ingestion operation is unsuccessful.
+However, the `IsTransactional:`*`true`* setting does guarantee consistency between data in the source and target tables. If an update policy fails, data isn't ingested to the source or target table. The ingestion operation is unsuccessful.
 
-Common reasons for update policy failures:
+### Handling failures
+
+When policy updates fail, they're handled differently based on whether the `IsTransactional` setting is `true` or `false`. Common reasons for update policy failures are:
 
 * A mismatch between the query output schema and the target table.
 * Any query error.
 
-You can view failures using the [`.show ingestion failures` command](../management/ingestion-failures.md).
+You can view policy update failures using the [`.show ingestion failures` command](../management/ingestion-failures.md) with the following command:
 
 ```kusto
 .show ingestion failures
 | where FailedOn > ago(1hr) and OriginatesFromUpdatePolicy == true
 ```
 
-### Treatment of failures
-
 #### Nontransactional policy
 
-When set to `IsTransactional:`*`false`*, any failure to run the policy is ignored. Ingestion isn't automatically retried. You can manually retry ingestion.
+When an update policy failure occurs with the transactional setting set as `IsTransactional:`*`false`*, a failure to run the policy is ignored. Ingestion isn't automatically retried. You can manually retry ingestion.
 
 #### Transactional policy
 
-When set to `IsTransactional:`*`true`*, if the ingestion method is `pull`, the Data Management service is involved, and ingestion is automatically retried according to the following conditions:
+If an update policy failure occurs when the transactional setting is set to `IsTransactional:`*`true`*, if the ingestion method is `pull`, the Data Management service is involved, and ingestion is automatically retried according to the following conditions:
 
 * Retries are performed until one of following configurable limit settings is met: `DataImporterMaximumRetryPeriod` or `DataImporterMaximumRetryAttempts`
 * By default the `DataImporterMaximumRetryPeriod` setting is two days, and `DataImporterMaximumRetryAttempts`is 10
