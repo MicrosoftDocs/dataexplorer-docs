@@ -35,6 +35,20 @@ Matches two IPv4 strings. The two IPv4 strings are parsed and compared while acc
 
 ## Examples
 
+### Simple example
+
+> [!div class="nextstepaction"]
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA51Quw6CQBDs+YrtkAQ57gSjJpYWdvbGkAMO3YTHeXcYCj/eTbCAUOlssclkZ3YypXQ0ea1WqHlmncH2fhhXCKjFnAq8qwc+34uIb3cRj2I/BMKSITAGp2cvazhf7EzEmUjoasKINP3KSCQSyNGRaq2NqnAAtNBbVULVGSi6RkuDtmvnloscZDm++duSbeJFyt8tb94b1OBUW4JRtq8dHKnWV5KhzRrpisek92nhwQew+y1lmQEAAA==)" target="_blank">Run the query</a>
+
+``` kusto
+print ipv4_is_match('192.168.1.1/24', '192.168.1.255')
+```
+
+**Output**
+|print_0|
+|---|
+|true |
+
 ### IPv4 comparison equality - IP-prefix notation specified inside the IPv4 strings
 
 > [!div class="nextstepaction"]
