@@ -491,6 +491,22 @@ items:
           - name: .show table policy merge command
             href: show-table-merge-policy-command.md
             displayName: .show table merge policy
+      - name: Mirroring
+        items:
+          - name: Mirroring policy
+            href: mirroring-policy.md
+          - name: .alter merge policy mirroring command
+            href: alter-merge-mirroring-policy-command.md
+            displayName: .alter-merge mirroring policy
+          - name: .delete table policy mirroring command
+            href: delete-table-mirroring-policy-command.md
+            displayName: .delete table mirroring policy
+          - name: .show table policy mirroring command
+            href: show-table-mirroring-policy-command.md
+            displayName: .show table mirroring policy
+          - name: .show table mirroring operations command
+            href: show-table-mirroring-operations-command.md
+            displayName: .show table mirroring operations            
       - name: Partitioning
         items:
           - name: Partitioning policy
