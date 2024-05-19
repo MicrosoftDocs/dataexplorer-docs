@@ -43,7 +43,7 @@ To use Microsoft Entra integrated authentication (impersonation), add `;Authenti
 
 ## Managed identity
 
-Azure Data Explorer makes requests on behalf of a managed identity and uses its identity to access resources. This method is only supported for SQL Server.
+Azure Data Explorer makes requests on behalf of a managed identity and uses its identity to access resources. This method is supported for SQL Server and CosmosDB.
 
 For a system-assigned managed identity, append `;Authentication="Active Directory Managed Identity"` to the connection string. For a user-assigned managed identity, append `;Authentication="Active Directory Managed Identity";User Id={object_id}` to the connection string.
 
