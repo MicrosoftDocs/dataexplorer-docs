@@ -10,7 +10,7 @@ ms.date: 04/20/2023
 
 An [external table](kusto/query/schema-entities/external-tables.md) is a schema entity that references data stored outside the Azure Data Explorer database. External tables can be defined to reference data in Azure Storage or SQL Server and support various authentication methods.
 
-In this article, you'll learn how to create an external table that authenticates with a [managed identity](managed-identities-overview.md).
+In this article, you learn how to create an external table that authenticates with a [managed identity](managed-identities-overview.md).
 
 ## Prerequisites
 
@@ -31,7 +31,7 @@ Select one of the following tabs to set up the preferred managed identity type.
 
 1. Follow the steps to [Add a user-assigned identity](configure-managed-identities-cluster.md#add-a-user-assigned-identity) to your cluster, and save the **Object (principal) ID** for later use.
 
-1. Run the following [.alter-merge policy managed_identity](kusto/management/alter-merge-managed-identity-policy-command.md) command. This command sets a [managed identity policy](kusto/management/managed-identity-policy.md) on the cluster that allows the managed identity to be used with external tables. Replace `<objectId>` with the **Object (principal) ID** from the previous step.
+1. Run [.alter-merge policy managed_identity](kusto/management/alter-merge-managed-identity-policy-command.md) command. This command sets a [managed identity policy](kusto/management/managed-identity-policy.md) on the cluster that allows the managed identity to be used with external tables. Replace `<objectId>` with the **Object (principal) ID** from the previous step.
 
     ```kusto
     .alter-merge cluster policy managed_identity ```[
@@ -85,7 +85,7 @@ The following table shows the required permissions by external resource. To impo
 
 To import or query data from the SQL database, grant the managed identity table SELECT permissions. To export data to the SQL database, grant the managed identity CREATE, UPDATE, and INSERT permissions. To learn more, see [Permissions](/sql/relational-databases/security/permissions-database-engine).
 
-### [CosmosDB](#tab/cosmosdb)
+### [Cosmos DB](#tab/cosmosdb)
 
 To import or query data from the CosmosDB database, grant the managed identity read permissions. 
 To learn more, see [Permissions](/azure/cosmos-db/how-to-setup-rbac).
@@ -144,15 +144,15 @@ The following command creates `MySqlExternalTable` that refers to `MySqlTable` t
 
 ### [CosmosDB](#tab/cosmosdb)
 
-To create a CosmosDB external table, do the following steps:
+To create a Cosmos DB external table, do the following steps:
 
-1. Create a CosmosDB connection string. This string indicates the resource to access and its authentication information. Specify the [managed identity authentication method](kusto/api/connection-strings/sql-authentication-methods.md#managed-identity).
+1. Create a Cosmos DB connection string. This string indicates the resource to access and its authentication information. Specify the [managed identity authentication method](kusto/api/connection-strings/sql-authentication-methods.md#managed-identity).
 
 2. Run the [.create or .alter external table](kusto/management/external-sql-tables.md) to create the table. Use the connection string from the previous step as the *connectionString* argument.
 
 #### Example
 
-The following command creates `MyCosmosDbExternalTable` that refers to data in `MyCollection` in database `MyDatabase` of CosmosDB account `mycosmos`. The connection string contains `;Authentication="Active Directory Managed Identity";User Id=123456789`, which indicates to use a user-assigned managed identity with object ID `123456789` to access the table.
+The following command creates `MyCosmosDbExternalTable` that refers to data in `MyCollection` in database `MyDatabase` of Cosmos DB account `mycosmos`. The connection string contains `;Authentication="Active Directory Managed Identity";User Id=123456789`, which indicates to use a user-assigned managed identity with object ID `123456789` to access the table.
 
 ```kusto
 .create external table MyCosmosDbExternalTable (x:int, s:string) kind=sql
