@@ -1,7 +1,7 @@
 ---
 title: Enable isolated compute on your Azure Data Explorer cluster
 description: 'In this article, you learn how to enable isolated compute on your Azure Data Explorer cluster by selecting the correct SKU.'
-ms.reviewer: dagrawal
+ms.reviewer: iriskami
 ms.topic: how-to
 ms.date: 05/20/2024
 ms.custom: references_regions
