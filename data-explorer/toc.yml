@@ -680,7 +680,7 @@ items:
           - name: Ingestion FAQ
             href: kusto/management/ingestion-faq.yml
       - name: White paper
-        href: white-paper.md
+        href: white-paper-landing-page.md
   - name: Resources
     items:
       - name: Forums
