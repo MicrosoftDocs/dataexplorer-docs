@@ -12,7 +12,7 @@ Azure Data Explorer stands as a pivotal technology in the Big Data realm, adept 
 
 The white paper is available as a PDF that presents the platform and technology that underlies the Azure Data Explorer service offering. This PDF is updated at infrequently, while the [online documentation](https://learn.microsoft.com/azure/data-explorer/) is always up to date.
 
-## Download the Fabric security white paper
+## Download the the Azure Data Explorer white paper
 
 You can download the Azure Data Explorer white paper as a PDF from the following link:
 
