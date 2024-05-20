@@ -256,3 +256,9 @@ Traces
 |PipelineScheduler||20|02/17/2016 08:40:01||2016-02-17 08:39:01.0000000|
 |PipelineScheduler||16|02/17/2016 08:41:00|2016-02-17 08:41:00.0000000|2016-02-17 08:40:00.0000000|
 |PipelineScheduler|27|22|02/17/2016 08:41:01|2016-02-17 08:41:00.0000000|2016-02-17 08:40:01.0000000|
+
+## Related content
+
+* [extract function](extract-function.md)
+* [extract-all function](extract-all-function.md)
+* [extract-json function](extract-json-function.md)
