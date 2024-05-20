@@ -35,6 +35,21 @@ Matches two IPv4 strings. The two IPv4 strings are parsed and compared while acc
 
 ## Examples
 
+### Simple example
+
+> [!div class="nextstepaction"]
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA51Quw6CQBDs+YrtkAQ57gSjJpYWdvbGkAMO3YTHeXcYCj/eTbCAUOlssclkZ3YypXQ0ea1WqHlmncH2fhhXCKjFnAq8qwc+34uIb3cRj2I/BMKSITAGp2cvazhf7EzEmUjoasKINP3KSCQSyNGRaq2NqnAAtNBbVULVGSi6RkuDtmvnloscZDm++duSbeJFyt8tb94b1OBUW4JRtq8dHKnWV5KhzRrpisek92nhwQew+y1lmQEAAA==)" target="_blank">Run the query</a>
+
+``` kusto
+print ipv4_is_match('192.168.1.1/24', '192.168.1.255')
+```
+
+**Output**
+
+|print_0|
+|---|
+|true |
+
 ### IPv4 comparison equality - IP-prefix notation specified inside the IPv4 strings
 
 > [!div class="nextstepaction"]
@@ -82,3 +97,8 @@ datatable(ip1_string:string, ip2_string:string, prefix:long)
 |192.168.1.1|192.168.1.0|31|true|
 |192.168.1.1/24|192.168.1.255|31|true|
 |192.168.1.1|192.168.1.255|24|true|
+
+## Related content
+
+* Overview of [IPv4/IPv6 functions](scalar-functions.md#ipv4ipv6-functions)
+* Overview of [IPv4 text match functions](scalar-functions.md#ipv4-text-match-functions)

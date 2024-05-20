@@ -16,7 +16,7 @@ Azure Data Explorer provides a [data client library for Python](https://github.c
 
 ## Prerequisites
 
-* [Python 3.4+](https://www.python.org/downloads/)
+* [Python 3.7 or later](https://www.python.org/downloads/)
 * A Microsoft account or a Microsoft Entra user identity to access the [help cluster](https://dataexplorer.azure.com/clusters/help/databases/Samples)
 
 ## Install the data library

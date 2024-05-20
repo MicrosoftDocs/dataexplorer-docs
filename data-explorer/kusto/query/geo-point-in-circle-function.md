@@ -3,7 +3,7 @@ title:  geo_point_in_circle()
 description: Learn how to use the geo_point_in_circle() function to check if the geospatial coordinates are inside a circle on Earth.
 ms.reviewer: mbrichko
 ms.topic: reference
-ms.date: 03/09/2023
+ms.date: 04/04/2024
 ---
 # geo_point_in_circle()
 
@@ -27,7 +27,7 @@ Calculates whether the geospatial coordinates are inside a circle on Earth.
 
 ## Returns
 
-Indicates whether the geospatial coordinates are inside a circle. If the coordinates or circle is invalid, the query will produce a null result.
+Indicates whether the geospatial coordinates are inside a circle. If the coordinates or circle is invalid, the query produces a null result.
 
 > [!NOTE]
 >
@@ -37,9 +37,9 @@ Indicates whether the geospatial coordinates are inside a circle. If the coordin
 
 ## Examples
 
-The following query finds all the places in the area defined by the following circle: Radius of 18 km, center at [-122.317404, 47.609119] coordinates.
+The following example finds all the places in the area defined by the following circle: Radius of 18 km, center at [-122.317404, 47.609119] coordinates.
 
-:::image type="content" source="media/geo-point-in-circle-function/circle-seattle.png" alt-text="Places near Seattle.":::
+:::image type="content" source="media/geo-point-in-circle-function/circle-seattle.png" alt-text="Screenshot of a map with places within 18 km of Seattle.":::
 
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA3XS0UrDMBSA4fs+xbnbCrVL2rRp9wCCCArqnUiJ6bFG06RkERV8eKN1rN1qchUCH384aYUP+1HjWlvTKf/W4tah0Alo4afHQQuJ2513ynRxdB9BWD836zOaZWlOOSMsToDxtCQ1pXUCq1sU3mtcJXC6Nhu4MCCVkxphhuUpq3lZVSPGiorUVcCu9Wc/KAlXIcsaoeHcOtz5X3zE8MOjU9aBfdrDcJSZkdBJ/zI5JxUL8qVyr1qYdqlzmnlkMZaXZT5aGeOkzoJ1J6TtxeKL/608cmlGa17sG2nOiuDeYNvb5cR540P0Be/P6BA6tM1glfGNMs14e5jxYbwJTAY4mx+tCCFx8AZnX1D68Qt8AzYb0g4xAgAA" target="_blank">Run the query</a>
@@ -65,9 +65,7 @@ datatable(longitude:real, latitude:real, place:string)
 |Kirkland|
 |Redmond|
 
-Storm events in Orlando. The events are filtered by 100 km within Orlando coordinates, and aggregated by event type and hash.
-
-:::image type="content" source="media/geo-point-in-circle-function/orlando-storm-events.png" alt-text="Storm events in Orlando.":::
+The following example finds storm events in Orlando. The events are filtered by 100 km within Orlando coordinates, and aggregated by event type and hash.
 
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA22PwU7DMAyG7zyFjw0KW7sBKoddkHaCG9yrLLVaszSJHHdjiIcn3SbRw0625P//PvlDAg/bA3pJd78QOXyhFXjFjvx78Pq6GdFwDn2eIubcsUdG6DA0MZCXhnxjia3D4laT0bjioa4W6/qlUhpW9eJp/fisoSrLEu6noTI0jcNgmH4QbBi9FAp2p3+rht6kHjYzq4QmrSw6d8OqZt9MjUtwqtgMZOMujGKCKj3XnOVNrjP6Fhkioe0NCxxJeij25NvNYKKC5RLynO7XKPkOzMGQMzuHQB7exiQBtt/RBc6kFtNeQvwDFpFHo3MBAAA=" target="_blank">Run the query</a>
@@ -81,9 +79,11 @@ StormEvents
 | render piechart with (kind=map) // map pie rendering available in Kusto Explorer desktop
 ```
 
-The following example shows NY Taxi pickups within 10 meters of a particular location. Relevant pickups are aggregated by hash.
+**Output**
 
-:::image type="content" source="media/geo-point-in-circle-function/circle-junction.png" alt-text="NY Taxi nearby Pickups.":::
+:::image type="content" source="media/geo-point-in-circle-function/orlando-storm-events.png" alt-text="Screenshot of storm events in Orlando rendered with pie chart points on a map.":::
+
+The following example shows New York city taxi pickups within 10 meters of a particular location. Relevant pickups are aggregated by hash.
 
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA42Py27CQAxF93yFlxMpRTBFgiz4lpFxLMZlMjNyHPEQH9+kSBW7dnt17zl2vlMwvMnqCVXLF5NBFbpMNaSSz2JTz+1vgvYTzN1rZGU4cwm1SLYgOZAoJXZ/z1tQxuQ+9p/rrvOHpoXdZr3f+a6F7aaZ4eM0DKjyYDjdIeIY4fimshJGT5yS+4fJ++btswXy2i4U4myK6YV1i2fpKueeFUZCM1aKqAZXsQjuIrmfLxmwNt9Em1nwNgEAAA==" target="_blank">Run the query</a>
@@ -97,7 +97,11 @@ nyc_taxi
 | render scatterchart with (kind = map)
 ```
 
-The following example will return true.
+**Output**
+
+:::image type="content" source="media/geo-point-in-circle-function/circle-junction.png" alt-text="Screenshot of the rendered map showing nearby New York city taxi pickups, as defined in the query.":::
+
+The following example returns `true`.
 
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAysoyswrUcjMi0/OLErOSVWwVUhPzY8vyAeKxsNFNXQNjYz0DE2MTc1MdBRMzPVMgSxzcx0FiLiBgYWlGUTcyNzY1FBHwdjUwEATAJnKnMpbAAAA" target="_blank">Run the query</a>
@@ -110,9 +114,9 @@ print in_circle = geo_point_in_circle(-122.143564, 47.535677, -122.100896, 47.52
 
 |in_circle|
 |---|
-|1|
+|true|
 
-The following example will return false.
+The following example returns `false`.
 
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAysoyswrUcjMi0/OLErOSVWwVUhPzY8vyAeKxsNFNXQNjYz0DI3NTc1NdRRMzPXMjA3MLIx1FCDiBgYWlmZgcVMjc2NTQx0FY1MDA00AV0g5xlsAAAA=" target="_blank">Run the query</a>
@@ -125,9 +129,9 @@ print in_circle = geo_point_in_circle(-122.137575, 47.630683, -122.100896, 47.52
 
 |in_circle|
 |---|
-|0|
+|false|
 
-The following example will return a null result because of the invalid coordinate input.
+The following example returns a null result because of the invalid coordinate input.
 
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAysoyswrUcjMi0/OLErOSVWwVUhPzY8vyAeKxsNFNYwMDHQUDOFIEwAH8KEmNgAAAA==" target="_blank">Run the query</a>
@@ -142,7 +146,7 @@ print in_circle = geo_point_in_circle(200, 1, 1, 1, 1)
 |---|
 ||
 
-The following example will return a  null result because of the invalid circle radius input.
+The following example returns a  null result because of the invalid circle radius input.
 
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAysoyswrUcjMi0/OLErOSVWwVUhPzY8vyAeKxsNFNQx1FOBI11ATAAIUtdY1AAAA" target="_blank">Run the query</a>

@@ -420,13 +420,7 @@ items:
             displayName: Private endpoint, Azure Data Explorer cluster behind a private endpoint
             href: power-bi-private-endpoint.md
       - name: Excel
-        items:
-          - name: Connector
-            displayName: Excel
-            href: excel-connector.md
-          - name: Blank query
-            displayName: Excel
-            href: excel-blank-query.md
+        href: excel.md
       - name: Grafana
         href: grafana.md
       - name: Tableau
@@ -666,8 +660,12 @@ items:
         href: /azure/templates/microsoft.kusto/allversions
       - name: Functions library
         href: kusto/functions-library/toc.yml
-      - name: PowerShell Kusto
-        href: /powershell/module/az.kusto/#kusto
+      - name: PowerShell Az.Kusto
+        items:
+          - name: Use Kusto cmdlets in Azure PowerShell
+            href: kusto/api/powershell/azure-powershell.md
+          - name: Az.Kusto cmdlets
+            href: /powershell/module/az.kusto/#kusto
       - name: Python plugin packages
         href: python-package-reference.md
       - name: Resource provider operations

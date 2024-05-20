@@ -49,12 +49,11 @@ In this article, you learn about:
 
 ### Supported regions
 
-Migration to multiple availability zones is fully supported in all regions, but is limited to regions that don't have capacity restrictions. The following regions are currently supported:
+Migration to multiple availability zones is limited to regions that don't have capacity restrictions. The following regions are currently supported:
 
 - Australia East
 - Canada Central
 - China North 3
-- France Central
 - India Central
 - North Europe
 - Norway East
@@ -64,6 +63,22 @@ Migration to multiple availability zones is fully supported in all regions, but 
 - UK South
 
 ## Get the list of availability zones for your cluster's region
+
+You can get a list of availability zones for your cluster in the following ways:
+
+### [Azure portal](#tab/az-azure-portal)
+
+1. In the Azure portal, go to your cluster's **Overview** page.
+
+1. Under **Settings**, select **Scale up**.
+
+1. In the row for your cluster, the availability zones are listed in the **Availability zones** column.
+
+    :::image type="content" source="media/migrate-cluster-to-multiple-availability-zone/availability-zones-list.png" lightbox="media/migrate-cluster-to-multiple-availability-zone/availability-zones-list.png" alt-text="Availability zones":::
+
+<!-- 
+
+### [Azure CLI](#tab/az-azure-cli)
 
 You can get a list of availability zones for a region by using the following Azure CLI command:
 
@@ -104,7 +119,49 @@ The availability zones are listed in the `availabilityZoneMappings` property.
     "type": "Region"
   }
 ]
-```
+``` -->
+
+### [PowerShell](#tab/az-powershell)
+
+Before you start, make sure you have [az.Kusto cmdlets](kusto/api/powershell/azure-powershell.md) installed and [signed in](kusto/api/powershell/azure-powershell.md#sign-in-to-azure), and then run the following command to get the list of availability zones for your cluster's region:
+
+1. Set the resource ID of your cluster. You can get your cluster's resource ID from the Azure portal from your cluster's **Properties** page.
+
+    ```powershell
+    $resource_id = "<ClusterResourceID>"
+    ```
+
+1. Get your cluster's details.
+
+    ```powershell
+    $mycluster = Get-AzKustoCluster -InputObject $resource_id
+    ```
+
+1. Get the location of your cluster.
+
+    > [!IMPORTANT]
+    > `Get-AzLocation` requires the `Az.Resources` module. If you don't have it installed, run `Install-Module Az.Resources`.
+
+    ```powershell
+    $location = (Get-AzLocation | where DisplayName -EQ $mycluster.Location).location
+    ```
+
+1. Get your cluster's ID.
+  
+    ```powershell
+    $mycluster.Id  -match "/subscriptions/(.*?)/" | Out-Null; $subscription = $Matches[1]
+    ```
+
+1. Get the list of availability zones for your cluster's region.
+
+    ```powershell
+    $bearer = (Get-AzAccessToken).Token
+    $rest_result = (Invoke-RestMethod -Uri https://management.azure.com/subscriptions/$subscription/providers/Microsoft.Kusto/locations/${location}/skus?api-version=2022-11-11 -Headers @{Authorization="Bearer $bearer"})
+    $zones = $rest_result | select -ExpandProperty Value | where name -eq $mycluster.SkuName | select -ExpandProperty locationInfo | select zones
+    $zones
+    ```
+
+---
 
 ## Configure your cluster to support availability zones
 
@@ -120,7 +177,7 @@ To add availability zones to an existing cluster, you must update the cluster `z
 > [!IMPORTANT]
 > Changing the availability zones for an existing cluster only changes the availability zones for the compute. The persistent storage is not changed.
 
-### [REST API](#tab/rest-api)
+### [REST API](#tab/config-rest-api)
 
 Follow the instructions on how to [deploy a template](/azure/azure-resource-manager/management/manage-resources-rest?tabs=azure-cli#deploy-a-template).
 
@@ -136,7 +193,7 @@ Follow the instructions on how to [deploy a template](/azure/azure-resource-mana
     { "zones": [ "{zone1}", "{zone2}", "{zone3}" ] }
     ```
 
-### [C\#](#tab/csharp)
+### [C\#](#tab/config-csharp)
 
 1. If you don't have the *Azure.Identity* and *Azure.ResourceManager.Kusto* libraries installed, use the following commands to install them:
 
@@ -157,7 +214,7 @@ Follow the instructions on how to [deploy a template](/azure/azure-resource-mana
 
 1. Run your application.
 
-### [Python](#tab/python)
+### [Python](#tab/config-python)
 
 1. In your application, add the following code:
 
@@ -171,7 +228,7 @@ Follow the instructions on how to [deploy a template](/azure/azure-resource-mana
 
 1. Run your application.
 
-### [PowerShell](#tab/powershell)
+### [PowerShell](#tab/config-powershell)
 
 You can use the following PowerShell command to configure your cluster to use availability zones. Make sure the [Kusto tools libraries](kusto/api/powershell/powershell.md#get-the-libraries) is installed and replace the parameters with your values.
 
@@ -179,7 +236,7 @@ You can use the following PowerShell command to configure your cluster to use av
 Update-AzKustoCluster -SubscriptionId {subscriptionId} -ResourceGroupName {resourceGroupName} -Name {clusterName} -Zone "{zone1}", "{zone2}", "{zone3}"
 ```
 
-### [ARM Template](#tab/arm)
+### [ARM Template](#tab/config-arm)
 
 1. In your ARM template, add the following property to the `Microsoft.Kusto/clusters` resource:
 

@@ -37,8 +37,7 @@ A materialized view is made of two components:
 * A *materialized* part - a table holding aggregated records from the source table, which have already been processed. This table always holds a single record per the aggregation's group-by combination.
 * A *delta* - the newly ingested records in the source table that haven't yet been processed.
 
-Querying the materialized view combines the materialized part with the delta part, providing an up-to-date result of the aggregation query. The offline materialization process ingests new records from the *delta* to the materialized table, and replaces existing records. The replacement is done by rebuilding extents that hold records to replace. If records in the *delta* constantly intersect with all data shards in the *materialized* part, each materialization cycle requires rebuilding the entire *materialized* part, and may not keep up with the ingestion rate. In that case, the view becomes unhealthy and the *delta* constantly grows.
-The [materialized views monitoring](materialized-views-monitoring.md) page explains how to troubleshoot such situations.
+Querying the materialized view combines the materialized part with the delta part, providing an up-to-date result of the aggregation query. The offline materialization process ingests new records from the *delta* to the materialized table, and updates existing records. If the intersection between the *delta* and the *materialized* part is large, and many records require updates, this might have a negative impact on the materialization process. See [monitor materialized views](materialized-views-monitoring.md) on how to troubleshoot such situations.
 
 ## Materialized views queries
 

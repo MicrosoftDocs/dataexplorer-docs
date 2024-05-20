@@ -50,3 +50,8 @@ datatable(ip_address:string, ip_range:string)
 |---|---|---|
 |192.168.1.1|192.168.1.1|true|
 |192.168.1.1|192.168.1.255/24|true|
+
+## Related content
+
+* Overview of [IPv4/IPv6 functions](scalar-functions.md#ipv4ipv6-functions)
+* Overview of [IPv4 text match functions](scalar-functions.md#ipv4-text-match-functions)
