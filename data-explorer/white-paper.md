@@ -8,7 +8,7 @@ ms.date: 05/20/2024
 
 # Azure Data Explorer white paper
 
-Azure Data Explorer stands as a pivotal technology in the Big Data realm, adept at handling vast volumes of structured and unstructured data from a wide variety of sources. This whitepaper delves into its capabilities to ingest, store, and analyze data in real time, from VM performance metrics to business analytics, within a flexible time window, showcasing its unique position in the Big Data ecosystem.
+Azure Data Explorer stands as a pivotal technology in the Big Data realm, adept at handling vast volumes of structured and unstructured data from a wide variety of sources. This whitepaper delves into its capabilities to ingest, store, and analyze data in real time, from performance metrics to business analytics, within a flexible time window, showcasing its unique position in the Big Data ecosystem.
 
 The white paper is available as a PDF that presents the platform and technology that underlies the Azure Data Explorer service offering. This PDF is updated at infrequently, while the [online documentation](https://learn.microsoft.com/azure/data-explorer/) is always up to date.
 
