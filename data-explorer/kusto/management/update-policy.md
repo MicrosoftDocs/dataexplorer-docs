@@ -3,7 +3,7 @@ title: Update policy overview
 description: Learn how to trigger an update policy to add data to a source table.
 ms.reviewer: orspodek
 ms.topic: reference
-ms.date: 05/15/2024
+ms.date: 05/20/2024
 ---
 # Update policy overview
 
@@ -137,9 +137,9 @@ MyFunction
 
 The update policy `IsTransactional` setting defines whether the update policy is transactional and can affect the behavior of the policy update, as follows:
 
-* If the value is set to the default value, *false* (`IsTransactional:``false`), the update policy doesn't guarantee consistency between data in the source and target table. If an update policy fails, data is ingested only to the source table and not to the target table. In this scenario, ingestion operation is successful.
+* `IsTransactional:false`: If the value is set to the default value, *false*, the update policy doesn't guarantee consistency between data in the source and target table. If an update policy fails, data is ingested only to the source table and not to the target table. In this scenario, ingestion operation is successful.
 
-* If the value is set to *true* (`IsTransactional:``true`), the setting does guarantee consistency between data in the source and target tables. If an update policy fails, data isn't ingested to the source or target table. In this scenario, the ingestion operation is unsuccessful.
+* `IsTransactional:true`: If the value is set to *true*, the setting does guarantee consistency between data in the source and target tables. If an update policy fails, data isn't ingested to the source or target table. In this scenario, the ingestion operation is unsuccessful.
 
 ### Handling failures
 
@@ -155,21 +155,17 @@ You can view policy update failures using the [`.show ingestion failures` comman
 | where FailedOn > ago(1hr) and OriginatesFromUpdatePolicy == true
 ```
 
-#### Nontransactional policy
+When an update policy failure occurs with the transactional setting set as: 
 
-When an update policy failure occurs with the transactional setting set as `IsTransactional:``false`:
+* `IsTransactional:false`:
+    * A failure to run the policy is ignored and ingestion isn't automatically retried.
+    * You can manually retry the ingestion.
 
-* A failure to run the policy is ignored and ingestion isn't automatically retried.
-* You can manually retry the ingestion.
-
-#### Transactional policy
-
-When an update policy failure occurs with the transactional setting set as `IsTransactional:``true`:
-
-* If the ingestion method is `pull`, ingestion is automatically retried according to the following conditions:
-    * Retries are performed until one of following configurable limit settings is met: `DataImporterMaximumRetryPeriod` or `DataImporterMaximumRetryAttempts`
-    * By default the `DataImporterMaximumRetryPeriod` setting is two days, and `DataImporterMaximumRetryAttempts`is 10
-    * The backoff period starts at 2 minutes, and doubles. So the wait starts with 2 min, then increases to 4 min, to 8 min, to 16 min and so on.
+* `IsTransactional:true`:
+    * If the ingestion method is `pull`, ingestion is automatically retried according to the following conditions:
+        * Retries are performed until one of following configurable limit settings is met: `DataImporterMaximumRetryPeriod` or `DataImporterMaximumRetryAttempts`
+        * By default the `DataImporterMaximumRetryPeriod` setting is two days, and `DataImporterMaximumRetryAttempts`is 10
+        * The backoff period starts at 2 minutes, and doubles. So the wait starts with 2 min, then increases to 4 min, to 8 min, to 16 min and so on.
 
 * In any other case, you can manually retry ingestion.
 
