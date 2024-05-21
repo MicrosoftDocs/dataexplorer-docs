@@ -80,9 +80,9 @@ The following are examples of blob URIs for system and user assigned managed ide
 
 > [!IMPORTANT]
 >
-> * When using Managed Identities to ingest data with the C# SDK, you must provide a blob size in `BlobSourceOptions`. If the size is not set, the SDK attempts to fill in the blob size by accessing the storage account, resulting in a failure.
-> * The *size* parameter should be the raw (uncompressed) data size, and not necessarily the blob size.
-> * If you do not know the size at the time of ingestion, you may provide a value of zero (0). The service will attempt to discover the size using the managed identity for authentication.
+> * When using Managed Identities to ingest data with the C# SDK, you must provide a blob size in `StorageSourceOptions`. If the size is not set, the SDK attempts to fill in the blob size by accessing the storage account, resulting in a failure.
+> * The *size* parameter should be the raw (uncompressed) data size, and not the blob size.
+> * If you do not know the size at the time of ingestion, specify a value of zero (0). The service will attempt to discover the size using the managed identity for authentication.
 
 ## Related content
 
