@@ -159,7 +159,7 @@ When an update policy failure occurs with the transactional setting set as:
 
 * `IsTransactional:false`:
     * A failure to run the policy is ignored and ingestion isn't automatically retried.
-    * You can manually retry the ingestion.
+    * To automatically retry ingestion, you'll need to set the update policy to transactional.
 
 * `IsTransactional:true`:
     * If the ingestion method is `pull`, ingestion is automatically retried according to the following conditions:
