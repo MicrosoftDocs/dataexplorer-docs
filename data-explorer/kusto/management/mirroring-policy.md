@@ -7,6 +7,7 @@ ms.date: 05/21/2024
 ---
 # Mirroring policy
 
+::: zone pivot="fabric"
 The Mirroring policy commands allow you to view, change and partition, and delete your table mirroring policy and mirroring file partition. They also provide a way to check the mirroring latency by reviewing the operations mirroring status.
 
 ## Management commands
@@ -19,7 +20,6 @@ The Mirroring policy commands allow you to view, change and partition, and delet
 ## The policy object
 
 The mirroring policy includes the following properties:
-
 | Property | Description | Values | Default|
 |---|---|---|---|
 | **Format** | The format of your mirrored files. | Valid value is `parquet`. | `parquet` |
@@ -38,3 +38,11 @@ The mirroring policy includes the following properties:
 }
 
 ```
+
+::: zone-end
+
+::: zone pivot="azuredataexplorer, azuremonitor, azurestorage"
+
+This feature isn't supported.
+
+::: zone-end

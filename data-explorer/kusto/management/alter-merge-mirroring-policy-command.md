@@ -8,7 +8,7 @@ ms.date: 01/16/2024
 
 # .alter-merge table policy mirroring command
 
-::: zone pivot="azuredataexplorer, fabric"
+::: zone pivot="fabric"
 
 Changes the tables's [mirroring policy](mirroring-policy.md). The mirroring policy mirrors tables in Azure Data Explorer in parquet format and allows you to partition your files to improve query speed. Each partition is represented as a separate column using the *PartitionName* listed in the *Partitions* list. This means there are more columns in the target than in your source table.
 
@@ -61,7 +61,7 @@ with
 
 ::: zone-end
 
-::: zone pivot="azuremonitor, azurestorage"
+::: zone pivot="azuredataexplorer, azuremonitor, azurestorage"
 
 This feature isn't supported.
 

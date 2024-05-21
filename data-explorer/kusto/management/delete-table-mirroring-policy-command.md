@@ -7,6 +7,7 @@ ms.date: 05/16/2024
 ---
 # .delete table policy mirroring command
 
+::: zone pivot="fabric"
 Delete a table's [mirroring policy](mirroring-policy.md).
 
 ## Permissions
@@ -32,3 +33,11 @@ The following command deletes the mirroring policy at the table level.
 ```kusto
 .delete table Table1 policy mirroring
 ```
+
+::: zone-end
+
+::: zone pivot="azuredataexplorer, azuremonitor, azurestorage"
+
+This feature isn't supported.
+
+::: zone-end

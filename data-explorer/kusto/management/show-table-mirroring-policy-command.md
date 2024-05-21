@@ -7,6 +7,7 @@ ms.date: 05/21/2024
 ---
 # .show table policy mirroring command
 
+::: zone pivot="fabric"
 Display the table's [mirroring policy](mirroring-policy.md).
 
 ## Permissions
@@ -31,6 +32,16 @@ Returns a JSON representation of the policy.
 
 ## Example
 
+The following example requests information about the Automotive table mirroring policy.
+
 ```kusto
 .show table Automotive policy mirroring 
 ```
+
+::: zone-end
+
+::: zone pivot="azuredataexplorer, azuremonitor, azurestorage"
+
+This feature isn't supported.
+
+::: zone-end

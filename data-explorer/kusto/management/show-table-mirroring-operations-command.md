@@ -7,6 +7,8 @@ ms.date: 05/21/2024
 ---
 # .show table mirroring operations command
 
+::: zone pivot="fabric"
+
 Check the table's [mirroring policy](mirroring-policy.md) operations mirroring status. Mirroring status allows you to verify the latency and status of your data export.
 
 ## Permissions
@@ -41,22 +43,16 @@ You must have at least Database User, Database Viewer, or Database Monitor permi
 
 ## Example
 
+The following example requests operations mirroring status of the Automotive table.
+
 ```kusto
 .show table Automotive operations mirroring-status 
 ```
 
-<!--*Output*
-|IsEnabled | ExportProperties | ManagedIdentityIdentifier | IsExportRunning | LastExportStartTime | LastExportResult | LastExportedDataTime| Latency |
+::: zone-end
 
- true	{
-  "Distributed": true,
-  "SizeLimit": 268435456,
-  "MirroringMaxLatencyMinutes": 180,
-  "Distribution": "per_node",
-  "UseNativeParquetWriter": true,
-  "WriteNativeParquetV2": true,
-  "ParquetDatetimePrecision": 0,
-  "isDisabled": false,
-  "ReportDeltaLogResults": false
-}		false	0001-01-01T00:00:00Z	Completed	2024-05-02T13:02:28.9587272Z	00:00:00 **/
--->
+::: zone pivot="azuredataexplorer, azuremonitor, azurestorage"
+
+This feature isn't supported.
+
+::: zone-end
