@@ -148,7 +148,7 @@ To create a Cosmos DB external table, do the following steps:
 
 1. Create a Cosmos DB connection string. This string indicates the resource to access and its authentication information. Specify the [managed identity authentication method](kusto/api/connection-strings/sql-authentication-methods.md#managed-identity).
 
-2. Run the [.create or .alter external table](kusto/management/external-sql-tables.md) to create the table. Use the connection string from the previous step as the *connectionString* argument.
+2. Run the [.create or .alter external table](kusto/management/external-sql-tables.md) command to create the table. Use the connection string as the *SqlConnectionString* argument.
 
 #### Example
 
