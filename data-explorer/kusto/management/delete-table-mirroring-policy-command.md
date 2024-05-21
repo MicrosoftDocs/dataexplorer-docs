@@ -4,6 +4,8 @@ description: Learn how to use the `.delete table policy mirroring` command to de
 ms.reviewer: sharmaanshul
 ms.topic: reference
 ms.date: 05/16/2024
+zone_pivot_group_filename: data-explorer/zone-pivot-groups.json
+zone_pivot_groups: kql-flavors-mirroring
 ---
 # .delete table policy mirroring command
 

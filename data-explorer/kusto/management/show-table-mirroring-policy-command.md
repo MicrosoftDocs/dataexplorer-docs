@@ -4,6 +4,8 @@ description: Learn how to use the `.show table policy mirroring` command to disp
 ms.reviewer: sharmaanshul
 ms.topic: reference
 ms.date: 05/21/2024
+zone_pivot_group_filename: data-explorer/zone-pivot-groups.json
+zone_pivot_groups: kql-flavors-mirroring
 ---
 # .show table policy mirroring command
 

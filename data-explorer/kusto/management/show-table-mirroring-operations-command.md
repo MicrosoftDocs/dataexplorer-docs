@@ -4,6 +4,8 @@ description: Learn how to use the `.show table mirroring operations` command to 
 ms.reviewer: sharmaanshul
 ms.topic: reference
 ms.date: 05/21/2024
+zone_pivot_group_filename: data-explorer/zone-pivot-groups.json
+zone_pivot_groups: kql-flavors-mirroring
 ---
 # .show table mirroring operations command
 
@@ -34,13 +36,8 @@ You must have at least Database User, Database Viewer, or Database Monitor permi
 |TableName | `string` | The name of the table. |
 |IsEnabled | `bool` | A boolean value indicating whether or not the mirroring policy is enabled. |
 |ExportProperties |	`string` | A JSON string with various data export properties. |
-|ManagedIdentityIdentifier|`string` |ASSUME THIS GOES OUT |
-|IsExportRunning |`bool` | A Boolean value indicating whether an export is currently running. |
-|LastExportStartTime | `datetime`| A time value defining when the last export began. |
-|LastExportResult | `string` | A status of the last export result. |
-|LastExportedDataTime |`datetime`| A timestamp when the data was last exported. |
-|Latency | `timespan`| Time duration value indicating the time between the last export and the next export. |
-
+|ManagedIdentityIdentifier|`string` | 
+<!--should ManagedIdentityIdentifier be removed?-->
 ## Example
 
 The following example requests operations mirroring status of the Automotive table.
