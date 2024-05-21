@@ -4,6 +4,8 @@ description: Learn how to use the `.alter-merge table policy mirroring` command 
 ms.reviewer: sharmaanshul
 ms.topic: reference
 ms.date: 01/16/2024
+zone_pivot_group_filename: data-explorer/zone-pivot-groups.json
+zone_pivot_groups: kql-flavors-mirroring
 ---
 
 # .alter-merge table policy mirroring command

@@ -22,6 +22,7 @@ The Mirroring policy commands allow you to view, change and partition, and delet
 ## The policy object
 
 The mirroring policy includes the following properties:
+
 | Property | Description | Values | Default|
 |---|---|---|---|
 | **Format** | The format of your mirrored files. | Valid value is `parquet`. | `parquet` |
