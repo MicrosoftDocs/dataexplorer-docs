@@ -23,8 +23,8 @@ The `graph-match` operator searches for all occurrences of a graph pattern in an
 | *G* | `string` |  :heavy_check_mark: | The input graph source. |
 | *Pattern* | `string` |  :heavy_check_mark: | One or more comma delimited sequences of graph node elements connected by graph edge elements using graph notations. See [Graph pattern notation](#graph-pattern-notation). |
 | *Constraints* | `string` |  :heavy_check_mark: | A Boolean expression composed of properties of named variables in the *Pattern*. Each graph element (node/edge) has a set of properties that were attached to it during the graph construction. The constraints define which elements (nodes and edges) are matched by the pattern. A property is referenced by the variable name followed by a dot (`.`) and the property name. |
-| *Expression* | `string` |  | The `project` clause converts each pattern to a row in a tabular result, the project expression(s) have to be scalar and reference properties of named variables defined in the *Pattern*. A property is referenced by the variable name followed by a dot (`.`) and the attribute name. |
-| *CyclesOption* | `string` |  | Controls whether cycles are matched in the *Pattern*, allowed values: `all`, `none`, `unique_edges`. If `all` is specified then all cycles are matched, if `none` is specified cycles are not matched, if `unique_edges` (default) is specified, cycles are matched but only if the cycles don't include the same edge more than once. |
+| *Expression* | `string` |  | The `project` clause converts each pattern to a row in a tabular result. The project expression(s) have to be scalar and reference properties of named variables defined in the *Pattern*. A property is referenced by the variable name followed by a dot (`.`) and the attribute name. |
+| *CyclesOption* | `string` |  | Controls whether cycles are matched in the *Pattern*, allowed values: `all`, `none`, `unique_edges`. If `all` is specified then all cycles are matched, if `none` is specified cycles aren't matched, if `unique_edges` (default) is specified, cycles are matched but only if the cycles don't include the same edge more than once. |
 
 ### Graph pattern notation
 
@@ -40,11 +40,11 @@ The following table shows the supported graph notation:
 
 ### Variable length edge
 
-A variable length edge allows a specific pattern to be repeated multiple times within defined limits. This type of edge is denoted by an asterisk (`*`), followed by the minimum and maximum occurrence values in the format *min*`..`*max*. Both the minimum and maximum values must be [integer](scalar-data-types/int.md) scalars. Any sequence of edges falling within this occurrence range can match the variable edge of the pattern, provided that all the edges in the sequence satisfy the constraints outlined in the `where` clause.
+A variable length edge allows a specific pattern to be repeated multiple times within defined limits. This type of edge is denoted by an asterisk (`*`), followed by the minimum and maximum occurrence values in the format *min*`..`*max*. Both the minimum and maximum values must be [integer](scalar-data-types/int.md) scalars. Any sequence of edges falling within this occurrence range can match the variable edge of the pattern, if all the edges in the sequence satisfy the constraints outlined in the `where` clause.
 
 ### Multiple sequences (Preview)
 
-Multiple comma delimited sequences are used to express nonlinear patterns. To describe the connection between different sequences they have to share one or more variable name of a node. For example, to express a star pattern with a node *n* in the center of the star and connected to nodes *a*,*b*,*c* and *d* the following pattern could be used: `(`*a*`)--(`*n*`)--(`*b*`)`,`(`*c*`)--(`*n*`)--(`*d*`)`. Nore that only single connected component patterns are supported.
+Multiple comma delimited sequences are used to express nonlinear patterns. To describe the connection between different sequences, they have to share one or more variable name of a node. For example, to express a star pattern with a node *n* in the center of the star and connected to nodes *a*,*b*,*c* and *d* the following pattern could be used: `(`*a*`)--(`*n*`)--(`*b*`)`,`(`*c*`)--(`*n*`)--(`*d*`)`. Nore that only single connected component patterns are supported.
 
 ## Returns
 
@@ -171,7 +171,6 @@ Actions
 |Attacker|Compromised|System|
 |---|---|---|
 |Mallory|Bob|Apollo|
-
 
 ## Related content
 
