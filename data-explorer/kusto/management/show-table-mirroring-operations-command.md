@@ -36,8 +36,12 @@ You must have at least Database User, Database Viewer, or Database Monitor permi
 |TableName | `string` | The name of the table. |
 |IsEnabled | `bool` | A boolean value indicating whether or not the mirroring policy is enabled. |
 |ExportProperties |	`string` | A JSON string with various data export properties. |
-|ManagedIdentityIdentifier|`string` | 
-<!--should ManagedIdentityIdentifier be removed?-->
+|IsExportRunning | `bool` | A boolean value indicating whether or not the mirroring policy is running. |
+|LastExportStartTime | `datetime`| The start time of the last export. |
+|LastExportResult | `string` | The status of the last export result. |
+|LastExportedDataTime|`datetime` | The time of the last data export.  |
+|Latency | `timespan` |The maximum amount of time in minutes between the last and next time new data was added to your mirrored files.  |
+
 ## Example
 
 The following example requests operations mirroring status of the Automotive table.
