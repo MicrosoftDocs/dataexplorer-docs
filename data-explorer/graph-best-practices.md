@@ -1,5 +1,5 @@
 ---
-title: Best practices for Kusto Query Language (KQL) graph semantics (Preview)
+title: Best practices for Kusto Query Language (KQL) graph semantics
 description: Learn about the best practices for Kusto Query Language (KQL) graph semantics.
 ms.reviewer: herauch
 ms.topic: conceptual
@@ -7,10 +7,7 @@ ms.date: 09/03/2023
 # Customer intent: As a data analyst, I want to learn about best practices for KQL graph semantics.
 ---
 
-# Best practices for Kusto Query Language (KQL) graph semantics (Preview)
-
-> [!WARNING]
-> This feature is currently in preview and might be subject to change. The semantics and syntax of the graph feature might change before they are released as generally available.
+# Best practices for Kusto Query Language (KQL) graph semantics
 
 This article explains how to use the graph semantics feature in KQL effectively and efficiently for different use cases and scenarios. It shows how to create and query graphs with the syntax and operators, and how to integrate them with other KQL features and functions. It also helps users avoid common pitfalls or errors, such as creating graphs that exceed memory or performance limits, or applying unsuitable or incompatible filters, projections, or aggregations.
 
