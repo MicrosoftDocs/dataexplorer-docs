@@ -52,7 +52,7 @@ print bag_pack("Level", "Information", "ProcessID", 1234, "Data", bag_pack("url"
 
 **Example 2**
 
-The following example creates a property bag adn extract value from property bag using '.' operator.
+The following example creates a property bag and extract value from property bag using '.' operator.
 
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA12PXwuCMBTF3wW%2Fw2VPCiv8V0Hgg9qrTz1GyE3HWMUUXZTQh2%2FTBeL2cvjtnHvPGlT63p4MPNcBfc7tq6%2FZEYRUdCYnNighUYlWLnHJhgG5dg6qF5K7jg%2BX%2BSWM4oRCGAQUSJYRCjNOdvsDhWjCeU7o3xxGFOKJFgXR3qvrfIF9FJMNlGOOPL0hrzqsHx4xXfTARSUd0024hraQb%2BJd395ZrTb4xtF%2BaZWy7vWuypjSSW6NpBabHRYb%2BQMdY4ddNwEAAA%3D%3D" target="_blank">Run the query</a>
