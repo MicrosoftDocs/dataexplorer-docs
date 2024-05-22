@@ -19,26 +19,16 @@ The Mirroring policy commands allow you to view, change and partition, and delet
 * Use [.delete table policy mirroring command](delete-table-mirroring-policy-command.md) to soft-delete the current mirroring policy.
 * Use [.show table mirroring operations command](show-table-mirroring-operations-command.md) to check operations mirroring status.
 
-## Properties
+## The policy object
 
 The mirroring policy includes the following properties:
 
-| Property | Description |
-|---|---|
-| **Format** | The format of your mirrored files. The valid value is `parquet`. |
-|  **IsEnabled** | Determines whether the mirroring policy is enabled. When the mirroring policy is disabled and set to `false`, the underlying mirroring data is retained in the database but is considered inactive. Possible values are `true`, `false`, `null`. |
-| **Partitions** | A comma-separated list of columns used to divide the data into smaller partitions. *PartitionName* must be a case insensitive unique string both among other partition names and the column names of the mirrored table. See [Partitions formatting](external-tables-azure-storage.md#partitions-formatting).|
-
-Like Mirroring Policy, Mirroring operations indicates whether the policy is enabled. It also includes the following properties:
-
-| Property | Description |
-|---|---|
-|**ExportProperties** | A JSON string with various properties related to the data export. |
-|**IsExportRunning** | A boolean value indicating whether or not the mirroring policy is running. |
-|**LastExportStartTime** | A time stamp of the start time of the last export. |
-|**LastExportResult** | The status of the last export result. |
-|**LastExportedDataTime**| A time stamp of the time of the last data export.  |
-| **Latency** | The maximum amount of time in minutes between the last and next time new data was added to your mirrored files. |
+| Property | Description | Values | Default|
+|---|---|---|---|
+| **Format** | The format of your mirrored files. | Valid value is `parquet`. | `parquet` |
+| **MirroringMaxLatencyMinutes** | The maximum amount of time in minutes between the last and next time new data was added to your mirrored files. | A positive integer. | |
+|  **IsEnabled** | Determines whether the mirroring policy is enabled. When the mirroring policy is disabled and set to `false`, the underlying mirroring data is retained in the database but is considered inactive. | `true`, `false`, `null`. | `null` |
+| **"Partitions** | A comma-separated list of columns used to divide the data into smaller partitions. *PartitionName* must be a case insensitive unique string both among other partition names and the column names of the mirrored table. See [Partitions formatting](external-tables-azure-storage.md#partitions-formatting).| | |
 
 ## Example policy
 
