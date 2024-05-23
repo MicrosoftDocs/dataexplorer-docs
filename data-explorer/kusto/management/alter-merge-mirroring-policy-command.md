@@ -1,6 +1,6 @@
 ---
 title: .alter-merge table policy mirroring command
-description: Learn how to use the `.alter-merge table policy mirroring` command to  create a logical copy of tables of your data.
+description: Learn how to use the `.alter-merge table policy mirroring` command to create a logical copy of tables in your database.
 ms.reviewer: sharmaanshul
 ms.topic: reference
 ms.date: 05/23/2024
