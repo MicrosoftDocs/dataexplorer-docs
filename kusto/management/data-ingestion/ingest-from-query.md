@@ -18,7 +18,7 @@ These commands execute a query or a management command and ingest the results of
 
 To cancel an ingest from query command, see [`cancel operation`](../cancel-operation-command.md).
 
-[!INCLUDE [direct-ingestion-note](../includes/direct-ingestion-note.md)]
+[!INCLUDE [direct-ingestion-note](../../includes/direct-ingestion-note.md)]
 
 ## Permissions
 
@@ -61,7 +61,7 @@ For more information on permissions, see [Kusto role-based access control](../..
 |`tags` | `string` | A JSON string that represents a list of [tags](../extent-tags.md) to associate with the created extent. |
 |`docstring` | `string` | A description used to document the table.|
 |`distributed` | `bool` | If `true`, the command ingests from all nodes executing the query in parallel. Default is `false`. See [performance tips](#performance-tips).|
-|`persistDetails` |A Boolean value that, if specified, indicates that the command should persist the detailed results for retrieval by the [.show operation details](../operations.md#show-operation-details) command. Defaults to `false`. |`with (persistDetails=true)`|
+|`persistDetails` |A Boolean value that, if specified, indicates that the command should persist the detailed results for retrieval by the [.show operation details](../show-operations.md#show-operation-details) command. Defaults to `false`. |`with (persistDetails=true)`|
 
 ## Schema considerations
 
@@ -80,9 +80,9 @@ For more information on permissions, see [Kusto role-based access control](../..
 
 ## Character limitation
 
-The command will fail if the query generates an entity name with the `$` character. The [entity names](../../../kusto/query/schema-entities/entity-names.md) must comply with the naming rules, so the `$` character must be removed for the ingest command to succeed.
+The command will fail if the query generates an entity name with the `$` character. The [entity names](../../query/schema-entities/entity-names.md) must comply with the naming rules, so the `$` character must be removed for the ingest command to succeed.
 
-For example, in the following query, the `search` operator generates a column `$table`. To store the query results, use [project-rename](../../../kusto/query/projectrenameoperator.md) to rename the column.
+For example, in the following query, the `search` operator generates a column `$table`. To store the query results, use [project-rename](../../query/project-rename-operator.md) to rename the column.
 
 ```kusto
 .set Texas <| search State has 'Texas' | project-rename tableName=$table
