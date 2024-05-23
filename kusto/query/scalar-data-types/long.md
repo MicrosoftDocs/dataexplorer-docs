@@ -1,6 +1,6 @@
 ---
 title:  The long data type
-description: This article describes the long data type in Azure Data Explorer.
+description:  This article describes the long data type.
 ms.reviewer: orspodek
 ms.topic: reference
 ms.date: 01/08/2024

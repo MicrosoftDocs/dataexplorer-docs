@@ -1,6 +1,6 @@
 ---
 title:  The decimal data type
-description: This article describes the decimal data type in Azure Data Explorer.
+description:  This article describes the decimal data type.
 ms.reviewer: orspodek
 ms.topic: reference
 ms.date: 01/08/2024

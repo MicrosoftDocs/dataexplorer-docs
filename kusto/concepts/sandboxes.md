@@ -1,6 +1,6 @@
 ---
-title: Sandboxes - Azure Data Explorer
-description: This article describes Sandboxes in Azure Data Explorer.
+title:  Sandboxes
+description:  This article describes Sandboxes.
 ms.reviewer: orspodek
 ms.topic: reference
 ms.date: 05/03/2021

@@ -1,6 +1,6 @@
 ---
 title:  Columns management
-description: This article describes Columns management in Azure Data Explorer.
+description:  This article describes Columns management.
 ms.reviewer: orspodek
 ms.topic: reference
 ms.date: 02/13/2020

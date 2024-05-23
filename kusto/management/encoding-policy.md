@@ -1,6 +1,6 @@
 ---
 title:  Encoding policy
-description: This article describes the encoding policy in Azure Data Explorer.
+description:  This article describes the encoding policy.
 ms.reviewer: alexans
 ms.topic: reference
 ms.date: 12/28/2023

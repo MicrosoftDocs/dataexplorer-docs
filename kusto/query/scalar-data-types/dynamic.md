@@ -1,6 +1,6 @@
 ---
 title:  The dynamic data type
-description: This article describes The dynamic data type in Azure Data Explorer.
+description:  This article describes The dynamic data type.
 ms.reviewer: alexans
 ms.topic: reference
 ms.date: 02/29/2024

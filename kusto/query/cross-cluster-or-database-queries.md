@@ -1,6 +1,6 @@
 ---
-title:   Cross-cluster and cross-database queries - Azure Data Explorer
-description: This article describes cross-database and cross-cluster queries in Azure Data Explorer.
+title:    Cross-cluster and cross-database queries
+description:  This article describes cross-database and cross-cluster queries.
 ms.reviewer: alexans
 ms.topic: reference
 ms.date: 07/19/2023

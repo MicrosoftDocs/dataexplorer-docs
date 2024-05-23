@@ -1,6 +1,6 @@
 ---
 title:  series_fit_lowess_fl()
-description: This article describes the series_fit_lowess_fl() user-defined function in Azure Data Explorer.
+description:  This article describes the series_fit_lowess_fl() user-defined function.
 ms.reviewer: adieldar
 ms.topic: reference
 ms.date: 03/13/2023

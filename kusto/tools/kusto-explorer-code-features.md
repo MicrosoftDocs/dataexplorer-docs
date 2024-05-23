@@ -1,5 +1,5 @@
 ---
-title: Kusto Explorer code features - Azure Data Explorer
+title:  Kusto Explorer code features
 description: This article describes Kusto Explorer Code features.
 ms.reviewer: orspodek
 ms.topic: reference

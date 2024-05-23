@@ -1,6 +1,6 @@
 ---
 title:  Ingestion mappings
-description: This article describes ingestion mappings in Azure Data Explorer.
+description:  This article describes ingestion mappings.
 ms.reviewer: alexans
 ms.topic: reference
 ms.date: 12/26/2023

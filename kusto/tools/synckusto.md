@@ -1,6 +1,6 @@
 ---
-title: Sync Kusto - Azure Data Explorer
-description: This article describes Sync Kusto in Azure Data Explorer.
+title:  Sync Kusto
+description:  This article describes Sync Kusto.
 ms.reviewer: zivc
 ms.topic: how-to
 ms.date: 08/12/2019

@@ -1,6 +1,6 @@
 ---
 title:  The timespan data type
-description: This article describes The timespan data type in Azure Data Explorer.
+description:  This article describes The timespan data type.
 ms.reviewer: orspodek
 ms.topic: reference
 ms.date: 01/08/2024

@@ -1,6 +1,6 @@
 ---
-title: Kusto CLI - Azure Data Explorer
-description: This article describes Kusto CLI in Azure Data Explorer.
+title:  Kusto CLI
+description:  This article describes Kusto CLI.
 ms.reviewer: orspodek
 ms.topic: reference
 ms.date: 03/24/2020

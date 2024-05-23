@@ -1,6 +1,6 @@
 ---
 title:  .alter materialized view docstring
-description: This article describes the alter materialized-view docstring command in Azure Data Explorer.
+description:  This article describes the alter materialized-view docstring command.
 ms.reviewer: yifats
 ms.topic: reference
 ms.date: 03/01/2023

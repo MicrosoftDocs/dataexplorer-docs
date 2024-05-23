@@ -1,5 +1,5 @@
 ---
-title: geo_polygon_buffer() - Azure Data Explorer
+title:  geo_polygon_buffer()
 description: Learn how to use the geo_polygon_buffer() function to calculate polygon buffer
 ms.reviewer: mbrichko
 ms.topic: reference

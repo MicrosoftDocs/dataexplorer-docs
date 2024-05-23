@@ -1,6 +1,6 @@
 ---
 title:  Export data to SQL
-description: This article describes Export data to SQL in Azure Data Explorer.
+description:  This article describes Export data to SQL.
 ms.reviewer: orspodek
 ms.topic: reference
 ms.date: 06/20/2023

@@ -1,5 +1,5 @@
 ---
-title: Treemap visualization - Azure Data Explorer
+title:  Treemap visualization
 description: Learn how to use the treemap visualization to visualize data.
 ms.reviewer: alexans
 ms.topic: reference

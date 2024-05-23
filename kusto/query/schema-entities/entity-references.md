@@ -1,6 +1,6 @@
 ---
 title:  Entity references
-description: This article describes Entity references in Azure Data Explorer.
+description:  This article describes Entity references.
 ms.reviewer: orspodek
 ms.topic: reference
 ms.date: 08/29/2023

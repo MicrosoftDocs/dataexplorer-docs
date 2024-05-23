@@ -1,5 +1,5 @@
 ---
-title:  series_clean_anomalies_fl() - Azure Data Explorer
+title:   series_clean_anomalies_fl()
 description: Learn how to use the series_clean_anomalies_fl() function to clean anomalous points in a series.
 ms.reviewer: adieldar
 ms.topic: reference

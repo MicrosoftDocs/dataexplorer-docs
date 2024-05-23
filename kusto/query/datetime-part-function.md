@@ -1,6 +1,6 @@
 ---
 title:  datetime_part()
-description: This article describes datetime_part() in Azure Data Explorer.
+description:  This article describes datetime_part().
 ms.reviewer: alexans
 ms.topic: reference
 ms.date: 11/03/2022

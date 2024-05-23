@@ -1,6 +1,6 @@
 ---
 title:  Materialized views data purge
-description: This article describes materialized views data purge in Azure Data Explorer.
+description:  This article describes materialized views data purge.
 ms.reviewer: yifats
 ms.topic: reference
 ms.date: 02/27/2023

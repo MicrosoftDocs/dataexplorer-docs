@@ -1,5 +1,5 @@
 ---
-title: geo_point_buffer() - Azure Data Explorer
+title:  geo_point_buffer()
 description: Learn how to use the geo_point_buffer() function to calculate point buffer
 ms.reviewer: mbrichko
 ms.topic: reference

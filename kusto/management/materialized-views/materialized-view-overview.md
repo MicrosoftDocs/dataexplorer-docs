@@ -1,6 +1,6 @@
 ---
 title:  Materialized views
-description: This article describes materialized views in Azure Data Explorer.
+description:  This article describes materialized views.
 ms.reviewer: yifats
 ms.topic: reference
 ms.date: 03/19/2023

@@ -1,5 +1,5 @@
 ---
-title: Query limits - Azure Data Explorer
+title:  Query limits
 description: This article describes Query limits.
 ms.reviewer: alexans
 ms.topic: reference

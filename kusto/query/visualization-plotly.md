@@ -1,6 +1,6 @@
 ---
 title:  Plotly visualization
-description: This article describes how to visualize data using the Plotly graphics library in Azure Data Explorer.
+description:  This article describes how to visualize data using the Plotly graphics library.
 ms.reviewer: adieldar
 ms.topic: reference
 ms.date: 08/13/2023

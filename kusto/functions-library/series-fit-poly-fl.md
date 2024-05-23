@@ -1,6 +1,6 @@
 ---
 title:  series_fit_poly_fl()
-description: This article describes the series_fit_poly_fl() user-defined function in Azure Data Explorer.
+description:  This article describes the series_fit_poly_fl() user-defined function.
 ms.reviewer: adieldar
 ms.topic: reference
 ms.date: 03/16/2023

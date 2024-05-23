@@ -1,6 +1,6 @@
 ---
-title: Kusto.Explorer keyboard shortcuts (hot keys) - Azure Data Explorer
-description: This article describes Kusto.Explorer keyboard shortcuts (hot keys) in Azure Data Explorer.
+title:  Kusto.Explorer keyboard shortcuts (hot keys)
+description:  This article describes Kusto.Explorer keyboard shortcuts (hot keys).
 ms.reviewer: orspodek
 ms.topic: reference
 ms.date: 08/27/2023

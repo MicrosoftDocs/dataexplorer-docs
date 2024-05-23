@@ -1,6 +1,6 @@
 ---
 title:  erf()
-description: This article describes erf() function in Azure Data Explorer.
+description:  This article describes erf() function.
 ms.reviewer: adieldar
 ms.topic: reference
 ms.date: 11/12/2023

@@ -1,6 +1,6 @@
 ---
 title:  Materialized views policies
-description: This article describes materialized views policies in Azure Data Explorer.
+description:  This article describes materialized views policies.
 ms.reviewer: yifats
 ms.topic: reference
 ms.date: 04/30/2023

@@ -1,6 +1,6 @@
 ---
 title:  Table visualization
-description: This article describes the table visualization in Azure Data Explorer.
+description:  This article describes the table visualization.
 ms.reviewer: alexans
 ms.topic: reference
 ms.date: 08/03/2022

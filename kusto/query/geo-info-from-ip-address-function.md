@@ -1,5 +1,5 @@
 ---
-title: geo_info_from_ip_address() - Azure Data Explorer
+title:  geo_info_from_ip_address()
 description: Learn how to use the geo_info_from_ip_address() function to retrieve geolocation information about IPv4 or IPv6 addresses.
 ms.reviewer: alexans
 ms.topic: reference

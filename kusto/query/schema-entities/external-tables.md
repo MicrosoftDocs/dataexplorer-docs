@@ -1,6 +1,6 @@
 ---
 title:  External tables
-description: This article describes External tables in Azure Data Explorer.
+description:  This article describes External tables.
 ms.reviewer: orspodek
 ms.topic: reference
 ms.date: 05/01/2023

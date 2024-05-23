@@ -1,6 +1,6 @@
 ---
 title:  Pivot chart visualization
-description: This article describes the pivot chart visualization in Azure Data Explorer.
+description:  This article describes the pivot chart visualization.
 ms.reviewer: alexans
 ms.topic: reference
 ms.date: 05/13/2024

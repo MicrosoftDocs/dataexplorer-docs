@@ -1,6 +1,6 @@
 ---
 title:  .show materialized-view extents commands
-description: This article describes show materialize-view extents commands in Azure Data Explorer.
+description:  This article describes show materialize-view extents commands.
 ms.reviewer: yifats
 ms.topic: reference
 ms.date: 03/01/2023

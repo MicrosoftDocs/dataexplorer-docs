@@ -1,6 +1,6 @@
 ---
 title:  Card visualization
-description: This article describes the card visualization in Azure Data Explorer.
+description:  This article describes the card visualization.
 ms.reviewer: alexans
 ms.topic: reference
 ms.date: 01/24/2023

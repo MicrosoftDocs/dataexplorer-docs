@@ -1,6 +1,6 @@
 ---
 title:  predict_fl()
-description: This article describes the predict_fl() user-defined function in Azure Data Explorer.
+description:  This article describes the predict_fl() user-defined function.
 ms.reviewer: adieldar
 ms.topic: reference
 ms.date: 05/01/2023

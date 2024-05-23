@@ -1,6 +1,6 @@
 ---
-title: Partial query failures - Azure Data Explorer
-description: This article describes Partial query failures in Azure Data Explorer.
+title:  Partial query failures
+description:  This article describes Partial query failures.
 ms.reviewer: orspodek
 ms.topic: reference
 ms.date: 10/23/2018

@@ -1,6 +1,6 @@
 ---
 title:  punycode_from_string 
-description: This article describes the punycode_from_string() command in Azure Data Explorer.
+description:  This article describes the punycode_from_string() command.
 ms.topic: reference
 ms.date: 04/16/2023
 ---

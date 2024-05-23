@@ -1,6 +1,6 @@
 ---
 title: Best practices for Kusto Query Language queries
-description: This article describes Query best practices in Azure Data Explorer.
+description:  This article describes Query best practices.
 ms.reviewer: alexans
 ms.topic: reference
 ms.date: 12/12/2021

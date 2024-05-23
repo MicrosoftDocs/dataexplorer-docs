@@ -1,6 +1,6 @@
 ---
 title:  Databases management
-description: This article describes Databases management in Azure Data Explorer.
+description:  This article describes Databases management.
 ms.reviewer: orspodek
 ms.topic: reference
 ms.date: 03/24/2020

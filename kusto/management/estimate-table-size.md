@@ -1,6 +1,6 @@
 ---
 title: Estimate table size
-description: Learn how to estimate table size in Azure Data Explorer.
+description:  Learn how to estimate table size.
 ms.topic: reference
 ms.date: 05/29/2023
 ---

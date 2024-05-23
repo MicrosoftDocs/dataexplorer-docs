@@ -1,6 +1,6 @@
 ---
 title:  Scalar data types
-description: This article describes Scalar data types in Azure Data Explorer.
+description:  This article describes Scalar data types.
 ms.reviewer: alexans
 ms.topic: reference
 ms.date: 01/27/2020

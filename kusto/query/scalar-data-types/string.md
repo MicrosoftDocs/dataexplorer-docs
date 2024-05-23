@@ -1,6 +1,6 @@
 ---
 title:  The string data type
-description: Learn about the string data type in Azure Data Explorer.
+description:  Learn about the string data type.
 ms.reviewer: orspodek
 ms.topic: reference
 ms.date: 10/15/2023

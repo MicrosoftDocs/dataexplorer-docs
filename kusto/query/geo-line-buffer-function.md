@@ -1,5 +1,5 @@
 ---
-title: geo_line_buffer() - Azure Data Explorer
+title:  geo_line_buffer()
 description: Learn how to use the geo_line_buffer() function to calculate line buffer
 ms.reviewer: mbrichko
 ms.topic: reference

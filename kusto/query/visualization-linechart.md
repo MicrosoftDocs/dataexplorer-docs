@@ -1,6 +1,6 @@
 ---
 title:  Line chart visualization
-description: This article describes the line chart visualization in Azure Data Explorer.
+description:  This article describes the line chart visualization.
 ms.reviewer: alexans
 ms.topic: reference
 ms.date: 07/26/2023

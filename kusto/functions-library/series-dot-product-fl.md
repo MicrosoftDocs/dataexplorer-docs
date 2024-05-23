@@ -1,6 +1,6 @@
 ---
 title:  series_dot_product_fl()
-description: This article describes series_dot_product_fl() user-defined function in Azure Data Explorer.
+description:  This article describes series_dot_product_fl() user-defined function.
 ms.reviewer: adieldar
 ms.topic: reference
 ms.date: 03/13/2023

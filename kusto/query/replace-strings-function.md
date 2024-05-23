@@ -1,5 +1,5 @@
 ---
-title: replace_strings() - Azure Data Explorer
+title:  replace_strings()
 description: Learn how to use the replace_strings() function to replace multiple strings matches with multiple replacement strings.
 ms.reviewer: alexans
 ms.topic: reference

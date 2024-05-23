@@ -1,6 +1,6 @@
 ---
-title:  Views - Azure Data Explorer
-description: Learn how to define and use a view in Azure Data Explorer.
+title:   Views
+description:  Learn how to define and use a view.
 ms.reviewer: zivc
 ms.topic: reference
 ms.date: 08/13/2023

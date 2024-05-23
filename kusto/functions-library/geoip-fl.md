@@ -1,6 +1,6 @@
 ---
 title:  geoip_fl()
-description: Learn how to use the geoip_fl() user-defined function in Azure Data Explorer.
+description:  Learn how to use the geoip_fl() user-defined function.
 ms.reviewer: adieldar
 ms.topic: reference
 ms.date: 03/13/2023

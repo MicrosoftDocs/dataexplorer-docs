@@ -1,6 +1,6 @@
 ---
 title:  iff()
-description: This article describes iff() in Azure Data Explorer.
+description:  This article describes iff().
 ms.reviewer: alexans
 ms.topic: reference
 ms.date: 12/28/2022

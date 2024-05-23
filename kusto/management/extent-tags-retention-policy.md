@@ -1,6 +1,6 @@
 ---
 title:  Extent tags retention policy
-description: This article describes extent tags retention policies in Azure Data Explorer.
+description:  This article describes extent tags retention policies.
 ms.reviewer: orspodek
 ms.topic: reference
 ms.date: 07/01/2021

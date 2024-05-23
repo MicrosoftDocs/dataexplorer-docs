@@ -1,6 +1,6 @@
 ---
 title:  series_dot_product()
-description: This article describes series_dot_product() in Azure Data Explorer.
+description:  This article describes series_dot_product().
 ms.reviewer: adieldar
 ms.topic: reference
 ms.date: 03/12/2023

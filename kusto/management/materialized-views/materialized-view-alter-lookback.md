@@ -1,6 +1,6 @@
 ---
 title:  .alter materialized view lookback
-description: This article describes alter materialized view lookback in Azure Data Explorer.
+description:  This article describes alter materialized view lookback.
 ms.reviewer: yifats
 ms.topic: reference
 ms.date: 03/01/2023

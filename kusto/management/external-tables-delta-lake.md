@@ -1,5 +1,5 @@
 ---
-title: Create and alter Azure Storage delta external tables - Azure Data Explorer
+title:  Create and alter Azure Storage delta external tables
 description: This article describes how to create and alter delta external tables
 ms.reviewer: igborodi
 ms.topic: reference

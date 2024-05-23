@@ -1,6 +1,6 @@
 ---
 title: Run an update policy with a managed identity
-description: This article describes how to use a managed identity for update policy in Azure Data Explorer.
+description:  This article describes how to use a managed identity for update policy.
 ms.reviewer: atefsawaed
 ms.topic: reference
 ms.date: 08/15/2023

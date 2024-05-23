@@ -1,6 +1,6 @@
 ---
 title:  Materialized views drop
-description: This article describes drop materialized view command in Azure Data Explorer.
+description:  This article describes drop materialized view command.
 ms.reviewer: yifats
 ms.topic: reference
 ms.date: 03/01/2023

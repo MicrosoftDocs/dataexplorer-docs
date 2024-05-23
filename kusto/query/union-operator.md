@@ -1,6 +1,6 @@
 ---
 title:  union operator
-description: This article describes union operator in Azure Data Explorer.
+description:  This article describes union operator.
 ms.reviewer: alexans
 ms.topic: reference
 ms.date: 02/13/2020

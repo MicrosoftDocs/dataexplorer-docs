@@ -1,6 +1,6 @@
 ---
 title:  Journal management
-description: This article describes Journal management in Azure Data Explorer.
+description:  This article describes Journal management.
 ms.reviewer: orspodek
 ms.topic: reference
 ms.date: 04/25/2023

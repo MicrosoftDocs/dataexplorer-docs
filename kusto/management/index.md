@@ -1,6 +1,6 @@
 ---
 title:  Management commands overview
-description: This article describes management commands in Azure Data Explorer.
+description:  This article describes management commands.
 ms.reviewer: orspodek
 ms.topic: reference
 ms.date: 06/19/2023

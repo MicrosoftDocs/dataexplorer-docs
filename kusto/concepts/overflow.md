@@ -1,6 +1,6 @@
 ---
-title: Overflows - Azure Data Explorer
-description: This article describes Overflows in Azure Data Explorer.
+title:  Overflows
+description:  This article describes Overflows.
 ms.reviewer: orspodek
 ms.topic: reference
 ms.date: 02/13/2020

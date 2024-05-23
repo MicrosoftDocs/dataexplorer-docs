@@ -1,6 +1,6 @@
 ---
 title:  erfc()
-description: This article describes erfc() function in Azure Data Explorer.
+description:  This article describes erfc() function.
 ms.reviewer: adieldar
 ms.topic: reference
 ms.date: 11/12/2023

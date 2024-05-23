@@ -1,6 +1,6 @@
 ---
 title:  Timezone
-description: This article is about the timezones supported by the Internet Assigned Numbers Authority Time Zone Database (IANA) in Azure Data Explorer.
+description:  This article is about the timezones supported by the Internet Assigned Numbers Authority Time Zone Database (IANA).
 ms.reviewer: elgevork
 ms.topic: reference
 ms.date: 02/20/2023

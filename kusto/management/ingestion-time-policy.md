@@ -1,6 +1,6 @@
 ---
 title:  IngestionTime policy
-description: This article describes IngestionTime policy in Azure Data Explorer.
+description:  This article describes IngestionTime policy.
 ms.reviewer: orspodek
 ms.topic: reference
 ms.date: 02/19/2020

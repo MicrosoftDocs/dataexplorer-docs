@@ -1,5 +1,5 @@
 ---
-title: ipv4_range_to_cidr_list() - Azure Data Explorer
+title:  ipv4_range_to_cidr_list()
 description: Learn how to use the ipv4_range_to_cidr_list() function to convert IPv4 address range to a list of CIDR ranges.
 ms.reviewer: alexans
 ms.topic: reference

@@ -1,6 +1,6 @@
 ---
-title: Fact and dimension tables - Azure Data Explorer
-description: This article describes Fact and dimension tables in Azure Data Explorer.
+title:  Fact and dimension tables
+description:  This article describes Fact and dimension tables.
 ms.reviewer: orspodek
 ms.topic: reference
 ms.date: 03/23/2020

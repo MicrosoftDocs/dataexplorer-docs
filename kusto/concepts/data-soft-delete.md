@@ -1,6 +1,6 @@
 ---
-title: Data soft delete - Azure Data Explorer
-description: This article describes data soft delete in Azure Data Explorer.
+title:  Data soft delete
+description:  This article describes data soft delete.
 ms.reviewer: slneimer
 ms.topic: reference
 ms.date: 05/17/2023

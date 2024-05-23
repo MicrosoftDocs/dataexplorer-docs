@@ -1,6 +1,6 @@
 ---
 title:  zip()
-description: This article describes zip() in Azure Data Explorer.
+description:  This article describes zip().
 ms.reviewer: alexans
 ms.topic: reference
 ms.date: 02/15/2023

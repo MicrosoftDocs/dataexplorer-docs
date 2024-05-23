@@ -1,5 +1,5 @@
 ---
-title:  RE2 syntax - Azure Data Explorer
+title:   RE2 syntax
 description: This article lists the RE2 regular expression syntax accepted by Kusto Query Language (KQL).
 ms.reviewer: alexans
 ms.topic: reference

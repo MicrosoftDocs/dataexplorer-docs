@@ -1,6 +1,6 @@
 ---
 title:  Time chart visualization
-description: This article describes the time chart visualization in Azure Data Explorer.
+description:  This article describes the time chart visualization.
 ms.reviewer: alexans
 ms.topic: reference
 ms.date: 07/26/2023

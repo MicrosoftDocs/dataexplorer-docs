@@ -1,6 +1,6 @@
 ---
 title: .execute cluster script command
-description: Learn how to use the `.execute cluster script` command to execute a batch of management commands in the scope of a single cluster in Azure Data Explorer.
+description:  Learn how to use the `.execute cluster script` command to execute a batch of management commands in the scope of a single cluster.
 ms.reviewer: alexans
 ms.topic: reference
 ms.date: 04/24/2024

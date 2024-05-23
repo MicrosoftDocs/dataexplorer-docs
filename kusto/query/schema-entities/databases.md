@@ -1,6 +1,6 @@
 ---
 title:  Databases
-description: This article describes Databases in Azure Data Explorer.
+description:  This article describes Databases.
 ms.reviewer: orspodek
 ms.topic: reference
 ms.date: 11/03/2023

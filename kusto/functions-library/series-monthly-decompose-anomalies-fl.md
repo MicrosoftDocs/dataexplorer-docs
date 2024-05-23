@@ -1,5 +1,5 @@
 ---
-title:  series_monthly_decompose_anomalies_fl() - Azure Data Explorer
+title:   series_monthly_decompose_anomalies_fl()
 description: Learn how to use the series_monthly_decompose_anomalies_fl() function to detect anomalies in a series with monthly seasonality.
 ms.reviewer: adieldar
 ms.topic: reference
