@@ -10,7 +10,7 @@ zone_pivot_groups: kql-flavors-all
 # Mirroring policy
 
 ::: zone pivot="fabric"
-The Mirroring policy commands allow you to view, change and partition, and delete your table mirroring policy and mirroring file partition. They also provide a way to check the mirroring latency by reviewing the operations mirroring status.
+The mirroring policy commands allow you to view, change and partition, and delete your table mirroring policy and mirroring file partition. They also provide a way to check the mirroring latency by reviewing the operations mirroring status.
 
 ## Management commands
 
