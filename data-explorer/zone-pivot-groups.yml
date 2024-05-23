@@ -11,6 +11,8 @@ groups:
     title: Azure Monitor
   - id: fabric
     title: Microsoft Fabric
+  - id: Azure Storage
+  - id: azurestorage
 - id: kql-flavors-adx-fabric
   title: Kusto Query Language flavors
   prompt: Select your Azure service
