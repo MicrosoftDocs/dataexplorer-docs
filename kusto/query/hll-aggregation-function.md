@@ -11,7 +11,7 @@ The `hll()` function is a way to estimate the number of unique values in a set o
 
 Read about the [underlying algorithm (*H*yper*L*og*L*og) and the estimation accuracy](#estimation-accuracy).
 
-[!INCLUDE [data-explorer-agg-function-summarize-note](../includes/data-explorer-agg-function-summarize-note.md)]
+[!INCLUDE [data-explorer-agg-function-summarize-note](../includes/agg-function-summarize-note.md)]
 
 > [!TIP]
 >
@@ -67,4 +67,4 @@ The results table shown includes only the first 10 rows.
 
 ## Estimation accuracy
 
-[!INCLUDE [data-explorer-estimation-accuracy](../includes/data-explorer-estimation-accuracy.md)]
+[!INCLUDE [data-explorer-estimation-accuracy](../includes/estimation-accuracy.md)]

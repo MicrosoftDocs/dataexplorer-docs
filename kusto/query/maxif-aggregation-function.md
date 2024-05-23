@@ -9,7 +9,7 @@ ms.date: 03/12/2023
 
 Calculates the maximum value of *expr* in records for which *predicate* evaluates to `true`.
 
-[!INCLUDE [data-explorer-agg-function-summarize-note](../includes/data-explorer-agg-function-summarize-note.md)]
+[!INCLUDE [data-explorer-agg-function-summarize-note](../includes/agg-function-summarize-note.md)]
 
 See also - [max()](max-aggregation-function.md) function, which returns the maximum value across the group without predicate expression.
 

@@ -11,7 +11,7 @@ Creates a `dynamic` array of *expr* values in the group for which *predicate* ev
 
 [!INCLUDE [ignore-nulls](../includes/ignore-nulls.md)]
 
-[!INCLUDE [data-explorer-agg-function-summarize-note](../includes/data-explorer-agg-function-summarize-note.md)]
+[!INCLUDE [data-explorer-agg-function-summarize-note](../includes/agg-function-summarize-note.md)]
 
 ## Syntax
 

@@ -9,7 +9,7 @@ ms.date: 01/05/2023
 
 Finds the maximum value the expression in the group.
 
-[!INCLUDE [data-explorer-agg-function-summarize-note](../includes/data-explorer-agg-function-summarize-note.md)]
+[!INCLUDE [data-explorer-agg-function-summarize-note](../includes/agg-function-summarize-note.md)]
 
 ## Syntax
 

@@ -9,7 +9,7 @@ ms.date: 11/20/2022
 
 Accumulates values using the binary `OR` operation for each summarization group, or in total if a group is not specified.
 
-[!INCLUDE [data-explorer-agg-function-summarize-note](../includes/data-explorer-agg-function-summarize-note.md)]
+[!INCLUDE [data-explorer-agg-function-summarize-note](../includes/agg-function-summarize-note.md)]
 
 ## Syntax
 

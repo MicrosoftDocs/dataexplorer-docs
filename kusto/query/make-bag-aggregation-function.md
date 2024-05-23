@@ -11,7 +11,7 @@ Creates a `dynamic` JSON property bag (dictionary) of all the values of *expr* i
 
 [!INCLUDE [ignore-nulls](../includes/ignore-nulls.md)]
 
-[!INCLUDE [data-explorer-agg-function-summarize-note](../includes/data-explorer-agg-function-summarize-note.md)]
+[!INCLUDE [data-explorer-agg-function-summarize-note](../includes/agg-function-summarize-note.md)]
 
 ## Syntax
 

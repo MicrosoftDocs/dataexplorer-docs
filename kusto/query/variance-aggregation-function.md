@@ -15,7 +15,7 @@ The following formula is used:
 
 :::image type="content" source="media/variance-aggfunction/variance-sample.png" alt-text="Image showing a variance sample formula.":::
 
-[!INCLUDE [data-explorer-agg-function-summarize-note](../includes/data-explorer-agg-function-summarize-note.md)]
+[!INCLUDE [data-explorer-agg-function-summarize-note](../includes/agg-function-summarize-note.md)]
 
 ## Syntax
 

@@ -11,7 +11,7 @@ Estimates the number of distinct values of *expr* for rows in which *predicate* 
 
 [!INCLUDE [ignore-nulls](../includes/ignore-nulls.md)]
 
-[!INCLUDE [data-explorer-agg-function-summarize-note](../includes/data-explorer-agg-function-summarize-note.md)]
+[!INCLUDE [data-explorer-agg-function-summarize-note](../includes/agg-function-summarize-note.md)]
 
 ## Syntax
 
@@ -66,4 +66,4 @@ The results table shown includes only the first 10 rows.
 
 ## Estimation accuracy
 
-[!INCLUDE [data-explorer-estimation-accuracy](../includes/data-explorer-estimation-accuracy.md)]
+[!INCLUDE [data-explorer-estimation-accuracy](../includes/estimation-accuracy.md)]

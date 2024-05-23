@@ -9,7 +9,7 @@ ms.date: 11/20/2022
 
 Finds a row in the group that minimizes *ExprToMinimize*.
 
-[!INCLUDE [data-explorer-agg-function-summarize-note](../includes/data-explorer-agg-function-summarize-note.md)]
+[!INCLUDE [data-explorer-agg-function-summarize-note](../includes/agg-function-summarize-note.md)]
 
 > **Deprecated aliases:** argmin()
 

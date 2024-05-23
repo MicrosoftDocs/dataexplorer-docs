@@ -12,7 +12,7 @@ Creates a `dynamic` array of all the values of *expr* in the group.
 
 [!INCLUDE [ignore-nulls](../includes/ignore-nulls.md)]
 
-[!INCLUDE [data-explorer-agg-function-summarize-note](../includes/data-explorer-agg-function-summarize-note.md)]
+[!INCLUDE [data-explorer-agg-function-summarize-note](../includes/agg-function-summarize-note.md)]
 
 > **Deprecated aliases:** makelist()
 

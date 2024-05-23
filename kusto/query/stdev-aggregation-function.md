@@ -13,7 +13,7 @@ Calculates the standard deviation of *expr* across the group, using [Bessel's co
 
 For a large dataset that is representative of the population, use [stdevp() (aggregation function)](stdevp-aggregation-function.md).
 
-[!INCLUDE [data-explorer-agg-function-summarize-note](../includes/data-explorer-agg-function-summarize-note.md)]
+[!INCLUDE [data-explorer-agg-function-summarize-note](../includes/agg-function-summarize-note.md)]
 
 ## Formula
 

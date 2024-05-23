@@ -11,7 +11,7 @@ Calculates the sum of *expr* in records for which *predicate* evaluates to `true
 
 [!INCLUDE [ignore-nulls](../includes/ignore-nulls.md)]
 
-[!INCLUDE [data-explorer-agg-function-summarize-note](../includes/data-explorer-agg-function-summarize-note.md)]
+[!INCLUDE [data-explorer-agg-function-summarize-note](../includes/agg-function-summarize-note.md)]
 
 You can also use the [sum()](sum-aggregation-function.md) function, which sums rows without predicate expression.
 

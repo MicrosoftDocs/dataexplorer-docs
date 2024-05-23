@@ -11,7 +11,7 @@ Calculates the intermediate results of [`dcount`](dcount-aggfunction.md) in reco
 
 Read about the [underlying algorithm (*H*yper*L*og*L*og) and the estimation accuracy](dcount-aggfunction.md#estimation-accuracy).
 
-[!INCLUDE [data-explorer-agg-function-summarize-note](../includes/data-explorer-agg-function-summarize-note.md)]
+[!INCLUDE [data-explorer-agg-function-summarize-note](../includes/agg-function-summarize-note.md)]
 
 > [!IMPORTANT]
 > The results of hll(), hll_if(), and hll_merge() can be stored and later retrieved. For example, you may want to create a daily unique users summary, which can then be used to calculate weekly counts.

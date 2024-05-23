@@ -9,7 +9,7 @@ ms.date: 12/28/2022
 
 Merges HLL results across the group into a single HLL value.
 
-[!INCLUDE [data-explorer-agg-function-summarize-note](../includes/data-explorer-agg-function-summarize-note.md)]
+[!INCLUDE [data-explorer-agg-function-summarize-note](../includes/agg-function-summarize-note.md)]
 
 For more information, see the [underlying algorithm (*H*yper*L*og*L*og) and estimation accuracy](#estimation-accuracy).
 
@@ -59,4 +59,4 @@ The results show only the first five results in the array.
 
 ## Estimation accuracy
 
-[!INCLUDE [data-explorer-estimation-accuracy](../includes/data-explorer-estimation-accuracy.md)]
+[!INCLUDE [data-explorer-estimation-accuracy](../includes/estimation-accuracy.md)]

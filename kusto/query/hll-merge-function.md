@@ -54,4 +54,4 @@ range x from 1 to 10 step 1
 
 ## Estimation accuracy
 
-[!INCLUDE [data-explorer-estimation-accuracy](../includes/data-explorer-estimation-accuracy.md)]
+[!INCLUDE [data-explorer-estimation-accuracy](../includes/estimation-accuracy.md)]

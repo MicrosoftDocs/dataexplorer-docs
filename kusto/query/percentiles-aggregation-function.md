@@ -14,7 +14,7 @@ The accuracy depends on the density of population in the region of the percentil
 
 To calculate weighted percentiles, see [percentilesw()](percentilesw-aggregation-function.md).
 
-[!INCLUDE [data-explorer-agg-function-summarize-note](../includes/data-explorer-agg-function-summarize-note.md)]
+[!INCLUDE [data-explorer-agg-function-summarize-note](../includes/agg-function-summarize-note.md)]
 
 ## Syntax
 
