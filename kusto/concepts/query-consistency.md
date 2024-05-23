@@ -1,6 +1,6 @@
 ---
-title: Query consistency - Azure Data Explorer
-description: This article describes Query consistency in Azure Data Explorer.
+title: Query consistency
+description: This article describes Query consistency.
 ms.reviewer: orspodek
 ms.topic: reference
 ms.date: 05/31/2023
@@ -35,7 +35,7 @@ In addition, strong consistency should be used when database metadata is large. 
 
 ## Use cases for weak consistency
 
-If you don’t have a strong dependency on updates that occurred in the database in the last few minutes, and you need high query concurrency, use weak consistency.
+If you don't have a strong dependency on updates that occurred in the database in the last few minutes, and you need high query concurrency, use weak consistency.
 
 For example, the following query counts the number of error records per week in the last 90 days. Weak consistency is appropriate in this case, since your insights are unlikely to be impacted records ingested in the past few minutes are omitted.
 
@@ -71,7 +71,7 @@ The affinity by session ID mode ensures that queries belonging to the same user 
 
 ## How to specify query consistency
 
-You can specify the query consistency mode by the client sending the request or using a server side policy. If it isn’t specified by either, the default mode of strong consistency applies.
+You can specify the query consistency mode by the client sending the request or using a server side policy. If it isn't specified by either, the default mode of strong consistency applies.
 
 * Client sending the request: Use the `queryconsistency` [client request property](../api/netfx/request-properties.md). This method sets the query consistency mode for a specific query and doesn't affect the overall effective consistency mode, which is determined by the default or the server-side policy. For more information, see [client request properties](../api/netfx/request-properties.md).
 

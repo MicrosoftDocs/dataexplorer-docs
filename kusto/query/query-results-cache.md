@@ -68,7 +68,7 @@ Cached query results will have another row appended to that table:
 
 ## Distribution
 
-The cache isn't shared by cluster nodes. Every node has a dedicated cache in its own private storage. If two identical queries land on different nodes, the query will be executed and cached on both nodes. This process can happen if [weak consistency](../concepts/queryconsistency.md) is used. By setting query consistency to `affinitizedweakconsistency`, you can have weakly consistency queries that are identical land on the same query head, and thus increase the cache hit rate.
+The cache isn't shared by cluster nodes. Every node has a dedicated cache in its own private storage. If two identical queries land on different nodes, the query will be executed and cached on both nodes. This process can happen if [weak consistency](../concepts/query-consistency.md) is used. By setting query consistency to `affinitizedweakconsistency`, you can have weakly consistency queries that are identical land on the same query head, and thus increase the cache hit rate.
 
 ## Management
 

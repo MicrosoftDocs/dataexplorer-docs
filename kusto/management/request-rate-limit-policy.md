@@ -86,7 +86,7 @@ With strong consistency, the default limit on maximum concurrent requests depend
 
 With weak consistency, the effective default limit on maximum concurrent requests depends on the SKU of the cluster and number of query heads, and is calculated as: `Cores-Per-Node x 10 x Number-Of-Query-Heads`. For example, a cluster that's set up with Azure D14_v2 and 5 query heads, where each node has 16 vCores, will have an effective default limit of `16` x `10` x `5` = `800`.
 
-For more information, see [Query consistency](../concepts/queryconsistency.md).
+For more information, see [Query consistency](../concepts/query-consistency.md).
 
 ## The `default` workload group
 

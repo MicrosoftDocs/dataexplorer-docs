@@ -8,7 +8,7 @@ ms.date: 02/13/2020
 # Overflows
 
 An overflow occurs when the result of a computation is too large for the destination type.
-The overflow usually leads to a [partial query failure](partialqueryfailures.md).
+The overflow usually leads to a [partial query failure](partial-query-failures.md).
 
 For example, the following query will result in an overflow.
 

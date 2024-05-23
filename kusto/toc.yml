@@ -56,7 +56,7 @@ items:
   - name: Limits and Errors
     items:
       - name: Query consistency
-        href: concepts/queryconsistency.md
+        href: concepts/query-consistency.md
       - name: Query limits
         href: concepts/query-limits.md
       - name: Partial query failures

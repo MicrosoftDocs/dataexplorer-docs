@@ -7,7 +7,7 @@ ms.date: 05/24/2023
 ---
 # Query weak consistency policy
 
-The query weak consistency policy is a cluster-level policy object that configures the [weak consistency](../concepts/queryconsistency.md) service.
+The query weak consistency policy is a cluster-level policy object that configures the [weak consistency](../concepts/query-consistency.md) service.
 
 ## Management commands
 

@@ -15,9 +15,10 @@ stream that carries the query results back to the client. (In fact, it may have
 already returned some result data back to the caller.)
 
 There are several kinds of partial query failures:
-* [Runaway queries](runawayqueries.md): Queries that take up too many
+
+* [Runaway queries](runaway-queries.md): Queries that take up too many
   resources.
-* [Result truncation](resulttruncation.md): Queries whose result set
+* [Result truncation](result-truncation.md): Queries whose result set
   has been truncated as it exceeded some limit.
 * [Overflows](overflow.md): Queries that trigger an overflow error.
 * Other runtime errors: For example, network errors when invoking a
