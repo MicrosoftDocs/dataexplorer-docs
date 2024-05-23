@@ -12,7 +12,7 @@ zone_pivot_groups: kql-flavors-all
 
 ::: zone pivot="fabric"
 
-Changes the tables's [mirroring policy](mirroring-policy.md). The mirroring policy mirrors tables in Azure Data Explorer in parquet format and allows you to partition your files to improve query speed. Each partition is represented as a separate column using the *PartitionName* listed in the *Partitions* list. This means there are more columns in the target than in your source table.
+Changes the tables's [mirroring policy](mirroring-policy.md). The mirroring policy creates a logical copy of tables in Azure Data Explorer in parquet format and allows you to partition your files to improve query speed. Each partition is represented as a separate column using the *PartitionName* listed in the *Partitions* list. This means there are more columns in the target than in your source table.
 
 ## Permissions
 
