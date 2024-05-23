@@ -34,7 +34,7 @@ You must have at least [Materialized View Admin](../access-control/role-based-ac
 
 If the table is new, the following properties are supported in the `with(`*PropertyName* `=` *PropertyValue* `)`. All properties are optional.
 
-[!INCLUDE [materialized-view-create-properties](../includes/materialized-view-create-properties.md)]
+[!INCLUDE [materialized-view-create-properties](../../includes/materialized-view-create-properties.md)]
 
 ### Existing table
 
@@ -77,4 +77,4 @@ If the materialized view does not exist, this command behaves just like [.create
 
 For more information, see the [Query parameter](materialized-view-create.md#query-parameter) and [Properties](materialized-view-create.md#supported-properties) sections.
 
-[!INCLUDE [materialized-view-alter-limitations.md](../includes/materialized-view-alter-limitations.md)]
+[!INCLUDE [materialized-view-alter-limitations.md](../../includes/materialized-view-alter-limitations.md)]

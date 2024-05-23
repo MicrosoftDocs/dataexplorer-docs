@@ -56,7 +56,7 @@ This command requires [Database Admin](../access-control/role-based-access-contr
 
 The following properties are supported in the `with` `(`*PropertyName* `=` *PropertyValue*`)` clause. All properties are optional.
 
-[!INCLUDE [materialized-view-create-properties](../includes/materialized-view-create-properties.md)]
+[!INCLUDE [materialized-view-create-properties](../../includes/materialized-view-create-properties.md)]
 
 > [!WARNING]
 >
