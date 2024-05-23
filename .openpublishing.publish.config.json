@@ -21,6 +21,18 @@
       "redirection_files": [
         ".openpublishing.redirection.kusto.json"
       ]
+    },
+    {
+      "docset_name": "kusto",
+      "build_source_folder": "kusto",
+      "build_output_subfolder": "kusto",
+      "locale": "en-us",
+      "monikers": [],
+      "open_to_public_contributors": true,
+      "type_mapping": {
+        "Conceptual": "Content"
+      },
+      "build_entry_point": "docs"
     }
   ],
   "notification_subscribers": [
@@ -30,9 +42,7 @@
   "branches_to_filter": [],
   "git_repository_url_open_to_public_contributors": "https://github.com/MicrosoftDocs/dataexplorer-docs",
   "git_repository_branch_open_to_public_contributors": "main",
-  "skip_source_output_uploading": false,
   "need_preview_pull_request": true,
-  "contribution_branch_mappings": {},
   "dependent_repositories": [
     {
       "path_to_root": "_themes",
@@ -54,13 +64,13 @@
       "Pdf"
     ]
   },
-  "need_generate_pdf_url_template": true,
   "targets": {
     "pdf": {
       "template_folder": "_themes.pdf"
     }
   },
-  "docs_build_engine": {
-    "name": "docfx_v3"
-  }
+  "docs_build_engine": {},
+  "skip_source_output_uploading": false,
+  "contribution_branch_mappings": {},
+  "need_generate_pdf_url_template": true
 }
