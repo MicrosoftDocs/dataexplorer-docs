@@ -32,7 +32,7 @@ You must have at least Database User, Database Viewer, or Database Monitor permi
 
 ### Returns
 
-[!INCLUDE [show-extents-output-schema.md](../includes/show-extents-output-schema.md)]
+[!INCLUDE [show-extents-output-schema.md](../../includes/show-extents-output-schema.md)]
 
 ## Examples
 
