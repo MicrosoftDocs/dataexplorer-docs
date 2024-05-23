@@ -45,7 +45,7 @@ You must have at least [Database Admin](../access-control/role-based-access-cont
 
 ### .alter table policy mirroring
 
-In the following example, a table called *NYCTaxiRides* is mirrored. The data is partitioned first by name and then by date.
+In the following example, a table called *myTable* is mirrored. The data is partitioned first by name and then by date.
 
 ```kusto
 .alter table myTable policy mirroring
