@@ -16,18 +16,17 @@
         "RestApi": "Content",
         "ZonePivotGroups": "Toc"
       },
+      "build_entry_point": "docs",
+      "template_folder": "_themes",
       "redirection_files": [
         ".openpublishing.redirection.kusto.json"
       ]
     },
     {
       "docset_name": "kusto-docs",
-      "docset_name": "kusto",
       "build_source_folder": "kusto",
-      "build_output_subfolder": "kusto",
+      "build_output_subfolder": "kusto-docs",
       "locale": "en-us",
-      "monikers": [],
-      "moniker_ranges": [],
       "open_to_public_contributors": true,
       "type_mapping": {
         "Conceptual": "Content",
@@ -36,11 +35,11 @@
         "ManagedReference": "Content",
         "RestApi": "Content",
         "ZonePivotGroups": "Toc"
-      }
+      },
+      "build_entry_point": "docs",
+      "template_folder": "_themes"
     }
   ],
-  "build_entry_point": "docs",
-  "template_folder": "_themes",
   "notification_subscribers": [
     "cfowler@microsoft.com"
   ],
