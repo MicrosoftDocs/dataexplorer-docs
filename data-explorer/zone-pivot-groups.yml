@@ -27,15 +27,3 @@ groups:
     title: Azure Data Explorer
   - id: azuremonitor
     title: Azure Monitor
-- id: kql-flavors-mirroring
-  title: Kusto Query Language flavors mirroring
-  prompt: Select your Azure service
-  pivots:
-  - id: azurestorage
-    title: Azure Storage
-  - id: azuremonitor
-    title: Azure Monitor
-  - id: azuredataexplorer
-    title: Azure Data Explorer
-  - id: fabric
-    title: Microsoft Fabric
