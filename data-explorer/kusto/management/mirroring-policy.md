@@ -3,7 +3,7 @@ title: Mirroring policy
 description: Learn how to use the mirroring policy.
 ms.reviewer: sharmaanshul
 ms.topic: reference
-ms.date: 05/23s/2024
+ms.date: 05/23/2024
 zone_pivot_group_filename: data-explorer/zone-pivot-groups.json
 zone_pivot_groups: kql-flavors-all
 ---
