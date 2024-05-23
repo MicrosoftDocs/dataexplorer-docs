@@ -35,7 +35,7 @@ If the materialized view is already in the state in which the command is trying 
 
 Otherwise, it returns the details about the materialized view whose IsEnabled property has been changed.
 
-[!INCLUDE [materialized-view-show-command-output-schema.md](../../includes/materialized-view-show-command-output-schema.md)]
+[!INCLUDE [materialized-view-show-command-output-schema.md](../includes/materialized-view-show-command-output-schema.md)]
 
 ## Examples
 

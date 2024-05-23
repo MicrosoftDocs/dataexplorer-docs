@@ -15,7 +15,7 @@ them, and ingest them together into a single target table.
 Data is appended to the table
 without affecting existing records, and without modifying the table's schema.
 
-[!INCLUDE [direct-ingestion-note](../../includes/direct-ingestion-note.md)]
+[!INCLUDE [direct-ingestion-note](../includes/direct-ingestion-note.md)]
 
 ## Permissions
 
@@ -38,7 +38,7 @@ You must have at least [Table Ingestor](../access-control/role-based-access-cont
 > [!NOTE]
 > We recommend using [obfuscated string literals](../../query/scalar-data-types/string.md#obfuscated-string-literals) for the *SourceDataPointer*. The service will scrub credentials in internal traces and error messages.
 
-[!INCLUDE [ingestion-properties](../../includes/ingestion-properties.md)]
+[!INCLUDE [ingestion-properties](../includes/ingestion-properties.md)]
 
 ## Authentication and authorization
 
