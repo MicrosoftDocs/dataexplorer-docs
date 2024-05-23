@@ -23,9 +23,9 @@
       ]
     },
     {
-      "docset_name": "kusto-docs",
+      "docset_name": "kusto",
       "build_source_folder": "kusto",
-      "build_output_subfolder": "kusto-docs",
+      "build_output_subfolder": "kusto",
       "locale": "en-us",
       "open_to_public_contributors": true,
       "type_mapping": {
