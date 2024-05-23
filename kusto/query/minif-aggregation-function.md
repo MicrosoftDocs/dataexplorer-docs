@@ -17,7 +17,7 @@ See also - [min()](min-aggregation-function.md) function, which returns the mini
 
  `minif` `(`*Expr*`,`*Predicate*`)`
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Parameters
 

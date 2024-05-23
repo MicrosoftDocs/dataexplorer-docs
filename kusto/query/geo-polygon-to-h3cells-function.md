@@ -13,7 +13,7 @@ Converts polygon to H3 cells. This function is a useful geospatial join and visu
 
 `geo_polygon_to_h3cells(`*polygon* [`,` *resolution*[`,` *radius*]]`)`
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Parameters
 

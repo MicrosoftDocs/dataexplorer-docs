@@ -14,13 +14,13 @@ zone_pivot_groups: kql-flavors-all
 
 The function `series_fit_lowess_fl()` is a [user-defined function (UDF)](../query/functions/user-defined-functions.md) that applies a [LOWESS regression](https://www.wikipedia.org/wiki/Local_regression) on a series. This function takes a table with multiple series (dynamic numerical arrays) and generates a *LOWESS Curve*, which is a smoothed version of the original series.
 
-[!INCLUDE [python-zone-pivot-fabric](../../includes/python-zone-pivot-fabric.md)]
+[!INCLUDE [python-zone-pivot-fabric](../includes/python-zone-pivot-fabric.md)]
 
 ## Syntax
 
 `T | invoke series_fit_lowess_fl(`*y_series*`,` *y_fit_series*`,` [ *fit_size* ]`,` [ *x_series* ]`,` [ *x_istime* ]`)`
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Parameters
 

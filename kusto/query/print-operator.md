@@ -13,7 +13,7 @@ Outputs a single row with one or more scalar expression results as columns.
 
 `print` [*ColumnName* `=`] *ScalarExpression* [',' ...]
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Parameters
 

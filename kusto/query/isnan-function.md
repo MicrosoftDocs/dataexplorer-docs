@@ -13,7 +13,7 @@ Returns whether the input is a Not-a-Number (NaN) value.
 
 `isnan(`*number*`)`
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Parameters
 

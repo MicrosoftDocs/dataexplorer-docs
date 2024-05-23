@@ -13,7 +13,7 @@ Calculates the union of lines or multilines on Earth.
 
 `geo_union_lines_array(`*lineStrings*`)`
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Parameters
 

@@ -13,7 +13,7 @@ Returns whether the input is a finite value, meaning it's not infinite or NaN.
 
 `isfinite(`*number*`)`
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Parameters
 

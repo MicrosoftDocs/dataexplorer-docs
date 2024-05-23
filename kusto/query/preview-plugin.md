@@ -13,7 +13,7 @@ Returns a table with up to the specified number of rows from the input record se
 
 *T* `|` `evaluate` `preview(`*NumberOfRows*`)`
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Parameters
 

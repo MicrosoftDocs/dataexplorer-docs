@@ -15,7 +15,7 @@ Takes an expression containing dynamic numerical array as input, does linear int
 
 `series_fill_linear(`*series*`,` [ *missing_value_placeholder* [`,`*fill_edges* [`,` *constant_value* ]]]`)`
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Parameters
 

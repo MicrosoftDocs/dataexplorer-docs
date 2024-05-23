@@ -9,13 +9,13 @@ ms.date: 11/16/2022
 
 Calculates the [average](avg-aggregation-function.md) of *expr* in records for which *predicate* evaluates to `true`.
 
-[!INCLUDE [data-explorer-agg-function-summarize-note](../../includes/data-explorer-agg-function-summarize-note.md)]
+[!INCLUDE [data-explorer-agg-function-summarize-note](../includes/data-explorer-agg-function-summarize-note.md)]
 
 ## Syntax
 
 `avgif` `(`*expr*`,` *predicate*`)`
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Parameters
 

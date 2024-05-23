@@ -13,7 +13,7 @@ Calculates the area of a polygon or a multipolygon on Earth.
 
 `geo_polygon_area(`*polygon*`)`
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Parameters
 

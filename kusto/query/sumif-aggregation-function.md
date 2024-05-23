@@ -9,9 +9,9 @@ ms.date: 11/13/2023
 
 Calculates the sum of *expr* in records for which *predicate* evaluates to `true`.
 
-[!INCLUDE [ignore-nulls](../../includes/ignore-nulls.md)]
+[!INCLUDE [ignore-nulls](../includes/ignore-nulls.md)]
 
-[!INCLUDE [data-explorer-agg-function-summarize-note](../../includes/data-explorer-agg-function-summarize-note.md)]
+[!INCLUDE [data-explorer-agg-function-summarize-note](../includes/data-explorer-agg-function-summarize-note.md)]
 
 You can also use the [sum()](sum-aggregation-function.md) function, which sums rows without predicate expression.
 
@@ -19,7 +19,7 @@ You can also use the [sum()](sum-aggregation-function.md) function, which sums r
 
 `sumif(`*expr*`,`*predicate*`)`
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Parameters
 

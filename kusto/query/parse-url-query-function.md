@@ -15,7 +15,7 @@ Returns a `dynamic` object that contains the query parameters.
 
 `parse_urlquery(`*query*`)`
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Parameters
 

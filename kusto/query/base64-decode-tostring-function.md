@@ -15,7 +15,7 @@ Decodes a base64 string to a UTF-8 string.
 
 `base64_decode_tostring(`*base64_string*`)`
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Parameters
 

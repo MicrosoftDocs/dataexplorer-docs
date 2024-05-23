@@ -15,7 +15,7 @@ The function `perm_fl()` is a [user-defined function (UDF)](../query/functions/u
 
 `perm_fl(`*n*, *k*`)`
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Parameters
 

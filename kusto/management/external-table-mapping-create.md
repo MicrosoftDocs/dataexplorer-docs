@@ -13,7 +13,7 @@ Create a new external table data mapping. For more information, see [Data mappin
 
 `.create` `external` `table` *ExternalTableName* `mapping` *MappingName* *MappingInJsonFormat*
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Parameters
 

@@ -22,7 +22,7 @@ You must have at least [Cluster Admin](access-control/role-based-access-control.
 `.execute` `cluster` `script`  
 [`with` `(` *PropertyName* `=` *PropertyValue* [`,` ...]`)`] `<|` *ControlCommandsScript*
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Parameters
 

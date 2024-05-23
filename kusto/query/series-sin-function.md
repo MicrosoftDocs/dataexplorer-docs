@@ -13,7 +13,7 @@ Calculates the element-wise sine of the numeric series input.
 
 `series_sin(`*series*`)`
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Parameters
 

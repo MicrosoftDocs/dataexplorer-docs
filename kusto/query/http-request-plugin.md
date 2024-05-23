@@ -23,7 +23,7 @@ The `http_request` plugin sends an HTTP GET request and converts the response in
 
 `evaluate` `http_request` `(` *Uri* [`,` *RequestHeaders* [`,` *Options*]] `)`
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Parameters
 

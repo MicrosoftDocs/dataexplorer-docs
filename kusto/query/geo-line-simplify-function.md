@@ -13,7 +13,7 @@ Simplifies a line or a multiline by replacing nearly straight chains of short ed
 
 `geo_line_simplify(`*lineString*`,` *tolerance*`)`
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Parameters
 

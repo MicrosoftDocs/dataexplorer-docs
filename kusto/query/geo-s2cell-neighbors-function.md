@@ -13,7 +13,7 @@ Calculates S2 cell neighbors.
 
 `geo_s2cell_neighbors(`*s2cell*`)`
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Parameters
 

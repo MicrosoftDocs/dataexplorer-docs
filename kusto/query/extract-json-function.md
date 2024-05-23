@@ -17,7 +17,7 @@ Optionally convert the extracted string to a specific type.
 
 `extract_json(`*jsonPath*`,` *dataSource*`,` *type*`)`
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Parameters
 

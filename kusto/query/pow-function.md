@@ -13,7 +13,7 @@ Returns a result of raising to power
 
 `pow(`*base*`,` *exponent* `)`
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Parameters
 

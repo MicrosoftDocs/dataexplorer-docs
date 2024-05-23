@@ -40,7 +40,7 @@ For more information, see [Working with middle-tier applications](#work-with-mid
   * *PatternName* `(` *ArgValue1* [`,` *ArgValue2* ...] `).`*PathValue*
   * *PatternName* `(` *ArgValue1* [`,` *ArgValue2* ...] `).["`*PathValue*`"]`
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Parameters
 

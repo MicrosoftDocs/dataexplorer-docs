@@ -13,7 +13,7 @@ Searches an array for the specified item, and returns its position.
 
 `array_index_of(`*array*`,` *value* [`,` *start* [`,` *length* [`,` *occurence* ]]]`)`
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Parameters
 

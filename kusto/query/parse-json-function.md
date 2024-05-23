@@ -17,7 +17,7 @@ It's better to use the parse_json() function over the [extract_json()](./extract
 
 `parse_json(`*json*`)`
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Parameters
 

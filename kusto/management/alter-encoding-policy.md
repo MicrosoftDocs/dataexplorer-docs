@@ -24,7 +24,7 @@ You must have at least [Table Admin](access-control/role-based-access-control.md
 > [!NOTE]
 > If you omit the `type`, the existing encoding policy profile is cleared reset to the default value.
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Parameters
 

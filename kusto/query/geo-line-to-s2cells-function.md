@@ -13,7 +13,7 @@ Calculates S2 cell tokens that cover a line or multiline on Earth. This function
 
 `geo_line_to_s2cells(`*lineString* [`,` *level*[ `,` *radius*]]`)`
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Parameters
 

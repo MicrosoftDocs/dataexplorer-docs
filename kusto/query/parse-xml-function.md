@@ -13,7 +13,7 @@ Interprets a `string` as an XML value, converts the value to a JSON, and returns
 
 `parse_xml(`*xml*`)`
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Parameters
 

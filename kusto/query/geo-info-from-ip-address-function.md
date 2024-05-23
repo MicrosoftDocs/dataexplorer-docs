@@ -13,7 +13,7 @@ Retrieves geolocation information about IPv4 or IPv6 addresses.
 
 `geo_info_from_ip_address(`*IpAddress* `)`
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Parameters
 
@@ -39,7 +39,7 @@ A dynamic object containing the information on IP address whereabouts (if the in
 > * This function uses GeoLite2 data created by MaxMind, available from [https://www.maxmind.com](https://www.maxmind.com).
 > * The function is also built on the [MaxMind DB Reader](https://github.com/oschwald/maxminddb-rust) library provided under [ISC license](https://github.com/oschwald/maxminddb-rust/blob/main/LICENSE).
 
-[!INCLUDE [dynamic-access](../../includes/dynamic-access.md)]
+[!INCLUDE [dynamic-access](../includes/dynamic-access.md)]
 
 ## Examples
 

@@ -9,7 +9,7 @@ ms.date: 03/08/2023
 
 Use AVRO mapping to map incoming data to columns inside tables when your ingestion source file is in AVRO format.
 
-[!INCLUDE [data-mapping-overview](../../includes/data-mapping-overview.md)]
+[!INCLUDE [data-mapping-overview](../includes/data-mapping-overview.md)]
 
 Each AVRO mapping element must contain either of the following optional properties:
 
@@ -38,7 +38,7 @@ Each AVRO mapping element must contain either of the following optional properti
 > ]
 > ```
 
-[!INCLUDE [data-mapping-type-note](../../includes/data-mapping-type-note.md)]
+[!INCLUDE [data-mapping-type-note](../includes/data-mapping-type-note.md)]
 
 ## Examples
 

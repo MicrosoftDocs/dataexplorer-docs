@@ -15,7 +15,7 @@ Read more about [H3 Cell](https://eng.uber.com/h3/).
 
 `geo_point_to_h3cell(`*longitude*`,` *latitude*`,` [ *resolution* ]`)`
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Parameters
 

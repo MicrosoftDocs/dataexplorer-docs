@@ -21,7 +21,7 @@ You must have at least [Table Admin](access-control/role-based-access-control.md
 
 `.delete` `table` [ *DatabaseName*`.`]*TableName* `policy` `update`
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Parameters
 

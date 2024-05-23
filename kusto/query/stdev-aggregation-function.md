@@ -9,11 +9,11 @@ ms.date: 11/13/2023
 
 Calculates the standard deviation of *expr* across the group, using [Bessel's correction](https://en.wikipedia.org/wiki/Bessel's_correction) for a small dataset that is considered a [sample](https://en.wikipedia.org/wiki/Sample_%28statistics%29).
 
-[!INCLUDE [ignore-nulls](../../includes/ignore-nulls.md)]
+[!INCLUDE [ignore-nulls](../includes/ignore-nulls.md)]
 
 For a large dataset that is representative of the population, use [stdevp() (aggregation function)](stdevp-aggregation-function.md).
 
-[!INCLUDE [data-explorer-agg-function-summarize-note](../../includes/data-explorer-agg-function-summarize-note.md)]
+[!INCLUDE [data-explorer-agg-function-summarize-note](../includes/data-explorer-agg-function-summarize-note.md)]
 
 ## Formula
 
@@ -25,7 +25,7 @@ This function uses the following formula.
 
 `stdev(`*expr*`)`
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Parameters
 

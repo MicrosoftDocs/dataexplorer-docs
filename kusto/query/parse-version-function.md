@@ -13,7 +13,7 @@ Converts the input string representation of the version to a comparable decimal 
 
 `parse_version` `(`*version*`)`
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Parameters
 

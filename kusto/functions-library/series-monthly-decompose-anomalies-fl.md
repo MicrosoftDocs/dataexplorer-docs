@@ -15,7 +15,7 @@ The function `series_monthly_decompose_anomalies_fl()` is a [user-defined functi
 
 `series_monthly_decompose_anomalies_fl(`*threshold*`)`
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Parameters
 

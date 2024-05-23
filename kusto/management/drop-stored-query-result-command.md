@@ -24,7 +24,7 @@ You must have [Database Viewer](access-control/role-based-access-control.md) per
 
 `.drop` `stored_query_results` `by user` *UserPrincipalName*
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Parameters
 

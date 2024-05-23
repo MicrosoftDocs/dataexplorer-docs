@@ -13,7 +13,7 @@ Returns the value of the IPv4 netmask suffix from an IPv4 string address.
 
 `ipv4_netmask_suffix(`*ip*`)`
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Parameters
 
@@ -21,7 +21,7 @@ Returns the value of the IPv4 netmask suffix from an IPv4 string address.
 |--|--|--|--|
 |*ip*| `string` |  :heavy_check_mark:| An expression representing an IPv4 address. IPv4 strings can be masked using [IP-prefix notation](#ip-prefix-notation).|
 
-[!INCLUDE [ip-prefix-notation](../../includes/ip-prefix-notation.md)]
+[!INCLUDE [ip-prefix-notation](../includes/ip-prefix-notation.md)]
 
 ## Returns
 

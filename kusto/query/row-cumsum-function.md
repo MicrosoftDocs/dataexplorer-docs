@@ -13,7 +13,7 @@ Calculates the cumulative sum of a column in a [serialized row set](./window-fun
 
 `row_cumsum(` *term* [`,` *restart*] `)`
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Parameters
 

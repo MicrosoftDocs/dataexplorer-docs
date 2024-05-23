@@ -13,7 +13,7 @@ Calculates the element-wise greater (`>`) logic operation of two numeric series 
 
 `series_greater(`*series1*`,` *series2*`)`
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Parameters
 

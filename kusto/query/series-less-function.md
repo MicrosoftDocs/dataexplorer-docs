@@ -13,7 +13,7 @@ Calculates the element-wise less (`<`) logic operation of two numeric series inp
 
 `series_less(`*series1*`,` *series2*`)`
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Parameters
 

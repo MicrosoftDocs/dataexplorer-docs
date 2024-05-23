@@ -13,7 +13,7 @@ bag_set_key() receives a `dynamic` property-bag, a key and a value. The function
 
 `bag_set_key(`*bag*`,`*key*`,`*value*`)`
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Parameters
 

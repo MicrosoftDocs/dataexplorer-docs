@@ -19,7 +19,7 @@ In a scatter chart visual, the first column is the x-axis and should be a numeri
 
 *T* `|` `render` `scatterchart` [`with` `(`*propertyName* `=` *propertyValue* [`,` ...]`)`]
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Parameters
 

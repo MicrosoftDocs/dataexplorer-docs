@@ -13,7 +13,7 @@ Checks if IPv4 string address is in IPv4-prefix notation range.
 
 `ipv4_is_in_range(`*Ipv4Address*`,`*Ipv4Range*`)`
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Parameters
 
@@ -22,7 +22,7 @@ Checks if IPv4 string address is in IPv4-prefix notation range.
 | *Ipv4Address*| `string` |  :heavy_check_mark: | An expression representing an IPv4 address.|
 | *Ipv4Range*| `string` |  :heavy_check_mark: | An IPv4 range or list of IPv4 ranges written with [IP-prefix notation](#ip-prefix-notation).|
 
-[!INCLUDE [ip-prefix-notation](../../includes/ip-prefix-notation.md)]
+[!INCLUDE [ip-prefix-notation](../includes/ip-prefix-notation.md)]
 
 ## Returns
 

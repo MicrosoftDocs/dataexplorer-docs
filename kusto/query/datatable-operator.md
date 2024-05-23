@@ -16,7 +16,7 @@ Returns a table whose schema and values are defined in the query itself.
 
 `datatable(` *ColumnName* `:` *ColumnType* [`,` ...]`)` `[` *ScalarValue* [`,` *ScalarValue* ...] `]`
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Parameters
 

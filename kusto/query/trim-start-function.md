@@ -13,7 +13,7 @@ Removes leading match of the specified regular expression.
 
 `trim_start(`*regex*`,` *source*`)`
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Parameters
 

@@ -23,7 +23,7 @@ To specify a `decimal` literal, use one of the following syntax options:
 |`decimal(`*number*`e`*exponent*`)`|A decimal number represented by scientific notation.|`decimal(1e5)` is equivalent to 100,000|
 |`decimal(null)`|Represents the [null value](null-values.md).||
 
-[!INCLUDE [syntax-conventions-note](../../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
 
 ## Related content
 

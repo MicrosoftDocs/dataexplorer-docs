@@ -18,7 +18,7 @@ You must have at least Database User, Database Viewer, or Database Monitor permi
 
 `.show` `materialized-view` *MaterializedViewName* `failures`
 
-[!INCLUDE [syntax-conventions-note](../../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
 
 ## Parameters
 

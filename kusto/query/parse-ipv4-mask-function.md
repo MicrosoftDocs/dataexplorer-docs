@@ -13,7 +13,7 @@ Converts the input string of IPv4 and netmask to a signed, 64-bit wide, long num
 
 `parse_ipv4_mask(`*ip* `,` *prefix*`)`
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Parameters
 

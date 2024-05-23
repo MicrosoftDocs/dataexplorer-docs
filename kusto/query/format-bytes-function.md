@@ -13,7 +13,7 @@ Formats a number as a string representing data size in bytes.
 
 `format_bytes(`*size* [`,` *precision* [`,` *units*]]`)`
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Parameters
 

@@ -15,7 +15,7 @@ The function starts comparing the first character of each string. If they're equ
 
 `strcmp(`*string1*`,` *string2*`)`
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Parameters
 

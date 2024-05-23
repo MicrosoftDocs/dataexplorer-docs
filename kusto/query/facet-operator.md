@@ -15,7 +15,7 @@ An additional table can be created by using the `with` clause.
 
 *T* `| facet by` *ColumnName* [`,` *ColumnName2*`,` ...] [`with (` *filterPipe* `)`]
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Parameters
 

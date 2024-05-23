@@ -13,7 +13,7 @@ Computes log of the absolute value of the [gamma function](https://en.wikipedia.
 
 `loggamma(`*number*`)`
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Parameters
 

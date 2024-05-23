@@ -15,7 +15,7 @@ The result string contains only ASCII characters. The result string doesn't star
 
 `punycode_from_string('input_string')`
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Parameters
 

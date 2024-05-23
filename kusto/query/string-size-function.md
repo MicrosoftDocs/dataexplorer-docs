@@ -13,7 +13,7 @@ Returns the size, in bytes, of the input string.
 
 `string_size(`*source*`)`
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Parameters
 

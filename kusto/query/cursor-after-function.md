@@ -21,7 +21,7 @@ A predicate run over the records of a table to compare their ingestion time agai
 
 `cursor_after(`*RHS*`)`
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Parameters
 

@@ -16,7 +16,7 @@ Generates a single-column table of values.
 
 `range` *columnName* `from` *start* `to` *stop* `step` *step*
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Parameters
 

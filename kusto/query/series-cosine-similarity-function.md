@@ -15,7 +15,7 @@ The function `series_cosine_similarity()` takes two numeric series as input, and
 
 `series_cosine_similarity(`*series1*`,` *series2*`)`
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Parameters
 
@@ -32,7 +32,7 @@ Any non-numeric element of the input series will be ignored.
 > [!NOTE]
 > If one or both input arrays are empty, the result will be `null`.
 
-[!INCLUDE [optimization-note](../../includes/vector16-encoding-policy.md)]
+[!INCLUDE [optimization-note](../includes/vector16-encoding-policy.md)]
 
 ## Example
 

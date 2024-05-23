@@ -13,7 +13,7 @@ Weighted percentiles calculate percentiles in a dataset by giving each value in 
 
 To calculate unweighted percentiles, see [percentiles()](percentiles-aggregation-function.md).
 
-[!INCLUDE [data-explorer-agg-function-summarize-note](../../includes/data-explorer-agg-function-summarize-note.md)]
+[!INCLUDE [data-explorer-agg-function-summarize-note](../includes/data-explorer-agg-function-summarize-note.md)]
 
 ## Syntax
 
@@ -21,7 +21,7 @@ To calculate unweighted percentiles, see [percentiles()](percentiles-aggregation
 
 `percentilesw(`*expr*`,` *weightExpr*`,` *percentiles*`)`
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Parameters
 

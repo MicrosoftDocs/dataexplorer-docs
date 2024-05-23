@@ -17,7 +17,7 @@ You must have [Database User](access-control/role-based-access-control.md) permi
 
 `.show` `external` `table` *ExternalTableName* `artifacts` [`limit` *MaxResults*]
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Parameters
 

@@ -13,7 +13,7 @@ Returns binary shift left operation on a pair of numbers.
 
 `binary_shift_left(`*value*`,`*shift*`)`
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Parameters
 

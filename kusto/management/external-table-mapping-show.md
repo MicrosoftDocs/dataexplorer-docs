@@ -15,7 +15,7 @@ Show the mappings for an external table, either the one specified by name or all
 
 `.show` `external` `table` *ExternalTableName* `mappings`
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Parameters
 

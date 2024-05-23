@@ -15,13 +15,13 @@ zone_pivot_groups: kql-flavors-all
 
 The function accepts a dynamic array containing the names of the packages to check, and returns their respective versions and the Python engine version.
 
-[!INCLUDE [python-zone-pivot-fabric](../../includes/python-zone-pivot-fabric.md)]
+[!INCLUDE [python-zone-pivot-fabric](../includes/python-zone-pivot-fabric.md)]
 
 ## Syntax
 
 `T | invoke get_packages_version_fl(`*packages*`)`
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Parameters
 

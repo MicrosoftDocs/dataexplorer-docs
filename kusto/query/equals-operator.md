@@ -22,7 +22,7 @@ For more information about other operators and to determine which operator is mo
 
 ## Performance tips
 
-[!INCLUDE [performance-tip-note](../../includes/performance-tip-note.md)]
+[!INCLUDE [performance-tip-note](../includes/performance-tip-note.md)]
 
 When possible, use [==](equals-cs-operator.md) - a case-sensitive version of the operator.
 
@@ -30,7 +30,7 @@ When possible, use [==](equals-cs-operator.md) - a case-sensitive version of the
 
 *T* `|` `where` *col* `=~` `(`*expression*`)`
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Parameters
 

@@ -19,7 +19,7 @@ To specify an `int` literal, use one of the following syntax options:
 |`int(-`*number*`)`|A negative integer.|`int(-2)`|
 |`int(null)`|Represents the [null value](null-values.md).||
 
-[!INCLUDE [syntax-conventions-note](../../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
 
 ## Related content
 

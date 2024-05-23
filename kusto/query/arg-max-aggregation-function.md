@@ -9,7 +9,7 @@ ms.date: 11/20/2022
 
 Finds a row in the group that maximizes *ExprToMaximize*.
 
-[!INCLUDE [data-explorer-agg-function-summarize-note](../../includes/data-explorer-agg-function-summarize-note.md)]
+[!INCLUDE [data-explorer-agg-function-summarize-note](../includes/data-explorer-agg-function-summarize-note.md)]
 
 > **Deprecated aliases:** argmax()
 
@@ -17,7 +17,7 @@ Finds a row in the group that maximizes *ExprToMaximize*.
 
 `arg_max` `(`*ExprToMaximize*`,` *\** | *ExprToReturn*  [`,` ...]`)`
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Parameters
 

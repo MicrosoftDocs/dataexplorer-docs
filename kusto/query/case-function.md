@@ -19,7 +19,7 @@ All `then` arguments and the `else` argument must be of the same type.
        [*predicate_2*, *then_2*, ...]
        *else*`)`
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Parameters
 

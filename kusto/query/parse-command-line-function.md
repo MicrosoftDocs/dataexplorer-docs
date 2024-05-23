@@ -13,7 +13,7 @@ Parses a Unicode command-line string and returns a [dynamic](scalar-data-types/d
 
 `parse_command_line(`*command_line*, *parser_type*`)`
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Parameters
 

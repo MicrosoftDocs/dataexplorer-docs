@@ -17,7 +17,7 @@ You must have at least Database User, Database Viewer, or Database Monitor permi
 
 `.show` `table` [*DatabaseName* `.`]*TableName* `policy` `caching`
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Parameters
 

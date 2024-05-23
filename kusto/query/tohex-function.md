@@ -13,7 +13,7 @@ Converts input to a hexadecimal string.
 
 `tohex(`*value*`,` [`,` *minLength* ]`)`
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Parameters
 

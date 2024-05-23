@@ -8,7 +8,7 @@ ms.date: 03/27/2024
 
 Use Parquet mapping to map incoming data to columns inside tables when your ingestion source file is in Parquet format.
 
-[!INCLUDE [data-mapping-overview](../../includes/data-mapping-overview.md)]
+[!INCLUDE [data-mapping-overview](../includes/data-mapping-overview.md)]
 
 Each Parquet mapping element must contain either of the following optional properties:
 
@@ -37,7 +37,7 @@ Each Parquet mapping element must contain either of the following optional prope
 > ]
 > ```
 
-[!INCLUDE [data-mapping-type-note](../../includes/data-mapping-type-note.md)]
+[!INCLUDE [data-mapping-type-note](../includes/data-mapping-type-note.md)]
 
 ## Parquet type conversions
 

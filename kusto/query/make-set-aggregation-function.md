@@ -9,9 +9,9 @@ ms.date: 11/13/2023
 
 Creates a `dynamic` array of the set of distinct values that *expr* takes in the group.
 
-[!INCLUDE [ignore-nulls](../../includes/ignore-nulls.md)]
+[!INCLUDE [ignore-nulls](../includes/ignore-nulls.md)]
 
-[!INCLUDE [data-explorer-agg-function-summarize-note](../../includes/data-explorer-agg-function-summarize-note.md)]
+[!INCLUDE [data-explorer-agg-function-summarize-note](../includes/data-explorer-agg-function-summarize-note.md)]
 
 > **Deprecated aliases:** makeset()
 
@@ -19,7 +19,7 @@ Creates a `dynamic` array of the set of distinct values that *expr* takes in the
 
  `make_set(`*expr* [`,` *maxSize*]`)`
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Parameters
 

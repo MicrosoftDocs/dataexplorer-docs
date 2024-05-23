@@ -21,7 +21,7 @@ You must have at least [External Table Admin](access-control/role-based-access-c
 
 `.drop` `external` `table` *TableName* [`ifexists`]
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Parameters
 

@@ -16,7 +16,7 @@ Evaluates an expression and returns a Boolean result indicating whether the valu
 
 `isnull(`*Expr*`)`
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Parameters
 

@@ -16,7 +16,7 @@ To set a stored query result, see [.set stored_query_result command](../manageme
 
 `stored_query_result(` *StoredQueryResultName* `)`
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Parameters
 

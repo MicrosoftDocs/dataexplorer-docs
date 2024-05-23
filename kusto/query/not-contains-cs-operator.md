@@ -10,11 +10,11 @@ ms.date: 03/12/2023
 
 Filters a record set for data that doesn't include a case-sensitive string. `!contains_cs` searches for characters rather than [terms](datatypes-string-operators.md#what-is-a-term) of three or more characters. The query scans the values in the column, which is slower than looking up a term in a term index.
 
-[!INCLUDE [contains-operator-comparison](../../includes/contains-operator-comparison.md)]
+[!INCLUDE [contains-operator-comparison](../includes/contains-operator-comparison.md)]
 
 ## Performance tips
 
-[!INCLUDE [performance-tip-note](../../includes/performance-tip-note.md)]
+[!INCLUDE [performance-tip-note](../includes/performance-tip-note.md)]
 
 If you're looking for a [term](datatypes-string-operators.md#what-is-a-term), use `!has_cs` for faster results.
 
@@ -24,7 +24,7 @@ If you're looking for a [term](datatypes-string-operators.md#what-is-a-term), us
 
 *T* `|` `where` *Column* `!contains_cs` `(`*Expression*`)`
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Parameters
 

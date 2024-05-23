@@ -18,7 +18,7 @@ IP address entrances in a text must be properly delimited with non-alphanumeric 
 
 `has_any_ipv4(`*source* `,` *ip_address* [`,` *ip_address_2*`,` ...] `)`
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Parameters
 

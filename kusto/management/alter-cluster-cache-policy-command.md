@@ -17,7 +17,7 @@ You must have [AllDatabasesAdmin](access-control/role-based-access-control.md) p
 
 `.alter` `cluster` `policy` `caching` *PolicyParameter*  
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Parameters
 

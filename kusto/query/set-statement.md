@@ -25,7 +25,7 @@ Request properties aren't formally a part of the Kusto Query Language and may be
 
 `set` *OptionName* [`=` *OptionValue*]
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Parameters
 

@@ -13,7 +13,7 @@ Converts unix-epoch milliseconds to UTC datetime.
 
 `unixtime_milliseconds_todatetime(`*milliseconds*`)`
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Parameters
 

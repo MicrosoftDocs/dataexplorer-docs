@@ -16,7 +16,7 @@ The `materialized_view()` function supports a way of querying the *materialized*
 
 `materialized_view(`*ViewName*`,` [ *max_age* ] `)`
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Parameters
 

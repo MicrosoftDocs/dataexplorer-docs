@@ -13,7 +13,7 @@ Rotates values inside a `dynamic` array to the left.
 
 `array_rotate_left(`*array*, *rotate_count*`)`
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Parameters
 

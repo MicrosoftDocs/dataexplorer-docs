@@ -15,7 +15,7 @@ Parses an absolute URL `string` and returns a `dynamic` object contains URL part
 
 `parse_url(`*url*`)`
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Parameters
 

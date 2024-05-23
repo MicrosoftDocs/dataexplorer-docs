@@ -14,7 +14,7 @@ The specified row is at a specified offset from the current row in a [serialized
 
 `prev(`*column*`,` [ *offset* ]`,` [ *default_value* ] `)`
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Parameters
 

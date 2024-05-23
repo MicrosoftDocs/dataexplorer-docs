@@ -20,7 +20,7 @@ You must have at least [Function Admin](../management/access-control/role-based-
 
 `.alter` `function` *FunctionName* `folder` *Folder*
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Parameters
 

@@ -15,7 +15,7 @@ Filters a table to the subset of rows that satisfy a predicate.
 
 *T* `| where` *Predicate*
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Parameters
 

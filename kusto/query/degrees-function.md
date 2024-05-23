@@ -13,7 +13,7 @@ Converts angle value in radians into value in degrees, using the formula `degree
 
 `degrees(`*radians*`)`
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Parameters
 

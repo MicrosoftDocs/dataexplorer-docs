@@ -24,7 +24,7 @@ The pie chart visual can also be used in the context of [Geospatial visualizatio
 
 *T* `|` `render` `piechart` [`with` `(`*propertyName* `=` *propertyValue* [`,` ...]`)`]
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Parameters
 

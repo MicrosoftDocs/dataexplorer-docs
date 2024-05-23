@@ -20,7 +20,7 @@ The anomaly chart visualization is similar to a [timechart](visualization-timech
 
 *T* `|` `render` `anomalychart` [`with` `(` *propertyName* `=` *propertyValue* [`,` ...]`)`]
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Parameters
 

@@ -13,7 +13,7 @@ Calculates the element-wise less or equal (`<=`) logic operation of two numeric 
 
 `series_less_equals(`*series1*`,` *series2*`)`
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Parameters
 

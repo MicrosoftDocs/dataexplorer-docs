@@ -13,7 +13,7 @@ Returns a result of the bitwise `xor` operation of the two values.
 
 `binary_xor(`*value1*`,`*value2*`)`
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Parameters
 

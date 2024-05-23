@@ -24,7 +24,7 @@ This operator is similar to [series_fit_line](series-fit-line-function.md), but 
 
 `series_fit_line_dynamic(`*series*`)`
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Parameters
 

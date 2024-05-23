@@ -15,7 +15,7 @@ To optimize multiple uses of the `as` operator within a single query, see [Named
 
 *T* `|` `as` [`hint.materialized` `=` *Materialized*] *Name*
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Parameters
 

@@ -16,7 +16,7 @@ Converts a string to a [`guid`](./scalar-data-types/guid.md) scalar.
 
 `toguid(`*value*`)`
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Parameters
 

@@ -13,7 +13,7 @@ Convert a length value from one unit to another.
 
 `convert_length(`*value*`,`*from*`,`*to*`)`
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Parameters
 

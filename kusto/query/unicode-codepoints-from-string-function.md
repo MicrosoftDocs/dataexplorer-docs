@@ -15,7 +15,7 @@ Returns a dynamic array of the Unicode codepoints of the input string. This func
 
 `unicode_codepoints_from_string(`*value*`)`
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Parameters
 

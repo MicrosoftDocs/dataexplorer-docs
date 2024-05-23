@@ -15,7 +15,7 @@ Returns the *:::no-loc text="then":::* value when the *:::no-loc text="if":::* c
 
 `iff(`*:::no-loc text="if":::*`,` *:::no-loc text="then":::*`,` *:::no-loc text="else":::*`)`
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Parameters
 

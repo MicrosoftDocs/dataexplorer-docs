@@ -13,7 +13,7 @@ Delete a database's [merge policy](merge-policy.md). The merge policy defines if
 
 `.delete` `database` *DatabaseName* `policy` `merge`
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Parameters
 

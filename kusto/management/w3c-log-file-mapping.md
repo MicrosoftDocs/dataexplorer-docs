@@ -9,7 +9,7 @@ ms.date: 03/08/2023
 
 Use W3CLOGFILE mapping to map incoming data to columns inside tables when your ingestion source file is in W3CLOGFILE format.
 
-[!INCLUDE [data-mapping-overview](../../includes/data-mapping-overview.md)]
+[!INCLUDE [data-mapping-overview](../includes/data-mapping-overview.md)]
 
 Each W3CLOGFILE mapping element must contain either of the following optional properties:
 
@@ -23,7 +23,7 @@ Each W3CLOGFILE mapping element must contain either of the following optional pr
 >
 > The only supported transformations for W3CLOGFILE format are SourceLineNumber and SourceLocation.
 
-[!INCLUDE [data-mapping-type-note](../../includes/data-mapping-type-note.md)]
+[!INCLUDE [data-mapping-type-note](../includes/data-mapping-type-note.md)]
 
 ## Examples
 

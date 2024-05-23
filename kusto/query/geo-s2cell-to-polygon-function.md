@@ -13,7 +13,7 @@ Calculates the polygon that represents the S2 Cell rectangular area.
 
 `geo_s2cell_to_polygon(`*s2cell*`)`
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Parameters
 

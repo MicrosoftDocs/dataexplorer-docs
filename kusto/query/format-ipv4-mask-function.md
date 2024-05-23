@@ -13,7 +13,7 @@ Parses the input with a netmask and returns a string representing the IPv4 addre
 
 `format_ipv4_mask(`*ip* [`,` *prefix*`])`
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Parameters
 

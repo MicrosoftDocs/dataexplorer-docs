@@ -15,7 +15,7 @@ Filters a record set for data matching the values in an inclusive range.
 
 *T* `|` `where` *expr* `between` `(`*leftRange*` .. `*rightRange*`)`
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Parameters
 

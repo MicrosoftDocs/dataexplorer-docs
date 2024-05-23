@@ -26,7 +26,7 @@ To `.create-or-alter` an external table using managed identity authentication re
 > [!NOTE]
 > `kind` is `storage` for all Azure Storage external data store types. `blob` and `adl` are deprecated terms.
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Parameters
 

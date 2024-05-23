@@ -13,7 +13,7 @@ Returns whether the input is an infinite (positive or negative) value.
 
 `isinf(`*number*`)`
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Parameters
 

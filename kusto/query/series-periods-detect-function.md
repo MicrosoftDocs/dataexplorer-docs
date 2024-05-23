@@ -13,7 +13,7 @@ Finds the most significant periods that exist in a time series.
 
 `series_periods_detect(`*series*`,` *min_period*`,` *max_period*`,` *num_periods*`)`
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Parameters
 

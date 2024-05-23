@@ -15,7 +15,7 @@ Read more about [geohash](https://en.wikipedia.org/wiki/Geohash).
 
 `geo_point_to_geohash(`*longitude*`,` *latitude*`,`[ *accuracy* ]`)`
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Parameters
 

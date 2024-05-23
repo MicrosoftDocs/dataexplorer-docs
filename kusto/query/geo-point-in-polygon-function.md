@@ -13,7 +13,7 @@ Calculates whether the geospatial coordinates are inside a polygon or a multipol
 
 `geo_point_in_polygon(`*longitude*`,` *latitude*`,` *polygon*`)`
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Parameters
 

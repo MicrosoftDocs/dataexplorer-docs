@@ -13,7 +13,7 @@ Calculates polygon or multipolygon that contains all points within the given rad
 
 `geo_line_buffer(`*lineString*`,` *radius*`,` *tolerance*`)`
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Parameters
 

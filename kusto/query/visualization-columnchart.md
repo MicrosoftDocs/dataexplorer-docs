@@ -18,7 +18,7 @@ The column chart visual needs a minimum of two columns in the query result. By d
 
 *T* `|` `render` `columnchart` [`with` `(`*propertyName* `=` *propertyValue* [`,` ...]`)`]
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Parameters
 

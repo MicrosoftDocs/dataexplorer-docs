@@ -13,7 +13,7 @@ Creates a dynamic property-bag from two input dynamic arrays. In the resulting p
 
 `bag_zip(`*KeysArray*`,` *ValuesArray*`)`
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Parameters
 

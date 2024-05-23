@@ -13,7 +13,7 @@ Calculates the angle whose cosine is the specified number. Inverse operation of 
 
 `acos(`*x*`)`
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Parameters
 

@@ -13,7 +13,7 @@ Captures the value of a tabular expression for the duration of the query executi
 
 `materialize(`*expression*`)`
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Parameters
 

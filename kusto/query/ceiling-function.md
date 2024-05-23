@@ -13,7 +13,7 @@ Calculates the smallest integer greater than, or equal to, the specified numeric
 
 `ceiling(`*number*`)`
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Parameters
 

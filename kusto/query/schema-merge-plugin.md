@@ -20,7 +20,7 @@ The plugin is invoked with the [`evaluate`](evaluate-operator.md) operator.
 
 `T` `|` `evaluate` `schema_merge(`*PreserveOrder*`)`
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Parameters
 

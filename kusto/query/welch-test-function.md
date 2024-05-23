@@ -13,7 +13,7 @@ Computes the p_value of the [Welch-test function](https://en.wikipedia.org/wiki/
 
 `welch_test(`*mean1*`,` *variance1*`,` *count1*`,` *mean2*`,` *variance2*`,` *count2*`)`
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Parameters
 

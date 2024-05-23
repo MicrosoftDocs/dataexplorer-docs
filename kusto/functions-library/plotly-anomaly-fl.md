@@ -26,7 +26,7 @@ Extract the required 'anomaly' template from the publicly available `PlotlyTempl
 
 `T | invoke plotly_anomaly_fl(`*time_col*`,` *val_col*`,` *baseline_col*`,` *time_high_col*`,` *val_high_col*`,` *size_high_col*`,` *time_low_col*`,` *val_low__col*`,` *size_low_col*`,` *chart_title*`,` *series_name*`,` *val_name*`)`
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Parameters
 

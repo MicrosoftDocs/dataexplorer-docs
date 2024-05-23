@@ -24,7 +24,7 @@ To specify a `real` literal, use one of the following syntax options:
 |`real(+inf)`|Positive infinity, such as when dividing `1.0` by `0.0`.||
 |`real(-inf)`|Negative infinity, such as when dividing `-1.0` by `0.0`.||
 
-[!INCLUDE [syntax-conventions-note](../../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
 
 ## Related content
 

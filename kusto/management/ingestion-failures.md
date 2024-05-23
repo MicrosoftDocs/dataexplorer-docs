@@ -27,7 +27,7 @@ To return an ingestion failure for a specific operation ID:
 
 `.show` `ingestion` `failures` `with` `(` `OperationId` `=` *OperationId* `)`
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Parameters
 

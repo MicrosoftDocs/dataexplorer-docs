@@ -21,7 +21,7 @@ A predicate function run over the records of a table to compare their ingestion 
 
 `cursor_before_or_at(`*RHS*`)`
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Parameters
 

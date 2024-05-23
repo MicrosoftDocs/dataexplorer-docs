@@ -13,7 +13,7 @@ Produces a table with the distinct combination of the provided columns of the in
 
 *T* `| distinct` *ColumnName*`[,`*ColumnName2*`, ...]`
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Parameters
 

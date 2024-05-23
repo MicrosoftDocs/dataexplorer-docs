@@ -17,7 +17,7 @@ Produces a table that aggregates the content of the input table.
     [`by`
       [*Column* `=`] *GroupExpression* [`,` ...]]
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Parameters
 

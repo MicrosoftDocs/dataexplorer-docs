@@ -14,7 +14,7 @@ Performs gzip compression and encodes the result to base64.
 
 `gzip_compress_to_base64_string(`*string*`)`
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Parameters
 

@@ -13,7 +13,7 @@ Calculates polygon that contains all points within the given radius of the point
 
 `geo_point_buffer(`*longitude*`,` *latitude*`,` *radius*`,` *tolerance*`)`
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Parameters
 

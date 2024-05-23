@@ -15,7 +15,7 @@ Replaces all [regular expression](re2.md) matches with a specified pattern.
 
 `replace_regex(`*source*`,`*lookup_regex*`,` *rewrite_pattern*`)`
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Parameters
 

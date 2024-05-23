@@ -13,7 +13,7 @@ Interprets a user-agent string, which identifies the user's browser and provides
 
 `parse_user_agent(`*user-agent-string*, *look-for*`)`
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Parameters
 

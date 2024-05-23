@@ -23,7 +23,7 @@ The partition operator supports several strategies of subquery operation:
 
 *T* `|` `partition` [ `hint.strategy=legacy` ] [ *Hints* ] `by` *Column* `{` *SubQueryWithSource* `}`
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Parameters
 

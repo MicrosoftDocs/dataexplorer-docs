@@ -13,7 +13,7 @@ Encodes a [GUID](./scalar-data-types/guid.md) to a base64 string.
 
 `base64_encode_fromguid(`*guid*`)`
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Parameters
 

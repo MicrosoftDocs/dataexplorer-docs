@@ -9,11 +9,11 @@ ms.date: 01/11/2023
 
 Filters a record set for data that doesn't have a case-sensitive ending string. `!hassuffix_cs` returns `true` if there is no [term](datatypes-string-operators.md#what-is-a-term) inside string column ending with the specified string expression.
 
-[!INCLUDE [hassuffix-operator-comparison](../../includes/hassuffix-operator-comparison.md)]
+[!INCLUDE [hassuffix-operator-comparison](../includes/hassuffix-operator-comparison.md)]
 
 ## Performance tips
 
-[!INCLUDE [performance-tip-note](../../includes/performance-tip-note.md)]
+[!INCLUDE [performance-tip-note](../includes/performance-tip-note.md)]
 
 > [!NOTE]
 > Text index cannot be fully utilized for this function, therefore the performance of this function is comparable to [!endswith_cs](not-endswith-cs-operator.md) function, though the semantics is different.
@@ -22,7 +22,7 @@ Filters a record set for data that doesn't have a case-sensitive ending string. 
 
 *T* `|` `where` *column* `!hassuffix_cs` `(`*expression*`)`  
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Parameters
 

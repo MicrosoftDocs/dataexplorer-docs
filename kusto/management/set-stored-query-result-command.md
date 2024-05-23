@@ -22,7 +22,7 @@ You must have [Database Viewer](access-control/role-based-access-control.md) per
 
 `.set-or-replace` [`async`] `stored_query_result` *StoredQueryResultName* [`with` `(`*PropertyName* `=` *PropertyValue* [`,` ...]`)`] `<|` *Query*
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Parameters
 
@@ -44,7 +44,7 @@ You must have [Database Viewer](access-control/role-based-access-control.md) per
 
 A tabular subset of the records produced by the query, referred to as the "preview", or all records. Regardless of how many records are shown on return, all records are stored.
 
-[!INCLUDE [store-query-known-issue.md](../../includes/store-query-character-limitation.md)]
+[!INCLUDE [store-query-known-issue.md](../includes/store-query-character-limitation.md)]
 
 ## Examples
 

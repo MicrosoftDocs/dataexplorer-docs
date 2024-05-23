@@ -19,7 +19,7 @@ If you have a scattered set of values, they'll be grouped into a smaller set of 
 
 `bin(`*value*`,`*roundTo*`)`
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Parameters
 

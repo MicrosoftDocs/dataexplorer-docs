@@ -13,7 +13,7 @@ Returns a result of the bitwise `AND` operation between two values.
 
 `binary_and(`*value1*`,`*value2*`)`
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Parameters
 

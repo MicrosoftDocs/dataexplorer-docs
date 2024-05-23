@@ -14,7 +14,7 @@ entities are resolved against if no other database is specified).
 
 `current_database()`
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Returns
 

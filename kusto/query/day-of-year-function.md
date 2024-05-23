@@ -13,7 +13,7 @@ Returns the integer number represents the day number of the given year.
 
 `dayofyear(`*date*`)`
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Parameters
 

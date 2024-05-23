@@ -13,13 +13,13 @@ zone_pivot_groups: kql-flavors-all
 
 The function `normality_test_fl()` is a [UDF (user-defined function)](../query/functions/user-defined-functions.md) that performs the [Normality Test](https://en.wikipedia.org/wiki/Normality_test).
 
-[!INCLUDE [python-zone-pivot-fabric](../../includes/python-zone-pivot-fabric.md)]
+[!INCLUDE [python-zone-pivot-fabric](../includes/python-zone-pivot-fabric.md)]
 
 ## Syntax
 
 `T | invoke normality_test_fl(`*data*`,` *test_statistic*`,`*p_value*`)`
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Parameters
 

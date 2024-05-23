@@ -15,7 +15,7 @@ Creates a [dynamic](scalar-data-types/dynamic.md) property bag object from a lis
 
 `bag_pack(`*key1*`,` *value1*`,` *key2*`,` *value2*`,... )`
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Parameters
 

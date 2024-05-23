@@ -17,7 +17,7 @@ You must have [Cluster AllDatabasesAdmin](access-control/role-based-access-contr
 
 `.alter-merge` `cluster` `policy` `request_classification` `'{"IsEnabled":` [true|false] `}`
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Returns
 

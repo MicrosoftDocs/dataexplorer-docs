@@ -10,9 +10,9 @@ adobe-target: true
 
 Creates a `dynamic` array of all the values of *expr* in the group.
 
-[!INCLUDE [ignore-nulls](../../includes/ignore-nulls.md)]
+[!INCLUDE [ignore-nulls](../includes/ignore-nulls.md)]
 
-[!INCLUDE [data-explorer-agg-function-summarize-note](../../includes/data-explorer-agg-function-summarize-note.md)]
+[!INCLUDE [data-explorer-agg-function-summarize-note](../includes/data-explorer-agg-function-summarize-note.md)]
 
 > **Deprecated aliases:** makelist()
 
@@ -20,7 +20,7 @@ Creates a `dynamic` array of all the values of *expr* in the group.
 
 `make_list(`*expr* [`,` *maxSize*]`)`
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Parameters
 

@@ -13,7 +13,7 @@ Converts UTC [datetime](./scalar-data-types/datetime.md) to local datetime using
 
 `datetime_utc_to_local(`*from*`,`*timezone*`)`
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Parameters
 

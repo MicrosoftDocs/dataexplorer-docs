@@ -13,7 +13,7 @@ Matches two IPv4 strings. The two IPv4 strings are parsed and compared while acc
 
 `ipv4_is_match(`*ip1*`,`*ip2*`[ ,`*prefix*`])`
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Parameters
 
@@ -22,7 +22,7 @@ Matches two IPv4 strings. The two IPv4 strings are parsed and compared while acc
 | *ip1*, *ip2*| `string` |  :heavy_check_mark: | An expression representing an IPv4 address. IPv4 strings can be masked using [IP-prefix notation](#ip-prefix-notation).|
 | *prefix*| `int` | | An integer from 0 to 32 representing the number of most-significant bits that are taken into account.|
 
-[!INCLUDE [ip-prefix-notation](../../includes/ip-prefix-notation.md)]
+[!INCLUDE [ip-prefix-notation](../includes/ip-prefix-notation.md)]
 
 ## Returns
 

@@ -20,7 +20,7 @@ The stacked area chart visual shows a continuous relationship. This visual is si
 
 *T* `|` `render` `stackedareachart` [`with` `(`*propertyName* `=` *propertyValue* [`,` ...]`)`]
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Supported parameters
 

@@ -17,7 +17,7 @@ The beta distribution can be used in project planning to model probable completi
 
 `beta_inv(`*probability*`,`*alpha*`,`*beta*`)`
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Parameters
 

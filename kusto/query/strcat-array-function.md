@@ -13,7 +13,7 @@ Creates a concatenated string of array values using a specified delimiter.
 
 `strcat_array(`*array*, *delimiter*`)`
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Parameters
 

@@ -9,11 +9,11 @@ ms.date: 03/16/2023
 
 Filters a record set for data containing a case-insensitive string. `contains` searches for arbitrary sub-strings rather than [terms](datatypes-string-operators.md#what-is-a-term).
 
-[!INCLUDE [contains-operator-comparison](../../includes/contains-operator-comparison.md)]
+[!INCLUDE [contains-operator-comparison](../includes/contains-operator-comparison.md)]
 
 ## Performance tips
 
-[!INCLUDE [performance-tip-note](../../includes/performance-tip-note.md)]
+[!INCLUDE [performance-tip-note](../includes/performance-tip-note.md)]
 
 When possible, use [contains_cs](contains-cs-operator.md) - a case-sensitive version of the operator.
 
@@ -23,7 +23,7 @@ If you're looking for a [term](datatypes-string-operators.md#what-is-a-term), us
 
 *T* `|` `where` *col* `contains_cs` `(`*string*`)`
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Parameters
 

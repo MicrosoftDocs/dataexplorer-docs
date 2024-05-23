@@ -18,7 +18,7 @@ You must have at least [Database Admin](access-control/role-based-access-control
 
 `.clear` `database` `cache` `query_results`
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Returns
 

@@ -9,7 +9,7 @@ ms.date: 11/27/2022
 
 Conditionally counts unique values specified by the scalar expression per summary group, or the total number of unique values if the summary group is omitted. Only records for which *predicate* evaluates to `true` are counted.
 
-[!INCLUDE [data-explorer-agg-function-summarize-note](../../includes/data-explorer-agg-function-summarize-note.md)]
+[!INCLUDE [data-explorer-agg-function-summarize-note](../includes/data-explorer-agg-function-summarize-note.md)]
 
 If you only need an estimation of unique values count, we recommend using the less resource-consuming [dcountif](dcountif-aggregation-function.md) aggregation function.
 
@@ -22,7 +22,7 @@ If you only need an estimation of unique values count, we recommend using the le
 
 `count_distinctif` `(`*expr*`,` *predicate*`)`
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Parameters
 

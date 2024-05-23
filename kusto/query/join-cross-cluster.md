@@ -31,7 +31,7 @@ The cluster that runs the query fetches the data from the other cluster.
 &emsp;&emsp;[ `cluster(`*ClusterName*`).database(`*DatabaseName*`).`]*RightTable* `|` ...  
 &emsp;`)` on *Conditions*
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Parameters
 

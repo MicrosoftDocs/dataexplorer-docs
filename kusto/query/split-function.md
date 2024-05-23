@@ -14,7 +14,7 @@ The `split()` function takes a string and splits it into substrings based on a s
 
 `split(`*source*`,` *delimiter* [`,` *requestedIndex*]`)`
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Parameters
 
@@ -28,7 +28,7 @@ The `split()` function takes a string and splits it into substrings based on a s
 
 An array of substrings obtained by separating the *source* string by the specified *delimiter*, or a single substring at the specified *requestedIndex*.
 
-[!INCLUDE [dynamic-access](../../includes/dynamic-access.md)]
+[!INCLUDE [dynamic-access](../includes/dynamic-access.md)]
 
 ## Examples
 

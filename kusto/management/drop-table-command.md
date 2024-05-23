@@ -22,7 +22,7 @@ You must have at least [Table Admin](access-control/role-based-access-control.md
 
 `.drop` `tables` `(`*TableName* [`,` ... ]`)` [ifexists]
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Parameters
 

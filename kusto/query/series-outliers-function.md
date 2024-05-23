@@ -15,7 +15,7 @@ The function takes an expression with a dynamic numerical array as input, and ge
 
 `series_outliers(`*series* [`,` *kind* ] [`,` *ignore_val* ] [`,` *min_percentile* ] [`,` *max_percentile* ]`)`
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Parameters
 

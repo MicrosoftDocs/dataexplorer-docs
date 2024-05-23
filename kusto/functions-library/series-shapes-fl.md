@@ -13,7 +13,7 @@ The function `series_shapes_fl()` is a [user-defined function (UDF)](../query/fu
 
 `T | extend series_shapes_fl(`*y_series*`,` *advanced*`)`
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Parameters
 

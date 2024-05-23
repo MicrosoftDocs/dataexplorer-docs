@@ -17,7 +17,7 @@ You must have at least [Table Admin](access-control/role-based-access-control.md
 
 `.delete` `materialized-view` *MaterializedViewName* `policy` `caching`
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Parameters
 

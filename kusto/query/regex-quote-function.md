@@ -13,7 +13,7 @@ Returns a string that escapes all [regular expression](re2.md) characters.
 
 `regex_quote(`*string*`)`
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Parameters
 

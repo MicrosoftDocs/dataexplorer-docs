@@ -13,7 +13,7 @@ Calculates the [magnitude](https://en.wikipedia.org/wiki/Magnitude_(mathematics)
 
 `series_magnitude(`*series*`)`
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Parameters
 
@@ -25,7 +25,7 @@ Calculates the [magnitude](https://en.wikipedia.org/wiki/Magnitude_(mathematics)
 
 Returns a double type value representing the magnitude of the series.
 
-[!INCLUDE [optimization-note](../../includes/vector16-encoding-policy.md)]
+[!INCLUDE [optimization-note](../includes/vector16-encoding-policy.md)]
 
 ## Example
 

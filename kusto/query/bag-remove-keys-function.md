@@ -13,7 +13,7 @@ Removes keys and associated values from a `dynamic` property bag.
 
 `bag_remove_keys(`*bag*`,`*keys*`)`
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Parameters
 

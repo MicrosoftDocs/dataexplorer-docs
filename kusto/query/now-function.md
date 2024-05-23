@@ -15,7 +15,7 @@ The current UTC time will stay the same across all uses of `now()` in a single q
 
 `now(`[ *offset* ]`)`
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Parameters
 

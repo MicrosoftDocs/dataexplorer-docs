@@ -21,7 +21,7 @@ To specify a bool literal, use one of the following syntax options:
 |`false` or `bool(false)`|Represents falsehood.|
 |`bool(null)`|Represents the [null value](/azure/data-explorer/kusto/query/scalar-data-types/null-values).|
 
-[!INCLUDE [syntax-conventions-note](../../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
 
 ## Boolean operators
 

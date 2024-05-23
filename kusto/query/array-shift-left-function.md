@@ -13,7 +13,7 @@ Shifts the values inside a [dynamic](../query/scalar-data-types/dynamic.md) arra
 
 `array_shift_left(`*array*, *shift_count* [`,` *default_value* ]`)`
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Parameters
 

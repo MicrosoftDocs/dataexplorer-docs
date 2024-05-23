@@ -15,7 +15,7 @@ Last day of the week is considered to be a Saturday.
 
 `endofweek(`*date* [, *offset*]`)`
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Parameters
 

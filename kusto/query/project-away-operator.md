@@ -13,7 +13,7 @@ Select what columns from the input table to exclude from the output table.
 
 *T* `| project-away` *ColumnNameOrPattern* [`,` ...]
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Parameters
 

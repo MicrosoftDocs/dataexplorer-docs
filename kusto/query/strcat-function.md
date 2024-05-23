@@ -13,7 +13,7 @@ Concatenates between 1 and 64 arguments.
 
 `strcat(`*argument1*`,` *argument2* [`,` *argument3* ... ]`)`
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Parameters
 

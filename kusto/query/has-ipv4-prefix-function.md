@@ -20,7 +20,7 @@ IP address entrances in a text must be properly delimited with nonalphanumeric c
 
 `has_ipv4_prefix(`*source* `,` *ip_address_prefix* `)`
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Parameters
 

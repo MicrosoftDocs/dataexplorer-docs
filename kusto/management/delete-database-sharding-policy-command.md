@@ -19,7 +19,7 @@ You must have at least [Database Admin](access-control/role-based-access-control
 
 `.delete` `database` *DatabaseName* `policy` `sharding`
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Parameters
 

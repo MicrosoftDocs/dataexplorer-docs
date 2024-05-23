@@ -22,7 +22,7 @@ You must have at least [Table Admin](../management/access-control/role-based-acc
 > [!NOTE]
 > `.rename` `columns` only supports swapping the names of exactly two existing columns.
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Parameters
 

@@ -13,7 +13,7 @@ Converts IPv4 string to a signed 64-bit wide long number representation in big-e
 
 `parse_ipv4(`*ip*`)`
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Parameters
 
@@ -21,7 +21,7 @@ Converts IPv4 string to a signed 64-bit wide long number representation in big-e
 |--|--|--|--|
 | *ip* | `string` |  :heavy_check_mark: | The IPv4 that is converted to long. The value may include net-mask using [IP-prefix notation](#ip-prefix-notation).|
 
-[!INCLUDE [ip-prefix-notation](../../includes/ip-prefix-notation.md)]
+[!INCLUDE [ip-prefix-notation](../includes/ip-prefix-notation.md)]
 
 ## Returns
 

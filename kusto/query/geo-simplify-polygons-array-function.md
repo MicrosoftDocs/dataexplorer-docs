@@ -13,7 +13,7 @@ Simplifies polygons by replacing nearly straight chains of short edges with a si
 
 `geo_simplify_polygons_array(`*polygons*`,` *tolerance*`)`
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Parameters
 

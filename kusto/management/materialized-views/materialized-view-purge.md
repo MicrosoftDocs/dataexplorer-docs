@@ -8,7 +8,7 @@ ms.date: 02/27/2023
 
 # Materialized views data purge
 
-[!INCLUDE [gdpr-intro-sentence](../../../includes/gdpr-intro-sentence.md)]
+[!INCLUDE [gdpr-intro-sentence](../../includes/gdpr-intro-sentence.md)]
 
 [Data purge](../../concepts/data-purge.md) commands can be used to purge records from materialized views. The same guidelines for purging records from a table apply to materialized views purge.
 

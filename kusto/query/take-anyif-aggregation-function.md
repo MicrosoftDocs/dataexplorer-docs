@@ -21,7 +21,7 @@ This function is useful when you want to get a sample value of one column per va
 
 `take_anyif(` *expr*`,` *predicate* `)`
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Parameters
 

@@ -13,7 +13,7 @@ Concatenates many dynamic arrays to a single array.
 
 `array_concat(`*arr* [`,` ...]`)`
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Parameters
 

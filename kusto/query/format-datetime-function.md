@@ -13,7 +13,7 @@ Formats a datetime according to the provided format.
 
 `format_datetime(`*date* `,` *format*`)`
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Parameters
 

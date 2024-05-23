@@ -19,7 +19,7 @@ If you apply this function to calculated data, which isn't attached to a data sh
 
 `extent_tags()`
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Returns
 

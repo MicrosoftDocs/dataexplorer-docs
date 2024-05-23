@@ -13,7 +13,7 @@ Returns an integer representing the day number of the given datetime.
 
 `dayofmonth(`*date*`)`
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Parameters
 

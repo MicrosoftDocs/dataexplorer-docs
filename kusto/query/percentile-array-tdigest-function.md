@@ -15,7 +15,7 @@ Calculates the percentile result from the `tdigest` results (which was generated
 
 `percentiles_array_tdigest(`*tdigest*`,` *Dynamic array* [`,` *typeLiteral* ]`)`
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Parameters
 

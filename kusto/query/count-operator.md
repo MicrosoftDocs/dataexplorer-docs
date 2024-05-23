@@ -13,7 +13,7 @@ Returns the number of records in the input record set.
 
 *T* `|` `count`
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Parameters
 

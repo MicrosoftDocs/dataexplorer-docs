@@ -19,7 +19,7 @@ Retrieves the current value of the cursor of the database in scope.
 
 `cursor_current()`
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Returns
 

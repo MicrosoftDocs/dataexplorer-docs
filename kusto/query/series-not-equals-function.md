@@ -13,7 +13,7 @@ Calculates the element-wise not equals (`!=`) logic operation of two numeric ser
 
 `series_not_equals(`*series1*`,` *series2*`)`
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Parameters
 

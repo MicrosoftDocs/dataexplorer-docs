@@ -19,7 +19,7 @@ Read about the [underlying algorithm (*H*yper*L*og*L*og) and estimation accuracy
 
 `hll_merge(` *hll*`,` *hll2*`,` [ *hll3*`,` ... ]`)`
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Parameters
 
@@ -54,4 +54,4 @@ range x from 1 to 10 step 1
 
 ## Estimation accuracy
 
-[!INCLUDE [data-explorer-estimation-accuracy](../../includes/data-explorer-estimation-accuracy.md)]
+[!INCLUDE [data-explorer-estimation-accuracy](../includes/data-explorer-estimation-accuracy.md)]

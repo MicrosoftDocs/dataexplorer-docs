@@ -15,7 +15,7 @@ The function takes an expression containing a dynamic numerical array as input a
 
 `series_fir(`*series*`,` *filter* [`,` *normalize*[`,` *center*]]`)`
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Parameters
 

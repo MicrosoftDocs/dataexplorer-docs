@@ -13,7 +13,7 @@ Converts unix-epoch nanoseconds to UTC datetime.
 
 `unixtime_nanoseconds_todatetime(`*nanoseconds*`)`
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Parameters
 

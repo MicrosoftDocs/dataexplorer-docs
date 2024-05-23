@@ -13,7 +13,7 @@ Returns an MD5 hash value of the input.
 
 `hash_md5(`*source*`)`
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Parameters
 

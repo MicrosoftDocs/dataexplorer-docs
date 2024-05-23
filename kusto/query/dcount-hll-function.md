@@ -15,7 +15,7 @@ Read about the [underlying algorithm (*H*yper*L*og*L*og) and estimation accuracy
 
 `dcount_hll(`*hll*`)`
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Parameters
 
@@ -49,4 +49,4 @@ StormEvents
 
 ## Estimation accuracy
 
-[!INCLUDE [data-explorer-estimation-accuracy](../../includes/data-explorer-estimation-accuracy.md)]
+[!INCLUDE [data-explorer-estimation-accuracy](../includes/data-explorer-estimation-accuracy.md)]

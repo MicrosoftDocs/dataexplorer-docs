@@ -13,7 +13,7 @@ Enumerates all the root keys in a dynamic property bag object.
 
 `bag_keys(`*object*`)`
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Parameters
 

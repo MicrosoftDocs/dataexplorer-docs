@@ -17,7 +17,7 @@ Performs zlib compression and encodes the result to base64.
 
 `zlib_compress_to_base64_string(`*string*`)`
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Parameters
 

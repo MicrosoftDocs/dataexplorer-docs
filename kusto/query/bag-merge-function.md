@@ -13,7 +13,7 @@ The function merges multiple `dynamic` property bags into a single `dynamic` pro
 
 `bag_merge(`*bag1*`,`*bag2*`[`,`*bag3*, ...])`
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Parameters
 

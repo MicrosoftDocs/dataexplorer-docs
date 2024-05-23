@@ -25,7 +25,7 @@ You must have at least [Table Admin](../access-control/role-based-access-control
 
 There are two syntax options, [Simplified syntax](#simplified-syntax) and [Expanded syntax](#expanded-syntax).
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ### Expanded syntax
 

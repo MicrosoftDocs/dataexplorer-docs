@@ -15,7 +15,7 @@ For more information about running queries on the row level security policy, see
 
 `.show` `materialized-view` *MaterializedViewName* `policy` `row_level_security`
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Parameters
 

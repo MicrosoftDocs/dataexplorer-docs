@@ -13,7 +13,7 @@ Returns an estimated data size in bytes of the selected columns of the tabular e
 
 `estimate_data_size(`*columns*`)`
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Parameters
 

@@ -19,7 +19,7 @@ View all mappings or all mappings of a specific type:
 
 `.show` (`table` | `database`) *EntityName* `ingestion` [ *MappingKind* ] `mappings`
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Parameters
 

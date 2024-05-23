@@ -13,7 +13,7 @@ Drops an external table mapping.
 
 `.drop` `external` `table` *ExternalTableName* `mapping` *MappingName*
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Parameters
 

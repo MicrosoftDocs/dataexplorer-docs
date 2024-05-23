@@ -15,7 +15,7 @@ See: [Pearson correlation coefficient](https://en.wikipedia.org/wiki/Pearson_cor
 
 `series_pearson_correlation(`*series1*`,` *series2*`)`
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Parameters
 

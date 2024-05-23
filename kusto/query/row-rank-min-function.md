@@ -15,7 +15,7 @@ The rank is the minimal row number that the current row's *Term* appears in.
 
 `row_rank_min` `(` *Term* `)`
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Parameters
 

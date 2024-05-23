@@ -15,7 +15,7 @@ The table() function references a table by providing its name as an expression o
 
 `table(` *TableName* [`,` *DataScope*] `)`
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Parameters
 

@@ -13,7 +13,7 @@ Calculates whether the geospatial coordinates are inside a circle on Earth.
 
 `geo_point_in_circle(`*p_longitude*`,` *p_latitude*`,` *pc_longitude*`,` *pc_latitude*`,` *c_radius*`)`
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Parameters
 

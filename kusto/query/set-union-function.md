@@ -13,7 +13,7 @@ Returns a `dynamic` array of the set of all distinct values that are in any of t
 
 `set_union(`*set1*`,` *set2* [`,` *set3*, ...]`)`
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Parameters
 

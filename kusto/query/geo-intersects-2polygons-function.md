@@ -13,7 +13,7 @@ Calculates whether two polygons or multipolygons intersect.
 
 `geo_intersects_2polygons(`*polygon1*`,`*polygon1*`)`
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Parameters
 

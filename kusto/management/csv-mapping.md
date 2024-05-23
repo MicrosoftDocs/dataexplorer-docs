@@ -9,7 +9,7 @@ ms.date: 03/08/2023
 
 Use CSV mapping to map incoming data to columns inside tables when your ingestion source file is any of the following delimiter-separated tabular formats: CSV, TSV, PSV, SCSV, SOHsv, TXT and RAW. For more information, see supported [data formats](../../ingestion-supported-formats.md).
 
-[!INCLUDE [data-mapping-overview](../../includes/data-mapping-overview.md)]
+[!INCLUDE [data-mapping-overview](../includes/data-mapping-overview.md)]
 
 Each CSV mapping element must contain either of the following optional properties:
 
@@ -24,7 +24,7 @@ Each CSV mapping element must contain either of the following optional propertie
 > * When `ConstValue` or `SourceLocation` transformation are used, `Ordinal` must be unset.
 > * For TXT and RAW formats, only `Ordinal` 0 can be mapped, as text is treated as a single column of lines.
 
-[!INCLUDE [data-mapping-type-note](../../includes/data-mapping-type-note.md)]
+[!INCLUDE [data-mapping-type-note](../includes/data-mapping-type-note.md)]
 
 ## Examples
 

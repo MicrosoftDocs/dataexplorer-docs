@@ -15,7 +15,7 @@ Checks whether IPv4 string address is in any of the specified IPv4 address range
 
 `ipv4_is_in_any_range(`*Ipv4Address* `,` *Ipv4Ranges* `)`
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Parameters
 
@@ -28,7 +28,7 @@ Checks whether IPv4 string address is in any of the specified IPv4 address range
 > [!NOTE]
 > Either one or more *IPv4Range* strings or an *IPv4Ranges* dynamic array is required.
 
-[!INCLUDE [ip-prefix-notation](../../includes/ip-prefix-notation.md)]
+[!INCLUDE [ip-prefix-notation](../includes/ip-prefix-notation.md)]
 
 ## Returns
 

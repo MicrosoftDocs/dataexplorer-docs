@@ -15,7 +15,7 @@ The `diffpatterns_text` returns a set of text patterns that capture different po
 
 `T | evaluate diffpatterns_text(`*TextColumn*, *BooleanCondition* [, *MinTokens*, *Threshold* , *MaxTokens*]`)`
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Parameters
 

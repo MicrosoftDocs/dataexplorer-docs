@@ -18,7 +18,7 @@ Converts the input expression to a value of type [real](scalar-data-types/real.m
 
 `toreal(`*Expr*`)`
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Parameters
 

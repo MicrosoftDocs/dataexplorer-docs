@@ -13,7 +13,7 @@ Searches the string for items specified in the array and returns the position in
 
 `has_any_index` `(`*source*`,` *values*`)`
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Parameters
 

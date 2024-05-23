@@ -20,7 +20,7 @@ You must have at least Database User, Database Viewer, or Database Monitor to ru
 
 `.show` `functions`
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ### Returns
 
@@ -49,7 +49,7 @@ For a list of **all** functions, see [.show functions](#show-functions).
 
 `.show` `function` *FunctionName* [`with (`*PropertyName* `=` *PropertyValue* [`,` ...]`)`]
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ### Parameters
 

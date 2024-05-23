@@ -13,7 +13,7 @@ Returns statistics for a series in a dynamic object.
 
 `series_stats_dynamic(`*series* [`,` *ignore_nonfinite* ]`)`
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Parameters
 

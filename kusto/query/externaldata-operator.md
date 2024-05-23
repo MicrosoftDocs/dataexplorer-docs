@@ -35,7 +35,7 @@ The `externaldata` operator returns a table whose schema is defined in the query
 `[` *storageConnectionString* [`,` ...] `]`
 [`with` `(` *propertyName* `=` *propertyValue* [`,` ...]`)`]
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Parameters
 

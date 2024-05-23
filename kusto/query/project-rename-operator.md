@@ -13,7 +13,7 @@ Renames columns in the output table.
 
 *T* `| project-rename` *NewColumnName* = *ExistingColumnName* [`,` ...]
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Parameters
 

@@ -15,7 +15,7 @@ Read more about [`geohash`](https://en.wikipedia.org/wiki/Geohash).
 
 `geo_geohash_to_central_point(`*geohash*`)`
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Parameters
 

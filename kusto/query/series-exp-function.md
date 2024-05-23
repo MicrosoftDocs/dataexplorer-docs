@@ -13,7 +13,7 @@ Calculates the element-wise base-e exponential function (e^x) of the numeric ser
 
 `series_exp(`*series*`)`
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Parameters
 

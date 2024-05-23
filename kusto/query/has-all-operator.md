@@ -15,7 +15,7 @@ For more information about other operators and to determine which operator is mo
 
 *T* `|` `where` *col* `has_all` `(`*expression*`,` ... `)`
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Parameters
 

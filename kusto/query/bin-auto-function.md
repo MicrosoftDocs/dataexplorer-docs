@@ -13,7 +13,7 @@ Rounds values down to a fixed-size bin, with control over the bin size and start
 
 `bin_auto` `(`*value*`)`
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Parameters
 

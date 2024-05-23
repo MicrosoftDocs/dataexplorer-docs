@@ -13,7 +13,7 @@ Returns the [complementary error function](https://en.wikipedia.org/wiki/Error_f
 
 `erfc(`*x*`)`
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Parameters
 

@@ -14,7 +14,7 @@ current row in a [serialized row set](./window-functions.md#serialized-row-set).
 
 `next(`*column*`,` [ *offset*`,` *default_value* ]`)`
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Parameters
 

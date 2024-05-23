@@ -13,7 +13,7 @@ Replicates a [string](scalar-data-types/string.md) the number of times specified
 
 `strrep(`*value*`,` *multiplier*`,` [ *delimiter* ]`)`
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Parameters
 

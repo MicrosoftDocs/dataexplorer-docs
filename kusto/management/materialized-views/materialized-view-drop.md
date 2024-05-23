@@ -17,7 +17,7 @@ You must have at least [Materialized View Admin](../access-control/role-based-ac
 
 `.drop` `materialized-view` *MaterializedViewName* [`ifexists`]
 
-[!INCLUDE [syntax-conventions-note](../../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
 
 ## Parameters
 
@@ -29,7 +29,7 @@ You must have at least [Materialized View Admin](../access-control/role-based-ac
 
 The command returns all materialized views in the database, after the drop, which is the output of the [show materialized view](materialized-view-show-command.md#show-materialized-views) command.
 
-[!INCLUDE [materialized-view-show-command-output-schema.md](../../../includes/materialized-view-show-command-output-schema.md)]
+[!INCLUDE [materialized-view-show-command-output-schema.md](../../includes/materialized-view-show-command-output-schema.md)]
 
 ## Examples
 

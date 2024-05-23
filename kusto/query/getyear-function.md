@@ -13,7 +13,7 @@ Returns the year part of the `datetime` argument.
 
 `getyear(`*date*`)`
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Parameters
 

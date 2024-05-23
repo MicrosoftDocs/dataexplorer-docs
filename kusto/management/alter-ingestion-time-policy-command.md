@@ -19,7 +19,7 @@ You must have at least [Table Ingestor](../management/access-control/role-based-
 
 `.alter` `tables` `(`*TableName*`,` ...`)` `policy` `ingestiontime` *Flag*
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Parameters
 

@@ -13,7 +13,7 @@ Calculates the geospatial coordinates that represent the center of an S2 cell.
 
 `geo_s2cell_to_central_point(`*s2cell*`)`
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Parameters
 

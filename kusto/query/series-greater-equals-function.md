@@ -13,7 +13,7 @@ Calculates the element-wise greater or equals (`>=`) logic operation of two nume
 
 `series_greater_equals(`*series1*`,` *series2*`)`
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Parameters
 

@@ -16,7 +16,7 @@ Creates a [dynamic](scalar-data-types/dynamic.md) property bag object from all t
 
 `pack_all(`[ *ignore_null_empty* ]`)`
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Parameters
 

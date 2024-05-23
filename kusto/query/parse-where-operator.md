@@ -17,7 +17,7 @@ See [parse operator](parse-operator.md), which produces nulls for unsuccessfully
 
 *T* `| parse-where` [`kind=`*kind* [`flags=` *regexFlags*]] *expression* `with` `*` (*stringConstant* *columnName* [`:` *columnType*]) `*`...
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Parameters
 

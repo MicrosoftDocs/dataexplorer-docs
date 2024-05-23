@@ -13,7 +13,7 @@ Converts IPv6/IPv4 string and netmask to a canonical IPv6 string representation.
 
 `parse_ipv6_mask(`*ip*`,` *prefix*`)`
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Parameters
 
@@ -22,7 +22,7 @@ Converts IPv6/IPv4 string and netmask to a canonical IPv6 string representation.
 | *ip*| `string` | | The IPv6/IPv4 network address to convert to canonical IPv6 representation. The value may include net-mask using [IP-prefix notation](#ip-prefix-notation).|
 | *prefix*| `int` | | An integer from 0 to 128 representing the number of most-significant bits that are taken into account.|
 
-[!INCLUDE [ip-prefix-notation](../../includes/ip-prefix-notation.md)]
+[!INCLUDE [ip-prefix-notation](../includes/ip-prefix-notation.md)]
 
 ## Returns
 

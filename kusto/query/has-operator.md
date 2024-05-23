@@ -9,11 +9,11 @@ ms.date: 12/28/2022
 
 Filters a record set for data with a case-insensitive string. `has` searches for indexed terms, where an indexed [term](datatypes-string-operators.md#what-is-a-term) is three or more characters. If your term is fewer than three characters, the query scans the values in the column, which is slower than looking up the term in the term index.
 
-[!INCLUDE [has-operator-comparison](../../includes/has-operator-comparison.md)]
+[!INCLUDE [has-operator-comparison](../includes/has-operator-comparison.md)]
 
 ## Performance tips
 
-[!INCLUDE [performance-tip-note](../../includes/performance-tip-note.md)]
+[!INCLUDE [performance-tip-note](../includes/performance-tip-note.md)]
 
 When possible, use the case-sensitive [has_cs](has-cs-operator.md).
 
@@ -21,7 +21,7 @@ When possible, use the case-sensitive [has_cs](has-cs-operator.md).
 
 *T* `|` `where` *Column* `has` `(`*Expression*`)`
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Parameters
 

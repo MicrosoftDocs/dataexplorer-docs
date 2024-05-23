@@ -9,11 +9,11 @@ ms.date: 03/12/2023
 
 Filters a record set for data with a case-insensitive ending string. `hassuffix_cs` returns `true` if there is a [term](datatypes-string-operators.md#what-is-a-term) inside the filtered string column ending with the specified string expression.
 
-[!INCLUDE [hassuffix-operator-comparison](../../includes/hassuffix-operator-comparison.md)]
+[!INCLUDE [hassuffix-operator-comparison](../includes/hassuffix-operator-comparison.md)]
 
 ## Performance tips
 
-[!INCLUDE [performance-tip-note](../../includes/performance-tip-note.md)]
+[!INCLUDE [performance-tip-note](../includes/performance-tip-note.md)]
 
 > [!NOTE]
 > Text index cannot be fully utilized for this function, therefore the performance of this function is comparable to [endswith_cs](endswith-cs-operator.md) function, though the semantics is different.
@@ -22,7 +22,7 @@ Filters a record set for data with a case-insensitive ending string. `hassuffix_
 
 *T* `|` `where` *column* `hassuffix_cs` `(` *expression* `)`
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Parameters
 

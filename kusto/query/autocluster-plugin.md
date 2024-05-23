@@ -16,7 +16,7 @@ ms.date: 11/13/2023
 
 *T* `|` `evaluate` `autocluster` `(`[*SizeWeight* [`,` *WeightColumn* [`,` *NumSeeds* [`,` *CustomWildcard* [`,` ... ]]]]]`)`
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Parameters
 

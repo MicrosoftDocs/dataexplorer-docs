@@ -15,7 +15,7 @@ For more information, see [`indexof_regex()`](indexof-regex-function.md).
 
 `indexof(`*string*`,`*match*`[,`*start*`[,`*length*`[,`*occurrence*`]]])`
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Parameters
 

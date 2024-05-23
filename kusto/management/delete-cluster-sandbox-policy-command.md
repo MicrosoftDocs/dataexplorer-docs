@@ -19,7 +19,7 @@ You must have [AllDatabasesAdmin](access-control/role-based-access-control.md) p
 
 `.delete` `cluster` `policy` `sandbox`
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Example
 

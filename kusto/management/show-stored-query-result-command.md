@@ -24,7 +24,7 @@ You must have [Database Viewer](access-control/role-based-access-control.md) per
 
 `.show` `stored_query_result` *storedQueryResultName* `schema`
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Parameters
 

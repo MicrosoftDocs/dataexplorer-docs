@@ -22,7 +22,7 @@ the source data is sorted. If the data is sorted, then the top values will be re
 
 `take` *NumberOfRows*
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Parameters
 

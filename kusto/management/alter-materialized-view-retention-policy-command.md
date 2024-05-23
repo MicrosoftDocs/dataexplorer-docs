@@ -19,7 +19,7 @@ You must have at least [Table Admin](access-control/role-based-access-control.md
 
 `.alter` `materialized-view` *MaterializedViewName* `policy` `retention` *ArrayOfPolicyObjects*
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Parameters
 

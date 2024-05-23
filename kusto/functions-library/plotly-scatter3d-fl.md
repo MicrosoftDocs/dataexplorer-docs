@@ -23,7 +23,7 @@ Extract the required 'scatter3d' template from the publicly available `PlotlyTem
 
 `T | invoke plotly_scatter3d_fl(`*x_col*`,` *y_col*`,` *z_col*`,` *aggr_col* [`,` *chart_title* ]`)`
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Parameters
 

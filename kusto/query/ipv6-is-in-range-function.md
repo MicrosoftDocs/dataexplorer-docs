@@ -13,7 +13,7 @@ Checks if an IPv6 string address is in the IPv6-prefix notation range.
 
 `ipv6_is_in_range(`*Ipv6Address*`,`*Ipv6Range*`)`
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Parameters
 
@@ -22,7 +22,7 @@ Checks if an IPv6 string address is in the IPv6-prefix notation range.
 | *Ipv6Address* | `string` |  :heavy_check_mark: | An expression representing an IPv6 address.|
 | *Ipv6Range*| `string` |  :heavy_check_mark: | An expression representing an IPv6 range using [IP-prefix notation](#ip-prefix-notation).|
 
-[!INCLUDE [ip-prefix-notation](../../includes/ip-prefix-notation.md)]
+[!INCLUDE [ip-prefix-notation](../includes/ip-prefix-notation.md)]
 
 ## Returns
 

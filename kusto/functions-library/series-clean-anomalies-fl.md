@@ -15,7 +15,7 @@ The function `series_clean_anomalies_fl()` is a [user-defined function (UDF)](..
 
 `series_clean_anomalies_fl(`*y_series*`,` *anomalies*`)`
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Parameters
 

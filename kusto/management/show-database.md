@@ -21,7 +21,7 @@ You must have at least Database User, Database Viewer, or Database Monitor permi
 
 The default call without any options specified is equal to 'identity' option.
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Output for 'identity' option
 

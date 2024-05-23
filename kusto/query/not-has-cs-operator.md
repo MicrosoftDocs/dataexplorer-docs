@@ -9,17 +9,17 @@ ms.date: 01/09/2023
 
 Filters a record set for data that doesn't have a matching case-sensitive string. `!has_cs` searches for indexed terms, where an indexed [term](datatypes-string-operators.md#what-is-a-term) is three or more characters. If your term is fewer than three characters, the query scans the values in the column, which is slower than looking up the term in the term index.
 
-[!INCLUDE [has-operator-comparison](../../includes/has-operator-comparison.md)]
+[!INCLUDE [has-operator-comparison](../includes/has-operator-comparison.md)]
 
 ## Performance tips
 
-[!INCLUDE [performance-tip-note](../../includes/performance-tip-note.md)]
+[!INCLUDE [performance-tip-note](../includes/performance-tip-note.md)]
 
 ## Syntax
 
 *T* `|` `where` *column* `!has_cs` `(`*expression*`)`  
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Parameters
 

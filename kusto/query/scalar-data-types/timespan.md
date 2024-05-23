@@ -29,7 +29,7 @@ To specify a `timespan` literal, use one of the following syntax options:
 | `timespan(`*days*`.`*hours*`:`*minutes*`:`*seconds*`.`*milliseconds*`)` | A time interval in days, hours, minutes, and seconds passed.| `timespan(0.12:34:56.7)` | `0d+12h+34m+56.7s` |
 | `timespan(null)` | Represents the [null value](null-values.md). | | |
 
-[!INCLUDE [syntax-conventions-note](../../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
 
 ## `timespan` operators
 

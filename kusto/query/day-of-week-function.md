@@ -15,7 +15,7 @@ To convert `timespan` to `int`, see [Convert timespan to integer](#convert-times
 
 `dayofweek(`*date*`)`
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Parameters
 

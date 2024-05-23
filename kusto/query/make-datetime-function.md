@@ -17,7 +17,7 @@ Creates a [datetime](./scalar-data-types/datetime.md) scalar value between the s
 
 `make_datetime(`*year*, *month*, *day*, *hour*, *minute*, *second*`)`
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Parameters
 

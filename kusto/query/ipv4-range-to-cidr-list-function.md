@@ -13,7 +13,7 @@ Converts a IPv4 address range denoted by starting and ending IPv4 addresses to a
 
 `ipv4_range_to_cidr_list(`*StartAddress* `,` *EndAddress* `)`
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Parameters
 
@@ -26,7 +26,7 @@ Converts a IPv4 address range denoted by starting and ending IPv4 addresses to a
 
 A dynamic array object containing the list of ranges in CIDR notation.
 
-[!INCLUDE [CIDR notation](../../includes/ip-prefix-notation.md)]
+[!INCLUDE [CIDR notation](../includes/ip-prefix-notation.md)]
 
 ## Examples
 

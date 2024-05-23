@@ -22,7 +22,7 @@ Each element in the mapping list is constructed from three fields:
 | Datatype    |          | Datatype with which to create the mapped column if it doesn't already exist in the table.                     |
 | Properties  |          | Property-bag containing properties specific for each mapping as described in each specific mapping type page. |
 
-[!INCLUDE [data-mapping-type-note](../../includes/data-mapping-type-note.md)]
+[!INCLUDE [data-mapping-type-note](../includes/data-mapping-type-note.md)]
 
 ## Supported mapping types
 

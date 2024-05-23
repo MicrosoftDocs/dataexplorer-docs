@@ -16,7 +16,7 @@ You must have at least [Database User](access-control/role-based-access-control.
 
 `.show` `capacity` *Operation* [`with(``scope` `=` `cluster` | `workloadgroup``)`]
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Parameters
 

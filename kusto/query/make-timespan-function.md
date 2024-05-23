@@ -17,7 +17,7 @@ Creates a [timespan](./scalar-data-types/timespan.md) scalar value from the spec
 
 `make_timespan(`*day*, *hour*, *minute*, *second*`)`
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Parameters
 

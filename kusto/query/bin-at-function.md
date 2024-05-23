@@ -15,7 +15,7 @@ In contrast to the [bin()](bin-function.md) function, where the point of alignme
 
 `bin_at` `(`*value*`,`*bin_size*`,`*fixed_point*`)`
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Parameters
 

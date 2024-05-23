@@ -9,17 +9,17 @@ ms.date: 09/19/2021
 
 Filters a record set for data with a case-sensitive string starting sequence.
 
-[!INCLUDE [startswith-operator-comparison](../../includes/startswith-operator-comparison.md)]
+[!INCLUDE [startswith-operator-comparison](../includes/startswith-operator-comparison.md)]
 
 ## Performance tips
 
-[!INCLUDE [performance-tip-note](../../includes/performance-tip-note.md)]
+[!INCLUDE [performance-tip-note](../includes/performance-tip-note.md)]
 
 ## Syntax
 
 *T* `|` `where` *col* `startswith_cs` `(`*expression*`)`  
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Parameters
 

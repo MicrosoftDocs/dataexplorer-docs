@@ -18,7 +18,7 @@ References an [external table](schema-entities/external-tables.md) by name.
 
 `external_table(` *TableName* [`,` *MappingName* ] `)`
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Parameters
 

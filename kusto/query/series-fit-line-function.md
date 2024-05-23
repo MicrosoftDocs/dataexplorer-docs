@@ -22,7 +22,7 @@ Takes an expression containing dynamic numerical array as input and does [linear
 
 `series_fit_line(`*series*`)`
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Parameters
 

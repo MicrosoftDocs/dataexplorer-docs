@@ -21,7 +21,7 @@ The `evaluate` operator is a tabular operator that allows you to invoke query la
 
 [*T* `|`] `evaluate` [ *evaluateParameters* ] *PluginName* `(`[ *PluginArgs* ]`)`
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Parameters
 

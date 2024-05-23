@@ -22,7 +22,7 @@ Calculates session start values of a column in a [serialized row set](./window-f
 |*MaxDistanceBetweenNeighbors*| `timespan` | :heavy_check_mark: | Another criterion for starting a new session using the maximum distance from one value of *Expr* to the next. |
 | *Restart* |`boolean` | | If specified, every value that evaluates to `true` immediately restarts the session. |
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Returns
 

@@ -9,17 +9,17 @@ ms.date: 01/10/2023
 
 Filters a record set for data with a case-sensitive ending string.
 
-[!INCLUDE [endswith-operator-comparison](../../includes/endswith-operator-comparison.md)]
+[!INCLUDE [endswith-operator-comparison](../includes/endswith-operator-comparison.md)]
 
 ## Performance tips
 
-[!INCLUDE [performance-tip-note](../../includes/performance-tip-note.md)]
+[!INCLUDE [performance-tip-note](../includes/performance-tip-note.md)]
 
 ## Syntax
 
 *T* `|` `where` *col* `endswith_cs` `(`*expression*`)`
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Parameters
 

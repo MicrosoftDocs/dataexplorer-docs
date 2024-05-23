@@ -22,7 +22,7 @@ The command to alter the policy requires [AllDatabasesAdmin](access-control/role
 
 `.alter` `database` *DatabaseName* `policy` `managed_identity` *ArrayOfPolicyObjects*
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Parameters
 

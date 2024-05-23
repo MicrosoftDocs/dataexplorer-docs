@@ -22,7 +22,7 @@ Displays a pivot table and chart. You can interactively select data, columns, ro
 
 *T* `|` `render` `pivotchart`
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Parameters
 

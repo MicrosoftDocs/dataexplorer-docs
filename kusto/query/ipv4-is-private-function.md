@@ -32,7 +32,7 @@ ipv4_is_private("127.0.0.1") == false
 
 `ipv4_is_private(`*ip*`)`
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Parameters
 
@@ -40,7 +40,7 @@ ipv4_is_private("127.0.0.1") == false
 |--|--|--|--|
 |*ip*| `string` |  :heavy_check_mark: | An expression representing an IPv4 address. IPv4 strings can be masked using [IP-prefix notation](#ip-prefix-notation).|
 
-[!INCLUDE [ip-prefix-notation](../../includes/ip-prefix-notation.md)]
+[!INCLUDE [ip-prefix-notation](../includes/ip-prefix-notation.md)]
 
 ## Returns
 

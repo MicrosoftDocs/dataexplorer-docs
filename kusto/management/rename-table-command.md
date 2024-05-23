@@ -21,7 +21,7 @@ You must have at least [Table Admin](../management/access-control/role-based-acc
 
 `.rename` `tables` *NewName* `=` *OldName* [`ifexists`] [`,` ...]
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Parameters
 

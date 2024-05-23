@@ -15,7 +15,7 @@ The operator has a declarative meaning. It marks the input row set as serialized
 
 `serialize` [*Name1* `=` *Expr1* [`,` *Name2* `=` *Expr2*]...]
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Parameters
 

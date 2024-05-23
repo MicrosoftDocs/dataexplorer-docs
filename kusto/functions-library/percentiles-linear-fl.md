@@ -14,7 +14,7 @@ The function accepts a table containing the column to calculate on and an option
 
 `T | invoke percentiles_linear_fl(`*val_col*`,` *pct_arr* [`,` *aggr_col* ]`)`
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Parameters
 

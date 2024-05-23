@@ -13,7 +13,7 @@ Calculates the element-wise natural logarithm function (base-e) of the numeric s
 
 `series_log(`*series*`)`
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Parameters
 

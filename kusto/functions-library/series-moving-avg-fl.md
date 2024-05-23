@@ -15,7 +15,7 @@ The function `series_moving_avg_fl()` is a [user-defined function (UDF)](../quer
 
 `series_moving_avg_fl(`*y_series*`,` *n* [`,` *center* ]`)`
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Parameters
 

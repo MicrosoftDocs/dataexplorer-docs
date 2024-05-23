@@ -28,7 +28,7 @@ The function `series_dot_product()` takes two numeric series as input, and calcu
 >
 > For example, `series_dot_product([1, 2, 3], 10)` will be treated as `series_dot_product([1, 2, 3], [10, 10, 10])`.
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Parameters
 
@@ -45,7 +45,7 @@ Any non-numeric element of the input series will be ignored.
 > [!NOTE]
 > If one or both input arrays are empty, the result will be `null`.
 
-[!INCLUDE [optimization-note](../../includes/vector16-encoding-policy.md)]
+[!INCLUDE [optimization-note](../includes/vector16-encoding-policy.md)]
 
 ## Example
 

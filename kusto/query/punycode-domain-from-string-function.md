@@ -13,7 +13,7 @@ Decodes input string from encoded Internationalized Domain Name in Applications 
 
 `punycode_domain_from_string(`*encoded_string*`)`
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Parameters
 

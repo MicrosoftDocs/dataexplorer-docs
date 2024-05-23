@@ -24,7 +24,7 @@ The `ipv4_lookup` plugin looks up an IPv4 value in a lookup table and returns ro
 | *ExtraKey1* .. *ExtraKeyN* | `string` | | Additional column references that are used for lookup matches. Similar to `join` operation: records with equal values are considered matching. Column name references must exist both is source table `T` and `LookupTable`.|
 | *return_unmatched* | `bool` | | A boolean flag that defines if the result should include all or only matching rows (default: `false` - only matching rows returned).|
 
-[!INCLUDE [ip-prefix-notation](../../includes/ip-prefix-notation.md)]
+[!INCLUDE [ip-prefix-notation](../includes/ip-prefix-notation.md)]
 
 ## Returns
 

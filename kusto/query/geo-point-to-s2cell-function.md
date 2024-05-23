@@ -18,7 +18,7 @@ S2 cell can be a useful geospatial clustering tool. An S2 cell is a cell on a sp
 
 `geo_point_to_s2cell(`*longitude*`,` *latitude*`,` [ *level* ]`)`
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Parameters
 

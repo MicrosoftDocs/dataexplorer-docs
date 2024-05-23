@@ -27,7 +27,7 @@ If you have Database Admin or Database Monitor permissions, you see all failed o
 | `.show` `streamingingestion` `failures` | Returns aggregated streaming ingestion failures |
 | `.show` `streamingingestion` `failures` \| `where` ... | Returns a filtered set of streaming ingestion failures |
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Returns
 

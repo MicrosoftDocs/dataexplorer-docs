@@ -14,7 +14,7 @@ This function can be viewed as the inverse of the percentile.
 
 `percentrank_tdigest(`*digest*`,` *value*`)`
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Parameters
 

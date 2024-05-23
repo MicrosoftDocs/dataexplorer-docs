@@ -9,7 +9,7 @@ ms.date: 02/20/2023
 
 Merges tdigest results across the group.
 
-[!INCLUDE [data-explorer-agg-function-summarize-note](../../includes/data-explorer-agg-function-summarize-note.md)]
+[!INCLUDE [data-explorer-agg-function-summarize-note](../includes/data-explorer-agg-function-summarize-note.md)]
 
 For more information about the underlying algorithm (T-Digest) and the estimated error, see [estimation error in percentiles](percentiles-aggregation-function.md#estimation-error-in-percentiles).
 
@@ -23,7 +23,7 @@ For more information about the underlying algorithm (T-Digest) and the estimated
 
 `tdigest_merge(`*expr*`)`
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Parameters
 

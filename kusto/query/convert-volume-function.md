@@ -13,7 +13,7 @@ Convert a volume value from one unit to another.
 
 `convert_volume(`*value*`,`*from*`,`*to*`)`
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Parameters
 

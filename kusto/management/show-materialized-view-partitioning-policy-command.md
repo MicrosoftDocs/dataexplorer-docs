@@ -13,7 +13,7 @@ Displays the materialized view's [partitioning policy](partitioning-policy.md). 
 
 `.show` `materialized-view` *MaterializedViewName* `policy` `partitioning`
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Parameters
 

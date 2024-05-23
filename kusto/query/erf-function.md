@@ -13,7 +13,7 @@ Returns the [error function](https://en.wikipedia.org/wiki/Error_function) of th
 
 `erf(`*x*`)`
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Parameters
 

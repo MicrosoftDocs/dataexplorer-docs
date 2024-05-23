@@ -13,7 +13,7 @@ Calculates clockwise angle in radians between two lines on Earth. The first line
 
 `geo_angle(`*p1_longitude*`,`*p1_latitude*`,`*p2_longitude*`,`*p2_latitude*`,`*p3_longitude*`,`*p3_latitude*`)`
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Parameters
 

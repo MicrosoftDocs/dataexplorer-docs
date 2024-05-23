@@ -9,17 +9,17 @@ ms.date: 03/29/2023
 
 Filters a record set for data with a case-sensitive string.
 
-[!INCLUDE [in-operator-comparison](../../includes/in-operator-comparison.md)]
+[!INCLUDE [in-operator-comparison](../includes/in-operator-comparison.md)]
 
 ## Performance tips
 
-[!INCLUDE [performance-tip-note](../../includes/performance-tip-note.md)]
+[!INCLUDE [performance-tip-note](../includes/performance-tip-note.md)]
 
 ## Syntax
 
 *T* `|` `where` *col* `in` `(`*expression*`,` ... `)`
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Parameters
 

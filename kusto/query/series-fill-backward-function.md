@@ -15,7 +15,7 @@ An expression containing dynamic numerical array is the input. The function repl
 
 `series_fill_backward(`*series*`[,`*missing_value_placeholder*`])`
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Parameters
 

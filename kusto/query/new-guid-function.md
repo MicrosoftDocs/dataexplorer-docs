@@ -13,7 +13,7 @@ Returns a random GUID (Globally Unique Identifier).
 
 `new_guid()`
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Returns
 

@@ -7,7 +7,7 @@ ms.date: 07/03/2022
 ---
 # Data purge
 
-[!INCLUDE [gdpr-intro-sentence](../../includes/gdpr-intro-sentence.md)]
+[!INCLUDE [gdpr-intro-sentence](../includes/gdpr-intro-sentence.md)]
 
 As a data platform, Azure Data Explorer supports the ability to delete individual records, by using Kusto `.purge` and related commands. You can also [purge an entire table](#purging-an-entire-table) or purge records in a [materialized view](../management/materialized-views/materialized-view-purge.md).
 

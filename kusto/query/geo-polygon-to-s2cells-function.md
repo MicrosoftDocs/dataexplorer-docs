@@ -13,7 +13,7 @@ Calculates S2 cell tokens that cover a polygon or multipolygon on Earth. This fu
 
 `geo_polygon_to_s2cells(`*polygon* [`,` *level*[`,` *radius*]]`)`
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Parameters
 

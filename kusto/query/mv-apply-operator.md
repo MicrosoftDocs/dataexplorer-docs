@@ -74,7 +74,7 @@ Where *ItemIndex* has the syntax:
 
 and *SubQuery* has the same syntax of any query statement.
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Parameters
 

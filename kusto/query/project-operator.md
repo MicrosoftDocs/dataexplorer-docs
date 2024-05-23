@@ -19,7 +19,7 @@ or
 
 *T* `| project` *ColumnName* [`=` *Expression*] [`,` ...]
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Parameters
 

@@ -13,7 +13,7 @@ Returns the start of the month containing the date, shifted by an offset, if pro
 
 `startofmonth(`*date* [`,` *offset* ]`)`
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Parameters
 

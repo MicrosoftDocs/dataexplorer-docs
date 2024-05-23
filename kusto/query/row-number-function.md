@@ -17,7 +17,7 @@ Additionally, the row index may be reset according to some provided predicate.
 
 `row_number(` [*StartingIndex* [`,` *Restart*]] `)`
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Parameters
 

@@ -13,7 +13,7 @@ Encodes a base64 string from a bytes array.
 
 `base64_encode_fromarray(`*base64_string_decoded_as_a_byte_array*`)`
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Parameters
 

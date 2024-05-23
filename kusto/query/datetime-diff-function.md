@@ -13,7 +13,7 @@ Calculates the number of the specified periods between two [datetime](./scalar-d
 
 `datetime_diff(`*period*`,`*datetime1*`,`*datetime2*`)`
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Parameters
 

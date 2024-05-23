@@ -13,7 +13,7 @@ Creates a `bool` value indicating if the first argument is within a range around
 
 `around(`*value*`,`*center*`,`*delta*`)`
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Parameters
 

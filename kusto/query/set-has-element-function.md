@@ -13,7 +13,7 @@ Determines whether the specified set contains the specified element.
 
 `set_has_element(`*set*`,` *value*`)`
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Parameters
 

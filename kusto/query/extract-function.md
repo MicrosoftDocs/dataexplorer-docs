@@ -15,7 +15,7 @@ Optionally, convert the extracted substring to the indicated type.
 
 `extract(`*regex*`,` *captureGroup*`,` *source* [`,` *typeLiteral*]`)`
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Parameters
 

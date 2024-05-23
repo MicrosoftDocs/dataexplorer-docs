@@ -13,7 +13,7 @@ Reverses the order of the elements in a dynamic array.
 
 `array_reverse(`*value*`)`
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Parameters
 

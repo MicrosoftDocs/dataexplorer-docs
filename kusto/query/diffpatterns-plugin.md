@@ -18,7 +18,7 @@ Compares two datasets of the same structure and finds patterns of discrete attri
 
 `T | evaluate diffpatterns(`*SplitColumn*`,` *SplitValueA*`,` *SplitValueB* [`,` *WeightColumn*`,`*Threshold*`,` *MaxDimensions*`,` *CustomWildcard*`,` ...]`)`
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Parameters
 

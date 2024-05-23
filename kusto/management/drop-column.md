@@ -27,7 +27,7 @@ You must have at least [Table Admin](access-control/role-based-access-control.md
 
 `.drop` `column` *TableName*`.`*ColumnName* [`ifexists`]
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Parameters
 
@@ -61,7 +61,7 @@ Removes multiple columns from a table.
 
 `.drop` `table` *TableName* `columns` `(` *ColumnName* [`,` ...] `)`
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ### Parameters
 

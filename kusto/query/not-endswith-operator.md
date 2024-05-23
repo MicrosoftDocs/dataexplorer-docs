@@ -9,11 +9,11 @@ ms.date: 01/10/2023
 
 Filters a record set for data that excludes a case-insensitive ending string.
 
-[!INCLUDE [endswith-operator-comparison](../../includes/endswith-operator-comparison.md)]
+[!INCLUDE [endswith-operator-comparison](../includes/endswith-operator-comparison.md)]
 
 ## Performance tips
 
-[!INCLUDE [performance-tip-note](../../includes/performance-tip-note.md)]
+[!INCLUDE [performance-tip-note](../includes/performance-tip-note.md)]
 
 When possible, use the case-sensitive [!endswith_cs](not-endswith-cs-operator.md).
 
@@ -21,7 +21,7 @@ When possible, use the case-sensitive [!endswith_cs](not-endswith-cs-operator.md
 
 *T* `|` `where` *col* `!endswith` `(`*expression*`)`
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Parameters
 

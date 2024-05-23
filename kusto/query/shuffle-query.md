@@ -50,7 +50,7 @@ In some cases, the `hint.strategy = shuffle` is ignored, and the query won't run
 
 *T* `|` *Query* `|` partition  `hint.shufflekey` = *key* `(` *SubQuery* `)`
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Parameters
 

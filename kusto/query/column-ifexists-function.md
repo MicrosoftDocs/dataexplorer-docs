@@ -15,7 +15,7 @@ Takes a column name as a string and a default value. Returns a reference to the 
 
 `column_ifexists(`*columnName*`,`*defaultValue*`)`
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Parameters
 
