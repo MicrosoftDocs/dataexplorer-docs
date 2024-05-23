@@ -34,11 +34,10 @@ Returns a JSON representation of the policy.
 
 ## Example
 
-The following example requests information about the Automotive table mirroring policy.
+The following example requests information about the *myTable* table mirroring policy.
 
 ```kusto
-.show table Automotive policy mirroring 
-```
+.show table myTable policy mirroring 
 
 ::: zone-end
 
