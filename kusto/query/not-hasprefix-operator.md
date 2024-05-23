@@ -11,7 +11,7 @@ Filters a record set for data that doesn't include a case-insensitive starting s
 
 For best performance, use strings of three characters or more. `!hasprefix` searches for indexed terms, where an indexed [term](datatypes-string-operators.md#what-is-a-term) is three or more characters. If your term is fewer than three characters, the query scans the values in the column, which is slower than looking up the term in the term index.
 
-[!INCLUDE [has-prefix-operator-comparison](../includes/has-prefix-operator-comparison.md)]
+[!INCLUDE [has-prefix-operator-comparison](../includes/hasprefix-operator-comparison.md)]
 
 ## Performance tips
 
