@@ -33,8 +33,7 @@ You must have at least [Table Admin](access-control/role-based-access-control.md
 The following command deletes the mirroring policy at the table level.
 
 ```kusto
-.delete table Table1 policy mirroring
-```
+.delete table myTable policy mirroring
 
 ::: zone-end
 

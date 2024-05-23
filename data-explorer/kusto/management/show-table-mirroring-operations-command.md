@@ -44,11 +44,10 @@ You must have at least Database User, Database Viewer, or Database Monitor permi
 
 ## Example
 
-The following example requests operations mirroring status of the Automotive table.
+The following example requests operations mirroring status of the *myTable* table.
 
 ```kusto
-.show table Automotive operations mirroring-status 
-```
+.show table myTable operations mirroring-status 
 
 ::: zone-end
 
