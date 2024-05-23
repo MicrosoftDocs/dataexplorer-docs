@@ -28,7 +28,7 @@ You must have at least [Materialized View Admin](../access-control/role-based-ac
 
 ## Returns
 
-[!INCLUDE [materialized-view-show-command-output-schema.md](../includes/materialized-view-show-command-output-schema.md)]
+[!INCLUDE [materialized-view-show-command-output-schema.md](../../includes/materialized-view-show-command-output-schema.md)]
 
 ## Examples
 

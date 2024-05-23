@@ -50,7 +50,7 @@ If the table already exists, only the following subset of properties are support
 
 ## Returns
 
-[!INCLUDE [materialized-view-show-command-output-schema.md](../includes/materialized-view-show-command-output-schema.md)]
+[!INCLUDE [materialized-view-show-command-output-schema.md](../../includes/materialized-view-show-command-output-schema.md)]
 
 ## Examples
 

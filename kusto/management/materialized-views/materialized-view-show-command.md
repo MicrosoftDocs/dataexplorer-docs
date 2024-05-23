@@ -30,7 +30,7 @@ You must have at least Database User, Database Viewer, or Database Monitor permi
 
 ### Returns
 
-[!INCLUDE [materialized-view-show-command-output-schema.md](../includes/materialized-view-show-command-output-schema.md)]
+[!INCLUDE [materialized-view-show-command-output-schema.md](../../includes/materialized-view-show-command-output-schema.md)]
 
 ## Examples
 
