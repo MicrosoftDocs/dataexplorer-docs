@@ -3,9 +3,9 @@ title: Mirroring policy
 description: Learn how to use the mirroring policy.
 ms.reviewer: sharmaanshul
 ms.topic: reference
-ms.date: 05/21/2024
+ms.date: 05/23s/2024
 zone_pivot_group_filename: data-explorer/zone-pivot-groups.json
-zone_pivot_groups: kql-flavors-mirroring
+zone_pivot_groups: kql-flavors-all
 ---
 # Mirroring policy
 
@@ -27,7 +27,7 @@ The mirroring policy includes the following properties:
 |---|---|---|---|
 | **Format** | The format of your mirrored files. | Valid value is `parquet`. | `parquet` |
 | **MirroringMaxLatencyMinutes** | The maximum amount of time in minutes between the last and next time new data was added to your mirrored files. | A positive integer. | |
-|  **IsEnabled** | Determines whether the mirroring policy is enabled. When the mirroring policy is disabled and set to `false`, the underlying mirroring data is retained in the database but is considered inactive. | `true`, `false`, `null`. | `null` |
+|  **IsEnabled** | Determines whether the mirroring policy is enabled. When the mirroring policy is disabled and set to `false`, the underlying mirroring data is retained in the database. | `true`, `false`, `null`. | `null` |
 | **"Partitions** | A comma-separated list of columns used to divide the data into smaller partitions. *PartitionName* must be a case insensitive unique string both among other partition names and the column names of the mirrored table. See [Partitions formatting](external-tables-azure-storage.md#partitions-formatting).| | |
 
 ## Example policy

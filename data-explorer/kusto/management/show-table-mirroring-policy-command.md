@@ -3,9 +3,9 @@ title: .show table policy mirroring command
 description: Learn how to use the `.show table policy mirroring` command to display the table's mirroring policy.
 ms.reviewer: sharmaanshul
 ms.topic: reference
-ms.date: 05/21/2024
+ms.date: 05/23/2024
 zone_pivot_group_filename: data-explorer/zone-pivot-groups.json
-zone_pivot_groups: kql-flavors-mirroring
+zone_pivot_groups: kql-flavors-all
 ---
 # .show table policy mirroring command
 

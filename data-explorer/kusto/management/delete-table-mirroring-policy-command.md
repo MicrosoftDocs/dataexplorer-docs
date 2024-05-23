@@ -1,11 +1,11 @@
 ---
 title: .delete table policy mirroring command
-description: Learn how to use the `.delete table policy mirroring` command to delete a table's mirroring policy.
+description: Learn how to use the `.delete table policy mirroring` command to delete a table's  logical copy.
 ms.reviewer: sharmaanshul
 ms.topic: reference
-ms.date: 05/16/2024
+ms.date: 05/23/2024
 zone_pivot_group_filename: data-explorer/zone-pivot-groups.json
-zone_pivot_groups: kql-flavors-mirroring
+zone_pivot_groups: kql-flavors-all
 ---
 # .delete table policy mirroring command
 

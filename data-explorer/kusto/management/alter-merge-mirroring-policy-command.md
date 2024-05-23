@@ -1,11 +1,11 @@
 ---
 title: .alter-merge table policy mirroring command
-description: Learn how to use the `.alter-merge table policy mirroring` command to mirror your data in Azure storage.
+description: Learn how to use the `.alter-merge table policy mirroring` command to  create a logical copy of tables of your data.
 ms.reviewer: sharmaanshul
 ms.topic: reference
-ms.date: 01/16/2024
+ms.date: 05/23/2024
 zone_pivot_group_filename: data-explorer/zone-pivot-groups.json
-zone_pivot_groups: kql-flavors-mirroring
+zone_pivot_groups: kql-flavors-all
 ---
 
 # .alter-merge table policy mirroring command
@@ -20,7 +20,7 @@ You must have at least [Database Admin](../access-control/role-based-access-cont
 
 ## Syntax
 
-(`.alter` | `.alter-merge`) `table` *TableName* `policy mirroring` 
+(`.alter` | `.alter-merge`) `table` *TableName* `policy mirroring`
 [`partition` `by` (*Partitions*)] 
 `dataformat`= `parquet`  
 [`with` (`IsEnabled`=`IsEnabledValue`)]
@@ -33,13 +33,12 @@ You must have at least [Database Admin](../access-control/role-based-access-cont
 |--|--|--|--|
 |*TableName*| string| :heavy_check_mark:|A table name that adheres to the [Entity names](../query/schema-entities/entity-names.md) rules.|
 |*Partitions*| string| | A comma-separated list of columns used to divide the data into smaller partitions. *PartitionName* must be a case insensitive unique string both among other partition names and the column names of the mirrored table. See [Partitions formatting](external-tables-azure-storage.md#partitions-formatting).|
-|*DataFormat*| string| :heavy_check_mark:| The data format. Valid values: `Parquet`.|
 
 ## Properties
 
 |Name|Type|Description|
 |--|--|--|
-|`IsEnabled`| `bool`| A Boolean value that determines whether the mirroring policy is enabled. Default is `true`. When the mirroring policy is disabled and set to `false`, the underlying mirroring data is retained in the database but is considered inactive. |
+|`IsEnabled`| `bool`| A Boolean value that determines whether the mirroring policy is enabled. Default is `true`. When the mirroring policy is disabled and set to `false`, the underlying mirroring data is retained in the database. |
 
 ## Examples
 

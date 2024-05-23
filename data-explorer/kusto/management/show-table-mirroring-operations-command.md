@@ -3,9 +3,9 @@ title: .show table mirroring operations command
 description: Learn how to use the `.show table mirroring operations` command to check the mirroring policy operations.
 ms.reviewer: sharmaanshul
 ms.topic: reference
-ms.date: 05/21/2024
+ms.date: 05/23/2024
 zone_pivot_group_filename: data-explorer/zone-pivot-groups.json
-zone_pivot_groups: kql-flavors-mirroring
+zone_pivot_groups: kql-flavors-all
 ---
 # .show table mirroring operations command
 
@@ -40,7 +40,7 @@ You must have at least Database User, Database Viewer, or Database Monitor permi
 |LastExportStartTime | `datetime`| The start time of the last export. |
 |LastExportResult | `string` | The status of the last export result. |
 |LastExportedDataTime|`datetime` | The time of the last data export.  |
-|Latency | `timespan` |The maximum amount of time in minutes between the last and next time new data was added to your mirrored files.  |
+|Latency | `timespan` |The maximum amount of time in minutes between the last and next time new data was added to your logical copy.  |
 
 ## Example
 
