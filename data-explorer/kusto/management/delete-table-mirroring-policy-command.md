@@ -37,7 +37,7 @@ The following command deletes the mirroring policy at the table level.
 
 ::: zone-end
 
-::: zone pivot="azuredataexplorer, azuremonitor, azurestorage"
+::: zone pivot="azuredataexplorer, azuremonitor"
 
 This feature isn't supported.
 

@@ -41,7 +41,7 @@ The following example requests information about the *myTable* table mirroring p
 
 ::: zone-end
 
-::: zone pivot="azuredataexplorer, azuremonitor, azurestorage"
+::: zone pivot="azuredataexplorer, azuremonitor"
 
 This feature isn't supported.
 

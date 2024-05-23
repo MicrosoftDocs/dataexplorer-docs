@@ -61,7 +61,7 @@ In the following example, a table called *myTable* is mirrored. The data is part
 
 ::: zone-end
 
-::: zone pivot="azuredataexplorer, azuremonitor, azurestorage"
+::: zone pivot="azuredataexplorer, azuremonitor"
 
 This feature isn't supported.
 

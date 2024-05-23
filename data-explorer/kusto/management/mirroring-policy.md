@@ -44,7 +44,7 @@ The mirroring policy includes the following properties:
 
 ::: zone-end
 
-::: zone pivot="azuredataexplorer, azuremonitor, azurestorage"
+::: zone pivot="azuredataexplorer, azuremonitor"
 
 This feature isn't supported.
 
