@@ -11,7 +11,7 @@ zone_pivot_groups: kql-flavors
 
 ::: zone pivot="azuredataexplorer"
 
-The `postgresql_request` plugin sends a SQL query to a PostgreSQL Server network endpoint and returns the first rowset in the results. The query may return more than one rowset, but only the first rowset is made available for the rest of the Kusto query.
+The `postgresql_request` plugin sends a SQL query to an Azure PostgreSQL Server network endpoint and returns the first rowset in the results. The query may return more than one rowset, but only the first rowset is made available for the rest of the Kusto query.
 
 The plugin is invoked with the [`evaluate`](evaluate-operator.md) operator.
 
