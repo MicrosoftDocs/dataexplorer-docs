@@ -12,7 +12,7 @@ The `split()` function takes a string and splits it into substrings based on a s
 
 ## Syntax
 
-`split(`*source*`,` *delimiter* [`,` *requestedIndex*]`)`
+`split(`*source*`,` *delimiter* `,` *requestedIndex*`)`
 
 [!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
 
