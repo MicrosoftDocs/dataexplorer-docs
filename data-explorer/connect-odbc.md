@@ -16,7 +16,7 @@ Watch the following video to learn to create an ODBC connection.
 
 > [!VIDEO https://www.youtube.com/embed/qA5wxhrOwog]
 
-Alternatively, follow the steps to [connect to your cluster with ODBC](#connect-to-your-cluster-with-obdc).
+Alternatively, follow the steps to [connect to your cluster with ODBC](#connect-to-your-cluster-with-odbc).
 
 > [!NOTE]
 > We recommend using dedicated connectors whenever possible. For a list of available connectors, see [Connectors overview](connector-overview.md).
