@@ -104,6 +104,18 @@ To connect to Azure Data Explorer from Microsoft SQL Server Management Studio:
 
 1. Now, you can run custom SQL queries from the query window.
 
+## PowerShell
+
+The following example shows how to connect to your cluster using an ODBC driver in PowerShell using a [connection string](connect-odbc.md#connect-to-your-cluster-with-odbc).
+
+```powershell
+$conn = [System.Data.Common.DbProviderFactories]::GetFactory("System.Data.Odbc").CreateConnection()
+$conn.ConnectionString = "Driver={ODBC Driver 17 for SQL Server};Server=mykustocluster.kusto.windows.net;Database=mykustodatabase;Authentication=ActiveDirectoryIntegrated"
+$conn.Open()
+$conn.GetSchema("Tables")
+$conn.Close()
+```
+
 ## Related content
 
 * [Query with T-SQL](t-sql.md)
