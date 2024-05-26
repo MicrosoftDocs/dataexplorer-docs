@@ -29,4 +29,4 @@ The `bool` data type supports all of the [logical operators](../logicaloperators
 
 ## Related content
 
-* [tobool()](../../query/toboolfunction.md)
+* [tobool()](../tobool-function.md)

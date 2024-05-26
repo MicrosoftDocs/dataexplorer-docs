@@ -7,7 +7,7 @@ ms.date: 03/13/2023
 ---
 # time_weighted_avg_fl()
 
-The function `time_weighted_avg_fl()` is a [user-defined function (UDF)](../query/functions/user-defined-functions.md) that calculates the time weighted average of a metric in a given time window, over input time bins. This function is similar to [summarize operator](../query/summarize-operator.md). The function aggregates the metric by time bins, but instead of calculating simple [avg()](../query/avg-aggfunction.md) of the metric value in each bin, it weights each value by its duration. The duration is defined from the timestamp of the current value to the timestamp of the next value.
+The function `time_weighted_avg_fl()` is a [user-defined function (UDF)](../query/functions/user-defined-functions.md) that calculates the time weighted average of a metric in a given time window, over input time bins. This function is similar to [summarize operator](../query/summarize-operator.md). The function aggregates the metric by time bins, but instead of calculating simple [avg()](../query/avg-aggregation-function.md) of the metric value in each bin, it weights each value by its duration. The duration is defined from the timestamp of the current value to the timestamp of the next value.
 
 This type of aggregation is required for use cases where the metric values are emitted only when changed (and not in constant intervals). For example in IoT, where edge devices send metrics to the cloud only upon changes, and optimize communication bandwidth.
 

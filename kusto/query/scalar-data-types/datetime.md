@@ -8,7 +8,7 @@ ms.date: 01/08/2024
 # The datetime data type
 
 The `datetime` data type represents an instant in time, typically expressed as a date and time of day.
-Values range from 00:00:00 (midnight), January 1, 0001 Anno Domini (Common Era) through 11:59:59 P.M., December 31, 9999 A.D. (C.E.) in the Gregorian calendar. 
+Values range from 00:00:00 (midnight), January 1, 0001 Anno Domini (Common Era) through 11:59:59 P.M., December 31, 9999 A.D. (C.E.) in the Gregorian calendar.
 
 Time values are measured in 100-nanosecond units called ticks, and a particular date is the number of ticks since 12:00 midnight,
 January 1, 0001 A.D. (C.E.) in the GregorianCalendar calendar (excluding ticks that would be added by leap seconds).
@@ -18,8 +18,8 @@ This is sometimes called "a moment in linear time".
 > The `datetime` and `date` data types are equivalent.
 
 > [!NOTE]
-> A `datetime` value in Kusto is always in the UTC time zone. If displaying `datetime` values 
-> in other time zones is required, use [datetime_utc_to_local()](../datetime-utc-to-local-function.md) 
+> A `datetime` value in Kusto is always in the UTC time zone. If displaying `datetime` values
+> in other time zones is required, use [datetime_utc_to_local()](../datetime-utc-to-local-function.md)
 > or [datetime_local_to_utc()](../datetime-local-to-utc-function.md).
 
 ## `datetime` literals
@@ -86,11 +86,10 @@ and the [todatetime()](../todatetime-function.md) function.
 |%e-%b-%r %H:%M %Z|08-Nov-14 15:05 GMT|
 |%e-%b-%r %H:%M|08-Nov-14 15:05|
 
-
-### Sortable 
+### Sortable
 
 |Format|Example|
-|------|-------|        
+|------|-------|
 |%Y-%n-%e %H:%M:%s|2014-11-08 15:05:25|
 |%Y-%n-%e %H:%M:%s %Z|2014-11-08 15:05:25 GMT|
 |%Y-%n-%e %H:%M|2014-11-08 15:05|
@@ -102,6 +101,6 @@ and the [todatetime()](../todatetime-function.md) function.
 
 ## Related content
 
-* [todatetime()](../../query/todatetimefunction.md)
-* [ago()](../../query/ago-function.md)
-* [between](../../query/between-operator.md)
+* [todatetime()](../todatetime-function.md)
+* [ago()](../ago-function.md)
+* [between](../between-operator.md)

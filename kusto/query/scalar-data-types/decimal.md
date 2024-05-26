@@ -27,5 +27,5 @@ To specify a `decimal` literal, use one of the following syntax options:
 
 ## Related content
 
-* [todecimal()](../../query/todecimalfunction.md)
-* [toreal()](../../query/todoublefunction.md)
+* [todecimal()](../todecimal-function.md)
+* [toreal()](../todouble-function.md)

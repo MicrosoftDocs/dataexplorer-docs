@@ -30,10 +30,10 @@ The following data types are supported:
 | [timespan](timespan.md) (`time`) | A time interval. |
 
 > [!TIP]
-> To check the data type of a value, use the the [gettype()](../../query/gettypefunction.md) function.
+> To check the data type of a value, use the the [gettype()](../gettype-function.md) function.
 
 ## Null values
 
-All nonstring data types can be null. When a value is null, it indicates an absence or mismatch of data. For example, if you try to input the string `abc` into an integer column, it results in the null value. To check if an expression is null, use the [isnull()](../../query/isnullfunction.md) function.
+All nonstring data types can be null. When a value is null, it indicates an absence or mismatch of data. For example, if you try to input the string `abc` into an integer column, it results in the null value. To check if an expression is null, use the [isnull()](../isnull-function.md) function.
 
 For more information, see [Null values](null-values.md).

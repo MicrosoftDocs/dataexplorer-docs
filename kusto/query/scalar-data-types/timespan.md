@@ -58,4 +58,4 @@ print
 
 ## Related content
 
-* [totimespan()](../../query/totimespanfunction.md)
+* [totimespan()](../totimespan-function.md)

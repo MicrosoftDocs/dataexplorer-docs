@@ -24,4 +24,4 @@ To specify a `guid` literal, use one of the following syntax options:
 
 ## Related content
 
-* [toguid()](../../query/toguidfunction.md)
+* [toguid()](../toguid-function.md)

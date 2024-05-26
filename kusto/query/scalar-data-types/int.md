@@ -23,4 +23,4 @@ To specify an `int` literal, use one of the following syntax options:
 
 ## Related content
 
-* [toint()](../../query/tointfunction.md)
+* [toint()](../toint-function.md)

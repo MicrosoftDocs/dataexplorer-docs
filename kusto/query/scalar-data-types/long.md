@@ -26,5 +26,5 @@ To specify a `long` literal, use one of the following syntax options:
 
 ## Related content
 
-* [tolong()](../../query/tolongfunction.md)
-* To convert the `long` type into a hex string, see [tohex() function](../tohexfunction.md).
+* [tolong()](../tolong-function.md)
+* To convert the `long` type into a hex string, see [tohex() function](../tohex-function.md).

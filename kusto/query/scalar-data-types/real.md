@@ -28,4 +28,4 @@ To specify a `real` literal, use one of the following syntax options:
 
 ## Related content
 
-* [toreal()](../../query/toreal-function.md)
+* [toreal()](../toreal-function.md)
