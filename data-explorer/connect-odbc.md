@@ -16,22 +16,22 @@ Watch the following video to learn to create an ODBC connection.
 
 > [!VIDEO https://www.youtube.com/embed/qA5wxhrOwog]
 
-Alternatively, follow the steps to [Connection to Azure Data Explorer](#connection-to-azure-data-explorer).
+Alternatively, follow the steps to [connect to your cluster with ODBC](#connect-to-your-cluster-with-obdc).
 
 > [!NOTE]
-> We recommend using dedicated connectors for Azure Data Explorer whenever possible. For a list of available connectors, see [Connectors overview](connector-overview.md).
+> We recommend using dedicated connectors whenever possible. For a list of available connectors, see [Connectors overview](connector-overview.md).
 
 ## Prerequisites
 
 * [Microsoft ODBC Driver for SQL Server version 17.2.0.1 or later](/sql/connect/odbc/download-odbc-driver-for-sql-server) for your operating system.
 
-## Connection to Azure Data Explorer
+## Connect to your cluster with ODBC
 
-There are two ways to connect to Azure Data Explorer.
+You can connect to your cluster in the following ways.
 
 ### [Connection string](#tab/connection-string)
 
-From an application that supports ODBC connection, you can connect to Azure Data Explorer with a connection string of the following format:
+From an application that supports ODBC connection, you can connect to your cluster with a connection string of the following format:
 
 ```odbc
 "Driver={ODBC Driver 17 for SQL Server};Server=mykustocluster.kusto.windows.net;Database=mykustodatabase;Authentication=ActiveDirectoryIntegrated"
