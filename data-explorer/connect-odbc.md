@@ -16,7 +16,7 @@ Watch the following video to learn to create an ODBC connection.
 
 > [!VIDEO https://www.youtube.com/embed/qA5wxhrOwog]
 
-Alternatively, follow the steps to [configure the ODBC data source](#configure-the-odbc-data-source).
+Alternatively, follow the steps to [Connection to Azure Data Explorer](#connection-to-azure-data-explorer).
 
 > [!NOTE]
 > We recommend using dedicated connectors for Azure Data Explorer whenever possible. For a list of available connectors, see [Connectors overview](connector-overview.md).
@@ -85,7 +85,7 @@ To configure an ODBC data source using the ODBC driver for SQL Server:
 
 To use application principal authentication with ODBC, you must provide the Microsoft Entra tenant ID. You can set this configuration in the connection string, the Windows registry, or the odbc.ini file. See examples in the following tabs. For more information, see [tuning options](sql-server-emulation-overview.md#tuning-options).
 
-### [Connection string](#tab/connection-string)
+### [Connection string](#tab/connection)
 
 Set the application principal with `Language=any@AadAuthority:<aad_tenant_id>` in the connection string. Replace `<aad_tenant_id>`, `<aad_application_id>`, and `<aad_application_secret>` with the Microsoft Entra tenant ID, Microsoft Entra application ID, and the Microsoft Entra application secret respectively.
 
@@ -93,7 +93,7 @@ Set the application principal with `Language=any@AadAuthority:<aad_tenant_id>` i
 "Driver={ODBC Driver 17 for SQL Server};Server=<adx_cluster_name>.<region_name>.kusto.windows.net;Database=<adx_database_name>;Authentication=ActiveDirectoryServicePrincipal;Language=any@AadAuthority:<aad_tenant_id>;UID=<aad_application_id>;PWD=<aad_application_secret>"
 ```
 
-### [Windows registry](#tab/windows-registry)
+### [Windows registry](#tab/windows)
 
 Edit the `Language` field in the ODBC data source (DSN) in the registry for Windows as follows.
 
