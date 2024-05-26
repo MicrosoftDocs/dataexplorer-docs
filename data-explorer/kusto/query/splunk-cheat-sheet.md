@@ -150,7 +150,7 @@ The default sort order is ascending. To specify descending order, add a minus si
 
 | Product | Operator | Example |
 |:---|:---|:---|
-| Splunk | `sort` |  `Event.Rule=120103`<br />&#124; `sort -Data.Hresult` <br />&#124; |
+| Splunk | `sort` |  `Event.Rule=120103`<br />&#124; `sort -Data.Hresult` |
 | Kusto | `order by` | `Office_Hub_OHubBGTaskError`<br />&#124; `order by Data_Hresult,  desc` |
 
 ### Multivalue expand
