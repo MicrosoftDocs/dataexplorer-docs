@@ -28,7 +28,30 @@ The mirroring policy includes the following properties:
 | **Format** | The format of your mirrored files. | Valid value is `parquet`. | `parquet` |
 | **MirroringMaxLatencyMinutes** | The maximum amount of time in minutes between the last and next time new data was added to your mirrored files. | A positive integer. | |
 |  **IsEnabled** | Determines whether the mirroring policy is enabled. When the mirroring policy is disabled and set to `false`, the underlying mirroring data is retained in the database. | `true`, `false`, `null`. | `null` |
-| **"Partitions** | A comma-separated list of columns used to divide the data into smaller partitions. *PartitionName* must be a case insensitive unique string both among other partition names and the column names of the mirrored table. See [Partitions formatting](external-tables-azure-storage.md#partitions-formatting).| | |
+| **Partitions** | A comma-separated list of columns used to divide the data into smaller partitions. *PartitionName* must be a case insensitive unique string both among other partition names and the column names of the mirrored table. See [Partitions formatting](external-tables-azure-storage.md#partitions-formatting).| | |
+
+## Data types mapping
+
+To ensure compatibility and optimize queries, ensure that your data types are properly mapped to the parquet data types.
+
+### Event house to Delta parquet data types mapping
+
+ Event house data types are mapped to Delta Parquet data types using the following rules:
+
+| Event house data type | Delta data type |
+| --------------- | -----------------|
+| `bool`     | `boolean` |
+| `datetime` | `timestamp OR date (for date-bound partition definitions)` |
+| `dynamic`  | `string` |
+| `guid` | `string` |
+| `int` | `integer` |
+| `long` | `long` |
+| `real` | `double` |
+| `string` | `string` |
+| `timespan` | `long` |
+| `decimal` | `decimal(38,18)` |
+
+For more information on Event house data types, see [Scalar data types](/azure/data-explorer/kusto/query/scalar-data-types/index?context=/fabric/context/context-rta&pivots=fabric).
 
 ## Example policy
 

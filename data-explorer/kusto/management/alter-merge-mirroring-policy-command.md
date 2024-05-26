@@ -1,6 +1,6 @@
 ---
 title: .alter-merge table policy mirroring command
-description: Learn how to use the `.alter-merge table policy mirroring` command to create a logical copy of tables in your database.
+description: Learn how to use the `.alter-merge table policy mirroring` command to create a logical copy of tables of your database.
 ms.reviewer: sharmaanshul
 ms.topic: reference
 ms.date: 05/23/2024
@@ -12,7 +12,7 @@ zone_pivot_groups: kql-flavors-all
 
 ::: zone pivot="fabric"
 
-Changes the tables's [mirroring policy](mirroring-policy.md). The mirroring policy creates a logical copy of tables in your database in parquet format and allows you to partition your files to improve query speed. Each partition is represented as a separate column using the *PartitionName* listed in the *Partitions* list. This means there are more columns in the target than in your source table.
+Changes the tables's [mirroring policy](mirroring-policy.md). The mirroring policy creates a logical copy of tables in your database in delta parquet format and allows you to partition your files to improve query speed. Each partition is represented as a separate column using the *PartitionName* listed in the *Partitions* list. This means there are more columns in the target than in your source table.
 
 ## Permissions
 
@@ -48,7 +48,7 @@ In the following example, a table called *myTable* is mirrored. The data is part
 
 ```kusto
 .alter table myTable policy mirroring
-  partition by (Flag: string=store_and_fwd_flag, Date: datetime= startofday(timestamp))
+  partition by (Name: string=Name, Date: datetime= startofday(timestamp))
   dataformat=parquet
   with
   (IsEnabled=true)
