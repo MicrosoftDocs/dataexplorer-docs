@@ -106,7 +106,7 @@ To connect to Azure Data Explorer from Microsoft SQL Server Management Studio:
 
 ## Powershell
 
-The following example shows how to connect to Azure Data Explorer using an ODBC driver in PowerShell. For this to work, you must first follow the steps in [[Connection string](#tab/connection-string)](connect-odbc.md#connection-stringtabconnection-string).
+The following example shows how to connect to your cluster using an ODBC driver in PowerShell using a [connection string](connect-odbc.md#connection-stringtabconnection-string).
 
 ```powershell
 $conn = [System.Data.Common.DbProviderFactories]::GetFactory("System.Data.Odbc").CreateConnection()
