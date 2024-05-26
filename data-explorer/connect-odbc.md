@@ -45,36 +45,36 @@ To configure an ODBC data source using the ODBC driver for SQL Server:
 
 1. Select **Add**.
 
-    ![Add data source.](media/connect-odbc/add-data-source.png)
+:::image type="content" source="media/connect-odbc/add-data-source.png" alt-text="Add data source.":::
 
 1. Select **ODBC Driver 17 for SQL Server** then **Finish**.
 
-    ![Select driver.](media/connect-odbc/select-driver.png)
+    :::image type="content" source="media/connect-odbc/select-driver.png" alt-text="Select driver.":::
 
 1. Enter a name and description for the connection and the cluster you want to connect to, then select **Next**. The cluster URL should be in the form *\<ClusterName\>.\<Region\>.kusto.windows.net*.
 
     >[!NOTE]
     > When entering the cluster URL, do not include the prefix "https://".
 
-    ![Select server.](media/connect-odbc/select-server.png)
+    :::image type="content" source="media/connect-odbc/select-server.png" alt-text="Select server.":::
 
 1. Select **Active Directory Integrated** then **Next**.
 
-    ![Active Directory Integrated.](media/connect-odbc/active-directory-integrated.png)
+    :::image type="content" source="media/connect-odbc/active-directory-integrated.png" alt-text="Active directory integrated.":::
 
 1. Select the database with the sample data then **Next**.
 
-    ![Change default database.](media/connect-odbc/change-default-database.png)
+    :::image type="content" source="media/connect-odbc/change-default-database.png" alt-text="Cahnge default database.":::
 
 1. On the next screen, leave all options as defaults then select **Finish**.
 
 1. Select **Test Data Source**.
 
-    ![Test data source.](media/connect-odbc/test-data-source.png)
+    :::image type="content" source="media/connect-odbc/test-data-source.png" alt-text="Test data source.":::
 
 1. Verify that the test succeeded then select **OK**. If the test didn't succeed, check the values that you specified in previous steps, and ensure you have sufficient permissions to connect to the cluster.
 
-    ![Test succeeded.](media/connect-odbc/test-succeeded.png)
+    :::image type="content" source="media/connect-odbc/test-succeeded.png" alt-text="Test succeeded.":::
 
 ---
 
