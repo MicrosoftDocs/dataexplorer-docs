@@ -22,7 +22,7 @@ You must have at least [Database Admin](../access-control/role-based-access-cont
 
 (`.alter` | `.alter-merge`) `table` *TableName* `policy mirroring`
 [`partition` `by` (*Partitions*)] 
-`dataformat`= `parquet`  
+`dataformat` = `parquet`  
 [`with` (`IsEnabled`=`IsEnabledValue`)]
 
 [!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
