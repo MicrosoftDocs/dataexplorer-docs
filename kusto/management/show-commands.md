@@ -14,7 +14,7 @@ ms.date: 11/30/2023
 
 ## Permissions
 
-A [database admin or database monitor](./access-control/role-based-access-control.md) can see any command that was invoked on their database. Other users can only see their commands.
+A [database admin or database monitor](access-control/role-based-access-control.md) can see any command that was invoked on their database. Other users can only see their commands.
 
 ## Syntax
 

@@ -20,7 +20,7 @@ There are two possible ways to create a materialized view, as noted by the *back
 
 * See [Backfill a materialized view](#backfill-a-materialized-view).
 * Creation might take a long while to complete, depending on the number of records in the source table. The view won't be available for queries until backfill is complete.
-* When you're using this option, the create command must be `async`. You can monitor execution by using the [`.show operations`](../operations.md#show-operations) command.
+* When you're using this option, the create command must be `async`. You can monitor execution by using the [`.show operations`](../show-operations.md) command.
 * You can cancel the backfill process by using the [`.cancel operation`](#cancel-materialized-view-creation) command.
 
 > [!IMPORTANT]
@@ -320,7 +320,7 @@ The following aggregation functions are supported:
 
 When you're creating a materialized view by using the `backfill` property, the materialized view will be created based on the records available in the source table. Or it will be created based on a subset of those records, if you use `effectiveDateTime`.
 
-Behind the scenes, the backfill process splits the data to backfill into multiple batches and executes several ingest operations to backfill the view. The process might take a long while to complete when the number of records in source table is large. The process duration depends on cluster size. Track the progress of the backfill by using the [`.show operations`](../operations.md#show-operations) command.
+Behind the scenes, the backfill process splits the data to backfill into multiple batches and executes several ingest operations to backfill the view. The process might take a long while to complete when the number of records in source table is large. The process duration depends on cluster size. Track the progress of the backfill by using the [`.show operations`](../show-operations.md) command.
 
 Transient failures that occur as part of the backfill process are retried. If all retries are exhausted, the command will fail and require a manual re-execution of the create command.
 
@@ -453,7 +453,7 @@ You can cancel the process of materialized view creation when you're using the b
 
 The creation process can't be canceled immediately. The cancel command signals materialization to stop, and the creation periodically checks if a cancel was requested. The cancel command waits for a maximum period of 10 minutes until the materialized view creation process is canceled, and it reports back if cancellation was successful.
 
-Even if the cancellation doesn't succeed within 10 minutes, and the cancel command reports failure, the materialized view will probably cancel itself later in the creation process. The [`.show operations`](../operations.md#show-operations) command indicates if the operation was canceled.
+Even if the cancellation doesn't succeed within 10 minutes, and the cancel command reports failure, the materialized view will probably cancel itself later in the creation process. The [`.show operations`](../show-operations.md) command indicates if the operation was canceled.
 
 If the operation is no longer in progress when the `.cancel operation` command is issued, the command will report an error saying so.
 

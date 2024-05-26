@@ -23,7 +23,7 @@ You must have at least [AllDatabasesMonitor](access-control/role-based-access-co
 
 |Policy name | Entity name | Policy | Child entities | Entity type
 |---|---|---|---|---
-|QueryWeakConsistencyPolicy |  | JSON serialization of the [query weak consistency policy object](./query-weak-consistency-policy.md#the-policy-object) | | Cluster
+|QueryWeakConsistencyPolicy |  | JSON serialization of the [query weak consistency policy object](query-weak-consistency-policy.md#the-policy-object) | | Cluster
 
 ## Example
 

@@ -233,4 +233,4 @@ In both of these cases, either "fix" the data, or filter out any irrelevant reco
 
 ## Related content
 
-* [Partitioning policy management commands](./show-table-partitioning-policy-command.md)
+* [Partitioning policy management commands](show-table-partitioning-policy-command.md)

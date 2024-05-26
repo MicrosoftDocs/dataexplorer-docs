@@ -23,7 +23,7 @@ Converts unix-epoch milliseconds to UTC datetime.
 
 ## Returns
 
-If the conversion is successful, the result is a [datetime](./scalar-data-types/datetime.md) value. Otherwise, the result is null.
+If the conversion is successful, the result is a [datetime](scalar-data-types/datetime.md) value. Otherwise, the result is null.
 
 ## Example
 

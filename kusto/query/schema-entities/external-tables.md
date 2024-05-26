@@ -18,7 +18,7 @@ Supported external data stores are:
 
 See the following ways of creating external tables:
 
-* [Create or alter Azure Blob Storage/ADLS external tables](../../management/external-tables-azurestorage-azuredatalake.md)
+* [Create or alter Azure Blob Storage/ADLS external tables](../../management/external-tables-azure-storage.md)
 * [Create or alter delta external tables](../../management/external-tables-azurestorage-deltalake.md)
 * [Create and alter SQL Server external tables](../../management/external-sql-tables.md)
 * [Create external table using Azure Data Explorer web UI Wizard](../../../external-table.md)

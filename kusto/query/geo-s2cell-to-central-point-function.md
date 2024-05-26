@@ -23,7 +23,7 @@ Calculates the geospatial coordinates that represent the center of an S2 cell.
 
 ## Returns
 
-The geospatial coordinate values in [GeoJSON Format](https://tools.ietf.org/html/rfc7946) and of a [dynamic](./scalar-data-types/dynamic.md) data type. If the S2 cell token is invalid, the query will produce a null result.
+The geospatial coordinate values in [GeoJSON Format](https://tools.ietf.org/html/rfc7946) and of a [dynamic](scalar-data-types/dynamic.md) data type. If the S2 cell token is invalid, the query will produce a null result.
 
 > [!NOTE]
 > The GeoJSON format specifies longitude first and latitude second.

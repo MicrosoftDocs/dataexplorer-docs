@@ -16,7 +16,7 @@ If the entity's container isn't available from the context, or you want to refer
 The name is the concatenation of the entity name to the container's, and potentially its container's, and so on. In this way, a query running against database `DB` may refer to a table `T1` in a different database `DB1` of the same cluster, by using `database("DB1").T1`. If the query wants to reference a table from another cluster it can do so, for example, by using `cluster("https://C2.kusto.windows.net/").database("DB2").T2`.
 
 Entity references can also use the entity pretty name, as long as it's unique
-in the context of the entity's container. For more information, see [entity pretty names](./entity-names.md#pretty-names).
+in the context of the entity's container. For more information, see [entity pretty names](entity-names.md#pretty-names).
 
 ## Wildcard matching for entity names
 

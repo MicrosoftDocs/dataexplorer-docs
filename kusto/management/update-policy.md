@@ -111,7 +111,7 @@ Update policies can affect cluster performance, and ingestion for data extents i
 
 ### Evaluate resource usage
 
-Use [`.show queries`](../management/queries.md), to evaluate resource usage (CPU, memory, and so on) with the following parameters:
+Use [`.show queries`](../query/queries.md), to evaluate resource usage (CPU, memory, and so on) with the following parameters:
 
 * Set the `Source` property, the source table name, as `MySourceTable`
 * Set the `Query` property to call a function named `MyFunction()`

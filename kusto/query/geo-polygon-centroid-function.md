@@ -23,7 +23,7 @@ Calculates the centroid of a polygon or a multipolygon on Earth.
 
 ## Returns
 
-The centroid coordinate values in [GeoJSON Format](https://tools.ietf.org/html/rfc7946) and of a [dynamic](./scalar-data-types/dynamic.md) data type. If polygon or multipolygon are invalid, the query produces a null result.
+The centroid coordinate values in [GeoJSON Format](https://tools.ietf.org/html/rfc7946) and of a [dynamic](scalar-data-types/dynamic.md) data type. If polygon or multipolygon are invalid, the query produces a null result.
 
 > [!NOTE]
 >

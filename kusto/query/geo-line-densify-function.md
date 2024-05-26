@@ -25,7 +25,7 @@ Converts planar lines or multiline edges to geodesics by adding intermediate poi
 
 ## Returns
 
-Densified line in the [GeoJSON format](https://tools.ietf.org/html/rfc7946) and of a [dynamic](./scalar-data-types/dynamic.md) data type. If either the line or tolerance is invalid, the query will produce a null result.
+Densified line in the [GeoJSON format](https://tools.ietf.org/html/rfc7946) and of a [dynamic](scalar-data-types/dynamic.md) data type. If either the line or tolerance is invalid, the query will produce a null result.
 
 > [!NOTE]
 >
@@ -44,7 +44,7 @@ dynamic({"type": "MultiLineString","coordinates": [[line_1, line_2, ..., line_N]
 **Constraints**
 
 * The maximum number of points in the densified line is limited to 10485760.
-* Storing lines in [dynamic](./scalar-data-types/dynamic.md) format has size limits.
+* Storing lines in [dynamic](scalar-data-types/dynamic.md) format has size limits.
 
 **Motivation**
 

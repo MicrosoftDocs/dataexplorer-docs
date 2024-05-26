@@ -28,4 +28,4 @@ To specify a `decimal` literal, use one of the following syntax options:
 ## Related content
 
 * [todecimal()](../todecimal-function.md)
-* [toreal()](../todouble-function.md)
+* [toreal()](../toreal-function.md)

@@ -67,7 +67,7 @@ When the command is run synchronously, a table with the following schema is retu
 | ResultExtentId | `string` | A unique identifier (GUID) for the result extent that has been moved from the source table to the destination table. Empty, if the extent was dropped from the destination table. Upon failure: "Failed". |
 | Details | `string` | Includes the failure details if the operation fails. |
 
-When the command is run asynchronously, an operation ID (GUID) is returned. Monitor the operation's status with the [.show operations](operations.md#show-operations) command, and retrieve the results of a successful execution with the [.show operation details](operations.md#show-operation-details) command.
+When the command is run asynchronously, an operation ID (GUID) is returned. Monitor the operation's status with the [.show operations](show-operations.md) command, and retrieve the results of a successful execution with the [.show operation details](show-operations.md#show-operation-details) command.
 
 > [!NOTE]
 > The command will fail if extents returned by the *ExtentsToDropQuery* query don't exist in the destination table. This may happen if the extents were merged before the replace command was executed.

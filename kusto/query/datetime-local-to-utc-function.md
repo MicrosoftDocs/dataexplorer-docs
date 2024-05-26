@@ -24,7 +24,7 @@ Converts local datetime to UTC datetime using [a time-zone specification](timezo
 
 ## Returns
 
-A UTC [datetime](./scalar-data-types/datetime.md) that corresponds the local [datetime](./scalar-data-types/datetime.md) in the specified `timezone`.
+A UTC [datetime](scalar-data-types/datetime.md) that corresponds the local [datetime](scalar-data-types/datetime.md) in the specified `timezone`.
 
 ## Example
 

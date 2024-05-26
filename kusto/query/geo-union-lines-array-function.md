@@ -23,7 +23,7 @@ Calculates the union of lines or multilines on Earth.
 
 ## Returns
 
-A line or a multiline in [GeoJSON Format](https://tools.ietf.org/html/rfc7946) and of a [dynamic](./scalar-data-types/dynamic.md) data type. If any of the provided lines or multilines is invalid, the query will produce a null result.
+A line or a multiline in [GeoJSON Format](https://tools.ietf.org/html/rfc7946) and of a [dynamic](scalar-data-types/dynamic.md) data type. If any of the provided lines or multilines is invalid, the query will produce a null result.
 
 > [!NOTE]
 >

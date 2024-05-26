@@ -11,7 +11,7 @@ The `.show` `queries` command lists queries on the cluster that have reached a f
 
 ## Permissions
 
-A [Database Admin or Database Monitor](./access-control/role-based-access-control.md) can see any command invoked on the database. Other users can only see their queries.
+A [Database Admin or Database Monitor](access-control/role-based-access-control.md) can see any command invoked on the database. Other users can only see their queries.
 
 ## Syntax
 

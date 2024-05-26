@@ -84,7 +84,7 @@ Alters a follower database caching policy, to override the one set on the source
 
 * The default `modification kind` for caching policies is `union`. To change the `modification kind`, use the [`.alter follower database caching-policies-modification-kind`](#alter-follower-database-caching-policies-modification-kind) command.
 * Viewing the policy or effective policies after the change can be done using the `.show` commands:
-    * [`.show database policy retention`](./show-table-retention-policy-command.md)
+    * [`.show database policy retention`](show-table-retention-policy-command.md)
     * [`.show database details`](../management/show-databases.md)
     * [`.show table details`](show-tables-command.md)
 * Viewing the override settings on the follower database after the change is made can be done using [`.show follower database`](#show-follower-database)
@@ -106,7 +106,7 @@ Deletes a follower database override caching policy. This deletion causes the po
 **Notes**
 
 * Viewing the policy or effective policies after the change can be done using the `.show` commands:
-    * [`.show database policy retention`](./show-table-retention-policy-command.md)
+    * [`.show database policy retention`](show-table-retention-policy-command.md)
     * [`.show database details`](../management/show-databases.md)
     * [`.show table details`](show-tables-command.md)
 * Viewing the override settings on the follower database after the change can be done using [`.show follower database`](#show-follower-database)
@@ -234,7 +234,7 @@ Alters a table's or a materialized view's caching policy on the follower databas
 
 > [!NOTE]
 > * Viewing the policy or effective policies after the change can be done using the `.show` commands:
->    * [`.show database policy retention`](./show-table-retention-policy-command.md)
+>    * [`.show database policy retention`](show-table-retention-policy-command.md)
 >    * [`.show database details`](../management/show-databases.md)
 >    * [`.show table details`](show-tables-command.md)
 > * Viewing the override settings on the follower database after the change can be done using [`.show follower database`](#show-follower-database)
@@ -263,7 +263,7 @@ Deletes an override for a table's or a materialized-view's caching policy on the
 
 > [!NOTE]
 > * Viewing the policy or effective policies after the change can be done using the `.show` commands:
->    * [`.show database policy retention`](./show-table-retention-policy-command.md)
+>    * [`.show database policy retention`](show-table-retention-policy-command.md)
 >    * [`.show database details`](../management/show-databases.md)
 >    * [`.show table details`](show-tables-command.md)
 > * Viewing the override settings on the follower database after the change can be done using [`.show follower database`](#show-follower-database)

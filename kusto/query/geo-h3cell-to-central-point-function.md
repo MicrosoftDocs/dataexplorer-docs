@@ -25,7 +25,7 @@ Read more about [H3 Cell](https://eng.uber.com/h3/).
 
 ## Returns
 
-The geospatial coordinate values in [GeoJSON Format](https://tools.ietf.org/html/rfc7946) and of a [dynamic](./scalar-data-types/dynamic.md) data type. If the H3 cell token is invalid, the query will produce a null result.
+The geospatial coordinate values in [GeoJSON Format](https://tools.ietf.org/html/rfc7946) and of a [dynamic](scalar-data-types/dynamic.md) data type. If the H3 cell token is invalid, the query will produce a null result.
 
 > [!NOTE]
 > The GeoJSON format specifies longitude first and latitude second.

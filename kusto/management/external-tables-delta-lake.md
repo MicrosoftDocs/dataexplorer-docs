@@ -36,8 +36,8 @@ To `.create-or-alter` an external table using managed identity authentication re
 > [!NOTE]
 >
 > * If a custom schema is provided, non-existing columns or columns having incompatible types will be filled with null values.
-> * Information about partitions is automatically inferred from the delta log. Partition columns are added as virtual columns to the table schema. For more information, see [Virtual columns](external-tables-azurestorage-azuredatalake.md#virtual-columns).
-> * The path format is automatically inferred from the partitioning information. For more information, see [Path format](external-tables-azurestorage-azuredatalake.md#path-format)
+> * Information about partitions is automatically inferred from the delta log. Partition columns are added as virtual columns to the table schema. For more information, see [Virtual columns](external-tables-azure-storage.md#virtual-columns).
+> * The path format is automatically inferred from the partitioning information. For more information, see [Path format](external-tables-azure-storage.md#path-format)
 
 > [!TIP]
 > For a custom schema, you can use the [infer_storage_schema](../query/infer-storage-schema-plugin.md) plugin to infer the schema based on the external file content.
@@ -46,7 +46,7 @@ To `.create-or-alter` an external table using managed identity authentication re
 
 The authentication method to access an external table is based on the connection string provided during its creation, and the permissions required to access the table vary depending on the authentication method.
 
-The supported authentication methods are the same as those supported by [Azure Storage external tables](external-tables-azurestorage-azuredatalake.md#authentication-and-authorization).
+The supported authentication methods are the same as those supported by [Azure Storage external tables](external-tables-azure-storage.md#authentication-and-authorization).
 
 ## Optional properties
 

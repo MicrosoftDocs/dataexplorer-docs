@@ -42,7 +42,7 @@ A graph is a transient object. It's built in each query that contains graph oper
 
 The graph object is built in memory on the fly for each graph query. As such, there's a performance cost for building the graph and a limit to the size of the graph that can be built.
 
-Although it isn't strictly enforced, we recommend building graphs with at most 10 million elements (nodes and edges). The actual memory limit for the graph is determined by [query operators memory limit](../concepts/querylimits.md#limit-on-memory-consumed-by-query-operators-e_runaway_query).
+Although it isn't strictly enforced, we recommend building graphs with at most 10 million elements (nodes and edges). The actual memory limit for the graph is determined by [query operators memory limit](../concepts/query-limits.md#limit-on-memory-consumed-by-query-operators-e_runaway_query).
 
 ## Related content
 

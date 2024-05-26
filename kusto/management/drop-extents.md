@@ -22,7 +22,7 @@ This command has several variants: In one, the extents to be dropped are specifi
 
 If the *TableName* is specified, you must have at least [Table Admin](access-control/role-based-access-control.md) permissions to run the command.
 
-If the *TableName* isn't specified, you must have at least [Database Admin](./access-control/role-based-access-control.md) permissions to run the command.
+If the *TableName* isn't specified, you must have at least [Database Admin](access-control/role-based-access-control.md) permissions to run the command.
 
 ## Syntax
 
@@ -142,4 +142,4 @@ Remove an extent from a table using the built-in [`extent_id()`](../query/extent
 ```
 
 > [!NOTE]
-> Removing all extents does not necessarily delete all the data in the table, if streaming ingestion is enabled. To clear all the data of a table, use [`.clear table data TestTable`](./clear-table-data-command.md).
+> Removing all extents does not necessarily delete all the data in the table, if streaming ingestion is enabled. To clear all the data of a table, use [`.clear table data TestTable`](clear-table-data-command.md).

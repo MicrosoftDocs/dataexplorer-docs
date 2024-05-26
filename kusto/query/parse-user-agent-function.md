@@ -7,7 +7,7 @@ ms.date: 01/08/2023
 ---
 # parse_user_agent()
 
-Interprets a user-agent string, which identifies the user's browser and provides certain system details to servers hosting the websites the user visits. The result is returned as [`dynamic`](./scalar-data-types/dynamic.md).
+Interprets a user-agent string, which identifies the user's browser and provides certain system details to servers hosting the websites the user visits. The result is returned as [`dynamic`](scalar-data-types/dynamic.md).
 
 ## Syntax
 

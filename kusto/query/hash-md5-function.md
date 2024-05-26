@@ -31,7 +31,7 @@ and 255).
 > The algorithm used by this function (MD5) is guaranteed
 > to not be modified in the future, but is very complex to calculate. Users that
 > need a "lightweight" hash function for the duration of a single query are advised
-> to use the function [hash()](./hash-function.md) instead.
+> to use the function [hash()](hash-function.md) instead.
 
 ## Examples
 

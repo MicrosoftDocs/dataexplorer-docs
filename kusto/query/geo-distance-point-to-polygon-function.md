@@ -51,7 +51,7 @@ dynamic({"type": "MultiPolygon","coordinates": [[LinearRingShell, LinearRingHole
 > [!TIP]
 >
 > * Using literal polygons may result in better performance.
-> * If you want to know if polygon contains point, see [geo_point_in_polygon()](./geo-point-in-polygon-function.md)
+> * If you want to know if polygon contains point, see [geo_point_in_polygon()](geo-point-in-polygon-function.md)
 
 ## Examples
 

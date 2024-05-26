@@ -25,7 +25,7 @@ Read more about [H3 Cell](https://eng.uber.com/h3/).
 
 ## Returns
 
-Polygon in [GeoJSON Format](https://tools.ietf.org/html/rfc7946) and of a [dynamic](./scalar-data-types/dynamic.md) data type. If the H3 Cell is invalid, the query will produce a null result.
+Polygon in [GeoJSON Format](https://tools.ietf.org/html/rfc7946) and of a [dynamic](scalar-data-types/dynamic.md) data type. If the H3 Cell is invalid, the query will produce a null result.
 
 > [!NOTE]
 > H3 Cell polygon edges are straight lines and aren't geodesics. If an H3 Cell polygon is part of some other calculation, consider densifying it with [geo_polygon_densify()](geo-polygon-densify-function.md).

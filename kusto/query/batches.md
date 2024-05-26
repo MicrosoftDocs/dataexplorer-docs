@@ -30,7 +30,7 @@ StormEvents | where State == "GUAM" | count | as ['Count of events in Guam']
 
 ### Share a calculation
 
-Batching is useful for scenarios where a common calculation is shared by multiple subqueries, such as for dashboards. If the common calculation is complex, use the [materialize() function](./materialize-function.md) and construct the query so that it will be executed only once:
+Batching is useful for scenarios where a common calculation is shared by multiple subqueries, such as for dashboards. If the common calculation is complex, use the [materialize() function](materialize-function.md) and construct the query so that it will be executed only once:
 
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA8tJLVHIVbBVyE0sSS3KTMzJrErVCC7JL8p1LUvNKylWqFEoLs3NTSwCiivk2Sbnl+aVaGgqJFUqBJcAdWha83LlAtWUZ6QWAeUV7BSMDAwM0ARtFAwNAArTIWBnAAAA" target="_blank">Run the query</a>

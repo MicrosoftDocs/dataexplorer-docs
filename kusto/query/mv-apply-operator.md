@@ -25,7 +25,7 @@ T | mv-apply Metric to typeof(real) on
 The `mv-apply` operator has the following
 processing steps:
 
-1. Uses the [`mv-expand`](./mv-expand-operator.md) operator to expand each record in the input into subtables (order is preserved).
+1. Uses the [`mv-expand`](mv-expand-operator.md) operator to expand each record in the input into subtables (order is preserved).
 1. Applies the subquery for each of the subtables.
 1. Adds zero or more columns to the resulting subtable. These columns contain the values of the source columns that aren't expanded, and are repeated where needed.
 1. Returns the union of the results.
@@ -53,7 +53,7 @@ The `mv-apply` operator gets the following inputs:
 1. Optionally, the maximum number of array elements to expand.
 
 The `mv-apply` operator can be thought of as a generalization of the
-[`mv-expand`](./mv-expand-operator.md) operator (in fact, the latter can be implemented
+[`mv-expand`](mv-expand-operator.md) operator (in fact, the latter can be implemented
 by the former, if the subquery includes only projections.)
 
 ## Syntax
@@ -88,7 +88,7 @@ and *SubQuery* has the same syntax of any query statement.
 |*SubQuery*| `string` ||A tabular query expression with an implicit tabular source that gets applied to each array-expanded subtable.|
 
 >[!NOTE]
-> Unlike the [`mv-expand`](./mv-expand-operator.md) operator, the `mv-apply` operator doesn't support `bagexpand=array` expansion. If the expression to be expanded is a property bag and not an array, you can use an inner `mv-expand` operator (see example below).
+> Unlike the [`mv-expand`](mv-expand-operator.md) operator, the `mv-apply` operator doesn't support `bagexpand=array` expansion. If the expression to be expanded is a property bag and not an array, you can use an inner `mv-expand` operator (see example below).
 
 ## Examples
 
@@ -249,4 +249,4 @@ datatable(SourceNumber: string, TargetNumber: string, CharsCount: long)
 
 ## Related content
 
-* [mv-expand](./mv-expand-operator.md) operator
+* [mv-expand](mv-expand-operator.md) operator

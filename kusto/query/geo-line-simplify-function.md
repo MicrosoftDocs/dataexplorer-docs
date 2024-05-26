@@ -24,7 +24,7 @@ Simplifies a line or a multiline by replacing nearly straight chains of short ed
 
 ## Returns
 
-Simplified line or a multiline in the [GeoJSON format](https://tools.ietf.org/html/rfc7946) and of a [dynamic](./scalar-data-types/dynamic.md) data type, with no two vertices with distance less than tolerance. If either the line or tolerance is invalid, the query will produce a null result.
+Simplified line or a multiline in the [GeoJSON format](https://tools.ietf.org/html/rfc7946) and of a [dynamic](scalar-data-types/dynamic.md) data type, with no two vertices with distance less than tolerance. If either the line or tolerance is invalid, the query will produce a null result.
 
 > [!NOTE]
 >

@@ -57,7 +57,7 @@ The `externaldata` operator returns a table whose schema is defined in the query
 >
 > This operator doesn't accept any pipeline input.
 >
-> Standard [query limits](../concepts/querylimits.md) apply to external data queries as well.
+> Standard [query limits](../concepts/query-limits.md) apply to external data queries as well.
 
 ## Returns
 

@@ -10,7 +10,7 @@ ms.date: 08/15/2023
 The update policy must be configured with a [managed identity](../../managed-identities-overview.md) in the following scenarios:
 
 * When the update policy query references tables in other databases.
-* When the update policy query references tables with an enabled [row level security policy](./row-level-security-policy.md).
+* When the update policy query references tables with an enabled [row level security policy](row-level-security-policy.md).
 
 An update policy configured with a managed identity is performed on behalf of the managed identity.
 
@@ -39,7 +39,7 @@ Select one of the following tabs to set up your preferred managed identity type.
 
     :::image type="content" source="../../media/update-policy/managed-identity-ids.png" alt-text="Screenshot of Azure portal area with managed identity ids." lightbox="../../media/update-policy/managed-identity-ids.png":::
 
-1. Run the following [.alter-merge policy managed_identity](./alter-merge-managed-identity-policy-command.md) command, replacing `<objectId>` with the managed identity object ID from the previous step. This command sets a [managed identity policy](../management/managed-identity-policy.md) on the cluster that allows the managed identity to be used with the update policy.
+1. Run the following [.alter-merge policy managed_identity](alter-merge-managed-identity-policy-command.md) command, replacing `<objectId>` with the managed identity object ID from the previous step. This command sets a [managed identity policy](../management/managed-identity-policy.md) on the cluster that allows the managed identity to be used with the update policy.
 
     ````kusto
     .alter-merge cluster policy managed_identity ```[
@@ -67,7 +67,7 @@ Select one of the following tabs to set up your preferred managed identity type.
 
 1. Copy and save the **Object (principal) ID** for use in a later step.
 
-1. Run the following [.alter-merge policy managed_identity](./alter-merge-managed-identity-policy-command.md) command. This command sets a [managed identity policy](../management/managed-identity-policy.md) on the cluster that allows the managed identity to be used with the update policy.
+1. Run the following [.alter-merge policy managed_identity](alter-merge-managed-identity-policy-command.md) command. This command sets a [managed identity policy](../management/managed-identity-policy.md) on the cluster that allows the managed identity to be used with the update policy.
 
     ````kusto
     .alter-merge cluster policy managed_identity ```[

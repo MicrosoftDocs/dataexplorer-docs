@@ -23,7 +23,7 @@ Interprets a `string` as an XML value, converts the value to a JSON, and returns
 
 ## Returns
 
-An object of type [dynamic](./scalar-data-types/dynamic.md) that is determined by the value of *xml*, or null, if the XML format is invalid.
+An object of type [dynamic](scalar-data-types/dynamic.md) that is determined by the value of *xml*, or null, if the XML format is invalid.
 
 The conversion is done as follows:
 

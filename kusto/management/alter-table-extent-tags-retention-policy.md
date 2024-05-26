@@ -47,7 +47,7 @@ The following command sets an extent tags retention policy for table T1. The pol
 
 ## Related content
 
-- See [.show extents](./show-extents.md)
+- See [.show extents](show-extents.md)
 commands to see the tags associated with an extent.
 - See the [extent-tags()](../query/extent-tags-function.md) 
 function to see the tags associated with records.

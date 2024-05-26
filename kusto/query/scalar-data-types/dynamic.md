@@ -85,7 +85,7 @@ Cast functions are:
 
 Several functions enable you to create new `dynamic` objects:
 
-* [bag_pack()](../packfunction.md) creates a property bag from name/value pairs.
+* [bag_pack()](../pack-function.md) creates a property bag from name/value pairs.
 * [pack_array()](../pack-array-function.md) creates an array from name/value pairs.
 * [range()](../range-function.md) creates an array with an arithmetic series of numbers.
 * [zip()](../zip-function.md) pairs "parallel" values from two arrays into a single array.
@@ -132,7 +132,7 @@ For a complete list of scalar dynamic/array functions, see [dynamic/array functi
 
 Every field is indexed during data ingestion. The scope of the index is a single data shard.
 
-To index dynamic columns, the ingestion process enumerates all “atomic” elements within the dynamic value (property names, values, array elements) and forwards them to the index builder. Otherwise, dynamic fields have the same inverted term index as string fields.
+To index dynamic columns, the ingestion process enumerates all "atomic" elements within the dynamic value (property names, values, array elements) and forwards them to the index builder. Otherwise, dynamic fields have the same inverted term index as string fields.
 
 ## Examples
 

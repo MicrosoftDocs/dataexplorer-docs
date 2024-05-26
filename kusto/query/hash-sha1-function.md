@@ -30,7 +30,7 @@ and 255).
 > [!WARNING]
 > The algorithm used by this function (SHA1) is guaranteed
 > to not be modified in the future, but is very complex to calculate. If you
-> need a "lightweight" hash function for the duration of a single query, consider using [hash()](./hash-function.md).
+> need a "lightweight" hash function for the duration of a single query, consider using [hash()](hash-function.md).
 
 ## Examples
 

@@ -10,7 +10,7 @@ adobe-target: true
 
 Rounds values down to an integer multiple of a given bin size.
 
-Used frequently in combination with [`summarize by ...`](./summarize-operator.md).
+Used frequently in combination with [`summarize by ...`](summarize-operator.md).
 If you have a scattered set of values, they'll be grouped into a smaller set of specific values.
 
 > The `bin()` and `floor()` functions are equivalent

@@ -7,9 +7,9 @@ ms.date: 10/30/2019
 ---
 # Tables
 
-Tables are named entities that hold data. A table has an ordered set of [columns](./columns.md), and zero or more rows of data. Each row holds one data value for each of the columns of the table. The order of rows in the table is unknown, and doesn't in general affect queries, except for some tabular operators (such as the [top operator](../top-operator.md)) that are inherently undetermined. For information on how to create and manage tables, see [managing tables](../../management/tables.md).
+Tables are named entities that hold data. A table has an ordered set of [columns](columns.md), and zero or more rows of data. Each row holds one data value for each of the columns of the table. The order of rows in the table is unknown, and doesn't in general affect queries, except for some tabular operators (such as the [top operator](../top-operator.md)) that are inherently undetermined. For information on how to create and manage tables, see [managing tables](../../management/tables.md).
 
-Tables occupy the same namespace as [stored functions](./stored-functions.md). If a stored function and a table both have the same name, the stored function will be chosen.
+Tables occupy the same namespace as [stored functions](stored-functions.md). If a stored function and a table both have the same name, the stored function will be chosen.
 
 > [!NOTE]
 >

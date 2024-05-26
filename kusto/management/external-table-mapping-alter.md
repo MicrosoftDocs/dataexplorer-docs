@@ -7,7 +7,7 @@ ms.date: 05/24/2023
 
 # .alter external table mapping command
 
-Alters an existing external table mapping. For more information, see [Data mappings](./mappings.md).
+Alters an existing external table mapping. For more information, see [Data mappings](mappings.md).
 
 ## Syntax
 

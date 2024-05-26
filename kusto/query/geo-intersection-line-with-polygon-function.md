@@ -24,7 +24,7 @@ Calculates the intersection of a line or a multiline with a polygon or a multipo
 
 ## Returns
 
-Intersection in [GeoJSON Format](https://tools.ietf.org/html/rfc7946) and of a [dynamic](./scalar-data-types/dynamic.md) data type. If lineString or a multiLineString or a polygon or a multipolygon are invalid, the query will produce a null result.
+Intersection in [GeoJSON Format](https://tools.ietf.org/html/rfc7946) and of a [dynamic](scalar-data-types/dynamic.md) data type. If lineString or a multiLineString or a polygon or a multipolygon are invalid, the query will produce a null result.
 
 > [!NOTE]
 >

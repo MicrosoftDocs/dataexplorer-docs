@@ -39,7 +39,7 @@ dynamic({"type": "MultiPolygon","coordinates": [[ LinearRingShell, LinearRingHol
 ### Constraints
 
 * The maximum number of points in the densified polygon is limited to 10485760.
-* Storing polygons in [dynamic](./scalar-data-types/dynamic.md) format has size limits.
+* Storing polygons in [dynamic](scalar-data-types/dynamic.md) format has size limits.
 * Densifying a valid polygon may invalidate the polygon. The algorithm adds points in a non-uniform manner, and as such may cause edges to intertwine with each other.
 
 ### Motivation
@@ -49,7 +49,7 @@ dynamic({"type": "MultiPolygon","coordinates": [[ LinearRingShell, LinearRingHol
 
 ## Returns
 
-Densified polygon in the [GeoJSON format](https://tools.ietf.org/html/rfc7946) and of a [dynamic](./scalar-data-types/dynamic.md) data type. If either the polygon or tolerance is invalid, the query produces a null result.
+Densified polygon in the [GeoJSON format](https://tools.ietf.org/html/rfc7946) and of a [dynamic](scalar-data-types/dynamic.md) data type. If either the polygon or tolerance is invalid, the query produces a null result.
 
 > [!NOTE]
 > The geospatial coordinates are interpreted as represented by the [WGS-84](https://earth-info.nga.mil/index.php?dir=wgs84&action=wgs84) coordinate reference system.

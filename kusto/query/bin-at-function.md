@@ -119,4 +119,4 @@ datetime(2018-02-26T15:14),5]
 
 ## Related content
 
-* [`bin()`](./bin-function.md)
+* [`bin()`](bin-function.md)

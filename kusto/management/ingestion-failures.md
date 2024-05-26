@@ -40,7 +40,7 @@ To return an ingestion failure for a specific operation ID:
 
 | Output parameter | Type | Description |
 |--|--|--|
-| OperationId | `string` | Operation identifier that can be used to view additional operation details via the <br> [.show operations](operations.md) command </br> |
+| OperationId | `string` | Operation identifier that can be used to view additional operation details via the <br> [.show operations](show-operations.md) command </br> |
 | Database | `string` | Database on which the failure occurred |
 | Table | `string` | Table on which the failure occurred |
 | FailedOn | `dateTime` | Date/time (in UTC) when the failure was registered |
@@ -49,7 +49,7 @@ To return an ingestion failure for a specific operation ID:
 | FailureKind | `string` | Type of the failure (Permanent/Transient) |
 | RootActivityId | `string` | Root Activity ID. |
 | OperationKind | `string` | The ingestion operation type (phase) during which the failure was registered |
-| OriginatesFromUpdatePolicy | Boolean | Indicates whether the failure was registered while executing an [Update Policy](./show-table-update-policy-command.md) |
+| OriginatesFromUpdatePolicy | Boolean | Indicates whether the failure was registered while executing an [Update Policy](show-table-update-policy-command.md) |
 | ErrorCode | `string` | Ingestion error code |
 | Principal | `int` | The principal whosе credentials were used for the ingestion |
 | User | `int` | The user who performed the ingestion |

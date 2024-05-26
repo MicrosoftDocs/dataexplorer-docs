@@ -44,7 +44,7 @@ The `http_request_post` plugin sends an HTTP POST request and converts the respo
 To authenticate, use the HTTP standard `Authorization` header or any custom header supported by the web service.
 
 > [!NOTE]
-> If the query includes confidential information, make sure that the relevant parts of the query text are obfuscated so that they'll be omitted from any tracing. For more information, see [obfuscated string literals](./scalar-data-types/string.md#obfuscated-string-literals).
+> If the query includes confidential information, make sure that the relevant parts of the query text are obfuscated so that they'll be omitted from any tracing. For more information, see [obfuscated string literals](scalar-data-types/string.md#obfuscated-string-literals).
 
 ## Returns
 

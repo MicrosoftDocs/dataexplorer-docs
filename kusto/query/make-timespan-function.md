@@ -7,7 +7,7 @@ ms.date: 01/05/2023
 ---
 # make_timespan()
 
-Creates a [timespan](./scalar-data-types/timespan.md) scalar value from the specified time period.
+Creates a [timespan](scalar-data-types/timespan.md) scalar value from the specified time period.
 
 ## Syntax
 
@@ -30,7 +30,7 @@ Creates a [timespan](./scalar-data-types/timespan.md) scalar value from the spec
 
 ## Returns
 
-If the creation is successful, the result will be a [timespan](./scalar-data-types/timespan.md) value. Otherwise, the result will be null.
+If the creation is successful, the result will be a [timespan](scalar-data-types/timespan.md) value. Otherwise, the result will be null.
 
 ## Example
 

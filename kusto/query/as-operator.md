@@ -23,12 +23,12 @@ To optimize multiple uses of the `as` operator within a single query, see [Named
 |--|--|--|--|
 |*T*| `string` |  :heavy_check_mark: | The tabular expression to rename.|
 | *Name*| `string` |  :heavy_check_mark: | The temporary name for the tabular expression.|
-| *`hint.materialized`*| `bool` |  | If *Materialized* is set to `true`, the value of the tabular expression will be as if it was wrapped by a [materialize()](./materialize-function.md) function call. Otherwise, the value will be recalculated on every reference.|
+| *`hint.materialized`*| `bool` |  | If *Materialized* is set to `true`, the value of the tabular expression will be as if it was wrapped by a [materialize()](materialize-function.md) function call. Otherwise, the value will be recalculated on every reference.|
 
 > [!NOTE]
 >
-> * The name given by `as` will be used in the `withsource=` column of [union](./union-operator.md), the `source_` column of [find](./find-operator.md), and the `$table` column of [search](./search-operator.md).
-> * The tabular expression named using the operator in a [join](./join-operator.md)'s outer tabular input (`$left`) can also be used in the join's tabular inner input (`$right`).
+> * The name given by `as` will be used in the `withsource=` column of [union](union-operator.md), the `source_` column of [find](find-operator.md), and the `$table` column of [search](search-operator.md).
+> * The tabular expression named using the operator in a [join](join-operator.md)'s outer tabular input (`$left`) can also be used in the join's tabular inner input (`$right`).
 
 ## Examples
 

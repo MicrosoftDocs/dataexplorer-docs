@@ -55,7 +55,7 @@ The `bag_unpack` plugin returns a table with as many records as its tabular inpu
     input *T*, unless it's the column to be unpacked (*Column*), since that will produce two columns with the same name.
 >
 > * All slot names, when prefixed by *OutputColumnPrefix*, must be valid
-    entity names and follow the [identifier naming rules](./schema-entities/entity-names.md#identifier-naming-rules).
+    entity names and follow the [identifier naming rules](schema-entities/entity-names.md#identifier-naming-rules).
 
 ## Examples
 

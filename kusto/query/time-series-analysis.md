@@ -289,5 +289,5 @@ These advanced capabilities combined with fast performance supply a unique and p
 
 ## Related content
 
-- Learn about [Anomaly detection and forecasting](./anomaly-detection.md) with KQL.
-- Learn about [Machine learning capabilities](./machine-learning-clustering.md) with KQL.
+- Learn about [Anomaly detection and forecasting](anomaly-detection.md) with KQL.
+- Learn about [Machine learning capabilities](machine-learning-clustering.md) with KQL.

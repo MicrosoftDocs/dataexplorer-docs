@@ -23,7 +23,7 @@ Calculates the polygon that represents the S2 Cell rectangular area.
 
 ## Returns
 
-Polygon in [GeoJSON Format](https://tools.ietf.org/html/rfc7946) and of a [dynamic](./scalar-data-types/dynamic.md) data type. If the s2cell is invalid, the query produces a null result.
+Polygon in [GeoJSON Format](https://tools.ietf.org/html/rfc7946) and of a [dynamic](scalar-data-types/dynamic.md) data type. If the s2cell is invalid, the query produces a null result.
 
 > [!NOTE]
 > S2 Cell edges are spherical geodesics.

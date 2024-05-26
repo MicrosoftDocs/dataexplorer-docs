@@ -12,7 +12,7 @@ Converts the input expression to a value of type [real](scalar-data-types/real.m
 > The `todouble()` and `toreal()` functions are equivalent.
 
 > [!NOTE]
-> When possible, use [real literals](./scalar-data-types/real.md) instead.
+> When possible, use [real literals](scalar-data-types/real.md) instead.
 
 ## Syntax
 

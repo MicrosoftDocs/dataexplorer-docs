@@ -80,8 +80,8 @@ export continues in the background until completion. The operation ID returned
 by the command can be used to track its progress and ultimately its results
 via the following commands:
 
-* [`.show operations`](../operations.md#show-operations): Track progress.
-* [`.show operation details`](../operations.md#show-operation-details): Get completion results.
+* [`.show operations`](../show-operations.md): Track progress.
+* [`.show operation details`](..query/show-operations.md): Get completion results.
 
 For example, after a successful completion, you can retrieve the results using:
 
@@ -115,7 +115,7 @@ Column name labels are added as the first row for each blob.
 Export commands can transiently fail during execution. [Continuous export](continuous-data-export.md) will automatically retry the command. Regular export commands ([export to storage](export-data-to-storage.md), [export to external table](export-data-to-an-external-table.md)) don't perform any retries.
 
 * When the export command fails, artifacts that were already written to storage aren't deleted. These artifacts remain in storage. If the command fails, assume the export is incomplete, even if some artifacts were written.
-* The best way to track both completion of the command and the artifacts exported upon successful completion is by using the [`.show operations`](../operations.md#show-operations) and [`.show operation details`](../operations.md#show-operation-details) commands.
+* The best way to track both completion of the command and the artifacts exported upon successful completion is by using the [`.show operations`](../show-operations.md) and [`.show operation details`](..query/show-operations.md) commands.
 
 ### Storage failures
 
@@ -126,7 +126,7 @@ By default, export commands are distributed such that there may be many concurre
 
 When the number of extents/nodes is large, this may lead to high load on storage that results in storage throttling, or transient storage errors. The following suggestions may overcome these errors (by order of priority):
 
-* Increase the number of storage accounts provided to the export command or to the [external table definition](../external-tables-azurestorage-azuredatalake.md) (the load will be evenly distributed between the accounts).
+* Increase the number of storage accounts provided to the export command or to the [external table definition](../external-tables-azure-storage.md) (the load will be evenly distributed between the accounts).
 * Reduce the concurrency by setting the distribution hint to `per_node` (see command properties).
 * Reduce concurrency of number of nodes exporting by setting the [client request property](../../api/netfx/request-properties.md) `query_fanout_nodes_percent` to the desired concurrency (percent of nodes). The property can be set as part of the export query. For example, the following command limits the number of nodes writing to storage concurrently to 50% of the cluster nodes:
 

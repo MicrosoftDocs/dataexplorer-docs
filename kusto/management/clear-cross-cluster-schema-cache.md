@@ -10,7 +10,7 @@ ms.date: 05/24/2023
 
 When running a cross-cluster query, the cluster that performs the initial query interpretation must have the schema of the entities referenced on the remote clusters. Sending the command can be an expensive network operation and therefore the remote schema entities are cached.
 
-Any changes to the schema of the remote entity may result in unwanted effects. For example, new columns aren't recognized or deleted columns may cause a 'Partial Query Error' instead of a semantic error. For more information, see [Cross-cluster queries and schema changes](../concepts/cross-cluster-and-schema-changes.md).
+Any changes to the schema of the remote entity may result in unwanted effects. For example, new columns aren't recognized or deleted columns may cause a 'Partial Query Error' instead of a semantic error. For more information, see [Cross-cluster queries and schema changes](../query/cross-cluster-or-database-queries.md#handle-schema-changes-of-remote-entities).
 
 You can use the following command when you need to refresh the schema without waiting for the expiry time of the cache.
 

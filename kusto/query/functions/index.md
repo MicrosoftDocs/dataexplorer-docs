@@ -21,4 +21,4 @@ kinds of functions:
 
   * *Query-defined functions*: user-defined functions that are defined and used within the scope of a single query. The definition of such functions is done through a let statement. For more information on how to create query-defined functions, see [Create a user defined function](../let-statement.md#create-a-user-defined-function-with-scalar-calculation).
 
-  For more information on user-defined functions, see [User-defined functions](./user-defined-functions.md).
+  For more information on user-defined functions, see [User-defined functions](user-defined-functions.md).

@@ -25,7 +25,7 @@ Returns a `dynamic` object that contains the query parameters.
 
 ## Returns
 
-An object of type [dynamic](./scalar-data-types/dynamic.md) that includes the query parameters.
+An object of type [dynamic](scalar-data-types/dynamic.md) that includes the query parameters.
 
 ## Examples
 

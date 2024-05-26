@@ -44,7 +44,7 @@ demo_clustering1
 | render timechart with(title="Service exceptions over a week, 10 minutes resolution")
 ```
 
-![Service exceptions timechart.](../../media/machine-learning-clustering/service-exceptions-timechart.png)
+![Service exceptions timechart.](media/machine-learning-clustering/service-exceptions-timechart.png)
 
 The service exception count correlates with the overall service traffic. You can clearly see the daily pattern for business days, Monday to Friday. There's a rise in service exception counts at mid-day, and drops in counts during the night. Flat low counts are visible over the weekend. Exception spikes can be detected using [time series anomaly detection](anomaly-detection.md#time-series-anomaly-detection).
 
@@ -60,7 +60,7 @@ demo_clustering1
 | render timechart with(title="Zoom on the 2nd spike, 1 minute resolution")
 ```
 
-![Focus on spike timechart.](../../media/machine-learning-clustering/focus-spike-timechart.png)
+![Focus on spike timechart.](media/machine-learning-clustering/focus-spike-timechart.png)
 
 You see a narrow two-minute spike from 15:00 to 15:02. In the following query, count the exceptions in this two-minute window:
 
@@ -224,7 +224,7 @@ and ServiceHost == "e7f60c5d-4944-42b3-922a-92e98a8e7dec", "Problem", "Normal")
 | render timechart
 ```
 
-![Validating `diffpattern` segment timechart.](../../media/machine-learning-clustering/validating-diffpattern-timechart.png)
+![Validating `diffpattern` segment timechart.](media/machine-learning-clustering/validating-diffpattern-timechart.png)
 
 This chart allows us to see that the spike on Tuesday afternoon was because of exceptions from this specific segment, discovered by using the `diffpatterns` plugin.
 

@@ -25,7 +25,7 @@ To specify a bool literal, use one of the following syntax options:
 
 ## Boolean operators
 
-The `bool` data type supports all of the [logical operators](../logicaloperators.md): equality (`==`), inequality (`!=`), logical-and (`and`), and logical-or (`or`).
+The `bool` data type supports all of the [logical operators](../logical-operators.md): equality (`==`), inequality (`!=`), logical-and (`and`), and logical-or (`or`).
 
 ## Related content
 

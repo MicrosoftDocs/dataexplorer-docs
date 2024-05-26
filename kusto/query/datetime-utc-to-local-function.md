@@ -7,7 +7,7 @@ ms.date: 07/27/2023
 ---
 # datetime_utc_to_local()
 
-Converts UTC [datetime](./scalar-data-types/datetime.md) to local datetime using a [time-zone specification](timezone.md).
+Converts UTC [datetime](scalar-data-types/datetime.md) to local datetime using a [time-zone specification](timezone.md).
 
 ## Syntax
 

@@ -41,7 +41,7 @@ The middle-tier application can prefix the user's query with a **logical model**
 
 ### Let statement
 
-The following example uses a [let statement](./let-statement.md) appearing before `restrict` statement.
+The following example uses a [let statement](let-statement.md) appearing before `restrict` statement.
 
 ```kusto
 // Limit access to 'Test' let statement only
@@ -62,7 +62,7 @@ restrict access to (database().Table1, database().Func1, database('DB2').Table2)
 
 ### Patterns
 
-The following example uses wildcard patterns that can match multiples of [let statements](./let-statement.md) or tables/functions.
+The following example uses wildcard patterns that can match multiples of [let statements](let-statement.md) or tables/functions.
 
 ```kusto
 let Test1 = () { print x=1 };

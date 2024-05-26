@@ -24,7 +24,7 @@ Calculates the intersection of two lines or multilines.
 
 ## Returns
 
-Intersection in [GeoJSON Format](https://tools.ietf.org/html/rfc7946) and of a [dynamic](./scalar-data-types/dynamic.md) data type. If LineString or a MultiLineString are invalid, the query will produce a null result.
+Intersection in [GeoJSON Format](https://tools.ietf.org/html/rfc7946) and of a [dynamic](scalar-data-types/dynamic.md) data type. If LineString or a MultiLineString are invalid, the query will produce a null result.
 
 > [!NOTE]
 >

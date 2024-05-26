@@ -55,8 +55,8 @@ An Operation ID (GUID) is returned.
 
 > [!TIP]
 >
-> * The operation's status can be monitored with the GUID. Use the [`.show operations`](operations.md#show-operations) command.
-> * Use the [`.show operation details`](operations.md#show-operation-details) command to retrieve the results of a successful execution.
+> * The operation's status can be monitored with the GUID. Use the [`.show operations`](show-operations.md) command.
+> * Use the [`.show operation details`](show-operations.md#show-operation-details) command to retrieve the results of a successful execution.
 
 ## Specify extents with a query
 

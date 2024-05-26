@@ -7,7 +7,7 @@ ms.date: 05/24/2023
 
 # .create external table mapping command
 
-Create a new external table data mapping. For more information, see [Data mappings](./mappings.md).
+Create a new external table data mapping. For more information, see [Data mappings](mappings.md).
 
 ## Syntax
 

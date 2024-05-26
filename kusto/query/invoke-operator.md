@@ -10,7 +10,7 @@ ms.date: 12/28/2022
 Invokes a lambda expression that receives the source of `invoke` as a tabular argument.
 
 > [!NOTE]
-> For more information on how to declare lambda expressions that can accept tabular arguments, see [let statements](./let-statement.md).
+> For more information on how to declare lambda expressions that can accept tabular arguments, see [let statements](let-statement.md).
 
 ## Syntax
 

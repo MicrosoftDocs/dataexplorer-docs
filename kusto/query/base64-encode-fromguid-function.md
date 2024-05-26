@@ -7,7 +7,7 @@ ms.date: 11/07/2022
 ---
 # base64_encode_fromguid()
 
-Encodes a [GUID](./scalar-data-types/guid.md) to a base64 string.
+Encodes a [GUID](scalar-data-types/guid.md) to a base64 string.
 
 ## Syntax
 
@@ -40,7 +40,7 @@ print Quine = base64_encode_fromguid(toguid("ae3133f2-6e22-49ae-b06a-16e6a9b212e
 |-----|
 |8jMxriJurkmwahbmqbIS6w==|
 
-If you try to encode anything that isn't a [GUID](./scalar-data-types/guid.md) as below, an error will be thrown:
+If you try to encode anything that isn't a [GUID](scalar-data-types/guid.md) as below, an error will be thrown:
 
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAysoyswrUXDNLSipVLBVSEosTjUziU/NS85PSY1PK8rPTS/NTNFQSkxKTjE0MjZU0gQApqVKnzAAAAA=" target="_blank">Run the query</a>
@@ -51,5 +51,5 @@ print Empty = base64_encode_fromguid("abcd1231")
 
 ## Related content
 
-* To decode a base64 string to a [GUID](./scalar-data-types/guid.md), see [base64_decode_toguid()](base64-decode-toguid-function.md).
-* To create a [GUID](./scalar-data-types/guid.md) from a string, see [toguid()](toguid-function.md).
+* To decode a base64 string to a [GUID](scalar-data-types/guid.md), see [base64_decode_toguid()](base64-decode-toguid-function.md).
+* To create a [GUID](scalar-data-types/guid.md) from a string, see [toguid()](toguid-function.md).

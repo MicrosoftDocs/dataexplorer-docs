@@ -25,7 +25,7 @@ Read more about [geohash](https://en.wikipedia.org/wiki/Geohash).
 
 ## Returns
 
-Polygon in [GeoJSON Format](https://tools.ietf.org/html/rfc7946) and of a [dynamic](./scalar-data-types/dynamic.md) data type. If the geohash is invalid, the query will produce a null result.
+Polygon in [GeoJSON Format](https://tools.ietf.org/html/rfc7946) and of a [dynamic](scalar-data-types/dynamic.md) data type. If the geohash is invalid, the query will produce a null result.
 
 > [!NOTE]
 > Geohash edges are straight lines and aren't geodesics. If the geohash polygon is part of some other calculation, consider densifying it with [geo_polygon_densify()](geo-polygon-densify-function.md).

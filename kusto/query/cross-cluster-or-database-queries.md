@@ -47,11 +47,11 @@ cluster("<ClusterName>").database("<DatabaseName>").<TableName>
 > For more information, see [Kusto role-based access control](../access-control/role-based-access-control.md).
 
 > [!TIP]
-> The number of records returned from a query is limited by default, even if there's no specific use of the `take` operator. To lift this limit, use the `notruncation` client request option. For more information, see [Query limits](../concepts/querylimits.md).
+> The number of records returned from a query is limited by default, even if there's no specific use of the `take` operator. To lift this limit, use the `notruncation` client request option. For more information, see [Query limits](../concepts/query-limits.md).
 
 ### Qualified names and the union operator
 
-When a *qualified name* appears as an operand of the [union operator](./union-operator.md), then wildcards can be used to specify multiple tables and multiple databases. Wildcards aren't permitted in cluster names.
+When a *qualified name* appears as an operand of the [union operator](union-operator.md), then wildcards can be used to specify multiple tables and multiple databases. Wildcards aren't permitted in cluster names.
 
 ```kusto
 union withsource=TableName *, database("OtherDb*").*Table, cluster("OtherCluster").database("*").*
@@ -62,7 +62,7 @@ union withsource=TableName *, database("OtherDb*").*Table, cluster("OtherCluster
 
 ### Qualified names and restrict access statements
 
-Qualified names or patterns can also be included in [restrict access](./restrict-statement.md) statement.
+Qualified names or patterns can also be included in [restrict access](restrict-statement.md) statement.
 Wildcards in cluster names aren't permitted.
 
 The following query restricts query access to the following entities:
@@ -120,7 +120,7 @@ Tabular functions or views can be referenced across clusters. The following limi
   This precludes the use of query constructs such as the `pivot` plugin. (Note that some plugins,
   such as the `bag_unpack` plugin, supports a way to indicate the result schema statically,
   and in this form it *can* be used in cross-cluster function calls.)
-* For performance reasons, the schema of remote entities is cached by the calling cluster after the initial call. Therefore, changes made to the remote entity may result in a mismatch with the cached schema information, potentially leading to query failures. For more information, see [Cross-cluster queries and schema changes](../concepts/cross-cluster-and-schema-changes.md).
+* For performance reasons, the schema of remote entities is cached by the calling cluster after the initial call. Therefore, changes made to the remote entity may result in a mismatch with the cached schema information, potentially leading to query failures. For more information, see [Cross-cluster queries and schema changes](#handle-schema-changes-of-remote-entities).
 
 #### Examples
 

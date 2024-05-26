@@ -29,4 +29,4 @@ An auto delete policy includes the following properties:
 
 ## Related content
 
-For more information, see [auto delete policy](./show-auto-delete-policy-command.md) commands.
+For more information, see [auto delete policy](show-auto-delete-policy-command.md) commands.

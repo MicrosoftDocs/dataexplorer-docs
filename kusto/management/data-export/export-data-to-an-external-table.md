@@ -8,7 +8,7 @@ ms.date: 03/20/2023
 # Export data to an external table
 
 You can export data by defining an [external table](../show-external-tables.md) and exporting data to it.
- The table properties are specified when [creating the external table](../external-tables-azurestorage-azuredatalake.md).
+ The table properties are specified when [creating the external table](../external-tables-azure-storage.md).
  The export command references the external table by name.
 
 ## Permissions
@@ -65,7 +65,7 @@ Changing the default distribution settings can be useful in the following cases:
 
 ## Authentication and authorization
 
-In order to export to an external table, you must set up write permissions. For more information, see the **Write permissions** for [Azure Storage external table](../external-tables-azurestorage-azuredatalake.md#authentication-and-authorization) or [SQL Server external table](../external-sql-tables.md).
+In order to export to an external table, you must set up write permissions. For more information, see the **Write permissions** for [Azure Storage external table](../external-tables-azure-storage.md#authentication-and-authorization) or [SQL Server external table](../external-sql-tables.md).
 
 ## Output
 
@@ -137,4 +137,4 @@ dataformat=csv
 |ExternalBlob|http://storageaccount.blob.core.windows.net/container1/CustomerName=customer1/2019/01/01/fa36f35c-c064-414d-b8e2-e75cf157ec35_1_58017c550b384c0db0fea61a8661333e.csv|10|
 |ExternalBlob|http://storageaccount.blob.core.windows.net/container1/CustomerName=customer2/2019/01/01/fa36f35c-c064-414d-b8e2-e75cf157ec35_2_b785beec2c004d93b7cd531208424dc9.csv|10|
 
-If the command is executed asynchronously (by using the `async` keyword), the output is available using the [show operation details](../operations.md#show-operation-details) command.
+If the command is executed asynchronously (by using the `async` keyword), the output is available using the [show operation details](..query/show-operations.md) command.

@@ -11,7 +11,7 @@ An *extent tag* is a string that describes properties common to all data in an [
 
 Extents can hold multiple tags as part of their metadata. When extents merge, their tags also merge, ensuring consistent metadata representation.
 
-To see the tags associated with an extent, use the [.show extents](./show-extents.md) command. For a granular view of tags associated with records within an extent, use the [extent-tags()](../query/extent-tags-function.md) function.
+To see the tags associated with an extent, use the [.show extents](show-extents.md) command. For a granular view of tags associated with records within an extent, use the [extent-tags()](../query/extent-tags-function.md) function.
 
 > [!IMPORTANT]
 > Tags starting with `drop-by:` or `ingest-by:` carry specific meanings. For more information, see [drop-by extent tags](#drop-by-extent-tags) and [ingest-by extent tags](#ingest-by-extent-tags).

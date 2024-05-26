@@ -151,7 +151,7 @@ To solve this problem, newly added data may be added to a temp table as `hll` or
 
 ::: zone-end
 
-When you need to get the final results of these values, the queries may use `hll`/`tdigest` mergers: [`hll-merge()`](hll-merge-aggregation-function.md)/[`tdigest_merge()`](tdigest-merge-aggregation-function.md). Then, after getting the merged values, [`percentile_tdigest()`](percentile-tdigest-function.md) / [`dcount_hll()`](dcount-hllfunction.md) may be invoked on these merged values to get the final result of `dcount` or percentiles.
+When you need to get the final results of these values, the queries may use `hll`/`tdigest` mergers: [`hll-merge()`](hll-merge-aggregation-function.md)/[`tdigest_merge()`](tdigest-merge-aggregation-function.md). Then, after getting the merged values, [`percentile_tdigest()`](percentile-tdigest-function.md) / [`dcount_hll()`](dcount-hll-function.md) may be invoked on these merged values to get the final result of `dcount` or percentiles.
 
 Assuming there's a table, PageViews, into which data is ingested daily, every day on which you want to calculate the distinct count of pages viewed per minute later than date = datetime(2016-05-01 18:00:00.0000000).
 
@@ -234,7 +234,7 @@ on $left.Day1 == $right.Day
 
 The above query took ~18 seconds.
 
-When you use the [`hll()`](hll-aggregation-function.md), [`hll_merge()`](hll-merge-aggregation-function.md), and [`dcount_hll()`](dcount-hllfunction.md) functions, the equivalent query will end after ~1.3 seconds and show that the `hll` functions speeds up the query above by ~14 times:
+When you use the [`hll()`](hll-aggregation-function.md), [`hll_merge()`](hll-merge-aggregation-function.md), and [`dcount_hll()`](dcount-hll-function.md) functions, the equivalent query will end after ~1.3 seconds and show that the `hll` functions speeds up the query above by ~14 times:
 
 ```kusto
 let Stats=PageViewsSample | summarize pagehll=hll(Page, 2) by day=startofday(Timestamp); // saving the hll values (intermediate results of the dcount values)

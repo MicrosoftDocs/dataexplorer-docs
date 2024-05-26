@@ -7,7 +7,7 @@ ms.date: 11/28/2022
 ---
 # datetime_diff()
 
-Calculates the number of the specified periods between two [datetime](./scalar-data-types/datetime.md) values.
+Calculates the number of the specified periods between two [datetime](scalar-data-types/datetime.md) values.
 
 ## Syntax
 

@@ -7,7 +7,7 @@ ms.date: 04/20/2023
 ---
 # .alter cluster policy query_weak_consistency command
 
-Sets the cluster's [query weak consistency policy](./query-weak-consistency-policy.md), overriding the current policy, and then returns the updated policy. The updated policy can be later viewed using the [show command](show-query-weak-consistency-policy.md). If not altered, the [default policy](./query-weak-consistency-policy.md#default-policy) applies.
+Sets the cluster's [query weak consistency policy](query-weak-consistency-policy.md), overriding the current policy, and then returns the updated policy. The updated policy can be later viewed using the [show command](show-query-weak-consistency-policy.md). If not altered, the [default policy](query-weak-consistency-policy.md#default-policy) applies.
 
 ## Permissions
 
@@ -28,11 +28,11 @@ You must have [AllDatabasesAdmin](access-control/role-based-access-control.md) p
 
 |Name|Type|Required|Description|
 |--|--|--|--|
-|*PolicyObject*| `string` | :heavy_check_mark:| A serialized JSON policy object. For the policy properties, see the [query weak consistency policy](./query-weak-consistency-policy.md#the-policy-object).|
+|*PolicyObject*| `string` | :heavy_check_mark:| A serialized JSON policy object. For the policy properties, see the [query weak consistency policy](query-weak-consistency-policy.md#the-policy-object).|
 
 ## Returns
 
-JSON serialization of the updated [query weak consistency policy object](./query-weak-consistency-policy.md#the-policy-object) 
+JSON serialization of the updated [query weak consistency policy object](query-weak-consistency-policy.md#the-policy-object) 
 
 ## Examples
 
@@ -83,4 +83,4 @@ For demonstrating the `alter-merge`, we'll assume the following policy is set pr
 |---|---|---|---|---|
 |QueryWeakConsistencyPolicy||{"PercentageOfNodes": 30, "MinimumNumberOfNodes": 10, "MaximumNumberOfNodes": 100, "SuperSlackerNumberOfNodesThreshold": -1, "EnableMetadataPrefetch": false, "MaximumLagAllowedInMinutes": 15, "RefreshPeriodInSeconds": 30}| |Cluster
 
-As can be seen, only `PercentageOfNodes` and `MaximumLagAllowedInMinutes` were modified (whereas if the `alter` command was used instead, the remaining properties would be also modified, and set to their [defaults](./query-weak-consistency-policy.md#default-policy)).
+As can be seen, only `PercentageOfNodes` and `MaximumLagAllowedInMinutes` were modified (whereas if the `alter` command was used instead, the remaining properties would be also modified, and set to their [defaults](query-weak-consistency-policy.md#default-policy)).

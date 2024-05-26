@@ -27,7 +27,7 @@ This article lists all available scalar functions grouped by type. For aggregati
 |-------------------------|--------------------------------------------------------|
 |[tobool()](tobool-function.md)|Convert inputs to boolean (signed 8-bit) representation.|
 |[todatetime()](todatetime-function.md)|Converts input to datetime scalar.|
-|[todouble()](todouble-function.md)|Converts the input to a value of type real.|
+|[todouble()](toreal-function.md)|Converts the input to a value of type real.|
 |[tostring()](tostring-function.md)|Converts input to a string representation.|
 |[totimespan()](totimespan-function.md)|Converts input to timespan scalar.|
 
@@ -40,7 +40,7 @@ This article lists all available scalar functions grouped by type. For aggregati
 |[datetime_diff()](datetime-diff-function.md)|Returns the end of the year containing the date, shifted by an offset, if provided.|
 |[datetime_local_to_utc()](datetime-local-to-utc-function.md) |  Converts local datetime to UTC datetime using [a time-zone specification](../query/timezone.md).
 |[datetime_part()](datetime-part-function.md)|Extracts the requested date part as an integer value.|
-| [datetime_utc_to_local()](datetime-utc-to-local-function.md) | Converts UTC datetimgoe to local datetime using a [time-zone specification](../query/timezone.md).
+|[datetime_utc_to_local()](datetime-utc-to-local-function.md) | Converts UTC datetimgoe to local datetime using a [time-zone specification](../query/timezone.md).
 |[dayofmonth()](day-of-month-function.md)|Returns the integer number representing the day number of the given month.|
 |[dayofweek()](day-of-week-function.md)|Returns the integer number of days since the preceding Sunday, as a timespan.|
 |[dayofyear()](day-of-year-function.md)|Returns the integer number represents the day number of the given year.|
@@ -89,7 +89,7 @@ This article lists all available scalar functions grouped by type. For aggregati
 |[`bag_has_key()`](bag-has-key-function.md)|Checks whether a dynamic bag column contains a given key.|
 |[bag_keys()](bag-keys-function.md)|Enumerates all the root keys in a dynamic property-bag object.|
 |[bag_merge()](bag-merge-function.md)|Merges dynamic property-bags into a dynamic property-bag with all properties merged.|
-|[bag_pack()](packfunction.md)|Creates a dynamic object (property bag) from a list of names and values.|
+|[bag_pack()](pack-function.md)|Creates a dynamic object (property bag) from a list of names and values.|
 |[bag_pack_columns()](bag-pack-columns-function.md)|Creates a dynamic object (property bag) from a list of columns.|
 |[bag_remove_keys()](bag-remove-keys-function.md)|Removes keys and associated values from a dynamic property-bag.|
 |[bag_set_key()](bag-set-key-function.md)|Sets a given key to a given value in a dynamic property-bag.|
@@ -175,7 +175,7 @@ This article lists all available scalar functions grouped by type. For aggregati
 |[cursor_after()](cursor-after-function.md)|Used to access to the records that were ingested after the previous value of the cursor.|
 |[estimate_data_size()](estimate-data-size-function.md)|Returns an estimated data size of the selected columns of the tabular expression.|
 |[extent_id()](extent-id-function.md)|Returns a unique identifier that identifies the data shard ("extent") that the current record resides in.|
-|[extent_tags()](extenttagsfunction.md)|Returns a dynamic array with the tags of the data shard ("extent") that the current record resides in.|
+|[extent_tags()](extent-tags-function.md)|Returns a dynamic array with the tags of the data shard ("extent") that the current record resides in.|
 |[ingestion_time()](ingestion-time-function.md)|Retrieves the record's $IngestionTime hidden datetime column, or null.|
 
 ## Rounding functions
@@ -192,7 +192,7 @@ This article lists all available scalar functions grouped by type. For aggregati
 |-------------------------|--------------------------------------------------------|
 |[case()](case-function.md)|Evaluates a list of predicates and returns the first result expression whose predicate is satisfied.|
 |[coalesce()](coalesce-function.md)|Evaluates a list of expressions and returns the first non-null (or non-empty for string) expression.|
-|[iff()](./ifffunction.md)|Evaluate the first argument (the predicate), and returns the value of either the second or third arguments, depending on whether the predicate evaluated to true (second) or false (third).|
+|[iff()](iff-function.md)|Evaluate the first argument (the predicate), and returns the value of either the second or third arguments, depending on whether the predicate evaluated to true (second) or false (third).|
 |[max_of()](max-of-function.md)|Returns the maximum value of several evaluated numeric expressions.|
 |[min_of()](min-of-function.md)|Returns the minimum value of several evaluated numeric expressions.|
 
@@ -414,7 +414,7 @@ This article lists all available scalar functions grouped by type. For aggregati
 |--------------------------------------------------------------------------|--------------------------------------------------------|
 |[hash()](hash-function.md)|Returns a hash value for the input value.|
 |[hash_combine()](hash-combine-function.md)|Combines two or more hash values.|
-|[hash_many()](hash_manyfunction.md)|Returns a combined hash value of multiple values.|
+|[hash_many()](hash_many-function.md)|Returns a combined hash value of multiple values.|
 |[hash_md5()](hash-md5-function.md)|Returns an MD5 hash value for the input value.|
 |[hash_sha1()](hash-sha1-function.md)|Returns a SHA1 hash value for the input value.|
 |[hash_sha256()](hash-sha256-function.md)|Returns a SHA256 hash value for the input value.|

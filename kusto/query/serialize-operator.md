@@ -9,7 +9,7 @@ ms.date: 03/16/2023
 
 Marks that the order of the input row set is safe to use for window functions.
 
-The operator has a declarative meaning. It marks the input row set as serialized (ordered), so that [window functions](./window-functions.md) can be applied to it.
+The operator has a declarative meaning. It marks the input row set as serialized (ordered), so that [window functions](window-functions.md) can be applied to it.
 
 ## Syntax
 
@@ -54,25 +54,25 @@ TraceLogs
 
 The output row set of the following operators is marked as serialized.
 
-* [getschema](./getschemaoperator.md)
-* [range](./range-operator.md)
-* [sort](./sort-operator.md)
-* [top](./top-operator.md)
-* [top-hitters](./top-hitters-operator.md)
+* [getschema](getschema-operator.md)
+* [range](range-operator.md)
+* [sort](sort-operator.md)
+* [top](top-operator.md)
+* [top-hitters](top-hitters-operator.md)
 
 The output row set of the following operators is marked as nonserialized.
 
-* [count](./count-operator.md)
-* [distinct](./distinct-operator.md)
-* [evaluate](./evaluate-operator.md)
-* [facet](./facet-operator.md)
-* [join](./join-operator.md)
-* [make-series](./make-series-operator.md)
-* [mv-expand](./mv-expand-operator.md)
-* [reduce by](./reduce-operator.md)
-* [sample](./sample-operator.md)
-* [sample-distinct](./sample-distinct-operator.md)
-* [summarize](./summarize-operator.md)
-* [top-nested](./top-nested-operator.md)
+* [count](count-operator.md)
+* [distinct](distinct-operator.md)
+* [evaluate](evaluate-operator.md)
+* [facet](facet-operator.md)
+* [join](join-operator.md)
+* [make-series](make-series-operator.md)
+* [mv-expand](mv-expand-operator.md)
+* [reduce by](reduce-operator.md)
+* [sample](sample-operator.md)
+* [sample-distinct](sample-distinct-operator.md)
+* [summarize](summarize-operator.md)
+* [top-nested](top-nested-operator.md)
 
 All other operators preserve the serialization property. If the input row set is serialized, then the output row set is also serialized.

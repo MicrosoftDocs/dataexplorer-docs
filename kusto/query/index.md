@@ -56,7 +56,7 @@ StormEvents
 
 This query has a single tabular expression statement. The statement begins with a reference to a table called *StormEvents* and contains several operators, [`where`](where-operator.md) and [`count`](count-operator.md), each separated by a pipe. The data rows for the source table are filtered by the value of the *StartTime* column and then filtered by the value of the *State* column. In the last line, the query returns a table with a single column and a single row containing the count of the remaining rows.
 
-To try out some more Kusto queries, see [Tutorial: Write Kusto queries](tutorial.md).
+To try out some more Kusto queries, see [Tutorial: Write Kusto queries](tutorials/learn-common-operators.md).
 
 ## Management commands
 

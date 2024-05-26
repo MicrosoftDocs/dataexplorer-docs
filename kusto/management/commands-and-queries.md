@@ -9,8 +9,8 @@ ms.date: 11/30/2023
 
 `.show` `commands-and-queries` returns a table with admin commands and queries on the cluster that have reached a final state. These commands and queries are available for 30 days.
 
-The information presented in the output of the command is similar to [`.show` commands](commands.md)
-and [`.show` queries](queries.md), however it essentially lets you join both result sets in a simple manner.
+The information presented in the output of the command is similar to [`.show` commands](show-commands.md)
+and [`.show` queries](show-queries-command.md), however it essentially lets you join both result sets in a simple manner.
 
 ## Syntax
 

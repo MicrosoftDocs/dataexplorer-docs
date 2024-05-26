@@ -69,4 +69,4 @@ The following policy sets different limits for `PythonExecution` and `RExecution
 ## Related content
 
 
-* [Sandbox policy management commands](./show-cluster-sandbox-policy-command.md)
+* [Sandbox policy management commands](show-cluster-sandbox-policy-command.md)

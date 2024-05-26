@@ -9,7 +9,7 @@ ms.date: 11/03/2023
 
 Databases are named entities that hold tables and stored functions. Kusto follows a relation model of storing the data where the upper-level entity is a `database`.
 
-A single cluster can host several databases, in which each database hosts its own collection of [tables](tables.md), [stored functions](stored-functions.md), and [external tables](externaltables.md). Each database has its own set of permissions that follow the [Role Based Access Control (RBAC) model](../../access-control/index.md).
+A single cluster can host several databases, in which each database hosts its own collection of [tables](tables.md), [stored functions](stored-functions.md), and [external tables](external-tables.md). Each database has its own set of permissions that follow the [Role Based Access Control (RBAC) model](../../access-control/index.md).
 
 > [!NOTE]
 >

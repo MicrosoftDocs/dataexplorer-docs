@@ -137,7 +137,7 @@ Add `| render timechart` to the end of the query to visualize the results.
 
 ## Calculate the min, max, avg, and sum
 
-To learn more about types of storms that cause crop damage, calculate the [min()](../min-aggregation-function.md), [max()](../max-aggregation-function.md), and [avg()](../avg-aggfunction.md) crop damage for each event type, and then sort the result by the average damage.
+To learn more about types of storms that cause crop damage, calculate the [min()](../min-aggregation-function.md), [max()](../max-aggregation-function.md), and [avg()](../avg-aggregation-function.md) crop damage for each event type, and then sort the result by the average damage.
 
 Note that you can use multiple aggregation functions in a single `summarize` operator to produce several computed columns.
 
@@ -198,7 +198,7 @@ Use [count()](../count-aggregation-function.md) and [countif](../countif-aggrega
 
 Then, use [extend](../extend-operator.md) to calculate the percentage between the two columns by dividing the number of storms with crop damage by the total number of storms and multiplying by 100.
 
-To ensure that you get a decimal result, use the [todouble()](../todouble-function.md) function to convert at least one of the integer count values to a double before performing the division.
+To ensure that you get a decimal result, use the [todouble()](../toreal-function.md) function to convert at least one of the integer count values to a double before performing the division.
 
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA22Puw7CMAxF936FxwRVorDDAgxsSEViThsDlZoYJQ4CxMeTh8TSerTPfbhlcubwRMu%2B%2BoIPxig3fBAqiHMmVmObCH%2B0LStG2EBPwbKQdSbK8TLwfefosVdG3f7McBVlkU4ettDIrOnekL1iHr4YrYYTuj42mNhk3EUvLQSTptCNKOYiJSznyi5g1TSyhrVMv5Hjkj3V%2FwB77xEnBgEAAA" target="_blank">Run the query</a>
@@ -227,7 +227,7 @@ StormEvents
 
 
 > [!NOTE]
-> When calculating percentages, convert at least one of the integer values in the division with [todouble() or toreal()](../todouble-function.md). This will ensure that you don't get truncated results due to integer division. For more information, see [Type rules for arithmetic operations](../numerical-operators.md#type-rules-for-arithmetic-operations).
+> When calculating percentages, convert at least one of the integer values in the division with [todouble() or toreal()](../toreal-function.md). This will ensure that you don't get truncated results due to integer division. For more information, see [Type rules for arithmetic operations](../numerical-operators.md#type-rules-for-arithmetic-operations).
 
 ### Calculate percentage based on table size
 

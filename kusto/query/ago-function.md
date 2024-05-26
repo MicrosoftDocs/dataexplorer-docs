@@ -26,7 +26,7 @@ being referenced is the same across all uses.
 
 ## Returns
 
-A [datetime](./scalar-data-types/datetime.md) value equal to the current time minus the timespan.
+A [datetime](scalar-data-types/datetime.md) value equal to the current time minus the timespan.
 
 ## Example
 

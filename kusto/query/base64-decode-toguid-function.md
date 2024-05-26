@@ -7,7 +7,7 @@ ms.date: 11/07/2022
 ---
 # base64_decode_toguid()
 
-Decodes a base64 string to a [GUID](./scalar-data-types/guid.md).
+Decodes a base64 string to a [GUID](scalar-data-types/guid.md).
 
 ## Syntax
 
@@ -23,7 +23,7 @@ Decodes a base64 string to a [GUID](./scalar-data-types/guid.md).
 
 ## Returns
 
-Returns a [GUID](./scalar-data-types/guid.md) decoded from a base64 string.
+Returns a [GUID](scalar-data-types/guid.md) decoded from a base64 string.
 
 ## Example
 
@@ -51,4 +51,4 @@ print Empty = base64_decode_toguid("abcd1231")
 
 ## Related content
 
-To encode a [GUID](./scalar-data-types/guid.md) to a base64 string, see [base64_encode_fromguid()](base64-encode-fromguid-function.md).
+To encode a [GUID](scalar-data-types/guid.md) to a base64 string, see [base64_encode_fromguid()](base64-encode-fromguid-function.md).

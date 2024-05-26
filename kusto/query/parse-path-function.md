@@ -7,7 +7,7 @@ ms.date: 01/12/2023
 ---
 # parse_path()
 
-Parses a file path `string` and returns a [`dynamic`](./scalar-data-types/dynamic.md) object that contains the following parts of the path:
+Parses a file path `string` and returns a [`dynamic`](scalar-data-types/dynamic.md) object that contains the following parts of the path:
 
 * Scheme
 * RootPath

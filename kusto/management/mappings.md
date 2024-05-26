@@ -59,7 +59,7 @@ Ingestion is possible without specifying `ingestionMapping` or `ingestionMapping
 
 ## Mapping transformations
 
-Some of the data format mappings (Parquet, JSON and AVRO) support simple and useful ingest-time transformations. Where the scenario requires more complex processing at ingest time, use [Update policy](./show-table-update-policy-command.md), which allows defining lightweight processing using KQL expression.
+Some of the data format mappings (Parquet, JSON and AVRO) support simple and useful ingest-time transformations. Where the scenario requires more complex processing at ingest time, use [Update policy](show-table-update-policy-command.md), which allows defining lightweight processing using KQL expression.
 
 | Path-dependant transformation | Description                                                                                                                                                             | Conditions                               |
 |-------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------|------------------------------------------|

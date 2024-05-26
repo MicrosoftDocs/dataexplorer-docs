@@ -52,7 +52,7 @@ three kinds of columns:
 
 | *visualization*| Description| Illustration |
 |-----------|------------|---------|
-| [`anomalychart`](visualization-anomalychart.md)| Similar to timechart, but [highlights anomalies](./samples.md#get-more-from-your-data-by-using-kusto-with-machine-learning) using [series_decompose_anomalies](./series-decompose-anomalies-function.md) function. | :::image type="icon" source="media/renderoperator/anomaly-chart.png" border="false"::: |
+| [`anomalychart`](visualization-anomalychart.md)| Similar to timechart, but [highlights anomalies](samples.md#get-more-from-your-data-by-using-kusto-with-machine-learning) using [series_decompose_anomalies](series-decompose-anomalies-function.md) function. | :::image type="icon" source="media/renderoperator/anomaly-chart.png" border="false"::: |
 | [`areachart`](visualization-areachart.md)               | Area graph.| :::image type="icon" source="media/renderoperator/area-chart.png" border="false"::: |
 | [`barchart`](visualization-barchart.md)                 | displayed as horizontal strips.| :::image type="icon" source="media/renderoperator/bar-chart.png" border="false"::: |
 | [`card`](visualization-card.md)                         | First result record is treated as set of scalar values and shows as a card.| :::image type="icon" source="media/renderoperator/card.png" border="false":::
@@ -91,7 +91,7 @@ three kinds of columns:
 
 | *visualization*| Description| Illustration |
 |-----------|------------|---------|
-| [`anomalychart`](visualization-anomalychart.md)| Similar to timechart, but [highlights anomalies](./samples.md#get-more-from-your-data-by-using-kusto-with-machine-learning) using [series_decompose_anomalies](./series-decompose-anomalies-function.md) function. | :::image type="icon" source="media/renderoperator/anomaly-chart.png" border="false"::: |
+| [`anomalychart`](visualization-anomalychart.md)| Similar to timechart, but [highlights anomalies](samples.md#get-more-from-your-data-by-using-kusto-with-machine-learning) using [series_decompose_anomalies](series-decompose-anomalies-function.md) function. | :::image type="icon" source="media/renderoperator/anomaly-chart.png" border="false"::: |
 | [`areachart`](visualization-areachart.md)               | Area graph.| :::image type="icon" source="media/renderoperator/area-chart.png" border="false"::: |
 | [`barchart`](visualization-barchart.md)                 | displayed as horizontal strips.| :::image type="icon" source="media/renderoperator/bar-chart.png" border="false"::: |
 | [`card`](visualization-card.md)                         | First result record is treated as set of scalar values and shows as a card.| :::image type="icon" source="media/renderoperator/card.png" border="false":::
@@ -196,7 +196,7 @@ These visualizations have the following conceptual model:
 * [Add a query visualization in the web UI](../../add-query-visualization.md)
 * [Customize dashboard visuals](../../dashboard-customize-visuals.md)
 * [Rendering examples in the tutorial](tutorials/use-aggregation-functions.md#visualize-query-results)
-* [Anomaly detection](./samples.md#get-more-from-your-data-by-using-kusto-with-machine-learning)
+* [Anomaly detection](samples.md#get-more-from-your-data-by-using-kusto-with-machine-learning)
 
 ::: zone-end
 

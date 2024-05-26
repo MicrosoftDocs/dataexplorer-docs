@@ -61,7 +61,7 @@ For more information on permissions, see [Kusto role-based access control](../..
 |`tags` | `string` | A JSON string that represents a list of [tags](../extent-tags.md) to associate with the created extent. |
 |`docstring` | `string` | A description used to document the table.|
 |`distributed` | `bool` | If `true`, the command ingests from all nodes executing the query in parallel. Default is `false`. See [performance tips](#performance-tips).|
-|`persistDetails` |A Boolean value that, if specified, indicates that the command should persist the detailed results for retrieval by the [.show operation details](../show-operations.md#show-operation-details) command. Defaults to `false`. |`with (persistDetails=true)`|
+|`persistDetails` |A Boolean value that, if specified, indicates that the command should persist the detailed results for retrieval by the [.show operation details](../show-operations.md) command. Defaults to `false`. |`with (persistDetails=true)`|
 
 ## Schema considerations
 

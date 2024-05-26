@@ -7,10 +7,10 @@ ms.date: 01/08/2024
 ---
 # todatetime()
 
-Converts the input to a [datetime](./scalar-data-types/datetime.md) scalar value.
+Converts the input to a [datetime](scalar-data-types/datetime.md) scalar value.
 
 > [!NOTE]
-> When possible, use [datetime literals](./scalar-data-types/datetime.md#) instead.
+> When possible, use [datetime literals](scalar-data-types/datetime.md#) instead.
 
 ## Syntax
 
@@ -22,11 +22,11 @@ Converts the input to a [datetime](./scalar-data-types/datetime.md) scalar value
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-| *value* | scalar |  :heavy_check_mark: | The value to convert to [datetime](./scalar-data-types/datetime.md).|
+| *value* | scalar |  :heavy_check_mark: | The value to convert to [datetime](scalar-data-types/datetime.md).|
 
 ## Returns
 
-If the conversion is successful, the result will be a [datetime](./scalar-data-types/datetime.md) value.
+If the conversion is successful, the result will be a [datetime](scalar-data-types/datetime.md) value.
 Else, the result will be `null`.
 
 ## Example

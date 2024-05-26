@@ -41,7 +41,7 @@ The following aggregation functions are supported:
 * [max()](max-aggregation-function.md)
 * [min()](min-aggregation-function.md)
 * [dcount()](dcountif-aggregation-function.md)
-* [avg()](avg-aggfunction.md)
+* [avg()](avg-aggregation-function.md)
 * [percentile()](percentiles-aggregation-function.md)
 * [percentilew()](percentilesw-aggregation-function.md)
 

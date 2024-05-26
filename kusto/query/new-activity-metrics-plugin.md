@@ -55,7 +55,7 @@ Output table schema is:
 * `churn_rate` - the percent of `dcount_churn_values` out of the cohort (users first seen in `from_TimelineColumn`).
 
 >[!NOTE]
->For definitions of `Retention Rate` and `Churn Rate` - refer to **Notes** section in [activity_metrics plugin](./activity-metrics-plugin.md) documentation.
+>For definitions of `Retention Rate` and `Churn Rate` - refer to **Notes** section in [activity_metrics plugin](activity-metrics-plugin.md) documentation.
 
 ## Examples
 

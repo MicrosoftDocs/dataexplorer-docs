@@ -21,7 +21,7 @@ The capacity policy is made of the following components:
 * [MaterializedViewsCapacity](#materialized-views-capacity-policy)
 * [StoredQueryResultsCapacity](#stored-query-results-capacity)
 
-To view the capacity of your cluster, use the [.show capacity](../management/diagnostics.md#show-capacity) command.
+To view the capacity of your cluster, use the [.show capacity](show-capacity-command.md) command.
 
 ### Ingestion capacity
 
@@ -29,10 +29,11 @@ To view the capacity of your cluster, use the [.show capacity](../management/dia
 |--|--|--|
 | `ClusterMaximumConcurrentOperations` | `long` | The maximum number of concurrent ingestion operations allowed in a cluster. This value caps the total ingestion capacity, as shown in the following formula. |
 | `CoreUtilizationCoefficient` | `real` | Determines the percentage of cores to use in the ingestion capacity calculation.|
+`
 
 **Formula**
 
-The [.show capacity](../management/diagnostics.md#show-capacity) command returns the cluster's ingestion capacity based on the following formula:
+The [.show capacity](show-capacity-command.md) command returns the cluster's ingestion capacity based on the following formula:
 
 `Minimum(ClusterMaximumConcurrentOperations` `,` *Number of nodes in cluster* `*` `Maximum(1,` *Core count per node* `*`  `CoreUtilizationCoefficient))`
 
@@ -48,7 +49,7 @@ The [.show capacity](../management/diagnostics.md#show-capacity) command returns
 
 **Formula**
 
-The [.show capacity](../management/diagnostics.md#show-capacity) command returns the cluster's extents merge capacity based on the following formula:
+The [.show capacity](show-capacity-command.md) command returns the cluster's extents merge capacity based on the following formula:
 
 *Number of nodes in cluster* `*` *Concurrent operations per node*
 
@@ -65,7 +66,7 @@ The effective value for *Concurrent operations per node* is automatically adjust
 
 **Formula**
 
-The [.show capacity](../management/diagnostics.md#show-capacity) command returns the cluster's extents purge rebuild capacity based on the following formula:
+The [.show capacity](show-capacity-command.md) command returns the cluster's extents purge rebuild capacity based on the following formula:
 
 *Number of nodes in cluster* x `MaximumConcurrentOperationsPerNode`
 
@@ -81,7 +82,7 @@ The [.show capacity](../management/diagnostics.md#show-capacity) command returns
 
 **Formula**
 
-The [.show capacity](../management/diagnostics.md#show-capacity) command returns the cluster's export capacity based on the following formula:
+The [.show capacity](show-capacity-command.md) command returns the cluster's export capacity based on the following formula:
 
 `Minimum(ClusterMaximumConcurrentOperations` `,` *Number of nodes in cluster* `*` `Maximum(1,` *Core count per node* `*`  `CoreUtilizationCoefficient))`
 
@@ -122,7 +123,7 @@ The effective value for *Concurrent operations* is automatically adjusted by the
 
 **Formula**
 
-The [.show capacity](../management/diagnostics.md#show-capacity) command returns the cluster's stored query results creation capacity based on the following formula:
+The [.show capacity](show-capacity-command.md) command returns the cluster's stored query results creation capacity based on the following formula:
 
 *Number of nodes in cluster* `*` `Maximum(1,` *Core count per node* `*` `CoreUtilizationCoefficient)`
 
@@ -173,8 +174,8 @@ The default capacity policy has the following JSON representation:
 > [!WARNING]
 > Consult with the support team before altering a capacity policy.
 
-* Use [`.show cluster policy capacity`](./show-cluster-capacity-policy-command.md) to show the current capacity policy of the cluster.
-* Use [`.alter-merge cluster policy capacity`](./alter-merge-capacity-policy-command.md) to alter the capacity policy of the cluster.
+* Use [`.show cluster policy capacity`](show-cluster-capacity-policy-command.md) to show the current capacity policy of the cluster.
+* Use [`.alter-merge cluster policy capacity`](alter-merge-capacity-policy-command.md) to alter the capacity policy of the cluster.
 
 ## Management commands throttling
 
@@ -202,4 +203,4 @@ When the cluster detects that an operation has exceeded the limit on concurrent 
 
 ## Related content
 
-* [`.show capacity`](../management/diagnostics.md#show-capacity)
+* [`.show capacity`](show-capacity-command.md)

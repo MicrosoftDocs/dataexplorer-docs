@@ -30,7 +30,7 @@ Create series of specified aggregated values along a specified axis.
 |*AxisColumn*| `string` |  :heavy_check_mark: | The column by which the series will be ordered. Usually the column values will be of type `datetime` or `timespan` but all numeric types are accepted.|
 |*start* | scalar |  :heavy_check_mark: | The low bound value of the *AxisColumn* for each of the series to be built. If *start* is not specified, it will be the first bin, or step, that has data in each series.|
 |*end*| scalar|  :heavy_check_mark: | The high bound non-inclusive value of the *AxisColumn*. The last index of the time series is smaller than this value and will be *start* plus integer multiple of *step* that is smaller than *end*. If *end* is not specified, it will be the upper bound of the last bin, or step, that has data per each series.|
-|*step*| scalar |  :heavy_check_mark: | The difference, or bin size, between two consecutive elements of the *AxisColumn* array. For a list of possible time intervals, see [timespan](./scalar-data-types/timespan.md).|
+|*step*| scalar |  :heavy_check_mark: | The difference, or bin size, between two consecutive elements of the *AxisColumn* array. For a list of possible time intervals, see [timespan](scalar-data-types/timespan.md).|
 |*GroupExpression* | | |An expression over the columns that provides a set of distinct values. Typically it's a column name that already provides a restricted set of values. |
 |*MakeSeriesParameters*| | | Zero or more space-separated parameters in the form of *Name* `=` *Value* that control the behavior. See [supported make series parameters](#supported-make-series-parameters).|
 
@@ -79,7 +79,7 @@ Finally the rows from the intermediate result arranged into groups having the sa
 
 |Function|Description|
 |--------|-----------|
-|[avg()](avg-aggfunction.md)|Returns an average value across the group|
+|[avg()](avg-aggregation-function.md)|Returns an average value across the group|
 |[avgif()](avgif-aggregation-function.md)|Returns an average with the predicate of the group|
 |[count()](count-aggregation-function.md)|Returns a count of the group|
 |[countif()](countif-aggregation-function.md)|Returns a count with the predicate of the group|

@@ -39,7 +39,7 @@ If the input to the `summarize` operator isn't sorted, the order of elements in 
 If the input to the `summarize` operator is sorted, the order of elements in the resulting array tracks that of the input.
 
 > [!TIP]
-> Use the [`array_sort_asc()`](./array-sort-asc-function.md) or [`array_sort_desc()`](./array-sort-desc-function.md) function to create an ordered list by some key.
+> Use the [`array_sort_asc()`](array-sort-asc-function.md) or [`array_sort_desc()`](array-sort-desc-function.md) function to create an ordered list by some key.
 
 ## Examples
 
@@ -106,7 +106,7 @@ shapes
 
 ### Packing a dynamic object
 
-The following examples show how to [pack](./packfunction.md) a dynamic object in a column before making it a list.
+The following examples show how to [pack](pack-function.md) a dynamic object in a column before making it a list.
 
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA03Pz0rEMBAG8Hsg7zAUhBZ6WP/rSk/iE3gUWabN0A3bTGuTyq748E6ws5ocEn75JvANlCDucaIIDThMstuBoGQMtIWYZs99DdE7eh4XTlvwnCpr3qwBWYW8I/cDFTVc16vFjwXnLDcqM3VJY2eciBP2I4vdqu3puNLdH00au1cbO6UHJR55pUclR91Klxtr3p+s+S1qzTfQMRE7cFK6xX43YXcoi9xZ0vmopYZ2Lv71r/JwXELA2X8RhNPgY5JPAh5ol++lq6A9gY8vn8SvOiaJ8xdwAVfQNLD5ARd0KSV7AQAA" target="_blank">Run the query</a>
@@ -138,4 +138,4 @@ shapes
 
 ## Related content
 
-[`make_list_if`](./make-list-if-aggregation-function.md) operator is similar to `make_list`, except it also accepts a predicate.
+[`make_list_if`](make-list-if-aggregation-function.md) operator is similar to `make_list`, except it also accepts a predicate.

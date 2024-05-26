@@ -7,7 +7,7 @@ ms.date: 02/23/2023
 ---
 # totimespan()
 
-Converts the input to a [timespan](./scalar-data-types/timespan.md) scalar value.
+Converts the input to a [timespan](scalar-data-types/timespan.md) scalar value.
 
 > **Deprecated aliases:** totime()
 
@@ -24,11 +24,11 @@ Converts the input to a [timespan](./scalar-data-types/timespan.md) scalar value
 
 |Name|Type|Required|Description|
 |--|--|--|--|
-| *value* | `string` |  :heavy_check_mark: | The value to convert to a [timespan](./scalar-data-types/timespan.md).|
+| *value* | `string` |  :heavy_check_mark: | The value to convert to a [timespan](scalar-data-types/timespan.md).|
 
 ## Returns
 
-If conversion is successful, result will be a [timespan](./scalar-data-types/timespan.md) value.
+If conversion is successful, result will be a [timespan](scalar-data-types/timespan.md) value.
 Else, result will be null.
 
 ## Example

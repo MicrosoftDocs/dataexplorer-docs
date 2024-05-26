@@ -7,7 +7,7 @@ ms.date: 01/03/2023
 ---
 # make_datetime()
 
-Creates a [datetime](./scalar-data-types/datetime.md) scalar value between the specified date and time.
+Creates a [datetime](scalar-data-types/datetime.md) scalar value between the specified date and time.
 
 ## Syntax
 
@@ -32,7 +32,7 @@ Creates a [datetime](./scalar-data-types/datetime.md) scalar value between the s
 
 ## Returns
 
-If successful, the result will be a [datetime](./scalar-data-types/datetime.md) value, otherwise, the result will be null.
+If successful, the result will be a [datetime](scalar-data-types/datetime.md) value, otherwise, the result will be null.
 
 ## Example
 

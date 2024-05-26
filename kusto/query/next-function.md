@@ -8,7 +8,7 @@ ms.date: 03/23/2023
 # next()
 
 Returns the value of a column in a row that is at some offset following the
-current row in a [serialized row set](./window-functions.md#serialized-row-set).
+current row in a [serialized row set](window-functions.md#serialized-row-set).
 
 ## Syntax
 

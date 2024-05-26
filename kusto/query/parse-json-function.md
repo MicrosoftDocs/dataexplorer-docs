@@ -9,7 +9,7 @@ ms.date: 01/08/2023
 
 Interprets a `string` as a JSON value and returns the value as `dynamic`. If possible, the value is converted into relevant [data types](scalar-data-types/index.md).  For strict parsing with no data type conversion, use [extract()](extract-function.md) or [extract_json()](extract-json-function.md) functions.
 
-It's better to use the parse_json() function over the [extract_json()](./extract-json-function.md) function when you need to extract more than one element of a JSON compound object. Use [dynamic()](./scalar-data-types/dynamic.md) when possible.
+It's better to use the parse_json() function over the [extract_json()](extract-json-function.md) function when you need to extract more than one element of a JSON compound object. Use [dynamic()](scalar-data-types/dynamic.md) when possible.
 
 > **Deprecated aliases:** parsejson(), toobject(), todynamic()
 
@@ -23,7 +23,7 @@ It's better to use the parse_json() function over the [extract_json()](./extract
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-| *json* | `string` |  :heavy_check_mark: | The string in the form of a [JSON-formatted value](https://json.org/) or a [dynamic](./scalar-data-types/dynamic.md) property bag to parse as JSON.|
+| *json* | `string` |  :heavy_check_mark: | The string in the form of a [JSON-formatted value](https://json.org/) or a [dynamic](scalar-data-types/dynamic.md) property bag to parse as JSON.|
 
 ## Returns
 

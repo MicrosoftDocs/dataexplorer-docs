@@ -104,7 +104,7 @@ StormEvents
 
 ## List unique values
 
-It appears that there are multiple types of storms based on the results of the previous query. Use the [distinct](../distinctoperator.md) operator to list all of the unique storm types.
+It appears that there are multiple types of storms based on the results of the previous query. Use the [distinct](../distinct-operator.md) operator to list all of the unique storm types.
 
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAwsuyS/KdS1LzSspVuCqUUjJLC7JzEsuUQALhVQWpAIAgfl1HyEAAAA=" target="_blank">Run the query</a>

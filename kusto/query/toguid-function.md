@@ -7,10 +7,10 @@ ms.date: 01/08/2024
 ---
 # toguid()
 
-Converts a string to a [`guid`](./scalar-data-types/guid.md) scalar.
+Converts a string to a [`guid`](scalar-data-types/guid.md) scalar.
 
 > [!NOTE]
-> When possible, use [guid literals](./scalar-data-types/guid.md#guid-literals) instead.
+> When possible, use [guid literals](scalar-data-types/guid.md#guid-literals) instead.
 
 ## Syntax
 
@@ -26,9 +26,9 @@ Converts a string to a [`guid`](./scalar-data-types/guid.md) scalar.
 
 ## Returns
 
-The conversion process takes the first 32 characters of the input, ignoring properly located hyphens, validates that the characters are between 0-9 or a-f, and then converts the string into a [`guid`](./scalar-data-types/guid.md) scalar. The rest of the string is ignored.
+The conversion process takes the first 32 characters of the input, ignoring properly located hyphens, validates that the characters are between 0-9 or a-f, and then converts the string into a [`guid`](scalar-data-types/guid.md) scalar. The rest of the string is ignored.
 
-If the conversion is successful, the result will be a [`guid`](./scalar-data-types/guid.md) scalar. Otherwise, the result will be `null`.
+If the conversion is successful, the result will be a [`guid`](scalar-data-types/guid.md) scalar. Otherwise, the result will be `null`.
 
 ## Example
 

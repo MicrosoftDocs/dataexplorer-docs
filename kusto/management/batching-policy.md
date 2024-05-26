@@ -13,9 +13,9 @@ During the queued ingestion process, the service optimizes for throughput by bat
 
 The downside to doing batching before ingestion is the forced delay. Therefore, the end-to-end time from requesting the data ingestion until the data ready for query is larger.
 
-When you define the [`IngestionBatching`](./show-table-ingestion-batching-policy.md) policy, you'll need to find a balance between optimizing for throughput and time delay. This policy applies to queued ingestion. It defines the maximum forced delay allowed when batching small blobs together. To learn more about using batching policy commands, and optimizing for throughput, see:
+When you define the [`IngestionBatching`](show-table-ingestion-batching-policy.md) policy, you'll need to find a balance between optimizing for throughput and time delay. This policy applies to queued ingestion. It defines the maximum forced delay allowed when batching small blobs together. To learn more about using batching policy commands, and optimizing for throughput, see:
 
-* [Ingestion batching policy command reference](./show-table-ingestion-batching-policy.md)
+* [Ingestion batching policy command reference](show-table-ingestion-batching-policy.md)
 * [Ingestion best practices - optimizing for throughput](../api/netfx/kusto-ingest-best-practices.md#optimize-for-throughput)
 
 ## Sealing a batch
@@ -55,11 +55,11 @@ If the `SystemFlush` condition is set, a batch will be sealed when a system flus
 | Data size (MB)   | MaximumRawDataSizeMB    | 1024    | 1024        | 100     | 4096 |
 | Time (sec)       | MaximumBatchingTimeSpan | 300     | 20 - 30     | 10 | 1800 |
 
-The most effective way of controlling the end-to-end latency using ingestion batching policy is to alter its time boundary at [table](./alter-table-ingestion-batching-policy.md) or [database](./alter-database-ingestion-batching-policy.md) level, according to the higher bound of latency requirements.
+The most effective way of controlling the end-to-end latency using ingestion batching policy is to alter its time boundary at [table](alter-table-ingestion-batching-policy.md) or [database](alter-database-ingestion-batching-policy.md) level, according to the higher bound of latency requirements.
 A database level policy affects all tables in that database that don't have the table-level policy defined, and any newly created table.
 
 > [!IMPORTANT]
-> If you set the time boundary of the Ingestion Batching policy too low on low-ingress tables, you may incur additional compute and storage work as the cluster attempts to optimize the newly created data shards. For more information about data shards, see [extents](./extents-overview.md).
+> If you set the time boundary of the Ingestion Batching policy too low on low-ingress tables, you may incur additional compute and storage work as the cluster attempts to optimize the newly created data shards. For more information about data shards, see [extents](extents-overview.md).
 
 ## Batch data size
 

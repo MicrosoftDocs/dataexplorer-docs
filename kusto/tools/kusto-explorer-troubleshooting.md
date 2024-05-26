@@ -57,7 +57,7 @@ The program fails to start and displays one of the following errors:
 
 You can explore the error details by clicking `Details` in the following error dialog:
 
-![ClickOnce error.](./media/kusto-explorer-troubleshooting/clickonce-err-1.png)
+![ClickOnce error.](media/kusto-explorer-troubleshooting/clickonce-err-1.png)
 
 ```kusto
 Following errors were detected during this operation.

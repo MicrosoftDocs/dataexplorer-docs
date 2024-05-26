@@ -23,7 +23,7 @@ Calculates the union of polygons or multipolygons on Earth.
 
 ## Returns
 
-A polygon or a multipolygon in [GeoJSON Format](https://tools.ietf.org/html/rfc7946) and of a [dynamic](./scalar-data-types/dynamic.md) data type. If any of the provided polygons or multipolygons is invalid, the query will produce a null result.
+A polygon or a multipolygon in [GeoJSON Format](https://tools.ietf.org/html/rfc7946) and of a [dynamic](scalar-data-types/dynamic.md) data type. If any of the provided polygons or multipolygons is invalid, the query will produce a null result.
 
 > [!NOTE]
 >

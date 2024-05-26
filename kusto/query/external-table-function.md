@@ -12,7 +12,7 @@ References an [external table](schema-entities/external-tables.md) by name.
 > [!NOTE]
 >
 > The `external_table` function has similar restrictions as the [table](table-function.md) function.
-> Standard [query limits](../concepts/querylimits.md) apply to external table queries as well.
+> Standard [query limits](../concepts/query-limits.md) apply to external table queries as well.
 
 ## Syntax
 
@@ -29,10 +29,10 @@ References an [external table](schema-entities/external-tables.md) by name.
 
 ## Authentication and authorization
 
-The authentication method to access an external table is based on the connection string provided during its creation, and the permissions required to access the table vary depending on the authentication method. For more information, see [Azure Storage external table](../management/external-tables-azurestorage-azuredatalake.md#authentication-and-authorization) or [SQL Server external table](../management/external-sql-tables.md).
+The authentication method to access an external table is based on the connection string provided during its creation, and the permissions required to access the table vary depending on the authentication method. For more information, see [Azure Storage external table](../management/external-tables-azure-storage.md#authentication-and-authorization) or [SQL Server external table](../management/external-sql-tables.md).
 
 ## Related content
 
 * [External tables overview](schema-entities/external-tables.md)
-* [Create and alter Azure Storage external tables](../management/external-tables-azurestorage-azuredatalake.md)
+* [Create and alter Azure Storage external tables](../management/external-tables-azure-storage.md)
 * [Create and alter SQL Server external tables](../management/external-sql-tables.md).

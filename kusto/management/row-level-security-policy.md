@@ -22,7 +22,7 @@ RLS lets you provide access to other applications and users, only to a certain p
 > [!NOTE]
 > When an RLS policy is enabled on a table, access is entirely replaced by the RLS query that's defined on the table. The access restriction applies to all users, including database admins and the RLS creator. The RLS query must explicitly include definitions for all types of users to whom you want to give access.
 
-For more information, see [management commands for managing the Row Level Security policy](./show-table-row-level-security-policy-command.md).
+For more information, see [management commands for managing the Row Level Security policy](show-table-row-level-security-policy-command.md).
 
 > [!TIP]
 > These functions are often useful for row_level_security queries:
@@ -36,9 +36,9 @@ For more information, see [management commands for managing the Row Level Securi
 * There's no limit on the number of tables on which Row Level Security policy can be configured.
 * Row Level Security policy cannot be configured on [External Tables](../query/schema-entities/external-tables.md).
 * The RLS policy can't be enabled on a table under the following circumstances:
-  * When it's referenced by an [update policy](./update-policy.md) query, while the update policy is not configured with a managed identity.
+  * When it's referenced by an [update policy](update-policy.md) query, while the update policy is not configured with a managed identity.
   * When it's referenced by a [continuous export](../management/data-export/continuous-data-export.md) that uses an authentication method other than impersonation.
-  * When a [restricted view access policy](./restricted-view-access-policy.md) is configured for the table.
+  * When a [restricted view access policy](restricted-view-access-policy.md) is configured for the table.
 
 ## Examples
 
