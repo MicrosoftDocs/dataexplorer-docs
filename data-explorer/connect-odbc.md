@@ -3,7 +3,7 @@ title: Connect to Azure Data Explorer with ODBC
 description: In this article, you learn how to set up an Open Database Connectivity (ODBC) connection to Azure Data Explorer.
 ms.reviewer: gabil
 ms.topic: how-to
-ms.date: 11/16/2023
+ms.date: 05/26/2024
 ---
 
 # Connect to Azure Data Explorer with ODBC
@@ -25,7 +25,22 @@ Alternatively, follow the steps to [configure the ODBC data source](#configure-t
 
 * [Microsoft ODBC Driver for SQL Server version 17.2.0.1 or later](/sql/connect/odbc/download-odbc-driver-for-sql-server) for your operating system.
 
-## Configure the ODBC data source
+## Connection to Azure Data Explorer
+
+There are two ways to connect to Azure Data Explorer.
+
+### [Connection string](#tab/connection-string)
+
+From an application that supports ODBC connection, you can connect to Azure Data Explorer with a connection string of the following format:
+
+```odbc
+"Driver={ODBC Driver 17 for SQL Server};Server=mykustocluster.kusto.windows.net;Database=mykustodatabase;Authentication=ActiveDirectoryIntegrated"
+```
+
+> [!NOTE]
+> Azure Data Explorer considers string values as `NVARCHAR(MAX)`, which may not work well with some ODBC applications. Cast the data to `NVARCHAR(`*n*`)` using the `Language` parameter in the connection string. For example, `Language=any@MaxStringSize:5000` will encode strings as `NVARCHAR(5000)`. For more information, see [tuning options](sql-server-emulation-overview.md#tuning-options).
+
+### [Windows registry](#tab/windows-registry)
 
 To configure an ODBC data source using the ODBC driver for SQL Server:
 
@@ -64,16 +79,7 @@ To configure an ODBC data source using the ODBC driver for SQL Server:
 
     ![Test succeeded.](media/connect-odbc/test-succeeded.png)
 
-## Use the ODBC data source
-
-From an application that supports ODBC connection, you can connect to Azure Data Explorer with a connection string of the following format:
-
-```odbc
-"Driver={ODBC Driver 17 for SQL Server};Server=mykustocluster.kusto.windows.net;Database=mykustodatabase;Authentication=ActiveDirectoryIntegrated"
-```
-
-> [!NOTE]
-> Azure Data Explorer considers string values as `NVARCHAR(MAX)`, which may not work well with some ODBC applications. Cast the data to `NVARCHAR(`*n*`)` using the `Language` parameter in the connection string. For example, `Language=any@MaxStringSize:5000` will encode strings as `NVARCHAR(5000)`. For more information, see [tuning options](sql-server-emulation-overview.md#tuning-options).
+---
 
 ## Application authentication
 
@@ -107,18 +113,6 @@ Driver = ODBC Driver 17 for SQL Server
 # Server = [protocol:]server[,port]
 Server = tcp:<adx_cluster_name>.<region_name>.kusto.windows.net,1433
 Language = any@AadAuthority:<aad_tenant_id>
-```
-
-## Example
-
-The following example shows how to connect to Azure Data Explorer using an ODBC driver in PowerShell. For this to work, you must first follow the steps in [Configure the ODBC data source](#configure-the-odbc-data-source).
-
-```powershell
-$conn = [System.Data.Common.DbProviderFactories]::GetFactory("System.Data.Odbc").CreateConnection()
-$conn.ConnectionString = "Driver={ODBC Driver 17 for SQL Server};Server=mykustocluster.kusto.windows.net;Database=mykustodatabase;Authentication=ActiveDirectoryIntegrated"
-$conn.Open()
-$conn.GetSchema("Tables")
-$conn.Close()
 ```
 
 ---
