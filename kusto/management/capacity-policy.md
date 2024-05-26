@@ -29,7 +29,6 @@ To view the capacity of your cluster, use the [.show capacity](show-capacity-com
 |--|--|--|
 | `ClusterMaximumConcurrentOperations` | `long` | The maximum number of concurrent ingestion operations allowed in a cluster. This value caps the total ingestion capacity, as shown in the following formula. |
 | `CoreUtilizationCoefficient` | `real` | Determines the percentage of cores to use in the ingestion capacity calculation.|
-`
 
 **Formula**
 

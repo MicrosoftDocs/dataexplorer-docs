@@ -11,7 +11,7 @@ This section summarizes commands that are available to Database Admins and Datab
 
 * [`.show journal`](journal.md) - displays history of the metadata operations.
 * [`.show operations`](show-operations.md) - displays administrative operations both running and completed, since Admin node was last elected.
-* [`.show queries`](queries.md) - displays information on completed and running queries.
+* [`.show queries`](show-queries-command.md) - displays information on completed and running queries.
 * [`.show commands`](show-commands.md) - displays information on completed commands and their resources utilization.
 * [`.show commands-and-queries`](commands-and-queries.md) - displays information on completed commands and queries, and their resources utilization.
 * [`.show ingestion failures`](ingestion-failures.md) - displays information on failures encountered during data ingestion to the cluster.
