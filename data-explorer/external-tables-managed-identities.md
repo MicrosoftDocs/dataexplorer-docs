@@ -154,7 +154,7 @@ To create a Cosmos DB external table, do the following steps:
 
 The following commands create `MyCosmosDbExternalTable` that refers to data in `MyCollection` in database `MyDatabase` of Cosmos DB account `mycosmos`. 
 
-1. The connection string contains ;Authentication="Active Directory Managed Identity";User Id=123456789, which indicates to use a user-assigned managed identity with object ID 123456789 to access the table.
+* The connection string contains `;Authentication="Active Directory Managed Identity";User Id=123456789`, which indicates to use a user-assigned managed identity with an object ID of `123456789` to access the table.
 ```kusto
 .create external table MyCosmosDbExternalTable (x:int, s:string) kind=sql
 ( 
