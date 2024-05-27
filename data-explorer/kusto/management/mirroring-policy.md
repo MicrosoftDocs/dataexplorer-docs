@@ -26,9 +26,14 @@ The mirroring policy includes the following properties:
 | Property | Description | Values | Default|
 |---|---|---|---|
 | **Format** | The format of your mirrored files. | Valid value is `parquet`. | `parquet` |
-| **MirroringMaxLatencyMinutes** | The maximum amount of time in minutes between the last and next time new data was added to your mirrored files. | A positive integer. | |
+| **MirroringMaxLatencyMinutes** | The maximum amount of time in minutes to wait for enough data to be available to add to your mirrored files. If there isn't enough data and the *MirroringMaxLatencyMinutes* value isn't reached, the data isn't added.  | A positive integer. | Three hours |
 |  **IsEnabled** | Determines whether the mirroring policy is enabled. When the mirroring policy is disabled and set to `false`, the underlying mirroring data is retained in the database. | `true`, `false`, `null`. | `null` |
-| **Partitions** | A comma-separated list of columns used to divide the data into smaller partitions. *PartitionName* must be a case insensitive unique string both among other partition names and the column names of the mirrored table. See [Partitions formatting](external-tables-azure-storage.md#partitions-formatting).| | |
+| **Partitions** | A comma-separated list of columns used to divide the data into smaller partitions. To learn more about partitioning formatting for the columns, see [Partitions formatting](#partitions-formatting). | | |
+
+[!INCLUDE [partitions-formatting](../../includes/partitions-formatting.md)]
+
+> [!NOTE]
+> *PartitionName* must be a case insensitive unique string, both among other partition names and the column names of the mirrored table.
 
 ## Data types mapping
 
