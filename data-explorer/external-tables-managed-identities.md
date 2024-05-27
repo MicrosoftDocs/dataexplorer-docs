@@ -160,6 +160,10 @@ The following commands create `MyCosmosDbExternalTable` that refers to data in `
 ( 
     h@'AccountEndpoint=https://mycosmos.documents.azure.com:443/;Database=MyDatabase;Collection=MyCollection;Authentication="Active Directory Managed Identity";User Id=123456789;'
 )
+with 
+(
+   sqlDialect = "CosmosDbSQL"
+)  
 ```
 
 2. The connection string contains only `;Authentication="Active Directory Managed Identity";`, which indicates to use a system-assigned managed identity
@@ -168,6 +172,10 @@ The following commands create `MyCosmosDbExternalTable` that refers to data in `
 ( 
     h@'AccountEndpoint=https://mycosmos.documents.azure.com:443/;Database=MyDatabase;Collection=MyCollection;Authentication="Active Directory Managed Identity";'
 )
+with 
+(
+   sqlDialect = "CosmosDbSQL"
+)  
 ```
 
 ---
