@@ -48,3 +48,9 @@ This example is equivalent to `substring(Text, 2, 4)`:
 ```kusto
 extract("^.{2,2}(.{4,4})", 1, Text)
 ```
+
+## Related content
+
+* [extract-all function](extract-all-function.md)
+* [extract-json function](extract-json-function.md)
+* [parse operator](parse-operator.md)

@@ -36,6 +36,9 @@ You must have [Database Viewer](access-control/role-based-access-control.md) per
 
 Returns information about active stored query results in the current database.
 
+> [!NOTE]
+> Please note that there might be a short delay before recently created stored query results appear in the results.
+
 ## Examples
 
 The following example returns information about the stored query result `Events`.
