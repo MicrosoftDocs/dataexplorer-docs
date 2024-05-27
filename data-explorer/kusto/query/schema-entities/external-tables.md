@@ -14,13 +14,13 @@ Similar to [tables](tables.md), an external table has a well-defined schema (an 
 Supported external data stores are:
 
 * Files stored in Azure Blob Storage or in Azure Data Lake. Most commonly the data is stored in some standard format such as CSV, JSON, Parquet, AVRO, etc. For the list of supported formats, refer to [supported formats](../../../ingestion-supported-formats.md).
-* SQL Server table.
+* SQL table (SQL Server, MySql, PostgreSql, and Cosmos DB).
 
 See the following ways of creating external tables:
 
 * [Create or alter Azure Blob Storage/ADLS external tables](../../management/external-tables-azurestorage-azuredatalake.md)
 * [Create or alter delta external tables](../../management/external-tables-azurestorage-deltalake.md)
-* [Create and alter SQL Server external tables](../../management/external-sql-tables.md)
+* [Create and alter SQL external tables](../../management/external-sql-tables.md)
 * [Create external table using Azure Data Explorer web UI Wizard](../../../external-table.md)
 
 An **external table** can be referenced by its name using the [external_table()](../../query/external-table-function.md) function.
