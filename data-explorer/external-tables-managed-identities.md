@@ -170,7 +170,10 @@ with
 )  
 ```
 
-2. The connection string contains only `;Authentication="Active Directory Managed Identity";`, which indicates to use a system-assigned managed identity
+##### System-assigned managed identity
+
+The connection string contains only `;Authentication="Active Directory Managed Identity";`, which indicates to use a system-assigned managed identity
+
 ```kusto
 .create external table MyCosmosDbExternalTable (x:int, s:string) kind=sql
 ( 
