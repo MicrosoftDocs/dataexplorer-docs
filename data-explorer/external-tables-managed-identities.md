@@ -87,7 +87,7 @@ To import or query data from the SQL database, grant the managed identity table 
 
 ### [Cosmos DB](#tab/cosmosdb)
 
-To import or query data from the CosmosDB database, grant the managed identity read permissions. 
+To import or query data from the Cosmos DB database, grant the managed identity read permissions. 
 To learn more, see [Permissions](/azure/cosmos-db/how-to-setup-rbac).
 
 ---
@@ -142,7 +142,7 @@ The following command creates `MySqlExternalTable` that refers to `MySqlTable` t
 > [!NOTE]
 > To authenticate with a system-assigned managed identity, remove `;User Id={object_id}` and only specify `;Authentication="Active Directory Managed Identity"`.
 
-### [CosmosDB](#tab/cosmosdb)
+### [Cosmos DB](#tab/cosmosdb)
 
 To create a Cosmos DB external table, do the following steps:
 
@@ -152,8 +152,9 @@ To create a Cosmos DB external table, do the following steps:
 
 #### Example
 
-The following command creates `MyCosmosDbExternalTable` that refers to data in `MyCollection` in database `MyDatabase` of Cosmos DB account `mycosmos`. The connection string contains `;Authentication="Active Directory Managed Identity";User Id=123456789`, which indicates to use a user-assigned managed identity with object ID `123456789` to access the table.
+The following commands create `MyCosmosDbExternalTable` that refers to data in `MyCollection` in database `MyDatabase` of Cosmos DB account `mycosmos`. 
 
+1. The connection string contains ;Authentication="Active Directory Managed Identity";User Id=123456789, which indicates to use a user-assigned managed identity with object ID 123456789 to access the table.
 ```kusto
 .create external table MyCosmosDbExternalTable (x:int, s:string) kind=sql
 ( 
@@ -161,8 +162,13 @@ The following command creates `MyCosmosDbExternalTable` that refers to data in `
 )
 ```
 
-> [!NOTE]
-> To authenticate with a system-assigned managed identity, remove `;User Id={object_id}` and only specify `;Authentication="Active Directory Managed Identity"`.
+2. The connection string contains only `;Authentication="Active Directory Managed Identity";`, which indicates to use a system-assigned managed identity
+```kusto
+.create external table MyCosmosDbExternalTable (x:int, s:string) kind=sql
+( 
+    h@'AccountEndpoint=https://mycosmos.documents.azure.com:443/;Database=MyDatabase;Collection=MyCollection;Authentication="Active Directory Managed Identity";'
+)
+```
 
 ---
 
