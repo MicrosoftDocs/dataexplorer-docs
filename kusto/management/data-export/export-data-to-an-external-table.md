@@ -137,4 +137,4 @@ dataformat=csv
 |ExternalBlob|http://storageaccount.blob.core.windows.net/container1/CustomerName=customer1/2019/01/01/fa36f35c-c064-414d-b8e2-e75cf157ec35_1_58017c550b384c0db0fea61a8661333e.csv|10|
 |ExternalBlob|http://storageaccount.blob.core.windows.net/container1/CustomerName=customer2/2019/01/01/fa36f35c-c064-414d-b8e2-e75cf157ec35_2_b785beec2c004d93b7cd531208424dc9.csv|10|
 
-If the command is executed asynchronously (by using the `async` keyword), the output is available using the [show operation details](..query/show-operations.md) command.
+If the command is executed asynchronously (by using the `async` keyword), the output is available using the [show operation details](show-operation-details.md) command.
