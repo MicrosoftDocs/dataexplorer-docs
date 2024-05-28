@@ -14,7 +14,7 @@ Merge the rows of two tables to form a new table by matching values of the speci
 
 Kusto Query Language (KQL) offers many kinds of joins that each affect the schema and rows in the resultant table in different ways. For example, if you use an `inner` join, the table has the same columns as the left table, plus the columns from the right table. For best performance, if one table is always smaller than the other, use it as the left side of the `join` operator.
 
-The following image provides a visual representation of the operation performed by each join. The colour of the shading represent the columns returned, and the areas shaded represent the rows returned.
+The following image provides a visual representation of the operation performed by each join. The color of the shading represent the columns returned, and the areas shaded represent the rows returned.
 
 :::image type="content" source="media/joinoperator/join-kinds.png" alt-text="Diagram showing query join kinds.":::
 
