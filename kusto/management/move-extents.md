@@ -72,7 +72,7 @@ When the command is run synchronously, a table with the following schema is retu
 | ResultExtentId | `string` | A unique identifier (GUID) for the result extent that has been moved from the source table to the destination table. Upon failure - "Failed". |
 | Details | `string` | Includes the failure details, in case the operation fails. |
 
-When the command is run asynchronously, an operation ID (GUID) is returned. Monitor the operation's status with the [.show operations](show-operations.md) command, and retrieve the results of a successful execution with the [.show operation details](show-operations.md#show-operation-details) command.
+When the command is run asynchronously, an operation ID (GUID) is returned. Monitor the operation's status with the [.show operations](show-operations.md) command, and retrieve the results of a successful execution with the [.show operation details](show-operation-details.md) command.
 
 ## Examples
 

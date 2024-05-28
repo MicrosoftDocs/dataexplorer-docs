@@ -16,11 +16,11 @@
         "RestApi": "Content",
         "ZonePivotGroups": "Toc"
       },
-      "build_entry_point": "docs",
-      "template_folder": "_themes",
       "redirection_files": [
         ".openpublishing.redirection.kusto.json"
-      ]
+      ],
+      "build_entry_point": "docs",
+      "template_folder": "_themes"
     },
     {
       "docset_name": "kusto",
