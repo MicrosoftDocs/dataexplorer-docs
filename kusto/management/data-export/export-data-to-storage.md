@@ -80,8 +80,8 @@ export continues in the background until completion. The operation ID returned
 by the command can be used to track its progress and ultimately its results
 via the following commands:
 
-* [`.show operations`](show-operations.md): Track progress.
-* [`.show operation details`](show-operation-details.md): Get completion results.
+* [`.show operations`](../show-operations.md): Track progress.
+* [`.show operation details`](../show-operation-details.md): Get completion results.
 
 For example, after a successful completion, you can retrieve the results using:
 
@@ -115,7 +115,7 @@ Column name labels are added as the first row for each blob.
 Export commands can transiently fail during execution. [Continuous export](continuous-data-export.md) will automatically retry the command. Regular export commands ([export to storage](export-data-to-storage.md), [export to external table](export-data-to-an-external-table.md)) don't perform any retries.
 
 * When the export command fails, artifacts that were already written to storage aren't deleted. These artifacts remain in storage. If the command fails, assume the export is incomplete, even if some artifacts were written.
-* The best way to track both completion of the command and the artifacts exported upon successful completion is by using the [`.show operations`](show-operations.md) and [`.show operation details`](show-operation-details.md) commands.
+* The best way to track both completion of the command and the artifacts exported upon successful completion is by using the [`.show operations`](../show-operations.md) and [`.show operation details`](../show-operation-details.md) commands.
 
 ### Storage failures
 
@@ -170,14 +170,14 @@ Authentication or authorization failures during export commands can occur when t
 On export, Kusto data types are mapped to Parquet data types using the following rules:
 
 | Kusto Data Type | Parquet Data Type | Parquet Annotation | Comments |
-| --------------- | ----------------- | ------------------ | -------- |
-| `bool`     | `BOOLEAN` | | |
-| `datetime` | `INT64` | TIMESTAMP_MICROS | |
-| `dynamic`  | `BYTE_ARRAY` | UTF-8 | Serialized as JSON string |
-| `guid` | `BYTE_ARRAY` | UTF-8 | |
-| `int` | `INT32` | | |
-| `long` | `INT64` | | |
-| `real` | `DOUBLE` | | |
-| `string` | `BYTE_ARRAY` | UTF-8 | |
-| `timespan` | `INT64` | | Stored as ticks (100-nanosecond units) count |
-| `decimal` | `FIXED_LENGTH_BYTE_ARRAY` | DECIMAL | |
+|--|--|--|--|
+| `bool` | `BOOLEAN` |  |  |
+| `datetime` | `INT64` | TIMESTAMP_MICROS |  |
+| `dynamic` | `BYTE_ARRAY` | UTF-8 | Serialized as JSON string |
+| `guid` | `BYTE_ARRAY` | UTF-8 |  |
+| `int` | `INT32` |  |  |
+| `long` | `INT64` |  |  |
+| `real` | `DOUBLE` |  |  |
+| `string` | `BYTE_ARRAY` | UTF-8 |  |
+| `timespan` | `INT64` |  | Stored as ticks (100-nanosecond units) count |
+| `decimal` | `FIXED_LENGTH_BYTE_ARRAY` | DECIMAL |  |

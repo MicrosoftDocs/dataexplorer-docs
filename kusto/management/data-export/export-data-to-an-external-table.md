@@ -7,9 +7,7 @@ ms.date: 03/20/2023
 ---
 # Export data to an external table
 
-You can export data by defining an [external table](../show-external-tables.md) and exporting data to it.
- The table properties are specified when [creating the external table](../external-tables-azure-storage.md).
- The export command references the external table by name.
+You can export data by defining an [external table](../show-external-tables.md) and exporting data to it. The table properties are specified when [creating the external table](../external-tables-azure-storage.md). The export command references the external table by name.
 
 ## Permissions
 
@@ -26,23 +24,23 @@ You must have at least [Table Admin](../access-control/role-based-access-control
 
 | Name | Type | Required | Description |
 |--|--|--|--|
-| *externalTableName* | `string` |  :heavy_check_mark: | The name of the external table to which to export.|
-| *propertyName*, *propertyValue* | `string` | | A comma-separated list of optional [properties](#supported-properties).|
-| *query* | `string` |  :heavy_check_mark: | The export query.|
+| *externalTableName* | `string` | :heavy_check_mark: | The name of the external table to which to export. |
+| *propertyName*, *propertyValue* | `string` |  | A comma-separated list of optional [properties](#supported-properties). |
+| *query* | `string` | :heavy_check_mark: | The export query. |
 
 ## Supported properties
 
 The following properties are supported as part of the export to external table command.
 
-| Property | Type | Description| Default
-|---|---|---|---|
-| `sizeLimit`     |`long`  |The size limit in bytes of a single storage artifact being written (prior to compression). A full row group of size `parquetRowGroupSize` will be written before checking whether this row group has reached the size limit and should start a new artifact. Valid range: 100 MB (default) to 1 GB.|
-|`distributed`   |`bool`  |Disable/enable distributed export. Setting to false is equivalent to `single` distribution hint. | Default is `true`.
-| `distribution` | `string` |Distribution hint (`single`, `per_node`, `per_shard`).  See more details in [Distribution settings](#distribution-settings)| Default is `per_node`.
-|`distributionKind`   |`string`  |Optionally switches to uniform distribution when the external table is partitioned by string partition. Valid values are `uniform` or `default`. See more details in [Distribution settings](#distribution-settings)|
-|`concurrency`|*Number*|Hints the system how many partitions to run in parallel. See more details in [Distribution settings](#distribution-settings)| The default value is 16. |
-|`spread`|*Number*|Hints the system how to distribute the partitions among cluster nodes. See more details in [Distribution settings](#distribution-settings)| The default value is `Min(64, number-of-nodes)`. |
-|`parquetRowGroupSize`|`int`  |Relevant only when data format is Parquet. Controls the row group size in the exported files. This value takes precedence over `sizeLimit`, meaning a full row group will be exported before checking whether this row group has reached the size limit and should start a new artifact. | Default row group size is 100,000 records.|
+| Property | Type | Description | Default |
+|--|--|--|--|
+| `sizeLimit` | `long` | The size limit in bytes of a single storage artifact being written (prior to compression). A full row group of size `parquetRowGroupSize` will be written before checking whether this row group has reached the size limit and should start a new artifact. Valid range: 100 MB (default) to 1 GB. |  |
+| `distributed` | `bool` | Disable/enable distributed export. Setting to false is equivalent to `single` distribution hint. | Default is `true`. |
+| `distribution` | `string` | Distribution hint (`single`, `per_node`, `per_shard`).  See more details in [Distribution settings](#distribution-settings) | Default is `per_node`. |
+| `distributionKind` | `string` | Optionally switches to uniform distribution when the external table is partitioned by string partition. Valid values are `uniform` or `default`. See more details in [Distribution settings](#distribution-settings) |  |
+| `concurrency` | *Number* | Hints the system how many partitions to run in parallel. See more details in [Distribution settings](#distribution-settings) | The default value is 16. |
+| `spread` | *Number* | Hints the system how to distribute the partitions among cluster nodes. See more details in [Distribution settings](#distribution-settings) | The default value is `Min(64, number-of-nodes)`. |
+| `parquetRowGroupSize` | `int` | Relevant only when data format is Parquet. Controls the row group size in the exported files. This value takes precedence over `sizeLimit`, meaning a full row group will be exported before checking whether this row group has reached the size limit and should start a new artifact. | Default row group size is 100,000 records. |
 
 ### Distribution settings
 
@@ -57,11 +55,11 @@ The distribution of an export to external table operation indicates the number o
 
 Changing the default distribution settings can be useful in the following cases:
 
-| Use case| Description| Recommendation
-|---|---|--|
-| **Reduce the number of exported files** |Export is creating too many small files, and you would like it to create a smaller number of larger files.|Set `distribution`=`single` or `distributed`=`false` (both are equivalent) in the command properties. Only a single thread performs the export. The downside of this is that the export operation can be slower, as concurrency is much reduced.|
-| **Reduce the export duration** |Increasing the concurrency of the export operation, to reduce its duration.| Set `distribution`=`per_shard` in the command properties. This means concurrency of the write operations is per data shard, instead of per node. This is only relevant when exporting to an external table that isn't partitioned by string partition. This might create too much load on storage, potentially resulting in throttling. See [Storage failures](export-data-to-storage.md#storage-failures).|
-| **Reduce the export duration for external tables that are partitioned by a string partition** | If the partitions are not uniformly distributed between the nodes, export might take a longer time to run. For example, if there is a single partition that's much larger than others, most of the export work is done by the single node assigned to that partition, while other nodes will be mostly idle. See [Distribution settings](#distribution-settings). | There are several settings you can change: <br>* If there is more than one string partition, define the one with best distribution first.</br><br>* Set `distributionKind`=`uniform` in the command properties. This setting disables the default distribution settings for string-partitioned external tables. Export will run with `per-node` distribution and each node will export the data assigned to the node. A single partition might be written by several nodes, and the number of files increases accordingly. To increase concurrency even further, set `distributionKind`=`uniform` along with `distribution`=`per_shard` for highest concurrency (at the cost of potentially many more files written)</br><br>* If the cause for slow export isn't outliers in the data, reduce duration by increasing concurrency, without changing partitioning settings. Use the `hint.spread` and `hint.concurrency` properties, which determine the concurrency of the partitioning. See [partition operator](../../query/partition-operator.md). By default, the number of nodes exporting concurrently (the `spread`) will be the minimum value between 64 and the number of cluster nodes. Setting `spread` to a higher number than number of nodes increases the concurrency on each node (max value for `spread` is 64).
+| Use case | Description | Recommendation |
+|--|--|--|
+| **Reduce the number of exported files** | Export is creating too many small files, and you would like it to create a smaller number of larger files. | Set `distribution`=`single` or `distributed`=`false` (both are equivalent) in the command properties. Only a single thread performs the export. The downside of this is that the export operation can be slower, as concurrency is much reduced. |
+| **Reduce the export duration** | Increasing the concurrency of the export operation, to reduce its duration. | Set `distribution`=`per_shard` in the command properties. This means concurrency of the write operations is per data shard, instead of per node. This is only relevant when exporting to an external table that isn't partitioned by string partition. This might create too much load on storage, potentially resulting in throttling. See [Storage failures](export-data-to-storage.md#storage-failures). |
+| **Reduce the export duration for external tables that are partitioned by a string partition** | If the partitions are not uniformly distributed between the nodes, export might take a longer time to run. For example, if there is a single partition that's much larger than others, most of the export work is done by the single node assigned to that partition, while other nodes will be mostly idle. See [Distribution settings](#distribution-settings). | There are several settings you can change: <br>* If there is more than one string partition, define the one with best distribution first.</br><br>* Set `distributionKind`=`uniform` in the command properties. This setting disables the default distribution settings for string-partitioned external tables. Export will run with `per-node` distribution and each node will export the data assigned to the node. A single partition might be written by several nodes, and the number of files increases accordingly. To increase concurrency even further, set `distributionKind`=`uniform` along with `distribution`=`per_shard` for highest concurrency (at the cost of potentially many more files written)</br><br>* If the cause for slow export isn't outliers in the data, reduce duration by increasing concurrency, without changing partitioning settings. Use the `hint.spread` and `hint.concurrency` properties, which determine the concurrency of the partitioning. See [partition operator](../../query/partition-operator.md). By default, the number of nodes exporting concurrently (the `spread`) will be the minimum value between 64 and the number of cluster nodes. Setting `spread` to a higher number than number of nodes increases the concurrency on each node (max value for `spread` is 64). |
 
 ## Authentication and authorization
 
@@ -69,18 +67,17 @@ In order to export to an external table, you must set up write permissions. For 
 
 ## Output
 
-|Output parameter |Type |Description
-|---|---|---
-|ExternalTableName  | `string` |The name of the external table.
-|Path| `string` |Output path.
-|NumRecords| `string` | Number of records exported to path.
+| Output parameter | Type | Description |
+|--|--|--|
+| ExternalTableName | `string` | The name of the external table. |
+| Path | `string` | Output path. |
+| NumRecords | `string` | Number of records exported to path. |
 
 ## Notes
 
 * The export query output schema must match the schema of the external table, including all columns defined by the partitions. For example, if the table is partitioned by *DateTime*, the query output schema must have a Timestamp column matching the *TimestampColumnName*. This column name is defined in the external table partitioning definition.
 
-* It isn't possible to override the external table properties using the export command.
- For example, you can't export data in Parquet format to an external table whose data format is CSV.
+* It isn't possible to override the external table properties using the export command. For example, you can't export data in Parquet format to an external table whose data format is CSV.
 
 * If the external table is partitioned, exported artifacts are written to their respective directories according to the partition definitions as seen in the [partitioned external table example](#partitioned-external-table-example).
   * If a partition value is null/empty or is an invalid directory value, per the definitions of the target storage, the partition value is replaced with a default value of `__DEFAULT_PARTITION__`.
@@ -137,4 +134,4 @@ dataformat=csv
 |ExternalBlob|http://storageaccount.blob.core.windows.net/container1/CustomerName=customer1/2019/01/01/fa36f35c-c064-414d-b8e2-e75cf157ec35_1_58017c550b384c0db0fea61a8661333e.csv|10|
 |ExternalBlob|http://storageaccount.blob.core.windows.net/container1/CustomerName=customer2/2019/01/01/fa36f35c-c064-414d-b8e2-e75cf157ec35_2_b785beec2c004d93b7cd531208424dc9.csv|10|
 
-If the command is executed asynchronously (by using the `async` keyword), the output is available using the [show operation details](show-operation-details.md) command.
+If the command is executed asynchronously (by using the `async` keyword), the output is available using the [show operation details](../show-operation-details.md) command.
