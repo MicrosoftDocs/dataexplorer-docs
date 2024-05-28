@@ -155,20 +155,6 @@ You can view policy update failures using the [`.show ingestion failures` comman
 | where FailedOn > ago(1hr) and OriginatesFromUpdatePolicy == true
 ```
 
-When an update policy failure occurs with the transactional setting set as: 
-
-* `IsTransactional:false`:
-    * A failure to run the policy is ignored and ingestion isn't automatically retried.
-    * To automatically retry ingestion, you'll need to set the update policy to transactional.
-
-* `IsTransactional:true`:
-    * If the ingestion method is `pull`, ingestion is automatically retried according to the following conditions:
-        * Retries are performed until one of following configurable limit settings is met: `DataImporterMaximumRetryPeriod` or `DataImporterMaximumRetryAttempts`
-        * By default the `DataImporterMaximumRetryPeriod` setting is two days, and `DataImporterMaximumRetryAttempts`is 10
-        * The backoff period starts at 2 minutes, and doubles. So the wait starts with 2 min, then increases to 4 min, to 8 min, to 16 min and so on.
-
-* In any other case, you can manually retry ingestion.
-
 ## Example of extract, transform, load
 
 You can use update policy settings to perform extract, transform, load (ETL).
