@@ -51,7 +51,6 @@ The following example requests information about the *myTable* table mirroring p
     "https://example.microsoft.com/45a01bcd-cd22-41e0/45a01bcd-cd22-41e0-567f-g891-30hij152536kl/Tables/myTable/;******"
   ],
   "Format": "parquet",
-  "MirroringMaxLatencyMinutes": null,
   "IsEnabled": true,
   "Partitions": null,
   "PathFormat": null

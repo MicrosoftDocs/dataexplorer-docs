@@ -26,7 +26,7 @@ The mirroring policy includes the following properties:
 | Property | Description | Values | Default|
 |---|---|---|---|
 | **Format** | The format of your mirrored files. | Valid value is `parquet`. | `parquet` |
-| **MirroringMaxLatencyMinutes** | The maximum amount of time in minutes to wait for enough data to be available to add to your mirrored files. If there isn't enough data and the *MirroringMaxLatencyMinutes* value isn't reached, the data isn't added.  | A positive integer. | Three hours |
+|**ConnectionStrings** |An array of connection strings that help configure and establish connections. In some environments this value is autopopulated. | | |
 |  **IsEnabled** | Determines whether the mirroring policy is enabled. When the mirroring policy is disabled and set to `false`, the underlying mirroring data is retained in the database. | `true`, `false`, `null`. | `null` |
 | **Partitions** | A comma-separated list of columns used to divide the data into smaller partitions. To learn more about partitioning formatting for the columns, see [Partitions formatting](#partitions-formatting). | | |
 
@@ -63,7 +63,6 @@ For more information on Event house data types, see [Scalar data types](/azure/d
 ```json
 {
   "Format": "parquet",
-  "MirroringMaxLatencyMinutes": null,
   "IsEnabled": true,
   "Partitions": null,
 }
