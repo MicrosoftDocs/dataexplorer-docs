@@ -1,6 +1,6 @@
 ---
 title: 'Query data in Azure Monitor with Azure Data Explorer'
-description: 'In this topic, query data in Azure Monitor (Application Insights and Log Analytics) by creating an Azure Data Explorer cross product queries.'
+description: 'In this article, query data in Azure Monitor (Application Insights and Log Analytics) by creating an Azure Data Explorer cross product queries.'
 services: data-explorer
 author: osalzberg
 ms.author: orspodek
@@ -100,7 +100,7 @@ union <ADX table>, cluster(CL1).database(<workspace-name>).<table name>
 
 ### Join data from an Azure Data Explorer cluster in one tenant with an Azure Monitor resource in another
 
-Cross-tenant queries between the services aren't supported. You are signed in to a single tenant for running the query spanning both resources.
+Cross-tenant queries between the services aren't supported. You're signed in to a single tenant for running the query spanning both resources.
 
 If the Azure Data Explorer resource is in Tenant 'A' and Log Analytics workspace is in Tenant 'B' use one of the following two methods:
 
@@ -134,7 +134,7 @@ To use the function, run the name in the Query window.
 .show functions
 .show function {FunctionName}
 .show database {DatabaseName} schema as json
-* [Private Link](www.learn.microsoft.com//azure/azure-monitor/logs/private-link-security) (private endpoints) and [IP restrictions](www.learn.microsoft.com//azure/data-explorer/security-network-restrict-public-access) don't support cross-service queries.
+* Private Link (private endpoints) and IP restrictions don't support cross-service queries.
 
 ## Additional syntax examples
 
