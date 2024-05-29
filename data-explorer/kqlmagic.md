@@ -43,7 +43,7 @@ Once you install and load the kqlmagic extension, you can write KQL queries in y
 Select the tab for your preferred method to connect to your cluster. 
 
 > [!NOTE]
-> We recommend using the [Certificate](#certificate) method of authentication when possible.
+> We recommend using the Certificate method of authentication when possible.
 
 ### [Certificate](#tab/certificate)
 
