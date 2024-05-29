@@ -59,12 +59,12 @@
     "globalMetadata": {
       "searchScope": ["Azure", "Data Explorer", "Azure Data Explorer", "Kusto", "kusto"],
       "breadcrumb_path": "/azure/data-explorer/breadcrumb/toc.json",
-      "extendBreadcrumb": true,
       "brand": "azure",
       "uhfHeaderId": "azure",
-      "feedback_system": "GitHub",
-      "feedback_github_repo": "MicrosoftDocs/dataexplorer-docs",
+      "feedback_system": "Standard",
       "feedback_product_url": "https://feedback.azure.com/d365community/forum/a952add5-eb24-ec11-b6e6-000d3a4f0da0",
+      "feedback_help_link_url": "https://learn.microsoft.com/answers/topics/azure-data-explorer.html",
+      "feedback_help_link_type": "get-help-at-qna",
       "recommendations": true,
       "_op_documentIdPathDepotMapping": {
         "./": {
@@ -124,9 +124,21 @@
         "v-thepet",
         "sdwheeler",
         "meganbradley"
-      ]
+      ],
+      "author": "shsagir",
+      "ms.author": "shsagir",
+      "ms.service": "data-explorer",
+      "services": "data-explorer",
+      "titleSuffix": "Azure Data Explorer"
     },
-    "fileMetadata": {},
+    "fileMetadata": {
+      "titleSuffix": {
+        "kusto/functions-library/**/*.md": "Azure Data Explorer & Real-Time Analytics",
+        "kusto/api/**/*.md": "Azure Data Explorer & Real-Time Analytics",
+        "kusto/management/**/*.md": "Azure Data Explorer & Real-Time Analytics",
+        "kusto/query/**/*.md": "Azure Data Explorer & Real-Time Analytics"
+      }
+    },
     "template": [],
     "dest": "dataexplorer-docs",
     "markdownEngineName": "markdig"

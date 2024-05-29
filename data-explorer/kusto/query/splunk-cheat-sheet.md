@@ -1,15 +1,11 @@
 ---
-title: Splunk to Kusto map for Azure Data Explorer and Azure Monitor
-description: Concept mapping for users who are familiar with Splunk to learn the Kusto Query Language to write log queries.
-ms.service: data-explorer
+title: Splunk to Kusto map
+description: Learn how to write log queries in Kusto Query Language by comparing Splunk and Kusto Query Language concept mappings.
 ms.topic: conceptual
-author: bwren
-ms.author: bwren
-ms.date: 08/21/2018
-
+ms.date: 05/22/2024
 ---
 
-# Splunk to Kusto Query Language map
+# Splunk to Kusto cheat sheet
 
 This article is intended to assist users who are familiar with Splunk learn the Kusto Query Language to write log queries with Kusto. Direct comparisons are made between the two to highlight key differences and similarities, so you can build on your existing knowledge.
 
@@ -19,15 +15,15 @@ The following table compares concepts and data structures between Splunk and Kus
 
  | Concept | Splunk | Kusto |  Comment |
  |:---|:---|:---|:---|
- | deployment unit  | cluster |  cluster |  Kusto allows arbitrary cross-cluster queries. Splunk does not. |
+ | deployment unit  | cluster |  cluster |  Kusto allows arbitrary cross-cluster queries. Splunk doesn't. |
  | data caches |  buckets  |  caching and retention policies |  Controls the period and caching level for the data. This setting directly affects the performance of queries and the cost of the deployment. |
  | logical partition of data  |  index  |  database  |  Allows logical separation of the data. Both implementations allow unions and joining across these partitions. |
  | structured event metadata | N/A | table |  Splunk doesn't expose the concept of event metadata to the search language. Kusto logs have the concept of a table, which has columns. Each event instance is mapped to a row. |
- | data record | event | row |  Terminology change only. |
- | data record attribute | field |  column |  In Kusto, this setting is predefined as part of the table structure. In Splunk, each event has its own set of fields. |
+ | record | event | row |  Terminology change only. |
+ | record attribute | field |  column |  In Kusto, this setting is predefined as part of the table structure. In Splunk, each event has its own set of fields. |
  | types | datatype |  datatype |  Kusto data types are more explicit because they're set on the columns. Both have the ability to work dynamically with data types and roughly equivalent set of datatypes, including JSON support. |
  | query and search  | search | query |  Concepts essentially are the same between Kusto and Splunk. |
- | event ingestion time | system time | `ingestion_time()` |  In Splunk, each event gets a system timestamp of the time the event was indexed. In Kusto, you can define a policy called [ingestion_time](../management/ingestiontimepolicy.md) that exposes a system column that can be referenced through the [ingestion_time()](ingestiontimefunction.md) function. |
+ | event ingestion time | system time | `ingestion_time()` |  In Splunk, each event gets a system timestamp of the time the event was indexed. In Kusto, you can define a policy called [ingestion_time](../management/ingestion-time-policy.md) that exposes a system column that can be referenced through the [ingestion_time()](ingestion-time-function.md) function. |
 
 ## Functions
 
@@ -40,7 +36,7 @@ The following table specifies functions in Kusto that are equivalent to Splunk f
 | `if`     | `iff()`   | (1) |
 | `tonumber` | `todouble()`<br />`tolong()`<br />`toint()` | (1) |
 | `upper`<br />`lower` |`toupper()`<br />`tolower()`|(1) |
-| `replace` | `replace()` | (1)<br /> Also note that although `replace()` takes three parameters in both products, the parameters are different. |
+| `replace` | `replace_string()`, `replace_strings()` or `replace_regex()` | (1)<br />Although `replace` functions take three parameters in both products, the parameters are different. |
 | `substr` | `substring()` | (1)<br />Also note that Splunk uses one-based indices. Kusto notes zero-based indices. |
 | `tolower` |  `tolower()` | (1) |
 | `toupper` | `toupper()` | (1) |
@@ -53,7 +49,6 @@ The following table specifies functions in Kusto that are equivalent to Splunk f
 
 (1) In Splunk, the function is invoked by using the `eval` operator. In Kusto, it's used as part of `extend` or `project`.<br />(2) In Splunk, the function is invoked by using the `eval` operator. In Kusto, it can be used with the `where` operator.
 
-
 ## Operators
 
 The following sections give examples of how to use different operators in Splunk and Kusto.
@@ -63,13 +58,12 @@ The following sections give examples of how to use different operators in Splunk
 
 ### Search
 
-In Splunk, you can omit the `search` keyword and specify an unquoted string. In Kusto, you must start each query with `find`, an unquoted string is a column name, and the lookup value must be a quoted string. 
+In Splunk, you can omit the `search` keyword and specify an unquoted string. In Kusto, you must start each query with `find`, an unquoted string is a column name, and the lookup value must be a quoted string.
 
 | Product | Operator | Example |
 |:---|:---|:---|
 | Splunk | `search` | `search Session.Id="c8894ffd-e684-43c9-9125-42adc25cd3fc" earliest=-24h` |
 | Kusto | `find` | `find Session.Id=="c8894ffd-e684-43c9-9125-42adc25cd3fc" and ingestion_time()> ago(24h)` |
-
 
 ### Filter
 
@@ -105,7 +99,7 @@ Splunk has an `eval` function, but it's not comparable to the `eval` operator in
 | Product | Operator | Example |
 |:---|:---|:---|
 | Splunk | `eval` |  `Event.Rule=330009.2`<br />&#124; `eval state= if(Data.Exception = "0", "success", "error")` |
-| Kusto | `extend` | `Office_Hub_OHubBGTaskError`<br />&#124; `extend state = iif(Data_Exception == 0,"success" ,"error")` |
+| Kusto | `extend` | `Office_Hub_OHubBGTaskError`<br />&#124; `extend state = iff(Data_Exception == 0,"success" ,"error")` |
 
 ### Rename
 
@@ -118,22 +112,28 @@ Kusto uses the `project-rename` operator to rename a field. In the `project-rena
 
 ### Format results and projection
 
-Splunk doesn't appear to have an operator that's similar to `project-away`. You can use the UI to filter out fields.
+Splunk uses the `table` command to select which columns to include in the results. Kusto has a `project` operator that does the same and [more](project-operator.md).
 
 | Product | Operator | Example |
 |:---|:---|:---|
 | Splunk | `table` |  `Event.Rule=330009.2`<br />&#124; `table rule, state` |
-| Kusto | `project`<br />`project-away` | `Office_Hub_OHubBGTaskError`<br />&#124; `project exception, state` |
+| Kusto | `project` | `Office_Hub_OHubBGTaskError`<br />&#124; `project exception, state` |
 
-### Aggregation
-
-See the [list of aggregations functions](summarizeoperator.md#list-of-aggregation-functions) that are available.
+Splunk uses the `field -` command to select which columns to exclude from the results. Kusto has a `project-away` operator that does the same.
 
 | Product | Operator | Example |
 |:---|:---|:---|
-| Splunk | `stats` |  `search (Rule=120502.*)`<br />&#124; `stats count by OSEnv, Audience` |
-| Kusto | `summarize` | `Office_Hub_OHubBGTaskError`<br />&#124; `summarize count() by App_Platform, Release_Audience` |
+| Splunk | `fields -` |`Event.Rule=330009.2`<br />&#124; `fields - quota, hightest_seller` |
+| Kusto | `project-away` |`Office_Hub_OHubBGTaskError`<br />&#124; `project-away exception, state` |
 
+### Aggregation
+
+See the [list of summarize aggregations functions](aggregation-functions.md) that are available.
+
+| Splunk operator | Splunk example | Kusto operator | Kusto example |
+|:---|:---|:---|:---|
+| `stats` |  `search (Rule=120502.*)`<br />&#124; `stats count by OSEnv, Audience` |  `summarize` | `Office_Hub_OHubBGTaskError`<br />&#124; `summarize count() by App_Platform, Release_Audience`
+| `evenstats`  | `...` <br />&#124; `stats count_i by time, category` <br />&#124; `eventstats sum(count_i) AS count_total by _time_`  | `join` | ` T2` <br />&#124; `join kind=inner (T1) on _time` <br />&#124; `project _time, category, count_i, count_total`
 
 ### Join
 
@@ -146,11 +146,11 @@ See the [list of aggregations functions](summarizeoperator.md#list-of-aggregatio
 
 ### Sort
 
-In Splunk, to sort in ascending order, you must use the `reverse` operator. Kusto also supports defining where to put nulls, either at the beginning or at the end.
+The default sort order is ascending. To specify descending order, add a minus sign (`-`) before the field name. Kusto also supports defining where to put nulls, either at the beginning or at the end.
 
 | Product | Operator | Example |
 |:---|:---|:---|
-| Splunk | `sort` |  `Event.Rule=120103`<br />&#124; `sort Data.Hresult` <br />&#124; `reverse` |
+| Splunk | `sort` |  `Event.Rule=120103`<br />&#124; `sort -Data.Hresult` |
 | Kusto | `order by` | `Office_Hub_OHubBGTaskError`<br />&#124; `order by Data_Hresult,  desc` |
 
 ### Multivalue expand
@@ -180,6 +180,6 @@ In Kusto, you can use `summarize arg_min()` to reverse the order of which record
 | Splunk | `dedup` |  `Event.Rule=330009.2`<br />&#124; `dedup device_id sortby -batterylife` |
 | Kusto | `summarize arg_max()` | `Office_Excel_BI_PivotTableCreate`<br />&#124; `summarize arg_max(batterylife, *) by device_id` |
 
-## Next steps
+## Related content
 
-- Walk through a tutorial on the [Kusto Query Language](tutorial.md?pivots=azuremonitor).
+- Walk through a tutorial on the [Kusto Query Language](/azure/data-explorer/kusto/query/tutorials/learn-common-operators?pivots=azuremonitor).

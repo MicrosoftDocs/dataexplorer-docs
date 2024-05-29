@@ -1,14 +1,9 @@
 ---
-title: The case-insensitive =~ (equals) string operator - Azure Data Explorer
-description: This article describes the case-insensitive =~ (equals) string operator in Azure Data Explorer.
-services: data-explorer
-author: orspod
-ms.author: orspodek
+title:  The case-insensitive =~ (equals) string operator
+description: Learn how to use the =~ (equals) operator to filter a record set for data with a case-insensitive string.
 ms.reviewer: alexans
-ms.service: data-explorer
 ms.topic: reference
-ms.date: 09/30/2021
-ms.localizationpriority: high
+ms.date: 12/11/2022
 ---
 # =~ (equals) operator
 
@@ -23,26 +18,27 @@ The following table provides a comparison of the `==` (equals) operators:
 |[`=~`](equals-operator.md) |Equals |No |`"abc" =~ "ABC"`|
 |[`!~`](not-equals-operator.md) |Not equals |No |`"aBc" !~ "xyz"`|
 
-For further information about other operators and to determine which operator is most appropriate for your query, see [datatype string operators](datatypes-string-operators.md). 
-
-Case-insensitive operators are currently supported only for ASCII-text. For non-ASCII comparison, use the [tolower()](tolowerfunction.md) function.
+For more information about other operators and to determine which operator is most appropriate for your query, see [datatype string operators](datatypes-string-operators.md).
 
 ## Performance tips
 
-> [!NOTE]
-> Performance depends on the type of search and the structure of the data.
+[!INCLUDE [performance-tip-note](../../includes/performance-tip-note.md)]
 
-For faster results, use the case-sensitive version of an operator, for example, `==`, not `=~`. For best practices, see [Query best practices](best-practices.md).
+When possible, use [==](equals-cs-operator.md) - a case-sensitive version of the operator.
 
-## Syntax 
+## Syntax
 
 *T* `|` `where` *col* `=~` `(`*expression*`)`
 
-## Arguments
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
 
-* *T* - The tabular input whose records are to be filtered.
-* *col* - The column to filter.
-* *expression* - Scalar or literal expression.
+## Parameters
+
+| Name | Type | Required | Description |
+|--|--|--|--|
+| *T* | `string` |  :heavy_check_mark:| The tabular input whose records are to be filtered. |
+| *col* | `string` |  :heavy_check_mark: | The column to filter. |
+| *expression* | `string` |  :heavy_check_mark: | The expression used to filter. |
 
 ## Returns
 
@@ -50,15 +46,29 @@ Rows in *T* for which the predicate is `true`.
 
 ## Example  
 
-<!-- csl: https://help.kusto.windows.net/Samples -->
+The `State` values in the `StormEvents` table are capitalized. The following query matches
+columns with the value "KANSAS".
+
+> [!div class="nextstepaction"]
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAwsuyS/KdS1LzSsp5qpRKM9ILUpVCC5JLElVsK1TUMpOzCtOLFYCyhQU5WelJpcogJV6puhAFAEAU9ecID4AAAA=" target="_blank">Run the query</a>
+
 ```kusto
 StormEvents
-    | where State =~ "kansas"
-    | count 
+| where State =~ "kansas"
+| project EventId, State
 ```
 
-**Output**
+The following table only shows the first 10 results. To see the full output, run the query.
 
-|Count|
-|---|
-|3,166|  
+|EventId|State|
+|--|--|
+|70787 |KANSAS|
+|43450 |KANSAS|
+|43451 |KANSAS|
+|38844 |KANSAS|
+|18463 |KANSAS|
+|18464 |KANSAS|
+|18495 |KANSAS|
+|43466 |KANSAS|
+|43467 |KANSAS|
+|43470 |KANSAS|

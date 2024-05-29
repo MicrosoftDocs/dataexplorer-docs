@@ -1,26 +1,35 @@
 ---
-title: .alter table folder - Azure Data Explorer | Microsoft Docs
-description: This article describes .alter table folder in Azure Data Explorer.
-services: data-explorer
-author: orspod
-ms.author: orspodek
-ms.reviewer: rkarlin
-ms.service: data-explorer
+title:  .alter table folder command
+description: Learn how to use the `.alter table folder` command to alter the folder value of an existing table.
+ms.reviewer: orspodek
 ms.topic: reference
-ms.date: 02/06/2020
+ms.date: 04/20/2023
 ---
-# .alter table folder
+# .alter table folder command
 
-Alters the Folder value of an existing table. 
+Alters the folder value of an existing table.
+
+> [!NOTE]
+> If the table does not exist, an error is returned. For creating a new table, see [`.create table`](create-table-command.md)
+
+## Permission
+
+You must have at least [Table Admin](access-control/role-based-access-control.md) permissions to run this command.
+
+## Syntax
 
 `.alter` `table` *TableName* `folder` *Folder*
 
-> [!NOTE]
-> * Requires [database admin permission](../management/access-control/role-based-authorization.md)
-> * The [database user](../management/access-control/role-based-authorization.md) who originally created the table is also allowed to edit it
-> * If the table does not exist, an error is returned. For creating a new table, see [`.create table`](create-table-command.md)
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
 
-**Examples** 
+## Parameters
+
+|Name|Type|Required|Description|
+|--|--|--|--|
+| *TableName* | `string` |  :heavy_check_mark: | The name of the table to alter.|
+| *Folder* | `string` |  :heavy_check_mark: | The new folder for the table.|
+
+## Examples
 
 ```kusto
 .alter table MyTable folder "Updated folder"

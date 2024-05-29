@@ -1,29 +1,38 @@
 ---
 title: Visualize data from Azure Data Explorer using Kibana
 description: In this article, you learn how to set up Azure Data Explorer as a data source for Kibana
-author: orspod
-ms.author: orspodek
 ms.reviewer: guregini
-ms.service: data-explorer
 ms.topic: how-to
 ms.date: 03/12/2020
 ---
 
 # Visualize data from Azure Data Explorer in Kibana with the K2Bridge open-source connector
 
-K2Bridge (Kibana-Kusto Bridge) lets you use Azure Data Explorer as a data source and visualize that data in Kibana. K2Bridge is an [open-source](https://github.com/microsoft/K2Bridge), containerized application. It acts as a proxy between a Kibana instance and an Azure Data Explorer cluster. This article describes how to use K2Bridge to create that connection.
+K2Bridge (Kibana-Kusto Bridge) lets you use Azure Data Explorer as a data source and visualize that data in [Kibana](https://www.elastic.co/guide/en/kibana/current/kibana-concepts-analysts.html). K2Bridge is an [open-source](https://github.com/microsoft/K2Bridge), containerized application. It acts as a proxy between a Kibana instance and an Azure Data Explorer cluster. This article describes how to use K2Bridge to create that connection.
 
 K2Bridge translates Kibana queries to Kusto Query Language (KQL) and sends the Azure Data Explorer results back to Kibana.
 
    ![Kibana connection with Azure Data Explorer via K2Bridge.](media/k2bridge/k2bridge-chart.png)
 
-K2Bridge supports Kibana's **Discover** tab, where you can:
+K2Bridge supports Kibana's **Discover**, **Visualize** and **Dashboard** tabs.
+
+With the **Discover** tab you can:
 
 * Search and explore the data.
 * Filter results.
 * Add or remove fields in the results grid.
 * View record content.
 * Save and share searches.
+
+With the **Visualize** tab you can:
+
+* Create visualizations like: bar charts, pie charts, data tables, heat maps, and more.
+* Save a visualization
+
+With the **Dashboard** tab you can:
+
+* Create panels by using new or saved visualizations.
+* Save a dashboard.
 
 The following image shows a Kibana instance bound to Azure Data Explorer by K2Bridge. The user experience in Kibana is unchanged.
 
@@ -34,14 +43,16 @@ The following image shows a Kibana instance bound to Azure Data Explorer by K2Br
 Before you can visualize data from Azure Data Explorer in Kibana, have the following ready:
 
 * An Azure subscription. Create a [free Azure account](https://azure.microsoft.com/free/).
-com/helm/helm#install), which is the Kubernetes package manager.
-* Azure Kubernetes Service (AKS) cluster or any other Kubernetes cluster. Versions 1.14 to 1.16 have been tested and verified. If you need an AKS cluster, see how to deploy an AKS cluster [using the Azure CLI](/azure/aks/kubernetes-walkthrough) or [using the Azure portal](/azure/aks/kubernetes-walkthrough-portal).
-* Create [a cluster and database](create-cluster-database-portal.md).
-* An Azure Active Directory (Azure AD) service principal authorized to view data in Azure Data Explorer, including the client ID and client secret.
+* An [Azure Data Explorer cluster and database](create-cluster-and-database.md). You will need the cluster's URL and the database name.
+* [Helm v3](https://github.com/helm/helm#install), the Kubernetes package manager.
+* Azure Kubernetes Service (AKS) cluster or any other Kubernetes cluster. Use version 1.21.2 or newer, with a minimum of three Azure Kubernetes Service nodes. Version 1.21.2 has been tested and verified. If you need an AKS cluster, see how to deploy an AKS cluster [using the Azure CLI](/azure/aks/kubernetes-walkthrough) or [using the Azure portal](/azure/aks/kubernetes-walkthrough-portal).
+* A Microsoft Entra service principal authorized to view data in Azure Data Explorer, including the client ID and client secret. Alternatively, you can use a [system-assigned managed identity](/azure/aks/use-managed-identity).
 
-    We recommend a service principal with viewer permission and discourage you from using higher-level permissions. [Set the cluster's view permissions for the Azure AD service principal](manage-database-permissions.md#manage-permissions-in-the-azure-portal).
+If you choose to use a Microsoft Entra service principal, you will need to [create a Microsoft Entra service principal](/azure/active-directory/develop/howto-create-service-principal-portal#create-an-azure-active-directory-application). For the installation, you will need the ClientID and a Secret.
+We recommend a service principal with viewer permission and discourage you from using higher-level permissions. To assign permissions, see [Manage database permissions in the Azure portal](manage-database-permissions.md) or use management commands to [Manage database security roles](kusto/management/manage-database-security-roles.md).
 
-    For more information about the Azure AD service principal, see [Create an Azure AD service principal](/azure/active-directory/develop/howto-create-service-principal-portal#create-an-azure-active-directory-application).
+If you choose to use a system assigned identity, you will need to get the agent pool managed identity **ClientID** (located in the generated "[_MC_xxxx_]" [resource group](/azure/aks/faq#why-are-two-resource-groups-created-with-aks)) 
+
 
 ## Run K2Bridge on Azure Kubernetes Service (AKS)
 
@@ -80,6 +91,9 @@ By default, the Helm chart of K2Bridge references a publicly available image loc
         ADX_TENANT_ID=[SERVICE_PRINCIPAL_TENANT_ID]
         ```
 
+        > [!NOTE]
+        > When using a managed identity, the ADX_CLIENT_ID value is the client ID of the managed identity, located in the generated "[_MC_xxxx_]" resource group. For more information, see [MC_ resource group](/azure/aks/faq#why-are-two-resource-groups-created-with-aks). The ADX_SECRET_ID is only required if you use a Microsoft Entra service principal.
+
     1. Optionally, enable Application Insights telemetry. If you're using Application Insights for the first time, [create an Application Insights resource](/azure/azure-monitor/app/create-new-resource). [Copy the instrumentation key](/azure/azure-monitor/app/create-new-resource#copy-the-instrumentation-key) to a variable.
 
         ```bash
@@ -87,20 +101,28 @@ By default, the Helm chart of K2Bridge references a publicly available image loc
         COLLECT_TELEMETRY=true
         ```
 
-    1. <a name="install-k2bridge-chart"></a>
-    Install the K2Bridge chart.
+    1. <a name="install-k2bridge-chart"></a> Install the K2Bridge chart. Visualizations and dashboards are supported with the Kibana 7.10 version only. The latest image tags are: 6.8_latest and 7.16_latest, which support Kibana 6.8 and Kibana 7.10 respectively. The image of '7.16_latest' supports Kibana OSS 7.10.2, and its internal Elasticsearch instance is 7.16.2.
+
+         If a Microsoft Entra service principal was used:
 
         ```bash
-        helm install k2bridge charts/k2bridge -n k2bridge --set image.repository=$REPOSITORY_NAME/$CONTAINER_NAME --set settings.adxClusterUrl="$ADX_URL" --set settings.adxDefaultDatabaseName="$ADX_DATABASE" --set settings.aadClientId="$ADX_CLIENT_ID" --set settings.aadClientSecret="$ADX_CLIENT_SECRET" --set settings.aadTenantId="$ADX_TENANT_ID" [--set image.tag=latest] [--set privateRegistry="$IMAGE_PULL_SECRET_NAME"] [--set settings.collectTelemetry=$COLLECT_TELEMETRY]
+        helm install k2bridge charts/k2bridge -n k2bridge --set settings.adxClusterUrl="$ADX_URL" --set settings.adxDefaultDatabaseName="$ADX_DATABASE" --set settings.aadClientId="$ADX_CLIENT_ID" --set settings.aadClientSecret="$ADX_CLIENT_SECRET" --set settings.aadTenantId="$ADX_TENANT_ID" [--set image.tag=6.8_latest/7.16_latest] 
+        [--set image.repository=$REPOSITORY_NAME/$CONTAINER_NAME] 
+        [--set privateRegistry="$IMAGE_PULL_SECRET_NAME"] [--set settings.collectTelemetry=$COLLECT_TELEMETRY]
+        ```
+
+         Or, if managed identity was used:
+
+        ```bash
+        helm install k2bridge charts/k2bridge -n k2bridge --set settings.adxClusterUrl="$ADX_URL" --set settings.adxDefaultDatabaseName="$ADX_DATABASE" --set       settings.aadClientId="$ADX_CLIENT_ID" --set settings.useManagedIdentity=true --set settings.aadTenantId="$ADX_TENANT_ID" [--set image.tag=7.16_latest] [--set  settings.collectTelemetry=$COLLECT_TELEMETRY]
         ```
 
         In [Configuration](https://github.com/microsoft/K2Bridge/blob/master/docs/configuration.md), you can find the complete set of configuration options.
 
-    1. <a name="install-kibana-service"></a>
-    The previous command's output suggests the next Helm command to deploy Kibana. Optionally, run this command:
+    1. <a name="install-kibana-service"></a> The previous command's output suggests the next Helm command to deploy Kibana. Optionally, run this command:
 
         ```bash
-        helm install kibana elastic/kibana -n k2bridge --set image=docker.elastic.co/kibana/kibana-oss --set imageTag=6.8.5 --set elasticsearchHosts=http://k2bridge:8080
+        helm install kibana elastic/kibana -n k2bridge --set image=docker.elastic.co/kibana/kibana-oss --set imageTag=7.10.2 --set elasticsearchHosts=http://k2bridge:8080
         ```
 
     1. Use port forwarding to access Kibana on localhost.
@@ -142,29 +164,31 @@ By default, the Helm chart of K2Bridge references a publicly available image loc
 > [!Note]
 > To run K2Bridge on other Kubernetes providers, change the Elasticsearch **storageClassName** value in values.yaml to match the one suggested by the provider.
 
-## Visualize data
+## Discover data
 
 When Azure Data Explorer is configured as a data source for Kibana, you can use Kibana to explore the data.
 
-1. In Kibana, on the leftmost menu, select the **Discover** tab.
+:::image type="content" source="media/k2bridge/discover-tab-kibana.png" alt-text="Screenshot of Discover tab in Kibana.":::
 
-1. From the leftmost drop-down list box, select an index pattern. The pattern defines the data source you want to explore. In this case, the index pattern is an Azure Data Explorer table.
+1. In Kibana, select the **Discover** tab.
 
-   ![Selecting an index pattern.](media/k2bridge/k2bridge-select-an-index-pattern.png)
+1. From the index pattern list, select an index pattern that defines the data source to explore. Here, the index pattern is an Azure Data Explorer table.
+
+    :::image type="content" source="media/k2bridge/k2bridge-select-an-index-pattern.png" alt-text="Screenshot of data source pattern list.":::
 
 1. If your data has a time-filter field, you can specify the time range. At the upper right of the **Discover** page, select a time filter. By default, the page shows data for the last 15 minutes.
 
-   ![Selecting a time filter.](media/k2bridge/k2bridge-time-filter.png)
+    :::image type="content" source="media/k2bridge/k2bridge-time-filter.png" alt-text="Screenshot of selecting a time filter.":::
 
-1. The results table shows the first 500 records. You can expand a document to examine its field data in either JSON or table format.
+1. The results table shows the first 500 records. You can expand a document to examine the field data in either JSON or table format.
 
-   ![An expanded record.](media/k2bridge/k2bridge-expand-record.png)
+    :::image type="content" source="media/k2bridge/k2bridge-expand-record.png" alt-text="Screenshot of an expanded record in the Discover tab.":::
 
-1. By default, the results table includes the **_source** column. It also includes the **Time** column if the time field exists. You can add specific columns to the results table by selecting **add** next to the field name in the leftmost pane.
+1. You can add specific columns to the results table by selecting **add** next to the field name. By default, the results table includes the **_source** column and a **Time** column if the time field exists.
 
-   ![Specific columns with the add button highlighted.](media/k2bridge/k2bridge-specific-columns.png)
+    :::image type="content" source="media/k2bridge/k2bridge-specific-columns.png" alt-text="Screenshot of adding columns.":::
 
-1. In the query bar, you can search the data by:
+1. In the query bar, you can search for data by:
 
     * Entering a search term.
     * Using the Lucene query syntax. For example:
@@ -173,26 +197,98 @@ When Azure Data Explorer is configured as a data source for Kibana, you can use 
     * Using the logical operators **AND**, **OR**, and **NOT**.
     * Using the asterisk (\*) and question mark (?) wildcard characters. For example, the query "destination_city: L*" matches records where the destination-city value starts with "L" or "l". (K2Bridge isn't case-sensitive.)
 
-    ![Running a query.](media/k2bridge/k2bridge-run-query.png)
+    :::image type="content" source="media/k2bridge/k2bridge-run-query.png" alt-text="Screenshot of running queries.":::
 
-    > [!Tip]
-    > In [Searching](https://github.com/microsoft/K2Bridge/blob/master/docs/searching.md), you can find more search rules and logic.
+> [!NOTE]
+> Only kibana's Lucene query syntax is supported. Do not use the KQL option, which stands for Kibana Query Language.
 
-1. To filter your search results, use the field list on the rightmost pane of the page. The field list is where you can see:
+> [!Tip]
+> In [Searching](https://github.com/microsoft/K2Bridge/blob/master/docs/searching.md), you can find more search rules and logic.
+
+1. To filter your search results, use the **Available field** list. The field list is where you can see:
 
     * The top five values for the field.
     * The number of records that contain the field.
     * The percentage of records that contain each value.
 
-    >[!Tip]
+    > [!Tip]
     > Use the magnifying glass to find all records that have a specific value.
 
-    ![A field list with the magnifying glass highlighted.](media/k2bridge/k2bridge-field-list.png)
+    :::image type="content" source="media/k2bridge/k2bridge-field-list.png" alt-text="Screenshot of a field list with the magnifying glass highlighted.":::
 
     You can also use the magnifying glass to filter results and see the results table-format view of each record in the results table.
 
-     ![A table list with the magnifying glass highlighted.](media/k2bridge/k2bridge-table-list.png)
+    :::image type="content" source="media/k2bridge/k2bridge-table-list.png" alt-text="Screenshot of a table list with the magnifying glass highlighted.":::
 
-1. Select either **Save** or **Share** for your search.
+1. Select either **Save** or **Share** to retain your search.
 
-     ![Highlighted buttons to save or share the search.](media/k2bridge/k2bridge-save-search.png)
+    :::image type="content" source="media/k2bridge/k2bridge-save-search.png" alt-text="Screenshot of how to save a search in Kibana.":::
+
+## Visualize data
+
+Use Kibana visualizations to get at-a-glance views of Azure Data Explorer data.
+
+### Create a visualization from the Discover tab
+
+1. To create a vertical bar visualization, in the **Discover** tab, locate the **Available fields** side bar.
+
+    :::image type="content" source="media/k2bridge/available-fields-discover-tab-kibana.png" alt-text="Screenshot of selecting a field in the available fields in the Discover tab.":::
+
+1. Select a field name, then click **Visualize**.
+
+    :::image type="content" source="media/k2bridge/k2bridge-create-a-visualization.png" alt-text="Screenshot of creating a visualization and selecting the field.":::
+
+1. The **Visualize** tab opens and displays the visualization. To edit the data and metrics of the visualization, see also [Create a visualization from the Visualize tab](#create-a-visualization-from-the-visualize-tab).
+
+    :::image type="content" source="media/k2bridge/edit-visualization.png" alt-text="Screenshot of editing the visualization in the Visualize tab.":::
+
+### Create a visualization from the Visualize tab
+
+1. Select the **Visualize** tab and click **Create visualization**.
+
+    :::image type="content" source="media/k2bridge/add-visualization.png" alt-text="Screenshot of selecting the Visualize tab.":::
+
+1. In the **New Visualization** window, select a visualization type.
+
+    :::image type="content" source="media/k2bridge/select-visualization-type.png" alt-text="Screenshot of selecting a visualization type.":::
+
+1. After the visualization generates, you can edit the metrics and add up to one bucket.
+
+    
+    :::image type="content" source="media/k2bridge/edit-metrics.png" alt-text="Screenshot of editing the metrics.":::
+
+> [!NOTE]
+> K2Bridge supports one bucket aggregation.
+> Some aggregations support search options.
+> Use the Lucene syntax, not the KQL option, which stands for the Kibana Query Language syntax.
+
+> [!IMPORTANT]
+> * The following visualizations are supported: `Vertical bar`, `Area chart`, `Line chart`, `Horizontal bar`, `Pie chart`, `Gauge`, `Data table`, `Heat map`, `Goal chart`, and `Metric chart`.
+> * The following metrics are supported: `Average`, `Count`, `Max`, `Median`, `Min`, `Percentiles`, `Standard deviation`, `Sum`, `Top hits` and `Unique count`.
+> * The metric `Percentiles ranks` is not supported.
+> * Using bucket aggregations is optional, you can visualize data without bucket aggregation.
+> * The following buckets are supported: `No bucket aggregation`, `Date histogram`, `Filters`, `Range`, `Date range`, `Histogram`,and `Terms`.
+> * The buckets `IPv4 range` and `Significant terms` are not supported.
+
+## Create dashboards
+
+You can create dashboards with Kibana visualizations to summarize, compare, and contrast at-a-glance views of Azure Data Explorer data.
+
+1. To create a dashboard, select the **Dashboard** tab, then click **Create new dashboard**.
+
+    :::image type="content" source="media/k2bridge/dashboard-tab.png" alt-text="Screenshot of selecting the Dashboard tab.":::
+
+    The new dashboard opens in edit mode. 
+
+1. To add a new visualization panel, click **Create new**.
+
+    :::image type="content" source="media/k2bridge/add-existing-visualization.png" alt-text="Screenshot of adding an existing visualization to a dashboard.":::
+
+1. To add a visualization you already created, click **Add an existing** and select a visualization.
+ 
+1. To arrange panels, organize panels by priority, resize the panels, and more, click **Edit**, then use the following options:
+
+    * To move a panel, click and hold the panel header, then drag to the new location.
+    * To resize a panel, click the resize control, then drag to the new dimensions.
+
+    :::image type="content" source="media/k2bridge/dashboard-visualization-panels.png" alt-text="Screenshot of dashboards with visualizations of Azure Data Explorer data.":::

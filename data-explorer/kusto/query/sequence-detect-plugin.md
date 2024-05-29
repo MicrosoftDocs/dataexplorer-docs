@@ -1,38 +1,34 @@
 ---
-title: sequence_detect plugin - Azure Data Explorer
-description: This article describes sequence_detect plugin in Azure Data Explorer.
-services: data-explorer
-author: orspod
-ms.author: orspodek
+title:  sequence_detect plugin
+description: Learn how to use the sequence_detect plugin to detect sequence occurrences based on provided predicates.
 ms.reviewer: alexans
-ms.service: data-explorer
 ms.topic: reference
-ms.date: 02/13/2020
+ms.date: 01/22/2023
 ---
 # sequence_detect plugin
 
-Detects sequence occurrences based on provided predicates.
-
-```kusto
-T | evaluate sequence_detect(datetime_column, 10m, 1h, e1 = (Col1 == 'Val'), e2 = (Col2 == 'Val2'), Dim1, Dim2)
-```
+Detects sequence occurrences based on provided predicates. The plugin is invoked with the [`evaluate`](evaluate-operator.md) operator.
 
 ## Syntax
 
 *T* `| evaluate` `sequence_detect` `(`*TimelineColumn*`,` *MaxSequenceStepWindow*`,` *MaxSequenceSpan*`,` *Expr1*`,` *Expr2*`,` ..., *Dim1*`,` *Dim2*`,` ...`)`
 
-## Arguments
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
 
-* *T*: The input tabular expression.
-* *TimelineColumn*: column reference representing timeline, must be present in the source expression
-* *MaxSequenceStepWindow*: scalar constant value of the max allowed timespan between 2 sequential steps in the sequence
-* *MaxSequenceSpan*: scalar constant value of the max span for the sequence to complete all steps
-* *Expr1*, *Expr2*, ...: boolean predicate expressions defining sequence steps
-* *Dim1*, *Dim2*, ...: dimension expressions that are used to correlate sequences
+## Parameters
+
+| Name | Type | Required | Description |
+|--|--|--|--|
+| *T*| `string` |  :heavy_check_mark: | The input tabular expression.|
+| *TimelineColumn*| `string` |  :heavy_check_mark: | The column reference representing timeline, must be present in the source expression.|
+| *MaxSequenceStepWindow*| `timespan` |  :heavy_check_mark: | The value of the max allowed timespan between 2 sequential steps in the sequence.|
+| *MaxSequenceSpan*| `timespan` |  :heavy_check_mark: | The max timespan for the sequence to complete all steps.|
+| *Expr1*, *Expr2*, ...| `string` |  :heavy_check_mark: | The boolean predicate expressions defining sequence steps.|
+| *Dim1*, *Dim2*, ...| `string` |  :heavy_check_mark: | The dimension expressions that are used to correlate sequences.|
 
 ## Returns
 
-Returns a single table where each row in the table represents a single sequence occurence:
+Returns a single table where each row in the table represents a single sequence occurrence:
 
 * *Dim1*, *Dim2*, ...: dimension columns that were used to correlate sequences.
 * *Expr1*_*TimelineColumn*, *Expr2*_*TimelineColumn*, ...: Columns with time values, representing the timeline of each sequence step.
@@ -40,21 +36,32 @@ Returns a single table where each row in the table represents a single sequence 
 
 ## Examples
 
-### Exploring Storm Events 
+The following query looks at the table T to search for relevant data from a specified time period.
+
+```kusto
+T | evaluate sequence_detect(datetime_column, 10m, 1h, e1 = (Col1 == 'Val'), e2 = (Col2 == 'Val2'), Dim1, Dim2)
+```
+
+### Exploring Storm Events
 
 The following query looks on the table StormEvents (weather statistics for 2007) and shows cases where sequence of 'Excessive Heat' was followed by 'Wildfire' within 5 days.
 
-<!-- csl: https://help.kusto.windows.net/Samples -->
+> [!div class="nextstepaction"]
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA3WPMQuDMBCFd3/F4aJCilPHjEJ3BccSklcaMNaaM7XQH99QXAz1xnvfx7tr+TG7JmBkn30IQQ2LYpDHc8GocTVgaC4z2k/LaubOOog0ORtBVNfkGRM5tZ44UofQVnMI3qFYlr/7uvcEkpLyZtXw3gbQJaZ5JSi1XnYwNzsjMYt+2xd/nPgR7+qrLywAQRgbAQAA" target="_blank">Run the query</a>
+
 ```kusto
 StormEvents
 | evaluate sequence_detect(
-        StartTime,
-        5d,  // step max-time
-        5d,  // sequence max-time
-        heat=(EventType == "Excessive Heat"), 
-        wildfire=(EventType == 'Wildfire'), 
-        State)
+               StartTime,
+               5d,  // step max-time
+               5d,  // sequence max-time
+               heat=(EventType == "Excessive Heat"), 
+               wildfire=(EventType == 'Wildfire'), 
+               State
+           )
 ```
+
+**Output**
 
 |State|heat_StartTime|wildfire_StartTime|Duration|
 |---|---|---|---|

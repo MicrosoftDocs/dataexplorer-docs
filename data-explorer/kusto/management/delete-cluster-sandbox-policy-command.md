@@ -1,25 +1,25 @@
 ---
-title: .delete cluster sandbox policy command - Azure Data Explorer
-description: This article describes the .delete cluster sandbox policy command in Azure Data Explorer.
-services: data-explorer
-author: orspod
-ms.author: orspodek
+title: .delete cluster policy sandbox command
+description: Learn how to use the `.delete cluster policy sandbox` command to delete the cluster sandbox policy.
 ms.reviewer: yonil
-ms.service: data-explorer
 ms.topic: reference
-ms.date: 10/04/2021
+ms.date: 06/13/2023
 ---
-# .delete cluster sandbox policy
+# .delete cluster policy sandbox command
 
-Delete the cluster sandbox policy. Azure Data Explorer runs specified plugins within [sandboxes](../concepts/sandboxes.md) whose resources are managed for security and resource governance. Sandbox limitations are defined in sandbox policies, where each sandbox kind can have its own policy.
+Delete the cluster sandbox policy. Specified plugins run within [sandboxes](../concepts/sandboxes.md) whose resources are managed for security and resource governance. Sandbox limitations are defined in sandbox policies, where each sandbox kind can have its own policy.
 
 Sandbox policies are managed at cluster-level and affect all the nodes in the cluster.
 
-To alter the policies, you'll need [AllDatabasesAdmin](../management/access-control/role-based-authorization.md) permissions. 
+## Permissions
+
+You must have [AllDatabasesAdmin](access-control/role-based-access-control.md) permissions to run this command.
 
 ## Syntax
 
 `.delete` `cluster` `policy` `sandbox`
+
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
 
 ## Example
 

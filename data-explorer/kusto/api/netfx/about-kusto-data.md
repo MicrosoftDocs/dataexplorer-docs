@@ -1,76 +1,48 @@
 ---
-title: Kusto client library - Azure Data Explorer | Microsoft Docs
-description: This article describes Kusto client library in Azure Data Explorer.
-services: data-explorer
-author: orspod
-ms.author: orspodek
-ms.reviewer: rkarlin
-ms.service: data-explorer
+title:  Kusto Data library overview
+description: This article describes the Kusto Data library for Azure Data Explorer.
+ms.reviewer: orspodek
 ms.topic: reference
-ms.date: 03/15/2020
+ms.date: 09/13/2023
 adobe-target: true
 ---
-# Kusto client library
-    
-The Kusto Client SDK (Kusto.Data) exposes a programmatic API
-similar to ADO.NET, so using it should feel
-natural for those experienced with .NET. You create
-either a query client (`ICslQueryProvider`) or a control command
-provider (`ICslAdminProvider`) from a connection string object
-pointing at the Kusto engine service, database, authentication
-method, etc. You can then issue data queries or
-control commands by specifying the appropriate Kusto query language
-string, and get back one or more data tables via the returned
-`IDataReader` object.
+# Kusto Data library overview
 
-More concretely, to create an ADO.NET-like client allowing queries against
-Kusto, use static methods on the `Kusto.Data.Net.Client.KustoClientFactory`
-class. These take the connection string and create a thread-safe, disposable,
-client object. (It's strongly recommended that client code does not
-create "too many" instances of this object. Instead, client code should create an
-object per connection string and hold on to it for as long as necessary.)
-This allows the client object to efficiently cache resources.
+The Kusto Data library provides a client for querying and managing data in your cluster.
 
-In general, all methods on the clients are thread-safe with two exceptions: `Dispose`, 
-and setter properties. For consistent results, do not invoke either methods
-concurrently.
+## Get the library
 
-Following are a few examples. Additional samples can be found [here](https://github.com/Azure/azure-kusto-samples-dotnet/tree/master/client).
+Select the tab for your preferred language.
 
-**Example: Counting Rows**
- 
-The following code demonstrates counting the rows of a table named `StormEvents` in a database named `Samples`:
+### [C\#](#tab/csharp)
 
-```csharp
-var client = Kusto.Data.Net.Client.KustoClientFactory.CreateCslQueryProvider("https://help.kusto.windows.net/Samples;Fed=true");
-var reader = client.ExecuteQuery("StormEvents | count");
-// Read the first row from reader -- it's 0'th column is the count of records in MyTable
-// Don't forget to dispose of reader when done.
-```
+Install [Microsoft.Azure.Kusto.Data](https://www.nuget.org/packages/Microsoft.Azure.Kusto.Data/).
 
-**Example: Getting diagnostics info from the Kusto cluster**
+### [Python](#tab/python)
 
-```csharp
-var kcsb = new KustoConnectionStringBuilder(cluster URI here). WithAadUserPromptAuthentication();
-using (var client = KustoClientFactory.CreateCslAdminProvider(kcsb))
-{
-    var diagnosticsCommand = CslCommandGenerator.GenerateShowDiagnosticsCommand();
-    var objectReader = new ObjectReader<DiagnosticsShowCommandResult>(client.ExecuteControlCommand(diagnosticsCommand));
-    DiagnosticsShowCommandResult diagResult = objectReader.ToList().FirstOrDefault();
-    // DO something with the diagResult    
-}
-```
+Install [azure-kusto-data](https://pypi.org/project/azure-kusto-data/).
 
+### [Node.js](#tab/nodejs)
 
+Install [azure-kusto-data](https://www.npmjs.com/package/azure-kusto-data).
 
-## The KustoClientFactory client factory
+### [Java](#tab/java)
 
-The static class `Kusto.Data.Net.Client.KustoClientFactory` provides the main entry point for authors
-of client code that utilizes Kusto. It provides the following important static methods:
+Install [kusto-data](https://central.sonatype.com/artifact/com.microsoft.azure.kusto/kusto-data/).
 
-|Method                                      |Returns                                |Used for                                                      |
-|--------------------------------------------|---------------------------------------|--------------------------------------------------------------|
-|`CreateCslQueryProvider`                    |`ICslQueryProvider`                    |Sending queries to a Kusto engine cluster.                    |
-|`CreateCslAdminProvider`                    |`ICslAdminProvider`                    |Sending control commands to a Kusto cluster (of any kind).    |
-|`CreateRedirectProvider`                    |`IRedirectProvider`                    |Creating a redirect HTTP response message for a Kusto request.|
+---
 
+## Connect to your cluster
+
+The Kusto Data library provides a Kusto client object to help you connect to your cluster. This object accepts a Kusto connection string builder object as input, which is used to define the cluster URI and authentication mode. For an example, see [Create your first Kusto client app](../../api/get-started/app-hello-kusto.md).
+
+## Run queries and commands
+
+The Kusto Data library can be used to run [Kusto Query Language (KQL)](../../query/index.md) queries or [T-SQL](../../../t-sql.md) queries from your own client application. For an example, see [Create an app to run basic queries](../../api/get-started/app-basic-query.md).
+
+You can also run [management commands](../../management/index.md). These commands are requests made to the service to retrieve or modify information that may not necessarily reside within the database tables, such as policies or security roles. For an example, see [Create an app to run management commands](../../api/get-started/app-management-commands.md).
+
+## Related content
+
+* [Kusto Data best practices](kusto-data-best-practices.md)
+* [ClientRequestProperties class](client-request-properties.md)

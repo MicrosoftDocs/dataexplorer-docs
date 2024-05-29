@@ -1,33 +1,33 @@
 ---
-title: geo_point_to_geohash() - Azure Data Explorer
-description: This article describes geo_point_to_geohash() in Azure Data Explorer.
-services: data-explorer
-author: orspod
-ms.author: orspodek
+title:  geo_point_to_geohash()
+description: Learn how to use the geo_point_to_geohash() function to calculate the geohash string value of a geographic location.
 ms.reviewer: mbrichko
-ms.service: data-explorer
 ms.topic: reference
-ms.date: 02/04/2020
+ms.date: 04/01/2024
 ---
 # geo_point_to_geohash()
 
-Calculates the geohash string value for a geographic location.
+Calculates the geohash string value of a geographic location.
 
 Read more about [geohash](https://en.wikipedia.org/wiki/Geohash).  
 
 ## Syntax
 
-`geo_point_to_geohash(`*longitude*`, `*latitude*`, `[*accuracy*]`)`
+`geo_point_to_geohash(`*longitude*`,` *latitude*`,`[ *accuracy* ]`)`
 
-## Arguments
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
 
-* *longitude*: Longitude value of a geographic location. Longitude x will be considered valid if x is a real number and is in the range [-180, +180]. 
-* *latitude*: Latitude value of a geographic location. Latitude y will be considered valid if y is a real number and y is in the range [-90, +90]. 
-* *accuracy*: An optional `int` that defines the requested accuracy. Supported values are in the range [1,18]. If unspecified, the default value `5` is used.
+## Parameters
+
+|Name|Type|Required|Description|
+|--|--|--|--|
+| *longitude* | `real` |  :heavy_check_mark: | Geospatial coordinate, longitude value in degrees. Valid value is a real number and in the range [-180, +180].|
+| *latitude* | `real` |  :heavy_check_mark: | Geospatial coordinate, latitude value in degrees. Valid value is a real number and in the range [-90, +90].|
+| *accuracy* | `int` | | Defines the requested accuracy. Supported values are in the range [1, 18]. If unspecified, the default value `5` is used.|
 
 ## Returns
 
-The geohash string value of a given geographic location with requested accuracy length. If the coordinate or accuracy is invalid, the query will produce an empty result.
+The geohash string value of a given geographic location with requested accuracy length. If the coordinate or accuracy is invalid, the query produces an empty result.
 
 > [!NOTE]
 >
@@ -67,32 +67,33 @@ For comparison with other available grid systems, see [geospatial clustering wit
 
 ## Examples
 
-US storm events aggregated by geohash.
+The following example finds US storm events aggregated by geohash.
 
-:::image type="content" source="images/geo-point-to-geohash-function/geohash.png" alt-text="US geohash.":::
+> [!div class="nextstepaction"]
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA2WNsQ7CMAxEdyT%2BwWMqdWPugsTGxgdEJrWaALEjx4BAfDwNdEBiO5%2Fv3R1MNO9uxFbXqxcUlRMFgy1NiffC%2FaLQ2rdec0ZNT4LjAyLWOEwkvkhi8yZ%2BPprp%2FuEeNt1vfcOWdAPDPK94%2BTa55n7SSjySQg1oRhoiqsE9WQR3TjwOGUv3Bl2BVCm%2FAAAA" target="_blank">Run the query</a>
 
-<!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
 StormEvents
 | project BeginLon, BeginLat
 | summarize by hash=geo_point_to_geohash(BeginLon, BeginLat, 3)
 | project geo_geohash_to_central_point(hash)
-| render scatterchart with (kind=map) // map rendering available in Kusto Explorer desktop
+| render scatterchart with (kind=map)
 ```
 
-<!-- csl: https://help.kusto.windows.net/Samples -->
-```kusto
-print geohash = geo_point_to_geohash(139.806115, 35.554128, 12)  
-```
+**Output**
 
-| geohash      |
-|--------------|
-| xn76m27ty9g4 |
+:::image type="content" source="media/geo-point-to-geohash-function/geohash.png" alt-text="Screenshot of US storm events grouped by geohash.":::
 
-<!-- csl: https://help.kusto.windows.net/Samples -->
+The following example calculates and returns the geohash string value.
+
+> [!div class="nextstepaction"]
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAysoyswrUUhPzc9ILM5QsAWx4gvygWLxJfnxUGENXQsDPUNLUwsjSx0FI1M9CwMjI0NTHQULTQB7u14ZPgAAAA==" target="_blank">Run the query</a>
+
 ```kusto
 print geohash = geo_point_to_geohash(-80.195829, 25.802215, 8)
 ```
+
+**Output**
 
 |geohash|
 |---|
@@ -100,7 +101,9 @@ print geohash = geo_point_to_geohash(-80.195829, 25.802215, 8)
 
 The following example finds groups of coordinates. Every pair of coordinates in the group resides in a rectangular area of 4.88 km by 4.88 km.
 
-<!-- csl: https://help.kusto.windows.net/Samples -->
+> [!div class="nextstepaction"]
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA42Qy07DMBBF9/mKUVeJZNo0ceJSqYvCZyBkuY2bWDieyI8FiI/H5EEQLGBmMfbozFncRvjYFy1TjVfhFRqumiM4b5VpCWg0rfKhkUewUui4iMz6z5KnBGJtzhsCDYZPz92+KLZlXtKcZgQo21Ysp4eCTODDL5AyWs1gzfJqAR9/gAU77Kt6Aev7sibJc/IOLvS9sOpNjmdXDMbDaZpppP9dux0oL3sHg7TQWgzDJBm1SzYuqnvxIrlWzn9PLPtTqwz4Tk7m0Xl5hVZiJ1wXpfHFB1TGc498Xqdf4a+xZ7NzucTbav0AhjDhi8sBAAA=" target="_blank">Run the query</a>
+
 ```kusto
 datatable(location_id:string, longitude:real, latitude:real)
 [
@@ -113,6 +116,8 @@ datatable(location_id:string, longitude:real, latitude:real)
             by geohash = geo_point_to_geohash(longitude, latitude)    // geohash of the group
 ```
 
+**Output**
+
 | geohash | count | locations  |
 |---------|-------|------------|
 | c23n8   | 2     | ["A", "B"] |
@@ -120,10 +125,14 @@ datatable(location_id:string, longitude:real, latitude:real)
 
 The following example produces an empty result because of the invalid coordinate input.
 
-<!-- csl: https://help.kusto.windows.net/Samples -->
+> [!div class="nextstepaction"]
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAysoyswrUUhPzc9ILM5QsAWx4gvygWLxJfnxUGENIwMDHUMdC00AvfV/vi0AAAA=" target="_blank">Run the query</a>
+
 ```kusto
 print geohash = geo_point_to_geohash(200,1,8)
 ```
+
+**Output**
 
 | geohash |
 |---------|
@@ -131,10 +140,14 @@ print geohash = geo_point_to_geohash(200,1,8)
 
 The following example produces an empty result because of the invalid accuracy input.
 
-<!-- csl: https://help.kusto.windows.net/Samples -->
+> [!div class="nextstepaction"]
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAysoyswrUUhPzc9ILM5QsAWx4gvygWLxJfnxUGENQx1DHaCQRl5pTo6mJgCmJkAVMwAAAA==" target="_blank">Run the query</a>
+
 ```kusto
 print geohash = geo_point_to_geohash(1,1,int(null))
 ```
+
+**Output**
 
 | geohash |
 |---------|

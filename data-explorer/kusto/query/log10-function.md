@@ -1,32 +1,47 @@
 ---
-title: log10() - Azure Data Explorer | Microsoft Docs
-description: This article describes log10() in Azure Data Explorer.
-services: data-explorer
-author: orspod
-ms.author: orspodek
+title:  log10()
+description: Learn how to use the log10() function to return the common (base-10) logarithm of the input.
 ms.reviewer: alexans
-ms.service: data-explorer
 ms.topic: reference
-ms.date: 08/11/2019
+ms.date: 01/05/2023
 ---
 # log10()
 
-`log10()` returns the common (base-10) logarithm function.  
+`log10()` returns the common (base-10) logarithm of the input.
 
 ## Syntax
 
-`log10(`*x*`)`
+`log10(`*number*`)`
 
-## Arguments
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
 
-* *x*: A real number > 0.
+## Parameters
+
+| Name | Type | Required | Description |
+|--|--|--|--|
+|*number*| `real` |  :heavy_check_mark: | The number for which to calculate the base-10 logarithm.|
 
 ## Returns
 
 * The common logarithm is the base-10 logarithm: the inverse of the exponential function (exp) with base 10.
-* `null` if the argument is negative or null or can't be converted to a `real` value. 
+* `null` if the argument is negative or null or can't be converted to a `real` value.
 
-## See also
+## Example
+
+> [!div class="nextstepaction"]
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAysoyswrUShKLS7NKbHNyU83NNAw1QQAQyXyFRUAAAA=" target="_blank">Run the query</a>
+
+```kusto
+print result=log10(5)
+```
+
+**Output**
+
+|result|
+|--|
+|0.69897000433601886|
+
+## Related content
 
 * For natural (base-e) logarithms, see [log()](log-function.md).
 * For base-2 logarithms, see [log2()](log2-function.md)

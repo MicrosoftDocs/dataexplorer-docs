@@ -1,27 +1,25 @@
 ---
-title: geo_s2cell_to_central_point() - Azure Data Explorer
-description: This article describes geo_s2cell_to_central_point() in Azure Data Explorer.
-services: data-explorer
-author: orspod
-ms.author: orspodek
+title:  geo_s2cell_to_central_point()
+description: Learn how to use the geo_s2cell_to_central_point() function to calculate the geospatial coordinates that represent the center of an S2 cell.
 ms.reviewer: mbrichko
-ms.service: data-explorer
 ms.topic: reference
-ms.date: 01/27/2020
+ms.date: 12/14/2022
 ---
 # geo_s2cell_to_central_point()
 
 Calculates the geospatial coordinates that represent the center of an S2 cell.
 
-Read more about [S2 cell hierarchy](https://s2geometry.io/devguide/s2cell_hierarchy).
-
 ## Syntax
 
 `geo_s2cell_to_central_point(`*s2cell*`)`
 
-## Arguments
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
 
-*s2cell*: S2 cell token string value as it was calculated by [geo_point_to_s2cell()](geo-point-to-s2cell-function.md). The S2 cell token maximum string length is 16 characters.
+## Parameters
+
+|Name|Type|Required|Description|
+|--|--|--|--|
+| *s2cell* | `string` |  :heavy_check_mark: | S2 cell token value as it was calculated by [geo_point_to_s2cell()](geo-point-to-s2cell-function.md). The S2 cell token maximum string length is 16 characters.|
 
 ## Returns
 
@@ -32,12 +30,16 @@ The geospatial coordinate values in [GeoJSON Format](https://tools.ietf.org/html
 
 ## Examples
 
-<!-- csl: https://help.kusto.windows.net/Samples -->
+> [!div class="nextstepaction"]
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAysoyswrUSjIB5G2Cump+fHFRsmpOTnxJfnxyal5JUWJOfFgWQ0lQyNjE1MzcyVNrhqF1IqS1LwUheT8/KKUzLzEktRioG6wOj0kMYTCnPy89MyS0pRUoDIkBdEGsToKOYkl2KQMYwEypEkCnAAAAA==" target="_blank">Run the query</a>
+
 ```kusto
 print point = geo_s2cell_to_central_point("1234567")
 | extend coordinates = point.coordinates
 | extend longitude = coordinates[0], latitude = coordinates[1]
 ```
+
+**Output**
 
 |point|coordinates|longitude|latitude|
 |---|---|---|---|
@@ -45,10 +47,14 @@ print point = geo_s2cell_to_central_point("1234567")
 
 The following example returns a null result because of the invalid S2 cell token input.
 
-<!-- csl: https://help.kusto.windows.net/Samples -->
+> [!div class="nextstepaction"]
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAysoyswrUSjIB5G2Cump+fHFRsmpOTnxJfnxyal5JUWJOfFgWQ2lRCVNADb75CkuAAAA" target="_blank">Run the query</a>
+
 ```kusto
 print point = geo_s2cell_to_central_point("a")
 ```
+
+**Output**
 
 |point|
 |---|

@@ -1,31 +1,38 @@
 ---
-title: .delete database ingestion batching policy command - Azure Data Explorer
-description: This article describes the delete database ingestion batching policy command in Azure Data Explorer.
-services: data-explorer
-author: orspod
-ms.author: orspodek
+title: .delete database policy ingestionbatching command
+description: Learn how to use the `.delete database policy ingestionbatching` command to delete the database ingestion batching policy.
 ms.reviewer: yonil
-ms.service: data-explorer
 ms.topic: reference
-ms.date: 09/26/2021
+ms.date: 06/13/2023
 ---
-# .delete database ingestion batching policy
+# .delete database policy ingestionbatching command
 
-Delete the database ingestion batching policy. The [ingestionBatching policy](batchingpolicy.md) is a policy object that determines when data aggregation should stop during data ingestion according to specified settings.
+Use this command to remove the database [ingestion batching policy](batching-policy.md) that defines data aggregation for batching. The ingestion batching policy applies to [queued ingestion](../../ingest-data-overview.md#continuous-data-ingestion).
+
+## Permissions
+
+You must have at least [Database Admin](access-control/role-based-access-control.md) permissions to run this command.
 
 ## Syntax
 
-* `.delete` `database` *DatabaseName* `policy` `ingestionbatching`
+`.delete` `database` *DatabaseName* `policy` `ingestionbatching`
 
-## Arguments
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
 
-*DatabaseName* - Specify the name of the database.
+## Parameters
+
+|Name|Type|Required|Description|
+|--|--|--|--|
+|*DatabaseName*| `string` | :heavy_check_mark:|The name of the database.|
 
 ## Example
 
-The following example deletes the database IngestionBatching policy:
+The following command deletes the batching policy on a database.
 
 ```kusto
-// Delete IngestionBatching policy on database `MyDatabase`
 .delete database MyDatabase policy ingestionbatching
 ```
+
+## Related content
+
+* [delete table batching policy](delete-table-ingestion-batching-policy.md)

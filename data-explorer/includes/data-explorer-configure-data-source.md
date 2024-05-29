@@ -1,20 +1,17 @@
 ---
-author: orspod
-ms.service: data-explorer
 ms.topic: include
 ms.date: 11/03/2019
-ms.author: orspodek
 ---
 
 ## Configure the data source
 
 You perform the following steps to configure Azure Data Explorer as a data source for your dashboard tool. We'll cover these steps in more detail in this section:
 
-1. Create an Azure Active Directory (Azure AD) service principal. The service principal is used by your dashboard tool to access the Azure Data Explorer service.
+1. Create a Microsoft Entra service principal. The service principal is used by your dashboard tool to access the Azure Data Explorer service.
 
-1. Add the Azure AD service principal to the *viewers* role in the Azure Data Explorer database.
+1. Add the Microsoft Entra service principal to the *viewers* role in the Azure Data Explorer database.
 
-1. Specify your dashboard tool connection properties based on information from the Azure AD service principal, then test the connection.
+1. Specify your dashboard tool connection properties based on information from the Microsoft Entra service principal, then test the connection.
 
 ### Create a service principal
 

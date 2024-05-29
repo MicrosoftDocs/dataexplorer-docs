@@ -1,27 +1,31 @@
 ---
-title: .delete table sharding policy command - Azure Data Explorer
-description: This article describes the .delete table sharding policy command in Azure Data Explorer.
-services: data-explorer
-author: orspod
-ms.author: orspodek
+title: .delete table policy sharding command
+description: Learn how to use the `.delete table policy sharding` command to delete a table's sharding policy.
 ms.reviewer: yonil
-ms.service: data-explorer
 ms.topic: reference
-ms.date: 10/10/2021
+ms.date: 05/24/2023
 ---
-# .delete table sharding policy
+# .delete table policy sharding command
 
-Delete the table sharding policy. Use the [sharding policy](../management/shardingpolicy.md) to manage data sharding for databases and tables.  
+Delete the table sharding policy. Use the [sharding policy](../management/sharding-policy.md) to manage data sharding for databases and tables.  
 
-The sharding policy defines if and how [Extents (data shards)](../management/extents-overview.md) in the Azure Data Explorer cluster should be sealed. When a database is created, it contains the default data sharding policy. This policy is inherited by all tables created in the database (unless the policy is explicitly overridden at the table level).
+The sharding policy defines if and how [Extents (data shards)](../management/extents-overview.md) in your cluster should be sealed. When a database is created, it contains the default data sharding policy. This policy is inherited by all tables created in the database (unless the policy is explicitly overridden at the table level).
+
+## Permissions
+
+You must have at least [Table Admin](access-control/role-based-access-control.md) permissions to run this command.
 
 ## Syntax
 
 `.delete` `table` *TableName* `policy` `sharding`
 
-## Arguments
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
 
-*TableName* - Specify the name of the table. A wildcard (*) denotes all tables.
+## Parameters
+
+|Name|Type|Required|Description|
+|--|--|--|--|
+|*TableName*| `string` | :heavy_check_mark:|The name of the table. A wildcard (`*`) denotes all tables.|
 
 ## Example
 

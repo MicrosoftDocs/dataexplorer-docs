@@ -1,9 +1,6 @@
 ---
-author: orspod
-ms.service: data-explorer
 ms.topic: include
 ms.date: 03/25/2020
-ms.author: orspodek
 ---
 
 ## Create a new key vault

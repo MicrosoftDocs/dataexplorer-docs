@@ -1,38 +1,46 @@
 ---
-title: .show databases schema - Azure Data Explorer | Microsoft Docs
-description: This article describes .show databases schema in Azure Data Explorer.
-services: data-explorer
-author: orspod
-ms.author: orspodek
-ms.reviewer: rkarlin
-ms.service: data-explorer
+title: .show database schema command
+description: Learn how to use the `.show database schema` command to show the database schema as a table, JSON object, or CSL script.
+ms.reviewer: orspodek
 ms.topic: reference
-ms.date: 03/14/2021
+ms.date: 05/24/2023
 ---
-# .show database schema commands
+# .show database schema command
 
 The following commands show database schema as a table, JSON object, or CSL script.
 
-## .show databases schema
+## Permissions
 
-**Syntax**
+You must have at least Database User, Database Viewer, or Database Monitor permissions to run these commands. For more information, see [role-based access control](access-control/role-based-access-control.md).
 
-`.show` `database` *DatabaseName* `schema` [`details`] [`if_later_than` *"Version"*] 
+## .show database schema
 
-`.show` `databases` `(` *DatabaseName1*`,` ...`)` `schema` `details` 
- 
-`.show` `databases` `(` *DatabaseName1* if_later_than *"Version"*`,` ...`)` `schema` `details`
+### Syntax
 
-**Returns**
+`.show` `database` *DatabaseName* `schema` [`details`] [`if_later_than` *"Version"*]
+
+`.show` `databases` `(`*DatabaseName* [`,` ...]`)` `schema` `details`
+
+`.show` `databases` `(`*DatabaseName* `if_later_than` *"Version"* [`,` ...]`)` `schema` `details`
+
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+
+### Parameters
+
+|Name|Type|Required|Description|
+|--|--|--|--|
+|*DatabaseName*| `string` | :heavy_check_mark:|The name of the database for which to show the schema.|
+|*Version*| `string` ||The version in "vMM.mm" format. MM represents the major version and mm represents the minor version.|
+
+### Returns
 
 Returns a flat list of the structure of the selected databases with all their tables and columns in a single table or JSON object.
 When used with a version, the database is only returned if it's a later version than the version provided.
 
-> [!NOTE]
-> The version should only be provided in "vMM.mm" format. MM represents the major version and mm represent the minor version.
+### Examples
 
-**Example** 
- 
+#### Show database schema
+
 The database 'TestDB' has one table called 'Events'.
 
 ```kusto
@@ -51,7 +59,7 @@ The database 'TestDB' has one table called 'Events'.
 |TestDB|Events|	City|	System.String|True|	False||		
 |TestDB|Events|	SessionId|	System.Int32|True|	True|| 
 
-**Example** 
+#### Show database schema based on version
 
 In the following example, the database is only returned if it's a later version than the version provided.
  
@@ -75,29 +83,41 @@ Because a version lower than the current database version was provided, the 'Tes
 
 ## .show database schema as json
 
-**Syntax**
+### Syntax
 
 `.show` `database` *DatabaseName* `schema` [`if_later_than` *"Version"*]  `as` `json`
- 
-`.show` `databases` `(` *DatabaseName1*`,` ...`)` `schema` `as` `json` [`with(`*Options*`)`]
- 
-`.show` `databases` `(` *DatabaseName1* if_later_than *"Version"*`,` ...`)` `schema` `as` `json` [`with(`*Options*`)`]
 
-**Arguments**
+`.show` `databases` `(`*DatabaseName* [`,` ...]`)` `schema` `as` `json` [`with` `(`*Options*`)`]
 
-The following *Options* allow you to select a subset of entities for each database schema that is returned. When using options, only the selected entities are returned for each database schema. Otherwise, all entities are returned.
+`.show` `databases` `(`*DatabaseName* `if_later_than` *"Version"* [`,` ...]`)` `schema` `as` `json` [`with` `(`*Options*`)`]
 
-* `Tables`: (`true` | `false`) - If `true`, tables are returned.
-* `ExternalTables`: (`true` | `false`) - If `true`, external tables are returned.
-* `MaterializedViews`: (`true` | `false`) - If `true`, materialized views are returned.
-* `Functions`: (`true` | `false`) - If `true`, functions are returned.
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
 
-**Returns**
+### Parameters
+
+|Name|Type|Required|Description|
+|--|--|--|--|
+|*DatabaseName*| `string` | :heavy_check_mark:|The name of the database for which to show the schema.|
+|*Version*| `string` ||The version in "vMM.mm" format. MM represents the major version and mm represents the minor version.|
+|*Options*| `string` ||A list of comma-separated key-value pairs used to determine which database entity schemas to return. If none are specified, then all entities are returned. See [supported entity options](#supported-entity-options).|
+
+#### Supported entity options
+
+The following table describes the values to provide for the *Options* parameter.
+
+|Key|Value|Description|
+|--|--|--|
+|`Tables`| `bool` | If `true`, tables are returned.|
+|`ExternalTables`| `bool` | If `true`, external tables are returned.|
+|`MaterializedViews`| `bool` | If `true`, materialized views are returned.|
+|`Functions`| `bool` | If `true`, functions are returned.|
+
+### Returns
 
 Returns a flat list of the structure of the selected databases with all their tables and columns as a JSON object.
 When used with a version, the database is only returned if it's a later version than the version provided.
 
-**Example** 
+### Examples
  
 ```kusto
 .show database TestDB schema as json
@@ -115,22 +135,29 @@ When used with a version, the database is only returned if it's a later version 
 
 Generates a CSL script with all the required commands to create a copy of the given (or current) database schema.
 
-**Syntax**
+### Syntax
 
-`.show` `database` *DatabaseName* `schema` `as` `csl` `script` [`with(`*Options*`)`]
+`.show` `database` *DatabaseName* `schema` `as` `csl` `script` [`with` `(`*Options*`)`]
 
-**Arguments**
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
 
-The following *Options* are all optional:
+### Parameters
 
-* `IncludeEncodingPolicies`: (`true` | `false`) - If `true`, encoding policies at the database/table/column level will be included. Defaults to `false`. 
-* `IncludeSecuritySettings`: (`true` | `false`) - Defaults to `false`. If `true`, the following options would be included:
-  * Authorized principals at the database/table level.
-  * Row level security policies at the table level.
-  * Restricted view access policies at the table level.
-* `IncludeIngestionMappings`: (`true` | `false`) - If `true`, ingestion mappings at the table level will be included. Defaults to `false`. 
+|Name|Type|Required|Description|
+|--|--|--|--|
+|*DatabaseName*| `string` | :heavy_check_mark:|The name of the database for which to show the schema.|
+|*Options*| `string` ||A list of comma-separated key-value pairs used to determine what to return. See [supported options](#supported-options).|
 
-**Returns**
+#### Supported options
+
+|Key|Value|Description|
+|--|--|--|
+|`IncludeEncodingPolicies`| `bool` | Defaults to `true`. If `true`, encoding policies at the database/table/column level are included.|
+|`IncludeSecuritySettings`| `bool` | Defaults to `true`. If `true`, the following options are included:<br/>- Authorized principals at the database/table level.<br/>- Row level security policies at the table level.<br/>- Restricted view access policies at the table level.|
+|`IncludeIngestionMappings`| `bool` | Defaults to `true`. If `true`, ingestion mappings at the table level are included.|
+|`ShowObfuscatedStrings`| `bool` | Defaults to `false`. If `true`, credentials persisted in Kusto configurations are returned. To use this option, you must either be a database admin or entity creator. If you don't have these permissions, the command fails.|
+
+### Returns
 
 The script, returned as a string, will contain:
 
@@ -138,10 +165,10 @@ The script, returned as a string, will contain:
 * Commands to set all database/tables/columns policies to match the original policies.
 * Commands to create or alter all user-defined functions in the database.
 
-**Example** 
- 
+### Examples
+
 ```kusto
 .show database TestDB schema as csl script
 
-.show database TestDB schema as csl script with(IncludeSecuritySettings = true)
+.show database TestDB schema as csl script with (ShowObfuscatedStrings = true)
 ```

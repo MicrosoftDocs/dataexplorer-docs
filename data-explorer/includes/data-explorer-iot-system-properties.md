@@ -1,9 +1,6 @@
 ---
-author: orspod
-ms.service: data-explorer
 ms.topic: include
 ms.date: 06/09/2021
-ms.author: orspodek
 ---
 ### Schema mapping examples
 
@@ -22,7 +19,7 @@ Run the following commands to add data to the beginning of the record. Note ordi
 ```kusto
     .create table TestTable ingestion csv mapping "CsvMapping1"
     '['
-    '   { "column" : "Timespan", "Properties":{"Ordinal":"2"}},'
+    '   { "column" : "TimeStamp", "Properties":{"Ordinal":"2"}},'
     '   { "column" : "Metric", "Properties":{"Ordinal":"3"}},'
     '   { "column" : "Value", "Properties":{"Ordinal":"4"}},'
     '   { "column" : "IotHubDeviceId", "Properties":{"Ordinal":"0"}},'
@@ -37,7 +34,7 @@ Data is added by using the system properties mapping. Run these commands:
 ```kusto
     .create table TestTable ingestion json mapping "JsonMapping1"
     '['
-    '    { "column" : "Timespan", "Properties":{"Path":"$.timestamp"}},'
+    '    { "column" : "TimeStamp", "Properties":{"Path":"$.timestamp"}},'
     '    { "column" : "Metric", "Properties":{"Path":"$.metric"}},'
     '    { "column" : "Value", "Properties":{"Path":"$.metric_value"}},'
     '    { "column" : "IotHubDeviceId", "Properties":{"Path":"$.iothub-connection-device-id"}},'

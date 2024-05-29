@@ -1,22 +1,30 @@
 ---
-title: .alter-merge table merge policy command- Azure Data Explorer
-description: This article describes the .alter-merge table merge policy command in Azure Data Explorer.
-services: data-explorer
-author: orspod
-ms.author: orspodek
+title:  .alter-merge table policy merge command
+description: Learn how to use the `.alter-merge table policy merge` command to change the table's merge policy.
 ms.reviewer: yonil
-ms.service: data-explorer
 ms.topic: reference
-ms.date: 09/29/2021
+ms.date: 04/20/2023
 ---
-# .alter-merge table merge policy
+# .alter-merge table policy merge command
 
-Change a table's [merge policy](mergepolicy.md). The merge policy defines if and how [Extents (Data Shards)](../management/extents-overview.md) in the cluster should get merged. 
- 
+Changes the table's [merge policy](merge-policy.md). The merge policy defines if and how [Extents (Data Shards)](../management/extents-overview.md) in the cluster should get merged.
+
+## Permissions
+
+You must have at least [Table Admin](access-control/role-based-access-control.md) permissions to run this command.
 
 ## Syntax
 
-`.alter-merge` `table` *TableName* `policy` `merge` 
+`.alter-merge` `table` *TableName* `policy` `merge` *PolicyObject*
+
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+
+## Parameters
+
+|Name|Type|Required|Description|
+|--|--|--|--|
+|*TableName*| `string` | :heavy_check_mark:|The name of the table.|
+|*PolicyObject*| `string` | :heavy_check_mark:|A serialized array of one or more JSON policy objects. For more information, see [merge policy](merge-policy.md).|
 
 ### Example
 

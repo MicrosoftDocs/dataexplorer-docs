@@ -5,12 +5,12 @@ summary: Azure Data Explorer is a fast, fully managed data analytics service for
 
 metadata:
   title: Azure Data Explorer documentation
-  description: Azure Data Explorer is a log analytics cloud platform optimized for ad-hoc big data queries.
+  description: Azure Data Explorer is a log analytics cloud platform optimized for ad hoc big data queries.
   ms.service: data-explorer
   ms.topic: landing-page
-  author: orspod
-  ms.author: orspodek
-  ms.date: 06/30/2021
+  author: shsagir
+  ms.author: shsagir
+  ms.date: 01/15/2023
 
 # linkListType: architecture | concept | deploy | download | get-started | how-to-guide | learn | overview | quickstart | reference | sample | tutorial | video | whats-new
 
@@ -22,6 +22,14 @@ landingContent:
         links:
           - text: What is Azure Data Explorer?
             url: data-explorer-overview.md
+      - linkListType: get-started
+        links:
+          - text: Start for free
+            url: start-for-free.md
+          - text: Kusto Detective Agency
+            url: https://detective.kusto.io/
+          - text: Find a partner
+            url: find-my-partner.md
       - linkListType: video
         links:
           - text: What is Azure Data Explorer? (19:47)
@@ -29,21 +37,34 @@ landingContent:
 
   # Card
   - title: Training
-    linkLists: 
+    linkLists:
       - linkListType: learn
         links:
           - text: "Free Pluralsight training: Azure Data Explorer"
-            url: https://www.pluralsight.com/partners/microsoft/azure-data-explorer          
-          - text: "Learn module: Introduction to Azure Data Explorer"
-            url:  /learn/modules/intro-to-azure-data-explorer/intro-to-azure-data-explorer/
- 
+            url: https://www.pluralsight.com/partners/microsoft/azure-data-explorer
+          - text: "Training module: Introduction to Azure Data Explorer"
+            url: /training/modules/intro-to-azure-data-explorer/intro-to-azure-data-explorer/
+          - text: "Training module: Explore the fundamentals of data analysis using Kusto Query Language (KQL)"
+            url: /training/modules/explore-fundamentals-kql/
+          - text: "Training module: Write your first query with Kusto Query Language"
+            url: /training/modules/write-first-query-kusto-query-language/
+          - text: "Training module: Gain insights from your data by using Kusto Query Language"
+            url: /training/modules/gain-insights-data-kusto-query-language/
+          - text: "Training module: Multi-table queries using Kusto Query Language"
+            url: /training/modules/multi-table-queries-with-kusto-query-language/
+          - text: "Training module: Characterize an unfamiliar dataset with Azure Data Explorer"
+            url: /training/modules/characterize-data-azure-data-explorer/
+          - text: "Training module: Create dashboards in Azure Data Explorer"
+            url: /training/modules/create-dashboards-azure-data-explorer/
+          - text: "Learning path: Data analysis in Azure Data Explorer with Kusto Query Language"
+            url: /training/paths/data-analysis-data-explorer-kusto-query-language/
   # Card
   - title: Create cluster and database
     linkLists:
       - linkListType: quickstart
         links:
           - text: Create a cluster and database
-            url: create-cluster-database-portal.md
+            url: create-cluster-and-database.md
       - linkListType: how-to-guide
         links:
           - text: Python
@@ -66,20 +87,22 @@ landingContent:
             url: ingest-data-overview.md
       - linkListType: quickstart
         links:
-          - text: Ingest sample data
-            url: ingest-sample-data.md
+          - text: Get data from a local file
+            url: get-data-file.md
       - linkListType: how-to-guide
         links:
-          - text: One-click ingestion
-            url: ingest-data-one-click.md
+          - text: Ingestion wizard
+            url: ingest-data-wizard.md
+          - text: Ingest historical data
+            url: ingest-data-historical.md
           - text: Streaming ingestion
             url: ingest-data-streaming.md
           - text: Python
             url: python-ingest-data.md
-          - text: Event Hub using Azure portal
+          - text: Event hub using Azure portal
             url: ingest-data-event-hub.md
           - text: Event Grid using Azure portal
-            url: ingest-data-event-grid.md
+            url: create-event-grid-connection.md
           - text: Install and use LightIngest
             url: lightingest.md
 
@@ -88,20 +111,22 @@ landingContent:
     linkLists:
       - linkListType: quickstart
         links:
-          - text: Query data with the Web UI
+          - text: Query data with the Azure Data Explorer web UI
             url: web-query-data.md
       - linkListType: tutorial
         links:
           - text: Write KQL queries
-            url: write-queries.md
+            url: /azure/data-explorer/kusto/query/tutorials/learn-common-operators
       - linkListType: how-to-guide
         links:
           - text: Query data in Azure Data Lake
             url: data-lake-query-data.md
+          - text: Query data using T-SQL
+            url: t-sql.md
           - text: Query data using Python
             url: python-query-data.md
           - text: Time series analysis
-            url: time-series-analysis.md
+            url: ./kusto/query/time-series-analysis.md
       - linkListType: reference
         links:
           - text: KQL quick reference
@@ -109,7 +134,7 @@ landingContent:
           - text: Kusto Query Language
             url: kusto/query/index.md
           - text: SQL to Kusto cheat sheet
-            url: kusto/query/sqlcheatsheet.md
+            url: kusto/query/sql-cheat-sheet.md
 
   # Card
   - title: Visualize data
@@ -121,7 +146,7 @@ landingContent:
       - linkListType: how-to-guide
         links:
           - text: Power BI connector
-            url: power-bi-connector.md
+            url: power-bi-data-connector.md?tabs=connector
           - text: Grafana
             url: grafana.md
           - text: ODBC connector
@@ -166,7 +191,12 @@ landingContent:
             url: using-metrics.md
           - text: Use diagnostic logs to monitor ingestion
             url: using-diagnostic-logs.md
-# Card
+      - linkListType: reference
+        links:
+          - text: Management commands
+            url: kusto/management/index.md
+
+  # Card
   - title: Architecture
     linkLists:
       - linkListType: how-to-guide
@@ -181,14 +211,24 @@ landingContent:
             url: /azure/architecture/solution-ideas/articles/interactive-azure-data-explorer
           - text: IoT analytics with Azure Data Explorer
             url: /azure/architecture/solution-ideas/articles/iot-azure-data-explorer
-          - text: Geospatial data processing and analytics 
-            url: /azure/architecture/example-scenario/data/geospatial-data-processing-analytics-azure   
+          - text: Geospatial data processing and analytics
+            url: /azure/architecture/example-scenario/data/geospatial-data-processing-analytics-azure
+          - text: Long-term security log retention with Azure Data Explorer
+            url: /azure/architecture/example-scenario/security/security-log-retention-azure-data-explorer
+          - text: Data analytics for automotive test fleets
+            url: /azure/architecture/industries/automotive/automotive-telemetry-analytics
+          - text: Real-Time analytics with Azure Service Bus
+            url: /azure/architecture/solution-ideas/articles/analytics-service-bus
   # Card
-  - title: Reference
+  - title: Development
     linkLists:
+      - linkListType: how-to-guide
+        links:
+          - text: Set up your development environment
+            url: kusto/api/get-started/app-set-up.md
       - linkListType: reference
         links:
-          - text: Management commands
-            url: kusto/management/index.md
-          - text: Azure Data Explorer API
-            url: kusto/api/index.md
+          - text: Kusto client libraries
+            url: kusto/api/client-libraries.md
+          - text: REST API overview
+            url: kusto/api/rest/index.md

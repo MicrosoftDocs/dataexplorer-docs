@@ -1,28 +1,27 @@
 ---
-title: Debug Kusto query language inline Python using VS Code - Azure Data Explorer
-description: Learn how to debug Kusto query language (KQL) inline Python using VS Code.
-author: orspod
-ms.author: orspodek
+title: Debug Kusto Query Language inline Python using VS Code - Azure Data Explorer
+description: Learn how to debug Kusto Query Language (KQL) inline Python using VS Code.
 ms.reviewer: adieldar
-ms.service: data-explorer
 ms.topic: how-to
-ms.date: 12/04/2019
+ms.date: 11/08/2022
 ---
 
-# Debug Kusto query language inline Python using VS Code
+# Debug Kusto Query Language inline Python using VS Code
 
-Azure Data Explorer supports running Python code embedded in Kusto query language using the [python() plugin](kusto/query/pythonplugin.md). The plugin runtime is hosted in a sandbox, an isolated and secure Python environment. The python() plugin capability extends Kusto query language native functionalities with the huge archive of OSS Python packages. This extension enables you to run advanced algorithms, such as machine learning, artificial intelligence, statistical, and time series as part of the query.
+Azure Data Explorer supports running Python code embedded in Kusto Query Language using the [python() plugin](kusto/query/python-plugin.md). The plugin runtime is hosted in a sandbox, an isolated and secure Python environment. The python() plugin capability extends Kusto Query Language native functionalities with the huge archive of OSS Python packages. This extension enables you to run advanced algorithms, such as machine learning, artificial intelligence, statistical, and time series as part of the query.
 
-Kusto query language tools aren't convenient for developing and debugging Python algorithms. Therefore, develop the algorithm on your favorite Python-integrated development environment such as Jupyter, PyCharm, VS, or VS Code. When the algorithm is complete, copy and paste into KQL. To improve and streamline this workflow, Azure Data Explorer supports integration between Kusto Explorer or Web UI clients and VS Code for authoring and debugging KQL inline Python code. 
+Kusto Query Language tools aren't convenient for developing and debugging Python algorithms. Therefore, develop the algorithm on your favorite Python-integrated development environment such as Jupyter, PyCharm, VS, or VS Code. When the algorithm is complete, copy and paste into KQL. To improve and streamline this workflow, Azure Data Explorer supports integration between Kusto Explorer or Web UI clients and VS Code for authoring and debugging KQL inline Python code. 
 
 > [!NOTE]
 > This workflow can only be used to debug relatively small input tables (up to few MB). Therefore, you may need to limit the input for debugging.  If you need to process a large table, limit it for debugging using `| take`, `| sample`, or `where rand() < 0.x`.
 
 ## Prerequisites
 
-1. Install Python [Anaconda Distribution](https://www.anaconda.com/distribution/#download-section). In **Advanced Options**, select **Add Anaconda to my PATH environment variable**.
-2. Install [Visual Studio Code](https://code.visualstudio.com/Download)
-3. Install [Python extension for Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=ms-python.python).
+* An Azure subscription. Create a [free Azure account](https://azure.microsoft.com/free/).
+* An Azure Data Explorer cluster and database. [Create a cluster and database](create-cluster-and-database.md).
+* Install Python [Anaconda Distribution](https://www.anaconda.com/download). In **Advanced Options**, select **Add Anaconda to my PATH environment variable**.
+* Install [Visual Studio Code](https://code.visualstudio.com/Download).
+* Install [Python extension for Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=ms-python.python).
 
 ## Run your query in your client application
 
@@ -56,7 +55,7 @@ Kusto query language tools aren't convenient for developing and debugging Python
     'exp = kargs["exp"]\n'
     'result = df\n'
     'result["x4"] = df["x"].pow(exp)\n'
-    , pack('exp', 4))
+    , bag_pack('exp', 4))
     ```
 
     See the resulting table:
@@ -77,7 +76,7 @@ Kusto query language tools aren't convenient for developing and debugging Python
     'exp = kargs["exp"]\n'
     'result = df\n'
     'result["x4"] = df["x"].pow(exp)\n'
-    , pack('exp', 4))
+    , bag_pack('exp', 4))
     ```
 
 1. VS Code is launched:
@@ -89,4 +88,8 @@ Kusto query language tools aren't convenient for developing and debugging Python
     ![VS Code debug.](media/debug-inline-python/debug-vs-code.png)
 
 > [!NOTE]
-> There may be differences between the Python sandbox image and your local installation. [Check the sandbox image for specific packages by querying the plugin](https://github.com/Azure/azure-kusto-analytics-lib/blob/master/Utils/functions/get_modules_version.csl).
+> There may be differences between the Python sandbox image and your local installation. [Check the sandbox image for specific packages by querying the plugin](kusto/functions-library/get-packages-version-fl.md).
+> [!NOTE]
+> In case there are errors when launching VS code debugging session try setting the default terminal profile to command prompt:
+>  * Press CTRL + SHIFT + P to open the Command Palette.
+>  * Search for "Terminal: Select Default Profile" and select "Command Prompt"

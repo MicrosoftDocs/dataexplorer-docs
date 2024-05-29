@@ -1,21 +1,29 @@
 ---
-title: .alter-merge capacity policy command- Azure Data Explorer
-description: This article describes the .alter-merge capacity policy command in Azure Data Explorer.
-services: data-explorer
-author: orspod
-ms.author: orspodek
+title:  .alter-merge cluster policy capacity command
+description: Learn how to use the `.alter-merge cluster policy capacity` command to turn on or turn off a cluster's capacity policy.
 ms.reviewer: yonil
-ms.service: data-explorer
 ms.topic: reference
-ms.date: 09/26/2021
+ms.date: 04/20/2023
 ---
-# .alter-merge capacity policy
+# .alter-merge cluster policy capacity command
 
-Enables or disables a cluster's [capacity policy](capacitypolicy.md). A capacity policy is used for controlling the compute resources of data management operations on the cluster. This command requires [AllDatabasesAdmin](access-control/role-based-authorization.md) permission.
+Changes a cluster's [capacity policy](capacity-policy.md). The policy is used to control the computational resources for data management operations on the cluster.
+
+## Permissions
+
+You must have [AllDatabasesAdmin](access-control/role-based-access-control.md) permissions to run this command.
 
 ## Syntax
 
-`.alter-merge` `cluster` `policy` `capacity` `"`*Serialized policy*`"`
+`.alter-merge` `cluster` `policy` `capacity` *SerializedArrayOfPolicyObjects*
+
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+
+## Parameters
+
+|Name|Type|Required|Description|
+|--|--|--|--|
+|*SerializedArrayOfPolicyObjects*| `string` | :heavy_check_mark:|A serialized array with one or more JSON policy objects. For more information, see [capacity policy](capacity-policy.md).|
 
 ### Examples
 

@@ -1,17 +1,14 @@
 ---
-title: Entity references - Azure Data Explorer
+title:  Entity references
 description: This article describes Entity references in Azure Data Explorer.
-services: data-explorer
-author: orspod
-ms.author: orspodek
-ms.reviewer: rkarlin
-ms.service: data-explorer
+ms.reviewer: orspodek
 ms.topic: reference
-ms.date: 02/13/2020
+ms.date: 08/29/2023
 ---
 # Entity references
 
-Reference Kusto schema entities in a query by using their names. Valid entity names include *databases*, *tables*, *columns*, and stored functions. *Clusters* can't be referenced by their names.
+Kusto entities are referenced in a query by name. Entities that can be referenced by their name include *databases*, *tables*, *columns*, and *stored functions*, but not *clusters*.
+
 If the entity's container is unambiguous in the current context, use the entity name without additional qualifications. For example, when running a query against a
 database called `DB`, you may reference a table called `T` in that database by its name, `T`.
 
@@ -19,7 +16,7 @@ If the entity's container isn't available from the context, or you want to refer
 The name is the concatenation of the entity name to the container's, and potentially its container's, and so on. In this way, a query running against database `DB` may refer to a table `T1` in a different database `DB1` of the same cluster, by using `database("DB1").T1`. If the query wants to reference a table from another cluster it can do so, for example, by using `cluster("https://C2.kusto.windows.net/").database("DB2").T2`.
 
 Entity references can also use the entity pretty name, as long as it's unique
-in the context of the entity's container. For more information, see [entity pretty names](./entity-names.md#entity-pretty-names).
+in the context of the entity's container. For more information, see [entity pretty names](./entity-names.md#pretty-names).
 
 ## Wildcard matching for entity names
 
@@ -35,7 +32,7 @@ union *, database("DB1").T*
 > Wildcard matching can't match entity names that start with a dollar sign (`$`).
 Such names are system-reserved.
 
-## Next steps
+## Related content
 
-* [schema entity types](./index.md)
-* [schema entity names](./entity-names.md)
+* [Entity types](index.md).
+* [Entity names](entity-names.md).

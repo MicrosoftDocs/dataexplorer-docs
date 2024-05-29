@@ -1,25 +1,23 @@
 ---
-title: .show databases - Azure Data Explorer
-description: This article describes .show databases in Azure Data Explorer.
-services: data-explorer
-author: orspod
-ms.author: orspodek
-ms.reviewer: rkarlin
-ms.service: data-explorer
+title: .show databases command
+description: Learn how to use the `.show databases` command to show records of databases in the cluster that the user has access to.
+ms.reviewer: orspodek
 ms.topic: reference
-ms.date: 02/13/2020
+ms.date: 05/24/2023
 ---
-# .show databases
+# .show databases command
 
 Returns a table in which every record corresponds to a database in the cluster that the user has access to.
 
 For a table that shows the properties of the context database, see [`.show database`](show-database.md).
 
-**Syntax**
+## Syntax
 
 `.show` `databases`
 
-**Output schema**
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+
+## Returns
 
 |Column name       |Column type|Description                                                                  |
 |------------------|-----------|-----------------------------------------------------------------------------|

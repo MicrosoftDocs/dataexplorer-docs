@@ -1,39 +1,40 @@
 ---
-title: replace_string() - Azure Data Explorer
-description: This article describes replace_string() in Azure Data Explorer.
-services: data-explorer
-author: orspod
-ms.author: orspodek
+title:  replace_string()
+description: Learn how to use the replace_string() function to replace all string matches with another string.
 ms.reviewer: alexans
-ms.service: data-explorer
 ms.topic: reference
-ms.date: 07/15/2021
+ms.date: 05/21/2023
 ---
 # replace_string()
 
-Replaces all string matches with another string. 
+Replaces all string matches with a specified string.
+
+> **Deprecated aliases:** replace()
+
+To replace multiple strings, see [replace_strings()](replace-strings-function.md).
 
 ## Syntax
 
 `replace_string(`*text*`,` *lookup*`,` *rewrite*`)`
 
-## Arguments
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
 
-* *text*: A string.
-* *lookup*: A string to be replaced.
-* *rewrite*: A replacement string.
+## Parameters
+
+|Name|Type|Required|Description|
+|--|--|--|--|
+|*text*| `string` | :heavy_check_mark:|The source string.|
+|*lookup*| `string` | :heavy_check_mark:|The string to be replaced.|
+|*rewrite*| `string` | :heavy_check_mark:|The replacement string.|
 
 ## Returns
 
-*text* after replacing all matches of *lookup* with evaluations of *rewrite*. Matches do not overlap.
-
-## See also
-
-* For regex matching, see [replace_regex()](replace-regex-function.md).
-* For replacing a set of characters, see [translate()](translatefunction.md).
+Returns the *text* after replacing all matches of *lookup* with evaluations of *rewrite*. Matches don't overlap.
 
 ## Example
 
+> [!div class="nextstepaction"]
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA0WLOwqAMBBEe08x3RqwsbD0Cl5Boq4hoEnYREzh4d1CsBjmwxuxwTEqdoknepSIAblwQt884Fo4bNplVK22tDRd58ICn0Gd0jr74NpqzI8Lp8OuvI1fmD9IrQP5rEe6bSbzAkZqfYp8AAAA" target="_blank">Run the query</a>
 
 ```kusto
 range x from 1 to 5 step 1
@@ -41,7 +42,7 @@ range x from 1 to 5 step 1
 | extend replaced=replace_string(str, 'is', 'was')
 ```
 
-**Output:**
+**Output**
 
 | x    | str | replaced|
 |---|---|---|
@@ -50,4 +51,9 @@ range x from 1 to 5 step 1
 | 3    | Number is 3.000000  | Number was 3.000000|
 | 4    | Number is 4.000000  | Number was 4.000000|
 | 5    | Number is 5.000000  | Number was 5.000000|
- 
+
+## Related content
+
+* To replace multiple strings, see [replace_strings()](replace-strings-function.md).
+* To replace strings based on regular expression, see [replace_regex()](replace-regex-function.md).
+* To replace a set of characters, see [translate()](translate-function.md).

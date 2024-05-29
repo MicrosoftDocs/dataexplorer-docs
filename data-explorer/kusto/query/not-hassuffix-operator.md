@@ -1,58 +1,38 @@
 ---
-title: The case-insensitive !hassuffix string operator - Azure Data Explorer
-description: This article describes the case-insensitive !hassuffix string operator in Azure Data Explorer.
-services: data-explorer
-author: orspod
-ms.author: orspodek
+title:  The case-insensitive !hassuffix string operator
+description: Learn how to use the !hassuffix string operator to filter records for data that doesn't have a case-insensitive suffix.
 ms.reviewer: alexans
-ms.service: data-explorer
 ms.topic: reference
-ms.date: 09/19/2021
-ms.localizationpriority: high
+ms.date: 03/12/2023
 ---
 # !hassuffix operator
 
-Filters a record set for data that does not have a case-insensitive ending string:
+Filters a record set for data that doesn't have a case-insensitive ending string. `!hassuffix` returns `true` if there's no [term](datatypes-string-operators.md#what-is-a-term) inside string column ending with the specified string expression.
 
-The following table provides a comparison of the `hassuffix` operators:
-
-|Operator   |Description   |Case-Sensitive  |Example (yields `true`)  |
-|-----------|--------------|----------------|-------------------------|
-|[`hassuffix`](hassuffix-operator.md) |RHS is a term suffix in LHS |No |`"North America" hassuffix "ica"`|
-|[`!hassuffix`](not-hassuffix-operator.md) |RHS isn't a term suffix in LHS |No |`"North America" !hassuffix "americ"`|
-|[`hassuffix_cs`](hassuffix-cs-operator.md)  |RHS is a term suffix in LHS |Yes |`"North America" hassuffix_cs "ica"`|
-|[`!hassuffix_cs`](not-hassuffix-cs-operator.md) |RHS isn't a term suffix in LHS |Yes |`"North America" !hassuffix_cs "icA"`|
-
-> [!NOTE]
-> The following abbreviations are used in the table above:
->
-> * RHS = right hand side of the expression
-> * LHS = left hand side of the expression
-
-For further information about other operators and to determine which operator is most appropriate for your query, see [datatype string operators](datatypes-string-operators.md). 
-
-Case-insensitive operators are currently supported only for ASCII-text. For non-ASCII comparison, use the [tolower()](tolowerfunction.md) function.
+[!INCLUDE [hassuffix-operator-comparison](../../includes/hassuffix-operator-comparison.md)]
 
 ## Performance tips
 
+[!INCLUDE [performance-tip-note](../../includes/performance-tip-note.md)]
+
+When possible, use [!hassuffix_cs](not-hassuffix-cs-operator.md) - a case-sensitive version of the operator.
+
 > [!NOTE]
-> Performance depends on the type of search and the structure of the data.
-
-For faster results, use the case-sensitive version of an operator, for example, `hassuffix_cs`, not `hassuffix`. 
-
-If you're testing for the presence of a symbol or alphanumeric word that is bound by non-alphanumeric characters at the start or end of a field, for faster results use `has` or `in`. 
-
-For best practices, see [Query best practices](best-practices.md).
+> Text index cannot be fully utilized for this function, therefore the performance of this function is comparable to [!endswith](not-endswith-operator.md) function, though the semantics is different.
 
 ## Syntax
 
-*T* `|` `where` *col* `!hassuffix` `(`*expression*`)`   
+*T* `|` `where` *column* `!hassuffix` `(`*expression*`)`
 
-## Arguments
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
 
-* *T* - The tabular input whose records are to be filtered.
-* *col* - The column to filter.
-* *expression* - Scalar or literal expression.
+## Parameters
+
+| Name | Type | Required | Description |
+|--|--|--|--|
+| *T* | `string` |  :heavy_check_mark:| The tabular input whose records are to be filtered.|
+| *column* | `string` |  :heavy_check_mark:| The column by which to filter.|
+| *expression* | scalar |  :heavy_check_mark:| The scalar or literal expression for which to search.|
 
 ## Returns
 
@@ -60,13 +40,15 @@ Rows in *T* for which the predicate is `true`.
 
 ## Example
 
-<!-- csl: https://help.kusto.windows.net/Samples -->
+> [!div class="nextstepaction"]
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAwsuyS/KdS1LzSsp5qpRKC7NzU0syqxKVUgFCcUn55fmldiCSQ1NhaRKheCSxJJUoMLyjNSiVAhPQTEjsbi4NC0ts0JByVEJLolkgoKdgpGBgQFQqqAoPys1uQSiUwdZDQCFtu1diQAAAA==" target="_blank">Run the query</a>
+
 ```kusto
 StormEvents
-    | summarize event_count=count() by State
-    | where State !hassuffix "A"
-    | where event_count > 2000
-    | project State, event_count
+| summarize event_count=count() by State
+| where State !hassuffix "A"
+| where event_count > 2000
+| project State, event_count
 ```
 
 **Output**

@@ -1,18 +1,13 @@
 ---
-title: The case-insensitive !~ (not equals) string operator - Azure Data Explorer
-description: This article describes the case-insensitive !~ (not equals) string operator in Azure Data Explorer.
-services: data-explorer
-author: orspod
-ms.author: orspodek
+title:  The case-insensitive !~ (not equals) string operator
+description: Learn how to use the !~ (not equals) string operator to filter records for data that doesn't match a case-insensitive string.
 ms.reviewer: alexans
-ms.service: data-explorer
 ms.topic: reference
-ms.date: 09/30/2021
-ms.localizationpriority: high
+ms.date: 03/12/2023
 ---
 # !~ (not equals) operator
 
-Filters a record set for data that does not match a case-insensitive string.
+Filters a record set for data that doesn't match a case-insensitive string.
 
 The following table provides a comparison of the `==` (equals) operators:
 
@@ -23,30 +18,27 @@ The following table provides a comparison of the `==` (equals) operators:
 |[`=~`](equals-operator.md) |Equals |No |`"abc" =~ "ABC"`|
 |[`!~`](not-equals-operator.md) |Not equals |No |`"aBc" !~ "xyz"`|
 
-For further information about other operators and to determine which operator is most appropriate for your query, see [datatype string operators](datatypes-string-operators.md). 
-
-Case-insensitive operators are currently supported only for ASCII-text. For non-ASCII comparison, use the [tolower()](tolowerfunction.md) function.
+For more information about other operators and to determine which operator is most appropriate for your query, see [datatype string operators](datatypes-string-operators.md).
 
 ## Performance tips
 
-> [!NOTE]
-> Performance depends on the type of search and the structure of the data.
+[!INCLUDE [performance-tip-note](../../includes/performance-tip-note.md)]
 
-For faster results, use the case-sensitive version of an operator, for example, `==`, not `=~`.
-
-If you're testing for the presence of a symbol or alphanumeric word that is bound by non-alphanumeric characters at the start or end of a field, for faster results use `has` or `in`. 
-
-For best practices, see [Query best practices](best-practices.md).
+When possible, use the case-sensitive [!=](not-equals-cs-operator.md).
 
 ## Syntax
 
-*T* `|` `where` *col* `!~` `(`*expression*`)` 
+*T* `|` `where` *column* `!~` `(`*expression*`)`
 
-## Arguments
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
 
-* *T* - The tabular input whose records are to be filtered.
-* *col* - The column to filter.
-* *expression* - Scalar or literal expression.
+## Parameters
+
+| Name | Type | Required | Description |
+|--|--|--|--|
+| *T* | `string` |  :heavy_check_mark:| The tabular input whose records are to be filtered.|
+| *column* | `string` |  :heavy_check_mark:| The column by which to filter.|
+| *expression* | scalar |  :heavy_check_mark:| The scalar or literal expression for which to search.|
 
 ## Returns
 
@@ -54,12 +46,14 @@ Rows in *T* for which the predicate is `true`.
 
 ## Example
 
-<!-- csl: https://help.kusto.windows.net/Samples -->
+> [!div class="nextstepaction"]
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAwsuyS/KdS1LzSsp5qpRKC7NzU0syqxKVUgFCcUn55fmldiCSQ1NhaRKheCSxJJUoMLyjNSiVAUNMFdBsU5BqSS1IrFYSVMhMS9FQQNJs4KdgrGBgYEmUE9BUX5WanIJxAwdZBsA00yL5oUAAAA=" target="_blank">Run the query</a>
+
 ```kusto
 StormEvents
-    | summarize event_count=count() by State
-    | where (State !~ "texas") and (event_count > 3000)
-    | project State, event_count
+| summarize event_count=count() by State
+| where (State !~ "texas") and (event_count > 3000)
+| project State, event_count
 ```
 
 **Output**

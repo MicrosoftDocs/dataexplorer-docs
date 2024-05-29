@@ -1,25 +1,29 @@
 ---
-title: .show database cache policy command - Azure Data Explorer
-description: This article describes the .show database cache policy command in Azure Data Explorer.
-services: data-explorer
-author: orspod
-ms.author: orspodek
+title: .show database policy caching command
+description: Learn how to use the `.show database policy caching` command to show the database cache policy.
 ms.reviewer: yonil
-ms.service: data-explorer
 ms.topic: reference
-ms.date: 09/27/2021
+ms.date: 05/24/2023
 ---
-# .show database cache policy
+# .show database policy caching command
 
-Show the database cache policy. To speed up queries on data, Azure Data Explorer caches it on its processing nodes, SSD, or even in RAM. The [cache policy](cachepolicy.md) lets Azure Data Explorer describe the data artifacts that it uses so that important data can take priority.  
+Show the database cache policy.  To speed up queries, data is cached on processing nodes, SSD, or even in RAM. The [cache policy](cache-policy.md) allows your cluster to describe the data artifacts that it uses, so that more important data can take priority.
+
+## Permissions
+
+You must have at least Database User, Database Viewer, or Database Monitor permissions to run this command. For more information, see [role-based access control](access-control/role-based-access-control.md).
 
 ## Syntax
 
 `.show` `database` *DatabaseName* `policy` `caching`
 
-## Arguments
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
 
-*DatabaseName* - Specify the name of the database.
+## Parameters
+
+|Name|Type|Required|Description|
+|--|--|--|--|
+|*DatabaseName*| `string` | :heavy_check_mark:|The name of the database.|
 
 ## Returns
 

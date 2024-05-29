@@ -1,24 +1,34 @@
 ---
-title: .delete ingestion time policy command- Azure Data Explorer
-description: This article describes the .delete ingestion time policy command in Azure Data Explorer.
-services: data-explorer
-author: orspod
-ms.author: orspodek
+title: .delete table policy ingestiontime command
+description: Learn how to use the `.delete table policy ingestiontime` command to delete a table's ingestion time policy.
 ms.reviewer: yonil
-ms.service: data-explorer
 ms.topic: reference
-ms.date: 09/29/2021
+ms.date: 06/13/2023
 ---
-# .delete ingestion time policy
+# .delete table policy ingestiontime command
 
-Delete a table's [ingestion time policy](ingestiontimepolicy.md). Azure Data Explorer can add an optional policy for tables to create a hidden `datetime` column in the table, called `$IngestionTime`. Whenever new data is ingested, the time of ingestion is recorded in the hidden column. 
+Delete a table's [ingestion time policy](ingestion-time-policy.md). The policy adds a hidden `datetime` column in the table, called `$IngestionTime`. Whenever new data is ingested, the time of ingestion is recorded in the hidden column.
+
+## Permissions
+
+You must have at least [Table Admin](access-control/role-based-access-control.md) permissions to run this command.
 
 ## Syntax
 
-`.delete` `table` *TableName* `policy` `ingestiontime` 
+`.delete` `table` *TableName* `policy` `ingestiontime`
+
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+
+## Parameters
+
+|Name|Type|Required|Description|
+|--|--|--|--|
+|*TableName*| `string` | :heavy_check_mark:|The name of the table for which to delete the ingestion time policy.|
 
 ### Example
 
+The following command deletes the ingestion time policy for a table named `MyTable`.
+
 ```kusto
-.delete table table_name policy ingestiontime 
+.delete table `MyTable` policy ingestiontime 
 ```

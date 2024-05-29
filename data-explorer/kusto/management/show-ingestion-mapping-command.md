@@ -1,44 +1,63 @@
 ---
-title: .show ingestion mappings - Azure Data Explorer
-description: This article describes .show ingestion mappings in Azure Data Explorer.
-services: data-explorer
-author: orspod
-ms.author: orspodek
-ms.reviewer: rkarlin
-ms.service: data-explorer
+title: .show ingestion mapping
+description: Learn how to use the `.show ingestion mapping` command to view the ingestion mapping for a table or database.
+ms.reviewer: orspodek
 ms.topic: reference
-ms.date: 02/04/2020
+ms.date: 05/24/2023
 ---
 # .show ingestion mapping
 
-Show the ingestion mappings (all or the one specified by name).
+Use this command to view a specific ingestion mapping, or all ingestion mappings, for a database or table.
 
-* `.show` `table` *TableName* `ingestion` *MappingKind*  `mappings`
+## Syntax
 
-* `.show` `table` *TableName* `ingestion` *MappingKind*  `mapping` *MappingName* 
+View a specific mapping:
 
-Show all ingestion mappings from all mapping types:
+`.show` (`table` | `database`) *EntityName* `ingestion` *MappingKind* `mapping` *MappingName*
 
-* `.show` `table` *TableName* `ingestion`  `mappings`
+View all mappings or all mappings of a specific type:
 
-Show all ingestion mappings on a database:
+`.show` (`table` | `database`) *EntityName* `ingestion` [ *MappingKind* ] `mappings`
 
-* `.show` `database` *DatabaseName* `ingestion` *MappingKind* `mappings`
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
 
-**Example** 
- 
+## Parameters
+
+|Name|Type|Required|Description|
+|--|--|--|--|
+|*EntityName*| `string` | :heavy_check_mark:|The name of the table or database for which to show the ingestion mapping(s).|
+|*MappingKind*| `string` ||The type of mapping(s) to view. Possible values: `csv`, `json`, `avro`, `w3clogfile`, `parquet`, and `orc`.|
+|*MappingName*| `string` ||The name of the mapping to view. This argument is required if you specify that you want to view a single `mapping` instead of multiple `mappings` for the entity. See [syntax options](#syntax).|
+
+## Returns
+
+The command returns a table with the columns `Name`, `Kind`, and `Mapping` that describe the ingestion mapping(s) names, types, and specifications.
+
+## Example
+
+### Show a specific ingestion mapping
+
 ```kusto
-.show table MyTable ingestion csv mapping "Mapping1" 
-
-.show table MyTable ingestion csv mappings 
-
-.show table MyTable ingestion mappings 
-
-.show database MyDatabase ingestion csv mappings 
+.show table MyTable ingestion csv mapping "mapping1" 
 ```
 
-**Sample output**
+**Output**
 
 | Name     | Kind | Mapping     |
 |----------|------|-------------|
 | mapping1 | CSV  | `[{"Name":"rownumber","DataType":"int","CsvDataType":null,"Ordinal":0,"ConstValue":null},{"Name":"rowguid","DataType":"string","CsvDataType":null,"Ordinal":1,"ConstValue":null}]` |
+
+If the table only contained one CSV formatted mapping named "mapping1", the following query would return the same output as the previous query.
+
+```kusto
+.show table MyTable ingestion csv mappings 
+
+```kusto
+.show database MyDatabase ingestion csv mappings
+```
+
+## Related content
+
+* Learn more about [data mappings](mappings.md)
+* Use [.create ingestion mapping](create-ingestion-mapping-command.md) to create a new mapping
+* Use [.alter ingestion mapping](alter-ingestion-mapping-command.md) to change an existing mapping

@@ -1,17 +1,13 @@
 ---
-title: Extent tags retention policy - Azure Data Explorer
+title:  Extent tags retention policy
 description: This article describes extent tags retention policies in Azure Data Explorer.
-services: data-explorer
-author: orspod
-ms.author: orspodek
-ms.reviewer: rkarlin
-ms.service: data-explorer
+ms.reviewer: orspodek
 ms.topic: reference
 ms.date: 07/01/2021
 ---
 # Extent tags retention policy
 
-The extent tags retention policy controls the mechanism that automatically removes [extent tags](extents-overview.md#extent-tagging) from tables, based on the age of the extents.
+The extent tags retention policy controls the mechanism that automatically removes [extent tags](extent-tags.md) from tables, based on the age of the extents.
 
 It's recommended to remove any tags that are no longer helpful, or were used temporarily as part of an ingestion pipeline, and may limit the system from reaching optimal performance. For example: old `drop-by:` tags, which prevent merging extents together.
 
@@ -50,9 +46,9 @@ The following policy will have any `drop-by:` tags older than three days and any
 
 By default, when the policy isn't defined, extent tags of any kind are retained as long as the extent isn't dropped.
 
-## Control commands
+## Management commands
 
-The following control commands can be used to manage the extent tags retention policy:
+The following management commands can be used to manage the extent tags retention policy:
 
 * [.show extent tags retention policy](show-extent-tags-retention-policy.md)
 * [.alter extent tags retention policy](alter-extent-tags-retention-policy.md)

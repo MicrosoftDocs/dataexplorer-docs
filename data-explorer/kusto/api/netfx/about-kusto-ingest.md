@@ -1,99 +1,58 @@
 ---
-title: Kusto Ingest Client Library - Azure Data Explorer
+title:  Kusto Ingest library overview
 description: This article describes the Kusto Ingest client library in Azure Data Explorer.
-services: data-explorer
-author: orspod
-ms.author: orspodek
-ms.reviewer: rkarlin
-ms.service: data-explorer
+ms.reviewer: orspodek
 ms.topic: reference
-ms.custom: has-adal-ref 
-ms.date: 03/18/2020
+ms.date: 10/18/2023
 ---
-# Kusto ingest client library 
+# Kusto Ingest library overview
 
-`Kusto.Ingest` library is a .NET 4.6.2 library for sending data to the Kusto service.
-It takes dependencies on the following libraries and SDKs:
+The Kusto Ingest library provides a client for ingesting data into your cluster. The library supports [queued](#queued-ingestion) and [direct](#direct-ingestion) ingestion. The ingestion methods are defined by the Kusto ingest client object.
 
-* ADAL for Azure AD authentication
-* Azure storage client
+For a list of interfaces and classes, see [Kusto Ingest client reference](kusto-ingest-client-reference.md).
 
-The ingestion methods are defined by the [IKustoIngestClient](kusto-ingest-client-reference.md#interface-ikustoingestclient) interface.  The methods handle data ingestion from Stream, IDataReader, local files, and Azure blobs in both synchronous and asynchronous modes.
+## Get the library
 
-## Ingest client flavors
+Select the tab for your preferred language.
 
-There are two basic flavors of the Ingest client: Queued and Direct.
+### [C\#](#tab/csharp)
 
-### Queued ingestion
+Install [Microsoft.Azure.Kusto.Ingest](https://www.nuget.org/packages/Microsoft.Azure.Kusto.Ingest/).
 
-The Queued ingestion mode, defined by [IKustoQueuedIngestClient](kusto-ingest-client-reference.md#interface-ikustoqueuedingestclient),  limits the client code dependency on the Kusto service. Ingestion is done by posting a Kusto ingestion message to an Azure queue, which is then acquired from the Kusto Data Management (Ingestion) service. Any intermediate storage items will be created by the ingest client using the resources from the Kusto Data Management service.
+### [Python](#tab/python)
 
-**Advantages of the queued mode include:**
+Install [azure-kusto-ingest](https://pypi.org/project/azure-kusto-ingest/).
 
-* Decouples the data ingestion process from the Kusto Engine service
-* Lets ingestion requests to be persisted when the Kusto Engine (or Ingestion) service is unavailable
-* Improves performance by efficient and controllable aggregation of inbound data by the Ingestion service 
-* Lets the Kusto Ingestion service manage the ingestion load on the Kusto Engine service
-* Retries the Kusto Ingestion service, as needed, on transient ingestion failures, such as for Azure Storage throttling
-* Provides a convenient mechanism to track the progress and outcome of every ingestion request
+### [Node.js](#tab/nodejs)
 
-The following diagram outlines the Queued ingestion client interaction with Kusto:
+Install [azure-kusto-ingest](https://www.npmjs.com/package/azure-kusto-ingest).
 
-:::image type="content" source="../images/about-kusto-ingest/queued-ingest.png" alt-text="Diagram showing how the Kusto.Ingest library sends queries to the Kusto service in queried ingestion mode.":::
+### [Java](#tab/java)
+
+Install [kusto-ingest](https://central.sonatype.com/artifact/com.microsoft.azure.kusto/kusto-ingest/).
+
+---
+
+## Permissions
+
+To ingest data into existing tables, you must have at least Database Ingestor or Table Ingestor permissions. To create a table, you must have at least Database User permissions. For more information, see [Role-based access control](../../access-control/role-based-access-control.md).
+
+## Queued ingestion
+
+The queued ingest client minimizes the dependencies of client code on the Azure Data Explorer ingestion service. In this mode, ingestion is accomplished by submitting an ingestion message to an Azure queue, which is subsequently processed by the Azure Data Explorer ingestion service. If any intermediate storage items are required, the ingest client generates them using the resources provided by the ingestion service.
+
+Queued ingestion allows the ingestion requests to be persisted when the Azure Data Explorer ingestion service is unavailable, and lets the ingestion service manage the ingestion load on your cluster. This method provides a mechanism to track the progress and outcome of every ingestion request, retries the ingestion on transient failures, and improves performance by efficient and controllable aggregation on inbound data.
  
-### Direct ingestion
+## Direct ingestion
 
-The Direct ingestion mode, defined by IKustoDirectIngestClient, forces direct interaction with the Kusto Engine service. In this mode, the Kusto Ingestion service doesn't moderate or manage the data. Every ingestion request is eventually translated into the `.ingest` command that is executed directly on the Kusto Engine service.
+The direct ingest client requires direct interaction with the Azure Data Explorer ingestion service. In this mode, the ingestion service doesn't moderate or manage the data. Every ingestion request is translated into a command that is executed directly on the service. When synchronous methods are used, the method completion indicates the end of the ingestion operation.
 
-The following diagram outlines the Direct ingestion client interaction with Kusto:
-
-:::image type="content" source="../images/about-kusto-ingest/direct-ingest.png" alt-text="Diagram showing how the Kusto.Ingest library sends queries to the Kusto service in direct ingestion mode.":::
+Direct ingestion has low latency and doesn't involve aggregation. However, the client code has to implement retry or error handling logic, and the client code could overwhelm the cluster with requests as it's unaware of the capacity.
 
 > [!NOTE]
-> The Direct mode isn't recommended for production grade ingestion solutions.
+> We don't recommend the direct ingestion for production grade solutions.
 
-**Advantages of the Direct mode include:**
+## Related content
 
-* Low latency and no aggregation. However, low latency can also be achieved with Queued ingestion
-* When synchronous methods are used, method completion indicates the end of the ingestion operation
-
-**Disadvantages of the Direct mode include:**
-
-* The client code must implement any retry or error handling logic
-* Ingestions are impossible when the Kusto Engine service is unavailable
-* The client code might overwhelm the Kusto Engine service with ingestion requests, since it isn't aware of the Engine service capacity
-
-## Ingestion best practices
-
-[Ingestion best practices](kusto-ingest-best-practices.md) provides COGS (cost of goods sold) and throughput POV on ingestion.
-
-* **Thread safety -**
-Kusto Ingest Client implementations are thread-safe and intended to be reused. There's no need to create an instance of `KustoQueuedIngestClient` class for each or several ingest operations. A single instance of `KustoQueuedIngestClient` is required per target Kusto cluster per user process. Running multiple instances is counter-productive and may cause DoS on the Data Management cluster.
-
-* **Supported data formats -**
-When using native ingestion, if not already there, upload the data to one or more Azure storage blobs. 
-Currently supported blob formats are documented under [Supported Data Formats](../../../ingestion-supported-formats.md).
-
-* **Schema mapping -**
-[Schema mappings](../../management/mappings.md) help with deterministically binding source data fields to destination table columns.
-
-* **Ingestion permissions -**
-[Kusto Ingestion Permissions](kusto-ingest-client-permissions.md) explains permissions setup that is required for a successful ingestion using the `Kusto.Ingest` package.
-
-* **Usage -**
-As described previously, the recommended basis for sustainable and high-scale ingestion solutions for Kusto should be the **KustoQueuedIngestClient**.
-To minimize unnecessary load on your Kusto service, we recommended that you use a single instance of Kusto Ingest client (Queued or Direct) per process, per Kusto cluster. 
-Kusto ingest client implementation is thread-safe and fully reentrant.
-
-## Next steps
-
-* [Kusto.Ingest Client Reference](kusto-ingest-client-reference.md) contains a complete reference of Kusto ingest client interfaces and implementations. You'll find information on how to create ingestion clients, augment ingestion requests, manage ingestion progress, and more
-
-* [Kusto.Ingest Operation Status](kusto-ingest-client-status.md) explains KustoQueuedIngestClient features for tracking ingestion status
-
-* [Kusto.Ingest Errors](kusto-ingest-client-errors.md) describes Kusto ingest client errors and exceptions
-
-* [Kusto.Ingest Examples](kusto-ingest-client-examples.md) shows code snippets that demonstrate various techniques of ingesting data into Kusto
-
-* [Data Ingestion without Kusto.Ingest Library](kusto-ingest-client-rest.md) explains how to implement Queued Kusto ingestion, by using Kusto REST APIs, and without being dependent on the `Kusto.Ingest` library
-
+* [Data ingestion overview](../../../ingest-data-overview.md)
+* [Create an app to get data using queued ingestion](../get-started/app-batch-ingestion.md)

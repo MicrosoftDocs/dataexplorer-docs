@@ -1,25 +1,29 @@
 ---
-title: .delete table row order policy command- Azure Data Explorer
-description: This article describes the .delete table row order policy command in Azure Data Explorer.
-services: data-explorer
-author: orspod
-ms.author: orspodek
+title: .delete table policy roworder command
+description: Learn how to use the `.delete table policy roworder` command to delete a table's row order policy.
 ms.reviewer: yonil
-ms.service: data-explorer
 ms.topic: reference
-ms.date: 10/04/2021
+ms.date: 05/14/2023
 ---
-# .delete table row order policy
+# .delete table policy roworder command
 
-Remove a table's [row order policy](roworderpolicy.md). The row order policy is an optional policy set on tables, that suggests the desired ordering of rows in a data shard. The purpose of the policy is to improve performance of queries which are known to be narrowed to a small subset of values in the ordered columns.
+Remove a table's [row order policy](row-order-policy.md). The row order policy is an optional policy set on tables that suggests the desired ordering of rows in an [extent (data shard)](extents-overview.md). The purpose of the policy is to improve performance of queries that are known to be narrowed to a small subset of values in the ordered columns.
+
+## Permissions
+
+You must have at least [Table Admin](access-control/role-based-access-control.md) permissions to run this command.
 
 ## Syntax
 
-`.delete` `table` *TableName* `policy` `roworder` 
+`.delete` `table` *TableName* `policy` `roworder`
 
-## Arguments
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
 
-*TableName* - Specify the name of the table.  
+## Parameters
+
+|Name|Type|Required|Description|
+|--|--|--|--|
+|*TableName*| `string` | :heavy_check_mark:|The name of the table.|
 
 ### Example
 

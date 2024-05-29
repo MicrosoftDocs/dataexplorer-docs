@@ -1,53 +1,76 @@
 ---
-title: .alter table - Azure Data Explorer
+title:  .alter table command
 description: This article describes the .alter table command.
-services: data-explorer
-author: orspod
-ms.author: orspodek
 ms.reviewer: orspodek
-ms.service: data-explorer
 ms.topic: reference
-ms.date: 06/08/2020
+ms.date: 02/21/2023
 ---
-# .alter table
- 
+# .alter table command
+
 The `.alter table` command:
+
 * Secures data in "preserved" columns
 * Reorders table columns
 * Sets a new column schema, `docstring`, and folder to an existing table, overwriting the existing column schema, `docstring`, and folder
 * Must run in the context of a specific database that scopes the table name
-* Requires [Table Admin permission](../management/access-control/role-based-authorization.md)
 
 > [!WARNING]
 > Using the `.alter` command incorrectly may lead to data loss.
 
-> [!TIP]
-> The `.alter` has a counterpart, the `.alter-merge` table command that has similar functionality. For more information, see [`.alter-merge table`](../management/alter-merge-table-command.md)
+## Permissions
 
-**Syntax**
+You must have at least [Table Admin](access-control/role-based-access-control.md) permissions to run this command.
 
-`.alter` `table` *TableName* (*columnName*:*columnType*, ...)  [`with` `(`[`docstring` `=` *Documentation*] [`,` `folder` `=` *FolderName*] `)`]
+## Syntax
 
+`.alter` `table` *tableName* `(`*columnName*`:`*columnType* [`,` ...]`)`  [`with` `(`*propertyName* `=` *propertyValue* [`,` ...]`)`]
 
- * The table will have exactly the same columns, in the same order, as specified.
- Specify the table columns:
- * If existing columns aren't specified in the command, they'll be dropped and data in them will be lost, like with the `.drop column` command.
- * When you alter a table, altering a column type isn't supported. Use the [`.alter column`](alter-column.md) command instead.
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
 
-> [!TIP]
-> Use `.show table [TableName] cslschema` to get the existing column schema before you alter it.
+## Parameters
 
-
-How will the command affect the data?
-* Existing data isn't physically modified by the command. Data in removed columns is ignored. Data in new columns is assumed to be null.
-* Depending on how the cluster is configured, data ingestion might modify the table's column schema, even without user interaction. When you make changes to a table's column schema, ensure that ingestion won't add needed columns that the command will then remove.
+| Name | Type | Required | Description |
+|--|--|--|--|
+| *tableName* | `string` |  :heavy_check_mark: | The name of the table to alter. |
+| *columnName*, *columnType* | `string` |  :heavy_check_mark: | The name of an existing or new column mapped to the type of data in that column. The list of these mappings defines the output column schema.|
+| *propertyName*, *propertyValue* | `string` | | A comma-separated list of key-value property pairs. See [supported properties](#supported-properties).|
 
 > [!WARNING]
-> Data ingestion processes into the table that modify the table's column schema, and that occur in parallel with the `.alter table` command, might be performed agnostic to the order of table columns. There is also a risk that data will be ingested into the wrong columns. Prevent these issues by stopping ingestion during the command, or by making sure that such ingestion operations always use a mapping object.
+> Existing columns that aren't specified in the command will be dropped. This could lead to unexpected data loss.
 
-**Examples**
+> [!TIP]
+> Use `.show table [tableName] cslschema` to get the existing table schema before you alter it.
+
+### Supported properties
+
+|Name|Type|Description|
+|--|--|--|
+|`docstring`| `string` |Free text describing the entity to be added. This string is presented in various UX settings next to the entity names.|
+|`folder`| `string` |The name of the folder to add to the table.|
+
+## How the command affects the data
+
+* Existing data in columns listed in the command won't be modified
+* Existing data in columns not listed in the command will be deleted
+* New columns will be added to the end of the schema
+* Data in new columns is assumed to be null
+* The table will have the same columns, in the same order, as specified
+
+> [!NOTE]
+> If you try to alter a column type, the command will fail. Use [`.alter column`](alter-column.md) instead.
+
+> [!WARNING]
+>
+> * Data ingestion that disregards the order of columns and occurs in parallel with `.alter table` risks ingesting data into the wrong columns. To prevent this, make sure that ingestion uses a mapping object or stop ingestion while running the `.alter table` command.
+> * Data ingestion may modify a table's column schema. Be careful not to accidentally remove desired columns that were added during ingestion.
+
+## Examples
 
 ```kusto
 .alter table MyTable (ColumnX:string, ColumnY:int) 
 .alter table MyTable (ColumnX:string, ColumnY:int) with (docstring = "Some documentation", folder = "Folder1")
 ```
+
+## Related content
+
+Use `.alter-merge` when you wish to preserve the table settings and only override or expand certain columns. For more information, see [.alter-merge table](../management/alter-merge-table-command.md).

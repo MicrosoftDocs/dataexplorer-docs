@@ -1,25 +1,25 @@
 ---
-title: .show materialized view partitioning policy command- Azure Data Explorer
-description: This article describes the .show materialized view partitioning policy command in Azure Data Explorer.
-services: data-explorer
-author: orspod
-ms.author: orspodek
+title: .show materialized-view policy partitioning command
+description: Learn how to use the `.show materialized-view policy partitioning` command to show the materialized view's partitioning policy.
 ms.reviewer: yonil
-ms.service: data-explorer
 ms.topic: reference
-ms.date: 09/29/2021
+ms.date: 05/24/2023
 ---
-# .show materialized view partitioning policy
+# .show materialized-view policy partitioning command
 
-Displays a materialized view [partitioning policy](partitioningpolicy.md). The partitioning policy defines if and how [extents (data shards)](../management/extents-overview.md) should be partitioned for a specific table or a [materialized view](materialized-views/materialized-view-overview.md).
+Displays the materialized view's [partitioning policy](partitioning-policy.md). The partitioning policy defines if and how [extents (data shards)](../management/extents-overview.md) should be partitioned for a specific table or a [materialized view](materialized-views/materialized-view-overview.md).
 
 ## Syntax
 
-`.show` `materialized-view` *MaterializedViewName* `policy` `partitioning` 
+`.show` `materialized-view` *MaterializedViewName* `policy` `partitioning`
 
-## Arguments
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
 
-*MaterializedViewName* - Specify the name of the materialized view.
+## Parameters
+
+|Name|Type|Required|Description|
+|--|--|--|--|
+|*MaterializedViewName*| `string` | :heavy_check_mark:|The name of the materialized view.|
 
 ## Returns
 

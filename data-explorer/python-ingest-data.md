@@ -1,12 +1,9 @@
 ---
 title: 'Ingest data using the Azure Data Explorer Python library'
 description: In this article, you learn how to ingest (load) data into Azure Data Explorer using Python.
-author: orspod
-ms.author: orspodek
 ms.reviewer: vladikbr
-ms.service: data-explorer
 ms.topic: how-to
-ms.date: 06/03/2019
+ms.date: 05/08/2023
 
 # Customer intent: As a Python developer, I want to ingest data into Azure Data Explorer so that I can query data to include in my apps.
 ---
@@ -24,11 +21,10 @@ In this article, you ingest data using the Azure Data Explorer Python library. A
 
 First, create a table and data mapping in a cluster. You then queue ingestion to the cluster and validate the results.
 
-
 ## Prerequisites
 
-* An Azure subscription. Create a [free Azure account](https://azure.microsoft.com/free/).
-* Create [a cluster and database](create-cluster-database-portal.md).
+* A Microsoft account or a Microsoft Entra user identity. An Azure subscription isn't required.
+* An Azure Data Explorer cluster and database. [Create a cluster and database](create-cluster-and-database.md).
 * [Python 3.4+](https://www.python.org/downloads/).
 
 ## Install the data and ingest libraries
@@ -50,16 +46,16 @@ from azure.kusto.data.exceptions import KustoServiceError
 from azure.kusto.data.helpers import dataframe_from_result_table
 ```
 
-To authenticate an application, Azure Data Explorer uses your Azure Active Directory tenant ID. To find your tenant ID, use the following URL, replacing your domain for *YourDomain*.
+To authenticate an application, Azure Data Explorer uses your Microsoft Entra tenant ID. To find your tenant ID, use the following URL, replacing your domain for *YourDomain*.
 
 ```http
-https://login.windows.net/<YourDomain>/.well-known/openid-configuration/
+https://login.microsoftonline.com/<YourDomain>/.well-known/openid-configuration/
 ```
 
-For example, if your domain is *contoso.com*, the URL is: [https://login.windows.net/contoso.com/.well-known/openid-configuration/](https://login.windows.net/contoso.com/.well-known/openid-configuration/). Click this URL to see the results; the first line is as follows. 
+For example, if your domain is *contoso.com*, the URL is: [https://login.microsoftonline.com/contoso.com/.well-known/openid-configuration/](https://login.microsoftonline.com/contoso.com/.well-known/openid-configuration/). Click this URL to see the results; the first line is as follows.
 
 ```console
-"authorization_endpoint":"https://login.windows.net/6babcaad-604b-40ac-a9d7-9fd97c0b779f/oauth2/authorize"
+"authorization_endpoint":"https://login.microsoftonline.com/6babcaad-604b-40ac-a9d7-9fd97c0b779f/oauth2/authorize"
 ```
 
 The tenant ID in this case is `6babcaad-604b-40ac-a9d7-9fd97c0b779f`. Set the values for AAD_TENANT_ID, KUSTO_URI, KUSTO_INGEST_URI, and KUSTO_DATABASE before running this code.
@@ -71,16 +67,16 @@ KUSTO_INGEST_URI = "https://ingest-<ClusterName>.<Region>.kusto.windows.net/"
 KUSTO_DATABASE = "<DatabaseName>"
 ```
 
-Now construct the connection string. This example uses device authentication to access the cluster. You can also use [Azure Active Directory application certificate](https://github.com/Azure/azure-kusto-python/blob/master/azure-kusto-data/tests/sample.py#L24), [Azure Active Directory application key](https://github.com/Azure/azure-kusto-python/blob/master/azure-kusto-data/tests/sample.py#L20), and [Azure Active Directory  user and password](https://github.com/Azure/azure-kusto-python/blob/master/azure-kusto-data/tests/sample.py#L34).
+Now construct the connection string. The following example uses device authentication to access the cluster. You can also use [managed identity](managed-identities-overview.md) authentication, [Microsoft Entra application certificate](https://github.com/Azure/azure-kusto-python/blob/master/azure-kusto-data/tests/sample.py#L24), [Microsoft Entra application key](https://github.com/Azure/azure-kusto-python/blob/master/azure-kusto-data/tests/sample.py#L20), and [Microsoft Entra user and password](https://github.com/Azure/azure-kusto-python/blob/master/azure-kusto-data/tests/sample.py#L34).
 
 You create the destination table and mapping in a later step.
 
 ```python
-KCSB_INGEST = KustoConnectionStringBuilder.with_aad_device_authentication(
-    KUSTO_INGEST_URI, AAD_TENANT_ID)
+KCSB_INGEST = KustoConnectionStringBuilder.with_interactive_login(
+    KUSTO_INGEST_URI)
 
-KCSB_DATA = KustoConnectionStringBuilder.with_aad_device_authentication(
-    KUSTO_URI, AAD_TENANT_ID)
+KCSB_DATA = KustoConnectionStringBuilder.with_interactive_login(
+    KUSTO_URI)
 
 DESTINATION_TABLE = "StormEvents"
 DESTINATION_TABLE_COLUMN_MAPPING = "StormEvents_CSV_Mapping"
@@ -88,14 +84,15 @@ DESTINATION_TABLE_COLUMN_MAPPING = "StormEvents_CSV_Mapping"
 
 ## Set source file information
 
-Import additional classes and set constants for the data source file. This example uses a sample file hosted on Azure Blob Storage. The **StormEvents** sample data set contains weather-related data from the [National Centers for Environmental Information](https://www.ncdc.noaa.gov/stormevents/).
+Import additional classes and set constants for the data source file. This example uses a sample file hosted on Azure Blob Storage. The **StormEvents** sample dataset contains weather-related data from the [National Centers for Environmental Information](https://www.ncei.noaa.gov/).
 
 ```python
+from azure.kusto.data import DataFormat
 from azure.kusto.ingest import QueuedIngestClient, IngestionProperties, FileDescriptor, BlobDescriptor, DataFormat, ReportLevel, ReportMethod
 
 CONTAINER = "samplefiles"
-ACCOUNT_NAME = "kustosamplefiles"
-SAS_TOKEN = "?sv=2019-12-12&ss=b&srt=o&sp=r&se=2022-09-05T02:23:52Z&st=2020-09-04T18:23:52Z&spr=https&sig=VrOfQMT1gUrHltJ8uhjYcCequEcfhjyyMX%2FSc3xsCy4%3D"
+ACCOUNT_NAME = "kustosamples"
+SAS_TOKEN = ""  # If relevant add SAS token
 FILE_PATH = "StormEvents.csv"
 FILE_SIZE = 64158321    # in bytes
 
@@ -135,7 +132,7 @@ Queue a message to pull data from blob storage and ingest that data into Azure D
 ```python
 INGESTION_CLIENT = QueuedIngestClient(KCSB_INGEST)
 
-# All ingestion properties are documented here: https://docs.microsoft.com/azure/kusto/management/data-ingest#ingestion-properties
+# All ingestion properties are documented here: https://learn.microsoft.com/azure/kusto/management/data-ingest#ingestion-properties
 INGESTION_PROPERTIES = IngestionProperties(database=KUSTO_DATABASE, table=DESTINATION_TABLE, data_format=DataFormat.CSV,
                                            ingestion_mapping_reference=DESTINATION_TABLE_COLUMN_MAPPING, additional_properties={'ignoreFirstRecord': 'true'})
 # FILE_SIZE is the raw size of the data in bytes
@@ -183,6 +180,7 @@ If you plan to follow our other articles, keep the resources you created. If not
 .drop table StormEvents
 ```
 
-## Next steps
+## Next step
 
-* [Query data using Python](python-query-data.md)
+> [!div class="nextstepaction"]
+> [Query data using Python](python-query-data.md)

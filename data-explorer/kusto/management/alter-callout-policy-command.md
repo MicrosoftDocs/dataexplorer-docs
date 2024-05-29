@@ -1,34 +1,61 @@
 ---
-title: ".alter callout policy command - Azure Data Explorer"
-description: "This article describes the .alter callout policy command in Azure Data Explorer."
-services: data-explorer
-author: orspod
-ms.author: orspodek
+title:  .alter cluster policy callout command
+description: Learn how to use the `.alter cluster policy callout` command to change the cluster's callout policy.
 ms.reviewer: yonil
-ms.service: data-explorer
 ms.topic: reference
-ms.date: 09/30/2021
+ms.date: 05/25/2023
 ---
-# .alter callout policy
+# .alter cluster policy callout command
 
-Change the cluster [callout policy](calloutpolicy.md). Azure Data Explorer clusters can communicate with external services in many different scenarios. Cluster admins can manage the authorized domains for external calls, by updating the cluster's callout policy.
+Changes the cluster's [callout policy](callout-policy.md).
+
+## Permissions
+
+You must have [Cluster AllDatabasesAdmin](access-control/role-based-access-control.md) permissions to run this command.
 
 ## Syntax
 
-`.alter` `cluster` `policy` `callout` `"`*Serialized partial policy*`"`
+`.alter` `cluster` `policy` `callout` *SerializedArrayOfPolicyObjects*
+
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+
+## Parameters
+
+| Name                             | Type   | Required | Description                                                                                              |
+|----------------------------------|--------|----------|----------------------------------------------------------------------------------------------------------|
+| *SerializedArrayOfPolicyObjects* | `string` |  :heavy_check_mark:  | A serialized array of JSON policy objects. See [callout policy](callout-policy.md) for policy properties. |
 
 ## Returns
 
-Returns a JSON representation of the policy.
+| Name          | Type   | Description                                                                                               |
+|---------------|--------|-----------------------------------------------------------------------------------------------------------|
+| PolicyName    | `string` | Name of the policy. For cluster callout policy, this value is **CalloutPolicy**.                           |
+| EntityName    | `string` | Name of the entity for which the policy is set. For cluster callout policy, this value is an empty string. |
+| Policy        | `string` | JSON representation of the policy object.                                                                 |
+| ChildEntities | `string` | Child entities for which this policy is set. For cluster callout policy, this value is an empty string.    |
+| EntityType    | `string` | Type of entity for which this policy is set. For cluster callout policy, this value is an empty string.    |
 
-## Example
+## Examples
+
+### Define permitted callouts for the cluster
 
 Define permitted callouts for the cluster callout policy.
 
-```kusto
-.alter cluster policy callout @'[{"CalloutType": "sql","CalloutUriRegex": "sqlname\\.database\\.azure\\.com/?$","CanCall": true}]'
+````kusto
+.alter cluster policy callout
 ```
+[
+    {
+        "CalloutType": "sql",
+        "CalloutUriRegex": "sqlname\\.database\\.azure\\.com/?$",
+        "CanCall": true
+    }
+]
+```
+````
 
-|PolicyName|EntityName|Policy|ChildEntities|EntityType|
-|---|---|---|---|---|
-|CalloutPolicy||[{<br>"CalloutType": "sql",<br>"CalloutUriRegex": "sqlname\\\\.database\\\\.azure\\\\.com/?$",<br>"CanCall": true<br>}]|||
+**Output**
+
+| PolicyName    | EntityName | Policy                                                                                                | ChildEntities | EntityType |
+|---------------|------------|-------------------------------------------------------------------------------------------------------|---------------|------------|
+| CalloutPolicy |            | [{"CalloutType":"sql","CalloutUriRegex":"sqlname\\\\.database\\\\.azure\\\\.com/?$","CanCall": true}] |               |            |

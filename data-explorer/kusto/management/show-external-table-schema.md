@@ -1,35 +1,43 @@
 ---
-title: show external table schema control command - Azure Data Explorer
-description: This article describes the show external table schema control command in Azure Data Explorer 
-services: data-explorer
-author: orspod
-ms.author: orspodek
+title: .show external table schema command
+description: Learn how to use the `.show external table schema` command to show the schema of the external table as JSON or CSL. 
 ms.reviewer: yifats
-ms.service: data-explorer
 ms.topic: reference
-ms.date: 05/20/2021
+ms.date: 05/24/2023
 ---
-# .show external table schema
+# .show external table schema command
 
-Returns the schema of the external table, as JSON or CSL. 
+Returns the schema of the external table, as JSON or CSL.
 
-Requires [Database monitor permission](../management/access-control/role-based-authorization.md). This command is relevant to any external table of any type. For an overview of external tables, see [external tables](../query/schema-entities/externaltables.md).
+This command is relevant to any external table of any type. For an overview of external tables, see [external tables](../query/schema-entities/external-tables.md).
 
-## Syntax 
+## Permissions
+
+You must have at least Database User, Database Viewer, or Database Monitor, or External Table Admin permissions to run this command. For more information, see [role-based access control](access-control/role-based-access-control.md).
+
+## Syntax
 
 `.show` `external` `table` *TableName* `schema` `as` (`json` | `csl`)
 
 `.show` `external` `table` *TableName* `cslschema`
 
-## Output
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+
+## Parameters
+
+|Name|Type|Required|Description|
+|--|--|--|--|
+|*TableName*| `string` | :heavy_check_mark:|The name of the table for which to show the schema.|
+
+## Returns
 
 | Output parameter | Type   | Description                        |
 |------------------|--------|------------------------------------|
-| TableName        | string | Name of external table            |
-| Schema           | string | The table schema in a JSON format |
-| DatabaseName     | string | Table's database name             |
-| Folder           | string | Table's folder                    |
-| DocString        | string | String documenting the table      |
+| TableName        | `string` | Name of external table            |
+| Schema           | `string` | The table schema in a JSON format |
+| DatabaseName     | `string` | Table's database name             |
+| Folder           | `string` | Table's folder                    |
+| DocString        | `string` | String documenting the table      |
 
 ## Examples
 
@@ -50,10 +58,8 @@ Requires [Database monitor permission](../management/access-control/role-based-a
 |-----------|----------------------------------|--------------|----------------|-----------|
 | T         | {"Name":"ExternalBlob",<br>"Folder":"ExternalTables",<br>"DocString":"Docs",<br>"OrderedColumns":[{"Name":"x","Type":"System.Int64","CslType":"long","DocString":""},{"Name":"s","Type":"System.String","CslType":"string","DocString":""}]} | DB           | ExternalTables | Docs      |
 
-
 *csl:*
 
 | TableName | Schema          | DatabaseName | Folder         | DocString |
 |-----------|-----------------|--------------|----------------|-----------|
 | T         | x:long,s:string | DB           | ExternalTables | Docs      |
-

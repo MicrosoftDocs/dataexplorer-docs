@@ -1,60 +1,55 @@
 ---
-title: series_exp_smoothing_fl() - Azure Data Explorer
+title:  series_exp_smoothing_fl()
 description: This article describes series_exp_smoothing_fl() user-defined function in Azure Data Explorer.
-author: orspod
-ms.author: orspodek
 ms.reviewer: adieldar
-ms.service: data-explorer
 ms.topic: reference
-ms.date: 11/22/2020
+ms.date: 03/13/2023
 ---
 # series_exp_smoothing_fl()
 
 Applies a basic exponential smoothing filter on a series.
 
-The function `series_exp_smoothing_fl()` takes an expression containing a dynamic numerical array as input and applies a [basic exponential smoothing](https://en.wikipedia.org/wiki/Exponential_smoothing#Basic_(simple)_exponential_smoothing_(Holt_linear)) filter.
-
-> [!NOTE]
-> This function is a [UDF (user-defined function)](../query/functions/user-defined-functions.md). For more information, see [usage](#usage).
+The function `series_exp_smoothing_fl()` is a [user-defined function (UDF)](../query/functions/user-defined-functions.md) that takes an expression containing a dynamic numerical array as input and applies a [basic exponential smoothing](https://en.wikipedia.org/wiki/Exponential_smoothing#Basic_(simple)_exponential_smoothing_(Holt_linear)) filter.
 
 ## Syntax
 
-`series_exp_smoothing_fl(`*y_series*`, [`*alpha*`])`
-  
-## Arguments
+`series_exp_smoothing_fl(`*y_series* [`,` *alpha* ]`)`
 
-* *y_series*: Dynamic array cell of numeric values.
-* *alpha*: An optional real value in the range [0-1], specifying the weight of the last point vs. the weight of the previous points (which is `1-alpha`). Default is 0.5.
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
 
-## Usage
+## Parameters
 
-`series_exp_smoothing_fl()` is a user-defined function. You can either embed its code in your query, or install it in your database. There are two usage options: ad hoc and persistent usage. See the below tabs for examples.
+|Name|Type|Required|Description|
+|--|--|--|--|
+|*y_series*| `dynamic` | :heavy_check_mark:|An array cell of numeric values.|
+|*alpha*| `real` ||A value in the range [0-1] that specifies the weight of the last point vs. the weight of the previous points, which is `1 - alpha`. The default is 0.5.|
 
-# [Ad hoc](#tab/adhoc)
+## Function definition
 
-For ad hoc usage, embed its code using a [let statement](../query/letstatement.md). No permission is required.
+You can define the function by either embedding its code as a query-defined function, or creating it as a stored function in your database, as follows:
 
-<!-- csl: https://help.kusto.windows.net/Samples -->
+### [Query-defined](#tab/query-defined)
+
+Define the function using the following [let statement](../query/let-statement.md). No permissions are required.
+
+> [!IMPORTANT]
+> A [let statement](../query/let-statement.md) can't run on its own. It must be followed by a [tabular expression statement](../query/tabular-expression-statements.md). To run a working example of `series_exp_smoothing_fl()`, see [Example](#example).
+
 ```kusto
 let series_exp_smoothing_fl = (y_series:dynamic, alpha:double=0.5)
 {
     series_iir(y_series, pack_array(alpha), pack_array(1, alpha-1))
-}
-;
-range x from 1 to 50 step 1
-| extend y = x % 10
-| summarize x = make_list(x), y = make_list(y)
-| extend exp_smooth_y = series_exp_smoothing_fl(y, 0.4) 
-| render linechart
+};
+// Write your query to use the function here.
 ```
 
-# [Persistent](#tab/persistent)
+### [Stored](#tab/stored)
 
-For persistent usage, use [`.create function`](../management/create-function.md). Creating a function requires [database user permission](../management/access-control/role-based-authorization.md).
+Define the stored function once using the following [`.create function`](../management/create-function.md). [Database User permissions](../management/access-control/role-based-access-control.md) are required.
 
-### One-time installation
+> [!IMPORTANT]
+> You must run this code to create the function before you can use the function as shown in the [Example](#example).
 
-<!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
 .create-or-alter function with (folder = "Packages\\Series", docstring = "Basic exponential smoothing for a series")
 series_exp_smoothing_fl(y_series:dynamic, alpha:double=0.5)
@@ -63,9 +58,34 @@ series_exp_smoothing_fl(y_series:dynamic, alpha:double=0.5)
 }
 ```
 
-### Usage
+---
 
-<!-- csl: https://help.kusto.windows.net/Samples -->
+## Example
+
+### [Query-defined](#tab/query-defined)
+
+To use a query-defined function, invoke it after the embedded function definition.
+
+> [!div class="nextstepaction"]
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA3WPzWrDMBCE73qKuRQscIMFzSXFzyK29iYWkWSzUkDqz7tXaUNDDt3j7H6zM54zEovjZLlsNoV1zYuLJ3v0GNFV+7s8zDVScFMP8ttCh3m9vHkeh91eqw+FNjcT5+QP6rHRdLYkQrX74fSDZG5uz0Zr9fWqhOKJUXCUNcAgr9gPSJk3GPUJLpnjjNpiFTzBDE1LlxBI3PuVGhHozNa7lLvSHtUHpeq7xb2ovR79U7+rPYbdi0YDpWEs8C7ytJDkb6qtG1o2AQAA" target="_blank">Run the query</a>
+
+```kusto
+let series_exp_smoothing_fl = (y_series:dynamic, alpha:double=0.5)
+{
+    series_iir(y_series, pack_array(alpha), pack_array(1, alpha-1))
+};
+range x from 1 to 50 step 1
+| extend y = x % 10
+| summarize x = make_list(x), y = make_list(y)
+| extend exp_smooth_y = series_exp_smoothing_fl(y, 0.4) 
+| render linechart
+```
+
+### [Stored](#tab/stored)
+
+> [!IMPORTANT]
+> For this example to run successfully, you must first run the [Function definition](#function-definition) code to store the function.
+
 ```kusto
 range x from 1 to 50 step 1
 | extend y = x % 10
@@ -76,4 +96,6 @@ range x from 1 to 50 step 1
 
 ---
 
-:::image type="content" source="images/series-exp-smoothing-fl/exp-smoothing-demo.png" alt-text="Graph showing exponential smoothing of artificial series." border="false":::
+**Output**
+
+:::image type="content" source="media/series-exp-smoothing-fl/exp-smoothing-demo.png" alt-text="Graph showing exponential smoothing of artificial series." border="false":::

@@ -1,25 +1,29 @@
 ---
-title: .show table merge policy command- Azure Data Explorer
-description: This article describes the .show table merge policy command in Azure Data Explorer.
-services: data-explorer
-author: orspod
-ms.author: orspodek
+title: .show table policy merge command
+description: Learn how to use the `.show table policy merge` command to display the table's merge policy.
 ms.reviewer: yonil
-ms.service: data-explorer
 ms.topic: reference
-ms.date: 09/29/2021
+ms.date: 05/24/2023
 ---
-# .show table merge policy
+# .show table policy merge command
 
-Display a table's [merge policy](mergepolicy.md). The merge policy defines if and how [Extents (Data Shards)](../management/extents-overview.md) in the cluster should get merged. 
- 
+Display the table's [merge policy](merge-policy.md). The merge policy defines if and how [Extents (Data Shards)](../management/extents-overview.md) in the cluster should get merged.
+
+## Permissions
+
+You must have at least Database User, Database Viewer, or Database Monitor to run this command. For more information, see [role-based access control](access-control/role-based-access-control.md).
+
 ## Syntax
 
-`.show` `table` *TableName* `policy` `merge` 
+`.show` `table` *TableName* `policy` `merge`
 
-## Arguments
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
 
-*TableName* - Specify the name of the table. 
+## Parameters
+
+|Name|Type|Required|Description|
+|--|--|--|--|
+|*TableName*| `string` | :heavy_check_mark:|The name of the table for which to show the policy details.|
 
 ## Returns
 

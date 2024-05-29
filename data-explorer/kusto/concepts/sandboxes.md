@@ -1,56 +1,52 @@
 ---
 title: Sandboxes - Azure Data Explorer
 description: This article describes Sandboxes in Azure Data Explorer.
-services: data-explorer
-author: orspod
-ms.author: orspodek
-ms.reviewer: rkarlin
-ms.service: data-explorer
+ms.reviewer: orspodek
 ms.topic: reference
 ms.date: 05/03/2021
 ---
 # Sandboxes
 
-Kusto's Data Engine service can run sandboxes for specific flows that need secure isolation.
-Examples of these flows are user-defined scripts that run using the [Python plugin](../query/pythonplugin.md) or the [R plugin](../query/rplugin.md).
+Kusto can run sandboxes for specific flows that must be run in a secure and isolated environment.
+Examples of these flows are user-defined scripts that run using the [Python plugin](../query/python-plugin.md) or the [R plugin](../query/r-plugin.md).
 
-Flows that run in sandboxes aren't isolated. They're also local (close to the data). For these reasons, there's no extra latency added for remote calls.
+Sandboxes are run locally (meaning, processing is done close to the data), with no extra latency for remote calls.
 
-## Prerequisites
+## Prerequisites and limitations
 
-* Data engines that enable both [disk encryption](../../security.md#data-protection) and sandboxes features must run on a VM size that supports [encryption at host](/azure/virtual-machines/disk-encryption#encryption-at-host---end-to-end-encryption-for-your-vm-data). For more information on supported VM sizes, see [Virtual machine sizes](#virtual-machine-sizes).
-  * If encryption is enabled on the data engine before encryption at host is adopted as the default for supported VM sizes, the data engine may not support both features side by side. In this case, stop and start the cluster.
-* The required packages (images) for running the sandboxes are deployed to each of the Data Engine's nodes, and require dedicated SSD space to run.
-  * The estimated size is 20 GB, that is roughly 2.5% the SSD capacity of a D14_v2 VM, for example, or 0.7% the SSD capacity of a L16_v1 VM.
+* Sandboxes that run on [VM sizes supporting nested virtualization](#vm-sizes-supporting-nested-virtualization) are implemented using [Hyper-V technology](https://en.wikipedia.org/wiki/Hyper-V) and have no limitations.
+* Sandboxes that run on [VM sizes not supporting nested virtualization](sandboxes-in-non-modern-skus.md#virtual-machine-sizes) are implemented using a proprietary legacy technology and are subject to [some limitations](sandboxes-in-non-modern-skus.md).
+* The image for running the sandboxes is deployed to every cluster node and requires dedicated SSD space to run.
+  * The estimated size is between 10-20 GB.
   * This affects the cluster's data capacity, and may affect the [cost](https://azure.microsoft.com/pricing/details/data-explorer) of the cluster.
-* Hyper-threading is disabled for hyper-threaded VM sizes when sandboxes are enabled. For more information on hyper-threaded VM sizes, see [Virtual machine sizes](#virtual-machine-sizes).
 
 ## Runtime
 
 * A sandboxed query operator may use one or more sandboxes for its execution.
-  * A sandbox is only used for a single run, isn't shared across multiple runs, and is disposed of once that run completes.
-  * Sandboxes are lazily initialized on a node, the first time a query requires a sandbox for its execution.
-    * This means that the first execution of a plugin that uses sandboxes on a node will include a short warm-up period.
+  * A sandbox is only used for a single query and is disposed of once that query completes.
   * When a node is restarted, for example, as part of a service upgrade, all running sandboxes on it are disposed of.
 * Each node maintains a predefined number of sandboxes that are ready for running incoming requests.
   * Once a sandbox is used, a new one is automatically made available to replace it.
-* If there are no pre-allocated sandboxes available to serve a query operator, it will be throttled until new sandboxes are available. For more information, see [Errors](#errors). New sandbox allocation could take up to 10-15 seconds per sandbox, depending on the SKU and available resources on the data node. 
+* If there are no pre-allocated sandboxes available to serve a query operator, it will be throttled until new sandboxes are available. For more information, see [Errors](#errors). New sandbox allocation could take up to 10-15 seconds per sandbox, depending on the SKU and available resources on the data node.
 
-## Limitations
+## Sandbox parameters
 
-Some of the  limitations can be controlled using a cluster-level [sandbox policy](../management/sandboxpolicy.md), for each kind of sandbox.
+Some of the  parameters can be controlled using a cluster-level [sandbox policy](../management/sandbox-policy.md), for each kind of sandbox.
 
 * **Number of sandboxes per node:** The number of sandboxes per node is limited.
   * Requests that are made when there's no available sandbox will be throttled.
-* **Network:** A sandbox can't interact with any resource on the virtual machine (VM) or outside of it.
-  * A sandbox can't interact with another sandbox.
+* **Initialize on startup:** if set to `false` (default), sandboxes are lazily initialized on a node, the first time a query requires a sandbox for its execution. Otherwise, if set to `true`, sandboxes are initialized as part of service startup.
+  * This means that the first execution of a plugin that uses sandboxes on a node will include a short warm-up period.
 * **CPU:** The maximum rate of CPU a sandbox can consume of its host's processors is limited (default is `50%`).
   * When the limit is reached, the sandbox's CPU use is throttled, but execution continues.
-* **Memory:** The maximum amount of RAM a sandbox can consume of its host's RAM is limited (default is `20GB`).
+* **Memory:** The maximum amount of RAM a sandbox can consume of its host's RAM is limited.
+  * Default memory for Hyper-V technology is 1 GB, and for legacy sandboxes 20 GB.
   * Reaching the limit results in termination of the sandbox, and a query execution error.
-* **Disk:** A sandbox has a unique and independent directory attached to it. It can't access the host's file system.
-  * The unique folder provides access to the image/package that matches the sandbox's type. For example, the non-customizable Python or R package.
-* **Child processes:** The sandbox is blocked from spawning child processes.
+
+## Sandbox limitations
+
+* **Network:** A sandbox can't interact with any resource on the virtual machine (VM) or outside of it.
+  * A sandbox can't interact with another sandbox.
 
 > [!NOTE]
 > The resources used with sandbox depend not only on the size of the data being processed as part of the request,
@@ -65,35 +61,32 @@ Some of the  limitations can be controlled using a cluster-level [sandbox policy
 |E_SB_QUERY_THROTTLED_ERROR|TooManyRequests (429)      |Sandboxes of kind '{kind}' haven't yet been initialized                                            |The sandbox policy has recently changed. New sandboxes obeying the new policy will become available in a few seconds|
 |                          |InternalServiceError (520) |The sandboxed query was aborted due to a failure in initializing sandboxes                         |An unexpected infrastructure failure.                         |
 
+## VM Sizes supporting nested virtualization
 
-## Virtual machine sizes
+The following table lists all modern VM sizes that support Hyper-V sandbox technology.
 
-The following table lists all VM sizes, and  whether they support both encryption and sandbox features running side by side, and hyper-threading:
-
-| **Name**                              | **Category**      | **Supports sandboxes and encryption** | **Supports hyper-threading** |
-|---------------------------------------|-------------------|---------------------------------------|
-| Dev(No SLA) Standard_D11_v2           | compute-optimized | No                                    |No                            |
-| Dev(No SLA) Standard_E2a_v4           | compute-optimized | No                                    |No                            |
-| Standard_D11_v2                       | compute-optimized | No                                    |No                            |
-| Standard_D12_v2                       | compute-optimized | No                                    |No                            |
-| Standard_D13_v2                       | compute-optimized | No                                    |No                            |
-| Standard_D14_v2                       | compute-optimized | No                                    |No                            |
-| Standard_E2a_v4                       | heavy compute     | No                                    |Yes                           |
-| Standard_E4a_v4                       | heavy compute     | No                                    |Yes                           |
-| Standard_E8a_v4                       | heavy compute     | No                                    |Yes                           |
-| Standard_E16a_v4                      | heavy compute     | No                                    |Yes                           |
-| Standard_DS13_v2 + 1&nbsp;TB&nbsp;PS  | storage-optimized | Yes                                   |No                            |
-| Standard_DS13_v2 + 2&nbsp;TB&nbsp;PS  | storage-optimized | Yes                                   |No                            |
-| Standard_DS14_v2 + 3&nbsp;TB&nbsp;PS  | storage-optimized | Yes                                   |No                            |
-| Standard_DS14_v2 + 4&nbsp;TB&nbsp;PS  | storage-optimized | Yes                                   |No                            |
-| Standard_E8as_v4 + 1&nbsp;TB&nbsp;PS  | storage-optimized | Yes                                   |Yes                           |
-| Standard_E8as_v4 + 2&nbsp;TB&nbsp;PS  | storage-optimized | Yes                                   |Yes                           |
-| Standard_E16as_v4 + 3&nbsp;TB&nbsp;PS | storage-optimized | Yes                                   |Yes                           |
-| Standard_E16as_v4 + 4&nbsp;TB&nbsp;PS | storage-optimized | Yes                                   |Yes                           |
-| Standard_L4s                          | storage-optimized | Yes                                   |No                            |
-| Standard_L8s                          | storage-optimized | Yes                                   |No                            |
-| Standard_L16s                         | storage-optimized | Yes                                   |No                            |
-| Standard_L8s_v2                       | storage-optimized | Yes                                   |Yes                           |
-| Standard_L16s_v2                      | storage-optimized | Yes                                   |Yes                           |
-| Standard_E64i_v3                      | isolated compute  | No                                    |No                            |
-| Standard_E80ids_v4                    | isolated compute  | No                                    |Yes                           |
+| **Name**                              | **Category**      |
+|---------------------------------------|-------------------|
+| Standard_L8s_v3                       | storage-optimized |
+| Standard_L16s_v3                      | storage-optimized |
+| Standard_L8as_v3                      | storage-optimized |
+| Standard_L16as_v3                     | storage-optimized |
+| Standard_E8as_v5                      | storage-optimized |
+| Standard_E16as_v5                     | storage-optimized |
+| Standard_E8s_v4                       | storage-optimized |
+| Standard_E16s_v4                      | storage-optimized |
+| Standard_E8s_v5                       | storage-optimized |
+| Standard_E16s_v5                      | storage-optimized |
+| Standard_E2ads_v5                     | compute-optimized |
+| Standard_E4ads_v5                     | compute-optimized |
+| Standard_E8ads_v5                     | compute-optimized |
+| Standard_E16ads_v5                    | compute-optimized |
+| Standard_E2d_v4                       | compute-optimized |
+| Standard_E4d_v4                       | compute-optimized |
+| Standard_E8d_v4                       | compute-optimized |
+| Standard_E16d_v4                      | compute-optimized |
+| Standard_E2d_v5                       | compute-optimized |
+| Standard_E4d_v5                       | compute-optimized |
+| Standard_E8d_v5                       | compute-optimized |
+| Standard_E16d_v5                      | compute-optimized |
+| Standard_D32d_v4                      | compute-optimized |

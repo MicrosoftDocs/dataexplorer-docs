@@ -1,43 +1,34 @@
 ---
-title: Create an external table using the Web UI Wizard in Azure Data Explorer
-description: Use the one-click experience to create an external table.
-author: orspod
-ms.author: orspodek
+title: Create an external table using the Azure Data Explorer web UI wizard in Azure Data Explorer
+description: Use the wizard experience to create an external table.
 ms.reviewer: ohbitton
-ms.service: data-explorer
 ms.topic: how-to
-ms.date: 09/30/2021
+ms.date: 08/25/2022
 ---
 
-# Create an external table using the Web UI wizard
+# Create an external table using the Azure Data Explorer web UI wizard
 
-An external table is a schema entity that references data stored outside the Azure Data Explorer database. Azure Data Explorer Web UI can create external tables by taking sample files from a storage container and creating schema based on these samples. You can then analyze and query data in external tables without ingestion into Azure Data Explorer. For information about different ways to create external tables, see [create and alter Azure Storage external tables](kusto/management/external-tables-azurestorage-azuredatalake.md).
-
-This article shows you how to create an external table using the one-click experience.
+An external table is a schema entity that references data stored outside the Azure Data Explorer database. Azure Data Explorer web UI can create external tables by taking sample files from a storage container and creating schema based on these samples. You can then analyze and query data in external tables without ingestion into Azure Data Explorer. For a brief overview, see [external tables](kusto/query/schema-entities/external-tables.md). For information about different ways to create external tables, see [create and alter Azure Storage external tables](kusto/management/external-tables-azurestorage-azuredatalake.md). This article shows you how to create an external table using the creation wizard experience.
 
 ## Prerequisites
 
 * An Azure subscription. Create a [free Azure account](https://azure.microsoft.com/free/).
-* Create [a cluster and database](create-cluster-database-portal.md).
-* Sign in to the [Azure Data Explorer Web UI](https://dataexplorer.azure.com/) and [add a connection to your cluster](web-query-data.md#add-clusters).
+* An Azure Data Explorer cluster and database. [Create a cluster and database](create-cluster-and-database.md).
+* Sign in to the [Azure Data Explorer web UI](https://dataexplorer.azure.com/) and [add a connection to your cluster](web-query-data.md#add-clusters).
 
 ## Create an external table
 
-There are two ways to access the creation wizard:
+1. In the left menu, select **Query**.
 
-* In the left menu of the Web UI, select **Data**. In the **Create external table** card, select **Create**.
+1. Right-click on the database where you want to create the external table. Select **Create external table**.
 
-     :::image type="content" source="media/external-table/data-blade.png" alt-text="Screenshot of data blade in Azure Data Explorer Web UI with create external table highlighted. .":::
-
-* In the left blade of the Web UI, select **Query**. In the left menu, right-click on your database name and select **Create external table**.
-
-    :::image type="content" source="media/external-table/access-wizard.png" alt-text="Screenshot of how to access the wizard to create an external table in the Azure Data Explorer WebUI.":::
+    :::image type="content" source="media/external-table/query-create-external-table.png" alt-text="Screenshot of the option to create an external table from the query page." lightbox="media/external-table/query-create-external-table.png":::
 
 The **Create external table** window opens with the **Destination** tab selected.
 
 ### Destination tab
 
-1. The **Cluster** and **Database** fields are auto-populated. You may select a different destination from the drop-down menu.
+1. The **Cluster** and **Database** fields are prepopulated. You may select a different destination from the drop-down menu.
 1. In **Table name**, enter a name for your table.
     > [!TIP]
     >  Table names can be up to 1024 characters including alphanumeric, hyphens, and underscores. Special characters aren't supported.
@@ -53,9 +44,9 @@ You can add up to 10 source containers.
 
 #### Add a container with the **Select container** button
 
-1. Click **Select container**.
+1. Select **Select container**.
 
-    :::image type="content" source="media/external-table/select-container.png" alt-text="Screen shot of select container button in source tab.":::
+    :::image type="content" source="media/external-table/select-container.png" alt-text="Screenshot of select container button in source tab.":::
 
 1. Choose the relevant subscription and storage account associated with your container.
 
@@ -71,9 +62,9 @@ You can add up to 10 source containers.
 
     :::image type="content" source="media/external-table/add-url-button.png" alt-text="Screenshot of add URL button.":::
 
-1. Enter an [account key or SAS URL](kusto/api/connection-strings/storage.md#generate-a-sas-for-azure-storage-blob-container) to your source container with read and list permissions. When verification has completed, a green check will appear to the right of the container link.
+1. Enter a [storage connection strings](kusto/api/connection-strings/storage-connection-strings.md) to your source container with read and list permissions. When verification has completed, a green check will appear to the right of the container link.
 
-    :::image type="content" source="media/external-table/add-sas-url.png" alt-text="Screen shot of adding SAS URL.":::
+    :::image type="content" source="media/external-table/add-sas-url.png" alt-text="Screenshot of adding SAS URL.":::
 
 #### File filters
 
@@ -92,10 +83,10 @@ The first source container will display files below **File filters**.
 
 ### Schema tab
 
-In the right-hand side of the tab, you can preview your data. On the left-hand side, you can add [partitions](kusto/management/partitioningpolicy.md) to your table definitions to access the source data more quickly and achieve better performance.
+In the right-hand side of the tab, you can preview your data. On the left-hand side, you can add [partitions](kusto/management/partitioning-policy.md) to your table definitions to access the source data more quickly and achieve better performance.
 
-> [!NOTE] 
-> Mappings are not part of the definition of an external table, and are not supported in this wizard. Mappings can be [configured later](kusto/management/external-tables-azurestorage-azuredatalake.md#create-external-table-mapping) if necessary. Some functionalities, such as deleting the last column in CSV files or changing column names in JSON files, require mappings in order to work correctly.
+> [!NOTE]
+> Mappings are not part of the definition of an external table, and are not supported in this wizard. Mappings can be [configured later](kusto/management/external-table-mapping-create.md) if necessary. Some functionalities, such as deleting the last column in CSV files or changing column names in JSON files, require mappings in order to work correctly.
 
 1. Select **Add partition**.
 
@@ -115,20 +106,20 @@ In the right-hand side of the tab, you can preview your data. On the left-hand s
 
     :::image type="content" source="media/external-table/add-partitions.png" alt-text="Screen shot add partitions to external table in Azure Data Explorer." lightbox="media/external-table/add-partitions.png":::
 
-    For example, the partition name *CustomerName* suggests that the value to partition by is in the customer name part of the URL. The above example declared two partitions: one partition over the customer name and one partition over the date embedded in the URL. 
+    For example, the partition name *CustomerName* suggests that the value to partition by is in the customer name part of the URL. The above example declared two partitions: one partition over the customer name and one partition over the date embedded in the URL.
 
     > [!NOTE]
     > Virtual columns appear as part of the schema as the columns data extracted from the file path, and this data can be used later in queries.
 
-1. Select **Add partition** to add another partition. 
+1. Select **Add partition** to add another partition.
 1. Select **Save**. The partitions you added now appear in the list of **Partitions** in the left pane. Partitioned columns can't be changed in preview.
-    
-    :::image type="content" source="media/external-table/schema.png" alt-text="Screen shot of schema external table Azure Data Explorer.":::
+
+    :::image type="content" source="media/external-table/schema.png" alt-text="Screenshot of schema external table Azure Data Explorer.":::
 
 1. Select **Next: Create table**. When the table is created, an **External table successfully created** window opens.
 1. To view the command used to create the table, select **View command**.
 
-    :::image type="content" source="media/external-table/successfully-created.png" alt-text="Screen shot of successful creation of external table in Azure Data Explorer.":::
+    :::image type="content" source="media/external-table/successfully-created.png" alt-text="Screenshot of successful creation of external table in Azure Data Explorer.":::
 1. To undo the creation of the external table, select **Tools** > **Undo**.
 
 ## Query the external table
@@ -137,9 +128,9 @@ The resulting table includes data from all the files that fit the criteria defin
 
 :::image type="content" source="media/external-table/view-table.png" alt-text="Screen shot of table output from querying external table in Azure Data Explorer.":::
 
-## Next steps
+## Related content
 
+* [External tables overview](kusto/query/schema-entities/external-tables.md)
 * [Create and alter Azure Storage external tables](kusto/management/external-tables-azurestorage-azuredatalake.md)
-* [External tables overview](kusto/query/schema-entities/externaltables.md)
-* [external_table() function](kusto/query/externaltablefunction.md)
-* [Write queries for Azure Data Explorer](write-queries.md)
+* [external_table() function](kusto/query/external-table-function.md)
+* [Tutorial: Learn common operators](kusto/query/tutorials/learn-common-operators.md)

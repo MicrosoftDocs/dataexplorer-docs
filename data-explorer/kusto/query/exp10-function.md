@@ -1,11 +1,7 @@
 ---
-title: exp10() - Azure Data Explorer | Microsoft Docs
-description: This article describes exp10() in Azure Data Explorer.
-services: data-explorer
-author: orspod
-ms.author: orspodek
+title:  exp10()
+description: Learn how to use the exp10() function to return the base-10 exponential value of x.
 ms.reviewer: alexans
-ms.service: data-explorer
 ms.topic: reference
 ms.date: 03/25/2019
 ---
@@ -17,12 +13,19 @@ The base-10 exponential function of x, which is 10 raised to the power x: 10^x.
 
 `exp10(`*x*`)`
 
-## Arguments
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
 
-* *x*: A real number, value of the exponent.
+## Parameters
+
+| Name | Type | Required | Description |
+|--|--|--|--|
+| *x* | `real` |  :heavy_check_mark:| The value of the exponent. |
 
 ## Returns
 
-* Exponential value of x.
+The exponential value of x.
+
+## Related content
+
 * For natural (base-10) logarithms, see [log10()](log10-function.md).
-* For exponential functions of base-e and base-2 logarithms, see [exp()](exp-function.md), [exp2()](exp2-function.md)
+* For exponential functions of base-e and base-2 logarithms, see [exp()](exp-function.md), [exp2()](exp2-function.md).

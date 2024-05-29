@@ -1,31 +1,25 @@
 ---
 title: Secure Azure Data Explorer clusters in Azure
 description: Learn about how to secure clusters in Azure Data Explorer.
-author: orspod
-ms.author: orspodek
 ms.reviewer: itsagui
-ms.service: data-explorer
 ms.topic: conceptual
-ms.date: 04/04/2021
+ms.date: 12/26/2023
 ---
 
 # Security in Azure Data Explorer
 
 This article provides an introduction to security in Azure Data Explorer to help you protect your data and resources in the cloud and meet the security needs of your business. It's important to keep your clusters secure. Securing your clusters includes one or more Azure features that include secure access and storage. This article provides information to help you keep your cluster secure.
 
+For more resources regarding compliance for your business or organization, see the [Azure compliance documentation](/azure/compliance).
+
 ## Network security
 
-Network security is a requirement shared by many of our security-conscious enterprise customers. The intent is to isolate the network traffic and limit the attack surface for Azure Data Explorer and corresponding communications. You can therefore block traffic originating from non-Azure Data Explorer network segments and assure that only traffic from known sources reach Azure Data Explorer end points. This includes traffic originating on-premises or outside of Azure, with an Azure destination and vice versa.
+Network security is a requirement shared by many of our security-conscious enterprise customers. The intent is to isolate the network traffic and limit the attack surface for Azure Data Explorer and corresponding communications. You can therefore block traffic originating from non-Azure Data Explorer network segments and assure that only traffic from known sources reach Azure Data Explorer end points. This includes traffic originating on-premises or outside of Azure, with an Azure destination and vice versa. Azure Data Explorer supports the following features to achieve this goal:
 
-Azure Data Explorer supports [virtual network injection](vnet-deployment.md) to directly deploy into your virtual network. Both the engine and data management endpoints can be privately accessed. This allows Azure Data Explorer to be accessible through non-internet routed addresses.
+* [Private endpoint](security-network-overview.md#private-endpoint) (recommended)
+* [Virtual network (VNet) injection](security-network-overview.md#virtual-network-injection)
 
-For more information, see the following topics.
-
-* [Create an Azure Data Explorer cluster in your virtual network](vnet-create-cluster-portal.md)
-* [Deploy Azure Data Explorer cluster into your Virtual Network](vnet-deployment.md)
-* [Troubleshoot access, ingestion, and operation of your Azure Data Explorer cluster in your virtual network](vnet-deploy-troubleshoot.md)
-* [Create a Private Endpoint in your Azure Data Explorer cluster in your virtual network (preview)](vnet-create-private-endpoint.md)
-* [Create a private or service endpoint to Event Hub and Azure Storage](vnet-endpoint-storage-event-hub.md)
+We highly recommended using private endpoints to secure network access to your cluster. This option has many advantages over virtual network injection that results in lower maintenance overhead, including a simpler deployment process and being more robust to virtual network changes.
 
 ## Identity and access control
 
@@ -37,7 +31,7 @@ Use [role-based access control (RBAC)](/azure/role-based-access-control/overview
 
 A common challenge when building cloud applications is credentials management in your code for authenticating to cloud services. Keeping the credentials secure is an important task. The credentials shouldn't be stored in developer workstations or checked into source control. Azure Key Vault provides a way to securely store credentials, secrets, and other keys, but your code has to authenticate to Key Vault to retrieve them.
 
-The Azure Active Directory (Azure AD) managed identities for Azure resources feature solves this problem. The feature provides Azure services with an automatically managed identity in Azure AD. You can use the identity to authenticate to any service that supports Azure AD authentication, including Key Vault, without any credentials in your code. For more information about this service, see [managed identities for Azure resources](/azure/active-directory/managed-identities-azure-resources/overview) overview page.
+The Microsoft Entra managed identities for Azure resources feature solves this problem. The feature provides Azure services with an automatically managed identity in Microsoft Entra ID. You can use the identity to authenticate to any service that supports Microsoft Entra authentication, including Key Vault, without any credentials in your code. For more information about this service, see [managed identities for Azure resources](/azure/active-directory/managed-identities-azure-resources/overview) overview page.
 
 ## Data protection
 
@@ -52,7 +46,7 @@ By default, data is encrypted with Microsoft-managed keys. For additional contro
 Use Azure Key Vault to store your customer-managed keys. You can create your own keys and store them in a key vault, or you can use an Azure Key Vault API to generate keys. The Azure Data Explorer cluster and the Azure Key Vault must be in the same region, but they can be in different subscriptions. For more information about Azure Key Vault, see [What is Azure Key Vault?](/azure/key-vault/key-vault-overview). For a detailed explanation on customer-managed keys, see [Customer-managed keys with Azure Key Vault](/azure/storage/common/storage-service-encryption). Configure customer-managed keys in your Azure Data Explorer cluster using the [Portal](customer-managed-keys-portal.md), [C#](customer-managed-keys-csharp.md), [Azure Resource Manager template](customer-managed-keys-resource-manager.md), [CLI](customer-managed-keys-cli.md), or the [PowerShell](customer-managed-keys-powershell.md)
 
 > [!Note]
-> Customer-managed keys rely on managed identities for Azure resources, a feature of Azure Active Directory (Azure AD). To configure customer-managed keys in the Azure portal, configure a managed identity to your cluster as described in [Configure managed identities for your Azure Data Explorer cluster](managed-identities.md).
+> Customer-managed keys rely on managed identities for Azure resources, a feature of Microsoft Entra ID. To configure customer-managed keys in the Azure portal, configure a managed identity to your cluster as described in [Configure managed identities for your Azure Data Explorer cluster](./configure-managed-identities-cluster.md).
 
 #### Store customer-managed keys in Azure Key Vault
 
@@ -78,9 +72,10 @@ To revoke access to customer-managed keys, use PowerShell or Azure CLI. For more
 > [!Note]
 > When Azure Data Explorer identifies that access to a customer-managed key is revoked, it will automatically suspend the cluster to delete any cached data. Once access to the key is returned, the cluster will be resumed automatically.
 
-## Next steps
+## Related content
 
-* [Secure your cluster using Disk Encryption in Azure Data Explorer - Portal](cluster-disk-encryption.md) by enabling encryption at rest.
-* [Configure managed identities for your Azure Data Explorer cluster](managed-identities.md)
-* [Configure customer-managed-keys using the Azure Resource Manager template](customer-managed-keys-resource-manager.md)
-* [Configure customer-managed-keys using C#](customer-managed-keys-csharp.md)
+* [Azure security baseline for Azure Data Explorer](/security/benchmark/azure/baselines/azure-data-explorer-security-baseline)
+* [Secure your cluster using Disk Encryption](cluster-encryption-disk.md) by enabling encryption at rest.
+* [Configure managed identities for your cluster](configure-managed-identities-cluster.md)
+* [Configure customer-managed-keys](customer-managed-keys.md)
+* [Azure compliance documentation](/azure/compliance)

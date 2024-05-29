@@ -1,61 +1,51 @@
 ---
-title: Views - Azure Data Explorer
-description: This article describes views in Azure Data Explorer.
-services: data-explorer
-author: orspod
-ms.author: orspodek
+title:  Views - Azure Data Explorer
+description: Learn how to define and use a view in Azure Data Explorer.
 ms.reviewer: zivc
-ms.service: data-explorer
 ms.topic: reference
-ms.date: 09/05/2021
+ms.date: 08/13/2023
 ---
 # Views
 
-**Views** are virtual tables based on the result-set of a Kusto Query Language query.
-Just like a real table, a view contains rows and columns. Unlike a real table,
-a view doesn't hold its own data storage.
+A view is a virtual table based on the result-set of a Kusto Query Language (KQL) query.
 
-Views are defined through [user-defined functions](../functions/user-defined-functions.md)
-with the following requirements:
-* The result of the function must be tabular (for example, it cannot be a scalar value).
-* The function must take no arguments.
+Like real tables, views organize data with rows and columns, and participate in tasks that involve wildcard table name resolution, such as [union *](../../query/union-operator.md) and [search *](../../query/search-operator.md) scenarios. However, unlike real tables, views don't maintain dedicated data storage. Rather, they dynamically represent the result of a query.
 
-Views can be based on either [stored functions](./stored-functions.md) or defined as part of the query using a [let statement](../letstatement.md).
+## How to define a view
 
-> [!NOTE]
-> Views are not technically schema entities. However, all functions that comply
-> with the constraints above are regarded as views.
+Views are defined through [user-defined functions](../functions/user-defined-functions.md), which come in two forms: query-defined functions and stored functions. To qualify as a view, a function must accept no arguments and yield a tabular expression as its output.
 
-## Example - define and use a view
+To define a query-defined function as a view, specify the `view` keyword before the function definition. For an example, see [Query-defined view](#query-defined-view).
 
-The following query defines and uses a view. The view
-is used as-if a table called `T` was defined (there's no need to reference the
-function `T` using the function call syntax `T()`):
+To define a stored function as a view, set the `view` property to `true` when you create the function. For an example, see [Stored view](#stored-view). For more information, see the [.create function command](../../management/create-function.md).
 
-<!-- csl: https://help.kusto.windows.net/Samples -->
+## Examples
+
+### Query-defined view
+
+The following query defines two functions: `T_view` and `T_notview`. The query results demonstrate that only `T_view` is resolved by the wildcard reference in the union operation.
+
+> [!div class="nextstepaction"]
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA8tJLVEIiS/LTC1XsFUAUxqaCtUKBUWZeSUKFbaGCrXWXDlgNXn5JVBlKCqMQCpK8zLz8xRCtACsbfBqTgAAAA==" target="_blank">Run the query</a>
+
 ```kusto
-let T=() {print x=1, y=2};
-T
-```
-
-**Returns**
-
-x |y |
---|--|
-1 | 2 |
-
-## The view keyword
-
-By default, operators that support a wildcard syntax to specify table names will not reference views, even if the view's name matches the wildcard. An example of this type of operator is the [union operator](../unionoperator.md). In this case, use the `view` keyword to have the view
-included as well.
-
-### Example - view keyword
-
-For example, the results of the following query include the `T1` view, but not `T2`:
-
-<!-- csl: https://help.kusto.windows.net/Samples -->
-```kusto
-let T1=view (){print Name="T1"};
-let T2=(){print Name="T2"};
+let T_view = view () { print x=1 };
+let T_notview = () { print x=2 };
 union T*
 ```
+
+### Stored view
+
+The following query defines a stored view. This view behaves like any other stored function, yet can partake in wildcard scenarios.
+
+```kusto
+.create function 
+    with (view=true, docstring='Simple demo view', folder='Demo')  
+    MyView() { StormEvents | take 100 }
+```
+
+## Related content
+
+* [User-defined functions](../functions/user-defined-functions.md)
+* [union operator](../../query/union-operator.md)
+* [search operator](../../query/search-operator.md)

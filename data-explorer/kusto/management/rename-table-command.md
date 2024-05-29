@@ -1,52 +1,50 @@
 ---
-title: .rename table and .rename tables - Azure Data Explorer | Microsoft Docs
-description: This article describes .rename table and .rename tables in Azure Data Explorer.
-services: data-explorer
-author: orspod
-ms.author: orspodek
-ms.reviewer: rkarlin
-ms.service: data-explorer
+title: .rename table command
+description: Learn how to use the `.rename table` command to change the name of an existing table.
+ms.reviewer: orspodek
 ms.topic: reference
-ms.date: 02/04/2020
+ms.date: 05/24/2023
 ---
-# .rename table and .rename tables
+# .rename table command
 
 Changes the name of an existing table.
 
 The `.rename tables` command changes the name of a number of tables in the database as a single transaction.
 
-Requires [Database  admin permission](../management/access-control/role-based-authorization.md).
+## Permissions
 
-**Syntax**
+You must have at least [Table Admin](../management/access-control/role-based-access-control.md) permissions to run this command.
+
+## Syntax
 
 `.rename` `table` *OldName* `to` *NewName*
 
-`.rename` `tables` *NewName* = *OldName* [`ifexists`] [`,` ...]
+`.rename` `tables` *NewName* `=` *OldName* [`ifexists`] [`,` ...]
 
-> [!NOTE]
-> * *OldName* is the name of an existing table. An error is raised and
-  the whole command fails (has no effect) if *OldName* does not name
-  an existing table, unless `ifexists` is specified (in which case
-  this part of the rename command is ignored).
-> * *NewName* is the new name of the existing table that used to be called
-  *OldName*.
-> * If `ifexists` is specified, it modifies the behavior of the command to
-  ignore renaming parts of non-existent tables.
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+
+## Parameters
+
+|Name|Type|Required|Description|
+|--|--|--|--|
+|*OldName*| `string` | :heavy_check_mark:|The name of an existing table. An error is raised and the whole command fails if *OldName* doesn't name an existing table, unless `ifexists` is specified.|
+|*NewName*| `string` | :heavy_check_mark:|The new name for the table that used to be called *OldName*.|
+|`ifexists`| `string` ||If specified, the command will handle the scenario where the table doesn't exist. Instead of failing, it will proceed without attempting to rename the table that doesn't exist.|
 
 **Remarks**
 
 This command operates on tables of the database in scope only.
-Table names cannot be qualified with cluster or database names.
+Table names can't be qualified with cluster or database names.
 
 This command doesn't create new tables, nor does it remove existing tables.
 The transformation described by the command must be such that the number
-of tables in the database does not change.
+of tables in the database doesn't change.
 
 The command **does** support swapping table names, or more complex
 permutations, as long as they adhere to the rules above. For example, ingest data into multiple staging tables,
 and then swap them with existing tables in a single transaction.
 
-**Examples**
+## Examples
 
 Imagine a database with the following tables: `A`, `B`, `C`, and `A_TEMP`.
 The following command will swap `A` and `A_TEMP` (so that the `A_TEMP` table will now be called `A`, and the other way around), rename
@@ -54,11 +52,12 @@ The following command will swap `A` and `A_TEMP` (so that the `A_TEMP` table wil
 
 ```kusto
 .rename tables A=A_TEMP, NEWB=B, A_TEMP=A
-``` 
+```
 
 The following sequence of commands:
+
 1. Creates a new temporary table
-1. Replaces an existing or non-existing table with the new table
+1. Replaces an existing or nonexisting table with the new table
 
 ```kusto
 // Drop the temporary table if it exists

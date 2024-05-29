@@ -1,27 +1,34 @@
 ---
-title: .alter database prettyname - Azure Data Explorer
-description: This article describes the `.alter` database pretty name command.
-services: data-explorer
-author: orspod
-ms.author: orspodek
-ms.reviewer: rkarlin
-ms.service: data-explorer
+title:  .alter database prettyname command
+description: Learn how to use the `.alter database prettyname` command to alter the database's name.
+ms.reviewer: orspodek
 ms.topic: reference
-ms.date: 02/13/2020
+ms.date: 05/25/2023
 ---
-# .alter database prettyname
+# .alter database prettyname command
 
 Alters a database's pretty (friendly) name.
 
-Requires [DatabaseAdmin permission](../management/access-control/role-based-authorization.md).
+## Permissions
 
-**Syntax**
+You must have at least [Database Admin](access-control/role-based-access-control.md) permissions to run this command.
+
+## Syntax
 
 `.alter` `database` *DatabaseName* `prettyname` `'`*DatabasePrettyName*`'`
 
-**Return output**
- 
-|Output parameter |Type |Description 
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+
+## Parameters
+
+|Name|Type|Required|Description|
+|--|--|--|--|
+|*DatabaseName*| `string` | :heavy_check_mark:|The name of the database to alter.|
+|*DatabasePrettyName*| `string` | :heavy_check_mark:|The new pretty name for the database.|
+
+## Returns
+
+|Output parameter |Type |Description
 |---|---|---
-|DatabaseName |String |The name of the database
-|PrettyName |String |The pretty name of the database
+|DatabaseName | `string` |The name of the database
+|PrettyName | `string` |The pretty name of the database

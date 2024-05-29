@@ -1,143 +1,137 @@
 ---
-title: Azure Data Explorer connector to Power Automate (Preview) 
-description: Learn about using Azure Data Explorer connector to Power Automate to create flows of automatically scheduled or triggered tasks.
-author: orspod
-ms.author: orspodek
-ms.reviewer: dorcohen
-ms.service: data-explorer
+title: Azure Data Explorer connector for Power Automate
+description: Learn about using Azure Data Explorer connector for Power Automate to create flows of automatically scheduled or triggered tasks.
+ms.reviewer: miwalia
 ms.topic: how-to
-ms.date: 03/25/2020
+ms.date: 08/09/2023
+no-loc: [Power Automate]
 ---
 
-# Azure Data Explorer connector to :::no-loc text="Power Automate"::: (Preview)
+# Azure Data Explorer connector for Microsoft Power Automate
 
-The Azure Data Explorer :::no-loc text="Power Automate"::: (previously Microsoft Flow) connector allows Azure Data Explorer to use the flow capabilities of [Microsoft :::no-loc text="Power Automate":::](https://flow.microsoft.com/). You can run Kusto queries and commands automatically, as part of a scheduled or triggered task.
+[!INCLUDE [real-time-analytics-connectors-note](includes/real-time-analytics-connectors-note.md)]
+
+The Azure Data Explorer connector for Power Automate (previously Microsoft Flow) enables you to orchestrate and schedule flows, send notifications, and alerts, as part of a scheduled or triggered task.
 
 You can:
 
-* Send daily reports containing tables and charts.
-* Set notifications based on query results.
-* Schedule control commands on clusters.
-* Export and import data between Azure Data Explorer and other databases. 
+- Send notifications and alerts based on query results, such as when thresholds exceed certain limits.
+- Send regular, such as daily or weekly, reports containing tables and charts.
+- Schedule regular jobs using management commands on clusters. For example, copy data from one table to another using the `.set-or-append` command.
+- Export and import data between Azure Data Explorer and other databases.
 
-For more information, see [Azure Data Explorer :::no-loc text="Power Automate"::: connector usage examples](flow-usage.md).
+For more information, see [Azure Data Explorer Power Automate connector usage examples](flow-usage.md).
 
-##  Sign in 
+> [!NOTE]
+> In order for a Power Automate connector to access a [network protected cluster](security-network-private-endpoint.md), you must add the [outbound IP addresses](/connectors/common/outbound-ip-addresses#power-platform) associated with the region of your connector to the firewall allowlist. For more information, see [Manage public access to your Azure Data Explorer cluster](security-network-restrict-public-access.md).
 
-1. When you connect for the first time, you're prompted to sign in.
+## Create a new flow using the Azure Data Explorer connector
 
-1. Select **Sign in**, and enter your credentials.
+To use the connector, you must first add a trigger. You can define a trigger based on a recurring time period, or as a response to a previous flow action.
 
-![Screenshot of Azure Data Explorer Sign in prompt.](./media/flow/flow-signin.png)
+1. Sign in to [Power Automate](/power-automate/sign-up-sign-in).
 
-## Authentication
+1. [Create a new flow](https://flow.microsoft.com/manage/flows/new), or, from the Power Automate home page, select the **My flows** > **+ New flow**.
 
-You can authenticate with user credentials, or with an Azure Active Directory (Azure AD) application.
+    :::image type="content" source="media/flow/flow-new-flow.png" alt-text="Screenshot of the Power Automate home page, showing My flows and New highlighted.":::
 
-> [!Note]
-> Make sure your application is an [Azure AD application](./provision-azure-ad-app.md), and is authorized to run queries on your cluster.
+1. Select **Scheduled cloud flow**.
 
-1. In **Run control command and visualize results**, select the three dots at the top right of the flow connector.
+    :::image type="content" source="media/flow/flow-scheduled-from-blank.png" alt-text="Screenshot of New dialog box, showing Scheduled from blank highlighted.":::
 
-   ![Screenshot of Run control command and visualize results.](./media/flow/flow-addconnection.png)
+1. In **Build a scheduled cloud flow**, enter the required information.
 
-1. Select **Add new connection** > **Connect with Service Principal**.
-
-   ![Screenshot of Azure Data Explorer Sign in prompt, with Connect with Service Principal option.](./media/flow/flow-signin.png)
-
-1. Enter the required information:
-   - Connection Name: A descriptive and meaningful name for the new connection.
-   - Client ID: Your application ID.
-   - Client Secret: Your application key.
-   - Tenant: The ID of the Azure AD directory in which you created the application.
-
-   ![Screenshot of Azure Data Explorer application authentication dialog box.](./media/flow/flow-appauth.png)
-
-When authentication is complete, you'll see that your flow uses the newly added connection.
-
-![Screenshot of completed application authentication.](./media/flow/flow-appauthcomplete.png)
-
-From now on, this flow will run by using these application credentials.
-
-## Find the Azure Kusto connector
-
-To use the :::no-loc text="Power Automate"::: connector, you need to first add a trigger. 
-You can define a trigger based on a recurring time period, or as a response to a previous flow action.
-
-1. [Create a new flow](https://flow.microsoft.com/manage/flows/new), or, from the Microsoft :::no-loc text="Power Automate"::: home page, select the **My flows** > **+ New**.
-
-    ![Screenshot of the Microsoft Power Automate home page, with My flows and New highlighted.](./media/flow/flow-newflow.png)
-
-1. Select **Scheduled--from blank**.
-
-    ![Screenshot of New dialog box, with Scheduled from blank highlighted.](./media/flow/flow-scheduled-from-blank.png)
-
-1. In **Build a scheduled flow**, enter the required information.
-    
-    ![Screenshot of Build a scheduled flow page, with Flow name options highlighted.](./media/flow/flow-build-scheduled-flow.png)
+    :::image type="content" source="media/flow/flow-build-scheduled-flow.png" alt-text="Screenshot of Build a scheduled flow page, showing Flow name options highlighted.":::
 
 1. Select **Create** > **+ New step**.
-1. In the search box, enter *Kusto*, and select **Azure Data Explorer**.
+1. In the search box, enter *Kusto* or *Azure Data Explorer*, and select **Azure Data Explorer**.
 
-    ![Screenshot of Choose an action options, with search box and Azure Data Explorer highlighted.](./media/flow/flow-actions.png)
+    :::image type="content" source="media/flow/flow-actions.png" alt-text="Screenshot of Choose an operation window, showing the search box and Azure Data Explorer highlighted.":::
+
+1. Select an action from the list. For an explanation of each action and how to configure them, see [Flow actions](#flow-actions).
+
+    > [!IMPORTANT]
+    > You must have a valid Azure Data Explorer [connection for your flow](/power-automate/add-manage-connections) to run. For information about creating a connection, see [Create an Azure Data Explorer connection in Power Automate](#create-an-azure-data-explorer-connection).
+
+    :::image type="content" source="media/flow/flow-action-list.png" alt-text="Screenshot of the Choose an action list, showing the list of actions highlighted.":::
 
 ## Flow actions
 
-When you open the Azure Data Explorer connector, there are three possible actions you can add to your flow. This section describes the capabilities and parameters for each action.
+When you select the Azure Data Explorer connector, you can choose one of the following actions to add to your flow:
 
-![Screenshot of Azure Data Explorer connector actions.](./media/flow/flow-adx-actions.png)
+- [Run KQL query](#run-kql-query)
+- [Run KQL query and render a chart](#run-kql-query-and-render-a-chart)
+- [Run async management command](#run-async-management-command)
+- [Run management command and render a chart](#run-management-command-and-render-a-chart)
+- [Run show management command](#run-show-management-command)
 
-### Run control command and visualize results
+This section describes the capabilities and parameters for each action and provides an example showing how to add an [email](#email-kusto-query-results) action to any flow.
 
-Use this action to run a [control command](kusto/management/index.md).
+### Run KQL query
 
-1. Specify the cluster URL. For example, `https://clusterName.eastus.kusto.windows.net`.
-1. Enter the name of the database.
-1. Specify the control command:
-   * Select dynamic content from the apps and connectors used in the flow.
-   * Add an expression to access, convert, and compare values.
-1. To send the results of this action by email as a table or a chart, specify the chart type. This can be:
-   * An HTML table.
-   * A pie chart.
-   * A time chart.
-   * A bar chart.
+> [!NOTE]
+> If your query starts with a dot, it's a [management command](kusto/management/index.md). Use [Run async management command](#run-async-management-command).
 
-![Screenshot of Run control command and visualize results in recurrence pane.](./media/flow/flow-runcontrolcommand.png)
+Use this action to query the specified cluster. The actions that are added afterwards iterate over each line of the results of the query.
 
-> [!IMPORTANT]
-> In the **Cluster Name** field, enter the cluster URL.
+If the query takes more than 8 minutes to run, it will fail with a "RequestTimeout" exception. To prevent this issue, optimize your query or divide it into smaller parts. For more information, see [Query best practices](kusto/query/best-practices.md).
 
-### Run query and list results
+#### Example
 
-> [!Note]
-> If your query starts with a dot (meaning that it's a [control command](kusto/management/index.md)), use [Run control command and visualize results](#run-control-command-and-visualize-results).
+The following flow triggers a query every minute. The query checks the number of records in the table, and then sends an email only if the number of records is greater than 0.
 
-This action sends a query to the Kusto cluster. The actions that are added afterwards iterate over each line of the results of the query.
+:::image type="content" source="media/flow/flow-run-query-list-results-2-inline.png" alt-text="Screenshot of Azure Data Explorer connector, showing the Run KQL query action." lightbox="media/flow/flow-run-query-list-results-2.png":::
 
-The following example triggers a query every minute, and sends an email based on the query results. The query checks the number of lines in the database, and then sends an email only if the number of lines is greater than 0. 
+### Run KQL query and render a chart
 
-![Screenshot of Run query and list results.](./media/flow/flow-runquerylistresults-2.png)
+> [!NOTE]
+> If your query starts with a dot, it's a [management command](kusto/management/index.md). Use [Run management command and render a chart](#run-kql-query-and-render-a-chart).
 
-> [!Note]
-> If the column has several lines, the connector will run for each line in the column.
+Use this action to visualize a KQL query result as a table or chart. For example, use this flow to receive daily reports by email.
 
-### Run query and visualize results
-        
-> [!Note]
-> If your query starts with a dot (meaning that it's a [control command](kusto/management/index.md)), use [Run control command and visualize results](#run-control-command-and-visualize-results).
-        
-Use this action to visualize a Kusto query result as a table or chart. For example, use this flow to receive daily reports by email. 
-    
-In this example, the results of the query are returned as an HTML table.
-            
-![Screenshot of Run query and visualize results.](./media/flow/flow-runquery.png)
+If the query takes more than 8 minutes to run, it will fail with a "RequestTimeout" exception. To prevent this issue, optimize your query or divide it into smaller parts. For more information, see [Query best practices](kusto/query/best-practices.md).
 
-> [!IMPORTANT]
-> In the **Cluster Name** field, enter the cluster URL.
+#### Example
 
-## Email Kusto query results
+The following flow will present the query results as a timechart.
 
-You can include a step in any flow to send reports by email, to any email address. 
+:::image type="content" source="media/flow/flow-run-query.png" alt-text="Screenshot of Azure Data Explorer connector, showing the Run KQL query and render a chart action.":::
+
+### Run async management command
+
+Use this action to run a [management command](kusto/management/index.md) asynchronously, which means it will continue to run in the background. The action returns an ID, state, and status. To check the status and details of an async command, use the [.show operations](kusto/management/operations.md) command with the ID returned by this action.
+
+If the async management command takes more than 60 minutes to run, it will fail with a "RequestTimeout" exception.
+
+#### Example
+
+The following flow triggers an async command to copy 10 records from the 'TransformedSysLogs' table to the 'TargetTable'. Note that the 'async' keyword is required in the query.
+
+:::image type="content" source="media/flow/flow-run-async-control-command.png" alt-text="Screenshot of Azure Data Explorer connector, showing the Run async management command action.":::
+
+### Run management command and render a chart
+
+Use this action to run a [management command](kusto/management/index.md) and display the result as a chart. The chart options include an HTML table, pie chart, time chart, and bar chart.
+
+If the management command takes more than 8 minutes to run, it will fail with a "RequestTimeout" exception.
+
+:::image type="content" source="media/flow/flow-run-control-command.png" alt-text="Screenshot of Run management command and render a chart in recurrence pane.":::
+
+### Run show management command
+
+This action runs the show management command and returns the result that can be used in the following connectors.
+
+If the management command takes more than 8 minutes to run, it will fail with a "RequestTimeout" exception.
+
+#### Example
+
+The following flow runs the [.show operation](kusto/management/operations.md) command to find the status of an async command using an operation ID returned by an async command execution.
+
+:::image type="content" source="media/flow/flow-run-show-control-command.png" alt-text="Screenshot of Azure Data Explorer connector, showing the Run show management command action.":::
+
+### Email Kusto query results
+
+You can include a step in any flow to send reports by email, to any email address.
 
 1. Select **+ New Step** to add a new step to your flow.
 1. In the search box, enter *Office 365* and select **Office 365 Outlook**.
@@ -147,55 +141,87 @@ You can include a step in any flow to send reports by email, to any email addres
 1. Select **Code view**.
 1. Place your cursor in the **Body** field, and select **Add dynamic content**.
 1. Select **BodyHtml**.
-    ![Screenshot of Send an email dialog box, with Body field and BodyHtml highlighted.](./media/flow/flow-send-email.png)
+    :::image type="content" source="media/flow/flow-send-email.png" alt-text="Screenshot of Send an email dialog box, with Body field and BodyHtml highlighted.":::
 1. Select **Show advanced options**.
 1. Under **Attachments Name -1**, select **Attachment Name**.
 1. Under **Attachments Content**, select **Attachment Content**.
-1. If necessary, add more attachments. 
+1. If necessary, add more attachments.
 1. If necessary, set the importance level.
 1. Select **Save**.
 
-![Screenshot of Send an email dialog box, with Attachments Name, Attachments Content, and Save highlighted.](./media/flow/flow-add-attachments.png)
+:::image type="content" source="media/flow/flow-add-attachments.png" alt-text="Screenshot of Send an email dialog box, with Attachments Name, Attachments Content, and Save highlighted.":::
 
-## Check if your flow succeeded
+## Create an Azure Data Explorer connection
 
-To check if your flow succeeded, see the flow's run history:
-1. Go to the [Microsoft :::no-loc text="Power Automate"::: home page](https://flow.microsoft.com/).
+To run a flow that contains an Azure Data Explorer connector, you must use a valid Azure Data Explorer [connection](/power-automate/add-manage-connections). You can create and authenticate a new connection from the Power Automate left pane, select **Data** > [Connections](/power-automate/add-manage-connections) or from within the flow, by selecting the Azure Data Explorer connector's menu > **Add new connection**.
+
+The following steps show how to create a connection from within a flow.
+
+1. In **Run KQL query**, select the three dots at the top right of the power automate connector.
+
+    :::image type="content" source="media/flow/flow-add-connection.png" alt-text="Screenshot of Azure Data Explorer connection, showing the authentication option.":::
+
+1. Select **Add new connection**. When you connect for the first time, you're prompted to sign in to [authenticate the connection](#authentication).
+
+    :::image type="content" source="media/flow/flow-sign-in.png" alt-text="Screenshot of Azure Data Explorer connection, showing the sign-in option.":::
+
+## Authentication
+
+You can authenticate with user credentials or with a Microsoft Entra application. To authenticate with credentials, select **Sign in**, and enter your credentials.
+
+To authenticate with a Service Principal:
+
+1. Select **Connect with Service Principal**.
+1. Fill out the form with the following information:
+
+    - **Connection Name**: A descriptive and meaningful name for the new connection. In this example, we've used "MyApplication".
+    - **Client ID**: Your application ID.
+    - **Client Secret**: Your application key.
+    - **Tenant**: The ID of the Microsoft Entra directory in which you created the application.
+
+    > [!Note]
+    > Make sure your application is an [Microsoft Entra application](./provision-azure-ad-app.md) and is authorized to run queries on your cluster.
+
+    :::image type="content" source="media/flow/flow-app-auth.png" alt-text="Screenshot of Azure Data Explorer connection, showing the application authentication dialog box.":::
+
+    When authentication is complete, verify that your flow uses the new connection.
+
+    :::image type="content" source="media/flow/flow-app-auth-complete.png" alt-text="Screenshot of the completed application authentication.":::
+
+    Once the connection is set, the flow runs using the application credentials.
+
+## Test the flow
+
+To check if your flow works, check the flow's run history:
+
+1. Go to the [Power Automate home page](https://flow.microsoft.com/).
 1. From the main menu, select [My flows](https://flow.microsoft.com/manage/flows).
-   
-   ![Screenshot of Microsoft :::no-loc text="Power Automate"::: main menu, with My flows highlighted](./media/flow/flow-myflows.png)
+
+    :::image type="content" source="media/flow/flow-my-flows.png" alt-text="Screenshot of Power Automate main menu, showing My flows highlighted.":::
 
 1. On the row of the flow you want to investigate, select the more commands icon, and then select **Run history**.
 
-    ![Screenshot of My flows tab, with Run history highlighted.](./media/flow//flow-runhistory.png)
+    :::image type="content" source="media/flow//flow-run-history.png" alt-text="Screenshot of My flows tab, showing Run history highlighted.":::
 
     All flow runs are listed, with information about start time, duration, and status.
-    ![Screenshot of Run history results page.](./media/flow/flow-runhistoryresults.png)
+    :::image type="content" source="media/flow/flow-run-history-results.png" alt-text="Screenshot of Run history results page.":::
 
     For full details about the flow, on **[My flows](https://flow.microsoft.com/manage/flows)**, select the flow you want to investigate.
 
-    ![Screenshot of Run history full results page.](./media/flow/flow-fulldetails.png) 
+    :::image type="content" source="media/flow/flow-full-details.png" alt-text="Screenshot of Run history full results page.":::
 
 To see why a run failed, select the run start time. The flow appears, and the step of the flow that failed is indicated by a red exclamation point. Expand the failed step to view its details. The **Details** pane on the right contains information about the failure so that you can troubleshoot it.
 
-![Screenshot of flow error page.](./media/flow/flow-error.png)
-
-## Timeout exceptions
-
-Your flow can fail and return a "RequestTimeout" exception if it runs for more than 90 seconds.
-    
-![Screenshot of the flow request timeout exception error.](./media/flow/flow-requesttimeout.png)
-
-To fix a timeout issue, make your query more efficient so that it runs faster, or separate it into chunks. Each chunk can run on a different part of the query. For more information, see [Query best practices](kusto/query/best-practices.md).
-
-The same query might run successfully in Azure Data Explorer, where the time isn't limited and can be changed.
+:::image type="content" source="media/flow/flow-error.png" alt-text="Screenshot of flow run, showing an error message.":::
 
 ## Limitations
 
-* Results returned to the client are limited to 500,000 records. The overall memory for those records can't exceed 64 MB and a time of 90 seconds to run.
-* The connector doesn't support operators that aren't supported by the [`getschema` operator](kusto/query/getschemaoperator.md). For example, the [fork](kusto/query/forkoperator.md), [facet](kusto/query/facetoperator.md), and [evaluate](kusto/query/evaluateoperator.md) operators aren't supported. 
-* Flow works best on Microsoft Edge and Google Chrome.
+- The maximum number of records per request is 50,000 and the maximum data size per request is 32 MB. These limits can't be changed.
+- Synchronous requests have a timeout of 8 minutes.
+- Asynchronous requests have a timeout of 60 minutes.
+- The connector doesn't support operators that aren't supported by the [`getschema` operator](kusto/query/getschema-operator.md). For example, the [fork](kusto/query/fork-operator.md), [facet](kusto/query/facet-operator.md), and [evaluate](kusto/query/evaluate-operator.md) operators aren't supported.
+- Flows work best on Microsoft Edge and Google Chrome.
 
-## Next steps
+## Related content
 
-Learn about the [Azure Kusto Logic App connector](kusto/tools/logicapps.md), which is another way to run Kusto queries and commands automatically, as part of a scheduled or triggered task.
+* Use the [Azure Kusto Logic App connector](kusto/tools/logicapps.md) to run Kusto queries and commands as part of a scheduled or triggered task.

@@ -1,16 +1,12 @@
 ---
-title: Azure Data Explorer R SDK - Azure Data Explorer | Microsoft Docs
-description: This article describes Azure Data Explorer R SDK in Azure Data Explorer.
-services: data-explorer
-author: orspod
-ms.author: orspodek
-ms.reviewer: rkarlin
-ms.service: data-explorer
+title:  Kusto R SDK
+description: This article describes Kusto R SDK in Azure Data Explorer.
+ms.reviewer: orspodek
 ms.topic: reference
-ms.date: 05/29/2019
+ms.date: 04/19/2023
 ---
-# Azure Data Explorer R SDK
+# Kusto R SDK
 
-The Azure Data Explorer R library is an open-source project that is part of the [`cloudyr` project](https://github.com/cloudyr), enables you to query Azure Data Explorer clusters by using R.
+The Kusto R library is an open-source project that is part of the [`cloudyr` project](https://github.com/cloudyr) that allows you to query your cluster using R.
 
 The [GitHub Repository](https://github.com/cloudyr/AzureKusto) includes installation instructions and usage examples.

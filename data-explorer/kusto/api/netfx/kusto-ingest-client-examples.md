@@ -1,13 +1,9 @@
 ---
-title: Kusto.Ingest code examples - Azure Data Explorer
+title:  Kusto.Ingest code examples
 description: This article describes Kusto.Ingest ingestion code examples in Azure Data Explorer.
-services: data-explorer
-author: orspod
-ms.author: orspodek
 ms.reviewer: ohbitton
-ms.service: data-explorer
 ms.topic: reference
-ms.date: 05/19/2019
+ms.date: 05/08/2023
 ---
 # Kusto.Ingest ingestion code examples
 
@@ -22,57 +18,56 @@ This collection of short code snippets demonstrates various techniques of ingest
 Use KustoQueuedIngestClient, with optional RetryPolicy, for async ingestion from a single Azure blob.
 
 ```csharp
+var ingestUri = "https://ingest-<clusterName>.<region>.kusto.windows.net";
+var appId = "<appId>";
+var appKey = "<appKey>";
+var appTenant = "<appTenant>";
 //Create Kusto connection string with App Authentication
-var kustoConnectionStringBuilderDM =
-    new KustoConnectionStringBuilder(@"https://ingest-{clusterNameAndRegion}.kusto.windows.net").WithAadApplicationKeyAuthentication(
-        applicationClientId: "{Application Client ID}",
-        applicationKey: "{Application Key (secret)}",
-        authority: "{AAD TenantID or name}");
-
+var kustoConnectionStringBuilderDM = new KustoConnectionStringBuilder(ingestUri)
+    .WithAadApplicationKeyAuthentication(
+        applicationClientId: appId,
+        applicationKey: appKey,
+        authority: appTenant
+    );
 // Create an ingest client
 // Note, that creating a separate instance per ingestion operation is an anti-pattern.
 // IngestClient classes are thread-safe and intended for reuse
-IKustoIngestClient client = KustoIngestFactory.CreateQueuedIngestClient(kustoConnectionStringBuilderDM);
-
+using var client = KustoIngestFactory.CreateQueuedIngestClient(
+    kustoConnectionStringBuilderDM,
+    // Create your custom retry policy, which will affect how the ingest client handles retrying on transient failures
+    new QueueOptions { MaxRetries = 0 }
+);
+var blobUriWithSasKey = "<blobUriWithSasKey>";
 // Ingest from blobs according to the required properties
-var kustoIngestionProperties = new KustoIngestionProperties(databaseName: "myDB", tableName: "myTable");
-
-var sourceOptions = new StorageSourceOptions() { DeleteSourceOnSuccess = true };
-
-//// Create your custom implementation of IRetryPolicy, which will affect how the ingest client handles retrying on transient failures
-IRetryPolicy retryPolicy = new NoRetry();
-//// This line sets the retry policy on the ingest client that will be enforced on every ingest call from here on
-((IKustoQueuedIngestClient)client).QueueRetryPolicy = retryPolicy;
-
-await client.IngestFromStorageAsync(uri: @"BLOB-URI-WITH-SAS-KEY", ingestionProperties: kustoIngestionProperties, sourceOptions);
-
-client.Dispose();
+var kustoIngestionProperties = new KustoIngestionProperties("<databaseName>", "<tableName>");
+var sourceOptions = new StorageSourceOptions { DeleteSourceOnSuccess = true };
+await client.IngestFromStorageAsync(blobUriWithSasKey, kustoIngestionProperties, sourceOptions);
 ```
 
-## Ingest from local file 
+## Ingest from local file
 
 Use KustoDirectIngestClient to ingest from a local file.
-
 
 > [!NOTE]
 > We recommend this method for limited volume and low frequency ingestion.
 
 ```csharp
+var kustoUri = "https://<clusterName>.<region>.kusto.windows.net";
+var appId = "<appId>";
+var appKey = "<appKey>";
+var appTenant = "<appTenant>";
 // Create Kusto connection string with App Authentication
-var kustoConnectionStringBuilderEngine =
-    new KustoConnectionStringBuilder(@"https://{clusterNameAndRegion}.kusto.windows.net").WithAadApplicationKeyAuthentication(
-        applicationClientId: "{Application Client ID}",
-        applicationKey: "{Application Key (secret)}",
-        authority: "{AAD TenantID or name}");
-
+var kustoConnectionStringBuilderEngine = new KustoConnectionStringBuilder(kustoUri)
+    .WithAadApplicationKeyAuthentication(
+        applicationClientId: appId,
+        applicationKey: appKey,
+        authority: appTenant
+    );
 // Create a disposable client that will execute the ingestion
-using (IKustoIngestClient client = KustoIngestFactory.CreateDirectIngestClient(kustoConnectionStringBuilderEngine))
-{
-    //Ingest from blobs according to the required properties
-    var kustoIngestionProperties = new KustoIngestionProperties(databaseName: "myDB", tableName: "myTable");
-
-    client.IngestFromStorageAsync(@"< Path to local file >", ingestionProperties: kustoIngestionProperties).GetAwaiter().GetResult();
-}
+using var client = KustoIngestFactory.CreateDirectIngestClient(kustoConnectionStringBuilderEngine);
+//Ingest from blobs according to the required properties
+var kustoIngestionProperties = new KustoIngestionProperties("<databaseName>", "<tableName>");
+await client.IngestFromStorageAsync("<filePath>", kustoIngestionProperties);
 ```
 
 ## Ingest from local files and validate ingestion
@@ -80,34 +75,31 @@ using (IKustoIngestClient client = KustoIngestFactory.CreateDirectIngestClient(k
 Use KustoQueuedIngestClient to ingest from local files and then validate the ingestion.
 
 ```csharp
-// Create Kusto connection string with App Authentication
-var kustoConnectionStringBuilderDM =
-    new KustoConnectionStringBuilder(@"https://ingest-{clusterNameAndRegion}.kusto.windows.net").WithAadApplicationKeyAuthentication(
-        applicationClientId: "{Application Client ID}",
-        applicationKey: "{Application Key (secret)}",
-        authority: "{AAD TenantID or name}");
-
+var ingestUri = "https://ingest-<clusterName>.<region>.kusto.windows.net";
+var appId = "<appId>";
+var appKey = "<appKey>";
+var appTenant = "<appTenant>";
+//Create Kusto connection string with App Authentication
+var kustoConnectionStringBuilderDM = new KustoConnectionStringBuilder(ingestUri)
+    .WithAadApplicationKeyAuthentication(
+        applicationClientId: appId,
+        applicationKey: appKey,
+        authority: appTenant
+    );
 // Create a disposable client that will execute the ingestion
-IKustoQueuedIngestClient client = KustoIngestFactory.CreateQueuedIngestClient(kustoConnectionStringBuilderDM);
-
-// Ingest from files according to the required properties
-var kustoIngestionProperties = new KustoIngestionProperties(databaseName: "myDB", tableName: "myTable");
-
-client.IngestFromStorageAsync(@"ValidTestFile.csv", kustoIngestionProperties);
-client.IngestFromStorageAsync(@"InvalidTestFile.csv", kustoIngestionProperties);
-
+using var client = KustoIngestFactory.CreateQueuedIngestClient(kustoConnectionStringBuilderDM);
+// Ingest from blobs according to the required properties
+var kustoIngestionProperties = new KustoIngestionProperties("<databaseName>", "<tableName>");
+await client.IngestFromStorageAsync("ValidTestFile.csv", kustoIngestionProperties);
+await client.IngestFromStorageAsync("InvalidTestFile.csv", kustoIngestionProperties);
 // Waiting for the aggregation
 Thread.Sleep(TimeSpan.FromMinutes(8));
-
 // Retrieve and validate failures
-var ingestionFailures = client.PeekTopIngestionFailuresAsync().GetAwaiter().GetResult();
-Ensure.IsTrue((ingestionFailures.Count() > 0), "Failures expected");
+var ingestionFailures = await client.PeekTopIngestionFailuresAsync();
+Ensure.IsTrue(ingestionFailures.Any(), "Failures expected");
 // Retrieve, delete and validate failures
-ingestionFailures = client.GetAndDiscardTopIngestionFailuresAsync().GetAwaiter().GetResult();
-Ensure.IsTrue((ingestionFailures.Count() > 0), "Failures expected");
-
-// Dispose of the client
-client.Dispose();
+ingestionFailures = await client.GetAndDiscardTopIngestionFailuresAsync();
+Ensure.IsTrue(ingestionFailures.Any(), "Failures expected");
 ```
 
 ### Ingest from local files and report status to a queue
@@ -115,18 +107,21 @@ client.Dispose();
 Use KustoQueuedIngestClient to ingest from local files and then report the status to a queue.
 
 ```csharp
-// Create Kusto connection string with App Authentication
-var kustoConnectionStringBuilderDM =
-    new KustoConnectionStringBuilder(@"https://ingest-{clusterNameAndRegion}.kusto.windows.net").WithAadApplicationKeyAuthentication(
-        applicationClientId: "{Application Client ID}",
-        applicationKey: "{Application Key (secret)}",
-        authority: "{AAD TenantID or name}");
-
+var ingestUri = "https://ingest-<clusterName>.<region>.kusto.windows.net";
+var appId = "<appId>";
+var appKey = "<appKey>";
+var appTenant = "<appTenant>";
+//Create Kusto connection string with App Authentication
+var kustoConnectionStringBuilderDM = new KustoConnectionStringBuilder(ingestUri)
+    .WithAadApplicationKeyAuthentication(
+        applicationClientId: appId,
+        applicationKey: appKey,
+        authority: appTenant
+    );
 // Create a disposable client that will execute the ingestion
-IKustoQueuedIngestClient client = KustoIngestFactory.CreateQueuedIngestClient(kustoConnectionStringBuilderDM);
-
+using var client = KustoIngestFactory.CreateQueuedIngestClient(kustoConnectionStringBuilderDM);
 // Ingest from a file according to the required properties
-var kustoIngestionProperties = new KustoQueuedIngestionProperties(databaseName: "myDB", tableName: "myTable")
+var kustoIngestionProperties = new KustoQueuedIngestionProperties("<databaseName>", "<tableName>")
 {
     // Setting the report level to FailuresAndSuccesses will cause both successful and failed ingestions to be reported
     // (Rather than the default "FailuresOnly" level - which is demonstrated in the
@@ -136,27 +131,19 @@ var kustoIngestionProperties = new KustoQueuedIngestionProperties(databaseName: 
     // For the sake of the example, we will choose it anyway. 
     ReportMethod = IngestionReportMethod.Queue
 };
-
-client.IngestFromStorageAsync("ValidTestFile.csv", kustoIngestionProperties);
-client.IngestFromStorageAsync("InvalidTestFile.csv", kustoIngestionProperties);
-
+await client.IngestFromStorageAsync("ValidTestFile.csv", kustoIngestionProperties);
+await client.IngestFromStorageAsync("InvalidTestFile.csv", kustoIngestionProperties);
 // Waiting for the aggregation
 Thread.Sleep(TimeSpan.FromMinutes(8));
-
 // Retrieve and validate failures
-var ingestionFailures = client.PeekTopIngestionFailures().GetAwaiter().GetResult();
-Ensure.IsTrue((ingestionFailures.Count() > 0), "The failed ingestion should have been reported to the failed ingestions queue");
+var ingestionFailures = await client.PeekTopIngestionFailuresAsync();
+Ensure.IsTrue(ingestionFailures.Any(), "The failed ingestion should have been reported to the failed ingestions queue");
 // Retrieve, delete and validate failures
-ingestionFailures = client.GetAndDiscardTopIngestionFailures().GetAwaiter().GetResult();
-Ensure.IsTrue((ingestionFailures.Count() > 0), "The failed ingestion should have been reported to the failed ingestions queue");
-
+ingestionFailures = await client.GetAndDiscardTopIngestionFailuresAsync();
+Ensure.IsTrue(ingestionFailures.Any(), "The failed ingestion should have been reported to the failed ingestions queue");
 // Verify the success has also been reported to the queue
-var ingestionSuccesses = client.GetAndDiscardTopIngestionSuccesses().GetAwaiter().GetResult();
-Ensure.ConditionIsMet((ingestionSuccesses.Count() > 0),
-    "The successful ingestion should have been reported to the successful ingestions queue");
-
-// Dispose of the client
-client.Dispose();
+var ingestionSuccesses = await client.GetAndDiscardTopIngestionSuccessesAsync();
+Ensure.ConditionIsMet(ingestionSuccesses.Any(), "The successful ingestion should have been reported to the successful ingestions queue");
 ```
 
 ### Ingest from local files and report status to a table
@@ -164,18 +151,21 @@ client.Dispose();
 Use KustoQueuedIngestClient to ingest from local files and report status to a table.
 
 ```csharp
-// Create Kusto connection string with App Authentication
-var kustoConnectionStringBuilderDM =
-    new KustoConnectionStringBuilder(@"https://ingest-{clusterNameAndRegion}.kusto.windows.net").WithAadApplicationKeyAuthentication(
-        applicationClientId: "{Application Client ID}",
-        applicationKey: "{Application Key (secret)}",
-        authority: "{AAD TenantID or name}");
-
+var ingestUri = "https://ingest-<clusterName>.<region>.kusto.windows.net";
+var appId = "<appId>";
+var appKey = "<appKey>";
+var appTenant = "<appTenant>";
+//Create Kusto connection string with App Authentication
+var kustoConnectionStringBuilderDM = new KustoConnectionStringBuilder(ingestUri)
+    .WithAadApplicationKeyAuthentication(
+        applicationClientId: appId,
+        applicationKey: appKey,
+        authority: appTenant
+    );
 // Create a disposable client that will execute the ingestion
-IKustoQueuedIngestClient client = KustoIngestFactory.CreateQueuedIngestClient(kustoConnectionStringBuilderDM);
-
+using var client = KustoIngestFactory.CreateQueuedIngestClient(kustoConnectionStringBuilderDM);
 // Ingest from a file according to the required properties
-var kustoIngestionProperties = new KustoQueuedIngestionProperties(databaseName: "myDB", tableName: "myDB")
+var kustoIngestionProperties = new KustoQueuedIngestionProperties("<databaseName>", "<tableName>")
 {
     // Setting the report level to FailuresAndSuccesses will cause both successful and failed ingestions to be reported
     // (Rather than the default "FailuresOnly" level)
@@ -183,35 +173,25 @@ var kustoIngestionProperties = new KustoQueuedIngestionProperties(databaseName: 
     // Choose the report method of choice
     ReportMethod = IngestionReportMethod.Table
 };
-
-var filePath = @"< Path to file >";
+var filePath = "<filePath>";
 var fileIdentifier = Guid.NewGuid();
-var fileDescription = new FileDescription() { FilePath = filePath, SourceId = fileIdentifier };
-var sourceOptions = new StorageSourceOptions() { SourceId = fileDescription.SourceId.Value };
-
+var sourceOptions = new StorageSourceOptions { SourceId = fileIdentifier };
 // Execute the ingest operation and save the result.
-var clientResult = await client.IngestFromStorageAsync(fileDescription.FilePath,
-    ingestionProperties: kustoIngestionProperties, sourceOptions);
-
+var clientResult = await client.IngestFromStorageAsync(filePath, kustoIngestionProperties, sourceOptions);
 // Use the fileIdentifier you supplied to get the status of your ingestion 
-var ingestionStatus = clientResult.GetIngestionStatusBySourceId(fileIdentifier);
+var ingestionStatus = clientResult.Result.GetIngestionStatusBySourceId(fileIdentifier);
 while (ingestionStatus.Status == Status.Pending)
 {
     // Wait a minute...
     Thread.Sleep(TimeSpan.FromMinutes(1));
     // Try again
-    ingestionStatus = clientResult.GetIngestionStatusBySourceId(fileIdentifier);
+    ingestionStatus = clientResult.Result.GetIngestionStatusBySourceId(fileIdentifier);
 }
-
 // Verify the results of the ingestion
-Ensure.ConditionIsMet(ingestionStatus.Status == Status.Succeeded,
-    "The file should have been ingested successfully");
-
-// Dispose of the client
-client.Dispose();
+Ensure.ConditionIsMet(ingestionStatus.Status == Status.Succeeded, "The file should have been ingested successfully");
 ```
 
-## Next steps
+## Related content
 
 * [Kusto.Ingest client reference](kusto-ingest-client-reference.md)
 * [Kusto.Ingest operation status](kusto-ingest-client-errors.md)

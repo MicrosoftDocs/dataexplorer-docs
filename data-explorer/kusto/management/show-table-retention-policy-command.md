@@ -1,31 +1,35 @@
 ---
-title: .show table retention policy command- Azure Data Explorer
-description: This article describes the .show table retention policy command in Azure Data Explorer.
-services: data-explorer
-author: orspod
-ms.author: orspodek
+title: .show table policy retention command
+description: Learn how to use the `.show table policy retention` command to display the table's retention policy.
 ms.reviewer: yonil
-ms.service: data-explorer
 ms.topic: reference
-ms.date: 10/03/2021
+ms.date: 05/23/2023
 ---
-# .show table retention policy
+# .show table policy retention command
 
-Display a table's [retention policy](retentionpolicy.md). The retention policy controls the mechanism that automatically removes data from tables or materialized views. It is used to remove data whose relevance is age-based. The retention policy can be configured for a specific table or materialized view, or for an entire database. The policy then applies to all tables in the database that don't override it.
+Display the table's [retention policy](retention-policy.md). The retention policy controls the mechanism that automatically removes data from tables or materialized views. It's used to remove data whose relevance is age-based. The retention policy can be configured for a specific table or materialized view, or for an entire database. The policy then applies to all tables in the database that don't override it.
+
+## Permissions
+
+You must have at least Database User, Database Viewer, or Database Monitor permissions to run this command. For more information, see [role-based access control](access-control/role-based-access-control.md).
 
 ## Syntax
 
-`.show` `table` *TableName* `policy` `retention` 
+`.show` `table` *TableName* `policy` `retention`
 
-## Arguments
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
 
-*TableName* - Specify the name of the table. 
+## Parameters
+
+|Name|Type|Required|Description|
+|--|--|--|--|
+|*TableName*| `string` | :heavy_check_mark:|The name of the table for which to show the policy details.|
 
 ## Returns
 
 Returns a JSON representation of the policy.
 
-### Example
+## Example
 
 Displays a retention policy:
 

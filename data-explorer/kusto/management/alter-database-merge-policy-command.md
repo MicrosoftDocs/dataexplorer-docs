@@ -1,28 +1,36 @@
 ---
-title: .alter database merge policy command- Azure Data Explorer
-description: This article describes the .alter database merge policy command in Azure Data Explorer.
-services: data-explorer
-author: orspod
-ms.author: orspodek
+title:  .alter database policy merge command
+description: Learn how to use the `.alter database policy merge` command to change the database's merge policy. 
 ms.reviewer: yonil
-ms.service: data-explorer
 ms.topic: reference
-ms.date: 09/29/2021
+ms.date: 02/21/2023
 ---
-# .alter database merge policy
+# .alter database policy merge command
 
-Change a database's [merge policy](mergepolicy.md). The merge policy defines if and how [Extents (Data Shards)](../management/extents-overview.md) in the cluster should get merged. 
- 
+Changes the database's [merge policy](merge-policy.md). The merge policy defines if and how [extents (Data Shards)](../management/extents-overview.md) in the cluster should get merged.
+
+## Permissions
+
+You must have at least [Database Admin](access-control/role-based-access-control.md) permissions to run this command.
 
 ## Syntax
 
-`.alter` `database` *DatabaseName* `policy` `merge` 
+`.alter` `database` *DatabaseName* `policy` `merge` *PolicyObject*
+
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+
+## Parameters
+
+|Name|Type|Required|Description|
+|--|--|--|--|
+|*DatabaseName*| `string` | :heavy_check_mark:|The name of the database for which to alter the merge policy.|
+|*PolicyObject*| `string` | :heavy_check_mark:|A policy object that defines the merge policy. For more information, see [merge policy](merge-policy.md).|
 
 ### Examples
 
 Set all properties of the policy explicitly, at the database level:
 
-```kusto
+~~~kusto
 .alter database [database_name] policy merge ```
 {
   "RowCountUpperBoundForMerge": 16000000,
@@ -36,7 +44,7 @@ Set all properties of the policy explicitly, at the database level:
     "Kind": "Default"
   }
 }```
-```
+~~~
 
 Set the *default* merge policy at database level:
 

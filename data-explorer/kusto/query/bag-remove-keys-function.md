@@ -1,35 +1,36 @@
 ---
-title: bag_remove_keys() - Azure Data Explorer 
-description: This article describes bag_remove_keys() in Azure Data Explorer.
-services: data-explorer
-author: orspod
-ms.author: orspodek
+title:  bag_remove_keys()
+description: Learn how to use the bag_remove_keys() function to remove keys and associated values from property bags. 
 ms.reviewer: alexans
-ms.service: data-explorer
 ms.topic: reference
-ms.date: 10/04/2020
+ms.date: 11/23/2022
 ---
 # bag_remove_keys()
 
-Removes keys and associated values from a `dynamic` property-bag.
+Removes keys and associated values from a `dynamic` property bag.
 
 ## Syntax
 
-`bag_remove_keys(`*bag*`, `*keys*`)`
+`bag_remove_keys(`*bag*`,`*keys*`)`
 
-## Arguments
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
 
-* *bag*: `dynamic` property-bag input.
-* *keys*: `dynamic` array includes keys to be removed from the input. Keys refer to the first level of the property bag.
-Specifying keys on the nested levels isn't supported.
+## Parameters
+
+| Name | Type | Required | Description |
+| -- | -- | -- | -- |
+| *bag* | `dynamic` |  :heavy_check_mark: | The property bag from which to remove keys. |
+| *keys* | `dynamic` |  :heavy_check_mark: | List of keys to be removed from the input. The keys are the first level of the property bag. You can specify keys on the nested levels using [JSONPath](jsonpath.md) notation. Array indexing isn't supported. |
 
 ## Returns
 
-Returns a `dynamic` property-bag without specified keys and their values.
+Returns a `dynamic` property bag without specified keys and their values.
 
-## Example
+## Examples
 
-<!-- csl: https://help.kusto.windows.net/Samples -->
+> [!div class="nextstepaction"]
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA0tJLAHCpJxUjcy8gtISq5TKvMTczGRNrmguBSCAcjWq1bNTKw3VFawUDI2MdUAyCiARI3UrBfXEpGT1Wk0dHOrVyxJzSlPVdcDqjYHqTYz0DEDKY7lqFFIrSlLzUhSKUotLc0pskxLT44tSc/PLUuOBaoshLtKBmxkNsRFikol6rKYmAD1YmXe9AAAA" target="_blank">Run the query</a>
+
 ```kusto
 datatable(input:dynamic)
 [
@@ -39,7 +40,28 @@ datatable(input:dynamic)
 | extend result=bag_remove_keys(input, dynamic(['key2', 'key4']))
 ```
 
+**Output**
+
 |input|result|
 |---|---|
 |{<br>  "key1": 123,<br>  "key2": "abc"<br>}|{<br>  "key1": 123<br>}|
 |{<br>  "key1": "value",<br>  "key3": 42.0<br>}|{<br>  "key1": "value",<br>  "key3": 42.0<br>}|
+
+### Remove inner properties of dynamic values using JSONPath notation
+
+> [!div class="nextstepaction"]
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAz2O3QqDMAyF7/sUuRjEQpFW74Q9iRSpNgyZf2gVnfPd19JtydWXk5wTa5zvuqOkHabVFfYYTN82nJUMfH0xOfFJh8ICVJYLCJB5OHGax0khFICmbtArYRAk3I8XXnE191wqKQVkUuqLC6bZG2h3NFiYaVk7d6/No5qpHzeq/MUSvxH//BJvaQhNY+DPV3P+AU1I1W7BAAAA" target="_blank">Run the query</a>
+
+```kusto
+datatable(input:dynamic)
+[
+    dynamic({'key1': 123, 'key2': {'prop1' : 'abc', 'prop2': 'xyz'}, 'key3': [100, 200]}),
+]
+| extend result=bag_remove_keys(input, dynamic(['$.key2.prop1', 'key3']))
+```
+
+**Output**
+
+|input|result|
+|---|---|
+|{<br>  "key1": 123,<br>  "key2": {<br>    "prop1": "abc",<br>    "prop2": "xyz"<br>  },<br>  "key3": [<br>    100,<br>    200<br>  ]<br>}|{<br>  "key1": 123,<br>  "key2": {<br>    "prop2": "xyz"<br>  }<br>}|

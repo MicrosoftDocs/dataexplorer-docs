@@ -1,22 +1,30 @@
 ---
-title: .alter-merge database merge policy command- Azure Data Explorer
-description: This article describes the .alter-merge database merge policy command in Azure Data Explorer.
-services: data-explorer
-author: orspod
-ms.author: orspodek
+title:  .alter-merge database policy merge command
+description: Learn how to use the `.alter-merge database policy merge` command to change the database's merge policy.
 ms.reviewer: yonil
-ms.service: data-explorer
 ms.topic: reference
-ms.date: 09/29/2021
+ms.date: 04/20/2023
 ---
-# .alter-merge database merge policy
+# .alter-merge database policy merge command
 
-Change a database's [merge policy](mergepolicy.md). The merge policy defines if and how [Extents (Data Shards)](../management/extents-overview.md) in the cluster should get merged. 
- 
+Changes the database's [merge policy](merge-policy.md). The merge policy defines if and how [extents (data shards)](../management/extents-overview.md) in the cluster should get merged.
+
+## Permissions
+
+You must have at least [Database Admin](access-control/role-based-access-control.md) permissions to run this command.
 
 ## Syntax
 
-`.alter-merge` `database` *DatabaseName* `policy` `merge` 
+`.alter-merge` `database` *DatabaseName* `policy` `merge` *ArrayOfPolicyObjects*
+
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+
+## Parameters
+
+|Name|Type|Required|Description|
+|--|--|--|--|
+|*DatabaseName*| `string` | :heavy_check_mark:|The name of the database for which to alter the merge policy.|
+|*ArrayOfPolicyObjects*| `string` | :heavy_check_mark:|A serialized array of one or more JSON policy objects. For more information, see [merge policy](merge-policy.md).|
 
 ### Example
 

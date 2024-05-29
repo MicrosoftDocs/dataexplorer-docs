@@ -1,54 +1,36 @@
 ---
-title: The case-sensitive in string operator - Azure Data Explorer
-description: This article describes the case-sensitive in string operator in Azure Data Explorer.
-services: data-explorer
-author: orspod
-ms.author: orspodek
+title:  The case-sensitive in string operator
+description: Learn how to use the in operator to filter data with a case-sensitive string.
 ms.reviewer: alexans
-ms.service: data-explorer
 ms.topic: reference
-ms.date: 09/19/2021
-ms.localizationpriority: high
+ms.date: 03/29/2023
 ---
 # in operator
 
 Filters a record set for data with a case-sensitive string.
 
-The following table provides a comparison of the `in` operators:
-
-|Operator   |Description   |Case-Sensitive  |Example (yields `true`)  |
-|-----------|--------------|----------------|-------------------------|
-|[`in`](in-cs-operator.md) |Equals to one of the elements |Yes |`"abc" in ("123", "345", "abc")`|
-|[`!in`](not-in-cs-operator.md) |Not equals to any of the elements |Yes | `"bca" !in ("123", "345", "abc")` |
-|[`in~`](inoperator.md) |Equals to any of the elements |No | `"Abc" in~ ("123", "345", "abc")` |
-|[`!in~`](not-in-operator.md) |Not equals to any of the elements |No | `"bCa" !in~ ("123", "345", "ABC")` |
-
-> [!NOTE]
->
-> * In tabular expressions, the first column of the result set is selected.
-> * The expression list can produce up to `1,000,000` values.
-> * Nested arrays are flattened into a single list of values. For example, `x in (dynamic([1,[2,3]]))` becomes `x in (1,2,3)`.
-
-For further information about other operators and to determine which operator is most appropriate for your query, see [datatype string operators](datatypes-string-operators.md). 
+[!INCLUDE [in-operator-comparison](../../includes/in-operator-comparison.md)]
 
 ## Performance tips
 
-> [!NOTE]
-> Performance depends on the type of search and the structure of the data.
-
-For faster results, use the case-sensitive version of an operator, for example, `in`, not `in~`. For best practices, see [Query best practices](best-practices.md).
+[!INCLUDE [performance-tip-note](../../includes/performance-tip-note.md)]
 
 ## Syntax
 
-*T* `|` `where` *col* `in` `(`*list of scalar expressions*`)`   
-*T* `|` `where` *col* `in` `(`*tabular expression*`)`   
+*T* `|` `where` *col* `in` `(`*expression*`,` ... `)`
 
-## Arguments
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
 
-* *T* - The tabular input whose records are to be filtered.
-* *col* - The column to filter.
-* *list of expressions* - A comma-separated list of tabular, scalar, or literal expressions.
-* *tabular expression* - A tabular expression that has a set of values. If the expression has multiple columns, the first column is used.
+## Parameters
+
+| Name | Type | Required | Description |
+|--|--|--|--|
+| *T* | `string` |  :heavy_check_mark: | The tabular input to filter.|
+| *col* | `string` |  :heavy_check_mark: | The column by which to filter.|
+| *expression* | scalar or tabular |  :heavy_check_mark: | An expression that specifies the values for which to search. the values for which to search. Each expression can be a [scalar](scalar-data-types/index.md) value or a [tabular expression](tabular-expression-statements.md) that produces a set of values. If a tabular expression has multiple columns, the first column is used. The search will consider up to 1,000,000 distinct values.|
+
+> [!NOTE]
+> An inline tabular expression must be enclosed with double parentheses. See [example](#tabular-expression).
 
 ## Returns
 
@@ -56,9 +38,13 @@ Rows in *T* for which the predicate is `true`.
 
 ## Examples  
 
-### Use in operator
+### List of scalars
 
-<!-- csl: https://help.kusto.windows.net/Samples -->
+The following query shows how to use `in` with a list of scalar values.
+
+> [!div class="nextstepaction"]
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAwsuyS/KdS1LzSspVuCqUSjPSC1KVQguSSxJVcjMU9BQcvPxD/J0cVTSUVByd/UPcvcEM/1cwxUi/YO8lTRBmpLzS/NKAJNAy9pJAAAA" target="_blank">Run the query</a>
+
 ```kusto
 StormEvents 
 | where State in ("FLORIDA", "GEORGIA", "NEW YORK") 
@@ -71,9 +57,13 @@ StormEvents
 |---|
 |4775|  
 
-### Use dynamic array
+### Dynamic array
 
-<!-- csl: https://help.kusto.windows.net/Samples -->
+The following query shows how to use `in` with a dynamic array.
+
+> [!div class="nextstepaction"]
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA8tJLVEoLkksSS1WsFVIqcxLzM1M1ohWd/PxD/J0cVTXUVB3DPFx9AvxdFYI9g8N8QCJuLv6B7l7OqrHalpzBZfkF+W6lqXmlRQrcNUolGekFqUqBIMMVMjMU9CAGK0JlEnOL80rAQDj7kmUbgAAAA==" target="_blank">Run the query</a>
+
 ```kusto
 let states = dynamic(['FLORIDA', 'ATLANTIC SOUTH', 'GEORGIA']);
 StormEvents 
@@ -87,31 +77,35 @@ StormEvents
 |---|
 |3218|
 
-### Subquery
+### Tabular expression
 
-<!-- csl: https://help.kusto.windows.net/Samples -->
+The following query shows how to use `in` with a tabular expression.
+
+> [!div class="nextstepaction"]
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA8tJLVEIyS+IN40PLkksSS1WsFXg5VIAguCS/KJc17LUvJJiiECNQnFpbm5iUWZVqkJyfmleiYamQlKlAlgbTEVJfoGCKUgUrCDeGmgWkjlAXo1CeUZqUSpEl0JmnoIGsuWaYBVgvQBWFNNCmAAAAA==" target="_blank">Run the query</a>
+
 ```kusto
-// Using subquery
 let Top_5_States = 
-StormEvents
-| summarize count() by State
-| top 5 by count_; 
+    StormEvents
+    | summarize count() by State
+    | top 5 by count_; 
 StormEvents 
 | where State in (Top_5_States) 
 | count
 ```
 
-The same query can be written as:
+The same query can be written with an inline tabular expression statement.
 
-<!-- csl: https://help.kusto.windows.net/Samples -->
+> [!div class="nextstepaction"]
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAwsuyS/KdS1LzSspVuDlqlEoz0gtSlUILkksSVXIzFPQ0ODlUgCCYIQyiECNQnFpbm5iUWZVqkJyfmleiYamQlIlRCNMRUl+gYIpSBSsIB4irKkJtgcsBAD4wHSifQAAAA==" target="_blank">Run the query</a>
+
 ```kusto
-// Inline subquery 
 StormEvents 
 | where State in (
-    ( StormEvents
+    StormEvents
     | summarize count() by State
-    | top 5 by count_ )
-) 
+    | top 5 by count_
+    ) 
 | count
 ```
 
@@ -123,12 +117,15 @@ StormEvents
 
 ### Top with other example
 
-<!-- csl: https://help.kusto.windows.net/Samples -->
+> [!div class="nextstepaction"]
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA22PPQuDMBCG9/yKFxcVXJ3EpdCt0EF3sfaqKZpIPEst/vhGpVZqs+Tg7nk/amKcZFmxkqrMDkOWcM6EGI39jMxr+SIvYW2a44MUdwL2jej6psmN3aFeYZoPLFroXrG8eTORDq2Vi+GuLq6Py4DZx49EbQOkus3CxXni/+QZwbpFOIE7wxGt0XcqeNGMIPYCYgQ9mdQVn37SBlxmqeBtE/jBchTAOXNFxvHFtrCdvN8M30ZvE2wmM1ABAAA=" target="_blank">Run the query</a>
+
 ```kusto
-let Lightning_By_State = materialize(StormEvents | summarize lightning_events = countif(EventType == 'Lightning') by State);
+let Lightning_By_State = materialize(StormEvents
+    | summarize lightning_events = countif(EventType == 'Lightning') by State);
 let Top_5_States = Lightning_By_State | top 5 by lightning_events | project State; 
 Lightning_By_State
-| extend State = iif(State in (Top_5_States), State, "Other")
+| extend State = iff(State in (Top_5_States), State, "Other")
 | summarize sum(lightning_events) by State 
 ```
 
@@ -145,10 +142,13 @@ Lightning_By_State
 
 ### Use a static list returned by a function
 
-<!-- csl: https://help.kusto.windows.net/Samples -->
-```kusto
-StormEvents | where State in (InterestingStates()) | count
+> [!div class="nextstepaction"]
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAwsuyS/KdS1LzSspVuCqUSjPSC1KVQguSSxJVcjMU9DwzCsBChSXZOalgwWLNTQ1QeqS80vzSgAtnqHrPAAAAA==" target="_blank">Run the query</a>
 
+```kusto
+StormEvents 
+| where State in (InterestingStates()) 
+| count
 ```
 
 **Output**
@@ -159,7 +159,9 @@ StormEvents | where State in (InterestingStates()) | count
 
 The function definition.
 
-<!-- csl: https://help.kusto.windows.net/Samples -->
+> [!div class="nextstepaction"]
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA9MrzsgvV0grzUsuyczPU/DMK0ktSi0uycxLDy5JLEktBgBVrDk7IAAAAA==" target="_blank">Run the query</a>
+
 ```kusto
 .show function InterestingStates
 ```

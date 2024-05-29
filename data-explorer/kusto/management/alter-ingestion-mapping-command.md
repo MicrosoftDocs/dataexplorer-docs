@@ -1,51 +1,71 @@
 ---
-title: .alter ingestion mapping - Azure Data Explorer
-description: This article describes .alter ingestion mapping in Azure Data Explorer.
-services: data-explorer
-author: orspod
-ms.author: orspodek
-ms.reviewer: rkarlin
-ms.service: data-explorer
+title:  .alter ingestion mapping command
+description: Learn how to use the `.alter ingestion mapping` command to alter a table or database's existing ingestion mapping 
+ms.reviewer: orspodek
 ms.topic: reference
-ms.date: 02/04/2020
+ms.date: 12/26/2023
 ---
-# .alter ingestion mapping
+# .alter ingestion mapping command
 
 Alters an existing ingestion mapping that is associated with a specific table/database and a specific format (full mapping replace).
 
-**Syntax**
+> [!NOTE]
+> New columns introduced in an ingestion mapping, which aren't present in the source table, will be added to the table during the initial data ingestion for that column. This behavior is only supported for queued ingestion and is contingent on specifying a valid data type for the column.
 
-`.alter` `table` *TableName* `ingestion` *MappingKind* `mapping` *MappingName* *MappingFormattedAsJson*
+## Permissions
 
-`.alter` `database` *DatabaseName* `ingestion` *MappingKind* `mapping` *MappingName* *MappingFormattedAsJson*
+The command to alter database ingestion mapping requires at least [Database Ingestor](access-control/role-based-access-control.md) permissions, and the command to alter table ingestion mapping requires at least [Table Ingestor](access-control/role-based-access-control.md) permissions.
+
+## Syntax
+
+`.alter` `table` *TableName* `ingestion` *MappingKind* `mapping` *MappingName* *ArrayOfMappingObjects*
+
+`.alter` `database` *DatabaseName* `ingestion` *MappingKind* `mapping` *MappingName* *ArrayOfMappingObjects*
 
 > [!NOTE]
-> * This mapping can be referenced by its name by ingestion commands, instead of specifying the complete mapping as part of the command.
-> * Valid values for _MappingKind_ are: `CSV`, `JSON`, `avro`, `parquet`, and `orc`.
+> This mapping can be referenced by its name by ingestion commands, instead of specifying the complete mapping as part of the command.
 
-**Example** 
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+
+## Parameters
+
+|Name|Type|Required|Description|
+|--|--|--|--|
+| *TableName* | `string` |  :heavy_check_mark: | The name of the table.|
+| *DatabaseName* | `string` |  :heavy_check_mark: | The name of the database.|
+| *MappingKind* | `string` |  :heavy_check_mark: | The type of mapping. Valid values are `CSV`, `JSON`, `avro`, `parquet`, and `orc`.|
+| *MappingName* | `string` |  :heavy_check_mark: | The name of the mapping.|
+| *ArrayOfMappingObjects* | `string` |  :heavy_check_mark: | A serialized array with one or more mapping objects defined.|
+
+## Examples
  
-```kusto
+````kusto
 .alter table MyTable ingestion csv mapping "Mapping1"
-'['
-'	{ "column" : "rownumber", "DataType":"int", "Properties":{"Ordinal":"0"}},'
-'	{ "column" : "rowguid", "DataType":"string", "Properties":{"Ordinal":"1"} }'
-']'
-
-.alter table MyTable ingestion json mapping "Mapping1"
-'['
-'	{ "column" : "rownumber", "Properties":{"Path":"$.rownumber"}},'
-'	{ "column" : "rowguid", "Properties":{"Path":"$.rowguid"}}'
-']'
-
-.alter database MyDatabase ingestion csv mapping "Mapping2"
-'['
-'	{ "column" : "rownumber", "DataType":"int", "Properties":{"Ordinal":"0"}},'
-'	{ "column" : "rowguid", "DataType":"string", "Properties":{"Ordinal":"1"} }'
-']'
+```
+[
+    {"column" : "rownumber", "DataType" : "int", "Properties" : {"Ordinal":"0"} },
+    { "column" : "rowguid", "DataType":"string", "Properties":{"Ordinal":"1"} }
+]
 ```
 
-**Sample output**
+.alter table MyTable ingestion json mapping "Mapping1"
+```
+[
+    { "column" : "rownumber", "DataType" : "int", "Properties":{"Path":"$.rownumber"}},
+    { "column" : "rowguid", "DataType":"string", "Properties":{"Path":"$.rowguid"}}
+]
+```
+
+.alter database MyDatabase ingestion csv mapping "Mapping2"
+```
+[
+    { "column" : "rownumber", "DataType":"int", "Properties":{"Ordinal":"0"}},
+    { "column" : "rowguid", "DataType":"string", "Properties":{"Ordinal":"1"} }
+]
+```
+````
+
+**Output**
 
 | Name     | Kind | Mapping                                                                                                                                                                          |
 |----------|------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|

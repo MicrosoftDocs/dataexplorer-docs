@@ -1,40 +1,43 @@
 ---
-title: Show continuous data export failures - Azure Data Explorer
+title:  Show continuous data export failures
 description: This article describes how to show continuous data export failures in Azure Data Explorer.
-services: data-explorer
-author: orspod
-ms.author: orspodek
 ms.reviewer: yifats
-ms.service: data-explorer
 ms.topic: reference
-ms.date: 08/03/2020
+ms.date: 02/21/2023
 ---
 # Show continuous export failures
 
-Returns all failures logged as part of the continuous export. Filter the results by the Timestamp column in the command to view only time range of interest. 
+Returns all failures logged as part of the continuous export. Filter the results by the Timestamp column in the command to view only time range of interest.
+The command will not return any results if executed on a [follower database](../../../follower.md), it must be executed against the leader database.
+
+## Permissions
+
+You must have at least Database User, Database Viewer, or Database Monitor permissions to run this command. For more information, see [role-based access control](../access-control/role-based-access-control.md).
 
 ## Syntax
 
 `.show` `continuous-export` *ContinuousExportName* `failures`
 
-## Properties
+[!INCLUDE [syntax-conventions-note](../../../includes/syntax-conventions-note.md)]
 
-| Property             | Type   | Description                |
-|----------------------|--------|----------------------------|
-| ContinuousExportName | String | Name of continuous export  |
+## Parameters
 
-## Output
+| Name | Type | Required | Description |
+|--|--|--|--|
+| *ContinuousExportName* | `string` |  :heavy_check_mark: | The name of the continuous export. |
+
+## Returns
 
 | Output parameter | Type      | Description                                         |
 |------------------|-----------|-----------------------------------------------------|
-| Timestamp        | Datetime  | Timestamp of the failure.                           |
-| OperationId      | String    | Operation ID of the failure.                    |
-| Name             | String    | Continuous export name.                             |
+| Timestamp        | `datetime` | Timestamp of the failure.                           |
+| OperationId      | `string` | Operation ID of the failure.                    |
+| Name             | `string` | Continuous export name.                             |
 | LastSuccessRun   | Timestamp | The last successful run of the continuous export.   |
-| FailureKind      | String    | Failure/PartialFailure. PartialFailure indicates some artifacts were exported successfully before the failure occurred. |
-| Details          | String    | Failure error details.                              |
+| FailureKind      | `string` | Failure/PartialFailure. PartialFailure indicates some artifacts were exported successfully before the failure occurred. |
+| Details          | `string` | Failure error details.                              |
 
-## Example 
+## Example
 
 ```kusto
 .show continuous-export MyExport failures 

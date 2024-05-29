@@ -1,37 +1,38 @@
 ---
-title: .delete table ingestion batching policy command - Azure Data Explorer
-description: This article describes the .delete table ingestion batching policy command in Azure Data Explorer.
-services: data-explorer
-author: orspod
-ms.author: orspodek
+title: .delete table policy ingestionbatching command
+description: Learn how to use the `.delete table policy ingestionbatching` command to remove a table's ingestion batching policy.
 ms.reviewer: yonil
-ms.service: data-explorer
 ms.topic: reference
-ms.date: 09/26/2021
+ms.date: 05/14/2023
 ---
-# .delete table ingestion batching policy
+# .delete table policy ingestionbatching command
 
-Delete the table ingestion batching policy. The [ingestionBatching policy](batchingpolicy.md) is a policy object that determines when data aggregation should stop during data ingestion according to specified settings.
+Remove the table's [ingestion batching policy](batching-policy.md) that defines data aggregation for batching. The ingestion batching policy applies to [queued ingestion](../../ingest-data-overview.md#continuous-data-ingestion).
+
+## Permissions
+
+You must have at least [Table Admin](access-control/role-based-access-control.md) permissions to run this command.
 
 ## Syntax
 
-* `.delete` `table` [*DatabaseName* `.`]*TableName* `policy` `ingestionbatching`
+`.delete` `table` *TableName* `policy` `ingestionbatching`
 
-## Arguments
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
 
-*DatabaseName* - Specify the name of the database.
-*TableName* - Specify the name of the table. Use without *DatabaseName* when running in the required database's context.
+## Parameters
 
-## Examples
+|Name|Type|Required|Description|
+|--|--|--|--|
+|*TableName*| `string` | :heavy_check_mark:|The name of the table.|
 
-The following examples delete the table IngestionBatching policy:
+## Example
 
-```kusto
-// Delete IngestionBatching policy for table `MyTable` in database `MyDatabase`
-.delete table MyDatabase.MyTable policy ingestionbatching 
-```
+The following command deletes the batching policy on a table.
 
 ```kusto
-// Delete IngestionBatching policy on table `MyTable`
 .delete table MyTable policy ingestionbatching
 ```
+
+## Related content
+
+* [delete database batching policy](delete-database-ingestion-batching-policy.md)
