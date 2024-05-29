@@ -3,7 +3,7 @@ title:  .update table command (preview)
 description: Learn how to use the .update table command to perform transactional data updates.
 ms.reviewer: vplauzon
 ms.topic: reference
-ms.date: 05/06/2024
+ms.date: 05/30/2024
 ---
 # .update table command (preview)
 
@@ -72,7 +72,6 @@ The simplified syntax requires an append query as well as a key. The key is a co
 >    * For example, use of [`take` operator](../query/take-operator.md), [`sample` operator](../query/sample-operator.md), [`rand` function](../query/rand-function.md), and other such operators isn't recommended because these operators aren't deterministic.
 > * Queries might be executed more than once within the `update` execution. If the intermediate query results are inconsistent, the update command can produce unexpected results.
 
-
 ## Supported properties
 
 | Name     | Type | Description                                                                                                                                                |
@@ -107,7 +106,7 @@ Use the following guidelines to decide which method to use:
 ## Performance tips
 
 * Data ingestion is a resource-intensive operation that might affect concurrent activities on the cluster, including running queries. Avoid running too many ingestion commands at the same time.
-* Limit the data for ingestion to less than 1 GB per ingestion operation. If necessary, use multiple ingestion commands.
+* Limit the append data to less than 1 GB per operation. If necessary, use multiple update commands.
 * Set the `distributed` flag to `true` if the amount of data being produced by the query is large, exceeds 1 GB, and doesn't require serialization. Then, multiple nodes can produce output in parallel. Don't use this flag when query results are small, since it might needlessly generate many small data shards.
 
 ## Examples -  Simplified syntax
