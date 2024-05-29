@@ -32,7 +32,12 @@ You must have at least [Database Admin](../access-control/role-based-access-cont
 |Name|Type|Required|Description|
 |--|--|--|--|
 |*TableName*| string| :heavy_check_mark:|A table name that adheres to the [Entity names](../query/schema-entities/entity-names.md) rules.|
-|*Partitions*| string| | A comma-separated list of columns used to divide the data into smaller partitions. *PartitionName* must be a case insensitive unique string both among other partition names and the column names of the mirrored table. See [Partitions formatting](external-tables-azure-storage.md#partitions-formatting).|
+|*Partitions*| string| | A comma-separated list of columns used to divide the data into smaller partitions. See [Partitions formatting](#partitions-formatting). |
+
+[!INCLUDE [partitions-formatting](../../includes/partitions-formatting.md)]
+
+> [!NOTE]
+> *PartitionName* must be a case insensitive unique string, both among other partition names and the column names of the mirrored table.
 
 ## Properties
 
