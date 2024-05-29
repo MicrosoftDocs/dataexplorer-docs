@@ -160,4 +160,3 @@ The following syntax options are available when calling the Application Insights
 ## Related content
 
 * [Write queries](/azure/data-explorer/kusto/query/tutorials/learn-common-operators)
-
