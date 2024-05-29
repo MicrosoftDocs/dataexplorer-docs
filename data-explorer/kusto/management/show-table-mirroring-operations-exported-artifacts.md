@@ -7,8 +7,7 @@ ms.date: 05/28/2024
 ---
 # .Show table mirroring operations exported artifacts command
 
-Returns the table's artifacts exported by the mirroring operation. <!-- Filter the results by the Timestamp column in the command to view only records of interest. The history of exported artifacts is retained for 14 days.-->
-<!--The command will not return any results if executed on a [follower database](../../../follower.md), it must be executed against the leader database.-->
+Returns the table's [mirroring policy](mirroring-policy.md) operations details related to the mirroring artifacts export.
 
 ## Permissions
 
@@ -43,4 +42,3 @@ You must have at least Database User, Database Viewer, or Database Monitor permi
 ```kusto
 .show table mytable operations mirroring-exported-artifacts
 ```
-
