@@ -507,7 +507,7 @@ items:
           - name: .show table mirroring operations command
             href: show-table-mirroring-operations-command.md
             displayName: .show table mirroring operations 
-          - name: .Show table mirroring operations exported artifacts command
+          - name: .show table mirroring operations exported artifacts command
             href: show-table-mirroring-operations-exported-artifacts.md
             displayName: .Show table mirroring operations exported artifacts
           - name: .show table mirroring operations failures command
