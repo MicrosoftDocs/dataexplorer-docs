@@ -7,7 +7,7 @@ ms.date: 05/28/2024
 ---
 # .show table mirroring operations failures
 
-Returns [mirroring policy](mirroring-policy.md) operations export failures.
+Returns the table's [mirroring policy](mirroring-policy.md) operations table export failures. It helps you identify failures or issues related to your table's mirroring operations.
 
 ## Permissions
 
@@ -36,7 +36,9 @@ You must have at least Database User, Database Viewer, or Database Monitor permi
 
 ## Example
 
+The following example requests operations mirroring export failures of the *myTable* table.
+
 ```kusto
-.show table MyTable operations mirroring-exported-artifacts
+.show table MyTable operations mirroring-failures
 
 ```
