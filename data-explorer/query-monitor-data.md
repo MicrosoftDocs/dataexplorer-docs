@@ -128,6 +128,14 @@ To use the function, run the name in the Query window.
 
   [ ![Query a tabular function from Azure Data Explorer Web UI.](media/query-monitor-data/function-query.png)](media/query-monitor-data/function-query.png#lightbox)
 
+## Limitations
+
+* Cross-service queries support only ".show" functions. This capability enables cross-cluster queries to reference an Azure Monitor, Azure Data Explorer, or Azure Resource Graph tabular function directly. The following commands are supported with the cross-service query:
+.show functions
+.show function {FunctionName}
+.show database {DatabaseName} schema as json
+* [Private Link](www.learn.microsoft.com//azure/azure-monitor/logs/private-link-security) (private endpoints) and [IP restrictions](www.learn.microsoft.com//azure/data-explorer/security-network-restrict-public-access) don't support cross-service queries.
+
 ## Additional syntax examples
 
 The following syntax options are available when calling the Application Insights or Log Analytics clusters:
