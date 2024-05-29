@@ -35,7 +35,7 @@ You must have at least Database User, Database Viewer, or Database Monitor permi
 |-----|-----|-----|
 |TableName | `string` | The name of the table. |
 |IsEnabled | `bool` | A boolean value indicating whether or not the mirroring policy is enabled. |
-|ExportProperties |	`string` | A JSON string with various data export properties. |
+|ExportProperties |`string` | A JSON string with various data export properties. |
 |IsExportRunning | `bool` | A boolean value indicating whether or not the mirroring policy is running. |
 |LastExportStartTime | `datetime`| The start time of the last export. |
 |LastExportResult | `string` | The status of the last export result. |

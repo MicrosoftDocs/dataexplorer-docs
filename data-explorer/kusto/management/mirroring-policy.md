@@ -28,7 +28,7 @@ The mirroring policy includes the following properties:
 | **Format** | The format of your mirrored files. | Valid value is `parquet`. | `parquet` |
 |**ConnectionStrings** |An array of connection strings that help configure and establish connections. In some environments this value is autopopulated. | | |
 |  **IsEnabled** | Determines whether the mirroring policy is enabled. When the mirroring policy is disabled and set to `false`, the underlying mirroring data is retained in the database. | `true`, `false`, `null`. | `null` |
-| **Partitions** | A comma-separated list of columns used to divide the data into smaller partitions. To learn more about partitioning formatting for the columns, see [Partitions formatting](#partitions-formatting). | | |
+| **Partitions** | A comma-separated list of columns used to divide the data into smaller partitions. | See [Partitions formatting](#partitions-formatting). | |
 
 [!INCLUDE [partitions-formatting](../../includes/partitions-formatting.md)]
 

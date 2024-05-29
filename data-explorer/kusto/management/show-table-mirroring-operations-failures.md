@@ -7,8 +7,7 @@ ms.date: 05/28/2024
 ---
 # .show table mirroring operations failures
 
-Returns all failures logged as part of the mirroring operations export. Filter the results by the Timestamp column in the command to view only time range of interest.
-<!--The command will not return any results if executed on a [follower database](../../../follower.md), it must be executed against the leader database.-->
+Returns [mirroring policy](mirroring-policy.md) operations export failures.
 
 ## Permissions
 
