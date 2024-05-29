@@ -3,7 +3,7 @@ title: Use a Jupyter Notebook to analyze data in Azure Data Explorer
 description: This article shows you how to analyze data in Azure Data Explorer using a Jupyter Notebook and the kqlmagic extension.
 ms.reviewer: maraheja
 ms.topic: how-to
-ms.date: 05/15/2023
+ms.date: 05/28/2024
 
 # Customer intent: I want to analyze data using Jupyter Notebooks and kqlmagic.
 ---
@@ -40,7 +40,18 @@ Once you install and load the kqlmagic extension, you can write KQL queries in y
 
 ## Connect to a cluster
 
-Select the tab for your preferred method to connect to your cluster.
+Select the tab for your preferred method to connect to your cluster. 
+
+> [!NOTE]
+> We recommend using the Certificate method of authentication when possible.
+
+### [Certificate](#tab/certificate)
+
+The Microsoft Entra certificate should be stored in a file accessible from the notebook. This file can be referenced in the connection string.
+
+```python
+%kql AzureDataExplorer://tenant='<tenant-id>';certificate='<certificate>';certificate_thumbprint='<thumbprint>';cluster='<cluster-name>';database='<database-name>'
+```
 
 ### [Code](#tab/code)
 
@@ -64,14 +75,6 @@ The Microsoft Entra username and password method only works on corporate network
 
 ```python
 %kql AzureDataExplorer://username='<username>';password='<password>';cluster='<cluster-name>';database='<database-name>'
-```
-
-### [Certificate](#tab/certificate)
-
-The Microsoft Entra certificate should be stored in a file accessible from the notebook. This file can be referenced in the connection string.
-
-```python
-%kql AzureDataExplorer://tenant='<tenant-id>';certificate='<certificate>';certificate_thumbprint='<thumbprint>';cluster='<cluster-name>';database='<database-name>'
 ```
 
 ### [Anonymous](#tab/anonymous)
