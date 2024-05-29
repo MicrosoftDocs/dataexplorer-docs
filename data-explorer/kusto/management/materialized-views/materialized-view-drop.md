@@ -1,56 +1,49 @@
 ---
-title: Materialized views drop - Azure Data Explorer
+title:  Materialized views drop
 description: This article describes drop materialized view command in Azure Data Explorer.
-services: data-explorer
-author: orspod
-ms.author: yifats
 ms.reviewer: yifats
-ms.service: data-explorer
 ms.topic: reference
-ms.date: 08/30/2020
+ms.date: 03/01/2023
 ---
-# .drop materialized-view 
+# .drop materialized-view
 
 Drops a materialized view.
 
-Requires [Database Admin](../access-control/role-based-authorization.md) or materialized view admin permissions.
+## Permissions
+
+You must have at least [Materialized View Admin](../access-control/role-based-access-control.md) permissions to run this command.
 
 ## Syntax
 
 `.drop` `materialized-view` *MaterializedViewName* [`ifexists`]
 
-> [!NOTE]
-> If `ifexists` is specified, the command won't fail if it refers to a non-existent materialized view.
+[!INCLUDE [syntax-conventions-note](../../../includes/syntax-conventions-note.md)]
 
-## Properties
+## Parameters
 
-| Property | Type| Description |
-|----------------|-------|-----|
-| MaterializedViewName| String| Name of the Materialized View.|
+| Name                   | Type   | Required | Description                    |
+|------------------------|--------|----------|--------------------------------|
+| *MaterializedViewName* | `string` |  :heavy_check_mark:  | Name of the materialized view. |
 
 ## Returns
 
-The command returns the remaining materialized views in the database, which is the output of the [show materialized view](materialized-view-show-commands.md#show-materialized-view) command.
+The command returns all materialized views in the database, after the drop, which is the output of the [show materialized view](materialized-view-show-command.md#show-materialized-views) command.
 
-## Example
+[!INCLUDE [materialized-view-show-command-output-schema.md](../../../includes/materialized-view-show-command-output-schema.md)]
+
+## Examples
+
+### Drop one materialized view
+
+The following command drops materialized view ViewName:
 
 ```kusto
 .drop materialized-view ViewName
 ```
 
-## Output
+**Output**
 
-|Output parameter |Type |Description
-|---|---|---|
-|Name  |String |The name of the materialized view.
-|SourceTable|String|The source table of the materialized view.
-|Query|String|The materialized view query.
-|MaterializedTo|datetime|The max materialized ingestion_time() timestamp in source table. For more information, see [how materialized views work](materialized-view-overview.md#how-materialized-views-work).
-|LastRun|datetime |The last time materialization was run.
-|LastRunResult|String|Result of last run. Returns `Completed` for successful runs, otherwise `Failed`.
-|IsHealthy|bool|`True` when view is considered healthy, `False` otherwise. View is considered healthy if it was successfully materialized up to the last hour (`MaterializedTo` is greater than `ago(1h)`).
-|IsEnabled|bool|`True` when view is enabled (see [Disable or enable materialized view](materialized-view-enable-disable.md)).
-|Folder|string|The materialized view folder.
-|DocString|string|The materialized view doc string.
-|AutoUpdateSchema|bool|Whether the view is enabled for auto updates.
-|EffectiveDateTime|datetime|The effective date time of the view, determined during creation time (see [`.create materialized-view`](materialized-view-create.md#create-materialized-view))
+| Name   | SourceTable | Query                                               | MaterializedTo                   | LastRun                      | LastRunResult | IsHealthy | IsEnabled | Folder           | DocString | AutoUpdateSchema | EffectiveDateTime            | Lookback   |
+|--------|-------------|-----------------------------------------------------|----------------------------------|------------------------------|---------------|-----------|-----------|------------------|-----------|------------------|------------------------------|------------|
+| ArgMax | T           | T \| summarize arg_max(Timestamp, *) by User        | 2023-02-26T16:40:03.3345704Z     | 2023-02-26T16:44:15.9033667Z | Completed     | true      | true      |                  |           | false            | 2023-02-23T14:01:42.5172342Z |            |
+| MyView | MyTable     | MyTable \| summarize arg_max(Column3, *) by Column1 | 2023-02-26T16:40:03.3345704Z     | 2023-02-26T16:44:15.9033667Z | Completed     | true      | true      |                  |           | true             | 2023-02-23T14:01:42.5172342Z |            |

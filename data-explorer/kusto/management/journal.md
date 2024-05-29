@@ -1,19 +1,15 @@
 ---
-title: Journal management - Azure Data Explorer
+title:  Journal management
 description: This article describes Journal management in Azure Data Explorer.
-services: data-explorer
-author: orspod
-ms.author: orspodek
-ms.reviewer: rkarlin
-ms.service: data-explorer
+ms.reviewer: orspodek
 ms.topic: reference
-ms.date: 08/19/2019
+ms.date: 04/25/2023
 ---
 # Journal management
 
- `Journal` contains information about metadata operations that are done on the Azure Data Explorer database.
+`Journal` contains information about metadata operations done on your database.
 
-The metadata operations can result from a control command that a user executed, or internal control commands that the system executed, such as drop extents by retention.
+The metadata operations can result from a management command that a user executed, or internal management commands that the system executed, such as drop extents by retention.
 
 > [!NOTE]
 > * Metadata operations that encompass *adding* new extents, such as `.ingest`, `.append`, `.move` and others, will not have matching events shown in the `Journal`.
@@ -27,8 +23,8 @@ The metadata operations can result from a control command that a user executed, 
 
 |OriginalEntityState|UpdatedEntityState                                              |ChangeCommand                                                                                                          |Principal            |
 |-------------------|----------------------------------------------------------------|-----------------------------------------------------------------------------------------------------------------------|---------------------|
-|.           		|Name: MyTable1, Attributes: Name='[MyTable1].[col1]', Type='I32'|.create table MyTable1 (col1:int)                                                                                      |imike@fabrikam.com
-|.          		|The database properties (too long to be displayed here)         |.create database TestDB persist (@"https://imfbkm.blob.core.windows.net/md", @"https://imfbkm.blob.core.windows.net/data")|Azure AD app id=76263cdb-abcd-545644e9c404
+|.               |Name: MyTable1, Attributes: Name='[MyTable1].[col1]', Type='I32'|.create table MyTable1 (col1:int)                                                                                      |imike@fabrikam.com
+|.              |The database properties (too long to be displayed here)         |.create database TestDB persist (@"https://imfbkm.blob.core.windows.net/md", @"https://imfbkm.blob.core.windows.net/data")|Microsoft Entra app id=76263cdb-abcd-545644e9c404
 |Name: MyTable1, Attributes: Name='[MyTable1].[col1]', Type='I32'|Name: MyTable2, Attributes: Name='[MyTable1].[col1]', Type='I32'|.rename table MyTable1 to MyTable2|rdmik@fabrikam.com
 
 |Item                 |Description                                                              |                                
@@ -42,9 +38,9 @@ The metadata operations can result from a control command that a user executed, 
 |EntityContainerName  |The entity container name (entity=column, container=table)               |
 |OriginalEntityState  |The state of the entity (entity properties) before the change            |
 |UpdatedEntityState   |The new state after the change                                           |
-|ChangeCommand        |The executed control command that triggered the metadata change          |
-|Principal            |The principal (user/app) that executed the control command               |
-	
+|ChangeCommand        |The executed management command that triggered the metadata change          |
+|Principal            |The principal (user/app) that executed the management command               |
+  
 ## .show journal
 
 The `.show journal` command returns a list of metadata changes on databases or the cluster that the user has admin access to.

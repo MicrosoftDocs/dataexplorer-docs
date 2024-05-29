@@ -1,43 +1,42 @@
 ---
-title: series_rolling_fl() - Azure Data Explorer
+title:  series_rolling_fl()
 description: This article describes the series_rolling_fl() user-defined function in Azure Data Explorer.
-author: orspod
-ms.author: orspodek
 ms.reviewer: adieldar
-ms.service: data-explorer
 ms.topic: reference
-ms.date: 09/08/2020
+ms.date: 03/13/2023
+zone_pivot_group_filename: data-explorer/zone-pivot-groups.json
+zone_pivot_groups: kql-flavors-all
 ---
 # series_rolling_fl()
 
+::: zone pivot="azuredataexplorer, fabric"
 
-The function `series_rolling_fl()` applies rolling aggregation on a series. It takes a table containing multiple series (dynamic numerical array) and applies, for each series, a rolling aggregation function.
+The function `series_rolling_fl()` is a [user-defined function (UDF)](../query/functions/user-defined-functions.md) that applies rolling aggregation on a series. It takes a table containing multiple series (dynamic numerical array) and applies, for each series, a rolling aggregation function.
 
-> [!NOTE]
-> * `series_rolling_fl()` is a [UDF (user-defined function)](../query/functions/user-defined-functions.md). For more information, see [usage](#usage).
-> * This function contains inline Python and requires [enabling the python() plugin](../query/pythonplugin.md#enable-the-plugin) on the cluster.
+[!INCLUDE [python-zone-pivot-fabric](../../includes/python-zone-pivot-fabric.md)]
 
 ## Syntax
 
 `T | invoke series_rolling_fl(`*y_series*`,` *y_rolling_series*`,` *n*`,` *aggr*`,` *aggr_params*`,` *center*`)`
 
-## Arguments
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
 
-* *y_series*: The name of the column (of the input table) containing the series to fit.
-* *y_rolling_series*: The name of the column to store the rolling aggregation series.
-* *n*: The width of the rolling window.
-* *aggr*: The name of the aggregation function to use. See [aggregation functions](#aggregation-functions).
-* *aggr_params*: Optional parameters for the aggregation function.
-* *center*: An optional Boolean value that indicates whether the rolling window is one of the following options:
-    * applied symmetrically before and after the current point, or 
-    * applied from the current point backwards. <br>
-    By default, *center* is false, for calculation on streaming data.
+## Parameters
+
+|Name|Type|Required|Description|
+|--|--|--|--|
+| *y_series* | `string` |  :heavy_check_mark: | The name of the column that contains the series to fit.|
+| *y_rolling_series* | `string` |  :heavy_check_mark: | The name of the column to store the rolling aggregation series.|
+| *n* | `int` |  :heavy_check_mark: | The width of the rolling window.|
+| *aggr* | `string` |  :heavy_check_mark: | The name of the aggregation function to use. See [aggregation functions](#aggregation-functions).|
+| *aggr_params* | `string` | | Optional parameters for the aggregation function.|
+| *center* | `bool` | |Indicates whether the rolling window is applied symmetrically before and after the current point or applied from the current point backwards. By default, *center* is `false`, for calculation on streaming data.|
 
 ## Aggregation functions
 
-This function supports any aggregation function from [numpy](https://numpy.org/) or [scipy.stats](https://docs.scipy.org/doc/scipy/reference/stats.html#module-scipy.stats) that calculates a scalar out of a series. The following list is not exhaustive:
+This function supports any aggregation function from [numpy](https://numpy.org/) or [scipy.stats](https://docs.scipy.org/doc/scipy/reference/stats.html#module-scipy.stats) that calculates a scalar out of a series. The following list isn't exhaustive:
 
-* [`sum`](https://numpy.org/doc/stable/reference/generated/numpy.sum.html#numpy.sum) 
+* [`sum`](https://numpy.org/doc/stable/reference/generated/numpy.sum.html#numpy.sum)
 * [`mean`](https://numpy.org/doc/stable/reference/generated/numpy.mean.html?highlight=mean#numpy.mean)
 * [`min`](https://numpy.org/doc/stable/reference/generated/numpy.amin.html#numpy.amin)
 * [`max`](https://numpy.org/doc/stable/reference/generated/numpy.amax.html)
@@ -51,45 +50,115 @@ This function supports any aggregation function from [numpy](https://numpy.org/)
 * [`mode` (most common value)](https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.mode.html)
 * [`moment` (n<sup>th</sup> moment)](https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.moment.html)
 * [`tmean` (trimmed mean)](https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.tmean.html)
-* [`tmin`](https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.tmin.html) 
+* [`tmin`](https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.tmin.html)
 * [`tmax`](https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.tmax.html)
 * [`tstd`](https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.tstd.html)
-* [`iqr` (inter quantile range)](https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.iqr.html) 
+* [`iqr` (inter quantile range)](https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.iqr.html)
 
-## Usage
+## Function definition
 
-`series_rolling_fl()` is a user-defined [tabular function](../query/functions/user-defined-functions.md#tabular-function), to be applied using the [invoke operator](../query/invokeoperator.md). You can either embed its code in your query, or install it in your database. There are two usage options: ad hoc and persistent usage. See the below tabs for examples.
+You can define the function by either embedding its code as a query-defined function, or creating it as a stored function in your database, as follows:
 
-# [Ad hoc](#tab/adhoc)
+### [Query-defined](#tab/query-defined)
 
-For ad hoc usage, embed its code using [let statement](../query/letstatement.md). No permission is required.
+Define the function using the following [let statement](../query/let-statement.md). No permissions are required.
 
-<!-- csl: https://help.kusto.windows.net/Samples -->
+> [!IMPORTANT]
+> A [let statement](../query/let-statement.md) can't run on its own. It must be followed by a [tabular expression statement](../query/tabular-expression-statements.md). To run a working example of `series_rolling_fl()`, see [Examples](#examples).
+
 ```kusto
 let series_rolling_fl = (tbl:(*), y_series:string, y_rolling_series:string, n:int, aggr:string, aggr_params:dynamic=dynamic([null]), center:bool=true)
 {
-    let kwargs = pack('y_series', y_series, 'y_rolling_series', y_rolling_series, 'n', n, 'aggr', aggr, 'aggr_params', aggr_params, 'center', center);
-    let code =
-        '\n'
-        'y_series = kargs["y_series"]\n'
-        'y_rolling_series = kargs["y_rolling_series"]\n'
-        'n = kargs["n"]\n'
-        'aggr = kargs["aggr"]\n'
-        'aggr_params = kargs["aggr_params"]\n'
-        'center = kargs["center"]\n'
-        'result = df\n'
-        'in_s = df[y_series]\n'
-        'func = getattr(np, aggr, None)\n'
-        'if not func:\n'
-        '    import scipy.stats\n'
-        '    func = getattr(scipy.stats, aggr)\n'
-        'if func:\n'
-        '    result[y_rolling_series] = list(pd.Series(in_s[i]).rolling(n, center=center, min_periods=1).apply(func, args=aggr_params).values for i in range(len(in_s)))\n'
-        '\n';
+    let kwargs = bag_pack('y_series', y_series, 'y_rolling_series', y_rolling_series, 'n', n, 'aggr', aggr, 'aggr_params', aggr_params, 'center', center);
+    let code = ```if 1:
+        y_series = kargs["y_series"]
+        y_rolling_series = kargs["y_rolling_series"]
+        n = kargs["n"]
+        aggr = kargs["aggr"]
+        aggr_params = kargs["aggr_params"]
+        center = kargs["center"]
+        result = df
+        in_s = df[y_series]
+        func = getattr(np, aggr, None)
+        if not func:
+            import scipy.stats
+            func = getattr(scipy.stats, aggr)
+        if func:
+            result[y_rolling_series] = list(pd.Series(in_s[i]).rolling(n, center=center, min_periods=1).apply(func, args=aggr_params).values for i in range(len(in_s)))
+    ```;
+    tbl
+    | evaluate python(typeof(*), code, kwargs)
+};
+// Write your query to use the function here.
+```
+
+### [Stored](#tab/stored)
+
+Define the stored function once using the following [`.create function`](../management/create-function.md). [Database User permissions](../management/access-control/role-based-access-control.md) are required.
+
+> [!IMPORTANT]
+> You must run this code to create the function before you can use the function as shown in the [Examples](#examples).
+
+```kusto
+.create-or-alter function with (folder = "Packages\\Series", docstring = "Rolling window functions on a series")
+series_rolling_fl(tbl:(*), y_series:string, y_rolling_series:string, n:int, aggr:string, aggr_params:dynamic, center:bool=true)
+{
+    let kwargs = bag_pack('y_series', y_series, 'y_rolling_series', y_rolling_series, 'n', n, 'aggr', aggr, 'aggr_params', aggr_params, 'center', center);
+    let code = ```if 1:
+        y_series = kargs["y_series"]
+        y_rolling_series = kargs["y_rolling_series"]
+        n = kargs["n"]
+        aggr = kargs["aggr"]
+        aggr_params = kargs["aggr_params"]
+        center = kargs["center"]
+        result = df
+        in_s = df[y_series]
+        func = getattr(np, aggr, None)
+        if not func:
+            import scipy.stats
+            func = getattr(scipy.stats, aggr)
+        if func:
+            result[y_rolling_series] = list(pd.Series(in_s[i]).rolling(n, center=center, min_periods=1).apply(func, args=aggr_params).values for i in range(len(in_s)))
+    ```;
     tbl
     | evaluate python(typeof(*), code, kwargs)
 }
-;
+```
+
+---
+## Examples
+
+The following examples use the [invoke operator](../query/invoke-operator.md) to run the function.
+
+### Calculate rolling median of 9 elements
+
+### [Query-defined](#tab/query-defined)
+
+To use a query-defined function, invoke it after the embedded function definition.
+
+```kusto
+let series_rolling_fl = (tbl:(*), y_series:string, y_rolling_series:string, n:int, aggr:string, aggr_params:dynamic=dynamic([null]), center:bool=true)
+{
+    let kwargs = bag_pack('y_series', y_series, 'y_rolling_series', y_rolling_series, 'n', n, 'aggr', aggr, 'aggr_params', aggr_params, 'center', center);
+    let code = ```if 1:
+        y_series = kargs["y_series"]
+        y_rolling_series = kargs["y_rolling_series"]
+        n = kargs["n"]
+        aggr = kargs["aggr"]
+        aggr_params = kargs["aggr_params"]
+        center = kargs["center"]
+        result = df
+        in_s = df[y_series]
+        func = getattr(np, aggr, None)
+        if not func:
+            import scipy.stats
+            func = getattr(scipy.stats, aggr)
+        if func:
+            result[y_rolling_series] = list(pd.Series(in_s[i]).rolling(n, center=center, min_periods=1).apply(func, args=aggr_params).values for i in range(len(in_s)))
+    ```;
+    tbl
+    | evaluate python(typeof(*), code, kwargs)
+};
 //
 //  Calculate rolling median of 9 elements
 //
@@ -100,43 +169,11 @@ demo_make_series1
 | render timechart
 ```
 
-# [Persistent](#tab/persistent)
+### [Stored](#tab/stored)
 
-For persistent usage, use [`.create function`](../management/create-function.md). Creating a function requires [database user permission](../management/access-control/role-based-authorization.md).
+> [!IMPORTANT]
+> For this example to run successfully, you must first run the [Function definition](#function-definition) code to store the function.
 
-### One-time installation
-
-<!-- csl: https://help.kusto.windows.net/Samples -->
-```kusto
-.create-or-alter function with (folder = "Packages\\Series", docstring = "Rolling window functions on a series")
-series_rolling_fl(tbl:(*), y_series:string, y_rolling_series:string, n:int, aggr:string, aggr_params:dynamic, center:bool=true)
-{
-    let kwargs = pack('y_series', y_series, 'y_rolling_series', y_rolling_series, 'n', n, 'aggr', aggr, 'aggr_params', aggr_params, 'center', center);
-    let code =
-        '\n'
-        'y_series = kargs["y_series"]\n'
-        'y_rolling_series = kargs["y_rolling_series"]\n'
-        'n = kargs["n"]\n'
-        'aggr = kargs["aggr"]\n'
-        'aggr_params = kargs["aggr_params"]\n'
-        'center = kargs["center"]\n'
-        'result = df\n'
-        'in_s = df[y_series]\n'
-        'func = getattr(np, aggr, None)\n'
-        'if not func:\n'
-        '    import scipy.stats\n'
-        '    func = getattr(scipy.stats, aggr)\n'
-        'if func:\n'
-        '    result[y_rolling_series] = list(pd.Series(in_s[i]).rolling(n, center=center, min_periods=1).apply(func, args=aggr_params).values for i in range(len(in_s)))\n'
-        '\n';
-    tbl
-    | evaluate python(typeof(*), code, kwargs)
-}
-```
-
-### Usage
-
-<!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
 //
 //  Calculate rolling median of 9 elements
@@ -150,44 +187,136 @@ demo_make_series1
 
 ---
 
-:::image type="content" source="images/series-rolling-fl/rolling-median-9.png" alt-text="Graph depicting rolling median of 9 elements." border="false":::
+**Output**
 
-## Additional examples
+:::image type="content" source="media/series-rolling-fl/rolling-median-9.png" alt-text="Graph depicting rolling median of 9 elements." border="false":::
 
-The following examples assume the function is already installed:
+### Calculate rolling min, max & 75th percentile of 15 elements
 
-1. Calculate rolling min, max & 75th percentile of 15 elements
-    
-    <!-- csl: https://help.kusto.windows.net/Samples -->
-    ```kusto
-    //
-    //  Calculate rolling min, max & 75th percentile of 15 elements
-    //
-    demo_make_series1
-    | make-series num=count() on TimeStamp step 1h by OsVer
-    | extend rolling_min = dynamic(null), rolling_max = dynamic(null), rolling_pct = dynamic(null)
-    | invoke series_rolling_fl('num', 'rolling_min', 15, 'min', dynamic([null]))
-    | invoke series_rolling_fl('num', 'rolling_max', 15, 'max', dynamic([null]))
-    | invoke series_rolling_fl('num', 'rolling_pct', 15, 'percentile', dynamic([75]))
-    | render timechart
-    ```
-    
-    :::image type="content" source="images/series-rolling-fl/graph-rolling-15.png" alt-text="Graph depicting rolling min, max & 75th percentile of 15 elements" border="false":::
+### [Query-defined](#tab/query-defined)
 
-1. Calculate rolling trimmed mean
-        
-    <!-- csl: https://help.kusto.windows.net/Samples -->
-    ```kusto
-    //
-    //  Calculate rolling trimmed mean
-    //
-    range x from 1 to 100 step 1
-    | extend y=iff(x % 13 == 0, 2.0, iff(x % 23 == 0, -2.0, rand()))
-    | summarize x=make_list(x), y=make_list(y)
-    | extend yr = dynamic(null)
-    | invoke series_rolling_fl('y', 'yr', 7, 'tmean', pack_array(pack_array(-2, 2), pack_array(false, false))) //  trimmed mean: ignoring values outside [-2,2] inclusive
-    | render linechart
-    ```
-    
-    :::image type="content" source="images/series-rolling-fl/rolling-trimmed-mean.png" alt-text="Graph depicting rolling trimmed mean." border="false":::
-    
+To use a query-defined function, invoke it after the embedded function definition.
+
+```kusto
+let series_rolling_fl = (tbl:(*), y_series:string, y_rolling_series:string, n:int, aggr:string, aggr_params:dynamic=dynamic([null]), center:bool=true)
+{
+    let kwargs = bag_pack('y_series', y_series, 'y_rolling_series', y_rolling_series, 'n', n, 'aggr', aggr, 'aggr_params', aggr_params, 'center', center);
+    let code = ```if 1:
+        y_series = kargs["y_series"]
+        y_rolling_series = kargs["y_rolling_series"]
+        n = kargs["n"]
+        aggr = kargs["aggr"]
+        aggr_params = kargs["aggr_params"]
+        center = kargs["center"]
+        result = df
+        in_s = df[y_series]
+        func = getattr(np, aggr, None)
+        if not func:
+            import scipy.stats
+            func = getattr(scipy.stats, aggr)
+        if func:
+            result[y_rolling_series] = list(pd.Series(in_s[i]).rolling(n, center=center, min_periods=1).apply(func, args=aggr_params).values for i in range(len(in_s)))
+    ```;
+    tbl
+    | evaluate python(typeof(*), code, kwargs)
+};
+//
+//  Calculate rolling min, max & 75th percentile of 15 elements
+//
+demo_make_series1
+| make-series num=count() on TimeStamp step 1h by OsVer
+| extend rolling_min = dynamic(null), rolling_max = dynamic(null), rolling_pct = dynamic(null)
+| invoke series_rolling_fl('num', 'rolling_min', 15, 'min', dynamic([null]))
+| invoke series_rolling_fl('num', 'rolling_max', 15, 'max', dynamic([null]))
+| invoke series_rolling_fl('num', 'rolling_pct', 15, 'percentile', dynamic([75]))
+| render timechart
+```
+
+### [Stored](#tab/stored)
+
+> [!IMPORTANT]
+> For this example to run successfully, you must first run the [Function definition](#function-definition) code to store the function.
+
+```kusto
+//
+//  Calculate rolling min, max & 75th percentile of 15 elements
+//
+demo_make_series1
+| make-series num=count() on TimeStamp step 1h by OsVer
+| extend rolling_min = dynamic(null), rolling_max = dynamic(null), rolling_pct = dynamic(null)
+| invoke series_rolling_fl('num', 'rolling_min', 15, 'min', dynamic([null]))
+| invoke series_rolling_fl('num', 'rolling_max', 15, 'max', dynamic([null]))
+| invoke series_rolling_fl('num', 'rolling_pct', 15, 'percentile', dynamic([75]))
+| render timechart
+```
+
+---
+
+**Output**
+
+:::image type="content" source="media/series-rolling-fl/graph-rolling-15.png" alt-text="Graph depicting rolling min, max & 75th percentile of 15 elements." border="false":::
+
+### Calculate the rolling trimmed mean
+
+### [Query-defined](#tab/query-defined)
+
+To use a query-defined function, invoke it after the embedded function definition.
+
+```kusto
+let series_rolling_fl = (tbl:(*), y_series:string, y_rolling_series:string, n:int, aggr:string, aggr_params:dynamic=dynamic([null]), center:bool=true)
+{
+    let kwargs = bag_pack('y_series', y_series, 'y_rolling_series', y_rolling_series, 'n', n, 'aggr', aggr, 'aggr_params', aggr_params, 'center', center);
+    let code = ```if 1:
+        y_series = kargs["y_series"]
+        y_rolling_series = kargs["y_rolling_series"]
+        n = kargs["n"]
+        aggr = kargs["aggr"]
+        aggr_params = kargs["aggr_params"]
+        center = kargs["center"]
+        result = df
+        in_s = df[y_series]
+        func = getattr(np, aggr, None)
+        if not func:
+            import scipy.stats
+            func = getattr(scipy.stats, aggr)
+        if func:
+            result[y_rolling_series] = list(pd.Series(in_s[i]).rolling(n, center=center, min_periods=1).apply(func, args=aggr_params).values for i in range(len(in_s)))
+    ```;
+    tbl
+    | evaluate python(typeof(*), code, kwargs)
+};
+range x from 1 to 100 step 1
+| extend y=iff(x % 13 == 0, 2.0, iff(x % 23 == 0, -2.0, rand()))
+| summarize x=make_list(x), y=make_list(y)
+| extend yr = dynamic(null)
+| invoke series_rolling_fl('y', 'yr', 7, 'tmean', pack_array(pack_array(-2, 2), pack_array(false, false))) //  trimmed mean: ignoring values outside [-2,2] inclusive
+| render linechart
+```
+
+### [Stored](#tab/stored)
+
+> [!IMPORTANT]
+> For this example to run successfully, you must first run the [Function definition](#function-definition) code to store the function.
+
+```kusto
+range x from 1 to 100 step 1
+| extend y=iff(x % 13 == 0, 2.0, iff(x % 23 == 0, -2.0, rand()))
+| summarize x=make_list(x), y=make_list(y)
+| extend yr = dynamic(null)
+| invoke series_rolling_fl('y', 'yr', 7, 'tmean', pack_array(pack_array(-2, 2), pack_array(false, false))) //  trimmed mean: ignoring values outside [-2,2] inclusive
+| render linechart
+```
+
+---
+
+**Output**
+
+:::image type="content" source="media/series-rolling-fl/rolling-trimmed-mean.png" alt-text="Graph depicting rolling trimmed mean." border="false":::
+
+::: zone-end
+
+::: zone pivot="azuremonitor"
+
+This feature isn't supported.
+
+::: zone-end

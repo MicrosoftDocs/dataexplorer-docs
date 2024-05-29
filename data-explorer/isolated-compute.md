@@ -1,10 +1,7 @@
 ---
 title: Enable isolated compute on your Azure Data Explorer cluster
 description: 'In this article, you learn how to enable isolated compute on your Azure Data Explorer cluster by selecting the correct SKU.'
-author: orspod
-ms.author: orspodek
 ms.reviewer: dagrawal
-ms.service: data-explorer
 ms.topic: how-to
 ms.date: 09/16/2020
 ms.custom: references_regions
@@ -34,8 +31,8 @@ To enable isolated compute in Azure Data Explorer, follow one of these processes
 
 ## Create a cluster with isolated compute SKU
 
-1. Follow the instructions to [create an Azure Data Explorer cluster and database in the Azure portal](create-cluster-database-portal.md)
-1. In [create a cluster](create-cluster-database-portal.md#create-a-cluster) within the **Basics** tab, select **Standard_E64i_v3** in **Compute specifications** drop-down.
+1. Follow the instructions to [create an Azure Data Explorer cluster and database in the Azure portal](create-cluster-and-database.md)
+2. In [create a cluster](create-cluster-and-database.md#create-a-cluster) within the **Basics** tab, select **Standard_E64i_v3** in **Compute specifications** drop-down.
 
 ## Select the isolated compute SKU on an existing cluster
 
@@ -48,7 +45,7 @@ To enable isolated compute in Azure Data Explorer, follow one of these processes
 > [!TIP]
 > The scale up process may take a few minutes.
 
-## Next steps
+## Related content
 
 * [Manage cluster vertical scaling (scale up) in Azure Data Explorer to accommodate changing demand](manage-cluster-vertical-scaling.md)
 * [Select the correct VM SKU for your Azure Data Explorer cluster](manage-cluster-choose-sku.md)

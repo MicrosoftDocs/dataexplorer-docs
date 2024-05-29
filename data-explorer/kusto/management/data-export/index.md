@@ -1,48 +1,38 @@
 ---
-title: Data export - Azure Data Explorer
-description: This article describes Data export in Azure Data Explorer.
-services: data-explorer
-author: orspod
-ms.author: orspodek
-ms.reviewer: rkarlin
-ms.service: data-explorer
+title: Data export
+description: Learn how to export data from Azure Data Explorer.
+ms.reviewer: orspodek
 ms.topic: reference
-ms.date: 09/09/2019
+ms.date: 11/05/2023
 ---
 # Data export
 
-Data export is the process that runs a Kusto query and writes its results. The query results are available for later inspection.
+Data export involves executing a Kusto query and saving its results. This process can be carried out either on the client side or the service side.
 
-There are several methods for data export:
+For examples on data export, see [Related content](#related-content).
 
 ## Client-side export
-  In its simplest form, data export can be done on the client side. The client
-  runs a query against the service, reads back the results, and then writes them.
-  This form of data export depends on the client tool to do the
-  export, usually to the local filesystem where the tool runs. Among tools
-  that support this model are [Kusto.Explorer](../../tools/kusto-explorer.md) and
-  [Web UI](../../../web-query-data.md).
+
+Client-side export gives you control over saving query results either to the local file system or pushing them to a preferred storage location. This flexibility is facilitated through the use of [Kusto client libraries](../../api/client-libraries.md). You can [create an app to run queries](../../api/get-started/app-basic-query.md), read the desired data, and implement an export process tailored to your requirements.
+
+Alternatively, you can use a client tool like the Azure Data Explorer web UI to export data from your Kusto cluster. For more information, see [Share queries](../../../web-share-queries.md).
 
 ## Service-side export (pull)
-  If the target of the export is a table in the same or different cluster/database
-  as the query, use "ingest from query" on the target table. In this flow, a query is run and its results are immediately ingested into a table. For more information, see [ingest from query](../../management/data-ingestion/ingest-from-query.md).
+
+Use the [ingest from query](../../management/data-ingestion/ingest-from-query.md) commands to pull query results into a table in the same or different cluster. See the [performance tips](../../management/data-ingestion/ingest-from-query.md#performance-tips) before using these commands.
 
 ## Service-side export (push)
-  The above methods, [Client-side export](#client-side-export), and [Service-side export (pull)](#service-side-export-pull), are limited. The query results must stream through a single network connection between the producer doing the query, and the consumer who writes its results.
-  For scalable data export, use the "push" export model in which the service running the query also writes its results in an optimized manner. 
-  This model is exposed through a set of `.export` control commands, that support exporting query results to an [external table](export-data-to-an-external-table.md),
-  a [SQL table](export-data-to-sql.md), or an [external Blob storage](export-data-to-storage.md).
-  
-  Service side export commands are limited by the cluster's available data export capacity.
-  You can run [show capacity command](../../management/diagnostics.md#show-capacity) to view the cluster's total, consumed, and remaining data export capacity.
 
-## Recommendations for secret management when using data export commands
+For scalable data export, the service offers various `.export` management commands to push query results to [cloud storage](export-data-to-storage.md), an [external table](export-data-to-an-external-table.md), or an [SQL table](export-data-to-sql.md). This approach enhances scalability by avoiding the bottleneck of streaming through a single network connection.
 
-Ideally, export data to a remote target, such as Azure Blob Storage and Azure SQL Database. Implicitly use the credentials of the security principal that executes the data export command. This method isn't possible in some scenarios. For example, Azure Blob Storage doesn't support the notion of a security principal, only its own tokens.
-This feature supports introducing the necessary credentials inline, as part of the data export control command.
+[Continuous data export](continuous-data-export.md) is supported for export to external tables.
 
-To do the export in a secure manner:
+> [!NOTE]
+> The `.export` management commands are limited by the available data export capacity of your cluster. Run the [.show capacity command](../../management/diagnostics.md#show-capacity) to view the total, consumed, and remaining data export capacity.
 
-* Use [obfuscated string literals](../../query/scalar-data-types/string.md#obfuscated-string-literals), such as `h@"..."`, when sending secrets. The secrets will be scrubbed so that they don't appear in any trace emitted internally.
+## Related content
 
-* Store passwords and similar secrets securely and "pull" using the application, as needed.
+* [Export to cloud storage](export-data-to-storage.md)
+* [Export to an external table](export-data-to-an-external-table.md)
+* [Export to a SQL table](export-data-to-sql.md)
+* [Continuous data export](continuous-data-export.md)

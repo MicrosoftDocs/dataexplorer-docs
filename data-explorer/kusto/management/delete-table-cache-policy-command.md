@@ -1,31 +1,35 @@
 ---
-title: .delete table cache policy command - Azure Data Explorer
-description: This article describes the .delete table cache policy command in Azure Data Explorer.
-services: data-explorer
-author: orspod
-ms.author: orspodek
+title: .delete table policy caching command
+description: Learn how to use the `.delete table policy caching` command to delete a table's cache policy.
 ms.reviewer: yonil
-ms.service: data-explorer
 ms.topic: reference
-ms.date: 09/27/2021
+ms.date: 05/24/2023
 ---
-# .delete table cache policy
+# .delete table policy caching command
 
-Delete the table cache policy. To speed up queries on data, Azure Data Explorer caches it on its processing nodes, SSD, or even in RAM. The [cache policy](cachepolicy.md) lets Azure Data Explorer describe the data artifacts that it uses so that important data can take priority. 
+Delete the table's cache policy. To speed up queries on data, Azure Data Explorer caches it on its processing nodes, SSD, or even in RAM. The [cache policy](cache-policy.md) lets Azure Data Explorer describe the data artifacts that it uses so that important data can take priority.
+
+## Permissions
+
+You must have at least [Table Admin](access-control/role-based-access-control.md) permissions to run this command.
 
 ## Syntax
 
 `.delete` `table` [*DatabaseName* `.`]*TableName* `policy` `caching`
 
-## Arguments
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
 
-*DatabaseName* - Specify the name of the database.
-*TableName* - Specify the name of the table. Use without *DatabaseName* when running in the required database's context.
+## Parameters
+
+|Name|Type|Required|Description|
+|--|--|--|--|
+|*DatabaseName*| `string` ||The name of the database. Use when running outside the database context that contains the table for which to delete the cache policy.|
+|*TableName*| `string` | :heavy_check_mark:|The name of the table.|
 
 ## Example
 
 The following example deletes the caching policy.
 
 ```kusto
-.delete table MyTable policy 
+.delete table MyTable policy caching
 ```

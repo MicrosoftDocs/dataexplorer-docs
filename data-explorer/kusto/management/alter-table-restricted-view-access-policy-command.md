@@ -1,42 +1,46 @@
 ---
-title: .alter restricted view access policy command - Azure Data Explorer
-description: This article describes the .alter restricted view access policy command in Azure Data Explorer.
-services: data-explorer
-author: orspod
-ms.author: orspodek
+title:  .alter table policy restricted_view_access command
+description: Learn how to use the `.alter table policy restricted_view_access` command to turn on or turn off the table's restricted view access policy.
 ms.reviewer: yonil
-ms.service: data-explorer
 ms.topic: reference
-ms.date: 09/27/2021
+ms.date: 06/04/2023
 ---
-# .alter restricted view access policy
+# .alter table policy restricted_view_access command
 
-Enable or disable the optional table [restricted view access policy](restrictedviewaccesspolicy.md). When this policy is enabled for a table, data in the table can only be queried by principals who have an [UnrestrictedViewer](../management/access-control/role-based-authorization.md) role in the database. 
+Turn on or turn off the optional table [restricted view access policy](restricted-view-access-policy.md). When this policy is turned on for a table, data in the table can only be queried by principals who have an [UnrestrictedViewer](./access-control/role-based-access-control.md) role in the database.
+
+## Permissions
+
+You must have at least [Table Admin](access-control/role-based-access-control.md) permissions to run this command.
 
 ## Syntax
 
-Enable or disable the policy for one table:
+Use the following syntax to turn on or turn off the policy for one table.
 
-`.alter` `table` *TableName* `policy` `restricted-view-access` `true`|`false`
+`.alter` `table` *TableName* `policy` `restricted_view_access` `true`|`false`
 
-Enable or disable the policy for several tables:
+Use the following syntax to turn on or turn off the policy for several tables.
 
-`.alter` `tables` (*TableName*,*TableName2*,*TableName3*,...) `policy` `restricted-view-access` `true`|`false`
+`.alter` `tables` `(`*TableName*`,`*TableName2* [`,`...]`)` `policy` `restricted_view_access` `true`|`false`
 
-## Arguments
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
 
-*TableName* - Specify the name of the table. 
+## Parameters
+
+| Name | Type | Required | Description |
+|--|--|--|--|
+| *TableName* | `string` |  :heavy_check_mark: | The name of the table(s) to alter. |
 
 ## Examples
 
-### Enable a policy for a table
+### Turn on a policy for a table
 
 ```kusto
-.alter table MyTable policy restricted-view-access true
+.alter table MyTable policy restricted_view_access true
 ```
 
-### Disable the policy of several tables
+### Turn off the policy of several tables
 
 ```kusto
-.alter tables (Table1, Table2, Table4) policy restricted-view-access false
+.alter tables (Table1, Table2, Table4) policy restricted_view_access false
 ```

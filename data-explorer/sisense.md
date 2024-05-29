@@ -1,25 +1,22 @@
 ---
 title: Visualize data from Azure Data Explorer using Sisense
 description: In this article, learn how to set up Azure Data Explorer as a data source for Sisense, and visualize the data.
-author: orspod
-ms.author: orspodek
-ms.reviewer: rkarlin
-ms.service: data-explorer
+ms.reviewer: orspodek
 ms.topic: how-to
 ms.custom: has-adal-ref
-ms.date: 5/29/2019
+ms.date: 07/12/2023
 ---
 
 # Visualize data from Azure Data Explorer in Sisense
 
-Sisense is an analytics business intelligence platform that enables you to build analytics apps that deliver highly interactive user experiences. The business intelligence and dashboard reporting software allows you to access and combine data in a few clicks. You can connect to structured and unstructured data sources, join tables from multiple sources with minimal scripting and coding, and create interactive web dashboards and reports. In this article, you'll learn how to set up Azure Data Explorer as a data source for Sisense, and visualize data from a sample cluster.
+Sisense is an analytics business intelligence platform that enables you to build analytics apps that deliver highly interactive user experiences. The business intelligence and dashboard reporting software allows you to access and combine data in a few clicks. You can connect to structured and unstructured data sources, join tables from multiple sources with minimal scripting and coding, and create interactive web dashboards and reports. In this article, you learn how to set up Azure Data Explorer as a data source for Sisense, and visualize data from a sample cluster.
 
 ## Prerequisites
 
 You need the following to complete this article:
 
-* [Download and install Sisense app](https://documentation.sisense.com/latest/getting-started/download-install.htm)
-* Create a cluster and database that includes the StormEvents sample data. For more information, see [Quickstart: Create an Azure Data Explorer cluster and database](create-cluster-database-portal.md) and [Ingest sample data into Azure Data Explorer](ingest-sample-data.md).
+* [Download and install Sisense app](https://docs.sisense.com/main/SisenseLinux/linux-minimum-requirements.htm?tocpath=Sisense%20Self%20Deployment%7C_____1)
+* Create a cluster and database that includes the StormEvents sample data. For more information, see [Quickstart: Create an Azure Data Explorer cluster and database](create-cluster-and-database.md) and [Ingest sample data into Azure Data Explorer](ingest-sample-data.md).
 
     [!INCLUDE [data-explorer-storm-events](includes/data-explorer-storm-events.md)]
 
@@ -68,8 +65,8 @@ You need the following to complete this article:
     |Connection String     |   `jdbc:sqlserver://<cluster_name.region>.kusto.windows.net:1433;database=<database_name>;encrypt=true;trustServerCertificate=false;hostNameInCertificate=*.kusto.windows.net;loginTimeout=30;authentication=ActiveDirectoryPassword`      |
     |JDBC JARs folder  |    `..\Sisense\DataConnectors\jdbcdrivers\adx`     |
     |Driver's Class Name    |   `com.microsoft.sqlserver.jdbc.SQLServerDriver`      |
-    |User Name   |    AAD user name     |
-    |Password     |   AAD user password      |
+    |User Name   |    Microsoft Entra user name     |
+    |Password     |   Microsoft Entra user password      |
 
 1. In the **Select Data** tab, search **Select Database** to select the relevant database to which you have permissions. In this example, select *test1*.
 
@@ -117,6 +114,6 @@ You need the following to complete this article:
 You can now explore your data with visual analytics, build additional dashboards, and
 transform data into actionable insights to make an impact on your business.
 
-## Next steps
+## Related content
 
-* [Write queries for Azure Data Explorer](write-queries.md)
+* [Write queries for Azure Data Explorer](/azure/data-explorer/kusto/query/tutorials/learn-common-operators)

@@ -1,37 +1,33 @@
 ---
-title: funnel_sequence_completion plugin - Azure Data Explorer
-description: This article describes funnel_sequence_completion plugin in Azure Data Explorer.
-services: data-explorer
-author: orspod
-ms.author: orspodek
+title:  funnel_sequence_completion plugin
+description: Learn how to use the funnel_sequence_completion plugin to calculate a funnel of completed sequence steps while comparing different time periods.
 ms.reviewer: alexans
-ms.service: data-explorer
 ms.topic: reference
-ms.date: 02/16/2020
+ms.date: 12/18/2022
 ---
 # funnel_sequence_completion plugin
 
-Calculates funnel of completed sequence steps within comparing different time periods.
-
-```kusto
-T | evaluate funnel_sequence_completion(id, datetime_column, startofday(ago(30d)), startofday(now()), 1d, state_column, dynamic(['S1', 'S2', 'S3']), dynamic([10m, 30min, 1h]))
-```
+Calculates a funnel of completed sequence steps while comparing different time periods. The plugin is invoked with the [`evaluate`](evaluate-operator.md) operator.
 
 ## Syntax
 
-*T* `| evaluate` `funnel_sequence_completion(`*IdColumn*`,` *TimelineColumn*`,` *Start*`,` *End*`,` *Step*`,` *StateColumn*`,` *Sequence*`,` *MaxSequenceStepWindows*`)`
+*T* `| evaluate` `funnel_sequence_completion(`*IdColumn*`,` *TimelineColumn*`,` *Start*`,` *End*`,` *BinSize*`,` *StateColumn*`,` *Sequence*`,` *MaxSequenceStepWindows*`)`
 
-## Arguments
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
 
-* *T*: The input tabular expression.
-* *IdColum*: column reference, must be present in the source expression.
-* *TimelineColumn*: column reference representing timeline, must be present in the source expression.
-* *Start*: scalar constant value of the analysis start period.
-* *End*: scalar constant value of the analysis end period.
-* *BinSize*: scalar constant value of the analysis window (bin) size, each window is analyzed separately.
-* *StateColumn*: column reference representing the state, must be present in the source expression.
-* *Sequence*: a constant dynamic array with the sequence values (values are looked up in `StateColumn`).
-* *MaxSequenceStepPeriods*: scalar constant dynamic array with the values of the max allowed timespan between the first and last sequential steps in the sequence. Each period in the array generates a funnel analysis result.
+## Parameters
+
+| Name | Type | Required | Description |
+|--|--|--|--|
+| *T* | `string` |  :heavy_check_mark: | The input tabular expression. |
+| *IdColum* | `string` |  :heavy_check_mark: | The column reference representing the ID. The column must be present in *T*.|
+| *TimelineColumn* | `string` |  :heavy_check_mark: | The column reference representing the timeline. The column must be present in *T*.|
+| *Start* | datetime, timespan, or long |  :heavy_check_mark: | The analysis start period.|
+| *End* | datetime, timespan, or long |  :heavy_check_mark: | The analysis end period.|
+| *BinSize* | datetime, timespan, or long |  :heavy_check_mark: | The analysis window size. Each window is analyzed separately.|
+| *StateColumn* | `string` |  :heavy_check_mark: | The column reference representing the state. The column must be present in *T*.|
+| *Sequence* | `dynamic` |  :heavy_check_mark: | An array with the sequence values that are looked up in `StateColumn`.|
+| *MaxSequenceStepPeriods* | `dynamic` |  :heavy_check_mark: | An array with the values of the max allowed timespan between the first and last sequential steps in the sequence. Each period in the array generates a funnel analysis result.|
 
 ## Returns
 
@@ -39,21 +35,19 @@ Returns a single table useful for constructing a funnel diagram for the analyzed
 
 * `TimelineColumn`: the analyzed time window (bin), each bin in the analysis timeframe (*Start* to *End*) generates a funnel analysis separately.
 * `StateColumn`: the state of the sequence.
-* `Period`: the maximal period allowed for completing steps in the funnel sequence measured from the first step in the sequence. Each value in *MaxSequenceStepPeriods* generates a funnel analysis with a separate period. 
+* `Period`: the maximal period allowed for completing steps in the funnel sequence measured from the first step in the sequence. Each value in *MaxSequenceStepPeriods* generates a funnel analysis with a separate period.
 * `dcount`: distinct count of `IdColumn` in time window that transitioned from first sequence state to the value of `StateColumn`.
-
-## See also
-
-* [scan operator](scan-operator.md)
 
 ## Examples
 
-### Exploring Storm Events 
+### Exploring Storm Events
 
 The following query checks the completion funnel of the sequence: `Hail` -> `Tornado` -> `Thunderstorm Wind`
-in "overall" time of 1hour, 4hours, 1day. 
+in "overall" time of 1hour, 4hours, 1day.
 
-<!-- csl: https://help.kusto.windows.net/Samples -->
+> [!div class="nextstepaction"]
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA1WQywrCMBBF937F7FohQusbxKWg6xZciEjojBhIJzVJFcWPNylVFBIIw8nh3tHk4eS8tB7WgNKTVzWl4yxbjLI8nOFqoCNCjAH4I5b/xF0xmnuhnhTAyXyG/dzRtSWu4hQfLGtVpYdkK5VOBCSlsSzRdM9Ly0jWeWNr2AdZcvyoG7LKoPs15BcB03BzjFQRP21uxN4NXkA3qdsQFM4tM+lvglNl6iYIleF00yhnkHYooIjty1BK9JsQXV3xW0lAZy8fTUf1QvGNNnwDOQRUXkgBAAA=" target="_blank">Run the query</a>
+
 ```kusto
 let _start = datetime(2007-01-01);
 let _end =  datetime(2008-01-01);
@@ -63,6 +57,8 @@ let _periods = dynamic([1h, 4h, 1d]);
 StormEvents
 | evaluate funnel_sequence_completion(EpisodeId, StartTime, _start, _end, _windowSize, EventType, _sequence, _periods) 
 ```
+
+**Output**
 
 |`StartTime`|`EventType`|`Period`|`dcount`|
 |---|---|---|---|
@@ -77,5 +73,8 @@ StormEvents
 |2007-01-01 00:00:00.0000000|Thunderstorm Wind|1.00:00:00|155|
 
 Understanding the results:  
-The outcome is three funnels (for periods: One hour, 4 hours, and one day). For each funnel step, a number 
-of distinct counts of  are shown. You can see that the more time is given to complete the whole sequence of `Hail` -> `Tornado` -> `Thunderstorm Wind`, the higher `dcount` value is obtained. In other words, there were more occurrences of the sequence reaching the funnel step.
+The outcome is three funnels (for periods: One hour, 4 hours, and one day). For each funnel step, a number of distinct counts of  are shown. You can see that the more time is given to complete the whole sequence of `Hail` -> `Tornado` -> `Thunderstorm Wind`, the higher `dcount` value is obtained. In other words, there were more occurrences of the sequence reaching the funnel step.
+
+## Related content
+
+* [scan operator](scan-operator.md)

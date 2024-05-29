@@ -1,25 +1,34 @@
 ---
-title: .alter-merge table partitioning policy command- Azure Data Explorer
-description: This article describes the .alter-merge table partitioning policy command in Azure Data Explorer.
-services: data-explorer
-author: orspod
-ms.author: orspodek
+title:  .alter-merge table policy partitioning command
+description: Learn how to use the `.alter-merge table policy partitioning` command to change the table's partitioning policy.
 ms.reviewer: yonil
-ms.service: data-explorer
 ms.topic: reference
-ms.date: 09/29/2021
+ms.date: 04/20/2023
 ---
-# .alter-merge table partitioning policy
+# .alter-merge table policy partitioning command
 
-Alters a table [partitioning policy](partitioningpolicy.md). The partitioning policy defines if and how [extents (data shards)](../management/extents-overview.md) should be partitioned for a specific table or a [materialized view](materialized-views/materialized-view-overview.md). The command requires [DatabaseAdmin](access-control/role-based-authorization.md) permissions.
+Changes the table's [partitioning policy](partitioning-policy.md). The partitioning policy defines if and how [extents (data shards)](../management/extents-overview.md) should be partitioned for a specific table or a [materialized view](materialized-views/materialized-view-overview.md).
+
+## Permissions
+
+You must have at least [Database Admin](access-control/role-based-access-control.md) permissions to run this command.
 
 ## Syntax
 
-`.alter-merge` `table` *TableName* `policy` `partitioning` 
+`.alter-merge` `table` *TableName* `policy` `partitioning` *PolicyObject*
+
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+
+## Parameters
+
+|Name|Type|Required|Description|
+|--|--|--|--|
+|*TableName*| `string` | :heavy_check_mark:|The name of the table.|
+|*PolicyObject*| `string` | :heavy_check_mark:|A serialized array of one or more JSON policy objects. For more information, see [partitioning policy](partitioning-policy.md).|
 
 ### Example
 
-Delete the policy at the table level:
+Alter merge the policy at the table level:
 
 ```kusto
 .alter-merge table MyTable policy partitioning '{"EffectiveDateTime":"2023-01-01"}'

@@ -1,27 +1,32 @@
 ---
-title: .alter materialized view cache policy command - Azure Data Explorer
-description: This article describes the .alter materialized view cache policy command in Azure Data Explorer.
-services: data-explorer
-author: orspod
-ms.author: orspodek
+title:  .alter materialized-view policy caching command
+description: Learn how to use the `.alter materialized-view policy caching` command to change the materialized view's cache policy.
 ms.reviewer: yonil
-ms.service: data-explorer
 ms.topic: reference
-ms.date: 09/27/2021
+ms.date: 04/20/2023
 ---
-# .alter materialized view cache policy
+# .alter materialized-view policy caching command
 
-Change the materialized view cache policy. To speed up queries on data, Azure Data Explorer caches it on its processing nodes, SSD, or even in RAM. The [cache policy](cachepolicy.md) lets Azure Data Explorer describe the data artifacts that it uses so that important data can take priority. 
+Changes the materialized view's cache policy. To speed up queries, data is cached on processing nodes, SSD, or even in RAM. The [cache policy](cache-policy.md) allows your cluster to describe the data artifacts that it uses, so that more important data can take priority.
+
+## Permissions
+
+You must have at least [Table Admin](access-control/role-based-access-control.md) permissions to run this command.
 
 ## Syntax
 
-`.alter` `materialized view` *MaterializedViewName* `policy` `caching`
+`.alter` `materialized-view` *MaterializedViewName* `policy` `caching` *PolicyParameters*
 
-## Arguments
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
 
-*MaterializedViewName* - Specify the name of the materialized view.
+## Parameters
 
-## Example
+|Name|Type|Required|Description|
+|--|--|--|--|
+|*MaterializedViewName*| `string` | :heavy_check_mark:| The name of the materialized view.|
+|*PolicyParameters*| `string` | :heavy_check_mark:|One or more policy parameters. For parameters, see [cache policy](cache-policy.md).|
+
+## Examples
 
 Set the caching policy to include the last 30 days.
 

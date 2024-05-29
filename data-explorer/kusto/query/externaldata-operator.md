@@ -1,62 +1,63 @@
 ---
-title: externaldata operator - Azure Data Explorer
-description: This article describes the external data operator in Azure Data Explorer.
-services: data-explorer
-author: orspod
-ms.author: orspodek
+title:  externaldata operator
+description: Learn how to use the externaldata operator to return a data table of the given schema whose data was parsed from the specified storage artifact.
 ms.reviewer: alexans
-ms.service: data-explorer
 ms.topic: reference
-ms.date: 03/24/2020
+ms.date: 12/12/2022
 zone_pivot_group_filename: data-explorer/zone-pivot-groups.json
-zone_pivot_groups: kql-flavors
+zone_pivot_groups: kql-flavors-all
 ---
 # externaldata operator
 
-The `externaldata` operator returns a table whose schema is defined in the query itself, and whose data is read from an external storage artifact, such as a blob in 
-Azure Blob Storage or a file in Azure Data Lake Storage.
+The `externaldata` operator returns a table whose schema is defined in the query itself, and whose data is read from an external storage artifact, such as a blob in Azure Blob Storage or a file in Azure Data Lake Storage.
 
-::: zone pivot="azuredataexplorer"
+> [!NOTE]
+> The `externaldata` operator supports a specific set of storage services, as listed under [Storage connection strings](../api/connection-strings/storage-connection-strings.md).
+
+> [!NOTE]
+> The `externaldata` operator supports Shared Access Signature (SAS) key, Access key, and Microsoft Entra Token authentication methods. For more information, see [Storage authentication methods](../api/connection-strings/storage-authentication-methods.md).
+
+::: zone pivot="azuredataexplorer, fabric"
 
 ::: zone-end
 
 ::: zone pivot="azuremonitor"
 
 > [!NOTE]
-> `externaldata` operator usage in Azure Monitor should be limited to small reference tables. It is not designed for large data volumes. If large volumes are needed, it is better to ingest them as custom logs.
-> This operator isn’t supported when running queries over a private link or otherwise reaching to customer-owned storage accounts.
+> Use the `externaldata` operator to retrieve small reference tables of up to 100 MB from an external storage artifact. The operator is not designed for large data volumes. To retrieve large volumes of external data, we recommend [ingesting the external data into Log Analytics as custom logs](/azure/azure-monitor/logs/tutorial-custom-logs).
+> This operator isn't supported when the public endpoint of the storage artifact is behind a firewall.
 
 ::: zone-end
 
-
 ## Syntax
 
-`externaldata` `(` *ColumnName* `:` *ColumnType* [`,` ...] `)`   
-`[` *StorageConnectionString* [`,` ...] `]`   
-[`with` `(` *PropertyName* `=` *PropertyValue* [`,` ...] `)`]
+`externaldata` `(`*columnName*`:`*columnType* [`,` ...] `)`
+`[` *storageConnectionString* [`,` ...] `]`
+[`with` `(` *propertyName* `=` *propertyValue* [`,` ...]`)`]
 
-## Arguments
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
 
-* *ColumnName*, *ColumnType*: The arguments define the schema of the table.
-  The syntax is the same as the syntax used when defining a table in [`.create table`](../management/create-table-command.md).
+## Parameters
 
-* *StorageConnectionString*: [Storage connection strings](../api/connection-strings/storage.md) that describe the storage artifacts holding the data to return.
+| Name | Type | Required | Description |
+|--|--|--|--|
+| *columnName*, *columnType* | `string` |  :heavy_check_mark:| A list of column names and their types. This list defines the schema of the table. |
+| *storageConnectionString* | `string` |  :heavy_check_mark:| A [storage connection string](../api/connection-strings/storage-connection-strings.md) of the storage artifact to query. |
+| *propertyName*, *propertyValue* | `string` | | A list of optional [supported properties](#supported-properties) that determines how to interpret the data retrieved from storage.
 
-* *PropertyName*, *PropertyValue*, ...: Additional properties that describe how to interpret
-  the data retrieved from storage, as listed under [ingestion properties](../../ingestion-properties.md).
-
-Currently supported properties are:
+### Supported properties
 
 | Property         | Type     | Description       |
 |------------------|----------|-------------------|
-| `format`         | `string` | Data format. If not specified, an attempt is made to detect the data format from file extension (defaults to `CSV`). Any of the [ingestion data formats](../../ingestion-supported-formats.md) are supported. |
-| `ignoreFirstRecord` | `bool` | If set to true, indicates that the first record in every file is ignored. This property is useful when querying CSV files with headers. |
-| `ingestionMapping` | `string` | A string value that indicates how to map data from the source file to the actual columns in the operator result set. See [data mappings](../management/mappings.md). |
-
+| format         | `string` | The data format. If unspecified, an attempt is made to detect the data format from file extension. The default is `CSV`. All [ingestion data formats](../../ingestion-supported-formats.md) are supported. |
+| ignoreFirstRecord | `bool` | If set to `true`, the first record in every file is ignored. This property is useful when querying CSV files with headers. |
+| ingestionMapping | `string` | Indicates how to map data from the source file to the actual columns in the operator result set. See [data mappings](../management/mappings.md). |
 
 > [!NOTE]
-> * This operator doesn't accept any pipeline input.
-> * Standard [query limits](../concepts/querylimits.md) apply to external data queries as well.
+>
+> This operator doesn't accept any pipeline input.
+>
+> Standard [query limits](../concepts/querylimits.md) apply to external data queries as well.
 
 ## Returns
 
@@ -64,7 +65,7 @@ The `externaldata` operator returns a data table of the given schema whose data 
 
 ## Examples
 
-**Fetch a list of user IDs stored in Azure Blob Storage**
+### Fetch a list of user IDs stored in Azure Blob Storage
 
 The following example shows how to find all records in a table whose `UserID` column falls into a known set of IDs, held (one per line) in an external storage file. Since the data format isn't specified, the detected data format is `TXT`.
 
@@ -77,7 +78,7 @@ Users
 | ...
 ```
 
-**Query multiple data files**
+### Query multiple data files
 
 The following example queries multiple data files stored in external storage.
 
@@ -92,14 +93,14 @@ with(format="csv")
 | summarize count() by ProductId
 ```
 
-The above example can be thought of as a quick way to query multiple data files without defining an [external table](schema-entities/externaltables.md).
+The above example can be thought of as a quick way to query multiple data files without defining an [external table](schema-entities/external-tables.md).
 
 > [!NOTE]
 > Data partitioning isn't recognized by the `externaldata` operator.
 
-**Query hierarchical data formats**
+### Query hierarchical data formats
 
-To query hierarchical data format, such as `JSON`, `Parquet`, `Avro`, or `ORC`, `ingestionMapping` must be specified in the operator properties. 
+To query hierarchical data format, such as `JSON`, `Parquet`, `Avro`, or `ORC`, `ingestionMapping` must be specified in the operator properties.
 In this example, there's a JSON file stored in Azure Blob Storage with the following contents:
 
 ```JSON
@@ -127,7 +128,7 @@ externaldata(Timestamp: datetime, TenantId: guid, MethodName: string)
 [ 
    h@'https://mycompanystorage.blob.core.windows.net/events/2020/09/01/part-0000046c049c1-86e2-4e74-8583-506bda10cca8.json?...SAS...'
 ]
-with(format='multijson', ingestionMapping='[{"Column":"Timestamp","Properties":{"Path":"$.time"}},{"Column":"TenantId","Properties":{"Path":"$.data.tenant"}},{"Column":"MethodName","Properties":{"Path":"$.data.method"}}]')
+with(format='multijson', ingestionMapping='[{"Column":"Timestamp","Properties":{"Path":"$.timestamp"}},{"Column":"TenantId","Properties":{"Path":"$.data.tenant"}},{"Column":"MethodName","Properties":{"Path":"$.data.method"}}]')
 ```
 
 The `MultiJSON` format is used here because single JSON records are spanned into multiple lines.

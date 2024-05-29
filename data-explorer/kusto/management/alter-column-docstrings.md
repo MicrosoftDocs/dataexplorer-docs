@@ -1,26 +1,34 @@
 ---
-title: ".alter column docstring - Azure Data Explorer | Microsoft Docs"
-description: "This article describes .alter column docstring in Azure Data Explorer."
-services: data-explorer
-author: orspod
-ms.author: orspodek
-ms.reviewer: rkarlin
-ms.service: data-explorer
+title:  .alter table column-docstrings command
+description: Learn how to use the `.alter table column-docstrings` command to set the `DocString` property of one or more columns of the specified table.
+ms.reviewer: orspodek
 ms.topic: reference
-ms.date: 10/14/2021
+ms.date: 05/25/2023
 ---
-# .alter column docstring
+# .alter table column-docstrings command
 
-Sets the `docstring` property of one or more columns of the specified table.  Columns not explicitly set will have this property removed.
+Sets the `DocString` property of one or more columns of the specified table. Columns not explicitly set will have this property removed.
 
-`DocString` is free text that you can attach to a table/function/column describing the entity. This string is presented in various UX settings next to the entity names.
+## Permissions
+
+You must have at least [Table Admin](access-control/role-based-access-control.md) permissions to run this command.
 
 ## Syntax
 
-`.alter` `table` *TableName* `column-docstring` `(` *Col1* `:` *Docstring1* [`,` *Col2* `:` *Docstring2*]... `)`
+`.alter` `table` *TableName* `column-docstrings` `(` *Col1* `:` *DocString1* [`,` *Col2* `:` *DocString2*]... `)`
 
-## Example 
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+
+## Parameters
+
+| Name | Type | Required | Description |
+|--|--|--|--|
+| *DocString* | `string` |  :heavy_check_mark: | Free text that you can attach to a table/function/column to describe the entity. This string is presented in various UX settings next to the entity names.|
+| *TableName* | `string` |  :heavy_check_mark: | The name of the table on which the operation is performed.|
+| *Col* | `string` |  :heavy_check_mark: | The column on which the operation is performed.|
+
+## Example
 
 ```kusto
-.alter table Table1 column-docstring (Column1:"DocString1", Column2:"DocString2")
+.alter table Table1 column-docstrings (Column1:"DocString1", Column2:"DocString2")
 ```

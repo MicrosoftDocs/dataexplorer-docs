@@ -1,27 +1,32 @@
 ---
-title: .alter table sharding policy command - Azure Data Explorer
-description: This article describes the .alter table sharding policy command in Azure Data Explorer.
-services: data-explorer
-author: orspod
-ms.author: orspodek
+title: .alter table policy sharding command
+description: Learn how to use the `.alter table policy sharding` command to change the table sharding policy.
 ms.reviewer: yonil
-ms.service: data-explorer
 ms.topic: reference
-ms.date: 10/10/2021
+ms.date: 05/24/2023
 ---
-# .alter table sharding policy
+# .alter table policy sharding command
 
-Change the table sharding policy. Use the [sharding policy](../management/shardingpolicy.md) to manage data sharding for databases and tables.  
+Use this command to change the table sharding policy. Use the [sharding policy](../management/sharding-policy.md) to manage data sharding for databases and tables.  
 
-The sharding policy defines if and how [Extents (data shards)](../management/extents-overview.md) in the Azure Data Explorer cluster should be sealed. When a database is created, it contains the default data sharding policy. This policy is inherited by all tables created in the database (unless the policy is explicitly overridden at the table level).
+The sharding policy defines if and how [Extents (data shards)](../management/extents-overview.md) in your cluster should be sealed. When a database is created, it contains the default data sharding policy. This policy is inherited by all tables created in the database (unless the policy is explicitly overridden at the table level).
+
+## Permissions
+
+You must have at least [Table Admin](access-control/role-based-access-control.md) permissions to run this command.
 
 ## Syntax
 
-`.alter` `table` *TableName* `policy` `sharding`
+`.alter` `table` *TableName* `policy` `sharding` *PolicyObject*
 
-## Arguments
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
 
-*TableName* - Specify the name of the table. A wildcard (*) denotes all tables.
+## Parameters
+
+| Name | Type | Required | Description |
+|--|--|--|--|
+| *TableName* | `string` |  :heavy_check_mark:| The name of the table.|
+| *PolicyObject* | `string` |  :heavy_check_mark: | A serialized policy object. For more information, see [sharding policy](../management/sharding-policy.md).|
 
 ## Returns
 
@@ -29,9 +34,15 @@ Returns a JSON representation of the policy.
 
 ## Example
 
-The following command  returns the updated extents sharding policy for the table:
+The following command returns the updated extents sharding policy for the table.
 
-```kusto
-.alter table MyTable policy sharding 
-@'{ "MaxRowCount": 750000, "MaxExtentSizeInMb": 1024, "MaxOriginalSizeInMb": 2048}'
+````kusto
+.alter table MyTable policy sharding
 ```
+{
+    "MaxRowCount" : 750000,
+    "MaxExtentSizeInMb" : 1024,
+    "MaxOriginalSizeInMb" : 2048
+}
+```
+````

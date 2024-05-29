@@ -1,31 +1,38 @@
 ---
-title: Clearing cached schema for streaming ingestion - Azure Data Explorer
+title:  Clearing cached schema for streaming ingestion
 description: This article describes management command for clearing cached database schema in Azure Data Explorer.
-services: data-explorer
-author: orspod
-ms.author: orspodek
-ms.reviewer: rkarlin
-ms.service: data-explorer
+ms.reviewer: orspodek
 ms.topic: reference
-ms.date: 05/20/2020
+ms.date: 12/26/2023
 ---
 # Clear schema cache for streaming ingestion
 
 Cluster nodes cache schema of the databases that receive data via streaming ingestion. This process optimizes performance and utilization of cluster resources, but can cause propagation delays when the schema change.
-Clear the cache to guarantee that subsequent streaming ingestion requests incorporate database or table schema changes.
-For more information, see [Streaming ingestion and schema changes](streaming-ingestion-schema-changes.md).
 
-**Clear schema cache**
+Clear the cache to guarantee that subsequent streaming ingestion requests incorporate database or table schema changes. For more information, see [Streaming ingestion and schema changes](streaming-ingestion-schema-changes.md).
 
-The `.clear cache streamingingestion schema` command flushes cached schema from all cluster nodes.
+> [!NOTE]
+> Using these commands can have an adverse effect on the performance of streaming ingestion.
 
-**Syntax**
+## Permissions
 
-`.clear` `table` &lt;table name&gt; `cache` `streamingingestion` `schema`
+You must have at least [Database Ingestor](../access-control/role-based-access-control.md) permissions to run this command.
+
+## Syntax
+
+`.clear` `table` *TableName* `cache` `streamingingestion` `schema`
 
 `.clear` `database` `cache` `streamingingestion` `schema`
 
-**Returns**
+[!INCLUDE [syntax-conventions-note](../../../includes/syntax-conventions-note.md)]
+
+## Parameters
+
+| Name | Type | Required | Description |
+|--|--|--|--|
+| *TableName* | `string` |  :heavy_check_mark: | The name of the table for which to clear the cache. |
+
+## Returns
 
 This command returns a table with the following columns:
 
@@ -34,12 +41,12 @@ This command returns a table with the following columns:
 |NodeId|`string`|Identifier of the cluster node
 |Status|`string`|Succeeded/Failed
 
-**Example**
+## Example
 
 ```kusto
 .clear database cache streamingingestion schema
 
-.show table T1 cache streamingingestion schema
+.clear table T1 cache streamingingestion schema
 ```
 
 |NodeId|Status|

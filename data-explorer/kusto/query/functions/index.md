@@ -1,27 +1,24 @@
 ---
-title: Functions - Azure Data Explorer | Microsoft Docs
+title:  Functions
 description: This article describes Functions in Azure Data Explorer.
-services: data-explorer
-author: orspod
-ms.author: orspodek
-ms.reviewer: rkarlin
-ms.service: data-explorer
+ms.reviewer: orspodek
 ms.topic: reference
-ms.date: 10/23/2018
-ms.localizationpriority: high
+ms.date: 06/05/2023
 adobe-target: true
 ---
+
 # Function types
 
-**Functions** are reusable queries or query parts. Kusto supports several
+Functions are reusable queries or query parts. Kusto supports two
 kinds of functions:
 
-* **Stored functions**, which are user-defined functions that are stored and managed
-  a one kind of a database's schema entities.
-  See [Stored functions](../schema-entities/stored-functions.md).
-* **Query-defined functions**, which are user-defined functions that are defined
-  and used within the scope of a single query. The definition of such functions
-  is done through a [let statement](../letstatement.md).
-  See [User-defined functions](./user-defined-functions.md).
-* **Built-in functions**, which are hard-coded (defined by Kusto and cannot be
-  modified by users).
+* *Built-in functions* are hard-coded functions defined by Kusto that can't be
+  modified by users.
+
+* *User-defined functions*, which are divided into two types:
+
+  * *Stored functions*: user-defined functions that are stored and managed database schema entities, similar to tables. For more information, see [Stored functions](../../query/schema-entities/stored-functions.md). To create a stored function, use the [.create function command](../../management/create-function.md).
+
+  * *Query-defined functions*: user-defined functions that are defined and used within the scope of a single query. The definition of such functions is done through a let statement. For more information on how to create query-defined functions, see [Create a user defined function](../let-statement.md#create-a-user-defined-function-with-scalar-calculation).
+
+  For more information on user-defined functions, see [User-defined functions](./user-defined-functions.md).

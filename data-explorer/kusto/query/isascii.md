@@ -1,34 +1,41 @@
 ---
-title: isascii() - Azure Data Explorer | Microsoft Docs
-description: This article describes isascii() in Azure Data Explorer.
-services: data-explorer
-author: orspod
-ms.author: orspodek
+title:  isascii()
+description: Learn how to use the isascii() to check if the argument is a valid ascii string.
 ms.reviewer: alexans
-ms.service: data-explorer
 ms.topic: reference
-ms.date: 02/13/2020
+ms.date: 01/03/2023
 ---
 # isascii()
 
-Returns `true` if the argument is a valid ascii string.
-    
-```kusto
-isascii("some string") == true
-```
+Returns `true` if the argument is a valid ASCII string.
 
 ## Syntax
 
-`isascii(`[*value*]`)`
+`isascii(`*value*`)`
+
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+
+## Parameters
+
+| Name | Type | Required | Description |
+| -- | -- | -- | -- |
+|*value*| `string` | :heavy_check_mark:| The value to check if a valid ASCII string.|
 
 ## Returns
 
-Indicates whether the argument is a valid ascii string.
+A boolean value indicating whether *value* is a valid ASCII string.
 
 ## Example
 
+> [!div class="nextstepaction"]
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAysoyswrUShKLS7NKbHNLE4sTs7M1FAqzs9NVSguAcqlK2kCAIfayAkjAAAA" target="_blank">Run the query</a>
+
 ```kusto
-T
-| where isascii(fieldName)
-| count
+print result=isascii("some string")
 ```
+
+**Output**
+
+|result|
+|--|
+|true|

@@ -1,11 +1,7 @@
 ---
-title: Best practices for schema management - Azure Data Explorer
+title:  Best practices for schema management
 description: This article describes Best practices for schema management in Azure Data Explorer.
-services: data-explorer
-author: orspod
-ms.author: orspodek
-ms.reviewer: rkarlin
-ms.service: data-explorer
+ms.reviewer: orspodek
 ms.topic: reference
 ms.date: 02/18/2020
 ---
@@ -24,4 +20,4 @@ Here are several best practices to follow. They'll help make your management com
 | **Show schema on a cluster which a large schema** <br> |Use [`.show databases schema`](../management/show-schema-database.md) |Don't use `.show schema`| For example, use on cluster with more than 100 databases.
 | **Check a table's existence or get the table's schema**|Use `.show table T schema as json`|Don't use  `.show table T` |Only use this command to get actual statistics on a single table.|
 | **Define the schema for a table that will include `datetime` values**  |Set the relevant columns to the `datetime` type | Don't convert `string` or numeric columns to `datetime` at query time for filtering, if that can be done before or during ingestion time|
-| **Add extent tag to metadata** |Use sparingly |Avoid `drop-by:` tags, which limit the system's ability to do performance-oriented grooming processes in the background.|  <br> See [performance notes](../management/extents-overview.md#extent-tagging). |
+| **Add extent tag to metadata** |Use sparingly |Avoid `drop-by:` tags, which limit the system's ability to do performance-oriented grooming processes in the background.|  <br> See [performance notes](../management/extent-tags.md). |

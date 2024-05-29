@@ -1,38 +1,40 @@
 ---
-title: around() function - Azure Data Explorer
-description: This article describes the around() function in Azure Data Explorer.
-services: data-explorer
-author: alexans
-ms.author: orspodek
+title:  around() function
+description: Learn how to use the around() function to indicate if the first argument is within a range around the center value.
 ms.reviewer: alexans
-ms.service: data-explorer
 ms.topic: reference
-ms.date: 05/05/2021
+ms.date: 11/20/2022
 ---
 # around()
 
-Returns a `bool` value indicating if the first argument is within a range around the center value.
+Creates a `bool` value indicating if the first argument is within a range around the center value.
 
 ## Syntax
 
 `around(`*value*`,`*center*`,`*delta*`)`
 
-## Arguments
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
 
-* *value*: A number, date, or [timespan](scalar-data-types/timespan.md) that is evaluated.
-* *center*: A number, date, or [timespan](scalar-data-types/timespan.md) representing the center of the range defined as [(`center`-`delta`) .. (`center` + `delta`)].
-* *delta*: A number, or [timespan](scalar-data-types/timespan.md) representing the delta value of the range defined as [(`center`-`delta`) .. (`center` + `delta`)].
+## Parameters
+
+| Name | Type | Required | Description |
+|--|--|--|--|
+|*value*| int, long, real, datetime, or timespan |  :heavy_check_mark: | The value to compare to the *center*.|
+| *center* | int, long, real, datetime, or timespan |  :heavy_check_mark: | The center of the range defined as [(`center`-`delta`) .. (`center` + `delta`)]. |
+| *delta* | int, long, real, datetime, or timespan |  :heavy_check_mark: | The delta value of the range defined as [(`center`-`delta`) .. (`center` + `delta`)].|
 
 ## Returns
 
-Returns `true` if the value within the range, `false` if the value outside the range.
+Returns `true` if the value is within the range, `false` if the value is outside the range.
 Returns `null` if any of the arguments is `null`.
 
 ## Example: Filtering values around a specific timestamp
 
 The following example filters rows around specific timestamp.
 
-<!-- csl: https://help.kusto.windows.net/Samples -->
+> [!div class="nextstepaction"]
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAytKzEtPVUgpUeBSAIK0ovxchZTEktSSzNxUDSMDI0NdAxBSMDC0MjDQhCgqyceuxAihpLgktUDBMDczj6tGoTwjtShVIbEovzQvRSOlRAeX+cYGmjpgPZoA56xhi5QAAAA=" target="_blank">Run the query</a>
+
 ```kusto
 range dt 
     from datetime(2021-01-01 01:00) 
@@ -40,6 +42,8 @@ range dt
     step 1min
 | where around(dt, datetime(2021-01-01 01:30), 1min)
 ```
+
+**Output**
 
 |dt|
 |---|

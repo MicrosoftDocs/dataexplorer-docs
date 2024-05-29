@@ -1,43 +1,42 @@
 ---
-title: rows_near plugin - Azure Data Explorer
-description: This article describes rows_near plugin in Azure Data Explorer.
-services: data-explorer
-author: orspod
-ms.author: orspodek
+title:  rows_near plugin
+description: Learn how to use the rows_near plugin to find rows near a specified condition.
 ms.reviewer: alexans
-ms.service: data-explorer
 ms.topic: reference
-ms.date: 06/15/2021
+ms.date: 01/19/2023
 ---
 # rows_near() plugin
 
 Finds rows near a specified condition.
 
-```kusto
-T | evaluate rows_near(Condition, NumRows)
-```
+The plugin is invoked with the [`evaluate`](evaluate-operator.md) operator.
 
 ## Syntax
 
 *T* `| evaluate` `rows_near(`*Condition*`,` *NumRows*`,` [`,` *RowsAfter* ]`)`
 
-## Arguments
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
 
-* *T*: A serialized input tabular expression.
-* *Condition*: Boolean expression representing the condition to find rows around. 
-* *NumRows*: The number of rows to find before and after the condition.
-* *RowsAfter*: (optional) when specified, overrides the number of rows to find after the condition.
+## Parameters
+
+| Name | Type | Required | Description |
+|--|--|--|--|
+| *T*| `string` |  :heavy_check_mark: | The input tabular expression.|
+| *Condition*| `bool` |  :heavy_check_mark: | Represents the condition to find rows around.|
+| *NumRows*| `int` |  :heavy_check_mark: | The number of rows to find before and after the condition.|
+| *RowsAfter*| `int` | | When specified, overrides the number of rows to find after the condition.|
 
 ## Returns
 
 Every row from the input that is within *NumRows* from a `true` *Condition*,
 When *RowsAfter* is specified, returns every row from the input that is *NumRows* before or *RowsAfter* after a `true` *Condition*.
 
-
 ## Example
 
 Find rows with an `"Error"` *State*, and returns `2` rows before and after the `"Error"` record.
 
+> [!div class="nextstepaction"]
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA43SSwqDMBAG4L2nGFwppJDEVxVc9gSWbkopUYMIakoSWwo9fMdC3RRpklXIxwzM/K2weOtBQnDsR2msGG9FK6y0+CJwEsMsi0FNHYEKpSyM1f3UQeidPcDzpQGnnO1ouqMsJMAI+NXcNNIYn2w4ji52cBG6yMHFS1+XxskCEweYIuQOLlsK5ggPWiu9yfYLc6mXI8z+O0bR5Q6OuU2a8Z/NXbwXGKUt1E9Y4wHCNIAf8o7hwCKg1cNcJyl08IkIlOU6CuDhGzR1CNFiAgAA" target="_blank">Run the query</a>
 
 ```kusto
 datatable (Timestamp:datetime, Value:long, State:string )
@@ -58,6 +57,8 @@ datatable (Timestamp:datetime, Value:long, State:string )
 | sort by Timestamp asc 
 | evaluate rows_near(State == "Error", 2)
 ```
+
+**Output**
 
 |Timestamp|Value|State|
 |---|---|---|

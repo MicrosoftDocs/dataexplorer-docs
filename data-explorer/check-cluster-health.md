@@ -1,10 +1,7 @@
 ---
 title: Check the health of an Azure Data Explorer cluster
 description: This article describes steps to monitor the health of your Azure Data Explorer cluster.
-author: orspod
-ms.author: orspodek
 ms.reviewer: mblythe
-ms.service: data-explorer
 ms.topic: how-to
 ms.date: 09/24/2018
 ---
@@ -19,9 +16,18 @@ There are several factors that impact the health of an Azure Data Explorer clust
 
     ```Kusto
     .show diagnostics
-    | project IsHealthy
+    | project IsHealthy, NotHealthyReason, IsAttentionRequired, AttentionRequiredReason, IsScaleOutRequired
     ```
-    An output of 1 is healthy; an output of 0 is unhealthy.
+    
+    **Output**
+
+    |Output parameter |Description|
+    |---|---|
+    |IsHealthy |An output of 1 indicates that the cluster is healthy. An output of 0 indicates that the cluster is unhealthy.|
+    |NotHealthyReason |The reason that the cluster is unhealthy. This field is only relevant when the output of *IsHealthy* is 0.|
+    |IsAttentionRequired |An output of 1 indicates that the cluster requires attention.|
+    |AttentionRequiredReason |The reason that the cluster requires attention. This field is only relevant when the output of *IsAttentionRequired* is 1.|
+    |IsScaleOutRequired |An output of 1 indicates it is recommended to [scale out](manage-cluster-horizontal-scaling.md) the cluster.|
 
 1. Sign into the [Azure portal](https://portal.azure.com), and navigate to your cluster.
 
@@ -32,5 +38,7 @@ There are several factors that impact the health of an Azure Data Explorer clust
 1. It's possible to add other metrics to the chart. Select the chart then **Add metric**. Select another metric - this example shows **CPU**.
 
     ![Add metric.](media/check-cluster-health/add-metric.png)
+    
+1. Review the resource and ingestion metrics listed in [cluster metrics](using-metrics.md#cluster-metrics) and review the recommendations in the metric description column.
 
 1. If you need assistance diagnosing issues with the health of a cluster, please open a support request in the [Azure portal](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview).

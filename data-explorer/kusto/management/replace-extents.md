@@ -1,69 +1,86 @@
 ---
-title: .replace extents - Azure Data Explorer
-description: This article describes the replace extents command in Azure Data Explorer.
-services: data-explorer
-author: orspod
-ms.author: orspodek
-ms.reviewer: rkarlin
-ms.service: data-explorer
+title: .replace extents command
+description: Learn how to use the `.replace extents` command to move extents from a source table to a destination table.
+ms.reviewer: orspodek
 ms.topic: reference
-ms.date: 07/02/2020
+ms.date: 05/24/2023
 ---
-# .replace extents
+# .replace extents command
 
 This command runs in the context of a specific database.
 It moves the specified extents from their source tables to the destination table,
 and then drops the specified extents from the destination table.
 All of the drop and move operations are done in a single transaction.
 
-Requires [Table admin permission](../management/access-control/role-based-authorization.md) for the source and destination tables.
-
 > [!NOTE]
-> Data shards are called **extents** in Kusto, and all commands use "extent" or "extents" as a synonym.
+> Data shards are called **extents**, and all commands use "extent" or "extents" as a synonym.
 > For more information on extents, see [Extents (data shards) overview](extents-overview.md).
 
-## Syntax
+## Permissions
 
-`.replace` [`async`] `extents` `in` `table` *DestinationTableName* `<| 
-{`*query for extents to be dropped from table*`},{`*query for extents to be moved to table*`}`
-
-* `async` (optional): Execute the command asynchronously.
-    * An Operation ID (Guid) is returned.
-    * The operation's status can be monitored. Use the [.show operations](operations.md#show-operations) command.
-    * The results of a successful execution can be retrieved. Use the [.show operation details](operations.md#show-operation-details) command.
-
-To specify which extents should be dropped or moved, use one of two queries.
-* *query for extents to be dropped from table*: The results of this query specify the extent IDs that should be dropped from the destination table.
-* *query for extents to be moved to table*: The results of this query specify the extent IDs in the source tables that should be moved to the destination table.
-
-Both queries should return a recordset with a column called "ExtentId".
+You must have at least [Table Admin](../management/access-control/role-based-access-control.md) permissions for the source and destination tables.
 
 ## Restrictions
 
 * Both source and destination tables must be in the context database.
-* All extents specified by the *query for extents to be dropped from table* are expected to belong to the destination table.
+* All extents specified by the *ExtentsToDropQuery* are expected to belong to the destination table.
 * All columns in the source tables are expected to exist in the destination table with the same name and data type.
+* If the destination table is a source table of a [materialized view](materialized-views/materialized-view-overview.md), the command might fail since the materialized view won't process the records in the moved extents. See more details in the [materialized views limitations](materialized-views/materialized-views-limitations.md#the-materialized-view-source) page. You can workaround this error by setting a new ingestion time during the move command. See `setNewIngestionTime` in [supported properties](#supported-properties).
 
-## Return output (for sync execution)
+## Syntax
 
-Output parameter |Type |Description
----|---|---
-OriginalExtentId |string |A unique identifier (GUID) for the original extent in the source table that has been moved to the destination table, or the extent in the destination table that has been dropped.
-ResultExtentId |string |A unique identifier (GUID) for the result extent that has been moved from the source table to the destination table. Empty, if the extent was dropped from the destination table. Upon failure: "Failed".
-Details |string |Includes the failure details if the operation fails.
+`.replace` [`async`] `extents` `in` `table` *DestinationTableName* [ `with` `(`*PropertyName* `=` *PropertyValue* [`,` ...]`)`] `<|`
+`{`*ExtentsToDropQuery*`},{`*ExtentsToMoveQuery*`}`
+
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+
+## Parameters
+
+|Name|Type|Required|Description|
+|--|--|--|--|
+|`async`| `string` ||If specified, the command runs asynchronously.|
+|*DestinationTableName*| `string` | :heavy_check_mark:|The name of the table to which to move the extents.|
+|*FromDate*| `datetime` ||The query window start date.|
+|*ToDate*| `datetime` ||The query window end date.|
+|*PropertyName*, *PropertyValue*| `string` ||One or more [Supported properties](#supported-properties).|
+|*ExtentsToDropQuery*| `string` | :heavy_check_mark:|The results of this query specify the extent IDs that should be dropped from the destination table. Should return a recordset with a column called "ExtentId".|
+|*ExtentsToMoveQuery*| `string` | :heavy_check_mark:|The results of this [Kusto Query Language (KQL)](../query/index.md) query specify the source tables and the extent IDs to be moved to the destination table. Should return a recordset with columns called "ExtentId" and "TableName".|
+
+## Supported properties
+
+| Property name | Type | Required | Description |
+|--|--|--|--|
+| `setNewIngestionTime` | `bool` |  | If set to `true`, a new [ingestion time](../query/ingestion-time-function.md) is assigned to all records in extents being moved. This is useful when records should be processed by workloads that depend on [database cursors](database-cursor.md), such as [materialized views](materialized-views/materialized-view-overview.md) and [continuous data export](data-export/continuous-data-export.md). |
+| `extentCreatedOnFrom` | `datetime` |  :heavy_check_mark: | Apply on extents created after this point in time. |
+| `extentCreatedOnTo` | `datetime` |  :heavy_check_mark: | Apply on extents created before this point in time. |
 
 > [!NOTE]
-> The command will fail if extents returned by the *extents to be dropped from table* query don't exist in the destination table. This may happen if the extents were merged before the replace command was executed.
+> For better performance, set extentCreatedOnFrom and extentCreatedOnTo parameters to the smallest possible range.
+
+## Returns
+
+When the command is run synchronously, a table with the following schema is returned.
+
+| Output parameter | Type | Description |
+|--|--|--|
+| OriginalExtentId | `string` | A unique identifier (GUID) for the original extent in the source table that has been moved to the destination table, or the extent in the destination table that has been dropped. |
+| ResultExtentId | `string` | A unique identifier (GUID) for the result extent that has been moved from the source table to the destination table. Empty, if the extent was dropped from the destination table. Upon failure: "Failed". |
+| Details | `string` | Includes the failure details if the operation fails. |
+
+When the command is run asynchronously, an operation ID (GUID) is returned. Monitor the operation's status with the [.show operations](operations.md#show-operations) command, and retrieve the results of a successful execution with the [.show operation details](operations.md#show-operation-details) command.
+
+> [!NOTE]
+> The command will fail if extents returned by the *ExtentsToDropQuery* query don't exist in the destination table. This may happen if the extents were merged before the replace command was executed.
 > To make sure the command fails on missing extents, check that the query returns the expected ExtentIds. Example #1 below will fail if the extent to drop doesn't exist in table *MyOtherTable*. Example #2, however, will succeed even though the extent to drop doesn't exist, since the query to drop didn't return any extent IDs.
 
 ## Examples
 
-### Move all extents from two tables 
+### Move all extents in a specified creation time range from two tables 
 
-Move all extents from two specific tables (`MyTable1`, `MyTable2`) to table `MyOtherTable`, and drop all extents in `MyOtherTable` tagged with `drop-by:MyTag`:
+Move all extents from two specific tables (`MyTable1`, `MyTable2`) in a specified creation time range to table `MyOtherTable`, and drop all extents in `MyOtherTable` tagged with `drop-by:MyTag`:
 
 ```kusto
-.replace extents in table MyOtherTable <|
+.replace extents in table MyOtherTable with (extentCreatedOnFrom=datetime(2023-03-10), extentCreatedOnTo=datetime(2023-03-12)) <|
     {
         .show table MyOtherTable extents where tags has 'drop-by:MyTag'
     },
@@ -81,12 +98,12 @@ Move all extents from two specific tables (`MyTable1`, `MyTable2`) to table `MyO
 |4fcb4598-9a31-4614-903c-0c67c286da8c |97aafea1-59ff-4312-b06b-08f42187872f| 
 |2dfdef64-62a3-4950-a130-96b5b1083b5a |0fb7f3da-5e28-4f09-a000-e62eb41592df| 
 
-### Move all extents from one table to another, drop specific extent
+### Move all extents in a specified creation time range from one table to another, drop specific extent
 
-Move all extents from one specific table (`MyTable1`) to table `MyOtherTable`, and drop a specific extent in `MyOtherTable`, by its ID:
+Move all extents in a specified creation time range from one specific table (`MyTable1`) to table `MyOtherTable`, and drop a specific extent in `MyOtherTable`, by its ID:
 
 ```kusto
-.replace extents in table MyOtherTable <|
+.replace extents in table MyOtherTable with (extentCreatedOnFrom=datetime(2023-03-10), extentCreatedOnTo=datetime(2023-03-12)) <|
     {
         print ExtentId = "2cca5844-8f0d-454e-bdad-299e978be5df"
     },
@@ -96,7 +113,7 @@ Move all extents from one specific table (`MyTable1`) to table `MyOtherTable`, a
 ```
 
 ```kusto
-.replace extents in table MyOtherTable  <|
+.replace extents in table MyOtherTable with (extentCreatedOnFrom=datetime(2023-03-10), extentCreatedOnTo=datetime(2023-03-12)) <|
     {
         .show table MyOtherTable extents
         | where ExtentId == guid(2cca5844-8f0d-454e-bdad-299e978be5df) 
@@ -111,7 +128,7 @@ Move all extents from one specific table (`MyTable1`) to table `MyOtherTable`, a
 Implement an idempotent logic so that Kusto drops extents from table `t_dest` only if there are extents to move from table `t_source` to table `t_dest`:
 
 ```kusto
-.replace async extents in table t_dest <|
+.replace async extents in table t_dest with (extentCreatedOnFrom=datetime(2023-03-10), extentCreatedOnTo=datetime(2023-03-12)) <|
 {
     let any_extents_to_move = toscalar( 
         t_source
@@ -129,7 +146,7 @@ Implement an idempotent logic so that Kusto drops extents from table `t_dest` on
     let extents_to_move = 
         t_source
         | where extent_tags() has 'drop-by:blue'
-        | summarize by ExtentId = extent_id()
+        | summarize by ExtentId = extent_id(), TableName = 't_source'
     ;
     extents_to_move
 }

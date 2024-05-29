@@ -1,32 +1,35 @@
 ---
-title: ".alter-merge managed_identity policy command - Azure Data Explorer"
-description: This article describes the .alter-merge managed_identity policy command in Azure Data Explorer.
-services: data-explorer
-author: orspod
-ms.author: orspodek
+title:  .alter-merge policy managed_identity command
+description: Learn how to use the `.alter-merge policy managed_identity` command to update the ManagedIdentity policy of the cluster or database.
 ms.reviewer: slneimer
-ms.service: data-explorer
 ms.topic: reference
-ms.date: 11/03/2021
+ms.date: 11/30/2023
 ---
-# .alter-merge managed_identity policy
+# .alter-merge policy managed_identity command
 
 The command updates the ManagedIdentity policy of the cluster or the specified database, adding new managed identities or adding usages to existing managed identities.
 
 > [!NOTE]
-> Managed identities should be assigned to the cluster (see [instructions](../../managed-identities.md)) before you can assign them to the ManagedIdentity policy.
+> Managed identities should be assigned to a cluster before you can assign them to the ManagedIdentity policy. For more information, see [Configure managed identities for your cluster](../../configure-managed-identities-cluster.md)
+
+## Permissions
+
+You must have [AllDatabasesAdmin](access-control/role-based-access-control.md) permissions to run these commands.
 
 ## Syntax
 
-* `.alter-merge` `cluster` `policy` `managed_identity` *ArrayOfManagedIdentityPolicyObjects*
-* `.alter-merge` `database` *DatabaseName* `policy` `managed_identity` *ArrayOfManagedIdentityPolicyObjects*
+`.alter-merge` `cluster` `policy` `managed_identity` *ArrayOfPolicyObjects*
 
-## Arguments
+`.alter-merge` `database` *DatabaseName* `policy` `managed_identity` *ArrayOfPolicyObjects*
+
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+
+## Parameters
 
 |Name|Type|Required|Description|
 |--|--|--|--|
-|*ArrayOfManagedIdentityPolicyObjects*|array|&check;|An array with zero or more [ManagedIdentity policy](managed-identity-policy.md#the-managedidentity-policy-object) objects defined.|
-|*DatabaseName*|string|&check;|The name of the database.|
+|*DatabaseName*| `string` | :heavy_check_mark:|The name of the database.|
+|*ArrayOPolicyObjects*|array| :heavy_check_mark:|A serialized array with zero or more [ManagedIdentity policy](managed-identity-policy.md#the-managedidentity-policy-object) objects defined.|
 
 > [!NOTE]
 >
@@ -41,13 +44,13 @@ The command updates the ManagedIdentity policy of the cluster or the specified d
 
 The object ID is available in the Azure portal on the managed identity's overview page.
 
-:::image type="content" source="images/managed-identity-policy\azure-portal.png" alt-text="Look for 'Object (principal) ID.":::
+:::image type="content" source="media/managed-identity-policy\azure-portal.png" alt-text="Look for 'Object (principal) ID.":::
 
 ## Returns
 
-The command updates the ManagedIdentity policy of the cluster or the specified database, adding new managed identities or adding usages to existing managed identities, and then returns the output of the corresponding [.show managed identity policy](show-managed-identity-policy-command.md) command.
+The command updates the ManagedIdentity policy of the cluster or the specified database. The change may add new managed identities or add usages to existing managed identities. Then, the command returns the output of the corresponding [.show managed identity policy](show-managed-identity-policy-command.md) command.
 
-If any of the specified managed identities is not assigned to the cluster, an error will be returned and the ManagedIdentity policy will not be modified.
+If any of the specified managed identities isn't assigned to the cluster, an error is returned and the ManagedIdentity policy won't be modified.
 
 ## Example
 

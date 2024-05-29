@@ -1,51 +1,39 @@
 ---
-title: Scalar data types - Azure Data Explorer | Microsoft Docs
+title:  Scalar data types
 description: This article describes Scalar data types in Azure Data Explorer.
-services: data-explorer
-author: orspod
-ms.author: orspodek
 ms.reviewer: alexans
-ms.service: data-explorer
 ms.topic: reference
 ms.date: 01/27/2020
 ---
 # Scalar data types
 
-Every data value (such as the value of an expression, or the parameter to a function,
-or the value of an expression) has a **data type**. A data type is either a **scalar data type**
-(one of the built-in predefined types listed below), or a **user-defined record**
-(an ordered sequence of name/scalar-data-type pairs, such as the data type of a
-row of a table).
-
-Kusto supplies a set of system data types that define all the types of data
-that can be used with Kusto.
+Every data value, like the value of an expression or a function parameter, has a *data type*. A data type is either a *scalar data type*, which is one of the built-in predefined types listed below, or a *user-defined record*, which is an ordered sequence of name and scalar-data-type pairs, like the data type of a row in a table.
 
 > [!NOTE]
 > User-defined data types are not supported in Kusto.
 
-The following table lists the data types supported by Kusto, alongside
-additional aliases you can use to refer to them and a roughly equivalent
-.NET Framework type.
+## Supported data types
 
-| Type       | Additional name(s)   | Equivalent .NET type              | gettype()   |
-| ---------- | -------------------- | --------------------------------- | ----------- |
-| `bool`     | `boolean`            | `System.Boolean`                  | `int8`      |
-| `datetime` | `date`               | `System.DateTime`                 | `datetime`  |
-| `dynamic`  |                      | `System.Object`                   | `array` or `dictionary` or any of the other values |
-| `guid`     |                      | `System.Guid`                     | `guid`      |
-| `int`      |                      | `System.Int32`                    | `int`       |
-| `long`     |                      | `System.Int64`                    | `long`      |
-| `real`     | `double`             | `System.Double`                   | `real`      |
-| `string`   |                      | `System.String`                   | `string`    |
-| `timespan` | `time`               | `System.TimeSpan`                 | `timespan`  |
-| `decimal`  |                      | `System.Data.SqlTypes.SqlDecimal` | `decimal`   |
+The following data types are supported:
 
-All non-string data types include a special "null" value, which represents the lack of data
-or a mismatch of data. For example, attempting to ingest the string `"abc"`
-into an `int` column results in this value.
-It isn't possible to materialize this value explicitly, but you can detect
-whether an expression evaluates to this value by using the `isnull()` function.
+| Type | Description |
+|--|--|
+| [bool](bool.md) (`boolean`) | `true` (`1`) or `false` (`0`). |
+| [datetime](datetime.md) (`date`) | An instant in time, typically expressed as a date and time of day. |
+| [decimal](decimal.md) | A 128-bit wide, decimal number.|
+| [dynamic](dynamic.md) | An array, a property bag, or a value of any of the other scalar data types.|
+| [guid](guid.md) (`uuid`, `uniqueid`)| A 128-bit globally unique value. |
+| [int](int.md) | A signed, 32-bit wide, integer. |
+| [long](long.md) | A signed, 64-bit wide, integer. |
+| [real](real.md) (`double`) | A 64-bit wide, double-precision, floating-point number. |
+| [string](string.md) | A sequence of zero or more [Unicode](https://home.unicode.org/) characters.|
+| [timespan](timespan.md) (`time`) | A time interval. |
 
-> [!WARNING]
-> Support for the `guid` type is incomplete.
-> We strongly recommend that teams use values of type `string` instead.
+> [!TIP]
+> To check the data type of a value, use the the [gettype()](../../query/gettypefunction.md) function.
+
+## Null values
+
+All nonstring data types can be null. When a value is null, it indicates an absence or mismatch of data. For example, if you try to input the string `abc` into an integer column, it results in the null value. To check if an expression is null, use the [isnull()](../../query/isnullfunction.md) function.
+
+For more information, see [Null values](null-values.md).

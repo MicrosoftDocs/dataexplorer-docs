@@ -3,9 +3,6 @@ title: Azure Policy Regulatory Compliance controls for Azure Data Explorer
 description: Lists Azure Policy Regulatory Compliance controls available for Azure Data Explorer. These built-in policy definitions provide common approaches to managing the compliance of your Azure resources.
 ms.date: 04/21/2021
 ms.topic: sample
-author: orspod
-ms.author: orspodek
-ms.service: data-explorer
 ms.custom: subject-policy-compliancecontrols
 ---
 # Azure Policy Regulatory Compliance controls for Azure Data Explorer
@@ -20,6 +17,8 @@ compliant with the specific standard.
 The title of each built-in policy definition links to the policy definition in the Azure portal. Use
 the link in the **Policy Version** column to view the source on the
 [Azure Policy GitHub repo](https://github.com/Azure/azure-policy).
+
+For resources regarding compliance for your business or organization, see the [Azure compliance documentation](/azure/compliance).
 
 > [!IMPORTANT]
 > Each control below is associated with one or more
@@ -49,7 +48,8 @@ more information about this compliance standard, see
 |System and Communications Protection |SC.3.191 |Protect the confidentiality of CUI at rest. |[Disk encryption should be enabled on Azure Data Explorer](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Ff4b53539-8df9-40e4-86c6-6b607703bd4e) |[2.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Azure%20Data%20Explorer/ADX_disk_encrypted.json) |
 |System and Communications Protection |SC.3.191 |Protect the confidentiality of CUI at rest. |[Double encryption should be enabled on Azure Data Explorer](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fec068d99-e9c7-401f-8cef-5bdde4e6ccf1) |[2.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Azure%20Data%20Explorer/ADX_doubleEncryption.json) |
 
-## Next steps
+## Related content
 
-- Learn more about [Azure Policy Regulatory Compliance](/azure/governance/policy/concepts/regulatory-compliance).
-- See the built-ins on the [Azure Policy GitHub repo](https://github.com/Azure/azure-policy).
+- [Azure compliance documentation](/azure/compliance)
+- [Azure security baseline for Azure Data Explorer](/security/benchmark/azure/baselines/azure-data-explorer-security-baseline)
+- See the built-ins on the [Azure Policy GitHub repo](https://github.com/Azure/azure-policy)

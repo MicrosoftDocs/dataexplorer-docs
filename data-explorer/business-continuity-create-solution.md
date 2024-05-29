@@ -1,17 +1,14 @@
 ---
 title: Create business continuity and disaster recovery solutions with Azure Data Explorer
 description: This article describes how to create business continuity and disaster recovery solutions with Azure Data Explorer
-author: orspod
-ms.author: orspodek
 ms.reviewer: herauch
-ms.service: data-explorer
 ms.topic: conceptual
-ms.date: 08/05/2020
+ms.date: 01/03/2022
 ---
 
 # Create business continuity and disaster recovery solutions with Azure Data Explorer
 
-This article details how you can prepare for an Azure regional outage by replicating your Azure Data Explorer resources, management, and ingestion in different Azure regions. An example of data ingestion with Event Hub is given. Cost optimization is also discussed for different architecture configurations. For a more in-depth look at architecture considerations and recovery solutions, see the [business continuity overview](business-continuity-overview.md).
+This article details how you can prepare for an Azure regional outage by replicating your Azure Data Explorer resources, management, and ingestion in different Azure regions. An example of data ingestion with Azure Event Hubs is given. Cost optimization is also discussed for different architecture configurations. For a more in-depth look at architecture considerations and recovery solutions, see the [business continuity overview](business-continuity-overview.md).
 
 ## Prepare for Azure regional outage to protect your data
 
@@ -23,7 +20,7 @@ Azure Data Explorer doesn't support automatic protection against the outage of a
 
 ### Create multiple independent clusters
 
-Create more than one [Azure Data Explorer cluster](create-cluster-database-portal.md) in more than one region.
+Create more than one [Azure Data Explorer cluster](create-cluster-and-database.md) in more than one region.
 Make sure that at least two of these clusters are created in [Azure paired regions](/azure/best-practices-availability-paired-regions).
 
 The following image shows replicas, three clusters in three different regions. 
@@ -35,7 +32,7 @@ The following image shows replicas, three clusters in three different regions.
 Replicate the management activities to have the same cluster configuration in every replica.
 
 1. Create on each replica the same: 
-    * Databases: You can use the [Azure portal](create-cluster-database-portal.md#create-a-database) or one of our [SDKs](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/kusto/Microsoft.Azure.Management.Kusto) to create a new database.
+    * Databases: You can use the [Azure portal](create-cluster-and-database.md#create-a-database) or one of our [SDKs](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/kusto/Microsoft.Azure.Management.Kusto) to create a new database.
     * [Tables](kusto/management/create-table-command.md)
     * [Mappings](kusto/management/create-ingestion-mapping-command.md)
     * [Policies](./kusto/management/index.md)
@@ -44,20 +41,20 @@ Replicate the management activities to have the same cluster configuration in ev
 
     :::image type="content" source="media/business-continuity-create-solution/regional-duplicate-management.png" alt-text="Duplicate management activities.":::    
 
-## Disaster recovery solution using Event Hub ingestion
+## Disaster recovery solution using event hub ingestion
 
 Once you've completed [Prepare for Azure regional outage to protect your data](#prepare-for-azure-regional-outage-to-protect-your-data), your data and management are distributed to multiple regions. If there's an outage in one region, Azure Data Explorer will be able to use the other replicas.
 
-### Set up ingestion using Event Hub
+### Set up ingestion using an event hub
 
-To ingest data from [Azure Event Hubs](/azure/event-hubs/event-hubs-about) into each region's Azure Data Explorer cluster, first replicate your Event Hubs setup in each region. Then configure each region's Azure Data Explorer replica to [ingest data from its corresponding Event Hubs](ingest-data-event-hub.md).
+To ingest data from [Azure Event Hubs](/azure/event-hubs/event-hubs-about) into each region's Azure Data Explorer cluster, first replicate your Azure Event Hubs setup in each region. Then configure each region's Azure Data Explorer replica to [ingest data from its corresponding Event Hubs](ingest-data-event-hub.md).
 
 > [!NOTE] 
-> Ingestion via Event Hub/IoT Hub/Storage is robust. If a cluster isn't available for a period of time, it will catch up at a later time and insert any pending messages or blobs. This process relies on [checkpointing](/azure/event-hubs/event-hubs-features#checkpointing).
+> Ingestion via Azure Event Hubs/IoT Hub/Storage is robust. If a cluster isn't available for a period of time, it will catch up at a later time and insert any pending messages or blobs. This process relies on [checkpointing](/azure/event-hubs/event-hubs-features#checkpointing).
 
-:::image type="content" source="media/business-continuity-create-solution/event-hub-management-scheme.png" alt-text="Ingest via Event Hub.":::
+:::image type="content" source="media/business-continuity-create-solution/event-hub-management-scheme.png" alt-text="Ingest via Azure Event Hubs.":::
 
-As shown in the diagram below, your data sources produce events to Event Hubs in all regions, and each Azure Data Explorer replica consumes the events. Data visualization components like Power BI, Grafana, or SDK powered WebApps can query one of the replicas.
+As shown in the diagram below, your data sources produce events to event hubs in all regions, and each Azure Data Explorer replica consumes the events. Data visualization components like Power BI, Grafana, or SDK powered WebApps can query one of the replicas.
 
 :::image type="content" source="media/business-continuity-create-solution/data-sources-visualization.png" alt-text="Data sources to data visualization.":::
 
@@ -65,19 +62,19 @@ As shown in the diagram below, your data sources produce events to Event Hubs in
 
 Now you're ready to optimize your replicas using some of the following methods:
 
-* [Create an active-hot standby configuration](#create-an-active-hot-standby-configuration)
+* [Create an on-demand data recovery configuration](#create-an-on-demand-data-recovery-configuration)
 * [Start and stop the replicas](#start-and-stop-the-replicas)
 * [Implement a highly available application service](#implement-a-highly-available-application-service)
 * [Optimize cost in an active-active configuration](#optimize-cost-in-an-active-active-configuration)
 
-### Create an active-hot standby configuration
+### Create an on-demand data recovery configuration
 
 Replicating and updating the Azure Data Explorer setup will linearly increase the cost with the number of replicas. To optimize cost, you can implement an architectural variant to balance time, failover, and cost.
-In an active-hot standby configuration, cost optimization has been implemented by introducing passive Azure Data Explorer replicas. These replicas are only turned on if there's a disaster in the primary region (for example, region A). The replicas in Regions B and C don't need to be active 24/7, reducing the cost significantly. However, in most cases, the performance of these replicas won't be as good as the primary cluster. For more information, see [Active-Hot standby configuration](business-continuity-overview.md#active-hot-standby-configuration).
+In an on-demand data recovery configuration, cost optimization has been implemented by introducing passive Azure Data Explorer replicas. These replicas are only turned on if there's a disaster in the primary region (for example, region A). The replicas in Regions B and C don't need to be active 24/7, reducing the cost significantly. However, in most cases, the performance of these replicas won't be as good as the primary cluster. For more information, see [On-demand data recovery configuration](business-continuity-overview.md#on-demand-data-recovery-configuration).
 
-In the image below, only one cluster is ingesting data from the Event Hub. The primary cluster in Region A performs [continuous data export](kusto/management/data-export/continuous-data-export.md) of all data to a storage account. The secondary replicas have access to the data using [external tables](kusto/query/schema-entities/externaltables.md).
+In the image below, only one cluster is ingesting data from the event hub. The primary cluster in Region A performs [continuous data export](kusto/management/data-export/continuous-data-export.md) of all data to a storage account. The secondary replicas have access to the data using [external tables](kusto/query/schema-entities/external-tables.md).
 
-:::image type="content" source="media/business-continuity-create-solution/active-hot-standby-scheme.png" alt-text="architecture for an active/hot standby.":::
+:::image type="content" source="media/business-continuity-create-solution/active-hot-standby-scheme.png" alt-text="architecture for an on-demand data recovery configuration.":::
 
 ### Start and stop the replicas 
 
@@ -85,11 +82,11 @@ You can start and stop the secondary replicas using one of the following methods
 
 * [Azure Data Explorer connector to Power Automate (Preview)](flow.md)
 
-* The **Stop** button in the **Overview** tab in the Azure portal. For more information, see [Stop and restart the cluster](create-cluster-database-portal.md#stop-and-restart-the-cluster).
+* The **Stop** button in the **Overview** tab in the Azure portal. For more information, see [Stop and restart the cluster](create-cluster-and-database.md#stop-and-restart-the-cluster).
 
 * Azure CLI: 
 
-```kusto
+```azurecli
 az kusto cluster stop --name=<clusterName> --resource-group=<rgName> --subscription=<subscriptionId>” 
 ```
 
@@ -133,10 +130,10 @@ Using an active-active configuration for disaster recovery increases the cost li
 
 #### Use optimized autoscale to optimize costs
 
-Use the [optimized autoscale](manage-cluster-horizontal-scaling.md#optimized-autoscale) feature to configure horizontal scaling for the secondary clusters. They should be dimensioned so they can handle the ingestion load. Once the primary cluster isn't reachable, the secondary clusters will get more traffic and scale according to the configuration. 
+Use the [optimized autoscale](manage-cluster-horizontal-scaling.md#optimized-autoscale-recommended-option) feature to configure horizontal scaling for the secondary clusters. They should be dimensioned so they can handle the ingestion load. Once the primary cluster isn't reachable, the secondary clusters will get more traffic and scale according to the configuration. 
 
 Using optimized autoscale in this example saved roughly 50% of the cost in comparison to having the same horizontal and vertical scale on all replicas.
 
-## Next steps
+## Related content
 
-Get started with the [business continuity and disaster recovery overview](business-continuity-overview.md).
+* [Business continuity and disaster recovery overview](business-continuity-overview.md)

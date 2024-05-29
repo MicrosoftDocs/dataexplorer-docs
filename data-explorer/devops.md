@@ -1,11 +1,7 @@
 ---
 title: 'Azure DevOps task for Azure Data Explorer'
 description: 'In this topic, you learn to create a release pipeline and deploy'
-services: data-explorer
-author: orspod
-ms.author: orspodek
 ms.reviewer: shfeldma
-ms.service: data-explorer
 ms.topic: how-to
 ms.date: 05/05/2021
 
@@ -29,10 +25,10 @@ This document describes a simple example on the use of the **Azure Data Explorer
 ## Prerequisites
 
 * An Azure subscription. Create a [free Azure account](https://azure.microsoft.com/free/).
-* Create [a cluster and database](create-cluster-database-portal.md).
-* Azure Data Explorer Cluster setup:
-    * Create Azure Active Directory (Azure AD) app by [provisioning an Azure AD application](./provision-azure-ad-app.md).
-    * Grant access to your Azure AD App on your Azure Data Explorer database by [managing Azure Data Explorer database permissions](manage-database-permissions.md).
+* An Azure Data Explorer cluster and database. [Create a cluster and database](create-cluster-and-database.md).
+* Azure Data Explorer cluster setup:
+    * Create Microsoft Entra app by [provisioning a Microsoft Entra application](./provision-azure-ad-app.md).
+    * Grant access to your Microsoft Entra App on your Azure Data Explorer database by [managing Azure Data Explorer database permissions](manage-database-permissions.md).
 * Azure DevOps setup:
     * [Sign up for a free organization](/azure/devops/user-guide/sign-up-invite-teammates).
     * [Create an organization](/azure/devops/organizations/accounts/create-organization).
@@ -42,7 +38,7 @@ This document describes a simple example on the use of the **Azure Data Explorer
     * If you are the Azure DevOps instance owner, install the extension from the [Marketplace](https://marketplace.visualstudio.com/items?itemName=Azure-Kusto.PublishToADX).
         ![Get extension in the Marketplace.](media/devops/get-extension.png)
         ![Install extension.](media/devops/extension-install.png)
-    * If you are NOT the Azure DevOps instance owner, contact your [owner](/azure/devops/organizations/security/lookup-organization-owner-admin?view=azure-devops&tabs=preview-page#look-up-the-organization-owner&preserve-view=true) and ask them to install it.
+    * If you are NOT the Azure DevOps instance owner, contact your [owner](/azure/devops/organizations/security/look-up-organization-owner) and ask them to install it.
 
 ## Prepare your content for release
 
@@ -120,9 +116,9 @@ The are three ways to run admin commands against cluster in a task.
             |--|--|
             | **Connection name** | Enter a name to identify this service endpoint |
             | **Cluster Url** | Value can be found in the overview section of your Azure Data Explorer Cluster in the Azure portal |
-            | **Service Principal Id** | Enter the AAD App ID (created as prerequisite) |
-            | **Service Principal App Key** | Enter the AAD App Key (created as prerequisite) |
-            | **AAD tenant ID** | Enter your AAD tenant (such as microsoft.com or contoso.com) |
+            | **Service Principal Id** | Enter the Microsoft Entra App ID (created as prerequisite) |
+            | **Service Principal App Key** | Enter the Microsoft Entra App Key (created as prerequisite) |
+            | **Microsoft Entra tenant ID** | Enter your Microsoft Entra tenant (such as microsoft.com or contoso.com) |
 
         Select **Allow all pipelines to use this connection** checkbox and then select **OK**.
 
@@ -134,7 +130,7 @@ The are three ways to run admin commands against cluster in a task.
 
 ### Create a Query task
 
-If required, create a task to run a query against the cluster. Running queries in a Build or Release pipeline can be used to validate a data set and have a step succeed or fail based on the query results. The tasks success criteria can be based on a row count threshold or a single value depending on what the query returns.
+If required, create a task to run a query against the cluster. Running queries in a Build or Release pipeline can be used to validate a dataset and have a step succeed or fail based on the query results. The tasks success criteria can be based on a row count threshold or a single value depending on what the query returns.
 
 1. In the **Tasks** tab, select **+** by **Agent job** and search for **Azure Data Explorer**.
 
@@ -201,7 +197,7 @@ You have now completed creation of a release pipeline for deployment to pre-prod
 
 ## Yaml Pipeline configuration
 
-The tasks can be configured both via Azure DevOps Web UI (as shown above) and via Yaml code within the [pipeline schema](/azure/devops/pipelines/yaml-schema?view=azure-devops&tabs=schema%2Cparameter-schema)
+The tasks can be configured both via Azure DevOps Web UI (as shown above) and via Yaml code within the [pipeline schema](/azure/devops/pipelines/yaml-schema)
 
 ### Admin Command Sample Usage
 

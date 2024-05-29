@@ -1,10 +1,7 @@
 ---
 title: Prepay for Azure Data Explorer markup to save money
 description: Learn how to buy Azure Data Explorer reserved capacity to save on your Azure Data Explorer costs.
-author: orspod
-ms.author: orspodek
 ms.reviewer: avnera
-ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 11/03/2019
 ---
@@ -17,7 +14,7 @@ By purchasing a reservation, you're pre-paying for the markup costs for a period
 
 You can buy Azure Data Explorer reserved capacity in the [Azure portal](https://portal.azure.com). To buy Azure Data Explorer reserved capacity:
 
-* You must be the owner of at least one Enterprise or Pay-As-You-Go subscription.
+* To buy a reservation, you must have owner role or reservation purchaser role on an Azure subscription.
 * For Enterprise subscriptions, **Add Reserved Instances** must be enabled in the [EA portal](https://ea.azure.com). Alternatively, if that setting is disabled, you must be an EA Admin on the subscription.
 * For the Cloud Solution Provider (CSP) program, only the admin agents or sales agents can purchase Azure Data Explorer reserved capacity.
 
@@ -60,7 +57,7 @@ The Azure Data Explorer markup units reservation discount is applied automatical
 > * You can update the scope of the Azure Data Explorer reserved capacity reservation through the [Azure portal](https://portal.azure.com), PowerShell, CLI or through the API.
 > * To learn how to manage the Azure Data Explorer reserved capacity reservation, see [manage Azure Data Explorer reserved capacity](/azure/cost-management-billing/reservations/understand-azure-data-explorer-reservation-charges).
 
-## Next steps
+## Related content
 
 To learn more about Azure Reservations, see the following articles:
 

@@ -1,9 +1,6 @@
 ---
-author: orspod
-ms.service: data-explorer
 ms.topic: include
 ms.date: 02/27/2020
-ms.author: orspodek
 ---
 ### Schema mapping examples
 

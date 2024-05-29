@@ -1,31 +1,34 @@
 ---
-title: .delete table update policy command - Azure Data Explorer
-description: This article describes the .delete table update policy command in Azure Data Explorer.
-services: data-explorer
-author: orspod
-ms.author: orspodek
+title: .delete table policy update command
+description: Learn how to use the `.delete table policy update` command to delete a table's update policy.
 ms.reviewer: yonil
-ms.service: data-explorer
 ms.topic: reference
-ms.date: 10/10/2021
+ms.date: 05/24/2023
 ---
-# .delete table update policy
+# .delete table policy update command
 
-Delete the table update policy. The [update policy](updatepolicy.md) instructs Azure Data Explorer to automatically append data to a target table whenever new data is inserted into the source table, based on a transformation query that runs on the data inserted into the source table.
+Delete the table update policy. The [update policy](update-policy.md) simplifies the process of syncing and updating data between two tables. When new data is inserted into the source table, a transformation query runs over this data to modify and insert the data into the target table.
 
 > [!NOTE]
 > The source table and the table for which the update policy is defined must be in the same database.
 > The update policy function schema and the target table schema must match in their column names, types, and order.
 
+## Permissions
+
+You must have at least [Table Admin](access-control/role-based-access-control.md) permissions to run this command.
+
 ## Syntax
 
-`.delete` `table` *TableName* `policy` `update`
-`.delete` `table` *DatabaseName*`.`*TableName* `update` `sharding`
+`.delete` `table` [ *DatabaseName*`.`]*TableName* `policy` `update`
 
-## Arguments
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
 
-*DatabaseName* - Specify the name of the database.
-*TableName* - Specify the name of the table. Use without *DatabaseName* when running in the required database's context. A wildcard (*) denotes all tables.
+## Parameters
+
+|Name|Type|Required|Description|
+|--|--|--|--|
+|*DatabaseName*| `string` ||The name of the database. This is required when running the command from outside the database context of the specified table.|
+|*TableName*| `string` | :heavy_check_mark:|The name of the table.|
 
 ## Returns
 

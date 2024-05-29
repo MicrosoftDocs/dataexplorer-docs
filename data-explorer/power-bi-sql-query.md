@@ -1,10 +1,7 @@
 ---
 title: 'Visualize data from Azure Data Explorer with a Power BI SQL query'
 description: 'In this article, you learn how to use one of the three options for visualizing data in Power BI: a SQL query against an Azure Data Explorer cluster.'
-author: orspod
-ms.author: orspodek
 ms.reviewer: gabil
-ms.service: data-explorer
 ms.topic: how-to
 ms.date: 07/10/2019
 
@@ -23,7 +20,7 @@ If you don't have an Azure subscription, create a [free Azure account](https://a
 
 You need the following to complete this article:
 
-* An organizational email account that is a member of Azure Active directory, so you can connect to the [Azure Data Explorer help cluster](https://dataexplorer.azure.com/clusters/help/databases/samples).
+* A Microsoft account or a Microsoft Entra user identity to sign in to the [help cluster](https://dataexplorer.azure.com/clusters/help/databases/Samples).
 * [Power BI Desktop](https://powerbi.microsoft.com/get-started/) (select **DOWNLOAD FREE**)
 
 ## Get data from Azure Data Explorer
@@ -42,7 +39,7 @@ You typically use the native query language with Azure Data Explorer, but it als
 
 1. On the **SQL Server database** screen, fill out the form with the following information.
 
-    ![Database, table, query options.](media/power-bi-sql-query/database-table-query.png)
+    ![Database, table, request properties.](media/power-bi-sql-query/database-table-query.png)
 
     **Setting** | **Value** | **Field description**
     |---|---|---|
@@ -78,6 +75,7 @@ You typically use the native query language with Azure Data Explorer, but it als
 
 If you no longer need the report you created for this article, delete the Power BI Desktop (.pbix) file.
 
-## Next steps
+## Next step
 
-[Visualize data using the Azure Data Explorer connector for Power BI](power-bi-connector.md)
+> [!div class="nextstepaction"]
+> [Visualize data using the Azure Data Explorer connector for Power BI](power-bi-data-connector.md)

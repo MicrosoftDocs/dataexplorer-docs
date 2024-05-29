@@ -1,23 +1,32 @@
 ---
-title: .alter-merge materialized view partitioning policy command- Azure Data Explorer
-description: This article describes the .alter-merge materialized view partitioning policy command in Azure Data Explorer.
-services: data-explorer
-author: orspod
-ms.author: orspodek
+title:  .alter-merge materialized-view policy partitioning command
+description: Learn how to use the `.alter-merge materialized-view policy partitioning` command to create the materialized view's partitioning policy.
 ms.reviewer: yonil
-ms.service: data-explorer
 ms.topic: reference
-ms.date: 10/04/2021
+ms.date: 05/28/2023
 ---
-# .alter-merge materialized view partitioning policy
+# .alter-merge materialized-view policy partitioning command
 
-Change a materialized view [partitioning policy](partitioningpolicy.md). The partitioning policy defines if and how [extents (data shards)](../management/extents-overview.md) should be partitioned for a specific table or a [materialized view](materialized-views/materialized-view-overview.md). The command requires [DatabaseAdmin](access-control/role-based-authorization.md) permissions.
+Creates the materialized view's [partitioning policy](partitioning-policy.md). The partitioning policy defines if and how [extents (data shards)](../management/extents-overview.md) should be partitioned for a specific table or a [materialized view](materialized-views/materialized-view-overview.md).
+
+## Permissions
+
+You must have at least [Database Admin](access-control/role-based-access-control.md) permissions to run this command.
 
 ## Syntax
 
-`.alter-merge` `materialized-view` *MaterializedViewName* `policy` `partitioning` 
+`.alter-merge` `materialized-view` *MaterializedViewName* `policy` `partitioning` *PolicyObject*
 
-### Example
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+
+## Parameters
+
+|Name|Type|Required|Description|
+|--|--|--|--|
+|*MaterializedViewName*| `string` | :heavy_check_mark:|The name of the materialized view.|
+|*PolicyObject*| `string` | :heavy_check_mark:|A serialized array of one or more JSON policy objects. For more information, see [partitioning policy](partitioning-policy.md).|
+
+## Example
 
 Change the policy at the materialized view level:
 

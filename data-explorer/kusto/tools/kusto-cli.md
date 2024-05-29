@@ -1,18 +1,14 @@
 ---
 title: Kusto CLI - Azure Data Explorer
 description: This article describes Kusto CLI in Azure Data Explorer.
-services: data-explorer
-author: orspod
-ms.author: orspodek
-ms.reviewer: rkarlin
-ms.service: data-explorer
+ms.reviewer: orspodek
 ms.topic: reference
 ms.date: 03/24/2020
 ---
 # Kusto CLI
 
-Kusto.Cli is a command-line utility that is used to send requests to
-Kusto, and display the results. It can run in one of several modes:
+Kusto.Cli is a command-line utility for sending queries and control commands
+on a Kusto cluster. It can run in one of several modes:
 
 * *REPL mode*: The user enters queries and commands,
   and the tool displays the results, then awaits the next user query/command.
@@ -24,7 +20,7 @@ Kusto, and display the results. It can run in one of several modes:
   queries and commands have run, the tool goes into REPL mode.
 
 * *Script mode*: Similar to execute mode, but with the queries and commands specified
-  through a "script" file.
+  in a file (the "script") instead of through command-line arguments.
 
 Kusto.Cli is primarily provided for automating tasks against a Kusto service
 that normally requires writing code. For example, a C# program or a
@@ -32,10 +28,7 @@ PowerShell script.
 
 ## Get the tool
 
-Kusto.Cli is part of the NuGet package `Microsoft.Azure.Kusto.Tools` that
- [you can download](https://www.nuget.org/packages/Microsoft.Azure.Kusto.Tools/).
-Once downloaded, extract the package's `tools` folder to the target
-folder. No additional installation is required since it's xcopy-installable.
+Kusto.Cli is part of the NuGet package `Microsoft.Azure.Kusto.Tools` that you can download for [.NET](https://www.nuget.org/packages/Microsoft.Azure.Kusto.Tools/). After you download the package, extract the package's `tools` folder to the target folder. No additional installation is required because it's xcopy-installable.
 
 ## Run the tool
 
@@ -55,6 +48,8 @@ Kusto.Cli.exe "https://help.kusto.windows.net/Samples;Fed=true"
 > and similar characters.
 
 ## Command-line arguments
+
+(To get an exhaustive list of command-line arguments, run: `Kusto.Cli.exe -help`.)
 
 `Kusto.Cli.exe` *ConnectionString* [*Switches*]
 
@@ -82,8 +77,14 @@ Kusto.Cli.exe "https://help.kusto.windows.net/Samples;Fed=true"
 `-scriptml:`*ScriptFile*
 * If specified, runs Kusto.Cli in script mode. The specified script file is
   loaded and the queries or commands in it are run sequentially.
-  The entire script file is considered a single query or command.
+  The entire script file is considered a single query or command
+  (ignoring line input mode or block input mode considerations.)
   This switch can't be used together with `-execute`.
+
+`-scriptQuitOnError:`*QuitOnFirstScriptError*
+* If enabled, Kusto.Cli will quit if a command or query in a script
+  results with an error. If disabled, script execution will continue
+  despite errors. By default this switch is enabled.
 
 `-echo:`*EnableEchoMode*
 * If specified, as either `true` or `false`, it enables or disables echo mode.
@@ -97,9 +98,10 @@ Kusto.Cli.exe "https://help.kusto.windows.net/Samples;Fed=true"
   displaying the program output on the console.
 
 `-lineMode:`*EnableLineMode*
-* If specified, switches between the default line input mode, when set to `true`,
-  and the block input mode, when set to `false`. See below for an explanation of
-  these two modes, which determine how newlines are treated.
+* Determines how newlines are treated when inputting queries or command from the console
+  or from scripts. By default (or if set explicitly to `true`),
+  the tool uses "line input mode". If set to `false`, scripts are read in "block input mode."
+  See below for an explanation of these two modes.
 
 **Example**
 
@@ -107,7 +109,7 @@ Kusto.Cli.exe "https://help.kusto.windows.net/Samples;Fed=true"
 Kusto.Cli.exe "https://help.kusto.windows.net/Samples;Fed=true" -script:"c:\mycommands.txt"
 ```
 
-> [!NOTE] 
+> [!NOTE]
 > There should be no space between the colon and the argument value
 
 ## Directives
@@ -139,11 +141,16 @@ By default, Kusto.Cli runs in **line input mode**. Each newline character is int
 
 In this mode, you can break a long query or command into multiple lines. The `&` character as the last character of a line, before the newline, causes Kusto.Cli to continue reading the next line. The `&&` character as the last character of a line, before the newline, causes Kusto.Cli to ignore the newline and continue reading the next line.
 
-Kusto.Cli also supports running in **block input mode**. By using
-either the command-line switch `-lineMode:false`, or by using the directive
-`#blockmode`, you can instruct Kusto.Cli to assume every line is a continuation
-of the previous line, so that queries and commands are delimited by an empty
-input line only.
+Kusto.Cli also supports running in **block input mode** by specifying
+`-lineMode:false` in the command line, or by executing the directive
+`#blockmode`. In this mode, Kusto.Cli behaves in a similar way to Kusto.Explorer
+and Kusto.WebExplorer, in that lines are read together as "blocks", with each block
+consisting of a single query or command, and blocks are delimited by one or more
+empty lines between them.
+
+> [!NOTE]
+> The use of **block input mode** is highly recommended when queries/commands
+> are read from a script file (`-script`).
 
 ## Comments
 

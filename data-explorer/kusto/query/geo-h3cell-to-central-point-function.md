@@ -1,13 +1,9 @@
 ---
-title: geo_h3cell_to_central_point() - Azure Data Explorer
-description: This article describes geo_h3cell_to_central_point() in Azure Data Explorer.
-services: data-explorer
-author: orspod
-ms.author: orspodek
+title:  geo_h3cell_to_central_point()
+description: Learn how to use the geo_h3cell_to_central_point() function to calculate the geospatial coordinates that represent the center of an H3 cell.
 ms.reviewer: mbrichko
-ms.service: data-explorer
 ms.topic: reference
-ms.date: 06/03/2021
+ms.date: 03/09/2023
 ---
 # geo_h3cell_to_central_point()
 
@@ -19,9 +15,13 @@ Read more about [H3 Cell](https://eng.uber.com/h3/).
 
 `geo_h3cell_to_central_point(`*h3cell*`)`
 
-## Arguments
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
 
-*h3cell*: H3 cell token string value as it was calculated by [geo_point_to_h3cell()](geo-point-to-h3cell-function.md).
+## Parameters
+
+|Name|Type|Required|Description|
+|--|--|--|--|
+| *h3cell* | `string` |  :heavy_check_mark: | An H3 Cell token value as it was calculated by [geo_point_to_h3cell()](geo-point-to-h3cell-function.md).|
 
 ## Returns
 
@@ -32,10 +32,14 @@ The geospatial coordinate values in [GeoJSON Format](https://tools.ietf.org/html
 
 ## Examples
 
-<!-- csl: https://help.kusto.windows.net/Samples -->
+> [!div class="nextstepaction"]
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAysoyswrUcgwTk7NyVGwVUhPzY+HcOJL8uOTU/NKihJz4gvygYo0lCzMjBINDcyN0iBASRMA4+TrCj0AAAA=" target="_blank">Run the query</a>
+
 ```kusto
 print h3cell = geo_h3cell_to_central_point("862a1072fffffff")
 ```
+
+**Output**
 
 |h3cell|
 |---|
@@ -43,10 +47,14 @@ print h3cell = geo_h3cell_to_central_point("862a1072fffffff")
 
 The following example returns the longitude of the H3 Cell center point:
 
-<!-- csl: https://help.kusto.windows.net/Samples -->
+> [!div class="nextstepaction"]
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAysoyswrUcjJz0vPLClNSVWwVUhPzY/PME5OzcmJL8mPT07NKylKzIkvyAeq01CyMDNKNDQwN0qDACVNveT8/KKUzLzEktTiaINYALPfSvhPAAAA" target="_blank">Run the query</a>
+
 ```kusto
 print longitude = geo_h3cell_to_central_point("862a1072fffffff").coordinates[0]
 ```
+
+**Output**
 
 |longitude|
 |---|
@@ -54,10 +62,14 @@ print longitude = geo_h3cell_to_central_point("862a1072fffffff").coordinates[0]
 
 The following example returns a null result because of the invalid H3 cell token input.
 
-<!-- csl: https://help.kusto.windows.net/Samples -->
+> [!div class="nextstepaction"]
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAysoyswrUcgwTk7NyVGwVUhPzY+HcOJL8uOTU/NKihJz4gvygYo0lAyVNAFOq4ZHLwAAAA==" target="_blank">Run the query</a>
+
 ```kusto
 print h3cell = geo_h3cell_to_central_point("1")
 ```
+
+**Output**
 
 |h3cell|
 |---|

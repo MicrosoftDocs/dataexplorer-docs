@@ -1,137 +1,66 @@
 ---
 title: Customize Azure Data Explorer dashboard visuals
 description: Easily customize your Azure Data Explorer dashboard visuals
-services: data-explorer
-author: orspod
-ms.author: orspodek
 ms.reviewer: gabil
-ms.service: data-explorer
 ms.topic: how-to
-ms.date: 08/25/2020
+ms.date: 01/31/2024
 ---
 
 # Customize Azure Data Explorer dashboard visuals
 
-Visuals are essential part of any Azure Data Explorer Dashboard. This document details the different visual types and describes various options that are available to dashboard users to customize their visuals.
+Azure Data Explorer dashboards are a collection of tiles that feature a visual representation supported by an underlying Kusto Query Language (KQL) query. This article explains how to edit the visualizations and queries of a dashboard tile and provides an overview of customization properties specific to each visualization type.
 
-> [!NOTE]
-> Visual customization is available in edit mode to dashboard editors.
+All visualizations that are created in the context of the [render operator](kusto/query/render-operator.md#visualization) are available in dashboard visualizations, along with some [dashboard-specific visuals](dashboard-visuals.md).
 
 ## Prerequisites
 
-[Visualize data with Azure Data Explorer dashboards](azure-data-explorer-dashboards.md)
-
-## Types of visuals
-
-Azure Data Explorer supports several different types of visuals. This section describes the different types of visuals and the data columns needed in your result set to plot these visuals.
-
-### Table
-
-:::image type="content" source="media/dashboard-customize-visuals/table.png" alt-text="table visual type.":::
-
-By default, results are shown as a table. The table visual is best for presenting detailed or complicated data.
-
-### Bar chart
-
-:::image type="content" source="media/dashboard-customize-visuals/bar-chart.png" alt-text="bar chart visual type.":::
-
-The bar chart visual needs a minimum of two columns in the query result. By default, the first column is used as the y-axis. This column can contain text, datetime, or numeric data types. The other columns are used as the x-axis and contain numeric data types to be displayed as horizontal lines. Bar charts are used mainly for comparing numeric and nominal discrete values, where the length of each line represents its value.
-
-### Column chart
-
-:::image type="content" source="media/dashboard-customize-visuals/column-chart.png" alt-text="column chart visual type.":::
-
-The column chart visual needs a minimum of two columns in the query result. By default, the first column is used as the x-axis. This column can contain text, datetime, or numeric data types. The other columns are used as the y-axis and contain numeric data types to be displayed as vertical lines. Column charts are used for comparing specific sub category items in a main category range, where the length of each line represents its value.
-
-### Area chart
-
-:::image type="content" source="media/dashboard-customize-visuals/area-chart.png" alt-text="area chart visual type.":::
-
-The area chart visual shows a time-series relationship. The first column of the query should be numeric and is used as the x-axis. Other numeric columns are the y-axes. Unlike line charts, area charts also visually represent volume. Area charts are ideal for indicating the change among different data sets.
-
-### Line chart
-
-:::image type="content" source="media/dashboard-customize-visuals/line-chart.png" alt-text="line chart visual type.":::
-
-The line chart visual is the most basic type of chart. The first column of the query should be numeric and is used as the x-axis. Other numeric columns are the y-axes. Line charts track changes over short and long periods of time. When smaller changes exist, line graphs are more useful than bar graphs.
-
-### Stat
-
-:::image type="content" source="media/dashboard-customize-visuals/stat.png" alt-text="stat visual type.":::
-
-The stat visual only shows one element. If there are multiple columns and rows in the output, stat shows the first element of the first column. Stat cards are useful to highlight KPIs on the Dashboard.
-
-### Multi stat
-
-:::image type="content" source="media/dashboard-customize-visuals/multistat.png" alt-text="multi stat visual type.":::
-
-The multi stat visual shows multiple stat cards in a group using a single query result. This requires 2 columns, one for the label and the other for the value. Users can use a visual formatting option to customize the output layout for display by selecting the number of rows and columns. In addition to being more convenient, this formatting option will reduce cluster load where customers are using similar queries to build multiple stats.
-
-### Pie chart
-
-:::image type="content" source="media/dashboard-customize-visuals/pie-chart.png" alt-text="pie chart visual type.":::
-
-The pie chart visual needs a minimum of two columns in the query result. By default, the first column is used as the color axis. This column can contain text, datetime, or numeric data types. Other columns will be used to determine the size of each slice and contain numeric data types. Pie charts are used for presenting a composition of categories and their proportions out of a total.
-
-### Scatter chart
-
-:::image type="content" source="media/dashboard-customize-visuals/scatter-chart.png" alt-text="scatter chart visual type.":::
-
-In a scatter chart visual, the first column is the x-axis and should be a numeric column. Other numeric columns are y-axes. Scatter plots are used to observe relationships between variables.
-
-### Time chart 
-
-:::image type="content" source="media/dashboard-customize-visuals/time-chart.png" alt-text="time chart visual type.":::
-
-A time chart visual is a type of line graph. the first column of the query is the x-axis, and should be datetime. Other numeric columns are y-axes. One string column values are used to group the numeric columns and create different lines in the chart. Other string columns are ignored. The time chart visual is similar to a [line chart](#line-chart) except the x-axis is always time.
-
-### Anomaly chart 
-
-:::image type="content" source="media/dashboard-customize-visuals/anomaly-chart.png" alt-text="anomaly chart visual type.":::
-
-An anomaly chart visual is similar to [time chart](#time-chart), but highlights anomalies using the `series_decompose_anomalies` function.
-
-### Map
-
-:::image type="content" source="media/dashboard-customize-visuals/map.png" alt-text="map visual type.":::
-
-To render the map visual, you must first select the type of location you're going to use.
-Under **Define location by**, you can choose from the following options:
-
-- Use 2 columns: Latitude and Longitude
-- Use 1 column: Geospatial coordinates
-
-In addition, you can specify the following options:
-
-- Label column
-- Size column: The integer values in this column are used to set the size of bubbles. The visual calculates the min and max values in the selected size column and then organizes sets the bubble size for all the other values in between.
-
-Maps are useful to visualize data with geo coordinates. The Map visual also has a built-in zoom functionality.
+* [Visualize data with Azure Data Explorer dashboards](azure-data-explorer-dashboards.md)
+* Editor permissions on an Azure Data Explorer dashboard
 
 ## Customize visuals
 
-1. Select **Edit** in dashboard menu to switch to edit mode.
-1. To access the visual customization dialogue on a card, click the drop-down menu > **Edit Card**. Alternatively, when you create a new card using **Add Query**, select **Edit Card**.
+To make changes in your dashboard:
 
-:::image type="content" source="media/dashboard-customize-visuals/edit-card.png" alt-text="edit card for visual customization.":::
+1. In the top menu, select **Viewing** and toggle to **Editing** mode.
 
-### Select properties to customize visuals
+    :::image type="content" source="media/dashboard-customize-visuals/enter-editing-mode.png" alt-text="Screenshot of entering editing mode in dashboards in Azure Data Explorer web UI.":::
 
-Use the following properties to customize visuals.
+1. On the tile that you'd like to customize, select the **Edit** icon. Edit the underlying query or the visualization properties.
 
-:::image type="content" source="media/dashboard-customize-visuals/visual-customization-sidebar.png" alt-text="Visual customization sidebar.":::
+    :::image type="content" source="media/dashboard-customize-visuals/edit-tile.png" alt-text="Screenshot of how to edit a tile in dashboards in Azure Data Explorer web UI.":::
 
-|Section  |Description | Visual types
-|---------|---------|-----|
-|**General**    |    Select the **stacked** or **non stacked** chart format  | Bar, Column, and Area charts |
-|**Data**    |   Select **Y and X Columns** for your visual. Keep the selection as **Infer** if you want the platform to automatically select a column based on the query result    |Bar, Column, Scatter, and Anomaly charts|
-|**Legend**    |   Toggle to show or hide the display of legends on your visuals   |Bar, Column, Area, Line, Scatter, Anomaly, and Time charts |
-|**Y Axis**     |   Allows customization of Y-Axis properties: <ul><li>**Label**: Text for a custom label. </li><li>**Maximum Value**: Change the maximum value of the Y axis.  </li><li>**Minimum Value**: Change the minimum value of the Y axis.  </li></ul>      |Bar, Column, Area, Line, Scatter, Anomaly, and Time charts |
-|**X Axis**     |    Allows customization of X-axis properties. <li>**Label**: Text for a custom label. </li>     | Bar, Column, Area, Line, Scatter, Anomaly, and Time charts|
-|**Render links**     |    Toggle to make links that start with "https://" in tables, clickable. <li>**Apply on columns**: Select columns containing URL. </li>     | Table|
-|**Layout**     |    Select the layout configuration for multi stat visual. <li>**Apply on columns**: Select columns containing URL. </li>     | Multi stat|
+1. To save your changes and return to the dashboard, select **Apply changes**.
 
-## Next steps
+    :::image type="content" source="media/dashboard-customize-visuals/save-changes-dashboard.png" alt-text="Screenshot of how to save the changes to your dashboard tile in Azure Data Explorer web UI.":::
+
+[!INCLUDE [customize-visuals](includes/customize-visuals.md)]
+
+## Embed images
+
+You can embed images in your dashboard tiles using Markdown text.
+
+For more information on GitHub Flavored Markdown, see [GitHub Flavored Markdown Spec](https://github.github.com/gfm/).
+
+1. Open a [dashboard](azure-data-explorer-dashboards.md#create-a-new-dashboard).
+1. In the top menu, select **+Add** > **Add text** to open a text tile.
+
+    :::image type="content" source="media/dashboard-customize-visuals/add-tile.png" alt-text="Screenshot of dashboard ribbon showing the drop-down menu of the Add button.":::
+
+1. In the query pane, paste the URL of an image located in an image hosting service using the following syntax:
+
+    ```md
+    ![](URL)
+    ```
+
+    The image renders in the tile's preview.
+
+    :::image type="content" source="media/dashboard-customize-visuals/embed-image.png" alt-text="Screenshot of dashboard query pane showing image syntax in markdown text. ":::
+
+1. In the top menu, select **Apply changes** to save the tile.
+
+For more information on image syntax in GitHub Flavored Markdown, see [Images](https://github.github.com/gfm/#images).
+
+## Related content
 
 * [Use parameters in Azure Data Explorer dashboards](dashboard-parameters.md)
-* [Query data in Azure Data Explorer](web-query-data.md) 
+* [Write Kusto Query Language queries in the web UI](web-ui-kql.md)

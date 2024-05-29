@@ -1,17 +1,14 @@
 ---
-title: 'Ingest data with Azure Data Explorer Java SDK'
+title: 'Ingest data with Kusto Java SDK'
 description: In this article, you learn how to ingest (load) data into Azure Data Explorer using Java SDK.
-author: orspod
-ms.author: orspodek
 ms.reviewer: abhishgu
-ms.service: data-explorer
 ms.topic: how-to
-ms.date: 10/22/2020
+ms.date: 09/07/2022
 
 # Customer intent: As a Java developer, I want to ingest data into Azure Data Explorer so that I can query data to include in my apps.
 ---
 
-# Ingest data using the Azure Data Explorer Java SDK 
+# Ingest data using the Kusto Java SDK
 
 > [!div class="op_single_selector"]
 > * [.NET](net-sdk-ingest-data.md)
@@ -20,14 +17,14 @@ ms.date: 10/22/2020
 > * [Go](go-ingest-data.md)
 > * [Java](java-ingest-data.md)
 
-Azure Data Explorer is a fast and highly scalable data exploration service for log and telemetry data. The [Java client library](kusto/api/java/kusto-java-client-library.md) can be used to ingest data, issue control commands, and query data in Azure Data Explorer clusters.
+Azure Data Explorer is a fast and highly scalable data exploration service for log and telemetry data. The [Java client library](kusto/api/java/kusto-java-client-library.md) can be used to ingest data, issue management commands, and query data in Azure Data Explorer clusters.
 
 In this article, learn how to ingest data using the Azure Data Explorer Java library. First, you'll create a table and a data mapping in a test cluster. Then you'll queue an ingestion from blob storage to the cluster using the Java SDK and validate the results.
 
 ## Prerequisites
 
-* An Azure subscription. Create a [free Azure account](https://azure.microsoft.com/free/).
-* Create [a cluster and database](create-cluster-database-portal.md).
+* A Microsoft account or a Microsoft Entra user identity. An Azure subscription isn't required.
+* An Azure Data Explorer cluster and database. [Create a cluster and database](create-cluster-and-database.md).
 * [Git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git).
 * JDK version 1.8 or later.
 * [Maven](https://maven.apache.org/download.cgi).
@@ -39,7 +36,7 @@ This section is optional. Review the following code snippets to learn how the co
 
 ### Authentication
 
-The program uses Azure Active Directory authentication credentials with ConnectionStringBuilder`.
+The program uses Microsoft Entra authentication credentials with ConnectionStringBuilder`.
 
 1. Create a `com.microsoft.azure.kusto.data.Client` for query and management.
 
@@ -62,7 +59,7 @@ The program uses Azure Active Directory authentication credentials with Connecti
 
 ### Management commands
 
-[Control commands](kusto/management/commands.md), such as [`.drop`](kusto/management/drop-function.md) and [`.create`](kusto/management/create-function.md), are executed by calling `execute` on a `com.microsoft.azure.kusto.data.Client` object.
+[Management commands](kusto/management/commands.md), such as [`.drop`](kusto/management/drop-function.md) and [`.create`](kusto/management/create-function.md), are executed by calling `execute` on a `com.microsoft.azure.kusto.data.Client` object.
 
 For example, the `StormEvents` table is created as follows:
 
@@ -77,24 +74,25 @@ static void createTable(String database) {
         System.out.println("Failed to create table: " + e.getMessage());
         return;
     }
-    
+
 }
 ```
 
 ### Data ingestion
 
-Queue ingestion by using a file from an existing Azure Blob Storage container. 
+Queue ingestion by using a file from an existing Azure Blob Storage container.
+
 * Use `BlobSourceInfo` to specify the Blob Storage path.
-* Use `IngestionProperties` to define table, database, mapping name, and data type. 
+* Use `IngestionProperties` to define table, database, mapping name, and data type.
 In the following example, the data type is `CSV`.
 
 ```java
     ...
     static final String blobPathFormat = "https://%s.blob.core.windows.net/%s/%s%s";
-    static final String blobStorageAccountName = "kustosamplefiles";
+    static final String blobStorageAccountName = "kustosamples";
     static final String blobStorageContainer = "samplefiles";
     static final String fileName = "StormEvents.csv";
-    static final String blobStorageToken = "??st=2018-08-31T22%3A02%3A25Z&se=2020-09-01T22%3A02%3A00Z&sp=r&sv=2018-03-28&sr=b&sig=LQIbomcKI8Ooz425hWtjeq6d61uEaq21UVX7YrM61N4%3D";
+    static final String blobStorageToken = ""; //If relevant add SAS token
     ....
 
     static void ingestFile(String database) throws InterruptedException {
@@ -178,8 +176,8 @@ public static void main(final String[] args) throws Exception {
     ```
 
 1. Set the service principal information with the following information as environment variables used by the program:
-    * Cluster endpoint 
-    * Database name 
+    * Cluster endpoint
+    * Database name
 
     ```console
     export AZURE_SP_CLIENT_ID="<replace with appID>"
@@ -204,22 +202,22 @@ public static void main(final String[] args) throws Exception {
     Waiting for ingestion to complete...
     ```
 
-Wait a few minutes for the ingestion process to complete. After successful completion, you will see the following log message: `Ingestion completed successfully`. You can exit the program at this point and move to the next step without impacting the ingestion process, which has already been queued.
+Wait a few minutes for the ingestion process to complete. After successful completion, you'll see the following log message: `Ingestion completed successfully`. You can exit the program at this point and move to the next step without impacting the ingestion process, which has already been queued.
 
 ## Validate
 
-Wait five to 10 minutes for the queued ingestion to schedule the ingestion process and load data into Azure Data Explorer. 
+Wait five to 10 minutes for the queued ingestion to schedule the ingestion process and load data into Azure Data Explorer.
 
-1. Sign in to [https://dataexplorer.azure.com](https://dataexplorer.azure.com) and connect to your cluster. 
+1. Sign in to [https://dataexplorer.azure.com](https://dataexplorer.azure.com) and connect to your cluster.
 1. Run the following command to get the count of records in the `StormEvents` table:
-    
+
     ```kusto
     StormEvents | count
     ```
 
 ## Troubleshoot
 
-1. To see ingestion failures in the last four hours, run the following command on your database: 
+1. To see ingestion failures in the last four hours, run the following command on your database:
 
     ```kusto
     .show ingestion failures
@@ -236,12 +234,12 @@ Wait five to 10 minutes for the queued ingestion to schedule the ingestion proce
 
 ## Clean up resources
 
-If you don't plan to use the resources you have just created, run the following command in your database to drop the `StormEvents` table.
+If you don't plan to use the resources you have created, run the following command in your database to drop the `StormEvents` table.
 
 ```kusto
 .drop table StormEvents
 ```
 
-## Next steps
+## Related content
 
-[Write queries](write-queries.md)
+* [Write queries](/azure/data-explorer/kusto/query/tutorials/learn-common-operators)

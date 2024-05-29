@@ -1,12 +1,9 @@
 ---
 title: Optimize for high concurrency with Azure Data Explorer
 description: In this article, you learn to optimize your Azure Data Explorer setup for high concurrency.
-author: orspod
-ms.author: orspodek
 ms.reviewer: miwalia
-ms.service: data-explorer
 ms.topic: conceptual
-ms.date: 01/11/2021
+ms.date: 02/22/2022
 ---
 
 # Optimize for high concurrency with Azure Data Explorer
@@ -41,14 +38,15 @@ For high concurrency, queries should consume the least possible amount of CPU re
 
 Use the following table schema design suggestions to minimize the CPU resources used:
 
+* ID columns should be defined as string data types regardless of whether the values are numeric. Indexing for string columns is more sophisticated than for numeric columns and provides better filtering performance.
 * Match the column data type optimally to the actual data stored in these columns. For example, don't store datetime values in a string column.
 * Avoid a large sparse table with many columns, and use dynamic columns to store sparse properties.
-* Store frequently used properties in their own column with a nondynamic datatype.
+* Store frequently used properties in their own column with a non-dynamic datatype.
 * Denormalize data to avoid joins that demand relatively large CPU resources.
 
 ### Partition data
 
-Data is stored in the form of extents (data shards) and is partitioned by ingestion time by default. You can use the [partitioning policy](kusto/management/partitioningpolicy.md) to repartition the extents based on a single string column or a single datetime column in a background process. Partitioning can provide significant performance improvements when most of the queries use partition keys to filter, aggregate, or both.
+Data is stored in the form of extents (data shards) and is partitioned by ingestion time by default. You can use the [partitioning policy](kusto/management/partitioning-policy.md) to repartition the extents based on a single string column or a single datetime column in a background process. Partitioning can provide significant performance improvements when most of the queries use partition keys to filter, aggregate, or both.
 
 > [!NOTE]
 > The partitioning process itself uses CPU resources. However, the CPU reduction during query time should outweigh the CPU used for partitioning.
@@ -89,7 +87,13 @@ When more than one user loads the same dashboard at a similar time, the dashboar
 
 ### Configure query consistency
 
-There are two query consistency models: *strong* (the default) and *weak*. With strong consistency, only an up-to-date consistent state of data is seen, whatever compute node receives the query. With weak consistency, nodes periodically refresh their copy of the metadata, which leads to a latency of one to two minutes in the synchronization of metadata changes. With the weak model, you can reduce the load on the node that manages the metadata changes, which provides higher concurrency than the default strong consistency. Set this configuration in [client request properties](kusto/api/netfx/request-properties.md) and in the Grafana data source configurations.
+The default [query consistency](kusto/concepts/queryconsistency.md) mode is **strong**. In this mode, an *admin* node manages metadata and ingestion for the cluster, as well as query planning and delegating execution to other nodes.
+
+In high-concurrency applications, managing queries may cause the *admin* node's CPU use to be high, whilst other nodes are less busy. This can cause a bottleneck where the number of concurrent queries can't grow. However, this may not be apparent in the cluster's CPU report (Azure portal > {your_cluster} > Metrics > CPU Metric) which shows the average CPU use for the cluster.
+
+For this scenario, we recommend using **weak** consistency mode. In this mode, more nodes are able to manage queries, which makes it possible to *horizontally scale* the number of concurrent queries. Nodes in this mode periodically refresh their copy of metadata and newly ingested data, which leads to a latency of typically less than a minute as the data is synchronized. However, this short latency is preferable to the bottleneck situation that can arise when using **strong** consistency mode.
+
+You can set the consistency mode in a [workload group query consistency policy](kusto/management/query-consistency-policy.md), in the [client request properties](kusto/api/netfx/request-properties.md), or in the Grafana data source configuration.
 
 ## Set cluster policies
 

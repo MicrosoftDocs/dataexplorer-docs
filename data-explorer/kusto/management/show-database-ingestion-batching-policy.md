@@ -1,25 +1,29 @@
 ---
-title: .show database ingestion batching policy command- Azure Data Explorer
-description: This article describes the .show database ingestion batching policy command in Azure Data Explorer.
-services: data-explorer
-author: orspod
-ms.author: orspodek
-ms.reviewer: rkarlin
-ms.service: data-explorer
+title: .show database policy ingestionbatching command
+description: Learn how to use the `.show database policy ingestionbatching` command to show the database's ingestion batching policy.
+ms.reviewer: orspodek
 ms.topic: reference
-ms.date: 09/27/2021
+ms.date: 05/24/2023
 ---
-# .show database ingestion batching policy
+# .show database policy ingestionbatching command
 
-Display the database ingestion batching policy. The [ingestionBatching policy](batchingpolicy.md) is a policy object that determines when data aggregation should stop during data ingestion according to the specified settings.
+Display the database's [ingestion batching policy](batching-policy.md) that defines data aggregation for batching. The ingestion batching policy applies to [queued ingestion](../../ingest-data-overview.md#continuous-data-ingestion).
+
+## Permissions
+
+You must have at least Database User, Database Viewer, or Database Monitor permissions to run this command. For more information, see [role-based access control](access-control/role-based-access-control.md).
 
 ## Syntax
 
-* `.show` `database` *DatabaseName* `policy` `ingestionbatching`
+`.show` `database` *DatabaseName* `policy` `ingestionbatching`
 
-## Arguments
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
 
-*DatabaseName* - Specify the name of the database.
+## Parameters
+
+|Name|Type|Required|Description|
+|--|--|--|--|
+|*DatabaseName*| `string` | :heavy_check_mark:|The name of the database.|
 
 ## Returns
 
@@ -27,9 +31,12 @@ Returns a JSON representation of the policy.
 
 ## Example
 
-The following example shows the IngestionBatching policy:
+The following command returns the batching policy on a database.
 
 ```kusto
-// Show IngestionBatching policy for table database `MyDatabase`
-.show MyDatabase policy ingestionbatching 
+.show database MyDatabase policy ingestionbatching
 ```
+
+## Related content
+
+* [show table batching policy](show-table-ingestion-batching-policy.md)

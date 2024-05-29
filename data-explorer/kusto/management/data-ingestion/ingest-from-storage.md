@@ -1,15 +1,11 @@
 ---
-title: Kusto .ingest into command (pull data from storage) - Azure Data Explorer
+title:  Kusto.ingest into command (pull data from storage)
 description: This article describes The .ingest into command (pull data from storage) in Azure Data Explorer.
-services: data-explorer
-author: orspod
-ms.author: orspodek
-ms.reviewer: rkarlin
-ms.service: data-explorer
+ms.reviewer: orspodek
 ms.topic: reference
-ms.date: 03/24/2020
+ms.date: 12/26/2023
 ---
-# The .ingest into command (pull data from storage)
+# Ingest from storage
 
 The `.ingest into` command ingests data into a table by "pulling" the data
 from one or more cloud storage files.
@@ -19,37 +15,46 @@ them, and ingest them together into a single target table.
 Data is appended to the table
 without affecting existing records, and without modifying the table's schema.
 
-**Syntax**
+[!INCLUDE [direct-ingestion-note](../../../includes/direct-ingestion-note.md)]
+
+## Permissions
+
+You must have at least [Table Ingestor](../access-control/role-based-access-control.md) permissions to run this command.
+
+## Syntax
 
 `.ingest` [`async`] `into` `table` *TableName* *SourceDataLocator* [`with` `(` *IngestionPropertyName* `=` *IngestionPropertyValue* [`,` ...] `)`]
 
-**Arguments**
+[!INCLUDE [syntax-conventions-note](../../../includes/syntax-conventions-note.md)]
 
-* `async`: If specified, the command will return immediately, and continue
-  ingestion in the background. The results of the command will include
-  an `OperationId` value that can then be used with the `.show operation`
-  command to retrieve the ingestion completion status and results.
-  
-* *TableName*: The name of the table to ingest data into.
-  The table name is always relative to the database in context,
-  and its schema is the schema that will be assumed for the data
-  if no schema mapping object is provided.
+## Parameters
 
-* *SourceDataLocator*: A literal of type `string`, or a comma-delimited list of such
-  literals surrounded by `(` and `)` characters, representing [storage connection strings](../../api/connection-strings/storage.md). Kusto uses a URI format to describe the storage files containing the data to pull. 
-  * A single connection string must refer to a single file hosted by a storage account. 
-  * Ingestion of multiple files can be done by specifying multiple connection strings separated with a comma, or by [ingesting from a query](ingest-from-query.md) of an [external table](../../query/schema-entities/externaltables.md).
+|Name|Type|Required|Description|
+|--|--|--|--|
+|`async`| `string` ||If specified, the command returns immediately and continues ingestion in the background. The results of the command include an `OperationId` value that can then be used with the `.show operation` command to retrieve the ingestion completion status and results.|
+|*TableName*| `string` | :heavy_check_mark:|The name of the table into which to ingest data. The table name is always relative to the database in context. If no schema mapping object is provided, the schema of the database in context is used.|
+|*SourceDataLocator*| `string` | :heavy_check_mark:|A single or comma-separated list of [storage connection strings](../../api/connection-strings/storage-connection-strings.md). A single connection string must refer to a single file hosted by a storage account. Ingestion of multiple files can be done by specifying multiple connection strings, or by [ingesting from a query](ingest-from-query.md) of an [external table](../../query/schema-entities/external-tables.md).|
 
 > [!NOTE]
-> It is strongly recommended to use [obfuscated string literals](../../query/scalar-data-types/string.md#obfuscated-string-literals)
-> for the *SourceDataPointer* that includes actual credentials in it.
-> The service will be sure to scrub credentials
-> in its internal traces, error messages, etc.
+> We recommend using [obfuscated string literals](../../query/scalar-data-types/string.md#obfuscated-string-literals) for the *SourceDataPointer*. The service will scrub credentials in internal traces and error messages.
 
-* *IngestionPropertyName*, *IngestionPropertyValue*: Any number of
-  [ingestion properties](../../../ingestion-properties.md) that affect the ingestion process.
+[!INCLUDE [ingestion-properties](../../../includes/ingestion-properties.md)]
 
-**Results**
+## Authentication and authorization
+
+Each storage connection string indicates the authorization method to use for access to the storage. Depending on the authorization method, the principal may need to be granted permissions on the external storage to perform the ingestion.
+
+The following table lists the supported authentication methods and the permissions needed for ingesting data from external storage.
+
+|Authentication method|Azure Blob Storage / Data Lake Storage Gen2|Data Lake Storage Gen1|
+|--|--|--|
+|[Impersonation](../../api/connection-strings/storage-authentication-methods.md#impersonation)|Storage Blob Data Reader|Reader|
+|[Shared Access (SAS) token](../../api/connection-strings/storage-authentication-methods.md#shared-access-sas-token)|List + Read|This authentication method isn't supported in Gen1.|
+|[Microsoft Entra access token](../../api/connection-strings/storage-authentication-methods.md#azure-ad-access-token)||
+|[Storage account access key](../../api/connection-strings/storage-authentication-methods.md#storage-account-access-key)||This authentication method isn't supported in Gen1.|
+|[Managed identity](../../api/connection-strings/storage-authentication-methods.md#managed-identity)|Storage Blob Data Reader|Reader|
+
+## Returns
 
 The result of the command is a table with as many records
 as there are data shards ("extents") generated by the command.
@@ -64,16 +69,14 @@ with an empty (zero-valued) extent ID.
 |HasErrors  |`bool`    |Whether this record represents an ingestion failure or not.                |
 |OperationId|`guid`    |A unique ID representing the operation. Can be used with the `.show operation` command.|
 
-**Remarks**
+>[!NOTE]
+> This command doesn't modify the schema of the table being ingested into. If necessary, the data is "coerced" into this schema during ingestion, not the other way around (extra columns are ignored, and missing columns are treated as null values).
 
-This command does not modify the schema of the table being ingested into.
-If necessary, the data is "coerced" into this schema during ingestion,
-not the other way around (extra columns are ignored, and missing columns
-are treated as null values).
+## Examples
 
-**Examples**
+### Azure Blob Storage with shared access signature
 
-The next example instructs the engine to read two blobs from Azure Blob Storage
+The following example instructs your cluster to read two blobs from Azure Blob Storage
 as CSV files, and ingest their contents into table `T`. The `...` represents
 an Azure Storage shared access signature (SAS) which gives read access to each
 blob. Note also the use of obfuscated strings (the `h` in front of the string
@@ -86,7 +89,17 @@ values) to ensure that the SAS is never recorded.
 )
 ```
 
-The next example is for ingesting data from Azure Data Lake Storage Gen 2
+### Azure Blob Storage with managed identity
+
+The following example shows how to read a CSV file from Azure Blob Storage and ingest its contents into table `T` using managed identity authentication. For additional information on managed identity authentication method, see [Managed Identity Authentication Overview](../../api/connection-strings/storage-authentication-methods.md#managed-identity).
+
+```kusto
+.ingest into table T ('https://StorageAccount.blob.core.windows.net/Container/file.csv;managed_identity=802bada6-4d21-44b2-9d15-e66b29e4d63e')
+```
+
+### Azure Data Lake Storage Gen 2
+
+The following example is for ingesting data from Azure Data Lake Storage Gen 2
 (ADLSv2). The credentials used here (`...`) are the storage account credentials
 (shared key), and we use string obfuscation only for the secret part of the
 connection string.
@@ -97,12 +110,32 @@ connection string.
 )
 ```
 
-The next example ingests a single file from Azure Data Lake Storage (ADLS).
+### Azure Data Lake Storage
+
+The following example ingests a single file from Azure Data Lake Storage (ADLS).
 It uses the user's credentials to access ADLS (so there's no need to treat
 the storage URI as containing a secret). It also shows how to specify ingestion
 properties.
 
 ```kusto
 .ingest into table T ('adl://contoso.azuredatalakestore.net/Path/To/File/file1.ext;impersonate')
+  with (format='csv')
+```
+
+### Amazon S3 with an access key
+
+The following example ingests a single file from Amazon S3 using an [access key ID and a secret access key](https://docs.aws.amazon.com/general/latest/gr/aws-sec-cred-types.html#access-keys-and-secret-access-keys).
+
+```kusto
+.ingest into table T ('https://bucketname.s3.us-east-1.amazonaws.com/path/to/file.csv;AwsCredentials=AKIAIOSFODNN7EXAMPLE,wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY')
+  with (format='csv')
+```
+
+### Amazon S3 with a presigned URL
+
+The following example ingests a single file from Amazon S3 using a [preSigned URL](https://docs.aws.amazon.com/AmazonS3/latest/userguide/ShareObjectPreSignedURL.html).
+
+```kusto
+.ingest into table T ('https://bucketname.s3.us-east-1.amazonaws.com/file.csv?<<pre signed string>>')
   with (format='csv')
 ```

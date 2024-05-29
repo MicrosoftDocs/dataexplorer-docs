@@ -1,32 +1,47 @@
 ---
-title: log() - Azure Data Explorer | Microsoft Docs
-description: This article describes log() in Azure Data Explorer.
-services: data-explorer
-author: orspod
-ms.author: orspodek
+title:  log()
+description: Learn how to use the log() function to return the natural logarithm of the input.
 ms.reviewer: alexans
-ms.service: data-explorer
 ms.topic: reference
-ms.date: 08/11/2019
+ms.date: 01/03/2023
 ---
 # log()
 
-`log()` returns the natural logarithm function.  
+The natural logarithm is the base-e logarithm: the inverse of the natural exponential function (exp).  
 
 ## Syntax
 
-`log(`*x*`)`
+`log(`*number*`)`
 
-## Arguments
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
 
-* *x*: A real number > 0.
+## Parameters
+
+| Name | Type | Required | Description |
+|--|--|--|--|
+|*number*| `real` |  :heavy_check_mark: | The number for which to calculate the logarithm.|
 
 ## Returns
 
-* The natural logarithm is the base-e logarithm: the inverse of the natural exponential function (exp).
-* `null` if the argument is negative or null or can't be converted to a `real` value. 
+* `log()` returns the natural logarithm of the input.
+* `null` if the argument is negative or null or can't be converted to a `real` value.
 
-## See also
+## Example
+
+> [!div class="nextstepaction"]
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAysoyswrUShKLS7NKbHNyU/XMNUEAE7U1nYTAAAA" target="_blank">Run the query</a>
+
+```kusto
+print result=log(5)
+```
+
+**Output**
+
+|result|
+|--|
+|1.6094379124341003|
+
+## Related content
 
 * For common (base-10) logarithms, see [log10()](log10-function.md).
-* For base-2 logarithms, see [log2()](log2-function.md)
+* For base-2 logarithms, see [log2()](log2-function.md).

@@ -1,33 +1,42 @@
 ---
-title: Enable plugin command - Azure Data Explorer
-description: This article describes plugins management command .enable plugin in Azure Data Explorer.
-services: data-explorer
-author: orspod
-ms.author: orspodek
+title: .enable plugin command
+description: Learn how to use the `.enable plugin` command to enable a plugin.
 ms.reviewer: alexans
-ms.service: data-explorer
 ms.topic: reference
-ms.date: 11/02/2020
+ms.date: 05/24/2023
 ---
-# .enable plugin
+# .enable plugin command
 
 Enables a plugin.
 
-This command requires `All Databases admin` permission.
+> [!NOTE]
+> To enable the `R` or `Python` language extensions, see [Enable language extensions on your cluster](../../language-extensions.md#enable-language-extensions-on-your-cluster).
+
+## Permissions
+
+You must have [AllDatabasesAdmin](access-control/role-based-access-control.md) permissions to run this command.
 
 ## Syntax
 
 `.enable` `plugin` *PluginName*
 
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+
+## Parameters
+
+|Name|Type|Required|Description|
+|--|--|--|--|
+|*PluginName*| `string` | :heavy_check_mark:|The name of the plugin to enable.|
+
 ## Example
 
-<!-- csl -->
+The following command enables the autocluster plugin on the cluster.
+
 ```kusto
 .enable plugin autocluster
-``` 
+```
 
-## Next steps
+## Related content
 
 * [`.disable plugin`](disable-plugin.md)
 * [`.show plugins`](show-plugins.md)
-

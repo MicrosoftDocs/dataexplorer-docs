@@ -1,219 +1,110 @@
 ---
-title: Security roles management - Azure Data Explorer
-description: This article describes security roles management in Azure Data Explorer.
-services: data-explorer
-author: orspod
-ms.author: orspodek
+title: Security roles
+description: Learn how to use security roles to provide principals access to resources.
 ms.reviewer: alexans
-ms.service: data-explorer
 ms.topic: reference
-ms.date: 04/25/2021
+ms.date: 01/29/2024
 ---
-# Security roles management
+# Security roles overview
 
-> [!IMPORTANT]
-> Before altering authorization rules on your Kusto cluster(s), read the following:
-> [Kusto access control overview](../management/access-control/index.md) 
-> [role based authorization](../management/access-control/role-based-authorization.md) 
+Principals are granted access to resources through a role-based access control model, where their assigned security roles determine their resource access.
 
-This article describes the control commands used to manage security roles.
-Security roles define which security principals (users and applications) have
-permissions to operate on a secured resource such as a database or a table,
-and what operations are permitted. For example, principals that have the
-`database viewer` security role for a specific database can query and view all
-entities of that database (with the exception of restricted tables).
+When a principal attempts an operation, the system performs an authorization check to make sure the principal is associated with at least one security role that grants permissions to perform the operation. Failing an authorization check aborts the operation.
 
-The security role can be associated with security principals or security groups (which
-can have other security principals or other security groups). When a security
-principal attempts to make an operation on a secured resource, the system checks
-that the principal is associated with at least one security role that grants
-permissions to perform this operation on the resource. This is called an
-**authorization check**. Failing the authorization check aborts the operation.
+The management commands listed in this article can be used to manage principals and their security roles on databases, tables, external tables, materialized views, and functions.
 
-## Security roles management commands
+> [!NOTE]
+> The three cluster level security roles of `AllDatabasesAdmin`, `AllDatabasesViewer`, and `AllDatabasesMonitor` can't be configured with security role management commands. To learn how to configure them in the Azure portal, see [Manage cluster permissions](../../manage-cluster-permissions.md).
 
-### Syntax
+## Management commands
 
-*Verb* *SecurableObjectType* *SecurableObjectName* *Role* [`(` *ListOfPrincipals* `)` [*Description*]]
+The following table describes the commands used for managing security roles.
 
-### Arguments
+|Command|Description|
+|--|--|
+|`.show`|Lists principals with the given role.|
+|`.add`|Adds one or more principals to the role.|
+|`.drop`|Removes one or more principals from the role.|
+|`.set`|Sets the role to the specific list of principals, removing all previous ones.|
 
-* *Verb* indicates the kind of action to perform: `.show`, `.add`, `.drop`, and `.set`.
+## Security roles
 
-    |*Verb* |Description                                  |
-    |-------|---------------------------------------------|
-    |`.add` |Adds one or more principals to the role.     |
-    |`.drop`|Removes one or more principals from the role.|
-    |`.set` |Sets the role to the specific list of principals, removing all previous ones (if any).|
+The following table describes the level of access granted for each role and shows a check if the role can be assigned within the given object type.
 
-* *SecurableObjectType* is the kind of object whose role is specified.
+|Role|Permissions|Databases|Tables|External tables|Materialized views|Functions|
+|--|--|--|--|--|--|--|
+|`admins` | View, modify, and remove the object and subobjects.| :heavy_check_mark:| :heavy_check_mark:| :heavy_check_mark:| :heavy_check_mark:| :heavy_check_mark:|
+|`users` | View the object and create new subobjects.| :heavy_check_mark:|||||
+|`viewers` | View the object where [RestrictedViewAccess](restricted-view-access-policy.md) isn't turned on.| :heavy_check_mark:|||||
+|`unrestrictedviewers`| View the object even where [RestrictedViewAccess](restricted-view-access-policy.md) is turned on. The principal must also have `admins`, `viewers` or `users` permissions. | :heavy_check_mark:|||||
+|`ingestors` | Ingest data to the object without access to query. | :heavy_check_mark:| :heavy_check_mark:||||
+|`monitors` | View metadata such as schemas, operations, and permissions.| :heavy_check_mark:|||||
 
-    |*SecurableObjectType*|Description|
-    |---------------------|-----------|
-    |`database`|The specified database|
-    |`table`|The specified table|
-    |`materialized-view`| The specified [materialized view](materialized-views/materialized-view-overview.md)| 
+For a full description of the security roles at each scope, see [Kusto role-based access control](access-control/role-based-access-control.md).
 
-* *SecurableObjectName* is the name of the object.
+> [!NOTE]
+> It isn't possible to assign the `viewer` role for only some tables in the database. For different approaches on how to grant a principal view access to a subset of tables, see [manage table view access](manage-table-view-access.md).
 
-* *Role* is the name of the relevant role.
+## Common scenarios
 
-    |*Role*      |Description|
-    |------------|-----------|
-    |`admins`    |Have control over the securable object, including the ability to view, modify it, and remove the object and all sub-objects.|
-    |`users`     |Can view the securable object, and create new objects underneath it.|
-    |`viewers`   |Can view the securable object.|
-    |`unrestrictedviewers`|At the database level only, allows viewing of restricted tables (which are not exposed to "normal" `viewers` and `users`).|
-    |`ingestors` |At the database level only, allow data ingestion into all tables.|
-    |`monitors`  ||
+### Show your roles on the cluster
 
-* *ListOfPrincipals* is an optional, comma-delimited list of security principal
-  identifiers (values of type `string`).
-
-* *Description* is an optional value of type `string` that is stored alongside
-  the association, for future audit purposes.
-
-### .show command
-
-The `.show` command lists the principals that are set on the securable object. A line is returned for each role assigned to the principal. 
-
-#### Syntax
-
-`.show` *SecurableObjectType* *SecurableObjectName* `principals`
-
-#### Example
-
-The following control command lists all security principals which have some
-access to the table `StormEvents` in the database:
+To see your own roles on the cluster, run the following command:
 
 ```kusto
-.show table StormEvents principals
+.show cluster principal roles
 ```
 
-Here are potential results from this command:
+### Show your roles on a resource
 
-|Role |PrincipalType |PrincipalDisplayName |PrincipalObjectId |PrincipalFQN 
-|---|---|---|---|---
-|Database Apsty Admin |Azure AD User |Mark Smith |cd709aed-a26c-e3953dec735e |aaduser=msmith@fabrikam.com|
-
-## Managing database security roles
-
-`.set` `database` *DatabaseName* *Role* `none` [`skip-results`]
-
-`.set` `database` *DatabaseName* *Role* `(` *Principal* [`,` *Principal*...] `)` [`skip-results`] [*Description*]
-
-`.add` `database` *DatabaseName* *Role* `(` *Principal* [`,` *Principal*...] `)` [`skip-results`] [*Description*]
-
-`.drop` `database` *DatabaseName* *Role* `(` *Principal* [`,` *Principal*...] `)` [`skip-results`] [*Description*]
-
-The first command removes all principals from the role. The second removes all
-principals from the role, and sets a new set of principals. The third adds new
-principals to the role without removing existing principals. The last removes
-the indicated principals from the roles and keeps the others.
-
-Where:
-
-* *DatabaseName* is the name of the database whose security role is being modified.
-
-* *Role* is: `admins`, `ingestors`, `monitors`, `unrestrictedviewers`, `users`, or `viewers`.
-
-* *Principal* is one or more principals. See [principals and identity providers](./access-control/principals-and-identity-providers.md) for how to specify these principals.
-
-* `skip-results`, if provided, requests that the command will not return the updated
-  list of database principals.
-
-* *Description*, if provided, is text that will be associated with the change
-  and retrieved by the corresponding `.show` command.
-
-## Managing table security roles
-
-`.set` `table` *TableName* *Role* `none` [`skip-results`]
-
-`.set` `table` *TableName* *Role* `(` *Principal* [`,` *Principal*...] `)` [`skip-results`] [*Description*]
-
-`.add` `table` *TableName* *Role* `(` *Principal* [`,` *Principal*...] `)` [`skip-results`] [*Description*]
-
-`.drop` `table` *TableName* *Role* `(` *Principal* [`,` *Principal*...] `)` [`skip-results`] [*Description*]
-
-The first command removes all principals from the role. The second removes all
-principals from the role, and sets a new set of principals. The third adds new
-principals to the role without removing existing principals. The last removes
-the indicated principals from the roles and keeps the others.
-
-Where:
-
-* *TableName* is the name of the table whose security role is being modified.
-
-* *Role* is: `admins` or `ingestors`.
-
-* *Principal* is one or more principals. See [principals and identity providers](./access-control/principals-and-identity-providers.md) for how to specify these principals.
-
-* `skip-results`, if provided, requests that the command will not return the updated
-  list of table principals.
-
-* *Description*, if provided, is text that will be associated with the change
-  and retrieved by the corresponding `.show` command.
-
-### Example
+To check the roles assigned to you on a specific resource, run the following command within the relevant database or the database that contains the resource:
 
 ```kusto
-// No need to specify AAD tenant for UPN, as Kusto performs the resolution by itself
-.add database Test users ('aaduser=imikeoein@fabrikam.com') 'Test user (AAD)'
+// For a database:
+.show database DatabaseName principal roles
 
-// AAD SG on 'fabrikam.com' tenant
-.add database Test admins ('aadgroup=SGDisplayName;fabrikam.com') 'Test group @fabrikam.com (AAD)'
+// For a table:
+.show table TableName principal roles
 
-// AAD App on another tenant - by tenant guid
-.add database Test viewers ('aadapp=4c7e82bd-6adb-46c3-b413-fdd44834c69b;9752a91d-8e15-44e2-aa72-e9f8e12c3ec5') 'Test app on another tenant (AAD)'
+// For an external table:
+.show external table ExternalTableName principal roles
+
+// For a function:
+.show function FunctionName principal roles
+
+// For a materialized view:
+.show materialized-view MaterializedViewName principal roles
 ```
 
-## Managing materialized view security roles
+### Show the roles of all principals on a resource
 
-`.show` `materialized-view` *MaterializedViewName* `principals`
-
-`.set` `materialized-view` *MaterializedViewName* `admins` `(` *Principal* `,[` *Principal...* `])`
-
-`.add` `materialized-view` *MaterializedViewName* `admins` `(` *Principal* `,[` *Principal...* `])`
-
-`.drop` `materialized-view` *MaterializedViewName* `admins` `(` *Principal* `,[` *Principal...* `])`
-
-Where:
-
-* *MaterializedViewName* is the name of the materialized view whose security role is being modified
-* *Principal* is one or more principals. See [principals and identity providers](./access-control/principals-and-identity-providers.md)
-
-## Managing function security roles
-
-`.set` `function` *FunctionName* *Role* `none` [`skip-results`]
-
-`.set` `function` *FunctionName* *Role* `(` *Principal* [`,` *Principal*...] `)` [`skip-results`] [*Description*]
-
-`.add` `function` *FunctionName* *Role* `(` *Principal* [`,` *Principal*...] `)` [`skip-results`] [*Description*]
-
-`.drop` `function` *FunctionName* *Role* `(` *Principal* [`,` *Principal*...] `)` [`skip-results`] [*Description*]
-
-The first command removes all principals from the role. The second removes all
-principals from the role, and sets a new set of principals. The third adds new
-principals to the role without removing existing principals. The last removes
-the indicated principals from the roles and keeps the others.
-
-Where:
-
-* *FunctionName* is the name of the function whose security role is being modified.
-
-* *Role* is always `admin`.
-
-* *Principal* is one or more principals. See [principals and identity providers](./access-control/principals-and-identity-providers.md)
-  for how to specify these principals.
-
-* `skip-results`, if provided, requests that the command will not return the updated
-  list of function principals.
-
-* *Description*, if provided, is text that will be associated with the change
-  and retrieved by the corresponding `.show` command.
-
-### Example
+To see the roles assigned to all principals for a particular resource, run the following command within the relevant database or the database that contains the resource:
 
 ```kusto
-.add function MyFunction admins ('aaduser=imike@fabrikam.com') 'This user should have access'
+// For a database:
+.show database DatabaseName principals
+
+// For a table:
+.show table TableName principals
+
+// For an external table:
+.show external table ExternalTableName principals
+
+// For a function:
+.show function FunctionName principals
+
+// For a materialized view:
+.show materialized-view MaterializedViewName principals
 ```
+
+> [!TIP]
+> Use the [where](../query/where-operator.md) operator to filter the results by a specific principal or role.
+
+### Modify the role assignments
+
+For details on how to modify your role assignments at the database and table levels, see [Manage database security roles](manage-database-security-roles.md) and [Manage table security roles](manage-table-security-roles.md).
+
+## Related content
+
+* [Kusto role-based access control](access-control/role-based-access-control.md)
+* [Referencing security principals](access-control/referencing-security-principals.md)

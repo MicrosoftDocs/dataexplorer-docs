@@ -1,40 +1,42 @@
 ---
-title: bag_merge() - Azure Data Explorer 
-description: This article describes bag_merge() in Azure Data Explorer.
-services: data-explorer
-author: orspod
-ms.author: orspodek
+title:  bag_merge() 
+description: Learn how to use the bag_merge() function to merge property bags.
 ms.reviewer: elgevork
-ms.service: data-explorer
 ms.topic: reference
-ms.date: 06/18/2020
+ms.date: 11/23/2022
 ---
 # bag_merge()
 
-Merges `dynamic` property-bags into a `dynamic` property-bag with all properties merged.
+The function merges multiple `dynamic` property bags into a single `dynamic` property bag object, consolidating all properties from the input bags.
 
 ## Syntax
 
-`bag_merge(`*bag1*`, `*bag2*`[`,` *bag3*, ...])`
+`bag_merge(`*bag1*`,`*bag2*`[`,`*bag3*, ...])`
 
-## Arguments
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
 
-* *bag1...bagN*: Input `dynamic` property-bags. The function accepts between 2 to 64 arguments.
+## Parameters
+
+| Name | Type | Required | Description |
+| -- | -- | -- | -- |
+| *bag1...bagN* | `dynamic` |  :heavy_check_mark: | The property bags to merge. The function accepts between 2 to 64 arguments. |
 
 ## Returns
 
-Returns a `dynamic` property-bag. Results from merging all of the input property-bag objects. If a key appears in more than one input object, an arbitrary value (out of the possible values for this key) will be chosen.
+A `dynamic` property bag containing the merged results of all input property bags. If a key is present in multiple input bags, the value associated with the key from the leftmost argument takes precedence.
 
 ## Example
 
-Expression:
+> [!div class="nextstepaction"]
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAysoyswrUShKLS7NKVGwVUhKTI/PTS1KT9XgUlBQSKnMS8zNTNaoVnc0VLcyNNJRUHcCMkC0M5A2rtXUQVNmpG5lYQhSBmKA1IE11mpqAgDRMHuwaAAAAA==" target="_blank">Run the query</a>
 
-<!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
 print result = bag_merge(
    dynamic({'A1':12, 'B1':2, 'C1':3}),
    dynamic({'A2':81, 'B2':82, 'A1':1}))
 ```
+
+**Output**
 
 |result|
 |---|

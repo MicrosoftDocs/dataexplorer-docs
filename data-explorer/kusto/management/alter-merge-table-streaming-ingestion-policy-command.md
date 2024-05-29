@@ -1,31 +1,36 @@
 ---
-title: .alter-merge table streaming ingestion policy command - Azure Data Explorer
-description: This article describes the .alter-merge table streaming ingestion policy command in Azure Data Explorer.
-services: data-explorer
-author: orspod
-ms.author: orspodek
+title:  .alter-merge table policy streamingingestion command
+description: Learn how to use the `.alter-merge table policy streamingingestion` command to change the table's streaming ingestion policy. 
 ms.reviewer: yonil
-ms.service: data-explorer
 ms.topic: reference
-ms.date: 10/10/2021
+ms.date: 06/04/2023
 ---
-# .alter-merge table streaming ingestion policy
+# .alter-merge table policy streamingingestion command
 
-Change the table streaming ingestion policy. Use the [streaming policy](../management/streamingingestionpolicy.md) to manage streaming ingestion for databases and tables.  
+Changes the table's streaming ingestion policy. Use the [streaming policy](../management/streaming-ingestion-policy.md) to manage streaming ingestion for databases and tables.  
 
-Streaming ingestion is targeted for scenarios that require low latency, with an ingestion time of less than 10 seconds for varied volume data. It's used to optimize operational processing of many tables, in one or more databases, where the stream of data into each table is relatively small (a few records per second) but the overall data ingestion volume is high (thousands of records per second).
+Streaming ingestion is best suited for low latency scenarios where the ingestion time is under 10 seconds for varying data volume. It can optimize processing for multiple tables across one or more databases, especially when the tables receive only a few records per second but the ingestion volume is thousands of records per second.
 
-Use the classic (bulk) ingestion instead of streaming ingestion when the amount of data grows to more than 4 Gb per hour per table. 
+However, when the amount of data grows beyond 4 Gb per hour per table, it's recommended to switch to classic bulk ingestion instead of streaming ingestion.
 
-* To learn how to implement streaming ingestion, see [streaming ingestion](../../ingest-data-streaming.md).
+To learn how to implement streaming ingestion, see [streaming ingestion](../../ingest-data-streaming.md).
+
+## Permissions
+
+You must have at least [Table Admin](access-control/role-based-access-control.md) permissions to run this command.
 
 ## Syntax
 
-`.alter-merge` `table` *TableName* `policy` `streamingingestion`
+`.alter-merge` `table` *TableName* `policy` `streamingingestion` *PolicyObject*
 
-## Arguments
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
 
-*TableName* - Specify the name of the table. 
+## Parameters
+
+|Name|Type|Required|Description|
+|--|--|--|--|
+|*TableName*| `string` | :heavy_check_mark:|The name of the table.|
+|*PolicyObject*| `string` | :heavy_check_mark:|A serialized array of one or more JSON policy objects. For more information, see [streaming ingestion policy](streaming-ingestion-policy.md).|
 
 ## Returns
 

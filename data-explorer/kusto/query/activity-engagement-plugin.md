@@ -1,49 +1,44 @@
 ---
-title: activity_engagement plugin - Azure Data Explorer
-description: This article describes activity_engagement plugin in Azure Data Explorer.
-services: data-explorer
-author: orspod
-ms.author: orspodek
+title:  activity_engagement plugin
+description: Learn how to use the activity_engagement plugin to calculate activity engagement ratios.
 ms.reviewer: alexans
-ms.service: data-explorer
 ms.topic: reference
-ms.date: 02/13/2020
+ms.date: 11/20/2022
 ---
 # activity_engagement plugin
 
 Calculates activity engagement ratio based on ID column over a sliding timeline window.
 
-activity_engagement plugin can be used for calculating DAU/WAU/MAU (daily/weekly/monthly activities).
-
-```kusto
-T | evaluate activity_engagement(id, datetime_column, 1d, 30d)
-```
+The activity_engagement plugin can be used for calculating DAU/WAU/MAU (daily/weekly/monthly activities).
 
 ## Syntax
 
 *T* `| evaluate` `activity_engagement(`*IdColumn*`,` *TimelineColumn*`,` [*Start*`,` *End*`,`] *InnerActivityWindow*`,` *OuterActivityWindow* [`,` *dim1*`,` *dim2*`,` ...]`)`
 
-## Arguments
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
 
-* *T*: The input tabular expression.
-* *IdColumn*: The name of the column with ID values that represent user activity. 
-* *TimelineColumn*: The name of the column that represent timeline.
-* *Start*: (optional) Scalar with value of the analysis start period.
-* *End*: (optional) Scalar with value of the analysis end period.
-* *InnerActivityWindow*: Scalar with value of the inner-scope analysis window period.
-* *OuterActivityWindow*: Scalar with value of the outer-scope analysis window period.
-* *dim1*, *dim2*, ...: (optional) list of the dimensions columns that slice the activity metrics calculation.
+## Parameters
+
+| Name | Type | Required | Description |
+|--|--|--|--|
+| *T* | `string` |  :heavy_check_mark: | The tabular input used to calculate engagement. |
+| *IdCoumn* | `string` |  :heavy_check_mark: | The name of the column with ID values that represent user activity. |
+| *TimelineColumn* | `string` |  :heavy_check_mark: | The name of the column that represents timeline. |
+| *Start* | `datetime` |  | The analysis start period. |
+| *End* | `datetime` |  | The analysis end period. |
+| *InnerActivityWindow* | `timespan` |  :heavy_check_mark: | The inner-scope analysis window period. |
+| *OuterActivityWindow* | `timespan` |  :heavy_check_mark: | The outer-scope analysis window period. |
+| *dim1*, *dim2*, ... | `dynamic` |  | An array of the dimensions columns that slice the activity metrics calculation. |
 
 ## Returns
 
-Returns a table that has (distinct count of ID values inside inner-scope window, distinct count of ID values inside outer-scope window, and the activity ratio)for each inner-scope window period and for each existing dimensions combination.
+Returns a table that has a distinct count of ID values inside an inner-scope window, inside an outer-scope window, and the activity ratio for each inner-scope window period for each existing dimensions combination.
 
 Output table schema is:
 
 |TimelineColumn|dcount_activities_inner|dcount_activities_outer|activity_ratio|dim1|..|dim_n|
 |---|---|---|---|--|--|--|--|--|--|
-|type: as of *TimelineColumn*|long|long|double|..|..|..|
-
+|type: as of *TimelineColumn*| `long` |long|double|..|..|..|
 
 ## Examples
 
@@ -51,7 +46,9 @@ Output table schema is:
 
 The following example calculates DAU/WAU (Daily Active Users / Weekly Active Users ratio) over a randomly generated data.
 
-<!-- csl: https://help.kusto.windows.net/Samples -->
+> [!div class="nextstepaction"]
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA21RQWrDMBC8B/KHvUVKbGy1hByKD6GBviDkUIoR1sZVsS0jr0MCfXxXiigp1NgCrWdmZ3aLAt5wQK8JwevBuB6MJg3uDPOEHnRD9mLJ4rRcdEhQT6Q9QRVQSLZH8VSqXV4qfuVLwuBg/kM8RwR3aRFqo29w9twuKZK782AiHEGZ5eIb8EqhFMTIdW5ohYi8PJFkoYx8AHoGhhBCbtRDuQ5Jpio2FknIrLfl2ssM/tw3quQzV1xXEoJEf8nxOrImWFPdhYJVuo3oziJQJXS2twRMDc9yURTwqrtm7sJMD/tjcdof2RZZFz1ddDeHP2myN07d6hZ7HEi8r6xZfWRxOlkKmcW5sCH+dve4o3df2FCCHfRcn/Rc/QrGXmv2ExN4ZvMiwyaaT9b7AZnMt5byAQAA" target="_blank">Run the query</a>
+
 ```kusto
 // Generate random data of user activities
 let _start = datetime(2017-01-01);
@@ -67,13 +64,15 @@ range _day from _start to _end  step 1d
 | render timechart 
 ```
 
-:::image type="content" source="images/activity-engagement-plugin/activity-engagement-dau-wau.png" border="false" alt-text="Activity engagement dau wau.":::
+:::image type="content" source="media/activity-engagement-plugin/activity-engagement-dau-wau.png" border="false" alt-text="Graph displaying the ratio of daily active users to weekly active users as specified in the query.":::
 
 ### DAU/MAU calculation
 
 The following example calculates DAU/WAU (Daily Active Users / Weekly Active Users ratio) over a randomly generated data.
 
-<!-- csl: https://help.kusto.windows.net/Samples -->
+> [!div class="nextstepaction"]
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA2VRwWrDMAy9F/oPutVuExKvlB1GDmWFnXrsaYxgYjXzSOLgKKWFffxk14yOhcRg5b2n96SigDcc0GtC8HowrgejSYM7wzyhB92QvViyOC0XHRLUE2lPUAUUku1RPJXqOS8Vv/IlYXAw/xG7fBsR3KVFqI2+wdlzu6RI7s6DiXAEZZaLb8ArhVIQI9e5oRUi8vJEkoUy8gHoGRhCCLlRD+U6JJmq2FgkIbPelWsvM/hz36iSz1xxXUkIEv0lx+vImmBNdRcKVuk2ojuLQJXQ2d4SMDU8y0VRwKvumrkLMz3sT8Vxf2JbZF30dNHdHP6kyd44datb7HEg8b6yZvWRxelkKWQW58KG+NuW97yjd1/YUMId9Fwf9Vz9KsZmazYUI3im8ybDKppPFvwB0tS5hPMBAAA=" target="_blank">Run the query</a>
+
 ```kusto
 // Generate random data of user activities
 let _start = datetime(2017-01-01);
@@ -89,13 +88,15 @@ range _day from _start to _end  step 1d
 | render timechart 
 ```
 
-:::image type="content" source="images/activity-engagement-plugin/activity-engagement-dau-mau.png" border="false" alt-text="Activity engagement dau mau.":::
+:::image type="content" source="media/activity-engagement-plugin/activity-engagement-dau-mau.png" border="false" alt-text="Graph displaying the ratio of daily active users to monthly active users as specified in the query.":::
 
 ### DAU/MAU calculation with additional dimensions
 
 The following example calculates DAU/WAU (Daily Active Users / Weekly Active Users ratio) over a randomly generated data with additional dimension (`mod3`).
 
-<!-- csl: https://help.kusto.windows.net/Samples -->
+> [!div class="nextstepaction"]
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA2VRwWrDMAy9D/oPojBqtwmJF8oOI4eywk499jRGMLGaeSRxcJTSwj5+shtGx0JisPL03tNTlsEb9ug1IXjdG9eB0aTBnWAa0YOuyZ4tWRwXDy0SVCNpT1AGFJLtUDzl6jnNFb/yZcZgb/4jtmkREazSIFRGX+HkWW5mJHfrg5FwAGUWD9+AFwqlQEaudX0jROxL5yaZKSPvgJ6BYQghN+quXIVJxjIKi5nIrLf52ssE/tw3KuczVVxXEgJFd07xMjAnWFPeiIJVug7oTiK0SmhtZwm4NTx3up0zBTsaydeaxDJcy2XCRPAIBfvOMnjVbT21Ifz97pgddkf2T9ZFkrNup/BnXsGV42l0gx32JN5X1qw+khhjMqeRxADZOX9FzkcQjPEM3n1hTTN6r6fqoKfylzdKrtn/rSXO7ZmK1x/2V38y+Q8r5V3jKAIAAA==" target="_blank">Run the query</a>
+
 ```kusto
 // Generate random data of user activities
 let _start = datetime(2017-01-01);
@@ -112,4 +113,4 @@ range _day from _start to _end  step 1d
 | render timechart 
 ```
 
-:::image type="content" source="images/activity-engagement-plugin/activity-engagement-dau-mau-mod3.png" border="false" alt-text="Activity engagement dau mau mod 3.":::
+:::image type="content" source="media/activity-engagement-plugin/activity-engagement-dau-mau-mod3.png" border="false" alt-text="Graph displaying the ratio of daily active users to monthly active users with modulo 3 as specified in the query.":::

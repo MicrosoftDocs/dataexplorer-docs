@@ -1,13 +1,9 @@
 ---
-title: Query/management HTTP request - Azure Data Explorer
+title:  Query/management HTTP request
 description: This article describes Query/management HTTP request in Azure Data Explorer.
-services: data-explorer
-author: orspod
-ms.author: orspodek
-ms.reviewer: rkarlin
-ms.service: data-explorer
+ms.reviewer: orspodek
 ms.topic: reference
-ms.date: 01/27/2020
+ms.date: 09/12/2023
 ---
 # Query/management HTTP request
 
@@ -21,7 +17,7 @@ ms.date: 01/27/2020
 |Query v2  |POST     |`/v2/rest/query`|
 |Management|POST     |`/v1/rest/mgmt` |
 
-For example, to send a control command ("management") to a service endpoint,
+For example, to send a management command ("management") to a service endpoint,
 use the following request line:
 
 ```
@@ -68,9 +64,9 @@ or as part of the body, depending on whether GET or POST is used.
 
 |Parameter   |Description                                                                                 |Required/Optional |
 |------------|--------------------------------------------------------------------------------------------|------------------|
-|`csl`       |Text of the query or control command to execute                                             |Required          |
-|`db`        |Name of the database in scope that is the target of the query or control command            |Optional for some control commands. <br>Required for other commands and all queries. </br>                                                                   |
-|`properties`|Provides client request properties that modify how the request is processed and its results. For more information, see [client request properties](../netfx/request-properties.md)                                               | Optional         |
+|`csl`       |Text of the query or management command to execute                                             |Required          |
+|`db`        |Name of the database in scope that is the target of the query or management command            |Optional for some management commands. <br>Required for other commands and all queries. </br>                                                                   |
+|`properties`|Provides request properties that modify how the request is processed and its results. For more information, see [Request properties](../netfx/request-properties.md)                                               | Optional         |
 
 ## GET query parameters
 
@@ -116,7 +112,7 @@ This example shows how to create a request that sends the query above, using [cu
 
 1. Obtain a token for authentication.
 
-    Replace `AAD_TENANT_NAME_OR_ID`, `AAD_APPLICATION_ID`, and `AAD_APPLICATION_KEY` with the relevant values, after having set up [AAD application authentication](../../../provision-azure-ad-app.md)
+    Replace `AAD_TENANT_NAME_OR_ID`, `AAD_APPLICATION_ID`, and `AAD_APPLICATION_KEY` with the relevant values, after having set up [Microsoft Entra application authentication](../../../provision-azure-ad-app.md)
 
     ```
     curl "https://login.microsoftonline.com/AAD_TENANT_NAME_OR_ID/oauth2/token" \
@@ -155,3 +151,29 @@ This example shows how to create a request that sends the query above, using [cu
     ```
 
 1. Read the response according to [this specification](response.md).
+
+### Set client request properties and query parameters
+
+In the following example body, the query in the `csl` field declares two parameters named `n` and `d`. The values for those query parameters are specified within the `Parameters` field under the `properties` field in the request body. The `Options` field defines [client request properties](../netfx/request-properties.md).
+
+> [!NOTE]
+> Non-string and non-long parameters must be expressed as KQL literals in string format.
+
+```json
+{
+    "db": "Samples",
+    "csl": "declare query_parameters (n:long, d:dynamic); StormEvents | where State in (d) | top n by StartTime asc",
+    "properties": {
+        "Options": {
+            "maxmemoryconsumptionperiterator": 68719476736,
+            "max_memory_consumption_per_query_per_node": 68719476736,
+            "servertimeout": "50m"
+        },
+        "Parameters": {
+            "n": 10, "d": "dynamic([\"ATLANTIC SOUTH\"])"
+        }
+    }
+}
+```
+
+For more information, see [Query parameters](../netfx/request-properties.md#query-parameters).

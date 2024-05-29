@@ -1,23 +1,18 @@
 ---
-title: Databases - Azure Data Explorer | Microsoft Docs
+title:  Databases
 description: This article describes Databases in Azure Data Explorer.
-services: data-explorer
-author: orspod
-ms.author: orspodek
-ms.reviewer: rkarlin
-ms.service: data-explorer
+ms.reviewer: orspodek
 ms.topic: reference
-ms.date: 10/30/2019
+ms.date: 11/03/2023
 ---
 # Databases
 
-Kusto follows a relation model of storing the data where upper-level entity is a `database`. 
+Databases are named entities that hold tables and stored functions. Kusto follows a relation model of storing the data where the upper-level entity is a `database`.
 
-Kusto cluster can host several databases, where each database will host its own  collection of [tables](tables.md), [stored functions](stored-functions.md), and [external tables](externaltables.md).
-Each database has its own permissions set, based on [Role Based Access Control (RBAC) model](../../management/access-control/index.md)
+A single cluster can host several databases, in which each database hosts its own collection of [tables](tables.md), [stored functions](stored-functions.md), and [external tables](externaltables.md). Each database has its own set of permissions that follow the [Role Based Access Control (RBAC) model](../../access-control/index.md).
 
-**Notes**  
-
-* Database names must follow the rules for [entity names](./entity-names.md).
-* Maximum limit of databases per cluster is 10,000.
-* Queries combining data from multiple tables in the same database and queries combining data from multiple databases in the same cluster have comparable performance. 
+> [!NOTE]
+>
+> * The maximum limit of databases per cluster is 10,000.
+> * Database names must follow [Identifier naming rules](entity-names.md#identifier-naming-rules) with the exception of case-sensitivity rule. Database names are case-insensitive.
+> * Both queries combining data from multiple tables in the same database and queries combining data from multiple databases in the same cluster have comparable performance.

@@ -1,11 +1,7 @@
 ---
-title: Kusto.Ingest status reporting - Azure Data Explorer
+title:  Kusto.Ingest status reporting
 description: This article describes Kusto.Ingest ingestion status reporting in Azure Data Explorer.
-services: data-explorer
-author: orspod
-ms.author: orspodek
-ms.reviewer: rkarlin
-ms.service: data-explorer
+ms.reviewer: orspodek
 ms.topic: reference
 ms.date: 10/30/2019
 ---
@@ -101,7 +97,7 @@ public class IngestionStatus
     // The ingestion status returns from the service. Status remains 'Pending' during the ingestion process and
     // is updated by the service once the ingestion completes. When <see cref="IngestionReportMethod"/> is set to 'Queue' the ingestion status
     // will always be 'Queued' and the caller needs to query the report queues for ingestion status, as configured. To query statuses that were
-    // reported to queue, see: <see href="https://docs.microsoft.com/azure/kusto/api/netfx/kusto-ingest-client-status#ingestion-status-in-azure-queue"/>.
+    // reported to queue, see: <see href="https://learn.microsoft.com/azure/kusto/api/netfx/kusto-ingest-client-status#ingestion-status-in-azure-queue"/>.
     // When <see cref="IngestionReportMethod"/> is set to 'Table', call <see cref="IKustoIngestionResult.GetIngestionStatusBySourceId"/> or
     // <see cref="IKustoIngestionResult.GetIngestionStatusCollection"/> to retrieve the most recent ingestion status.
     public Status Status { get; set; }
@@ -176,7 +172,7 @@ public enum IngestionReportMethod
 To track the status of your ingestion, provide the following to the [IKustoQueuedIngestClient](kusto-ingest-client-reference.md#interface-ikustoqueuedingestclient) that you do the ingest operation with:
 1.	Set `IngestionReportLevel`property to the required level of report. Either `FailuresOnly` (which is the default value) or `FailuresAndSuccesses`.
 When set to `None`, nothing will be reported at the end of the ingestion.
-1.	Specify the `IngestionReportMethod` - `Queue`, `Table`, or `both`.
+1.	Specify the `IngestionReportMethod` - `Queue`, `Table`, or `QueueAndTable`.
 
 A usage example can be found on the [Kusto.Ingest Examples](kusto-ingest-client-examples.md) page.
 

@@ -1,33 +1,39 @@
 ---
-title: Disable plugin commands- Azure Data Explorer
-description: This article describes plugins management command .disable plugin in Azure Data Explorer.
-services: data-explorer
-author: orspod
-ms.author: orspodek
+title: .disable plugin command
+description: Learn how to use the `.disable plugin` command to disable a plugin. 
 ms.reviewer: alexans
-ms.service: data-explorer
 ms.topic: reference
-ms.date: 11/02/2020
+ms.date: 05/24/2023
 ---
-# .disable plugin
+# .disable plugin command
 
 Disables a plugin.
 
-This command requires `All Databases admin` permission.
+## Permissions
+
+You must have [AllDatabasesAdmin](access-control/role-based-access-control.md) permissions to run this command.
 
 ## Syntax
 
 `.disable` `plugin` *PluginName*
 
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+
+## Parameters
+
+|Name|Type|Required|Description|
+|--|--|--|--|
+|*PluginName*| `string` | :heavy_check_mark:|The name of the plugin to disable.|
+
 ## Example
- 
-<!-- csl -->
+
+The following command disables the autocluster plugin on the cluster.
+
 ```kusto
 .disable plugin autocluster
-``` 
+```
 
-## Next steps
+## Related content
 
 * [`.show plugins`](show-plugins.md)
 * [`.enable plugin`](enable-plugin.md)
-

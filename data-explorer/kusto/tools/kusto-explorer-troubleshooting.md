@@ -1,10 +1,7 @@
 ---
 title: Troubleshoot common problems in Kusto.Explorer
 description: Learn about common problems in installing and running Kusto.Explorer and their solutions
-author: orspod
-ms.author: orspodek
 ms.reviewer: alexans
-ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 04/13/2020
 ---
@@ -60,7 +57,7 @@ The program fails to start and displays one of the following errors:
 
 You can explore the error details by clicking `Details` in the following error dialog:
 
-![ClickOnce error.](./Images/kusto-explorer-troubleshooting/clickonce-err-1.png)
+![ClickOnce error.](./media/kusto-explorer-troubleshooting/clickonce-err-1.png)
 
 ```kusto
 Following errors were detected during this operation.
@@ -174,7 +171,7 @@ It's also possible to revert to a specific version of Kusto.Explorer:
 1. Select **Kusto.Explorer** and select **Uninstall/Change**.
 1. Select **Restore the application to its previous state**.
 
-## Next steps
+## Related content
 
 * Learn about the [Kusto.Explorer user interface](kusto-explorer.md#overview-of-the-user-interface)
 * Learn about [running Kusto.Explorer from the command line](kusto-explorer-using.md#kustoexplorer-command-line-arguments)

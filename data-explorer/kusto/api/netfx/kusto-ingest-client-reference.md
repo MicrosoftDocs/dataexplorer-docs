@@ -1,26 +1,26 @@
 ---
-title: Kusto.Ingest client interfaces and factory classes - Azure Data Explorer
+title:  Kusto.Ingest client interfaces and factory classes
 description: This article describes Kusto.Ingest client interfaces and factory classes in Azure Data Explorer.
-services: data-explorer
-author: orspod
-ms.author: orspodek
 ms.reviewer: ohbitton
-ms.service: data-explorer
 ms.topic: reference
 ms.date: 05/19/2020
 ---
 # Kusto.Ingest client interfaces and classes
 
-The main interfaces and classes in the Kusto.Ingest library are:
+The main interfaces and classes in the Kusto Ingest .NET library are:
 
-* [interface IKustoIngestClient](#interface-ikustoingestclient): The main ingestion interface.
-* [Class ExtendedKustoIngestClient](#class-extendedkustoingestclient): Extensions to the main ingestion interface.
-* [class KustoIngestFactory](#class-kustoingestfactory): The main factory for ingestion clients.
-* [class KustoIngestionProperties](#class-kustoingestionproperties): Class used to provide common ingestion properties.
-* [class IngestionMapping](#class-ingestionmapping): Class used to describe the data mapping for the ingestion.
-* [Enum DataSourceFormat](#enum-datasourceformat): Supported data source formats (for example, CSV, JSON)
-* [Interface IKustoQueuedIngestClient](#interface-ikustoqueuedingestclient): Interface describing operations that apply for queued ingestion only.
-* [Class KustoQueuedIngestionProperties](#class-kustoqueuedingestionproperties): Properties that apply to queued ingestion only.
+* [Interface IKustoIngestClient](#interface-ikustoingestclient): The main ingestion interface
+* [Class ExtendedKustoIngestClient](#class-extendedkustoingestclient): Extensions to the main ingestion interface
+* [class KustoIngestFactory](#class-kustoingestfactory): The main factory for ingestion clients
+* [class KustoIngestionProperties](#class-kustoingestionproperties): Class used to provide common ingestion properties
+* [class SourceOptions](#class-sourceoptions): Source data handling options
+* [class IngestionMapping](#class-ingestionmapping): Class used to describe the data mapping for the ingestion
+* [Enum DataSourceFormat](#enum-datasourceformat): Supported data source formats. For example, CSV or JSON.
+* [Interface IKustoQueuedIngestClient](#interface-ikustoqueuedingestclient): Interface describing operations that apply for queued ingestion only
+* [Class KustoQueuedIngestionProperties](#class-kustoqueuedingestionproperties): Properties that apply to queued ingestion only
+
+> [!NOTE]
+> This information applies specifically to the .NET client library. Different [client libraries](../client-libraries.md) may have variations in their available interfaces and classes. For a broader understanding of Kusto Ingest across all client libraries,  see [Kusto Ingest overview](about-kusto-ingest.md).
 
 ## Interface IKustoIngestClient
 
@@ -44,7 +44,7 @@ public interface IKustoIngestClient : IDisposable
     /// Ingest data from one of the supported storage providers. Currently the supported providers are: File System, Azure Blob Storage.
     /// </summary>
     /// <param name="uri">The URI of the storage resource to be ingested. Note: This URI may include a storage account key or shared access signature (SAS).
-    ///  See <see href="https://docs.microsoft.com/azure/kusto/api/connection-strings/storage"/> for the URI format options.</param>
+    ///  See <see href="https://learn.microsoft.com/azure/kusto/api/connection-strings/storage"/> for the URI format options.</param>
     /// <param name="ingestionProperties">Additional properties to be used during the ingestion process</param>
     /// <param name="sourceOptions">Options for the storage ingestion source. This is an optional parameter</param>
     /// <returns>An <see cref="IKustoIngestionResult"/> task</returns>
@@ -337,20 +337,20 @@ public static class KustoIngestFactory
 
 ## Class KustoIngestionProperties
 
-KustoIngestionProperties class contains basic ingestion properties for fine control over the ingestion process and the way Kusto engine will handle it.
+KustoIngestionProperties class contains basic ingestion properties for fine control over the ingestion process.
 
 |Property   |Meaning    |
 |-----------|-----------|
 |DatabaseName |Name of the database to ingest into |
 |TableName |Name of the table to ingest into |
 |DropByTags |Tags that each extent will have. DropByTags are permanent and can be used as follows: `.show table T extents where tags has 'some tag'` or `.drop extents <| .show table T extents where tags has 'some tag'` |
-|IngestByTags |Tags that are written per extent. Can later be used with the `IngestIfNotExists` property to avoid ingesting the same data twice |
+|IngestByTags |Tags that are written per extent. Can later be used with the `IngestIfNotExists` property to avoid ingesting the same data twice. For more information, see [ingest-by: tags](../../../kusto/management/extent-tags.md). |
 |IngestionMapping|Holds either a reference to an exiting mapping or a list of column mappings|
-|AdditionalTags |Additional tags as needed |
+|AdditionalTags |Extra tags as needed |
 |IngestIfNotExists |List of tags that you don't want to ingest again (per table) |
-|ValidationPolicy |Data validation definitions. See [TODO] for details |
+|ValidationPolicy |Data validation definitions. |
 |Format |Format of the data being ingested |
-|AdditionalProperties | Other properties that will be passed as [ingestion properties](../../../ingestion-properties.md) to the ingestion command. The properties will be passed because not all of the ingestion properties are represented in a separate member of this class|
+|AdditionalProperties | Other properties that are passed as [ingestion properties](../../../ingestion-properties.md) to the ingestion command. The properties are passed because not all of the ingestion properties are represented in a separate member of this class|
 
 ```csharp
 public class KustoIngestionProperties
@@ -371,6 +371,27 @@ public class KustoIngestionProperties
 }
 ```
 
+## Class SourceOptions
+
+SourceOptions and derived classes encapsulate additional information and handling options for the source data. The specifics differ between supported sources
+
+```csharp
+    // Base class
+    public abstract class SourceOptions
+    {
+        public Guid SourceId  { get; set; };    // Identifies the ingestion source
+        public bool Compress { get; set; };     // Determines whether data should be compressed before being uploaded.
+    }
+
+    // Represents a local file/blob/ADLSv2 file
+    public sealed class StorageSourceOptions : SourceOptions
+    {
+        public long? Size { get; set; };    // Uncompressed data size. Should be used to comunicate the file size to the service for efficient ingestion
+        public bool DeleteSourceOnSuccess { get; set; };    // Indicates whether the ingestion source should be deleted after successful ingestion. Defaults to 'false'. When set to 'true', will require the service to individually delete each blob, which could put extra pressure on the service.
+        public DataSourceCompressionType CompressionType { get; set; }; //  Indicates compression used. Defaults to 'none'
+    }
+```
+
 ## Class IngestionMapping
 
 Holds a reference to an existing mapping or a list of column mappings.
@@ -379,7 +400,7 @@ Holds a reference to an existing mapping or a list of column mappings.
 |-----------|-----------|
 |IngestionMappings | Column mappings, each describing the target column data and its source |
 |IngestionMappingKind | Kind of mapping described in the IngestionMappings property - one of: Csv, Json, Avro, Parquet, SStream, Orc, ApacheAvro or W3CLogFile |
-|IngestionMappingReference | The pre-created mapping name |
+|IngestionMappingReference | The precreated mapping name |
 
 ```csharp
 public class IngestionMapping
@@ -413,7 +434,6 @@ public enum DataSourceFormat
     parquet,    // Data is in a Parquet format
 }
 ```
-
 
 ## Example of KustoIngestionProperties definition
 

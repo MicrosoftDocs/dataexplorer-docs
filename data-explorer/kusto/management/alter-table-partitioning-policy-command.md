@@ -1,31 +1,36 @@
 ---
-title: .alter table partitioning policy command- Azure Data Explorer
-description: This article describes the .alter table partitioning policy command in Azure Data Explorer.
-services: data-explorer
-author: orspod
-ms.author: orspodek
+title:  .alter table policy partitioning command
+description: Learn how to use the `.alter table policy partitioning` command to change the table's partitioning policy.
 ms.reviewer: yonil
-ms.service: data-explorer
 ms.topic: reference
-ms.date: 09/29/2021
+ms.date: 06/04/2023
 ---
-# .alter table partitioning policy
+# .alter table policy partitioning command
 
-Changes a table [partitioning policy](partitioningpolicy.md). The partitioning policy defines if and how [extents (data shards)](../management/extents-overview.md) should be partitioned for a specific table or a [materialized view](materialized-views/materialized-view-overview.md). The command requires [DatabaseAdmin](access-control/role-based-authorization.md) permissions.
+Change's the table's [partitioning policy](partitioning-policy.md). The partitioning policy defines if and how [extents (data shards)](../management/extents-overview.md) should be partitioned for a specific table or a [materialized view](materialized-views/materialized-view-overview.md).
+
+## Permissions
+
+You must have at least [Database Admin](access-control/role-based-access-control.md) permissions to run this command.
 
 ## Syntax
 
-`.alter` `table` *TableName* `policy` `partitioning` 
+`.alter` `table` *TableName* `policy` `partitioning` *PolicyObject*
 
-## Arguments
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
 
-*TableName* - Specify the name of the table.  
+## Parameters
 
-### Example
+| Name | Type | Required | Description |
+|--|--|--|--|
+| *TableName* | `string` |  :heavy_check_mark: | The name of the table to alter. |
+| *PolicyObject* | `string` |  :heavy_check_mark: | A serialized JSON policy object. See [partitioning policy](partitioning-policy.md). |
+
+### Examples
 
 Set a policy with a hash partition key:
 
-```kusto
+~~~kusto
 .alter table [table_name] policy partitioning ```
 {
   "PartitionKeys": [
@@ -40,11 +45,11 @@ Set a policy with a hash partition key:
     }
   ]
 }```
-```
+~~~
 
 Set a policy with a uniform range datetime partition key:
 
-```kusto
+~~~kusto
 .alter table [table_name] policy partitioning ```
 {
   "PartitionKeys": [
@@ -59,11 +64,11 @@ Set a policy with a uniform range datetime partition key:
     }
   ]
 }```
-```
+~~~
 
 Set a policy with two kinds of partition keys:
 
-```kusto
+~~~kusto
 .alter table [table_name] policy partitioning ```
 {
   "PartitionKeys": [
@@ -87,4 +92,4 @@ Set a policy with two kinds of partition keys:
     }
   ]
 }```
-```
+~~~

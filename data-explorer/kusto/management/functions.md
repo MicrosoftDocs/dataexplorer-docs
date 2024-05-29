@@ -1,16 +1,12 @@
 ---
-title: Stored functions management overview - Azure Data Explorer | Microsoft Docs
+title:  Stored functions management overview
 description: This article describes Stored functions management overview in Azure Data Explorer.
-services: data-explorer
-author: orspod
-ms.author: orspodek
-ms.reviewer: rkarlin
-ms.service: data-explorer
+ms.reviewer: orspodek
 ms.topic: reference
-ms.date: 02/18/2020
+ms.date: 11/22/2022
 ---
 # Stored functions management overview
-This section describes control commands used for creating and altering the following [user-defined functions](../query/functions/user-defined-functions.md):
+This section describes management commands used for creating and altering [user-defined functions](../query/functions/user-defined-functions.md):
 
 |Function |Description|
 |---------|-----------|

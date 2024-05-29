@@ -1,44 +1,44 @@
 ---
-title: time_weighted_avg_fl() - Azure Data Explorer
+title:  time_weighted_avg_fl()
 description: This article describes time_weighted_avg_fl() user-defined function in Azure Data Explorer.
-author: orspod
-ms.author: orspodek
 ms.reviewer: adieldar
-ms.service: data-explorer
 ms.topic: reference
-ms.date: 04/27/2021
+ms.date: 03/13/2023
 ---
 # time_weighted_avg_fl()
 
-The function `time_weighted_avg_fl()` calculates the time weighted average of a metric in a given time window, over input time bins. This function is similar to [summarize operator](../query/summarizeoperator.md). The function aggregates the metric by time bins, but instead of calculating simple [avg()](../query/avg-aggfunction.md) of the metric value in each bin, it weights each value by its duration. The duration is defined from the timestamp of the current value to the timestamp of the next value.
+The function `time_weighted_avg_fl()` is a [user-defined function (UDF)](../query/functions/user-defined-functions.md) that calculates the time weighted average of a metric in a given time window, over input time bins. This function is similar to [summarize operator](../query/summarize-operator.md). The function aggregates the metric by time bins, but instead of calculating simple [avg()](../query/avg-aggfunction.md) of the metric value in each bin, it weights each value by its duration. The duration is defined from the timestamp of the current value to the timestamp of the next value.
 
 This type of aggregation is required for use cases where the metric values are emitted only when changed (and not in constant intervals). For example in IoT, where edge devices send metrics to the cloud only upon changes, and optimize communication bandwidth.
 
-> [!NOTE]
-> This function is a [UDF (user-defined function)](../query/functions/user-defined-functions.md). For more information, see [usage](#usage).
-
 ## Syntax
 
-`T | invoke time_weighted_avg_fl(`*t_col*, *y_col*, *key_col*, *stime*, *:::no-loc text="etime":::*, *dt*`)`
-  
-## Arguments
+`T | invoke time_weighted_avg_fl(`*t_col*, *y_col*, *key_col*, *stime*, *etime*, *dt*`)`
 
-* *t_col*: The name of the column containing the time stamp of the records.
-* *y_col*: The name of the column containing the metric value of the records.
-* *key_col*: The name of the column containing the partition key of the records.
-* *:::no-loc text="stime":::*: Start time of the aggregation window.
-* *:::no-loc text="etime":::*: End time of the aggregation window.
-* *dt*: Aggregation time bin.
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
 
-## Usage
+## Parameters
 
-`time_weighted_avg_fl()` is a user-defined function. You can either embed its code in your query, or install it in your database. There are two usage options: ad hoc and persistent usage. See the below tabs for examples.
+| Name | Type | Required | Description |
+|--|--|--|--|
+| *t_col* | `string` |  :heavy_check_mark: | The name of the column containing the time stamp of the records.|
+| *y_col* | `string` |  :heavy_check_mark: | The name of the column containing the metric value of the records.|
+| *key_col* | `string` |  :heavy_check_mark: | The name of the column containing the partition key of the records.|
+| *stime* | `datetime` |  :heavy_check_mark: | The start time of the aggregation window.|
+| *etime* | `datetime` |  :heavy_check_mark: | The end time of the aggregation window.|
+| *dt* | `timespan` |  :heavy_check_mark: | The aggregation time bin.|
 
-# [Ad hoc](#tab/adhoc)
+## Function definition
 
-For ad hoc usage, embed its code using a [let statement](../query/letstatement.md). No permission is required.
+You can define the function by either embedding its code as a query-defined function, or creating it as a stored function in your database, as follows:
 
-<!-- csl: https://help.kusto.windows.net/Samples -->
+### [Query-defined](#tab/query-defined)
+
+Define the function using the following [let statement](../query/let-statement.md). No permissions are required.
+
+> [!IMPORTANT]
+> A [let statement](../query/let-statement.md) can't run on its own. It must be followed by a [tabular expression statement](../query/tabular-expression-statements.md). To run a working example of `time_weighted_avg_fl()`, see [Example](#example).
+
 ```kusto
 let time_weighted_avg_fl=(tbl:(*), t_col:string, y_col:string, key_col:string, stime:datetime, etime:datetime, dt:timespan)
 {
@@ -49,6 +49,7 @@ let time_weighted_avg_fl=(tbl:(*), t_col:string, y_col:string, key_col:string, s
     | join kind=fullouter keys on dummy
     | project-away dummy, dummy1
     | union tbl_ex
+    | where timestamp between (stime..etime)
     | partition hint.strategy=native by key (
         order by timestamp asc, value nulls last
         | scan declare(f_value:real=0.0) with (step s: true => f_value = iff(isnull(value), s.f_value, value);)    // fill forward null values
@@ -59,34 +60,17 @@ let time_weighted_avg_fl=(tbl:(*), t_col:string, y_col:string, key_col:string, s
     | where t_sum > 0
     | extend tw_avg = tw_sum/t_sum
     | project-away tw_sum, t_sum
-}
-;
-let tbl = datatable(ts:datetime,  val:real, key:string) [
-    datetime(2021-04-26 00:00), 100, 'Device1',
-    datetime(2021-04-26 00:45), 200, 'Device1',
-    datetime(2021-04-26 01:06), 100, 'Device1',
-    datetime(2021-04-26 00:30), 400, 'Device2',
-    datetime(2021-04-26 01:00), 100, 'Device2',
-    datetime(2021-04-26 02:00), 300, 'Device2',
-]
-;
-let minmax=materialize(tbl | summarize mint=min(ts), maxt=max(ts));
-let stime=toscalar(minmax | project mint);
-let etime=toscalar(minmax | project maxt);
-let dt = 1h;
-tbl
-| invoke time_weighted_avg_fl('ts', 'val', 'key', stime, etime, dt)
-| project-rename val = tw_avg
-| order by key asc, timestamp asc
+};
+// Write your query to use the function here.
 ```
 
-# [Persistent](#tab/persistent)
+### [Stored](#tab/stored)
 
-For persistent usage, use [`.create function`](../management/create-function.md). Creating a function requires [database user permission](../management/access-control/role-based-authorization.md).
+Define the stored function once using the following [`.create function`](../management/create-function.md). [Database User permissions](../management/access-control/role-based-access-control.md) are required.
 
-### One-time installation
+> [!IMPORTANT]
+> You must run this code to create the function before you can use the function as shown in the [Example](#example).
 
-<!-- csl: https://help.kusto.windows.net/Samples -->
 ```kusto
 .create-or-alter function with (folder = "Packages\\Series", docstring = "Time weighted average of a metric")
 time_weighted_avg_fl(tbl:(*), t_col:string, y_col:string, key_col:string, stime:datetime, etime:datetime, dt:timespan)
@@ -98,6 +82,7 @@ time_weighted_avg_fl(tbl:(*), t_col:string, y_col:string, key_col:string, stime:
     | join kind=fullouter keys on dummy
     | project-away dummy, dummy1
     | union tbl_ex
+    | where timestamp between (stime..etime)
     | partition hint.strategy=native by key (
         order by timestamp asc, value nulls last
         | scan declare(f_value:real=0.0) with (step s: true => f_value = iff(isnull(value), s.f_value, value);)    // fill forward null values
@@ -111,9 +96,61 @@ time_weighted_avg_fl(tbl:(*), t_col:string, y_col:string, key_col:string, stime:
 }
 ```
 
-### Usage
+---
 
-<!-- csl: https://help.kusto.windows.net/Samples -->
+## Example
+
+The following example uses the [invoke operator](../query/invoke-operator.md) to run the function.
+
+### [Query-defined](#tab/query-defined)
+
+To use a query-defined function, invoke it after the embedded function definition.
+
+```kusto
+let time_weighted_avg_fl=(tbl:(*), t_col:string, y_col:string, key_col:string, stime:datetime, etime:datetime, dt:timespan)
+{
+    let tbl_ex = tbl | extend timestamp = column_ifexists(t_col, datetime(null)), value = column_ifexists(y_col, 0.0), key = column_ifexists(key_col, '');
+    let gridTimes = range timestamp from stime to etime step dt | extend value=real(null), dummy=1;
+    let keys = materialize(tbl_ex | summarize by key | extend dummy=1);
+    gridTimes
+    | join kind=fullouter keys on dummy
+    | project-away dummy, dummy1
+    | union tbl_ex
+    | where timestamp between (stime..etime)
+    | partition hint.strategy=native by key (
+        order by timestamp asc, value nulls last
+        | scan declare(f_value:real=0.0) with (step s: true => f_value = iff(isnull(value), s.f_value, value);)    // fill forward null values
+        | extend diff_t=(next(timestamp)-timestamp)/1m
+    )
+    | where isnotnull(diff_t)
+    | summarize tw_sum=sum(f_value*diff_t), t_sum =sum(diff_t) by bin_at(timestamp, dt, stime), key
+    | where t_sum > 0
+    | extend tw_avg = tw_sum/t_sum
+    | project-away tw_sum, t_sum
+};
+let tbl = datatable(ts:datetime,  val:real, key:string) [
+    datetime(2021-04-26 00:00), 100, 'Device1',
+    datetime(2021-04-26 00:45), 200, 'Device1',
+    datetime(2021-04-26 01:06), 100, 'Device1',
+    datetime(2021-04-26 00:30), 400, 'Device2',
+    datetime(2021-04-26 01:00), 100, 'Device2',
+    datetime(2021-04-26 02:00), 300, 'Device2',
+];
+let minmax=materialize(tbl | summarize mint=min(ts), maxt=max(ts));
+let stime=toscalar(minmax | project mint);
+let etime=toscalar(minmax | project maxt);
+let dt = 1h;
+tbl
+| invoke time_weighted_avg_fl('ts', 'val', 'key', stime, etime, dt)
+| project-rename val = tw_avg
+| order by key asc, timestamp asc
+```
+
+### [Stored](#tab/stored)
+
+> [!IMPORTANT]
+> For this example to run successfully, you must first run the [Function definition](#function-definition) code to store the function.
+
 ```kusto
 let tbl = datatable(ts:datetime,  val:real, key:string) [
     datetime(2021-04-26 00:00), 100, 'Device1',
@@ -136,12 +173,13 @@ tbl
 
 ---
 
-```kusto
-timestamp	                   key      val
-2021-04-26 00:00:00.0000000    Device1	125
-2021-04-26 01:00:00.0000000    Device1	110
-2021-04-26 00:00:00.0000000    Device2	200
-2021-04-26 01:00:00.0000000    Device2	100
-```
+**Output**
 
-The first value is (45m*100 + 15m*200)/60m = 125, the second value is (6m*200 + 54m*100)/60m = 110, and so on.
+| timestamp | key | val |
+|---|---|---|
+| 2021-04-26 00:00:00.0000000 | Device1 | 125 |
+| 2021-04-26 01:00:00.0000000 | Device1 | 110 |
+| 2021-04-26 00:00:00.0000000 | Device2 | 200 |
+| 2021-04-26 01:00:00.0000000 | Device2 | 100 |
+
+The first value is (45m\*100 + 15m\*200)/60m = 125, the second value is (6m*200 + 54m*100)/60m = 110, and so on.

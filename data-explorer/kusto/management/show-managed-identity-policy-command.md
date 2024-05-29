@@ -1,28 +1,35 @@
 ---
-title: ".show managed_identity policy command - Azure Data Explorer"
-description: This article describes the .show managed_identity policy command in Azure Data Explorer.
-services: data-explorer
-author: orspod
-ms.author: orspodek
+title: .show policy managed_identity command
+description: Learn how to use the `.show policy managed_identity` command to show the ManagedIdentity policy of the specified database or cluster.
 ms.reviewer: slneimer
-ms.service: data-explorer
 ms.topic: reference
-ms.date: 11/03/2021
+ms.date: 05/24/2023
 ---
-# .show managed_identity policy
+# .show policy managed_identity command
 
 This command returns the ManagedIdentity policy of the cluster or the specified database.
 
-## Arguments
+## Permissions
 
-|Name|Type|Required|Description|
-|--|--|--|--|
-|*DatabaseName*|string|&check;|The name of the database.|
+To see the managed identity policy on the cluster, you must have AllDatabasesMonitor permissions.
+
+To see the managed identity policy on a database, you must have Database User, Database Viewer, or Database Monitor permissions.
+
+For more information, see [role-based access control](access-control/role-based-access-control.md).
 
 ## Syntax
 
-* `.show` `cluster` `policy` `managed_identity`
-* `.show` `database` *DatabaseName* `policy` `managed_identity`
+`.show` `cluster` `policy` `managed_identity`
+
+`.show` `database` *DatabaseName* `policy` `managed_identity`
+
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+
+## Parameters
+
+|Name|Type|Required|Description|
+|--|--|--|--|
+|*DatabaseName*| `string` | :heavy_check_mark:|The name of the database.|
 
 ## Returns
 

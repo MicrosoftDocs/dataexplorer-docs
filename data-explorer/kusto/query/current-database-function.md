@@ -1,13 +1,9 @@
 ---
-title: current_database() - Azure Data Explorer | Microsoft Docs
-description: This article describes current_database() in Azure Data Explorer.
-services: data-explorer
-author: orspod
-ms.author: orspodek
+title:  current_database()
+description: Learn how to use the current_database() function to return the name of the database in scope as a string type value.
 ms.reviewer: alexans
-ms.service: data-explorer
 ms.topic: reference
-ms.date: 02/13/2020
+ms.date: 11/23/2022
 ---
 # current_database()
 
@@ -17,6 +13,8 @@ entities are resolved against if no other database is specified).
 ## Syntax
 
 `current_database()`
+
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
 
 ## Returns
 

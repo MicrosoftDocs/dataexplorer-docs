@@ -1,54 +1,33 @@
 ---
-title: The case-sensitive has_cs string operator - Azure Data Explorer
-description: This article describes the case-sensitive has_cs string operator in Azure Data Explorer.
-services: data-explorer
-author: orspod
-ms.author: orspodek
+title:  The case-sensitive has_cs string operator
+description: Learn how to use the has_cs operator to filter data with a case-sensitive search string.
 ms.reviewer: alexans
-ms.service: data-explorer
 ms.topic: reference
-ms.date: 09/12/2021
-ms.localizationpriority: high
+ms.date: 12/28/2022
 ---
-# has_cs_ operator
+# has_cs operator
 
-Filters a record set for data with a case-sensitive search string.
+Filters a record set for data with a case-sensitive search string. `has_cs` searches for indexed terms, where an indexed [term](datatypes-string-operators.md#what-is-a-term) is three or more characters. If your term is fewer than three characters, the query scans the values in the column, which is slower than looking up the term in the term index.
 
-The following table provides a comparison of the `has` operators:
-
-|Operator   |Description   |Case-Sensitive  |Example (yields `true`)  |
-|-----------|--------------|----------------|-------------------------|
-|[`has`](has-operator.md) |Right-hand-side (RHS) is a whole term in left-hand-side (LHS) |No |`"North America" has "america"`|
-|[`!has`](not-has-operator.md) |RHS isn't a full term in LHS |No |`"North America" !has "amer"`|
-|[`has_cs`](has-cs-operator.md) |RHS is a whole term in LHS |Yes |`"North America" has_cs "America"`|
-|[`!has_cs`](not-has-cs-operator.md) |RHS isn't a full term in LHS |Yes |`"North America" !has_cs "amer"`|
-
-> [!NOTE]
-> The following abbreviations are used in the table above:
->
-> * RHS = right hand side of the expression
-> * LHS = left hand side of the expression
-
-For further information about other operators and to determine which operator is most appropriate for your query, see [datatype string operators](datatypes-string-operators.md). 
-
-Case-insensitive operators are currently supported only for ASCII-text. For non-ASCII comparison, use the [tolower()](tolowerfunction.md) function.
+[!INCLUDE [has-operator-comparison](../../includes/has-operator-comparison.md)]
 
 ## Performance tips
 
-> [!NOTE]
-> Performance depends on the type of search and the structure of the data.
-
-For faster results, use the case-sensitive version of an operator, for example, `has_cs`, not `has`. For best practices, see [Query best practices](best-practices.md).
+[!INCLUDE [performance-tip-note](../../includes/performance-tip-note.md)]
 
 ## Syntax
 
-*T* `|` `where` *col* `has_cs` `(`*expression*`)`   
+*T* `|` `where` *Column* `has_cs` `(`*Expression*`)`
 
-## Arguments
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
 
-* *T* - The tabular input whose records are to be filtered.
-* *col* - The column to filter.
-* *expression* - Scalar or literal expression.
+## Parameters
+
+| Name | Type | Required | Description |
+|--|--|--|--|
+| *T* | `string` |  :heavy_check_mark: | The tabular input whose records are to be filtered.|
+| *Column* | `string` |  :heavy_check_mark: | The column used to filter the records.|
+| *Expression* | scalar or tabular |  :heavy_check_mark: | An expression for which to search. If the value is a tabular expression and has multiple columns, the first column is used.|
 
 ## Returns
 
@@ -56,16 +35,34 @@ Rows in *T* for which the predicate is `true`.
 
 ## Example
 
-<!-- csl: https://help.kusto.windows.net/Samples -->
+> [!div class="nextstepaction"]
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAwsuyS/KdS1LzSsp5qpRKC7NzU0syqxKVUgFCcUn55fmldiCSQ1NhaRKheCSxJJUoMLyjNSiVAhPISOxOD65WEHJzcc/yNPFUQkAo0dX71MAAAA=" target="_blank">Run the query</a>
+
 ```kusto
 StormEvents
-    | summarize event_count=count() by State
-    | where State has_cs "New"
-    | count
+| summarize event_count=count() by State
+| where State has_cs "FLORIDA"
 ```
 
 **Output**
 
-|Count|
-|-----|
-|0|
+|State|event_count|
+|--|--|
+|FLORIDA|1042|
+
+Since all `State` values are capitalized, searching for a lowercase string with the same value, such as "florida", won't yield any results.
+
+> [!div class="nextstepaction"]
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAwsuyS/KdS1LzSspVuDlqlEoz0gtSlUILkksSVXISCyOT8yrVNBQcnYM8vfx9HNU0lFQcnH09g8Bs/xcw5U0wbqKS3NzE4syq1IVkvNL80o0NBWSKiGGAACHltT/YAAAAA==" target="_blank">Run the query</a>
+
+```kusto
+StormEvents
+| summarize event_count=count() by State
+| where State has_cs "florida"
+```
+
+**Output**
+
+|State|event_count|
+|--|--|
+|||
