@@ -18,6 +18,9 @@ The mirroring policy commands allow you to view, change and partition, and delet
 * Use [.alter-merge table policy mirroring command](alter-merge-mirroring-policy-command.md) to change the current mirroring policy.
 * Use [.delete table policy mirroring command](delete-table-mirroring-policy-command.md) to soft-delete the current mirroring policy.
 * Use [.show table mirroring operations command](show-table-mirroring-operations-command.md) to check operations mirroring status.
+* Use [.Show table mirroring operations exported artifacts command](show-table-mirroring-operations-exported-artifacts.md) to check operations exported artifacts status.
+* Use [.show table mirroring operations failures](show-table-mirroring-operations-failures.md) to check operations mirroring failure status.
+
 
 ## The policy object
 
