@@ -21,7 +21,6 @@ The mirroring policy commands allow you to view, change and partition, and delet
 * Use [.Show table mirroring operations exported artifacts command](show-table-mirroring-operations-exported-artifacts.md) to check operations exported artifacts status.
 * Use [.show table mirroring operations failures](show-table-mirroring-operations-failures.md) to check operations mirroring failure status.
 
-
 ## The policy object
 
 The mirroring policy includes the following properties:
@@ -36,7 +35,7 @@ The mirroring policy includes the following properties:
 [!INCLUDE [partitions-formatting](../../includes/partitions-formatting.md)]
 
 > [!NOTE]
-> *PartitionName* must be a case insensitive unique string, both among other partition names and the column names of the mirrored table.
+> Each partition is represented as a separate column using the *PartitionName* listed in the *Partitions* list. *PartitionName* must be a case insensitive unique string, both among other partition names and the column names of the mirrored table.
 
 ## Data types mapping
 

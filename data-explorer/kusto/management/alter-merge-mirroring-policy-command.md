@@ -37,7 +37,7 @@ You must have at least [Database Admin](../access-control/role-based-access-cont
 [!INCLUDE [partitions-formatting](../../includes/partitions-formatting.md)]
 
 > [!NOTE]
-> *PartitionName* must be a case insensitive unique string, both among other partition names and the column names of the mirrored table.
+> Each partition is represented as a separate column using the *PartitionName* listed in the *Partitions* list. *PartitionName* must be a case insensitive unique string, both among other partition names and the column names of the mirrored table.
 
 ## Properties
 
