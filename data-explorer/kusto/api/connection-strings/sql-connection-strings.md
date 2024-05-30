@@ -3,7 +3,7 @@ title:  SQL external table connection strings
 description: This article describes how to connect and authenticate to SQL external tables in Azure Data Explorer.
 ms.reviewer: urishapira
 ms.topic: reference
-ms.date: 07/13/2023
+ms.date: 05/30/2024
 ---
 # Azure SQL external table connection strings
 
@@ -22,6 +22,9 @@ Regardless of the authentication method used, the principal must have the necess
 ## Supported authentication methods by database type
 
 The following table shows the supported authentication methods for each type of database acting as the source for the external table.
+
+> [!NOTE]
+> Where possible, the preferred authentication method is managed identity.
 
 | Authentication method | SQL Server | PostgreSQL | MySQL | Cosmos DB |
 |--|--|--|--|
