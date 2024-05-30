@@ -679,8 +679,8 @@ items:
             displayName: Failure, error code
           - name: Ingestion FAQ
             href: kusto/management/ingestion-faq.yml
-      - name: White paper
-        href: white-paper-landing-page.md
+      - name: Azure Data Explorer white paper
+        href: https://aka.ms/adx.techwhitepaper
   - name: Resources
     items:
       - name: Forums
