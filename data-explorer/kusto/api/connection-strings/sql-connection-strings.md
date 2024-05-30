@@ -24,7 +24,7 @@ Regardless of the authentication method used, the principal must have the necess
 The following table shows the supported authentication methods for each type of database acting as the source for the external table.
 
 > [!NOTE]
-> Where possible, the preferred authentication method is Managed identity.
+> Where possible, the preferred authentication method is managed identity.
 
 | Authentication method | SQL Server | PostgreSQL | MySQL | Cosmos DB |
 |--|--|--|--|
