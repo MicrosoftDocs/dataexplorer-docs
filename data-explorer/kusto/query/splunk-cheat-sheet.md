@@ -2,7 +2,7 @@
 title: Splunk to Kusto map
 description: Learn how to write log queries in Kusto Query Language by comparing Splunk and Kusto Query Language concept mappings.
 ms.topic: conceptual
-ms.date: 05/01/2023
+ms.date: 05/22/2024
 ---
 
 # Splunk to Kusto cheat sheet
@@ -146,11 +146,11 @@ See the [list of summarize aggregations functions](aggregation-functions.md) tha
 
 ### Sort
 
-In Splunk, to sort in ascending order, you must use the `reverse` operator. Kusto also supports defining where to put nulls, either at the beginning or at the end.
+The default sort order is ascending. To specify descending order, add a minus sign (`-`) before the field name. Kusto also supports defining where to put nulls, either at the beginning or at the end.
 
 | Product | Operator | Example |
 |:---|:---|:---|
-| Splunk | `sort` |  `Event.Rule=120103`<br />&#124; `sort Data.Hresult` <br />&#124; `reverse` |
+| Splunk | `sort` |  `Event.Rule=120103`<br />&#124; `sort -Data.Hresult` |
 | Kusto | `order by` | `Office_Hub_OHubBGTaskError`<br />&#124; `order by Data_Hresult,  desc` |
 
 ### Multivalue expand

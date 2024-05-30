@@ -7,10 +7,7 @@ ms.date: 09/03/2023
 # Customer intent: As a data analyst, I want to learn about how to contextualize data in queries using KQL graph semantics
 ---
 
-# Kusto Query Language (KQL) graph semantics overview (Preview)
-
-> [!WARNING]
-> This feature is currently in preview and might be subject to change. The semantics and syntax of the graph feature might change before they are released as generally available.
+# Kusto Query Language (KQL) graph semantics overview
 
 Graph semantics in Kusto Query Language (KQL) allows you to model and query data as graphs. The structure of a graph comprises nodes and edges that connect them. Both nodes and edges can have properties that describe them.
 

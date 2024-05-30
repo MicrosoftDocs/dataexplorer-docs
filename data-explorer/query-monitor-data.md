@@ -1,7 +1,11 @@
 ---
 title: 'Query data in Azure Monitor with Azure Data Explorer'
-description: 'In this topic, query data in Azure Monitor (Application Insights and Log Analytics) by creating an Azure Data Explorer cross product queries.'
-ms.reviewer: orspodek
+description: 'In this article, query data in Azure Monitor (Application Insights and Log Analytics) by creating an Azure Data Explorer cross product queries.'
+services: data-explorer
+author: osalzberg
+ms.author: orspodek
+ms.reviewer: rkarlin
+ms.service: data-explorer
 ms.topic: how-to
 ms.date: 07/10/2022
 
@@ -104,6 +108,7 @@ union <ADX table>, cluster(CL1).database(<workspace-name>).<table name>
 ### Join data from an Azure Data Explorer cluster in one tenant with an Azure Monitor resource in another
 
 Cross-tenant queries between the services aren't supported. You're signed in to a single tenant for running the query spanning both resources.
+Cross-tenant queries between the services aren't supported. You're signed in to a single tenant for running the query spanning both resources.
 
 If the Azure Data Explorer resource is in Tenant 'A' and Log Analytics workspace is in Tenant 'B', use one of the following two methods:
 
@@ -130,6 +135,14 @@ The following image depicts an example of querying a tabular function from the A
 To use the function, run the name in the Query window.
 
   :::image type="content" source="media/query-monitor-data/function-query.png" alt-text="Screenshot showing query a tabular function from Azure Data Explorer web U I." lightbox="media/query-monitor-data/function-query.png":::
+
+## Limitations
+
+* Cross-service queries support only ".show" functions. This capability enables cross-cluster queries to reference an Azure Monitor, Azure Data Explorer, or Azure Resource Graph tabular function directly. The following commands are supported with the cross-service query:
+.show functions
+.show function {FunctionName}
+.show database {DatabaseName} schema as json
+* Private Link (private endpoints) and IP restrictions don't support cross-service queries.
 
 ## Additional syntax examples
 
