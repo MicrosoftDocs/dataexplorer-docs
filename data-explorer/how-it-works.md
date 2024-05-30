@@ -74,3 +74,4 @@ Azure Data Explorer uses distributed data query technology intended for fast ad 
 ## Related content
 
 * [Create an Azure Data Explorer cluster and database](create-cluster-and-database.md)
+* [Azure Data Explorer white paper](https://aka.ms/adx.techwhitepaper)

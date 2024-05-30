@@ -3,7 +3,7 @@ title:  Export data to SQL
 description: This article describes Export data to SQL in Azure Data Explorer.
 ms.reviewer: orspodek
 ms.topic: reference
-ms.date: 06/20/2023
+ms.date: 05/30/2024
 ---
 # Export data to SQL
 
@@ -46,6 +46,9 @@ The supported authentication methods for exporting data to SQL are [Microsoft En
 
 * Existing table: table UPDATE and INSERT
 * New table: CREATE, UPDATE, and INSERT
+
+> [!NOTE]
+> Where possible, the preferred method of authentication is Microsoft Entra integrated (impersonation) authentication.
 
 ## Limitations and restrictions
 

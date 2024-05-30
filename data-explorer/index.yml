@@ -22,6 +22,8 @@ landingContent:
         links:
           - text: What is Azure Data Explorer?
             url: data-explorer-overview.md
+          - text: How Azure Data Explorer works
+            url: how-it-works.md
       - linkListType: get-started
         links:
           - text: Start for free
