@@ -3,7 +3,7 @@ title: Update policy overview
 description: Learn how to trigger an update policy to add data to a source table.
 ms.reviewer: orspodek
 ms.topic: reference
-ms.date: 05/20/2024
+ms.date: 05/31/2024
 ---
 # Update policy overview
 
@@ -21,6 +21,7 @@ An update policy is subject to the same restrictions and best practices as regul
 >
 > * The source and target table must be in the same database.
 > * The update policy function schema and the target table schema must match in their column names, types, and order.
+> * The update policy function can reference tables in other databases.  For this, the update policy must be defined with `ManagedIdentity` and the managed identity must have `viewer` [role](security-roles.md) on the referenced tables.
 
 Ingesting formatted data improves performance, and CSV is preferred because of it's a well-defined format. Sometimes, however, you have no control over the format of the data, or you want to enrich ingested data, for example, by joining records with a static dimension table in your database.
 
