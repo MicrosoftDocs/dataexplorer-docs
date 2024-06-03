@@ -1,14 +1,11 @@
 ---
-title: graph-to-table operator (Preview)
+title: graph-to-table operator
 description: Learn how to use the graph-to-table operator to export nodes or edges from a graph to tables.
 ms.reviewer: alexans
 ms.topic: reference
 ms.date: 08/30/2023
 ---
-# graph-to-table operator (Preview)
-
-> [!WARNING]
-> This feature is currently in preview and might be subject to change. The semantics and syntax of the graph feature might change before they are released as generally available.
+# graph-to-table operator
 
 The `graph-to-table` operator exports nodes or edges from a graph to tables.
 
@@ -192,4 +189,3 @@ E
 
 * [Graph operators](graph-operators.md)
 * [make-graph operator](make-graph-operator.md)
-* [graph-merge operator](graph-merge-operator.md)

@@ -53,3 +53,9 @@ print extract_json("$.name", json, typeof(string));
 | print_0 |
 |---|
 | John |
+
+## Related content
+
+* [extract function](extract-function.md)
+* [extract-all function](extract-all-function.md)
+* [parse operator](parse-operator.md)

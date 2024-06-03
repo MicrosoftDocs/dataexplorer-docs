@@ -116,3 +116,7 @@ datatable(ip1_string:string, ip2_string:string, prefix:long)
 |192.168.1.1/24|::ffff:c0a8:01ff|127|1|
 |::ffff:c0a8:0101|192.168.1.255|120|1|
 |::192.168.1.1/30|192.168.1.255/24|127|1|
+
+## Related content
+
+* Overview of [IPv4/IPv6 functions](scalar-functions.md#ipv4ipv6-functions)

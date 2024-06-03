@@ -109,7 +109,7 @@ Welcome to what's new in Azure Data Explorer. This article details new and signi
 
 | Article title | Description |
 |--|--|
-|- [Graph operators (Preview)](kusto/query/graph-operators.md) <br/> - [graph-match operator (Preview)](kusto/query/graph-match-operator.md) <br/> - [graph-merge operator (Preview)](kusto/query/graph-merge-operator.md) <br/> - [graph-to-table operator (Preview)](kusto/query/graph-to-table-operator.md) <br/> - [make-graph operator (Preview)](kusto/query/make-graph-operator.md) | New articles. Describes how to use graph operators. |
+|- [Graph operators (Preview)](kusto/query/graph-operators.md) <br/> - [graph-match operator (Preview)](kusto/query/graph-match-operator.md) <br/> - [graph-to-table operator (Preview)](kusto/query/graph-to-table-operator.md) <br/> - [make-graph operator (Preview)](kusto/query/make-graph-operator.md) | New articles. Describes how to use graph operators. |
 | [Plotly (preview)](kusto/query/visualization-plotly.md) | New article. Describes how to visualize data using the Plotly graphics library.|
 
 ## August 2023
@@ -208,7 +208,7 @@ Welcome to what's new in Azure Data Explorer. This article details new and signi
 |--|--|
 |- [Azure Data Explorer web UI query overview](web-ui-query-overview.md) <br/> - [Add a cluster connection in the Azure Data Explorer web UI](add-cluster-connection.md) <br/> - [Write Kusto Query Language queries in the Azure Data Explorer web UI](web-ui-kql.md) <br/> - [Share queries from Azure Data Explorer web UI](web-share-queries.md)| New articles. Describes how to use the Azure Data Explorer web UI to interact with your data.|
 |[Ingest data with the NLog sink into Azure Data Explorer](nlog-sink.md)| New article. Describes how to use the Azure Data Explorer NLog connector to ingest data into your cluster.|
-|[How to architect a multi-tenant solution with Azure Data Explorer](multi-tenant.md)| New article. Describes how to architect a multi-tenant solution in Azure Data Explorer.|
+|[How to architect a multitenant solution with Azure Data Explorer](multi-tenant.md)| New article. Describes how to architect a multitenant solution in Azure Data Explorer.|
 |[Create an Event Hubs data connection for Azure Data Explorer](create-event-hubs-connection.md)| Updated article. Integration from Azure Event Hubs page added.|
 |[Install the Azure Data Explorer Kusto emulator](kusto-emulator-install.md)| Updated article. Describes how to install the Kusto emulator using a Linux Docker container image.|
 |[Customize Azure Data Explorer dashboard visuals](dashboard-customize-visuals.md)| Updated article. Funnel chart visualization added.|

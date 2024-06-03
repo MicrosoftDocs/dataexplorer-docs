@@ -3,7 +3,7 @@ title:  geo_polygon_centroid()
 description: Learn how to use the geo_polygon_centroid() function to calculate the centroid of a polygon or a multipolygon on Earth.
 ms.reviewer: mbrichko
 ms.topic: reference
-ms.date: 03/09/2023
+ms.date: 04/04/2024
 ---
 # geo_polygon_centroid()
 
@@ -23,7 +23,7 @@ Calculates the centroid of a polygon or a multipolygon on Earth.
 
 ## Returns
 
-The centroid coordinate values in [GeoJSON Format](https://tools.ietf.org/html/rfc7946) and of a [dynamic](./scalar-data-types/dynamic.md) data type. If polygon or multipolygon are invalid, the query will produce a null result.
+The centroid coordinate values in [GeoJSON Format](https://tools.ietf.org/html/rfc7946) and of a [dynamic](./scalar-data-types/dynamic.md) data type. If polygon or multipolygon are invalid, the query produces a null result.
 
 > [!NOTE]
 >
@@ -42,13 +42,13 @@ dynamic({"type": "MultiPolygon","coordinates": [[ LinearRingShell, LinearRingHol
 * LinearRingHole is optional and defined as a `clockwise` ordered array of coordinates [[lng_1,lat_1],...,[lng_i,lat_i],...,[lng_j,lat_j],...,[lng_1,lat_1]]. There can be any number of interior rings and holes.
 * LinearRing vertices must be distinct with at least three coordinates. The first coordinate must be equal to the last. At least four entries are required.
 * Coordinates [longitude, latitude] must be valid. Longitude must be a real number in the range [-180, +180] and latitude must be a real number in the range [-90, +90].
-* LinearRingShell encloses at most half of the sphere. LinearRing divides the sphere into two regions. The smaller of the two regions will be chosen.
-* LinearRing edge length must be less than 180 degrees. The shortest edge between the two vertices will be chosen.
-* LinearRings must not cross and must not share edges. LinearRings may share vertices.
+* LinearRingShell encloses at most half of the sphere. LinearRing divides the sphere into two regions and chooses the smaller of the two regions.
+* LinearRing edge length must be less than 180 degrees. The shortest edge between the two vertices is chosen.
+* LinearRings must not cross and must not share edges. LinearRings might share vertices.
 
 ## Examples
 
-The following example calculates NYC Central Park centroid.
+The following example calculates the Central Park centroid in New York City.
 
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA02PzYqDMBSF9/MUklUFpyS5uT9p6TvMXkREQ5HaRKwbKX33seMIXV049+NwviHMWRviPDVDPTbTLbtk3RKbe98enmpexqBO6icNyzVFVag2panrYzOHhzqVZfnNcPTOY+H0kT35qtgiFM2WyAIC2vdTtCYhDUjGW7NjYrXxzjoH4uSvg8QisQWNzLxjDIZFaK1C8BvmEA0Q6vfZsc8dVfXKz1/j1Md/vdR3q9o1pHrcbOo9Pnzq578zKeEgEAEAAA==" target="_blank">Run the query</a>
@@ -64,7 +64,7 @@ print centroid = geo_polygon_centroid(central_park)
 |---|
 |{"type": "Point", "coordinates": [-73.965735689907618, 40.782550538057812]}|
 
-The following example calculates NYC Central Park centroid longitude.
+The following example calculates the Central Park centroid longitude.
 
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA02P3WqEMBBG732KkKtdsJK/mSS79B16LyKiQWxtEtLcyLbvXncl4NXAN2c+5qwuk9H5nIa1j0P6Iu9k2vzwvYyXB81bdPRGP8K6zcHTmo4hpGnxQ3Y/9Na27ZuWjVUWasUabdF29RGBYVogCgkSxHNpGEODTAJyK3jBjGDcKqGUNMq8OtAIQC0kA611wbTk2hjcq0DaA1MAXCKw5yjY+Y+u+7veq5gWn0n18gvLtLvNLvTx0OlLfDn7X6tfElP4dGMmq5/3k4I1J/mWdf/IA8G+OQEAAA==" target="_blank">Run the query</a>
@@ -82,7 +82,7 @@ centroid = geo_polygon_centroid(central_park)
 |---|
 |-73.9657356899076|
 
-The following example performs union of polygons in multipolygon and calculates centroid of the unified polygon.
+The following example performs union of polygons in multipolygon and calculates the centroid of the unified polygon.
 
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA4WRzWoCQQyA732KZU8KW8lkJn+WPkKh9yIiusiCnRFdD1L67o1ud+2tuQwk32S+TA5tXx3L4bov+Vy9Vrtr3nx229lX3V+Pbb2s3y6HvnsfgLqpt6Wcdl3e9O25Xn54PEtcWDJqEizE2FbNkCIFQWaMFAlvRQVgZYjEwTCMmCIES5hS1KT3HqxILBiBRGTEJAZRZW9F0QYsEYXIBLdjxP56rDw56qF7BH8BReIdEDILComYSGmSCSCE6pqEA+dQskCUWNgmzhjAzZkZAg/9wGdSvxvsIc3B7VRNDWmYjRjMAWKOPH3Bv3Ye3/OXp+Opy49drS+5K3m9bXN/Kt3OV7dvy/q3OqVnIz7/AcPyFDroAQAA" target="_blank">Run the query</a>
@@ -98,7 +98,7 @@ print polygons_union_centroid = geo_polygon_centroid(polygons)
 |---|
 |"type": "Point", "coordinates": [-73.968569587829577, 40.776310752555119]}|
 
-The following example visualizes NYC Central Park centroid on a map
+The following example visualizes the Central Park centroid on a map.
 
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA02PzYrDIBSF93kKcZVAphj1+tMy7zD7EIIYaaWpihWG0M67T9MQ6OrCuR+H882uIOtCyWYek8lX9I2mJZibt/UDlyU5fMQ/cV7OMeAW2xjz5IMp7o6Pfd9/SXbQXEPLyUFqoYd2i0ARSYWgDBjQ9akIEUoQBqLTtNsxRUmnOeWcKa7eHUJREJIyAlLKHZOsk0qJVxUwvWEcoGMCyHp27HPHMPw1pyplHwqq3n7RTy+3s4tj2nTGPa4//ZvqibILk8vobk0pLtuLyQX9+nJB9dWHteVmUvMPRtRI5jkBAAA=" target="_blank">Run the query</a>
@@ -110,9 +110,11 @@ centroid = geo_polygon_centroid(central_park)
 | render scatterchart with (kind = map)
 ```
 
-:::image type="content" source="media/geo-polygon-centroid-function/nyc-central-park-centroid.png" alt-text="Screenshot of N Y C Central park centroid.":::
+**Output**
 
-The following example returns True because of the invalid polygon.
+:::image type="content" source="media/geo-polygon-centroid-function/nyc-central-park-centroid.png" alt-text="Screenshot of New York City Central park centroid.":::
+
+The following example returns `true` because of the invalid polygon.
 
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA02KQQqAIBAAvyJ7UvCg117RXSRCJRZsV9QOEv29okungZkpFakLbHTkLLfES+E8NqYlJOqVMco4aN0xyBP6KAkmAfO3gIbAXCPS2lN7gnPOaOO1s0bbP1/r/aWUugEuNYE7bwAAAA==" target="_blank">Run the query</a>
@@ -125,4 +127,4 @@ print isnull(geo_polygon_centroid(dynamic({"type": "Polygon","coordinates": [[[0
 
 |print_0|
 |---|
-|True|
+|true|

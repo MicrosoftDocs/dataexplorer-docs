@@ -46,6 +46,10 @@ items:
     items:
       - name: Best practices for schema management
         href: management-best-practices.md
+      - name: Clusters
+        items:
+        - name: .execute cluster script command
+          href: execute-cluster-script.md
       - name: Databases
         href: databases.md
         items:
@@ -136,14 +140,14 @@ items:
                     href: external-table-mapping-show.md
               - name: .show external table artifacts command
                 href: show-external-table-artifacts.md
-          - name: SQL external tables
+          - name: Azure SQL external tables
             items:
-              - name: Create and alter SQL external tables
+              - name: Create and alter Azure SQL external tables
                 href: external-sql-tables.md
                 displayName: SQL Server, MySQL, PostgreSQL, Cosmos DB
-              - name: Query a SQL external table
+              - name: Query an Azure SQL external table
                 href: external-sql-tables-query.md
-              - name: Apply row-level security to SQL external tables
+              - name: Apply row-level security to Azure SQL external tables
                 displayName: RLS, SQL server
                 href: row-level-security-external-sql.md
           - name: .drop external table command

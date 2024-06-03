@@ -22,12 +22,16 @@ landingContent:
         links:
           - text: What is Azure Data Explorer?
             url: data-explorer-overview.md
+          - text: How Azure Data Explorer works
+            url: how-it-works.md
       - linkListType: get-started
         links:
           - text: Start for free
             url: start-for-free.md
           - text: Kusto Detective Agency
             url: https://detective.kusto.io/
+          - text: Find a partner
+            url: find-my-partner.md
       - linkListType: video
         links:
           - text: What is Azure Data Explorer? (19:47)
