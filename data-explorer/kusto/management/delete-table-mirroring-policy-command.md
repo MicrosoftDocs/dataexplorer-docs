@@ -12,6 +12,9 @@ zone_pivot_groups: kql-flavors-all
 ::: zone pivot="fabric"
 Delete a table's [mirroring policy](mirroring-policy.md).
 
+[!WARNING]
+> Deleting the table mirroring policy will permanently delete the delta table in OneLake.
+
 ## Permissions
 
 You must have at least [Table Admin](access-control/role-based-access-control.md) permissions to run this command.
@@ -34,6 +37,7 @@ The following command deletes the mirroring policy at the table level.
 
 ```kusto
 .delete table myTable policy mirroring
+```
 
 ::: zone-end
 

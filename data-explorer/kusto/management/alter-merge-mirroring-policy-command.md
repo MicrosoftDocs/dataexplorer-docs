@@ -43,7 +43,7 @@ You must have at least [Database Admin](../access-control/role-based-access-cont
 
 |Name|Type|Description|
 |--|--|--|
-|`IsEnabled`| `bool`| A Boolean value that determines whether the mirroring policy is enabled. Default is `true`. When the mirroring policy is disabled and set to `false`, the underlying mirroring data is retained in the database. |
+|`IsEnabled`| `bool`| A Boolean value that determines whether the mirroring policy is enabled. Default is `true`. When the mirroring policy is disabled and set to `false`, the underlying mirroring data is soft-deleted and retained in the database. |
 
 ## Examples
 
