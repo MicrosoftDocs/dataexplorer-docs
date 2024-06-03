@@ -2,18 +2,23 @@
 ms.topic: include
 ms.date: 02/18/2024
 ---
-[Apache Kafka](http://kafka.apache.org/documentation/) is a distributed streaming platform for building real-time streaming data pipelines that reliably move data between systems or applications. [Kafka Connect](https://docs.confluent.io/3.0.1/connect/intro.html#kafka-connect) is a tool for scalable and reliable streaming of data between Apache Kafka and other data systems. The [Kusto Kafka Sink](https://github.com/Azure/kafka-sink-azure-kusto/blob/master/README.md) serves as the connector from Kafka and doesn't require using code. Download the sink connector jar from the [Git repo](https://github.com/Azure/kafka-sink-azure-kusto/releases) or [Confluent Connector Hub](https://www.confluent.io/hub/microsoftcorporation/kafka-sink-azure-kusto).
+[Cribl stream](https://docs.cribl.io/stream/) collects and processes machine data and allows you to process machine data into a database for later analysis.
+<!-->
+[Kafka Connect](https://docs.confluent.io/3.0.1/connect/intro.html#kafka-connect) is a tool for scalable and reliable streaming of data between Apache Kafka and other data systems. The [Kusto Kafka Sink](https://github.com/Azure/kafka-sink-azure-kusto/blob/master/README.md) serves as the connector from Kafka and doesn't require using code. Download the sink connector jar from the [Git repo](https://github.com/Azure/kafka-sink-azure-kusto/releases) or [Confluent Connector Hub](https://www.confluent.io/hub/microsoftcorporation/kafka-sink-azure-kusto). -->
 
-This article shows how to ingest data with Kafka, using a self-contained Docker setup to simplify the Kafka cluster and Kafka connector cluster setup.
+This article shows how to ingest data with Cribl Stream, <!--using a self-contained Docker setup to simplify the Kafka cluster and Kafka connector cluster setup.-->
 
-For more information, see the connector [Git repo](https://github.com/Azure/kafka-sink-azure-kusto/blob/master/README.md) and [version specifics](https://github.com/Azure/kafka-sink-azure-kusto/blob/master/README.md#13-major-version-specifics).
+<!--For more information, see the connector [Git repo](https://github.com/Azure/kafka-sink-azure-kusto/blob/master/README.md) and [version specifics](https://github.com/Azure/kafka-sink-azure-kusto/blob/master/README.md#13-major-version-specifics).-->
 
 ## Prerequisites
 
 * An Azure subscription. Create a [free Azure account](https://azure.microsoft.com/free/).
 * An Azure Data Explorer [cluster and database](/azure/data-explorer/create-cluster-and-database) with the default cache and retention policies **or** a [KQL database in Microsoft Fabric](/fabric/real-time-analytics/create-database).
 * [Azure CLI](/cli/azure/install-azure-cli).
-* [Docker](https://docs.docker.com/get-docker/) and [Docker Compose](https://docs.docker.com/compose/install).
+<!--* [Docker](https://docs.docker.com/get-docker/) and [Docker Compose](https://docs.docker.com/compose/install).-->
+
+## Set up your environment
+In this section, you prepare your environment to use Cribl Stream.
 
 ## Create a Microsoft Entra service principal
 
@@ -22,6 +27,17 @@ The Microsoft Entra service principal can be created through the [Azure portal](
 This service principal will be the identity used by the connector to write data to your table in Kusto. You'll later grant permissions for this service principal to access Kusto resources.
 
 [!INCLUDE [entra-service-principal](../entra-service-principal.md)]
+
+Save your secret key or certificate to authenticate with Cribl Stream. 
+
+To create a client secret:  
+<!-- need accurate code -->
+```azurecli-interactive
+az ad app credential reset --id <client_id>
+```
+
+To download a certificate:
+<!-- NEED info-->
 
 ## Create a target table
 
@@ -52,9 +68,14 @@ This service principal will be the identity used by the connector to write data 
     .add database YOUR_DATABASE_NAME admins  ('aadapp=YOUR_APP_ID;YOUR_TENANT_ID') 'AAD App'
     ```
 
+> [!NOTE]
+> 
+
 ## Run the lab
 
-The following lab is designed to give you the experience of starting to create data, setting up the Kafka connector, and streaming this data to Azure Data Explorer with the connector. You can then look at the ingested data.
+The following lab is designed to give you the experience of starting to create data, setting up the Cribl Stream connector, and streaming this data to your kql query engine with the connector. You can then look at the ingested data.
+
+### Map the 
 
 ### Clone the git repo
 
@@ -102,6 +123,12 @@ This result of this search is:
     │   └── kafka.go
     └── main.go
  ```
+### Authenticate 
+You can authenticate with Cribl Stream using:
+
+*  Client secret method
+*  Client secret method
+*  Client secret method
 
 ### Review the files in the cloned repo
 
@@ -133,6 +160,8 @@ This file contains the Kusto sink properties file where you'll update specific c
 ```
 
 Replace the values for the following attributes as per your Azure Data Explorer setup: `aad.auth.authority`, `aad.auth.appid`, `aad.auth.appkey`, `kusto.tables.topics.mapping` (the database name), `kusto.ingestion.url`, and `kusto.query.url`.
+
+
 
 #### Connector - Dockerfile
 
