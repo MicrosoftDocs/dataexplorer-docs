@@ -28,7 +28,7 @@ This service principal will be the identity used by the connector to write data 
 
 [!INCLUDE [entra-service-principal](../entra-service-principal.md)]
 
-Save your secret key or certificate to authenticate with Cribl Stream. 
+Save your secret key or certificate to authenticate with Cribl Stream.
 
 To create a client secret:  
 <!-- need accurate code -->
@@ -41,16 +41,17 @@ To download a certificate:
 
 ## Create a target table
 
-1. From your query environment, create a table called `Storms` using the following command:
+1. From your query environment, create a table called `SyslogTable` using the following command:
 
     ```kusto
-    .create table Storms (StartTime: datetime, EndTime: datetime, EventId: int, State: string, EventType: string, Source: string)
+    .create table SyslogsTable (StartTime: datetime, EndTime: datetime, EventId: int, State: string, EventType: string, Source: string)
     ```
+<!-- need actual columns-->
 
-1. Create the corresponding table mapping `Storms_CSV_Mapping` for ingested data using the following command:
+1. Create the corresponding table mapping `SyslogMapping` for ingested data using the following command:
 
     ```kusto
-    .create table Storms ingestion csv mapping 'Storms_CSV_Mapping' '[{"Name":"StartTime","datatype":"datetime","Ordinal":0}, {"Name":"EndTime","datatype":"datetime","Ordinal":1},{"Name":"EventId","datatype":"int","Ordinal":2},{"Name":"State","datatype":"string","Ordinal":3},{"Name":"EventType","datatype":"string","Ordinal":4},{"Name":"Source","datatype":"string","Ordinal":5}]'
+    .create table SyslogTable ingestion json mapping "SyslogMapping"
     ```
 
 1. Create an [ingestion batching policy](/azure/data-explorer/kusto/management/batching-policy) on the table for configurable queued ingestion latency.
@@ -59,7 +60,7 @@ To download a certificate:
     > The ingestion batching policy is a performance optimizer and includes three parameters. The first condition satisfied triggers ingestion into the Azure Data Explorer table.
 
     ```kusto
-    .alter table Storms policy ingestionbatching @'{"MaximumBatchingTimeSpan":"00:00:15", "MaximumNumberOfItems": 100, "MaximumRawDataSizeMB": 300}'
+    .alter table SyslogMapping policy ingestionbatching @'{"MaximumBatchingTimeSpan":"00:00:15", "MaximumNumberOfItems": 100, "MaximumRawDataSizeMB": 300}'
     ```
 
 1. Use the service principal from [Create a Microsoft Entra service principal](#create-a-microsoft-entra-service-principal) to grant permission to work with the database.
@@ -71,58 +72,15 @@ To download a certificate:
 > [!NOTE]
 > 
 
+## Connect a KQL database to Cribl Stream
+
+
 ## Run the lab
 
 The following lab is designed to give you the experience of starting to create data, setting up the Cribl Stream connector, and streaming this data to your kql query engine with the connector. You can then look at the ingested data.
 
 ### Map the 
 
-### Clone the git repo
-
-Clone the lab's git [repo](https://github.com/Azure/azure-kusto-labs).
-
-1. Create a local directory on your machine.
-
-    ```
-    mkdir ~/kafka-kusto-hol
-    cd ~/kafka-kusto-hol
-    ```
-
-1. Clone the repo.
-
-    ```shell
-    cd ~/kafka-kusto-hol
-    git clone https://github.com/Azure/azure-kusto-labs
-    cd azure-kusto-labs/kafka-integration/dockerized-quickstart
-    ```
-
-#### Contents of the cloned repo
-
-Run the following command to list the contents of the cloned repo:
-
-```
-cd ~/kafka-kusto-hol/azure-kusto-labs/kafka-integration/dockerized-quickstart
-tree
-```
-
-This result of this search is:
-
-```
-├── README.md
-├── adx-query.png
-├── adx-sink-config.json
-├── connector
-│   └── Dockerfile
-├── docker-compose.yaml
-└── storm-events-producer
-    ├── Dockerfile
-    ├── StormEvents.csv
-    ├── go.mod
-    ├── go.sum
-    ├── kafka
-    │   └── kafka.go
-    └── main.go
- ```
 ### Authenticate 
 You can authenticate with Cribl Stream using:
 
@@ -130,139 +88,7 @@ You can authenticate with Cribl Stream using:
 *  Client secret method
 *  Client secret method
 
-### Review the files in the cloned repo
 
-The following sections explain the important parts of the files in the file tree above.
-
-#### adx-sink-config.json
-
-This file contains the Kusto sink properties file where you'll update specific configuration details:
-
-```json
-{
-    "name": "storm",
-    "config": {
-        "connector.class": "com.microsoft.azure.kusto.kafka.connect.sink.KustoSinkConnector",
-        "flush.size.bytes": 10000,
-        "flush.interval.ms": 10000,
-        "tasks.max": 1,
-        "topics": "storm-events",
-        "kusto.tables.topics.mapping": "[{'topic': 'storm-events','db': '<enter database name>', 'table': 'Storms','format': 'csv', 'mapping':'Storms_CSV_Mapping'}]",
-        "aad.auth.authority": "<enter tenant ID>",
-        "aad.auth.appid": "<enter application ID>",
-        "aad.auth.appkey": "<enter client secret>",
-        "kusto.ingestion.url": "https://ingest-<name of cluster>.<region>.kusto.windows.net",
-        "kusto.query.url": "https://<name of cluster>.<region>.kusto.windows.net",
-        "key.converter": "org.apache.kafka.connect.storage.StringConverter",
-        "value.converter": "org.apache.kafka.connect.storage.StringConverter"
-    }
-}
-```
-
-Replace the values for the following attributes as per your Azure Data Explorer setup: `aad.auth.authority`, `aad.auth.appid`, `aad.auth.appkey`, `kusto.tables.topics.mapping` (the database name), `kusto.ingestion.url`, and `kusto.query.url`.
-
-
-
-#### Connector - Dockerfile
-
-This file has the commands to generate the docker image for the connector instance.  It includes the connector download from the git repo release directory.
-
-#### Storm-events-producer directory
-
-This directory has a Go program that reads a local "StormEvents.csv" file and publishes the data to a Kafka topic.
-
-#### docker-compose.yaml
-
-```yaml
-version: "2"
-services:
-  zookeeper:
-    image: debezium/zookeeper:1.2
-    ports:
-      - 2181:2181
-  kafka:
-    image: debezium/kafka:1.2
-    ports:
-      - 9092:9092
-    links:
-      - zookeeper
-    depends_on:
-      - zookeeper
-    environment:
-      - ZOOKEEPER_CONNECT=zookeeper:2181
-      - KAFKA_ADVERTISED_LISTENERS=PLAINTEXT://localhost:9092
-  kusto-connect:
-    build:
-      context: ./connector
-      args:
-        KUSTO_KAFKA_SINK_VERSION: 1.0.1
-    ports:
-      - 8083:8083
-    links:
-      - kafka
-    depends_on:
-      - kafka
-    environment:
-      - BOOTSTRAP_SERVERS=kafka:9092
-      - GROUP_ID=adx
-      - CONFIG_STORAGE_TOPIC=my_connect_configs
-      - OFFSET_STORAGE_TOPIC=my_connect_offsets
-      - STATUS_STORAGE_TOPIC=my_connect_statuses
-  events-producer:
-    build:
-      context: ./storm-events-producer
-    links:
-      - kafka
-    depends_on:
-      - kafka
-    environment:
-      - KAFKA_BOOTSTRAP_SERVER=kafka:9092
-      - KAFKA_TOPIC=storm-events
-      - SOURCE_FILE=StormEvents.csv
-```
-
-### Start the containers
-
-1. In a terminal, start the containers:
-
-    ```shell
-    docker-compose up
-    ```
-
-    The producer application will start sending events to the `storm-events` topic.
-    You should see logs similar to the following logs:
-
-    ```shell
-    ....
-    events-producer_1  | sent message to partition 0 offset 0
-    events-producer_1  | event  2007-01-01 00:00:00.0000000,2007-01-01 00:00:00.0000000,13208,NORTH CAROLINA,Thunderstorm Wind,Public
-    events-producer_1  |
-    events-producer_1  | sent message to partition 0 offset 1
-    events-producer_1  | event  2007-01-01 00:00:00.0000000,2007-01-01 05:00:00.0000000,23358,WISCONSIN,Winter Storm,COOP Observer
-    ....
-    ```
-
-1. To check the logs, run the following command in a separate terminal:
-
-    ```shell
-    docker-compose logs -f | grep kusto-connect
-    ```
-
-### Start the connector
-
-Use a Kafka Connect REST call to start the connector.
-
-1. In a separate terminal, launch the sink task with the following command:
-
-    ```shell
-    curl -X POST -H "Content-Type: application/json" --data @adx-sink-config.json http://localhost:8083/connectors
-    ```
-
-1. To check the status, run the following command in a separate terminal:
-
-    ```shell
-    curl http://localhost:8083/connectors/storm/status
-    ```
 
 The connector will start queueing ingestion processes to Azure Data Explorer.
 
@@ -292,7 +118,7 @@ The connector will start queueing ingestion processes to Azure Data Explorer.
 1. To see all the records, run the following [query](/azure/data-explorer/kusto/query/tutorials/learn-common-operators):
 
     ```kusto
-    Storms
+    Syslog
     ```
 
 1. Use `where` and `project` to filter specific data:
