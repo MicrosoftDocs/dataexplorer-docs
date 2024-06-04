@@ -12,10 +12,6 @@ zone_pivot_groups: kql-flavors-all
 ::: zone pivot="fabric"
 Display the table's [mirroring policy](mirroring-policy.md).
 
-## Permissions
-
-You must have at least Database User, Database Viewer, Database Monitor, or Database Admin permissions to run this command. For more information, see [role-based access control](access-control/role-based-access-control.md).
-
 ## Syntax
 
 `.show` `table` *TableName* `policy` `mirroring`

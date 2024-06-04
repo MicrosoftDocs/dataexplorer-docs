@@ -9,10 +9,6 @@ ms.date: 05/28/2024
 
 Returns the table's [mirroring policy](mirroring-policy.md) operations details related to the mirroring artifacts export. It helps track the operation and the artifacts exported.
 
-## Permissions
-
-You must have at least Database User, Database Viewer, Database Monitor, or Database Admin permissions to run this command. For more information, see [role-based access control](../access-control/role-based-access-control.md).
-
 ## Syntax
 
 `.show` `table` *TableName* `operations` `mirroring-exported-artifacts`

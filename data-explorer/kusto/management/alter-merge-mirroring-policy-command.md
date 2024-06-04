@@ -14,10 +14,6 @@ zone_pivot_groups: kql-flavors-all
 
 Changes the tables's [mirroring policy](mirroring-policy.md). The mirroring policy creates a logical copy of tables in your database in delta parquet format and allows you to partition your files to improve query speed. Each partition is represented as a separate column using the *PartitionName* listed in the *Partitions* list. This means there are more columns in the target than in your source table.
 
-## Permissions
-
-You must have at least [Database Admin](../access-control/role-based-access-control.md) permissions to run these commands.
-
 ## Syntax
 
 (`.alter` | `.alter-merge`) `table` *TableName* `policy mirroring`

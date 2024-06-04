@@ -9,10 +9,6 @@ ms.date: 05/28/2024
 
 Returns the table's [mirroring policy](mirroring-policy.md) operations table export failures. It helps you identify failures or issues related to your table's mirroring operations.
 
-## Permissions
-
-You must have at least Database User, Database Viewer, Database Monitor, or Database Admin permissions to run this command. For more information, see [role-based access control](../access-control/role-based-access-control.md).
-
 ## Syntax
 
 `.show` `table` *TableName* `operations` `mirroring-failures`

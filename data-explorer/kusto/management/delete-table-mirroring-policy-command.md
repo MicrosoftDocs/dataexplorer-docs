@@ -15,10 +15,6 @@ Delete a table's [mirroring policy](mirroring-policy.md).
 > [!WARNING]
 > Deleting the table mirroring policy will permanently delete the delta table in OneLake.
 
-## Permissions
-
-You must have at least [Table Admin](access-control/role-based-access-control.md) permissions to run this command.
-
 ## Syntax
 
 `.delete` `table` *TableName* `policy` `mirroring`
