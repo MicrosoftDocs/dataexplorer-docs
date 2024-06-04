@@ -3,7 +3,7 @@ title: Ingest from event hub - Azure Data Explorer
 description: This article describes how to ingest data from Azure Event Hubs into Azure Data Explorer.
 ms.reviewer: orspodek
 ms.topic: how-to
-ms.date: 05/08/2023
+ms.date: 06/04/2024
 ---
 # Azure Event Hubs data connection
 
@@ -13,16 +13,26 @@ The Event Hubs ingestion pipeline transfers events to Azure Data Explorer in sev
 
 For general information about data ingestion in Azure Data Explorer, see [Azure Data Explorer data ingestion overview](ingest-data-overview.md).
 
-[!INCLUDE [data-connection-auth](includes/data-connection-auth.md)]
+## Azure Data Explorer data connection authentication mechanisms
 
-* So that the MI can fetch data from Azure Event Hubs, it should have at least [Azure Event Hubs Data Receiver](/azure/role-based-access-control/built-in-roles#azure-event-hubs-data-receiver).
+* [Managed Identity](../managed-identities-overview.md) based data connection (recommended): Using a managed identity-based data connection is the most secure way to connect to data sources. It provides full control over the ability to fetch data from a data source.
+Setup of a data connection using managed identity requires the following steps:
+  1. [Add a managed identity to your cluster](../configure-managed-identities-cluster.md).
+  1. Grant permissions to the managed identity on the data source. To fetch data from Azure Event Hubs, the managed identity must have at least [Azure Event Hubs Data Receiver](/azure/role-based-access-control/built-in-roles#azure-event-hubs-data-receiver) permissions.
+  1. Set a [managed identity policy](../kusto/management/managed-identity-policy.md) on the target databases.
+  1. Create a data connection using the managed identity authentication to fetch data.
+
+    > [!CAUTION]
+    > If the managed identity permissions are removed from the data source, the data connection will no longer work and will be unable to fetch data from the data source.
+
+[!INCLUDE [data-connection-auth](includes/data-connection-auth.md)]
 
 ## Data format
 
 * Data is read from the event hub in form of [EventData](/dotnet/api/microsoft.servicebus.messaging.eventdata) objects.
 * See [supported formats](ingestion-supported-formats.md).
     > [!NOTE]
-    > 
+    >
     > * Ingestion from Event Hub doesn't support RAW format.
     > * [Azure Event Hub Schema Registry](/azure/event-hubs/schema-registry-overview) and schema-less Avro are not supported.
 
@@ -126,7 +136,7 @@ If you selected **Event system properties** in the **Data Source** section of th
 
 One way to consume Event Hub data is to [capture events through Azure Event Hubs in Azure Blob Storage or Azure Data Lake Storage](/azure/event-hubs/event-hubs-capture-overview). You can then ingest the capture files as they are written using an [Event Grid Data Connection in Azure Data Explorer](./ingest-data-event-grid-overview.md).
 
-The schema of the capture files is different from the schema of the original event sent to Event Hub. You should design the destination table schema with this difference in mind. 
+The schema of the capture files is different from the schema of the original event sent to Event Hub. You should design the destination table schema with this difference in mind.
 Specifically, the event payload is represented in the capture file as a byte array, and this array isn't automatically decoded by the Event Grid Azure Data Explorer data connection. For more specific information on the file schema for Event Hub Avro capture data, see [Exploring captured Avro files in Azure Event Hubs](/azure/event-hubs/explore-captured-avro-files).
 
 To correctly decode the event payload:
