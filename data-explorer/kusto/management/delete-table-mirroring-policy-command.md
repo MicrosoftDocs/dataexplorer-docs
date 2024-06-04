@@ -3,7 +3,7 @@ title: .delete table policy mirroring command
 description: Learn how to use the `.delete table policy mirroring` command to delete a table's  logical copy.
 ms.reviewer: sharmaanshul
 ms.topic: reference
-ms.date: 05/23/2024
+ms.date: 06/04/2024
 zone_pivot_group_filename: data-explorer/zone-pivot-groups.json
 zone_pivot_groups: kql-flavors-all
 ---
@@ -12,7 +12,7 @@ zone_pivot_groups: kql-flavors-all
 ::: zone pivot="fabric"
 Delete a table's [mirroring policy](mirroring-policy.md).
 
-[!WARNING]
+> [!WARNING]
 > Deleting the table mirroring policy will permanently delete the delta table in OneLake.
 
 ## Permissions
