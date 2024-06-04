@@ -15,11 +15,11 @@ For general information about data ingestion in Azure Data Explorer, see [Azure 
 
 ## Azure Data Explorer data connection authentication mechanisms
 
-* [Managed Identity](../managed-identities-overview.md) based data connection (recommended): Using a managed identity-based data connection is the most secure way to connect to data sources. It provides full control over the ability to fetch data from a data source.
+* [Managed Identity](managed-identities-overview.md) based data connection (recommended): Using a managed identity-based data connection is the most secure way to connect to data sources. It provides full control over the ability to fetch data from a data source.
 Setup of a data connection using managed identity requires the following steps:
-  1. [Add a managed identity to your cluster](../configure-managed-identities-cluster.md).
+  1. [Add a managed identity to your cluster](configure-managed-identities-cluster.md).
   1. Grant permissions to the managed identity on the data source. To fetch data from Azure Event Hubs, the managed identity must have at least [Azure Event Hubs Data Receiver](/azure/role-based-access-control/built-in-roles#azure-event-hubs-data-receiver) permissions.
-  1. Set a [managed identity policy](../kusto/management/managed-identity-policy.md) on the target databases.
+  1. Set a [managed identity policy](kusto/management/managed-identity-policy.md) on the target databases.
   1. Create a data connection using the managed identity authentication to fetch data.
 
     > [!CAUTION]
