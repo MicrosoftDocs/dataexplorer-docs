@@ -32,13 +32,13 @@ In this article, you learn how to manually create the resources needed for Event
 ## Create an Event Grid subscription
 
 1. In the Azure portal, go to your storage account.
-1. In the left menu, select **Events** > **Event Subscription**.
+1. In the left menu, select **Events**.
 
-     :::image type="content" source="media/eventgrid/create-event-grid-subscription-1.png" alt-text="Screenshot of create Event Grid subscription.":::
+     :::image type="content" source="media/event-grid/create-event-grid-subscription.png" alt-text="Screenshot of the create Event Grid page.":::
 
 1. In the **Create Event Subscription** window within the **Basic** tab, provide the following values:
 
-    :::image type="content" source="media/eventgrid/create-event-grid-subscription-2.png" alt-text="Create event subscription values to enter.":::
+    :::image type="content" source="media/event-grid/subscription-details.png" alt-text="Screenshot of create Event Grid subscription page, , showing the basic tab with subscription details.":::
 
     |**Setting** | **Suggested value** | **Field description**|
     |---|---|---|
@@ -51,13 +51,13 @@ In this article, you learn how to manually create the resources needed for Event
 
 1. Under **ENDPOINT DETAILS**, select **Event Hubs**.
 
-    :::image type="content" source="media/eventgrid/endpoint-details.png" alt-text="Pick an event handler to receive your events - event hub - Azure Data Explorer.":::
+    :::image type="content" source="media/event-grid/endpoint-details.png" alt-text="Pick an event handler to receive your events - event hub - Azure Data Explorer.":::
 
 1. Select **Select an endpoint** and fill in the event hub you created, for example *test-hub*.
 
 1. Under **MANAGED IDENTITY FOR DELIVERY**, optionally select a managed identity type using the information in the following table.
 
-    :::image type="content" source="media/eventgrid/managed-identity-details.png" alt-text="Screenshot of the managed identity for delivery section, showing the select managed identity type option.":::
+    :::image type="content" source="media/event-grid/managed-identity-details.png" alt-text="Screenshot of the managed identity for delivery section, showing the select managed identity type option.":::
 
     | Type | Description |
     | -- | -- |
@@ -71,7 +71,7 @@ In this article, you learn how to manually create the resources needed for Event
 
     Use **Subject Filters** to track specific subjects events. Set the filters for the notifications as follows:
 
-    :::image type="content" source="media/eventgrid/filters-tab.png" alt-text="Screenshot of the filters tab, showing the filter event options.":::
+    :::image type="content" source="media/event-grid/filters-tab.png" alt-text="Screenshot of the filters tab, showing the filter event options.":::
 
    1. Select **Enable subject filtering**
    1. **Subject Begins With** field is the *literal* prefix of the subject. Since the pattern applied is *startswith*, it can span multiple containers, folders, or blobs. No wildcards are allowed.
@@ -87,7 +87,7 @@ In this article, you learn how to manually create the resources needed for Event
     For example, When using the [Azure Data Lake SDK](https://www.nuget.org/packages/Azure.Storage.Files.DataLake/) to upload a file, file creation triggers an Event Grid event with size 0. This event is discarded by Azure Data Explorer. File flushing triggers another event if the *Close* parameter is set to *true*. This event indicates that this is the final update and the file stream has been closed.
     To avoid unnecessary processing and empty file ingestion errors, filter out *CreateFile* events using the following filter:
 
-    :::image type="content" source="media/eventgrid/filter-out-create-file.png" alt-text="Screenshot showing how to filter out create file events.":::
+    :::image type="content" source="media/event-grid/filter-out-create-file.png" alt-text="Screenshot showing how to filter out create file events.":::
 
     |**Setting** | **Suggested value** | **Field description**|
     |---|---|---|
