@@ -105,7 +105,7 @@ Use the following guidelines to decide which method to use:
 
 ## Performance tips
 
-* Data ingestion is a resource-intensive operation that might affect concurrent activities on the cluster, including running queries. Avoid running too many ingestion commands at the same time.
+* Data ingestion is a resource-intensive operation that might affect concurrent activities on the cluster, including running queries.  We recommend that you avoid the following resource-intensive actions: running many `.update` commands at once, and intensive use of the *distributed* property.
 * Limit the append data to less than 1 GB per operation. If necessary, use multiple update commands.
 * Set the `distributed` flag to `true` if the amount of data being produced by the query is large, exceeds 1 GB, and doesn't require serialization. Then, multiple nodes can produce output in parallel. Don't use this flag when query results are small, since it might needlessly generate many small data shards.
 
