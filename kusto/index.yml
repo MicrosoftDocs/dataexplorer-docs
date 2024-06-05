@@ -1,0 +1,104 @@
+### YamlMime:Landing
+
+title: Kusto Query Language documentation
+summary: Kusto Query Language (KQL) is a powerful tool for exploring your data, uncovering patterns, identifying anomalies and outliers, creating statistical models, and more. KQL is a versatile language that allows you to query structured, semi-structured, and unstructured data effectively. The language is expressive and straightforward, making it easy to read and understand the intent of queries, and is optimized for a smooth authoring experience.
+
+metadata:
+  title: Kusto Query Language documentation
+  description: Kusto Query Language (KQL) is a dynamic and intuitive tool for querying all types of data, designed for easy authoring and clear query comprehension.
+  ms.service: kusto
+  ms.topic: landing-page
+  author: shsagir
+  ms.author: shsagir
+  ms.date: 05/21/2024
+
+# linkListType: architecture | concept | deploy | download | get-started | how-to-guide | learn | overview | quickstart | reference | sample | tutorial | video | whats-new
+
+landingContent:
+  # Card
+  - title: About Kusto Query Language
+    linkLists:
+      - linkListType: overview
+        links:
+          - text: What is Kusto Query Language?
+            url: query/index.md
+          - text: Best practices for Kusto Query Language queries
+            url: query/best-practices.md
+      - linkListType: get-started
+        links:
+          - text: Quick reference guide
+            url: query/kql-quick-reference.md
+          - text: Kusto Query Language learning resources
+            url: query/kql-learning-resources.md
+          - text: Kusto Detective Agency
+            url: https://detective.kusto.io/
+
+  # Card
+  - title: Training
+    linkLists:
+      - linkListType: learn
+        links:
+          - text: "Free Pluralsight training: Azure Data Explorer"
+            url: https://www.pluralsight.com/partners/microsoft/azure-data-explorer
+          - text: "Training module: Introduction to Azure Data Explorer"
+            url: /training/modules/intro-to-azure-data-explorer/intro-to-azure-data-explorer/
+          - text: "Training module: Explore the fundamentals of data analysis using Kusto Query Language (KQL)"
+            url: /training/modules/explore-fundamentals-kql/
+          - text: "Training module: Write your first query with Kusto Query Language"
+            url: /training/modules/write-first-query-kusto-query-language/
+          - text: "Training module: Gain insights from your data by using Kusto Query Language"
+            url: /training/modules/gain-insights-data-kusto-query-language/
+          - text: "Training module: Multi-table queries using Kusto Query Language"
+            url: /training/modules/multi-table-queries-with-kusto-query-language/
+          - text: "Training module: Characterize an unfamiliar dataset with Azure Data Explorer"
+            url: /training/modules/characterize-data-azure-data-explorer/
+          - text: "Training module: Create dashboards in Azure Data Explorer"
+            url: /training/modules/create-dashboards-azure-data-explorer/
+          - text: "Learning path: Data analysis in Azure Data Explorer with Kusto Query Language"
+            url: /training/paths/data-analysis-data-explorer-kusto-query-language/
+
+  # Card
+  - title: Entities and data types
+    linkLists:
+      - linkListType: concept
+        links:
+          - text: Entity types
+            url: query/schema-entities/index.md
+          - text: Entity names
+            url: query/schema-entities/entity-names.md
+          - text: Entity references
+            url: query/schema-entities/entity-references.md
+          - text: Scalar data types
+            url: query/scalar-data-types/index.md
+          - text: Null values
+            url: query/scalar-data-types/null-values.md
+
+  # Card
+  - title: Statements and operators
+    linkLists:
+      - linkListType: concept
+        links:
+          - text: Statement types
+            url: query/statements.md
+          - text: Tabular operators
+            url: query/queries.md
+          - text: Graph operators
+            url: query/graph-operators.md
+
+  # Card
+  - title: Functions
+    linkLists:
+      - linkListType: concept
+        links:
+          - text: Function types
+            url: query/functions/index.md
+          - text: Scalar functions
+            url: query/scalar-functions.md
+          - text: Aggregation functions
+            url: query/aggregation-functions.md
+          - text: Geospatial clustering functions
+            url: query/geospatial-grid-systems.md
+          - text: Window functions
+            url: query/window-functions.md
+          - text: Functions library
+            url: functions-library/functions-library.md

@@ -57,8 +57,8 @@
     "overwrite": [],
     "externalReference": [],
     "globalMetadata": {
-      "searchScope": ["Azure", "Data Explorer", "Azure Data Explorer", "Kusto", "kusto"],
-      "breadcrumb_path": "/azure/data-explorer/breadcrumb/toc.json",
+      "searchScope": ["Kusto", "kusto"],
+      "breadcrumb_path": "/kusto/breadcrumb/toc.json",
       "brand": "azure",
       "uhfHeaderId": "azure",
       "feedback_system": "Standard",
@@ -67,13 +67,9 @@
       "feedback_help_link_type": "get-help-at-qna",
       "recommendations": true,
       "_op_documentIdPathDepotMapping": {
-        "./": {
-          "depot_name": "Azure.azure-documents",
-          "folder_relative_path_in_docset": "articles/data-explorer/"
-        },
         "./kusto": {
-          "depot_name": "MSDN.kustolang",
-          "folder_relative_path_in_docset": "docs/"
+          "depot_name": "Learn.kustolang",
+          "folder_relative_path_in_docset": "kusto/"
         }
       },
       "contributors_to_exclude": [
