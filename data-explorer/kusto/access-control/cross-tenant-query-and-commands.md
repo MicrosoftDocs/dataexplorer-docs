@@ -15,7 +15,7 @@ To set the `trustedExternalTenants` on the cluster, use [ARM Templates](/azure/t
 The following examples show how to define trusted tenants in the portal and with an API request.
 
 > [!NOTE]
-> The principal who will run queries or commands must also have a relevant database role. See also [role-based access control](../management/access-control/role-based-access-control.md). Validation of correct roles takes place after validation of trusted external tenants.
+> The principal who will run queries or commands must also have a relevant database role. See also [role-based access control](../access-control/role-based-access-control.md). Validation of correct roles takes place after validation of trusted external tenants.
 
 ## [Portal](#tab/portal)
 

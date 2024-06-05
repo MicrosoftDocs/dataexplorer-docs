@@ -211,7 +211,7 @@ Kusto.Explorer.exe c:\temp\script.kql uri=https://help.kusto.windows.net/Samples
 ## Manage databases, tables, or function authorized principals
 
 > [!IMPORTANT]
-> Only [admins](../management/access-control/role-based-access-control.md) can add or drop authorized principals in their own scope.
+> Only [admins](../access-control/role-based-access-control.md) can add or drop authorized principals in their own scope.
 
 1. To view the list of authorized principals, right-click the target entity in the [Connections panel](kusto-explorer.md#connections-tab), and select **Manage Database Authorized Principals**. (You can also select this option from the Management Menu.)
 
