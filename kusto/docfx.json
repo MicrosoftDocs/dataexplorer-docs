@@ -17,9 +17,17 @@
           "LICENSE",
           "LICENSE-CODE",
           "ThirdPartyNotices.md"
-        ]
+        ],
+        "src": "./",
+        "group": "gr-kusto"
       }
     ],
+    "groups": {
+      "gr-kusto": {
+        "moniker_range": "= azure-data-explorer || azure-monitor || azure-log-analytics",
+        "dest": "kusto"
+      }
+    },
     "resource": [
       {
         "files": [
@@ -29,6 +37,9 @@
           "**/*.jpeg",
           "**/*.gif"
         ],
+        "src": "./",
+        "group": "gr-kusto",
+        "dest": "kusto",
         "exclude": [
           "**/obj/**",
           "**/includes/**",
