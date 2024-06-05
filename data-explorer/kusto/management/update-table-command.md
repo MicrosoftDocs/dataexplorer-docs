@@ -3,7 +3,7 @@ title:  .update table command (preview)
 description: Learn how to use the .update table command to perform transactional data updates.
 ms.reviewer: vplauzon
 ms.topic: reference
-ms.date: 05/30/2024
+ms.date: 06/04/2024
 ---
 # .update table command (preview)
 
@@ -107,7 +107,7 @@ Use the following guidelines to decide which method to use:
 
 * Data ingestion is a resource-intensive operation that might affect concurrent activities on the cluster, including running queries.  We recommend that you avoid the following resource-intensive actions: running many `.update` commands at once, and intensive use of the *distributed* property.
 * Limit the append data to less than 1 GB per operation. If necessary, use multiple update commands.
-* Set the `distributed` flag to `true` if the amount of data being produced by the query is large, exceeds 1 GB, and doesn't require serialization. Then, multiple nodes can produce output in parallel. Don't use this flag when query results are small, since it might needlessly generate many small data shards.
+* Set the `distributed` flag to `true` only if the amount of data being produced by the query is large, exceeds 1 GB and doesn't require serialization:  multiple nodes can then produce output in parallel.  Don't use this flag when query results are small, since it might needlessly generate many small data shards.
 
 ## Examples -  Simplified syntax
 
