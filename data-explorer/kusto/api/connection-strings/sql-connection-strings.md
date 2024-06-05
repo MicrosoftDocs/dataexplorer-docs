@@ -3,7 +3,7 @@ title:  SQL external table connection strings
 description: This article describes how to connect and authenticate to SQL external tables in Azure Data Explorer.
 ms.reviewer: urishapira
 ms.topic: reference
-ms.date: 07/13/2023
+ms.date: 05/30/2024
 ---
 # Azure SQL external table connection strings
 
@@ -23,6 +23,9 @@ Regardless of the authentication method used, the principal must have the necess
 
 The following table shows the supported authentication methods for each type of database acting as the source for the external table.
 
+> [!NOTE]
+> Where possible, the preferred authentication method is managed identity.
+
 | Authentication method | SQL Server | PostgreSQL | MySQL | Cosmos DB |
 |--|--|--|--|
 | [Microsoft Entra integrated (impersonation)](#azure-ad-integrated-impersonation) | :heavy_check_mark: | :x: | :x: | :heavy_check_mark: |
@@ -33,7 +36,7 @@ The following table shows the supported authentication methods for each type of 
 
 ## Microsoft Entra integrated (impersonation)
 
-With this authentication method, the user or application authenticates via Microsoft Entra ID to Azure Data Explorer, and the same token is then used to access the SQL Server network endpoint. This method is supported for SQL Server and CosmosDB.
+With this authentication method, the user or application authenticates via Microsoft Entra ID to Azure Data Explorer, and the same token is then used to access the SQL Server network endpoint. This method is supported for SQL Server and Cosmos DB.
 
 To use Microsoft Entra integrated authentication (impersonation), add `;Authentication="Active Directory Integrated"` to the SQL connection string.
 
@@ -43,7 +46,7 @@ To use Microsoft Entra integrated authentication (impersonation), add `;Authenti
 
 ## Managed identity
 
-Azure Data Explorer makes requests on behalf of a managed identity and uses its identity to access resources. This method is supported for SQL Server and CosmosDB.
+Azure Data Explorer makes requests on behalf of a managed identity and uses its identity to access resources. This method is supported for SQL Server and Cosmos DB.
 
 For a system-assigned managed identity, append `;Authentication="Active Directory Managed Identity"` to the connection string. For a user-assigned managed identity, append `;Authentication="Active Directory Managed Identity";User Id={object_id}` to the connection string.
 
