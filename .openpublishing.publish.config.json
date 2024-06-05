@@ -36,7 +36,8 @@
         "RestApi": "Content",
         "ZonePivotGroups": "Toc"
       },
-      "build_entry_point": "docs"
+      "build_entry_point": "docs",
+      "template_folder": "_themes"
     }
   ],
   "notification_subscribers": [
