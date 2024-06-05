@@ -5,7 +5,7 @@ ms.reviewer: sharmaanshul
 ms.topic: reference
 ms.date: 05/28/2024
 ---
-# .Show table mirroring operations exported artifacts command
+# .show table mirroring operations exported artifacts command
 
 Returns the table's [mirroring policy](mirroring-policy.md) operations details related to the mirroring artifacts export. It helps track the operation and the artifacts exported.
 
