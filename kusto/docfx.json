@@ -66,8 +66,8 @@
       "recommendations": true,
       "_op_documentIdPathDepotMapping": {
         "./kusto": {
-          "depot_name": "MSDN.kustolang",
-          "folder_relative_path_in_docset": "docs/"
+          "depot_name": "Learn.kustolang",
+          "folder_relative_path_in_docset": "kusto/"
         }
       },
       "contributors_to_exclude": [
