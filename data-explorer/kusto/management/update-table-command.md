@@ -1,6 +1,6 @@
 ---
-title:  `.update` table command (preview)
-description: Learn how to use the `.update` table command to perform transactional data updates.
+title:  .update table command (preview)
+description: Learn how to use the update table command to perform transactional data updates.
 ms.reviewer: vplauzon
 ms.topic: reference
 ms.date: 06/04/2024
