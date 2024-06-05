@@ -1,6 +1,6 @@
 ---
-title:  .update table command (preview)
-description: Learn how to use the .update table command to perform transactional data updates.
+title:  `.update` table command (preview)
+description: Learn how to use the `.update` table command to perform transactional data updates.
 ms.reviewer: vplauzon
 ms.topic: reference
 ms.date: 06/04/2024
@@ -53,7 +53,7 @@ The expanded syntax offers the flexibility to define a query to delete rows and 
 
 ### Simplified syntax
 
-The simplified syntax requires an append query as well as a key. The key is a column in the table that represents unique values in the table. This column is used to define which rows should be deleted from the table. A join is performed between the original table and the append query, to identify rows that agree on their value with respect to this column.
+The simplified syntax requires an append query and a key. The key is a column in the table that represents unique values in the table. This column is used to define which rows should be deleted from the table. A join is performed between the original table and the append query, to identify rows that agree on their value with respect to this column.
 
 `.update` `table` *TableName* on *IDColumnName* [`with` `(` *propertyName* `=` *propertyValue* `)`] `<|` <br>
 *appendQuery*
