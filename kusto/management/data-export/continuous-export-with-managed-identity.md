@@ -22,7 +22,7 @@ In this article, you learn how to configure a system-assigned or user-assigned m
 ## Prerequisites
 
 * A cluster and database. [Create a cluster and database](../../../create-cluster-and-database.md).
-* [All Databases Admin](../access-control/role-based-access-control.md) permissions on the database.
+* [All Databases Admin](../../access-control/role-based-access-control.md) permissions on the database.
 
 ## Configure a managed identity
 
@@ -56,7 +56,7 @@ Select one of the following tabs to set up your preferred managed identity type.
     > [!NOTE]
     > To set the policy on a specific database, use `database <DatabaseName>` instead of `cluster`.
 
-1. Run the following command to grant the managed identity [Database Viewer](../access-control/role-based-access-control.md) permissions over all databases used for the continuous export, such as the database that contains the external table.
+1. Run the following command to grant the managed identity [Database Viewer](../../access-control/role-based-access-control.md) permissions over all databases used for the continuous export, such as the database that contains the external table.
 
     ```kusto
     .add database <DatabaseName> viewers ('aadapp=<objectId>;<tenantId>')
@@ -84,7 +84,7 @@ Select one of the following tabs to set up your preferred managed identity type.
     > [!NOTE]
     > To set the policy on a specific database, use `database <DatabaseName>` instead of `cluster`.
 
-1. Run the following command to grant the managed identity [Database Viewer](../access-control/role-based-access-control.md) permissions over all databases used for the continuous export, such as the database that contains the external table.
+1. Run the following command to grant the managed identity [Database Viewer](../../access-control/role-based-access-control.md) permissions over all databases used for the continuous export, such as the database that contains the external table.
 
     ```kusto
     .add database <DatabaseName> viewers ('aadapp=<objectId>')

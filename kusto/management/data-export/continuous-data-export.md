@@ -15,7 +15,7 @@ In some cases, you must use a managed identity to successfully configure a conti
 
 ## Permissions
 
-All continuous export commands require at least [Database Admin](../access-control/role-based-access-control.md) permissions.
+All continuous export commands require at least [Database Admin](../../access-control/role-based-access-control.md) permissions.
 
 ## Continuous export guidelines
 

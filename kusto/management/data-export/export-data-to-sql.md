@@ -11,7 +11,7 @@ Export data to SQL allows you to run a query and have its results sent to a tabl
 
 ## Permissions
 
-You must have at least [Table Admin](../access-control/role-based-access-control.md) permissions to run this command.
+You must have at least [Table Admin](../../access-control/role-based-access-control.md) permissions to run this command.
 
 ## Syntax
 

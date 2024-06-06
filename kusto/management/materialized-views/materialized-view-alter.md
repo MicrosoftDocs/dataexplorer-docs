@@ -14,7 +14,7 @@ Altering the [materialized view](materialized-view-overview.md) can be used for 
 
 ## Permissions
 
-You must have at least [Materialized View Admin](../access-control/role-based-access-control.md) permissions to run this command.
+You must have at least [Materialized View Admin](../../access-control/role-based-access-control.md) permissions to run this command.
 
 ## Syntax
 

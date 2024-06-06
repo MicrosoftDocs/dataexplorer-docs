@@ -11,7 +11,7 @@ Alters the *DocString* value associated to an existing materialized view to desc
 
 ## Permissions
 
-You must have at least [Materialized View Admin](../access-control/role-based-access-control.md) permissions to run this command.
+You must have at least [Materialized View Admin](../../access-control/role-based-access-control.md) permissions to run this command.
 
 ## Syntax
 
