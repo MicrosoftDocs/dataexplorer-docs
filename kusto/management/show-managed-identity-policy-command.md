@@ -15,7 +15,7 @@ To see the managed identity policy on the cluster, you must have AllDatabasesMon
 
 To see the managed identity policy on a database, you must have Database User, Database Viewer, or Database Monitor permissions.
 
-For more information, see [role-based access control](access-control/role-based-access-control.md).
+For more information, see [role-based access control](../access-control/role-based-access-control.md).
 
 ## Syntax
 

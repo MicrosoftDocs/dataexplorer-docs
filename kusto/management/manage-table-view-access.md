@@ -29,5 +29,5 @@ Create a [follower database](../../follower.md) and follow only the relevant tab
 
 ## Related content
 
-* Learn more about [role-based access control](access-control/role-based-access-control.md)
+* Learn more about [role-based access control](../access-control/role-based-access-control.md)
 * Use management commands to assign [security roles](security-roles.md)

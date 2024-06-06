@@ -16,7 +16,7 @@ In this article, you'll learn how to use management commands to [view existing s
 
 ## Permissions
 
-You must have at least [Database Admin](access-control/role-based-access-control.md) permissions to run these commands.
+You must have at least [Database Admin](../access-control/role-based-access-control.md) permissions to run these commands.
 
 ## Database level security roles
 

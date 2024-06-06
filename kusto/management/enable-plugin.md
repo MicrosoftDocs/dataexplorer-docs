@@ -14,7 +14,7 @@ Enables a plugin.
 
 ## Permissions
 
-You must have [AllDatabasesAdmin](access-control/role-based-access-control.md) permissions to run this command.
+You must have [AllDatabasesAdmin](../access-control/role-based-access-control.md) permissions to run this command.
 
 ## Syntax
 

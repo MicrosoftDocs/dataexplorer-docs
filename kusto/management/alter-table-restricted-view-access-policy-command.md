@@ -7,11 +7,11 @@ ms.date: 06/04/2023
 ---
 # .alter table policy restricted_view_access command
 
-Turn on or turn off the optional table [restricted view access policy](restricted-view-access-policy.md). When this policy is turned on for a table, data in the table can only be queried by principals who have an [UnrestrictedViewer](access-control/role-based-access-control.md) role in the database.
+Turn on or turn off the optional table [restricted view access policy](restricted-view-access-policy.md). When this policy is turned on for a table, data in the table can only be queried by principals who have an [UnrestrictedViewer](../access-control/role-based-access-control.md) role in the database.
 
 ## Permissions
 
-You must have at least [Table Admin](access-control/role-based-access-control.md) permissions to run this command.
+You must have at least [Table Admin](../access-control/role-based-access-control.md) permissions to run this command.
 
 ## Syntax
 

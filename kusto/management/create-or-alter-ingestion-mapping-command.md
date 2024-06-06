@@ -16,7 +16,7 @@ If the ingestion mapping doesn't exist, the command will create it. If the inges
 
 ## Permissions
 
-At least [Database Ingestor](access-control/role-based-access-control.md) permissions are required to create a database ingestion mapping, and at least [Table Ingestor](access-control/role-based-access-control.md) permissions are required to create a table ingestion mapping.
+At least [Database Ingestor](../access-control/role-based-access-control.md) permissions are required to create a database ingestion mapping, and at least [Table Ingestor](../access-control/role-based-access-control.md) permissions are required to create a table ingestion mapping.
 
 ## Syntax
 

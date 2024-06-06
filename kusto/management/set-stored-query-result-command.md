@@ -14,7 +14,7 @@ If a stored query result name already exists, `.set` fails. Instead, use `.set-o
 
 ## Permissions
 
-You must have [Database Viewer](access-control/role-based-access-control.md) permissions to run these commands.
+You must have [Database Viewer](../access-control/role-based-access-control.md) permissions to run these commands.
 
 ## Syntax
 

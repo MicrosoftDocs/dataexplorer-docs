@@ -18,7 +18,7 @@ In this article, you'll learn how to use management commands to [view existing a
 
 ## Permissions
 
-You must have Database Admin permissions or be a Function Admin on the specific function to run these commands. For more information, see [role-based access control](access-control/role-based-access-control.md).
+You must have Database Admin permissions or be a Function Admin on the specific function to run these commands. For more information, see [role-based access control](../access-control/role-based-access-control.md).
 
 ## Show existing admins
 

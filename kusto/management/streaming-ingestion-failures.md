@@ -18,7 +18,7 @@ This command returns a result set that includes aggregated streaming ingestion f
 
 ## Permissions
 
-If you have Database Admin or Database Monitor permissions, you see all failed operations. Otherwise, you only see operations that you created. For more information about permissions, see [role-based access control](access-control/role-based-access-control.md).
+If you have Database Admin or Database Monitor permissions, you see all failed operations. Otherwise, you only see operations that you created. For more information about permissions, see [role-based access control](../access-control/role-based-access-control.md).
 
 ## Syntax
 

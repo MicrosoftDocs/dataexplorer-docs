@@ -16,7 +16,7 @@ Use `.drop` `stored_query_results` `by user` *UserPrincipalName* to delete all a
 
 ## Permissions
 
-You must have [Database Viewer](access-control/role-based-access-control.md) permissions to delete stored query results in the database, and [Database Admin](access-control/role-based-access-control.md) permissions to delete stored query results created by specified user principals.
+You must have [Database Viewer](../access-control/role-based-access-control.md) permissions to delete stored query results in the database, and [Database Admin](../access-control/role-based-access-control.md) permissions to delete stored query results created by specified user principals.
 
 ## Syntax
 

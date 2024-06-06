@@ -12,7 +12,7 @@ To return only one specific function, see [.show function](#show-function).
 
 ## Permissions
 
-You must have at least Database User, Database Viewer, or Database Monitor to run these commands. For more information, see [role-based access control](access-control/role-based-access-control.md).
+You must have at least Database User, Database Viewer, or Database Monitor to run these commands. For more information, see [role-based access control](../access-control/role-based-access-control.md).
 
 ## .show functions
 

@@ -13,7 +13,7 @@ This command is relevant to any external table of any type. For an overview of e
 
 ## Permissions
 
-You must have at least Database User, Database Viewer, Database Monitor to run these commands. For more information, see [role-based access control](access-control/role-based-access-control.md).
+You must have at least Database User, Database Viewer, Database Monitor to run these commands. For more information, see [role-based access control](../access-control/role-based-access-control.md).
 
 ## Syntax
 

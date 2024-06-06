@@ -40,7 +40,7 @@ The following table describes the level of access granted for each role and show
 |`ingestors` | Ingest data to the object without access to query. | :heavy_check_mark:| :heavy_check_mark:||||
 |`monitors` | View metadata such as schemas, operations, and permissions.| :heavy_check_mark:|||||
 
-For a full description of the security roles at each scope, see [Kusto role-based access control](access-control/role-based-access-control.md).
+For a full description of the security roles at each scope, see [Kusto role-based access control](../access-control/role-based-access-control.md).
 
 > [!NOTE]
 > It isn't possible to assign the `viewer` role for only some tables in the database. For different approaches on how to grant a principal view access to a subset of tables, see [manage table view access](manage-table-view-access.md).
@@ -106,5 +106,5 @@ For details on how to modify your role assignments at the database and table lev
 
 ## Related content
 
-* [Kusto role-based access control](access-control/role-based-access-control.md)
+* [Kusto role-based access control](../access-control/role-based-access-control.md)
 * [Referencing security principals](access-control/referencing-security-principals.md)

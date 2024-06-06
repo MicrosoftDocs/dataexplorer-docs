@@ -12,7 +12,7 @@ Alter a workload group.
 
 ## Permissions
 
-You must have [Cluster AllDatabasesAdmin](access-control/role-based-access-control.md) permissions to run this command.
+You must have [Cluster AllDatabasesAdmin](../access-control/role-based-access-control.md) permissions to run this command.
 
 ## Syntax
 

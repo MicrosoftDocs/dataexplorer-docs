@@ -11,7 +11,7 @@ This article describes how to show all files that will be processed when queryin
 
 ## Permissions
 
-You must have [Database User](access-control/role-based-access-control.md) permissions to run this command.
+You must have [Database User](../access-control/role-based-access-control.md) permissions to run this command.
 
 ## Syntax
 

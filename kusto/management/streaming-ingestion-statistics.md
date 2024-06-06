@@ -15,7 +15,7 @@ This command returns a result set that includes aggregated statistics for the [s
 
 ## Permissions
 
-If you have Database Admin or Database Monitor permissions, you'll see all failed operations. Otherwise, you'll only see operations that you created. For more information about permissions, see [role-based access control](access-control/role-based-access-control.md).
+If you have Database Admin or Database Monitor permissions, you'll see all failed operations. Otherwise, you'll only see operations that you created. For more information about permissions, see [role-based access control](../access-control/role-based-access-control.md).
 
 ## Syntax
 

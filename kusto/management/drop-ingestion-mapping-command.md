@@ -11,7 +11,7 @@ Drops the ingestion mapping from a database or table.
 
 ## Permissions
 
-The command to drop a database ingestion mapping requires at least [Database Ingestor](access-control/role-based-access-control.md) permissions, and the command to drop a table ingestion mapping requires at least [Table Ingestor](access-control/role-based-access-control.md) permissions.
+The command to drop a database ingestion mapping requires at least [Database Ingestor](../access-control/role-based-access-control.md) permissions, and the command to drop a table ingestion mapping requires at least [Table Ingestor](../access-control/role-based-access-control.md) permissions.
 
 ## Syntax
 

@@ -15,7 +15,7 @@ Delete the table update policy. The [update policy](update-policy.md) simplifies
 
 ## Permissions
 
-You must have at least [Table Admin](access-control/role-based-access-control.md) permissions to run this command.
+You must have at least [Table Admin](../access-control/role-based-access-control.md) permissions to run this command.
 
 ## Syntax
 
