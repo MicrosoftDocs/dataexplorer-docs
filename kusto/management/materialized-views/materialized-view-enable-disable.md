@@ -15,7 +15,7 @@ Disables or enables the materialization process for a materialized view.
 
 ## Permissions
 
-You must have at least [Materialized View Admin](../access-control/role-based-access-control.md) to run these commands.
+You must have at least [Materialized View Admin](../../access-control/role-based-access-control.md) to run these commands.
 
 ## Syntax
 
