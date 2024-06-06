@@ -71,7 +71,7 @@ The following table is an example output from the `.show` `ingestion` `failures`
 
 ## Related content
 
-* [Data ingestion](../../ingest-data-overview.md)
+* [Data ingestion](/azure/data-explorer/ingest-data-overview.md)
 * [Ingestion of invalid data](../../ingest-invalid-data.md)
 * [Duplicate next ingestion failure](dup-next-failed-ingest.md)
 * [Kusto.Ingest ingestion status reporting](../api/netfx/kusto-ingest-client-status.md)

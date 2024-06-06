@@ -6,7 +6,7 @@ ms.date: 05/23/2024
 ## Ingestion properties
 
 > [!IMPORTANT]
-> * In queued ingestion [data is batched using Ingestion properties](../ingest-data-overview.md#continuous-data-ingestion). The more distinct ingestion mapping properties used, such as different ConstValue values, the more fragmented the ingestion becomes, which can lead to performance degradation.
+> * In queued ingestion [data is batched using Ingestion properties](/azure/data-explorer/ingest-data-overview.md#continuous-data-ingestion). The more distinct ingestion mapping properties used, such as different ConstValue values, the more fragmented the ingestion becomes, which can lead to performance degradation.
 
 The following table lists the properties supported by Azure Data Explorer, describes them, and provides examples:
 
@@ -23,5 +23,5 @@ The following table lists the properties supported by Azure Data Explorer, descr
 | `policy_ingestiontime` | A Boolean value that, if specified, describes whether to enable the [Ingestion Time Policy](../management/ingestion-time-policy.md) on a table that is created by this command. The default is `true`. | `with (policy_ingestiontime=false)` |
 | `recreate_schema` | A Boolean value that, if specified, describes whether the command may recreate the schema of the table. This property applies only to the `.set-or-replace` command. This property takes precedence over the `extend_schema` property if both are set. | `with (recreate_schema=true)` |
 | `tags` | A list of [tags](../management/extent-tags.md) to associate with the ingested data, formatted as a JSON string | `with (tags="['Tag1', 'Tag2']")` |
-| `validationPolicy` | A JSON string that indicates which validations to run during ingestion of data represented using CSV format. See [Data ingestion](../ingest-data-overview.md) for an explanation of the different options. | `with (validationPolicy='{"ValidationOptions":1, "ValidationImplications":1}')` (this is actually the default policy) |
+| `validationPolicy` | A JSON string that indicates which validations to run during ingestion of data represented using CSV format. See [Data ingestion](/azure/data-explorer/ingest-data-overview.md) for an explanation of the different options. | `with (validationPolicy='{"ValidationOptions":1, "ValidationImplications":1}')` (this is actually the default policy) |
 | `zipPattern` | Use this property when ingesting data from storage that has a ZIP archive. This is a string value indicating the regular expression to use when selecting which files in the ZIP archive to ingest.  All other files in the archive will be ignored. | `with (zipPattern="*.csv")` |

@@ -7,7 +7,7 @@ ms.date: 05/14/2023
 ---
 # .delete table policy ingestionbatching command
 
-Remove the table's [ingestion batching policy](batching-policy.md) that defines data aggregation for batching. The ingestion batching policy applies to [queued ingestion](../../ingest-data-overview.md#continuous-data-ingestion).
+Remove the table's [ingestion batching policy](batching-policy.md) that defines data aggregation for batching. The ingestion batching policy applies to [queued ingestion](/azure/data-explorer/ingest-data-overview.md#continuous-data-ingestion).
 
 ## Permissions
 

@@ -260,7 +260,7 @@ CyberProof, a UST company, helps our clients transform their security to a cost-
 
 **Success stories**
 
-- [https://blog.cyberproof.com/blog/cutting-azure-sentinel-costs-with-microsoft-azure-data-explorer-adx](https://blog.cyberproof.com/blog/cutting-azure-sentinel-costs-with-microsoft-azure-data-explorer-adx)
+- [https://blog.cyberproof.com/blog/cutting-azure-sentinel-costs-with-microsoft-azure-data-explorer-adx](https://www.cyberproof.com/blog/cutting-microsoft-sentinel-costs-with-azure-data-explorer-adx)
 
 ## Data Addiction Pty Ltd
 
@@ -782,7 +782,7 @@ topic-based competence. Msg systems ag forms the core of the company group.
 
 **Additional information**
 
-- [msg systems ag website](https://www.msg.group)
+- [msg systems ag website](https://www.msg.group/de/)
 - [Microsoft partner site for msg systems ag](https://appsource.microsoft.com/marketplace/partner-dir/79513a1c-cd75-4d99-afa8-495af5f574c7)
 
 ## Niels Berglund

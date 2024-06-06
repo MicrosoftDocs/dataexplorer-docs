@@ -141,7 +141,7 @@ Kusto limits are reached with datasets that are too large, where you need to run
 
 ::: zone pivot="azuredataexplorer, fabric"
 
-To solve this problem, newly added data may be added to a temp table as `hll` or `tdigest` values using [`hll()`](hll-aggregation-function.md) when the required operation is `dcount` or [`tdigest()`](tdigest-aggregation-function.md) when the required operation is percentile using [`set/append`](../../ingest-data-overview.md) or [`update policy`](../management/update-policy.md). In this case, the intermediate results of `dcount` or `tdigest` are saved into another dataset, which should be smaller than the target large one.
+To solve this problem, newly added data may be added to a temp table as `hll` or `tdigest` values using [`hll()`](hll-aggregation-function.md) when the required operation is `dcount` or [`tdigest()`](tdigest-aggregation-function.md) when the required operation is percentile using [`set/append`](/azure/data-explorer/ingest-data-overview.md) or [`update policy`](../management/update-policy.md). In this case, the intermediate results of `dcount` or `tdigest` are saved into another dataset, which should be smaller than the target large one.
 
 ::: zone-end
 

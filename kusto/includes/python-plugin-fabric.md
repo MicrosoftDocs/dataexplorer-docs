@@ -48,7 +48,7 @@ To see the list of packages for the different Python images, see [Python package
 * Use the plugin in queries that are:
   * Defined as part of an [update policy](../management/update-policy.md), whose source table is ingested to using *non-streaming* ingestion.
   * Run as part of a command that [ingests from a query](../management/data-ingestion/ingest-from-query.md), such as `.set-or-append`.
-* You can't use the plugin in a query that is defined as part of an update policy, whose source table is ingested using [streaming ingestion](../ingest-data-streaming.md).
+* You can't use the plugin in a query that is defined as part of an update policy, whose source table is ingested using [streaming ingestion](/azure/data-explorer/ingest-data-streaming.md).
 
 ## Examples
 
