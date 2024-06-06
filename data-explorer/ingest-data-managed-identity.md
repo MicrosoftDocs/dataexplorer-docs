@@ -35,11 +35,18 @@ If your cluster already has the desired managed identity assigned to it, copy it
 1. Select **Access Control** and then select **+ Add** > **Add Role Assignment**.
 1. Grant the managed identity **Storage Blob Data Reader**, or **Storage Blob Data Contributor** if you intend to use the **DeleteSourceOnSuccess** source option, permissions to the storage account.
 
-> [!IMPORTANT]
+> [!NOTE]
 >
 > Granting **Owner** or **Contributor** permissions is not sufficient and will result in the ingestion failing.
 
 :::image type="content" source="media/ingest-data-managed-identity/managed-identity-permissions-on-system-assigned.png" alt-text="Screenshot of the add role assignment page, showing the system assigned role for ingestion using managed identities":::
+
+> [!IMPORTANT]
+>
+> Storage Service may return `Download Forbidden` error in case of network issues.
+> 
+> If you use Private Link to access Storage account, you may run into this error unexpectedly.
+> In such cases, if permissions were correctly granted, please verify the connectivity to your Storage account.
 
 ## Set the managed identity policy in Azure Data Explorer
 
