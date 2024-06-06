@@ -11,7 +11,7 @@ Deletes a table-level or database-level extent tags retention policy. For more i
 
 ## Permissions
 
-You must have at least [Database Admin](access-control/role-based-access-control.md) permissions to run this command.
+You must have at least [Database Admin](../access-control/role-based-access-control.md) permissions to run this command.
 
 ## Syntax
 

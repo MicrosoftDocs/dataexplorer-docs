@@ -13,7 +13,7 @@ When setting the policy for a database, it applies for all its tables, except ta
 
 ## Permissions
 
-You must have at least [Database Admin](access-control/role-based-access-control.md) permissions to run this command.
+You must have at least [Database Admin](../access-control/role-based-access-control.md) permissions to run this command.
 
 ## Defaults and limits
 

@@ -16,7 +16,7 @@ Use `.show` `stored_query_result` *storedQueryResultName* `schema` to show the s
 
 ## Permissions
 
-You must have [Database Viewer](access-control/role-based-access-control.md) permissions to run these commands.
+You must have [Database Viewer](../access-control/role-based-access-control.md) permissions to run these commands.
 
 ## Syntax
 

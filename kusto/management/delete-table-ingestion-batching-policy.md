@@ -11,7 +11,7 @@ Remove the table's [ingestion batching policy](batching-policy.md) that defines 
 
 ## Permissions
 
-You must have at least [Table Admin](access-control/role-based-access-control.md) permissions to run this command.
+You must have at least [Table Admin](../access-control/role-based-access-control.md) permissions to run this command.
 
 ## Syntax
 

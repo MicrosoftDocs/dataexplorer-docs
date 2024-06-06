@@ -11,7 +11,7 @@ Change's the table's [partitioning policy](partitioning-policy.md). The partitio
 
 ## Permissions
 
-You must have at least [Database Admin](access-control/role-based-access-control.md) permissions to run this command.
+You must have at least [Database Admin](../access-control/role-based-access-control.md) permissions to run this command.
 
 ## Syntax
 

@@ -11,7 +11,7 @@ Changes the cluster's caching policy. To speed up queries, data is cached on pro
 
 ## Permissions
 
-You must have [AllDatabasesAdmin](access-control/role-based-access-control.md) permissions to run this command.
+You must have [AllDatabasesAdmin](../access-control/role-based-access-control.md) permissions to run this command.
 
 ## Syntax
 

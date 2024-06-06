@@ -10,7 +10,7 @@ Displays capacity for data management operations. For more information, see [Cap
 
 ## Permissions
 
-You must have at least [Database User](access-control/role-based-access-control.md) permissions to run this command.
+You must have at least [Database User](../access-control/role-based-access-control.md) permissions to run this command.
 
 ## Syntax
 

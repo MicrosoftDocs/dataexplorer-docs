@@ -11,7 +11,7 @@ Delete a table's [ingestion time policy](ingestion-time-policy.md). The policy a
 
 ## Permissions
 
-You must have at least [Table Admin](access-control/role-based-access-control.md) permissions to run this command.
+You must have at least [Table Admin](../access-control/role-based-access-control.md) permissions to run this command.
 
 ## Syntax
 

@@ -11,7 +11,7 @@ Changes the materialized view's cache policy. To speed up queries, data is cache
 
 ## Permissions
 
-You must have at least [Table Admin](access-control/role-based-access-control.md) permissions to run this command.
+You must have at least [Table Admin](../access-control/role-based-access-control.md) permissions to run this command.
 
 ## Syntax
 

@@ -11,7 +11,7 @@ Displays statistics of data partitioning for all tables in the database that hav
 
 ## Permissions
 
-You must have at least Database User, Database Viewer, or Database Monitor permissions to run this command. For more information, see [role-based access control](access-control/role-based-access-control.md).
+You must have at least Database User, Database Viewer, or Database Monitor permissions to run this command. For more information, see [role-based access control](../access-control/role-based-access-control.md).
 
 ## Syntax
 

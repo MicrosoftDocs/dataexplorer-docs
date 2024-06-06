@@ -15,7 +15,7 @@ Executes a batch of management commands in the scope is a cluster.
 
 ## Permissions
 
-You must have at least [Cluster Admin](access-control/role-based-access-control.md) permissions to run this command.
+You must have at least [Cluster Admin](../access-control/role-based-access-control.md) permissions to run this command.
 
 ## Syntax
 

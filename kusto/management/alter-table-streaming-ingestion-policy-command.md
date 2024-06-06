@@ -17,7 +17,7 @@ To learn how to implement streaming ingestion, see [streaming policy](../managem
 
 ## Permissions
 
-You must have at least [Table Admin](access-control/role-based-access-control.md) permissions to run this command.
+You must have at least [Table Admin](../access-control/role-based-access-control.md) permissions to run this command.
 
 ## Syntax
 

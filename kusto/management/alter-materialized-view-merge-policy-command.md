@@ -11,7 +11,7 @@ Changes the materialized view's [merge policy](merge-policy.md). The merge polic
 
 ## Permissions
 
-You must have at least [Table Admin](access-control/role-based-access-control.md) permissions to run this command.
+You must have at least [Table Admin](../access-control/role-based-access-control.md) permissions to run this command.
 
 ## Syntax
 

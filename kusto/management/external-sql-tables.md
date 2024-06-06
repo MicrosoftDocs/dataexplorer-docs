@@ -24,9 +24,9 @@ Creates or alters an Azure SQL [external table](../query/schema-entities/externa
 
 ## Permissions
 
-To `.create` requires at least [Database User](access-control/role-based-access-control.md) permissions and to `.alter` requires at least [Table Admin](access-control/role-based-access-control.md) permissions.
+To `.create` requires at least [Database User](../access-control/role-based-access-control.md) permissions and to `.alter` requires at least [Table Admin](../access-control/role-based-access-control.md) permissions.
 
-To `.create-or-alter` an external table using managed identity authentication requires [AllDatabasesAdmin](access-control/role-based-access-control.md) permissions. Currently, this is only relevant for SQL Server external tables.
+To `.create-or-alter` an external table using managed identity authentication requires [AllDatabasesAdmin](../access-control/role-based-access-control.md) permissions. Currently, this is only relevant for SQL Server external tables.
 
 ## Syntax
 

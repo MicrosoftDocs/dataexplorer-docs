@@ -14,7 +14,7 @@ The command updates the ManagedIdentity policy of the cluster or the specified d
 
 ## Permissions
 
-You must have [AllDatabasesAdmin](access-control/role-based-access-control.md) permissions to run these commands.
+You must have [AllDatabasesAdmin](../access-control/role-based-access-control.md) permissions to run these commands.
 
 ## Syntax
 

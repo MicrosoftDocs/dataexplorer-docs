@@ -7,11 +7,11 @@ ms.date: 05/24/2023
 ---
 # .show table policy restricted_view_access command
 
-Display the optional table [restricted view access policy](restricted-view-access-policy.md). When this policy is enabled for a table, data in the table can only be queried by principals who have an [UnrestrictedViewer](access-control/role-based-access-control.md) role in the database. Deleting a policy is similar to disabling a policy.
+Display the optional table [restricted view access policy](restricted-view-access-policy.md). When this policy is enabled for a table, data in the table can only be queried by principals who have an [UnrestrictedViewer](../access-control/role-based-access-control.md) role in the database. Deleting a policy is similar to disabling a policy.
 
 ## Permissions
 
-You must have at least Database User, Database Viewer, or Database Monitor permissions to run these commands. For more information, see [role-based access control](access-control/role-based-access-control.md).
+You must have at least Database User, Database Viewer, or Database Monitor permissions to run these commands. For more information, see [role-based access control](../access-control/role-based-access-control.md).
 
 ## Syntax
 

@@ -11,7 +11,7 @@ Changes the cluster's [callout policy](callout-policy.md).
 
 ## Permissions
 
-You must have [Cluster AllDatabasesAdmin](access-control/role-based-access-control.md) permissions to run this command.
+You must have [Cluster AllDatabasesAdmin](../access-control/role-based-access-control.md) permissions to run this command.
 
 ## Syntax
 

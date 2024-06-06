@@ -11,7 +11,7 @@ Alters the cluster's request classification policy.
 
 ## Permissions
 
-You must have [Cluster AllDatabasesAdmin](access-control/role-based-access-control.md) permissions to run this command.
+You must have [Cluster AllDatabasesAdmin](../access-control/role-based-access-control.md) permissions to run this command.
 
 ## Syntax
 

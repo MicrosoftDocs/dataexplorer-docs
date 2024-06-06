@@ -11,7 +11,7 @@ Display a cluster's [capacity policy](capacity-policy.md). A capacity policy is 
 
 ## Permissions
 
-You must have at least [AllDatabasesMonitor](access-control/role-based-access-control.md) permissions to run this command.
+You must have at least [AllDatabasesMonitor](../access-control/role-based-access-control.md) permissions to run this command.
 
 ## Syntax
 
