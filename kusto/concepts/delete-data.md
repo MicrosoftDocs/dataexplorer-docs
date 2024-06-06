@@ -22,7 +22,7 @@ The following sections describe the different deletion methods.
 
 ## Delete all data in a table
 
-To delete all data in a table, use the [.clear table data](kusto/management/clear-table-data-command.md) command. This is the most efficient way to remove all data from a table.
+To delete all data in a table, use the [.clear table data](../management/clear-table-data-command.md) command. This is the most efficient way to remove all data from a table.
 
 Syntax:
 
@@ -32,7 +32,7 @@ Syntax:
 
 ## Delete data using a retention policy
 
-Automatically delete data based on a [retention policy](kusto/management/retention-policy.md). You can set the retention policy at the database or table level. There is no guarantee as to when the deletion occurs, but it will not be deleted before the retention period. This is a very efficient and convenient way to remove old data.
+Automatically delete data based on a [retention policy](../management/retention-policy.md). You can set the retention policy at the database or table level. There is no guarantee as to when the deletion occurs, but it will not be deleted before the retention period. This is a very efficient and convenient way to remove old data.
 
 Consider a database or table that is set for 90 days of retention. If only 60 days of data are needed, delete the older data as follows:
 
@@ -44,7 +44,7 @@ Consider a database or table that is set for 90 days of retention. If only 60 da
 
 ## Delete data by dropping extents
 
-[Extent (data shard)](kusto/management/extents-overview.md) is the internal structure where data is stored. Each extent can hold up to millions of records. Extents can be deleted individually or as a group using [drop extent(s) commands](./kusto/management/drop-extents.md).
+[Extent (data shard)](../management/extents-overview.md) is the internal structure where data is stored. Each extent can hold up to millions of records. Extents can be deleted individually or as a group using [drop extent(s) commands](./../management/drop-extents.md).
 
 ### Examples
 
@@ -70,8 +70,8 @@ Both methods prevent deleted records from being recovered, regardless of any ret
 
 ### Soft delete
 
-With [soft delete](kusto/concepts/data-soft-delete.md), data is not necessarily deleted from storage artifacts. This method marks all matching records as deleted, so that they will be filtered out in queries, and doesn't require significant system resources.
+With [soft delete](data-soft-delete.md), data is not necessarily deleted from storage artifacts. This method marks all matching records as deleted, so that they will be filtered out in queries, and doesn't require significant system resources.
 
 ### Purge
 
-With [purge](kusto/concepts/data-purge.md), extents that have one or more records to be deleted, are replaced with new extents in which those records do not exist. This deletion process isn't immediate, requires significant system resources, and can take a whole day to complete.
+With [purge](data-purge.md), extents that have one or more records to be deleted, are replaced with new extents in which those records do not exist. This deletion process isn't immediate, requires significant system resources, and can take a whole day to complete.
