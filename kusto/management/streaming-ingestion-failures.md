@@ -7,7 +7,7 @@ ms.date: 05/23/2023
 
 # .show streamingingestion failures command
 
-This command returns a result set that includes aggregated streaming ingestion failures that occur when [data is ingested using one of the streaming ingestion types](../../ingest-data-streaming.md#choose-the-appropriate-streaming-ingestion-type).
+This command returns a result set that includes aggregated streaming ingestion failures that occur when [data is ingested using one of the streaming ingestion types](/azure/data-explorer/ingest-data-streaming.md#choose-the-appropriate-streaming-ingestion-type).
 
 > [!NOTE]
 > Streaming ingestion failures are grouped into buckets of short periods of time and aggregated by database, table, principal, ingestion properties, failure kind, and error code.

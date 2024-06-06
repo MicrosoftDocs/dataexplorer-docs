@@ -6,7 +6,7 @@ ms.date: 05/23/2023
 ---
 # .show streamingingestion statistics command
 
-This command returns a result set that includes aggregated statistics for the [streaming ingestion](../../ingest-data-streaming.md#choose-the-appropriate-streaming-ingestion-type) to the cluster.
+This command returns a result set that includes aggregated statistics for the [streaming ingestion](/azure/data-explorer/ingest-data-streaming.md#choose-the-appropriate-streaming-ingestion-type) to the cluster.
 
 > [!NOTE]
 > The streaming ingestion statistics are grouped into buckets of short periods of time and aggregated by database, table, principal, ingestion status, and ingestion properties.

@@ -11,7 +11,7 @@ The sharding policy defines if and how [extents (data shards)](../management/ext
 
 > [!NOTE]
 >
-> * For low latency between ingestion and query, consider configuring [Streaming ingestion](../../ingest-data-streaming.md).
+> * For low latency between ingestion and query, consider configuring [Streaming ingestion](/azure/data-explorer/ingest-data-streaming.md).
 > * The policy applies to all operations that create new extents,
 > such as commands for data ingestion, and [extent merge operations](extents-overview.md)
 

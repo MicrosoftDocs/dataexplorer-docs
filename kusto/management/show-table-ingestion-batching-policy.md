@@ -7,7 +7,7 @@ ms.date: 05/24/2023
 ---
 # .show table policy ingestionbatching command
 
-Displays the table's [ingestion batching policy](batching-policy.md) that defines data aggregation for batching. The ingestion batching policy applies to [queued ingestion](../../ingest-data-overview.md#continuous-data-ingestion).
+Displays the table's [ingestion batching policy](batching-policy.md) that defines data aggregation for batching. The ingestion batching policy applies to [queued ingestion](/azure/data-explorer/ingest-data-overview.md#continuous-data-ingestion).
 
 ## Permissions
 

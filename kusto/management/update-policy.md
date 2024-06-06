@@ -35,7 +35,7 @@ If the update policy is defined on the target table, multiple queries can run on
   * It can't access external data or external tables.
   * It can't make callouts (by using a plugin).
 * The query doesn't have read access to tables that have the [RestrictedViewAccess policy](restricted-view-access-policy.md) enabled.
-* For update policy limitations in streaming ingestion, see [streaming ingestion limitations](../../ingest-data-streaming.md#limitations).
+* For update policy limitations in streaming ingestion, see [streaming ingestion limitations](/azure/data-explorer/ingest-data-streaming.md#limitations).
 
 > [!WARNING]
 > An incorrect query can prevent data ingestion into the source table. It is important to note that limitations, as well as the compatibility between the query results and the schema of the source and destination tables, can cause an incorrect query to prevent data ingestion into the source table.
