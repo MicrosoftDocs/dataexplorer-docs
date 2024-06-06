@@ -7,9 +7,8 @@ ms.date: 12/19/2018
 
 #Customer intent: I want to learn how to deal with duplicate data.
 ---
-# Handle duplicate data in Azure Data Explorer
 
-<!-- //TODO: Remove this and redirect to KQL repo in concepts folder-->
+# Handle duplicate data in Azure Data Explorer
 
 Devices sending data to the cloud maintain a local cache of the data. Depending on the data size, the local cache could be storing data for days or even months. You want to safeguard your analytical databases from malfunctioning devices that resend the cached data and cause data duplication in the analytical database. Duplicates can affect the number of records returned by a query. This is relevant when you need a precise count of records, such as counting events. This topic outlines best practices for handling duplicate data for these types of scenarios.
 

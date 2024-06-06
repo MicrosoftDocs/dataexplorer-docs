@@ -1,16 +1,14 @@
 ---
-title: Delete data from Azure Data Explorer
-description: This article describes delete scenarios in Azure Data Explorer, including purge, dropping extents and retention based deletes.
+title: Delete data
+description: This article describes delete scenarios, including purge, dropping extents and retention based deletes.
 ms.reviewer: avneraa
 ms.topic: how-to
 ms.date: 02/01/2022
 ---
 
-# Delete data from Azure Data Explorer
+# Delete data
 
-<!-- //TODO: Remove this and redirect to KQL repo in concepts folder-->
-
-Azure Data Explorer supports several ways to delete data from a table. Use the following information to help you choose which deletion method is best for your use case.
+There are several ways to delete data from a table. Use the following information to help you choose which deletion method is best for your use case.
 
 | Use case | Considerations | Method |
 |--|--|--|
