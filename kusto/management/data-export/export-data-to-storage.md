@@ -11,7 +11,7 @@ Executes a query and writes the first result set to an external cloud storage, s
 
 ## Permissions
 
-You must have at least [Database Viewer](../access-control/role-based-access-control.md) permissions to run this command.
+You must have at least [Database Viewer](../../access-control/role-based-access-control.md) permissions to run this command.
 
 ## Syntax
 

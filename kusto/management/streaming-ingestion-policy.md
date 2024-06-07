@@ -16,7 +16,7 @@ Streaming ingestion should be used for the following scenarios:
 
 If the stream of data into each table is high (over 4 GB per hour), consider using [queued ingestion](batching-policy.md).
 
-* To learn how to implement this feature and about its limitations, see [streaming ingestion](../../ingest-data-streaming.md).
+* To learn how to implement this feature and about its limitations, see [streaming ingestion](/azure/data-explorer/ingest-data-streaming.md).
 * For information about streaming ingestion management commands, see [Management commands used for managing the streaming ingestion policy](show-table-streaming-ingestion-policy-command.md).
 
 ## Streaming ingestion policy definition

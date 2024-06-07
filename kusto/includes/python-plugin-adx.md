@@ -51,7 +51,7 @@ To see the list of packages for the different Python images, see [Python package
 * Use the plugin in queries that are:
   * Defined as part of an [update policy](../management/update-policy.md), whose source table is ingested to using *non-streaming* ingestion.
   * Run as part of a command that [ingests from a query](../management/data-ingestion/ingest-from-query.md), such as `.set-or-append`.
-* You can't use the plugin in a query that is defined as part of an update policy, whose source table is ingested using [streaming ingestion](../ingest-data-streaming.md).
+* You can't use the plugin in a query that is defined as part of an update policy, whose source table is ingested using [streaming ingestion](/azure/data-explorer/ingest-data-streaming.md).
 
 ## Examples
 
@@ -166,7 +166,7 @@ Install packages as follows:
 
   1. Create a blob container to host the packages, preferably in the same place as your cluster. For example, `https://artifactswestus.blob.core.windows.net/python`, assuming your cluster is in West US.
   1. Alter the cluster's [callout policy](../management/callout-policy.md) to allow access to that location.
-        * This change requires [AllDatabasesAdmin](../management/access-control/role-based-access-control.md) permissions.
+        * This change requires [AllDatabasesAdmin](../access-control/role-based-access-control.md) permissions.
 
         * For example, to enable access to a blob located in `https://artifactswestus.blob.core.windows.net/python`, run the following command:
 

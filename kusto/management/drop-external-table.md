@@ -15,7 +15,7 @@ This command is relevant to any external table of any type. For an overview of e
 
 ## Permissions
 
-You must have at least [External Table Admin](access-control/role-based-access-control.md) permissions to run this command.
+You must have at least [External Table Admin](../access-control/role-based-access-control.md) permissions to run this command.
 
 ## Syntax  
 

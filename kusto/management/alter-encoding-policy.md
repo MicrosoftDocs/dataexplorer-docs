@@ -15,7 +15,7 @@ Alters the encoding policy. For an overview of the encoding policy, see [Encodin
 
 ## Permissions
 
-You must have at least [Table Admin](access-control/role-based-access-control.md) permissions to run this command.
+You must have at least [Table Admin](../access-control/role-based-access-control.md) permissions to run this command.
 
 ## Syntax
 

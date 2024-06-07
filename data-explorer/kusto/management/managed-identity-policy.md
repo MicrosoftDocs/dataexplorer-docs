@@ -13,7 +13,7 @@ This policy can be enabled at the cluster and database levels. The policy is add
 
 ## Permissions
 
-Creating or altering a managed identity policy requires [AllDatabasesAdmin](../management/access-control/role-based-access-control.md) permissions.
+Creating or altering a managed identity policy requires [AllDatabasesAdmin](../access-control/role-based-access-control.md) permissions.
 
 ## The ManagedIdentity policy object
 

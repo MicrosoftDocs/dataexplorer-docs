@@ -7,6 +7,8 @@ ms.date: 07/03/2022
 ---
 # Data purge
 
+<!-- //TODO ADX moniker -->
+
 [!INCLUDE [gdpr-intro-sentence](../includes/gdpr-intro-sentence.md)]
 
 The data platform supports the ability to delete individual records, by using Kusto `.purge` and related commands. You can also [purge an entire table](#purging-an-entire-table) or purge records in a [materialized view](../management/materialized-views/materialized-view-purge.md).
@@ -16,18 +18,18 @@ The data platform supports the ability to delete individual records, by using Ku
 
 ## Purge guidelines
 
-Carefully design your data schema and investigate relevant policies before storing personal data in Azure Data Explorer.
+Carefully design your data schema and investigate relevant policies before storing personal data.
 
 1. In a best-case scenario, the retention period on this data is sufficiently short and data is automatically deleted.
-1. If retention period usage isn't possible, isolate all data that is subject to privacy rules in a few Azure Data Explorer tables. Optimally, use just one table and link to it from all other tables. This isolation allows you to run the data [purge process](#purge-process) on a few tables holding sensitive data, and avoid all other tables.
+1. If retention period usage isn't possible, isolate all data that is subject to privacy rules in a few tables. Optimally, use just one table and link to it from all other tables. This isolation allows you to run the data [purge process](#purge-process) on a few tables holding sensitive data, and avoid all other tables.
 1. The caller should make every attempt to batch the execution of `.purge` commands to 1-2 commands per table per day. Don't issue multiple commands with unique user identity predicates. Instead, send a single command whose predicate includes all user identities that require purging.
 
 ## Purge process
 
-The process of selectively purging data from Azure Data Explorer happens in the following steps:
+The process of selectively purging data  happens in the following steps:
 
 1. Phase 1:
-   Give an input with an Azure Data Explorer table name and a per-record predicate, indicating which records to delete. Kusto scans the table looking to identify data extents that would participate in the data purge. The extents identified are those having one or more records for which the predicate returns true.
+   Give an input with a table name and a per-record predicate, indicating which records to delete. Kusto scans the table looking to identify data extents that would participate in the data purge. The extents identified are those having one or more records for which the predicate returns true.
 1. Phase 2: (Soft Delete)
    Replace each data extent in the table (identified in step (1)) with a reingested version. The reingested version shouldn't have the records for which the predicate returns true. If new data isn't being ingested into the table, then by the end of this phase, queries will no longer return data for which the predicate returns true. The duration of the purge soft delete phase depends on the following parameters:
 
@@ -51,7 +53,7 @@ Issuing a `.purge` command triggers this process, which takes a few days to comp
 
 * The `.purge` command is executed against the Data Management endpoint:
   `https://ingest-[YourClusterName].[region].kusto.windows.net`.
-   The command requires [database admin](../management/access-control/role-based-access-control.md)
+   The command requires [database admin](../access-control/role-based-access-control.md)
    permissions on the relevant databases.
 * Due to the purge process performance impact, and to guarantee that
    [purge guidelines](#purge-guidelines) have been followed, the caller is expected to modify the data schema so that
@@ -112,7 +114,7 @@ Purge command may be invoked in two ways for differing usage scenarios:
 **Syntax**
 
 > [!NOTE]
-> To connect to a cluster using the Azure Data Explorer web UI, see [Add clusters](../../web-query-data.md#add-clusters).
+> To connect to a cluster using the Azure Data Explorer web UI, see [Add clusters](/azure/data-explorer/web-query-data.md#add-clusters).
 
   ```kusto
      // Connect to the Data Management service - this command only works in Kusto.Explorer
@@ -256,7 +258,7 @@ Operations that were canceled successfully will have their status updated to `Ca
 > [!NOTE]
 > Purge operations can be tracked with the [show purges](#show-purges-command) command, executed against the Data Management endpoint https://ingest-[YourClusterName].[region].kusto.windows.net.
 
-Status = 'Completed' indicates successful completion of the first phase of the purge operation, that is records are soft-deleted and are no longer available for querying. Customers aren't expected to track and verify the second phase (hard-delete) completion. This phase is monitored internally by Azure Data Explorer.
+Status = 'Completed' indicates successful completion of the first phase of the purge operation, that is records are soft-deleted and are no longer available for querying. Customers aren't expected to track and verify the second phase (hard-delete) completion. This phase is monitored internally.
 
 ### Show purges command
 
@@ -277,7 +279,7 @@ Status = 'Completed' indicates successful completion of the first phase of the p
 |`DatabaseName`    |     Database name to filter results.    |Optional
 
 > [!NOTE]
-> Status will be provided only on databases for which the client has [Database Admin](../management/access-control/role-based-access-control.md) permissions.
+> Status will be provided only on databases for which the client has [Database Admin](../access-control/role-based-access-control.md) permissions.
 
 **Examples**
 
@@ -306,7 +308,7 @@ Status = 'Completed' indicates successful completion of the first phase of the p
   * `InProgress` - the purge operation is in-progress in the engine.
   * `Completed` - purge completed successfully.
   * `BadInput` - purge failed on bad input and won't be retried. This failure may be due to various issues such as a syntax error in the predicate, an illegal predicate for purge commands, a query that exceeds limits (for example, over 1M entities in an `externaldata` operator or over 64 MB of total expanded query size), and 404 or 403 errors for `externaldata` blobs.
-  * `Failed` - purge failed and won't be retried. This failure may happen if the operation was waiting in the queue for too long (over 14 days), due to a backlog of other purge operations or a number of failures that exceed the retry limit. The latter will raise an internal monitoring alert and will be investigated by the Azure Data Explorer team.
+  * `Failed` - purge failed and won't be retried. This failure may happen if the operation was waiting in the queue for too long (over 14 days), due to a backlog of other purge operations or a number of failures that exceed the retry limit. The latter will raise an internal monitoring alert and will be investigated by the team.
 * `StateDetails` - a description of the State.
 * `EngineStartTime` - the time the command was issued to the engine. If there's a large difference between this time and ScheduledTime, there's usually a significant backlog of purge operations and the cluster isn't keeping up with the pace.
 * `EngineDuration` - time of actual purge execution in the engine. If purge was retried several times, it's the sum of all the execution durations.
@@ -415,4 +417,4 @@ The output is the same as the '.show tables' command output (returned without th
 
 ## Related content
 
-* [Enable data purge on your Azure Data Explorer cluster](../../data-purge-portal.md)
+* [Enable data purge on your Azure Data Explorer cluster](/azure/data-explorer/data-purge-portal.md)

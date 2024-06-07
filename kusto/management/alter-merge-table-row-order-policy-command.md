@@ -11,7 +11,7 @@ Changes the table's [row order policy](row-order-policy.md). The row order polic
 
 ## Permissions
 
-You must have at least [Table Admin](access-control/role-based-access-control.md) permissions to run this command.
+You must have at least [Table Admin](../access-control/role-based-access-control.md) permissions to run this command.
 
 ## Syntax
 

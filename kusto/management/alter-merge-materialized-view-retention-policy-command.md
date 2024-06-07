@@ -11,7 +11,7 @@ Changes the materialized-view's [retention policy](retention-policy.md). The ret
 
 ## Permissions
 
-You must have at least [Database Admin](access-control/role-based-access-control.md) permissions to run this command.
+You must have at least [Database Admin](../access-control/role-based-access-control.md) permissions to run this command.
 
 ## Syntax
 

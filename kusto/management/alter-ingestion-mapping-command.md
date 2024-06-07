@@ -14,7 +14,7 @@ Alters an existing ingestion mapping that is associated with a specific table/da
 
 ## Permissions
 
-The command to alter database ingestion mapping requires at least [Database Ingestor](access-control/role-based-access-control.md) permissions, and the command to alter table ingestion mapping requires at least [Table Ingestor](access-control/role-based-access-control.md) permissions.
+The command to alter database ingestion mapping requires at least [Database Ingestor](../access-control/role-based-access-control.md) permissions, and the command to alter table ingestion mapping requires at least [Table Ingestor](../access-control/role-based-access-control.md) permissions.
 
 ## Syntax
 

@@ -11,7 +11,7 @@ Shows the encoding policy. For an overview of the encoding policy, see [Encoding
 
 ## Permissions
 
-You must have at least Database User, Database Viewer, or Database Monitor permissions to run these commands. For more information, see [role-based access control](access-control/role-based-access-control.md).
+You must have at least Database User, Database Viewer, or Database Monitor permissions to run these commands. For more information, see [role-based access control](../access-control/role-based-access-control.md).
 
 ## Syntax
 

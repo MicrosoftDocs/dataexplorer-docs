@@ -12,7 +12,7 @@ be included.
 
 ## Permissions
 
-You must have at least [AllDatabasesMonitor](access-control/role-based-access-control.md) permissions to run this command.
+You must have at least [AllDatabasesMonitor](../access-control/role-based-access-control.md) permissions to run this command.
 
 ## Syntax
 

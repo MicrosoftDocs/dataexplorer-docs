@@ -12,7 +12,7 @@ Clear all [cached query results](../query/query-results-cache.md) made against t
 
 ## Permissions
 
-You must have at least [Database Admin](access-control/role-based-access-control.md) permissions to run this command.
+You must have at least [Database Admin](../access-control/role-based-access-control.md) permissions to run this command.
 
 ## Syntax
 

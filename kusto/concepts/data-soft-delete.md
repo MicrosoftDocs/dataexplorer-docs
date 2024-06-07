@@ -7,7 +7,7 @@ ms.date: 05/17/2023
 ---
 # Soft delete overview
 
-As a data platform, Azure Data Explorer supports the ability to delete individual records. Record deletion is commonly achieved using one of the following methods:
+The ability to delete individual records is supported. Record deletion is commonly achieved using one of the following methods:
 
 * To delete records with a system guarantee that the storage artifacts containing these records are deleted as well, use [`.purge`](data-purge.md)
 * To delete records without such a guarantee, use `.delete` as described in this article - this command marks records as deleted but doesn't necessarily delete the data from storage artifacts. This deletion method is faster than purge. 
@@ -18,7 +18,7 @@ For information on how to use the command, see [Syntax](../management/soft-delet
 
 This deletion method should only be used for the unplanned deletion of individual records. For example, if you discover that an IoT device is reporting corrupt telemetry for some time, you should consider using this method to delete the corrupt data.
 
-If you need to frequently delete records for deduplication or updates, we recommend using [materialized views](../management/materialized-views/materialized-view-overview.md). See [choose between materialized views and soft delete for data deduplication](../../dealing-with-duplicates.md#choose-between-materialized-views-and-soft-delete-for-data-deduplication).
+If you need to frequently delete records for deduplication or updates, we recommend using [materialized views](../management/materialized-views/materialized-view-overview.md). See [choose between materialized views and soft delete for data deduplication](dealing-with-duplicates.md#choose-between-materialized-views-and-soft-delete-for-data-deduplication).
 
 ## Deletion process
 
@@ -39,7 +39,7 @@ The soft delete process is performed using the following steps:
 
 * Don't run soft delete and purge commands on the same table in parallel. First wait for one command to complete and only then run the other command.
 
-* Soft delete is executed against your cluster URI: `https://[YourClusterName].[region].kusto.windows.net`. The command requires [database admin](../management/access-control/role-based-access-control.md) permissions on the relevant database.
+* Soft delete is executed against your cluster URI: `https://[YourClusterName].[region].kusto.windows.net`. The command requires [database admin](../access-control/role-based-access-control.md) permissions on the relevant database.
 
 * Deleting records from a table that is a source table of a [materialized view](../management/materialized-views/materialized-view-overview.md), can have an impact on the materialized view. If records being deleted were not yet processed by the [materialization cycle](../management/materialized-views/materialized-view-overview.md#how-materialized-views-work), these records will be missing in the view, since they will never be processed. Similarly, the deletion will not have an impact on the materialized view if the records have already been processed.
 

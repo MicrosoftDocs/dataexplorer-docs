@@ -21,7 +21,7 @@ There are two ways to specify which tags should be removed from which extents:
 
 ## Permissions
 
-You must have at least [Table Admin](access-control/role-based-access-control.md) permissions for all involved source and destination tables.
+You must have at least [Table Admin](../access-control/role-based-access-control.md) permissions for all involved source and destination tables.
 
 ## Syntax
 

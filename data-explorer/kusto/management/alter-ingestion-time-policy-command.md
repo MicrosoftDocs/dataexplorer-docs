@@ -11,7 +11,7 @@ Turns on or turns off a table's [ingestion time policy](ingestion-time-policy.md
 
 ## Permissions
 
-You must have at least [Table Ingestor](../management/access-control/role-based-access-control.md) permissions to run this command.
+You must have at least [Table Ingestor](../access-control/role-based-access-control.md) permissions to run this command.
 
 ## Syntax
 

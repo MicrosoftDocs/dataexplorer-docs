@@ -7,7 +7,7 @@ ms.date: 05/23/2023
 
 # .show streamingingestion failures command
 
-This command returns a result set that includes aggregated streaming ingestion failures that occur when [data is ingested using one of the streaming ingestion types](../../ingest-data-streaming.md#choose-the-appropriate-streaming-ingestion-type).
+This command returns a result set that includes aggregated streaming ingestion failures that occur when [data is ingested using one of the streaming ingestion types](/azure/data-explorer/ingest-data-streaming.md#choose-the-appropriate-streaming-ingestion-type).
 
 > [!NOTE]
 > Streaming ingestion failures are grouped into buckets of short periods of time and aggregated by database, table, principal, ingestion properties, failure kind, and error code.
@@ -18,7 +18,7 @@ This command returns a result set that includes aggregated streaming ingestion f
 
 ## Permissions
 
-If you have Database Admin or Database Monitor permissions, you see all failed operations. Otherwise, you only see operations that you created. For more information about permissions, see [role-based access control](access-control/role-based-access-control.md).
+If you have Database Admin or Database Monitor permissions, you see all failed operations. Otherwise, you only see operations that you created. For more information about permissions, see [role-based access control](../access-control/role-based-access-control.md).
 
 ## Syntax
 
