@@ -24,7 +24,7 @@
     ],
     "groups": {
       "gr-kusto": {
-        "moniker_range": "= azure-data-explorer || azure-monitor || azure-log-analytics",
+        "moniker_range": "= microsoft-fabric || azure-data-explorer || azure-monitor || microsoft-sentinel || azure-resource-graph",
         "dest": "kusto"
       }
     },
