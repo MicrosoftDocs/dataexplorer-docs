@@ -17,7 +17,7 @@ Welcome to what's new in Azure Data Explorer. This article details new and signi
 
 |Article title | Description|
 |--|--|
-|- [.execute cluster script command](execute-cluster-script.md) | New article. Learn how to use the `.execute cluster script` command to execute a batch of management commands in the scope of a single cluster in Azure Data Explorer. |
+| -[.execute cluster script command](kusto/management/execute-cluster-script.md) | New article. Learn how to use the `.execute cluster script` command to execute a batch of management commands in the scope of a single cluster in Azure Data Explorer. |
 
 ## March 2024
 
@@ -25,7 +25,7 @@ Welcome to what's new in Azure Data Explorer. This article details new and signi
 
 |Article title | Description|
 |--|--|
-|- [Use Kusto cmdlets in Azure PowerShell](azure-powershell.md) | New article. Describes how to use Kusto cmdlets in Azure PowerShell in Azure Data Explorer. |
+|- [Use Kusto cmdlets in Azure PowerShell](kusto/api/powershell/azure-powershell.md) | New article. Describes how to use Kusto cmdlets in Azure PowerShell in Azure Data Explorer. |
 
 **General**
 
@@ -38,10 +38,10 @@ Welcome to what's new in Azure Data Explorer. This article details new and signi
 
 | Article title | Description|
 |--|--|
-| - [What are common scenarios for using table update policies](update-policy-common-scenarios.md) | New article. Learn about common scenarios that can use table update policies to perform complex transformations and save the results to destination tables. |
-| - [Tutorial: Route data using table update policies](update-policy-tutorial.md) | New Article. Learn how to use table update policies to perform complex transformations and save the results to one or more destination tables. |
-| - [Parquet mapping](parquet-mapping.md) | Updated article. Added parquet type conversions table to provide a mapping of Parquet field types, and the table column types they can be converted to. |
-| - [Update policy overview](management/update-policy.md) | Updated article. CAT transform with update policy |
+| - [What are common scenarios for using table update policies](kusto/management/update-policy-common-scenarios.md) | New article. Learn about common scenarios that can use table update policies to perform complex transformations and save the results to destination tables. |
+| - [Tutorial: Route data using table update policies](kusto/management/update-policy-tutorial.md) | New Article. Learn how to use table update policies to perform complex transformations and save the results to one or more destination tables. |
+| - [Parquet mapping](kusto/management/parquet-mapping.md) | Updated article. Added parquet type conversions table to provide a mapping of Parquet field types, and the table column types they can be converted to. |
+| - [Update policy overview](kusto/management/update-policy.md) | Updated article. CAT transform with update policy |
 
 ## February 2024
 
