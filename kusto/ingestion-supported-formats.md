@@ -16,7 +16,9 @@ Data ingestion is the process by which data is added to a table and is made avai
 > * CSV: http://csvlint.io/
 > * JSON: https://jsonlint.com/
 >
-> For more information about why ingestion might fail, see [Ingestion failures](kusto/management/ingestion-failures.md) and  [Ingestion error codes in Azure Data Explorer](error-codes.md).
+> For more information about why ingestion might fail, see [Ingestion failures](/kusto/management/ingestion-failures.md) and  [Ingestion error codes in Azure Data Explorer](/azure/data-explorer/error-codes.md).
+
+<!-- //TODO change link above to ADX moniker pivot -->
 
 |Format   |Extension   |Description|
 |---------|------------|-----------|
