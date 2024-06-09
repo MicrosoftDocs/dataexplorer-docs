@@ -33,11 +33,11 @@ The following variables are reserved for interaction between Kusto Query Languag
 
 ## Enable the plugin
 
-The plugin is disabled by default. Before you start, review the list of [prerequisites](../concepts/sandboxes.md#prerequisites-and-limitations). To enable the plugin and select the version of the Python image, see [Enable language extensions on your cluster](../language-extensions.md#enable-language-extensions-on-your-cluster).
+The plugin is disabled by default. Before you start, review the list of [prerequisites](../concepts/sandboxes.md#prerequisites-and-limitations). To enable the plugin and select the version of the Python image, see [Enable language extensions on your cluster](/azure/data-explorer/language-extensions#enable-language-extensions-on-your-cluster).
 
 ## Python sandbox image
 
-To change the version of the Python image, see [Change the Python language extensions image on your cluster](../language-extensions.md#change-the-python-language-extensions-image-on-your-cluster).
+To change the version of the Python image, see [Change the Python language extensions image on your cluster](/azure/data-explorer/language-extensions#change-the-python-language-extensions-image-on-your-cluster).
 
 To see the list of packages for the different Python images, see [Python package reference](../python-package-reference.md).
 
