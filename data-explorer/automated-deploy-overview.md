@@ -37,7 +37,7 @@ ARM templates are [JSON](/azure/azure-resource-manager/templates/overview) or [B
 
 You can also use ARM templates to deploy [command scripts](/azure/templates/microsoft.kusto/clusters/databases/scripts?tabs=json), which help you create a database schema and define policies. For more information, see [Configure a database by using a Kusto Query Language script](./database-script.md).
 
-You can find more example templates on the [Azure Quickstart Templates](https://azure.microsoft.com/resources/templates/) site.
+You can find more example templates on the [Azure Quickstart Templates](https://learn.microsoft.com/samples/browse/?expanded=azure&products=azure-resource-manager&terms=data%20explorer) site.
 
 ### Terraform deployment
 
