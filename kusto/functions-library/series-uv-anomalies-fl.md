@@ -19,7 +19,7 @@ The function `series_uv_anomalies_fl()` is a [user-defined function (UDF)](../qu
 ## Prerequisites
 
 * An Azure subscription. Create a [free Azure account](https://azure.microsoft.com/free/).
-* A cluster and database. [Create a cluster and database](../../create-cluster-and-database.md).
+* A cluster and database [Create a cluster and database](/azure/data-explorer/create-cluster-and-database) or a [KQL database](/fabric/real-time-intelligence/create-database) with editing permissions and data.
 * The Python plugin must be [enabled on the cluster](../query/python-plugin.md#enable-the-plugin). This is required for the inline Python used in the function.
 * [Create an Anomaly Detector resource and obtain its key](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesAnomalyDetector) to access the service.
 * Enable the [http_request plugin / http_request_post plugin](../query/http-request-plugin.md) on the cluster to access the anomaly detection service endpoint.
@@ -87,7 +87,7 @@ let series_uv_anomalies_fl=(tbl:(*), y_series:string, sensitivity:int=85, tsid:s
 
 ### [Stored](#tab/stored)
 
-Define the stored function once using the following [`.create function`](../management/create-function.md). [Database User permissions](../access-control/role-based-access-control.md) are required.
+Define the stored function once using the following [`.create function`](../management/create-function.md). [Database User permissions](../management/access-control/role-based-access-control.md) are required.
 
 > [!IMPORTANT]
 > You must run this code to create the function before you can use the function as shown in the [Examples](#examples).
