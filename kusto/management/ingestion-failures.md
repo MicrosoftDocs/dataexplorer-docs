@@ -9,7 +9,9 @@ ms.date: 10/05/2023
 
 This command returns information about ingestion failures associated with the use of data ingestion management commands. 
 
-This command only shows ingestion failures related to data ingestion management commands and doesn't include failures from other stages of the ingestion process. Failures from all stages of ingestion are recorded in ingestion [metrics](../../using-metrics.md) and [diagnostic logs](../../using-diagnostic-logs.md).
+This command only shows ingestion failures related to data ingestion management commands and doesn't include failures from other stages of the ingestion process. Failures from all stages of ingestion are recorded in ingestion [metrics](/azure/data-explorer/using-metrics) and [diagnostic logs](/azure/data-explorer/using-diagnostic-logs).
+
+<!-- //TODO put those links in ADX moniker pivot-->
 
 The retention period for ingestion failures is 14 days.
 
