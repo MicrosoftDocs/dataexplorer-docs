@@ -125,7 +125,7 @@ Materialized views and update policies work differently and serve different use 
 * Both update policies and materialized views can incorporate [joins](../../query/join-operator.md), but their effectiveness is limited to specific scenarios. Specifically, joins are suitable only when the data required for the join from both sides is accessible at the time of the update policy or materialization process. If matching entities are ingested when the update policy or materialization runs, there's a risk of overlooking data. See more about `dimension tables` in  [materialized view query parameter](materialized-view-create.md#query-parameter) and in [fact and dimension tables](../../concepts/fact-and-dimension-tables.md).
   
 > [!NOTE]
-> If you do need to *materialize* joins, which are not suitable for update policies and materialized views, you can orchestrate your own process for doing so, using [orchestration tools](../../../tools-integrations-overview.md#orchestration) and [ingest from query commands](../data-ingestion/ingest-from-query.md).
+> If you do need to *materialize* joins, which are not suitable for update policies and materialized views, you can orchestrate your own process for doing so, using [orchestration tools](/azure/data-explorer/tools-integrations-overview#orchestration) and [ingest from query commands](../data-ingestion/ingest-from-query.md).
 
 
 ## Related content
