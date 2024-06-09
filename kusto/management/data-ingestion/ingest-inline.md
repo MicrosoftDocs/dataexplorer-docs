@@ -13,7 +13,7 @@ This command inserts data into a table by pushing the data included within the c
 
 ## Permissions
 
-You must have at least [Table Ingestor](../access-control/role-based-access-control.md) permissions to run this command.
+You must have at least [Table Ingestor](../../access-control/role-based-access-control.md) permissions to run this command.
 
 ## Syntax
 
