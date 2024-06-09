@@ -7,10 +7,12 @@ ms.date: 11/30/2023
 ---
 # .alter policy managed_identity command
 
+<!-- //TODO:: Add ADX moniker -->
+
 Sets the ManagedIdentity policy of the cluster or the specified database, overriding the existing policy.
 
 > [!NOTE]
-> Managed identities should be assigned to the cluster (see [instructions](../../configure-managed-identities-cluster.md)) before you can assign them to the ManagedIdentity policy.
+> Managed identities should be assigned to the cluster (see [instructions](/azure/data-explorer/configure-managed-identities-cluster)) before you can assign them to the ManagedIdentity policy.
 
 ## Permissions
 

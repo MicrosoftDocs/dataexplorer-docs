@@ -7,10 +7,12 @@ ms.date: 11/30/2023
 ---
 # .alter-merge policy managed_identity command
 
+<!-- //TODO:: Add ADX moniker -->
+
 The command updates the ManagedIdentity policy of the cluster or the specified database, adding new managed identities or adding usages to existing managed identities.
 
 > [!NOTE]
-> Managed identities should be assigned to a cluster before you can assign them to the ManagedIdentity policy. For more information, see [Configure managed identities for your cluster](../../configure-managed-identities-cluster.md)
+> Managed identities should be assigned to a cluster before you can assign them to the ManagedIdentity policy. For more information, see [Configure managed identities for your cluster](/azure/data-explorer/configure-managed-identities-cluster)
 
 ## Permissions
 
