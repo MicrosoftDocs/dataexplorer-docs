@@ -8,7 +8,10 @@ ms.date: 02/21/2023
 # Show continuous export artifacts
 
 Returns all artifacts exported by the continuous-export in all runs. Filter the results by the Timestamp column in the command to view only records of interest. The history of exported artifacts is retained for 14 days.
-The command will not return any results if executed on a [follower database](../../../follower.md), it must be executed against the leader database.
+
+<!-- //TODO put links in moniker pivots - follower for ADX and database shortcut for Fabric-->
+
+The command will not return any results if executed on a [follower database](/azure/data-explorer/follower), it must be executed against the leader database.
 
 ## Permissions
 

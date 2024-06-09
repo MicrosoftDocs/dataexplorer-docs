@@ -8,7 +8,10 @@ ms.date: 02/21/2023
 # Show continuous export failures
 
 Returns all failures logged as part of the continuous export. Filter the results by the Timestamp column in the command to view only time range of interest.
-The command will not return any results if executed on a [follower database](../../../follower.md), it must be executed against the leader database.
+
+<!-- //TODO put links in moniker pivots - follower for ADX and database shortcut for Fabric-->
+
+The command will not return any results if executed on a [follower database](/azure/data-explorer/follower), it must be executed against the leader database.
 
 ## Permissions
 
