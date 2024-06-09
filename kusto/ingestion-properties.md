@@ -14,5 +14,7 @@ Data ingestion is the process by which data is added to a table and is made avai
 
 ## Related content
 
-* Learn more about [data ingestion](ingest-data-overview.md).
+<!-- //TODO put these links in zone pivots-->
+
+* Learn more about [data ingestion](/azure/data-explorer/ingest-data-overview.md).
 * Learn more about [supported data formats](ingestion-supported-formats.md).
