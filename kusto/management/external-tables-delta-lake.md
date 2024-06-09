@@ -94,5 +94,6 @@ kind=delta
 
 
 ## Related content
+<!-- //TODO put links in moniker pivots -->
 
-* [Query external tables](../../data-lake-query-data.md)
+* [Query external tables](/azure/data-explorer/data-lake-query-data)
