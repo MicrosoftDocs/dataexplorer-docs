@@ -10,7 +10,7 @@ ms.date: 05/24/2023
 Enables a plugin.
 
 > [!NOTE]
-> To enable the `R` or `Python` language extensions, see [Enable language extensions on your cluster](../../language-extensions.md#enable-language-extensions-on-your-cluster).
+> To enable the `R` or `Python` language extensions, see [Enable language extensions on your cluster](/azure/data-explorer/language-extensions#enable-language-extensions-on-your-cluster).
 
 ## Permissions
 

@@ -43,7 +43,7 @@ The following variables are reserved for interaction between Kusto Query Languag
 ## Enable the plugin
 
 * The plugin is disabled by default.
-* Enable or disable the plugin in the Azure portal in the **Configuration** tab of your cluster. For more information, see [Manage language extensions in your Azure Data Explorer cluster (Preview)](../../language-extensions.md)
+* Enable or disable the plugin in the Azure portal in the **Configuration** tab of your cluster. For more information, see [Manage language extensions in your Azure Data Explorer cluster (Preview)](/azure/data-explorer/language-extensions)
 
 ## R sandbox image
 
