@@ -43,14 +43,14 @@ The following are common scenarios that can be addressed by using a materialized
     ```
 
     > [!NOTE]
-    > You can conceal the source table by creating a function with the same name as the table that references the materialized view instead. This pattern ensures that callers querying the table access the deduplicated materialized view because [functions override tables with the same name](../../query/schema-entities/tables.md). To avoid cyclic references in the view definition, use the [table()](../../query/table-function.md) function to reference the source table: 
+    > You can conceal the source table by creating a function with the same name as the table that references the materialized view instead. This pattern ensures that callers querying the table access the deduplicated materialized view because [functions override tables with the same name](../../query/schema-entities/tables.md). To avoid cyclic references in the view definition, use the [table()](../../query/table-function.md) function to reference the source table:
     >
     >    ```kusto
     >    .create materialized-view DeduplicatedTable on table T
     >    {
     >        table('T')
     >        | summarize take_any(*) by EventId
-    >    } 
+    >    }
     >    ```
 
 For more examples, see the [.create materialized-view command](materialized-view-create.md#examples).
@@ -123,9 +123,11 @@ Materialized views and update policies work differently and serve different use 
 * Update policies run during ingestion time. Data isn't available for queries in the source table or the target table until all update policies run. Materialized views, on the other hand, aren't part of the ingestion pipeline. The [materialization process](materialized-view-overview.md#how-materialized-views-work) runs periodically in the background, post ingestion. Records in source table are available for queries before they're materialized.
 
 * Both update policies and materialized views can incorporate [joins](../../query/join-operator.md), but their effectiveness is limited to specific scenarios. Specifically, joins are suitable only when the data required for the join from both sides is accessible at the time of the update policy or materialization process. If matching entities are ingested when the update policy or materialization runs, there's a risk of overlooking data. See more about `dimension tables` in  [materialized view query parameter](materialized-view-create.md#query-parameter) and in [fact and dimension tables](../../concepts/fact-and-dimension-tables.md).
-  
+
+<!-- //TODO:: Add ADX moniker -->
+
 > [!NOTE]
-> If you do need to *materialize* joins, which are not suitable for update policies and materialized views, you can orchestrate your own process for doing so, using [orchestration tools](../../../tools-integrations-overview.md#orchestration) and [ingest from query commands](../data-ingestion/ingest-from-query.md).
+> If you do need to *materialize* joins, which are not suitable for update policies and materialized views, you can orchestrate your own process for doing so, using [orchestration tools](/azure/data-explorer/tools-integrations-overview.md#orchestration) and [ingest from query commands](../data-ingestion/ingest-from-query.md).
 
 
 ## Related content
