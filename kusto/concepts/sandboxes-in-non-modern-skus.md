@@ -7,6 +7,8 @@ ms.date: 11/12/2022
 ---
 # Sandboxes in VM sizes not supporting nested virtualization
 
+<!-- //TODO: Add Moniker for ADX only -->
+
 In this article, we'll cover the limitations of sandboxes in VM sizes that don't support nested virtualization.
 
 ## Prerequisites and limitations
@@ -14,7 +16,7 @@ In this article, we'll cover the limitations of sandboxes in VM sizes that don't
 Sandboxes that run on [non-modern VM sizes](#virtual-machine-sizes) are subject to the following limitations:
 
 * The sandbox image is fixed - either Python 3.6.5 or R 3.4.4.
-* Data engines that enable both [disk encryption](../../security.md#data-protection) and sandboxes features must run on a VM size that supports [encryption at host](/azure/virtual-machines/disk-encryption#encryption-at-host---end-to-end-encryption-for-your-vm-data). For more information on supported VM sizes, see [Virtual machine sizes](#virtual-machine-sizes).
+* Data engines that enable both [disk encryption](/azure/data-explorer/security#data-protection) and sandboxes features must run on a VM size that supports [encryption at host](/azure/virtual-machines/disk-encryption#encryption-at-host---end-to-end-encryption-for-your-vm-data). For more information on supported VM sizes, see [Virtual machine sizes](#virtual-machine-sizes).
     * If encryption is enabled on the cluster before encryption at host is adopted as the default for supported VM sizes, the cluster may not support both features side by side. In this case, stop and start the cluster.
 * The required packages (images) for running the sandboxes are deployed to every cluster node and require dedicated SSD space to run.
     * The estimated size is 20 GB, that is roughly 2.5% the SSD capacity of a D14_v2 VM, for example, or 0.7% the SSD capacity of a L16_v1 VM.
