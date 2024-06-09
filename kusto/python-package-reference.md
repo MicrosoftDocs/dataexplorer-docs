@@ -167,7 +167,6 @@ Python engine 3.10.8 + common data science and ML packages
 | zict | 2.2.0 |
 | zipp | 3.15.0 |
 
-
 ## [3.10.8 DL (Preview)](#tab/python3-10-8-DL)
 
 Not supported
@@ -175,7 +174,6 @@ Not supported
 ## [3.6.5 (Legacy)](#tab/python3-6-5)
 
 Not supported
-
 
 ---
 
