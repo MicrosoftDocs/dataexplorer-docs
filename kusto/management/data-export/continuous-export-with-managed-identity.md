@@ -7,9 +7,11 @@ ms.date: 06/19/2023
 ---
 # Use a managed identity to run a continuous export job
 
+<!-- //TOTO: Add monikers -->
+
 A [continuous export job](continuous-data-export.md) exports data to an [external table](../../query/schema-entities/external-tables.md) with a periodically run query.
 
-The continuous export job should be configured with a [managed identity](../../../managed-identities-overview.md) in the following scenarios:
+The continuous export job should be configured with a [managed identity](managed-identities-overview) in the following scenarios:
 
 * When the external table uses impersonation authentication.
 * When the query references tables in other databases.
@@ -21,7 +23,7 @@ In this article, you learn how to configure a system-assigned or user-assigned m
 
 ## Prerequisites
 
-* A cluster and database. [Create a cluster and database](../../../create-cluster-and-database.md).
+* A cluster and database. [Create a cluster and database](/azure/data-explorer/create-cluster-and-database).
 * [All Databases Admin](../../access-control/role-based-access-control.md) permissions on the database.
 
 ## Configure a managed identity
@@ -36,11 +38,11 @@ Select one of the following tabs to set up your preferred managed identity type.
 
 ### [User-assigned](#tab/user-assigned)
 
-1. Follow the steps to [Add a user-assigned identity](../../../configure-managed-identities-cluster.md#add-a-user-assigned-identity).
+1. Follow the steps to [Add a user-assigned identity](/azure/data-explorer/configure-managed-identities-cluster#add-a-user-assigned-identity).
 
 1. In the Azure portal, in the left menu of your managed identity resource, select **Properties**. Copy and save the **Tenant Id** and **Principal Id** for use in the following steps.
 
-    :::image type="content" source="../../../media/continuous-export/managed-identity-ids.png" alt-text="Screenshot of Azure portal area with managed identity IDs." lightbox="../../../media/continuous-export/managed-identity-ids.png":::
+    :::image type="content" source="../../media/continuous-export/managed-identity-ids.png" alt-text="Screenshot of Azure portal area with managed identity IDs." lightbox="../../media/continuous-export/managed-identity-ids.png":::
 
 1. Run the following [.alter-merge policy managed_identity](../alter-merge-managed-identity-policy-command.md) command, replacing `<objectId>` with the managed identity object ID from the previous step. This command sets a [managed identity policy](../../management/managed-identity-policy.md) on the cluster that allows the managed identity to be used with continuous export.
 
@@ -66,7 +68,7 @@ Select one of the following tabs to set up your preferred managed identity type.
 
 ### [System-assigned](#tab/system-assigned)
 
-1. Follow the steps to [Add a system-assigned identity](../../../configure-managed-identities-cluster.md#add-a-system-assigned-identity).
+1. Follow the steps to [Add a system-assigned identity](/azure/data-explorer/configure-managed-identities-cluster#add-a-system-assigned-identity).
 
 1. Copy and save the **Object (principal) ID** for use in a later step.
 
@@ -172,4 +174,4 @@ For example, the following command creates a continuous export job named `MyExpo
 
 * [.show continuous-exports](show-continuous-export.md)
 * [Continuous export overview](continuous-data-export.md)
-* [Managed identities](../../../managed-identities-overview.md)
+* [Managed identities](/azure/data-explorer/managed-identities-overview)

@@ -7,6 +7,8 @@ ms.date: 06/25/2023
 ---
 # Continuous data export overview
 
+<!-- //TOTO: Add monikers -->
+
 This article describes continuous export of data from Kusto to an [external table](../../query/schema-entities/external-tables.md) with a periodically run query. The results are stored in the external table, which defines the destination, such as Azure Blob Storage, and the schema of the exported data. This process guarantees that all records are exported "exactly once", with some [exceptions](#exactly-once-export). By default, continuous export runs in a distributed mode, where all nodes export concurrently, so the number of artifacts depends on the number of nodes in the cluster. Continuous export isn't designed for low-latency streaming data out of your cluster.
 
 To enable continuous data export, [create an external table](../external-tables-azure-storage.md) and then [create a continuous export definition](create-alter-continuous.md) pointing to the external table.
@@ -53,7 +55,7 @@ The export query includes only the records that joined since the previous export
 
 ## Monitor continuous export
 
-Monitor the health of your continuous export jobs using the following [export metrics](../../../using-metrics.md#export-metrics):
+Monitor the health of your continuous export jobs using the following [export metrics](/azure/data-explorer/using-metrics#export-metrics):
 
 * `Continuous export max lateness` - Max lateness (in minutes) of continuous exports in the cluster. This is the time between now and the min `ExportedTo` time of all continuous export jobs in cluster. For more information, see [`.show continuous export`](show-continuous-export.md) command.
 * `Continuous export result` - Success/failure result of each continuous export execution. This metric can be split by the continuous export name.
@@ -105,7 +107,7 @@ To create a continuous export job with a query that references a table with [Row
 Continuous export to a delta table is currently in preview.
 
 > [!IMPORTANT]
-> Delta table partitioning isn’t supported in continuous data export.
+> Delta table partitioning isn't supported in continuous data export.
 >
 > Kusto won't write to existing delta tables if the [delta protocol writer version](https://github.com/delta-io/delta/blob/master/PROTOCOL.md#schema-serialization-format) is higher than 1.
 
@@ -114,8 +116,8 @@ To define continuous export to a delta table, do the following steps:
 1. Create an external delta table, as described in [Create and alter delta external tables on Azure Storage](../external-tables-delta-lake.md).
     
     > [!NOTE]
-    > If the schema isn’t provided, Kusto will try infer it automatically if there is already a delta table defined in the target storage container. <br>
-    > Delta table partitioning isn’t supported.
+    > If the schema isn't provided, Kusto will try infer it automatically if there is already a delta table defined in the target storage container. <br>
+    > Delta table partitioning isn't supported.
 
 1. Define continuous export to this table using the commands described in [Create or alter continuous export](create-alter-continuous.md).
 
@@ -128,9 +130,9 @@ To define continuous export to a delta table, do the following steps:
 
 * The following formats are allowed on target tables: `CSV`, `TSV`, `JSON`, and `Parquet`.
 * Continuous export isn't designed to work over [materialized views](../materialized-views/materialized-view-overview.md), since a materialized view might be updated, while data exported to storage is always append only and never updated.
-* Continuous export cannot be created on [follower databases](../../../follower.md) since follower databases are read-only and continuous export requires write operations.  
+* Continuous export cannot be created on [follower databases](/azure/data-explorer/follower) since follower databases are read-only and continuous export requires write operations.  
 * Records in source table must be ingested to the table directly, using an [update policy](../update-policy.md), or [ingest from query commands](../data-ingestion/ingest-from-query.md). If records are moved into the table using [.move extents](../move-extents.md) or using [.rename table](../rename-table-command.md), continuous export might not process these records. See the limitations described in the [Database Cursors](../database-cursor.md#restrictions) page.
-* If the artifacts used by continuous export are intended to trigger Event Grid notifications, see the [known issues section in the Event Grid documentation](../../../ingest-data-event-grid-overview.md#known-event-grid-issues).
+* If the artifacts used by continuous export are intended to trigger Event Grid notifications, see the [known issues section in the Event Grid documentation](/azure/data-explorer/ingest-data-event-grid-overview.md#known-event-grid-issues).
 
 **Cross-database and cross-cluster**:
 
