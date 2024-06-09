@@ -39,7 +39,7 @@ Use management commands to alter the caching policy at the [cluster](alter-clust
 
 > [!TIP]
 > Your cluster is designed for ad hoc queries with intermediate result sets that fit in the cluster's total RAM.
-> For large jobs, like map-reduce, it can be useful to store intermediate results in persistent storage. To do so, create a [continuous export](../management/data-export/continuous-data-export.md) job. This feature enables you to do long-running batch queries using services like HDInsight or Azure Databricks.
+> For large jobs, like map-reduce, it can be useful to store intermediate results in persistent storage. To do so, create a [continuous export](data-export/continuous-data-export.md) job. This feature enables you to do long-running batch queries using services like HDInsight or Azure Databricks.
 
 ::: zone-end
 
@@ -98,5 +98,5 @@ Example:
 In the example, the last 28 days of data will be on the cluster SSD and the additional 28 days of data will be stored in Azure blob storage. You can run queries on the full 56 days of data.
 
 ## Related content
-
-* [Hot windows for infrequent queries over cold data](../../hot-windows.md)
+<!-- //TODO make this an ADX moniker pivot -->
+* [Hot windows for infrequent queries over cold data](/azure/data-explorer/hot-windows.md)
