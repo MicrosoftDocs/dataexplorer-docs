@@ -49,7 +49,7 @@ The `externaldata` operator returns a table whose schema is defined in the query
 
 | Property         | Type     | Description       |
 |------------------|----------|-------------------|
-| format         | `string` | The data format. If unspecified, an attempt is made to detect the data format from file extension. The default is `CSV`. All [ingestion data formats](../../ingestion-supported-formats.md) are supported. |
+| format         | `string` | The data format. If unspecified, an attempt is made to detect the data format from file extension. The default is `CSV`. All [ingestion data formats](../ingestion-supported-formats.md) are supported. |
 | ignoreFirstRecord | `bool` | If set to `true`, the first record in every file is ignored. This property is useful when querying CSV files with headers. |
 | ingestionMapping | `string` | Indicates how to map data from the source file to the actual columns in the operator result set. See [data mappings](../management/mappings.md). |
 
