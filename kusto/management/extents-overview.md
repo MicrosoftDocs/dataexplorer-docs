@@ -29,7 +29,7 @@ The creation time of an extent is used for the following purposes:
 * Caching: Extents created recently are kept in [hot cache](cache-policy.md).
 * Sampling: Recent extents are preferred when using query operations such as [take](../query/take-operator.md).
 
-To overwrite the creation time of an extent, provide an alternate `creationTime` in the [data ingestion properties](../../ingestion-properties.md). This can be useful for retention purposes, such as if you want to reingest data but don't want it to appear as if it arrived late.
+To overwrite the creation time of an extent, provide an alternate `creationTime` in the [data ingestion properties](../ingestion-properties.md). This can be useful for retention purposes, such as if you want to reingest data but don't want it to appear as if it arrived late.
 
 > [!NOTE]
 > The calculation for removing an extent based on time uses the creation time of the newest extent within the merged extent.

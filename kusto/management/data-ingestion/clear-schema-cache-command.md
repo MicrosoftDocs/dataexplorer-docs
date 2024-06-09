@@ -16,7 +16,7 @@ Clear the cache to guarantee that subsequent streaming ingestion requests incorp
 
 ## Permissions
 
-You must have at least [Database Ingestor](../access-control/role-based-access-control.md) permissions to run this command.
+You must have at least [Database Ingestor](../../access-control/role-based-access-control.md) permissions to run this command.
 
 ## Syntax
 
