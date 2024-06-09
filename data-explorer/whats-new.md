@@ -9,6 +9,40 @@ ms.date: 02/01/2024
 
 Welcome to what's new in Azure Data Explorer. This article details new and significantly updated content in the Azure Data Explorer documentation.
 
+## May 2024
+
+## April 2024
+
+**Management**
+
+|Article title | Description|
+|--|--|
+|- [.execute cluster script command](/azure/data-explorer/kusto/management/execute-cluster-script.md) | New article. Learn how to use the `.execute cluster script` command to execute a batch of management commands in the scope of a single cluster in Azure Data Explorer. |
+
+## March 2024
+
+**API**
+
+|Article title | Description|
+|--|--|
+|- [Use Kusto cmdlets in Azure PowerShell](/azure/data-explorer/kusto/api/powershell/azure-powershell.md) | New article. Describes how to use Kusto cmdlets in Azure PowerShell in Azure Data Explorer. |
+
+**General**
+
+|Article title | Description|
+|--|--|
+|- [Create an Azure Data Explorer cluster and database](create-cluster-database.md) | Updated article. Updated list of instructions to set up the Azure Data environment in Azure Powershell. |
+|- [Migrate your cluster to support multiple availability zones (Preview)](migrate-cluster-to-multiple-availability-zone.md) | Updated article. Updated how you can get a list of availability zones for your cluster's region in Azure portal. | 
+
+**Management**
+
+| Article title | Description|
+|--|--|
+| - [What are common scenarios for using table update policies](/azure/data-explorer/kusto/management/update-policy-common-scenarios.md) | New article. Learn about common scenarios that can use table update policies to perform complex transformations and save the results to destination tables. |
+| - [Tutorial: Route data using table update policies](/azure/data-explorer/kusto/management/update-policy-tutorial.md) | New Article. Learn how to use table update policies to perform complex transformations and save the results to one or more destination tables. |
+| - [Parquet mapping](/azure/data-explorer/kusto/management/parquet-mapping.md) | Updated article. Added parquet type conversions table to provide a mapping of Parquet field types, and the table column types they can be converted to. |
+| - [Update policy overview](/azure/data-explorer/kusto/management/update-policy.md) | Updated article. CAT transform with update policy |
+
 ## February 2024
 
 **General**
@@ -199,90 +233,3 @@ Welcome to what's new in Azure Data Explorer. This article details new and signi
 |--|--|
 |- [Join operator](kusto/query/join-operator.md) <br/> - [fullouter join](kusto/query/join-fullouter.md) <br/> - [inner join](kusto/query/join-inner.md) <br/> - [innerunique join](kusto/query/join-innerunique.md) <br/> - [leftanti join](kusto/query/join-leftanti.md) <br/> - [leftouter join](kusto/query/join-leftouter.md) <br/> - [leftsemi join](kusto/query/join-leftsemi.md) <br/> - [rightanti join](kusto/query/join-rightanti.md) <br/> - [rightouter join](kusto/query/join-rightouter.md) <br/> - [rightsemi join](kusto/query/join-rightsemi.md) | Updated and new articles. Refreshed `join` overview and added topics describing each `join` kind.
 |[replace_strings()](kusto/query/replace-strings-function.md) | New article. Describes how to use the replace_strings() function to replace multiple string matches with multiple replacement strings.|
-
-## May 2023
-
-**General**
-
-| Article title | Description |
-|--|--|
-|- [Azure Data Explorer web UI query overview](web-ui-query-overview.md) <br/> - [Add a cluster connection in the Azure Data Explorer web UI](add-cluster-connection.md) <br/> - [Write Kusto Query Language queries in the Azure Data Explorer web UI](web-ui-kql.md) <br/> - [Share queries from Azure Data Explorer web UI](web-share-queries.md)| New articles. Describes how to use the Azure Data Explorer web UI to interact with your data.|
-|[Ingest data with the NLog sink into Azure Data Explorer](nlog-sink.md)| New article. Describes how to use the Azure Data Explorer NLog connector to ingest data into your cluster.|
-|[How to architect a multitenant solution with Azure Data Explorer](multi-tenant.md)| New article. Describes how to architect a multitenant solution in Azure Data Explorer.|
-|[Create an Event Hubs data connection for Azure Data Explorer](create-event-hubs-connection.md)| Updated article. Integration from Azure Event Hubs page added.|
-|[Install the Azure Data Explorer Kusto emulator](kusto-emulator-install.md)| Updated article. Describes how to install the Kusto emulator using a Linux Docker container image.|
-|[Customize Azure Data Explorer dashboard visuals](dashboard-customize-visuals.md)| Updated article. Funnel chart visualization added.|
-|[Create Power Apps application to query data in Azure Data Explorer](power-apps-connector.md)| Updated article. Refreshed content.|
-
-**Management**
-
-| Article title | Description |
-|--|--|
-|[Create and alter delta external tables on Azure Storage](kusto/management/external-tables-azurestorage-deltalake.md)| New article. Describes how to create and alter delta external tables on Azure Storage.|
-
-**Query**
-
-| Article title | Description |
-|--|--|
-|[postgresql_request plugin](kusto/query/postgresql-request-plugin.md)| New article. Describes how to use the postgresql_request plugin to send a SQL query to a PostgreSql server network endpoint.|
-|[Treemap](kusto/query/visualization-treemap.md)| New article. Describes how to use the treemap visualization to visualize data.|
-|[geo_info_from_ip_address()](kusto/query/geo-info-from-ip-address-function.md)| New article. Describes how to use the geo_info_from_ip_address() function to retrieve geolocation information about IPv4 or IPv6 addresses.|
-|[bag_zip()](kusto/query/bag-zip.md)| New article. Describes how to use the bag_zip() function to merge two dynamic arrays into a single property-bag of keys and values.|
-
-## April 2023
-
-**API**
-
-| Article title | Description |
-|--|--|
-| - [Set up your development environment to use Kusto client libraries](kusto/api/get-started/app-set-up.md)<br/>- [Hello Kusto: Create your first Kusto client app](kusto/api/get-started/app-hello-kusto.md)<br/> - [Basic query: Create an app to run basic queries](kusto/api/get-started/app-basic-query.md) | New articles. Describes how to write code with SDKs.|
-
-**General**
-
-| Article title | Description |
-|--|--|
-|[Azure Data Explorer web UI results grid](web-results-grid.md)| Updated article. New features added.|
-
-**Functions library**
-
-| Article title | Description |
-|--|--|
-|- [log_reduce_fl()](kusto/functions-library/log-reduce-fl.md) <br/> - [log_reduce_full_fl()](kusto/functions-library/log-reduce-full-fl.md) <br/> - [log_reduce_predict_fl()](kusto/functions-library/log-reduce-predict-fl.md) <br/> - [log_reduce_predict_full_fl()](kusto/functions-library/log-reduce-predict-full-fl.md) <br/> - [log_reduce_train_fl()](kusto/functions-library/log-reduce-train-fl.md)| New articles. Describes how to find common patterns in textual logs. |
-
-**Management**
-
-| Article title | Description |
-|--|--|
-|[Use a managed identity to run a continuous export job](kusto/management/data-export/continuous-export-with-managed-identity.md)| New article. Describes how to use a managed identity for continuous export.
-
-**Query**
-
-| Article title | Description |
-|--|--|
-|[Syntax conventions for reference documentation](kusto/query/syntax-conventions.md)| New article. Describes the syntax conventions for the Kusto Query Language and management command documentation.|
-|- [punycode_from_string()](kusto/query/punycode-from-string-function.md) <br/> - [punycode_to_string()](kusto/query/punycode-to-string-function.md)| New articles. Describes how to encode and decode Punycode.|
-
-## March 2023
-
-**General**
-
-| Article title | Description |
-|--|--|
-|[Python plugin packages for Azure Data Explorer](python-package-reference.md)| New article. Lists the available Python packages in the Azure Data Explorer Python plugin.|
-|- [Ingest data with the Serilog sink into Azure Data Explorer](serilog-sink.md) <br/> - [Ingest data with the Apache log4J 2 connector](apache-log4j2-connector.md)| New articles. Describe how to ingest data into Azure Data Explorer using the Serilog sink, and the Apache Log4j 2 connectors. |
-|[Manage Event Hubs data connections in your free Azure Data Explorer cluster](start-for-free-event-hubs.md)| New article. Describes how to manage Azure Event Hubs data connections in a free Azure Data Explorer cluster. |
-| [Manage language extensions in your Azure Data Explorer cluster](language-extensions.md) | Updated article. Steps added for changing the Python language extensions image in an Azure Data Explorer cluster. |
-
-**Management**
-
-| Article title | Description |
-|--|--|
-| [Manage view access to tables in Azure Data Explorer](kusto/management/manage-table-view-access.md) | New article. Describes how to grant access to tables in Azure Data Explorer. |
-|- [Materialized views](kusto/management/materialized-views/materialized-view-overview.md)<br/>- [.show materialized-view(s)](kusto/management/materialized-views/materialized-view-show-command.md)<br/>- [.show materialized-view extents](kusto/management/materialized-views/materialized-view-show-extents-command.md)<br/>- [.show materialized-view failures](kusto/management/materialized-views/materialized-view-show-failures-command.md)<br/>- [.show materialized-view schema](kusto/management/materialized-views/materialized-view-show-schema-command.md)<br/>- [.alter materialized-view autoUpdateSchema](kusto/management/materialized-views/materialized-view-alter-autoupdateschema.md) <br/> - [.alter materialized-view docstring](kusto/management/materialized-views/materialized-view-alter-docstring.md)<br/>- [.alter materialized-view folder](kusto/management/materialized-views/materialized-view-alter-folder.md)<br/>- [.alter materialized-view lookback](kusto/management/materialized-views/materialized-view-alter-lookback.md)<br/>- [.alter materialized-view](kusto/management/materialized-views/materialized-view-alter.md)<br/>- [.clear materialized-view data](kusto/management/materialized-views/materialized-view-clear-data.md)<br/>- [.create-or-alter materialized-view](kusto/management/materialized-views/materialized-view-create-or-alter.md)<br/>- [.create materialized-view](kusto/management/materialized-views/materialized-view-create.md)<br/>- [.drop materialized-view](kusto/management/materialized-views/materialized-view-drop.md)<br/>- [.disable .enable materialized-view](kusto/management/materialized-views/materialized-view-enable-disable.md)<br/>- [.rename materialized-view](kusto/management/materialized-views/materialized-view-rename.md)<br/>- [.show materialized view details](kusto/management/materialized-views/materialized-view-show-details-command.md) | New and updated articles. Describe materialized-view commands. Parameters and examples added.|
-|- [.alter extent tags](kusto/management/alter-extent.md)<br/>- [.drop extent tags](kusto/management/drop-extent-tags.md)<br/>- [.move extents](kusto/management/move-extents.md)<br/>- [.replace extents](kusto/management/replace-extents.md) | Updated articles. Command syntax updated.|
-
-**Query**
-
-| Article title | Description |
-|--|--|
-|- [Kusto.Explorer code features](kusto/tools/kusto-explorer-code-features.md)<br/>- [Kusto Explorer options](kusto/tools/kusto-explorer-options.md)<br/>- [Kusto.Explorer keyboard shortcuts (hot keys)](kusto/tools/kusto-explorer-shortcuts.md)<br/>- [Using Kusto.Explorer](kusto/tools/kusto-explorer-using.md)<br/>- [Kusto.Explorer installation and user interface](kusto/tools/kusto-explorer.md) | Updated articles. Refreshed content.|
