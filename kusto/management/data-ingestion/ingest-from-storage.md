@@ -19,7 +19,7 @@ without affecting existing records, and without modifying the table's schema.
 
 ## Permissions
 
-You must have at least [Table Ingestor](../access-control/role-based-access-control.md) permissions to run this command.
+You must have at least [Table Ingestor](../../access-control/role-based-access-control.md) permissions to run this command.
 
 ## Syntax
 
