@@ -20,7 +20,7 @@ Data ingestion is the process by which data is added to a table and is made avai
 
 |Format   |Extension   |Description|
 |---------|------------|-----------|
-|ApacheAvro|`.avro`    |An [AVRO](https://avro.apache.org/docs/current/) format with support for [logical types](https://avro.apache.org/docs/current/spec.html#Logical+Types). The following compression codecs are supported: `null`, `deflate`, and `snappy`. Reader implementation of the `apacheavro` format is based on the official [Apache Avro library](https://github.com/apache/avro). For information about ingesting Event Hub Capture Avro files, see [Ingesting Event Hub Capture Avro files](ingest-data-event-hub-overview.md#schema-mapping-for-event-hub-capture-avro-files). |
+|ApacheAvro|`.avro`    |An [AVRO](https://avro.apache.org/docs/current/) format with support for [logical types](https://avro.apache.org/docs/current/spec.html#Logical+Types). The following compression codecs are supported: `null`, `deflate`, and `snappy`. Reader implementation of the `apacheavro` format is based on the official [Apache Avro library](https://github.com/apache/avro). For information about ingesting Event Hub Capture Avro files, see [Ingesting Event Hub Capture Avro files](/azure/data-explorer/ingest-data-event-hub-overview.md#schema-mapping-for-event-hub-capture-avro-files). |
 |Avro     |`.avro`     |A legacy implementation for [AVRO](https://avro.apache.org/docs/current/) format based on [.NET library](https://www.nuget.org/packages/Microsoft.Hadoop.Avro). The following compression codecs are supported: `null`, `deflate` (for `snappy` - use `ApacheAvro` data format). |
 |CSV      |`.csv`      |A text file with comma-separated values (`,`). See [RFC 4180: _Common Format and MIME Type for Comma-Separated Values (CSV) Files_](https://www.ietf.org/rfc/rfc4180.txt).|
 |JSON     |`.json`     |A text file with JSON objects delimited by `\n` or `\r\n`. See [JSON Lines (JSONL)](http://jsonlines.org/).|
@@ -42,7 +42,7 @@ Data ingestion is the process by which data is added to a table and is made avai
 >
 > * Schema-less Avro is not supported.
 >
-> * For more info on ingesting data using `json` or `multijson` formats, please refer to [this document](ingest-json-formats.md).
+> * For more info on ingesting data using `json` or `multijson` formats, please refer to [this document](/azure/data-explorer/ingest-json-formats.md).
 
 ## Supported data compression formats
 
@@ -68,6 +68,6 @@ must be specified as an ingestion property because it cannot be inferred.
 > * [Deflate64/Enhanced Deflate](https://en.wikipedia.org/wiki/Deflate#Deflate64/Enhanced_Deflate) Zip compression method is not supported. Please note that Windows built-in Zip compressor may choose to use this compression method on files of size over 2GB.
 
 ## Related content
-
-* Learn more about [data ingestion](ingest-data-overview.md)
+<!-- //TODO - Put these links in moniker pivot per product-->
+* Learn more about [data ingestion](/azure/data-explorer/ingest-data-overview.md)
 * Learn more about [Azure Data Explorer data ingestion properties](ingestion-properties.md)

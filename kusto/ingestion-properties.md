@@ -8,8 +8,6 @@ ms.date: 03/19/2020
 
 # Azure Data Explorer data ingestion properties 
 
-<!-- //TODO delete and redirect to kql repo -->
-
 Data ingestion is the process by which data is added to a table and is made available for query in Azure Data Explorer. You add properties to the ingestion command after the `with` keyword.
 
 [!INCLUDE [ingestion-properties](includes/ingestion-properties.md)]
