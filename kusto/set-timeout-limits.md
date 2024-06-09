@@ -7,10 +7,12 @@ ms.date: 07/18/2023
 
 # Set timeout limits
 
-In Azure Data Explorer, it's possible to customize the timeout length for your queries and [management commands](kusto/management/index.md). In this article, you'll learn how to set a custom timeout in various tools such as the [Azure Data Explorer web UI](./web-query-data.md), [Kusto.Explorer](kusto/tools/kusto-explorer.md), [Kusto.Cli](./kusto/tools/kusto-cli.md), [Power BI](power-bi-data-connector.md), and when using an [SDK](#sdks). Certain tools have their own default timeout values, but it may be helpful to adjust these values based on the complexity and expected runtime of your queries.
+<!-- //TODO: Add monikers -->
+
+In Azure Data Explorer, it's possible to customize the timeout length for your queries and [management commands](management/index.md). In this article, you'll learn how to set a custom timeout in various tools such as the [Azure Data Explorer web UI](/azure/dataexplorer/web-query-data), [Kusto.Explorer](tools/kusto-explorer.md), [Kusto.Cli](/tools/kusto-cli.md), [Power BI](/azure/data-explorer/power-bi-data-connector), and when using an [SDK](#sdks). Certain tools have their own default timeout values, but it may be helpful to adjust these values based on the complexity and expected runtime of your queries.
 
 > [!NOTE]
-> Server side policies, such as the [request limits policy](kusto/management/request-limits-policy.md), can override the timeout specified by the client.
+> Server side policies, such as the [request limits policy](management/request-limits-policy.md), can override the timeout specified by the client.
 
 ## Azure Data Explorer web UI
 
@@ -19,7 +21,7 @@ This section describes how to configure a custom query timeout and admin command
 ### Prerequisites
 
 * A Microsoft account or a Microsoft Entra user identity. An Azure subscription isn't required.
-* An Azure Data Explorer cluster and database. [Create a cluster and database](create-cluster-and-database.md).
+* An Azure Data Explorer cluster and database. [Create a cluster and database](/azure/data-explorer/create-cluster-and-database).
 
 ### Set timeout length
 
@@ -43,8 +45,8 @@ This section describes how to configure a custom query timeout and admin command
 
 ### Prerequisites
 
-* Download and install the [Kusto.Explorer tool](tools/../kusto/tools/kusto-explorer.md#installing-kustoexplorer).
-* An Azure Data Explorer cluster and database. [Create a cluster and database](create-cluster-and-database.md).
+* Download and install the [Kusto.Explorer tool](tools/kusto-explorer.md#installing-kustoexplorer).
+* An Azure Data Explorer cluster and database. [Create a cluster and database](/azure/data-explorer/create-cluster-and-database).
 
 ### Set timeout length
 
@@ -72,11 +74,11 @@ This section describes how to configure a custom server timeout in the Kusto.Cli
 
 ### Prerequisites
 
-* Install the [Kusto.Cli](kusto/tools/kusto-cli.md) by downloading the package [Microsoft.Azure.Kusto.Tools](https://www.nuget.org/packages/Microsoft.Azure.Kusto.Tools/).
+* Install the [Kusto.Cli](tools/kusto-cli.md) by downloading the package [Microsoft.Azure.Kusto.Tools](https://www.nuget.org/packages/Microsoft.Azure.Kusto.Tools/).
 
 ### Set timeout length
 
-Run the following command to set the *servertimeout* [client request property](kusto/api/netfx/request-properties.md#clientrequestproperties-options) with the desired timeout length as a valid [timespan](kusto/query/scalar-data-types/timespan.md) value up to 1 hour.
+Run the following command to set the *servertimeout* [client request property](kusto/api/netfx/request-properties.md#clientrequestproperties-options) with the desired timeout length as a valid [timespan](query/scalar-data-types/timespan.md) value up to 1 hour.
 
 ```dotnet
 Kusto.Cli.exe <ConnectionString> -execute:"#crp servertimeout=<timespan>" -execute:"…"
@@ -131,4 +133,4 @@ To learn how to set timeouts with the SDKs, see [Customize query behavior with c
 
 ## Related content
 
-* [Query limits](kusto/concepts/querylimits.md)
+* [Query limits](concepts/query-limits.md)
