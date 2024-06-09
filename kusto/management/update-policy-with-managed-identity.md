@@ -18,7 +18,7 @@ In this article, you learn how to configure a system-assigned or user-assigned m
 
 ## Prerequisites
 
-* A cluster and database. [Create a cluster and database](../../create-cluster-and-database.md).
+* A cluster and database [Create a cluster and database](/azure/data-explorer/create-cluster-and-database) or a [KQL database](/fabric/real-time-intelligence/create-database) with editing permissions and data.
 * [AllDatabasesAdmin](../access-control/role-based-access-control.md) permissions on the database.
 
 ## Configure a managed identity
