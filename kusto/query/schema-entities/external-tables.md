@@ -13,7 +13,7 @@ Similar to [tables](tables.md), an external table has a well-defined schema (an 
 
 Supported external data stores are:
 
-* Files stored in Azure Blob Storage or in Azure Data Lake. Most commonly the data is stored in some standard format such as CSV, JSON, Parquet, AVRO, etc. For the list of supported formats, refer to [supported formats](../../../ingestion-supported-formats.md).
+* Files stored in Azure Blob Storage or in Azure Data Lake. Most commonly the data is stored in some standard format such as CSV, JSON, Parquet, AVRO, etc. For the list of supported formats, refer to [supported formats](../../ingestion-supported-formats.md).
 * SQL Server table.
 
 See the following ways of creating external tables:

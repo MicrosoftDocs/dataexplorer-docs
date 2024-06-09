@@ -47,7 +47,7 @@ The following table defines mapping types to be used when ingesting or querying 
 
 ## Identity mapping
 
-Ingestion is possible without specifying `ingestionMapping` or `ingestionMappingReference` properties. The data will be mapped using an identity data mapping derived from the table's schema. The table schema will remain the same. `format` property should be specified. See [ingestion formats](../../ingestion-supported-formats.md).
+Ingestion is possible without specifying `ingestionMapping` or `ingestionMappingReference` properties. The data will be mapped using an identity data mapping derived from the table's schema. The table schema will remain the same. `format` property should be specified. See [ingestion formats](../ingestion-supported-formats.md).
 
 | Format type                                                                                             | Format                                           | Mapping logic                                                                                                                                                    |
 |---------------------------------------------------------------------------------------------------------|--------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------|
