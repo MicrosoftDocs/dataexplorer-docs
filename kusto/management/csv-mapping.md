@@ -7,7 +7,7 @@ ms.date: 03/08/2023
 
 # CSV mapping
 
-Use CSV mapping to map incoming data to columns inside tables when your ingestion source file is any of the following delimiter-separated tabular formats: CSV, TSV, PSV, SCSV, SOHsv, TXT and RAW. For more information, see supported [data formats](../../ingestion-supported-formats.md).
+Use CSV mapping to map incoming data to columns inside tables when your ingestion source file is any of the following delimiter-separated tabular formats: CSV, TSV, PSV, SCSV, SOHsv, TXT and RAW. For more information, see supported [data formats](../ingestion-supported-formats.md).
 
 [!INCLUDE [data-mapping-overview](../includes/data-mapping-overview.md)]
 
