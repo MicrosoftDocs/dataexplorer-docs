@@ -23,9 +23,11 @@ To restrict access to specific tables, you can turn on the [Restricted View Acce
 
 The [Row Level Security (RLS) policy](row-level-security-policy.md) allows you to restrict access to rows of data based on specific criteria and allows masking data in columns. When you create an RLS policy on a table, the restriction applies to all users, including database administrators and the RLS creator.
 
+<!-- //TODO put this in a moniker pivot, go to followers for ADX and database shortcut for fabric-->
+
 ## Create a follower database
 
-Create a [follower database](../../follower.md) and follow only the relevant tables that you'd like to share with the specific principal or set of principals.
+Create a [follower database](/azure/data-explorer/follower.md) and follow only the relevant tables that you'd like to share with the specific principal or set of principals.
 
 ## Related content
 
