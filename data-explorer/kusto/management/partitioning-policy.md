@@ -217,7 +217,7 @@ You can monitor the partitioning status of tables with defined policies in a dat
   * If increasing the capacities causes a significant increase in the use of the cluster's resources, you can scale the cluster
     [up](/azure/data-explorer/manage-cluster-vertical-scaling)/[out](/azure/data-explorer/manage-cluster-horizontal-scaling), either manually, or by enabling autoscale.
 
-<!-- //TODO put cluster scalin in moniker pivot for adx -->
+<!-- //TODO put cluster scale in in moniker pivot for adx -->
 
 ### Limitations
 
