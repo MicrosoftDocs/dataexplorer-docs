@@ -36,7 +36,7 @@ To pin a query to a dashboard for continuous monitoring, follow these steps:
 
 1. In the query window, select the query that you want to pin.
 
-1. Select **Pin to dashboard**.
+1. Select **ellipsis button** (...) then **Pin to dashboard**.
 
     :::image type="content" source="media/web-share-query/pin-to-dashboard.png" alt-text="Screenshot of the pin to dashboard button." lightbox="media/web-share-query/pin-to-dashboard.png":::
 
@@ -56,7 +56,7 @@ To copy a link to share with others, follow these steps:
 
 1. In the query window, select the query that you want to share.
 
-1. Under **Copy**, select **Link to clipboard**.
+1. Select :::image type="icon" source="media/web-share-query/ellipsis-button.png" border="false"::: > **Copy** > **Link to clipboard**.
 
     :::image type="content" source="media/web-share-query/link-to-clipboard.png" alt-text="Screenshot of the link to clipboard button." lightbox="media/web-share-query/link-to-clipboard.png":::
 
@@ -71,7 +71,7 @@ To copy a link to share with others and the text of the query, follow these step
 
 1. In the query window, select the query that you want to share.
 
-1. Under **Copy**, select **Link, query to clipboard**.
+1. Select :::image type="icon" source="media/web-share-query/ellipsis-button.png" border="false"::: > **Copy** > **Link, query to clipboard**.
 
     :::image type="content" source="media/web-share-query/link-query-to-clipboard.png" alt-text="Screenshot of the link, query to clipboard button." lightbox="media/web-share-query/link-query-to-clipboard.png":::
 
@@ -83,7 +83,7 @@ To copy a link to share with others, the text of the query, and the results of t
 
 1. In the query window, select the query that you want to share.
 
-1. Under **Copy**, select **Link, query, results to clipboard**.
+1. Select :::image type="icon" source="media/web-share-query/ellipsis-button.png" border="false"::: > **Copy** > **Link, query, results to clipboard**.
 
     :::image type="content" source="media/web-share-query/link-query-results-to-clipboard.png" alt-text="Screenshot of the link, query, results to clipboard button." lightbox="media/web-share-query/link-query-results-to-clipboard.png":::
 
@@ -95,7 +95,7 @@ To download a KQL file of the query, follow these steps:
 
 1. In the query window, select the query that you want to download.
 
-1. Select **Export** > **Download**.
+1. Select Select :::image type="icon" source="media/web-share-query/ellipsis-button.png" border="false"::: > **Export** > **Download**.
 
     :::image type="content" source="media/web-share-query/download.png" alt-text="Screenshot of the download button." lightbox="media/web-share-query/download.png":::
 
@@ -105,7 +105,7 @@ To access live results of your query in an Excel workbook, follow these steps:
 
 1. In the query window, create and select the query that you want to share.
 
-1. Select **Export** > **Open in Excel**.
+1. Select :::image type="icon" source="media/web-share-query/ellipsis-button.png" border="false"::: > **Export** > **Open in Excel**.
 
     :::image type="content" source="media/web-share-query/open-in-excel.png" alt-text="Screenshot of option to open in excel." lightbox="media/web-share-query/open-in-excel.png":::
 
@@ -120,7 +120,7 @@ To export the query results to a CSV file, follow these steps:
 
 1. In the query window, select the query that you want to export.
 
-1. Select **Export** > **Export to CSV**.
+1. Select :::image type="icon" source="media/web-share-query/ellipsis-button.png" border="false"::: > **Export** > **Export to CSV**.
 
     :::image type="content" source="media/web-share-query/export-to-csv.png" alt-text="Screenshot of the export to CSV button." lightbox="media/web-share-query/export-to-csv.png":::
 
