@@ -207,7 +207,7 @@ management commands. This value can be increased if needed (capped at one hour).
 * To automatically use the maximum allowed request timeout, set the client request property `norequesttimeout` to `true`.
 
 > [!NOTE]
-> See [set timeout limits](../../set-timeout-limits.md) for a step-by-step guide on how to set timeouts in the Azure Data Explorer web UI, Kusto.Explorer, Kusto.Cli, Power BI, and when using an SDK.
+> See [set timeout limits](../set-timeout-limits.md) for a step-by-step guide on how to set timeouts in the Azure Data Explorer web UI, Kusto.Explorer, Kusto.Cli, Power BI, and when using an SDK.
 
 ## Limit on query CPU resource usage
 
@@ -261,5 +261,5 @@ The suggestion in this case is to review the query and reduce the columns being 
 
 ## Related content
 
-* [Optimize for high concurrency with Azure Data Explorer](../../high-concurrency.md)
+* [Optimize for high concurrency with Azure Data Explorer](/azure/data-explorer/high-concurrency.md)
 * [Query best practices](../query/best-practices.md)
