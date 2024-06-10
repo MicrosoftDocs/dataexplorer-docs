@@ -1,9 +1,9 @@
 ---
 title: Create an Event Grid subscription in your storage account - Azure Data Explorer
 description: This article describes how to create an Event Grid subscription in your storage account in Azure Data Explorer.
-ms.reviewer: kedamari
+ms.reviewer: leshalev
 ms.topic: reference
-ms.date: 01/09/2024
+ms.date: 06/03/2024
 ---
 # Manually create resources for Event Grid ingestion
 
@@ -32,13 +32,13 @@ In this article, you learn how to manually create the resources needed for Event
 ## Create an Event Grid subscription
 
 1. In the Azure portal, go to your storage account.
-1. In the left menu, select **Events** > **Event Subscription**.
+1. In the left menu, select **Events** > **+ Event Subscription**.
 
-     :::image type="content" source="media/eventgrid/create-event-grid-subscription-1.png" alt-text="Screenshot of create Event Grid subscription.":::
+     :::image type="content" source="media/event-grid/create-event-grid-subscription.png" alt-text="Screenshot of the create Event Grid page.":::
 
 1. In the **Create Event Subscription** window within the **Basic** tab, provide the following values:
 
-    :::image type="content" source="media/eventgrid/create-event-grid-subscription-2.png" alt-text="Create event subscription values to enter.":::
+    :::image type="content" source="media/event-grid/subscription-details.png" alt-text="Screenshot of create Event Grid subscription page, , showing the basic tab with subscription details.":::
 
     |**Setting** | **Suggested value** | **Field description**|
     |---|---|---|
@@ -49,17 +49,29 @@ In this article, you learn how to manually create the resources needed for Event
     | System Topic Name | *gridteststorage1...* | The system topic where Azure Storage publishes events. This system topic then forwards the event to a subscriber that receives and processes events. Automatically populated.|
     | Filter to Event Types | *Blob Created* | Which specific events to get notified for. When creating the subscription, select one of the supported types: Microsoft.Storage.BlobCreated or Microsoft.Storage.BlobRenamed. Blob renaming is supported only for ADLSv2 storage. |
 
-1. In **ENDPOINT DETAILS**, select **Event Hubs**.
+1. Under **ENDPOINT DETAILS**, select **Event Hubs**.
 
-    :::image type="content" source="media/eventgrid/endpoint-details.png" alt-text="Pick an event handler to receive your events - event hub - Azure Data Explorer.":::
+    :::image type="content" source="media/event-grid/endpoint-details.png" alt-text="Pick an event handler to receive your events - event hub - Azure Data Explorer.":::
 
-1. Click **Select an endpoint** and fill in the event hub you created, for example *test-hub*.
+1. Select **Select an endpoint** and fill in the event hub you created, for example *test-hub*.
+
+1. Under **MANAGED IDENTITY FOR DELIVERY**, optionally select a managed identity type using the information in the following table.
+
+    :::image type="content" source="media/event-grid/managed-identity-details.png" alt-text="Screenshot of the managed identity for delivery section, showing the select managed identity type option.":::
+
+    | Type | Description |
+    | -- | -- |
+    | None (default) | Events aren't delivered using managed identities. |
+    | System assigned | Events are delivered using a system-assigned managed identity.<br />**IMPORTANT**: Before using this option, make sure you enabled system-assigned identity on the Event Grid system topic and gave it the *Azure Event Hubs Data Sender* role on the event hub. For more information, see [Enable managed identity for system topics](/azure/event-grid/enable-identity-system-topics). |
+
+    > [!IMPORTANT]
+    > If you [disable local authentication](/azure/event-hubs/authenticate-shared-access-signature#disabling-localsas-key-authentication) on the Event Hubs namespace that contains the event hub used for streaming notifications, you must use managed identities to deliver events when using this event subscription.
 
 1. Select the **Filters** tab if you want to filter events.
 
     Use **Subject Filters** to track specific subjects events. Set the filters for the notifications as follows:
 
-    :::image type="content" source="media/eventgrid/filters-tab.png" alt-text="Filters tab Event Grid.":::
+    :::image type="content" source="media/event-grid/filters-tab.png" alt-text="Screenshot of the filters tab, showing the filter event options.":::
 
    1. Select **Enable subject filtering**
    1. **Subject Begins With** field is the *literal* prefix of the subject. Since the pattern applied is *startswith*, it can span multiple containers, folders, or blobs. No wildcards are allowed.
@@ -75,7 +87,7 @@ In this article, you learn how to manually create the resources needed for Event
     For example, When using the [Azure Data Lake SDK](https://www.nuget.org/packages/Azure.Storage.Files.DataLake/) to upload a file, file creation triggers an Event Grid event with size 0. This event is discarded by Azure Data Explorer. File flushing triggers another event if the *Close* parameter is set to *true*. This event indicates that this is the final update and the file stream has been closed.
     To avoid unnecessary processing and empty file ingestion errors, filter out *CreateFile* events using the following filter:
 
-    :::image type="content" source="media/eventgrid/filter-out-create-file.png" alt-text="Screenshot showing how to filter out create file events.":::
+    :::image type="content" source="media/event-grid/filter-out-create-file.png" alt-text="Screenshot showing how to filter out create file events.":::
 
     |**Setting** | **Suggested value** | **Field description**|
     |---|---|---|
