@@ -131,21 +131,29 @@ Azure Data Explorer won't delete the blobs after ingestion. Use [Azure Blob stor
 
 ## Known Event Grid issues
 
+* If local authentication is disabled on the Event Hubs namespace that contains the event hub used for streaming notifications, use the following steps to resolve the issue:
+
+    1. Assign a system-assigned managed identity to the Event Grid system topic of the storage account. For more information, see [Enable managed identity for system topics](/azure/event-grid/enable-identity-system-topics).
+    1. Grant the managed identity sender permissions by assigning it the *Azure Event Hubs Data Sender* role on the event hub. For more information, see [Add identity to Azure roles on destinations](/azure/event-grid/add-identity-roles).
+    1. Make sure that the Event Grid subscription uses managed identity for event delivery. For more information, see [Create event subscriptions that use an identity](/azure/event-grid/managed-service-identity).
+    1. Configure the Event Grid data connection to use managed identity authentication so that Azure Data Explorer can receive notifications from the event hub.
+
+<!-- RESTORE THIS WHEN THE POWERSHELL SCRIPT IS READY. PASTE THE SCRIPT IN THE POWERSHELL TAB.
 * If local authentication is disabled on the Event Hubs namespace that contains the event hub used for streaming notifications, use the following steps, or PowerShell script, to resolve the issue:
 
     ### [Steps](#tab/steps)
 
-    1. Configure the Event Grid data connection to use managed identity authentication so that Azure Data Explorer can receive notifications from the event hub.
     1. Assign a system-assigned managed identity to the Event Grid system topic of the storage account. For more information, see [Enable managed identity for system topics](/azure/event-grid/enable-identity-system-topics).
     1. Grant the managed identity sender permissions by assigning it the *Azure Event Hubs Data Sender* role on the event hub. For more information, see [Add identity to Azure roles on destinations](/azure/event-grid/add-identity-roles).
     1. Make sure that the Event Grid subscription uses managed identity for event delivery. For more information, see [Create event subscriptions that use an identity](/azure/event-grid/managed-service-identity).
+    1. Configure the Event Grid data connection to use managed identity authentication so that Azure Data Explorer can receive notifications from the event hub.
 
     ### [PowerShell script](#tab/powershell)
 
     ```powershell
     ```
 
-    ---
+    --- -->
 
 * When using Azure Data Explorer to [export](kusto/management/data-export/export-data-to-storage.md) the files used for Event Grid ingestion, note:
   * Event Grid notifications aren't triggered if the connection string provided to the export command or the connection string provided to an [external table](kusto/management/data-export/export-data-to-an-external-table.md) is a connecting string in [ADLS Gen2 format](kusto/api/connection-strings/storage-connection-strings.md#storage-connection-string-templates) (for example, `abfss://filesystem@accountname.dfs.core.windows.net`) but the storage account isn't enabled for hierarchical namespace.
