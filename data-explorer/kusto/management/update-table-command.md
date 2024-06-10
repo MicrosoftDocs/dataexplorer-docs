@@ -1,9 +1,9 @@
 ---
 title:  .update table command (preview)
-description: Learn how to use the .update table command to perform transactional data updates.
+description: Learn how to use the update table command to perform transactional data updates.
 ms.reviewer: vplauzon
 ms.topic: reference
-ms.date: 03/28/2024
+ms.date: 06/04/2024
 ---
 # .update table command (preview)
 
@@ -53,7 +53,7 @@ The expanded syntax offers the flexibility to define a query to delete rows and 
 
 ### Simplified syntax
 
-The simplified syntax requires an append query as well as a key. The key is a column in the table that represents unique values in the table. This column is used to define which rows should be deleted from the table. A join is performed between the original table and the append query, to identify rows that agree on their value with respect to this column.
+The simplified syntax requires an append query and a key. The key is a column in the table that represents unique values in the table. This column is used to define which rows should be deleted from the table. A join is performed between the original table and the append query, to identify rows that agree on their value with respect to this column.
 
 `.update` `table` *TableName* on *IDColumnName* [`with` `(` *propertyName* `=` *propertyValue* `)`] `<|` <br>
 *appendQuery*
@@ -72,12 +72,12 @@ The simplified syntax requires an append query as well as a key. The key is a co
 >    * For example, use of [`take` operator](../query/take-operator.md), [`sample` operator](../query/sample-operator.md), [`rand` function](../query/rand-function.md), and other such operators isn't recommended because these operators aren't deterministic.
 > * Queries might be executed more than once within the `update` execution. If the intermediate query results are inconsistent, the update command can produce unexpected results.
 
-
 ## Supported properties
 
 | Name     | Type | Description                                                                                                                                                |
 | -------- | ---- | ---------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | *whatif* | bool | If `true`, returns the number of records that will be appended / deleted in every shard, without appending / deleting any records. The default is `false`. |
+| *distributed* | bool | If `true`, the command ingests from all nodes executing the query in parallel. Default is `false`. See [performance tips](#performance-tips). |
 
 > [!IMPORTANT]
 > We recommend running in `whatif` mode first before executing the update to validate the predicates before deleting or appending data.
@@ -102,6 +102,12 @@ Use the following guidelines to decide which method to use:
 * If your update pattern isn't supported by materialized views, use the update command.
 * If the source table has a high ingestion volume, but only few updates, using the update command can be more performant and consume less cache or storage than materialized views. This is because materialized views need to reprocess all ingested data, which is less efficient than identifying the individual records to update based on the append or delete predicates.
 * Materialized views is a fully managed solution. The materialized view is [defined once](materialized-views/materialized-view-create-or-alter.md) and materialization happens in the background by the system. The update command requires an orchestrated process (for example, [Azure Data Factory](../../data-factory-integration.md), [Logic Apps](../tools/logicapps.md), [Power Automate](../../flow.md), and others) that explicitly executes the update command every time there are updates. If materialized views work well enough for your use case, using materialized views requires less management and maintenance.
+
+## Performance tips
+
+* Data ingestion is a resource-intensive operation that might affect concurrent activities on the cluster, including running queries.  We recommend that you avoid the following resource-intensive actions: running many `.update` commands at once, and intensive use of the *distributed* property.
+* Limit the append data to less than 1 GB per operation. If necessary, use multiple update commands.
+* Set the `distributed` flag to `true` only if the amount of data being produced by the query is large, exceeds 1 GB and doesn't require serialization:  multiple nodes can then produce output in parallel.  Don't use this flag when query results are small, since it might needlessly generate many small data shards.
 
 ## Examples -  Simplified syntax
 
