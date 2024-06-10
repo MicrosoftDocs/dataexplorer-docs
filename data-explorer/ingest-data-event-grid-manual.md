@@ -61,7 +61,7 @@ In this article, you learn how to manually create the resources needed for Event
 
     | Type | Description |
     | -- | -- |
-    | None (default) | Events aren't delivered using managed identitied. |
+    | None (default) | Events aren't delivered using managed identities. |
     | System assigned | Events are delivered using a system-assigned managed identity.<br />**IMPORTANT**: Before using this option, make sure you enabled system-assigned identity on the Event Grid system topic and gave it the *Azure Event Hubs Data Sender* role on the event hub. For more information, see [Enable managed identity for system topics](/azure/event-grid/enable-identity-system-topics). |
 
     > [!IMPORTANT]

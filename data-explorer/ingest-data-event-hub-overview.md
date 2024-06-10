@@ -33,8 +33,8 @@ Setup of a data connection using managed identity requires the following steps:
 * See [supported formats](ingestion-supported-formats.md).
     > [!NOTE]
     >
-    > * Ingestion from Event Hub doesn't support RAW format.
-    > * [Azure Event Hub Schema Registry](/azure/event-hubs/schema-registry-overview) and schema-less Avro are not supported.
+    > * Ingestion from Event Hubs doesn't support RAW format.
+    > * [Azure Event Hubs Schema Registry](/azure/event-hubs/schema-registry-overview) and schema-less Avro are not supported.
 
 * Data can be compressed using the `GZip` compression algorithm. You can specify `Compression` dynamically using [ingestion properties](#ingestion-properties), or in the static Data Connection settings.
     > [!NOTE]
@@ -132,12 +132,12 @@ If you selected **Event system properties** in the **Data Source** section of th
 
 [!INCLUDE [data-explorer-container-system-properties](includes/data-explorer-container-system-properties.md)]
 
-### Schema mapping for Event Hub Capture Avro files
+### Schema mapping for Event Hubs Capture Avro files
 
-One way to consume Event Hub data is to [capture events through Azure Event Hubs in Azure Blob Storage or Azure Data Lake Storage](/azure/event-hubs/event-hubs-capture-overview). You can then ingest the capture files as they are written using an [Event Grid Data Connection in Azure Data Explorer](./ingest-data-event-grid-overview.md).
+One way to consume Event Hubs data is to [capture events through Azure Event Hubs in Azure Blob Storage or Azure Data Lake Storage](/azure/event-hubs/event-hubs-capture-overview). You can then ingest the capture files as they are written using an [Event Grid Data Connection in Azure Data Explorer](./ingest-data-event-grid-overview.md).
 
-The schema of the capture files is different from the schema of the original event sent to Event Hub. You should design the destination table schema with this difference in mind.
-Specifically, the event payload is represented in the capture file as a byte array, and this array isn't automatically decoded by the Event Grid Azure Data Explorer data connection. For more specific information on the file schema for Event Hub Avro capture data, see [Exploring captured Avro files in Azure Event Hubs](/azure/event-hubs/explore-captured-avro-files).
+The schema of the capture files is different from the schema of the original event sent to Event Hubs. You should design the destination table schema with this difference in mind.
+Specifically, the event payload is represented in the capture file as a byte array, and this array isn't automatically decoded by the Event Grid Azure Data Explorer data connection. For more specific information on the file schema for Event Hubs Avro capture data, see [Exploring captured Avro files in Azure Event Hubs](/azure/event-hubs/explore-captured-avro-files).
 
 To correctly decode the event payload:
 
@@ -185,10 +185,10 @@ You can use one of the following methods to embed custom properties into the dat
 * Use Azure Stream Analytics to [process events from the event hub and embed the custom properties](/azure/event-hubs/process-data-azure-stream-analytics) in the event data. From Azure Stream Analytics you can ingest the data natively using the [Azure Data Explorer output connector](/azure/stream-analytics/azure-database-explorer-output), or route the data into another event hub and from there into your cluster.
 * Use [Azure Functions](/azure/azure-functions/functions-overview) to add the custom properties and then ingest the data.
 
-## Cross-region Event Hub data connection
+## Cross-region Event Hubs data connection
 
 For best performance, create all the following resources in the same region as the cluster.
-If there is no other alternative, consider using [Premium](/azure/event-hubs/event-hubs-premium-overview) or [Dedicated](/azure/event-hubs/event-hubs-dedicated-overview) Event Hub tiers. Event Hub tiers comparison can be found [here](/azure/event-hubs/compare-tiers).
+If there is no other alternative, consider using [Premium](/azure/event-hubs/event-hubs-premium-overview) or [Dedicated](/azure/event-hubs/event-hubs-dedicated-overview) Event Hubs tiers. Event Hubs tiers comparison can be found [here](/azure/event-hubs/compare-tiers).
 
 ### Create an event hub
 
