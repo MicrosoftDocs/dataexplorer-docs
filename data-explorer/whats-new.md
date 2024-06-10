@@ -33,7 +33,7 @@ No updates.
 
 |Article title | Description|
 |--|--|
-| [Create an Azure Data Explorer cluster and database](create-cluster-database.md) | Updated article. Updated with instructions to set up Azure Powershell to run Kusto cmdlets. |
+| [Create an Azure Data Explorer cluster and database](create-cluster-database.md) | Updated article. Updated with instructions to set up Azure PowerShell to run Kusto cmdlets. |
 | [Migrate your cluster to support multiple availability zones (Preview)](migrate-cluster-to-multiple-availability-zone.md) | Updated article. Updated how to get the list of availability zones for your cluster's region in Azure portal. | 
 
 **Management**
