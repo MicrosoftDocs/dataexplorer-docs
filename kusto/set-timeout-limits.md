@@ -106,7 +106,9 @@ This section describes how to configure a custom server timeout in Power BI.
 
 ### Set timeout length
 
-1. [Connect to your Azure Data Explorer cluster from Power BI desktop](power-bi-data-connector.md).
+
+<!-- //TODO put links in moniker pivot -->
+1. [Connect to your Azure Data Explorer cluster from Power BI desktop](/azure/data-explorer/power-bi-data-connector).
 
 1. In the top menu, select **Transform Data**.
 
