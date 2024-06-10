@@ -32,7 +32,7 @@ In this article, you learn how to manually create the resources needed for Event
 ## Create an Event Grid subscription
 
 1. In the Azure portal, go to your storage account.
-1. In the left menu, select **Events**.
+1. In the left menu, select **Events** > **+ Event Subscription**.
 
      :::image type="content" source="media/event-grid/create-event-grid-subscription.png" alt-text="Screenshot of the create Event Grid page.":::
 
