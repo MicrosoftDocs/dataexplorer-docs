@@ -25,7 +25,7 @@ The **Dependencies** column lists the minimum roles required to obtain the role 
 The **Manage** column offers ways to add or remove role principals.
 
 |Scope|Role|Permissions|Dependencies|Manage|
-|--|--|--|--|
+|--|--|--|--|--|
 |Cluster|AllDatabasesAdmin |Full permission to all databases in the cluster. May show and alter certain cluster-level policies. Includes all permissions. ||[Azure portal](../../manage-cluster-permissions.md)|
 |Cluster|AllDatabasesViewer |Read all data and metadata of any database in the cluster. ||[Azure portal](../../manage-cluster-permissions.md)|
 |Cluster|AllDatabasesMonitor |Execute `.show` commands in the context of any database in the cluster.||[Azure portal](../../manage-cluster-permissions.md)|

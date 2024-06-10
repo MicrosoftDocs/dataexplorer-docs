@@ -69,7 +69,7 @@ StormEvents
 | take 5
 ```
 
-The following table shows only 6 of the 22 returned columns. To see the full output, run the query.
+The following table shows only 5 of the 22 returned columns. To see the full output, run the query.
 
 |StartTime|EndTime|EpisodeId|EventId|State|EventType|...|
 |--|--|--|--|--|--|--|
