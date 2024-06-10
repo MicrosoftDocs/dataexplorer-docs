@@ -15,7 +15,7 @@ The last two columns are the x-axis, and the other columns are the y-axis.
 
 > [!NOTE]
 > * This visualization can only be used in the context of the [render operator](render-operator.md).
-> * This visualization is available in [Kusto.Explorer](../../data-explorer-overview.md) but not in the [Azure Data Explorer web UI](../../web-ui-query-overview.md).
+> * This visualization is available in [Kusto.Explorer](/azure/data-explorer/data-explorer-overview) but not in the [Azure Data Explorer web UI](/azure/data-explorer/web-ui-query-overview).
 
 ## Syntax
 
