@@ -62,10 +62,10 @@ In this article, you learn how to manually create the resources needed for Event
     | Type | Description |
     | -- | -- |
     | None (default) | Events aren't delivered using managed identitied. |
-    | System assigned | Events are delivered using a system-assigned managed identity. Make sure you enable system-assigned identity on the Event Grid system topic, and give it the *Azure Event Hubs Data Sender* role on the event hub. For more information, see [Enable managed identity for system topics](/azure/event-grid/enable-identity-system-topics). |
+    | System assigned | Events are delivered using a system-assigned managed identity.<br />**IMPORTANT**: Before using this option, make sure you enabled system-assigned identity on the Event Grid system topic and gave it the *Azure Event Hubs Data Sender* role on the event hub. For more information, see [Enable managed identity for system topics](/azure/event-grid/enable-identity-system-topics). |
 
     > [!IMPORTANT]
-    > If you [disable local authentication](/azure/event-hubs/authenticate-shared-access-signature) on the Event Hubs namespace that contains the event hub used for streaming notifications, you must use managed identities to delivery events when using this event subscription.
+    > If you [disable local authentication](/azure/event-hubs/authenticate-shared-access-signature#disabling-localsas-key-authentication) on the Event Hubs namespace that contains the event hub used for streaming notifications, you must use managed identities to deliver events when using this event subscription.
 
 1. Select the **Filters** tab if you want to filter events.
 
