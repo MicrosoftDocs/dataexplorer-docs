@@ -20,7 +20,7 @@ The following table provides an overview of the policies for managing your clust
 |[Ingestion time policy](ingestion-time-policy.md)|Adds a hidden datetime column to the table that records the time of ingestion.|
 |[Managed Identity policy](managed-identity-policy.md)|Controls which managed identities can be used for what purposes.|
 |[Merge policy](merge-policy.md)|Defines rules for merging data from different extents into a single extent.|
-| [Mirroring policy](mirroring-policy.md) | Allows you to manage your mirroring policy and mirroring policy operations.|
+|[Mirroring policy](mirroring-policy.md) | Allows you to manage your mirroring policy and mirroring policy operations.|
 |[Partitioning policy](partitioning-policy.md)|Defines rules for partitioning extents for a specific table or a materialized view.|
 |[Retention policy](retention-policy.md)|Controls the mechanism that automatically removes data from tables or materialized views.|
 |[Restricted view access policy](restricted-view-access-policy.md)|Adds an extra layer of permission requirements for principals to access and view the table.|
