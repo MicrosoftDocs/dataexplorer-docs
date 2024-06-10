@@ -11,13 +11,15 @@ Welcome to what's new in Azure Data Explorer. This article details new and signi
 
 ## May 2024
 
+No updates.
+
 ## April 2024
 
 **Management**
 
 |Article title | Description|
 |--|--|
-| -[.execute cluster script command](kusto/management/execute-cluster-script.md) | New article. Learn how to use the `.execute cluster script` command to execute a batch of management commands in the scope of a single cluster in Azure Data Explorer. |
+| [.execute cluster script command](kusto/management/execute-cluster-script.md) | New article. Describes how to use the `.execute cluster script` command to execute a batch of management commands in the scope of a cluster. |
 
 ## March 2024
 
@@ -25,23 +27,21 @@ Welcome to what's new in Azure Data Explorer. This article details new and signi
 
 |Article title | Description|
 |--|--|
-|- [Use Kusto cmdlets in Azure PowerShell](kusto/api/powershell/azure-powershell.md) | New article. Describes how to use Kusto cmdlets in Azure PowerShell in Azure Data Explorer. |
+| [Use Kusto cmdlets in Azure PowerShell](kusto/api/powershell/azure-powershell.md) | New article. Describes how to use Kusto cmdlets in Azure PowerShell. |
 
 **General**
 
 |Article title | Description|
 |--|--|
-|- [Create an Azure Data Explorer cluster and database](create-cluster-database.md) | Updated article. Updated list of instructions to set up the Azure Data environment in Azure Powershell. |
-|- [Migrate your cluster to support multiple availability zones (Preview)](migrate-cluster-to-multiple-availability-zone.md) | Updated article. Updated how you can get a list of availability zones for your cluster's region in Azure portal. | 
+| [Create an Azure Data Explorer cluster and database](create-cluster-database.md) | Updated article. Updated with instructions to set up Azure Powershell to run Kusto cmdlets. |
+| [Migrate your cluster to support multiple availability zones (Preview)](migrate-cluster-to-multiple-availability-zone.md) | Updated article. Updated how to get the list of availability zones for your cluster's region in Azure portal. | 
 
 **Management**
 
 | Article title | Description|
 |--|--|
-| - [What are common scenarios for using table update policies](kusto/management/update-policy-common-scenarios.md) | New article. Learn about common scenarios that can use table update policies to perform complex transformations and save the results to destination tables. |
-| - [Tutorial: Route data using table update policies](kusto/management/update-policy-tutorial.md) | New Article. Learn how to use table update policies to perform complex transformations and save the results to one or more destination tables. |
-| - [Parquet mapping](kusto/management/parquet-mapping.md) | Updated article. Added parquet type conversions table to provide a mapping of Parquet field types, and the table column types they can be converted to. |
-| - [Update policy overview](kusto/management/update-policy.md) | Updated article. CAT transform with update policy |
+| - [What are common scenarios for using table update policies](kusto/management/update-policy-common-scenarios.md)<br />- [Tutorial: Route data using table update policies](kusto/management/update-policy-tutorial.md)<br />- [Update policy overview](kusto/management/update-policy.md) | New and updated articles. Describes common use cases for how to use *update table policies* to perform complex transformations and route results to destination tables. |
+| [Parquet mapping](kusto/management/parquet-mapping.md) | Updated article. Added parquet type conversions table to provide a mapping of Parquet field types, and the table column types they can be converted to. |
 
 ## February 2024
 
