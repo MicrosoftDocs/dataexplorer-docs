@@ -71,5 +71,5 @@ You can represent each of the fields with JSONPath notation as follows:
 
 ## Related content
 
-* [Get the path to a dynamic field](../../web-results-grid.md#get-the-path-to-a-dynamic-field)
-* [Add filter from dynamic field](../../web-results-grid.md#add-filter-from-dynamic-field)
+* [Get the path to a dynamic field](/azure/data-explorer/web-results-grid#get-the-path-to-a-dynamic-field)
+* [Add filter from dynamic field](/azure/data-explorer/web-results-grid#add-filter-from-dynamic-field)

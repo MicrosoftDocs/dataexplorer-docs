@@ -28,7 +28,7 @@ The details of the current principal as a [dynamic](../query/scalar-data-types/d
 |Type|The category of the principal: `aaduser`, `aadapp`, or `aadgroup`.|
 |DisplayName|The user-friendly name  for the principal that is displayed in the UI.|
 |ObjectId|The Microsoft Entra object ID for the principal.|
-|FQN|The Fully Qualified Name (FQN) of the principal. Valuable for [security role management commands](../management/security-roles.md). For more information, see [Referencing security principals](../management/referencing-security-principals.md).|
+|FQN|The Fully Qualified Name (FQN) of the principal. Valuable for [security role management commands](../management/security-roles.md). For more information, see [Referencing security principals](reference-security-principals.md).|
 
 ## Example
 
