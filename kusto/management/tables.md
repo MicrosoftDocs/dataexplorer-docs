@@ -11,7 +11,7 @@ This topic discusses the life cycle of tables and associated management commands
 
 Select the links in the table below for more information about them.
 <!-- //TODO put links in moniker pivot -->
-For information on optimizing table schema, see [Schema optimization best practices](/azure/data-exlplorer/schema-best-practice).
+For information on optimizing table schema, see [Schema optimization best practices](/azure/data-explorer/schema-best-practice).
 
 | Commands | Operation|
 |---|---|
