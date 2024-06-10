@@ -20,7 +20,8 @@ For general information about data ingestion in Azure Data Explorer, see [Azure 
 * [Managed Identity](managed-identities-overview.md) based data connection (recommended): Using a managed identity-based data connection is the most secure way to connect to data sources. It provides full control over the ability to fetch data from a data source.
 Setup of a data connection using managed identity requires the following steps:
   1. [Add a managed identity to your cluster](configure-managed-identities-cluster.md).
-  1. [Grant permissions to the managed identity on the data source](ingest-data-managed-identity.md#grant-permissions-to-the-managed-identity). To fetch data from Azure Storage, the managed identity must have at least [Azure Event Hubs Data Receiver](/azure/role-based-access-control/built-in-roles#azure-event-hubs-data-receiver) permissions on the Azure Event Hubs and [Storage Blob Data Reader](/azure/role-based-access-control/built-in-roles#storage-blob-data-reader) permissions on the Azure Storage account.
+  1. [Grant permissions to the managed identity on the data source](ingest-data-managed-identity.md#grant-permissions-to-the-managed-identity). To fetch data from Azure Storage, the managed identity must have at least  [Storage Blob Data Reader](/azure/role-based-access-control/built-in-roles#storage-blob-data-reader) permissions on the Azure Storage account.
+  1. Grant permissions to the managed identity on the event hub. To fetch blob notifications from the event hub, the managed identity must have [Azure Event Hubs Data Receiver](/azure/role-based-access-control/built-in-roles#azure-event-hubs-data-receiver) permissions on the Azure Event Hubs.
   1. Set a [managed identity policy](kusto/management/managed-identity-policy.md) on the target databases.
   1. Create a data connection using managed identity authentication to fetch data.
 
