@@ -39,7 +39,7 @@ You must have at least [Table Admin](../access-control/role-based-access-control
 | *async*        | `string` |  | If specified, indicates that the command runs in asynchronous mode.
 | *TableName*        | `string` | :heavy_check_mark: | The name of the table to update.
 | *DeleteIdentifier* | `string` | :heavy_check_mark: | The identifier name used to specify the delete predicate applied to the updated table.                                                                                                                                                              |
-| *DeletePredicate*  | `string` | :heavy_check_mark: | The text of a query whose results are used as data to delete. The delete predicate must include at least one `where` operator, and can only use the following operators: `extend`, `where`, `project`, `join` and `lookup`. |
+| *DeletePredicate*  | `string` | :heavy_check_mark: | The text of a query whose results are used as data to delete. The predicate has the same [limitations as the soft delete predicate](https://learn.microsoft.com/en-us/azure/data-explorer/kusto/concepts/data-soft-delete#limitations-and-considerations). |
 | *AppendIdentifier* | `string` | :heavy_check_mark: | The identifier name used to specify the append predicate applied to the updated table.                                                                                                                                                              |
 | *AppendPredicate*  | `string` | :heavy_check_mark: | The text of a query whose results are used as data to append.                                                                                                                                                               |
 
@@ -156,11 +156,12 @@ Here we reused the *delete identifier* in the definition on the append predicate
 The following example updates multiple columns on all rows with color gray.
 
 ```kusto
-.update table Employees on Id <|
-  Employees
-  | where Color=="Gray"
-  | extend Code=strcat("ex-", Code)
-  | extend Color=""
+.update table Employees delete D append A <|
+    let D = Employees
+      | where Color=="Gray";
+    let A = D
+      | extend Code=strcat("ex-", Code)
+      | extend Color="";
 ```
 
 ### Update rows using another table
