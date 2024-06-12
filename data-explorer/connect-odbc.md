@@ -29,7 +29,7 @@ Alternatively, follow the steps to [connect to your cluster with ODBC](#connect-
 
 You can connect to your cluster in the following ways.
 
-### [Connection string](#tab/connection-string1)
+### [Connection string](#tab/connect-connection-string)
 
 From an application that supports ODBC connection, you can connect to your cluster with a connection string of the following format:
 
@@ -37,7 +37,7 @@ From an application that supports ODBC connection, you can connect to your clust
 "Driver={ODBC Driver 17 for SQL Server};Server=mykustocluster.kusto.windows.net;Database=mykustodatabase;Authentication=ActiveDirectoryIntegrated"
 ```
 
-### [Windows](#tab/windows)
+### [DSN (Windows only)](#tab/connect-windows)
 
 To configure an ODBC data source using the ODBC driver for SQL Server:
 

@@ -78,6 +78,10 @@ Azure Data Explorer offers the following ingestion management commands, which in
 * **Ingest from query**: The [.set, .append, .set-or-append, or .set-or-replace commands](kusto/management/data-ingestion/ingest-from-query.md) indirectly specifies the data to ingest as the results of a query or a command.
 * **Ingest from storage**: The [.ingest into command](kusto/management/data-ingestion/ingest-from-storage.md) gets the data to ingest from external storage, such as Azure Blob Storage, accessible by your cluster and pointed-to by the command.
 
+> [!NOTE]
+> In the event of a failure, ingestion is performed again and is retried for up to 48 hours using the exponential backoff method for wait time between tries.
+
+
 ## Compare ingestion methods
 
 The following table compares the main ingestion methods:
