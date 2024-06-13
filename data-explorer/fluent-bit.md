@@ -15,7 +15,7 @@ In this article, you'll learn how to:
 > [!div class="checklist"]
 >
 > * [Create an Azure Data Explorer table to store your logs](#create-an-azure-data-explorer-table-to-store-your-logs)
-> * [Register an Azure AD app with permissions to ingest data](#register-an-azure-ad-app-with-permissions-to-ingest-data)
+> * [Register a Microsoft Entra app with permissions to ingest data](#register-a-microsoft-entra-app-with-permissions-to-ingest-data)
 > * [Configure Fluent Bit to send logs to your table](#configure-fluent-bit-to-send-logs-to-your-table)
 > * [Verify that data is ingested into Azure Data Explorer](#verify-that-data-is-ingested-into-azure-data-explorer)
 
