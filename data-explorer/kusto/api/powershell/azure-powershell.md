@@ -3,6 +3,7 @@ title: Use Kusto cmdlets in Azure PowerShell
 description: This article describes how to use Kusto cmdlets in Azure PowerShell in Azure Data Explorer.
 ms.reviewer: orhasban
 ms.topic: reference
+ms.custom: devx-track-azurepowershell
 ms.date: 03/10/2024
 ---
 # Use Kusto cmdlets in Azure PowerShell
