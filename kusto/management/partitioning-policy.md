@@ -7,7 +7,7 @@ ms.date: 02/21/2024
 ---
 # Partitioning policy
 
-The partitioning policy defines if and how [extents (data shards)](../management/extents-overview.md) should be partitioned for a specific table or a [materialized view](materialized-views/materialized-view-overview.md).
+The partitioning policy defines if and how [extents (data shards)](extents-overview.md) should be partitioned for a specific table or a [materialized view](materialized-views/materialized-view-overview.md).
 
 The policy triggers an additional background process that takes place after the creation of extents, following data ingestion. This process includes reingesting data from the source extents and producing *homogeneous* extents, in which all values of the column designated as the [partition key](#partition-keys) reside within a single partition.
 
@@ -215,7 +215,9 @@ You can monitor the partitioning status of tables with defined policies in a dat
 * If there's a high ingestion throughput, or a large enough number of tables that have a partitioning policy defined, then the cluster may gradually increase its [Extents partition capacity](../management/capacity-policy.md#extents-partition-capacity), so that [the process of partitioning extents](#the-data-partitioning-process) can keep up.
 * To avoid consuming too many resources, these dynamic increases are capped. You may be required to gradually and linearly increase them beyond the cap, if they're used up entirely.
   * If increasing the capacities causes a significant increase in the use of the cluster's resources, you can scale the cluster
-    [up](../../manage-cluster-vertical-scaling.md)/[out](../../manage-cluster-horizontal-scaling.md), either manually, or by enabling autoscale.
+    [up](/azure/data-explorer/manage-cluster-vertical-scaling)/[out](/azure/data-explorer/manage-cluster-horizontal-scaling), either manually, or by enabling autoscale.
+
+<!-- //TODO put links above in adx moniker pivot -->
 
 ### Limitations
 

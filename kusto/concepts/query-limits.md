@@ -206,8 +206,11 @@ management commands. This value can be increased if needed (capped at one hour).
    than the server timeout value requested by the user. This difference, is to allow for network latencies.
 * To automatically use the maximum allowed request timeout, set the client request property `norequesttimeout` to `true`.
 
+
+<!-- //TODO put in moniker pivot -->
+
 > [!NOTE]
-> See [set timeout limits](../set-timeout-limits.md) for a step-by-step guide on how to set timeouts in the Azure Data Explorer web UI, Kusto.Explorer, Kusto.Cli, Power BI, and when using an SDK.
+> See [set timeout limits](/azure/data-explorer/set-timeout-limits) for a step-by-step guide on how to set timeouts in the Azure Data Explorer web UI, Kusto.Explorer, Kusto.Cli, Power BI, and when using an SDK.
 
 ## Limit on query CPU resource usage
 
