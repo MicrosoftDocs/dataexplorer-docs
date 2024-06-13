@@ -3,7 +3,7 @@ title: Ingest data with Fluent Bit into Azure Data Explorer
 description: Learn how to ingest (load) data into Azure Data Explorer from Fluent Bit.
 ms.reviewer: ramacg
 ms.topic: how-to
-ms.date: 10/26/2023
+ms.date: 06/09/2024
 ---
 
 # Ingest data with Fluent Bit into Azure Data Explorer
@@ -15,7 +15,7 @@ In this article, you'll learn how to:
 > [!div class="checklist"]
 >
 > * [Create an Azure Data Explorer table to store your logs](#create-an-azure-data-explorer-table-to-store-your-logs)
-> * [Register an Azure AD app with permissions to ingest data](#register-an-azure-ad-app-with-permissions-to-ingest-data)
+> * [Register a Microsoft Entra app with permissions to ingest data](#register-a-microsoft-entra-app-with-permissions-to-ingest-data)
 > * [Configure Fluent Bit to send logs to your table](#configure-fluent-bit-to-send-logs-to-your-table)
 > * [Verify that data is ingested into Azure Data Explorer](#verify-that-data-is-ingested-into-azure-data-explorer)
 
@@ -72,18 +72,18 @@ To create a table for incoming structured logs from Fluent Bit:
 
 ---
 
-## Register an Azure AD app with permissions to ingest data
+## Register a Microsoft Entra app with permissions to ingest data
 
-Azure Active Directory (Azure AD) application authentication is used for applications that need to access Azure Data Explorer without a user present. To ingest data using Fluent Bit, you need to create and register an Azure AD service principal, and then authorize this principal to ingest data into your Azure Data Explorer table.
+Microsoft Entra ID application authentication is used for applications that need to access Azure Data Explorer without a user present. To ingest data using Fluent Bit, you need to create and register a Microsoft Entra ID service principal, and then authorize this principal to ingest data into your Azure Data Explorer table.
 
-1. [Create an Azure AD application registration](provision-azure-ad-app.md#create-azure-ad-application-registration).
+1. [Create a Microsoft Entra application registration](provision-entra-id-app.md).
 
 1. Save the **Application (client) ID**, **Directory (tenant) ID**, and client secret key **value** for use in the following steps.
 
 1. Run the following command, replacing `<MyDatabase>` with the name of the database:
 
     ```kusto
-    .add database MyDatabase ingestors ('aadapp=<Application (client) ID>;<Directory (tenant) ID>' 'Fluent Bit application)
+    .add database MyDatabase ingestors ('aadapp=<Application (client) ID>;<Directory (tenant) ID>')
     ```
 
     This command grants the application permissions to ingest data into your table. For more information, see [role-based access control](kusto/access-control/role-based-access-control.md).
@@ -96,9 +96,9 @@ To configure Fluent Bit to send logs to your Azure Data Explorer table, create a
 |--|--|
 |Name|`azure_kusto`|
 |Match|A pattern to match against the tags of incoming records. It's case-sensitive and supports the star (`*`) character as a wildcard.|
-|Tenant_Id|**Directory (tenant) ID** from [Register an Azure AD app with permissions to ingest data](#register-an-azure-ad-app-with-permissions-to-ingest-data).|
-|Client_Id|**Application (client) ID** from [Register an Azure AD app with permissions to ingest data](#register-an-azure-ad-app-with-permissions-to-ingest-data).|
-|Client_Secret|The client secret key value [Register an Azure AD app with permissions to ingest data](#register-an-azure-ad-app-with-permissions-to-ingest-data).|
+|Tenant_Id|**Directory (tenant) ID** from [Register a Microsoft Entra app with permissions to ingest data](#register-a-microsoft-entra-app-with-permissions-to-ingest-data).|
+|Client_Id|**Application (client) ID** from [Register a Microsoft Entra app with permissions to ingest data](#register-a-microsoft-entra-app-with-permissions-to-ingest-data).|
+|Client_Secret|The client secret key value [Register a Microsoft Entra app with permissions to ingest data](#register-a-microsoft-entra-app-with-permissions-to-ingest-data).|
 |Ingestion_Endpoint|Use the **Data Ingestion URI** found in the [Azure portal](https://ms.portal.azure.com/) under your cluster overview.|
 |Database_Name|The name of the database that contains your logs table.|
 |Table_Name|The name of the table from [Create an Azure Data Explorer table](#create-an-azure-data-explorer-table-to-store-your-logs).|
@@ -189,7 +189,7 @@ config:
 
 Once the configuration is complete, logs should arrive in your Azure Data Explorer table.
 
-1. To verify that logs have been ingested, run the following query:
+1. To verify that logs are ingested, run the following query:
 
     ```Kusto
     FluentBitLogs
