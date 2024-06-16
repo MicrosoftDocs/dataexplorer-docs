@@ -24,7 +24,7 @@ The following table explains how to identify the database in context by query en
 |Environment|Database in context|
 |--|--|
 |[Kusto Explorer](../tools/kusto-explorer.md)|The default database is the one selected in the [connections panel](../tools/kusto-explorer.md#connections-panel), and the current cluster is the cluster containing that database.|
-|[Azure Data Explorer web UI](https://dataexplorer.azure.com/)|The default database is the one selected in the [connection pane](azure/data-explorer/web-ui-query-overview#view-clusters-and-databases), and the current cluster is the cluster containing that database.|
+|[Azure Data Explorer web UI](https://dataexplorer.azure.com/)|The default database is the one selected in the [connection pane](/azure/data-explorer/web-ui-query-overview#view-clusters-and-databases), and the current cluster is the cluster containing that database.|
 |[Client libraries](../api/client-libraries.md)|The default database and cluster are specified by the `Data Source` and `Initial Catalog` properties of the [Kusto connection strings](../api/connection-strings/kusto.md).|
 
 ## Perform cross-cluster or cross-database queries
