@@ -132,7 +132,7 @@ Azure Data Explorer won't delete the blobs after ingestion. Use [Azure Blob stor
 
 ## Known Event Grid issues
 
-* If local authentication is disabled on the Event Hubs namespace that contains the event hub used for streaming notifications, use the following steps to make sure that data is flowing properly using Managed Identities:
+* If local authentication is disabled on the Event Hubs namespace that contains the event hub used for streaming notifications, use the following steps to ensure that data flows properly when using a managed identity:
 
     1. Assign a system-assigned managed identity to the Event Grid system topic of the storage account. For more information, see [Enable managed identity for system topics](/azure/event-grid/enable-identity-system-topics).
     1. Grant the managed identity sender permissions by assigning it the *Azure Event Hubs Data Sender* role on the event hub. For more information, see [Add identity to Azure roles on destinations](/azure/event-grid/add-identity-roles).
