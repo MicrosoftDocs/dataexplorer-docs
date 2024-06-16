@@ -46,5 +46,5 @@ Although it isn't strictly enforced, we recommend building graphs with at most 1
 
 ## Related content
 
-* [Graph overview](../../graph-overview.md)
-* [Graph best practices](../../graph-best-practices.md)
+* [Graph overview](graph-overview.md)
+* [Graph best practices](graph-best-practices.md)

@@ -29,8 +29,10 @@ three kinds of columns:
   the result might translate into them guessing wrong. Try projecting-away such
   columns when that happens.
 
+<!-- //TODO put in moniker pivots -->
+
 >[!NOTE]
-> There are some visualizations which are only available in Azure Data Explorer dashboards. For more information, see [Dashboard-specific visuals](../../dashboard-visuals.md). 
+> There are some visualizations which are only available in Azure Data Explorer dashboards. For more information, see [Dashboard-specific visuals](/azure/data-explorer/dashboard-visuals). 
 
 ## Syntax
 
@@ -193,8 +195,11 @@ These visualizations have the following conceptual model:
 
 ## Related content
 
-* [Add a query visualization in the web UI](../../add-query-visualization.md)
-* [Customize dashboard visuals](../../dashboard-customize-visuals.md)
+
+<!-- //TODO put in moniker pivots -->
+
+* [Add a query visualization in the web UI](/azure/data-explorer/add-query-visualization)
+* [Customize dashboard visuals](/azure/data-explorer/dashboard-customize-visuals)
 * [Rendering examples in the tutorial](tutorials/use-aggregation-functions.md#visualize-query-results)
 * [Anomaly detection](anomaly-detection.md)
 

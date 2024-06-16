@@ -87,6 +87,6 @@ KQL is used by many other Microsoft services. For specific information on the us
 
 * [Tutorial: Learn common operators](tutorials/learn-common-operators.md)
 * [Tutorial: Use aggregation functions](tutorials/use-aggregation-functions.md)
-* [KQL quick reference](../../kql-quick-reference.md)
+* [KQL quick reference](kql-quick-reference.md)
 * [SQL to Kusto Query Language cheat sheet](sql-cheat-sheet.md)
 * [Query best practices](best-practices.md)

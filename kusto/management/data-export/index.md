@@ -29,7 +29,7 @@ For scalable data export, the service offers various `.export` management comman
 [Continuous data export](continuous-data-export.md) is supported for export to external tables.
 
 > [!NOTE]
-> The `.export` management commands are limited by the available data export capacity of your cluster. Run the [.show capacity command](../../management/system-info.md#show-capacity) to view the total, consumed, and remaining data export capacity.
+> The `.export` management commands are limited by the available data export capacity of your cluster. Run the [.show capacity command](../show-capacity-command.md) to view the total, consumed, and remaining data export capacity.
 
 ## Related content
 
