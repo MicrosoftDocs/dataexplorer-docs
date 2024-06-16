@@ -78,13 +78,13 @@ This section describes how to configure a custom server timeout in the Kusto.Cli
 
 ### Set timeout length
 
-Run the following command to set the *servertimeout* [client request property](kusto/api/netfx/request-properties.md#clientrequestproperties-options) with the desired timeout length as a valid [timespan](query/scalar-data-types/timespan.md) value up to 1 hour.
+Run the following command to set the *servertimeout* [client request property](api/netfx/request-properties.md#clientrequestproperties-options) with the desired timeout length as a valid [timespan](query/scalar-data-types/timespan.md) value up to 1 hour.
 
 ```dotnet
 Kusto.Cli.exe <ConnectionString> -execute:"#crp servertimeout=<timespan>" -execute:"…"
 ```
 
-Alternatively, use the following command to set the *norequesttimeout* [client request property](kusto/api/netfx/request-properties.md#clientrequestproperties-options), which will set the timeout to the maximum value of 1 hour.
+Alternatively, use the following command to set the *norequesttimeout* [client request property](api/netfx/request-properties.md#clientrequestproperties-options), which will set the timeout to the maximum value of 1 hour.
 
 ```dotnet
 Kusto.Cli.exe <ConnectionString> -execute:"#crp norequesttimeout=true" -execute:"…"
@@ -131,7 +131,7 @@ This section describes how to configure a custom server timeout in Power BI.
 
 ## SDKs
 
-To learn how to set timeouts with the SDKs, see [Customize query behavior with client request properties](kusto/api/get-started/app-basic-query.md#customize-query-behavior-with-client-request-properties).
+To learn how to set timeouts with the SDKs, see [Customize query behavior with client request properties](api/get-started/app-basic-query.md#customize-query-behavior-with-client-request-properties).
 
 ## Related content
 
