@@ -1233,6 +1233,12 @@ items:
         href: variancep-aggregation-function.md
   - name: Graph operators
     items:
+      - name: Graph overview
+        href: graph-overview.md
+      - name: Graph best practices
+        href: graph-best-practices.md
+      - name: Graph scenarios
+        href: graph-scenarios.md
       - name: Graph operators overview
         href: graph-operators.md
       - name: make-graph
