@@ -18,7 +18,7 @@ Request properties control how a query executes and returns results. They can be
 Request properties aren't formally a part of the Kusto Query Language and may be modified without being considered as a breaking language change.
 
 > [!NOTE]
-> * To set request properties using [T-SQL](../../t-sql.md), see [Set request properties](../../t-sql.md#set-request-properties).
+> * To set request properties using [T-SQL](t-sql.md), see [Set request properties](t-sql.md#set-request-properties).
 > * To set request properties using the [Kusto client libraries](../api/client-libraries.md), see [Kusto Data ClientRequestProperties class](../api/netfx/about-kusto-data.md).
 
 ## Syntax
