@@ -7,13 +7,15 @@ ms.date: 07/19/2023
 ---
 # Cross-cluster and cross-database queries
 
+<!-- //TODO all of this doc is adx moniker pivot -->
+
 Queries run with a particular database designated as the *database in context*. This database acts as the default for permission checking. If an entity is referenced in a query without specifying the cluster or database, it's resolved against this database.
 
 This article explains how to execute queries that involve entities located outside the current context database.
 
 ## Prerequisites
 
-* If the clusters are in different tenants, follow the instructions in [Allow cross-tenant queries and commands](../access-control/cross-tenant-query-and-commands.md).
+* If the clusters are in different tenants, follow the instructions in [Allow cross-tenant queries and commands](/azure/data-explorer/access-control/cross-tenant-query-and-commands).
 
 ## Identify the cluster and database in context
 
@@ -177,4 +179,4 @@ cluster("OtherCluster").database("OtherDb").GetDataPivot()
 ## Related content
 
 * [Cross-cluster join](../query/join-cross-cluster.md)
-* [Allow cross-tenant queries and commands](../access-control/cross-tenant-query-and-commands.md)
+* [Allow cross-tenant queries and commands](/azure/data-explorer/access-control/cross-tenant-query-and-commands)
