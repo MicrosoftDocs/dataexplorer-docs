@@ -80,4 +80,4 @@ evaluate http_request ( "https://contoso.com/", dynamic({}), dynamic({ EmployeeN
 ## Related content
 
 * [KQL overview](index.md)
-* [KQL quick reference](../../kql-quick-reference.md)
+* [KQL quick reference](kql-quick-reference.md)
