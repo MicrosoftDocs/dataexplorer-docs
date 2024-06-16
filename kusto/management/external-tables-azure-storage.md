@@ -256,6 +256,8 @@ external_table("ExternalTable")
 
 ## Related content
 
-* [Query external tables](../../data-lake-query-data.md).
+<!-- //TODO put link in moniker pivot -->
+
+* [Query external tables](/azure/data-explorer/data-lake-query-data).
 * [Export data to an external table](data-export/export-data-to-an-external-table.md).
 * [Continuous data export to an external table](data-export/continuous-data-export.md).
