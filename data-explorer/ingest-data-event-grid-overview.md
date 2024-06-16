@@ -140,7 +140,7 @@ Azure Data Explorer won't delete the blobs after ingestion. Use [Azure Blob stor
     1. Configure the Event Grid data connection to use managed identity authentication so that Azure Data Explorer can receive notifications from the event hub.
 
 <!-- RESTORE THIS WHEN THE POWERSHELL SCRIPT IS READY. PASTE THE SCRIPT IN THE POWERSHELL TAB.
-* If local authentication is disabled on the Event Hubs namespace that contains the event hub used for streaming notifications, use the following steps to make sure that data is flowing properly using Managed Identities:
+* If local authentication is disabled on the Event Hubs namespace that contains the event hub used for streaming notifications, use the following steps to ensure that data flows properly when using a managed identity:
 
     ### [Steps](#tab/steps)
 
