@@ -24,7 +24,7 @@ You must have at least [Table Admin](../access-control/role-based-access-control
 ## Syntax
 
 > [!NOTE]
-> During the public preview of this command, there were two syntaxes:  simplified and expanded.  We deprecated the simplified syntax which will eventually not be supported.  The expanded syntax got GA.  We do not refer to simplified or expanded syntax anymore but only the *update syntax*.
+> The *simplified* syntax, which was available during preview, has been deprecated.  
 
 [!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
 
