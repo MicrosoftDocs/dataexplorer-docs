@@ -39,7 +39,7 @@ You must have at least [Table Admin](../access-control/role-based-access-control
 | *async*        | `string` |  | If specified, indicates that the command runs in asynchronous mode.
 | *TableName*        | `string` | :heavy_check_mark: | The name of the table to update.
 | *DeleteIdentifier* | `string` | :heavy_check_mark: | The identifier name used to specify the delete predicate applied to the updated table.                                                                                                                                                              |
-| *DeletePredicate*  | `string` | :heavy_check_mark: | The text of a query whose results are used as data to delete. The predicate has the same [limitations as the soft delete predicate](https://learn.microsoft.com/en-us/azure/data-explorer/kusto/concepts/data-soft-delete#limitations-and-considerations). |
+| *DeletePredicate*  | `string` | :heavy_check_mark: | The text of a query whose results are used as data to delete. The predicate has the same [limitations as the soft delete predicate](../concepts/data-soft-delete.md#limitations-and-considerations). |
 | *AppendIdentifier* | `string` | :heavy_check_mark: | The identifier name used to specify the append predicate applied to the updated table.                                                                                                                                                              |
 | *AppendPredicate*  | `string` | :heavy_check_mark: | The text of a query whose results are used as data to append.                                                                                                                                                               |
 
