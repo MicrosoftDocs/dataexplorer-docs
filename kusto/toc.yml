@@ -44,6 +44,8 @@ items:
       - name: Optimize queries that use named expressions
         displayName: let statement, user defined functions, as operator, calculated
         href: query/named-expressions.md
+  - name: Query data using T-SQL
+    href: query/t-sql.md
   - name: Cross-cluster and cross-database queries
     href: query/cross-cluster-or-database-queries.md
     displayName: cross cluster, cross database, schema change, schemas, partial query failure
