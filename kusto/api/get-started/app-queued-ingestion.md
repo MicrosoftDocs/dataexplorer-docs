@@ -190,7 +190,7 @@ Add the following code:
     main();
     ```
 
-    [!INCLUDE [node-vs-browser-auth](../../../includes/node-vs-browser-auth.md)]
+    [!INCLUDE [node-vs-browser-auth](../../includes/node-vs-browser-auth.md)]
 
 
     <!-- ### [Go](#tab/go) -->

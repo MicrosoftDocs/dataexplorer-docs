@@ -82,7 +82,7 @@ In your preferred IDE or text editor, create a project or file named *management
     main();
     ```
 
-    [!INCLUDE [node-vs-browser-auth](../../../includes/node-vs-browser-auth.md)]
+    [!INCLUDE [node-vs-browser-auth](../../includes/node-vs-browser-auth.md)]
 
     <!-- ### [Go](#tab/go) -->
 
@@ -446,7 +446,7 @@ function printResultsAsValueList(command: string, response: KustoResponseDataSet
 main();
 ```
 
-[!INCLUDE [node-vs-browser-auth](../../../includes/node-vs-browser-auth.md)]
+[!INCLUDE [node-vs-browser-auth](../../includes/node-vs-browser-auth.md)]
 <!-- ### [Go](#tab/go) -->
 
 ### [Java](#tab/java)
