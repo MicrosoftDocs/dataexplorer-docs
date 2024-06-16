@@ -182,11 +182,12 @@ In this example, the first step is to create the following mapping table:
 This mapping table is then used to update some colors in the original table:
 
 ```kusto
-.update table Employees on Id <|
-  Employees
-  | where Code=="Customer"
-  | lookup ColorMapping on $left.Color==$right.OldColor
-  | project Id, Code, Color=NewColor
+.update table Employees delete D append A <|
+  let D = Employees
+    | where Code=="Customer";
+  let A = D
+    | lookup ColorMapping on $left.Color==$right.OldColor
+    | project Id, Code, Color=NewColor
 ```
 
 ### Update rows with a staging table
