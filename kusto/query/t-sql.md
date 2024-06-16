@@ -95,7 +95,7 @@ SELECT * FROM kusto.MyFunction(10)
 
 ## Set request properties
 
-[Request properties](kusto/api/rest/request-properties.md) control how a query executes and returns results. To set request properties with T-SQL, preface your query with one or more statements with the following syntax:
+[Request properties](../api/rest/request-properties.md) control how a query executes and returns results. To set request properties with T-SQL, preface your query with one or more statements with the following syntax:
 
 ### Syntax
 
@@ -105,7 +105,7 @@ SELECT * FROM kusto.MyFunction(10)
 
 |Name|Type|Required|Description|
 |--|--|--|--|
-|*requestPropertyName*| `string` | :heavy_check_mark:|The name of the [request property](kusto/api/rest/request-properties.md) to set.|
+|*requestPropertyName*| `string` | :heavy_check_mark:|The name of the [request property](../api/rest/request-properties.md) to set.|
 |*type*| `string` | :heavy_check_mark:|The [T-SQL data type](/sql/t-sql/data-types/data-types-transact-sql) of the value.|
 |*value*|scalar| :heavy_check_mark:|The value to assign to the request property.|
 
