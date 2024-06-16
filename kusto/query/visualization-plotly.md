@@ -46,7 +46,7 @@ OccupancyDetection
 ```)
 ~~~
 
-:::image type="content" source="../../media/dashboard-customize-visuals/plotly-scatter3d.png" alt-text="Screenshot of plotly visual type.":::
+:::image type="content" source="media/plotly/plotly-scatter3d.png" alt-text="Screenshot of plotly visual type.":::
 
 ::: zone-end
 
