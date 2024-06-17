@@ -1,6 +1,6 @@
 ---
-title: Access Control Overview - Azure Data Explorer
-description: This article describes Access control in Azure Data Explorer.
+title: Access Control Overview
+description: This article describes Access control.
 ms.reviewer: orspodek
 ms.topic: reference
 ms.custom: has-adal-ref
@@ -8,7 +8,6 @@ ms.date: 06/28/2023
 ---
 # Access control overview
 
-<!-- //TODO remove and redirect to kusto -->
 Azure Data Explorer access control is based on authentication and authorization. Each query and command on an Azure Data Explorer resource, such as a cluster or database, must pass both authentication and authorization checks.
 
 * [Authentication](#authentication): Validates the identity of the security principal making a request
@@ -26,7 +25,7 @@ The main authentication scenarios are as follows:
 * [Single page application (SPA) authentication](/azure/active-directory/develop/msal-authentication-flows#authorization-code): Allows client-side SPA web applications to sign in users and get tokens to access your cluster. This flow must be implemented with MSAL.
 
 > [!NOTE]
-> For user and application authentication, we recommend using the [Kusto client libraries](../../kusto/api/client-libraries.md). If you require On-behalf-of (OBO) or Single-Page Application (SPA) authentication, you'll need to use MSAL directly as these flows aren't supported by the client libraries. For more information, see [Authenticate with Microsoft Authentication Library (MSAL)](../api/rest/authenticate-with-msal.md).
+> For user and application authentication, we recommend using the [Kusto client libraries](../api/client-libraries.md). If you require On-behalf-of (OBO) or Single-Page Application (SPA) authentication, you'll need to use MSAL directly as these flows aren't supported by the client libraries. For more information, see [Authenticate with Microsoft Authentication Library (MSAL)](../api/rest/authenticate-with-msal.md).
 
 ### User authentication
 
