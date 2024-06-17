@@ -100,7 +100,7 @@ In this scenario, an application is sent a Microsoft Entra access token for an a
 To perform on-behalf-of authentication:
 
 1. [Provision a Microsoft Entra application](../../access-control/provision-entra-id-app.md).
-2. Establish a trust relationship between the application and your cluster. To do so, follow the steps in [Configure delegated permissions](../../access-control/provision-entra-id-app.md#configure-delegated-permissions-for-the-application--optional).
+2. Establish a trust relationship between the application and your cluster. To do so, follow the steps in [Configure delegated permissions](../../access-control/provision-entra-id-app.md#configure-delegated-permissions-for-the-application---optional).
 3. In your server code, use MSAL to perform the token exchange.
 
     ```csharp
