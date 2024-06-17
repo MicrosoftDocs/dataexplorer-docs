@@ -19,7 +19,7 @@ You'll need your Kusto cluster URI for the *TargetURI* value. The URI is in the 
 
 [!INCLUDE [ingest-data-serilog-3](includes/cross-repo/ingest-data-serilog-3.md)]
 
-1. In the [web UI](https://dataexplorer.azure.com/), select the target database, and run the following query to explore the ingested data, replacing the placeholder *TableName* with the name of the target table:
+3. In the [web UI](https://dataexplorer.azure.com/), select the target database, and run the following query to explore the ingested data, replacing the placeholder *TableName* with the name of the target table:
 
     ```kusto
     <TableName>

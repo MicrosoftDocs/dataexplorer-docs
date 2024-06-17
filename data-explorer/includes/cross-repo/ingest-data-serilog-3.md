@@ -19,9 +19,9 @@ Install-Package Serilog.Sinks.AzureDataExplorer
 
 Use the following steps to:
 
-* Add the Serilog sink to your app
-* Configure the variables used by the sink
-* Build and run the app
+* Add the Serilog sink to your app.
+* Configure the variables used by the sink.
+* Build and run the app.
 
 1. Add the following code to your app:
 

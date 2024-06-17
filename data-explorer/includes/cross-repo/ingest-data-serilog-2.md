@@ -9,7 +9,7 @@ ms.date: 02/18/2024
 
 Microsoft Entra application authentication is used for applications that need to access your KQL database table without a user present. To ingest data using the Serilog connector, you need to create and register a Microsoft Entra service principal, and then authorize this principal as the identity used by the connector to ingest data to your KQL database.
 
-The Microsoft Entra service principal can be created through the [Azure portal](/azure/active-directory/develop/howto-create-service-principal-portal) or programatically, as in the following example.
+The Microsoft Entra service principal can be created through the [Azure portal](/azure/active-directory/develop/howto-create-service-principal-portal) or programmatically, as in the following example.
 
 You'll later grant permissions for this service principal to access Kusto resources.
 <a name='grant-the-azure-ad-app-permissions'></a>
