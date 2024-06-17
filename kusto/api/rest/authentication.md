@@ -24,7 +24,7 @@ must authenticate by using the HTTP `Authorization` request header.
 
 ## Get an access token
 
-There are many different methods to get a Microsoft Entra access token. To learn more, see [user authentication](../../access-control/how-to-authenticate-with-aad.md#user-authentication) and [application authentication](../../access-control/how-to-authenticate-with-aad.md#application-authentication).
+There are many different methods to get a Microsoft Entra access token. To learn more, see [user authentication](authenticate-with-msal.md#perform-user-authentication-with-msal) and [application authentication](authenticate-with-msal.md#perform-application-authentication-with-msal).
 
 ### Get an access token for a user principal using the Azure CLI
 

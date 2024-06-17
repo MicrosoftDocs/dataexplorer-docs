@@ -1374,4 +1374,4 @@ Last ingested row:
 > [TBD](../../../kql-quick-reference.md) -->
 
 > [!div class="nextstepaction"]
-> [KQL quick reference](../../../kql-quick-reference.md)
+> [KQL quick reference](../../query/kql-quick-reference.md)

@@ -7,7 +7,7 @@ ms.date: 07/13/2023
 ---
 # Storage connection strings
 
-Azure Data Explorer can interact with external storage services. For example, you can [create an Azure Storage external tables](../../management/external-tables-azurestorage-azuredatalake.md) in order to query data stored on external storages.
+Azure Data Explorer can interact with external storage services. For example, you can [create an Azure Storage external tables](../../management/external-tables-azure-storage.md) in order to query data stored on external storages.
 
 The following types of external storage are supported:
 

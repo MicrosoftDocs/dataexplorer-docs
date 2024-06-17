@@ -28,7 +28,7 @@ When planning your ingestion pipeline, consider the following factors as they ca
 | Factor | Description |
 |--|--|
 | Data size | Ingestion is more efficient when done in large chunks. We recommend sending data in batches of 100 MB to 1 GB (uncompressed).|
-| Data format | CSV is the fastest format to ingest. For the same volume of data, JSON may take 2x or 3x longer. For more information, see [Data formats supported for ingestion](../../../ingestion-supported-formats.md).|
+| Data format | CSV is the fastest format to ingest. For the same volume of data, JSON may take 2x or 3x longer. For more information, see [Data formats supported for ingestion](../../ingestion-supported-formats.md).|
 | Table width | Only ingest essential data. Each column needs to be encoded and indexed, which means that wider tables may have lower the throughput. Control which fields get ingested by providing an [ingestion mapping](../../management/mappings.md).|
 | Source data location | Avoid cross-region reads to speed up the ingestion. |
 | Load on the cluster | When a cluster experiences a high query load, ingestion takes longer to complete. |
@@ -55,5 +55,6 @@ For cost-effective ingestion:
 ## Related content
 
 * [Kusto Ingest overview](about-kusto-ingest.md)
-* [Data ingestion overview](../../../ingest-data-overview.md)
-* [Create an app to get data using queued ingestion](../get-started/app-batch-ingestion.md)
+* [Data ingestion overview](/azure/data-explorer/ingest-data-overview)
+* [Create an app to get data using queued ingestion](/azure/data-explorer/get-started/app-batch-ingestion)
+<!-- //TODO:: Add ADX moniker -->

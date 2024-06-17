@@ -35,7 +35,7 @@ A number of [client libraries](client-libraries.md) are also available to use th
 Azure Data Explorer supports the Microsoft SQL Server communication protocol (MS-TDS), and includes a limited support for running T-SQL queries. The supported versions of MS-TDS include 7.x and 8.0.
 This protocol enables users to run queries on Azure Data Explorer using a well-known query syntax (T-SQL) and database client tools such as LINQPad, sqlcmd, Tableau, Excel, and Power BI.
 
-For more information, see [MS-TDS](../../t-sql.md).
+For more information, see [MS-TDS](../query/t-sql.md).
 
 ## Client libraries
 
@@ -50,7 +50,8 @@ Azure Data Explorer provides a number of [client libraries](client-libraries.md)
 * PowerShell
 
 > [!TIP]
-> You can use the sample app generator wizard to create a working app tailored to your cluster, to ingest and query your data in your preferred programming language. The generated code can be used as a baseline to write your own apps, alter the code as you go, or you can copy sections of code into your own apps. For more information, see [sample app generator wizard](../../sample-app-generator-wizard.md).
+> You can use the sample app generator wizard to create a working app tailored to your cluster, to ingest and query your data in your preferred programming language. The generated code can be used as a baseline to write your own apps, alter the code as you go, or you can copy sections of code into your own apps. For more information, see [sample app generator wizard](/azure/data-explorer/sample-app-generator-wizard).
+<!-- //TODO:: Add ADX moniker -->
 
 ### .NET Framework Libraries
 

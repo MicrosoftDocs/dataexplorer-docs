@@ -38,7 +38,7 @@ The Kusto Data library provides a Kusto client object to help you connect to you
 
 ## Run queries and commands
 
-The Kusto Data library can be used to run [Kusto Query Language (KQL)](../../query/index.md) queries or [T-SQL](../../../t-sql.md) queries from your own client application. For an example, see [Create an app to run basic queries](../../api/get-started/app-basic-query.md).
+The Kusto Data library can be used to run [Kusto Query Language (KQL)](../../query/index.md) queries or [T-SQL](../../query/t-sql.md) queries from your own client application. For an example, see [Create an app to run basic queries](../../api/get-started/app-basic-query.md).
 
 You can also run [management commands](../../management/index.md). These commands are requests made to the service to retrieve or modify information that may not necessarily reside within the database tables, such as policies or security roles. For an example, see [Create an app to run management commands](../../api/get-started/app-management-commands.md).
 

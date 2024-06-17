@@ -31,5 +31,4 @@ This article shows you how to generate a SAS token to a resource.
 
 ## Related content
 
-* [Storage authentication methods](storage-authentication-methods.md)
-* [Storage connection strings](./storage-connection-strings.md)
+* [Storage connection strings](storage-connection-strings.md)

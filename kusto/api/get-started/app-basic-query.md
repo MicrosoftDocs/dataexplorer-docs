@@ -488,7 +488,7 @@ while (primaryResults.next()) {
 
 ## Customize query behavior with client request properties
 
-You can customize the behavior of a query by setting client request properties. For more information on available options, see [client request properties](../netfx/request-properties.md).
+You can customize the behavior of a query by setting client request properties. For more information on available options, see [client request properties](../rest/request-properties.md).
 
 For example, you can replace the `kusto_client.execute_query` call in the previous code to pass a custom request ID and set the query timeout to 1 minute. To use the client request properties, you must import the `ClientRequestProperties` class.
 

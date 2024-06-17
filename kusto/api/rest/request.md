@@ -66,7 +66,7 @@ or as part of the body, depending on whether GET or POST is used.
 |------------|--------------------------------------------------------------------------------------------|------------------|
 |`csl`       |Text of the query or management command to execute                                             |Required          |
 |`db`        |Name of the database in scope that is the target of the query or management command            |Optional for some management commands. <br>Required for other commands and all queries. </br>                                                                   |
-|`properties`|Provides request properties that modify how the request is processed and its results. For more information, see [Request properties](../netfx/request-properties.md)                                               | Optional         |
+|`properties`|Provides request properties that modify how the request is processed and its results. For more information, see [Request properties](request-properties.md)                                               | Optional         |
 
 ## GET query parameters
 
@@ -154,7 +154,7 @@ This example shows how to create a request that sends the query above, using [cu
 
 ### Set client request properties and query parameters
 
-In the following example body, the query in the `csl` field declares two parameters named `n` and `d`. The values for those query parameters are specified within the `Parameters` field under the `properties` field in the request body. The `Options` field defines [client request properties](../netfx/request-properties.md).
+In the following example body, the query in the `csl` field declares two parameters named `n` and `d`. The values for those query parameters are specified within the `Parameters` field under the `properties` field in the request body. The `Options` field defines [client request properties](request-properties.md).
 
 > [!NOTE]
 > Non-string and non-long parameters must be expressed as KQL literals in string format.
@@ -176,4 +176,4 @@ In the following example body, the query in the `csl` field declares two paramet
 }
 ```
 
-For more information, see [Query parameters](../netfx/request-properties.md#query-parameters).
+For more information, see [Query parameters](request-properties.md#query-parameters).

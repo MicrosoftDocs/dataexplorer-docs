@@ -54,5 +54,6 @@ Direct ingestion has low latency and doesn't involve aggregation. However, the c
 
 ## Related content
 
-* [Data ingestion overview](../../../ingest-data-overview.md)
-* [Create an app to get data using queued ingestion](../get-started/app-batch-ingestion.md)
+<!-- //TODO:: Add ADX moniker -->
+* [Data ingestion overview](/azure/data-explorer/ingest-data-overview)
+* [Create an app to get data using queued ingestion](/azure/data-explorer/get-started/app-batch-ingestion)

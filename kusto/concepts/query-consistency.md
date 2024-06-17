@@ -73,7 +73,7 @@ The affinity by session ID mode ensures that queries belonging to the same user 
 
 You can specify the query consistency mode by the client sending the request or using a server side policy. If it isn't specified by either, the default mode of strong consistency applies.
 
-* Client sending the request: Use the `queryconsistency` [client request property](../api/netfx/request-properties.md). This method sets the query consistency mode for a specific query and doesn't affect the overall effective consistency mode, which is determined by the default or the server-side policy. For more information, see [client request properties](../api/netfx/request-properties.md).
+* Client sending the request: Use the `queryconsistency` [client request property](../api/rest/request-properties.md). This method sets the query consistency mode for a specific query and doesn't affect the overall effective consistency mode, which is determined by the default or the server-side policy. For more information, see [client request properties](../api/rest/request-properties.md).
 
 * Server side policy: Use the `QueryConsistency` property of the [Query consistency policy](../management/query-consistency-policy.md). This method sets the query consistency mode at the workload group level, which eliminates the need for users to specify the consistency mode in their client request properties and allows for enforcing desired consistency modes. For more information, see [Query consistency policy](../management/query-consistency-policy.md).
 

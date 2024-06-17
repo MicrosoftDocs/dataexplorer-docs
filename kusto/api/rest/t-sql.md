@@ -24,7 +24,7 @@ To send T-SQL queries to the API, create a `POST` request with the following com
     Authorization: Bearer <bearer_token>
     ```
 
-* Body: Set the `csl` property to the text of your T-SQL query, and the [client request property](../netfx/request-properties.md) `query_language` to `sql`.
+* Body: Set the `csl` property to the text of your T-SQL query, and the [client request property](request-properties.md) `query_language` to `sql`.
 
     ```json
     {

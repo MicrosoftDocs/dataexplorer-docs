@@ -168,8 +168,8 @@ The Kusto SDKs contain quick start sample applications. These applications showc
 
 ### [Typescript](#tab/typescript)
 
-* [Node.js Quickstart App](https://github.com/Azure/azure-kusto-node/tree/master/packages/quick_start)
-* [Browser Quickstart App](https://github.com/Azure/azure-kusto-node/tree/master/packages/quick_start_browser)
+- [Node.js Quickstart App](https://github.com/Azure/azure-kusto-node/tree/master/packages/quick_start)
+- [Browser Quickstart App](https://github.com/Azure/azure-kusto-node/tree/master/packages/quick_start_browser)
 
 <!-- ### [Go](#tab/go) -->
 
@@ -190,5 +190,6 @@ The following articles walk you through creating apps that use the Kusto client 
 
 ## Related content
 
-* [KQL quick reference](../../../kql-quick-reference.md)
-* [Sample app generator wizard](../../../sample-app-generator-wizard.md)
+- [KQL quick reference](../../query/kql-quick-reference.md)
+- [Sample app generator wizard](/azure/data-explorer/sample-app-generator-wizard)
+<!-- //TODO:: Add moniker -->

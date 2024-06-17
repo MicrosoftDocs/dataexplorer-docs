@@ -350,7 +350,7 @@ KustoIngestionProperties class contains basic ingestion properties for fine cont
 |IngestIfNotExists |List of tags that you don't want to ingest again (per table) |
 |ValidationPolicy |Data validation definitions. |
 |Format |Format of the data being ingested |
-|AdditionalProperties | Other properties that are passed as [ingestion properties](../../../ingestion-properties.md) to the ingestion command. The properties are passed because not all of the ingestion properties are represented in a separate member of this class|
+|AdditionalProperties | Other properties that are passed as [ingestion properties](../../ingestion-properties.md) to the ingestion command. The properties are passed because not all of the ingestion properties are represented in a separate member of this class|
 
 ```csharp
 public class KustoIngestionProperties

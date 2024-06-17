@@ -36,5 +36,5 @@ to interact with the service.
 * [REST API reference](/rest/api/azurerekusto/)
 * [Query management HTTP request](request.md)
 * [Query management HTTP response](response.md)
-* [Query v2 HTTP response](response2.md)
+* [Query v2 HTTP response](response-v2.md)
 * [Streaming ingestion HTTP request](streaming-ingest.md)

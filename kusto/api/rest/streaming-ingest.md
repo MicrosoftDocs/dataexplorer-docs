@@ -26,9 +26,9 @@ Additional parameters are formatted as URL query `{name}={value}` pairs, separat
 
 | Parameter    | Description                                                                          | Required/Optional   |
 |--------------|--------------------------------------------------------------------------------------|---------------------|
-|`streamFormat`| Specifies the format of the data in the request body. The value should be one of: `CSV`, `TSV`, `SCsv`, `SOHsv`, `PSV`, `JSON`, `MultiJSON`, `Avro`. For more information, see [Supported Data Formats](../../../ingestion-supported-formats.md).| Required |
+|`streamFormat`| Specifies the format of the data in the request body. The value should be one of: `CSV`, `TSV`, `SCsv`, `SOHsv`, `PSV`, `JSON`, `MultiJSON`, `Avro`. For more information, see [Supported Data Formats](../../ingestion-supported-formats.md).| Required |
 |`mappingName` | The name of the pre-created ingestion mapping defined on the table. For more information, see [Data Mappings](../../management/mappings.md). The way to manage pre-created mappings on the table is described [here](../../management/create-ingestion-mapping-command.md).| Optional, but Required if `streamFormat` is one of `JSON`, `MultiJSON`, or `Avro`|
-              
+
 For example, to ingest CSV-formatted data into table `Logs` in database `Test`, use:
 
 ```
@@ -45,10 +45,10 @@ POST https://help.kusto.windows.net/v1/rest/ingest/Test/Logs?streamFormat=Json&m
 
 The following table contains the common headers for query and management operations.
 
-|Standard header   | Description                                                                               | Required/Optional | 
+|Standard header   | Description                                                                               | Required/Optional |
 |------------------|-------------------------------------------------------------------------------------------|-------------------|
 |`Accept`          | Set this value to `application/json`.                                                     | Optional          |
-|`Accept-Encoding` | Supported encodings are `gzip` and `deflate`.                                             | Optional          | 
+|`Accept-Encoding` | Supported encodings are `gzip` and `deflate`.                                             | Optional          |
 |`Authorization`   | See [authentication](./authentication.md).                                                | Required          |
 |`Connection`      | Enable `Keep-Alive`.                                                                      | Optional          |
 |`Content-Length`  | Specify the request body length, when known.                                              | Optional          |
