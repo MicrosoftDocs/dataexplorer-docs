@@ -63,7 +63,7 @@ Cached query results will have another row appended to that table:
 
 * The row's `Key` column will contain the string `ServerCache`
 * The row's `Value` column will contain a property bag with two fields:
-  * `OriginalClientRequestId` - Specifies the original request's [ClientRequestId](../api/rest/request-properties.md#clientrequestid-x-ms-client-request-id).
+  * `OriginalClientRequestId` - Specifies the original request's [ClientRequestId](../api/netfx/client-request-properties.md#named-properties).
   * `OriginalStartedOn` - Specifies the original request's execution start time.
 
 ## Distribution
