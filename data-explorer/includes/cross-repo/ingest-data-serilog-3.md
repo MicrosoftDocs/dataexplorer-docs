@@ -120,6 +120,8 @@ export databaseName="<databaseName>"
 export tableName="<tableName>"
 ```
 
+---
+
 1. In your terminal, navigate to the root folder of the cloned repo and run the following .NET command to build the app:
 
     ```powershell
