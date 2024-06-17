@@ -34,7 +34,15 @@
         "Conceptual": "Content"
       },
       "build_entry_point": "docs",
-      "template_folder": "_themes"
+      "template_folder": "_themes",
+      "dependent_repositories": [
+        {
+          "path_to_root": "dataexplorer-docs",
+          "url": "https://github.com/MicrosoftDocs/dataexplorer-docs-pr",
+          "branch": "main",
+          "branch_mapping": {}
+        }
+      ]
     }
   ],
   "notification_subscribers": [
