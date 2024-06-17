@@ -1,0 +1,33 @@
+---
+ms.topic: include
+ms.date: 02/18/2024
+---
+
+<a name='create-an-azure-ad-app-registration'></a>
+
+## Create a Microsoft Entra service principal
+
+Microsoft Entra application authentication is used for applications that need to access your KQL database table without a user present. To ingest data using the Serilog connector, you need to create and register a Microsoft Entra service principal, and then authorize this principal as the identity used by the connector to ingest data to your KQL database.
+
+The Microsoft Entra service principal can be created through the [Azure portal](/azure/active-directory/develop/howto-create-service-principal-portal) or programatically, as in the following example.
+
+You'll later grant permissions for this service principal to access Kusto resources.
+<a name='grant-the-azure-ad-app-permissions'></a>
+
+[!INCLUDE [entra-service-principal](../entra-service-principal.md)]
+
+## Create a target table and ingestion mapping
+
+Create a target table for the incoming data and an ingestion mapping to map the ingested data columns to the columns in the target table. In the following steps, the table schema and mapping correspond to the data sent from the [sample app](#run-the-sample-app).
+
+1. In your query editor, run the following [table creation command](kusto/management/create-table-command.md), replacing the placeholder *TableName* with the name of the target table:
+
+    ```kusto
+    .create table <TableName> (Timestamp: datetime, Level: string, Message: string, Exception: string, Properties: dynamic, Position: dynamic, Elapsed: int)
+    ```
+
+1. Run the following [ingestion mapping command](kusto/management/create-ingestion-mapping-command.md), replacing the placeholders *TableName* with the target table name and *TableNameMapping* with the name of the ingestion mapping:
+
+    ```kusto
+    .create table <TableName> ingestion csv mapping '<TableNameMapping>' '[{"Name":"Timestamp","DataType":"","Ordinal":"0","ConstValue":null},{"Name":"Level","DataType":"","Ordinal":"1","ConstValue":null},{"Name":"Message","DataType":"","Ordinal":"2","ConstValue":null},{"Name":"Exception","DataType":"","Ordinal":"3","ConstValue":null},{"Name":"Properties","DataType":"","Ordinal":"4","ConstValue":null},{"Name":"Position","DataType":"","Ordinal":"5","ConstValue":null},{"Name":"Elapsed","DataType":"","Ordinal":"6","ConstValue":null}]'
+    ```
