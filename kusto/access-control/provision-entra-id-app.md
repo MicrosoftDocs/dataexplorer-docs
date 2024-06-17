@@ -5,7 +5,7 @@ ms.reviewer: orspodek
 ms.topic: reference
 ms.date: 06/05/2024
 ---
-## Create Microsoft Entra application registration
+# Create Microsoft Entra application registration
 
 Microsoft Entra application authentication requires creating and registering an application with Microsoft Entra ID.
 A service principal is automatically created when the application registration is created in a Microsoft Entra tenant.
