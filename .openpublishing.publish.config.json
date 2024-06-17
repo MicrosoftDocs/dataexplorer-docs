@@ -34,15 +34,7 @@
         "Conceptual": "Content"
       },
       "build_entry_point": "docs",
-      "template_folder": "_themes",
-      "dependent_repositories": [
-        {
-          "path_to_root": "dataexplorer-docs",
-          "url": "https://github.com/MicrosoftDocs/dataexplorer-docs-pr",
-          "branch": "main",
-          "branch_mapping": {}
-        }
-      ]
+      "template_folder": "_themes"
     }
   ],
   "notification_subscribers": [
@@ -63,6 +55,12 @@
     {
       "path_to_root": "_themes.pdf",
       "url": "https://github.com/Microsoft/templates.docs.msft.pdf",
+      "branch": "main",
+      "branch_mapping": {}
+    },
+    {
+      "path_to_root": "data-explorer-docs",
+      "url": "https://github.com/MicrosoftDocs/dataexplorer-docs-pr",
       "branch": "main",
       "branch_mapping": {}
     }
