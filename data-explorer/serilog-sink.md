@@ -7,8 +7,6 @@ ms.reviewer: ramacg
 ---
 # Ingest data with the Serilog sink into Azure Data Explorer
 
-[!INCLUDE [real-time-analytics-connectors-note](includes/real-time-analytics-connectors-note.md)]
-
 [!INCLUDE [ingest-data-serilog](includes/cross-repo/ingest-data-serilog.md)]
 
 ## Prerequisites
