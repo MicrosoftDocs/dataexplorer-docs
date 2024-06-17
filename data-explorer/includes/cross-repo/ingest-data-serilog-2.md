@@ -20,13 +20,13 @@ You'll later grant permissions for this service principal to access Kusto resour
 
 Create a target table for the incoming data and an ingestion mapping to map the ingested data columns to the columns in the target table. In the following steps, the table schema and mapping correspond to the data sent from the [sample app](#run-the-sample-app).
 
-1. Run the following [table creation command](kusto/management/create-table-command.md) in your query editor, replacing the placeholder *TableName* with the name of the target table:
+1. Run the following [table creation command](../../kusto/management/create-table-command.md) in your query editor, replacing the placeholder *TableName* with the name of the target table:
 
     ```kusto
     .create table <TableName> (Timestamp: datetime, Level: string, Message: string, Exception: string, Properties: dynamic, Position: dynamic, Elapsed: int)
     ```
 
-1. Run the following [ingestion mapping command](kusto/management/create-ingestion-mapping-command.md), replacing the placeholders *TableName* with the target table name and *TableNameMapping* with the name of the ingestion mapping:
+1. Run the following [.create ingestion mapping command](../../kusto/management/create-ingestion-mapping-command.md), replacing the placeholders *TableName* with the target table name and *TableNameMapping* with the name of the ingestion mapping:
 
     ```kusto
     .create table <TableName> ingestion csv mapping '<TableNameMapping>' '[{"Name":"Timestamp","DataType":"","Ordinal":"0","ConstValue":null},{"Name":"Level","DataType":"","Ordinal":"1","ConstValue":null},{"Name":"Message","DataType":"","Ordinal":"2","ConstValue":null},{"Name":"Exception","DataType":"","Ordinal":"3","ConstValue":null},{"Name":"Properties","DataType":"","Ordinal":"4","ConstValue":null},{"Name":"Position","DataType":"","Ordinal":"5","ConstValue":null},{"Name":"Elapsed","DataType":"","Ordinal":"6","ConstValue":null}]'

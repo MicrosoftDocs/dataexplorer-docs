@@ -34,5 +34,5 @@ You'll need your Kusto cluster URI for the *TargetURI* value. The URI is in the 
 
 ## Related content
 
-* [Data connectors overview](connector-overview.md)
+* [Azure Data Explorer data ingestion overview](ingest-data-overview.md)
 * [Kusto Query Language (KQL) overview](kusto/query/index.md)

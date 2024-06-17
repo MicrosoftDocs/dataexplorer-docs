@@ -7,4 +7,4 @@ Serilog is a popular logging framework for .NET applications. Serilog allows dev
 
 This article shows how to ingest data with Serilog.
 
-For a complete list of data connectors, see [Data integrations overview](../integrate-data-overview?tabs=connectors)
+For a complete list of data connectors, see [Data integrations overview](../../integrate-data-overview.md).
