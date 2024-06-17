@@ -69,7 +69,7 @@ request.Headers.Set(HttpRequestHeader.Authorization, string.Format(CultureInfo.I
 
 ## Perform application authentication with MSAL
 
-The following code sample shows how to use MSAL to get an authorization token for your cluster. In this flow, no prompt is presented. The application must be registered with Microsoft Entra ID and have an app key or an X509v2 certificate issued by Microsoft Entra ID. To set up an application, see [Provision a Microsoft Entra application](../../../provision-azure-ad-app.md).
+The following code sample shows how to use MSAL to get an authorization token for your cluster. In this flow, no prompt is presented. The application must be registered with Microsoft Entra ID and have an app key or an X509v2 certificate issued by Microsoft Entra ID. To set up an application, see [Provision a Microsoft Entra application](../../access-control/provision-entra-id-app.md).
 
 ```csharp
 var kustoUri = "https://<clusterName>.<region>.kusto.windows.net";
@@ -99,8 +99,8 @@ In this scenario, an application is sent a Microsoft Entra access token for an a
 
 To perform on-behalf-of authentication:
 
-1. [Provision a Microsoft Entra application](../../../provision-azure-ad-app.md).
-2. Establish a trust relationship between the application and your cluster. To do so, follow the steps in [Configure delegated permissions](../../../provision-azure-ad-app.md#configure-delegated-permissions-for-the-application).
+1. [Provision a Microsoft Entra application](../../access-control/provision-entra-id-app.md).
+2. Establish a trust relationship between the application and your cluster. To do so, follow the steps in [Configure delegated permissions](../../access-control/provision-entra-id-app.md#configure-delegated-permissions-for-the-application).
 3. In your server code, use MSAL to perform the token exchange.
 
     ```csharp
@@ -135,7 +135,7 @@ Microsoft identity platform has detailed tutorials for different use cases such 
 
 To set up authentication for a web client:
 
-1. [Provision a Microsoft Entra application](../../../provision-azure-ad-app.md).
+1. [Provision a Microsoft Entra application](../../access-control/provision-entra-id-app.md).
 1. Configure the app as described in [MSAL.js 2.0 with auth code flow](/azure/active-directory/develop/scenario-spa-app-registration#redirect-uri-msaljs-20-with-auth-code-flow).
 1. Use the MSAL.js 2.0 library to sign in a user and authenticate to your cluster. Microsoft identity platform has detailed tutorials for different use cases such as [React](/azure/active-directory/develop/single-page-app-tutorial-01-register-app), [Angular](/azure/active-directory/develop/tutorial-v2-angular-auth-code), and [JavaScript](/azure/active-directory/develop/tutorial-v2-javascript-auth-code).
 
@@ -205,5 +205,5 @@ To set up authentication for a web client:
 ## Related content
 
 * [Authentication over HTTPs](authentication.md)
-* [Provision a Microsoft Entra application](../../../provision-azure-ad-app.md)
+* [Provision a Microsoft Entra application](../../access-control/provision-entra-id-app.md)
 * [Kusto client libraries](../../api/client-libraries.md)

@@ -52,11 +52,11 @@ Verify installation: In a command shell, run `dotnet sdk check` to check that th
 
   - If your app doesn't have a login experience, or you prefer to use the Kusto client library to prompt authentication, you need to set up an application registration with the necessary permissions:
   
-    1. [Create a Microsoft Entra application registration](../../../provision-azure-ad-app.md#create-microsoft-entra-application-registration).
+    1. [Create a Microsoft Entra application registration](../../access-control/provision-entra-id-app.md#create-microsoft-entra-application-registration).
     2. In the **Authentication** tab, select **+ Add a platform**. Then, select **Single-page application**.
     3. Enter the desired **Redirect URIs**, select the boxes for **Access tokens** and **ID tokens**, and select **Configure**. For more information on redirect URIs, see [Desktop app that calls web APIs](/entra/identity-platform/scenario-desktop-app-registration).
-    4. [Configure delegated permissions for the application](../../../provision-azure-ad-app.md#configure-delegated-permissions-for-the-application-registration).
-    5. [Grant the application access to your Azure Data Explorer database](../../../provision-azure-ad-app.md#grant-the-application-registration-access-to-an-azure-data-explorer-database).
+    4. [Configure delegated permissions for the application](../../access-control/provision-entra-id-app.md#configure-delegated-permissions-for-the-application-registration).
+    5. [Grant the application access to your Azure Data Explorer database](../../access-control/provision-entra-id-app.md#grant-the-application-registration-access-to-an-azure-data-explorer-database).
     6. In the **Overview** tab, copy the **Application (client) ID**.
 
     The examples throughout the following tutorials use the Kusto client library to prompt authentication.
@@ -85,7 +85,7 @@ The following table lists the client libraries and the corresponding package nam
 | Library Name | Description |
 |--|--|
 | Kusto Data library | Provides a client for connecting to clusters. Use the client library to [query data](../../query/index.md) or run [management commands](../../management/index.md). |
-| Kusto Ingest library | Provides a client for ingesting data into clusters. For more information, see [ingest data](../../../ingest-data-overview.md) into your cluster. |
+| Kusto Ingest library | Provides a client for ingesting data into clusters. For more information, see [Kusto Ingest library overview](../netfx/about-kusto-ingest.md) into your cluster. |
 
 Add the Kusto client libraries for your preferred language to your project, or use the package manager appropriate for your language to install the client libraries.
 
