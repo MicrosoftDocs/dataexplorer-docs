@@ -101,23 +101,23 @@ Use the sample log generator app as an example to show how to configure and use 
 ### [Windows](#tab/windows)
 
 ```powershell
-    $env:ingestionURI="<ingestionURI>"
-    $env:appId="<appId>"
-    $env:appKey="<appKey>"
-    $env:tenant="<tenant>"
-    $env:databaseName="<databaseName>"
-    $env:tableName="<tableName>"
+$env:ingestionURI="<ingestionURI>"
+$env:appId="<appId>"
+$env:appKey="<appKey>"
+$env:tenant="<tenant>"
+$env:databaseName="<databaseName>"
+$env:tableName="<tableName>"
 ```
 
 ### [Mac/Linux](#tab/linux)
 
 ```bash
-    export ingestionURI="<ingestionURI>"
-    export appId="<appId>"
-    export appKey="<appKey>"
-    export tenant="<tenant>"
-    export databaseName="<databaseName>"
-    export tableName="<tableName>"
+export ingestionURI="<ingestionURI>"
+export appId="<appId>"
+export appKey="<appKey>"
+export tenant="<tenant>"
+export databaseName="<databaseName>"
+export tableName="<tableName>"
 ```
 
     ---

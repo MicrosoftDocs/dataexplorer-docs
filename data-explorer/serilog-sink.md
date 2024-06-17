@@ -17,7 +17,7 @@ ms.reviewer: ramacg
 
 [!INCLUDE [ingest-data-serilog-2](includes/cross-repo/ingest-data-serilog-2.md)]
 
-You'll need your Kusto cluster URI for the *TargetURI* value. The URI is in the format *https://ingest-\<cluster>.\<region>.kusto.windows.net*. For more information, see [Add a cluster connection](../../add-cluster-connection.md#add-a-cluster-connection).
+You'll need your Kusto cluster URI for the *TargetURI* value. The URI is in the format *https://ingest-\<cluster>.\<region>.kusto.windows.net*. For more information, see [Add a cluster connection](add-cluster-connection.md#add-a-cluster-connection).
 
 [!INCLUDE [ingest-data-serilog-3](includes/cross-repo/ingest-data-serilog-3.md)]
 
