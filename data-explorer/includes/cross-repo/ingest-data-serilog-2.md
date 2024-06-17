@@ -20,7 +20,7 @@ You'll later grant permissions for this service principal to access Kusto resour
 
 Create a target table for the incoming data and an ingestion mapping to map the ingested data columns to the columns in the target table. In the following steps, the table schema and mapping correspond to the data sent from the [sample app](#run-the-sample-app).
 
-1. In your query editor, run the following [table creation command](kusto/management/create-table-command.md), replacing the placeholder *TableName* with the name of the target table:
+1. Run the following [table creation command](kusto/management/create-table-command.md) in your query editor, replacing the placeholder *TableName* with the name of the target table:
 
     ```kusto
     .create table <TableName> (Timestamp: datetime, Level: string, Message: string, Exception: string, Properties: dynamic, Position: dynamic, Elapsed: int)

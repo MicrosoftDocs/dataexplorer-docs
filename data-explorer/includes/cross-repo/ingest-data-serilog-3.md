@@ -5,7 +5,7 @@ ms.date: 02/18/2024
 
 ## Use Serilog in your ASP.NET Core application
 
-In this section, you'll integrate Serilog into your ASP.Net Core application to log data and send it to your KQL table.
+This section explains how to integrate Serilog into your ASP.NET Core application to log data and send it to your KQL table.
 
 ### Install the package
 
@@ -65,7 +65,7 @@ Use the following steps to:
     log.Debug("Processed {@Position} in {Elapsed:000} ms. ", position, elapsedMs);
     ```
 
-1. Build and run the app. For example, if you are using Visual Studio, press F5.
+1. Build and run the app. For example, if you're using Visual Studio, press F5.
 
 1. Verify that the data is in your KQL table. Run the following query replacing the placeholder with the name of the table that used earlier:
 
