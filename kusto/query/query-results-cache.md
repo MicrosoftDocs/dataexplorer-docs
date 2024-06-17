@@ -31,9 +31,9 @@ The query results cache returns results only for queries that are considered "id
 * The two queries have the same representation (as UTF-8 strings).
 * The two queries are made to the same database.
 * The two queries share the same [client request properties](../api/netfx/client-request-properties.md). The following properties are ignored for caching purposes:
-  * [ClientRequestId](../api/netfx/request-properties.md#clientrequestid-x-ms-client-request-id)
-  * [Application](../api/netfx/request-properties.md#application-x-ms-app)
-  * [User](../api/netfx/request-properties.md#user-x-ms-user)
+  * [ClientRequestId](../api/rest/request-properties.md#clientrequestid-x-ms-client-request-id)
+  * [Application](../api/rest/request-properties.md#application-x-ms-app)
+  * [User](../api/rest/request-properties.md#user-x-ms-user)
 
 ### Incompatible queries
 
@@ -63,7 +63,7 @@ Cached query results will have another row appended to that table:
 
 * The row's `Key` column will contain the string `ServerCache`
 * The row's `Value` column will contain a property bag with two fields:
-  * `OriginalClientRequestId` - Specifies the original request's [ClientRequestId](../api/netfx/request-properties.md#clientrequestid-x-ms-client-request-id).
+  * `OriginalClientRequestId` - Specifies the original request's [ClientRequestId](../api/rest/request-properties.md#clientrequestid-x-ms-client-request-id).
   * `OriginalStartedOn` - Specifies the original request's execution start time.
 
 ## Distribution
@@ -76,7 +76,7 @@ The following management and observability commands are supported:
 
 * [Show query results cache](../management/show-query-results-cache-command.md): Returns statistics related to the query results cache.
 * [Clear query results cache](../management/clear-query-results-cache-command.md): Clears query results cache.
-* Refresh query cache entry: a specific query cache entry can be refreshed using `query_results_cache_force_refresh` (OptionQueryResultsCacheForceRefresh)[client request property](../api/netfx/request-properties.md). When set to `true`, this command will force query results cache to be refreshed also when an existing cache is present. This process is useful in scenarios that require queries results to be available for querying. This property must be used in combination with 'query_results_cache_max_age', and sent via ClientRequestProperties object. The property can't be part of a 'set' statement.
+* Refresh query cache entry: a specific query cache entry can be refreshed using `query_results_cache_force_refresh` (OptionQueryResultsCacheForceRefresh)[client request property](../api/rest/request-properties.md). When set to `true`, this command will force query results cache to be refreshed also when an existing cache is present. This process is useful in scenarios that require queries results to be available for querying. This property must be used in combination with 'query_results_cache_max_age', and sent via ClientRequestProperties object. The property can't be part of a 'set' statement.
 
 ## Capacity
 
@@ -96,7 +96,7 @@ The shard level query results cache is automatically enabled when the `Query res
 `set` `query_results_cache_per_shard`; *Query*
 
 > [!NOTE]
-> This option can be set in the query text or as a [client request property](../api/netfx/request-properties.md).
+> This option can be set in the query text or as a [client request property](../api/rest/request-properties.md).
 
 [!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 

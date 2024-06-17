@@ -30,7 +30,7 @@ You must have at least [Database Admin](../../access-control/role-based-access-c
 | *propertyName*, *propertyValue* | `string` | | A comma-separated list of optional [properties](#supported-properties).|
 
 > [!NOTE]
-> If the target external table uses [impersonation](../../api/connection-strings/storage-authentication-methods.md#impersonation) authentication, you must specify a managed identity to run the continuous export. For more information, see [Use a managed identity to run a continuous export job](continuous-export-with-managed-identity.md).
+> If the target external table uses [impersonation](../../api/connection-strings/storage-connection-strings.md#impersonation) authentication, you must specify a managed identity to run the continuous export. For more information, see [Use a managed identity to run a continuous export job](continuous-export-with-managed-identity.md).
 
 ## Supported properties
 

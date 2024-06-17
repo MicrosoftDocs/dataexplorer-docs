@@ -104,7 +104,7 @@ Select one of the following tabs to set up an Azure Storage or SQL Server extern
 
 ### [Azure Storage](#tab/azure-storage)
 
-1. Create a connection string based on the [storage connection string templates](../../api/connection-strings/storage-connection-strings.md#storage-connection-string-templates). This string indicates the resource to access and its authentication information. For continuous export flows, we recommend [impersonation authentication](../../api/connection-strings/storage-authentication-methods.md#impersonation).
+1. Create a connection string based on the [storage connection string templates](../../api/connection-strings/storage-connection-strings.md#storage-connection-string-templates). This string indicates the resource to access and its authentication information. For continuous export flows, we recommend [impersonation authentication](../../api/connection-strings/storage-connection-strings.md#impersonation).
 
 1. Run the [.create or .alter external table](../external-sql-tables.md) to create the table. Use the connection string from the previous step as the *storageConnectionString* argument.
 
@@ -127,7 +127,7 @@ Select one of the following tabs to set up an Azure Storage or SQL Server extern
 
 ### [SQL Server](#tab/sql-server)
 
-1. Create a SQL Server connection string. This string indicates the resource to access and its authentication information. For continuous export flows, we recommend [Microsoft Entra integrated authentication](../../api/connection-strings/sql-authentication-methods.md#azure-ad-integrated-impersonation), which is impersonation authentication.
+1. Create a SQL Server connection string. This string indicates the resource to access and its authentication information. For continuous export flows, we recommend [Microsoft Entra integrated authentication](../../api/connection-strings/storage-connection-strings.md#impersonation), which is impersonation authentication.
 
 1. Run the [.create or .alter external table](../external-sql-tables.md) to create the table. Use the connection string from the previous step as the *sqlServerConnectionString* argument.
 

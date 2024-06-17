@@ -69,14 +69,14 @@ Use the [`.show continuous export failures`](show-continuous-failures.md) comman
 
 ### Resource consumption
 
-* The impact of the continuous export on the cluster depends on the query the continuous export is running. Most resources, such as CPU and memory, are consumed by the query execution. 
+* The impact of the continuous export on the cluster depends on the query the continuous export is running. Most resources, such as CPU and memory, are consumed by the query execution.
 * The number of export operations that can run concurrently is limited by the cluster's data export capacity. For more information, see [Management commands throttling](../../management/capacity-policy.md#management-commands-throttling). If the cluster doesn't have sufficient capacity to handle all continuous exports, some will start lagging behind.
-* The [show commands-and-queries command](../commands-and-queries.md) can be used to estimate the resources consumption. 
+* The [show commands-and-queries command](../commands-and-queries.md) can be used to estimate the resources consumption.
   * Filter on `| where ClientActivityId startswith "RunContinuousExports"` to view the commands and queries associated with continuous export.
 
 ## Export historical data
 
-Continuous export starts exporting data only from the point of its creation. Records ingested before that time should be exported separately using the non-continuous [export command](export-data-to-an-external-table.md). Historical data might be too large to be exported in a single export command. If needed, partition the query into several smaller batches. 
+Continuous export starts exporting data only from the point of its creation. Records ingested before that time should be exported separately using the non-continuous [export command](export-data-to-an-external-table.md). Historical data might be too large to be exported in a single export command. If needed, partition the query into several smaller batches.
 
 To avoid duplicates with data exported by continuous export, use `StartCursor` returned by the [show continuous export command](show-continuous-export.md) and export only records `where cursor_before_or_at` the cursor value. For example:
 
@@ -100,7 +100,7 @@ Followed by:
 To create a continuous export job with a query that references a table with [Row Level Security policy](../../management/row-level-security-policy.md), you must:
 
 * Provide a managed identity as part of the continuous export configuration. For more information, see [Use a managed identity to run a continuous export job](continuous-export-with-managed-identity.md).
-* Use [impersonation](../../api/connection-strings/storage-authentication-methods.md#impersonation) authentication for the external table to which the data is exported.
+* Use [impersonation](../../api/connection-strings/storage-connection-strings.md#impersonation) authentication for the external table to which the data is exported.
 
 ## Continuous export to delta table - Preview
 
@@ -114,7 +114,7 @@ Continuous export to a delta table is currently in preview.
 To define continuous export to a delta table, do the following steps:
 
 1. Create an external delta table, as described in [Create and alter delta external tables on Azure Storage](../external-tables-delta-lake.md).
-    
+
     > [!NOTE]
     > If the schema isn't provided, Kusto will try infer it automatically if there is already a delta table defined in the target storage container. <br>
     > Delta table partitioning isn't supported.
@@ -123,14 +123,14 @@ To define continuous export to a delta table, do the following steps:
 
     > [!IMPORTANT]
     > The schema of the delta table must be in sync with the continuous export query.  If the underlying delta table changes, the export might start failing with unexpected behavior.
-    
+
 ## Limitations
 
 **General**:
 
 * The following formats are allowed on target tables: `CSV`, `TSV`, `JSON`, and `Parquet`.
 * Continuous export isn't designed to work over [materialized views](../materialized-views/materialized-view-overview.md), since a materialized view might be updated, while data exported to storage is always append only and never updated.
-* Continuous export cannot be created on [follower databases](/azure/data-explorer/follower) since follower databases are read-only and continuous export requires write operations.  
+* Continuous export cannot be created on [follower databases](/azure/data-explorer/follower) since follower databases are read-only and continuous export requires write operations.
 * Records in source table must be ingested to the table directly, using an [update policy](../update-policy.md), or [ingest from query commands](../data-ingestion/ingest-from-query.md). If records are moved into the table using [.move extents](../move-extents.md) or using [.rename table](../rename-table-command.md), continuous export might not process these records. See the limitations described in the [Database Cursors](../database-cursor.md#restrictions) page.
 * If the artifacts used by continuous export are intended to trigger Event Grid notifications, see the [known issues section in the Event Grid documentation](/azure/data-explorer/ingest-data-event-grid-overview.md#known-event-grid-issues).
 

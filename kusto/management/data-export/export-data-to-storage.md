@@ -56,10 +56,10 @@ The following table lists the supported authentication methods and the permissio
 
 |Authentication method|Azure Blob Storage / Data Lake Storage Gen2|Data Lake Storage Gen1|
 |--|--|--|
-|[Impersonation](../../api/connection-strings/storage-authentication-methods.md#impersonation)|Storage Blob Data Contributor|Contributor|
-|[Shared Access (SAS) token](../../api/connection-strings/storage-authentication-methods.md#shared-access-sas-token)|Write|Write|
-|[Microsoft Entra access token](../../api/connection-strings/storage-authentication-methods.md#azure-ad-access-token)|No extra permissions required|No extra permissions required|
-|[Storage account access key](../../api/connection-strings/storage-authentication-methods.md#storage-account-access-key)|No extra permissions required|No extra permissions required|
+|[Impersonation](../../api/connection-strings/storage-connection-strings.md#impersonation)|Storage Blob Data Contributor|Contributor|
+|[Shared Access (SAS) token](../../api/connection-strings/storage-connection-strings.md#shared-access-sas-token)|Write|Write|
+|[Microsoft Entra access token](../../api/connection-strings/storage-connection-strings.md#microsoft-entra-access-token)|No extra permissions required|No extra permissions required|
+|[Storage account access key](../../api/connection-strings/storage-connection-strings.md#storage-account-access-key)|No extra permissions required|No extra permissions required|
 
 ## Returns
 
@@ -128,7 +128,7 @@ When the number of extents/nodes is large, this may lead to high load on storage
 
 * Increase the number of storage accounts provided to the export command or to the [external table definition](../external-tables-azure-storage.md) (the load will be evenly distributed between the accounts).
 * Reduce the concurrency by setting the distribution hint to `per_node` (see command properties).
-* Reduce concurrency of number of nodes exporting by setting the [client request property](../../api/netfx/request-properties.md) `query_fanout_nodes_percent` to the desired concurrency (percent of nodes). The property can be set as part of the export query. For example, the following command limits the number of nodes writing to storage concurrently to 50% of the cluster nodes:
+* Reduce concurrency of number of nodes exporting by setting the [client request property](../../api/rest/request-properties.md) `query_fanout_nodes_percent` to the desired concurrency (percent of nodes). The property can be set as part of the export query. For example, the following command limits the number of nodes writing to storage concurrently to 50% of the cluster nodes:
 
     ```kusto
     .export async  to csv
@@ -142,7 +142,7 @@ When the number of extents/nodes is large, this may lead to high load on storage
         ExportQuery
     ```
 
-* Reduce concurrency of number of threads exporting in each node when using per shard export, by setting the [client request property](../../api/netfx/request-properties.md) `query_fanout_threads_percent` to the desired concurrency (percent of threads). The property can be set as part of the export query. For example, the following command limits the number of threads writing to storage concurrently to 50% on each of the cluster nodes:
+* Reduce concurrency of number of threads exporting in each node when using per shard export, by setting the [client request property](../../api/rest/request-properties.md) `query_fanout_threads_percent` to the desired concurrency (percent of threads). The property can be set as part of the export query. For example, the following command limits the number of threads writing to storage concurrently to 50% on each of the cluster nodes:
 
     ```kusto
     .export async  to csv

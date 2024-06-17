@@ -20,7 +20,7 @@ ms.date: 09/12/2023
 For example, to send a management command ("management") to a service endpoint,
 use the following request line:
 
-```
+```txt
 POST https://help.kusto.windows.net/v1/rest/mgmt HTTP/1.1
 ```
 
@@ -114,7 +114,7 @@ This example shows how to create a request that sends the query above, using [cu
 
     Replace `AAD_TENANT_NAME_OR_ID`, `AAD_APPLICATION_ID`, and `AAD_APPLICATION_KEY` with the relevant values, after having set up [Microsoft Entra application authentication](../../../provision-azure-ad-app.md)
 
-    ```
+    ```bash
     curl "https://login.microsoftonline.com/AAD_TENANT_NAME_OR_ID/oauth2/token" \
       -F "grant_type=client_credentials" \
       -F "resource=https://help.kusto.windows.net" \
@@ -124,7 +124,7 @@ This example shows how to create a request that sends the query above, using [cu
 
     This code snippet will provide you with the bearer token.
 
-    ```
+    ```json
     {
       "token_type": "Bearer",
       "expires_in": "3599",
@@ -138,7 +138,7 @@ This example shows how to create a request that sends the query above, using [cu
 
 1. Use the bearer token in your request to the query endpoint.
 
-    ```
+    ```bash
     curl -d '{"db":"Samples","csl":"print Test=\"Hello, World!\"","properties":"{\"Options\":{\"queryconsistency\":\"strongconsistency\"}}"}"' \
     -H "Accept: application/json" \
     -H "Authorization: Bearer eyJ0...uXOQ" \
@@ -176,4 +176,4 @@ In the following example body, the query in the `csl` field declares two paramet
 }
 ```
 
-For more information, see [Query parameters](request-properties.md#query-parameters).
+For more information, see [Supported request properties](request-properties.md#supported-request-properties).

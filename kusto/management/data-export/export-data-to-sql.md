@@ -35,14 +35,14 @@ You must have at least [Table Admin](../../access-control/role-based-access-cont
 |`firetriggers`     |`true` or `false`|If `true`, instructs the target system to fire INSERT triggers defined on the SQL table. The default is `false`. For more information, see [BULK INSERT](/sql/t-sql/statements/bulk-insert-transact-sql) and [System.Data.SqlClient.SqlBulkCopy](/dotnet/api/system.data.sqlclient.sqlbulkcopy).|
 |`createifnotexists`|`true` or `false`|If `true`, the target SQL table is created if it doesn't already exist; the `primarykey` property must be provided in this case to indicate the result column that is the primary key. The default is `false`.|
 |`primarykey`       |                 |If `createifnotexists` is `true`, this property indicates the name of the column in the result that will be used as the SQL table's primary key if it's created by this command.|
-|`persistDetails`   |`bool`           |Indicates that the command should persist its results (see `async` flag). Defaults to `true` in async runs, but can be turned off if the caller doesn't require the results). Defaults to `false` in synchronous executions, but can be turned on. |
+|`persistDetails`   |`bool`           |Indicates that the command should persist its results (see `async` flag). Defaults to `true` in async runs, but can be turned off if the caller doesn't require the results. Defaults to `false` in synchronous executions, but can be turned on. |
 |`token`            |`string`         |The Microsoft Entra access token that Kusto will forward to the SQL endpoint for authentication. When set, the SQL connection string shouldn't include authentication information like `Authentication`, `User ID`, or `Password`.|
 
 ## Authentication and authorization
 
 The authentication method is based on the connection string provided, and the permissions required to access the SQL database vary depending on the authentication method.
 
-The supported authentication methods for exporting data to SQL are [Microsoft Entra integrated (impersonation) authentication](../../api/connection-strings/sql-authentication-methods.md#azure-ad-integrated-impersonation) and [username/password authentication](../../api/connection-strings/storage-authentication-methods.md#shared-access-sas-token). For impersonation authentication, be sure that the principal has the following permissions on the database:
+The supported authentication methods for exporting data to SQL are [Microsoft Entra integrated (impersonation) authentication](../../api/connection-strings/storage-connection-strings.md#impersonation) and [username/password authentication](../../api/connection-strings/storage-connection-strings.md#shared-access-sas-token). For impersonation authentication, be sure that the principal has the following permissions on the database:
 
 * Existing table: table UPDATE and INSERT
 * New table: CREATE, UPDATE, and INSERT

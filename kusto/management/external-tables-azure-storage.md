@@ -54,11 +54,11 @@ The following table lists the supported authentication methods for Azure Storage
 
 | Authentication method | Azure Blob Storage / Data Lake Storage Gen2 | Data Lake Storage Gen1 |
 |--|--|--|
-|[Impersonation](../api/connection-strings/storage-authentication-methods.md#impersonation)|**Read permissions:** Storage Blob Data Reader<br/>**Write permissions:** Storage Blob Data Contributor|**Read permissions:** Reader<br/>**Write permissions:** Contributor|
-|[Managed identity](../api/connection-strings/storage-authentication-methods.md#managed-identity)|**Read permissions:** Storage Blob Data Reader<br/>**Write permissions:** Storage Blob Data Contributor|**Read permissions:** Reader<br/>**Write permissions:** Contributor|
-|[Shared Access (SAS) token](../api/connection-strings/storage-authentication-methods.md#shared-access-sas-token)|**Read permissions:** List + Read<br/>**Write permissions:** Write|This authentication method isn't supported in Gen1.|
-|[Microsoft Entra access token](../api/connection-strings/storage-authentication-methods.md#azure-ad-access-token)|No additional permissions required.|No additional permissions required.|
-|[Storage account access key](../api/connection-strings/storage-authentication-methods.md#storage-account-access-key)|No additional permissions required.|This authentication method isn't supported in Gen1.|
+|[Impersonation](../api/connection-strings/storage-connection-strings.md#impersonation)|**Read permissions:** Storage Blob Data Reader<br/>**Write permissions:** Storage Blob Data Contributor|**Read permissions:** Reader<br/>**Write permissions:** Contributor|
+|[Managed identity](../api/connection-strings/storage-connection-strings.md#managed-identity)|**Read permissions:** Storage Blob Data Reader<br/>**Write permissions:** Storage Blob Data Contributor|**Read permissions:** Reader<br/>**Write permissions:** Contributor|
+|[Shared Access (SAS) token](../api/connection-strings/storage-connection-strings.md#shared-access-sas-token)|**Read permissions:** List + Read<br/>**Write permissions:** Write|This authentication method isn't supported in Gen1.|
+|[Microsoft Entra access token](../api/connection-strings/storage-connection-strings.md#microsoft-entra-access-token)|No additional permissions required.|No additional permissions required.|
+|[Storage account access key](../api/connection-strings/storage-connection-strings.md#storage-account-access-key)|No additional permissions required.|This authentication method isn't supported in Gen1.|
 
 ## Partitions formatting
 

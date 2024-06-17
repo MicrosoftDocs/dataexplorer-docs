@@ -23,7 +23,7 @@ in the form of default query limits. If you're considering removing these limits
   * For example, for a cluster that's set up on D14v2 SKU, where each machine has 16 vCores, the default limit is `16 cores x10 = 160`.
 * The default value can be changed by configuring the [request rate limit policy](../management/request-rate-limit-policy.md) of the `default` workload group.
   * The actual number of requests that can run concurrently on a cluster depends on various factors. The most dominant factors are cluster SKU, cluster's available resources, and usage patterns. The policy can be configured based on load tests performed on production-like usage patterns.
- 
+
  For more information, see [Optimize for high concurrency with Azure Data Explorer](/azure/data-explorer/high-concurrency.md).
 
 ## Limit on result set size (result truncation)
@@ -35,13 +35,13 @@ records to **64 MB**. When either of these limits is exceeded, the
 query fails with a "partial query failure". Exceeding overall data size
 will generate an exception with the message:
 
-```
+```txt
 The Kusto DataEngine has failed to execute a query: 'Query result set has exceeded the internal data size limit 67108864 (E_QUERY_RESULT_SET_TOO_LARGE).'
 ```
 
 Exceeding the number of records will fail with an exception that says:
 
-```
+```txt
 The Kusto DataEngine has failed to execute a query: 'Query result set has exceeded the internal record count limit 500000 (E_QUERY_RESULT_SET_TOO_LARGE).'
 ```
 
@@ -86,8 +86,8 @@ Removing the result truncation limit means that you intend to move bulk data out
 
 You can remove the result truncation limit either for export purposes by using the `.export` command or for later aggregation. If you choose later aggregation, consider aggregating by using Kusto.
 
-Kusto provides a number of client libraries that can handle "infinitely large" results by streaming them to the caller. 
-Use one of these libraries, and configure it to streaming mode. 
+Kusto provides a number of client libraries that can handle "infinitely large" results by streaming them to the caller.
+Use one of these libraries, and configure it to streaming mode.
 For example, use the .NET Framework client (Microsoft.Azure.Kusto.Data) and either set the streaming property of the connection string to *true*, or use the *ExecuteQueryV2Async()* call that always streams results. For an example of how to use *ExecuteQueryV2Async()*, see the [HelloKustoV2](https://github.com/Azure/azure-kusto-samples-dotnet/tree/master/client/HelloKustoV2) application.
 
 You may also find the C# streaming ingestion sample application helpful.
@@ -192,7 +192,7 @@ management commands. This value can be increased if needed (capped at one hour).
   or per-connection settings. For example, in Kusto.Explorer, use **Tools** &gt; **Options*** &gt;
   **Connections** &gt; **Query Server Timeout**.
 * Programmatically, SDKs support setting the timeout through the `servertimeout`
-  property. For example, in .NET SDK this is done through a [client request property](../api/netfx/request-properties.md),
+  property. For example, in .NET SDK this is done through a [client request property](../api/rest/request-properties.md),
   by setting a value of type `System.TimeSpan`.
 
 **Notes about timeouts**
@@ -205,7 +205,6 @@ management commands. This value can be increased if needed (capped at one hour).
 * Also on the client side, the actual timeout value used is slightly higher
    than the server timeout value requested by the user. This difference, is to allow for network latencies.
 * To automatically use the maximum allowed request timeout, set the client request property `norequesttimeout` to `true`.
-
 
 <!-- //TODO put in moniker pivot -->
 
@@ -244,9 +243,9 @@ The following examples show common query patterns that can cause the query to ex
 * a long list of binary operators that are chained together. For example:
 
 ```kusto
-T 
-| where Column == "value1" or 
-        Column == "value2" or 
+T
+| where Column == "value1" or
+        Column == "value2" or
         .... or
         Column == "valueN"
 ```
@@ -254,7 +253,7 @@ T
 For this specific case, rewrite the query using the [`in()`](../query/in-operator.md) operator.
 
 ```kusto
-T 
+T
 | where Column in ("value1", "value2".... "valueN")
 ```
 
