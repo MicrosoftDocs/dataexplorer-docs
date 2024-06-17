@@ -55,7 +55,7 @@ Use the following steps to:
 
     For more options, see [Sink Options](https://github.com/Azure/serilog-sinks-azuredataexplorer#options).
 
-1. Send data to Azure Data Explorer using the Serilog sink. For example:
+1. Send data to your KQL database using the Serilog sink. For example:
 
     ```csharp
     log.Verbose("Processed {@Position} in {Elapsed:000} ms.", position, elapsedMs);
