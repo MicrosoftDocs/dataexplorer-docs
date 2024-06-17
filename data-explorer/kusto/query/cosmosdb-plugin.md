@@ -23,7 +23,7 @@ The `cosmosdb_sql_request` plugin sends a SQL query to an Azure Cosmos DB SQL ne
 
 | Name | Type | Required | Description |
 |---|---|---|---|
-| *ConnectionString* | `string` |  :heavy_check_mark: | The connection string that points to the Azure Cosmos DB collection to query. It must include *AccountEndpoint*, *Database*, and *Collection*. It may include *AccountKey* if a master key is used for authentication. For more information, see [Authentication and authorization](#authentication-and-authorization).</br> **Example:** `'AccountEndpoint=https://cosmosdbacc.documents.azure.com/ ;Database=MyDatabase;Collection=MyCollection;AccountKey=' h'R8PM...;'` |
+| *ConnectionString* | `string` |  :heavy_check_mark: | The connection string that points to the Azure Cosmos DB collection to query. It must include *AccountEndpoint*, *Database*, and *Collection*. It might include *AccountKey* if a master key is used for authentication. For more information, see [Authentication and authorization](#authentication-and-authorization).</br> **Example:** `'AccountEndpoint=https://cosmosdbacc.documents.azure.com/ ;Database=MyDatabase;Collection=MyCollection;AccountKey=' h'R8PM...;'` |
 | *SqlQuery*| `string` |  :heavy_check_mark: | The query to execute. |
 | *SqlParameters* | `dynamic` | | The property bag object to pass as parameters along with the query. Parameter names must begin with `@`. |
 | *OutputSchema* | | | The names and types of the expected columns of the `cosmosdb_sql_request` plugin output. Use the following syntax: `(` *ColumnName* `:` *ColumnType* [`,` ...] `)`. Specifying this parameter enables multiple query optimizations. |
@@ -109,6 +109,19 @@ evaluate cosmosdb_sql_request(
     dynamic({'@param0': datetime(2019-04-16 16:47:26.7423305)}),
     dynamic({'preferredLocations': ['East US']})) : (Id:long, Name:string, Column0: datetime) 
 | where lastName == 'Smith'
+```
+
+### Query Azure Cosmos DB using Azure Resource Manager resource ID for authentication
+
+The following example uses the Azure Resource Manager resource ID for authentication and the Microsoft Entra token of the requesting principal, since a token isn't specified. It sends a SQL query while selecting only specific columns and specifies explicit schema definitions.
+
+```kusto
+evaluate cosmosdb_sql_request(
+    'AccountEndpoint=https://cosmosdbacc.documents.azure.com/;Database=MyDatabase;Collection=MyCollection;',
+    'SELECT c.Id, c.Name, c.City FROM c',
+    armResourceId='/subscriptions/a0cd6542-7eaf-43d2-bbdd-b678a869aad1/resourceGroups/cosmoddbresourcegroup/providers/Microsoft.DocumentDb/databaseAccounts/cosmosdbacc'
+) : (Id:long, Name:string, City:string)
+
 ```
 
 ::: zone-end
