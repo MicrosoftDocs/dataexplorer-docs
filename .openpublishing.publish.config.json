@@ -57,12 +57,6 @@
       "url": "https://github.com/Microsoft/templates.docs.msft.pdf",
       "branch": "main",
       "branch_mapping": {}
-    },
-    {
-      "path_to_root": "data-explorer-docs",
-      "url": "https://github.com/MicrosoftDocs/dataexplorer-docs-pr",
-      "branch": "main",
-      "branch_mapping": {}
     }
   ],
   "branch_target_mapping": {
