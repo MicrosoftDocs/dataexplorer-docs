@@ -41,7 +41,6 @@
         ],
         "src": "./",
         "group": "gr-kusto",
-        "dest": "kusto"
       }
     ],
     "groups": {
@@ -126,6 +125,7 @@
     },
     "fileMetadata": {
       "monikerRange": {
+        "concepts/**": "microsoft-fabric || azure-data-explorer",
         "management/**": "microsoft-fabric || azure-data-explorer"
       }
     },
