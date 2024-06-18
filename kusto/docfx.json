@@ -138,10 +138,6 @@
       "services": "kusto",
       "titleSuffix": "Kusto Query Language"
     },
-    "fileMetadata": {  
-      "monikerRange": {
-        "report/extend-analytics/**": ">= azure-devops-2019"
-    }
     "fileMetadata": {
       "monikerRange": {
         "management/**/*.md": "=microsoft-fabric || =azure-data-explorer"
