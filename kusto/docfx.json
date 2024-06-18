@@ -24,7 +24,7 @@
     ],
     "groups": {
       "gr-kusto": {
-        "moniker_range": "<=microsoft-fabric",
+        "moniker_range": ">=microsoft-fabric",
         "dest": "kusto-docs"
       }
     },
