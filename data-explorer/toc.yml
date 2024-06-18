@@ -701,6 +701,8 @@ items:
             href: pricing-calculator.md
           - name: Reserved capacity
             href: pricing-reserved-capacity.md
+          - name: Understand reservation charges
+            href: pricing-reservation-discount.md
       - name: Service updates
         href: https://azure.microsoft.com/updates/?product=data-explorer
       - name: Find a partner
