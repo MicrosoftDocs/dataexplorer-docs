@@ -10,6 +10,9 @@ ms.date: 05/05/2021
 
 # Azure DevOps Task for Azure Data Explorer
 
+> Note: ADX Extension tasks now support Workload Identity Federation(WIF) and ManagedIdentity(MI) authentication via Azure Resource Manager(ARM). A working demo can be found in these video sessions [WIF and MI Implementation](https://microsoft.sharepoint.com/:v:/t/Kusto/Internal/EcHGQ2SpEJZEnTR5M1tmGPIBuTrGVkv9VpJ2Nzh3qq3xUA?e=m5CAhr&xsdata=MDV8MDJ8YXNhaGFybkBtaWNyb3NvZnQuY29tfGRhMTFmNzcwMTg1MzRkMDU3MGMyMDhkYzdmMTU3ZGU0fDcyZjk4OGJmODZmMTQxYWY5MWFiMmQ3Y2QwMTFkYjQ3fDF8MHw2Mzg1MjQ5Nzc3NTM5MzQwODF8VW5rbm93bnxUV0ZwYkdac2IzZDhleUpXSWpvaU1DNHdMakF3TURBaUxDSlFJam9pVjJsdU16SWlMQ0pCVGlJNklrMWhhV3dpTENKWFZDSTZNbjA9fDB8fHw%3d&sdata=M1NWelIycGd4WlNteVZJNlJlR1BOMlVFN0E0b3g4NnZabUhocXFTL00yQT0%3d) and [Certificate based authentication](https://microsoftapc-my.sharepoint.com/:v:/g/personal/asaharn_microsoft_com/EcXb_04kfz1Ejq3veHdFJBYBRGn9azsgbpRVtyWe566-ow?e=itb1Bl&nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJTdHJlYW1XZWJBcHAiLCJyZWZlcnJhbFZpZXciOiJTaGFyZURpYWxvZy1MaW5rIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXcifX0%3D) 
+
+
 [Azure DevOps Services](https://azure.microsoft.com/services/devops/) provides development collaboration tools such as high-performance pipelines, free private Git repositories, configurable Kanban boards, and extensive automated and continuous testing capabilities. [Azure Pipelines](https://azure.microsoft.com/services/devops/pipelines/) is an Azure DevOps capability that enables you to manage CI/CD to deploy your code with high-performance pipelines that work with any language, platform, and cloud.
 [Azure Data Explorer - Pipeline Tools](https://marketplace.visualstudio.com/items?itemName=Azure-Kusto.PublishToADX) is the Azure Pipelines task that enables you to create release pipelines and deploy your database changes to your Azure Data Explorer databases. It's available for free in the [Visual Studio Marketplace](https://marketplace.visualstudio.com/).
 This extension includes 3 basic tasks:
@@ -109,8 +112,9 @@ The are three ways to run admin commands against cluster in a task.
         * **Display name**: Name of the task. For example, **`Deploy <FOLDER>`** where `<FOLDER>` is the name of the folder for the deployment task you are creating.
         * **File path**: For each folder, specify the path as `*/<FOLDER>/*.csl` where `<FOLDER>` is the relevant folder for the task.
         * **Endpoint URL**: Specify the `EndPoint URL` variable created in previous step.
-        * **Use Service Endpoint**: Select this option.
-        * **Service Endpoint**: Select an existing service endpoint or create a new one (**+ New**) providing the following information in the **Add Azure Data Explorer service connection** window:
+        * **AuthType**: Select `Kusto Service Connection` out of available authentication, ARM Service Connection, Kusto Service Connection or AAD AppId/AppKey and Certificate Authentication.
+            * **Service Endpoint**: Select this option for Kusto service connection.
+        * **Service Endpoint**: Select an existing kusto service endpoint or create a new one (**+ New**) providing the following information in the **Add Azure Data Explorer service connection** window:
 
             | Setting | Suggested value |
             |--|--|
@@ -131,6 +135,7 @@ The are three ways to run admin commands against cluster in a task.
 ### Create a Query task
 
 If required, create a task to run a query against the cluster. Running queries in a Build or Release pipeline can be used to validate a dataset and have a step succeed or fail based on the query results. The tasks success criteria can be based on a row count threshold or a single value depending on what the query returns.
+
 
 1. In the **Tasks** tab, select **+** by **Agent job** and search for **Azure Data Explorer**.
 
