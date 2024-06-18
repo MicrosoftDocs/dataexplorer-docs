@@ -115,7 +115,7 @@ evaluate cosmosdb_sql_request(
 
 ### Join Azure Cosmos DB data with KQL table data
 
-The following example joins Partner data from a Azure Cosmos DB with Partner data in a KQL database using the `Partner` field. It results in a list of partners with their phone numbers, website, and contact email address sorted by partner name.
+The following example joins Partner data from an Azure Cosmos DB with Partner data in a kql database using the `Partner` field. It results in a list of partners with their phone numbers, website, and contact email address sorted by partner name.
 
 ```kusto
 evaluate cosmosdb_sql_request(
