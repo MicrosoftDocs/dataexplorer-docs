@@ -49,12 +49,10 @@ items:
   - name: Cross-cluster and cross-database queries
     href: query/cross-cluster-or-database-queries.md
     displayName: cross cluster, cross database, schema change, schemas, partial query failure
-  - name: KQL reference
-    href: kusto/query/toc.yml
+  - name: Query language
+    href: query/toc.yml
   - name: Management commands
     href: management/toc.yml
-  - name: Functions library
-    href: functions-library/toc.yml
   - name: Limits and Errors
     items:
       - name: Query consistency
