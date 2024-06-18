@@ -24,8 +24,8 @@
     ],
     "groups": {
       "gr-kusto": {
-        "moniker_range": "microsoft-fabric",
-        "dest": "kusto"
+        "moniker_range": "<=microsoft-fabric",
+        "dest": "kusto-docs"
       }
     },
     "resource": [
@@ -73,9 +73,6 @@
       "brand": "azure",
       "uhfHeaderId": "azure",
       "feedback_system": "Standard",
-      // "feedback_product_url": "https://feedback.azure.com/d365community/forum/a952add5-eb24-ec11-b6e6-000d3a4f0da0",
-      // "feedback_help_link_url": "https://learn.microsoft.com/answers/topics/azure-data-explorer.html",
-      // "feedback_help_link_type": "get-help-at-qna",
       "recommendations": true,
       "_op_documentIdPathDepotMapping": {
         "./kusto": {
