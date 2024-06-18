@@ -24,7 +24,7 @@
     ],
     "groups": {
       "gr-kusto": {
-        "moniker_range": "=microsoft-fabric || =azure-data-explorer || =azure-monitor || =microsoft-sentinel || =azure-resource-graph",
+        "moniker_range": "microsoft-fabric",
         "dest": "kusto"
       }
     },
@@ -138,6 +138,10 @@
       "services": "kusto",
       "titleSuffix": "Kusto Query Language"
     },
+    "fileMetadata": {  
+      "monikerRange": {
+        "report/extend-analytics/**": ">= azure-devops-2019"
+    }
     "fileMetadata": {
       "monikerRange": {
         "management/**/*.md": "=microsoft-fabric || =azure-data-explorer"
