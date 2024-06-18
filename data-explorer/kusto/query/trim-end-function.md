@@ -69,7 +69,7 @@ print str = strcat("-  ","Te st",x,@"// $")
 
 ### Trim whitespaces
 
-The following example trims all spaces from end of the string.
+The following example trims all spaces from the end of the string.
 
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/FindMyPartner?query=H4sIAAAAAAAAA8tJLVEoLinKzEuPL8mPBzJyFWwVHJQUgMAjNScnX0ehPL8oJ0URJKBkzZUDUl6aBNEBVhlTrA0ULwDyS7hAijAMQxXQASsCsXJTU%2BKLSxKLSoBqQPz41LwUDbjZOmj6NAGN60ZRqQAAAA%3D%3D" target="_blank">Run the query</a>

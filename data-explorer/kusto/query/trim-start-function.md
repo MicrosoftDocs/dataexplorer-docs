@@ -72,7 +72,7 @@ range x from 1 to 5 step 1
 
 ### Trim whitespaces
 
-The following example trims all spaces from start of the string.
+The following example trims all spaces from the start of the string.
 
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/FindMyPartner?query=H4sIAAAAAAAAA8tJLVEoLinKzEuPL8mPBzJyFWwVHJQUgMAjNScnX0ehPL8oJ0URJKBkzZUDUl6aBNEBVhlTrA0ULwDyS7hAijAMQxXQASsCsXJTU%2BKLSxKLSoBqQHwIRwNuug6aTk0AHsDgWqsAAAA%3D" target="_blank">Run the query</a>
