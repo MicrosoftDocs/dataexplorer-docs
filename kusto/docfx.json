@@ -126,7 +126,9 @@
     "fileMetadata": {
       "monikerRange": {
         "concepts/**": "microsoft-fabric || azure-data-explorer",
-        "management/**": "microsoft-fabric || azure-data-explorer"
+        "management/**": "microsoft-fabric || azure-data-explorer",
+        "functions-library/**": "microsoft-fabric || azure-data-explorer",
+        "tools/**": "microsoft-fabric || azure-data-explorer"
       }
     },
     "template": [],
