@@ -75,7 +75,7 @@ LightIngest can be useful to load historical data from an existing storage syste
 
         :::image type="content" source="media/ingest-data-historical/source-tab-container-from-subscription.png" alt-text="Screenshot of dialog box for selecting container from storage subscription and account.":::
 
-    [!INCLUDE [ingestion-size-limit](includes/ingestion-size-limit.md)]
+    [!INCLUDE [ingestion-size-limit](includes/cross-repo/ingestion-size-limit.md)]
 
 1. Select **Advanced settings** to define additional settings for the ingestion process using LightIngest.
 

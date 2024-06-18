@@ -1,0 +1,157 @@
+items:
+- name: List of functions
+  displayName: functions library
+  href: functions-library.md
+- name: bartlett_test_fl()
+  displayName: functions library, statistical test
+  href: bartlett-test-fl.md
+- name: binomial_test_fl()
+  displayName: functions library, statistical test
+  href: binomial-test-fl.md
+- name: comb_fl()
+  displayName: functions library, statistics
+  href: comb-fl.md
+- name: factorial_fl()
+  displayName: functions library, statistics
+  href: factorial-fl.md
+- name: geoip_fl()
+  displayName: functions library, geographic, ip, country, state, city, longitude, latitude
+  href: geoip-fl.md
+- name: get_packages_version_fl()
+  displayName: functions library, python, version, package
+  href: get-packages-version-fl.md
+- name: kmeans_fl()
+  displayName: functions library, clustering, K-Means
+  href: kmeans-fl.md
+- name: ks_test_fl()
+  displayName: functions library, statistical test
+  href: ks-test-fl.md
+- name: normality_test_fl()
+  displayName: functions library, statistical test
+  href: normality-test-fl.md
+- name: levene_test_fl()
+  displayName: functions library, statistical test
+  href: levene-test-fl.md
+- name: log_reduce_fl()
+  displayName: functions library, log reduce, log parse, clustering, text analytics
+  href: log-reduce-fl.md
+- name: log_reduce_full_fl()
+  displayName: functions library, log reduce, log parse, clustering, text analytics
+  href: log-reduce-full-fl.md
+- name: log_reduce_predict_fl()
+  displayName: functions library, log reduce, log parse, clustering, text analytics
+  href: log-reduce-predict-fl.md
+- name: log_reduce_predict_full_fl()
+  displayName: functions library, log reduce, log parse, clustering, text analytics
+  href: log-reduce-predict-full-fl.md
+- name: log_reduce_train_fl()
+  displayName: functions library, log reduce, log parse, clustering, text analytics
+  href: log-reduce-train-fl.md
+- name: mann-whitney-u-test-fl()
+  displayName: functions library, statistical test
+  href: mann-whitney-u-test-fl.md
+- name: pair_probabilities_fl()
+  displayName: functions library, jaccard, lift
+  href: pair-probabilities-fl.md
+- name: pairwise_dist_fl()
+  displayName: functions library, multivariate, distance, anomaly, pairwise
+  href: pairwise-dist-fl.md      
+- name: percentiles_linear_fl()
+  displayName: functions library, percentile, rank, statistics
+  href: percentiles-linear-fl.md      
+- name: perm_fl()
+  displayName: functions library, statistics
+  href: perm-fl.md
+- name: plotly_anomaly_fl()
+  displayName: functions library, Plotly, anomaly, chart, render
+  href: plotly-anomaly-fl.md
+- name: plotly_scatter3d_fl()
+  displayName: functions library, Plotly, scatter, chart, render
+  href: plotly-scatter3d-fl.md
+- name: predict_fl()
+  displayName: functions library, score, classify
+  href: predict-fl.md
+- name: predict_onnx_fl()
+  displayName: functions library, score, classify
+  href: predict-onnx-fl.md
+- name: quantize_fl()
+  displayName: functions library, binning
+  href: quantize-fl.md
+- name: series_clean_anomalies_fl()
+  displayName: functions library, anomalies, outliers
+  href: series-clean-anomalies-fl.md
+- name: series_cosine_similarity_fl()
+  displayName: functions library, embedding, vector, cosine, similarity
+  href: series-cosine-similarity-fl.md
+- name: series_dbl_exp_smoothing_fl()
+  displayName: functions library, exponential, filter, low-pass
+  href: series-dbl-exp-smoothing-fl.md
+- name: series_dot_product_fl()
+  displayName: functions library, inner product, scalar product
+  href: series-dot-product-fl.md
+- name: series_downsample_fl()
+  displayName: functions library, subsampling, sub-sampling
+  href: series-downsample-fl.md
+- name: series_exp_smoothing_fl()
+  displayName: functions library, exponential, filter, low-pass
+  href: series-exp-smoothing-fl.md
+- name: series_fit_lowess_fl()
+  displayName: functions library, filter, low-pass, smoothing, regression
+  href: series-fit-lowess-fl.md
+- name: series_fit_poly_fl()
+  displayName: functions library, filter, low-pass, smoothing, regression
+  href: series-fit-poly-fl.md
+- name: series_fbprophet_forecast_fl()
+  displayName: functions library
+  href: series-fbprophet-forecast-fl.md
+- name: series_metric_fl()
+  displayName: functions library, PromQL, Prometheus
+  href: series-metric-fl.md
+- name: series_lag_fl()
+  displayName: functions library, filter, time shift, delay
+  href: series-lag-fl.md
+- name: series_monthly_decompose_anomalies_fl()
+  displayName: functions library, anomaly detection, monthly
+  href: series-monthly-decompose-anomalies-fl.md
+- name: series_moving_avg_fl()
+  displayName: functions library, filter, low-pass, smoothing
+  href: series-moving-avg-fl.md
+- name: series_moving_var_fl()
+  displayName: functions library, filter, rolling, variance, standard deviation, std
+  href: series-moving-var-fl.md
+- name: series_mv_ee_anomalies_fl()
+  displayName: functions library, anomaly detection, multivariate, elliptical envelope
+  href: series-mv-ee-anomalies-fl.md
+- name: series_mv_if_anomalies_fl()
+  displayName: functions library, anomaly detection, multivariate, isolation forest
+  href: series-mv-if-anomalies-fl.md
+- name: series_mv_oc_anomalies_fl()
+  displayName: functions library, anomaly detection, multivariate, one class svm, support vector machines
+  href: series-mv-oc-anomalies-fl.md
+- name: series_rate_fl()
+  displayName: functions library, PromQL, Prometheus
+  href: series-rate-fl.md
+- name: series_rolling_fl()
+  displayName: functions library, rolling, sliding
+  href: series-rolling-fl.md
+- name: series_shapes_fl()
+  displayName: functions library, shape, trend, jump, detect
+  href: series-shapes-fl.md
+- name: series_uv_anomalies_fl()
+  displayName: functions library, anomaly detection, univariate
+  href: series-uv-anomalies-fl.md
+- name: series_uv_change_points_fl()
+  displayName: functions library, anomaly detection, univariate, change point
+  href: series-uv-change-points-fl.md
+- name: time_weighted_avg_fl()
+  displayName: functions library, binning
+  href: time-weighted-avg-fl.md
+- name: time_window_rolling_avg_fl()
+  displayName: functions library, rolling, sliding
+  href: time-window-rolling-avg-fl.md
+- name: two_sample_t_test_fl()
+  displayName: functions library, statistical test
+  href: two-sample-t-test-fl.md
+- name: wilcoxon_test_fl()
+  displayName: functions library, statistical test
+  href: wilcoxon-test-fl.md
