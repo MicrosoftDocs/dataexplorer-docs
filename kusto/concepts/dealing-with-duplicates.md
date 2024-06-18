@@ -4,7 +4,7 @@ description: This topic will show you various approaches to deal with duplicate 
 ms.reviewer: mblythe
 ms.topic: how-to
 ms.date: 12/19/2018
-
+monikerRange: "azure-data-explorer"
 #Customer intent: I want to learn how to deal with duplicate data.
 ---
 
