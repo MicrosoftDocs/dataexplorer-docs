@@ -4,6 +4,7 @@ description: This article describes Query limits.
 ms.reviewer: alexans
 ms.topic: reference
 ms.date: 04/27/2022
+monikerRange: "microsoft-fabric || azure-data-explorer || azure-monitor || microsoft-sentinel || azure-resource-graph"
 ---
 # Query limits
 

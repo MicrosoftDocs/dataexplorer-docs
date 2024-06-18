@@ -4,6 +4,7 @@ description:  This article describes Partial query failures.
 ms.reviewer: orspodek
 ms.topic: reference
 ms.date: 10/23/2018
+monikerRange: "microsoft-fabric || azure-data-explorer || azure-monitor || microsoft-sentinel || azure-resource-graph"
 ---
 # Partial query failures
 

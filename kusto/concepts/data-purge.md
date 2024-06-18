@@ -4,10 +4,9 @@ description: This article describes Data purge.
 ms.reviewer: kedamari
 ms.topic: reference
 ms.date: 07/03/2022
+monikerRange: "azure-data-explorer"
 ---
 # Data purge
-
-<!-- //TODO ADX moniker -->
 
 [!INCLUDE [gdpr-intro-sentence](../includes/gdpr-intro-sentence.md)]
 
