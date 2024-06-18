@@ -140,7 +140,7 @@
     },
     "fileMetadata": {
       "monikerRange": {
-        "management": "=microsoft-fabric || =azure-data-explorer"
+        "management/**/*.md": "=microsoft-fabric || =azure-data-explorer"
       }
     },
     "template": [],
