@@ -126,7 +126,7 @@
     },
     "fileMetadata": {
       "monikerRange": {
-        "management/**/*.md": "=microsoft-fabric || =azure-data-explorer"
+        "management/**": "microsoft-fabric || azure-data-explorer"
       }
     },
     "template": [],
