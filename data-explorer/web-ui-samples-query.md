@@ -53,7 +53,7 @@ The **SampleMetrics** dataset consists of the following tables:
 * SQLServersLocation: containing reference data of servers' location.
 
 > [!TIP]
-> You can navigate to other tutorials from the query editor window. Select **File** > **Open tutorials** and then choose the specific tutorial you want to explore.
+> You can navigate to other tutorials from the query editor window. Select **Open** > **Open tutorials** and then choose the specific tutorial you want to explore.
 >
 > :::image type="content" source="media/web-ui-samples-gallery/web-ui-tutorials-dropdown.png" alt-text="Screenshot showing Azure Data Explorer web U I dropdown menu to choose sample tutorials in query window.":::
 
