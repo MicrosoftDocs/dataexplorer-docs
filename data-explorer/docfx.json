@@ -133,10 +133,10 @@
     },
     "fileMetadata": {
       "titleSuffix": {
-        "kusto/functions-library/**/*.md": "Azure Data Explorer & Real-Time Analytics",
-        "kusto/api/**/*.md": "Azure Data Explorer & Real-Time Analytics",
-        "kusto/management/**/*.md": "Azure Data Explorer & Real-Time Analytics",
-        "kusto/query/**/*.md": "Azure Data Explorer & Real-Time Analytics"
+        "kusto/functions-library/**/*.md": "Azure Data Explorer & Real-Time Intelligence",
+        "kusto/api/**/*.md": "Azure Data Explorer & Real-Time Intelligence",
+        "kusto/management/**/*.md": "Azure Data Explorer & Real-Time Intelligence",
+        "kusto/query/**/*.md": "Azure Data Explorer & Real-Time Intelligence"
       }
     },
     "template": [],
