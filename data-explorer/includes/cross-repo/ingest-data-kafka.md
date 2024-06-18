@@ -133,7 +133,7 @@ This file contains the Kusto sink properties file where you'll update specific c
 ```
 
 Replace the values for the following attributes as per your Azure Data Explorer setup: `aad.auth.authority`, `aad.auth.appid`, `aad.auth.appkey`, `kusto.tables.topics.mapping` (the database name), `kusto.ingestion.url`, and `kusto.query.url`.
-
+ 
 #### Connector - Dockerfile
 
 This file has the commands to generate the docker image for the connector instance.  It includes the connector download from the git repo release directory.
@@ -239,6 +239,14 @@ The connector will start queueing ingestion processes to Azure Data Explorer.
 
 > [!NOTE]
 > If you have log connector issues, [create an issue](https://github.com/Azure/kafka-sink-azure-kusto/issues).
+
+### Managed identity
+
+By default the Kafka connector uses the application method for authentication during ingestion. To authenticate using managed identity:
+
+* Assign your cluster a managed identity and grant your storage account read permissions. For more information see, [Ingest data using managed identity authentication](../../ingest-data-managed-identity.md)
+* In your `adx-sink-config.json` file set `aad.auth.strategy` to `managed_identity` and ensure that `aad.auth.appid` is set to the correct value.
+* private instance MetaData service token https://docs.microsoft.com/en-us/azure/active-directory/managed-identities-azure-resources/how-to-use-vm-token#get-a-token-using-java
 
 ## Query and review data
 
