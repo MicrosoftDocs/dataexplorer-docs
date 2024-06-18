@@ -113,7 +113,7 @@ evaluate cosmosdb_sql_request(
 | where lastName == 'Smith'
 ```
 
-### Query Azure Cosmos DB and join data with a KQL table
+### Query Azure Cosmos DB and join data with a kql table
 
 The following example joins Partner data from an Azure Cosmos DB with Partner data in a kql database using the `Partner` field. It results in a list of partners with their phone numbers, website, and contact email address sorted by partner name.
 
