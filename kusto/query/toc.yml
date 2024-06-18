@@ -1,4 +1,10 @@
 items:
+  - name: Syntax conventions
+    href: syntax-conventions.md
+  - name: Add a comment in KQL
+    href: comment.md
+  - name: Query data using T-SQL
+    href: t-sql.md
   - name: Entities
     items:
       - name: Entity types
@@ -275,6 +281,9 @@ items:
         href: where-operator.md
   - name: Special functions
     items:
+      - name: Cross-cluster and cross-database queries
+        href: cross-cluster-or-database-queries.md
+        displayName: cross cluster, cross database, schema change, schemas, partial query failure
       - name: cluster()
         href: cluster-function.md
       - name: database()
@@ -1615,3 +1624,32 @@ items:
         href: row-rank-min-function.md
       - name: row_window_session()
         href: row-window-session-function.md
+  - name: Limits and Errors
+    items:
+      - name: Query consistency
+        href: ../concepts/query-consistency.md
+      - name: Query limits
+        href: ../concepts/query-limits.md
+      - name: Partial query failures
+        href: ../concepts/partial-query-failures.md
+        items:
+          - name: Result truncation
+            href: ../concepts/result-truncation.md
+          - name: Runaway queries
+            href: ../concepts/runaway-queries.md
+          - name: Overflows
+            href: ../concepts/overflow.md
+  - name: Reference
+    items:
+      - name: RE2 syntax
+        href: re2.md
+        displayName: RE2 library, regex, regular expressions
+      - name: JSONPath syntax
+        href: jsonpath.md
+      - name: SQL to Kusto cheat sheet
+        displayName: Kusto
+        href: sql-cheat-sheet.md
+      - name: Splunk to Kusto cheat sheet
+        href: splunk-cheat-sheet.md
+      - name: Timezones
+        href: timezone.md
