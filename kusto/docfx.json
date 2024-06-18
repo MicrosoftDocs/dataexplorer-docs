@@ -22,12 +22,6 @@
         "group": "gr-kusto"
       }
     ],
-    "groups": {
-      "gr-kusto": {
-        "moniker_range": "microsoft-fabric || azure-data-explorer || azure-monitor || microsoft-sentinel || azure-resource-graph",
-        "dest": "kusto-docs"
-      }
-    },
     "resource": [
       {
         "files": [
@@ -37,9 +31,6 @@
           "**/*.jpeg",
           "**/*.gif"
         ],
-        "src": "./",
-        "group": "gr-kusto",
-        "dest": "kusto",
         "exclude": [
           "**/obj/**",
           "**/includes/**",
@@ -47,28 +38,26 @@
           "_themes.pdf/**",
           "**/docfx.json",
           "_repo.en-us/**"
-        ]
-      },
-      {
-        "files": [
-          "includes/**/*.svg",
-          "includes/**/*.png",
-          "includes/**/*.jpg",
-          "includes/**/*.jpeg",
-          "includes/**/*.gif"
         ],
-        "exclude": [
-          "**/obj/**",
-          "**/_themes/**"
-        ],
-        "src": null,
-        "dest": null
+        "src": "./",
+        "group": "gr-kusto",
+        "dest": "kusto"
       }
     ],
+    "groups": {
+      "gr-kusto": {
+        "moniker_range": "microsoft-fabric || azure-data-explorer || azure-monitor || microsoft-sentinel || azure-resource-graph",
+        "dest": "kusto-docs"
+      }
+    },
     "overwrite": [],
     "externalReference": [],
     "globalMetadata": {
-      "searchScope": ["Kusto", "kusto", "KQL"],
+      "searchScope": [
+        "Kusto",
+        "kusto",
+        "KQL"
+      ],
       "breadcrumb_path": "/kusto/breadcrumb/toc.json",
       "brand": "azure",
       "uhfHeaderId": "azure",
