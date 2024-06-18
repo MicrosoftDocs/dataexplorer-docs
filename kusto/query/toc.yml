@@ -60,6 +60,8 @@ items:
       - name: User-defined functions
         displayName: Kusto view, views, Kusto function
         href: functions/user-defined-functions.md
+      - name: Functions library
+        href: ../functions-library/toc.yml
   - name: Query statements
     items:
       - name: Query statement types

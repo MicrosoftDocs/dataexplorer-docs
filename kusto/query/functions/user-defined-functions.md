@@ -17,6 +17,8 @@ A user-defined function belongs to one of two categories:
 The function's input arguments and output determine whether it's scalar or tabular, which then establishes how it might be used.
 
 To optimize multiple uses of the user-defined functions within a single query, see [Optimize queries that use named expressions](../named-expressions.md).
+ 
+We've created an assortment of user-defined functions that you can use in your queries. For more information, see [Functions library](../../functions-library/functions-library.md).
 
 ## Scalar function
 
