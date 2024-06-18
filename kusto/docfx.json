@@ -18,16 +18,9 @@
           "LICENSE-CODE",
           "ThirdPartyNotices.md"
         ],
-        "src": "./",
-        "group": "gr-kusto"
+        "src": "./"
       }
     ],
-    "groups": {
-      "gr-kusto": {
-        "moniker_range": "= microsoft-fabric || azure-data-explorer || azure-monitor || microsoft-sentinel || azure-resource-graph",
-        "dest": "kusto"
-      }
-    },
     "resource": [
       {
         "files": [
@@ -136,7 +129,8 @@
       "ms.author": "shsagir",
       "ms.service": "kusto",
       "services": "kusto",
-      "titleSuffix": "Kusto Query Language"
+      "titleSuffix": "Kusto Query Language",
+      "monikerRange": "=microsoft-fabric || =azure-data-explorer || =azure-monitor || =microsoft-sentinel || =azure-resource-graph"
     },
     "template": [],
     "dest": "kusto-docs",
