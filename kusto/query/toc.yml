@@ -5,6 +5,13 @@ items:
     href: comment.md
   - name: Query data using T-SQL
     href: t-sql.md
+  - name: Best practices for KQL queries
+    items:
+      - name: Best practices for KQL queries
+        href: best-practices.md
+      - name: Optimize queries that use named expressions
+        displayName: let statement, user defined functions, as operator, calculated
+        href: named-expressions.md
   - name: Entities
     items:
       - name: Entity types
