@@ -3,7 +3,7 @@ title:  trim_end()
 description: Learn how to use the trim_end() function to remove the trailing match of the specified regular expression.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 02/27/2023
+ms.date: 06/18/2024
 ---
 # trim_end()
 
@@ -28,7 +28,7 @@ Removes trailing match of the specified regular expression.
 
 ## Examples
 
-The following statement trims *substring*  from the end of *string_to_trim*.
+The following statement trims *substring* from the end of *string_to_trim*.
 
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA8tJLVEoLinKzEuPL8mPBzJyFWwVHJSSgAJ6yfm5Sta8XDkgJaVJEFVAWSWYRAFQAItuVAEdEJGbmhIP1w8SiE/NS9GAG6qDqkUTAKQH9A2VAAAA" target="_blank">Run the query</a>
@@ -45,7 +45,9 @@ print string_to_trim = string_to_trim,trimmed_string = trim_end(substring,string
 |--------------|--------------|
 |bing.com      |bing          |
 
-The next statement trims all non-word characters from the end of the string.
+### Trim non-alphanumeric characters
+
+The following example trims all non-word characters from the end of the string.
 
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAysoyswrUSguKVKwBZHJiSUaSroKCko6SiGpQAElHQclfX0FFSVNXq4ahdSKktS8FIWSoszc3NSUeIguEC8eKKzhoBQdF1Meq62kA5TQBADbLZbMWQAAAA==" target="_blank">Run the query</a>
@@ -64,3 +66,25 @@ print str = strcat("-  ","Te st",x,@"// $")
 |-  Te st3// $|-  Te st3  |
 |-  Te st4// $|-  Te st4  |
 |-  Te st5// $|-  Te st5  |
+
+### Trim whitespaces
+
+The following example trims all spaces from end of the string.
+
+> [!div class="nextstepaction"]
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/FindMyPartner?query=H4sIAAAAAAAAA8tJLVEoLinKzEuPL8mPBzJyFWwVHJQUgMAjNScnX0ehPL8oJ0URJKBkzZUDUl6aBNEBVhlTrA0ULwDyS7hAijAMQxXQASsCsXJTU%2BKLSxKLSoBqQPz41LwUDbjZOmj6NAGN60ZRqQAAAA%3D%3D" target="_blank">Run the query</a>
+
+```kusto
+let string_to_trim = @"    Hello, world!    ";
+let substring = @"\s+";
+print
+    string_to_trim = string_to_trim,
+    trimmed_end = trim_end(substring, string_to_trim)
+```
+
+**Output**
+
+|string_to_trim|trimmed_end|
+|---|---|
+|    Hello, world!    	|Hello, world!    |
+|    Hello, world!    	|    Hello, world!|
