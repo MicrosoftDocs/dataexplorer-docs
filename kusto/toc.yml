@@ -57,13 +57,6 @@ items:
         href: tools/kusto-cli.md
       - name: Kusto extension for Azure Data Studio
         href: /sql/azure-data-studio/extensions/kusto-extension
-  - name: Best practices for KQL queries
-    items:
-      - name: Best practices for KQL queries
-        href: query/best-practices.md
-      - name: Optimize queries that use named expressions
-        displayName: let statement, user defined functions, as operator, calculated
-        href: query/named-expressions.md
   - name: Query language
     href: query/toc.yml
   - name: Management commands
