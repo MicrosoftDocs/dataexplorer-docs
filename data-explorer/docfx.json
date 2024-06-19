@@ -31,14 +31,11 @@
         ],
         "exclude": [
           "**/obj/**",
-          "**/includes/**",
           "_themes/**",
           "_themes.pdf/**",
           "**/docfx.json",
           "_repo.en-us/**"
-        ],
-        "src": null,
-        "dst": null
+        ]
       }
     ],
     "overwrite": [],
