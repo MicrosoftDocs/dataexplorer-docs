@@ -1660,3 +1660,5 @@ items:
         href: splunk-cheat-sheet.md
       - name: Timezones
         href: timezone.md
+      - name: KQL docs navigation
+        href: ../docs-navigation.md
