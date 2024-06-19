@@ -31,33 +31,23 @@
         ],
         "exclude": [
           "**/obj/**",
-          "**/includes/**",
           "_themes/**",
           "_themes.pdf/**",
           "**/docfx.json",
           "_repo.en-us/**"
         ]
-      },
-      {
-        "files": [
-          "includes/**/*.svg",
-          "includes/**/*.png",
-          "includes/**/*.jpg",
-          "includes/**/*.jpeg",
-          "includes/**/*.gif"
-        ],
-        "exclude": [
-          "**/obj/**",
-          "**/_themes/**"
-        ],
-        "src": null,
-        "dest": null
       }
     ],
     "overwrite": [],
     "externalReference": [],
     "globalMetadata": {
-      "searchScope": ["Azure", "Data Explorer", "Azure Data Explorer", "Kusto", "kusto"],
+      "searchScope": [
+        "Azure",
+        "Data Explorer",
+        "Azure Data Explorer",
+        "Kusto",
+        "kusto"
+      ],
       "breadcrumb_path": "/azure/data-explorer/breadcrumb/toc.json",
       "brand": "azure",
       "uhfHeaderId": "azure",
@@ -133,10 +123,10 @@
     },
     "fileMetadata": {
       "titleSuffix": {
-        "kusto/functions-library/**/*.md": "Azure Data Explorer & Real-Time Analytics",
-        "kusto/api/**/*.md": "Azure Data Explorer & Real-Time Analytics",
-        "kusto/management/**/*.md": "Azure Data Explorer & Real-Time Analytics",
-        "kusto/query/**/*.md": "Azure Data Explorer & Real-Time Analytics"
+        "kusto/functions-library/**/*.md": "Azure Data Explorer & Real-Time Intelligence",
+        "kusto/api/**/*.md": "Azure Data Explorer & Real-Time Intelligence",
+        "kusto/management/**/*.md": "Azure Data Explorer & Real-Time Intelligence",
+        "kusto/query/**/*.md": "Azure Data Explorer & Real-Time Intelligence"
       }
     },
     "template": [],

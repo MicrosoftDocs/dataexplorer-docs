@@ -20,6 +20,7 @@ For an example of how to autogenerate a LightIngest command, see [ingest histori
 
 * LightIngest. There are two ways to get LightIngest:
   * [Download LightIngest binaries for your operating system](https://github.com/Azure/Kusto-Lightingest/releases). Make sure to unzip the binaries after download.
+  
   * [Install LightIngest as a .NET tool](https://www.nuget.org/packages/Microsoft.Azure.Kusto.LightIngest). This method requires that you have the .NET SDK version 6.0 or higher installed on your machine. Then, run the following command:
 
       ```
