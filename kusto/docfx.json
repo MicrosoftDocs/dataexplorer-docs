@@ -39,7 +39,7 @@
           "_repo.en-us/**"
         ],
         "src": "./",
-        "group": "gr-kusto",
+        "group": "gr-kusto"
       }
     ],
     "groups": {
