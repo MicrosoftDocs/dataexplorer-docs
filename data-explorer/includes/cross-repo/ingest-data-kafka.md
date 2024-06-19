@@ -242,11 +242,16 @@ The connector will start queueing ingestion processes to Azure Data Explorer.
 
 ### Managed identity
 
-By default the Kafka connector uses the application method for authentication during ingestion. To authenticate using managed identity:
+By default, the Kafka connector uses the application method for authentication during ingestion. To authenticate using managed identity:
 
-* Assign your cluster a managed identity and grant your storage account read permissions. For more information see, [Ingest data using managed identity authentication](../../ingest-data-managed-identity.md)
-* In your `adx-sink-config.json` file set `aad.auth.strategy` to `managed_identity` and ensure that `aad.auth.appid` is set to the correct value.
-* private instance MetaData service token https://docs.microsoft.com/en-us/azure/active-directory/managed-identities-azure-resources/how-to-use-vm-token#get-a-token-using-java
+1. Assign your cluster a managed identity and grant your storage account read permissions. For more information see, [Ingest data using managed identity authentication](../../ingest-data-managed-identity.md).
+
+1. In your **adx-sink-config.json** file set `aad.auth.strategy` to `managed_identity` and ensure that `aad.auth.appid` is set to the correct value.
+
+1. Use a [private instance metadata service token](/azure/active-directory/managed-identities-azure-resources/how-to-use-vm-token) instead of the [Microsoft Entra service principal](#create-a-microsoft-entra-service-principal).
+
+> [!NOTE]
+> When using a managed identity, `appId` and `tenant` are deduced from the context of the call site and `password` isn't needed.
 
 ## Query and review data
 
