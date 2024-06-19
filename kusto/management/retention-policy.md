@@ -7,7 +7,7 @@ ms.date: 05/24/2023
 ---
 # Retention policy
 
-[!INCLUDE [adx-fabric](../includes/applies-to-version/adx-fabric.md)]
+[!INCLUDE [moniker-versions](../includes/applies-to-version/moniker-versions.md)]
 
 The retention policy controls the mechanism that automatically removes data from tables or [materialized views](materialized-views/materialized-view-overview.md). It's useful to remove data that continuously flows into a table, and whose relevance is age-based. For example, the policy can be used for a table that holds diagnostics events that may become uninteresting after two weeks.
 
