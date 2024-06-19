@@ -8,7 +8,7 @@ ms.date: 09/13/2022
 
 # Data formats supported for ingestion
 
-Data ingestion is the process by which data is added to a table and is made available for query in Azure Data Explorer. For all ingestion methods, other than ingest-from-query, the data must be in one of the supported formats. The following table lists and describes the formats that Azure Data Explorer supports for data ingestion.
+Data ingestion is the process by which data is added to a table and is made available for query. For all ingestion methods, other than ingest-from-query, the data must be in one of the supported formats. The following table lists and describes the formats that is supported for data ingestion.
 
 > [!NOTE]
 > Before you ingest data, make sure that your data is properly formatted and defines the expected fields. We recommend using your preferred validator to confirm the format is valid. For example, you may find the following validators useful to check CSV or JSON files:
@@ -16,9 +16,11 @@ Data ingestion is the process by which data is added to a table and is made avai
 > * CSV: http://csvlint.io/
 > * JSON: https://jsonlint.com/
 >
-> For more information about why ingestion might fail, see [Ingestion failures](/kusto/management/ingestion-failures.md) and  [Ingestion error codes in Azure Data Explorer](/azure/data-explorer/error-codes.md).
+> For more information about why ingestion might fail, see [Ingestion failures](management/ingestion-failures.md) 
+::: moniker range="azure-data-explorer"
+> and  [Ingestion error codes in Azure Data Explorer](/azure/data-explorer/error-codes.md).
+::: moniker-end
 
-<!-- //TODO change link above to ADX moniker pivot -->
 
 |Format   |Extension   |Description|
 |---------|------------|-----------|
@@ -70,6 +72,9 @@ must be specified as an ingestion property because it cannot be inferred.
 > * [Deflate64/Enhanced Deflate](https://en.wikipedia.org/wiki/Deflate#Deflate64/Enhanced_Deflate) Zip compression method is not supported. Please note that Windows built-in Zip compressor may choose to use this compression method on files of size over 2GB.
 
 ## Related content
-<!-- //TODO - Put these links in moniker pivot per product-->
+
+::: moniker range="azure-data-explorer"
 * Learn more about [data ingestion](/azure/data-explorer/ingest-data-overview.md)
-* Learn more about [Azure Data Explorer data ingestion properties](ingestion-properties.md)
+::: moniker-end
+* Learn more about [supported data formats](ingestion-supported-formats.md)
+* Learn more about [Data ingestion properties](ingestion-properties.md)
