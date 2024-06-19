@@ -1,6 +1,7 @@
 ---
 ms.topic: include
 ms.date: 06/19/2024
+moniker range: "microsoft-fabric || azure-data-explorer || azure-monitor || microsoft-sentinel || azure-resource-graph"
 ---
 > Applies to: 
 ::: moniker range="microsoft-fabric"
