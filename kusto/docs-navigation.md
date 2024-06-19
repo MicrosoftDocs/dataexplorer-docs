@@ -8,7 +8,11 @@ ms.date: 06/19/2024
 
 The behavior of KQL may vary when using this language in different products. When you view any KQL documentation article by using our Learn website, the currently chosen product name is visible above the table of contents (TOC). You can switch between products using a drop-down list.
 
-If you want to see the documentation for a different version of KQL, click the expander arrow located at the end of the current version moniker. Then select any product you want. When you select a different product, the displayed documentation suddenly changes to show the differences for the newly chosen version. There might or might not be any changes, and both cases are common.
+## Change product selection
+
+If you want to see the documentation for a different version of KQL, select the expander arrow located at the end of the current version moniker. Then select any product you want. When you select a different product, the displayed documentation suddenly changes to show the differences for the newly chosen version. There might or might not be any changes, and both cases are common.
+
+:::image type="content" source="media/docs-navigation/version.gif" alt-text="Screen capture of selecting a different version in the TOC.":::
 
 ## HTTPS parameter view=
 
