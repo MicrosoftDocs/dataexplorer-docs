@@ -67,7 +67,7 @@ print str = strcat("-  ","Te st",x,@"// $")
 |-  Te st4// $|-  Te st4  |
 |-  Te st5// $|-  Te st5  |
 
-### Trim whitespaces
+### Trim whitespace
 
 The following example trims all spaces from the end of the string.
 

@@ -71,7 +71,7 @@ range x from 1 to 5 step 1
 |-  Te st4// $|Te st4|
 |-  Te st5// $|Te st5|
 
-### Trim whitespaces
+### Trim whitespace
 
 The following example trims all spaces from start and end of the string.
 
