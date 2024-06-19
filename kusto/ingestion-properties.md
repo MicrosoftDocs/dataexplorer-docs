@@ -8,7 +8,7 @@ monikerRange: "azure-data-explorer || microsoft-fabric"
 ---
 # Data ingestion properties
 
-[!INCLUDE [applies](includes/applies-to-version/applies.md)] [!INCLUDE [fabric](includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](includes/applies-to-version/azure-data-explorer.md)] 
+> [!INCLUDE [applies](includes/applies-to-version/applies.md)] [!INCLUDE [fabric](includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](includes/applies-to-version/azure-data-explorer.md)] 
 
 Data ingestion is the process by which data is added to a table and is made available for query. You add properties to the ingestion command after the `with` keyword.
 
