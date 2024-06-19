@@ -260,7 +260,7 @@ CyberProof, a UST company, helps our clients transform their security to a cost-
 
 **Success stories**
 
-- [https://blog.cyberproof.com/blog/cutting-azure-sentinel-costs-with-microsoft-azure-data-explorer-adx](https://blog.cyberproof.com/blog/cutting-azure-sentinel-costs-with-microsoft-azure-data-explorer-adx)
+- [https://blog.cyberproof.com/blog/cutting-microsoft-sentinel-costs-with-azure-data-explorer-adx](https://blog.cyberproof.com/blog/cutting-microsoft-sentinel-costs-with-azure-data-explorer-adx)
 
 ## Data Addiction Pty Ltd
 
