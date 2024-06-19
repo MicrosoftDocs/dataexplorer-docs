@@ -16,9 +16,8 @@ Data ingestion is the process by which data is added to a table and is made avai
 > * CSV: http://csvlint.io/
 > * JSON: https://jsonlint.com/
 >
-> For more information about why ingestion might fail, see [Ingestion failures](management/ingestion-failures.md) 
-::: moniker range="azure-data-explorer"
-> and  [Ingestion error codes in Azure Data Explorer](/azure/data-explorer/error-codes.md).
+
+For more information about why ingestion might fail, see [Ingestion failures](management/ingestion-failures.md) ::: moniker range="azure-data-explorer" and  [Ingestion error codes in Azure Data Explorer](/azure/data-explorer/error-codes.md).
 ::: moniker-end
 
 
