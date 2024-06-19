@@ -2,13 +2,10 @@
 ms.topic: include
 ms.date: 02/18/2024
 ---
-[Cribl stream](https://docs.cribl.io/stream/) collects and processes machine data and allows you to process machine data into a database for later analysis.
-<!-->
-[Kafka Connect](https://docs.confluent.io/3.0.1/connect/intro.html#kafka-connect) is a tool for scalable and reliable streaming of data between Apache Kafka and other data systems. The [Kusto Kafka Sink](https://github.com/Azure/kafka-sink-azure-kusto/blob/master/README.md) serves as the connector from Kafka and doesn't require using code. Download the sink connector jar from the [Git repo](https://github.com/Azure/kafka-sink-azure-kusto/releases) or [Confluent Connector Hub](https://www.confluent.io/hub/microsoftcorporation/kafka-sink-azure-kusto). -->
+[Cribl stream](https://docs.cribl.io/stream/) is a tool that collects and processes machine data and allows you to process machine data into a database for later analysis.
 
-This article shows how to ingest data with Cribl Stream, <!--using a self-contained Docker setup to simplify the Kafka cluster and Kafka connector cluster setup.-->
+This article shows how to ingest data with Cribl Stream.
 
-<!--For more information, see the connector [Git repo](https://github.com/Azure/kafka-sink-azure-kusto/blob/master/README.md) and [version specifics](https://github.com/Azure/kafka-sink-azure-kusto/blob/master/README.md#13-major-version-specifics).-->
 
 ## Prerequisites
 
@@ -74,7 +71,22 @@ To download a certificate:
 
 ## Connect a KQL database to Cribl Stream
 
+## Go to Cribl Stream
 
+### Connect your KQL database to Cribl Stream
+
+To connect Cribl Stream to your kql database do the following:
+
+1. From the top navigation select **Manage**, select a Worker Group.
+
+1. Select **Routing** > **QuickConnect (Stream)** > **Add Destination**. <!-- confirm with Ram that this is how its called> 
+
+1. In the **Set up new QuickConnect Destination** window, choose Azure Data Explorer and then select **Add now**.
+:::image type="content" source="../media/ingest-data-cribl/add-azure-data-explorer.png" alt-text="Screenshot of the Set up new QuickConnect Destination window in Cribl with Azure Data Explorer selected."  lightbox="../media/ingest-data-cribl/add-azure-data-explorer.png":::
+
+
+
+<!-- from kafka -->
 ## Run the lab
 
 The following lab is designed to give you the experience of starting to create data, setting up the Cribl Stream connector, and streaming this data to your kql query engine with the connector. You can then look at the ingested data.
@@ -92,8 +104,7 @@ You can authenticate with Cribl Stream using:
 
 The connector will start queueing ingestion processes to Azure Data Explorer.
 
-> [!NOTE]
-> If you have log connector issues, [create an issue](https://github.com/Azure/kafka-sink-azure-kusto/issues).
+
 
 ## Query and review data
 
@@ -162,10 +173,3 @@ az kusto cluster delete -n <cluster name> -g <resource group name>
 az kusto database delete -n <database name> --cluster-name <cluster name> -g <resource group name>
 ```
 
-## Tuning the Kafka Sink connector
-
-Tune the [Kafka Sink](https://github.com/Azure/kafka-sink-azure-kusto/blob/master/README.md) connector to work with the [ingestion batching policy](/azure/data-explorer/kusto/management/batching-policy):
-
-* Tune the Kafka Sink `flush.size.bytes` size limit starting from 1 MB, increasing by increments of 10 MB or 100 MB.
-* When using Kafka Sink, data is aggregated twice. On the connector side data is aggregated according to flush settings, and on the Azure Data Explorer service side according to the batching policy. If the batching time is too short and no data can be ingested by both connector and service, batching time must be increased. Set batching size at 1 GB and increase or decrease by 100 MB increments as needed. For example, if the flush size is 1 MB and the batching policy size is 100 MB, after a 100-MB batch is aggregated by the Kafka Sink connector, a 100-MB batch will be ingested by the Azure Data Explorer service. If the batching policy time is 20 seconds and the Kafka Sink connector flushes 50 MB in a 20-second period - then the service will ingest a 50-MB batch.
-* You can scale by adding instances and [Kafka partitions](https://kafka.apache.org/documentation/). Increase `tasks.max` to the number of partitions. Create a partition if you have enough data to produce a blob the size of the `flush.size.bytes` setting. If the blob is smaller, the batch is processed when it reaches the time limit, so the partition won't receive enough throughput. A large number of partitions means more processing overhead.
