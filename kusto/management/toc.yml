@@ -753,6 +753,10 @@ items:
         href: reference-security-principals.md
   - name: Data ingestion
     items:
+      - name: Data formats supported for ingestion
+        href: ../ingestion-supported-formats.md
+      - name: Ingestion properties
+        href: ../ingestion-properties.md
       - name: Ingest from storage
         displayName: .ingest into, pull data, pulling ingestion
         href: data-ingestion/ingest-from-storage.md

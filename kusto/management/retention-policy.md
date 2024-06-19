@@ -7,7 +7,7 @@ ms.date: 05/24/2023
 ---
 # Retention policy
 
-[!INCLUDE [adx-fabric](../includes/applies-to-version/adx-fabric.md)]
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)] 
 
 The retention policy controls the mechanism that automatically removes data from tables or [materialized views](materialized-views/materialized-view-overview.md). It's useful to remove data that continuously flows into a table, and whose relevance is age-based. For example, the policy can be used for a table that holds diagnostics events that may become uninteresting after two weeks.
 
