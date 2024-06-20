@@ -3,7 +3,7 @@ title: Set up your development environment to use Kusto client libraries
 description: Learn how to set up your development environment to use Kusto client libraries.
 ms.reviewer: yogilad
 ms.topic: how-to
-ms.date: 11/07/2023
+ms.date: 06/20/2024
 ---
 # Set up your development environment to use Kusto client libraries
 
@@ -53,11 +53,11 @@ Verify installation: In a command shell, run `dotnet sdk check` to check that th
   - If your app doesn't have a login experience, or you prefer to use the Kusto client library to prompt authentication, you need to set up an application registration with the necessary permissions:
   
     1. [Create a Microsoft Entra application registration](../../access-control/provision-entra-id-app.md#create-microsoft-entra-application-registration).
-    2. In the **Authentication** tab, select **+ Add a platform**. Then, select **Single-page application**.
-    3. Enter the desired **Redirect URIs**, select the boxes for **Access tokens** and **ID tokens**, and select **Configure**. For more information on redirect URIs, see [Desktop app that calls web APIs](/entra/identity-platform/scenario-desktop-app-registration).
-    4. [Configure delegated permissions for the application](../../access-control/provision-entra-id-app.md#configure-delegated-permissions-for-the-application---optional).
-    5. [Grant the application access to your Azure Data Explorer database](../../access-control/provision-entra-id-app.md#grant-a-service-principal-access-to-the-database).
-    6. In the **Overview** tab, copy the **Application (client) ID**.
+    1. In the **Authentication** tab, select **+ Add a platform**. Then, select **Single-page application**.
+    1. Enter the desired **Redirect URIs**, select the boxes for **Access tokens** and **ID tokens**, and select **Configure**. For more information on redirect URIs, see [Desktop app that calls web APIs](/entra/identity-platform/scenario-desktop-app-registration).
+    1. [Configure delegated permissions for the application](../../access-control/provision-entra-id-app.md#configure-delegated-permissions-for-the-application---optional).
+    1. [Grant the application access to your Azure Data Explorer database](../../access-control/provision-entra-id-app.md#grant-a-service-principal-access-to-the-database).
+    1. In the **Overview** tab, copy the **Application (client) ID**.
 
     The examples throughout the following tutorials use the Kusto client library to prompt authentication.
 
@@ -191,5 +191,6 @@ The following articles walk you through creating apps that use the Kusto client 
 ## Related content
 
 - [KQL quick reference](../../query/kql-quick-reference.md)
+::: moniker range="azure-data-explorer"
 - [Sample app generator wizard](/azure/data-explorer/sample-app-generator-wizard)
-<!-- //TODO:: Add moniker -->
+::: moniker-end

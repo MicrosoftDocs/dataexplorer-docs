@@ -3,7 +3,7 @@ title: Best practices for the Kusto Ingest library
 description: This article describes best practices for Kusto Ingest client library.
 ms.reviewer: orspodek
 ms.topic: reference
-ms.date: 10/18/2023
+ms.date: 06/20/2024
 ---
 # Best practices for the Kusto Ingest library
 
@@ -55,6 +55,7 @@ For cost-effective ingestion:
 ## Related content
 
 * [Kusto Ingest overview](about-kusto-ingest.md)
+::: moniker range="azure-data-explorer"
 * [Data ingestion overview](/azure/data-explorer/ingest-data-overview)
 * [Create an app to get data using queued ingestion](/azure/data-explorer/get-started/app-batch-ingestion)
-<!-- //TODO:: Add ADX moniker -->
+::: moniker-end
