@@ -21,8 +21,9 @@ See the following ways of creating external tables:
 * [Create or alter Azure Blob Storage/ADLS external tables](../../management/external-tables-azure-storage.md)
 * [Create or alter delta external tables](../../management/external-tables-delta-lake.md)
 * [Create and alter SQL Server external tables](../../management/external-sql-tables.md)
-<!-- //TODO:: Add ADX moniker  -->
+::: moniker range="azure-data-explorer"
 * [Create external table using Azure Data Explorer web UI Wizard](/azure/data-explorer/external-table)
+::: moniker-end
 
 An **external table** can be referenced by its name using the [external_table()](../../query/external-table-function.md) function.
 
@@ -32,8 +33,9 @@ Use the following commands to manage external tables:
 * [`.show external tables`](../../management/show-external-tables.md)
 * [`.show external table schema`](../../management/show-external-table-schema.md)
 
-<!-- //TODO:: Add ADX moniker  -->
+::: moniker range="azure-data-explorer"
 For more information about how to query external tables, and ingested and uningested data, see [Query data in Azure Data Lake using Azure Data Explorer](/azure/data-explorer/data-lake-query-data).
+::: moniker-end
 
 > [!NOTE]
 >

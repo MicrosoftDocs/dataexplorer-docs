@@ -8,9 +8,10 @@ ms.date: 03/19/2023
 # Monitor materialized views
 
 Monitor the materialized view's health in the following ways:
-<!-- //TODO put in ADX moniker pivot -->
+::: moniker range="azure-data-explorer"
 * Monitor [materialized view metrics](/azure/data-explorer/using-metrics#materialized-view-metrics) in the Azure portal.
   * The materialized view age metric `MaterializedViewAgeSeconds` should be used to monitor the freshness of the view. This one should be the primary metric to monitor.
+::: moniker-end
 * Monitor the `IsHealthy` property returned from [`.show materialized-view`](materialized-view-show-command.md#show-materialized-views).
 * Check for failures using [`.show materialized-view failures`](materialized-view-show-failures-command.md#show-materialized-view-failures).
 
@@ -64,9 +65,9 @@ The `Result` dimension can have one of the following values:
 
 Materialized views can be defined in [follower databases](materialized-views-limitations.md#follower-databases). However, the monitoring of these materialized views should be based on the leader database, where the materialized view is defined. Specifically:
 
-<!-- //TODO put in adx moniker pivot -->
-
+::: moniker range="azure-data-explorer"
 * [Metrics](/azure/data-explorer/using-metrics#materialized-view-metrics) related to materialized view execution (`MaterializedViewResult`, `MaterializedViewExtentsRebuild`) are only present in the leader database. Metrics related to monitoring (`MaterializedViewAgeSeconds`, `MaterializedViewHealth`, `MaterializedViewRecordsInDelta`) will also appear in the follower databases.
+::: moniker-end
 * The [.show materialized-view failures command](materialized-view-show-failures-command.md) only works in the leader database.
 
 ## Track resource consumption

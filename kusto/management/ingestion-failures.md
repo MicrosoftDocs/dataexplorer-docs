@@ -9,9 +9,9 @@ ms.date: 10/05/2023
 
 This command returns information about ingestion failures associated with the use of data ingestion management commands. 
 
+::: moniker range="azure-data-explorer"
 This command only shows ingestion failures related to data ingestion management commands and doesn't include failures from other stages of the ingestion process. Failures from all stages of ingestion are recorded in ingestion [metrics](/azure/data-explorer/using-metrics) and [diagnostic logs](/azure/data-explorer/using-diagnostic-logs).
-
-<!-- //TODO put those links in ADX moniker pivot-->
+::: moniker-end
 
 The retention period for ingestion failures is 14 days.
 
@@ -72,9 +72,10 @@ The following table is an example output from the `.show` `ingestion` `failures`
 | 9edb3ecc-f4b4-4738-87e1-648eed2bd998 | DB1 | Table1 | 2017-02-14 23:52:31.5460071 | ...url... | Failed to download source from Azure storage - access forbidden | Permanent | 21fa0dd6-cd7d-4493-b6f7-78916ce0d617 | DataIngestPull | 0 | Download_Forbidden | aadapp=xxxxxx |  | Format=Csv | 1 |
 
 ## Related content
-<!-- //TODO put in adx moniker pivot -->
 
+::: moniker range="azure-data-explorer"
 * [Data ingestion](/azure/data-explorer/ingest-data-overview)
 * [Ingestion of invalid data](/azure/data-explorer/ingest-invalid-data)
 * [Duplicate next ingestion failure](dup-next-failed-ingest.md)
+::: moniker-end
 * [Kusto.Ingest ingestion status reporting](../api/netfx/kusto-ingest-client-status.md)

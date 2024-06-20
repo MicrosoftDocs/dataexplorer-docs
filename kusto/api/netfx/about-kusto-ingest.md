@@ -52,8 +52,9 @@ Direct ingestion has low latency and doesn't involve aggregation. However, the c
 > [!NOTE]
 > We don't recommend the direct ingestion for production grade solutions.
 
+::: moniker range="azure-data-explorer"
 ## Related content
 
-<!-- //TODO:: Add ADX moniker -->
 * [Data ingestion overview](/azure/data-explorer/ingest-data-overview)
 * [Create an app to get data using queued ingestion](/azure/data-explorer/get-started/app-batch-ingestion)
+::: moniker-end

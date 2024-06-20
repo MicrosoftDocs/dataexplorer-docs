@@ -7,9 +7,9 @@ ms.date: 12/26/2023
 ---
 # Streaming ingestion and schema changes
 
-<!-- //TODO put streaming ingestion link in adx moniker pivot -->
-
+::: moniker range= "azure-data-explorer"
 Cluster nodes cache the schema of databases that get data through [streaming ingestion](/azure.data-explorer/ingest-data-streaming), boosting performance and resource use. However, when there are schema changes, it can lead to delays in updates. 
+::: moniker-end
 
 If schema changes and streaming ingestion aren't synchronized, you can encounter failures like schema-related errors or incomplete and distorted data in the table.
 
@@ -44,7 +44,8 @@ To coordinate the streaming ingestion flow with schema changes:
     * Repeat until successful and all rows in the command output indicate success
 1. Resume streaming ingestion.
 
- <!-- //TODO put streaming ingestion link in adx moniker pivot -->
 
+::: moniker range= "azure-data-explorer"
 > [!NOTE]
 > If you've built an application for [custom ingestion](/azure/data-explorer/ingest-data-streaming#choose-the-appropriate-streaming-ingestion-type), we recommend managing schema-related failures by either retrying for a set duration or redirecting data from failed requests using [queued ingestion methods](../../api/get-started/app-queued-ingestion.md).
+::: moniker-end

@@ -38,9 +38,12 @@ ms.date: 10/15/2022
 
 ## Follower databases
 
-<!-- //TODO:: Add ADX + Fabric moniker for follower -->
-
+::: moniker range="azure-data-explorer"
 * Materialized views cannot be created in [follower databases](/azure/data-explorer/follower.md). Follower databases are read-only and materialized views require write operations.  
+::: moniker-end
+::: moniker range="microsoft-fabric"
+* Materialized views cannot be created in [database shortcuts](/fabric/real-time-intelligence/database-shortcut). Database shortcuts are read-only and materialized views require write operations.  
+::: moniker-end
 * Materialized views that are defined on leader databases can be queried from their followers, like any other table in the leader.
 * Use the leader cluster to monitor follower database materialized views. For more details, see [Materialized views in follower databases](materialized-views-monitoring.md#materialized-views-in-follower-databases).
 

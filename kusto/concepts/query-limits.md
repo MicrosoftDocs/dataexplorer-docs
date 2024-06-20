@@ -8,8 +8,6 @@ monikerRange: "microsoft-fabric || azure-data-explorer || azure-monitor || micro
 ---
 # Query limits
 
-<!-- //TODO:: Add monikers -->
-
 Kusto is an ad-hoc query engine that hosts large datasets and
 attempts to satisfy queries by holding all relevant data in-memory.
 There's an inherent risk that queries will monopolize the service
@@ -25,7 +23,9 @@ in the form of default query limits. If you're considering removing these limits
 * The default value can be changed by configuring the [request rate limit policy](../management/request-rate-limit-policy.md) of the `default` workload group.
   * The actual number of requests that can run concurrently on a cluster depends on various factors. The most dominant factors are cluster SKU, cluster's available resources, and usage patterns. The policy can be configured based on load tests performed on production-like usage patterns.
 
+::: moniker range="azure-data-explorer"
  For more information, see [Optimize for high concurrency with Azure Data Explorer](/azure/data-explorer/high-concurrency.md).
+::: moniker-end
 
 ## Limit on result set size (result truncation)
 
