@@ -35,7 +35,10 @@ This tutorial builds on the foundation from the first tutorial, [Learn common op
 
 ## Prerequisites
 
-* A Microsoft account or Microsoft Entra user identity to sign in to the [help cluster](https://dataexplorer.azure.com/clusters/help)
+To run the following queries, you need a query environment with access to the sample data. You can use one of the following:
+* A Microsoft account or Microsoft Entra user identity to sign in to the [help cluster](https://dataexplorer.azure.com/clusters/help) 
+* A [Fabric workspace](/fabric/get-started/create-workspaces) with a Microsoft Fabric-enabled [capacity](/fabric/enterprise/licenses.md#capacity)
+
 
 ## Use the summarize operator
 
