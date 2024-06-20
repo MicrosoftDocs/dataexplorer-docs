@@ -24,10 +24,13 @@ In this tutorial, you'll learn how to:
 > * [Perform aggregation over a sliding window](#perform-aggregations-over-a-sliding-window)
 
 
-<!-- //TODO put in moniker pivots -->
-
+::: moniker range="azure-data-explorer"
 The examples in this tutorial use the `StormEvents` table, which is publicly available in the [**help** cluster](https://help.kusto.windows.net/Samples). To explore with your own data, [create your own free cluster](/azure/data-explorer/start-for-free-web-ui).
+::: moniker-end
 
+::: moniker range="microsoft-fabric"
+The examples in this tutorial use the `StormEvents` table, which is publicly available in the **Weather analytics** [sample data](/fabric/real-time-intelligence/sample-gallery).
+::: moniker-end
 This tutorial builds on the foundation from the first tutorial, [Learn common operators](learn-common-operators.md).
 
 ## Prerequisites

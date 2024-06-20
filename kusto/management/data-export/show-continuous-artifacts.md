@@ -9,9 +9,14 @@ ms.date: 02/21/2023
 
 Returns all artifacts exported by the continuous-export in all runs. Filter the results by the Timestamp column in the command to view only records of interest. The history of exported artifacts is retained for 14 days.
 
-<!-- //TODO put links in moniker pivots - follower for ADX and database shortcut for Fabric-->
-
+::: moniker range="azure-data-explorer"
 The command will not return any results if executed on a [follower database](/azure/data-explorer/follower), it must be executed against the leader database.
+::: moniker-end
+
+::: moniker range="azure-data-explorer"
+The command will not return any results if executed on a [database shortcut](/fabric/real-time-intelligence/database-shortcut), it must be executed against the leader database.
+::: moniker-end
+
 
 ## Permissions
 

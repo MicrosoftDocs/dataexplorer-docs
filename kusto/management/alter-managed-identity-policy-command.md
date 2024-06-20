@@ -4,10 +4,9 @@ description: Learn how to use the `.alter policy managed_identity` command to se
 ms.reviewer: slneimer
 ms.topic: reference
 ms.date: 11/30/2023
+monikerRange: "azure-data-explorer"
 ---
 # .alter policy managed_identity command
-
-<!-- //TODO:: Add ADX moniker -->
 
 Sets the ManagedIdentity policy of the cluster or the specified database, overriding the existing policy.
 

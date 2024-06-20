@@ -4,10 +4,11 @@ description: Learn how to use the `.alter-merge policy managed_identity` command
 ms.reviewer: slneimer
 ms.topic: reference
 ms.date: 11/30/2023
+monikerRange: "azure-data-explorer"
 ---
 # .alter-merge policy managed_identity command
 
-<!-- //TODO:: Add ADX moniker -->
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)]
 
 The command updates the ManagedIdentity policy of the cluster or the specified database, adding new managed identities or adding usages to existing managed identities.
 
