@@ -12,7 +12,7 @@ Kusto uses a role-based access control (RBAC) model in which [principals](../man
 
 Azure Resource Manager (ARM) roles, such as subscription owner or cluster owner, grant access permissions for resource administration. For data administration, you need the roles described in this document.
 
-::: moniker range="azure=data=explorer"
+::: moniker range="azure-data-explorer"
 > [!NOTE]
 > To delete a database, you need at least **Contributor** ARM permissions on the cluster. To assign ARM permissions, see [Assign Azure roles using the Azure portal](/azure/role-based-access-control/role-assignments-portal).
 
@@ -66,8 +66,9 @@ The **Manage** column offers ways to add or remove role principals.
 ## Related content
 
 ::: moniker range="azure-data-explorer"
+
 * [Manage cluster permissions](/azure/data-explorer/manage-cluster-permissions.md)
 
 * [Allow cross-tenant queries and commands](/azure/data-explorer/cross-tenant-query-and-commands.md)
-::: moniker-end
+::: moniker-end 
 * [Manage view access to tables within the same database](../management/manage-table-view-access.md)
