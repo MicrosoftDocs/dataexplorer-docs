@@ -4,10 +4,11 @@ description:  This article describes how to use a managed identity for update po
 ms.reviewer: atefsawaed
 ms.topic: reference
 ms.date: 08/15/2023
+monikerRange: "azure-data-explorer"
 ---
 # Use a managed identity to run an update policy
 
-<!-- //TODO only adx moniker -->
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)]
 
 The update policy must be configured with a [managed identity](/azure/data-explorer/managed-identities-overview.md) in the following scenarios:
 

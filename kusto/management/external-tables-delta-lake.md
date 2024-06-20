@@ -3,7 +3,7 @@ title:  Create and alter Azure Storage delta external tables
 description: This article describes how to create and alter delta external tables
 ms.reviewer: igborodi
 ms.topic: reference
-ms.date: 01/18/2024
+ms.date: 06/20/2024
 ---
 # Create and alter delta external tables on Azure Storage
 
@@ -92,8 +92,8 @@ kind=delta
 
 * Time travel is not supported. Only the latest delta table version is used.
 
-
+::: monikerRange="azure-data-explorer"
 ## Related content
-<!-- //TODO put links in moniker pivots -->
 
 * [Query external tables](/azure/data-explorer/data-lake-query-data)
+::: moniker-end
