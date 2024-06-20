@@ -33,9 +33,13 @@ In this tutorial, you'll learn how to:
 > * [Create calculated columns](#create-calculated-columns)
 > * [Map values from one set to another](#map-values-from-one-set-to-another)
 
-<!-- //TODO put in moniker pivot -->
-
+::: moniker range="azure-data-explorer"
 The examples in this tutorial use the `StormEvents` table, which is publicly available in the [**help** cluster](https://help.kusto.windows.net/Samples). To explore with your own data, [create your own free cluster](/azure/data-explorer/start-for-free-web-ui).
+::: moniker-end
+
+::: moniker range="microsoft-fabric"
+The examples in this tutorial use the `StormEvents` table, which is publicly available in the **Weather analytics** [sample data](/fabric/real-time-intelligence/sample-gallery).
+::: moniker-end
 
 ## Prerequisites
 

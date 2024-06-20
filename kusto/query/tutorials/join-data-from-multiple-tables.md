@@ -17,9 +17,13 @@ In this tutorial, you'll learn how to:
 > * [Use the lookup operator](#use-the-lookup-operator)
 > * [Join query-generated tables](#join-query-generated-tables)
 
-The examples in this tutorial use the publicly available [**help** cluster](https://help.kusto.windows.net/Samples). To explore with your own data, [create your own free cluster](/azure/data-explorer/start-for-free-web-ui).
+::: moniker range="azure-data-explorer"
+The examples in this tutorial use the `StormEvents` table, which is publicly available in the [**help** cluster](https://help.kusto.windows.net/Samples). To explore with your own data, [create your own free cluster](/azure/data-explorer/start-for-free-web-ui).
+::: moniker-end
 
-<!-- //TODO put in moniker pivots -->
+::: moniker range="microsoft-fabric"
+The examples in this tutorial use the `StormEvents` table, which is publicly available in the **Weather analytics** [sample data](/fabric/real-time-intelligence/sample-gallery).
+::: moniker-end
 
 ## Prerequisites
 
