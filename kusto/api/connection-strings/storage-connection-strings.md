@@ -1,13 +1,13 @@
 ---
 title:  Storage connection strings
-description: This article describes storage connection strings in Azure Data Explorer.
+description: This article describes storage connection strings.
 ms.reviewer: shanisolomon
 ms.topic: reference
-ms.date: 07/13/2023
+ms.date: 06/20/2024
 ---
 # Storage connection strings
 
-Azure Data Explorer can interact with external storage services. For example, you can [create an Azure Storage external tables](../../management/external-tables-azure-storage.md) in order to query data stored on external storages.
+The kusto service can interact with external storage services. For example, you can [create an Azure Storage external tables](../../management/external-tables-azure-storage.md) in order to query data stored on external storages.
 
 The following types of external storage are supported:
 
