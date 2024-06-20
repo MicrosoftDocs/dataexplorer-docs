@@ -1,13 +1,13 @@
 ---
 title:  Storage connection strings
-description: This article describes storage connection strings in Azure Data Explorer.
+description: This article describes storage connection strings.
 ms.reviewer: shanisolomon
 ms.topic: reference
-ms.date: 07/13/2023
+ms.date: 06/20/2024
 ---
 # Storage connection strings
 
-Azure Data Explorer can interact with external storage services. For example, you can [create an Azure Storage external tables](../../management/external-tables-azure-storage.md) in order to query data stored on external storages.
+The kusto service can interact with external storage services. For example, you can [create an Azure Storage external tables](../../management/external-tables-azure-storage.md) in order to query data stored on external storages.
 
 The following types of external storage are supported:
 
@@ -87,10 +87,10 @@ Azure Data Explorer makes requests on behalf of a managed identity and uses its 
 The managed identity must have the necessary permissions to perform the operation. For example in Azure Blob Storage, to read from the blob the managed identity needs the Storage Blob Data Reader role and to export to the blob the managed identity needs the Storage Blob Data Contributor role. To learn more, see [Azure Blob Storage / Data Lake Storage Gen2 access control](/azure/storage/blobs/data-lake-storage-access-control-model#role-based-access-control-azure-rbac) or [Data Lake Storage Gen1 access control](/azure/data-lake-store/data-lake-store-security-overview#azure-rbac-for-account-management).
 
 
-<!-- //TODO put in adx moniker -->
-
+::: moniker range="azure-data-explorer"
 > [!NOTE]
 > Managed identity is only supported in specific Azure Data Explorer flows and requires setting up the managed identity policy. For more information, see [Managed identities overview](/azure/data-explorer/managed-identities-overview).
+::: moniker-end
 
 ### Shared Access (SAS) token
 

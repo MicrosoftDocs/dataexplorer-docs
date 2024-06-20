@@ -61,9 +61,9 @@ In the `IngestFromDataReader` and `IngestFromDataReaderAsync` methods, the `reta
 
 To help handle ingestion failures programmatically, failure information is enriched with a numeric error code (`IngestionErrorCode enumeration`).
 
-<!-- //TODO put this in adx moniker pivot -->
-
+::: moniker range="azure-data-explorer"
 For a full list of ingestion error codes, see [Ingestion Error codes](/azure/data-explorer/error-codes).
+::: moniker-end
 
 ## Detailed exceptions reference
 

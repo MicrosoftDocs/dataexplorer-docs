@@ -8,8 +8,6 @@ monikerRange: "azure-data-explorer"
 ---
 # Sandboxes in VM sizes not supporting nested virtualization
 
-<!-- //TODO: Add Moniker for ADX only -->
-
 In this article, we'll cover the limitations of sandboxes in VM sizes that don't support nested virtualization.
 
 ## Prerequisites and limitations

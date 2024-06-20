@@ -5,15 +5,17 @@ ms.reviewer: vladikb
 ms.topic: reference
 ms.date: 06/14/2023
 ---
-# Azure Data Explorer API Overview
+# API Overview
 
-The Azure Data Explorer service supports the following communication endpoints:
+The following communication endpoints are supported:
 
 1. A [REST API](#rest-api) endpoint, through which you can query and manage the data in Azure Data Explorer.
    This endpoint supports the [Kusto Query Language](../query/index.md) for queries and [management commands](../management/index.md).
 1. An [MS-TDS](#ms-tds) endpoint that implements a subset of the Microsoft Tabular Data Stream (TDS) protocol, used by the Microsoft SQL Server products. The endpoint supports TDS versions 7.x and 8.0.
    This endpoint is useful for tools that know how to communicate with a SQL Server endpoint for queries.
-1. An [Azure Resource Manager (ARM)](/azure/role-based-access-control/resource-provider-operations#microsoftkusto) endpoint that is the standard means for Azure services. The endpoint is used to manage resources, such as Azure Data Explorer clusters.
+::: moniker range="azure-data-explorer"
+3. An [Azure Resource Manager (ARM)](/azure/role-based-access-control/resource-provider-operations#microsoftkusto) endpoint that is the standard means for Azure services. The endpoint is used to manage resources, such as Azure Data Explorer clusters.
+::: moniker-end
 
 ## REST API
 
@@ -49,9 +51,10 @@ Azure Data Explorer provides a number of [client libraries](client-libraries.md)
 * Go SDK
 * PowerShell
 
+::: moniker range="azure-data-explorer"
 > [!TIP]
 > You can use the sample app generator wizard to create a working app tailored to your cluster, to ingest and query your data in your preferred programming language. The generated code can be used as a baseline to write your own apps, alter the code as you go, or you can copy sections of code into your own apps. For more information, see [sample app generator wizard](/azure/data-explorer/sample-app-generator-wizard).
-<!-- //TODO:: Add ADX moniker -->
+::: moniker-end
 
 ### .NET Framework Libraries
 
