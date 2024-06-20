@@ -131,12 +131,12 @@ When using ADLSv2, you can rename a blob to trigger blob ingestion to Azure Data
 Azure Data Explorer won't delete the blobs after ingestion. Use [Azure Blob storage lifecycle](/azure/storage/blobs/storage-lifecycle-management-concepts?tabs=azure-portal) to manage your blob deletion. It's recommended to keep the blobs for three to five days.
 
 ## Known Event Grid issues
-* If local authentication is disabled on the Event Hubs namespace that contains the event hub used for streaming notifications, use the following steps to make sure that data is flowing properly from storage to event hub using Managed Identities:
+* If local authentication is disabled on the Event Hubs namespace that contains the event hub used for streaming notifications, use the following steps to ensure that data flows properly from storage to the event hub using managed identities:
 
     ### [Steps](#tab/steps)
 
     1. Assign a system-assigned managed identity to the Event Grid system topic of the storage account. For more information, see [Enable managed identity for system topics](/azure/event-grid/enable-identity-system-topics).
-    1. Grant the Event Grid system topic managed identity sender permissions by assigning it the *Azure Event Hubs Data Sender* role on the event hub. For more information, see [Add identity to Azure roles on destinations](/azure/event-grid/add-identity-roles).
+    1. Grant the managed identity sender permissions by assigning it the *Azure Event Hubs Data Sender* role on the event hub. For more information, see [Add identity to Azure roles on destinations](/azure/event-grid/add-identity-roles).
     1. Make sure that the Event Grid subscription uses managed identity for event delivery. For more information, see [Create event subscriptions that use an identity](/azure/event-grid/managed-service-identity).
 
 
