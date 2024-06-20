@@ -31,7 +31,7 @@ Create a [follower database](/azure/data-explorer/follower.md) and follow only t
 ::: moniker-end
 
 ::: moniker range="microsoft-fabric"
-Create a [database shortcut](fabric/real-time-intelligence/database-shortcut) in Fabric and follow only the relevant tables that you'd like to share with the specific principal or set of principals.
+Create a [database shortcut](/fabric/real-time-intelligence/database-shortcut) in Fabric and follow only the relevant tables that you'd like to share with the specific principal or set of principals.
 ::: moniker-end
 
 ## Related content

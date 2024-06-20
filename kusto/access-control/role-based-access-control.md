@@ -71,4 +71,5 @@ The **Manage** column offers ways to add or remove role principals.
 
 * [Allow cross-tenant queries and commands](/azure/data-explorer/cross-tenant-query-and-commands.md)
 ::: moniker-end 
+
 * [Manage view access to tables within the same database](../management/manage-table-view-access.md)
