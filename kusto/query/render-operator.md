@@ -29,10 +29,11 @@ three kinds of columns:
   the result might translate into them guessing wrong. Try projecting-away such
   columns when that happens.
 
-<!-- //TODO put in moniker pivots -->
+::: moniker range="azure-data-explorer"
 
 >[!NOTE]
 > There are some visualizations which are only available in Azure Data Explorer dashboards. For more information, see [Dashboard-specific visuals](/azure/data-explorer/dashboard-visuals). 
+::: moniker-end
 
 ## Syntax
 
@@ -196,10 +197,10 @@ These visualizations have the following conceptual model:
 ## Related content
 
 
-<!-- //TODO put in moniker pivots -->
-
+::: moniker range="azure-data-explorer"
 * [Add a query visualization in the web UI](/azure/data-explorer/add-query-visualization)
 * [Customize dashboard visuals](/azure/data-explorer/dashboard-customize-visuals)
+::: moniker-end
 * [Rendering examples in the tutorial](tutorials/use-aggregation-functions.md#visualize-query-results)
 * [Anomaly detection](anomaly-detection.md)
 

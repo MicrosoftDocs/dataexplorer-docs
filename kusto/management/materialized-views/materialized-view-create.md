@@ -398,9 +398,11 @@ The option of backfilling by move extents can be useful in two main scenarios:
 
 * When you already have a table that includes the deduplicated source data for the materialized view, and you don't need these records in this table after view creation because you're using only the materialized view.
 
-<!-- //TODO:: Add moniker for orchestration tools -->
+* When the source table of the materialized view is very large, and backfilling the view based on the source table doesn't work well because of the limitations mentioned earlier. In this case, you can orchestrate the backfill process yourself into a temporary table by using [ingest from query commands](../data-ingestion/ingest-from-query.md). When the temporary table includes all records for the backfill, create the materialized view based on that table.
 
-* When the source table of the materialized view is very large, and backfilling the view based on the source table doesn't work well because of the limitations mentioned earlier. In this case, you can orchestrate the backfill process yourself into a temporary table by using [ingest from query commands](../data-ingestion/ingest-from-query.md) and one of the [recommended orchestration tools](/azure/data-explorer/tools-integrations-overview#orchestration). When the temporary table includes all records for the backfill, create the materialized view based on that table.
+::: moniker range="azure-data-explorer"
+You can also use one of the [recommended orchestration tools](/azure/data-explorer/tools-integrations-overview#orchestration).
+::: moniker-end
 
 **Examples:**
 

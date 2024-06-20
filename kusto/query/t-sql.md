@@ -155,7 +155,7 @@ Azure Data Explorer offers limited support for T-SQL. The following table outlin
 
 ## Related content
 
-::: monikerRange= "azure-data-explorer"
+::: moniker range= "azure-data-explorer"
 * Learn about [SQL Server emulation](/azure/data-explorer/sql-server-emulation-overview) in Azure Data Explorer
 ::: moniker-end
 * Use the [SQL to Kusto Query Language cheat sheet](sql-cheat-sheet.md)
