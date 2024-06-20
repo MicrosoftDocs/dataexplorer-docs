@@ -205,6 +205,8 @@ Azure Data Explorer won't delete the blobs after ingestion. Use [Azure Blob stor
   Write-Host -ForegroundColor Green "%%%%%%%% Script has been executed successfully %%%%%%%%"
 
     ```
+    
+    ---
 
     In addition, configure the Event Grid data connection to use managed identity authentication so that Azure Data Explorer can receive notifications from the event hub.
 
