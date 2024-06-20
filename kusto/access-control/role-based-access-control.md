@@ -61,7 +61,7 @@ The **Manage** column offers ways to add or remove role principals.
 |External Table|Admin | Full permission in the scope of a particular external table.| Database User or Database Viewer |[Management commands](../management/manage-external-table-security-roles.md)|
 |Materialized view|Admin |Full permission to alter the view, delete the view, and grant admin permissions to another principal. | Database User or Table Admin |[Management commands](../management/manage-materialized-view-security-roles.md)|
 |Function|Admin |Full permission to alter the function, delete the function, and grant admin permissions to another principal. | Database User or Table Admin |[Management commands](../management/manage-function-security-roles.md)|
-
+::: moniker-end
 
 ## Related content
 
