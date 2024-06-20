@@ -46,9 +46,10 @@ Similarly, you can reference a security group with the group email address in [U
 | App | Explicit (ID) | `aadapp`=*ApplicationDisplayName*;*TenantId*<br />or<br />`aadapp`=*ApplicationId*;*TenantId*|
 | App | Explicit (Name) | `aadapp`=*ApplicationDisplayName*;*TenantName*<br />or<br />`aadapp`=*ApplicationId*;*TenantName*|
 
-<!-- //TODO put managed identity note in adx moniker pivot -->
+::: moniker range="azure-data-explorer"
 > [!NOTE]
 > Use the "App" format to reference [managed identities](/azure/data-explorer/managed-identities-overview), in which the *ApplicationId* is the managed identity object ID or managed identity client (application) ID.
+::: moniker-end
 
 ### Examples
 
@@ -90,9 +91,11 @@ The following example assigns an MSA user to the user role on the `Test` databas
 
  to manage data partitioning policies for tables
 
-<!-- //TODO put in adx moniker pivot -->
-
+::: moniker range="azure-data-explorer"
 * Read the [authentication overview](/azure/data-explorer/access-control/index)
-* Learn how to use [management commands to assign security roles](security-roles.md)
+
 * Learn how to use the Azure portal to [manage database principals and roles](/azure/data-explorer/manage-database-permissions)
+::: moniker-end
 * [current_principal_details()](../query/current-principal-details-function.md)
+
+* Learn how to use [management commands to assign security roles](security-roles.md)

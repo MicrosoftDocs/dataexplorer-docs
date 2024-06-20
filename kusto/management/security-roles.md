@@ -12,9 +12,13 @@ Principals are granted access to resources through a role-based access control m
 When a principal attempts an operation, the system performs an authorization check to make sure the principal is associated with at least one security role that grants permissions to perform the operation. Failing an authorization check aborts the operation.
 
 The management commands listed in this article can be used to manage principals and their security roles on databases, tables, external tables, materialized views, and functions.
-<!-- //TODO put cluster and portal related stuff in moniker pivot -->
+
 > [!NOTE]
-> The three cluster level security roles of `AllDatabasesAdmin`, `AllDatabasesViewer`, and `AllDatabasesMonitor` can't be configured with security role management commands. To learn how to configure them in the Azure portal, see [Manage cluster permissions](/azure/data-explorer/manage-cluster-permissions).
+> The three cluster level security roles of `AllDatabasesAdmin`, `AllDatabasesViewer`, and `AllDatabasesMonitor` can't be configured with security role management commands. 
+
+::: moniker range="azure-data-explorer"
+To learn how to configure them in the Azure portal, see [Manage cluster permissions](/azure/data-explorer/manage-cluster-permissions).
+::: moniker-end
 
 ## Management commands
 

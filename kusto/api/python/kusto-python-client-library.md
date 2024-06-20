@@ -3,7 +3,7 @@ title:  Kusto Python SDK
 description: This article describes Python SDK in Azure Data Explorer.
 ms.reviewer: orspodek
 ms.topic: reference
-ms.date: 04/19/2023
+ms.date: 06/20/2024
 ---
 # Kusto Python SDK
 
@@ -20,12 +20,13 @@ including, but not exclusively, [Azure Databricks](https://azure.microsoft.com/s
 * [How to install the package](https://github.com/Azure/azure-kusto-python#install)
 * [Kusto query sample](https://github.com/Azure/azure-kusto-python/blob/master/azure-kusto-data/tests/sample.py)
 * [Data ingest sample](https://github.com/Azure/azure-kusto-python/blob/master/azure-kusto-ingest/tests/sample.py)
-* [Ingest data using Python](/azure/data-explorer/python-ingest-data.md)
 * [GitHub Repository](https://github.com/Azure/azure-kusto-python)
 
     [![Build status badge](https://badge.fury.io/py/azure-kusto-python.svg)](https://github.com/Azure/azure-kusto-python/actions/workflows/build.yml)
 
-<!-- //TODO:: Add ADX moniker for Ingest data -->
+::: moniker range ="azure-data-explorer"
+* [Ingest data using Python](/azure/data-explorer/python-ingest-data.md)
+::: moniker-end
 
 * Pypi packages:
 

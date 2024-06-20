@@ -3,15 +3,17 @@ title: Tables management
 description: Learn how to use table management commands to display, create, and alter tables.
 ms.reviewer: orspodek
 ms.topic: reference
-ms.date: 05/23/2023
+ms.date: 06/20/2024
 ---
 # Tables management
 
 This topic discusses the life cycle of tables and associated management commands that are helpful for exploring, creating and altering tables.
 
 Select the links in the table below for more information about them.
-<!-- //TODO put links in moniker pivot -->
+
+::: moniker range="azure-data-explorer"
 For information on optimizing table schema, see [Schema optimization best practices](/azure/data-explorer/schema-best-practice).
+::: moniker-end
 
 | Commands | Operation|
 |---|---|
