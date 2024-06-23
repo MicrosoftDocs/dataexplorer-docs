@@ -136,7 +136,6 @@ evaluate cosmosdb_sql_request(
     "SELECT c.Id, c.Name, c.City FROM c",
     armResourceId='/subscriptions/<SubscriptionId>/resourceGroups/<ResourceGroup>/providers/Microsoft.DocumentDb/databaseAccounts/<DatabaseAccount>'
 ) : (Id:long, Name:string, City:string)
-
 ```
 
 ::: zone-end
