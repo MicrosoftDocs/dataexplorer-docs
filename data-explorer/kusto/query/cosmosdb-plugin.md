@@ -134,7 +134,7 @@ The following example uses the Azure Resource Manager resource ID for authentica
 evaluate cosmosdb_sql_request(
     'AccountEndpoint=https://cosmosdbacc.documents.azure.com/;Database=<MyDatabase>;Collection=<MyCollection>;',
     "SELECT c.Id, c.Name, c.City FROM c",
-    armResourceId='/subscriptions/<SubscriptionId>/resourceGroups/<ResourceGroup>/providers/<ProviderNamespace>/databaseAccounts/<DatabaseAccount>'
+    armResourceId='/subscriptions/<SubscriptionId>/resourceGroups/<ResourceGroup>/providers/Microsoft.DocumentDb/databaseAccounts/<DatabaseAccount>'
 ) : (Id:long, Name:string, City:string)
 
 ```
