@@ -9,7 +9,7 @@ ms.date: 12/14/2022
 
 Calculates the geospatial coordinates that represent the center of an S2 cell.
 
-Read more about [S2 cell hierarchy](https://s2geometry.io/devguide/s2cell_hierarchy).
+Read more about [S2 cell hierarchy](http://s2geometry.io/devguide/s2cell_hierarchy).
 
 ## Syntax
 

@@ -9,7 +9,7 @@ ms.date: 12/14/2022
 
 Calculates the polygon that represents the S2 Cell rectangular area.
 
-Read more about [S2 Cells](https://s2geometry.io/devguide/s2cell_hierarchy).
+Read more about [S2 Cells](http://s2geometry.io/devguide/s2cell_hierarchy).
 
 ## Syntax
 

@@ -14,7 +14,7 @@ S2 cell can be a useful geospatial clustering tool. An S2 cell is a cell on a sp
 >[!NOTE]
 > If you invoke the [geo_s2cell_to_central_point()](geo-s2cell-to-central-point-function.md) function on an S2 cell token string that was calculated on longitude x and latitude y, the function won't necessarily return x and y.
 
-Read more about [S2 cell hierarchy](https://s2geometry.io/devguide/s2cell_hierarchy).
+Read more about [S2 cell hierarchy](http://s2geometry.io/devguide/s2cell_hierarchy).
 
 ## Syntax
 
@@ -72,7 +72,7 @@ For every level, the size of the S2 cell is similar but not exactly equal. Nearb
 |29|12 mm|18 mm|
 |30|6 mm|9 mm|
 
-The table source can be found [in this S2 Cell statistical resource](https://s2geometry.io/resources/s2cell_statistics).
+The table source can be found [in this S2 Cell statistical resource](http://s2geometry.io/resources/s2cell_statistics).
 
 For comparison with other available grid systems, see [geospatial clustering with Kusto Query Language](geospatial-grid-systems.md).
 
