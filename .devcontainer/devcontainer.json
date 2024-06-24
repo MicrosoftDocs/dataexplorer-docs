@@ -1,0 +1,15 @@
+{
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "docsmsft.docs-authoring-pack",
+        "docsmsft.learnlinter",
+        "acrolinx.vscode-sidebar",
+        "github.copilot",
+        "eamodio.gitlens",
+        "jebbs.markdown-extended",
+        "viktorzetterstrom.non-breaking-space-highlighter"
+      ]
+    }
+  }
+}
