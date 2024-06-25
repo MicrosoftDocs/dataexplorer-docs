@@ -18,12 +18,18 @@ You must have at least [Table Ingestor](../access-control/role-based-access-cont
 ## Syntax
 
 `.ingest-from-storage-queued` `into` `table` [database(*DatabaseName*).]*TableName*
-[CompressionFactor=CompressionFactorValue]
-[SkipBatching=SkipBatchingValue]
+
 [EnableTracking=EnableTrackingValue]
+
+[SkipBatching=SkipBatchingValue]
+
+[CompressionFactor=CompressionFactorValue]
+
 [with ( *IngestionPropertyName* = *IngestionPropertyValue* [, ...] )]
+
 <|
- *URL List*
+
+*SourceDataLocators*
 
 [!INCLUDE [syntax-conventions-note](../../../includes/syntax-conventions-note.md)]
 
@@ -35,8 +41,11 @@ EnableTracking is false
 |Name|Type|Required|Description|
 |--|--|--|--|
 |*DatabaseName*| `string` | |The name of the database into which to ingest data.  If no database name is provided, the database schema of the database in context is used.|
-|*TableName*| `string` | :heavy_check_mark:|The name of the table into which to ingest data. The table name is always relative to the database in context. If no schema mapping object is provided, the schema of the database in context is used.|
-|*SourceDataLocator*| `string` | :heavy_check_mark:|A single or comma-separated list of [storage connection strings](../../api/connection-strings/storage-connection-strings.md). A single connection string must refer to a single file hosted by a storage account. Ingestion of multiple files can be done by specifying multiple connection strings, or by [ingesting from a query](ingest-from-query.md) of an [external table](../../query/schema-entities/external-tables.md).|
+|*TableName*| `string` | :heavy_check_mark:|The name of the table into which to ingest data.|
+|*EnableTracking*| `boolean` | | If `true`, the blob ingestion will be tracked so that <span style="background:yellow">TODO</span>. Default is `false`.  |
+|*SkipBatching*| `boolean` | | If `true`, the blobs will not be batch (either together or with other blobs) and each blob will be ingested individually. Default is `false`.  |
+|*CompressionFactor*| `real` | |Compression factor (ratio) between the original size and the compressed size of blobs.  This is useful when blobs are provided in a compressed format to estimate the original size of the data (for batching purposes). |
+|*SourceDataLocators*| `string` | :heavy_check_mark:|One or many (maximum 100) [storage connection strings](../../api/connection-strings/storage-connection-strings.md) separated by a return character.  Each connection string must refer to a single file hosted by a storage account.|
 
 > [!NOTE]
 > We recommend using [obfuscated string literals](../../query/scalar-data-types/string.md#obfuscated-string-literals) for the *SourceDataPointer*. The service will scrub credentials in internal traces and error messages.
