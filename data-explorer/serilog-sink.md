@@ -9,13 +9,14 @@ ms.reviewer: ramacg
 
 [!INCLUDE [ingest-data-serilog](includes/cross-repo/ingest-data-serilog.md)]
 
+For a complete list of data connectors, see [Data integrations overview](../../integrate-data-overview.md).
+
 ## Prerequisites
 
-[!INCLUDE [ingest-data-serilog-adx-prerequisites](includes/cross-repo/ingest-data-serilog-adx-prerequisites.md)]
+* .NET SDK 6.0 or later
+* An Azure Data Explorer [cluster and database](/azure/data-explorer/create-cluster-and-database) with the default cache and retention policies.
 
 [!INCLUDE [ingest-data-serilog-2](includes/cross-repo/ingest-data-serilog-2.md)]
-
-You'll need your Kusto cluster URI for the *TargetURI* value. The URI is in the format *https://ingest-\<cluster>.\<region>.kusto.windows.net*. For more information, see [Add a cluster connection](add-cluster-connection.md#add-a-cluster-connection).
 
 [!INCLUDE [ingest-data-serilog-3](includes/cross-repo/ingest-data-serilog-3.md)]
 
@@ -30,7 +31,11 @@ You'll need your Kusto cluster URI for the *TargetURI* value. The URI is in the 
 
     :::image type="content" lightbox="media/serilog-connector/take-10-results.png" source="media/serilog-connector/take-10-results.png" alt-text="Screenshot of table with take 10 function and results.":::
 
+## Ingestion URI
+
+You'll need your Kusto cluster URI for the *TargetURI* value. The URI is in the format *https://ingest-\<cluster>.\<region>.kusto.windows.net*. For more information, see [Add a cluster connection](add-cluster-connection.md#add-a-cluster-connection).
+
 ## Related content
 
-* [Azure Data Explorer data ingestion overview](ingest-data-overview.md)
+* [Data integrations overview](integrate-data-overview.md)
 * [Kusto Query Language (KQL) overview](kusto/query/index.md)

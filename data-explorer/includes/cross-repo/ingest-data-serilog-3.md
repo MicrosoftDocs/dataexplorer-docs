@@ -45,7 +45,7 @@ Use the following steps to:
 
     | Variable | Description |
     |---|---|
-    | *IngestionEndPointUri* | The ingest URI. |
+    | *IngestionEndPointUri* | The [ingest URI](#ingestion-uri). |
     | *DatabaseName* | The case-sensitive name of the target database. |
     | *TableName* | The case-sensitive name of an existing target table. For example, **SerilogTest** is the name of the table created in [Create a target table and ingestion mapping](#create-a-target-table-and-ingestion-mapping). |
     | *AppId* | The application client ID required for authentication. You saved this value in [Create a Microsoft Entra service principal](#create-a-microsoft-entra-service-principal). |
@@ -55,7 +55,7 @@ Use the following steps to:
 
     For more options, see [Sink Options](https://github.com/Azure/serilog-sinks-azuredataexplorer#options).
 
-1. Send data to your KQL database using the Serilog sink. For example:
+1. Send data to your database using the Serilog sink. For example:
 
     ```csharp
     log.Verbose("Processed {@Position} in {Elapsed:000} ms.", position, elapsedMs);
@@ -67,7 +67,7 @@ Use the following steps to:
 
 1. Build and run the app. For example, if you're using Visual Studio, press F5.
 
-1. Verify that the data is in your KQL table. Run the following query replacing the placeholder with the name of the table that used earlier:
+1. Verify that the data is in your table. Run the following query replacing the placeholder with the name of the table that was created in a previous step:
 
     ```kusto
     <TableName>
@@ -76,7 +76,7 @@ Use the following steps to:
 
 ## Run the sample app
 
-Use the sample log generator app as an example to show how to configure and use the Serilog sink.
+If you don't have your own data to test, you can use the sample log generator app with sample data to test configuration and use of the Serilog sink.
 
 1. Clone the Serilog sink's [git repo](https://github.com/Azure/serilog-sinks-azuredataexplorer) using the following git command:
 
