@@ -4,6 +4,7 @@ description: Learn how to use the `.create function` command to create a stored 
 ms.reviewer: orspodek
 ms.topic: reference
 ms.date: 06/20/2024
+monikerRange: "azure-data-explorer"
 ---
 # .create function command
 

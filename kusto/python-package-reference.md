@@ -4,13 +4,12 @@ description: Learn about the Python packages available in the Azure Data Explore
 ms.reviewer: suatta
 ms.topic: reference
 ms.date: 03/19/2023
-zone_pivot_group_filename: data-explorer/zone-pivot-groups.json
-zone_pivot_groups: kql-flavors-all
+monikerRange: "microsoft-fabric || azure-data-explorer"
 ---
 
 # Python plugin packages
 
-::: zone pivot="fabric"
+::: moniker range="microsoft-fabric"
 
 This article lists the available Python packages in the Python plugin. For more information, see [Python plugin](query/python-plugin.md).
 
@@ -177,8 +176,8 @@ Not supported
 
 ---
 
-::: zone-end
-::: zone pivot="azuredataexplorer"
+::: moniker-end
+::: moniker range="azure-data-explorer"
 
 This article lists the available Python packages in the Python plugin. For more information, see [Python plugin](query/python-plugin.md).
 
@@ -723,10 +722,3 @@ Python engine 3.10.8 + common data science and ML packages + deep learning packa
 
 ---
 
-::: zone-end
-
-::: zone pivot="azuremonitor"
-
-This capability isn't supported.
-
-::: zone-end

@@ -4,12 +4,11 @@ description:  This article describes the binomial_test_fl() user-defined functio
 ms.reviewer: adieldar
 ms.topic: reference
 ms.date: 03/13/2023
-zone_pivot_group_filename: data-explorer/zone-pivot-groups.json
-zone_pivot_groups: kql-flavors-all
+monikerRange: "microsoft-fabric || azure-data-explorer"
 ---
 # binomial_test_fl()
 
-::: zone pivot="azuredataexplorer, fabric"
+::: moniker range="microsoft-fabric, azure-data-explorer"
 
 The function `binomial_test_fl()` is a [UDF (user-defined function)](../query/functions/user-defined-functions.md) that performs the [binomial test](https://en.wikipedia.org/wiki/Binomial_test).
 
@@ -165,10 +164,3 @@ datatable(id:string, x:int, n:int) [
 | Test #2 | 5 | 5 | 0.00032 |
 | Test #3 | 3 | 15 | 0.601976790745087 |
 
-::: zone-end
-
-::: zone pivot="azuremonitor"
-
-This feature isn't supported.
-
-::: zone-end

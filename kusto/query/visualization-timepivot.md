@@ -4,12 +4,11 @@ description:  This article describes the time pivot visualization.
 ms.reviewer: alexans
 ms.topic: reference
 ms.date: 01/26/2023
-zone_pivot_group_filename: data-explorer/zone-pivot-groups.json
-zone_pivot_groups: kql-flavors-all
+monikerRange: "azure-data-explorer"
 ---
 # Time pivot
 
-::: zone pivot="azuredataexplorer"
+::: moniker range="azure-data-explorer"
 
 The time pivot visualization is an interactive navigation over the events time-line pivoting on time axis.
 
@@ -64,10 +63,5 @@ StormEvents
 
 :::image type="content" source="media/visualization-timepivot/time-pivot-visualization.jpg" lightbox="media/visualization-timepivot/time-pivot-visualization.jpg" alt-text="Screenshot of timepivot in Kusto.Explorer.":::
 
-::: zone-end
+::: moniker-end
 
-::: zone pivot="azuremonitor, fabric"
-
-This visualization isn't supported.
-
-::: zone-end

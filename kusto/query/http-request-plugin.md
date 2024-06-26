@@ -5,12 +5,11 @@ services: data-explorer
 ms.reviewer: zivc
 ms.topic: reference
 ms.date: 04/03/2023
-zone_pivot_group_filename: data-explorer/zone-pivot-groups.json
-zone_pivot_groups: kql-flavors-all
+monikerRange: "microsoft-fabric || azure-data-explorer"
 ---
 # http_request plugin
 
-::: zone pivot="azuredataexplorer, fabric"
+::: moniker range="microsoft-fabric, azure-data-explorer"
 
 The `http_request` plugin sends an HTTP GET request and converts the response into a table.
 
@@ -100,10 +99,5 @@ evaluate http_request(Uri)
 | westeurope    |                                                | USD          | 2021-09-28T00:00:00Z | false                | EU West  | 0745df0d-ce4f-52db-ac31-ac574d4dcfe5 | Standard Capacity Unit                               | DZH318Z08M22 | Azure Purview Data Map                              |       0.411 | Analytics     | DZH318Q66D0F | Azure Purview | DZH318Z08M22/0002 | Standard                                 |                0 | Consumption | 1 Hour        |     0.411 |
 | westeurope    |                                                | USD          | 2021-09-28T00:00:00Z | false                | EU West  | 811e3118-5380-5ee8-a5d9-01d48d0a0627 | Standard vCore                                       | DZH318Z08M23 | Azure Purview Scanning Ingestion and Classification |        0.63 | Analytics     | DZH318Q66D0F | Azure Purview | DZH318Z08M23/0009 | Standard                                 |                0 | Consumption | 1 Hour        |      0.63 |
 
-::: zone-end
+::: moniker-end
 
-::: zone pivot="azuremonitor"
-
-This capability isn't supported in Azure Monitor.
-
-::: zone-end

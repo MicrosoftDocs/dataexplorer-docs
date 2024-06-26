@@ -4,12 +4,11 @@ description:  This article describes the kmeans_fl() user-defined function.
 ms.reviewer: adieldar
 ms.topic: reference
 ms.date: 03/13/2023
-zone_pivot_group_filename: data-explorer/zone-pivot-groups.json
-zone_pivot_groups: kql-flavors-all
+monikerRange: "microsoft-fabric || azure-data-explorer"
 ---
 # kmeans_fl()
 
-::: zone pivot="azuredataexplorer, fabric"
+::: moniker range="microsoft-fabric, azure-data-explorer"
 
 The function `kmeans_fl()` is a [UDF (user-defined function)](../query/functions/user-defined-functions.md) that clusterizes a dataset using the [k-means algorithm](https://en.wikipedia.org/wiki/K-means_clustering).
 
@@ -234,10 +233,4 @@ OccupancyDetection
 | 3 | 22.0344177115763 | 25.1151053429273 | 462.358969056434 | 656.310608696507 | 0.00411782436443015 | 2176 |
 | 2 | 21.4091216082295 | 31.8363099552939 | 174.614816229606 | 1482.05062388414 | 0.00504573022875817 | 1683 |
 
-::: zone-end
 
-::: zone pivot="azuremonitor"
-
-This feature isn't supported.
-
-::: zone-end

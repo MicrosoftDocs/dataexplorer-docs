@@ -4,8 +4,7 @@ description:  This article describes union operator.
 ms.reviewer: alexans
 ms.topic: reference
 ms.date: 02/13/2020
-zone_pivot_group_filename: data-explorer/zone-pivot-groups.json
-zone_pivot_groups: kql-flavors-all
+monikerRange: "microsoft-fabric || azure-data-explorer || azure-monitor"
 ---
 # union operator
 
@@ -22,7 +21,7 @@ Takes two or more tables and returns the rows of all of them.
 
 ## Parameters
 
-::: zone pivot="azuredataexplorer, fabric"
+::: moniker range="microsoft-fabric, azure-data-explorer"
 
 |Name|Type|Required|Description|
 |--|--|--|--|
@@ -40,9 +39,9 @@ Takes two or more tables and returns the rows of all of them.
 |`hint.concurrency`| `int` ||Hints the system how many concurrent subqueries of the `union` operator should be executed in parallel. The default is the number of CPU cores on the single node of the cluster (2 to 16).|
 |`hint.spread`| `int` ||Hints the system how many nodes should be used by the concurrent `union` subqueries execution. The default is 1.|
 
-::: zone-end
+::: moniker-end
 
-::: zone pivot="azuremonitor"
+::: moniker range="azure-monitor"
 
 |Name|Type|Required|Description|
 |--|--|--|--|
@@ -52,7 +51,7 @@ Takes two or more tables and returns the rows of all of them.
 |`isfuzzy`| `bool` ||If set to `true`, allows fuzzy resolution of union legs. The set of union sources is reduced to the set of table references that exist and are accessible at the time while analyzing the query and preparing for execution. If at least one such table was found, any resolution failure yields a warning in the query status results, but won't prevent the query execution. If no resolutions were successful, the query returns an error. However, in cross-workspace and cross-app queries, if any of the workspaces or apps is not found, the query will fail. The default is `false`.<br/><br/>`isfuzzy=true` only applies to the `union` sources resolution phase. Once the set of source tables is determined, possible additional query failures won't be suppressed.|
 |*Tables*| `string` ||One or more comma-separated table references, a query expression enclosed with parenthesis, or a set of tables specified with a wildcard. For example, `E*` would form the union of all the tables in the database whose names begin `E`.<br/><br/>Whenever the list of tables is known, refrain from using wildcards. Some workspaces contains very large number of tables that would lead to inefficient execution. Tables may also be added over time leading to unpredicted results.|
 
-::: zone-end
+::: moniker-end
 
 > [!NOTE]
 >

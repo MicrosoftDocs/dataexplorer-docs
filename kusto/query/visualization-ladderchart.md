@@ -4,12 +4,11 @@ description:  This article describes the ladder chart visualization.
 ms.reviewer: alexans
 ms.topic: reference
 ms.date: 09/18/2023
-zone_pivot_group_filename: data-explorer/zone-pivot-groups.json
-zone_pivot_groups: kql-flavors-all
+monikerRange: "azure-data-explorer"
 ---
 # Ladder chart
 
-::: zone pivot="azuredataexplorer"
+::: moniker range="azure-data-explorer"
 
 The last two columns are the x-axis, and the other columns are the y-axis.
 
@@ -84,10 +83,5 @@ StormEvents
 
 :::image type="content" source="media/visualization-ladderchart/ladderchart-state-and-event-type.png" alt-text="Screenshot of ladderchart showing dates of storms by state and event type." lightbox="media/visualization-ladderchart/ladderchart-state-and-event-type.png":::
 
-::: zone-end
+::: moniker-end
 
-::: zone pivot="azuremonitor, fabric"
-
-This visualization isn't supported.
-
-::: zone-end

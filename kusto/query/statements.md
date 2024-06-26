@@ -4,12 +4,11 @@ description: This article lists the types of query statements.
 ms.reviewer: alexans
 ms.topic: reference
 ms.date: 04/11/2023
-zone_pivot_group_filename: data-explorer/zone-pivot-groups.json
-zone_pivot_groups: kql-flavors-all
+monikerRange: "microsoft-fabric || azure-data-explorer"
 ---
 # Query statement types
 
-::: zone pivot="azuredataexplorer, fabric"
+::: moniker range="microsoft-fabric, azure-data-explorer"
 
 A query consists of one or more **query statements**, delimited by a semicolon (`;`).
 At least one of these query statements must be a [tabular expression statement](tabular-expression-statements.md).
@@ -63,10 +62,5 @@ Following is a list of application query statements:
   on top of Kusto to restrict queries to a specific subset of data in Kusto (including restricting
   access to specific columns and records.)
 
-::: zone-end
+::: moniker-end
 
-::: zone pivot="azuremonitor"
-
-This capability isn't supported in Azure Monitor
-
-::: zone-end

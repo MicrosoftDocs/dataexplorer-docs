@@ -4,12 +4,12 @@ description:  This article describes the anomaly chart visualization.
 ms.reviewer: alexans
 ms.topic: reference
 ms.date: 01/29/2023
-zone_pivot_group_filename: data-explorer/zone-pivot-groups.json
-zone_pivot_groups: kql-flavors-all
+
+monikerRange: "microsoft-fabric || azure-data-explorer"
 ---
 # Anomaly chart
 
-::: zone pivot="azuredataexplorer, fabric"
+::: moniker range="microsoft-fabric, azure-data-explorer"
 
 The anomaly chart visualization is similar to a [timechart](visualization-timechart.md), but highlights anomalies using the [series_decompose_anomalies](series-decompose-anomalies-function.md) function.  
 
@@ -78,10 +78,4 @@ demo_make_series2
 
 :::image type="content" source="media/visualization-anomalychart/anomaly-chart.png" alt-text="Screenshot of anomaly chart output." lightbox="media/visualization-anomalychart/anomaly-chart.png":::
 
-::: zone-end
-
-::: zone pivot="azuremonitor"
-
-This visualization isn't supported in Azure Monitor.
-
-::: zone-end
+::: moniker-end

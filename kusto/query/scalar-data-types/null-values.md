@@ -4,8 +4,7 @@ description: Learn how to use and understand null values.
 ms.reviewer: alexans
 ms.topic: reference
 ms.date: 11/13/2023
-zone_pivot_group_filename: data-explorer/zone-pivot-groups.json
-zone_pivot_groups: kql-flavors-all
+monikerRange: "microsoft-fabric || azure-data-explorer || azure-monitor"
 ---
 # Null values
 
@@ -181,17 +180,17 @@ T
 |&nbsp;|&nbsp;|false    |false     |1        |true     |
 |a     |1     |false    |false     |1        |false    |
 
-::: zone pivot="azuredataexplorer, fabric"
+::: moniker range="microsoft-fabric, azure-data-explorer"
 
 > [!NOTE]
 > * If you run the above query in Kusto.Explorer, all `true` values will be displayed as `1`, and all `false` values will be displayed as `0`.
 > * Kusto doesn't offer a way to constrain a table's column from having null values. In other words, there's no equivalent to SQL's `NOT NULL` constraint.
 
-::: zone-end
+::: moniker-end
 
-::: zone pivot="azuremonitor"
+::: moniker range="azure-monitor"
 
 > [!NOTE]
 > Kusto doesn't offer a way to constrain a table's column from having null values. In other words, there's no equivalent to SQL's `NOT NULL` constraint.
 
-::: zone-end
+::: moniker-end

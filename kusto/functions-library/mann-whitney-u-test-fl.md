@@ -4,12 +4,11 @@ description:  This article describes the mann_whitney_u_test_fl() user-defined f
 ms.reviewer: adieldar
 ms.topic: reference
 ms.date: 03/13/2023
-zone_pivot_group_filename: data-explorer/zone-pivot-groups.json
-zone_pivot_groups: kql-flavors-all
+monikerRange: "microsoft-fabric || azure-data-explorer"
 ---
 # mann_whitney_u_test_fl()
 
-::: zone pivot="azuredataexplorer, fabric"
+::: moniker range="microsoft-fabric, azure-data-explorer"
 
 The function `mann_whitney_u_test_fl()` is a [UDF (user-defined function)](../query/functions/user-defined-functions.md) that performs the [Mann-Whitney U Test](https://en.wikipedia.org/wiki/Mann%E2%80%93Whitney_U_test).
 
@@ -159,10 +158,4 @@ datatable(id:string, sample1:dynamic, sample2:dynamic) [
 | Test #2 | [20.85, 21.89, 23.41] | [35.09, 30.02, 26.52] | 0 | 0.04042779918502612 |
 | Test #3 | [20.13, 20.5, 21.7, 22.02] | [32.2, 32.79, 33.9, 34.22] | 0 | 0.015191410988288745 |
 
-::: zone-end
 
-::: zone pivot="azuremonitor"
-
-This feature isn't supported.
-
-::: zone-end

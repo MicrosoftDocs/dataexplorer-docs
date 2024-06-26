@@ -4,8 +4,7 @@ description: Learn how to use the render operator to instruct the user agent to 
 ms.reviewer: alexans
 ms.topic: reference
 ms.date: 08/07/2023
-zone_pivot_group_filename: data-explorer/zone-pivot-groups.json
-zone_pivot_groups: kql-flavors-all
+monikerRange: "microsoft-fabric || azure-data-explorer || azure-monitor"
 ---
 # render operator
 
@@ -51,7 +50,7 @@ three kinds of columns:
 
 ### Visualization
 
-::: zone pivot="azuredataexplorer"
+::: moniker range="azure-data-explorer"
 
 | *visualization* | Description | Illustration |
 |--|--|--|
@@ -74,9 +73,9 @@ three kinds of columns:
 > [!NOTE]
 > The ladderchart, pivotchart, timepivot, and treemap visualizations can be used in Kusto.Explorer but are not available in the Azure Data Explorer web UI.
 
-::: zone-end
+::: moniker-end
 
-::: zone pivot="azuremonitor"
+::: moniker range="azure-monitor"
 
 |*Visualization*     |Description| Illustration |
 |--------------------|----------|---------|
@@ -88,9 +87,9 @@ three kinds of columns:
 | [`table`](visualization-table.md)            | Default - results are shown as a table.| :::image type="icon" source="media/renderoperator/table-visualization.png" border="false"::: |
 | [`timechart`](visualization-timechart.md)         | Line graph. First column is x-axis, and should be datetime. Other (numeric) columns are y-axes. There's one string column whose values are used to "group" the numeric columns and create different lines in the chart (further string columns are ignored).| :::image type="icon" source="media/renderoperator/visualization-timechart.png" border="false"::: |
 
-::: zone-end
+::: moniker-end
 
-::: zone pivot="fabric"
+::: moniker range="microsoft-fabric"
 
 | *visualization*| Description| Illustration |
 |-----------|------------|---------|
@@ -106,14 +105,14 @@ three kinds of columns:
 | [`table`](visualization-table.md)                       | Default - results are shown as a table.| :::image type="icon" source="media/renderoperator/table-visualization.png" border="false"::: |
 | [`timechart`](visualization-timechart.md)               | Line graph. First column is x-axis, and must be datetime. Other (numeric) columns are y-axes. | :::image type="icon" source="media/renderoperator/visualization-timechart.png" border="false"::: |
 
-::: zone-end
+::: moniker-end
 
 ### Supported properties
 
 *PropertyName*/*PropertyValue* indicate additional information to use when rendering.
   All properties are optional. The supported properties are:
 
-::: zone pivot="azuredataexplorer, fabric"
+::: moniker range="microsoft-fabric, azure-data-explorer"
 
 |*PropertyName*|*PropertyValue*                                                                   |
 |--------------|----------------------------------------------------------------------------------|
@@ -133,9 +132,9 @@ three kinds of columns:
 |`ytitle`      |The title of the y-axis (of type `string`).                                       |
 |`anomalycolumns`|Property relevant only for `anomalychart`. Comma-delimited list of columns, which will be considered as anomaly series and displayed as points on the chart|
 
-::: zone-end
+::: moniker-end
 
-::: zone pivot="azuremonitor"
+::: moniker range="azure-monitor"
 
 |*PropertyName*|*PropertyValue*                                                                   |
 |--------------|----------------------------------------------------------------------------------|
@@ -143,7 +142,7 @@ three kinds of columns:
 |`series`      |Comma-delimited list of columns whose combined per-record values define the series that record belongs to.|
 |`title`       |The title of the visualization (of type `string`).                                |
 
-::: zone-end
+::: moniker-end
 
 #### `kind` property
 
@@ -167,7 +166,7 @@ The supported values of this property are:
 |`scatterchart` |`map`              |Expected columns are [Longitude, Latitude] or GeoJSON point. Series column is optional. For more information, see [Geospatial visualizations](geospatial-visualizations.md). |
 |`piechart`     |`map`              |Expected columns are [Longitude, Latitude] or GeoJSON point, color-axis and numeric. Supported in Kusto Explorer desktop. For more information, see [Geospatial visualizations](geospatial-visualizations.md).|
 
-::: zone pivot="azuredataexplorer, fabric"
+::: moniker range="microsoft-fabric, azure-data-explorer"
 
 #### `ysplit` property
 
@@ -204,9 +203,9 @@ These visualizations have the following conceptual model:
 * [Rendering examples in the tutorial](tutorials/use-aggregation-functions.md#visualize-query-results)
 * [Anomaly detection](anomaly-detection.md)
 
-::: zone-end
+::: moniker-end
 
-::: zone pivot="azuremonitor"
+::: moniker range="azure-monitor"
 
 > [!NOTE]
 > The data model of the render operator looks at the tabular data as if it has
@@ -229,4 +228,4 @@ InsightsMetrics
 | render timechart
 ```
 
-::: zone-end
+::: moniker-end

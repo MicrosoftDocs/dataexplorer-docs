@@ -4,12 +4,11 @@ description: Learn how to use the set statement to set a request property for th
 ms.reviewer: alexans
 ms.topic: reference
 ms.date: 12/14/2023
-zone_pivot_group_filename: data-explorer/zone-pivot-groups.json
-zone_pivot_groups: kql-flavors-all
+monikerRange: "microsoft-fabric || azure-data-explorer"
 ---
 # Set statement
 
-::: zone pivot="azuredataexplorer, fabric"
+::: moniker range="microsoft-fabric, azure-data-explorer"
 
 The `set` statement is used to set a [request property](../api/rest/request-properties.md) for the duration of the query.
 
@@ -41,10 +40,4 @@ set querytrace;
 Events | take 100
 ```
 
-::: zone-end
-
-::: zone pivot="azuremonitor"
-
-This capability isn't supported in Azure Monitor.
-
-::: zone-end
+::: moniker-end

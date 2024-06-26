@@ -4,12 +4,11 @@ description: Learn how to use the cursor_before_or_at() function to compare the 
 ms.reviewer: alexans
 ms.topic: reference
 ms.date: 11/27/2020
-zone_pivot_group_filename: data-explorer/zone-pivot-groups.json
-zone_pivot_groups: kql-flavors-all
+monikerRange: "microsoft-fabric || azure-data-explorer"
 ---
 # cursor_before_or_at()
 
-::: zone pivot="azuredataexplorer, fabric"
+::: moniker range="microsoft-fabric, azure-data-explorer"
 
 A predicate function run over the records of a table to compare their ingestion time against the database cursor time.
 
@@ -38,10 +37,4 @@ before or at the database cursor *RHS* (`true`) or not (`false`).
 
 * [database cursors](../management/database-cursor.md)
 
-::: zone-end
-
-::: zone pivot="azuremonitor"
-
-This capability isn't supported in Azure Monitor
-
-::: zone-end
+::: moniker-end

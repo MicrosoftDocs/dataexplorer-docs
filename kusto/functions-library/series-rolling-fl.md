@@ -4,12 +4,11 @@ description:  This article describes the series_rolling_fl() user-defined functi
 ms.reviewer: adieldar
 ms.topic: reference
 ms.date: 03/13/2023
-zone_pivot_group_filename: data-explorer/zone-pivot-groups.json
-zone_pivot_groups: kql-flavors-all
+monikerRange: "microsoft-fabric || azure-data-explorer"
 ---
 # series_rolling_fl()
 
-::: zone pivot="azuredataexplorer, fabric"
+::: moniker range="microsoft-fabric, azure-data-explorer"
 
 The function `series_rolling_fl()` is a [user-defined function (UDF)](../query/functions/user-defined-functions.md) that applies rolling aggregation on a series. It takes a table containing multiple series (dynamic numerical array) and applies, for each series, a rolling aggregation function.
 
@@ -313,10 +312,4 @@ range x from 1 to 100 step 1
 
 :::image type="content" source="media/series-rolling-fl/rolling-trimmed-mean.png" alt-text="Graph depicting rolling trimmed mean." border="false":::
 
-::: zone-end
 
-::: zone pivot="azuremonitor"
-
-This feature isn't supported.
-
-::: zone-end

@@ -4,12 +4,11 @@ description:  This article describes the predict_onnx_fl() user-defined function
 ms.reviewer: adieldar
 ms.topic: reference
 ms.date: 05/01/2023
-zone_pivot_group_filename: data-explorer/zone-pivot-groups.json
-zone_pivot_groups: kql-flavors-all
+monikerRange: "microsoft-fabric || azure-data-explorer"
 ---
 # predict_onnx_fl()
 
-::: zone pivot="azuredataexplorer, fabric"
+::: moniker range="microsoft-fabric, azure-data-explorer"
 
 The function `predict_onnx_fl()` is a [user-defined function (UDF)](../query/functions/user-defined-functions.md) that predicts using an existing trained machine learning model. This model has been converted to [ONNX](https://onnx.ai/) format, serialized to string, and saved in a standard table.
 
@@ -199,10 +198,4 @@ OccupancyDetection
 | TRUE | FALSE | 15 |
 | FALSE | FALSE | 9284 |
 
-::: zone-end
 
-::: zone pivot="azuremonitor"
-
-This feature isn't supported.
-
-::: zone-end

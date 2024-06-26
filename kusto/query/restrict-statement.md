@@ -4,12 +4,11 @@ description: Learn how to use the restrict statement to limit tabular views that
 ms.reviewer: alexans
 ms.topic: reference
 ms.date: 03/12/2023
-zone_pivot_group_filename: data-explorer/zone-pivot-groups.json
-zone_pivot_groups: kql-flavors-all
+monikerRange: "microsoft-fabric || azure-data-explorer"
 ---
 # Restrict statement
 
-::: zone pivot="azuredataexplorer, fabric"
+::: moniker range="microsoft-fabric, azure-data-explorer"
 
 The restrict statement limits the set of table/view entities which are visible to query statements that follow it. For example, in a database that includes two tables (`A`, `B`), the application can prevent the rest of the query from accessing `B` and only "see" a limited form of table `A` by using a view.
 
@@ -137,10 +136,5 @@ restrict access to (View1, View2);
 Table1 |  count
 ```
 
-::: zone-end
+::: moniker-end
 
-::: zone pivot="azuremonitor"
-
-This capability isn't supported in Azure Monitor
-
-::: zone-end

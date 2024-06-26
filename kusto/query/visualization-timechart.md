@@ -4,8 +4,7 @@ description:  This article describes the time chart visualization.
 ms.reviewer: alexans
 ms.topic: reference
 ms.date: 07/26/2023
-zone_pivot_group_filename: data-explorer/zone-pivot-groups.json
-zone_pivot_groups: kql-flavors-all
+monikerRange: "microsoft-fabric || azure-data-explorer || azure-monitor"
 ---
 # Time chart
 
@@ -27,7 +26,7 @@ A time chart visual is a type of line graph. The first column of the query is th
 | *T* | `string` |  :heavy_check_mark: | Input table name.
 | *propertyName*, *propertyValue* | `string` | | A comma-separated list of key-value property pairs. See [supported properties](#supported-properties).|
 
-::: zone pivot="azuredataexplorer, fabric"
+::: moniker range="microsoft-fabric, azure-data-explorer"
 
 ### Supported properties
 
@@ -119,9 +118,9 @@ StormEvents
 
 * [Add a query visualization in the web UI](/azure/data-explorer/add-query-visualization)
 
-::: zone-end
+::: moniker-end
 
-::: zone pivot="azuremonitor"
+::: moniker range="azure-monitor"
 
 ### Supported properties
 
@@ -150,4 +149,4 @@ demo_make_series2
 
 :::image type="content" source="media/visualization-timechart/visualization-timechart.png" alt-text="Screenshot of timechart visualization output." lightbox="media/visualization-timechart/visualization-timechart.png":::
 
-::: zone-end
+::: moniker-end

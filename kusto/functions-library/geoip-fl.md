@@ -4,12 +4,11 @@ description:  Learn how to use the geoip_fl() user-defined function.
 ms.reviewer: adieldar
 ms.topic: reference
 ms.date: 03/13/2023
-zone_pivot_group_filename: data-explorer/zone-pivot-groups.json
-zone_pivot_groups: kql-flavors-all
+monikerRange: "microsoft-fabric || azure-data-explorer"
 ---
 # geoip_fl()
 
-::: zone pivot="azuredataexplorer, fabric"
+::: moniker range="microsoft-fabric, azure-data-explorer"
 
 `geoip_fl()` is a [user-defined function](../query/functions/user-defined-functions.md) that retrieves geographic information of ip address.
 
@@ -221,10 +220,4 @@ datatable(ip:string) [
 | 205.251.242.103 | United States | Virginia | Ashburn | -77.4903 | 39.0469 |
 | 8.8.8.8 | United States | California | Los Angeles | -118.2441 | 34.0544 |
 
-::: zone-end
 
-::: zone pivot="azuremonitor"
-
-This feature isn't supported.
-
-::: zone-end

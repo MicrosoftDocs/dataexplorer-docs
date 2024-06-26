@@ -4,18 +4,17 @@ description:  This article describes the pie chart visualization.
 ms.reviewer: alexans
 ms.topic: reference
 ms.date: 01/26/2023
-zone_pivot_group_filename: data-explorer/zone-pivot-groups.json
-zone_pivot_groups: kql-flavors-all
+monikerRange: "microsoft-fabric || azure-data-explorer || azure-monitor"
 ---
 # Pie chart
 
 The pie chart visual needs a minimum of two columns in the query result. By default, the first column is used as the color axis. This column can contain text, datetime, or numeric data types. Other columns will be used to determine the size of each slice and contain numeric data types. Pie charts are used for presenting a composition of categories and their proportions out of a total.
 
-::: zone pivot="azuredataexplorer, fabric"
+::: moniker range="microsoft-fabric, azure-data-explorer"
 
 The pie chart visual can also be used in the context of [Geospatial visualizations](geospatial-visualizations.md).
 
-::: zone-end
+::: moniker-end
 
 > [!NOTE]
 > This visualization can only be used in the context of the [render operator](render-operator.md).
@@ -37,7 +36,7 @@ The pie chart visual can also be used in the context of [Geospatial visualizatio
 
 All properties are optional.
 
-::: zone pivot="azuredataexplorer, fabric"
+::: moniker range="microsoft-fabric, azure-data-explorer"
 
 |*PropertyName*|*PropertyValue*                                                                   |
 |--------------|----------------------------------------------------------------------------------|
@@ -53,9 +52,9 @@ All properties are optional.
 |`ycolumns`    |Comma-delimited list of columns that consist of the values provided per value of the x column.|
 |`ytitle`      |The title of the y-axis (of type `string`).                                       |
 
-::: zone-end
+::: moniker-end
 
-::: zone pivot="azuremonitor"
+::: moniker range="azure-monitor"
 
 |*PropertyName*|*PropertyValue*                                                                   |
 |--------------|----------------------------------------------------------------------------------|
@@ -63,7 +62,7 @@ All properties are optional.
 |`series`      |Comma-delimited list of columns whose combined per-record values define the series that record belongs to.|
 |`title`       |The title of the visualization (of type `string`).                                |
 
-::: zone-end
+::: moniker-end
 
 #### `kind` property
 

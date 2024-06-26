@@ -4,12 +4,11 @@ description:  This article describes the card visualization.
 ms.reviewer: alexans
 ms.topic: reference
 ms.date: 01/24/2023
-zone_pivot_group_filename: data-explorer/zone-pivot-groups.json
-zone_pivot_groups: kql-flavors-all
+monikerRange: "microsoft-fabric || azure-data-explorer"
 ---
 # Card
 
-::: zone pivot="azuredataexplorer, fabric"
+::: moniker range="microsoft-fabric, azure-data-explorer"
 
 The card visual only shows one element. If there are multiple columns and rows in the output, the first result record is treated as set of scalar values and shows as a card.
 
@@ -51,10 +50,4 @@ StormEvents
 
 :::image type="content" source="media/card/card.png" alt-text="Screenshot of card visual." lightbox="media/card/card.png":::
 
-::: zone-end
-
-::: zone pivot="azuremonitor"
-
-This visualization isn't supported in Azure Monitor.
-
-::: zone-end
+::: moniker-end

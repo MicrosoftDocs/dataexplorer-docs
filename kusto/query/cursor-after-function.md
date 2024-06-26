@@ -4,12 +4,11 @@ description: Learn how to use the cursor_after() function to compare the ingesti
 ms.reviewer: alexans
 ms.topic: reference
 ms.date: 11/27/2020
-zone_pivot_group_filename: data-explorer/zone-pivot-groups.json
-zone_pivot_groups: kql-flavors-all
+monikerRange: "microsoft-fabric || azure-data-explorer"
 ---
 # cursor_after()
 
-::: zone pivot="azuredataexplorer, fabric"
+::: moniker range="microsoft-fabric, azure-data-explorer"
 
 A predicate run over the records of a table to compare their ingestion time against a database cursor.
 
@@ -38,10 +37,4 @@ after the database cursor *RHS* (`true`) or not (`false`).
 
 * [database cursors](../management/database-cursor.md)
 
-::: zone-end
-
-::: zone pivot="azuremonitor"
-
-This capability isn't supported in Azure Monitor
-
-::: zone-end
+::: moniker-end

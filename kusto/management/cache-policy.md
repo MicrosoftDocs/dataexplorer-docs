@@ -4,22 +4,21 @@ description: This article describes caching policy (hot and cold cache).
 ms.reviewer: orspodek
 ms.topic: reference
 ms.date: 11/08/2023
-zone_pivot_group_filename: data-explorer/zone-pivot-groups.json
-zone_pivot_groups: kql-flavors-adx-fabric
+monikerRange: "microsoft-fabric || azure-data-explorer"
 ---
 # Caching policy (hot and cold cache)
 
-::: zone pivot="azuredataexplorer"
+::: moniker range="azure-data-explorer"
 
 Azure Data Explorer uses a multi-tiered data cache system to ensure fast query performance. Data is stored in reliable storage, such as Azure Blob Storage, but parts of it are cached on processing nodes, SSD, or even in RAM for faster access.
 
-::: zone-end
+::: moniker-end
 
-::: zone pivot="fabric"
+::: moniker range="microsoft-fabric"
 
 Real-Time Analytics uses a multi-tiered data cache system to ensure fast query performance. Data is stored in reliable storage, such as OneLake, but parts of it are cached on processing nodes, SSD, or even in RAM for faster access.
 
-::: zone-end
+::: moniker-end
 
 The caching policy allows you to choose which data should be cached. You can differentiate between *hot data cache* and *cold data cache* by setting a caching policy on hot data. Hot data is kept in local SSD storage for faster query performance, while cold data is stored in reliable storage, which is cheaper but slower to access.
 
@@ -27,13 +26,13 @@ The cache uses 95% of the local SSD disk for hot data. If there isn't enough spa
 
 The best query performance is achieved when all ingested data is cached. However, certain data might not warrant the expense of being kept in the hot cache. For instance, infrequently accessed old log records might be considered less crucial. In such cases, teams often opt for lower querying performance over paying to keep the data warm.
 
-::: zone pivot="fabric"
+::: moniker range="microsoft-fabric"
 
 Use management commands to alter the caching policy at the [database](alter-database-cache-policy-command.md), [table](alter-table-cache-policy-command.md), or [materialized view](alter-materialized-view-cache-policy-command.md) level.
 
-::: zone-end
+::: moniker-end
 
-::: zone pivot="azuredataexplorer"
+::: moniker range="azure-data-explorer"
 
 Use management commands to alter the caching policy at the [cluster](alter-cluster-cache-policy-command.md), [database](alter-database-cache-policy-command.md), [table](alter-table-cache-policy-command.md), or [materialized view](alter-materialized-view-cache-policy-command.md) level.
 
@@ -41,7 +40,7 @@ Use management commands to alter the caching policy at the [cluster](alter-clust
 > Your cluster is designed for ad hoc queries with intermediate result sets that fit in the cluster's total RAM.
 > For large jobs, like map-reduce, it can be useful to store intermediate results in persistent storage. To do so, create a [continuous export](data-export/continuous-data-export.md) job. This feature enables you to do long-running batch queries using services like HDInsight or Azure Databricks.
 
-::: zone-end
+::: moniker-end
 
 ## How caching policy is applied
 

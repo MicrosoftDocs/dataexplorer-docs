@@ -4,8 +4,7 @@ description:  This article describes the table visualization.
 ms.reviewer: alexans
 ms.topic: reference
 ms.date: 08/03/2022
-zone_pivot_group_filename: data-explorer/zone-pivot-groups.json
-zone_pivot_groups: kql-flavors-all
+monikerRange: "microsoft-fabric || azure-data-explorer || azure-monitor"
 ---
 # Table
 
@@ -31,7 +30,7 @@ Default - results are shown as a table.
 
 All properties are optional.
 
-::: zone pivot="azuredataexplorer, fabric"
+::: moniker range="microsoft-fabric, azure-data-explorer"
 
 |*PropertyName*|*PropertyValue*                                                                   |
 |--------------|----------------------------------------------------------------------------------|
@@ -48,16 +47,16 @@ All properties are optional.
 |`ycolumns`    |Comma-delimited list of columns that consist of the values provided per value of the x column.|
 |`ytitle`      |The title of the y-axis (of type `string`).                                       |
 
-::: zone-end
+::: moniker-end
 
-::: zone pivot="azuremonitor"
+::: moniker range="azure-monitor"
 
 |*PropertyName*|*PropertyValue*                                                                   |
 |--------------|----------------------------------------------------------------------------------|
 |`series`      |Comma-delimited list of columns whose combined per-record values define the series that record belongs to.|
 |`title`       |The title of the visualization (of type `string`).                                |
   
-::: zone-end
+::: moniker-end
 
 ## Example
 

@@ -4,8 +4,7 @@ description: Learn how to use the table() function to reference a table.
 ms.reviewer: alexans
 ms.topic: reference
 ms.date: 03/16/2023
-zone_pivot_group_filename: data-explorer/zone-pivot-groups.json
-zone_pivot_groups: kql-flavors-all
+monikerRange: "microsoft-fabric || azure-data-explorer || azure-monitor"
 ---
 # table()
 
@@ -90,16 +89,16 @@ receives a parameter `tableName` - which is passed into the table() function.
 };
 ```
 
-::: zone pivot="azuredataexplorer, fabric"
+::: moniker range="microsoft-fabric, azure-data-explorer"
 
 > [!NOTE]
 > Such functions can be used only locally and not in the cross-cluster query.
 
-::: zone-end
+::: moniker-end
 
-::: zone pivot="azuremonitor"
+::: moniker range="azure-monitor"
 
-::: zone-end
+::: moniker-end
 
 ### Use table() with non-constant parameter
 

@@ -4,8 +4,7 @@ description:  This article describes the column chart visualization.
 ms.reviewer: alexans
 ms.topic: reference
 ms.date: 08/02/2023
-zone_pivot_group_filename: data-explorer/zone-pivot-groups.json
-zone_pivot_groups: kql-flavors-all
+monikerRange: "microsoft-fabric || azure-data-explorer || azure-monitor"
 ---
 # Column chart
 
@@ -27,7 +26,7 @@ The column chart visual needs a minimum of two columns in the query result. By d
 | *T* | `string` |  :heavy_check_mark: | Input table name.|
 | *propertyName*, *propertyValue* | `string` | | A comma-separated list of key-value property pairs. See [supported properties](#supported-properties).|
 
-::: zone pivot="azuredataexplorer, fabric"
+::: moniker range="microsoft-fabric, azure-data-explorer"
 
 ### Supported properties
 
@@ -60,9 +59,9 @@ This visualization supports splitting into multiple y-axis values:
 |`axes`    |A single chart is displayed with multiple y-axes (one per series).|
 |`panels`  |One chart is rendered for each `ycolumn` value.|
 
-::: zone-end
+::: moniker-end
 
-::: zone pivot="azuremonitor"
+::: moniker range="azure-monitor"
 
 ### Supported properties
 
@@ -74,7 +73,7 @@ All properties are optional.
 |`series`      |Comma-delimited list of columns whose combined per-record values define the series that record belongs to.|
 |`title`       |The title of the visualization (of type `string`).                                |
 
-::: zone-end
+::: moniker-end
 
 #### `kind` property
 
@@ -88,7 +87,7 @@ The supported values of this property are:
 |`stacked`          |Stack "columns" one atop the other.|
 |`stacked100`       |Stack "columns" and stretch each one to the same height as the others.|
 
-::: zone pivot="azuredataexplorer, fabric"
+::: moniker range="microsoft-fabric, azure-data-explorer"
 
 ## Examples
 
@@ -141,9 +140,9 @@ StormEvents
 
 :::image type="content" source="media/visualization-columnchart/column-chart-ysplit-panels.png" alt-text="Screenshot of column chart using ysplit panels property." lightbox="media/visualization-columnchart/column-chart-ysplit-panels.png":::
 
-::: zone-end
+::: moniker-end
 
-::: zone pivot="azuremonitor"
+::: moniker range="azure-monitor"
 
 ## Example
 
@@ -160,4 +159,4 @@ StormEvents
 
 :::image type="content" source="media/visualization-columnchart/column-chart.png" alt-text="Screenshot of column chart visualization." lightbox="media/visualization-columnchart/column-chart.png":::
 
-::: zone-end
+::: moniker-end

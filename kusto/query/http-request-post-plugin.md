@@ -5,12 +5,11 @@ services: data-explorer
 ms.reviewer: zivc
 ms.topic: reference
 ms.date: 04/03/2023
-zone_pivot_group_filename: data-explorer/zone-pivot-groups.json
-zone_pivot_groups: kql-flavors
+monikerRange: "azure-data-explorer"
 ---
 # http_request_post plugin
 
-::: zone pivot="azuredataexplorer"
+::: moniker range="azure-data-explorer"
 
 The `http_request_post` plugin sends an HTTP POST request and converts the response into a table.
 
@@ -87,10 +86,5 @@ let headers=dynamic({'x-ms-correlation-vector':'abc.0.1.0', 'authorization':'bea
 evaluate http_request_post(uri, headers)
 ```
 
-::: zone-end
+::: moniker-end
 
-::: zone pivot="azuremonitor"
-
-This capability isn't supported in Azure Monitor.
-
-::: zone-end

@@ -4,12 +4,11 @@ description:  This article describes the series_mv_oc_anomalies_fl() user-define
 ms.reviewer: adieldar
 ms.topic: reference
 ms.date: 03/13/2023
-zone_pivot_group_filename: data-explorer/zone-pivot-groups.json
-zone_pivot_groups: kql-flavors-all
+monikerRange: "microsoft-fabric || azure-data-explorer"
 ---
 # series_mv_oc_anomalies_fl()
 
-::: zone pivot="azuredataexplorer, fabric"
+::: moniker range="microsoft-fabric, azure-data-explorer"
 
 The function `series_mv_oc_anomalies_fl()` is a [user-defined function (UDF)](../query/functions/user-defined-functions.md) that detects multivariate anomalies in series by applying the [One Class SVM model from scikit-learn](https://scikit-learn.org/stable/modules/generated/sklearn.svm.OneClassSVM.html). The function accepts a set of series as numerical dynamic arrays, the names of the features columns and the expected percentage of anomalies out of the whole series. The function trains one class SVM for each series and marks the points that fall outside the hyper sphere as anomalies.
 
@@ -181,10 +180,4 @@ normal_2d_with_anomalies
 
 You can see that on TS1 most of the anomalies occurring at midnights were detected using this multivariate model.
 
-::: zone-end
 
-::: zone pivot="azuremonitor"
-
-This feature isn't supported.
-
-::: zone-end

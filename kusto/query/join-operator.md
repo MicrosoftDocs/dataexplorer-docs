@@ -5,8 +5,7 @@ ms.reviewer: alexans
 ms.topic: reference
 ms.date: 08/16/2023
 ms.localizationpriority: high 
-zone_pivot_group_filename: data-explorer/zone-pivot-groups.json
-zone_pivot_groups: kql-flavors-all
+monikerRange: "microsoft-fabric || azure-data-explorer"
 ---
 # join operator
 
@@ -39,7 +38,7 @@ The following image provides a visual representation of the operation performed 
 
 ### Hints
 
-::: zone pivot="azuredataexplorer, fabric"
+::: moniker range="microsoft-fabric, azure-data-explorer"
 
 |Hint key |Values |Description  |
 |---|---|---|
@@ -48,9 +47,9 @@ The following image provides a visual representation of the operation performed 
 |`hint.shufflekey=<key>` |The `shufflekey` query shares the query load on cluster nodes, using a key to partition data. |See [shuffle query](shuffle-query.md) |
 |`hint.strategy=shuffle` |The `shuffle` strategy query shares the query load on cluster nodes, where each node processes one partition of the data. |See [shuffle query](shuffle-query.md)  |
 
-::: zone-end
+::: moniker-end
 
-::: zone pivot="azuremonitor"
+::: moniker range="azure-monitor"
 
 |Name |Values |Description |
 |---|---|---|
@@ -59,7 +58,7 @@ The following image provides a visual representation of the operation performed 
 |`hint.shufflekey=<key>` |The `shufflekey` query shares the query load on cluster nodes, using a key to partition data. |See [shuffle query](shuffle-query.md) |
 |`hint.strategy=shuffle` |The `shuffle` strategy query shares the query load on cluster nodes, where each node processes one partition of the data. |See [shuffle query](shuffle-query.md)  |
 
-::: zone-end
+::: moniker-end
 
 > [!NOTE]
 > The join hints don't change the semantic of `join` but may affect performance.

@@ -4,12 +4,11 @@ description: Learn how to use the cluster() function to change the reference of 
 ms.reviewer: alexans
 ms.topic: reference
 ms.date: 11/27/2022
-zone_pivot_group_filename: data-explorer/zone-pivot-groups.json
-zone_pivot_groups: kql-flavors-all
+monikerRange: "microsoft-fabric || azure-data-explorer"
 ---
 # cluster()
 
-::: zone pivot="azuredataexplorer, fabric"
+::: moniker range="microsoft-fabric, azure-data-explorer"
 
 Changes the reference of the query to a remote cluster. To access a database within the same cluster, use the [database()](database-function.md) function. For more information, see [cross-database and cross-cluster queries](cross-cluster-or-database-queries.md).
 
@@ -82,10 +81,4 @@ receives a parameter `clusterName` - which is passed into the cluster() function
 > [!NOTE]
 > Stored functions using the `cluster()` function can't be used in cross-cluster queries.
 
-::: zone-end
-
-::: zone pivot="azuremonitor"
-
-This capability isn't supported in Azure Monitor
-
-::: zone-end
+::: moniker-end

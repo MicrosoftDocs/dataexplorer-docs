@@ -4,12 +4,11 @@ description: Learn how to perform the Cross-cluster join operation to join datas
 ms.reviewer: alexans
 ms.topic: reference
 ms.date: 07/03/2023
-zone_pivot_group_filename: data-explorer/zone-pivot-groups.json
-zone_pivot_groups: kql-flavors-all
+monikerRange: "microsoft-fabric || azure-data-explorer"
 ---
 # Cross-cluster join
 
-::: zone pivot="azuredataexplorer, fabric"
+::: moniker range="microsoft-fabric, azure-data-explorer"
 
 A cross-cluster join involves joining data from datasets that reside in different clusters.
 
@@ -102,10 +101,5 @@ T | ... | join hint.remote=right (cluster("B").database("DB").T2 | ...) on Col1
 * [join operator](join-operator.md)
 * [Cross-cluster or cross-database queries](cross-cluster-or-database-queries.md)
 
-::: zone-end
+::: moniker-end
 
-::: zone pivot="azuremonitor"
-
-This capability isn't supported in Azure Monitor
-
-::: zone-end
