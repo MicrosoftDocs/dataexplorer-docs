@@ -8,7 +8,7 @@ monikerRange: "microsoft-fabric || azure-data-explorer"
 ---
 # ks_test_fl()
 
-::: moniker range="microsoft-fabric, azure-data-explorer"
+::: moniker range="microsoft-fabric  || azure-data-explorer"
 
 The function `ks_test_fl()` is a [UDF (user-defined function)](../query/functions/user-defined-functions.md) that performs the [Kolmogorov Smirnov Test](https://en.wikipedia.org/wiki/Kolmogorov%E2%80%93Smirnov_test).
 

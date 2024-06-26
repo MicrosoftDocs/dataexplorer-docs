@@ -8,7 +8,7 @@ monikerRange: "microsoft-fabric || azure-data-explorer"
 ---
 # cluster()
 
-::: moniker range="microsoft-fabric, azure-data-explorer"
+::: moniker range="microsoft-fabric  || azure-data-explorer"
 
 Changes the reference of the query to a remote cluster. To access a database within the same cluster, use the [database()](database-function.md) function. For more information, see [cross-database and cross-cluster queries](cross-cluster-or-database-queries.md).
 

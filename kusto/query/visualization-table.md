@@ -30,7 +30,7 @@ Default - results are shown as a table.
 
 All properties are optional.
 
-::: moniker range="microsoft-fabric, azure-data-explorer"
+::: moniker range="microsoft-fabric  || azure-data-explorer"
 
 |*PropertyName*|*PropertyValue*                                                                   |
 |--------------|----------------------------------------------------------------------------------|

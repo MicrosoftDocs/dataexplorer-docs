@@ -8,7 +8,7 @@ monikerRange: "microsoft-fabric || azure-data-explorer"
 ---
 # Card
 
-::: moniker range="microsoft-fabric, azure-data-explorer"
+::: moniker range="microsoft-fabric  || azure-data-explorer"
 
 The card visual only shows one element. If there are multiple columns and rows in the output, the first result record is treated as set of scalar values and shows as a card.
 

@@ -8,7 +8,7 @@ monikerRange: "microsoft-fabric || azure-data-explorer"
 ---
 # series_rolling_fl()
 
-::: moniker range="microsoft-fabric, azure-data-explorer"
+::: moniker range="microsoft-fabric  || azure-data-explorer"
 
 The function `series_rolling_fl()` is a [user-defined function (UDF)](../query/functions/user-defined-functions.md) that applies rolling aggregation on a series. It takes a table containing multiple series (dynamic numerical array) and applies, for each series, a rolling aggregation function.
 

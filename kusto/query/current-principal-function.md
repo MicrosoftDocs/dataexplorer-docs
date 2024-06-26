@@ -8,7 +8,7 @@ monikerRange: "microsoft-fabric || azure-data-explorer"
 ---
 # current_principal()
 
-::: moniker range="microsoft-fabric, azure-data-explorer"
+::: moniker range="microsoft-fabric  || azure-data-explorer"
 
 Returns the current principal name that runs the query.
 

@@ -89,7 +89,7 @@ receives a parameter `tableName` - which is passed into the table() function.
 };
 ```
 
-::: moniker range="microsoft-fabric, azure-data-explorer"
+::: moniker range="microsoft-fabric  || azure-data-explorer"
 
 > [!NOTE]
 > Such functions can be used only locally and not in the cross-cluster query.

@@ -10,7 +10,7 @@ monikerRange: "microsoft-fabric || azure-data-explorer || azure-monitor"
 
 Finds rows that match a predicate across a set of tables.
 
-::: moniker range="microsoft-fabric, azure-data-explorer"
+::: moniker range="microsoft-fabric  || azure-data-explorer"
 
 The scope of the `find` can also be cross-database or cross-cluster.
 
@@ -45,7 +45,7 @@ find in (Table1, Table2, Table3) where Fruit=="apple"
 
 ## Parameters
 
-::: moniker range="microsoft-fabric, azure-data-explorer"
+::: moniker range="microsoft-fabric  || azure-data-explorer"
 
 |Name|Type|Required|Description|
 |--|--|--|--|
@@ -122,7 +122,7 @@ For example, see [examples of cases where find will act as a union](find-operato
 
 ## Examples
 
-::: moniker range="microsoft-fabric, azure-data-explorer"
+::: moniker range="microsoft-fabric  || azure-data-explorer"
 
 ### Term lookup across all tables in current database
 

@@ -8,7 +8,7 @@ monikerRange: "microsoft-fabric || azure-data-explorer"
 ---
 # get_packages_version_fl()
 
-::: moniker range="microsoft-fabric, azure-data-explorer"
+::: moniker range="microsoft-fabric  || azure-data-explorer"
 
 `get_packages_version_fl()` is a [user-defined function](../query/functions/user-defined-functions.md) that retrieves the versions of the Python engine and packages of the [inline python() plugin](../query/python-plugin.md).
 

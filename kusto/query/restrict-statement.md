@@ -8,7 +8,7 @@ monikerRange: "microsoft-fabric || azure-data-explorer"
 ---
 # Restrict statement
 
-::: moniker range="microsoft-fabric, azure-data-explorer"
+::: moniker range="microsoft-fabric  || azure-data-explorer"
 
 The restrict statement limits the set of table/view entities which are visible to query statements that follow it. For example, in a database that includes two tables (`A`, `B`), the application can prevent the rest of the query from accessing `B` and only "see" a limited form of table `A` by using a view.
 

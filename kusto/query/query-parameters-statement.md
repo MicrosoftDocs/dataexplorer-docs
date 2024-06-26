@@ -8,7 +8,7 @@ monikerRange: "microsoft-fabric || azure-data-explorer"
 ---
 # Query parameters declaration statement
 
-::: moniker range="microsoft-fabric, azure-data-explorer"
+::: moniker range="microsoft-fabric  || azure-data-explorer"
 
 Queries sent to Kusto may include a set of name or value pairs. The pairs are called *query parameters*, together with the query text itself. The query may reference one or more values, by specifying names and type, in a *query parameters declaration statement*.
 

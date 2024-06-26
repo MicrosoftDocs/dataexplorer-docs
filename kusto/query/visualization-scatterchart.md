@@ -31,7 +31,7 @@ In a scatter chart visual, the first column is the x-axis and should be a numeri
 
 All properties are optional.
 
-::: moniker range="microsoft-fabric, azure-data-explorer"
+::: moniker range="microsoft-fabric  || azure-data-explorer"
 
 |*PropertyName*|*PropertyValue*                                                                   |
 |--------------|----------------------------------------------------------------------------------|

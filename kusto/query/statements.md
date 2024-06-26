@@ -8,7 +8,7 @@ monikerRange: "microsoft-fabric || azure-data-explorer"
 ---
 # Query statement types
 
-::: moniker range="microsoft-fabric, azure-data-explorer"
+::: moniker range="microsoft-fabric  || azure-data-explorer"
 
 A query consists of one or more **query statements**, delimited by a semicolon (`;`).
 At least one of these query statements must be a [tabular expression statement](tabular-expression-statements.md).

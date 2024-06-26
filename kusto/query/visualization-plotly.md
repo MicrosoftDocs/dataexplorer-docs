@@ -8,7 +8,7 @@ monikerRange: "microsoft-fabric || azure-data-explorer || azure-monitor"
 ---
 # Plotly (preview)
 
-::: moniker range="microsoft-fabric, azure-data-explorer"
+::: moniker range="microsoft-fabric  || azure-data-explorer"
 
 The Plotly graphics library supports ~80 chart types that are useful for advanced charting including geographic, scientific, machine learning, 3d, animation, and many other chart types. For more information, see [Plotly](https://plotly.com/python/). 
 

@@ -8,7 +8,7 @@ monikerRange: "microsoft-fabric || azure-data-explorer"
 ---
 # extent_tags()
 
-::: moniker range="microsoft-fabric, azure-data-explorer"
+::: moniker range="microsoft-fabric  || azure-data-explorer"
 
 Returns a dynamic array with the [extent tags](../management/extent-tags.md) of the [extent](../management/extents-overview.md) that the current record is in.
 

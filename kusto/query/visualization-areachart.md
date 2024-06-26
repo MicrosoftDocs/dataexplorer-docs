@@ -26,7 +26,7 @@ The area chart visual shows a time-series relationship. The first column of the 
 | *T* | `string` |  :heavy_check_mark: | Input table name.
 | *propertyName*, *propertyValue* | `string` | | A comma-separated list of key-value property pairs. See [supported properties](#supported-properties).|
 
-::: moniker range="microsoft-fabric, azure-data-explorer"
+::: moniker range="microsoft-fabric  || azure-data-explorer"
 
 ### Supported properties
 

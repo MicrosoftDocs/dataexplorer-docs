@@ -26,7 +26,7 @@ The column chart visual needs a minimum of two columns in the query result. By d
 | *T* | `string` |  :heavy_check_mark: | Input table name.|
 | *propertyName*, *propertyValue* | `string` | | A comma-separated list of key-value property pairs. See [supported properties](#supported-properties).|
 
-::: moniker range="microsoft-fabric, azure-data-explorer"
+::: moniker range="microsoft-fabric  || azure-data-explorer"
 
 ### Supported properties
 
@@ -87,7 +87,7 @@ The supported values of this property are:
 |`stacked`          |Stack "columns" one atop the other.|
 |`stacked100`       |Stack "columns" and stretch each one to the same height as the others.|
 
-::: moniker range="microsoft-fabric, azure-data-explorer"
+::: moniker range="microsoft-fabric  || azure-data-explorer"
 
 ## Examples
 

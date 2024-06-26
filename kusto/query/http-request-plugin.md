@@ -9,7 +9,7 @@ monikerRange: "microsoft-fabric || azure-data-explorer"
 ---
 # http_request plugin
 
-::: moniker range="microsoft-fabric, azure-data-explorer"
+::: moniker range="microsoft-fabric  || azure-data-explorer"
 
 The `http_request` plugin sends an HTTP GET request and converts the response into a table.
 

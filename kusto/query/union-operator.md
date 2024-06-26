@@ -21,7 +21,7 @@ Takes two or more tables and returns the rows of all of them.
 
 ## Parameters
 
-::: moniker range="microsoft-fabric, azure-data-explorer"
+::: moniker range="microsoft-fabric  || azure-data-explorer"
 
 |Name|Type|Required|Description|
 |--|--|--|--|

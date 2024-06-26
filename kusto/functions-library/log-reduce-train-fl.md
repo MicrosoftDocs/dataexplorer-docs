@@ -8,7 +8,7 @@ monikerRange: "microsoft-fabric || azure-data-explorer"
 ---
 # log_reduce_train_fl()
 
-::: moniker range="microsoft-fabric, azure-data-explorer"
+::: moniker range="microsoft-fabric  || azure-data-explorer"
 
 The function `log_reduce_train_fl()` finds common patterns in semi structured textual columns, such as log lines, and clusters the lines according to the extracted patterns. The function's algorithm and most of the parameters are identical to [log_reduce_fl()](log-reduce-fl.md), but unlike log_reduce_fl() that outputs a patterns summary table, this function outputs the serialized model. The model can be used by the function [log_reduce_predict_fl()](log-reduce-predict-fl.md)/[log_reduce_predict_full_fl()](log-reduce-predict-full-fl.md) to predict the matched pattern for new log lines.
 

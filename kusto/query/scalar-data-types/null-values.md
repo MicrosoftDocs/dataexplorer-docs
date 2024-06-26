@@ -180,7 +180,7 @@ T
 |&nbsp;|&nbsp;|false    |false     |1        |true     |
 |a     |1     |false    |false     |1        |false    |
 
-::: moniker range="microsoft-fabric, azure-data-explorer"
+::: moniker range="microsoft-fabric  || azure-data-explorer"
 
 > [!NOTE]
 > * If you run the above query in Kusto.Explorer, all `true` values will be displayed as `1`, and all `false` values will be displayed as `0`.

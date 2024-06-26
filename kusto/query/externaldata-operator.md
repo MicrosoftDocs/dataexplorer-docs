@@ -16,7 +16,7 @@ The `externaldata` operator returns a table whose schema is defined in the query
 > [!NOTE]
 > The `externaldata` operator supports Shared Access Signature (SAS) key, Access key, and Microsoft Entra Token authentication methods. For more information, see [Storage authentication methods](../api/connection-strings/storage-connection-strings.md).
 
-::: moniker range="microsoft-fabric, azure-data-explorer"
+::: moniker range="microsoft-fabric  || azure-data-explorer"
 
 ::: moniker-end
 

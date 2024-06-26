@@ -26,7 +26,7 @@ The bar chart visual needs a minimum of two columns in the query result. By defa
 | *T* | `string` |  :heavy_check_mark: | Input table name.|
 | *propertyName*, *propertyValue* | `string` | | A comma-separated list of key-value property pairs. See [supported properties](#supported-properties).|
 
-::: moniker range="microsoft-fabric, azure-data-explorer"
+::: moniker range="microsoft-fabric  || azure-data-explorer"
 
 ### Supported properties
 
@@ -145,7 +145,7 @@ StormEvents
 
 :::image type="content" source="media/visualization-barchart/stacked-100-bar-chart.png" alt-text="Screenshot of a stacked 100 bar chart visualization." lightbox="media/visualization-barchart/stacked-100-bar-chart.png":::
 
-::: moniker range="microsoft-fabric, azure-data-explorer"
+::: moniker range="microsoft-fabric  || azure-data-explorer"
 
 ### Use the `ysplit` property
 

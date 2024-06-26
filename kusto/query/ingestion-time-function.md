@@ -8,7 +8,7 @@ monikerRange: "microsoft-fabric || azure-data-explorer || azure-monitor"
 ---
 # ingestion_time()
 
-::: moniker range="microsoft-fabric, azure-data-explorer"
+::: moniker range="microsoft-fabric  || azure-data-explorer"
 
 Returns the approximate [datetime](../query/scalar-data-types/datetime.md) in UTC format indicating when the current record was ingested. 
 

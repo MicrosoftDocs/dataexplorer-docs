@@ -8,7 +8,7 @@ monikerRange: "microsoft-fabric || azure-data-explorer"
 ---
 # series_fit_poly_fl()
 
-::: moniker range="microsoft-fabric, azure-data-explorer"
+::: moniker range="microsoft-fabric  || azure-data-explorer"
 
 The function `series_fit_poly_fl()` is a [user-defined function (UDF)](../query/functions/user-defined-functions.md) that applies a polynomial regression on a series. This function takes a table containing multiple series (dynamic numerical arrays) and generates the best fit high-order polynomial for each series using [polynomial regression](https://en.wikipedia.org/wiki/Polynomial_regression). This function returns both the polynomial coefficients and the interpolated polynomial over the range of the series.
 

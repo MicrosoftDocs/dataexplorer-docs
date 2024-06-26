@@ -38,7 +38,7 @@ The following image provides a visual representation of the operation performed 
 
 ### Hints
 
-::: moniker range="microsoft-fabric, azure-data-explorer"
+::: moniker range="microsoft-fabric  || azure-data-explorer"
 
 |Hint key |Values |Description  |
 |---|---|---|

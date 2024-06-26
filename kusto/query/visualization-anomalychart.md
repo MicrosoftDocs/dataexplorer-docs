@@ -9,7 +9,7 @@ monikerRange: "microsoft-fabric || azure-data-explorer"
 ---
 # Anomaly chart
 
-::: moniker range="microsoft-fabric, azure-data-explorer"
+::: moniker range="microsoft-fabric  || azure-data-explorer"
 
 The anomaly chart visualization is similar to a [timechart](visualization-timechart.md), but highlights anomalies using the [series_decompose_anomalies](series-decompose-anomalies-function.md) function.  
 

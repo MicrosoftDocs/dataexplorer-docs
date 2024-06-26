@@ -10,7 +10,7 @@ monikerRange: "microsoft-fabric || azure-data-explorer || azure-monitor"
 
 The pie chart visual needs a minimum of two columns in the query result. By default, the first column is used as the color axis. This column can contain text, datetime, or numeric data types. Other columns will be used to determine the size of each slice and contain numeric data types. Pie charts are used for presenting a composition of categories and their proportions out of a total.
 
-::: moniker range="microsoft-fabric, azure-data-explorer"
+::: moniker range="microsoft-fabric  || azure-data-explorer"
 
 The pie chart visual can also be used in the context of [Geospatial visualizations](geospatial-visualizations.md).
 
@@ -36,7 +36,7 @@ The pie chart visual can also be used in the context of [Geospatial visualizatio
 
 All properties are optional.
 
-::: moniker range="microsoft-fabric, azure-data-explorer"
+::: moniker range="microsoft-fabric  || azure-data-explorer"
 
 |*PropertyName*|*PropertyValue*                                                                   |
 |--------------|----------------------------------------------------------------------------------|
