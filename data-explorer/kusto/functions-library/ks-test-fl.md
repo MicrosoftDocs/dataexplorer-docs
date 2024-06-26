@@ -142,7 +142,7 @@ datatable(id:string, sample1:dynamic, sample2:dynamic) [
 'Test #3', dynamic([20.13, 20.5, 21.7, 22.02]), dynamic([32.2, 32.79, 33.9, 34.22])
 ]
 | extend test_stat= 0.0, p_val = 0.0
-| invoke kolmogorov_smirnov_test_fl('sample1', 'sample2', 'test_stat', 'p_val')
+| invoke ks_test_fl('sample1', 'sample2', 'test_stat', 'p_val')
 ~~~
 
 ---

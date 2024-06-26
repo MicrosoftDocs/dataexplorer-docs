@@ -84,7 +84,7 @@ let series_rolling_fl = (tbl:(*), y_series:string, y_rolling_series:string, n:in
             import scipy.stats
             func = getattr(scipy.stats, aggr)
         if func:
-            result[y_rolling_series] = list(pd.Series(in_s[i]).rolling(n, center=center, min_periods=1).apply(func, args=aggr_params).values for i in range(len(in_s)))
+            result[y_rolling_series] = list(pd.Series(in_s[i]).rolling(n, center=center, min_periods=1).apply(func, args=tuple(aggr_params)).values for i in range(len(in_s)))
     ```;
     tbl
     | evaluate python(typeof(*), code, kwargs)
@@ -118,7 +118,7 @@ series_rolling_fl(tbl:(*), y_series:string, y_rolling_series:string, n:int, aggr
             import scipy.stats
             func = getattr(scipy.stats, aggr)
         if func:
-            result[y_rolling_series] = list(pd.Series(in_s[i]).rolling(n, center=center, min_periods=1).apply(func, args=aggr_params).values for i in range(len(in_s)))
+            result[y_rolling_series] = list(pd.Series(in_s[i]).rolling(n, center=center, min_periods=1).apply(func, args=tuple(aggr_params)).values for i in range(len(in_s)))
     ```;
     tbl
     | evaluate python(typeof(*), code, kwargs)
@@ -154,7 +154,7 @@ let series_rolling_fl = (tbl:(*), y_series:string, y_rolling_series:string, n:in
             import scipy.stats
             func = getattr(scipy.stats, aggr)
         if func:
-            result[y_rolling_series] = list(pd.Series(in_s[i]).rolling(n, center=center, min_periods=1).apply(func, args=aggr_params).values for i in range(len(in_s)))
+            result[y_rolling_series] = list(pd.Series(in_s[i]).rolling(n, center=center, min_periods=1).apply(func, args=tuple(aggr_params)).values for i in range(len(in_s)))
     ```;
     tbl
     | evaluate python(typeof(*), code, kwargs)
@@ -215,7 +215,7 @@ let series_rolling_fl = (tbl:(*), y_series:string, y_rolling_series:string, n:in
             import scipy.stats
             func = getattr(scipy.stats, aggr)
         if func:
-            result[y_rolling_series] = list(pd.Series(in_s[i]).rolling(n, center=center, min_periods=1).apply(func, args=aggr_params).values for i in range(len(in_s)))
+            result[y_rolling_series] = list(pd.Series(in_s[i]).rolling(n, center=center, min_periods=1).apply(func, args=tuple(aggr_params)).values for i in range(len(in_s)))
     ```;
     tbl
     | evaluate python(typeof(*), code, kwargs)
@@ -280,7 +280,7 @@ let series_rolling_fl = (tbl:(*), y_series:string, y_rolling_series:string, n:in
             import scipy.stats
             func = getattr(scipy.stats, aggr)
         if func:
-            result[y_rolling_series] = list(pd.Series(in_s[i]).rolling(n, center=center, min_periods=1).apply(func, args=aggr_params).values for i in range(len(in_s)))
+            result[y_rolling_series] = list(pd.Series(in_s[i]).rolling(n, center=center, min_periods=1).apply(func, args=tuple(aggr_params)).values for i in range(len(in_s)))
     ```;
     tbl
     | evaluate python(typeof(*), code, kwargs)

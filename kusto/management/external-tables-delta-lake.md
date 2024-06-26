@@ -92,7 +92,7 @@ kind=delta
 
 * Time travel is not supported. Only the latest delta table version is used.
 
-::: monikerRange="azure-data-explorer"
+::: moniker range="azure-data-explorer"
 ## Related content
 
 * [Query external tables](/azure/data-explorer/data-lake-query-data)

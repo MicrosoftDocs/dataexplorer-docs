@@ -17,7 +17,7 @@ Azure Data Explorer uses a multi-tiered data cache system to ensure fast query p
 
 ::: zone pivot="fabric"
 
-Real-Time Analytics uses a multi-tiered data cache system to ensure fast query performance. Data is stored in reliable storage, such as OneLake, but parts of it are cached on processing nodes, SSD, or even in RAM for faster access.
+Real-Time Intelligence uses a multi-tiered data cache system to ensure fast query performance. Data is stored in reliable storage, such as OneLake, but parts of it are cached on processing nodes, SSD, or even in RAM for faster access.
 
 ::: zone-end
 

@@ -4,10 +4,11 @@ description:  This article describes cross-database and cross-cluster queries.
 ms.reviewer: alexans
 ms.topic: reference
 ms.date: 07/19/2023
+monikerRange: "azure-data-explorer"
 ---
 # Cross-cluster and cross-database queries
 
-<!-- //TODO all of this doc is adx moniker pivot -->
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)]
 
 Queries run with a particular database designated as the *database in context*. This database acts as the default for permission checking. If an entity is referenced in a query without specifying the cluster or database, it's resolved against this database.
 
