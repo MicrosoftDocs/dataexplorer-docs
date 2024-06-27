@@ -180,4 +180,4 @@ normal_2d_with_anomalies
 
 You can see that on TS1 most of the anomalies occurring at midnights were detected using this multivariate model.
 
-
+::: moniker-end

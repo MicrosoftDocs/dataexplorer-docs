@@ -216,4 +216,4 @@ union
 
 ![Scatter chart of the sample dataset.](media/series-mv-ee-anomalies-fl/mv-ee-anomalies-sample-data.png)
 
-
+::: moniker-end

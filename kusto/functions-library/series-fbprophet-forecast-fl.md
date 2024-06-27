@@ -251,4 +251,4 @@ demo_make_series2
 
 :::image type="content" source="media/series-fbprophet-forecast-fl/fbprophet-example.png" alt-text="Graph showing forecasting few time series." border="false":::
 
-
+::: moniker-end

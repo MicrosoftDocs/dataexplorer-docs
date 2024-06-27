@@ -134,4 +134,4 @@ HDFS_log_100k
 | 79 | 081110 | \<NUM> \<NUM> INFO dfs.FSNamesystem: BLOCK* NameSystem.allocateBlock: <*>. <*>  081110 215858 26 INFO dfs.FSNamesystem: BLOCK* NameSystem.allocateBlock: /user/root/rand3/_temporary/_task_200811101024_0005_m_001805_0/part-01805. blk_-7037346755429293022 |
 | 3 | 081110 | \<NUM> \<NUM> INFO dfs.DataBlockScanner: Verification succeeded for <*>  081110 215859 13 INFO dfs.DataBlockScanner: Verification succeeded for blk_-7244926816084627474 |
 
-
+::: moniker-end

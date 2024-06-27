@@ -57,7 +57,7 @@ Since python is not available in this service, you create this Plotly JSON using
 
 ::: moniker-end
 
-::: moniker range="azuredataexplorer, azuremonitor, fabric"
+::: moniker range="microsoft-fabric || azure-data-explorer || azure-monitor"
 
 ## Use a preprepared Plotly template
 

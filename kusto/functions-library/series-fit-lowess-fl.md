@@ -350,4 +350,4 @@ range x from 1 to 200 step 1
 
 :::image type="content" source="media/series-fit-lowess-fl/lowess-vs-poly-fifth-order-noise.png" alt-text="Graphs of LOWESS vs polynomial fit for a fifth order polynomial with noise on x & y axes":::
 
-
+::: moniker-end

@@ -191,4 +191,4 @@ normal_2d_with_anomalies
 
 You can see that on TS2 most of the anomalies occurring at 8am were detected using this multivariate model.
 
-
+::: moniker-end

@@ -176,4 +176,4 @@ HDFS_log
 | 081110 | 215858 | 15533 INFO dfs.DataNode$DataXceiver: Receiving block blk_7257432994295824826 src: /10.251.26.8:41803 dest: /10.251.26.8:50010  081110 \<NUM> \<NUM> INFO dfs.DataNode$DataXceiver: Receiving block blk_\<NUM> src: \<IP> dest: \<IP>  "{""parameter_0"": ""215858"", ""parameter_1"": ""15533"", ""parameter_2"": ""7257432994295824826"", ""parameter_3"": ""/10.251.26.8:41803"", ""parameter_4"": ""/10.251.26.8:50010""}" |
 | 081110 | 215858 | 15533 INFO dfs.DataNode$DataXceiver: Receiving block blk_-7771332301119265281 src: /10.251.43.210:34258 dest: /10.251.43.210:50010  081110 \<NUM> \<NUM> INFO dfs.DataNode$DataXceiver: Receiving block blk_\<NUM> src: \<IP> dest: \<IP>  "{""parameter_0"": ""215858"", ""parameter_1"": ""15533"", ""parameter_2"": ""-7771332301119265281"", ""parameter_3"": ""/10.251.43.210:34258"", ""parameter_4"": ""/10.251.43.210:50010""}" |
 
-
+::: moniker-end
