@@ -8,17 +8,7 @@ monikerRange: "microsoft-fabric || azure-data-explorer"
 ---
 # Caching policy (hot and cold cache)
 
-::: moniker range="azure-data-explorer"
-
-Azure Data Explorer uses a multi-tiered data cache system to ensure fast query performance. Data is stored in reliable storage, such as Azure Blob Storage, but parts of it are cached on processing nodes, SSD, or even in RAM for faster access.
-
-::: moniker-end
-
-::: moniker range="microsoft-fabric"
-
-Real-Time Analytics uses a multi-tiered data cache system to ensure fast query performance. Data is stored in reliable storage, such as OneLake, but parts of it are cached on processing nodes, SSD, or even in RAM for faster access.
-
-::: moniker-end
+To ensure fast query performance, a multi-tiered data cache system is used. Data is stored in reliable storage but parts of it are cached on processing nodes, SSD, or even in RAM for faster access.
 
 The caching policy allows you to choose which data should be cached. You can differentiate between *hot data cache* and *cold data cache* by setting a caching policy on hot data. Hot data is kept in local SSD storage for faster query performance, while cold data is stored in reliable storage, which is cheaper but slower to access.
 

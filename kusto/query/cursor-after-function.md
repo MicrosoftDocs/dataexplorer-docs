@@ -4,11 +4,8 @@ description: Learn how to use the cursor_after() function to compare the ingesti
 ms.reviewer: alexans
 ms.topic: reference
 ms.date: 11/27/2020
-monikerRange: "microsoft-fabric || azure-data-explorer"
 ---
 # cursor_after()
-
-::: moniker range="microsoft-fabric  || azure-data-explorer"
 
 A predicate run over the records of a table to compare their ingestion time against a database cursor.
 
@@ -37,4 +34,3 @@ after the database cursor *RHS* (`true`) or not (`false`).
 
 * [database cursors](../management/database-cursor.md)
 
-::: moniker-end

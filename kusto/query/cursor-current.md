@@ -4,11 +4,8 @@ description: Learn how to use the cursor_current() function to return a string t
 ms.reviewer: alexans
 ms.topic: reference
 ms.date: 11/08/2022
-monikerRange: "microsoft-fabric || azure-data-explorer"
 ---
 # cursor_current()
-
-::: moniker range="microsoft-fabric  || azure-data-explorer"
 
 Retrieves the current value of the cursor of the database in scope.
 
@@ -28,5 +25,3 @@ cursor of the database in scope.
 ## Related content
 
 * [database cursors](../management/database-cursor.md)
-
-::: moniker-end

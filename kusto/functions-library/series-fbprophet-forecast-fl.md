@@ -4,11 +4,8 @@ description:  This article describes the series_fbprophet_forecast_fl() user-def
 ms.reviewer: adieldar
 ms.topic: reference
 ms.date: 03/13/2023
-monikerRange: "microsoft-fabric || azure-data-explorer"
 ---
 # series_fbprophet_forecast_fl()
-
-::: moniker range="microsoft-fabric  || azure-data-explorer"
 
 The function `series_fbprophet_forecast_fl()` is a [user-defined function (UDF)](../query/functions/user-defined-functions.md) that takes an expression containing a time series as input, and predicts the values of the last trailing points using the [Prophet algorithm](https://facebook.github.io/prophet/). The function returns both the forecasted points and their confidence intervals. This function is a Kusto Query Language (KQL) wrapper to Prophet() class, and exposes only the parameters that are mandatory for prediction. Feel free to modify your copy to support more parameters. such as holidays, change points, Fourier order, and so on.
 
@@ -250,5 +247,3 @@ demo_make_series2
 **Output**
 
 :::image type="content" source="media/series-fbprophet-forecast-fl/fbprophet-example.png" alt-text="Graph showing forecasting few time series." border="false":::
-
-::: moniker-end

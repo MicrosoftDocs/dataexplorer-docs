@@ -4,11 +4,8 @@ description: Learn how to use the sql_request plugin to send an SQL query to an 
 ms.reviewer: alexans
 ms.topic: reference
 ms.date: 03/08/2023
-monikerRange: "microsoft-fabric || azure-data-explorer"
 ---
 # sql_request plugin
-
-::: moniker range="microsoft-fabric  || azure-data-explorer"
 
 The `sql_request` plugin sends a SQL query to an Azure SQL Server network endpoint and returns the results.
 If more than one rowset is returned by SQL, only the first one is used.
@@ -151,4 +148,3 @@ Where:
 > One cannot omit, for example, the prefix `tcp:` even though it is possible to
 > do so when using the SQL client libraries programmatically.
 
-::: moniker-end

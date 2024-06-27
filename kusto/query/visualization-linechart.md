@@ -4,11 +4,8 @@ description:  This article describes the line chart visualization.
 ms.reviewer: alexans
 ms.topic: reference
 ms.date: 07/26/2023
-monikerRange: "microsoft-fabric || azure-data-explorer"
 ---
 # Line chart
-
-::: moniker range="microsoft-fabric  || azure-data-explorer"
 
 The line chart visual is the most basic type of chart. The first column of the query should be numeric and is used as the x-axis. Other numeric columns are the y-axes. Line charts track changes over short and long periods of time. When smaller changes exist, line graphs are more useful than bar graphs.
 
@@ -121,11 +118,6 @@ StormEvents
 
 :::image type="content" source="media/visualization-linechart/line-chart-ysplit-panels.png" alt-text="Screenshot of the time chart query result with the ysplit panels property." lightbox="media/visualization-linechart/line-chart-ysplit-panels.png":::
 
-
-<!-- //TODO put in moniker pivots -->
-
 ## Related content
 
 * [Add a query visualization in the web UI](/azure/data-explorer/add-query-visualizations)
-
-::: moniker-end

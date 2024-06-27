@@ -4,11 +4,8 @@ description: Learn how to use the extent_tags() function to return a dynamic arr
 ms.reviewer: alexans
 ms.topic: reference
 ms.date: 12/11/2022
-monikerRange: "microsoft-fabric || azure-data-explorer"
 ---
 # extent_tags()
-
-::: moniker range="microsoft-fabric  || azure-data-explorer"
 
 Returns a dynamic array with the [extent tags](../management/extent-tags.md) of the [extent](../management/extents-overview.md) that the current record is in.
 
@@ -54,5 +51,3 @@ T
 > [!NOTE]
 > Filtering on the value of `extent_tags()` performs best when one of the following string operators is used:
 > `has`, `has_cs`, `!has`, `!has_cs`.
-
-::: moniker-end

@@ -4,11 +4,8 @@ description: Learn how to use the database() function to change the reference of
 ms.reviewer: alexans
 ms.topic: reference
 ms.date: 03/09/2023
-monikerRange: "microsoft-fabric || azure-data-explorer"
 ---
 # database()
-
-::: moniker range="microsoft-fabric  || azure-data-explorer"
 
 Changes the reference of the query to a specific database within the cluster scope.
 
@@ -80,4 +77,3 @@ receives a parameter `dbName` - which is passed into the database() function.
 > [!NOTE]
 > Such functions can be used only locally and not in the cross-cluster query.
 
-::: moniker-end

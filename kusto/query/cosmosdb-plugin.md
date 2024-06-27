@@ -4,11 +4,8 @@ description: Learn how to use the cosmosdb_sql_request plugin to send a SQL quer
 ms.reviewer: miwalia
 ms.topic: reference
 ms.date: 04/18/2023
-monikerRange: "microsoft-fabric || azure-data-explorer"
 ---
 # cosmosdb_sql_request plugin
-
-::: moniker range="microsoft-fabric  || azure-data-explorer"
 
 The `cosmosdb_sql_request` plugin sends a SQL query to an Azure Cosmos DB SQL network endpoint and returns the results of the query. This plugin is primarily designed for querying small datasets, for example, enriching data with reference data stored in [Azure Cosmos DB](/azure/cosmos-db/). The plugin is invoked with the [`evaluate`](evaluate-operator.md) operator.
 
@@ -109,5 +106,3 @@ evaluate cosmosdb_sql_request(
     dynamic({'preferredLocations': ['East US']})) : (Id:long, Name:string, Column0: datetime) 
 | where lastName == 'Smith'
 ```
-
-::: moniker-end

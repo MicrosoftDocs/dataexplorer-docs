@@ -4,7 +4,6 @@ description: Learn how to use the Python plugin to run user-defined functions us
 ms.reviewer: adieldar
 ms.topic: reference
 ms.date: 08/13/2023
-monikerRange: "microsoft-fabric || azure-data-explorer"
 ---
 # Python plugin
 

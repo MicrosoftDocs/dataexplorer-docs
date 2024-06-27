@@ -4,11 +4,8 @@ description: Learn how to use the fork operator to run multiple consumer operato
 ms.reviewer: alexans
 ms.topic: reference
 ms.date: 03/15/2023
-monikerRange: "microsoft-fabric || azure-data-explorer"
 ---
 # fork operator
-
-::: moniker range="microsoft-fabric  || azure-data-explorer"
 
 Runs multiple consumer operators in parallel.
 
@@ -100,5 +97,3 @@ StormEvents
     StormsWithDeaths = (where DeathsDirect + DeathsIndirect > 1)
     StormsWithInjuries = (where InjuriesDirect + InjuriesIndirect > 1)
 ```
-
-::: moniker-end

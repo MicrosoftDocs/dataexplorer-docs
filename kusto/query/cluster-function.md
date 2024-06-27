@@ -4,11 +4,8 @@ description: Learn how to use the cluster() function to change the reference of 
 ms.reviewer: alexans
 ms.topic: reference
 ms.date: 11/27/2022
-monikerRange: "microsoft-fabric || azure-data-explorer"
 ---
 # cluster()
-
-::: moniker range="microsoft-fabric  || azure-data-explorer"
 
 Changes the reference of the query to a remote cluster. To access a database within the same cluster, use the [database()](database-function.md) function. For more information, see [cross-database and cross-cluster queries](cross-cluster-or-database-queries.md).
 
@@ -81,4 +78,3 @@ receives a parameter `clusterName` - which is passed into the cluster() function
 > [!NOTE]
 > Stored functions using the `cluster()` function can't be used in cross-cluster queries.
 
-::: moniker-end

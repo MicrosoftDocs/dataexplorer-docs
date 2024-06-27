@@ -5,11 +5,8 @@ ms.reviewer: adieldar
 ms.topic: reference
 ms.date: 03/13/2023
 no-loc: LOWESS
-monikerRange: "microsoft-fabric || azure-data-explorer"
 ---
 # series_fit_lowess_fl()
-
-::: moniker range="microsoft-fabric  || azure-data-explorer"
 
 The function `series_fit_lowess_fl()` is a [user-defined function (UDF)](../query/functions/user-defined-functions.md) that applies a [LOWESS regression](https://www.wikipedia.org/wiki/Local_regression) on a series. This function takes a table with multiple series (dynamic numerical arrays) and generates a *LOWESS Curve*, which is a smoothed version of the original series.
 
@@ -350,4 +347,3 @@ range x from 1 to 200 step 1
 
 :::image type="content" source="media/series-fit-lowess-fl/lowess-vs-poly-fifth-order-noise.png" alt-text="Graphs of LOWESS vs polynomial fit for a fifth order polynomial with noise on x & y axes":::
 
-::: moniker-end

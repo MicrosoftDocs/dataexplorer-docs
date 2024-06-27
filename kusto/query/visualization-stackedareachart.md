@@ -4,11 +4,8 @@ description:  This article describes the stacked area chart visualization.
 ms.reviewer: alexans
 ms.topic: reference
 ms.date: 08/03/2022
-monikerRange: "microsoft-fabric || azure-data-explorer"
 ---
 # Stacked area chart
-
-::: moniker range="microsoft-fabric  || azure-data-explorer"
 
 The stacked area chart visual shows a continuous relationship. This visual is similar to the [Area chart](visualization-areachart.md), but shows the area under each element of a series. The first column of the query should be numeric and is used as the x-axis. Other numeric columns are the y-axes. Unlike line charts, area charts also visually represent volume. Area charts are ideal for indicating the change among different datasets.
 
@@ -59,5 +56,3 @@ nyc_taxi
 ```
 
 :::image type="content" source="media/visualization-stacked-areachart/stacked-area-chart.png" alt-text="Screenshot of stacked area chart visual output." lightbox="media/visualization-stacked-areachart/stacked-area-chart.png":::
-
-::: moniker-end

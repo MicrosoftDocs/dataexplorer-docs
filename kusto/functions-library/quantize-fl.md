@@ -4,11 +4,8 @@ description:  This article describes the quantize_fl() user-defined function.
 ms.reviewer: adieldar
 ms.topic: reference
 ms.date: 03/05/2023
-monikerRange: "microsoft-fabric || azure-data-explorer"
 ---
 # quantize_fl()
-
-::: moniker range="microsoft-fabric  || azure-data-explorer"
 
 The function `quantize_fl()` is a [user-defined function (UDF)](../query/functions/user-defined-functions.md) that bins metric columns. It quantizes metric columns to categorical labels, based on the K-Means algorithm.
 
@@ -196,4 +193,3 @@ union
 | 14 | Med | 7.75-17.5 |
 | 15 | Med | 7.75-17.5 |
 
-::: moniker-end

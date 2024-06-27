@@ -4,7 +4,6 @@ description:  This article describes the binomial_test_fl() user-defined functio
 ms.reviewer: adieldar
 ms.topic: reference
 ms.date: 03/13/2023
-monikerRange: "microsoft-fabric || azure-data-explorer"
 ---
 # binomial_test_fl()
 
