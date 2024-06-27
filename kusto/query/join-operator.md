@@ -5,7 +5,7 @@ ms.reviewer: alexans
 ms.topic: reference
 ms.date: 08/16/2023
 ms.localizationpriority: high 
-monikerRange: "microsoft-fabric || azure-data-explorer"
+monikerRange: "microsoft-fabric || azure-data-explorer || azure-monitor"
 ---
 # join operator
 

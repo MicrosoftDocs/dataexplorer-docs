@@ -312,4 +312,4 @@ range x from 1 to 100 step 1
 
 :::image type="content" source="media/series-rolling-fl/rolling-trimmed-mean.png" alt-text="Graph depicting rolling trimmed mean." border="false":::
 
-
+::: moniker-end

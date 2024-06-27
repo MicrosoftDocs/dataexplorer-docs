@@ -8,7 +8,7 @@ monikerRange: "azure-data-explorer || azure-monitor"
 ---
 # Stored functions
 
-::: moniker range="azure-data-explorer || |azure-monitor"
+::: moniker range="azure-data-explorer || azure-monitor"
 
 Functions are reusable queries or query parts. Functions can be stored as database entities, similar to tables, called *stored functions*. Alternatively, functions can be created in an ad-hoc fashion with a [let statement](../let-statement.md), called *query-defined functions*. For more information, see [user-defined functions](../functions/user-defined-functions.md).
 
