@@ -66,7 +66,7 @@ For example:
 | `()` | No arguments |
 | `(s:string)` | Single scalar argument called `s` taking a value of type `string` |
 | `(a:long, b:bool=true)` | Two scalar arguments, the second of which has a default value |
-| `(T1:(*), T2(r:real), b:bool)` | Three arguments (two tabular arguments and one scalar argument) |
+| `(T1:(*), T2:(r:real), b:bool)` | Three arguments (two tabular arguments and one scalar argument) |
 
 > [!NOTE]
 > When using both tabular input arguments and scalar input arguments, put all tabular input arguments before the scalar input arguments.
