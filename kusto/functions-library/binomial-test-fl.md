@@ -8,8 +8,6 @@ monikerRange: "microsoft-fabric || azure-data-explorer"
 ---
 # binomial_test_fl()
 
-::: moniker range="microsoft-fabric  || azure-data-explorer"
-
 The function `binomial_test_fl()` is a [UDF (user-defined function)](../query/functions/user-defined-functions.md) that performs the [binomial test](https://en.wikipedia.org/wiki/Binomial_test).
 
 [!INCLUDE [python-zone-pivot-fabric](../includes/python-zone-pivot-fabric.md)]
@@ -163,5 +161,3 @@ datatable(id:string, x:int, n:int) [
 | Test #1 | 3 | 5 | 0.05792 |
 | Test #2 | 5 | 5 | 0.00032 |
 | Test #3 | 3 | 15 | 0.601976790745087 |
-
-::: moniker-end
