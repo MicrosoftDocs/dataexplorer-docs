@@ -4,7 +4,7 @@ ms.date: 06/27/2024
 ---
 ## Create a table to store your logs
 
-Fluent Bit forwards logs in JSON format with three properties: `log` ([dynamic](../../kusto/query/scalar-data-types/dynamic.md)), `tag` ([string](../../kusto/query/scalar-data-types/string.md)), and `timestamp` ([datetime](../../kusto/query/scalar-data-types/datetime.md)).
+Fluent Bit forwards logs in JSON format with three properties: `log` ([dynamic](/azure/data-explorer/kusto/query/scalar-data-types/dynamic)), `tag` ([string](/azure/data-explorer/kusto/query/scalar-data-types/string)), and `timestamp` ([datetime](/azure/data-explorer/kusto/query/scalar-data-types/datetime)).
 
 You can create a table with columns for each of these properties. Alternatively, if you have structured logs, you can create a table with log properties mapped to custom columns. To learn more, select the relevant tab.
 
@@ -14,7 +14,7 @@ To create a table for incoming logs from Fluent Bit:
 
 1. Browse to your query environment.
 1. Select the database where you'd like to create the table.
-1. Run the following [`.create table` command](../../kusto/management/create-table-command.md):
+1. Run the following [`.create table` command](/azure/data-explorer/kusto/management/create-table-command):
 
     ```kusto
     .create table FluentBitLogs (log:dynamic, tag:string, timestamp:datetime)
@@ -28,13 +28,13 @@ To create a table for incoming structured logs from Fluent Bit:
 
 1. Browse to your query environment.
 1. Select the database where you'd like to create the table.
-1. Run the [`.create table` command](../../kusto/management/create-table-command.md). For example, if your logs contain three fields named `myString`, `myInteger`, and `myDynamic`, you can create a table with the following schema:
+1. Run the [`.create table` command](/azure/data-explorer/kusto/management/create-table-command). For example, if your logs contain three fields named `myString`, `myInteger`, and `myDynamic`, you can create a table with the following schema:
 
     ```kusto
     .create table FluentBitLogs (myString:string, myInteger:int, myDynamic: dynamic, timestamp:datetime)
     ```
 
-1. Create a [JSON mapping](../../kusto/management/mappings.md) to map log properties to the appropriate columns. The following command creates a mapping based on the example in the previous step:
+1. Create a [JSON mapping](/azure/data-explorer/kusto/management/mappings) to map log properties to the appropriate columns. The following command creates a mapping based on the example in the previous step:
 
     ```kusto
     .create-or-alter table FluentBitLogs ingestion json mapping "LogMapping" 
@@ -65,5 +65,5 @@ Run the following command, replacing `<MyDatabase>` with the name of the databas
 .add database MyDatabase ingestors ('aadapp=<Application (client) ID>;<Directory (tenant) ID>')
 ```
 
-This command grants the application permissions to ingest data into your table. For more information, see [role-based access control](../../kusto/access-control/role-based-access-control.md).
+This command grants the application permissions to ingest data into your table. For more information, see [role-based access control](/azure/data-explorer/kusto/access-control/role-based-access-control).
 
