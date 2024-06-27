@@ -61,3 +61,5 @@ items:
     href: query/toc.yml
   - name: Management commands
     href: management/toc.yml
+  - name: APIs and SDKs
+    href: apis/toc.yml
