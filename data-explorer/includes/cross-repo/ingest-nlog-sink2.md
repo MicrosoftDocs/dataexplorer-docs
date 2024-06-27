@@ -2,13 +2,6 @@
 ms.topic: include
 ms.date: 06/23/2024
 ---
-## Prerequisites
-
-* .NET SDK 6.0 or later
-* An Azure subscription. Create a [free Azure account](https://azure.microsoft.com/free/).
-* A [KQL database in Microsoft Fabric](create-database.md). Copy the URI of this database using the instructions in [Access an existing KQL database](access-database-copy-uri.md).
-* A [KQL queryset](kusto-query-set.md). This will be referred to as your query environment.
-
 ## Set up your environment
 
 In this section, you'll prepare your environment to use the NLog connector.
@@ -40,10 +33,9 @@ Save the following values to be used in later steps:
 
 1. In your query environment, run the following management command, replacing the placeholders. Replace *DatabaseName* with the name of the target database and *ApplicationID* with the previously saved value. This command grants the app the [database ingestor](kusto/management/access-control/role-based-access-control.md) role. For more information, see [Manage database security roles](kusto/management/manage-database-security-roles.md).
 
-    ```kusto
-    .add database <DatabaseName> ingestors ('aadapp=<ApplicationID>') 'Azure Data Explorer App Registration'
+     ```kusto
+    .add database <DatabaseName> ingestors ('aadapp=<ApplicationID>') 'NLOG Azure App Registration role'
     ```
-
     > [!NOTE]
     > The last parameter is a string that shows up as notes when you query the roles associated with a database. For more information, see [View existing security roles](kusto/management/manage-database-security-roles.md#show-existing-security-roles).
 
