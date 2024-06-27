@@ -5,7 +5,11 @@ ms.date: 06/23/2024
 ms.topic: how-to
 ms.reviewer: ramacg
 ---
+# Ingest data with the NLog sink into Azure Data Explorer
+
 [!INCLUDE [ingest-nlog-sink1](includes/cross-repo/ingest-nlog-sink1.md)
+
+In this article you will learn how to ngest data with nLog sink.
 
 For a complete list of data connectors, see [Data connectors overview](connector-overview.md).
 
@@ -15,6 +19,18 @@ For a complete list of data connectors, see [Data connectors overview](connector
 * An Azure Data Explorer [cluster and database](create-cluster-and-database.md)
 
 [!INCLUDE [ingest-nlog-sink2](includes/cross-repo/ingest-nlog-sink2.md)]
+
+### Create a table and ingestion mapping
+
+Create a target table for the incoming data.
+
+* In your query editor, run the following [table creation command](kusto/management/create-table-command.md), replacing the placeholder *TableName* with the name of the target table:
+
+    ```kusto
+    .create table <TableName> (Timestamp:datetime, Level:string, Message:string, FormattedMessage:dynamic, Exception:string, Properties:dynamic)
+    ```
+
+[!INCLUDE [ingest-nlog-sink3](includes/cross-repo/ingest-nlog-sink3.md)]
 
 ## Related content
 
