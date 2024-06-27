@@ -80,8 +80,8 @@ To configure Fluent Bit to send logs to your Azure Data Explorer table, create a
 | Client_Secret               | The client secret key value [Register a Microsoft Entra app with permissions to ingest data](#register-a-microsoft-entra-app-with-permissions-to-ingest-data).                                                                     |
 | Ingestion_Endpoint          | Use the **Data Ingestion URI** found in the [Azure portal](https://ms.portal.azure.com/) under your cluster overview.                                                                                                              |
 | Database_Name               | The name of the database that contains your logs table.                                                                                                                                                                            |
-| Table_Name                  | The name of the table from [Create an Azure Data Explorer table](#create-an-azure-data-explorer-table-to-store-your-logs).                                                                                                         |
-| Ingestion_Mapping_Reference | The name of the ingestion mapping from [Create an Azure Data Explorer table](#create-an-azure-data-explorer-table-to-store-your-logs). If you didn't create an ingestion mapping, remove the property from the configuration file. |
+| Table_Name                  | The name of the table from [Create an Azure Data Explorer table](#create-a-table-to-store-your-logs).                                                                                                         |
+| Ingestion_Mapping_Reference | The name of the ingestion mapping from [Create an Azure Data Explorer table](#create-a-table-to-store-your-logs). If you didn't create an ingestion mapping, remove the property from the configuration file. |
 
 To see an example configuration file, select the relevant tab:
 
