@@ -17,7 +17,7 @@ In this article, you'll learn how to:
 > * [Create a table to store your logs](#create-a-table-to-store-your-logs)
 > * [Register a Microsoft Entra app with permissions to ingest data](#register-a-microsoft-entra-app-with-permissions-to-ingest-data)
 > * [Configure Fluent Bit to send logs to your table](#configure-fluent-bit-to-send-logs-to-your-table)
-> * [Verify that data is ingested into Azure Data Explorer](#verify-that-data-has-landed-in-your-table)
+> * [Verify that data has landed in your table](#verify-that-data-has-landed-in-your-table)
 
 For a complete list of data connectors, see [Data connectors overview](connector-overview.md).
 
@@ -25,6 +25,8 @@ For a complete list of data connectors, see [Data connectors overview](connector
 
 * [Fluent Bit](https://docs.fluentbit.io/manual/installation/getting-started-with-fluent-bit).
 * An Azure Data Explorer cluster and database. [Create a cluster and database](create-cluster-and-database.md).
+
+You can use any of the available [Query tools](integrate-query-overview.md&tabs=integrations) for your query environment.
 
 [!INCLUDE [fluent-bit](includes/cross-repo/fluent-bit.md)]
 
