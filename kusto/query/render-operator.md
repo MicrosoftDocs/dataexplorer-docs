@@ -192,8 +192,13 @@ These visualizations have the following conceptual model:
   * For example: in the `timechart` visualization, the user agent uses all columns with a numeric value that haven't been specified otherwise.
   * If the x-axis is an array, the values of each y-axis should also be an array of a similar length, with each y-axis occurring in a single column.
 * Zero or more columns in the table represent a unique set of dimensions that group together the measures. These columns can be specified by the `series` property, or the user agent will pick them automatically from the columns that are otherwise unspecified.
+::: moniker-end
+<!-- is this correct? confirm both where the moniker end was placed and the addition of moniker for related content-->
+::: moniker range="azure-data-explorer || azure-monitor"
 
 ## Related content
+
+::: moniker-end
 
 ::: moniker range="azure-data-explorer"
 
