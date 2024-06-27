@@ -14,7 +14,7 @@ To create a table for incoming logs from Fluent Bit:
 
 1. Browse to your query environment.
 1. Select the database where you'd like to create the table.
-1. Run the following [.create table command](../../kusto/management/create-table-command.md):
+1. Run the following [`.create table` command](../../kusto/management/create-table-command.md):
 
     ```kusto
     .create table FluentBitLogs (log:dynamic, tag:string, timestamp:datetime)
@@ -28,7 +28,7 @@ To create a table for incoming structured logs from Fluent Bit:
 
 1. Browse to your query environment.
 1. Select the database where you'd like to create the table.
-1. Run the [.create table command](../../kusto/management/create-table-command.md). For example, if your logs contain three fields named `myString`, `myInteger`, and `myDynamic`, you can create a table with the following schema:
+1. Run the [`.create table` command](../../kusto/management/create-table-command.md). For example, if your logs contain three fields named `myString`, `myInteger`, and `myDynamic`, you can create a table with the following schema:
 
     ```kusto
     .create table FluentBitLogs (myString:string, myInteger:int, myDynamic: dynamic, timestamp:datetime)
@@ -52,7 +52,7 @@ To create a table for incoming structured logs from Fluent Bit:
 
 The Microsoft Entra service principal can be created through the [Azure portal](/azure/active-directory/develop/howto-create-service-principal-portal) or programatically, as in the following example.
 
-This service principal will be the identity used by the connector to write data your table in Kusto. You'll later grant permissions for this service principal to access Kusto resources.
+This service principal is the identity used by the connector to write data your table in Kusto. You'll later grant permissions for this service principal to access Kusto resources.
 
 [!INCLUDE [entra-service-principal](../entra-service-principal.md)]
 
