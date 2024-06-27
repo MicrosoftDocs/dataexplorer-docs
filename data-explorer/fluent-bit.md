@@ -26,7 +26,7 @@ For a complete list of data connectors, see [Data connectors overview](connector
 * [Fluent Bit](https://docs.fluentbit.io/manual/installation/getting-started-with-fluent-bit).
 * An Azure Data Explorer cluster and database. [Create a cluster and database](create-cluster-and-database.md).
 
-You can use any of the available [Query tools](integrate-query-overview.md&tabs=integrations) for your query environment.
+You can use any of the available [Query tools](integrate-query-overview.md) for your query environment.
 
 [!INCLUDE [fluent-bit](includes/cross-repo/fluent-bit.md)]
 
