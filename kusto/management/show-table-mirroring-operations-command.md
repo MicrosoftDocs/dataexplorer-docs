@@ -17,7 +17,7 @@ Check the table's [mirroring policy](mirroring-policy.md) operations mirroring s
 
 `.show` `table` *TableName* `operations` `mirroring-status`
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Parameters
 
