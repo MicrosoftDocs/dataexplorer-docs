@@ -62,4 +62,4 @@ items:
   - name: Management commands
     href: management/toc.yml
   - name: APIs and SDKs
-    href: apis/toc.yml
+    href: api/toc.yml
