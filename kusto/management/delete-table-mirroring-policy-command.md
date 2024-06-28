@@ -19,7 +19,7 @@ Delete a table's [mirroring policy](mirroring-policy.md).
 
 `.delete` `table` *TableName* `policy` `mirroring`
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Parameters
 

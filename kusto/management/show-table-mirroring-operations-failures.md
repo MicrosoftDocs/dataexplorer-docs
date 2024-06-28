@@ -13,7 +13,7 @@ Returns the table's [mirroring policy](mirroring-policy.md) operations table exp
 
 `.show` `table` *TableName* `operations` `mirroring-failures`
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Parameters
 
