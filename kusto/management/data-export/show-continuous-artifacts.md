@@ -26,7 +26,7 @@ You must have at least Database User, Database Viewer, or Database Monitor permi
 
 `.show` `continuous-export` *ContinuousExportName* `exported-artifacts`
 
-[!INCLUDE [syntax-conventions-note]([!INCLUDE [syntax-conventions-note](/../includes/syntax-conventions-note.md)])]
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
 
 ## Parameters
 

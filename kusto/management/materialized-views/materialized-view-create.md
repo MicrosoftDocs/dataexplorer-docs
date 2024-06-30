@@ -34,7 +34,7 @@ This command requires [Database Admin](../../access-control/role-based-access-co
 
 `.create` [`async`] [`ifnotexists`] `materialized-view` [ `with` `(`*PropertyName* `=` *PropertyValue*`,`...`)`] *MaterializedViewName* `on table` *SourceTableName* `{` *Query* `}`
 
-[!INCLUDE [syntax-conventions-note]([!INCLUDE [syntax-conventions-note](/../includes/syntax-conventions-note.md)])]
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
 
 ## Parameters
 
@@ -465,7 +465,7 @@ If the operation is no longer in progress when the `.cancel operation` command i
 
 `.cancel operation` *operationId*
 
-[!INCLUDE [syntax-conventions-note]([!INCLUDE [syntax-conventions-note](/../includes/syntax-conventions-note.md)])]
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
 
 #### Parameters
 

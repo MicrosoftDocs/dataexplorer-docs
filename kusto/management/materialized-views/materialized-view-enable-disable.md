@@ -21,7 +21,7 @@ You must have at least [Materialized View Admin](../../access-control/role-based
 
 `.enable` | `disable` `materialized-view` *MaterializedViewName*
 
-[!INCLUDE [syntax-conventions-note]([!INCLUDE [syntax-conventions-note](/../includes/syntax-conventions-note.md)])]
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
 
 ## Parameters
 
