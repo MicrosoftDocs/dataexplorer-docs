@@ -12,7 +12,7 @@ Starting version 2.3.0 we introduce new artifact Ids replacing spark-kusto-conne
 
 ### Build prerequisites
 
-1. If you are not using pre-built libraries, you need to install the libraries listed in [dependencies](https://github.com/Azure/azure-kusto-spark#dependencies) including the following [Kusto Java SDK](kusto/api/java/kusto-java-client-library.md) libraries. To find the right version to install, [look in the relevant release's pom](https://github.com/Azure/azure-kusto-spark/releases):
+1. If you are not using pre-built libraries, you need to install the libraries listed in [dependencies](https://github.com/Azure/azure-kusto-spark#dependencies) including the following [Kusto Java SDK](/azure/data-explorer/kusto/api/java/kusto-java-client-library.md) libraries. To find the right version to install, [look in the relevant release's pom](https://github.com/Azure/azure-kusto-spark/releases):
     * [Kusto Data Client](https://mvnrepository.com/artifact/com.microsoft.azure.kusto/kusto-data)
     * [Kusto Ingest Client](https://mvnrepository.com/artifact/com.microsoft.azure.kusto/kusto-ingest)
 
@@ -55,16 +55,16 @@ For more information, see [connector usage](https://github.com/Azure/azure-kusto
 
 1. Install the latest spark-kusto-connector library from Maven:
 
-    ![Import libraries.](media/spark-connector/db-libraries-view.png)
-    ![Select Spark-Kusto-Connector.](media/spark-connector/db-dependencies.png)
+    ![Import libraries.](/azure/data-explorer/includes/media/ingest-data-spark/db-libraries-view.png)
+    ![Select Spark-Kusto-Connector.](/azure/data-explorer/includes/media/ingest-data-spark/db-dependencies.png)
 
 1. Verify that all required libraries are installed:
 
-    ![Verify libraries installed.](media/spark-connector/db-libraries-view.png)
+    ![Verify libraries installed.](/azure/data-explorer/includes/media/ingest-data-spark/db-libraries-view.png)
 
 1. For installation using a JAR file, verify that additional dependencies were installed:
 
-    ![Add dependencies.](media/spark-connector/db-not-maven.png)
+    ![Add dependencies.](/azure/data-explorer/includes/media/ingest-data-spark/db-not-maven.png)
 
 ## Authentication
 
