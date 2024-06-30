@@ -162,7 +162,7 @@ You can get your database schema using one of the following methods:
 
 ### [From your cluster](#tab/show)
 
-1. In the Azure Data Explorer web UI, on the left menu, select **Query**.
+1. In the web UI, on the left menu, select **Query**.
 1. Select the database for which you want to create a schema.
 1. In the query window, run the following query:
 

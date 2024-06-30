@@ -1,6 +1,6 @@
 ---
 title:  Connection strings overview
-description: This article describes connection strings in Azure Data Explorer.
+description: This article describes connection strings.
 ms.reviewer: orspodek
 ms.topic: reference
 ms.date: 07/13/2023

@@ -1,6 +1,6 @@
 ---
 title:  SQL external table connection strings
-description: This article describes how to connect and authenticate to SQL external tables in Azure Data Explorer.
+description: This article describes how to connect and authenticate to SQL external tables.
 ms.reviewer: urishapira
 ms.topic: reference
 ms.date: 05/30/2024
@@ -36,7 +36,7 @@ The following table shows the supported authentication methods for each type of 
 
 ## Microsoft Entra integrated (impersonation)
 
-With this authentication method, the user or application authenticates via Microsoft Entra ID to Azure Data Explorer, and the same token is then used to access the SQL Server network endpoint. This method is supported for SQL Server and Cosmos DB.
+With this authentication method, the user or application authenticates via Microsoft Entra ID to your query environment, and the same token is then used to access the SQL Server network endpoint. This method is supported for SQL Server and Cosmos DB.
 
 To use Microsoft Entra integrated authentication (impersonation), add `;Authentication="Active Directory Integrated"` to the SQL connection string.
 
@@ -46,7 +46,7 @@ To use Microsoft Entra integrated authentication (impersonation), add `;Authenti
 
 ## Managed identity
 
-Azure Data Explorer makes requests on behalf of a managed identity and uses its identity to access resources. This method is supported for SQL Server and Cosmos DB.
+Your query environment makes requests on behalf of a managed identity and uses its identity to access resources. This method is supported for SQL Server and Cosmos DB.
 
 For a system-assigned managed identity, append `;Authentication="Active Directory Managed Identity"` to the connection string. For a user-assigned managed identity, append `;Authentication="Active Directory Managed Identity";User Id={object_id}` to the connection string.
 
