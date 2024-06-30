@@ -81,7 +81,7 @@ Kusto Spark connector enables you to authenticate with Microsoft Entra ID using 
 
 Microsoft Entra application authentication is the simplest and most common authentication method and is recommended for the Kusto Spark connector.
 
-[!INCLUDE [provision-entra-id-app](provision-entra-id-app.md)]
+[!INCLUDE [entra-service-principal](../entra-service-principal.md)]
 
 | Properties | Option String | Description |
 |--|--|--|
