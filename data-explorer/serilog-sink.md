@@ -9,7 +9,7 @@ ms.reviewer: ramacg
 
 [!INCLUDE [ingest-data-serilog](includes/cross-repo/ingest-data-serilog.md)]
 
-For a complete list of data connectors, see [Data integrations overview](../../integrate-data-overview.md).
+For a complete list of data connectors, see [Data integrations overview](integrate-data-overview.md).
 
 ## Prerequisites
 
