@@ -37,4 +37,4 @@ Save the following values to be used in later steps:
     .add database <DatabaseName> ingestors ('aadapp=<ApplicationID>') 'NLOG Azure App Registration role'
     ```
     > [!NOTE]
-    > The last parameter is a string that shows up as notes when you query the roles associated with a database. For more information, see [View existing security roles](azure/data-explorer/kusto/management/manage-database-security-roles#show-existing-security-roles).
+    > The last parameter is a string that shows up as notes when you query the roles associated with a database. For more information, see [View existing security roles](/azure/data-explorer/kusto/management/manage-database-security-roles#show-existing-security-roles).

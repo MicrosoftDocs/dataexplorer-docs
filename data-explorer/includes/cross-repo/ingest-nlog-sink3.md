@@ -65,9 +65,9 @@ Use the sample log generator app as an example showing how to configure and use 
     |---|---|
     | *INGEST_ENDPOINT* | The ingest URI for your data target. You have copied this URI in the [prerequisites](#prerequisites). |
     | *DATABASE* | The case-sensitive name of the target database. |
-    | *APP_ID* | Application client ID required for authentication. You saved this value in [Create a Microsoft Entra app registration](ingest-nlog-sink2.md#create-a-microsoft-entra-app-registration). |
-    | *APP_KEY* | Application key required for authentication. You saved this value in [Create a Microsoft Entra App registration](ingest-nlog-sink2.md#create-a-microsoft-entra-app-registration). |
-    | *AZURE_TENANT_ID* | The ID of the tenant in which the application is registered. You saved this value in [Create a Microsoft Entra App registration](ingest-nlog-sink2.md#create-a-microsoft-entra-app-registration). |
+    | *APP_ID* | Application client ID required for authentication. You saved this value in [Create a Microsoft Entra app registration](#create-a-microsoft-entra-app-registration). |
+    | *APP_KEY* | Application key required for authentication. You saved this value in [Create a Microsoft Entra App registration](#create-a-microsoft-entra-app-registration). |
+    | *AZURE_TENANT_ID* | The ID of the tenant in which the application is registered. You saved this value in [Create a Microsoft Entra App registration](#create-a-microsoft-entra-app-registration). |
 
     You can set the environment variables manually or using the following commands:
 
