@@ -12,7 +12,7 @@ Starting version 2.3.0 we introduce new artifact Ids replacing spark-kusto-conne
 
 ### Build prerequisites
 
-1. If you are not using pre-built libraries, you need to install the libraries listed in [dependencies](https://github.com/Azure/azure-kusto-spark#dependencies) including the following [Kusto Java SDK](/azure/data-explorer/kusto/api/java/kusto-java-client-library.md) libraries. To find the right version to install, [look in the relevant release's pom](https://github.com/Azure/azure-kusto-spark/releases):
+1. If you are not using pre-built libraries, you need to install the libraries listed in [dependencies](https://github.com/Azure/azure-kusto-spark#dependencies) including the following [Kusto Java SDK](/azure/data-explorer/kusto/api/java/kusto-java-client-library) libraries. To find the right version to install, [look in the relevant release's pom](https://github.com/Azure/azure-kusto-spark/releases):
     * [Kusto Data Client](https://mvnrepository.com/artifact/com.microsoft.azure.kusto/kusto-data)
     * [Kusto Ingest Client](https://mvnrepository.com/artifact/com.microsoft.azure.kusto/kusto-ingest)
 
@@ -51,7 +51,7 @@ For more information, see [connector usage](https://github.com/Azure/azure-kusto
 
 1. Configure the following Spark cluster settings, based on Azure Databricks cluster using Spark 2.4.4 and Scala 2.11 or Spark 3.0.1 and Scala 2.12:
 
-    ![Databricks cluster settings.](media/spark-connector/databricks-cluster.png)
+    ![Databricks cluster settings.](/azure/data-explorer/includes/media/ingest-data-spark/spark-connector/databricks-cluster.png)
 
 1. Install the latest spark-kusto-connector library from Maven:
 
