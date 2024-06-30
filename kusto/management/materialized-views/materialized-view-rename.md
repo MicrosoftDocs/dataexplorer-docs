@@ -17,7 +17,7 @@ You must have at least [Materialized View Admin](../../access-control/role-based
 
 `.rename` `materialized-view` *OldName* `to` *NewName*
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note]([!INCLUDE [syntax-conventions-note](/../includes/syntax-conventions-note.md)])]
 
 ## Parameters
 

@@ -22,7 +22,7 @@ You must have at least [Database Admin](../../access-control/role-based-access-c
 
 `.disable` `continuous-export` *ContinuousExportName*
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note]([!INCLUDE [syntax-conventions-note](/../includes/syntax-conventions-note.md)])]
 
 ## Parameters
 

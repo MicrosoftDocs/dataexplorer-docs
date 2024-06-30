@@ -21,7 +21,7 @@ Changes the tables's [mirroring policy](mirroring-policy.md). The mirroring poli
 `dataformat` = `parquet`  
 [`with` (`IsEnabled`=`IsEnabledValue`)]
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Parameters
 
@@ -30,7 +30,7 @@ Changes the tables's [mirroring policy](mirroring-policy.md). The mirroring poli
 |*TableName*| string| :heavy_check_mark:|A table name that adheres to the [Entity names](../query/schema-entities/entity-names.md) rules.|
 |*Partitions*| string| | A comma-separated list of columns used to divide the data into smaller partitions. See [Partitions formatting](#partitions-formatting). |
 
-[!INCLUDE [partitions-formatting](../../includes/partitions-formatting.md)]
+[!INCLUDE [partitions-formatting](../includes/partitions-formatting.md)]
 
 > [!NOTE]
 > Each partition is represented as a separate column using the *PartitionName* listed in the *Partitions* list. *PartitionName* must be a case insensitive unique string, both among other partition names and the column names of the mirrored table.
