@@ -10,7 +10,9 @@ ms.date: 05/23/2023
 
 Shows information on active stored query results.
 
-Use `.show` `stored_query_results` to show information about active stored query results in the current database.
+Use `.show` `stored_query_results` to show information about active stored query results in the current database. This command is eventually consistent, meaning that there might be a short delay before recently created stored query results are returned.
+
+Use `.show` `stored_query_results` *storedQueryResultName* to show information on a specific active stored query result in the current database. This command is strongly consistent as opposed to the version above.
 
 Use `.show` `stored_query_result` *storedQueryResultName* `schema` to show the schema of an active stored query result in the current database.
 
@@ -21,6 +23,8 @@ You must have [Database Viewer](access-control/role-based-access-control.md) per
 ## Syntax
 
 `.show` `stored_query_results`
+
+`.show` `stored_query_results` *storedQueryResultName*
 
 `.show` `stored_query_result` *storedQueryResultName* `schema`
 
@@ -36,12 +40,23 @@ You must have [Database Viewer](access-control/role-based-access-control.md) per
 
 Returns information about active stored query results in the current database.
 
-> [!NOTE]
-> Please note that there might be a short delay before recently created stored query results appear in the results.
-
 ## Examples
 
-The following example returns information about the stored query result `Events`.
+The following example returns information about all existing stored query results in current database.
+
+```kusto
+.show stored_query_results
+```
+
+**Output**
+
+| StoredQueryResultId | Name | DatabaseName | PrincipalIdentity | SizeInBytes | RowCount | CreatedOn | ExpiresOn |
+| ------------------- | ---- | ------------ | ----------------- | ----------- | -------- | --------- | --------- |
+| c522ada3-e490-435a-a8b1-e10d00e7d5c2 | Events | TestDB | aadapp=c28e9b80-2808-bed525fc0fbb | 104372 | 1000000 | 2020-10-07 14:26:49.6971487 | 2020-10-08 14:26:49.6971487 |
+| ef3f6b6e-cedd-4b93-b453-1ce0d1add1ff | Events2 | TestDB | aadapp=c28e9b80-2808-bed525fc0fbb | 104410 | 1000000 | 2020-10-07 14:26:52.2100315 | 2020-10-08 14:26:52.2100315 |
+
+
+The following example returns information about the stored query result `Events` in current database.
 
 ```kusto
 .show stored_query_results Events
@@ -52,6 +67,7 @@ The following example returns information about the stored query result `Events`
 | StoredQueryResultId | Name | DatabaseName | PrincipalIdentity | SizeInBytes | RowCount | CreatedOn | ExpiresOn |
 | ------------------- | ---- | ------------ | ----------------- | ----------- | -------- | --------- | --------- |
 | c522ada3-e490-435a-a8b1-e10d00e7d5c2 | Events | TestDB | aadapp=c28e9b80-2808-bed525fc0fbb | 104372 | 1000000 | 2020-10-07 14:26:49.6971487 | 2020-10-08 14:26:49.6971487 |
+
 
 The following example shows the schema of the stored query result `Events`.
 
