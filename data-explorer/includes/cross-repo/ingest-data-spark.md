@@ -12,7 +12,7 @@ Starting version 2.3.0 we introduce new artifact Ids replacing spark-kusto-conne
 
 ### Build prerequisites
 
-1. If you are not using pre-built libraries, you need to install the libraries listed in [dependencies](https://github.com/Azure/azure-kusto-spark#dependencies) including the following [Kusto Java SDK](/azure/data-explorer/kusto/api/java/kusto-java-client-library) libraries. To find the right version to install, [look in the relevant release's pom](https://github.com/Azure/azure-kusto-spark/releases):
+1. If you aren't using prebuilt libraries, you need to install the libraries listed in [dependencies](https://github.com/Azure/azure-kusto-spark#dependencies) including the following [Kusto Java SDK](/azure/data-explorer/kusto/api/java/kusto-java-client-library) libraries. To find the right version to install, [look in the relevant release's pom](https://github.com/Azure/azure-kusto-spark/releases):
     * [Kusto Data Client](https://mvnrepository.com/artifact/com.microsoft.azure.kusto/kusto-data)
     * [Kusto Ingest Client](https://mvnrepository.com/artifact/com.microsoft.azure.kusto/kusto-ingest)
 
@@ -62,7 +62,7 @@ For more information, see [connector usage](https://github.com/Azure/azure-kusto
 
     ![Verify libraries installed.](/azure/data-explorer/includes/media/ingest-data-spark/db-libraries-view.png)
 
-1. For installation using a JAR file, verify that additional dependencies were installed:
+1. For installation using a JAR file, verify that other dependencies were installed:
 
     ![Add dependencies.](/azure/data-explorer/includes/media/ingest-data-spark/db-not-maven.png)
 
@@ -72,7 +72,7 @@ Kusto Spark connector enables you to authenticate with Microsoft Entra ID using 
 
 * An [Microsoft Entra application](#microsoft-entra-application-authentication)
 * An [Microsoft Entra access token](https://github.com/Azure/azure-kusto-spark/blob/master/docs/Authentication.md#direct-authentication-with-access-token)
-* [Device authentication](https://github.com/Azure/azure-kusto-spark/blob/master/docs/Authentication.md#device-authentication) (for non-production scenarios)
+* [Device authentication](https://github.com/Azure/azure-kusto-spark/blob/master/docs/Authentication.md#device-authentication) (for nonproduction scenarios)
 * An [Azure Key Vault](https://github.com/Azure/azure-kusto-spark/blob/master/docs/Authentication.md#key-vault)
     To access the Key Vault resource, install the azure-keyvault package and provide application credentials.
 
