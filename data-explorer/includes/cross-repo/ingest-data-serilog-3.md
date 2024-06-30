@@ -88,7 +88,7 @@ If you don't have your own data to test, you can use the sample log generator ap
 
     | Variable | Description |
     |---|---|
-    | *IngestionEndPointUri* | The ingest URI. |
+    | *IngestionEndPointUri* | The [ingest URI](#ingestion-uri). |
     | *DatabaseName* | The case-sensitive name of the target database. |
     | *TableName* | The case-sensitive name of an existing target table. For example, **SerilogTest** is the name of the table created in [Create a target table and ingestion mapping](#create-a-target-table-and-ingestion-mapping). |
     | *AppId* | Application client ID required for authentication. You saved this value in [Create a Microsoft Entra service principal](#create-a-microsoft-entra-service-principal). |
