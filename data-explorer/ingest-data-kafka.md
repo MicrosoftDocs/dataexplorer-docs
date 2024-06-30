@@ -15,7 +15,7 @@ ms.date: 11/08/2021
 
 By default, the Kafka connector uses the application method for authentication during ingestion. To authenticate using managed identity:
 
-1. Assign your cluster a managed identity and grant your storage account read permissions. For more information see, [Ingest data using managed identity authentication](../../ingest-data-managed-identity.md).
+1. Assign your cluster a managed identity and grant your storage account read permissions. For more information see, [Ingest data using managed identity authentication](ingest-data-managed-identity.md).
 
 1. In your **adx-sink-config.json** file set `aad.auth.strategy` to `managed_identity` and ensure that `aad.auth.appid` is set to the correct value.
 
@@ -24,7 +24,7 @@ By default, the Kafka connector uses the application method for authentication d
 > [!NOTE]
 > When using a managed identity, `appId` and `tenant` are deduced from the context of the call site and `password` isn't needed.
 
-[!INCLUDE [ingest-data-kafka2](includes/cross-repo/ingest-data-kafka-2.md)]
+[!INCLUDE [ingest-data-kafka-2](includes/cross-repo/ingest-data-kafka-2.md)]
 
 ## Related content
 
