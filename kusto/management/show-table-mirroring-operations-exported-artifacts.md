@@ -13,7 +13,7 @@ Returns the table's [mirroring policy](mirroring-policy.md) operations details r
 
 `.show` `table` *TableName* `operations` `mirroring-exported-artifacts`
 
-[!INCLUDE [syntax-conventions-note]([!INCLUDE [syntax-conventions-note](/../includes/syntax-conventions-note.md)])]
+[!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 ## Parameters
 
