@@ -47,7 +47,7 @@ For more information, see [connector usage](https://github.com/Azure/azure-kusto
 ## Spark cluster setup
 
 > [!NOTE]
-> It's recommended to use the latest Azure Data Explorer Spark connector release when performing the following steps.
+> It's recommended to use the latest Kusto Spark connector release when performing the following steps.
 
 1. Configure the following Spark cluster settings, based on Azure Databricks cluster using Spark 2.4.4 and Scala 2.11 or Spark 3.0.1 and Scala 2.12:
 
@@ -68,7 +68,7 @@ For more information, see [connector usage](https://github.com/Azure/azure-kusto
 
 ## Authentication
 
-Azure Data Explorer Spark connector enables you to authenticate with Microsoft Entra ID using one of the following methods:
+Kusto Spark connector enables you to authenticate with Microsoft Entra ID using one of the following methods:
 
 * An [Microsoft Entra application](#microsoft-entra-application-authentication)
 * An [Microsoft Entra access token](https://github.com/Azure/azure-kusto-spark/blob/master/docs/Authentication.md#direct-authentication-with-access-token)
