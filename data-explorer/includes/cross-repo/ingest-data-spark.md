@@ -83,6 +83,8 @@ Microsoft Entra application authentication is the simplest and most common authe
 
 [!INCLUDE [entra-service-principal](../entra-service-principal.md)]
 
+The Spark connector uses the following Entra app properties for authentication:
+
 | Properties | Option String | Description |
 |--|--|--|
 | **KUSTO_AAD_APP_ID** | kustoAadAppId | Microsoft Entra application (client) identifier. |
