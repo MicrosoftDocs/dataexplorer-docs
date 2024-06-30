@@ -7,7 +7,7 @@ ms.reviewer: ramacg
 ---
 # Ingest data with the NLog sink into Azure Data Explorer
 
-[!INCLUDE [ingest-nlog-sink1](includes/cross-repo/ingest-nlog-sink1.md)
+[!INCLUDE [ingest-nlog-sink1](includes/cross-repo/ingest-nlog-sink1.md)]
 
 In this article you will learn how to ingest data with nLog sink.
 
