@@ -128,7 +128,8 @@
         "management/**": "microsoft-fabric || azure-data-explorer",
         "functions-library/**": "microsoft-fabric || azure-data-explorer",
         "tools/**": "microsoft-fabric || azure-data-explorer",
-        "query/**": "microsoft-fabric || azure-data-explorer || azure-monitor || microsoft-sentinel"
+        "query/**": "microsoft-fabric || azure-data-explorer || azure-monitor || microsoft-sentinel",
+        "api/**": "microsoft-fabric || azure-data-explorer"
       }
     },
     "template": [],
