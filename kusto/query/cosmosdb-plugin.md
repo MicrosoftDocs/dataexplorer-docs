@@ -4,6 +4,7 @@ description: Learn how to use the cosmosdb_sql_request plugin to send a SQL quer
 ms.reviewer: miwalia
 ms.topic: reference
 ms.date: 04/18/2023
+monikerRange: "microsoft-fabric || azure-data-explorer"
 ---
 # cosmosdb_sql_request plugin
 

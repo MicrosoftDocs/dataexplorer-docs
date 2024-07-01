@@ -4,6 +4,7 @@ description: Learn how to use the cluster() function to change the reference of 
 ms.reviewer: alexans
 ms.topic: reference
 ms.date: 11/27/2022
+monikerRange: "microsoft-fabric || azure-data-explorer"
 ---
 # cluster()
 

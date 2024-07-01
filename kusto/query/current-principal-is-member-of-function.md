@@ -4,6 +4,7 @@ description: Learn how to use the current_principal_is_member_of() function to c
 ms.reviewer: alexans
 ms.topic: reference
 ms.date: 11/27/2021
+monikerRange: "microsoft-fabric || azure-data-explorer"
 ---
 # current_principal_is_member_of()
 

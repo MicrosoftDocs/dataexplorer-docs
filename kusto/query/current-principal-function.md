@@ -4,6 +4,7 @@ description: Learn how to use the current_principal() function to return the nam
 ms.reviewer: alexans
 ms.topic: reference
 ms.date: 04/16/2023
+monikerRange: "microsoft-fabric || azure-data-explorer"
 ---
 # current_principal()
 
