@@ -4,12 +4,9 @@ description: Learn how to use the `.show table mirroring operations` command to 
 ms.reviewer: sharmaanshul
 ms.topic: reference
 ms.date: 05/23/2024
-zone_pivot_group_filename: data-explorer/zone-pivot-groups.json
-zone_pivot_groups: kql-flavors-all
+monikerRange: "microsoft-fabric"
 ---
 # .show table mirroring operations command
-
-::: zone pivot="fabric"
 
 Check the table's [mirroring policy](mirroring-policy.md) operations mirroring status. Mirroring status allows you to verify the latency and status of your data export.
 
@@ -44,11 +41,3 @@ The following example requests operations mirroring status of the *myTable* tabl
 
 ```kusto
 .show table myTable operations mirroring-status 
-
-::: zone-end
-
-::: zone pivot="azuredataexplorer, azuremonitor"
-
-This feature isn't supported.
-
-::: zone-end
