@@ -8,6 +8,8 @@ monikerRange: "azure-data-explorer"
 ---
 # Soft delete overview
 
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)]
+
 The ability to delete individual records is supported. Record deletion is commonly achieved using one of the following methods:
 
 * To delete records with a system guarantee that the storage artifacts containing these records are deleted as well, use [`.purge`](data-purge.md)
