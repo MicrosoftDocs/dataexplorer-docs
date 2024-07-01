@@ -41,3 +41,4 @@ The following example requests operations mirroring status of the *myTable* tabl
 
 ```kusto
 .show table myTable operations mirroring-status 
+```
