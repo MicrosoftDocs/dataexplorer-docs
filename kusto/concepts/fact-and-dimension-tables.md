@@ -7,6 +7,8 @@ ms.date: 03/23/2020
 ---
 # Fact and dimension tables
 
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)]
+
 When designing the schema for an Azure Data Explorer database, think of tables as broadly belonging to one of two categories.
 * [Fact tables](https://en.wikipedia.org/wiki/Fact_table)
 * [Dimension tables](https://en.wikipedia.org/wiki/Dimension_(data_warehouse)#Dimension_table)
