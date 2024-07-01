@@ -8,6 +8,8 @@ monikerRange: "azure-data-explorer"
 ---
 # Sandboxes in VM sizes not supporting nested virtualization
 
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)]
+
 In this article, we'll cover the limitations of sandboxes in VM sizes that don't support nested virtualization.
 
 ## Prerequisites and limitations

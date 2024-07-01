@@ -8,6 +8,8 @@ monikerRange: "azure-data-explorer"
 ---
 # Data purge
 
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)]
+
 [!INCLUDE [gdpr-intro-sentence](../includes/gdpr-intro-sentence.md)]
 
 The data platform supports the ability to delete individual records, by using Kusto `.purge` and related commands. You can also [purge an entire table](#purging-an-entire-table) or purge records in a [materialized view](../management/materialized-views/materialized-view-purge.md).
