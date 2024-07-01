@@ -4,6 +4,7 @@ description: Learn how to use the take operator to return a specified number of 
 ms.reviewer: alexans
 ms.topic: reference
 ms.date: 03/16/2023
+monikerRange: "microsoft-fabric || azure-data-explorer || azure-monitor || microsoft-sentinel || azure-resource-graph"
 ---
 # take operator
 
@@ -30,6 +31,7 @@ the source data is sorted. If the data is sorted, then the top values will be re
 |--|--|--|--|
 |*NumberOfRows*| `int` | :heavy_check_mark:|The number of rows to return.|
 
+::: moniker range="microsoft-fabric || azure-data-explorer || azure-monitor || microsoft-sentinel"
 ## Paging of query results
 
 Methods for implementing paging include:
@@ -39,6 +41,7 @@ Methods for implementing paging include:
 * Write a middle-tier application that provides a stateful paging API by caching
    the results of a Kusto query.
 * Use pagination in [Stored query results](stored-query-result-function.md#pagination)
+::: moniker-end
 
 ## Example
 
