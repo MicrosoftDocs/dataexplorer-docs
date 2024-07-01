@@ -4,6 +4,7 @@ description: Learn how to use the project operator to select columns to include,
 ms.reviewer: alexans
 ms.topic: reference
 ms.date: 01/12/2023
+monikerRange: "microsoft-fabric || azure-data-explorer || azure-monitor || microsoft-sentinel || azure-resource-graph"
 ---
 # project operator
 
@@ -100,7 +101,9 @@ The following table shows only the first 10 results.
 |COLLIERVILLE| 6|
 |...|...|
 
+::: moniker range="microsoft-fabric || azure-data-explorer || azure-monitor || microsoft-sentinel"
 ## Related content
 
 * [`extend`](extend-operator.md)
 * [series_stats](series-stats-function.md)
+::: moniker-end

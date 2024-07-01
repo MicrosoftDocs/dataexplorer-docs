@@ -4,7 +4,7 @@ description:  This article describes union operator.
 ms.reviewer: alexans
 ms.topic: reference
 ms.date: 02/13/2020
-monikerRange: "microsoft-fabric || azure-data-explorer || azure-monitor || microsoft-sentinel"
+monikerRange: "microsoft-fabric || azure-data-explorer || azure-monitor || microsoft-sentinel || azure-resource-graph"
 ---
 # union operator
 
@@ -12,12 +12,40 @@ Takes two or more tables and returns the rows of all of them.
 
 ## Syntax
 
+::: moniker range="microsoft-fabric  || azure-data-explorer"
+
 [ *T* `|` ] `union` [ *UnionParameters* ] [`kind=` `inner`|`outer`] [`withsource=` *ColumnName*] [`isfuzzy=` `true`|`false`] *Tables*
+
+::: moniker-end
+
+::: moniker range="azure-monitor || microsoft-sentinel"
+
+[ *T* `|` ] `union` [`kind=` `inner`|`outer`] [`withsource=` *ColumnName*] [`isfuzzy=` `true`|`false`] *Tables*
+
+::: moniker-end
+
+::: moniker range="azure-resource-graph"
+
+[ *T* `|` ] `union` [`kind=` `inner`|`outer`] [`withsource=` *ColumnName*] *Tables*
+
+::: moniker-end
 
 [!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
+::: moniker range="microsoft-fabric  || azure-data-explorer || azure-monitor || microsoft-sentinel"
+
 > [!NOTE]
 > The operation of the `union` operator can be altered by setting the `best_effort` request property to `true`, using either a [set statement](set-statement.md) or through [client request properties](../api/netfx/client-request-properties.md). When this property is set to `true`, the `union` operator will disregard fuzzy resolution and connectivity failures to execute any of the sub-expressions being “unioned” and yield a warning in the query status results.
+
+::: moniker-end
+
+::: moniker range="azure-resource-graph"
+
+> [!NOTE]
+> You can use the  `union` operator to combine data from one or more tables and up to three union legs.
+>The operation of the `union` operator can be altered by setting the `best_effort` request property to `true`, using either a [set statement](set-statement.md) or through [client request properties](../api/netfx/client-request-properties.md). When this property is set to `true`, the `union` operator will disregard connectivity failures to execute any of the sub-expressions being “unioned” and yield a warning in the query status results.
+
+::: moniker-end
 
 ## Parameters
 
@@ -49,6 +77,17 @@ Takes two or more tables and returns the rows of all of them.
 |`kind`| `string` ||Either `inner` or `outer`. `inner` causes the result to have the subset of columns that are common to all of the input tables. `outer` causes the result to have all the columns that occur in any of the inputs. Cells that aren't defined by an input row are set to `null`. The default is `outer`.<br/><br/>With `outer`, the result has all the columns that occur in any of the inputs, one column for each name and type occurrences. This means that if a column appears in multiple tables and has multiple types, it has a corresponding column for each type in the union's result. This column name is suffixed with a '_' followed by the origin column [type](scalar-data-types/index.md).|
 |`withsource=`*ColumnName*| `string` ||If specified, the output includes a column called *ColumnName* whose value indicates which source table has contributed each row. If the query effectively references tables from more than one database including the default database, then the value of this column has a table name qualified with the database. __cluster and database__ qualifications are present in the value if more than one cluster is referenced.|
 |`isfuzzy`| `bool` ||If set to `true`, allows fuzzy resolution of union legs. The set of union sources is reduced to the set of table references that exist and are accessible at the time while analyzing the query and preparing for execution. If at least one such table was found, any resolution failure yields a warning in the query status results, but won't prevent the query execution. If no resolutions were successful, the query returns an error. However, in cross-workspace and cross-app queries, if any of the workspaces or apps is not found, the query will fail. The default is `false`.<br/><br/>`isfuzzy=true` only applies to the `union` sources resolution phase. Once the set of source tables is determined, possible additional query failures won't be suppressed.|
+|*Tables*| `string` ||One or more comma-separated table references, a query expression enclosed with parenthesis, or a set of tables specified with a wildcard. For example, `E*` would form the union of all the tables in the database whose names begin `E`.<br/><br/>Whenever the list of tables is known, refrain from using wildcards. Some workspaces contains very large number of tables that would lead to inefficient execution. Tables may also be added over time leading to unpredicted results.|
+
+::: moniker-end
+
+::: moniker range="azure-resource-graph"
+
+|Name|Type|Required|Description|
+|--|--|--|--|
+|*T*| `string` ||The input tabular expression.|
+|`kind`| `string` ||Either `inner` or `outer`. `inner` causes the result to have the subset of columns that are common to all of the input tables. `outer` causes the result to have all the columns that occur in any of the inputs. Cells that aren't defined by an input row are set to `null`. The default is `outer`.<br/><br/>With `outer`, the result has all the columns that occur in any of the inputs, one column for each name and type occurrences. This means that if a column appears in multiple tables and has multiple types, it has a corresponding column for each type in the union's result. This column name is suffixed with a '_' followed by the origin column [type](scalar-data-types/index.md).|
+|`withsource=`*ColumnName*| `string` ||If specified, the output includes a column called *ColumnName* whose value indicates which source table has contributed each row. If the query effectively references tables from more than one database including the default database, then the value of this column has a table name qualified with the database. __cluster and database__ qualifications are present in the value if more than one cluster is referenced.|
 |*Tables*| `string` ||One or more comma-separated table references, a query expression enclosed with parenthesis, or a set of tables specified with a wildcard. For example, `E*` would form the union of all the tables in the database whose names begin `E`.<br/><br/>Whenever the list of tables is known, refrain from using wildcards. Some workspaces contains very large number of tables that would lead to inefficient execution. Tables may also be added over time leading to unpredicted results.|
 
 ::: moniker-end
@@ -94,6 +133,8 @@ Query
 
 This more efficient version produces the same result. It filters each table before creating the union.
 
+::: moniker range="microsoft-fabric  || azure-data-explorer || azure-monitor || microsoft-sentinel"
+
 ### Using `isfuzzy=true`
 
 ```kusto     
@@ -134,6 +175,8 @@ union isfuzzy=true View*, SomeView*, OtherView*
 
 Observing Query Status - the following warning returned:
 `Failed to resolve entity 'SomeView*'`
+
+::: moniker-end
 
 ### Source columns types mismatch
 

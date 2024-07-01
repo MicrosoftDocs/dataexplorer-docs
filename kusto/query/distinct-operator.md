@@ -3,7 +3,8 @@ title:  distinct operator
 description: Learn how to use the distinct operator to create a table with the distinct combination of the columns of the input table.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 11/24/2022
+ms.date: 07/01/2024
+monikerRange: "microsoft-fabric || azure-data-explorer || azure-monitor || microsoft-sentinel || azure-resource-graph"
 ---
 # distinct operator
 
@@ -51,6 +52,9 @@ StormEvents
 |TENNESSEE|Heat|
 |CALIFORNIA|Wildfire|
 
+::: moniker range="microsoft-fabric || azure-data-explorer || azure-monitor || microsoft-sentinel"
+
 ## Related content
 
 If the group by keys are of high cardinalities, try `summarize by ...` with the [shuffle strategy](shuffle-query.md).
+::: moniker-end
