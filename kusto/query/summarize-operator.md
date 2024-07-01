@@ -20,6 +20,17 @@ Produces a table that aggregates the content of the input table.
 
 [!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
+::: moniker range="azure-resource-graph"
+## Parameters
+
+|Name|Type|Required|Description|
+|--|--|--|--|
+|*Column*| `string` ||The name for the result column. Defaults to a name derived from the expression.|
+|*Aggregation*| `string` | :heavy_check_mark:|A call to an [aggregation function](aggregation-functions.md) such as `count()` or `avg()`, with column names as arguments.|
+|*GroupExpression*|scalar| :heavy_check_mark:|A scalar expression that can reference the input data. The output will have as many records as there are distinct values of all the group expressions.|
+::: moniker-end
+
+::: moniker range="microsoft-fabric || azure-data-explorer || azure-monitor || microsoft-sentinel"
 ## Parameters
 
 |Name|Type|Required|Description|
@@ -36,6 +47,7 @@ Produces a table that aggregates the content of the input table.
 > * If *GroupExpression* is not provided, the output will be a single (empty) row.
 > * If *GroupExpression* is provided, the output will have no rows.
 
+
 ### Supported parameters
 
   |Name  |Description  |
@@ -43,6 +55,8 @@ Produces a table that aggregates the content of the input table.
   |`hint.num_partitions` |Specifies the number of partitions used to share the query load on cluster nodes. See [shuffle query](shuffle-query.md)  |
   |`hint.shufflekey=<key>` |The `shufflekey` query shares the query load on cluster nodes, using a key to partition data. See [shuffle query](shuffle-query.md) |
   |`hint.strategy=shuffle` |The `shuffle` strategy query shares the query load on cluster nodes, where each node will process one partition of the data. See [shuffle query](shuffle-query.md)  |
+
+::: moniker-end
 
 ## Returns
 
@@ -122,6 +136,7 @@ StormEvents
 |---|---|
 | 01:08:00 | 11:55:00 |
 
+::: moniker range="microsoft-fabric || azure-data-explorer || azure-monitor || microsoft-sentinel"
 ### Distinct count
 
 Create a row for each continent, showing a count of the cities in which activities occur. Because there are few values for "continent", no grouping function is needed in the 'by' clause:
@@ -272,3 +287,5 @@ range x from 1 to 2 step 1
 |set_y|set_y1|
 |---|---|
 |[5.0]|[5.0]|
+
+::: moniker-end

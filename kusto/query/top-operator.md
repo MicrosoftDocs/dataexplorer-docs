@@ -49,6 +49,8 @@ The below table shows only the relevant column. Run the query above to see more 
 |422|...|
 |200|...|
 
+::: moniker range="microsoft-fabric || azure-data-explorer || azure-monitor || microsoft-sentinel"
 ## Related content
 
 * Use [top-nested](top-nested-operator.md) operator to produce hierarchical (nested) top results.
+::: moniker-end

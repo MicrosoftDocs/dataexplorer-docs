@@ -93,8 +93,10 @@ StormEvents
 | where * has "cow"
 ```
 
+::: moniker range="microsoft-fabric || azure-data-explorer || azure-monitor || microsoft-sentinel"
 ## Related content
 
 * [String operators](datatypes-string-operators.md)
 * [Numerical operators](numerical-operators.md)
 * [Logical operators](logical-operators.md)
+::: moniker-end
