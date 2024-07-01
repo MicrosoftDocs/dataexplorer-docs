@@ -3,7 +3,8 @@ title: Query consistency
 description: This article describes Query consistency.
 ms.reviewer: orspodek
 ms.topic: reference
-ms.date: 05/31/2023
+ms.date: 07/01/2024
+monikerRange: "azure-data-explorer"
 ---
 # Query consistency
 

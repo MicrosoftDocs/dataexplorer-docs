@@ -3,7 +3,8 @@ title: .show table policy sharding command
 description: Learn how to use the `.show table policy sharding` command to show the table's sharding policy.
 ms.reviewer: yonil
 ms.topic: reference
-ms.date: 05/24/2023
+ms.date: 07/01/2024
+monikerRange: "azure-data-explorer"
 ---
 # .show table policy sharding command
 

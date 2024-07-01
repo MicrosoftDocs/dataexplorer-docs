@@ -3,7 +3,8 @@ title:  .alter-merge table policy streamingingestion command
 description: Learn how to use the `.alter-merge table policy streamingingestion` command to change the table's streaming ingestion policy. 
 ms.reviewer: yonil
 ms.topic: reference
-ms.date: 06/04/2023
+ms.date: 07/01/2024
+monikerRange: "azure-data-explorer"
 ---
 # .alter-merge table policy streamingingestion command
 

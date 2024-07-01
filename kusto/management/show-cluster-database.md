@@ -3,7 +3,8 @@ title: .show cluster databases command
 description: Learn how to use the `.show cluster databases` command to show the databases attached to the invoked cluster.
 ms.reviewer: orspodek
 ms.topic: reference
-ms.date: 05/22/2023
+ms.date: 07/01/2024
+monikerRange: "azure-data-explorer"
 ---
 # .show cluster databases command
 

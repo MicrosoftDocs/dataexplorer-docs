@@ -3,7 +3,8 @@ title: .show extents
 description: Learn how to use the `.show extents` command to show the extents for a specified scope.
 ms.reviewer: orspodek
 ms.topic: reference
-ms.date: 05/24/2023
+ms.date: 07/01/2024
+monikerRange: "azure-data-explorer"
 ---
 
 # .show extents

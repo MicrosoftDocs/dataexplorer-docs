@@ -892,7 +892,7 @@ items:
             href: streaming-ingestion-statistics.md
           - name: .show table data statistics
             href: show-table-data-statistics.md
-  - name: Advanced data management
+  - name: Advanced data management 
     items:
       - name: Clear cached external artifacts
         href: clear-external-artifacts-cache-command.md
