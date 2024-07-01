@@ -3,7 +3,8 @@ title:  Follower commands
 description: Learn how to use follower commands to manage your follower configuration.
 ms.reviewer: orspodek
 ms.topic: reference
-ms.date: 02/21/2023
+ms.date: 07/01/2024
+monikerRange: "azure-data-explorer"
 ---
 # Follower commands
 

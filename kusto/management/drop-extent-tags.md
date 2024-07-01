@@ -3,7 +3,8 @@ title: .drop table extent tags command
 description: Learn how to use the `.drop table extent tags` command to drop extent tags from a specified table in a database.
 ms.reviewer: orspodek
 ms.topic: reference
-ms.date: 05/15/2023
+ms.date: 07/01/2024
+monikerRange: "azure-data-explorer"
 ---
 
 # .drop table extent tags

@@ -3,7 +3,8 @@ title: .drop workload_group command
 description: Learn how to use the `.drop workload_group` command to drop a workload group.
 ms.reviewer: yonil
 ms.topic: reference
-ms.date: 05/15/2023
+ms.date: 07/01/2024
+monikerRange: "azure-data-explorer"
 ---
 # .drop workload_group command
 

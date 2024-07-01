@@ -3,7 +3,8 @@ title: .show plugins command
 description: Learn how to use the `.show plugins` command to list all plugins of the cluster.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 05/23/2023
+ms.date: 07/01/2024
+monikerRange: "azure-data-explorer"
 ---
 # .show plugins command
 
