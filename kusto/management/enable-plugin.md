@@ -3,7 +3,8 @@ title: .enable plugin command
 description: Learn how to use the `.enable plugin` command to enable a plugin.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 05/24/2023
+ms.date: 07/01/2024
+monikerRange: "azure-data-explorer"
 ---
 # .enable plugin command
 

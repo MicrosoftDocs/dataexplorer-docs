@@ -3,7 +3,8 @@ title: Workload groups
 description: Learn how to use workload groups to govern incoming requests to the cluster.
 ms.reviewer: yonil
 ms.topic: reference
-ms.date: 11/27/2023
+ms.date: 7/1/2024
+monikerRange: "azure-data-explorer"
 ---
 # Workload groups
 

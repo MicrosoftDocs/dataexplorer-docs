@@ -3,7 +3,8 @@ title:  Extents (data shards)
 description:  This article describes Extents (data shards).
 ms.reviewer: orspodek
 ms.topic: reference
-ms.date: 11/15/2023
+ms.date: 07/01/2024
+monikerRange: "azure-data-explorer"
 ---
 # Extents (data shards)
 

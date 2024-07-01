@@ -3,7 +3,8 @@ title: .disable plugin command
 description: Learn how to use the `.disable plugin` command to disable a plugin. 
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 05/24/2023
+ms.date: 07/01/2024
+monikerRange: "azure-data-explorer"
 ---
 # .disable plugin command
 

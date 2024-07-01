@@ -3,7 +3,8 @@ title:  Extent tags
 description: Learn how to create and use extent tags.
 ms.reviewer: orspodek
 ms.topic: reference
-ms.date: 11/15/2023
+ms.date: 07/01/2024
+monikerRange: "azure-data-explorer"
 ---
 # Extent tags
 
