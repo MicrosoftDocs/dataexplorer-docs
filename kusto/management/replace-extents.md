@@ -3,7 +3,8 @@ title: .replace extents command
 description: Learn how to use the `.replace extents` command to move extents from a source table to a destination table.
 ms.reviewer: orspodek
 ms.topic: reference
-ms.date: 05/24/2023
+ms.date: 07/01/2024
+monikerRange: "azure-data-explorer"
 ---
 # .replace extents command
 
