@@ -3,7 +3,8 @@ title: Query consistency policy
 description: Learn how to use the query consistency policy to control the consistency mode of queries.
 ms.reviewer: yonil
 ms.topic: reference
-ms.date: 11/27/2023
+ms.date: 07/01/2024
+monikerRange: "azure-data-explorer"
 ---
 # Query consistency policy
 
