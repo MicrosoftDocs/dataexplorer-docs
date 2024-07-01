@@ -1,6 +1,6 @@
 ---
 title:  Request properties
-description: This article describes request properties in Azure Data Explorer.
+description: This article describes request properties.
 ms.reviewer: orspodek
 ms.topic: reference
 ms.date: 12/19/2023

@@ -1,6 +1,6 @@
 ---
 title:  Kusto R SDK
-description: This article describes Kusto R SDK in Azure Data Explorer.
+description: This article describes Kusto R SDK.
 ms.reviewer: orspodek
 ms.topic: reference
 ms.date: 04/19/2023
