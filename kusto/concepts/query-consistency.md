@@ -8,6 +8,8 @@ monikerRange: "azure-data-explorer"
 ---
 # Query consistency
 
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)]
+
 Query consistency refers to how queries and updates are synchronized. There are two supported modes of query consistency:
 
 * [Strong consistency](#use-cases-for-strong-consistency): Strong consistency ensures immediate access to the most recent updates, such as data appends, deletions, and schema modifications. Strong consistency is the default consistency mode. Due to synchronization, this consistency mode performs slightly less well than weak consistency mode in terms of concurrency.
