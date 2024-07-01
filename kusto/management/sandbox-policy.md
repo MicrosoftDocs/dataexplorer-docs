@@ -3,7 +3,8 @@ title:  Sandbox policy
 description:  This article describes Sandbox policy.
 ms.reviewer: orspodek
 ms.topic: reference
-ms.date: 04/25/2023
+ms.date: 07/01/2024
+monikerRange: "azure-data-explorer"
 ---
 # Sandbox policy
 

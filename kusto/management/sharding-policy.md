@@ -3,7 +3,8 @@ title: Data sharding policy
 description: Learn how to use the data sharding policy to define if and how extents in the Azure Data Explorer cluster are created.
 ms.reviewer: orspodek
 ms.topic: reference
-ms.date: 05/24/2023
+ms.date: 07/01/2024
+monikerRange: "azure-data-explorer"
 ---
 # Data sharding policy
 

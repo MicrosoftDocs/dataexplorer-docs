@@ -3,7 +3,8 @@ title: .delete policy managed_identity command
 description: Learn how to use the `.delete policy managed_identity` command to delete the ManagedIdentity policy of a cluster or a specified database.
 ms.reviewer: slneimer
 ms.topic: reference
-ms.date: 11/30/2023
+ms.date: 07/01/2024
+monikerRange: "azure-data-explorer"
 ---
 # .delete policy managed_identity command
 

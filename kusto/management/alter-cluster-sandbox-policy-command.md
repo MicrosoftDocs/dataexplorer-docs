@@ -3,7 +3,8 @@ title:  .alter cluster policy sandbox command
 description: Learn how to use the `.alter cluster policy sandbox` command to change the cluster sandbox policy.
 ms.reviewer: yonil
 ms.topic: reference
-ms.date: 05/25/2023
+ms.date: 07/01/2024
+monikerRange: "azure-data-explorer"
 ---
 # .alter cluster policy sandbox command
 

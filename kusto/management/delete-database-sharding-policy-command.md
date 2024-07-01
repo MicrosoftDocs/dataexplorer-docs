@@ -3,7 +3,8 @@ title: .delete database policy sharding command
 description: Learn how to use the `.delete database policy sharding` command to delete the database sharding policy.
 ms.reviewer: yonil
 ms.topic: reference
-ms.date: 05/24/2023
+ms.date: 07/01/2024
+monikerRange: "azure-data-explorer"
 ---
 # .delete database policy sharding command
 

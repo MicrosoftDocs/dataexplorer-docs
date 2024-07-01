@@ -3,7 +3,8 @@ title: .alter table policy streamingingestion command
 description: Learn how to use the `.alter table policy streamingingestion` command to change the table streaming policy ingestion.
 ms.reviewer: yonil
 ms.topic: reference
-ms.date: 06/05/2023
+ms.date: 07/01/2024
+monikerRange: "azure-data-explorer"
 ---
 # .alter table policy streamingingestion command
 

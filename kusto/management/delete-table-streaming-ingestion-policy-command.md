@@ -3,7 +3,8 @@ title: .delete table policy streamingingestion command
 description: Learn how to use the `.delete table policy streamingingestion` command to delete a table's streaming ingestion policy.
 ms.reviewer: yonil
 ms.topic: reference
-ms.date: 05/24/2023
+ms.date: 07/01/2024
+monikerRange: "azure-data-explorer"
 ---
 # .delete table policy streamingingestion command
 

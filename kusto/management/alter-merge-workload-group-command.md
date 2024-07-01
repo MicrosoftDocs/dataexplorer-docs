@@ -3,8 +3,8 @@ title:  .alter-merge workload_group command
 description: Learn how to use the `.alter-merge workload_group` command to alter a workload group.
 ms.reviewer: yonil
 ms.topic: reference
-ms.date: 06/04/2023
-
+ms.date: 07/01/2024
+monikerRange: "azure-data-explorer"
 ---
 # .alter-merge workload_group command
 

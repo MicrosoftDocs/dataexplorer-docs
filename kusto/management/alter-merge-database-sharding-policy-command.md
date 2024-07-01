@@ -3,7 +3,8 @@ title:  .alter-merge database policy sharding command
 description: Learn how to use the `.alter-merge database policy sharding` command to change the database sharding policy.
 ms.reviewer: yonil
 ms.topic: reference
-ms.date: 04/20/2023
+ms.date: 07/01/2024
+monikerRange: "azure-data-explorer"
 ---
 # .alter-merge database policy sharding command
 
