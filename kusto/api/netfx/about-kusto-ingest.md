@@ -1,6 +1,6 @@
 ---
 title:  Kusto Ingest library overview
-description: This article describes the Kusto Ingest client library in Azure Data Explorer.
+description: This article describes the Kusto Ingest client library.
 ms.reviewer: orspodek
 ms.topic: reference
 ms.date: 10/18/2023
@@ -39,13 +39,13 @@ To ingest data into existing tables, you must have at least Database Ingestor or
 
 ## Queued ingestion
 
-The queued ingest client minimizes the dependencies of client code on the Azure Data Explorer ingestion service. In this mode, ingestion is accomplished by submitting an ingestion message to an Azure queue, which is subsequently processed by the Azure Data Explorer ingestion service. If any intermediate storage items are required, the ingest client generates them using the resources provided by the ingestion service.
+The queued ingest client minimizes the dependencies of client code on the ingestion service. In this mode, ingestion is accomplished by submitting an ingestion message to an Azure queue, which is subsequently processed by the ingestion service. If any intermediate storage items are required, the ingest client generates them using the resources provided by the ingestion service.
 
-Queued ingestion allows the ingestion requests to be persisted when the Azure Data Explorer ingestion service is unavailable, and lets the ingestion service manage the ingestion load on your cluster. This method provides a mechanism to track the progress and outcome of every ingestion request, retries the ingestion on transient failures, and improves performance by efficient and controllable aggregation on inbound data.
+Queued ingestion allows the ingestion requests to be persisted when the ingestion service is unavailable, and lets the ingestion service manage the ingestion load on your cluster. This method provides a mechanism to track the progress and outcome of every ingestion request, retries the ingestion on transient failures, and improves performance by efficient and controllable aggregation on inbound data.
  
 ## Direct ingestion
 
-The direct ingest client requires direct interaction with the Azure Data Explorer ingestion service. In this mode, the ingestion service doesn't moderate or manage the data. Every ingestion request is translated into a command that is executed directly on the service. When synchronous methods are used, the method completion indicates the end of the ingestion operation.
+The direct ingest client requires direct interaction with the ingestion service. In this mode, the ingestion service doesn't moderate or manage the data. Every ingestion request is translated into a command that is executed directly on the service. When synchronous methods are used, the method completion indicates the end of the ingestion operation.
 
 Direct ingestion has low latency and doesn't involve aggregation. However, the client code has to implement retry or error handling logic, and the client code could overwhelm the cluster with requests as it's unaware of the capacity.
 
