@@ -86,5 +86,9 @@ Example:
 In the example, the last 28 days of data will be on the cluster SSD and the additional 28 days of data will be stored in Azure blob storage. You can run queries on the full 56 days of data.
 
 ## Related content
-<!-- //TODO make this an ADX moniker pivot -->
+
+::: moniker range="azure-data-explorer"
+
 * [Hot windows for infrequent queries over cold data](/azure/data-explorer/hot-windows.md)
+
+::: moniker-end

@@ -193,14 +193,10 @@ These visualizations have the following conceptual model:
   * If the x-axis is an array, the values of each y-axis should also be an array of a similar length, with each y-axis occurring in a single column.
 * Zero or more columns in the table represent a unique set of dimensions that group together the measures. These columns can be specified by the `series` property, or the user agent will pick them automatically from the columns that are otherwise unspecified.
 ::: moniker-end
-<!-- is this correct? confirm both where the moniker end was placed and the addition of moniker for related content-->
-::: moniker range="azure-data-explorer || azure-monitor || microsoft-sentinel"
+
+::: moniker range="microsoft-fabric || azure-data-explorer"
 
 ## Related content
-
-::: moniker-end
-
-::: moniker range="azure-data-explorer"
 
 * [Add a query visualization in the web UI](/azure/data-explorer/add-query-visualization)
 * [Customize dashboard visuals](/azure/data-explorer/dashboard-customize-visuals)

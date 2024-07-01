@@ -114,7 +114,6 @@ StormEvents
 :::image type="content" source="media/visualization-timechart/ysplit-panels.png" alt-text="Screenshot of the time chart query result with the ysplit panels property." lightbox="media/visualization-timechart/ysplit-panels.png":::
 
 ## Related content
-<!-- //TODO put in moniker pivots -->
 
 * [Add a query visualization in the web UI](/azure/data-explorer/add-query-visualization)
 
