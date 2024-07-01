@@ -4,7 +4,7 @@ description:  This article describes how to visualize data using the Plotly grap
 ms.reviewer: adieldar
 ms.topic: reference
 ms.date: 08/13/2023
-monikerRange: "microsoft-fabric || azure-data-explorer || azure-monitor"
+monikerRange: "microsoft-fabric || azure-data-explorer || azure-monitor || microsoft-sentinel"
 ---
 # Plotly (preview)
 
@@ -49,7 +49,7 @@ OccupancyDetection
 
 ::: moniker-end
 
-::: moniker range="azure-monitor"
+::: moniker range="azure-monitor || microsoft-sentinel"
 
 The Plotly graphics library supports ~80 chart types including basic charts, scientific, statistical, financial, maps, 3D, animations, and more. To render a Plotly visual in KQL, the query must generate a table with a single string cell containing [Plotly JSON](https://plotly.com/chart-studio-help/json-chart-schema/). 
 
@@ -57,7 +57,7 @@ Since python is not available in this service, you create this Plotly JSON using
 
 ::: moniker-end
 
-::: moniker range="microsoft-fabric || azure-data-explorer || azure-monitor"
+::: moniker range="microsoft-fabric || azure-data-explorer || azure-monitor || microsoft-sentinel"
 
 ## Use a preprepared Plotly template
 

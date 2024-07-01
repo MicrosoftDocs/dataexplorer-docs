@@ -4,7 +4,7 @@ description:  This article describes the column chart visualization.
 ms.reviewer: alexans
 ms.topic: reference
 ms.date: 08/02/2023
-monikerRange: "microsoft-fabric || azure-data-explorer || azure-monitor"
+monikerRange: "microsoft-fabric || azure-data-explorer || azure-monitor || microsoft-sentinel"
 ---
 # Column chart
 
@@ -61,7 +61,7 @@ This visualization supports splitting into multiple y-axis values:
 
 ::: moniker-end
 
-::: moniker range="azure-monitor"
+::: moniker range="azure-monitor || microsoft-sentinel"
 
 ### Supported properties
 
@@ -142,7 +142,7 @@ StormEvents
 
 ::: moniker-end
 
-::: moniker range="azure-monitor"
+::: moniker range="azure-monitor || microsoft-sentinel"
 
 ## Example
 

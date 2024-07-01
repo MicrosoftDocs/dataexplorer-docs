@@ -4,7 +4,7 @@ description: Learn how to use the hll() and tdigest() functions to partition and
 ms.reviewer: alexans
 ms.topic: reference
 ms.date: 03/02/2023
-monikerRange: "microsoft-fabric || azure-data-explorer || azure-monitor"
+monikerRange: "microsoft-fabric || azure-data-explorer || azure-monitor || microsoft-sentinel"
 ---
 # Using hll() and tdigest()
 
@@ -144,7 +144,7 @@ To solve this problem, newly added data may be added to a temp table as `hll` or
 
 ::: moniker-end
 
-::: moniker range="azure-monitor"
+::: moniker range="azure-monitor || microsoft-sentinel"
 
 To solve this problem, newly added data may be added to a temp table as `hll` or `tdigest` values using [`hll()`](hll-aggregation-function.md) when the required operation is `dcount`. In this case, the intermediate results of `dcount` are saved into another dataset, which should be smaller than the target large one.
 

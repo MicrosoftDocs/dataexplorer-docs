@@ -4,7 +4,7 @@ description:  This article describes the scatter chart visualization.
 ms.reviewer: alexans
 ms.topic: reference
 ms.date: 01/29/2023
-monikerRange: "microsoft-fabric || azure-data-explorer || azure-monitor"
+monikerRange: "microsoft-fabric || azure-data-explorer || azure-monitor || microsoft-sentinel"
 ---
 # Scatter chart
 
@@ -51,7 +51,7 @@ All properties are optional.
 
 ::: moniker-end
 
-::: moniker range="azure-monitor"
+::: moniker range="azure-monitor || microsoft-sentinel"
 
 |*PropertyName*|*PropertyValue*                                                                   |
 |--------------|----------------------------------------------------------------------------------|

@@ -4,7 +4,7 @@ description: Learn how to use the find operator to find rows that match a predic
 ms.reviewer: alexans
 ms.topic: reference
 ms.date: 03/14/2023
-monikerRange: "microsoft-fabric || azure-data-explorer || azure-monitor"
+monikerRange: "microsoft-fabric || azure-data-explorer || azure-monitor || microsoft-sentinel"
 ---
 # find operator
 
@@ -24,7 +24,7 @@ find in (cluster('cluster_name').database('MyDB*').*) where Fruit == "apple"
 
 ::: moniker-end
 
-::: moniker range="azure-monitor"
+::: moniker range="azure-monitor || microsoft-sentinel"
 
 ```kusto
 find in (Table1, Table2, Table3) where Fruit=="apple"
@@ -56,7 +56,7 @@ find in (Table1, Table2, Table3) where Fruit=="apple"
 
 ::: moniker-end
 
-::: moniker range="azure-monitor"
+::: moniker range="azure-monitor || microsoft-sentinel"
 
 * `withsource=`*ColumnName*: Optional. By default, the output will include a column called *source_* whose values indicate which source table contributed each row. If specified, *ColumnName* will be used instead of *source_*.
 * *Predicate*: A `boolean` [expression](scalar-data-types/bool.md) over the columns of the input tables *Table* [`,` *Table*, ...]. It's evaluated for each row in each input table. For more information, see  [predicate-syntax details](find-operator.md#predicate-syntax).
@@ -183,7 +183,7 @@ where * has "Kusto"
 
 ::: moniker-end
 
-::: moniker range="azure-monitor"
+::: moniker range="azure-monitor || microsoft-sentinel"
 
 ### Term lookup across all tables
 

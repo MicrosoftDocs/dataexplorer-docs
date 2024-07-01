@@ -4,7 +4,7 @@ description: Learn how to use the render operator to instruct the user agent to 
 ms.reviewer: alexans
 ms.topic: reference
 ms.date: 08/07/2023
-monikerRange: "microsoft-fabric || azure-data-explorer || azure-monitor"
+monikerRange: "microsoft-fabric || azure-data-explorer || azure-monitor || microsoft-sentinel"
 ---
 # render operator
 
@@ -75,7 +75,7 @@ three kinds of columns:
 
 ::: moniker-end
 
-::: moniker range="azure-monitor"
+::: moniker range="azure-monitor || microsoft-sentinel"
 
 |*Visualization*     |Description| Illustration |
 |--------------------|----------|---------|
@@ -134,7 +134,7 @@ three kinds of columns:
 
 ::: moniker-end
 
-::: moniker range="azure-monitor"
+::: moniker range="azure-monitor || microsoft-sentinel"
 
 |*PropertyName*|*PropertyValue*                                                                   |
 |--------------|----------------------------------------------------------------------------------|
@@ -194,7 +194,7 @@ These visualizations have the following conceptual model:
 * Zero or more columns in the table represent a unique set of dimensions that group together the measures. These columns can be specified by the `series` property, or the user agent will pick them automatically from the columns that are otherwise unspecified.
 ::: moniker-end
 <!-- is this correct? confirm both where the moniker end was placed and the addition of moniker for related content-->
-::: moniker range="azure-data-explorer || azure-monitor"
+::: moniker range="azure-data-explorer || azure-monitor || microsoft-sentinel"
 
 ## Related content
 
@@ -209,7 +209,7 @@ These visualizations have the following conceptual model:
 
 ::: moniker-end
 
-::: moniker range="azure-monitor"
+::: moniker range="azure-monitor || microsoft-sentinel"
 
 > [!NOTE]
 > The data model of the render operator looks at the tabular data as if it has

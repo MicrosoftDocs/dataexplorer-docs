@@ -4,7 +4,7 @@ description: Learn how to use and understand null values.
 ms.reviewer: alexans
 ms.topic: reference
 ms.date: 11/13/2023
-monikerRange: "microsoft-fabric || azure-data-explorer || azure-monitor"
+monikerRange: "microsoft-fabric || azure-data-explorer || azure-monitor || microsoft-sentinel"
 ---
 # Null values
 
@@ -188,7 +188,7 @@ T
 
 ::: moniker-end
 
-::: moniker range="azure-monitor"
+::: moniker range="azure-monitor || microsoft-sentinel"
 
 > [!NOTE]
 > Kusto doesn't offer a way to constrain a table's column from having null values. In other words, there's no equivalent to SQL's `NOT NULL` constraint.

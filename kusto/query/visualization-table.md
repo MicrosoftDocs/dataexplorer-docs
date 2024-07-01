@@ -4,7 +4,7 @@ description:  This article describes the table visualization.
 ms.reviewer: alexans
 ms.topic: reference
 ms.date: 08/03/2022
-monikerRange: "microsoft-fabric || azure-data-explorer || azure-monitor"
+monikerRange: "microsoft-fabric || azure-data-explorer || azure-monitor || microsoft-sentinel"
 ---
 # Table
 
@@ -49,7 +49,7 @@ All properties are optional.
 
 ::: moniker-end
 
-::: moniker range="azure-monitor"
+::: moniker range="azure-monitor || microsoft-sentinel"
 
 |*PropertyName*|*PropertyValue*                                                                   |
 |--------------|----------------------------------------------------------------------------------|

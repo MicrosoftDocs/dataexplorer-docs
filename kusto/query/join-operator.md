@@ -5,7 +5,7 @@ ms.reviewer: alexans
 ms.topic: reference
 ms.date: 08/16/2023
 ms.localizationpriority: high 
-monikerRange: "microsoft-fabric || azure-data-explorer || azure-monitor"
+monikerRange: "microsoft-fabric || azure-data-explorer || azure-monitor || microsoft-sentinel"
 ---
 # join operator
 
@@ -49,7 +49,7 @@ The following image provides a visual representation of the operation performed 
 
 ::: moniker-end
 
-::: moniker range="azure-monitor"
+::: moniker range="azure-monitor || microsoft-sentinel"
 
 |Name |Values |Description |
 |---|---|---|

@@ -4,7 +4,7 @@ description:  This article describes union operator.
 ms.reviewer: alexans
 ms.topic: reference
 ms.date: 02/13/2020
-monikerRange: "microsoft-fabric || azure-data-explorer || azure-monitor"
+monikerRange: "microsoft-fabric || azure-data-explorer || azure-monitor || microsoft-sentinel"
 ---
 # union operator
 
@@ -41,7 +41,7 @@ Takes two or more tables and returns the rows of all of them.
 
 ::: moniker-end
 
-::: moniker range="azure-monitor"
+::: moniker range="azure-monitor || microsoft-sentinel"
 
 |Name|Type|Required|Description|
 |--|--|--|--|

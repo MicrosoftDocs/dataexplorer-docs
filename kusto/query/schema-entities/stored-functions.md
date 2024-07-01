@@ -4,11 +4,11 @@ description:  This article describes Stored functions.
 ms.reviewer: orspodek
 ms.topic: reference
 ms.date: 06/05/2023
-monikerRange: "azure-data-explorer || azure-monitor"
+monikerRange: "microsoft-fabric || azure-data-explorer || azure-monitor || microsoft-sentinel"
 ---
 # Stored functions
 
-::: moniker range="azure-data-explorer || azure-monitor"
+::: moniker range="microsoft-fabric || azure-data-explorer || azure-monitor || microsoft-sentinel"
 
 Functions are reusable queries or query parts. Functions can be stored as database entities, similar to tables, called *stored functions*. Alternatively, functions can be created in an ad-hoc fashion with a [let statement](../let-statement.md), called *query-defined functions*. For more information, see [user-defined functions](../functions/user-defined-functions.md).
 
@@ -19,7 +19,7 @@ To create and manage stored functions, see the [Stored functions management over
 
 ::: moniker-end
 
-::: moniker range="azure-monitor"
+::: moniker range="azure-monitor || microsoft-sentinel"
 
 For more information on working with functions in Log Analytics, see [Functions in Azure Monitor log queries](/azure/azure-monitor/logs/functions).
 

@@ -4,7 +4,7 @@ description: Learn how to use the externaldata operator to return a data table o
 ms.reviewer: alexans
 ms.topic: reference
 ms.date: 12/12/2022
-monikerRange: "microsoft-fabric || azure-data-explorer || azure-monitor"
+monikerRange: "microsoft-fabric || azure-data-explorer || azure-monitor || microsoft-sentinel"
 ---
 # externaldata operator
 
@@ -20,7 +20,7 @@ The `externaldata` operator returns a table whose schema is defined in the query
 
 ::: moniker-end
 
-::: moniker range="azure-monitor"
+::: moniker range="azure-monitor || microsoft-sentinel"
 
 > [!NOTE]
 > Use the `externaldata` operator to retrieve small reference tables of up to 100 MB from an external storage artifact. The operator is not designed for large data volumes. To retrieve large volumes of external data, we recommend [ingesting the external data into Log Analytics as custom logs](/azure/azure-monitor/logs/tutorial-custom-logs).

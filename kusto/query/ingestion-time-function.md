@@ -4,7 +4,7 @@ description: Learn how to use the ingestion_time() function to return the approx
 ms.reviewer: alexans
 ms.topic: reference
 ms.date: 12/21/2023
-monikerRange: "microsoft-fabric || azure-data-explorer || azure-monitor"
+monikerRange: "microsoft-fabric || azure-data-explorer || azure-monitor || microsoft-sentinel"
 ---
 # ingestion_time()
 
@@ -16,7 +16,7 @@ This function must be used in context of a table for which the [IngestionTime po
 
 ::: moniker-end
 
-::: moniker range="azure-monitor"
+::: moniker range="azure-monitor || microsoft-sentinel"
 
 Retrieves the `datetime` when the record was ingested and ready for query.
 
