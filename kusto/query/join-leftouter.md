@@ -4,6 +4,7 @@ description: Learn how to use the leftouter join flavor to merge the rows of two
 ms.reviewer: alexans
 ms.topic: reference
 ms.date: 06/18/2023
+monikerRange: "microsoft-fabric || azure-data-explorer || azure-monitor || microsoft-sentinel || azure-resource-graph"
 ---
 
 # leftouter join

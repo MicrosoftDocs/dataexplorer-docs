@@ -4,6 +4,7 @@ description: Learn how to use the where operator to filter a table to the subset
 ms.reviewer: alexans
 ms.topic: reference
 ms.date: 11/24/2022
+monikerRange: "microsoft-fabric || azure-data-explorer || azure-monitor || microsoft-sentinel || azure-resource-graph"
 ---
 # where operator
 

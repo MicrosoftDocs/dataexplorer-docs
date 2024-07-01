@@ -5,6 +5,7 @@ ms.reviewer: alexans
 ms.topic: reference
 ms.date: 11/13/2023
 ms.localizationpriority: high 
+monikerRange: "microsoft-fabric || azure-data-explorer || azure-monitor || microsoft-sentinel || azure-resource-graph"
 ---
 # summarize operator
 

@@ -4,6 +4,7 @@ description: Learn how to use the top operator to return the first specified num
 ms.reviewer: alexans
 ms.topic: reference
 ms.date: 01/24/2024
+monikerRange: "microsoft-fabric || azure-data-explorer || azure-monitor || microsoft-sentinel || azure-resource-graph"
 ---
 # top operator
 

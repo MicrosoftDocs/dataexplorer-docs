@@ -4,6 +4,7 @@ description: Learn how to use the mv-expand operator to expand multi-value dynam
 ms.reviewer: alexans
 ms.topic: reference
 ms.date: 12/03/2023
+monikerRange: "microsoft-fabric || azure-data-explorer || azure-monitor || microsoft-sentinel || azure-resource-graph"
 ---
 # mv-expand operator
 
