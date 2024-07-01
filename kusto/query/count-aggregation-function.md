@@ -4,6 +4,7 @@ description: Learn how to use the count() function to count the number of record
 ms.reviewer: alexans
 ms.topic: reference
 ms.date: 11/13/2023
+monikerRange: "microsoft-fabric || azure-data-explorer || azure-monitor || microsoft-sentinel || azure-resource-graph"
 ---
 # count() (aggregation function)
 
