@@ -52,6 +52,9 @@ StormEvents
 |TENNESSEE|Heat|
 |CALIFORNIA|Wildfire|
 
+::: moniker range="microsoft-fabric || azure-data-explorer || azure-monitor || microsoft-sentinel"
+
 ## Related content
 
 If the group by keys are of high cardinalities, try `summarize by ...` with the [shuffle strategy](shuffle-query.md).
+::: moniker-end
