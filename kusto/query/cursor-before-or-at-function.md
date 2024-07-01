@@ -4,6 +4,7 @@ description: Learn how to use the cursor_before_or_at() function to compare the 
 ms.reviewer: alexans
 ms.topic: reference
 ms.date: 11/27/2020
+monikerRange: "microsoft-fabric || azure-data-explorer"
 ---
 # cursor_before_or_at()
 

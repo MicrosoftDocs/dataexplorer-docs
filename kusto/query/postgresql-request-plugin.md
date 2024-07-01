@@ -4,6 +4,7 @@ description: Learn how to use the postgresql_request plugin to send a SQL query 
 ms.reviewer: alexans
 ms.topic: reference
 ms.date: 05/08/2023
+monikerRange: "microsoft-fabric || azure-data-explorer"
 ---
 # postgresql_request plugin
 

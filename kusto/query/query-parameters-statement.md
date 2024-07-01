@@ -4,6 +4,7 @@ description: Learn how to use the query parameters declaration statement to para
 ms.reviewer: alexans
 ms.topic: reference
 ms.date: 08/01/2023
+monikerRange: "microsoft-fabric || azure-data-explorer"
 ---
 # Query parameters declaration statement
 
@@ -97,4 +98,3 @@ To learn how to provide the names and values of query parameters when using Kust
 
 To set the query parameters sent when making a request to the service,
 use the **Query parameters** "wrench" icon (`ALT` + `P`).
-

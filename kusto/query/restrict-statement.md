@@ -4,6 +4,7 @@ description: Learn how to use the restrict statement to limit tabular views that
 ms.reviewer: alexans
 ms.topic: reference
 ms.date: 03/12/2023
+monikerRange: "microsoft-fabric || azure-data-explorer"
 ---
 # Restrict statement
 

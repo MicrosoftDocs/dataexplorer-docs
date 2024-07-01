@@ -4,6 +4,7 @@ description: Learn how to use the cursor_after() function to compare the ingesti
 ms.reviewer: alexans
 ms.topic: reference
 ms.date: 11/27/2020
+monikerRange: "microsoft-fabric || azure-data-explorer"
 ---
 # cursor_after()
 

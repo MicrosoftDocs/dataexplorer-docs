@@ -4,6 +4,7 @@ description:  This article describes the card visualization.
 ms.reviewer: alexans
 ms.topic: reference
 ms.date: 01/24/2023
+monikerRange: "microsoft-fabric || azure-data-explorer"
 ---
 # Card
 

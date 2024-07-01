@@ -5,6 +5,7 @@ services: data-explorer
 ms.reviewer: zivc
 ms.topic: reference
 ms.date: 04/03/2023
+monikerRange: "microsoft-fabric || azure-data-explorer"
 ---
 # http_request plugin
 

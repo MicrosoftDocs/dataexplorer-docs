@@ -4,6 +4,7 @@ description:  This article describes the line chart visualization.
 ms.reviewer: alexans
 ms.topic: reference
 ms.date: 07/26/2023
+monikerRange: "microsoft-fabric || azure-data-explorer"
 ---
 # Line chart
 

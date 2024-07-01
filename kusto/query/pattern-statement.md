@@ -4,6 +4,7 @@ description: Learn how to use pattern statements to map string tuples to tabular
 ms.reviewer: alexans
 ms.topic: reference
 ms.date: 05/01/2023
+monikerRange: "microsoft-fabric || azure-data-explorer"
 ---
 
 # Pattern statement

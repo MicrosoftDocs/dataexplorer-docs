@@ -4,6 +4,7 @@ description: Learn how to use the cursor_current() function to return a string t
 ms.reviewer: alexans
 ms.topic: reference
 ms.date: 11/08/2022
+monikerRange: "microsoft-fabric || azure-data-explorer"
 ---
 # cursor_current()
 

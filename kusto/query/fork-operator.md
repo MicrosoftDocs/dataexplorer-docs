@@ -4,6 +4,7 @@ description: Learn how to use the fork operator to run multiple consumer operato
 ms.reviewer: alexans
 ms.topic: reference
 ms.date: 03/15/2023
+monikerRange: "microsoft-fabric || azure-data-explorer"
 ---
 # fork operator
 

@@ -4,6 +4,7 @@ description: Learn how to use the set statement to set a request property for th
 ms.reviewer: alexans
 ms.topic: reference
 ms.date: 12/14/2023
+monikerRange: "microsoft-fabric || azure-data-explorer"
 ---
 # Set statement
 
@@ -36,4 +37,3 @@ Request properties aren't formally a part of the Kusto Query Language and may be
 set querytrace;
 Events | take 100
 ```
-

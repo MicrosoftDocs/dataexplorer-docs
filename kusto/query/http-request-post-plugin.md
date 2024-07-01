@@ -5,10 +5,9 @@ services: data-explorer
 ms.reviewer: zivc
 ms.topic: reference
 ms.date: 04/03/2023
+monikerRange: "microsoft-fabric || azure-data-explorer"
 ---
 # http_request_post plugin
-
-::: moniker range="azure-data-explorer"
 
 The `http_request_post` plugin sends an HTTP POST request and converts the response into a table.
 
@@ -84,6 +83,3 @@ let uri='https://example.com/node/js/on/eniac';
 let headers=dynamic({'x-ms-correlation-vector':'abc.0.1.0', 'authorization':'bearer ...Azure-AD-bearer-token-for-target-endpoint...'});
 evaluate http_request_post(uri, headers)
 ```
-
-::: moniker-end
-

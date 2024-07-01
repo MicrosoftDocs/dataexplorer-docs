@@ -4,6 +4,7 @@ description: Learn how to use the mysql_request plugin to send a SQL query to a 
 ms.reviewer: alexans
 ms.topic: reference
 ms.date: 03/06/2023
+monikerRange: "microsoft-fabric || azure-data-explorer"
 ---
 # mysql_request plugin
 

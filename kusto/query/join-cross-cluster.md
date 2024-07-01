@@ -4,6 +4,7 @@ description: Learn how to perform the Cross-cluster join operation to join datas
 ms.reviewer: alexans
 ms.topic: reference
 ms.date: 07/03/2023
+monikerRange: "microsoft-fabric || azure-data-explorer"
 ---
 # Cross-cluster join
 

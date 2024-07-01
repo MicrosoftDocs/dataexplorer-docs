@@ -4,6 +4,7 @@ description: Learn how to use the extent_tags() function to return a dynamic arr
 ms.reviewer: alexans
 ms.topic: reference
 ms.date: 12/11/2022
+monikerRange: "microsoft-fabric || azure-data-explorer"
 ---
 # extent_tags()
 
