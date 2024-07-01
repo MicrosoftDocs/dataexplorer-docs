@@ -223,7 +223,7 @@ Event Grid ingestion is a pipeline that listens to Azure storage, and updates yo
 [Fluent Bit](https://fluentbit.io/) is an open-source agent that collects logs, metrics, and traces from various sources. It allows you to filter, modify, and aggregate event data before sending it to storage.
 
 * **Functionality:** Ingestion
-* **Ingestion type supported:** Batching, Streaming
+* **Ingestion type supported:** Batching
 * **Use cases:** Logs, Metrics, Traces
 * **Repository:** [fluent-bit Kusto Output Plugin](https://github.com/fluent/fluent-bit/tree/master/plugins/out_azure_kusto)
 * **Documentation:** [Ingest data with Fluent Bit into Azure Data Explorer](fluent-bit.md)
