@@ -3,7 +3,8 @@ title: .delete cluster policy sandbox command
 description: Learn how to use the `.delete cluster policy sandbox` command to delete the cluster sandbox policy.
 ms.reviewer: yonil
 ms.topic: reference
-ms.date: 06/13/2023
+ms.date: 07/01/2024
+monikerRange: "azure-data-explorer"
 ---
 # .delete cluster policy sandbox command
 

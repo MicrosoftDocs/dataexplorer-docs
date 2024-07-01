@@ -3,7 +3,8 @@ title: .show cluster policy callout command
 description: Learn how to use the `.show cluster policy callout` command to display a cluster's callout policy.
 ms.reviewer: yonil
 ms.topic: reference
-ms.date: 05/24/2023
+ms.date: 07/01/2024
+monikerRange: "azure-data-explorer"
 ---
 # .show cluster policy callout command
 

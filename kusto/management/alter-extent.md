@@ -3,7 +3,8 @@ title: .alter extent tags command
 description: Learn how to use the `.alter extent tags` command to change the extent tags.
 ms.reviewer: orspodek
 ms.topic: reference
-ms.date: 04/20/2023
+ms.date: 07/01/2024
+monikerRange: "azure-data-explorer"
 ---
 
 # .alter extent tags command
