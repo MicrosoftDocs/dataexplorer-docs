@@ -3,7 +3,7 @@ title: Database cursors
 description: Learn how to use database cursors to query a database multiple times.
 ms.reviewer: orspodek
 ms.topic: reference
-ms.date: 05/14/2023ms.date: 07/01/2024
+ms.date: 07/01/2024
 monikerRange: "azure-data-explorer"
 ---
 # Database cursors
