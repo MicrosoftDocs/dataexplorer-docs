@@ -1,6 +1,6 @@
 ---
 title:  Authentication over HTTPS
-description: This article describes Authentication over HTTPS in Azure Data Explorer.
+description: This article describes Authentication over HTTPS.
 ms.reviewer: orspodek
 ms.topic: reference
 ms.date: 06/28/2023

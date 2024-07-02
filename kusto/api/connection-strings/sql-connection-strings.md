@@ -1,9 +1,10 @@
 ---
 title:  SQL external table connection strings
-description: This article describes how to connect and authenticate to SQL external tables in Azure Data Explorer.
+description: This article describes how to connect and authenticate to SQL external tables.
 ms.reviewer: urishapira
 ms.topic: reference
-ms.date: 05/30/2024
+ms.date: 07/02/2024
+monikerRange: "azure-data-explorer || microsoft-fabric"
 ---
 # Azure SQL external table connection strings
 
@@ -26,17 +27,26 @@ The following table shows the supported authentication methods for each type of 
 > [!NOTE]
 > Where possible, the preferred authentication method is managed identity.
 
+:::moniker range="microsoft-fabric"
+| Authentication method | SQL Server | PostgreSQL | MySQL | Cosmos DB |
+|--|--|--|--|
+| [Microsoft Entra integrated (impersonation)](#azure-ad-integrated-impersonation) | :heavy_check_mark: | :x: | :x: | :heavy_check_mark: |
+| [Username and Password](#username-and-password) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
+::: moniker-end
+
+::: moniker range="azure-data-explorer"
 | Authentication method | SQL Server | PostgreSQL | MySQL | Cosmos DB |
 |--|--|--|--|
 | [Microsoft Entra integrated (impersonation)](#azure-ad-integrated-impersonation) | :heavy_check_mark: | :x: | :x: | :heavy_check_mark: |
 | [Managed identity](#managed-identity) | :heavy_check_mark: | :x: | :x: | :heavy_check_mark: |
 | [Username and Password](#username-and-password) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
+::: moniker-end
 
 <a name='azure-ad-integrated-impersonation'></a>
 
 ## Microsoft Entra integrated (impersonation)
 
-With this authentication method, the user or application authenticates via Microsoft Entra ID to Azure Data Explorer, and the same token is then used to access the SQL Server network endpoint. This method is supported for SQL Server and Cosmos DB.
+With this authentication method, the user or application authenticates via Microsoft Entra ID, and the same token is then used to access the SQL Server network endpoint. This method is supported for SQL Server and Cosmos DB.
 
 To use Microsoft Entra integrated authentication (impersonation), add `;Authentication="Active Directory Integrated"` to the SQL connection string.
 
@@ -44,9 +54,10 @@ To use Microsoft Entra integrated authentication (impersonation), add `;Authenti
 |--|
 |`"Server=tcp:myserver.database.windows.net,1433;Authentication=Active Directory Integrated;Initial Catalog=mydatabase;"`|
 
+::: moniker range="azure-data-explorer"
 ## Managed identity
 
-Azure Data Explorer makes requests on behalf of a managed identity and uses its identity to access resources. This method is supported for SQL Server and Cosmos DB.
+Your query environment makes requests on behalf of a managed identity and uses its identity to access resources. This method is supported for SQL Server and Cosmos DB.
 
 For a system-assigned managed identity, append `;Authentication="Active Directory Managed Identity"` to the connection string. For a user-assigned managed identity, append `;Authentication="Active Directory Managed Identity";User Id={object_id}` to the connection string.
 
@@ -54,6 +65,7 @@ For a system-assigned managed identity, append `;Authentication="Active Director
 |--|--|--|
 |System-assigned|`"Server=tcp:myserver.database.windows.net,1433;Authentication="Active Directory Managed Identity";Initial Catalog=mydatabase;"`|
 |User-assigned|`"Server=tcp:myserver.database.windows.net,1433;Authentication="Active Directory Managed Identity";User Id=9ca5bb85-1c1f-44c3-b33a-0dfcc7ec5f6b;Initial Catalog=mydatabase;"`|
+::: moniker-end
 
 ## Username and password
 
