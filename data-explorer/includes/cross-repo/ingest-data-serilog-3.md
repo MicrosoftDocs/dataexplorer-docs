@@ -1,6 +1,6 @@
 ---
 ms.topic: include
-ms.date: 02/18/2024
+ms.date: 07/02/2024
 ---
 
 ## Use Serilog in your ASP.NET Core application
