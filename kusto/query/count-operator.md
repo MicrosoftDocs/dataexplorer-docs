@@ -3,7 +3,8 @@ title:  count operator
 description: Learn how to use the count operator to return the number of records in the input record set.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 11/23/2022
+ms.date: 07/01/2024
+monikerRange: "microsoft-fabric || azure-data-explorer || azure-monitor || microsoft-sentinel || azure-resource-graph"
 ---
 # count operator
 

@@ -4,14 +4,16 @@ description: Learn how to use the count() function to count the number of record
 ms.reviewer: alexans
 ms.topic: reference
 ms.date: 11/13/2023
+monikerRange: "microsoft-fabric || azure-data-explorer || azure-monitor || microsoft-sentinel || azure-resource-graph"
 ---
 # count() (aggregation function)
 
 Counts the number of records per summarization group, or total if summarization is done without grouping.
 
 [!INCLUDE [ignore-nulls](../includes/ignore-nulls.md)]
-
+::: moniker range="microsoft-fabric || azure-data-explorer || azure-monitor || microsoft-sentinel"
 To only count records for which a predicate returns `true`, use [countif()](countif-aggregation-function.md).
+::: moniker-end
 
 [!INCLUDE [data-explorer-agg-function-summarize-note](../includes/agg-function-summarize-note.md)]
 
@@ -53,6 +55,8 @@ StormEvents
 |NEW YORK	|1750|
 |...|...|
 
+::: moniker range="microsoft-fabric || azure-data-explorer || azure-monitor || microsoft-sentinel"
 ## Related content
 
 * [bin_at()](bin-at-function.md#bin_at) rounds values down to a fixed-size bin, which can be used to aggregate data, such as by time unit.
+::: moniker-end
