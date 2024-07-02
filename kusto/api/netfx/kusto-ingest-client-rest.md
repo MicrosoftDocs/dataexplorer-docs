@@ -42,7 +42,7 @@ internal class IngestionResourcesSnapshot
 
 public static void IngestSingleFile(string file, string db, string table, string ingestionMappingRef)
 {
-    // Your Azure Data Explorer ingestion service URI, typically ingest-<your cluster name>.kusto.windows.net
+    // Your ingestion service URI, typically ingest-<your cluster name>.kusto.windows.net
     var dmServiceBaseUri = @"https://ingest-{serviceNameAndRegion}.kusto.windows.net";
     // 1. Authenticate the interactive user (or application) to access Kusto ingestion service
     var bearerToken = AuthenticateInteractiveUser(dmServiceBaseUri);
@@ -50,7 +50,7 @@ public static void IngestSingleFile(string file, string db, string table, string
     var ingestionResources = RetrieveIngestionResources(dmServiceBaseUri, bearerToken);
     // 2b. Retrieve Kusto identity token
     var identityToken = RetrieveKustoIdentityToken(dmServiceBaseUri, bearerToken);
-    // 3. Upload file to one of the blob containers we got from Azure Data Explorer.
+    // 3. Upload file to one of the blob containers.
     // This example uses the first one, but when working with multiple blobs,
     // one should round-robin the containers in order to prevent throttling
     var blobName = $"TestData{DateTime.UtcNow:yyyy-MM-dd_HH-mm-ss.FFF}";
@@ -100,7 +100,7 @@ internal static string AuthenticateInteractiveUser(string resource)
         .WithAuthority("https://login.microsoftonline.com/<appTenant>")
         .WithRedirectUri("<appRedirectUri>")
         .Build();
-    // Acquire user token for the interactive user for Azure Data Explorer:
+    // Acquire user token for the interactive user:
     var result = authClient.AcquireTokenInteractive(
         new[] { $"{resource}/.default" } // Define scopes
     ).ExecuteAsync().Result;

@@ -29,7 +29,6 @@ three kinds of columns:
   columns when that happens.
 
 ::: moniker range="azure-data-explorer"
-
 >[!NOTE]
 > There are some visualizations which are only available in Azure Data Explorer dashboards. For more information, see [Dashboard-specific visuals](/azure/data-explorer/dashboard-visuals). 
 ::: moniker-end
