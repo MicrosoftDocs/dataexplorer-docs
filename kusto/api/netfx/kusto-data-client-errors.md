@@ -1,6 +1,6 @@
 ---
 title:  Kusto.Data exceptions
-description: This article describes Kusto.Data exceptions in Azure Data Explorer.
+description: This article describes Kusto.Data exceptions.
 ms.reviewer: yogilad
 ms.topic: reference
 ms.date: 06/20/2022

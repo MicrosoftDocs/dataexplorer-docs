@@ -1,12 +1,11 @@
 ---
 title:  Kusto Python SDK
-description: This article describes Python SDK in Azure Data Explorer.
+description: This article describes Python SDK.
 ms.reviewer: orspodek
 ms.topic: reference
 ms.date: 06/20/2024
 ---
 # Kusto Python SDK
-
 The Kusto Python Client library lets you query your cluster using Python.
 The library is Python 2.x/3.x compatible. It supports all data types using the Python DB API interface.
 
