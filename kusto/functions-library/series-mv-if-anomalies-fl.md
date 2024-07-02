@@ -4,12 +4,8 @@ description:  This article describes the series_mv_if_anomalies_fl() user-define
 ms.reviewer: adieldar
 ms.topic: reference
 ms.date: 03/05/2023
-zone_pivot_group_filename: data-explorer/zone-pivot-groups.json
-zone_pivot_groups: kql-flavors-all
 ---
 # series_mv_if_anomalies_fl()
-
-::: zone pivot="azuredataexplorer, fabric"
 
 The function `series_mv_if_anomalies_fl()` is a [user-defined function (UDF)](../query/functions/user-defined-functions.md) that detects multivariate anomalies in series by applying [isolation forest model from scikit-learn](https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.IsolationForest.html). The function accepts a set of series as numerical dynamic arrays, the names of the features columns and the expected percentage of anomalies out of the whole series. The function builds an ensemble of isolation trees for each series and marks the points that are quickly isolated as anomalies.
 
@@ -192,10 +188,3 @@ normal_2d_with_anomalies
 
 You can see that on TS2 most of the anomalies occurring at 8am were detected using this multivariate model.
 
-::: zone-end
-
-::: zone pivot="azuremonitor"
-
-This feature isn't supported.
-
-::: zone-end

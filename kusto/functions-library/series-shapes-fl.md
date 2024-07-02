@@ -4,6 +4,7 @@ description:  This article describes the series_shapes_fl() user-defined functio
 ms.reviewer: adieldar
 ms.topic: reference
 ms.date: 03/05/2023
+monikerRange: "microsoft-fabric || azure-data-explorer || azure-monitor || microsoft-sentinel"
 ---
 # series_shapes_fl()
 

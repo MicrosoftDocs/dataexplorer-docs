@@ -4,6 +4,7 @@ description:  This article describes series_cosine_similarity_fl() user-defined 
 ms.reviewer: adieldar
 ms.topic: reference
 ms.date: 05/08/2023
+monikerRange: "microsoft-fabric || azure-data-explorer || azure-monitor || microsoft-sentinel"
 ---
 # series_cosine_similarity_fl()
 

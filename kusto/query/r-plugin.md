@@ -4,12 +4,11 @@ description: Learn how to use the R plugin (Preview) to run a user-defined funct
 ms.reviewer: adieldar
 ms.topic: reference
 ms.date: 04/27/2023
-zone_pivot_group_filename: data-explorer/zone-pivot-groups.json
-zone_pivot_groups: kql-flavors-all
+monikerRange: "azure-data-explorer"
 ---
 # R plugin (Preview)
 
-::: zone pivot="azuredataexplorer"
+::: moniker range="azure-data-explorer"
 
 The R plugin runs a user-defined function (UDF) using an R script.
 
@@ -215,10 +214,4 @@ Make sure that the archive's name (first value in pack pair) has the *.zip suffi
 
 ---
 
-::: zone-end
-
-::: zone pivot="azuremonitor, fabric"
-
-This capability isn't supported.
-
-::: zone-end
+::: moniker-end

@@ -4,6 +4,7 @@ description:  This article describes series_dot_product_fl() user-defined functi
 ms.reviewer: adieldar
 ms.topic: reference
 ms.date: 03/13/2023
+monikerRange: "microsoft-fabric || azure-data-explorer || azure-monitor || microsoft-sentinel"
 ---
 # series_dot_product_fl()
 

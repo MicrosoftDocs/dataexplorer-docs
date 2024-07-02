@@ -4,6 +4,7 @@ description:  Learn how to use the plotly_anomaly_fl() user-defined function.
 ms.reviewer: adieldar
 ms.topic: reference
 ms.date: 08/13/2023
+monikerRange: "microsoft-fabric || azure-data-explorer || azure-monitor || microsoft-sentinel"
 ---
 # plotly_anomaly_fl()
 

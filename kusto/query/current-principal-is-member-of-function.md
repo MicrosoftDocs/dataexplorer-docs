@@ -4,12 +4,9 @@ description: Learn how to use the current_principal_is_member_of() function to c
 ms.reviewer: alexans
 ms.topic: reference
 ms.date: 11/27/2021
-zone_pivot_group_filename: data-explorer/zone-pivot-groups.json
-zone_pivot_groups: kql-flavors-all
+monikerRange: "microsoft-fabric || azure-data-explorer"
 ---
 # current_principal_is_member_of()
-
-::: zone pivot="azuredataexplorer, fabric"
 
 Checks group membership or principal identity of the current principal running the query.
 
@@ -71,10 +68,3 @@ print result=current_principal_is_member_of(
 |--------|
 | false  |
 
-::: zone-end
-
-::: zone pivot="azuremonitor"
-
-This capability isn't supported in Azure Monitor
-
-::: zone-end
