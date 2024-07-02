@@ -4,6 +4,7 @@ description: This article describes user-defined functions that extend Azure Dat
 ms.reviewer: adieldar
 ms.topic: reference
 ms.date: 03/07/2022
+monikerRange: "microsoft-fabric || azure-data-explorer || azure-monitor || microsoft-sentinel"
 ---
 # Functions library
 

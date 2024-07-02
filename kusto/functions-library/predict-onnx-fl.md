@@ -4,6 +4,7 @@ description:  This article describes the predict_onnx_fl() user-defined function
 ms.reviewer: adieldar
 ms.topic: reference
 ms.date: 05/01/2023
+monikerRange: "microsoft-fabric || azure-data-explorer || azure-monitor || microsoft-sentinel"
 ---
 # predict_onnx_fl()
 

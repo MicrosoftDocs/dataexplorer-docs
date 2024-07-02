@@ -4,6 +4,7 @@ description:  This article describes the series_metric_fl() user-defined functio
 ms.reviewer: adieldar
 ms.topic: reference
 ms.date: 04/30/2023
+monikerRange: "microsoft-fabric || azure-data-explorer || azure-monitor || microsoft-sentinel"
 ---
 # series_metric_fl()
 

@@ -4,6 +4,7 @@ description: Learn how to use the series_clean_anomalies_fl() function to clean 
 ms.reviewer: adieldar
 ms.topic: reference
 ms.date: 08/14/2023
+monikerRange: "microsoft-fabric || azure-data-explorer || azure-monitor || microsoft-sentinel"
 ---
 # series_clean_anomalies_fl()
 
