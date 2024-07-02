@@ -1,6 +1,6 @@
 ---
 title:  REST API overview
-description: This article describes how to use the REST API overview for Azure Data Explorer.
+description: This article describes how to use the REST API.
 ms.reviewer: orspodek
 ms.topic: reference
 ms.date: 04/19/2023

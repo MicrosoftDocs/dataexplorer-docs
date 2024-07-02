@@ -1,6 +1,6 @@
 ---
 title:  Kusto Python SDK
-description: This article describes Python SDK in Azure Data Explorer.
+description: This article describes Python SDK.
 ms.reviewer: orspodek
 ms.topic: reference
 ms.date: 06/20/2024
