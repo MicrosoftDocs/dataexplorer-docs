@@ -8,7 +8,7 @@ adobe-target: true
 ---
 # About the Kusto .NET SDK
 
-The Kusto .NET SDK is a set of libraries that .NET applications can use to communicate with the query environment.
+The Kusto .NET SDK is a set of libraries that .NET applications can use to communicate with Kusto.
 
 The Kusto .NET SDK is available from [NuGet Gallery](https://www.nuget.org/).
 The packages target .NETFramework 4.7.2, .NETCoreApp 2.1, and .NETStandard 2.0.

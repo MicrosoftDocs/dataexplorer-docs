@@ -4,6 +4,7 @@ description: Learn how to use the mv-expand operator to expand multi-value dynam
 ms.reviewer: alexans
 ms.topic: reference
 ms.date: 12/03/2023
+monikerRange: "microsoft-fabric || azure-data-explorer || azure-monitor || microsoft-sentinel || azure-resource-graph"
 ---
 # mv-expand operator
 
@@ -230,8 +231,10 @@ range x from 1 to 4 step 1
 |3|2|
 |4|3|
 
+::: moniker range="microsoft-fabric || azure-data-explorer || azure-monitor || microsoft-sentinel"
 ## Related content
 
 * [mv-apply](mv-apply-operator.md) operator.
 * For the opposite of the mv-expand operator, see [summarize make_list()](make-list-aggregation-function.md).
 * For expanding dynamic JSON objects into columns using property bag keys, see [bag_unpack()](bag-unpack-plugin.md) plugin.
+::: moniker-end
