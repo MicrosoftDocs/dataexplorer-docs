@@ -15,12 +15,13 @@ For a complete list of data connectors, see [Data integrations overview](integra
 
 * .NET SDK 6.0 or later
 * An Azure Data Explorer [cluster and database](/azure/data-explorer/create-cluster-and-database) with the default cache and retention policies.
+* [Azure Data Explorer query environment](https://dataexplorer.azure.com/)
 
 [!INCLUDE [ingest-data-serilog-2](includes/cross-repo/ingest-data-serilog-2.md)]
 
 [!INCLUDE [ingest-data-serilog-3](includes/cross-repo/ingest-data-serilog-3.md)]
 
-3. In the [web UI](https://dataexplorer.azure.com/), select the target database, and run the following query to explore the ingested data, replacing the placeholder *TableName* with the name of the target table:
+3. In the query environment, select the target database, and run the following query to explore the ingested data, replacing the placeholder *TableName* with the name of the target table:
 
     ```kusto
     <TableName>

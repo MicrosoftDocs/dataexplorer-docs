@@ -122,13 +122,13 @@ export tableName="<tableName>"
 
 ---
 
-1. In your terminal, navigate to the root folder of the cloned repo and run the following .NET command to build the app:
+1. In your terminal, browse to the root folder of the cloned repo and run the following .NET command to build the app:
 
     ```powershell
     dotnet build src
     ```
 
-1. In your terminal, navigate to the samples folder and run the following .NET command to run the app:
+1. In your terminal, browse to the samples folder and run the following .NET command to run the app:
 
     ```powershell
     dotnet build run
