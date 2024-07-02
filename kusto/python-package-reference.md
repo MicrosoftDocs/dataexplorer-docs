@@ -1,6 +1,6 @@
 ---
 title: Python plugin packages
-description: Learn about the Python packages available in the Azure Data Explorer Python plugin.
+description: Learn about the Python packages available in the Python plugin.
 ms.reviewer: suatta
 ms.topic: reference
 ms.date: 03/19/2023

@@ -1,6 +1,6 @@
 ---
 title:  Generate a SAS token
-description: This article describes how to generate a SAS token in Azure Data Explorer.
+description: This article describes how to generate a SAS token.
 ms.reviewer: shanisolomon
 ms.topic: how-to
 ms.date: 06/14/2023
