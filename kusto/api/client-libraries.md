@@ -1,6 +1,6 @@
 ---
 title:  Client libraries overview
-description: This article lists the Client libraries in your query environment.
+description: This article lists available client libraries
 ms.reviewer: orspodek
 ms.topic: reference
 ms.date: 07/26/2023

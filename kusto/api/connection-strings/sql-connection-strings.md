@@ -46,7 +46,7 @@ The following table shows the supported authentication methods for each type of 
 
 ## Microsoft Entra integrated (impersonation)
 
-With this authentication method, the user or application authenticates via Microsoft Entra ID to your query environment, and the same token is then used to access the SQL Server network endpoint. This method is supported for SQL Server and Cosmos DB.
+With this authentication method, the user or application authenticates via Microsoft Entra ID, and the same token is then used to access the SQL Server network endpoint. This method is supported for SQL Server and Cosmos DB.
 
 To use Microsoft Entra integrated authentication (impersonation), add `;Authentication="Active Directory Integrated"` to the SQL connection string.
 
