@@ -4,12 +4,8 @@ description:  Learn how to use the series_mv_ee_anomalies_fl() user-defined func
 ms.reviewer: adieldar
 ms.topic: reference
 ms.date: 03/13/2023
-zone_pivot_group_filename: data-explorer/zone-pivot-groups.json
-zone_pivot_groups: kql-flavors-all
 ---
 # series_mv_ee_anomalies_fl()
-
-::: zone pivot="azuredataexplorer, fabric"
 
 The function `series_mv_ee_anomalies_fl()` is a [user-defined function (UDF)](../query/functions/user-defined-functions.md) that detects multivariate anomalies in series by applying [elliptic envelope model from scikit-learn](https://scikit-learn.org/stable/modules/generated/sklearn.covariance.EllipticEnvelope.html). This model assumes that the source of the multivariate data is multi-dimensional normal distribution. The function accepts a set of series as numerical dynamic arrays, the names of the features columns and the expected percentage of anomalies out of the whole series. The function builds a multi-dimensional elliptical envelope for each series and marks the points that fall outside this normal envelope as anomalies.
 
@@ -217,10 +213,3 @@ union
 
 ![Scatter chart of the sample dataset.](media/series-mv-ee-anomalies-fl/mv-ee-anomalies-sample-data.png)
 
-::: zone-end
-
-::: zone pivot="azuremonitor"
-
-This feature isn't supported.
-
-::: zone-end

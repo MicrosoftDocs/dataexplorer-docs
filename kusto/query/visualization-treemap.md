@@ -4,12 +4,11 @@ description: Learn how to use the treemap visualization to visualize data.
 ms.reviewer: alexans
 ms.topic: reference
 ms.date: 05/21/2023
-zone_pivot_group_filename: data-explorer/zone-pivot-groups.json
-zone_pivot_groups: kql-flavors-all
+monikerRange: "azure-data-explorer"
 ---
 # Treemap
 
-::: zone pivot="azuredataexplorer"
+::: moniker range="azure-data-explorer"
 
 Treemaps display hierarchical data as a set of nested rectangles. Each level of the hierarchy is represented by a colored rectangle (branch) containing smaller rectangles (leaves).
 
@@ -50,10 +49,4 @@ StormEvents
 ```
 
 :::image type="content" source="media/visualization-treemap/treemap.png" alt-text="Screenshot of treemap visualization output." lightbox="media/visualization-treemap/treemap.png":::
-::: zone-end
-
-::: zone pivot="azuremonitor, fabric"
-
-This visualization isn't supported.
-
-::: zone-end
+::: moniker-end

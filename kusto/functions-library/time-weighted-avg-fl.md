@@ -4,6 +4,7 @@ description:  This article describes time_weighted_avg_fl() user-defined functio
 ms.reviewer: adieldar
 ms.topic: reference
 ms.date: 03/13/2023
+monikerRange: "microsoft-fabric || azure-data-explorer || azure-monitor || microsoft-sentinel"
 ---
 # time_weighted_avg_fl()
 

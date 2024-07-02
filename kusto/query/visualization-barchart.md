@@ -4,8 +4,7 @@ description:  This article describes the bar chart visualization.
 ms.reviewer: alexans
 ms.topic: reference
 ms.date: 08/02/2023
-zone_pivot_group_filename: data-explorer/zone-pivot-groups.json
-zone_pivot_groups: kql-flavors-all
+monikerRange: "microsoft-fabric || azure-data-explorer || azure-monitor || microsoft-sentinel"
 ---
 # Bar chart
 
@@ -27,7 +26,7 @@ The bar chart visual needs a minimum of two columns in the query result. By defa
 | *T* | `string` |  :heavy_check_mark: | Input table name.|
 | *propertyName*, *propertyValue* | `string` | | A comma-separated list of key-value property pairs. See [supported properties](#supported-properties).|
 
-::: zone pivot="azuredataexplorer, fabric"
+::: moniker range="microsoft-fabric  || azure-data-explorer"
 
 ### Supported properties
 
@@ -60,9 +59,9 @@ This visualization supports splitting into multiple y-axis values:
 |`axes`    |A single chart is displayed with multiple y-axes (one per series).|
 |`panels`  |One chart is rendered for each `ycolumn` value.|
 
-::: zone-end
+::: moniker-end
 
-::: zone pivot="azuremonitor"
+::: moniker range="azure-monitor || microsoft-sentinel"
 
 ### Supported properties
 
@@ -74,7 +73,7 @@ All properties are optional.
 |`series`      |Comma-delimited list of columns whose combined per-record values define the series that record belongs to.|
 |`title`       |The title of the visualization (of type `string`).                                |
 
-::: zone-end
+::: moniker-end
 
 #### `kind` property
 
@@ -146,7 +145,7 @@ StormEvents
 
 :::image type="content" source="media/visualization-barchart/stacked-100-bar-chart.png" alt-text="Screenshot of a stacked 100 bar chart visualization." lightbox="media/visualization-barchart/stacked-100-bar-chart.png":::
 
-::: zone pivot="azuredataexplorer, fabric"
+::: moniker range="microsoft-fabric  || azure-data-explorer"
 
 ### Use the `ysplit` property
 
@@ -183,4 +182,4 @@ StormEvents
 :::image type="content" source="media/visualization-barchart/bar-chart-ysplit-panels.png" alt-text="Screenshot of column chart using ysplit panels property." lightbox="media/visualization-barchart/bar-chart-ysplit-panels.png":::
 
 
-::: zone-end
+::: moniker-end

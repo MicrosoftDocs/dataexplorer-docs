@@ -4,12 +4,11 @@ description:  This article describes the pivot chart visualization.
 ms.reviewer: alexans
 ms.topic: reference
 ms.date: 05/13/2024
-zone_pivot_group_filename: data-explorer/zone-pivot-groups.json
-zone_pivot_groups: kql-flavors-all
+monikerRange: "azure-data-explorer"
 ---
 # Pivot chart
 
-::: zone pivot="azuredataexplorer"
+::: moniker range="azure-data-explorer"
 
 Displays a pivot table and chart. You can interactively select data, columns, rows, and various chart types.
 
@@ -43,10 +42,5 @@ SalesFact
 
 :::image type="content" source="media/visualize-pivotchart/pivotchart.png" alt-text="Screenshot of query result showing a pivot chart visualization."  lightbox="media/visualize-pivotchart/pivotchart.png":::
 
-::: zone-end
+::: moniker-end
 
-::: zone pivot="azuremonitor, fabric"
-
-This visualization isn't supported.
-
-::: zone-end

@@ -4,12 +4,9 @@ description: Learn how to use the mysql_request plugin to send a SQL query to a 
 ms.reviewer: alexans
 ms.topic: reference
 ms.date: 03/06/2023
-zone_pivot_group_filename: data-explorer/zone-pivot-groups.json
-zone_pivot_groups: kql-flavors-all
+monikerRange: "microsoft-fabric || azure-data-explorer"
 ---
 # mysql_request plugin
-
-::: zone pivot="azuredataexplorer, fabric"
 
 The `mysql_request` plugin sends a SQL query to an Azure MySQL Server network endpoint and returns the first rowset in the results. The query may return more than one rowset, but only the first rowset is made available for the rest of the Kusto query.
 
@@ -152,11 +149,3 @@ evaluate mysql_request(
 | where Id > 0
 | project Name
 ```
-
-::: zone-end
-
-::: zone pivot="azuremonitor"
-
-This capability isn't supported in Azure Monitor.
-
-::: zone-end

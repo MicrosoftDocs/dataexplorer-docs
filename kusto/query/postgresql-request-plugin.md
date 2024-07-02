@@ -4,12 +4,9 @@ description: Learn how to use the postgresql_request plugin to send a SQL query 
 ms.reviewer: alexans
 ms.topic: reference
 ms.date: 05/08/2023
-zone_pivot_group_filename: data-explorer/zone-pivot-groups.json
-zone_pivot_groups: kql-flavors
+monikerRange: "microsoft-fabric || azure-data-explorer"
 ---
 # postgresql_request plugin
-
-::: zone pivot="azuredataexplorer"
 
 The `postgresql_request` plugin sends a SQL query to an Azure PostgreSQL Server network endpoint and returns the first rowset in the results. The query may return more than one rowset, but only the first rowset is made available for the rest of the Kusto query.
 
@@ -152,11 +149,3 @@ evaluate postgresql_request(
 | where Id > 0
 | project Name
 ```
-
-::: zone-end
-
-::: zone pivot="azuremonitor"
-
-This capability isn't supported in Azure Monitor.
-
-::: zone-end

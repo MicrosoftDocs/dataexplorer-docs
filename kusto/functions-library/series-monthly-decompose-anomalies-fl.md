@@ -4,6 +4,7 @@ description: Learn how to use the series_monthly_decompose_anomalies_fl() functi
 ms.reviewer: adieldar
 ms.topic: reference
 ms.date: 04/15/2024
+monikerRange: "microsoft-fabric || azure-data-explorer || azure-monitor || microsoft-sentinel"
 ---
 # series_monthly_decompose_anomalies_fl()
 

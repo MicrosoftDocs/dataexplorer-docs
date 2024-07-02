@@ -4,6 +4,7 @@ description:  This article describes series_moving_var_fl() user-defined functio
 ms.reviewer: adieldar
 ms.topic: reference
 ms.date: 05/23/2023
+monikerRange: "microsoft-fabric || azure-data-explorer || azure-monitor || microsoft-sentinel"
 ---
 # series_moving_var_fl()
 

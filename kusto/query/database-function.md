@@ -4,12 +4,9 @@ description: Learn how to use the database() function to change the reference of
 ms.reviewer: alexans
 ms.topic: reference
 ms.date: 03/09/2023
-zone_pivot_group_filename: data-explorer/zone-pivot-groups.json
-zone_pivot_groups: kql-flavors-all
+monikerRange: "microsoft-fabric || azure-data-explorer"
 ---
 # database()
-
-::: zone pivot="azuredataexplorer, fabric"
 
 Changes the reference of the query to a specific database within the cluster scope.
 
@@ -81,10 +78,3 @@ receives a parameter `dbName` - which is passed into the database() function.
 > [!NOTE]
 > Such functions can be used only locally and not in the cross-cluster query.
 
-::: zone-end
-
-::: zone pivot="azuremonitor"
-
-This capability isn't supported in Azure Monitor
-
-::: zone-end

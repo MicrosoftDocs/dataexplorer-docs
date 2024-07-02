@@ -4,8 +4,7 @@ description: Learn how to use the externaldata operator to return a data table o
 ms.reviewer: alexans
 ms.topic: reference
 ms.date: 12/12/2022
-zone_pivot_group_filename: data-explorer/zone-pivot-groups.json
-zone_pivot_groups: kql-flavors-all
+monikerRange: "microsoft-fabric || azure-data-explorer || azure-monitor || microsoft-sentinel"
 ---
 # externaldata operator
 
@@ -17,17 +16,17 @@ The `externaldata` operator returns a table whose schema is defined in the query
 > [!NOTE]
 > The `externaldata` operator supports Shared Access Signature (SAS) key, Access key, and Microsoft Entra Token authentication methods. For more information, see [Storage authentication methods](../api/connection-strings/storage-connection-strings.md).
 
-::: zone pivot="azuredataexplorer, fabric"
+::: moniker range="microsoft-fabric  || azure-data-explorer"
 
-::: zone-end
+::: moniker-end
 
-::: zone pivot="azuremonitor"
+::: moniker range="azure-monitor || microsoft-sentinel"
 
 > [!NOTE]
 > Use the `externaldata` operator to retrieve small reference tables of up to 100 MB from an external storage artifact. The operator is not designed for large data volumes. To retrieve large volumes of external data, we recommend [ingesting the external data into Log Analytics as custom logs](/azure/azure-monitor/logs/tutorial-custom-logs).
 > This operator isn't supported when the public endpoint of the storage artifact is behind a firewall.
 
-::: zone-end
+::: moniker-end
 
 ## Syntax
 

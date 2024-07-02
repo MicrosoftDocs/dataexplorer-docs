@@ -4,12 +4,9 @@ description: Learn how to use the query parameters declaration statement to para
 ms.reviewer: alexans
 ms.topic: reference
 ms.date: 08/01/2023
-zone_pivot_group_filename: data-explorer/zone-pivot-groups.json
-zone_pivot_groups: kql-flavors-all
+monikerRange: "microsoft-fabric || azure-data-explorer"
 ---
 # Query parameters declaration statement
-
-::: zone pivot="azuredataexplorer, fabric"
 
 Queries sent to Kusto may include a set of name or value pairs. The pairs are called *query parameters*, together with the query text itself. The query may reference one or more values, by specifying names and type, in a *query parameters declaration statement*.
 
@@ -101,11 +98,3 @@ To learn how to provide the names and values of query parameters when using Kust
 
 To set the query parameters sent when making a request to the service,
 use the **Query parameters** "wrench" icon (`ALT` + `P`).
-
-::: zone-end
-
-::: zone pivot="azuremonitor"
-
-This capability isn't supported in Azure Monitor
-
-::: zone-end

@@ -4,12 +4,10 @@ description: Learn how to use the mirroring policy.
 ms.reviewer: sharmaanshul
 ms.topic: reference
 ms.date: 05/23/2024
-zone_pivot_group_filename: data-explorer/zone-pivot-groups.json
-zone_pivot_groups: kql-flavors-all
+monikerRange: "microsoft-fabric"
 ---
 # Mirroring policy
 
-::: zone pivot="fabric"
 The mirroring policy commands allow you to view, change, partition, and delete your table mirroring policy. They also provide a way to check the mirroring latency by reviewing the operations mirroring status.
 
 ## Management commands
@@ -73,11 +71,3 @@ For more information on Event house data types, see [Scalar data types](/azure/d
 }
 
 ```
-
-::: zone-end
-
-::: zone pivot="azuredataexplorer, azuremonitor"
-
-This feature isn't supported.
-
-::: zone-end

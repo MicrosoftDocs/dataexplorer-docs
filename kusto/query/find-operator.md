@@ -4,14 +4,13 @@ description: Learn how to use the find operator to find rows that match a predic
 ms.reviewer: alexans
 ms.topic: reference
 ms.date: 03/14/2023
-zone_pivot_group_filename: data-explorer/zone-pivot-groups.json
-zone_pivot_groups: kql-flavors-all
+monikerRange: "microsoft-fabric || azure-data-explorer || azure-monitor || microsoft-sentinel"
 ---
 # find operator
 
 Finds rows that match a predicate across a set of tables.
 
-::: zone pivot="azuredataexplorer, fabric"
+::: moniker range="microsoft-fabric  || azure-data-explorer"
 
 The scope of the `find` can also be cross-database or cross-cluster.
 
@@ -23,9 +22,9 @@ find in (database('*').*) where Fruit == "apple"
 find in (cluster('cluster_name').database('MyDB*').*) where Fruit == "apple"
 ```
 
-::: zone-end
+::: moniker-end
 
-::: zone pivot="azuremonitor"
+::: moniker range="azure-monitor || microsoft-sentinel"
 
 ```kusto
 find in (Table1, Table2, Table3) where Fruit=="apple"
@@ -34,7 +33,7 @@ find in (Table1, Table2, Table3) where Fruit=="apple"
 > [!NOTE]
 > `find` operator is substantially less efficient than column-specific text filtering. Whenever the columns are known, we recommend using the [where operator](where-operator.md). `find` will not function well when the workspace contains large number of tables and columns and the data volume that is being scanned is high and the time range of the query is high.
 
-::: zone-end
+::: moniker-end
 
 ## Syntax
 
@@ -46,7 +45,7 @@ find in (Table1, Table2, Table3) where Fruit=="apple"
 
 ## Parameters
 
-::: zone pivot="azuredataexplorer, fabric"
+::: moniker range="microsoft-fabric  || azure-data-explorer"
 
 |Name|Type|Required|Description|
 |--|--|--|--|
@@ -55,9 +54,9 @@ find in (Table1, Table2, Table3) where Fruit=="apple"
 | *Tables* | `string` | | Zero or more comma-separated table references. By default, `find` will look in all the tables in the current database. You can use:<br/>1. The name of a table, such as `Events`<br/>2. A query expression, such as `(Events | where id==42)`<br/>3. A set of tables specified with a wildcard. For example, `E*` would form the union of all the tables in the database whose names begin with `E`.|
 | `project-smart` or `project` | `string` | | If not specified, `project-smart` will be used by default. For more information, see [output-schema details](find-operator.md#output-schema).|
 
-::: zone-end
+::: moniker-end
 
-::: zone pivot="azuremonitor"
+::: moniker range="azure-monitor || microsoft-sentinel"
 
 * `withsource=`*ColumnName*: Optional. By default, the output will include a column called *source_* whose values indicate which source table contributed each row. If specified, *ColumnName* will be used instead of *source_*.
 * *Predicate*: A `boolean` [expression](scalar-data-types/bool.md) over the columns of the input tables *Table* [`,` *Table*, ...]. It's evaluated for each row in each input table. For more information, see  [predicate-syntax details](find-operator.md#predicate-syntax).
@@ -68,7 +67,7 @@ find in (Table1, Table2, Table3) where Fruit=="apple"
   * A set of tables specified with a wildcard. For example, `E*` would form the union of all the tables whose names begin with `E`.
 * `project-smart` | `project`: If not specified `project-smart` will be used by default. For more information, see [output-schema details](find-operator.md#output-schema).
 
-::: zone-end
+::: moniker-end
 
 ## Returns
 
@@ -123,7 +122,7 @@ For example, see [examples of cases where find will act as a union](find-operato
 
 ## Examples
 
-::: zone pivot="azuredataexplorer, fabric"
+::: moniker range="microsoft-fabric  || azure-data-explorer"
 
 ### Term lookup across all tables in current database
 
@@ -182,9 +181,9 @@ find in (cluster("cluster1").database("B*").K*, cluster("cluster2").database("C*
 where * has "Kusto"
 ```
 
-::: zone-end
+::: moniker-end
 
-::: zone pivot="azuremonitor"
+::: moniker range="azure-monitor || microsoft-sentinel"
 
 ### Term lookup across all tables
 
@@ -195,7 +194,7 @@ The resulting records are transformed according to the [output schema](#output-s
 find "Kusto"
 ```
 
-::: zone-end
+::: moniker-end
 
 ## Examples of `find` output results  
 
