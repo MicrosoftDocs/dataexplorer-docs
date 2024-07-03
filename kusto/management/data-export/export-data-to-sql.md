@@ -7,6 +7,8 @@ ms.date: 06/20/2023
 ---
 # Export data to SQL
 
+> [!INCLUDE [applies](../../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../../includes/applies-to-version/azure-data-explorer.md)]
+
 Export data to SQL allows you to run a query and have its results sent to a table in an SQL database, such as an SQL database hosted by the Azure SQL Database service.
 
 ## Permissions
