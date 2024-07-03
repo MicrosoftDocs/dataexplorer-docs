@@ -7,7 +7,7 @@ ms.date: 06/25/2023
 ---
 # Continuous data export overview
 
-<!-- //TOTO: Add monikers -->
+> [!INCLUDE [applies](../../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../../includes/applies-to-version/azure-data-explorer.md)]
 
 This article describes continuous export of data from Kusto to an [external table](../../query/schema-entities/external-tables.md) with a periodically run query. The results are stored in the external table, which defines the destination, such as Azure Blob Storage, and the schema of the exported data. This process guarantees that all records are exported "exactly once", with some [exceptions](#exactly-once-export). By default, continuous export runs in a distributed mode, where all nodes export concurrently, so the number of artifacts depends on the number of nodes in the cluster. Continuous export isn't designed for low-latency streaming data out of your cluster.
 

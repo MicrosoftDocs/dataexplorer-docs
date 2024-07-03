@@ -7,6 +7,8 @@ ms.date: 06/13/2024
 ---
 # Data export
 
+> [!INCLUDE [applies](../../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../../includes/applies-to-version/azure-data-explorer.md)]
+
 Data export involves executing a Kusto query and saving its results. This process can be carried out either on the client side or the service side.
 
 For examples on data export, see [Related content](#related-content).

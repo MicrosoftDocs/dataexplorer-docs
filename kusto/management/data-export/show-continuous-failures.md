@@ -7,13 +7,15 @@ ms.date: 02/21/2023
 ---
 # Show continuous export failures
 
+> [!INCLUDE [applies](../../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../../includes/applies-to-version/azure-data-explorer.md)]
+
 Returns all failures logged as part of the continuous export. Filter the results by the Timestamp column in the command to view only time range of interest.
 
 ::: moniker range="azure-data-explorer"
 The command will not return any results if executed on a [follower database](/azure/data-explorer/follower), it must be executed against the leader database.
 ::: moniker-end
 
-::: moniker range="azure-data-explorer"
+::: moniker range="microsoft-fabric"
 The command will not return any results if executed on a [database shortcut](/fabric/real-time-intelligence/database-shortcut), it must be executed against the leader database.
 ::: moniker-end
 
