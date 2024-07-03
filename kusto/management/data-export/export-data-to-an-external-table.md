@@ -7,6 +7,8 @@ ms.date: 03/20/2023
 ---
 # Export data to an external table
 
+> [!INCLUDE [applies](../../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../../includes/applies-to-version/azure-data-explorer.md)]
+
 You can export data by defining an [external table](../show-external-tables.md) and exporting data to it. The table properties are specified when [creating the external table](../external-tables-azure-storage.md). The export command references the external table by name.
 
 ## Permissions
