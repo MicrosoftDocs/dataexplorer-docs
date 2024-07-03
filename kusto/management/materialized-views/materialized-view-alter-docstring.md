@@ -9,7 +9,7 @@ ms.date: 03/01/2023
 
 > [!INCLUDE [applies](../../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../../includes/applies-to-version/azure-data-explorer.md)]
 
- the *DocString* value associated to an existing materialized view to describe it.
+Alters the *DocString* value associated to an existing materialized view to describe it.
 
 ## Permissions
 
