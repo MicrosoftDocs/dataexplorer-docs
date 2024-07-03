@@ -7,6 +7,8 @@ ms.date: 03/01/2023
 ---
 # .clear materialized-view data
 
+> [!INCLUDE [applies](../../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../../includes/applies-to-version/azure-data-explorer.md)]
+
 Clears the data of an existing materialized view.
 
 The data is cleared from the `materialized part` of the view only. For more information about the  `materialized part`, see [how materialized views work](materialized-view-overview.md#how-materialized-views-work). After the materialized view data is cleared, the view will continue processing the source table records ingested since the last materialization time. Use the [`.show materialized-view`](materialized-view-show-command.md#show-materialized-views) command to get the last materialization timestamp.

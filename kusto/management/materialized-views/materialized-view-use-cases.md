@@ -8,6 +8,8 @@ ms.date: 11/16/2023
 
 # Materialized views use cases
 
+> [!INCLUDE [applies](../../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../../includes/applies-to-version/azure-data-explorer.md)]
+
 [Materialized views](materialized-view-overview.md) expose an *aggregation* query over a source table or another materialized view. This article covers common and advanced use cases for materialized views.
 
 ## Common use cases

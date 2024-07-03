@@ -7,6 +7,8 @@ ms.date: 03/19/2023
 ---
 # Materialized views
 
+> [!INCLUDE [applies](../../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../../includes/applies-to-version/azure-data-explorer.md)]
+
 Materialized views expose an *aggregation* query over a source table, or over [another materialized view](#materialized-view-over-materialized-view).
 
 Materialized views always return an up-to-date result of the aggregation query (always fresh). [Querying a materialized view](#materialized-views-queries) is more performant than running the aggregation directly over the source table.
