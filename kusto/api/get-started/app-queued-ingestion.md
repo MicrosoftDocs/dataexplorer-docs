@@ -33,9 +33,9 @@ In this article, you learn how to:
     1. Create a target table named *MyStormEvents* in your database by running the first app in [management commands](app-management-commands.md#run-a-management-command-and-process-the-results).
     1. Set the ingestion batching policy timeout to 10 seconds by running the second app in [management commands](app-management-commands.md#change-the-table-level-ingestion-batching-policy). Before running the app, change the timeout value to `00:00:10`.
 
-    ### [Web UI](#tab/webui)
+    ### [Create with command](#tab/command)
 
-    1. In the [Azure Data Explorer web UI](https://dataexplorer.azure.com), create a target table named *MyStormEvents* in your database by running the following query:
+    1. In your query environment, create a target table named *MyStormEvents* in your database by running the following query:
 
         ```kusto
         .create table MyStormEvents

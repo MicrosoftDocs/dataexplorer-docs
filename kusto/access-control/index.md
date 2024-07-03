@@ -5,7 +5,6 @@ ms.reviewer: orspodek
 ms.topic: reference
 ms.custom: has-adal-ref
 ms.date: 06/28/2023
-monikerRange: "azure-data-explorer || microsoft-fabric"
 ---
 # Access control overview
 
@@ -32,16 +31,19 @@ The main authentication scenarios are as follows:
 
 User authentication happens when a user presents credentials to Microsoft Entra ID or an identity provider that federates with Microsoft Entra ID, such as Active Directory Federation Services. The user gets back a security token that can be presented to the Azure Data Explorer service. Azure Data Explorer determines whether the token is valid, whether the token is issued by a trusted issuer, and what security claims the token contains.
 
+::: moniker range="azure-data-explorer"
 Azure Data Explorer supports the following methods of user authentication, including through the [Kusto client libraries](../api/client-libraries.md):
 
 * Interactive user authentication with sign-in through the user interface.
 * User authentication with a Microsoft Entra token issued for Azure Data Explorer.
 * User authentication with a Microsoft Entra token issued for another resource that can be exchanged for an Azure Data Explorer token using On-behalf-of (OBO) authentication.
+::: moniker-end
 
 ### Application authentication
 
 Application authentication is needed when requests aren't associated with a specific user or when no user is available to provide credentials. In this case, the application authenticates to Microsoft Entra ID or the federated IdP by presenting secret information.
 
+::: moniker range="azure-data-explorer"
 Azure Data Explorer supports the following methods of application authentication, including through the [Kusto client libraries](../api/client-libraries.md):
 
 * Application authentication with an Azure managed identity.
@@ -50,6 +52,7 @@ Azure Data Explorer supports the following methods of application authentication
 * Application authentication with a Microsoft Entra application ID and a Microsoft Entra application key. The application ID and application key are like a username and password.
 * Application authentication with a previously obtained valid Microsoft Entra token, issued to Azure Data Explorer.
 * Application authentication with a Microsoft Entra token issued for another resource that can be exchanged for an Azure Data Explorer token using On-behalf-of (OBO) authentication.
+::: moniker-end
 
 ## Authorization
 
