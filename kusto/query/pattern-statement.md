@@ -4,13 +4,10 @@ description: Learn how to use pattern statements to map string tuples to tabular
 ms.reviewer: alexans
 ms.topic: reference
 ms.date: 05/01/2023
-zone_pivot_group_filename: data-explorer/zone-pivot-groups.json
-zone_pivot_groups: kql-flavors-all
+monikerRange: "microsoft-fabric || azure-data-explorer"
 ---
 
 # Pattern statement
-
-::: zone pivot="azuredataexplorer, fabric"
 
 A **pattern** is a construct that maps string tuples to tabular expressions. Each pattern must *declare* a pattern name and optionally *define* a pattern mapping. Patterns that define a mapping return a tabular expression when invoked. Any two statements must be separated by a semicolon.
 
@@ -189,11 +186,3 @@ map_ip_to_longlat("10.10.10.10")
 |Lat| `Long` |
 |---|---|
 |37.405992|-122.078515|
-
-::: zone-end
-
-::: zone pivot="azuremonitor"
-
-This capability isn't supported in Azure Monitor.
-
-::: zone-end

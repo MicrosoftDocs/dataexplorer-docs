@@ -4,12 +4,10 @@ description:  This article describes the series_uv_change_points_fl() user-defin
 ms.reviewer: adieldar
 ms.topic: reference
 ms.date: 03/13/2023
-zone_pivot_group_filename: data-explorer/zone-pivot-groups.json
-zone_pivot_groups: kql-flavors-all
+
+monikerRange: "azure-data-explorer"
 ---
 # series_uv_change_points_fl()
-
-::: zone pivot="azuredataexplorer"
 
 The function `series_uv_change_points_fl()` is a [user-defined function (UDF)](../query/functions/user-defined-functions.md) that finds change points in time series by calling the [Univariate Anomaly Detection API](/azure/cognitive-services/anomaly-detector/overview), part of [Azure Cognitive Services](/azure/cognitive-services/what-are-cognitive-services). The function accepts a limited set of time series as numerical dynamic arrays, the change point detection threshold, and the minimum size of the stable trend window. Each time series is converted into the required JSON format and posts it to the Anomaly Detector service endpoint. The service response contains dynamic arrays of change points, their respective confidence, and the detected seasonality.
 
@@ -205,11 +203,3 @@ ts
 The following graph shows change points on a time series.
 
 ![Graph showing change points on a time series.](media/series-uv-change-points-fl/uv-change-points-example-1.png)
-
-::: zone-end
-
-::: zone pivot="azuremonitor, fabric"
-
-This feature isn't supported.
-
-::: zone-end

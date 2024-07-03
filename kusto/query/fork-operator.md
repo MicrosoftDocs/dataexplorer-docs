@@ -4,12 +4,9 @@ description: Learn how to use the fork operator to run multiple consumer operato
 ms.reviewer: alexans
 ms.topic: reference
 ms.date: 03/15/2023
-zone_pivot_group_filename: data-explorer/zone-pivot-groups.json
-zone_pivot_groups: kql-flavors-all
+monikerRange: "microsoft-fabric || azure-data-explorer"
 ---
 # fork operator
-
-::: zone pivot="azuredataexplorer, fabric"
 
 Runs multiple consumer operators in parallel.
 
@@ -101,11 +98,3 @@ StormEvents
     StormsWithDeaths = (where DeathsDirect + DeathsIndirect > 1)
     StormsWithInjuries = (where InjuriesDirect + InjuriesIndirect > 1)
 ```
-
-::: zone-end
-
-::: zone pivot="azuremonitor"
-
-This capability isn't supported in Azure Monitor
-
-::: zone-end

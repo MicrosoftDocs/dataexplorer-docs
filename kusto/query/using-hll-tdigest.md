@@ -4,8 +4,7 @@ description: Learn how to use the hll() and tdigest() functions to partition and
 ms.reviewer: alexans
 ms.topic: reference
 ms.date: 03/02/2023
-zone_pivot_group_filename: data-explorer/zone-pivot-groups.json
-zone_pivot_groups: kql-flavors-all
+monikerRange: "microsoft-fabric || azure-data-explorer || azure-monitor || microsoft-sentinel"
 ---
 # Using hll() and tdigest()
 
@@ -139,17 +138,17 @@ PageViewsHllTDigest
 
 Kusto limits are reached with datasets that are too large, where you need to run periodic queries over the dataset, but run the regular queries to calculate [`percentile()`](percentiles-aggregation-function.md) or [`dcount()`](dcount-aggfunction.md) over large datasets.
 
-::: zone pivot="azuredataexplorer, fabric"
+::: moniker range="microsoft-fabric  || azure-data-explorer"
 
 To solve this problem, newly added data may be added to a temp table as `hll` or `tdigest` values using [`hll()`](hll-aggregation-function.md) when the required operation is `dcount` or [`tdigest()`](tdigest-aggregation-function.md) when the required operation is percentile using [`set/append`](/azure/data-explorer/ingest-data-overview.md) or [`update policy`](../management/update-policy.md). In this case, the intermediate results of `dcount` or `tdigest` are saved into another dataset, which should be smaller than the target large one.
 
-::: zone-end
+::: moniker-end
 
-::: zone pivot="azuremonitor"
+::: moniker range="azure-monitor || microsoft-sentinel"
 
 To solve this problem, newly added data may be added to a temp table as `hll` or `tdigest` values using [`hll()`](hll-aggregation-function.md) when the required operation is `dcount`. In this case, the intermediate results of `dcount` are saved into another dataset, which should be smaller than the target large one.
 
-::: zone-end
+::: moniker-end
 
 When you need to get the final results of these values, the queries may use `hll`/`tdigest` mergers: [`hll-merge()`](hll-merge-aggregation-function.md)/[`tdigest_merge()`](tdigest-merge-aggregation-function.md). Then, after getting the merged values, [`percentile_tdigest()`](percentile-tdigest-function.md) / [`dcount_hll()`](dcount-hll-function.md) may be invoked on these merged values to get the final result of `dcount` or percentiles.
 

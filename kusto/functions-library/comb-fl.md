@@ -4,6 +4,7 @@ description:  This article describes comb_fl() user-defined function.
 ms.reviewer: adieldar
 ms.topic: reference
 ms.date: 04/30/2023
+monikerRange: "microsoft-fabric || azure-data-explorer || azure-monitor || microsoft-sentinel"
 ---
 # comb_fl()
 

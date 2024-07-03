@@ -4,12 +4,11 @@ description:  This article describes how to visualize data using the Plotly grap
 ms.reviewer: adieldar
 ms.topic: reference
 ms.date: 08/13/2023
-zone_pivot_group_filename: data-explorer/zone-pivot-groups.json
-zone_pivot_groups: kql-flavors-all
+monikerRange: "microsoft-fabric || azure-data-explorer || azure-monitor || microsoft-sentinel"
 ---
 # Plotly (preview)
 
-::: zone pivot="azuredataexplorer, fabric"
+::: moniker range="microsoft-fabric  || azure-data-explorer"
 
 The Plotly graphics library supports ~80 chart types that are useful for advanced charting including geographic, scientific, machine learning, 3d, animation, and many other chart types. For more information, see [Plotly](https://plotly.com/python/). 
 
@@ -48,17 +47,17 @@ OccupancyDetection
 
 :::image type="content" source="media/plotly/plotly-scatter3d.png" alt-text="Screenshot of plotly visual type.":::
 
-::: zone-end
+::: moniker-end
 
-::: zone pivot="azuremonitor"
+::: moniker range="azure-monitor || microsoft-sentinel"
 
 The Plotly graphics library supports ~80 chart types including basic charts, scientific, statistical, financial, maps, 3D, animations, and more. To render a Plotly visual in KQL, the query must generate a table with a single string cell containing [Plotly JSON](https://plotly.com/chart-studio-help/json-chart-schema/). 
 
 Since python is not available in this service, you create this Plotly JSON using a preprepared template.
 
-::: zone-end
+::: moniker-end
 
-::: zone pivot="azuredataexplorer, azuremonitor, fabric"
+::: moniker range="microsoft-fabric || azure-data-explorer || azure-monitor || microsoft-sentinel"
 
 ## Use a preprepared Plotly template
 
@@ -103,7 +102,7 @@ Iris
 
 :::image type="content" source="media/visualization-plotly/plotly-scatter.png" alt-text="Screenshot of output of plotly example in Azure Data Explorer.":::
 
-::: zone-end
+::: moniker-end
 
 ## Related content
 

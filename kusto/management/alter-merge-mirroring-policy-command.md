@@ -4,13 +4,10 @@ description: Learn how to use the `.alter-merge table policy mirroring` command 
 ms.reviewer: sharmaanshul
 ms.topic: reference
 ms.date: 05/23/2024
-zone_pivot_group_filename: data-explorer/zone-pivot-groups.json
-zone_pivot_groups: kql-flavors-all
+monikerRange: "microsoft-fabric"
 ---
 
 # .alter-merge table policy mirroring command
-
-::: zone pivot="fabric"
 
 Changes the tables's [mirroring policy](mirroring-policy.md). The mirroring policy creates a logical copy of tables in your database in delta parquet format and allows you to partition your files to improve query speed. Each partition is represented as a separate column using the *PartitionName* listed in the *Partitions* list. This means there are more columns in the target than in your source table.
 
@@ -60,10 +57,3 @@ In the following example, a table called *myTable* is mirrored. The data is part
 * To check mirroring operations, see [.show table mirroring operations command](show-table-mirroring-operations-command.md).
 * To delete mirroring operations, see [.delete table policy mirroring command](delete-table-mirroring-policy-command.md).
 
-::: zone-end
-
-::: zone pivot="azuredataexplorer, azuremonitor"
-
-This feature isn't supported.
-
-::: zone-end

@@ -4,12 +4,9 @@ description: Learn how to use the cursor_current() function to return a string t
 ms.reviewer: alexans
 ms.topic: reference
 ms.date: 11/08/2022
-zone_pivot_group_filename: data-explorer/zone-pivot-groups.json
-zone_pivot_groups: kql-flavors-all
+monikerRange: "microsoft-fabric || azure-data-explorer"
 ---
 # cursor_current()
-
-::: zone pivot="azuredataexplorer, fabric"
 
 Retrieves the current value of the cursor of the database in scope.
 
@@ -29,11 +26,3 @@ cursor of the database in scope.
 ## Related content
 
 * [database cursors](../management/database-cursor.md)
-
-::: zone-end
-
-::: zone pivot="azuremonitor"
-
-This capability isn't supported in Azure Monitor
-
-::: zone-end

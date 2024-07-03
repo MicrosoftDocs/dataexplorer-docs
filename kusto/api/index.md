@@ -1,6 +1,6 @@
 ---
-title:  Azure Data Explorer API Overview
-description: This article describes API in Azure Data Explorer.
+title:  API Overview
+description: This article describes API.
 ms.reviewer: vladikb
 ms.topic: reference
 ms.date: 06/14/2023
@@ -9,7 +9,7 @@ ms.date: 06/14/2023
 
 The following communication endpoints are supported:
 
-1. A [REST API](#rest-api) endpoint, through which you can query and manage the data in Azure Data Explorer.
+1. A [REST API](#rest-api) endpoint, through which you can query and manage the data in your query environment.
    This endpoint supports the [Kusto Query Language](../query/index.md) for queries and [management commands](../management/index.md).
 1. An [MS-TDS](#ms-tds) endpoint that implements a subset of the Microsoft Tabular Data Stream (TDS) protocol, used by the Microsoft SQL Server products. The endpoint supports TDS versions 7.x and 8.0.
    This endpoint is useful for tools that know how to communicate with a SQL Server endpoint for queries.
@@ -19,7 +19,7 @@ The following communication endpoints are supported:
 
 ## REST API
 
-The primary means of communicating with any Azure Data Explorer service is by using the service's [REST API](rest/index.md).
+The primary means of communicating with any service is by using the service's [REST API](rest/index.md).
 With this fully documented endpoint, callers can:
 
 * Query data
@@ -28,14 +28,14 @@ With this fully documented endpoint, callers can:
 * Query the service health status
 * Manage resources
 
-The different Azure Data Explorer services communicate among themselves, via the same [publicly available REST API](/rest/api/azurerekusto/).
+The different services communicate among themselves, via the same [publicly available REST API](/rest/api/azurerekusto/).
 
 A number of [client libraries](client-libraries.md) are also available to use the service, without dealing with the REST API protocol.
 
 ## MS-TDS
 
-Azure Data Explorer supports the Microsoft SQL Server communication protocol (MS-TDS), and includes a limited support for running T-SQL queries. The supported versions of MS-TDS include 7.x and 8.0.
-This protocol enables users to run queries on Azure Data Explorer using a well-known query syntax (T-SQL) and database client tools such as LINQPad, sqlcmd, Tableau, Excel, and Power BI.
+The service supports the Microsoft SQL Server communication protocol (MS-TDS), and includes a limited support for running T-SQL queries. The supported versions of MS-TDS include 7.x and 8.0.
+This protocol enables users to run queries using a well-known query syntax (T-SQL) and database client tools such as LINQPad, sqlcmd, Tableau, Excel, and Power BI.
 
 For more information, see [MS-TDS](../query/t-sql.md).
 

@@ -1,6 +1,6 @@
 ---
 title:  Streaming ingestion HTTP request
-description: This article describes Streaming ingestion HTTP request in Azure Data Explorer.
+description: This article describes Streaming ingestion HTTP request.
 ms.reviewer: orspodek
 ms.topic: reference
 ms.date: 03/24/2020

@@ -1,5 +1,5 @@
 ---
-title: Named expressions in Azure Data Explorer
+title: Named expressions
 description:  Learn how to optimally use named expressions.
 ms.reviewer: zivc
 ms.topic: reference

@@ -4,12 +4,9 @@ description: Learn how to use the extent_tags() function to return a dynamic arr
 ms.reviewer: alexans
 ms.topic: reference
 ms.date: 12/11/2022
-zone_pivot_group_filename: data-explorer/zone-pivot-groups.json
-zone_pivot_groups: kql-flavors-all
+monikerRange: "microsoft-fabric || azure-data-explorer"
 ---
 # extent_tags()
-
-::: zone pivot="azuredataexplorer, fabric"
 
 Returns a dynamic array with the [extent tags](../management/extent-tags.md) of the [extent](../management/extents-overview.md) that the current record is in.
 
@@ -55,11 +52,3 @@ T
 > [!NOTE]
 > Filtering on the value of `extent_tags()` performs best when one of the following string operators is used:
 > `has`, `has_cs`, `!has`, `!has_cs`.
-
-::: zone-end
-
-::: zone pivot="azuremonitor"
-
-This capability isn't supported in Azure Monitor
-
-::: zone-end

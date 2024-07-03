@@ -1,6 +1,6 @@
 ---
 title:  Query/management HTTP response
-description: This article describes Query/management HTTP response in Azure Data Explorer.
+description: This article describes Query/management HTTP response.
 ms.reviewer: orspodek
 ms.topic: reference
 ms.date: 11/05/2018
