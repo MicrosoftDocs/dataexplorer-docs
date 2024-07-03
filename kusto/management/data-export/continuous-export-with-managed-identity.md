@@ -7,7 +7,7 @@ ms.date: 06/19/2023
 ---
 # Use a managed identity to run a continuous export job
 
-<!-- //TOTO: Add monikers -->
+> [!INCLUDE [applies](../../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../../includes/applies-to-version/azure-data-explorer.md)]
 
 A [continuous export job](continuous-data-export.md) exports data to an [external table](../../query/schema-entities/external-tables.md) with a periodically run query.
 

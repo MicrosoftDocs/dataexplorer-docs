@@ -7,6 +7,8 @@ ms.date: 02/21/2023
 ---
 # Drop continuous export
 
+> [!INCLUDE [applies](../../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../../includes/applies-to-version/azure-data-explorer.md)]
+
 Drops a continuous-export job.
 
 ## Permissions
