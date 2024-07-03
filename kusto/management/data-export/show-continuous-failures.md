@@ -15,7 +15,7 @@ Returns all failures logged as part of the continuous export. Filter the results
 The command will not return any results if executed on a [follower database](/azure/data-explorer/follower), it must be executed against the leader database.
 ::: moniker-end
 
-::: moniker range="azure-data-explorer"
+::: moniker range="microsoft-fabric"
 The command will not return any results if executed on a [database shortcut](/fabric/real-time-intelligence/database-shortcut), it must be executed against the leader database.
 ::: moniker-end
 
