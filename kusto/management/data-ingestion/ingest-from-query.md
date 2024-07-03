@@ -7,6 +7,8 @@ ms.date: 07/13/2023
 ---
 # Ingest from query (.set, .append, .set-or-append, .set-or-replace)
 
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)]
+
 These commands execute a query or a management command and ingest the results of the query into a table. The difference between these commands is how they treat existing or nonexistent tables and data.
 
 |Command          |If table exists                     |If table doesn't exist                    |
