@@ -8,6 +8,8 @@ ms.date: 03/01/2023
 
 # .show materialized-view extents
 
+> [!INCLUDE [applies](../../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../../includes/applies-to-version/azure-data-explorer.md)]
+
 Returns the extents in the *materialized part* of the materialized view. For a definition of the *materialized part*, see [how materialized views work](materialized-view-overview.md#how-materialized-views-work).
 
 If `hot` is specified, only shows the extents that are expected to be in the hot cache.

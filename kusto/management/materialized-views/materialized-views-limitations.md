@@ -8,6 +8,8 @@ ms.date: 10/15/2022
 
 # Materialized views limitations and known issues
 
+> [!INCLUDE [applies](../../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../../includes/applies-to-version/azure-data-explorer.md)]
+
 ## The materialized view source
 
 * The source table of a materialized view:

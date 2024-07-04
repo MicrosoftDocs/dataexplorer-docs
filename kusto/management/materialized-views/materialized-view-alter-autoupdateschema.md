@@ -8,6 +8,8 @@ ms.date: 03/01/2023
 
 # .alter materialized-view autoUpdateSchema
 
+> [!INCLUDE [applies](../../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../../includes/applies-to-version/azure-data-explorer.md)]
+
 Sets the `autoUpdateSchema` value of an existing materialized view to `true` or `false`. For information on the autoUpdateSchema property, see [materialized view create command properties](materialized-view-create.md#supported-properties).
 
 ## Permissions

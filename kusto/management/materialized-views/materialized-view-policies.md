@@ -8,6 +8,8 @@ ms.date: 04/30/2023
 
 # Materialized views policies
 
+> [!INCLUDE [applies](../../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../../includes/applies-to-version/azure-data-explorer.md)]
+
 This article includes information about policies that can be set on materialized views.
 
 ## Retention and caching policy
