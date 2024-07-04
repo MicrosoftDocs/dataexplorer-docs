@@ -8,6 +8,8 @@ monikerRange: "azure-data-explorer"
 ---
 # .alter-merge cluster policy request_classification command
 
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)]
+
 Enables or disables the cluster's request classification policy.
 
 ## Permissions
