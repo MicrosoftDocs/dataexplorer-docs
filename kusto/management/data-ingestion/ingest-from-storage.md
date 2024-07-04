@@ -7,6 +7,8 @@ ms.date: 12/26/2023
 ---
 # Ingest from storage
 
+> [!INCLUDE [applies](../../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../../includes/applies-to-version/azure-data-explorer.md)]
+
 The `.ingest into` command ingests data into a table by "pulling" the data
 from one or more cloud storage files.
 For example, the command

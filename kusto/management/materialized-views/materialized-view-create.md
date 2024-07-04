@@ -8,6 +8,9 @@ ms.date: 03/22/2023
 
 # .create materialized-view
 
+> [!INCLUDE [applies](../../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../../includes/applies-to-version/azure-data-explorer.md)]
+
+
 A [materialized view](materialized-view-overview.md) is an aggregation query over a source table. It represents a single `summarize` statement.
 
 There are two possible ways to create a materialized view, as noted by the *backfill* option in the command:

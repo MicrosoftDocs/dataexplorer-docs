@@ -7,6 +7,8 @@ ms.date: 12/26/2023
 ---
 # Streaming ingestion and schema changes
 
+> [!INCLUDE [applies](../../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../../includes/applies-to-version/azure-data-explorer.md)]
+
 ::: moniker range= "azure-data-explorer"
 Cluster nodes cache the schema of databases that get data through [streaming ingestion](/azure.data-explorer/ingest-data-streaming), boosting performance and resource use. However, when there are schema changes, it can lead to delays in updates. 
 ::: moniker-end

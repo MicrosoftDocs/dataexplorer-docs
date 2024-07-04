@@ -8,6 +8,8 @@ ms.date: 03/01/2023
 
 # .disable | .enable materialized-view
 
+> [!INCLUDE [applies](../../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../../includes/applies-to-version/azure-data-explorer.md)]
+
 Disables or enables the materialization process for a materialized view.
 
 > [!NOTE]
