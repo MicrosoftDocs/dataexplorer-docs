@@ -7,6 +7,8 @@ ms.date: 11/07/2023
 ---
 # Use Kusto .NET client libraries from PowerShell
 
+> [!INCLUDE [applies](../../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../../includes/applies-to-version/azure-data-explorer.md)]
+
 PowerShell scripts can use the [Kusto client libraries](../client-libraries.md), as PowerShell inherently integrates with .NET libraries. In this article, you learn how to load and use the client libraries to run queries and management commands.
 
 ## Prerequisites

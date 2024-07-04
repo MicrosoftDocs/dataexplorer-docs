@@ -7,6 +7,8 @@ ms.date: 11/07/2023
 ---
 # Hello Kusto: Create your first app
 
+> [!INCLUDE [applies](../../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../../includes/applies-to-version/azure-data-explorer.md)]
+
 In this article, you learn how to:
 
 > [!div class="checklist"]

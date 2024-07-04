@@ -7,6 +7,8 @@ ms.date: 11/05/2018
 ---
 # Query/management HTTP response
 
+> [!INCLUDE [applies](../../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../../includes/applies-to-version/azure-data-explorer.md)]
+
 ## Response status
 
 The HTTP response status line follows the HTTP standard response codes.

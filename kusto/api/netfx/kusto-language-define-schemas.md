@@ -7,6 +7,8 @@ ms.date: 06/29/2023
 
 # Define schemas for semantic analysis with Kusto.Language
 
+> [!INCLUDE [applies](../../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../../includes/applies-to-version/azure-data-explorer.md)]
+
 [Kusto.Language](https://www.nuget.org/packages/Microsoft.Azure.Kusto.Language/) includes semantic analysis capabilities that identify and associate entities such as columns, variables, functions, and tables with the different parts of the query syntax. Semantic analysis also performs checks for semantic errors to help ensure the correctness of your queries.
 
 In order to perform semantic analysis, you need to define schemas for the entities referenced in your queries. This article explains how to define schemas directly or use schemas from the server.

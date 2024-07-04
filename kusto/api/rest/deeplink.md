@@ -7,6 +7,8 @@ ms.date: 10/30/2019
 ---
 # UI deep links
 
+> [!INCLUDE [applies](../../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../../includes/applies-to-version/azure-data-explorer.md)]
+
 UI deep links are URIs that, when opened in a web browser, result in automatically
 opening a UI tool (such as Kusto.Explorer or Kusto.WebExplorer) in a way that preselects
 the desired Kusto cluster (and optionally database).

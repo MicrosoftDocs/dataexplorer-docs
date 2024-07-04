@@ -7,6 +7,8 @@ ms.date: 10/18/2023
 ---
 # Kusto Ingest library overview
 
+> [!INCLUDE [applies](../../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../../includes/applies-to-version/azure-data-explorer.md)]
+
 The Kusto Ingest library provides a client for ingesting data into your cluster. The library supports [queued](#queued-ingestion) and [direct](#direct-ingestion) ingestion. The ingestion methods are defined by the Kusto ingest client object.
 
 For a list of interfaces and classes, see [Kusto Ingest client reference](kusto-ingest-client-reference.md).
