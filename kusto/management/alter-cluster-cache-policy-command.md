@@ -8,6 +8,8 @@ monikerRange: "azure-data-explorer"
 ---
 # .alter cluster caching policy command
 
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)]
+
 Changes the cluster's caching policy. To speed up queries, data is cached on processing nodes, SSD, or even in RAM. The [caching policy](cache-policy.md) allows your cluster to describe the data artifacts that it uses, so that more important data can take priority.
 
 ## Permissions
