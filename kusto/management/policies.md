@@ -1,6 +1,6 @@
 ---
 title: Policies overview
-description: Learn which policies are available for management with Azure Data Explorer.
+description: Learn which policies are available for management.
 ms.topic: reference
 ms.date: 08/21/2023
 ---

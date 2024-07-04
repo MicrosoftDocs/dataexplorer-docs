@@ -8,7 +8,7 @@ ms.date: 04/18/2023
 
 # Query SQL external tables
 
-You can query a SQL external table just as you would query an Azure Data Explorer table.
+You can query a SQL external table just as you would query an Azure Data Explorer or Fabric table.
 
 ## How it works
 

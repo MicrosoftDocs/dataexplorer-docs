@@ -61,7 +61,7 @@ To `.create-or-alter` an external table using managed identity authentication re
 
 ## Authentication and authorization
 
-To interact with an external Azure SQL table from Azure Data Explorer, you must specify authentication means as part of the *SqlConnectionString*. The *SqlConnectionString* defines the resource to access and its authentication information.
+To interact with an external Azure SQL table, you must specify authentication means as part of the *SqlConnectionString*. The *SqlConnectionString* defines the resource to access and its authentication information.
 
 For more information, see [Azure SQL external table authentication methods](../api/connection-strings/sql-connection-strings.md).
 

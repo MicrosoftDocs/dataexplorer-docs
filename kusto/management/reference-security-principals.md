@@ -7,7 +7,7 @@ ms.date: 05/24/2023
 ---
 # Referencing security principals
 
-The Azure Data Explorer authorization model allows for the use of Microsoft Entra user and application identities and Microsoft Accounts (MSAs) as security principals. This article provides an overview of the supported principal types for both Microsoft Entra ID and MSAs, and demonstrates how to properly reference these principals when assigning security roles using [management commands](security-roles.md).
+The authorization model allows for the use of Microsoft Entra user and application identities and Microsoft Accounts (MSAs) as security principals. This article provides an overview of the supported principal types for both Microsoft Entra ID and MSAs, and demonstrates how to properly reference these principals when assigning security roles using [management commands](security-roles.md).
 
 <a name='azure-active-directory'></a>
 
