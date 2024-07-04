@@ -7,6 +7,8 @@ ms.date: 10/18/2023
 ---
 # Best practices for the Kusto Data library
 
+> [!INCLUDE [applies](../../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../../includes/applies-to-version/azure-data-explorer.md)]
+
 This article explains the best practices for working with the [Kusto Data library](about-kusto-data.md).
 
 ## Use a single client instance

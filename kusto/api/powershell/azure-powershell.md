@@ -8,6 +8,8 @@ ms.date: 03/10/2024
 ---
 # Use Kusto cmdlets in Azure PowerShell
 
+> [!INCLUDE [applies](../../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../../includes/applies-to-version/azure-data-explorer.md)]
+
 PowerShell scripts can use Azure PowerShell [Az.Kusto cmdlets](/powershell/module/az.kusto) to run management commands.
 
 The steps in this article aren't required if you're running commands in [Azure Cloud Shell](https://shell.azure.com). If you're running the CLI locally, follow these steps to set up your environment.

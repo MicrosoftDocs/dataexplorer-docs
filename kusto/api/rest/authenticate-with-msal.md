@@ -7,6 +7,8 @@ ms.date: 06/28/2023
 ---
 # How to authenticate with Microsoft Authentication Library (MSAL) in apps
 
+> [!INCLUDE [applies](../../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../../includes/applies-to-version/azure-data-explorer.md)]
+
 To programmatically authenticate with your cluster, you need to request an access token from [Microsoft Entra ID](/azure/active-directory/fundamentals/active-directory-whatis) specific to Azure Data Explorer. This access token acts as proof of identity when issuing requests to your cluster. You can use one of the [Microsoft Authentication Library (MSAL)](/azure/active-directory/develop/msal-overview) [flows](/azure/active-directory/develop/msal-authentication-flows) to create an access token.
 
 This article explains how to use MSAL to authenticate principals to your cluster. The direct use of MSAL to authenticate principals is primarily relevant in web applications that require [On-behalf-of (OBO) authentication](#perform-on-behalf-of-obo-authentication) or [Single Page Application (SPA) authentication](#perform-single-page-application-spa-authentication). For other cases, we recommend using the [Kusto client libraries](../client-libraries.md) as they simplify the authentication process.

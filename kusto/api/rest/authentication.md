@@ -7,6 +7,8 @@ ms.date: 06/28/2023
 ---
 # Authentication over HTTPS
 
+> [!INCLUDE [applies](../../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../../includes/applies-to-version/azure-data-explorer.md)]
+
 To interact with your cluster over HTTPS, the principal making the request
 must authenticate by using the HTTP `Authorization` request header.
 

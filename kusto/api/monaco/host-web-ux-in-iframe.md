@@ -8,6 +8,8 @@ ms.date: 6/6/2023
 ---
 # Embed the Azure Data Explorer web UI in an iframe
 
+> [!INCLUDE [applies](../../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../../includes/applies-to-version/azure-data-explorer.md)]
+
 The Azure Data Explorer web UI can be embedded in an iframe and hosted in third-party websites. This article describes how to embed the Azure Data Explorer web UI in an iframe.
 
 :::image type="content" source="../media/host-web-ux-in-iframe/web-ux.png" alt-text="Screenshot of the Azure Data Explorer web U I.":::

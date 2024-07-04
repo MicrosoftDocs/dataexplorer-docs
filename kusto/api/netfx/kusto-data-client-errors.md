@@ -7,6 +7,8 @@ ms.date: 06/20/2022
 ---
 # Kusto.Data exceptions
 
+> [!INCLUDE [applies](../../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../../includes/applies-to-version/azure-data-explorer.md)]
+
 All exceptions defined in the .NET SDK implement the interface `Kusto.Cloud.Platform.Utils.ICloudPlatformException`. The exceptions are defined in the `Kusto.Cloud.Platform` assembly, and are distributed through the `Microsoft.Azure.Kusto.Cloud.Platform` NuGet package. You can write exception handlers to inspect and process exceptions based on the following `get` properties:
 
 * `int FailureCode { get; }`: Returns the equivalent HTTP status code.

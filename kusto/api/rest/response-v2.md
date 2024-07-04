@@ -7,6 +7,8 @@ ms.date: 02/11/2020
 ---
 # Query V2 HTTP response
 
+> [!INCLUDE [applies](../../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../../includes/applies-to-version/azure-data-explorer.md)]
+
 ## HTTP response status line
 
 If the request succeeds, the HTTP response status code is `200 OK`.
