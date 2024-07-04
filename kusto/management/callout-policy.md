@@ -8,6 +8,8 @@ monikerRange: "azure-data-explorer"
 ---
 # Callout policy
 
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)]
+
 Your cluster can communicate with external services in many different scenarios.
 Cluster administrators can manage the authorized domains for external calls by updating the cluster's callout policy.
 

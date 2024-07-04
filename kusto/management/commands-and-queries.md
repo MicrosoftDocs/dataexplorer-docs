@@ -7,6 +7,8 @@ ms.date: 11/30/2023
 ---
 # .show commands-and-queries command
 
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)]
+
 `.show` `commands-and-queries` returns a table with admin commands and queries on the cluster that have reached a final state. These commands and queries are available for 30 days.
 
 The information presented in the output of the command is similar to [`.show` commands](show-commands.md)

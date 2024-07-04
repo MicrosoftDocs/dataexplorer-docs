@@ -7,6 +7,8 @@ ms.date: 11/08/2023
 ---
 # Caching policy (hot and cold cache)
 
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)]
+
 To ensure fast query performance, a multi-tiered data cache system is used. Data is stored in reliable storage but parts of it are cached on processing nodes, SSD, or even in RAM for faster access.
 
 The caching policy allows you to choose which data should be cached. You can differentiate between *hot data cache* and *cold data cache* by setting a caching policy on hot data. Hot data is kept in local SSD storage for faster query performance, while cold data is stored in reliable storage, which is cheaper but slower to access.

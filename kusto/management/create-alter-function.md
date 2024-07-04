@@ -7,6 +7,8 @@ ms.date: 05/24/2023
 ---
 # .create-or-alter function command
 
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)]
+
 Creates a stored function or alters an existing function and stores it inside the database metadata.
 
 Rules for parameter types and CSL statements are the same as for [let statements](../query/let-statement.md).
