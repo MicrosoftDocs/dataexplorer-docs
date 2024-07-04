@@ -8,6 +8,8 @@ ms.date: 08/09/2023
 
 # Microsoft Logic Apps and Azure Data Explorer
 
+> [!INCLUDE [applies](../../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../../includes/applies-to-version/azure-data-explorer.md)]
+
 <!-- //TODO - per Akshay this does work with Fabric but you need to direct user to find the right query uri and take out ADX specific language -->
 
 The [Microsoft Logic Apps](/azure/logic-apps/logic-apps-what-are-logic-apps) connector allows you to run queries and commands automatically as part of a scheduled or triggered task.

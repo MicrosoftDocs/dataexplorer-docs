@@ -7,6 +7,8 @@ ms.date: 03/24/2020
 ---
 # Kusto CLI
 
+> [!INCLUDE [applies](../../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../../includes/applies-to-version/azure-data-explorer.md)]
+
 Kusto.Cli is a command-line utility for sending queries and control commands
 on a Kusto cluster. It can run in one of several modes:
 

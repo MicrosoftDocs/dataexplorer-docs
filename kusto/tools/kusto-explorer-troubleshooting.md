@@ -8,6 +8,8 @@ ms.date: 04/13/2020
 
 # Troubleshooting
 
+> [!INCLUDE [applies](../../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../../includes/applies-to-version/azure-data-explorer.md)]
+
 This document provides common difficulties in running and using Kusto.Explorer, and offers solutions. This document also describes [how to reset Kusto.Explorer](#reset-kustoexplorer).
 
 ## Kusto.Explorer fails to start

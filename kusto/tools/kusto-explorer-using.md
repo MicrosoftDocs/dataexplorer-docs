@@ -8,6 +8,8 @@ ms.date: 07/03/2023
 
 # Using Kusto.Explorer
 
+> [!INCLUDE [applies](../../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../../includes/applies-to-version/azure-data-explorer.md)]
+
 Kusto.Explorer is a desktop application that enables you to explore your data using the Kusto Query Language in an easy-to-use user interface. This article shows you how to use search and query modes, share your queries, and manage clusters, databases, and tables.
 
 ## Search++ mode

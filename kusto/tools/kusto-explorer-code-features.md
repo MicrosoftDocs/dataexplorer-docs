@@ -8,6 +8,8 @@ ms.date: 03/19/2023
 
 # Kusto.Explorer code features
 
+> [!INCLUDE [applies](../../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../../includes/applies-to-version/azure-data-explorer.md)]
+
 Similar to other IDEs, Kusto.Explorer offers a variety of code features, including [Code refactoring](#code-refactoring), [Code navigation](#code-navigation), and a [Code analyzer](#code-analyzer) utility.
 
 ## Code refactoring
