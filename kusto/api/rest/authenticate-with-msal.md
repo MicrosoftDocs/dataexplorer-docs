@@ -4,6 +4,7 @@ description: This article describes authentication with Microsoft Authentication
 ms.reviewer: orspodek
 ms.topic: reference
 ms.date: 06/28/2023
+monikerRange: "azure-data-explorer"
 ---
 # How to authenticate with Microsoft Authentication Library (MSAL) in apps
 
