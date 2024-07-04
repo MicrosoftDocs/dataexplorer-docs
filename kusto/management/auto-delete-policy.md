@@ -7,6 +7,8 @@ ms.date: 05/24/2023
 ---
 # Auto delete policy
 
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)]
+
 An auto delete policy on a table sets an expiry date for the table. The table is automatically deleted at this expiry time. Unlike the [retention policy](retention-policy.md), which determines when data ([extents](extents-overview.md)) are removed from a table, the auto delete policy drops the entire table.
 
 The auto delete policy can be useful for temporary staging tables. Temporary staging tables are used for data preparation, until the data is moved to its permanent location. We recommend explicitly dropping temporary tables when they're no longer needed. Only use the auto delete policy as a fallback mechanism in case the explicit deletion doesn't occur.
