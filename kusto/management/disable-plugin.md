@@ -8,6 +8,8 @@ monikerRange: "azure-data-explorer"
 ---
 # .disable plugin command
 
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)]
+
 Disables a plugin.
 
 ## Permissions
