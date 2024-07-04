@@ -8,6 +8,8 @@ monikerRange: "azure-data-explorer"
 ---
 # .create-or-alter workload_group command
 
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)]
+
 Create a new workload group, or alters an existing workload group.
 
 ## Permissions
