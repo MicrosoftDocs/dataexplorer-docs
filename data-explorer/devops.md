@@ -10,6 +10,8 @@ ms.date: 05/05/2021
 
 # Azure DevOps Task for Azure Data Explorer
 
+> Note: ADX Extension tasks now support Workload Identity Federation(WIF) and ManagedIdentity(MI) authentication via Azure Resource Manager(ARM) and Kusto Service Endpoint. To read more about it, refer here. [WIF and MI support](#keyless-authentication-support-for-azure-data-explorer-ado-tasks)
+
 [Azure DevOps Services](https://azure.microsoft.com/services/devops/) provides development collaboration tools such as high-performance pipelines, free private Git repositories, configurable Kanban boards, and extensive automated and continuous testing capabilities. [Azure Pipelines](https://azure.microsoft.com/services/devops/pipelines/) is an Azure DevOps capability that enables you to manage CI/CD to deploy your code with high-performance pipelines that work with any language, platform, and cloud.
 [Azure Data Explorer - Pipeline Tools](https://marketplace.visualstudio.com/items?itemName=Azure-Kusto.PublishToADX) is the Azure Pipelines task that enables you to create release pipelines and deploy your database changes to your Azure Data Explorer databases. It's available for free in the [Visual Studio Marketplace](https://marketplace.visualstudio.com/).
 This extension includes 3 basic tasks:
@@ -114,6 +116,7 @@ The are three ways to run admin commands against cluster in a task.
 
             | Setting | Suggested value |
             |--|--|
+            | **Authentication Mathod** | Select Service Principal Authentication(SPA). or you can learn setting up Federated Identity Credentials(FIC) [here](#setting-up-federated-itentity-credentialsfic-authentication-in-kusto-service-endpoint). |
             | **Connection name** | Enter a name to identify this service endpoint |
             | **Cluster Url** | Value can be found in the overview section of your Azure Data Explorer Cluster in the Azure portal |
             | **Service Principal Id** | Enter the Microsoft Entra App ID (created as prerequisite) |
@@ -195,22 +198,68 @@ If required, create a task to run a query against a cluster and gate the release
 
 You have now completed creation of a release pipeline for deployment to pre-production.
 
+## Keyless authentication support for Azure Data Explorer ADO tasks
+
+### Setting up Federated Itentity Credentials(FIC) authentication in Kusto Service Endpoint
+
+ 1. Go to Project Settings -> Service connections -> New service connection -> Azure Data Explorer
+ 1. Create ADX Service Endpoint with WIF authentication, Enter your Cluster URL, Service Principal Id, TenantID in the Service connection appropriate Fields. Set "Service connection name" and save.
+ 1. Go to Azure portal to load your Microsoft Entra App of your service principal, which you put the service principal id in service connection of steps above.
+ 1. Open "Certificates & secrets" section and switch to "Federated credentials" tab.
+
+    ![credentials](media/devops/credential.jpg)
+ 1. Click "+ Add credential" button
+
+    ![credsetting](media/devops/credsetting.jpg)
+ 1. Select "Other issuer" for "Federated credential scenario".
+ 1. Put "<https://vstoken.dev.azure.com/{System.CollectionId}>" for "Issuer". You can get "System.CollectionId" value from ADO classic release pipeline "Initialize job"
+
+    ![collectionid](media/devops/collectionId.jpg)
+
+ 1. Or you can find it by open "<https://dev.azure.com/{ADO_Org_name}/_settings/organizationOverview>" in browser, and right click to launch the context menu, and click "View page source" and then look for "hostid".
+ 1. Put "sc://{ADO Org name}/{Project Name}/{Service Connection name}" for "Subject identifier".
+Example: "<https://msazure.visualstudio.com/One/>", "msazure" is ADO Org name, "One" is project name.
+"Service Connection name" is what you put at step 1 above.
+    > Note: If there is space in your service connection name you can put as it is in Federated Credential, for example: sc://msazure/one/My Kusto Service Connection
+ 1. Give a "Name" in "Credential details" and click "Add" button.
+
+### Setting up Federated Itentity Credentials(FIC) and Managed Service Identity(MSI) in Azure Resource Manager(ARM) Service Connection
+
+ 1. Choose new service connection under project settings, and select Azure Resource Manager.
+
+    ![new arm service connection](media/devops/armnew.png)
+
+ 1. Select Work load Identity Federation (WIF)(Automatic/Manual) OR Managed Identity as the authentication method.
+
+    >***Note: Currently Kusto Task supports only WIF (automatic/manual) or Managed Identity for ARM service connections.***
+
+    ![arm types](media/devops/armtypes.png)
+
+ 1. Automatic Workload Identity Fedreation(WIF) will publish details automatically in contrast to Maual WIF where you need to provide the details manually.
+
+    ![arm manuall](media/devops/armmanual.png)
+
+ 1. After filling the details, click on verify and save the service connection.
+
+***Read more about setting up MSI using ARM at [Azure Resource Manager(ARM) Service Connections](https://learn.microsoft.com/azure/devops/pipelines/library/connect-to-azure?view=azure-devops).***
+
 ## Yaml Pipeline configuration
 
 The tasks can be configured both via Azure DevOps Web UI (as shown above) and via Yaml code within the [pipeline schema](/azure/devops/pipelines/yaml-schema)
 
 ### Admin Command Sample Usage
 
-``` 
+```yaml
 steps:
-- task: Azure-Kusto.PublishToADX.PublishToADX.PublishToADX@1
+- task: Azure-Kusto.PublishToADX.PublishToADX.PublishToADX@4
   displayName: '<Task Name>'
   inputs:
+    targetType: 'inline'
     script: '<inline Script>'
     waitForOperation: true
     kustoUrls: '$(CONNECTIONSTRING):443?DatabaseName=""'
-    customAuth: true
-    connectedServiceName: '<Service Endpoint Name>'
+    authType: 'armserviceconn'
+    connectedServiceARM: '<ARM Service Endpoint Name>'
     serialDelay: 1000
   continueOnError: true
   condition: ne(variables['ProductVersion'], '') ## Custom condition Sample
@@ -218,11 +267,12 @@ steps:
 
 ### Query Sample Usage
 
-``` 
+```yaml
 steps:
-- task: Azure-Kusto.PublishToADX.ADXQuery.ADXQuery@1
+- task: Azure-Kusto.PublishToADX.ADXQuery.ADXQuery@4
   displayName: '<Task Display Name>'
   inputs:
+    targetType: 'inline'
     script: |  
      let badVer=
      RunnersLogs | where Timestamp > ago(30m)
@@ -245,7 +295,9 @@ steps:
      | extend ServiceConnectionString = strcat("#connect ", ServiceConnectionString)
      | where DeploymentRing == "$(DeploymentRing)"
     kustoUrls: 'https://<ClusterName>.kusto.windows.net?DatabaseName=<DataBaneName>'
-    customAuth: true
-    connectedServiceName: '<Service Endpoint Name>'
+    authType: 'kustoserviceconn'
+    connectedServiceName: '<kusto connection service name>'
+    minThreshold: '0'
+    maxThreshold: '10'
   continueOnError: true
 ```
