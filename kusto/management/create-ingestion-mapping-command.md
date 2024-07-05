@@ -7,6 +7,8 @@ ms.date: 05/24/2023
 ---
 # .create ingestion mapping command
 
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)]
+
 Creates an ingestion mapping that can be associated with a specific format and a specific table or database.
 
 If a mapping with same name in the given scope already exists, `.create` will fail. Use [`.create-or-alter`](create-or-alter-ingestion-mapping-command.md) instead.

@@ -8,6 +8,8 @@ ms.date: 06/05/2023
 ---
 # .clear database cache query_results command
 
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)]
+
 Clear all [cached query results](../query/query-results-cache.md) made against the context database.
 
 ## Permissions

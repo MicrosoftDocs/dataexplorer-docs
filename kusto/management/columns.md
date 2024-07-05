@@ -7,6 +7,8 @@ ms.date: 02/13/2020
 ---
 # Columns management
 
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)]
+
 This section describes the following management commands used for managing table columns:
 
 |Command |Description |
