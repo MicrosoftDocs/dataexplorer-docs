@@ -8,6 +8,8 @@ monikerRange: "azure-data-explorer"
 ---
 # .alter policy managed_identity command
 
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)]
+
 Sets the ManagedIdentity policy of the cluster or the specified database, overriding the existing policy.
 
 > [!NOTE]

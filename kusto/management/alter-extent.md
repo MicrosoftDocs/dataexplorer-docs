@@ -9,6 +9,8 @@ monikerRange: "azure-data-explorer"
 
 # .alter extent tags command
 
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)]
+
 The command runs in the context of a specific database. It alters the specified [extent tags](extent-tags.md) of all of the extents returned by the query.
 
 The extents whose tags should be altered are specified using a Kusto query that returns a record set with a column called "ExtentId".

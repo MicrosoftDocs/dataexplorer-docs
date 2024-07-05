@@ -7,6 +7,8 @@ ms.date: 05/25/2023
 ---
 # .alter function folder command
 
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)]
+
 Alters the folder value of an existing function.
 
 > [!NOTE]

@@ -7,6 +7,8 @@ ms.date: 05/25/2023
 ---
 # .alter function docstring command
 
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)]
+
 Alters the `DocString` value of an existing function.
 
 `DocString` is free text that you can attach to a table/function/column describing the entity. This string is presented in various UX settings next to the entity names.
