@@ -8,6 +8,8 @@ monikerRange: "azure-data-explorer"
 ---
 # .alter cluster policy query_weak_consistency command
 
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)][!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)]
+
 Sets the cluster's [query weak consistency policy](query-weak-consistency-policy.md), overriding the current policy, and then returns the updated policy. The updated policy can be later viewed using the [show command](show-query-weak-consistency-policy.md). If not altered, the [default policy](query-weak-consistency-policy.md#default-policy) applies.
 
 ## Permissions
