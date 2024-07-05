@@ -7,6 +7,8 @@ ms.date: 02/21/2023
 ---
 # .alter column command
 
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)]
+
 Alters the data type of an existing table column.
 
 > [!WARNING]

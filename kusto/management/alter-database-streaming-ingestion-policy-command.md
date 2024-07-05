@@ -8,6 +8,8 @@ monikerRange: "azure-data-explorer"
 ---
 # .alter database policy streamingingestion command
 
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)]
+
 Changes the database streaming ingestion policy. The [streaming policy](../management/streaming-ingestion-policy.md) manages streaming ingestion of data into databases and tables.
 
 Streaming ingestion is best suited for low latency scenarios where the ingestion time is under 10 seconds for varying data volume. It can optimize processing for multiple tables across one or more databases, especially when the tables receive only a few records per second but the ingestion volume is thousands of records per second.

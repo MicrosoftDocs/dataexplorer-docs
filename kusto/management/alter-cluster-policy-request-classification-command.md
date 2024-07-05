@@ -8,6 +8,9 @@ monikerRange: "azure-data-explorer"
 ---
 # .alter cluster policy request_classification command
 
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)]
+
+
 Alters the cluster's request classification policy.
 
 ## Permissions
