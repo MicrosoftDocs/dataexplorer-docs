@@ -7,6 +7,8 @@ ms.date: 03/09/2023
 ---
 # bartlett_test_fl()
 
+>[!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)]
+
 The `bartlett_test_fl()` function is a user-defined [tabular function](../query/functions/user-defined-functions.md#tabular-function) that performs the [Bartlett Test](https://en.wikipedia.org/wiki/Bartlett%27s_test).
 
 [!INCLUDE [python-zone-pivot-fabric](../includes/python-zone-pivot-fabric.md)]

@@ -7,6 +7,8 @@ ms.date: 03/13/2023
 ---
 # mann_whitney_u_test_fl()
 
+>[!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)]
+
 The function `mann_whitney_u_test_fl()` is a [UDF (user-defined function)](../query/functions/user-defined-functions.md) that performs the [Mann-Whitney U Test](https://en.wikipedia.org/wiki/Mann%E2%80%93Whitney_U_test).
 
 [!INCLUDE [python-zone-pivot-fabric](../includes/python-zone-pivot-fabric.md)]

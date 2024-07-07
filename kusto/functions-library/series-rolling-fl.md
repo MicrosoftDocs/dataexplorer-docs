@@ -7,6 +7,8 @@ ms.date: 03/13/2023
 ---
 # series_rolling_fl()
 
+>[!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)]
+
 The function `series_rolling_fl()` is a [user-defined function (UDF)](../query/functions/user-defined-functions.md) that applies rolling aggregation on a series. It takes a table containing multiple series (dynamic numerical array) and applies, for each series, a rolling aggregation function.
 
 [!INCLUDE [python-zone-pivot-fabric](../includes/python-zone-pivot-fabric.md)]

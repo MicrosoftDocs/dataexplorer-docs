@@ -8,6 +8,8 @@ monikerRange: "microsoft-fabric || azure-data-explorer || azure-monitor || micro
 ---
 # time_window_rolling_avg_fl()
 
+>[!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)] [!INCLUDE [monitor](../includes/applies-to-version/monitor.md)] [!INCLUDE [sentinel](../includes/applies-to-version/sentinel.md)]
+
 The function `time_window_rolling_avg_fl()` is a [user-defined function (UDF)](../query/functions/user-defined-functions.md) that calculates the rolling average of the required value over a constant duration time window.
 
 Calculating rolling average over a constant time window for regular time series (that is, having constant intervals) can be achieved using [series_fir()](../query/series-fir-function.md), as the constant time window can be converted to a fixed width filter of equal coefficients. However, calculating it for irregular time series is more complex, as the actual number of samples in the window varies. Still it can be achieved using the powerful [scan](../query/scan-operator.md) operator.

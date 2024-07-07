@@ -7,6 +7,8 @@ ms.date: 03/13/2023
 ---
 # wilcoxon_test_fl()
 
+>[!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)]
+
 The function `wilcoxon_test_fl()` is a [user-defined function (UDF)](../query/functions/user-defined-functions.md) that performs the [Wilcoxon Test](https://en.wikipedia.org/wiki/Wilcoxon_signed-rank_test).
 
 [!INCLUDE [python-zone-pivot-fabric](../includes/python-zone-pivot-fabric.md)]

@@ -8,6 +8,8 @@ monikerRange: "microsoft-fabric || azure-data-explorer || azure-monitor || micro
 ---
 # comb_fl()
 
+>[!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)]
+
 Calculate *C(n, k)*
 
 The function `comb_fl()` is a [user-defined function (UDF)](../query/functions/user-defined-functions.md) that calculates *C(n, k)*, the number of [combinations](https://en.wikipedia.org/wiki/Combination) for selection of k items out of n, without order. It's based on the native [gamma()](../query/gamma-function.md) function to calculate factorial. For more information, see [facorial_fl()](factorial-fl.md). For a selection of k items with order, use [perm_fl()](perm-fl.md).

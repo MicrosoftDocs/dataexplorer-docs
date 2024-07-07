@@ -7,6 +7,8 @@ ms.date: 03/13/2023
 ---
 # pairwise_dist_fl()
 
+>[!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)]
+
 Calculate pairwise distances between entities based on multiple nominal and numerical variables.
 
 The function `pairwise_dist_fl()` is a [UDF (user-defined function)](../query/functions/user-defined-functions.md) that calculates the multivariate distance between data points belonging to the same partition, taking into account nominal and numerical variables.

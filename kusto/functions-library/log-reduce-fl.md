@@ -7,6 +7,8 @@ ms.date: 05/07/2023
 ---
 # log_reduce_fl()
 
+>[!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)]
+
 The function `log_reduce_fl()` finds common patterns in semi-structured textual columns, such as log lines, and clusters the lines according to the extracted patterns. It outputs a summary table containing the found patterns sorted top down by their respective frequency.
 
 [!INCLUDE [python-zone-pivot-fabric](../includes/python-zone-pivot-fabric.md)]
