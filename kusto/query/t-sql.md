@@ -151,7 +151,7 @@ The query environment offers limited support for T-SQL. The following table outl
 |Dynamic statements|Not supported|
 |Flow control statements|Only `IF` `THEN` `ELSE` statements with an identical schema for `THEN` and `ELSE` are supported.|
 |Duplicate column names|Not supported. The original name is preserved for one column.|
-|Data types|Data returned may differ in type from SQL Server. For example, `TINYINT` and `SMALLINT` have no equivalent in the query environment, and may return as `INT32` or `INT64` instead of `BYTE` or `INT16`.|
+|Data types|Data returned may differ in type from SQL Server. For example, `TINYINT` and `SMALLINT` have no equivalent in Kusto, and may return as `INT32` or `INT64` instead of `BYTE` or `INT16`.|
 
 ## Related content
 

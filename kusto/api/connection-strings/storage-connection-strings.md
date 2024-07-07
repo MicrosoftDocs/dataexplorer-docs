@@ -71,7 +71,7 @@ The following table summarizes the available authentication methods for differen
 
 ### Impersonation
 
-The query environment impersonates the requestor's principal identity to access the resource. To use impersonation, append `;impersonate` to the connection string.
+The service impersonates the requestor's principal identity to access the resource. To use impersonation, append `;impersonate` to the connection string.
 
 |Example|
 |--|
