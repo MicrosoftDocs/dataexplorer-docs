@@ -143,7 +143,7 @@ You can use parametrized queries with deep-linking.
 1. Create a query to be formed as a parametrized query (for example, `KustoLogs | where Timestamp > ago({Period}) | count`)
 1. Provide a parameter for every query parameter in the URI, such as:
 
-    `https://<your_database>.kusto.windows.net/MyDatabase?
+   `https://<your_cluster>.kusto.windows.net/MyDatabase?
 web=0&query=KustoLogs+%7c+where+Timestamp+>+ago({Period})+%7c+count&Period=1h`
 
     Replace &lt;your_database&gt; with your database name.
