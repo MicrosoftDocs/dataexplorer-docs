@@ -27,9 +27,9 @@ This training is not product-specific, and provides basic KQL learning:
 * [Data analysis in Azure Data Explorer with Kusto Query Language](/training/paths/data-analysis-data-explorer-kusto-query-language/)
 * [Free Pluralsight training: Azure Data Explorer](https://www.pluralsight.com/partners/microsoft/azure-data-explorer)
 
-## Real-Time Analytics in Microsoft Fabric
+## Real-Time Intelligence in Microsoft Fabric
 
-* [Get started with Real-Time Analytics in Microsoft Fabric](/training/modules/get-started-kusto-fabric/)
+* [Get started with Real-Time Intelligence in Microsoft Fabric](/training/modules/get-started-kusto-fabric/)
 
 ## Azure Monitor
 

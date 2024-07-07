@@ -4,6 +4,7 @@ description: This article describes Ingest from storage using Event Grid subscri
 ms.reviewer: leshalev
 ms.topic: how-to
 ms.date: 06/03/2024
+ms.custom: devx-track-azurepowershell
 ---
 # Event Grid data connection
 
@@ -131,30 +132,84 @@ When using ADLSv2, you can rename a blob to trigger blob ingestion to Azure Data
 Azure Data Explorer won't delete the blobs after ingestion. Use [Azure Blob storage lifecycle](/azure/storage/blobs/storage-lifecycle-management-concepts?tabs=azure-portal) to manage your blob deletion. It's recommended to keep the blobs for three to five days.
 
 ## Known Event Grid issues
-
-* If local authentication is disabled on the Event Hubs namespace that contains the event hub used for streaming notifications, use the following steps to ensure that data flows properly when using a managed identity:
-
-    1. Assign a system-assigned managed identity to the Event Grid system topic of the storage account. For more information, see [Enable managed identity for system topics](/azure/event-grid/enable-identity-system-topics).
-    1. Grant the managed identity sender permissions by assigning it the *Azure Event Hubs Data Sender* role on the event hub. For more information, see [Add identity to Azure roles on destinations](/azure/event-grid/add-identity-roles).
-    1. Make sure that the Event Grid subscription uses managed identity for event delivery. For more information, see [Create event subscriptions that use an identity](/azure/event-grid/managed-service-identity).
-    1. Configure the Event Grid data connection to use managed identity authentication so that Azure Data Explorer can receive notifications from the event hub.
-
-<!-- RESTORE THIS WHEN THE POWERSHELL SCRIPT IS READY. PASTE THE SCRIPT IN THE POWERSHELL TAB.
-* If local authentication is disabled on the Event Hubs namespace that contains the event hub used for streaming notifications, use the following steps to ensure that data flows properly when using a managed identity:
+* If local authentication is disabled on the Event Hubs namespace that contains the event hub used for streaming notifications, use the following steps to ensure that data flows properly from storage to the event hub using managed identities:
 
     ### [Steps](#tab/steps)
 
     1. Assign a system-assigned managed identity to the Event Grid system topic of the storage account. For more information, see [Enable managed identity for system topics](/azure/event-grid/enable-identity-system-topics).
     1. Grant the managed identity sender permissions by assigning it the *Azure Event Hubs Data Sender* role on the event hub. For more information, see [Add identity to Azure roles on destinations](/azure/event-grid/add-identity-roles).
     1. Make sure that the Event Grid subscription uses managed identity for event delivery. For more information, see [Create event subscriptions that use an identity](/azure/event-grid/managed-service-identity).
-    1. Configure the Event Grid data connection to use managed identity authentication so that Azure Data Explorer can receive notifications from the event hub.
+
 
     ### [PowerShell script](#tab/powershell)
 
-    ```powershell
-    ```
+  ```powershell
+  $eventGridSubscriptionId = "<AZURE SUBSCRIPTION ID OF EVENTGRID SYSTEM TOPIC>"
+  $eventGridResourceGroupName = "<RESOURCE GROUP NAME CONTAINING THE EVENTGRID SYSTEM TOPIC>"
+  $eventGridSystemTopicName = "<EVENTGRID SYSTEM TOPIC NAME>"
+  $eventGridSubscriptionName = "<EVENTGRID SUBSCRIPTION NAME>"
 
-    --- -->
+  $eventhubSubscriptionId = "<AZURE SUBSCRIPTION ID OF EVENTHUB NAMESPACE>"
+  $eventhubResourceGroupName = "<RESOURCE GROUP NAME CONTAINING THE EVENTHUB NAMESPACE>"
+  $eventhubNamespaceName = "<THE EVENTHUB NAMESPACE NAME>"
+  $eventhubName = "<THE EVENTHUB NAME>"
+
+  Set-AzContext -SubscriptionId $eventGridSubscriptionId
+
+  Write-Host "Checking if Event Grid Topic exists"
+  $eg = Get-AzEventGridSystemTopic -ResourceGroupName $eventGridResourceGroupName -Name $eventGridSystemTopicName
+  $hasSystemAssignedIdentity = $eg.IdentityType -match "SystemAssigned"
+
+  if ($hasSystemAssignedIdentity) {
+      Write-Host -ForegroundColor Green "Event Grid Topic $eventGridSystemTopicName already has a system-assigned identity"
+  }
+  else {
+      Write-Host "Event Grid Topic $eventGridSystemTopicName doesn't have a system-assigned identity. Assigning one..."
+      Update-AzEventGridSystemTopic -ResourceGroupName $eventGridResourceGroupName -Name $eventGridSystemTopicName -EnableSystemAssignedIdentity $true
+      Write-Host -ForegroundColor Green "System-assigned identity has been assigned to Event Grid Topic $eventGridSystemTopicName"
+  }
+
+  $eg = Get-AzEventGridSystemTopic -ResourceGroupName $eventGridResourceGroupName -Name $eventGridSystemTopicName
+  $identityPrincipalId = $eg.IdentityPrincipalId
+
+  Set-AzContext -SubscriptionId $eventhubSubscriptionId 
+
+  $eventhubResourceId = "/subscriptions/$eventhubSubscriptionId/resourceGroups/$eventhubResourceGroupName/providers/Microsoft.EventHub/namespaces/$eventhubNamespaceName/eventhubs/$eventhubName"
+
+  Write-Host "Checking if Azure Event Hubs Data Sender role is assigned to Event Grid Topic's system-assigned identity $identityPrincipalId for Event Hub $eventhubName"
+  $roleAssignment = Get-AzRoleAssignment -ObjectId $identityPrincipalId -RoleDefinitionName "Azure Event Hubs Data Sender" -Scope $eventhubResourceId
+  $hasRoleAssignment = $null -ne $roleAssignment
+
+  if ($hasRoleAssignment) {
+      Write-Host -ForegroundColor Yellow "Azure Event Hubs Data Sender role is already assigned to Event Grid Topic's system-assigned identity $identityPrincipalId for Event Hub $eventhubName"
+  }
+  else {
+      Write-Host "Going to assign Azure Event Hubs Data Sender role to Event Grid Topic's system-assigned identity $identityPrincipalId for Event Hub $eventhubResourceId"
+      New-AzRoleAssignment -ObjectId $identityPrincipalId -RoleDefinitionName "Azure Event Hubs Data Sender" -Scope "/subscriptions/$eventhubSubscriptionId/resourceGroups/$eventhubResourceGroupName/providers/Microsoft.EventHub/namespaces/$eventhubNamespaceName/eventhubs/$eventhubName"
+      Write-Host -ForegroundColor Green "Azure Event Hubs Data Sender role has been assigned to Event Grid Topic's system-assigned identity $identityPrincipalId for Event Hub $eventhubName"
+  }
+
+  Write-Host "Checking if Event Subscription $eventSubscriptionName is using Systeam assigned identity"
+  $eventGridSubscribtion = Get-AzEventGridSystemTopicEventSubscription -ResourceGroupName $eventGridResourceGroupName -SystemTopicName $eventGridSystemTopicName -EventSubscriptionName $eventGridSubscriptionName
+  $deliveryIdentityType = $eventGridSubscribtion.DeliveryWithResourceIdentityType 
+  $destination = $eventGridSubscribtion.Destination
+
+  if ($deliveryIdentityType -eq "SystemAssigned") {
+      Write-Host -ForegroundColor Yellow "Event Subscription $eventGridSubscriptionName is allready using System Assigned Identity"
+  }
+  else {
+      Write-Host "Event Subscription $eventGridSubscriptionName is not using System Assigned Identity. Updating..."
+      Update-AzEventGridSystemTopicEventSubscription -ResourceGroupName $eventGridResourceGroupName -SystemTopicName $eventGridSystemTopicName -EventSubscriptionName $eventGridSubscriptionName -DeliveryWithResourceIdentityType "SystemAssigned" -DeliveryWithResourceIdentityDestination $destination
+      Write-Host -ForegroundColor Green "Event Subscription $eventGridSubscriptionName is now using System Assigned Identity"
+  }
+
+  Write-Host -ForegroundColor Green "%%%%%%%% Script has been executed successfully %%%%%%%%"
+
+    ```
+    
+    ---
+
+    In addition, configure the Event Grid data connection to use managed identity authentication so that Azure Data Explorer can receive notifications from the event hub.
 
 * When using Azure Data Explorer to [export](kusto/management/data-export/export-data-to-storage.md) the files used for Event Grid ingestion, note:
   * Event Grid notifications aren't triggered if the connection string provided to the export command or the connection string provided to an [external table](kusto/management/data-export/export-data-to-an-external-table.md) is a connecting string in [ADLS Gen2 format](kusto/api/connection-strings/storage-connection-strings.md#storage-connection-string-templates) (for example, `abfss://filesystem@accountname.dfs.core.windows.net`) but the storage account isn't enabled for hierarchical namespace.

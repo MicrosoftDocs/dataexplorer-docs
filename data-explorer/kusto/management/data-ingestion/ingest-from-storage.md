@@ -3,7 +3,7 @@ title:  Kusto.ingest into command (pull data from storage)
 description: This article describes The .ingest into command (pull data from storage) in Azure Data Explorer.
 ms.reviewer: orspodek
 ms.topic: reference
-ms.date: 12/26/2023
+ms.date: 06/26/2024
 ---
 # Ingest from storage
 
@@ -36,7 +36,7 @@ You must have at least [Table Ingestor](../access-control/role-based-access-cont
 |*SourceDataLocator*| `string` | :heavy_check_mark:|A single or comma-separated list of [storage connection strings](../../api/connection-strings/storage-connection-strings.md). A single connection string must refer to a single file hosted by a storage account. Ingestion of multiple files can be done by specifying multiple connection strings, or by [ingesting from a query](ingest-from-query.md) of an [external table](../../query/schema-entities/external-tables.md).|
 
 > [!NOTE]
-> We recommend using [obfuscated string literals](../../query/scalar-data-types/string.md#obfuscated-string-literals) for the *SourceDataPointer*. The service will scrub credentials in internal traces and error messages.
+> We recommend using [obfuscated string literals](../../query/scalar-data-types/string.md#obfuscated-string-literals) for the *SourceDataLocators*. The service will scrub credentials in internal traces and error messages.
 
 [!INCLUDE [ingestion-properties](../../../includes/ingestion-properties.md)]
 
