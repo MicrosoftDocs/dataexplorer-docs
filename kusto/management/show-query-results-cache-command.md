@@ -7,6 +7,8 @@ ms.date: 05/24/2023
 ---
 # .show database cache query_results command
 
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)]
+
 Returns a table showing statistics related to the [query results cache](../query/query-results-cache.md) made against the context database.
 
 ## Permissions

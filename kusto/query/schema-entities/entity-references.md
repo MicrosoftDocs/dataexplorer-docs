@@ -7,6 +7,8 @@ ms.date: 08/29/2023
 ---
 # Entity references
 
+> [!INCLUDE [applies](../../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../../includes/applies-to-version/azure-data-explorer.md)] [!INCLUDE [monitor](../../includes/applies-to-version/monitor.md)] [!INCLUDE [sentinel](../../includes/applies-to-version/sentinel.md)]
+
 Kusto entities are referenced in a query by name. Entities that can be referenced by their name include *databases*, *tables*, *columns*, and *stored functions*, but not *clusters*.
 
 If the entity's container is unambiguous in the current context, use the entity name without additional qualifications. For example, when running a query against a

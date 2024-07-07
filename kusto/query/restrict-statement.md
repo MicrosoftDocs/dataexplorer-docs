@@ -8,6 +8,8 @@ monikerRange: "microsoft-fabric || azure-data-explorer"
 ---
 # Restrict statement
 
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)] [!INCLUDE [monitor](../includes/applies-to-version/monitor.md)] [!INCLUDE [sentinel](../includes/applies-to-version/sentinel.md)]
+
 The restrict statement limits the set of table/view entities which are visible to query statements that follow it. For example, in a database that includes two tables (`A`, `B`), the application can prevent the rest of the query from accessing `B` and only "see" a limited form of table `A` by using a view.
 
 The restrict statement's main scenario is for middle-tier applications that accept queries from users and want to

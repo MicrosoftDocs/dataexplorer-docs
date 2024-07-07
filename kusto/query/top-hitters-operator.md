@@ -7,6 +7,8 @@ ms.date: 03/16/2023
 ---
 # top-hitters operator
 
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)] [!INCLUDE [monitor](../includes/applies-to-version/monitor.md)] [!INCLUDE [sentinel](../includes/applies-to-version/sentinel.md)]
+
 Returns an approximation for the most popular distinct values, or the values
 with the largest sum, in the input.
 

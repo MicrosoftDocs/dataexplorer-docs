@@ -7,6 +7,8 @@ ms.date: 12/26/2022
 ---
 # log2()
 
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)] [!INCLUDE [monitor](../includes/applies-to-version/monitor.md)] [!INCLUDE [sentinel](../includes/applies-to-version/sentinel.md)]
+
  The logarithm is the base-2 logarithm: the inverse of the exponential function (exp) with base 2.
 
 ## Syntax

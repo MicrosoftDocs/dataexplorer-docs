@@ -7,6 +7,8 @@ ms.date: 02/15/2023
 ---
 # zip()
 
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)] [!INCLUDE [monitor](../includes/applies-to-version/monitor.md)] [!INCLUDE [sentinel](../includes/applies-to-version/sentinel.md)]
+
 The `zip` function accepts any number of `dynamic` arrays, and returns an
 array whose elements are each an array holding the elements of the input
 arrays of the same index.

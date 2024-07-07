@@ -7,6 +7,8 @@ ms.date: 01/08/2024
 ---
 # The bool data type
 
+> [!INCLUDE [applies](../../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../../includes/applies-to-version/azure-data-explorer.md)] [!INCLUDE [monitor](../../includes/applies-to-version/monitor.md)] [!INCLUDE [sentinel](../../includes/applies-to-version/sentinel.md)]
+
 The `bool` data type can be: `true` (`1`), `false` (`0`), or null.
 
 > The `bool` and `boolean` data types are equivalent.

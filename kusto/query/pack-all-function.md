@@ -7,6 +7,8 @@ ms.date: 01/08/2023
 ---
 # pack_all()
 
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)] [!INCLUDE [monitor](../includes/applies-to-version/monitor.md)] [!INCLUDE [sentinel](../includes/applies-to-version/sentinel.md)]
+
 Creates a [dynamic](scalar-data-types/dynamic.md) property bag object from all the columns of the tabular expression.
 
 > [!NOTE]

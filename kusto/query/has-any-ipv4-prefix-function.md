@@ -7,6 +7,8 @@ ms.date: 12/18/2022
 ---
 # has_any_ipv4_prefix()
 
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)] [!INCLUDE [monitor](../includes/applies-to-version/monitor.md)] [!INCLUDE [sentinel](../includes/applies-to-version/sentinel.md)]
+
 Returns a boolean value indicating whether one of specified IPv4 address prefixes appears in a text.
 
 IP address entrances in a text must be properly delimited with non-alphanumeric characters. For example, properly delimited IP addresses are:

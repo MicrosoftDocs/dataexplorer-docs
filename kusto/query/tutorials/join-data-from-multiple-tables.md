@@ -3,9 +3,12 @@ title:  'Tutorial: Join data from multiple tables'
 description: This tutorial shows how to join data from multiple tables using the Kusto Query Language.
 ms.topic: tutorial
 ms.date: 03/06/2023
+monikerRange: "microsoft-fabric || azure-data-explorer || microsoft-sentinel || azure-monitor"
 ---
 
 # Tutorial: Join data from multiple tables
+
+> [!INCLUDE [applies](../../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../../includes/applies-to-version/azure-data-explorer.md)] [!INCLUDE [monitor](../../includes/applies-to-version/monitor.md)] [!INCLUDE [sentinel](../../includes/applies-to-version/sentinel.md)]
 
 Joining data from multiple tables allows for a more comprehensive analysis by combining information from different sources and creating new relationships between data points. In the [Kusto Query Language (KQL)](../index.md), the [join](../join-operator.md) and [lookup](../lookup-operator.md) operators are used to combine data across tables.
 

@@ -7,6 +7,8 @@ ms.date: 11/03/2023
 ---
 # Databases
 
+> [!INCLUDE [applies](../../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../../includes/applies-to-version/azure-data-explorer.md)] [!INCLUDE [monitor](../../includes/applies-to-version/monitor.md)] [!INCLUDE [sentinel](../../includes/applies-to-version/sentinel.md)]
+
 Databases are named entities that hold tables and stored functions. Kusto follows a relation model of storing the data where the upper-level entity is a `database`.
 
 A single cluster can host several databases, in which each database hosts its own collection of [tables](tables.md), [stored functions](stored-functions.md), and [external tables](external-tables.md). Each database has its own set of permissions that follow the [Role Based Access Control (RBAC)](../../access-control/role-based-access-control.md) model.

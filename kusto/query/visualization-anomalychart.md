@@ -8,6 +8,8 @@ monikerRange: "microsoft-fabric || azure-data-explorer"
 ---
 # Anomaly chart
 
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)] [!INCLUDE [monitor](../includes/applies-to-version/monitor.md)] [!INCLUDE [sentinel](../includes/applies-to-version/sentinel.md)]
+
 The anomaly chart visualization is similar to a [timechart](visualization-timechart.md), but highlights anomalies using the [series_decompose_anomalies](series-decompose-anomalies-function.md) function.  
 
 > [!NOTE]

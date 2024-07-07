@@ -7,6 +7,8 @@ ms.date: 03/16/2023
 ---
 # contains operator
 
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)] [!INCLUDE [monitor](../includes/applies-to-version/monitor.md)] [!INCLUDE [sentinel](../includes/applies-to-version/sentinel.md)]
+
 Filters a record set for data containing a case-insensitive string. `contains` searches for arbitrary sub-strings rather than [terms](datatypes-string-operators.md#what-is-a-term).
 
 [!INCLUDE [contains-operator-comparison](../includes/contains-operator-comparison.md)]

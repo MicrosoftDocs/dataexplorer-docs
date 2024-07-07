@@ -7,6 +7,8 @@ ms.date: 01/12/2023
 ---
 # Query results cache
 
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)] [!INCLUDE [monitor](../includes/applies-to-version/monitor.md)] [!INCLUDE [sentinel](../includes/applies-to-version/sentinel.md)]
+
 Kusto includes a query results cache. You can choose to get cached results when issuing a query. You'll experience better query performance and lower resource consumption if your query's results can be returned by the cache. However, this performance comes at the expense of some "staleness" in the results.
 
 ## Use the cache

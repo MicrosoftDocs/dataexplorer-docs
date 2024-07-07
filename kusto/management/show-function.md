@@ -7,6 +7,8 @@ ms.date: 05/24/2023
 ---
 # .show functions command
 
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)]
+
 Lists all the stored functions in the currently-selected database.
 To return only one specific function, see [.show function](#show-function).
 

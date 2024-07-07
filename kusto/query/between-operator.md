@@ -7,6 +7,8 @@ ms.date: 07/10/2023
 ---
 # between operator
 
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)] [!INCLUDE [monitor](../includes/applies-to-version/monitor.md)] [!INCLUDE [sentinel](../includes/applies-to-version/sentinel.md)]
+
 Filters a record set for data matching the values in an inclusive range.
 
 `between` can operate on any numeric, datetime, or timespan expression.

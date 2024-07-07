@@ -7,6 +7,8 @@ ms.date: 03/22/2023
 ---
 # row_rank_min()
 
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)] [!INCLUDE [monitor](../includes/applies-to-version/monitor.md)] [!INCLUDE [sentinel](../includes/applies-to-version/sentinel.md)]
+
 Returns the current row's minimal rank in a [serialized row set](window-functions.md#serialized-row-set).
 
 The rank is the minimal row number that the current row's *Term* appears in.

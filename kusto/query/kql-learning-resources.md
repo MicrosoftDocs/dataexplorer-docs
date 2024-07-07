@@ -7,6 +7,8 @@ ms.date: 09/28/2023
 ---
 # Kusto Query Language learning resources
 
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)] [!INCLUDE [monitor](../includes/applies-to-version/monitor.md)] [!INCLUDE [sentinel](../includes/applies-to-version/sentinel.md)]
+
 Kusto Query Language (KQL) is a powerful tool to explore your data and discover patterns, identify anomalies and outliers, create statistical modeling, and more. Are you new to KQL or want to improve your KQL skills? Take a look at the following learning resources.
 For more information on KQL, see [KQL overview](index.md).
 

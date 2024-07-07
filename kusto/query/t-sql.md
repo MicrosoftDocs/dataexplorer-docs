@@ -7,6 +7,8 @@ ms.date: 03/08/2023
 ---
 # Query data using T-SQL
 
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)] [!INCLUDE [monitor](../includes/applies-to-version/monitor.md)] [!INCLUDE [sentinel](../includes/applies-to-version/sentinel.md)]
+
 The query editor supports the use of T-SQL in addition to its primary query language, [Kusto query language (KQL)](index.md). While KQL is the recommended query language, T-SQL can be useful for tools that are unable to use KQL.
 
 > [!NOTE]

@@ -7,6 +7,8 @@ ms.date: 01/08/2023
 ---
 # parse_json()
 
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)] [!INCLUDE [monitor](../includes/applies-to-version/monitor.md)] [!INCLUDE [sentinel](../includes/applies-to-version/sentinel.md)]
+
 Interprets a `string` as a JSON value and returns the value as `dynamic`. If possible, the value is converted into relevant [data types](scalar-data-types/index.md).  For strict parsing with no data type conversion, use [extract()](extract-function.md) or [extract_json()](extract-json-function.md) functions.
 
 It's better to use the parse_json() function over the [extract_json()](extract-json-function.md) function when you need to extract more than one element of a JSON compound object. Use [dynamic()](scalar-data-types/dynamic.md) when possible.

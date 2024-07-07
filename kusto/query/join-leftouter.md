@@ -9,6 +9,8 @@ monikerRange: "microsoft-fabric || azure-data-explorer || azure-monitor || micro
 
 # leftouter join
 
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)] [!INCLUDE [monitor](../includes/applies-to-version/monitor.md)] [!INCLUDE [sentinel](../includes/applies-to-version/sentinel.md)]
+
 The `leftouter` join flavor returns all the records from the left side table and only matching records from the right side table.
 
 :::image type="content" source="media/joinoperator/join-leftouter.png" alt-text="Diagram that shows how the join works." lightbox="media/joinoperator/join-kinds.png":::

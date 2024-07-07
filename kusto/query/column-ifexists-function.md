@@ -7,6 +7,8 @@ ms.date: 11/27/2022
 ---
 # column_ifexists()
 
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)] [!INCLUDE [monitor](../includes/applies-to-version/monitor.md)] [!INCLUDE [sentinel](../includes/applies-to-version/sentinel.md)]
+
 Takes a column name as a string and a default value. Returns a reference to the column if it exists, otherwise - returns the default value.
 
 > **Deprecated aliases:** columnifexists()

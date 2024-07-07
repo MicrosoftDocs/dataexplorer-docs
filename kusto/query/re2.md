@@ -7,6 +7,8 @@ ms.date: 08/03/2023
 ---
 # RE2 syntax
 
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)] [!INCLUDE [monitor](../includes/applies-to-version/monitor.md)] [!INCLUDE [sentinel](../includes/applies-to-version/sentinel.md)]
+
 This article provides an overview of regular expression syntax supported by [Kusto Query Language (KQL)](index.md), which is the syntax of the RE2 library.
 
 There are a number of KQL operators and functions that perform string matching, selection, and extraction with regular expressions, such as [`matches regex`](matches-regex-operator.md), [`parse`](parse-operator.md), and [`replace_regex()`](replace-regex-function.md).

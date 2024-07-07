@@ -7,6 +7,8 @@ ms.date: 03/02/2023
 ---
 # welch_test()
 
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)] [!INCLUDE [monitor](../includes/applies-to-version/monitor.md)] [!INCLUDE [sentinel](../includes/applies-to-version/sentinel.md)]
+
 Computes the p_value of the [Welch-test function](https://en.wikipedia.org/wiki/Welch%27s_t-test)
 
 ## Syntax

@@ -8,6 +8,8 @@ ms.date: 02/26/2024
 
 # .set stored_query_result command
 
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)]
+
 Sets a mechanism that stores a query result on the service for up to 24 hours.
 
 If a stored query result name already exists, `.set` fails. Instead, use `.set-or-replace`, which deletes the existing stored query result and creates a new one with the same name.

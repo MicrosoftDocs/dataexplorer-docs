@@ -4,7 +4,6 @@ description: Learn how to use the `create-or-alter workload_group` command to cr
 ms.reviewer: yonil
 ms.topic: reference
 ms.date: 07/01/2024
-monikerRange: "azure-data-explorer || microsoft-fabric"
 ---
 # .create-or-alter workload_group command
 

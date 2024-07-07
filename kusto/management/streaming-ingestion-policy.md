@@ -10,6 +10,8 @@ monikerRange: "azure-data-explorer"
 
 ## Streaming ingestion target scenarios
 
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)]
+
 Streaming ingestion should be used for the following scenarios:
 
 * Latency of less than a few seconds is required.

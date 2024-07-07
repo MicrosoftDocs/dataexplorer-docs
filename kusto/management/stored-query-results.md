@@ -8,6 +8,8 @@ ms.date: 04/08/2024
 
 # Stored query results
 
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)]
+
 *Stored query results* store the result of a query on the service for up to 24 hours. The same principal identity that created the stored query can reference the results in later queries.
 
 Stored query results can be useful in the following scenarios:

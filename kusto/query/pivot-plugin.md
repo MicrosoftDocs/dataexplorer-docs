@@ -7,6 +7,8 @@ ms.date: 01/12/2023
 ---
 # pivot plugin
 
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)] [!INCLUDE [monitor](../includes/applies-to-version/monitor.md)] [!INCLUDE [sentinel](../includes/applies-to-version/sentinel.md)]
+
 Rotates a table by turning the unique values from one column in the input table into multiple columns in the output table and performs aggregations as required on any remaining column values that will appear in the final output.
 
 > [!NOTE]

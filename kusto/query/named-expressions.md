@@ -8,6 +8,8 @@ ms.date: 04/16/2023
 ---
 # Optimize queries that use named expressions
 
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)] [!INCLUDE [monitor](../includes/applies-to-version/monitor.md)] [!INCLUDE [sentinel](../includes/applies-to-version/sentinel.md)]
+
 This article discusses how to optimize repeat use of named expressions in a query.
 
 In Kusto Query Language, you can bind names to complex expressions in several different ways:

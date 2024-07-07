@@ -7,6 +7,8 @@ ms.date: 01/22/2023
 ---
 # series_fit_2lines()
 
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)] [!INCLUDE [monitor](../includes/applies-to-version/monitor.md)] [!INCLUDE [sentinel](../includes/applies-to-version/sentinel.md)]
+
 Applies a two segmented linear regression on a series, returning multiple columns.  
 
 Takes an expression containing dynamic numerical array as input and applies a [two segmented linear regression](https://en.wikipedia.org/wiki/Segmented_regression) in order to identify and quantify a trend change in a series. The function iterates on the series indexes. In each iteration, the function splits the series to two parts, fits a separate line (using [series_fit_line()](series-fit-line-function.md)) to each part, and calculates the total r-square. The best split is the one that maximized r-square; the function returns its parameters:

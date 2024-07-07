@@ -7,6 +7,8 @@ ms.date: 04/11/2023
 ---
 # Broadcast join
 
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)] [!INCLUDE [monitor](../includes/applies-to-version/monitor.md)] [!INCLUDE [sentinel](../includes/applies-to-version/sentinel.md)]
+
 Today, regular joins are executed on a single cluster node.
 Broadcast join is an execution strategy of join that distributes the join over cluster nodes. This strategy is useful when the left side of the join is small (up to several tens of MBs). In this case, a broadcast join is more performant than a regular join.
 

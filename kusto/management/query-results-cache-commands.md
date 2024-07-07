@@ -7,6 +7,8 @@ ms.date: 06/16/2020
 ---
 # Query results cache commands
 
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)]
+
 The query results cache is a cache dedicated for storing query results. For more information, see [Query results cache](../query/query-results-cache.md).
 
 **Query results cache commands**

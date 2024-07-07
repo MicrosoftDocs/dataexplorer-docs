@@ -7,6 +7,8 @@ ms.date: 04/16/2023
 ---
 # bag_set_key()
 
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)] [!INCLUDE [monitor](../includes/applies-to-version/monitor.md)] [!INCLUDE [sentinel](../includes/applies-to-version/sentinel.md)]
+
 bag_set_key() receives a `dynamic` property-bag, a key and a value. The function sets the given key in the bag to the given value. The function overrides any existing value in case the key already exists.
 
 ## Syntax

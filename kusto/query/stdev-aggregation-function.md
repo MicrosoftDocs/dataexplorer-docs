@@ -7,6 +7,8 @@ ms.date: 11/13/2023
 ---
 # stdev() (aggregation function)
 
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)] [!INCLUDE [monitor](../includes/applies-to-version/monitor.md)] [!INCLUDE [sentinel](../includes/applies-to-version/sentinel.md)]
+
 Calculates the standard deviation of *expr* across the group, using [Bessel's correction](https://en.wikipedia.org/wiki/Bessel's_correction) for a small dataset that is considered a [sample](https://en.wikipedia.org/wiki/Sample_%28statistics%29).
 
 [!INCLUDE [ignore-nulls](../includes/ignore-nulls.md)]

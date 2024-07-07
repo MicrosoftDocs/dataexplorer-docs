@@ -7,6 +7,8 @@ ms.date: 03/09/2023
 ---
 # geo_geohash_to_central_point()
 
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)] [!INCLUDE [monitor](../includes/applies-to-version/monitor.md)] [!INCLUDE [sentinel](../includes/applies-to-version/sentinel.md)]
+
 Calculates the geospatial coordinates that represent the center of a geohash rectangular area.
 
 Read more about [`geohash`](https://en.wikipedia.org/wiki/Geohash).  

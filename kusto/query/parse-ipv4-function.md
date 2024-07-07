@@ -7,6 +7,8 @@ ms.date: 01/08/2023
 ---
 # parse_ipv4()
 
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)] [!INCLUDE [monitor](../includes/applies-to-version/monitor.md)] [!INCLUDE [sentinel](../includes/applies-to-version/sentinel.md)]
+
 Converts IPv4 string to a signed 64-bit wide long number representation in big-endian order.
 
 ## Syntax

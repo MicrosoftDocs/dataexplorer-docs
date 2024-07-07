@@ -7,6 +7,8 @@ ms.date: 11/07/2022
 ---
 # base64_encode_fromguid()
 
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)] [!INCLUDE [monitor](../includes/applies-to-version/monitor.md)] [!INCLUDE [sentinel](../includes/applies-to-version/sentinel.md)]
+
 Encodes a [GUID](scalar-data-types/guid.md) to a base64 string.
 
 ## Syntax
