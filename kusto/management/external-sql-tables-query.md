@@ -8,6 +8,8 @@ ms.date: 04/18/2023
 
 # Query SQL external tables
 
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)]
+
 You can query a SQL external table just as you would query an Azure Data Explorer or Fabric table.
 
 ## How it works

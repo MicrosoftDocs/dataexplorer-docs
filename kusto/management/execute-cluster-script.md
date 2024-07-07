@@ -8,6 +8,8 @@ monikerRange: "azure-data-explorer"
 ---
 # .execute cluster script command
 
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)]
+
 Executes a batch of management commands in the scope is a cluster. 
 
 > [!NOTE]

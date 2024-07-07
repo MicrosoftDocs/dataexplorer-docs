@@ -4,9 +4,11 @@ description: Learn how to use the request rate limit policy to limit the number 
 ms.reviewer: yonil
 ms.topic: reference
 ms.date: 07/01/2024
-monikerRange: "azure-data-explorer"
+monikerRange: "azure-data-explorer || microsoft-fabric"
 ---
 # Request rate limit policy
+
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)]
 
 The workload group's request rate limit policy lets you limit the number of concurrent requests classified into the workload group, per workload group or per principal.
 

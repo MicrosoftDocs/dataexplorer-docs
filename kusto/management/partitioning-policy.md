@@ -7,6 +7,8 @@ ms.date: 02/21/2024
 ---
 # Partitioning policy
 
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)]
+
 The partitioning policy defines if and how [extents (data shards)](extents-overview.md) should be partitioned for a specific table or a [materialized view](materialized-views/materialized-view-overview.md).
 
 The policy triggers an additional background process that takes place after the creation of extents, following data ingestion. This process includes reingesting data from the source extents and producing *homogeneous* extents, in which all values of the column designated as the [partition key](#partition-keys) reside within a single partition.

@@ -7,6 +7,8 @@ ms.date: 05/24/2023
 
 # .create external table mapping command
 
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)]
+
 Create a new external table data mapping. For more information, see [Data mappings](mappings.md).
 
 ## Syntax
