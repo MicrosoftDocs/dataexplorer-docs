@@ -4,7 +4,6 @@ description: Learn how to use the `.alter cluster policy request_classification`
 ms.reviewer: yonil
 ms.topic: reference
 ms.date: 07/01/2024
-monikerRange: "azure-data-explorer || microsoft-fabric"
 ---
 # .alter cluster policy request_classification command
 
