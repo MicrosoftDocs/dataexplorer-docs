@@ -7,6 +7,8 @@ ms.date: 06/20/2024
 ---
 # Tables management
 
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)]
+
 This topic discusses the life cycle of tables and associated management commands that are helpful for exploring, creating and altering tables.
 
 Select the links in the table below for more information about them.

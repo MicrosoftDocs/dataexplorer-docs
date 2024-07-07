@@ -7,6 +7,8 @@ ms.date: 05/25/2023
 ---
 # .undo drop table command
 
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)]
+
 The `.undo` `drop` `table` command reverts a drop table operation to a specific database version. The database version must be the version just prior to the table deletion.
 
 ## Permissions
