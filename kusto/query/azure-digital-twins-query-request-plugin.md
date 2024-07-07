@@ -14,7 +14,7 @@ The `azure_digital_twins_query_request` plugin runs an Azure Digital Twins query
 
 Using the plugin, you can query across data in both Azure Digital Twins and any data source accessible through KQL. For example, you can [perform time series analytics](#perform-time-series-analytics).
 
-For more information about the plugin, see [Azure Digital Twins query plugin for Azure Data Explorer](/azure/digital-twins/concepts-data-explorer-plugin#using-the-plugin).
+For more information about the plugin, see [Azure Digital Twins query plugin](/azure/digital-twins/concepts-data-explorer-plugin#using-the-plugin).
 
 ## Syntax
 
@@ -71,4 +71,4 @@ evaluate azure_digital_twins_query_request(
 
 ## Perform time series analytics
 
-You can use the data history integration feature of Azure Digital Twins to historize digital twin property updates. To learn how to view the historized twin updates, see [View the historized twin updates in Azure Data Explorer](/azure/digital-twins/how-to-use-data-history?tabs=cli#view-the-historized-twin-updates-in-azure-data-explorer)
+You can use the data history integration feature of Azure Digital Twins to historize digital twin property updates. To learn how to view the historized twin updates, see [View the historized twin updates](/azure/digital-twins/how-to-use-data-history?tabs=cli#view-the-historized-twin-updates-in-azure-data-explorer)

@@ -266,5 +266,7 @@ The suggestion in this case is to review the query and reduce the columns being 
 
 ## Related content
 
+:::moniker range="azure-data-explorer"
 * [Optimize for high concurrency with Azure Data Explorer](/azure/data-explorer/high-concurrency.md)
+::: moniker-end
 * [Query best practices](../query/best-practices.md)
