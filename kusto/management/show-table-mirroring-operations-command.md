@@ -8,6 +8,8 @@ monikerRange: "microsoft-fabric"
 ---
 # .show table mirroring operations command
 
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)]
+
 Check the table's [mirroring policy](mirroring-policy.md) operations mirroring status. Mirroring status allows you to verify the latency and status of your data export.
 
 ## Syntax

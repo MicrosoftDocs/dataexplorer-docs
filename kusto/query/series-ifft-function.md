@@ -7,6 +7,8 @@ ms.date: 01/29/2023
 ---
 # series_ifft()
 
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)] [!INCLUDE [monitor](../includes/applies-to-version/monitor.md)] [!INCLUDE [sentinel](../includes/applies-to-version/sentinel.md)]
+
 Applies the Inverse Fast Fourier Transform (IFFT) on a series.  
 
 The series_ifft() function takes a series of complex numbers in the frequency domain and transforms it back to the time/spatial domain using the [Fast Fourier Transform](https://en.wikipedia.org/wiki/Fast_Fourier_transform). This function is the complementary function of [series_fft](series-fft-function.md). Commonly the original series is transformed to the frequency domain for spectral processing and then back to the time/spatial domain.

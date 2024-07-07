@@ -7,6 +7,8 @@ ms.date: 11/20/2022
 ---
 # ago()
 
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)] [!INCLUDE [monitor](../includes/applies-to-version/monitor.md)] [!INCLUDE [sentinel](../includes/applies-to-version/sentinel.md)]
+
 Subtracts the given [timespan](scalar-data-types/timespan.md) from the current UTC time.
 
 Like `now()`, if you use `ago()` multiple times in a single query statement, the current UTC time

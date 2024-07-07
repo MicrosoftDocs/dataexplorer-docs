@@ -7,6 +7,8 @@ ms.date: 12/18/2022
 ---
 # format_bytes()
 
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)] [!INCLUDE [monitor](../includes/applies-to-version/monitor.md)] [!INCLUDE [sentinel](../includes/applies-to-version/sentinel.md)]
+
 Formats a number as a string representing data size in bytes.
 
 ## Syntax

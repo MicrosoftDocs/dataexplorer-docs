@@ -7,6 +7,8 @@ ms.date: 11/20/2022
 ---
 # activity_engagement plugin
 
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)] [!INCLUDE [monitor](../includes/applies-to-version/monitor.md)] [!INCLUDE [sentinel](../includes/applies-to-version/sentinel.md)]
+
 Calculates activity engagement ratio based on ID column over a sliding timeline window.
 
 The activity_engagement plugin can be used for calculating DAU/WAU/MAU (daily/weekly/monthly activities).

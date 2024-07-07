@@ -8,6 +8,8 @@ monikerRange: "microsoft-fabric || azure-data-explorer"
 ---
 # Query statement types
 
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)] [!INCLUDE [monitor](../includes/applies-to-version/monitor.md)] [!INCLUDE [sentinel](../includes/applies-to-version/sentinel.md)]
+
 A query consists of one or more **query statements**, delimited by a semicolon (`;`).
 At least one of these query statements must be a [tabular expression statement](tabular-expression-statements.md).
 The tabular expression statement generates one or more tabular results. Any two statements must be separated by a semicolon.

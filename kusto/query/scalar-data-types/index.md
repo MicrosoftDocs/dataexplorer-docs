@@ -7,6 +7,8 @@ ms.date: 01/27/2020
 ---
 # Scalar data types
 
+> [!INCLUDE [applies](../../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../../includes/applies-to-version/azure-data-explorer.md)] [!INCLUDE [monitor](../../includes/applies-to-version/monitor.md)] [!INCLUDE [sentinel](../../includes/applies-to-version/sentinel.md)]
+
 Every data value, like the value of an expression or a function parameter, has a *data type*. A data type is either a *scalar data type*, which is one of the built-in predefined types listed below, or a *user-defined record*, which is an ordered sequence of name and scalar-data-type pairs, like the data type of a row in a table.
 
 > [!NOTE]

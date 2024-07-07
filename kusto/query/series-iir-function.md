@@ -7,6 +7,8 @@ ms.date: 01/30/2023
 ---
 # series_iir()
 
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)] [!INCLUDE [monitor](../includes/applies-to-version/monitor.md)] [!INCLUDE [sentinel](../includes/applies-to-version/sentinel.md)]
+
 Applies an Infinite Impulse Response filter on a series.  
 
 The function takes an expression containing dynamic numerical array as input, and applies an [Infinite Impulse Response](https://en.wikipedia.org/wiki/Infinite_impulse_response) filter. By specifying the filter coefficients, you can use the function to:

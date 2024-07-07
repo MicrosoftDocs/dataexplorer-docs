@@ -7,6 +7,8 @@ ms.date: 01/17/2023
 ---
 # reverse()
 
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)] [!INCLUDE [monitor](../includes/applies-to-version/monitor.md)] [!INCLUDE [sentinel](../includes/applies-to-version/sentinel.md)]
+
 Function reverses the order of the input string.
 If the input value isn't of type `string`, then the function forcibly casts the value to type `string`.
 

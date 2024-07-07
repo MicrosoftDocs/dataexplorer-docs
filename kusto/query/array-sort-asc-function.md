@@ -7,6 +7,8 @@ ms.date: 09/21/2022
 ---
 # array_sort_asc()
 
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)] [!INCLUDE [monitor](../includes/applies-to-version/monitor.md)] [!INCLUDE [sentinel](../includes/applies-to-version/sentinel.md)]
+
 Receives one or more arrays. Sorts the first array in ascending order. Orders the remaining arrays to match the reordered first array.
 
 ## Syntax

@@ -8,6 +8,8 @@ ms.date: 09/20/2022
 
 # Aggregation function types at a glance
 
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)] [!INCLUDE [monitor](../includes/applies-to-version/monitor.md)] [!INCLUDE [sentinel](../includes/applies-to-version/sentinel.md)]
+
 An aggregation function performs a calculation on a set of values, and returns a single value. These functions are used in conjunction with the [summarize operator](summarize-operator.md). This article lists all available aggregation functions grouped by type. For scalar functions, see [Scalar function types](scalar-functions.md).
 
 ## Binary functions

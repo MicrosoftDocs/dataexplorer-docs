@@ -7,6 +7,8 @@ ms.date: 05/24/2023
 ---
 # .show table policy ingestiontime command
 
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)]
+
 Display a table's [ingestion time policy](ingestion-time-policy.md). This policy creates a hidden `datetime` column in the table, called `$IngestionTime`. Whenever new data is ingested, the time of ingestion is recorded in the hidden column.
 
 ## Permissions

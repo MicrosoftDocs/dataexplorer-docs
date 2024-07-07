@@ -7,6 +7,8 @@ ms.date: 04/16/2023
 ---
 # Query operators
 
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)] [!INCLUDE [monitor](../includes/applies-to-version/monitor.md)] [!INCLUDE [sentinel](../includes/applies-to-version/sentinel.md)]
+
 A query is a read-only operation against data ingested into your cluster. Queries always run in the context of a particular database in the cluster. They may also refer to data in another database, or even in another cluster.
 
 As ad-hoc query of data is the top-priority scenario for Kusto, the Kusto Query Language syntax is optimized for non-expert users authoring and running queries over their data and being able to understand unambiguously what each query does (logically).

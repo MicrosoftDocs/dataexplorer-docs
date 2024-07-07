@@ -8,6 +8,8 @@ monikerRange: "microsoft-fabric || azure-data-explorer"
 ---
 # mysql_request plugin
 
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)] [!INCLUDE [monitor](../includes/applies-to-version/monitor.md)] [!INCLUDE [sentinel](../includes/applies-to-version/sentinel.md)]
+
 The `mysql_request` plugin sends a SQL query to an Azure MySQL Server network endpoint and returns the first rowset in the results. The query may return more than one rowset, but only the first rowset is made available for the rest of the Kusto query.
 
 The plugin is invoked with the [`evaluate`](evaluate-operator.md) operator.

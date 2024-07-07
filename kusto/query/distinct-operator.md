@@ -8,6 +8,8 @@ monikerRange: "microsoft-fabric || azure-data-explorer || azure-monitor || micro
 ---
 # distinct operator
 
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)] [!INCLUDE [monitor](../includes/applies-to-version/monitor.md)] [!INCLUDE [sentinel](../includes/applies-to-version/sentinel.md)]
+
 Produces a table with the distinct combination of the provided columns of the input table.
 
 ## Syntax

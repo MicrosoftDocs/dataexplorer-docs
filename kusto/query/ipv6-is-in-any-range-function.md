@@ -7,6 +7,8 @@ ms.date: 12/21/2022
 ---
 # ipv6_is_in_any_range()
 
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)] [!INCLUDE [monitor](../includes/applies-to-version/monitor.md)] [!INCLUDE [sentinel](../includes/applies-to-version/sentinel.md)]
+
 Checks whether an IPv6 string address is in any of the specified IPv6 address ranges.
 
 ## Syntax

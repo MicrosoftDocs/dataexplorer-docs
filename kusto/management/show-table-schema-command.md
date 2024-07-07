@@ -7,6 +7,8 @@ ms.date: 05/24/2023
 ---
 # .show table schema command
 
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)]
+
 Gets the schema to use in create/alter commands and additional table metadata.
 
 ## Permissions

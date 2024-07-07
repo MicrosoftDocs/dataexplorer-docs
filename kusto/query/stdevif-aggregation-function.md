@@ -7,6 +7,8 @@ ms.date: 11/13/2023
 ---
 # stdevif() (aggregation function)
 
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)] [!INCLUDE [monitor](../includes/applies-to-version/monitor.md)] [!INCLUDE [sentinel](../includes/applies-to-version/sentinel.md)]
+
 Calculates the [standard deviation](stdev-aggregation-function.md) of *expr* in records for which *predicate* evaluates to `true`.
 
 [!INCLUDE [ignore-nulls](../includes/ignore-nulls.md)]

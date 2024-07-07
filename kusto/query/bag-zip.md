@@ -7,6 +7,8 @@ ms.date: 05/01/2023
 ---
 # bag_zip()
 
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)] [!INCLUDE [monitor](../includes/applies-to-version/monitor.md)] [!INCLUDE [sentinel](../includes/applies-to-version/sentinel.md)]
+
 Creates a dynamic property-bag from two input dynamic arrays. In the resulting property-bag, the values from the first input array are used as the property keys, while the values from the second input array are used as corresponding property values.
 
 ## Syntax

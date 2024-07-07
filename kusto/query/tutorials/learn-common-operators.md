@@ -7,6 +7,8 @@ ms.date: 12/21/2023
 
 # Tutorial: Learn common operators
 
+> [!INCLUDE [applies](../../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../../includes/applies-to-version/azure-data-explorer.md)] [!INCLUDE [monitor](../../includes/applies-to-version/monitor.md)] [!INCLUDE [sentinel](../../includes/applies-to-version/sentinel.md)]
+
 [Kusto Query Language (KQL)](../index.md) is used to write queries in [Azure Data Explorer](https://dataexplorer.azure.com/), [Azure Monitor Log Analytics](https://azure.microsoft.com/products/monitor/#overview), [Azure Sentinel](https://azure.microsoft.com/products/microsoft-sentinel/), and more. This tutorial is an introduction to the essential KQL operators used to access and analyze your data.
 
 For more specific guidance on how to query logs in Azure Monitor, see [Get started with log queries](/azure/azure-monitor/logs/get-started-queries).

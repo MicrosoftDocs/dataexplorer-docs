@@ -7,6 +7,8 @@ ms.date: 01/01/2023
 ---
 # ipv4_is_private()
 
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)] [!INCLUDE [monitor](../includes/applies-to-version/monitor.md)] [!INCLUDE [sentinel](../includes/applies-to-version/sentinel.md)]
+
 Checks if the IPv4 string address belongs to a set of private network IPs.
 
 [Private network addresses](https://en.wikipedia.org/wiki/Private_network) were originally defined to help delay IPv4 address exhaustion. IP packets originating from or addressed to a private IP address can't be routed through the public internet.

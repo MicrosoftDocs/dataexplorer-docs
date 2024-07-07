@@ -4,7 +4,6 @@ description: Learn how to use the request rate limit policy to limit the number 
 ms.reviewer: yonil
 ms.topic: reference
 ms.date: 07/01/2024
-monikerRange: "azure-data-explorer || microsoft-fabric"
 ---
 # Request rate limit policy
 

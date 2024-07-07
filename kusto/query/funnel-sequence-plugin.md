@@ -7,6 +7,8 @@ ms.date: 12/18/2022
 ---
 # funnel_sequence plugin
 
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)] [!INCLUDE [monitor](../includes/applies-to-version/monitor.md)] [!INCLUDE [sentinel](../includes/applies-to-version/sentinel.md)]
+
 Calculates distinct count of users who have taken a sequence of states, and the distribution of previous/next states that have led to/were followed by the sequence. The plugin is invoked with the [`evaluate`](evaluate-operator.md) operator.
 
 ## Syntax

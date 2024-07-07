@@ -7,6 +7,8 @@ ms.date: 01/31/2023
 ---
 # startswith operator
 
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)] [!INCLUDE [monitor](../includes/applies-to-version/monitor.md)] [!INCLUDE [sentinel](../includes/applies-to-version/sentinel.md)]
+
 Filters a record set for data with a case-insensitive string starting sequence.
 
 [!INCLUDE [startswith-operator-comparison](../includes/startswith-operator-comparison.md)]

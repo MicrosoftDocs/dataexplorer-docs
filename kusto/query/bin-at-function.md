@@ -7,6 +7,8 @@ ms.date: 04/15/2024
 ---
 # bin_at()
 
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)] [!INCLUDE [monitor](../includes/applies-to-version/monitor.md)] [!INCLUDE [sentinel](../includes/applies-to-version/sentinel.md)]
+
 Returns the value rounded down to the nearest bin size, which is aligned to a fixed reference point.
 
 In contrast to the [bin()](bin-function.md) function, where the point of alignment is predefined, bin_at() allows you to define a fixed point for alignment. Results can align before or after the fixed point.

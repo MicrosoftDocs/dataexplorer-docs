@@ -7,6 +7,8 @@ ms.date: 04/04/2024
 ---
 # geo_point_to_s2cell()
 
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)] [!INCLUDE [monitor](../includes/applies-to-version/monitor.md)] [!INCLUDE [sentinel](../includes/applies-to-version/sentinel.md)]
+
 Calculates the S2 cell token string value of a geographic location.
 
 S2 cell can be a useful geospatial clustering tool. An S2 cell is a cell on a spherical surface and it has geodesic edges. S2 cells are part of a hierarchy dividing up the Earth's surface. They have a maximum of 31 levels, ranging from zero to 30, which define the number of times a cell is subdivided. Levels range from the largest coverage on level zero with area coverage of 85,011,012.19km², to the lowest coverage of 0.44 cm² at level 30. As S2 cells are subdivided at higher levels, the cell center is preserved well. Two geographic locations can be very close to each other but they have different S2 cell tokens.

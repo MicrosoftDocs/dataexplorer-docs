@@ -8,6 +8,8 @@ ms.date: 06/18/2023
 
 # leftsemi join
 
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)] [!INCLUDE [monitor](../includes/applies-to-version/monitor.md)] [!INCLUDE [sentinel](../includes/applies-to-version/sentinel.md)]
+
 The `leftsemi` join flavor returns all records from the left side that match a record from the right side. Only columns from the left side are returned.
 
 :::image type="content" source="media/joinoperator/join-leftsemi.png" alt-text="Diagram that shows how the join works." lightbox="media/joinoperator/join-kinds.png":::

@@ -7,6 +7,8 @@ ms.date: 05/10/2023
 ---
 # ipv4_range_to_cidr_list()
 
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)] [!INCLUDE [monitor](../includes/applies-to-version/monitor.md)] [!INCLUDE [sentinel](../includes/applies-to-version/sentinel.md)]
+
 Converts a IPv4 address range denoted by starting and ending IPv4 addresses to a list of IPv4 ranges in CIDR notation.
 
 ## Syntax

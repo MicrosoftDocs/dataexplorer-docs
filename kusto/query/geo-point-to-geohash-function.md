@@ -7,6 +7,8 @@ ms.date: 04/01/2024
 ---
 # geo_point_to_geohash()
 
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)] [!INCLUDE [monitor](../includes/applies-to-version/monitor.md)] [!INCLUDE [sentinel](../includes/applies-to-version/sentinel.md)]
+
 Calculates the geohash string value of a geographic location.
 
 Read more about [geohash](https://en.wikipedia.org/wiki/Geohash).  

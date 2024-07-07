@@ -7,6 +7,8 @@ ms.date: 01/05/2024
 ---
 # geo_angle()
 
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)] [!INCLUDE [monitor](../includes/applies-to-version/monitor.md)] [!INCLUDE [sentinel](../includes/applies-to-version/sentinel.md)]
+
 Calculates clockwise angle in radians between two lines on Earth. The first line is [point1, point2] and the second line is [point2, point3].
 
 ## Syntax

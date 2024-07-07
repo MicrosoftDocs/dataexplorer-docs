@@ -8,6 +8,8 @@ monikerRange: "microsoft-fabric || azure-data-explorer || azure-monitor || micro
 
 # Tutorial: Create geospatial visualizations
 
+> [!INCLUDE [applies](../../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../../includes/applies-to-version/azure-data-explorer.md)] [!INCLUDE [monitor](../../includes/applies-to-version/monitor.md)] [!INCLUDE [sentinel](../../includes/applies-to-version/sentinel.md)]
+
 This tutorial is for those who want to use [Kusto Query Language (KQL)](../index.md) for geospatial visualization. Geospatial clustering is a way to organize and analyze data based on geographical location. KQL offers multiple methods for performing [geospatial clustering](../geospatial-grid-systems.md) and tools for [geospatial visualizations](../geospatial-visualizations.md).
 
 In this tutorial, you'll learn how to:

@@ -7,6 +7,8 @@ ms.date: 01/12/2023
 ---
 # parse_path()
 
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)] [!INCLUDE [monitor](../includes/applies-to-version/monitor.md)] [!INCLUDE [sentinel](../includes/applies-to-version/sentinel.md)]
+
 Parses a file path `string` and returns a [`dynamic`](scalar-data-types/dynamic.md) object that contains the following parts of the path:
 
 * Scheme

@@ -7,6 +7,8 @@ ms.date: 05/25/2023
 ---
 # beta_pdf()
 
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)] [!INCLUDE [monitor](../includes/applies-to-version/monitor.md)] [!INCLUDE [sentinel](../includes/applies-to-version/sentinel.md)]
+
 Returns the probability density beta function.
 
 The beta distribution is commonly used to study variation in the percentage of something across samples, such as the fraction of the day people spend watching television.

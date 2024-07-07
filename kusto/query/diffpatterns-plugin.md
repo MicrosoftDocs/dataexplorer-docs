@@ -7,6 +7,8 @@ ms.date: 03/12/2023
 ---
 # diffpatterns plugin
 
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)] [!INCLUDE [monitor](../includes/applies-to-version/monitor.md)] [!INCLUDE [sentinel](../includes/applies-to-version/sentinel.md)]
+
 Compares two datasets of the same structure and finds patterns of discrete attributes (dimensions) that characterize differences between the two datasets. The plugin is invoked with the [`evaluate`](evaluate-operator.md) operator.
 
 `diffpatterns` was developed to help analyze failures (for example, by comparing failures to non-failures in a given time frame), but can potentially find differences between any two datasets of the same structure.

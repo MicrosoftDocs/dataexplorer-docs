@@ -7,6 +7,8 @@ ms.date: 11/21/2023
 ---
 # System information
 
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)]
+
 This section summarizes commands that are available to Database Admins and Database Monitors to explore usage, track operations, and investigate ingestion failures. For more information on security roles, see [Kusto role-based access control](../access-control/role-based-access-control.md).
 
 * [`.show journal`](journal.md) - displays history of the metadata operations.

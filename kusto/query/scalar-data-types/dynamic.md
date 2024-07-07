@@ -7,6 +7,8 @@ ms.date: 02/29/2024
 ---
 # The dynamic data type
 
+> [!INCLUDE [applies](../../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../../includes/applies-to-version/azure-data-explorer.md)] [!INCLUDE [monitor](../../includes/applies-to-version/monitor.md)] [!INCLUDE [sentinel](../../includes/applies-to-version/sentinel.md)]
+
 The `dynamic` scalar data type can be any of the following values:
 
 * An array of `dynamic` values, holding zero or more values with zero-based indexing.

@@ -9,6 +9,8 @@ monikerRange: "microsoft-fabric || azure-data-explorer"
 
 # Pattern statement
 
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)] [!INCLUDE [monitor](../includes/applies-to-version/monitor.md)] [!INCLUDE [sentinel](../includes/applies-to-version/sentinel.md)]
+
 A **pattern** is a construct that maps string tuples to tabular expressions. Each pattern must *declare* a pattern name and optionally *define* a pattern mapping. Patterns that define a mapping return a tabular expression when invoked. Any two statements must be separated by a semicolon.
 
 *Empty patterns* are patterns that are declared but don't define a mapping. When invoked, they return error *SEM0036* along with the details of the missing pattern definitions in the HTTP header. Middle-tier applications that provide a Kusto Query Language (KQL) experience can use the returned details as part of their process to enrich KQL query results.
