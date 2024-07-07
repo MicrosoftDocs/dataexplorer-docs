@@ -7,6 +7,8 @@ ms.date: 08/24/2023
 ---
 # Row order policy
 
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)]
+
 The row order policy sets the preferred arrangement of rows within an [extent](extents-overview.md). The policy is optional and set at the table level.
 
 The main purpose of the policy is to improve the performance of queries that are narrowed to a small subset of values in ordered columns. Additionally, it may contribute to improvements in compression.

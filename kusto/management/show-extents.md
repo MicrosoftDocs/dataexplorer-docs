@@ -9,6 +9,8 @@ monikerRange: "azure-data-explorer"
 
 # .show extents
 
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)]
+
 > [!NOTE]
 > Data shards are called **extents**, and all commands use "extent" or "extents" as a synonym.
 > For more information on extents, see [Extents (Data Shards) Overview](extents-overview.md).

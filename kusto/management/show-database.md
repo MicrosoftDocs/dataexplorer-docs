@@ -7,6 +7,8 @@ ms.date: 05/24/2023
 ---
 # .show database command
 
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)]
+
 Returns a table showing the properties of the context database.
 
 To return a table in which every record corresponds to a database in the cluster that the user has access to, see [`.show databases`](show-databases.md).

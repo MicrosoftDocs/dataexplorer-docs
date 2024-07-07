@@ -3,6 +3,7 @@ title:  'Tutorial: Join data from multiple tables'
 description: This tutorial shows how to join data from multiple tables using the Kusto Query Language.
 ms.topic: tutorial
 ms.date: 03/06/2023
+monikerRange: "microsoft-fabric || azure-data-explorer || microsoft-sentinel || azure-monitor"
 ---
 
 # Tutorial: Join data from multiple tables

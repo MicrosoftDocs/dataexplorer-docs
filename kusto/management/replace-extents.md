@@ -8,6 +8,8 @@ monikerRange: "azure-data-explorer"
 ---
 # .replace extents command
 
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)]
+
 This command runs in the context of a specific database.
 It moves the specified extents from their source tables to the destination table,
 and then drops the specified extents from the destination table.
