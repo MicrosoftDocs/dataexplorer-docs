@@ -8,6 +8,8 @@ ms.date: 02/18/2020
 
 # Best practices for schema management
 
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)]
+
 Here are several best practices to follow. They'll help make your management commands work better, and have a lighter impact on the service resources.
 
 |Action  |Use  |Don't use | Notes |

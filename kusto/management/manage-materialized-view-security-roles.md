@@ -7,6 +7,8 @@ ms.date: 07/17/2023
 
 # Manage materialized view roles
 
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)]
+
 Principals are granted access to resources through a role-based access control model, where their assigned security roles determine their resource access.
 
 On materialized views, the only security role is `admins`. Materialized view `admins` have the ability to view, modify, and remove the materialized view.

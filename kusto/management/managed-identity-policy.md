@@ -8,6 +8,8 @@ monikerRange: "azure-data-explorer"
 ---
 # Managed Identity policy
 
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)]
+
 *ManagedIdentity* is a policy that controls which managed identities can be used for what purposes. For example, you can configure a policy that allows a specific managed identity to be used for accessing a storage account for ingestion purposes.
 
 This policy can be enabled at the cluster and database levels. The policy is additive, meaning that for every operation that involves a managed identity, the operation will be permitted if the usage is allowed at either the cluster or database level.
