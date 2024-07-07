@@ -8,8 +8,6 @@ monikerRange: "azure-data-explorer"
 ---
 # Treemap
 
-::: moniker range="azure-data-explorer"
-
 Treemaps display hierarchical data as a set of nested rectangles. Each level of the hierarchy is represented by a colored rectangle (branch) containing smaller rectangles (leaves).
 
 > [!NOTE]
@@ -49,4 +47,3 @@ StormEvents
 ```
 
 :::image type="content" source="media/visualization-treemap/treemap.png" alt-text="Screenshot of treemap visualization output." lightbox="media/visualization-treemap/treemap.png":::
-::: moniker-end

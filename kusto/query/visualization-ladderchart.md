@@ -8,8 +8,6 @@ monikerRange: "azure-data-explorer"
 ---
 # Ladder chart
 
-::: moniker range="azure-data-explorer"
-
 The last two columns are the x-axis, and the other columns are the y-axis.
 
 > [!NOTE]
@@ -82,6 +80,3 @@ StormEvents
 ```
 
 :::image type="content" source="media/visualization-ladderchart/ladderchart-state-and-event-type.png" alt-text="Screenshot of ladderchart showing dates of storms by state and event type." lightbox="media/visualization-ladderchart/ladderchart-state-and-event-type.png":::
-
-::: moniker-end
-

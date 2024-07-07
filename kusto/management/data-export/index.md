@@ -1,6 +1,6 @@
 ---
 title: Data export
-description: Learn how to export data from Azure Data Explorer.
+description: Learn how to export data.
 ms.reviewer: orspodek
 ms.topic: reference
 ms.date: 06/13/2024

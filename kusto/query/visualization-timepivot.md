@@ -8,8 +8,6 @@ monikerRange: "azure-data-explorer"
 ---
 # Time pivot
 
-::: moniker range="azure-data-explorer"
-
 The time pivot visualization is an interactive navigation over the events time-line pivoting on time axis.
 
 > [!NOTE]
@@ -62,6 +60,3 @@ StormEvents
 ```
 
 :::image type="content" source="media/visualization-timepivot/time-pivot-visualization.jpg" lightbox="media/visualization-timepivot/time-pivot-visualization.jpg" alt-text="Screenshot of timepivot in Kusto.Explorer.":::
-
-::: moniker-end
-

@@ -8,8 +8,6 @@ monikerRange: "azure-data-explorer"
 ---
 # Pivot chart
 
-::: moniker range="azure-data-explorer"
-
 Displays a pivot table and chart. You can interactively select data, columns, rows, and various chart types.
 
 > [!NOTE]
@@ -41,6 +39,3 @@ SalesFact
 ```
 
 :::image type="content" source="media/visualize-pivotchart/pivotchart.png" alt-text="Screenshot of query result showing a pivot chart visualization."  lightbox="media/visualize-pivotchart/pivotchart.png":::
-
-::: moniker-end
-
