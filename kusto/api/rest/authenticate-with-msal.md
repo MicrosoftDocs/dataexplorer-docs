@@ -1,6 +1,6 @@
 ---
 title:  How to authenticate with Microsoft Authentication Library (MSAL) in apps
-description: This article describes authentication with Microsoft Authentication Library (MSAL) in Azure Data Explorer.
+description: This article describes authentication with Microsoft Authentication Library (MSAL).
 ms.reviewer: orspodek
 ms.topic: reference
 ms.date: 06/28/2023

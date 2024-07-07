@@ -122,7 +122,7 @@ evaluate postgresql_request(
 
 The following example sends a SQL query to an Azure PostgreSQL database
 retrieving all records from `public."Table"`, while appending another `datetime` column,
-and then processes the results on the Azure Data Explorer side.
+and then processes the results.
 It specifies a SQL parameter (`@param0`) to be used in the SQL query.
 
 ```kusto

@@ -141,12 +141,19 @@ The second link (`Run the query`) is the deep link. If you move the link to an e
 You can use parametrized queries with deep-linking.
 
 1. Create a query to be formed as a parametrized query (for example, `KustoLogs | where Timestamp > ago({Period}) | count`)
-1. Provide a parameter for every query parameter in the URI, such as:
 
-    `https://<your_cluster>.kusto.windows.net/MyDatabase?
+:::moniker range="azure-data-explorer"
+1. Provide a parameter for every query parameter in the URI. To copy your URI, in the Azure portal, go to your cluster's overview page, and then select the URI. The URI should be in the following format: 
+
+   `https://<your_cluster>.kusto.windows.net/MyDatabase?
 web=0&query=KustoLogs+%7c+where+Timestamp+>+ago({Period})+%7c+count&Period=1h`
 
     Replace &lt;your_cluster&gt; with your Azure Data Explorer cluster name.
+:::moniker-end
+
+:::moniker range="microsoft-fabric"
+1. Provide a parameter for every query parameter in the URI. To copy your URI, see [Copy a KQL database URI](/fabric/real-time-intelligence/access-database-copy-uri#copy-uri).
+:::moniker-end
 
 #### Limitations
 

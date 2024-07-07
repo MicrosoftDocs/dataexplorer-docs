@@ -12,7 +12,7 @@ ms.date: 12/18/2022
 
 Geospatial data can be analyzed efficiently using grid systems to create geospatial clusters. You can use geospatial tools to aggregate, cluster, partition, reduce, join, and index geospatial data. These tools improve query runtime performance, reduce stored data size, and visualize aggregated geospatial data.
 
-Azure Data Explorer supports the following methods of geospatial clustering:
+The following methods of geospatial clustering are supported:
 
 * [Geohash](https://en.wikipedia.org/wiki/Geohash)
 * [H3 Cell](https://eng.uber.com/h3/)

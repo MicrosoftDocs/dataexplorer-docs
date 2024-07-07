@@ -352,7 +352,7 @@ StormEvents
 | render piechart 
 ```
 
-:::image type="content" source="../media/kql-tutorials/injuries-bucket-pie-chart.png" alt-text="Screenshot of Azure Data Explorer web UI pie chart rendered by the previous query.":::
+:::image type="content" source="../media/kql-tutorials/injuries-bucket-pie-chart.png" alt-text="Screenshot of web UI pie chart rendered by the previous query.":::
 
 ## Perform aggregations over a sliding window
 

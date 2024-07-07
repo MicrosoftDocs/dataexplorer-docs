@@ -10,8 +10,6 @@ monikerRange: "azure-data-explorer"
 
 > [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)] [!INCLUDE [monitor](../includes/applies-to-version/monitor.md)] [!INCLUDE [sentinel](../includes/applies-to-version/sentinel.md)]
 
-::: moniker range="azure-data-explorer"
-
 The last two columns are the x-axis, and the other columns are the y-axis.
 
 > [!NOTE]
@@ -84,6 +82,3 @@ StormEvents
 ```
 
 :::image type="content" source="media/visualization-ladderchart/ladderchart-state-and-event-type.png" alt-text="Screenshot of ladderchart showing dates of storms by state and event type." lightbox="media/visualization-ladderchart/ladderchart-state-and-event-type.png":::
-
-::: moniker-end
-

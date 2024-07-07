@@ -1,6 +1,6 @@
 ---
-title: "Use row-level security with Azure SQL external tables in Azure Data Explorer"
-description: "This document describes how to create a row-level security solution with Azure Data Explorer SQL external tables."
+title: "Use row-level security with Azure SQL external tables"
+description: "This document describes how to create a row-level security solution with SQL external tables."
 ms.reviewer: danielkoralek
 ms.topic: how-to 
 ms.date: 02/25/2024

@@ -19,7 +19,7 @@ The following types of external storage are supported:
 * Amazon S3
 
 Each type of storage has corresponding connection string formats used to describe the storage resources and how to access them.
-Azure Data Explorer uses a URI format to describe these storage resources and the properties necessary to access them, such as security credentials.
+A URI format is used to describe these storage resources and the properties necessary to access them, such as security credentials.
 
 > [!NOTE]
 > HTTP web services that don't implement the entire API set of Azure Blob Storage aren't supported, even if they appear to work in some scenarios.
@@ -41,12 +41,14 @@ Each storage type has a different connection string format. See the following ta
 
 ## Storage authentication methods
 
-To interact with nonpublic external storage from Azure Data Explorer, you must specify authentication means as part of the external storage connection string. The connection string defines the resource to access and its authentication information.
+To interact with nonpublic external storage, you must specify authentication means as part of the external storage connection string. The connection string defines the resource to access and its authentication information.
 
-Azure Data Explorer supports the following authentication methods:
+The following authentication methods are supported:
 
 * [Impersonation](#impersonation)
+:::moniker range="azure-data-explorer"
 * [Managed identity](#managed-identity)
+:::moniker-end
 * [Shared Access (SAS) key](#shared-access-sas-token)
 * [Microsoft Entra access token](#azure-ad-access-token)
 * [Storage account access key](#storage-account-access-key)
@@ -69,7 +71,7 @@ The following table summarizes the available authentication methods for differen
 
 ### Impersonation
 
-Azure Data Explorer impersonates the requestor's principal identity to access the resource. To use impersonation, append `;impersonate` to the connection string.
+The service impersonates the requestor's principal identity to access the resource. To use impersonation, append `;impersonate` to the connection string.
 
 |Example|
 |--|
