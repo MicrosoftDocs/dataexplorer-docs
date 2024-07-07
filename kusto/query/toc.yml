@@ -167,9 +167,6 @@ items:
       - name: mv-expand operator
         href: mv-expand-operator.md
         displayName: mv expand mv_expand
-      - name: sort operator
-        displayName: order operator
-        href: sort-operator.md
       - name: project operator
         href: project-operator.md
       - name: project-away operator
@@ -264,6 +261,9 @@ items:
       - name: shuffle query
         displayName: hint.shufflekey, hint.strategy, shufflekey, hint, strategy
         href: shuffle-query.md
+      - name: sort operator
+        displayName: order operator
+        href: sort-operator.md
       - name: summarize operator
         items:
           - name: summarize operator overview
