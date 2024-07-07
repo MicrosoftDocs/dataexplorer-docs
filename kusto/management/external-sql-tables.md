@@ -8,6 +8,8 @@ ms.date: 06/28/2023
 
 # Create and alter Azure SQL external tables
 
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)]
+
 Creates or alters an Azure SQL [external table](../query/schema-entities/external-tables.md) in the database in which the command is executed.
 
 > [!NOTE]

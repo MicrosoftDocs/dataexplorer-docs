@@ -6,6 +6,8 @@ ms.date: 05/29/2023
 ---
 # Estimate table size
 
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)]
+
 Understanding the size of a table can be helpful for efficient resource management and optimized query performance. In this article, you'll learn different methods to estimate table sizes and how to use them effectively.
 
 ## Original size of ingested data

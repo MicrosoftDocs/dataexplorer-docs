@@ -7,6 +7,8 @@ ms.date: 06/19/2023
 ---
 # Management commands overview
 
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)]
+
 This article describes the management commands, also known as control commands, used to manage Kusto.
 Management commands are requests to the service to retrieve information that is
 not necessarily data in the database tables, or to modify the service state, etc.
