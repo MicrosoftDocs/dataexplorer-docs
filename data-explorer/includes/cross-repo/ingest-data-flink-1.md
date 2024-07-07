@@ -11,8 +11,8 @@ In this article, you learn how to use the Flink connector to send data from Flin
 
 ## Prerequisites
 
-* An Azure Data Explorer cluster and database. [Create a cluster and database](/azure/data-explorer/create-cluster-and-database) **or** a [KQL database in Real-Time Analytics in Microsoft Fabric](/fabric/real-time-analytics/create-database).
-* A target table in your database. See [Create a table in Azure Data Explorer](/azure/data-explorer/create-table-wizard) or [Create a table in Real-Time Analytics](/fabric/real-time-analytics/create-empty-table)
+* An Azure Data Explorer cluster and database. [Create a cluster and database](/azure/data-explorer/create-cluster-and-database) **or** a [KQL database in Real-Time Intelligence in Microsoft Fabric](/fabric/real-time-analytics/create-database).
+* A target table in your database. See [Create a table in Azure Data Explorer](/azure/data-explorer/create-table-wizard) or [Create a table in Real-Time Intelligence](/fabric/real-time-analytics/create-empty-table)
 * An Apache Flink cluster. [Create a cluster](/azure/hdinsight-aks/flink/flink-create-cluster-portal).
 * [Maven 3.x](https://maven.apache.org/download.cgi)
 

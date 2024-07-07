@@ -183,7 +183,6 @@ To create the Azure Data Explorer linked service, do the following steps:
 
    1. In the **Database** drop-down list, select your database name. Alternatively, select the **Edit** check box, and then enter the database name.
    1. To test the linked service connection you created, select **Test Connection**. If you can connect to your linked service, the pane displays a green checkmark and a **Connection successful** message.
-   1. To test the linked service connection you created, select **Test Connection**. If you can connect to your linked service, the pane displays a green checkmark and a **Connection successful** message.
    1. Select **Create** to complete the linked service creation.
 
 #### Configure the Azure Data Explorer data connection
