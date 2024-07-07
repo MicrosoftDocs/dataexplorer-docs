@@ -7,6 +7,8 @@ ms.date: 05/01/2023
 ---
 # External tables
 
+> [!INCLUDE [applies](../../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../../includes/applies-to-version/azure-data-explorer.md)] [!INCLUDE [monitor](../../includes/applies-to-version/monitor.md)] [!INCLUDE [sentinel](../../includes/applies-to-version/sentinel.md)]
+
 An external table is a schema entity that references data stored external to a Kusto database in your cluster.
 
 Similar to [tables](tables.md), an external table has a well-defined schema (an ordered list of column name and data type pairs). Unlike tables where data is ingested into your cluster, external tables operate on data stored and managed outside your cluster.

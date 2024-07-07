@@ -7,6 +7,8 @@ ms.date: 08/29/2023
 ---
 # Entity types
 
+> [!INCLUDE [applies](../../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../../includes/applies-to-version/azure-data-explorer.md)] [!INCLUDE [monitor](../../includes/applies-to-version/monitor.md)] [!INCLUDE [sentinel](../../includes/applies-to-version/sentinel.md)]
+
 Kusto queries execute in the context of some Kusto database that is attached to a Kusto cluster. Data in the database is arranged in tables, which the query may reference, and within the table it is organized as a rectangular grid of columns and rows. Additionally, queries may reference stored functions in the database, which are query fragments made available for reuse.
 
 * Clusters are entities that hold databases. Clusters have no name, but they can be referenced by using the `cluster()` special function with the cluster's URI. For example, `cluster("https://help.kusto.windows.net")` is a reference to a cluster that holds the `Samples` database.
