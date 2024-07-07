@@ -7,6 +7,8 @@ ms.date: 07/17/2023
 
 # Manage external table roles
 
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)]
+
 Principals are granted access to resources through a role-based access control model, where their assigned security roles determine their resource access.
 
 On external tables, the only security role is `admins`. External table `admins` have the ability to view, modify, and remove the external table.

@@ -8,6 +8,8 @@ monikerRange: "azure-data-explorer"
 ---
 # .alter cluster policy callout command
 
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)]
+
 Changes the cluster's [callout policy](callout-policy.md).
 
 ## Permissions

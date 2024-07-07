@@ -7,6 +7,8 @@ ms.date: 08/13/2023
 ---
 # Views
 
+> [!INCLUDE [applies](../../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../../includes/applies-to-version/azure-data-explorer.md)] [!INCLUDE [monitor](../../includes/applies-to-version/monitor.md)] [!INCLUDE [sentinel](../../includes/applies-to-version/sentinel.md)]
+
 A view is a virtual table based on the result-set of a Kusto Query Language (KQL) query.
 
 Like real tables, views organize data with rows and columns, and participate in tasks that involve wildcard table name resolution, such as [union *](../../query/union-operator.md) and [search *](../../query/search-operator.md) scenarios. However, unlike real tables, views don't maintain dedicated data storage. Rather, they dynamically represent the result of a query.

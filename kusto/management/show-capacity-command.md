@@ -7,6 +7,8 @@ monikerRange: "azure-data-explorer"
 ---
 # .show capacity command
 
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)]
+
 Displays capacity for data management operations. For more information, see [Capacity policy](capacity-policy.md).
 
 ## Permissions

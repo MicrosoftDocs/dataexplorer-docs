@@ -7,6 +7,8 @@ ms.date: 03/14/2023
 ---
 # Alias statement
 
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)] [!INCLUDE [monitor](../includes/applies-to-version/monitor.md)] [!INCLUDE [sentinel](../includes/applies-to-version/sentinel.md)]
+
 Alias statements allow you to define an alias for databases, which can be used later in the same query.
 
 This is useful when you're working with several clusters but want to appear as if you're working on fewer clusters.

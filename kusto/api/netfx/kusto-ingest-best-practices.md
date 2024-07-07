@@ -7,6 +7,8 @@ ms.date: 06/20/2024
 ---
 # Best practices for the Kusto Ingest library
 
+> [!INCLUDE [applies](../../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../../includes/applies-to-version/azure-data-explorer.md)]
+
 This article explains the best practices for data ingestion with the [Kusto Ingest library](about-kusto-ingest.md).
 
 ## Prefer queued over direct ingestion

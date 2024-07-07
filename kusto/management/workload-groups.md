@@ -4,9 +4,10 @@ description: Learn how to use workload groups to govern incoming requests to the
 ms.reviewer: yonil
 ms.topic: reference
 ms.date: 7/1/2024
-monikerRange: "azure-data-explorer"
 ---
 # Workload groups
+
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)]
 
 Workload groups allow you to group together sets of management commands and queries based on shared characteristics, and apply policies to control per-request limits and request rate limits for each of these groups.
 

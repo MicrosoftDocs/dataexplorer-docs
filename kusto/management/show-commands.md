@@ -7,6 +7,8 @@ ms.date: 11/30/2023
 ---
 # .show commands command
 
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)]
+
 `.show commands` returns a table with completed [management commands](index.md). These commands are available to query for 30 days.
 
 > [!NOTE]

@@ -7,6 +7,8 @@ ms.date: 05/24/2023
 ---
 # .alter table policy roworder command
 
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)]
+
 Use this command to change a table's [row order policy](row-order-policy.md). The row order policy is an optional table policy that defines the row order in an [extent (data shard)](extents-overview.md). This policy can improve performance for queries that relate to a small set of values that can be ordered.
 
 ## Permissions

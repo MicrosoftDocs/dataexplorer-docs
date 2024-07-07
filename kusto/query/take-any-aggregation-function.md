@@ -7,6 +7,8 @@ ms.date: 02/20/2023
 ---
 # take_any() (aggregation function)
 
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)] [!INCLUDE [monitor](../includes/applies-to-version/monitor.md)] [!INCLUDE [sentinel](../includes/applies-to-version/sentinel.md)]
+
 Arbitrarily chooses one record for each group in a [summarize operator](summarize-operator.md),
 and returns the value of one or more expressions over each such record.
 

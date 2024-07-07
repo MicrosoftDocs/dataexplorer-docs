@@ -7,6 +7,8 @@ ms.date: 05/01/2023
 ---
 # Time series analysis
 
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)] [!INCLUDE [monitor](../includes/applies-to-version/monitor.md)] [!INCLUDE [sentinel](../includes/applies-to-version/sentinel.md)]
+
 Cloud services and IoT devices generate telemetry data that can be used to gain insights such as monitoring service health, physical production processes, and usage trends. Performing time series analysis is one way to identify deviations in the pattern of these metrics compared to their typical baseline pattern.
 
 Kusto Query Language (KQL) contains native support for creation, manipulation, and analysis of multiple time series. In this article, learn how KQL is used to create and analyze thousands of time series in seconds, enabling near real-time monitoring solutions and workflows.
@@ -93,7 +95,7 @@ demo_make_series1
 
 ### Regression analysis
 
-Azure Data Explorer supports segmented linear regression analysis to estimate the trend of the time series.
+A segmented linear regression analysis can be used to estimate the trend of the time series.
 
 - Use [series_fit_line()](series-fit-line-function.md) to fit the best line to a time series for general trend detection.
 - Use [series_fit_2lines()](series-fit-2lines-function.md) to detect trend changes, relative to the baseline, that are useful in monitoring scenarios.

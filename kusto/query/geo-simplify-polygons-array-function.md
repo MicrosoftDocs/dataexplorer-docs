@@ -7,6 +7,8 @@ ms.date: 12/14/2022
 ---
 # geo_simplify_polygons_array()
 
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)] [!INCLUDE [monitor](../includes/applies-to-version/monitor.md)] [!INCLUDE [sentinel](../includes/applies-to-version/sentinel.md)]
+
 Simplifies polygons by replacing nearly straight chains of short edges with a single long edge on Earth.
 
 ## Syntax

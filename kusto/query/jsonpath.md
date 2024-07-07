@@ -8,6 +8,8 @@ ms.date: 07/24/2023
 
 # JSONPath expressions
 
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)] [!INCLUDE [monitor](../includes/applies-to-version/monitor.md)] [!INCLUDE [sentinel](../includes/applies-to-version/sentinel.md)]
+
 JSONPath notation describes the path to one or more elements in a JSON document.
 
 The JSONPath notation is used in the following scenarios:

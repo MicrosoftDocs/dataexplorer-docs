@@ -7,6 +7,8 @@ ms.date: 11/20/2022
 ---
 # active_users_count plugin
 
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)] [!INCLUDE [monitor](../includes/applies-to-version/monitor.md)] [!INCLUDE [sentinel](../includes/applies-to-version/sentinel.md)]
+
 Calculates distinct count of values, where each value has appeared in at least a minimum number of periods in a lookback period.
 
 Useful for calculating distinct counts of "fans" only, while not including appearances of "non-fans". A user is counted as a "fan" only if it was active during the lookback period. The lookback period is only used to determine whether a user is considered `active` ("fan") or not. The aggregation itself doesn't include users from the lookback window. In comparison, the [sliding_window_counts](sliding-window-counts-plugin.md) aggregation is performed over a sliding window of the lookback period.

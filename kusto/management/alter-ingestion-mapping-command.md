@@ -7,6 +7,8 @@ ms.date: 12/26/2023
 ---
 # .alter ingestion mapping command
 
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)]
+
 Alters an existing ingestion mapping that is associated with a specific table/database and a specific format (full mapping replace).
 
 > [!NOTE]

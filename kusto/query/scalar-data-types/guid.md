@@ -7,6 +7,8 @@ ms.date: 01/08/2024
 ---
 # The guid data type
 
+> [!INCLUDE [applies](../../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../../includes/applies-to-version/azure-data-explorer.md)] [!INCLUDE [monitor](../../includes/applies-to-version/monitor.md)] [!INCLUDE [sentinel](../../includes/applies-to-version/sentinel.md)]
+
 The `guid` data type represents a 128-bit globally unique value.
 
 > The `guid`, `uuid`, and `uniqueid` data types are equivalent.

@@ -8,6 +8,8 @@ monikerRange: "microsoft-fabric || azure-data-explorer || azure-monitor || micro
 ---
 # series_shapes_fl()
 
+>[!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)] [!INCLUDE [monitor](../includes/applies-to-version/monitor.md)] [!INCLUDE [sentinel](../includes/applies-to-version/sentinel.md)]
+
 The function `series_shapes_fl()` is a [user-defined function (UDF)](../query/functions/user-defined-functions.md) that detects positive/negative trend or jump in a series. This function takes a table containing multiple time series (dynamic numerical array), and calculates trend and jump scores for each series. The output is a dictionary (dynamic) containing the scores.
 
 ## Syntax

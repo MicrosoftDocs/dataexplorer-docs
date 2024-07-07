@@ -7,6 +7,8 @@ ms.date: 05/21/2023
 ---
 # Restricted view access policy
 
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)]
+
 The restricted view access policy is an optional security feature that governs view permissions on a table. By default, the policy is disabled. When enabled, the policy adds an extra layer of permission requirements for principals to access and view the table.
 
 For a table with an enabled restricted view access policy, only principals assigned the [UnrestrictedViewer](../access-control/role-based-access-control.md) role have the necessary permissions to view the table. Even principals with roles like Table Admin or Database Admin are restricted unless granted the UnrestrictedViewer role.

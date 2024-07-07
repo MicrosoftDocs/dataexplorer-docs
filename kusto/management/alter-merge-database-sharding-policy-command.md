@@ -8,6 +8,8 @@ monikerRange: "azure-data-explorer"
 ---
 # .alter-merge database policy sharding command
 
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)][!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)]
+
 Changes the database sharding policy. Use the [sharding policy](../management/sharding-policy.md) to manage data sharding for databases and tables.  
 
 The sharding policy defines if and how [Extents (data shards)](../management/extents-overview.md) in the Azure Data Explorer cluster should be sealed. When a database is created, it contains the default data sharding policy. All tables created in the database inherit this policy unless the policy is explicitly overridden at the table level.

@@ -8,6 +8,8 @@ monikerRange: "azure-data-explorer"
 ---
 # .alter-merge cluster policy capacity command
 
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)]
+
 Changes a cluster's [capacity policy](capacity-policy.md). The policy is used to control the computational resources for data management operations on the cluster.
 
 ## Permissions

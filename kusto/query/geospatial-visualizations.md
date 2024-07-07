@@ -8,11 +8,19 @@ ms.date: 12/18/2022
 
 # Geospatial visualizations
 
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)] [!INCLUDE [monitor](../includes/applies-to-version/monitor.md)] [!INCLUDE [sentinel](../includes/applies-to-version/sentinel.md)]
+
 <!-- Put links in moniker pivots -->
 
-Geospatial data can be visualized using the [render operator](render-operator.md) in [Kusto Desktop Explorer](/azure/data-explorer/tools/kusto-explorer-using.md) or the [Azure Data Explorer web UI](/azure/data-explorer/web-query-data). To download Kusto Desktop Explorer, see [Kusto.Explorer installation and user interface](../tools/kusto-explorer.md).
+Geospatial data can be visualized using the [render operator](render-operator.md) in [Kusto Desktop Explorer](/azure/data-explorer/tools/kusto-explorer-using.md). To download Kusto Desktop Explorer, see [Kusto.Explorer installation and user interface](../tools/kusto-explorer.md).
 
-For more information about visualization options, see [Data visualization with Azure Data Explorer](/azure/data-explorer/viz-overview). For more information about geospatial clustering, see [Geospatial clustering](geospatial-grid-systems.md).
+:::moniker range="azure-data-explorer"
+You can also use the [Azure Data Explorer web UI](/azure/data-explorer/web-query-data).
+
+For more information about visualization options, see [Data visualization with Azure Data Explorer](/azure/data-explorer/viz-overview). 
+::: moniker-end
+
+For more information about geospatial clustering, see [Geospatial clustering](geospatial-grid-systems.md).
 
 ## Visualize points on a map
 

@@ -9,6 +9,8 @@ monikerRange: "azure-data-explorer"
 
 # .move extents command
 
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)]
+
 This command runs in the context of a specific database. It moves the specified extents from the source table to the destination table.
 
 > [!NOTE]

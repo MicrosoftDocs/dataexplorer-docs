@@ -7,6 +7,8 @@ ms.date: 08/13/2023
 ---
 # Python plugin
 
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)] [!INCLUDE [monitor](../includes/applies-to-version/monitor.md)] [!INCLUDE [sentinel](../includes/applies-to-version/sentinel.md)]
+
 ::: moniker range="azure-data-explorer"
 
 [!INCLUDE [python-plugin-adx](../includes/python-plugin-adx.md)]

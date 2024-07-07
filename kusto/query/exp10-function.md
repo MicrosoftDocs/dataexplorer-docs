@@ -7,6 +7,8 @@ ms.date: 03/25/2019
 ---
 # exp10()
 
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)] [!INCLUDE [monitor](../includes/applies-to-version/monitor.md)] [!INCLUDE [sentinel](../includes/applies-to-version/sentinel.md)]
+
 The base-10 exponential function of x, which is 10 raised to the power x: 10^x.  
 
 ## Syntax

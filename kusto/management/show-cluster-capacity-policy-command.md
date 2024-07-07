@@ -8,6 +8,8 @@ monikerRange: "azure-data-explorer"
 ---
 # .show cluster policy capacity command
 
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)]
+
 Display a cluster's [capacity policy](capacity-policy.md). A capacity policy is used for controlling the compute resources of data management operations on the cluster.
 
 ## Permissions

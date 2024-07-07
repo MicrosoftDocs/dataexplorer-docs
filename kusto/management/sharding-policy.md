@@ -1,12 +1,14 @@
 ---
 title: Data sharding policy
-description: Learn how to use the data sharding policy to define if and how extents in the Azure Data Explorer cluster are created.
+description: Learn how to use the data sharding policy to define if and how extents in the database are created.
 ms.reviewer: orspodek
 ms.topic: reference
 ms.date: 07/01/2024
 monikerRange: "azure-data-explorer"
 ---
 # Data sharding policy
+
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)]
 
 The sharding policy defines if and how [extents (data shards)](../management/extents-overview.md) in your cluster are created. You can only query data in an extent once it's created.
 

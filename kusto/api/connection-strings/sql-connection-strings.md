@@ -8,6 +8,8 @@ monikerRange: "azure-data-explorer || microsoft-fabric"
 ---
 # Azure SQL external table connection strings
 
+> [!INCLUDE [applies](../../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../../includes/applies-to-version/azure-data-explorer.md)]
+
 To access an SQL external table, a connection string is provided during its creation. This connection string specifies the resource to be accessed and its authentication information.
 
 Supported SQL external table types:

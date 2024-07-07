@@ -7,6 +7,8 @@ ms.date: 03/02/2023
 ---
 # Window functions overview
 
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)] [!INCLUDE [monitor](../includes/applies-to-version/monitor.md)] [!INCLUDE [sentinel](../includes/applies-to-version/sentinel.md)]
+
 Window functions operate on multiple rows (records) in a row set at a time. Unlike aggregation functions, window functions require that the rows in the row set be serialized (have a specific order to them). Window functions may depend on the order to determine the result.
 
 Window functions can only be used on serialized sets. The easiest way to serialize a row set is to use the [serialize operator](serialize-operator.md). This operator "freezes" the order of rows in an arbitrary manner. If the order of serialized rows is semantically important, use the [sort operator](sort-operator.md) to force a particular order.

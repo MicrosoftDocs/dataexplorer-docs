@@ -7,6 +7,8 @@ ms.date: 12/20/2023
 ---
 # series_magnitude()
 
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)] [!INCLUDE [monitor](../includes/applies-to-version/monitor.md)] [!INCLUDE [sentinel](../includes/applies-to-version/sentinel.md)]
+
 Calculates the [magnitude](https://en.wikipedia.org/wiki/Magnitude_(mathematics)#Euclidean_vector_space) of series elements. This is equivalent to the square root of the [dot product](https://en.wikipedia.org/wiki/Dot_product) of the series with itself.
 
 ## Syntax

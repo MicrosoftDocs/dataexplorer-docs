@@ -8,6 +8,8 @@ monikerRange: "microsoft-fabric || azure-data-explorer"
 ---
 # postgresql_request plugin
 
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)] [!INCLUDE [monitor](../includes/applies-to-version/monitor.md)] [!INCLUDE [sentinel](../includes/applies-to-version/sentinel.md)]
+
 The `postgresql_request` plugin sends a SQL query to an Azure PostgreSQL Server network endpoint and returns the first rowset in the results. The query may return more than one rowset, but only the first rowset is made available for the rest of the Kusto query.
 
 The plugin is invoked with the [`evaluate`](evaluate-operator.md) operator.
@@ -120,7 +122,7 @@ evaluate postgresql_request(
 
 The following example sends a SQL query to an Azure PostgreSQL database
 retrieving all records from `public."Table"`, while appending another `datetime` column,
-and then processes the results on the Azure Data Explorer side.
+and then processes the results.
 It specifies a SQL parameter (`@param0`) to be used in the SQL query.
 
 ```kusto

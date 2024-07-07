@@ -7,6 +7,8 @@ ms.date: 05/12/2024
 ---
 # row_window_session()
 
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)] [!INCLUDE [monitor](../includes/applies-to-version/monitor.md)] [!INCLUDE [sentinel](../includes/applies-to-version/sentinel.md)]
+
 Calculates session start values of a column in a [serialized row set](window-functions.md#serialized-row-set).
 
 ## Syntax

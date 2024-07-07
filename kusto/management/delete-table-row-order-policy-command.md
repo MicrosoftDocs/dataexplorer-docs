@@ -7,6 +7,8 @@ ms.date: 05/14/2023
 ---
 # .delete table policy roworder command
 
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)]
+
 Remove a table's [row order policy](row-order-policy.md). The row order policy is an optional policy set on tables that suggests the desired ordering of rows in an [extent (data shard)](extents-overview.md). The purpose of the policy is to improve performance of queries that are known to be narrowed to a small subset of values in the ordered columns.
 
 ## Permissions

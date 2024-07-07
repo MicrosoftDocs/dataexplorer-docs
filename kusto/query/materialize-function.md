@@ -7,6 +7,8 @@ ms.date: 01/05/2023
 ---
 # materialize()
 
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)] [!INCLUDE [monitor](../includes/applies-to-version/monitor.md)] [!INCLUDE [sentinel](../includes/applies-to-version/sentinel.md)]
+
 Captures the value of a tabular expression for the duration of the query execution so that it can be referenced multiple times by the query without recalculation.
 
 ## Syntax

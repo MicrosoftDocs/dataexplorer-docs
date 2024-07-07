@@ -8,6 +8,8 @@ monikerRange: "azure-data-explorer"
 ---
 # R plugin (Preview)
 
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)] [!INCLUDE [monitor](../includes/applies-to-version/monitor.md)] [!INCLUDE [sentinel](../includes/applies-to-version/sentinel.md)]
+
 ::: moniker range="azure-data-explorer"
 
 The R plugin runs a user-defined function (UDF) using an R script.

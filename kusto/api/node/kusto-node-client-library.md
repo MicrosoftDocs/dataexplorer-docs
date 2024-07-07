@@ -7,6 +7,8 @@ ms.date: 04/19/2023
 ---
 # Kusto Node SDK
 
+> [!INCLUDE [applies](../../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../../includes/applies-to-version/azure-data-explorer.md)]
+
 The Kusto Node SDK is compatible with Node LTS v6.14 and built with ES6.
 
 *Kusto Node Client* Library provides the capability to query your cluster using NodeJs.

@@ -8,6 +8,8 @@ monikerRange: "microsoft-fabric || azure-data-explorer || azure-monitor || micro
 ---
 # series_downsample_fl()
 
+>[!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)] [!INCLUDE [monitor](../includes/applies-to-version/monitor.md)] [!INCLUDE [sentinel](../includes/applies-to-version/sentinel.md)]
+
 The function `series_downsample_fl()` is a [user-defined function (UDF)](../query/functions/user-defined-functions.md) that [downsamples a time series by an integer factor](https://en.wikipedia.org/wiki/Downsampling_(signal_processing)#Downsampling_by_an_integer_factor). This function takes a table containing multiple time series (dynamic numerical array), and downsamples each series. The output contains both the coarser series and its respective times array. To avoid [aliasing](https://en.wikipedia.org/wiki/Aliasing), the function applies a simple [low pass filter](https://en.wikipedia.org/wiki/Low-pass_filter) on each series before subsampling.
 
 ## Syntax

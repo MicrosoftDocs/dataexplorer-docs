@@ -7,6 +7,8 @@ ms.date: 12/12/2022
 ---
 # extract_all()
 
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)] [!INCLUDE [monitor](../includes/applies-to-version/monitor.md)] [!INCLUDE [sentinel](../includes/applies-to-version/sentinel.md)]
+
 Get all matches for a [regular expression](re2.md) from a source string.
 Optionally, retrieve a subset of matching groups.
 

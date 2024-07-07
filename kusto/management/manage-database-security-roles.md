@@ -7,6 +7,8 @@ ms.date: 05/28/2023
 
 # Manage database security roles
 
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)]
+
 Principals are granted access to resources through a role-based access control model, where their assigned security roles determine their resource access.
 
 In this article, you'll learn how to use management commands to [view existing security roles](#show-existing-security-roles) as well as [add and remove security roles](#add-and-drop-security-roles) on the database level.

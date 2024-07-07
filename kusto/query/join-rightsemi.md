@@ -8,6 +8,8 @@ ms.date: 06/29/2023
 
 # rightsemi join
 
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)] [!INCLUDE [monitor](../includes/applies-to-version/monitor.md)] [!INCLUDE [sentinel](../includes/applies-to-version/sentinel.md)]
+
 The `rightsemi` join flavor returns all records from the right side that match a record from the left side. Only columns from the right side are returned.
 
 :::image type="content" source="media/joinoperator/join-rightsemi.png" alt-text="Diagram that shows how the join works." lightbox="media/joinoperator/join-kinds.png":::

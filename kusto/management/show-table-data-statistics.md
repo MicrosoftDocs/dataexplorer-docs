@@ -7,6 +7,8 @@ ms.date: 05/24/2023
 ---
 # .show table data statistics command
 
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)]
+
 Displays the table data statistics estimation by table column.
 
 > [!NOTE]

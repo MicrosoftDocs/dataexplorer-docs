@@ -7,6 +7,8 @@ ms.date: 04/20/2023
 ---
 # .alter column policy encoding command
 
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)]
+
 Alters the encoding policy. For an overview of the encoding policy, see [Encoding policy](encoding-policy.md).
 
 > [!NOTE]

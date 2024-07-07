@@ -7,6 +7,8 @@ ms.date: 03/16/2023
 ---
 # Datetime / timespan arithmetic
 
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)] [!INCLUDE [monitor](../includes/applies-to-version/monitor.md)] [!INCLUDE [sentinel](../includes/applies-to-version/sentinel.md)]
+
 Kusto supports performing arithmetic operations on values of types `datetime`
 and `timespan`.
 

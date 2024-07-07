@@ -9,6 +9,8 @@ monikerRange: "azure-data-explorer"
 
 # .drop table extent tags
 
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)]
+
 Drops specific [extent tags](extent-tags.md) from all or specific extents a table. The command runs in the context of a specific database.
 
 > [!NOTE]

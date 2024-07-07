@@ -7,6 +7,8 @@ ms.date: 07/01/2021
 ---
 # Extent tags retention policy
 
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)]
+
 The extent tags retention policy controls the mechanism that automatically removes [extent tags](extent-tags.md) from tables, based on the age of the extents.
 
 It's recommended to remove any tags that are no longer helpful, or were used temporarily as part of an ingestion pipeline, and may limit the system from reaching optimal performance. For example: old `drop-by:` tags, which prevent merging extents together.

@@ -8,6 +8,8 @@ monikerRange: "azure-data-explorer"
 ---
 # Query weak consistency policy
 
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)]
+
 The query weak consistency policy is a cluster-level policy object that configures the [weak consistency](../concepts/query-consistency.md) service.
 
 ## Management commands

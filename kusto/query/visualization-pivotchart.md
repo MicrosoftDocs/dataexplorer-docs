@@ -8,7 +8,7 @@ monikerRange: "azure-data-explorer"
 ---
 # Pivot chart
 
-::: moniker range="azure-data-explorer"
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)] [!INCLUDE [monitor](../includes/applies-to-version/monitor.md)] [!INCLUDE [sentinel](../includes/applies-to-version/sentinel.md)]
 
 Displays a pivot table and chart. You can interactively select data, columns, rows, and various chart types.
 
@@ -41,6 +41,3 @@ SalesFact
 ```
 
 :::image type="content" source="media/visualize-pivotchart/pivotchart.png" alt-text="Screenshot of query result showing a pivot chart visualization."  lightbox="media/visualize-pivotchart/pivotchart.png":::
-
-::: moniker-end
-

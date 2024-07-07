@@ -7,6 +7,8 @@ ms.date: 11/22/2022
 ---
 # Integrate query capabilities in your app overview
 
+> [!INCLUDE [applies](../../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../../includes/applies-to-version/azure-data-explorer.md)]
+
 You can integrate query capabilities in your app with features to suit your needs. Integrating capabilities in your app enables you to:
 
 - Edit queries (including all language features such as colorization and intellisense)

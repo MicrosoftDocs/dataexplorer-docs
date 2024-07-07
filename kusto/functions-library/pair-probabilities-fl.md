@@ -7,6 +7,8 @@ ms.date: 03/13/2023
 ---
 # pair_probabilities_fl()
 
+>[!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)]
+
 Calculate various probabilities and related metrics for a pair of categorical variables.
 
 The function `pair_probabilities_fl()` is a [UDF (user-defined function)](../query/functions/user-defined-functions.md) that calculates the following probabilities and related metrics for a pair of categorical variables, A and B, as follows:

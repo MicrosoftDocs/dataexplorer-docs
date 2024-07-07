@@ -7,6 +7,8 @@ ms.date: 05/23/2023
 ---
 # .show tables command
 
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)]
+
 Returns a set that contains the specified tables or all tables in the database.
 
 > [!NOTE]

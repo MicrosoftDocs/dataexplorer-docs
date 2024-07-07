@@ -8,6 +8,8 @@ monikerRange: "azure-data-explorer"
 ---
 # .show cluster databases command
 
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)]
+
 Returns a table showing all the databases attached to the cluster and to which the user invoking the command has access. If specific database names are used, only those databases would
 be included.
 

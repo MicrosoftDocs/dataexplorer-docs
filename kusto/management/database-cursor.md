@@ -8,6 +8,8 @@ monikerRange: "azure-data-explorer"
 ---
 # Database cursors
 
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)]
+
 A **database cursor** is a database-level object that lets you query a database multiple times. You get consistent results even if there are `data-append` or `data-retention` operations happening in parallel with the queries.
 
 Database cursors are designed to address two important scenarios:

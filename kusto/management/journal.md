@@ -7,6 +7,8 @@ ms.date: 04/25/2023
 ---
 # Journal management
 
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)]
+
 `Journal` contains information about metadata operations done on your database.
 
 The metadata operations can result from a management command that a user executed, or internal management commands that the system executed, such as drop extents by retention.

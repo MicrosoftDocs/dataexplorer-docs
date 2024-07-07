@@ -7,6 +7,8 @@ ms.date: 05/24/2023
 ---
 # .delete table policy restricted_view_access command
 
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)]
+
 Delete the optional table [restricted view access policy](restricted-view-access-policy.md). When this policy is turned on for a table, only principals who have an [UnrestrictedViewer](../access-control/role-based-access-control.md) role in the database can query the data. Deleting a policy is similar to turning off a policy.
 
 ## Permissions

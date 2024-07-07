@@ -8,6 +8,8 @@ ms.date: 02/15/2023
 
 # zlib_compress_to_base64_string()
 
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)] [!INCLUDE [monitor](../includes/applies-to-version/monitor.md)] [!INCLUDE [sentinel](../includes/applies-to-version/sentinel.md)]
+
 Performs zlib compression and encodes the result to base64.
 
 > [!NOTE]

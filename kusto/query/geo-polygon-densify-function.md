@@ -7,6 +7,8 @@ ms.date: 05/01/2023
 ---
 # geo_polygon_densify()
 
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)] [!INCLUDE [monitor](../includes/applies-to-version/monitor.md)] [!INCLUDE [sentinel](../includes/applies-to-version/sentinel.md)]
+
 Converts polygon or multipolygon planar edges to geodesics by adding intermediate points.
 
 ## Syntax

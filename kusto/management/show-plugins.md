@@ -8,6 +8,9 @@ monikerRange: "azure-data-explorer"
 ---
 # .show plugins command
 
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)]
+
+
 Lists all plugins of the cluster.
 
 ## Permissions

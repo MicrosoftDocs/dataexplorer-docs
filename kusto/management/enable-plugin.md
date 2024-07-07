@@ -8,6 +8,8 @@ monikerRange: "azure-data-explorer"
 ---
 # .enable plugin command
 
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)]
+
 Enables a plugin.
 
 > [!NOTE]

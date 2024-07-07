@@ -8,6 +8,8 @@ monikerRange: "azure-data-explorer"
 ---
 # Extents (data shards)
 
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)]
+
 Tables are partitioned into *extents*, or *data shards*. Each extent is a horizontal segment of the table that contains data and metadata such as its creation time and optional tags. The union of all these extents contains the entire dataset of the table. Extents are evenly distributed across nodes in the cluster, and they're cached in both local SSD and memory for optimized performance.
 
 Extents are immutable, meaning they can be queried, reassigned to a different node, or dropped out of the table but never modified. Data modification happens by creating new extents and transactionally swapping old extents with the new ones. The immutability of extents provides benefits such as increased robustness and easy reversion to previous snapshots.

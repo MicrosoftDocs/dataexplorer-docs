@@ -7,6 +7,8 @@ ms.date: 05/24/2023
 ---
 # .cancel operation command
 
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)]
+
 This command cancels a long-running ingest from query operation. This command is useful when the operation is taking too long and you would like to abort it while running.
 
 The cancel operation command isn't guaranteed to succeed. The output of the `.cancel operation` command indicates whether or not cancellation was successful.

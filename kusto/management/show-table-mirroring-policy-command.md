@@ -8,6 +8,8 @@ monikerRange: "microsoft-fabric"
 ---
 # .show table policy mirroring command
 
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)]
+
 Display the table's [mirroring policy](mirroring-policy.md).
 
 ## Syntax

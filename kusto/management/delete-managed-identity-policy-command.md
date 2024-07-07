@@ -8,6 +8,8 @@ monikerRange: "azure-data-explorer"
 ---
 # .delete policy managed_identity command
 
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)]
+
 Deletes the ManagedIdentity policy of the cluster or the specified database.
 
 > [!WARNING]

@@ -8,6 +8,8 @@ adobe-target: true
 ---
 # Kusto Data library overview
 
+> [!INCLUDE [applies](../../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../../includes/applies-to-version/azure-data-explorer.md)]
+
 The Kusto Data library provides a client for querying and managing data in your cluster.
 
 ## Get the library

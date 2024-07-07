@@ -7,6 +7,8 @@ ms.date: 07/13/2023
 ---
 # Connection strings overview
 
+> [!INCLUDE [applies](../../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../../includes/applies-to-version/azure-data-explorer.md)]
+
 Connection strings are widely used in [management commands](../../management/index.md), in the [Kusto API](../index.md), and in [Kusto Query Language (KQL)](../../query/index.md) queries.
 
 Connection strings describe how to locate and interact with Kusto service endpoints as well as resources external to Kusto, such as blobs in the Azure Blob Storage service and Azure SQL Database databases.

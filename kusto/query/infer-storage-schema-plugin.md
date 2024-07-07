@@ -7,6 +7,8 @@ ms.date: 03/08/2023
 ---
 # infer_storage_schema plugin
 
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)] [!INCLUDE [monitor](../includes/applies-to-version/monitor.md)] [!INCLUDE [sentinel](../includes/applies-to-version/sentinel.md)]
+
 This plugin infers schema of external data, and returns it as CSL schema string. The string can be used when [creating external tables](../management/external-tables-azure-storage.md). The plugin is invoked with the [`evaluate`](evaluate-operator.md) operator.
 
 ## Authentication and authorization

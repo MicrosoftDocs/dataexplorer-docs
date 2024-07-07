@@ -7,6 +7,8 @@ ms.date: 05/24/2023
 
 # .dup-next-ingest command
 
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)]
+
 Use the `.dup-next-ingest` command for on-demand troubleshooting of your data ingestion pull flow.
 
 Run `.dup-next-ingest` before the ingestion you wish to watch. After running the command, the successfully downloaded ingestion source file(s) and a file containing metadata on the ingestion request will be uploaded to the specified storage container. Since this command only watches one subsequent ingestion, run this command each time you want to watch the next ingestion.

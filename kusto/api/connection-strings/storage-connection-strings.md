@@ -7,6 +7,8 @@ ms.date: 06/20/2024
 ---
 # Storage connection strings
 
+> [!INCLUDE [applies](../../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../../includes/applies-to-version/azure-data-explorer.md)]
+
 The kusto service can interact with external storage services. For example, you can [create an Azure Storage external tables](../../management/external-tables-azure-storage.md) in order to query data stored on external storages.
 
 The following types of external storage are supported:
@@ -44,7 +46,9 @@ To interact with nonpublic external storage, you must specify authentication mea
 The following authentication methods are supported:
 
 * [Impersonation](#impersonation)
+:::moniker range="azure-data-explorer"
 * [Managed identity](#managed-identity)
+:::moniker-end
 * [Shared Access (SAS) key](#shared-access-sas-token)
 * [Microsoft Entra access token](#azure-ad-access-token)
 * [Storage account access key](#storage-account-access-key)

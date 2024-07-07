@@ -7,6 +7,8 @@ ms.date: 11/13/2023
 ---
 # count_distinct() (aggregation function) - (preview)
 
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)] [!INCLUDE [monitor](../includes/applies-to-version/monitor.md)] [!INCLUDE [sentinel](../includes/applies-to-version/sentinel.md)]
+
 Counts unique values specified by the scalar expression per summary group, or the total number of unique values if the summary group is omitted.
 
 [!INCLUDE [ignore-nulls](../includes/ignore-nulls.md)]
