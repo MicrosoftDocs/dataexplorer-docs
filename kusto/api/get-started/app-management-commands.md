@@ -4,6 +4,7 @@ description: Learn how to create an app to run management commands using Kusto c
 ms.reviewer: yogilad
 ms.topic: how-to
 ms.date: 11/07/2023
+monikerRange: "azure-data-explorer"
 ---
 # Create an app to run management commands
 

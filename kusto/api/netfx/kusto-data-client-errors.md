@@ -83,7 +83,10 @@ All request exceptions have a **Failure code** of `0`, no **Failure subcode**, a
 | Exception name | Reason |
 |--|--|
 | `EntityNameIsNotValidException` | Indicates an entity name isn't valid. </br> **Failure code**: 400 </br> **Failure subcode**: BadRequest_EntityNameIsNotValid </br> **Permanence**: True|
+<!-- do i add a moniker here for ADX? -->
+:::moniker range="azure-data-explorer"
 | `ClusterSuspendedException` | A request with `request_execute_only_if_running` flag is denied because the service is in a suspended state. </br> **Failure code**: 412 </br> **Failure subcode**: PreconditionFailed </br> **Permanence**: True |
+:::moniker-end
 | `KustoBadRequestException` | The Kusto service was sent a bad request. For a list of errors, see [Bad request exceptions](#bad-request-exceptions). </br> **Failure code**: 400 </br> **Failure subcode**: General_BadRequest </br> **Permanence**: True |
 | `KustoConflictException` | The Kusto service was sent a request, which can't be performed due to service state. </br> **Failure code**: 409 </br> **Failure subcode**: Conflict </br> **Permanence**: True|
 | `KustoFailedChangeServiceStateException` | The CM failed to change service state. |

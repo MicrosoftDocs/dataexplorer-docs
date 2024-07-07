@@ -4,6 +4,7 @@ description: Learn how to create your first app to print Hello Kusto using Kusto
 ms.reviewer: yogilad
 ms.topic: how-to
 ms.date: 11/07/2023
+monikerRange: "azure-data-explorer"
 ---
 # Hello Kusto: Create your first app
 

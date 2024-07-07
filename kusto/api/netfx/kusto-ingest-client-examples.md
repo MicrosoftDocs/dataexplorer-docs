@@ -13,7 +13,7 @@ This collection of short code snippets demonstrates various techniques of ingest
 
 > [!NOTE]
 > These examples look as if the ingest client is destroyed immediately following the ingestion. Do not take this literally.
-> Ingest clients are reentrant and thread-safe, and should not be created in large numbers. The recommended cardinality of ingest client instances is one per hosting process, per target Kusto cluster.
+> Ingest clients are reentrant and thread-safe, and should not be created in large numbers. The recommended cardinality of ingest client instances is one per hosting process, per target Kusto database.
 
 ## Async ingestion from a single Azure blob
 
