@@ -6,6 +6,7 @@ ms.topic: reference
 ms.custom: build-2023, build-2023-dataai
 ms.date: 06/21/2023
 adobe-target: true
+monikerRange: "microsoft-fabric || azure-data-explorer || microsoft-sentinel || azure-monitor || azure-resource-graph"
 ---
 # Kusto Query Language (KQL) overview
 
