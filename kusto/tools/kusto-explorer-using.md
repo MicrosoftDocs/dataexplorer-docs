@@ -146,7 +146,7 @@ You can use parametrized queries with deep-linking.
    `https://<your_cluster>.kusto.windows.net/MyDatabase?
 web=0&query=KustoLogs+%7c+where+Timestamp+>+ago({Period})+%7c+count&Period=1h`
 
-    Replace &lt;your_database&gt; with your database name.
+    Replace &lt;your_cluster&gt; with your Azure Data Explorer cluster name.
 
 #### Limitations
 
