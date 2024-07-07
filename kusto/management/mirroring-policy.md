@@ -8,6 +8,8 @@ monikerRange: "microsoft-fabric"
 ---
 # Mirroring policy
 
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)]
+
 The mirroring policy commands allow you to view, change, partition, and delete your table mirroring policy. They also provide a way to check the mirroring latency by reviewing the operations mirroring status.
 
 ## Management commands

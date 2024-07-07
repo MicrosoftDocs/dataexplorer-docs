@@ -6,6 +6,8 @@ ms.date: 03/27/2024
 ---
 # Parquet mapping
 
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)]
+
 Use Parquet mapping to map incoming data to columns inside tables when your ingestion source file is in Parquet format.
 
 [!INCLUDE [data-mapping-overview](../includes/data-mapping-overview.md)]

@@ -7,6 +7,8 @@ ms.date: 02/19/2020
 ---
 # IngestionTime policy
 
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)]
+
 The IngestionTime policy is an optional policy that can be set (enabled) on tables.
 
 When enabled, Kusto adds a hidden `datetime` column to the table, called `$IngestionTime`. 

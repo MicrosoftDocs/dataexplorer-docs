@@ -8,6 +8,8 @@ ms.date: 12/26/2023
 
 # Ingestion mappings
 
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)]
+
 Ingestion mappings are used during ingestion to map incoming data to columns inside tables.
 
 Data Explorer supports different types of mappings, both row-oriented (CSV, JSON, AVRO and W3CLOGFILE), and column-oriented (Parquet and ORC).
