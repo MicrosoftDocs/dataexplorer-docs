@@ -5,6 +5,7 @@ ms.reviewer: orspodek
 ms.topic: reference
 ms.custom: has-adal-ref
 ms.date: 06/28/2023
+monikerRange: "azure-data-explorer || microsoft-fabric"
 ---
 # Access control overview
 
