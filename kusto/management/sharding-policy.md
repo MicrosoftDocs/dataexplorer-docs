@@ -8,6 +8,8 @@ monikerRange: "azure-data-explorer"
 ---
 # Data sharding policy
 
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)]
+
 The sharding policy defines if and how [extents (data shards)](../management/extents-overview.md) in your cluster are created. You can only query data in an extent once it's created.
 
 > [!NOTE]

@@ -4,11 +4,11 @@ description: Learn how to use the request queuing policy to control queuing of r
 ms.reviewer: yonil
 ms.topic: reference
 ms.date: 07/01/2024
-monikerRange: "azure-data-explorer || microsoft-fabric"
+monikerRange: "azure-data-explorer"
 ---
 # Request queuing policy (Preview)
 
-> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)]
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)]
 
 A workload group's request queuing policy controls queuing of requests for delayed execution, once a certain threshold of concurrent requests is exceeded.
 
