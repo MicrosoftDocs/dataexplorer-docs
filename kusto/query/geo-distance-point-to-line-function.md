@@ -7,6 +7,8 @@ ms.date: 04/04/2024
 ---
 # geo_distance_point_to_line()
 
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)] [!INCLUDE [monitor](../includes/applies-to-version/monitor.md)] [!INCLUDE [sentinel](../includes/applies-to-version/sentinel.md)]
+
 Calculates the shortest distance in meters between a coordinate and a line or multiline on Earth.
 
 ## Syntax

@@ -7,6 +7,8 @@ ms.date: 12/18/2022
 ---
 # format_ipv4_mask()
 
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)] [!INCLUDE [monitor](../includes/applies-to-version/monitor.md)] [!INCLUDE [sentinel](../includes/applies-to-version/sentinel.md)]
+
 Parses the input with a netmask and returns a string representing the IPv4 address in CIDR notation.
 
 ## Syntax

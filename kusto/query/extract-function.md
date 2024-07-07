@@ -7,6 +7,8 @@ ms.date: 12/12/2022
 ---
 # extract()
 
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)] [!INCLUDE [monitor](../includes/applies-to-version/monitor.md)] [!INCLUDE [sentinel](../includes/applies-to-version/sentinel.md)]
+
 Get a match for a [regular expression](re2.md) from a source string.
 
 Optionally, convert the extracted substring to the indicated type.

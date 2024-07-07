@@ -7,6 +7,8 @@ ms.date: 03/14/2023
 ---
 # Batches
 
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)] [!INCLUDE [monitor](../includes/applies-to-version/monitor.md)] [!INCLUDE [sentinel](../includes/applies-to-version/sentinel.md)]
+
 A query can include multiple tabular expression statements, as long as they're delimited by a semicolon (`;`) character. The query then returns multiple tabular results. Results are produced by the tabular expression statements and ordered according to the order of the statements in the query text.
 
 > [!NOTE]

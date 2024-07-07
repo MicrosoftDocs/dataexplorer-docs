@@ -8,6 +8,8 @@ monikerRange: "azure-data-explorer"
 ---
 # Pivot chart
 
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)] [!INCLUDE [monitor](../includes/applies-to-version/monitor.md)] [!INCLUDE [sentinel](../includes/applies-to-version/sentinel.md)]
+
 ::: moniker range="azure-data-explorer"
 
 Displays a pivot table and chart. You can interactively select data, columns, rows, and various chart types.

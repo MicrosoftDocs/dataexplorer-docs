@@ -7,6 +7,8 @@ ms.date: 11/17/2019
 ---
 # User analytics plugins
 
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)] [!INCLUDE [monitor](../includes/applies-to-version/monitor.md)] [!INCLUDE [sentinel](../includes/applies-to-version/sentinel.md)]
+
 This section describes Kusto extensions (plugins) for user analytics scenarios.
 
 |Scenario|Plugin|Details|User Experience|

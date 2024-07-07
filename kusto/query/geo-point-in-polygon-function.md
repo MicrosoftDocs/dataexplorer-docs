@@ -7,6 +7,8 @@ ms.date: 04/04/2024
 ---
 # geo_point_in_polygon()
 
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)] [!INCLUDE [monitor](../includes/applies-to-version/monitor.md)] [!INCLUDE [sentinel](../includes/applies-to-version/sentinel.md)]
+
 Calculates whether the geospatial coordinates are inside a polygon or a multipolygon on Earth.
 
 ## Syntax

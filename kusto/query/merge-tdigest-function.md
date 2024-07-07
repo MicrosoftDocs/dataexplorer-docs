@@ -7,6 +7,8 @@ ms.date: 03/12/2023
 ---
 # merge_tdigest()
 
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)] [!INCLUDE [monitor](../includes/applies-to-version/monitor.md)] [!INCLUDE [sentinel](../includes/applies-to-version/sentinel.md)]
+
 Merges `tdigest` results (scalar version of the aggregate version [`tdigest_merge()`](tdigest-merge-aggregation-function.md)).
 
 Read more about the underlying algorithm (T-Digest) and the estimated error [here](percentiles-aggregation-function.md#estimation-error-in-percentiles).

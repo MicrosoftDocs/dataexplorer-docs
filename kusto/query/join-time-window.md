@@ -7,6 +7,8 @@ ms.date: 04/11/2023
 ---
 # Time window join
 
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)] [!INCLUDE [monitor](../includes/applies-to-version/monitor.md)] [!INCLUDE [sentinel](../includes/applies-to-version/sentinel.md)]
+
 It's often useful to join between two large datasets on some high-cardinality key, such as an operation ID or a session ID, and further limit the right-hand-side ($right) records that need to match up with each left-hand-side ($left) record by adding a restriction on the "time-distance" between `datetime` columns on the left and on the right.
 
 The above operation differs from the usual Kusto join operation, since for the `equi-join` part of matching the high-cardinality key between the left and right datasets, the system can also apply a distance function and use it to considerably speed up the join.

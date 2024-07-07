@@ -7,6 +7,8 @@ ms.date: 01/01/2023
 ---
 # ipv4_netmask_suffix()
 
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)] [!INCLUDE [monitor](../includes/applies-to-version/monitor.md)] [!INCLUDE [sentinel](../includes/applies-to-version/sentinel.md)]
+
 Returns the value of the IPv4 netmask suffix from an IPv4 string address.
 
 ## Syntax

@@ -7,6 +7,8 @@ ms.date: 11/23/2022
 ---
 # current_cluster_endpoint()
 
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)] [!INCLUDE [monitor](../includes/applies-to-version/monitor.md)] [!INCLUDE [sentinel](../includes/applies-to-version/sentinel.md)]
+
 Returns the network endpoint (DNS name) of the current cluster being queried.
 
 ## Syntax

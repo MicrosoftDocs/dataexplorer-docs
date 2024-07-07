@@ -7,6 +7,8 @@ ms.date: 01/30/2023
 ---
 # sliding_window_counts plugin
 
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)] [!INCLUDE [monitor](../includes/applies-to-version/monitor.md)] [!INCLUDE [sentinel](../includes/applies-to-version/sentinel.md)]
+
 Calculates counts and distinct count of values in a sliding window over a lookback period, using the technique described in the [Perform aggregations over a sliding window](tutorials/use-aggregation-functions.md#perform-aggregations-over-a-sliding-window) example. The plugin is invoked with the [`evaluate`](evaluate-operator.md) operator.
 
 ## Syntax

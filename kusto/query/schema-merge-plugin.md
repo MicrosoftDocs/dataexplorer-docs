@@ -7,6 +7,8 @@ ms.date: 01/22/2023
 ---
 # schema_merge plugin
 
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)] [!INCLUDE [monitor](../includes/applies-to-version/monitor.md)] [!INCLUDE [sentinel](../includes/applies-to-version/sentinel.md)]
+
 Merges tabular schema definitions into a unified schema.
 
 Schema definitions are expected to be in the format produced by the [`getschema`](getschema-operator.md) operator.

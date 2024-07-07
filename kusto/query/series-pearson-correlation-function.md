@@ -7,6 +7,8 @@ ms.date: 02/05/2023
 ---
 # series_pearson_correlation()
 
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)] [!INCLUDE [monitor](../includes/applies-to-version/monitor.md)] [!INCLUDE [sentinel](../includes/applies-to-version/sentinel.md)]
+
 Calculates the pearson correlation coefficient of two numeric series inputs.
 
 See: [Pearson correlation coefficient](https://en.wikipedia.org/wiki/Pearson_correlation_coefficient).

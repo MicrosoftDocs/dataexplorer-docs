@@ -7,6 +7,8 @@ ms.date: 03/09/2023
 ---
 # geo_line_to_s2cells()
 
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)] [!INCLUDE [monitor](../includes/applies-to-version/monitor.md)] [!INCLUDE [sentinel](../includes/applies-to-version/sentinel.md)]
+
 Calculates S2 cell tokens that cover a line or multiline on Earth. This function is a useful geospatial join tool.
 
 ## Syntax

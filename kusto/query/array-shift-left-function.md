@@ -7,6 +7,8 @@ ms.date: 09/05/2023
 ---
 # array_shift_left()
 
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)] [!INCLUDE [monitor](../includes/applies-to-version/monitor.md)] [!INCLUDE [sentinel](../includes/applies-to-version/sentinel.md)]
+
 Shifts the values inside a [dynamic](../query/scalar-data-types/dynamic.md) array to the left.
 
 ## Syntax

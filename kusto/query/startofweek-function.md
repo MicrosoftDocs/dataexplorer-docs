@@ -7,6 +7,8 @@ ms.date: 01/31/2023
 ---
 # startofweek()
 
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)] [!INCLUDE [monitor](../includes/applies-to-version/monitor.md)] [!INCLUDE [sentinel](../includes/applies-to-version/sentinel.md)]
+
 Returns the start of the week containing the date, shifted by an offset, if provided.
 
 Start of the week is considered to be a Sunday.

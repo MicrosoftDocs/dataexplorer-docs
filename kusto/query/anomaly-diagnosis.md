@@ -8,6 +8,8 @@ ms.date: 05/01/2023
 
 # Anomaly diagnosis for root cause analysis
 
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)] [!INCLUDE [monitor](../includes/applies-to-version/monitor.md)] [!INCLUDE [sentinel](../includes/applies-to-version/sentinel.md)]
+
 Kusto Query Language (KQL) has built-in [anomaly detection and forecasting](anomaly-detection.md) functions to check for anomalous behavior. Once such a pattern is detected, a Root Cause Analysis (RCA) can be run to mitigate or resolve the anomaly.
 
 The diagnosis process is complex and lengthy, and done by domain experts. The process includes:
