@@ -8,6 +8,8 @@ monikerRange: "azure-data-explorer"
 ---
 # Sandbox policy
 
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)]
+
 Certain plugins run within [sandboxes](../concepts/sandboxes.md) whose available resources are limited and controlled for security and for resource governance.
 
 Sandboxes run on the nodes of your cluster. Some of their limitations are defined in sandbox policies, where each sandbox kind can have its own policy.
