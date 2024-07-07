@@ -41,7 +41,7 @@ For more information, see [MS-TDS](../query/t-sql.md).
 
 ## Client libraries
 
-The query environment provides a number of [client libraries](client-libraries.md) that make use of the above endpoints, to make programmatic access easy.
+There are a number of [client libraries](client-libraries.md) that make use of the above endpoints, to make programmatic access easy.
 
 * .NET SDK
 * Python SDK
