@@ -60,7 +60,7 @@ Since python is not available in this service, you create this Plotly JSON using
 
 ## Use a preprepared Plotly template
 
-In this method, a preprepared Plotly JSON for specific visualization can be reused by replacing the data objects with the required data to be rendered. The templates can be stored in a standard table in your query environment, and the data replacement logic can be packed in a stored function.
+In this method, a preprepared Plotly JSON for specific visualization can be reused by replacing the data objects with the required data to be rendered. The templates can be stored in a standard table, and the data replacement logic can be packed in a stored function.
 
 Currently, the supported templates are: [plotly_anomaly_fl()](../functions-library/plotly-anomaly-fl.md) and [plotly_scatter3d_fl()](../functions-library/plotly-scatter3d-fl.md). Refer to these documents for syntax and usage.
 
