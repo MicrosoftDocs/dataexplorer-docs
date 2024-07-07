@@ -6,6 +6,7 @@ ms.topic: how-to
 ms.date: 02/01/2022
 ---
 # Delete data
+
 > [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)]
 
 There are several ways to delete data from a table. Use the following information to help you choose which deletion method is best for your use case.
