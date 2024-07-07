@@ -8,6 +8,8 @@ monikerRange: "azure-data-explorer"
 ---
 # Extent tags
 
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)]
+
 An *extent tag* is a string that describes properties common to all data in an [extent](extents-overview.md). For example, during data ingestion, you can append an extent tag to signify the source of the ingested data. Then, you can use this tag for analysis.
 
 Extents can hold multiple tags as part of their metadata. When extents merge, their tags also merge, ensuring consistent metadata representation.

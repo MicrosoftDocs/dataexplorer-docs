@@ -7,6 +7,8 @@ ms.date: 05/24/2023
 
 # .show external table mapping command
 
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)]
+
 Show the mappings for an external table, either the one specified by name or all mappings.
 
 ## Syntax
