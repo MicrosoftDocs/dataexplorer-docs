@@ -7,6 +7,8 @@ ms.date: 04/09/2023
 
 # Show external table artifacts command
 
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)]
+
 This article describes how to show all files that will be processed when querying a given external table.
 
 ## Permissions
