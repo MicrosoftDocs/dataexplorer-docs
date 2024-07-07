@@ -7,6 +7,8 @@ ms.date: 05/24/2023
 ---
 # .show database schema command
 
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)]
+
 The following commands show database schema as a table, JSON object, or CSL script.
 
 ## Permissions

@@ -8,6 +8,9 @@ monikerRange: "azure-data-explorer"
 ---
 # .show cluster policy query_weak_consistency command
 
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)]
+
+
 This article describes the show management command used for the [query weak consistency policy](query-weak-consistency-policy.md). This command returns the query weak consistency policy of the cluster.
 
 ## Permissions
