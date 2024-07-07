@@ -8,6 +8,8 @@ monikerRange: "azure-data-explorer"
 ---
 # .drop workload_group command
 
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)]
+
 Drop a workload group.
 
 ## Permissions

@@ -7,6 +7,8 @@ monikerRange: "azure-data-explorer"
 ---
 # .delete cluster policy request_classification command
 
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)]
+
 Delete the cluster's request classification policy.
 
 ## Permissions

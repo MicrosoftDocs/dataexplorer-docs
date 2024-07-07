@@ -7,6 +7,8 @@ ms.date: 05/08/2023
 ---
 # How to ingest data with the REST API
 
+> [!INCLUDE [applies](../../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../../includes/applies-to-version/azure-data-explorer.md)]
+
 The Kusto.Ingest library is preferred for ingesting data to your database. However, you can still achieve almost the same functionality, without being dependent on the Kusto.Ingest package.
 This article shows you how, by using *Queued Ingestion* to your database for production-grade pipelines.
 

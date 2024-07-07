@@ -8,6 +8,8 @@ monikerRange: "azure-data-explorer"
 ---
 # .clear cluster cache external-artifacts command
 
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)]
+
 Clears cached external-artifacts of language plugins.  
 
 This command is useful when you update external-artifact files stored in external storage, as the cache may retain the previous versions. In such scenarios, executing this command will clear the cache entries and ensure that subsequent queries run with the latest version of the artifacts.

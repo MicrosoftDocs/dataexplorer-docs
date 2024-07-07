@@ -7,6 +7,8 @@ ms.date: 05/25/2023
 ---
 # .alter database policy retention command
 
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)]
+
 Changes the database's [retention policy](retention-policy.md). The retention policy controls the mechanism that automatically removes data from tables or materialized views. The policy removes data whose relevance is age-based.
 
 The retention policy can be configured for a specific table or materialized view, or for an entire database. The policy then applies to all tables in the database that don't override it.

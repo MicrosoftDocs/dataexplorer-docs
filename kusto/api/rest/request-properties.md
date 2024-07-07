@@ -7,6 +7,8 @@ ms.date: 12/19/2023
 ---
 # Request properties
 
+> [!INCLUDE [applies](../../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../../includes/applies-to-version/azure-data-explorer.md)]
+
 Request properties control how a query or command executes and returns results.
 
 ## Supported request properties

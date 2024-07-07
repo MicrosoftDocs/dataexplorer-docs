@@ -7,6 +7,8 @@ ms.date: 05/25/2023
 ---
 # .alter table policy auto_delete command
 
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)]
+
 Alters the auto delete policy that's applied to a table. For more information, see [auto delete policy](auto-delete-policy.md).
 
 ## Permissions

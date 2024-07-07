@@ -7,6 +7,8 @@ ms.date: 05/24/2023
 ---
 # .drop function command
 
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)]
+
 Drops one or more functions from the database.
 
 ## Permissions

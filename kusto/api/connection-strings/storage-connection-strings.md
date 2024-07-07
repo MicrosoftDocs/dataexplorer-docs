@@ -7,6 +7,8 @@ ms.date: 06/20/2024
 ---
 # Storage connection strings
 
+> [!INCLUDE [applies](../../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../../includes/applies-to-version/azure-data-explorer.md)]
+
 The kusto service can interact with external storage services. For example, you can [create an Azure Storage external tables](../../management/external-tables-azure-storage.md) in order to query data stored on external storages.
 
 The following types of external storage are supported:

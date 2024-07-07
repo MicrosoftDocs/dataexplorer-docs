@@ -7,6 +7,8 @@ ms.date: 06/13/2023
 
 # Parse queries and commands with Kusto.Language
 
+> [!INCLUDE [applies](../../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../../includes/applies-to-version/azure-data-explorer.md)]
+
 With [Kusto.Language](https://www.nuget.org/packages/Microsoft.Azure.Kusto.Language/), you can parse queries and management commands to generate a structured syntax tree. This article outlines the fundamental concepts and methods needed to parse queries with Kusto.Language.
 
 ## Overview of Kusto.Language methods

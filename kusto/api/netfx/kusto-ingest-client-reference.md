@@ -7,6 +7,8 @@ ms.date: 05/19/2020
 ---
 # Kusto.Ingest client interfaces and classes
 
+> [!INCLUDE [applies](../../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../../includes/applies-to-version/azure-data-explorer.md)]
+
 The main interfaces and classes in the Kusto Ingest .NET library are:
 
 * [Interface IKustoIngestClient](#interface-ikustoingestclient): The main ingestion interface

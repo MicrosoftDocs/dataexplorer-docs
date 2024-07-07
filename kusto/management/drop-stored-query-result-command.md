@@ -8,6 +8,8 @@ ms.date: 05/23/2023
 
 # .drop stored_query_result command
 
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)]
+
 Deletes an active stored query result.
 
 Use `.drop` `stored_query_result` *storedQueryResultName* to delete an active stored query result created in the current database.

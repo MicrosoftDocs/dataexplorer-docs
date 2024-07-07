@@ -9,6 +9,8 @@ monikerRange: "microsoft-fabric"
 
 # .alter-merge table policy mirroring command
 
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)]
+
 Changes the tables's [mirroring policy](mirroring-policy.md). The mirroring policy creates a logical copy of tables in your database in delta parquet format and allows you to partition your files to improve query speed. Each partition is represented as a separate column using the *PartitionName* listed in the *Partitions* list. This means there are more columns in the target than in your source table.
 
 ## Syntax

@@ -7,6 +7,8 @@ ms.date: 02/21/2023
 
 # Send T-SQL queries via the REST API
 
+> [!INCLUDE [applies](../../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../../includes/applies-to-version/azure-data-explorer.md)]
+
 This article describes how to use a [subset of the T-SQL language](/azure/data-explorer/t-sql) to send T-SQL queries via the REST API.
 
 ## Request structure

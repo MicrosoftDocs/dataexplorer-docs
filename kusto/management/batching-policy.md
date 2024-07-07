@@ -9,6 +9,8 @@ ms.date: 10/04/2023
 
 ## Overview
 
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)]
+
 During the queued ingestion process, the service optimizes for throughput by batching small ingress data chunks together before ingestion. Batching reduces the resources consumed by the queued ingestion process and doesn't require post-ingestion resources to optimize the small data shards produced by non-batched ingestion.
 
 The downside to doing batching before ingestion is the forced delay. Therefore, the end-to-end time from requesting the data ingestion until the data ready for query is larger.

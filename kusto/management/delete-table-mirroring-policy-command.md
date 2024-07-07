@@ -8,6 +8,8 @@ monikerRange: "microsoft-fabric"
 ---
 # .delete table policy mirroring command
 
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)]
+
 Delete a table's [mirroring policy](mirroring-policy.md).
 
 > [!WARNING]

@@ -8,6 +8,8 @@ monikerRange: "azure-data-explorer || microsoft-fabric"
 ---
 # Integrate the Monaco Editor with Kusto Query Language support in your app
 
+> [!INCLUDE [applies](../../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../../includes/applies-to-version/azure-data-explorer.md)]
+
 You can integrate the [Monaco Editor](https://microsoft.github.io/monaco-editor) with Kusto Query Language support (*monaco-kusto*) into your app. Integrating *monaco-kusto* into your app offers you an editing experience such as completion, colorization, refactoring, renaming, and go-to-definition. It requires you to build a solution for authentication, query execution, result display, and schema exploration. It offers you full flexibility to fashion the user experience that fits your needs.
 
 In this article, you'll learn how to add *monaco-kusto* to the Monaco Editor and integrate it into your app. The package is available on [GitHub](https://github.com/Azure/monaco-kusto) and on *npm*.

@@ -8,6 +8,8 @@ monikerRange: "azure-data-explorer"
 ---
 # .drop extents command
 
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)]
+
 Drops extents from a specified database or table.
 
 This command has several variants: In one, the extents to be dropped are specified by a Kusto query. In the other variants, extents are specified using a mini-language described below.
