@@ -7,6 +7,8 @@ ms.date: 08/17/2023
 ---
 # .show database extents partitioning statistics
 
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)]
+
 Displays statistics of data partitioning for all tables in the database that have a [data partitioning policy](partitioning-policy.md) defined.
 
 ## Permissions

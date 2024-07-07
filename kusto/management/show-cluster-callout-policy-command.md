@@ -8,6 +8,8 @@ monikerRange: "azure-data-explorer"
 ---
 # .show cluster policy callout command
 
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)]
+
 Display a cluster's [callout policy](callout-policy.md).
 
 ## Permissions
