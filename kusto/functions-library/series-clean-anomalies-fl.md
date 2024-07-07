@@ -8,6 +8,8 @@ monikerRange: "microsoft-fabric || azure-data-explorer || azure-monitor || micro
 ---
 # series_clean_anomalies_fl()
 
+>[!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)]
+
 Cleans anomalous points in a series.
 
 The function `series_clean_anomalies_fl()` is a [user-defined function (UDF)](../query/functions/user-defined-functions.md) that takes a dynamic numerical array as input and another numerical array of anomalies and replaces the anomalies in the input array with interpolated value of their adjacent points.
