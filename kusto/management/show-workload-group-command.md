@@ -4,7 +4,7 @@ description: Learn how to use the `.show workload_group` command to show the spe
 ms.reviewer: yonil
 ms.topic: reference
 ms.date: 07/01/2024
-monikerRange: "azure-data-explorer | microsoft-fabric"
+monikerRange: "azure-data-explorer || microsoft-fabric"
 ---
 # .show workload_group command
 

@@ -4,7 +4,7 @@ description: Learn how to use the request rate limits enforcement policy to enfo
 ms.reviewer: yonil
 ms.topic: reference
 ms.date: 07/01/2024
-monikerRange: "azure-data-explorer | microsoft-fabric"
+monikerRange: "azure-data-explorer || microsoft-fabric"
 ---
 # Request rate limits enforcement policy
 

@@ -4,7 +4,7 @@ description: Learn how to use workload groups to govern incoming requests to the
 ms.reviewer: yonil
 ms.topic: reference
 ms.date: 7/1/2024
-monikerRange: "azure-data-explorer | microsoft-fabric"
+monikerRange: "azure-data-explorer || microsoft-fabric"
 ---
 # Workload groups
 

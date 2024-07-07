@@ -4,7 +4,7 @@ description: Learn how to use the request classification policy to assign incomi
 ms.reviewer: yonil
 ms.topic: reference
 ms.date: 07/01/2024
-monikerRange: "azure-data-explorer | microsoft-fabric"
+monikerRange: "azure-data-explorer || microsoft-fabric"
 ---
 # Request classification policy
 

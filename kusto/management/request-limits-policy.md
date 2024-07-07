@@ -4,7 +4,7 @@ description: Learn how to use the request limits policy to limit the resources u
 ms.reviewer: yonil
 ms.topic: reference
 ms.date: 07/01/2024
-monikerRange: "azure-data-explorer | microsoft-fabric"
+monikerRange: "azure-data-explorer || microsoft-fabric"
 ---
 # Request limits policy
 
