@@ -7,6 +7,8 @@ ms.date: 12/20/2023
 ---
 # series_cosine_similarity()
 
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)] [!INCLUDE [monitor](../includes/applies-to-version/monitor.md)] [!INCLUDE [sentinel](../includes/applies-to-version/sentinel.md)]
+
 Calculate the cosine similarity of two numerical vectors.
 
 The function `series_cosine_similarity()` takes two numeric series as input, and calculates their [cosine similarity](https://en.wikipedia.org/wiki/Cosine_similarity).

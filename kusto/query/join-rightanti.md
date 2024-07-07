@@ -8,6 +8,8 @@ ms.date: 06/18/2023
 
 # rightanti join
 
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)] [!INCLUDE [monitor](../includes/applies-to-version/monitor.md)] [!INCLUDE [sentinel](../includes/applies-to-version/sentinel.md)]
+
 The `rightanti` join flavor returns all records from the right side that don't match any record from the left side. The anti join models the "NOT IN" query.
 
 > **Alias**: `rightantisemi`

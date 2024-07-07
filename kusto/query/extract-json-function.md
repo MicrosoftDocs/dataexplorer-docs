@@ -7,6 +7,8 @@ ms.date: 07/30/2023
 ---
 # extract_json()
 
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)] [!INCLUDE [monitor](../includes/applies-to-version/monitor.md)] [!INCLUDE [sentinel](../includes/applies-to-version/sentinel.md)]
+
 Get a specified element out of a JSON text using a path expression.
 
 Optionally convert the extracted string to a specific type.

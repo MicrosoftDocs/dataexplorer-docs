@@ -7,6 +7,8 @@ ms.date: 05/01/2023
 ---
 # shuffle query
 
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)] [!INCLUDE [monitor](../includes/applies-to-version/monitor.md)] [!INCLUDE [sentinel](../includes/applies-to-version/sentinel.md)]
+
 The `shuffle` query is a semantic-preserving transformation used with a set of operators that support the `shuffle` strategy. Depending on the data involved, querying with the `shuffle` strategy can yield better performance. It's better to use the shuffle query strategy when the `shuffle` key (a `join` key, `summarize` key, `make-series` key or `partition` key) has a high cardinality and the regular operator query hits query limits.
 
 You can use the following operators with the shuffle command:

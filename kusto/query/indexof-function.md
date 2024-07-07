@@ -7,6 +7,8 @@ ms.date: 12/28/2022
 ---
 # indexof()
 
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)] [!INCLUDE [monitor](../includes/applies-to-version/monitor.md)] [!INCLUDE [sentinel](../includes/applies-to-version/sentinel.md)]
+
 Reports the zero-based index of the first occurrence of a specified string within the input string.
 
 For more information, see [`indexof_regex()`](indexof-regex-function.md).

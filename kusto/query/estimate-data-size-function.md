@@ -7,6 +7,8 @@ ms.date: 03/09/2023
 ---
 # estimate_data_size()
 
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)] [!INCLUDE [monitor](../includes/applies-to-version/monitor.md)] [!INCLUDE [sentinel](../includes/applies-to-version/sentinel.md)]
+
 Returns an estimated data size in bytes of the selected columns of the tabular expression.
 
 ## Syntax

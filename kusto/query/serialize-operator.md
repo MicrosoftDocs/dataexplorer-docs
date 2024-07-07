@@ -7,6 +7,8 @@ ms.date: 03/16/2023
 ---
 # serialize operator
 
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)] [!INCLUDE [monitor](../includes/applies-to-version/monitor.md)] [!INCLUDE [sentinel](../includes/applies-to-version/sentinel.md)]
+
 Marks that the order of the input row set is safe to use for window functions.
 
 The operator has a declarative meaning. It marks the input row set as serialized (ordered), so that [window functions](window-functions.md) can be applied to it.

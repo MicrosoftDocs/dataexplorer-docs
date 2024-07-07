@@ -8,6 +8,8 @@ monikerRange: "microsoft-fabric || azure-data-explorer || azure-monitor || micro
 ---
 # Plotly (preview)
 
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)] [!INCLUDE [monitor](../includes/applies-to-version/monitor.md)] [!INCLUDE [sentinel](../includes/applies-to-version/sentinel.md)]
+
 ::: moniker range="microsoft-fabric  || azure-data-explorer"
 
 The Plotly graphics library supports ~80 chart types that are useful for advanced charting including geographic, scientific, machine learning, 3d, animation, and many other chart types. For more information, see [Plotly](https://plotly.com/python/). 

@@ -7,6 +7,8 @@ ms.date: 03/02/2023
 ---
 # url_encode_component()
 
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)] [!INCLUDE [monitor](../includes/applies-to-version/monitor.md)] [!INCLUDE [sentinel](../includes/applies-to-version/sentinel.md)]
+
 The function converts characters of the input URL into a format that can be transmitted over the internet. Differs from [url_encode](url-encode-function.md) by encoding spaces as '%20' and not as '+'.
 
 For more information about URL encoding and decoding, see [Percent-encoding](https://en.wikipedia.org/wiki/Percent-encoding).

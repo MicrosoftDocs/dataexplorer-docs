@@ -7,6 +7,8 @@ ms.date: 12/11/2022
 ---
 # diffpatterns_text plugin
 
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)] [!INCLUDE [monitor](../includes/applies-to-version/monitor.md)] [!INCLUDE [sentinel](../includes/applies-to-version/sentinel.md)]
+
 Compares two datasets of string values and finds text patterns that characterize differences between the two datasets. The plugin is invoked with the [`evaluate`](evaluate-operator.md) operator.
 
 The `diffpatterns_text` returns a set of text patterns that capture different portions of the data in the two sets. For example, a pattern capturing a large percentage of the rows when the condition is `true` and low percentage of the rows when the condition is `false`. The patterns are built from consecutive tokens separated by white space, with a token from the text column or a `*` representing a wildcard. Each pattern is represented by a row in the results.

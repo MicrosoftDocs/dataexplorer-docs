@@ -7,6 +7,8 @@ ms.date: 01/26/2023
 ---
 # series_fir()
 
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)] [!INCLUDE [monitor](../includes/applies-to-version/monitor.md)] [!INCLUDE [sentinel](../includes/applies-to-version/sentinel.md)]
+
 Applies a Finite Impulse Response (FIR) filter on a series.  
 
 The function takes an expression containing a dynamic numerical array as input and applies a [Finite Impulse Response](https://en.wikipedia.org/wiki/Finite_impulse_response) filter. By specifying the `filter` coefficients, it can be used for calculating a moving average, smoothing, change-detection, and many more use cases. The function takes the column containing the dynamic array and a static dynamic array of the filter's coefficients as input, and applies the filter on the column. It outputs a new dynamic array column, containing the filtered output.  

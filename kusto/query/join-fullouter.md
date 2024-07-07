@@ -9,6 +9,8 @@ monikerRange: "microsoft-fabric || azure-data-explorer || azure-monitor || micro
 
 # fullouter join
 
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)] [!INCLUDE [monitor](../includes/applies-to-version/monitor.md)] [!INCLUDE [sentinel](../includes/applies-to-version/sentinel.md)]
+
 A `fullouter` join combines the effect of applying both left and right outer-joins. For columns of the table that lack a matching row, the result set contains `null` values. For those records that do match, a single row is produced in the result set containing fields populated from both tables.
 
 :::image type="content" source="media/joinoperator/join-fullouter.png" alt-text="Diagram that shows how the join works." lightbox="media/joinoperator/join-kinds.png":::

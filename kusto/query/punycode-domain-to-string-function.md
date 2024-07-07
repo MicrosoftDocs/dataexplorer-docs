@@ -7,6 +7,8 @@ ms.date: 06/22/2023
 
 # punycode_domain_to_string()
 
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)] [!INCLUDE [monitor](../includes/applies-to-version/monitor.md)] [!INCLUDE [sentinel](../includes/applies-to-version/sentinel.md)]
+
 Encodes Internationalized Domain Name in Applications (IDNA) string to [Punycode](https://en.wikipedia.org/wiki/Punycode) form.
 
 

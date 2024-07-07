@@ -7,6 +7,8 @@ ms.date: 12/10/2019
 ---
 # rank_tdigest()
 
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)] [!INCLUDE [monitor](../includes/applies-to-version/monitor.md)] [!INCLUDE [sentinel](../includes/applies-to-version/sentinel.md)]
+
 Calculates the approximate rank of the value in a set.
 Rank of value `v` in a set `S` is defined as count of members of `S` that are smaller or equal to `v`, `S` is represented by its `tdigest`.
 

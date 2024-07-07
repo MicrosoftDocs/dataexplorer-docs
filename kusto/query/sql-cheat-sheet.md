@@ -7,6 +7,8 @@ ms.date: 07/19/2023
 ---
 # SQL to Kusto Query Language cheat sheet
 
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)] [!INCLUDE [monitor](../includes/applies-to-version/monitor.md)] [!INCLUDE [sentinel](../includes/applies-to-version/sentinel.md)]
+
 If you're familiar with SQL and want to learn KQL, translate SQL queries into KQL by prefacing the SQL query with a comment line, `--`, and the keyword `explain`. The output shows the KQL version of the query, which can help you understand the KQL syntax and concepts.
 
 > [!div class="nextstepaction"]

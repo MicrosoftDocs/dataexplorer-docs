@@ -8,6 +8,8 @@ adobe-target: true
 ---
 # bin()
 
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)] [!INCLUDE [monitor](../includes/applies-to-version/monitor.md)] [!INCLUDE [sentinel](../includes/applies-to-version/sentinel.md)]
+
 Rounds values down to an integer multiple of a given bin size.
 
 Used frequently in combination with [`summarize by ...`](summarize-operator.md).

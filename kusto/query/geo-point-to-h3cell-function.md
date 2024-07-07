@@ -7,6 +7,8 @@ ms.date: 03/09/2023
 ---
 # geo_point_to_h3cell()
 
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)] [!INCLUDE [monitor](../includes/applies-to-version/monitor.md)] [!INCLUDE [sentinel](../includes/applies-to-version/sentinel.md)]
+
 Calculates the H3 Cell token string value of a geographic location.
 
 Read more about [H3 Cell](https://eng.uber.com/h3/).
