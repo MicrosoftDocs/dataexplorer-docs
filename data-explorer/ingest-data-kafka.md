@@ -26,6 +26,17 @@ By default, the Kafka connector uses the application method for authentication d
 
 [!INCLUDE [ingest-data-kafka-2](includes/cross-repo/ingest-data-kafka-2.md)]
 
+## Clean up resources
+
+To delete the Azure Data Explorer resources, use [az cluster delete](/cli/azure/kusto/cluster#az-kusto-cluster-delete) or [az Kusto database delete](/cli/azure/kusto/database#az-kusto-database-delete):
+
+```azurecli-interactive
+az kusto cluster delete -n <cluster name> -g <resource group name>
+az kusto database delete -n <database name> --cluster-name <cluster name> -g <resource group name>
+```
+
+[!INCLUDE [ingest-data-kafka-3](includes/cross-repo/ingest-data-kafka-3.md)]
+
 ## Related content
 
 * Learn more about [Big data architecture](/azure/architecture/solution-ideas/articles/big-data-azure-data-explorer).
