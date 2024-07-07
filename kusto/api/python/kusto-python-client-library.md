@@ -6,6 +6,9 @@ ms.topic: reference
 ms.date: 06/20/2024
 ---
 # Kusto Python SDK
+
+> [!INCLUDE [applies](../../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../../includes/applies-to-version/azure-data-explorer.md)]
+
 The Kusto Python Client library lets you query your cluster using Python.
 The library is Python 2.x/3.x compatible. It supports all data types using the Python DB API interface.
 

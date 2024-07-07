@@ -9,6 +9,8 @@ monikerRange: "microsoft-fabric || azure-data-explorer"
 
 # Python plugin packages
 
+> [!INCLUDE [applies](includes/applies-to-version/applies.md)] [!INCLUDE [fabric](includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](includes/applies-to-version/azure-data-explorer.md)]
+
 This article lists the available Python packages in the Python plugin. For more information, see [Python plugin](query/python-plugin.md).
 
 ## [3.10.8](#tab/python3-10-8)
