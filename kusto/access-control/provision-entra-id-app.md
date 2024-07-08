@@ -7,6 +7,8 @@ ms.date: 06/05/2024
 ---
 # Create Microsoft Entra application registration
 
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)]
+
 Microsoft Entra application authentication requires creating and registering an application with Microsoft Entra ID.
 A service principal is automatically created when the application registration is created in a Microsoft Entra tenant.
 
