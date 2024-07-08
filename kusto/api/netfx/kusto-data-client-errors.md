@@ -80,7 +80,7 @@ All authentication exceptions have a **Failure code** of `0`, no **Failure subco
 
 All request exceptions have a **Failure code** of `0`, no **Failure subcode**, and a **Permanence** of `False` unless noted in the reason column.
 
-:::moniker range="microsoft-fabric""
+:::moniker range="microsoft-fabric"
 | Exception name | Reason |
 |--|--|
 | `EntityNameIsNotValidException` | Indicates an entity name isn't valid. </br> **Failure code**: 400 </br> **Failure subcode**: BadRequest_EntityNameIsNotValid </br> **Permanence**: True|
