@@ -4,7 +4,6 @@ description: Learn how to use the ".alter-merge workload_group" command to alter
 ms.reviewer: yonil
 ms.topic: reference
 ms.date: 07/01/2024
-monikerRange: "microsoft-fabric || azure-data-explorer"
 ---
 
 # .alter-merge workload_group command

@@ -9,7 +9,7 @@ ms.date: 03/08/2023
 
 > [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)] [!INCLUDE [monitor](../includes/applies-to-version/monitor.md)] [!INCLUDE [sentinel](../includes/applies-to-version/sentinel.md)]
 
-The Azure Data Explorer query editor supports the use of T-SQL in addition to its primary query language, [Kusto query language (KQL)](index.md). While KQL is the recommended query language, T-SQL can be useful for tools that are unable to use KQL.
+The query editor supports the use of T-SQL in addition to its primary query language, [Kusto query language (KQL)](index.md). While KQL is the recommended query language, T-SQL can be useful for tools that are unable to use KQL.
 
 > [!NOTE]
 > Only Data Query Language (DQL) commands are supported. For more information, see [Coverage](#coverage).
@@ -153,7 +153,7 @@ The query environment offers limited support for T-SQL. The following table outl
 |Dynamic statements|Not supported|
 |Flow control statements|Only `IF` `THEN` `ELSE` statements with an identical schema for `THEN` and `ELSE` are supported.|
 |Duplicate column names|Not supported. The original name is preserved for one column.|
-|Data types|Data returned may differ in type from SQL Server. For example, `TINYINT` and `SMALLINT` have no equivalent in the query environment, and may return as `INT32` or `INT64` instead of `BYTE` or `INT16`.|
+|Data types|Data returned may differ in type from SQL Server. For example, `TINYINT` and `SMALLINT` have no equivalent in Kusto, and may return as `INT32` or `INT64` instead of `BYTE` or `INT16`.|
 
 ## Related content
 

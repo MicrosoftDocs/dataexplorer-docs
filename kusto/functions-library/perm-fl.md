@@ -8,6 +8,8 @@ monikerRange: "microsoft-fabric || azure-data-explorer || azure-monitor || micro
 ---
 # perm_fl()
 
+>[!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)] [!INCLUDE [monitor](../includes/applies-to-version/monitor.md)] [!INCLUDE [sentinel](../includes/applies-to-version/sentinel.md)]
+
 Calculate *P(n, k)*
 
 The function `perm_fl()` is a [user-defined function (UDF)](../query/functions/user-defined-functions.md) that calculates *P(n, k)*, the number of [permutations](https://en.wikipedia.org/wiki/Permutation) for selection of k items out of n, with order. It's based on the native [gamma()](../query/gamma-function.md) function to calculate factorial, (see [facorial_fl()](factorial-fl.md)). For selection of k items without order, use [comb_fl()](comb-fl.md).

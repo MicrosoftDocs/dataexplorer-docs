@@ -7,6 +7,8 @@ ms.date: 03/13/2023
 ---
 # get_packages_version_fl()
 
+>[!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)]
+
 `get_packages_version_fl()` is a [user-defined function](../query/functions/user-defined-functions.md) that retrieves the versions of the Python engine and packages of the [inline python() plugin](../query/python-plugin.md).
 
 The function accepts a dynamic array containing the names of the packages to check, and returns their respective versions and the Python engine version.

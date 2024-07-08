@@ -46,7 +46,9 @@ To interact with nonpublic external storage, you must specify authentication mea
 The following authentication methods are supported:
 
 * [Impersonation](#impersonation)
+:::moniker range="azure-data-explorer"
 * [Managed identity](#managed-identity)
+:::moniker-end
 * [Shared Access (SAS) key](#shared-access-sas-token)
 * [Microsoft Entra access token](#azure-ad-access-token)
 * [Storage account access key](#storage-account-access-key)
@@ -69,7 +71,7 @@ The following table summarizes the available authentication methods for differen
 
 ### Impersonation
 
-The query environment impersonates the requestor's principal identity to access the resource. To use impersonation, append `;impersonate` to the connection string.
+Kusto impersonates the requestor's principal identity to access the resource. To use impersonation, append `;impersonate` to the connection string.
 
 |Example|
 |--|

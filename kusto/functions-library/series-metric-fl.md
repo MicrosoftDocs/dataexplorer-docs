@@ -8,6 +8,8 @@ monikerRange: "microsoft-fabric || azure-data-explorer || azure-monitor || micro
 ---
 # series_metric_fl()
 
+>[!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)] [!INCLUDE [monitor](../includes/applies-to-version/monitor.md)] [!INCLUDE [sentinel](../includes/applies-to-version/sentinel.md)]
+
 The `series_metric_fl()` function is a [user-defined function (UDF)](../query/functions/user-defined-functions.md) that selects and retrieves time series of metrics ingested to your cluster using the [Prometheus](https://prometheus.io/) monitoring system. This function assumes the data stored in your cluster is structured following the [Prometheus data model](https://prometheus.io/docs/concepts/data_model/). Specifically, each record contains:
 
 * timestamp

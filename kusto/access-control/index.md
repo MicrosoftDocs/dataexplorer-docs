@@ -8,6 +8,8 @@ ms.date: 06/28/2023
 ---
 # Access control overview
 
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)]
+
 Access control is based on authentication and authorization. Each query and command on an Azure Data Explorer resource, such as a cluster or database, must pass both authentication and authorization checks.
 
 * [Authentication](#authentication): Validates the identity of the security principal making a request
@@ -15,7 +17,7 @@ Access control is based on authentication and authorization. Each query and comm
 
 ## Authentication
 
-To programmatically authenticate with your database, a client must communicate with [Microsoft Entra ID](/azure/active-directory/fundamentals/active-directory-whatis) and request an access token specific to Azure Data Explorer. Then, the client can use the acquired access token as proof of identity when issuing requests to your database.
+To programmatically authenticate, a client must communicate with [Microsoft Entra ID](/azure/active-directory/fundamentals/active-directory-whatis) and request an access token specific to the Kusto service. Then, the client can use the acquired access token as proof of identity when issuing requests to your database.
 
 The main authentication scenarios are as follows:
 

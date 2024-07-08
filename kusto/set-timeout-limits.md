@@ -5,8 +5,9 @@ ms.topic: how-to
 ms.date: 07/18/2023
 monikerRange: "azure-data-explorer"
 ---
-
 # Set timeout limits
+
+> [!INCLUDE [applies](includes/applies-to-version/applies.md)] [!INCLUDE [azure-data-explorer](includes/applies-to-version/azure-data-explorer.md)]
 
 It's possible to customize the timeout length for your queries and [management commands](management/index.md). In this article, you'll learn how to set a custom timeout in various tools such as the [Azure Data Explorer web UI](/azure/dataexplorer/web-query-data), [Kusto.Explorer](tools/kusto-explorer.md), [Kusto.Cli](/tools/kusto-cli.md), [Power BI](/azure/data-explorer/power-bi-data-connector), and when using an [SDK](#sdks). Certain tools have their own default timeout values, but it may be helpful to adjust these values based on the complexity and expected runtime of your queries.
 

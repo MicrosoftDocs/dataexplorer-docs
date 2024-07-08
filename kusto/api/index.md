@@ -7,6 +7,8 @@ ms.date: 06/14/2023
 ---
 # API Overview
 
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)]
+
 The following communication endpoints are supported:
 
 1. A [REST API](#rest-api) endpoint, through which you can query and manage the data in your query environment.
@@ -41,7 +43,7 @@ For more information, see [MS-TDS](../query/t-sql.md).
 
 ## Client libraries
 
-The query environment provides a number of [client libraries](client-libraries.md) that make use of the above endpoints, to make programmatic access easy.
+There are a number of [client libraries](client-libraries.md) that make use of the above endpoints, to make programmatic access easy.
 
 * .NET SDK
 * Python SDK
