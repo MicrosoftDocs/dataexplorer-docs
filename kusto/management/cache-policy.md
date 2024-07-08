@@ -60,7 +60,7 @@ There are several query possibilities:
 * Add a `datascope=...` text immediately after a table reference in the query body.
    Possible values are `all` and `hotcache`.
 
-The `default` value indicates use of the cluster default settings, which determine that the query should cover all data.
+The `default` value indicates use of the database default settings, which determine that the query should cover all data.
 
 If there's a discrepancy between the different methods, then `set` takes precedence over the client request property. Specifying a value for a table reference takes precedence over both.
 
@@ -85,7 +85,7 @@ Example:
 * `SoftDeletePeriod` = 56d
 * `hot cache policy` = 28d
 
-In the example, the last 28 days of data will be on the cluster SSD and the additional 28 days of data will be stored in Azure blob storage. You can run queries on the full 56 days of data.
+In the example, the last 28 days of data will be on the database SSD and the additional 28 days of data will be stored in Azure blob storage. You can run queries on the full 56 days of data.
 
 ## Related content
 

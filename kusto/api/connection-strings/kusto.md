@@ -25,7 +25,9 @@ https://help.kusto.windows.net/Samples; Fed=true; Accept=true
 > * A property value that contains a semicolon (`;`), a single quotation mark (`'`), or a double quotation mark (`"`)
 >   must be enclosed between double quotation marks.
 
+:::moniker range="azure-data-explorer"
 Several Kusto client tools support an extension over the URI prefix of the connection string that allows for a shorthand format of `@`*ClusterName*`/`*InitialCatalog*. For example, these tools translate the connection string `@help/Samples` to `https://help.kusto.windows.net/Samples; Fed=true`.
+:::moniker-end
 
 Programmatically, the C# `Kusto.Data.KustoConnectionStringBuilder` class can parse and manipulate Kusto connection strings. This class validates all connection strings and generates a runtime exception if validation fails. This functionality is present in all flavors of Kusto SDK.
 
@@ -115,7 +117,7 @@ For application authentication, specify `AAD Federated Security` as `true`. Then
 #### Authentication with an application certificate
 
 1. The application should be configured to accept the given certificate. [How to authentication based-on Microsoft Entra application's certificate](https://github.com/Azure-Samples/active-directory-dotnet-daemon-certificate-credential).
-1. The application should be configured as an authorized principal in the relevant Kusto cluster.
+1. The application should be configured as an authorized principal in the relevant Kusto database.
 1. The certificate needs to be installed in Local Machine store or in Current User store.
 1. The certificate's public key should contain at least 2048 bits.
 
@@ -138,6 +140,7 @@ For application authentication, specify `AAD Federated Security` as `true`. Then
 
 ## Examples
 
+:::moniker range="azure-data-explorer"
 **Microsoft Entra ID Federated authentication using the currently logged-on user identity (user will be prompted if required)**
 
 ```csharp
@@ -238,3 +241,99 @@ var kustoConnectionStringBuilder = new KustoConnectionStringBuilder(kustoUri)
     .WithAadApplicationThumbprintAuthentication(appId, appCert, authority);
 // Equivalent Kusto connection string: $"Data Source={kustoUri};Database=NetDefaultDB;Fed=True;AppClientId={appId};AppCert={appCert};Authority Id={authority}"
 ```
+:::moniker-end
+
+:::moniker range="microsoft-fabric"
+**Microsoft Entra ID Federated authentication using the currently logged-on user identity (user will be prompted if required)**
+
+```csharp
+var kustoUri = "serviceURI";
+var authority = "contoso.com"; // Or the AAD tenant GUID
+var kustoConnectionStringBuilder = new KustoConnectionStringBuilder(kustoUri)
+    .WithAadUserPromptAuthentication(authority);
+// Equivalent Kusto connection string: $"Data Source={kustoUri};Database=NetDefaultDB;Fed=True;Authority Id={authority}"
+```
+
+**Microsoft Entra ID Federated authentication with user id hint (user will be prompted if required)**
+
+```csharp
+var kustoUri = "serviceURI";
+var authority = "contoso.com"; // Or the AAD tenant GUID
+var userId = "johndoe@contoso.com";
+var kustoConnectionStringBuilder = new KustoConnectionStringBuilder(kustoUri)
+  .WithAadUserPromptAuthentication(authority, userId);
+// Equivalent Kusto connection string: $"Data Source={kustoUri};Database=NetDefaultDB;Fed=True;Authority Id={authority};User ID={userId}"
+```
+
+**Microsoft Entra ID Federated application authentication using ApplicationClientId and ApplicationKey**
+
+```csharp
+var kustoUri = "serviceURI";
+var appId = "<appId>";
+var appKey = "<appKey>";
+var authority = "contoso.com"; // Or the AAD tenant GUID
+var kustoConnectionStringBuilder = new KustoConnectionStringBuilder(kustoUri)
+    .WithAadApplicationKeyAuthentication(appId, appKey, authority);
+// Equivalent Kusto connection string: $"Data Source={kustoUri};Database=NetDefaultDB;Fed=True;AppClientId={appId};AppKey={appKey};Authority Id={authority}"
+```
+
+**Using System-assigned Managed Identity**
+
+```csharp
+var kustoUri = "serviceURI";
+var kustoConnectionStringBuilder = new KustoConnectionStringBuilder(kustoUri)
+    .WithAadSystemManagedIdentity();
+```
+
+**Microsoft Entra ID Federated authentication using user / application token**
+
+```csharp
+var kustoUri = "serviceURI";
+var userAccessToken = "<userAccessToken>";
+var appAccessToken = "<appAccessToken>";
+// AAD User token
+var kustoConnectionStringBuilder = new KustoConnectionStringBuilder(kustoUri)
+    .WithAadUserTokenAuthentication(userAccessToken);
+    
+// Equivalent Kusto connection string: "Data Source={kustoUri};Database=NetDefaultDB;Fed=True;UserToken={userAccessToken}"
+// AAD Application token
+var kustoConnectionStringBuilder = new KustoConnectionStringBuilder(kustoUri)
+    .WithAadApplicationTokenAuthentication(appAccessToken);
+    
+// Equivalent Kusto connection string: "Data Source={kustoUri};Database=NetDefaultDB;Fed=True;ApplicationToken={appAccessToken}"
+```
+
+**Using token provider callback (will be invoked each time a token is required)**
+
+```csharp
+var kustoUri = "serviceURI";
+Func<string> tokenProviderCallback; // User-defined method to retrieve the access token
+var kustoConnectionStringBuilder = new KustoConnectionStringBuilder(kustoUri)
+    .WithAadTokenProviderAuthentication(tokenProviderCallback);
+```
+
+**Using X.509 certificate**
+
+```csharp
+var kustoUri = "serviceURI";
+var appId = "<appId>";
+X509Certificate2 appCert;
+var authority = "contoso.com"; // Or the AAD tenant GUID
+bool sendX5c; // Set to 'True' to use Trusted Issuer feature of AAD
+var kustoConnectionStringBuilder = new KustoConnectionStringBuilder(kustoUri)
+    .WithAadApplicationCertificateAuthentication(appId, appCert, authority, sendX5c);
+```
+
+**Using X.509 certificate by thumbprint (client will attempt to load the certificate from local store)**
+
+```csharp
+var kustoUri = "serviceURI";
+var appId = "<appId>";
+var appCert = "<appCert>";
+var authority = "contoso.com"; // Or the AAD tenant GUID
+var kustoConnectionStringBuilder = new KustoConnectionStringBuilder(kustoUri)
+    .WithAadApplicationThumbprintAuthentication(appId, appCert, authority);
+// Equivalent Kusto connection string: $"Data Source={kustoUri};Database=NetDefaultDB;Fed=True;AppClientId={appId};AppCert={appCert};Authority Id={authority}"
+```
+:::moniker-end
+
