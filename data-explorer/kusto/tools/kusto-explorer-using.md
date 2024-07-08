@@ -192,7 +192,7 @@ and configured to communicate with cluster `help`, database `Samples`, use the
 following command:
 
 ```kusto
-Kusto.Explorer.exe c:\temp\script.kql uri=https://help.kusto.windows.net/Samples;Fed=true&name=Samples
+Kusto.Explorer.exe c:\temp\script.kql "uri=https://help.kusto.windows.net/Samples;Fed=true&name=Samples"
 ```
 
 |Argument  |Description                                                               |
