@@ -28,4 +28,4 @@ There are several possible courses of action:
 * Increase the relevant query limit temporarily for that query. For more information, see **Result truncation** under [query limits](query-limits.md).
 
  > [!NOTE]
- > We don't recommend that you increase the query limit, since the limits exist to protect the cluster. The limits make sure that a single query doesn't disrupt concurrent queries running on the cluster.
+ > We don't recommend that you increase the query limit, since the limits exist to protect the database. The limits make sure that a single query doesn't disrupt concurrent queries running on the database.
