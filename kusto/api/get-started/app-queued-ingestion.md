@@ -4,6 +4,7 @@ description: Learn how to create an app to get data using queued ingestion of th
 ms.reviewer: yogilad
 ms.topic: how-to
 ms.date: 11/07/2023
+monikerRange: "azure-data-explorer"
 ---
 # Create an app to get data using queued ingestion
 

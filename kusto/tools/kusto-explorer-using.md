@@ -155,6 +155,7 @@ web=0&query=KustoLogs+%7c+where+Timestamp+>+ago({Period})+%7c+count&Period=1h`
 1. Provide a parameter for every query parameter in the URI. To copy your URI, see [Copy a KQL database URI](/fabric/real-time-intelligence/access-database-copy-uri#copy-uri).
 :::moniker-end
 
+
 #### Limitations
 
 The queries are limited to ~2000 characters because of browser limitations, HTTP proxies, and tools that validate links, such as Microsoft Outlook. The limitation is approximate because it's dependent on the cluster and Database name length. For more information, see [https://support.microsoft.com/kb/208427](https://support.microsoft.com/kb/208427).

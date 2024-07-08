@@ -13,7 +13,7 @@ This article explains the best practices for working with the [Kusto Data librar
 
 ## Use a single client instance
 
-The Kusto client providers are designed for concurrent use by multiple threads, and they cache information retrieved during the initial contact with your cluster. To optimize performance, we recommend reusing a single client instance rather than creating a new one for each request.
+The Kusto client providers are designed for concurrent use by multiple threads, and they cache information retrieved during the initial contact with your database. To optimize performance, we recommend reusing a single client instance rather than creating a new one for each request.
 
 ## Specify the database parameter
 

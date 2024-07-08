@@ -10,7 +10,7 @@ adobe-target: true
 
 > [!INCLUDE [applies](../../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../../includes/applies-to-version/azure-data-explorer.md)]
 
-The Kusto Data library provides a client for querying and managing data in your cluster.
+The Kusto Data library provides a client for querying and managing data in your database.
 
 ## Get the library
 
@@ -34,9 +34,9 @@ Install [kusto-data](https://central.sonatype.com/artifact/com.microsoft.azure.k
 
 ---
 
-## Connect to your cluster
+## Connect to your database
 
-The Kusto Data library provides a Kusto client object to help you connect to your cluster. This object accepts a Kusto connection string builder object as input, which is used to define the cluster URI and authentication mode. For an example, see [Create your first Kusto client app](../../api/get-started/app-hello-kusto.md).
+The Kusto Data library provides a Kusto client object to help you connect to your database. This object accepts a Kusto connection string builder object as input, which is used to define the URI and authentication mode. For an example, see [Create your first Kusto client app](../../api/get-started/app-hello-kusto.md).
 
 ## Run queries and commands
 

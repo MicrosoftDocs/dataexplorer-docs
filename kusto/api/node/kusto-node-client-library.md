@@ -11,9 +11,9 @@ ms.date: 04/19/2023
 
 The Kusto Node SDK is compatible with Node LTS v6.14 and built with ES6.
 
-*Kusto Node Client* Library provides the capability to query your cluster using NodeJs.
+*Kusto Node Client* Library provides the capability to query your database using NodeJs.
 
-*Kusto Node Ingest Client* is a Node library that can send data to your cluster (i.e. ingest data). 
+*Kusto Node Ingest Client* is a Node library that can send data to your database (i.e. ingest data). 
 
 * [Kusto query sample](https://github.com/Azure/azure-kusto-node/blob/master/packages/azure-kusto-data/example.js)
 
