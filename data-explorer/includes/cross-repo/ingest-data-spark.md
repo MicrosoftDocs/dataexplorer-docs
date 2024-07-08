@@ -12,13 +12,9 @@ Starting version 2.3.0 we introduce new artifact Ids replacing spark-kusto-conne
 
 ### Build prerequisites
 
-1. If you aren't using prebuilt libraries, you need to install the libraries listed in [dependencies](https://github.com/Azure/azure-kusto-spark#dependencies) including the following [Kusto Java SDK](/azure/data-explorer/kusto/api/java/kusto-java-client-library) libraries. To find the right version to install, [look in the relevant release's pom](https://github.com/Azure/azure-kusto-spark/releases):
-    * [Kusto Data Client](https://mvnrepository.com/artifact/com.microsoft.azure.kusto/kusto-data)
-    * [Kusto Ingest Client](https://mvnrepository.com/artifact/com.microsoft.azure.kusto/kusto-ingest)
-
 1. Refer to [this source](https://github.com/Azure/azure-kusto-spark) for building the Spark Connector.
 
-1. For Scala/Java applications using Maven project definitions, link your application with the following artifact (latest version may differ):
+1. For Scala/Java applications using Maven project definitions, link your application with the following artifact (latest version may differ). 
 
     ```Maven
        <dependency>
@@ -27,6 +23,11 @@ Starting version 2.3.0 we introduce new artifact Ids replacing spark-kusto-conne
          <version>2.5.1</version>
        </dependency>
     ```
+    For more information, see [https://mvnrepository.com/artifact/com.microsoft.azure.kusto/kusto-spark_3.0_2.12](https://mvnrepository.com/artifact/com.microsoft.azure.kusto/kusto-spark_3.0_2.12).
+
+1. If you aren't using prebuilt libraries, you need to install the libraries listed in [dependencies](https://github.com/Azure/azure-kusto-spark#dependencies) including the following [Kusto Java SDK](/azure/data-explorer/kusto/api/java/kusto-java-client-library) libraries. To find the right version to install, [look in the relevant release's pom](https://github.com/Azure/azure-kusto-spark/releases):
+    * [Kusto Data Client](https://mvnrepository.com/artifact/com.microsoft.azure.kusto/kusto-data)
+    * [Kusto Ingest Client](https://mvnrepository.com/artifact/com.microsoft.azure.kusto/kusto-ingest)
 
 ### Build commands
 
