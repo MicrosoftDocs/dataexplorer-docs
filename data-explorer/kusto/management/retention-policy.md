@@ -32,7 +32,7 @@ A retention policy includes the following properties:
 
 * **SoftDeletePeriod**:
   * Time span for which it's guaranteed that the data is kept available to query. The period is measured starting from the time the data was ingested.
-  * Defaults to `100 years`.
+  * Defaults to `1,000 years`.
   * When altering the soft-delete period of a table or database, the new value applies to both existing and new data.
 * **Recoverability**:
   * Data recoverability (Enabled/Disabled) after the data was deleted.
@@ -62,7 +62,7 @@ The command results in the following policy object applied to the database or ta
 
 ```kusto
 {
-  "SoftDeletePeriod": "36500.00:00:00", "Recoverability":"Enabled"
+  "SoftDeletePeriod": "365000.00:00:00", "Recoverability":"Enabled"
 }
 ```
 
@@ -125,7 +125,7 @@ Set all tables in the database to have a soft-delete period of seven days and di
 
 Set tables `MyTable1` and `MyTable2` to have a soft-delete period of seven days, and have `MySpecialTable` keep its data indefinitely.
 
-* *Option 1*: Set a database-level retention policy, and set a table-level retention policy, with a soft-delete period of 100 years, the default retention policy, for `MySpecialTable`.
+* *Option 1*: Set a database-level retention policy, and set a table-level retention policy, with a soft-delete period of 1,000 years, the default retention policy, for `MySpecialTable`.
 
   ```kusto
   .delete table MyTable1 policy retention   // optional, only if the table previously had its policy set
@@ -143,7 +143,7 @@ Set tables `MyTable1` and `MyTable2` to have a soft-delete period of seven days,
   .alter-merge table MyTable2 policy retention softdelete = 7d
   ```
 
-* *Option 3*: For tables `MyTable1` and `MyTable2`, set a table-level retention policy. For table `MySpecialTable`, set a table-level retention policy with a soft-delete period of 100 years, the default retention policy.
+* *Option 3*: For tables `MyTable1` and `MyTable2`, set a table-level retention policy. For table `MySpecialTable`, set a table-level retention policy with a soft-delete period of 1,000 years, the default retention policy.
 
   ```kusto
   .alter-merge table MyTable1 policy retention softdelete = 7d
