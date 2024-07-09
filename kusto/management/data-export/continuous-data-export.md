@@ -9,11 +9,17 @@ ms.date: 06/25/2023
 
 > [!INCLUDE [applies](../../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../../includes/applies-to-version/azure-data-explorer.md)]
 
-This article describes continuous export of data from Kusto to an [external table](../../query/schema-entities/external-tables.md) with a periodically run query. The results are stored in the external table, which defines the destination, such as Azure Blob Storage, and the schema of the exported data. This process guarantees that all records are exported "exactly once", with some [exceptions](#exactly-once-export). By default, continuous export runs in a distributed mode, where all nodes export concurrently, so the number of artifacts depends on the number of nodes in the cluster. Continuous export isn't designed for low-latency streaming data out of your cluster.
+This article describes continuous export of data from Kusto to an [external table](../../query/schema-entities/external-tables.md) with a periodically run query. The results are stored in the external table, which defines the destination, such as Azure Blob Storage, and the schema of the exported data. This process guarantees that all records are exported "exactly once", with some [exceptions](#exactly-once-export).
+
+:::moniker range="azure-data-explorer"
+By default, continuous export runs in a distributed mode, where all nodes export concurrently, so the number of artifacts depends on the number of nodes in the cluster. Continuous export isn't designed for low-latency streaming data out of your cluster.
+:::moniker-end
 
 To enable continuous data export, [create an external table](../external-tables-azure-storage.md) and then [create a continuous export definition](create-alter-continuous.md) pointing to the external table.
 
+:::moniker range="azure-data-explorer"
 In some cases, you must use a managed identity to successfully configure a continuous export job. For more information, see [Use a managed identity to run a continuous export job](continuous-export-with-managed-identity.md).
+:::moniker-end
 
 ## Permissions
 
@@ -32,9 +38,12 @@ All continuous export commands require at least [Database Admin](../../access-co
 
 * **Number of files**:
   * The number of files exported in each continuous export iteration depends on how the external table is partitioned. For more information, see [export to external table command](export-data-to-an-external-table.md#number-of-files). Each continuous export iteration always writes to new files, and never appends to existing ones. As a result, the number of exported files also depends on the frequency in which the continuous export runs. The frequency parameter is `intervalBetweenRuns`.
+
 * **External table storage accounts**:
-  * For best performance, the cluster and the storage account(s) should be colocated in the same Azure region.
+  * For best performance, the database and the storage account(s) should be colocated in the same Azure region.
+  :::moniker range="azure-data-explorer"
   * Continuous export works in a distributed manner, such that all nodes in the cluster are exporting concurrently. On large clusters, and if the exported data volume is large, this might lead to storage throttling. It's recommended to configure multiple storage accounts for the external table. See [storage failures during export commands](export-data-to-storage.md#failures-during-export-commands) for more details.
+:::moniker-end
 
 ## Exactly once export
 
@@ -57,7 +66,7 @@ The export query includes only the records that joined since the previous export
 
 Monitor the health of your continuous export jobs using the following [export metrics](/azure/data-explorer/using-metrics#export-metrics):
 
-* `Continuous export max lateness` - Max lateness (in minutes) of continuous exports in the cluster. This is the time between now and the min `ExportedTo` time of all continuous export jobs in cluster. For more information, see [`.show continuous export`](show-continuous-export.md) command.
+* `Continuous export max lateness` - Max lateness (in minutes) of continuous exports in the databsae. This is the time between now and the min `ExportedTo` time of all continuous export jobs in database. For more information, see [`.show continuous export`](show-continuous-export.md) command.
 * `Continuous export result` - Success/failure result of each continuous export execution. This metric can be split by the continuous export name.
 
 Use the [`.show continuous export failures`](show-continuous-failures.md) command to see the specific failures of a continuous export job.
@@ -69,8 +78,8 @@ Use the [`.show continuous export failures`](show-continuous-failures.md) comman
 
 ### Resource consumption
 
-* The impact of the continuous export on the cluster depends on the query the continuous export is running. Most resources, such as CPU and memory, are consumed by the query execution.
-* The number of export operations that can run concurrently is limited by the cluster's data export capacity. For more information, see [Management commands throttling](../../management/capacity-policy.md#management-commands-throttling). If the cluster doesn't have sufficient capacity to handle all continuous exports, some will start lagging behind.
+* The impact of the continuous export on the database depends on the query the continuous export is running. Most resources, such as CPU and memory, are consumed by the query execution.
+* The number of export operations that can run concurrently is limited by the database's data export capacity. For more information, see [Management commands throttling](../../management/capacity-policy.md#management-commands-throttling). If the database doesn't have sufficient capacity to handle all continuous exports, some will start lagging behind.
 * The [show commands-and-queries command](../commands-and-queries.md) can be used to estimate the resources consumption.
   * Filter on `| where ClientActivityId startswith "RunContinuousExports"` to view the commands and queries associated with continuous export.
 
@@ -134,19 +143,28 @@ To define continuous export to a delta table, do the following steps:
 * Records in source table must be ingested to the table directly, using an [update policy](../update-policy.md), or [ingest from query commands](../data-ingestion/ingest-from-query.md). If records are moved into the table using [.move extents](../move-extents.md) or using [.rename table](../rename-table-command.md), continuous export might not process these records. See the limitations described in the [Database Cursors](../database-cursor.md#restrictions) page.
 * If the artifacts used by continuous export are intended to trigger Event Grid notifications, see the [known issues section in the Event Grid documentation](/azure/data-explorer/ingest-data-event-grid-overview.md#known-event-grid-issues).
 
+:::moniker range="azuer-data-explorer"
 **Cross-database and cross-cluster**:
 
 * Continuous export doesn't support cross-cluster calls.
 * Continuous export supports cross-database calls only for dimension tables. All fact tables must reside in the local database. See more details in [Export from fact and dimension tables](#export-from-fact-and-dimension-tables).
 * If the continuous export includes cross-database calls, it must be configured with a [managed identity](continuous-export-with-managed-identity.md).
+::: moniker-end
+
+:::moniker-range="microsoft-fabric"
+**Cross-database**:
+
+* Continuous export supports cross-database calls only for dimension tables. All fact tables must reside in the local database. See more details in [Export from fact and dimension tables](#export-from-fact-and-dimension-tables).
+::: moniker-end
 
 **Policies**:
 
 * Continuous export can't be enabled on a table with [Row Level Security policy](../../management/row-level-security-policy.md) unless specific conditions are met. For more information, see [Continuous export from a table with Row Level Security](#continuous-export-from-a-table-with-row-level-security).
 * Continuous export can't be configured on a table with [restricted view access policy](../restricted-view-access-policy.md).
 
-
 ## Related content
 
 * [Create or alter continuous export](create-alter-continuous.md)
+:::moniker-range="azure-data-explorer"
 * [Use a managed identity to run a continuous export job](continuous-export-with-managed-identity.md)
+:::monker-end
