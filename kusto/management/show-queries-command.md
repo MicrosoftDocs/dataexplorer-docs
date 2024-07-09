@@ -9,7 +9,7 @@ ms.date: 11/22/2023
 
 > [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)]
 
-The `.show` `queries` command lists queries on the cluster that have reached a final state, and that the user invoking the command has access to see. Optionally, the command can return queries that are still running, queries by specific users, or queries grouped by user. To see both queries and commands completion, use [.show queries-and-commands](commands-and-queries.md).
+The `.show` `queries` command lists queries that have reached a final state, and that the user invoking the command has access to see. Optionally, the command can return queries that are still running, queries by specific users, or queries grouped by user. To see both queries and commands completion, use [.show queries-and-commands](commands-and-queries.md).
 
 ## Permissions
 
@@ -31,7 +31,7 @@ A [Database Admin or Database Monitor](../access-control/role-based-access-contr
 
 ## Returns
 
-* Returns a table containing previously run queries across all databases in the cluster and their completion statistics. You can use KQL queries to explore the results.
+* Returns a table containing previously run queries across all databases in the environment and their completion statistics. You can use KQL queries to explore the results.
 * Returns a list of currently executing queries by the current user, or by another user, or by all users.
 
 > [!NOTE]
@@ -65,8 +65,10 @@ The returned table schema is:
 
 ### Show completed queries
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/kvc6bc487453a064d3c9de.northeurope/databases/NewDatabase1?query=H4sIAAAAAAAAA9MrzsgvVygsTS3KTC1W4OWqUSgoys9KTS5RCEmtKNFRcCktSizJzM8DyZQkZqcqGBoAAA0BJaEzAAAA" target="_blank">Run the query</a>
+:::moniker-end
 
 ```kusto
 .show queries 

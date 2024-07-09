@@ -17,7 +17,7 @@ The following diagram depicts a high-level view of an update policy. It shows tw
 
 :::image type="content" source="media/updatepolicy/update-policy-overview.png" alt-text="Diagram shows an overview of the update policy.":::
 
-An update policy is subject to the same restrictions and best practices as regular ingestion. The policy scales-out according to the cluster size, and is more efficient when handling bulk ingestion.
+An update policy is subject to the same restrictions and best practices as regular ingestion. The policy scales-out according to the environmet size, and is more efficient when handling bulk ingestion.
 
 > [!NOTE]
 >
@@ -33,7 +33,7 @@ If the update policy is defined on the target table, multiple queries can run on
 ### Query limitations
 
 * The policy-related query can invoke stored functions, but:
-  * It can't perform cross-cluster queries.
+  * It can't perform cross-environment queries.
   * It can't access external data or external tables.
   * It can't make callouts (by using a plugin).
 * The query doesn't have read access to tables that have the [RestrictedViewAccess policy](restricted-view-access-policy.md) enabled.
@@ -47,7 +47,11 @@ If the update policy is defined on the target table, multiple queries can run on
 When referencing the `Source` table in the `Query` part of the policy, or in functions referenced by the `Query` part:
 
 * Don't use the qualified name of the table. Instead, use `TableName`.
-* Don't use `database("DatabaseName").TableName` or `cluster("ClusterName").database("DatabaseName").TableName`.
+* Don't use `database("DatabaseName").TableName`
+:::moniker range="azure-data-explorer"
+* Don't use `cluster("ClusterName").database("DatabaseName").TableName`.
+
+:::moniker-end
 
 ## The update policy object
 
@@ -109,7 +113,7 @@ After ingesting data to the target table, you can optionally remove it from the 
 
 ## Performance impact
 
-Update policies can affect cluster performance, and ingestion for data extents is multiplied by the number of target tables. It's important to optimize the policy-related query. You can test an update policy's performance impact by invoking the policy on already-existing extents, before creating or altering the policy, or on the function used with the query.
+Update policies can affect environment performance, and ingestion for data extents is multiplied by the number of target tables. It's important to optimize the policy-related query. You can test an update policy's performance impact by invoking the policy on already-existing extents, before creating or altering the policy, or on the function used with the query.
 
 ### Evaluate resource usage
 

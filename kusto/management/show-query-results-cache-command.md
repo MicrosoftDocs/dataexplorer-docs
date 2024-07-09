@@ -25,7 +25,7 @@ You must have at least Database User, Database Viewer, or Database Monitor permi
 
 |Output parameter |Type |Description |
 |---|---|---|
-|NodeId|`string`|Identifier of the cluster node.|
+|NodeId|`string`|The node identifier.|
 |Hits  |`long`|The number of cache hits.|
 |Misses  |`long`|The number of cache misses.|
 |CacheCapacityInBytes |`long` |The cache capacity in bytes.|
