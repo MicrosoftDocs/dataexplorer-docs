@@ -124,7 +124,7 @@ Export commands can transiently fail during execution. [Continuous export](conti
 By default, export commands are distributed such that there may be many concurrent writes to storage. The level of distribution depends on the type of export command:
 
 * The default distribution for regular `.export` command is `per_shard`, which means all [extents](../extents-overview.md) that contain data to export write to storage concurrently. 
-:::moniker range="azure-data-explorer"
+
 * The default distribution for [export to external table](export-data-to-an-external-table.md) commands is `per_node`, which means the concurrency is the number of nodes.
 
 When the number of extents/nodes is large, this may lead to high load on storage that results in storage throttling, or transient storage errors. The following suggestions may overcome these errors (by order of priority):
