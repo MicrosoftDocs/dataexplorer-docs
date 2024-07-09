@@ -10,7 +10,6 @@ ms.date: 03/22/2023
 
 > [!INCLUDE [applies](../../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../../includes/applies-to-version/azure-data-explorer.md)]
 
-
 A [materialized view](materialized-view-overview.md) is an aggregation query over a source table. It represents a single `summarize` statement.
 
 There are two possible ways to create a materialized view, as noted by the *backfill* option in the command:
@@ -194,7 +193,13 @@ The following rules limit the query used in the materialized view Query paramete
 
 * Composite aggregations are not supported in the definition of the materialized view. For instance, instead of using `SourceTableName | summarize Result=sum(Column1)/sum(Column2) by Id`, define the materialized view as: `SourceTableName | summarize a=sum(Column1), b=sum(Column2) by Id`. During view query time, run `MaterializedViewName | project Id, Result=a/b`. The required output of the view, including the calculated column (`a/b`), can be encapsulated in a [stored function](../../query/functions/user-defined-functions.md). Access the stored function instead of accessing the materialized view directly.
 
+:::moniker range="azure-data-explorer"
 * Cross-cluster and cross-database queries aren't supported.
+:::moniker-end
+
+:::moniker range="microsoft-fabric"
+* Cross-database queries aren't supported.
+:::moniker-end
 
 * References to [external_table()](../../query/external-table-function.md) and [externaldata](../../query/externaldata-operator.md) aren't supported.
 
@@ -323,7 +328,7 @@ The following aggregation functions are supported:
 
 When you're creating a materialized view by using the `backfill` property, the materialized view will be created based on the records available in the source table. Or it will be created based on a subset of those records, if you use `effectiveDateTime`.
 
-Behind the scenes, the backfill process splits the data to backfill into multiple batches and executes several ingest operations to backfill the view. The process might take a long while to complete when the number of records in source table is large. The process duration depends on cluster size. Track the progress of the backfill by using the [`.show operations`](../show-operations.md) command.
+Behind the scenes, the backfill process splits the data to backfill into multiple batches and executes several ingest operations to backfill the view. The process might take a long while to complete when the number of records in source table is large. The process duration depends on database size. Track the progress of the backfill by using the [`.show operations`](../show-operations.md) command.
 
 Transient failures that occur as part of the backfill process are retried. If all retries are exhausted, the command will fail and require a manual re-execution of the create command.
 
@@ -335,9 +340,9 @@ If you experience failures in view creation, try changing these properties:
 
 * `MaxSourceRecordsForSingleIngest`: By default, the number of source records in each ingest operation during backfill is 2 million per node. You can change this default by setting this property to the desired number of records. (The value is the *total* number of records in each ingest operation.)
 
-  Decreasing this value can be helpful when creation fails on memory limits or query timeouts. Increasing this value can speed up view creation, assuming that the cluster can execute the aggregation function on more records than the default.
+  Decreasing this value can be helpful when creation fails on memory limits or query timeouts. Increasing this value can speed up view creation, assuming that the database can execute the aggregation function on more records than the default.
 
-* `Concurrency`: The ingest operations, running as part of the backfill process, run concurrently. By default, concurrency is `min(number_of_nodes * 2, 5)`. You can set this property to increase or decrease concurrency. We recommend increasing this value only if the cluster's CPU is low, because the increase can significantly affect the cluster's CPU consumption.
+* `Concurrency`: The ingest operations, running as part of the backfill process, run concurrently. By default, concurrency is `min(number_of_nodes * 2, 5)`. You can set this property to increase or decrease concurrency. We recommend increasing this value only if the databse's CPU is low, because the increase can significantly affect the satabse's CPU consumption.
 
 For example, the following command will backfill the materialized view from `2020-01-01`. The maximum number of records in each ingest operation is 3 million. The command will execute the ingest operations with concurrency of `2`.
 
