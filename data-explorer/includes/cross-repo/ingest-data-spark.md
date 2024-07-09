@@ -4,7 +4,7 @@ ms.date: 02/15/2024
 ---
 ## How to build the Spark connector
 
-Starting version 2.3.0 we introduce new artifact Ids replacing spark-kusto-connector: [kusto-spark_3.0_2.12](https://mvnrepository.com/artifact/com.microsoft.azure.kusto/kusto-spark_3.0_2.12/2.3.0) targeting Spark 3.x and Scala 2.12 and [kusto-spark_2.4_2.11](https://mvnrepository.com/artifact/com.microsoft.azure.kusto/kusto-spark_2.4_2.11/2.4.1) targeting Spark 2.4.x and scala 2.11.
+Starting version 2.3.0 we introduce new artifact Ids replacing spark-kusto-connector: [kusto-spark_3.0_2.12](https://mvnrepository.com/artifact/com.microsoft.azure.kusto/kusto-spark_3.0_2.12/2.3.0) targeting Spark 3.x and Scala 2.12.
 
 > [!NOTE]
 > Versions prior to 2.5.1 do not work anymore for ingest to an existing table, please update to a later version.
@@ -14,35 +14,27 @@ Starting version 2.3.0 we introduce new artifact Ids replacing spark-kusto-conne
 
 1. Refer to [this source](https://github.com/Azure/azure-kusto-spark) for building the Spark Connector.
 
-1. For Scala/Java applications using Maven project definitions, link your application with the following artifact (latest version may differ). 
+1. For Scala/Java applications using Maven project definitions, link your application with the latest artifact. Find the latest artifact on [Maven Central](https://search.maven.org/artifact/com.microsoft.azure.kusto/kusto-spark_3.0_2.12).
 
-    ```Maven
-       <dependency>
-         <groupId>com.microsoft.azure</groupId>
-         <artifactId>kusto-spark_3.0_2.12</artifactId>
-         <version>2.5.1</version>
-       </dependency>
-    ```
+    ```xml
     For more information, see [https://mvnrepository.com/artifact/com.microsoft.azure.kusto/kusto-spark_3.0_2.12](https://mvnrepository.com/artifact/com.microsoft.azure.kusto/kusto-spark_3.0_2.12).
 
 1. If you aren't using prebuilt libraries, you need to install the libraries listed in [dependencies](https://github.com/Azure/azure-kusto-spark#dependencies) including the following [Kusto Java SDK](/azure/data-explorer/kusto/api/java/kusto-java-client-library) libraries. To find the right version to install, [look in the relevant release's pom](https://github.com/Azure/azure-kusto-spark/releases):
     * [Kusto Data Client](https://mvnrepository.com/artifact/com.microsoft.azure.kusto/kusto-data)
     * [Kusto Ingest Client](https://mvnrepository.com/artifact/com.microsoft.azure.kusto/kusto-ingest)
 
-### Build commands
+    1. To build jar and run all tests:
+    
+        ```Maven
+        mvn clean package -DskipTests
+        ```
+    
+    1. To build jar, run all tests, and install jar to your local Maven repository:
 
-To build jar and run all tests:
-
-```Maven
-mvn clean package
-```
-
-To build jar, run all tests, and install jar to your local Maven repository:
-
-```Maven
-mvn clean install
-```
-
+        ```Maven
+        mvn clean install -DskipTests
+        ```
+        
 For more information, see [connector usage](https://github.com/Azure/azure-kusto-spark#usage).
 
 ## Spark cluster setup
@@ -50,7 +42,7 @@ For more information, see [connector usage](https://github.com/Azure/azure-kusto
 > [!NOTE]
 > It's recommended to use the latest Kusto Spark connector release when performing the following steps.
 
-1. Configure the following Spark cluster settings, based on Azure Databricks cluster using Spark 2.4.4 and Scala 2.11 or Spark 3.0.1 and Scala 2.12:
+1. Configure the following Spark cluster settings, based on Azure Databricks cluster Spark 3.0.1 and Scala 2.12:
 
     ![Databricks cluster settings.](/azure/data-explorer/includes/media/ingest-data-spark/databricks-cluster.png)
 
@@ -77,7 +69,6 @@ Kusto Spark connector enables you to authenticate with Microsoft Entra ID using 
 * An [Azure Key Vault](https://github.com/Azure/azure-kusto-spark/blob/master/docs/Authentication.md#key-vault)
     To access the Key Vault resource, install the azure-keyvault package and provide application credentials.
 
-
 ### Microsoft Entra application authentication
 
 Microsoft Entra application authentication is the simplest and most common authentication method and is recommended for the Kusto Spark connector.
@@ -91,16 +82,22 @@ The Spark connector uses the following Entra app properties for authentication:
 | **KUSTO_AAD_APP_ID** | kustoAadAppId | Microsoft Entra application (client) identifier. |
 | **KUSTO_AAD_AUTHORITY_ID** | kustoAadAuthorityID | Microsoft Entra authentication authority. Microsoft Entra Directory (tenant) ID. Optional - defaults to microsoft.com. For more information, see [Microsoft Entra authority](/azure/active-directory/develop/msal-client-application-configuration#authority). |
 | **KUSTO_AAD_APP_SECRET** | kustoAadAppSecret | Microsoft Entra application key for the client. |
+| **KUSTO_ACCESS_TOKEN** | kustoAccessToken | If you already have an accessToken that is created with access to Kusto, that can be used passed to the connector as well for authentication.
 
 > [!NOTE]
 > Older API versions (less than 2.0.0) have the following naming: "kustoAADClientID", "kustoClientAADClientPassword", "kustoAADAuthorityID"
 
 ### Kusto privileges
 
-Grant the following privileges on the kusto side:
+Grant the following privileges on the kusto side based on the Spark operation you wish to perform.
 
-* For reading (data source), the Microsoft Entra identity must have *viewer* privileges on the target database, or *admin* privileges on the target table.
-* For writing (data sink), the Microsoft Entra identity must have *ingestor* privileges on the target database. It must also have *user* privileges on the target database to create new tables. If the target table already exists, you must configure *admin* privileges on the target table.
+| Spark operation                                                    | Privileges |
+| ------------------------------------------------------------------ | ---------- |
+| Read - Single Mode                                                 | Reader     |
+| Read – Force Distributed Mode                                      | Reader     |
+| Write – Queued Mode with CreateTableIfNotExist table create option | Admin      |
+| Write – Queued Mode with FailIfNotExist table create option        | Ingestor   |
+| Write – TransactionalMode                                          | Admin      |
 
 For more information on principal roles, see [role-based access control](/azure/data-explorer/kusto/access-control/role-based-access-control). For managing security roles, see [security roles management](/azure/data-explorer/kusto/management/security-roles).
 
