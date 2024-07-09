@@ -43,7 +43,6 @@ The examples in this tutorial use the `StormEvents` table, which is publicly ava
 The examples in this tutorial use the `StormEvents` table, which is publicly available in the **Weather analytics** [sample data](/fabric/real-time-intelligence/sample-gallery).
 ::: moniker-end
 
-
 ## Prerequisites
 
 To run the following queries, you need a query environment with access to the sample data. You can use one of the following:
