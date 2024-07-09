@@ -48,7 +48,12 @@ The expanded syntax offers the flexibility to define a query to delete rows and 
 | *AppendPredicate*  | `string` | :heavy_check_mark: | The text of a query whose results are used as data to append.                                                                                                                                                               |
 
 > [!IMPORTANT]
-> * Both delete and append predicates can't use remote entities, cross-db, and cross-environment entities. Predicates can't reference an external table or use the `externaldata` operator.
+:::moniker range="azure-data-explorer"
+> * Both delete and append predicates can't use remote entities, cross-db, and cross-cluster entities. Predicates can't reference an external table or use the `externaldata` operator.
+:::moniker-end
+:::moniker range="microsoft-fabric"
+> * Both delete and append predicates can't use remote entities or cross-db entities. Predicates can't reference an external table or use the `externaldata` operator.
+:::moniker-end
 > * Append and delete queries are expected to produce deterministic results.  Nondeterministic queries can lead to unexpected results. A query is deterministic if and only if it would return the same data if executed multiple times.
 >    * For example, use of [`take` operator](../query/take-operator.md), [`sample` operator](../query/sample-operator.md), [`rand` function](../query/rand-function.md), and other such operators isn't recommended because these operators aren't deterministic.
 > * Queries might be executed more than once within the `update` execution. If the intermediate query results are inconsistent, the update command can produce unexpected results.
@@ -69,7 +74,12 @@ The simplified syntax requires an append query as well as a key. The key is a co
 | *appendQuery*      | `string` | :heavy_check_mark: | The text of a query or a management command whose results are used as data to append.  The query's schema must be the same as the table's schema. |
 
 > [!IMPORTANT]
-> * The append query can't use remote entities, cross-db, and cross-environment entities, reference an external table, or use the `externaldata` operator.
+:::moniker range="azure-data-explorer"
+> * The append query can't use remote entities, cross-db, and cross-cluster entities, reference an external table, or use the `externaldata` operator.
+:::moniker-end
+:::moniker range="microsoft-fabric"
+> * The append query can't use remote entities, cross-db entities, reference an external table, or use the `externaldata` operator.
+:::moniker-end
 > * The append query is expected to produce deterministic results.  Nondeterministic queries can lead to unexpected results. A query is deterministic if and only if it returns the same data if executed multiple times.
 >    * For example, use of [`take` operator](../query/take-operator.md), [`sample` operator](../query/sample-operator.md), [`rand` function](../query/rand-function.md), and other such operators isn't recommended because these operators aren't deterministic.
 > * Queries might be executed more than once within the `update` execution. If the intermediate query results are inconsistent, the update command can produce unexpected results.

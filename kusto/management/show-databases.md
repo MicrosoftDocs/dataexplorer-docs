@@ -9,7 +9,7 @@ ms.date: 05/24/2023
 
 > [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)]
 
-Returns a table in which every record corresponds to a database in the environment that the user has access to.
+Returns a table in which every record corresponds to a database that the user has access to.
 
 For a table that shows the properties of the context database, see [`.show database`](show-database.md).
 

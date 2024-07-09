@@ -28,6 +28,9 @@ Stored query results behave like tables, in that the order of records isn't pres
 :::moniker range="azure-data-explorer"
 > * A follower cluster needs it's own writable database to store query results.
 :::moniker-end
+:::moniker range="microsoft-fabric"
+> * A shortcut database needs it's own writable database to store query results.
+:::moniker-end
 
 The following table lists the management commands and functions used for managing stored query results:
 

@@ -113,7 +113,7 @@ After ingesting data to the target table, you can optionally remove it from the 
 
 ## Performance impact
 
-Update policies can affect environment performance, and ingestion for data extents is multiplied by the number of target tables. It's important to optimize the policy-related query. You can test an update policy's performance impact by invoking the policy on already-existing extents, before creating or altering the policy, or on the function used with the query.
+Update policies can affect performance, and ingestion for data extents is multiplied by the number of target tables. It's important to optimize the policy-related query. You can test an update policy's performance impact by invoking the policy on already-existing extents, before creating or altering the policy, or on the function used with the query.
 
 ### Evaluate resource usage
 

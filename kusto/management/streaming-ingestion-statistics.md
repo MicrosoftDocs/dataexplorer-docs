@@ -1,6 +1,6 @@
 ---
 title: .show streamingingestion statistics command
-description: Learn how to use the `.show streamingingestion statistics` command to show aggregated statistics for the streaming ingestion to the environement.
+description: Learn how to use the `.show streamingingestion statistics` command to show aggregated statistics for the streaming ingestion.
 ms.topic: reference
 ms.date: 05/23/2023
 ---
