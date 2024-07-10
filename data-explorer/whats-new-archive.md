@@ -124,28 +124,28 @@ Welcome to what's new in Azure Data Explorer archive. This article is an archive
 
 | Article title | Description |
 |--|--|
-|- [Allow cross-tenant queries and commands](kusto/access-control/cross-tenant-query-and-commands.md) <br/> - [Referencing security principals](./kusto/management/access-control/referencing-security-principals.md) | Updated articles. Renewed and restructured referencing of security principals and identity providers.|
+|- [Allow cross-tenant queries and commands](cross-tenant-query-and-commands.md) <br/> - [Referencing security principals](kusto/management/access-control/referencing-security-principals.md) | Updated articles. Renewed and restructured referencing of security principals and identity providers.|
 
 **Functions library**
 
 | Article title | Description |
 |--|--|
-|- [plotly_anomaly_fl()](./kusto/functions-library/plotly-anomaly-fl.md) <br/> - [plotly_scatter3d_fl()](./kusto/functions-library/plotly-scatter3d-fl.md) | New articles. Describes how to customize a plotly template. |
+|- [plotly_anomaly_fl()](kusto/functions-library/plotly-anomaly-fl.md) <br/> - [plotly_scatter3d_fl()](kusto/functions-library/plotly-scatter3d-fl.md) | New articles. Describes how to customize a plotly template. |
 
 **Management**
 
 | Article title | Description |
 |--|--|
-|- [.dup-next-failed-ingest](./kusto/management/dup-next-failed-ingest.md) <br/> - [.dup-next-ingest](./kusto/management/dup-next-ingest.md) | New articles. Describes how to troubleshoot data on demand. |
+|- [.dup-next-failed-ingest](kusto/management/dup-next-failed-ingest.md) <br/> - [.dup-next-ingest](kusto/management/dup-next-ingest.md) | New articles. Describes how to troubleshoot data on demand. |
 
 **Query**
 
 | Article title | Description |
 |--|--|
-| - [render operator](./kusto/query/render-operator.md)<br />- [Anomaly chart](kusto/query/visualization-anomalychart.md) <br/> - [Area chart](kusto/query/visualization-areachart.md) <br/> - [Bar chart](kusto/query/visualization-barchart.md) <br/> - [Card](kusto/query/visualization-card.md) <br/> - [Column chart](kusto/query/visualization-columnchart.md) <br/> - [Ladder chart](kusto/query/visualization-ladderchart.md) <br/> - [Line chart](kusto/query/visualization-linechart.md) <br/> - [Pie chart](kusto/query/visualization-piechart.md) <br/> - [Pivot chart](kusto/query/visualization-pivotchart.md) <br/> - [Scatter chart](kusto/query/visualization-scatterchart.md) <br/> - [Stacked area chart](kusto/query/visualization-stackedareachart.md) <br/> - [Table](kusto/query/visualization-table.md) <br/> - [Time chart](kusto/query/visualization-timechart.md) <br/> - [Time pivot](kusto/query/visualization-timepivot.md) | Updated and new articles. Refreshed render overview and added topics describing each render visualization. |
-| [series_dot_product()](./kusto/query/series-dot-product-function.md) | New article. Describes how to calculate the dot product of two numeric series.|
-| [hll_if() (aggregation function)](./kusto/query/hll-if-aggregation-function.md) | New article. Describes how to calculate the intermediate results of the `dcount()` function. |
-| [bag_set_key()](./kusto/query/bag-set-key-function.md) | New article. Describes how to set a given key to a given value in a dynamic property bag. |
+| - [render operator](kusto/query/render-operator.md)<br />- [Anomaly chart](kusto/query/visualization-anomalychart.md) <br/> - [Area chart](kusto/query/visualization-areachart.md) <br/> - [Bar chart](kusto/query/visualization-barchart.md) <br/> - [Card](kusto/query/visualization-card.md) <br/> - [Column chart](kusto/query/visualization-columnchart.md) <br/> - [Ladder chart](kusto/query/visualization-ladderchart.md) <br/> - [Line chart](kusto/query/visualization-linechart.md) <br/> - [Pie chart](kusto/query/visualization-piechart.md) <br/> - [Pivot chart](kusto/query/visualization-pivotchart.md) <br/> - [Scatter chart](kusto/query/visualization-scatterchart.md) <br/> - [Stacked area chart](kusto/query/visualization-stackedareachart.md) <br/> - [Table](kusto/query/visualization-table.md) <br/> - [Time chart](kusto/query/visualization-timechart.md) <br/> - [Time pivot](kusto/query/visualization-timepivot.md) | Updated and new articles. Refreshed render overview and added topics describing each render visualization. |
+| [series_dot_product()](kusto/query/series-dot-product-function.md) | New article. Describes how to calculate the dot product of two numeric series.|
+| [hll_if() (aggregation function)](kusto/query/hll-if-aggregation-function.md) | New article. Describes how to calculate the intermediate results of the `dcount()` function. |
+| [bag_set_key()](kusto/query/bag-set-key-function.md) | New article. Describes how to set a given key to a given value in a dynamic property bag. |
 
 ## December 2022
 
@@ -571,7 +571,7 @@ Article title | Description
 [ipv4_is_in_range()](kusto/query/ipv4-is-in-range-function.md) | New article. Checks if IPv4 string address is in IPv4-prefix notation range.
 [ipv4_netmask_suffix()](kusto/query/ipv4-netmask-suffix-function.md) | New article. Returns the value of the IPv4 netmask suffix from IPv4 string address.
 [has_all operator](kusto/query/has-all-operator.md) | New article. `has_all` operator filters based on the provided set of values (all values must be present).
-[row_rank()](./kusto/query/row-rank-dense-function.md) | New article. Returns the current row's rank in a [serialized row set](kusto/query/window-functions.md#serialized-row-set).
+[row_rank()](kusto/query/row-rank-dense-function.md) | New article. Returns the current row's rank in a [serialized row set](kusto/query/window-functions.md#serialized-row-set).
 | [Null Values](kusto/query/scalar-data-types/null-values.md) | Updated article. New behavior in Engine V3.
 | [String operators](kusto/query/datatypes-string-operators.md) | Updated article. String term indexing for Engine V3.
 
@@ -599,7 +599,7 @@ Article title | Description
 Article title | Description
 ---|---
 [Azure Policy Regulatory Compliance controls](security-controls-policy.md) | New article. This page lists the **compliance domains** and **security controls**.
-[Allow cross-tenant queries and commands](kusto/access-control/cross-tenant-query-and-commands.md) | New article. In this article, you'll learn how to give cluster access to principals from another tenant.
+[Allow cross-tenant queries and commands](cross-tenant-query-and-commands.md) | New article. In this article, you'll learn how to give cluster access to principals from another tenant.
 
 **Management**
 
