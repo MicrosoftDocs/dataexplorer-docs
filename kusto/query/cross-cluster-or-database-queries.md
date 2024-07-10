@@ -8,8 +8,6 @@ monikerRange: "azure-data-explorer"
 ---
 # Cross-cluster and cross-database queries
 
-> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)] [!INCLUDE [monitor](../includes/applies-to-version/monitor.md)] [!INCLUDE [sentinel](../includes/applies-to-version/sentinel.md)]
-
 > [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)]
 
 Queries run with a particular database designated as the *database in context*. This database acts as the default for permission checking. If an entity is referenced in a query without specifying the cluster or database, it's resolved against this database.
