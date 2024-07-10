@@ -4,11 +4,13 @@ description:  This article describes Runaway queries.
 ms.reviewer: orspodek
 ms.topic: reference
 ms.date: 10/23/2018
-monikerRange: "microsoft-fabric || azure-data-explorer || azure-monitor || microsoft-sentinel || azure-resource-graph"
+monikerRange: "microsoft-fabric || azure-data-explorer || azure-monitor || microsoft-sentinel 
+"
 ---
 # Runaway queries
 
-> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)] [!INCLUDE [monitor](../includes/applies-to-version/monitor.md)] [!INCLUDE [sentinel](../includes/applies-to-version/sentinel.md)] [!INCLUDE [resource-graph](../includes/applies-to-version/resource-graph.md)]
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)] [!INCLUDE [monitor](../includes/applies-to-version/monitor.md)] [!INCLUDE [sentinel](../includes/applies-to-version/sentinel.md)] 
+
 
 A *runaway query* is a kind of [partial query failure](partial-query-failures.md)
 that happens when some internal [query limit](query-limits.md) was exceeded

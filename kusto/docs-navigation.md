@@ -6,7 +6,8 @@ ms.date: 06/19/2024
 ---
 # KQL docs navigation guide
 
-> [!INCLUDE [applies](includes/applies-to-version/applies.md)] [!INCLUDE [fabric](includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](includes/applies-to-version/azure-data-explorer.md)] [!INCLUDE [monitor](includes/applies-to-version/monitor.md)] [!INCLUDE [sentinel](includes/applies-to-version/sentinel.md)] [!INCLUDE [resource-graph](includes/applies-to-version/resource-graph.md)]
+> [!INCLUDE [applies](includes/applies-to-version/applies.md)] [!INCLUDE [fabric](includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](includes/applies-to-version/azure-data-explorer.md)] [!INCLUDE [monitor](includes/applies-to-version/monitor.md)] [!INCLUDE [sentinel](includes/applies-to-version/sentinel.md)] 
+
 
 The behavior of KQL may vary when using this language in different services. When you view any KQL documentation article by using our Learn website, the currently chosen service name is visible above the table of contents (TOC) under the **Version** dropdown. Switch between services using the version dropdown to see the KQL behavior for the selected service.
 

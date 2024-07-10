@@ -4,11 +4,13 @@ description:  This article describes union operator.
 ms.reviewer: alexans
 ms.topic: reference
 ms.date: 02/13/2020
-monikerRange: "microsoft-fabric || azure-data-explorer || azure-monitor || microsoft-sentinel || azure-resource-graph"
+monikerRange: "microsoft-fabric || azure-data-explorer || azure-monitor || microsoft-sentinel 
+"
 ---
 # union operator
 
-> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)] [!INCLUDE [monitor](../includes/applies-to-version/monitor.md)] [!INCLUDE [sentinel](../includes/applies-to-version/sentinel.md)] [!INCLUDE [resource-graph](../includes/applies-to-version/resource-graph.md)]
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)] [!INCLUDE [monitor](../includes/applies-to-version/monitor.md)] [!INCLUDE [sentinel](../includes/applies-to-version/sentinel.md)] 
+
 
 Takes two or more tables and returns the rows of all of them.
 

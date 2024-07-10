@@ -3,11 +3,13 @@ title:  Syntax conventions for reference documentation
 description: Learn about the syntax conventions for the Kusto Query Language and management command documentation.
 ms.topic: reference
 ms.date: 07/25/2023
-monikerRange: "microsoft-fabric || azure-data-explorer || azure-monitor || microsoft-sentinel || azure-resource-graph"
+monikerRange: "microsoft-fabric || azure-data-explorer || azure-monitor || microsoft-sentinel 
+"
 ---
 # Syntax conventions for reference documentation
 
-> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)] [!INCLUDE [monitor](../includes/applies-to-version/monitor.md)] [!INCLUDE [sentinel](../includes/applies-to-version/sentinel.md)] [!INCLUDE [resource-graph](../includes/applies-to-version/resource-graph.md)]
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)] [!INCLUDE [monitor](../includes/applies-to-version/monitor.md)] [!INCLUDE [sentinel](../includes/applies-to-version/sentinel.md)] 
+
 
 This article outlines the syntax conventions followed in the [Kusto Query Language (KQL)](index.md) and [management commands](../management/index.md) reference documentation.
 
