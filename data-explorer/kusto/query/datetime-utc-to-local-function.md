@@ -47,4 +47,5 @@ print dt=now()
 
 * To convert a datetime from local to UTC, see [datetime_local_to_utc()](datetime-local-to-utc-function.md)
 * [Timezones](timezone.md)
+* [List of supported timezones](datetime-list-timezones.md)
 * [format_datetime()](format-datetime-function.md)
