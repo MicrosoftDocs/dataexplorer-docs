@@ -28,7 +28,7 @@ The main authentication scenarios are as follows:
 
 * [Single page application (SPA) authentication](#perform-single-page-application-spa-authentication): Allows client-side SPA web applications to sign in users and get tokens to access your cluster. This flow must be implemented with MSAL.
 
-For user and application authentication, we recommend using the [Kusto client libraries](../../../kusto/api/client-libraries.md). For OBO and SPA authentication, the Kusto client libraries can't be used.
+For user and application authentication, we recommend using the [Kusto client libraries](../client-libraries.md). For OBO and SPA authentication, the Kusto client libraries can't be used.
 
 ## Authentication parameters
 
@@ -67,7 +67,7 @@ request.Headers.Set(HttpRequestHeader.Authorization, string.Format(CultureInfo.I
 
 > [!NOTE]
 >
-> * We recommend using the [Kusto client libraries](../client-libraries.md) whenever possible. These libraries simplify the authentication process by allowing you to provide authentication properties in the [Kusto connection string](../../../kusto/api/connection-strings/kusto.md).
+> * We recommend using the [Kusto client libraries](../client-libraries.md) whenever possible. These libraries simplify the authentication process by allowing you to provide authentication properties in the [Kusto connection string](../../connection-strings/kusto.md).
 > * With the Kusto client libraries, Microsoft Entra tokens are stored in a local token cache on the user's machine to reduce the number of times they're prompted for credentials. The cache file is **%APPDATA%\Kusto\userTokenCache.data** and can only be accessed by the signed-in user.
 
 ## Perform application authentication with MSAL
@@ -92,7 +92,7 @@ request.Headers.Set(HttpRequestHeader.Authorization, string.Format(CultureInfo.I
 ```
 
 > [!NOTE]
-> We recommend using the [Kusto client libraries](../client-libraries.md) whenever possible. These libraries simplify the authentication process by allowing you to provide authentication properties in the [Kusto connection string](../../../kusto/api/connection-strings/kusto.md).
+> We recommend using the [Kusto client libraries](../client-libraries.md) whenever possible. These libraries simplify the authentication process by allowing you to provide authentication properties in the [Kusto connection string](../../connection-strings/kusto.md).
 
 ## Perform On-behalf-of (OBO) authentication
 
