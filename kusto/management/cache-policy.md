@@ -85,7 +85,7 @@ Example:
 * `SoftDeletePeriod` = 56d
 * `hot cache policy` = 28d
 
-In the example, the last 28 days of data will be on the database SSD and the additional 28 days of data will be stored in Azure blob storage. You can run queries on the full 56 days of data.
+In the example, the last 28 days of data will be on the SSD and the additional 28 days of data will be stored in Azure blob storage. You can run queries on the full 56 days of data.
 
 ## Related content
 
