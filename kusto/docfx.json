@@ -44,8 +44,7 @@
     ],
     "groups": {
       "gr-kusto": {
-        "moniker_range": "microsoft-fabric || azure-data-explorer || azure-monitor || microsoft-sentinel 
-",
+        "moniker_range": "microsoft-fabric || azure-data-explorer || azure-monitor || microsoft-sentinel ",
         "dest": "kusto-docs"
       }
     },

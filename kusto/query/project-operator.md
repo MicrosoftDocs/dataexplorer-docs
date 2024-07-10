@@ -4,8 +4,7 @@ description: Learn how to use the project operator to select columns to include,
 ms.reviewer: alexans
 ms.topic: reference
 ms.date: 01/12/2023
-monikerRange: "microsoft-fabric || azure-data-explorer || azure-monitor || microsoft-sentinel 
-"
+monikerRange: "microsoft-fabric || azure-data-explorer || azure-monitor || microsoft-sentinel "
 ---
 # project operator
 

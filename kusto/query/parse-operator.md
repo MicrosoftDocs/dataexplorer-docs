@@ -4,8 +4,7 @@ description: Learn how to use the parse operator to parse the value of a string 
 ms.reviewer: alexans
 ms.topic: reference
 ms.date: 03/15/2023
-monikerRange: "microsoft-fabric || azure-data-explorer || azure-monitor || microsoft-sentinel 
-"
+monikerRange: "microsoft-fabric || azure-data-explorer || azure-monitor || microsoft-sentinel "
 ---
 # parse operator
 

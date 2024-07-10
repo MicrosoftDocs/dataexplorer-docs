@@ -4,8 +4,7 @@ description: Learn how to use the innerunique join flavor to merge the rows of t
 ms.reviewer: alexans
 ms.topic: reference
 ms.date: 06/19/2023
-monikerRange: "microsoft-fabric || azure-data-explorer || azure-monitor || microsoft-sentinel 
-"
+monikerRange: "microsoft-fabric || azure-data-explorer || azure-monitor || microsoft-sentinel "
 ---
 
 # innerunique join

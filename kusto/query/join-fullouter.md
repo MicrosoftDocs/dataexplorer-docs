@@ -4,8 +4,7 @@ description: Learn how to use the fullouter join flavor to merge the rows of two
 ms.reviewer: alexans
 ms.topic: reference
 ms.date: 04/28/2024
-monikerRange: "microsoft-fabric || azure-data-explorer || azure-monitor || microsoft-sentinel 
-"
+monikerRange: "microsoft-fabric || azure-data-explorer || azure-monitor || microsoft-sentinel "
 ---
 
 # fullouter join
