@@ -75,8 +75,10 @@ comb_fl(n:int, k:int)
 
 To use a query-defined function, invoke it after the embedded function definition.
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA2WPwQrCMBBE7/sVc0zQorU3S7+lxJgESbKRNgdB/XdTWwjoXgb27Qw7wWToFC+jDYPg843zHn4RSU9CmVAOrNJ5ZAxwKkYleNfK/gf6Shv/zyuuMKeQ2InVf9hiVvWS3tTTpNgZMOyUIrpiQHvEnM0dHb1gHtnwFUs0N6e60N9ntlKCSx/5Abm0FffmAAAA" target="_blank">Run the query</a>
+::: moniker end
 
 ```kusto
 let comb_fl=(n:int, k:int)
