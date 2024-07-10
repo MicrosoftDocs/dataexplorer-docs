@@ -25,12 +25,17 @@ In this tutorial, you'll learn how to:
 > * [Show nearby points in a polygon](#show-nearby-points-in-a-polygon)
 > * [Find anomalies based on geospatial data](#find-anomalies-based-on-geospatial-data)
 
-
 ## Prerequisites
 
 To run the following queries, you need a query environment with access to the sample data. You can use one of the following:
+:::moniker range="azure-data-explorer"
 * A Microsoft account or Microsoft Entra user identity to sign in to the [help cluster](https://dataexplorer.azure.com/clusters/help) 
+:::moniker end
+
+:::moniker range="microsoft-fabric"
+* A Microsoft account or Microsoft Entra user identity 
 * A [Fabric workspace](/fabric/get-started/create-workspaces) with a Microsoft Fabric-enabled [capacity](/fabric/enterprise/licenses.md#capacity)
+:::moniker end
 
 ## Plot points on a map
 
