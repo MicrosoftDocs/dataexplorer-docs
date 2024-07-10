@@ -5,11 +5,12 @@ ms.reviewer: alexans
 ms.topic: reference
 ms.date: 11/13/2023
 ms.localizationpriority: high 
-monikerRange: "microsoft-fabric || azure-data-explorer || azure-monitor || microsoft-sentinel || azure-resource-graph"
+monikerRange: "microsoft-fabric || azure-data-explorer || azure-monitor || microsoft-sentinel "
 ---
 # summarize operator
 
-> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)] [!INCLUDE [monitor](../includes/applies-to-version/monitor.md)] [!INCLUDE [sentinel](../includes/applies-to-version/sentinel.md)] [!INCLUDE [resource-graph](../includes/applies-to-version/resource-graph.md)]
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)] [!INCLUDE [monitor](../includes/applies-to-version/monitor.md)] [!INCLUDE [sentinel](../includes/applies-to-version/sentinel.md)] 
+
 
 Produces a table that aggregates the content of the input table.
 
@@ -22,17 +23,6 @@ Produces a table that aggregates the content of the input table.
 
 [!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
-::: moniker range="azure-resource-graph"
-## Parameters
-
-|Name|Type|Required|Description|
-|--|--|--|--|
-|*Column*| `string` ||The name for the result column. Defaults to a name derived from the expression.|
-|*Aggregation*| `string` | :heavy_check_mark:|A call to an [aggregation function](aggregation-functions.md) such as `count()` or `avg()`, with column names as arguments.|
-|*GroupExpression*|scalar| :heavy_check_mark:|A scalar expression that can reference the input data. The output will have as many records as there are distinct values of all the group expressions.|
-::: moniker-end
-
-::: moniker range="microsoft-fabric || azure-data-explorer || azure-monitor || microsoft-sentinel"
 ## Parameters
 
 |Name|Type|Required|Description|
@@ -57,8 +47,6 @@ Produces a table that aggregates the content of the input table.
   |`hint.num_partitions` |Specifies the number of partitions used to share the query load on cluster nodes. See [shuffle query](shuffle-query.md)  |
   |`hint.shufflekey=<key>` |The `shufflekey` query shares the query load on cluster nodes, using a key to partition data. See [shuffle query](shuffle-query.md) |
   |`hint.strategy=shuffle` |The `shuffle` strategy query shares the query load on cluster nodes, where each node will process one partition of the data. See [shuffle query](shuffle-query.md)  |
-
-::: moniker-end
 
 ## Returns
 
