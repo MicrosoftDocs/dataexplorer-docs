@@ -4,8 +4,7 @@ description: Learn how to use the take operator to return a specified number of 
 ms.reviewer: alexans
 ms.topic: reference
 ms.date: 03/16/2023
-monikerRange: "microsoft-fabric || azure-data-explorer || azure-monitor || microsoft-sentinel 
-"
+monikerRange: "microsoft-fabric || azure-data-explorer || azure-monitor || microsoft-sentinel "
 ---
 # take operator
 

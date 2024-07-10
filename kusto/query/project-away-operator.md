@@ -4,8 +4,7 @@ description: Learn how to use the project-away operator to select columns from t
 ms.reviewer: alexans
 ms.topic: reference
 ms.date: 01/12/2023
-monikerRange: "microsoft-fabric || azure-data-explorer || azure-monitor || microsoft-sentinel 
-"
+monikerRange: "microsoft-fabric || azure-data-explorer || azure-monitor || microsoft-sentinel "
 ---
 # project-away operator
 

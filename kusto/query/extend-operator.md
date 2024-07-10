@@ -4,8 +4,7 @@ description: Learn how to use the extend operator to create calculated columns a
 ms.reviewer: alexans
 ms.topic: reference
 ms.date: 07/01/2024
-monikerRange: "microsoft-fabric || azure-data-explorer || azure-monitor || microsoft-sentinel 
-"
+monikerRange: "microsoft-fabric || azure-data-explorer || azure-monitor || microsoft-sentinel "
 ---
 # extend operator
 

@@ -4,8 +4,7 @@ description: Learn how to use the inner join flavor to merge the rows of two tab
 ms.reviewer: alexans
 ms.topic: reference
 ms.date: 06/18/2023
-monikerRange: "microsoft-fabric || azure-data-explorer || azure-monitor || microsoft-sentinel 
-"
+monikerRange: "microsoft-fabric || azure-data-explorer || azure-monitor || microsoft-sentinel "
 ---
 
 # inner join

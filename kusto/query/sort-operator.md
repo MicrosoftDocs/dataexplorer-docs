@@ -4,8 +4,7 @@ description: Learn how to use the sort operator to sort the rows of the input ta
 ms.reviewer: alexans
 ms.topic: reference
 ms.date: 01/09/2023
-monikerRange: "microsoft-fabric || azure-data-explorer || azure-monitor || microsoft-sentinel 
-"
+monikerRange: "microsoft-fabric || azure-data-explorer || azure-monitor || microsoft-sentinel "
 ---
 # sort operator
 
