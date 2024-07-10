@@ -1561,6 +1561,8 @@ items:
             href: infer-storage-schema-plugin.md
           - name: ipv4_lookup plugin
             href: ipv4-lookup-plugin.md
+          - name: ipv6_lookup plugin
+            href: ipv6-lookup-plugin.md
           - name: preview plugin
             href: preview-plugin.md
           - name: schema_merge plugin
