@@ -34,10 +34,10 @@ An equivalent way to write the query above is by escaping the table name:
 | count
 ```
 
-Tables may also be referenced by explicitly noting the database (or database and cluster) they are in. Then you can author queries that combine data from multiple databases. For example, the following query will work with any database in context, as long as the caller has access to the target database:
+Tables may also be referenced by explicitly noting the database they are in. Then you can author queries that combine data from multiple databases. For example, the following query will work with any database in context, as long as the caller has access to the target database:
 
 ```kusto
-cluster("https://help.kusto.windows.net").database("Samples").StormEvents
+database("Samples").StormEvents
 | count
 ```
 
