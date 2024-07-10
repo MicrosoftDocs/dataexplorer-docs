@@ -21,15 +21,22 @@ Updates to security policies, such as database access and row level security, ar
 
 Stored query results behave like tables, in that the order of records isn't preserved. To paginate through the results, we recommended that the query includes [unique ID columns](../query/stored-query-result-function.md#pagination). If a query returns multiple result sets, only the first result set is stored.
 
+:::moniker range="azure-data-explorer"
 > [!NOTE]
 >
 > * When you have more than 500 columns, an error is raised and the results aren't stored.
 > * Query results are stored in a storage account associated with the environment. The data isn't cached in local SSD storage.
-:::moniker range="azure-data-explorer"
 > * A follower cluster needs it's own writable database to store query results.
+
 :::moniker-end
 :::moniker range="microsoft-fabric"
+
+> [!NOTE]
+>
+> * When you have more than 500 columns, an error is raised and the results aren't stored.
+> * Query results are stored in a storage account associated with the environment. The data isn't cached in local SSD storage.
 > * A shortcut database needs it's own writable database to store query results.
+
 :::moniker-end
 
 The following table lists the management commands and functions used for managing stored query results:
