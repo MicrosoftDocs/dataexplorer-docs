@@ -126,6 +126,7 @@ If you want nonauthorized table users to receive an error instead of returning a
 
 You can combine this approach with other examples. For example, you can display different results to users in different Microsoft Entra groups, and produce an error for everyone else.
 
+:::moniker range="azure-data-explorer"
 ### Control permissions on follower databases
 
 The RLS policy that you configure on the production database will also take effect in the follower databases. You can’t configure different RLS policies on the production and follower databases. However, you can use the [`current_cluster_endpoint()`](../query/current-cluster-endpoint-function.md) function in your RLS query to achieve the same effect, as having different RLS queries in follower tables.
@@ -143,6 +144,27 @@ For example:
 
 > [!NOTE]
 > The RLS function above has no performance impact whatsoever on queries on the leader cluster. The performance impact on queries on the follower clusters will be impacted only by the complexity of `DataForFollowerClusters`.
+:::moniker-end
+
+:::moniker range="microsoft-fabric"
+### Control permissions on shortcut databases
+
+The RLS policy that you configure on the production database will also take effect in the shortcut databases. You can’t configure different RLS policies on the production and shortcut databases. However, you can use the [`current_cluster_endpoint()`](../query/current-cluster-endpoint-function.md) function in your RLS query to achieve the same effect, as having different RLS queries in shortcut tables.
+
+For example:
+
+```kusto
+.create-or-alter function RLSForCustomersTables() {
+    let IsProductionCluster = current_cluster_endpoint() == "mycluster.eastus.kusto.windows.net";
+    let DataForProductionCluster = TempTable | where IsProductionCluster;
+    let DataForFollowerClusters = TempTable | where not(IsProductionCluster) | extend EmailAddress = "****";
+    union DataForProductionCluster, DataForFollowerClusters
+}
+```
+
+> [!NOTE]
+> The RLS function above has no performance impact whatsoever on queries on the source database. The performance impact on queries on the shortcut databases will be impacted only by the complexity of `DataForFollowerClusters`.
+:::moniker-end
 
 ## More use cases
 
