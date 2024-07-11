@@ -4,11 +4,12 @@ description: This article describes Query limits.
 ms.reviewer: alexans
 ms.topic: reference
 ms.date: 04/27/2022
-monikerRange: "microsoft-fabric || azure-data-explorer || azure-monitor || microsoft-sentinel || azure-resource-graph"
+monikerRange: "microsoft-fabric || azure-data-explorer || azure-monitor || microsoft-sentinel"
 ---
 # Query limits
 
-> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)] [!INCLUDE [monitor](../includes/applies-to-version/monitor.md)] [!INCLUDE [sentinel](../includes/applies-to-version/sentinel.md)] [!INCLUDE [resource-graph](../includes/applies-to-version/resource-graph.md)]
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)] [!INCLUDE [monitor](../includes/applies-to-version/monitor.md)] [!INCLUDE [sentinel](../includes/applies-to-version/sentinel.md)] 
+
 
 Kusto is an ad-hoc query engine that hosts large datasets and
 attempts to satisfy queries by holding all relevant data in-memory.
@@ -18,12 +19,12 @@ in the form of default query limits. If you're considering removing these limits
 
 ## Limit on request concurrency
 
-**Request concurrency** is a limit that a cluster imposes on several requests running at the same time.
+**Request concurrency** is a limit that a database imposes on several requests running at the same time.
 
-* The default value of the limit depends on the SKU the cluster is running on, and is calculated as: `Cores-Per-Node x 10`.
-  * For example, for a cluster that's set up on D14v2 SKU, where each machine has 16 vCores, the default limit is `16 cores x10 = 160`.
+* The default value of the limit depends on the SKU the database is running on, and is calculated as: `Cores-Per-Node x 10`.
+  * For example, for a database that's set up on D14v2 SKU, where each machine has 16 vCores, the default limit is `16 cores x10 = 160`.
 * The default value can be changed by configuring the [request rate limit policy](../management/request-rate-limit-policy.md) of the `default` workload group.
-  * The actual number of requests that can run concurrently on a cluster depends on various factors. The most dominant factors are cluster SKU, cluster's available resources, and usage patterns. The policy can be configured based on load tests performed on production-like usage patterns.
+  * The actual number of requests that can run concurrently on a database depends on various factors. The most dominant factors are database SKU, database's available resources, and usage patterns. The policy can be configured based on load tests performed on production-like usage patterns.
 
 ::: moniker range="azure-data-explorer"
  For more information, see [Optimize for high concurrency with Azure Data Explorer](/azure/data-explorer/high-concurrency.md).
@@ -95,10 +96,7 @@ For example, use the .NET Framework client (Microsoft.Azure.Kusto.Data) and eith
 
 You may also find the C# streaming ingestion sample application helpful.
 
-Result truncation is applied by default, not just to the
-result stream returned to the client. It's also applied by default to
-any subquery that one cluster issues to another cluster
-in a cross-cluster query, with similar effects.
+Result truncation is applied by default, not just to the result stream returned to the client. It's also applied by default to any subquery that one cluster issues to another cluster in a cross-cluster query, with similar effects.
 
 ### Setting multiple result truncation properties
 
@@ -216,7 +214,7 @@ management commands. This value can be increased if needed (capped at one hour).
 
 ## Limit on query CPU resource usage
 
-Kusto lets you run queries and use as much CPU resources as the cluster has.
+Kusto lets you run queries and use as much CPU resources as the database has.
 It attempts to do a fair round-robin between queries if more than one is running. This method yields the best performance for query-defined functions.
 At other times, you may want to limit the CPU resources used for a particular
 query. If you run a "background job", for example, the system might tolerate higher

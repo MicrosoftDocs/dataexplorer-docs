@@ -46,5 +46,5 @@ The **Manage** column offers ways to add or remove role principals.
 ## Related content
 
 * [Manage cluster permissions](../../manage-cluster-permissions.md)
-* [Allow cross-tenant queries and commands](cross-tenant-query-and-commands.md)
+* [Allow cross-tenant queries and commands](../../cross-tenant-query-and-commands.md)
 * [Manage view access to tables within the same database](../management/manage-table-view-access.md)

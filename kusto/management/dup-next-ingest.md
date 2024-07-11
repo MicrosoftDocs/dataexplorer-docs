@@ -46,9 +46,9 @@ Upon the next pull data ingestion, the ingestion source file(s) and a file conta
 ## Example
 
 ```kusto
-.dup-next-ingest into PerfCounter to h@'https://kustorenginsomecluster.blob.core.windows.net/ingestion-duplication-perf-counter;storagekey...==
+.dup-next-ingest into PerfCounter to h@'https://kustorenginsomelocation.blob.core.windows.net/ingestion-duplication-perf-counter;storagekey...==
 ```
 
 |TableName|StorageContainerPath|IngestionCommandFilePath|
 |--|--|--|
-|PerfCounter|https://kustorenginsomecluster.blob.core.windows.net/ingestion-duplication-perf-counter|ingestionrequest-KustoEH-PerfCounter-083736db-8cf7-4166-85fd-74ef54e491d1|
+|PerfCounter|https://kustorenginsomelocation.blob.core.windows.net/ingestion-duplication-perf-counter|ingestionrequest-KustoEH-PerfCounter-083736db-8cf7-4166-85fd-74ef54e491d1|
