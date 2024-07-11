@@ -73,7 +73,7 @@ You see a narrow two-minute spike from 15:00 to 15:02. In the following query, c
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA8tJLVHIzcyLL0hNzI4vsU1JLEktycxN1TAyMDTTNbDQNTJWMDS1MjDQtObKASlNrCCk1AioNCU1Nz8+Oae0uCS1KDMv3ZCrRqE8I7UoVSGgKDU5szg1BKgvuCQxt0AhKbWkPDU1TwPhBj09hCWaQI3J+aV5JQACnQoRpwAAAA==" target="_blank">Run the query</a>
-::: monker end
+::: monker-end
 
 ```kusto
 let min_peak_t=datetime(2016-08-23 15:00);
