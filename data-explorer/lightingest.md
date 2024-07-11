@@ -59,7 +59,8 @@ To run LightIngest:
 | -table | `string` | The target Azure Data Explorer table name. |  :heavy_check_mark: |
 | -sourcePath, -source | `string` | The location of the source data, which can be either a local file path, the root URI of an Azure blob container, or the URI of an Amazon S3 bucket. If the data is stored in Azure blobs, the URI must include the storage account key or Shared Access Signature (SAS). If the data is in an S3 bucket, the URI must include the credential key. We recommend enclosing this value in double quotes. For more information, see [Storage connection strings](kusto/api/connection-strings/storage-connection-strings.md). Pass *-sourcePath:;impersonate* to list Azure storage items with user permissions (user prompt authorization). |  :heavy_check_mark: |
 | -managedIdentity, -mi | `string` | Client ID of the managed identity (user-assigned or system-assigned) to use for connecting. Use "system" for system-assigned identity. |  |
-| -ingestWithManagedIdentity, -imgestmi | `string` | Client ID of the managed identity (user-assigned or system-assigned) to use for connecting. Use "system" for system-assigned identity. |  |
+| -ingestWithManagedIdentity, -ingestmi | `string` | Client ID of the managed identity (user-assigned or system-assigned) installed on the Kusto service to download from storage. Use "system" for system-assigned identity. |  |
+| -connectToStorageWithManagedIdentity, -storageMi | `string` | Client ID of the managed identity (user-assigned or system-assigned) installed on the client side to list from storage. |  |
 | -connectToStorageWithUserAuth, -storageUserAuth | `string` | Authenticate to the data source storage service with user credentials. The options for this value are `PROMPT` or `DEVICE_CODE`. |  |
 | -connectToStorageLoginUri, -storageLoginUri | `string` | If `-connectToStorageWithUserAuth` is set, you can optionally provide a Microsoft Entra ID login URI. |  |
 | -prefix | `string` | When the source data to ingest resides on blob storage, this URL prefix is shared by all blobs, excluding the container name. <br>For example, if the data is in `MyContainer/Dir1/Dir2`, then the prefix should be `Dir1/Dir2`. We recommend enclosing this value in double quotes. |  |
@@ -208,3 +209,14 @@ LightIngest "https://ingest-{ClusterAndRegion}.kusto.windows.net;Fed=True"
   -mappingPath:"MAPPING_FILE_PATH"
   -trace:"LOGS_PATH"
 ```
+
+### Authenticate with managed identity
+
+There are three actions LightIngest performs that can use managed identity for authentication. The use of managed identity in each step does not require use of managed identity in other steps. For each action, the related [command-line argument](#command-line-arguments) is given.
+
+* **Connect to Kusto cluster**:  To queue the ingestion, the tool uses a connection string. Use the "-mi" argument to specify a managed identity installed on the client VM that has ingest privileges in the target database.
+
+* **Connect to Azure Storage to download blobs**: Use "-ingestmi" to specify a managed identity installed on the Kusto service that has read privileges on the storage container.
+
+* **Connect to Azure Storage to list container blobs**: Use the "-storageMi" argument to specify a managed identity installed on the client VM that has list privileges on the storage container. If you're using this method but not the previous one (connect to Azure storage to download blobs), the managed identity must have read privileges as well and a token will be passed to the Kusto service to be used for the ingestion. It is therefore recommended to set all the three arguments.
+ 
