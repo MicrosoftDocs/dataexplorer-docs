@@ -210,11 +210,13 @@ LightIngest "https://ingest-{ClusterAndRegion}.kusto.windows.net;Fed=True"
   -trace:"LOGS_PATH"
 ```
 
-### Move to using managed identity
-LightIngest has 3 steps that could require ManagedIdentity, each can work individually along side the others.
-1) Connect to Kusto cluster, in order to queue the ingestion the tool uses a connection string, this can be altered by the user or by using the "-mi" argument to specify a managed identity installed on the client VM that has ingest privileges in the target database.
-2) Connect to Azure Storage to list the container blobs, use the "-storageMi" argument to specify a managed identity installed on the client VM that has list privileges on the storage container.
-3) Connect to Azure Storage to download the blobs, use "-ingestmi" to specify a managed identity installed on the Kusto service that has read privileges on the storage container.
+### Authenticate with managed identity
 
-If option 2 is set but 3 is not, the managed idnetity is required to have read privileges as well and a token will be passed to the Kusto service to be used for the ingestion. 
+There are three actions LightIngest performs that can use managed identity for authentication. The use of managed identity in each step does not require use of managed identity in other steps. For each action, the related [command-line argument](#command-line-arguments) is given.
+
+* **Connect to Kusto cluster**:  To queue the ingestion, the tool uses a connection string. Use the "-mi" argument to specify a managed identity installed on the client VM that has ingest privileges in the target database.
+
+* **Connect to Azure Storage to download blobs**: Use "-ingestmi" to specify a managed identity installed on the Kusto service that has read privileges on the storage container.
+
+* **Connect to Azure Storage to list container blobs**: Use the "-storageMi" argument to specify a managed identity installed on the client VM that has list privileges on the storage container. If you're using this method but not the previous one (connect to Azure storage to download blobs), the managed identity must have read privileges as well and a token will be passed to the Kusto service to be used for the ingestion. 
  
