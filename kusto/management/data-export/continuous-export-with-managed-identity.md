@@ -4,6 +4,7 @@ description:  This article describes how to use a managed identity for continuou
 ms.reviewer: shanisolomon
 ms.topic: reference
 ms.date: 06/19/2023
+monikerRange: "azure-data-explorer"
 ---
 # Use a managed identity to run a continuous export job
 

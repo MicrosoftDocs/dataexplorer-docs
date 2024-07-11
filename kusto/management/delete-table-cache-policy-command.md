@@ -9,7 +9,7 @@ ms.date: 05/24/2023
 
 > [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)]
 
-Delete the table's cache policy. To speed up queries on data, the server caches the query on its processing nodes, SSD, or even in RAM. The [cache policy](cache-policy.md) lets the service describe the data artifacts that it uses so that important data can take priority.
+Delete the table's cache policy. To speed up queries on data, the service caches it on its processing nodes, SSD, or even in RAM. The [cache policy](cache-policy.md) lets the service describe the data artifacts that it uses so that important data can take priority.
 
 ## Permissions
 

@@ -34,7 +34,7 @@ The `IngestionBatching` policy can be set on databases or tables. Default values
 
 > [!IMPORTANT]
 > The impact of setting this policy to very small values is
-> an increase in the COGS (cost of goods sold) of the cluster and reduced performance. Additionally,
+> an increase in the COGS (cost of goods sold) and reduced performance. Additionally,
 > reducing batching policy values might actually result in **increased** effective
 > end-to-end ingestion latency, due to the overhead of managing multiple ingestion
 > processes in parallel.
@@ -47,7 +47,7 @@ The following list shows conditions to seal batches related to single blob inges
 * `SingleBlob_IngestByTag`: Ingest a single blob because ['ingest-by'](extent-tags.md) was set
 * `SingleBlob_SizeUnknown`: Ingest a single blob because blob size is unknown
 
-If the `SystemFlush` condition is set, a batch will be sealed when a system flush is triggered. With the `SystemFlush` parameter set, the system flushes the data, for example due to cluster scaling or internal reset of system components.
+If the `SystemFlush` condition is set, a batch will be sealed when a system flush is triggered. With the `SystemFlush` parameter set, the system flushes the data, for example due to database scaling or internal reset of system components.
 
 ## Defaults and limits
 
@@ -61,7 +61,7 @@ The most effective way of controlling the end-to-end latency using ingestion bat
 A database level policy affects all tables in that database that don't have the table-level policy defined, and any newly created table.
 
 > [!IMPORTANT]
-> If you set the time boundary of the Ingestion Batching policy too low on low-ingress tables, you may incur additional compute and storage work as the cluster attempts to optimize the newly created data shards. For more information about data shards, see [extents](extents-overview.md).
+> If you set the time boundary of the Ingestion Batching policy too low on low-ingress tables, you may incur additional compute and storage work as the database attempts to optimize the newly created data shards. For more information about data shards, see [extents](extents-overview.md).
 
 ## Batch data size
 
@@ -80,4 +80,4 @@ Latencies can result from many causes that can be addressed using batching polic
 | Data latency matches the `time` setting, with too little data to reach the `size` or `count` limit | Reduce the `time` limit |
 | Inefficient batching due to a large number of very small files | Increase the size of the source files. If using Kafka Sink, configure it to send data in ~100 KB chunks or higher. If you have many small files, increase the `count` (up to 2000) in the database or table ingestion policy. |
 | Batching a large amount of uncompressed data | This is common when ingesting Parquet files. Incrementally decrease `size` for the table or database batching policy towards 250 MB and check for improvement. |
-| Backlog because the cluster is under scaled | Accept any Azure advisor suggestions to scale aside or scale up your cluster. Alternatively, manually scale your cluster to see if the backlog is closed. If these options don't work, contact support for assistance. |
+| Backlog because the database is under scaled | Accept any Azure advisor suggestions to scale aside or scale up your database. Alternatively, manually scale your database to see if the backlog is closed. If these options don't work, contact support for assistance. |

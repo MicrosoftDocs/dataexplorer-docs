@@ -33,9 +33,9 @@ The following list covers key examples of schema changes:
 
 ## Coordinate schema changes with streaming ingestion
 
-The schema cache is kept while the cluster is online. If there are schema changes, the system automatically refreshes the cache, but this refresh can take several minutes. If you rely on the automatic refresh, you can experience uncoordinated ingestion failures. 
+The schema cache is kept while the database is online. If there are schema changes, the system automatically refreshes the cache, but this refresh can take several minutes. If you rely on the automatic refresh, you can experience uncoordinated ingestion failures.
 
-You can reduce the effects of propagation delay by explicitly clearing the schema cache on the cluster nodes. If the streaming ingestion flow and schema changes are coordinated, you can completely eliminate failures and their associated data distortion. 
+You can reduce the effects of propagation delay by explicitly clearing the schema cache on the nodes. If the streaming ingestion flow and schema changes are coordinated, you can completely eliminate failures and their associated data distortion.
 
 To coordinate the streaming ingestion flow with schema changes:
 

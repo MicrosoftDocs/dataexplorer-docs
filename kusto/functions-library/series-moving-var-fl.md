@@ -82,8 +82,10 @@ The following example uses the [invoke operator](../query/invoke-operator.md) to
 
 To use a query-defined function, invoke it after the embedded function definition.
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA42T3W6jMBBG73mKubQpTYG0UpXIb5F75MAktWpsZJsE73bffYcSElSlarnyz3fOjC2jMYBHp9BXrT0pc6xO0lUHDQJYrKadTRONbFWdgdkoEzKo0QR0m721Whyk9siTvwnQp8mGkdiL8qDc1ZKBww5lYAV5eAbB9Tir+PaGlwu+7XVQnY4MY0biRSyWd1K3UvNoKV4in42Vv2xpvJGJuwl8vw9O1oE6Iw01fcnfssm/ZJuMuFcGz/KEgg2bxvZ7TTU6itjmOj1KZS4TUaxy2n+THueVfJXPFzwGUxKyMu0U40+TJ2XDwyfB+bWqEUX5Og13osin0VmZxp7FLi23SW+UNQlz0hwRBjg420IOwYJ5LMAH7KCAD8AhoGkgivkUbMhgx3n2hTQjWab32fEAXwHKjsj6G+SHcuuJfv6GZsPjepWnhj/RJdwp/jzhL78rnnyAdQ062EcSSF8Drfi+baVTf8gpWvmOlVY+sIFeUVzM4wjP3vHXEvd+Nkavezc9vzHvKE3VNHVRv0kX/gMOVfCqpAMAAA==" target="_blank">Run the query</a>
+:::moniker-end
 
 ```kusto
 let series_moving_var_fl = (y_series:dynamic, n:int, center:bool=false)

@@ -73,8 +73,10 @@ perm_fl(n:int, k:int)
 
 To use a query-defined function, invoke it after the embedded function definition.
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA12OQQrCMBBF9znFXyZo0dqdpWcpQSdBkkxCnUVBvbupFgvO5sO8x8yPJCg0pdHFQfP5xrJHWMKoh0KdWAVnLzIyBnibktW8a03/B8NGm/DjkmNmr7/KYTWNeqleTZY9geGmnNBVE+0Rd6GCTj1BsxBfsVzl5rQtyufRWlhz7WreODahQsIAAAA=" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
 let perm_fl=(n:int, k:int)
