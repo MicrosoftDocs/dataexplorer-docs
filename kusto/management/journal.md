@@ -62,7 +62,7 @@ Results returned will include:
 * All journal entries of databases that the user executing the command has admin access to.
 
 :::moniker range="azure-data-explorer"
-* All cluster journal entries if the user executing the command is a cluster admin.
+* All cluster journal entries if the user executing the command is a Cluster AllDatabases Admin.
 :::moniker-end
 :::moniker range="microsoft-fabric"
 * All journal entries specific to the environment level if the user executing the command has appropriate admin permissions.
