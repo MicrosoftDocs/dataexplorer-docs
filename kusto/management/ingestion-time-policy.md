@@ -11,9 +11,9 @@ ms.date: 02/19/2020
 
 The IngestionTime policy is an optional policy that can be set (enabled) on tables.
 
-When enabled, Kusto adds a hidden `datetime` column to the table, called `$IngestionTime`. 
-Now, whenever new data is ingested, the time of ingestion is recorded in the hidden column. 
-That time is measured by the Kusto cluster just before the data is committed. 
+When enabled, Kusto adds a hidden `datetime` column to the table, called `$IngestionTime`.
+Now, whenever new data is ingested, the time of ingestion is recorded in the hidden column.
+That time is measured just before the data is committed.
 
 > [!NOTE]
 > Every record has its own `$IngestionTime` value.
