@@ -19,7 +19,7 @@ A user-defined function belongs to one of two categories:
 The function's input arguments and output determine whether it's scalar or tabular, which then establishes how it might be used.
 
 To optimize multiple uses of the user-defined functions within a single query, see [Optimize queries that use named expressions](../named-expressions.md).
- 
+
 We've created an assortment of user-defined functions that you can use in your queries. For more information, see [Functions library](../../functions-library/functions-library.md).
 
 ## Scalar function
@@ -338,8 +338,10 @@ The following restrictions apply:
 
 * User-defined functions can't pass into [toscalar()](../toscalar-function.md) invocation information that depends on the row-context in which the function is called.
 * User-defined functions that return a tabular expression can't be invoked with an argument that varies with the row context.
+:::moniker range="azure-data-explorer"
 * A function taking at least one tabular input can't be invoked on a remote cluster.
 * A scalar function can't be invoked on a remote cluster.
+:::moniker-end
 
 The only place a user-defined function may be invoked with an argument that varies with the row context is when the user-defined function is composed of scalar functions only and doesn't use `toscalar()`.
 

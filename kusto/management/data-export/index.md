@@ -23,7 +23,7 @@ Alternatively, you can use a client tool like the Azure Data Explorer web UI to 
 
 ## Service-side export (pull)
 
-Use the [ingest from query](../../management/data-ingestion/ingest-from-query.md) commands to pull query results into a table in the same or different cluster. See the [performance tips](../../management/data-ingestion/ingest-from-query.md#performance-tips) before using these commands.
+Use the [ingest from query](../../management/data-ingestion/ingest-from-query.md) commands to pull query results into a table in the same or different database. See the [performance tips](../../management/data-ingestion/ingest-from-query.md#performance-tips) before using these commands.
 
 ## Service-side export (push)
 
@@ -32,7 +32,7 @@ For scalable data export, the service offers various `.export` management comman
 [Continuous data export](continuous-data-export.md) is supported for export to external tables.
 
 > [!NOTE]
-> The `.export` management commands are limited by the available data export capacity of your cluster. Run the [.show capacity command](../show-capacity-command.md) to view the total, consumed, and remaining data export capacity.
+> The `.export` management commands are limited by the available data export capacity of your database. Run the [.show capacity command](../show-capacity-command.md) to view the total, consumed, and remaining data export capacity.
 
 ## Related content
 

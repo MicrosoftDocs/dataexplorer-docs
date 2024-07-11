@@ -41,7 +41,7 @@ The following properties are supported as part of the export to external table c
 | `distribution` | `string` | Distribution hint (`single`, `per_node`, `per_shard`).  See more details in [Distribution settings](#distribution-settings) | Default is `per_node`. |
 | `distributionKind` | `string` | Optionally switches to uniform distribution when the external table is partitioned by string partition. Valid values are `uniform` or `default`. See more details in [Distribution settings](#distribution-settings) |  |
 | `concurrency` | *Number* | Hints the system how many partitions to run in parallel. See more details in [Distribution settings](#distribution-settings) | The default value is 16. |
-| `spread` | *Number* | Hints the system how to distribute the partitions among cluster nodes. See more details in [Distribution settings](#distribution-settings) | The default value is `Min(64, number-of-nodes)`. |
+| `spread` | *Number* | Hints the system how to distribute the partitions among nodes. See more details in [Distribution settings](#distribution-settings) | The default value is `Min(64, number-of-nodes)`. |
 | `parquetRowGroupSize` | `int` | Relevant only when data format is Parquet. Controls the row group size in the exported files. This value takes precedence over `sizeLimit`, meaning a full row group will be exported before checking whether this row group has reached the size limit and should start a new artifact. | Default row group size is 100,000 records. |
 
 ### Distribution settings
@@ -50,7 +50,7 @@ The distribution of an export to external table operation indicates the number o
 
 | External table partitioning | Default distribution
 |---|---|
-|External table isn't partitioned, or partitioned by `datetime` column only|Export is distributed `per_node` - all nodes in the cluster are exporting concurrently. Each node writes the data assigned to that node. The number of files exported by a node will be greater than one, only if the size of the data from that node exceeds `sizeLimit`.|
+|External table isn't partitioned, or partitioned by `datetime` column only|Export is distributed `per_node` - all nodes are exporting concurrently. Each node writes the data assigned to that node. The number of files exported by a node will be greater than one, only if the size of the data from that node exceeds `sizeLimit`.|
 |External table is partitioned by a string column|The data to export is moved between the nodes, such that each node writes a subset of the partition values. A single partition is always written by a single node. The number of files written per partition should be greater than one only if the data exceeds `sizeLimit`. If the external table includes several string partitions, then data is partitioned between the node based on the first partition. Therefore, it is recommended to define the partition with most uniform distribution as the first one.|
 
 #### Change the default distribution settings

@@ -4,7 +4,6 @@ description:  This article describes the series_uv_change_points_fl() user-defin
 ms.reviewer: adieldar
 ms.topic: reference
 ms.date: 03/13/2023
-
 monikerRange: "azure-data-explorer"
 ---
 # series_uv_change_points_fl()
