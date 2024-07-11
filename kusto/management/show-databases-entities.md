@@ -30,7 +30,7 @@ You must have at least Database User, Database Viewer, or Database Monitor permi
 
 ### Returns
 
-Returns a list of entities of all databases visible to the user. Database entities are: tables, materialized views, external tables, etc.
+Returns a list of entities of all cluster databases visible to the user. Database entities are: tables, materialized views, external tables, etc.
 
 > [!IMPORTANT]
 > By default, all databases' entites are returned. To make the command execution more optimal, add a `where` condition that filters by specific databases and/or entity types or names (see examples section in this article).

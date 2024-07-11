@@ -17,7 +17,7 @@ The following diagram depicts a high-level view of an update policy. It shows tw
 
 :::image type="content" source="media/updatepolicy/update-policy-overview.png" alt-text="Diagram shows an overview of the update policy.":::
 
-An update policy is subject to the same restrictions and best practices as regular ingestion. The policy scales-out according to the environmet size, and is more efficient when handling bulk ingestion.
+An update policy is subject to the same restrictions and best practices as regular ingestion. The policy scales-out according to the environment size, and is more efficient when handling bulk ingestion.
 
 > [!NOTE]
 >
