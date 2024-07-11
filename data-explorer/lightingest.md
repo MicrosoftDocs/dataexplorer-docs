@@ -218,5 +218,5 @@ There are three actions LightIngest performs that can use managed identity for a
 
 * **Connect to Azure Storage to download blobs**: Use "-ingestmi" to specify a managed identity installed on the Kusto service that has read privileges on the storage container.
 
-* **Connect to Azure Storage to list container blobs**: Use the "-storageMi" argument to specify a managed identity installed on the client VM that has list privileges on the storage container. If you're using this method but not the previous one (connect to Azure storage to download blobs), the managed identity must have read privileges as well and a token will be passed to the Kusto service to be used for the ingestion. 
+* **Connect to Azure Storage to list container blobs**: Use the "-storageMi" argument to specify a managed identity installed on the client VM that has list privileges on the storage container. If you're using this method but not the previous one (connect to Azure storage to download blobs), the managed identity must have read privileges as well and a token will be passed to the Kusto service to be used for the ingestion. It is therefore recommended to set all the three arguments.
  
