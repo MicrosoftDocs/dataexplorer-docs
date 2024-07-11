@@ -145,7 +145,7 @@ When the number of extents/nodes is large, this may lead to high load on storage
         ExportQuery
     ```
 
-* Reduce concurrency of number of threads exporting in each node when using per shard export, by setting the [client request property](../../api/rest/request-properties.md) `query_fanout_threads_percent` to the desired concurrency (percent of threads). The property can be set as part of the export query. For example, the following command limits the number of threads writing to storage concurrently to 50% on each database:
+* Reduce concurrency of number of threads exporting in each node when using per shard export, by setting the [client request property](../../api/rest/request-properties.md) `query_fanout_threads_percent` to the desired concurrency (percent of threads). The property can be set as part of the export query. For example, the following command limits the number of threads writing to storage concurrently to 50% on each of the nodes:
 
     ```kusto
     .export async  to csv

@@ -117,7 +117,7 @@ For application authentication, specify `AAD Federated Security` as `true`. Then
 #### Authentication with an application certificate
 
 1. The application should be configured to accept the given certificate. [How to authentication based-on Microsoft Entra application's certificate](https://github.com/Azure-Samples/active-directory-dotnet-daemon-certificate-credential).
-1. The application should be configured as an authorized principal in the relevant Kusto database.
+1. The application should be configured as an authorized principal in the relevant Kusto environment.
 1. The certificate needs to be installed in Local Machine store or in Current User store.
 1. The certificate's public key should contain at least 2048 bits.
 
