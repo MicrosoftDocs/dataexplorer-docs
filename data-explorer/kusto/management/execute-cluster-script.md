@@ -55,6 +55,6 @@ Each command appearing in the script is reported as a separate record in the out
 >* The script text may include empty lines and comments between the commands.
 >* Commands are executed sequentially, in the order they appear in the input script.
 >* Script execution is sequential, but non-transactional, and no rollback is performed upon error. It's advised to use the idempotent form of commands when using `.execute cluster script`.
->* The default behavior of the command is to fail on the first error. This can be changed using property argument.
+>* The default behavior of the command is to fail on the first error. This can be changed by using the property argument: `ContinueOnErrors`.
 >* Read-only management commands (`.show` commands) aren't executed and are reported with status `Skipped`.
 
