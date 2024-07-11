@@ -37,7 +37,7 @@ An equivalent way to write the query above is by escaping the table name:
 Tables may also be referenced by explicitly noting the database they are in. Then you can author queries that combine data from multiple databases. For example, the following query will work with any database in context, as long as the caller has access to the target database:
 
 ```kusto
-database("Samples").StormEvents
+cluster("https://help.kusto.windows.net").database("Samples").StormEvents
 | count
 ```
 
