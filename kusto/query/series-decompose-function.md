@@ -61,8 +61,10 @@ This method is usually applied to time series of metrics expected to manifest pe
 
 In the following example, we generate a series with weekly seasonality and without trend, we then add some outliers to it. `series_decompose` finds and automatically detects the seasonality, and generates a baseline that is almost identical to the seasonal component. The outliers we added can be clearly seen in the residuals component.
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA21QQW7CMBC884q9IDkpIXYgBbVyX9E7svACFnEc2Yuoqz6+m1ZADvhgzc5oZ1bTIQElHU1/RCA4xOBBAQVo1uWmbCERDkzMfgC/CHsLn85jIuMH0GANIfEsGqm2lVxVUoFs36Qs4AXUCUp2fGxm3mhKTrJi1N3hIATVzbqYbz50uwAll5L/dsnrFQgW5yzWShblBBdQ13DEHiOHg4GE0WGCq6MTXBHPXWbKpNCbzlGepOsxkLRWrYQQgVEjb2iz5eRcbccD8l+CsRZS8AjWDRAu1DmM6Ynb6u6xvqNXOdq8PHNLgzvj1C9dvDfRfeOjWO3NGXedSyTu3NgOv2KRJ2q+se8zSpOi/yvZWdwHP4SEIhcsRpaQ72PL/clE+gWepuS1+gEAAA==" target="_blank">Run the query</a>
+:::moniker-end
 
 ```kusto
 let ts=range t from 1 to 24*7*5 step 1 
@@ -82,8 +84,10 @@ ts
 
 In this example, we add a trend to the series from the previous example. First, we run `series_decompose` with the default parameters. The trend `avg` default value only takes the average and doesn't compute the trend. The generated baseline doesn't contain the trend. When observing the trend in the residuals, it becomes apparent that this example is less accurate than the previous example.
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA21RQW7CMBC884q5ICWBECeQBrVKX9E7ssgSLJI4shdRV318N6qAHPDBGs9oZ0fjjhjsa6eHlsA4OdsjB1sUu6RKSnimUYjFL+ibaWjwZXryrPsRNRrNxPKOCpXvU7VNVQ5VvisVY4X8jEQcn5NBJopENjXRpJvTKYo4K3bxsvqsyzXKjVojlztGiki0pWhZruJkhqdJzqpio5BlaGkgJyGg4ckZ8rgZPuNGdOmCUNrbQXeGA2Qr7NBaM7RgJ3FmueopCtd1XipYB0GFuqNqL6FCup+yhXjaqZsG3vaExoywV+4MOf/Cbfvw2D3Qm5psVq/c/GguNPfz177XzvzQs/K61xc6dMZz9OCkMiUnXoeZGu7sx4L97Av+Szo0dLT9aD1FIRZxqoMkn1gez9rxH0eeYfoUAgAA" target="_blank">Run the query</a>
+:::moniker-end
 
 ```kusto
 let ts=range t from 1 to 24*7*5 step 1 
@@ -101,8 +105,10 @@ ts
 
 Next, we rerun the same example. Since we're expecting a trend in the series, we specify `linefit` in the trend parameter. We can see that the positive trend is detected and the baseline is much closer to the input series. The residuals are close to zero, and only the outliers stand out. We can see all the components on the series in the chart.
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA21R0Y6CMBB89yvmxQgIUlBOcxfuK+7dNLJgI1DSrvG43MffkovKg31otrO7M5NpSwz2pdN9Q2DUznbIwBb5LtpHBTzTIMDiF/TN1Ff4Mh151t2AEpVmYnkHucoOidomKoMq3pUKsUZ2RiSMz81RNvJIlKpg6pu6DgJO81243H+WRYxio2JkcodIEEhvKb00U2E0q6dNTvf5RiFN0VBPTkxAw5Mz5HEzfMaN6NKOAmlve90aHiGqsH1jTd+AndiZ+SonK1yWWaFgHaTK1b3aH8TUmBwmb2M4aeqqgrcdoTID7JVbQ86/YNs+OHaP6k1NNOtXbH4wF5rz+WvXaWd+6Bl52ekLHVvjOXhgEpmSE8bjrDve0Y8F+9kX/Id0rOhku8F6mgaTLMaqNT3VhlehzE7pkNgVhdNZO/4DpkIQcyMCAAA=" target="_blank">Run the query</a>
+:::moniker-end
 
 ```kusto
 let ts=range t from 1 to 24*7*5 step 1 

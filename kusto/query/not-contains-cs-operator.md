@@ -42,8 +42,10 @@ Rows in *T* for which the predicate is `true`.
 
 ## Examples
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAwsuyS/KdS1LzSsp5qpRKC7NzU0syqxKVUgFCcUn55fmldiCSQ1NhaRKheCSxJJUoMLyjNSiVAhPQTE5P68kMTOvOD65WEHJMVgJKA/WAgDbLF9iXAAAAA==" target="_blank">Run the query</a>
+:::moniker-end
 
 ```kusto
 StormEvents
@@ -58,8 +60,10 @@ StormEvents
 |-----|
 |59|
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAwsuyS/KdS1LzSsp5qpRKC7NzU0syqxKVUgFCcUn55fmldiCSQ1NhaRKheCSxJJUoMLyjNSiVAhPQTE5P68kMTOvOD65WEEpxDVCCa4AyRQFOwVjAwMDoFRBUX5WanIJRLcOshoAY3LN3I0AAAA=" target="_blank">Run the query</a>
+:::moniker-end
 
 ```kusto
 StormEvents

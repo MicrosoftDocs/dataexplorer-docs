@@ -71,8 +71,10 @@ series_clean_anomalies_fl(y_series:dynamic, anomalies:dynamic)
 
 To use a query-defined function, invoke it after the embedded function definition.
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/https%3a%2f%2fhelp.kusto.windows.net/databases/Samples?query=H4sIAAAAAAAEAG2OzYrCQBCE74G8Qx8TMJJkQVwkz%2bBB8TqMkxbDTk%2bHmQ4q%2bPBmTPw57LGq66tqiwLUOSXQQKsFpSPM6rJaFeW6qH%2fzTZrYGNHX%2fyM%2fVYy0SKxI%2f6EK6DsMVZrcIepi0uAGagwPTrIc2MF%2brNiJph5Onml%2bQHieCYI91CXB8QbbcEAf2%2fAq6FrQjknbWNnA1K1aNEw9B1TvYzbuLaBcrvMvdPSU%2bWDGonYfRJ3sRL2dJ%2btHEv1s3sxZe4FLJ2fIXhbbgVxovrE0eQDAQen6VwEAAA%3d%3d" target="_blank">Run the query</a>
+:::moniker-end
 
 ```kusto
 let series_clean_anomalies_fl = (y_series:dynamic, anomalies:dynamic)

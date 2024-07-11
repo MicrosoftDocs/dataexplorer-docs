@@ -84,8 +84,10 @@ The following table summarizes the default values of aggregations:
 
 The following query determines what unique combinations of `State` and `EventType` there are for storms that resulted in direct injury. There are no aggregation functions, just group-by keys. The output will just show the columns for those results.
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAwsuyS/KdS1LzSsp5uWqUSjPSC1KVfDMyyotykwtdsksSk0uUbBTMADJFZfm5iYWZValKiRVKgSXJJak6iiAdYZUFqQCAEZA2i9IAAAA" target="_blank">Run the query</a>
+:::moniker-end
 
 ```kusto
 StormEvents
@@ -110,8 +112,10 @@ The following table shows only the first 5 rows. To see the full output, run the
 
 Finds the minimum and maximum heavy rain storms in Hawaii. There's no group-by clause, so there's just one row in the output.
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA0WMsQrCQBBEe8F/GK5S0E+4ImDAFGmSgPViFjzh9sJlExPx42VFsRvevJlWU47lzKLjdvPC48aZ0Sopw3u4c3EpqsqBpMfH6tbh2zDNKxoK4mw45HTnq+I0ZdKQBB6l9F2IjKP9ZbVs5jjFSDk8GXUwLQbZ/Vb7A2paDNLyh28u8qFKpAAAAA==" target="_blank">Run the query</a>
+:::moniker-end
 
 ```kusto
 StormEvents
@@ -131,8 +135,10 @@ StormEvents
 
 Create a row for each continent, showing a count of the cities in which activities occur. Because there are few values for "continent", no grouping function is needed in the 'by' clause:
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAwsuyS/KdS1LzSsp5uWqUSguzc1NLMqsSlUIqSxILfZPCwbJF9umJOeX5pVogBWCZDQVkioVgksSS1LBuvKLSkACKHoALe01bFoAAAA=" target="_blank">Run the query</a>
+:::moniker-end
 
 ```kusto
 StormEvents
@@ -157,8 +163,10 @@ The following table shows only the first 5 rows. To see the full output, run the
 
 The following example calculates a histogram storm event types that had storms lasting longer than 1 day. Because `Duration` has many values, use `bin()` to group its values into 1-day intervals.
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA02NQQ6CQAxF9ybeoUtIcOEBxo2ycwcXGKCRMZmWlA4GwuG1EKObn+bn9f1KWWI5Iel4PKwwCD+xVdiaeh6wgFsSr4EJHJTU1SEinKBSL2q3Pb16FPxxFzh3Vo8pRi9hwd125UTqWsssh2b+37gjPbR3TaDsqyk+lnzTsKjhO/MGpa0usbAAAAA=" target="_blank">Run the query</a>
+:::moniker-end
 
 ```kusto
 StormEvents
@@ -185,8 +193,10 @@ When the input of `summarize` operator has at least one empty group-by key, its 
 
 When the input of `summarize` operator doesn't have an empty group-by key, the result is the default values of the aggregates used in the `summarize` For more information, see [Default values of aggregations](#default-values-of-aggregations).
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAz2PwQ7CIBBE7yb+A0cwHLz0YqI/YkyzBaQbAU3ZNtT48S7EGg4zmTe7WSwQvyE4WU7hmby63va7j8hzjDDh2wlIa1/OBA/Xs5VFaQGT7yMUjn9OFi0OG8C0AUx/sPg2OcwYbDajiyDpadcEEQ27TBOmWlFcagur1nnWl5uMS4T1Ri26jqMxBEZCZ7JuaSU+eFO8114RF3HkgCx6l6nBhb8EyfAe9QXbqS6i+AAAAA==" target="_blank">Run the query</a>
+:::moniker-end
 
 ```kusto
 datatable(x:long)[]
@@ -201,8 +211,10 @@ datatable(x:long)[]
 
 The result of `avg_x(x)` is `NaN` due to dividing by 0.
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA0tJLAHCpJxUjQqrnPy8dM3oWF6uGoXi0tzcxKLMqlQFheT80rwSjQpNHQgrM02jQsFOwUBTQUchBSGXApfUUYDIAwDGwdg7WgAAAA==" target="_blank">Run the query</a>
+:::moniker-end
 
 ```kusto
 datatable(x:long)[]
@@ -215,8 +227,10 @@ datatable(x:long)[]
 |---|---|---|---|
 |0|0|0|0|
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA0tJLAHCpJxUjQqrnPy8dM3oWF6uGoXi0tzcxKLMqlQFhdzE7NT44tQSjQpNHQgnJ7MYxAMATGERsTsAAAA=" target="_blank">Run the query</a>
+:::moniker-end
 
 ```kusto
 datatable(x:long)[]
@@ -231,8 +245,10 @@ datatable(x:long)[]
 
 The aggregate avg sums all the non-nulls and counts only those which participated in the calculation (won't take nulls into account).
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAy2KTQqAIBQG953iWyq0EWrpYYSeIvgTTw2NDp9BqxmYYZMcocNyjlCoGRtKpRNqeUC9UjowoOGtFR1aQ61gMkGkFoL8fZdy3qXFaNjf9JkYM5rLTb7y45THYwAAAA==" target="_blank">Run the query</a>
+:::moniker-end
 
 ```kusto
 range x from 1 to 4 step 1
@@ -248,8 +264,10 @@ range x from 1 to 4 step 1
 
 The regular count will count nulls:
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAy3KTQqAIBAG0H3QHb6lA20MWnoYqTEEf2JU0OjwEbR7iyc2nYwOJzlCo2asKJUv6Hl6wL1yOjBg4J1THcZALxC2QaUWAv3eiL5eWoxW/M3Yc0tVDXoBSiga018AAAA=" target="_blank">Run the query</a>
+:::moniker-end
 
 ```kusto
 range x from 1 to 2 step 1
@@ -263,8 +281,10 @@ range x from 1 to 2 step 1
 |---|
 |2|
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA03KSwqAIBRG4XnQHv6hQhODhq4lhK4h+YirgkWLr6BBs3PgYxNXQoPlFKBQEkbkQjtU312gViguOKDhrBUNWkMNYDJexOq9/HqS8uW5hmDYnYRgNpozFXE85Dc305SXFm8AAAA=" target="_blank">Run the query</a>
+:::moniker-end
 
 ```kusto
 range x from 1 to 2 step 1

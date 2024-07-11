@@ -38,8 +38,10 @@ If successful, the result will be a [datetime](scalar-data-types/datetime.md) va
 
 ## Example
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAysoyswrUahMTSyKz83PK8mIT0msVLBVyE3MTgUyS1JLMnNTNYwMDM11DA10DAw1AS/izjAwAAAA" target="_blank">Run the query</a>
+:::moniker-end
 
 ```kusto
 print year_month_day = make_datetime(2017,10,01)
@@ -51,8 +53,10 @@ print year_month_day = make_datetime(2017,10,01)
 |---|
 |2017-10-01 00:00:00.0000000|
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAysoyswrUahMTSyKz83PK8mIT0msjM/ILwVyM/NKS1IVbBVyE7NTgcIlqSWZuakaRgaG5jqGBjoGhjqGRkCGJgB7AoRjQgAAAA==" target="_blank">Run the query</a>
+:::moniker-end
 
 ```kusto
 print year_month_day_hour_minute = make_datetime(2017,10,01,12,10)
@@ -64,8 +68,10 @@ print year_month_day_hour_minute = make_datetime(2017,10,01,12,10)
 |---|
 |2017-10-01 12:10:00.0000000|
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAw3JSwqAIBAA0Ku4LBjCsY+rzjJIDijhGDYuvH0tH+9pWdQMDo1KFU0Uw6BU+88sXZlevqpEc5oSbv5XWXPhyVn0gBYsAjpABLugW7f98PMHKbr/e1MAAAA=" target="_blank">Run the query</a>
+:::moniker-end
 
 ```kusto
 print year_month_day_hour_minute_second = make_datetime(2017,10,01,12,11,0.1234567)

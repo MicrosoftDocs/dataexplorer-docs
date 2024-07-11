@@ -31,8 +31,10 @@ A `fullouter` join combines the effect of applying both left and right outer-joi
 
 ## Example
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA8tJLVGIULBVSEksAcKknFQN79RKq%2BKSosy8dB2FsMSc0lRDq5z8vHRNrmguBSBQT1TXMdSBMJPUdYwQTGMoM1ldx4Qr1porB2h0JH6jjVCNBhpiaIAwxQiJbQxjpwBNNwAZH6FQo5CVn5mnkJ2Zl2KbVpqTk19akloEtDI%2FTwFoEwDuw%2F%2BW2gAAAA%3D%3D" target="_blank">Run the query</a>
+:::moniker-end
 
 ```kusto
 let X = datatable(Key:string, Value1:long)

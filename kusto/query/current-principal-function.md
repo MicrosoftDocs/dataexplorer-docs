@@ -26,8 +26,10 @@ The string format is:
 
 ## Example
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAysoyswrUUgrzLNNLi0qSs0riS8AiiRnFiTmaGgCAGK4N8YdAAAA" target="_blank">Run the query</a>
+:::moniker-end
 
 ```kusto
 print fqn=current_principal()

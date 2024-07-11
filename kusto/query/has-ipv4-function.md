@@ -42,8 +42,10 @@ IP address entrances in a text must be properly delimited with non-alphanumeric 
 
 ### Properly formatted IP address
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAysoyswrUShKLS7NKbHNSCyOzywoM9FQNzC1MjCxMjVRMDQy1zMAQkMFd9cQBf20xLLM5Pw8PSChYGJgoq6joA5Xoa4JAIl8hqBNAAAA" target="_blank">Run the query</a>
+:::moniker-end
 
 ```kusto
 print result=has_ipv4('05:04:54 127.0.0.1 GET /favicon.ico 404', '127.0.0.1')
@@ -57,8 +59,10 @@ print result=has_ipv4('05:04:54 127.0.0.1 GET /favicon.ico 404', '127.0.0.1')
 
 ### Invalid IP address
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAysoyswrUShKLS7NKbHNSCyOzywoM9FQNzC1MjCxMjVRMDQy1zMAQiNTMwV31xAF/bTEsszk/Dw9IKFgYmCirqOgjqRGXRMAk108LFEAAAA=" target="_blank">Run the query</a>
+:::moniker-end
 
 ```kusto
 print result=has_ipv4('05:04:54 127.0.0.256 GET /favicon.ico 404', '127.0.0.256')
@@ -72,8 +76,10 @@ print result=has_ipv4('05:04:54 127.0.0.256 GET /favicon.ico 404', '127.0.0.256'
 
 ### Improperly delimited IP
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAysoyswrUShKLS7NKbHNSCyOzywoM9FQNzC1MjCxMjUxNDLXMwBCQwV31xAF/bTEsszk/Dw9IKFgYmCirqOgDlehrgkAPqxiHkwAAAA=" target="_blank">Run the query</a>
+:::moniker-end
 
 ```kusto
 print result=has_ipv4('05:04:54127.0.0.1 GET /favicon.ico 404', '127.0.0.1')

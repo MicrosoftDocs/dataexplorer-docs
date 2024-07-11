@@ -55,8 +55,10 @@ T | evaluate autocluster()
 
 ### Using autocluster
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAy1OPQ+CMBDd/RUvTBCNYdENF2VVk7I4NngIhrbkONAm/nhbcbr3lfdOiWNTzmRlXH3waokJxllpXeNJc6pEs1SdoQxFgV3I0FvI3nHSRj8IBbqmSRdyZDeMWP+ta2DE4nFAjg2SW6mSeM+XJAs1A7sn1YIwIBT03w+VHyJeCuLWrPsp+noSV/fTKMRpvt1nX4BZevm3AAAA" target="_blank">Run the query</a>
+:::moniker-end
 
 ```kusto
 StormEvents
@@ -76,8 +78,10 @@ StormEvents
 
 ### Using custom wildcards
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAzVOMQ6CQBDsfcWEBlBiiIklNkqrJtBYXnARDMeRZUFJjG/3TrTZ2ZnZzGwmhnU6Uiv94oVHRUzQppXKlBMpDjJRLHmtKUSSYGtv6CnUXnFQWt0ICeqyDGayZ9P1WP2ss2XEMmGHGBG8S5p5Do8nL7QxHZs7FQJbIGT17w/51Ll9DnBdo2oG56tBTNEMvRAH8XoTwX/7/7H0ww9RvGz7xgAAAA==" target="_blank">Run the query</a>
+:::moniker-end
 
 ```kusto
 StormEvents

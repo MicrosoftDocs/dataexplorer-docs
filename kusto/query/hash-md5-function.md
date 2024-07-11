@@ -37,8 +37,10 @@ and 255).
 
 ## Examples
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAysoyswrUeDKMLTNSCzOiM9NMdVQCs8vyklR0tThyjBCiKYklqSWZOamahgZGBnoGhgCkaYmADVybf0+AAAA" target="_blank">Run the query</a>
+:::moniker-end
 
 ```kusto
 print 
@@ -54,8 +56,10 @@ h2=hash_md5(datetime(2020-01-01))
 
 The following example uses the `hash_md5()` function to aggregate StormEvents based on State's MD5 hash value.
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAwsuyS/KdS1LzSsp5qpRKC7NzU0syqxKVQgGiTvnl+aVKNgqJINoDU2FpEqgeGJJqg6E8kgszrDNABLxuSmmGmAhTaAhJfkFCqYQtTAzAJ9n7vdmAAAA" target="_blank">Run the query</a>
+:::moniker-end
 
 ```kusto
 StormEvents

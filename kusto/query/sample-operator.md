@@ -31,8 +31,10 @@ Returns up to the specified number of random rows from the input table.
 
 ## Examples
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA8tJLVGIT0ksSVSwVShKzEtPVahQSCvKz1UwVCjJVzA0MFAoLkktUDC05soBqSxOzC3ISQWqheipUYAKAOVL8zLz8xQ0oEo0dRBMANt5ESNkAAAA" target="_blank">Run the query</a>
+:::moniker-end
 
 ```kusto
 let _data = range x from 1 to 100 step 1;
@@ -49,8 +51,10 @@ union (_sample), (_sample)
 
 To ensure that in example above `_sample` is calculated once, one can use [materialize()](materialize-function.md) function:
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA0XLOwqAMBCE4d5TTJmARVIHzyILrhLIi2QFEQ+vYsBu4P8msGBeSAgTKqWNcWCtOcJCMqwxaMIF1g3hlY1iCfzYSMLVU/Anq+9/oUer3bAnnxNU93r85w3rZ9v0cQAAAA==" target="_blank">Run the query</a>
+:::moniker-end
 
 ```kusto
 let _data = range x from 1 to 100 step 1;
@@ -67,8 +71,10 @@ union (_sample), (_sample)
 
 To sample a certain percentage of your data (rather than a specified number of rows), you can use
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAwsuyS/KdS1LzSspVqhRKM9ILUpVKErMS9HQVLBRMNAzBABGrj/0IAAAAA==" target="_blank">Run the query</a>
+:::moniker-end
 
 ```kusto
 StormEvents | where rand() < 0.1
@@ -76,8 +82,10 @@ StormEvents | where rand() < 0.1
 
 To sample keys rather than rows (for example - sample 10 Ids and get all rows for these Ids) you can use [`sample-distinct`](sample-distinct-operator.md) in combination with the `in` operator.
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA8tJLVEoTswtyEl1Lcgszk9JLVawVQguyS/KdS1LzSspVqiBSuumZBaXZOYllygYGijkpylAlXumWHMhKeeqUSjPSC1KRUgrZOYpaKDaoAkA08y7N3UAAAA=" target="_blank">Run the query</a>
+:::moniker-end
 
 ```kusto
 let sampleEpisodes = StormEvents | sample-distinct 10 of EpisodeId;

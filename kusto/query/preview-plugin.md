@@ -40,8 +40,10 @@ The `preview` plugin returns two result tables:
 
 ## Example
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAwsuyS/KdS1LzSspVqhRSC1LzClNLElVKChKLctMLdcw1QQA4xlbCCEAAAA=" target="_blank">Run the query</a>
+:::moniker-end
 
 ```kusto
 StormEvents | evaluate preview(5)

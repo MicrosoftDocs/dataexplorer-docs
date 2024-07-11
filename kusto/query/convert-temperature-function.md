@@ -44,8 +44,10 @@ Convert a temperature value from one unit to another.
 
 ## Example
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAysoyswrUShKLS7NKVGwVUjOzytLLSqJL0nNLUgtSiwpLUrVMNQz0lFQ907NKcvMUweyXFLTi1JTnVNzijNLi9U1AVVJ6WxCAAAA" target="_blank">Run the query</a>
+:::moniker-end
 
 ```kusto
 print result = convert_temperature(1.2, 'Kelvin', 'DegreeCelsius')

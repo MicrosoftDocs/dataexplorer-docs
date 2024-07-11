@@ -71,8 +71,10 @@ For comparison with other available grid systems, see [geospatial clustering wit
 
 The following example finds US storm events aggregated by geohash.
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA2WNsQ7CMAxEdyT%2BwWMqdWPugsTGxgdEJrWaALEjx4BAfDwNdEBiO5%2Fv3R1MNO9uxFbXqxcUlRMFgy1NiffC%2FaLQ2rdec0ZNT4LjAyLWOEwkvkhi8yZ%2BPprp%2FuEeNt1vfcOWdAPDPK94%2BTa55n7SSjySQg1oRhoiqsE9WQR3TjwOGUv3Bl2BVCm%2FAAAA" target="_blank">Run the query</a>
+:::moniker-end
 
 ```kusto
 StormEvents
@@ -88,8 +90,10 @@ StormEvents
 
 The following example calculates and returns the geohash string value.
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAysoyswrUUhPzc9ILM5QsAWx4gvygWLxJfnxUGENXQsDPUNLUwsjSx0FI1M9CwMjI0NTHQULTQB7u14ZPgAAAA==" target="_blank">Run the query</a>
+:::moniker-end
 
 ```kusto
 print geohash = geo_point_to_geohash(-80.195829, 25.802215, 8)
@@ -103,8 +107,10 @@ print geohash = geo_point_to_geohash(-80.195829, 25.802215, 8)
 
 The following example finds groups of coordinates. Every pair of coordinates in the group resides in a rectangular area of 4.88 km by 4.88 km.
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA42Qy07DMBBF9/mKUVeJZNo0ceJSqYvCZyBkuY2bWDieyI8FiI/H5EEQLGBmMfbozFncRvjYFy1TjVfhFRqumiM4b5VpCWg0rfKhkUewUui4iMz6z5KnBGJtzhsCDYZPz92+KLZlXtKcZgQo21Ysp4eCTODDL5AyWs1gzfJqAR9/gAU77Kt6Aev7sibJc/IOLvS9sOpNjmdXDMbDaZpppP9dux0oL3sHg7TQWgzDJBm1SzYuqnvxIrlWzn9PLPtTqwz4Tk7m0Xl5hVZiJ1wXpfHFB1TGc498Xqdf4a+xZ7NzucTbav0AhjDhi8sBAAA=" target="_blank">Run the query</a>
+:::moniker-end
 
 ```kusto
 datatable(location_id:string, longitude:real, latitude:real)
@@ -127,8 +133,10 @@ datatable(location_id:string, longitude:real, latitude:real)
 
 The following example produces an empty result because of the invalid coordinate input.
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAysoyswrUUhPzc9ILM5QsAWx4gvygWLxJfnxUGENIwMDHUMdC00AvfV/vi0AAAA=" target="_blank">Run the query</a>
+:::moniker-end
 
 ```kusto
 print geohash = geo_point_to_geohash(200,1,8)
@@ -142,8 +150,10 @@ print geohash = geo_point_to_geohash(200,1,8)
 
 The following example produces an empty result because of the invalid accuracy input.
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAysoyswrUUhPzc9ILM5QsAWx4gvygWLxJfnxUGENQx1DHaCQRl5pTo6mJgCmJkAVMwAAAA==" target="_blank">Run the query</a>
+:::moniker-end
 
 ```kusto
 print geohash = geo_point_to_geohash(1,1,int(null))

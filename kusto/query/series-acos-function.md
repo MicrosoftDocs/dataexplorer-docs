@@ -29,8 +29,10 @@ Dynamic array of calculated arccosine function values. Any non-numeric element y
 
 ## Example
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAysoyswrUUgsKlKwVUipzEvMzUzWiNY11DHQMYzV5KpRSK0oSc1LASmIT0zOLwaqKk4tykwtBvM0gMKaALhJgmxCAAAA" target="_blank">Run the query</a>
+:::moniker-end
 
 ```kusto
 print arr = dynamic([-1,0,1])

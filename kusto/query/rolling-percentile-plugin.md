@@ -45,8 +45,10 @@ Output table schema is:
 
 The next query calculates a 3-day median value in daily granularity. Each row in the output represents the median value for the last 3 bins (days), including the bin itself.
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAz2OwQqDMAyG7z7FjzDQWaF1GwyGx529eB9io+uotdRueNjDL+5gCYSQ7/9SSxEtaiTgFzo3EoxeMYR5gkScUZ1xhJIoobBE8lB/9Asf5hf1nDYTLbGbPFt0FynynFVSXUupuHIUUE92sFbg09l68xe7htZITuP+IdeERmu2mGHIGMQBFeoaUiDd1il3BtL8lrRAwlGG3nwRYbbWuPHhKfTkorG05QUuHN2/J6C0wCn/AfIZwjfyAAAA" target="_blank">Run the query</a>
+:::moniker-end
 
 ```kusto
 let T = 
@@ -76,8 +78,10 @@ T
 
 Same example from above, but now also calculates the rolling window partitioned for each value of the dimension.
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA0WOQQuDMAyF7/6KhzDQWaF1GwyGx529eB9io+uoVWonHvbjF3dwIRBC3vteLAXUKBGByzeuJxi9ovPjAIkwojjjCCWRQ2EONEH9pB9MfnxRy24z0ByaYWKKbgIF3pNCqmsuFXeKDOrJDMYKLI0tN362Y2gN5DTuC7nKV1ozxXRdwkIcUKAsIQXi7RzzZEGc3qIaiNjKojcnwo/WGtc/JvItuWAsbX6BC1v39wSUFjiJf1T6BZy1q2z9AAAA" target="_blank">Run the query</a>
+:::moniker-end
 
 ```kusto
 let T = 

@@ -40,8 +40,10 @@ Checks whether an IPv6 string address is in any of the specified IPv6 address ra
 
 ## Example
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA5WQzQqCQBSF9/MUg6sEQcdyshs+gBDRPkSu8yNDNoYO/UAP31S4aGfnbL/Lx7mdcnTXC+z2yt364TQW8mHxbMTiSKhPgJkCzdI15LiRwFZcgmJJCk0mlyDWWQaaCxkzlgbR9yKBqdoHRII5oIh5EpAq3JLOG8uD96DzbTq1KA8wusHYNqSzpdgIOQln0eovWs+luacl83S1JX4VeVJ1d8pKWo6ftxbmcuW1GWtja7SPekDbvhdHv18PX7mD2cSIAQAA" target="_blank">Run the query</a>
+:::moniker-end
 
 ```kusto
 let LocalNetworks=dynamic([

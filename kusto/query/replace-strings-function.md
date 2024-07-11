@@ -35,8 +35,10 @@ Returns *text* after replacing all matches of *lookups* with evaluations of *rew
 
 ### Simple replacement
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA22NwQrCMBBE74X+w9BLWij0C3rwrghei0hIlxBqNiFJQcGPd4sFPbinYZj3NibHBSfKWVsamwO8ts6gJGcWGM0oa2JoiQWyDBLnYJu6eoEehXjGeS0meMKIRPGuDd2y0GxzW1fYb/f332Z+svbOtJMSs+qhxKquXY9hwDGEZY3YNf+YbSxMdJYCC7ZRl893T1x+mO4NCQvYwOEAAAA=" target="_blank">Run the query</a>
+:::moniker-end
 
 ```kusto
 print Message="A magic trick can turn a cat into a dog"
@@ -55,8 +57,10 @@ print Message="A magic trick can turn a cat into a dog"
 
 Replacement with an empty string removes the matching string.
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA22OywrCMBBF94X+w6WbtBDoF3ThXhHcisiQDCHUPEhSUPDjTbFgF87qMsw5c2OyvuDEOZPhqTvAkbEKJVk1Q5FHWZIH1VhQL0ONOpiubd7gZ2GvcV6KCo4xIXF8kOJ7rrQ3uW8bbLP55W+jX56cVf1VrA+EhNjpxW2QGEccQ5iXiM33D9Y2U4xMaTVUbKUu3xqOfdkxwwehFI6X6gAAAA==" target="_blank">Run the query</a>
+:::moniker-end
 
 ```kusto
 print Message="A magic trick can turn a cat into a dog"
@@ -76,8 +80,10 @@ print Message="A magic trick can turn a cat into a dog"
 The order of match elements matters: the earlier match takes the precedence.
 Note the difference between Outcome1 and Outcome2: `This` vs `Thwas`.
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA8vPTTVSsFUoSi3ISUxOjS8uKcrMSy/W4OVSgALf1OLixPRUHYRISmVeYm5mska0emaxuo6CekgGkI7V1FHQ11fwyc/PLi1QgBqDTU95IrImkJ4giN25qXklSDo0AS8KRWGaAAAA" target="_blank">Run the query</a>
+:::moniker-end
 
 ```kusto
  print Message="This is an example of using replace_strings()"
@@ -101,8 +107,10 @@ Note the difference between Outcome1 and Outcome2: `This` vs `Thwas`.
 
 Replace elements that aren't strings aren't replaced and the original string is kept. The match is still considered being valid, and other possible replacements aren't performed on the matched string. In the following example, 'This' isn't replaced with the numeric `12345`, and it remains in the output unaffected by possible match with 'is'.
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA22NywrCMBBF94X+w6WbNlAovpb9A0UQdyIS2jEGmwdNggp+vCkGFHQYZnG5Z44dpfbYkHNcUFvsL9IhLtegO1d2IJgzgpNaYCQ78I5OzkdGuIoVefaMNU+6xzb4zihC+1PLM6RJlvqT9A/NleyqQzmJyxplvEdWo2mwNuYaLNKbP8xsvliuInLjEzMhu7dakfZfAHsBMAz0MeQAAAA=" target="_blank">Run the query</a>
+:::moniker-end
 
 ```kusto
  print Message="This is an example of using replace_strings()"

@@ -29,8 +29,10 @@ If the conversion is successful, the result is a [datetime](scalar-data-types/da
 
 ## Example
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAysoyswrUUhJLEmNL8nMTVWwVSjNy6wAMePzEvPyi1OT8/NSiuNL8kFKQMIahqYmZsYGBhYGCKAJAOcnRh5GAAAA" target="_blank">Run the query</a>
+:::moniker-end
 
 ```kusto
 print date_time = unixtime_nanoseconds_todatetime(1546300800000000000)

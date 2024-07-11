@@ -40,8 +40,10 @@ A series linear interpolation of *series* using the specified parameters. If *se
 
 ## Example
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/kvc9rf7q4d68qcw5sk2d6f.northeurope/databases/MyDatabase?query=H4sIAAAAAAAAA5WRzWrDMAzH74G8g44JmHYmXWEbO/QZdiwhaImSeSh2sZ2NwB5+dpq1a2kP0cGy/5b46YPJQ4Me4XVyHt+ZMrT2GZpRY6/qPE0g2P7oZjHb64FZgJRy9SDg+Ci28b75p8xBk76d9KK4/C1zAes17KzFEUwLjRlCAZF0j3emRdY1KXIi5QbjTfWK0QL+sZT2NyHXZ5nDcjs19a38B/TKOaU7+EIeyIHRPKZJ+ZImceZp8gMHaz6pnusJFYq5/5htBl+h7VxYkSOryFWtYq5YaUIbd5WLc3BFTUf3Q8U84Sw2Fubi7UCndLMwuUV2dAGvjXZ+ETwsayU38vEp/wWjK5zoigIAAA==" target="_blank">Run the query</a>
+:::moniker-end
 
 ```kusto
 let data = datatable(arr: dynamic)

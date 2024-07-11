@@ -130,8 +130,10 @@ For example, see [examples of cases where find will act as a union](find-operato
 
 The query finds all rows from all tables in the current database in which any column includes the word `Hernandez`. The resulting records are transformed according to the [output schema](#output-schema). The output includes rows from the `Customers` table and the `SalesTable` table of the `ContosoSales` database.
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/ContosoSales?query=H4sIAAAAAAAAA0vLzEtRUPJILcpLzEtJrVICAAv0zUwQAAAA" target="_blank">Run the query</a>
+:::moniker-end
 
 ```kusto
 find "Hernandez"
@@ -141,8 +143,10 @@ find "Hernandez"
 
 The query finds all rows from all tables in the current database whose name starts with `C`, and in which any column includes the word `Hernandez`. The resulting records are transformed according to the [output schema](#output-schema). Now, the output only contains records from the `Customers` table.
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/ContosoSales?query=H4sIAAAAAAAAA0vLzEtRyMxT0HDW0lQoz0gtSlXQUshILFZQ8kgtykvMS0mtUgIA+50LFCQAAAA=" target="_blank">Run the query</a>
+:::moniker-end
 
 ```kusto
 find in (C*) where * has "Hernandez"
@@ -154,8 +158,10 @@ The query finds all rows from all tables in all databases in which any column in
 This query is a [cross-database](cross-cluster-or-database-queries.md) query.
 The resulting records are transformed according to the [output schema](#output-schema).
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA0vLzEtRyMxT0EhJLElMSixO1VDXUtfU09JUKM9ILUpV0FLISCxWUPIuLS7JVwIAAccP5C0AAAA=" target="_blank">Run the query</a>
+:::moniker-end
 
 ```kusto
 find in (database('*').*) where * has "Kusto"
@@ -166,8 +172,10 @@ find in (database('*').*) where * has "Kusto"
 The query finds all rows from all tables whose name starts with `K` in all databases whose name start with `B` and in which any column includes the word `Kusto`.
 The resulting records are transformed according to the [output schema](#output-schema).
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA0vLzEtRyMxT0EhJLElMSixO1VAK1lLS1HPW0lQoz0gtSlXQUshILFZQ8i4tLslXAgCcXznPLwAAAA==" target="_blank">Run the query</a>
+:::moniker-end
 
 ```kusto
 find in (database("S*").C*) where * has "Kusto"

@@ -29,8 +29,10 @@ Returns a base64 string encoded from a GUID.
 
 ## Example
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAx3FQQqAIBAF0KuIq1oIOcqAiw7RCWLMX7hIw/T+QW/znpZLV9vIBWpVUV6w31GOmrCfrd7XyGnq9U8LnHXuJMMgMj4ITFxYjGWwhEiWEPU8fxrJzt9UAAAA" target="_blank">Run the query</a>
+:::moniker-end
 
 ```kusto
 print Quine = base64_encode_fromguid(toguid("ae3133f2-6e22-49ae-b06a-16e6a9b212eb"))  
@@ -44,8 +46,10 @@ print Quine = base64_encode_fromguid(toguid("ae3133f2-6e22-49ae-b06a-16e6a9b212e
 
 If you try to encode anything that isn't a [GUID](scalar-data-types/guid.md) as below, an error will be thrown:
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAysoyswrUXDNLSipVLBVSEosTjUziU/NS85PSY1PK8rPTS/NTNFQSkxKTjE0MjZU0gQApqVKnzAAAAA=" target="_blank">Run the query</a>
+:::moniker-end
 
 ```kusto
 print Empty = base64_encode_fromguid("abcd1231")

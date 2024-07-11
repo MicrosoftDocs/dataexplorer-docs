@@ -32,8 +32,10 @@ The hash value of *source*. If *mod* is specified, the function returns the hash
 
 ### String input
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAysoyswrUShKLS7NKbHNSCzOiK+oAFFmJhpK4flFOSlKmgDB9B3HIwAAAA==" target="_blank">Run the query</a>
+:::moniker-end
 
 ```kusto
 print result=hash_xxhash64("World")
@@ -45,8 +47,10 @@ print result=hash_xxhash64("World")
 
 ### String input with mod
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAysoyswrUShKLS7NKbHNSCzOiK+oAFFmJhpK4flFOSlKOgqGBgaaAFCsEusoAAAA" target="_blank">Run the query</a>
+:::moniker-end
 
 ```kusto
 print result=hash_xxhash64("World", 100)
@@ -58,8 +62,10 @@ print result=hash_xxhash64("World", 100)
 
 ### Datetime input
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAysoyswrUShKLS7NKbHNSCzOiK+oAFFmJhopiSWpJZm5qRpKRgaGproGhkCkpKkJAN5RmvEyAAAA" target="_blank">Run the query</a>
+:::moniker-end
 
 ```kusto
 print result=hash_xxhash64(datetime("2015-01-01"))

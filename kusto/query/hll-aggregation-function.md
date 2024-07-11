@@ -45,8 +45,10 @@ Returns the intermediate results of distinct count of *expr* across the group.
 
 In the following example, the `hll()` function is used to estimate the number of unique values of the `DamageProperty` column within each 10-minute time bin of the `StartTime` column.
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAwsuyS/KdS1LzSsp5qpRKC7NzU0syqxKVcjIydFwScxNTE8NKMovSC0qqdRUSKpUSMrM0wguSSwqCcnMTdUxNMjVBACCSG7CQQAAAA==" target="_blank">Run the query</a>
+:::moniker-end
 
 ```kusto
 StormEvents

@@ -34,8 +34,10 @@ Checks if IPv4 string address is in IPv4-prefix notation range.
 
 ## Example
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA4WPsQrCQBBE+/uK7WIgJtwRRQVLCzt7kXDxNmEhXuLtRVL48a4oKFg40z14MONslNYdzmiorHMBmTccA/k2A0HB+hbfIFVHBYlem1wvV7nOdZKB5JdIigJ219F2sD/wH8ksFoUpn1gkU0JNUaz5ELChCYhhZHTQ9AHO/WWwgbj36qTugFNE70Amj12Ercy9lRVxRf41++vS50v6AE4amhHyAAAA" target="_blank">Run the query</a>
+:::moniker-end
 
 ```kusto
 datatable(ip_address:string, ip_range:string)

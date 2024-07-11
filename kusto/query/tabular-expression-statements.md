@@ -45,8 +45,10 @@ A tabular data source produces sets of records, to be further processed by tabul
 
 The following query counts the number of records in the `StormEvents` table that have a value of "FLORIDA" in the `State` column.
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAwsuyS/KdS1LzSspVuDlqlEoz0gtSlUILkksSVWwtVVQcvPxD/J0cVQCySXnl+aVAAA3VvV9MQAAAA==" target="_blank">Run the query</a>
+:::moniker-end
 
 ```kusto
 StormEvents 
@@ -64,8 +66,10 @@ StormEvents
 
 In the following example, the [join](join-operator.md) operator is used to combine records from two tabular data sources: the `StormEvents` table and the `PopulationData` table.
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAwsuyS/KdS1LzSspVuDlqlEoz0gtSlXwzMsqLcpMLXbJLEpNLlHQhgt45qVAhOwUTA1A6rPyM/MUNALyC0pzEksy8/NcEksSNRXy8xSCSxJLUkEqCorys0A6wAI6CgilOgoh+SWJOTCjFWwJWwsARutqhK4AAAA=" target="_blank">Run the query</a>
+:::moniker-end
 
 ```kusto
 StormEvents 

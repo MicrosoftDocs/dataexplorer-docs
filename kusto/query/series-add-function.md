@@ -29,8 +29,10 @@ Dynamic array of calculated element-wise add operation between the two inputs. A
 
 ## Example
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA1XMwQrCMBAE0LtfMcdGctl69lvC0qyiYhN2c0iCH99UhOJxHjOjvN4FFTdNbxBKwgVWJINOH0gtskY0XEfjjPmgPqj9KGt6ylJgNDDz8gqsym2qvvnuPGz+9+7RPKo73owCxxi+RRN9iO15MtrHbgM/wNkBowAAAA==" target="_blank">Run the query</a>
+:::moniker-end
 
 ```kusto
 range x from 1 to 3 step 1

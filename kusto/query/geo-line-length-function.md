@@ -48,8 +48,10 @@ dynamic({"type": "MultiLineString","coordinates": [[line_1, line_2, ..., line_N]
 
 The following example calculates the total line length, in meters.
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAz2PywqDMBBF9/0KyUrBSh6TSWLpH3TXpYiIBhuwUWw2UvrvTSp0VjOXw+XMbEM2O2+zazbuvn+6IX+TsK+W1OQW83vYnJ9ISYZl2Ubn+2BfpG6asxKVkZoqjsiFFJKXQCtNKXBkAAyNYLItDw4MIuMStOaaJU4ZNExJRuPIP6YEU1pj7JLC/DAESHcso0JA236Ky2mNQtHZ+ik8ovVkly490B1JnvbiCytjJ77WAAAA" target="_blank">Run the query</a>
+:::moniker-end
 
 ```kusto
 let line = dynamic({"type":"LineString","coordinates":[[-73.95807266235352,40.800426144169315],[-73.94966125488281,40.79691751000055],[-73.97317886352539,40.764486356930334]]});
@@ -64,8 +66,10 @@ print length = geo_line_length(line)
 
 The following example calculates total multiline length, in meters.
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAzWPy2rDMBBF9/kKo1UCThh5NA8l9A/aVZdGhJAIV+DKIVEXofTfK8dkN4/DnTljLM2Ycmzemssjn77Tef1ryuMazd58/IwlvdflZ7mlPJjWnKfpdkn5VOLd7Pu+3wruPIlXVrTMBF3rYKcARAweoLOOObQLp9YjkkehGRKuvRWrROI4VGihnHeAwp1aQX2CnitHFmCOfYUJWlFlpI7QL3kOidGBq3dtCOFvc1hd69/VL+ahfFXDIU7HWfa4TNZzvfkHgvHPoQIBAAA=" target="_blank">Run the query</a>
+:::moniker-end
 
 ```kusto
 let line = dynamic({"type":"MultiLineString","coordinates":[[[-73.95798683166502,40.800556090021466],[-73.98193359375,40.76819171855746]],[[-73.94940376281738,40.79691751000055],[-73.97317886352539,40.76435634049001]]]});
@@ -80,8 +84,10 @@ print length = geo_line_length(line)
 
 The following example returns True because of the invalid line.
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAysoyswrUcgsjk9KTInPycxLVbAF8vJKc3I00lPzwSLxOal56SUZGimVeYm5mcka1UollQWpSlZKPkDJ4BKgAelKOkrJ+flFKZl5iSWpxUpW0dGGOgqGsbG1mpqaAAO8tvRiAAAA" target="_blank">Run the query</a>
+:::moniker-end
 
 ```kusto
 print is_bad_line = isnull(geo_line_length(dynamic({"type":"LineString","coordinates":[[1, 1]]})))

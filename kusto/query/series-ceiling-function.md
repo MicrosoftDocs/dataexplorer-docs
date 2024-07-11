@@ -29,8 +29,10 @@ Dynamic array of the calculated ceiling function. Any non-numeric element yields
 
 ## Example
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAysoyswrUShWsFVIqcxLzM1M1ojWNdQz1THUMdIzjdXkqlFIrShJzUtRKI5PTs3MycxLByotTi3KTIULaBRrAgCQd2nZRgAAAA==" target="_blank">Run the query</a>
+:::moniker-end
 
 ```kusto
 print s = dynamic([-1.5,1,2.5])

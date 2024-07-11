@@ -42,8 +42,10 @@ Seel also [geo_polygon_to_s2cells()](geo-polygon-to-s2cells-function.md).
 
 The following example calculates H3 cells that approximate the polygon.
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA03O0QqDIBTG8fs9hZyrAhcudWFj77B7CQmTCkyjvJGxd99KL3b5Pz8OfNYEtHobR%2B%2FQEw3R9cusizeEuBpo4ZUIMGjvt2F2fTA7tFLKK63uXGBGKs5ph48WN3o0IyJ1U59eN9l5zU5nJPXff9d9ysdl3WYX0ESVNtbuvz2j8SqvU8GriZ5Q5FP5BX4H5by9AAAA" target="_blank">Run the query</a>
+:::moniker-end
 ```kusto
 let polygon = dynamic({"type":"Polygon","coordinates":[[[-3.659,40.553],[-3.913,40.409],[-3.729,40.273],[-3.524,40.440],[-3.659,40.553]]]});
 print h3_cells = geo_polygon_to_h3cells(polygon)
@@ -57,8 +59,10 @@ print h3_cells = geo_polygon_to_h3cells(polygon)
 
 The following example demonstrates a multipolygon that consists of H3 cells that approximate the above polygon. Specifing a higher resolution will improve polygon approximation.
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA32Sy2rDMBBF9%2FmKQSsZnEdjuyEp%2FYRC9yGIqaw4amTJyEoa9%2FHvlWxjVGi7vLozZ%2B6IUcJBY1RXGQ2PUHYaa8npB3FdI8iOPA8WSQk3xpZSoxMt2e33%2B3m2uC%2B2ab5aFEV2SIPe3mVB56vtoDfr3l9vRr9Y572frwYd9R8OX8nDrLFSOzhljAulWp%2BnEoaN6Zgz7JT1Bh2fktkn1Ne5uDWoSwiWb5m6nYGwhDnS1nlulcByCeLmLHI3FPsKhFY0aP1WYM2b5zXWvAo%2B%2FQkbqSHIMD3kGE0adI%2FlRl%2BFdSCQnyL2WBdhpS7lVZYXVNNe0cf6QQ3yM0NrsaNxhEVUFdZuL3WNVr4LqC%2FKyd9ZNZ4FU7J19P%2BxSRQwxnnEC1YsRKLDQaTkKfjTVcCPs0j%2FDJN8A0ZsriFnAgAA" target="_blank">Run the query</a>
+:::moniker-end
 ```kusto
 let polygon = dynamic({"type":"Polygon","coordinates":[[[-3.659,40.553],[-3.913,40.409],[-3.729,40.273],[-3.524,40.440],[-3.659,40.553]]]});
 print h3_cells = geo_polygon_to_h3cells(polygon)
@@ -77,8 +81,10 @@ print h3_cells = geo_polygon_to_h3cells(polygon)
 
 The following example return null because the polygon is invalid.
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAy2MMQrDMAwA977CaLLBQ0K3lP6huzEmOCIVqJaJ1cGU%2Fr0JzXbcwTGqqcJ9lWLuZullflG2H9BeESZ4%2FBN4yCLbQmVWbDCFEAY%2FRB9GP8YYv%2B52qRsVNdRSeTPvK2oH2BUlnf%2Bkkp7XjMzNnsq5HxKUVsiAAAAA" target="_blank">Run the query</a>
+:::moniker-end
 ```kusto
 let polygon = dynamic({"type":"Polygon","coordinates":[[[0,0],[1,1]]]});
 print is_null = isnull(geo_polygon_to_h3cells(polygon))

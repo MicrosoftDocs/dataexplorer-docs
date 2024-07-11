@@ -32,8 +32,10 @@ A dynamic array that includes the values of *value1*, *value2*, ... *valueN*.
 
 ## Example
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA0XKMQqAMAwF0N1T/FGlS3X2LBJqFBTbEjM0xcPrILg+nlDcGAWrpBMemjDiUs7wzQ0uynGBYXpHj+Gn+pJ9lCXtHBSZwjGTCFlbHMyhdg9FnMwrXgAAAA==" target="_blank">Run the query</a>
+:::moniker-end
 
 ```kusto
 range x from 1 to 3 step 1
@@ -50,8 +52,10 @@ range x from 1 to 3 step 1
 |[2,4,8]|
 |[3,6,12]|
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA0XJMQ6AIBAF0d5T/FKMDVp7FkNwNWoEsmyxGA8vhYnNFPPYhY2gWDlesJCIEVkowTYPSIXCgoKpQhbew9YqOgzmx7viN2tsrpI4HuQFyflzdsyutNqj9LjNC2/1GNRvAAAA" target="_blank">Run the query</a>
+:::moniker-end
 
 ```kusto
 range x from 1 to 3 step 1

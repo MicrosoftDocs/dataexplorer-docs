@@ -43,8 +43,10 @@ The following example finds all the places in the area defined by the following 
 
 :::image type="content" source="media/geo-point-in-circle-function/circle-seattle.png" alt-text="Screenshot of a map with places within 18 km of Seattle.":::
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA3XS0UrDMBSA4fs+xbnbCrVL2rRp9wCCCArqnUiJ6bFG06RkERV8eKN1rN1qchUCH384aYUP+1HjWlvTKf/W4tah0Alo4afHQQuJ2513ynRxdB9BWD836zOaZWlOOSMsToDxtCQ1pXUCq1sU3mtcJXC6Nhu4MCCVkxphhuUpq3lZVSPGiorUVcCu9Wc/KAlXIcsaoeHcOtz5X3zE8MOjU9aBfdrDcJSZkdBJ/zI5JxUL8qVyr1qYdqlzmnlkMZaXZT5aGeOkzoJ1J6TtxeKL/608cmlGa17sG2nOiuDeYNvb5cR540P0Be/P6BA6tM1glfGNMs14e5jxYbwJTAY4mx+tCCFx8AZnX1D68Qt8AzYb0g4xAgAA" target="_blank">Run the query</a>
+:::moniker-end
 
 ```kusto
 datatable(longitude:real, latitude:real, place:string)
@@ -69,8 +71,10 @@ datatable(longitude:real, latitude:real, place:string)
 
 The following example finds storm events in Orlando. The events are filtered by 100 km within Orlando coordinates, and aggregated by event type and hash.
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA22PwU7DMAyG7zyFjw0KW7sBKoddkHaCG9yrLLVaszSJHHdjiIcn3SbRw0625P//PvlDAg/bA3pJd78QOXyhFXjFjvx78Pq6GdFwDn2eIubcsUdG6DA0MZCXhnxjia3D4laT0bjioa4W6/qlUhpW9eJp/fisoSrLEu6noTI0jcNgmH4QbBi9FAp2p3+rht6kHjYzq4QmrSw6d8OqZt9MjUtwqtgMZOMujGKCKj3XnOVNrjP6Fhkioe0NCxxJeij25NvNYKKC5RLynO7XKPkOzMGQMzuHQB7exiQBtt/RBc6kFtNeQvwDFpFHo3MBAAA=" target="_blank">Run the query</a>
+:::moniker-end
 
 ```kusto
 StormEvents
@@ -87,8 +91,10 @@ StormEvents
 
 The following example shows New York city taxi pickups within 10 meters of a particular location. Relevant pickups are aggregated by hash.
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA42Py27CQAxF93yFlxMpRTBFgiz4lpFxLMZlMjNyHPEQH9+kSBW7dnt17zl2vlMwvMnqCVXLF5NBFbpMNaSSz2JTz+1vgvYTzN1rZGU4cwm1SLYgOZAoJXZ/z1tQxuQ+9p/rrvOHpoXdZr3f+a6F7aaZ4eM0DKjyYDjdIeIY4fimshJGT5yS+4fJ++btswXy2i4U4myK6YV1i2fpKueeFUZCM1aKqAZXsQjuIrmfLxmwNt9Em1nwNgEAAA==" target="_blank">Run the query</a>
+:::moniker-end
 
 ```kusto
 nyc_taxi
@@ -105,8 +111,10 @@ nyc_taxi
 
 The following example returns `true`.
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAysoyswrUcjMi0/OLErOSVWwVUhPzY8vyAeKxsNFNXQNjYz0DE2MTc1MdBRMzPVMgSxzcx0FiLiBgYWlGUTcyNzY1FBHwdjUwEATAJnKnMpbAAAA" target="_blank">Run the query</a>
+:::moniker-end
 
 ```kusto
 print in_circle = geo_point_in_circle(-122.143564, 47.535677, -122.100896, 47.527351, 3500)
@@ -120,8 +128,10 @@ print in_circle = geo_point_in_circle(-122.143564, 47.535677, -122.100896, 47.52
 
 The following example returns `false`.
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAysoyswrUcjMi0/OLErOSVWwVUhPzY8vyAeKxsNFNXQNjYz0DI3NTc1NdRRMzPXMjA3MLIx1FCDiBgYWlmZgcVMjc2NTQx0FY1MDA00AV0g5xlsAAAA=" target="_blank">Run the query</a>
+:::moniker-end
 
 ```kusto
 print in_circle = geo_point_in_circle(-122.137575, 47.630683, -122.100896, 47.527351, 3500)
@@ -135,8 +145,10 @@ print in_circle = geo_point_in_circle(-122.137575, 47.630683, -122.100896, 47.52
 
 The following example returns a null result because of the invalid coordinate input.
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAysoyswrUcjMi0/OLErOSVWwVUhPzY8vyAeKxsNFNYwMDHQUDOFIEwAH8KEmNgAAAA==" target="_blank">Run the query</a>
+:::moniker-end
 
 ```kusto
 print in_circle = geo_point_in_circle(200, 1, 1, 1, 1)
@@ -150,8 +162,10 @@ print in_circle = geo_point_in_circle(200, 1, 1, 1, 1)
 
 The following example returns a  null result because of the invalid circle radius input.
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAysoyswrUcjMi0/OLErOSVWwVUhPzY8vyAeKxsNFNQx1FOBI11ATAAIUtdY1AAAA" target="_blank">Run the query</a>
+:::moniker-end
 
 ```kusto
 print in_circle = geo_point_in_circle(1, 1, 1, 1, -1)

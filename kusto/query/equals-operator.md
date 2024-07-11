@@ -51,8 +51,10 @@ Rows in *T* for which the predicate is `true`.
 The `State` values in the `StormEvents` table are capitalized. The following query matches
 columns with the value "KANSAS".
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAwsuyS/KdS1LzSsp5qpRKM9ILUpVCC5JLElVsK1TUMpOzCtOLFYCyhQU5WelJpcogJV6puhAFAEAU9ecID4AAAA=" target="_blank">Run the query</a>
+:::moniker-end
 
 ```kusto
 StormEvents

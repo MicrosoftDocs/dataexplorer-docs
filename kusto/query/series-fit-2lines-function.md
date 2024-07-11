@@ -61,8 +61,10 @@ extend (rs, si, v)=`series_fit_2lines(`*series*`)`
 
 ## Examples
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/kvc9rf7q4d68qcw5sk2d6f.northeurope/databases/MyDatabase?query=H4sIAAAAAAAAA1WQQUsDMRCF74X+h7k1CzE00VY97FUoeOqCF5ESs6M7ss3GbMRd8Mc7YW3X5vAyecz7mEmI5NNyAXyoLlewktNjKKP17yheyQvffYtCgm4KuAKtGwmX7iRTbizr0dsjOfGsJRhlsmwk3KhbCRu15l629Fpdn/Rewl2+t8q8FMvFD+CQ0NcTTlRtF1DCzieMDkOizkvYV59fNrL9ZCNZ77jaz+UjeXygVJQ9RsL+8Ebp0LInxtOQ4g/Ak1ShpbSrh5ll/sHMmWYucCbzegbmeUPsPtAl/j8JzBnPmTmc2yIvhRESHdE1NqZflsNPUXoBAAA=" target="_blank">Run the query</a>
+:::moniker-end
 
 ```kusto
 print

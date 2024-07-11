@@ -32,8 +32,10 @@ See [`unicode_codepoints_to_string()`](unicode-codepoints-to-string-function.md)
 
 ## Examples
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/kvce69202ceceed490b88d.northeurope/databases/Other?query=H4sIAAAAAAAAAysoyswrUUgsKlKwVSjNy0zOT0mNBxEF+UDx4vi0ovzc+OISoKJ0DaVHk5Y9mrTh0aR1jyatfzRplZImADy1iJs9AAAA" target="_blank">Run the query</a>
+:::moniker-end
 
 ```kusto
 print arr = unicode_codepoints_from_string("⒦⒰⒮⒯⒪")
@@ -45,8 +47,10 @@ print arr = unicode_codepoints_from_string("⒦⒰⒮⒯⒪")
 |---|
 |[9382, 9392, 9390, 9391, 9386]|
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/kvce69202ceceed490b88d.northeurope/databases/Other?query=H4sIAAAAAAAAAysoyswrUUgsKlKwVSjNy0zOT0mNBxEF+UDx4vi0ovzc+OISoKJ0DaXry69Pvb7w+ozrUxV0FbxLi0vylTQBiYjgf0AAAAA=" target="_blank">Run the query</a>
+:::moniker-end
 
 ```kusto
 print arr = unicode_codepoints_from_string("קוסטו - Kusto")
@@ -58,8 +62,10 @@ print arr = unicode_codepoints_from_string("קוסטו - Kusto")
 |---|
 |[1511, 1493, 1505, 1496, 1493, 32, 45, 32, 75, 117, 115, 116, 111]|
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/kvce69202ceceed490b88d.northeurope/databases/Other?query=H4sIAAAAAAAAAysoyswrUSguKVKwVSjNy0zOT0mNBxEF+UDx4viS/HigXGZeugYWybSi/FyYtJJ3aXFJvpKmJgA5JJpZUQAAAA==" target="_blank">Run the query</a>
+:::moniker-end
 
 ```kusto
 print str = unicode_codepoints_to_string(unicode_codepoints_from_string("Kusto"))

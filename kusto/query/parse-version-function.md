@@ -36,8 +36,10 @@ If conversion is unsuccessful, the result will be `null`.
 
 ## Example
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA11QYU/DIBD93l/x7CeITdcyF6MG/4gxC1txZWtpAwyd8cd7UJeod8nx7t3jcWHQAV2ARKcC5W7QLD7CB2fsgRegeMm1bOqUm7Ja4H3dXOF6AWI52losowTW9V2GqTz8RPZpyuL1qehC8YXZTUe9D4itjBW2J32RLYg/TsbiZGwnjbXagdGav9TiqqbdW47J5obuvffaaXLDjSQVEf48jsqZz0xKjOqDxZZXNEydsSwKjt0FrFe+TyPcYoGCc6xWcHqcIv0HuvM8mL0KZrL+z+bJrEJvDvT2NmrnSUHmxryxWTmvr1x2f8Y/TqRlsgf/Bt4b/NePAQAA" target="_blank">Run the query</a>
+:::moniker-end
 
 ```kusto
 let dt = datatable(v: string)

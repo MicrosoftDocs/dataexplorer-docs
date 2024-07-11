@@ -41,8 +41,10 @@ The following table describes differences between `"tukey"` and `"ctukey"`:
 
 ## Example
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/https%3a%2f%2fhelp.kusto.windows.net/databases/Samples?query=H4sIAAAAAAAEAF2Q0U6EMBBF3038h%2bsb7KILu%2bob30ImMCyNtMXpoGD8eLvLYtCkaTrT2zP3VsidGRNa8RY51OP0%2boygPKDA%2fd03eFJ2DRQlGlJWYzk55sfTY17ElWKPotlNG%2bUclUKuSVLsUOT%2fbkzbJtY77Xw7M0miKR5KbDuD8Edspxnm%2fTGPe4rDAWd2LHE%2bCIHs0DMCi%2bGAT6Md%2fKi9YQkgRWskaPQ6w7dgqruFfvERRmtJzBdf41h646o3QeO0bMVt23O6Mb%2bOKBdhtdbJUm%2blgw8VOW%2bpX4gkQnN1SX57exaOUaTi95H6kKyoDMXTS7RSZMivPIk0Fiysue5I9Jo3mWrfj9aVGr9nOa6%2bsl%2f1rf3HTKT%2bAI%2bfv2rxAQAA" target="_blank">Run the query</a>
+:::moniker-end
 
 ```kusto
 range x from 0 to 364 step 1 

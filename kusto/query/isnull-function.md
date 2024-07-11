@@ -44,8 +44,10 @@ The following table lists return values for different expressions (*x*):
 
 Find the storm events for which there's no begin location.
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAwsuyS%2FKdS1LzSsp5qpRKM9ILUpVyCzOK83J0XBKTc%2FM80ks0VRIzEtBFczP0wSqLijKz0pNLlEILkksKgnJzE3VUXDNS4EyCjKL81NSPVOATJDpIAZQXUkqlB9SWQBkwqyAsfLzAAm1x4OQAAAA" target="_blank">Run the query</a>
+:::moniker-end
 
 ```kusto
 StormEvents

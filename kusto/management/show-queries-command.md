@@ -65,8 +65,10 @@ The returned table schema is:
 
 ### Show completed queries
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/kvc6bc487453a064d3c9de.northeurope/databases/NewDatabase1?query=H4sIAAAAAAAAA9MrzsgvVygsTS3KTC1W4OWqUSgoys9KTS5RCEmtKNFRcCktSizJzM8DyZQkZqcqGBoAAA0BJaEzAAAA" target="_blank">Run the query</a>
+:::moniker-end
 
 ```kusto
 .show queries 

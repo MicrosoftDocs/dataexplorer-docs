@@ -32,8 +32,10 @@ If conversion isn't successful, the result is an empty string.
 
 ## Example
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA0tJLAHCpJxUjcyCMhMrheKSosy8dE2uaC4FIFA3tDTSMzSz0DMyNQVhdR0MIX0jE5AolAdXyBXLVaOQWlGSmpeiADTZTMFWoSCxqDg1HsQB26UJANsJke17AAAA" target="_blank">Run the query</a>
+:::moniker-end
 
 ```kusto
 datatable(ipv4: string)

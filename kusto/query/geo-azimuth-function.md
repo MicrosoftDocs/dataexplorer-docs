@@ -43,8 +43,10 @@ An angle in radians between the line from point p1 to true north and line [p1, p
 
 The following example calculates azimuth in radians.
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAysoyswrUUisyswtLcmIz8yLL0pMyUzMK1awVUhPzY%2BHSmiY6igYGkCwromBJgCWKj32NgAAAA%3D%3D" target="_blank">Run the query</a>
+:::moniker-end
 ```kusto
 print azimuth_in_radians = geo_azimuth(5, 10, 10, -40)
 ```
@@ -57,8 +59,10 @@ print azimuth_in_radians = geo_azimuth(5, 10, 10, -40)
 
 The following example calculates azimuth in degrees.
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA8tJLVFIrMrMLS3JiM%2FMiy9KTMlMzCtWsFVIT82Ph0pomOooGBpAsK6JgaY1L1dBUWYeisaU1PSi1FSQRihLA9NUTWsA0SMJ2G4AAAA%3D" target="_blank">Run the query</a>
+:::moniker-end
 ```kusto
 let azimuth_in_radians = geo_azimuth(5, 10, 10, -40);
 print azimuth_in_degrees = degrees(azimuth_in_radians);
@@ -72,8 +76,10 @@ print azimuth_in_degrees = degrees(azimuth_in_radians);
 
 The following example considers a truck that emits telemetry of its location while it travels and looks for its travel direction.
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA4WUyW7bMBCG734KIiepkFMOlyHpNMdee2mBAi0Cg3GYWK28QGaaru%2FeX7LsdBFsyQd6%2BM83C8VpUhYPKc%2Fv6jYtcr1Zi2tRxO%2F16jEvZ22KTTn5MRF4Ggi3NXa3dVFe9ab6%2Fv4gFa9gf6kqWC%2FebNq8nL6Ou3xRjeo6FXRvN4%2BndPrFnjjo3qejbvwZ4va6skSKv64mdzHjvW1SkesVNuJqO4Mtdf8q0awf%2BhKxinko9mMf4aAplFRmKgm%2Fd1LOJM2svpTGW8kfykpMieylkZpZOg7akKuEZlisJdYkDSum6iRRjRC1suxBVBpvTwRaKjLKsSQ6Q9QjROW0UkEyILQnKm%2BsD2S8CgFpnySaMaIlTR4pakD2RCSsdDDMRlt1mmjHiPBC41hrdcjRWWOtcVJ7S%2FY0kUeI5INB53Aw3vJQteLuoIwmdmf66MaI0sLVE3nDfiAG66S3Xc18po9%2BhCjZeCaDNhrSA5FIOqMVdO5MH8N%2FRHMZvPUS3uycHqoOzksObGVwOKxTRJJjREnwZovzwOfcf4%2BMg6LAnrRlriY3k59ih%2Bsnbr%2BJ400TcbcQ2Ehfc1rfiW2bvsxx5boRgmWBJQLsrTEfrTGX8HlapjaJerfe5PVj0xQH51JEoP61732GOH9Osr8mW%2FGQNvNhvhyBzxn086AfBWVH27abT%2FB7xj3vY7dFpNSK3SLmnNrFMqL2pxpzq%2FhcI4drsYrb8je1JEbnXAUAAA%3D%3D" target="_blank">Run the query</a>
+:::moniker-end
 ```kusto
 let get_direction = (azimuth:real)
 {
@@ -110,8 +116,10 @@ datatable(timestamp:datetime, lng:real, lat:real)
 
 The following example returns `true` because the first point equals the second point.
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAysoyswrUcgsjs8rzclRsAWyQAyN9NT8%2BMSqzNzSkgwNUx0FQwMdBTClqQkAkB%2FPgDEAAAA%3D" target="_blank">Run the query</a>
+:::moniker-end
 ```kusto
 print is_null = isnull(geo_azimuth(5, 10, 5, 10))
 ```

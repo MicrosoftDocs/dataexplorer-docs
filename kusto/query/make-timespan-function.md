@@ -36,8 +36,10 @@ If the creation is successful, the result will be a [timespan](scalar-data-types
 
 ## Example
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAysoyswrUYhWL8nMTS0uSMxTj1WwVchNzE6Nh4loGOoYGukYG+iYmuoZGhlrAgBc6MUYMgAAAA==" target="_blank">Run the query</a>
+:::moniker-end
 
 ```kusto
 print ['timespan'] = make_timespan(1,12,30,55.123)

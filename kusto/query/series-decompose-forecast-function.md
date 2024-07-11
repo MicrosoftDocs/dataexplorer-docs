@@ -42,8 +42,10 @@ Takes an expression containing a series (dynamic numerical array) as input, and 
 
 In the following example, we generate a series of four weeks in an hourly grain, with weekly seasonality and a small upward trend. We then use `make-series` and add another empty week to the series. `series_decompose_forecast` is called with a week (24*7 points), and it automatically detects the seasonality and trend, and generates a forecast of the entire five-week period.
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA31S0W6jMBB871fMSyUgIRgKTXQn7ivuPbLCEqwARvZWKdJ9/K1J0uOkti/W2uOdGXu2Jwb72unxTGC0zg7IwRZFmeyTEp5pkoMsw5lGcpoJJa5EFw/borNvrp/RaNZPf0DvTGOD32Ygz3qYUAeEWPZRofJDql5SlUNVP5SKsUHeIRHNf52zdBSJeGmigJu2jSLOijJ+3v+qqy2qndoilzVGikiwZ8GyXMXJqg6dnO2LnfrPtYYnZ8jjarhbXiDGPWlvR90bniGqsOPZmvEMdmJn5asOVriu80rBOkhVqEe1P4ipOT0Eb3McNHXTwNuB0JgJ9o17Q85/wvbywVF+VK8q0Gw+Y/OTudCab9AXSu+vmutBv0fSYcdVAEuc32QgOX+NbpYRqLr7DHQ/g5uTo9tvhp7Hl8okVPehiHrtealhPGiYeI6f2K9DPrbWneQWNRL3jeHY0MkOk/UUQApoNG+XGYwRZB+nIrxwy/6qXYgoJEVusXPqtOO/3SbERNECAAA=" target="_blank">Run the query</a>
+:::moniker-end
 
 ```kusto
 let ts=range t from 1 to 24*7*4 step 1 // generate 4 weeks of hourly data

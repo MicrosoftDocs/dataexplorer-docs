@@ -73,8 +73,10 @@ The following example uses the [invoke operator](../query/invoke-operator.md) to
 To use a query-defined function, invoke it after the embedded function definition.
 
 :::moniker range="azure-data-explorer"
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA22PsU7EMAyG9zzFPzZS0KnDLUV9BMTAiTVKW7cX0SSV41ZUwLuTcgcTlhfr1/fZnkmQiT1lG9Lm42TdNtlxRotqt7ekGfbogu8NYuOjGPQUhbjpUprb0c2ZtPpQKHU3jZ7/YAOmhZxUdcG1gfBKvwatvtSjOp1KA08/6+E2YjcR0ogzOh/zkQ8Ukg3uje7SWn3iGB9uI+Ia2j6tUSqNFHHxgV7EhQVZaEF9RbfjOb8SF47eheJwIMXY/vd7VTKDs8Gl3KoLwgUghhRtf3Us3/KQTtk1AQAA" target="_blank">Run the query</a>
+:::moniker-end
 ::: moniker-end
 
 ```kusto

@@ -67,8 +67,10 @@ dynamic({"type": "MultiPolygon","coordinates": [[LinearRingShell, LinearRingHole
 
 The following example checks whether a literal LineString intersects with a Polygon.
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA32QzUrEQBCE7z5FmNMuxGX++mdWfAMPgsclhCU7xIGYhGRAgvjujs5mc1A89KW66K+rOh+LLvT+JU6hb4vH4rL057fQ7D5EXEYvjuLpthWlaIZhuoT+HP0sjqfTPZmDY1AOSisPxKwJqjLLZAH0j0yOUFXV5/7hrku4ceiWduj/Yj3n1W/Q9aTSTgKzIXYZCCwBlUImpBXMUlowilGa9QHQhGwsS4OwPSilNEqnC4ow+xg0ogEDiPZm+x+ac42pn1ik8dPsmzincK0f6k2ov0uu30N8ra/5d1vt5drJ/gtbMVZzjwEAAA==" target="_blank">Run the query</a>
+:::moniker-end
 
 ```kusto
 let lineString = dynamic({"type":"LineString","coordinates":[[-73.985195,40.788275],[-73.974552,40.779761]]});
@@ -103,8 +105,10 @@ NY_Manhattan_Roads
 
 The following example finds all counties in the USA that intersect with area of interest literal LineString.
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA12QQUvDMBiG7/sVIacNakmbpUkmHkS8qZfhaZQQum9dRpeU9BujqP/dlKrIcnx58vC9bwdIbARrwsE4jxBhQPJA9qO3Z9csPyiOPdANfXEethidb2lGmxDi3nmLMNDNbncnea5lITTTWkilhMzWLJd6LQrOuZKKKS3qbOYqyZUodckEL8uZK6VQ6VWFkqL64/Rkmgzsx6e0TGGhKlYIJur6a3W/eN+ap3Dx6GBYfJI+hhM0SNLtkEocwOIlFcpT3kOcoPzt8fU5I830Z/yPtBDOgHFMlusxrUBSMA8yJONgutTfXB0eTR+6sQ1+ebvar3V1c8g3SxOfMGIBAAA=" target="_blank">Run the query</a>
+:::moniker-end
 
 ```kusto
 let area_of_interest = dynamic({"type":"LineString","coordinates":[[-73.97159099578857,40.794513338780895],[-73.96738529205322,40.792758888618756],[-73.96978855133057,40.789769718601505]]});
@@ -122,8 +126,10 @@ US_Counties
 
 The following example will return a null result because the LineString is invalid.
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA4WQTWuDQBBA7/0VsicFG/ZjZncmof+gh0KPQUIwiwibVXRzkNL/XoMxHlrocZjHY+YFn7LQRv+ZhjY22Vt2meL52tb5l0hT78VevD+3ohR11w2XNp6TH8X+eHx1ZseEirEEuXNE2mFVfReHlzB7+y5MTRf/kn4sq9/GRYnOkgUNGtG4u5qktGgQWIOxuiofGGly2rB0sFLETrG1TjNtlGVgAwTAK4bSGSsNzuCGSVRagiUFD0oxOUNGIZsn9c9ly/f9nCtl7RhvIeSN707z6IfR12k86XvuMd+il2uoovgBkcn4944BAAA=" target="_blank">Run the query</a>
+:::moniker-end
 
 ```kusto
 let lineString = dynamic({"type":"LineString","coordinates":[[-73.985195,40.788275]]});
@@ -139,8 +145,10 @@ print isnull(geo_intersects_2lines(lineString, polygon))
 
 The following example will return a null result because the polygon is invalid.
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA21QTWvDMAy971cEnxLIij+qSOroP9hhsGMJpaQmGDw7xO4hjP33OcvWHTbdpPf09PS8zZV3wb7m2YWxOlbXJVze3FC/i7xMVhzE8x0VrRhinK8uXLJN4nA6PaLZMSpgyQxIBNju5Q55D8oYQ0iSGPp243VoCDRrCUbrjacRqFSnCKG783hVWhXktx4xlqGiTiqQ0PcfzdODL8an6Jcxhv9cv2zQH8tfu1P5JlcuhZv39WjjubR2TnbI6azXNFL9m0n7c6ZpPgG+oq1pLQEAAA==" target="_blank">Run the query</a>
+:::moniker-end
 
 ```kusto
 let lineString = dynamic({"type":"LineString","coordinates":[[-73.97159099578857,40.794513338780895],[-73.96738529205322,40.792758888618756],[-73.96978855133057,40.789769718601505]]});

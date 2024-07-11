@@ -36,8 +36,10 @@ Performs zlib compression and encodes the result to base64.
 
 ### Using Kusto Query Language
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAysoyswrUahKzs8tULBVqMrJTIoHsYtSi4vjS/LjkxKLU81M4otLgMrSNZQMjYxNTM3MLSwNCstTi0oqSzPzC5Q0Ad0xYSFEAAAA" target="_blank">Run the query</a>
+:::moniker-end
 
 ```kusto
 print zcomp = zlib_compress_to_base64_string("1234567890qwertyuiop")

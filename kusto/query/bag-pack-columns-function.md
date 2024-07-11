@@ -31,8 +31,10 @@ Returns a `dynamic` property bag object from the listed *columns*.
 
 The following example creates a property bag that includes the `Id` and `Value` columns:
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA0tJLAHCpJxUDc8UK4XikqLMvHQdhbDEnNJUBNe/JCO1yEohJz8vXZOXK5qXSwEIlByVdBSUyhJz4hOBDEMdqKgTTDQJyDCCiTrDRJOBDGNerlherhqF1IqS1LwUhYDE5OzUFAVbhaTE9PgCICc+OT+nNDevGOgkqFM0AV8bSzWnAAAA" target="_blank">Run the query</a>
+:::moniker-end
 
 ```kusto
 datatable(Id: string, Value: string, Other: long)

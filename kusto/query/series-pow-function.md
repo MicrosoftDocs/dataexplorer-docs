@@ -29,8 +29,10 @@ A dynamic array of calculated element-wise power operation between the two input
 
 ## Example
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAysoyswrUahQsFVIqcxLzM1M1og21FEw0lEw1lEwidXUUai0xZQw0DON1eSqUUitKEnNS1GoiC/IL4+vBJpRnFqUmVoM4mpUALVqAgA61Qq1XgAAAA==" target="_blank">Run the query</a>
+:::moniker-end
 
 ```kusto
 print x = dynamic([1, 2, 3, 4]), y=dynamic([1, 2, 3, 0.5])

@@ -64,8 +64,10 @@ Multiple result tables, one for each of the *subquery* arguments.
 
 ### Unnamed subqueries
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAwsuyS/KdS1LzSsp5uWqUSjPSC1KVQguSSxJVbC1VVBy8/EP8nRxVALJpeUXZfNyKQCBBlSdS2piSUaxS2ZRanKJgjaU65mXAhGwUzDURFXvmZdVWpSZitABE0DRAwCWU8oSkwAAAA==" target="_blank">Run the query</a>
+:::moniker-end
 
 ```kusto
 StormEvents
@@ -79,8 +81,10 @@ StormEvents
 
 In the following examples, the result tables will be named "StormsWithDeaths" and "StormsWithInjuries".
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAwsuyS/KdS1LzSsp5uWqUSjPSC1KVQguSSxJVbC1VVBy8/EP8nRxVALJpeUXZfNyKQCBBkSZS2piSUaxS2ZRanKJgjaU65mXAhGwUzBUqFFILAaaBrSiODyzJAOiQhPFEM+8rNKizFSEMTABfAbB1GgCAM0zVJu/AAAA" target="_blank">Run the query</a>
+:::moniker-end
 
 ```kusto
 StormEvents
@@ -90,8 +94,10 @@ StormEvents
     (where InjuriesDirect + InjuriesIndirect > 1 | as StormsWithInjuries)
 ```
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAwsuyS/KdS1LzSsp5uWqUSjPSC1KVQguSSxJVbC1VVBy8/EP8nRxVALJpeUXZfNyKQBBMEhTcXhmSYZLamJJRrGCrYIGRCeE75JZlJpcoqAN5XrmpUAE7BQMNdFN8MzLKi3KTEUyAyYCNwUmgGIOAGODP2W5AAAA" target="_blank">Run the query</a>
+:::moniker-end
 
 ```kusto
 StormEvents

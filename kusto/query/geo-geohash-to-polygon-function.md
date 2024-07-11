@@ -34,8 +34,10 @@ Polygon in [GeoJSON Format](https://tools.ietf.org/html/rfc7946) and of a [dynam
 
 ## Examples
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAysoyswrUXBPzc9ILM4IyM+pTM/PU7BVSE/Nj0+HCMaX5McXQCQ0lFKKTItKlTStAWzxQVs3AAAA" target="_blank">Run the query</a>
+:::moniker-end
 
 ```kusto
 print GeohashPolygon = geo_geohash_to_polygon("dr5ru");
@@ -49,8 +51,10 @@ print GeohashPolygon = geo_geohash_to_polygon("dr5ru");
 
 The following example assembles GeoJSON geometry collection of geohash polygons.
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA21RPW+DMBTc+RUWE0huEj4CplKnSo3UoR06VpXl0CdCYzCyXwaq/vgaMASltQc/3707n+3tlhxAnYQ5Devz2+sLKZWUUGKtWu9ToJ1HCYFsq3sNQlIiBY5V6L17xI67PNkU+T6OYkrS3SZnRbZj9EpFGcuKkWIRS6J0RbEiStmkSpM4T6j34f2QTqsvez6pXK6HoeKdqlvkqLiDh0RjGEr24V+V7Zd9pVqnnlFUMxE4aNCaS9MIXX/DrZpLg9ahEWfgsjYY3PDrg4+i4p0oz8F4Px/7DnxK/CcQeNG2nGBr0ADq3lKLYOk9OPJx+YEBdZIajN39EzB01jZIBxqnvqt5K5rZfHxOpzSrf/bD8Bc5oFVdCAIAAA==" target="_blank">Run the query</a>
+:::moniker-end
 
 ```kusto
 // Geohash GeoJSON collection
@@ -77,8 +81,10 @@ datatable(lng:real, lat:real)
 
 The following example returns a null result because of the invalid geohash input.
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAysoyswrUXBPzc9ILM4IyM+pTM/PU7BVSE/Nj0+HCMaX5McXQCQ0lBKVNK0B6T62yDMAAAA=" target="_blank">Run the query</a>
+:::moniker-end
 
 ```kusto
 print GeohashPolygon = geo_geohash_to_polygon("a");

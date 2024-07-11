@@ -79,8 +79,10 @@ If the distribution of the aggregation is considerably non-uniform, limit the nu
 
 The following query partitions the `StormEvents` table by the `State` column and calculates the total latitude for each state. The query selects the top two states with the highest latitude sum. Within these top two states, the query groups the data by `Source` and selects the top three sources with the highest latitude sum. For each of the top three sources in the top two states, the query groups the data by `EndLocation` and selects the `EndLocation` with the highest latitude sum.
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA42OSw6CQBAF957iLTVRCXIDIzt2eIGWaZUEugnTmJh4ePnMgviJvnWl6uWmbZ3eWMzjz0URDmQEr11b8HbxgGmzEfbGDjvoGbmRcaBPd/iuXu75UkpGtloHxVGbHh5JP0CmRhUqstI611sxtyajdez9tiaB/KBFKWAqrlP3JRIPkVRcpkWPq7xFMIvEr+S30HSaxIXmE8PE8rpxAQAA" target="_blank">Run the query</a>
+:::moniker-end
 
 ```kusto
 StormEvents                                        // Data source.
@@ -104,8 +106,10 @@ StormEvents                                        // Data source.
 
 The following query builds upon the previous example by introducing an extra `top-nested` clause. In this new clause, the absence of a numeric specification results in the extraction of all distinct values of `EventType` across the partitions. The `max(1)` aggregation function is merely a placeholder, rendering its outcome irrelevant, so the [project-away](project-away-operator.md) operator removes the `Ignore` column. The result shows all event types associated with the previously aggregated data.
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAwsuyS/KdS1LzSsp5qpRKMkv0M1LLS5JTVEwUshPUwguSSxJVYCApEqF4tJcDafU9Mw8n8QSTR0uBWT1xmD1+aVFyalEqTcEqXfNS/HJT04syczPI6ReAawe5NCQyoJUiPme6Xn5RakKtgq5iRUahppADxQU5WelJpfoJpYnwqQBMzafY+IAAAA=" target="_blank">Run the query</a>
+:::moniker-end
 
 ```kusto
 StormEvents
@@ -136,8 +140,10 @@ StormEvents
 
 When incorporated within a `top-nested` clause, the `with` `others` specification introduces an extra record that aggregates data excluded from the top results. In the following query, an extra record is created in the `State` and `aggregated_State` columns, representing the collective latitude of all states except Kansas and Texas. Moreover, the `EndLocation` and `aggregated_EndLocation` column have an extra nine records. These records show the combined latitude of end locations not qualifying as the top location within each state and source.
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAwsuyS/KdS1LzSsp5qpRKMkv0M1LLS5JTVEwUshPUwguSSxJVSjPLMlQyC/JSC0qVrBVUHLMyVHwB/Eg0sVKCkmVCsWluRpOqemZeT6JJZo6XArIRhmDjcovLUpOJaTUEKTUNS/FJz85sSQzPw+33UBFCjBVWJwAABtuhnPYAAAA" target="_blank">Run the query</a>
+:::moniker-end
 
 ```kusto
 StormEvents
@@ -168,8 +174,10 @@ StormEvents
 
 The following query shows the same results for the first level used in the previous example.
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAwsuyS/KdS1LzSsp5qpRKM9ILUpVCC5JLElVUMzMU9BQD3GNcAxW11FQ93b0CwayNIGqiktzcxOLMqtSQSwNp9T0zDyfxBJNAPC7f85LAAAA" target="_blank">Run the query</a>
+:::moniker-end
 
 ```kusto
 StormEvents
@@ -187,8 +195,10 @@ StormEvents
 
 To achieve a comprehensive sort order, the following query uses index-based sorting for each value within the current hierarchy level, per group. This sorting is geared towards arranging the result according to the ultimate nested level, in this case the `EndLocation`.
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA4WQwW7CMBBE73zFHIPkSFD12kslbtzyAdE2WVyr2Eb2BkHVj+86AupCpfq4O/Nm1p3E5DdHDpIXX5B4aANn4RFPiDt0QsJ4OyNPvnll68KWZGkWeFTGKQ3/Sp+LdBPGbRxIXAwPeu2QY5Iyn7PNBWxA1ia2Ohr7ClD0k/eU3CdrFGp4xgs8fXC/d1maamGwXumbywH8s+gm/9v0d+jVP9vvm2ojPolC4cLoBseFmChYblZ6RUp07vccrLzXlfISLdYKLj/gjy2fDqSIWmHum5pbwjd+JIknxQEAAA==" target="_blank">Run the query</a>
+:::moniker-end
 
 ```kusto
 StormEvents
@@ -229,8 +239,10 @@ StormEvents
 
 The following query demonstrates how to retrieve the two most recent events for each US state along with relevant event details. Notice the use of `max(1)` within certain columns, identified by `Ignore*`, which aids in propagating data through the query without imposing any selection logic.
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA33Rz1LCMBAG8DtPsUd1+CN49uCBcbg54gssydKGSbN1s0WZ4eFNU8Aq1R5yaGe/XzffWlmq5Z6CxtERlOtJoKhkgbewVlSCzQFWRWCh+8cKP2/mt2O4emYzeEFRp44DaElgUbGdJDQlNMG9NwR79OlMubHNnY6gzy1OoOibq3roPKOXDx2euGfSDC2g4qggZNIKQHkRcKGDh6DELIP9iSz+2ixBT3VNwWbrPLdl6fIzN5Bfu8iWVvZbeDgJ/+df5n4LR6iFd2R0gh94zry77mGwmVeqeE9ZaEJIFxUjygGwKIQKzJUZ9k0VYguxWJL2x7v2MZpxrxdL0Qwra5a2htj4VAD6usQNqTPofaLSgqYUDuy56N5NvwCXNfoveQIAAA==" target="_blank">Run the query</a>
+:::moniker-end
 
 ```kusto
 StormEvents
@@ -246,8 +258,10 @@ StormEvents
 
 The following query showcases how to extract the latest records per identity and builds on the concepts introduced in the previous example. The first `top-nested` clause partitions the data by distinct values of `id`. The subsequent clause identifies the two most recent records based on the `timestamp` for each `id`. Other information is appended using a `top-nested` operator alongside an unspecified count and the arbitrary `max(1)` aggregation. Finally, unnecessary aggregation columns are removed using the `project-away` operator.
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA42STU+DQBCG7/yKCac2oRTQVm3iwY/E9Ga8Gg9TmNJVdhd3l2oTf7yzVKhprbqQDR/P7MO8S4GOj0VFA1HMwDojVBmBE5KsQ1nPoEBH/jYC7VZk5mqpjUQntOrwIYzHcGOIQUCwujE5+bLtunHwGACP8BoNvoRRv+AgS9LJKEn5HEYQpmF0nJvuuOw37sxzWeK5k4671Qqr4jh4+jeYnntw8g/wwoPTMHgKPsDpeqQ4RipAL0EUsNjAvFTaUHIp8X3g2zkcnOU9Gid8wsCJt0n6UsJ8BY0Srw3BGiue21Vj/qZvpsw/7bdvp0xbZf/Cq9l0R651ZCC1dWAoJ+WA1jxb4I3eSrnC0Z6HLfv/w06WffXXd3RV16SKw4pe0SpjDq02+plyN8I37NOKuh66i+zH2B5I6jW1/TRKcSvWotkAlqWhcuvLddVIZeNPusl9PvYCAAA=" target="_blank">Run the query</a>
+:::moniker-end
 
 ```kusto
 datatable(id: string, timestamp: datetime, otherInformation: string) // Create a source datatable.

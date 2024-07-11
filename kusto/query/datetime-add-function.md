@@ -46,8 +46,10 @@ A [datetime](scalar-data-types/datetime.md) after a certain time/date interval h
 ## Examples
 
 ### Period
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA4XPuw6DMAyF4b1PkQ2QMjRdmPosyMKWiFASmjqqeHsIl8mSu/5H33CW7CMbsxJk8zYITOwDDYDYNjU21tkAMw331L6ert+j6zr7+BTITFJeXcchRZ4EPaoOf0SzcDXqDGEVam86mlKR92r8883HwiTPHVmnXxpTREHPrNENq0hHU8sBAAA=" target="_blank">Run the query</a>
+:::moniker-end
 
 ```kusto
 print  year = datetime_add('year',1,make_datetime(2017,1,1)),
@@ -68,8 +70,10 @@ second = datetime_add('second',1,make_datetime(2017,1,1))
 
 ### Amount
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAysoyswrUVCoTE0sUrBVSEksSS3JzE2NT0xJ0VAHCarr6Jrq5CZmp8bD5DSMDAzNdQx1DDU1dbgKSxOLSlIxtULF1XUMjfDozs3PK8nA0AsWBdpriM/i8tTUbAydIEGglQYGODUCAFYx9CDvAAAA" target="_blank">Run the query</a>
+:::moniker-end
 
 ```kusto
 print  year = datetime_add('year',-5,make_datetime(2017,1,1)),

@@ -31,8 +31,10 @@ The `inner` join flavor is like the standard inner join from the SQL world. An o
 
 ## Example
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA8tJLVGIULBVSEksAcKknFQN79RKq+KSosy8dB2FsMSc0lRDq5z8vHRNrmguBSBQT1TXMdSBMJPUdYwQTGMoM1tdxxTKTFbXMeGKtebKAdoSid8WI1RbgOYZGiBMMUJiG8PYKUDTDZAsNQBZFaFQo5CVn5mnkJ2Zl2KbmZeXWgS0Oj9PAWgjAEho/dHtAAAA" target="_blank">Run the query</a>
+:::moniker-end
 
 ```kusto
 let X = datatable(Key:string, Value1:long)

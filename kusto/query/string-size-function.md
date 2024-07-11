@@ -31,8 +31,10 @@ Returns the length, in bytes, of the input string.
 
 ### String of letters
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAysoyswrUSjOrEpVsFUoLgHy0uNBPA2ljNScnHwlTQB9vNZzIQAAAA==" target="_blank">Run the query</a>
+:::moniker-end
 
 ```kusto
 print size = string_size("hello")
@@ -46,8 +48,10 @@ print size = string_size("hello")
 
 ### String of letters and symbols
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAysoyswrUSjOrEpVsFUoLgHy0uNBPA2lR5OWPZq04dGkdY8mrX80aZWSJgDJzHqdKwAAAA==" target="_blank">Run the query</a>
+:::moniker-end
 
 ```kusto
 print size = string_size("⒦⒰⒮⒯⒪")

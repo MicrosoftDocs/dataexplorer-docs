@@ -33,8 +33,10 @@ Returns an aggregated value using the binary `OR` operation over records for eac
 
 The following example produces `CAFEF00D` using binary `OR` operations:
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA0tJLAHCpJxUjbzSXKuc/Lx0Ta5oLgUFgwoLEDAwsNAB80yMDMAAwjMwMDczR+KBgamOAlcsV41CcWlubmJRZlWqQlFqcWlOiYKtQkl+aUFBapFGSX5GaoVGUmZeYlFlfGJOTnx+EcheTU1NAEGLHNSIAAAA" target="_blank">Run the query</a>
+:::moniker-end
 
 ```kusto
 datatable(num:long)

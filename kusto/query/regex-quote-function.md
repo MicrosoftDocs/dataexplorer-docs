@@ -29,8 +29,10 @@ Returns *string* where all regex expression characters are escaped.
 
 ## Example
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAysoyswrUShKLS7NKVGwBTLSUyviC0vzS1I11DWK81VyU/VCUuMqSjTVNQH+BIvaKwAAAA==" target="_blank">Run the query</a>
+:::moniker-end
 
 ```kusto
 print result = regex_quote('(so$me.Te^xt)')

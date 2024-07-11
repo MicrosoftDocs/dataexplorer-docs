@@ -36,8 +36,10 @@ If *multiplier* is more than the maximal allowed value of 1024, the input string
 
 ## Example
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAysoyswrUUgrys+NLy4pUrBVAJJFqQUa6o5Ozuo6CkaaOhBJkCq4pKGRsY6xjrqeOky2JDM3FSFtXKxjpKOuoK4JAHPzDvRdAAAA" target="_blank">Run the query</a>
+:::moniker-end
 
 ```kusto
 print from_str = strrep('ABC', 2), from_int = strrep(123,3,'.'), from_time = strrep(3s,2,' ')

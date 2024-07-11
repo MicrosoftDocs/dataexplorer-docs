@@ -121,8 +121,10 @@ Following is an analysis of a few records from the output:
 
 The next query calculates a retention and churn rate for week-over-week window for `New Users` cohort (users that arrived on the first week).
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA21Ry27DIBC85yvmFmht2U4V5VDlVqk/0FtVWcisExIbLNg8LPXjC7arHFoOsBpmZ9ihKPBOlrxigldWux5asYJrcQnkoRo2V8OGwqojRh1YecY+kYhNT2JTVru83OZlJV9nCln9H+ElEaLFgfCmRrQ+Wi1y7OauwDSg0qtv0J0TkITYdc4ehEhN+dIhUUSefBB9JKbnC4lnVA+8TkOE/WQrFiWNJ2zLuHmZ4Q8W+zflXOWoIqOSiHr9Naf7EB1g9H5WTc/mcSDXiqQh0ZneMKpyWquiwIc6E5ztRvCR0BofGDeiMxp3dHFu0amIDMqrnpj8NM9VdZf0GZZu9RL+WMdrb5ogPtdGr7+yFGC2RJFN0WXY6V8kyQzenajhKeV6YrObTx+dLBtn6/TnGZrjxc/1D5PKiK4LAgAA" target="_blank">Run the query</a>
+:::moniker-end
 
 ```kusto
 // Generate random data of user activities
@@ -152,8 +154,10 @@ range Day from _start to _end step 1d
 
 The next query calculates retention and churn rate for week-over-week window for `New Users` cohort. If the previous example calculated the statistics for a single week - the following query produces an NxN table for each from/to combination.
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA22RwWrDMBBE7/mKuUVqbWynhByKb4Ve+gelGGFtUhVbMtImTaAf35VtyKH1QRbL25ndUVXhlTxFw4RovA0jrGGDcMQ5UYTp2V0cO0qbgRhdYhMZbYaI3UhqVzeHst6XdaOfF4S8/Q94yoBYnAgv5oZjFKtVjsPSlZgmNHbzA7pyLmQhDkPwJ6VyU7l2aFTC6TsYBczjK41HNPd6l5dI7WyrViWLB+xrOaIu8Kcm/bt6uZVohGg0RG+8lHSdxAHOtotqHptvE4Wjyhoagxsdo6nnb1NVeDOJMZloRmLJ0iUEIZisSOcZL2Y45+A9fXdr0LdO2Oj6pN63zm4/ihxWsa5dzDEVOMyrTzF8Uc9zkt1McVj+Uew8u+C7/K4F+s9zXO6/Mr0rj+8BAAA=" target="_blank">Run the query</a>
+:::moniker-end
 
 ```kusto
 // Generate random data of user activities
@@ -196,8 +200,10 @@ consideration `lookback` period: a tabular query with set of Ids that are used t
 the `New Users` cohort (all IDs that don't appear in this set are `New Users`). The
 query examines the retention behavior of the `New Users` during the analysis period.
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA22SzW6DMBCE7zzFHO0WBKSKcki4VepjIBdvUjeAkdn8SXn42jgpjVIfMFq+nR2PyXN8UE9OMcGpXtsOWrGC3eIwkoNq2BwNGxqTlhh1a+3+UzV7VIEjNh2JRVGusmKRFaVcR2pk5fgZWf5BqNf/AW+/wGSjCqZ2hHd1wdZ5c7MBtlFkZBpQ6gR+XUFnDsWgzba1/U6I0JvNjRK5x+Uj7+IkLSReUT5+q0MQYzUZETdRjRcsC/9wMsVTzWssiviWofREKXHT7I4ZnQc/CUZXUTmchC8D2a0IOhKt6QyjLKa1TvJ8CuTu/x5M3K84fZGLAW3uwV8xOPtNDYdy6ietk4lO/JmOqj2Ey+7pVN8u91J3xM40ozA6jS1RKJ0STrHSc+XBhkzmUeF66qmZbdwd+fzY2L4Ov9cPqFoyT2oCAAA=" target="_blank">Run the query</a>
+:::moniker-end
 
 ```kusto
 // Generate random data of user activities

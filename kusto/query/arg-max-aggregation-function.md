@@ -37,8 +37,10 @@ Returns a row in the group that maximizes *ExprToMaximize*, and the values of co
 Find the maximum latitude of a storm event in each state.
 
 :::moniker range="azure-data-explorer"
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAwsuyS/KdS1LzSspVuCqUSguzc1NLMqsSlVILEqPz02s0HBKTc/M80ks0VGAsPKTE0sy8/M0FZIqFYJLEktSATqyPZtCAAAA" target="_blank">Run the query</a>
+:::moniker-end
 ::: moniker-end
 
 ```kusto
@@ -65,8 +67,10 @@ The results table displays only the first 10 rows.
 Find the last time an event with a direct death happened in each state showing all the columns.
 
 :::moniker range="azure-data-explorer"
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAwsuyS/KdS1LzSsp5qpRKM9ILUpVcElNLMkodsksSk0uUbBTMABKFJfm5iYWZValKiQWpcfnJlZoBJckFpWEZOam6ihoaSokVSoABUpSAQPollZPAAAA" target="_blank">Run the query</a>
+:::moniker-end
 :::moniker-end
 
 ```kusto
@@ -93,8 +97,10 @@ The results table displays only the first 10 rows and first 3 columns.
 
 The following example demonstrates null handling.
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/kvc6bc487453a064d3c9de.northeurope/databases/new-free-database?query=H4sIAAAAAAAAA31PwQrCMAy97ytCT530osfdnKBX8SCIiHQsjEKWjrRjKH68nWwoguYdkry8l5DaxoSKUG+ld7GAEMVxY2Djycu7PaIE57kAxzGHcwYp1LrrCJUBdcA6paX5oneCyKlIHs09UT4JSssJo+KERH74K/m1ZI9WxnkpfuCP6zM/+1Ymu2QPCH3bWnF3BCvNtXWsp5cMLHKobvD6/wlU5dHuDwEAAA==" target="_blank">Run the query</a>
+:::moniker-end
 
 ```kusto
 datatable(Fruit: string, Color: string, Version: int) [

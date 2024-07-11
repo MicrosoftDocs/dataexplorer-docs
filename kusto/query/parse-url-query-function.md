@@ -31,8 +31,10 @@ An object of type [dynamic](scalar-data-types/dynamic.md) that includes the quer
 
 ## Examples
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAysoyswrUQhKLS7NKbEtSCwqTo0vLcopLE0tqtRQyja0LTNUyzayLTNSyza2LTNW0gQABqxVODAAAAA=" target="_blank">Run the query</a>
+:::moniker-end
 
 ```kusto
 print Result=parse_urlquery("k1=v1&k2=v2&k3=v3")
@@ -46,8 +48,10 @@ print Result=parse_urlquery("k1=v1&k2=v2&k3=v3")
 
 The following example uses a function to extract specific query parameters.
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA4WPwQrCMBBE74X+w9KDaaAV9abSf9CDXkqRgksppLVuNlVR/900oVDxYC7Jzs6bIQoZKuS9QXrsSiqbY6kMQgbxdZA0U91WG/B3At1gGUcJzzAAe5QNcRttQfvQeDKkXMA0Rm69nS9+jj2TR64dXD0yko6Kee52hQyDt6U6a2c4kPLODERf4y3rdbpaLNezjlAj9Zg6lcmgCIMX4J2xPcMgWuT3l/EYmPg8ISfUmPmX/CoX8gPcEHXrUQEAAA==" target="_blank">Run the query</a>
+:::moniker-end
 
 ```kusto
 let getQueryParamValue = (querystring: string, param: string) {

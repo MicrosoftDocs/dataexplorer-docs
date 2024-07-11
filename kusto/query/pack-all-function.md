@@ -37,8 +37,10 @@ The following query will use `pack_all()` to create columns for the below table.
 |555-555-1313 | | 42
 | |555-555-3456 | 74
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA32PsQrCMBCG9zxFtrRwgm2SCgWn4uAigm4ikrZHFNOkpCko+PCmIFgXOY6f+/j+4VoV4tQGk4MbfYO7savRl0PwN6vhqLzG8Muqq/JD5UYbSuOsTsmJMCnlYtos54LB7MxyBqKAfwZnIJdzg0+IxV4OlLCZzIUsGKwEJWfyovgIaFu6V80d23Uf46KMSVL4oK22zsd/jNl0fXh+jeBHTN/V81O7+AAAAA==" target="_blank">Run the query</a>
+:::moniker-end
 
 ```kusto
 datatable(SourceNumber:string,TargetNumber:string,CharsCount:long)

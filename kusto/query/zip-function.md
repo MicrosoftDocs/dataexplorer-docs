@@ -27,8 +27,10 @@ arrays of the same index.
 
 ## Examples
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAysoyswrUajKLNBIqcxLzM1M1og21DHWMY3V1FGAixjpmOiYxWpqAgB4H4QJLQAAAA==" target="_blank">Run the query</a>
+:::moniker-end
 
 ```kusto
 print zip(dynamic([1,3,5]), dynamic([2,4,6]))
@@ -40,8 +42,10 @@ print zip(dynamic([1,3,5]), dynamic([2,4,6]))
 |--|
 |`[[1,2],[3,4],[5,6]]`|
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAysoyswrUajKLNBIqcxLzM1M1ohWclTSUTAEIj3TWE0dBbh4da2OgpKTUqymJgDjejoyNQAAAA==" target="_blank">Run the query</a>
+:::moniker-end
 
 ```kusto
 print zip(dynamic(["A", 1, 1.5]), dynamic([{}, "B"]))
@@ -53,8 +57,10 @@ print zip(dynamic(["A", 1, 1.5]), dynamic([{}, "B"]))
 |--|
 |`[["A",{}], [1,"B"], [1.5, null]]`|
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA0tJLAHCpJxUjUSrzLwSHYUkq+KSosy8dE2FaEMdpfy8VCUdIx2lkvJ8JR1jIJ1RlJqqFMvLVaNQXJqbm1iUWZWqkKhgq5CbmJ0an5NZXKKRqAk0BEUkSROkvqAoPys1uUShKrNAIxGoRBMADfxJ3HsAAAA=" target="_blank">Run the query</a>
+:::moniker-end
 
 ```kusto
 datatable(a:int, b:string) [1,"one",2,"two",3,"three"]

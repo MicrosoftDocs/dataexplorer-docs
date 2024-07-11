@@ -27,8 +27,10 @@ To define a stored function as a view, set the `view` property to `true` when yo
 
 The following query defines two functions: `T_view` and `T_notview`. The query results demonstrate that only `T_view` is resolved by the wildcard reference in the union operation.
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA8tJLVEIiS/LTC1XsFUAUxqaCtUKBUWZeSUKFbaGCrXWXDlgNXn5JVBlKCqMQCpK8zLz8xRCtACsbfBqTgAAAA==" target="_blank">Run the query</a>
+:::moniker-end
 
 ```kusto
 let T_view = view () { print x=1 };

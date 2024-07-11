@@ -44,8 +44,10 @@ Returns the merged tdigest values of *expr* across the group.
 
 ## Example
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAwsuyS/KdS1LzSsp5qpRKC7NzU0syqxKVQgoSnVMT3dJzE1MTw0oyi9ILSqptC1JyUxPLS7RQBXWVEiqVAguSSxJRTEhN7UoPTUeqqVYA5uBmgCTdTq/fgAAAA==" target="_blank">Run the query</a>
+:::moniker-end
 
 ```kusto
 StormEvents

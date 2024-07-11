@@ -58,8 +58,10 @@ The following query returns storm records that report damaged property, are floo
 
 Notice that we put the comparison between two columns last, as the where operator can't use the index and forces a scan.
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAwsuyS/KdS1LzSsp5qpRKCjKz0pNLlFwScxNTE8NKMovSC0qqdRRACsIqSxI1VFwSk3PzPPJT04syczPA8rkpcA4QP3lGalFqWi6FewUDLgUgCAxLwVhkIKtrYKSW05+fooSXBLFaAVFW2TDAe7+E2GoAAAA" target="_blank">Run the query</a>
+:::moniker-end
 
 ```kusto
 StormEvents
@@ -88,8 +90,10 @@ The following table only shows the top 10 results. To see the full output, run t
 
 The following query returns the rows in which the word "cow" appears in any column.
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAwsuyS/KdS1LzSsp5uWqUSjPSC1KVdBSyEgsVlBKzi9XAgC3DyzDIAAAAA==" target="_blank">Run the query</a>
+:::moniker-end
 
 ```kusto
 StormEvents

@@ -59,8 +59,10 @@ To run the following queries, you need a query environment with access to the sa
 
 Begin by using the [count](../count-operator.md) operator to find the number of storm records in the `StormEvents` table.
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAwsuyS/KdS1LzSspVuCqUUjOL80rAQA76pZjFAAAAA==" target="_blank">Run the query</a>
+:::moniker-end
 
 ```Kusto
 StormEvents 
@@ -77,8 +79,10 @@ StormEvents
 
 To get a sense of the data, use the [take](../take-operator.md) operator to view a sample of records. This operator returns a specified number of arbitrary rows from the table, which can be useful for previewing the general data structure and contents.
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAwsuyS/KdS1LzSspVuCqUShJzE5VMAUAP49+9hUAAAA=" target="_blank">Run the query</a>
+:::moniker-end
 
 ```Kusto
 StormEvents 
@@ -99,8 +103,10 @@ The following table shows only 6 of the 22 returned columns. To see the full out
 
 Use the [project](../project-operator.md) operator to simplify the view and select a specific subset of columns. Using `project` is often more efficient and easier to read than viewing all columns.
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAwsuyS/KdS1LzSsp5qpRKEnMTlUwBTIKivKzUpNLFIJLEktSdRTACkIqC4BMl8TcxPTUgKL8gtSikkoA88jUEj8AAAA=" target="_blank">Run the query</a>
+:::moniker-end
 
 ```Kusto
 StormEvents
@@ -122,8 +128,10 @@ StormEvents
 
 It appears that there are multiple types of storms based on the results of the previous query. Use the [distinct](../distinct-operator.md) operator to list all of the unique storm types.
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAwsuyS/KdS1LzSspVuCqUUjJLC7JzEsuUQALhVQWpAIAgfl1HyEAAAA=" target="_blank">Run the query</a>
+:::moniker-end
 
 ```Kusto
 StormEvents 
@@ -152,8 +160,10 @@ The [where](../where-operator.md) operator filters rows of data based on certain
 
 The following query looks for storm events in a specific `State` of a specific `EventType`.
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAwsuyS/KdS1LzSsp5qpRKM9ILUpVCC5JLElVsLVVUA9xjXAMVldIzEtRAKsJqSyASLjl5OenqAN1FBTlZ6Uml4D0FJWEZOam6ii45qVAGGBzdBA6dRRcEnMT01MDivILUotKKgFltqXufAAAAA==" target="_blank">Run the query</a>
+:::moniker-end
 
 ```Kusto
 StormEvents
@@ -176,8 +186,10 @@ There are 146 events that match these conditions. Here's a sample of 5 of them.
 
 To view the top floods in Texas that caused the most damage, use the [sort](../sort-operator.md) operator to arrange the rows in descending order based on the `DamageProperty` column. The default sort order is descending. To sort in ascending order, specify `asc`.
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAwsuyS/KdS1LzSsp5qpRKM9ILUpVCC5JLElVsLVVUA9xjXAMVldIzEtRAKsJqSyASLjl5OenqAN1FOcXlSgkVSq4JOYmpqcGFOUXpBaVVAIlCorys1KTS0CGFZWEZOam6ii45qVAGGALdBBG6qBpBwDYBhI8lQAAAA==" target="_blank">Run the query</a>
+:::moniker-end
 
 ```Kusto
 StormEvents
@@ -203,8 +215,10 @@ The [top](../top-operator.md) operator returns the first *n* rows sorted by the 
 
 The following query returns the five Texas floods that caused the most damaged property.
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAwsuyS/KdS1LzSsp5qpRKM9ILUpVCC5JLElVsLVVUA9xjXAMVldIzEtRAKsJqSyASLjl5OenqAN1lOQXKJgqJFUquCTmJqanBhTlF6QWlVQCZQqK8rNSk0tAphWVhGTmpuoouOalQBhgG3QQZuqgaQcAOmqryJYAAAA=" target="_blank">Run the query</a>
+:::moniker-end
 
 ```Kusto
 StormEvents
@@ -234,8 +248,10 @@ Use `project` to specify only the columns you want to view, and use `extend` to 
 
 The following query creates a calculated `Duration` column with the difference between the `StartTime` and `EndTime`. Since we only want to view a few select columns, using `project` is the better choice in this case.
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA1WMsQoCMRBEe79iujRaWqYQLtZCUtjGy6InJhv29pSAH+/pIWg3zLx5Xlmyu1PRcfXE40JC8BqVYC1McMedN4gl4cOEVpdhf2NOZn4oV2xxauhijmc6CFcSbUg09vNcha/U61spGoZMa7iSltBNEnXgAvvtsPkF/40vqGFRKakAAAA=" target="_blank">Run the query</a>
+:::moniker-end
 
 ```Kusto
 StormEvents
@@ -258,8 +274,10 @@ If you take a look at the computed `Duration` column, you may notice that the fl
 
 Use `extend` to view the calculated `Duration` column along with all of the other columns. The `Duration` column is added as the last column.
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAyWNuwoCMRBFe7/idqksLVMIG2shKWxHM+iCyYTZ8RHw481qd+Hcw4kmWsKTqy2bD143VkY0Mob3cCmc9tGBasbvk3r7g8NdJLthmDTscO6YqNCVjyqN1ToyL5eB+W085OmhZLNUeISa01wY2zWjtu4vDhiVhIQAAAA=" target="_blank">Run the query</a>
+:::moniker-end
 
 ```Kusto
 StormEvents
@@ -282,8 +300,10 @@ StormEvents
 
 Static mapping is a useful technique for changing the presentation of your results. In KQL, one way to perform static mapping is by using a dynamic dictionary and accessors to map values from one set to another.
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA23PvQrCQBAE4D5PMVylkCdQUkkEC0UIVmJxXpZ4kvthc4kc6rt7JBYqFtt9M8O2FNC5nhVtpffaNihQRyuNVrMMuKcDRGmIG7IqYiutbIgFFhD7/txqJfLJHIJudYhYOeOljZNgPchAIonnfJlVwbEpB7Khyx64XYgJ1TiOovi74vgT/E6kEs/uSipgbN3U+ZvnWLMmW7dxJ00Kf/94nNDpBfVsVEn9AAAA" target="_blank">Run the query</a>
+:::moniker-end
 
 ```kusto
 let sourceMapping = dynamic(

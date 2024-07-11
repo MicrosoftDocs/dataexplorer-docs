@@ -29,8 +29,10 @@ Returns a dynamic array of the set of all distinct values that are in all arrays
 
 ## Example
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA13MsQ7CMAwE0J2vuLFBWdLOfEtlFYMAkUSOpSYVH48zoTDeO/uE4p1RcZP0RoAmLCjKGeH0AVfleEXDxS7OmH90GLWRdqNjJApmmbbXSiLUpuqbr/5wHjT/N2idl5F3X53NZUlP3hSFdX1EZSmWJgp9pz+5L5hXyQHGAAAA" target="_blank">Run the query</a>
+:::moniker-end
 
 ```kusto
 range x from 1 to 3 step 1
@@ -49,8 +51,10 @@ range x from 1 to 3 step 1
 |[2]|
 |[3]|
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAysoyswrUUgsKlKwVShOLYkH8lKLilOTSzRSKvMSczOTNaINdRSMdBSMYzV1FOBiJjqmsZqaAI3W9uo9AAAA" target="_blank">Run the query</a>
+:::moniker-end
 
 ```kusto
 print arr = set_intersect(dynamic([1, 2, 3]), dynamic([4,5]))

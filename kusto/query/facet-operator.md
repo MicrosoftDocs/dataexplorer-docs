@@ -32,8 +32,10 @@ Multiple tables: one for the `with` clause, and one for each column.
 
 ## Example
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA2VOywqCQBTdB/7DYVYKKVMUrlsEtdYfGJ0bWujIzE0R/Ph81qK7OvdwXgkbW11bqtl5uwFdQZaQsGKCY2XZdSUXEBcBVWvMwrRvCIVyEDdSbS8m30PlxMj6xbr/Cb0dxptDFuivzFZkOS0rQkbcEdW+Hu08Ev5RyjiUh1CeAkQRYh2sAQMaa56U89b1DRmhedt8qm9KZzTd9d+SAaxehPPyBR9NMsYY/wAAAA==" target="_blank">Run the query</a>
+:::moniker-end
 
 ```kusto
 StormEvents

@@ -31,8 +31,10 @@ Returns a dynamic array of the set of all distinct values that are in any of arr
 
 ### Set from multiple dynamic array
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA13MMQ7CMAyF4Z1TvLFBXprMPQNHqKwSECCSKHXVJOLwuBMK62e/P3O4exTccnxjhEQ4rOITxtMHvogPV1RM+nGG/VFTqj3tSq0nHtUSL6+Zc+Y6FKpUqBkC2/8L6sGu591oLOX49ItojdgSO7psMq1e5i08YhiUNXdszRcYE8jtzQAAAA==" target="_blank">Run the query</a>
+:::moniker-end
 
 ```kusto
 range x from 1 to 3 step 1
@@ -53,8 +55,10 @@ range x from 1 to 3 step 1
 
 ### Set from one dynamic array
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA0tJLAHCpJxUBQ3HoiJDK4WUyrzE3MxkTa5oLgUggHI1otUdTdR1FNQdjcCkOZQdq6mjgKbOGazOGazC2RBMmgDVccUqcNUopFaUpOalKPiXltgWp5bEl+Zl5ueBLdZRAJGaAMqBZpGPAAAA" target="_blank">Run the query</a>
+:::moniker-end
 
 ```kusto
 datatable (Arr1: dynamic)

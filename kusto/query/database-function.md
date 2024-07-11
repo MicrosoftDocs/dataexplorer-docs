@@ -33,8 +33,10 @@ Changes the reference of the query to a specific database within the cluster sco
 
 ### Use database() to access table of other database
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA0tJLElMSixO1VAPTswtyEktVtfUCy7JL8p1LUvNKylWqFFIzi/NKwEAS+mhvycAAAA=" target="_blank">Run the query</a>
+:::moniker-end
 
 ```kusto
 database('Samples').StormEvents | count

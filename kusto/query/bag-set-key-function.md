@@ -36,8 +36,10 @@ Returns a `dynamic` property-bag with specified key-value pairs. If the input ba
 
 ### Use a root-level key
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA0tJLAHCpJxUjcy8gtISK4WUyrzE3MxkTYVoXi4FIIDyNarVs1MrDdWtFAx1FEBMIyDTqFZTRwG/MmMgUz0xKVkdqJSXK5aXq0YhtaIkNS9FoSi1uDSnRMFWISkxPb44tSQeqBriCJhOHQVjTQAoaFq+oAAAAA==" target="_blank">Run the query</a>
+:::moniker-end
 
 ```kusto
 datatable(input: dynamic) [
@@ -54,8 +56,10 @@ datatable(input: dynamic) [
 
 ### Use a JSONPath key
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA0tJLAHCpJxUjcy8gtISK4WUyrzE3MxkzWheLgUggHI1qtWzUysN1a0UDI2MdRRAHCMgp1q9oCi/ACEM4oHE1Ssqq9RrazV1cBtSq8nLFcvLVaOQWlGSmpeiUJRaXJpTomCrkJSYHl+cWhIPVApxE9BcFT2QhXoQy4D8xKRkdU0AFVPFlLsAAAA=" target="_blank">Run the query</a>
+:::moniker-end
 
 ```kusto
 datatable(input: dynamic)[

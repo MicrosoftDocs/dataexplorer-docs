@@ -29,8 +29,10 @@ A dynamic array of calculated element-wise subtract operation between the two in
 
 ## Example
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA1XMMQoCMRBG4d5T/OVG0sxae5YQ4ygqbsLMCEnw8EYRF9uPx5O4nBkVJ8l3ECxjBzUuoM0TXI2XIxr2o9hiXqkPal8qkq+cDEoDS0y3EEVim6pvvjsPnf+9ezSP6tabUtDHwSQmC59aWS6sP5yU3hv3Ar+CKt2tAAAA" target="_blank">Run the query</a>
+:::moniker-end
 
 ```kusto
 range x from 1 to 3 step 1

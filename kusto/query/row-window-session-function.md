@@ -50,8 +50,10 @@ The function returns the values at the beginning of each session. It uses the fo
 
 The following example calculates session start values for a table, `datatable`, with a sequence **ID** column and a **Timestamp** column to record the time of each record. The data is sorted by the sequence IDs and timestamps and then the example returns values for **ID**, **Timestamp**, and a new **SessionStarted** column. A session can't exceed one hour. It continues for as long as records are less than five minutes apart and the ID stays the same. The example includes records that are less than five minutes apart.
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/kvc-z5jd0tu7q3s9b5vyt8.northeurope/databases/TestDatabase?query=H4sIAAAAAAAAA42QwQqDMAyG7z5F5kmhQqtuDMGbF8%2FuNsaoa9kKs0ob5gZ7%2BLXIhjsIJoGQ5sufEsHReXuXENVVYdEofSVwUJ20yLuhEBwluiqGYwDOQhYS%2BD5GKU3zhOYJY8BoQX3EZOLSZY7tZ9yiHvvXy5a5bNXebCXn%2FrfzXHAK3mB7g9C%2BoK6A28vsML50fflEqQU00lrV6wa5QSmgBNOP51Fp4ZKdetFvlAC7Edh2xKtuShiMfLjjx%2FEHCP%2BU4YwBAAA%3D" target="_blank">Run the query</a>
+:::moniker-end
 
 ```kusto
 datatable (ID:string, Timestamp:datetime) [

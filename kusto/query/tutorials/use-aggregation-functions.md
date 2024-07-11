@@ -52,8 +52,10 @@ The [summarize](../summarize-operator.md) operator is essential to performing ag
 
 Find the number of events by state using `summarize` with the [count](../count-aggregation-function.md) aggregation function.
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAwsuyS/KdS1LzSsp5qpRKC7NzU0syqxKVQjJL0nMCQZJFivYKiTnl+aVaGgqJFUqBJcklqQCABs8Zoc2AAAA" target="_blank">Run the query</a>
+:::moniker-end
 
 ```Kusto
 StormEvents
@@ -77,8 +79,10 @@ Visualizing query results in a chart or graph can help you identify patterns, tr
 
 Throughout the tutorial, you'll see examples of how to use `render` to display your results. For now, let's use `render` to see the results from the previous query in a bar chart.
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAwsuyS/KdS1LzSsp5qpRKC7NzU0syqxKVQjJL0nMCQZJFivYKiTnl+aVaGgqJFUqBJcklqQClRal5qWkFikkJRYlZyQWlQAACVd/oUgAAAA=" target="_blank">Run the query</a>
+:::moniker-end
 
 ```Kusto
 StormEvents
@@ -94,8 +98,10 @@ When analyzing your data, use [countif()](../countif-aggregation-function.md) to
 
 The following query uses `countif()` to count of storms that caused damage. The query then uses the `top` operator to filter the results and display the states with the highest amount of crop damage caused by storms.
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAwsuyS/KdS1LzSsp5qpRKC7NzU0syqxKVQgGiReHZ5ZkOBflF7gk5iampyrYKiTnl+aVZKZpQARAUsUKdgoGmgpJlUAtiSWpQENK8gsUTCECmGYAAFosNm9wAAAA" target="_blank">Run the query</a>
+:::moniker-end
 
 ```kusto
 StormEvents
@@ -119,8 +125,10 @@ To aggregate by numeric or time values, you'll first want to group the data into
 
 The following query counts the number of storms that caused crop damage for each week in 2007. The `7d` argument represents a week, as the function requires a valid [timespan](../scalar-data-types/timespan.md) value.
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA1WOQQrCMBRE9z3FLBOwJamLrnRTPUG9wI/5aBZJJfm1KB7e6EJwGBh4mzeTzDke75ykNC+sV86MSSjLKUSGY1mZE5QnYalE9cYMrbG1Gl2Hf277dmu1RoMaSh4HinThMc+3gj1MNZQlRsrhyfhKx3lJgh3On1Ua7gEXkvo92GDw+g3gGT6rpAAAAA==" target="_blank">Run the query</a>
+:::moniker-end
 
 ```kusto
 StormEvents
@@ -142,8 +150,10 @@ StormEvents
 
 Add `| render timechart` to the end of the query to visualize the results.
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA1WOQQ6CMBBF95ziL9tESIsLVroBT4AXKHQiXbSYYZBoPLzFhYmTSSZ5P5P3e5k5Xh6UZCne2CZiQi+O5RoiYSDZiBKUd0KSiaqNaUpj82pUFf65rcuj1RoF8rjk0bnobtTyfF9whsmGZY3RcXgRvtJ2XpPghHG/SmN4YghJ/Roc0Hid35iSJ8auGqecfQAkVosYtwAAAA==" target="_blank">Run the query</a>
+:::moniker-end
 
 :::image type="content" source="../media/kql-tutorials/crop-damage-by-week-time-chart.png" alt-text="Screenshot of the crop damage by week time chart rendered by the previous query.":::
 
@@ -156,8 +166,10 @@ To learn more about types of storms that cause crop damage, calculate the [min()
 
 Note that you can use multiple aggregation functions in a single `summarize` operator to produce several computed columns.
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAwsuyS/KdS1LzSsp5qpRKM9ILUpVcEnMTUxPdS7KLyhWsFMwAIoXl+bmJhZlVqVyKQCBb2IFSBKizDY3sUIDSYemjgJEUWYesqLMPGyKHMvSkRQllqWjKAIrSapUADsvpLIgFeSS/KISkBiKTgAZ5ED9xQAAAA==" target="_blank">Run the query</a>
+:::moniker-end
 
 ```kusto
 StormEvents
@@ -185,8 +197,10 @@ The results of the previous query indicate that Frost/Freeze events resulted in 
 
 Use [sum()](../sum-aggregation-function.md) to check the total number of damaged crops instead of the amount of events that caused some damage, as done with `count()` in the previous [bin() query](#group-data-into-bins).
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA1WOsQ7CMBBD936Fx0SiVVqGTrBQvqD8QEpONENSdDmoQHw8iZAQnDw9+2SPsnA43ilKql5YZ2LCKJbl5ANhIlmJIpSzQpKJ6ozpa9NmaTQN/nnb1dtWa1TIZ6PDYIO90IGXa8IeJjekWwiW/ZNQ6MfHrmD1E9aYHph8VN8pG/RO53+m6IhROs9z9t7w8FzwwAAAAA==" target="_blank">Run the query</a>
+:::moniker-end
 
 ```kusto
 StormEvents
@@ -215,8 +229,10 @@ Then, use [extend](../extend-operator.md) to calculate the percentage between th
 
 To ensure that you get a decimal result, use the [todouble()](../toreal-function.md) function to convert at least one of the integer count values to a double before performing the division.
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA22Puw7CMAxF936FxwRVorDDAgxsSEViThsDlZoYJQ4CxMeTh8TSerTPfbhlcubwRMu%2B%2BoIPxig3fBAqiHMmVmObCH%2B0LStG2EBPwbKQdSbK8TLwfefosVdG3f7McBVlkU4ettDIrOnekL1iHr4YrYYTuj42mNhk3EUvLQSTptCNKOYiJSznyi5g1TSyhrVMv5Hjkj3V%2FwB77xEnBgEAAA" target="_blank">Run the query</a>
+:::moniker-end
 
 ```kusto
 StormEvents
@@ -250,8 +266,10 @@ To compare the number of storms by event type to the total number of storms in t
 
 Since [tabular expression statements](../tabular-expression-statements.md) return tabular results, use the [toscalar()](../toscalar-function.md) function to convert the tabular result of the `count()` function to a scalar value. Then, the numeric value can be used in the percentage calculation.
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA1XOwQrCMAyA4fueIsdWhtazeBLvgnuBrgZR2mWkqTDZw69WYfWYny8hHgU6EuuvQhwiHEEoOustq1LOLxwkwgwxhWD58UZwlAZRWh+aSjS1KOn0Yfnej0M/fXs3jZj1yPREJ2trq7UWLsguT/aO5aUbpd6jWoWG3d/fG9gbszULDOumf88AAAA=" target="_blank">Run the query</a>
+:::moniker-end
 
 ```kusto
 let TotalStorms = toscalar(StormEvents | summarize count());
@@ -277,8 +295,10 @@ Use [make_set()](../make-set-aggregation-function.md) to turn a selection of row
 
 The following query uses `make_set()` to create an array of the event types that cause deaths in each state. The resulting table is then sorted by the number of storm types in each array.
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA22NsQ7CMAxEd77CYysx8AMwlYG5SIyVoScSIEnluKCgfjxJQUwdfX73rtUgbv+E17ia6GUgoAasJjZWcFHa0YaC/LKD7/9pxuPoHIt9g9qiOaYB8WTVfGHakuM7ugit5oXyr+mcMs2K3B8k3IptvteLkrISREuLRTh1D/irmmqJrT/1zAofzQAAAA==" target="_blank">Run the query</a>
+:::moniker-end
 
 ```Kusto
 StormEvents
@@ -305,8 +325,10 @@ The [case()](../case-function.md) function groups data into buckets based on spe
 
 This example groups states based on the number of storm-related injuries their citizens sustained.
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA5WRPQsCMQyG9/sVodMdOOjgqIMfg6Au/QWxF6R6bSFNRcUfrwU90OGKGZP3eTK8WgK79YW8xOoBMTmHbO8EG39KbCkuQ/ICs3ypP7uVZTLSwOEGWlDoBdJVyLc9tUjmTBkzGAnqCgbn+9ccpuNRgVBb5COpUuxXPCmLd9Ta5P42l8XaYdcVvWofwL7daiDb5LICS98BYDRPIbtEBswBAAA=" target="_blank">Run the query</a>
+:::moniker-end
 
 ```Kusto
 StormEvents
@@ -337,8 +359,10 @@ StormEvents
 
 Create a pie chart to visualize the proportion of states that experienced storms resulting in a large, medium, or small number of injuries.
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA5WRvQ7CIBCA9z7FhalNHHRwrEPVwURd+gRIL4oWao7DWOPD29afpJqUyAj3fRC+nCsyywtadtEdnDdGkr4hrOzRk0Y3r7xlSNuT+L230ISKE9jVkLNkbEC8MtriQ2VenbDFlHQIcQSDq3/XDKbjUYAQa0l7FKGxb/EkLN5gob352xwW50aWZdArthXol1sMzCa/sernp2d11yRV7cviLlK/SkNS0woJzhrVQRI/AE1xwckEAgAA" target="_blank">Run the query</a>
+:::moniker-end
 
 ```kusto
 StormEvents
@@ -373,8 +397,10 @@ Here's a step-by-step explanation of the query:
 1. Perform the aggregations for each day. Due to step 4, this step actually summarizes the previous seven days.
 1. Exclude the first seven days from the final result because there's no seven-day lookback period for them.
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA3VSy27CMBC85ytWOTnCCAJtc6BwKj1XBanHysgbaim2I2MeqfrxXVuQBEqjxPHas7OP2Qo9HJWR9rjywnmYgxQevdLIJuNxMQxvns2SqsUtjSRU32cA+VTOkpW3Ti8PaPwu+YHjFzqEaK6bGkEZYOnaOiOkTTmkr5W1Mmw+VCVL5TDNgNzw5JECbAg+D+un8GwXothSiobFgGvKLuOQS95PI4PRCPKOgr53YbZIPKosWWAcQCFh0dXB+9sE7j5XvkMKCs/9qPza+IfkPg3ZvF26myyLpUy6Uty5jvhn0eNSXWhDhE8Jrg9DPNWi9fAWPPXeluwiaoQ+EHS311o49Y2glWEvQostvjlbo/MN9VaL099DZ/dGMnHY3l5lsGkgqEJK6Xp+ls1d8ruWifeGgpJ5bGelJYDF7XwVchawT79tsmpLrgIAAA==" target="_blank">Run the query</a>
+:::moniker-end
 
 ```kusto
 let windowStart = datetime(2007-07-01);

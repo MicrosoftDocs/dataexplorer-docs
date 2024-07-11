@@ -37,8 +37,10 @@ and 255).
 
 ## Examples
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAysoyswrUeBSAIIMQ9uMxOKM+OKMRCNTMw2l8PyinBQlTR2IpBGKZEpiSWpJZm6qhpGBkYGugSEQaWoCAD4yqn1MAAAA" target="_blank">Run the query</a>
+:::moniker-end
 
 ```kusto
 print 
@@ -54,8 +56,10 @@ print
 
 The following example uses the `hash_sha256()` function to aggregate StormEvents based on State's SHA256 hash value.
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAwsuyS/KdS1LzSspVuCqUSguzc1NLMqsSlUIBkk455fmlSjYKiSDaA1NhaRKoHhiSaoOhPJILM6wzQAS8cUZiUamZhpgUU2gOSX5BQqmEOVwY1JSi5MBsDX5S28AAAA=" target="_blank">Run the query</a>
+:::moniker-end
 
 ```kusto
 StormEvents 

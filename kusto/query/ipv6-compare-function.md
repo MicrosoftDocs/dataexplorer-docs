@@ -40,8 +40,10 @@ Compares two IPv6 or IPv4 network address strings. The two IPv6 strings are pars
 
 ### Compare IPs using the IP-prefix notation specified inside the IPv6/IPv4 strings
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA61UwU6EMBC98xVzWzdZgVbA0sSjBw8m3o3ZdKE1TRCQwoaDH+/s0igKwkIcDk1m5r2Zvg6Tihq/QyavdEn2pq50/sq7Ywe6pD9dW+fZAc+Dh6djAKKSkBRvJZ4pCHNyRiDStJLGSOPAhsTUJRFziUs2O0AbetCQ7v69ERnif4E8GmBWz0PD0MIQRAM46BpRwXVZSaVb0AYag72oorKNaVPkM40gZ1dnPad34w/6XMNplY0gEZ2ASjKfcxamXDKa8DgIIn4bx2dVJmIwruxfCI9Qf4KRfUuOifYu0aw+K3pntpN/rDZ3NxtfVg2zH3WLgdM7QaHs75Cn59cbmzecOM4VGk98wbhPfNJVnZz8AUqpDvU1UrO6jFQdm9OFnBfN/gLOF+cDZFtLVBCXR5PVcIe75xjt7Xrp7ab+Utp+Aj++uYm9BAAA" target="_blank">Run the query</a>
+:::moniker-end
 
 ```kusto
 datatable(ip1_string:string, ip2_string:string)
@@ -84,8 +86,10 @@ datatable(ip1_string:string, ip2_string:string)
 
 ### Compare IPs using IP-prefix notation specified inside the IPv6/IPv4 strings and as additional argument of the `ipv6_compare()` function
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA61UTW+DMAy98yt86yp1kITwZWk/YIdJu09TRSGpInWACK162I+fC5kEa7uOauFg6Rm9Z7/YKfOOvs1OPZiGr23XmmqLQ1iBacRPqGmVNkfc1dV26b15EATw/HqQkLcKivqjoVhCbk9gDHlZtspaZcGDBc+Ez+PU5z5frIDOCGE9EvLViS/ksDEdMcjHQQ2Mhb0lXl23TsTYuppyBkISyQgRUUSA4xTyHs6zOgdOIWdygrMphiInN0hEq5QhplGJKhUFZlLGmGRZ38KVXDRUA1wkvTxFpx/f7OmaXEAkv0imlOOCOTn2H3LsplwyV47+fjFHSpzMhVq7gazK3vJLU0J3iqjpYMHyFBnXeiL9d2OnNIxfGsH+zuabiDiuO2Rn1EMv8w179z5BHTtFBtF27ncdPNGmH+K129/RSzB+Ar53f/kFFQW7YjMEAAA=" target="_blank">Run the query</a>
+:::moniker-end
 
 ```kusto
 datatable(ip1_string:string, ip2_string:string, prefix:long)

@@ -52,8 +52,10 @@ When the input table contains the special values `null`, `NaN`, `-inf` and `+inf
 
 The following example shows storm events by state in alphabetical order with the most recent storms in each state appearing first.
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAwsuyS/KdS1LzSsp5qpRyC9KSS1SSKpUCC5JLElVSCxO1gExi0pCMnNTFVJSi5MBfa8LRzAAAAA=" target="_blank">Run the query</a>
+:::moniker-end
 
 ```kusto
 StormEvents

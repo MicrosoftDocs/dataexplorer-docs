@@ -36,8 +36,10 @@ A dynamic array whose values are: *start*, *start* + *step*, ... up to and inclu
 
 The following example returns an array of numbers from one to eight, with an increment of three.
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAysoyswrUShSsFUoSsxLT9Uw1FGw0FEw1gQAs67sWxgAAAA%3D" target="_blank">Run the query</a>
+:::moniker-end
 
 ```kusto
 print r = range(1, 8, 3)
@@ -51,8 +53,10 @@ print r = range(1, 8, 3)
 
 The following example returns an array with all dates from the year 2007.
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAysoyswrUShSsFUoSsxLT9VISSxJLcnMTdUwMjAw1zUwBCJNHQVUUUMjXWOQqGGKJgDOx0s4PwAAAA%3D%3D" target="_blank">Run the query</a>
+:::moniker-end
 
 ```kusto
 print r = range(datetime(2007-01-01), datetime(2007-12-31), 1d)
@@ -66,8 +70,10 @@ print r = range(datetime(2007-01-01), datetime(2007-12-31), 1d)
 
 The following example returns an array with numbers between one and three.
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAysoyswrUShKzEtP1TDUUTDWBACGRU%2F4EQAAAA%3D%3D" target="_blank">Run the query</a>
+:::moniker-end
 
 ```kusto
 print range(1, 3)
@@ -80,8 +86,10 @@ print range(1, 3)
 
 The following example returns a range of hours between one hour and five hours.
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAysoyswrUShKzEtP1TDM0FEwzdAEAL8eicMTAAAA" target="_blank">Run the query</a>
+:::moniker-end
 
 ```kusto
 print range(1h, 5h)
@@ -96,9 +104,11 @@ print range(1h, 5h)
 
 The following example returns a truncated array as the range exceeds the maximum results limit. The example demonstrates that the limit is exceeded by using the [mv-expand](mv-expand-operator.md) operator to expand the array into multiple records and then counting the number of records.
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAysoyswrUShSsFUoSsxLT9Uw1DE0gAFNBV6uGoXcMt3UioLEvBSgKhA%2FOb80rwQAsKWN4TcAAAA%3D
 " target="_blank">Run the query</a>
+:::moniker-end
 
 ```kusto
 print r = range(1,1000000000) 

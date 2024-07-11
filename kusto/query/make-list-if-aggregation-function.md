@@ -39,8 +39,10 @@ If the input to the `summarize` operator is sorted, the order of elements in the
 
 The following example shows a list of names with more than 4 letters.
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAy2OsQrCMBRF90D+4dHJQhZFUSu6Ck4i3URCiq9p8CWBJB0UP95HLXc6Z7gcwgItHOFpCq8jXATjsckluWAV67eOve5cKkNDMdhairsUAFBd4hAqBXv1x6sZiXG5m/mMMVlks9rM5saPkcVWisdBilaKL+TRe5PcB8GbF2pyuWjXTw0KOIIwTFDDCdb1D5O20PKtAAAA" target="_blank">Run the query</a>
+:::moniker-end
 
 ```kusto
 let T = datatable(name:string, day_of_birth:long)

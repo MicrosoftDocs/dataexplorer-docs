@@ -34,8 +34,10 @@ Returns the number of elements in *array*, or `null` if *array* isn't an array.
 The following example shows the number of elements in the array.
 
 :::moniker range="azure-data-explorer"
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAysoyswrUUgsKkqsjM9JzUsvydAoSCwqTo3PKs7P01CPNtRRMNJRMNZRUErLLy1SilXX1AQAe4KK2TMAAAA=" target="_blank">Run the query</a>
+:::moniker-end
 :::moniker-end
 
 ```kusto

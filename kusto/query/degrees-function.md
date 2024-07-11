@@ -29,8 +29,10 @@ The corresponding angle in degrees for an angle specified in radians.
 
 ## Examples
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAysoyswrUUhJTS9KTS02ULCFMTUKMjU09U00dWAChmhyWoZ6pghZIyRZA00AiS3HB1UAAAA=" target="_blank">Run the query</a>
+:::moniker-end
 
 ```kusto
 print degrees0 = degrees(pi()/4), degrees1 = degrees(pi()*1.5), degrees2 = degrees(0)

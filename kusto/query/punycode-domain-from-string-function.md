@@ -30,8 +30,10 @@ Decodes input string from encoded Internationalized Domain Name in Applications 
 
 ## Example
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA1WOywrCMBBF94X+Q+jKgslGkCq4qQtBXLkVKWMyxmgykZhAC368fSDo3NXh3oGjIPa5WJwhSa9QrV8xGNJlnp3yjPVXtMT5DrkzIOpktUCVijn7KQ+GeEUgtmijvIEJwgf9Pzl23N6hkmKAPWmeIiwXMGLd4+oBQno3Pp3ZG9uIpJjyDgxtnom6wa2ZuLkG75pJ82tdfgCkob8XyAAAAA==" target="_blank">Run the query</a>
+:::moniker-end
 
 ```kusto
 datatable(encoded:string)

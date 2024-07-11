@@ -50,8 +50,10 @@ A copy of the input tabular result set, such that:
 
 ## Example
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAwsuyS/KdS1LzSsp5qpRKCjKz0pNLlFwzUsJycxN1VEILkksKgExgZKpFSWpeSkKLqVFiSWZ+XkKtjBlCroIdQCqSrMYUAAAAA==" target="_blank">Run the query</a>
+:::moniker-end
 
 ```kusto
 StormEvents

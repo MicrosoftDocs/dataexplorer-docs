@@ -33,8 +33,10 @@ If conversion isn't successful, the result is an empty string.
 
 ## Example
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA61S0U7DIBR971fct7qkriuhSEn8AN98N6Zh5TqJFUhh0wc/XtqOmenmfBBCIMA599x7rpIhznWPV9q1PgzabATMewEGw6v0LwJ6azaL7CGDOMoS7u53FKRSA3qPfrrNq4YsK8aXpK7HlRdQkVUxfY+H67UOiQ60h61HdRJXEjpB6a/QAqQ/UgHKojd5GF9h6xwOwCEC9+L25EfieIrAz4qbU2XfU31CvhKC10ogJ51oKGXipmnogRYuMp/lKGPGqQAXSpfUvenwPBfD2GimtmYOIcQpT/6Q9k9kcoX/lyuP2Qfge0CjQDvWdtJYozvZwy04OXhstduxdiT/6stDPy4+ATm+kta1AgAA" target="_blank">Run the query</a>
+:::moniker-end
 
 ```kusto
 datatable(ip_string: string, netmask: long)

@@ -39,8 +39,10 @@ Returns an estimate of the number of distinct values of *expr* in the group.
 
 This example shows how many types of storm events happened in each state.
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAwsuyS/KdS1LzSsp5qpRKC7NzU0syqxKVXDJTEtLLQIKQ+RsU5LzS/NKNMC8kMqCVE2FpEqF4JLEklSgtvyilNQikACaLgBDbD8AXQAAAA==" target="_blank">Run the query</a>
+:::moniker-end
 
 ```kusto
 StormEvents

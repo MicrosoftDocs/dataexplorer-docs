@@ -91,8 +91,10 @@ The following example uses the [invoke operator](../query/invoke-operator.md) to
 To use a query-defined function, invoke it after the embedded function definition.
 
 :::moniker range="azure-data-explorer"
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA22TTZObMAyG7/kVunRiOtBsOj2lw633Htrp1WNAbLzxB2OLENrtf68MZNOw4RBifTzSKxmDBBGDxigbP7iobGdQtqYUVJmD+JjlQLL25hApaPecw3h3aqKkteE+YiLyP9mqmnw4aEfZ5s8G+OEK0/sV8ELoGmAWlMDZvXVSt3jRkaKYCjB5dMrqWjxl3BMXeRA5votc8aesRW6rg2BDDgE7VCT273pN2kOP82+WSLsdgOo6M4KCqNOowPgBOhUjtNoQBqiw9QEh9lVxxS1N2HMx5yaZ5IHGDn0rvinCn9riourmaHxfGa7r3QQQi4igmzL4QbreVhhEVuwX/nBELsxu+LBWAiUPC3WyiJVr9/nTEzPgwZPUPtARe2tV0L9x2ZdVJ5SGFyD4/Lab/6yjXC+C1xQ5plLPslP1SVyvUZ6Qt0s0sa6pXfAvWFOhBjXOYey8Ys/K9DzHidi7iZlqZJu/XzcNWi+ndubN7zevU3fFfAQeZFn73pFIs4a0ix/EkiESdrA/QjXC9/gLA+dpd/YnfPjFiO1b5jaHLVPTq/YqRJR3rsU2R3zJGBt4KHx3iKPqowoEg6ajuMz3u1wz+COcPbG8obJ/VvBUm8oDAAA=" target="_blank">Run the query</a>
+:::moniker-end
 ::: moniker-end
 
 ```kusto

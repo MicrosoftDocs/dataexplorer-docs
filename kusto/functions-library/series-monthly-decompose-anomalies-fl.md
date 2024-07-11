@@ -120,8 +120,10 @@ The input table must contain `_key`, `_date` and `_val` columns. The query build
 
 To use a query-defined function, invoke it after the embedded function definition.
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/https%3a%2f%2fhelp.kusto.windows.net/databases/Samples?query=H4sIAAAAAAAEAE2O0QrCMAxF3wX%2fIY8T5if0W0JpI6trm9HE6cCPt920%2bBAI94Zz4ikxJs46xQ1Vzqc3LIXv5BRwps3UGQG9VTIqdVttNHXaXcgrzwRCJZB0hifHaWEhtJmTja27xeHyR74WyjYRND7uAhWzO0ZofPwK6pmnAgdnc5MtCs%2bg0%2fBLOD5SFtNFI7yObP%2b19xVX9R%2f75FBs6gAAAA%3d%3d" target="_blank">Run the query</a>
+:::moniker-end
 
 ```kusto
 let series_monthly_decompose_anomalies_fl=(tbl:(_key:string, _date:datetime, _val:real), threshold:real=1.5)

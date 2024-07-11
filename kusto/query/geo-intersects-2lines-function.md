@@ -52,8 +52,10 @@ dynamic({"type": "MultiLineString","coordinates": [[line_1, line_2, ..., line_N]
 
 The following example checks whether some two literal lines intersects.
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA52QsQqDMBRF935FyKSQij6NL7H0D7p1FBHRIAEbxWSR0n9vWou1a4e3nAv3XN6gHBm0UVc3a9Mn5Ey6xTQ33QZ36pZJ0YJetpgy2o7j3GnTOGVpUZZHTCOJQoJkWRyh4AnnFVuxiGWcrhhySKrqEZ4Ow48P/vJ5i+RrsQDcfJhxDm+MEvOPb/I9jvhTs1Wts17Yq7H+ghpec2ywewLbLwyfFywOhCIBAAA=" target="_blank">Run the query</a>
+:::moniker-end
 
 ```kusto
 let lineString1 = dynamic({"type":"LineString","coordinates":[[-73.978929,40.785155],[-73.980903,40.782621]]});
@@ -89,8 +91,10 @@ NY_Manhattan_Roads
 
 The following example will return a null result because one of lines is invalid.
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA52PQQqDMBRE9z1FyCpCKjE2TWLpDbrrUoKIfiQQo5h0IaV3ryVQ7LbLmeHP++MgImc93ONi/VCgK+pX3462I08c1xlwhW/fGFPcTdPSW99GCLiq66Mscy2V5pqeWC6VKIQwNNmKaVYmm595YcwruxzcD4//xdsoWqRixaVIxfN2EJEN/uEcGWBqNglLgC6Ghn+Igex20v0TWfYGvZfHxAYBAAA=" target="_blank">Run the query</a>
+:::moniker-end
 
 ```kusto
 let lineString1 = dynamic({"type":"LineString","coordinates":[[-73.978929,40.785155],[-73.980903,40.782621]]});

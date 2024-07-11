@@ -39,8 +39,10 @@ Rows in *T* for which *string* is in *col*.
 
 ## Example
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAwsuyS/KdS1LzSsp5qpRKC7NzU0syqxKVUgFCcUn55fmldiCSQ1NhaRKheCSxJJUoMLyjNSiVAhPITk/ryQxM684PrlYQckxWAkAynmLoFMAAAA=" target="_blank">Run the query</a>
+:::moniker-end
 
 ```kusto
 StormEvents

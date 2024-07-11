@@ -53,8 +53,10 @@ An event with `Id==1` will appear at any `Timeline` slot, an event with `Id==2` 
 
 Here are 20 lines of the data:
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA12PzwqDMAzG7z7FdxlsMFAHO40+wGDH3aWzcdY/jdSCE3z4tVM3WS4J+ZJfvjTkkCnpJASsNE/CXbfUaEMoLLdI4Rhp4gO9ow5pBB8T6OXIKGRZTaNfXdsVa4NaGyW0MWSxn5lXtaGdV9QfRqQHsJnrBTeUZDeOdgEkBJJF7ixXlLvvwNHrlyiOcWOuA6ugAUHowQVcSQifRp9/owlslbf4GH8HZJ8HRshed7ImnJI3eyONGCMBAAA=" target="_blank">Run the query</a>
+:::moniker-end
 
 ```kusto
 let _data = range Timeline from 1 to 10000 step 1
@@ -97,8 +99,10 @@ Let's define a session in next terms: session considered to be active as long as
 
 The next query shows the count of active sessions according to the above definition.
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA12PzQrCMBCE732KuQgKBRvQg0iOHrx7L6HZarRuSrr+gQ/vWqsUh0CWzO6XnYYEpXfiYJEc7wm7cKYmMKFO8QwDiVip0Am1MBlUT9BdiD3K8kQPnfw+H2NgnAJ7G5gpYfpBbv0ItiwG1B/Gmhkif+oBdztQGi00eYOsRTHYbYpHquTXkKu/zuZzbJQZa/SxPNWBg4TIWZ8z01+vrrk4IXTUdWqUVbywTLc+H6GMnkLVXzkWZqaTSbfVWO+O6uCSvADwRV6RPgEAAA==" target="_blank">Run the query</a>
+:::moniker-end
 
 ```kusto
 let _data = range Timeline from 1 to 9999 step 1

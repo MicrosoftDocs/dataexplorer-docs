@@ -46,8 +46,10 @@ For example, the following query uses the non-deterministic tabular [sample oper
 
 **Behavior without using the materialize function**
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAytKzEtPVahQSCvKz1UwVCjJVzA0MFAoLkktUDDk5apRKE7MLchJhbATixVCQHRpXmZ+nkIIAOuM1MA7AAAA" target="_blank">Run the query</a>
+:::moniker-end
 
 ```kusto
 range x from 1 to 100 step 1
@@ -65,8 +67,10 @@ range x from 1 to 100 step 1
 
 **Behavior using the materialize function**
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAytKzEtPVahQSCvKz1UwVCjJVzA0MFAoLkktUDDk5apRKE7MLchJhbATixUyMvNK9HITS1KLMhNzMqtSU2xLikpTFUJA0qV5mfl5CiEAbnko81IAAAA=" target="_blank">Run the query</a>
+:::moniker-end
 
 ```kusto
 range x from 1 to 100 step 1
@@ -88,8 +92,10 @@ Non-deterministic scalar functions can be forced to calculate exactly once by us
 
 For example, the following query uses the non-deterministic function, [rand()](rand-function.md):
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA8tJLVGoULBV0NBUqC5KzEvRMDQwMNCsteblygHKVEJlSvKLkxNzEos0EErAagqKMvOA+nVAqBKIAFmz1YBOAAAA" target="_blank">Run the query</a>
+:::moniker-end
 
 ```kusto
 let x = () {rand(1000)};
