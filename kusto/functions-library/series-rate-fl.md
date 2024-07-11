@@ -102,7 +102,7 @@ To use a query-defined function, invoke it after the embedded function definitio
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA5WUzY7TMBDH73mKua0jUpr2AirkDRBCWsQ1cuLJxjSxI3uSbGF5d8b5aNWwApGL4/n4z2/ksRsk8Og0+txJwrxqMkFFcxKkW/Qk2+6kLka2ukxgkE2P6zZOwOSFNv6kDWWHBCr9nDv0SKfC2iYj12Mc/YyAPxac1hcYa3R4C4X///Z7gC/Otkg19h5K2xtCxz/SgDXNBZ4s9N1Srh12suvYOKEDWaBLh7YSyvZFgzFncNwULACfCY1iReewJM2uDHRViTn3I3QOh3nDvd9t0rdpvLDpChhsqaewdCg9ehgRpPd9i6AJRulhbp+B0gS8BakUNNLTnLjQr0B9m99BOTvmbGQ5cbPHm6TZgSqfUbIF6c1GbslirVY6/WMlz6CVZ8wb7UlspOK1Um8CTpiW68EaS+J6uPEG6TpRjywvnZOX3Ne6otzpp5puA7cOVrxM3Ovhk+sael9JEacsU+37gpws7/RvJH9JVHrQCoWiBA74Lv73VJbWDOjIQ8XjyTXKsw8H7JEdym8KDa8QLi3NTW/IwuX8k21IGHmN7Jz9zue0k6O8QMAO7luri/CqH/2KPkT7faSwtXl3vVDRC2gz2DOupdjudMnvgnj4ylqPQeshgYfPssWwfpIFNj78fZNNWEanCYPBVhVPQWbsKOKdYv7AIo7pMd0djrv0PaTpKU15SrYll4dIHIPLcffopj7KWjq+PZpqMUdmzVQ8/g0kHb6PxQQAAA==" target="_blank">Run the query</a>
-:::moniker end
+:::moniker-end
 
 ```kusto
 let series_rate_fl=(tbl:(timestamp:dynamic, value:dynamic), n_bins:int=1, fix_reset:bool=true)
@@ -158,7 +158,7 @@ To use a query-defined function, invoke it after the embedded function definitio
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA5WUzY7TMBDH732KUS8bi5SmvYACeQOEkBZxjZx4sjF17MieJFtY3p3JV6uWFQhfHI9n/vMbeSYGCQJ6jSH3kjCvTBZRYdKIdIOBZNOm6mxlo8sYemk6XI8iBpsX2oZUW8oOMVT6OfcYkNLCOZOR71Bsfm6AFwtO+wsMNXq8usL/r/0e4It3DVKNXYDSdZbQ84e04Kw5w5ODrl3SNf1Oti0bJ3QgB3Ru0VWRcl1hUHAE+03OEeAzoVWs6D2WpPkqA11V0Rz7EVqP/Xzg2m8OydtELGy6AgZb8iksPcqAAQYEGULXIGiCQQaYy2egJIbgQCoFRgaaAxf6Fahr8hso74acjSwXXe3iLmi+QJXPKNmC9OZObolirUZ6/WMlz6CRJ8yNDhTdSYk1U2dHnLFbLg9rHUWXxxV3SJeOemR56b0856HWFeVeP9V0bbi1scTSca+7T1cX19tMijhk6erQFeRleaN/JflLoNK9VhgpiuGA78S/u7J0tkdPASpuT85RnsL4wAH5QoW7RP0rhEtJc9F3ZONw/snWx4y8erbefed32slBnmHEHq+vpS7Cq/7m14fNfr+5nf1oOfJ0eV2OBoWNy9vLvMXw8JUVH0fFBz58lg2O+ydZoAnj1zdpxm3wmnAybJUOp226DUoetmwwzp0KWZ6yYx2DqyrulMy6IRI7xRAjb3RMjsnucNwl7yFJ0iQRl59NdkjE5oWnxyr0U3FlLT2PlKZ6gc/MxCJ+A6Niv4DaBAAA" target="_blank">Run the query</a>
-:::moniker end
+:::moniker-end
 
 ```kusto
 let series_rate_fl=(tbl:(timestamp:dynamic, value:dynamic), n_bins:int=1, fix_reset:bool=true)

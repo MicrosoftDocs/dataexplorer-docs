@@ -33,12 +33,12 @@ The examples in this tutorial use the `StormEvents` table, which is publicly ava
 To run the following queries, you need a query environment with access to the sample data. You can use one of the following:
 :::moniker range="azure-data-explorer"
 * A Microsoft account or Microsoft Entra user identity to sign in to the [help cluster](https://dataexplorer.azure.com/clusters/help) 
-:::moniker end
+:::moniker-end
 
 :::moniker range="microsoft-fabric"
 * A Microsoft account or Microsoft Entra user identity 
 * A [Fabric workspace](/fabric/get-started/create-workspaces) with a Microsoft Fabric-enabled [capacity](/fabric/enterprise/licenses.md#capacity)
-:::moniker end
+:::moniker-end
 
 ## Use the join operator
 

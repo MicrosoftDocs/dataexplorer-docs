@@ -79,7 +79,7 @@ Create a materialized view to get the latest update per column, using the [arg_m
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA6WTUWvDIBDH3/Mpjj4ZMKBnYUzY0/YR2qcxiq22CJqOxEA39uGnSZs2pCkZMwZOz9//7vDUKsRv6wyQlfWmDsp/Sq2CCXFFYddoWYfKlgcKVkt3TMbu6PjVxKspWjPP3jOI46JCkKEoOCtwCYxJxnIKi9cFBU4h/UghYaRsnMvpNMrP6LpDbxjAqCHEAxYfsGJm/NvUkf4lcyZ5H33IwHKmxKWAt7HEhJ19ZD9gTsGUGvqr3aS7gxew+z2xdTpI0k4k+6j8+YkVjMcZd3vwnFs7Bmo4UsN/qImRmpihFgutG+9VZb8NqOqw8epEhjV3XRupu27sOnnKLbruvudun0gO26/4PH4BCngxSkwDAAA=" target="_blank">Run the query</a>
-:::moniker end 
+:::moniker-end 
 
 ```kusto
 .create materialized-view ItemHistory on table Events
