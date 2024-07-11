@@ -2,6 +2,9 @@
 ms.topic: include
 ms.date: 02/05/2024
 ---
+
+<!-- //TODO remove this and redirect all links to the entra ID app doc in kusto -->
+
 1. Sign in to your Azure subscription via Azure CLI. Then authenticate in the browser.
 
    ```azurecli-interactive

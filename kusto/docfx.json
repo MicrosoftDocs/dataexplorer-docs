@@ -16,35 +16,125 @@
           "README.md",
           "LICENSE",
           "LICENSE-CODE",
-          "ThirdPartyNotices.md",
-          "SECURITY.md"
-        ]
+          "ThirdPartyNotices.md"
+        ],
+        "src": "./",
+        "group": "gr-kusto"
       }
     ],
     "resource": [
       {
         "files": [
+          "**/*.svg",
           "**/*.png",
-          "**/*.jpg"
+          "**/*.jpg",
+          "**/*.jpeg",
+          "**/*.gif"
         ],
         "exclude": [
           "**/obj/**",
-          "**/includes/**",
           "_themes/**",
           "_themes.pdf/**",
           "**/docfx.json",
           "_repo.en-us/**"
-        ]
+        ],
+        "src": "./",
+        "group": "gr-kusto"
       }
     ],
+    "groups": {
+      "gr-kusto": {
+        "moniker_range": "microsoft-fabric || azure-data-explorer || azure-monitor || microsoft-sentinel ",
+        "dest": "kusto-docs"
+      }
+    },
     "overwrite": [],
     "externalReference": [],
     "globalMetadata": {
-      "breadcrumb_path": "~/breadcrumb/kusto-docs/toc.yml",
+      "searchScope": [
+        "Kusto",
+        "kusto",
+        "KQL"
+      ],
+      "breadcrumb_path": "/kusto/breadcrumb/toc.json",
+      "brand": "azure",
+      "uhfHeaderId": "azure",
       "feedback_system": "Standard",
-      "permissioned-type": "public"
+      "recommendations": true,
+      "_op_documentIdPathDepotMapping": {
+        "./kusto": {
+          "depot_name": "Learn.kustolang",
+          "folder_relative_path_in_docset": "kusto/"
+        }
+      },
+      "contributors_to_exclude": [
+        "PRmerger",
+        "PRMerger9",
+        "PRMerger17",
+        "PRMerger5",
+        "PRMerger4",
+        "PRMerger3",
+        "PRMerger-2",
+        "openpublishingbuild",
+        "tysonn",
+        "hexiaokai",
+        "v-anpasi",
+        "kiwhit",
+        "DuncanmaMSFT",
+        "Saisang",
+        "deneha",
+        "atookey",
+        "chbain",
+        "garycentric",
+        "GitHubber17",
+        "itechedit",
+        "Ja-Dunn",
+        "Jak-MS",
+        "jborsecnik",
+        "jomolnar",
+        "KatieCumming",
+        "Kellylorenebaker",
+        "ktoliver",
+        "Lisaco88",
+        "MattGLaBelle",
+        "megvanhuygen",
+        "PMEds28",
+        "rjagiewich",
+        "rmca14",
+        "ShannonLeavitt",
+        "ShawnJackson",
+        "TedA-M",
+        "tfosmark",
+        "tiburd",
+        "trishamc",
+        "ttorble",
+        "v-albemi",
+        "v-dansch",
+        "v-rihow",
+        "v-shils",
+        "v-thepet",
+        "sdwheeler",
+        "meganbradley"
+      ],
+      "author": "shsagir",
+      "ms.author": "shsagir",
+      "ms.service": "kusto",
+      "services": "kusto",
+      "titleSuffix": "Kusto Query Language"
     },
-    "fileMetadata": {},
-    "template": []
+    "fileMetadata": {
+      "monikerRange": {
+        "access-control/**": "microsoft-fabric || azure-data-explorer",
+        "concepts/**": "microsoft-fabric || azure-data-explorer",
+        "management/**": "microsoft-fabric || azure-data-explorer",
+        "functions-library/**": "microsoft-fabric || azure-data-explorer",
+        "tools/**": "microsoft-fabric || azure-data-explorer",
+        "query/**": "microsoft-fabric || azure-data-explorer || azure-monitor || microsoft-sentinel",
+        "api/**": "microsoft-fabric || azure-data-explorer"
+      }
+    },
+    "template": [],
+    "dest": "kusto-docs",
+    "markdownEngineName": "markdig"
   }
 }

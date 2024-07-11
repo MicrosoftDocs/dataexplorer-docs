@@ -14,9 +14,9 @@ The commands in this article can be used to create or alter a delta [external ta
 
 ## Permissions
 
-To `.create` requires at least [Database User](../management/access-control/role-based-access-control.md) permissions, and to `.alter` requires at least [Table Admin](../management/access-control/role-based-access-control.md) permissions.
+To `.create` requires at least [Database User](../access-control/role-based-access-control.md) permissions, and to `.alter` requires at least [Table Admin](../access-control/role-based-access-control.md) permissions.
 
-To `.create-or-alter` an external table using managed identity authentication requires [AllDatabasesAdmin](../management/access-control/role-based-access-control.md) permissions.
+To `.create-or-alter` an external table using managed identity authentication requires [AllDatabasesAdmin](../access-control/role-based-access-control.md) permissions.
 
 ## Syntax
 

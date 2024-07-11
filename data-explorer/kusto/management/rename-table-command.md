@@ -13,7 +13,7 @@ The `.rename tables` command changes the name of a number of tables in the datab
 
 ## Permissions
 
-You must have at least [Table Admin](../management/access-control/role-based-access-control.md) permissions to run this command.
+You must have at least [Table Admin](../access-control/role-based-access-control.md) permissions to run this command.
 
 ## Syntax
 
