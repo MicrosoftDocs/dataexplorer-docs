@@ -13,7 +13,6 @@ This article describes continuous export of data from Kusto to an [external tabl
 
 :::moniker range="azure-data-explorer"
 By default, continuous export runs in a distributed mode, where all nodes export concurrently, so the number of artifacts depends on the number of nodes in the cluster. Continuous export isn't designed for low-latency streaming data out of your cluster.
-:::moniker-end
 
 To enable continuous data export, [create an external table](../external-tables-azure-storage.md) and then [create a continuous export definition](create-alter-continuous.md) pointing to the external table.
 
