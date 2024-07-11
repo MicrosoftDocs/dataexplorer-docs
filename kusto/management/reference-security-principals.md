@@ -15,7 +15,7 @@ The authorization model allows for the use of Microsoft Entra user and applicati
 
 ## Microsoft Entra ID
 
-The recommended way to access your cluster is by authenticating to the Microsoft Entra service. Microsoft Entra ID is an identity provider capable of authenticating security principals and coordinating with other identity providers, such as Microsoft's Active Directory.
+The recommended way to access your environment is by authenticating to the Microsoft Entra service. Microsoft Entra ID is an identity provider capable of authenticating security principals and coordinating with other identity providers, such as Microsoft's Active Directory.
 
 Microsoft Entra ID supports the following authentication scenarios:
 
@@ -25,7 +25,7 @@ Microsoft Entra ID supports the following authentication scenarios:
 > [!NOTE]
 >
 > * Microsoft Entra ID does not allow authentication of service accounts that are by definition on-premises AD entities. The Microsoft Entra equivalent of an AD service account is the Microsoft Entra application.
-> * Only supports Security Group (SG) principals and not Distribution Group (DG) principals are supported. An attempt to set up access for a DG on the cluster will result in an error.
+> * Only supports Security Group (SG) principals and not Distribution Group (DG) principals are supported. An attempt to set up access for a DG will result in an error.
 
 <a name='referencing-azure-ad-principals-and-groups'></a>
 

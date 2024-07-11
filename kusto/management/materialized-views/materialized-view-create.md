@@ -342,7 +342,7 @@ If you experience failures in view creation, try changing these properties:
 
   Decreasing this value can be helpful when creation fails on memory limits or query timeouts. Increasing this value can speed up view creation, assuming that the database can execute the aggregation function on more records than the default.
 
-* `Concurrency`: The ingest operations, running as part of the backfill process, run concurrently. By default, concurrency is `min(number_of_nodes * 2, 5)`. You can set this property to increase or decrease concurrency. We recommend increasing this value only if the databse's CPU is low, because the increase can significantly affect the satabse's CPU consumption.
+* `Concurrency`: The ingest operations, running as part of the backfill process, run concurrently. By default, concurrency is `min(number_of_nodes * 2, 5)`. You can set this property to increase or decrease concurrency. We recommend increasing this value only if the databse's CPU is low, because the increase can significantly affect the database's CPU consumption.
 
 For example, the following command will backfill the materialized view from `2020-01-01`. The maximum number of records in each ingest operation is 3 million. The command will execute the ingest operations with concurrency of `2`.
 

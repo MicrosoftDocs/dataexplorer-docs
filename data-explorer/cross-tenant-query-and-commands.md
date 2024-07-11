@@ -15,7 +15,7 @@ To set the `trustedExternalTenants` on the cluster, use [ARM Templates](/azure/t
 The following examples show how to define trusted tenants in the portal and with an API request.
 
 > [!NOTE]
-> The principal who will run queries or commands must also have a relevant database role. See also [role-based access control](../access-control/role-based-access-control.md). Validation of correct roles takes place after validation of trusted external tenants.
+> The principal who will run queries or commands must also have a relevant database role. See also [role-based access control](kusto/access-control/role-based-access-control.md). Validation of correct roles takes place after validation of trusted external tenants.
 
 ## [Portal](#tab/portal)
 
@@ -25,7 +25,7 @@ The following examples show how to define trusted tenants in the portal and with
 
 1. Define the desired tenants permissions.
 
-:::image type="content" source="../../media/define-trusted-external-tenants/trusted-external-tenants.png" alt-text="Screenshot of the Security blade." lightbox="../../media/define-trusted-external-tenants/trusted-external-tenants.png":::
+:::image type="content" source="media/define-trusted-external-tenants/trusted-external-tenants.png" alt-text="Screenshot of the Security blade." lightbox="media/define-trusted-external-tenants/trusted-external-tenants.png":::
 
 ## [API](#tab/api)
 
@@ -37,14 +37,14 @@ The following examples show how to define trusted tenants in the portal and with
 
 **Allow all tenants**
 
-The trustedExternalTenants array supports also all-tenants star ('*') notation, which allows queries and commands from all tenants. 
+The trustedExternalTenants array supports also all-tenants star ('*') notation, which allows queries and commands from all tenants.
 
 `trustedExternalTenants: [ { "value": "*" }]`
 
 > [!NOTE]
 > The default value for `trustedExternalTenants` is all tenants: `[ { "value": "*" }]`. If the external tenants array was not defined on cluster creation, it can be overridden with a cluster update operation. An empty array means that only identities of the clusters tenant are allowed to authenticate to this cluster.
 
-[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+[!INCLUDE [syntax-conventions-note](includes/syntax-conventions-note.md)]
 
 ### Examples
 
@@ -52,10 +52,10 @@ The following example allows specific tenants to run queries on the cluster:
 
 ```json
 {
-    "properties": { 
+    "properties": {
         "trustedExternalTenants": [
-            { "value": "tenantId1" }, 
-            { "value": "tenantId2" }, 
+            { "value": "tenantId1" },
+            { "value": "tenantId2" },
             ...
         ]
     }
@@ -66,7 +66,7 @@ The following example allows all tenants to run queries on the cluster:
 
 ```json
 {
-    "properties": { 
+    "properties": {
         "trustedExternalTenants": [  { "value": "*" }  ]
     }
 }
@@ -84,7 +84,7 @@ PATCH https://management.azure.com/subscriptions/12345678-1234-1234-1234-1234567
 
 ## Add Principals
 
-After updating the `trustedExternalTenants` property, you can give access to principals from the approved tenants. Use the Azure portal to give a principal [cluster level permissions](../../manage-cluster-permissions.md) or [database permissions](../../manage-database-permissions.md). Alternatively, to give access to a database, table, function, or materialized view level, use [management commands](../management/security-roles.md).
+After updating the `trustedExternalTenants` property, you can give access to principals from the approved tenants. Use the Azure portal to give a principal [cluster level permissions](manage-cluster-permissions.md) or [database permissions](manage-database-permissions.md). Alternatively, to give access to a database, table, function, or materialized view level, use [management commands](kusto/management/security-roles.md).
 
 ## Limitations
 

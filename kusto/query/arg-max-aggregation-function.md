@@ -39,7 +39,7 @@ Find the maximum latitude of a storm event in each state.
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAwsuyS/KdS1LzSspVuCqUSguzc1NLMqsSlVILEqPz02s0HBKTc/M80ks0VGAsPKTE0sy8/M0FZIqFYJLEktSATqyPZtCAAAA" target="_blank">Run the query</a>
-::: moniker end
+::: moniker-end
 
 ```kusto
 StormEvents 
@@ -67,7 +67,7 @@ Find the last time an event with a direct death happened in each state showing a
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAwsuyS/KdS1LzSsp5qpRKM9ILUpVcElNLMkodsksSk0uUbBTMABKFJfm5iYWZValKiQWpcfnJlZoBJckFpWEZOam6ihoaSokVSoABUpSAQPollZPAAAA" target="_blank">Run the query</a>
-:::moniker end
+:::moniker-end
 
 ```kusto
 StormEvents

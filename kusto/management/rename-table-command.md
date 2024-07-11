@@ -36,8 +36,12 @@ You must have at least [Table Admin](../access-control/role-based-access-control
 **Remarks**
 
 This command operates on tables of the database in scope only.
+:::moniker range="azure-data-explorer"
 Table names can't be qualified with cluster or database names.
-
+:::moniker-end
+:::moniker range="microsoft-fabric"
+Table names can't be qualified, for instance, with database names.
+:::moniker-end
 This command doesn't create new tables, nor does it remove existing tables.
 The transformation described by the command must be such that the number
 of tables in the database doesn't change.

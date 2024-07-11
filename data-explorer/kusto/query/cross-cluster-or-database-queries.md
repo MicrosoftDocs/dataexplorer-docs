@@ -13,7 +13,7 @@ This article explains how to execute queries that involve entities located outsi
 
 ## Prerequisites
 
-* If the clusters are in different tenants, follow the instructions in [Allow cross-tenant queries and commands](../access-control/cross-tenant-query-and-commands.md).
+* If the clusters are in different tenants, follow the instructions in [Allow cross-tenant queries and commands](../../cross-tenant-query-and-commands.md).
 
 ## Identify the cluster and database in context
 
@@ -177,4 +177,4 @@ cluster("OtherCluster").database("OtherDb").GetDataPivot()
 ## Related content
 
 * [Cross-cluster join](../query/join-cross-cluster.md)
-* [Allow cross-tenant queries and commands](../access-control/cross-tenant-query-and-commands.md)
+* [Allow cross-tenant queries and commands](../../cross-tenant-query-and-commands.md)
