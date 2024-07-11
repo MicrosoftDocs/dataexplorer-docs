@@ -16,7 +16,7 @@ The `ipv6_lookup` plugin looks up an IPv6 value in a lookup table and returns ro
 ## Parameters
 
 | Name | Type | Required | Description |
-|--|--|--|--|
+|---|---|---|---|
 | *T* | `string` |  :heavy_check_mark: | The tabular input whose column *SourceIPv6Key* is used for IPv6 matching.|
 | *LookupTable* | `string` |  :heavy_check_mark: | Table or tabular expression with IPv6 lookup data, whose column *LookupKey* is used for IPv6 matching. IPv6 values can be masked using [IP-prefix notation](#ip-prefix-notation).|
 | *SourceIPv6Key* | `string` |  :heavy_check_mark: | The column of *T* with IPv6 string to be looked up in *LookupTable*. IPv6 values can be masked using [IP-prefix notation](#ip-prefix-notation).|
