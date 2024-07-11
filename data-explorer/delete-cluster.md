@@ -7,7 +7,9 @@ ms.date: 08/27/2023
 
 # Delete an Azure Data Explorer cluster
 
-This article explains how to delete an Azure Data Explorer cluster.
+This article explains how to delete an Azure Data Explorer cluster. When a cluster is deleted, it enters a soft-delete period for 14 days, during which it is recoverable and can be restored. After 14 days, the cluster is permanently deleted and cannot be restored. During the soft delete period, you can't create another cluster with the same name.
+
+To delete only table records, see [Soft delete overview](kusto/concepts/data-soft-delete.md)
 
 ## Prerequisites
 
@@ -28,8 +30,9 @@ To delete your Azure Data Explorer cluster:
 1. In the **Delete cluster** window, type in the name of the cluster. Then, select **Delete**.
 
     > [!CAUTION]
-    > Deleting a cluster is a permanent action and cannot be undone. All cluster content will be lost.
-    
+    > Deleting a cluster is a permanent action and cannot be undone. All cluster content will be lost. To recover the cluster in the initial 14 days soft-delete period, please open a support ticket.
+
+
 ## Related content
 
 * [Troubleshoot: Failure to create or delete a database or table](troubleshoot-database-table.md)
