@@ -168,7 +168,7 @@ Python engine 3.10.8 + common data science and ML packages
 | zipp | 3.15.0 |
 
 
-## [3.10.8 DL (Preview)](#tab/python3-10-8-DL)
+## [3.10.8 DL](#tab/python3-10-8-DL)
 
 Not supported
 
@@ -345,7 +345,7 @@ Python engine 3.10.8 + common data science and ML packages
 | zict | 2.2.0 |
 | zipp | 3.15.0 |
 
-## [3.10.8 DL (Preview)](#tab/python3-10-8-DL)
+## [3.10.8 DL](#tab/python3-10-8-DL)
 
 Python engine 3.10.8 + common data science and ML packages + deep learning packages (tensorflow & torch)
 
