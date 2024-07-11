@@ -142,19 +142,11 @@ To define continuous export to a delta table, do the following steps:
 * Records in source table must be ingested to the table directly, using an [update policy](../update-policy.md), or [ingest from query commands](../data-ingestion/ingest-from-query.md). If records are moved into the table using [.move extents](../move-extents.md) or using [.rename table](../rename-table-command.md), continuous export might not process these records. See the limitations described in the [Database Cursors](../database-cursor.md#restrictions) page.
 * If the artifacts used by continuous export are intended to trigger Event Grid notifications, see the [known issues section in the Event Grid documentation](/azure/data-explorer/ingest-data-event-grid-overview.md#known-event-grid-issues).
 
-:::moniker range="azure-data-explorer"
 **Cross-database and cross-cluster**:
 
 * Continuous export doesn't support cross-cluster calls.
 * Continuous export supports cross-database calls only for dimension tables. All fact tables must reside in the local database. See more details in [Export from fact and dimension tables](#export-from-fact-and-dimension-tables).
 * If the continuous export includes cross-database calls, it must be configured with a [managed identity](continuous-export-with-managed-identity.md).
-::: moniker-end
-
-:::moniker-range="microsoft-fabric"
-**Cross-database**:
-
-* Continuous export supports cross-database calls only for dimension tables. All fact tables must reside in the local database. See more details in [Export from fact and dimension tables](#export-from-fact-and-dimension-tables).
-::: moniker-end
 
 **Policies**:
 
