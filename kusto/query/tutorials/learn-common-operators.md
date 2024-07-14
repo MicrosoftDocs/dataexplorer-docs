@@ -43,12 +43,17 @@ The examples in this tutorial use the `StormEvents` table, which is publicly ava
 The examples in this tutorial use the `StormEvents` table, which is publicly available in the **Weather analytics** [sample data](/fabric/real-time-intelligence/sample-gallery).
 ::: moniker-end
 
-
 ## Prerequisites
 
 To run the following queries, you need a query environment with access to the sample data. You can use one of the following:
+:::moniker range="azure-data-explorer"
 * A Microsoft account or Microsoft Entra user identity to sign in to the [help cluster](https://dataexplorer.azure.com/clusters/help) 
+:::moniker-end
+
+:::moniker range="microsoft-fabric"
+* A Microsoft account or Microsoft Entra user identity 
 * A [Fabric workspace](/fabric/get-started/create-workspaces) with a Microsoft Fabric-enabled [capacity](/fabric/enterprise/licenses.md#capacity)
+:::moniker-end
 
 ## Count rows
 

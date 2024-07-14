@@ -60,7 +60,7 @@ There are several query possibilities:
 * Add a `datascope=...` text immediately after a table reference in the query body.
    Possible values are `all` and `hotcache`.
 
-The `default` value indicates use of the database default settings, which determine that the query should cover all data.
+The `default` value indicates use of the default settings, which determine that the query should cover all data.
 
 If there's a discrepancy between the different methods, then `set` takes precedence over the client request property. Specifying a value for a table reference takes precedence over both.
 

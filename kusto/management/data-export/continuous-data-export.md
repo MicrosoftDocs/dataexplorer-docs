@@ -144,6 +144,7 @@ To define continuous export to a delta table, do the following steps:
 * If the artifacts used by continuous export are intended to trigger Event Grid notifications, see the [known issues section in the Event Grid documentation](/azure/data-explorer/ingest-data-event-grid-overview.md#known-event-grid-issues).
 
 :::moniker range="azure-data-explorer"
+:::moniker range="azure-data-explorer"
 **Cross-database and cross-cluster**:
 
 * Continuous export doesn't support cross-cluster calls.
