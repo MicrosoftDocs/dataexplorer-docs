@@ -14,7 +14,7 @@ ms.date: 06/28/2023
 Access control is based on authentication and authorization. Each query and command on an Azure Data Explorer resource, such as a cluster or database, must pass both authentication and authorization checks.
 :::moniker-end
 
-:::moniker range="microsoft-fabriccazure-data-explorer"
+:::moniker range="microsoft-fabric"
 Access control is based on authentication and authorization. Each query and command on a Fabric resource, such as an Eventhouse or dataabse, must pass both authentication and authorization checks.
 :::moniker-end
 

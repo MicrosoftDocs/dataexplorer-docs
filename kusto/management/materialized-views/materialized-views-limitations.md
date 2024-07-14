@@ -51,7 +51,7 @@ ms.date: 10/15/2022
 * Use the leader cluster to monitor follower database materialized views. For more details, see [Materialized views in follower databases](materialized-views-monitoring.md#materialized-views-in-follower-databases).
 :::moniker-end
 :::moniker range="microsoft-fabric"
-* Use the leader Eventhouse to monitor follower database materialized views. For more details, see [Monitor materialized views](fabric/real-time-intelligence/materialized-views-monitoring)
+* Use the leader Eventhouse to monitor follower database materialized views. For more details, see [Monitor materialized views](/fabric/real-time-intelligence/materialized-views-monitoring)
 :::moniker-end
 
 
