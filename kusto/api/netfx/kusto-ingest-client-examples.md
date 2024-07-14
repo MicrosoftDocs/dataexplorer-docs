@@ -160,7 +160,7 @@ Ensure.IsTrue(ingestionFailures.Any(), "Failures expected");
 ```
 :::moniker-end
 
-:::moniker range="microsoft-azure"
+:::moniker range="microsoft-fabric"
 ```csharp
 var ingestUri = "servicdeURI";
 var appId = "<appId>";
