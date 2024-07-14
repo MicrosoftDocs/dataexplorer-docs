@@ -277,14 +277,6 @@ var kustoConnectionStringBuilder = new KustoConnectionStringBuilder(kustoUri)
 // Equivalent Kusto connection string: $"Data Source={kustoUri};Database=NetDefaultDB;Fed=True;AppClientId={appId};AppKey={appKey};Authority Id={authority}"
 ```
 
-**Using System-assigned Managed Identity**
-
-```csharp
-var kustoUri = "serviceURI";
-var kustoConnectionStringBuilder = new KustoConnectionStringBuilder(kustoUri)
-    .WithAadSystemManagedIdentity();
-```
-
 **Microsoft Entra ID Federated authentication using user / application token**
 
 ```csharp
