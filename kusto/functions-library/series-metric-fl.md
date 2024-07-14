@@ -49,8 +49,10 @@ Define the function using the following [let statement](../query/let-statement.m
 > [!IMPORTANT]
 > A [let statement](../query/let-statement.md) can't run on its own. It must be followed by a [tabular expression statement](../query/tabular-expression-statements.md). To run a working example of `series_metric_fl()`, see [Examples](#examples).
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA21Ty66bMBDd8xUWG+wKbkjUVmmu+IOqm1bdVBUyMAQXY0eMk9y06b/XNhBCGm/8mPGZM+fYEgxB6AVg3oHpRZnXMqPDEnNTyB19x2JiRAdoeHfISy13aKNqHxPFO1gcSF6AxMXRicvjMmms4y4/XkSQUBrdj+dZFNmQ1m3By3bnORy4yqYFXaed5abrGsE8CaeMBX8CYof0XQ7YeZWJuqYPFUmWEVetulheoqQ/ouinxcaDFOYxNyZRHDH2eoMGV5JkhO81HdjcBXEMDknJrZ8h405pv78SeDOgqllxe9Wqd+xULmp4E2iQLtywnLnx4FQdpWRs8OXJtckuyz9ik+ZP8mYXZz0maG/nkzs3m2OSsmUntzojVm50/gu1GuswMozVilhUdYLeEKPJ8AIItwCo7VFxIS1cRuRzAz2MbWb3D8rnz9IVYM4AinoPXl68ShM73VfQO9g5nWM5BvHYdbwXv2HhQ8dbyKXtd3ZgkiSbY37PHLJjNOm8YD5K0nDMuZSEzm+TBX+D12C1CirodH7otW2ugSMGVyLUSbfw32+l0TdL5qsjY99v9MXWdPNnX8KtvnPppnMvDPiDsBLYhrsQK74O47DRaOyOt5jwPShz0Fom2226/fj+w6fk1CGmbqzDaPprmdJnypLbu9ukmzRZb5J0S9J0l7p/dyW99d4K7BLKhlsHz8I0dGCfjdb/A8laNKd+BAAA" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
 let series_metric_fl=(metrics_tbl:(*), timestamp_col:string, name_col:string, labels_col:string, value_col:string, metric_name:string, labels_selector:string='', lookback:timespan=timespan(10m), offset:timespan=timespan(0))
@@ -105,8 +107,10 @@ The following examples use the [invoke operator](../query/invoke-operator.md) to
 
 To use a query-defined function, invoke it after the embedded function definition.
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA21TTY/bIBC951cgXwyVvetEbZVmxT9Y9dKql6qyiD2OWWOIPCTZtOl/L2A7jtNw4WOGN2/eAwWWIHQSMG/BdrLIK8Vpv8TcbtWGfmAJsbIFtKLd54VRG3RRvUuIFi3MDpTYgsLZ0VGowzxpqOMv319EUFBY0w3nPI5dyJhmK4pmEzjshebjgi6z1nEzVYVgH4QzxhZ/FsQNFbrssfOSy6qidxUJ58RXK8+Olyzozzj+5bBxr6S9z01InMSMvVyhwZcknIidoT2bmyAOwT4pvfbTZ9woHfYXAu8WdDkp7q469Q6tzmUF7xIt0pkbjrOwAZzqg1KM9b48uDba5fjHbNT8Qd7k4qTHCB3sfHDnanNCMjbv5FpnwMqtyd/Q6KEOI/14fiYOVR+hs8Qa0r8AIhwAGne0PZMGzgPyqYYOhjb57YMK+ZN0W7AnAE2DB09PQaWRnelK6DzslC6wGIJ4aFvRyd8w86EVDeTK9Ts5MErCp1jYM4/sGY06z5gPktQCc6EUodPbZIu/L4sSWpPvO+Maq+GAiwuR+mga+O+n0vi7I/LNE3FvN/7q6vn5NcD71Q+h/HTqpIVwEJUSm2gTYSmWURLVBq3biQZTsQNt98aodL3O1p8/fvqSHlvEzI9lFI//jGtzoiy9vrlVtsrS5SrN1iTLNpn/cxfSOd+duD6hqIVz7yRtTXv2fLD9H28bjCx6BAAA" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
 let series_metric_fl=(metrics_tbl:(*), timestamp_col:string, name_col:string, labels_col:string, value_col:string, metric_name:string, labels_selector:string='', lookback:timespan=timespan(10m), offset:timespan=timespan(0))
@@ -152,8 +156,10 @@ The following example doesn't specify selector, so all 'writes' metrics are sele
 
 To use a query-defined function, invoke it after the embedded function definition.
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA21TwY7bIBC95yvmZqicXW9OVVb8QdVLq16qCmFnvKbBJgKySdrtv3cAO46j+GKYGd483hsMBvDoNHrZY3C6ka0RLC+9DLXZsk+8hKB79EH1B9lYs/WUHd5KGFSPi4BRNRq/CL0rc1wWjX3i4fuDHg02wboxLoqCUtbua9Xst4nDQQ1iWrCXqidutm09hgfpivPV3xXQZ9ItM7bcCd227K4jCAGx2+5CvHTDfhbFL8L2B6PDfW0JRVlw/nqFxtgSBKg3yzKbm6Qfk7lofb1PrrhROu0/AM8Bh92sOB0l9Y79IHWLZ+2DZws3iLMKCZwNR2M4z748ODbZRfwLPmn+oG52cdZjgk52PjhztbmEii9vcu0zYslg5W9vh7EPh/w9PwOhDu/oAgQLeQJAEYC3FKovsMfLiHzq0OF4TXE7UKl+lq7GcEIcWPLg6SmpNLGzbocuws7lyjdj0h/7Xjn9Bxc+9GqP0tB9ZwcmScScS3sekSOjSecF81GSTnmpjAE2zyZf/Xtd3T9ItsPeyoOzFOnw6MnA70TgWyRAM1t8pT7x/yXBxtUPZeLv5HTAGMhTKQZ7Ynx9nZdNtanWL5t19RmqalvF9/IBjjwjYWJB0ylS/qRDxzIlkYmXcEkPQ6gzev4fmU9bcEMEAAA=" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
 let series_metric_fl=(metrics_tbl:(*), timestamp_col:string, name_col:string, labels_col:string, value_col:string, metric_name:string, labels_selector:string='', lookback:timespan=timespan(10m), offset:timespan=timespan(0))

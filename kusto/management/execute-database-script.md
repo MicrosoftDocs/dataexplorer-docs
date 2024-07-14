@@ -60,10 +60,17 @@ Each command appearing in the script will be reported as a separate record in th
 >* Default behavior of the command - fail on the first error, it can be changed using property argument.
 >* Read-only management commands (`.show` commands) aren't executed and are reported with status `Skipped`.
 
+:::moniker range="azure-data-explorer"
 >[!Tip]
 >
 >* This command is useful if you want to "clone"/"duplicate" an existing database. You can use the [`.show database schema command`](show-schema-database.md) on the existing database (the source database), and use its output as the *Control-commands-script* of ".execute database script".
 >* If you want to "clone"/"duplicate" the cluster, you can use export its [ARM template](/azure/azure-resource-manager/templates/export-template-portal#export-template-from-a-resource) and recreate the resource.
+:::moniker-end
+:::moniker range="microsoft-fabric"
+>[!Tip]
+>
+>* This command is useful if you want to "clone"/"duplicate" an existing database. You can use the [`.show database schema command`](show-schema-database.md) on the existing database (the source database), and use its output as the *Control-commands-script* of ".execute database script".
+:::moniker-end
 
 ## Example
 
