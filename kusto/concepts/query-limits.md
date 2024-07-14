@@ -109,7 +109,7 @@ The following apply when using `set` statements, and/or when specifying flags in
 
 Kusto limits the memory that each query operator can consume to protect against "runaway" queries.
 This limit might be reached by some query operators, such as `join` and `summarize`, that operate by
-holding significant data in memory. By default the limit is 5GB (per cluster node), and it can be increased by setting the request option
+holding significant data in memory. By default the limit is 5GB (per node), and it can be increased by setting the request option
 `maxmemoryconsumptionperiterator`:
 
 <!-- csl -->
