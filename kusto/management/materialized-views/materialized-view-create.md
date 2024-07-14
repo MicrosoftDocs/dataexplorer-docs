@@ -193,13 +193,7 @@ The following rules limit the query used in the materialized view Query paramete
 
 * Composite aggregations are not supported in the definition of the materialized view. For instance, instead of using `SourceTableName | summarize Result=sum(Column1)/sum(Column2) by Id`, define the materialized view as: `SourceTableName | summarize a=sum(Column1), b=sum(Column2) by Id`. During view query time, run `MaterializedViewName | project Id, Result=a/b`. The required output of the view, including the calculated column (`a/b`), can be encapsulated in a [stored function](../../query/functions/user-defined-functions.md). Access the stored function instead of accessing the materialized view directly.
 
-:::moniker range="azure-data-explorer"
 * Cross-cluster and cross-database queries aren't supported.
-:::moniker-end
-
-:::moniker range="microsoft-fabric"
-* Cross-database queries aren't supported.
-:::moniker-end
 
 * References to [external_table()](../../query/external-table-function.md) and [externaldata](../../query/externaldata-operator.md) aren't supported.
 
