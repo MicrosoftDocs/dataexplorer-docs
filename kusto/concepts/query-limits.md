@@ -96,7 +96,10 @@ For example, use the .NET Framework client (Microsoft.Azure.Kusto.Data) and eith
 
 You may also find the C# streaming ingestion sample application helpful.
 
-Result truncation is applied by default, not just to the result stream returned to the client. It's also applied by default to any subquery that one cluster issues to another cluster in a cross-cluster query, with similar effects.
+Result truncation is applied by default, not just to the result stream returned to the client.
+:::moniker range="azure-data-explorer"
+It's also applied by default to any subquery that one cluster issues to another cluster in a cross-cluster query, with similar effects.
+:::moniker-end
 
 ### Setting multiple result truncation properties
 
@@ -214,7 +217,7 @@ management commands. This value can be increased if needed (capped at one hour).
 
 ## Limit on query CPU resource usage
 
-Kusto lets you run queries and use as much CPU resources as the database has.
+Kusto lets you run queries and use all the available CPU resources that the database has.
 It attempts to do a fair round-robin between queries if more than one is running. This method yields the best performance for query-defined functions.
 At other times, you may want to limit the CPU resources used for a particular
 query. If you run a "background job", for example, the system might tolerate higher
