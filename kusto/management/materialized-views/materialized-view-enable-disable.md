@@ -78,7 +78,7 @@ A materialized view can be disabled in any of the following ways:
 * **Automatic disable by the system:**  Materialized view is automatically disabled if materialization fails with a permanent error. This process can occur in the following instances:
   * Schema changes that are inconsistent with the view definition.  
   * Changes to source table that result in the materialized view query being semantically invalid.
-* **Explicitly disable the materialized view:**  If the materialized view is negatively impacting the cluster's health (for example, consuming too much CPU), disable the view using the [`.disable materialized-view` command](#syntax).
+* **Explicitly disable the materialized view:**  If the materialized view is negatively impacting the database's health (for example, consuming too much CPU), disable the view using the [`.disable materialized-view` command](#syntax).
 
 ### Materialized views and Row Level Security
 
@@ -93,6 +93,6 @@ If a materialized view is disabled, and while the view is disabled someone defin
 
 ### Performance implications of enabling/disabling materialized views
 
-* When a materialized view is disabled, materializing will be paused and won't consume resources from the cluster. Querying the materialized view is possible even when disabled, but performance can be poor. Performance on a disabled materialized view depends on the number of records that were ingested to the source table since it was disabled.
+* When a materialized view is disabled, materializing will be paused and won't consume resources from the database. Querying the materialized view is possible even when disabled, but performance can be poor. Performance on a disabled materialized view depends on the number of records that were ingested to the source table since it was disabled.
 * You can enable a materialized view that has previously been disabled. When re-enabled, the materialized view will continue materializing from the point it left off, and no records will be skipped. If the view was disabled for a long time, it may take a long time to catch up.
-* Disabling a view is only recommended if you suspect that the view is impacting your cluster's health.
+* Disabling a view is only recommended if you suspect that the view is impacting your database's health.

@@ -9,7 +9,13 @@ ms.date: 11/03/2023
 
 > [!INCLUDE [applies](../../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../../includes/applies-to-version/azure-data-explorer.md)] [!INCLUDE [monitor](../../includes/applies-to-version/monitor.md)] [!INCLUDE [sentinel](../../includes/applies-to-version/sentinel.md)]
 
+:::moniker range="azure-data-explorer"
 Kusto entities are referenced in a query by name. Entities that can be referenced by their name include *databases*, *tables*, *columns*, and *stored functions*, but not *clusters*. The name you assign an entity is called an identifier. In addition to entities, you can also assign an identifier to [query parameters](../query-parameters-statement.md), or variables set through a [let statement](../let-statement.md).
+:::moniker-end
+
+:::moniker range="microsoft-fabric"
+Kusto entities are referenced in a query by name. Entities that can be referenced by their name include *databases*, *tables*, *columns*, and *stored functions*. The name you assign an entity is called an identifier. In addition to entities, you can also assign an identifier to [query parameters](../query-parameters-statement.md), or variables set through a [let statement](../let-statement.md).
+:::moniker-end
 
 An entity's name is unique to the entity type in the context of its container. For example, two tables in the same database can't have the same name, but a database and a table can have the same name because they're different entity types. Similarly, a table and a stored function may have the same name.
 

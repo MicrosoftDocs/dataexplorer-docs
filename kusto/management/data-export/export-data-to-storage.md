@@ -32,7 +32,7 @@ You must have at least [Database Viewer](../../access-control/role-based-access-
 | *PropertyName*, *PropertyValue* | `string` | | A comma-separated list of key-value property pairs. See [supported properties](#supported-properties).|
 
 > [!NOTE]
-> We highly recommended exporting data to storage that is co-located in the same region as the cluster itself. This includes data that is exported so it can be transferred to another cloud service in other regions. Writes should be done locally, while reads can happen remotely.
+> We highly recommended exporting data to storage that is co-located in the same region as the database itself. This includes data that is exported so it can be transferred to another cloud service in other regions. Writes should be done locally, while reads can happen remotely.
 
 ## Supported properties
 
@@ -124,13 +124,14 @@ Export commands can transiently fail during execution. [Continuous export](conti
 By default, export commands are distributed such that there may be many concurrent writes to storage. The level of distribution depends on the type of export command:
 
 * The default distribution for regular `.export` command is `per_shard`, which means all [extents](../extents-overview.md) that contain data to export write to storage concurrently. 
-* The default distribution for [export to external table](export-data-to-an-external-table.md) commands is `per_node`, which means the concurrency is the number of nodes in the cluster.
+
+* The default distribution for [export to external table](export-data-to-an-external-table.md) commands is `per_node`, which means the concurrency is the number of nodes.
 
 When the number of extents/nodes is large, this may lead to high load on storage that results in storage throttling, or transient storage errors. The following suggestions may overcome these errors (by order of priority):
 
 * Increase the number of storage accounts provided to the export command or to the [external table definition](../external-tables-azure-storage.md) (the load will be evenly distributed between the accounts).
 * Reduce the concurrency by setting the distribution hint to `per_node` (see command properties).
-* Reduce concurrency of number of nodes exporting by setting the [client request property](../../api/rest/request-properties.md) `query_fanout_nodes_percent` to the desired concurrency (percent of nodes). The property can be set as part of the export query. For example, the following command limits the number of nodes writing to storage concurrently to 50% of the cluster nodes:
+* Reduce concurrency of number of nodes exporting by setting the [client request property](../../api/rest/request-properties.md) `query_fanout_nodes_percent` to the desired concurrency (percent of nodes). The property can be set as part of the export query. For example, the following command limits the number of nodes writing to storage concurrently to 50% of the nodes:
 
     ```kusto
     .export async  to csv
@@ -144,7 +145,7 @@ When the number of extents/nodes is large, this may lead to high load on storage
         ExportQuery
     ```
 
-* Reduce concurrency of number of threads exporting in each node when using per shard export, by setting the [client request property](../../api/rest/request-properties.md) `query_fanout_threads_percent` to the desired concurrency (percent of threads). The property can be set as part of the export query. For example, the following command limits the number of threads writing to storage concurrently to 50% on each of the cluster nodes:
+* Reduce concurrency of number of threads exporting in each node when using per shard export, by setting the [client request property](../../api/rest/request-properties.md) `query_fanout_threads_percent` to the desired concurrency (percent of threads). The property can be set as part of the export query. For example, the following command limits the number of threads writing to storage concurrently to 50% on each of the nodes:
 
     ```kusto
     .export async  to csv
