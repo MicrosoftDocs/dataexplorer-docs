@@ -59,7 +59,7 @@ Following is the schema of the output returned:
 | MinExtentsCreationTime   | `datetime` | Minimum creation time of an extent in the materialized view (or null, if there are no extents).                        |
 | MaxExtentsCreationTime   | `datetime` | Maximum creation time of an extent in the materialized view (or null, if there are no extents).                        |
 
-`*` *Taking into account policies of parent entities (such as database/cluster).*
+`*` *Taking into account policies of parent entities (such as database/cluster/Eventhouse).*
 
 ## Examples
 

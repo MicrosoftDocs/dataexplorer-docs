@@ -79,6 +79,29 @@ There are 2 ways to query a materialized view:
     ```
 :::moniker-end
 
+:::moniker range="microsoft-fabric"
+* Materialized views participate in cross-Eventhouse or cross-database queries, but aren't included in wildcard unions or searches.
+  * The following examples all **include** materialized views by the name `ViewName`:
+   <!-- csl -->
+    ```kusto
+    eventhouse('eventhouse1').database('db').ViewName
+    eventhouse('eventhouse1').database('*').ViewName
+    database('*').ViewName
+    database('DB*').ViewName
+    database('*').materialized_view('ViewName')
+    database('DB*').materialized_view('ViewName')
+    ```
+
+  * The following examples do **not** include records from materialized views:
+   <!-- csl -->
+    ```kusto
+    eventhouse('eventhouse1').database('db').*
+    database('*').View*
+    search in (*)
+    search * 
+    ```
+:::moniker-end
+
 ### Materialized view query optimizer
 
 When querying the entire view, the materialized part is combined with the `delta` during query time. This includes aggregating the `delta` and joining it with the materialized part.
