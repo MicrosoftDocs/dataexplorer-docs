@@ -39,8 +39,9 @@ All continuous export commands require at least [Database Admin](../../access-co
 
 * **External table storage accounts**:
   * For best performance, the database and the storage account(s) should be colocated in the same Azure region.
- 
-  * Continuous export works in a distributed manner, such that all nodes are exporting concurrently. On large databases, and if the exported data volume is large, this might lead to storage throttling. It's recommended to configure multiple storage accounts for the external table. See [storage failures during export commands](export-data-to-storage.md#failures-during-export-commands) for more details.
+  :::moniker range="azure-data-explorer"
+  * Continuous export works in a distributed manner, such that all nodes in the cluster are exporting concurrently. On large clusters, and if the exported data volume is large, this might lead to storage throttling. It's recommended to configure multiple storage accounts for the external table. See [storage failures during export commands](export-data-to-storage.md#failures-during-export-commands) for more details.
+  :::moniker-end
 
 ## Exactly once export
 
