@@ -60,12 +60,23 @@ There are a number of [client libraries](client-libraries.md) that make use of t
 
 ### .NET Framework Libraries
 
+:::moniker range="azure-data-explorer"
 .NET Framework Libraries are the recommended way to interact with your cluster programmatically.
 A number of different libraries are available.
 
 * [Kusto.Data (Kusto Client Library)](./netfx/about-kusto-data.md): Can be used to query data, query metadata, and alter it.
    It's built on top of the Kusto REST API, and sends HTTPS requests to the target Kusto cluster.
 * [Kusto.Ingest (Kusto Ingestion Library)](netfx/about-kusto-ingest.md): Uses `Kusto.Data` and extends it to ease data ingestion.
+:::moniker-end
+
+:::moniker range="microsoft-fabric"
+.NET Framework Libraries are the recommended way to interact with your Eventhouse programmatically.
+A number of different libraries are available.
+
+* [Kusto.Data (Kusto Client Library)](./netfx/about-kusto-data.md): Can be used to query data, query metadata, and alter it.
+   It's built on top of the Kusto REST API, and sends HTTPS requests to the target Kusto Eventhouse.
+* [Kusto.Ingest (Kusto Ingestion Library)](netfx/about-kusto-ingest.md): Uses `Kusto.Data` and extends it to ease data ingestion.
+:::moniker-end
 
 The above libraries use Azure APIs, such as Azure Storage API and Microsoft Entra API.
 
@@ -81,8 +92,15 @@ For more information, see [Kusto R SDK](r/kusto-r-client-library.md).
 
 ### Java SDK
 
+:::moniker range="azure-data-explorer"
 The Java client library provides the capability to query clusters using Java.
 For more information, see [Kusto Java SDK](java/kusto-java-client-library.md).
+::: moniker-end
+
+:::moniker range="microsoft-fabric"
+The Java client library provides the capability to query Eventhouses using Java.
+For more information, see [Kusto Java SDK](java/kusto-java-client-library.md).
+::: moniker-end
 
 ### Node SDK
 
