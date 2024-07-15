@@ -25,8 +25,8 @@ Stored query results behave like tables, in that the order of records isn't pres
 > [!NOTE]
 >
 > * When you have more than 500 columns, an error is raised and the results aren't stored.
-> * Query results are stored in a storage account associated with the environment. The data isn't cached in local SSD storage.
-> * A follower cluster needs it's own writable database to store query results.
+> * Query results are stored in a storage account associated with the cluster. The data isn't cached in local SSD storage.
+> * A follower cluster needs its own writable database to store query results.
 
 :::moniker-end
 :::moniker range="microsoft-fabric"
@@ -34,8 +34,8 @@ Stored query results behave like tables, in that the order of records isn't pres
 > [!NOTE]
 >
 > * When you have more than 500 columns, an error is raised and the results aren't stored.
-> * Query results are stored in a storage account associated with the environment. The data isn't cached in local SSD storage.
-> * A shortcut database needs it's own writable database to store query results.
+> * Query results are stored in a storage account associated with the eventhouse. The data isn't cached in local SSD storage.
+> * A shortcut database needs its own writable database to store query results.
 
 :::moniker-end
 
