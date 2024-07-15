@@ -89,7 +89,7 @@ Request rate limits can be enforced at one of the following levels:
 * The `default` workload group is defined with the following policies:
 :::moniker-end
 
-    ```json
+```json
     "RequestRateLimitPolicies": [
         {
             "IsEnabled": true,
@@ -104,7 +104,7 @@ Request rate limits can be enforced at one of the following levels:
         "QueriesEnforcementLevel": "QueryHead",
         "CommandsEnforcementLevel": "Database"
     }
-    ```
+```
 
 ### Effective rate limits
 
