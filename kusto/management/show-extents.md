@@ -30,6 +30,7 @@ The types of `.show extents` commands are as follows:
 > command variant that includes filtering extents is preferable to filtering the results
 > of the command using another query.
 :::moniker-end
+
 :::moniker range="microsoft-fabric"
 * Show some or all extents for a specific [table scope](#table-scope)
 * Show some or all extents for a specific [database scope](#database-scope)
@@ -49,6 +50,7 @@ The types of `.show extents` commands are as follows:
 :::moniker range="azure-data-explorer"
 To see extents on the cluster, you must have `AllDatabasesMonitor` permissions.
 :::moniker-end
+
 :::moniker range="microsoft-fabric"
 To see extents on the eventhouse, you must have `AllDatabasesMonitor` permissions.
 
@@ -117,6 +119,7 @@ If `hot` is specified - shows only extents that expected to be in the hot cache.
 :::moniker range="azure-data-explorer"
 ## Cluster scope
 :::moniker-end
+
 :::moniker range="microsoft-fabric"
 ## Eventhouse scope
 :::moniker-end
@@ -130,6 +133,7 @@ If `hot` is specified - shows only extents that expected to be in the hot cache.
 :::moniker range="azure-data-explorer"
 Shows information about extents (data shards) that are present in the cluster.
 :::moniker-end
+
 :::moniker range="microsoft-fabric"
 Shows information about extents (data shards) that are present in the eventhouse.
 :::moniker-end
