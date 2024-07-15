@@ -11,12 +11,23 @@ ms.date: 03/14/2023
 
 Alias statements allow you to define an alias for databases, which can be used later in the same query.
 
+:::moniker range="azure-data-explorer"
 This is useful when you're working with several clusters but want to appear as if you're working on fewer clusters.
 The alias must be defined according to the following syntax, where *clustername* and *databasename* are existing and valid entities.
 
 ## Syntax
 
 `alias` database *DatabaseAliasName* `=` cluster("https://*clustername*.kusto.windows.net").database("*DatabaseName*")
+:::moniker-end
+
+:::moniker range="microsoft-fabric"
+This is useful when you're working with several Eventhouses but want to appear as if you're working on fewer Eventhouses.
+The alias must be defined according to the following syntax, where *Eventhouse* and *databasename* are existing and valid entities.
+
+## Syntax
+
+`alias` database *DatabaseAliasName* `=` Eventhouse("https://*Eventhousename*.kusto.windows.net").database("*DatabaseName*")
+:::moniker-end
 
 [!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
@@ -28,7 +39,7 @@ The alias must be defined according to the following syntax, where *clustername*
 |*DatabaseName*| `string` | :heavy_check_mark:|The name of the database to give an alias.|
 
 > [!NOTE]
-> The mapped cluster-uri and the mapped database-name must appear inside double-quotes(") or single-quotes(').
+> The mapped database-uri and the mapped database-name must appear inside double-quotes(") or single-quotes(').
 
 ## Examples
 
