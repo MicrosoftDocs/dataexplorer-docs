@@ -185,7 +185,7 @@ OccupancyDetection
 
 ## Model asset
 
-Get sample dataset and pre-trained model in your cluster with Python plugin enabled.
+Get sample dataset and pre-trained model with Python plugin enabled.
 
 ```kusto
 //dataset
