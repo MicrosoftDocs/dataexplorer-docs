@@ -47,16 +47,7 @@ The types of `.show extents` commands are as follows:
 
 ## Permissions
 
-:::moniker range="azure-data-explorer"
 To see extents on the cluster, you must have `AllDatabasesMonitor` permissions.
-:::moniker-end
-
-:::moniker range="microsoft-fabric"
-To see extents on the eventhouse, you must have `AllDatabasesMonitor` permissions.
-
-> [!NOTE]
-> The `Database Monitor` role inherits `AllDatabasesMonitor` permissions.
-:::moniker-end
 
 To see extents on a database, you must have `Database User`, `Database Viewer`, or `Database Monitor` permissions.
 
@@ -120,10 +111,6 @@ If `hot` is specified - shows only extents that expected to be in the hot cache.
 ## Cluster scope
 :::moniker-end
 
-:::moniker range="microsoft-fabric"
-## Eventhouse scope
-:::moniker-end
-
 ### Syntax
 
 `.show` `cluster` `extents` [`hot`]
@@ -134,9 +121,6 @@ If `hot` is specified - shows only extents that expected to be in the hot cache.
 Shows information about extents (data shards) that are present in the cluster.
 :::moniker-end
 
-:::moniker range="microsoft-fabric"
-Shows information about extents (data shards) that are present in the eventhouse.
-:::moniker-end
 If `hot` is specified - shows only extents that are expected to be in the hot cache.
 
 ## Returns
