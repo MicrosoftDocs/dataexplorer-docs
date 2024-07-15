@@ -17,7 +17,7 @@ The management commands listed in this article can be used to manage principals 
 
 :::moniker range="microsoft-fabric"
 > [!NOTE]
-> The three security roles of `AllDatabasesAdmin`, `AllDatabasesViewer`, and `AllDatabasesMonitor` can't be configured with security role management commands. They are inherited respectively by the `Admin`, `Viewer`, and `Monitor` roles.
+> The security roles of `AllDatabasesAdmin`, `AllDatabasesViewer` can't be configured with security role management commands. They are inherited respectively by the `Admin` and `Viewer` roles.
 :::moniker-end
 ::: moniker range="azure-data-explorer"
 > [!NOTE]

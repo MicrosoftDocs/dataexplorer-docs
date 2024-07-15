@@ -15,18 +15,11 @@ A workload group's request rate limits enforcement policy controls how request r
 
 A request rate limit policy has the following properties:
 
-:::moniker range="azure-data-explorer"
 | Name                     | Supported values                            | Default value | Description                                   |
 |--------------------------|---------------------------------------------|----------------|-----------------------------------------------|
 | QueriesEnforcementLevel  | `Cluster`, `QueryHead`                      | `QueryHead`   | Indicates the enforcement level for queries.  |
 | CommandsEnforcementLevel | `Cluster`, `Database`                       | `Database`    | Indicates the enforcement level for commands. |
-:::moniker-end 
-:::moniker range="microsoft-fabric"
-| Name                     | Supported values                            | Default value | Description                                   |
-|--------------------------|---------------------------------------------|----------------|-----------------------------------------------|
-| QueriesEnforcementLevel  | `Eventhouse`, `QueryHead`                      | `QueryHead`   | Indicates the enforcement level for queries.  |
-| CommandsEnforcementLevel | `Eventhouse`, `Database`                       | `Database`    | Indicates the enforcement level for commands. |
-:::moniker-end
+
 
 ### Request rate limits enforcement level
 
@@ -51,7 +44,7 @@ Request rate limits can be enforced at one of the following levels:
 > * Rate limits for cluster-scoped commands are always enforced at the cluster level, regardless of the value configured in the policy. For example: management commands that manage cluster-level policies.
 :::moniker-end
 :::moniker range="microsoft-fabric"
-* `Evenhouse`:
+* `Cluster`:
   * Rate limits are enforced by the single eventhouse admin node.
 * `Database`:
   * Rate limits are enforced by the database admin node that manages the database the request was sent to.
