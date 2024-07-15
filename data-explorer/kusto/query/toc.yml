@@ -689,6 +689,9 @@ items:
       - name: datetime_diff()
         displayName: datetime_diff() datetime diff
         href: datetime-diff-function.md
+      - name: datetime_list_timezones()
+        displayName: datetime_list_timezones() list timezones
+        href: datetime-list-timezones.md
       - name: datetime_local_to_utc()
         href: datetime-local-to-utc-function.md
       - name: datetime_part()
