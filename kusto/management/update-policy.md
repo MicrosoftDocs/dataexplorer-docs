@@ -63,11 +63,11 @@ When referencing the `Source` table in the `Query` part of the policy, or in fun
 
 :::moniker range="azure-data-explorer"
 * Don't use the qualified name of the table. Instead, use `TableName`.
-* Don't use `database("DatabaseName").TableName` or `cluster("ClusterName").database("DatabaseName").TableName`.
+* Don't use `database("<DatabaseName>").TableName` or `cluster("<ClusterName>").database("<DatabaseName>").TableName`.
 :::moniker-end
 :::moniker range="microsoft-fabric"
 * Don't use the qualified name of the table. Instead, use `TableName`.
-* Don't use `database("DatabaseName").TableName` or `cluster("EventhouseName").database("DatabaseName").TableName`.
+* Don't use `database("<DatabaseName>").TableName` or `cluster("<EventhouseName>").database("<DatabaseName>").TableName`.
 :::moniker-end
 
 ## The update policy object
