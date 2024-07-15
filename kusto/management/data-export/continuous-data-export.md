@@ -38,10 +38,9 @@ All continuous export commands require at least [Database Admin](../../access-co
   * The number of files exported in each continuous export iteration depends on how the external table is partitioned. For more information, see [export to external table command](export-data-to-an-external-table.md#number-of-files). Each continuous export iteration always writes to new files, and never appends to existing ones. As a result, the number of exported files also depends on the frequency in which the continuous export runs. The frequency parameter is `intervalBetweenRuns`.
 
 * **External table storage accounts**:
+  
   * For best performance, the database and the storage account(s) should be colocated in the same Azure region.
-  :::moniker range="azure-data-explorer"
-  * Continuous export works in a distributed manner, such that all nodes in the cluster are exporting concurrently. On large clusters, and if the exported data volume is large, this might lead to storage throttling. It's recommended to configure multiple storage accounts for the external table. See [storage failures during export commands](export-data-to-storage.md#failures-during-export-commands) for more details.
-  :::moniker-end
+  * Continuous export works in a distributed manner, such that all nodes are exporting concurrently. On large databases, and if the exported data volume is large, this might lead to storage throttling. It's recommended to configure multiple storage accounts for the external table. See [storage failures during export commands](export-data-to-storage.md#failures-during-export-commands) for more details.
 
 ## Exactly once export
 
@@ -141,6 +140,7 @@ To define continuous export to a delta table, do the following steps:
 * Records in source table must be ingested to the table directly, using an [update policy](../update-policy.md), or [ingest from query commands](../data-ingestion/ingest-from-query.md). If records are moved into the table using [.move extents](../move-extents.md) or using [.rename table](../rename-table-command.md), continuous export might not process these records. See the limitations described in the [Database Cursors](../database-cursor.md#restrictions) page.
 * If the artifacts used by continuous export are intended to trigger Event Grid notifications, see the [known issues section in the Event Grid documentation](/azure/data-explorer/ingest-data-event-grid-overview.md#known-event-grid-issues).
 
+:::moniker range="azure-data-explorer"
 **Cross-database and cross-cluster**:
 
 * Continuous export doesn't support cross-cluster calls.
@@ -148,7 +148,7 @@ To define continuous export to a delta table, do the following steps:
 * If the continuous export includes cross-database calls, it must be configured with a [managed identity](continuous-export-with-managed-identity.md).
 ::: moniker-end
 
-:::moniker-range="microsoft-fabric"
+:::moniker range="microsoft-fabric"
 **Cross-database and cross-Eventhouse**:
 
 * Continuous export doesn't support cross-Eventhouse calls.

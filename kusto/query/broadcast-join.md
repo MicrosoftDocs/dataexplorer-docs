@@ -1,6 +1,6 @@
 ---
 title:  Broadcast join
-description: Learn how to use the broadcast join execution strategy to distribute the join over cluster nodes.
+description: Learn how to use the broadcast join execution strategy to distribute the join over nodes.
 ms.reviewer: alexans
 ms.topic: reference
 ms.date: 04/11/2023
@@ -9,8 +9,8 @@ ms.date: 04/11/2023
 
 > [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)] [!INCLUDE [monitor](../includes/applies-to-version/monitor.md)] [!INCLUDE [sentinel](../includes/applies-to-version/sentinel.md)]
 
-Today, regular joins are executed on a single cluster node.
-Broadcast join is an execution strategy of join that distributes the join over cluster nodes. This strategy is useful when the left side of the join is small (up to several tens of MBs). In this case, a broadcast join is more performant than a regular join.
+Today, regular joins are executed on a single node.
+Broadcast join is an execution strategy of join that distributes the join over nodes. This strategy is useful when the left side of the join is small (up to several tens of MBs). In this case, a broadcast join is more performant than a regular join.
 
 Use the [lookup operator](lookup-operator.md) if the right side is smaller than the left side. The lookup operator runs in broadcast strategy by default when the right side is smaller than the left.
 
