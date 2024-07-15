@@ -17,6 +17,7 @@ monikerRange: "azure-data-explorer"
 
 The types of `.show extents` commands are as follows:
 
+:::moniker range="azure-data-explorer"
 * Show some or all extents for a specific [table scope](#table-scope)
 * Show some or all extents for a specific [database scope](#database-scope)
 * Show some or all extents for the entire [cluster](#cluster-scope)
@@ -28,12 +29,34 @@ The types of `.show extents` commands are as follows:
 > is preferable over database-scope, and database-scope over cluster-scope. The
 > command variant that includes filtering extents is preferable to filtering the results
 > of the command using another query.
+:::moniker-end
+:::moniker range="microsoft-fabric"
+* Show some or all extents for a specific [table scope](#table-scope)
+* Show some or all extents for a specific [database scope](#database-scope)
+* Show some or all extents for the entire [eventhouse](#eventhouse-scope)
+
+> [!NOTE]
+> The `.show extents` command may consume a lot of resources if it runs on a scope
+> (such as a database or an eventhouse) with many extents. We recommended
+> using the command variant at the lowest possible scope. Table-scope
+> is preferable over database-scope, and database-scope over eventhouse-scope. The
+> command variant that includes filtering extents is preferable to filtering the results
+> of the command using another query.
+:::moniker-end
 
 ## Permissions
 
-To see extents on the cluster, you must have AllDatabasesMonitor permissions.
+:::moniker range="azure-data-explorer"
+To see extents on the cluster, you must have `AllDatabasesMonitor` permissions.
+:::moniker-end
+:::moniker range="microsoft-fabric"
+To see extents on the eventhouse, you must have `AllDatabasesMonitor` permissions.
 
-To see extents on a database, you must have Database User, Database Viewer, or Database Monitor permissions.
+> [!NOTE]
+> The `Database Monitor` role inherits `AllDatabasesMonitor` permissions.
+:::moniker-end
+
+To see extents on a database, you must have `Database User`, `Database Viewer`, or `Database Monitor` permissions.
 
 For more information, see [role-based access control](../access-control/role-based-access-control.md).
 
@@ -91,7 +114,12 @@ If `hot` is specified - shows only extents that expected to be in the hot cache.
 |*ExtentId*| `string` ||The ID of the extent to show.|
 |*Tag*| `string` ||The name of a tag to filter by as specified.|
 
+:::moniker range="azure-data-explorer"
 ## Cluster scope
+:::moniker-end
+:::moniker range="microsoft-fabric"
+## Eventhouse scope
+:::moniker-end
 
 ### Syntax
 
@@ -99,7 +127,12 @@ If `hot` is specified - shows only extents that expected to be in the hot cache.
 
 [!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
+:::moniker range="azure-data-explorer"
 Shows information about extents (data shards) that are present in the cluster.
+:::moniker-end
+:::moniker range="microsoft-fabric"
+Shows information about extents (data shards) that are present in the eventhouse.
+:::moniker-end
 If `hot` is specified - shows only extents that are expected to be in the hot cache.
 
 ## Returns

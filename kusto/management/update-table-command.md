@@ -56,7 +56,7 @@ The expanded syntax offers the flexibility to define a query to delete rows and 
 
 :::moniker range="microsoft-fabric"
 > [!IMPORTANT]
-> * Both delete and append predicates can't use remote entities or cross-db entities. Predicates can't reference an external table or use the `externaldata` operator.
+> * Both delete and append predicates can't use remote entities, cross-db, and cross-eventhouse entities. Predicates can't reference an external table or use the `externaldata` operator.
 > * Append and delete queries are expected to produce deterministic results.  Nondeterministic queries can lead to unexpected results. A query is deterministic if and only if it would return the same data if executed multiple times.
 >    * For example, use of [`take` operator](../query/take-operator.md), [`sample` operator](../query/sample-operator.md), [`rand` function](../query/rand-function.md), and other such operators isn't recommended because these operators aren't deterministic.
 > * Queries might be executed more than once within the `update` execution. If the intermediate query results are inconsistent, the update command can produce unexpected results.
@@ -87,7 +87,7 @@ The simplified syntax requires an append query as well as a key. The key is a co
 
 :::moniker range="microsoft-fabric"
 > [!IMPORTANT]
-> * The append query can't use remote entities, cross-db entities, reference an external table, or use the `externaldata` operator.
+> * The append query can't use remote entities, cross-db, and cross-eventhouse entities, reference an external table, or use the `externaldata` operator.
 > * The append query is expected to produce deterministic results.  Nondeterministic queries can lead to unexpected results. A query is deterministic if and only if it returns the same data if executed multiple times.
 >    * For example, use of [`take` operator](../query/take-operator.md), [`sample` operator](../query/sample-operator.md), [`rand` function](../query/rand-function.md), and other such operators isn't recommended because these operators aren't deterministic.
 > * Queries might be executed more than once within the `update` execution. If the intermediate query results are inconsistent, the update command can produce unexpected results.
