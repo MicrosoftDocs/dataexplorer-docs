@@ -121,5 +121,5 @@ Use the following management commands to manage an eventhouse's request classifi
 | [`.alter cluster request classification policy`](alter-cluster-policy-request-classification-command.md) | Alters eventhouse's request classification policy |
 | [`.alter-merge cluster request classification policy`](alter-merge-cluster-policy-request-classification-command.md) | Enables or disables a eventhouse's request classification policy |
 | [`.delete cluster request classification policy`](delete-cluster-policy-request-classification-command.md) | Deletes the eventhouse's request classification policy |
-| [`.show cluster request classification policy`](show-eventhouse-policy-request-classification-command.md) | Shows the cluster's request classification policy |
+| [`.show cluster request classification policy`](show-cluster-policy-request-classification-command.md) | Shows the cluster's request classification policy |
 :::moniker-end
