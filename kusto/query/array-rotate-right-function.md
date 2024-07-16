@@ -37,8 +37,6 @@ Rotating to the right by two positions:
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAysoyswrUUgsKrJNqcxLzM1M1og21DHSMdYx0TGN1eSqUUitKEnNSwGpiC/KL0ksSU2xBbITK6G8+KLM9IwSDaCQjoKRJgBslCYKTgAAAA==" target="_blank">Run the query</a>
 :::moniker-end
-:::moniker-end
-
 ```kusto
 print arr=dynamic([1,2,3,4,5])
 | extend arr_rotated=array_rotate_right(arr, 2)
@@ -57,8 +55,6 @@ Rotating to the left by two positions by using negative rotate_count value:
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAysoyswrUUgsKrJNqcxLzM1M1og21DHSMdYx0TGN1eSqUUitKEnNSwGpiC/KL0ksSU2xBbITK6G8+KLM9IwSDaCQjoKukSYA0VPyak8AAAA=" target="_blank">Run the query</a>
 :::moniker-end
-:::moniker-end
-
 **Results**
 
 ```kusto

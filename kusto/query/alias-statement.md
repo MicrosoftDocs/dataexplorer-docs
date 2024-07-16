@@ -59,8 +59,6 @@ First, count the number of records in that table.
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAwsuyS/KdS1LzSsp5uWqUUjOL80rAQDPjygQFAAAAA==" target="_blank">Run the query</a>
 :::moniker-end
-:::moniker-end
-
 ```kusto
 StormEvents
 | count
@@ -79,8 +77,6 @@ Then, give an alias to the `Samples` database and use that name to check the rec
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA03MsQ5AMBCA4V3iHS6dWGonBoMn8ARHL9GotnGHxcMTIqxf/vzoLDIYFOyRCRjn6IibW2sY3MpCS6ZGkchlUYzkop4uDHq33oSdtSdRuX4PmeqehcqrNPn0P77yTsIytxt5YThgCKuXE70pLeGKAAAA" target="_blank">Run the query</a>
 :::moniker-end
-:::moniker-end
-
 ```kusto
 alias database samplesAlias = cluster("https://help.kusto.windows.net").database("Samples");
 database("samplesAlias").StormEvents | count

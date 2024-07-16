@@ -40,8 +40,6 @@ The following query builds and shows a time series of service exceptions over th
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA5XPsaoCQQyF4d6nCFa7oHCtZd9B0F6G8ajByWTJZHS5+PDOgpVgYRn485EkOAnno9NAriWGFKw7QfQYUy0O43zZ0JNKFQnG/5jrbmeIXHBgwd6DjH2/JVqk2QrTL1aYvlifa4tni29YlzaiUK4yRK3Zu54006dBZ1N5/+X6PqpRI23+pFGGfIKRtz5egzk92K+dsycMyz3szhGEKWJ01lxI760O9ABuq0bMcvV2hqFoqnOz7F9BdSHlSgEAAA==" target="_blank">Run the query</a>
 :::moniker-end
-:::moniker-end
-
 ```kusto
 let min_t = toscalar(demo_clustering1 | summarize min(PreciseTimeStamp));  
 let max_t = toscalar(demo_clustering1 | summarize max(PreciseTimeStamp));  
@@ -61,8 +59,6 @@ The second spike in the data occurs on Tuesday afternoon. The following query is
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAyXNwQrCMBAE0Hu/YvHUooWkghSl/yDoyUsJyWpCk2xJNnjx403pbeYwbzwyBBdnnoxiZBewHYS89GLshzNIeRWiuzUGA83al8yYXPzI5gdBLdjnWjFDLGHSVCK3HVCEe0LtMj4r9mAVVngnCvsLMO3hOFqo2goyVCxhNJhgu9dWJYavY9uyY4/T4UV1XVm2CEM0kFe34AnkBhXGOs7kCzuKh+4P3/XM5M8AAAA=" target="_blank">Run the query</a>
 :::moniker-end
-:::moniker-end
-
 ```kusto
 let min_t=datetime(2016-08-23 11:00);
 demo_clustering1
@@ -79,8 +75,6 @@ You see a narrow two-minute spike from 15:00 to 15:02. In the following query, c
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA8tJLVHIzcyLL0hNzI4vsU1JLEktycxN1TAyMDTTNbDQNTJWMDS1MjDQtObKASlNrCCk1AioNCU1Nz8+Oae0uCS1KDMv3ZCrRqE8I7UoVSGgKDU5szg1BKgvuCQxt0AhKbWkPDU1TwPhBj09hCWaQI3J+aV5JQACnQoRpwAAAA==" target="_blank">Run the query</a>
 :::moniker-end
-:::moniker-end
-
 ```kusto
 let min_peak_t=datetime(2016-08-23 15:00);
 let max_peak_t=datetime(2016-08-23 15:02);
@@ -142,8 +136,6 @@ Even though there are less than a thousand exceptions, it's still hard to find c
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA4WOsQrCMBRF937FG5OhJYkoovQfBN1DbC8aTNqSvlgHP94IQkf3c+65AUzRD3aCe1hue8dgHyGM0rta7WuzIb09KCWPVfii7vUPNQXtEUfbhTwzkh9uunrTckcCnRI6P+NSvDO7ONEVvACDWD80zRqRRcTThVxa5DKPv00hP81KL1+4AAAA" target="_blank">Run the query</a>
 :::moniker-end
-:::moniker-end
-
 ```kusto
 let min_peak_t=datetime(2016-08-23 15:00);
 let max_peak_t=datetime(2016-08-23 15:02);
@@ -173,8 +165,6 @@ You can also use the [`basket()`](basket-plugin.md) plugin as seen in the follow
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA4WOsQ6CMBgGd57iH9sB0tZojMZ3MNG9KfBFG1og7Y84+PDWidH9LncBTNGPdoYbLF96x2AfIYzSh1oda7MjvT8pJc9V+KHu/Q81Be0RJ9uFJTOSHx+6+tD6RAJdEzqfcS/ejV2cqQWvwCi2h6bZIrKIeLmwlBa1Lg9gIb9KJv2TswAAAA==" target="_blank">Run the query</a>
 :::moniker-end
-:::moniker-end
-
 ```kusto
 let min_peak_t=datetime(2016-08-23 15:00);
 let max_peak_t=datetime(2016-08-23 15:02);

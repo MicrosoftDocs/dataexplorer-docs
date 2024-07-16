@@ -38,8 +38,6 @@ Shifting to the right by two positions:
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAysoyswrUUgsKrJNqcxLzM1M1og21DHSMdYx0TGN1eTlqlFIrShJzUsBKYkvzshMK7EFshIrIez4osz0jBINoIiOgpEmAKRlW6FMAAAA" target="_blank">Run the query</a>
 :::moniker-end
-:::moniker-end
-
 ```kusto
 print arr=dynamic([1,2,3,4,5])
 | extend arr_shift=array_shift_right(arr, 2)
@@ -78,8 +76,6 @@ Shifting to the left by two positions by using a negative shift_count value:
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAysoyswrUUgsKrJNqcxLzM1M1og21DHSMdYx0TGN1eTlqlFIrShJzUsBKYkvzshMK7EFshIrIez4osz0jBINoIiOgq4REBtqAgCqvHZwUQAAAA==" target="_blank">Run the query</a>
 :::moniker-end
-:::moniker-end
-
 ```kusto
 print arr=dynamic([1,2,3,4,5])
 | extend arr_shift=array_shift_right(arr, -2, -1)
