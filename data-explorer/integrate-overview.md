@@ -86,7 +86,7 @@ The following table summarizes the available tools and integrations and their ca
 | [Microsoft Purview](#microsoft-purview)                                             |                    |                    |                    |                    | :heavy_check_mark: |                    |                    |
 | [Monaco editor](#monaco-editor-pluginembed)                                         |                    | :heavy_check_mark: |                    |                    |                    |                    |                    |
 | [PowerShell](#powershell)                                                           |                    |                    |                    |                    |                    | :heavy_check_mark: |                    |
-| [Real-Time Analytics in Microsoft Fabric](#real-time-analytics-in-microsoft-fabric) | :heavy_check_mark: | :heavy_check_mark: |                    |                    |                    |                    | :heavy_check_mark: |
+| [Real-Time Intelligence in Microsoft Fabric](#real-time-intelligence-in-microsoft-fabric) | :heavy_check_mark: | :heavy_check_mark: |                    |                    |                    |                    | :heavy_check_mark: |
 | [SyncKusto](#synckusto)                                                             |                    |                    |                    | :heavy_check_mark: |                    |                    |                    |
 | [Web UI](#web-ui)                                                                   | :heavy_check_mark: | :heavy_check_mark: |                    |                    |                    |                    | :heavy_check_mark: |
 
@@ -223,7 +223,7 @@ Event Grid ingestion is a pipeline that listens to Azure storage, and updates yo
 [Fluent Bit](https://fluentbit.io/) is an open-source agent that collects logs, metrics, and traces from various sources. It allows you to filter, modify, and aggregate event data before sending it to storage.
 
 * **Functionality:** Ingestion
-* **Ingestion type supported:** Batching, Streaming
+* **Ingestion type supported:** Batching
 * **Use cases:** Logs, Metrics, Traces
 * **Repository:** [fluent-bit Kusto Output Plugin](https://github.com/fluent/fluent-bit/tree/master/plugins/out_azure_kusto)
 * **Documentation:** [Ingest data with Fluent Bit into Azure Data Explorer](fluent-bit.md)
@@ -494,13 +494,13 @@ PowerShell scripts can use the [Kusto client libraries](kusto/api/client-librari
 * **Functionality:** Query
 * **Documentation:** [Use Kusto .NET client libraries from PowerShell](kusto/api/powershell/powershell.md)
 
-### Real-Time Analytics in Microsoft Fabric
+### Real-Time Intelligence in Microsoft Fabric
 
-Real-Time Analytics is a fully managed big data analytics platform optimized for streaming, and time-series data.
+Real-Time Intelligence is a fully managed big data analytics platform optimized for streaming, and time-series data.
 
 * **Functionality:** Ingestion, Export, Query, Visualization
 * **Ingestion type supported:** Streaming, Batching
-* **Documentation:** [What is Real-Time Analytics in Fabric?](/fabric/real-time-analytics/overview)
+* **Documentation:** [What is Real-Time Intelligence in Fabric?](/fabric/real-time-analytics/overview)
 
 ### SyncKusto
 

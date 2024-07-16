@@ -4,6 +4,7 @@ description: This article describes Ingest from storage using Event Grid subscri
 ms.reviewer: leshalev
 ms.topic: how-to
 ms.date: 06/03/2024
+ms.custom: devx-track-azurepowershell
 ---
 # Event Grid data connection
 
