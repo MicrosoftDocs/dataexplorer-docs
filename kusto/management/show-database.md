@@ -11,7 +11,13 @@ ms.date: 05/24/2023
 
 Returns a table showing the properties of the context database.
 
+:::moniker range="azure-data-explorer"
 To return a table in which every record corresponds to a database in the cluster that the user has access to, see [`.show databases`](show-databases.md).
+:::moniker-end
+
+:::moniker range="microsoft-fabric"
+To return a table in which every record corresponds to a database in the eventhouse that the user has access to, see [`.show databases`](show-databases.md).
+:::moniker-end
 
 ## Permissions
 
@@ -33,7 +39,7 @@ The default call without any options specified is equal to 'identity' option.
 |PersistentStorage  | `string` |The persistent storage URI in which the database is stored. (This field is empty for ephemeral databases.)|
 |Version  | `string` |Database version number. This number is updated for each change operation in the database (such as adding data and changing the schema). |
 |IsCurrent  |Boolean |True if the database is the one that the current connection points to.|
-|DatabaseAccessMode  | `string` |How the cluster is attached to the database. For example, if the database is attached in ReadOnly mode then the cluster will fail all requests to modify the database in any way. |
+|DatabaseAccessMode  | `string` |The database access mode. For example, if the database access mode is `ReadOnly`, then all requests to modify the database will fail. |
 |PrettyName | `string` |The database pretty name.|
 |CurrentUserIsUnrestrictedViewer |Boolean | Specifies if the current user is an unrestricted viewer on the database.|
 |DatabaseId | `guid` |The database's unique ID.|
@@ -46,7 +52,7 @@ The default call without any options specified is equal to 'identity' option.
 |PersistentStorage  | `string` |The persistent storage URI in which the database is stored. (This field is empty for ephemeral databases.) |
 |Version  | `string` |The database version number. This number is updated for each change operation in the database (such as adding data and changing the schema). |
 |IsCurrent  |Boolean |True if the database is the one that the current connection points to. |
-|DatabaseAccessMode  | `string` |How the cluster is attached to the database. For example, if the database is attached in ReadOnly mode then the cluster will fail all requests to modify the database in any way. |
+|DatabaseAccessMode  | `string` |The database access mode. For example, if the database access mode is `ReadOnly`, then all requests to modify the database will fail. |
 |PrettyName | `string` |The database's pretty name.|
 |AuthorizedPrincipals | `string` | The database's collection of authorized principals (serialized in JSON format).|
 |RetentionPolicy | `string` | The database's Retention policy (serialized in JSON format).|
@@ -69,7 +75,7 @@ The default call without any options specified is equal to 'identity' option.
 |PersistentStorage  | `string` |The persistent storage URI in which the database is stored. (This field is empty for ephemeral databases.) |
 |Version  | `string` |The database version number. This number is updated for each change operation in the database (such as adding data and changing the schema). |
 |IsCurrent  |Boolean |True if the database is the one that the current connection points to. |
-|DatabaseAccessMode  | `string` |How the cluster is attached to the database. For example, if the database is attached in ReadOnly mode then the cluster will fail all requests to modify the database in any way. |
+|DatabaseAccessMode  | `string` |The database access mode. For example, if the database access mode is `ReadOnly`, then all requests to modify the database will fail. |
 |PrettyName | `string` |The database's pretty name.|
 |DatabaseId | `guid` |The database's unique ID.|
 |AuthorizedPrincipals | `string` | The database's collection of authorized principals (serialized in JSON format).|
@@ -88,7 +94,7 @@ The default call without any options specified is equal to 'identity' option.
 |PersistentStorage  | `string` |The persistent storage URI in which the database is stored. (This field is empty for ephemeral databases.) |
 |Version  | `string` |The database version number. This number is updated for each change operation in the database (such as adding data and changing the schema). |
 |IsCurrent  |Boolean |True if the database is the one that the current connection points to. |
-|DatabaseAccessMode  | `string` |How the cluster is attached to the database. For example, if the database is attached in ReadOnly mode then the cluster will fail all requests to modify the database in any way. |
+|DatabaseAccessMode  | `string` |The database access mode. For example, if the database access mode is `ReadOnly`, then all requests to modify the database will fail. |
 |PrettyName | `string` |The database's pretty name.|
 |DatabaseId | `guid` |The database's unique ID.|
 |OriginalSize | `real` | The database's extents total original size`*`.|

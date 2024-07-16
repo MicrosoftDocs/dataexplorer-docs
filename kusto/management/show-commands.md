@@ -62,11 +62,20 @@ For example:
 
 **Output**
 
+:::moniker range="azure-data-explorer"
 |StartedOn |MemoryPeak |TotalCpu |Text
 |--|--|--|--|
 | 2017-09-28 12:11:27.8155381	| 800396032	| 00:00:04.5312500 |.append Server_Boots <\| let bootStartsSourceTable = SessionStarts; ...|
 | 2017-09-28 11:21:26.7304547	| 750063056	| 00:00:03.8218750 |.set-or-append WebUsage <\| database('CuratedDB').WebUsage_v2 \| summarize ... \| project ...|
 | 2017-09-28 12:16:17.4762522	| 676289120	| 00:00:00.0625000 |.set-or-append  AtlasClusterEventStats with(...) <\| Atlas_Temp(datetime(2017-09-28 12:13:28.7621737), datetime(2017-09-28 12:14:28.8168492))|
+:::moniker-end
+
+:::moniker range="microsoft-fabric"
+|StartedOn |MemoryPeak |TotalCpu |Text
+|--|--|--|--|
+| 2017-09-28 12:11:27.8155381	| 800396032	| 00:00:04.5312500 |.append Server_Boots <\| let bootStartsSourceTable = SessionStarts; ...|
+| 2017-09-28 11:21:26.7304547	| 750063056	| 00:00:03.8218750 |.set-or-append WebUsage <\| database('CuratedDB').WebUsage_v2 \| summarize ... \| project ...|
+:::moniker-end 
 
 ### Query the `TotalCpu` column
 

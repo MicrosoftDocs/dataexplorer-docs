@@ -36,8 +36,15 @@ A [Database Admin or Database Monitor](../access-control/role-based-access-contr
 
 ## Returns
 
+:::moniker range="azure-data-explorer"
 * Returns a table containing previously run queries across all databases in the cluster and their completion statistics. You can use KQL queries to explore the results.
 * Returns a list of currently executing queries by the current user, or by another user, or by all users.
+:::moniker-end
+
+:::moniker range="microsoft-fabric"
+* Returns a table containing previously run queries across all databases in the cluster and their completion statistics. You can use KQL queries to explore the results.
+* Returns a list of currently executing queries by the current user, or by another user, or by all users.
+:::moniker-end
 
 > [!NOTE]
 > The text of the query is truncated after 64 KB.
