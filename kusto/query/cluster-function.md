@@ -4,13 +4,13 @@ description: Learn how to use the cluster() function to change the reference of 
 ms.reviewer: alexans
 ms.topic: reference
 ms.date: 11/27/2022
-monikerRange: "microsoft-fabric || azure-data-explorer || azure-monitor"
+monikerRange: "microsoft-fabric || azure-data-explorer"
 ---
 # cluster()
 
-> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)] [!INCLUDE [monitor](../includes/applies-to-version/monitor.md)] [!INCLUDE [sentinel](../includes/applies-to-version/sentinel.md)]
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)] 
 
-:::moniker range="azure-data-explorer || azure-monitor"
+:::moniker range="azure-data-explorer"
 Changes the reference of the query to a remote cluster. To access a database within the same cluster, use the [database()](database-function.md) function. For more information, see [cross-database and cross-cluster queries](cross-cluster-or-database-queries.md).
 :::moniker-end
 
@@ -27,7 +27,7 @@ Changes the reference of the query to a remote Eventhouse. To access a database 
 
 ## Parameters
 
-:::moniker range="azure-data-explorer || azure-monitor"
+:::moniker range="azure-data-explorer"
 | Name | Type | Required | Description |
 |--|--|--|--|
 | *name* | `string` |  :heavy_check_mark: | The name of the cluster to reference. The value can be specified as a fully qualified domain name, or the name of the cluster without the `.kusto.windows.net` suffix. The cluster name is treated as case-insenstive and the recommendation is to provide it lower-case. The value can't be the result of subquery evaluation. |
@@ -41,7 +41,7 @@ Changes the reference of the query to a remote Eventhouse. To access a database 
 
 ## Examples
 
-:::moniker range="azure-data-explorer || azure-monitor"
+:::moniker range="azure-data-explorer"
 ### Use cluster() to access remote cluster
 
 The following query can be run on any cluster.
@@ -78,7 +78,7 @@ cluster('help.kusto.windows.net').database('Samples').StormEvents | count
 
 The previous query can be rewritten to use a query-defined function (`let` statement) that takes a parameter called `clusterName` and passes it to the `cluster()` function.
 
-:::moniker range="azure-data-explorer || azure-monitor"
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/SampleLogs?query=H4sIAAAAAAAAA8tJLVFIy89XsFXQSM4pLS5JLfJLzE21Ki4pysxL1+Sq5lIAAqgMsgpNvZTEksSkxOJUDfXgxNyCnNRidU294JL8olzXstS8kmKFGoXk/NK8Eq5aay6gBRrqGak5BeqaADuaG9BwAAAA" target="_blank">Run the query</a>
 :::moniker-end
@@ -108,7 +108,7 @@ The same query as above can be rewritten to be used in a function that receives 
 };
 ```
 
-:::moniker range="azure-data-explorer || azure-monitor"
+:::moniker range="azure-data-explorer"
 > [!NOTE]
 > Stored functions using the `cluster()` function can't be used in cross-cluster queries.
 :::moniker-end
