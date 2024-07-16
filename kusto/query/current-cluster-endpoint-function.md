@@ -9,7 +9,13 @@ ms.date: 11/23/2022
 
 > [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)] [!INCLUDE [monitor](../includes/applies-to-version/monitor.md)] [!INCLUDE [sentinel](../includes/applies-to-version/sentinel.md)]
 
+:::moniker range="azure-data-explorer"
 Returns the network endpoint (DNS name) of the current cluster being queried.
+::: moniker-end
+
+:::moniker range="microsoft-fabric"
+Returns the network endpoint (DNS name) of the current Eventhouse being queried.
+::: moniker-end
 
 ## Syntax
 
@@ -19,8 +25,13 @@ Returns the network endpoint (DNS name) of the current cluster being queried.
 
 ## Returns
 
-The network endpoint (DNS name) of the current cluster being queried,
-as a value of type `string`.
+:::moniker range="azure-data-explorer"
+The network endpoint (DNS name) of the current cluster being queried, as a value of type `string`.
+::: moniker-end
+
+:::moniker range="microsoft-fabric"
+The network endpoint (DNS name) of the current Eventhouse being queried, as a value of type `string`.
+::: moniker-end
 
 ## Example
 
