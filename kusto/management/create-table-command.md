@@ -59,4 +59,4 @@ Returns the table's schema in JSON format, same as:
 ```
 
 > [!NOTE]
-> For creating multiple tables, use the [`.create tables`](create-tables-command.md) command for better performance and lower load on the cluster.
+> For creating multiple tables, use the [`.create tables`](create-tables-command.md) command for better performance and lower data load.
