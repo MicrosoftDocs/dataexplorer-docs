@@ -52,8 +52,10 @@ ipv4_is_private("127.0.0.1") == false
 
 ## Example: Check if IPv4 belongs to a private network
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA0tJLAHCpJxUjcyC+OKSosy8dCsIpckVzaWgbmigZ6hnpGesrgPiWBrpGZpZAEUM9Y1MIEJG5noGQGgI5MVy1SikVpSk5qUoFKUWl+aUKNgqZBaUmcRnFscXFGWWJZYg2aIJAAFWRs16AAAA" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
 datatable(ip_string:string)

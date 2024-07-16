@@ -44,8 +44,10 @@ The zero-based index position of *match*.
 
 ## Examples
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA42STW6DMBCF9znFyJsWyVEKhCRd9DDGjIlVYqOxadLbd4LdqpUoioXFxu97b35Gsi5uwHa3Et7Aug5v3jwL1eoOTS+k4L8ogM9uB4P379MIxk+u47f8jVOEEJnRb0DeKdX/FFnKfbGEIQyoSJ+xA1KuR8isepVVzayk5AyKYgBD/pIkUEpo53B+DKBMRIIK9FlRkBA8mGkYvoNo5Z4itJgSZfP9inmdC/lrnky81hMROo3gTXbIyGYFuW2KucUOexXtByZoep7lh1/ysqr3zeEom9TUdFger1yapRBhVKQuyIkCXJHutZG27fDJ1YbInY4+Dy6AmGkCFI9DNCLbHVfSVnJbFo+uxGkB9MODBLyPq3yRUBVrmzZvR6a+Pkjd8q0zNZ6Rr6VucUpgAzgflzbyC/vZ0L4mAwAA" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
 print

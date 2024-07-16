@@ -33,8 +33,10 @@ Returns `true` if the argument isn't null.
 
 Find the storm events for which there's a begin location.
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAwsuyS/KdS1LzSsp5uWqUSjPSC1KVcgszssvySvNydFwSk3PzPNJLNFUSMxLwRDPz9MEAOSBMshAAAAA" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
 StormEvents

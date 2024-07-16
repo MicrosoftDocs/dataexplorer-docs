@@ -35,8 +35,10 @@ Returns the sum value of *expr* across the group.
 
 This example returns the total number of deaths by state.
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAwsuyS/KdS1LzSspVuCqUSguzc1NLMqsSlUAiznnl+aV2CaDSA1NHYWQ/JLEHJfUxJIM58Ti1GIFW5B6DbBAsUtmUWpyiaZCUqVCcEliSSrYtPyiEpAAmj4A7Xtp83QAAAA=" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
 StormEvents 

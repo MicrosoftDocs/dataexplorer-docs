@@ -39,8 +39,10 @@ Welch's t-test is less popular than Student's t-test, and may be less familiar t
 
 ## Example
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA2WP3UrEMBCF7xf2HXKZQgydsT/uRV7DGxGJadRCk5ZtGnfFhzeTqBTNxWE4fOfMZDmPPhwPLL0VmGLD1Ws3Gv6AvWwFQ5C1YHAixVvZpbnPTi9PSTtSrCVkkmYkJpGQU91vFmSftXmsxPc6/LMOcrzOhXe5pNkpHdNmvzBNnmuJu9WloZzUZiatOx4+mYs39rJoP9Anw8zCdbHzCx/m7XmylaBb/rmUWzfn9Hn8sMyB0vGVr5DoCComV3tji2FAmXnzgafZYQGRQNyBZBj8AandXoJNJy33etqsereTeXsKdg3cgYggDAiHIqIwWH0B4CiCU6cBAAA=" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
 // s1, s2 values are from https://en.wikipedia.org/wiki/Welch%27s_t-test

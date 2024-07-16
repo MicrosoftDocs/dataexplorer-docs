@@ -43,8 +43,10 @@ Rows in *T* for which the predicate is `true`.
 
 The following query shows how to use `in~` with a comma-separated list of scalar values.
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAwsuyS/KdS1LzSspVuCqUSjPSC1KVQguSSxJVcjMq1PQUHLz8Q/ydHFU0lFQSk/NL0rPTAQx/VzDFSL9g7yVNEG6kvNL80oAl8ORJUoAAAA=" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
 StormEvents 
@@ -62,8 +64,10 @@ StormEvents
 
 The following query shows how to use `in~` with a dynamic array.
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAwsuyS/KdS1LzSspVuCqUSjPSC1KVQguSSxJVcjMq1PQSKnMS8zNTNaIVnLz8Q/ydHFU0lFQSk/NL0rPTAQx/VzDFSL9g7yVYjU1QQYk55fmlQAAcLCM41UAAAA=" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
 StormEvents 
@@ -79,8 +83,10 @@ StormEvents
 
 The same query can also be written with a [let statement](let-statement.md).
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA8tJLVEoLkksSS1WsFVIqcxLzM1M1ohWcvPxD/J0cVTSUVBKT80vSs9MBDH9XMMVIv2DvJViNa25gkvyi3Jdy1LzSooVuGoUyjNSi1IVgkFGKWQkFscn5lUqaEBM1gRKF5fm5iYWZValKiTnl+aVaGgqJFVCVAMACG2BiYIAAAA=" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
 let states = dynamic(["FLORIDA", "georgia", "NEW YORK"]);
@@ -99,8 +105,10 @@ StormEvents
 
 The following query shows how to use `in~` with an inline tabular expression. Notice that an inline tabular expression must be enclosed with double parentheses.
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAwsuyS/KdS1LzSspVuCqUSjPSC1KVQguSSxJVcjMq1PQ0AjILyjNSSzJzM9zSSxJVIApQQgr2CmYGoABULKgKD8rNbkEYoKmJtDE4tLc3MSizKpUheT80rwSDU2FpEqINACuenXZewAAAA==" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
 StormEvents 
@@ -121,8 +129,10 @@ StormEvents
 
 The same query can also be written with a [let statement](let-statement.md). Notice that the double parentheses as provided in the last example aren't necessary in this case.
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA02NsQ6CQBBEe75iSuhorIxW0pvwAWYlGz1yd0v29jAaw7eDEBOmnHkv49ngSR98S0bGCSdcZciezEm8kBG+eD1ZeVfjjEO9ZhkHlZ47Q/vTj0VroqEZOVpC8VfXDS5OKPdf1QKkHAKp+zA6ydHKCvf3xs9WLYRGmgAAAA==" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
 let large_states = PopulationData | where Population > 5000000 | project State;

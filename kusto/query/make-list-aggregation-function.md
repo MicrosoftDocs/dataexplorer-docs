@@ -49,8 +49,10 @@ If the input to the `summarize` operator is sorted, the order of elements in the
 
 The following example makes a list out of a single column:
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA0XPzwrCMAwG8Huh7xB2crCD4v+JJx9DROIWtmKbzrYDFR/eTldNLuGX7/JpCuBb7MjDHmoMcS+aYMJoqAQfnOKmAK9qOtieQwmKQy7FUQqIk8U/cqMpK2BejOZvPbpBFkkcVSHFftgRB2wsR1sma+k+0upPXYqtk9kq0SYRWx5pm6imaqTZVIrTTopvUSle4Htj0KkngXlo5UMsb/BK5+H+dM/ff3I+dBkBAAA=" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
 let shapes = datatable (name: string, sideCount: int)
@@ -79,8 +81,10 @@ shapes
 
 The following example runs a query using the `by` clause:
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA0XQ3YrCMBAF4PtA3uEgCCv0wp/d9Y9eiU/gpYjEdqjBZlqbVFR8eKPbcSc3w5dzc6akAH80NXmkyE2I71ASvtg4WsCHxnKRwNucVlXLYQHLYaDVVivE6cV/w0VJvQSTpDN/bk3zkm+RhrIgsQ/WxMEUFUf7ETvStaPff6olNhWrMqGZEFfc0Vwop6yj0VCr3VKrv6JaPeBb50xj7wR3K60PsbwzJ9q/9nf3AQ43WL++EG+kfAx9DoE+xkhTDJ/VCjwFQQEAAA==" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
 let shapes = datatable (name: string, sideCount: int)
@@ -110,8 +114,10 @@ shapes
 
 The following examples show how to [pack](pack-function.md) a dynamic object in a column before making it a list.
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA03Pz0rEMBAG8Hsg7zAUhBZ6WP/rSk/iE3gUWabN0A3bTGuTyq748E6ws5ocEn75JvANlCDucaIIDThMstuBoGQMtIWYZs99DdE7eh4XTlvwnCpr3qwBWYW8I/cDFTVc16vFjwXnLDcqM3VJY2eciBP2I4vdqu3puNLdH00au1cbO6UHJR55pUclR91Klxtr3p+s+S1qzTfQMRE7cFK6xX43YXcoi9xZ0vmopYZ2Lv71r/JwXELA2X8RhNPgY5JPAh5ol++lq6A9gY8vn8SvOiaJ8xdwAVfQNLD5ARd0KSV7AQAA" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
 let shapes = datatable (name: string, sideCount: int)

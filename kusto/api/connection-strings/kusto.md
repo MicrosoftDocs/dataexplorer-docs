@@ -27,7 +27,7 @@ https://help.kusto.windows.net/Samples; Fed=true; Accept=true
 
 :::moniker range="azure-data-explorer"
 Several Kusto client tools support an extension over the URI prefix of the connection string that allows for a shorthand format of `@`*ClusterName*`/`*InitialCatalog*. For example, these tools translate the connection string `@help/Samples` to `https://help.kusto.windows.net/Samples; Fed=true`.
-:::moniker-end
+::: moniker-end
 
 Programmatically, the C# `Kusto.Data.KustoConnectionStringBuilder` class can parse and manipulate Kusto connection strings. This class validates all connection strings and generates a runtime exception if validation fails. This functionality is present in all flavors of Kusto SDK.
 
@@ -241,7 +241,7 @@ var kustoConnectionStringBuilder = new KustoConnectionStringBuilder(kustoUri)
     .WithAadApplicationThumbprintAuthentication(appId, appCert, authority);
 // Equivalent Kusto connection string: $"Data Source={kustoUri};Database=NetDefaultDB;Fed=True;AppClientId={appId};AppCert={appCert};Authority Id={authority}"
 ```
-:::moniker-end
+::: moniker-end
 
 :::moniker range="microsoft-fabric"
 **Microsoft Entra ID Federated authentication using the currently logged-on user identity (user will be prompted if required)**
@@ -327,5 +327,5 @@ var kustoConnectionStringBuilder = new KustoConnectionStringBuilder(kustoUri)
     .WithAadApplicationThumbprintAuthentication(appId, appCert, authority);
 // Equivalent Kusto connection string: $"Data Source={kustoUri};Database=NetDefaultDB;Fed=True;AppClientId={appId};AppCert={appCert};Authority Id={authority}"
 ```
-:::moniker-end
+::: moniker-end
 

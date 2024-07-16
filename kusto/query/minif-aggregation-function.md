@@ -36,8 +36,10 @@ The minimum value of *Expr* in records for which *Predicate* evaluates to `true`
 
 This example shows the minimum damage for events with casualties (Except 0)
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA3WOsQ6CUAxFd7+iIwQGfwAXcHAwMWFwrlKlCa+Y16Ji/Hif1NXp3tvenrS1MYbtncR09QZ6GkkHDQa8UuVSx/GmhftD8hRtLqEhtF4rl4Yjna3wsJNuiQmnUwgY+UWwZ3HCka2vUSccjEmrwMKXzFdl5gDYrHPA9MZv/s05nGZoDY0gcR89xb/MVF+uWWU0mYYh+1PMPyFcEcH8AAAA" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
 StormEvents

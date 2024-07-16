@@ -30,8 +30,10 @@ A datetime representing the end of the year for the given *date* value, with the
 
 ## Example
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAy3MMQqAMAxG4d1T/GMLFhoXQXD0IMUmomAjNYvg4VUQvuUtr6ayMFTkZINU3REIpiCcxgeowY2j6saz4eJUp5IxgktW+dLlZGzrzq6L1IdIL1AcPr1v/7F/AESu49RmAAAA" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
   range offset from -1 to 1 step 1

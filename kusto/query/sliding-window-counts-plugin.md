@@ -44,8 +44,10 @@ Output table schema is:
 
 Calculate counts and `dcounts` for users in past week, for each day in the analysis period. 
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA63TQWvCMBQH8Hs/xbtpIYJtNxTLDhu76LljhzEk7QsuGJPRpIrgh99rM50MWiLYQiD0R96f8o8SDqzjtYMnQO6EkzsxTqfJDCYwnbdLEueRIiU09ppZnEOHlDHbklfbd6nRHMhnmIP/VEpN+wT9aYU/i95SifGbFfUSF5SklnrDoKAJlGr3vbgMjCOg56NbRy+mHLHevAy8euV7iXd0K/OlA1hYuGfNNfJemBI8S9eoQReQLg2dm/3BobE3s8F0WdC/u1LC2WOvewg67bFVn3lURCcQe64aUmCVRCrg+tDVd12ZRjv7286rVjJ/ZVh7J9i/zrO26PEPos0Ri1cDAAA=" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
 let start = datetime(2017 - 08 - 01);

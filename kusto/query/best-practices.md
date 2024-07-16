@@ -45,7 +45,7 @@ Here are several best practices to follow to make your query run faster.
 | **[extract() function](extract-function.md)** | Use when parsed strings don't all follow the same format or pattern. |  | Extract the required values by using a REGEX. |
 | **[materialize() function](materialize-function.md)** | Push all possible operators that will reduce the materialized dataset and still keep the semantics of the query. |  | For example, filters, or project only required columns. For more information, see [Optimize queries that use named expressions](named-expressions.md). |
 | **Use materialized views** | Use [materialized views](../management/materialized-views/materialized-view-overview.md) for storing commonly used aggregations. Prefer using the `materialized_view()` function to query materialized part only |  | `materialized_view('MV')` |
-:::moniker-end
+::: moniker-end
 
 :::moniker range="microsoft-fabric"
 | Action | Use | Don't use | Notes |
@@ -77,7 +77,7 @@ Here are several best practices to follow to make your query run faster.
 | **[extract() function](extract-function.md)** | Use when parsed strings don't all follow the same format or pattern. |  | Extract the required values by using a REGEX. |
 | **[materialize() function](materialize-function.md)** | Push all possible operators that will reduce the materialized dataset and still keep the semantics of the query. |  | For example, filters, or project only required columns. For more information, see [Optimize queries that use named expressions](named-expressions.md). |
 | **Use materialized views** | Use [materialized views](../management/materialized-views/materialized-view-overview.md) for storing commonly used aggregations. Prefer using the `materialized_view()` function to query materialized part only |  | `materialized_view('MV')` |
-:::moniker-end
+::: moniker-end
 
 ## Reduce the amount of data being processed
 
@@ -137,7 +137,7 @@ For example, the table `T` can be referenced as simply `T` (the *unqualified* na
 
 :::moniker range="azure-data-explorer"
 For example, the table `T` can be referenced as simply `T` (the *unqualified* name), or by using a database qualifier (e.g. `database("DB").T` when the table is in a database called `DB`), or by using a fully-qualified name (e.g. `cluster("X.Y.kusto.windows.net").database("DB").T`).
-:::moniker-end
+::: moniker-end
 
 It is a best practice to avoid using name qualifications when they are redundant, for the following reasons:
 
@@ -157,11 +157,11 @@ Avoiding qualified names helps the reader to do the right thing.
 > This is not to say that qualified names are bad for performance. In fact, Kusto is able in most cases to identify when a fully qualified name
 > references an entity belonging to the database-in-scope and "short-circuit" the query so that it is not regarded as a cross-cluster query.
 > However, we do recommend to not rely on this when not necessary, for the reasons specified above.
-:::moniker-end
+::: moniker-end
 
 :::moniker range="microsoft-fabric"
 > [!NOTE]
 > This is not to say that qualified names are bad for performance. In fact, Kusto is able in most cases to identify when a fully qualified name
 > references an entity belonging to the database-in-scope.
 > However, we do recommend to not rely on this when not necessary, for the reasons specified above.
-:::moniker-end
+::: moniker-end

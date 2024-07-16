@@ -30,8 +30,10 @@ The natural logarithm is the base-e logarithm: the inverse of the natural expone
 
 ## Example
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAysoyswrUShKLS7NKbHNyU/XMNUEAE7U1nYTAAAA" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
 print result=log(5)

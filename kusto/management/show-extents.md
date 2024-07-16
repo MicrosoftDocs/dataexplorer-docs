@@ -31,9 +31,9 @@ The types of `.show extents` commands are as follows:
 
 ## Permissions
 
-To see extents on the cluster, you must have AllDatabasesMonitor permissions.
+To see extents on the cluster, you must have `AllDatabasesMonitor` permissions.
 
-To see extents on a database, you must have Database User, Database Viewer, or Database Monitor permissions.
+To see extents on a database, you must have `Database User`, `Database Viewer`, or `Database Monitor` permissions.
 
 For more information, see [role-based access control](../access-control/role-based-access-control.md).
 
@@ -100,6 +100,8 @@ If `hot` is specified - shows only extents that expected to be in the hot cache.
 [!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
 Shows information about extents (data shards) that are present in the cluster.
+
+
 If `hot` is specified - shows only extents that are expected to be in the hot cache.
 
 ## Returns

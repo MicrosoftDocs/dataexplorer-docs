@@ -33,8 +33,10 @@ The arguments concatenated to a single string with *delimiter*.
 
 ## Example
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAysoyswrUSguUbAFEkXJiSXxKak5mbka6rrqOgqGOgrqRkBa3RHEKdYEAPL2A8YtAAAA" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
 print st = strcat_delim('-', 1, '2', 'A', 1s)

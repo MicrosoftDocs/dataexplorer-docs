@@ -57,8 +57,10 @@ Using the following set of latency values in milliseconds:
 To reduce bandwidth and storage, do pre-aggregation to the
 following buckets: `{ 10, 20, 30, 40, 50, 100 }`. Count the number of events in each bucket to produce the following table:
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA8tJLVHISSxJzUuuDElMyklVsFVISSwBQhBbIyi10Dm/NK/EKic/L11HwQei0Kk0OTsVIqapwBWtwKUABBY6CoYGOhC2mY6CEYxtrKNgDGMb6iiYGChwxVpzIVsJAGDD8KqDAAAA" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
 let latencyTable = datatable (ReqCount:long, LatencyBucket:long) 
@@ -81,8 +83,10 @@ The table displays:
 At this point, the original data is no longer available. Only the number of events in each bucket. To compute percentiles from this data, use the `percentilesw()` function.
 For the 50, 75, and 99.9 percentiles, use the following query:
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA1WOMQvCMBCF9/yKN7ZwSGutGsVFVydxE4cYDymmqbYJovjjjYSA3i0fj8d9Z9jBKMdWP/fqZBgrnJUL++Vsx/dN561bmM5eCNtYXHt95ZjlEAcIhJkTyoIiTwnjxBWhSlwSJgXEcSl+leKNwbet6psX48a9Zusaw8Mj+/MR0jeEOlyc1QQpRzL/AMC/VMrDAAAA" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
 let latencyTable = datatable (ReqCount:long, LatencyBucket:long) 
@@ -126,8 +130,10 @@ Returns an estimate for *expr* of the specified percentiles in the group as a si
 
 #### Comma-separated percentiles
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/SampleIoTData?query=H4sIAAAAAAAAA1WOQQuCQBCF7/sr3lFhCM2sLLrUtVN0i4hpG0Ja11pXwujHZ8hCzVw+Ho/5xoiHYS9Wd3s+G8EKF/b9fjnayWNTt9YvTG2vhO1QXLf6JkMWQx2g0M+ckCY08JQwDpwRssApYZJAHZfqV6neaNqqYle+BHdxWqwvjTTPEzvHXfRnJYSfCHl/d5YTimJUxB+W4nlIyQAAAA==" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
 let latencyTable = datatable (ReqCount:long, LatencyBucket:long) 
@@ -149,8 +155,10 @@ latencyTable
 
 #### Dynamic array of percentiles
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/SampleIoTData?query=H4sIAAAAAAAAA1WOQQuCQBCF7/sr3lFhiMysLLrUtVN0E4lpHUJa11pXwujHZ4hQ8y4fjwffGPEw7MXq7sQXI9iiYN/ny8FRHvu6tX5tanslHIbhrtU3GboQKoNCfytCNKWBF4TZyDEhHjkizKdQ+Ub9KtUbTVtV7MqX4C5Oi/WlkeZ5Zue4C/6shPEnQtFZrkodZEkvWCaENJ2keRh+AIIR/2/UAAAA" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
 let latencyTable = datatable (ReqCount:long, LatencyBucket:long) 

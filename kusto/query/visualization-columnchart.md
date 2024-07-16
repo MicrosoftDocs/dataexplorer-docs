@@ -95,8 +95,10 @@ The supported values of this property are:
 
 ### Render a column chart
 
+
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAwsuyS/KdS1LzSsp5qpRKC7NzU0syqxKVUgFCcUn55fmldiCSQ1NhaRKheCSxJJUoMLyjNQiFEUKdgqGBkCJgqL8rNTkEohCHWQVQMmi1LyU1CKF5Pyc0ty85IzEohIAvF8Py38AAAA=" target="_blank">Run the query</a>
+
 
 ```kusto
 StormEvents
@@ -129,6 +131,7 @@ To split the view into separate panels, specify `panels` instead of `axes`:
 
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA1WOMQ6DMAxFd07hEVSWHoCNDsxwgRAsYZQ4yDGtqHr4pkW04O1//2f/VoP42x1ZY/aCuHhvhJ6YQZouqHENT4sQRqg+23yXNQlaLeBychseNr/8H6jR6LjjmzjDm/dDv2S/Qk+ct2pEO/JYwnUoUsFZwpRCcFicWpbHnykvyAMK2OAWz3ZMEDxIR8jXODvSajaMLhZvciiM8gYBAAA=" target="_blank">Run the query</a>
+
 
 ```kusto
 StormEvents

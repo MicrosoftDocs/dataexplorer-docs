@@ -49,8 +49,10 @@ All properties are optional.
 
 ## Example
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA2WNMQ7CMAwAd17hMZE6sfctketY1CpxI9sRLeLxIEZYT7o7PakEHnJ5gY/W0OTJQPvQSBmWEzq6s97YyhdOsIimLrSNXioGhzSe4FrzJ2CslQ08kDauaIy0ogU8JFZIB+330XT+k51N2OefU34D4n9FXJoAAAA=" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
 nyc_taxi

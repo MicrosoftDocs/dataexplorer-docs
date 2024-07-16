@@ -29,8 +29,10 @@ Dynamic array of the calculated natural logarithm function. Any non-numeric elem
 
 ## Example
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAysoyswrUShWsFVIqcxLzM1M1og21DHSMY7V5KpRSK0oSc1LUSiOz8lPB6ooTi3KTAVzNIo1AcJsOMY5AAAA" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
 print s = dynamic([1,2,3])

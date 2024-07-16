@@ -35,8 +35,10 @@ The minimum value of all argument expressions.
 
 Find the maximum value in an array:
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAysoyswrUShKLS7NKbHNzcyLz0/TMDTQUTDUUdA1BlLmmgCoI/wyIgAAAA==" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
 print result=min_of(10, 1, -3, 17) 
@@ -50,8 +52,10 @@ print result=min_of(10, 1, -3, 17)
 
 Find the minimum value in a data-table. Non-null values take precedence over null values:
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA0tJLAHCpJxUBQ1HK4XMvBIdBScwrckVzaUABKY6CkY6YJahgY6CIYQJlNfIK83J0dRRMIZK6iAJoquBM7liuWoUCorys1KTSxRyM/Pi89M0HIE2agIA226WNIcAAAA=" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
 datatable (A: int, B: int)

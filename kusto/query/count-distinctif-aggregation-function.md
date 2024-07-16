@@ -20,10 +20,10 @@ If you only need an estimation of unique values count, we recommend using the le
 > * This function is limited to 100M unique values. An attempt to apply the function on an expression returning too many values will produce a runtime error (HRESULT: 0x80DA0012).
 :::moniker range="azure-data-explorer"
 > * Function performance can be degraded when operating on multiple data sources from different clusters.
-:::moniker-end
+::: moniker-end
 :::moniker range="microsoft-fabric"
 > * Function performance can be degraded when operating on multiple data sources from different Eventhouses.
-:::moniker-end
+::: moniker-end
 
 ## Syntax
 
@@ -48,10 +48,10 @@ This example shows how many types of death-causing storm events happened in each
 
 :::moniker range="azure-data-explorer"
 > * Function performance can be degraded when operating on multiple data sources from different clusters.
-:::moniker-end
+::: moniker-end
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA22NsQ6CQBAFe79iS4gWNJZQoYk1Wpv1WMMm3h3cvdNA/HgRSi3fzCSvgQ/28BSHuHlTTNZy0Eno4nRIcmTwY7Wl8cnh2mqEOgO9Zws/j73ssloYXaw1iAFtaZ0n1y4gr4qcbiM1YMh88uok/DmgiorZwve0/+Y/wQetTCWoqwAAAA==" target="_blank">Run the query</a>
-:::moniker-end
+::: moniker-end
 
 ```kusto
 StormEvents

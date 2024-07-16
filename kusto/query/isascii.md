@@ -29,8 +29,10 @@ A boolean value indicating whether *value* is a valid ASCII string.
 
 ## Example
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAysoyswrUShKLS7NKbHNLE4sTs7M1FAqzs9NVSguAcqlK2kCAIfayAkjAAAA" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
 print result=isascii("some string")

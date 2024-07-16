@@ -20,11 +20,11 @@ To copy your URI, in the Azure portal, go to your cluster's overview page, and t
    `https://<your_cluster>.kusto.windows.net/MyDatabase?
 web=0&query=KustoLogs+%7c+where+Timestamp+>+ago({Period})+%7c+count&Period=1h`
     Replace &lt;your_cluster&gt; with your Azure Data Explorer cluster name.
-:::moniker-end
+::: moniker-end
 
 :::moniker range="microsoft-fabric"
 To copy your URI, see [Copy a KQL database URI](/fabric/real-time-intelligence/access-database-copy-uri#copy-uri).
-:::moniker-end
+::: moniker-end
 
 * Request URL: The URL should be formatted as `https://<cluster_uri>/v1/rest/query`, where `<cluster_uri>` is the URI of your cluster or database containing the table you want to query.
 

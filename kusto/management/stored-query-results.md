@@ -28,7 +28,7 @@ Stored query results behave like tables, in that the order of records isn't pres
 > * Query results are stored in a storage account associated with the cluster. The data isn't cached in local SSD storage.
 > * A follower cluster needs its own writable database to store query results.
 
-:::moniker-end
+::: moniker-end
 :::moniker range="microsoft-fabric"
 
 > [!NOTE]
@@ -37,7 +37,7 @@ Stored query results behave like tables, in that the order of records isn't pres
 > * Query results are stored in a storage account associated with the eventhouse. The data isn't cached in local SSD storage.
 > * A shortcut database needs its own writable database to store query results.
 
-:::moniker-end
+::: moniker-end
 
 The following table lists the management commands and functions used for managing stored query results:
 

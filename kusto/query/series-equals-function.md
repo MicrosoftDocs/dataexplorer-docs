@@ -29,8 +29,10 @@ Dynamic array of booleans containing the calculated element-wise equal logic ope
 
 ## Example
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAysoyswrUSg2VLBVSKnMS8zNTNaINtQx0jGJ1dRRKDZCFjYBChvGanLVKKRWlKTmpQB1xacWlibmFMeDFRanFmWmFkOFNIoNQfo1AT5VmINgAAAA" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
 print s1 = dynamic([1,2,4]), s2 = dynamic([4,2,1])

@@ -42,8 +42,10 @@ The inverse of the beta cumulative probability density function [beta_cdf()](bet
 
 ## Examples
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA11PQQrCMBC85xVDTw3EkAheivYJPXoRkdQEDaRpsIko+HhDWiq4C8sOzOzOaBVz987UodFjyguDcuGuVtSb+APXcRiMj80UH9bfKDkR5BJcMkjBBcO2zOqonNWwPqRYscKRfPfHCWiRdW9rnJ7gk3MLtZybP9YbyQVdJcUZ7IQ9xKrsVFeRM/nAvKLxGj0OxfTF+mcdljhzDvoFBansKu8AAAA=" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
 datatable(p:double, alpha:double, beta:double, comment:string)

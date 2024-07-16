@@ -31,8 +31,10 @@ Use the two slashes (//) to add comments. The following table lists the keyboard
 
 This example returns a count of events in the New York state:
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA02OMQ6DMBAEe16x4gN+ASVpIhGJFBElIYuwAj7pfECTxyfGKWhHO6N1Di1t1QCbiEHWYJAR3BgswmfccEcn+ka03ohRZTn43USXOk+tf84sTqT4YJ+oaZWkqkLZ1A90t/Zawjlc/GzUo6McRF/xv8/l5Ph4cn69494XVG+MV7IAAAA=" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
 // Return the count of events in the New York state from the StormEvents table

@@ -29,8 +29,10 @@ The value of the arc tangent of `x`.
 
 ## Example
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAysoyswrUShKLS7NKbFNLEnM0zDQM9UEACNi3wIWAAAA" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
 atan(0.5)

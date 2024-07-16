@@ -16,6 +16,11 @@ Alter a workload group.
 
 You must have [Cluster AllDatabasesAdmin](../access-control/role-based-access-control.md) permissions to run this command.
 
+:::moniker range="microsoft-fabric"
+> [!NOTE]
+> The `admin` role inherits `Cluster AllDatabasesAdmin` permissions.
+::: moniker-end
+
 ## Syntax
 
 `.alter-merge` `workload_group` *WorkloadGroupName* *SerializedPolicyObject*

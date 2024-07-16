@@ -38,8 +38,10 @@ The nearest multiple of *roundTo* below *value*. Null values, a null bin size, o
 
 ### Numeric bin
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAysoyswrUUjKzNMw0TPVUTDUBACk1J4hEQAAAA==" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
 print bin(4.5, 1)
@@ -53,8 +55,10 @@ print bin(4.5, 1)
 
 ### Timespan bin
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAysoyswrUUjKzNMoycxN1TA0S9HUUTBP0QQAELu46BgAAAA=" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
 print bin(time(16d), 7d)
@@ -68,8 +72,10 @@ print bin(time(16d), 7d)
 
 ### Datetime bin
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAysoyswrUUjKzNNISSxJLcnMTdUwtDQ30DUw1TU0VDA0tjIxtTIw19RRMEzRBADBlT+OLAAAAA==" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
 print bin(datetime(1970-05-11 13:45:07), 1d)
@@ -85,8 +91,10 @@ print bin(datetime(1970-05-11 13:45:07), 1d)
 
 When there are rows for bins with no corresponding row in the table, we recommend to pad the table with those bins. The following query looks at strong wind storm events in California for a week in April. However, there are no events on some of the days.
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA02OQQuCQBCF7/6KwYtKKRaBB9mDlIEQFRl0XtnBBHeVdUqMfnxbS9Ft4Pvee9MiQUlcEzAQnJAaib63jOMkjFdhnHhB6rTGyZUwhjVnkIjUKanTMr+josF5wnhFjZafTQVUSCOiAt9GoujdEPyLhMAYuOtsV2wPp32RucDNyKfxPPWWlqQ7VcOlUcI14eEmJdfNA+Goux41TRsueY3MAN+eXxBANUHVKP/30xwWIngBzQQjwPAAAAA=" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
 let Start = datetime('2007-04-07');
@@ -113,8 +121,10 @@ In order to represent the full week, the following query pads the result table w
 1. Use a `PropertyDamage` of `0`.
 1. The `summarize` operator groups together bins from the original table to the table produced by the `union` expression. This process ensures that the output has one row per bin whose value is either zero or the original count.
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA12QQWuDQBCF7/6Kh5cojUFLIYfgIbQpBEpbaqDnFSdWyO7KOkm05Md3dJtQuodl4b33zZs9EKNg5Rg5KsXEjaZodp+myyR9SNLlLF4FB/FsTCUO77zDsloFBVunNycy3AUXnL/Ikdd3gkBJfCYyiHxksRgJ8V8jE/Ic4eP6Zfv89vG6XYdQMmQi7obWqwU7a2p8NqYKJXw0jRVmADlOmZrQY++sRga2cnVMLbJJvkCfEurbkXmrlU8h32k+Npojq+IxyzLR7qPrF8S/DOqZBPDubEuOhyelVU15OqnjNt1Ra+Wab/pvESHyz6sQoxxQNia6tZmG/wDAjjX+gQEAAA==" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
 let Start = datetime('2007-04-07');

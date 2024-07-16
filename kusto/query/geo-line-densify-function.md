@@ -57,8 +57,10 @@ dynamic({"type": "MultiLineString","coordinates": [[line_1, line_2, ..., line_N]
 
 The following example densifies a road in Manhattan island. The edge is short and the distance between the planar edge and its geodesic counterpart is less than the distance specified by tolerance. As such, the result remains unchanged.
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAy3K0QqDIBSA4VeRc6XgwqXoDPYGu9tlSESehbA00hsZe/dF7fb7/3ULsRCPMYdXQD+8Q0RyJyXlspeZzpgOG86lUl/juISJfqDUFaGDx16fxwwcppQ2H+JYMEPX9xcjG6tsqwwnSjTG6psWjp9upLj+XSvZSue+jLEf+uHlO5EAAAA=" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
 print densified_line = tostring(geo_line_densify(dynamic({"type":"LineString","coordinates":[[-73.949247, 40.796860],[-73.973017, 40.764323]]})))
@@ -72,8 +74,10 @@ print densified_line = tostring(geo_line_densify(dynamic({"type":"LineString","c
 
 The following example densifies an edge of ~130-km length
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAyWKMQqEMBAAv7JslUAKLdII9wM7yxBEzJ4s6EbMNuG4vxu0G2bmvFgUEknhL1OadxaCD2gu2spmNsqPm9+lmlRlOXg1P9R6Eg44tjo9Mzpcc74Sy6JUcAjBdw58Fx0E3zfqY/xba28ARL6/dAAAAA==" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
 print densified_line = tostring(geo_line_densify(dynamic({"type":"LineString","coordinates":[[50, 50], [51, 51]]})))
@@ -87,8 +91,10 @@ print densified_line = tostring(geo_line_densify(dynamic({"type":"LineString","c
 
 The following example returns a null result because of the invalid coordinate input.
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAysoyswrUUhJzSvOTMtMTYnPycxLVbBVSE/NBzPjITKVGimVeYm5mcka1UollQWpSlZKPkDZ4BKg7nQlHaXk/PyilMy8xJLUYiWr6GhjAwMdw1idaEMgGVurqQkAeUICdmUAAAA=" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
 print densified_line = geo_line_densify(dynamic({"type":"LineString","coordinates":[[300,1],[1,1]]}))
@@ -102,8 +108,10 @@ print densified_line = geo_line_densify(dynamic({"type":"LineString","coordinate
 
 The following example returns a null result because of the invalid tolerance input.
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAysoyswrUUhJzSvOTMtMTYnPycxLVbBVSE/NBzPjITKVGimVeYm5mcka1UollQWpSlZKPkDZ4BKg7nQlHaXk/PyilMy8xJLUYiWr6GhDHcNYnWgjHaPY2FpNHQUDTQAqaEHvZgAAAA==" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
 print densified_line = geo_line_densify(dynamic({"type":"LineString","coordinates":[[1,1],[2,2]]}), 0)

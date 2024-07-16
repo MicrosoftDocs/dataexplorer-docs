@@ -29,8 +29,10 @@ A boolean value indicating whether *value* is a valid UTF8 string.
 
 ## Example
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAysoyswrUShKLS7NKbHNLC4tSbPQUCrOz01VKC4BSqUraQIA1zBdDCIAAAA=" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
 print result=isutf8("some string")

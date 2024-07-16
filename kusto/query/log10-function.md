@@ -30,8 +30,10 @@ ms.date: 01/05/2023
 
 ## Example
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAysoyswrUShKLS7NKbHNyU83NNAw1QQAQyXyFRUAAAA=" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
 print result=log10(5)

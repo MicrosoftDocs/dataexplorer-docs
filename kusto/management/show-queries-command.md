@@ -11,10 +11,10 @@ ms.date: 11/22/2023
 
 :::moniker range="azure-data-explorer"
 The `.show` `queries` command lists queries on the cluster that have reached a final state, and that the user invoking the command has access to see. Optionally, the command can return queries that are still running, queries by specific users, or queries grouped by user. To see both queries and commands completion, use [.show queries-and-commands](commands-and-queries.md).
-:::moniker-end
+::: moniker-end
 :::moniker range="microsoft-fabric"
 The `.show` `queries` command lists queries on the eventhouse that have reached a final state, and that the user invoking the command has access to see. Optionally, the command can return queries that are still running, queries by specific users, or queries grouped by user. To see both queries and commands completion, use [.show queries-and-commands](commands-and-queries.md).
-:::moniker-end
+::: moniker-end
 
 ## Permissions
 
@@ -36,8 +36,15 @@ A [Database Admin or Database Monitor](../access-control/role-based-access-contr
 
 ## Returns
 
+:::moniker range="azure-data-explorer"
 * Returns a table containing previously run queries across all databases in the cluster and their completion statistics. You can use KQL queries to explore the results.
 * Returns a list of currently executing queries by the current user, or by another user, or by all users.
+::: moniker-end
+
+:::moniker range="microsoft-fabric"
+* Returns a table containing previously run queries across all databases in the cluster and their completion statistics. You can use KQL queries to explore the results.
+* Returns a list of currently executing queries by the current user, or by another user, or by all users.
+::: moniker-end
 
 > [!NOTE]
 > The text of the query is truncated after 64 KB.
@@ -73,7 +80,7 @@ The returned table schema is:
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/kvc6bc487453a064d3c9de.northeurope/databases/NewDatabase1?query=H4sIAAAAAAAAA9MrzsgvVygsTS3KTC1W4OWqUSgoys9KTS5RCEmtKNFRcCktSizJzM8DyZQkZqcqGBoAAA0BJaEzAAAA" target="_blank">Run the query</a>
-:::moniker-end
+::: moniker-end
 
 ```kusto
 .show queries 
