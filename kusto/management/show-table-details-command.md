@@ -59,7 +59,7 @@ You must have at least Database User, Database Viewer, or Database Monitor permi
 | `RowOrderPolicy`           | `string` | The table's effective row order policy, serialized as JSON.                                     |
 | `TableId`                  | `string` | The table's unique ID.                                                           |
 
-`*` *Taking into account policies of parent entities (such as database/cluster).*
+`*` *Taking into account policies of parent entities.*
 
 `**` *Values may be up to 15 minutes old, as they're taken from a cached summary of the table's extents.*
 
