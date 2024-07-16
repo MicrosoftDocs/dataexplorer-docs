@@ -18,6 +18,7 @@ Azure Resource Manager (ARM) roles, such as subscription owner or cluster owner,
 > [!NOTE]
 > To delete a database, you need at least **Contributor** ARM permissions on the cluster. To assign ARM permissions, see [Assign Azure roles using the Azure portal](/azure/role-based-access-control/role-assignments-portal).
 
+::: moniker-end
 ## Roles and permissions
 
 The following table outlines the roles and permissions available at each scope.
