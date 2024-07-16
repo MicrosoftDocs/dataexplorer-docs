@@ -45,7 +45,7 @@ The following query estimates the original data size of the `StormEvents` table.
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA9MrzsgvVyhJTMpJVQguyS/KdS1LzSspVkhJLUnMzCnmqlEoKMrPSk0uUQjJL0nM8S/KTM/MS8wJzqxKBQAIuj6COwAAAA==" target="_blank">Run the query</a>
 :::moniker-end
-:::moniker-end
+
 
 ```kusto
 .show table StormEvents details
@@ -96,8 +96,6 @@ The following query estimates the data size based for all tables in the `Samples
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA22NvQrCQBCEe59iSXUXUtlfE5F0WsT+2JgNHtwP3O2hCT68K4gg2M0MM9/U6FKEu+NbSTVfydgLTp5OGAja3RPowRRnKG6jY2EXkOm8HJKvIYIB+kR2Rkb7LqlWy6rUEDCLBU6MfhRlJFP/MPr3ZeiFu6QsFTutTEV9Ed2+a4a+0S/ACKQBtAAAAA==" target="_blank">Run the query</a>
 :::moniker-end
-:::moniker-end 
-
 
 ```kusto
 union withsource=_TableName *
