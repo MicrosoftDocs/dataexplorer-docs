@@ -141,10 +141,9 @@ find "Hernandez"
 
 The query finds all rows from all tables in the current database whose name starts with `C`, and in which any column includes the word `Hernandez`. The resulting records are transformed according to the [output schema](#output-schema). Now, the output only contains records from the `Customers` table.
 
-:::moniker range="azure-data-explorer"
+
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/ContosoSales?query=H4sIAAAAAAAAA0vLzEtRyMxT0HDW0lQoz0gtSlXQUshILFZQ8kgtykvMS0mtUgIA+50LFCQAAAA=" target="_blank">Run the query</a>
-::: moniker-end
 
 ```kusto
 find in (C*) where * has "Hernandez"

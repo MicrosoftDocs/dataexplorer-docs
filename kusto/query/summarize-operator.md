@@ -161,10 +161,8 @@ The following table shows only the first 5 rows. To see the full output, run the
 
 The following example calculates a histogram storm event types that had storms lasting longer than 1 day. Because `Duration` has many values, use `bin()` to group its values into 1-day intervals.
 
-:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA02NQQ6CQAxF9ybeoUtIcOEBxo2ycwcXGKCRMZmWlA4GwuG1EKObn+bn9f1KWWI5Iel4PKwwCD+xVdiaeh6wgFsSr4EJHJTU1SEinKBSL2q3Pb16FPxxFzh3Vo8pRi9hwd125UTqWsssh2b+37gjPbR3TaDsqyk+lnzTsKjhO/MGpa0usbAAAAA=" target="_blank">Run the query</a>
-::: moniker-end
 
 ```kusto
 StormEvents

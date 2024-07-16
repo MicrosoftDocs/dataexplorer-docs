@@ -135,10 +135,8 @@ All properties are optional.
 
 ## Example
 
-:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA3WQ3WqEQAyF7/cpcqdS7aqlFLr4FLvQS4ka16HzIzPZn5Y+fDOrCy20V5mQk3O+jCYGo2zL0MCATKwMpXVZvRRlVZTP2W6jowKvfynqonyCun4ty1U3RFE97TYDGdcafKc2kFcU6s0XxLZYWrAn0+D5mErNwFk4iOme0cwwemdWInZrcGCao3f3AUENIF6XiTzdmqaB5LCvEgDYbgECaeoZUGb2qAkiLayho/My6DWhJQ9nFU6o1SeyclYs6cpkB0g7FA9lKZc1DM6izoG9jHLwJImylMmVi2c7UO/M7ALFU3IoqhySuD0qTrIF6S5RMQjcGOHkr+TxE06O/TcvBxSyOxikd+HDTZcJfKxyUzTsJ/QMF8VTyoo1NckbdYDz/Ci2OI6qXxiMszzlv+mS7BvAR09lEAIAAA==" target="_blank">Run the query</a>
-::: moniker-end
 
 ```kusto 
 let min_t = datetime(2017-01-05);
