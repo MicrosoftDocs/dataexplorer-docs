@@ -133,7 +133,7 @@ The following table overviews the supported request properties.
 | `truncation_max_records` | `long` | Overrides the default maximum number of records a query is allowed to return to the caller (truncation). |
 | `truncationmaxsize` | `long` | Overrides the default maximum data size a query is allowed to return to the caller (truncation). |
 | `validatepermissions` | `bool` | Validates the user's permissions to perform the query without actually running the query. Possible results for this property are: `OK` (permissions are present and valid), `Incomplete` (validation couldn't be completed due to dynamic schema evaluation), or `KustoRequestDeniedException` (permissions weren't set). |
-:::moniker-end
+::: moniker-end
 
 ## How to set request properties
 

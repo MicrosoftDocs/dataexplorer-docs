@@ -48,7 +48,7 @@ A dynamic object containing the information on IP address whereabouts (if the in
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAysoyswrUcgsiM/JT04syczPs01PzY/PzEvLj08rys+NB8okpqQUpRYXa6gbGeiZGusZGRjrmRqoawIAlfxqOjoAAAA=" target="_blank">Run the query</a>
-:::moniker-end
+::: moniker-end
 
 ```kusto
 print ip_location=geo_info_from_ip_address('20.53.203.50')
@@ -64,7 +64,7 @@ print ip_location=geo_info_from_ip_address('20.53.203.50')
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAw3JwQqAIAwA0F/pZt1MCWTQt4w1XQzKifr/1Lu+1rXORRs+xjTV6nkXQ61iKN1e/Idy7mWM1QXyEUJKHmQPDCmCEBe4vGeAcOTitg/tI4d9TwAAAA==" target="_blank">Run the query</a>
-:::moniker-end
+::: moniker-end
 
 ```kusto
 print ip_location=geo_info_from_ip_address('2a03:2880:f12c:83:face:b00c::25de')

@@ -55,7 +55,7 @@ The following example calculates the NYC Central Park perimeter, in meters.
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA02QzWrDMBCE730Ko1MCbpC02h+l9B16N8YYRwRTRxKqLqb03ZvUuOQ0MPMx7OwSajOFWMu4DHksn817c1njeJunw7eqaw7qrD7Ssl5TVK2aUiqXOY41fKlz13WvDCfvPLZOn9iT79vNQtFsiSwgoH2EojUJaUAy3podE6uNd9Y5ECd/HSQWiS1oZOYdYzAsQvcqBL9hDtEAoX7Ijj3f0fc/x7eXXOZYmxzKfAs1lPu2a0hD3uYM//7h+QHHX4p2a4cSAQAA" target="_blank">Run the query</a>
-:::moniker-end
+::: moniker-end
 
 ```kusto
 let central_park = dynamic({"type":"Polygon","coordinates":[[[-73.9495,40.7969],[-73.95807266235352,40.80068603561921],[-73.98201942443848,40.76825672305777],[-73.97317886352539,40.76455136505513],[-73.9495,40.7969]]]});
@@ -73,7 +73,7 @@ The following example performs union of polygons in multipolygon and calculates 
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA4WRTWrDMBBG9z2F8SoBN4xGmr+UHqHQfQkhJCIYHDs4ziKU3r2TuHa7qzaC0dPojb4mD8W5a27Hrr0Ur8Xh1u5O9X7xWQ63cy7X5du1Ger3ESirct91/aFud0O+lOsPX88SV5aMqgQrMbZNNZZIQZAZI0XC+6ECsDJE4mAYJkwRgiVMKWrSRw9WJBaMQCIyYRKDqLK3omgjlohCZIL7NmF/PTZenPTQPYK/gCLxAQiZBYVETKQ0ywQQQnVNwpFzKFkgSixsM2cM4ObMDIHHfuAzqd8N9ivNwe1UTQ1pnI0YzAFijjx/wb92vr6WL0/nvm49q9zXpzzk3sM65m77k912ri+mNJff9ugUsNsBAAA=" target="_blank">Run the query</a>
-:::moniker-end
+::: moniker-end
 
 ```kusto
 let polygons = dynamic({"type":"MultiPolygon","coordinates":[[[[-73.9495,40.7969],[-73.95807266235352,40.80068603561921],[-73.98201942443848,40.76825672305777],[-73.97317886352539,40.76455136505513],[-73.9495,40.7969]]],[[[-73.94262313842773,40.775991804565585],[-73.98107528686523,40.791849155467695],[-73.99600982666016,40.77092185281977],[-73.96150588989258,40.75609977566361],[-73.94262313842773,40.775991804565585]]]]});
@@ -91,7 +91,7 @@ The following example returns True because of the invalid polygon.
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA02KQQrDIBBFryKzUnBhtoXeoXsRkTiEATMjxgYk5O61dNPV5733ayPuio5IfKZCWT0n8LsUvaHEKmVswrFiox07Np0Hp51WfUEfFeGh4PX7gIVVpGXi1PGYwXvvrAvWL84u//u1IdzGmA8jsUSgfQAAAA==" target="_blank">Run the query</a>
-:::moniker-end
+::: moniker-end
 
 ```kusto
 print is_invalid = isnull(geo_polygon_perimeter(dynamic({"type": "Polygon","coordinates": [[[0,0],[10,10],[10,10],[0,0]]]})))

@@ -36,7 +36,7 @@ The following example returns 0, indicating that the specified datetime is a Sun
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAysoyswr4eUKycxNLS5IzFOwVUhJrMxPK09NzdZISSxJLQFKaBhampjrGhrqGhsoGBpYGQCRqaYmAHvwNxk6AAAA" target="_blank">Run the query</a>
-:::moniker-end
+::: moniker-end
 
 ```kusto
 print
@@ -54,7 +54,7 @@ The following example returns 1, indicating that the specified datetime is a Mon
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAysoyswr4eUKycxNLS5IzFOwVUhJrMxPK09NzdZISSxJLQFKaBhamhvoGpjqGhpqagIA76Tx5DEAAAA%3D" target="_blank">Run the query</a>
-:::moniker-end
+::: moniker-end
 
 ```kusto
 print
@@ -74,7 +74,7 @@ The following example returns the number of days both as a `timespan` and as dat
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA8tJLVFIyS%2B3TUmszE8rT03N1khJLEktycxN1TC0NDfQNdU1NNLUtOYqKMrMK1EIAYoXFyTmKdiCNOkoeALFbBVK8oFyGkABfcMUTQCfJzyAUQAAAA%3D%3D" target="_blank">Run the query</a>
-:::moniker-end
+::: moniker-end
 
 ```kusto
 let dow=dayofweek(datetime(1970-5-12));

@@ -42,7 +42,7 @@ The following query defines a function `checkLength()` that checks input string 
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/?query=H4sIAAAAAAAAA02OywrCMBBF9/mKoZsmEMH6hEr9Av9AXKTtkBTjVJIpgo9/N60izmzuYs6d45GhcdicD0iWHVQgPVLpe7IaYhk5dGSVeAhIY2LEwOMB7GGuIftClyEy1Ag2oGEMwM4Q3DH0mQJD7cSmpsTJqBKagnjtRGs4be1RdnQd+PfsOAF5sVjm+hNX6802FyfxhJvDgP/Go0016spZoTRMTeoNUTSJPdYAAAA=" target="_blank">Run the query</a>
-:::moniker-end
+::: moniker-end
 
 ```kusto
 let checkLength = (len:long, s:string)
@@ -66,7 +66,7 @@ Example of running with valid `len` input:
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/?query=H4sIAAAAAAAAA02OzQrCMBCE73mKoZc2kINaf6BSn8A3EA9pXZJiTCXZIvjz7qZVxN3LHOabGUeM1lJ73pM3bFGjcOQr13ujEKvIofNGiodAOh0jBR4N2GGmkH2hyxAZDcEE0kwBbLXHnUKfSWh/QkpJTBFlwpIQr604aU7fOCo6fx34V3SYivL5oszVRy5X600ujuKJm6VA/2vHJXWpMEXIN3+iHkjLAAAA" target="_blank">Run the query</a>
-:::moniker-end
+::: moniker-end
 
 ```kusto
 let checkLength = (len:long, s:string)

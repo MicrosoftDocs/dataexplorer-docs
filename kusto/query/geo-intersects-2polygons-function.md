@@ -60,7 +60,7 @@ The following example checks whether some two literal polygons intersects.
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA52Rz2rDMAyH73uKkFMLWdEfy5I79g67l1BKa0ogTUKSSxh793kkaXvaYBjsgz700yfXccy6tp6ubYPZe3aZmtOtOm8+83HqYr7PP+ZaXuTntu0vVXMa45DvD4fDq/IueIbAKuopuMLBTtUFMwfKxCZlsVLixcg79AvExoioBgHdnSIQBp8u9DRzrE5+QEN56oYe1DC1EFxDOSBxygj2yPx1srL82r691A97+o89IbOQNyBYzASckIFziu7JH9MBE5F1AZIMwAcCfsIINM1Iqa3qwqFPS+JgFPiB/ZE6u3V91YzZNbbH9MZ+iOdxONJiO2zWTy/uC9h+A0eK8+oMAgAA" target="_blank">Run the query</a>
-:::moniker-end
+::: moniker-end
 
 ```kusto
 let polygon1 = dynamic({"type":"Polygon","coordinates":[[[-73.9630937576294,40.77498840732385],[-73.963565826416,40.774383111780914],[-73.96205306053162,40.773745311181585],[-73.96160781383514,40.7743912365898],[-73.9630937576294,40.77498840732385]]]});
@@ -79,7 +79,7 @@ The following example finds all counties in the USA that intersect with area of 
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA4WQzWrDMBCE73kKoVMCrpH1Y0kJOZTSY0uh9GSMEc4mdUkkIykU0fbdq2BDQ3soe1u+md2ZI0RkPJjO7bvBRvAQItqiXbLmNPTLDxzTCHiNn9wxHZzFBe6d87vBmggBr5umuZGs1DWtGBO0VoSSuuCklFIQLqginMuKi7aYOVblIUoIMWNcSFWRWlPCrjBKpFaKZlspZ66qpSJMK6rZD/bP1bb9Wm0WL8/dnTvbOEBYfKLRuzfoI8oBISfdg4nnnLrM+xH8BSofbx/uC9RfNOkaOYA7QfQpu7y/5qpQXkythewYOjpOLYXlpC3+VLv69cA3a++fAX8BAAA=" target="_blank">Run the query</a>
-:::moniker-end
+::: moniker-end
 
 ```kusto
 let area_of_interest = dynamic({"type":"Polygon","coordinates":[[[-73.96213352680206,40.775045280447145],[-73.9631313085556,40.774578106920345],[-73.96207988262177,40.77416780398293],[-73.96213352680206,40.775045280447145]]]});
@@ -100,7 +100,7 @@ The following example will return a null result because one of the polygons is i
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA42QzUrFMBCF9z5FyaqFesnfTJIrvoP7Ukpow6UYk5JEoYjvbmstiLhwNcycMx9zxrtSjS6UZP2w2PQ8LNGvtxiqx2pag32Zx/qdlHVx5EqeDom0ZIwxTXOwxWVy7bruXomLkQZaSS/KoOnbYwSaKo7IBQjgu6gpRY1UADLD2WnTnDIjuZRCS/3FQM0BFRcUlFKnTQmmtMYNBcIcNgnABALdy2n7eUfffzQPd34LOYc36+fpP/n2lSXNYVvK4dX7+ubisLUuZTeWPPBvRq5/Qds/X9k0n1CNw49lAQAA" target="_blank">Run the query</a>
-:::moniker-end
+::: moniker-end
 
 ```kusto
 let central_park_polygon = dynamic({"type":"Polygon","coordinates":[[[-73.9495,40.7969],[-73.95807266235352,40.80068603561921],[-73.98201942443848,40.76825672305777],[-73.97317886352539,40.76455136505513],[-73.9495,40.7969]]]});

@@ -34,7 +34,7 @@ An integer that represents H3 Cell level. Valid level is in range [0, 15]. If th
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAysoyswrUUhOzcmJL0otVrBVSE/Nj88wBgvkpJal5mioW5gZJRoamBulQYC6JgA3an62NAAAAA==" target="_blank">Run the query</a>
-:::moniker-end
+::: moniker-end
 
 ```kusto
 print cell_res = geo_h3cell_level('862a1072fffffff')
@@ -49,7 +49,7 @@ print cell_res = geo_h3cell_level('862a1072fffffff')
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAysoyswrUUhOzcmJL0otVrBVSE/Nj88wBgvkpJal5miABArygariS2AyGoY6QGigqQkAmqtQej4AAAA=" target="_blank">Run the query</a>
-:::moniker-end
+::: moniker-end
 
 ```kusto
 print cell_res = geo_h3cell_level(geo_point_to_h3cell(1,1,10))
@@ -66,7 +66,7 @@ The following example returns true because of the invalid H3 Cell token input.
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAysoyswrUcjMK0vMyUyJL0otVrBVyCzOK83J0UhPzY/PME5OzcmJz0ktS83RUE9MSlbX1AQAUAf8gDMAAAA=" target="_blank">Run the query</a>
-:::moniker-end
+::: moniker-end
 
 ```kusto
 print invalid_res = isnull(geo_h3cell_level('abc'))

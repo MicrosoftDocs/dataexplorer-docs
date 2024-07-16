@@ -37,7 +37,7 @@ The geospatial coordinate values in [GeoJSON Format](https://tools.ietf.org/html
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAysoyswrUcgwTk7NyVGwVUhPzY+HcOJL8uOTU/NKihJz4gvygYo0lCzMjBINDcyN0iBASRMA4+TrCj0AAAA=" target="_blank">Run the query</a>
-:::moniker-end
+::: moniker-end
 
 ```kusto
 print h3cell = geo_h3cell_to_central_point("862a1072fffffff")
@@ -54,7 +54,7 @@ The following example returns the longitude of the H3 Cell center point:
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAysoyswrUcjJz0vPLClNSVWwVUhPzY/PME5OzcmJL8mPT07NKylKzIkvyAeq01CyMDNKNDQwN0qDACVNveT8/KKUzLzEktTiaINYALPfSvhPAAAA" target="_blank">Run the query</a>
-:::moniker-end
+::: moniker-end
 
 ```kusto
 print longitude = geo_h3cell_to_central_point("862a1072fffffff").coordinates[0]
@@ -71,7 +71,7 @@ The following example returns a null result because of the invalid H3 cell token
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAysoyswrUcgwTk7NyVGwVUhPzY+HcOJL8uOTU/NKihJz4gvygYo0lAyVNAFOq4ZHLwAAAA==" target="_blank">Run the query</a>
-:::moniker-end
+::: moniker-end
 
 ```kusto
 print h3cell = geo_h3cell_to_central_point("1")

@@ -43,7 +43,7 @@ This example shows how many types of fatal storm events happened in each state.
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA22MMQ6DMBAE+7ziShAUfAAqEyk1+cCBz8ISttH5AIHy+BhoKXc0O50Edu1KXuLrB3FxDtkeBMoaQ5zwGwWnW6j1EBYv1mTX/u4zlZkilDEqyzQIFHDPj9cXyJsqh36HTlAo9bcxNR/b0ECVhMCa+Hw8OX+LHx0UrAAAAA==" target="_blank">Run the query</a>
-:::moniker-end
+::: moniker-end
 
 ```kusto
 StormEvents

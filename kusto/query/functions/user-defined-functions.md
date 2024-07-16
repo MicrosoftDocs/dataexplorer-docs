@@ -82,7 +82,7 @@ For example:
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAzWMsQrCMBQA90L/4cYGHZpBCoqDX1IKeQ1CTEoSS6D67xpKx7uDc5J5GDNwp5ui7a8uePuHi2KjCk4MfG9tEydvhcIcwwtNDuielGVBt80HKVm8oYyLe6ex/uq2K+rM/Fxl10lW8UdSP43s5BB8AAAA" target="_blank">Run the query</a>
-:::moniker-end
+::: moniker-end
 
 ```kusto
 let Add7 = (arg0:long = 5) { arg0 + 7 };
@@ -95,7 +95,7 @@ range x from 1 to 10 step 1
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA8tJLVEoSc3zK81NSi0qVrBV0NBUqFYoSsxLT1WoUEgrys9VMFQoyVcwNFAoLkktUDCsteblQmjg5apRSK0A8lMUKuILckqL482BZlQoaCuYAwCj2EoeWgAAAA==" target="_blank">Run the query</a>
-:::moniker-end
+::: moniker-end
 
 ```kusto
 let tenNumbers = () { range x from 1 to 10 step 1};
@@ -108,7 +108,7 @@ tenNumbers
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA8tJLVHwrXTLzClJLVKwVdAIsdKosMrJz0vX1FEogzAUqnm5FBRCFGoUyjNSi1IVKhTsbBXKeLlqrXm5YFo1NIoS89JBcmlF+bkKhgol+QqGBgrFJakFCoZAoyw1AUw90qdpAAAA" target="_blank">Run the query</a>
-:::moniker-end
+::: moniker-end
 
 ```kusto
 let MyFilter = (T:(x:long), v:long) {
@@ -130,7 +130,7 @@ Any table can be passed to a function, and no table columns can be referenced in
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA8tJLVHwrXTJLC7JzEsuUbBV0Aix0tDS1FSo5uVSUAhRqFFIgclp8XLVWvNyIVRraBQl5qWnKlQopBXl5yoYKpTkKxgrFJekFigYamoCAPhYBKVaAAAA" target="_blank">Run the query</a>
-:::moniker-end
+::: moniker-end
 
 ```kusto
 let MyDistinct = (T:(*)) {
@@ -189,7 +189,7 @@ The following example shows a user-defined function (lambda) that accepts a para
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA1WMQQqDMBQF94Hc4S2VbIzVTUtv0QtITSWgSYm/UKjevfkxgr7lm2FGQ3iYmXBHYfsrrKMSPymAMZM6Il3djtclXVCZK9j+xBuudWE45ng7byOvtyRvr2xplRWFWGBlTWLqFroqpeAjdG4w+OIV/AQN8klgjpnMG1qKBU//cfQHyFJxkeIAAAA=" target="_blank">Run the query</a>
-:::moniker-end
+::: moniker-end
 
 ```kusto
 let Test = (id: int) {
@@ -212,7 +212,7 @@ The following example shows a function that accepts three arguments. The latter 
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="" target="_blank">Run the query</a>
-:::moniker-end
+::: moniker-end
 
 ```kusto
 let f = (a:long, b:string = "b.default", c:long = 0) {
@@ -232,7 +232,7 @@ A user-defined function that takes no arguments and can be invoked either by its
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAz2OwW7CQAxE75HyD3NMKqqQ9taKS298hmG96YrEG3a9QGj5d1ykcrHm4Pdmug5fQRz0mxEciwYfOIGg0U7JnF4d+yDs4IvsNURBM9K0c9QaRAqlA+e66jqIIWkok1kyyKSJtSSxjH2UrCSK6KHLzBijDB91NbKCNk3707+93z4flq2c4oEfg56NQaDnCD6WcKLR/DjTko1PJAPjAp/ihP5vdL9GVp7R19Uv+KJsOxZs7OcFtML1PzbtHds6pZn7AAAA" target="_blank">Run the query</a>
-:::moniker-end
+::: moniker-end
 
 ```kusto
 // Bind the identifier a to a user-defined function (lambda) that takes
@@ -246,7 +246,7 @@ range x from 1 to 10 step 1
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAz2QQW6DMBBF95G4w1dWICVCyTJVNt110xUXGGCcuAXbtYdA1PbuHZwqK7D835s/rmu8WtdDrgzbsxNrLEc0EA/ClDjuezbWcQ8zuU6sdygHGtueKoVIIPTJqdjUNZwi8TKNakkglUaWKTr9R9SjHyGz37f3vX4Uawc+FZuBBc25rL6LDdbYhbHARA0f1g5HJOGAw3r7gxD9B3eC5YBzdpbVDsvxeSg2vy+5ypu7+U/OWz1rW7fOB39N9kaDlsRM93TK+fLdC//vo0zizmt/q5aOMjxOSdDqG0niwWCOFAKviYyTA/W9XZM0KC3wBoGiDrly4rQDpSye3CrzgSOJj5ntrTG8Ji0JJ50hM7PDNgxk3RaORn68Ji8hckoqSLrow9TsUDZlVf0BKwR6VMcBAAA=" target="_blank">Run the query</a>
-:::moniker-end
+::: moniker-end
 
 ```kusto
 // Bind the identifier T to a user-defined function (lambda) that takes
@@ -269,7 +269,7 @@ A user-defined function that takes one or more scalar arguments can be invoked b
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA8tJLVFIs9VItCouKcrMS9dRSIKyNBWqebkUFICc5MQSjUQdBSUFjZxEBTDSVAKq0+TlqrXm5SoAKgYaoaGUkZqTkw+UUCrPL8pJUdIEABBWodRaAAAA" target="_blank">Run the query</a>
-:::moniker-end
+::: moniker-end
 
 ```kusto
 let f=(a:string, b:string) {
@@ -285,7 +285,7 @@ A user-defined function that takes one or more table arguments (with any number 
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA8tJLVHwrXTLzClJLVKwVdAIsdKosMrJz0vX1FEogzAUqnm5FBRCFGoUyjNSi1IVKhTsbBXKeLlqrXm5YFo1NIoS89JBcmlF+bkKhgol+QqGBgrFJakFCoZAoyw1AUw90qdpAAAA" target="_blank">Run the query</a>
-:::moniker-end
+::: moniker-end
 
 ```kusto
 let MyFilter = (T:(x:long), v:long) {
@@ -300,7 +300,7 @@ takes one or more table arguments and returns a table. This function is useful w
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA21OywrCMBC8B/IPQ04J1B+I9C96Ewlru2gxJqXd+sD676aIeHH2srMzs0xkAQ0Dpy5IDm2O8yUFqm3jLflJxj4dXYXbieTL8NQKBQ0W8F1KElQXrSWxVMHAfPxOq9dWq46kzCEyfg+xMxN1xWdGphgf67Ye9lot6NM1n/lPKWv8xhn3Bo6fGn6yAAAA" target="_blank">Run the query</a>
-:::moniker-end
+::: moniker-end
 
 ```kusto
 let append_to_column_a=(T:(a:string), what:string) {
@@ -326,7 +326,7 @@ The following example returns a table with two identical records. In the first i
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA22NwQoCIRiE74LvMHhS0Da9CLv4MGrrsiBulAtB9O79RXSI5jIw8zFT546CABnHurVFI43XflnbQplIh9Nc4l670MjvntKjwp0zgLAcu4wawlCfPp4VZ4+Js72tW3tx8kxzHbdQZA5eIwbrlNIYBgjrzPfDePGDW0dzwSsF0h/8CZEU8AK8AAAA" target="_blank">Run the query</a>
-:::moniker-end
+::: moniker-end
 
 ```kusto
 let f = (a:long, b:string = "b.default", c:long = 0) {
@@ -365,7 +365,7 @@ The following restrictions apply:
 :::moniker range="azure-data-explorer"
 * A function taking at least one tabular input can't be invoked on a remote cluster.
 * A scalar function can't be invoked on a remote cluster.
-:::moniker-end
+::: moniker-end
 
 The only place a user-defined function may be invoked with an argument that varies with the row context is when the user-defined function is composed of scalar functions only and doesn't use `toscalar()`.
 
@@ -378,7 +378,7 @@ The following query is supported because `f` is a scalar function that doesn't r
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA8tJLVEISUzKSTVUsFVISSwBQiBHowLITLUCESWZuama0TCWhqGluYGugSEQacZa83LlwLQboWh3zs8pzc2zysnPS9eMNjQyNoWpTQMq08jILy0qhkgqVCvk5ZdraCpoK4BFtQwzFGqBaqFm1iiUZ6QWpSpAzFNQtFUAGgYULSjKz0pNLlFIARqXpmFooAkAl/NDkMcAAAA=" target="_blank">Run the query</a>
-:::moniker-end
+::: moniker-end
 
 ```kusto
 let Table1 = datatable(xdate:datetime)[datetime(1970-01-01)];
@@ -392,7 +392,7 @@ The following query is supported because `f` is a scalar function that reference
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA1VOwQrCMAy9C/7D89YKg3Ui4mQnf8Hb8FC36CbtKl2HovPfjW47SEJ4Sd7Li6GAgz4ZUshQ6sDBjXgwpPRbQm1J5hMSaruJo1hxyuNuPjOTPPmT753pbJMa11xkrpLVeuKemSYq1/l2WOKF4NpCG+3F+EaPtrNW+/pJsHUzvCIR4SdbqkrizddG1x73ijxhcMQiA9vx9ObdlYqAkg3PQsXyA3KQBJvpAAAA" target="_blank">Run the query</a>
-:::moniker-end
+::: moniker-end
 
 ```kusto
 let Table1 = datatable(xdate:datetime)[datetime(1970-01-01)];

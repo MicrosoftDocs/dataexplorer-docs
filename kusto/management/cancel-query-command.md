@@ -11,10 +11,10 @@ ms.date: 11/30/2023
 
 :::moniker range="azure-data-explorer"
 The `.cancel` `query` command starts a best-effort attempt to cancel a specific running query. Cluster admins can cancel any running query. Database admins can cancel any running query that was invoked on a database to which they have admin access. All principals can cancel running queries that they started.
-:::moniker-end
+::: moniker-end
 :::moniker range="microsoft-fabric"
 The `.cancel` `query` command starts a best-effort attempt to cancel a specific running query. Admins can cancel any running query. Users with database admin rights can cancel any running query that was invoked on a database to which they have admin access. All users can cancel running queries that they started.
-:::moniker-end
+::: moniker-end
 
 ## Syntax
 

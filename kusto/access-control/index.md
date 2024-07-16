@@ -12,11 +12,11 @@ ms.date: 06/28/2023
 
 :::moniker range="azure-data-explorer"
 Access control is based on authentication and authorization. Each query and command on an Azure Data Explorer resource, such as a cluster or database, must pass both authentication and authorization checks.
-:::moniker-end
+::: moniker-end
 
 :::moniker range="microsoft-fabric"
 Access control is based on authentication and authorization. Each query and command on a Fabric resource, such as a KQL database, must pass both authentication and authorization checks.
-:::moniker-end
+::: moniker-end
 
 * [Authentication](#authentication): Validates the identity of the security principal making a request
 * [Authorization](#authorization): Validates the security principal making a request is permitted to make that request on the target resource

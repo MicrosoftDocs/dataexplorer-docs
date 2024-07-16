@@ -25,7 +25,7 @@ The following query produces two tabular results. User agent tools can then disp
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAwsuyS/KdS1LzSspVqhRKM9ILUpVCC5JLElVsLVVUHLz8Q/ydHFUAkol55fmlQDpxGKFaHVnMCc/TSEVojMzT8EtJ78oMyVRPdaalysYr6HuoY6+xJjoXpqYqx4LAI0euu6hAAAA" target="_blank">Run the query</a>
-:::moniker-end
+::: moniker-end
 
 ```kusto
 StormEvents | where State == "FLORIDA" | count | as ['Count of events in Florida'];
@@ -39,7 +39,7 @@ Batching is useful for scenarios where a common calculation is shared by multipl
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA8tJLVHIVbBVyE0sSS3KTMzJrErVCC7JL8p1LUvNKylWqFEoLs3NTSwCiivk2Sbnl+aVaGgqJFUqBJcAdWha83LlAtWUZ6QWAeUV7BSMDAwM0ARtFAwNAArTIWBnAAAA" target="_blank">Run the query</a>
-:::moniker-end
+::: moniker-end
 
 ```kusto
 let m = materialize(StormEvents | summarize n=count() by State);

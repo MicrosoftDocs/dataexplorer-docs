@@ -46,7 +46,7 @@ var kustoIngestionProperties = new KustoIngestionProperties("<databaseName>", "<
 var sourceOptions = new StorageSourceOptions { DeleteSourceOnSuccess = true };
 await client.IngestFromStorageAsync(blobUriWithSasKey, kustoIngestionProperties, sourceOptions);
 ```
-:::moniker-end
+::: moniker-end
 
 :::moniker range="microsoft-fabric"
 ```csharp
@@ -75,7 +75,7 @@ var kustoIngestionProperties = new KustoIngestionProperties("<databaseName>", "<
 var sourceOptions = new StorageSourceOptions { DeleteSourceOnSuccess = true };
 await client.IngestFromStorageAsync(blobUriWithSasKey, kustoIngestionProperties, sourceOptions);
 ```
-:::moniker-end
+::: moniker-end
 
 ## Ingest from local file
 
@@ -103,7 +103,7 @@ using var client = KustoIngestFactory.CreateDirectIngestClient(kustoConnectionSt
 var kustoIngestionProperties = new KustoIngestionProperties("<databaseName>", "<tableName>");
 await client.IngestFromStorageAsync("<filePath>", kustoIngestionProperties);
 ```
-:::moniker-end
+::: moniker-end
 
 :::moniker range="microsoft-fabric"
 ```csharp
@@ -124,7 +124,7 @@ using var client = KustoIngestFactory.CreateDirectIngestClient(kustoConnectionSt
 var kustoIngestionProperties = new KustoIngestionProperties("<databaseName>", "<tableName>");
 await client.IngestFromStorageAsync("<filePath>", kustoIngestionProperties);
 ```
-:::moniker-end
+::: moniker-end
 
 ## Ingest from local files and validate ingestion
 
@@ -158,7 +158,7 @@ Ensure.IsTrue(ingestionFailures.Any(), "Failures expected");
 ingestionFailures = await client.GetAndDiscardTopIngestionFailuresAsync();
 Ensure.IsTrue(ingestionFailures.Any(), "Failures expected");
 ```
-:::moniker-end
+::: moniker-end
 
 :::moniker range="microsoft-fabric"
 ```csharp
@@ -188,7 +188,7 @@ Ensure.IsTrue(ingestionFailures.Any(), "Failures expected");
 ingestionFailures = await client.GetAndDiscardTopIngestionFailuresAsync();
 Ensure.IsTrue(ingestionFailures.Any(), "Failures expected");
 ```
-:::moniker-end
+::: moniker-end
 
 ### Ingest from local files and report status to a queue
 
@@ -234,7 +234,7 @@ Ensure.IsTrue(ingestionFailures.Any(), "The failed ingestion should have been re
 var ingestionSuccesses = await client.GetAndDiscardTopIngestionSuccessesAsync();
 Ensure.ConditionIsMet(ingestionSuccesses.Any(), "The successful ingestion should have been reported to the successful ingestions queue");
 ```
-:::moniker-end
+::: moniker-end
 
 
 :::moniker range="microsoft-fabric"
@@ -277,7 +277,7 @@ Ensure.IsTrue(ingestionFailures.Any(), "The failed ingestion should have been re
 var ingestionSuccesses = await client.GetAndDiscardTopIngestionSuccessesAsync();
 Ensure.ConditionIsMet(ingestionSuccesses.Any(), "The successful ingestion should have been reported to the successful ingestions queue");
 ```
-:::moniker-end
+::: moniker-end
 
 ### Ingest from local files and report status to a table
 
@@ -324,7 +324,7 @@ while (ingestionStatus.Status == Status.Pending)
 // Verify the results of the ingestion
 Ensure.ConditionIsMet(ingestionStatus.Status == Status.Succeeded, "The file should have been ingested successfully");
 ```
-:::moniker-end
+::: moniker-end
 
 :::moniker range="microsoft-fabric"
 ```csharp
@@ -367,7 +367,7 @@ while (ingestionStatus.Status == Status.Pending)
 // Verify the results of the ingestion
 Ensure.ConditionIsMet(ingestionStatus.Status == Status.Succeeded, "The file should have been ingested successfully");
 ```
-:::moniker-end
+::: moniker-end
 
 ## Related content
 

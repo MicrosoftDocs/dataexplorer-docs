@@ -63,7 +63,7 @@ The following example densifies Manhattan Central Park polygon. The edges are sh
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA13MSwrDIABF0a2IIwNpMGr8BLqHziWEEG0QWpXoREr33o+kg07Pe9y4O5+BsT65q7NmjuFWtuDBGeSQ8nvc0GbDwXM9FmSKX+5uRQ+YS7RwhJd6gC1cQ9iN80u2CY5a65OgnRokYaxluJMYi15NbWWmesY/LBRXw6GCYkW/yhkh/GBJMCeVZT/8Gv/paXo2TfMCwhc/8NgAAAA=" target="_blank">Run the query</a>
-:::moniker-end
+::: moniker-end
 
 ```kusto
 print densified_polygon = tostring(geo_polygon_densify(dynamic({"type":"Polygon","coordinates":[[[-73.958244,40.800719],[-73.949146,40.79695],[-73.973093,40.764226],[-73.982062,40.768159],[-73.958244,40.800719]]]})))
@@ -80,7 +80,7 @@ The following example densifies two edges of the polygon. Densified edges length
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA0XKQQrDIBCF4avIrBRcONtA7tC9SAjRykA6I3E2Unr3tISS1Qfv/e0gVpMLd3pSyUuTfVRhMxuVrt+z2lrkPy9XOGwevL5os2/Q0QpM8LgC8LCJHJl41dJhijFi8BiSj4i3+DPchpTSxzl3AtyuS1uOAAAA" target="_blank">Run the query</a>
-:::moniker-end
+::: moniker-end
 
 ```kusto
 print densified_polygon = tostring(geo_polygon_densify(dynamic({"type":"Polygon","coordinates":[[[10,10],[11,10],[11,11],[10,11],[10,10]]]})))
@@ -97,7 +97,7 @@ The following example returns a null result because of the invalid coordinate in
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAysoyswrUUhJzSvOTMtMTYkvyM+pTM/PU7BVSE/Nh/HiIfKVGimVeYm5mcka1UollQWpSlZKARAFSjpKyfn5RSmZeYklqcVKVtHR0YYGOpYGBrE60YaGOoYw2hBEGyBog9jY2FpNTQDqeX/DhQAAAA==" target="_blank">Run the query</a>
-:::moniker-end
+::: moniker-end
 
 ```kusto
 print densified_polygon = geo_polygon_densify(dynamic({"type":"Polygon","coordinates":[[[10,900],[11,10],[11,11],[10,11],[10,10]]]}))
@@ -114,7 +114,7 @@ The following example returns a null result because of the invalid tolerance inp
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAysoyswrUUhJzSvOTMtMTYkvyM+pTM/PU7BVSE/Nh/HiIfKVGimVeYm5mcka1UollQWpSlZKARAFSjpKyfn5RSmZeYklqcVKVtHR0YYGOoYGsTrRhoYI2hBEGyBog9jY2FpNHQUDTQCMm+c8hwAAAA==" target="_blank">Run the query</a>
-:::moniker-end
+::: moniker-end
 
 ```kusto
 print densified_polygon = geo_polygon_densify(dynamic({"type":"Polygon","coordinates":[[[10,10],[11,10],[11,11],[10,11],[10,10]]]}), 0)

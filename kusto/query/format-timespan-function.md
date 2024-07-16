@@ -75,7 +75,7 @@ A string with *timespan* formatted as specified by *format*.
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA8tJLVEoUbBVKMnMTdUwstQzsLQyMLAyMNUzNDI2MdW05iooyswrUeAqM7RNyy/KTSyJB6ksLkjM0yjRUVBPSdHLyLDKzbUqLrZyc1PX1OEqM8KhEKgSolAhOg0CYtU1AcM/CQ1/AAAA" target="_blank">Run the query</a>
-:::moniker-end
+::: moniker-end
 
 ```kusto
 let t = time(29.09:00:05.12345);

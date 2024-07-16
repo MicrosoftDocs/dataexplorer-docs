@@ -63,7 +63,7 @@ The following query looks at the table StormEvents (weather statistics for 2007)
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA12OuwrCQBBFe79iOhOI5CE+SGNlIdiIAQsRGbMTXUxm4+5EEPx4VxFRYYrhcC73xjEsjTlrPoJhWIuxzfxKLA6coGgnunQ59OIYVmkOmxMKnLBtiR0cqDKWoDCWURmgZ2z2MrM/Eysh+y9+dfXuHmLdoRBUHTPVe0eXjrikYN5qZxQtVOTXoZVCNxSB8qr4L8iSZDJIUn/hL51+aKqi4Xjk86+y4tY+8zfGRpfBtv9e1d+F4QP9Gyd+DAEAAA==" target="_blank">Run the query</a>
-:::moniker-end
+::: moniker-end
 
 ```kusto
 // Looking on StormEvents statistics: 
@@ -163,7 +163,7 @@ Now, let's try to find out how the following sequence continues:
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAwsuyS/KdS1LzSsp5qpRSC1LzClNLElVSCvNy0vNiS9OLSxNzUtO1eBSQAWuBZnF+Smpnik66DLBJYlFJSGZuakYMilAg0uAEhpGBgbmugaGQKSJV5EFLkWGmNYam5liCoL9FVJZkKqjgGFPZV5ibmayRrS6R2JmjrqOgnpIflFeYko+mJlRmpeSWlQMChuF8My8FPVYTWQDNAHldk1eNgEAAA==" target="_blank">Run the query</a>
-:::moniker-end
+::: moniker-end
 
 ```kusto
 StormEvents

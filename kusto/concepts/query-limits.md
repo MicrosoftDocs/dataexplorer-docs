@@ -99,11 +99,11 @@ You may also find the C# streaming ingestion sample application helpful.
 Result truncation is applied by default, not just to the result stream returned to the client.
 :::moniker range="azure-data-explorer"
 It's also applied by default to any subquery that one cluster issues to another cluster in a cross-cluster query, with similar effects.
-:::moniker-end
+::: moniker-end
 
 :::moniker range="microsoft-fabric"
 It's also applied by default to any subquery that one Eventhouse issues to another Eventhouse in a cross-Eventhouse query, with similar effects.
-:::moniker-end
+::: moniker-end
 
 ### Setting multiple result truncation properties
 

@@ -11,10 +11,10 @@ ms.date: 05/24/2023
 
 :::moniker range="azure-data-explorer"
 Returns a table in which every record corresponds to a database in the cluster that the user has access to.
-:::moniker-end 
+::: moniker-end 
 :::moniker range="microsoft-fabric"
 Returns a table in which every record corresponds to a database in the eventhouse that the user has access to.
-:::moniker-end 
+::: moniker-end 
 
 For a table that shows the properties of the context database, see [`.show database`](show-database.md).
 

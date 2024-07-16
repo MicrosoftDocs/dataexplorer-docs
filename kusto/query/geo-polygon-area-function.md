@@ -55,7 +55,7 @@ The following example calculates NYC Central Park area.
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA02Py2rDMBBF9/0Ko1UCbpA0modS+g/dG2OEI4KpKxlVG1P6741rDFkN3Dlc7pljbcaYagnzsITy2bw3tzWFr2k8/ai6LlFd1Uee13tOqlVjzuU2pVDjt7p2XffKcPHOY+v0hT35vt0jFM2WyAIC2u0pWpOQBiTjrTkwsdp4Z50DcfLfQWKR2IJGZj4wBsMi9KhC8DvmEA0Q6u0c2POOvv89v70sZUq1CSWGh9Y95mHZTYYtOj1rn/8Au8DFaggBAAA=" target="_blank">Run the query</a>
-:::moniker-end
+::: moniker-end
 
 ```kusto
 let central_park = dynamic({"type":"Polygon","coordinates":[[[-73.9495,40.7969],[-73.95807266235352,40.80068603561921],[-73.98201942443848,40.76825672305777],[-73.97317886352539,40.76455136505513],[-73.9495,40.7969]]]});
@@ -73,7 +73,7 @@ The following example performs union of polygons in multipolygon and calculates 
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA4WRzWrDMAyA73uKklMLXZFl669jjzDYfZQS2lACWRLS9BDG3n1qvbS7TReD9Fn+ZDXVuOi7Zjp17XnxujhObflZH5ZfxTj1VbEt3i7NWL9noFgXh64bjnVbjtW52H54PEvcWDJaJ9iIse3WOUUKgswYKRJeiwrAyhCJg2GYMUUIljClqElvPViRWDACiciMSQyiyt6KomUsEYXIBNdjxv567Dw566F7BH8BReINEDILComYSOkuE0AI1TUJM+dQskCUWNjunDGAmzMzBM79wGdSvxvsIc3B7VRNDSnPRgzmADFHvn/Bv3Ye36uXp36o28eu9pe27tp9OVSlr+1Udfvfyi21nLHVD9mabgXgAQAA" target="_blank">Run the query</a>
-:::moniker-end
+::: moniker-end
 
 ```kusto
 let polygons = dynamic({"type":"MultiPolygon","coordinates":[[[[-73.9495,40.7969],[-73.95807266235352,40.80068603561921],[-73.98201942443848,40.76825672305777],[-73.97317886352539,40.76455136505513],[-73.9495,40.7969]]],[[[-73.94262313842773,40.775991804565585],[-73.98107528686523,40.791849155467695],[-73.99600982666016,40.77092185281977],[-73.96150588989258,40.75609977566361],[-73.94262313842773,40.775991804565585]]]]});
@@ -91,7 +91,7 @@ The following example calculates top 5 biggest US states by area.
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAwsNjg8uSSxJLeaqUSgoys9KTS5RyEvMTVWwVUhLTSwpLUot1gOKF6QWlWQCmX6Ovq46CgX5OZXp+XlANemp+fFQXnxKal5xZlqlBlwfUDI3taSoUhPNbB2FxKLURDTdICENKAekoSS/QMFUIakSojYltTgZAArmjpSrAAAA" target="_blank">Run the query</a>
-:::moniker-end
+::: moniker-end
 
 ```kusto
 US_States
@@ -115,7 +115,7 @@ The following example returns True because of the invalid polygon.
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAysoyswrUcgszivNydFIT82PL8jPqUzPz4tPLEpN1EipzEvMzUzWqFYqqSxIVbJSUAqASCvpKCXn5xelZOYllqQWAyWio6MNdAxidaINDXQMkWmQaGxsraamJgCVD2IfawAAAA==" target="_blank">Run the query</a>
-:::moniker-end
+::: moniker-end
 
 ```kusto
 print isnull(geo_polygon_area(dynamic({"type": "Polygon","coordinates": [[[0,0],[10,10],[10,10],[0,0]]]})))

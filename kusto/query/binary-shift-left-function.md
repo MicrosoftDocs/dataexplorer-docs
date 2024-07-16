@@ -34,7 +34,7 @@ If n is negative, a NULL value is returned.
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAysoyswr0UjKzEssqowvzshMK4nPSU0r0TDUMdLUBADck7ZgHQAAAA==" target="_blank">Run the query</a>
-:::moniker-end
+::: moniker-end
 
 ```kusto
 binary_shift_left(1,2)

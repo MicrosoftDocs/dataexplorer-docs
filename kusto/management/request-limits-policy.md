@@ -31,7 +31,7 @@ The following limits are configurable:
 | MaxResultRecords | `long` | The maximum number of records a request is allowed to return to the caller, above which the results are truncated. The truncation limit affects the final result of the query, as delivered back to the client. However, the truncation limit doesn't apply to intermediate results of subqueries, such as those that result from having cross-cluster references. | [`1`, `9223372036854775807`] | `truncationmaxrecords` |
 | MaxResultBytes | `long` | The maximum data size (in bytes) a request is allowed to return to the caller, above which the results are truncated. The truncation limit affects the final result of the query, as delivered back to the client. However, the truncation limit doesn't apply to intermediate results of subqueries, such as those that result from having cross-cluster references.| [`1`, `9223372036854775807`] | `truncationmaxsize` |
 | MaxExecutionTime | `timespan` | The maximum duration of a request.<br/>**Notes:**<br/>1) This can be used to place more limits on top of the [*default* limits on execution time](../concepts/query-limits.md#limit-execution-timeout), but not extend them.<br/>2) Timeout processing isn't at the resolution of *seconds*, rather it's designed to prevent a query from running for *minutes*.<br/>3) The time it takes to read the payload back at the client isn't treated as part of the timeout. It depends on how quickly the caller pulls the data from the stream.<br/>4) Total execution time may exceed the configured value if aborting execution takes longer to complete. | [`00:00:00`, `01:00:00`] | `servertimeout` |
-:::moniker-end
+::: moniker-end
 :::moniker range="microsoft-fabric"
 | Property | Type | Description | Supported values | Matching client request property |
 |--|--|--|--|--|
@@ -43,7 +43,7 @@ The following limits are configurable:
 | MaxResultRecords | `long` | The maximum number of records a request is allowed to return to the caller, above which the results are truncated. The truncation limit affects the final result of the query, as delivered back to the client. However, the truncation limit doesn't apply to intermediate results of subqueries, such as those that result from having cross-eventhouse references. | [`1`, `9223372036854775807`] | `truncationmaxrecords` |
 | MaxResultBytes | `long` | The maximum data size (in bytes) a request is allowed to return to the caller, above which the results are truncated. The truncation limit affects the final result of the query, as delivered back to the client. However, the truncation limit doesn't apply to intermediate results of subqueries, such as those that result from having cross-eventhouse references.| [`1`, `9223372036854775807`] | `truncationmaxsize` |
 | MaxExecutionTime | `timespan` | The maximum duration of a request.<br/>**Notes:**<br/>1) This can be used to place more limits on top of the [*default* limits on execution time](../concepts/query-limits.md#limit-execution-timeout), but not extend them.<br/>2) Timeout processing isn't at the resolution of *seconds*, rather it's designed to prevent a query from running for *minutes*.<br/>3) The time it takes to read the payload back at the client isn't treated as part of the timeout. It depends on how quickly the caller pulls the data from the stream.<br/>4) Total execution time may exceed the configured value if aborting execution takes longer to complete. | [`00:00:00`, `01:00:00`] | `servertimeout` |
-:::moniker-end
+::: moniker-end
 
 > [!NOTE]
 > A limit that isn't defined, or is defined as `null`, is taken from the `default` workload group's request limits policy.
@@ -52,10 +52,10 @@ The following limits are configurable:
 
 :::moniker range="azure-data-explorer"
 Queries can use all the CPU resources within the cluster. By default, when multiple queries are running concurrently, the system employs a fair round-robin approach to distribute resources. This strategy is optimal for achieving high performance with ad-hoc queries.
-:::moniker-end
+::: moniker-end
 :::moniker range="microsoft-fabric"
 Queries can use all the CPU resources within the eventhouse. By default, when multiple queries are running concurrently, the system employs a fair round-robin approach to distribute resources. This strategy is optimal for achieving high performance with ad-hoc queries.
-:::moniker-end
+::: moniker-end
 
 However, there are scenarios where you might want to restrict the CPU resources allocated to a specific query. For instance, if you are running a background job that can accommodate higher latencies. The request limits policy provides the flexibility to specify a lower percentage of threads or nodes to be used when executing distributed sub-query operations. The default setting is 100%.
 

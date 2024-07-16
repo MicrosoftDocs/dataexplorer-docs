@@ -144,7 +144,7 @@ For example:
 
 > [!NOTE]
 > The RLS function above has no performance impact whatsoever on queries on the leader cluster. The performance impact on queries on the follower clusters will be impacted only by the complexity of `DataForFollowerClusters`.
-:::moniker-end
+::: moniker-end
 
 :::moniker range="microsoft-fabric"
 ### Control permissions on shortcut databases
@@ -164,7 +164,7 @@ For example:
 
 > [!NOTE]
 > The RLS function above has no performance impact whatsoever on queries on the source database. The performance impact on queries on the shortcut databases will be impacted only by the complexity of `DataForFollowerClusters`.
-:::moniker-end
+::: moniker-end
 
 ## More use cases
 

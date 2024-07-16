@@ -51,7 +51,7 @@ the following functions are available.
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA8tJLVFIK8rPDc3LrAjJzE1VsFXQKLHKyc9L1+SqVuBSAIKUxJLUEqCUhqGluYGugSEQaSpoK5QoaCkYFqcmK3DVWnMVFGXmlSgUpRaX5pQAjUA2UcPQ1MTMwtLc1NhQEwCPpAMfbgAAAA==" target="_blank">Run the query</a>
-:::moniker-end
+::: moniker-end
 
 ```kusto
 let fromUnixTime = (t: long) { 
@@ -71,7 +71,7 @@ print result = fromUnixTime(1546897531)
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA8tJLVEoyQ/Ny6wIycxNVbBV0EgpsVJISSxJLQHyNRWqFbgUgAAoqqALF9YwtDQ30DUwBCJNTQV9BcNiBa5aa66Cosy8EoWi1OLSnBKgSQhjNeAajQwMLcEazRWMDK1MTK2MDfUMIEBTEwBVI1K3jAAAAA==" target="_blank">Run the query</a>
-:::moniker-end
+::: moniker-end
 
 ```kusto
 let toUnixTime = (dt: datetime) { 

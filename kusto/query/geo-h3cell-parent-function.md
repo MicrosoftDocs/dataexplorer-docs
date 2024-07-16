@@ -35,7 +35,7 @@ H3 Cell parent token `string`. If the H3 Cell is invalid or parent resolution is
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAysoyswrUShILErNK4lPTs3JUbBVSE/Nj88wBnHiIRIa6hZmRomGBuZGaRCgrgkAkZ+TCTgAAAA=" target="_blank">Run the query</a>
-:::moniker-end
+::: moniker-end
 
 ```kusto
 print parent_cell = geo_h3cell_parent('862a1072fffffff')
@@ -52,7 +52,7 @@ The following example calculates cell parent at level 1.
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAysoyswrUShILErNK4lPTs3JUbBVSE/Nj88wBnHiIRIa6hZmRomGBuZGaRCgrqNgqAkA+3YzFzsAAAA=" target="_blank">Run the query</a>
-:::moniker-end
+::: moniker-end
 
 ```kusto
 print parent_cell = geo_h3cell_parent('862a1072fffffff', 1)
@@ -67,7 +67,7 @@ print parent_cell = geo_h3cell_parent('862a1072fffffff', 1)
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAysoyswrUShILErNK4kvSi1WsFVIT82PzzBOTs3Jic9JLUvN0UASgCjUAAsV5AO1xpfA5DQMdYDQQBMIAJou0OFVAAAA" target="_blank">Run the query</a>
-:::moniker-end
+::: moniker-end
 
 ```kusto
 print parent_res = geo_h3cell_level(geo_h3cell_parent((geo_point_to_h3cell(1,1,10))))
@@ -82,7 +82,7 @@ print parent_res = geo_h3cell_level(geo_h3cell_parent((geo_point_to_h3cell(1,1,1
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAysoyswrUShILErNK4kvSi1WsFVIT82PzzBOTs3Jic9JLUvN0UASgCgEixTkA3XGl8CkNAx1gNBAU0fBWFMTAG9zfXpWAAAA" target="_blank">Run the query</a>
-:::moniker-end
+::: moniker-end
 
 ```kusto
 print parent_res = geo_h3cell_level(geo_h3cell_parent(geo_point_to_h3cell(1,1,10), 3))
@@ -99,7 +99,7 @@ The following example produces an empty result because of the invalid cell input
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAysoyswrUcjMK0vMyUxRsFXILE7NLSip1EhPzY/PME5OzcmJL0gsSs0r0VA3NDJW19QEAJzHefMxAAAA" target="_blank">Run the query</a>
-:::moniker-end
+::: moniker-end
 
 ```kusto
 print invalid = isempty(geo_h3cell_parent('123'))
@@ -116,7 +116,7 @@ The following example produces an empty result because of the invalid parent res
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAysoyswrUcjMK0vMyUxRsFXILE7NLSip1EhPzY/PME5OzcmJL0gsSs0r0VC3MDNKNDQwN0qDAHUdBUMDA01NALIyRtVCAAAA" target="_blank">Run the query</a>
-:::moniker-end
+::: moniker-end
 
 ```kusto
 print invalid = isempty(geo_h3cell_parent('862a1072fffffff', 100))
@@ -133,7 +133,7 @@ The following example produces an empty result because parent can't be of a high
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAysoyswrUcjMK0vMyUxRsFXILE7NLSip1EhPzY/PME5OzcmJL0gsSs0r0VC3MDNKNDQwN0qDAHUdBUNTTU0A3k3StEEAAAA=" target="_blank">Run the query</a>
-:::moniker-end
+::: moniker-end
 
 ```kusto
 print invalid = isempty(geo_h3cell_parent('862a1072fffffff', 15))

@@ -41,7 +41,7 @@ S<sub>1</sub> ∩ S<sub>2</sub> ∩ ... ∩ S<sub>n</sub>
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA4WSQWvjMBCF7/kV71JqgxbbMc4hkFMpuwvd/oWgypNEu7IUJDkNpT++mrh2nUK7PomZeU/6nqco8JMseRkJtu+eyAfsvOtQITpUZbnw0u4J5+sqQqQjqsUr6BzJttDh/kQWG2Rn3GCJzQZlLlL5j2vrsVxflZux3AzlRVHgThrVG36McrbVUTsrDX49POAkTU8BmXWpGQ8y4ra8TUbQVpm+pfQEC5LqALdLfeogA2Q7eVz0AsHhmfCsjUHon6KXKkJH8JU+Tzih7zrp9QvhYMyWBqZ0zLTeZQOkwFlcKJa5WGD2saIbcD8UzP8/RfNZ0cwU4Fx+25P7x9yEo+n3CfUSgRrjCmiV621isQkkkGLqMN3D/4kD4GCHwe00mI2gYgKYTg1HcvTub5oDzzy+r8gGocQPVGJOg/TQ7z7em4J3A005i4F9t9K2Y3ah+uycfPeqzZaizlN/JTgHTzvn1zPfVWpVq698xwNHHZZ8wZWvaHLepbr88Kb1u3FdJk39Bu22I/gpAwAA" target="_blank">Run the query</a>
-:::moniker-end
+::: moniker-end
 
 ```kusto
 // Generate numbers from 1 to 100

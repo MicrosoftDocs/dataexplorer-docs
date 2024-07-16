@@ -47,10 +47,10 @@ The metadata operations can result from a management command that a user execute
 
 :::moniker range="azure-data-explorer"
 The `.show journal` command returns a list of metadata changes on databases or the cluster that the user has admin access to.
-:::moniker-end
+::: moniker-end
 :::moniker range="microsoft-fabric"
 The `.show journal` command returns a list of metadata changes on databases or the environment that the user has admin access to.
-:::moniker-end
+::: moniker-end
 **Permissions**
 
 Everyone with permission can execute the command.
@@ -63,10 +63,10 @@ Results returned will include:
 
 :::moniker range="azure-data-explorer"
 * All cluster journal entries if the user executing the command is a Cluster AllDatabases Admin.
-:::moniker-end
+::: moniker-end
 :::moniker range="microsoft-fabric"
 * All journal entries specific to the environment level if the user executing the command has appropriate admin permissions.
-:::moniker-end
+::: moniker-end
 
 ## .show database *DatabaseName* journal
 

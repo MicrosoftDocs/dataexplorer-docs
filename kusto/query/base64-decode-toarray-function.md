@@ -32,7 +32,7 @@ Returns an array of long values decoded from a base64 string.
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAysoyswrUQgszcxLtU1KLE41M4lPSU3OT0mNL8lPLCpKrNRQCjYOq0pxt7BV0lRQ4NLXV1D3VtdRUC8FEcUgogRE5KsDAAf/Q9pKAAAA" target="_blank">Run the query</a>
-:::moniker-end
+::: moniker-end
 
 ```kusto
 print Quine=base64_decode_toarray("S3VzdG8=")  

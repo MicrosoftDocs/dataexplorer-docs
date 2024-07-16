@@ -28,7 +28,7 @@ There are several possible courses of action.
   * Use the [summarize operator](../query/summarize-operator.md) to get aggregated data.
 :::moniker range="azure-data-explorer"
 * Increase the relevant query limit temporarily for that query. For more information, see [query limits - limit on memory per iterator](query-limits.md). This method, however, isn't recommended. The limits exist to protect the cluster and to make sure that a single query doesn't disrupt concurrent queries running on the cluster.
-:::moniker-end
+::: moniker-end
 :::moniker range="microsoft-fabric"
 * Increase the relevant query limit temporarily for that query. For more information, see [query limits - limit on memory per iterator](query-limits.md). This method, however, isn't recommended. The limits exist to protect the Eventhouse and to make sure that a single query doesn't disrupt concurrent queries running on the Eventhouse.
-:::moniker-end
+::: moniker-end

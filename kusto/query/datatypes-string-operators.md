@@ -98,7 +98,7 @@ For example, the first of these queries will run faster:
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAwsuyS/KdS1LzSspVqhRKM9ILUpVCC5JLElVyEgsVlDyyy8qyVACyiTnl+aVWPNyBeNUn5yfV5KYmQfUlJdfBNcCAHN0g3JgAAAA" target="_blank">Run the query</a>
-:::moniker-end
+::: moniker-end
 
 ```kusto
 StormEvents | where State has "North" | count;

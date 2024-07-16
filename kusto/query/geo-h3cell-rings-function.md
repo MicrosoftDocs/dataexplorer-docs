@@ -42,7 +42,7 @@ The following example produces rings up to distance 2.
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAysoyswrUQAS6cUKtgrpqfnxGcbJqTk58WAhDXULM8M0CwtLkzQIUNdRMNIEAJ04a1w0AAAA" target="_blank">Run the query</a>
-:::moniker-end
+::: moniker-end
 
 ```kusto
 print rings = geo_h3cell_rings('861f8894fffffff', 2)
@@ -59,7 +59,7 @@ The following example produces all cells at level 1 (all neighbors).
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAysoyswrUchLzUzPSMovKlawVUhPzY/PME5OzcmJB8qlF2uoW5gZpllYWJqkQYC6joKhZrRhLACfNYVMOwAAAA==" target="_blank">Run the query</a>
-:::moniker-end
+::: moniker-end
 
 ```kusto
 print neighbors = geo_h3cell_rings('861f8894fffffff', 1)[1]
@@ -76,7 +76,7 @@ The following example produces list of cells from all rings.
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAysoyswrUQAS6cUKtgrpqfnxGcbJqTk58WAhDXULM8M0CwtLkzQIUNdRMNTkqlHILdNNLCjIqYTqzM9T4NLgUlAoLs3NTSzKrEpVAJkBMjE3MTs1PiezuEQDrFKTSxMAkXmI93IAAAA=" target="_blank">Run the query</a>
-:::moniker-end
+::: moniker-end
 
 ```kusto
 print rings = geo_h3cell_rings('861f8894fffffff', 1)
@@ -97,7 +97,7 @@ The following example assembles GeoJSON geometry collection of all cells.
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA1VPS07DMBDd5xSjbGpLZVEVobBgVQm4hWXCJKT1T/a0ahCHZ5yYumRhxe/vECdHwMeY4AVG9Opr36MxaoHEpnvaDV33/Dis32YLO9n8gL086BDMXJzeQSMagHS2VsfpG8HqEyozJRKLQjbFhdeg3SdkZq0A8kBzQD+IRBnJwhD9EXuC4M08cvi/ZeRVwUWNya7aXnhlErG3bin4fQUHH9NS8aFHFXR/yg8BaPOodgvtK2o6R/5dYdZbpDgzdTPctG+FPHhjOHzyLqPFMmHi2900WSJ5SsBIK19DnbZL6Pv+z5Sgr8FS/gJRaHlovAEAAA==" target="_blank">Run the query</a>
-:::moniker-end
+::: moniker-end
 
 ```kusto
 print rings = geo_h3cell_rings('861f8894fffffff', 1)
@@ -125,7 +125,7 @@ The following example returns true because of the invalid cell.
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAysoyswrUcgsjs8rzclRsAWyQAyN9NT8+Azj5NScnHiggvRiDfXEpGR1HQVjTU0AZygYaTIAAAA=" target="_blank">Run the query</a>
-:::moniker-end
+::: moniker-end
 
 ```kusto
 print is_null = isnull(geo_h3cell_rings('abc', 3))
@@ -142,7 +142,7 @@ The following example returns true because of the invalid distance.
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAysoyswrUcgsjs8rzclRsAWyQAyN9NT8+Azj5NScnHiggvRiDXULM8M0CwtLkzQIUNdRMDQ10NQEAAa/KwhAAAAA" target="_blank">Run the query</a>
-:::moniker-end
+::: moniker-end
 
 ```kusto
 print is_null = isnull(geo_h3cell_rings('861f8894fffffff', 150))

@@ -42,7 +42,7 @@ The [probability beta density function](https://en.wikipedia.org/wiki/Beta_distr
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA22PwQrCMBBE7/mKoacWYkgEL0X9hB69iEhqogbStLQpRPDjjWmph7oLyw7M22WU9LFrq/NQqnaMC4W03VMuqtb+J25t02jny8H3xj0KciaIxdmOQnDGKbZpZidpjYJx3egzmjxi5Qk4QlC8jLZqQCWr2Tn9yjeCFytiD/6H4CzeWTD25WYiRYEZViC5kDd08Nop9DiklNdO3fMw55+CFx9P6bKEIAEAAA==" target="_blank">Run the query</a>
-:::moniker-end
+::: moniker-end
 
 ```kusto
 datatable(x:double, alpha:double, beta:double, comment:string)

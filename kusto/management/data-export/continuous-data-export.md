@@ -17,7 +17,7 @@ To enable continuous data export, [create an external table](../external-tables-
 
 :::moniker range="azure-data-explorer"
 In some cases, you must use a managed identity to successfully configure a continuous export job. For more information, see [Use a managed identity to run a continuous export job](continuous-export-with-managed-identity.md).
-:::moniker-end
+::: moniker-end
 
 ## Permissions
 

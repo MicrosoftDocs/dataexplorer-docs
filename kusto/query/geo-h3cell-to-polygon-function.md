@@ -37,7 +37,7 @@ Polygon in [GeoJSON Format](https://tools.ietf.org/html/rfc7946) and of a [dynam
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAysoyswrUUhPzY/PME5OzcmJL8mPL8jPqUzPz9NQsjAzSjQ0MDdKgwAlTQDHS0haLgAAAA==" target="_blank">Run the query</a>
-:::moniker-end
+::: moniker-end
 
 ```kusto
 print geo_h3cell_to_polygon("862a1072fffffff")
@@ -54,7 +54,7 @@ The following example assembles GeoJSON geometry collection of H3 Cell polygons.
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA22RwU6EMBCG7zzFhBMkdRcsQjHxZOIaD3rwaEzTxQngFkra7gHjw1ugYTe7tpfp/PPN/G23W3imUKGUsEP18v72CpWSEivbqj74EtbtvcRI9vW9RiEJSGHnKA4+AnDrpqCb8i7PGSWQJRuWFGVSkJOU5iwvFyllNM3OJFamGZulIqO3BSXBZ/ALg1bfbj40lDfCNPAANSo+qLa33Cre0MntZGj2QiCPryFXLsda9R5emIn2+cjXTag5dp3Q7Q9ewlwa6xp04oBctsZGF/r53L2o+SCqQzTfLrTjgCGB8AmFPWoXLmnnpUOrRyetwFq78+Lj+v5T1iMtGnf6x2DsWzsjA2q71J2a96Kbm7tP9pA5++Awjv8A8oXQEwECAAA=" target="_blank">Run the query</a>
-:::moniker-end
+::: moniker-end
 
 ```kusto
 // H3 cell GeoJSON collection
@@ -84,7 +84,7 @@ The following example returns a null result because of the invalid H3 Cell token
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAysoyswrUUhPzY/PME5OzcmJL8mPL8jPqUzPz9NQclDSBAA3CNqGIAAAAA==" target="_blank">Run the query</a>
-:::moniker-end
+::: moniker-end
 
 ```kusto
 print geo_h3cell_to_polygon("@")
