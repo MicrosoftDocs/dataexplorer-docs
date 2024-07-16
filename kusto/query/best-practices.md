@@ -133,11 +133,11 @@ In order of importance:
 Entities such as tables and materialized views are referenced by name.
 
 :::moniker range="microsoft-fabric"
-For example, the table `T` can be referenced as simply `T` (the *unqualified* name), or by using a database qualifier (e.g. `database("DB").T` when the table is in a database called `DB`).
+For example, the table `T` can be referenced as simply `T` (the *unqualified* name), or by using a database qualifier (e.g. `database("DB").T` when the table is in a database called `DB`), or by using a fully-qualified name (e.g. `cluster("EventhouseURI").database("DB").T`).
 :::moniker-end
 
 :::moniker range="azure-data-explorer"
-For example, the table `T` can be referenced as simply `T` (the *unqualified* name), or by using a database qualifier (e.g. `database("DB").T` when the table is in a database called `DB`)., or by using a fully-qualified name (e.g. `cluster("X.Y.kusto.windows.net").database("DB").T`).
+For example, the table `T` can be referenced as simply `T` (the *unqualified* name), or by using a database qualifier (e.g. `database("DB").T` when the table is in a database called `DB`), or by using a fully-qualified name (e.g. `cluster("<serviceURL>").database("DB").T`).
 :::moniker-end
 
 It is a best practice to avoid using name qualifications when they are redundant, for the following reasons:
@@ -147,6 +147,9 @@ It is a best practice to avoid using name qualifications when they are redundant
 1. Referencing database-in-scope entities is always at least as fast, and in some cases much faster, then entities that belong to other databases.
 :::moniker range="azure-data-explorer"
    (This is especially true when those databases are in a different cluster.)
+:::moniker-end
+:::moniker range="microsoft-fabric"
+   (This is especially true when those databases are in a different Eventhouse.)
 :::moniker-end
 Avoiding qualified names helps the reader to do the right thing.
 
