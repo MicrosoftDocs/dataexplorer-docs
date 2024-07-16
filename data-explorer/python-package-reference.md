@@ -527,7 +527,7 @@ Python engine 3.10.8 + common data science and ML packages + deep learning packa
 | zict | 2.2.0 |
 | zipp | 3.15.0 |
 
-## [3.11.7](#tab/python3-11-7)
+## [3.11.7 (Preview)](#tab/python3-11-7)
 
 Python engine 3.11.7 + common data science and ML packages
 
