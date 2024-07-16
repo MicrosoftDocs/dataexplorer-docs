@@ -39,7 +39,6 @@ The following examples return a slice of the array.
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAysoyswrUUgsKrJNqcxLzM1M1og21DHSMY7VVOCqUUitKEnNS1EozslMTk2xBapKrIwHczSAbB0FQx0FI00AeoUyQ0IAAAA=" target="_blank">Run the query</a>
-:::moniker-end
 ::: moniker-end
 
 ```kusto
@@ -56,7 +55,6 @@ print arr=dynamic([1,2,3])
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAysoyswrUUgsKrJNqcxLzM1M1og21DHSMdYx0TGN1VTgqlFIrShJzUtRKM7JTE5NsQWqTKyMB3M0gGwdBSMdBV1DTQAv2T4vRwAAAA==" target="_blank">Run the query</a>
-:::moniker-end
 ::: moniker-end
 
 ```kusto
@@ -74,6 +72,7 @@ print arr=dynamic([1,2,3,4,5])
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAysoyswrUUgsKrJNqcxLzM1M1og21DHSMdYx0TGN1VTgqlFIrShJzUtRKM7JTE5NsQWqTKyMB3M0gGwdBV1jIDbSBABajMjTSAAAAA==" target="_blank">Run the query</a>
 :::moniker-end
+
 ```kusto
 print arr=dynamic([1,2,3,4,5]) 
 | extend sliced=array_slice(arr, -3, -2)

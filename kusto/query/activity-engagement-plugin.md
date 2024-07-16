@@ -52,6 +52,7 @@ The following example calculates DAU/WAU (Daily Active Users / Weekly Active Use
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA21RQWrDMBC8B/KHvUVKbGy1hByKD6GBviDkUIoR1sZVsS0jr0MCfXxXiigp1NgCrWdmZ3aLAt5wQK8JwevBuB6MJg3uDPOEHnRD9mLJ4rRcdEhQT6Q9QRVQSLZH8VSqXV4qfuVLwuBg/kM8RwR3aRFqo29w9twuKZK782AiHEGZ5eIb8EqhFMTIdW5ohYi8PJFkoYx8AHoGhhBCbtRDuQ5Jpio2FknIrLfl2ssM/tw3quQzV1xXEoJEf8nxOrImWFPdhYJVuo3oziJQJXS2twRMDc9yURTwqrtm7sJMD/tjcdof2RZZFz1ddDeHP2myN07d6hZ7HEi8r6xZfWRxOlkKmcW5sCH+dve4o3df2FCCHfRcn/Rc/QrGXmv2ExN4ZvMiwyaaT9b7AZnMt5byAQAA" target="_blank">Run the query</a>
 :::moniker-end
+
 ```kusto
 // Generate random data of user activities
 let _start = datetime(2017-01-01);
@@ -77,6 +78,7 @@ The following example calculates DAU/WAU (Daily Active Users / Weekly Active Use
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA2VRwWrDMAy9F/oPutVuExKvlB1GDmWFnXrsaYxgYjXzSOLgKKWFffxk14yOhcRg5b2n96SigDcc0GtC8HowrgejSYM7wzyhB92QvViyOC0XHRLUE2lPUAUUku1RPJXqOS8Vv/IlYXAw/xG7fBsR3KVFqI2+wdlzu6RI7s6DiXAEZZaLb8ArhVIQI9e5oRUi8vJEkoUy8gHoGRhCCLlRD+U6JJmq2FgkIbPelWsvM/hz36iSz1xxXUkIEv0lx+vImmBNdRcKVuk2ojuLQJXQ2d4SMDU8y0VRwKvumrkLMz3sT8Vxf2JbZF30dNHdHP6kyd44datb7HEg8b6yZvWRxelkKWQW58KG+NuW97yjd1/YUMId9Fwf9Vz9KsZmazYUI3im8ybDKppPFvwB0tS5hPMBAAA=" target="_blank">Run the query</a>
 :::moniker-end
+
 ```kusto
 // Generate random data of user activities
 let _start = datetime(2017-01-01);

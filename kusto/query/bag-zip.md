@@ -42,6 +42,7 @@ In the following example, the array of keys and the array of values are the same
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA8tJLVFwSSxJVLBVSAFSJYlJOaka3qmVxY5FRYmVVgoplXmJuZnJOgphiTmlqWiimgrRvFwKQADla0SrJ6rrKKgngYhk9VhNHYSMIVDICChurGcSq8nLFWvNywWyl5erRiG1oiQ1L0XBL7XcKTEd6JCkxPT4qswChDNQbNcEAJQm8tKzAAAA" target="_blank">Run the query</a>
 :::moniker-end
+
 ```kusto
 let Data = datatable(KeysArray: dynamic, ValuesArray: dynamic) [
     dynamic(['a', 'b', 'c']), dynamic([1, '2', 3.4])

@@ -50,6 +50,7 @@ The following example calculates the angle in radians.
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAysoyswrUUjMS89Jjc%2FMiy9KTMlMzCtWsFVIT82PBwtrGOgoGAKxgY6pjoKxjq6hgSYAgS0UoTUAAAA%3D" target="_blank">Run the query</a>
 :::moniker-end
+
 ```kusto
 print angle_in_radians = geo_angle(0, 10, 0,5, 3,-10)
 ```
@@ -66,6 +67,7 @@ The following example calculates the angle in degrees.
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA8tJLVFIzEvPSY3PzIsvSkzJTMwrVrBVSE%2FNjwcLaxjoKBgCsYGOqY6CsY6uoYGmNVdBUWYekraU1PSi1FSQNihLA91ETQCHVNd5ZwAAAA%3D%3D" target="_blank">Run the query</a>
 :::moniker-end
+
 ```kusto
 let angle_in_radians = geo_angle(0, 10, 0,5, 3,-10);
 print angle_in_degrees = degrees(angle_in_radians)
@@ -83,6 +85,7 @@ The following example returns null because 1st point equals to 2nd point.
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAysoyswrUcgsjs8rzclRsAWyQAyN9NT8%2BMS89JxUDQMdBUMghlLGOgq6hgaamgD0cBDLNwAAAA%3D%3D" target="_blank">Run the query</a>
 :::moniker-end
+
 ```kusto
 print is_null = isnull(geo_angle(0, 10, 0, 10, 3, -10))
 ```

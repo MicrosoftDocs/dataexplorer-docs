@@ -70,6 +70,7 @@ The following example visualizes a series of points on a map. If you have multip
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAwsuyS%2FKdS1LzSsp5qpRKEnMTlUwNDAAMotS81JSixSKkxNLSlKLkjMSi0oUyjNLMhQ0sjPzUhRsFXITC3QUKpLzc0pz84Bcp9T0zDyf%2FDwdhUqIWDFcMLFER6E4tSgzFSQEtiuksiBVEwDmTUhSewAAAA%3D%3D" target="_blank">Run the query</a>
 :::moniker-end
+
 ```kusto
 StormEvents
 | take 100
@@ -86,6 +87,7 @@ The following example visualizes points on the map using GeoJSON dynamic values 
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA2WNsQoCMRBEe79iyzu4SrC8RrCz8wPCmlsu0WQ3bFZF8eO9cBaC3cDMe3My0Xy4E1vdvKGoXMgb7GmOfBQevgltKestZ9T4Ijg%2FIWAN40ziikQ2Z%2BLq1lNK3T86wK7%2FcTdo3TbKL8%2BKadV0zdq2SjyRQvVoRuoDqsEjWoDuGnmCETKW%2FgOAAdqguwAAAA%3D%3D" target="_blank">Run the query</a>
 :::moniker-end
+
 ```kusto
 StormEvents
 | project BeginLon, BeginLat
@@ -108,6 +110,7 @@ The following example shows storm events aggregated by S2 cell. The chart aggreg
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA22PsU7DMBCGd57ixhiZNmmhCkOXSp1ggz1ynVNi6tjW%2BdISxMNjt5XI0OlOuv%2F%2FPvuDPQ37EzqOD78QyH%2BhZthhZ9y7d%2FK2KZZwCX1OAVPu3CMhdOib4I3jxrhGG9IWi3tNQmWLp7parOvXSkhY1YuX9fNGQlWWJTzmIRI0jsOgyPwgaD86LgQcpn%2BrhF7FHrYzK%2FsmrjRae8cqZr%2FJjWswV3QCkrJXRpGhQs41F3mT6oSuRYJgUPeKGM6GeyiOxrXpFYMKApbLfM37LWxcB%2BqkjFUHi%2BCdncA4eBsje9h%2FB%2BspAVuMR%2FbhDzcwHP56AQAA" target="_blank">Run the query</a>
 :::moniker-end
+
 ```kusto
 StormEvents
 | project BeginLon, BeginLat, EventType
@@ -127,6 +130,7 @@ The following example shows storm events aggregated by S2 cell. The chart aggreg
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA22PPW%2FCMBCG9%2F6KE1NSpZBAqdKBpRJTu7V7ZMwpueL4LPsCpOqPrx2QysB0p3s%2FHvtT2PfbI1oJD7%2FgPH%2BjFnjDluwH2%2BK6KSlgMn2NDqPv1KFHaJEbx2SlIdto8tpgdi%2FpUZnsqa7mq%2Fq1ygtY1vP16vmlgKosS3hMI4%2BlYeh75ekHQfNgJcthN%2F5TC%2BhU6GBzQxVuwlKjMXeo%2Bc1vUuJiTBEdC70yl44slcYnTcQmZvAsaPcXbIi02aTMouLjHT04Qt0pL3Ai6SA7UHRvoFcuh8UiqWm%2Fmsm2oI6KjNoZBLZmBLLwPgRh2J6dYR8L9xgOwu4PYF0r54kBAAA%3D" target="_blank">Run the query</a>
 :::moniker-end
+
 ```kusto
 StormEvents
 | project BeginLon, BeginLat, EventType
