@@ -15,7 +15,7 @@ Access control is based on authentication and authorization. Each query and comm
 :::moniker-end
 
 :::moniker range="microsoft-fabric"
-Access control is based on authentication and authorization. Each query and command on a Fabric resource, such as an Eventhouse or dataabse, must pass both authentication and authorization checks.
+Access control is based on authentication and authorization. Each query and command on a Fabric resource, such as a KQL database, must pass both authentication and authorization checks.
 :::moniker-end
 
 * [Authentication](#authentication): Validates the identity of the security principal making a request
