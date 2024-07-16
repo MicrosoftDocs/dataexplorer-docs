@@ -10,7 +10,6 @@ monikerRange: "microsoft-fabric || azure-data-explorer || azure-monitor || micro
 
 > [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)] [!INCLUDE [monitor](../includes/applies-to-version/monitor.md)] [!INCLUDE [sentinel](../includes/applies-to-version/sentinel.md)] 
 
-
 A *query result set has exceeded the internal ... limit* is a kind of
 [partial query failure](partial-query-failures.md) that happens when the
 query's result has exceeded one of two limits:

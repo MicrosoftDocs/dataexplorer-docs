@@ -47,7 +47,13 @@ ms.date: 10/15/2022
 * Materialized views cannot be created in [database shortcuts](/fabric/real-time-intelligence/database-shortcut). Database shortcuts are read-only and materialized views require write operations.  
 ::: moniker-end
 * Materialized views that are defined on leader databases can be queried from their followers, like any other table in the leader.
+:::moniker range="azure-data-explorer"
 * Use the leader cluster to monitor follower database materialized views. For more details, see [Materialized views in follower databases](materialized-views-monitoring.md#materialized-views-in-follower-databases).
+:::moniker-end
+:::moniker range="microsoft-fabric"
+* Use the source Eventhouse to monitor follower database materialized views. For more details, see [Monitor materialized views](/fabric/real-time-intelligence/materialized-views-monitoring)
+:::moniker-end
+
 
 ## Other
 
