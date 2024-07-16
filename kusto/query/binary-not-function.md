@@ -29,8 +29,10 @@ Returns logical NOT operation on a number: value.
 
 ## Example
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAysoyswrUUjKzEssqozPyy/RMDQw0AQAChXSgRUAAAA=" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
 binary_not(100)

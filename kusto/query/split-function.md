@@ -34,8 +34,10 @@ An array of substrings obtained by separating the *source* string by the specifi
 
 ## Examples
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA22OQQrAIAwE731FyKlCQPqeIsF4EkqR1v/TWAvS4F43s5ly5bMuoLnLkeuKMbIIEiCjIxjxHnYtkVDr8CcaIpxS6hzB1tCXEHs9mR77Zph5ZvKpqEmTsS4iXUP/upm9tuEBNARoOvUAAAA=" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
 print

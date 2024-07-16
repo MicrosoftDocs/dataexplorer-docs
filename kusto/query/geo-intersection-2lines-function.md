@@ -52,8 +52,10 @@ dynamic({"type": "MultiLineString","coordinates": [[line_1, line_2,..., line_N]]
 
 The following example calculates intersection between two lines. In this case, the result is a point.
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA52QsQqDMBRF935FyKSQikbjSyz9g24dRUT0IQFNRLNI6b83rUXs2uEt58I9lzegI4M2eHezNn1CrqRbTTPqNnhQt05IC3rbY8poa+3cadM4XGhRlmdIIwVSccWyOAIpEiEqtmEZqzjdMM95UlXP8HIafnz8L5+3KLEVSw67DzIh+AeDgvzrm3yPI/5wXrB12hqv7NHWR1Tz96QlODyCHVeGL/xzpu8mAQAA" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
 let lineString1 = dynamic({"type":"LineString","coordinates":[[-73.978929,40.785155],[-73.980903,40.782621]]});
@@ -69,8 +71,10 @@ print intersection = geo_intersection_2lines(lineString1, lineString2)
 
 The following example calculates intersection between two lines. In this case, the result is a line.
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA8tJLVHIycxLVbBVSKnMS8zNTNaoViqpLEhVslLyAYoHlxRl5qUr6Sgl5+cXpWTmJZakFitZRUfrmhvrWZpbWBpZ6pgY6JlbmBqamsbqQIQtDCwNjCHCRmZGhrGxtZrWXAVAc0oUgDi1qDg1uSQzPw9oZXpqfjyyULwRyC3FGiBSB+wuTQCXmF3SoQAAAA==" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
 let line = dynamic({"type":"LineString","coordinates":[[-73.978929,40.785155],[-73.980903,40.782621]]});
@@ -85,8 +89,10 @@ print intersection = geo_intersection_2lines(line, line)
 
 The following two lines don't intersect.
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA8tJLVHIycxLDS4pysxLN1SwVUipzEvMzUzWqFYqqSxIVbJS8oFLK+koJefnF6Vk5iWWpBYrWUVHG+ooGMbqRBvpKBjFxtZqWnPloJhnRKp5xjoKxkDzTHQUTCDmFQDVlSgAcWpRcWpySWZ+HtDI9NT8eGSheCOQlcUaSB7RQXaFJgAdJFio5gAAAA==" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
 let lineString1 = dynamic({"type":"LineString","coordinates":[[1, 1],[2, 2]]});
@@ -102,8 +108,10 @@ print intersection = geo_intersection_2lines(lineString1, lineString2)
 
 The following example will return a null result because one of lines is invalid.
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA5WPsQoDIRBE+3zFYqVgo9ddyB+kSylyyLkcC2Y91ASOkH+PIRAuZeo3vJlJ2CAR46UV4sXACeLG4UqzfIi2rShGcf5iocWcc4nEoWEVo3NGg/HaWQ3W+6c6HtKPz/7rGzQMH9HaAw2I7yFR7BqqfEtJLpinDrBUnBtlnuy7rcrdB70foNQL22IrxuIAAAA=" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
 let lineString1 = dynamic({"type":"LineString","coordinates":[[1, 1],[2, 2]]});

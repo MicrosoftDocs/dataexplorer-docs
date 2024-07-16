@@ -96,8 +96,10 @@ and *SubQuery* has the same syntax of any query statement.
 
 ### Getting the largest element from the array
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAy2NsQrDMBBD93yFlkIydEimQvEn9BuCSy4h9M5nkmuxSz6+jqkGDRJ6YjKMkzcP16Bo82EhJMybCnqY4obdKKKv9YH9LeK39UtgJ/5FI6+7tanDMyM9dBrgyvyC4d5UbnNAPlcfI2cQk1AwxyfXciSdW9awdNCAym+rm5a/E/gf1LD7ASAFbUCrAAAA" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
 let _data =
@@ -119,8 +121,10 @@ _data
 
 ### Calculating the sum of the largest two elements in an array
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA2WNsQ7CMBBD936FF6RkYGgmJJRPQAywV0FNq4pLLmqvKEH9eNqsePBw9j2TF3S9EwfbYNfs4uiRMcwc0EIYFyziE9oab1jWENw8fT3IBvf2HU2LqKzxKsg37g3s/n6CuTaV22wIn7NLiQro4ElJngdFHEcNjhWrqgsnmINDf1uPNdyHJydj95siXQv6B6sP8Fq9AAAA" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
 let _data =
@@ -143,8 +147,10 @@ _data
 
 ### Select elements in arrays
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA22PQYvCMBCF7/kV79YEsmBSu4rgoe3doxcpEjW7FJO21KhU/PGmsVZZNsM8eDPzzZCDcj52RoOulVmUleNI21YsDl2lbLkPTr4cIxsIjsHRTZSKiCNKZdA4KhjH840jYsIR+5z1PQLMPvEs4FnAs+RfPOEQ/mQy8U2Px594HvA84HkcdBqWjCPfHFN/XPqcF4wUIHfYy5dqGtNhpa/9V5e98MHJ3km4Gq5rdP1DTV39MtQVKPHVBhK7FykJ7jidrVVtedPjOquOemvKk6NDhb2X/+1JRtgDW1SAO4MBAAA=" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
 datatable (Val:int, Arr1:dynamic, Arr2:dynamic)
@@ -168,8 +174,10 @@ datatable (Val:int, Arr1:dynamic, Arr2:dynamic)
 
 ### Using `with_itemindex` for working with a subset of the array
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAzVOS27CMBDd5xRvU5FIRRC6rMwNOENkkoG4tT2WMyEJ4vCEQcziLeZ9PQmazoqFKbBetvFKmHHJHFBDGPUeg1BCrfwDwxiCze5O8CbYf2q8G6ScK5wXzCfuDjCr/wuH30KDiwfCbWtT8gsmJ33jhIKLHc1GEeQpUBTjX22yJOJL6TleK3CElpaKux16yoSFR/T2Rtiof4OW/RiiaiZVvHOPBj/6rNYJKfMftfKmvj+dT34iokT+AAAA" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
 let _data =
@@ -195,8 +203,10 @@ _data
 
 ### Using mutiple columns to join element of 2 arrays
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA12OPQuDMBCG9/yKo0sSsIMpXYQOfuzduohIqhlCEysaSy3++KaXtog5CLwf93CtdH6uRgG7SJOA7lwE6TDECbRzJ61uUIq/5KQk4F8c/RxW0jSmEdBU4H+gFV+HGYYZhlkIkXBcl3Is5WKzW6BdfGxSAVnAPvay782MN4bT4N4BQ6J6OtW1cJ4cnGB0QyMdC71dvQtljsUFxslaOeiXQpCvW3lTtdFj2OBf9MYX3vf0tetlYPI3W/swT0sBAAA=" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
 datatable (Val: int, Arr1: dynamic, Arr2: dynamic)
@@ -222,8 +232,10 @@ datatable (Val: int, Arr1: dynamic, Arr2: dynamic)
 In the following example, `mv-apply` is used in combination with an
 inner `mv-expand` to remove values that don't start with "555" from a property bag:
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA21PwW6DMAy98xVeL4BEpdG1O1Tqqfdp2nqrEDLUooyQICdAmfrxczMOa7VEtuSX955fTujkFoqiT9NzSW99WxBvwTqudZXAAbki94juz8h2b3rttqCMruLgGICccLPZLG+Vrl7WYfJ3Tlcyr1+TR57HQ6lau0j3SsVBFlyBLo70CQZUPVnYQYdlk6NSUSyP7bDErlMTMLVmoHc2HbGrPXFWGA1+U+S7COjSoRg2tbQdIDNOM9czrjCeiWmGjmkGT9YhOzvW7gwLybqYebZvW+T6m6CTvfZgPnwIMW2xodySi2aT5yz2mvif/xRY5b/p84YmO0uSe8+bUIAvKt0SRwl89/oDn62shLsBAAA=" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
 datatable(SourceNumber: string, TargetNumber: string, CharsCount: long)

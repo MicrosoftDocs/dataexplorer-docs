@@ -38,8 +38,10 @@ All properties are optional.
 
 ## Example
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAy2LsQqDQBAFe7/icZX5CAuLJFxjocH+8BZd0D1ZV0Xw42OC1RQz01jS6bmR2JKd2AdSQmPBqChc6+u3r3zpECTiH32O+WdeY0rRXUOXVrGLShJJ0QWN2NkG5MY20l0uYEHL2rNwcI8vTweEO3QAAAA=" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
 StormEvents

@@ -18,7 +18,7 @@ You must have [Cluster AllDatabasesAdmin](../access-control/role-based-access-co
 :::moniker range="microsoft-fabric"
 > [!NOTE]
 > The `admin` role inherits `Cluster AllDatabasesAdmin` permissions.
-:::moniker-end
+::: moniker-end
 
 ## Syntax
 

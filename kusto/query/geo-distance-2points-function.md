@@ -41,8 +41,10 @@ The following example finds the shortest distance between Seattle and Los Angele
 
 :::image type="content" source="media/geo-distance-2points-function/distance_2points_seattle_los_angeles.png" alt-text="Distance between Seattle and Los Angeles.":::
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAz3KQQqAIBBA0avMskBFJ8exRWeRKAkXqaj3J1ctP+/XlvKAO/Vx5iuGlMMbR2wdDnhiCT9gLXPsizSIymp26AVYVsSeiAVIY7xCJvQzNqu02TW59QMCmjc+XwAAAA==" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
 print distance_in_meters = geo_distance_2points(-122.407628, 47.578557, -118.275287, 34.019056)
@@ -56,8 +58,10 @@ print distance_in_meters = geo_distance_2points(-122.407628, 47.578557, -118.275
 
 The following example finds an approximation of the shortest path from Seattle to London. The line consists of coordinates along the LineString and within 500 meters from it.
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA03Oz2rDMAwG8PueQvhkD684paW0rG+w244hBM/WEm+JHBRBKNvefU5gf3T9vp8k9tQhJHjlPEIFkqFy28AsOEF19wkT5zcMAgN1cAX2FLWBe2D0g36o9ntjYfDyPzq7wpYeGTf0grIgkv4TsNuBM1D6G/0pHE5rcHbml3eY25hm8RSwnXIiaSW3QyLUZbMt2MYb+TEF/aHkNqG6qKeSPgsn6pRVIWeOibzgrC51vV63h1Nja2ePVdN8GQOPcHTrw4wUkWEOXgQ59J4FliQ96PdE8Tr6yXwDBC8v7i4BAAA=" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
 range i from 1 to 1000000 step 1
@@ -73,8 +77,10 @@ range i from 1 to 1000000 step 1
 
 The following example finds all rows in which the shortest distance between two coordinates is between one meter and 11 meters.
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA22MsQrCQBBEe79iygghsPY2Qjo7P+A4c0M8IbvhspgUfryJgo1WMwxv3sWtDO2D6tPuCS5OTUh58qgdgwS3IDLgiJ4WvvthtLw+qhP7rGfTGp8WvUar6b1sGX2/WucbC/9Ir/SZVFSCpoHIxo7F7uz8l34BxwMseakAAAA=" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
 StormEvents
@@ -92,8 +98,10 @@ StormEvents
 
 The following example returns a null result because of the invalid coordinate input.
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAysoyswrUUjJLC5JzEtOVbBVSE/Nj4dx440K8oHSxRrGBgY6hiCoCQDd7v6oMAAAAA==" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
 print distance = geo_distance_2points(300,1,1,1)

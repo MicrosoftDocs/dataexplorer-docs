@@ -36,8 +36,10 @@ The operator tries to return an answer as quickly as possible rather than trying
 
 Get 10 distinct values from a population
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAwsuyS/KdS1LzSspVqhRKE7MLchJ1U3JLC7JzEsuUTA0UMhPU3AtyCzOT0n1TAEAXIVALi0AAAA=" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
 StormEvents | sample-distinct 10 of EpisodeId
@@ -45,8 +47,10 @@ StormEvents | sample-distinct 10 of EpisodeId
 
 Sample a population and do further computation without exceeding the query limits in the summarize
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA1WNuw6CUBBEe75iSihIsDZ0UlDzBVfuGpfcB9ldNBo+Xk0waDlzTmYCGdTFOVA3s2ZPihaDZYndjZIp1g3XntU4jYZDg3zBpvf+WPzqxYr7lYR2Dk4o/y+qj6ZLjE74SbBsLvRpWoRJ23dffsOJhUarcH7sey97JpXgsgAAAA==" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
 let sampleEpisodes = StormEvents | sample-distinct 10 of EpisodeId;

@@ -31,8 +31,10 @@ URL (string) in a regular representation.
 
 ## Example
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA8tJLVEoLcpRsFVwUM8oKSkoVjVOVDVKA6Ly8nK9pMy8dL3k/FwgV92al6ugKDOvRCG/KDM9My8RpAeoU0chJTU5PyU1BcKNh/A0gExNAHjpCSdcAAAA" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
 let url = @'https%3a%2f%2fwww.bing.com%2f';

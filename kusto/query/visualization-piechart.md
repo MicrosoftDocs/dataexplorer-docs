@@ -77,8 +77,10 @@ The supported values of this property are:
 
 ## Example
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA0WNQQqFMBBD955icKU7PYBLT9ATVP+AA7aVaVQUD2/rB92EJDwSg6Cu39gjFhfF1TmrcjJFWPAYVo/u0aqm4SCT28wFRc4fRamdxQmobZJV9j9WWoTHySZ2F0wVBDN3pcmX9P98R8v6BgN8EaGKAAAA" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
 StormEvents

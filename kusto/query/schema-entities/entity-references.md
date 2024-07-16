@@ -11,11 +11,11 @@ ms.date: 08/29/2023
 
 :::moniker range="azure-data-explorer"
 Kusto entities are referenced in a query by name. Entities that can be referenced by their name include *databases*, *tables*, *columns*, and *stored functions*, but not *clusters*.
-:::moniker-end
+::: moniker-end
 
 :::moniker range="microsoft-fabric"
 Kusto entities are referenced in a query by name. Entities that can be referenced by their name include *databases*, *tables*, *columns*, and *stored functions*. 
-:::moniker-end
+::: moniker-end
 
 If the entity's container is unambiguous in the current context, use the entity name without additional qualifications. For example, when running a query against a
 database called `DB`, you may reference a table called `T` in that database by its name, `T`.
@@ -25,7 +25,7 @@ The name is the concatenation of the entity name to the container's, and potenti
 
 ::: moniker range="azure-data-explorer"
 If the query wants to reference a table from another cluster it can do so, for example, by using `cluster("https://C2.kusto.windows.net/").database("DB2").T2`.
-:::moniker-end
+::: moniker-end
 
 Entity references can also use the entity pretty name, as long as it's unique
 in the context of the entity's container. For more information, see [entity pretty names](entity-names.md#pretty-names).

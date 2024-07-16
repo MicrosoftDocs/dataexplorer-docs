@@ -36,8 +36,10 @@ The percentile value of each value in *expr*.
 
 ## Examples
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAwsuyS/KdS1LzSsp5qpRKC7NzU0syqxKVShJyUxPLS4JSi1WsIVxNFwScxPTUwOK8gtSi0oqNRWSKhWCSxJLUoE6C4rys1KTSxSAMslAwzJzUuNhuhBG6SgYGhhoAgDlVqxicwAAAA==" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
 StormEvents
@@ -55,8 +57,10 @@ StormEvents
 |1200000|
 |250000|
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA4XNsQrCQBAE0N6v2DIHFvED0plePHs5kyGsuHdhbxOI5OO9JlxpOTDzxltS6VdEy6ed8iISlL8gG3lCtjsydUdorkHChJumGWqbo9dG3oKhLJfIKVLjK0d/uT6ODxZUxxVo1vTGYFQuhsLwB8+jX5EzXdrW/QA/si5TvAAAAA==" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
 StormEvents

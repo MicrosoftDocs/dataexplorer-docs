@@ -48,8 +48,10 @@ This operator is similar to [series_fit_2lines](series-fit-2lines-function.md). 
 
 ## Example
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/kvc9rf7q4d68qcw5sk2d6f.northeurope/databases/MyDatabase?query=H4sIAAAAAAAAA21PywrCMBC8F/oPe7OFNTTxfcjVk38gUmq72hWNkgZswY83sVQsmMMkOzszm31YNi6OwB+u9AQm2BettoU5U3Jkk5j7M0kRZJ3CFKSsEcZsD72v01VnihuXyV4iKKECLBDmYoWwEJnXekpmYjbgBmEd7qVQhzSOXkCtI1P1cTs2tGWnG7JMTX5il189lQ9DulR8at/AkUP9WlTQNP9MYd7D3i9UOr8/QovQ4ZDxfaggs/5TZMHxjcq6sO4NHF3PtzoBAAA=" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
 print

@@ -34,8 +34,10 @@ If the conversion is successful, the result will be a [`guid`](scalar-data-types
 
 ## Example
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA0tJLAHCpJxUjeKSIisFIJGZl67JyxXNy6UABEoGhkbGJqZm5haWiUnJKalp6HwlHSwKdUEyuiARXaxqE6H2KJRkJJYoZBYr5OWXKCQqpJdmpijxcsXyctUopFaUpOalgIUUbBVK8kEMkBM1ATuW7RixAAAA" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
 datatable(str: string)

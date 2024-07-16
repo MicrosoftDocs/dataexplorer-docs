@@ -18,7 +18,7 @@ You must have [Cluster AllDatabasesAdmin](../access-control/role-based-access-co
 :::moniker range="microsoft-fabric"
 > [!NOTE]
 > The `admin` role inherits `Cluster AllDatabasesAdmin` permissions.
-:::moniker-end
+::: moniker-end
 
 ## Syntax
 
@@ -36,10 +36,10 @@ You must have [Cluster AllDatabasesAdmin](../access-control/role-based-access-co
 
 :::moniker range="azure-data-explorer"
 The command returns all workload groups in the cluster, after the drop, which is the output of the [`.show workload_group`](show-workload-group-command.md#show-workload_group-command) command.
-:::moniker-end
+::: moniker-end
 :::moniker range="microsoft-fabric"
 The command returns all workload groups in the eventhouse, after the drop, which is the output of the [`.show workload_group`](show-workload-group-command.md#show-workload_group-command) command.
-:::moniker-end
+::: moniker-end
 
 Following is the schema of the output returned:
 

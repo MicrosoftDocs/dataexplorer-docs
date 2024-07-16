@@ -31,8 +31,10 @@ If conversion isn't successful, the result will be an empty string.
 
 ## Examples
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA0tJLAHCpJxUjcSUlKLU4mKr4pKizLx0HYXcxOJsq5z8vHRNrmguBXVDSyM9QzMLPUM9Q3UdBSMTHQU4wJA1NsIpq29kgqIAmyzIUg1dQ00dBa5YrhqF1IqS1LwUBaDjSnNKFGwV0vKLchNL4jMLykxgjoa4FqQBbi1EeTxIHFUPWAhNIwAom5ZMBgEAAA==" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
 datatable(address:string, mask:long)

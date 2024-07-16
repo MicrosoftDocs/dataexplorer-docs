@@ -33,8 +33,10 @@ because the latter's internal representation is more complex than that of a stri
 
 The following example calculates the total data size using `estimate_data_size()`.
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA22NvQ7CMBCDd57CWxMYmvAbhr5F9ypSj1KpSarmkCLEw3OFtbdYlu3vFh8HQsFjSQEWnGANMtMsZuPqWrpqSnHQGDMcdh9QYYo9WlE0qOzxdL5cb+5uqm3ArzhRHPi5MuTfSsmvEPwyvgltYj814hVlHoNn6nrPvssSqr3Wf4pyB2t0kXUD68wXVvoNCMgAAAA=" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
 range x from 1 to 10 step 1                    // x (long) is 8 

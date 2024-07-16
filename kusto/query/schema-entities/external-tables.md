@@ -14,7 +14,7 @@ An external table is a schema entity that references data stored external to a K
 Similar to [tables](tables.md), an external table has a well-defined schema (an ordered list of column name and data type pairs).
 :::moniker range="azure-data-explorer"
 Unlike tables where data is ingested into your cluster, external tables operate on data stored and managed outside your cluster.
-:::moniker-end
+::: moniker-end
 
 Supported external data stores are:
 

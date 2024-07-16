@@ -63,7 +63,7 @@ The following query calculates the average time difference in milliseconds betwe
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/SampleIoTData?query=H4sIAAAAAAAAA22NvQ6CQBCEexPfYbuDBAtLi+toLLSB3qzcopewB7ld8Sc+vBwWWNjNzDeZqSMGafvI5CoK0kcpUXG9esP9SpHgGx6RCawFI7Pd7ExqTErh/ITaM4kiD4DSJEAPpeBAp7z0bbsPB991XqjpgxOw4FApwZObaGZ4oaZY1goYIo3Zj9/m+fx7Y8boXwQ4XrL/L/kHqqI6JdkAAAA=" target="_blank">Run the query</a>
-:::moniker-end
+::: moniker-end
 
 ```kusto
 TransformedSensorsData
@@ -86,7 +86,7 @@ In the following query, as part of the serialization done with the [serialize op
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA3POz0tLLUrNS04NTi0uzszPK+aqUSjPAAopJMOlFGxtFdSdSjNzUhSMDAwt1YFKilOLMhNzMqtSFfJSK0riiyGa40sqC4CqwWIayGKaQC0FRflZqcklCiWZuanxiXkp8SmlRYklQBU6CnClmSU5qUhcoE4dTAsAcOu/KLQAAAA=" target="_blank">Run the query</a>
-:::moniker-end
+::: moniker-end
 
 ```kusto
 ConferenceSessions

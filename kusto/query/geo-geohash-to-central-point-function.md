@@ -34,8 +34,10 @@ The geospatial coordinate values in [GeoJSON Format](https://tools.ietf.org/html
 
 ## Examples
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAysoyswrUSjIB5G2Cump+fFAnJFYnBFfkh+fnJpXUpSYEw+W1lAqLs3Lq1TS5KpRSK0oSc1LUUjOzy9KycxLLEktBmoGq9JDEkMozMnPS88sKU1JBSpDUhBtEKujkJNYgk3KMBYAnhfZ4psAAAA=" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
 print point = geo_geohash_to_central_point("sunny")
@@ -51,8 +53,10 @@ print point = geo_geohash_to_central_point("sunny")
 
 The following example returns a null result because of the invalid geohash input.
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAysoyswrUUhPzc9ILM5QsAWx4qG8+JL8+OTUvJKixJz4gnygMg2lRCVNAEhNnjMxAAAA" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
 print geohash = geo_geohash_to_central_point("a")
@@ -68,8 +72,10 @@ print geohash = geo_geohash_to_central_point("a")
 
 You can use the geohash value to create a deep-link URL to Bing Maps by pointing to the geohash center point:
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA32RS0/DMBCE7/kVo16cSGkNJ1BRhQRXuCD1gFBlGWdpLBI7st2G8vjvOA+gCgif7F17duYz51h7gg9Omy2UNUoGMjJoaxAslKN4xlXXvJUNCqJmXmnzjPXdDZ6crSGxJTtvrDYhqSig34lgRS0bsXMVVkhFX1wWByNrrXKIoENFy2FqhuQtQVzxGKenrAyh8UvO27ZdPMYLC2VrHtX8pW9WvdKCRY1hp6x1hY6OyT+cbpAz8XfvZJOj70VLgoyyBaWDjSwa+LhIOMe1NXtyoQtUSl/2AMgEckOoHNIUCCUZ7CIzNk3K/iXWwxmVp3jG8ghkymfEMx2XxlfiSLCz6mQ1ZP/WzL7Usi5kEwV/8q3A/P68fd0fzljyDnqJX19gMPXbaTqWcszu7Q7SEUpyNMs+AXziAcBEAgAA" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
 // Use string concatenation to create Bing Map deep-link URL from a geo-point

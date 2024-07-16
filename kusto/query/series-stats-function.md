@@ -44,8 +44,10 @@ A table with a column for each of the statistics displayed in the following tabl
 
 ## Example
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAysoyswrUaiwTanMS8zNTNaINjLWUTAx01EA0RbmQDaQ0lEAcsxNgYI6CqZAOUMo1xjINwSptYzVVOCqUSgoys9KTS5RKE4tykwtji8uSSwp1qjQBADbRN1SZAAAAA==" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
 print x=dynamic([23, 46, 23, 87, 4, 8, 3, 75, 2, 56, 13, 75, 32, 16, 29]) 

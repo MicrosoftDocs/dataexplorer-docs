@@ -42,7 +42,7 @@ Request rate limits can be enforced at one of the following levels:
 >
 > * If the policy is undefined (`null`), the default enforcement level applies to both commands and queries.
 > * Rate limits for cluster-scoped commands are always enforced at the cluster level, regardless of the value configured in the policy. For example: management commands that manage cluster-level policies.
-:::moniker-end
+::: moniker-end
 :::moniker range="microsoft-fabric"
 * `Cluster`:
   * Rate limits are enforced by the single eventhouse admin node.
@@ -60,7 +60,7 @@ Request rate limits can be enforced at one of the following levels:
 >
 > * If the policy is undefined (`null`), the default enforcement level applies to both commands and queries.
 > * Rate limits for eventhouse-scoped commands are always enforced at the eventhouse level, regardless of the value configured in the policy. For example: management commands that manage eventhouse-level policies.
-:::moniker-end 
+::: moniker-end 
 
 ## Examples
 
@@ -71,7 +71,7 @@ Request rate limits can be enforced at one of the following levels:
   * one cluster admin node.
   * two database admin nodes (each manages 50% of the cluster's databases).
   * 50% of the tail nodes (5 out of 10) can serve as query heads for weakly consistent queries.
-:::moniker-end
+::: moniker-end
 
 * The `default` workload group is defined with the following policies:
 ```json
@@ -100,14 +100,14 @@ The effective rate limits for the `default` workload group are:
 * The maximum number of concurrent *database-scoped management commands* is <br>`2` (database admin nodes) x `200` (max per admin node) = `400`.
 * The maximum number of concurrent *strongly consistent queries* is <br>`2` (database admin nodes) x `200` (max per admin node) = `400`.
 * The maximum number of concurrent *weakly consistent queries* is <br>`5` (query heads) x `200` (max per query head) = `1000`.
-:::moniker-end
+::: moniker-end
 
 :::moniker range="microsoft-fabric"
 * The maximum number of concurrent *eventhouse-scoped management commands* is `200`.
 * The maximum number of concurrent *database-scoped management commands* is <br>`2` (database admin nodes) x `200` (max per admin node) = `400`.
 * The maximum number of concurrent *strongly consistent queries* is <br>`2` (database admin nodes) x `200` (max per admin node) = `400`.
 * The maximum number of concurrent *weakly consistent queries* is <br>`5` (query heads) x `200` (max per query head) = `1000`.
-:::moniker-end
+::: moniker-end
 
 ## Related content
 

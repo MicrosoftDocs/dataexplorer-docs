@@ -149,11 +149,11 @@ You can use parametrized queries with deep-linking.
 web=0&query=KustoLogs+%7c+where+Timestamp+>+ago({Period})+%7c+count&Period=1h`
 
     Replace &lt;your_cluster&gt; with your Azure Data Explorer cluster name.
-:::moniker-end
+::: moniker-end
 
 :::moniker range="microsoft-fabric"
 1. Provide a parameter for every query parameter in the URI. To copy your URI, see [Copy a KQL database URI](/fabric/real-time-intelligence/access-database-copy-uri#copy-uri).
-:::moniker-end
+::: moniker-end
 
 
 #### Limitations

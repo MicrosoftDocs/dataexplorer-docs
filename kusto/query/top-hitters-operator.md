@@ -52,8 +52,10 @@ The second syntax (with *SummingExpression*) is conceptually equivalent to:
 
 The next example shows how to find top-5 types of storms.
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAwsuyS/KdS1LzSsp5qpRKMkv0M3ILClJLSpWMFXIT1MAy4RUFqQCAFP10SMoAAAA" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
 StormEvents
@@ -74,8 +76,10 @@ StormEvents
 
 The next example shows how to find the States with the most "Thunderstorm Wind" events.
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAwsuyS/KdS1LzSsp5qpRKM9ILUpVAHNDKgtSFWxtFZRCMkrzUlKLikEKFcIz81KUgApL8gt0MzJLSoDiCoYGCvlpCsEliSWpAPMxVM5OAAAA" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
 StormEvents

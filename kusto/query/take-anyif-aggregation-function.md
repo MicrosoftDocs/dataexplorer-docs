@@ -41,8 +41,10 @@ for each of the records randomly selected from each group of the summarize opera
 
 Pick a random EventType from Storm events, where event description has a key phrase.
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/kvc6bc487453a064d3c9de.northeurope/databases/NewDatabase1?query=H4sIAAAAAAAAAwsuyS/KdS1LzSsp5uWqUSguzc1NLMqsSlUoScxOjU/Mq8xM0wBLh1QWpOoogJl+iUVFiSWZZakKGYnFCurFJUX5eekK5Zl5KeqaABMQsZRQAAAA" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
 StormEvents

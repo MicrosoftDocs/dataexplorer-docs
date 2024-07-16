@@ -11,10 +11,10 @@ ms.date: 07/01/2024
 
 :::moniker range="azure-data-explorer"
 The classification process assigns incoming requests to a workload group, based on the characteristics of the requests. Tailor the classification logic by writing a user-defined function, as part of a cluster-level request classification policy.
-:::moniker-end
+::: moniker-end
 :::moniker range="microsoft-fabric"
 The classification process assigns incoming requests to a workload group, based on the characteristics of the requests. Tailor the classification logic by writing a user-defined function, as part of a eventhouse-level request classification policy.
-:::moniker-end
+::: moniker-end
 
 In the absence of an enabled request classification policy, all requests are classified into the `default` workload group.
 
@@ -43,13 +43,13 @@ The user-defined function has the following characteristics and behaviors:
 > The request classification function will be evaluated for each request that runs on the cluster.
 > It is recommended to keep it as lightweight as possible, and not include heavy computations in it.
 > For example, avoid having to evaluate many regular expressions as part of its execution.
-:::moniker-end
+::: moniker-end
 :::moniker range="microsoft-fabric"
 > [!IMPORTANT]
 > The request classification function will be evaluated for each request that runs on the eventhouse.
 > It is recommended to keep it as lightweight as possible, and not include heavy computations in it.
 > For example, avoid having to evaluate many regular expressions as part of its execution.
-:::moniker-end
+::: moniker-end
 
 ### Requirements and limitations
 
@@ -112,7 +112,7 @@ Use the following management commands to manage a cluster's request classificati
 | [`.alter-merge cluster request classification policy`](alter-merge-cluster-policy-request-classification-command.md) | Enables or disables a cluster's request classification policy |
 | [`.delete cluster request classification policy`](delete-cluster-policy-request-classification-command.md) | Deletes the cluster's request classification policy |
 | [`.show cluster request classification policy`](show-cluster-policy-request-classification-command.md) | Shows the cluster's request classification policy |
-:::moniker-end
+::: moniker-end
 :::moniker range="microsoft-fabric"
 Use the following management commands to manage an eventhouse's request classification policy.
 
@@ -122,4 +122,4 @@ Use the following management commands to manage an eventhouse's request classifi
 | [`.alter-merge cluster request classification policy`](alter-merge-cluster-policy-request-classification-command.md) | Enables or disables a eventhouse's request classification policy |
 | [`.delete cluster request classification policy`](delete-cluster-policy-request-classification-command.md) | Deletes the eventhouse's request classification policy |
 | [`.show cluster request classification policy`](show-cluster-policy-request-classification-command.md) | Shows the cluster's request classification policy |
-:::moniker-end
+::: moniker-end

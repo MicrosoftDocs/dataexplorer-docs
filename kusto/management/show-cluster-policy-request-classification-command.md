@@ -11,10 +11,10 @@ ms.date: 07/01/2024
 
 :::moniker range="azure-data-explorer"
 Shows the cluster's request classification policy.
-:::moniker-end
+::: moniker-end
 :::moniker range="microsoft-fabric"
 Shows the eventhouse's request classification policy.
-:::moniker-end
+::: moniker-end
 
 ## Permissions
 
@@ -23,7 +23,7 @@ You must have at least [Cluster AllDatabasesMonitor](../access-control/role-base
 :::moniker range="microsoft-fabric"
 > [!NOTE]
 > The `admin` role inherits `Cluster AllDatabasesAdmin` permissions.
-:::moniker-end
+::: moniker-end
 
 ## Syntax
 
@@ -45,7 +45,7 @@ Following is the schema of the output returned:
 | Policy        | `string` | JSON representation of the policy object.                                                                                                                                                                              |
 | ChildEntities | `string` | Child entities for which this policy is set. For cluster request classification policy, this value is an array of strings, each of which corresponds to the name of system and user databases attached to the cluster. |
 | EntityType    | `string` | Type of entity for which this policy is set. For cluster request classification policy, this value is **Cluster**.                                                                                                     |
-:::moniker-end
+::: moniker-end
 :::moniker range="microsoft-fabric"
 The command returns one row showing the details of the eventhouse request classification policy.
 
@@ -58,7 +58,7 @@ Following is the schema of the output returned:
 | Policy        | `string` | JSON representation of the policy object.                                                                                                                                                                              |
 | ChildEntities | `string` | Child entities for which this policy is set. For eventhouse request classification policy, this value is an array of strings, each of which corresponds to the name of system and user databases attached to the eventhouse. |
 | EntityType    | `string` | Type of entity for which this policy is set. For eventhouse request classification policy, this value is **Cluster**.                                                                                                     |
-:::moniker-end
+::: moniker-end
 
 ## Examples
 
@@ -66,12 +66,12 @@ Following is the schema of the output returned:
 ### Display the cluster's request classification policy
 
 Display request classification policy for the cluster:
-:::moniker-end
+::: moniker-end
 :::moniker range="microsoft-fabric"
 ### Display the eventhouse's request classification policy
 
 Display request classification policy for the eventhouse:
-:::moniker-end
+::: moniker-end
 
 ```kusto
 .show cluster policy request_classification

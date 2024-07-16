@@ -48,7 +48,7 @@ The following authentication methods are supported:
 * [Impersonation](#impersonation)
 :::moniker range="azure-data-explorer"
 * [Managed identity](#managed-identity)
-:::moniker-end
+::: moniker-end
 * [Shared Access (SAS) key](#shared-access-sas-token)
 * [Microsoft Entra access token](#azure-ad-access-token)
 * [Storage account access key](#storage-account-access-key)

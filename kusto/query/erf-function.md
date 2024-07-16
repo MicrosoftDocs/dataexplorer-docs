@@ -29,8 +29,10 @@ Error function of x.
 
 ## Example
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/https%3a%2f%2fhelp.kusto.windows.net/databases/Samples?query=H4sIAAAAAAAEACtKzEtPVahQSCvKz1XQNVYoyVcwViguSS1QMOTlqlFIrShJzUtRSC1Ki69QsAXRGhWavFwAxUmYIzYAAAA%3d" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
 range x from -3 to 3 step 1

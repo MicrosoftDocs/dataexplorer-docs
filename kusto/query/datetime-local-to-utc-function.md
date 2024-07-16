@@ -30,8 +30,10 @@ A UTC [datetime](scalar-data-types/datetime.md) that corresponds the local [date
 
 ## Example
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA42PTQsCIRCG7/6KubmCseJR6BDRPYhOEWI6bYK7hjsLEf34jMBrMS9zmI935gmOalwSdil7l2wgA8ERUhxRAj0NzFTiNAh2avVOK61WSleBVkZpo5WQwI+Hfu98vEbPJTD4Ob8ZsUTv+u2t5iH/t7RbSr5jPVTizM/sBfggnAIs5OvzsG4G9gtE2dZWo/swiTePz2vZ9QAAAA==" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
 datatable(local_dt: datetime, tz: string)

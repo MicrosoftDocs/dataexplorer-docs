@@ -15,12 +15,12 @@ Workload groups allow you to group together sets of management commands and quer
 Together with [workload group policies](#workload-group-policies), workload groups serve as a resource governance system for incoming requests to the cluster. When a request is initiated, it gets classified into a workload group. The classification is based on a user-defined function defined as part of a [request classification policy](request-classification-policy.md). The request follows the policies assigned to the designated workload group throughout its execution.
 
 Workload groups are defined at the cluster level, and up to 10 custom groups can be defined in addition to the three [built-in workload groups](#built-in-workload-groups).
-:::moniker-end
+::: moniker-end
  :::moniker range="microsoft-fabric"
 Together with [workload group policies](#workload-group-policies), workload groups serve as a resource governance system for incoming requests to the eventhouse. When a request is initiated, it gets classified into a workload group. The classification is based on a user-defined function defined as part of a [request classification policy](request-classification-policy.md). The request follows the policies assigned to the designated workload group throughout its execution.
 
 Workload groups are defined at the eventhouse level, and up to 10 custom groups can be defined in addition to the three [built-in workload groups](#built-in-workload-groups).
-:::moniker-end
+::: moniker-end
 > [!NOTE]
 > Requests that aren't queries or management commands, such as streaming ingestion requests, aren't included in the scope of workload groups.
 
@@ -33,12 +33,12 @@ The following list covers some common use cases for creating custom workload gro
 * **Control the rate of requests:** Create a workload group with a [request rate limit policy](request-rate-limit-policy.md) to manage the behavior of concurrent requests from a specific principal or application. This policy can restrict the number of concurrent requests, request count within a time period, and total CPU seconds per time period. While your cluster comes with default limits, such as [query limits](../concepts/query-limits.md), you have the flexibility to adjust these limits based on your requirements.
 
 * **Create shared environments:** Imagine a scenario where you have 3 different customer teams running queries and commands on a shared cluster, possibly even accessing shared databases. If you're billing these teams based on their resource usage, you can create three distinct workload groups, each with unique limits. These workload groups would allow you to effectively manage and monitor the resource usage of each customer team.
-:::moniker-end
+::: moniker-end
 :::moniker range="microsoft-fabric"
 * **Control the rate of requests:** Create a workload group with a [request rate limit policy](request-rate-limit-policy.md) to manage the behavior of concurrent requests from a specific principal or application. This policy can restrict the number of concurrent requests, request count within a time period, and total CPU seconds per time period. While your eventhouse comes with default limits, such as [query limits](../concepts/query-limits.md), you have the flexibility to adjust these limits based on your requirements.
 
 * **Create shared environments:** Imagine a scenario where you have 3 different customer teams running queries and commands on a shared eventhouse, possibly even accessing shared databases. If you're billing these teams based on their resource usage, you can create three distinct workload groups, each with unique limits. These workload groups would allow you to effectively manage and monitor the resource usage of each customer team.
-:::moniker-end
+::: moniker-end
 
 * **Monitor resources utilization:** Workload groups can help you create periodic reports on the resource consumption of a given principal or application. For instance, if these principals represent different clients, such reports can facilitate accurate billing. For more information, see [Monitor requests by workload group](#monitor-requests-by-workload-group).
 
@@ -88,11 +88,11 @@ To monitor what gets classified to the `default` workload group, see [Monitor re
 :::moniker range="azure-data-explorer"
 > [!NOTE]
 > Some clusters may have a maximum concurrent query limit defined through the deprecated *Query throttling policy*. In such clusters, this limit was automatically applied to the `default` workload group's [request rate limits policies](request-rate-limit-policy.md). While the old limit only affected queries, the new one applies to all requests, including queries and management commands.
-:::moniker-end
+::: moniker-end
 :::moniker range="microsoft-fabric"
 > [!NOTE]
 > Some eventhouses may have a maximum concurrent query limit defined through the deprecated *Query throttling policy*. In such eventhouses, this limit was automatically applied to the `default` workload group's [request rate limits policies](request-rate-limit-policy.md). While the old limit only affected queries, the new one applies to all requests, including queries and management commands.
-:::moniker-end
+::: moniker-end
 
 ### Internal workload group
 

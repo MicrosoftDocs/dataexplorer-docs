@@ -47,8 +47,10 @@ Returns a table with the estimates for *expr* of the specified percentiles in th
 
 The following example shows the value of `DamageProperty` being larger than 95% of the sample set and smaller than 5% of the sample set.
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAwsuyS/KdS1LzSspVqhRKC7NzU0syqxKVShILUoGCmbmpGq4JOYmpqcGFOUDxUoqdRQsTTUVkioVgksSS1IBgwSa1j8AAAA=" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
 StormEvents | summarize percentile(DamageProperty, 95) by State
@@ -75,8 +77,10 @@ The results table shown includes only the first 10 rows.
 
 The following example shows the value of `DamageProperty` simultaneously calculated using 5, 50 (median) and 95.
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAwsuyS/KdS1LzSspVqhRKC7NzU0syqxKVShILUoGCmbmpBZruCTmJqanBhTlAwVLKnUUTIHIQEfB0lRTIalSIbgksSQVAL6yeg1HAAAA" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
 StormEvents | summarize percentiles(DamageProperty, 5, 50, 95) by State
@@ -125,8 +129,10 @@ Returns an estimate for *expr* of the specified percentiles in the group as a si
 
 Multiple percentiles can be obtained as an array in a single dynamic column, instead of in multiple columns as with [percentiles()](percentiles-aggregation-function.md).
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/SampleIoTData?query=H4sIAAAAAAAAAwspSswrTssvyk1NCU7NK84vKnZJLEnk5apRKC7NzU0syqxKVShILUpOzSvJzEktjk8sKkqs1AhLzClN1VEw1VEwAmJTAx0FcyBtaaqpo5BYlg6R1lRIqlSAmOmXmJsKANY0tLFpAAAA" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
 TransformedSensorsData
@@ -155,8 +161,10 @@ The results table displays only the first 10 rows.
 
 Percentiles for `percentiles_array` can be specified in a dynamic array of integer or floating-point numbers. The array must be constant but doesn't have to be literal.
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/SampleIoTData?query=H4sIAAAAAAAAAwspSswrTssvyk1NCU7NK84vKnZJLEnkqlEoLs3NTSzKrEpVKEgtSk7NK8nMSS2OTywqSqzUCEvMKU3VUUipzEvMzUzWiDbVUTACYlMDHQVzIG1pGqupqaOQWJYOUampkFSpADHdLzE3FQAgg+RhcwAAAA==" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
 TransformedSensorsData

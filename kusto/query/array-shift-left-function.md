@@ -36,7 +36,7 @@ Shifting to the left by two positions:
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAysoyswrUUgsKrJNqcxLzM1M1og21DHSMdYx0TGN1eTlqlFIrShJzUsBKYkvzshMK7EFshIrIez4nNS0Eg2ggI6CkSYADEKYSUsAAAA=" target="_blank">Run the query</a>
-:::moniker-end
+::: moniker-end
 
 ```kusto
 print arr=dynamic([1,2,3,4,5])
@@ -54,7 +54,7 @@ Shifting to the left by two positions and adding default value:
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAysoyswrUUgsKrJNqcxLzM1M1og21DHSMdYx0TGN1eTlqlFIrShJzUsBKYkvzshMK7EFshIrIez4nNS0Eg2ggI6CkY6CrqEmAA+qvHJPAAAA" target="_blank">Run the query</a>
-:::moniker-end
+::: moniker-end
 
 ```kusto
 print arr=dynamic([1,2,3,4,5])
@@ -72,7 +72,7 @@ Shifting to the right by two positions by using negative *shift_count* value:
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAysoyswrUUgsKrJNqcxLzM1M1og21DHSMdYx0TGN1eTlqlFIrShJzUsBKYkvzshMK7EFshIrIez4nNS0Eg2ggI6CrhEQG2oCAIeuighQAAAA" target="_blank">Run the query</a>
-:::moniker-end
+::: moniker-end
 
 ```kusto
 print arr=dynamic([1,2,3,4,5])

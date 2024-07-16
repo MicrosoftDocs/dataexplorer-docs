@@ -50,8 +50,10 @@ A copy of the input tabular result set, such that:
 
 ## Example
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAwsuyS/KdS1LzSsp5qpRKCjKz0pNLlFwzUsJycxN1VEILkksKgExgZKpFSWpeSkKLqVFiSWZ+XkKtjBlCroIdQCqSrMYUAAAAA==" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
 StormEvents
@@ -78,4 +80,4 @@ The following table shows only the first 10 results. To see the full output, run
 ## Related content
 
 * Use [series_stats](series-stats-function.md) to return multiple columns
-:::moniker-end
+::: moniker-end

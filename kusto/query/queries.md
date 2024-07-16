@@ -17,8 +17,10 @@ The language syntax is that of a data flow, where "data" means "tabular data" (d
 
 For example:
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAwsuyS/KdS1LzSspVuDlqlEoz0gtSlUILkksSVWwtVVQd/PxD/J0cVRXSMxLAQkXlYRk5qYq2CmkAFWUAJkaRgYGBroGhkCkCTIgOb80rwQATWE/B1YAAAA=" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
 StormEvents 

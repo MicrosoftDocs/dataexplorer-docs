@@ -21,7 +21,7 @@ This topic describes the following database management commands:
 |[`.show database schema`](show-schema-database.md) |Returns a flat list of the structure of the selected databases with all their tables and columns in a single table or JSON object |
 |[`.show databases entities`](show-databases-entities.md) |Returns a list of databases' entities (for example: tables, materialized views, etc.) |
 |[`.execute database script`](execute-database-script.md) | Executes batch of management commands in scope of a single database |
-:::moniker-end
+::: moniker-end
 :::moniker range="microsoft-fabric"
 |Command |Description |
 |--------|------------|
@@ -32,4 +32,4 @@ This topic describes the following database management commands:
 |[`.show database schema`](show-schema-database.md) |Returns a flat list of the structure of the selected databases with all their tables and columns in a single table or JSON object |
 |[`.show databases entities`](show-databases-entities.md) |Returns a list of databases' entities (for example: tables, materialized views, etc.) |
 |[`.execute database script`](execute-database-script.md) | Executes batch of management commands in scope of a single database |
-:::moniker-end
+::: moniker-end

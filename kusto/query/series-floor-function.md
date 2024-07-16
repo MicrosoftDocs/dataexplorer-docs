@@ -29,8 +29,10 @@ Dynamic array of the calculated floor function. Any non-numeric element yields a
 
 ## Example
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAysoyswrUShWsFVIqcxLzM1M1ojWNdQz1THUMdIzjdXkqlFIrShJzUtRKI5Py8nPLwIqLE4tykyFcjWKNQFIrQOdQgAAAA==" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
 print s = dynamic([-1.5,1,2.5])

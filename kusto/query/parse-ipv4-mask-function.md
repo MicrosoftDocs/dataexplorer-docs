@@ -31,8 +31,10 @@ If conversion isn't successful, the result is `null`.
 
 ## Example
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAysoyswrUShILCpOjc8sKDOJz00sztZQMjQy1zMAQkMlHQUjE00AwjOPByYAAAA=" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
 print parse_ipv4_mask("127.0.0.1", 24)

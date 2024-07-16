@@ -32,8 +32,10 @@ Returns the angle in radians between the positive x-axis and the ray from the or
 
 The following example returns the angle measurements in radians.
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/?query=H4sIAAAAAAAAAysoyswrUUgsScwzijdQsIWwNAx1DDUV9PUVAjIV9BVMFIoSUzIT84oVNExMFVJS04tSU4s1uWoUUitKUvNSoJoN4ZoNdHThuuE6DS0McGo1gmvVNdQxAGvVhVhthDBA1xJhAAA4Vl3utQAAAA==" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
 print atan2_0 = atan2(1,1) // Pi / 4 radians (45 degrees)

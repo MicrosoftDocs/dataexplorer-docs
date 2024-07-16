@@ -106,6 +106,7 @@ StormEvents
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAyWMsQqDMBiE90Lf4ciUgEsfwCEFoSA4GIeuUX8wYKIkvxVLH76x3e6+4zvDS/TViwKn6+WDfaJIMGyZ4AKk6KqnNqKAaKp7q02tz1zrxmSqYMOIn9wdK6EsIR7WzeJ8Spv3Nro3YVi2wFKhP/7HBXoXZI6RO+dzvY3qNCKFkSI4s2HKI3bHE+SR1tlxudpAc1JfbEl6kbAAAAA=" target="_blank">Run the query</a>
 
+
 ```kusto
 StormEvents
 | where State in ("TEXAS", "NEBRASKA", "KANSAS") and EventType == "Hail"

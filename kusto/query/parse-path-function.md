@@ -44,8 +44,10 @@ An object of type `dynamic` that included the path components as listed above.
 
 ## Example
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA22NQQrDIBBF94J3EFcJFN0LhUKOUUMwOE0Ek4ozASk9fOMiLYHOrOY95n/vaN8xQpMMUg7r1ArO7pyJfW6yM5ZgSfYRIigqJC+H+YtlBUbrzujq9eENPhdQUOD3by3OLoO3G0LGc4uaXt9EvWHWMYznQMlZz9lbQCFYvUiO5iG5TCiu+5ERhoqa1H4A8WAkd+AAAAA=" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
 datatable(p:string) 
