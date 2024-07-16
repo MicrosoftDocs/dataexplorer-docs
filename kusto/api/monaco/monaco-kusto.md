@@ -163,8 +163,7 @@ export function setSchema(editor) {
 
 You can get your database schema using one of the following methods:
 
-:::moniker range="azure-data-explorer"
-### [From your cluster](#tab/show)
+### [From your query environment](#tab/show)
 
 1. In your query environment, select the database for which you want to create a schema.
 1. In the query window, run the following query:
@@ -174,8 +173,7 @@ You can get your database schema using one of the following methods:
     ```
 
 1. Copy the result of the query and paste it as the **schema** constant. The result of the query is a list of databases (see interface `Result` in the *schema.ts* file).
-1. Use the `setSchemaFromShowSchema()` method to set the schema in the editor. You  must also specify the cluster URI and the name of the database to use in the editor.
-::: moniker-end
+1. Use the `setSchemaFromShowSchema()` method to set the schema in the editor. You must also specify the database URI and the name of the database to use in the editor.
 
 ### [Create manually](#tab/manual)
 
