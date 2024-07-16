@@ -74,7 +74,6 @@ To use a query-defined function, invoke it after the embedded function definitio
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help
 /databases/Samples?query=H4sIAAAAAAAAA32Qza7CIBBG932KbwnammKuG02fhdB2tEQoDWBS7s+7S9V4bzd3Fiy+OXMyjKGIQF5TkH1rJM2TDNa5OOjxIs8GDViST+DYp1FZ3ZVQZhrUsXe31lBT7w4lWop/A158Fcj1Mmvt35YSk+quUnmvEnuIXr4NWySV4HyFiHdbbBeAV/sSonpknBc/p8Kr8UKYcfbOQiA6HGqESBNE8Q2aI409Uv7JjC0y3DO+EXVuhZu1yuvPZbiBVVeSRofI5rxBWiWJ/5rWZ5IL+M8BWSpR7/bL88GRLT47yMPokbpB+XgHMNFBGoEBAAA=" target="_blank">Run the query</a>
-:::moniker-end
 ::: moniker-end
 
 ```kusto

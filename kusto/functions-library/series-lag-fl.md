@@ -78,7 +78,6 @@ To use a query-defined function, invoke it after the embedded function definitio
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA1WRzW7DIBCE736KPRrVVetrIp6hh0a9WsQsCS0/Fqwlu03fvWuw0hZxYZhPMwsOCTImi3lw6jIYBxLaKhz0GpS3YwfRmIx0sIFE89UAL8dY8bOdYh6VU6lNKlwQFjApeuhZ38GHHjLhBH1BbzCl+I4jwSqtMe0CUt6NHfB+Frsxz96rZD+xZllHmDjQqw8cnM3UrkIci9fYtLfuqrcDo1xG0Xwfm62sJgb7az2Q9TjkqzVF1FU825DvIkUetv31PWniJI0+DiW9ZvXNrZR5rEcIs5djnJkUEAOcGH8l5ac6Plc4r/CS3zAxhwth0BtSE1DLf//Q8k33p5RgJjHBL7DVGq8q0Q9sViILvQEAAA==" target="_blank">Run the query</a>
-:::moniker-end
 ::: moniker-end
 
 ```kusto

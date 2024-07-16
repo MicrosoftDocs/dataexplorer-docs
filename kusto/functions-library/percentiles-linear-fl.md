@@ -99,7 +99,6 @@ To use a query-defined function, invoke it after the embedded function definitio
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA21T246bMBB95yvmDTt1tkml1WpT8bB93j+IIuTAhLgxNjJOFtrtv3cMJpcV8DAwPnPmzMUaPTToCjReaWxzrQxKlx90xvxeb9iCC7hInRdWb1rvlKkENIXPpXObsjeyVoUAWVXuDpGlKU/+JkAPcQz2E7DzaErIiayFDAh9rk2uDtip1rcs5hCwelrxLyEn7GcipqQC0rf393QKsq5EB/t+DJMtyRtz0idETHuua+nUHxyPslqekCpvPRv++RT+qMOQCCpb9rlGU/ljBD+CqDdZ7E88qC9L2TS6D0fgLfi+QXtgDqXmYA2wATc+kUSZErtA8329on4smFmu+RV2zaXtRz5CvdXWVOygrXVscAlYcxrdUVXHR0yBimZcjSg+w6qMR0eVUUBpz3uNY53bG9WOL7+cXZXsZghDO2b47mK+jWqWVxdfTCru6G5Tiw2+mxt5uLhmevAHD5+m1Dj7Gwu/lB+yB5P8S34mpfT0Bl3dJnRIAG01xlXmsE2ew4alInmN9iXa4P8V/+/tehU/dskndfNiTzh/xVjapQLiLWJbCvtBnM9kX8jS6HdUUxrU0HbftDsMrkFlFrZUQJcNLf0PuYtI1MwDAAA=" target="_blank">Run the query</a>
-:::moniker-end
 ::: moniker-end
 
 ```kusto

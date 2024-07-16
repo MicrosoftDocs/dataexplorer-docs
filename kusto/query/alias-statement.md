@@ -91,7 +91,6 @@ Create an alias name that contains spaces using the bracket syntax.
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA0vMyUwsVkhJLElMSixOVYhWCk7MLchJLVZwgQk5glQoxSrYKiTnlBaXpBZpKGWUlBQUW+nrZ6TmFOhlAwXz9coz81Lyy4v18lJLlDT1YOZpwIxT0rTm5cIQRbdEUy+4JL8o17UsNa+kWKFGITm/NK8EACbMiWaiAAAA" target="_blank">Run the query</a>
-:::moniker-end
 ::: moniker-end
 
 ```kusto

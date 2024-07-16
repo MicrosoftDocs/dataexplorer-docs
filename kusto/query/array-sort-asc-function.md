@@ -83,7 +83,6 @@ print result = SortedNames
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA5WR0WoDIRBF3/crJC9ZYQO7tiU00C8JQSYqiY2uy4yhpPTjq23sFmIK1ZdxOPdy5WqI6e6daVXwHka9oYh2PHTs+pbRerPREE0eOnYmg9IWjDfbhqWzVEcf9LJLY0Fb0Q/Pq369Gp543i+yclh037yjL7jG96LCa4tXwQ0varw/FcVtnscKj/5uHrGu8NObvpun9t+//B9mXvzTP/O75oPROZWF9t2wjFIEPxF7YR5ORjpLsf3dJv8pt8pwtr+UmpP1hOHVqFg2s1baUaojhjG4cLAKnAyoDSZLQISLpIBRAql2jjSL+XbYfQJov9dSfAIAAA==" target="_blank">Run the query</a>
-:::moniker-end
 ::: moniker-end
 
 ```kusto
