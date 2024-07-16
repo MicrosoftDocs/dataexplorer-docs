@@ -26,7 +26,7 @@ The alias must be defined according to the following syntax, where *Eventhouse* 
 
 ## Syntax
 
-`alias` database *DatabaseAliasName* `=` Eventhouse("https://*Eventhousename*.kusto.windows.net").database("*DatabaseName*")
+`alias` database *DatabaseAliasName* `=` cluster("<serviceURL>").database("<DatabaseName>")
 :::moniker-end
 
 [!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
@@ -38,8 +38,15 @@ The alias must be defined according to the following syntax, where *Eventhouse* 
 |*DatabaseAliasName*| `string` | :heavy_check_mark:|An existing name or new database alias name. You can escape the name with brackets. For example, ["Name with spaces"]. |
 |*DatabaseName*| `string` | :heavy_check_mark:|The name of the database to give an alias.|
 
+:::moniker range="azure-data-explorer"
 > [!NOTE]
-> The mapped database-uri and the mapped database-name must appear inside double-quotes(") or single-quotes(').
+> The mapped cluster-uri and the mapped database-name must appear inside double-quotes(") or single-quotes(').
+:::moniker-end
+
+:::moniker range="microsoft-fabric"
+> [!NOTE]
+> The mapped Eventhouse-uri and the mapped database-name must appear inside double-quotes(") or single-quotes(').
+:::moniker-end
 
 ## Examples
 

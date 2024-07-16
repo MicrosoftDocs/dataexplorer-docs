@@ -84,8 +84,8 @@ There are 2 ways to query a materialized view:
   * The following examples all **include** materialized views by the name `ViewName`:
    <!-- csl -->
     ```kusto
-    eventhouse('eventhouse1').database('db').ViewName
-    eventhouse('eventhouse1').database('*').ViewName
+     cluster("<serviceURL>").database('db').ViewName
+     cluster("<serviceURL>").database('*').ViewName
     database('*').ViewName
     database('DB*').ViewName
     database('*').materialized_view('ViewName')
@@ -95,7 +95,7 @@ There are 2 ways to query a materialized view:
   * The following examples do **not** include records from materialized views:
    <!-- csl -->
     ```kusto
-    eventhouse('eventhouse1').database('db').*
+    cluster("<serviceURL>").database('db').*
     database('*').View*
     search in (*)
     search * 
