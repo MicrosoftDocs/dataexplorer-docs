@@ -10,25 +10,12 @@ monikerRange: "azure-data-explorer || microsoft-fabric"
 
 > [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)]
 
-:::moniker range="azure-data-explorer"
 Kusto uses a role-based access control (RBAC) model in which [principals](../management/reference-security-principals.md) get access to resources based on their assigned roles. Roles are defined for a specific cluster, database, table, external table, materialized view, or function. When defined for a cluster, the role applies to all databases in the cluster. When defined for a database, the role applies to all entities in the database.
 
 Azure Resource Manager (ARM) roles, such as subscription owner or cluster owner, grant access permissions for resource administration. For data administration, you need the roles described in this document.
 
 > [!NOTE]
 > To delete a database, you need at least **Contributor** ARM permissions on the cluster. To assign ARM permissions, see [Assign Azure roles using the Azure portal](/azure/role-based-access-control/role-assignments-portal).
-
-::: moniker-end
-
-:::moniker range="microsoft-fabric"
-Kusto uses a role-based access control (RBAC) model in which [principals](../management/reference-security-principals.md) get access to resources based on their assigned roles. Roles are defined for a specific Eventhouse, database, table, external table, materialized view, or function. When defined for an Eventhouse, the role applies to all databases in the Eventhouse. When defined for a database, the role applies to all entities in the database.
-
-Azure Resource Manager (ARM) roles, such as subscription owner or Eventhouse owner, grant access permissions for resource administration. For data administration, you need the roles described in this document.
-
-> [!NOTE]
-> To delete a database, you need at least **Contributor** ARM permissions. To assign ARM permissions, see [Assign Azure roles using the Azure portal](/azure/role-based-access-control/role-assignments-portal).
-
-::: moniker-end
 
 ## Roles and permissions
 
