@@ -133,11 +133,11 @@ In order of importance:
 Entities such as tables and materialized views are referenced by name.
 
 :::moniker range="microsoft-fabric"
-For example, the table `T` can be referenced as simply `T` (the *unqualified* name), or by using a database qualifier (e.g. `database("DB").T` when the table is in a database called `DB`), or by using a fully-qualified name (e.g. `cluster("EventhouseURI").database("DB").T`).
+For example, the table `T` can be referenced as simply `T` (the *unqualified* name), or by using a database qualifier (e.g. `database("DB").T` when the table is in a database called `DB`), or by using a fully-qualified name (e.g. `cluster("<serviceURL>").database("DB").T`).
 :::moniker-end
 
 :::moniker range="azure-data-explorer"
-For example, the table `T` can be referenced as simply `T` (the *unqualified* name), or by using a database qualifier (e.g. `database("DB").T` when the table is in a database called `DB`), or by using a fully-qualified name (e.g. `cluster("<serviceURL>").database("DB").T`).
+For example, the table `T` can be referenced as simply `T` (the *unqualified* name), or by using a database qualifier (e.g. `database("DB").T` when the table is in a database called `DB`), or by using a fully-qualified name (e.g. `cluster("X.Y.kusto.windows.net").database("DB").T`).
 :::moniker-end
 
 It is a best practice to avoid using name qualifications when they are redundant, for the following reasons:
