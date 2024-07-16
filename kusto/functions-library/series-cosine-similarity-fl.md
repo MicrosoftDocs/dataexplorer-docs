@@ -82,7 +82,6 @@ series_cosine_similarity_fl(vec1:dynamic, vec2:dynamic, vec1_size:real=double(nu
 To use a query-defined function, invoke it after the embedded function definition.
 
 :::moniker range="azure-data-explorer"
-:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA42R0WoDIRBF3/0KH8clkGihD1n8FrHqhqHGteoGtqX/nkmyCVtKQ30b7vXcO0wMjddQMFTjxoopmIpHjLZgm80QNZyCk3s/J3tEt+E0qR+TJP9n2Jdgo/bj9BYDpClGcbP+IQr2xTi9SOE+c31v4Mdmchn95No19wYR/cN8kpHcOAyA9UKCRwMKrB+lwTOSFGLVeY1Vv7HqH1i1FFxvu2B93gK17Qgt2HfPLjFV6mzdu7Gl2Bl2Gy7FIqi1cA1U92Si9ywXTI3bdIhBW7oTPDkZVNq20rctqC4jCNG9vO7OCmRtfegBAAA=" target="_blank">Run the query</a>
 :::moniker-end

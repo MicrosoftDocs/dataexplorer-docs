@@ -70,7 +70,6 @@ series_exp_smoothing_fl(y_series:dynamic, alpha:double=0.5)
 To use a query-defined function, invoke it after the embedded function definition.
 
 :::moniker range="azure-data-explorer"
-:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA3WPzWrDMBCE73qKuRQscIMFzSXFzyK29iYWkWSzUkDqz7tXaUNDDt3j7H6zM54zEovjZLlsNoV1zYuLJ3v0GNFV+7s8zDVScFMP8ttCh3m9vHkeh91eqw+FNjcT5+QP6rHRdLYkQrX74fSDZG5uz0Zr9fWqhOKJUXCUNcAgr9gPSJk3GPUJLpnjjNpiFTzBDE1LlxBI3PuVGhHozNa7lLvSHtUHpeq7xb2ovR79U7+rPYbdi0YDpWEs8C7ytJDkb6qtG1o2AQAA" target="_blank">Run the query</a>
 :::moniker-end

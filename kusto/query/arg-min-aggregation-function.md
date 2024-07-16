@@ -41,7 +41,6 @@ Returns a row in the group that minimizes *ExprToMinimize*, and the value of *Ex
 Find the minimum latitude of a storm event in each state.
 
 :::moniker range="azure-data-explorer"
-:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAwsuyS/KdS1LzSspVuDlqlEoLs3NTSzKrEpVSCxKj8/NzNNwSk3PzPNJLNFRgLDykxNLMvPzNBWSKhWCSxJLUgG8tM4mQwAAAA==" target="_blank">Run the query</a>
 :::moniker-end
@@ -71,7 +70,6 @@ The results table shown includes only the first 10 rows.
 Find the first time an event with a direct death happened in each state showing all of the columns.
 
 :::moniker range="azure-data-explorer"
-:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAwsuyS/KdS1LzSsp5uWqUSjPSC1KVXBJTSzJKHbJLEpNLlGwUzAAyRSX5uYmFmVWpSokFqXH52bmaQSXJBaVhGTmpuooaGkqJFUqAAVKUgHnoTY6UQAAAA==" target="_blank">Run the query</a>
 :::moniker-end
@@ -99,7 +97,6 @@ The results table shown includes only the first 10 rows and first 3 columns.
 
 The following example demonstrates null handling.
 
-:::moniker range="azure-data-explorer"
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA31QPQvCQAzdC/0PoVMrt+jYzQp2FQdBRORKQzlIcyW9UhR/vKlYFEHzhny9F5LUNigqwnQrgws59EEcNwY2nry80wNK7zzn4DhkcIojUEvWXUeYGEj2WKtbmu96KYisgapSHoiymVFYVkyUIxL58T/n55gdWpkIhfiRPzeYG7NypY1zHN2hH9rWirshWGkureP0dZqBRQbVFZ5/eADFBqWOFwEAAA==" target="_blank">Run the query</a>
