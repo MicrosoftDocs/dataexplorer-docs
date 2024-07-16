@@ -26,7 +26,7 @@ The alias must be defined according to the following syntax, where *Eventhouse* 
 
 ## Syntax
 
-`alias` database *DatabaseAliasName* `=` cluster("<serviceURL>").database("<DatabaseName>")
+`alias` database *DatabaseAliasName* `=` cluster("*serviceURL*").database("*DatabaseName*")
 :::moniker-end
 
 [!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
