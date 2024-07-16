@@ -71,17 +71,9 @@ Request rate limits can be enforced at one of the following levels:
   * one cluster admin node.
   * two database admin nodes (each manages 50% of the cluster's databases).
   * 50% of the tail nodes (5 out of 10) can serve as query heads for weakly consistent queries.
-* The `default` workload group is defined with the following policies:
 :::moniker-end
 
-:::moniker range="microsoft-fabric"
-* The eventhouse has 10 nodes as follows:
-  * one eventhouse admin node.
-  * two database admin nodes (each manages 50% of the eventhouse's databases).
-  * 50% of the tail nodes (5 out of 10) can serve as query heads for weakly consistent queries.
 * The `default` workload group is defined with the following policies:
-:::moniker-end
-
 ```json
     "RequestRateLimitPolicies": [
         {
