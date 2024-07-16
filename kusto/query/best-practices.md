@@ -146,7 +146,7 @@ It is a best practice to avoid using name qualifications when they are redundant
 
 1. Referencing database-in-scope entities is always at least as fast, and in some cases much faster, then entities that belong to other databases.
 :::moniker range="azure-data-explorer"
-   (This is especially truewhen those databases are in a different cluster.)
+   (This is especially true when those databases are in a different cluster.)
 :::moniker-end
 Avoiding qualified names helps the reader to do the right thing.
 
