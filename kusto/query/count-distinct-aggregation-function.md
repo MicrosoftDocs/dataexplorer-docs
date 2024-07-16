@@ -22,7 +22,12 @@ To count only records for which a predicate returns `true`, use the [count_disti
 > [!NOTE]
 >
 > * This function is limited to 100M unique values. An attempt to apply the function on an expression returning too many values will produce a runtime error (HRESULT: 0x80DA0012).
+:::moniker range="azure-data-explorer"
 > * Function performance can be degraded when operating on multiple data sources from different clusters.
+:::moniker-end
+:::moniker range="microsoft-fabric"
+> * Function performance can be degraded when operating on multiple data sources from different Eventhouses.
+:::moniker-end
 
 ## Syntax
 
@@ -45,6 +50,8 @@ Long integer value indicating the number of unique values of *expr* per summary 
 This example shows how many types of storm events happened in each state.
 
 :::moniker range="azure-data-explorer"
+> * Function performance can be degraded when operating on multiple data sources from different clusters.
+:::moniker-end
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAwsuyS/KdS1LzSsp5qpRKC7NzU0syqxKVQjNyywsTYVI2Cbnl+aVxKdkFpdk5iWXaIBFQyoLUjUVkioVgksSS1KBekvyCxRMQQLIWgE/wdUFXwAAAA==" target="_blank">Run the query</a>
 :::moniker-end

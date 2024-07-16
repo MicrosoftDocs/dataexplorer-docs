@@ -44,11 +44,16 @@ The result of diffpatterns_text returns the following columns:
 
 ## Example
 
+:::moniker range="azure-data-explorer"
 The following example uses data from the StormEvents table in the help cluster. To access this data, sign in to [https://dataexplorer.azure.com/clusters/help/databases/Samples](https://dataexplorer.azure.com/clusters/help/databases/Samples). In the left menu, browse to **help** > **Samples** > **Tables** > **Storm_Events**.
 
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA43OvQrCQBAE4F7wHdarEgiIdoKxiWltErCUhdt4B/cTNptowIc3sbBIIU45Ax9TSWRfDhSkgznr1QsehpjgU16QGcUOBJsclAIMGnwMYmIzEnJSCbLU1lMKJ9j9mo9wWNj12BLkE3vm2N+NKIi8WMqnMHmCIjq9vdpJL4x1Ts0SDeh6FAJtm6ZFEeLQ3YSekpSt7aKm7/nsTzaDffoGjOv6LBEBAAA=" target="_blank">Run the query</a>
+:::moniker-end
+
+:::moniker range="microsoft-fabric"
+The examples in this tutorial use the `StormEvents` table, which is publicly available in the **Weather analytics** [sample data](/fabric/real-time-intelligence/sample-gallery).
 :::moniker-end
 
 ```kusto

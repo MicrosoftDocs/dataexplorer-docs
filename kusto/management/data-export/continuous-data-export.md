@@ -11,9 +11,7 @@ ms.date: 06/25/2023
 
 This article describes continuous export of data from Kusto to an [external table](../../query/schema-entities/external-tables.md) with a periodically run query. The results are stored in the external table, which defines the destination, such as Azure Blob Storage, and the schema of the exported data. This process guarantees that all records are exported "exactly once", with some [exceptions](#exactly-once-export).
 
-:::moniker range="azure-data-explorer"
-By default, continuous export runs in a distributed mode, where all nodes export concurrently, so the number of artifacts depends on the number of nodes in the cluster. Continuous export isn't designed for low-latency streaming data out of your cluster.
-:::moniker-end
+By default, continuous export runs in a distributed mode, where all nodes export concurrently, so the number of artifacts depends on the number of nodes. Continuous export isn't designed for low-latency streaming data.
 
 To enable continuous data export, [create an external table](../external-tables-azure-storage.md) and then [create a continuous export definition](create-alter-continuous.md) pointing to the external table.
 
@@ -40,8 +38,8 @@ All continuous export commands require at least [Database Admin](../../access-co
   * The number of files exported in each continuous export iteration depends on how the external table is partitioned. For more information, see [export to external table command](export-data-to-an-external-table.md#number-of-files). Each continuous export iteration always writes to new files, and never appends to existing ones. As a result, the number of exported files also depends on the frequency in which the continuous export runs. The frequency parameter is `intervalBetweenRuns`.
 
 * **External table storage accounts**:
+  
   * For best performance, the database and the storage account(s) should be colocated in the same Azure region.
- 
   * Continuous export works in a distributed manner, such that all nodes are exporting concurrently. On large databases, and if the exported data volume is large, this might lead to storage throttling. It's recommended to configure multiple storage accounts for the external table. See [storage failures during export commands](export-data-to-storage.md#failures-during-export-commands) for more details.
 
 ## Exactly once export
@@ -150,9 +148,10 @@ To define continuous export to a delta table, do the following steps:
 * If the continuous export includes cross-database calls, it must be configured with a [managed identity](continuous-export-with-managed-identity.md).
 ::: moniker-end
 
-:::moniker-range="microsoft-fabric"
-**Cross-database**:
+:::moniker range="microsoft-fabric"
+**Cross-database and cross-Eventhouse**:
 
+* Continuous export doesn't support cross-Eventhouse calls.
 * Continuous export supports cross-database calls only for dimension tables. All fact tables must reside in the local database. See more details in [Export from fact and dimension tables](#export-from-fact-and-dimension-tables).
 ::: moniker-end
 

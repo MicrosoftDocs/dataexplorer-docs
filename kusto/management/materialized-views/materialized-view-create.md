@@ -198,7 +198,7 @@ The following rules limit the query used in the materialized view Query paramete
 :::moniker-end
 
 :::moniker range="microsoft-fabric"
-* Cross-database queries aren't supported.
+* Cross-Eventhouse and cross-database queries aren't supported.
 :::moniker-end
 
 * References to [external_table()](../../query/external-table-function.md) and [externaldata](../../query/externaldata-operator.md) aren't supported.

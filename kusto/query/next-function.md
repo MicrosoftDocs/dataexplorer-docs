@@ -33,9 +33,10 @@ current row in a [serialized row set](window-functions.md#serialized-row-set).
 The following query returns rows that show breaks longer than a quarter of a second between calls to `sensor-9`.
 
 :::moniker range="azure-data-explorer"
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/SampleIoTData?query=H4sIAAAAAAAAA3WOMQvCMBCFd8H/8La0UEEFB4c4dXHQxe5yNhcMNKnkAir4400U7OR27313710XKYgdo2dz4iBjlJYSzWcv3K8cGV/zSJ6hNZR85GKrykaeEi5PdM6zJPI3kPQF8CNxMEjZb521+3Bww+CE+zEYgYahxAWeTaaV8hNVDUK+rn6RDVZ1MzXU02d/0ndYb5ZvMSIuUtYAAAA=" target="_blank">Run the query</a>
-:::moniker-end
+::: moniker-end
 
 ```kusto
 TransformedSensorsData

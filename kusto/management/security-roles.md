@@ -15,10 +15,14 @@ When a principal attempts an operation, the system performs an authorization che
 
 The management commands listed in this article can be used to manage principals and their security roles on databases, tables, external tables, materialized views, and functions.
 
+:::moniker range="microsoft-fabric"
 > [!NOTE]
-> The three cluster level security roles of `AllDatabasesAdmin`, `AllDatabasesViewer`, and `AllDatabasesMonitor` can't be configured with security role management commands. 
-
+> The security roles of `AllDatabasesAdmin`, `AllDatabasesViewer` can't be configured with security role management commands. They are inherited respectively by the `Admin` and `Viewer` roles in the workspace.
+:::moniker-end
 ::: moniker range="azure-data-explorer"
+> [!NOTE]
+> The three  cluster level security roles of `AllDatabasesAdmin`, `AllDatabasesViewer`, and `AllDatabasesMonitor` can't be configured with security role management commands.
+
 To learn how to configure them in the Azure portal, see [Manage cluster permissions](/azure/data-explorer/manage-cluster-permissions).
 ::: moniker-end
 
@@ -53,9 +57,15 @@ For a full description of the security roles at each scope, see [Kusto role-base
 
 ## Common scenarios
 
-### Show your roles on the cluster
+### Show your principal roles
 
+::: moniker range="azure-data-explorer"
 To see your own roles on the cluster, run the following command:
+::: moniker-end
+
+::: moniker range="microsoft-fabric"
+To see your own roles on the eventhouse, run the following command:
+::: moniker-end
 
 ```kusto
 .show cluster principal roles

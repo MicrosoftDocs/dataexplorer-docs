@@ -58,7 +58,7 @@ items:
               - name: Migrate from Elasticsearch
                 href: migrate-elasticsearch-to-azure-data-explorer.md
               - name: Migrate from TSI
-                href: /azure/time-series-insights/migration-to-adx
+                href: /azure/time-series-insights/migration-to-fabric
                 displayName: Time Series Insights
       - name: Secure
         items:

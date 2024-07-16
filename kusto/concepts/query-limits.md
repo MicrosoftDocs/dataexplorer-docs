@@ -19,7 +19,7 @@ in the form of default query limits. If you're considering removing these limits
 
 ## Limit on request concurrency
 
-**Request concurrency** is a limit that a database imposes on several requests running at the same time.
+**Request concurrency** is a limit that is imposed on several requests running at the same time.
 
 * The default value of the limit depends on the SKU the database is running on, and is calculated as: `Cores-Per-Node x 10`.
   * For example, for a database that's set up on D14v2 SKU, where each machine has 16 vCores, the default limit is `16 cores x10 = 160`.
@@ -96,7 +96,14 @@ For example, use the .NET Framework client (Microsoft.Azure.Kusto.Data) and eith
 
 You may also find the C# streaming ingestion sample application helpful.
 
-Result truncation is applied by default, not just to the result stream returned to the client. It's also applied by default to any subquery that one cluster issues to another cluster in a cross-cluster query, with similar effects.
+Result truncation is applied by default, not just to the result stream returned to the client.
+:::moniker range="azure-data-explorer"
+It's also applied by default to any subquery that one cluster issues to another cluster in a cross-cluster query, with similar effects.
+:::moniker-end
+
+:::moniker range="microsoft-fabric"
+It's also applied by default to any subquery that one Eventhouse issues to another Eventhouse in a cross-Eventhouse query, with similar effects.
+:::moniker-end
 
 ### Setting multiple result truncation properties
 
@@ -109,7 +116,7 @@ The following apply when using `set` statements, and/or when specifying flags in
 
 Kusto limits the memory that each query operator can consume to protect against "runaway" queries.
 This limit might be reached by some query operators, such as `join` and `summarize`, that operate by
-holding significant data in memory. By default the limit is 5GB (per cluster node), and it can be increased by setting the request option
+holding significant data in memory. By default the limit is 5GB (per node), and it can be increased by setting the request option
 `maxmemoryconsumptionperiterator`:
 
 <!-- csl -->
@@ -214,7 +221,7 @@ management commands. This value can be increased if needed (capped at one hour).
 
 ## Limit on query CPU resource usage
 
-Kusto lets you run queries and use as much CPU resources as the database has.
+Kusto lets you run queries and use all the available CPU resources that the database has.
 It attempts to do a fair round-robin between queries if more than one is running. This method yields the best performance for query-defined functions.
 At other times, you may want to limit the CPU resources used for a particular
 query. If you run a "background job", for example, the system might tolerate higher
@@ -225,11 +232,11 @@ The properties are *query_fanout_threads_percent* and *query_fanout_nodes_percen
 Both properties are integers that default to the maximum value (100), but may be reduced for a specific query to some other value.
 
 The first, *query_fanout_threads_percent*, controls the fanout factor for thread use.
-When this property is set 100%, the cluster will assign all CPUs on each node. For example, 16 CPUs on a cluster deployed on Azure D14 nodes.
+When this property is set 100%, all CPUs will be assigned on each node. For example, 16 CPUs deployed on Azure D14 nodes.
 When this property is set to 50%, then half of the CPUs will be used, and so on.
 The numbers are rounded up to a whole CPU, so it's safe to set the property value to 0.
 
-The second, *query_fanout_nodes_percent*, controls how many of the query nodes in the cluster to use per subquery distribution operation.
+The second, *query_fanout_nodes_percent*, controls how many of the query nodes to use per subquery distribution operation.
 It functions in a similar manner.
 
 If `query_fanout_nodes_percent` or `query_fanout_threads_percent` are set multiple times, for example, in both client request properties and using a `set` statement - the lower value for each property applies.

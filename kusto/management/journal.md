@@ -66,6 +66,7 @@ Results returned will include:
 :::moniker-end
 :::moniker range="microsoft-fabric"
 * All journal entries specific to the environment level if the user executing the command has appropriate admin permissions.
+:::moniker-end
 
 ## .show database *DatabaseName* journal
 

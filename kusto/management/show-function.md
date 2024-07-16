@@ -62,11 +62,20 @@ For a list of **all** functions, see [.show functions](#show-functions).
 
 ### Supported properties
 
+:::moniker range="azure-data-explorer"
 | Property name | Property values | Description | Default |
 |---|---|---|---|
 |`ShowObfuscatedStrings` | `true` or `false`| If `true`, [obfuscated strings](../query/scalar-data-types/string.md#obfuscated-string-literals) in function's body are shown. To use this option, you must either be a database admin or entity creator. If you don't have these permissions, the obfuscated strings are **not** shown. | Defaults to `false`.|
-|`Builtin` | `true` or `false` | If `true` and used by cluster admin, shows built in function(s). | Defaults to `false`.|
+|`Builtin` | `true` or `false` | If `true` and used by the cluster admin, shows built in function(s). | Defaults to `false`.|
 | `IncludeHiddenFunctions` | `true` or `false` | If `true`, show hidden function(s). | Defaults to `false`.|
+:::moniker-end 
+:::moniker range="microsoft-fabric"
+| Property name | Property values | Description | Default |
+|---|---|---|---|
+|`ShowObfuscatedStrings` | `true` or `false`| If `true`, [obfuscated strings](../query/scalar-data-types/string.md#obfuscated-string-literals) in function's body are shown. To use this option, you must either be a database admin or entity creator. If you don't have these permissions, the obfuscated strings are **not** shown. | Defaults to `false`.|
+|`Builtin` | `true` or `false` | If `true` and used by the eventhouse admin, shows built in function(s). | Defaults to `false`.|
+| `IncludeHiddenFunctions` | `true` or `false` | If `true`, show hidden function(s). | Defaults to `false`.|
+:::moniker-end 
 
 ### Returns
 
