@@ -51,7 +51,7 @@ A fifth order polynomial with noise on x & y axes:
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA21QQW7DIBC89xVzhBZHdiJXvfgtFrKXlsaABVSBKI/vNo3ituqFZWZnZwei9q+EAhODQ4ccsG9bpEwruocL1hjeacosGBC1n4XEI3o02O8O3KaSyc+o3F3DSRSFXnLzhUU3fJB4QtcyUfjy/HumMiVutg3aXf/lzoXPysr04ZyO9sz5BqePNC42ZVGkQv2Bq9xME0VLaTQ2j2tYqqgK10zbS5pIXjuCqcMf8Vi/C2OFKZAx/yiuvJ0s+ZzY1IR4hLh/EgdT7CzvVKNPum48T/D6mSIW62l60zF/AmoATHWAAQAA" target="_blank">Run the query</a>
-:::moniker-end
+::: moniker-end
 
 ```kusto
 range x from 1 to 200 step 1
@@ -93,7 +93,7 @@ Irregular (unevenly spaced) time series:
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA6WSy7LTMAyG9+cp/mU805B0wXCZKY/ABnYMk3FiJfXBl47sFJfh4ZHTHuhQdiRZyIp+6ZOsrnvqOqC0utgEv6aMkRAie+3sDzLIEflIYB0Wwpe+3X+FnUFWnAxDCxNBlExOZ3smd8FoFzQfDnitEFk+u9igHcothwRLxKutbIo1Wak+jWw9YcOw+V8kOmGK4UycbAyI8yZIWftThXQxLFgoEOtMOK5SKax+lGg0V6NK9n2PoENsE02in74lzBw99p287970SrA2so+3utJUDO9RhgqCA5qCFt6GpijVNV4XMf54qtoy07I6zUNOTz9BJVMwSMSW0iC4OTW3gzam+Sw9fKo97NArhf99KrpUZD3lytQJ4MukrqOVIZq4jo7u2Ir0dUMy9mwNvQCmddxS3VPeNzIMUkM9+HRpH6M2tt+3eUckd3ddq209HiY22zycorvUS9yh7PBWScyJ4zNNuWUKWhLN8vPwl2AQ39UQj0gk1MgS1MLTUXPGd9nh5jJFt/qQDlv6mkf9AtdLeagTAwAA" target="_blank">Run the query</a>
-:::moniker-end
+::: moniker-end
 
 ```kusto
 //

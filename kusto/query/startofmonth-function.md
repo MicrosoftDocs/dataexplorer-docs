@@ -33,7 +33,7 @@ A datetime representing the start of the month for the given *date* value, with 
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAy2MSQqAMBAE776ijwoKGS+C4Ct8QdCJC8SR2EcfbxShoKEaKvljUVgIlxIhWUQjoEFwUU9IceNMtutERDu4jvSJGPKb18LnytlTuUUtWydd4yQDcf1LV9V/vXoAr00vemsAAAA=" target="_blank">Run the query</a>
-:::moniker-end
+::: moniker-end
 
 ```kusto
 range offset from -1 to 1 step 1

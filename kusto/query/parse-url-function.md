@@ -34,7 +34,7 @@ An object of type [dynamic](scalar-data-types/dynamic.md) that included the URL 
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAw3GUQpAQBAA0KuIEl/TLl9q4wwuoIlhhbXNzHJ96n28yHvQbCRJp7qILDQlPqtcZk8XdQBJiAP+jSjy3rwM/hbtjG1aUL8L/BAiqu8P4x5THtY9tlgZt4uC5vUH0Z3WuWIAAAA=" target="_blank">Run the query</a>
-:::moniker-end
+::: moniker-end
 
 ```kusto
 print Result=parse_url("scheme://username:password@host:1234/this/is/a/path?k1=v1&k2=v2#fragment")

@@ -37,7 +37,7 @@ The [hash()](hash-function.md) function is applied to each of the specified scal
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAysoyswrUShLzClNNVSwVVDySM3JyVfSgYgYgUTC84tyUpS4ahRSK0pS81IUkvNzkzLzUlOAchmJxRnxuYl5lRoQA2DaNAGiXIb7VgAAAA==" target="_blank">Run the query</a>
-:::moniker-end
+::: moniker-end
 
 ```kusto
 print value1 = "Hello", value2 = "World"

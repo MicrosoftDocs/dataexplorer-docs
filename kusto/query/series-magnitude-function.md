@@ -34,7 +34,7 @@ Returns a double type value representing the magnitude of the series.
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAysoyswrUUgsKrJNqcxLzM1M1og21DHSMdYxidVU4OWqUUitKEnNS1EoTi3KTC2Oz01Mz8ssKU1JtUUX0ACaoQkADZHIIU4AAAA%3D" target="_blank">Run the query</a>
-:::moniker-end
+::: moniker-end
 
 ```kusto
 print arr=dynamic([1,2,3,4]) 

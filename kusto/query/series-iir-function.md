@@ -54,7 +54,7 @@ Use the iir filter with coefficients *denominators*=[1,-1] and *numerators*=[1]:
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA8tJLVGoULBVKErMS0/VMNQz0FEwBGFNa66Cosw8oKRthY5CJVBFcWpRZmpxfGZmkQZQJKUyLzE3M1kj2jBWE5mnowsU0OSqUcgt002tKEjMS1EA6QcAEyBol2cAAAA=" target="_blank">Run the query</a>
-:::moniker-end
+::: moniker-end
 
 ```kusto
 let x = range(1.0, 10, 1);
@@ -76,7 +76,7 @@ Here's how to wrap it in a function:
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA02OzQrCMBCE73mKOSaQglVPljxJKSE0iwbSKNsoCeq7GwR/5jY73ywTKeNGcz6zXa+LkeUAX5NbwqxwF2iKjajGMbtqI6VjPsmi0KEf3nFrkotyJQ602hBYFv15Icd+Uv9Oo2sXNdZJiecgLhxShjdfYKPRmK3GTmPfmAeoZEoe3pvfSunVC0CCVEu3AAAA" target="_blank">Run the query</a>
-:::moniker-end
+::: moniker-end
 
 ```kusto
 let vector_sum=(x: dynamic) {

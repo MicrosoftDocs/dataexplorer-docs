@@ -48,12 +48,12 @@ The examples in this tutorial use the `StormEvents` table, which is publicly ava
 To run the following queries, you need a query environment with access to the sample data. You can use one of the following:
 :::moniker range="azure-data-explorer"
 * A Microsoft account or Microsoft Entra user identity to sign in to the [help cluster](https://dataexplorer.azure.com/clusters/help) 
-:::moniker-end
+::: moniker-end
 
 :::moniker range="microsoft-fabric"
 * A Microsoft account or Microsoft Entra user identity 
 * A [Fabric workspace](/fabric/get-started/create-workspaces) with a Microsoft Fabric-enabled [capacity](/fabric/enterprise/licenses.md#capacity)
-:::moniker-end
+::: moniker-end
 
 ## Count rows
 
@@ -62,7 +62,7 @@ Begin by using the [count](../count-operator.md) operator to find the number of 
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAwsuyS/KdS1LzSspVuCqUUjOL80rAQA76pZjFAAAAA==" target="_blank">Run the query</a>
-:::moniker-end
+::: moniker-end
 
 ```Kusto
 StormEvents 
@@ -82,7 +82,7 @@ To get a sense of the data, use the [take](../take-operator.md) operator to view
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAwsuyS/KdS1LzSspVuCqUShJzE5VMAUAP49+9hUAAAA=" target="_blank">Run the query</a>
-:::moniker-end
+::: moniker-end
 
 ```Kusto
 StormEvents 
@@ -106,7 +106,7 @@ Use the [project](../project-operator.md) operator to simplify the view and sele
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAwsuyS/KdS1LzSsp5qpRKEnMTlUwBTIKivKzUpNLFIJLEktSdRTACkIqC4BMl8TcxPTUgKL8gtSikkoA88jUEj8AAAA=" target="_blank">Run the query</a>
-:::moniker-end
+::: moniker-end
 
 ```Kusto
 StormEvents
@@ -131,7 +131,7 @@ It appears that there are multiple types of storms based on the results of the p
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAwsuyS/KdS1LzSspVuCqUUjJLC7JzEsuUQALhVQWpAIAgfl1HyEAAAA=" target="_blank">Run the query</a>
-:::moniker-end
+::: moniker-end
 
 ```Kusto
 StormEvents 
@@ -163,7 +163,7 @@ The following query looks for storm events in a specific `State` of a specific `
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAwsuyS/KdS1LzSsp5qpRKM9ILUpVCC5JLElVsLVVUA9xjXAMVldIzEtRAKsJqSyASLjl5OenqAN1FBTlZ6Uml4D0FJWEZOam6ii45qVAGGBzdBA6dRRcEnMT01MDivILUotKKgFltqXufAAAAA==" target="_blank">Run the query</a>
-:::moniker-end
+::: moniker-end
 
 ```Kusto
 StormEvents
@@ -189,7 +189,7 @@ To view the top floods in Texas that caused the most damage, use the [sort](../s
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAwsuyS/KdS1LzSsp5qpRKM9ILUpVCC5JLElVsLVVUA9xjXAMVldIzEtRAKsJqSyASLjl5OenqAN1FOcXlSgkVSq4JOYmpqcGFOUXpBaVVAIlCorys1KTS0CGFZWEZOam6ii45qVAGGALdBBG6qBpBwDYBhI8lQAAAA==" target="_blank">Run the query</a>
-:::moniker-end
+::: moniker-end
 
 ```Kusto
 StormEvents
@@ -218,7 +218,7 @@ The following query returns the five Texas floods that caused the most damaged p
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAwsuyS/KdS1LzSsp5qpRKM9ILUpVCC5JLElVsLVVUA9xjXAMVldIzEtRAKsJqSyASLjl5OenqAN1lOQXKJgqJFUquCTmJqanBhTlF6QWlVQCZQqK8rNSk0tAphWVhGTmpuoouOalQBhgG3QQZuqgaQcAOmqryJYAAAA=" target="_blank">Run the query</a>
-:::moniker-end
+::: moniker-end
 
 ```Kusto
 StormEvents
@@ -251,7 +251,7 @@ The following query creates a calculated `Duration` column with the difference b
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA1WMsQoCMRBEe79iujRaWqYQLtZCUtjGy6InJhv29pSAH+/pIWg3zLx5Xlmyu1PRcfXE40JC8BqVYC1McMedN4gl4cOEVpdhf2NOZn4oV2xxauhijmc6CFcSbUg09vNcha/U61spGoZMa7iSltBNEnXgAvvtsPkF/40vqGFRKakAAAA=" target="_blank">Run the query</a>
-:::moniker-end
+::: moniker-end
 
 ```Kusto
 StormEvents
@@ -277,7 +277,7 @@ Use `extend` to view the calculated `Duration` column along with all of the othe
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAyWNuwoCMRBFe7/idqksLVMIG2shKWxHM+iCyYTZ8RHw481qd+Hcw4kmWsKTqy2bD143VkY0Mob3cCmc9tGBasbvk3r7g8NdJLthmDTscO6YqNCVjyqN1ToyL5eB+W085OmhZLNUeISa01wY2zWjtu4vDhiVhIQAAAA=" target="_blank">Run the query</a>
-:::moniker-end
+::: moniker-end
 
 ```Kusto
 StormEvents
@@ -303,7 +303,7 @@ Static mapping is a useful technique for changing the presentation of your resul
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA23PvQrCQBAE4D5PMVylkCdQUkkEC0UIVmJxXpZ4kvthc4kc6rt7JBYqFtt9M8O2FNC5nhVtpffaNihQRyuNVrMMuKcDRGmIG7IqYiutbIgFFhD7/txqJfLJHIJudYhYOeOljZNgPchAIonnfJlVwbEpB7Khyx64XYgJ1TiOovi74vgT/E6kEs/uSipgbN3U+ZvnWLMmW7dxJ00Kf/94nNDpBfVsVEn9AAAA" target="_blank">Run the query</a>
-:::moniker-end
+::: moniker-end
 
 ```kusto
 let sourceMapping = dynamic(

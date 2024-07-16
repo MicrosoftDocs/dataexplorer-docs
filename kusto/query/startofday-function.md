@@ -33,7 +33,7 @@ A datetime representing the start of the day for the given *date* value, with th
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAy2MQQqAMAwE775ijwoWGi+C4Ct8QdFEFGpKm4vg460gDCzMwuRw7QwVKWyQrBGOYApCMU6g5kHKevJq2MK9WMiGuX51Vappt2BsR+R28DQ6TxWQnz7Grv/L3Qu9LKDlZwAAAA==" target="_blank">Run the query</a>
-:::moniker-end
+::: moniker-end
 
 ```kusto
 range offset from -1 to 1 step 1

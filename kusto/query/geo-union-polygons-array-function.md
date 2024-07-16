@@ -54,7 +54,7 @@ The following example performs geospatial union on polygon rows.
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA52Ry26DMBBF93yF5RVINDJ+jUHKP2SPEHLBimjBRkAW9PHvJXVw6Tb2xnN0fXVnptXLdl97E4+uX6/OzkW7Wj10TRKVEdrOo4w/8bKOBhf44oU4xY1zU9tZvZgZF2VZvgA75TwXKScnyGVepR4JReDOFCFS7VBRkv0KpaJih8Ay8JCLAI+OVfWdpM/lkpR6G8pDMqmUekBFQ1zwGUAF3f/Pz4cAxnwvQIHv5jmTvmfJSBhEBn46QorDdI6/7ymiKvpC820Y9NR9GLTvsNbThM5o0O+m7rt5CctNNvk4uTfTLH/im+2c3eRX4/y7PvroNT6WyQ/35ucGMgIAAA==" target="_blank">Run the query</a>
-:::moniker-end
+::: moniker-end
 
 ```kusto
 datatable(polygons:dynamic)
@@ -78,7 +78,7 @@ The following example performs geospatial union on polygon columns.
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA5WQTQ6CMBCF95yi6QqSakqFdiDxDu4JIRUagz8tAVwQ9e6ChaqJG9vNzJeZNy+vkv3492flN+Y8HIwO02rQ8lKXBM2ELSTwMg+Nb279G+6HRuEU7+wgJrg0pq1qLXvV4TTLspXYrJMoiUlE1yLhSU4sioGKiQGlHBYIjIavQQ4sXqDYhMLCKHbwUzHPHwH53xNnzEqwyLniADBDYM6qsPcFuLnv5cmAl3t31LTmqMp+ya0rZNuiLWpkeZpKObiM39kGv/auujZ63DwoY+viU/Kt82qDJ6h5+jHDAQAA" target="_blank">Run the query</a>
-:::moniker-end
+::: moniker-end
 
 ```kusto
 datatable(polygon1:dynamic, polygon2:dynamic)
@@ -100,7 +100,7 @@ The following example returns True because one of the polygons is invalid.
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA52QzYqDMBRG9z5FyMqALTH+JAp9h+5FJKOhZCYmksSCbefdxzZjcd17V/dw+Lh8A/frfikRT0YtF6NdPSyaj7JHUROBdf7P+A79MglYw3MQYQJ7Y+wgNffCwbppmgPNjlVeFUmOj7QqqzYJqGCYPhnDuGQbZASnL7FkpNggzVIaYF684T6xbX9R8tlfJSEhhuQhJ2qjB3DzOHIrbwJsBXTcWnACI/8RnZLOv5tBqz5Z8y16D6S+ciWHbtbS6NWWTs9KxRdhAur2aXyJ9ydCf8U93vV2AQAA" target="_blank">Run the query</a>
-:::moniker-end
+::: moniker-end
 
 ```kusto
 datatable(polygons:dynamic)

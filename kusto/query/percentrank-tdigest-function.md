@@ -39,7 +39,7 @@ Getting the percentrank_tdigest() of the damage property that valued 4490$ is ~8
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAwsuyS/KdS1LzSsp5qpRKC7NzU0syqxKVShJyUxPLS4JSi1WsIVxNFwScxPTUwOK8gtSi0oqNYEaCorys1KTSxSAAslAM4oS87LjYaoRRugomJhYGmgCANhtajhsAAAA" target="_blank">Run the query</a>
-:::moniker-end
+::: moniker-end
 
 ```kusto
 StormEvents
@@ -58,7 +58,7 @@ Using percentile 85 over the damage property should give 4490$:
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAwsuyS/KdS1LzSsp5qpRKC7NzU0syqxKVShJyUxPLS4JSi1WsIVxNFwScxPTUwOK8gtSi0oqNYEaCorys1KTSxSAAslAMzJzUuNhihEm6ChYmOoolFQWpOanaeTk56VragIAa7SLZXcAAAA=" target="_blank">Run the query</a>
-:::moniker-end
+::: moniker-end
 
 ```kusto
 StormEvents

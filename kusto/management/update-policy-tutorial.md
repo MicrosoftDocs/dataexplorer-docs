@@ -27,10 +27,10 @@ The example in this tutorial demonstrates how to use update policies for [data r
 * A Microsoft account or a Microsoft Entra user identity. An Azure subscription isn't required.
 :::moniker range="azure-data-explorer"
 * An Azure Data Explorer cluster and database. [Create a cluster and database](/azure/data-explorer/create-cluster-and-database)
-:::moniker-end
+::: moniker-end
 :::moniker range="microsoft-fabric"
 * a [KQL database in Real-Time Intelligence in Microsoft Fabric](/fabric/real-time-intelligence/create-database).
-:::moniker-end
+::: moniker-end
 
 ## 1 - Create tables and update policies
 

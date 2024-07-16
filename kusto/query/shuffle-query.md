@@ -76,7 +76,7 @@ The `shuffle` strategy query with `summarize` operator shares the load on all cl
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAx3MMQ6AIAxA0d1TdJTEeANHB2ZOgFoBIyVpiwnGw2vc//tOC+f5QlLpHpCas+d0I8REOoqyVwwNJpBY9/1EWEsl7c0A/gq9paNyQrG0JcZVDSwNnH7me/3lC79aGLFfAAAA" target="_blank">Run the query</a>
-:::moniker-end
+::: moniker-end
 
 ```kusto
 StormEvents
@@ -95,7 +95,7 @@ StormEvents
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA3WOwQrCMBBE7/2KJSeF4h94s6I3oYLn0GyblDQbkq0S8ONN0yJe3MPAMm93pmUKU/NEx7F6w0tjQGhZMoKWEcQDI4uvUbh78pt5tkRqcUcyDrRxfIgc8u2QjlHPfW8RKsizK9r+RC37n68XaazYAB9oxI6h8SaSwquq13I1nOQkB7wF8hg4FXxflNyK5FodzY4/vA+5oeEAAAA=" target="_blank">Run the query</a>
-:::moniker-end
+::: moniker-end
 
 ```kusto
 StormEvents
@@ -122,7 +122,7 @@ StormEvents
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA2WOQQuCQBSE7/2KhyeFlFWRSPBW1wjsD2z4dBfd3Xj7LIR+fFt2iYY5zXwD07Ijc7yjZb95wkMhIbQsGUFJD9HJEasoNEaOmHokjR6Utpx5Nff9hCMu0HwXfjbxQRo54JncDYmXBDrs5TxxYAQ4+waJL9ogaAsk7YBxF6YckrgQYpeKPBiEqD/OxKpkC39YmUNR1tX+F8urLoHrsj56AR9yv8vdAAAA" target="_blank">Run the query</a>
-:::moniker-end
+::: moniker-end
 
 ```kusto
 StormEvents
@@ -143,7 +143,7 @@ StormEvents
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA22OsQ6DMBBDd77iRiohFuZuZeiGxBcEOCAV5KKLQYrUjyewsODBi+0ntxBd650dQvYnbxQWVhzN1qEMUAOe4jvM2zguTF2k2tsgA3+HjJLyyyGeqjP8mNVM3Kh4VsQrS1CVH/e4lwW1SNziqf5KL3rZHA7GAN74mQAAAA==" target="_blank">Run the query</a>
-:::moniker-end
+::: moniker-end
 
 ```kusto
 StormEvents
@@ -168,7 +168,7 @@ When you use `hint.strategy=shuffle`, the shuffled operator will be shuffled by 
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA0WNQQrCMBRE955ilhW0xC4UhLrRLrquFwjmt402PyX5VQQPb6iKwyxm8+Y14oOr7sQSFy88egqERnSQs3WEA4wWkjSzQqndWm1SodR+bq4+WSby6i3jZtmghGWmgN6y5FFCOuieZeynth0IWfMX4ic8aac7OgY/xqTcFt9beEY12ugN1WaFGapNkl38xPIGNG76e7oAAAA=" target="_blank">Run the query</a>
-:::moniker-end
+::: moniker-end
 
 ```kusto
 StormEvents
@@ -188,7 +188,7 @@ The following query uses `hint.shufflekey = key`. The query above is equivalent 
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA22OzQrCQAyE7z5FjhW0xB4UBL1oD57XF1jY1K51s2U3KoIPb/wpvRjmEDJk5jMSU6hvxJInT7i3lAiM2CRHHwi24KyQ6FpUiKs5LlSAuP6oxO9M9fMcPUPn2cEGPDMlaD1Lmdtr01yoo4fe697n6Ojg/nlvBHUKMwLBALS3wZ5ol2KfFWlZ/Woh8pg5GyJe+VHdN9IAAAA=" target="_blank">Run the query</a>
-:::moniker-end
+::: moniker-end
 
 ```kusto
 StormEvents
@@ -209,7 +209,7 @@ In some cases, the `hint.strategy=shuffle` will be ignored, and the query won't 
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA22OsQ6CMBRFd7/ijpAoqQyamOCiDMz4A9U+oGpb0j40GD/eBjUu3tzhDu/lnJqdN+WNLIfZE/eOPKFm6fmgDWELJZk4ziQXYr0Qy1gIsZmaiXfS+BkGY6TXD8LJDZaTFMcRZa+DU1SpOSZEpeLl2WmLi7YKBbS15NFpy1lgH1HtWIRuaJorIal/aviq7aWRLe2860OUW+UfATj7B/YCGrh7PdwAAAA=" target="_blank">Run the query</a>
-:::moniker-end
+::: moniker-end
 
 ```kusto
 StormEvents
@@ -234,7 +234,7 @@ To overcome this issue and run in shuffle strategy, choose the key that is commo
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA22OPQ7CMBSDd07hsZUAhQ4gIZUFOnQuFwjklYaSpEpeQUUcnqj8LVgePNjyV7HzpriS5TB54NaQJ1QsPe+1IWygJBPHmGRCrGZiEQ0h1qPn4qU0LkNvjPT6Tji63nKS4jCg6HRwiko1xXhRqtg8O23RaquQQ1tLHo22PA9NX9cXamnIvzMk1Q8PH7ydNPJEW++6EAGX2RsCzv45fALuk5Ra4AAAAA==" target="_blank">Run the query</a>
-:::moniker-end
+::: moniker-end
 
 ```kusto
 StormEvents

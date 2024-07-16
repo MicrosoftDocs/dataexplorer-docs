@@ -28,7 +28,7 @@ Computes log of the absolute value of the [gamma function](https://en.wikipedia.
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAysoyswrUShKLS7NKbHNyU9PT8zNTdQw1QQAjpO9/xgAAAA=" target="_blank">Run the query</a>
-:::moniker-end
+::: moniker-end
 
 ```kusto
 print result=loggamma(5)

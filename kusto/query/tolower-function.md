@@ -33,7 +33,7 @@ If conversion isn't successful, result is `null`.
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAysoyswrUSjJz8kvTy3SUPJIzcnJV9JUsLVVUMoAswH4X1SGIQAAAA==" target="_blank">Run the query</a>
-:::moniker-end
+::: moniker-end
 
 ```kusto
 tolower("Hello") == "hello"

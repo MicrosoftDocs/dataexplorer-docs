@@ -32,7 +32,7 @@ An integer between 0-23 representing the hour number of the day for *date*.
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAysoyswrUcjILy2yBRH5aSmJlRopiSWpJZm5qRpGBoamuoZGuoYmCoYWVqYmmpoAPkfViTAAAAA=" target="_blank">Run the query</a>
-:::moniker-end
+::: moniker-end
 
 ```kusto
 print hour=hourofday(datetime(2015-12-14 18:54))

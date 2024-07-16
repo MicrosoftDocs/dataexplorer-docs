@@ -52,7 +52,7 @@ The expression `_detailed_data` is defined using `materialize()` function and th
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA2WPwQqDMAyG74LvkGMdstXz8Lj7QO/S2TAqtZUaxxx7+FUrOPXU8iffl0QjQSWRhNIoKylIQA6tIHRKaPVBVpB17e2Fhnr4Qj+0rXA+hxDltR0MsQQeIxTksTQUyrHD5BpHW3Uc/RtKS0LP0OLyJRa+q29CGqsMsK0qAWvWDnwTGhlG39HV/hFP9JcE3Snj/Mzhchg5sZ2zDdZ0WD/d65Zghsh2kPFpy13TDxDFARZQAQAA" target="_blank">Run the query</a>
-:::moniker-end
+::: moniker-end
 
 ```kusto
 let _detailed_data = materialize(StormEvents | summarize Events=count() by State, EventType);
@@ -90,7 +90,7 @@ This operation can be done using [batches](batches.md) and materialize:
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA3WNQQqDMBBF94J3+Mu4M7gs2fUGniDVabEkToiT0hYP32gKQqF/k5nw5n1HgmjnkX2fJ4O6Qo63QnGybnqTKj9bMncjPHGN7KEhjK7dg0UoQB/kihD5ToPgYV2i7N06lC542zSnujpaVyzJextzG84Dp1nMuD9qv/6FhQM6XF7F/dfUJ2/y9nV8ADNWwIPoAAAA" target="_blank">Run the query</a>
-:::moniker-end
+::: moniker-end
 
 ```kusto
 let randomSet = 

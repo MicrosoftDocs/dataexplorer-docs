@@ -36,7 +36,7 @@ The [Jaccard index](https://en.wikipedia.org/wiki/Jaccard_index) of the two inpu
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAysoyswrUShOLTG0TanMS8zNTNaINtQx0jGO1dQBCRuhCeuYxGryctUopFaUpOalKGQlJicnFqXYQun4zLyU1AoNkHEQ3ZoAjvvou2AAAAA=" target="_blank">Run the query</a>
-:::moniker-end
+::: moniker-end
 
 ```kusto
 print set1=dynamic([1,2,3]), set2=dynamic([1,2,3,4])

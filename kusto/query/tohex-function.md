@@ -34,7 +34,7 @@ If conversion isn't successful, result will be `null`.
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA42PsQ7CMAxEdyT+4baAlNIQoGLpyI/Qum2kJqkaD/18EhAliIXb7Ds/29NsHG83iGI/0LLTl2qPuoY4KiVk7hSr1X0p5VCWqM7F3TC0CGi8nUay5Bi+QxrMQezjzhdO4poj36iT/hMVyxWhkn6ufib056WEvy0NURtgjcNIruchsbVE8HnPBJje+ZnawwOAcjs/JwEAAA==" target="_blank">Run the query</a>
-:::moniker-end
+::: moniker-end
 
 ```kusto
 print

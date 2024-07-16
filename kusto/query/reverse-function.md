@@ -33,7 +33,7 @@ The reverse order of a string value.
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAysoyswrUSguKVKwVVBydHJ2cXVz9/D08vbx9fMPCAwKDgkNC4+IjFLiqlFIrShJzUtRKIIoLkotSy0qTtUA8jQB/i1rL0UAAAA=" target="_blank">Run the query</a>
-:::moniker-end
+::: moniker-end
 
 ```kusto
 print str = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
@@ -49,7 +49,7 @@ print str = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAysoyswrUYhWB5LqsQq2CoZGxiamOkCBlPzSpJxUmJgeSJALKJpYklqSmQsRh3E0jAwMzXUNDXQNTYFqrQwMNEEGgGSKCxLzwEqNM7hqFAqK8rNSk0sUwFbaKhSllqUWFadqQC0HaiqCWIoiB3MHUJqrCGYjqgq4m0BGwKxFUYJwiyYA300QcvEAAAA=" target="_blank">Run the query</a>
-:::moniker-end
+::: moniker-end
 
 ```kusto
 print ['int'] = 12345, ['double'] = 123.45, 

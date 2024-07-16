@@ -27,7 +27,7 @@ The following examples show how to use `hll`/`tdigest` and demonstrate that usin
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAx2LQQqDMBQF9z3FWyYgaMRtD+DCM4Rf/VWLMSH50iAevrGznGEi7TMj4x29g4F4mOYPknCAeVxIh3MU15OxbJvKVaeLDNF/eBSk4vt9eOEJTrI6ErYTCdk7qDLYrFEj+K8yTdtVrf4Bfsb2aXIAAAA=" target="_blank">Run the query</a>
-:::moniker-end
+::: moniker-end
 
 ```kusto
 range x from 1 to 1000000 step 1

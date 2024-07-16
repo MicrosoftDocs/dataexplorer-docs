@@ -42,7 +42,7 @@ A new dynamic array column containing the filtered output.
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/kvc9rf7q4d68qcw5sk2d6f.northeurope/databases/MyDatabase?query=H4sIAAAAAAAAA41QwWrDMAy9F/IPutUGF5Z0O+awD+hpu40Q3ERN1NV2kdW0G/v4uU1Wxlih5kk8S+jpIba+QxDYcHCwJq98OCptIO81LKBY9iDhbz0K7hPJZl8QD85Zps8kUTr7jvWOoijR596ewxYbyWaQHrXl/PVlbsbfYHdl++Gto0a9PRi4hTxFkeLxwidSTI3/Uelph5w94EnQt2Phqa9XYSDfPQ9dGZEJY70hVsmMgaubPIlfUekftd/DdYNekLG9W8WA8AHHfLkNJ1fIIOSw6S3LN0kcwQiHAQAA" target="_blank">Run the query</a>
-:::moniker-end
+::: moniker-end
 
 ```kusto
 range t from bin(now(), 1h) - 23h to bin(now(), 1h) step 1h
@@ -68,7 +68,7 @@ This query returns:
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/kvc9rf7q4d68qcw5sk2d6f.northeurope/databases/MyDatabase?query=H4sIAAAAAAAAA12O3QrCMAxG7wXfIXd20IHV6z2F3skYdUtddG1HmvmHD+8cMkQ48IWE7xC24YQg4Dh6OFJQId5UpsG0GeRgTAsS//dJsB+H5eIFafDeMj1HReHtBauOkijJPree4xlrAWqK1X630iAarrYbsGgewXqq1WGtYWbzw3amnFR4FwwNNORckZAJU+WI1WTTMOuMhtyU45fOdgm/MQl4rCODkMe6tSxvKkW3gPcAAAA=" target="_blank">Run the query</a>
-:::moniker-end
+::: moniker-end
 
 ```kusto
 range t from bin(now(), 1h) - 11h to bin(now(), 1h) step 1h

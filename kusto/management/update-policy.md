@@ -19,10 +19,10 @@ The following diagram depicts a high-level view of an update policy. It shows tw
 
 :::moniker range="azure-data-explorer"
 An update policy is subject to the same restrictions and best practices as regular ingestion. The policy scales-out according to the cluster size, and is more efficient when handling bulk ingestion.
-:::moniker-end
+::: moniker-end
 :::moniker range="microsoft-fabric"
 An update policy is subject to the same restrictions and best practices as regular ingestion. The policy scales-out according to the eventhouse size, and is more efficient when handling bulk ingestion.
-:::moniker-end
+::: moniker-end
 
 > [!NOTE]
 >
@@ -44,7 +44,7 @@ If the update policy is defined on the target table, multiple queries can run on
   * It can't make callouts (by using a plugin).
 * The query doesn't have read access to tables that have the [RestrictedViewAccess policy](restricted-view-access-policy.md) enabled.
 * For update policy limitations in streaming ingestion, see [streaming ingestion limitations](/azure/data-explorer/ingest-data-streaming.md#limitations).
-:::moniker-end
+::: moniker-end
 :::moniker range="microsoft-fabric"
 * The policy-related query can invoke stored functions, but:
   * It can't perform cross-eventhouse queries.
@@ -52,7 +52,7 @@ If the update policy is defined on the target table, multiple queries can run on
   * It can't make callouts (by using a plugin).
 * The query doesn't have read access to tables that have the [RestrictedViewAccess policy](restricted-view-access-policy.md) enabled.
 * For update policy limitations in streaming ingestion, see [streaming ingestion limitations](/azure/data-explorer/ingest-data-streaming.md#limitations).
-:::moniker-end
+::: moniker-end
 
 > [!WARNING]
 > An incorrect query can prevent data ingestion into the source table. It is important to note that limitations, as well as the compatibility between the query results and the schema of the source and destination tables, can cause an incorrect query to prevent data ingestion into the source table.
@@ -64,11 +64,11 @@ When referencing the `Source` table in the `Query` part of the policy, or in fun
 :::moniker range="azure-data-explorer"
 * Don't use the qualified name of the table. Instead, use `TableName`.
 * Don't use `database("<DatabaseName>").TableName` or `cluster("<ClusterName>").database("<DatabaseName>").TableName`.
-:::moniker-end
+::: moniker-end
 :::moniker range="microsoft-fabric"
 * Don't use the qualified name of the table. Instead, use `TableName`.
 * Don't use `database("<DatabaseName>").TableName` or `cluster("<EventhouseName>").database("<DatabaseName>").TableName`.
-:::moniker-end
+::: moniker-end
 
 ## The update policy object
 

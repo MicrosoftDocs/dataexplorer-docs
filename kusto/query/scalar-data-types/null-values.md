@@ -25,7 +25,7 @@ The following query returns a single row full of null values:
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/kvc9rf7q4d68qcw5sk2d6f.northeurope/databases/MyDatabase?query=H4sIAAAAAAAAA0WMQQ6AIAzAvsJREz81ZCFLxkZgO%2Fh7NWZ4aw9tHySWsipv4sz7kQoYGjVcfgk0OkOrUwl%2B0kBWqcED4b%2BpZ16v9zs7yOc37tkiEnwAAAA%3D" target="_blank">Run the query</a>
-:::moniker-end
+::: moniker-end
 
 ```kusto
 print bool(null), datetime(null), dynamic(null), guid(null), int(null), long(null), real(null), double(null), timespan(null)
@@ -54,7 +54,7 @@ For example:
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA0tJLAHCpJxUjbLEHKvMvBLNaFMdBSCtkVeak6MZy1WjkFpRkpqXouBZ7JSZnp5aFJKRmGesYKsAVK9gp2CMQ4F/kR9QP0KZQn6RQmYxyEyQRZrIulwLSxNzQvKR1NvaIlyArNIvvwRTsSKSYgAsrfz+zgAAAA==" target="_blank">Run the query</a>
-:::moniker-end
+::: moniker-end
 
 ```kusto
 datatable(val:int)[5, int(null)]
@@ -104,7 +104,7 @@ For example:
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA0tJLAHCpJxUjcyyxByrzLwSHYViEKu4pCgzL10z2lRHQSlRSUcBKKORV5qTownkJynFctUolGekFqUqgLQpKNoqmAIA+YQGikoAAAA=" target="_blank">Run the query</a>
-:::moniker-end
+::: moniker-end
 
 ```kusto
 datatable(ival:int, sval:string)[5, "a", int(null), "b"]
@@ -140,7 +140,7 @@ For example:
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA0tJLAHCpJxUjbLEHKvMvBLNaFMdBSCtkVeak6MZy1WjkFpRkpqXouCYkqJgqwBUpaCtYGiAEPctzSnJLMiphEpqASUBmujtH1UAAAA=" target="_blank">Run the query</a>
-:::moniker-end
+::: moniker-end
 
 ```kusto
 datatable(val:int)[5, int(null)]

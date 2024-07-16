@@ -31,7 +31,7 @@ Encodes Internationalized Domain Name in Applications (IDNA) string to [Punycode
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA0tJLAHCpJxUjZT83MTMPKvikqLMvHQFzWh1n8OrFHwe7l6c+bihKSSj9OGutXkKIRmZh1flAQWS83PVdRTUgzIPb8jMyXm/d2Fw9uGFOSnF2YkFiUW5QCZQKL8oHahGyTsxJzWlLL80J1k9Q8+xqCS/6MjqrPxivdSUUqVYXq4ahdSKktS8FAWgzbYFpXmVyfkpqfEQ18SX5MdDHAR1niYAt9ocW7AAAAA=" target="_blank">Run the query</a>
-:::moniker-end
+::: moniker-end
 
 ```kusto
 datatable(domain:string )['Lê Lợi。Thuận Thiên。com', 'Riðill｡Skáldskaparmál｡org', "Kaledvoulc'h.Artorījos.edu"]

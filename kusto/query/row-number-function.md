@@ -41,7 +41,7 @@ from `1` up to `10`:
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAytKzEtPVUhUSCvKz1UwVCjJVzA0UCguSS1QMOSqUSjOLypRSKoEyqekFicDBVIrSlLzUhSK8myL8svj80pzk1KLNDQBtU8QmkUAAAA=" target="_blank">Run the query</a>
-:::moniker-end
+::: moniker-end
 
 ```kusto
 range a from 1 to 10 step 1
@@ -55,7 +55,7 @@ starts at `7`:
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAytKzEtPVUhUSCvKz1UwVCjJVzA0UCguSS1QMOSqUSjOLypRSKoEyqekFicDBVIrSlLzUhSK8myL8svj80pzk1KLNMw1AXIfYP9GAAAA" target="_blank">Run the query</a>
-:::moniker-end
+::: moniker-end
 
 ```kusto
 range a from 1 to 10 step 1
@@ -69,7 +69,7 @@ per each partition. Here, we partition the data by `Airport`:
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA0tJLAHCpJxUBQ3HzKKC/KISq+KSosy8dB0FID8nMy8VzndJLUgsKiktSi22ysnPS9fkiuZSUFAK8QlT0lFQ8vEAkoY6yCKRIBEDA7BYsKsjmiqoiBOINEJRA9JnwBXLVaNQDHSOQlKlAtRlConFycjOUEhJLU4GKkutKEnNS1EISszLti3KL4/PK81NSi3SMNRRKChKLYP5S1NB0RZmkiYA2Leu+/cAAAA=" target="_blank">Run the query</a>
-:::moniker-end
+::: moniker-end
 
 ```kusto
 datatable (Airport:string, Airline:string, Departures:long)

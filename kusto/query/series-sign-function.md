@@ -32,7 +32,7 @@ A dynamic array of calculated sign function values. -1 for negative, 0 for 0, an
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAysoyswrUUgsKlKwVUipzEvMzUzWiNY101Ew0FGwiNXkqlFIrShJzUsBKYkvzkzPA6orTi3KTC0G8zSAwpoAa5KS9UQAAAA=" target="_blank">Run the query</a>
-:::moniker-end
+::: moniker-end
 
 ```kusto
 print arr = dynamic([-6, 0, 8])

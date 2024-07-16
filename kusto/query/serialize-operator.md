@@ -33,7 +33,7 @@ The operator has a declarative meaning. It marks the input row set as serialized
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/SampleLogs?query=H4sIAAAAAAAAAwspSkxO9clPL+blqlEoz0gtSlVwzslMzSsJSi0sTS0u8UxRsLVVUDJNtDCxSDM30LW0tDTTTU0yNNc1NE1N0TUyTLJITbI0SUozSFUCGVGcWpSZmJNZlQoAv59YuFkAAAA=" target="_blank">Run the query</a>
-:::moniker-end
+::: moniker-end
 
 ```kusto
 TraceLogs
@@ -48,7 +48,7 @@ To add a row number to the serialized table, use the [row_number()](row-number-f
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/SampleLogs?query=H4sIAAAAAAAAAwspSkxO9clPL+blqlEoScxOVTA0AADDD5pUFAAAAA==" target="_blank">Run the query</a>
-:::moniker-end
+::: moniker-end
 
 ```kusto
 TraceLogs

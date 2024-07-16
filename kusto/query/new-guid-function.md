@@ -26,7 +26,7 @@ A new value of type [`guid`](scalar-data-types/guid.md).
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAysoyswrUUgvzUyxzUstjwcxNDQBGYdeSRUAAAA=" target="_blank">Run the query</a>
-:::moniker-end
+::: moniker-end
 
 ```kusto
 print guid=new_guid()

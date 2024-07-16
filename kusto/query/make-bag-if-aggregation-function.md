@@ -44,7 +44,7 @@ The following example shows a packed JSON property bag.
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA1WOywqDQAxF9/MVwZXCLPrYWfwLd0Uko1EGRx1mYimlH99YtNhkc8O5geOIoYQCWmRZ4yj1YfZ55GCnXsMD3UK/ywdqbYNMuZlnl6m7Aplk/TidEw2J1GuUwGEhfYCXHRoJHbr4R687bbZXVd1Uqd5AT6apBS9+BvvaYzN89TavTCpxGUcM9kUgZlyMOFC9dm2X+oNw9gEXEDu16AAAAA==" target="_blank">Run the query</a>
-:::moniker-end
+::: moniker-end
 
 ```kusto
 let T = datatable(prop:string, value:string, predicate:bool)
@@ -69,7 +69,7 @@ Use [bag_unpack()](bag-unpack-plugin.md) plugin for transforming the bag keys in
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA1WOzQqDMBCE73mKxZNCDv25WXwLb6XIxqwSjBpiUkrpw3cjWuzuZZb5ZhlLAWqoQGPgVZZy52dXLsGbqZfwRBvpdzlP2rQYqFTzbAtxF8CTpcTpnEnIGG+QRfCR5MG87KZi0aFd/tzr7rZbVDxuohYfoFegSYPjfgr7xmE7rPW2XgUjSxxH9OZNiahGHKhJqOlyd+ibSEoZ1uurOK3PWBZfye97QAIBAAA=" target="_blank">Run the query</a>
-:::moniker-end
+::: moniker-end
 
 ```kusto
 let T = datatable(prop:string, value:string, predicate:bool)

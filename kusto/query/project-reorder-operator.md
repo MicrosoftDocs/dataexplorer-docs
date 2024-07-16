@@ -45,7 +45,7 @@ Reorder a table with three columns (a, b, c) so the second column (b) will appea
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAysoyswrUUi0VU9U11FIslVPAlLJturJ6rxcNQoKBUX5WanJJbpFqflFKalFCkkA1H2l7S8AAAA=" target="_blank">Run the query</a>
-:::moniker-end
+::: moniker-end
 
 ```kusto
 print a='a', b='b', c='c'
@@ -63,7 +63,7 @@ Reorder columns of a table so that columns starting with `a` will appear before 
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAysoyswrUUhSsFVQT1LXUUg0slVPNAIxjIEMYxDDEMgwVOflqlFQKCjKz0pNLtEtSs0vSkktUkjUUkgsTgYAJU2yOEMAAAA=" target="_blank">Run the query</a>
-:::moniker-end
+::: moniker-end
 
 ```kusto
 print b = 'b', a2='a2', a3='a3', a1='a1'

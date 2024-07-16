@@ -78,7 +78,7 @@ The supported values of this property are:
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA0WOQQ6CMBBF955iwgoSPQI73JNwgpFOoNp2mukAYjy8hSjufvLf/3mdsvjrTEHT6Q1p8h7FvmhLZYMeB2qFI4mu1W2FTlEpc475MUVoOU4O1XJoUBE4HEAUvlOvF1zwvxIKhgRSj6ok/YiisFgdoXyqVUd1sZMQj9viDN/mZwFml4IskzY4E46GfFyP1hgK1QcXijj20QAAAA==" target="_blank">Run the query</a>
-:::moniker-end
+::: moniker-end
 
 ```kusto
 StormEvents

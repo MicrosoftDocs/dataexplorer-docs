@@ -32,7 +32,7 @@ The year that contains the given *date*.
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAysoyswrUahMTSxSsFVITy0BsTRSEktSSzJzUzWMDAxNdQ0NdA2NNDUB6MDMlCoAAAA=" target="_blank">Run the query</a>
-:::moniker-end
+::: moniker-end
 
 ```kusto
 print year = getyear(datetime(2015-10-12))

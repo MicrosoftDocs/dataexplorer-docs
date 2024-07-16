@@ -42,7 +42,7 @@ Matches two IPv4 strings. The two IPv4 strings are parsed and compared while acc
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA51Quw6CQBDs+YrtkAQ57gSjJpYWdvbGkAMO3YTHeXcYCj/eTbCAUOlssclkZ3YypXQ0ea1WqHlmncH2fhhXCKjFnAq8qwc+34uIb3cRj2I/BMKSITAGp2cvazhf7EzEmUjoasKINP3KSCQSyNGRaq2NqnAAtNBbVULVGSi6RkuDtmvnloscZDm++duSbeJFyt8tb94b1OBUW4JRtq8dHKnWV5KhzRrpisek92nhwQew+y1lmQEAAA==)" target="_blank">Run the query</a>
-:::moniker-end
+::: moniker-end
 
 ``` kusto
 print ipv4_is_match('192.168.1.1/24', '192.168.1.255')
@@ -59,7 +59,7 @@ print ipv4_is_match('192.168.1.1/24', '192.168.1.255')
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA51Quw6CQBDs+YrtkAQ57gSjJpYWdvbGkAMO3YTHeXcYCj/eTbCAUOlssclkZ3YypXQ0ea1WqHlmncH2fhhXCKjFnAq8qwc+34uIb3cRj2I/BMKSITAGp2cvazhf7EzEmUjoasKINP3KSCQSyNGRaq2NqnAAtNBbVULVGSi6RkuDtmvnloscZDm++duSbeJFyt8tb94b1OBUW4JRtq8dHKnWV5KhzRrpisek92nhwQew+y1lmQEAAA==" target="_blank">Run the query</a>
-:::moniker-end
+::: moniker-end
 
 ```kusto
 datatable(ip1_string:string, ip2_string:string)
@@ -86,7 +86,7 @@ datatable(ip1_string:string, ip2_string:string)
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA52QvQrCMBCA9z7FbbVQWxNT0YIP4OYuUvqT1oM2CUkqHXx4g1WIOundcPANH8fXlNZt1fMFKlIYq1F0+XxiQEU/kdK8xSnvpeii4BRASHY0IZttQhISxuDGI6sHWZMY0tQdqNDC4bicHYAGRsMbaKWGWg6q1GikeFemlDmHR2iWOfBUUvaH8uvLWUnZT8pzcAM+WS4a0NyMvYW9y3VlBZpiKG198Xr6IV8FozvG3oupeQEAAA==" target="_blank">Run the query</a>
-:::moniker-end
+::: moniker-end
 
 ```kusto
 datatable(ip1_string:string, ip2_string:string, prefix:long)

@@ -141,7 +141,7 @@ on Purchase from datetime(2016-09-10) to datetime(2016-09-13) step 1d by Supplie
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA3WSwW7DIAyG73kKHxMpkWxo0jRT34JbtQNbvSkaNBWgnvbwBZH1MIGEkOzvN7+FbTjAVQd9TlfQH4bbsFr2Qdv7EnOcoh4sB7d+LuBYm665NAB/rBVI00BikKRwWhC7Hkbs/ymOA1I8kR3KSEQky0jWq6RCmS2nsmCMaK4gRXI5pFqqGE9142O93bluOStBud2K4BSRqCBFItcSFRWECsf9//vm/a0xcbTrLbB7aANnoGtO+VQV49J4soJrCsKoSIvS/ILVPzx4dit70I/vNm9IB9sNXgsEX26zu2HY9nd94Purryf8i1rafwIAAA==" target="_blank">Run the query</a>
-:::moniker-end
+::: moniker-end
 
 ```kusto
 let data=datatable(timestamp:datetime, metric: real)
@@ -177,7 +177,7 @@ When the input to `make-series` is empty, the default behavior of `make-series` 
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA3WSwW6DMAyG7zyFjyDBZCeFMibeIrdph6y4E1oCFbg97eEXFLZJE5GiKPb3O7+V2LHAYMX22yb23XEuo+dVrL91IcdbVIJnWcZLBwtbV2SvGcAPyxVSU5GqNBlsOsSihBrLf4pzhRRWYKdjpALSx0inq7RBHS2bY0EdUJtAhnR32mopYdykjc/pdtu0ZWsUxXYTgueAVAIZUrGW6FBBaLDe37/M3l4yF752nISXh3XQAw0xtW5VIT76nqjglIIwKLZByb7AjX4UwHDy9pOrlZeRV7CPjzzOSgEDX+3dSU9PCPMEv2MF12X2exsy726r8O2v23DrZb5P8g2FvL+MngIAAA==" target="_blank">Run the query</a>
-:::moniker-end
+::: moniker-end
 
 ```kusto
 let data=datatable(timestamp:datetime, metric: real)
@@ -217,7 +217,7 @@ Using `kind=nonempty` in `make-series` will produce a non-empty result of the de
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA3WSwWqEMBCG7z7FHFfQMmNW11p8i9xKD2mdLWETFZ0uFPrwjcTuoRgIITPfP/xDZhwLDEZMv11i3h2fxHpexfi5CzneogI8y2I/OljYuDx7zQD+2KlCakqqSkUamw4xL6DG4p/iUiKFE9j5GFUBqWOk0lVKo4qWzbGgDqhNIE2qO2+1lDBu0saXdLtt2rLVFcV2E4LngKoE0lTFWqJDBaHGev//Int7yVwYrR2Fl7tx0AMNMbVuVSE+Gk9UcEpBGBTbomQ/4Ky3Ahhe3ty4XHmxvMLNjkM/TiP7Wb7B3D9PcXNyGPhqvpz09IQwjfBYMrguk9+bkmn3XoXnR++/5AUDOqMCAAA=" target="_blank">Run the query</a>
-:::moniker-end
+::: moniker-end
 
 ```kusto
 let data=datatable(timestamp:datetime, metric: real)

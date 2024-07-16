@@ -33,7 +33,7 @@ A table with one or more columns and a single row. Each column returns the corre
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAysoyswrUTBQ0FYwBGIjIDYGYhMgNtVRqFCwVVAKzy9XVAIAppjMyScAAAA=" target="_blank">Run the query</a>
-:::moniker-end
+::: moniker-end
 
 ```kusto
 print 0 + 1 + 2 + 3 + 4 + 5, x = "Wow!"
@@ -48,7 +48,7 @@ print 0 + 1 + 2 + 3 + 4 + 5, x = "Wow!"
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAysoyswrUUhKzMtLLbItLilKTizRUPJIzcnJV9JRgKLw/KKcFEUlTQBf/iftLAAAAA==" target="_blank">Run the query</a>
-:::moniker-end
+::: moniker-end
 
 ```kusto
 print banner=strcat("Hello", ", ", "World!")

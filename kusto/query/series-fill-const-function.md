@@ -42,7 +42,7 @@ Takes an expression containing dynamic numerical array as input, replaces all in
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/kvc9rf7q4d68qcw5sk2d6f.northeurope/databases/MyDatabase?query=H4sIAAAAAAAAA3WOywrCMBBF94H8wywTiNJppAvFLymlxDRCJLaSxIXgxzsmPkBwFvM4XO6d4DJMJhvYl5HNIThhYtzCdJvN2VvJGVD1dbyg6BFRwXwNQYHuFGzoavWbIJGOiP6QZx8kGXA27DgriZzd4RKXk7O5mlOsgroefQijXeaUkT5LLnqXxi8URdqsG6l+9e1//QrlA3dBmsPvAAAA" target="_blank">Run the query</a>
-:::moniker-end
+::: moniker-end
 
 ```kusto
 let data = datatable(arr: dynamic)

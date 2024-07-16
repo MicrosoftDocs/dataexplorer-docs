@@ -35,7 +35,7 @@ The arguments concatenated to a single string.
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAysoyswrUSguKVKwBZHJiSUaShmpOTn5SjoKSgogojy/KCdFSRMA4dg7JykAAAA=" target="_blank">Run the query</a>
-:::moniker-end
+::: moniker-end
   
 ```kusto
 print str = strcat("hello", " ", "world")

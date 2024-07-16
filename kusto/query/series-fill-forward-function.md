@@ -41,7 +41,7 @@ An expression containing dynamic numerical array is the input. The function repl
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/kvc9rf7q4d68qcw5sk2d6f.northeurope/databases/MyDatabase?query=H4sIAAAAAAAAA8tJLVFISSxJVLAFUyWJSTmpGolFRVYKKZV5ibmZyZq8XApAEA2hoIIa0XmlOTk6ChDS2ExHwcQQxoOQhkAxM6CYsTGyeKwm0AxerlhrXi6wpbxcNQoFRflZqcklEPOBNusoQJhpmTk58Wn5ReWJRSlA1xWnFmWmFscji4LcqQkA68oew8EAAAA=" target="_blank">Run the query</a>
-:::moniker-end
+::: moniker-end
 
 
 ```kusto

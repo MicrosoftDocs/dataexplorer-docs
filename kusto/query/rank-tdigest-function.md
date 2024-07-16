@@ -39,7 +39,7 @@ In a sorted list (1-1000), the rank of 685 is its index:
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAytKzEtPVahQSCvKz1UwVCjJVzA0MDBQKC5JLVAw5KpRKC7NzU0syqxKVSiJr7AtSclMTy0u0ajQBEoVFOVnpSaXKBQl5mXH56fFm1mY2oLZMFVAHToKQFFNANdlA5xlAAAA" target="_blank">Run the query</a>
-:::moniker-end
+::: moniker-end
 
 ```kusto
 range x from 1 to 1000 step 1
@@ -58,7 +58,7 @@ This query calculates the rank of value 4490$ over all damage properties costs:
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAwsuyS/KdS1LzSsp5qpRKC7NzU0syqxKVShJyUxPLS4JSi1WsIVxNFwScxPTUwOK8gtSi0oqNYEaCorys1KTSxSKEvOy4/PT4k1MLA1swRyYHoRBOgogWU0A4SQmJHIAAAA=" target="_blank">Run the query</a>
-:::moniker-end
+::: moniker-end
 
 ```kusto
 StormEvents
@@ -77,7 +77,7 @@ Getting the estimated percentage of the rank (by dividing by the set size):
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAwsuyS/KdS1LzSsp5qpRKC7NzU0syqxKVShJyUxPLS4JSi1WsIVxNFwScxPTUwOK8gtSi0oqNXUUkvNL80o0NIE6C4rys1KTSxSKEvOy42HqEYboKJiYWBpoKmgpGBoY6Bko6EO0xgMAg34oyX8AAAA=" target="_blank">Run the query</a>
-:::moniker-end
+::: moniker-end
 
 ```kusto
 StormEvents
@@ -96,7 +96,7 @@ The percentile 85 of the damage properties costs is 4490$:
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAwsuyS/KdS1LzSsp5qpRKC7NzU0syqxKVShJyUxPLS4JSi1WsIVxNFwScxPTUwOK8gtSi0oqNYEaCorys1KTSxSAAslAMzJzUuNhihEm6ChYmOoolFQWpOanaeTk56VragIAa7SLZXcAAAA=" target="_blank">Run the query</a>
-:::moniker-end
+::: moniker-end
 
 ```kusto
 StormEvents

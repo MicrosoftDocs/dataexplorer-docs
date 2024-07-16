@@ -33,7 +33,7 @@ Determines whether the specified set contains the specified element.
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAysoyswrUUgsKrJNqcxLzM1M1ohWKsnILFbSUVCCkIl5IDK1IjG3ICdVKVZTgatGoaAoPys1uUQhKLW4NKfEtji1JD4jsTg+NSc1NzWvRANoHJIWTQCSW+h8ZAAAAA==" target="_blank">Run the query</a>
-:::moniker-end
+::: moniker-end
 
 ```kusto
 print arr=dynamic(["this", "is", "an", "example"]) 

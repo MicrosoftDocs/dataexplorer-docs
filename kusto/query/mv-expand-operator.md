@@ -71,7 +71,7 @@ Two modes of property bag expansions are supported:
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA0tJLAHCpJxUBY1EK4XMvBIdhSQrhZTKvMTczGRNXq5oXi4FIDDUgYlpRBsa6CgYGcRq6kCkjJCk1BPVdRTUk9RjgTpjeblqFHLLdFMrChLzUhSSANALFPlqAAAA" target="_blank">Run the query</a>
-:::moniker-end
+::: moniker-end
 
 ```kusto
 datatable (a: int, b: dynamic)
@@ -98,7 +98,7 @@ A simple expansion of a single column:
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA0tJLAHCpJxUBY1EK4XMvBIdhSQrhZTKvMTczGRNXq5oXi4FIDDUgYlpVCsVFOUXGCpZKSglGirpKIC5RiBukqFSraYORIMRdg1GqBqMgBp4uWJ5uWoUcst0UysKEvNSFJIAxNVM3ZQAAAA=" target="_blank">Run the query</a>
-:::moniker-end
+::: moniker-end
 
 ```kusto
 datatable (a: int, b: dynamic)
@@ -125,7 +125,7 @@ A simple bag expansion to key-value pairs:
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA22LsQrDIBiEd8F3OJwSsFAdA3kSyfBbHaSJFZEQafvu1ZYOhd5N9x2fo9JqV4%2BBJoRYJOwEVyNt4TJyZjhDi5JfNtxFyrekxARBSki8p%2B7TKvEc5UfQ%2FwX9K%2BgmcLZw9sC2n%2FyRKDpcQ3Qz5UwVFv3yR%2FGd%2B4oZ1pwXiZ3W2Rq1vADUbch1vwAAAA%3D%3D" target="_blank">Run the query</a>
-:::moniker-end
+::: moniker-end
 
 ```kusto
 datatable (a: int, b: dynamic)
@@ -153,7 +153,7 @@ Expanding two columns will first 'zip' the applicable columns and then expand th
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA0tJLAHCpJxUBY1EK4XMvBIdhSQrhZTKvMTczGQdhWQ4WzOal0sBCAx1YCIa1UoFRfkFhkpWCkqJSjoKYJ4RiJekVKuJUBZtqqNgoqNgHKvJyxXLy1WjkFumm1pRkJiXopAEtAEANvW+roIAAAA=" target="_blank">Run the query</a>
-:::moniker-end
+::: moniker-end
 
 ```kusto
 datatable (a: int, b: dynamic, c: dynamic)[
@@ -177,7 +177,7 @@ If you want to get a Cartesian product of expanding two columns, expand one afte
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA0tJLAHCpJxUBY1EK4XMvBIdhSQrhZTKvMTczGQdhWQ4W5OXK5qXSwEIDHVgYhrVSgVF+QWGSlYKSolKOgpgnhGIl6RUq4lQFm2qo2AWCzQhlperRiG3TDe1oiAxL0UhCZWbDACXJubPjQAAAA==" target="_blank">Run the query</a>
-:::moniker-end
+::: moniker-end
 
 ```kusto
 datatable (a: int, b: dynamic, c: dynamic)
@@ -204,7 +204,7 @@ To force the output of an mv-expand to a certain type (default is dynamic), use 
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA02MuwoCMRRE+4X8w7BVAtfCBz629TOWFHm5BkyymIu44McbC8WZZjgzjDfcbG8B0gyofI95ItgBfskmRUdwv6xG0aGpP5dc2WTu6VvJcU3YELaEnVZ/eE84EI6Ek1ai06J7IT1W4Tmb7GHbO7iAlzmUi4yZ1WcwBa7uGpJ5A3+651CdAAAA" target="_blank">Run the query</a>
-:::moniker-end
+::: moniker-end
 
 ```kusto
 datatable (a: string, b: dynamic, c: dynamic)[
@@ -231,7 +231,7 @@ Expansion of an array with `with_itemindex`:
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAytKzEtPVahQSCvKz1UwVCjJVzBRKC5JLVAw5OWqUSguzc1NLMqsAqmwVchNzE6Nz8ksLtGo0ATJ5pbpplYUJOalKJRnlmTEZ5ak5mbmpaRW2HqCSIUKAIrdlHpcAAAA" target="_blank">Run the query</a>
-:::moniker-end
+::: moniker-end
 
 ```kusto
 range x from 1 to 4 step 1

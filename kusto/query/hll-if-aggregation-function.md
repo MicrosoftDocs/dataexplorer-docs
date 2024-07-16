@@ -47,7 +47,7 @@ Returns the intermediate results of distinct count of *Expr* for which *Predicat
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAz2OQQrCMBBF955imFUCuUIXXSiIYBcpuCw1ndBI2ylJqlQ8vDEBd/Ph/fdHR/bz8UlLDIcPvEbyBDr2kcAtIPDc3GpUgJf6qmuNMjFhm+feuzfBOE2dnZgHqPLtrNC8eUMKsrHdV4KqAjz9IJRw34s7WVbPDzKxZAWlFxqb0fJPsg6GtyV2SS7+Y/IL9SJmoLMAAAA=" target="_blank">Run the query</a>
-:::moniker-end
+::: moniker-end
 
 ```kusto
 StormEvents

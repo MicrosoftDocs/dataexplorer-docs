@@ -38,7 +38,7 @@ The following example converts a date and time string into a `datetime` value.
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAysoyswrUSjJT0ksSS3JzE3VUDIyMDTVNTTSNTZUMDK2MrUEIj1LJU0ARpCGGSkAAAA=" target="_blank">Run the query</a>
-:::moniker-end
+::: moniker-end
 
 ```kusto
 print todatetime("2015-12-31 23:59:59.9")
@@ -49,7 +49,7 @@ The following example compares a converted date string to a `datetime` value.
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAysoyswrUSjJT0ksSS3JzE3VUDc00jUw0jUyMDJS11SwtVXALgMAakZnYjgAAAA=" target="_blank">Run the query</a>
-:::moniker-end
+::: moniker-end
 
 ```kusto
 print todatetime('12-02-2022') == datetime('12-02-2022')

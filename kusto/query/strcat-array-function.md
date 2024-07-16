@@ -35,7 +35,7 @@ The input *array* values concatenated to a single string with the specified *del
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAysoyswrUSguKVKwBZHJiSXxiUVFiZUaKZV5ibmZyRrRhjoKRjoKxrGaOgpKunZKmgBWe4fjMgAAAA==" target="_blank">Run the query</a>
-:::moniker-end
+::: moniker-end
 
 ```kusto
 print str = strcat_array(dynamic([1, 2, 3]), "->")
@@ -54,7 +54,7 @@ To use quotes as the delimeter, enclose the quotes in single quotes.
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/kvc9rf7q4d68qcw5sk2d6f.northeurope/databases/MyDatabase?query=H4sIAAAAAAAAAysoyswrUSguKVKwBZHJiSXxiUVFiZUaKZV5ibmZyRrRhjoKRjoKxrGaOgrqSuqaABjzStsxAAAA" target="_blank">Run the query</a>
-:::moniker-end
+::: moniker-end
 
 ```kusto
 print str = strcat_array(dynamic([1, 2, 3]), '"')

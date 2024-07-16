@@ -44,7 +44,7 @@ a dynamic array that includes the results. (such like [`percentiles()`](percenti
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA0WMuwoCMRBFe79iygRSxMLSTntxP2AZ12uImAeTWSHix5tmsblwuJwzaZF0fiNr232prSmxxA9I7zGg6RWNjhuYEycOuEipEO2Wbp0mZcUwq5QnFqXxLCMWX2gzi3CfN/lfdCScA4x3tPdjDt460l5RHiZmtfYHKGdLI5UAAAA=" target="_blank">Run the query</a>
-:::moniker-end
+::: moniker-end
 
 ```kusto
 StormEvents

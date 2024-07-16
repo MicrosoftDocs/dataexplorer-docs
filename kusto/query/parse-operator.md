@@ -77,7 +77,7 @@ The operation will extend the table with six columns: `resourceName`, `totalSlic
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA93UQU+DMBQA4DsJ/+Glp82QrHS6KYajN0OM42Y8MPbcqh2QtkxN/PG2oAyC27jsIhyg4b3Sr695AjXEMklRQQirRJt7KXB0t8NMx/ihA1Ba8mw9dh0w11P9INX3AKJc85fPheApPqLARCGMJKq8lClGyRbDB16g4Bku0g2uSoHSA53rRFQpKmRzD5R9jcrtEmXIph6IPH2LucmlbOLPJ4z6M6DXwSUNqO+BrH9zOKCQuON5qe7/nmZ6Y6LGxDuvw7866qCnHHSQg57dwej/qAdjhx3+KYc/pB6V9vznanbUcfxcDXaYc+U6z7eu89MYwHW+oEikWX3TF+Cd6w1cAOlwCLSHQLoa0h4FBpKt7QxtIGlz9yGNmTR8O3kbS9qjwLYyG0Jsdo9MervwmzC2CbVX5q+Y6g6ow+lUZl+Wzqr62/0N0O/KLnAFAAA=" target="_blank">Run the query</a>
-:::moniker-end
+::: moniker-end
 
 ```kusto
 let Traces = datatable(EventText: string)
@@ -108,7 +108,7 @@ Traces
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA9WUTU/CQBCG7036HyZ7arHItihoTYMevBlihJOUQ2lHWFlasrtFJP5414rYBvm4cDCbbDbtO+0878wORwV9EcUoIYAkUnqNOFr3C0xVH5fKl0qwdGybxsA0SPHYh26m2Mt7j7MYn5BjJBEsgTLLRYzdaIbBI5sjZyn24gkmOUfhgMpUxIsQGXhtB+TXsZvPRigCr+kAz+Jpn+lY6jXcdsOjbgvolX9Bfeo6IL5/s1swF7hgWS4f/v5M81qrbOKcjsG93MtADzHQoxjoSRk8+v/r4Hm7GdxDDO4xdShIT9tLrb0M+3vpaAbdS6YxvDGN9f0H0/iAeSR09lOWJnoeCBzjEjazAN6YmgCxzmsdexDVV3f152EtIFBGhVtSZQtlLUzO9K6jyoykTOzzLB0DEK2xfjK3OxsLyMaNQlKGJ2Urirdb5GTLDF8POi0OQ5usqUX2irGqkFRK8luPivfbPn8CDcwIyFAFAAA=" target="_blank">Run the query</a>
-:::moniker-end
+::: moniker-end
 
 ```kusto
 let Traces = datatable(EventText: string)
@@ -141,7 +141,7 @@ If you're interested in getting the resourceName only, use this query:
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA92Uz0vDMBTH74X+D49e9oPAkkw3rfToTYq43sRDlj63uKwtSTon+McbWxAHruulF5NDXng/kg/vy9PoIDNCooUEcuH8Xmsc3x+wcBkeXQzWGVVsJmEAfj23R9T4Y0hLp14/VlpJfEKNwiKMDdqyNhJTscfkUVWoVYErucW81mgIuNIJ3aTYhC8J2G8zrfdrNAmfE9Cl3GXK51I+Y8sZp2wB9Ca+ojFlBEz7zPmAyuBBlbV9+LvM/NZHTSIyLAe77uSglzhoLw46OAen/6MfnJ/nYJc4WJ9+NLTD62rRydGtq94cXldh8HIXBu1gCINPqITxf9+pIvdjwuAGj/AzIuBduS1MITohi+D3FUZkBNOmkinfULoT7xfmHnmlhQQAAA==" target="_blank">Run the query</a>
-:::moniker-end
+::: moniker-end
 
 ```kusto
 let Traces = datatable(EventText: string)
@@ -175,7 +175,7 @@ To get the wanted result, run the query with the non-greedy `U`, and disable cas
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA92UTUvDMBjH74V+h4de9kJhaeY2rfQg0ptWWbuTeMjaZ11c1pYknRP88GYtiIJ7ufRickjgeUl+PH/+AjUkkqWoIICMabOXAvvhDgud4F77oLTkRT6wLTDrpT2cJu5DVGq++ogFT3GOAplC6EtUZS1TjNgWg2deoeAFxukas1qgdEGXmommRAV05oI6XKN6u0QZ0LELokw3CTe1hI682YgSbwrk2r8iPvFckO0zxxMqiTte1urh7zbjG5M1cNxuObzJSQ5yjoNcxEE656Dkf8yD0uMc3jkO75J5NLTd62p6kuO0ri7mMLqyrddb22qNwbY+oWLS/H3Di8zYhMQc97ASLD+YxoLDt1vAO9drGIIzD+Onxfw+jO4ew8CBn8zQc3swbJrK8g1T/Sv6BX2O9haQBAAA" target="_blank">Run the query</a>
-:::moniker-end
+::: moniker-end
 
 ```kusto
 let Traces = datatable(EventText: string)
@@ -206,7 +206,7 @@ If the parsed string has newlines, use the flag `s`, to parse the text.
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA92UTVPCMBCG753pf9jJiTIqaVHQOh1P3hzGEW7WQygLRELCJCkfM/54Q5FaRT4uXEwO2U3eTfIkOyvQQk+zDA0kMGDW9b7A2uMcpe3h0sZgrOZyFPgeuPa6GUixHkNHWT5cdQXP8AUFMoNQ02hUrjPssCkmz3yGgkvsZmMc5AJ1Kq2yTBQhJonaqTRrs5NP+6iTqJlKobJJj7tYGjXCdiOiYQvobXxNYxqmUm+O2S+YaZxzlZunv7dp3jlVQC7OyxHeHOSgxzjoSRz07BwR/R//EUX7OcJjHOEp/1HQnj+vWgc5DufVyRwur3zv7d73NoXB9z5gxrS7+4TLQaJxhEsYCjYyiYGyUMCC2zHUgfzgI1B1t8UESO2q/hBUSQlUvBiEKlUlL4GtGa8rFVpnfWmq1OsjS29HuYNP4PdUNSZNAwLFA2j1jpm9ZAu2+ob+BOPecsY+BQAA" target="_blank">Run the query</a>
-:::moniker-end
+::: moniker-end
 
 ```kusto
 let Traces = datatable(EventText: string)
@@ -246,7 +246,7 @@ If you use option `kind = simple` for the same query below, you'll get `null` fo
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA92Uz0/CMBTH70v2P7z0BGaGbijozG56I8QI8WI8lO0JldKSruNH4h9vNwSLU/SAHmwP7du+371++pYn0MBQsxRzSCBjxs6RwMbNAqUZ4srEkBvN5bjpe2DHw2Yh1fsY+srwp/VA8BTvUCDLERoac1XoFPtshsktn6PgEgfpBLNCoA7AKMNEZcmTqBtAXm77xWyEOonaAQiVTofcemnUCrutiIYdoBfxGY1pGIDepKkEUsl7Jnh2zUz1wJHNNS64KvLe5x9rX1pVkwS/SxOeH6Shh2l+BEGPDrE9Rk/Jsd0U+KFC9D9VKIq+pglrNHUB/Zajov3rIoWdg1j0OFj23/O9xyvf2/QP33uBOdMWZcplltgMbIUZ7DoJLLmZwAmQPVACbghkn5O4UWyZ5LiUuKzEjd4kNskOn+xuonS63MSN4rL5lRJSumv0pHYhW0PTGip0rZ4xNadsydbv0K/RM7BuXwUAAA==" target="_blank">Run the query</a>
-:::moniker-end
+::: moniker-end
 
 ```kusto
 let Traces = datatable(EventText: string)

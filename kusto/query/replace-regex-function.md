@@ -36,7 +36,7 @@ Returns the *source* after replacing all matches of *lookup_regex* with evaluati
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAytKzEtPVahQSCvKz1UwVCjJVzBVKC5JLVAw5KpRSK0oSc1LAfKLbIE4ObFEQ92vNDcptUghs1hBXQeoGiicmZeuUaGpiVBelFqQk5icmmILZcQXpaanVmgAleooOKgDdWrEpGhrqoM45YnFVgoxhuqaAA84qqaHAAAA" target="_blank">Run the query</a>
-:::moniker-end
+::: moniker-end
 
 ```kusto
 range x from 1 to 5 step 1

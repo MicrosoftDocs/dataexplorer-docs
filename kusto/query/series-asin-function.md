@@ -32,7 +32,7 @@ Dynamic array of calculated arcsine function values. Any non-numeric element yie
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAysoyswrUUgsKlKwVUipzEvMzUzWiNY11DHQMYzV5KpRSK0oSc1LASmITyzOzAOqKk4tykwtBvM0gMKaAOO+/MVCAAAA" target="_blank">Run the query</a>
-:::moniker-end
+::: moniker-end
 
 ```kusto
 print arr = dynamic([-1,0,1])

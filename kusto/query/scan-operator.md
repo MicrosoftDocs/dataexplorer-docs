@@ -88,7 +88,7 @@ Calculate the cumulative sum for an input column. The result of this example is 
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA02NOwqAMBBE+5xiSkUQLWyUeBUJcf1ATCTZaAoPb7ByqmEej/HKroSExbsDLdihQ2A6cxcPglYWM2mjPKHQ8YhG8X7RlHrj7CqbEvfOG0QhkPOJoe3BPhLkiL8BmW+qjOv/OojyBSZSTeODAAAA" target="_blank">Run the query</a>
-:::moniker-end
+::: moniker-end
 
 ```kusto
 range x from 1 to 5 step 1 
@@ -115,7 +115,7 @@ Calculate the cumulative sum for two input columns, reset the sum value to the c
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA22OQQrCMBBF9znFXzZaxAhuKulVJLSTWmhTSdKagIc3FIVo/fzVG+bNWGU6QoC20wgBP+EM5+kOwZ6g4Mm0iJA4YYeQkGuUQUvNoCyhaOZxHpTvF7qGaphMJ48lMhjfkOPR+xtYwZCy+p2o4O1MkHW+EdKtXuvCicMXrSVEcodU7PEz5SVW8Sb5K3/F8SOOqRtx5BfGX1hK/bgiAQAA" target="_blank">Run the query</a>
-:::moniker-end
+::: moniker-end
 
 ```kusto
 range x from 1 to 5 step 1
@@ -144,7 +144,7 @@ Fill forward a string column. Each empty value is assigned the last seen nonempt
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA01Qy2rDMBC86ysGnSwwoW5DCAkuNI8/yK2EoNjrViC7xrtNCPTjK8sOaPcyo50dRutJcLxRJ4wStZXQV0/ITryBuJa4t10+KTZgGVz3ZfCpEOqlzaE/dB5JMZIZv454N5O3ZLBM8GrE+5msk0ERrQ5PFs20OqutmnKqP/DPILg+cGJYrsaHynaoqfJ2CNmj7tI476l+hi61Nrg7+YbKojEL9eAi/HL4JZTvSLfCLVzTZI6p7eUxGZo8yBepar6L2SrzD0ocTu9HAQAA" target="_blank">Run the query</a>
-:::moniker-end
+::: moniker-end
 
 ```kusto
 let Events = datatable (Ts: timespan, Event: string) [
@@ -188,7 +188,7 @@ Divide the input into sessions: a session ends 30 minutes after the first event 
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA3WQy2rDMBBF9/qKS1Y2qCVt+sLGgT7yBcmulKDYSiOQZaMZtxT68ZVsp3EWkTY6M/fOQ1YzVl/aMaFApTjcndVINpSBTa2pVU4OigzE3rjPFO8C4cxridnzTPZwM4XbCC8jLCK8HeE89RDp9UhPU+VdX3E10uP9UF98iFwM84pfUOMZux9sCIrKGCiVw7fhw7ZWXB62pipIE5nGhScqXVrlw3JjbM3K82nNtHdCJH1HYt3CuPUgDSrfaRRLTL3hy8x+nxhynbXJv/h6qkllGE/iQjI/9dKuGiVoOm47LlzjdBaXu7pgxxKLeZ2L9A9Yk5hPxgEAAA==" target="_blank">Run the query</a>
-:::moniker-end
+::: moniker-end
 
 ```kusto
 let Events = datatable (Ts: timespan, Event: string) [
@@ -233,7 +233,7 @@ Find all sequences of events between the event `Start` and the event `Stop` that
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA3WPYWvCMBCGv+dXvPOTQidr3cZozYc5/QX6TYbENsxCE0vvcAj+eJM0FR0sgRzPe3fvXRrNWJ20ZYJEpdjdfaMx3lAOro2mVtmkr8hB3NX2Z4KtgDsvJsHoc5QESD2sWXUchcwLiwgzD8sIr33psY387vkrwsdfnzQ4rwbKbs3iWxSiX11cQMeOsT9jQ1BUeqFUFr81H3ZGcXnY1ZU07gkSxDi4EesWlOb9/yDlMLq4S2dD+umWhrLVg+jWCZqb/uwMpy7OJd7Mvc/sccz/LZMrJ20JNJQBAAA=" target="_blank">Run the query</a>
-:::moniker-end
+::: moniker-end
 
 ```kusto
 let Events = datatable (Ts: timespan, Event: string) [
@@ -277,7 +277,7 @@ Calculate a funnel completion of the sequence  `Hail` -> `Tornado` -> `Thunderst
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA2VQsa7CMBDb+QqrEwwgPUZ4HZHYqcR8NNHLSfRSJVeeivh40lBBgQw32D774oP60OwuVjTObmgpKCt7gWPRVdRAav/6Ukj5YnHqcdCEYIb05nlGH3QkglbcWFCsM3NDrEnwz+qmC3lJbQtHfN4gZ1d9a1GWKPYJK7bvunShkPGf0uoBFyAxk/Rl9l29gN8SP+7T0nVibIjD548s5st7wmMQfKeMV70HrcegxThTBV3TUOCrhal9JzrPBS6Gxp6RdzkEW8CEAQAA" target="_blank">Run the query</a>
-:::moniker-end
+::: moniker-end
 
 ```kusto
 StormEvents
@@ -309,7 +309,7 @@ This section demonstrates the [scan logic](#scan-logic) using a step-by-step wal
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA3WPYWvCMBCGv+dXvPOTQidr3cZozYc5/QX6TYbENsxCE0vvcAj+eJM0FR0sgRzPe3fvXRrNWJ20ZYJEpdjdfaMx3lAOro2mVtmkr8hB3NX2Z4KtgDsvJsHoc5QESD2sWXUchcwLiwgzD8sIr33psY387vkrwsdfnzQ4rwbKbs3iWxSiX11cQMeOsT9jQ1BUeqFUFr81H3ZGcXnY1ZU07gkSxDi4EesWlOb9/yDlMLq4S2dD+umWhrLVg+jWCZqb/uwMpy7OJd7Mvc/sccz/LZMrJ20JNJQBAAA=" target="_blank">Run the query</a>
-:::moniker-end
+::: moniker-end
 
 ```kusto
 let Events = datatable (Ts: timespan, Event: string) [

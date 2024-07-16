@@ -36,7 +36,7 @@ few even integers.
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAw3ITQqDMBBA4X1O8TYFhVmo1f5BTlJKGXVohaiQVITSwzfv271RP1kfjEJvhHV5ldwduVpohKPQCp1wEs7CRbgKdeUe7sf+tmgoBxq8p8orWZw0TF9jSD6u+3PY5rTNhZZ/2Wk/Y2kAAAA=" target="_blank">Run the query</a>
-:::moniker-end
+::: moniker-end
 
 ```kusto
 datatable (a:long) [
@@ -60,7 +60,7 @@ when the data is partitioned (here, by `name`):
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA2WPSw6CQAxA95yisoJkFuBnIQkLvYYxZgYaJJmPmSkqiYe3A7qBtovm9TVpW0mcSiNkVhqsAvnedgKMs3SveksCgtTSj5V2tsuTSwIc6Un3DaYCSq6iKMRMz04xgwX9u1uutcu0PB6W7o7pfuVONLrX5APOt+hBjRDvBhma39Gx5TG+CW0L5Ejq2rvXrRlMGEw2fyPmrU0ND4/P6fU8/wKEiBU0DAEAAA==" target="_blank">Run the query</a>
-:::moniker-end
+::: moniker-end
 
 ```kusto
 datatable (name:string, month:int, salary:long)

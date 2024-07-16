@@ -50,7 +50,7 @@ The following example performs geospatial union on line rows.
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA8WSSWrEMBBF9z6F0coGp1FpbkNukF2WxhjFFo06ttTI6oUz3D1KPBwgBFK1KX3eLz6oBh1Tv4ymGK0zcz0sTk+2L7Mmy1Ntz+IdxeVmUI2eEvUcg3UXVKHe+zBYp6OZUd00D5KezlwoqhQTBAvBK4ZPCnNM1BmYwklvqx2jVBJJgSR1wyR8N4CUB8WSkQvCBKh9GWCCMaNAAdr2s6x+nfMvAuwYp5JRgbFinK4YY5A0SFYO/P+DpgBZm33k832adLBvJv/5706HkD/mk3413WjnuF5BmcBb8FfTxw27O+tdAi/Gr3N32PVSHHP5BY0haIxPAgAA" target="_blank">Run the query</a>
-:::moniker-end
+::: moniker-end
 
 ```kusto
 datatable(lines:dynamic)
@@ -74,7 +74,7 @@ The following example performs geospatial union on line columns.
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA62Rz2rDMAzG73kK41MDXrH8v4G9QW87hlC8xBRvnR1c9xC2vfucJulltzHrok/8PklYg80lXi9ud/HBQTNMwX74nqBZsk3WVVuh8la5+8R5Gh1u8LFQLzn5cMYE9zGmwQeb3RU3bfuk+f4gleHGCMWoUpIIujdUUmYOIAwt9Y5sGOeaaQ6sVFdMwxwAWj8oUYxSMaHAbM2AMkoFBw7Qdd81+dOO/zF8wyTXgitKjZB8wYSAUoNilSDnJauu+kJjim+uz/ePvp5sSugZjbZ/n1M7LedYz1D/wm/Bx1AMZxeX/PRos3rvef0DcJZ9Yt8BAAA=" target="_blank">Run the query</a>
-:::moniker-end
+::: moniker-end
 
 ```kusto
 datatable(line1:dynamic, line2:dynamic)
@@ -96,7 +96,7 @@ The following example returns True because one of the lines is invalid.
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA5WQzWrFIBCF93kKcZVAenHUqDfQN+iuyxCCTeTirdGLMYX0591r70/2ndnMHL5zGGbSKfebM6Wz3izttHk927EqugLluq/lF07bxeAWv2TqNUXrT7jGYwhxsl4ns+C2654kOxwboZhSXFAiRFNzclCkIVQdgSuS9b5+YIxJKhnQrN4xCX8NIOVO8WxsBOUC1CMMCCWEM2AAff9T1f+/E2p0tRZ98Y2WdZ51tJ8GXR8w6BjRM5r1uxmcXdLtLVUGLzGczZiQ9R/a2WlYvQ0+o3bxq3PlyYSbNOw5eiv3uap+AQk/yOdqAQAA" target="_blank">Run the query</a>
-:::moniker-end
+::: moniker-end
 
 ```kusto
 datatable(lines:dynamic)

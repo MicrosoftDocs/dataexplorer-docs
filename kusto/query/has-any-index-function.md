@@ -34,7 +34,7 @@ Returns -1 if none of the array items were found in the string or if *values* is
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA53RsQ6CMBDG8d2n+MICJk0IqKMjm29gDDmlYCNcm7Yk8PYWkEUXNbntkv/vmhqr2G+gqiHDEXdyJfFYKq7kkET+rhzCEEMO1JlWRgLVyNSpW3KOp3UsEL928WW7BdIUtbLOo9X60RvUuucKisOY3sP5ADYbiInMfyZZ+3cxgC195+3+9eboqrH+xtp/WsUCgPvuKi3yIFniRiaZwE4gW/KnpU3W0ghdh7aXjbTu1T38+ob1V4rO+HG9fK4/AfXYgrf8AQAA" target="_blank">Run the query</a>
-:::moniker-end
+::: moniker-end
 
 ```kusto
 print

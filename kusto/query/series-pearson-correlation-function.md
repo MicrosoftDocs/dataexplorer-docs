@@ -34,7 +34,7 @@ The calculated Pearson correlation coefficient between the two inputs. Any non-n
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA03MQQrCMBCF4b2neEsrQknBZe/gDUqILxJskjIzghQPb1tBu5353ye+3Al1iFIzHKziAjVOcIc3+DKWG7RDjw6ntWtbXCmRwRCqCEdvqZal1WfOXtK8aT2yf3AYk9pRXXP+Ertb1/z5nTOEyhhTSCy2DJSSqMNEL7o9f+GirmjzAZfhTjnAAAAA" target="_blank">Run the query</a>
-:::moniker-end
+::: moniker-end
 
 ```kusto
 range s1 from 1 to 5 step 1

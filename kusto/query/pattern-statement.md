@@ -65,7 +65,7 @@ The following example defines a pattern that maps states to an expression that r
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA3XPsQrCMBDG8b3QdzgytYsPoDiU4qqDiEjp8NkGLaaXkJ5IEd/dtFTUoUOGO+73h9S6MvCaHES0Z6rsncX3tKaE0eplJ77hS1p0AvlMZRw944goUYd9ptJFobb6QSfrb6oM8EkuXAnlcI3AhI3KzBncK3qt/t0R3TUExfKc3Jm+dQ2+NAejxqhDVXvBHN3UreUhPdrhTZ/7iUyJN/8CZSgGAQAA" target="_blank">Run the query</a>
-:::moniker-end
+::: moniker-end
 
 ```kusto
 declare pattern country = (name:string)[state:string]
@@ -86,7 +86,7 @@ country("Canada").Alberta
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA62RsQrCMBCGd6Hv8FOHtlDFtrgoHQQXB5+gdAhpLJWahCRCofruJpjBCi7SwJHckfv/fJeG0Z4oBkmMYYrjICVKxETKvqPEdIKfmp02quNtUmkqJPNZDQSLMVjArjgiWZSsq+hIDIlqVyoxQhHeMgy4KHFDBiOwhTZM2vMDUokro8Ybhm5bZmEKJ/EWGPDcf+mfmfWm2lr8re8lbM22N3HyaZLPAZFPILINVlOSYg6S4heJizu33+aueyT3mtTnbo6+8QXib67/+wEAAA==" target="_blank">Run the query</a>
-:::moniker-end
+::: moniker-end
 
 The following example defines a pattern that defines some scoped application data.
 
@@ -179,7 +179,7 @@ The application inspects the error, determines that the error indicates a missin
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA2WNQQrDIBAA74J/WHJKoBW1lSQt/iB/kKVKCFgjureQv9dLLy3McZjx4RWxBMhIFEqCN2a3ZUe7i3taIxJY6NH7Emp9VCpbWgfODs4A+k5J8aUbmnhAbgLBgmRvo7hLM8/6Aksr2avSWshxMsrAydn55Ozv9VP8AIoi/+WcAAAA" target="_blank">Run the query</a>
-:::moniker-end
+::: moniker-end
 
 ```kusto
 declare pattern map_ip_to_longlat = (address:string)

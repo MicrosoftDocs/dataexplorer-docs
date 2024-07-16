@@ -62,7 +62,7 @@ This failure can be mitigated by using the `join` operator, as in the following 
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA8tJLVGIT0ksSSxOLTFUsFUAMUsSk3JSNSqsFHLy89I1ow11FIx0FIx1FEx0FExjrblykLQYYdOio1AJ1auAqllHwQyoH24dV41CVn5mnoIG3DRNhfw8hQoFoERBUX5WanKJQgXQMAB+d0ZipAAAAA==" target="_blank">Run the query</a>
-:::moniker-end
+::: moniker-end
 
 ```kusto
 let _dataset1 = datatable(x: long)[1, 2, 3, 4, 5];
@@ -87,7 +87,7 @@ Evaluate `Start`, `End`, and `Step` as scalar constants, and use the result for 
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA02NQQrCQAxF94J3+EuFbupOJEtP0BMMNS3COFPSCIP08M1kELoL/7/3E1kxaBAFQfM6hhjkssg7KQr118f5FI14ptexl5BmRsEk+YPectyxKi92bxjzN+lfHGp6MG+1aPqv6e25TdQfPuLOBi7KHllPTnWwgIzrHKQK7lv8zY7AAAAA" target="_blank">Run the query</a>
-:::moniker-end
+::: moniker-end
 
 ```kusto
 let Start = toscalar(print x=1);
@@ -113,7 +113,7 @@ calculated returns a different value per evaluation.
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA0XLsQqAIBRG4T3wHf5RoUXX8FlC8nYJTEONDHr4bGo9HydQBWtY1FQWF1yWka6Zz81LpSYxhM9N9z/3ml1kQsOa0w7dXxiUSge0GB5QqxQ9mmU94rZsXqEZQWVlAAAA" target="_blank">Run the query</a>
-:::moniker-end
+::: moniker-end
 
 ```kusto
 let g1 = toscalar(new_guid());

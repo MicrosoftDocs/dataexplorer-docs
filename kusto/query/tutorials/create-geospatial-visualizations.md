@@ -30,12 +30,12 @@ In this tutorial, you'll learn how to:
 To run the following queries, you need a query environment with access to the sample data. You can use one of the following:
 :::moniker range="azure-data-explorer"
 * A Microsoft account or Microsoft Entra user identity to sign in to the [help cluster](https://dataexplorer.azure.com/clusters/help) 
-:::moniker-end
+::: moniker-end
 
 :::moniker range="microsoft-fabric"
 * A Microsoft account or Microsoft Entra user identity 
 * A [Fabric workspace](/fabric/get-started/create-workspaces) with a Microsoft Fabric-enabled [capacity](/fabric/enterprise/licenses.md#capacity)
-:::moniker-end
+::: moniker-end
 
 ## Plot points on a map
 
@@ -44,7 +44,7 @@ To visualize points on a map, use [project](../project-operator.md) to select th
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAwsuyS/KdS1LzSsp5qpRKEnMTlUwNDAAMguK8rNSk0sUnFLTM/N88vN0oKzEEqBkUWpeSmqRQnFyYklJalFyRmJRiUJ5ZkmGgkZ2Zl6Kgq1CbmKBJgAmnyYWWwAAAA==" target="_blank">Run the query</a>
-:::moniker-end
+::: moniker-end
 
 ```kusto
 StormEvents
@@ -64,7 +64,7 @@ In the following query, the series is `EventType`. The points are colored differ
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAwsuyS/KdS1LzSsp5qpRKEnMTlUwNDAAMguK8rNSk0sUnFLTM/N88vN0oKzEEh0FsPqQyoJUoLqi1LyU1CKF4uTEkpLUouSMxKIShfLMkgwFjezMvBQFW4XcxAJNAKZVk/hmAAAA" target="_blank">Run the query</a>
-:::moniker-end
+::: moniker-end
 
 ```kusto
 StormEvents
@@ -80,7 +80,7 @@ You may also explicitly specify the `xcolumn` (Longitude), `ycolumn` (Latitude),
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAwsuyS/KdS1LzSsp5qpRKEnMTlUwNDAAMotS81JSixSKkxNLSlKLkjMSi0oUyjNLMhQ0sjPzUhRsFXITC3QUKpLzc0pz84Bcp9T0zDyf/DwdhUqIWDFcMLFER6E4tSgzFSQEtiuksiBVEwDmTUhSewAAAA==" target="_blank">Run the query</a>
-:::moniker-end
+::: moniker-end
 
 ```kusto
 StormEvents
@@ -97,7 +97,7 @@ The following query uses the [geo_point_to_s2cell](../geo-point-to-s2cell-functi
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA33OvQrCQBAE4N6n2DKBICpYphHs7CwlhPWy5E7vJ+ytiuLDe5dYBAS7hZ1vmKMEdvs7eYmLNwwcLqQEdtQbfwi++l4o6RlvziGbF8H5CRqjrnsK7RCMl1ZCGzeKrC1+aQXbctY9Aqgh48lkrdICRjvVFbl9bqzvk0hTCW0xRpYqBO6MR6F4WjVlBRblX2bd5EIm3xFDVChCrDSywMOIhuJqfJe8w6H8ABkqA1kUAQAA" target="_blank">Run the query</a>
-:::moniker-end
+::: moniker-end
 
 ```kusto
 StormEvents
@@ -119,7 +119,7 @@ For example, the following query filters for all storm events of the "Tornado" e
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA2VQsU7DQAzd+QorU07KhFhvqdSNje7RcbV6B4l98jktQXw8TtJCEZuf/d7zs1+UZdyfkbQ+fMEloSCs8DAXBO+hObBQOHJj4yL8hlFhh6dMz0zdtQr6o82VWGkahvY2chDo+K/P5ExTp3EMkj8RIk+k/YZnv6LWwesMKdQEHk7IfeFsHOW+Pka8c/qN0cGTu8u5iDbuoop2lYRhs2kXX9f93WtS/FC0uNtHbG+zEpbjxfooUDLGFEThkjVB+56N7WEMxX0DtXW+QEsBAAA=" target="_blank">Run the query</a>
-:::moniker-end
+::: moniker-end
 
 ```kusto
 StormEvents
@@ -144,7 +144,7 @@ The following query defines a polygon representing the southern California regio
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA21QTU+EQAy98yuaOUGCm+wqiavZi4k3DyYeCSHj0IVRmJKZ4oof/90CiR+ROfW17/W9TosMgQZu0LvS6NYeyTur4QDV6HRnTfwegTzFY4/qCtQ9tWNNTqVL2xD5yjrNGGSa5/nZdrvfZCmcX2yyIoUJZ6t49433q3jiF7NJ8ZlcRw9Mvrt9Qcch+oCT5EWokcqerOPSOinmYPEN1tbdkUthqTSnaxcmsqX39ISG4b9EhmHoOu3tG4KhQSwWPMrPzDhO4HGERodGOj9BmMqwM9i2qzkuf7tOooU7qYxc5nW7rImnvUn611mk+MroKli+QXzVTFAy8dJHD71F02jPcLLcQPxshX2ATvfJF6/vcb7pAQAA" target="_blank">Run the query</a>
-:::moniker-end
+::: moniker-end
 
 ```kusto
 let southern_california = dynamic({
@@ -169,7 +169,7 @@ The following query finds nearby storm events that occur along a specified LineS
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA5WUTWvcMBCG7wv7H4RPa3CMPmZGUtpcCj21twZ6KGExtthVmpUWWzQsbf97ZwNpusShWDpJIz169c4wD6GIMXfDbf4UTl/DVMSNGE6pO8R+83O9qsrpGKrr6iEmjo0x7aqGd/ucxyGmroSpuv62Xom/42IhxJVTrfXIE6wmJI3N5QENLRKQksZJZcnhv+G75j9oBgM678DYGTBpKwEs05GktsvIWhmpNHk0ak40EXlHxvE5fsYsYhsklGTAvmEIEYCXIK3SoGEZWhsEa8hoNy8bLNvMkslIQ7SALVsnvTeE2sy77dgJ4/lvDojkErclZ0qC1m/L9pwESwrQOMBlqo11VhsFMJtIbJVFpYiDpLn+lrgtW9ZM/F20ktkww/YaFeNReYVLaoTRThr20Xpyr83GFuipgJQDa/FS9Mvi7nf9br36UvJ4+PgjpDKtV7/E4z6MQcQp5RIOx3LafAi7mD53pRZdGl4HcqrP145jvg99Ec+bjXi+14gn+C03ihf+LuTtEKfSpT5sjzmmsi15e+4imznCRQeqxXuBUp5hY0hDGMXUd6WEsd93YxGPsezF5ntMw82hO9Z/AMXFbiXBBAAA" target="_blank">Run the query</a>
-:::moniker-end
+::: moniker-end
 
 ```kusto
 let roadToKeyWest = dynamic({
@@ -232,7 +232,7 @@ The following query finds nearby storm events that occur within a specified poly
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA6WUUY/TMAyA3yftP0R9WqVSJbGT2Af3gsQTvHESD+g0VW20FW5J1UacKuC/kyEOblxPYiNvdmx/duz4zicxxqa7iW/9/MFPSVyLbg7NoW83X9erIs2DL66KId7NuxiKKqvaGMeuD03yU3H1cb0Sv8+J8EQU4gXJWpKWrDUZZaw21d8m2tTASjnWpKwzBKcGt9U/IJAVAEjpSC0TjHLWONTMjBLMBQiTE9RgIWepkZcY6ByzBi0ziJQ7m6FrReS0dBIWq8A60yWQQjZsic+vIhMYtQKyTpFbRBhwSjMwy1zM+a3IBFASNZJE+wwClVaYeyVtnghNZzNUfWwBEFskhGcYuQx0ZJU9Dt0l7SaHFsARy8WhxdodnxLZ6ZwJkr2A8Z8f47H4SLj9Xr5cr96nOB7efPEhTevVN3G/96MX/RRi8ochzZvXfteHd00qRRO6pxcxlEe3YYyffJvEg7ISD36V+Bn8Ji+LP/F3Pm67fkpNaP12iH1I2xS3vzbJZinIySIqxSthpDzGG33o/CimtknJj+2+GZO479NebD73obs+NEP5A2AQjgzIBAAA" target="_blank">Run the query</a>
-:::moniker-end
+::: moniker-end
 
 ```kusto
 let roadToKeyWest = dynamic({
@@ -293,7 +293,7 @@ The following query performs an analysis of storm events occurring within a part
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA21SS0/CQBC+m/AfJpy2EQnhYozpQZGDiQ+S4rlZ26Gs7qPZHV7GH++UpQUJPe08vu+brzMaCQJJwvfFsyX0GAhS6M9xK0P/vnel2/rM6V3lLBcNR15JrX5Q9K6Av48sz5qeEMNfwC2hLcFKgwwgF8grW4kFSlqxxLD2rkZPip9vD6/TpMVtljzBAZaez9U2MfgLC4IKnUHyu7SjbTPJ6eATt8ZGPRsXqHWA9J+fc9Iwnhy6mCyvY1NOLg8RLlqNAdw1Mhk5b6ZrtMTmO+ORpSNRlo4U4hErZV+cHUB8SWq4GnS0fwArC+KSgZPOI7uy7awX6XkDhdTSi1PryZ7JyG+8CSyAAUppZNVsTK4r8bQPZnFTO7iGmJhwIiRQ4kKudHMrpVt9ahSj4SgBvg8+BE9zxRsMhDXclie/RVpn+G4wpFEwL7FwpnYB864k4hD72TyD0B9gu2LJzLBRtATRppxeGRvSDp38AaQv4EvQAgAA" target="_blank">Run the query</a>
-:::moniker-end
+::: moniker-end
 
 ```kusto
 let stateOfInterest = "Texas";

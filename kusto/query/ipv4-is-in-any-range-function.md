@@ -45,7 +45,7 @@ Checks whether IPv4 string address is in any of the specified IPv4 address range
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAysoyswrUQhKLS7NKbHNLCgzic8sjs/Mi0/Mq4wvSsxLT9VQN7Q00jM0s9Az1DNT11FA4hrqG5mARQz0QNBQ3wLMMzIHyoG4hmbqmgA/iDq/YAAAAA==" target="_blank">Run the query</a>
-:::moniker-end
+::: moniker-end
 
 ```kusto
 print Result=ipv4_is_in_any_range('192.168.1.6', '192.168.1.1/24', '10.0.0.1/8', '127.1.0.1/16')
@@ -62,7 +62,7 @@ print Result=ipv4_is_in_any_range('192.168.1.6', '192.168.1.1/24', '10.0.0.1/8',
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAysoyswrUQhKLS7NKbHNLCgzic8sjs/Mi0/Mq4wvSsxLT9VQMjQy1zMAQkMlHYWUyrzE3MxkjWgUUSVDSyM9QzMLPUMgN1ZTEwBpBE7bVQAAAA==" target="_blank">Run the query</a>
-:::moniker-end
+::: moniker-end
 
 ```kusto
 print Result=ipv4_is_in_any_range("127.0.0.1", dynamic(["127.0.0.1", "192.168.1.1"]))
@@ -79,7 +79,7 @@ print Result=ipv4_is_in_any_range("127.0.0.1", dynamic(["127.0.0.1", "192.168.1.
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA1WP0QqCMBSG7/cUwysFmR4ts8QHECK8l5ClQ0ZrhhuV0MN3lFh0/ruPc/6Po4Slx7Hj6iTsc5yupuxnzW+y8xtCcTzYJwyynAGDCDIv/NJkx2IMRLlDsSPkHBREYXNVYx+3mIsSflUfjJ2kHgLauBtgCUtdh5Ntf6Z0ceMaOMTWoKYgaCBvKl5W6J5WZn2llPfHppWmlbrlem4nrofFHv5/GnwAOfWtJ/wAAAA=" target="_blank">Run the query</a>
-:::moniker-end
+::: moniker-end
 
 ```kusto
 let LocalNetworks=dynamic([

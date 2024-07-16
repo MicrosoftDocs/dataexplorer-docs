@@ -57,7 +57,7 @@ In the following example, generate a series with weekly seasonality, and then ad
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA21QQW7CMBC884q9IDkpIXYgBbVyX9E7svACFnEc2Yuoqz6+m1ZADvhgjWe8M6vpkICSjqY/IhAcYvCggAI063JTtpAIByZmP4BfhL2FT+cxkfEDaLCGkPgtGqm2lVxVUoFs36Qs4AXUCUp2fExmnmhKTrJi1N3hIATVzbqYbz50uwAll5LvdsnjFQgW5yzWShblBBdQ13DEHiOHg4GE0WGCq6MTXBHPXWbKpNCbzlGepOsxkLRWrYQQgVEjb2iz5eRcbccF8l+CsRZS8AjWDRAu1DmM6Ynb6u6xvqNXOdq8PHNLgzvj1C9dvDfRfeOjWO3NGXedSyTu3NgOn2KRJ2q+se8zSpOi/yvZWdwHP4SEO9MHz3VgErngb5E/IW/K5vuTifQLuaqurwQCAAA=" target="_blank">Run the query</a>
-:::moniker-end
+::: moniker-end
 
 ```kusto
 let ts=range t from 1 to 24*7*5 step 1 
@@ -80,7 +80,7 @@ In this example, add a trend to the series from the previous example. First, run
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA41RwXKjMAy95yvepTNAk2JoaDLtsF+xd8ZbBPEEY8YWbd3Zj1/RblIOPZQDI0t6T09PAzE41F6PPYHReWdRgB3KfXbIKgSmSRKbv6A3prHFb2MpsLYTarSaieWdlKo47tT9ThVQ1aNSKW5RnJAJ4xcyCqLMZFKbLHXTdUnCeblPbw6/6mqL6k5tUcg/xQ6J1G6klhcqzVbxguT8UN4p5Dl6GsmLCGgE8oYCXg2f8Ep0HqKkdHCjHgxHyFS4sXdm7MFe5Kx01YsUruuiUnAeEpXqEh2OIirujou2mC4zddsiOEtozQQ382DIh2/Y7q8c+2v0oBaa2+/YwmTOtOYLs7Xam3f6sry2+kzNYAIn15xYpuRLt3FVjZfs04bD6gSfJjUtPTs7uUCNHp0VgygkMf1JWxMb3TbdoHs55uZ/n50HNtMQk0LW+gn2Y/MLCn+iiEUnDr2YMEvru2bjRkyzXwgWL5aDkTgoSz+ftOd/zGMKx7YCAAA=" target="_blank">Run the query</a>
-:::moniker-end
+::: moniker-end
 
 ```kusto
 let ts=range t from 1 to 24*7*5 step 1 
@@ -103,7 +103,7 @@ Next, run the same example, but since you're expecting a trend in the series, sp
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA41RwXKbMBC9+yveJRMgxghiak8z9Ct6Z9SwYI0RYqQlqTL9+C5p7fiQQ3TQrHb13r59OxKDQ+P1NBAYvXcWJdih2meHrEZgmiWx+QP6zTR1+GksBdZ2RoNOM7G8k0qVx1w95qqEqr8rleIB5QmZMH4goyCqTDp1yVo3fZ8kXFT79O7wo6m3qHdqi1LuFDkSqd1JrShVmt3EK5KLQ7VTKAoMNJEXEdAI5A0FvBo+4ZXoPEZJ6eAmPRqOkK5w0+DMNIC9yLnR1axSuGnKWsF5SFSpS3Q4iqiYH1dtMV176q5DcJbQmRlu4dGQD5+wPV459tfom1ppHj5jC7M50y1fWKzV3rzRh+WN1WdqRxM4uebEMiUn3cabarxknzYcblbwz6S2o2dnZxeo1ZOzYhCFd8hOtpCXW9yPZqLe8H36FWgbW921/agHWfDm/z+7jGzmMSaljPoV7LsbFxR+RRkAvbj2YsIiX980GzdhXvxKsPqzLpHEVTHi+aQ9/wVL2dxLygIAAA==" target="_blank">Run the query</a>
-:::moniker-end
+::: moniker-end
 
 ```kusto
 let ts=range t from 1 to 24*7*5 step 1 
@@ -128,7 +128,7 @@ A few noisy points were detected as anomalies in the previous example. Now incre
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA41RTVPjMAy991fowpCEpnFCQzsw2V+x94whSuqpPzK2ApjZH7/yLi05cMAHjyz5PT09aSSg0HlpJwSC0TsDNZCDZl8cihYC4cyJzR/Ad0I7wG9lMJA0M3QwSELid9aI+liK+1LUINpHIXK4g/oEBTN+ISMjmoI7DVmqq3HMMqqafX5z+NW1W2h3Ygs13zmUkHHthmtVLfJiFSckVYdmJ6CqYEKLnkWAhIBeYYA3RSd4QzzryCkZnJVaUQTuCs7qySk7AXnWsxLWJS3UdXUrwHngqBGX6HBkVbE8JnExT03lMEBwBmFQM7iFtEIfvmG7v3Lsr9GDSDR337GFWZ1xzRcWY6RXH/jleWfkGXutAmXXHHsm+OTbuKrGS/ZpQ2G1g/8u9QO+ODO7gL20zrBDGBKk2fEaynoLt1pZHBXd5j+B9rGXQz9qOfGGN5//zKJJzTpmNY/6E+w/Ny4oeI48AIzs2qsKC3/9kKSchXnxiSD5k5aI7Cob8XKSnv4C5QDdI8sCAAA=" target="_blank">Run the query</a>
-:::moniker-end
+::: moniker-end
 
 ```kusto
 let ts=range t from 1 to 24*7*5 step 1 

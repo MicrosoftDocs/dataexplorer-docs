@@ -32,7 +32,7 @@ The corresponding angle in radians for an angle specified in degrees.
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAysoyswrUShKTMlMzCs2ULCFMTUsDTR1YBxDJHFDCyQJIyQJYzMDTQAGCoiHTgAAAA==" target="_blank">Run the query</a>
-:::moniker-end
+::: moniker-end
 
 ```kusto
 print radians0 = radians(90), radians1 = radians(180), radians2 = radians(360) 

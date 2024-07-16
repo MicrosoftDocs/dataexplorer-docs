@@ -35,7 +35,7 @@ The result string contains only ASCII characters. The result string doesn't star
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAysoyswrUUjNS85PSU1RsFUoKM2rBLHj04ryc+OLS4DS6RrqicmJKYdX5mam6qYVJeYdXp6YWZyqrgkA2GFbdjwAAAA=" target="_blank">Run the query</a>
-:::moniker-end
+::: moniker-end
 
 ```kusto
  print encoded = punycode_from_string('académie-française')
@@ -48,7 +48,7 @@ The result string contains only ASCII characters. The result string doesn't star
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAysoyswrUUjJz03MzLNVf9G569mc9XrJ+bnqvFw1CqkVJal5KVDZ+LLUZAVbheKCnMwSDYiQjoK6nromksrUvOT8lNSU+Iz84hKg2oLSvEqQQHxaUX5ufHEJ0K50jZJ8KANhbLRBrCY2YyAqQJaWFCUnlmioV+Tp6qrroFgDdoMOkhujDWM1AQ07DZjWAAAA" target="_blank">Run the query</a>
-:::moniker-end
+::: moniker-end
 
 ```kusto
  print domain='艺术.com'

@@ -23,7 +23,7 @@ To run a T-SQL query, begin the query with an empty T-SQL comment line: `--`. Th
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA9PV5eUKdvVxdQ5R0FJwC/L3VQguyS/KdS1LzSspBgDWLMPrHQAAAA==" target="_blank">Run the query</a>
-:::moniker-end
+::: moniker-end
 
 ```sql
 --
@@ -43,7 +43,7 @@ Remember to preface T-SQL queries with a T-SQL comment line, `--`, to tell the q
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA9PV5eVKrSjISczM4+UKdvVxdQ5RKMkv0DA00FTQ4uVyC/L3VQguyS/KdS1LzSsp5uXyD3JxDVJwilRwScxNTE8NKMovSC0qqVRwcQ12BgDaKWaSTQAAAA==" target="_blank">Run the query</a>
-:::moniker-end
+::: moniker-end
 
 ```sql
 --

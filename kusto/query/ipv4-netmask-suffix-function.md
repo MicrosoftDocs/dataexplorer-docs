@@ -35,7 +35,7 @@ Returns the value of the IPv4 netmask suffix from an IPv4 string address.
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA0tJLAHCpJxUjcyC+OKSosy8dCsIpckVzaWgbmigZ6hnpGesrgPiWBrpGZpZAEUM9Y1MIEJG5noGQGiob2gGFIjlqlFIrShJzUtRSM5MKYovLk1Ly6xQsFXILCgzic9LLclNLM6GiiJs1AQAK1xCiYYAAAA=" target="_blank">Run the query</a>
-:::moniker-end
+::: moniker-end
 
 ```kusto
 datatable(ip_string:string)

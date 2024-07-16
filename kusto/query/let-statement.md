@@ -84,7 +84,7 @@ The following example binds the name `some number` using the `['name']` notation
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA8tJLVGIVi/Oz01VyCvNTUotUo9VsFUwMrDmKkrMS09VqFRIK8rPVTBQKMnHUFdcklqgYAoALOYxk0IAAAA=" target="_blank">Run the query</a>
-:::moniker-end
+::: moniker-end
 
 ```kusto
 let ['some number'] = 20;
@@ -98,7 +98,7 @@ This example uses the let statement with arguments for scalar calculation. The q
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA8tJLVHwLc0pySzIqXSq9FOwVdAoS8yxysnPS9dRyAPTmgrVCkAxBS2FPIVaa66ixLz0VIUKhbSi/FwFQ4WSfAVTheKS1AIgm6tGIbWiJDUvRaEotRhoKNA0JLM1KnQUTDUBj8joV3EAAAA=" target="_blank">Run the query</a>
-:::moniker-end
+::: moniker-end
 
 ```kusto
 let MultiplyByN = (val:long, n:long) { val * n };
@@ -123,7 +123,7 @@ The following example removes leading and trailing ones from the input.
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAzXMMQrCQBBA0T6n+KTaBQu3sEnwDDZeQMgYAtndMDPCgvHuBsTuVW8V565LvhUxrgQbzHUpc+TNgRz61J+wyGfs9FFmofHUmklnvJIumMtGotuR5lImVOy1+pH93+D1l4YW4xcl/CbOcQAAAA==" target="_blank">Run the query</a>
-:::moniker-end
+::: moniker-end
 
 ```kusto
 let TrimOnes = (s:string) { trim("1", s) };
@@ -149,7 +149,7 @@ This example defines two let statements where one statement (`foo2`) uses anothe
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA03NQQqAIBCF4X2neEsFF+my6CwRZW3MCZsgqO5eakG7t/jmH2cZI5FGA9Gu3AWuHPlJobV++ObKdklb4kDo/GSxYww0I5+AKXlEmPlVFy6nzZv+JeJDoRV0Wb51+fhohZE40dPm+QYbBlAGmgAAAA==" target="_blank">Run the query</a>
-:::moniker-end
+::: moniker-end
 
 ```kusto
 let foo1 = (_start:long, _end:long, _step:long) { range x from _start to _end step _step};
@@ -170,7 +170,7 @@ This example shows you how to use a let statement to create a [`view` or virtual
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA8tJLVEISsxLTzU0ULBVKMtMLVfQ0FSoVigCiSn4Vjrn55Tm5imkFeXnKhgqlOQrANUVl6QWADm11lw5MN1GROo2QtZdnJpYlJyBUGZrq2AKAEWZgauQAAAA" target="_blank">Run the query</a>
-:::moniker-end
+::: moniker-end
 
 ```kusto
 let Range10 = view () { range MyColumn from 1 to 10 step 1 };
@@ -237,7 +237,7 @@ The following example specifies that the table parameter `T` must have a column 
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA8tJLVEILkksSQUTthohVgoaYKaVQnFJUWZeuqamQrVCiEKNQmpFSWpeikJxfLEtUCY5sQSiTgeiXVOh1poruCS/KNe1LDWvpJirRiEzryw/OxXJdA1NoGhBUX5WajLUUh2QcQAWPcCygwAAAA==" target="_blank">Run the query</a>
-:::moniker-end
+::: moniker-end
 
 ```kusto
 let StateState=(T: (State: string)) { T | extend s_s=strcat(State, State) };
@@ -264,7 +264,7 @@ The table parameter `T` can have any schema, and the function `CountRecordsInTab
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA8tJLVFwzi/NKwlKTc4vSin2zAtJTMpJtdUIsVLQ0NLUVKhWCFGoUUgGKVGoteYKLskvynUtS80rKQYKZ+aV5WenYjNAQxMAvc2gqVoAAAA=" target="_blank">Run the query</a>
-:::moniker-end
+::: moniker-end
 
 ```kusto
 let CountRecordsInTable=(T: (*)) { T | count };

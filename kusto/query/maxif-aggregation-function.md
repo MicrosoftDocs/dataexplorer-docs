@@ -39,7 +39,7 @@ This example shows the maximum damage for events with no casualties.
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAzWMPQ7CMAxGdyTu4BEEAxfw1DAwgJB6AkMNRMIJsl2UIg4PbWB6+n70Ws8q2ycnt/nsDVycUweBhK6MFY3mh8HqVx6/idWHNQQmvxlWhKh89vE1xV3qpmJ0Wi9CGl8MeypVcsgNWU93j2woVOJlUYe/FRBhs4TTAK2T8wcBsgcBpgAAAA==" target="_blank">Run the query</a>
-:::moniker-end
+::: moniker-end
 
 ```kusto
 StormEvents

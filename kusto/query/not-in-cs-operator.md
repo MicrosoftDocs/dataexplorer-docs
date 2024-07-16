@@ -44,7 +44,7 @@ The following query shows how to use `!in` with a comma-separated list of scalar
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAwsuyS/KdS1LzSspVuCqUSjPSC1KVQguSSxJVVDMzFPQUHLz8Q/ydHFU0lFQcnf1D3L3BDP9XMMVIv2DvJU0QbqS80vzSgDNxq+9SgAAAA==" target="_blank">Run the query</a>
-:::moniker-end
+::: moniker-end
 
 ```kusto
 StormEvents 
@@ -65,7 +65,7 @@ The following query shows how to use `!in` with a dynamic array.
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAwsuyS/KdS1LzSspVuCqUSjPSC1KVQguSSxJVVDMzFPQSKnMS8zNTNaIVnLz8Q/ydHFU0lFQcnf1D3L3BDP9XMMVIv2DvJViNTVBBiTnl+aVAAD4lvyYVQAAAA==" target="_blank">Run the query</a>
-:::moniker-end
+::: moniker-end
 
 ```kusto
 StormEvents 
@@ -84,7 +84,7 @@ The same query can also be written with a [let statement](let-statement.md).
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA8tJLVEoLkksSS1WsFVIqcxLzM1M1ohWcvPxD/J0cVTSUVByd/UPcvcEM/1cwxUi/YO8lWI1rbmCS/KLcl3LUvNKihW4ahTKM1KLUhWCQUYpKGbmKWhATNUEShWX5uYmFmVWpSok55fmlWhoKiRVQlQCAKFqvAF+AAAA" target="_blank">Run the query</a>
-:::moniker-end
+::: moniker-end
 
 ```kusto
 let states = dynamic(["FLORIDA", "GEORGIA", "NEW YORK"]);
@@ -106,7 +106,7 @@ The following query shows how to use `!in` with an inline tabular expression. No
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAwsuyS/KdS1LzSspVuCqUSjPSC1KVQguSSxJVVDMzFPQ0AjILyjNSSzJzM9zSSxJVIApQQgr2CmYGoABULKgKD8rNbkEYoKmJtDE4tLc3MSizKpUheT80rwSDU2FpEqINABw+yCTewAAAA==" target="_blank">Run the query</a>
-:::moniker-end
+::: moniker-end
 
 ```kusto
 StormEvents 
@@ -130,7 +130,7 @@ The same query can also be written with a [let statement](let-statement.md). Not
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA02NvQrCQBCE+zzF2CWdjZXEKvZCHkDWsCQnd7dhby+i+PD5ESFTznwf49ngSXu+JyPjhBo3GbMncxIbMsIXr4GVdzUuOB23LOOo8uTO0K76uWhNNFwnjpZQ/NVtw8FFlPuvagFSDoHUfRid5Ghlhcf7x89eufmimgAAAA==" target="_blank">Run the query</a>
-:::moniker-end
+::: moniker-end
 
 ```kusto
 let large_states = PopulationData | where Population > 5000000 | project State;

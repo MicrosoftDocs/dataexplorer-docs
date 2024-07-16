@@ -32,7 +32,7 @@ Dynamic array of calculated cosine function values. Any non-numeric element yiel
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAysoyswrUUgsKlKwVUipzEvMzUzWiNY11DHQMYzV5KpRSK0oSc1LASmIT84vBioqTi3KTC0GcTSAgpoASCWUy0AAAAA=" target="_blank">Run the query</a>
-:::moniker-end
+::: moniker-end
 
 ```kusto
 print arr = dynamic([-1,0,1])

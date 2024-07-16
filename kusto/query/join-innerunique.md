@@ -38,7 +38,7 @@ By default, the `innerunique` join flavor is used if the `kind` parameter isn't 
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA8tJLVGIULBVSEksAcKknFQN79RKq+KSosy8dB2FsMSc0lRDq5z8vHRNrmguBSBQT1TXMdSBMJPUdYwQTGMoM1ldx4Qr1porB2h0JH6jjVCNBhpiaIAwxQiJbQxjpwBNNwAZH6FQo5CVn5kHtCM/TwFoNADeA/cxywAAAA==" target="_blank">Run the query</a>
-:::moniker-end
+::: moniker-end
 
 ```kusto
 let X = datatable(Key:string, Value1:long)
@@ -87,7 +87,7 @@ The query executed the default join, which is an inner join after deduplicating 
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA5WNQQvCMAyF7/0Vj54mFKHV08RfIh4mC6OupDjTwcAfb1aGoDcTSOC9vC+JBOJxRt+J9i1RM9LSImUeHOYuFWrxlCnysAMMtC51egertt976zbjIwWryvVk0goP/8F/WQfrvoXjBhdvXrjnyBgj9/okMtNUOD4K1YSEurIe0PIGa/tJfOgAAAA=" target="_blank">Run the query</a>
-:::moniker-end
+::: moniker-end
 
 ```kusto
 let t1 = datatable(key: long, value: string)  
@@ -116,7 +116,7 @@ t1
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA5WNQQvCMAyF7/0Vj54mFKHV08RfIh4mC6OupDjTwcAfb1aGoDcTSOC9vC+JBOJxRt+J9i1RM9LSImUeHOYuFWrxlCnysAMMtC51egertt976zbjIwWryvVk0goP/8F/WQfFfyvHjS7evHDPkTFG7vVLZKapcHwUqgkJdWU9oOUNScAQaekAAAA=" target="_blank">Run the query</a>
-:::moniker-end
+::: moniker-end
 
 ```kusto
 let t1 = datatable(key: long, value: string)  
@@ -149,7 +149,7 @@ t1
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA5WOwQrCMAyG73uKn54UitDqadInEQ+ThVlXUqytMvDhjXUM9GYCCfxJvj+BMrKBQ99lyVOg1UhTixB50Lh3oVCLW06ehzXQQOJQq9FQMjYbo/Q8WCSrRDnum/CG2//gv6yt4L+V3UzPpnniEj1j9NyLi2emVNhfC9WLbGuLskCT7D7OlOhjC+eWX18MNThdAwEAAA==" target="_blank">Run the query</a>
-:::moniker-end
+::: moniker-end
 
 ```kusto
 let t1 = datatable(key: long, value: string)  

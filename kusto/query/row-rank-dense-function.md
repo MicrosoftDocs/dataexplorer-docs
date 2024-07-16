@@ -37,7 +37,7 @@ The following query shows how to rank the `Airline` by the number of departures 
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA0tJLAHCpJxUBQ3HzKKC/KISq+KSosy8dB0FID8nMy8VzndJLUgsKiktSi22ysnPS9fk5Yrm5VJQUAp2dVTSUVDy8QCSxjooQpFA0tDAAEUw1BFDnROINEIRcvUBqeLliuXlqlEoBjpLIakSyQUKicXJIJnUipLUvBSFoMS8bNui/PL4IiAjPiU1rzhVA6FYEwC7n6cO5QAAAA==" target="_blank">Run the query</a>
-:::moniker-end
+::: moniker-end
 
 ```kusto
 datatable (Airport:string, Airline:string, Departures:long)
@@ -65,7 +65,7 @@ SEA      | LY       | 100         | 3
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA2WQTQuCQBCG7wv+h8mTggetm+DBSOhgl6RDRIi6g0iyyuz2Bf341khtiYGXmYd3hpnhhdJRtghO3FDfkQqlokbUHui6bQRO9Qb7gtSVUIZtJ2rXYieLAdhZEtse2OlW68oz0FFr4PsGPMR/vvWgSwMl6eyKd9mEAgN9GgOLnS32AqmXh/IJ3zuAo6x+t4ZCVoMPHwoFh30hLhF195x0knMUEp3Z7EFPeBt/4sIiGue6b3gIxbszAQAA" target="_blank">Run the query</a>
-:::moniker-end
+::: moniker-end
 
 The following example shows how to rank the `Airline` by the number of departures per each partition. Here, we partition the data by `Airport`: 
 

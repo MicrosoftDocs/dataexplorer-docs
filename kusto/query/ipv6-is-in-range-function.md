@@ -37,7 +37,7 @@ Checks if an IPv6 string address is in the IPv6-prefix notation range.
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA62QwQrCMBBE7/2K3Gqh0KSati74JSJlm92WQAnSRPHgx7tQRY8KztyG4R0eYZIOM2/8uUeihWOEmBYfplLJtGCY+DkU2TFTOVqG0dQtdLgnMLuGgI2uYbC0BddaCzg4yksl+eKsJZUxdV7+n72ef+VqeHWUgNPYAbqq0YI6ZXfFt8SBlJi6zEkdxNK16X3sfVhtfZh8KywepKIru2kBAAA=" target="_blank">Run the query</a>
-:::moniker-end
+::: moniker-end
 
 ```kusto
 datatable(ip_address:string, ip_range:string)

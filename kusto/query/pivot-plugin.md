@@ -42,7 +42,7 @@ For each EventType and State starting with 'AL', count the number of events of t
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAwsuyS/KdS1LzSsp5qpRKCjKz0pNLlEILkksSdVRAIuHVBakAqXKM1KLUiESCsUliUUlxeWZJRkKSo4+SnBZuHqFjMRiBaXwzLwUkGRqWWJOKUhfQWZZfokG2AxNABd5uxJ5AAAA" target="_blank">Run the query</a>
-:::moniker-end
+::: moniker-end
 
 ```kusto
 StormEvents
@@ -68,7 +68,7 @@ For each EventType and State starting with 'AR', display the total number of dir
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAwsuyS/KdS1LzSsp5qpRKM9ILUpVCC5JLElVKC5JLCopLs8syVBQcgxSAsoWFOVnpSaXQOR1FMC6QioLgEyX1MSSjGKXzCKgNNwYZEEFOwUDoERqWWJOKcjwgsyy/BINqEHFpbkayIo1NQH4o/xAlgAAAA==" target="_blank">Run the query</a>
-:::moniker-end
+::: moniker-end
 
 ```kusto
 StormEvents
@@ -96,7 +96,7 @@ Result is identical to previous example.
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAwsuyS/KdS1LzSsp5qpRKM9ILUpVCC5JLElVKC5JLCopLs8syVBQcgxSAsoWFOVnpSaXQOR1FMC6QioLgEyX1MSSjGKXzCKgNNwYZEEFOwUDoERqWWJOKcjwgsyy/BINqEHFpbkayIo1kczWBAB7xf6goQAAAA==" target="_blank">Run the query</a>
-:::moniker-end
+::: moniker-end
 
 ```kusto
 StormEvents
@@ -124,7 +124,7 @@ For each event type, source, and state, sum the number of direct deaths.
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA03NOwqAMBCE4d5TLFYKFp5AEPQCxgsEWUhAjexOIoKH91GI9Tc/YxBk6ROv0Oyk3bEwGVgwKaxAdw9HeTvkn3Zs4bTzwhOoofoGTnaOT7P5FFC8fUUal+I/Lit6j8Zju9WEKBOXFzKrwnaAAAAA" target="_blank">Run the query</a>
-:::moniker-end
+::: moniker-end
 
 ```kusto
 StormEvents
@@ -154,7 +154,7 @@ It uses an explicit schema definition that allows various optimizations to be ev
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAwsuyS/KdS1LzSsp5qpRKCjKz0pNLlEILkksSdVRAIuHVBakAqXKM1KLUhEiChmJxQpK4Zl5KUpAydSyxJxSoBaFgsyy/BINsHZNKwUNuHKr4pKizLx0HQVHH0cnR19Hq5x8KC/YG8LRBADkMGe5igAAAA==" target="_blank">Run the query</a>
-:::moniker-end
+::: moniker-end
 
 ```kusto
 StormEvents

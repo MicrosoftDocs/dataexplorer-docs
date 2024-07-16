@@ -64,7 +64,7 @@ In the following example, we generate a series with weekly seasonality and witho
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA21QQW7CMBC884q9IDkpIXYgBbVyX9E7svACFnEc2Yuoqz6+m1ZADvhgzc5oZ1bTIQElHU1/RCA4xOBBAQVo1uWmbCERDkzMfgC/CHsLn85jIuMH0GANIfEsGqm2lVxVUoFs36Qs4AXUCUp2fGxm3mhKTrJi1N3hIATVzbqYbz50uwAll5L/dsnrFQgW5yzWShblBBdQ13DEHiOHg4GE0WGCq6MTXBHPXWbKpNCbzlGepOsxkLRWrYQQgVEjb2iz5eRcbccD8l+CsRZS8AjWDRAu1DmM6Ynb6u6xvqNXOdq8PHNLgzvj1C9dvDfRfeOjWO3NGXedSyTu3NgOv2KRJ2q+se8zSpOi/yvZWdwHP4SEIhcsRpaQ72PL/clE+gWepuS1+gEAAA==" target="_blank">Run the query</a>
-:::moniker-end
+::: moniker-end
 
 ```kusto
 let ts=range t from 1 to 24*7*5 step 1 
@@ -87,7 +87,7 @@ In this example, we add a trend to the series from the previous example. First, 
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA21RQW7CMBC884q5ICWBECeQBrVKX9E7ssgSLJI4shdRV318N6qAHPDBGs9oZ0fjjhjsa6eHlsA4OdsjB1sUu6RKSnimUYjFL+ibaWjwZXryrPsRNRrNxPKOCpXvU7VNVQ5VvisVY4X8jEQcn5NBJopENjXRpJvTKYo4K3bxsvqsyzXKjVojlztGiki0pWhZruJkhqdJzqpio5BlaGkgJyGg4ckZ8rgZPuNGdOmCUNrbQXeGA2Qr7NBaM7RgJ3FmueopCtd1XipYB0GFuqNqL6FCup+yhXjaqZsG3vaExoywV+4MOf/Cbfvw2D3Qm5psVq/c/GguNPfz177XzvzQs/K61xc6dMZz9OCkMiUnXoeZGu7sx4L97Av+Szo0dLT9aD1FIRZxqoMkn1gez9rxH0eeYfoUAgAA" target="_blank">Run the query</a>
-:::moniker-end
+::: moniker-end
 
 ```kusto
 let ts=range t from 1 to 24*7*5 step 1 
@@ -108,7 +108,7 @@ Next, we rerun the same example. Since we're expecting a trend in the series, we
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA21R0Y6CMBB89yvmxQgIUlBOcxfuK+7dNLJgI1DSrvG43MffkovKg31otrO7M5NpSwz2pdN9Q2DUznbIwBb5LtpHBTzTIMDiF/TN1Ff4Mh151t2AEpVmYnkHucoOidomKoMq3pUKsUZ2RiSMz81RNvJIlKpg6pu6DgJO81243H+WRYxio2JkcodIEEhvKb00U2E0q6dNTvf5RiFN0VBPTkxAw5Mz5HEzfMaN6NKOAmlve90aHiGqsH1jTd+AndiZ+SonK1yWWaFgHaTK1b3aH8TUmBwmb2M4aeqqgrcdoTID7JVbQ86/YNs+OHaP6k1NNOtXbH4wF5rz+WvXaWd+6Bl52ekLHVvjOXhgEpmSE8bjrDve0Y8F+9kX/Id0rOhku8F6mgaTLMaqNT3VhlehzE7pkNgVhdNZO/4DpkIQcyMCAAA=" target="_blank">Run the query</a>
-:::moniker-end
+::: moniker-end
 
 ```kusto
 let ts=range t from 1 to 24*7*5 step 1 

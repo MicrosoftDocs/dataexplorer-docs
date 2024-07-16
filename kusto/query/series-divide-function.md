@@ -34,7 +34,7 @@ Note: the result series is of double type, even if the inputs are integers. Divi
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA1XMQQrCMBBG4b2n+JeNzCZ17VlCaEaJYhNmgiShhzdKobj9eDzx651RcZP0gkVJuEALZ9jTBq6F14CG6yjOmA/qg9pOWdKDlwK1A7Nfns6L+DZVatQNQed/74RGqOa4qXUhvmNg92uVJbLuNKn9LswHwOb0BqkAAAA=" target="_blank">Run the query</a>
-:::moniker-end
+::: moniker-end
 
 ```kusto
 range x from 1 to 3 step 1

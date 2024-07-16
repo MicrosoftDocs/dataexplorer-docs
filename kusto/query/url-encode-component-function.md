@@ -34,7 +34,7 @@ URL (string) converted into a format that can be transmitted over the Internet.
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAyXLMQqAMAxA0V3wDtmqIO2uCN5E1AZbiEmpkV7fiuP/8AgVnkwww2KCarpH50opdo982kMuF5BIoEgm78zUNilHVpAcz8jb56oeAPkQj/7P9a+18iSMrF2d/QtxbpMUagAAAA==" target="_blank">Run the query</a>
-:::moniker-end
+::: moniker-end
 
 ```kusto
 let url = @'https://www.bing.com/hello world/';

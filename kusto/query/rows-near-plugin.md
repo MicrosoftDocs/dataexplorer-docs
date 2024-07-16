@@ -40,7 +40,7 @@ Find rows with an `"Error"` *State*, and returns `2` rows before and after the `
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA43SSwqDMBAG4L2nGFwppJDEVxVc9gSWbkopUYMIakoSWwo9fMdC3RRpklXIxwzM/K2weOtBQnDsR2msGG9FK6y0+CJwEsMsi0FNHYEKpSyM1f3UQeidPcDzpQGnnO1ouqMsJMAI+NXcNNIYn2w4ji52cBG6yMHFS1+XxskCEweYIuQOLlsK5ggPWiu9yfYLc6mXI8z+O0bR5Q6OuU2a8Z/NXbwXGKUt1E9Y4wHCNIAf8o7hwCKg1cNcJyl08IkIlOU6CuDhGzR1CNFiAgAA" target="_blank">Run the query</a>
-:::moniker-end
+::: moniker-end
 
 ```kusto
 datatable (Timestamp:datetime, Value:long, State:string )

@@ -65,7 +65,7 @@ The following example represents an organizational hierarchy, it demonstrates ho
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA1WSwU7DMAyG75P2DtZOK2ortlKhjRUJEBdOiOu0Q9ZabSFNqjRiIPHwOGmSrqp6+B3/zmc7HDVg13P5izhAARXT9J05rgXrcD9o1Yo6BlbjnktRR7BcHOmH1RNvS1zFkG1jsIFneTZy4+Trtznd3jv5Jq3cOfnSqHagwF0eu2r4Y9x5bEuhMMmZFR9t2TBVmdMdBU4PZOBErbCXSs+ZfSeBu2OC0JXTE/0IG5qYMc2jYx+jYWLzyVNrwTVntkZH7YmXiz8C+8KkVqxvwvghSR49MFxa3VwtRgow+7BW60o6pssG1szcGh2Soyt+s0nT/JSESUSEc2lQIdjM1FYpCo8LTFThmpRuhgNkt+TplfzEcnobNOaQZmrYJ3EdJBm7ndCk3xnhF35HqevqH55azattAgAA" target="_blank">Run the query</a>
-:::moniker-end
+::: moniker-end
 
 ```kusto
 let employees = datatable(name:string, age:long) 
@@ -110,7 +110,7 @@ The following example builds a graph from the `Actions` and `Entities` tables. T
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAEAI1SwWqDQBC9C%2f7D4CkBDaQ5lKQkkJYcC4UeegihbNZFt9Fd2Z00BPrxHVfNum0PRZTV92bmvedUAmGnUKIUFtaQM6TrWImJYrVYWTRSFSngtfEvrBCrSqtiCnG0pxsg2VaSiySF5EUYqxWd7hYpdNijPgbIYj4gu8%2bwZn4%2fIM%2bsqrS5hh2XA7ptNMEt%2bHq1KGo6LZcEHR7oUZGhLUepVejH6rPh3kQuLErFWp435sreR2b%2fstj74bquz0pyhsK%2bSSyTm7qB6GWiOVu0yY9EPF4ySzZraa10VoN4bv0YIuMn32YU0n84%2fdSBAUNgQ1hx9AU1O4msMKwpocsLsmwzzgouZNUvDH1o98TVurKsZshLmNTd3Gm27%2bcdss2EImuMJpsiJyAw3cLM5TF1wi%2blMAL6LjM3Y732doCpHDq%2bB%2fs8O6ybOhv9Use5uW9JgYJf1PCnOFWk%2fkNw2i%2fXRRhasLHEFJ68Q8JGfnu821eCRtrjKI6%2bAdpZ186GAwAA" target="_blank">Run the query</a>
-:::moniker-end
+::: moniker-end
 
 ```kusto
 let Entities = datatable(name:string, type:string, age:long) 
@@ -150,7 +150,7 @@ The following example is similar to the previous attack path example, but with a
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAEAI2ST2uDMBjG74Lf4cWTgha6HkY7WuhGj4PBDjuUMlINmtUkkqQrhX34vSbaxG2HIYr6vP9%2bT96WGtgJwwyjGtZQEYPXsaWpIJyutFFM1DmYa%2bc%2fSE1XrRR1BnG0xxsg2baspEkOyQtVWgp8u1vk4LRHeZwoi%2fmo7D6nOfP7UXkmbSvVdVpxOarbTqLci69XbSjHt%2bUSpcMDPloE2paGSTHl0fKsSg9RUW2YIH2cB7Np7wHsX4gDTyk5PwtWEkP1GzNNcptuDPRjGnXWRic%2fHPF6QzRicqY1s6gTe271iDGkPPkygUn%2fiRm6jhEwGjaaFUdfwMmJFrUiXQPOLyiKTegVXBDVLwz%2b6PfE5tq0ghNTNpBy1zcr9kO%2fQ7FJ0bJOScSkFQoT6F4m1o8shx%2bBodOHIiU9a2bxLg1VFIZeMzvJeu2hgYgKXFUvDq47zc02Cw7extw86oMmc%2f4KnR6dq9oPGDS0Z9OPi0wftMT1tOWpwv0MZ8%2fhyXOjFrgw6G7dUQqg4iiOvgFiI7WDxQMAAA" target="_blank">Run the query</a>
-:::moniker-end
+::: moniker-end
 
 ```kusto
 let Entities = datatable(name:string, type:string, age:long) 

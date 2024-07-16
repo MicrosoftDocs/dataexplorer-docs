@@ -65,7 +65,7 @@ This visualization supports splitting into multiple y-axis values:
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAwsuyS/KdS1LzSsp5qpRKM9ILUpVCC5JLEm1tVUK8wxy9/TzdFQCyhQU5WelJpeA5IpKQjJzU3UUXBJzE9NTA4ryC1KLSiqBaopS81JSixRyMvNSkzOAygCpk5aiXAAAAA==" target="_blank">Run the query</a>
-:::moniker-end
+::: moniker-end
 
 ```kusto
 StormEvents
@@ -81,7 +81,7 @@ StormEvents
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA22OwQrCMAyG73uK0JPCXmEHQZFeRJzsXrZsjaztSINz4MPb1Xkzp8D//V9SS2B3eqKXWLxhtsgItRjBqlKNvp31RR9USiYOD2xlzVju5LCEo3FmwCuHCVmWxDD6DhlG8tjahBWQZiaxsMurkIxYqV8DuiyAnoODuP4RgTw0xAN5MqrMpdfWyoeTwiGE/otvxPLfq3K4/wAc1ztT4QAAAA==" target="_blank">Run the query</a>
-:::moniker-end
+::: moniker-end
 
 ```kusto
 StormEvents
@@ -102,7 +102,7 @@ StormEvents
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAxXKsQrCMBRG4d2nuHRS6BBwcMogKJKliC3uof6YiDcp14s14MM3Pet3es3C5y+SfjZ/mgME1KtXWNvc3e3iOndsqkySXxh1NdEhMlo6efZPXCVPEC31EaQHhN4xYQx1ozlqoG3hmOzBGNNSYf+ze7O2WwCSj8TeegAAAA==" target="_blank">Run the query</a>
-:::moniker-end
+::: moniker-end
 
 ```kusto
 StormEvents
@@ -118,7 +118,7 @@ StormEvents
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAyWMvwqDMBCH9z7FkSkBlz6AQwpCQXBoHLpGPfAgOSU5FUsfvmm7/f7wfU6WFJsdWfLlDceMCcGJFwRi0KpvntapClTX3B7WtfabW9u5shrwPMGP7c8Voa5B3T0FVUR5i9EneiGMy8aiDQzn31vBQKxLTNJTLPU6mQIk5AkTBGIc5/LBQTKDPvMaSOrVM4ZsPghjwq6tAAAA" target="_blank">Run the query</a>
-:::moniker-end
+::: moniker-end
 
 ```kusto
 StormEvents

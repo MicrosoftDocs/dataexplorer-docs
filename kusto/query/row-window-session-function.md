@@ -53,7 +53,7 @@ The following example calculates session start values for a table, `datatable`, 
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/kvc-z5jd0tu7q3s9b5vyt8.northeurope/databases/TestDatabase?query=H4sIAAAAAAAAA42QwQqDMAyG7z5F5kmhQqtuDMGbF8%2FuNsaoa9kKs0ob5gZ7%2BLXIhjsIJoGQ5sufEsHReXuXENVVYdEofSVwUJ20yLuhEBwluiqGYwDOQhYS%2BD5GKU3zhOYJY8BoQX3EZOLSZY7tZ9yiHvvXy5a5bNXebCXn%2FrfzXHAK3mB7g9C%2BoK6A28vsML50fflEqQU00lrV6wa5QSmgBNOP51Fp4ZKdetFvlAC7Edh2xKtuShiMfLjjx%2FEHCP%2BU4YwBAAA%3D" target="_blank">Run the query</a>
-:::moniker-end
+::: moniker-end
 
 ```kusto
 datatable (ID:string, Timestamp:datetime) [

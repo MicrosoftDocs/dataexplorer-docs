@@ -34,7 +34,7 @@ An integer from 1-12 representing the month number of the given year.
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAysoyswrUShKLS7NKbHNzc8rychPq0xNLNJISSxJLcnMTdVQMjIwNNU1NNI1NFHS1AQAVHohRTAAAAA=" target="_blank">Run the query</a>
-:::moniker-end
+::: moniker-end
 
 ```kusto
 print result=monthofyear(datetime("2015-12-14"))

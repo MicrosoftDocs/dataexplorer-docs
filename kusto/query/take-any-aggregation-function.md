@@ -60,7 +60,7 @@ Show indeterministic State:
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/kvc6bc487453a064d3c9de.northeurope/databases/NewDatabase1?query=H4sIAAAAAAAAAwsuyS/KdS1LzSsp5uWqUSguzc1NLMqsSlUoScxOjU/Mq9QILkksSdUEALgBS0YoAAAA" target="_blank">Run the query</a>
-:::moniker-end
+::: moniker-end
 
 ```kusto
 StormEvents
@@ -78,7 +78,7 @@ Show all the details for a random record:
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/kvc6bc487453a064d3c9de.northeurope/databases/NewDatabase1?query=H4sIAAAAAAAAAwsuyS/KdS1LzSsp5uWqUSgoys9KTS5RCC5JLCoJycxN1VFwLcgszk9J9UzRAYmWgERAykMqC1JBOopLc3MTizKrUhVKErNT4xPzKjW0NAGzMGIFVgAAAA==" target="_blank">Run the query</a>
-:::moniker-end
+::: moniker-end
 
 ```kusto
 StormEvents
@@ -97,7 +97,7 @@ Show all the details of a random record for each State starting with 'A':
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/kvc6bc487453a064d3c9de.northeurope/databases/NewDatabase1?query=H4sIAAAAAAAAAyWMMQ7CMBAEeyT+cEoFKJ+gSEGd9OggK8Ugx9bdQmTE4xMr7c7O9EwWuy9m+vHwl2WCQXoqIU41+hI4SXNtKs2WXniycuMQIlrpcvA04ja2u7UtNTaUjGr4J0a18INQ37jrXE6XszzKfl4BiZpjAH0AAAA=" target="_blank">Run the query</a>
-:::moniker-end
+::: moniker-end
 
 ```kusto
 StormEvents

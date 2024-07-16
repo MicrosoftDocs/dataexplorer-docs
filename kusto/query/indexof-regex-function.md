@@ -49,7 +49,7 @@ The zero-based index position of *match*.
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA42Qy07DMBBF93zFVTalkqGkwIIFEj/AN1QTe+JYGDvyo8qCj2dSatjwsmd3Nef4ek4ulAvIcWbp8QgXDC9xPCS2vFx2NGiZTuGpo2vdbRV2O/gYX+qMMdZgZEFmrgW5CMs21v4nluHRfvIUbhQeFPYC/i/59s9XKvQKV/0XtkyceJMRIjLrKOyodU2Jg+ZVI7kElPSERMFyU919p5JLZxV9FGgqMT1T0RNnmBg2BfHIydOMHDFW71s9TWs48Llns93/XuyNhm51bU+VXDiSd0b+hlI5nNZAydZXDuUd3NbxhNUBAAA=" target="_blank">Run the query</a>
-:::moniker-end
+::: moniker-end
 
 ```kusto
 print

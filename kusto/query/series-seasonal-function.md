@@ -38,7 +38,7 @@ See the next example on [how to force the period](#force-a-period).
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAysoyswrUSi2TanMS8zNTNaINtJRMNVRMNZRMAGTQK4hmCRZJFaTq0ahNC8zP09BowDdFgugApAiEyhtAMVkicVq4rPKEOwiU7CjgFrMwI5FEYHoT60oSc1LUSiOL05NLM7PS8xRsFUoTi3KTEWIaBRrAgCrZVUQMAEAAA==" target="_blank">Run the query</a>
-:::moniker-end
+::: moniker-end
 
 ```kusto
 print s=dynamic([2, 5, 3, 4, 3, 2, 1, 2, 3, 4, 3, 2, 1, 2, 3, 4, 3, 2, 1, 2, 3, 4, 3, 2, 1])
@@ -62,7 +62,7 @@ In this example, the series' period is too short to be detected by [series_perio
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAysoyswrUSi2TanMS8zNTNaINtRRMNZRMNVRgDOMdBRMdBTMYjUVuGoUSvMy8/MUNApwaoOqxqZfE6g/taIkNS9FoTi+ODWxOD8vMUfBVqE4tSgzFSGiUQzUqQkAj46UZJkAAAA=" target="_blank">Run the query</a>
-:::moniker-end
+::: moniker-end
 
 ```kusto
 print s=dynamic([1, 3, 5, 1, 3, 5, 2, 4, 6]) 

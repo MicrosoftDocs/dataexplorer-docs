@@ -32,7 +32,7 @@ The combined hash value of the given scalars.
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAysoyswrUShLzClNNVSwVVDySM3JyVfSgYgYgUTC84tyUpS4ahRSK0pS81IUMkDqMhKLMzQgujR1FDKMbBECRpoItcn5uUmZeakpUB3xUL5GhiFIkyYAFnd56X0AAAA=" target="_blank">Run the query</a>
-:::moniker-end
+::: moniker-end
 
 ```kusto
 print value1 = "Hello", value2 = "World"

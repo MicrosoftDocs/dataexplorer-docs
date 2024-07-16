@@ -48,7 +48,7 @@ This example shows the results of the tdigest percentiles sorted by state.
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/kvc6bc487453a064d3c9de.northeurope/databases/NewDatabase1?query=H4sIAAAAAAAAAwsuyS/KdS1LzSsp5uWqUSguzc1NLMqsSlUoSclMTy0u0XBJzE1MTw0oyi9ILSqp1FRIqlQILkksSQUAy2eq1DkAAAA=" target="_blank">Run the query</a>
-:::moniker-end
+::: moniker-end
 
 ```kusto
 StormEvents

@@ -39,12 +39,12 @@ This tutorial builds on the foundation from the first tutorial, [Learn common op
 To run the following queries, you need a query environment with access to the sample data. You can use one of the following:
 :::moniker range="azure-data-explorer"
 * A Microsoft account or Microsoft Entra user identity to sign in to the [help cluster](https://dataexplorer.azure.com/clusters/help) 
-:::moniker-end
+::: moniker-end
 
 :::moniker range="microsoft-fabric"
 * A Microsoft account or Microsoft Entra user identity 
 * A [Fabric workspace](/fabric/get-started/create-workspaces) with a Microsoft Fabric-enabled [capacity](/fabric/enterprise/licenses.md#capacity)
-:::moniker-end
+::: moniker-end
 
 ## Use the summarize operator
 
@@ -55,7 +55,7 @@ Find the number of events by state using `summarize` with the [count](../count-a
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAwsuyS/KdS1LzSsp5qpRKC7NzU0syqxKVQjJL0nMCQZJFivYKiTnl+aVaGgqJFUqBJcklqQCABs8Zoc2AAAA" target="_blank">Run the query</a>
-:::moniker-end
+::: moniker-end
 
 ```Kusto
 StormEvents
@@ -82,7 +82,7 @@ Throughout the tutorial, you'll see examples of how to use `render` to display y
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAwsuyS/KdS1LzSsp5qpRKC7NzU0syqxKVQjJL0nMCQZJFivYKiTnl+aVaGgqJFUqBJcklqQClRal5qWkFikkJRYlZyQWlQAACVd/oUgAAAA=" target="_blank">Run the query</a>
-:::moniker-end
+::: moniker-end
 
 ```Kusto
 StormEvents
@@ -101,7 +101,7 @@ The following query uses `countif()` to count of storms that caused damage. The 
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAwsuyS/KdS1LzSsp5qpRKC7NzU0syqxKVQgGiReHZ5ZkOBflF7gk5iampyrYKiTnl+aVZKZpQARAUsUKdgoGmgpJlUAtiSWpQENK8gsUTCECmGYAAFosNm9wAAAA" target="_blank">Run the query</a>
-:::moniker-end
+::: moniker-end
 
 ```kusto
 StormEvents
@@ -128,7 +128,7 @@ The following query counts the number of storms that caused crop damage for each
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA1WOQQrCMBRE9z3FLBOwJamLrnRTPUG9wI/5aBZJJfm1KB7e6EJwGBh4mzeTzDke75ykNC+sV86MSSjLKUSGY1mZE5QnYalE9cYMrbG1Gl2Hf277dmu1RoMaSh4HinThMc+3gj1MNZQlRsrhyfhKx3lJgh3On1Ua7gEXkvo92GDw+g3gGT6rpAAAAA==" target="_blank">Run the query</a>
-:::moniker-end
+::: moniker-end
 
 ```kusto
 StormEvents
@@ -153,7 +153,7 @@ Add `| render timechart` to the end of the query to visualize the results.
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA1WOQQ6CMBBF95ziL9tESIsLVroBT4AXKHQiXbSYYZBoPLzFhYmTSSZ5P5P3e5k5Xh6UZCne2CZiQi+O5RoiYSDZiBKUd0KSiaqNaUpj82pUFf65rcuj1RoF8rjk0bnobtTyfF9whsmGZY3RcXgRvtJ2XpPghHG/SmN4YghJ/Roc0Hid35iSJ8auGqecfQAkVosYtwAAAA==" target="_blank">Run the query</a>
-:::moniker-end
+::: moniker-end
 
 :::image type="content" source="../media/kql-tutorials/crop-damage-by-week-time-chart.png" alt-text="Screenshot of the crop damage by week time chart rendered by the previous query.":::
 
@@ -169,7 +169,7 @@ Note that you can use multiple aggregation functions in a single `summarize` ope
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAwsuyS/KdS1LzSsp5qpRKM9ILUpVcEnMTUxPdS7KLyhWsFMwAIoXl+bmJhZlVqVyKQCBb2IFSBKizDY3sUIDSYemjgJEUWYesqLMPGyKHMvSkRQllqWjKAIrSapUADsvpLIgFeSS/KISkBiKTgAZ5ED9xQAAAA==" target="_blank">Run the query</a>
-:::moniker-end
+::: moniker-end
 
 ```kusto
 StormEvents
@@ -200,7 +200,7 @@ Use [sum()](../sum-aggregation-function.md) to check the total number of damaged
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA1WOsQ7CMBBD936Fx0SiVVqGTrBQvqD8QEpONENSdDmoQHw8iZAQnDw9+2SPsnA43ilKql5YZ2LCKJbl5ANhIlmJIpSzQpKJ6ozpa9NmaTQN/nnb1dtWa1TIZ6PDYIO90IGXa8IeJjekWwiW/ZNQ6MfHrmD1E9aYHph8VN8pG/RO53+m6IhROs9z9t7w8FzwwAAAAA==" target="_blank">Run the query</a>
-:::moniker-end
+::: moniker-end
 
 ```kusto
 StormEvents
@@ -232,7 +232,7 @@ To ensure that you get a decimal result, use the [todouble()](../toreal-function
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA22Puw7CMAxF936FxwRVorDDAgxsSEViThsDlZoYJQ4CxMeTh8TSerTPfbhlcubwRMu%2B%2BoIPxig3fBAqiHMmVmObCH%2B0LStG2EBPwbKQdSbK8TLwfefosVdG3f7McBVlkU4ettDIrOnekL1iHr4YrYYTuj42mNhk3EUvLQSTptCNKOYiJSznyi5g1TSyhrVMv5Hjkj3V%2FwB77xEnBgEAAA" target="_blank">Run the query</a>
-:::moniker-end
+::: moniker-end
 
 ```kusto
 StormEvents
@@ -269,7 +269,7 @@ Since [tabular expression statements](../tabular-expression-statements.md) retur
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA1XOwQrCMAyA4fueIsdWhtazeBLvgnuBrgZR2mWkqTDZw69WYfWYny8hHgU6EuuvQhwiHEEoOustq1LOLxwkwgwxhWD58UZwlAZRWh+aSjS1KOn0Yfnej0M/fXs3jZj1yPREJ2trq7UWLsguT/aO5aUbpd6jWoWG3d/fG9gbszULDOumf88AAAA=" target="_blank">Run the query</a>
-:::moniker-end
+::: moniker-end
 
 ```kusto
 let TotalStorms = toscalar(StormEvents | summarize count());
@@ -298,7 +298,7 @@ The following query uses `make_set()` to create an array of the event types that
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA22NsQ7CMAxEd77CYysx8AMwlYG5SIyVoScSIEnluKCgfjxJQUwdfX73rtUgbv+E17ia6GUgoAasJjZWcFHa0YaC/LKD7/9pxuPoHIt9g9qiOaYB8WTVfGHakuM7ugit5oXyr+mcMs2K3B8k3IptvteLkrISREuLRTh1D/irmmqJrT/1zAofzQAAAA==" target="_blank">Run the query</a>
-:::moniker-end
+::: moniker-end
 
 ```Kusto
 StormEvents
@@ -328,7 +328,7 @@ This example groups states based on the number of storm-related injuries their c
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA5WRPQsCMQyG9/sVodMdOOjgqIMfg6Au/QWxF6R6bSFNRcUfrwU90OGKGZP3eTK8WgK79YW8xOoBMTmHbO8EG39KbCkuQ/ICs3ypP7uVZTLSwOEGWlDoBdJVyLc9tUjmTBkzGAnqCgbn+9ccpuNRgVBb5COpUuxXPCmLd9Ta5P42l8XaYdcVvWofwL7daiDb5LICS98BYDRPIbtEBswBAAA=" target="_blank">Run the query</a>
-:::moniker-end
+::: moniker-end
 
 ```Kusto
 StormEvents
@@ -362,7 +362,7 @@ Create a pie chart to visualize the proportion of states that experienced storms
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA5WRvQ7CIBCA9z7FhalNHHRwrEPVwURd+gRIL4oWao7DWOPD29afpJqUyAj3fRC+nCsyywtadtEdnDdGkr4hrOzRk0Y3r7xlSNuT+L230ISKE9jVkLNkbEC8MtriQ2VenbDFlHQIcQSDq3/XDKbjUYAQa0l7FKGxb/EkLN5gob352xwW50aWZdArthXol1sMzCa/sernp2d11yRV7cviLlK/SkNS0woJzhrVQRI/AE1xwckEAgAA" target="_blank">Run the query</a>
-:::moniker-end
+::: moniker-end
 
 ```kusto
 StormEvents
@@ -400,7 +400,7 @@ Here's a step-by-step explanation of the query:
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA3VSy27CMBC85ytWOTnCCAJtc6BwKj1XBanHysgbaim2I2MeqfrxXVuQBEqjxPHas7OP2Qo9HJWR9rjywnmYgxQevdLIJuNxMQxvns2SqsUtjSRU32cA+VTOkpW3Ti8PaPwu+YHjFzqEaK6bGkEZYOnaOiOkTTmkr5W1Mmw+VCVL5TDNgNzw5JECbAg+D+un8GwXothSiobFgGvKLuOQS95PI4PRCPKOgr53YbZIPKosWWAcQCFh0dXB+9sE7j5XvkMKCs/9qPza+IfkPg3ZvF26myyLpUy6Uty5jvhn0eNSXWhDhE8Jrg9DPNWi9fAWPPXeluwiaoQ+EHS311o49Y2glWEvQostvjlbo/MN9VaL099DZ/dGMnHY3l5lsGkgqEJK6Xp+ls1d8ruWifeGgpJ5bGelJYDF7XwVchawT79tsmpLrgIAAA==" target="_blank">Run the query</a>
-:::moniker-end
+::: moniker-end
 
 ```kusto
 let windowStart = datetime(2007-07-01);

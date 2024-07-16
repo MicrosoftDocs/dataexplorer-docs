@@ -47,7 +47,7 @@ To reference query parameters, the query text, or functions it uses, must first 
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA4WNuw7CMBAE+0j5hytBpKAFBBUpXEOPrHgFjvzifAEi8fEkQUBJO9qZNWicZtC1A/enpFl7CDjPvH6o0HYMs3YxnGlLq+V8UxYHiezrG4JkKosn3S8Y9GlqkfeW0QgtvkAF80Y7+hVHL3FsR14nm6OBMhVN1WOfUJFE0e7TGL7/9l+H314eyAAAAA==" target="_blank">Run the query</a>
-:::moniker-end
+::: moniker-end
 
 ```kusto
 declare query_parameters(maxInjured:long = 90);

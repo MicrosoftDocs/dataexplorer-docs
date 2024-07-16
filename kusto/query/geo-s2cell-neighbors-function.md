@@ -37,7 +37,7 @@ The following example calculates S2 cell neighbors.
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAysoyswrUchLzUzPSMovKlawVUhPzY8vNkpOzcmJhwtrqFtYJhuZWqprAgC1Bx0UMAAAAA==" target="_blank">Run the query</a>
-:::moniker-end
+::: moniker-end
 
 ```kusto
 print neighbors = geo_s2cell_neighbors('89c259')
@@ -54,7 +54,7 @@ The following example calculates an array of input S2 cell with its neighbors.
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA8tJLVEoNkpOzclRsFVQt7BMNjK1VLfmKijKzCtRAAkXA8UTi4oSK+OT8/OSE0s0ChKTs+PBIhoQjZo6Cump+fEQTnxeamZ6RlJ+UTFMVhMAzd7c0mMAAAA=" target="_blank">Run the query</a>
-:::moniker-end
+::: moniker-end
 
 ```kusto
 let s2cell = '89c259';
@@ -72,7 +72,7 @@ The following example calculates S2 cells polygons GeoJSON geometry collection.
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA2WQ0UpDMQyG7/cUpTfrgXkzEBzilaCPUbIaa7e2KW0mHvHhTc/pcOBd8+fPlz+NyKrtHcaontT24eD294ft46bUkFl1uYkOtcJsHWUHbAq4s10Usw5OO+WR7FrYjMF/HKm2a3fa/Kj0eYdfBfLbQDIpngvSu2ksm3z3lEondKwKxdlT7ntvsEx2NMyC6BPtkhLU8I09oNgTnNHG0CTjYNxyBXZqlMV3BG/7FUb3EHqn9AsCX6o8tbgScp1F/W97Hc1nilGQgXJXx0jAJpUkkf/QsrRg5VX7A2VIC+iaT0/TL+9ZgYaBAQAA" target="_blank">Run the query</a>
-:::moniker-end
+::: moniker-end
 
 ```kusto
 let s2cell = '89c259';
@@ -94,7 +94,7 @@ The following example calculates polygon unions that represent S2 cell and its n
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA22PwQrCMAyG73uK3taBXgaCQ3yWUmusdW1T2kyc+PC2WwcevATyJ//3JxaIpV6BtezM2uOg+sPQnpoQjSdW5JR1GaOchUKvJPEg1SgWha/Gbsc0oFgb4cHo+wVj2qZd82HuuYdXkP5akYSM5gB444lyki47IeIDFLGAdtboS+4PllDUAV8QxZEm52Q0bygH5nUnRxDWpHxjZfzhVuzkDfoNmeo/uXZfEaCuxhEBAAA=" target="_blank">Run the query</a>
-:::moniker-end
+::: moniker-end
 
 ```kusto
 let s2cell = '89c259';
@@ -116,7 +116,7 @@ The following example returns true because of the invalid S2 Cell token input.
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAysoyswrUcjMK0vMyUxRsFXILM4rzcnRSE/Njy82Sk7NyYnPS81Mz0jKLyrWUE9U19QEAB3YxNYxAAAA" target="_blank">Run the query</a>
-:::moniker-end
+::: moniker-end
 
 ```kusto
 print invalid = isnull(geo_s2cell_neighbors('a'))
