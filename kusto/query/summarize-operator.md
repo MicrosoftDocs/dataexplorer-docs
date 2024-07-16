@@ -135,10 +135,8 @@ StormEvents
 
 Create a row for each continent, showing a count of the cities in which activities occur. Because there are few values for "continent", no grouping function is needed in the 'by' clause:
 
-:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAwsuyS/KdS1LzSsp5uWqUSguzc1NLMqsSlUIqSxILfZPCwbJF9umJOeX5pVogBWCZDQVkioVgksSS1LBuvKLSkACKHoALe01bFoAAAA=" target="_blank">Run the query</a>
-::: moniker-end
 
 ```kusto
 StormEvents
