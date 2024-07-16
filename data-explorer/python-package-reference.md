@@ -664,8 +664,6 @@ Python engine 3.11.7 + common data science and ML packages
 | zict | 3.0.0 |
 | zipp | 3.18.1 |
 | zstandard | 0.22.0 |
-
-
 ## [3.11.7 DL (Preview)](#tab/python3-11-7-DL)
 
 Python engine 3.11.7 + common data science and ML packages + deep learning packages (tensorflow & torch)
