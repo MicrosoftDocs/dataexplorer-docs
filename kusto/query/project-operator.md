@@ -51,8 +51,10 @@ A table with columns that were named as arguments. Contains same number of rows 
 
 Only show the `EventId`, `State`, `EventType` of the `StormEvents` table.
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAwsuyS/KdS1LzSsp5qpRKCjKz0pNLlEAC3im6CgElySWpOpA+CGVBakAzXMiTy8AAAA=" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
 StormEvents
@@ -79,8 +81,10 @@ The following results table shows only the top 10 results.
 
 The following query renames the `BeginLocation` column and creates a new column called `TotalInjuries` from a calculation over two existing columns.
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAwvJL0nM8czLKi3KTC1WsFWAMV0yi1KTSxS04QKeeSlgIQBwTr1bMQAAAA==" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
 StormEvents

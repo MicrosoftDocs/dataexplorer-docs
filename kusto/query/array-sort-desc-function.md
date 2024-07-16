@@ -43,8 +43,10 @@ If an array contains elements of different types, it's sorted in the following o
 
 ## Example 1 - Sorting two arrays
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA8tJLVFILCpKrDRUsFVIqcxLzM1M1og21DHWMdEx1TGK1bTmyoEpMUJWopSopKOUBMTJQJwCxKlKIMUFRZl5UOXxxflFJfEpqcXJGhAbdCCmaAIAmTiTMnQAAAA=" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
 let array1 = dynamic([1,3,4,5,2]);
@@ -63,8 +65,10 @@ print array_sort_desc(array1,array2)
 
 ## Example 2 - Sorting substrings
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA8tJLVHwS8xNLVawVVDyys/I0wlILM3RcU/NL0pP1QnKzEvPV7LmygGqCs4vKklNgaktLilKTiyJTywqSqzUAJPxxUAF8SmpxckaxQU5mSUaYKU6Cko6SpqaEMqaq6AoM69EoSi1uDSnBGgKkpkA+RSmRokAAAA=" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
 let Names = "John, Paul, George, Ringo";
@@ -80,8 +84,10 @@ print result = SortedNames
 
 ## Example 3 - Combining summarize and array_sort_desc
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA5WR0WoDIRBF3/crJC9ZYQO7tiU00C8JQYwOiY2uy4yhpPTjq23sFmIK1ZdxOPdy5RoV0907aHXwXo1mQxHteOjY9S2j9bAxKkIeOnYmQGkLxpttw9JZ6qMPZtmlsaCt6IfnVb9eDU887xdZOSy6b97RF1zje1HhjcWr4IYXNd6fiuI2z2OFR383j1hX+OnN3M1T++9f/g8zL/7pn/ld88HonMpC+w4soxSVn4i9MK9OIJ2l2P5uk/+UW2U4219Kzcl6wvAKOpbNrJV2lPqIYQwuHKxWTgY0gMlSIaqLpIBRGiDdzplmNd8Ou0832AsNfQIAAA==" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
 datatable(command:string, command_time:datetime, user_id:string)
@@ -115,8 +121,10 @@ By default, `null` values are put last in the sorted array. However, you can con
 
 Example with default behavior:
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAysoyswrUUgsKkqsjC/OLyqJT0ktTtZIqcxLzM1M1ojOK83J0VFKyilNVdJRqkzNyckvBzLSi1JT85R0QJKxmpoAGsR2QUMAAAA=" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
 print array_sort_desc(dynamic([null,"blue","yellow","green",null]))
@@ -130,8 +138,10 @@ print array_sort_desc(dynamic([null,"blue","yellow","green",null]))
 
 Example with nondefault behavior:
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/?query=H4sIAAAAAAAAAxXJUQqAIAwA0KvIvhR2owhZukKYM6YS3r76e/BuKzocmdGKvdmImXvyeSnVkvymUwThkMmAsFikPR8uY1bAP/eA7iTpHF4VdlwBSgAAAA==" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
 print array_sort_desc(dynamic([null,"blue","yellow","green",null]), false)

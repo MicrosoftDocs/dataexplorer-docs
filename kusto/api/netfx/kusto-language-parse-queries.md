@@ -30,7 +30,7 @@ The following table overviews additional actions that can be taken once a query 
 |Find the database for a table|`code.Globals.GetDatabase(`*table*`)`|Only relevant for semantic analysis (`ParseAndAnalyze`).|
 |Find the cluster for a database|`code.Globals.GetCluster(`*database*`)`|Only relevant for semantic analysis (`ParseAndAnalyze`).|
 |Get diagnostic information like errors and warnings|`code.GetDiagnostics()`|`Parse` provides syntax-related diagnostic information, while `ParseAndAnalyze` provides diagnostic information for both syntax and semantics.|
-:::moniker-end
+::: moniker-end
 
 :::moniker range="azure-data-explorer"
 
@@ -39,7 +39,7 @@ The following table overviews additional actions that can be taken once a query 
 |Find the table for a column|`code.Globals.GetTable(`*column*`)`|Only relevant for semantic analysis (`ParseAndAnalyze`).|
 |Find the database for a table|`code.Globals.GetDatabase(`*table*`)`|Only relevant for semantic analysis (`ParseAndAnalyze`).|
 |Get diagnostic information like errors and warnings|`code.GetDiagnostics()`|`Parse` provides syntax-related diagnostic information, while `ParseAndAnalyze` provides diagnostic information for both syntax and semantics.|
-:::moniker-end
+::: moniker-end
 
 ## Parse a query
 

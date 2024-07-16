@@ -35,7 +35,7 @@ The following query returns rows that show breaks longer than a quarter of a sec
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/SampleIoTData?query=H4sIAAAAAAAAA3WOvQoCMRCEe8F32C53cIIKFhZndY2FNl4v62WDgUtyZBd/wIc30SI2djPzDcP0ET2bEB3pE3kOkTsUnM9ecL9SJPiGR3QEbQuKP3axVbmRlMDlCb11xIJuAuQhA3oIeQ2S8s4as/cHO46WaQheM7SgUSjDs060Uq5Q1ZS1BqZIt+rHr+q6PPuzvoP1ZvkGO/YBANYAAAA=" target="_blank">Run the query</a>
-:::moniker-end
+::: moniker-end
 
 ```kusto
 TransformedSensorsData
@@ -63,7 +63,7 @@ The following query calculates the average time difference in milliseconds betwe
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/SampleIoTData?query=H4sIAAAAAAAAA22NvQ6CQBCEexPfYbuDBAtLi+toLLSB3qzcopewB7ld8Sc+vBwWWNjNzDeZqSMGafvI5CoK0kcpUXG9esP9SpHgGx6RCawFI7Pd7ExqTErh/ITaM4kiD4DSJEAPpeBAp7z0bbsPB991XqjpgxOw4FApwZObaGZ4oaZY1goYIo3Zj9/m+fx7Y8boXwQ4XrL/L/kHqqI6JdkAAAA=" target="_blank">Run the query</a>
-:::moniker-end
+::: moniker-end
 
 ```kusto
 TransformedSensorsData
@@ -86,7 +86,7 @@ In the following query, as part of the serialization done with the [serialize op
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA22NMQ7CMAwAd17hrSB1ADaGLvAEHhBFiRFGIYlspwjUx9cCqerA6POdfSn5how54BVFqGTZTPC6G4KwrGAYoDs3ShGO+8OpM0WQySf6IFTGkUoTJ78DTt/Vii/frtnOssrlgUFB6YnO5+hiY69m9LCopAlXo5X9/yczmplkXLwAAAA=" target="_blank">Run the query</a>
-:::moniker-end
+::: moniker-end
 
 ```kusto
 ConferenceSessions

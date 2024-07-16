@@ -77,15 +77,15 @@ There are 2 ways to query a materialized view:
     search in (*)
     search * 
     ```
-:::moniker-end
+::: moniker-end
 
 :::moniker range="microsoft-fabric"
 * Materialized views participate in cross-Eventhouse or cross-database queries, but aren't included in wildcard unions or searches.
   * The following examples all **include** materialized views by the name `ViewName`:
    <!-- csl -->
     ```kusto
-    eventhouse('eventhouse1').database('db').ViewName
-    eventhouse('eventhouse1').database('*').ViewName
+     cluster("<serviceURL>").database('db').ViewName
+     cluster("<serviceURL>").database('*').ViewName
     database('*').ViewName
     database('DB*').ViewName
     database('*').materialized_view('ViewName')
@@ -95,12 +95,12 @@ There are 2 ways to query a materialized view:
   * The following examples do **not** include records from materialized views:
    <!-- csl -->
     ```kusto
-    eventhouse('eventhouse1').database('db').*
+    cluster("<serviceURL>").database('db').*
     database('*').View*
     search in (*)
     search * 
     ```
-:::moniker-end
+::: moniker-end
 
 ### Materialized view query optimizer
 
@@ -159,7 +159,7 @@ The main contributors that can impact a materialized view health are:
 
 :::moniker range="azure-data-explorer"
 * **Number of materialized views in cluster:** The above considerations apply to each individual materialized view defined in the cluster. Each view consumes its own resources, and many views compete with each other on available resources. While there are no hard-coded limits to the number of materialized views in a cluster, the cluster may not be able to handle all materialized views, when there are many defined. The [capacity policy](../capacity-policy.md#materialized-views-capacity-policy) can be adjusted if there is more than a single materialized view in the cluster. Increase the value of `ClusterMinimumConcurrentOperations` in the policy to run more materialized views concurrently.
-:::moniker-end
+::: moniker-end
 
 * **Materialized view definition**: The materialized view definition must be defined according to query best practices for best query performance. For more information, see [create command performance tips](materialized-view-create.md#performance-tips).
 

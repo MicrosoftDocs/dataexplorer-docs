@@ -195,11 +195,11 @@ The following rules limit the query used in the materialized view Query paramete
 
 :::moniker range="azure-data-explorer"
 * Cross-cluster and cross-database queries aren't supported.
-:::moniker-end
+::: moniker-end
 
 :::moniker range="microsoft-fabric"
 * Cross-Eventhouse and cross-database queries aren't supported.
-:::moniker-end
+::: moniker-end
 
 * References to [external_table()](../../query/external-table-function.md) and [externaldata](../../query/externaldata-operator.md) aren't supported.
 

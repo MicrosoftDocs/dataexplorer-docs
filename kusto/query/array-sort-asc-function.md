@@ -44,7 +44,7 @@ If an array contains elements of different types, it's sorted in the following o
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA8tJLVFILCpKrDRUsFVIqcxLzM1M1og21DHWMdEx1TGK1bTmyoEpMUJWopSopKOUBMTJQJwCxKlKIMUFRZl5UOXxxflFJfGJxckaEAt0IIZoAgAts93scwAAAA==" target="_blank">Run the query</a>
-:::moniker-end
+::: moniker-end
 
 ```kusto
 let array1 = dynamic([1,3,4,5,2]);
@@ -66,7 +66,7 @@ print array_sort_asc(array1,array2)
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA8tJLVHwS8xNLVawVVDyys/I0wlILM3RcU/NL0pP1QnKzEvPV7LmygGqCs4vKklNgaktLilKTiyJTywqSqzUAJPxxUAF8YnFyRrFBTmZJRpglToKSjpKmpoQypqroCgzr0ShKLW4NKcEaAiSkQD+ChdoiAAAAA==" target="_blank">Run the query</a>
-:::moniker-end
+::: moniker-end
 
 ```kusto
 let Names = "John,Paul,George,Ringo";
@@ -122,7 +122,7 @@ Example with default behavior:
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="/databases/Samples?query=H4sIAAAAAAAAAysoyswrUUgsKkqsjC/OLyqJTyxO1kipzEvMzUzWiM4rzcnRUUrKKU1V0lGqTM3JyS8HMtKLUlPzlHRAkrGamgDOvUliQgAAAA==" target="_blank">Run the query</a>
-:::moniker-end
+::: moniker-end
 
 ```kusto
 print array_sort_asc(dynamic([null,"blue","yellow","green",null]))
@@ -139,7 +139,7 @@ Example with non-default behavior:
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAxXJUQqAIAwA0KvIvhR2owhZtkJYMzYlvH319+DdVrUHMqOZvVnP5CXuU+mqJS46RBA2GQwIk0Xa8+E0ZgX8c00YDhLn9ALNIgvjSQAAAA==" target="_blank">Run the query</a>
-:::moniker-end
+::: moniker-end
 
 ```kusto
 print array_sort_asc(dynamic([null,"blue","yellow","green",null]), false)

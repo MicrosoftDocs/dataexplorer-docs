@@ -30,8 +30,10 @@ Returns logical XOR operation on a pair of numbers: value1 ^ value2.
 
 ## Examples
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAysoyswr0UjKzEssqoyvyC/SMNQx1NQEAKWP8zEWAAAA" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
 binary_xor(1,1)
@@ -43,8 +45,10 @@ binary_xor(1,1)
 |------|
 |0 |
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAysoyswr0UjKzEssqoyvyC/SMNQx0tQEAPwxtTMWAAAA" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
 binary_xor(1,2)

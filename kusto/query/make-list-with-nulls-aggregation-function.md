@@ -38,8 +38,10 @@ If the input to the `summarize` operator is sorted, the order of elements in the
 
 The following example shows null values in the results.
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAz3PywqDMBAF0H2+YnCl4KKFPi1d9TNKkVQHDU0mNhnpg358E4zObIZzZ3M1MvheDujhDK3ksHeNkJM0WHl2ijoowasWL3YkrkARF+IqIEwWYkmdxqyMnNOodVFOkX+O0sVgk8Bhw/PzbAMSy85SoG2iHt9JdosM89M+kW1mOSQhS0mOSVpskqxX4nYSU0nxAz8aI536IpiPVp5DbyMfWMe7finu69jD50vn4g++V3ROJAEAAA==" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
 let shapes = datatable (name:string , sideCount: int)

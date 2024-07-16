@@ -42,8 +42,10 @@ The [cumulative beta distribution function](https://en.wikipedia.org/wiki/Beta_d
 
 ## Examples
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA22PwQrCMBBE7/mKoacWYkgFDxb1E3r0IiJpEzWQpsWmEMGPN6algnUXlh2Yt8tI4UJXRqW+kO0QFgphuruYVaXcV9Rt0yjrit49tL1l5EQQirMtRc4Zp1jHmRyF0RLadoNLaPTkbPPj8Tggp3hqZWSPUpSTc/yVrnKeLYgd+B+Cs3BnxtiHm4gYBbpfgORMXlDeKStRYR9TXmp5Tf2UfwyevQFA2/Y/IAEAAA==" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
 datatable(x:double, alpha:double, beta:double, comment:string)

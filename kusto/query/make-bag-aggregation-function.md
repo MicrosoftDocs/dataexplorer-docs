@@ -40,8 +40,10 @@ If a key appears in more than one row, an arbitrary value, out of the possible v
 
 The following example shows a packed JSON property bag.
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA1WNzQrDIAyA7z5F8FTBw35uG32L3saQqKFItRNrxyh9+GWjhS055csHX6QKHbTgsfLaSE0uj3yZagljr+GJcabtUuImgEd+jMNRapD8Nij1Dz7t2P7h844d4/tVdGIFelUaPWSuW+xNRjd841tVsTLNKWEJC4EPrrYJBzLsNlm9AS6AdnS4AAAA" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
 let T = datatable(prop:string, value:string)
@@ -63,8 +65,10 @@ T
 
 Use the [bag_unpack()](bag-unpack-plugin.md) plugin for transforming the bag keys in the make_bag() output into columns.
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA1WNvQrDMAyEdz+F8BSDh/5sLXmLbKUYOREhxHZNYpdS+vCVTQKttJy+O3GOEnTQwoCJ1zpq4vKIlzUtUxg1PNFl2i4lbgJ4ZEkcjlKDZNug1D/4tGP7h8877hnfr6ITH6BXojBA5HaLo4nYz7V8a1UcWbP3uExvKonW40yGRROLRyWFqVomh/rOUn0B38wbbdIAAAA=" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
 let T = datatable(prop:string, value:string)

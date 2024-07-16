@@ -71,7 +71,7 @@ print arr=dynamic([1,2,3,4,5])
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAysoyswrUUgsKrJNqcxLzM1M1og21DHSMdYx0TGN1VTgqlFIrShJzUtRKM7JTE5NsQWqTKyMB3M0gGwdBV1jIDbSBABajMjTSAAAAA==" target="_blank">Run the query</a>
-:::moniker-end
+::: moniker-end
 
 ```kusto
 print arr=dynamic([1,2,3,4,5]) 

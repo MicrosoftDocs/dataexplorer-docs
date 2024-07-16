@@ -37,8 +37,10 @@ IP address entrances in a text must be properly delimited with non-alphanumeric 
 
 ### IP addresses as list of strings
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAysoyswrUShKLS7NKbHNSCyOT8yrjM8sKDOJLyhKTcus0FA3MLUyMLEyNVEwNDLXMwBCQwV31xAF/bTEsszk/Dw9IKFgYmCirqOgDlEBZlka6RmaWeipayro6yuUFJWmAgAUwkzUaQAAAA==" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
 print result=has_any_ipv4_prefix('05:04:54 127.0.0.1 GET /favicon.ico 404', '127.0.', '192.168.') // true
@@ -51,8 +53,10 @@ print result=has_any_ipv4_prefix('05:04:54 127.0.0.1 GET /favicon.ico 404', '127
 
 ### IP addresses as dynamic array
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAysoyswrUShKLS7NKbHNSCyOT8yrjM8sKDOJLyhKTcus0FA3MLUyMLEyNVEwNDLXMwBCQwV31xAF/bTEsszk/Dw9IKFgYmCirqOQUpmXmJuZrBGtBFGqpKOgZGhppGdoZqGnFKupCQARxDvmbAAAAA==" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
 print result=has_any_ipv4_prefix('05:04:54 127.0.0.1 GET /favicon.ico 404', dynamic(["127.0.", "192.168."]))
@@ -64,8 +68,10 @@ print result=has_any_ipv4_prefix('05:04:54 127.0.0.1 GET /favicon.ico 404', dyna
 
 ### Invalid IPv4 prefix
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAysoyswrUShKLS7NKbHNSCyOT8yrjM8sKDOJLyhKTcus0FA3MLUyMLEyNVEwNDLXMwBCQwV31xAF/bTEsszk/Dw9IKFgYmCirqOgDlahrgkA7mfKHVQAAAA=" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
 print result=has_any_ipv4_prefix('05:04:54 127.0.0.1 GET /favicon.ico 404', '127.0')
@@ -77,8 +83,10 @@ print result=has_any_ipv4_prefix('05:04:54 127.0.0.1 GET /favicon.ico 404', '127
 
 ### Improperly deliminated IP address
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAysoyswrUShKLS7NKbHNSCyOT8yrjM8sKDOJLyhKTcus0FA3MLUyMLEyNTE0MtczAEJDBXfXEAX9tMSyzOT8PD0goWBiYKKuo6AOUQFmWRrpqWsCACl5RqJcAAAA" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
 print result=has_any_ipv4_prefix('05:04:54127.0.0.1 GET /favicon.ico 404', '127.0.', '192.')

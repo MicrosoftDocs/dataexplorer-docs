@@ -34,8 +34,10 @@ Returns the variance value of *expr* in records for which *predicate* evaluates 
 
 ## Example
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAytKzEtPVahQSCvKz1UwVCjJVzA0MFAoLkktUDDkqlEoLs3NTSzKrEpVKANSiXnJqZlpGhU6ChWqRgq2tgoGmgA5lfgVQAAAAA==" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
 range x from 1 to 100 step 1

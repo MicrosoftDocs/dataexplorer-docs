@@ -29,8 +29,10 @@ Returns whether the input is an infinite (positive or negative) value.
 
 ## Example
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAytKzEtPVahQSCvKz1XQNVQoyVcwVCguSS1QMOTlqlFIrShJzUtRqFSwVTDQM0ASScksA4oZ6hloVehXIolnFmfmpdmCSQ2gGk0AQSRax2AAAAA=" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
 range x from -1 to 1 step 1

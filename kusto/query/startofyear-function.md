@@ -30,8 +30,10 @@ A datetime representing the start of the year for the given *date* value, with t
 
 ## Example
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAy2MQQqAMAwE775ijxYsNF4Kgq/wBUVTUdBImovg460gDCzMwmg6V4bkXNiQVQ54ggkIxfgCNQ8ulZ1nw81JJ0tqGOtZV/Kn2iUZ23Zw2weKPlAFFIaP6Lq/7V7sDV7RaQAAAA==" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
 range offset from -1 to 1 step 1

@@ -40,8 +40,10 @@ Each pattern is represented by a row in the results. The first column is the seg
 
 ## Example
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAzVOuw6CQBDs/YoJFURiiInl2SitmkBjeeqeoN4dWVaUxI/3AK1mJzuvQjzbvCMn7eyDV0VMsN5J5U1PmuNCNEtZW0qgFFZBQ28hd8FWW30lKNTGxBPZsG9azH+vQ2DE0mONDCmiY15EA+72URJiGvY3OgtCgVCKcULZN+Gc7H8cQ4faTj+eQYqTbu8kcbZYJl8ixlvuvQAAAA==" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
 StormEvents
@@ -66,8 +68,10 @@ StormEvents
 
 ### Example with custom wildcards
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAzVOMQ6CQBDsfcWEhjtFgyaW2CitmkBjeeoiqMeRY0VJjG/3AG1mdrKzM5uwsTpuqOR69MYzJ0vQpuTcZC0pKxJWltNCk0QUYek89GIqz9gorS6ECEWWiUGsralqTH6rvVNkucUKIQJ4hzjxOt7uPOliKmuudGK4AqYA/QtpW7lxOP9zH9rVNur+cFYcVX0jFuFsEcD/+H8YOyhKFtO5lF/0AFrQ1QAAAA==" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
 StormEvents

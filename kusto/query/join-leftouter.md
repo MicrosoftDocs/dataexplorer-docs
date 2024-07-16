@@ -32,8 +32,10 @@ The `leftouter` join flavor returns all the records from the left side table and
 
 The result of a left outer join for tables X and Y always contains all records of the left table (X), even if the join condition doesn't find any matching record in the right table (Y).
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA8tJLVGIULBVSEksAcKknFQN79RKq+KSosy8dB2FsMSc0lRDq5z8vHRNrmguBSBQT1TXMdSBMJPUdYwQTGMoM1ldx4Qr1porB2h0JH6jjVCNBhpiaIAwxQiJbQxjpwBNNwAZH6FQo5CVn5mnkJ2Zl2Kbk5pWkl9akloEtDI/TwFoEwD4dnPs2gAAAA==" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
 let X = datatable(Key:string, Value1:long)

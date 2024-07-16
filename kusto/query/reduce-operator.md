@@ -46,8 +46,10 @@ For example, the result of `reduce by city` might include:
 
 ### Small threshold value
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAzWNMQ7CMBAEe16xcmWkCNkPyA9IR5H2cI7YCOzochGJxOO5hq1WGu2sUJ0ZOx7S3ojQhhhCwKq8IJ6+WKQ9OSmG48a7ojciidS7gVIula9MUkudR9fZ2KB1r61U9UJ18jGcLSYSnrbEuB9/FT5FMzQLr7m9pj5cQojokDIJJWVZ7c2N7gefKNUWogAAAA==" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
 range x from 1 to 1000 step 1
@@ -63,8 +65,10 @@ range x from 1 to 1000 step 1
 
 ### Large threshold value
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/SampleIoTData?query=H4sIAAAAAAAAAzWNMQ7CMBAEe16xcmWkCNklRX5AOoq0h3PERmBHl0MkEo/nGrZaabSzQnVmbLhLeyFCG2IIAavygnj4YpH24KQY9itvit6IJFLvBkq5VL4wSS11Hl1nY4PWvbZS1QvVycdwtJhIeHonxm3/q/ApmqFZeM3tOfXhdEaHlEkoKctqX250Px4hVlGgAAAA" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
 range x from 1 to 1000 step 1
@@ -90,8 +94,10 @@ range x from 1 to 1000 step 1
 
 If the *Characters* parameter is unspecified, then every non-ascii numeric character becomes a term separator.
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAxWKQQqAMAwEv7L0VMGDfYAf8VZrKgo2JUao4ONNLwMzjMSyExqy8IUAZYQJt1I1+VCFT0pqQTB3pqjeZWY3wi0GZYtH2X0bBvuFticR1re/P7YelSlbAAAA" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
 range x from 1 to 10 step 1 | project str = strcat("foo", "Z", tostring(x)) | reduce by str
@@ -105,8 +111,10 @@ range x from 1 to 10 step 1 | project str = strcat("foo", "Z", tostring(x)) | re
 
 However, if you specify that "Z" is a separator, then it's as if each value in `str` is 2 terms: `foo` and `tostring(x)`:
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAx2LSQqAQAwEv9LMyQEP+gA/4m2McQMnEiMq+Hijl4IuujTlkXFhUFlRwwR1hd148/FgU1mYzIWi+UjJijCIhBKhdZi4nPNYXDH6X7k/iNHdf3HONoGmpImMdW+8eAEwpEQbbwAAAA==" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
 range x from 1 to 10 step 1 | project str = strcat("foo", "Z", tostring(x)) | reduce by str with characters="Z"

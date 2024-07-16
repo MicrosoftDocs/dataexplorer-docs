@@ -36,8 +36,10 @@ An array of H3 cell neighbors. If the H3 Cell is invalid, the query will produce
 
 The following example calculates H3 cell neighbors.
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAysoyswrUchLzUzPSMovKlawVUhPzY/PME5OzcmJhwtrqFuYGSUaGpgbpUGAuiYA0YTxRzkAAAA=" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
 print neighbors = geo_h3cell_neighbors('862a1072fffffff')
@@ -51,8 +53,10 @@ print neighbors = geo_h3cell_neighbors('862a1072fffffff')
 
 The following example calculates an array of input H3 cell with its neighbors.
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA8tJLVHIME5OzclRsFVQtzAzSjQ0MDdKgwB1a66Cosy8EgWQfDFQQWJRUWJlfHJ+XnJiiUZBYnJ2PFhEA2KCpo5Cemp+PIQTn5eamZ6RlF9UDJPVBADbK8PrbAAAAA==" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
 let h3cell = '862a1072fffffff';
@@ -67,8 +71,10 @@ print cells = array_concat(pack_array(h3cell), geo_h3cell_neighbors(h3cell))
 
 The following example calculates H3 cells polygons GeoJSON geometry collection.
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA2WQ0UoDMRBF3/sVIS/NQgWtoIL4JOhnhGmcbtMmmZBMxRU/3sluigXzlLlz58xNArI63DsMQb2o9dPDFu5uH7f75ayfV7n4xKr1qxigFJiso+SATQZ3srNiFsKwUSOSXQqb0I+HHZV66Q6rHxU/b/ArQ/roSCbFU0bam8qyaWyeXOiIjlWmMI2U2t4rLJPtDTMj2kQ9xwjFf2MLKPYIJ7TBV8nYGddcgR0rJfHtYLTtFUa3EHqj9BsCn4tctbgicplE/W97781XCkGQnlJT+4jHKpUkkf/QsjRj4UX7AyWIM+iSTw/DL9SI6V2KAQAA" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
 let h3cell = '862a1072fffffff';
@@ -87,8 +93,10 @@ print cells = array_concat(pack_array(h3cell), geo_h3cell_neighbors(h3cell))
 
 The following example calculates polygon unions that represent H3 cell and its neighbors.
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA22PwQrCMAyG73uK3taBgk5QQXyWUmvW1bVNaTtx4sPbbh14MIdA8v/5kmiIpD8I0JpcSX0+tny/O7XdEvWlcl7ZSLIekoF7zycm0AoeqeNiYHOHLoRmQyQgWwpmQcn+hj6salN9iHlu4eW4vRdkRBInB9jRENMmmT3O4wNEJA71JNHmvT/YiKwIdEbkiTAaw716Qz4w2Q0fgGkV0o2F8YdbsKNVaFdkKP+k3HwBry+HcRoBAAA=" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
 let h3cell = '862a1072fffffff';
@@ -107,8 +115,10 @@ print cells = array_concat(pack_array(h3cell), geo_h3cell_neighbors(h3cell))
 
 The following example returns true because of the invalid H3 Cell token input.
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAysoyswrUcjMK0vMyUxRsFXILM4rzcnRSE/Nj88wTk7NyYnPS81Mz0jKLyrWUE9MSlbX1AQAU7dmMDMAAAA=" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
 print invalid = isnull(geo_h3cell_neighbors('abc'))

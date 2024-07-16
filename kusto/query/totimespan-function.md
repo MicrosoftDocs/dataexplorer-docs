@@ -35,8 +35,10 @@ Else, result will be null.
 
 ## Example
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAysoyswrUSjJL8nMTS0uSMzTUDLQMzCwMjC0MjBQ0lSwtVUAyWgY5mbmaQIAkicpMSwAAAA=" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
 totimespan("0.00:01:00") == time(1min)

@@ -29,8 +29,10 @@ Dynamic array of calculated element-wise multiplication operation between the tw
 
 ## Example
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA1XMQQrCMBBG4b2n+JeNZJO69iwh1FGqbRNmImRCD28sxeL24/E4LA9CwZ3jDIcccYFkSnCnFVQyLTcorq04oz+oNtKdEscnDRniGqYwvHxgDtoVq7YaC+n/vVqoRTHHTZyf31Me06R+q4V4JPlhJ+67MR/3UM9mrQAAAA==" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
 range x from 1 to 3 step 1

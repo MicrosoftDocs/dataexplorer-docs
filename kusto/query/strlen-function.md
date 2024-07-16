@@ -34,8 +34,10 @@ Returns the length, in characters, of the input string.
 
 ### String of letters
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAysoyswrUchJzUsvyVCwVSguKQKyNZQyUnNy8pU0ATlWTM8eAAAA" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
 print length = strlen("hello")
@@ -49,8 +51,10 @@ print length = strlen("hello")
 
 ### String of letters and symbols
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAysoyswrUchJzUsvyVCwVSguKQKyNZQeTVr2aNKGR5PWPZq0/tGkVUqaAIvtpvwoAAAA" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
 print length = strlen("⒦⒰⒮⒯⒪")
@@ -64,8 +68,10 @@ print length = strlen("⒦⒰⒮⒯⒪")
 
 ### String with grapheme
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA3WNsQ3DMAwE+0zxnePKQFbwJIT8iQgokkzSM2UZD2Uhva+8A/67aQ14WGF9Tuv546alyDRjWRCZeKt5IGUxSUGDOgQfk575JVI5fNgHbviPSMC4H2p0vJDaRvQ2bh3RRunDs8YF+EPCH4oAAAA=" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
 print strlen('Çedilla') // the first character is a grapheme cluster

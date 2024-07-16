@@ -30,8 +30,10 @@ A dynamic array of the command-line arguments.
 
 ## Example
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAwXBYQrAIAgG0Ku479cGO1IQkUKBadjA6++9HdM+2i2O1O5rNeOq0+SG9OFUMETVKT2UrwK8hJzGngfPD3VSsFI8AAAA" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
 print parse_command_line("echo \"hello world!\"", "windows")

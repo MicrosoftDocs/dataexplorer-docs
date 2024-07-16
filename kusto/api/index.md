@@ -67,16 +67,16 @@ A number of different libraries are available.
 * [Kusto.Data (Kusto Client Library)](./netfx/about-kusto-data.md): Can be used to query data, query metadata, and alter it.
    It's built on top of the Kusto REST API, and sends HTTPS requests to the target Kusto cluster.
 * [Kusto.Ingest (Kusto Ingestion Library)](netfx/about-kusto-ingest.md): Uses `Kusto.Data` and extends it to ease data ingestion.
-:::moniker-end
+::: moniker-end
 
 :::moniker range="microsoft-fabric"
 .NET Framework Libraries are the recommended way to interact with your Eventhouse programmatically.
 A number of different libraries are available.
 
 * [Kusto.Data (Kusto Client Library)](./netfx/about-kusto-data.md): Can be used to query data, query metadata, and alter it.
-   It's built on top of the Kusto REST API, and sends HTTPS requests to the target Kusto Eventhouse.
+   It's built on top of the Kusto REST API, and sends HTTPS requests to the target Eventhouse.
 * [Kusto.Ingest (Kusto Ingestion Library)](netfx/about-kusto-ingest.md): Uses `Kusto.Data` and extends it to ease data ingestion.
-:::moniker-end
+::: moniker-end
 
 The above libraries use Azure APIs, such as Azure Storage API and Microsoft Entra API.
 

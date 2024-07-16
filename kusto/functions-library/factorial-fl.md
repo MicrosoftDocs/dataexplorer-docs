@@ -69,7 +69,7 @@ factorial_fl(n:int)
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA1XMMQ6DMAwF0N2n+GMilkZsoJwFWa2DIiUOSj1Eor07rLwDvCKGxG9rPXPZUolOl6zm6STcdq6VnU7B03+lzroLBlJvFQHWEF74mhyY6QcZJvpBGoiP0g1/ARFWBuNmAAAA" target="_blank">Run the query</a>
-:::moniker-end
+::: moniker-end
 
 ```kusto
 let factorial_fl=(n:int)
@@ -88,7 +88,7 @@ range x from 1 to 10 step 3
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAytKzEtPVahQSCvKz1UwVCjJVzA0UCguSS1QMOaqUUitKEnNS1FIq1CwVUhLTC7JL8pMzIlPy9Go0AQAVBtAKDkAAAA=" target="_blank">Run the query</a>
-:::moniker-end
+::: moniker-end
 
 ```kusto
 range x from 1 to 10 step 3

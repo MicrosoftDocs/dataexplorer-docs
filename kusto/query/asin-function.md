@@ -29,8 +29,10 @@ Returns the value of the arc sine of `x`. Returns `null` if `x` < -1 or `x` > 1.
 
 ## Example
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAysoyswrUShKLS7NKbFNLM7M0zDQszTVBAC0CzxqFwAAAA==" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
 asin(0.5)

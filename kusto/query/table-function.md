@@ -45,8 +45,10 @@ The table() function references a table by providing its name as an expression o
 
 ### Use table() to access table of the current database
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAytJTMpJ1VAPLskvynUtS80rKVbXVKhRSM4vzSsBAIdoofIcAAAA" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
 table('StormEvents') | count
@@ -62,8 +64,10 @@ table('StormEvents') | count
 
 The query above can be rewritten as a query-defined function (let statement) that receives a parameter `tableName` - which is passed into the table() function.
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA8tJLVFIy89XsFXQKElMykn1S8xNtSouKcrMS9fkquZSAAKwOEJWU6FGITm/NK+Eq9aaC6hVQz24JL8o17UsNa+kWF0TAD3GJXVRAAAA" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
 let foo = (tableName:string)
@@ -108,8 +112,10 @@ A parameter, which isn't a scalar constant string, can't be passed as a paramete
 
 Below, given an example of workaround for such case.
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA8tJLVEIMVSwVSgoyswrUaiwNbTmygGJGSGJGUHE4pMz8vOLU4ESGvHFqTmpySX5RVbFJUBF6Zpc1VwKQFCal5mfB2ZpAE2tUSjPSC1KVYCrVrC1VVAPMVTX1IGqMcKlxkhdk6vWmgtqpQZYAADWO8bZrAAAAA==" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
 let T1 = print x=1;

@@ -42,8 +42,10 @@ This function performs a [JSONPath](jsonpath.md) query into dataSource, which co
 
 ## Example
 
+:::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA8tJLVHIKs7PU7BVUK9WykvMTVWyUlDyys/IU9JRUEpMB3GNDYDM5MySSpCUX2q5QmR+UbZSrbo1V0FRZl6JQmpFSVFickk8yBwNJRU9sCk6YGN1FEoqC1Lz0zSKS4BK0zU1rQHS+nnUcQAAAA" target="_blank">Run the query</a>
+::: moniker-end
 
 ```kusto
 let json = '{"name": "John", "age": 30, "city": "New York"}';
