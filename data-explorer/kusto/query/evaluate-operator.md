@@ -56,6 +56,7 @@ The following plugins are supported:
 * [diffpatterns-text plugin](diffpatterns-text-plugin.md)
 * [infer-storage-schema plugin](infer-storage-schema-plugin.md)
 * [ipv4-lookup plugin](ipv4-lookup-plugin.md)
+* [ipv6-lookup plugin](ipv6-lookup-plugin.md)
 * [mysql-request-plugin](mysql-request-plugin.md)
 * [narrow plugin](narrow-plugin.md)
 * [pivot plugin](pivot-plugin.md)

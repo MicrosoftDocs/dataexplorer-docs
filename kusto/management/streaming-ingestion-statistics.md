@@ -1,6 +1,6 @@
 ---
 title: .show streamingingestion statistics command
-description: Learn how to use the `.show streamingingestion statistics` command to show aggregated statistics for the streaming ingestion to the cluster.
+description: Learn how to use the `.show streamingingestion statistics` command to show aggregated statistics for the streaming ingestion.
 ms.topic: reference
 ms.date: 05/23/2023
 ---
@@ -8,7 +8,7 @@ ms.date: 05/23/2023
 
 > [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)]
 
-This command returns a result set that includes aggregated statistics for the [streaming ingestion](/azure/data-explorer/ingest-data-streaming.md#choose-the-appropriate-streaming-ingestion-type) to the cluster.
+This command returns a result set that includes aggregated statistics for the [streaming ingestion](/azure/data-explorer/ingest-data-streaming.md#choose-the-appropriate-streaming-ingestion-type).
 
 > [!NOTE]
 > The streaming ingestion statistics are grouped into buckets of short periods of time and aggregated by database, table, principal, ingestion status, and ingestion properties.

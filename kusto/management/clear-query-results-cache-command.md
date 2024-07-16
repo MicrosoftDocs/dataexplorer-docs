@@ -26,10 +26,10 @@ You must have at least [Database Admin](../access-control/role-based-access-cont
 
 This command returns a table with the following columns:
 
-|Column    |Type    |Description
-|---|---|---
-|NodeId|`string`|Identifier of the cluster node.
-|Count|`long`|The number of entries deleted by the node.
+|Column    |Type    |Description |
+|---|---|--- |
+|NodeId|`string`|The node identifier. |
+|Count|`long`|The number of entries deleted by the node. |
 
 ## Example
 
@@ -39,5 +39,5 @@ This command returns a table with the following columns:
 
 |NodeId|Entries|
 |---|---|
-|Node1|42
-|Node2|0
+|Node1|42 |
+|Node2|0 |
