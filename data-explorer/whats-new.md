@@ -39,7 +39,7 @@ Welcome to what's new in Azure Data Explorer. This article details new and signi
 
 |Article title | Description|
 |--|--|
-|[cosmosdb_sql_request plugin](kusto/query/cosmosdb-plugin.md) | Updated article. ARM example added. |
+|[cosmosdb_sql_request plugin](kusto/query/cosmosdb-plugin.md) | Updated article. Azure Resource Manager example added. |
 
 ## May 2024
 
