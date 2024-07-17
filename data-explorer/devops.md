@@ -231,11 +231,11 @@ The extension supports keyless authentication for Azure Data Explorer clusters. 
 
 1. In your DevOps instance, go to **Project Settings** > **Service connections** > **New service connection** > **Azure Resource Manager**.
 
-    :::image type="content" source="media/devops/arm-new.png" alt-text="Screenshot showing how to add an Azure Resource Monitor service connection.":::
+    :::image type="content" source="media/devops/resource-new.png" alt-text="Screenshot showing how to add an Azure Resource Monitor service connection.":::
 
 1. Under **Authentication method**, select **Workload Identity Federation (automatic)**. Alternatively, you can use the manual **Workload Identity Federation (manual)** option to specify the Workload Identity Federation details, or use the **Managed Identity** option. For more information about setting up a managed identity using Azure Resource Management, see [Azure Resource Manager (ARM) Service Connections](/azure/devops/pipelines/library/connect-to-azure?view=azure-devops&preserve-view=true).
 
-    :::image type="content" source="media/devops/arm-types.png" alt-text="Screenshot showing the authentication option for an Azure Resource Monitor service connection":::
+    :::image type="content" source="media/devops/resource-types.png" alt-text="Screenshot showing the authentication option for an Azure Resource Monitor service connection":::
 
 1. Fill out the required details, select **Verify**, and then select **Save**.
 
