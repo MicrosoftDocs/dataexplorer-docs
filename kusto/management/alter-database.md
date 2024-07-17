@@ -4,10 +4,11 @@ description: Learn how to use the `.alter database prettyname` command to alter 
 ms.reviewer: orspodek
 ms.topic: reference
 ms.date: 05/25/2023
+monikerRange: "azure-data-explorer"
 ---
 # .alter database prettyname command
 
-> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)]
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)]
 
 Alters a database's pretty (friendly) name.
 
@@ -34,3 +35,4 @@ You must have at least [Database Admin](../access-control/role-based-access-cont
 |---|---|---
 |DatabaseName | `string` |The name of the database
 |PrettyName | `string` |The pretty name of the database
+
