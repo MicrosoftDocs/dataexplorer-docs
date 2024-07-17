@@ -621,6 +621,7 @@ items:
             href: kusto/tools/logicapps.md
           - name: Azure Pipelines
             href: devops.md
+            displayName: CI/CD, continuous integration, continuous deployment, Azure DevOps
           - name: Sync Kusto
             href: kusto/tools/synckusto.md
       - name: Notebooks
