@@ -3,7 +3,7 @@ title: Azure DevOps task for Azure Data Explorer
 description: In this article, you learn to create a release pipeline and deploy your schema changes to your database.
 ms.reviewer: shfeldma
 ms.topic: how-to
-ms.date: 05/05/2021
+ms.date: 07/17/2024
 
 #Customer intent: I want to use Azure DevOps to create a release pipeline and deploy
 ---
@@ -114,7 +114,7 @@ You can use the following methods to execute admin commands against a cluster wi
 
             | Setting | Suggested value |
             |--|--|
-            | **Authentication method** | [Set up Federated Identity Credentials (FIC)](#setting-up-federated-itentity-credentialsfic-authentication-in-kusto-service-endpoint) (recommended), or Select Service Principal Authentication (SPA). |
+            | **Authentication method** | [Set up Federated Identity Credentials (FIC)](#use-federated-identity-credentials-fic-authentication-in-an-azure-data-explorer-service-connection) (recommended), or Select Service Principal Authentication (SPA). |
             | **Connection name** | Enter a name to identify this service endpoint |
             | **Cluster Url** | Value can be found in the overview section of your Azure Data Explorer Cluster in the Azure portal |
             | **Service Principal Id** | Enter the Microsoft Entra App ID (created as prerequisite) |
@@ -233,7 +233,7 @@ The extension supports keyless authentication for Azure Data Explorer clusters. 
 
     :::image type="content" source="media/devops/arm-new.png" alt-text="Screenshot showing how to add an Azure Resource Monitor service connection.":::
 
-1. Under **Authentication method**, select **Workload Identity Federation (automatic)**. Alternatively, you can use the manual **Workload Identity Federation (manual)** option to specify the Workload Identity Federation details, or use the **Managed Identity** option. For more information about setting up a managed identity using Azure Resource Management, see [Azure Resource Manager (ARM) Service Connections](https://learn.microsoft.com/azure/devops/pipelines/library/connect-to-azure?view=azure-devops).
+1. Under **Authentication method**, select **Workload Identity Federation (automatic)**. Alternatively, you can use the manual **Workload Identity Federation (manual)** option to specify the Workload Identity Federation details, or use the **Managed Identity** option. For more information about setting up a managed identity using Azure Resource Management, see [Azure Resource Manager (ARM) Service Connections](/azure/devops/pipelines/library/connect-to-azure?view=azure-devops&preserve-view=true).
 
     :::image type="content" source="media/devops/arm-types.png" alt-text="Screenshot showing the authentication option for an Azure Resource Monitor service connection":::
 
