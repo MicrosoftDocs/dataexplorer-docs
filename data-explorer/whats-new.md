@@ -16,30 +16,15 @@ Welcome to what's new in Azure Data Explorer. This article details new and signi
 |Article title | Description|
 |--|--|
 | [How the reservation discount is applied to Azure Data Explorer](pricing-reservation-discount.md) | New article. Learn how the reservation discount is applied to Azure Data Explorer markup meter. |
-| [Prepay for Azure Data Explorer markup units with Azure Data Explorer reserved capacity](pricing-reserved-capacity.md) | Updated article. Reservation discount article added. |
 | [Access the data profile of a table](data-profile.md) | Updated article. Updated instruction on how to open the data profile. |
 | [Write Kusto Query Language queries in the Azure Data Explorer web UI](web-ui-kql.md) | UPdated article. Updated instruction on how to use the KQL tools in the toolbar. |
-| [Explore the samples gallery](web-ui-samples-query.md) | Updated article. Updated instruction on how to navigate to other tutorials. |
-
-**Management**
-
-|Article title | Description|
-|--|--|
-| [.alter-merge table policy mirroring command](kusto/management/alter-merge-mirroring-policy-command.md)| New article. Learn how to use the `.alter-merge table policy mirroring` command to create a logical copy of tables of your database.|
-| [.delete table policy mirroring command](kusto/management/delete-table-mirroring-policy-command.md)| New article. Learn how to use the `.delete table policy mirroring` command to delete a table's logical copy. |
-| [Mirroring policy](kusto/management/mirroring-policy.md)| New article. Learn how to use the mirroring policy. |
-| [.show table mirroring operations command](kusto/management/show-table-mirroring-operations-command.md)| New article. Learn how to use the `.show table mirroring operations` command to check the mirroring policy operations. |
-| [.show table mirroring operations exported artifacts command](kusto/management/show-table-mirroring-operations-exported-artifacts.md)| New article. Learn how to use the `.show table mirroring operations exported artifacts` command to check the mirroring operations exported artifacts. |
-| [.show table mirroring operations failures](kusto/management/show-table-mirroring-operations-failures.md) | New article. Learn how to use the `.show table mirroring operations failures` command to check the mirroring operations failures. |
-| [.show table policy mirroring command](kusto/management/show-table-mirroring-policy-command.md) | New article. Learn how to use the `.show table policy mirroring` command to display the table's mirroring policy. |
-| [Policies overview](kusto/management/policies.md) | Updated article. Mirroring added to policies.|
-| [Create and alter Azure Storage external tables](kusto/management/external-tables-azure-storage.md) | Updated article. Mirroring commands added. |
+| [Explore the samples gallery](web-ui-samples-query.md) | Updated article. Updated instructions on how to navigate to other tutorials. |
 
 **Query**
 
 |Article title | Description|
 |--|--|
-|[cosmosdb_sql_request plugin](kusto/query/cosmosdb-plugin.md) | Updated article. ARM example added. |
+|[cosmosdb_sql_request plugin](kusto/query/cosmosdb-plugin.md) | Updated article. Azure Resource Manager example added. |
 
 ## May 2024
 
