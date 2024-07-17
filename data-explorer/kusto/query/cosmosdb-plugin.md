@@ -36,7 +36,7 @@ The following table describes the supported fields of the *Options* parameter.
 |Name|Type|Description|
 |--|--|--|
 | `armResourceId` | `string` | The  Azure Resource Manager resource ID of the Cosmos DB database. If an account key isn't provided in the connection string argument, this field is required. In such a case, the `armResourceId` is used to authenticate to Cosmos DB.</br>**Example:** `armResourceId='/subscriptions/<SubscriptionId>/resourceGroups/<ResourceGroup>/providers/Microsoft.DocumentDb/databaseAccounts/<DatabaseAccount>'` |
-| `token` | `string` | A Microsoft Entra access token of a principal with access to the Cosmos DB database. This token is used together with the `armResourceId` to authenticate with the Azure Resource Manager. If unspecified, the token of the principal that made the query is used.|
+| `token` | `string` | A Microsoft Entra access token of a principal with access to the Cosmos DB database. This token is used together with the `armResourceId` to authenticate with the Azure Resource Manager. If unspecified, the token of the principal that made the query is used.</br></br>If `armResourceId` is not specified, the token is used directly to access the Cosmos DB database. For more information, see [Authentication and authorization](#authentication-and-authorization) - Token authentication method. |
 | `preferredLocations` | `string` | The region from which to query the data. </br>**Example:** `['East US']` |
 
 ## Authentication and authorization
@@ -47,6 +47,7 @@ To authorize to an Azure Cosmos DB SQL network endpoint, you need to specify the
 |--|--|
 |Azure Resource Manager resource ID (Recommended)|For secure authentication, we recommend specifying the `armResourceId` and optionally the `token` in the [options](#supported-options). The `armResourceId` identifies the Cosmos DB database account, and the `token` should be a valid Microsoft Entra bearer token for a principal with access permissions to the Cosmos DB database. If no `token` is provided, the Microsoft Entra token of the requesting principal will be used for authentication.|
 |Account key|You can add the account key directly to the *ConnectionString* argument. However, this approach is less secure as it involves including the secret in the query text, and is less resilient to future changes in the account key. To enhance security, hide the secret as an [obfuscated string literal](scalar-data-types/string.md#obfuscated-string-literals).|
+|Token|You can add a token value in the plugin [options](#supported-options). The token must belong to a principal with relevant permissions. To enhance security, hide the token as an [obfuscated string literal](scalar-data-types/string.md#obfuscated-string-literals).|
 
 ## Set callout policy
 
@@ -126,6 +127,19 @@ evaluate cosmosdb_sql_request(
 | sort by Partner
 ```
 
+### Query Azure Cosmos DB using token authentication
+
+The following example joins Partner data from an Azure Cosmos DB with Partner data in a database using the `Partner` field. It results in a list of partners with their phone numbers, website, and contact email address sorted by partner name.
+
+```kusto
+evaluate cosmosdb_sql_request(
+    'AccountEndpoint=https://cosmosdbacc.documents.azure.com/;Database=<MyDatabase>;Collection=<MyCollection>;',
+    "SELECT c.Id, c.Name, c.City FROM c",
+    dynamic(null),
+    dynamic({'token': h'abc123...'})
+) : (Id:long, Name:string, City:string)
+```
+
 ### Query Azure Cosmos DB using Azure Resource Manager resource ID for authentication
 
 The following example uses the Azure Resource Manager resource ID for authentication and the Microsoft Entra token of the requesting principal, since a token isn't specified. It sends a SQL query while selecting only specific columns and specifies explicit schema definitions.
@@ -134,7 +148,7 @@ The following example uses the Azure Resource Manager resource ID for authentica
 evaluate cosmosdb_sql_request(
     'AccountEndpoint=https://cosmosdbacc.documents.azure.com/;Database=<MyDatabase>;Collection=<MyCollection>;',
     "SELECT c.Id, c.Name, c.City FROM c",
-    armResourceId='/subscriptions/<SubscriptionId>/resourceGroups/<ResourceGroup>/providers/Microsoft.DocumentDb/databaseAccounts/<DatabaseAccount>'
+    dynamic({'armResourceId': '/subscriptions/<SubscriptionId>/resourceGroups/<ResourceGroup>/providers/Microsoft.DocumentDb/databaseAccounts/<DatabaseAccount>'})
 ) : (Id:long, Name:string, City:string)
 ```
 
