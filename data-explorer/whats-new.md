@@ -15,16 +15,16 @@ Welcome to what's new in Azure Data Explorer. This article details new and signi
 
 |Article title | Description|
 |--|--|
-| [How the reservation discount is applied to Azure Data Explorer](pricing-reservation-discount.md) | New article. Learn how the reservation discount is applied to Azure Data Explorer markup meter. |
-| [Access the data profile of a table](data-profile.md) | Updated article. Updated instruction on how to open the data profile. |
-| [Write Kusto Query Language queries in the Azure Data Explorer web UI](web-ui-kql.md) | Updated article. Updated instruction on how to use the KQL tools in the toolbar. |
-| [Explore the samples gallery](web-ui-samples-query.md) | Updated article. Updated instructions on how to navigate to other tutorials. |
+| [How the reservation discount is applied to Azure Data Explorer](pricing-reservation-discount.md) | New article. Describes how the reservation discount is applied to Azure Data Explorer markup meter. |
+| [Access the data profile of a table](data-profile.md) | Updated article. Refreshed steps on how to open the data profile. |
+| [Write Kusto Query Language queries in the Azure Data Explorer web UI](web-ui-kql.md) | Updated article. Refreshed steps on how to use the KQL tools in the toolbar. |
+| [Explore the samples gallery](web-ui-samples-query.md) | Updated article. Refreshed steps on how to navigate to other tutorials. |
 
 **Query**
 
 |Article title | Description|
 |--|--|
-|[cosmosdb_sql_request plugin](kusto/query/cosmosdb-plugin.md) | Updated article. Azure Resource Manager example added. |
+|[cosmosdb_sql_request plugin](kusto/query/cosmosdb-plugin.md) | Updated article. Added Azure Resource Manager example. |
 
 ## May 2024
 
@@ -50,8 +50,8 @@ No updates.
 
 |Article title | Description|
 |--|--|
-| [Create an Azure Data Explorer cluster and database](create-cluster-database.md) | Updated article. Updated with instructions to set up Azure PowerShell to run Kusto cmdlets. |
-| [Migrate your cluster to support multiple availability zones (Preview)](migrate-cluster-to-multiple-availability-zone.md) | Updated article. Updated how to get the list of availability zones for your cluster's region in Azure portal. | 
+| [Create an Azure Data Explorer cluster and database](create-cluster-database.md) | Updated article. Refreshed steps on how to set up Azure PowerShell to run Kusto cmdlets. |
+| [Migrate your cluster to support multiple availability zones (Preview)](migrate-cluster-to-multiple-availability-zone.md) | Updated article. Refreshed steps on how to get the list of availability zones for your cluster's region in Azure portal. |
 
 **Management**
 
