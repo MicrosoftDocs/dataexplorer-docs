@@ -48,7 +48,7 @@ Diagnostic logs can be used to configure the collection of the following log dat
 
 ### [Tables](#tab/tables)
 
-* **TableUsageStatistics**: These logs have detailed information about the tables whose extents were scanned during query execution.
+* **TableUsageStatistics**: These logs have detailed information about the tables whose extents were scanned during query execution. Note that this log does not record statistics for queries that are part of commands, such as the set-or-append command
 
     > [!NOTE]
     > The `TableUsageStatistics` log data doesn't contain the command or query text.
