@@ -49,7 +49,7 @@ Use the following steps to:
     | *DatabaseName* | The case-sensitive name of the target database. |
     | *TableName* | The case-sensitive name of an existing target table. For example, **SerilogTest** is the name of the table created in [Create a target table and ingestion mapping](#create-a-target-table-and-ingestion-mapping). |
     | *AppId* | The application client ID required for authentication. You saved this value in [Create a Microsoft Entra service principal](#create-a-microsoft-entra-service-principal). |
-    | *AppKey* | The application key required for authentication. You saved this value in [Create a Microsoft Entra service principal](#create-a-microsoft-entra-service-principal). |
+    | *AppKey* | The application key required for authentication. You saved this value as `password` in [Create a Microsoft Entra service principal](#create-a-microsoft-entra-service-principal). |
     | *Tenant* | The ID of the tenant in which the application is registered. You saved this value in [Create a Microsoft Entra service principal](#create-a-microsoft-entra-service-principal). |
     | *BufferBaseFileName* | Optional base file name for the buffer file. Set this value if you require your logs to be durable against loss resulting connection failures to your cluster. For example, `C:/Temp/Serilog`. |
 

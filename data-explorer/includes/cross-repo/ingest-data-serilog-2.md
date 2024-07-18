@@ -35,5 +35,5 @@ Create a target table for the incoming data and an ingestion mapping to map the 
 1. Grant the service principal from [Create a Microsoft Entra service principal](#create-a-microsoft-entra-service-principal) [database ingestor](/azure/data-explorer/kusto/access-control/role-based-access-control) role permissions to work with the database. For more information, see [Examples](../../kusto/management/manage-database-security-roles.md). Replace the placeholder *DatabaseName* with the name of the target database and *ApplicationID* with the `AppId` value you saved when creating a Microsoft Entra service principal.
 
     ```kusto
-    .add database <DatabaseName> ingestors ('aadapp=<ApplicationID>') 'Azure Data Explorer App Registration'
+    .add database <DatabaseName> ingestors ('aadapp=<ApplicationID>') 'App Registration'
     ```
