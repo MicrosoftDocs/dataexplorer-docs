@@ -17,7 +17,7 @@ Welcome to what's new in Azure Data Explorer. This article details new and signi
 |--|--|
 | [How the reservation discount is applied to Azure Data Explorer](pricing-reservation-discount.md) | New article. Learn how the reservation discount is applied to Azure Data Explorer markup meter. |
 | [Access the data profile of a table](data-profile.md) | Updated article. Updated instruction on how to open the data profile. |
-| [Write Kusto Query Language queries in the Azure Data Explorer web UI](web-ui-kql.md) | UPdated article. Updated instruction on how to use the KQL tools in the toolbar. |
+| [Write Kusto Query Language queries in the Azure Data Explorer web UI](web-ui-kql.md) | Updated article. Updated instruction on how to use the KQL tools in the toolbar. |
 | [Explore the samples gallery](web-ui-samples-query.md) | Updated article. Updated instructions on how to navigate to other tutorials. |
 
 **Query**
