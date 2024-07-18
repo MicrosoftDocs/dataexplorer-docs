@@ -1,0 +1,173 @@
+---
+title:  infer_storage_schema_with_suggestions plugin
+description: Learn how to use the infer_storage_schema_with_suggestions plugin to infer the optimal schema of external data. 
+ms.reviewer: avnera
+ms.topic: reference
+ms.date: 03/08/2023
+---
+# infer_storage_schema_with_suggestions plugin
+
+This plugin infers schema of external data and returns a json object that provides the list of columns with the naive inferred type, the type that the inference logic thinks that is the optimal type and the applicable mapping transformation. Use [infer_storage_schema](infer-storage-schema-plugin.md) to obtain the table schema that is optimal for [creating external tables](../management/external-tables-azurestorage-azuredatalake.md). The plugin is invoked with the [`evaluate`](evaluate-operator.md) operator.
+
+There are two types of suggestions:
+* Identity columns: If the inferred type for a column that its name ends with `id` is `long` the suggested type would be `string` since it provides much better indexing for identity columns where equality filters are common. 
+* Unix datetime columns: If the inferred type for a column is `long` type and one of the unix to datetime [mapping transformations](../management/mappings.md#mapping-transformations) produces a valid datetime value, the suggested type will be `datetime` with the applicable mapping transformation.    
+
+
+## Authentication and authorization
+
+In the [properties of the request](#supported-properties-of-the-request), you specify storage connection strings to access. Each storage connection string specifies the authorization method to use for access to the storage. Depending on the authorization method, the principal may need to be granted permissions on the external storage to perform the schema inference.
+
+The following table lists the supported authentication methods and any required permissions by storage type.
+
+|Authentication method|Azure Blob Storage / Data Lake Storage Gen2|Data Lake Storage Gen1|
+|--|--|--|
+|[Impersonation](../api/connection-strings/storage-authentication-methods.md#impersonation)|Storage Blob Data Reader|Reader|
+|[Shared Access (SAS) token](../api/connection-strings/storage-authentication-methods.md#shared-access-sas-token)|List + Read|This authentication method isn't supported in Gen1.|
+|[Microsoft Entra access token](../api/connection-strings/storage-authentication-methods.md#azure-ad-access-token)||
+|[Storage account access key](../api/connection-strings/storage-authentication-methods.md#storage-account-access-key)||This authentication method isn't supported in Gen1.|
+
+## Syntax
+
+`evaluate` `infer_storage_schema(` *Options* `)`
+
+[!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
+
+## Parameters
+
+| Name | Type | Required | Description |
+|--|--|--|--|
+| *Options* | `dynamic` |  :heavy_check_mark: |A property bag specifying the [properties of the request](#supported-properties-of-the-request).|
+
+### Supported properties of the request
+
+| Name | Type | Required | Description |
+|--|--|--|--|
+|*StorageContainers*| `dynamic` | :heavy_check_mark:|An array of [storage connection strings](../api/connection-strings/storage-connection-strings.md) that represent prefix URI for stored data artifacts.|
+|*DataFormat*| `string` | :heavy_check_mark:|One of the supported [data formats](../../ingestion-supported-formats.md).|
+|*FileExtension*| `string` ||If specified, the function will only scan files ending with this file extension. Specifying the extension may speed up the process or eliminate data reading issues.|
+|*FileNamePrefix*| `string` ||If specified, the function will only scan files starting with this prefix. Specifying the prefix may speed up the process.|
+|*Mode*| `string` ||The schema inference strategy. A value of: `any`, `last`, `all`. The function infers the data schema from the first found file, from the last written file, or from all files respectively. The default value is `last`.|
+
+## Returns
+
+The `infer_storage_schema_with_suggestions` plugin returns a single result table containing a single row/column holding CSL schema string.
+
+> [!NOTE]
+>
+> * Storage container URI secret keys must have the permissions for *List* in addition to *Read*.
+> * Schema inference strategy 'all' is a very "expensive" operation, as it implies reading from *all* artifacts found and merging their schema.
+> * Some returned types may not be the actual ones as a result of wrong type guess (or, as a result of schema merge process). This is why you should review the result carefully before using them.
+
+## Example
+
+```kusto
+let options = dynamic({
+  'StorageContainers': [
+    h@'https://storageaccount.blob.core.windows.net/MobileEvents;secretKey'
+  ],
+  'FileExtension': '.json',
+  'FileNamePrefix': 'js-',
+  'DataFormat': 'json'
+});
+evaluate infer_storage_schema_with_suggestions(options)
+```
+
+**ExampleInputData**
+
+```json
+    {
+        "source": "DataExplorer",
+        "created_at": "2022-04-10 15:47:57",
+        "author_id": 739144091473215488,
+        "time_millisec":1547083647000,
+    }
+```
+
+**Output**
+
+```json
+{
+  "Columns": [
+    {
+      "OriginalColumn": {
+        "Name": "source",
+        "CslType": {
+          "type": "string",
+          "IsNumeric": false,
+          "IsSummable": false
+        }
+      },
+      "RecommendedColumn": {
+        "Name": "source",
+        "CslType": {
+          "type": "string",
+          "IsNumeric": false,
+          "IsSummable": false
+        }
+      },
+      "ApplicableTransformationMapping": "None"
+    },
+    {
+      "OriginalColumn": {
+        "Name": "created_at",
+        "CslType": {
+          "type": "datetime",
+          "IsNumeric": false,
+          "IsSummable": true
+        }
+      },
+      "RecommendedColumn": {
+        "Name": "created_at",
+        "CslType": {
+          "type": "datetime",
+          "IsNumeric": false,
+          "IsSummable": true
+        }
+      },
+      "ApplicableTransformationMapping": "None"
+    },
+    {
+      "OriginalColumn": {
+        "Name": "author_id",
+        "CslType": {
+          "type": "long",
+          "IsNumeric": true,
+          "IsSummable": true
+        }
+      },
+      "RecommendedColumn": {
+        "Name": "author_id",
+        "CslType": {
+          "type": "string",
+          "IsNumeric": false,
+          "IsSummable": false
+        }
+      },
+      "ApplicableTransformationMapping": "None"
+    },
+    {
+      "OriginalColumn": {
+        "Name": "time_millisec",
+        "CslType": {
+          "type": "long",
+          "IsNumeric": true,
+          "IsSummable": true
+        }
+      },
+      "RecommendedColumn": {
+        "Name": "time_millisec",
+        "CslType": {
+          "type": "datetime",
+          "IsNumeric": false,
+          "IsSummable": true
+        }
+      },
+      "ApplicableTransformationMapping": "DateTimeFromUnixMilliseconds"
+    }
+  ]
+}```
+
+
+
+
