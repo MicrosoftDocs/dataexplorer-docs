@@ -73,7 +73,7 @@ let options = dynamic({
 evaluate infer_storage_schema_with_suggestions(options)
 ```
 
-**ExampleInputData**
+**Example Input Data**
 
 ```json
     {
