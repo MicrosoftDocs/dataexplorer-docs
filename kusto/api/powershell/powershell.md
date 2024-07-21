@@ -3,7 +3,7 @@ title:  Kusto .NET Client Libraries from PowerShell
 description: This article describes how to use Kusto .NET Client Libraries from PowerShell.
 ms.reviewer: salevy
 ms.topic: reference
-ms.date: 11/07/2023
+ms.date: 21/07/2024
 ---
 # Use Kusto .NET client libraries from PowerShell
 
@@ -48,7 +48,7 @@ Select the relevant tab.
 
 ### [User](#tab/user)
 
-Once you run your first query or command, this method will open an interactive browser window for user authorization.
+Once you run your first query or command, this method opens an interactive browser window for user authorization.
 
 ```powershell
 $clusterUrl = "<Your cluster URI>"
@@ -139,11 +139,15 @@ $reader.Read() # this reads a single row/record. If you have multiple ones retur
 $isHealthy = $Reader.GetBoolean(0)
 Write-Host "IsHealthy = $isHealthy"
 ```
+
 **Output**
+
 ```
 IsHealthy = True
 ```
-For more guidance on how to run management commands with the Kusto client libraries, see [Create an app to run management commands](../get-started/app-management-commands.md).
+
+For more information on how to run management commands with the Kusto client libraries, see [Create an app to run management commands](../get-started/app-management-commands.md).
+
 ## Example
 The following example demonstrates the process of loading the libraries, authenticating, and executing a query on the publicly accessible `help` cluster.
 ```powershell
@@ -164,6 +168,21 @@ $queryProvider = [Kusto.Data.Net.Client.KustoClientFactory]::CreateCslQueryProvi
 $query = "StormEvents | take 5"
 $reader = $queryProvider.ExecuteQuery($query, $crp)
 ```
+
+## Controlling tracing
+
+Since there's only one global `PowerShell.exe.config` file for all PowerShell applications, generally libraries can't rely on .NET's *app.config* model to access their settings. You can still use the programmatic model for tracing. For more information, see [controlling tracing](../netfx/controlling-tracing.md).
+
+You can use the following methods instead:
+
+* Enable tracing to the console:
+
+    ```powershell
+    $traceListener = New-Object Kusto.Cloud.Platform.Utils.ConsoleTraceListener
+    [Kusto.Cloud.Platform.Utils.TraceSourceManager]::RegisterTraceListener($traceListener)
+    ```
+
+* Create a `Kusto.Cloud.Platform.Utils.RollingCsvTraceListener2` object with a single argument of the folder location where traces are written.
 
 ## Related content
 
