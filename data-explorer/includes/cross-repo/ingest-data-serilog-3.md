@@ -98,29 +98,29 @@ If you don't have your own data to test, you can use the sample log generator ap
 
     You can set the environment variables manually or using the following commands:
 
-### [Windows](#tab/windows)
+    ### [Windows](#tab/windows)
 
-```powershell
-$env:ingestionURI="<ingestionURI>"
-$env:appId="<appId>"
-$env:appKey="<appKey>"
-$env:tenant="<tenant>"
-$env:databaseName="<databaseName>"
-$env:tableName="<tableName>"
-```
+    ```powershell
+    $env:ingestionURI="<ingestionURI>"
+    $env:appId="<appId>"
+    $env:appKey="<appKey>"
+    $env:tenant="<tenant>"
+    $env:databaseName="<databaseName>"
+    $env:tableName="<tableName>"
+    ```
 
-### [Mac/Linux](#tab/linux)
+    ### [Mac/Linux](#tab/linux)
 
-```bash
-export ingestionURI="<ingestionURI>"
-export appId="<appId>"
-export appKey="<appKey>"
-export tenant="<tenant>"
-export databaseName="<databaseName>"
-export tableName="<tableName>"
-```
+    ```bash
+    export ingestionURI="<ingestionURI>"
+    export appId="<appId>"
+    export appKey="<appKey>"
+    export tenant="<tenant>"
+    export databaseName="<databaseName>"
+    export tableName="<tableName>"
+    ```
 
----
+    ---
 
 1. In your terminal, browse to the root folder of the cloned repo and run the following .NET command to build the app:
 
