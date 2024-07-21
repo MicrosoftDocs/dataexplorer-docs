@@ -3,7 +3,7 @@ title:  Kusto .NET Client Libraries from PowerShell
 description: This article describes how to use Kusto .NET Client Libraries from PowerShell.
 ms.reviewer: salevy
 ms.topic: reference
-ms.date: 21/07/2024
+ms.date: 07/21/2024
 ---
 # Use Kusto .NET client libraries from PowerShell
 
