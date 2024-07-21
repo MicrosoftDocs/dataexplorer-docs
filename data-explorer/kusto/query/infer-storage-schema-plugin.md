@@ -1,13 +1,13 @@
 ---
 title:  infer_storage_schema plugin
-description: Learn how to use the infer_storage_schema plugin to infer the schema of external data. 
+description: Learn how to use the infer_storage_schema plugin to infer the schema of external data and retrieve the CSL schema string.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 03/08/2023
+ms.date: 07/21/2024
 ---
 # infer_storage_schema plugin
 
-This plugin infers schema of external data, and returns it as CSL schema string. The string can be used when [creating external tables](../management/external-tables-azurestorage-azuredatalake.md). The plugin is invoked with the [`evaluate`](evaluate-operator.md) operator.
+This plugin infers the schema of external data, and returns it as CSL schema string. The string can be used when [creating external tables](../management/external-tables-azurestorage-azuredatalake.md). The plugin is invoked with the [`evaluate`](evaluate-operator.md) operator.
 
 ## Authentication and authorization
 
@@ -19,7 +19,7 @@ The following table lists the supported authentication methods and any required 
 |--|--|--|
 |[Impersonation](../api/connection-strings/storage-authentication-methods.md#impersonation)|Storage Blob Data Reader|Reader|
 |[Shared Access (SAS) token](../api/connection-strings/storage-authentication-methods.md#shared-access-sas-token)|List + Read|This authentication method isn't supported in Gen1.|
-|[Microsoft Entra access token](../api/connection-strings/storage-authentication-methods.md#azure-ad-access-token)||
+|[Microsoft Entra access token](../api/connection-strings/storage-authenticationKX-methods.md#azure-ad-access-token)||
 |[Storage account access key](../api/connection-strings/storage-authentication-methods.md#storage-account-access-key)||This authentication method isn't supported in Gen1.|
 
 ## Syntax
@@ -46,7 +46,7 @@ The following table lists the supported authentication methods and any required 
 
 ## Returns
 
-The `infer_storage_schema` plugin returns a single result table containing a single row/column holding CSL schema string.
+The `infer_storage_schema` plugin returns a single result table containing a single row/column containing CSL schema string.
 
 > [!NOTE]
 >
@@ -88,3 +88,7 @@ dataformat = parquet
     h@'https://storageaccount.blob.core.windows.net/MovileEvents;secretKey'
 )
 ```
+
+## Related content
+
+* [infer_storage_schema_with_suggestions plugin](infer-storage-schema-with-suggestions-plugin.md)

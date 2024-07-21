@@ -1,18 +1,18 @@
 ---
 title:  infer_storage_schema_with_suggestions plugin
-description: Learn how to use the infer_storage_schema_with_suggestions plugin to infer the optimal schema of external data. 
+description: Learn how to use the infer_storage_schema_with_suggestions plugin to infer the optimal schema of external data.
 ms.reviewer: avnera
 ms.topic: reference
-ms.date: 03/08/2023
+ms.date: 07/21/2024
 ---
 # infer_storage_schema_with_suggestions plugin
 
-This plugin infers schema of external data and returns a json object that provides the list of columns with the naive inferred type, the type that the inference logic thinks that is the optimal type and the applicable mapping transformation. Use [infer_storage_schema](infer-storage-schema-plugin.md) to obtain the table schema that is optimal for [creating external tables](../management/external-tables-azurestorage-azuredatalake.md). The plugin is invoked with the [`evaluate`](evaluate-operator.md) operator.
+This `infer_storage_schema_with_suggestions` plugin infers the schema of external data and returns a JSON object. For each column, the object provides inferred type, a recommended type, and the recommended mapping transformation. The recommended type and mapping are provided by the suggestion logic that determines the optimal type using the following logic:
 
-There are two types of suggestions:
-* Identity columns: If the inferred type for a column that its name ends with `id` is `long` the suggested type would be `string` since it provides much better indexing for identity columns where equality filters are common. 
-* Unix datetime columns: If the inferred type for a column is `long` type and one of the unix to datetime [mapping transformations](../management/mappings.md#mapping-transformations) produces a valid datetime value, the suggested type will be `datetime` with the applicable mapping transformation.    
+* **Identity columns**: If the inferred type for a column is `long` and the column name ends with `id`, the suggested type is `string` since it provides optimized indexing for identity columns where equality filters are common.
+* **Unix datetime columns**: If the inferred type for a column is `long` and one of the unix-time to datetime [mapping transformations](../management/mappings.md#mapping-transformations) produces a valid datetime value, the suggested type is `datetime` and the suggested `ApplicableTransformationMapping` mapping is the one that produced a valid datetime value.
 
+The plugin is invoked with the [`evaluate`](evaluate-operator.md) operator. To obtain the table schema that uses the inferred schema for [creating external tables](../management/external-tables-azurestorage-azuredatalake.md) without suggestions, use the [infer_storage_schema](infer-storage-schema-plugin.md) plugin.
 
 ## Authentication and authorization
 
@@ -29,7 +29,7 @@ The following table lists the supported authentication methods and any required 
 
 ## Syntax
 
-`evaluate` `infer_storage_schema(` *Options* `)`
+`evaluate` `infer_storage_schema_with_suggestions(` *Options* `)`
 
 [!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
 
@@ -51,7 +51,7 @@ The following table lists the supported authentication methods and any required 
 
 ## Returns
 
-The `infer_storage_schema_with_suggestions` plugin returns a single result table containing a single row/column holding CSL schema string.
+The `infer_storage_schema_with_suggestions` plugin returns a single result table containing a single row/column containing a JSON string.
 
 > [!NOTE]
 >
@@ -80,7 +80,7 @@ evaluate infer_storage_schema_with_suggestions(options)
         "source": "DataExplorer",
         "created_at": "2022-04-10 15:47:57",
         "author_id": 739144091473215488,
-        "time_millisec":1547083647000,
+        "time_millisec":1547083647000
     }
 ```
 
@@ -166,8 +166,9 @@ evaluate infer_storage_schema_with_suggestions(options)
       "ApplicableTransformationMapping": "DateTimeFromUnixMilliseconds"
     }
   ]
-}```
+}
+```
 
+## Related content
 
-
-
+* [infer_storage_schema plugin](infer-storage-schema-plugin.md)
