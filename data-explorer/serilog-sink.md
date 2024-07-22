@@ -16,6 +16,7 @@ For a complete list of data connectors, see [Data integrations overview](integra
 * .NET SDK 6.0 or later
 * An Azure Data Explorer [cluster and database](/azure/data-explorer/create-cluster-and-database) with the default cache and retention policies.
 * [Azure Data Explorer query environment](https://dataexplorer.azure.com/)
+* Your Kusto cluster URI for the *TargetURI* value in the format *https://ingest-\<cluster>.\<region>.kusto.windows.net*. For more information, see [Add a cluster connection](add-cluster-connection.md#add-a-cluster-connection).<a id=ingestion-uri></a>
 
 [!INCLUDE [ingest-data-serilog-2](includes/cross-repo/ingest-data-serilog-2.md)]
 
@@ -31,10 +32,6 @@ For a complete list of data connectors, see [Data integrations overview](integra
     Your output should look similar to the following image:
 
     :::image type="content" lightbox="media/serilog-connector/take-10-results.png" source="media/serilog-connector/take-10-results.png" alt-text="Screenshot of table with take 10 function and results.":::
-
-## Ingestion URI
-
-You'll need your Kusto cluster URI for the *TargetURI* value. The URI is in the format *https://ingest-\<cluster>.\<region>.kusto.windows.net*. For more information, see [Add a cluster connection](add-cluster-connection.md#add-a-cluster-connection).
 
 ## Related content
 
