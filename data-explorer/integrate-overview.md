@@ -48,6 +48,7 @@ The following table summarizes the available connectors and their capabilities:
 | [Azure Functions](#azure-functions)                                                   | :heavy_check_mark: |                    |                    | :heavy_check_mark: |
 | [Azure IoT Hubs](#azure-iot-hubs)                                                     | :heavy_check_mark: |                    |                    |                    |
 | [Azure Stream Analytics](#azure-stream-analytics)                                     | :heavy_check_mark: |                    |                    |                    |
+| [Cribl Stream](#cribl-stream)                                                             | :heavy_check_mark: |                    |                    |                    |
 | [Fluent Bit](#fluent-bit)                                                             | :heavy_check_mark: |                    |                    |                    |
 | [JDBC](#jdbc)                                                                         |                    |                    |                    | :heavy_check_mark: |
 | [Logic Apps](#logic-apps)                                                             | :heavy_check_mark: |                    | :heavy_check_mark: | :heavy_check_mark: |
@@ -217,6 +218,15 @@ Event Grid ingestion is a pipeline that listens to Azure storage, and updates yo
 * **Ingestion type supported:** Batching, Streaming
 * **Use cases:** Event processing
 * **Documentation:** [Ingest data from Azure Stream Analytics](stream-analytics-connector.md)
+
+### Cribl Stream
+
+[Cribl stream](https://docs.cribl.io/stream/) collects and processes machine data and allows you to process machine data into a database for later analysis.
+
+* **Functionality:** Ingestion
+* **Ingestion type supported:** Batching, Streaming
+* **Use cases:** Machine data processing
+* **Documentation:** [Ingest data from Cribl stream into Azure Data Explorer](ingest-data-cribl.md)
 
 ### Fluent Bit
 
