@@ -9,6 +9,23 @@ ms.date: 02/01/2024
 
 Welcome to what's new in Azure Data Explorer. This article details new and significantly updated content in the Azure Data Explorer documentation.
 
+## June 2024
+
+**General**
+
+|Article title | Description|
+|--|--|
+| [How the reservation discount is applied to Azure Data Explorer](pricing-reservation-discount.md) | New article. Describes how the reservation discount is applied to Azure Data Explorer markup meter. |
+| [Access the data profile of a table](data-profile.md) | Updated article. Refreshed steps on how to open the data profile. |
+| [Write Kusto Query Language queries in the Azure Data Explorer web UI](web-ui-kql.md) | Updated article. Refreshed steps on how to use the KQL tools in the toolbar. |
+| [Explore the samples gallery](web-ui-samples-query.md) | Updated article. Refreshed steps on how to navigate to other tutorials. |
+
+**Query**
+
+|Article title | Description|
+|--|--|
+|[cosmosdb_sql_request plugin](kusto/query/cosmosdb-plugin.md) | Updated article. Added Azure Resource Manager example. |
+
 ## May 2024
 
 No updates.
@@ -33,8 +50,8 @@ No updates.
 
 |Article title | Description|
 |--|--|
-| [Create an Azure Data Explorer cluster and database](create-cluster-database.md) | Updated article. Updated with instructions to set up Azure PowerShell to run Kusto cmdlets. |
-| [Migrate your cluster to support multiple availability zones (Preview)](migrate-cluster-to-multiple-availability-zone.md) | Updated article. Updated how to get the list of availability zones for your cluster's region in Azure portal. | 
+| [Create an Azure Data Explorer cluster and database](create-cluster-database.md) | Updated article. Refreshed steps on how to set up Azure PowerShell to run Kusto cmdlets. |
+| [Migrate your cluster to support multiple availability zones (Preview)](migrate-cluster-to-multiple-availability-zone.md) | Updated article. Refreshed steps on how to get the list of availability zones for your cluster's region in Azure portal. |
 
 **Management**
 
@@ -217,19 +234,3 @@ No updates.
 | [geo_line_to_s2cells()](kusto/query/geo-line-to-s2cells-function.md)| New article. Describes how to use the geo_line_to_2cells() function to calculate S2 cell tokens that cover a line or a multiline on Earth.|
 | [extract_json()](kusto/query/extract-json-function.md)| Updated article. Added new example.|
 | [Pivot chart](kusto/query/visualization-pivotchart.md)| Updated article. Added new example.|
-
-## June 2023
-
-**API**
-
-| Article title | Description |
-|--|--|
-|- [Kusto.Language Overview](kusto/api/netfx/about-kusto-language.md) <br/> - [Define schemas for semantic analysis with Kusto.Language](kusto/api/netfx/kusto-language-define-schemas.md) <br/> - [Parse queries and commands with Kusto.Language](kusto/api/netfx/kusto-language-parse-queries.md)| New articles. Describes how to use the Kusto.Language library for parsing queries.|
-|[Management commands: Create an app to run management commands](kusto/api/get-started/app-management-commands.md)| New article. Describes how to create an app to run management commands using Kusto client libraries.|
-
-**Query**
-
-| Article title| Description|
-|--|--|
-|- [Join operator](kusto/query/join-operator.md) <br/> - [fullouter join](kusto/query/join-fullouter.md) <br/> - [inner join](kusto/query/join-inner.md) <br/> - [innerunique join](kusto/query/join-innerunique.md) <br/> - [leftanti join](kusto/query/join-leftanti.md) <br/> - [leftouter join](kusto/query/join-leftouter.md) <br/> - [leftsemi join](kusto/query/join-leftsemi.md) <br/> - [rightanti join](kusto/query/join-rightanti.md) <br/> - [rightouter join](kusto/query/join-rightouter.md) <br/> - [rightsemi join](kusto/query/join-rightsemi.md) | Updated and new articles. Refreshed `join` overview and added topics describing each `join` kind.
-|[replace_strings()](kusto/query/replace-strings-function.md) | New article. Describes how to use the replace_strings() function to replace multiple string matches with multiple replacement strings.|
