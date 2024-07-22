@@ -21,7 +21,7 @@ Create a target table for the incoming data and an ingestion mapping to map the 
     .create table <TableName> (_raw: string, _time: long, cribl_pipe: dynamic)
     ```
 
-1. Run the following [.create ingestion mapping command](/azure/data-explorer/kusto/management/create-ingestion-mapping-command.md), replacing the placeholders *TableName* with the target table name and *TableNameMapping* with the name of the ingestion mapping:
+1. Run the following [create ingestion mapping](/azure/data-explorer/kusto/management/create-ingestion-mapping-command.md) command, replacing the placeholders *TableName* with the target table name and *TableNameMapping* with the name of the ingestion mapping:
 
     ```kusto
     .create table <TableName> ingestion csv mapping '<TableNameMapping>' 'CriblLogMapping' '[{"Name":"_raw","DataType":"string","Ordinal":"0","ConstValue":null},{"Name":"_time","DataType":"long","Ordinal":"1","ConstValue":null},{"Name":"cribl_pipe","DataType":"dynamic","Ordinal":"2","ConstValue":null}]'
@@ -51,7 +51,7 @@ To connect Cribl Stream to your KQL table:
 
 1. From the top navigation in Cribl, select **Manage** then select a Worker Group.
 
-1. Select **Routing** > **QuickConnect (Stream)** > **Add Destination**. <!-- confirm with Ram that this is how its called>
+1. Select **Routing** > **QuickConnect (Stream)** > **Add Destination**. <!-- confirm name with Ram -->
 
 1. In the **Set up new QuickConnect Destination** window, choose **Azure Data Explorer**, then **Add now**.
-:::image type="content" source="../media/ingest-data-cribl/add-azure-data-explorer.png" alt-text="Screenshot of the Set up new QuickConnect Destination window in Cribl with Azure Data Explorer selected."  lightbox="../media/ingest-data-cribl/add-azure-data-explorer.png":::
+:::image type="content" source="../media/ingest-data-cribl/add-azure-data-explorer.png" alt-text="Screenshot of the Select new QuickConnect Destination window in Cribl Stream with Azure Data Explorer selected." lightbox="../media/ingest-data-cribl/add-azure-data-explorer.png":::
