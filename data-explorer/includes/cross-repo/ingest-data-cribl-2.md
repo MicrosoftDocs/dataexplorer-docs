@@ -54,4 +54,4 @@ To connect Cribl Stream to your KQL table:
 1. Select **Routing** > **QuickConnect (Stream)** > **Add Destination**. <!-- confirm name with Ram -->
 
 1. In the **Set up new QuickConnect Destination** window, choose **Azure Data Explorer**, then **Add now**.
-:::image type="content" source="../media/ingest-data-cribl/add-azure-data-explorer.png" alt-text="Screenshot of the Select new QuickConnect Destination window in Cribl Stream with Azure Data Explorer selected." lightbox="../media/ingest-data-cribl/add-azure-data-explorer.png":::
+:::image type="content" source="../media/ingest-data-cribl/add-azure-data-explorer.png" alt-text="Screenshot of the Setup new QuickConnect Destination window in Cribl Stream with Azure Data Explorer selected." lightbox="../media/ingest-data-cribl/add-azure-data-explorer.png":::
