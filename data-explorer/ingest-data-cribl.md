@@ -17,11 +17,12 @@ For a complete list of data connectors, see [Data integrations overview](integra
 
 * A [Cribl stream account](https://cribl.io)
 * An Azure Data Explorer [cluster and database](/azure/data-explorer/create-cluster-and-database) with the default cache and retention policies.
-* [Azure Data Explorer query environment](https://dataexplorer.azure.com/)
+* [Azure Data Explorer query environment](https://dataexplorer.azure.com/) <a id=ingestion-uri></a>
+* Your Kusto cluster URI for the *TargetURI* value in the format *https://ingest-\<cluster>.\<region>.kusto.windows.net*. For more information, see [Add a cluster connection](add-cluster-connection.md#add-a-cluster-connection).
 
 [!INCLUDE [ingest-data-cribl-2](includes/cross-repo/ingest-data-cribl-2.md)]
 
-<!--[!INCLUDE [ingest-data-cribl-3](includes/cross-repo/ingest-data-cribl-3.md)]-->
+[!INCLUDE [ingest-data-cribl-3](includes/cross-repo/ingest-data-cribl-3.md)]
 
 ## Clean up resources
 
@@ -31,10 +32,6 @@ To delete the Azure Data Explorer resources, use [az cluster delete](/cli/azure/
 az kusto cluster delete -n <cluster name> -g <resource group name>
 az kusto database delete -n <database name> --cluster-name <cluster name> -g <resource group name>
 ```
-
-## Target URI
-
-You'll need your Kusto cluster URI for the *Cluster base URI* value.  For the *Ingestion service URI* the URI is in the format *https://ingest-\<cluster>.\<region>.kusto.windows.net*. For more information, see [Add a cluster connection](add-cluster-connection.md#add-a-cluster-connection).
 
 ## Related content
 
