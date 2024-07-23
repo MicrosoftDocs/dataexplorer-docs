@@ -43,7 +43,7 @@ The following table lists the supported authentication methods and any required 
 |*FileExtension*| `string` ||If specified, the function will only scan files ending with this file extension. Specifying the extension may speed up the process or eliminate data reading issues.|
 |*FileNamePrefix*| `string` ||If specified, the function will only scan files starting with this prefix. Specifying the prefix may speed up the process.|
 |*Mode*| `string` ||The schema inference strategy. A value of: `any`, `last`, `all`. The function infers the data schema from the first found file, from the last written file, or from all files respectively. The default value is `last`.|
-|*InferenceOptions*|`dynamic`||Additional inference options, currently the only supported option is `UseFirstRowAsHeader` that is applicable for the delimited file formats. For example `'InferenceOptions': {'UseFirstRowAsHeader': true}`    
+|*InferenceOptions*|`dynamic`||Additional inference options. Valid options: `UseFirstRowAsHeader` for delimited file formats. For example, `'InferenceOptions': {'UseFirstRowAsHeader': true}` .
 
 ## Returns
 
