@@ -157,10 +157,10 @@ items:
           - name: Streaming ingestion
             displayName: ingest data, ingestion
             href: ingest-data-streaming.md
-          - name: Using LightIngest
+          - name: Use LightIngest
             displayName: ingest data, ingestion
             href: lightingest.md
-          - name: Using SDKs
+          - name: Use SDKs
             items:
               - name: .NET SDK
                 displayName: ingest data, ingestion
