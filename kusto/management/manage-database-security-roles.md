@@ -2,7 +2,7 @@
 title: Manage database security roles
 description: Learn how to use management commands to view, add, and remove security roles on a database level.
 ms.topic: reference
-ms.date: 05/28/2023
+ms.date: 07/23/2024
 ---
 
 # Manage database security roles
@@ -11,7 +11,7 @@ ms.date: 05/28/2023
 
 Principals are granted access to resources through a role-based access control model, where their assigned security roles determine their resource access.
 
-In this article, you'll learn how to use management commands to [view existing security roles](#show-existing-security-roles) as well as [add and remove security roles](#add-and-drop-security-roles) on the database level.
+In this article, you'll learn how to use management commands to [view existing security roles](#show-existing-security-roles) as well as [add and drop principal association to security roles](#add-and-drop-principal-association-to-security-roles) on the database level.
 
 > [!NOTE]
 > To delete a database, you need at least **Contributor** Azure Resource Manager (ARM) permissions. To assign ARM permissions, see [Assign Azure roles using the Azure portal](/azure/role-based-access-control/role-assignments-portal).
@@ -72,9 +72,9 @@ The following command lists all security principals that have access to the `Sam
 |---|---|---|---|---|
 |Database Samples Admin |Microsoft Entra user |Abbi Atkins |cd709aed-a26c-e3953dec735e |aaduser=abbiatkins@fabrikam.com|
 
-## Add and drop security roles
+## Add and drop principal association to security roles
 
-This section provides syntax, parameters, and examples for adding and removing principals.
+This section provides syntax, parameters, and examples for adding and removing principals to and from security roles.
 
 ### Syntax
 
@@ -93,8 +93,16 @@ This section provides syntax, parameters, and examples for adding and removing p
 | `skip-results` | `string` | | If provided, the command won't return the updated list of database principals.|
 | *Description* | `string` | | Text to describe the change that will be displayed when using the `.show` command.|
 
+::: moniker range="azure-data-explorer"
 > [!NOTE]
 > The `.set` command with `none` instead of a list of principals will remove all principals of the specified role.
+>
+> You can use a managed identity as your principal. For more information, see [Managed identities overview](../../data-explorer/managed-identities-overview.md).
+::: moniker-end
+::: moniker range="microsoft-fabric"
+> [!NOTE]
+> The `.set` command with `none` instead of a list of principals will remove all principals of the specified role.
+::: moniker-end
 
 ### Examples
 
