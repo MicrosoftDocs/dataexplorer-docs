@@ -36,7 +36,7 @@ The following table describes the supported fields of the *Options* parameter.
 |Name|Type|Description|
 |--|--|--|
 | `armResourceId` | `string` | The  Azure Resource Manager resource ID of the Cosmos DB database. If an account key isn't provided in the connection string argument, this field is required. In such a case, the `armResourceId` is used to authenticate to Cosmos DB.</br>**Example:** `armResourceId='/subscriptions/<SubscriptionId>/resourceGroups/<ResourceGroup>/providers/Microsoft.DocumentDb/databaseAccounts/<DatabaseAccount>'` |
-| `token` | `string` | A Microsoft Entra access token of a principal with access to the Cosmos DB database. This token is used together with the `armResourceId` to authenticate with the Azure Resource Manager. If unspecified, the token of the principal that made the query is used.</br></br>If `armResourceId` is not specified, the token is used directly to access the Cosmos DB database. For more information, see [Authentication and authorization](#authentication-and-authorization) - Token authentication method. |
+| `token` | `string` | A Microsoft Entra access token of a principal with access to the Cosmos DB database. This token is used along with the `armResourceId` to authenticate with the Azure Resource Manager. If unspecified, the token of the principal that made the query is used. </br></br>If `armResourceId` isn't specified, the token is used directly to access the Cosmos DB database. For more information about the token authentication method, see [Authentication and authorization](#authentication-and-authorization). |
 | `preferredLocations` | `string` | The region from which to query the data. </br>**Example:** `['East US']` |
 
 ## Authentication and authorization
@@ -129,7 +129,7 @@ evaluate cosmosdb_sql_request(
 
 ### Query Azure Cosmos DB using token authentication
 
-The following example joins Partner data from an Azure Cosmos DB with Partner data in a database using the `Partner` field. It results in a list of partners with their phone numbers, website, and contact email address sorted by partner name.
+The following example joins partner data from an Azure Cosmos DB with partner data in a database using the `Partner` field. It results in a list of partners with their phone numbers, website, and contact email address sorted by partner name.
 
 ```kusto
 evaluate cosmosdb_sql_request(
