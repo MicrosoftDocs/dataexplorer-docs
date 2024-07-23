@@ -4,13 +4,13 @@ description: Learn how to deploy Azure Data Explorer into your Virtual Network
 ms.reviewer: basaba
 ms.topic: how-to
 ms.custom: devx-track-arm-template
-ms.date: 03/30/2022
+ms.date: 07/23/2024
 ---
 
 # Deploy Azure Data Explorer cluster into your Virtual Network
 
-> [!IMPORTANT]
-> Consider moving to an Azure Private Endpoint based solution for implementing network security with Azure Data Explorer. It is less error-prone and provides [feature parity](security-network-overview.md#private-endpoint-vs-virtual-network-injection).
+> [!WARNING]
+> Virtual Network Injection will be retired for Azure Data Explorer by 1 February 2025. For more information on the deprecation, see [Deprecation of Virtual Network Injection for Azure Data Explorer](https://aka.ms/adx.security.vnet.deprecation).
 
 This article explains the resources that are present when you deploy an Azure Data Explorer cluster into a custom Azure Virtual Network. This information will help you deploy a cluster into a subnet in your Virtual Network (VNet). For more information on Azure Virtual Networks, see [What is Azure Virtual Network?](/azure/virtual-network/virtual-networks-overview)
 
