@@ -9,7 +9,7 @@ ms.date: 07/23/2024
 # Troubleshoot access, ingestion, and operation of your Azure Data Explorer cluster in your virtual network
 
 > [!WARNING]
-> By Feb 1st 2025 Virtual Network Injection will be deprecated for Azure Data Explorer. Details on the timeline can be found in our [blog](https://aka.ms/adx.security.vnet.deprecation).
+> Virtual Network Injection will be retired for Azure Data Explorer by 1 February 2025. For more information on the deprecation, see [Deprecation of Virtual Network Injection for Azure Data Explorer](https://aka.ms/adx.security.vnet.deprecation).
 
 In this section you learn how to troubleshoot connectivity, operational, and cluster creation issues for a cluster that is deployed into your [Virtual Network](/azure/virtual-network/virtual-networks-overview).
 

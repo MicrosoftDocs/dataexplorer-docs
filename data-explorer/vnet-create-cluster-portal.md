@@ -13,7 +13,7 @@ ms.date: 07/23/2024
 Azure Data Explorer supports deploying a cluster into a subnet in your virtual network (VNet). This capability enables you to access the cluster privately from your Azure virtual network or on-premises, access resource such as Event Hubs and Azure Storage inside your virtual network, and restrict inbound and outbound traffic.
 
 > [!WARNING]
-> By Feb 1st 2025 Virtual Network Injection will be deprecated for Azure Data Explorer. Details on the timeline can be found in our [blog](https://aka.ms/adx.security.vnet.deprecation).
+> Virtual Network Injection will be retired for Azure Data Explorer by 1 February 2025. For more information on the deprecation, see [Deprecation of Virtual Network Injection for Azure Data Explorer](https://aka.ms/adx.security.vnet.deprecation).
 
 **See also**
 
