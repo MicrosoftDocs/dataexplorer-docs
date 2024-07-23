@@ -7,7 +7,7 @@ ms.author: orspodek
 ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: how-to
-ms.date: 07/10/2022
+ms.date: 07/23/2024
 
 #Customer intent: I want to query data in Azure Monitor using Azure Data Explorer.
 ---
@@ -26,11 +26,11 @@ Add a Log Analytics or Application Insights workspace to Azure Data Explorer cli
 
 1. Verify your Azure Data Explorer native cluster (such as **help** cluster) appears on the left menu before you connect to your Log Analytics or Application Insights cluster.
 
-    :::image type="content" source="media/query-monitor-data/web-ui-help-cluster.png" alt-text="Screenshot showing the left menu with the help cluster selected as an Azure Data Explorer native cluster.":::
+    :::image type="content" source="media/query-monitor-data/web-ui-help-cluster.png"  lightbox="media/query-monitor-data/web-ui-help-cluster.png" alt-text="Screenshot showing the left menu with the help cluster selected as an Azure Data Explorer native cluster.":::
 
-1. In the Azure Data Explorer UI (https://dataexplorer.azure.com/clusters), select **Add Cluster**.
+1. In the [Azure Data Explorer UI](https://dataexplorer.azure.com/clusters), select **+ Add** then **Connection**.
 
-1. In the **Add Cluster** window, add the URL of the Log Analytics (LA) or Application Insights (AI) cluster.
+1. In the **Add Connection** window, add the URL and display name of the Log Analytics (LA) or Application Insights (AI) cluster.
 
     * For Log Analytics (LA): `https://ade.loganalytics.io/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/microsoft.operationalinsights/workspaces/<workspace-name>`
     * For Application Insights (AI): `https://ade.applicationinsights.io/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/microsoft.insights/components/<ai-app-name>`
@@ -40,7 +40,7 @@ Add a Log Analytics or Application Insights workspace to Azure Data Explorer cli
 
 1. Select **Add**.
 
-    :::image type="content" source="media/query-monitor-data/add-cluster.png" alt-text="Screenshot showing the add cluster window.":::
+    :::image type="content" source="media/query-monitor-data/add-connection.png" alt-text="Screenshot showing the add connection window." lightbox="media/query-monitor-data/add-connection.png":::
 
     >[!NOTE]
     >
@@ -108,13 +108,12 @@ union <ADX table>, cluster(CL1).database(<workspace-name>).<table name>
 ### Join data from an Azure Data Explorer cluster in one tenant with an Azure Monitor resource in another
 
 Cross-tenant queries between the services aren't supported. You're signed in to a single tenant for running the query spanning both resources.
-Cross-tenant queries between the services aren't supported. You're signed in to a single tenant for running the query spanning both resources.
 
-If the Azure Data Explorer resource is in Tenant 'A' and Log Analytics workspace is in Tenant 'B', use one of the following two methods:
+If the Azure Data Explorer resource is in *tenant-name-a* and Log Analytics workspace is in *tenant-name-b*, use one of the following two methods:
 
-1. Azure Data Explorer allows you to add roles for principals in different tenants. Add your user ID in Tenant 'B' as an authorized user on the Azure Data Explorer cluster. Validate the *['TrustedExternalTenant'](/powershell/module/az.kusto/update-azkustocluster)* property on the Azure Data Explorer cluster contains Tenant 'B'. Run the cross-query fully in Tenant 'B'.
+1. Azure Data Explorer allows you to add roles for principals in different tenants. Add your user ID in *tenant-name-b* as an authorized user on the Azure Data Explorer cluster. Validate the *['TrustedExternalTenant'](/powershell/module/az.kusto/update-azkustocluster)* property on the Azure Data Explorer cluster contains *tenant-name-b*. Run the cross-query fully in *tenant-name-b*.
 
-2. Use [Lighthouse](/azure/lighthouse/) to project the Azure Monitor resource into Tenant 'A'.
+2. Use [Lighthouse](/azure/lighthouse/) to project the Azure Monitor resource into *tenant-name-a*.
 
 ### Connect to Azure Data Explorer clusters from different tenants
 
@@ -130,11 +129,6 @@ The following commands are supported with the cross-service query:
 * `.show functions`
 * `.show function {FunctionName}`
 * `.show database {DatabaseName} schema as json`
-
-The following image depicts an example of querying a tabular function from the Azure Data Explorer web UI.
-To use the function, run the name in the Query window.
-
-  :::image type="content" source="media/query-monitor-data/function-query.png" alt-text="Screenshot showing query a tabular function from Azure Data Explorer web U I." lightbox="media/query-monitor-data/function-query.png":::
 
 ## Limitations
 
