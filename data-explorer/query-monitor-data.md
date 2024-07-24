@@ -1,11 +1,7 @@
 ---
 title: 'Query data in Azure Monitor with Azure Data Explorer'
 description: 'In this article, query data in Azure Monitor (Application Insights and Log Analytics) by creating an Azure Data Explorer cross product queries.'
-services: data-explorer
-author: osalzberg
-ms.author: orspodek
-ms.reviewer: rkarlin
-ms.service: data-explorer
+ms.reviewer: guywi-ms
 ms.topic: how-to
 ms.date: 07/23/2024
 
@@ -113,7 +109,7 @@ If the Azure Data Explorer resource is in *tenant-name-a* and Log Analytics work
 
 1. Azure Data Explorer allows you to add roles for principals in different tenants. Add your user ID in *tenant-name-b* as an authorized user on the Azure Data Explorer cluster. Validate the *['TrustedExternalTenant'](/powershell/module/az.kusto/update-azkustocluster)* property on the Azure Data Explorer cluster contains *tenant-name-b*. Run the cross-query fully in *tenant-name-b*.
 
-2. Use [Lighthouse](/azure/lighthouse/) to project the Azure Monitor resource into *tenant-name-a*.
+1. Use [Lighthouse](/azure/lighthouse/) to project the Azure Monitor resource into *tenant-name-a*.
 
 ### Connect to Azure Data Explorer clusters from different tenants
 
