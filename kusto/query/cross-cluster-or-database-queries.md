@@ -278,7 +278,7 @@ cluster("OtherCluster").database("OtherDb").MyCalc(datatable(x:string, y:string)
 The following cross-eventhouse call is valid.
 
 ```kusto
-cluster("OtherEventhouseURI").database("SomeDb").MyView("exception") | count
+cluster("OtherEventhouseURI").database("SomeDb").EventView("exception") | count
 ```
 
 The following query calls a remote scalar function `EventCalc`.
