@@ -11,6 +11,12 @@ items:
 - name: comb_fl()
   displayName: functions library, statistics
   href: comb-fl.md
+- name: dbscan_dynamic_fl()
+  displayName: functions library, clustering, DBSCAN
+  href: dbscan-dynamic-fl.md
+- name: dbscan_fl()
+  displayName: functions library, clustering, DBSCAN
+  href: dbscan-fl.md
 - name: factorial_fl()
   displayName: functions library, statistics
   href: factorial-fl.md
@@ -20,6 +26,9 @@ items:
 - name: get_packages_version_fl()
   displayName: functions library, python, version, package
   href: get-packages-version-fl.md
+- name: kmeans_dynamic_fl()
+  displayName: functions library, clustering, K-Means
+  href: kmeans-dynamic-fl.md
 - name: kmeans_fl()
   displayName: functions library, clustering, K-Means
   href: kmeans-fl.md
