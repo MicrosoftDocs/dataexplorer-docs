@@ -70,7 +70,7 @@ database("<DatabaseName>").<TableName>
 For a table in a remote cluster:
 
 ```kusto
-cluster("<EventhouseClusterURI<>").database("<DatabaseName>").<TableName>
+cluster("<ClusterName>").database("<DatabaseName>").<TableName>
 ```
 :::moniker-end
 :::moniker range="microsoft-fabric"
@@ -284,21 +284,21 @@ cluster("OtherCluster").database("OtherDb").MyCalc(datatable(x:string, y:string)
 The following cross-eventhouse call is valid.
 
 ```kusto
-cluster("OtherServiceURI").database("SomeDb").MyView("exception") | count
+cluster("OtherEventhouseURI").database("SomeDb").MyView("exception") | count
 ```
 
-The following query calls a remote scalar function `MyCalc`.
+The following query calls a remote scalar function `EventCalc`.
 This call violates rule #1, so it's not valid.
 
 ```kusto
-MyTable | extend CalCol=cluster("OtherEventhouse").database("OtherDb").MyCalc(Col1, Col2, Col3) | take 10
+Eventtable | extend CalCol=cluster("OtherEventhouseClusterURI").database("OtherDb").MyCalc(Col1, Col2, Col3) | take 10
 ```
 
-The following query calls remote function `MyCalc` and provides a tabular parameter.
+The following query calls remote function `EventCalc` and provides a tabular parameter.
 This call violates rule #2, so it's not valid.
 
 ```kusto
-cluster("Eventhouse").database("OtherDb").MyCalc(datatable(x:string, y:string)["x","y"] )
+cluster("EventhouseClusterURI").database("OtherDb").MyCalc(datatable(x:string, y:string)["x","y"] )
 ```
 :::moniker-end
 
@@ -320,7 +320,7 @@ cluster("OtherCluster").database("OtherDb").SomeTable("MyTable")
 :::moniker-end
 :::moniker range="microsoft-fabric"
 ```kusto
-cluster("OtherEventhouse").database("OtherDb").SomeTable("MyTable")
+cluster("OtherEventhouseClusterURI").database("OtherDb").SomeTable("EventTable")
 ```
 :::moniker-end
 
@@ -342,7 +342,7 @@ cluster("OtherCluster").database("OtherDb").GetDataPivot()
 :::moniker-end
 :::moniker range="microsoft-fabric"
 ```kusto
-cluster("OtherEventhouse").database("OtherDb").GetDataPivot()
+cluster("OtherEventhouseClusterURI").database("OtherDb").GetDataPivot()
 ```
 :::moniker-end
 
