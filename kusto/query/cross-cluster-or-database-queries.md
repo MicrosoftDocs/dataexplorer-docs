@@ -28,11 +28,13 @@ This article explains how to execute queries that involve entities located outsi
 
 :::moniker range="microsoft-fabric"
 ## Identify the eventhouse and database in context
+
 :::moniker-end
 
 The following table explains how to identify the database in context by query environment.
 
 :::moniker range="azure-data-explorer"
+
 |Environment|Database in context|
 |--|--|
 |[Kusto Explorer](../tools/kusto-explorer.md)|The default database is the one selected in the [connections panel](../tools/kusto-explorer.md#connections-panel), and the current cluster is the cluster containing that database.|
@@ -40,11 +42,13 @@ The following table explains how to identify the database in context by query en
 |[Client libraries](../api/client-libraries.md)|The default database and cluster are specified by the `Data Source` and `Initial Catalog` properties of the [Kusto connection strings](../api/connection-strings/kusto.md).|
 :::moniker-end
 :::moniker range="microsoft-fabric"
-|Environment|Database in context|
+
+|Environment|Database/Eventhouse in context|
 |--|--|
 |[Kusto Explorer](../tools/kusto-explorer.md)|The default database is the one selected in the [connections panel](../tools/kusto-explorer.md#connections-panel) and the current eventhouse is the eventhouse containing that database.|
 |[Real-Time Intelligence KQL queryset](/fabric/real-time-intelligence/create-query-set#open-an-existing-kql-queryset) |The default database is the current database selected either [directly](/fabric/real-time-intelligence/kusto-query-set?tabs=kql-database#select-a-database) or through an eventhouse.|
-|[Client libraries](../api/client-libraries.md)|The default database is specified by the [database URI](/fabric/real-time-intelligence/access-database-copy-uri#copy-uri), used for the `Data Source` properties of the [Kusto connection strings](../api/connection-strings/kusto.md).|
+|[Client libraries](../api/client-libraries.md)|The default database is specified by the [database URI](/fabric/real-time-intelligence/access-database-copy-uri#copy-uri), used for the `Data Source` properties of the [Kusto connection strings](../api/connection-strings/kusto.md). An eventhouse is specified by its cluster uri. You can find it by selecting **System Overview** in the *Eventhouse details* section for the selected eventhouse. |
+
 :::moniker-end
 
 :::moniker range="azure-data-explorer"
@@ -66,7 +70,7 @@ database("<DatabaseName>").<TableName>
 For a table in a remote cluster:
 
 ```kusto
-cluster("<ClusterName>").database("<DatabaseName>").<TableName>
+cluster("<EventhouseClusterURI<>").database("<DatabaseName>").<TableName>
 ```
 :::moniker-end
 :::moniker range="microsoft-fabric"
@@ -79,7 +83,7 @@ database("<DatabaseName>").<TableName>
 For a table in a remote eventhouse or Azure Data Explorer cluster:
 
 ```kusto
-cluster("<EventhouseName>").database("<DatabaseName>").<TableName>
+cluster("<EventhouseClusterURI>").database("<DatabaseName>").<TableName>
 ```
 :::moniker-end
 
@@ -103,7 +107,7 @@ union withsource=TableName *, database("OtherDb*").*Table, cluster("OtherCluster
 When a *qualified name* appears as an operand of the [union operator](union-operator.md), then wildcards can be used to specify multiple tables and multiple databases. Wildcards aren't permitted in eventhouse names.
 
 ```kusto
-union withsource=TableName *, database("OtherDb*").*Table, cluster("OtherEventhouse").database("*").*
+union withsource=TableName *, database("OtherDb*").*Table, cluster("OtherEventhouseClusterURI").database("*").*
 ```
 :::moniker-end
 
@@ -137,7 +141,7 @@ restrict access to (my*, database("MyOther*").*, cluster("OtherCluster").databas
 * Any table in all the databases named *event2...* in the eventhouse *OtherEventhouse.kusto.data.microsoft.com*.
 
 ```kusto
-restrict access to (event*, database("EventOther*").*, cluster("OtherEventhouse").database("event2*").*);
+restrict access to (event*, database("EventOther*").*, cluster("OtherEventhouseClusterURI").database("event2*").*);
 ```
 :::moniker-end
 
@@ -146,12 +150,12 @@ restrict access to (event*, database("EventOther*").*, cluster("OtherEventhouse"
 :::moniker range="azure-data-explorer"
 To process a cross-cluster query, the cluster that performs the initial query interpretation needs to have the schema of the entities referenced on remote clusters. To obtain this information, a command is sent to retrieve the schemas, which are then stored in a cache.
 
-In the event of a schema change in the remote cluster, a cached schema may become outdated. This can lead to undesired effects, including scenarios where new or deleted columns cause a `Partial query failure`. To solve such issues, manually refresh the schema with the [.clear cache remote-schema](../management/clear-cross-cluster-schema-cache.md) command.
+If there's a schema change in the remote cluster, a cached schema might become outdated. This can lead to undesired effects, including scenarios where new or deleted columns cause a `Partial query failure`. To solve such issues, manually refresh the schema with the [.clear cache remote-schema](../management/clear-cross-cluster-schema-cache.md) command.
 :::moniker-end
 :::moniker range="microsoft-fabric"
 To process a cross-eventhouse or eventhouse to ADX cluster query, the eventhouse that performs the initial query interpretation needs to have the schema of the entities referenced on remote eventhouses or clusters. To obtain this information, a command is sent to retrieve the schemas, which are then stored in a cache.
 
-In the event of a remote schema change, a cached schema may become outdated. This can lead to undesired effects, including scenarios where new or deleted columns cause a `Partial query failure`. To solve such issues, manually refresh the schema with the [.clear cache remote-schema](../management/clear-cross-cluster-schema-cache.md) command.
+If there's a remote schema change, a cached schema might become outdated. This can lead to undesired effects, including scenarios where new or deleted columns cause a `Partial query failure`. To solve such issues, manually refresh the schema with the [.clear cache remote-schema](../management/clear-cross-cluster-schema-cache.md) command.
 :::moniker-end
 
 ## Functions and views
@@ -165,18 +169,47 @@ MyView | where ...
 ```
 
 Persistent functions and views can be accessed from another database in the same cluster.
+
+For example, say you create the following tabular function (view) in a database `OtherDb`:
+
+```kusto
+.create function MyView(v:string) { Table1 | where Column1 has v ...  }  
+```
+
+Then, you create the following scalar function in a database `OtherDb`:
+
+```kusto
+.create function MyCalc(a:double, b:double, c:double) { (a + b) / c }  
+```
+
+In default database, these entities can be referenced as follows:
+
+```kusto
+database("OtherDb").MyView("exception") | extend CalCol=database("OtherDb").MyCalc(Col1, Col2, Col3) | take 10
+```
+
 :::moniker-end
 :::moniker range="microsoft-fabric"
 Functions and views (persistent and created inline) can reference tables across database and eventhouse boundaries. The following code is valid.
 
 ```kusto
-let EventView = Table1 join database("OtherDb").Table2 on Key | join cluster("OtherEventhouse").database("SomeDb").Table3 on Key;
+let EventView = Table1 join database("OtherDb").Table2 on Key | join cluster("OtherEventhouseClusterURI").database("SomeDb").Table3 on Key;
 EventView | where ...
 ```
 
 Persistent functions and views can be accessed from another database in the same eventhouse.
-:::moniker-end
 
+For example, say you create the following tabular function (view) in a database `OtherDb`:
+
+```kusto
+.create function EventView(v:string) { Table1 | where Column1 has v ...  }  
+```
+
+Then, you create the following scalar function in a database `OtherDb`:
+
+```kusto
+.create function EventCalc(a:double, b:double, c:double) { (a + b) / c }  
+```
 For example, say you create the following tabular function (view) in a database `OtherDb`:
 
 ```kusto
@@ -194,6 +227,7 @@ In default database, these entities can be referenced as follows:
 ```kusto
 database("OtherDb").EventView("exception") | extend CalCol=database("OtherDb").EventCalc(Col1, Col2, Col3) | take 10
 ```
+:::moniker-end
 
 :::moniker range="azure-data-explorer"
 ### Limitations of cross-cluster function calls
@@ -203,10 +237,10 @@ Tabular functions or views can be referenced across clusters. The following limi
 * Remote functions must return tabular schema. Scalar functions can only be accessed in the same cluster.
 * Remote functions can accept only scalar arguments. Functions that get one or more table arguments can only be accessed in the same cluster.
 * Remote functions' result schema must be fixed (known in advance without executing parts of the query).
-  This precludes the use of query constructs such as the `pivot` plugin. (Note that some plugins,
-  such as the `bag_unpack` plugin, supports a way to indicate the result schema statically,
-  and in this form it *can* be used in cross-cluster function calls.)
-* For performance reasons, the schema of remote entities is cached by the calling cluster after the initial call. Therefore, changes made to the remote entity may result in a mismatch with the cached schema information, potentially leading to query failures. For more information, see [Cross-cluster queries and schema changes](#handle-schema-changes-of-remote-entities).
+  This precludes the use of query constructs such as the `pivot` plugin. Some plugins,
+  such as the `bag_unpack` plugin, support a way to indicate the result schema statically,
+  and in this form it *can* be used in cross-cluster function calls.
+* For performance reasons, the calling cluster caches the schema of remote entities after the initial call. Therefore, changes made to the remote entity might result in a mismatch with the cached schema information, potentially leading to query failures. For more information, see [Cross-cluster queries and schema changes](#handle-schema-changes-of-remote-entities).
 :::moniker-end
 :::moniker range="microsoft-fabric"
 ### Limitations of cross-eventhouse function calls
@@ -216,10 +250,10 @@ Tabular functions or views can be referenced across eventhouses. The following l
 * Remote functions must return tabular schema. Scalar functions can only be accessed in the same eventhouse.
 * Remote functions can accept only scalar arguments. Functions that get one or more table arguments can only be accessed in the same eventhouse.
 * Remote functions' result schema must be fixed (known in advance without executing parts of the query).
-  This precludes the use of query constructs such as the `pivot` plugin. (Note that some plugins,
-  such as the `bag_unpack` plugin, supports a way to indicate the result schema statically,
-  and in this form it *can* be used in cross-eventhouse function calls.)
-* For performance reasons, the schema of remote entities is cached by the calling eventhouse after the initial call. Therefore, changes made to the remote entity may result in a mismatch with the cached schema information, potentially leading to query failures. For more information, see [Cross-cluster queries and schema changes](#handle-schema-changes-of-remote-entities).
+  This precludes the use of query constructs such as the `pivot` plugin. Some plugins,
+  such as the `bag_unpack` plugin, support a way to indicate the result schema statically,
+  and in this form it *can* be used in cross-eventhouse function calls.
+* For performance reasons, the calling eventhouse caches the schema of remote entities after the initial call. Therefore, changes made to the remote entity might result in a mismatch with the cached schema information, potentially leading to query failures. For more information, see [Cross-cluster queries and schema changes](#handle-schema-changes-of-remote-entities).
 
 :::moniker-end
 
