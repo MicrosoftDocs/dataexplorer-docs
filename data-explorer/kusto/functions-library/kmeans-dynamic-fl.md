@@ -11,7 +11,7 @@ zone_pivot_groups: kql-flavors-all
 
 ::: zone pivot="azuredataexplorer, fabric"
 
-The function `kmeans_dynamic_fl()` is a [UDF (user-defined function)](../query/functions/user-defined-functions.md) that clusterizes a dataset using the [k-means algorithm](https://en.wikipedia.org/wiki/K-means_clustering). This function is similar to [kmeans_fl()](kmeans-fl.md) just the features are supplied by a single numerical array column and not by multiple scalar columns
+The function `kmeans_dynamic_fl()` is a [UDF (user-defined function)](../query/functions/user-defined-functions.md) that clusterizes a dataset using the [k-means algorithm](https://en.wikipedia.org/wiki/K-means_clustering). This function is similar to [kmeans_fl()](kmeans-fl.md) just the features are supplied by a single numerical array column and not by multiple scalar columns.
 
 [!INCLUDE [python-zone-pivot-fabric](../../includes/python-zone-pivot-fabric.md)]
 
@@ -26,7 +26,7 @@ The function `kmeans_dynamic_fl()` is a [UDF (user-defined function)](../query/f
 |Name|Type|Required|Description|
 |--|--|--|--|
 |*k*| `int` | :heavy_check_mark:|The number of clusters.|
-|*features_col*| `string` | :heavy_check_mark:|The name of the column containing the numeric array of features to use for clustering.|
+|*features_col*| `string` | :heavy_check_mark:|The name of the column containing the numeric array of features to be used for clustering.|
 |*cluster_col*| `string` | :heavy_check_mark:|The name of the column to store the output cluster ID for each record.|
 
 ## Function definition
@@ -103,7 +103,7 @@ kmeans_dynamic_fl(tbl:(*),k:int, features_col:string, cluster_col:string)
 
 The following example use the [invoke operator](../query/invoke-operator.md) to run the function.
 
-### Clustering of artificial data with 3 clusters
+### Clustering of artificial dataset with 3 clusters
 
 ### [Query-defined](#tab/query-defined)
 
@@ -159,7 +159,7 @@ union
 
 ---
 
-![Scatterchart of K-Means clustering of artificial data with 3 clusters.](media/kmeans-fl/kmeans-scattergram.png)
+![Scatterchart of K-Means clustering of artificial dataset with 3 clusters.](media/kmeans-fl/kmeans-scattergram.png)
 
 ::: zone-end
 

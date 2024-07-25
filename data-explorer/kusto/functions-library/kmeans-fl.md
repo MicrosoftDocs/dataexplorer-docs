@@ -101,7 +101,7 @@ kmeans_fl(tbl:(*), k:int, features:dynamic, cluster_col:string)
 
 The following example use the [invoke operator](../query/invoke-operator.md) to run the function.
 
-### Clustering of artificial data with 3 clusters
+### Clustering of artificial dataset with 3 clusters
 
 ### [Query-defined](#tab/query-defined)
 
@@ -154,7 +154,7 @@ union
 
 ---
 
-![Scatterchart of K-Means clustering of artificial data with 3 clusters.](media/kmeans-fl/kmeans-scattergram.png)
+![Scatterchart of K-Means clustering of artificial dataset with 3 clusters.](media/kmeans-fl/kmeans-scattergram.png)
 
 ::: zone-end
 
