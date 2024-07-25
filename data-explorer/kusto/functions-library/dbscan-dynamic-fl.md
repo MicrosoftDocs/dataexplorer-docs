@@ -133,7 +133,7 @@ dbscan_dynamic_fl(tbl:(*), features_col:string, cluster_col:string, epsilon:doub
 
 ## Example
 
-The following example use the [invoke operator](../query/invoke-operator.md) to run the function.
+The following example uses the [invoke operator](../query/invoke-operator.md) to run the function.
 
 ### Clustering of artificial dataset with three clusters
 
@@ -204,7 +204,7 @@ union
 
 ---
 
-![Scatterchart of DBSCAN clustering of artificial dataset with three clusters.](media/dbscan-fl/dbscan-scattergram.png)
+![Screenshot of scatterchart of DBSCAN clustering of artificial dataset with three clusters.](media/dbscan-fl/dbscan-scattergram.png)
 
 ::: zone-end
 
