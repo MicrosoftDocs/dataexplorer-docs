@@ -80,7 +80,7 @@ For a table in a different database within the same eventhouse:
 database("<DatabaseName>").<TableName>
 ```
 
-For a table in a remote eventhouse or Azure Data Explorer cluster:
+For a table in a remote eventhouse or remote service (like Azure Data Explorer) cluster:
 
 ```kusto
 cluster("<EventhouseClusterURI>").database("<DatabaseName>").<TableName>
@@ -236,10 +236,7 @@ Tabular functions or views can be referenced across clusters. The following limi
 
 * Remote functions must return tabular schema. Scalar functions can only be accessed in the same cluster.
 * Remote functions can accept only scalar arguments. Functions that get one or more table arguments can only be accessed in the same cluster.
-* Remote functions' result schema must be fixed (known in advance without executing parts of the query).
-  So query constructs such as the `pivot` plugin can't be used. Some plugins,
-  such as the `bag_unpack` plugin, support a way to indicate the result schema statically,
-  and in this form it *can* be used in cross-cluster function calls.
+* Remote functions' result schema must be fixed (known in advance without executing parts of the query). So query constructs such as the `pivot` plugin can't be used. Some plugins, such as the `bag_unpack` plugin, support a way to indicate the result schema statically, and in this form it *can* be used in cross-cluster function calls.
 * For performance reasons, the calling cluster caches the schema of remote entities after the initial call. Therefore, changes made to the remote entity might result in a mismatch with the cached schema information, potentially leading to query failures. For more information, see [Cross-cluster queries and schema changes](#handle-schema-changes-of-remote-entities).
 :::moniker-end
 :::moniker range="microsoft-fabric"
@@ -249,10 +246,7 @@ Tabular functions or views can be referenced across eventhouses. The following l
 
 * Remote functions must return tabular schema. Scalar functions can only be accessed in the same eventhouse.
 * Remote functions can accept only scalar arguments. Functions that get one or more table arguments can only be accessed in the same eventhouse.
-* Remote functions' result schema must be fixed (known in advance without executing parts of the query).
-  So query constructs such as the `pivot` plugin can't be used. Some plugins,
-  such as the `bag_unpack` plugin, support a way to indicate the result schema statically,
-  and in this form it *can* be used in cross-eventhouse function calls.
+* Remote functions' result schema must be fixed (known in advance without executing parts of the query). So query constructs such as the `pivot` plugin can't be used. Some plugins, such as the `bag_unpack` plugin, support a way to indicate the result schema statically, and in this form it *can* be used in cross-eventhouse function calls.
 * For performance reasons, the calling eventhouse caches the schema of remote entities after the initial call. Therefore, changes made to the remote entity might result in a mismatch with the cached schema information, potentially leading to query failures. For more information, see [Cross-cluster queries and schema changes](#handle-schema-changes-of-remote-entities).
 
 :::moniker-end
