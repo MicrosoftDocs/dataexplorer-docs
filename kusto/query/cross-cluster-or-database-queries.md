@@ -39,7 +39,7 @@ The following table explains how to identify the database in context by query en
 |--|--|
 |[Kusto Explorer](../tools/kusto-explorer.md)|The default database is the one selected in the [connections panel](../tools/kusto-explorer.md#connections-panel), and the current cluster is the cluster containing that database.|
 |[Azure Data Explorer web UI](https://dataexplorer.azure.com/)|The default database is the one selected in the [connection pane](/azure/data-explorer/web-ui-query-overview#view-clusters-and-databases), and the current cluster is the cluster containing that database.|
-|[Client libraries](../api/client-libraries.md)|The default database and cluster are specified by the `Data Source` and `Initial Catalog` properties of the [Kusto connection strings](../api/connection-strings/kusto.md).|
+|[Client libraries](../api/client-libraries.md)|Specify the default database and cluster by the `Data Source` and `Initial Catalog` properties of the [Kusto connection strings](../api/connection-strings/kusto.md).|
 :::moniker-end
 :::moniker range="microsoft-fabric"
 
@@ -47,7 +47,7 @@ The following table explains how to identify the database in context by query en
 |--|--|
 |[Kusto Explorer](../tools/kusto-explorer.md)|The default database is the one selected in the [connections panel](../tools/kusto-explorer.md#connections-panel) and the current eventhouse is the eventhouse containing that database.|
 |[Real-Time Intelligence KQL queryset](/fabric/real-time-intelligence/create-query-set#open-an-existing-kql-queryset) |The default database is the current database selected either [directly](/fabric/real-time-intelligence/kusto-query-set?tabs=kql-database#select-a-database) or through an eventhouse.|
-|[Client libraries](../api/client-libraries.md)|The default database is specified by the [database URI](/fabric/real-time-intelligence/access-database-copy-uri#copy-uri), used for the `Data Source` properties of the [Kusto connection strings](../api/connection-strings/kusto.md). An eventhouse is specified by its cluster uri. You can find it by selecting **System Overview** in the *Eventhouse details* section for the selected eventhouse. |
+|[Client libraries](../api/client-libraries.md)| Specify the default database with the [database URI](/fabric/real-time-intelligence/access-database-copy-uri#copy-uri), used for the `Data Source` properties of the [Kusto connection strings](../api/connection-strings/kusto.md). For the eventhouse, use its cluster URI. You can find it by selecting **System Overview** in the *Eventhouse details* section for the selected eventhouse. |
 
 :::moniker-end
 
@@ -237,7 +237,7 @@ Tabular functions or views can be referenced across clusters. The following limi
 * Remote functions must return tabular schema. Scalar functions can only be accessed in the same cluster.
 * Remote functions can accept only scalar arguments. Functions that get one or more table arguments can only be accessed in the same cluster.
 * Remote functions' result schema must be fixed (known in advance without executing parts of the query).
-  This precludes the use of query constructs such as the `pivot` plugin. Some plugins,
+  So, query constructs such as the `pivot` plugin can't be used. Some plugins,
   such as the `bag_unpack` plugin, support a way to indicate the result schema statically,
   and in this form it *can* be used in cross-cluster function calls.
 * For performance reasons, the calling cluster caches the schema of remote entities after the initial call. Therefore, changes made to the remote entity might result in a mismatch with the cached schema information, potentially leading to query failures. For more information, see [Cross-cluster queries and schema changes](#handle-schema-changes-of-remote-entities).
@@ -250,7 +250,7 @@ Tabular functions or views can be referenced across eventhouses. The following l
 * Remote functions must return tabular schema. Scalar functions can only be accessed in the same eventhouse.
 * Remote functions can accept only scalar arguments. Functions that get one or more table arguments can only be accessed in the same eventhouse.
 * Remote functions' result schema must be fixed (known in advance without executing parts of the query).
-  This precludes the use of query constructs such as the `pivot` plugin. Some plugins,
+  So, query constructs such as the `pivot` plugin can't be used. Some plugins,
   such as the `bag_unpack` plugin, support a way to indicate the result schema statically,
   and in this form it *can* be used in cross-eventhouse function calls.
 * For performance reasons, the calling eventhouse caches the schema of remote entities after the initial call. Therefore, changes made to the remote entity might result in a mismatch with the cached schema information, potentially leading to query failures. For more information, see [Cross-cluster queries and schema changes](#handle-schema-changes-of-remote-entities).
