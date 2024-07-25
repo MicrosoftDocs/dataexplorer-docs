@@ -17,7 +17,7 @@ The function `kmeans_fl()` is a [UDF (user-defined function)](../query/functions
 
 ## Syntax
 
-`T | invoke kmeans_fl(`*k*`,` *features_cols*`,` *cluster_col*`)`
+`T | invoke kmeans_fl(`*k*`,` *features*`,` *cluster_col*`)`
 
 [!INCLUDE [syntax-conventions-note](../../includes/syntax-conventions-note.md)]
 
@@ -26,7 +26,7 @@ The function `kmeans_fl()` is a [UDF (user-defined function)](../query/functions
 |Name|Type|Required|Description|
 |--|--|--|--|
 |*k*| `int` | :heavy_check_mark:|The number of clusters.|
-|*features_cols*| `dynamic` | :heavy_check_mark:|An array containing the names of the features columns to use for clustering.|
+|*features*| `dynamic` | :heavy_check_mark:|An array containing the names of the features columns to use for clustering.|
 |*cluster_col*| `string` | :heavy_check_mark:|The name of the column to store the output cluster ID for each record.|
 
 ## Function definition
