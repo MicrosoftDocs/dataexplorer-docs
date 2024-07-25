@@ -30,9 +30,9 @@ The function `dbscan_dynamic_fl()` is a [UDF (user-defined function)](../query/f
 |*epsilon*| `real` | :heavy_check_mark:|The maximum distance between two samples to be considered as neighbors.|
 |*min_samples*| `int` | |The number of samples in a neighborhood for a point to be considered as a core point.|
 |*metric*| `string` | |The metric to use when calculating distance between points.|
-|*metric_params*| `dynamic` | |Additional keyword arguments for the metric function.|
+|*metric_params*| `dynamic` | |Extra keyword arguments for the metric function.|
 
-* For detailed description of the parameters see [DBSCAN documentation](https://scikit-learn.org/stable/modules/generated/sklearn.cluster.DBSCAN.html)
+* For detailed description of the parameters, see [DBSCAN documentation](https://scikit-learn.org/stable/modules/generated/sklearn.cluster.DBSCAN.html)
 * For the list of metrics see [distance computations](https://docs.scipy.org/doc/scipy/reference/spatial.distance.html)
 
 ## Function definition
@@ -44,7 +44,7 @@ You can define the function by either embedding its code as a query-defined func
 Define the function using the following [let statement](../query/let-statement.md). No permissions are required.
 
 > [!IMPORTANT]
-> A [let statement](../query/let-statement.md) can't run on its own. It must be followed by a [tabular expression statement](../query/tabular-expression-statements.md). To run a working example of `kmeans_fl()`, see [Examples](#examples).
+> A [let statement](../query/let-statement.md) can't run on its own. It must be followed by a [tabular expression statement](../query/tabular-expression-statements.md). To run a working example of `kmeans_fl()`, see [Example](#example).
 
 ~~~kusto
 let dbscan_dynamic_fl=(tbl:(*), features_col:string, cluster_col:string, epsilon:double, min_samples:int=10, metric:string='minkowski', metric_params:dynamic=dynamic({'p': 2}))
@@ -89,7 +89,7 @@ let dbscan_dynamic_fl=(tbl:(*), features_col:string, cluster_col:string, epsilon
 Define the stored function once using the following [`.create function`](../management/create-function.md). [Database User permissions](../management/access-control/role-based-access-control.md) are required.
 
 > [!IMPORTANT]
-> You must run this code to create the function before you can use the function as shown in the [Examples](#examples).
+> You must run this code to create the function before you can use the function as shown in the [Example](#example).
 
 ~~~kusto
 .create-or-alter function with (folder = "Packages\\ML", docstring = "DBSCAN clustering of features passed as a single column containing numerical array")
@@ -135,7 +135,7 @@ dbscan_dynamic_fl(tbl:(*), features_col:string, cluster_col:string, epsilon:doub
 
 The following example use the [invoke operator](../query/invoke-operator.md) to run the function.
 
-### Clustering of artificial dataset with 3 clusters
+### Clustering of artificial dataset with three clusters
 
 ### [Query-defined](#tab/query-defined)
 
@@ -204,7 +204,7 @@ union
 
 ---
 
-![Scatterchart of DBSCAN clustering of artificial dataset with 3 clusters.](media/dbscan-fl/dbscan-scattergram.png)
+![Scatterchart of DBSCAN clustering of artificial dataset with three clusters.](media/dbscan-fl/dbscan-scattergram.png)
 
 ::: zone-end
 

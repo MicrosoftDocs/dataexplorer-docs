@@ -38,7 +38,7 @@ You can define the function by either embedding its code as a query-defined func
 Define the function using the following [let statement](../query/let-statement.md). No permissions are required.
 
 > [!IMPORTANT]
-> A [let statement](../query/let-statement.md) can't run on its own. It must be followed by a [tabular expression statement](../query/tabular-expression-statements.md). To run a working example of `kmeans_fl()`, see [Examples](#examples).
+> A [let statement](../query/let-statement.md) can't run on its own. It must be followed by a [tabular expression statement](../query/tabular-expression-statements.md). To run a working example of `kmeans_fl()`, see [example](#example).
 
 ~~~kusto
 let kmeans_fl=(tbl:(*), k:int, features:dynamic, cluster_col:string)
@@ -69,7 +69,7 @@ let kmeans_fl=(tbl:(*), k:int, features:dynamic, cluster_col:string)
 Define the stored function once using the following [`.create function`](../management/create-function.md). [Database User permissions](../management/access-control/role-based-access-control.md) are required.
 
 > [!IMPORTANT]
-> You must run this code to create the function before you can use the function as shown in the [Examples](#examples).
+> You must run this code to create the function before you can use the function as shown in the [example](#example).
 
 ~~~kusto
 .create-or-alter function with (folder = "Packages\\ML", docstring = "K-Means clustering")
@@ -101,7 +101,7 @@ kmeans_fl(tbl:(*), k:int, features:dynamic, cluster_col:string)
 
 The following example use the [invoke operator](../query/invoke-operator.md) to run the function.
 
-### Clustering of artificial dataset with 3 clusters
+### Clustering of artificial dataset with three clusters
 
 ### [Query-defined](#tab/query-defined)
 
@@ -154,7 +154,7 @@ union
 
 ---
 
-![Scatterchart of K-Means clustering of artificial dataset with 3 clusters.](media/kmeans-fl/kmeans-scattergram.png)
+![Scatterchart of K-Means clustering of artificial dataset with three clusters.](media/kmeans-fl/kmeans-scattergram.png)
 
 ::: zone-end
 
