@@ -13,12 +13,12 @@ Principals are granted access to resources through a role-based access control m
 
 In this article, you'll learn how to use management commands to [view existing security roles](#show-existing-security-roles) and [add and drop principal association to security roles](#add-and-drop-principal-association-to-security-roles) on the database level.
 
-> [!NOTE]
-> To delete a database, you need at least **Contributor** Azure Resource Manager (ARM) permissions. To assign ARM permissions, see [Assign Azure roles using the Azure portal](/azure/role-based-access-control/role-assignments-portal).
-
 ## Permissions
 
 You must have at least [Database Admin](../access-control/role-based-access-control.md) permissions to run these commands.
+
+> [!NOTE]
+> To delete a database, you need at least **Contributor** Azure Resource Manager (ARM) permissions. To assign ARM permissions, see [Assign Azure roles using the Azure portal](/azure/role-based-access-control/role-assignments-portal).
 
 ## Database level security roles
 
