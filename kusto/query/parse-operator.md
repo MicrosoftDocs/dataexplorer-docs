@@ -32,7 +32,7 @@ Evaluates a string expression and parses its value into one or more calculated c
 
 > [!NOTE]
 >
-> * The parse pattern may start with *ColumnName* and not only with *StringConstant*.
+> * The parse pattern can start with *ColumnName* in addition to *StringConstant*.
 > * Use `*` in the pattern to skip junk values. The `*` can't be used after a `string` type column.
 > * If the parsed *expression* isn't of type `string`, it will be converted to type `string`.
 > * Use [`project`](project-operator.md) if you also want to drop or rename some columns.
@@ -47,7 +47,7 @@ Evaluates a string expression and parses its value into one or more calculated c
 
 ### Regex mode
 
-In regex mode, parse translates the pattern to a regex. Use [regular expressions](re2.md) to do the matching, and use numbered captured groups that are handled internally. For example:
+In regex mode, parse translates the pattern to a regex. Use [regular expressions](re2.md) to do the matching and use numbered captured groups that are handled internally. For example:
 
 ```kusto
 parse kind=regex Col with * <regex1> var1:string <regex2> var2:long
@@ -67,7 +67,7 @@ The input table extended according to the list of columns that are provided to t
 
 ## Examples
 
-The `parse` operator provides a streamlined way to `extend` a table by using multiple `extract` applications on the same `string` expression. This result is useful, when the table has a `string` column that contains several values that you want to break into individual columns. For example, a column that is produced by a developer trace ("`printf`"/"`Console.WriteLine`") statement.
+The `parse` operator provides a streamlined way to `extend` a table by using multiple `extract` applications on the same `string` expression. This result is useful, when the table has a `string` column that contains several values that you want to break into individual columns. For example, a column that's produced by a developer trace ("`printf`"/"`Console.WriteLine`") statement.
 
 ### Parse and extend results
 In the following example, the column `EventText` of table `Traces` contains
@@ -105,7 +105,7 @@ Traces
 
 ### Extract email alias and DNS
 
-In the following example, entries from the `Contacts` table in the `Leads` database are parsed to extract aliases and domains from `email` and website DNS data from `Website`. Then operation projects the data into `fullEmail`, `alias`, and `websiteDNS` columns. Aliases and domains are parsed in order to extract the alias information but combined again for the `fullEmail` column.  
+In the following example, entries from the `Contacts` table in the `Leads` database are parsed to extract aliases and domains from `email` and website DNS data from `Website`. Then operation projects the data into `fullEmail`, `alias`, and `websiteDNS` columns. Aliases and domains are parsed to extract the alias information but combined again for the `fullEmail` column.  
 
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
@@ -267,11 +267,11 @@ Traces
 
 ### Relaxed mode
 
-In this example for relaxed mode, `totalSlices` extended column must be of type `long`. However, in the parsed string, it has the value `nonValidLongValue`.
-In `releaseTime` extended column, the value `nonValidDateTime` can't be parsed as `datetime`.
-These two extended columns get the value `null` while the other ones, such as `sliceNumber`, still get the correct values.
+In the following relaxed mode example, the extended column, `totalSlices`, must be of type `long`. However, in the parsed string, it has the value `nonValidLongValue`.
+For the extended column, `releaseTime`, the value `nonValidDateTime` can't be parsed as `datetime`.
+These two extended columns result in `null` values while the other ones, such as `sliceNumber`, still result in the correct values.
 
-If you use option `kind = simple` for the following query, you get `null` for all extended columns. This option is strict on extended columns, and is the difference between relaxed and simple mode.
+If you use option `kind = simple` for the following query, you get `null` results for all extended columns. This option is strict on extended columns, and is the difference between relaxed and simple mode.
 
 > [!NOTE]
 > In relaxed mode, extended columns can be partially matched.
