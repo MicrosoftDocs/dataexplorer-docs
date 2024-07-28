@@ -120,7 +120,7 @@
       "ms.author": "shsagir",
       "ms.service": "kusto",
       "services": "kusto",
-      "titleSuffix": "Kusto Query Language"
+      "titleSuffix": "Kusto"
     },
     "fileMetadata": {
       "monikerRange": {
