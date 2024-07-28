@@ -105,7 +105,7 @@ Traces
 
 ### Extract email alias and DNS
 
-In the following example, entries from the `Contacts` table in the `Leads` database are parsed to extract aliases and domains from `email` and website DNS data from `Website` and then projects `fullEmail`, `alias`, and `websiteDNS`. Aliases and domains are parsed in order to extract the alias information but combined again for the `fullEmail` column.  
+In the following example, entries from the `Contacts` table in the `Leads` database are parsed to extract aliases and domains from `email` and website DNS data from `Website`. Then operation projects the data into `fullEmail`, `alias`, and `websiteDNS` columns. Aliases and domains are parsed in order to extract the alias information but combined again for the `fullEmail` column.  
 
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
@@ -136,6 +136,8 @@ Leads
 |abi@fourthcoffee.com|abi|www.fourthcoffee.com|
 
 ### Regex mode
+
+In the following example, regular expressions are used to parse and extract data from the `EventText` column. The extracted fields are projected data is projected into new fields.
 
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
@@ -168,7 +170,7 @@ Traces
 
 ### Regex mode with regex flags
 
-If you're interested in getting the resourceName only, use this query:
+The following example fails to extract only the resourceName because it uses the default mode, which is greedy.
 
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
@@ -199,10 +201,9 @@ Traces
 |PipelineScheduler, totalSlices=27, sliceNumber=22, lockTime=02/17/2016 08:41:01, releaseTime=02/17/2016 08:41:00|
 |PipelineScheduler, totalSlices=27, sliceNumber=16, lockTime=02/17/2016 08:41:00, releaseTime=02/17/2016 08:41:00|
 
-You don't get the expected results, since the default mode is greedy.
-If you have a few records where the `resourceName`  sometimes appears as lower-case and sometimes as upper-case, you might get nulls for some values.
+If there are records where `resourceName`  sometimes appears as lower-case and sometimes as upper-case, you might get nulls for some values.
 
-To get the wanted result, run the query with the ungreedy `U`, and disable case-sensitive `i` regex flags.
+To extract only the resourceName, run the previous query with the non-greedy `U`, and disable case-sensitive `i` regex flags.
 
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
