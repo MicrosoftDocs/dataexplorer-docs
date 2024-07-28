@@ -14,7 +14,7 @@ The Azure Data Explorer supports cross-service queries between Azure Data Explor
 
 The Azure Data Explorer cross-service queries flow:
 
-:::image type="content" source="media/query-monitor-data/query-monitor-workflow.png" alt-text="Diagram showing the Azure Data Explorer proxy flow.":::
+:::image type="content" source="media/query-monitor-data/query-monitor-workflow.png" alt-text="Diagram showing the Azure Data Explorer cross-service query flow."  lightbox="media/query-monitor-data/query-monitor-workflow.png":::
 
 ## Add a Log Analytics workspace/Application Insights resource to Azure Data Explorer client tools
 
@@ -26,7 +26,7 @@ Add a Log Analytics workspace or Application Insights resource to Azure Data Exp
 
 1. In the [Azure Data Explorer UI](https://dataexplorer.azure.com/clusters), select **+ Add** then **Connection**.
 
-1. In the **Add Connection** window, add the URL and display name of the Log Analytics (LA) workspace or Application Insights (AI) resource.
+1. In the *Add Connection* window, add the URL and display name of the Log Analytics (LA) workspace or Application Insights (AI) resource.
 
     * For Log Analytics (LA) workspace: `https://ade.loganalytics.io/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/microsoft.operationalinsights/workspaces/<workspace-name>`
     * For Application Insights (AI) resource: `https://ade.applicationinsights.io/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/microsoft.insights/components/<ai-app-name>`
@@ -57,12 +57,12 @@ Add a Log Analytics workspace or Application Insights resource to Azure Data Exp
 You can run the queries using client tools that support Kusto queries, such as: Kusto Explorer, Azure Data Explorer web UI, Jupyter Kqlmagic, Flow, PowerQuery, PowerShell, Lens, REST API.
 
 > [!NOTE]
-> The cross-service query ability is used for data retrieval only. For more information, see [Function supportability](#function-supportability).
+> Cross-service querying is used for data retrieval only. For more information, see [Function supportability](#function-supportability).
 
 > [!TIP]
 >
 > * The database should have the same name as the resource specified in the cross-service query. Names are case sensitive.
-> * In cross-service queries, make sure that the naming of Application Insights resource apps and Log Analytics workspace workspaces is correct.
+> * In cross-service queries, make sure that Application Insights resource and Log Analytics workspace names are correct.
 > * If names contain special characters, they are replaced by URL encoding in the cross-service query.
 > * If names include characters that don't meet [KQL identifier name rules](kusto/query/schema-entities/entity-names.md), they are replaced by the dash **-** character.
 
@@ -82,7 +82,7 @@ Perf | take 10 // Demonstrate cross-service query on the Log Analytics workspace
 
 ### Cross query of your Log Analytics workspace or Application Insights resource and the Azure Data Explorer native cluster
 
-When you run cross cluster service queries, verify your Azure Data Explorer native cluster is selected in the left pane. The following examples demonstrate combining Azure Data Explorer cluster tables (using `union`) with a Log Analytics workspace.
+When you run cross cluster service queries, verify that your Azure Data Explorer native cluster is selected in the left pane. The following examples demonstrate combining Azure Data Explorer cluster tables (using `union`) with a Log Analytics workspace.
 
 Run the following queries:
 
@@ -107,7 +107,7 @@ Cross-tenant queries between the services aren't supported. You're signed in to 
 
 If the Azure Data Explorer resource is in *tenant-name-a* and Log Analytics workspace is in *tenant-name-b*, use one of the following two methods:
 
-1. Azure Data Explorer allows you to add roles for principals in different tenants. Add your user ID in *tenant-name-b* as an authorized user on the Azure Data Explorer cluster. Validate the *['TrustedExternalTenant'](/powershell/module/az.kusto/update-azkustocluster)* property on the Azure Data Explorer cluster contains *tenant-name-b*. Run the cross-query fully in *tenant-name-b*.
+1. Azure Data Explorer allows you to add roles for principals in different tenants. Add your user ID in *tenant-name-b* as an authorized user on the Azure Data Explorer cluster. Validate the *['TrustedExternalTenant'](/powershell/module/az.kusto/update-azkustocluster)* property on the Azure Data Explorer cluster contained in *tenant-name-b*. Run the cross-query fully in *tenant-name-b*.
 
 1. Use [Lighthouse](/azure/lighthouse/) to project the Azure Monitor resource into *tenant-name-a*.
 
@@ -123,15 +123,17 @@ This capability enables cross-cluster queries to reference an Azure Monitor tabu
 The following commands are supported with the cross-service query:
 
 * `.show functions`
-* `.show function {FunctionName}`
-* `.show database {DatabaseName} schema as json`
+* `.show function` [*FunctionName*]
+* `.show database` [*DatabaseName*] `schema as json`
 
 ## Limitations
 
 * Cross-service queries support only `.show functions`. This capability enables cross-cluster queries to reference an Azure Monitor, Azure Data Explorer, or Azure Resource Graph tabular function directly. The following commands are supported with the cross-service query:
     * `.show functions`
-    * `.show function {FunctionName}`
-    * `.show database {DatabaseName} schema as json`
+    * `.show function` [*FunctionName*]
+    * `.show database` [*DatabaseName*] `schema as json`
+
+
 * Private Link (private endpoints) and IP restrictions don't support cross-service queries.
 
 ## Additional syntax examples
@@ -140,12 +142,12 @@ The following syntax options are available when calling the Application Insights
 
 |Syntax Description |Application Insights resource |Log Analytics workspace |
 |----------------|---------|---------|
-| Database within a cluster that contains only the defined resource in this subscription (**recommended for cross cluster queries**) | cluster('`https://adx.monitor.azure.com/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/microsoft.insights/components/<ai-app-name>').database('<ai-app-name>`') | cluster('`https://adx.monitor.azure.com/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/microsoft.operationalinsights/workspaces/<workspace-name>').database('<workspace-name>`') |
-| Cluster that contains all apps/workspaces in this subscription | cluster('`https://adx.monitor.azure.com/subscriptions/<subscription-id>`') | cluster('`https://adx.monitor.azure.com/subscriptions/<subscription-id>`') |
-|Cluster that contains all apps/workspaces in the subscription and are members of this resource group | cluster('`https://adx.monitor.azure.com/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>`') | cluster('`https://adx.monitor.azure.com/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>`') |
-|Cluster that contains only the defined resource in this subscription | cluster('`https://adx.monitor.azure.com/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/microsoft.insights/components/<ai-app-name>`')    |  cluster('`https://adx.monitor.azure.com/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/microsoft.operationalinsights/workspaces/<workspace-name>`') |
-|For Endpoints in the UsGov | cluster('`https://adx.monitor.azure.us/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/microsoft.operationalinsights/workspaces/<workspace-name>`')|
-|For Endpoints in the China 21Vianet | cluster('`https://adx.monitor.azure.cn/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/microsoft.operationalinsights/workspaces/<workspace-name>`') |
+| Database within a cluster that contains only the defined resource in this subscription (**recommended for cross cluster queries**) | `cluster('https://adx.monitor.azure.com/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/microsoft.insights/components/<ai-app-name>').database('<ai-app-name>')` | cluster('`https://adx.monitor.azure.com/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/microsoft.operationalinsights/workspaces/<workspace-name>').database('<workspace-name>`') |
+| Cluster that contains all apps/workspaces in this subscription | `cluster('https://adx.monitor.azure.com/subscriptions/<subscription-id>')` | cluster('`https://adx.monitor.azure.com/subscriptions/<subscription-id>`') |
+|Cluster that contains all apps/workspaces in the subscription and are members of this resource group | cluster('`https://adx.monitor.azure.com/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>`') | `cluster('https://adx.monitor.azure.com/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>')` |
+|Cluster that contains only the defined resource in this subscription | cluster('`https://adx.monitor.azure.com/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/microsoft.insights/components/<ai-app-name>`')    |  `cluster('https://adx.monitor.azure.com/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/microsoft.operationalinsights/workspaces/<workspace-name>')` |
+|For Endpoints in the UsGov | `cluster('https://adx.monitor.azure.us/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/microsoft.operationalinsights/workspaces/<workspace-name>')`|
+|For Endpoints in the China 21Vianet | `cluster('https://adx.monitor.azure.cn/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/microsoft.operationalinsights/workspaces/<workspace-name>')` |
 
 ## Related content
 
