@@ -45,12 +45,12 @@ You must have at least [Database User](../access-control/role-based-access-contr
 |`view`| `bool` |Designates this function as a stored view. Stored views can participate in [search](../query/search-operator.md) and [union *](../query/union-operator.md) scenarios. For more information, see [Views](../query/schema-entities/views.md).|
 |`skipvalidation`| `bool` |Determines whether or not to run validation logic on the function and fail the process if the function isn't valid. The default is `false`.|
 
-::: moniker range= "azure-data-explorer"
+:::moniker range= "azure-data-explorer"
 
 > [!TIP]
 > If a function involves [cross-cluster queries](../query/cross-cluster-or-database-queries.md) and you plan to recreate the function using a [Kusto Query Language script](/azure/data-explorer/database-script.md), set `skipvalidation` to `true`.
 
-::: moniker-end
+:::moniker-end
 
 ## Returns
 
