@@ -46,11 +46,6 @@ This command requires [Database User](../access-control/role-based-access-contro
 
 ## Example
 
-:::moniker range="azure-data-explorer"
-> [!div class="nextstepaction"]
-> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA13LMQ6CQBBG4Z5TTLeQiAcwoVMqrfACm2XQieyOmf2VEPTuGkNl94rvbYOxB9dqtR%2FBRsMjBYgmmgRXKnsNGSbpQg25PUf9A3dvPvJ3dBsadOzZGnea21%2B5qjhzRrsOZZyPEgU7SaiKhTqoxcOTEzK9CP7GtIr3B61B7ouWAAAA" target="_blank">Run the query</a>
-::: moniker-end
-
 ```kusto
 .create-or-alter function with (docstring = 'Demo function with parameter', folder='MyFolder')
 TestFunction(myLimit:int)
