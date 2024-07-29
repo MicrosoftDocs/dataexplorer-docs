@@ -3,7 +3,7 @@ title:  .alter function docstring command
 description: Learn how to use the `.alter function docstring` command to change the `DocString` value of an existing function.
 ms.reviewer: orspodek
 ms.topic: reference
-ms.date: 05/25/2023
+ms.date: 07/29/2024
 ---
 # .alter function docstring command
 
@@ -44,6 +44,8 @@ You must have at least [Function Admin](../access-control/role-based-access-cont
 |DocString| `string` |A description of the function for UI purposes|
 
 ## Example
+
+The following example updates the description (`docstring`) of the `MyFunction1` function.
 
 ```kusto
 .alter function MyFunction1 docstring "Updated docstring"

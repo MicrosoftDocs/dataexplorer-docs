@@ -47,6 +47,8 @@ You must have at least [Function Admin](../access-control/role-based-access-cont
 
 ## Example
 
+The following example modifies the `MyFunction2` function with a description (`docstring`), folder, and defines the `MyLimit` parameter.
+
 ```kusto
 .alter function
 with (docstring = 'Demo function with parameter', folder='MyFolder')
