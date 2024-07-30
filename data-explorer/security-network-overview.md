@@ -3,7 +3,7 @@ title: Network security for Azure Data Explorer cluster
 description: 'Learn about the different options to secure your Azure Data Explorer cluster applying network security measures.'
 ms.reviewer: basaba
 ms.topic: reference
-ms.date: 04/05/2022
+ms.date: 07/23/2024
 ---
 
 # Network security for Azure Data Explorer
@@ -30,8 +30,8 @@ To successfully deploy your cluster into a private endpoint, you only require a 
 
 ## Virtual network injection
 
-> [!IMPORTANT]
-> Consider a Azure Private Endpoint based solution for implementing network security with Azure Data Explorer. It is less error-prone and provides [feature parity](security-network-overview.md#private-endpoint-vs-virtual-network-injection).
+> [!WARNING]
+> Virtual Network Injection will be retired for Azure Data Explorer by 1 February 2025. For more information on the deprecation, see [Deprecation of Virtual Network Injection for Azure Data Explorer](https://aka.ms/adx.security.vnet.deprecation).
 
 Virtual network injection allows you to directly deploy your cluster into a virtual network. The cluster can be privately accessed from within the virtual network and over a VPN gateway, or Azure ExpressRoute from on-premises networks. Injecting a cluster into a virtual network enables you to manage all of its traffic. This includes the traffic to access the cluster and all of its data ingestion or exports. Additionally, you're responsible to allow Microsoft to access the cluster for management and health monitoring.
 
