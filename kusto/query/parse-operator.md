@@ -269,7 +269,7 @@ Traces
 
 In the following relaxed mode example, the extended column `totalSlices` must be of type `long`. However, in the parsed string, it has the value `nonValidLongValue`.
 For the extended column, `releaseTime`, the value `nonValidDateTime` can't be parsed as `datetime`.
-These two extended columns result in `null` values while the other ones, such as `sliceNumber`, still result in the correct values.
+These two extended columns result in `null` values while the other columns, such as `sliceNumber`, still result in the correct values.
 
 If you use option `kind = simple` for the following query, you get `null` results for all extended columns. This option is strict on extended columns, and is the difference between relaxed and simple mode.
 
