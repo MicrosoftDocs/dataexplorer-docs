@@ -105,7 +105,7 @@ Traces
 
 ### Extract email alias and DNS
 
-In the following example, entries from the `Contacts` table in the `Leads` database are parsed to extract aliases and domains from `email` and website DNS data from `Website`. Then operation projects the data into `fullEmail`, `alias`, and `websiteDNS` columns. Aliases and domains are parsed to extract the alias information but combined again for the `fullEmail` column.  
+In the following example, entries from the *Contacts* table are parsed to extract the alias and domain from an email address, and the domain from a website URL. The query returns the `EmailAddress`, `EmailAlias`, and `WebsiteDomain` columns, where the `fullEmail` column combines the parsed email aliases and domains.
 
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
