@@ -171,7 +171,7 @@ Traces
 
 ### Regex mode with regex flags
 
-The following example fails to extract only `resourceName` because it uses the default mode, which is greedy.
+In the following example `resourceName` is extracted.
 
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
@@ -202,9 +202,10 @@ Traces
 |PipelineScheduler, totalSlices=27, sliceNumber=22, lockTime=02/17/2016 08:41:01, releaseTime=02/17/2016 08:41:00|
 |PipelineScheduler, totalSlices=27, sliceNumber=16, lockTime=02/17/2016 08:41:00, releaseTime=02/17/2016 08:41:00|
 
-If there are records where `resourceName` sometimes appears as lower-case and sometimes as upper-case, you might get nulls for some values.
-
+The example results are unexpected, and include full event data since the default mode is greedy.
 To extract only `resourceName`, run the previous query with the non-greedy `U`, and disable case-sensitive `i` regex flags.
+
+If there are records where `resourceName` sometimes appears as lower-case and sometimes as upper-case, you might get nulls for some values.
 
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
