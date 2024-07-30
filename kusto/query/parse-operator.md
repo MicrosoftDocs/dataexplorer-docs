@@ -3,7 +3,7 @@ title:  parse operator
 description: Learn how to use the parse operator to parse the value of a string expression into one or more calculated columns.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 07/28/2024
+ms.date: 07/30/2024
 monikerRange: "microsoft-fabric || azure-data-explorer || azure-monitor || microsoft-sentinel "
 ---
 # parse operator
@@ -109,25 +109,26 @@ In the following example, entries from the *Contacts* table are parsed to extrac
 
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
-> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA4WSwWrDMAyGzwvkHYRPyQjtPSNg6Hobu%2Byww9jBcZTZnWsHW1ko7OHnJillYVntg4306%2FsRkkGCJxRNgAoaQfHWBrOdsyQkhRICeW0%2F8jSBeN6mh%2B2%2F0FI51s1KyPAotKng4JTlMgZdcMoRmo10xwJesQ6aECpF1IVyu11Kclakyd1%2FZFFr3rrek5KubRFXwMMwbJay23CLMSc4eTx5DCi8VCv8peQ2uxW%2B%2F%2BQU%2F6HTsetTWEMvJLfRWKNH7tGgNK5vVri%2F8iP0%2FSFNxqmnyTd0wgeEy8hh0KTgHthswUAYLUI5LQIwzqBxMWUvuwHsD0sGwxR6fH65CnM2%2Bnl3wNhE2xuzP5vE1YsKKSgbrYqzSTG75AXMwSvwBxCQFdq0AgAA" target="_blank">Run the query</a>
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA4WRwWrEIBRF181XPFwlJcwHpAQs7ey676J0YfSlOnU06EvDQD%2B%2BJpMsRkJHQdR7PVd9FgneUKjYKkGpdxbLF%2B9ISIoNRArGfVUFpPaxjOz4g46a5czqgxLPwtj25LXjMu356LUntAfpzzW8YxcNYauJhtjkesXq4uEfqOgM7%2F0YSEvf94h7zGmaDrnnHtdhkgSngJeAEUWQeg%2Bd6%2FewvQjjN6c0jYNJL73EXWqm36NihwF5QIvS%2BlHtIW%2FEmff5VCx1LX5hECEibFWFyZCGR2BXNgNhjYjNtdTAOAPlk%2BK26gPLs9i2fs2MFZvTgj9huvtxxj8rlb4vtskhBZVLVD2H1GtKVa%2FGWWlX%2FQb%2FB%2B7jiqaiAgAA" target="_blank">Run the query</a>
 ::: moniker-end
 
 ```kusto
-let Leads = datatable(Contacts: string)
+let Leads=datatable(Contacts: string)
     [
-    "Event: LeadContact (email= john@contosohotel.com, Website =https://contosohotel.com)",
-	"Event: LeadContact (email= abi@fourthcoffee.com, Website =https://www.fourthcoffee.com)",
-	"Event: LeadContact (email= nevena@treyresearch.com, Website =https://treyresearch.com)",
-	"Event: LeadContact (email= faruk@tailspintoys.com, Website =https://tailspintoys.com)",
-	"Event: LeadContact (email= ebere@relecloud.com, Website =https://relecloud.com)",
+    "Event: LeadContact (email=john@contosohotel.com, Website=https:contosohotel.com)",
+	"Event: LeadContact (email=abi@fourthcoffee.com, Website=https:www.fourthcoffee.com)",
+	"Event: LeadContact (email=nevena@treyresearch.com, Website=https:treyresearch.com)",
+	"Event: LeadContact (email=faruk@tailspintoys.com, Website=https:tailspintoys.com)",
+	"Event: LeadContact (email=ebere@relecloud.com, Website=https:relecloud.com)",
 ];
 Leads
-| parse Contacts with * "email= " alias:string "@" domain: string ", Website =https://" websiteDNS: string ")"
-| project fullEmail = strcat(alias, "@", domain), alias, websiteDNS
+| parse Contacts with * "email=" alias:string "@" domain: string ", Website=https:" WebsiteDomain: string ")"
+| project EmailAddress=strcat(alias, "@", domain), EmailAlias=alias, WebsiteDomain
 ```
+
 **Output**
 
-|fullEmail  |alias  |websiteDNS  |
+|EmailAddress|EmailAlias|WebsiteDomain|
 |---------|---------|---------|
 |nevena@treyresearch.com|nevena|treyresearch.com|
 |john@contosohotel.com|john|contosohotel.com|
@@ -137,7 +138,7 @@ Leads
 
 ### Regex mode
 
-In the following example, regular expressions are used to parse and extract data from the `EventText` column. The extracted fields are projected data is projected into new fields.
+In the following example, regular expressions are used to parse and extract data from the `EventText` column. The extracted data is projected into new fields.
 
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
