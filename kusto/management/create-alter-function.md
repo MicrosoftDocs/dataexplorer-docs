@@ -3,7 +3,7 @@ title: .create-or-alter function command
 description: Learn how to use the `.create-or-alter function` command to create a stored function or alter an existing function.
 ms.reviewer: orspodek
 ms.topic: reference
-ms.date: 05/24/2023
+ms.date: 07/29/2024
 ---
 # .create-or-alter function command
 
@@ -41,14 +41,17 @@ This command requires [Database User](../access-control/role-based-access-contro
 |--|--|--|
 |`docstring`| `string` |A description of the function for UI purposes.|
 |`folder`| `string` |The name of a folder used for UI functions categorization.|
+|`view`| `bool` |Designates this function as a stored view. Stored views can participate in [search](../query/search-operator.md) and [union *](../query/union-operator.md) scenarios. For more information, see [Views](../query/schema-entities/views.md).|
+|`skipvalidation`| `bool` |Determines whether to run validation logic on the function and fails the process if the function isn't valid. The default is `false`.|
 
 ## Example
 
+The following example creates the *TestFunction* function with a description (`docstring`), folder, and defines the `MyLimit` parameter.
+
 ```kusto
-.create-or-alter function with (docstring = 'Demo function with parameter', folder='MyFolder') TestFunction(myLimit:int)
-{
-    StormEvents | take myLimit 
-} 
+.create-or-alter function with (docstring = 'Demo function with parameter', folder='MyFolder')
+TestFunction(myLimit:int)
+{ StormEvents | take myLimit} 
 ```
 
 **Output**
