@@ -10,7 +10,7 @@ monikerRange: "microsoft-fabric || azure-data-explorer || azure-monitor || micro
 
 > [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)] [!INCLUDE [monitor](../includes/applies-to-version/monitor.md)] [!INCLUDE [sentinel](../includes/applies-to-version/sentinel.md)]
 
-Evaluates a string expression and parses its value into one or more calculated columns. The calculated columns return `null` values, for unsuccessfully parsed strings. If there's no need to use rows where parsing doesn't succeed, prefer using the [parse-where operator](parse-where-operator.md).
+Evaluates a string expression and parses its value into one or more calculated columns. The calculated columns return `null` values for unsuccessfully parsed strings. If there's no need to use rows where parsing doesn't succeed, prefer using the [parse-where operator](parse-where-operator.md).
 
 ## Syntax
 
@@ -42,7 +42,7 @@ Evaluates a string expression and parses its value into one or more calculated c
 |Text|Description|
 |--|--|
 | `simple` | This is the default value. *stringConstant* is a regular string value and the match is strict. All string delimiters should appear in the parsed string, and all extended columns must match the required types.|
-| `regex` | *stringConstant* might be a regular expression and the match is strict. All string delimiters, which can be a regex for this mode, should appear in the parsed string, and all extended columns must match the required types.|
+| `regex` | *stringConstant* can be a regular expression and the match is strict. All string delimiters, which can be a regex for this mode, should appear in the parsed string, and all extended columns must match the required types.|
 | `relaxed` | *stringConstant* is a regular string value and the match is relaxed. All string delimiters should appear in the parsed string, but extended columns might partially match the required types. Extended columns that didn't match the required types get the value `null`.|
 
 ### Regex mode
@@ -105,7 +105,7 @@ Traces
 
 ### Extract email alias and DNS
 
-In the following example, entries from the `Contacts` table in the `Leads` database are parsed to extract aliases and domains from `email` and website DNS data from `Website`. Then operation projects the data into `fullEmail`, `alias`, and `websiteDNS` columns. Aliases and domains are parsed to extract the alias information but combined again for the `fullEmail` column.  
+In the following example, entries from the *Contacts* table are parsed to extract the alias and domain from an email address, and the domain from a website URL. The query returns the `EmailAddress`, `EmailAlias`, and `WebsiteDomain` columns, where the `fullEmail` column combines the parsed email aliases and domains.
 
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
@@ -267,9 +267,9 @@ Traces
 
 ### Relaxed mode
 
-In the following relaxed mode example, the extended column, `totalSlices`, must be of type `long`. However, in the parsed string, it has the value `nonValidLongValue`.
+In the following relaxed mode example, the extended column `totalSlices` must be of type `long`. However, in the parsed string, it has the value `nonValidLongValue`.
 For the extended column, `releaseTime`, the value `nonValidDateTime` can't be parsed as `datetime`.
-These two extended columns result in `null` values while the other ones, such as `sliceNumber`, still result in the correct values.
+These two extended columns result in `null` values while the other columns, such as `sliceNumber`, still result in the correct values.
 
 If you use option `kind = simple` for the following query, you get `null` results for all extended columns. This option is strict on extended columns, and is the difference between relaxed and simple mode.
 
