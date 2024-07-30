@@ -278,3 +278,4 @@ However, database editors might want to limit the minimum refresh rate that any 
 
 * [Use parameters in Azure Data Explorer dashboards](dashboard-parameters.md)
 * [Customize Azure Data Explorer dashboard visuals](dashboard-customize-visuals.md)
+* [Explore data in dashboard tiles (preview)](dashboard-explore-data.md)
