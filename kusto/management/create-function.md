@@ -90,7 +90,7 @@ MyFunction1()
 
 ### Demo function with parameter
 
-The following example creates the `MyFunction2` function with a description (`docstring`), folder named `Demo`, and defines the `MyLimit` parameter.
+The following example creates the *MyFunction2* function with a description (`docstring`), folder named `Demo`, and defines the `MyLimit` parameter.
 
 ```kusto
 .create function
