@@ -74,7 +74,7 @@ In the following example, the column `EventText` of table `Traces` contains
 strings of the form `Event: NotifySliceRelease (resourceName={0}, totalSlices={1}, sliceNumber={2}, lockTime={3}, releaseTime={4}, previousLockTime={5})`.
 The operation extends the table with six columns: `resourceName`, `totalSlices`, `sliceNumber`, `lockTime`, `releaseTime`, and `previousLockTime`.
 
-:::moniker range="azure-data-explorer"
+::: moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA93UQU+DMBQA4DsJ/+Glp82QrHS6KYajN0OM42Y8MPbcqh2QtkxN/PG2oAyC27jsIhyg4b3Sr695AjXEMklRQQirRJt7KXB0t8NMx/ihA1Ba8mw9dh0w11P9INX3AKJc85fPheApPqLARCGMJKq8lClGyRbDB16g4Bku0g2uSoHSA53rRFQpKmRzD5R9jcrtEmXIph6IPH2LucmlbOLPJ4z6M6DXwSUNqO+BrH9zOKCQuON5qe7/nmZ6Y6LGxDuvw7866qCnHHSQg57dwej/qAdjhx3+KYc/pB6V9vznanbUcfxcDXaYc+U6z7eu89MYwHW+oEikWX3TF+Cd6w1cAOlwCLSHQLoa0h4FBpKt7QxtIGlz9yGNmTR8O3kbS9qjwLYyG0Jsdo9MervwmzC2CbVX5q+Y6g6ow+lUZl+Wzqr62/0N0O/KLnAFAAA=" target="_blank">Run the query</a>
 ::: moniker-end
@@ -107,7 +107,7 @@ Traces
 
 In the following example, entries from the *Contacts* table are parsed to extract the alias and domain from an email address, and the domain from a website URL. The query returns the `EmailAddress`, `EmailAlias`, and `WebsiteDomain` columns, where the `fullEmail` column combines the parsed email aliases and domains.
 
-:::moniker range="azure-data-explorer"
+::: moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA4WRwWrEIBRF181XPFwlJcwHpAQs7ey676J0YfSlOnU06EvDQD%2B%2BJpMsRkJHQdR7PVd9FgneUKjYKkGpdxbLF%2B9ISIoNRArGfVUFpPaxjOz4g46a5czqgxLPwtj25LXjMu356LUntAfpzzW8YxcNYauJhtjkesXq4uEfqOgM7%2F0YSEvf94h7zGmaDrnnHtdhkgSngJeAEUWQeg%2Bd6%2FewvQjjN6c0jYNJL73EXWqm36NihwF5QIvS%2BlHtIW%2FEmff5VCx1LX5hECEibFWFyZCGR2BXNgNhjYjNtdTAOAPlk%2BK26gPLs9i2fs2MFZvTgj9huvtxxj8rlb4vtskhBZVLVD2H1GtKVa%2FGWWlX%2FQb%2FB%2B7jiqaiAgAA" target="_blank">Run the query</a>
 ::: moniker-end
@@ -140,7 +140,7 @@ Leads
 
 In the following example, regular expressions are used to parse and extract data from the `EventText` column. The extracted data is projected into new fields.
 
-:::moniker range="azure-data-explorer"
+::: moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA92UTU%2FCQBCG7036HyZ7arHItihoTYMevBlihJOUQ2lHWFlasrtFJP5416LYBvm4cLFNuk32nd153pkMRwV9EcUogyRS%2Bh1xtO4XmKo%2BLpUPUgmWjm3TAP0M1gsp9n3oZoq9vPc4i%2FEJOUYSwRIos1zE2I1mGDyyOXKWYi%2BeYJJzFA6oTEW8CJGB13ZAfv1289kIReA1HeBZPO0zHUu9httueNRtAb3yL6hPXQfE%2BprdgrnABcty%2BfD3Mc1rrbKJc1oO93IvBz3EQY%2FioCfn8Oj%2FqIfn7eZwD3G4x9SjoD19X7X2cuzvq6M5dF%2BZxvDGNNZjAcA0PmAeCZ39lKVJIHCMS9iMCHhjagLEOq917EFUX93Vn4e1gEAZFG5JlSyUtTA5018dVSYkZV5fw6ZjbacWWT%2BJ252NA2RjRiEps5OyE8XuFjjZ8sIHPQG1Ogxt8k0tsleMVYWlUpLfelS83%2Fb5ExBYXD5nBQAA" target="_blank">Run the query</a>
 ::: moniker-end
@@ -173,7 +173,7 @@ Traces
 
 In the following example `resourceName` is extracted.
 
-:::moniker range="azure-data-explorer"
+::: moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA92UPWvDMBCGd%2F%2BKw0s%2BEERS2qR18ditmNJ4Kx0U%2BZqoUSwjyWkK%2FfFVHCgNJI4XL5VAnLgP6eFeTqOH3AqJLi2ED3upcfi4w9LnuPcJOG9VuRpFENZrc8aNN4HMePX%2BtdBK4gtqFA5haNGZ2krMxBbTZ1WhViUu5BqLWqMl4I0XuklxKZ8TcAczq7dLtCmfEtBGbnIVcimfsPmEUzYDepfc0IQyAvb4zOWAyuJOmdo9nS8zvQ9Ro5j0isFuWzHoNQzaCYP2jcHpv%2BgG55cx2DUM1qUbDWzvopq1YrSLqjNGEFX09hAdx0H0DZWw4eMbVRapxRXu4XcuwKfyaxhDfAIVw98rDMgAxocy1nyg9CfOH6vhlld3BAAA" target="_blank">Run the query</a>
 ::: moniker-end
@@ -207,7 +207,7 @@ If there are records where `resourceName` sometimes appears as lower-case and so
 The results in the previous example are unexpected, and include full event data since the default mode is greedy.
 To extract only `resourceName`, run the previous query with the non-greedy `U`, and disable case-sensitive `i` regex flags.
 
-:::moniker range="azure-data-explorer"
+::: moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA92Uz0vDMBTH74X%2BD49e9oPC0kw3reQg0ptWabuTeMi6ty0ua0eSzgn%2B8cYWRMF1vexi3iGB9yPvw%2FvyJBrIFM9RswU31uYS%2B9EeC5PhwYSgjRLFauA6YM9zc3m1P4S4NGL5nkqRY4ISuUboK9RlpXKM%2BRbZk9ihFAWm%2BRoXlUTlgykNl3WKZnTqg%2F56xtV2jorRsQ%2ByzDeZsLmEjoLpiJJgAuQqvCAhCXxQzTfHA3YK96Ks9P3fZcbXNmrg%2BeflCC5bOcgpDtKJg5ydg5L%2FMQ9Kj3MEpziCLvOoac%2Bvq0krR7uuOnNYXbnOy43rNGvBdT5gx5XtfSOKBVO4wgMsJV9pNhPwvSngTZg1DMFLovRxltxF8e1DxDz4yQs9vwfDuqAqXzE3v7yfVHz%2BgooEAAA%3D" target="_blank">Run the query</a>
 ::: moniker-end
@@ -238,7 +238,7 @@ Traces
 
 If the parsed string has newlines, use the flag `s`, to parse the text.
 
-:::moniker range="azure-data-explorer"
+::: moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA92UTVPCMBCG753pf9jJiTIqaVDQOh1P3hzGEW7WQygLRELKJCkfM%2F54Q5FaRT4uXEwO2U3eTfIkOyvRQk%2FzFE084Nb1vsTa4xyV7eHSRmCsFmoU%2BB649roZSLEeQSezYrjqSpHiC0rkBqGm0WS5TrHDpxg%2FixlKobCbjnGQS9SJspnlsggxMWsnyqzNTj7to45ZM1EySyc94WIpa4TtBqNhC%2BhtdE0jGiZKb47ZL5hpnIssN09%2Fb9O8c6qAXJyXI7w5yEGPcdCTOOjZORj9H%2F%2FB2H6O8BhHeMp%2FFLTnz6vWQY7DeXUyh8sr33u7971NWfC9D5hx7e4%2BEWoQaxzhEoaSj0xsoCwUsBB2DHUgP%2FgIVN1tMQFSu6o%2FBFVSAhUvApmVqpKXwNaMwFUqtM760lSp10eW3o5yB5%2FA76lqTJIEBIoH0Nk7pvaSL%2FjqG%2FoTnNrqijwFAAA%3D" target="_blank">Run the query</a>
 ::: moniker-end
@@ -278,7 +278,7 @@ If you use option `kind = simple` for the following query, you get `null` result
 > [!NOTE]
 > In relaxed mode, extended columns can be partially matched.
 
-:::moniker range="azure-data-explorer"
+::: moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
 > <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA92Uz0%2FCMBTH7%2FsrXnoCM0M3FHRmN70RYoR4MR7K9oRKaUnb8SPxj7cbgsUpekAPbsnyXvv9tvv0NU%2BghaFmGZo0Z9a9I4GNmwVKO8SVTcBYzeW4GYB7HqovqWYT6CvLn9YDwTO8Q4HMIDQ0GlXoDPtshuktn6PgEgfZBPNCoA7BKstEZTFp3A3BlGG%2FmI1Qp3E7BKGy6ZA7L41bUbcV06gD9CI5owmNQtCbbSqBVPKeCZ5fM1sNeLK5xgVXhel9vlj70qmaJPxVmOj8IAw9DPMjBnpshu1f9JQcu6DAD%2FWh%2F6g%2Bcfw1TFSDqQvotxgV7B%2BXKOocpKLHoXIXL3i8CjZdI3iBOdOOY8plnrrl2Qpz2DUQWHI7gRMge5QE%2FBTIPiTxs8QByXEp8UGJn71J3CY7drI7htLpQxM%2FS8D1vFJCSncNndROY2toOkNJrtUzZvaULdn6nfkVa2YLG1MFAAA%3D" target="_blank">Run the query</a>
 ::: moniker-end
