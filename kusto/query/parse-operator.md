@@ -42,7 +42,7 @@ Evaluates a string expression and parses its value into one or more calculated c
 |Text|Description|
 |--|--|
 | `simple` | This is the default value. *stringConstant* is a regular string value and the match is strict. All string delimiters should appear in the parsed string, and all extended columns must match the required types.|
-| `regex` | *stringConstant* might be a regular expression and the match is strict. All string delimiters, which can be a regex for this mode, should appear in the parsed string, and all extended columns must match the required types.|
+| `regex` | *stringConstant* can be a regular expression and the match is strict. All string delimiters, which can be a regex for this mode, should appear in the parsed string, and all extended columns must match the required types.|
 | `relaxed` | *stringConstant* is a regular string value and the match is relaxed. All string delimiters should appear in the parsed string, but extended columns might partially match the required types. Extended columns that didn't match the required types get the value `null`.|
 
 ### Regex mode
