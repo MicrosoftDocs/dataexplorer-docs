@@ -142,11 +142,11 @@ In the following example, regular expressions are used to parse and extract data
 
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
-> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA9WUTU/CQBCG7036HyZ7arHItihoTYMevBlihJOUQ2lHWFlasrtFJP5414rYBvm4cDCbbDbtO+0878wORwV9EcUoIYAkUnqNOFr3C0xVH5fKl0qwdGybxsA0SPHYh26m2Mt7j7MYn5BjJBEsgTLLRYzdaIbBI5sjZyn24gkmOUfhgMpUxIsQGXhtB+TXsZvPRigCr+kAz+Jpn+lY6jXcdsOjbgvolX9Bfeo6IL5/s1swF7hgWS4f/v5M81qrbOKcjsG93MtADzHQoxjoSRk8+v/r4Hm7GdxDDO4xdShIT9tLrb0M+3vpaAbdS6YxvDGN9f0H0/iAeSR09lOWJnoeCBzjEjazAN6YmgCxzmsdexDVV3f152EtIFBGhVtSZQtlLUzO9K6jyoykTOzzLB0DEK2xfjK3OxsLyMaNQlKGJ2Urirdb5GTLDF8POi0OQ5usqUX2irGqkFRK8luPivfbPn8CDcwIyFAFAAA=" target="_blank">Run the query</a>
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA92UTU%2FCQBCG7036HyZ7arHItihoTYMevBlihJOUQ2lHWFlasrtFJP5416LYBvm4cLFNuk32nd153pkMRwV9EcUogyRS%2Bh1xtO4XmKo%2BLpUPUgmWjm3TAP0M1gsp9n3oZoq9vPc4i%2FEJOUYSwRIos1zE2I1mGDyyOXKWYi%2BeYJJzFA6oTEW8CJGB13ZAfv1289kIReA1HeBZPO0zHUu9httueNRtAb3yL6hPXQfE%2BprdgrnABcty%2BfD3Mc1rrbKJc1oO93IvBz3EQY%2FioCfn8Oj%2FqIfn7eZwD3G4x9SjoD19X7X2cuzvq6M5dF%2BZxvDGNNZjAcA0PmAeCZ39lKVJIHCMS9iMCHhjagLEOq917EFUX93Vn4e1gEAZFG5JlSyUtTA5018dVSYkZV5fw6ZjbacWWT%2BJ252NA2RjRiEps5OyE8XuFjjZ8sIHPQG1Ogxt8k0tsleMVYWlUpLfelS83%2Fb5ExBYXD5nBQAA" target="_blank">Run the query</a>
 ::: moniker-end
 
 ```kusto
-let Traces = datatable(EventText: string)
+let Traces=datatable(EventText: string)
     [
     "Event: NotifySliceRelease (resourceName=PipelineScheduler, totalSlices=27, sliceNumber=23, lockTime=02/17/2016 08:40:01, releaseTime=02/17/2016 08:40:01, previousLockTime=02/17/2016 08:39:01)",
     "Event: NotifySliceRelease (resourceName=PipelineScheduler, totalSlices=27, sliceNumber=15, lockTime=02/17/2016 08:40:00, releaseTime=02/17/2016 08:40:00, previousLockTime=02/17/2016 08:39:00)",
@@ -155,7 +155,7 @@ let Traces = datatable(EventText: string)
     "Event: NotifySliceRelease (resourceName=PipelineScheduler, totalSlices=27, sliceNumber=16, lockTime=02/17/2016 08:41:00, releaseTime=02/17/2016 08:41:00, previousLockTime=02/17/2016 08:40:00)"
 ];
 Traces  
-| parse kind = regex EventText with "(.*?)[a-zA-Z]*=" resourceName @", totalSlices=\s*\d+\s*.*?sliceNumber=" sliceNumber: long  ".*?(previous)?lockTime=" lockTime ".*?releaseTime=" releaseTime ".*?previousLockTime=" previousLockTime: date "\\)"  
+| parse kind=regex EventText with "(.*?)[a-zA-Z]*=" resourceName @", totalSlices=\s*\d+\s*.*?sliceNumber=" sliceNumber: long  ".*?(previous)?lockTime=" lockTime ".*?releaseTime=" releaseTime ".*?previousLockTime=" previousLockTime: date "\\)"  
 | project resourceName, sliceNumber, lockTime, releaseTime, previousLockTime
 ```
 
@@ -175,11 +175,11 @@ In the following example `resourceName` is extracted.
 
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
-> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA92Uz0vDMBTH74X+D49e9oPAkkw3rfToTYq43sRDlj63uKwtSTon+McbWxAHruulF5NDXng/kg/vy9PoIDNCooUEcuH8Xmsc3x+wcBkeXQzWGVVsJmEAfj23R9T4Y0hLp14/VlpJfEKNwiKMDdqyNhJTscfkUVWoVYErucW81mgIuNIJ3aTYhC8J2G8zrfdrNAmfE9Cl3GXK51I+Y8sZp2wB9Ca+ojFlBEz7zPmAyuBBlbV9+LvM/NZHTSIyLAe77uSglzhoLw46OAen/6MfnJ/nYJc4WJ9+NLTD62rRydGtq94cXldh8HIXBu1gCINPqITxf9+pIvdjwuAGj/AzIuBduS1MITohi+D3FUZkBNOmkinfULoT7xfmHnmlhQQAAA==" target="_blank">Run the query</a>
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA92UPWvDMBCGd%2F%2BKw0s%2BEERS2qR18ditmNJ4Kx0U%2BZqoUSwjyWkK%2FfFVHCgNJI4XL5VAnLgP6eFeTqOH3AqJLi2ED3upcfi4w9LnuPcJOG9VuRpFENZrc8aNN4HMePX%2BtdBK4gtqFA5haNGZ2krMxBbTZ1WhViUu5BqLWqMl4I0XuklxKZ8TcAczq7dLtCmfEtBGbnIVcimfsPmEUzYDepfc0IQyAvb4zOWAyuJOmdo9nS8zvQ9Ro5j0isFuWzHoNQzaCYP2jcHpv%2BgG55cx2DUM1qUbDWzvopq1YrSLqjNGEFX09hAdx0H0DZWw4eMbVRapxRXu4XcuwKfyaxhDfAIVw98rDMgAxocy1nyg9CfOH6vhlld3BAAA" target="_blank">Run the query</a>
 ::: moniker-end
 
 ```kusto
-let Traces = datatable(EventText: string)
+let Traces=datatable(EventText: string)
     [
     "Event: NotifySliceRelease (resourceName=PipelineScheduler, totalSlices=27, sliceNumber=23, lockTime=02/17/2016 08:40:01, releaseTime=02/17/2016 08:40:01, previousLockTime=02/17/2016 08:39:01)",
     "Event: NotifySliceRelease (resourceName=PipelineScheduler, totalSlices=27, sliceNumber=15, lockTime=02/17/2016 08:40:00, releaseTime=02/17/2016 08:40:00, previousLockTime=02/17/2016 08:39:00)",
@@ -188,7 +188,7 @@ let Traces = datatable(EventText: string)
     "Event: NotifySliceRelease (resourceName=PipelineScheduler, totalSlices=27, sliceNumber=16, lockTime=02/17/2016 08:41:00, releaseTime=02/17/2016 08:41:00, previousLockTime=02/17/2016 08:40:00)"
 ];
 Traces
-| parse kind = regex EventText with * "resourceName=" resourceName ',' *
+| parse kind=regex EventText with * "resourceName=" resourceName ',' *
 | project resourceName
 ```
 
@@ -202,18 +202,18 @@ Traces
 |PipelineScheduler, totalSlices=27, sliceNumber=22, lockTime=02/17/2016 08:41:01, releaseTime=02/17/2016 08:41:00|
 |PipelineScheduler, totalSlices=27, sliceNumber=16, lockTime=02/17/2016 08:41:00, releaseTime=02/17/2016 08:41:00|
 
-The example results are unexpected, and include full event data since the default mode is greedy.
-To extract only `resourceName`, run the previous query with the non-greedy `U`, and disable case-sensitive `i` regex flags.
-
 If there are records where `resourceName` sometimes appears as lower-case and sometimes as upper-case, you might get nulls for some values.
+
+The results in the previous example are unexpected, and include full event data since the default mode is greedy.
+To extract only `resourceName`, run the previous query with the non-greedy `U`, and disable case-sensitive `i` regex flags.
 
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
-> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA92UTUvDMBjH74V+h4de9kJhaeY2rfQg0ptWWbuTeMjaZ11c1pYknRP88GYtiIJ7ufRickjgeUl+PH/+AjUkkqWoIICMabOXAvvhDgud4F77oLTkRT6wLTDrpT2cJu5DVGq++ogFT3GOAplC6EtUZS1TjNgWg2deoeAFxukas1qgdEGXmommRAV05oI6XKN6u0QZ0LELokw3CTe1hI682YgSbwrk2r8iPvFckO0zxxMqiTte1urh7zbjG5M1cNxuObzJSQ5yjoNcxEE656Dkf8yD0uMc3jkO75J5NLTd62p6kuO0ri7mMLqyrddb22qNwbY+oWLS/H3Di8zYhMQc97ASLD+YxoLDt1vAO9drGIIzD+Onxfw+jO4ew8CBn8zQc3swbJrK8g1T/Sv6BX2O9haQBAAA" target="_blank">Run the query</a>
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA92Uz0vDMBTH74X%2BD49e9oPC0kw3reQg0ptWabuTeMi6ty0ua0eSzgn%2B8cYWRMF1vexi3iGB9yPvw%2FvyJBrIFM9RswU31uYS%2B9EeC5PhwYSgjRLFauA6YM9zc3m1P4S4NGL5nkqRY4ISuUboK9RlpXKM%2BRbZk9ihFAWm%2BRoXlUTlgykNl3WKZnTqg%2F56xtV2jorRsQ%2ByzDeZsLmEjoLpiJJgAuQqvCAhCXxQzTfHA3YK96Ks9P3fZcbXNmrg%2BeflCC5bOcgpDtKJg5ydg5L%2FMQ9Kj3MEpziCLvOoac%2Bvq0krR7uuOnNYXbnOy43rNGvBdT5gx5XtfSOKBVO4wgMsJV9pNhPwvSngTZg1DMFLovRxltxF8e1DxDz4yQs9vwfDuqAqXzE3v7yfVHz%2BgooEAAA%3D" target="_blank">Run the query</a>
 ::: moniker-end
 
 ```kusto
-let Traces = datatable(EventText: string)
+let Traces=datatable(EventText: string)
     [
     "Event: NotifySliceRelease (resourceName=PipelineScheduler, totalSlices=27, sliceNumber=23, lockTime=02/17/2016 08:40:01, releaseTime=02/17/2016 08:40:01, previousLockTime=02/17/2016 08:39:01)",
     "Event: NotifySliceRelease (resourceName=PipelineScheduler, totalSlices=27, sliceNumber=15, lockTime=02/17/2016 08:40:00, releaseTime=02/17/2016 08:40:00, previousLockTime=02/17/2016 08:39:00)",
@@ -222,7 +222,7 @@ let Traces = datatable(EventText: string)
     "Event: NotifySliceRelease (resourceName=PipelineScheduler, totalSlices=27, sliceNumber=16, lockTime=02/17/2016 08:41:00, releaseTime=02/17/2016 08:41:00, previousLockTime=02/17/2016 08:40:00)"
 ];
 Traces
-| parse kind = regex flags = Ui EventText with * "RESOURCENAME=" resourceName ',' *
+| parse kind=regex flags=Ui EventText with * "RESOURCENAME=" resourceName ',' *
 | project resourceName
 ```
 
@@ -240,11 +240,11 @@ If the parsed string has newlines, use the flag `s`, to parse the text.
 
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
-> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA92UTVPCMBCG753pf9jJiTIqaVHQOh1P3hzGEW7WQygLRELCJCkfM/54Q5FaRT4uXEwO2U3eTfIkOyvQQk+zDA0kMGDW9b7A2uMcpe3h0sZgrOZyFPgeuPa6GUixHkNHWT5cdQXP8AUFMoNQ02hUrjPssCkmz3yGgkvsZmMc5AJ1Kq2yTBQhJonaqTRrs5NP+6iTqJlKobJJj7tYGjXCdiOiYQvobXxNYxqmUm+O2S+YaZxzlZunv7dp3jlVQC7OyxHeHOSgxzjoSRz07BwR/R//EUX7OcJjHOEp/1HQnj+vWgc5DufVyRwur3zv7d73NoXB9z5gxrS7+4TLQaJxhEsYCjYyiYGyUMCC2zHUgfzgI1B1t8UESO2q/hBUSQlUvBiEKlUlL4GtGa8rFVpnfWmq1OsjS29HuYNP4PdUNSZNAwLFA2j1jpm9ZAu2+ob+BOPecsY+BQAA" target="_blank">Run the query</a>
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA92UTVPCMBCG753pf9jJiTIqaVDQOh1P3hzGEW7WQygLRELKJCkfM%2F54Q5FaRT4uXEwO2U3eTfIkOyvRQk%2FzFE084Nb1vsTa4xyV7eHSRmCsFmoU%2BB649roZSLEeQSezYrjqSpHiC0rkBqGm0WS5TrHDpxg%2FixlKobCbjnGQS9SJspnlsggxMWsnyqzNTj7to45ZM1EySyc94WIpa4TtBqNhC%2BhtdE0jGiZKb47ZL5hpnIssN09%2Fb9O8c6qAXJyXI7w5yEGPcdCTOOjZORj9H%2F%2FB2H6O8BhHeMp%2FFLTnz6vWQY7DeXUyh8sr33u7971NWfC9D5hx7e4%2BEWoQaxzhEoaSj0xsoCwUsBB2DHUgP%2FgIVN1tMQFSu6o%2FBFVSAhUvApmVqpKXwNaMwFUqtM760lSp10eW3o5yB5%2FA76lqTJIEBIoH0Nk7pvaSL%2FjqG%2FoTnNrqijwFAAA%3D" target="_blank">Run the query</a>
 ::: moniker-end
 
 ```kusto
-let Traces = datatable(EventText: string)
+let Traces=datatable(EventText: string)
     [
     "Event: NotifySliceRelease (resourceName=PipelineScheduler\ntotalSlices=27\nsliceNumber=23\nlockTime=02/17/2016 08:40:01\nreleaseTime=02/17/2016 08:40:01\npreviousLockTime=02/17/2016 08:39:01)",
     "Event: NotifySliceRelease (resourceName=PipelineScheduler\ntotalSlices=27\nsliceNumber=15\nlockTime=02/17/2016 08:40:00\nreleaseTime=02/17/2016 08:40:00\npreviousLockTime=02/17/2016 08:39:00)",
@@ -280,11 +280,11 @@ If you use option `kind = simple` for the following query, you get `null` result
 
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
-> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA92Uz0/CMBTH70v2P7z0BGaGbijozG56I8QI8WI8lO0JldKSruNH4h9vNwSLU/SAHmwP7du+371++pYn0MBQsxRzSCBjxs6RwMbNAqUZ4srEkBvN5bjpe2DHw2Yh1fsY+srwp/VA8BTvUCDLERoac1XoFPtshsktn6PgEgfpBLNCoA7AKMNEZcmTqBtAXm77xWyEOonaAQiVTofcemnUCrutiIYdoBfxGY1pGIDepKkEUsl7Jnh2zUz1wJHNNS64KvLe5x9rX1pVkwS/SxOeH6Shh2l+BEGPDrE9Rk/Jsd0U+KFC9D9VKIq+pglrNHUB/Zajov3rIoWdg1j0OFj23/O9xyvf2/QP33uBOdMWZcplltgMbIUZ7DoJLLmZwAmQPVACbghkn5O4UWyZ5LiUuKzEjd4kNskOn+xuonS63MSN4rL5lRJSumv0pHYhW0PTGip0rZ4xNadsydbv0K/RM7BuXwUAAA==" target="_blank">Run the query</a>
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA92Uz0%2FCMBTH7%2FsrXnoCM0M3FHRmN70RYoR4MR7K9oRKaUnb8SPxj7cbgsUpekAPbsnyXvv9tvv0NU%2BghaFmGZo0Z9a9I4GNmwVKO8SVTcBYzeW4GYB7HqovqWYT6CvLn9YDwTO8Q4HMIDQ0GlXoDPtshuktn6PgEgfZBPNCoA7BKstEZTFp3A3BlGG%2FmI1Qp3E7BKGy6ZA7L41bUbcV06gD9CI5owmNQtCbbSqBVPKeCZ5fM1sNeLK5xgVXhel9vlj70qmaJPxVmOj8IAw9DPMjBnpshu1f9JQcu6DAD%2FWh%2F6g%2Bcfw1TFSDqQvotxgV7B%2BXKOocpKLHoXIXL3i8CjZdI3iBOdOOY8plnrrl2Qpz2DUQWHI7gRMge5QE%2FBTIPiTxs8QByXEp8UGJn71J3CY7drI7htLpQxM%2FS8D1vFJCSncNndROY2toOkNJrtUzZvaULdn6nfkVa2YLG1MFAAA%3D" target="_blank">Run the query</a>
 ::: moniker-end
 
 ```kusto
-let Traces = datatable(EventText: string)
+let Traces=datatable(EventText: string)
     [
     "Event: NotifySliceRelease (resourceName=PipelineScheduler, totalSlices=27, sliceNumber=23, lockTime=02/17/2016 08:40:01, releaseTime=nonValidDateTime 08:40:01, previousLockTime=02/17/2016 08:39:01)",
     "Event: NotifySliceRelease (resourceName=PipelineScheduler, totalSlices=27, sliceNumber=15, lockTime=02/17/2016 08:40:00, releaseTime=nonValidDateTime, previousLockTime=02/17/2016 08:39:00)",
