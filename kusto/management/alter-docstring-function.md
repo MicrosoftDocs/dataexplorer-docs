@@ -45,7 +45,7 @@ You must have at least [Function Admin](../access-control/role-based-access-cont
 
 ## Example
 
-The following example updates the description (`docstring`) of the `MyFunction1` function.
+The following example updates the description (`docstring`) of the *MyFunction1* function.
 
 ```kusto
 .alter function MyFunction1 docstring "Updated docstring"
