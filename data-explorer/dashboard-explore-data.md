@@ -22,6 +22,7 @@ This exploration can provide additional insights into your data, enhancing your 
 
 1. From the navigation bar, select **Dashboards**.  :::image type="content" source="media/dashboard-explore-data/select-dashboards-icon.png" alt-text="Dashboard icon.":::
 
+1. Select the dashboard you'd like to explore. You can explore in either viewing or editing mode.
 1. On the tile that you'd like to explore, select the **Explore data** icon.
 
     :::image type="content" source="media/dashboard-explore-data/select-explore-data-icon.png" alt-text="Screenshot of a dashboard tile showing the explore data icon highlighted.":::
