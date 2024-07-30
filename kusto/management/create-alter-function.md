@@ -46,7 +46,7 @@ This command requires [Database User](../access-control/role-based-access-contro
 
 ## Example
 
-The following example creates the `TestFunction` function with a description (`docstring`), folder, and defines the `MyLimit` parameter.
+The following example creates the *TestFunction* function with a description (`docstring`), folder, and defines the `MyLimit` parameter.
 
 ```kusto
 .create-or-alter function with (docstring = 'Demo function with parameter', folder='MyFolder')
