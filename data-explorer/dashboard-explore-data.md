@@ -1,11 +1,11 @@
 ---
-title: Explore data in dashboard tiles (preview)
+title: Explore data in dashboard tiles
 description: Learn how to explore data in dashboard tiles in Azure Data Explorer for more insights about the information rendered in the visual.
 ms.reviewer: mibar
 ms.topic: how-to
 ms.date: 07/30/2024
 ---
-# Explore data in dashboard tiles (preview)
+# Explore data in dashboard tiles
 
 The explore data feature enables you to delve deeper into the data presented in any dashboard. If the information you're seeking isn't readily available on the dashboard, this feature allows you to extend your exploration beyond the data displayed in the tiles, potentially uncovering new insights.
 
