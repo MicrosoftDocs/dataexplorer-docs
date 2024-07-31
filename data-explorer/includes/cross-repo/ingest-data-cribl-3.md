@@ -33,7 +33,7 @@ Select **Authentication Settings** in the sidebar. Use the values you saved in [
 
 |Setting  |Description  |
 |---------|---------|
-|*Tenant ID*| Use the `tenant` value you saved in [Create a Microsoft Entra service principal](#create-a-microsoft-entra-service-principal.). |
+|*Tenant ID*| Use the `tenant` value you saved in [Create a Microsoft Entra service principal](#create-a-microsoft-entra-service-principal). |
 | *Client ID*| Use the `appId` values you saved in [Create a Microsoft Entra service principal](#create-a-microsoft-entra-service-principal).  |
 |*Scope*| `<baseuri>/.default` Use the value from [base URI](#ingestion-uri) for *baseuri*. |
 |*Authentication method*| Options are **Client secret** (the client secret of the Entra application you created in [Create a Microsoft Entra service principal](#create-a-microsoft-entra-service-principal),)  **Client secret (text secret)**, or **Certificate** (a certificate whose public key you registered/will register for the Entra application you created in [Create a Microsoft Entra service principal](#create-a-microsoft-entra-service-principal)). |
