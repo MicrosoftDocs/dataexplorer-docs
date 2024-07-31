@@ -15,24 +15,25 @@ This service principal is the identity used by the connector to write data to yo
 
 Create a target table for the incoming data and an ingestion mapping to map the ingested data columns to the columns in the target table.
 
-1. Run the following [table creation command](/azure/data-explorer/kusto/management/create-table-command.md) in your query editor, replacing the placeholder *TableName* with the name of the target table:
+1. Run the following [table creation command](/azure/data-explorer/kusto/management/create-table-command) in your query editor, replacing the placeholder *TableName* with the name of the target table:
 
     ```kusto
     .create table <TableName> (_raw: string, _time: long, cribl_pipe: dynamic)
     ```
 
-1. Run the following [create ingestion mapping](/azure/data-explorer/kusto/management/create-ingestion-mapping-command.md) command, replacing the placeholders *TableName* with the target table name and *TableNameMapping* with the name of the ingestion mapping:
+1. Run the following [create ingestion mapping](/azure/data-explorer/kusto/management/create-ingestion-mapping-command) command, replacing the placeholders *TableName* with the target table name and *TableNameMapping* with the name of the ingestion mapping:
 
     ```kusto
     .create table <TableName> ingestion csv mapping '<TableNameMapping>' 'CriblLogMapping' '[{"Name":"_raw","DataType":"string","Ordinal":"0","ConstValue":null},{"Name":"_time","DataType":"long","Ordinal":"1","ConstValue":null},{"Name":"cribl_pipe","DataType":"dynamic","Ordinal":"2","ConstValue":null}]'
     ```
 
-1. Grant the service principal from [Create a Microsoft Entra service principal](#create-a-microsoft-entra-service-principal) [database ingestor](/azure/data-explorer/kusto/access-control/role-based-access-control.md) role permissions to work with the database. For more information, see [Examples](../../kusto/management/manage-database-security-roles.md). Replace the placeholder *DatabaseName* with the name of the target database and *ApplicationID* with the `AppId` value you saved when creating a Microsoft Entra service principal.
+1. Grant the service principal from [Create a Microsoft Entra service principal](#create-a-microsoft-entra-service-principal) [database ingestor](/azure/data-explorer/kusto/access-control/role-based-access-control) role permissions to work with the database. For more information, see [Examples](../../kusto/management/manage-database-security-roles.md). Replace the placeholder *DatabaseName* with the name of the target database and *ApplicationID* with the `AppId` value you saved when creating a Microsoft Entra service principal.
 
     ```kusto
     .add database <DatabaseName> ingestors ('aadapp=<ApplicationID>') 'App Registration'
     ```
-<!--1. Create an [ingestion batching policy](/azure/data-explorer/kusto/management/batching-policy) on the table for configurable queued ingestion latency.
+
+1. If needed, create an [ingestion batching policy](/azure/data-explorer/kusto/management/batching-policy) on the table for configurable queued ingestion latency.
 
     > [!TIP]
     > The ingestion batching policy is a performance optimizer and includes three parameters. The first condition satisfied triggers ingestion into the Azure Data Explorer table.
@@ -40,7 +41,7 @@ Create a target table for the incoming data and an ingestion mapping to map the 
     ```kusto
     .alter table SyslogMapping policy ingestionbatching @'{"MaximumBatchingTimeSpan":"00:00:15", "MaximumNumberOfItems": 100, "MaximumRawDataSizeMB": 300}'
     ```
--->
+
 ## Connect a KQL table to Cribl Stream
 
 The following section describes how to connect your KQL table to Cribl Stream. For each KQL table that you want to connect, you need a separate Cribl Stream destination connector.

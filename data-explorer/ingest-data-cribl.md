@@ -1,5 +1,5 @@
 ---
-title: 'Ingest data from Cribl stream into Azure Data Explorer'
+title: 'Ingest data from Cribl Stream into Azure Data Explorer'
 description: In this article, you learn how to ingest (load) data into Azure Data Explorer from Cribl stream.
 ms.reviewer: ramacg
 ms.topic: how-to
@@ -15,7 +15,7 @@ For a complete list of data connectors, see [Data integrations overview](integra
 
 ## Prerequisites
 
-* A [Cribl stream account](https://cribl.io)
+* A [Cribl Stream account](https://cribl.io)
 * An Azure Data Explorer [cluster and database](/azure/data-explorer/create-cluster-and-database) with the default cache and retention policies.
 * [Azure Data Explorer query environment](https://dataexplorer.azure.com/) <a id=ingestion-uri></a>
 * Your Kusto cluster URI for the *TargetURI* value in the format *https://ingest-\<cluster>.\<region>.kusto.windows.net*. For more information, see [Add a cluster connection](add-cluster-connection.md#add-a-cluster-connection).
@@ -24,7 +24,7 @@ For a complete list of data connectors, see [Data integrations overview](integra
 
 [!INCLUDE [ingest-data-cribl-3](includes/cross-repo/ingest-data-cribl-3.md)]
 
-## Clean up resources
+<!--## Clean up resources
 
 To delete the Azure Data Explorer resources, use [az cluster delete](/cli/azure/kusto/cluster#az-kusto-cluster-delete) or [az Kusto database delete](/cli/azure/kusto/database#az-kusto-database-delete):
 
@@ -32,7 +32,7 @@ To delete the Azure Data Explorer resources, use [az cluster delete](/cli/azure/
 az kusto cluster delete -n <cluster name> -g <resource group name>
 az kusto database delete -n <database name> --cluster-name <cluster name> -g <resource group name>
 ```
-
+-->
 ## Related content
 
 * [Data integrations overview](integrate-data-overview.md)

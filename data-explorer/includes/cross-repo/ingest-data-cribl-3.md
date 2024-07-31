@@ -10,8 +10,7 @@ In the **New Data Explorer** window, in **General Settings** set the following s
 |Setting  |Description  |
 |---------|---------|
 |*Output ID*| The name used to identify your destination. |
-| *Ingestion Mode* | Select **Batching** (default) or **Streaming** for ingestion. Batching allows your table to pull batches of data from a Cribl storage container when ingesting large amounts of data over a short amount of time. Streaming sends data directly to the target KQL
- table. Streaming is useful for ingesting smaller amounts of data and can achieve lower latency than batching. |
+| *Ingestion Mode* | Select **Batching** (default) or **Streaming** for ingestion. Batching allows your table to pull batches of data from a Cribl storage container when ingesting large amounts of data over a short amount of time. Streaming sends data directly to the target KQL table. Streaming is useful for ingesting smaller amounts of data, or for example, for sending a critical alert in real-time, and can achieve lower latency than batching. |
 |*Retries* | Available when Ingestion mode is **Streaming**.|
 | *Cluster base URI* | The [base URI](#ingestion-uri).|
 | *Ingestion service URI*|  Displays when **Batching** mode is selected. The [ingestion URI](#ingestion-uri). |
@@ -31,6 +30,7 @@ When completed, select **Next**.
 ### Setup authentication settings
 
 Select **Authentication Settings** in the sidebar. Use the values you saved in [Create a Microsoft Entra service principal](#create-a-microsoft-entra-service-principal) along with your [base URI](#ingestion-uri) as follows:
+
 |Setting  |Description  |
 |---------|---------|
 |*Tenant ID*| Use the `tenant` value you saved in [Create a Microsoft Entra service principal](#create-a-microsoft-entra-service-principal). |
@@ -61,11 +61,11 @@ Then select **Next**.
 | *Max file open time (sec)* | The maximum amount of time in seconds to write to a file before it's closed and are moved to the storage container. The default is 300 seconds. |
 | *Max file idle time (sec)* | The maximum amount of time in seconds to keep inactive files open before they close and are moved to the storage container. The default is  30 seconds. |
 | *Max open files* | The maximum number of files to keep open at the same time before the oldest open files are closed and moved to the storage container. The default is 100. |
-| *Max concurrent file parts* | The maximum number of file parts to upload at the same time. The default is 1 and the highest is 10. Setting the value to one sets sending to one part at a time, sequentially. |
+| *Max concurrent file parts* | The maximum number of file parts to upload at the same time. The default is 1 and the highest is 10. Setting the value to one allows sending one part at a time, sequentially. |
 | *Remove empty staging dirs* | Options are **Yes** or **No** (default). When toggled on (the default), Cribl Stream deletes empty staging directories after moving files. This prevents the proliferation of orphaned empty directories. When enabled, exposes this additional option:|
 | *Staging cleanup period* | The amount in time in seconds until empty directories are deleted when *Remove staging dirs* is enabled. Displays when *Remove empty staging dirs* is set to **Yes**. Default is 300, minimum is 10 seconds, and maximum is 86,400 seconds (every 24 hours). |
 | *Environment* | When empty (default) the configuration is enabled everywhere. If you’re using GitOps, you can specify the Git branch where you want to enable the configuration. |
-<!--confirm that these are the default settings for setting a Cribl connection does this exist? | *Add output ID* | Options are **On** or **Off**. Set to **On** if you want your destination name appended to staging directory pathnames for organization or troubleshooting between multiple destinations. |
+<!--does this field exist? | *Add output ID* | Options are **On** or **Off**. Set to **On** if you want your destination name appended to staging directory pathnames for organization or troubleshooting between multiple destinations. |
 -->
 When completed, select **Save**.
 

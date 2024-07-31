@@ -221,12 +221,12 @@ Event Grid ingestion is a pipeline that listens to Azure storage, and updates yo
 
 ### Cribl Stream
 
-[Cribl stream](https://docs.cribl.io/stream/) collects and processes machine data and allows you to process machine data into a database for later analysis.
+[Cribl stream](https://docs.cribl.io/stream/) is a processing engine that securely collects, processes, and streams machine event data from any source. It allows you to parse and process that data for any destination for analysis.
 
 * **Functionality:** Ingestion
 * **Ingestion type supported:** Batching, Streaming
-* **Use cases:** Machine data processing
-* **Documentation:** [Ingest data from Cribl stream into Azure Data Explorer](ingest-data-cribl.md)
+* **Use cases:** Machine data processing including logs, metrics, instrumentation data
+* **Documentation:** [Ingest data from Cribl Stream into Azure Data Explorer](ingest-data-cribl.md)
 
 ### Fluent Bit
 

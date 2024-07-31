@@ -251,6 +251,9 @@ items:
             - name: Azure Stream Analytics
               href: stream-analytics-connector.md
               displayName: ingest data, ingestion, connector
+            - name: Cribl Stream
+              href: ingest-data-cribl.md
+              displayName: ingest data, ingestion, connector
             - name: Fluent Bit
               href: fluent-bit.md
               displayName: ingest data, ingestion, connector
