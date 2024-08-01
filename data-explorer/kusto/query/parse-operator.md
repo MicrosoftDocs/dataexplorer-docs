@@ -21,7 +21,7 @@ Evaluates a string expression and parses its value into one or more calculated c
 |--|--|--|--|
 | *T* | `string` |  :heavy_check_mark: | The tabular input to parse.|
 | *kind* | `string` |  :heavy_check_mark: | One of the [supported kind values](#supported-kind-values). The default value is `simple`.|
-| *regexFlags* | `string` | |If *kind* is `regex`, then you can specify regex flags to be used like `U` for ungreedy, `m` for multi-line mode, `s` for match new line `\n`, and `i` for case-insensitive. More flags can be found in [Flags](re2.md#flags).|
+| *regexFlags* | `string` | |If *kind* is `regex`, then you can specify regex flags to be used like `U` for ungreedy, `m` for multi-line mode, `s` for match new line `\n`, and `i` for case-insensitive. More flags can be found in [Flags](regex.md#flags).|
 | *expression* | `string` |  :heavy_check_mark: | An expression that evaluates to a string.|
 | *stringConstant* | `string` |  :heavy_check_mark: | A string constant for which to search and parse.|
 | *columnName* | `string` |  :heavy_check_mark: | The name of a column to assign a value to, extracted from the string expression. |
@@ -44,7 +44,7 @@ Evaluates a string expression and parses its value into one or more calculated c
 
 ### Regex mode
 
-In regex mode, parse will translate the pattern to a regex. Use [regular expressions](re2.md) to do the matching, and use numbered captured groups that are handled internally. For example:
+In regex mode, parse will translate the pattern to a regex. Use [regular expressions](regex.md) to do the matching, and use numbered captured groups that are handled internally. For example:
 
 ```kusto
 parse kind=regex Col with * <regex1> var1:string <regex2> var2:long
