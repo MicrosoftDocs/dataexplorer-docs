@@ -153,7 +153,7 @@ To process a cross-cluster query, the cluster that performs the initial query in
 If there's a schema change in the remote cluster, a cached schema might become outdated. This can lead to undesired effects, including scenarios where new or deleted columns cause a `Partial query failure`. To solve such issues, manually refresh the schema with the [.clear cache remote-schema](../management/clear-cross-cluster-schema-cache.md) command.
 :::moniker-end
 :::moniker range="microsoft-fabric"
-To process a cross-eventhouse or eventhouse to ADX cluster query, the eventhouse that performs the initial query interpretation needs to have the schema of the entities referenced on remote eventhouses or clusters. To obtain this information, a command is sent to retrieve the schemas, which are then stored in a cache.
+To process a cross-eventhouse or eventhouse-to-ADX cluster query, the eventhouse that performs the initial query interpretation needs to have the schema of the entities referenced on remote eventhouses or clusters. To obtain this information, a command is sent to retrieve the schemas, which are then stored in a cache.
 
 If there's a remote schema change, a cached schema might become outdated. This can lead to undesired effects, including scenarios where new or deleted columns cause a `Partial query failure`. To solve such issues, manually refresh the schema with the [.clear cache remote-schema](../management/clear-cross-cluster-schema-cache.md) command.
 :::moniker-end
