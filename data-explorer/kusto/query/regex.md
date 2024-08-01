@@ -164,7 +164,7 @@ For example, `\ ` or `\x20` for an ASCII space.
 | `\b{start}`, `\<`  | start-of-word boundary assertion                                 |
 | `\b{end}`, `\>`    | end-of-word boundary assertion                                   |
 | `\b{start-half}`   | half of a start-of-word boundary assertion                       |
-| `\b{end-half}`     | half of a end-of-word boundary assertion                         |
+| `\b{end-half}`     | half of an end-of-word boundary assertion                         |
 | `\123`             | octal character code, up to three digits                         |
 | `\x7F`             | hex character code (exactly two digits)                          |
 | `\x{10FFFF}`       | any hex character code corresponding to a Unicode code point     |
