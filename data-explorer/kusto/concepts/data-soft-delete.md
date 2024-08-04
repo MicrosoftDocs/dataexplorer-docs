@@ -39,7 +39,7 @@ The soft delete process is performed using the following steps:
 
 * Don't run soft delete and purge commands on the same table in parallel. First wait for one command to complete and only then run the other command.
 
-* Soft delete is executed against your cluster URI: `https://[YourClusterName].[region].kusto.windows.net`. The command requires [database admin](../management/access-control/role-based-access-control.md) permissions on the relevant database.
+* Soft delete is executed against your cluster URI: `https://[YourClusterName].[region].kusto.windows.net`. The command requires [database admin](../access-control/role-based-access-control.md) permissions on the relevant database.
 
 * Deleting records from a table that is a source table of a [materialized view](../management/materialized-views/materialized-view-overview.md), can have an impact on the materialized view. If records being deleted were not yet processed by the [materialization cycle](../management/materialized-views/materialized-view-overview.md#how-materialized-views-work), these records will be missing in the view, since they will never be processed. Similarly, the deletion will not have an impact on the materialized view if the records have already been processed.
 

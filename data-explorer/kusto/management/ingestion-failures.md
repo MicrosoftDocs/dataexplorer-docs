@@ -9,7 +9,9 @@ ms.date: 10/05/2023
 
 This command returns information about ingestion failures associated with the use of data ingestion management commands. 
 
-This command only shows ingestion failures related to data ingestion management commands and doesn't include failures from other stages of the ingestion process. Failures from all stages of ingestion are recorded in ingestion [metrics](../../using-metrics.md) and [diagnostic logs](../../using-diagnostic-logs.md).
+This command only shows ingestion failures related to data ingestion management commands and doesn't include failures from other stages of the ingestion process. 
+<!-- //TODO put this link in adx moniker pivot -->
+Failures from all stages of ingestion are recorded in ingestion [metrics](/azure/data-explorer/using-metrics) and [diagnostic logs](/azure/data-explorer/using-diagnostic-logs).
 
 The retention period for ingestion failures is 14 days.
 
@@ -71,7 +73,10 @@ The following table is an example output from the `.show` `ingestion` `failures`
 
 ## Related content
 
-* [Data ingestion](../../ingest-data-overview.md)
-* [Ingestion of invalid data](../../ingest-invalid-data.md)
+<!-- //TODO put links in moniker pivot -->
+
+
+* [Data ingestion](/azure/data-explorer/ingest-data-overview)
+* [Ingestion of invalid data](/azure/data-explorer/ingest-invalid-data)
 * [Duplicate next ingestion failure](dup-next-failed-ingest.md)
 * [Kusto.Ingest ingestion status reporting](../api/netfx/kusto-ingest-client-status.md)

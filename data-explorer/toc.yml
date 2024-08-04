@@ -76,7 +76,7 @@ items:
                 href: kusto/access-control/role-based-access-control.md
                 displayName: RBAC, security roles, principals
               - name: Cross-tenant queries and commands
-                href: kusto/access-control/cross-tenant-query-and-commands.md
+                href: cross-tenant-query-and-commands.md
           - name: Isolated compute
             href: isolated-compute.md
           - name: Network isolation (VNet)
