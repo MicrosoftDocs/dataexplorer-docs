@@ -1,16 +1,13 @@
 ---
-title: make-graph operator (Preview)
+title: make-graph operator
 description: Learn how to use the graph-to-table operator to build a graph structure from tabular inputs of edges and nodes.
 ms.reviewer: rocohen
 ms.topic: reference
 ms.date: 09/03/2023
 ---
-# make-graph operator (Preview)
+# make-graph operator
 
 > [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)] [!INCLUDE [monitor](../includes/applies-to-version/monitor.md)] [!INCLUDE [sentinel](../includes/applies-to-version/sentinel.md)]
-
-> [!WARNING]
-> This feature is currently in preview and might be subject to change. The semantics and syntax of the graph feature might change before they are released as generally available.
 
 The `make-graph` operator builds a graph structure from tabular inputs of edges and nodes.
 
