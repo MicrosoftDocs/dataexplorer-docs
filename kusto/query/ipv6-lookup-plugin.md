@@ -25,7 +25,7 @@ The `ipv6_lookup` plugin looks up an IPv6 value in a lookup table and returns ro
 | *IPv6LookupKey* | `string` |  :heavy_check_mark: | The column of *LookupTable* with IPv6 string that is matched against each *SourceIPv6Key* value.|
 | *return_unmatched* | `bool` | | A boolean flag that defines if the result should include all or only matching rows (default: `false` - only matching rows returned).|
 
-[!INCLUDE [ip-prefix-notation](../../includes/ip-prefix-notation.md)]
+[!INCLUDE [ip-prefix-notation](../includes/ip-prefix-notation.md)]
 
 ## Returns
 
