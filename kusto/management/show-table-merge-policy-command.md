@@ -36,5 +36,5 @@ Returns a JSON representation of the policy.
 Display the policy at the table level:
 
 ```kusto
-.show table database_name policy merge 
+.show table table_name policy merge 
 ```
