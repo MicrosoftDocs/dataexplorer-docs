@@ -14,7 +14,7 @@ This `infer_storage_schema_with_suggestions` plugin infers the schema of externa
 * **Identity columns**: If the inferred type for a column is `long` and the column name ends with `id`, the suggested type is `string` since it provides optimized indexing for identity columns where equality filters are common.
 * **Unix datetime columns**: If the inferred type for a column is `long` and one of the unix-time to datetime [mapping transformations](../management/mappings.md#mapping-transformations) produces a valid datetime value, the suggested type is `datetime` and the suggested `ApplicableTransformationMapping` mapping is the one that produced a valid datetime value.
 
-The plugin is invoked with the [`evaluate`](evaluate-operator.md) operator. To obtain the table schema that uses the inferred schema for [creating external tables](../management/external-tables-azurestorage-azuredatalake.md) without suggestions, use the [infer_storage_schema](infer-storage-schema-plugin.md) plugin.
+The plugin is invoked with the [`evaluate`](evaluate-operator.md) operator. To obtain the table schema that uses the inferred schema for [Create and alter Azure Storage external tables](../management/external-tables-azure-storage.md) without suggestions, use the [infer_storage_schema](infer-storage-schema-plugin.md) plugin.
 
 ## Authentication and authorization
 
