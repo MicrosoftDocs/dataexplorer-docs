@@ -1,11 +1,11 @@
 ---
-title:  .update table command (preview)
+title:  .update table command 
 description: Learn how to use the .update table command to perform transactional data updates.
 ms.reviewer: vplauzon
 ms.topic: reference
 ms.date: 03/28/2024
 ---
-# .update table command (preview)
+# .update table command
 
 > [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)]
 
@@ -25,79 +25,38 @@ You must have at least [Table Admin](../access-control/role-based-access-control
 
 ## Syntax
 
-There are two syntax options, [Simplified syntax](#simplified-syntax) and [Expanded syntax](#expanded-syntax).
+> [!NOTE]
+> The *simplified* syntax, which was available during preview, has been deprecated.  
 
 [!INCLUDE [syntax-conventions-note](../includes/syntax-conventions-note.md)]
 
-### Expanded syntax
-
-The expanded syntax offers the flexibility to define a query to delete rows and a different query to append rows:
-
-`.update` `table` *TableName* `delete` *DeleteIdentifier* `append` *AppendIdentifier* [`with` `(` *propertyName* `=` *propertyValue* `)`] `<|` <br>
+`.update` `[async]` `table` *TableName* `delete` *DeleteIdentifier* `append` *AppendIdentifier* [`with` `(` *propertyName* `=` *propertyValue* `)`] `<|` <br>
 `let` *DeleteIdentifier*`=` *DeletePredicate*`;` <br>
 `let` *AppendIdentifier*`=` *AppendPredicate*`;`
 
-### Parameters for expanded syntax
+### Parameters
 
 | Name               | Type     | Required           | Description                                                                                                                                                                                                                                         |
 | ------------------ | -------- | ------------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| *TableName*        | `string` | :heavy_check_mark: | The name of the table to update.                                                                                                                                                                                                                    |
+| *async*        | `string` |  | If specified, indicates that the command runs in asynchronous mode.
+| *TableName*        | `string` | :heavy_check_mark: | The name of the table to update.
 | *DeleteIdentifier* | `string` | :heavy_check_mark: | The identifier name used to specify the delete predicate applied to the updated table.                                                                                                                                                              |
-| *DeletePredicate*  | `string` | :heavy_check_mark: | The text of a query whose results are used as data to delete. The delete predicate must include at least one `where` operator, and can only use the following operators: `extend`, `where`, `project`, `join` and `lookup`. |
+| *DeletePredicate*  | `string` | :heavy_check_mark: | The text of a query whose results are used as data to delete. The predicate has the same [limitations as the soft delete predicate](../concepts/data-soft-delete.md#limitations-and-considerations). |
 | *AppendIdentifier* | `string` | :heavy_check_mark: | The identifier name used to specify the append predicate applied to the updated table.                                                                                                                                                              |
 | *AppendPredicate*  | `string` | :heavy_check_mark: | The text of a query whose results are used as data to append.                                                                                                                                                               |
-:::moniker range="azure-data-explorer"
+
 > [!IMPORTANT]
 > * Both delete and append predicates can't use remote entities, cross-db, and cross-cluster entities. Predicates can't reference an external table or use the `externaldata` operator.
 > * Append and delete queries are expected to produce deterministic results.  Nondeterministic queries can lead to unexpected results. A query is deterministic if and only if it would return the same data if executed multiple times.
 >    * For example, use of [`take` operator](../query/take-operator.md), [`sample` operator](../query/sample-operator.md), [`rand` function](../query/rand-function.md), and other such operators isn't recommended because these operators aren't deterministic.
 > * Queries might be executed more than once within the `update` execution. If the intermediate query results are inconsistent, the update command can produce unexpected results.
-::: moniker-end
-
-:::moniker range="microsoft-fabric"
-> [!IMPORTANT]
-> * Both delete and append predicates can't use remote entities, cross-db, and cross-eventhouse entities. Predicates can't reference an external table or use the `externaldata` operator.
-> * Append and delete queries are expected to produce deterministic results.  Nondeterministic queries can lead to unexpected results. A query is deterministic if and only if it would return the same data if executed multiple times.
->    * For example, use of [`take` operator](../query/take-operator.md), [`sample` operator](../query/sample-operator.md), [`rand` function](../query/rand-function.md), and other such operators isn't recommended because these operators aren't deterministic.
-> * Queries might be executed more than once within the `update` execution. If the intermediate query results are inconsistent, the update command can produce unexpected results.
-::: moniker-end
-
-### Simplified syntax
-
-The simplified syntax requires an append query as well as a key. The key is a column in the table that represents unique values in the table. This column is used to define which rows should be deleted from the table. A join is performed between the original table and the append query, to identify rows that agree on their value with respect to this column.
-
-`.update` `table` *TableName* on *IDColumnName* [`with` `(` *propertyName* `=` *propertyValue* `)`] `<|` <br>
-*appendQuery*
-
-### Parameters for simplified syntax 
-
-| Name               | Type     | Required           | Description                                                                                                                                       |
-| ------------------ | -------- | ------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------- |
-| *TableName*        | `string` | :heavy_check_mark: | The name of the table to update.                                                                                                                  |
-| *IDColumnName*     | `string` | :heavy_check_mark: | The name of the column identifying rows. The column must be present in both the table and *appendQuery*.                                         |
-| *appendQuery*      | `string` | :heavy_check_mark: | The text of a query or a management command whose results are used as data to append.  The query's schema must be the same as the table's schema. |
-
-:::moniker range="azure-data-explorer"
-> [!IMPORTANT]
-> * The append query can't use remote entities, cross-db, and cross-cluster entities, reference an external table, or use the `externaldata` operator.
-> * The append query is expected to produce deterministic results.  Nondeterministic queries can lead to unexpected results. A query is deterministic if and only if it returns the same data if executed multiple times.
->    * For example, use of [`take` operator](../query/take-operator.md), [`sample` operator](../query/sample-operator.md), [`rand` function](../query/rand-function.md), and other such operators isn't recommended because these operators aren't deterministic.
-> * Queries might be executed more than once within the `update` execution. If the intermediate query results are inconsistent, the update command can produce unexpected results.
-::: moniker-end
-
-:::moniker range="microsoft-fabric"
-> [!IMPORTANT]
-> * The append query can't use remote entities, cross-db, and cross-eventhouse entities, reference an external table, or use the `externaldata` operator.
-> * The append query is expected to produce deterministic results.  Nondeterministic queries can lead to unexpected results. A query is deterministic if and only if it returns the same data if executed multiple times.
->    * For example, use of [`take` operator](../query/take-operator.md), [`sample` operator](../query/sample-operator.md), [`rand` function](../query/rand-function.md), and other such operators isn't recommended because these operators aren't deterministic.
-> * Queries might be executed more than once within the `update` execution. If the intermediate query results are inconsistent, the update command can produce unexpected results.
-::: moniker-end
 
 ## Supported properties
 
 | Name     | Type | Description                                                                                                                                                |
 | -------- | ---- | ---------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | *whatif* | bool | If `true`, returns the number of records that will be appended / deleted in every shard, without appending / deleting any records. The default is `false`. |
+| *distributed* | bool | If `true`, the command ingests from all nodes executing the query in parallel. Default is `false`. See [performance tips](#performance-tips). |
 
 > [!IMPORTANT]
 > We recommend running in `whatif` mode first before executing the update to validate the predicates before deleting or appending data.
@@ -123,61 +82,15 @@ Use the following guidelines to decide which method to use:
 * If the source table has a high ingestion volume, but only few updates, using the update command can be more performant and consume less cache or storage than materialized views. This is because materialized views need to reprocess all ingested data, which is less efficient than identifying the individual records to update based on the append or delete predicates.
 * Materialized views is a fully managed solution. The materialized view is [defined once](materialized-views/materialized-view-create-or-alter.md) and materialization happens in the background by the system. The update command requires an orchestrated process (for example, [Azure Data Factory](/azure/data-explorer/data-factory-integration), [Logic Apps](../tools/logicapps.md), [Power Automate](/azure/data-explorer/flow), and others) that explicitly executes the update command every time there are updates. If materialized views work well enough for your use case, using materialized views requires less management and maintenance.
 
-## Examples -  Simplified syntax
+## Performance tips
 
-The following examples use the [Simplified syntax](#simplified-syntax).
+* Data ingestion is a resource-intensive operation that might affect concurrent activities on the cluster, including running queries.  We recommend that you avoid the following resource-intensive actions: running many `.update` commands at once, and intensive use of the *distributed* property.
+* Limit the append data to less than 1 GB per operation. If necessary, use multiple update commands.
+* Set the `distributed` flag to `true` only if the amount of data being produced by the query is large, exceeds 1 GB and doesn't require serialization:  multiple nodes can then produce output in parallel.  Don't use this flag when query results are small, since it might needlessly generate many small data shards.
 
-### General example 
+## Examples
 
-The following table is created.
-
-```kusto
-.set-or-replace People <|
-datatable(Name:string, Address:string)[
-  "Alice", "221B Baker street",
-  "Bob", "1600 Pennsylvania Avenue",
-  "Carl", "11 Wall Street New York"
-]
-```
-
-| Name  | Address                  |
-| ----- | ------------------------ |
-| Alice | 221B Baker street        |
-| Bob   | 1600 Pennsylvania Avenue |
-| Carl  | 11 Wall Street New York  |
-
-Then the following update command is run:
-
-```kusto
-.update table People on Name <|
-  datatable(Name:string, Address:string)[
-  "Alice", "2 Macquarie Street",
-  "Diana", "350 Fifth Avenue" ]
-```
-
-Where the *appendQuery* yields the following result set:
-
-| Name  | Address            |
-| ----- | ------------------ |
-| Alice | 2 Macquarie Street |
-| Diana | 350 Fifth Avenue   |
-
-Since we updated *on* the `Name` column, the *Alice* row will be deleted and the table after the update will look like this:
-
-| Name  | Address                  |
-| ----- | ------------------------ |
-| Alice | 2 Macquarie Street       |
-| Bob   | 1600 Pennsylvania Avenue |
-| Carl  | 11 Wall Street New York  |
-| Diana | 350 Fifth Avenue         |
-
-Notice that *Diana* wasn't found in the original table.  This is valid and no corresponding row was deleted.
-
-Similarly, if there would have been multiple rows with *Alice* name in the original table, they would all have been deleted and replaced by the single *Alice* row we have in the end.
-
-### Example table
-
-The next examples are based on the following table:
+For the examples, we are going to use the following table:
 
 ```kusto
 .set-or-replace Employees <|
@@ -201,13 +114,15 @@ This command creates a table with 100 records starting with:
 
 ### Update a single column on one row
 
-The following example uses the simplified syntax to update a single column on a single row that matches the append predicate:
+The following example updates a single column on a single row:
 
 ```kusto
-.update table Employees on Id with(whatif=true) <|
-    Employees
-    | where Id==3
-    | extend Color="Orange"
+.update table Employees delete D append A with(whatif=true) <|
+    let D = Employees
+      | where Id==3;
+    let A = Employees
+      | where Id==3
+      | extend Color="Orange";
 ```
 
 Notice that `whatif` is set to true. After this query, the table is unchanged, but the command returns that there would be an extent with one row deleted and a new extent with one row.
@@ -215,34 +130,40 @@ Notice that `whatif` is set to true. After this query, the table is unchanged, b
 The following command actually performs the update:
 
 ```kusto
-.update table Employees on Id <|
-  Employees
-  | where Id==3
-  | extend Color="Orange"
+.update table Employees delete D append A <|
+    let D = Employees
+      | where Id==3;
+    let A = Employees
+      | where Id==3
+      | extend Color="Orange";
 ```
 
 ### Update a single column on multiple rows
 
-The following example updates on one single column `Color` to the value of *Green* on those rows that matched the append predicate. 
+The following example updates on one single column `Color` to the value of *Green* on those rows that have the value *blue*. 
 
 ```kusto
-.update table Employees on Id <|
-  Employees
-  | where Code=="Employee"
-  | where Color=="Blue"
-  | extend Color="Green"
+.update table Employees delete D append A <|
+    let D = Employees
+        | where Code=="Employee"
+        | where Color=="Blue";
+    let A = D
+      | extend Color="Green";
 ```
+
+Here we reused the *delete identifier* in the definition on the append predicate.
 
 ### Update multiple columns on multiple rows
 
-The following example updates multiple columns on all rows that match the append predicate.
+The following example updates multiple columns on all rows with color gray.
 
 ```kusto
-.update table Employees on Id <|
-  Employees
-  | where Color=="Gray"
-  | extend Code=strcat("ex-", Code)
-  | extend Color=""
+.update table Employees delete D append A <|
+    let D = Employees
+      | where Color=="Gray";
+    let A = D
+      | extend Code=strcat("ex-", Code)
+      | extend Color="";
 ```
 
 ### Update rows using another table
@@ -260,14 +181,15 @@ In this example, the first step is to create the following mapping table:
   ]
 ```
 
-This mapping table is then used to update some colors in the original table based on the append predicate and the corresponding "New Color":
+This mapping table is then used to update some colors in the original table:
 
 ```kusto
-.update table Employees on Id <|
-  Employees
-  | where Code=="Customer"
-  | lookup ColorMapping on $left.Color==$right.OldColor
-  | project Id, Code, Color=NewColor
+.update table Employees delete D append A <|
+  let D = Employees
+    | where Code=="Customer";
+  let A = D
+    | lookup ColorMapping on $left.Color==$right.OldColor
+    | project Id, Code, Color=NewColor
 ```
 
 ### Update rows with a staging table
@@ -287,19 +209,16 @@ The first command creates a staging table:
 The next command updates the main table with the data in the staging table:
 
 ```kusto
-.update table Employees on Id <|
-  MyStagingTable
+.update table Employees delete D append A <|
+    let A = MyStagingTable;
+    let D = Employees
+        | join kind=leftsemi MyStagingTable on Id
+        | where true;
 ```
 
 Some records in the staging table didn't exist in the main table (that is, had `Id>100`) but were still inserted in the main table (upsert behavior).
 
-## Examples - Expanded syntax
-
-The following examples use the [Expanded syntax](#expanded-syntax).
-
 ### Compound key
-
-The simplified syntax assumes a single column can match rows in the *appendQuery* to infer rows to delete.  More than one column can be used, for example, using compound keys.
 
 The first command creates a table with compound keys:
 
@@ -327,23 +246,6 @@ The next command updates a specific record using the expanded syntax:
     | where Version==3
     | extend Detail = "Revision about brand Z";
 ```
-
-### Complete control
-
-In the following example, all rows with `Code` *Employee* are deleted, and rows with `Code` *Employee* **and** `Color` purple are appended.  More rows are deleted than inserted.
-
-```kusto
-.update table Employees delete D append A <|
-  let D = Employees
-    | where Code=="Employee";
-  let A = Employees
-    | where Code=="Employee"
-    | where Color=="Purple"
-    | extend Code="Corporate"
-    | extend Color="Mauve";
-```
-
-This type of action is only possible using the expanded syntax, which independently controls the delete and append operations.
 
 ## Related content
 
