@@ -74,5 +74,6 @@ range Local from datetime(2022-03-27 01:00:00.0000000) to datetime(2022-03-27 04
 ## Related content
 
 * To convert from UTC to local, see [datetime_utc_to_local()](datetime-utc-to-local-function.md)
-* List of supported [timezones](timezone.md)
+* [Timezones](timezone.md)
+* [List of supported timezones](datetime-list-timezones.md)
 * [format_datetime()](format-datetime-function.md)
