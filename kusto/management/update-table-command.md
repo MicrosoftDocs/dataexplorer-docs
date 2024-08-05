@@ -21,7 +21,7 @@ The `.update table` command performs data updates in a specified table by deleti
 
 ## Permissions
 
-You must have at least [Table Admin](../../data-explorer/access-control/role-based-access-control.md) permissions to run this command.
+You must have at least [Table Admin](../access-control/role-based-access-control.md) permissions to run this command.
 
 ## Syntax
 
