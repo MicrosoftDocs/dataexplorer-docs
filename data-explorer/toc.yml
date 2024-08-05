@@ -391,6 +391,8 @@ items:
         items:
           - name: Use dashboards
             href: azure-data-explorer-dashboards.md
+          - name: Explore data in dashboard tiles 
+            href: dashboard-explore-data.md
           - name: Use dashboard parameters
             href: dashboard-parameters.md
           - name: Customize dashboard visuals
