@@ -3,7 +3,7 @@ title: .create function command
 description: Learn how to use the `.create function` command to create a stored function.
 ms.reviewer: orspodek
 ms.topic: reference
-ms.date: 06/20/2024
+ms.date: 07/29/2024
 ---
 # .create function command
 
@@ -45,10 +45,10 @@ You must have at least [Database User](../access-control/role-based-access-contr
 |`view`| `bool` |Designates this function as a stored view. Stored views can participate in [search](../query/search-operator.md) and [union *](../query/union-operator.md) scenarios. For more information, see [Views](../query/schema-entities/views.md).|
 |`skipvalidation`| `bool` |Determines whether or not to run validation logic on the function and fail the process if the function isn't valid. The default is `false`.|
 
-::: moniker range= "azure-data-explorer"
+::: moniker range="azure-data-explorer"
 > [!TIP]
 > If a function involves [cross-cluster queries](../query/cross-cluster-or-database-queries.md) and you plan to recreate the function using a [Kusto Query Language script](/azure/data-explorer/database-script.md), set `skipvalidation` to `true`.
-::: moniker-end
+:::moniker-end
 
 ## Returns
 
@@ -73,10 +73,13 @@ You must have at least [Database User](../access-control/role-based-access-contr
 
 ### Simple demo function
 
+The following example creates the `MyFunction1` function with a description (`docstring`), a folder named `Demo`, and defines the function.
+
 ```kusto
 .create function 
 with (docstring = 'Simple demo function', folder='Demo')
-MyFunction1()  {StormEvents | take 100}
+MyFunction1()
+{StormEvents | take 100}
 ```
 
 |Name|Parameters|Body|Folder|DocString|
@@ -85,10 +88,13 @@ MyFunction1()  {StormEvents | take 100}
 
 ### Demo function with parameter
 
+The following example creates the *MyFunction2* function with a description (`docstring`), folder named `Demo`, and defines the `MyLimit` parameter.
+
 ```kusto
 .create function
 with (docstring = 'Demo function with parameter', folder='Demo')
- MyFunction2(myLimit: long)  {StormEvents | take myLimit}
+ MyFunction2(myLimit: long)
+{StormEvents | take myLimit}
 ```
 
 |Name|Parameters|Body|Folder|DocString|
