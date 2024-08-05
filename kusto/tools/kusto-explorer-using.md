@@ -3,7 +3,7 @@ title: Using Kusto.Explorer
 description: Learn how to use Kusto.Explorer
 ms.reviewer: alexans
 ms.topic: conceptual
-ms.date: 07/03/2023
+ms.date: 08/05/2024
 ---
 
 # Using Kusto.Explorer
@@ -202,7 +202,7 @@ and configured to communicate with cluster `help`, database `Samples`, use the
 following command:
 
 ```kusto
-Kusto.Explorer.exe c:\temp\script.kql uri=https://help.kusto.windows.net/Samples;Fed=true&name=Samples
+Kusto.Explorer.exe c:\temp\script.kql "uri=https://help.kusto.windows.net/Samples;Fed=true&name=Samples"
 ```
 
 |Argument  |Description                                                               |

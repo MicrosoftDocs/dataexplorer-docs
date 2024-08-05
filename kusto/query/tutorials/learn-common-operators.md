@@ -2,7 +2,7 @@
 title:  'Tutorial: Learn common Kusto Query Language operators'
 description: This tutorial describes how to write queries using common operators in the Kusto Query Language to meet common query needs.
 ms.topic: tutorial
-ms.date: 12/21/2023
+ms.date: 08/05/2024
 ---
 
 # Tutorial: Learn common operators
@@ -89,7 +89,7 @@ StormEvents
 | take 5
 ```
 
-The following table shows only 6 of the 22 returned columns. To see the full output, run the query.
+The following table shows only 5 of the 22 returned columns. To see the full output, run the query.
 
 |StartTime|EndTime|EpisodeId|EventId|State|EventType|...|
 |--|--|--|--|--|--|--|
