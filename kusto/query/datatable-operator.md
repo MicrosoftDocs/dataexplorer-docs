@@ -29,7 +29,7 @@ Returns a table whose schema and values are defined in the query itself.
 | *ScalarValue* | scalar |  :heavy_check_mark: | The value to insert into the table. The number of values must be an integer multiple of the columns in the table. The *n*'th value must have a type that corresponds to column *n* % *NumColumns*. |
 
 > [!NOTE]
-> The column name and column value paris define the schema for the table.
+> The column name and column value pairs define the schema for the table.
 
 ## Returns
 

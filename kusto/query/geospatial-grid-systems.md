@@ -15,6 +15,7 @@ Geospatial data can be analyzed efficiently using grid systems to create geospat
 The following methods of geospatial clustering are supported:
 
 * [Geohash](https://en.wikipedia.org/wiki/Geohash)
+* [S2 Cell](http://s2geometry.io/devguide/s2cell_hierarchy)
 * [H3 Cell](https://eng.uber.com/h3/)
 
 The core functionalities of these methods are:

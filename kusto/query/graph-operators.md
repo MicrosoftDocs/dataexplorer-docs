@@ -1,16 +1,13 @@
 ---
-title: Graph operators (Preview)
+title: Graph operators
 description: Learn how to use KQL graph operators.
 ms.reviewer: alexans
 ms.topic: reference
 ms.date: 09/03/2023
 ---
-# Graph operators (Preview)
+# Graph operators
 
 > [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)] [!INCLUDE [monitor](../includes/applies-to-version/monitor.md)] [!INCLUDE [sentinel](../includes/applies-to-version/sentinel.md)]
-
-> [!WARNING]
-> This feature is currently in preview and might be subject to change. The semantics and syntax of the graph feature might change before they are released as generally available.
 
 Kusto Query Language (KQL) graph operators enable graph analysis of data by representing tabular data as a graph with nodes and edges. This setup lets us use graph operations to study the connections and relationships between different data points.
 
