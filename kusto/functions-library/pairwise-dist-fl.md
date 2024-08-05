@@ -106,7 +106,7 @@ Define the stored function once using the following [`.create function`](../mana
 
 ```kusto
 .create-or-alter function with (folder = "Packages\\Stats", docstring = "Calculate distances between pairs of entites based on multiple nominal and numerical variables")
-let pairwise_dist_fl = (tbl:(*), id_col:string, partition_col:string)
+pairwise_dist_fl (tbl:(*), id_col:string, partition_col:string)
 {
     let generic_dist = (value1:dynamic, value2:dynamic) 
     {
@@ -153,7 +153,7 @@ let pairwise_dist_fl = (tbl:(*), id_col:string, partition_col:string)
         | sort by _partition asc, entity asc, dist asc
     );
     dist_data
-};
+}
 ```
 
 ---

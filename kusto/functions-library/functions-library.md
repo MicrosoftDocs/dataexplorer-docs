@@ -25,7 +25,10 @@ The user-defined functions code is given in the articles.  It can be used within
 
 | Function Name | Description |
 |--|--|
-| [kmeans_fl()](kmeans-fl.md) | Clusterize using the k-means algorithm. |
+| [dbscan_fl()](dbscan-fl.md) | Clusterize using the DBSCAN algorithm, features are in separate columns. |
+| [dbscan_dynamic_fl()](dbscan-dynamic-fl.md) | Clusterize using the DBSCAN algorithm, features are in a single dynamic column. |
+| [kmeans_fl()](kmeans-fl.md) | Clusterize using the K-Means algorithm, features are in separate columns. |
+| [kmeans_dynamic_fl()](kmeans-dynamic-fl.md) | Clusterize using the K-Means algorithm, features are in a single dynamic column. |
 | [predict_fl()](predict-fl.md) | Predict using an existing trained machine learning model. |
 | [predict_onnx_fl()](predict-onnx-fl.md) | Predict using an existing trained machine learning model in ONNX format. |
 

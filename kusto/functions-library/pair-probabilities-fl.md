@@ -84,7 +84,7 @@ Define the stored function once using the following [`.create function`](../mana
 
 ```kusto
 .create-or-alter function with (folder = "Packages\\Stats", docstring = "Calculate probabilities and related metrics for a pair of categorical variables")
-pair_probabilities_fl = (tbl:(*), A_col:string, B_col:string, scope_col:string)
+pair_probabilities_fl (tbl:(*), A_col:string, B_col:string, scope_col:string)
 {
 let T = materialize(tbl | extend _A = column_ifexists(A_col, ''), _B = column_ifexists(B_col, ''), _scope = column_ifexists(scope_col, ''));
 let countOnScope = T | summarize countAllOnScope = count() by _scope;
@@ -102,7 +102,7 @@ probAB
 | project _A, _B, _scope, bin(P_A, 0.00001), bin(P_B, 0.00001), bin(P_AB, 0.00001), bin(P_AUB, 0.00001), bin(P_AIB, 0.00001)
 , bin(P_BIA, 0.00001), bin(Lift_AB, 0.00001), bin(Jaccard_AB, 0.00001)
 | sort by _scope, _A, _B
-};
+}
 ```
 
 ---
