@@ -118,6 +118,14 @@ When querying the entire view, the materialized part is combined with the `delta
 |`materialized_view_query_optimization_costbased_enabled`|bool|If set to `false`, disables  summarize/join optimizations in materialized view queries. Will use default strategies. Default is `true`.|
 |`materialized_view_shuffle`|dynamic|Force shuffling of the materialized view query, and (optionally) provide specific keys to shuffle by. See [examples](#examples) below.|
 
+### `ingestion_time()` function in the context of materialized views
+
+[ingestion_time()](../../query/ingestiontimefunction.md) function returns null values, when used in the context of a materialized view, if [querying the entire view](#materialized-views-queries).
+When querying the materialized part of the view, the return value depends on the type of materialized view:
+
+* In materialized views which include a single `arg_max()`/`arg_min()`/`take_any()` aggregation, the `ingestion_time()` is equal to the `ingestion_time()` of the corresponding record in the source table.
+* In all other materialized views, the value of `ingestion_time()` is approximately the time of materialization (see [how materialized views work](#how-materialized-views-work)).
+
 ### Examples
 
 1. Query the entire view. The most recent records in source table are included:  

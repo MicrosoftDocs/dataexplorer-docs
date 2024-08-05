@@ -17,7 +17,8 @@ zone_pivot_groups: kql-flavors
 
 Returns the approximate time at which the current record was ingested.
 
-This function must be used in the context of a table of ingested data for which the [IngestionTime policy](../management/ingestiontimepolicy.md) was enabled when the data was ingested. Otherwise, this function produces null values.
+This function must be used in the context of a table or a [materialized view](../management/materialized-views/materialized-view-overview.md#ingestion_time-function-in-the-context-of-materialized-views). Otherwise, this function produces null values.
+If [IngestionTime policy](../management/ingestiontimepolicy.md) was not enabled when the data was ingested, the function returns null values.
 
 ::: zone-end
 
