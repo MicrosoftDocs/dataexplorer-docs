@@ -3,7 +3,7 @@ title:  Role-based access control
 description: This article describes role-based access control.
 ms.reviewer: orspodek
 ms.topic: reference
-ms.date: 06/20/2024
+ms.date: 08/05/2024
 monikerRange: "azure-data-explorer || microsoft-fabric"
 ---
 # Kusto role-based access control
@@ -29,7 +29,7 @@ The **Manage** column offers ways to add or remove role principals.
 
 ::: moniker range="azure-data-explorer"
 |Scope|Role|Permissions|Dependencies|Manage|
-|--|--|--|--|
+|--|--|--|--|--|
 |Cluster|AllDatabasesAdmin |Full permission to all databases in the cluster. May show and alter certain cluster-level policies. Includes all permissions. ||[Azure portal](/azure/data-explorer/manage-cluster-permissions.md)|
 |Cluster|AllDatabasesViewer |Read all data and metadata of any database in the cluster. ||[Azure portal](/azure/data-explorer/management/manage-cluster-permissions.md)|
 |Cluster|AllDatabasesMonitor |Execute `.show` commands in the context of any database in the cluster.||[Azure portal](/azure/data-explorer/manage-cluster-permissions.md)|

@@ -103,7 +103,7 @@ Purge command may be invoked in two ways for differing usage scenarios:
 
    // To purge materialized view records
   .purge materialized-view [MaterializedViewName] records in database [DatabaseName] with (noregrets='true') <| [Predicate]
-   ```
+  ```
 
 * Human invocation: A two-step process that requires an explicit confirmation as a separate step. First invocation of the command returns a verification token, which should be provided to run the actual purge. This sequence reduces the risk of inadvertently deleting incorrect data.
 
@@ -118,25 +118,25 @@ Purge command may be invoked in two ways for differing usage scenarios:
 > To connect to a cluster using the Azure Data Explorer web UI, see [Add clusters](/azure/data-explorer/web-query-data.md#add-clusters).
 
   ```kusto
-     // Connect to the Data Management service - this command only works in Kusto.Explorer
-     #connect "https://ingest-[YourClusterName].[region].kusto.windows.net"
+  // Connect to the Data Management service - this command only works in Kusto.Explorer
+  #connect "https://ingest-[YourClusterName].[region].kusto.windows.net"
 
-     // Step #1 - retrieve a verification token (no records will be purged until step #2 is executed)
-     .purge table [TableName] records in database [DatabaseName] <| [Predicate]
+  // Step #1 - retrieve a verification token (no records will be purged until step #2 is executed)
+  .purge table [TableName] records in database [DatabaseName] <| [Predicate]
 
-     // Step #2 - input the verification token to execute purge
-     .purge table [TableName] records in database [DatabaseName] with (verificationtoken=h'<verification token from step #1>') <| [Predicate]
+  // Step #2 - input the verification token to execute purge
+  .purge table [TableName] records in database [DatabaseName] with (verificationtoken=h'<verification token from step #1>') <| [Predicate]
   ```
 
 To purge a materialized view, replace the `table` keyword with `materialized-view`, and replace *TableName* with the *MaterializedViewName*.
 
-| Parameters  | Description  |
-|---------|---------|
-| `DatabaseName`   |   Name of the database      |
-| `TableName` / `MaterializedViewName`    |     Name of the table / materialized view to purge.  |
-| `Predicate`    |    Identifies the records to purge. See [purge predicate limitations](#purge-predicate-limitations). |
-| `noregrets`    |     If set, triggers a single-step activation.    |
-| `verificationtoken`     |  In the two-step activation scenario (`noregrets` isn't set), this token can be used to execute the second step and commit the action. If `verificationtoken` isn't specified, it will trigger the command's first step. Information about the purge will be returned with a token that should be passed back to the command to do step #2.   |
+| Parameters | Description |
+|--|--|
+| `DatabaseName` | Name of the database |
+| `TableName` / `MaterializedViewName` | Name of the table / materialized view to purge. |
+| `Predicate` | Identifies the records to purge. See [purge predicate limitations](#purge-predicate-limitations). |
+| `noregrets` | If set, triggers a single-step activation. |
+| `verificationtoken` | In the two-step activation scenario (`noregrets` isn't set), this token can be used to execute the second step and commit the action. If `verificationtoken` isn't specified, it will trigger the command's first step. Information about the purge will be returned with a token that should be passed back to the command to do step #2. |
 
 #### Purge predicate limitations
 
@@ -160,9 +160,9 @@ To start purge in a two-step activation scenario, run step #1 of the command:
 
 **Output**
 
- | NumRecordsToPurge | EstimatedPurgeExecutionTime| VerificationToken
- |---|---|---
- | 1,596 | 00:00:02 | e43c7184ed22f4f23c7a9d7b124d196be2e570096987e5baadf65057fa65736b
+| NumRecordsToPurge | EstimatedPurgeExecutionTime | VerificationToken |
+|--|--|--|
+| 1,596 | 00:00:02 | e43c7184ed22f4f23c7a9d7b124d196be2e570096987e5baadf65057fa65736b |
 
 Then, validate the NumRecordsToPurge before running step #2.
 
@@ -180,9 +180,9 @@ To complete a purge in a two-step activation scenario, use the verification toke
 
 **Output**
 
-| `OperationId` | `DatabaseName` | `TableName`|`ScheduledTime` | `Duration` | `LastUpdatedOn` |`EngineOperationId` | `State` | `StateDetails` |`EngineStartTime` | `EngineDuration` | `Retries` |`ClientRequestId` | `Principal`|
-|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
-| c9651d74-3b80-4183-90bb-bbe9e42eadc4 |MyDatabase |MyTable |2019-01-20 11:41:05.4391686 |00:00:00.1406211 |2019-01-20 11:41:05.4391686 | |Scheduled | | | |0 |KE.RunCommand;1d0ad28b-f791-4f5a-a60f-0e32318367b7 |AAD app id=...|
+| `OperationId` | `DatabaseName` | `TableName` | `ScheduledTime` | `Duration` | `LastUpdatedOn` | `EngineOperationId` | `State` | `StateDetails` | `EngineStartTime` | `EngineDuration` | `Retries` | `ClientRequestId` | `Principal` |
+|--|--|--|--|--|--|--|--|--|--|--|--|--|--|
+| c9651d74-3b80-4183-90bb-bbe9e42eadc4 | MyDatabase | MyTable | 2019-01-20 11:41:05.4391686 | 00:00:00.1406211 | 2019-01-20 11:41:05.4391686 |  | Scheduled |  |  |  | 0 | KE.RunCommand;1d0ad28b-f791-4f5a-a60f-0e32318367b7 | AAD app id=... |
 
 #### Example: Single-step purge
 
@@ -199,9 +199,9 @@ To trigger a purge in a single-step activation scenario, run the following comma
 
 **Output**
 
-| `OperationId` |`DatabaseName` |`TableName` |`ScheduledTime` |`Duration` |`LastUpdatedOn` |`EngineOperationId` |`State` |`StateDetails` |`EngineStartTime` |`EngineDuration` |`Retries` |`ClientRequestId` |`Principal`|
-|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
-| c9651d74-3b80-4183-90bb-bbe9e42eadc4 |MyDatabase |MyTable |2019-01-20 11:41:05.4391686 |00:00:00.1406211 |2019-01-20 11:41:05.4391686 | |Scheduled | | | |0 |KE.RunCommand;1d0ad28b-f791-4f5a-a60f-0e32318367b7 |AAD app id=...|
+| `OperationId` | `DatabaseName` | `TableName` | `ScheduledTime` | `Duration` | `LastUpdatedOn` | `EngineOperationId` | `State` | `StateDetails` | `EngineStartTime` | `EngineDuration` | `Retries` | `ClientRequestId` | `Principal` |
+|--|--|--|--|--|--|--|--|--|--|--|--|--|--|
+| c9651d74-3b80-4183-90bb-bbe9e42eadc4 | MyDatabase | MyTable | 2019-01-20 11:41:05.4391686 | 00:00:00.1406211 | 2019-01-20 11:41:05.4391686 |  | Scheduled |  |  |  | 0 | KE.RunCommand;1d0ad28b-f791-4f5a-a60f-0e32318367b7 | AAD app id=... |
 
 ### Cancel purge operation command
 
@@ -234,9 +234,9 @@ If needed, you can cancel pending purge requests.
 The output of this command is the same as the 'show purges *OperationId*' command output, showing the updated status of the purge operation being canceled.
 If the attempt is successful, the operation state is updated to `Canceled`. Otherwise, the operation state isn't changed.
 
-|`OperationId` |`DatabaseName` |`TableName` |`ScheduledTime` |`Duration` |`LastUpdatedOn` |`EngineOperationId` |`State` |`StateDetails` |`EngineStartTime` |`EngineDuration` |`Retries` |`ClientRequestId` |`Principal`
-|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
-|c9651d74-3b80-4183-90bb-bbe9e42eadc4 |MyDatabase |MyTable |2019-01-20 11:41:05.4391686 |00:00:00.1406211 |2019-01-20 11:41:05.4391686 | |Canceled | | | |0 |KE.RunCommand;1d0ad28b-f791-4f5a-a60f-0e32318367b7 |AAD app id=...
+| `OperationId` | `DatabaseName` | `TableName` | `ScheduledTime` | `Duration` | `LastUpdatedOn` | `EngineOperationId` | `State` | `StateDetails` | `EngineStartTime` | `EngineDuration` | `Retries` | `ClientRequestId` | `Principal` |
+|--|--|--|--|--|--|--|--|--|--|--|--|--|--|
+| c9651d74-3b80-4183-90bb-bbe9e42eadc4 | MyDatabase | MyTable | 2019-01-20 11:41:05.4391686 | 00:00:00.1406211 | 2019-01-20 11:41:05.4391686 |  | Canceled |  |  |  | 0 | KE.RunCommand;1d0ad28b-f791-4f5a-a60f-0e32318367b7 | AAD app id=... |
 
 #### Example: Cancel all pending purge operations in a database
 
@@ -249,10 +249,10 @@ If the attempt is successful, the operation state is updated to `Canceled`. Othe
 The output of this command is the same as the [show purges](#show-purges-command) command output, showing all operations in the database with their updated status.
 Operations that were canceled successfully will have their status updated to `Canceled`. Otherwise, the operation state isn't changed.
 
-|`OperationId` |`DatabaseName` |`TableName` |`ScheduledTime` |`Duration` |`LastUpdatedOn` |`EngineOperationId` |`State` |`StateDetails` |`EngineStartTime` |`EngineDuration` |`Retries` |`ClientRequestId` |`Principal`
-|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
-|5a34169e-8730-49f5-9694-7fde3a7a0139 |MyDatabase |MyTable |2021-03-03 05:07:29.7050198 |00:00:00.2971331 |2021-03-03 05:07:30.0021529 | |Canceled | | | |0 |KE.RunCommand;1d0ad28b-f791-4f5a-a60f-0e32318367b7 |AAD app id=...
-|2fa7c04c-6364-4ce1-a5e5-1ab921f518f5 |MyDatabase |MyTable |2021-03-03 05:05:03.5035478 |00:00:00.1406211 |2021-03-03 05:05:03.6441689 | |InProgress | | | |0 |KE.RunCommand;1d0ad28b-f791-4f5a-a60f-0e32318367b7 |AAD app id=...
+| `OperationId` | `DatabaseName` | `TableName` | `ScheduledTime` | `Duration` | `LastUpdatedOn` | `EngineOperationId` | `State` | `StateDetails` | `EngineStartTime` | `EngineDuration` | `Retries` | `ClientRequestId` | `Principal` |
+|--|--|--|--|--|--|--|--|--|--|--|--|--|--|
+| 5a34169e-8730-49f5-9694-7fde3a7a0139 | MyDatabase | MyTable | 2021-03-03 05:07:29.7050198 | 00:00:00.2971331 | 2021-03-03 05:07:30.0021529 |  | Canceled |  |  |  | 0 | KE.RunCommand;1d0ad28b-f791-4f5a-a60f-0e32318367b7 | AAD app id=... |
+| 2fa7c04c-6364-4ce1-a5e5-1ab921f518f5 | MyDatabase | MyTable | 2021-03-03 05:05:03.5035478 | 00:00:00.1406211 | 2021-03-03 05:05:03.6441689 |  | InProgress |  |  |  | 0 | KE.RunCommand;1d0ad28b-f791-4f5a-a60f-0e32318367b7 | AAD app id=... |
 
 ## Track purge operation status
 
@@ -272,12 +272,12 @@ Status = 'Completed' indicates successful completion of the first phase of the p
 .show purges from '<StartDate>' to '<EndDate>' [in database <DatabaseName>]
 ```
 
-| Properties  |Description  |Mandatory/Optional|
-|---------|------------|-------|
-|`OperationId `   |      The Data Management operation ID outputted after executing single phase or second phase.   |Mandatory
-|`StartDate`    |   Lower time limit for filtering operations. If omitted, defaults to 24 hours before current time.      |Optional
-|`EndDate`    |  Upper time limit for filtering operations. If omitted, defaults to current time.       |Optional
-|`DatabaseName`    |     Database name to filter results.    |Optional
+| Properties | Description | Mandatory/Optional |
+|--|--|--|
+| `OperationId ` | The Data Management operation ID outputted after executing single phase or second phase. | Mandatory |
+| `StartDate` | Lower time limit for filtering operations. If omitted, defaults to 24 hours before current time. | Optional |
+| `EndDate` | Upper time limit for filtering operations. If omitted, defaults to current time. | Optional |
+| `DatabaseName` | Database name to filter results. | Optional |
 
 > [!NOTE]
 > Status will be provided only on databases for which the client has [Database Admin](../access-control/role-based-access-control.md) permissions.
@@ -294,9 +294,9 @@ Status = 'Completed' indicates successful completion of the first phase of the p
 
 **Output**
 
-|`OperationId` |`DatabaseName` |`TableName` |`ScheduledTime` |`Duration` |`LastUpdatedOn` |`EngineOperationId` |`State` |`StateDetails` |`EngineStartTime` |`EngineDuration` |`Retries` |`ClientRequestId` |`Principal`
-|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
-|c9651d74-3b80-4183-90bb-bbe9e42eadc4 |MyDatabase |MyTable |2019-01-20 11:41:05.4391686 |00:00:33.6782130 |2019-01-20 11:42:34.6169153 |a0825d4d-6b0f-47f3-a499-54ac5681ab78 |Completed |Purge completed successfully (storage artifacts pending deletion) |2019-01-20 11:41:34.6486506 |00:00:04.4687310 |0 |KE.RunCommand;1d0ad28b-f791-4f5a-a60f-0e32318367b7 |AAD app id=...
+| `OperationId` | `DatabaseName` | `TableName` | `ScheduledTime` | `Duration` | `LastUpdatedOn` | `EngineOperationId` | `State` | `StateDetails` | `EngineStartTime` | `EngineDuration` | `Retries` | `ClientRequestId` | `Principal` |
+|--|--|--|--|--|--|--|--|--|--|--|--|--|--|
+| c9651d74-3b80-4183-90bb-bbe9e42eadc4 | MyDatabase | MyTable | 2019-01-20 11:41:05.4391686 | 00:00:33.6782130 | 2019-01-20 11:42:34.6169153 | a0825d4d-6b0f-47f3-a499-54ac5681ab78 | Completed | Purge completed successfully (storage artifacts pending deletion) | 2019-01-20 11:41:34.6486506 | 00:00:04.4687310 | 0 | KE.RunCommand;1d0ad28b-f791-4f5a-a60f-0e32318367b7 | AAD app id=... |
 
 * `OperationId` - the DM operation ID returned when executing purge.
 * `DatabaseName`** - database name (case sensitive).
@@ -358,12 +358,12 @@ Similar to '[.purge table records ](#purge-table-tablename-records-command)' com
      .purge table [TableName] in database [DatabaseName] allrecords with (verificationtoken=h'<verification token from step #1>')
      ```
 
-    | Parameters  |Description  |
-    |---------|---------|
-    | `DatabaseName`   |   Name of the database.      |
-    | `TableName`    |     Name of the table.    |
-    | `noregrets`    |     If set, triggers a single-step activation.    |
-    | `verificationtoken`     |  In two-step activation scenario (`noregrets` isn't set), this token can be used to execute the second step and commit the action. If `verificationtoken` isn't specified, it will trigger the command's first step. In this step, a token is returned to pass back to the command and do step #2.|
+    | Parameters | Description |
+    |--|--|
+    | `DatabaseName` | Name of the database. |
+    | `TableName` | Name of the table. |
+    | `noregrets` | If set, triggers a single-step activation. |
+    | `verificationtoken` | In two-step activation scenario (`noregrets` isn't set), this token can be used to execute the second step and commit the action. If `verificationtoken` isn't specified, it will trigger the command's first step. In this step, a token is returned to pass back to the command and do step #2. |
 
 #### Example: Two-step purge
 
@@ -393,9 +393,9 @@ Similar to '[.purge table records ](#purge-table-tablename-records-command)' com
 
     **Output**
 
-    |  TableName|DatabaseName|Folder|DocString
-    |---|---|---|---
-    |  OtherTable|MyDatabase|---|---
+    | TableName | DatabaseName | Folder | DocString |
+    |--|--|--|--|
+    | OtherTable | MyDatabase | --- | --- |
 
 #### Example: Single-step purge
 
@@ -412,9 +412,9 @@ The output is the same as the '.show tables' command output (returned without th
 
 **Output**
 
-|TableName|DatabaseName|Folder|DocString
-|---|---|---|---
-|OtherTable|MyDatabase|---|---
+| TableName | DatabaseName | Folder | DocString |
+|--|--|--|--|
+| OtherTable | MyDatabase | --- | --- |
 
 ## Related content
 

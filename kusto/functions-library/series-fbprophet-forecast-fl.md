@@ -18,7 +18,7 @@ The function `series_fbprophet_forecast_fl()` is a [user-defined function (UDF)]
 
 * Install the `fbprophet` package since it isn't included in the Python image. To install the package, do the following:
   1. Follow the guidelines for [Installing packages for the Python plugin](../query/python-plugin.md#install-packages-for-the-python-plugin).
-     * To save time in the above guidelines, you can download the `prophet` zip file, containing the wheel files of `prophet` and its dependencies, from [https://artifactswestus.blob.core.windows.net/public/prophet-1.1.5.zip](https://artifactswestus.blob.core.windows.net/public/prophet-1.1.5.zip). Save this file to your allowlisted blob container.
+     * To save time in the above guidelines, you can download the `prophet` zip file, containing the wheel files of `prophet` and its dependencies, from [https://artifactswestusnew.blob.core.windows.net/public/prophet-1.1.5.zip](https://artifactswestusnew.blob.core.windows.net/public/prophet-1.1.5.zip). Save this file to your allowlisted blob container.
   1. Create a SAS token with read access to your zip file. To create a SAS token, see [get the SAS for a blob container](/azure/vs-azure-tools-storage-explorer-blobs#get-the-sas-for-a-blob-container).
   1. In the [Example](#example), replace the URL reference in the `external_artifacts` parameter with your file path and its SAS token.
 
@@ -30,14 +30,14 @@ The function `series_fbprophet_forecast_fl()` is a [user-defined function (UDF)]
   
 ## Parameters
 
-|Name|Type|Required|Description|
+| Name | Type | Required | Description |
 |--|--|--|--|
-|*ts_series*| `string` | :heavy_check_mark:|The name of the input table column containing the time stamps of the series to predict.|
-|*y_series*| `string` | :heavy_check_mark:|The name of the input table column containing the values of the series to predict.|
-|*y_pred_series*| `string` | :heavy_check_mark:|The name of the column to store the predicted series.|
-|*points*| `int` | :heavy_check_mark:|The number of points at the end of the series to predict (forecast). These points are excluded from the learning (regression) process. The default is 0.|
-|*y_pred_low_series*| `string` ||The name of the column to store the series of the lowest values of the confidence interval. Omit if the confidence interval isn't needed.|
-|*y_pred_high_series*| `string` ||The name of the column to store the series of the highest values of the confidence interval. Omit if the confidence interval isn't needed.|
+| *ts_series* | `string` | :heavy_check_mark: | The name of the input table column containing the time stamps of the series to predict. |
+| *y_series* | `string` | :heavy_check_mark: | The name of the input table column containing the values of the series to predict. |
+| *y_pred_series* | `string` | :heavy_check_mark: | The name of the column to store the predicted series. |
+| *points* | `int` | :heavy_check_mark: | The number of points at the end of the series to predict (forecast). These points are excluded from the learning (regression) process. The default is 0. |
+| *y_pred_low_series* | `string` |  | The name of the column to store the series of the lowest values of the confidence interval. Omit if the confidence interval isn't needed. |
+| *y_pred_high_series* | `string` |  | The name of the column to store the series of the highest values of the confidence interval. Omit if the confidence interval isn't needed. |
 
 ## Function definition
 
@@ -93,7 +93,7 @@ let series_fbprophet_forecast_fl=(tbl:(*), ts_series:string, y_series:string, y_
     ```;
     tbl
      | evaluate python(typeof(*), code, kwargs
-, external_artifacts=bag_pack('prophet.zip', 'https://artifactswestus.blob.core.windows.net/public/prophet-1.1.5.zip?*** YOUR SAS TOKEN ***'))
+, external_artifacts=bag_pack('prophet.zip', 'https://artifactswestusnew.blob.core.windows.net/public/prophet-1.1.5.zip?*** YOUR SAS TOKEN ***'))
 };
 // Write your query to use the function here.
 ~~~
@@ -149,7 +149,7 @@ series_fbprophet_forecast_fl(tbl:(*), ts_series:string, y_series:string, y_pred_
     ```;
     tbl
      | evaluate python(typeof(*), code, kwargs
-, external_artifacts=bag_pack('prophet.zip', 'https://artifactswestus.blob.core.windows.net/public/prophet-1.1.5.zip?*** YOUR SAS TOKEN ***'))
+, external_artifacts=bag_pack('prophet.zip', 'https://artifactswestusnew.blob.core.windows.net/public/prophet-1.1.5.zip?*** YOUR SAS TOKEN ***'))
 }
 ~~~
 
@@ -206,7 +206,7 @@ let series_fbprophet_forecast_fl=(tbl:(*), ts_series:string, y_series:string, y_
     ```;
     tbl
      | evaluate python(typeof(*), code, kwargs
-, external_artifacts=bag_pack('prophet.zip', 'https://artifactswestus.blob.core.windows.net/public/prophet-1.1.5.zip?*** YOUR SAS TOKEN ***'))
+, external_artifacts=bag_pack('prophet.zip', 'https://artifactswestusnew.blob.core.windows.net/public/prophet-1.1.5.zip?*** YOUR SAS TOKEN ***'))
 };
 //
 //  Forecasting 3 time series using fbprophet, compare to forecasting using the native function series_decompose_forecast()
