@@ -13,10 +13,13 @@ jobs:
           TEAM_MEMBERS=$(curl -s -H "Authorization: token ${{ secrets.ACTIONS_TOKEN }}" \
             https://api.github.com/orgs/MicrosoftDocs/teams/kusto-doc-writers/members)
           if echo "$TEAM_MEMBERS" | grep -q "\"login\": \"${{ github.actor }}\""; then
-            echo "::set-output name=is_codeowner::true"
+            DEBUG_IS_CODEOWNER=true
+            echo "is_codeowner=true" >> $GITHUB_ENV
           else
-            echo "::set-output name=is_codeowner::false"
+            DEBUG_IS_CODEOWNER=false
+            echo "is_codeowner=false" >> $GITHUB_ENV
           fi
+          echo "::debug::is_codeowner=$DEBUG_IS_CODEOWNER -- Team members: $TEAM_MEMBERS"
 
       - name: Bypass approval if author is a code owner
         if: steps.check-author.outputs.is_codeowner == 'true'
