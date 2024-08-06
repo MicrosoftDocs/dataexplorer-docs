@@ -10,8 +10,8 @@ jobs:
       - name: Check if PR author is a code owner
         id: check-author
         run: |
-          TEAM_MEMBERS=$(curl -s -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" \
-            https://api.github.com/orgs/YOUR_ORG/teams/YOUR_TEAM/members)
+          TEAM_MEMBERS=$(curl -s -H "Authorization: token ${{ secrets.ACTIONS_TOKEN }}" \
+            https://api.github.com/orgs/MicrosoftDocs/teams/kusto-doc-writers/members)
           if echo "$TEAM_MEMBERS" | grep -q "\"login\": \"${{ github.actor }}\""; then
             echo "::set-output name=is_codeowner::true"
           else
@@ -22,4 +22,7 @@ jobs:
         if: steps.check-author.outputs.is_codeowner == 'true'
         run: |
           echo "Bypassing approval for code owner"
-          # Add your logic here to bypass approval
+          curl -s -X POST -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" \
+            -H "Accept: application/vnd.github.v3+json" \
+            https://api.github.com/repos/${{ github.repository }}/pulls/${{ github.event.pull_request.number }}/reviews \
+            -d '{"event":"APPROVE"}'
