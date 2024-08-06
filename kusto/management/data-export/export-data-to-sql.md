@@ -49,6 +49,9 @@ The supported authentication methods for exporting data to SQL are [Microsoft En
 * Existing table: table UPDATE and INSERT
 * New table: CREATE, UPDATE, and INSERT
 
+> [!NOTE]
+> Where possible, the preferred method of authentication is Microsoft Entra integrated (impersonation) authentication.
+
 ## Limitations and restrictions
 
 There are some limitations and restrictions when exporting data to an SQL database:

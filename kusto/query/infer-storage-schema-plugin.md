@@ -9,7 +9,7 @@ ms.date: 03/08/2023
 
 > [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)] [!INCLUDE [monitor](../includes/applies-to-version/monitor.md)] [!INCLUDE [sentinel](../includes/applies-to-version/sentinel.md)]
 
-This plugin infers schema of external data, and returns it as CSL schema string. The string can be used when [creating external tables](../management/external-tables-azure-storage.md). The plugin is invoked with the [`evaluate`](evaluate-operator.md) operator.
+This plugin infers the schema of external data, and returns it as CSL schema string. The string can be used when [creating external tables](../management/external-tables-azure-storage.md). The plugin is invoked with the [`evaluate`](evaluate-operator.md) operator.
 
 ## Authentication and authorization
 
@@ -42,13 +42,14 @@ The following table lists the supported authentication methods and any required 
 |--|--|--|--|
 |*StorageContainers*| `dynamic` | :heavy_check_mark:|An array of [storage connection strings](../api/connection-strings/storage-connection-strings.md) that represent prefix URI for stored data artifacts.|
 |*DataFormat*| `string` | :heavy_check_mark:|One of the supported [data formats](../ingestion-supported-formats.md).|
-|*FileExtension*| `string` ||If specified, the function will only scan files ending with this file extension. Specifying the extension may speed up the process or eliminate data reading issues.|
-|*FileNamePrefix*| `string` ||If specified, the function will only scan files starting with this prefix. Specifying the prefix may speed up the process.|
+|*FileExtension*| `string` ||If specified, the function only scans files ending with this file extension. Specifying the extension may speed up the process or eliminate data reading issues.|
+|*FileNamePrefix*| `string` ||If specified, the function only scans files starting with this prefix. Specifying the prefix may speed up the process.|
 |*Mode*| `string` ||The schema inference strategy. A value of: `any`, `last`, `all`. The function infers the data schema from the first found file, from the last written file, or from all files respectively. The default value is `last`.|
+|*InferenceOptions*|`dynamic`||More inference options. Valid options: `UseFirstRowAsHeader` for delimited file formats. For example, `'InferenceOptions': {'UseFirstRowAsHeader': true}` .
 
 ## Returns
 
-The `infer_storage_schema` plugin returns a single result table containing a single row/column holding CSL schema string.
+The `infer_storage_schema` plugin returns a single result table containing a single row/column containing CSL schema string.
 
 > [!NOTE]
 >
@@ -90,3 +91,7 @@ dataformat = parquet
     h@'https://storageaccount.blob.core.windows.net/MovileEvents;secretKey'
 )
 ```
+
+## Related content
+
+* [infer_storage_schema_with_suggestions plugin](infer-storage-schema-with-suggestions-plugin.md)

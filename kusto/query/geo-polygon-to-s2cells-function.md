@@ -11,6 +11,8 @@ ms.date: 03/09/2023
 
 Calculates S2 cell tokens that cover a polygon or multipolygon on Earth. This function is a useful geospatial join tool.
 
+Read more about [S2 cell hierarchy](http://s2geometry.io/devguide/s2cell_hierarchy).
+
 ## Syntax
 
 `geo_polygon_to_s2cells(`*polygon* [`,` *level*[`,` *radius*]]`)`

@@ -3,7 +3,7 @@ title:  trim()
 description: Learn how to use the trim() function to remove the leading and trailing match of the specified regular expression.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 11/02/2023
+ms.date: 08/05/2024
 adobe-target: true
 ---
 # trim()
@@ -33,7 +33,7 @@ Removes all leading and trailing matches of the specified regular expression.
 
 ### Trim specific substring
 
-The following statement trims *substring* from the start and the end of the *string_to_trim*.
+The following example trims *substring* from the start and the end of the *string_to_trim*.
 
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
@@ -50,11 +50,11 @@ print string_to_trim = string_to_trim, trimmed_string = trim(substring,string_to
 
 |string_to_trim|trimmed_string|
 |---|---|
-|`--<https://bing.com-->`|`<https://bing.com>`|
+|`--https://bing.com--`|`https://bing.com`|
 
 ### Trim non-alphanumeric characters
 
-The next statement trims all non-word characters from start and end of the string.
+The following example trims all non-word characters from start and end of the string.
 
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]

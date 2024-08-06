@@ -149,7 +149,7 @@ When querying the entire view, the materialized part is combined with the `delta
 The main contributors that can impact a materialized view health are:
 
 :::moniker range="azure-data-explorer"
-* **Cluster resources:** Like any other process running on the cluster, materialized views consume resources (CPU, memory) from the cluster. If the cluster is overloaded, adding materialized views to it may cause a degradation in the cluster's performance. Monitor your cluster's health using [cluster health metrics](/azure/data-explorer/using-metrics#cluster-metrics). [Optimized autoscale](/azure/data-explorer/manage-cluster-horizontal-scaling.md#optimized-autoscale-recommended-option) currently doesn't take materialized views health under consideration as part of autoscale rules.
+* **Cluster resources:** Like any other process running on the cluster, materialized views consume resources (CPU, memory) from the cluster. If the cluster is overloaded, adding materialized views to it may cause a degradation in the cluster's performance. Monitor your cluster's health using [cluster health metrics](/azure/data-explorer/using-metrics#cluster-metrics). [Optimized autoscale](/azure/data-explorer/manage-cluster-horizontal-scaling#optimized-autoscale-recommended-option) currently doesn't take materialized views health under consideration as part of autoscale rules.
   * The [materialization process](#how-materialized-views-work) is limited by the amount of memory and CPU it can consume. These limits are defined, and can be changed, in the [materialized views workload group](../workload-groups.md#materialized-views-workload-group).
 ::: moniker-end
   

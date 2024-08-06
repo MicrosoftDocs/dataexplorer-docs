@@ -13,7 +13,7 @@ Update policies are automation mechanisms triggered when new data is written to 
 
 For example, a high-rate trace source table can contain data formatted as a free-text column. The target table can include specific trace lines, with a well-structured schema generated from a transformation of the source table's free-text data using the [parse operator](../query/parse-operator.md). For more information, [common scenarios](update-policy-common-scenarios.md).
 
-The following diagram depicts a high-level view of an update policy. It shows two update policies that are triggered when data in added to the second source table and results in transformed data being added to the two target tables.
+The following diagram depicts a high-level view of an update policy. It shows two update policies that are triggered when data is added to the second source table. Once they're triggered, transformed data is added to the two target tables.
 
 :::image type="content" source="media/updatepolicy/update-policy-overview.png" alt-text="Diagram shows an overview of the update policy.":::
 
@@ -28,7 +28,7 @@ An update policy is subject to the same restrictions and best practices as regul
 >
 > * The source and target table must be in the same database.
 > * The update policy function schema and the target table schema must match in their column names, types, and order.
-
+> * The update policy function can reference tables in other databases. To do this, the update policy must be defined with a `ManagedIdentity` property, and the managed identity must have `viewer` [role](security-roles.md) on the referenced databases.
 Ingesting formatted data improves performance, and CSV is preferred because of it's a well-defined format. Sometimes, however, you have no control over the format of the data, or you want to enrich ingested data, for example, by joining records with a static dimension table in your database.
 
 ## Update policy query
@@ -103,7 +103,7 @@ Update policy management commands include:
 
 ## Update policy is initiated following ingestion
 
-Update policies take effect when data is ingested or moved to a source table, or extents are created in a source table, using any of the following commands:
+Update policies take effect when data is ingested or moved to a source table, or extents are created in a source table. These actions can be done using any of the following commands:
 
 * [.ingest (pull)](../management/data-ingestion/ingest-from-storage.md)
 * [.ingest (inline)](../management/data-ingestion/ingest-inline.md)
@@ -156,34 +156,26 @@ let MySourceTable =
 MyFunction
 ```
 
-## Failures
+## Transactional settings
 
-With the default setting of `IsTransactional:`*`false`*, data can still be ingested to the source table even if the policy doesn't run.
+The update policy `IsTransactional` setting defines whether the update policy is transactional and can affect the behavior of the policy update, as follows:
+* `IsTransactional:false`: If the value is set to the default value, *false*, the update policy doesn't guarantee consistency between data in the source and target table. If an update policy fails, data is ingested only to the source table and not to the target table. In this scenario, ingestion operation is successful.
+* `IsTransactional:true`: If the value is set to *true*, the setting does guarantee consistency between data in the source and target tables. If an update policy fails, data isn't ingested to the source or target table. In this scenario, the ingestion operation is unsuccessful.
 
-Setting `IsTransactional:`*`true`* guarantees consistency between data in the source and target table. However, if the policy conditions fail, data isn't ingested to the source table. Alternatively, depending on conditions, sometimes data is ingested to the source table, but not to the target table. However, if your policy is defined incorrectly, or there's a schema mismatch, data isn't ingested to the source or target table. For example, a mismatch between the query output schema and the target table could be caused by dropping a column from the target table.
+### Handling failures
 
-You can view failures using the [`.show ingestion failures` command](../management/ingestion-failures.md).
+When policy updates fail, they're handled differently based on whether the `IsTransactional` setting is `true` or `false`. Common reasons for update policy failures are:
+
+* A mismatch between the query output schema and the target table.
+* Any query error.
+
+You can view policy update failures using the [`.show ingestion failures` command](ingestion-failures.md) with the following command:
+In any other case, you can manually retry ingestion.
 
 ```kusto
 .show ingestion failures
 | where FailedOn > ago(1hr) and OriginatesFromUpdatePolicy == true
 ```
-
-### Treatment of failures
-
-#### Nontransactional policy
-
-When set to `IsTransactional:`*`false`*, any failure to run the policy is ignored. Ingestion isn't automatically retried. You can manually retry ingestion.
-
-#### Transactional policy
-
-When set to `IsTransactional:`*`true`*, if the ingestion method is `pull`, the Data Management service is involved, and ingestion is automatically retried according to the following conditions:
-
-* Retries are performed until one of following configurable limit settings is met: `DataImporterMaximumRetryPeriod` or `DataImporterMaximumRetryAttempts`
-* By default the `DataImporterMaximumRetryPeriod` setting is two days, and `DataImporterMaximumRetryAttempts`is 10
-* The backoff period starts at 2 minutes, and doubles. So the wait starts with 2 min, then increases to 4 min, to 8 min, to 16 min and so on.
-
-In any other case, you can manually retry ingestion.
 
 ## Example of extract, transform, load
 

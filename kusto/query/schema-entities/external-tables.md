@@ -19,13 +19,13 @@ Unlike tables where data is ingested into your cluster, external tables operate 
 Supported external data stores are:
 
 * Files stored in Azure Blob Storage or in Azure Data Lake. Most commonly the data is stored in some standard format such as CSV, JSON, Parquet, AVRO, etc. For the list of supported formats, refer to [supported formats](../../ingestion-supported-formats.md).
-* SQL Server table.
+* SQL table (SQL Server, MySql, PostgreSql, and Cosmos DB).
 
 See the following ways of creating external tables:
 
 * [Create or alter Azure Blob Storage/ADLS external tables](../../management/external-tables-azure-storage.md)
 * [Create or alter delta external tables](../../management/external-tables-delta-lake.md)
-* [Create and alter SQL Server external tables](../../management/external-sql-tables.md)
+* [Create and alter SQL external tables](../../management/external-sql-tables.md)
 ::: moniker range="azure-data-explorer"
 * [Create external table using Azure Data Explorer web UI Wizard](/azure/data-explorer/external-table)
 ::: moniker-end

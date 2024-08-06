@@ -15,6 +15,7 @@ Related functions:
 
 * [datetime_local_to_utc()](datetime-local-to-utc-function.md)
 * [datetime_utc_to_local()](datetime-utc-to-local-function.md)
+* [datetime-list-timezones()](datetime-list-timezones.md)
 
 | Timezone                         |
 | -------------------------------- |

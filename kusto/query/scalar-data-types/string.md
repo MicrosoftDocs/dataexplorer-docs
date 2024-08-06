@@ -19,6 +19,9 @@ For information on string query operators, see [String operators](../datatypes-s
 > * Internally, strings are encoded in [UTF-8](https://en.wikipedia.org/wiki/UTF-8). Invalid (non-UTF8) characters are replaced with [U+FFFD](https://codepoints.net/U+FFFD) Unicode replacement characters at ingestion time.
 > * Kusto has no data type that is equivalent to a single character. A single character is represented as a string of length 1.
 > * When ingesting the `string` data type, if a single string value in a record exceeds 1MB (measured using UTF-8 encoding), the value is truncated and ingestion succeeds. If a single string value in a record, or the entire record, exceeds the allowed data limit of 64MB, ingestion fails.
+> * When ingesting the `string` data type, if a single string value in a record exceeds 1MB (measured using UTF-8 encoding), the value is truncated and ingestion succeeds. You can increase the `MaxValueSize` of the column by changing its [encoding policy](../../management/alter-encoding-policy.md).
+> * If a single string value in a record, or the entire record, exceeds the allowed data limit of 64MB, ingestion fails.
+
 
 ## `string` literals
 

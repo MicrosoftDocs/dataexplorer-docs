@@ -30,7 +30,7 @@ Removes trailing match of the specified regular expression.
 
 ## Examples
 
-The following statement trims *substring*  from the end of *string_to_trim*.
+The following statement trims *substring* from the end of *string_to_trim*.
 
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
@@ -49,7 +49,9 @@ print string_to_trim = string_to_trim,trimmed_string = trim_end(substring,string
 |--------------|--------------|
 |bing.com      |bing          |
 
-The next statement trims all non-word characters from the end of the string.
+### Trim non-alphanumeric characters
+
+The following example trims all non-word characters from the end of the string.
 
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
@@ -70,3 +72,25 @@ print str = strcat("-  ","Te st",x,@"// $")
 |-  Te st3// $|-  Te st3  |
 |-  Te st4// $|-  Te st4  |
 |-  Te st5// $|-  Te st5  |
+
+### Trim whitespace
+
+The following example trims all spaces from the end of the string.
+:::moniker range="azure-data-explorer"
+> [!div class="nextstepaction"]
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/FindMyPartner?query=H4sIAAAAAAAAA8tJLVEoLinKzEuPL8mPBzJyFWwVHJQUgMAjNScnX0ehPL8oJ0URJKBkzZUDUl6aBNEBVhlTrA0ULwDyS7hAijAMQxXQASsCsXJTU%2BJT81KAKkA8EFMDbrIOmi5NAP6lDgenAAAA" target="_blank">Run the query</a>
+::: moniker-end
+
+```kusto
+let string_to_trim = @"    Hello, world!    ";
+let substring = @"\s+";
+print
+    string_to_trim = string_to_trim,
+    trimmed_end = trim_end(substring, string_to_trim)
+```
+
+**Output**
+
+|string_to_trim|trimmed_end|
+|---|---|
+|    Hello, world!    	|    Hello, world!|

@@ -104,12 +104,12 @@ The following query returns a count of all storm events where the event type is 
 
 :::moniker range="azure-data-explorer"
 > [!div class="nextstepaction"]
-> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAwsuyS/KdS1LzSsp5uWqUSjPSC1KVQDzQyoLUhVsbRWUQvKL8hJT8pUU8ouQZBRBMhmleSmpRcUgMxTCM/NSlEBmJOeX5pUAAJ49NlVYAAAA" target="_blank">Run the query</a>
+> <a href="https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAwsuyS%2FKdS1LzSsp5qpRKM9ILUpVAHNDKgtSFWxtFZRC8ovyElPylRTyi9BlMkrzUlKLikFGKIRn5qUoAY1Izi%2FNKwEAnoJgt1YAAAA%3D" target="_blank">Run the query</a>
 ::: moniker-end
 
 ```kusto
 StormEvents
-| where EventType == "Tornado" or EventType != "Thunderstorm Wind"
+| where EventType == "Tornado" or EventType == "Thunderstorm Wind"
 | count
 ```
 
