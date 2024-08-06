@@ -19,8 +19,8 @@ jobs:
             DEBUG_IS_CODEOWNER=false
             echo "is_codeowner=false" >> $GITHUB_ENV
           fi
-          echo "::debug::Team members - $TEAM_MEMBERS"
-          echo "::debug::is_codeowner - $DEBUG_IS_CODEOWNER"
+          echo "::debug::Team members -- $TEAM_MEMBERS"
+          echo "::debug::is_codeowner -- $DEBUG_IS_CODEOWNER"
 
       - name: Bypass approval if author is a code owner
         id: bypass-approval
