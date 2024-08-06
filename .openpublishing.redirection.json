@@ -127,7 +127,7 @@
     },
     {
       "source_path": "data-explorer/kusto/management/query-throttling-policy.md",
-      "redirect_url": "/azure/data-explorer/kusto/management/request-rate-limit-policy",
+      "redirect_url": "data-explorer/kusto/management/request-rate-limit-policy",
       "redirect_document_id": false
     },
     {
@@ -157,7 +157,7 @@
     },
     {
       "source_path": "data-explorer/kusto/management/merge-extents.md",
-      "redirect_url": "/azure/data-explorer/kusto/management/extents-overview",
+      "redirect_url": "data-explorer/kusto/management/extents-overview",
       "redirect_document_id": false
     },
     {

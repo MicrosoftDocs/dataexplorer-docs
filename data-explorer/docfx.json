@@ -7,6 +7,7 @@
           "**/*.yml"
         ],
         "exclude": [
+          "**/kusto-test/**",
           "**/obj/**",
           "**/includes/**",
           "_themes/**",
@@ -117,7 +118,7 @@
       ],
       "author": "shsagir",
       "ms.author": "shsagir",
-      "ms.service": "data-explorer",
+      "ms.service": "azure-data-explorer",
       "services": "data-explorer",
       "titleSuffix": "Azure Data Explorer"
     },

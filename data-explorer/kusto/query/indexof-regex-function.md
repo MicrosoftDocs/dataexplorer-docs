@@ -7,7 +7,7 @@ ms.date: 12/28/2022
 ---
 # indexof_regex()
 
-Returns the zero-based index of the first occurrence of a specified lookup [regular expression](re2.md) within the input string.
+Returns the zero-based index of the first occurrence of a specified lookup [regular expression](regex.md) within the input string.
 
 See [`indexof()`](indexof-function.md).
 
@@ -22,7 +22,7 @@ See [`indexof()`](indexof-function.md).
 | Name | Type | Required | Description |
 |--|--|--|--|
 |*string*| `string` |  :heavy_check_mark: | The source string to search.|  
-|*match*| `string` |  :heavy_check_mark: | The [regular expression](re2.md) lookup string.|
+|*match*| `string` |  :heavy_check_mark: | The [regular expression](regex.md) lookup string.|
 |*start*| `int` | | The search start position. A negative value will offset the starting search position from the end of the *string* by this many steps: `abs(`*start*`)`. |
 |*length*| `int` | | The number of character positions to examine. A value of -1 means unlimited length.|
 |*occurrence*| `int` | | The number of the occurrence. The default is 1.|
