@@ -15,10 +15,14 @@ jobs:
           TEAM_MEMBERS=$(curl -s -H "Authorization: token $ACTION_TOKEN" \
             https://api.github.com/orgs/MicrosoftDocs/teams/kusto-doc-writers/members)
           # echo "::debug::Team members response -- $TEAM_MEMBERS"
+          echo "::debug::Checking if login in team"
+          echo "::debug::Login -- ${{ github.actor }}"
           if echo "$TEAM_MEMBERS" | grep -q "\"login\": \"${{ github.actor }}\""; then
+            echo "::debug::Login Found"
             DEBUG_IS_CODEOWNER=true
             echo "is_codeowner=true" >> $GITHUB_ENV
           else
+            echo "::debug::Login NOT Found"
             DEBUG_IS_CODEOWNER=false
             echo "is_codeowner=false" >> $GITHUB_ENV
           fi
