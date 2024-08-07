@@ -3,7 +3,7 @@ title: 'Ingest data from Kafka into Azure Data Explorer'
 description: In this article, you learn how to ingest (load) data into Azure Data Explorer from Kafka.
 ms.reviewer: ankhanol
 ms.topic: how-to
-ms.date: 11/08/2021
+ms.date: 08/07/2024
 
 #Customer intent: As an integration developer, I want to build integration pipelines from Kafka into Azure Data Explorer, so I can make data available for near real time analytics.
 ---
