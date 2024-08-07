@@ -105,15 +105,15 @@ Parameters significantly improve dashboard rendering performance, and enable you
 
 ## Tile legend
 
-You can change the position of the legend in your tiles and use the legend to interact with the data visualization in your tile.
+You can change the position of the legend in your tiles and use the legend to interact with the data.
 
 ### Change the legend location
 
-If you have Edit rights on a dashboard, you can change the location of the legend in your tile. Toggle to **Edit** mode and select the **Edit tile** pencil icon. In the **Visual formatting** pane, under **Legend**, you can select your location preference.
+If you have edit rights on a dashboard, you can change the location of the legend in your tile. Toggle to **Edit** mode and select the **Edit tile** pencil icon. In the **Visual formatting** pane, under **Legend**, you can select your location preference.
 
 ### Interact with your data
 
-You can use the legend to interact with the data in your tile. You can select which element to view by selecting the specific element in the legend. Use ctrl + shift to select more than one element. Selected elements show in black text. Use the **Invert** button to invert your selection. Use the up and down arrows to scroll between the individual elements. The **Search** button allows you to search for a specific data element in your tile.
+You can use the legend to interact with the data in your tile. You can change what data you view by selecting the specific element in the legend. Use <kbd>Ctrl</kbd>+<kbd>shift</kbd> to select more than one element. Selected elements show in black text. The **Search** button allows you to search for a specific data element in your tile. Use the **Invert** button to invert your selection. Use the up and down arrows to scroll between the individual elements.
 
 :::image type="content" source="media/adx-dashboards/interactive-legend.png" alt-text="Screenshot showing the buttons to use the legend to interact with your data.":::
 
