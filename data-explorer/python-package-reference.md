@@ -77,7 +77,6 @@ Python engine 3.11.7 + common data science and ML packages
 | lxml | 5.2.1 |
 | marisa-trie | 1.1.0 |
 | MarkupSafe | 2.1.5 |
-| matplotlib | 3.8.4 |
 | mlxtend | 0.23.1 |
 | mpmath | 1.3.0 |
 | msgpack | 1.0.8 |
@@ -240,7 +239,6 @@ Python engine 3.11.7 + common data science and ML packages + deep learning packa
 | Markdown | 3.6 |
 | markdown-it-py | 3.0.0 |
 | MarkupSafe | 2.1.5 |
-| matplotlib | 3.8.4 |
 | mdurl | 0.1.2 |
 | ml-dtypes | 0.3.2 |
 | mlflow | 2.13.0 |
