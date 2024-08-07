@@ -119,7 +119,7 @@ Splunk uses the `table` command to select which columns to include in the result
 | Splunk | `table` |  `Event.Rule=330009.2`<br />&#124; `table rule, state` |
 | Kusto | `project` | `Office_Hub_OHubBGTaskError`<br />&#124; `project exception, state` |
 
-Splunk uses the `field -` command to select which columns to exclude from the results. Kusto has a `project-away` operator that does the same.
+Splunk uses the `fields -` command to select which columns to exclude from the results. Kusto has a `project-away` operator that does the same.
 
 | Product | Operator | Example |
 |:---|:---|:---|
