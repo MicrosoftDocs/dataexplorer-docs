@@ -14,7 +14,7 @@ jobs:
         run: |
           TEAM_MEMBERS=$(curl -s -H "Authorization: token $ACTION_TOKEN" \
             https://api.github.com/orgs/MicrosoftDocs/teams/kusto-doc-writers/members)
-          echo "::debug::Team members response -- $TEAM_MEMBERS"
+          # echo "::debug::Team members response -- $TEAM_MEMBERS"
           if echo "$TEAM_MEMBERS" | grep -q "\"login\": \"${{ github.actor }}\""; then
             DEBUG_IS_CODEOWNER=true
             echo "is_codeowner=true" >> $GITHUB_ENV
@@ -23,7 +23,6 @@ jobs:
             echo "is_codeowner=false" >> $GITHUB_ENV
           fi
           echo "::debug::is_codeowner -- $DEBUG_IS_CODEOWNER"
-
       - name: Bypass approval if author is a code owner
         id: bypass-approval
         if: steps.check-author.outputs.is_codeowner == 'true'
