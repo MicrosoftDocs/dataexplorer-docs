@@ -113,7 +113,7 @@ If you have edit rights on a dashboard, you can change the location of the legen
 
 ### Interact with your data
 
-You can use the legend to interact with the data in your tile. You can change what data you view by selecting the specific element in the legend. Use <kbd>Ctrl</kbd>+<kbd>shift</kbd> to select more than one element. Selected elements show in black text. The **Search** button allows you to search for a specific data element in your tile. Use the **Invert** button to invert your selection. Use the up and down arrows to scroll between the individual elements.
+You can use the legend to interact with the data in your tile. You can change what data you view by selecting the specific item in the legend. Use <kbd>Ctrl</kbd> to add or remove items from the selection, hold <kbd>shift</kbd> to select a range. Items not selected are greyed out. The **Search** button allows you to search and filter items. Use the **Invert** button to invert your selection. Use the up and down arrows to scroll between the individual items.
 
 :::image type="content" source="media/adx-dashboards/interactive-legend.png" alt-text="Screenshot showing the buttons to use the legend to interact with your data.":::
 
