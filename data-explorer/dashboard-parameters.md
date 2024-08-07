@@ -57,7 +57,7 @@ In the **Add parameter** pane, configure the following properties:
 |**Data type**|The data type of the parameter values.|
 |**Show on pages**|Select the pages where this parameter will be displayed. The **Select all** option shows the parameter on all pages.|
 |**Source**|The source of the parameter values: <ul><li>**Fixed values**: Manually introduced static filter values. </li><li>**Query**: Dynamically introduced values using a KQL query.</li></ul>|
-|**Default value**|The default value of the filter. The filter will start always with the default value upon initial rendering of the dashboard.
+|**Default value**|The default value of the filter. The filter will start always with the default value upon initial rendering of the dashboard.|
 |**Add a "Select all" value**|Applicable only to single selection and multiple selection parameter types. Used to retrieve data for all the parameter values. This value should be built into the query to provide the functionality. For more examples of building such queries, see [Use the multiple-selection query-based parameter](#multiple-selection-fixed-values-parameters).|
 
 ## Manage parameters
