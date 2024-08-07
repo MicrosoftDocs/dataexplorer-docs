@@ -15,9 +15,9 @@ ms.date: 11/08/2021
 
 By default, the Kafka connector uses the application method for authentication during ingestion. To authenticate using managed identity:
 
-1. Assign your cluster a managed identity and grant your storage account read permissions. For more information see, [Ingest data using managed identity authentication](ingest-data-managed-identity.md).
+1. Assign your cluster a managed identity and grant your storage account read permissions. For more information, see [Ingest data using managed identity authentication](ingest-data-managed-identity.md).
 
-1. In your **adx-sink-config.json** file set `aad.auth.strategy` to `managed_identity` and ensure that `aad.auth.appid` is set to the correct value.
+1. In your **adx-sink-config.json** file, set `aad.auth.strategy` to `managed_identity` and ensure that `aad.auth.appid` is set to the correct value.
 
 1. Use a [private instance metadata service token](/azure/active-directory/managed-identities-azure-resources/how-to-use-vm-token) instead of the [Microsoft Entra service principal](#create-a-microsoft-entra-service-principal).
 
@@ -41,7 +41,7 @@ az kusto database delete --cluster-name "<cluster name>" --database-name "<datab
 
 * Learn more about [Big data architecture](/azure/architecture/solution-ideas/articles/big-data-azure-data-explorer).
 * Learn [how to ingest JSON formatted sample data into Azure Data Explorer](./ingest-json-formats.md?tabs=kusto-query-language).
-* For additional Kafka labs:
+* Learn more with Kafka labs:
    * [Hands on lab for ingestion from Confluent Cloud Kafka in distributed mode](https://github.com/Azure/azure-kusto-labs/blob/master/kafka-integration/confluent-cloud/README.md)
    * [Hands on lab for ingestion from HDInsight Kafka in distributed mode](https://github.com/Azure/azure-kusto-labs/tree/master/kafka-integration/distributed-mode/hdinsight-kafka)
    * [Hands on lab for ingestion from Confluent IaaS Kafka on AKS in distributed mode](https://github.com/Azure/azure-kusto-labs/blob/master/kafka-integration/distributed-mode/confluent-kafka/README.md)
