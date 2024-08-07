@@ -101,7 +101,21 @@ To pin a query:
 
 ## Use parameters
 
-Parameters significantly improve dashboard rendering performance, and enable you to use filter values as early as possible in the query. Filtering is enabled when the parameter is included in the query associated with your tile(s).  For more information about how to set up and use different kinds of parameters, see [Use parameters in Azure Data Explorer dashboards](dashboard-parameters.md).
+Parameters significantly improve dashboard rendering performance, and enable you to use filter values as early as possible in the query. Filtering is enabled when the parameter is included in the query associated with a tile. For more information about how to set up and use different kinds of parameters, see [Use parameters in Azure Data Explorer dashboards](dashboard-parameters.md).
+
+## Tile legend
+
+You can change the position of the legend in your tiles and use the legend to interact with the data visualization in your tile.
+
+### Change the legend location
+
+If you have Edit rights on a dashboard, you can change the location of the legend in your tile. Toggle to **Edit** mode and select the **Edit tile** pencil icon. In the **Visual formatting** pane, under **Legend**, you can select your location preference.
+
+### Interact with your data
+
+You can use the legend to interact with the data in your tile. You can select which element to view by selecting the specific element in the legend. Use ctrl + shift to select more than one element. Selected elements show in black text. Use the **Invert** button to invert your selection. Use the up and down arrows to scroll between the individual elements. The **Search** button allows you to search for a specific data element in your tile.
+
+:::image type="content" source="media/adx-dashboards/interactive-legend.png" alt-text="Screenshot showing the buttons to use the legend to interact with your data.":::
 
 ## View query
 
