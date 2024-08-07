@@ -6,9 +6,9 @@ ms.topic: how-to
 ms.date: 03/03/2024
 ---
 
-# Visualize data with Azure Data Explorer dashboards 
+# Visualize data with Azure Data Explorer dashboards
 
-Azure Data Explorer is a fast and highly scalable data exploration service for log and telemetry data. Explore your data from end-to-end in the Azure Data Explorer web application, starting with [data ingestion](ingest-data-wizard.md), running [queries](web-query-data.md), and ultimately building dashboards. 
+Azure Data Explorer is a fast and highly scalable data exploration service for log and telemetry data. Explore your data from end-to-end in the Azure Data Explorer web application, starting with [data ingestion](ingest-data-wizard.md), running [queries](web-query-data.md), and ultimately building dashboards.
 
 A dashboard is a collection of tiles, optionally organized in pages, where each tile has an underlying query and a visual representation. Using the web UI, you can natively export Kusto Query Language (KQL) queries to a dashboard as visuals and later modify their underlying queries and visual formatting as needed. In addition to ease of data exploration, this fully integrated Azure Data Explorer dashboard experience provides improved query and visualization performance.
 
@@ -109,7 +109,7 @@ You can view the query in either editing or viewing mode. Editing the underlying
 
 1. Browse to your dashboard.
 1. On the tile you want to explore, select the **More menu [...]** > **View query**.
-    
+
     A pane opens with the query and results table.
 1. Select **New query tab**. Proceed to edit the query in the [Azure Data Explorer web UI query pane](web-ui-query-overview.md).
 
@@ -139,7 +139,7 @@ Use the share menu to [grant permissions](#grant-permissions) for a Microsoft En
 ### Grant permissions
 
 To grant permissions to a user in the **Dashboard permissions** pane:
- 
+
 1. Enter the Microsoft Entra user or Microsoft Entra group in **Add new members**.
 1. In the **Permission** level, select one of the following values: **Can view** or **Can edit**.
 1. Select **Add**.
@@ -257,7 +257,7 @@ Pages are optional containers for tiles. You can use pages to organize tiles int
 
 Auto refresh is a feature that allows you to automatically update the data on a dashboard without manually reloading the page or clicking a refresh button.
 
-The default auto refresh rate can be set by a database editor. Both editors and viewers can change the actual rate of auto refresh while viewing a dashboard. 
+The default auto refresh rate can be set by a database editor. Both editors and viewers can change the actual rate of auto refresh while viewing a dashboard.
 
 :::image type="content" source="media/adx-dashboards/auto-refresh-times.png" alt-text="Screenshot of the different time intervals available in auto refresh in dashboards.":::
 
@@ -278,3 +278,4 @@ However, database editors might want to limit the minimum refresh rate that any 
 
 * [Use parameters in Azure Data Explorer dashboards](dashboard-parameters.md)
 * [Customize Azure Data Explorer dashboard visuals](dashboard-customize-visuals.md)
+* [Explore data in dashboard tiles (preview)](dashboard-explore-data.md)

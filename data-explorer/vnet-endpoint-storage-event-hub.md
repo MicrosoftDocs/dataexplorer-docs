@@ -3,12 +3,12 @@ title: Create a private or service endpoint to resources used by data connection
 description: Learn how to enable a private or service endpoint to resources used by data connections, such as event hub and Storage
 ms.reviewer: gunjand
 ms.topic: how-to
-ms.date: 10/12/2020
+ms.date: 07/23/2024
 ---
 # Create a private or service endpoint to event hub and Azure Storage
 
-> [!IMPORTANT]
-> Consider moving to an Azure Private Endpoint based solution for implementing network security with Azure Data Explorer. It is less error-prone and provides [feature parity](security-network-overview.md#private-endpoint-vs-virtual-network-injection).
+> [!WARNING]
+> Virtual Network Injection will be retired for Azure Data Explorer by 1 February 2025. For more information on the deprecation, see [Deprecation of Virtual Network Injection for Azure Data Explorer](https://aka.ms/adx.security.vnet.deprecation).
 
 [Azure Virtual Network (VNet)](/azure/virtual-network/virtual-networks-overview) enables many types of Azure resources to securely communicate with each other. [Azure Private Link](/azure/private-link/) enables you to access Azure Services and Azure hosted customer-owned/partner services over a Private Endpoint in your virtual network. A [Private Endpoint](/azure/private-link/private-endpoint-overview) uses an IP address from your virtual network’s address space for the Azure service to securely connect between Azure Data Explorer and Azure services such as Azure Storage and event hub. Azure Data Explorer accesses the Private Endpoint of the storage accounts or event hubs over the Microsoft backbone, and all communication, for example, data export, external tables, and data ingestion, takes place over the private IP address. 
 

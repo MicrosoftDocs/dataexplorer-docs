@@ -1562,6 +1562,8 @@ items:
             href: dcount-intersect-plugin.md
           - name: infer_storage_schema plugin
             href: infer-storage-schema-plugin.md
+          - name: infer_storage_schema_with_suggestions plugin
+            href: infer-storage-schema-with-suggestions-plugin.md
           - name: ipv4_lookup plugin
             href: ipv4-lookup-plugin.md
           - name: ipv6_lookup plugin
@@ -1677,9 +1679,9 @@ items:
             href: ../concepts/overflow.md
   - name: Reference material for Kusto Query Language
     items:
-      - name: RE2 syntax
-        href: re2.md
-        displayName: RE2 library, regex, regular expressions
+      - name: Regex syntax
+        href: regex.md
+        displayName: regex, regular expressions
       - name: JSONPath syntax
         href: jsonpath.md
       - name: SQL to Kusto cheat sheet
