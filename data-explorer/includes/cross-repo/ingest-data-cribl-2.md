@@ -33,18 +33,9 @@ Create a target table for the incoming data and an ingestion mapping to map the 
     .add database <DatabaseName> ingestors ('aadapp=<ApplicationID>') 'App Registration'
     ```
 
-1. If needed, create an [ingestion batching policy](/azure/data-explorer/kusto/management/batching-policy) on the table for configurable queued ingestion latency.
+## Create Cribl Stream destination
 
-    > [!TIP]
-    > The ingestion batching policy is a performance optimizer and includes three parameters. The first condition satisfied triggers ingestion into the Azure Data Explorer table.
-
-    ```kusto
-    .alter table SyslogMapping policy ingestionbatching @'{"MaximumBatchingTimeSpan":"00:00:15", "MaximumNumberOfItems": 100, "MaximumRawDataSizeMB": 300}'
-    ```
-
-## Connect a KQL table to Cribl Stream
-
-The following section describes how to connect your KQL table to Cribl Stream. For each KQL table that you want to connect, you need a separate Cribl Stream destination connector.
+The following section describes how to create a Cribl Stream destination which will write data to your table in Kusto.Each table requires a separate Cribl Stream destination connector.
 
 ### Select destination
 
