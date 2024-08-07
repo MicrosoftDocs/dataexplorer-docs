@@ -113,7 +113,15 @@ If you have edit rights on a dashboard, you can change the location of the legen
 
 ### Interact with your data
 
-You can use the legend to interact with the data in your tile. You can change what data you view by selecting the specific item in the legend. Use <kbd>Ctrl</kbd> to add or remove items from the selection, hold <kbd>shift</kbd> to select a range. Items not selected are greyed out. The **Search** button allows you to search and filter items. Use the **Invert** button to invert your selection. Use the up and down arrows to scroll between the individual items.
+You can use the legend to interact with the data in your tile. You can change what data you view by selecting the specific item in the legend. Use <kbd>Ctrl</kbd> to add or remove items from the selection, hold <kbd>shift</kbd> to select a range. Items not selected are greyed out.
+
+The **Search** button allows you to search and filter items.
+
+Use the **Invert** button to invert your selection.
+
+The **Up** and **Down** arrows navigate through the list in the following ways:
+* When one item is selected, the up and down arrows select the previous or next item.
+* When more than one item is selected, the up and down arrows scroll through the list of items and the data for the selected item you navigate to is highlighted.
 
 :::image type="content" source="media/adx-dashboards/interactive-legend.png" alt-text="Screenshot showing the buttons to use the legend to interact with your data.":::
 
