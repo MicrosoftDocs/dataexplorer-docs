@@ -9,21 +9,34 @@ In the **New Data Explorer** window, in **General Settings** set the following s
 
 |Setting  |Value| Description  |
 |---------|---------|---------|
-|*Output ID*|Output ID, for instance, KustoDestination |The name used to identify your destination. |
+|*Output ID*|<OutputID>, for instance, *KustoDestination* |The name used to identify your destination. |
 | *Ingestion Mode* |**Batching** (default) or **Streaming** |The settings for ingestion mode. Batching allows your table to pull batches of data from a Cribl storage container when ingesting large amounts of data over a short amount of time. Streaming sends data directly to the target KQL table. Streaming is useful for ingesting smaller amounts of data, or for example, sending a critical alert in real-time. Streaming can achieve lower latency than batching. |
-|*Retries* | |Available when Ingestion mode is **Streaming**. Whether to honor a `Retry-After header`, provided that the header specifies a delay no longer than 180 seconds |
 | *Cluster base URI* | [base URI](#ingestion-uri) |The [base URI](#ingestion-uri).|
 | *Ingestion service URI*| [ingestion URI](#ingestion-uri) |Displays when **Batching** mode is selected. The [ingestion URI](#ingestion-uri). |
-| *Database name* | |The name of your target database.|
-| *Table name* | |The name of your target table.|
+| *Database name* |<DatabaseName> |The name of your target database.|
+| *Table name* |<TableName> |The name of your target table.|
 |*Validate database settings*| **Yes** (default) or **No**. |Validates the database name and credentials you entered when you save or start your destination. It validates the table name, except when **Add mapping object** is on. This setting should be disabled if your app doesn't have both *Database Viewer* and *Table Viewer* roles.|
 | *Add mapping object* | **Yes** or **No** (default.) |Displayed only when Batching mode is selected instead of the default **Data mapping** text field. Selecting **Yes** opens a window to enter a data mapping as a JSON object. |
-| *Data mapping*| Name of the mapping schema defined in the [Create a target table](#create-a-target-table) step | The default view when **Add mapping object** is set to **No**. The name of the mapping schema defined in the [Create a target table](#create-a-target-table) step.|
+| *Data mapping*| The mapping schema name as defined in the [Create a target table](#create-a-target-table) step. | The mapping schema name. This is the default view when **Add mapping object** is set to **No**. |
 | *Compress* | gzip (default) | When *Data format* is set to Parquet, *Compress* isn't available. |
 | *Data format*| JSON (default,) Raw, or Parquet. | The data format. Parquet is only available in **Batching** mode and only supported on Linux. Choosing Parquet opens a Parquet Settings tab, to select the Parquet schema.|
 |*Backpressure behavior*| **Block** (default) or **Drop** | Choose whether to block or drop events when receivers are exerting backpressure.|
 |*Tags*|Optional values | Optional tags to filter and group destinations in Cribl Stream’s Manage Destinations page. Use a tab or hard return between tag names. These tags aren’t added to processed events. |
 |*Persistent Queue* | | When **Ingestion mode** is set to **Streaming**, and **Backpressure behavior** is set to **Persistent Queue**, more settings become available. |
+
+#### Retries section
+
+Displays when Ingestion mode is set to **Streaming**.
+
+|Setting  |Value| Description  |
+|---------|---------|---------|
+|*Honor Retry-After header* | **Yes** or **No** |Whether to honor a `Retry-After` header. When enabled, a received `Retry-After` header takes precedence is used before other configured options in the Retries section, as long as the header specifies a delay of 180 seconds or less.  Otherwise, `Retry-After` headers are ignored.|
+|*Settings for failed HTTP requests*|HTTP status codes|A list of HTTP status codes to automatically retry if they fail to connect. Cribl Stream automatically retries 429 failed requests.|
+|*Retry timed-out HTTP requests*|**On** or **Off**|When set, additional retry behaviour settings become available.|
+|Pre-backoff interval (ms)|1000 ms (default) | The wait time before retrying.|
+|Backoff multiplier|2 s (default) | Used as the base for exponential backoff algorith to determine the interval between retries.|
+|*Backoff limit (ms)*| 10,000 ms (default)| The maximum backoff interval for the final streaming retry. The minimum is 10,000 milliseconds (10 seconds), the maximum is 180,000 (3 minutes.)|
+<!--confirm Retry timed out ... on or off-->
 
 When completed, select **Next**.
 
@@ -33,10 +46,10 @@ Select **Authentication Settings** in the sidebar. Use the values you saved in [
 
 |Setting  |Value| Description  |
 |---------|---------|---------|
-|*Tenant ID*| |Use the `tenant` value you saved in [Create a Microsoft Entra service principal](#create-a-microsoft-entra-service-principal). |
-| *Client ID*| | Use the `appId` values you saved in [Create a Microsoft Entra service principal](#create-a-microsoft-entra-service-principal).  |
-|*Scope*| |`<baseuri>/.default` Use the value from [base URI](#ingestion-uri) for *baseuri*. |
-|*Authentication method*| |Options are **Client secret** (the client secret of the Entra application you created in [Create a Microsoft Entra service principal](#create-a-microsoft-entra-service-principal),)  **Client secret (text secret)**, or **Certificate** (a certificate whose public key you registered/will register for the Entra application you created in [Create a Microsoft Entra service principal](#create-a-microsoft-entra-service-principal)). |
+|*Tenant ID*|<TenantID> |Use the `tenant` value you saved in [Create a Microsoft Entra service principal](#create-a-microsoft-entra-service-principal). |
+| *Client ID*|<ClientID> | Use the `appId` values you saved in [Create a Microsoft Entra service principal](#create-a-microsoft-entra-service-principal).  |
+|*Scope*| `<baseuri>/.default`| Use the value from [base URI](#ingestion-uri) for *baseuri*. |
+|*Authentication method*| **Client secret**, **Client secret (text secret)**, or **Certificate**  |Options are **Client secret** Use the client secret of the Entra application you created in [Create a Microsoft Entra service principal](#create-a-microsoft-entra-service-principal) for **Client secret**. For  **Certificate** your certificate will use the public key you registered/will register for the Entra application you created in [Create a Microsoft Entra service principal](#create-a-microsoft-entra-service-principal). |
 
 Then select **Next**.
 
@@ -50,12 +63,12 @@ Select **Advanced Settings** from the sidebar.  The following describes the adva
 |---------|---------|---------|
 | *Flush immediately* | **Yes** or **No** (default.) | Set to **Yes** to override data aggregation in Kusto. For more information, see [Best practices for the Kusto Ingest library](../../kusto/api/netfx/kusto-ingest-best-practices.md).|
 |*Retain blob on success* | **Yes** or **No** (default.) | Set to **Yes** to retain data blob upon ingestion completion.|
-|*Extent tags* | |Set tags to partitioned extents of the target table. |
+|*Extent tags* |<ExtentTag, ET2,...> |Set tags, if desired, to partitioned extents of the target table. |
 |*Enforce uniqueness via tag values* | | Select **Add value** to specify an `ingest-by` value list to use to filter incoming extents and discard the extents matching a listed value. For more information, see [Extents (data shards)](../../kusto/management/extents-overview.md)|
 |*Report level* | **DoNotReport**, **FailuresOnly** (default,) and **FailuresAndSuccesses**.|The ingestion status reporting level. |
 |*Report method* |**Queue** (default,) **Table**, and **QueueAndTable** (Recommended.) |Target for ingestion status reporting. |
 |*Additional fields* | |Add more configuration properties, if desired, to send to the ingestion service.|
-|*Staging location* |/tmp (default) |Local filesystem location in which to buffer files before compressing and moving them to the final destination. Cribl recommends a stable and high-performance location.|
+|*Staging location* |`/tmp` (default) |Local filesystem location in which to buffer files before compressing and moving them to the final destination. Cribl recommends a stable and high-performance location.|
 |*File name suffix expression* | `.${C.env["CRIBL_WORKER_ID"]}.${__format}${__compression === "gzip" ? ".gz" : ""}`(default)| A JavaScript expression enclosed in quotes or backticks used as the output filename suffix.  `format` can be *JSON* or *raw*, and `__compression` can be *none* or *gzip*. A random sequence of six characters is appended to the end of the file names to prevent them from getting overwritten.|
 | *Max file size (MB)* |32 MB (default) |The maximum uncompressed output file size that files can reach before they close and are moved to the storage container.|
 | *Max file open time (sec)* | 300 seconds (default)|The maximum amount of time, in seconds, to write to a file before it's closed and is moved to the storage container.  |
@@ -65,7 +78,7 @@ Select **Advanced Settings** from the sidebar.  The following describes the adva
 | *Remove empty staging dirs* | **Yes** (default) or **No** | When toggled on Cribl Stream deletes empty staging directories after moving files. This prevents the proliferation of orphaned empty directories. When enabled, exposes *Staging cleanup period*.|
 | *Staging cleanup period* | 300 (default) | The amount in time in seconds until empty directories are deleted when *Remove staging dirs* is enabled. Displays when *Remove empty staging dirs* is set to **Yes**. The minimum value is 10 seconds, and maximum is 86,400 seconds (every 24 hours.) |
 | *Environment* | | When empty (default) the configuration is enabled everywhere. If you’re using GitOps, you can specify the Git branch where you want to enable the configuration. |
-<!--does this field exist? | *Add output ID* | Options are **On** or **Off**. Set to **On** if you want your destination name appended to staging directory pathnames for organization or troubleshooting between multiple destinations. |
+<!--does this field exist? | *Add output ID* |  **On** or **Off** | Set to **On** if you want your destination name appended to staging directory pathnames for organization or troubleshooting between multiple destinations. |
 -->
 When completed, select **Save**.
 

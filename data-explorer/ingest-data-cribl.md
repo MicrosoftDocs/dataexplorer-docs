@@ -24,15 +24,6 @@ For a complete list of data connectors, see [Data integrations overview](integra
 
 [!INCLUDE [ingest-data-cribl-3](includes/cross-repo/ingest-data-cribl-3.md)]
 
-<!--## Clean up resources
-
-To delete the Azure Data Explorer resources, use [az cluster delete](/cli/azure/kusto/cluster#az-kusto-cluster-delete) or [az Kusto database delete](/cli/azure/kusto/database#az-kusto-database-delete):
-
-```azurecli-interactive
-az kusto cluster delete -n <cluster name> -g <resource group name>
-az kusto database delete -n <database name> --cluster-name <cluster name> -g <resource group name>
-```
--->
 ## Related content
 
 * [Data integrations overview](integrate-data-overview.md)
