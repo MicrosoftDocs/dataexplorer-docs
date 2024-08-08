@@ -1,0 +1,38 @@
+name: Bypass Code Owner Approval
+on:
+  pull_request:
+    types: [opened, synchronize, reopened]
+
+jobs:
+  bypass_approval:
+    runs-on: ubuntu-latest
+    env:
+      ACTION_TOKEN_SS: ${{ secrets.ACTIONTOKEN }}
+      ACTION_TOKEN_YS: ${{ secrets.ACTIONTOKEN_YS }}
+    steps:
+      - name: Approve PR if author is a code owner
+        id: check-author
+        run: |
+          echo "Check if PR author is a code owner"
+          TEAM_MEMBERS=$(curl -s -H "Authorization: token $ACTION_TOKEN_SS" \
+            https://api.github.com/orgs/MicrosoftDocs/teams/kusto-doc-writers/members)
+          echo "Checking if login in team -- ${{ github.actor }}"
+          IS_CODEOWNER=false
+          if echo "$TEAM_MEMBERS" | grep -q "\"login\": \"${{ github.actor }}\""; then
+            echo "Login Found"
+            IS_CODEOWNER=true
+          fi
+          echo "is_codeowner -- $IS_CODEOWNER"
+
+          if $IS_CODEOWNER; then
+            echo "Bypassing approval for code owner"
+            if [ "${{ github.actor }}" == "shsagir" ]; then
+              ACTION_TOKEN=$ACTION_TOKEN_SS
+            else
+              ACTION_TOKEN=$ACTION_TOKEN_YS
+            fi
+            curl -s -X POST -H "Authorization: token $ACTION_TOKEN" \
+              -H "Accept: application/vnd.github.v3+json" \
+              https://api.github.com/repos/${{ github.repository }}/pulls/${{ github.event.pull_request.number }}/reviews \
+              -d '{"event":"APPROVE"}'
+          fi
