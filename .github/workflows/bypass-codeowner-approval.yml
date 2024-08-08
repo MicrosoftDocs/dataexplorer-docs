@@ -27,9 +27,9 @@ jobs:
           if $IS_CODEOWNER; then
             echo "Bypassing approval for code owner"
             if [ "${{ github.actor }}" == "shsagir" ]; then
-              ACTION_TOKEN=$ACTION_TOKEN_SS
-            else
               ACTION_TOKEN=$ACTION_TOKEN_YS
+            else
+              ACTION_TOKEN=$ACTION_TOKEN_SS
             fi
             curl -s -X POST -H "Authorization: token $ACTION_TOKEN" \
               -H "Accept: application/vnd.github.v3+json" \
