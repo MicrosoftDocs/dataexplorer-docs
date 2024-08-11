@@ -4,10 +4,11 @@ description: Learn how to use the sequence_detect plugin to detect sequence occu
 ms.reviewer: alexans
 ms.topic: reference
 ms.date: 01/22/2023
+monikerRange: "azure-data-explorer || microsoft-fabric"
 ---
 # sequence_detect plugin
 
-> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)] [!INCLUDE [monitor](../includes/applies-to-version/monitor.md)] [!INCLUDE [sentinel](../includes/applies-to-version/sentinel.md)]
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)] 
 
 Detects sequence occurrences based on provided predicates. The plugin is invoked with the [`evaluate`](evaluate-operator.md) operator.
 

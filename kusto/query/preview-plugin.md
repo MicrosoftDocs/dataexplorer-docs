@@ -4,10 +4,11 @@ description: Learn how to use the preview plugin to return two tables, one with 
 ms.reviewer: alexans
 ms.topic: reference
 ms.date: 01/12/2023
+monikerRange: "azure-data-explorer || microsoft-fabric"
 ---
 # preview plugin
 
-> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)] [!INCLUDE [monitor](../includes/applies-to-version/monitor.md)] [!INCLUDE [sentinel](../includes/applies-to-version/sentinel.md)]
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)] 
 
 Returns a table with up to the specified number of rows from the input record set, and the total number of records in the input record set.
 

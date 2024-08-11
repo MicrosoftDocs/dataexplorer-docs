@@ -4,10 +4,11 @@ description: Learn how to use the autocluster plugin to find common patterns in 
 ms.reviewer: alexans
 ms.topic: reference
 ms.date: 11/13/2023
+monikerRange: "azure-data-explorer || microsoft-fabric"
 ---
 # autocluster plugin
 
-> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)] [!INCLUDE [monitor](../includes/applies-to-version/monitor.md)] [!INCLUDE [sentinel](../includes/applies-to-version/sentinel.md)]
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)]
 
 `autocluster` finds common patterns of discrete attributes (dimensions) in the data. It then reduces the results of the original query, whether it's 100 or 100,000 rows, to a few patterns. The plugin was developed to help analyze failures (such as exceptions or crashes) but can potentially work on any filtered dataset. The plugin is invoked with the [`evaluate`](evaluate-operator.md) operator.
 

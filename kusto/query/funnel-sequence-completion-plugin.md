@@ -4,10 +4,11 @@ description: Learn how to use the funnel_sequence_completion plugin to calculate
 ms.reviewer: alexans
 ms.topic: reference
 ms.date: 12/18/2022
+monikerRange: "azure-data-explorer || microsoft-fabric"
 ---
 # funnel_sequence_completion plugin
 
-> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)] [!INCLUDE [monitor](../includes/applies-to-version/monitor.md)] [!INCLUDE [sentinel](../includes/applies-to-version/sentinel.md)]
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)] 
 
 Calculates a funnel of completed sequence steps while comparing different time periods. The plugin is invoked with the [`evaluate`](evaluate-operator.md) operator.
 

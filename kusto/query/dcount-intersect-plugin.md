@@ -4,10 +4,11 @@ description: Learn how to use the dcount_intersect plugin to calculate the inter
 ms.reviewer: alexans
 ms.topic: reference
 ms.date: 12/11/2022
+monikerRange: "azure-data-explorer || microsoft-fabric"
 ---
 # dcount_intersect plugin
 
-> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)] [!INCLUDE [monitor](../includes/applies-to-version/monitor.md)] [!INCLUDE [sentinel](../includes/applies-to-version/sentinel.md)]
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)]
 
 Calculates intersection between N sets based on `hll` values (N in range of [2..16]), and returns N `dcount` values. The plugin is invoked with the [`evaluate`](evaluate-operator.md) operator.
 

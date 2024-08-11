@@ -4,10 +4,11 @@ description: Learn how to use the infer_storage_schema_with_suggestions plugin t
 ms.reviewer: avnera
 ms.topic: reference
 ms.date: 07/21/2024
+monikerRange: "azure-data-explorer || microsoft-fabric"
 ---
 # infer_storage_schema_with_suggestions plugin
 
-> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)] [!INCLUDE [monitor](../includes/applies-to-version/monitor.md)] [!INCLUDE [sentinel](../includes/applies-to-version/sentinel.md)]
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)]
 
 This `infer_storage_schema_with_suggestions` plugin infers the schema of external data and returns a JSON object. For each column, the object provides inferred type, a recommended type, and the recommended mapping transformation. The recommended type and mapping are provided by the suggestion logic that determines the optimal type using the following logic:
 

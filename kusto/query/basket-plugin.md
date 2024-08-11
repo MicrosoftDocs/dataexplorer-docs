@@ -4,10 +4,11 @@ description: Learn how to use the basket plugin to find frequent patterns in dat
 ms.reviewer: alexans
 ms.topic: reference
 ms.date: 03/12/2023
+monikerRange: "azure-data-explorer || microsoft-fabric"
 ---
 # basket plugin
 
-> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)] [!INCLUDE [monitor](../includes/applies-to-version/monitor.md)] [!INCLUDE [sentinel](../includes/applies-to-version/sentinel.md)]
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)]
 
 The `basket` plugin finds frequent patterns of attributes in the data and returns the patterns that pass a frequency threshold in that data. A pattern represents a subset of the rows that have the same value across one or more columns. The `basket` plugin is based on the [Apriori algorithm](https://en.wikipedia.org/wiki/Association_rule_learning#Apriori_algorithm) originally developed for basket analysis data mining.
 

@@ -4,10 +4,11 @@ description: Learn how to use the session_count plugin to calculate the session 
 ms.reviewer: alexans
 ms.topic: reference
 ms.date: 04/11/2023
+monikerRange: "azure-data-explorer || microsoft-fabric"
 ---
 # session_count plugin
 
-> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)] [!INCLUDE [monitor](../includes/applies-to-version/monitor.md)] [!INCLUDE [sentinel](../includes/applies-to-version/sentinel.md)]
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)]
 
 Calculates the session count based on the ID column over a timeline. The plugin is invoked with the [`evaluate`](evaluate-operator.md) operator.
 
