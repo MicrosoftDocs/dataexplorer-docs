@@ -3,7 +3,7 @@ title:  Storage connection strings
 description: This article describes storage connection strings.
 ms.reviewer: shanisolomon
 ms.topic: reference
-ms.date: 06/20/2024
+ms.date: 08/11/2024
 ---
 # Storage connection strings
 

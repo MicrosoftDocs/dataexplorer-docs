@@ -3,7 +3,7 @@ title:  The case-sensitive !has_cs string operator
 description: Learn how to use the !has_cs string operator to filter records for data that doesn't have a matching case-sensitive string.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 01/09/2023
+ms.date: 08/11/2024
 ---
 # !has_cs operator
 

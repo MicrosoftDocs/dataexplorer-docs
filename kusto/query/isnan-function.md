@@ -3,7 +3,7 @@ title:  isnan()
 description: Learn how to use the isnan() function to check if the input is a not-a-number (NaN) value.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 01/03/2023
+ms.date: 08/11/2024
 ---
 # isnan()
 

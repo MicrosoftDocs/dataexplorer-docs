@@ -3,7 +3,7 @@ title:  .show materialized-view details
 description:  This article describes show materialized-view details command.
 ms.reviewer: yifats
 ms.topic: reference
-ms.date: 03/01/2023
+ms.date: 08/11/2024
 ---
 # .show materialized view details
 

@@ -3,7 +3,7 @@ title:  ipv6_compare()
 description: Learn how to use the ipv6_compare() function to compare two IPv6 or IPv4 network address strings.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 01/01/2023
+ms.date: 08/11/2024
 ---
 # ipv6_compare()
 

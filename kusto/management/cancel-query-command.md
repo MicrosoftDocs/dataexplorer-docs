@@ -3,7 +3,7 @@ title: .cancel query command
 description: Learn how to use management commands to manage your queries.
 ms.reviewer: orspodek
 ms.topic: reference
-ms.date: 11/30/2023
+ms.date: 08/11/2024
 ---
 # .cancel query command
 

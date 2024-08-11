@@ -3,7 +3,7 @@ title: Best practices for the Kusto Ingest library
 description: This article describes best practices for Kusto Ingest client library.
 ms.reviewer: orspodek
 ms.topic: reference
-ms.date: 06/20/2024
+ms.date: 08/11/2024
 ---
 # Best practices for the Kusto Ingest library
 

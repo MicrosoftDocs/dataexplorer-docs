@@ -3,7 +3,7 @@ title:  Query parameters declaration statement
 description: Learn how to use the query parameters declaration statement to parameterize queries and protect against injection attacks.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 08/01/2023
+ms.date: 08/11/2024
 monikerRange: "microsoft-fabric || azure-data-explorer"
 ---
 # Query parameters declaration statement

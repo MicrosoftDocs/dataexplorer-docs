@@ -3,7 +3,7 @@ title:  Materialized views limitations
 description: This article describes materialized views limitations.
 ms.reviewer: yifats
 ms.topic: reference
-ms.date: 10/15/2022
+ms.date: 08/11/2024
 ---
 
 # Materialized views limitations and known issues

@@ -3,7 +3,7 @@ title:  dcount() (aggregation function)
 description: Learn how to use the dcount() function to return an estimate of the number of distinct values of an expression within a group.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 11/13/2023
+ms.date: 08/11/2024
 ---
 # dcount() (aggregation function)
 

@@ -3,7 +3,7 @@ title:  distinct operator
 description: Learn how to use the distinct operator to create a table with the distinct combination of the columns of the input table.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 07/01/2024
+ms.date: 08/11/2024
 monikerRange: "microsoft-fabric || azure-data-explorer || azure-monitor || microsoft-sentinel "
 ---
 # distinct operator

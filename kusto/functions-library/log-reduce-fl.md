@@ -3,7 +3,7 @@ title:  log_reduce_fl()
 description: Learn how to use the log_reduce_fl() function to find common patterns in semi-structured textual columns.
 ms.reviewer: adieldar
 ms.topic: reference
-ms.date: 05/07/2023
+ms.date: 08/11/2024
 ---
 # log_reduce_fl()
 

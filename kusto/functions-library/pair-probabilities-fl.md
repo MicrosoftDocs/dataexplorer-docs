@@ -3,7 +3,7 @@ title:  pair_probabilities_fl()
 description:  This article describes the pair_probabilities_fl() user-defined function.
 ms.reviewer: andkar
 ms.topic: reference
-ms.date: 03/13/2023
+ms.date: 08/11/2024
 ---
 # pair_probabilities_fl()
 

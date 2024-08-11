@@ -3,7 +3,7 @@ title:  binary_not()
 description: Learn how to use the binary_not() function to return a bitwise negation of the input value.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 11/21/2022
+ms.date: 08/11/2024
 ---
 # binary_not()
 

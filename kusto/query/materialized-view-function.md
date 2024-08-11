@@ -3,7 +3,7 @@ title:  materialized_view()
 description: Learn how to use the materialized_view() function to reference the materialized part of a materialized view.
 ms.reviewer: yifats
 ms.topic: reference
-ms.date: 01/05/2023
+ms.date: 08/11/2024
 ---
 
 # materialized_view()

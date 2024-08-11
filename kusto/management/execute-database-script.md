@@ -3,7 +3,7 @@ title: .execute database script command
 description: Learn how to use the `.execute database script` command to execute a batch of management commands in the scope of a single database.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 05/24/2023
+ms.date: 08/11/2024
 ---
 # .execute database script command
 

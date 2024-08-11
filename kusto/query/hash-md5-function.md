@@ -3,7 +3,7 @@ title:  hash_md5()
 description: Learn how to use the hash_md5() function to return the MD5 hash value of the input.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 01/08/2023
+ms.date: 08/11/2024
 ---
 # hash_md5()
 

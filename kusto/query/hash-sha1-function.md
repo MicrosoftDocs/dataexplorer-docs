@@ -3,7 +3,7 @@ title:  hash_sha1()
 description: Learn how to use the hash_sha1() function to return a sha1 hash value of the source input.
 ms.reviewer: atefsawaed
 ms.topic: reference
-ms.date: 01/30/2023
+ms.date: 08/11/2024
 ---
 # hash_sha1()
 

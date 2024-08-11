@@ -3,7 +3,7 @@ title:  Treemap visualization
 description: Learn how to use the treemap visualization to visualize data.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 05/21/2023
+ms.date: 08/11/2024
 monikerRange: "azure-data-explorer"
 ---
 # Treemap

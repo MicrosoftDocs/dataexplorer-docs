@@ -3,7 +3,7 @@ title:  bitset_count_ones()
 description: Learn how to use the bitset_count_ones() function to return the number of set bits in the binary representation of a number.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 11/23/2022
+ms.date: 08/11/2024
 ---
 # bitset_count_ones()
 

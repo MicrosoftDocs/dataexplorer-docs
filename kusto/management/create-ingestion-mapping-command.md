@@ -3,7 +3,7 @@ title: .create ingestion mapping command
 description: Learn how to use the `.create ingestion mapping` command to create an ingestion mapping.
 ms.reviewer: orspodek
 ms.topic: reference
-ms.date: 05/24/2023
+ms.date: 08/11/2024
 ---
 # .create ingestion mapping command
 

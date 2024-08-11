@@ -3,7 +3,7 @@ title:  .show materialized-view failures commands
 description:  This article describes show materialized-view failures commands.
 ms.reviewer: yifats
 ms.topic: reference
-ms.date: 03/23/2023
+ms.date: 08/11/2024
 ---
 
 # .show materialized-view failures

@@ -3,7 +3,7 @@ title:  Kusto Java SDK
 description: This article describes Kusto Java SDK.
 ms.reviewer: vladikbr
 ms.topic: reference
-ms.date: 04/19/2023
+ms.date: 08/11/2024
 ---
 
 # Kusto Java SDK

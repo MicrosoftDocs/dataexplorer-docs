@@ -3,7 +3,7 @@ title:  parse-where operator
 description: Learn how to use the parse-where operator to parse the value of a string expression into one or more calculated columns.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 01/12/2023
+ms.date: 08/11/2024
 ---
 # parse-where operator
 

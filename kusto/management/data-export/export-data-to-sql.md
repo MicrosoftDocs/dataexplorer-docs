@@ -3,7 +3,7 @@ title:  Export data to SQL
 description:  This article describes Export data to SQL.
 ms.reviewer: orspodek
 ms.topic: reference
-ms.date: 06/20/2023
+ms.date: 08/11/2024
 ---
 # Export data to SQL
 

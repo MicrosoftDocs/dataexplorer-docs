@@ -3,7 +3,7 @@ title:  time_window_rolling_avg_fl()
 description:  This article describes time_window_rolling_avg_fl() user-defined function.
 ms.reviewer: adieldar
 ms.topic: reference
-ms.date: 03/13/2023
+ms.date: 08/11/2024
 monikerRange: "microsoft-fabric || azure-data-explorer || azure-monitor || microsoft-sentinel"
 ---
 # time_window_rolling_avg_fl()

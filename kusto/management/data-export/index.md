@@ -3,7 +3,7 @@ title: Data export
 description: Learn how to export data.
 ms.reviewer: orspodek
 ms.topic: reference
-ms.date: 06/13/2024
+ms.date: 08/11/2024
 ---
 # Data export
 

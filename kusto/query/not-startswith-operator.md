@@ -3,7 +3,7 @@ title:  The case-insensitive !startswith string operators
 description: Learn how to use the !startswith string operator to filter records for data that doesn't start with a case-insensitive search string.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 03/12/2023
+ms.date: 08/11/2024
 ---
 # !startswith operator
 

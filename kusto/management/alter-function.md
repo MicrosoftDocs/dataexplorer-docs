@@ -3,7 +3,7 @@ title: .alter function command
 description: Learn how to use the `.alter function` command to alter an existing function.
 ms.reviewer: orspodek
 ms.topic: reference
-ms.date: 07/29/2024
+ms.date: 08/11/2024
 ---
 # .alter function command
 

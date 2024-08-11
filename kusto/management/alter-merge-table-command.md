@@ -3,7 +3,7 @@ title:  .alter-merge table command
 description: Learn how to use the `.alter-merge table` command to secure data in existing columns or add new columns to an existing table.
 ms.reviewer: orspodek
 ms.topic: reference
-ms.date: 04/20/2023
+ms.date: 08/11/2024
 ---
 # .alter-merge table command
 

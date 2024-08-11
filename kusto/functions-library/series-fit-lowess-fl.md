@@ -3,7 +3,7 @@ title:  series_fit_lowess_fl()
 description:  This article describes the series_fit_lowess_fl() user-defined function.
 ms.reviewer: adieldar
 ms.topic: reference
-ms.date: 03/13/2023
+ms.date: 08/11/2024
 no-loc: LOWESS
 ---
 # series_fit_lowess_fl()

@@ -3,7 +3,7 @@ title:  repeat()
 description: Learn how to use the repeat() function to generate a dynamic array containing a series comprised of repeated numbers.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 01/17/2023
+ms.date: 08/11/2024
 ---
 # repeat()
 

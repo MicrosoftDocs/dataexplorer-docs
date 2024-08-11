@@ -3,7 +3,7 @@ title:  bag_pack()
 description: Learn how to use the bag_pack() function to create a dynamic JSON object from a list of keys and values.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 01/08/2023
+ms.date: 08/11/2024
 ---
 # bag_pack()
 

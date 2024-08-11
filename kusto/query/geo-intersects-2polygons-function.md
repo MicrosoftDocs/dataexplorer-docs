@@ -3,7 +3,7 @@ title:  geo_intersects_2polygons()
 description: Learn how to use the geo_intersects_2polygons() function to calculate whether two polygons or multipolygons intersect
 ms.reviewer: mbrichko
 ms.topic: reference
-ms.date: 12/14/2022
+ms.date: 08/11/2024
 ---
 # geo_intersects_2polygons()
 

@@ -3,7 +3,7 @@ title:  cos()
 description: Learn how to use the cos() function to return the cosine of the input value.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 11/27/2022
+ms.date: 08/11/2024
 ---
 # cos()
 

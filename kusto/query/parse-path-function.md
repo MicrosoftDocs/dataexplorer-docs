@@ -3,7 +3,7 @@ title:  parse_path()
 description: Learn how to use the parse_path() function to parse a file path.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 01/12/2023
+ms.date: 08/11/2024
 ---
 # parse_path()
 

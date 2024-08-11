@@ -2,7 +2,7 @@
 title: .delete cluster policy request_classification command
 description: Learn how to use the `.delete cluster policy request_classification` command to delete the request classification policy.
 ms.topic: reference
-ms.date: 07/01/2024
+ms.date: 08/11/2024
 ---
 # .delete cluster policy request_classification command
 

@@ -3,7 +3,7 @@ title: .show functions command
 description: Learn how to use the `.show functions` command to list all the stored functions in the specified database.
 ms.reviewer: orspodek
 ms.topic: reference
-ms.date: 05/24/2023
+ms.date: 08/11/2024
 ---
 # .show functions command
 

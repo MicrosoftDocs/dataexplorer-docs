@@ -3,7 +3,7 @@ title:  ipv4_netmask_suffix()
 description: Learn how to use the ipv4_netmask_suffix() function to return the value of the IPv4 netmask suffix from an IPv4 string address.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 01/01/2023
+ms.date: 08/11/2024
 ---
 # ipv4_netmask_suffix()
 

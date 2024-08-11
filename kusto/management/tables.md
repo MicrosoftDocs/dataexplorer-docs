@@ -3,7 +3,7 @@ title: Tables management
 description: Learn how to use table management commands to display, create, and alter tables.
 ms.reviewer: orspodek
 ms.topic: reference
-ms.date: 06/20/2024
+ms.date: 08/11/2024
 ---
 # Tables management
 

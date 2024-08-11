@@ -3,7 +3,7 @@ title:  Fact and dimension tables
 description:  This article describes Fact and dimension tables.
 ms.reviewer: orspodek
 ms.topic: reference
-ms.date: 03/23/2020
+ms.date: 08/11/2024
 ---
 # Fact and dimension tables
 

@@ -3,7 +3,7 @@ title:  erfc()
 description:  This article describes erfc() function.
 ms.reviewer: adieldar
 ms.topic: reference
-ms.date: 11/12/2023
+ms.date: 08/11/2024
 ---
 # erfc()
 

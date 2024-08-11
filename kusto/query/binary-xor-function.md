@@ -3,7 +3,7 @@ title:  binary_xor()
 description: Learn how to use the binary_xor() function to perform the bitwise xor operation on a pair of values.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 11/22/2022
+ms.date: 08/11/2024
 ---
 # binary_xor()
 

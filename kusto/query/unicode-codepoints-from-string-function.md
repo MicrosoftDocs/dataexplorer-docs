@@ -3,7 +3,7 @@ title:  unicode_codepoints_from_string()
 description: Learn how to use the unicode_codepoints_from_string() function to return a dynamic array of the Unicode codepoints of the input string.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 02/27/2023
+ms.date: 08/11/2024
 ---
 # unicode_codepoints_from_string()
 

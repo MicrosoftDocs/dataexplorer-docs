@@ -3,7 +3,7 @@ title:  radians()
 description: Learn how to use the radians() function to convert angle values from degrees to radians.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 01/17/2023
+ms.date: 08/11/2024
 ---
 # radians()
 

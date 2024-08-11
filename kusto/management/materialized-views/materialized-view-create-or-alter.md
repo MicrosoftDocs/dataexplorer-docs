@@ -3,7 +3,7 @@ title:  .create-or-alter materialized view
 description:  This article describes `.create-or-alter materialized view`.
 ms.reviewer: yifats
 ms.topic: reference
-ms.date: 03/22/2023
+ms.date: 08/11/2024
 ---
 # .create-or-alter materialized-view
 

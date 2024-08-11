@@ -3,7 +3,7 @@ title:  Materialized view rename
 description:  This article describes rename materialized view command.
 ms.reviewer: yifats
 ms.topic: reference
-ms.date: 03/01/2023
+ms.date: 08/11/2024
 ---
 # .rename materialized-view
 

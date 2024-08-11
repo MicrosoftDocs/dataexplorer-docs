@@ -3,7 +3,7 @@ title:  bag_pack_columns()
 description: Learn how to use the bag_pack_columns() function to create a dynamic JSON object from a list of columns.
 ms.reviewer: yifats
 ms.topic: reference
-ms.date: 03/15/2023
+ms.date: 08/11/2024
 ---
 # bag_pack_columns()
 

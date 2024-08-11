@@ -3,7 +3,7 @@ title:  hourofday()
 description: Learn how to use the hourofday() function to return an integer representing the hour of the given date.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 12/28/2022
+ms.date: 08/11/2024
 ---
 # hourofday()
 

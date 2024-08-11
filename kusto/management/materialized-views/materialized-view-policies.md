@@ -3,7 +3,7 @@ title:  Materialized views policies
 description:  This article describes materialized views policies.
 ms.reviewer: yifats
 ms.topic: reference
-ms.date: 04/30/2023
+ms.date: 08/11/2024
 ---
 
 # Materialized views policies

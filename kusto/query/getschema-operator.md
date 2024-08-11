@@ -3,7 +3,7 @@ title:  getschema operator
 description: Learn how to use the getschema operator to create a tabular schema of the input.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 12/18/2022
+ms.date: 08/11/2024
 ---
 # getschema operator
 

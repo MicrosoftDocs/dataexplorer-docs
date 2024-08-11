@@ -3,7 +3,7 @@ title:  max() (aggregation function)
 description: Learn how to use the max() function to find the maximum value of the expression in the group.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 01/05/2023
+ms.date: 08/11/2024
 ---
 # max() (aggregation function)
 

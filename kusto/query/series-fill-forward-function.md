@@ -3,7 +3,7 @@ title:  series_fill_forward()
 description: Learn how to use the series_fill_forward() function to perform a forward fill interpolation of missing values in a series.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 01/26/2023
+ms.date: 08/11/2024
 ---
 # series_fill_forward()
 

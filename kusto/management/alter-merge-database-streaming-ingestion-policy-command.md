@@ -3,7 +3,7 @@ title:  .alter-merge database policy streamingingestion command
 description: Learn how to use the `.alter-merge database policy streamingingestion` command to change the database streaming policy.
 ms.reviewer: yonil
 ms.topic: reference
-ms.date: 07/01/2024
+ms.date: 08/11/2024
 monikerRange: "azure-data-explorer"
 ---
 # .alter-merge database policy streamingingestion command

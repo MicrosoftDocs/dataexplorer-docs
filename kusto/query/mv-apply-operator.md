@@ -3,7 +3,7 @@ title:  mv-apply operator
 description: Learn how to use the mv-apply operator to apply a subquery to each record and union the results of each subquery.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 03/12/2023
+ms.date: 08/11/2024
 ---
 # mv-apply operator
 

@@ -3,7 +3,7 @@ title:  strcat()
 description: Learn how to use the strcat() function to concatenate between 1 and 64 arguments.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 01/31/2023
+ms.date: 08/11/2024
 ---
 # strcat()
 

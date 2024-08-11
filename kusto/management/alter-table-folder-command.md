@@ -3,7 +3,7 @@ title:  .alter table folder command
 description: Learn how to use the `.alter table folder` command to alter the folder value of an existing table.
 ms.reviewer: orspodek
 ms.topic: reference
-ms.date: 04/20/2023
+ms.date: 08/11/2024
 ---
 # .alter table folder command
 

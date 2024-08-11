@@ -3,7 +3,7 @@ title: .show table schema command
 description: Learn how to use the `.show table schema` command to display the specified table's schema.
 ms.reviewer: orspodek
 ms.topic: reference
-ms.date: 05/24/2023
+ms.date: 08/11/2024
 ---
 # .show table schema command
 

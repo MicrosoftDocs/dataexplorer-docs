@@ -3,7 +3,7 @@ title:  Kusto (KQL) extension for Azure Data Studio (Preview)
 description:  This article describes the Kusto (KQL) extension for Azure Data Studio (Preview)
 ms.reviewer: orspodek
 ms.topic: reference
-ms.date: 07/07/2024
+ms.date: 08/11/2024
 monikerRange: "azure-data-explorer"
 ---
 # Kusto (KQL) extension for Azure Data Studio (Preview)

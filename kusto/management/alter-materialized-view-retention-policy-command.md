@@ -3,7 +3,7 @@ title:  .alter materialized-view policy retention command
 description: Learn how to use the `.alter materialized-view policy retention` command to change the materialized view's retention policy.
 ms.reviewer: yonil
 ms.topic: reference
-ms.date: 04/20/2023
+ms.date: 08/11/2024
 ---
 # .alter materialized-view policy retention command
 

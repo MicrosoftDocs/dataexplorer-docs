@@ -3,7 +3,7 @@ title:  pack_all()
 description: Learn how to use the pack_all() function to create a dynamic object from all the columns of the tabular expression.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 01/08/2023
+ms.date: 08/11/2024
 ---
 # pack_all()
 

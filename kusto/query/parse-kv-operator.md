@@ -3,7 +3,7 @@ title:  parse-kv operator
 description: Learn how to use the parse-kv operator to represent structured information extracted from a string expression in a key/value form.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 03/12/2023
+ms.date: 08/11/2024
 ---
 
 # parse-kv operator

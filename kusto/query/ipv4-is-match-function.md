@@ -3,7 +3,7 @@ title:  ipv4_is_match()
 description: Learn how to use the ipv4_is_match() function to match two IPv4 strings.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 01/01/2023
+ms.date: 08/11/2024
 ---
 # ipv4_is_match()
 

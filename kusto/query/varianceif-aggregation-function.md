@@ -3,7 +3,7 @@ title:  varianceif() (aggregation function)
 description: Learn how to use the varianceif() function to calculate the variance in an expression where the predicate evaluates to true.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 11/13/2023
+ms.date: 08/11/2024
 ---
 # varianceif() (aggregation function)
 

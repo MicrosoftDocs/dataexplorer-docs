@@ -3,7 +3,7 @@ title:  jaccard_index()
 description: Learn how to use the jaccard_index() function to calculate the Jaccard index of two input sets.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 01/03/2023
+ms.date: 08/11/2024
 ---
 # jaccard_index()
 

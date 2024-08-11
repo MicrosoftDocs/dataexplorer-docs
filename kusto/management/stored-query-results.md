@@ -3,7 +3,7 @@ title: Stored query results
 description: Learn how to manage stored query results.
 ms.reviewer: mispecto
 ms.topic: reference
-ms.date: 04/08/2024
+ms.date: 08/11/2024
 ---
 
 # Stored query results

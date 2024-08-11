@@ -3,7 +3,7 @@ title:  count_distinctif() (aggregation function) - (preview)
 description: Learn how to use the count_distinctif() function to count unique values of a scalar expression in records for which the predicate evaluates to true.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 11/27/2022
+ms.date: 08/11/2024
 ---
 # count_distinctif() (aggregation function) - (preview)
 

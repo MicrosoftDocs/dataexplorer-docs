@@ -3,7 +3,7 @@ title:  .alter table policy row_level_security command
 description: Learn how to use the `.alter table policy row_level_security` command to enable or disable a table's row level security policy.
 ms.reviewer: yonil
 ms.topic: reference
-ms.date: 05/28/2023
+ms.date: 08/11/2024
 ---
 # .alter table policy row_level_security command
 

@@ -3,7 +3,7 @@ title:  trim_end()
 description: Learn how to use the trim_end() function to remove the trailing match of the specified regular expression.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 02/27/2023
+ms.date: 08/11/2024
 ---
 # trim_end()
 

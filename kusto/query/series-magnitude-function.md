@@ -3,7 +3,7 @@ title:  series_magnitude()
 description: Learn how to use the series_magnitude() function to calculate the magnitude of series elements.
 ms.reviewer: adieldar
 ms.topic: reference
-ms.date: 12/20/2023
+ms.date: 08/11/2024
 ---
 # series_magnitude()
 

@@ -3,7 +3,7 @@ title:  zlib_compress_to_base64_string
 description:  This article describes the zlib_compress_to_base64_string() command.
 ms.reviewer: elgevork
 ms.topic: reference
-ms.date: 02/15/2023
+ms.date: 08/11/2024
 ---
 
 # zlib_compress_to_base64_string()

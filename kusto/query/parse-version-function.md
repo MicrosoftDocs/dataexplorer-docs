@@ -3,7 +3,7 @@ title:  parse_version()
 description: Learn how to use the parse_version() function to convert the input string representation of the version to a comparable decimal number,
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 01/08/2023
+ms.date: 08/11/2024
 ---
 # parse_version()
 

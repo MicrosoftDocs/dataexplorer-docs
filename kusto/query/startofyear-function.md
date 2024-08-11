@@ -3,7 +3,7 @@ title:  startofyear()
 description: Learn how to use the startofyear() function to return the start of the year for the given date.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 01/31/2023
+ms.date: 08/11/2024
 ---
 # startofyear()
 

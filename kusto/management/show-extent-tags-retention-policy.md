@@ -3,7 +3,7 @@ title: .show policy extent_tags_retention command
 description: Learn how to use the `.show policy extent_tags_retention` command to show the extent tags' retention policy on a table or database-level.
 ms.reviewer: yonil
 ms.topic: reference
-ms.date: 05/24/2023
+ms.date: 08/11/2024
 ---
 # .show policy extent_tags_retention command
 

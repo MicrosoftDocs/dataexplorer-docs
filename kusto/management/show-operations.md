@@ -3,7 +3,7 @@ title:  .show operations command
 description: Learn how to use the `.show operations` command to view a log of the administrative operations that are currently running or completed.
 ms.reviewer: orspodek
 ms.topic: reference
-ms.date: 11/30/2023
+ms.date: 08/11/2024
 ---
 
 # .show operations command

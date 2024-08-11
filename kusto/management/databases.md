@@ -3,7 +3,7 @@ title:  Databases management
 description:  This article describes Databases management.
 ms.reviewer: orspodek
 ms.topic: reference
-ms.date: 03/24/2020
+ms.date: 08/11/2024
 ---
 # Databases management
 

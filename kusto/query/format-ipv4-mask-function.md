@@ -3,7 +3,7 @@ title:  format_ipv4_mask()
 description: Learn how to use the format_ipv4_mask() function to parse the input with a netmask and return a string representing the IPv4 address in CIDR notation.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 12/18/2022
+ms.date: 08/11/2024
 ---
 # format_ipv4_mask()
 

@@ -3,7 +3,7 @@ title:  totimespan()
 description: Learn how to use the totimespan() function to convert the input to a `timespan` scalar value.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 02/23/2023
+ms.date: 08/11/2024
 ---
 # totimespan()
 

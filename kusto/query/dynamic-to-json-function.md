@@ -3,7 +3,7 @@ title:  dynamic_to_json()
 description: Learn how to use the dynamic_to_json() function to convert a scalar value of type `dynamic` to a canonical string representation.
 ms.reviewer: elgevork
 ms.topic: reference
-ms.date: 03/09/2023
+ms.date: 08/11/2024
 ---
 # dynamic_to_json()
 

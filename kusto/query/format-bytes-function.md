@@ -3,7 +3,7 @@ title:  format_bytes()
 description: Learn how to use the format_bytes() function to format a number as a string representing the data size in bytes.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 12/18/2022
+ms.date: 08/11/2024
 ---
 # format_bytes()
 

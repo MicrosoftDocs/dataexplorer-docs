@@ -3,7 +3,7 @@ title:  set_has_element()
 description: Learn how to use the set_has_element() function to determine if the input set contains the specified value.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 01/30/2023
+ms.date: 08/11/2024
 ---
 # set_has_element()
 

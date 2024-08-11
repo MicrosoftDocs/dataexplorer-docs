@@ -3,7 +3,7 @@ title:  url_encode_component()
 description: Learn how to use the url_encode_component() function to convert characters of the input URL into a transmittable format.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 03/02/2023
+ms.date: 08/11/2024
 ---
 # url_encode_component()
 

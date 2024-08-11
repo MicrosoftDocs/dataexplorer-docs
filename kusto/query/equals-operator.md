@@ -3,7 +3,7 @@ title:  The case-insensitive =~ (equals) string operator
 description: Learn how to use the =~ (equals) operator to filter a record set for data with a case-insensitive string.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 12/11/2022
+ms.date: 08/11/2024
 ---
 # =~ (equals) operator
 

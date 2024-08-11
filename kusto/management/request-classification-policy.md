@@ -3,7 +3,7 @@ title: Request classification policy
 description: Learn how to use the request classification policy to assign incoming requests to a workload group.
 ms.reviewer: yonil
 ms.topic: reference
-ms.date: 07/01/2024
+ms.date: 08/11/2024
 ---
 # Request classification policy
 

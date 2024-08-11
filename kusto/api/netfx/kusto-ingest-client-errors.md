@@ -3,7 +3,7 @@ title:  Kusto.Ingest errors & exceptions
 description: This article describes Kusto.Ingest - Errors and Exceptions.
 ms.reviewer: orspodek
 ms.topic: reference
-ms.date: 07/04/2024
+ms.date: 08/11/2024
 ---
 # Kusto.Ingest errors and exceptions
 

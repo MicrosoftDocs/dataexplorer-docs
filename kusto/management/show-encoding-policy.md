@@ -3,7 +3,7 @@ title: .show policy encoding command
 description: Learn how to use the `.show policy encoding` command to show the encoding policy of the specified entity.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 05/23/2023
+ms.date: 08/11/2024
 ---
 # .show policy encoding command
 

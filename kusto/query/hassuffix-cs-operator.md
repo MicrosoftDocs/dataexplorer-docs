@@ -3,7 +3,7 @@ title:  The case-sensitive hassuffix_cs string operator
 description: Learn how to use the hassuffix_cs operator to filter data with a case-sensitive suffix string.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 03/12/2023
+ms.date: 08/11/2024
 ---
 # hassuffix_cs operator
 

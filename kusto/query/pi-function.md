@@ -3,7 +3,7 @@ title:  pi()
 description: Learn how to use the pi() function to return the constant value of Pi.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 01/12/2023
+ms.date: 08/11/2024
 ---
 # pi()
 

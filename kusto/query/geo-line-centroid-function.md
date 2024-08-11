@@ -3,7 +3,7 @@ title:  geo_line_centroid()
 description: Learn how to use the geo_line_centroid() function to calculate the centroid of a line or a multiline on Earth.
 ms.reviewer: mbrichko
 ms.topic: reference
-ms.date: 04/02/2024
+ms.date: 08/11/2024
 ---
 # geo_line_centroid()
 

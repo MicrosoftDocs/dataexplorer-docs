@@ -3,7 +3,7 @@ title:  The int data type
 description:  This article describes the int data type.
 ms.reviewer: orspodek
 ms.topic: reference
-ms.date: 01/08/2024
+ms.date: 08/11/2024
 ---
 # The int data type
 

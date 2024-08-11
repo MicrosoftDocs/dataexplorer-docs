@@ -3,7 +3,7 @@ title:  Add a comment in KQL
 description: Learn how to add comments in Kusto Query Language.
 ms.reviewer: andresilva
 ms.topic: reference
-ms.date: 01/21/2024
+ms.date: 08/11/2024
 ---
 # Add a comment in KQL
 

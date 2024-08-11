@@ -3,7 +3,7 @@ title: .drop stored_query_result command
 description: Learn how to use the `.drop stored_query_result` command to delete an active query result.
 ms.reviewer: mispecto
 ms.topic: reference
-ms.date: 05/23/2023
+ms.date: 08/11/2024
 ---
 
 # .drop stored_query_result command

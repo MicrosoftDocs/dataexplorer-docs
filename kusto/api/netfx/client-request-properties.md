@@ -3,7 +3,7 @@ title: Kusto Data ClientRequestProperties class
 description: This article describes the ClientRequestProperties class of Kusto Data.
 ms.reviewer: orspodek
 ms.topic: reference
-ms.date: 10/18/2023
+ms.date: 08/11/2024
 ---
 # Kusto Data ClientRequestProperties class
 

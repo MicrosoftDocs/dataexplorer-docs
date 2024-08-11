@@ -3,7 +3,7 @@ title: .show cluster policy request_classification command
 description: Learn how to use the `.show cluster policy request_classification` command to show the request classification policy.
 ms.reviewer: yonil
 ms.topic: reference
-ms.date: 07/01/2024
+ms.date: 08/11/2024
 ---
 # .show cluster policy request_classification command
 

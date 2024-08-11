@@ -3,7 +3,7 @@ title:  tostring()
 description: Learn how to use the tostring() function to convert the input value to a string representation.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 02/23/2023
+ms.date: 08/11/2024
 ---
 # tostring()
 

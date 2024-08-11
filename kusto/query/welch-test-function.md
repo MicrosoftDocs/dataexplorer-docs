@@ -3,7 +3,7 @@ title:  welch_test()
 description: Learn how to use the welch_test() function to compute the p_value of the Welch-test.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 03/02/2023
+ms.date: 08/11/2024
 ---
 # welch_test()
 

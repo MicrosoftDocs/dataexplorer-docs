@@ -3,7 +3,7 @@ title:  array_shift_right()
 description: Learn how to use the array_shift_right() function to shift values inside a dynamic array to the right.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 09/05/2023
+ms.date: 08/11/2024
 ---
 # array_shift_right()
 

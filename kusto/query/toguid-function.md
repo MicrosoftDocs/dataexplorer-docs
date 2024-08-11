@@ -3,7 +3,7 @@ title:  toguid()
 description: Learn how to use the toguid() function to convert the input string to a `guid` scalar.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 01/08/2024
+ms.date: 08/11/2024
 ---
 # toguid()
 

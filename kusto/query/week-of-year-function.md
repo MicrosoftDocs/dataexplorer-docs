@@ -3,7 +3,7 @@ title:  week_of_year()
 description: Learn how to use the week_of_year() function to get the integer representation of the week.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 03/02/2023
+ms.date: 08/11/2024
 ---
 # week_of_year()
 

@@ -3,7 +3,7 @@ title:  array_reverse()
 description: Learn how to use the array_reverse() function to reverse the order of the elements in a dynamic array.
 ms.reviewer: slneimer
 ms.topic: reference
-ms.date: 11/20/2022
+ms.date: 08/11/2024
 ---
 # array_reverse()
 

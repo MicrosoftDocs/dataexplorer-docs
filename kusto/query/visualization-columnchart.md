@@ -3,7 +3,7 @@ title:  Column chart visualization
 description:  This article describes the column chart visualization.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 08/02/2023
+ms.date: 08/11/2024
 monikerRange: "microsoft-fabric || azure-data-explorer || azure-monitor || microsoft-sentinel"
 ---
 # Column chart

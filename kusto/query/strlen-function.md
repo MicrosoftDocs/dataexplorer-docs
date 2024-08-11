@@ -3,7 +3,7 @@ title:  strlen()
 description: Learn how to use the strlen() function to measure the length of the input string.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 02/05/2023
+ms.date: 08/11/2024
 ---
 # strlen()
 

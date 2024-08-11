@@ -3,8 +3,7 @@ title:  new_activity_metrics plugin
 description: Learn how to use the new_activity_metrics plugin to calculate activity metrics. 
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 01/08/2023
-monikerRange: "azure-data-explorer || microsoft-fabric"
+ms.date: 08/11/2024
 ---
 # new_activity_metrics plugin
 

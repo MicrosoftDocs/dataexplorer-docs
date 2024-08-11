@@ -3,7 +3,7 @@ title:  base64_encode_fromguid()
 description: Learn how to use the base64_encode_fromguid() function to return a base64 string from a GUID.
 ms.reviewer: alexans
 ms.topic: reference 
-ms.date: 11/07/2022
+ms.date: 08/11/2024
 ---
 # base64_encode_fromguid()
 

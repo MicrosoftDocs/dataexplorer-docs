@@ -3,7 +3,7 @@ title: .delete materialized-view policy row_level_security command
 description: Learn how to use the `.delete materialized-view policy row_level_security` command to delete the row level security of a materialized view
 ms.reviewer: vplauzon
 ms.topic: reference
-ms.date: 10/23/2023
+ms.date: 08/11/2024
 ---
 # .delete materialized-view policy row_level_security command
 

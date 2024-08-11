@@ -3,7 +3,7 @@ title: .rename column command
 description: Learn how to use the `.rename column` command to change the name of a column in an existing table.
 ms.reviewer: orspodek
 ms.topic: reference
-ms.date: 05/24/2023
+ms.date: 08/11/2024
 ---
 # .rename column command
 

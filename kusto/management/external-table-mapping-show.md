@@ -2,7 +2,7 @@
 title: .show external table mapping command
 description: Learn how to use the `.show external table mapping` command to show external table mappings for Azure Blob Storage or Azure Data Lake external tables.
 ms.topic: reference
-ms.date: 05/24/2023
+ms.date: 08/11/2024
 ---
 
 # .show external table mapping command

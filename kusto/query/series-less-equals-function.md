@@ -3,7 +3,7 @@ title:  series_less_equals()
 description: Learn how to use the series_less_equals() function to calculate the element-wise less or equal (`<=`) logic operation of two numeric series inputs.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 01/30/2023
+ms.date: 08/11/2024
 ---
 # series_less_equals()
 

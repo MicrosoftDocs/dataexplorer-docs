@@ -3,7 +3,7 @@ title:  Numerical operators
 description: Learn how to use numerical operators to calculate the value from two or more numbers.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 05/16/2023
+ms.date: 08/11/2024
 ---
 # Numerical operators
 

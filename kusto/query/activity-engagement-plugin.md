@@ -3,8 +3,7 @@ title:  activity_engagement plugin
 description: Learn how to use the activity_engagement plugin to calculate activity engagement ratios.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 11/20/2022
-monikerRange: "azure-data-explorer || microsoft-fabric"
+ms.date: 08/11/2024
 ---
 # activity_engagement plugin
 

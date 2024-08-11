@@ -3,7 +3,7 @@ title: .show table policy ingestionbatching command
 description: Learn how to use the `.show table policy ingestionbatching` command to display the table's ingestion batching policy.
 ms.reviewer: orspodek
 ms.topic: reference
-ms.date: 05/24/2023
+ms.date: 08/11/2024
 ---
 # .show table policy ingestionbatching command
 

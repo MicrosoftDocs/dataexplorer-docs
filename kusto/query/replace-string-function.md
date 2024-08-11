@@ -3,7 +3,7 @@ title:  replace_string()
 description: Learn how to use the replace_string() function to replace all string matches with another string.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 05/21/2023
+ms.date: 08/11/2024
 ---
 # replace_string()
 

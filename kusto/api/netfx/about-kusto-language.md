@@ -2,7 +2,7 @@
 title:  Kusto.Language overview
 description: This article describes the Kusto.Language client library.
 ms.topic: reference
-ms.date: 06/13/2023
+ms.date: 08/11/2024
 ---
 
 # Kusto.Language overview

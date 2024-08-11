@@ -3,7 +3,7 @@ title:  search operator
 description: Learn how to use the search operator to search for a text pattern in multiple tables and columns.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 03/15/2023
+ms.date: 08/11/2024
 ---
 # search operator
 

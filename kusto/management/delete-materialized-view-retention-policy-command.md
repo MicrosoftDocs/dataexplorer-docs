@@ -3,7 +3,7 @@ title: .delete materialized-view policy retention command
 description: Learn how to use the `.delete materialized-view policy retention` command to delete a materialized view's retention policy.
 ms.reviewer: yonil
 ms.topic: reference
-ms.date: 05/24/2023
+ms.date: 08/11/2024
 ---
 # .delete materialized-view policy retention command
 

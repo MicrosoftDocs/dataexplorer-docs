@@ -3,7 +3,7 @@ title: .show policy managed_identity command
 description: Learn how to use the `.show policy managed_identity` command to show the ManagedIdentity policy of the specified database or cluster.
 ms.reviewer: slneimer
 ms.topic: reference
-ms.date: 07/01/2024
+ms.date: 08/11/2024
 monikerRange: "azure-data-explorer"
 ---
 # .show policy managed_identity command

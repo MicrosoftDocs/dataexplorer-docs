@@ -3,7 +3,7 @@ title:  The case-insensitive has string operator
 description: Learn how to use the has operator to filter data with a case-insensitive string.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 12/28/2022
+ms.date: 08/11/2024
 ---
 # has operator
 

@@ -3,7 +3,7 @@ title:  has_ipv4_prefix()
 description: Learn how to use the has_ipv4_prefix() function to check if a specified IPv4 address prefix appears in the text.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 12/25/2022
+ms.date: 08/11/2024
 ---
 # has_ipv4_prefix()
 

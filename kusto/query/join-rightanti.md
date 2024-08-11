@@ -3,7 +3,7 @@ title:  rightanti join
 description: Learn how to use the rightanti join flavor to merge the rows of two tables. 
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 06/18/2023
+ms.date: 08/11/2024
 ---
 
 # rightanti join

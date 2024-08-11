@@ -3,7 +3,7 @@ title:  .alter-merge table policy ingestionbatching command
 description: Learn how to use the `.alter-merge table policy ingestionbatching` command to set the table's ingestion batching policy.
 ms.reviewer: slneimer
 ms.topic: reference
-ms.date: 08/27/2023
+ms.date: 08/11/2024
 ---
 # .alter-merge table policy ingestionbatching command
 

@@ -3,7 +3,7 @@ title:  Partial query failures
 description:  This article describes Partial query failures.
 ms.reviewer: orspodek
 ms.topic: reference
-ms.date: 10/23/2018
+ms.date: 08/11/2024
 monikerRange: "microsoft-fabric || azure-data-explorer || azure-monitor || microsoft-sentinel"
 ---
 # Partial query failures

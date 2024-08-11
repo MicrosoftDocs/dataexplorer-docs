@@ -3,7 +3,7 @@ title: .drop column command
 description: Learn how to use the `.drop column` command to remove a column from a table.
 ms.reviewer: orspodek
 ms.topic: reference
-ms.date: 02/06/2024
+ms.date: 08/11/2024
 ---
 # .drop column command
 

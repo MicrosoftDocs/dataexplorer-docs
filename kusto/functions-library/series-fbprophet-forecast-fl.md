@@ -3,7 +3,7 @@ title:  series_fbprophet_forecast_fl()
 description:  This article describes the series_fbprophet_forecast_fl() user-defined function.
 ms.reviewer: adieldar
 ms.topic: reference
-ms.date: 03/13/2023
+ms.date: 08/11/2024
 ---
 # series_fbprophet_forecast_fl()
 

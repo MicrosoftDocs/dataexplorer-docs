@@ -3,8 +3,7 @@ title:  bag_unpack plugin
 description: Learn how to use the bag_unpack plugin to unpack a dynamic column.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 11/23/2022
-monikerRange: "azure-data-explorer || microsoft-fabric"
+ms.date: 08/11/2024
 ---
 # bag_unpack plugin
 

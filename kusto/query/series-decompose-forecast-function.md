@@ -3,7 +3,7 @@ title:  series_decompose_forecast()
 description: Learn how to use the series_decompose_forecast() function to predict the value of the last trailing points.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 03/12/2023
+ms.date: 08/11/2024
 ---
 # series_decompose_forecast()
 

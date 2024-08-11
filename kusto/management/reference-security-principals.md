@@ -3,7 +3,7 @@ title: Referencing security principals
 description: Learn how to reference security principals and identity providers.
 ms.reviewer: orspodek
 ms.topic: reference
-ms.date: 05/24/2023
+ms.date: 08/11/2024
 ---
 # Referencing security principals
 

@@ -3,7 +3,7 @@ title:  Functions
 description:  This article describes Functions.
 ms.reviewer: orspodek
 ms.topic: reference
-ms.date: 06/05/2023
+ms.date: 08/11/2024
 adobe-target: true
 ---
 

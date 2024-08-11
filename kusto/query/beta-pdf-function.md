@@ -3,7 +3,7 @@ title:  beta_pdf()
 description: Learn how to use the beta_pdf() function to return the beta probability density function. 
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 05/25/2023
+ms.date: 08/11/2024
 ---
 # beta_pdf()
 

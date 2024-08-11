@@ -3,7 +3,7 @@ title:  series_sum()
 description: Learn how to use the series_sum() function to calculate the sum of series elements.
 ms.reviewer: adieldar
 ms.topic: reference
-ms.date: 12/20/2023
+ms.date: 08/11/2024
 ---
 # series_sum()
 

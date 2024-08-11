@@ -3,7 +3,7 @@ title:  API Overview
 description: This article describes API.
 ms.reviewer: vladikb
 ms.topic: reference
-ms.date: 06/14/2023
+ms.date: 08/11/2024
 ---
 # API Overview
 

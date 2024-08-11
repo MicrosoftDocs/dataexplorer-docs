@@ -101,7 +101,29 @@ To pin a query:
 
 ## Use parameters
 
-Parameters significantly improve dashboard rendering performance, and enable you to use filter values as early as possible in the query. Filtering is enabled when the parameter is included in the query associated with your tile(s).  For more information about how to set up and use different kinds of parameters, see [Use parameters in Azure Data Explorer dashboards](dashboard-parameters.md).
+Parameters significantly improve dashboard rendering performance, and enable you to use filter values as early as possible in the query. Filtering is enabled when the parameter is included in the query associated with a tile. For more information about how to set up and use different kinds of parameters, see [Use parameters in Azure Data Explorer dashboards](dashboard-parameters.md).
+
+## Tile legend
+
+You can change the position of the legend in your tiles and use the legend to interact with the data.
+
+### Change the legend location
+
+If you have edit rights on a dashboard, you can change the location of the legend in your tile. Toggle to **Edit** mode and select the **Edit tile** pencil icon. In the **Visual formatting** pane, under **Legend**, you can select your location preference.
+
+### Interact with your data
+
+You can use the legend to interact with the data in your tile. You can change what data you view by selecting the specific item in the legend. Use <kbd>Ctrl</kbd> to add or remove items from the selection, hold <kbd>shift</kbd> to select a range. Items not selected are greyed out.
+
+The **Search** button allows you to search and filter items.
+
+Use the **Invert** button to invert your selection.
+
+The **Up** and **Down** arrows navigate through the list in the following ways:
+* When one item is selected, the up and down arrows select the previous or next item.
+* When more than one item is selected, the up and down arrows change which item is highlighted on the tile. 
+
+:::image type="content" source="media/adx-dashboards/interactive-legend.png" alt-text="Screenshot showing the buttons to use the legend to interact with your data.":::
 
 ## View query
 

@@ -3,7 +3,7 @@ title:  split()
 description: Learn how to use the split() function to split the source string according to a given delimiter.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 07/25/2023
+ms.date: 08/11/2024
 adobe-target: true
 ---
 # split()

@@ -3,7 +3,7 @@ title:  Sandboxes in VM sizes not supporting nested virtualization
 description:  This article describes Sandboxes limitations in non-modern SKUs.
 ms.reviewer:
 ms.topic: reference
-ms.date: 11/12/2022
+ms.date: 08/11/2024
 monikerRange: "azure-data-explorer"
 ---
 # Sandboxes in VM sizes not supporting nested virtualization

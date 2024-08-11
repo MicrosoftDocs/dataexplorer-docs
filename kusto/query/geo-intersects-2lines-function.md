@@ -3,7 +3,7 @@ title:  geo_intersects_2lines()
 description: Learn how to use the geo_intersects_2lines() function to check if two line strings or multiline strings intersect.
 ms.reviewer: mbrichko
 ms.topic: reference
-ms.date: 03/09/2023
+ms.date: 08/11/2024
 ---
 # geo_intersects_2lines()
 

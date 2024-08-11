@@ -3,7 +3,7 @@ title:  Functions library
 description: This article describes user-defined functions that extend query environment capabilities.
 ms.reviewer: adieldar
 ms.topic: reference
-ms.date: 03/07/2022
+ms.date: 08/11/2024
 monikerRange: "microsoft-fabric || azure-data-explorer || azure-monitor || microsoft-sentinel"
 ---
 # Functions library

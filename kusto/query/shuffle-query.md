@@ -3,7 +3,7 @@ title:  Shuffle query
 description:  This article describes Shuffle query.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 05/01/2023
+ms.date: 08/11/2024
 ---
 # shuffle query
 

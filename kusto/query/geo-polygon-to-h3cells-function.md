@@ -3,7 +3,7 @@ title:  geo_polygon_to_h3cells()
 description: Learn how to use the geo_polygon_to_h3cells() function to calculate H3 cells for a polygon
 ms.reviewer: mbrichko
 ms.topic: reference
-ms.date: 01/05/2024
+ms.date: 08/11/2024
 ---
 # geo_polygon_to_h3cells()
 

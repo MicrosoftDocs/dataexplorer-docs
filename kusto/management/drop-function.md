@@ -3,7 +3,7 @@ title: .drop function command
 description: Learn how to use the `.drop function` command to drop one or more functions from a database.
 ms.reviewer: orspodek
 ms.topic: reference
-ms.date: 05/24/2023
+ms.date: 08/11/2024
 ---
 # .drop function command
 

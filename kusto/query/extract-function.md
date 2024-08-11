@@ -3,7 +3,7 @@ title:  extract()
 description: Learn how to use the extract() function to get a match for a regular expression from a source string.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 12/12/2022
+ms.date: 08/11/2024
 ---
 # extract()
 

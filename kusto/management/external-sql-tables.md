@@ -3,7 +3,7 @@ title: Create and alter Azure SQL external tables
 description: Learn how to create and alter an SQL external table.
 ms.reviewer: urishapira
 ms.topic: reference
-ms.date: 06/28/2023
+ms.date: 08/11/2024
 ---
 
 # Create and alter Azure SQL external tables

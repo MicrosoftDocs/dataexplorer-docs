@@ -3,7 +3,7 @@ title:  sample operator
 description: Learn how to use the sample operator to return up to the specified number of rows from the input table.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 01/19/2023
+ms.date: 08/11/2024
 ---
 # sample operator
 

@@ -3,7 +3,7 @@ title:  bag_zip()
 description: Learn how to use bag_zip() to merge two dynamic arrays into a single property-bag of keys and values.
 ms.reviewer: elgevork
 ms.topic: reference
-ms.date: 05/01/2023
+ms.date: 08/11/2024
 ---
 # bag_zip()
 

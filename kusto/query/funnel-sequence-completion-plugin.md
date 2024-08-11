@@ -3,8 +3,7 @@ title:  funnel_sequence_completion plugin
 description: Learn how to use the funnel_sequence_completion plugin to calculate a funnel of completed sequence steps while comparing different time periods.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 12/18/2022
-monikerRange: "azure-data-explorer || microsoft-fabric"
+ms.date: 08/11/2024
 ---
 # funnel_sequence_completion plugin
 

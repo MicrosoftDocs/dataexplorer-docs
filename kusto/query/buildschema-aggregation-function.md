@@ -3,7 +3,7 @@ title:  buildschema() (aggregation function)
 description: Learn how to use the buildschema() function to build a table schema from a dynamic expression.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 11/23/2022
+ms.date: 08/11/2024
 ---
 # buildschema() (aggregation function)
 

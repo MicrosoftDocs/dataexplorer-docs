@@ -3,7 +3,7 @@ title:  bag_keys()
 description: Learn how to use the bag_keys() function to enumerate the root keys in a dynamic property bag object.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 11/23/2022
+ms.date: 08/11/2024
 ---
 # bag_keys()
 

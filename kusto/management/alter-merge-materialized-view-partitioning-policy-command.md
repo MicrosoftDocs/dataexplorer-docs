@@ -3,7 +3,7 @@ title:  .alter-merge materialized-view policy partitioning command
 description: Learn how to use the `.alter-merge materialized-view policy partitioning` command to create the materialized view's partitioning policy.
 ms.reviewer: yonil
 ms.topic: reference
-ms.date: 05/28/2023
+ms.date: 08/11/2024
 ---
 # .alter-merge materialized-view policy partitioning command
 

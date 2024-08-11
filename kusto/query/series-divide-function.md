@@ -3,7 +3,7 @@ title:  series_divide()
 description: Learn how to use the series_divide() function to calculate the element-wise division of two numeric series inputs.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 01/22/2023
+ms.date: 08/11/2024
 ---
 # series_divide()
 

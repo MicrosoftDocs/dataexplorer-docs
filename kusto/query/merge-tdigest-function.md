@@ -3,7 +3,7 @@ title:  merge_tdigest()
 description: Learn how to use the merge_tdigest() function to merge columns.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 03/12/2023
+ms.date: 08/11/2024
 ---
 # merge_tdigest()
 

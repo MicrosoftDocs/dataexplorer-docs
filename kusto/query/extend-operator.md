@@ -3,7 +3,7 @@ title:  extend operator
 description: Learn how to use the extend operator to create calculated columns and append them to the result set.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 07/01/2024
+ms.date: 08/11/2024
 monikerRange: "microsoft-fabric || azure-data-explorer || azure-monitor || microsoft-sentinel "
 ---
 # extend operator

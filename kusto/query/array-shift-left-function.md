@@ -3,7 +3,7 @@ title:  array_shift_left()
 description: Learn how to use the array_shift_left() function to shift the values inside a dynamic array to the left.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 09/05/2023
+ms.date: 08/11/2024
 ---
 # array_shift_left()
 

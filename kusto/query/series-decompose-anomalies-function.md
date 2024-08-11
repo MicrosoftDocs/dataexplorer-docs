@@ -3,7 +3,7 @@ title:  series_decompose_anomalies()
 description: Learn how to use series_decompose_anomalies() function to extract anomalous points from a dynamic numerical array.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 03/12/2023
+ms.date: 08/11/2024
 ---
 # series_decompose_anomalies()
 

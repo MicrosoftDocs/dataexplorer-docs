@@ -3,7 +3,7 @@ title:  parse operator
 description: Learn how to use the parse operator to parse the value of a string expression into one or more calculated columns.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 07/30/2024
+ms.date: 08/11/2024
 monikerRange: "microsoft-fabric || azure-data-explorer || azure-monitor || microsoft-sentinel "
 ---
 # parse operator

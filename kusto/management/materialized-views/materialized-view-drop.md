@@ -3,7 +3,7 @@ title:  Materialized views drop
 description:  This article describes drop materialized view command.
 ms.reviewer: yifats
 ms.topic: reference
-ms.date: 03/01/2023
+ms.date: 08/11/2024
 ---
 # .drop materialized-view
 

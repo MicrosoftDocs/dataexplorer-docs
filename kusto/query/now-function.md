@@ -3,7 +3,7 @@ title:  now()
 description: Learn how to use the now() function to return the current UTC time.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 06/19/2023
+ms.date: 08/11/2024
 ---
 # now()
 

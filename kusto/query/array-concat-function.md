@@ -3,7 +3,7 @@ title:  array_concat()
 description: Learn how to use the array_concat() function to concatenate many dynamic arrays to a single array.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 09/05/2023
+ms.date: 08/11/2024
 ---
 # array_concat()
 

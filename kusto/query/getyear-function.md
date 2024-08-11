@@ -3,7 +3,7 @@ title:  getyear()
 description: Learn how tow use the getyear() function to return the year of the `datetime` input.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 12/18/2022
+ms.date: 08/11/2024
 ---
 # getyear()
 

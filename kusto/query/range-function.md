@@ -3,7 +3,7 @@ title:  range()
 description: Learn how to use the range() function to generate a dynamic array holding a series of equally spaced values.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 04/15/2024
+ms.date: 08/11/2024
 ---
 # range()
 

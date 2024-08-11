@@ -2,7 +2,7 @@
 title:  ORC Mapping
 description: Learn how to use ORC mapping to map data to columns inside tables upon ingestion.
 ms.topic: reference
-ms.date: 03/08/2023
+ms.date: 08/11/2024
 ---
 
 # ORC mapping

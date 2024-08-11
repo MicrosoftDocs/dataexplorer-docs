@@ -3,7 +3,7 @@ title:  The dynamic data type
 description:  This article describes The dynamic data type.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 02/29/2024
+ms.date: 08/11/2024
 ---
 # The dynamic data type
 

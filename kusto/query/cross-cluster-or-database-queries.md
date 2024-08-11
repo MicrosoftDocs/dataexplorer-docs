@@ -3,7 +3,7 @@ title:    Cross-cluster and cross-database queries
 description:  This article describes cross-database and cross-cluster queries.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 07/25/2024
+ms.date: 08/11/2024
 ---
 # Cross-cluster and cross-database queries
 

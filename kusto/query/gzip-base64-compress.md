@@ -3,7 +3,7 @@ title:  gzip_compress_to_base64_string
 description: Learn how to use the gzip_compress_to_base64_string() function to gzip-compress an input and encode it into a base64 string.
 ms.reviewer: elgevork
 ms.topic: reference
-ms.date: 12/18/2022
+ms.date: 08/11/2024
 ---
 
 # gzip_compress_to_base64_string()

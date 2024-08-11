@@ -3,7 +3,7 @@ title: .delete cluster policy callout command
 description: Learn how to use the `.delete cluster policy callout` command to delete the callout policy defined for a cluster.
 ms.reviewer: yonil
 ms.topic: reference
-ms.date: 07/01/2024
+ms.date: 08/11/2024
 monikerRange: "azure-data-explorer"
 ---
 # .delete cluster policy callout command

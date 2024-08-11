@@ -3,7 +3,7 @@ title:  datetime_add()
 description: Learn how to use the datetime_add() function to calculate a new datetime.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 11/24/2022
+ms.date: 08/11/2024
 ---
 # datetime_add()
 

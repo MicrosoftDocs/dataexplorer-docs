@@ -1,6 +1,6 @@
 ---
 ms.topic: include
-ms.date: 05/23/2024
+ms.date: 08/11/2024
 ---
 
 The following table compares the `hassuffix` operators using the abbreviations provided:

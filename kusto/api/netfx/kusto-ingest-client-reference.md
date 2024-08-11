@@ -3,7 +3,7 @@ title:  Kusto.Ingest client interfaces and factory classes
 description: This article describes Kusto.Ingest client interfaces and factory classes.
 ms.reviewer: ohbitton
 ms.topic: reference
-ms.date: 05/19/2020
+ms.date: 08/11/2024
 ---
 # Kusto.Ingest client interfaces and classes
 

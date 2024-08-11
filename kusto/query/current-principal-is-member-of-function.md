@@ -3,7 +3,7 @@ title:  current_principal_is_member_of()
 description: Learn how to use the current_principal_is_member_of() function to check the identity of the principal running the query.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 11/27/2021
+ms.date: 08/11/2024
 monikerRange: "microsoft-fabric || azure-data-explorer"
 ---
 # current_principal_is_member_of()

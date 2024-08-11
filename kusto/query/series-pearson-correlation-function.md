@@ -3,7 +3,7 @@ title:  series_pearson_correlation()
 description: Learn how to use the series_pearson_correlation() function to calculate the pearson correlation coefficient of two numeric series inputs.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 02/05/2023
+ms.date: 08/11/2024
 ---
 # series_pearson_correlation()
 

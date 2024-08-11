@@ -3,7 +3,7 @@ title: .show table policy partitioning command
 description: Learn how to use the `.show table policy partitioning` command to display the table's partitioning policy.
 ms.reviewer: yonil
 ms.topic: reference
-ms.date: 05/23/2023
+ms.date: 08/11/2024
 ---
 # .show table policy partitioning command
 

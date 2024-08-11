@@ -2,7 +2,7 @@
 title:  punycode_to_string 
 description:  This article describes the punycode_to_string() command.
 ms.topic: reference
-ms.date: 04/16/2023
+ms.date: 08/11/2024
 ---
 
 # punycode_to_string()

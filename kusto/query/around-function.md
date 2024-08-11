@@ -3,7 +3,7 @@ title:  around() function
 description: Learn how to use the around() function to indicate if the first argument is within a range around the center value.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 11/20/2022
+ms.date: 08/11/2024
 ---
 # around()
 

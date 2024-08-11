@@ -3,7 +3,7 @@ title:  The case-sensitive startswith string operator
 description: Learn how to use the startswith string operator to filter a record set with a case-sensitive string starting sequence.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 09/19/2021
+ms.date: 08/11/2024
 ---
 # startswith_cs operator
 

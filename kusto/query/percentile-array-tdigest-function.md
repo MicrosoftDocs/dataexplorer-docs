@@ -3,7 +3,7 @@ title:  percentile_array_tdigest()
 description: Learn how to use the percentile_array_tdigest() to calculate the percentile value of an expression.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 01/11/2023
+ms.date: 08/11/2024
 ---
 # percentile_array_tdigest()
 

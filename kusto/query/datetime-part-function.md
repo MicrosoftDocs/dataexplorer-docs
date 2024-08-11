@@ -3,7 +3,7 @@ title:  datetime_part()
 description:  This article describes datetime_part().
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 11/03/2022
+ms.date: 08/11/2024
 ---
 # datetime_part()
 

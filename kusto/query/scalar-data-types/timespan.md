@@ -3,7 +3,7 @@ title:  The timespan data type
 description:  This article describes The timespan data type.
 ms.reviewer: orspodek
 ms.topic: reference
-ms.date: 01/08/2024
+ms.date: 08/11/2024
 ---
 # The timespan data type
 

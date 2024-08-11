@@ -3,7 +3,7 @@ title:  series_fit_poly()
 description: Learn how to use the series_fit_poly() to apply a polynomial regression from an independent variable (x_series) to a dependent variable (y_series).
 ms.reviewer: adieldar
 ms.topic: reference
-ms.date: 01/29/2023
+ms.date: 08/11/2024
 ---
 # series_fit_poly()
 

@@ -2,7 +2,7 @@
 title:  'Tutorial: Learn common Kusto Query Language operators'
 description: This tutorial describes how to write queries using common operators in the Kusto Query Language to meet common query needs.
 ms.topic: tutorial
-ms.date: 08/05/2024
+ms.date: 08/11/2024
 ---
 
 # Tutorial: Learn common operators

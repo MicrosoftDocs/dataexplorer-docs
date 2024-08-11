@@ -1,6 +1,6 @@
 ---
 ms.topic: include
-ms.date: 12/28/2022
+ms.date: 08/11/2024
 ---
 
 The following table provides a comparison of the `in` operators:

@@ -3,7 +3,7 @@ title: .create function command
 description: Learn how to use the `.create function` command to create a stored function.
 ms.reviewer: orspodek
 ms.topic: reference
-ms.date: 07/29/2024
+ms.date: 08/11/2024
 ---
 # .create function command
 

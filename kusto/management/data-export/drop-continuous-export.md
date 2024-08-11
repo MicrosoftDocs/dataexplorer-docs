@@ -3,7 +3,7 @@ title:  Drop continuous data export
 description:  This article describes how to drop continuous data export.
 ms.reviewer: yifats
 ms.topic: reference
-ms.date: 02/21/2023
+ms.date: 08/11/2024
 ---
 # Drop continuous export
 

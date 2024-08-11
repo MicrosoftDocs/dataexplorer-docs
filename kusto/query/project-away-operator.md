@@ -3,7 +3,7 @@ title:  project-away operator
 description: Learn how to use the project-away operator to select columns from the input table to exclude from the output table.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 01/12/2023
+ms.date: 08/11/2024
 monikerRange: "microsoft-fabric || azure-data-explorer || azure-monitor || microsoft-sentinel "
 ---
 # project-away operator

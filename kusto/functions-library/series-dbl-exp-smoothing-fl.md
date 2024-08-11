@@ -3,7 +3,7 @@ title:  series_dbl_exp_smoothing_fl()
 description:  This article describes the series_dbl_exp_smoothing_fl() user-defined function.
 ms.reviewer: joruales
 ms.topic: reference
-ms.date: 03/05/2023
+ms.date: 08/11/2024
 monikerRange: "microsoft-fabric || azure-data-explorer || azure-monitor || microsoft-sentinel"
 ---
 # series_dbl_exp_smoothing_fl()

@@ -3,7 +3,7 @@ title:  The case-sensitive !contains_cs string operator
 description: Learn how to use the !contains_cs string operator to filter data that doesn't include a case-sensitive string.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 03/12/2023
+ms.date: 08/11/2024
 ---
 
 # !contains_cs operator

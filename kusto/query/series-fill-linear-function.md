@@ -3,7 +3,7 @@ title:  series_fill_linear()
 description: Learn how to use the series_fill_linear() function to linearly interpolate missing values in a series.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 01/26/2023
+ms.date: 08/11/2024
 ---
 # series_fill_linear()
 

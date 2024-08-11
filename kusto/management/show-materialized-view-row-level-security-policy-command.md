@@ -3,7 +3,7 @@ title: .show materialized-view policy row_level_security command
 description: Learn how to use the `.show materialized-view policy row_level_security` command to show the materialized view's row level security policy.
 ms.reviewer: yonil
 ms.topic: reference
-ms.date: 05/23/2023
+ms.date: 08/11/2024
 ---
 # .show materialized-view policy row_level_security command
 

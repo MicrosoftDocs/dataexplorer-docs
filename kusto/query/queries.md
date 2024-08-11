@@ -3,7 +3,7 @@ title:  Queries
 description: Learn how to use queries to explore and process data in the context of databases. 
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 04/16/2023
+ms.date: 08/11/2024
 ---
 # Query operators
 

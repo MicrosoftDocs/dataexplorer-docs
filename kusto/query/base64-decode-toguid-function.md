@@ -3,7 +3,7 @@ title:  base64_decode_toguid()
 description: Learn how to use base64_decode_toguid() function to return a GUID from a base64 string. 
 ms.reviewer: alexans
 ms.topic: reference 
-ms.date: 11/07/2022
+ms.date: 08/11/2024
 ---
 # base64_decode_toguid()
 

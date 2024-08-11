@@ -3,7 +3,7 @@ title:  The case-sensitive hasprefix_cs string operator
 description: Learn how to use the hasprefix_cs operator to filter data with a case-sensitive prefix string.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 12/25/2022
+ms.date: 08/11/2024
 ---
 # hasprefix_cs operator
 

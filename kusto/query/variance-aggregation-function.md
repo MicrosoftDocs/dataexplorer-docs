@@ -3,7 +3,7 @@ title:  variance() (aggregation function)
 description: Learn how to use the variance() aggregation function to calculate the sample variance of the expression across the group.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 11/13/2023
+ms.date: 08/11/2024
 ---
 # variance() (aggregation function)
 

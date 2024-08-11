@@ -3,7 +3,7 @@ title: .show ingestion failures command
 description: Learn how to use the `.show ingestion failures` command to show any ingestion failures when running data ingestion management commands.
 ms.reviewer: orspodek
 ms.topic: reference
-ms.date: 10/05/2023
+ms.date: 08/11/2024
 ---
 # .show ingestion failures command
 

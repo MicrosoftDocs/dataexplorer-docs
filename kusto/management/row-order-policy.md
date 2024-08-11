@@ -3,7 +3,7 @@ title: Row order policy
 description: Learn how to use the row order policy to order rows in an extent.
 ms.reviewer: orspodek
 ms.topic: reference
-ms.date: 08/24/2023
+ms.date: 08/11/2024
 ---
 # Row order policy
 

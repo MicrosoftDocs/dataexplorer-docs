@@ -3,7 +3,7 @@ title: Python plugin packages
 description: Learn about the Python packages available in the Python plugin.
 ms.reviewer: suatta
 ms.topic: reference
-ms.date: 03/19/2023
+ms.date: 08/11/2024
 monikerRange: "microsoft-fabric || azure-data-explorer"
 ---
 

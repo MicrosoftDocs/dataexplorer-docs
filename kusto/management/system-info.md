@@ -3,7 +3,7 @@ title: System information
 description: Learn how to use system information commands available to database admins and database monitors to explore usage, track operations and investigate ingestion failures.
 ms.reviewer: orspodek
 ms.topic: reference
-ms.date: 11/21/2023
+ms.date: 08/11/2024
 ---
 # System information
 

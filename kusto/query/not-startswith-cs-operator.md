@@ -3,7 +3,7 @@ title:  The case-sensitive !startswith_cs string operator
 description: Learn how to use the !startswith_cs string operator to filter records for data that doesn't start with a case-sensitive search string.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 03/12/2023
+ms.date: 08/11/2024
 ---
 # !startswith_cs operators
 

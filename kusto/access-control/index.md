@@ -4,7 +4,7 @@ description: This article describes Access control.
 ms.reviewer: orspodek
 ms.topic: reference
 ms.custom: has-adal-ref
-ms.date: 06/28/2023
+ms.date: 08/11/2024
 ---
 # Access control overview
 

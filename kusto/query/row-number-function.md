@@ -3,7 +3,7 @@ title:  row_number()
 description: Learn how to use the row_number() to return the current row's index in a serialized row set.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 01/19/2023
+ms.date: 08/11/2024
 ---
 # row_number()
 

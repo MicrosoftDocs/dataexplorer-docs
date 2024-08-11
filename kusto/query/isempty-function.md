@@ -3,7 +3,7 @@ title:  isempty()
 description: Learn how to use the isempty() function to check if the argument is an empty string.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 01/03/2023
+ms.date: 08/11/2024
 ---
 # isempty()
 

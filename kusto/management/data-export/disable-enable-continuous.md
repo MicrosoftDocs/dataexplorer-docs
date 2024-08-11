@@ -3,7 +3,7 @@ title:  Enable or disable continuous data export
 description:  This article describes how to disable or enable continuous data export.
 ms.reviewer: yifats
 ms.topic: reference
-ms.date: 02/21/2023
+ms.date: 08/11/2024
 ---
 # Disable or enable continuous export
 

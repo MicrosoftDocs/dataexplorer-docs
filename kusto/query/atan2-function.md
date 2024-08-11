@@ -3,7 +3,7 @@ title:  atan2()
 description: Learn how to use the atan2() function to calculate an angle in radians between axes.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 11/03/2022
+ms.date: 08/11/2024
 ---
 # atan2()
 

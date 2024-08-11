@@ -3,7 +3,7 @@ title:  .alter database policy extent_tags_retention command
 description: Learn how to use the `.alter database policy extent_tags_retention` command to change the database-level extent tags retention policy.
 ms.reviewer: yonil
 ms.topic: reference
-ms.date: 04/20/2023
+ms.date: 08/11/2024
 ---
 # .alter database policy extent_tags_retention command
 

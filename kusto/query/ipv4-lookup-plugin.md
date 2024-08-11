@@ -3,8 +3,7 @@ title:  ipv4_lookup plugin
 description: Learn how to use the ipv4_lookup plugin to look up an IPv4 value in a lookup table.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 01/01/2023
-monikerRange: "azure-data-explorer || microsoft-fabric"
+ms.date: 08/11/2024
 ---
 # ipv4_lookup plugin
 

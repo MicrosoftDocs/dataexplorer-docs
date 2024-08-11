@@ -3,7 +3,7 @@ title: .set stored_query_results command
 description: Learn how to use the `.set stored_query_result` command to create a stored query result to store the results of a query on the service for up to 24 hours.
 ms.reviewer: mispecto
 ms.topic: reference
-ms.date: 02/26/2024
+ms.date: 08/11/2024
 ---
 
 # .set stored_query_result command

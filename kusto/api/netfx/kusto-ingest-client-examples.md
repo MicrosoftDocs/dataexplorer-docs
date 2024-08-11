@@ -3,7 +3,7 @@ title:  Kusto.Ingest code examples
 description: This article describes Kusto.Ingest ingestion code examples.
 ms.reviewer: ohbitton
 ms.topic: reference
-ms.date: 05/08/2023
+ms.date: 08/11/2024
 ---
 # Kusto.Ingest ingestion code examples
 

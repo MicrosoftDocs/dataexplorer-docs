@@ -3,7 +3,7 @@ title:  cursor_before_or_at()
 description: Learn how to use the cursor_before_or_at() function to compare the ingestion time of the records of a table against the database cursor time.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 11/27/2020
+ms.date: 08/11/2024
 monikerRange: "microsoft-fabric || azure-data-explorer"
 ---
 # cursor_before_or_at()

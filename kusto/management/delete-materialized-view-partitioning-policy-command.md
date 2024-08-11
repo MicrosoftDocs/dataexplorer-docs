@@ -3,7 +3,7 @@ title: .delete materialized-view policy partitioning command
 description: Learn how to use the `.delete materialized-view policy partitioning` command to delete a materialized view's partitioning policy.
 ms.reviewer: yonil
 ms.topic: reference
-ms.date: 05/24/2023
+ms.date: 08/11/2024
 ---
 # .delete materialized-view policy partitioning command
 

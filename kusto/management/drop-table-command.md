@@ -3,7 +3,7 @@ title: .drop table command
 description: Learn how to use the `.drop table` command to remove one or more tables from a database.
 ms.reviewer: orspodek
 ms.topic: reference
-ms.date: 05/15/2023
+ms.date: 08/11/2024
 ---
 # .drop table command
 

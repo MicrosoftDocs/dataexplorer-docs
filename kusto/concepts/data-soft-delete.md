@@ -3,7 +3,7 @@ title:  Data soft delete
 description:  This article describes data soft delete.
 ms.reviewer: slneimer
 ms.topic: reference
-ms.date: 07/01/2024
+ms.date: 08/11/2024
 monikerRange: "azure-data-explorer"
 ---
 # Soft delete overview

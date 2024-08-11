@@ -2,7 +2,7 @@
 title: Estimate table size
 description:  Learn how to estimate table size.
 ms.topic: reference
-ms.date: 05/29/2023
+ms.date: 08/11/2024
 ---
 # Estimate table size
 

@@ -3,7 +3,7 @@ title:  sin()
 description: Learn how to use the sin() function to return the sine value of the input.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 01/30/2023
+ms.date: 08/11/2024
 ---
 # sin()
 

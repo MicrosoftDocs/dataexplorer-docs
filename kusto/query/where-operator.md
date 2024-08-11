@@ -3,7 +3,7 @@ title:  where operator
 description: Learn how to use the where operator to filter a table to the subset of rows that satisfy a predicate.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 11/24/2022
+ms.date: 08/11/2024
 monikerRange: "microsoft-fabric || azure-data-explorer || azure-monitor || microsoft-sentinel "
 ---
 # where operator

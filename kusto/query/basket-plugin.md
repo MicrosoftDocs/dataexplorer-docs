@@ -3,8 +3,7 @@ title:  basket plugin
 description: Learn how to use the basket plugin to find frequent patterns in data that exceed a frequency threshold. 
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 03/12/2023
-monikerRange: "azure-data-explorer || microsoft-fabric"
+ms.date: 08/11/2024
 ---
 # basket plugin
 

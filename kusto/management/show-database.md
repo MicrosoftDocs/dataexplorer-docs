@@ -3,7 +3,7 @@ title: .show database command
 description: Learn how to use the `.show database` command to show the properties of the specified database.
 ms.reviewer: orspodek
 ms.topic: reference
-ms.date: 05/24/2023
+ms.date: 08/11/2024
 ---
 # .show database command
 

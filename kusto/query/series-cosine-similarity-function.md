@@ -3,7 +3,7 @@ title:  series_cosine_similarity()
 description:  This article describes series_cosine_similarity().
 ms.reviewer: adieldar
 ms.topic: reference
-ms.date: 12/20/2023
+ms.date: 08/11/2024
 ---
 # series_cosine_similarity()
 

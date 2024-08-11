@@ -3,7 +3,7 @@ title:  Pattern statement
 description: Learn how to use pattern statements to map string tuples to tabular expressions.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 05/01/2023
+ms.date: 08/11/2024
 monikerRange: "microsoft-fabric || azure-data-explorer"
 ---
 

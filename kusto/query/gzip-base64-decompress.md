@@ -3,7 +3,7 @@ title:  gzip_decompress_from_base64_string()
 description: Learn how to use the gzip_decompress_from_base64_string() function to decode an input string from base64 and perform a gzip-decompression.
 ms.reviewer: elgevork
 ms.topic: reference
-ms.date: 12/18/2022
+ms.date: 08/11/2024
 ---
 # gzip_decompress_from_base64_string()
 

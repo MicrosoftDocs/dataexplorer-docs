@@ -3,7 +3,7 @@ title:  todecimal()
 description: Learn how to use the todecimal() function to convert the input expression to a decimal number representation. 
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 01/08/2024
+ms.date: 08/11/2024
 ---
 # todecimal()
 

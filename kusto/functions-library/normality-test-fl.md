@@ -3,7 +3,7 @@ title:  normality_test_fl()
 description:  This article describes the normality_test_fl() user-defined function.
 ms.reviewer: adieldar
 ms.topic: reference
-ms.date: 03/13/2023
+ms.date: 08/11/2024
 ---
 # normality_test_fl()
 

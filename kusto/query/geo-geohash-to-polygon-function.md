@@ -3,7 +3,7 @@ title:  geo_geohash_to_polygon()
 description: Learn how to use the geo_geohash_to_polygon() function to calculate the polygon that represents the geohash rectangular area. 
 ms.reviewer: mbrichko
 ms.topic: reference
-ms.date: 03/09/2023
+ms.date: 08/11/2024
 ---
 # geo_geohash_to_polygon()
 

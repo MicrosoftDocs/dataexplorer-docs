@@ -3,7 +3,7 @@ title: Microsoft Entra application registration
 description: This article describes how to create a Microsoft Entra app registration for authentication.
 ms.reviewer: orspodek
 ms.topic: reference
-ms.date: 06/05/2024
+ms.date: 08/11/2024
 ---
 # Create Microsoft Entra application registration
 

@@ -3,7 +3,7 @@ title:  .alter-merge table column-docstrings command
 description: Learn how to use the `.alter-merge table column-docstrings` command to set the `DocString` property for one or more columns in a specified table.
 ms.reviewer: orspodek
 ms.topic: reference
-ms.date: 04/20/2023
+ms.date: 08/11/2024
 ---
 # .alter-merge table column-docstrings command
 

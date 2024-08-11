@@ -3,7 +3,7 @@ title:  Entities
 description:  This article describes Entities.
 ms.reviewer: orspodek
 ms.topic: reference
-ms.date: 08/29/2023
+ms.date: 08/11/2024
 ---
 # Entity types
 

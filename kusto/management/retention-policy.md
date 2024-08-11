@@ -3,7 +3,7 @@ title: Retention policy
 description: Learn how to use the retention policy to control how data is removed.
 ms.reviewer: orspodek
 ms.topic: reference
-ms.date: 05/24/2023
+ms.date: 08/11/2024
 ---
 # Retention policy
 

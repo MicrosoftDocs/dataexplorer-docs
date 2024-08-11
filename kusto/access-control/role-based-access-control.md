@@ -3,7 +3,7 @@ title:  Role-based access control
 description: This article describes role-based access control.
 ms.reviewer: orspodek
 ms.topic: reference
-ms.date: 08/05/2024
+ms.date: 08/11/2024
 monikerRange: "azure-data-explorer || microsoft-fabric"
 ---
 # Kusto role-based access control

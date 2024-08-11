@@ -3,7 +3,7 @@ title:  .show materialized-view schema commands
 description:  This article describes show materialized-view schema commands.
 ms.reviewer: yifats
 ms.topic: reference
-ms.date: 03/01/2023
+ms.date: 08/11/2024
 ---
 
 # .show materialized-view schema

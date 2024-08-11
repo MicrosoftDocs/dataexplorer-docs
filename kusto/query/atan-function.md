@@ -3,7 +3,7 @@ title:  atan()
 description: Learn how to use the atan() function to return the inverse operation of tan().
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 11/03/2022
+ms.date: 08/11/2024
 ---
 # atan()
 

@@ -3,7 +3,7 @@ title:  make_set() (aggregation function)
 description: Learn how to use the make_set() function to return a JSON array of the distinct values that the expression takes in the group. 
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 11/13/2023
+ms.date: 08/11/2024
 ---
 # make_set() (aggregation function)
 

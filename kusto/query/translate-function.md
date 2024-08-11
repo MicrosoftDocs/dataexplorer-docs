@@ -3,7 +3,7 @@ title:  translate()
 description: Learn how to use the translate() function to replace a set of characters with another set of characters in a given string.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 02/27/2023
+ms.date: 08/11/2024
 ---
 # translate()
 

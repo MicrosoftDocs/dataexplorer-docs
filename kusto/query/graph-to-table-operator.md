@@ -3,7 +3,7 @@ title: graph-to-table operator
 description: Learn how to use the graph-to-table operator to export nodes or edges from a graph to tables.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 08/30/2023
+ms.date: 08/11/2024
 ---
 # graph-to-table operator
 

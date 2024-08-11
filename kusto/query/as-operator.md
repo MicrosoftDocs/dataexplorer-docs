@@ -3,7 +3,7 @@ title:  as operator
 description: Learn how to use the as operator to bind a name to the operator's input tabular expression.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 03/14/2023
+ms.date: 08/11/2024
 ---
 # as operator
 

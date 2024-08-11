@@ -3,7 +3,7 @@ title:  Ladder chart visualization
 description:  This article describes the ladder chart visualization.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 09/18/2023
+ms.date: 08/11/2024
 monikerRange: "azure-data-explorer"
 ---
 # Ladder chart

@@ -3,7 +3,7 @@ title:  parse_xml()
 description: Learn how to use the parse_xml() function to return a dynamic object that is determined by the value of XML.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 01/08/2023
+ms.date: 08/11/2024
 ---
 # parse_xml()
 

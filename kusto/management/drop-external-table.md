@@ -3,7 +3,7 @@ title: .drop external table command
 description: Learn how to use the `.drop external table` command to drop an external table. 
 ms.reviewer: yifats
 ms.topic: reference
-ms.date: 05/24/2023
+ms.date: 08/11/2024
 ---
 # .drop external table command
 

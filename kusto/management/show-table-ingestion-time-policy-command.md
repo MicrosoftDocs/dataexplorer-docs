@@ -3,7 +3,7 @@ title: .show table policy ingestiontime command
 description: Learn how to use the `.show table policy ingestiontime` command to display the table's ingestion time policy.
 ms.reviewer: yonil
 ms.topic: reference
-ms.date: 05/24/2023
+ms.date: 08/11/2024
 ---
 # .show table policy ingestiontime command
 

@@ -3,7 +3,7 @@ title:  series_fit_line_dynamic()
 description: Learn how to use the series_fit_line_dynamic() function to apply a linear regression on a series to return a dynamic object.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 01/26/2023
+ms.date: 08/11/2024
 ---
 # series_fit_line_dynamic()
 

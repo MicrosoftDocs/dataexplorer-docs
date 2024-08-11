@@ -3,7 +3,7 @@ title:  exp10()
 description: Learn how to use the exp10() function to return the base-10 exponential value of x.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 03/25/2019
+ms.date: 08/11/2024
 ---
 # exp10()
 

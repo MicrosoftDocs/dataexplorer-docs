@@ -3,7 +3,7 @@ title:  geo_h3cell_parent()
 description: Learn how to use the geo_h3cell_parent() function to calculate the H3 cell parent.
 ms.reviewer: mbrichko
 ms.topic: reference
-ms.date: 03/09/2023
+ms.date: 08/11/2024
 ---
 # geo_h3cell_parent()
 

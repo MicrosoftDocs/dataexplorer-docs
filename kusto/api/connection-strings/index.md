@@ -3,7 +3,7 @@ title:  Connection strings overview
 description: This article describes connection strings.
 ms.reviewer: orspodek
 ms.topic: reference
-ms.date: 07/13/2023
+ms.date: 08/11/2024
 ---
 # Connection strings overview
 

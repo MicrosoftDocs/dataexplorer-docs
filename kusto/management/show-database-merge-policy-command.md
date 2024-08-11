@@ -3,7 +3,7 @@ title: .show database policy merge command
 description: Learn how to use the `.show database policy merge` command to show the database's merge policy.
 ms.reviewer: yonil
 ms.topic: reference
-ms.date: 05/24/2023
+ms.date: 08/11/2024
 ---
 # .show database policy merge command
 

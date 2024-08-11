@@ -3,7 +3,7 @@ title:  dcountif() (aggregation function)
 description: Learn how to use the dcountif() function to return an estimate of the number of distinct values of an expression for rows where the predicate evaluates to true.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 11/13/2023
+ms.date: 08/11/2024
 ---
 # dcountif() (aggregation function)
 

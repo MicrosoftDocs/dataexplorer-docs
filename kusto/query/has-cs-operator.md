@@ -3,7 +3,7 @@ title:  The case-sensitive has_cs string operator
 description: Learn how to use the has_cs operator to filter data with a case-sensitive search string.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 12/28/2022
+ms.date: 08/11/2024
 ---
 # has_cs operator
 

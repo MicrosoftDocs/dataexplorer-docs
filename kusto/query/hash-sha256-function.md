@@ -3,7 +3,7 @@ title:  hash_sha256()
 description: Learn how to use the hash_sha256() function to return a sha256 hash value of the source input.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 01/30/2023
+ms.date: 08/11/2024
 ---
 # hash_sha256()
 

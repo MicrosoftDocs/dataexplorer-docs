@@ -3,7 +3,7 @@ title:  toupper()
 description: Learn how to use the toupper() function to convert a string to upper case.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 02/23/2023
+ms.date: 08/11/2024
 ---
 # toupper()
 

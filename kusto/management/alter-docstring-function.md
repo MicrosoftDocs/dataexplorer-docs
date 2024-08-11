@@ -3,7 +3,7 @@ title:  .alter function docstring command
 description: Learn how to use the `.alter function docstring` command to change the `DocString` value of an existing function.
 ms.reviewer: orspodek
 ms.topic: reference
-ms.date: 07/29/2024
+ms.date: 08/11/2024
 ---
 # .alter function docstring command
 

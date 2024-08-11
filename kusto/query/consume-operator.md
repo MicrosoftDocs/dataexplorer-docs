@@ -3,7 +3,7 @@ title:  consume operator
 description: Learn how to use the consume operator to consume the tabular data stream handed to the operator.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 03/09/2023
+ms.date: 08/11/2024
 ---
 # consume operator
 

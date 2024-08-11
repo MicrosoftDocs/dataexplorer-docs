@@ -3,7 +3,7 @@ title:  hll() (aggregation function)
 description: Learn how to use the hll() function to calculate the results of the dcount() function.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 12/26/2022
+ms.date: 08/11/2024
 ---
 # hll() (aggregation function)
 

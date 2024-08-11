@@ -3,7 +3,7 @@ title:  log10()
 description: Learn how to use the log10() function to return the common (base-10) logarithm of the input.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 01/05/2023
+ms.date: 08/11/2024
 ---
 # log10()
 

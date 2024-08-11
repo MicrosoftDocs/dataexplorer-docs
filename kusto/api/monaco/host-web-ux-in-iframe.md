@@ -4,7 +4,7 @@ description: Learn how to embed the Azure Data Explorer web UI in an **iframe**.
 ms.reviewer: izlisbon
 ms.topic: how-to
 ms.custom: has-azure-ad-ps-ref, azure-ad-ref-level-one-done
-ms.date: 6/6/2023
+ms.date: 08/11/2024
 monikerRange: "azure-data-explorer"
 ---
 # Embed the Azure Data Explorer web UI in an iframe

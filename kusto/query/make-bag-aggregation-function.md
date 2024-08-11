@@ -3,7 +3,7 @@ title:  make_bag() (aggregation function)
 description: Learn how to use the make_bag() aggregation function to create a dynamic JSON property bag.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 11/13/2023
+ms.date: 08/11/2024
 ---
 # make_bag() (aggregation function)
 

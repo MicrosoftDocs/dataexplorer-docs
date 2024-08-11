@@ -3,7 +3,7 @@ title: Data purge
 description: This article describes Data purge.
 ms.reviewer: kedamari
 ms.topic: reference
-ms.date: 07/03/2022
+ms.date: 08/11/2024
 monikerRange: "azure-data-explorer"
 ---
 # Data purge

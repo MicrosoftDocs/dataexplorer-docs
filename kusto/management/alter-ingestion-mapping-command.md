@@ -3,7 +3,7 @@ title:  .alter ingestion mapping command
 description: Learn how to use the `.alter ingestion mapping` command to alter a table or database's existing ingestion mapping 
 ms.reviewer: orspodek
 ms.topic: reference
-ms.date: 12/26/2023
+ms.date: 08/11/2024
 ---
 # .alter ingestion mapping command
 

@@ -3,7 +3,7 @@ title:  next()
 description: Learn how to use the next() function to return the value of the next column at an offset. 
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 03/23/2023
+ms.date: 08/11/2024
 ---
 # next()
 

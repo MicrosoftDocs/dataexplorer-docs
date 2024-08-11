@@ -3,7 +3,7 @@ title:  .alter materialized view autoUpdateSchema
 description:  This article describes alter materialized view autoUpdateSchema.
 ms.reviewer: yifats
 ms.topic: reference
-ms.date: 03/01/2023
+ms.date: 08/11/2024
 ---
 
 # .alter materialized-view autoUpdateSchema

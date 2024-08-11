@@ -4,7 +4,7 @@ description: Learn how to use the array_sum() function to calculate the sum of e
 
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 11/20/2022
+ms.date: 08/11/2024
 ---
 # array_sum()
 

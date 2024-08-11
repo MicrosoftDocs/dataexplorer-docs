@@ -3,7 +3,7 @@ title:  series_floor()
 description: Learn how to use the series_floor() function to calculate the element-wise floor function of the numeric series input.
 ms.reviewer: afridman
 ms.topic: reference
-ms.date: 01/29/2023
+ms.date: 08/11/2024
 ---
 # series_floor()
 

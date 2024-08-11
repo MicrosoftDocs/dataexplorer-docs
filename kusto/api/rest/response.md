@@ -3,7 +3,7 @@ title:  Query/management HTTP response
 description: This article describes Query/management HTTP response.
 ms.reviewer: orspodek
 ms.topic: reference
-ms.date: 11/05/2018
+ms.date: 08/11/2024
 ---
 # Query/management HTTP response
 

@@ -3,7 +3,7 @@ title:  .alter table policy extent_tags_retention command
 description: Learn how to use the `.alter table policy extent_tags_retention` command to alter the table's extent tag retention policy.
 ms.reviewer: yonil
 ms.topic: reference
-ms.date: 06/04/2023
+ms.date: 08/11/2024
 ---
 # .alter table policy extent_tags_retention command
 

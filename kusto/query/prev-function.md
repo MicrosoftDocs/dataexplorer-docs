@@ -3,7 +3,7 @@ title:  prev()
 description: Learn how to use the prev() function to return the value of a specific column in a specified row.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 03/22/2023
+ms.date: 08/11/2024
 ---
 # prev()
 

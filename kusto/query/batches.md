@@ -3,7 +3,7 @@ title:  Batches
 description:  This article describes Batches.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 03/14/2023
+ms.date: 08/11/2024
 ---
 # Batches
 

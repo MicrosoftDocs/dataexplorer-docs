@@ -3,7 +3,7 @@ title: Kusto Query Language (KQL) graph semantics overview
 description: Learn about how to contextualize data in queries using KQL graph semantics
 ms.reviewer: herauch
 ms.topic: conceptual
-ms.date: 09/03/2023
+ms.date: 08/11/2024
 # Customer intent: As a data analyst, I want to learn about how to contextualize data in queries using KQL graph semantics
 ---
 

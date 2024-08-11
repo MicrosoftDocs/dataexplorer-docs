@@ -3,7 +3,7 @@ title: .alter column policy encoding command
 description: Learn how to use the `.alter column policy encoding` command to change the encoding policy.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 04/20/2023
+ms.date: 08/11/2024
 ---
 # .alter column policy encoding command
 

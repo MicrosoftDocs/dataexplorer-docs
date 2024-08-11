@@ -3,7 +3,7 @@ title: Row Level Security
 description: Learn how to use the Row Level Security policy to control access to rows in a database table.
 ms.reviewer: orspodek
 ms.topic: reference
-ms.date: 12/21/2023
+ms.date: 08/11/2024
 ---
 # Row Level Security
 

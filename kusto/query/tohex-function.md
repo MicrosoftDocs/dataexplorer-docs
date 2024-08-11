@@ -3,7 +3,7 @@ title:  tohex()
 description: Learn how to use the tohex() function to convert the input value to a hexadecimal string.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 02/22/2023
+ms.date: 08/11/2024
 ---
 # tohex()
 

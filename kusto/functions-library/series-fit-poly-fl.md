@@ -3,7 +3,7 @@ title:  series_fit_poly_fl()
 description:  This article describes the series_fit_poly_fl() user-defined function.
 ms.reviewer: adieldar
 ms.topic: reference
-ms.date: 03/16/2023
+ms.date: 08/11/2024
 ---
 # series_fit_poly_fl()
 

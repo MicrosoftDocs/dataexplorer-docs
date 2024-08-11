@@ -3,7 +3,7 @@ title: .show table policy restricted_view_access command
 description: Learn how to use the `.show table policy restricted_view_access` command to display the details of the table's restricted view access policy.
 ms.reviewer: yonil
 ms.topic: reference
-ms.date: 05/24/2023
+ms.date: 08/11/2024
 ---
 # .show table policy restricted_view_access command
 

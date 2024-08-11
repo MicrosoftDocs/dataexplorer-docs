@@ -3,7 +3,7 @@ title:  The case-insensitive !has string operators
 description: Learn how to use the !has string operator to filter records for data that doesn't have a matching case-insensitive string.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 03/12/2023
+ms.date: 08/11/2024
 ---
 # !has operator
 

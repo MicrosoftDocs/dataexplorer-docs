@@ -3,7 +3,7 @@ title:  series_periods_detect()
 description: Learn how to use the series_periods_detect() function to find the most significant periods that exist in a time series.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 01/30/2023
+ms.date: 08/11/2024
 ---
 # series_periods_detect()
 

@@ -3,7 +3,7 @@ title: .show table mirroring operations command
 description: Learn how to use the `.show table mirroring operations` command to check the mirroring policy operations.
 ms.reviewer: sharmaanshul
 ms.topic: reference
-ms.date: 05/23/2024
+ms.date: 08/11/2024
 monikerRange: "microsoft-fabric"
 ---
 # .show table mirroring operations command

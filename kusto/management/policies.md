@@ -2,7 +2,7 @@
 title: Policies overview
 description: Learn which policies are available for management.
 ms.topic: reference
-ms.date: 08/21/2023
+ms.date: 08/11/2024
 ---
 # Policies overview
 

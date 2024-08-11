@@ -3,7 +3,7 @@ title:  quantize_fl()
 description:  This article describes the quantize_fl() user-defined function.
 ms.reviewer: adieldar
 ms.topic: reference
-ms.date: 03/05/2023
+ms.date: 08/11/2024
 monikerRange: "microsoft-fabric || azure-data-explorer || azure-monitor || microsoft-sentinel"
 ---
 # quantize_fl()

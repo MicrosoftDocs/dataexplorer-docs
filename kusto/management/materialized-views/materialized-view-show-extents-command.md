@@ -3,7 +3,7 @@ title:  .show materialized-view extents commands
 description:  This article describes show materialize-view extents commands.
 ms.reviewer: yifats
 ms.topic: reference
-ms.date: 03/01/2023
+ms.date: 08/11/2024
 ---
 
 # .show materialized-view extents

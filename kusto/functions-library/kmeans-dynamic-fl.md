@@ -3,7 +3,7 @@ title:  kmeans_dynamic_fl()
 description: This article describes the kmeans_dynamic_fl() user-defined function.
 ms.reviewer: adieldar
 ms.topic: reference
-ms.date: 07/25/2024
+ms.date: 08/11/2024
 ---
 # kmeans_dynamic_fl()
 

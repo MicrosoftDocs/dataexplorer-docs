@@ -3,7 +3,7 @@ title:  The !between operator
 description: Learn how to use the !between operator to match the input that is outside of the inclusive range.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 03/12/2023
+ms.date: 08/11/2024
 ---
 # !between operator
 

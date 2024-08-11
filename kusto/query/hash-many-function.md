@@ -3,7 +3,7 @@ title:  hash_many()
 description: Learn how to use the hash_many() function to return a combined hash value of multiple values.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 12/25/2022
+ms.date: 08/11/2024
 ---
 # hash_many()
 

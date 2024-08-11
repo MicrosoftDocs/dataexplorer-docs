@@ -3,7 +3,7 @@ title:  array_sort_desc()
 description: Learn how to use the array_sort_desc() function to sort arrays in descending order.
 ms.reviewer: slneimer
 ms.topic: reference
-ms.date: 09/21/2022
+ms.date: 08/11/2024
 ---
 # array_sort_desc()
 

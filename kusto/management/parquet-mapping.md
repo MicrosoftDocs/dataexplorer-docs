@@ -2,7 +2,7 @@
 title: Parquet Mapping
 description: Learn how to use Parquet mapping to map data to columns inside tables upon ingestion and optimize data processing in Kusto.
 ms.topic: reference
-ms.date: 03/27/2024
+ms.date: 08/11/2024
 ---
 # Parquet mapping
 

@@ -3,7 +3,7 @@ title:  Line chart visualization
 description:  This article describes the line chart visualization.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 07/26/2023
+ms.date: 08/11/2024
 monikerRange: "microsoft-fabric || azure-data-explorer"
 ---
 # Line chart

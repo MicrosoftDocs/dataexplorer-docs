@@ -3,7 +3,7 @@ title: .show database policy ingestionbatching command
 description: Learn how to use the `.show database policy ingestionbatching` command to show the database's ingestion batching policy.
 ms.reviewer: orspodek
 ms.topic: reference
-ms.date: 05/24/2023
+ms.date: 08/11/2024
 ---
 # .show database policy ingestionbatching command
 

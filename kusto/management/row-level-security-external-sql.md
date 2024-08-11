@@ -3,7 +3,7 @@ title: "Use row-level security with Azure SQL external tables"
 description: "This document describes how to create a row-level security solution with SQL external tables."
 ms.reviewer: danielkoralek
 ms.topic: how-to 
-ms.date: 02/25/2024
+ms.date: 08/11/2024
 #customer intent: As a Data Administrator, I want to restrict access to the data on Azure SQL External Tables so that each user can see only their data.
 ---
 # Apply row-level security on Azure SQL external tables

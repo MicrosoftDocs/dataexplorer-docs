@@ -3,7 +3,7 @@ title:  has_ipv4()
 description: Learn how to use the has_ipv4() function to check if a specified IPv4 address appears in the text.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 12/18/2022
+ms.date: 08/11/2024
 ---
 # has_ipv4()
 

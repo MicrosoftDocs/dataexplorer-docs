@@ -3,7 +3,7 @@ title:  User-defined functions
 description:  This article describes user-defined functions (scalar and views).
 ms.reviewer: orspodek
 ms.topic: reference
-ms.date: 08/13/2023
+ms.date: 08/11/2024
 ---
 # User-defined functions
 

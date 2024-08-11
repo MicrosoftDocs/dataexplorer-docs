@@ -2,7 +2,7 @@
 title: "Tutorial: Route data using table update policies"
 description: "Learn how to use table update policies to perform complex transformations and save the results to one or more destination tables."
 ms.topic: tutorial
-ms.date: 02/15/2024
+ms.date: 08/11/2024
 
 #customer intent: As a data engineer, I want to learn how to use table update policies to perform complex transformations and save the results to one or more destination tables so that I can route data to different tables based on the data content.
 ---

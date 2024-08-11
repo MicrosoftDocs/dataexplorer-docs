@@ -3,7 +3,7 @@ title:  startofweek()
 description: Learn how to use the startofweek() function to return the start of the week for the given date.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 01/31/2023
+ms.date: 08/11/2024
 ---
 # startofweek()
 

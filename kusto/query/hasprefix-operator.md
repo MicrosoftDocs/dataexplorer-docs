@@ -3,7 +3,7 @@ title:  The case-insensitive hasprefix string operator
 description: Learn how to use the hasprefix operator to filter data with a case-insensitive string.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 12/25/2022
+ms.date: 08/11/2024
 ---
 # hasprefix operator
 

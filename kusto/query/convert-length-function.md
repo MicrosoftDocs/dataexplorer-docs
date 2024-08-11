@@ -3,7 +3,7 @@ title:  convert_length()
 description: Learn how to use the convert_length() function to convert a length input value from one unit to another.
 ms.reviewer: itsagui
 ms.topic: reference
-ms.date: 11/27/2022
+ms.date: 08/11/2024
 ---
 # convert_length
 

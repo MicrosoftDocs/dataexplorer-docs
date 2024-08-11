@@ -2,7 +2,7 @@
 title:  CSV Mapping
 description: Learn how to use CSV mapping to map data to columns inside tables upon ingestion.
 ms.topic: reference
-ms.date: 03/08/2023
+ms.date: 08/11/2024
 ---
 
 # CSV mapping

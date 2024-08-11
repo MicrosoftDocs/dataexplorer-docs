@@ -3,7 +3,7 @@ title:  Generate a SAS token
 description: This article describes how to generate a SAS token.
 ms.reviewer: shanisolomon
 ms.topic: how-to
-ms.date: 06/14/2023
+ms.date: 08/11/2024
 ---
 # Generate a SAS token
 

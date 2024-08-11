@@ -3,7 +3,7 @@ title:  The case-sensitive in string operator
 description: Learn how to use the in operator to filter data with a case-sensitive string.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 03/29/2023
+ms.date: 08/11/2024
 ---
 # in operator
 

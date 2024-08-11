@@ -3,7 +3,7 @@ title:  Kusto Node SDK
 description: This article describes Kusto Node SDK.
 ms.reviewer: orspodek
 ms.topic: reference
-ms.date: 04/19/2023
+ms.date: 08/11/2024
 ---
 # Kusto Node SDK
 

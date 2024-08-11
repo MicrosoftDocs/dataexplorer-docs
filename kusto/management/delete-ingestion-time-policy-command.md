@@ -3,7 +3,7 @@ title: .delete table policy ingestiontime command
 description: Learn how to use the `.delete table policy ingestiontime` command to delete a table's ingestion time policy.
 ms.reviewer: yonil
 ms.topic: reference
-ms.date: 06/13/2023
+ms.date: 08/11/2024
 ---
 # .delete table policy ingestiontime command
 

@@ -3,7 +3,7 @@ title:  array_iff()
 description: Learn how to use the array_iff() function to scan and evaluate elements in an array.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 01/09/2023
+ms.date: 08/11/2024
 ---
 # array_iff()
 

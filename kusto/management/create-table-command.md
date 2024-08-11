@@ -3,7 +3,7 @@ title: .create table command
 description: Learn how to use the `.create table` command to create a new empty table.
 ms.reviewer: orspodek
 ms.topic: reference
-ms.date: 05/24/2023
+ms.date: 08/11/2024
 ---
 # .create table command
 

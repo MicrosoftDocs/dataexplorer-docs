@@ -3,7 +3,7 @@ title:  About the Kusto .NET SDK
 description: This article describes the Kusto .NET SDK.
 ms.reviewer: orspodek
 ms.topic: reference
-ms.date: 05/08/2023
+ms.date: 08/11/2024
 adobe-target: true
 ---
 # About the Kusto .NET SDK

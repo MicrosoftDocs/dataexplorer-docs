@@ -3,7 +3,7 @@ title:  mysql_request plugin
 description: Learn how to use the mysql_request plugin to send a SQL query to a MySQL server network endpoint.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 03/06/2023
+ms.date: 08/11/2024
 monikerRange: "microsoft-fabric || azure-data-explorer"
 ---
 # mysql_request plugin

@@ -3,7 +3,7 @@ title: .delete table policy mirroring command
 description: Learn how to use the `.delete table policy mirroring` command to delete a table's  logical copy.
 ms.reviewer: sharmaanshul
 ms.topic: reference
-ms.date: 06/04/2024
+ms.date: 08/11/2024
 monikerRange: "microsoft-fabric"
 ---
 # .delete table policy mirroring command

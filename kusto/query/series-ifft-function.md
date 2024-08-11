@@ -3,7 +3,7 @@ title:  series_ifft()
 description: Learn how to use the series_ifft() function to apply the Inverse Fast Fourier Transform (IFFT) on a series.
 ms.reviewer: adieldar
 ms.topic: reference
-ms.date: 01/29/2023
+ms.date: 08/11/2024
 ---
 # series_ifft()
 

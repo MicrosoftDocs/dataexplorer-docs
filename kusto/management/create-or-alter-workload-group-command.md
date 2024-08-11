@@ -3,7 +3,7 @@ title: .create-or-alter workload_group command
 description: Learn how to use the `create-or-alter workload_group` command to create a new workload group or alter an existing workload group.
 ms.reviewer: yonil
 ms.topic: reference
-ms.date: 07/01/2024
+ms.date: 08/11/2024
 ---
 # .create-or-alter workload_group command
 

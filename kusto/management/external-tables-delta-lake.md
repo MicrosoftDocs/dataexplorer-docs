@@ -3,7 +3,7 @@ title:  Create and alter Azure Storage delta external tables
 description: This article describes how to create and alter delta external tables
 ms.reviewer: igborodi
 ms.topic: reference
-ms.date: 06/20/2024
+ms.date: 08/11/2024
 ---
 # Create and alter delta external tables on Azure Storage
 

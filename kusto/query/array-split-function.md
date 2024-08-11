@@ -3,7 +3,7 @@ title:  array_split()
 description: Learn how to use the array_split() function to split an array into multiple arrays.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 11/03/2022
+ms.date: 08/11/2024
 ---
 # array_split()
 

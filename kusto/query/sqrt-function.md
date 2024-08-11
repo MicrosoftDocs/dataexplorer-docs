@@ -3,7 +3,7 @@ title:  sqrt()
 description: Learn how to use the sqrt() function to return the square root of the input,
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 01/31/2023
+ms.date: 08/11/2024
 ---
 # sqrt()
 

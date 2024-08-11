@@ -3,7 +3,7 @@ title:  binary_all_xor() (aggregation function)
 description: Learn how to use the binary_all_xor() function to aggregate values using the binary XOR operation.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 11/20/2022
+ms.date: 08/11/2024
 ---
 # binary_all_xor() (aggregation function)
 

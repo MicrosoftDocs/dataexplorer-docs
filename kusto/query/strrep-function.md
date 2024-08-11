@@ -3,7 +3,7 @@ title:  strrep()
 description: Learn how to use the strrep() function to repeat the input value.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 02/05/2023
+ms.date: 08/11/2024
 ---
 # strrep()
 

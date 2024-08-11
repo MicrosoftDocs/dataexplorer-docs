@@ -3,7 +3,7 @@ title:  series_greater_equals()
 description: Learn how to use the series_greater_equals() function to calculate the element-wise greater or equals (`>=`) logic operation of two numeric series inputs.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 01/29/2023
+ms.date: 08/11/2024
 ---
 # series_greater_equals()
 

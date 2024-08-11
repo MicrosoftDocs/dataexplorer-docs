@@ -3,7 +3,7 @@ title:  Plotly visualization
 description:  This article describes how to visualize data using the Plotly graphics library.
 ms.reviewer: adieldar
 ms.topic: reference
-ms.date: 08/13/2023
+ms.date: 08/11/2024
 monikerRange: "microsoft-fabric || azure-data-explorer || azure-monitor || microsoft-sentinel"
 ---
 # Plotly (preview)

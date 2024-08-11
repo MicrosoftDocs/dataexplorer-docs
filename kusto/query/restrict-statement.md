@@ -3,7 +3,7 @@ title:  Restrict statement
 description: Learn how to use the restrict statement to limit tabular views that are visible to subsequent query statements.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 03/12/2023
+ms.date: 08/11/2024
 monikerRange: "microsoft-fabric || azure-data-explorer"
 ---
 # Restrict statement

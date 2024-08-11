@@ -3,7 +3,7 @@ title:  array_rotate_right()
 description: Learn how to use the array_rotate_right() function to rotate values inside a dynamic array to the right.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 11/20/2022
+ms.date: 08/11/2024
 ---
 # array_rotate_right()
 

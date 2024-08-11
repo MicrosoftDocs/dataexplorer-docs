@@ -3,7 +3,7 @@ title:  Streaming ingestion HTTP request
 description: This article describes Streaming ingestion HTTP request.
 ms.reviewer: orspodek
 ms.topic: reference
-ms.date: 03/24/2020
+ms.date: 08/11/2024
 ---
 # Streaming ingestion HTTP request
 

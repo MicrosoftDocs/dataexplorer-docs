@@ -3,7 +3,7 @@ title:  Kusto.Ingest status reporting
 description: This article describes Kusto.Ingest ingestion status reporting.
 ms.reviewer: orspodek
 ms.topic: reference
-ms.date: 10/30/2019
+ms.date: 08/11/2024
 ---
 # Kusto.Ingest ingestion status reporting
 

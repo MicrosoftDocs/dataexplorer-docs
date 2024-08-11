@@ -2,7 +2,7 @@
 title: .show capacity command
 description: Learn how to use the `.show capacity` command to display the capacity policy.
 ms.topic: reference
-ms.date: 07/01/2024
+ms.date: 08/11/2024
 monikerRange: "azure-data-explorer"
 ---
 # .show capacity command

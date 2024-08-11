@@ -3,7 +3,7 @@ title: .delete database policy caching command
 description: Learn how to use the `.delete database policy caching` command to delete the database cache policy.
 ms.reviewer: yonil
 ms.topic: reference
-ms.date: 06/13/2023
+ms.date: 08/11/2024
 ---
 # .delete database policy caching command
 

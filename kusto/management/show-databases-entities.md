@@ -3,7 +3,7 @@ title: .show databases entities command
 description: Learn how to use the `.show databases entities` command to show databases' entities.
 ms.reviewer: mispecto
 ms.topic: reference
-ms.date: 07/20/2023
+ms.date: 08/11/2024
 ---
 # .show databases entities command
 

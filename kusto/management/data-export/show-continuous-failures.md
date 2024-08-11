@@ -3,7 +3,7 @@ title:  Show continuous data export failures
 description:  This article describes how to show continuous data export failures.
 ms.reviewer: yifats
 ms.topic: reference
-ms.date: 02/21/2023
+ms.date: 08/11/2024
 ---
 # Show continuous export failures
 

@@ -3,7 +3,7 @@ title:  dayofyear()
 description: Learn how to use the dayofyear() function to return the day number of the given year.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 11/24/2022
+ms.date: 08/11/2024
 ---
 # dayofyear()
 

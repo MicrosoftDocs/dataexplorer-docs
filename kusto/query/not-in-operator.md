@@ -3,7 +3,7 @@ title:  The case-insensitive !in~ string operator
 description: Learn how to use the !in~ string operator to filter records for data without a case-insensitive string.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 03/29/2023
+ms.date: 08/11/2024
 ---
 # !in~ operator
 

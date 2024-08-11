@@ -3,7 +3,7 @@ title:  Client libraries overview
 description: This article lists available client libraries
 ms.reviewer: orspodek
 ms.topic: reference
-ms.date: 07/26/2023
+ms.date: 08/11/2024
 ---
 # Kusto client libraries
 

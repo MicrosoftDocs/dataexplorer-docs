@@ -3,7 +3,7 @@ title: Geospatial grid system
 description: Learn how to use geospatial grid systems to cluster geospatial data.
 ms.reviewer: mbrichko
 ms.topic: reference
-ms.date: 12/18/2022
+ms.date: 08/11/2024
 ---
 
 # Geospatial clustering

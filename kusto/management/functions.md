@@ -3,7 +3,7 @@ title:  Stored functions management overview
 description:  This article describes Stored functions management overview.
 ms.reviewer: orspodek
 ms.topic: reference
-ms.date: 11/22/2022
+ms.date: 08/11/2024
 ---
 # Stored functions management overview
 

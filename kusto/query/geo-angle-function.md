@@ -3,7 +3,7 @@ title:  geo_angle()
 description: Learn how to use the geo_angle() function to calculate the angle between two lines on Earth.
 ms.reviewer: mbrichko
 ms.topic: reference
-ms.date: 01/05/2024
+ms.date: 08/11/2024
 ---
 # geo_angle()
 

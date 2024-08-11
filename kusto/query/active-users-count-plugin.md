@@ -3,8 +3,7 @@ title:  active_users_count plugin
 description: Learn how to use the active_users_count plugin to calculate the distinct count of values that appeared in a minimum number of periods in a lookback period.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 11/20/2022
-monikerRange: "azure-data-explorer || microsoft-fabric"
+ms.date: 08/11/2024
 ---
 # active_users_count plugin
 

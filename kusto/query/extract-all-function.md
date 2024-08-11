@@ -3,7 +3,7 @@ title:  extract_all()
 description: Lean how to use the extract_all() to extract all matches for a regular expression from a source string.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 12/12/2022
+ms.date: 08/11/2024
 ---
 # extract_all()
 

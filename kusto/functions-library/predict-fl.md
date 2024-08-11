@@ -3,7 +3,7 @@ title:  predict_fl()
 description:  This article describes the predict_fl() user-defined function.
 ms.reviewer: adieldar
 ms.topic: reference
-ms.date: 05/01/2023
+ms.date: 08/11/2024
 monikerRange: "microsoft-fabric || azure-data-explorer || azure-monitor || microsoft-sentinel"
 ---
 # predict_fl()

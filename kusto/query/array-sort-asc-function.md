@@ -3,7 +3,7 @@ title:  array_sort_asc()
 description: Learn how to use the array_sort_asc() function to sort arrays in ascending order.
 ms.reviewer: slneimer
 ms.topic: reference
-ms.date: 09/21/2022
+ms.date: 08/11/2024
 ---
 # array_sort_asc()
 

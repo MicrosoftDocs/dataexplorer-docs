@@ -3,7 +3,7 @@ title:  Continuous data export
 description:  This article describes Continuous data export.
 ms.reviewer: yifats
 ms.topic: reference
-ms.date: 06/25/2023
+ms.date: 08/11/2024
 ---
 # Continuous data export overview
 

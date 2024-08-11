@@ -3,7 +3,7 @@ title:  How to ingest data with the REST API
 description: This article describes how to ingest data without Kusto.Ingest library by using the REST API.
 ms.reviewer: orspodek
 ms.topic: reference
-ms.date: 05/08/2023
+ms.date: 08/11/2024
 ---
 # How to ingest data with the REST API
 

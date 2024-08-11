@@ -3,7 +3,7 @@ title: Query consistency policy
 description: Learn how to use the query consistency policy to control the consistency mode of queries.
 ms.reviewer: yonil
 ms.topic: reference
-ms.date: 07/01/2024
+ms.date: 08/11/2024
 ---
 # Query consistency policy
 

@@ -3,7 +3,7 @@ title:  series_seasonal()
 description: Learn how to use the series_seasonal() function to calculate the seasonal component of a series according to the detected seasonal period.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 01/30/2023
+ms.date: 08/11/2024
 ---
 # series_seasonal()
 

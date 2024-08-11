@@ -3,7 +3,7 @@ title:  Scalar data types
 description:  This article describes Scalar data types.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 01/27/2020
+ms.date: 08/11/2024
 ---
 # Scalar data types
 
