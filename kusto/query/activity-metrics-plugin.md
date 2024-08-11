@@ -3,11 +3,16 @@ title:  activity_metrics plugin
 description: Learn how to use the activity_metrics plugin to calculate activity metrics using the current time window compared to the previous window.
 ms.reviewer: alexans
 ms.topic: reference
+<<<<<<< HEAD
 ms.date: 08/11/2024
+=======
+ms.date: 11/20/2022
+monikerRange: "azure-data-explorer || microsoft-fabric"
+>>>>>>> d34a26a941c969320c139625ccc7746c400836e9
 ---
 # activity_metrics plugin
 
-> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)] [!INCLUDE [monitor](../includes/applies-to-version/monitor.md)] [!INCLUDE [sentinel](../includes/applies-to-version/sentinel.md)]
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)] 
 
 Calculates useful metrics that include distinct count values, distinct count of new values, retention rate, and churn rate. This plugin is different from [activity_counts_metrics plugin](activity-counts-metrics-plugin.md) in which every time window is compared to *all* previous time windows.
 

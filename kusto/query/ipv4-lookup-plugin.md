@@ -3,11 +3,16 @@ title:  ipv4_lookup plugin
 description: Learn how to use the ipv4_lookup plugin to look up an IPv4 value in a lookup table.
 ms.reviewer: alexans
 ms.topic: reference
+<<<<<<< HEAD
 ms.date: 08/11/2024
+=======
+ms.date: 01/01/2023
+monikerRange: "azure-data-explorer || microsoft-fabric"
+>>>>>>> d34a26a941c969320c139625ccc7746c400836e9
 ---
 # ipv4_lookup plugin
 
-> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)] [!INCLUDE [monitor](../includes/applies-to-version/monitor.md)] [!INCLUDE [sentinel](../includes/applies-to-version/sentinel.md)]
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)] 
 
 The `ipv4_lookup` plugin looks up an IPv4 value in a lookup table and returns rows with matched values. The plugin is invoked with the [`evaluate`](evaluate-operator.md) operator.
 

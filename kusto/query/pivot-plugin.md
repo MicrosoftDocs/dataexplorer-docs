@@ -3,11 +3,16 @@ title:  pivot plugin
 description: Learn how to use the pivot plugin to rotate a table with specified columns and aggregates the remaining columns.
 ms.reviewer: alexans
 ms.topic: reference
+<<<<<<< HEAD
 ms.date: 08/11/2024
+=======
+ms.date: 01/12/2023
+monikerRange: "azure-data-explorer || microsoft-fabric"
+>>>>>>> d34a26a941c969320c139625ccc7746c400836e9
 ---
 # pivot plugin
 
-> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)] [!INCLUDE [monitor](../includes/applies-to-version/monitor.md)] [!INCLUDE [sentinel](../includes/applies-to-version/sentinel.md)]
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)] 
 
 Rotates a table by turning the unique values from one column in the input table into multiple columns in the output table and performs aggregations as required on any remaining column values that will appear in the final output.
 

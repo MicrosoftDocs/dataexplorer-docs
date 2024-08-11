@@ -3,11 +3,16 @@ title:  new_activity_metrics plugin
 description: Learn how to use the new_activity_metrics plugin to calculate activity metrics. 
 ms.reviewer: alexans
 ms.topic: reference
+<<<<<<< HEAD
 ms.date: 08/11/2024
+=======
+ms.date: 01/08/2023
+monikerRange: "azure-data-explorer || microsoft-fabric"
+>>>>>>> d34a26a941c969320c139625ccc7746c400836e9
 ---
 # new_activity_metrics plugin
 
-> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)] [!INCLUDE [monitor](../includes/applies-to-version/monitor.md)] [!INCLUDE [sentinel](../includes/applies-to-version/sentinel.md)]
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)] 
 
 Calculates useful activity metrics (distinct count values, distinct count of new values, retention rate, and churn rate) for the cohort of `New Users`. Each cohort of `New Users` (all users, which were first seen in time window) is compared to all prior cohorts.
 Comparison takes into account *all* previous time windows. For example, for records from T2 to T3, the distinct count of users will be all users in T3 who weren't seen in both T1 and T2.

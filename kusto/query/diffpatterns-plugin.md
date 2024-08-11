@@ -3,11 +3,16 @@ title:  diffpatterns plugin
 description: Learn how to use the diffpatterns plugin to compare two datasets of the same structure to find the differences between the two datasets. 
 ms.reviewer: alexans
 ms.topic: reference
+<<<<<<< HEAD
 ms.date: 08/11/2024
+=======
+ms.date: 03/12/2023
+monikerRange: "azure-data-explorer || microsoft-fabric"
+>>>>>>> d34a26a941c969320c139625ccc7746c400836e9
 ---
 # diffpatterns plugin
 
-> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)] [!INCLUDE [monitor](../includes/applies-to-version/monitor.md)] [!INCLUDE [sentinel](../includes/applies-to-version/sentinel.md)]
+> [!INCLUDE [applies](../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../includes/applies-to-version/azure-data-explorer.md)]
 
 Compares two datasets of the same structure and finds patterns of discrete attributes (dimensions) that characterize differences between the two datasets. The plugin is invoked with the [`evaluate`](evaluate-operator.md) operator.
 
